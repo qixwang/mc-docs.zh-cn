@@ -1,21 +1,19 @@
 ---
-title: 将应用程序连接到 Azure Database for MySQL
+title: 连接字符串 - Azure Database for MySQL
 description: 本文档中列出了目前支持的用于将应用程序连接到 Azure Database for MySQL 的连接字符串，包括 ADO.NET (C#)、JDBC、Node.js、ODBC、PHP、Python 和 Ruby。
-services: mysql
 author: WenJason
 ms.author: v-jay
-editor: jasonwhowell
-manager: digimobile
 ms.service: mysql
-ms.topic: article
-origin.date: 02/28/2018
-ms.date: 08/13/2018
-ms.openlocfilehash: 18a5c647b392c0528c2745a98299830068da43d4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.topic: conceptual
+origin.date: 3/18/2020
+ms.date: 06/29/2020
+ms.custom: tracking-python
+ms.openlocfilehash: 03691146ae367e56752423904f9a358d25a8bf8c
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "67236647"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516727"
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mysql"></a>如何将应用程序连接到 Azure Database for MySQL
 
@@ -70,7 +68,7 @@ client = Mysql2::Client.new(username: {username@servername}, password: {your_pas
 ```
 
 ## <a name="get-the-connection-string-details-from-the-azure-portal"></a>从 Azure 门户获取连接字符串详细信息
-在 [Azure 门户](https://portal.azure.cn)中，转到 Azure Database for MySQL 服务器，然后单击“连接字符串”  以获取实例的字符串列表：![Azure 门户中的连接字符串窗格](./media/howto-connection-strings/connection-strings-on-portal.png)
+在 [Azure 门户](https://portal.azure.cn)中，转到 Azure Database for MySQL 服务器，再单击“连接字符串”，以获取实例的字符串列表：![Azure 门户中的“连接字符串”窗格](./media/howto-connection-strings/connection-strings-on-portal.png)
 
 字符串提供驱动程序、服务器和其他数据库连接参数等详细信息。 修改这些示例以使用自己的参数，例如数据库名称、密码等。 然后，可以在代码和应用程序中使用此字符串连接到服务器。
 

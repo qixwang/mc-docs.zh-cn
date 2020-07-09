@@ -8,15 +8,15 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
 origin.date: 11/04/2019
-ms.date: 06/15/2020
+ms.date: 07/06/2020
 ms.author: v-jay
 ms.reviewer: igorstan
-ms.openlocfilehash: b922089cc4b035bc4e9a04e7ee47c7b1c12274ce
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.openlocfilehash: 6930f7b049b7769024448bd0ddb4497724b705e8
+ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723689"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85845807"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure Synapse Analytics（前称为 SQL 数据仓库）常见问题解答
 
@@ -57,6 +57,10 @@ A. 请参阅当前[容量限制](sql-data-warehouse-service-capacity-limits.md)�
 问： 为什么缩放/暂停/恢复会花费很长时间？
 
 A. 多种因素可能会影响计算管理操作的时间。 长时间运行的操作的常见例子是事务回退。 缩放或暂停操作启动时，会阻止所有传入会话和查询。 为了使系统处于稳定状态，必须在操作开始前回退事务。 事务数量越多，其日志大小越大，使系统恢复到稳定状态的操作耗时越久。
+
+问：如何在 Synapse 中重命名已发布项目（数据集、笔记本、SQL 脚本等）？
+
+答：若要重命名已发布的项目文件，请首先克隆该文件，然后将其重命名为你喜欢的新文件名。 需要将该项目的所有引用手动更新为新文件，并删除旧文件。
 
 ## <a name="user-support"></a>用户支持
 

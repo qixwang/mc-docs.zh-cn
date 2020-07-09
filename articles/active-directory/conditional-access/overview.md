@@ -5,18 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 01/09/2020
+ms.date: 07/01/2020
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4dfe723b6c5c366c97ff19b8be1babb96a5b76d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.custom: contperfq4
+ms.openlocfilehash: 4fe632206dde29691e8e1b7bffd2320a724d50db
+ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75859433"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945137"
 ---
 # <a name="what-is-conditional-access"></a>什么是条件访问？
 
@@ -69,7 +70,7 @@ Azure Active Directory 使用条件访问作为一种工具来统合信号、做
 
 ## <a name="commonly-applied-policies"></a>经常应用的策略
 
-许多组织存在一些常见的访问考虑因素，而条件访问策略可帮助解决这些忧虑，例如：
+许多组织都存在[条件访问策略可以帮助解决的常见访问问题](concept-conditional-access-policy-common.md)，例如：
 
 - 要求具有管理角色的用户执行多重身份验证
 - 要求在运行 Azure 管理任务时执行多重身份验证
@@ -94,11 +95,8 @@ Azure Active Directory 使用条件访问作为一种工具来统合信号、做
 
 ## <a name="next-steps"></a>后续步骤
 
-[条件访问策略构建方法详解](concept-conditional-access-policies.md)
-
-若要了解如何在环境中实现条件访问，请参阅[在 Azure Active Directory 中规划条件访问部署](plan-conditional-access.md)。
-
+- [条件访问策略构建方法详解](concept-conditional-access-policies.md)
+- [规划条件访问部署](plan-conditional-access.md)
 [了解 Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security)
-
 [了解 Microsoft Intune](https://docs.microsoft.com/intune/index)
 

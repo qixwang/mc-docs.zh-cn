@@ -1,24 +1,24 @@
 ---
-title: 在 Azure 租户之间共享库 VM 映像 | Azure
+title: 跨 Azure 租户共享库 VM 映像
 description: 了解如何使用共享映像库跨 Azure 租户共享 VM 映像。
-services: virtual-machines-windows
 author: rockboyfor
-manager: digimobile
 ms.service: virtual-machines-windows
+ms.subservice: imaging
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.topic: how-to
 origin.date: 07/15/2019
-ms.date: 09/16/2019
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 7921628a10daf32bd0139ee5a87f655302ac5d11
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 0028bdb7320b977d98a478f7b770d794d5987ae5
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "70921178"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945588"
 ---
 # <a name="share-gallery-vm-images-across-azure-tenants"></a>跨 Azure 租户共享库 VM 映像
+
+共享映像库可让你使用 RBAC 共享映像。 可以使用 RBAC 在租户中共享映像，甚至可以与租户外部的个人共享映像。 有关此简单共享选项的详细信息，请参阅[共享库](/virtual-machines/windows/shared-images-portal#share-the-gallery)。
 
 [!INCLUDE [virtual-machines-share-images-across-tenants](../../../includes/virtual-machines-share-images-across-tenants.md)]
 
@@ -80,8 +80,8 @@ Add-AzVMNetworkInterface -Id $nic.Id
 New-AzVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 ```
 
-<!--Not Available on ## Next steps-->
+## <a name="next-steps"></a>后续步骤
 
-<!--Not Available on [Azure portal](shared-images-portal.md)-->
+也可使用 [Azure 门户](shared-images-portal.md)创建共享映像库资源。
 
-<!--Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

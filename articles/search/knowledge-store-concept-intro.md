@@ -1,5 +1,5 @@
 ---
-title: 知识存储（预览版）简介
+title: 知识存储概念（预览版）
 titleSuffix: Azure Cognitive Search
 description: 将扩充文档发送到 Azure 存储，随后可以在 Azure 认知搜索和其他应用中查看、整形和使用扩充文档。 此功能目前以公共预览版提供。
 author: HeidiSteen
@@ -7,24 +7,24 @@ manager: nitinme
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 12/11/2019
-ms.date: 06/09/2020
-ms.openlocfilehash: 71d4db89ef40eaa8715c7bd2ef5518ffe673b742
-ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
+origin.date: 05/05/2020
+ms.date: 07/02/2020
+ms.openlocfilehash: e40f8884492cf17884ed20efaa1077d825d2a0dc
+ms.sourcegitcommit: 5afd7c4c3be9b80c4c67ec55f66fcf347aad74c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84564225"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85942522"
 ---
-# <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Azure 认知搜索中的知识存储简介
+# <a name="knowledge-store-in-azure-cognitive-search"></a>Azure 认知搜索中的知识存储
 
 > [!IMPORTANT] 
 > 知识存储目前以公开预览版提供。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。
 > [REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供预览版功能。 目前提供有限的门户支持，不提供 .NET SDK 支持。
 
-知识存储是 Azure 认知搜索中的一项功能，它可以保留 [AI 扩充管道](cognitive-search-concept-intro.md)的输出进行独立分析或下游处理。 扩充文档是管道的输出，是基于使用 AI 流程提取、结构化和分析的内容创建的。  在标准的 AI 管道中，扩充文档是临时的，仅在编制索引期间使用，然后被丢弃。 扩充文档将通过知识存储保存起来。 
+知识存储是 Azure 认知搜索中的一项功能，它可以保留 [AI 扩充管道](cognitive-search-concept-intro.md)的输出进行独立分析或下游处理。 扩充文档是管道的输出，是基于使用 AI 流程提取、结构化和分析的内容创建的。 在标准的 AI 管道中，扩充文档是临时的，仅在编制索引期间使用，然后被丢弃。 扩充文档将通过知识存储保存起来。 
 
-如果你过去曾经用过认知技能，则已经知道技能集可以通过一系列扩充来移动文档。  结果可以是搜索索引，也可以是知识存储中的投影（此预览版中新增的）。 搜索索引和知识存储这两种输出是同一管道的产出；它们派生自相同的输入，但导致以非常不同的方式构建、存储和使用输出。
+如果你过去曾经用过认知技能，则已经知道技能集可以通过一系列扩充来移动文档。 结果可以是搜索索引，也可以是知识存储中的投影（此预览版中新增的）。 搜索索引和知识存储这两种输出是同一管道的产出；它们派生自相同的输入，但导致以非常不同的方式构建、存储和使用输出。
 
 在物理上，知识存储是一个 [Azure 存储](https://docs.azure.cn/storage/common/storage-account-overview)，可以是 Azure 表存储和/或 Azure Blob 存储。 任何可以连接到 Azure 存储的工具或进程都可以使用知识存储的内容。
 
@@ -109,7 +109,7 @@ ms.locfileid: "84564225"
 
 ### <a name="use-the-azure-portal"></a>使用 Azure 门户
 
-“导入数据”向导包含用于创建知识存储的选项。  若要进行初始探索，请[通过四个步骤创建第一个知识存储](knowledge-store-connect-power-bi.md)。
+“导入数据”向导包含用于创建知识存储的选项。 若要进行初始探索，请[通过四个步骤创建第一个知识存储](knowledge-store-connect-power-bi.md)。
 
 1. 选择支持的数据源。
 

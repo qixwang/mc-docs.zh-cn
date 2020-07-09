@@ -1,26 +1,20 @@
 ---
-title: Azure Linux VM 大小 - 前几代 | Azure
-description: 列出 Azure 中适用于 Linux 虚拟机的前几代大小。 针对此系列中的大小列出了 vCPU、数据磁盘和 NIC 的数量，以及存储吞吐量和网络带宽。
-services: virtual-machines-linux
-documentationcenter: ''
+title: 前几代虚拟机大小
+description: 列出 Azure 中可用的前几代虚拟机大小。 针对此系列中的大小列出了 vCPU、数据磁盘和 NIC 的数量，以及存储吞吐量和网络带宽。
+services: virtual-machines
+ms.subservice: sizes
 author: rockboyfor
-manager: digimobile
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: ''
-ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 origin.date: 02/20/2020
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 962dd11af9191b79f13d7dab4d6753b28a9aa1a3
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: e54bdfcf70ddc959c85fccab7de083899a495cd2
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392482"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945879"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>前几代虚拟机大小
 
@@ -70,8 +64,9 @@ ACU：210 - 250
 
 Mbps = 每秒 10^6 字节，GiB = 1024^3 字节。
 
-<sup>1</sup> Fs 系列 VM 可能的最大磁盘吞吐量（IOPS 或 Mbps）可能受限于附加磁盘的数量、大小和条带化。  有关详细信息，请了解如何为 [Windows](/windows/premium-storage-performance.md) 或 [Linux](linux/premium-storage-performance.md) 进行面向高性能的设计。  
+<sup>1</sup> Fs 系列 VM 可能的最大磁盘吞吐量（IOPS 或 Mbps）可能受限于附加磁盘的数量、大小和条带化。  有关详细信息，请了解如何为 [Windows](windows/premium-storage-performance.md) 或 [Linux](linux/premium-storage-performance.md) 进行面向高性能的设计。  
 
+<!--CORRECT ON [Windows](windows/premium-storage-performance.md)-->
 <!--Not Available on ## NVv2-series-->
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
@@ -225,6 +220,8 @@ ACU：160-250 <sup>1,2</sup>
 
 <sup>1</sup> DS 系列 VM 可能的最大磁盘吞吐量（IOPS 或 MBps）可能受限于附加磁盘的数量、大小和条带化。  有关详细信息，请了解如何为 [Windows](windows/premium-storage-performance.md) 或 [Linux](linux/premium-storage-performance.md) 进行面向高性能的设计。
 <sup>2</sup> VM 系列可以在下述 CPU 之一上运行：2.2 GHz Intel Xeon® E5-2660 v2、2.4 GHz Intel Xeon® E5-2673 v3 (Haswell) 或 2.3 GHz Intel XEON® E5-2673 v4 (Broadwell)  
+
+<!--CORRECT ON [Windows](windows/premium-storage-performance.md)-->
 
 <br />
 

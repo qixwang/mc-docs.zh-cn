@@ -8,17 +8,17 @@ author: msmbaldwin
 ms.author: v-tawe
 manager: rkarlin
 origin.date: 09/10/2019
-ms.date: 06/02/2020
-ms.openlocfilehash: 68679cb53bfc99b3237cf265a5beb35e0a86d77e
-ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
+ms.date: 07/01/2020
+ms.openlocfilehash: 327c43d89193a777f92a3fe3508a80faea3a8263
+ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84275436"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85796176"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>使用 Key Vault 和 Azure PowerShell 管理存储帐户密钥
 
-Azure 存储帐户使用由帐户名和密钥构成的凭据。 密钥是自动生成的，充当密码而不是加密密钥。 Key Vault 可以通过将存储帐户密钥存储为 Key Vault 机密来对其进行管理。 
+Azure 存储帐户使用由帐户名和密钥构成的凭据。 密钥是自动生成的，充当密码而不是加密密钥。 Key Vault 通过在存储帐户中定期重新生成存储帐户密钥来管理存储帐户密钥，并提供共享访问签名令牌，以便对存储帐户中的资源进行委托访问。
 
 可以使用 Key Vault 托管的存储帐户密钥功能列出（同步） Azure 存储帐户中的密钥，并定期重新生成（轮换）密钥。 可以管理存储帐户和经典存储帐户的密钥。
 

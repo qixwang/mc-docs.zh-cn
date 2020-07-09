@@ -5,17 +5,17 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 05/19/2020
+ms.date: 06/23/2020
 ms.author: v-junlch
-ms.openlocfilehash: 217f50c08009e27b74fc92953f5ff339b1c804ab
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+ms.openlocfilehash: 946a377c4ca56665187de257232d448e9e31383d
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796846"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516446"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>排查应用程序网关中的网关无效错误
-<p class="alert is-flex is-primary"><span class="has-padding-left-medium has-padding-top-extra-small"><a class="button is-primary" href="https://azurevirtualsupportagent.services.microsoft.com?content=66c070b6-1c47-4c7f-b928-317a8c8b452f" target='_blank'>开始</a></span><span class="has-padding-small">通过使用虚拟代理运行<b>自动诊断，快速解决问题。</b></span><span class="has-padding-small"><a href="https://privacy.microsoft.com/privacystatement" target='_blank'><div align="right"><sub>隐私声明</sub></div></a></span></p>
+
 了解如何排查使用 Azure 应用程序网关时收到的网关无效 (502) 错误。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -111,7 +111,7 @@ NSG/UDR 可能存在于应用程序网关子网中，也可能存在于部署了
 | 名称 |探测的名称。 此名称用于在后端 HTTP 设置中引用探测。 |
 | 协议 |用于发送探测的协议。 探测使用后端 HTTP 设置中定义的协议 |
 | 主机 |用于发送探测的主机名。 仅当应用程序网关上配置了多站点时才适用。 这与 VM 主机名不同。 |
-| `Path` |探测的相对路径。 有效路径以“/”开头。 将探测发送到 \<protocol\>://\<host\>:\<port\>\<path\> |
+| `Path` |探测的相对路径。 有效路径以“/”开头。 探测将发送到 \<protocol\>://\<host\>:\<port\>\<path\> |
 | 时间间隔 |探测间隔（秒）。 这是每两次连续探测之间的时间间隔。 |
 | 超时 |探测超时（秒）。 如果在此超时期间内未收到有效响应，则将探测标记为失败。 |
 | 不正常阈值 |探测重试计数。 连续探测失败计数达到不正常阈值后，后端服务器标记为故障。 |

@@ -1,31 +1,31 @@
 ---
-title: Dv3 和 Dsv3 系列 - Azure 虚拟机
+title: Dv3 和 Dsv3 系列
 description: Dv3 和 Dsv3 系列 VM 的规范。
-services: virtual-machines
 author: rockboyfor
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 origin.date: 02/03/2020
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1c68b8b20ca7f6b49719420a8db84e403875c302
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: 9c12e4f73f3b11d29a85b71392c0b17216fe67b8
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392479"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945974"
 ---
 <!--Verified successfully-->
 <!--Partical Content from verified-->
 # <a name="dv3-and-dsv3-series"></a>Dv3 和 Dsv3 系列
 
-Dv3 系列在超线程配置中在 Intel® Xeon® 8171M 2.1GHz (Skylake)、Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) 或 Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) 处理器上运行，针对最常规用途的工作负荷提供了更好的价值主张。 在磁盘和网络限制已基于核心进行了调整以适应超线程技术的同时，内存已扩展（从 ~3.5 GiB/vCPU 到 4 GiB/vCPU）。 Dv3 系列不再具有 D/Dv2 系列的高内存 VM 大小，那些已移至内存优化的 [Ev3 和 Esv3 系列](ev3-esv3-series.md)。
+Dv3 系列在采用超线程配置的 Intel® Xeon® Platinum 8272CL (Cascade Lake)、Intel® Xeon® 8171M 2.1GHz (Skylake)、Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) 或 Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) 处理器上运行，为大多数常规用途工作负荷提供更好的价值定位。 在磁盘和网络限制已基于核心进行了调整以适应超线程技术的同时，内存已扩展（从 ~3.5 GiB/vCPU 到 4 GiB/vCPU）。 Dv3 系列不再具有 D/Dv2 系列的高内存 VM 大小，那些已移至内存优化的 [Ev3 和 Esv3 系列](ev3-esv3-series.md)。
 
 示例 D 系列用例包括企业级应用程序、关系数据库、内存中缓存和分析。
 
 ## <a name="dv3-series"></a>Dv3 系列
 
-Dv3 系列大小在 Intel® Xeon® 8171M 2.1GHz (Skylake)、Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) 或 Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) 处理器上运行，采用 Intel Turbo Boost Technology 2.0。 Dv3 系列大小为大多数生产工作负荷提供 vCPU、内存和临时存储组合。
+Dv3 系列大小在采用 Intel Turbo Boost Technology 2.0 的 Intel® Xeon® Platinum 8272CL (Cascade Lake)、Intel® Xeon® 8171M 2.1GHz (Skylake)、Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) 或 Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) 处理器上运行。 Dv3 系列大小为大多数生产工作负荷提供 vCPU、内存和临时存储组合。
 
 数据磁盘存储与虚拟机分开计费。 若要使用高级存储磁盘，请使用 Dsv3 大小。 Dsv3 大小的定价和计费标准与 Dv3 系列相同。
 
@@ -53,7 +53,7 @@ ACU：160-190
 
 ## <a name="dsv3-series"></a>Dsv3 系列
 
-Dsv3 系列大小在 Intel® Xeon® 8171M 2.1GHz (Skylake)、Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) 或 Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) 处理器上运行，采用 Intel Turbo Boost Technology 2.0 并使用高级存储。 Dsv3 系列大小为大多数生产工作负荷提供 vCPU、内存和临时存储组合。
+Dsv3 系列大小在采用 Intel Turbo Boost Technology 2.0 的 Intel® Xeon® Platinum 8272CL (Cascade Lake)、Intel® Xeon® 8171M 2.1GHz (Skylake)、Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) 或 Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) 处理器上运行，并使用高级存储。 Dsv3 系列大小为大多数生产工作负荷提供 vCPU、内存和临时存储组合。
 
 Dsv3 系列 VM 采用 Intel® 超线程技术。
 

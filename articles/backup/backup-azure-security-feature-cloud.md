@@ -4,14 +4,14 @@ description: 了解如何在 Azure 备份中使用安全功能，使备份更加
 ms.topic: conceptual
 author: Johnnytechn
 origin.date: 09/13/2019
-ms.date: 06/09/2020
+ms.date: 06/22/2020
 ms.author: v-johya
-ms.openlocfilehash: f2fa3a563aba50c5f13ba008e3e4ce9b5db1ba69
-ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
+ms.openlocfilehash: 3b8ef4de27c1636e912208e94045026f1902cae1
+ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84683976"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851941"
 ---
 # <a name="soft-delete-for-azure-backup"></a>Azure 备份的软删除
 
@@ -19,7 +19,10 @@ ms.locfileid: "84683976"
 
 其中的一项功能是软删除。 在使用软删除的情况下，即使恶意行动者删除了备份（或用户意外删除了备份数据），备份数据也仍会保留 14 天，因此可以恢复该备份项，而不会丢失数据。 以“软删除”状态将备份数据额外保留 14 天不会向客户收取任何费用。
 
-[Azure 虚拟机的软删除保护](soft-delete-virtual-machines.md)和 [Azure VM 中 SQL Server 的软删除和 Azure VM 工作负载中 SAP HANA 的软删除](soft-delete-sql-saphana-in-azure-vm.md)适用于所有人。
+软删除保护适用于以下服务：
+
+- [针对 Azure 虚拟机的软删除](soft-delete-virtual-machines.md)
+- [针对 Azure VM 中 SQL Server 的软删除以及针对 Azure VM 工作负荷中 SAP HANA 的软删除](soft-delete-sql-saphana-in-azure-vm.md)
 
 此流程图显示了启用软删除时备份项的不同步骤和状态：
 
@@ -35,9 +38,9 @@ ms.locfileid: "84683976"
 
 若要禁用软删除，请执行以下步骤：
 
-1. 在 Azure 门户中转到保管库，然后转到“设置” -> “属性”。**** ****
-2. 在“属性”窗格中选择“安全设置” -> “更新”。**** ****  
-3. 在“安全设置”窗格的“软删除”下，选择“禁用”。**** ****
+1. 在 Azure 门户中转到保管库，然后转到“设置” -> “属性”。 
+2. 在“属性”窗格中选择“安全设置” -> “更新”。   
+3. 在“安全设置”窗格的“软删除”下，选择“禁用”。 
 
 ![禁用软删除](./media/backup-azure-security-feature-cloud/disable-soft-delete.png)
 
@@ -73,19 +76,19 @@ SoftDeleteFeatureState : Disabled
 
 1. 按照步骤[禁用软删除](#enabling-and-disabling-soft-delete)。
 
-2. 在 Azure 门户中，请切换到保管库，转到“备份项”并选择已软删除的项****。
+2. 在 Azure 门户中，请切换到保管库，转到“备份项”并选择已软删除的项。
 
    ![选择已软删除的项](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
 
-3. 选择“撤消删除”选项****。
+3. 选择“撤消删除”选项。
 
    ![选择“撤消删除”](./media/backup-azure-security-feature-cloud/choose-undelete.png)
 
-4. 此时会出现一个窗口。 选择“撤消删除”****。
+4. 此时会出现一个窗口。 选择“撤消删除”。
 
    ![选择“撤消删除”](./media/backup-azure-security-feature-cloud/undelete-vm.png)
 
-5. 选择“删除备份数据”，永久删除备份数据****。
+5. 选择“删除备份数据”，永久删除备份数据。
 
    ![选择“删除备份数据”](/backup/media/backup-azure-manage-vms/delete-backup-buttom.png)
 
@@ -93,7 +96,7 @@ SoftDeleteFeatureState : Disabled
 
    ![键入备份项的名称](/backup/media/backup-azure-manage-vms/delete-backup-data1.png)
 
-7. 若要删除项的备份数据，请选择“删除”****。 一条通知消息将让你获悉备份数据已删除。
+7. 若要删除项的备份数据，请选择“删除”。 一条通知消息将让你获悉备份数据已删除。
 
 ### <a name="using-azure-powershell"></a>使用 Azure PowerShell
 
@@ -156,7 +159,7 @@ AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM
 
 ### <a name="can-i-perform-a-restore-operation-when-my-data-is-in-soft-delete-state"></a>如果数据处于软删除状态，是否可以执行还原操作？
 
-否。需要取消删除已软删除的资源才能还原。 取消删除操作会将资源恢复到“停止保护并保留数据”状态，然后，你可以还原到任意时间点。**** 在此状态下，垃圾回收器将保持暂停状态。
+否。需要取消删除已软删除的资源才能还原。 取消删除操作会将资源恢复到“停止保护并保留数据”状态，然后，你可以还原到任意时间点。 在此状态下，垃圾回收器将保持暂停状态。
 
 ### <a name="will-my-snapshots-follow-the-same-lifecycle-as-my-recovery-points-in-the-vault"></a>快照的生命周期是否与保管库中恢复点的生命周期相同？
 

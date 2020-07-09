@@ -4,25 +4,25 @@ description: 了解如何在 Azure 应用服务中还原已删除的应用。 �
 author: btardif
 ms.author: v-tawe
 origin.date: 09/23/2019
-ms.date: 05/22/2020
+ms.date: 06/22/2020
 ms.topic: article
-ms.openlocfilehash: bb2dd2773124f778ca50fa3a418a57424ef2729f
-ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
+ms.openlocfilehash: 32e23cdbc679cfaddafbf36c9bded9cfa72d2ec1
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83801260"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85613397"
 ---
 # <a name="restore-deleted-app-service-app-using-powershell"></a>使用 PowerShell 还原已删除的应用服务应用
 
-如果意外删除了 Azure 应用服务中的应用，可以使用 [Az PowerShell 模块](https://docs.microsoft.com/powershell/azure/?view=azps-2.6.0&viewFallbackFrom=azps-2.2.0)中的命令还原它。
+如果意外删除了 Azure 应用服务中的应用，则可以使用 [Az PowerShell 模块](https://docs.microsoft.com/powershell/azure/?view=azps-2.6.0&viewFallbackFrom=azps-2.2.0)中的命令将其还原。
 
 > [!NOTE]
 > 初始删除 30 天后，已删除的应用将从系统中清除。 应用一旦被清除，将无法恢复。
 >
 
 ## <a name="re-register-app-service-resource-provider"></a>重新注册应用服务资源提供程序
-有些客户可能会遇到这样的问题：检索已删除的应用的列表时失败。 若要解决此问题，请运行以下命令：
+有些客户可能会遇到这样的问题：检索已删除的应用的列表时失败。 若要解决该问题，请运行以下命令：
 
 ```powershell
  Register-AzResourceProvider -ProviderNamespace "Microsoft.Web"
@@ -49,8 +49,10 @@ Get-AzDeletedWebApp -Name <your_deleted_app> -Location <your_deleted_app_locatio
 - **Deletion Time**：删除应用的时间  
 
 ## <a name="restore-deleted-app"></a>还原已删除的应用
+>[!NOTE]
+> 函数应用不支持 `Restore-AzDeletedWebApp`。
 
-确定想要还原的应用后，可以使用 `Restore-AzDeletedWebApp` 来还原它。
+确定要还原的应用后，可使用 `Restore-AzDeletedWebApp` 进行还原。
 
 ```powershell
 Restore-AzDeletedWebApp -ResourceGroupName <my_rg> -Name <my_app> -TargetAppServicePlanName <my_asp>
@@ -59,13 +61,13 @@ Restore-AzDeletedWebApp -ResourceGroupName <my_rg> -Name <my_app> -TargetAppServ
 > 部署槽不会作为应用的一部分进行还原。 如果需要还原过渡槽，请使用 `-Slot <slot-name>` 标志。
 >
 
-命令的输入为：
+命令的输入包括：
 
 - **资源组**：要将应用还原到的目标资源组
 - **名称**：应用的名称，应全局唯一。
 - **TargetAppServicePlanName**：链接到该应用的应用服务计划
 
-默认情况下，`Restore-AzDeletedWebApp` 会同时还原应用的配置和内容。 如果只想还原内容，请在此 cmdlet 中使用 `-RestoreContentOnly` 标志。
+默认情况下，`Restore-AzDeletedWebApp` 会同时还原应用配置以及任何内容。 如果只想还原内容，请在此 cmdlet 中使用 `-RestoreContentOnly` 标志。
 
 > [!NOTE]
 > 如果应用托管在应用服务环境中，后来已将其删除，则仅当相应的应用服务环境仍然存在时，才能还原该应用。

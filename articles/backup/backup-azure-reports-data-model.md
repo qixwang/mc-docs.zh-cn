@@ -2,16 +2,16 @@
 title: Azure 备份诊断事件的数据模型
 description: 此数据模型参考了将诊断事件发送到 Log Analytics (LA) 的资源特定模式。
 ms.topic: conceptual
-author: lingliw
+author: Johnnytechn
 origin.date: 10/30/2019
-ms.date: 03/06/2020
-ms.author: v-lingwu
-ms.openlocfilehash: 9ca69e08f483d7c0b3331796e8b7c4eca4bc7e22
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/22/2020
+ms.author: v-johya
+ms.openlocfilehash: d4d70bc9da568836f05191b26427ab9509f71bff
+ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850259"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851940"
 ---
 # <a name="data-model-for-azure-backup-diagnostics-events"></a>Azure 备份诊断事件的数据模型
 
@@ -121,13 +121,13 @@ ms.locfileid: "78850259"
 
 | **字段**                      | **数据类型** | **说明**                                              |
 | ------------------------------ | ------------- | ------------------------------------------------------------ |
-| ResourceId                     | 文本          | 正在收集其数据的资源标识符。 例如，恢复服务保管库资源 ID |
+| ResourceId                     | 文本          | 正在收集其数据的资源标识符。 例如“恢复服务保管库资源 ID” |
 | OperationName                  | 文本          | 此字段表示当前操作的名称 - Job    |
 | Category                       | 文本          | 此字段表示推送到 Azure Monitor 日志的诊断数据的类别 - AddonAzureBackupJobs |
 | AdhocOrScheduledJob            | 文本          | 用于指定作业是临时作业还是计划作业的字段           |
 | BackupItemUniqueId             | 文本          | 用于标识与存储实体相关的备份项的唯一 ID |
 | BackupManagementServerUniqueId | 文本          | 用于标识与存储实体相关的备份管理服务器的唯一 ID |
-| BackupManagementType           | 文本          | 执行备份的提供程序类型，例如此警报所属的 IaaSVM、FileFolder |
+| BackupManagementType           | 文本          | 执行备份的提供程序类型，例如此作业所属的 IaaSVM、FileFolder |
 | DataTransferredInMB            | Number        | 此作业传输的数据量，以 MB 为单位                          |
 | JobDurationInSecs              | Number        | 作业的总持续时间，以秒为单位                                |
 | JobFailureCode                 | 文本          | 导致作业失败的故障代码字符串    |
@@ -136,14 +136,14 @@ ms.locfileid: "78850259"
 | JobStartDateTime               | DateTime      | 开始运行作业的日期和时间                       |
 | JobStatus                      | 文本          | 作业的状态，例如 Completed、Failed   |
 | JobUniqueId                    | 文本          | 用于标识作业的唯一 ID                                |
-| ProtectedContainerUniqueId     | 文本          | 与警报关联的受保护服务器的唯一标识符 |
+| ProtectedContainerUniqueId     | 文本          | 与作业关联的受保护服务器的唯一标识符 |
 | RecoveryJobDestination         | 文本          | 恢复作业的目标，数据将恢复到其中   |
 | RecoveryJobRPDateTime          | DateTime      | 要恢复的恢复点的创建日期和时间 |
 | RecoveryJobLocation            | 文本          | 要恢复的恢复点已还原到的位置 |
 | RecoveryLocationType           | 文本          | 恢复位置的类型                                |
 | schemaVersion                  | 文本          | 架构的当前版本，例如 **V2**            |
-| 状态                          | 文本          | 警报对象的当前状态，例如 Active、Deleted |
-| VaultUniqueId                  | 文本          | 与警报关联的受保护保管库的唯一标识符 |
+| 状态                          | 文本          | 作业对象的当前状态，例如 Active、Deleted |
+| VaultUniqueId                  | 文本          | 与作业关联的受保护保管库的唯一标识符 |
 | SourceSystem                   | 文本          | 当前数据的源系统 - Azure                    |
 
 ## <a name="addonazurebackuppolicy"></a>AddonAzureBackupPolicy
@@ -208,7 +208,7 @@ ms.locfileid: "78850259"
 | BackupManagementServerUniqueId | 文本          | 用于唯一标识保护备份项所用的备份管理服务器的字段（如果适用） |
 | BackupManagementType           | 文本          | 执行备份作业的服务器的提供程序类型。 例如 IaaSVM、FileFolder |
 | PreferredWorkloadOnVolume      | 文本          | 使用此卷作为首选存储的工作负荷      |
-| ProtectedContainerUniqueId     | 文本          | 与警报关联的受保护服务器的唯一标识符 |
+| ProtectedContainerUniqueId     | 文本          | 与备份项关联的受保护容器的唯一标识符 |
 | schemaVersion                  | 文本          | 架构的版本。 例如 **V2**                   |
 | 状态                          | 文本          | 备份项对象的状态。 例如 Active、Deleted |
 | StorageAllocatedInMBs          | Number        | 磁盘类型的相应存储中相应备份项分配的存储大小 |
@@ -223,6 +223,6 @@ ms.locfileid: "78850259"
 
 ## <a name="next-steps"></a>后续步骤
 
+- [了解如何将诊断数据发送到 Log Analytics](/backup/backup-azure-diagnostic-events)
+- [了解如何针对特定于资源的表编写查询](/backup/backup-azure-monitoring-use-azuremonitor#sample-kusto-queries)
 
-
-<!-- Update_Description: update metedata properties -->

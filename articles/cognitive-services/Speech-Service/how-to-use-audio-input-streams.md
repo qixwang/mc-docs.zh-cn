@@ -9,31 +9,31 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 07/05/2019
-ms.date: 01/13/2020
+ms.date: 06/19/2020
 ms.author: v-tawe
-ms.openlocfilehash: 01bf8d8c31283234eb53bdbe0e37b14080919b54
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 351283c4a03fc13cffcf7d6c4991416d4ebd5a70
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134664"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611885"
 ---
 # <a name="about-the-speech-sdk-audio-input-stream-api"></a>语音 SDK 的音频输入流 API 简介
 
-使用语音 SDK 的音频输入流 API 可将音频流式传输到识别器，无需使用麦克风或输入文件 API  。
+使用语音 SDK 的音频输入流 API 可将音频流式传输到识别器，无需使用麦克风或输入文件 API。
 
 使用音频输入流时需按以下步骤操作：
 
 - 识别音频流的格式。 格式必须受语音 SDK 和语音服务支持。 目前仅支持以下配置：
 
-  PCM 格式的音频样本、一个频道、每秒 16000 次采样、每秒 32000 字节、两个块对齐、（16 位，包括样本的内边距）、每个样本 16 位。
+  PCM 格式的音频样本、一个频道、每个样本 16 位、每秒 8000 或 16000 次采样（每秒 16000 或 32000 字节）、两个块对齐（16 位，包括样本的内边距）。
 
   SDK 中用于创建音频格式的相应代码如下所示：
 
   ```csharp
   byte channels = 1;
   byte bitsPerSample = 16;
-  int samplesPerSecond = 16000;
+  int samplesPerSecond = 16000; // or 8000
   var audioFormat = AudioStreamFormat.GetWaveFormatPCM(samplesPerSecond, bitsPerSample, channels);
   ```
 

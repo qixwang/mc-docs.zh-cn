@@ -1,7 +1,7 @@
 ---
 title: Microsoft 标识平台和 OpenID Connect 协议 | Azure
 titleSuffix: Microsoft identity platform
-description: 使用 OpenID Connect 身份验证协议的 Microsoft 标识平台实现生成 Web 应用程序。
+description: 使用 OpenID Connect 身份验证协议的 Microsoft 标识平台实现来生成 Web 应用。
 services: active-directory
 author: hpsin
 manager: CelesteDG
@@ -9,22 +9,23 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/28/2020
+ms.date: 06/30/2020
 ms.author: v-junlch
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 0a5b72f310c38e2120a1e07cec5c19052c156ef3
-ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
+ms.openlocfilehash: ebaf881b1280b2233cb0e5e2af147b65030df4b5
+ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84186846"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945197"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft 标识平台和 OpenID Connect 协议
 
-OpenID Connect (OIDC) 是基于 OAuth 2.0 构建的身份验证协议，可用于将用户安全登录到 Web 应用程序。 使用 Microsoft 标识平台终结点的 OpenID Connect 实现时，可将登录功能和 API 访问权限添加到基于 Web 的应用中。 本文介绍如何独立于语言执行此操作，并介绍如何在不使用任何 Microsoft 开源库的情况下发送和接收 HTTP 消息。
+OpenID Connect (OIDC) 是基于 OAuth 2.0 构建的身份验证协议，可用于将用户安全登录到应用程序。 使用 Microsoft 标识平台终结点的 OpenID Connect 实现时，可将登录功能和 API 访问权限添加到应用中。 本文介绍如何独立于语言执行此操作，并介绍如何在不使用任何 [Microsoft 开源库](reference-v2-libraries.md)的情况下发送和接收 HTTP 消息。
 
-[OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) 扩展了 OAuth 2.0 *授权*协议，使其可用作*身份验证*协议，这样一来，用户可使用 OAuth 执行单一登录。 OpenID Connect 引入了 *ID 令牌*的概念，这是一种安全令牌，可让客户端验证用户的标识。 ID 令牌还可获取有关用户的基本配置文件信息。 由于 OpenID Connect 扩展了 OAuth 2.0，因此应用可安全获取访问令牌，访问令牌可用于访问[授权服务器](active-directory-v2-protocols.md#the-basics)保护的资源。 Microsoft 标识平台终结点还允许注册到 Azure AD 的第三方应用颁发受保护资源（例如 Web API）的访问令牌。 有关如何设置应用程序以颁发访问令牌的详细信息，请参阅[如何向 Microsoft 标识平台终结点注册应用](quickstart-register-app.md)。 如果要构建在服务器上托管并通过浏览器访问的 [Web 应用程序](v2-app-types.md#web-apps)，建议使用 OpenID Connect。
+[OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) 扩展了 OAuth 2.0 *授权*协议，使其可用作*身份验证*协议，这样一来，你就可以使用 OAuth 执行单一登录。 OpenID Connect 引入了 *ID 令牌*的概念，这是一种安全令牌，可让客户端验证用户的标识。 ID 令牌还可获取有关用户的基本配置文件信息。 它还引入了 [UserInfo 终结点](userinfo.md)，这是一个可返回有关用户的信息的 API。 
+
 
 ## <a name="protocol-diagram-sign-in"></a>协议图：登录
 
@@ -34,14 +35,11 @@ OpenID Connect (OIDC) 是基于 OAuth 2.0 构建的身份验证协议，可用�
 
 ## <a name="fetch-the-openid-connect-metadata-document"></a>提取 OpenID Connect 元数据文档
 
-OpenID Connect 描述了元数据文档，该文档包含了应用执行登录所需的大部分信息。 这些信息包括要使用的 URL 以及服务公共签名密钥的位置。 对于 Microsoft 标识平台终结点，应使用的 OpenID Connect 的元数据文档为：
+OpenID Connect 描述了元数据文档 [(RFC)](https://openid.net/specs/openid-connect-discovery-1_0.html)，该文档包含了应用执行登录操作所需的大部分信息。 这些信息包括要使用的 URL 以及服务公共签名密钥的位置。 若要查找此文档，可以将发现文档路径追加到颁发机构 URL：
 
-```
-https://login.partner.microsoftonline.cn/{tenant}/v2.0/.well-known/openid-configuration
-```
+发现文档路径：`/.well-known/openid-configuration`
 
-> [!TIP]
-> 试试看！ 单击 [https://login.partner.microsoftonline.cn/common/v2.0/.well-known/openid-configuration](https://login.partner.microsoftonline.cn/common/v2.0/.well-known/openid-configuration) 可查看 `common` 租户配置。
+颁发机构：`https://login.partner.microsoftonline.cn/{tenant}/v2.0`
 
 `{tenant}` 可取以下四个值之一：
 
@@ -51,24 +49,43 @@ https://login.partner.microsoftonline.cn/{tenant}/v2.0/.well-known/openid-config
 | `organizations` |只有在 Azure AD 中具有工作或学校帐户的用户才能登录到应用程序。 |
 | `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` 或 `contoso.partner.onmschina.cn` | 只有来自特定 Azure AD 租户的用户（无论他们是否是具有工作或学校帐户的目录中的成员）才能登录到应用程序。 可以使用 Azure AD 租户的友好域名或租户的 GUID 标识符。 也可以使用使用者租户 `9188040d-6c67-4c5b-b112-36a304b66dad` 来取代 `consumers` 租户。  |
 
-元数据是简单的 JavaScript 对象表示法 (JSON) 文档。 有关示例，请参阅以下代码片段。 [OpenID Connect 规范](https://openid.net/specs/openid-connect-discovery-1_0.html#rfc.section.4.2)中完整介绍了该代码片段的内容。
+颁发机构因国家/地区云而异 - 例如，Azure AD 德国实例的颁发机构为 `https://login.microsoftonline.de`。 如果你未使用公有云，请查看[国家/地区云终结点](authentication-national-cloud.md#azure-ad-authentication-endpoints)，以便查找适合自己的终结点。 确保请求中存在租户和 `/v2.0/`，以便使用终结点的 v2.0 版本。
+
+> [!TIP]
+> 试试看！ 单击 [https://login.partner.microsoftonline.cn/common/v2.0/.well-known/openid-configuration](https://login.partner.microsoftonline.cn/common/v2.0/.well-known/openid-configuration) 以查看 `common` 配置。
+
+### <a name="sample-request"></a>示例请求
+
+若要为公有云上的通用颁发机构调用 userinfo 终结点，请使用以下命令：
+
+```http
+GET /common/v2.0/.well-known/openid-configuration
+Host: login.partner.microsoftonline.cn
+```
+
+### <a name="sample-response"></a>示例响应
+
+元数据是简单的 JavaScript 对象表示法 (JSON) 文档。 有关示例，请参阅以下代码片段。 [OpenID Connect 规范](https://openid.net/specs/openid-connect-discovery-1_0.html#rfc.section.4.2)中对内容进行了全面介绍。
 
 ```json
 {
-  "authorization_endpoint": "https:\/\/login.partner.microsoftonline.cn\/{tenant}\/oauth2\/v2.0\/authorize",
-  "token_endpoint": "https:\/\/login.partner.microsoftonline.cn\/{tenant}\/oauth2\/v2.0\/token",
+  "authorization_endpoint": "https://login.partner.microsoftonline.cn/{tenant}/oauth2/v2.0/authorize",
+  "token_endpoint": "https://login.partner.microsoftonline.cn/{tenant}/oauth2/v2.0/token",
   "token_endpoint_auth_methods_supported": [
     "client_secret_post",
     "private_key_jwt"
   ],
-  "jwks_uri": "https:\/\/login.partner.microsoftonline.cn\/{tenant}\/discovery\/v2.0\/keys",
-
+  "jwks_uri": "https://login.partner.microsoftonline.cn/{tenant}/discovery/v2.0/keys",
+  "userinfo_endpoint": "https://microsoftgraph.chinacloudapi.cn/oidc/userinfo",
+  "subject_types_supported": [
+      "pairwise"
+  ],
   ...
 
 }
 ```
 
-如果应用因使用[声明映射](active-directory-claims-mapping.md)功能而具有自定义签名密钥，则必须追加包含应用 ID 的 `appid` 查询参数，以获取指向应用的签名密钥信息的 `jwks_uri`。 例如：`https://login.partner.microsoftonline.cn/{tenant}/v2.0/.well-known/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` 包含 `https://login.partner.microsoftonline.cn/{tenant}/discovery/v2.0/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e` 的 `jwks_uri`。
+如果应用因使用[声明映射](active-directory-claims-mapping.md)功能而具有自定义签名密钥，则必须追加包含应用 ID 的 `appid` 查询参数，以获取指向应用的签名密钥信息的 `jwks_uri`。 例如，`https://login.partner.microsoftonline.cn/{tenant}/v2.0/.well-known/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` 包含 `https://login.partner.microsoftonline.cn/{tenant}/discovery/v2.0/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e` 的 `jwks_uri`。
 
 通常，使用此元数据文档来配置 OpenID Connect 库或 SDK；该库使用元数据来完成其工作。 但是，如果不使用预生成的 OpenID Connect 库，则可以按照本文剩余部分的步骤来使用 Microsoft 标识平台终结点执行 Web 应用中的登录。
 
@@ -97,10 +114,6 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &state=12345
 &nonce=678910
 ```
-
-> [!TIP]
-> 单击以下链接执行此请求！ 登录后，浏览器将重定向到 `https://localhost/myapp/`，且地址栏中有一个 ID 令牌。 请注意，此请求使用 `response_mode=fragment`（仅用于演示）。 建议使用 `response_mode=form_post`。
-> <a href="https://login.partner.microsoftonline.cn/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=openid&response_mode=fragment&state=12345&nonce=678910" target="_blank">https://login.partner.microsoftonline.cn/common/oauth2/v2.0/authorize...</a>
 
 | 参数 | 条件 | 说明 |
 | --- | --- | --- |
@@ -170,36 +183,19 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 ## <a name="validate-the-id-token"></a>验证 ID 令牌
 
-仅接收 id_token 不足以对用户进行身份验证；必须验证 id_token 的签名，并按照应用的要求验证令牌中的声明。 Microsoft 标识平台终结点使用 [JSON Web 令牌 (JWT)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) 和公钥加密对令牌进行签名并验证其是否有效。
+仅接收 id_token 并不始终足以对用户进行身份验证；你可能还需要验证 id_token 的签名，并按照应用的要求验证令牌中的声明。 与所有 OIDC 平台一样，Microsoft 标识平台终结点使用 [JSON Web 令牌 (JWT)](https://tools.ietf.org/html/rfc7519) 和公钥加密对 ID 令牌进行签名并验证其是否有效。
 
-可以选择验证客户端代码中的 `id_token`，但常见的做法是将 `id_token` 发送到后端服务器，并在那里执行验证。 验证 id_token 的签名后，需要验证一些声明。 有关详细信息，请参阅 [`id_token` 参考](id-tokens.md)，其中包括[验证令牌](id-tokens.md#validating-an-id_token)和[有关签名密钥滚动更新的重要信息](active-directory-signing-key-rollover.md)。 我们建议利用库来分析和验证令牌 - 对于大多数语言和平台至少有一个可用。
+对 ID 令牌进行验证并非可以使所有应用都受益，例如，原生应用和单页应用很少受益于 ID 令牌验证。  能够以物理方式访问设备（或浏览器）的人员可以通过许多方式绕过验证，例如，可以编辑到设备的 Web 流量，可以提供伪令牌和密钥，还可以直接对应用程序进行调试以跳过验证逻辑。  另一方面，使用 ID 令牌进行授权的 Web 应用和 API 必须仔细验证 ID 令牌，因为它们控制着数据的访问权限。
+
+验证 id_token 的签名后，需要验证一些声明。 有关详细信息，请参阅 [`id_token` 参考](id-tokens.md)，其中包括[验证令牌](id-tokens.md#validating-an-id_token)和[有关签名密钥滚动更新的重要信息](active-directory-signing-key-rollover.md)。 我们建议利用库来分析和验证令牌 - 对于大多数语言和平台至少有一个可用。
 
 可能还希望根据自己的方案验证其他声明。 一些常见的验证包括：
 
 * 确保用户/组织已注册应用。
 * 确保用户拥有正确的授权/权限
-* 确保身份验证具有一定的强度，例如多重身份验证。
+* 确保进行了一定强度的身份验证，如[多重身份验证](../authentication/concept-mfa-howitworks.md)。
 
-验证 id_token 后，可以开始与用户的会话，并使用 id_token 中的声明来获取应用中的用户相关信息。 此信息可用于显示、记录和个性化等。
-
-## <a name="send-a-sign-out-request"></a>发送注销请求
-
-如果希望将用户从应用中注销，仅仅是清除应用的 Cookie 或结束用户会话并不足够。 还必须将用户重定向到 Microsoft 标识平台终结点才能注销。如果不这样做，用户不需要再次输入凭据就能重新通过应用的身份验证，因为他们与 Microsoft 标识平台终结点之间存在有效的单一登录会话。
-
-可以将用户重定向到 OpenID Connect 元数据文档中所列的 `end_session_endpoint`：
-
-```HTTP
-GET https://login.partner.microsoftonline.cn/common/oauth2/v2.0/logout?
-post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
-```
-
-| 参数 | 条件 | 说明 |
-| ----------------------- | ------------------------------- | ------------ |
-| `post_logout_redirect_uri` | 建议 | 用户在成功注销后将重定向到的 URL。如果不包括参数，将向用户显示一条 Microsoft 标识平台终结点生成的常规消息。 此 URL 必须与在应用注册门户中为应用程序注册的重定向 URI 之一匹配。 |
-
-## <a name="single-sign-out"></a>单一登录
-
-将用户重定向到 `end_session_endpoint` 时，Microsoft 标识平台终结点将从浏览器中清除用户的会话。 要使这些应用程序能够同时注销用户，Microsoft 标识平台终结点会将 HTTP GET 请求发送到用户当前登录到的所有应用程序的注册 `LogoutUrl`。 应用程序必须通过清除任何标识用户的会话并返回 `200` 响应来响应此请求。 如果要在应用程序中支持单一注销，必须在应用程序代码中实现此类 `LogoutUrl`。 可以从应用注册门户设置 `LogoutUrl`。
+验证 id_token 后，就可以开始与用户的会话，并使用 id_token 中的声明来获取应用中用户的信息。 此信息可用于显示、记录和个性化等。
 
 ## <a name="protocol-diagram-access-token-acquisition"></a>协议图：访问令牌获取
 
@@ -209,31 +205,30 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 ![OpenID Connect 协议：令牌获取](./media/v2-protocols-oidc/convergence-scenarios-webapp-webapi.svg)
 
-## <a name="get-access-tokens"></a>获取访问令牌
-若要获取访问令牌，请修改登录请求：
+## <a name="get-an-access-token-to-call-userinfo"></a>获取用于调用 UserInfo 的访问令牌
+
+若要获取 OIDC UserInfo 终结点的令牌，请修改登录请求：
 
 ```HTTP
 // Line breaks are for legibility only.
 
 GET https://login.partner.microsoftonline.cn/{tenant}/oauth2/v2.0/authorize?
 client_id=6731de76-14a6-49ae-97bc-6eba6914391e        // Your registered Application ID
-&response_type=id_token%20code
+&response_type=id_token%20token                       // this will return both an id_token and an access token
 &redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F       // Your registered redirect URI, URL encoded
 &response_mode=form_post                              // 'form_post' or 'fragment'
-&scope=openid%20                                      // Include both 'openid' and scopes that your app needs
-offline_access%20
-https%3A%2F%2Fmicrosoftgraph.chinacloudapi.cn%2Fuser.read
+&scope=openid+profile+email                           // `openid` is required.  `profile` and `email` provide additional information in the UserInfo endpoint the same way they do in an ID token. 
 &state=12345                                          // Any value, provided by your app
 &nonce=678910                                         // Any value, provided by your app
 ```
 
+还可以使用[授权代码流](v2-oauth2-auth-code-flow.md)、[设备代码流](v2-oauth2-device-code.md)或[刷新令牌](v2-oauth2-auth-code-flow.md#refresh-the-access-token)代替 `response_type=token`，以便为应用获取令牌。
+
 > [!TIP]
-> 单击以下链接执行此请求！ 登录后，浏览器将重定向到 `https://localhost/myapp/`，且地址栏中有一个 ID 令牌和一个代码。 请注意，此请求使用 `response_mode=fragment`（仅用于演示）。 建议使用 `response_mode=form_post`。
-> <a href="https://login.partner.microsoftonline.cn/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token%20code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=fragment&scope=openid%20offline_access%20https%3A%2F%2Fmicrosoftgraph.chinacloudapi.cn%2Fuser.read&state=12345&nonce=678910" target="_blank">https://login.partner.microsoftonline.cn/common/oauth2/v2.0/authorize...</a>
+> 单击以下链接执行此请求！ 登录后，浏览器将重定向到 `https://localhost/myapp/`，且地址栏中有一个 ID 令牌和一个令牌。 请注意，此请求使用的 `response_mode=fragment` 仅用于演示 - 对于 webapp，我们建议尽可能使用 `form_post` 以提高安全性。 
+> <a href="https://login.partner.microsoftonline.cn/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token%20token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=fragment&scope=openid+profile+email&state=12345&nonce=678910" target="_blank">https://login.partner.microsoftonline.cn/common/oauth2/v2.0/authorize...</a>
 
-通过使用 `response_type=id_token code` 在请求中包含权限范围，Microsoft 标识平台终结点可确保用户已经许可 `scope` 查询参数中指示的权限。 v2.0 终结点会将授权代码返回给应用，以交换访问令牌。
-
-### <a name="successful-response"></a>成功的响应
+### <a name="successful-token-response"></a>成功的令牌响应
 
 使用 `response_mode=form_post` 后的成功响应如下所示：
 
@@ -241,14 +236,23 @@ https%3A%2F%2Fmicrosoftgraph.chinacloudapi.cn%2Fuser.read
 POST /myapp/ HTTP/1.1
 Host: localhost
 Content-Type: application/x-www-form-urlencoded
-
-id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&state=12345
+ access_token=eyJ0eXAiOiJKV1QiLCJub25jZSI6I....
+ &token_type=Bearer
+ &expires_in=3598
+ &scope=email+openid+profile
+ &id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI....
+ &state=12345
 ```
+
+响应参数的含义是一样的，无论用于获取它们的流是什么。
 
 | 参数 | 说明 |
 | --- | --- |
+| `token` | 将用来调用 UserInfo 终结点的令牌。|
+| `token_type` | 始终为“Bearer” |
+| `expires_in`| 访问令牌的有效期（秒）。 |
+| `scope` | 授予访问令牌的权限。  请注意，由于 UserInfo 终结点承载在 MS Graph 上，因此，如果之前已授权应用访问额外的 Graph 作用域（例如 user.read），此处可能会列出这些作用域。  这是因为给定资源的令牌始终包含当前授予给客户端的每个权限。  |
 | `id_token` | 应用请求的 ID 令牌。 可以使用 ID 令牌验证用户的标识，开始与用户建立会话。 有关 ID 令牌及其内容的详细信息，请参阅 [`id_tokens` 参考](id-tokens.md)。 |
-| `code` | 应用请求的授权代码。 应用可以使用授权代码请求目标资源的访问令牌。 授权代码的生存期较短。 通常，授权代码在大约 10 分钟后即会过期。 |
 | `state` | 如果请求中包含 state 参数，响应中就应该出现相同的值。 应用应该验证请求和响应中的 state 值是否完全相同。 |
 
 ### <a name="error-response"></a>错误响应
@@ -271,4 +275,33 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 有关可能的错误代码和建议的客户端操作的说明，请参阅 [授权终结点错误的错误代码](#error-codes-for-authorization-endpoint-errors)。
 
 获取授权代码和 ID 令牌之后，可将用户登录，并代表用户获取访问令牌。 要将用户登录，必须 [完全根据说明](id-tokens.md#validating-an-id_token)验证 ID 令牌。 若要获取访问令牌，请遵循 [OAuth 代码流文档](v2-oauth2-auth-code-flow.md#request-an-access-token)中所述的步骤。
+
+### <a name="calling-the-userinfo-endpoint"></a>调用 UserInfo 终结点
+
+查看 [UserInfo 文档](userinfo.md#calling-the-api)，以了解如何使用此令牌调用 UserInfo 终结点。
+
+## <a name="send-a-sign-out-request"></a>发送注销请求
+
+如果希望将用户从应用中注销，仅仅是清除应用的 Cookie 或结束用户会话并不足够。 还必须将用户重定向到 Microsoft 标识平台终结点才能注销。如果不这样做，用户不需要再次输入凭据就能重新通过应用的身份验证，因为他们与 Microsoft 标识平台终结点之间存在有效的单一登录会话。
+
+可以将用户重定向到 OpenID Connect 元数据文档中所列的 `end_session_endpoint`：
+
+```HTTP
+GET https://login.partner.microsoftonline.cn/common/oauth2/v2.0/logout?
+post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
+```
+
+| 参数 | 条件 | 说明 |
+| ----------------------- | ------------------------------- | ------------ |
+| `post_logout_redirect_uri` | 建议 | 用户在成功注销后将重定向到的 URL。如果不包括参数，将向用户显示一条 Microsoft 标识平台终结点生成的常规消息。 此 URL 必须与在应用注册门户中为应用程序注册的重定向 URI 之一匹配。 |
+
+## <a name="single-sign-out"></a>单一登录
+
+将用户重定向到 `end_session_endpoint` 时，Microsoft 标识平台终结点将从浏览器中清除用户的会话。 但是，用户可能仍登录到其他使用 Microsoft 帐户进行身份验证的应用程序。 要使这些应用程序能够同时注销用户，Microsoft 标识平台终结点会将 HTTP GET 请求发送到用户当前登录到的所有应用程序的注册 `LogoutUrl`。 应用程序必须通过清除任何标识用户的会话并返回 `200` 响应来响应此请求。 如果要在应用程序中支持单一注销，必须在应用程序代码中实现此类 `LogoutUrl`。 可以从应用注册门户设置 `LogoutUrl`。
+
+## <a name="next-steps"></a>后续步骤
+
+* 查看 [UserInfo 文档](userinfo.md)
+* 了解如何使用本地系统中的数据[自定义令牌中的值](active-directory-claims-mapping.md)。 
+* 了解如何[在令牌中包含其他标准声明](active-directory-optional-claims.md)。  
 

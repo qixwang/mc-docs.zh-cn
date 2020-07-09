@@ -1,26 +1,19 @@
 ---
-title: Azure 元数据服务：适用于 Windows VM 的计划事件
+title: Azure 元数据服务 - 适用于 Windows VM 的计划事件
 description: Windows 虚拟机上使用 Azure 元数据服务的计划事件。
-services: virtual-machines-windows, virtual-machines-linux, cloud-services
-documentationcenter: ''
 author: rockboyfor
-manager: digimobile
-editor: ''
-tags: ''
-ms.assetid: 28d8e1f2-8e61-4fbe-bfe8-80a68443baba
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: how-to
 ms.workload: infrastructure-services
-origin.date: 02/22/2018
-ms.date: 04/27/2020
+origin.date: 06/01/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 5963b20e8fc6c7272a85e944d508447b1dc91502
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: 7ffd6ac9a7f9ae1bb16592e6f0295f9fb9bc180b
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392261"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945597"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure 元数据服务：适用于 Windows VM 的计划事件
 
@@ -45,8 +38,8 @@ ms.locfileid: "83392261"
 使用计划事件，应用程序可以发现维护的发生，并触发任务以限制其影响。 启用计划事件可在执行维护活动之前为虚拟机提供最少的时间。 有关详细信息，请参阅下面的“事件计划”部分。
 
 预定事件提供以下用例中的事件：
-- [平台启动的维护](/virtual-machines/windows/maintenance-and-updates)（例如 VM 重启、主机的实时迁移或内存保留更新）
-- 虚拟机正在根据预测很快会出现故障的[降级主机硬件](https://azure.microsoft.com/blog/find-out-when-your-virtual-machine-hardware-is-degraded-with-scheduled-events)上运行
+- [平台启动的维护](/virtual-machines/windows/maintenance-and-updates)（例如，VM 重新启动、实时迁移或主机的内存保留更新）
+- 虚拟机在预计很快将出现故障的[降级后的主机硬件](https://azure.microsoft.com/blog/find-out-when-your-virtual-machine-hardware-is-degraded-with-scheduled-events)上运行
 - 用户启动的维护（例如，用户重启或重新部署 VM）
 
     <!--Not Available on - [Spot VM](spot-vms.md) and [Spot scale set](../../virtual-machine-scale-sets/use-spot.md) instance evictions-->
@@ -58,7 +51,7 @@ Azure 元数据服务公开在 VM 中使用可访问的 REST 终结点运行虚�
 ### <a name="endpoint-discovery"></a>终结点发现
 对于启用了 VNET 的 VM，元数据服务可通过不可路由的静态 IP (`169.254.169.254`) 使用。 最新版本的计划事件的完整终结点是： 
 
- > `http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01`
+ > `http://169.254.169.254/metadata/scheduledevents?api-version=2019-08-01`
 
 如果不是在虚拟网络中创建虚拟机（云服务和经典 VM 的默认情况），则需使用额外的逻辑以发现要使用的 IP 地址。 请参阅此示例，了解如何[发现主机终结点](https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm)。
 
@@ -67,6 +60,8 @@ Azure 元数据服务公开在 VM 中使用可访问的 REST 终结点运行虚�
 
 | 版本 | 发布类型 | 区域 | 发行说明 | 
 | - | - | - | - |
+| 2019-08-01 | 正式版 | 全部 | <li> 添加了对 EventSource 的支持 |
+| 2019-04-01 | 正式版 | 全部 | <li> 添加了对事件说明的支持 |
 | 2019-01-01 | 正式版 | 全部 | <li> 添加了对虚拟机规模集 EventType“Terminate”的支持 |
 | 2017-08-01 | 正式版 | 全部 | <li> 已从 IaaS VM 的资源名称中删除前置下划线<br /><li>针对所有请求强制执行元数据标头要求 | 
 | 2017-03-01 | 预览 | 全部 |<li>初始版本 |
@@ -96,7 +91,7 @@ Azure 元数据服务公开在 VM 中使用可访问的 REST 终结点运行虚�
 
 #### <a name="powershell"></a>PowerShell
 ```
-curl http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01 -H @{"Metadata"="true"}
+curl http://169.254.169.254/metadata/scheduledevents?api-version=2019-08-01 -H @{"Metadata"="true"}
 ```
 
 响应包含计划事件的数组。 数组为空意味着目前没有计划事件。
@@ -115,6 +110,8 @@ curl http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01 -H @
             "Resources": [{resourceName}],
             "EventStatus": "Scheduled" | "Started",
             "NotBefore": {timeInUTC},
+            "Description": {eventDescription},
+            "EventSource" : "Platform" | "User",
         }
     ]
 }
@@ -136,8 +133,10 @@ DocumentIncarnation 是一个 ETag，它提供了一种简单的方法来检查�
 | 资源| 此事件影响的资源的列表。 它保证最多只能包含一个[更新域](manage-availability.md)的计算机，但可能不包含该更新域中的所有计算机。 <br /><br /> 示例： <br /><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | 事件状态 | 此事件的状态。 <br /><br /> 值： <ul><li>`Scheduled`：此事件计划在 `NotBefore` 属性指定的时间之后启动。<li>`Started`：此事件已启动。</ul> 不提供 `Completed` 或类似状态；事件完成后，将不再返回事件。
 | NotBefore| 此事件可能会在之后启动的时间。 <br /><br /> 示例： <br /><ul><li> 2016 年 9 月 19 日星期一 18:29:47 GMT  |
+| 说明 | 此事件的说明。 <br /><br /> 示例： <br /><ul><li> 主机服务器正在维护中。 |
+| EventSource | 事件的发起者。 <br /><br /> 示例： <br /><ul><li> `Platform`：此事件是由平台发起的。 <li>`User`：此事件是由用户发起的。 |
 
-<!--MOONCAKE: Not Available on EventType <li>`Preempt`: The Low-priority Virtual Machine is being deleted (ephemeral disks are lost).-->
+<!--MOONCAKE, Not Available on Line 125 EventType <li>`Preempt`: The Low-priority Virtual Machine is being deleted (ephemeral disks are lost).-->
 
 ### <a name="event-scheduling"></a>事件计划
 将根据事件类型为每个事件计划将来的最小量时间。 此时间反映在某个事件的 `NotBefore` 属性上。 
@@ -147,21 +146,21 @@ DocumentIncarnation 是一个 ETag，它提供了一种简单的方法来检查�
 | 冻结| 15 分钟 |
 | 重新启动 | 15 分钟 |
 | 重新部署 | 10 分钟 |
-| 终止 | 允许用户配置：5 - 15 分钟 |
+| 终止 | [用户可配置](../../virtual-machine-scale-sets/virtual-machine-scale-sets-terminate-notification.md#enable-terminate-notifications)：5 - 15 分钟 |
 
-<!--Not Available on | Preempt | 30 seconds |-->
+<!--Not Available on Line 132 | Preempt | 30 seconds |-->
 
 > [!NOTE] 
-> 在某些情况下，由于硬件降级，Azure 能够预测主机故障，并会尝试通过对迁移进行计划来缓解服务中断。 受影响的虚拟机会收到计划事件，该事件的 `NotBefore` 通常是将来几天的时间。 实际时间因预测的故障风险评估而异。 Azure 会尝试尽可能提前 7 天发出通知，但实际时间会有所不同，如果预测硬件即将发生故障的可能性很大，则实际时间可能会更短。 为了最大程度地降低服务的风险，以防硬件在系统启动迁移之前出现故障，建议尽快自行重新部署虚拟机。
+> 在某些情况下，由于硬件降级，Azure 能够预测主机故障，并会尝试通过对迁移进行计划来缓解服务中断。 受影响的虚拟机会收到计划事件，该事件的 `NotBefore` 通常是将来几天的时间。 实际时间因预测的故障风险评估而异。 Azure 会尽可能提前 7 天发出通知，但实际时间可能会有变化，如果预测硬件即将发生故障的可能性很大，则实际时间可能更早。 为了最大程度地降低服务的风险，以防硬件在系统启动迁移之前出现故障，建议尽快自行重新部署虚拟机。
 
 ### <a name="event-scope"></a>事件作用域     
 计划的事件传送到：
-- 独立虚拟机
-- 云服务中的所有虚拟机       
-- 可用性集中的所有虚拟机       
-- 规模集位置组中的所有虚拟机。      
+ - 独立虚拟机。
+ - 云服务中的所有虚拟机。     
+ - 可用性集中的所有虚拟机。 
+ - 规模集放置组中的所有虚拟机（包括 Batch）。       
 
-因此，应查看事件中的 `Resources` 字段以确定将受到影响的 VM。 
+<!--Not Available on  availability zone-->
 
 ### <a name="starting-an-event"></a>启动事件 
 

@@ -8,15 +8,15 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 03/16/2020
-ms.openlocfilehash: 5b1006ff87549a5a7095df39a46b90356307323a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 07/02/2020
+ms.openlocfilehash: 6cc64bb2a5d517487e030f314d0ac1dbe8c231da
+ms.sourcegitcommit: 5afd7c4c3be9b80c4c67ec55f66fcf347aad74c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78934801"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85942581"
 ---
-# <a name="skillset-concepts-and-composition-in-azure-cognitive-search"></a>Azure 认知搜索中的技能组概念和构成
+# <a name="skillsets-in-azure-cognitive-search"></a>Azure 认知搜索中的技能组
 
 本文面向需要深入了解扩充管道工作原理的开发人员，并假设读者在概念上对 AI 扩充过程有所了解。 如果你不熟悉此概念，请从以下项开始：
 + [Azure 认知搜索中的 AI 扩充](cognitive-search-concept-intro.md)
@@ -27,9 +27,9 @@ ms.locfileid: "78934801"
 
 技能集有三个属性：
 
-+ ```skills```，技能的无序集合，平台将根据每项技能所需的输入来确定这些技能的执行顺序
-+ ```cognitiveServices```，为调用的认知技能计费所需的认知服务密钥
-+ ```knowledgeStore```，要将扩充的文档投影到的存储帐户
++    ```skills```，技能的无序集合，平台将根据每项技能所需的输入来确定这些技能的执行顺序
++    ```cognitiveServices```，为调用的认知技能计费所需的认知服务密钥
++    ```knowledgeStore```，要将扩充的文档投影到的存储帐户
 
 
 
@@ -45,7 +45,7 @@ ms.locfileid: "78934801"
 |数据源\分析模式|默认|JSON、JSON 行 和 CSV|
 |---|---|---|
 |Blob 存储|/document/content<br>/document/normalized_images/*<br>…|/document/{key1}<br>/document/{key2}<br>…|
-|SQL|/document/{column1}<br>/document/{column2}<br>…|不适用 |
+|SQL|/document/{column1}<br>/document/{column2}<br>…|空值 |
 |Cosmos DB|/document/{key1}<br>/document/{key2}<br>…|空值|
 
  技能在执行时，会将新节点添加到扩充树。 然后，这些新节点可用作下游技能的输入、投影到知识存储，或映射到索引字段。 扩充是不可变的：创建节点后无法对其进行编辑。 随着技能集变得越来越复杂，扩充树也会更加复杂，但是，并非扩充树中的所有节点都需要将扩充保存到索引或知识存储中。 
@@ -55,9 +55,9 @@ ms.locfileid: "78934801"
 
 ### <a name="context"></a>上下文
 每个技能都需要一个上下文。 上下文确定：
-+ 根据所选节点执行技能的次数。 对于类型集合的上下文值，在末尾添加 ```/*``` 会导致为该集合中的每个实例调用技能一次。 
-+ 在扩充树中添加技能输出的位置。 输出始终作为上下文节点的子级添加到树中。 
-+ 输入的形状。 对于多级别集合，将上下文设置为父集合会影响技能的输入的形状。 例如，如果某个扩充树包含国家/地区列表，其中的每个国家/地区已使用包含邮政编码列表的州/省列表进行扩充。
++    根据所选节点执行技能的次数。 对于类型集合的上下文值，在末尾添加 ```/*``` 会导致为该集合中的每个实例调用技能一次。 
++    在扩充树中添加技能输出的位置。 输出始终作为上下文节点的子级添加到树中。 
++    输入的形状。 对于多级别集合，将上下文设置为父集合会影响技能输入的形状。 例如，如果某个扩充树包含国家/地区列表，其中的每个国家/地区已使用包含邮政编码列表的州/省列表进行扩充。
 
 |上下文|输入|输入的形状|技能调用|
 |---|---|---|---|
@@ -66,7 +66,7 @@ ms.locfileid: "78934801"
 
 ### <a name="sourcecontext"></a>SourceContext
 
-`sourceContext` 仅在技能输入和[投影](knowledge-store-projection-overview.md)中使用。 它用于构造多级别嵌套对象。 你可能需要创建一个新对象，以将其作为技能或项目的输入传递到知识存储中。 由于扩充节点可能不是扩充树中的有效 JSON 对象，并且引用树中的某个节点仅返回该节点在创建时的状态，因此，使用扩充作为技能输入或预测时，需要创建一个格式正确的 JSON 对象。 `sourceContext` 可用于构造分层的匿名类型对象，如果你仅使用上下文，则需要多个技能。 下一部分将使用 `sourceContext`。 查看生成了扩充的技能输出，以确定它是否为有效的 JSON 对象而不是基元类型。
+`sourceContext` 仅在技能输入和[投影](knowledge-store-projection-overview.md)中使用。 它用于构造多级别嵌套对象。 你可能需要创建一个新对象，以将其作为技能或项目的输入传递到知识存储中。 由于扩充节点可能不是扩充树中的有效 JSON 对象，并且引用树中的某个节点仅返回该节点在创建时的状态，因此，使用扩充作为技能输入或预测时，需要创建一个格式正确的 JSON 对象。 `sourceContext` 可用于构造分层的匿名类型对象，如果你仅使用上下文，则需要多个技能。 下一部分将介绍 `sourceContext` 的用法。 查看生成了扩充的技能输出，以确定它是否为有效的 JSON 对象而不是基元类型。
 
 ### <a name="projections"></a>投影数
 
@@ -78,7 +78,7 @@ ms.locfileid: "78934801"
 
 ## <a name="generate-enriched-data"></a>生成扩充数据 
 
-现在，让我们逐步了解酒店评论技能组；可以遵循该[教程](knowledge-store-connect-power-bi.md)创建技能组或[查看](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/samples/skillset.json)技能组。 我们将会探讨：
+现在，让我们逐步介绍酒店评论技能组，你可以[查看](https://github.com/Azure-Samples/azure-search-postman-samples/)该技能组。 我们将会探讨：
 
 * 扩充树如何随着每个技能的执行而演变 
 * 如何结合上下文和输入来确定技能的执行次数 
@@ -99,7 +99,7 @@ ms.locfileid: "78934801"
  
  ![执行技能 #1 后的扩充树](media/cognitive-search-working-with-skillsets/enrichment-tree-skill1.png "执行技能 #1 后的扩充树")
 
-### <a name="skill-2-language-detection"></a>技能 #2 语言检测
+### <a name="skill-2-language-detection"></a>技能 #2：语言检测
  尽管语言检测技能是技能集中定义的第三个技能（技能 #3），但它是下一个要执行的技能。 由于它不会受到阻止（无需输入），因此它将与前一个技能同时执行。 与前面的拆分技能一样，语言检测技能也只对每个文档调用一次。 扩充树现在包含新的语言节点。
  ![执行技能 #2 后的扩充树](media/cognitive-search-working-with-skillsets/enrichment-tree-skill2.png "执行技能 #2 后的扩充树")
  

@@ -5,19 +5,19 @@ author: kgremban
 manager: philmea
 ms.author: v-tawe
 origin.date: 04/02/2020
-ms.date: 06/01/2020
+ms.date: 07/01/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 4c1c86c831970879a0eb0b25c94f6c267dff9ed3
-ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
+ms.openlocfilehash: 6e25b729c12297394fa50c156f80d3928725d9a2
+ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84275619"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85796213"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>准备在生产环境中部署 IoT Edge 解决方案
 
@@ -170,6 +170,27 @@ timeToLiveSecs 参数的默认值为 7200 秒，即 2 小时。
 标记还可帮助你针对 IoT Edge 设备强制实施更新。 将模块的更新版本推送到容器注册表时，请递增标记。 然后，使用递增的标记将新部署推送到设备。 容器引擎将递增的标记识别为新版本，并将最新模块版本提取到设备。
 
 有关标记约定的示例，请参阅[更新 IoT Edge 运行时](how-to-update-iot-edge.md#understand-iot-edge-tags)，了解 IoT Edge 如何使用滚动更新标记和特定标记来跟踪版本。
+
+### <a name="store-runtime-containers-in-your-private-registry"></a>将运行时容器存储在专用注册表中
+
+你了解如何在专用 Azure 注册表中存储自定义代码模块的容器映像，但你也可以使用它来存储公共容器映像（例如将它用于 edgeAgent 和 edgHub 运行时模块）。 如果有很严格的防火墙限制，则可能需要执行此操作，因为这些运行时容器存储在 Microsoft 容器注册表 (MCR) 中。
+
+使用 Docker pull 命令获取映像，并将其放入专用注册表中。 请注意，你将需要使用每个新版 IoT Edge 运行时来更新映像。
+
+| IoT Edge 运行时容器 | Docker pull 命令 |
+| --- | --- |
+| [Azure IoT Edge 代理](https://hub.docker.com/_/microsoft-azureiotedge-agent) | `docker pull mcr.microsoft.com/azureiotedge-agent` |
+| [Azure IoT Edge 中心](https://hub.docker.com/_/microsoft-azureiotedge-hub) | `docker pull mcr.microsoft.com/azureiotedge-hub` |
+
+接下来，请确保在 edgeAgent 和 edgeHub 系统模块的 deployment.template.json 文件中更新映像引用。 将 `mcr.microsoft.com` 替换为这两个模块的注册表名称和服务器。
+
+* edgeAgent：
+
+    `"image": "<registry name and server>/azureiotedge-agent:1.0",`
+
+* edgeHub：
+
+    `"image": "<registry name and server>/azureiotedge-hub:1.0",`
 
 ## <a name="networking"></a>网络
 

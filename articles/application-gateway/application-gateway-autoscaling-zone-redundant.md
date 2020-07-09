@@ -5,19 +5,19 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 05/19/2020
+ms.date: 06/23/2020
 ms.author: v-junlch
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 1600f172c83953917b14bf46fc260ce5038ad417
-ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
+ms.custom: fasttrack-edit, references_regions
+ms.openlocfilehash: c9b479f9ad6910c5b51c39ba0f769e12a49d0553
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83748141"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516441"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>自动缩放和区域冗余应用程序网关 v2 
 
-应用程序网关和 Web 应用程序防火墙 (WAF) 在 Standard_v2 和 WAF_v2 SKU 中也可用。 v2 SKU 提供性能增强，并添加了对自动缩放、区域冗余等关键新功能以及静态 VIP 的支持。 Standard 和 WAF SKU 中的现有功能在新的 v2 SKU 中仍受支持，不过存在几种例外情况，具体请参阅[比较](#differences-with-v1-sku)部分。
+应用程序网关和 Web 应用程序防火墙 (WAF) 在 Standard_v2 和 WAF_v2 SKU 中也可用。 v2 SKU 提供性能增强，并添加了对自动缩放、区域冗余等关键新功能以及静态 VIP 的支持。 Standard 和 WAF SKU 中的现有功能在新的 v2 SKU 中仍受支持，不过存在几种例外情况，具体请参阅[比较](#differences-from-v1-sku)部分。
 
 新的 v2 SKU 包括以下增强：
 
@@ -26,22 +26,22 @@ ms.locfileid: "83748141"
 
   仅当 Azure 区域可用时，区域冗余才可用。 在其他区域中，支持所有其他功能。 
 - **静态 VIP**：目前只有应用程序网关 v2 SKU 支持静态 VIP 类型。 这可以确保与应用程序网关关联的 VIP 在部署的整个生命周期内不会更改，即使发生重启。  v1 中没有静态 VIP，因此必须使用应用程序网关 URL（而不是 IP 地址）通过应用程序网关将域名路由到应用服务。
-- **标头重写**：应用程序网关允许使用 v2 SKU 添加、删除或更新 HTTP 请求和响应标头。 有关详细信息，请参阅[重写应用程序网关的 HTTP 标头](rewrite-http-headers.md)。
-- **Key Vault 集成**：应用程序网关 v2 支持与 Key Vault 集成，以获取要附加到支持 HTTPS 的侦听器的服务器证书。 有关详细信息，请参阅[使用 Key Vault 证书实现 TLS 终止](key-vault-certs.md)。
-- **Azure Kubernetes 服务入口控制器**：借助应用程序网关 v2 入口控制器，可将 Azure 应用程序网关用作 Azure Kubernetes 服务 (AKS)（称为 AKS 群集）的入口。 有关详细信息，请参阅[什么是应用程序网关入口控制器？](ingress-controller-overview.md)。
+- **标头重写**：应用程序网关允许使用 v2 SKU 添加、删除或更新 HTTP 请求和响应标头。 有关详细信息，请参阅[使用应用程序网关重写 HTTP 标头](rewrite-http-headers.md)
+- **Key Vault 集成**：应用程序网关 v2 支持与密钥保管库集成，以获取附加到支持 HTTPS 的侦听器的服务器证书。 有关详细信息，请参阅[使用 Key Vault 证书实现 TLS 终止](key-vault-certs.md)。
+- Azure Kubernetes 服务入口控制器：应用程序网关 v2 入口控制器允许将 Azure 应用程序网关用作 Azure Kubernetes 服务 (AKS) 的入口（称为 AKS 群集）。 有关详细信息，请参阅[什么是应用程序网关入口控制器？](ingress-controller-overview.md)。
 - **性能增强**：v2 SKU 提供的 TLS 卸载性能比 Standard/WAF SKU 高达 5 倍。
-- **更快的部署和更新速度** v2 SKU 的部署和更新速度比 Standard/WAF SKU 更快。 这还包括了 WAF 配置更改。
+- 缩短部署和更新时间：与标准/WAF SKU 相比，v2 SKU 缩短了部署和更新时间。 这还包括了 WAF 配置更改。
 
-![](./media/application-gateway-autoscaling-zone-redundant/application-gateway-autoscaling-zone-redundant.png)
+![自动缩放区域的示意图。](./media/application-gateway-autoscaling-zone-redundant/application-gateway-autoscaling-zone-redundant.png)
 
 ## <a name="pricing"></a>定价
 
 使用 v2 SKU 时，定价模型将由消耗量驱动，而不再与实例计数或大小相关。 v2 SKU 定价包括两个部分：
 
-- **固定价格** - 这是预配一个 Standard_v2 或 WAF_v2 网关的价格，按小时（或小时的一部分）计收。 请注意，0 个额外的最小实例仍可确保服务的高可用性，该服务始终包含在固定价格中。
-- **容量单位价格** - 这是在固定价格的基础上按消耗量计收的费用。 容量单位费用也按每小时或小时的一部分计算的。 容量单位有三个维度 - 计算单位、持久连接和吞吐量。 计算单位用于度量消耗的处理器容量。 影响计算单位的因素包括每秒 TLS 连接数、URL 重写计算和 WAF 规则处理。 持久连接用于度量在给定计费间隔内与应用程序网关建立的 TCP 连接数。 吞吐量是系统在给定计费间隔内平均每秒处理的兆位数。  对于超过预留实例计数的任何内容，均按容量单位级别进行计费。
+- 固定价格 - 这是用于预配 Standard_v2 或 WAF_v2 网关的每小时（或部分小时）价格。 请注意，0 个额外最小实例仍可确保服务的高可用性，这始终包含在固定价格中。
+- **容量单位价格** - 这是在固定价格的基础上按消耗量计收的费用。 容量单位费用也按每小时或部分每小时进行计算。 容量单位有三个维度 - 计算单位、持久连接和吞吐量。 计算单位用于度量消耗的处理器容量。 影响计算单位的因素包括每秒 TLS 连接数、URL 重写计算和 WAF 规则处理。 持久连接用于度量在给定计费间隔内与应用程序网关建立的 TCP 连接数。 吞吐量是在给定计费间隔内，平均每秒由系统处理的兆位数。  对于超过预留实例计数的任何内容，均按容量单位级别进行计费。
 
-每个容量单位最多包括：1 个计算单位，或 2500 个持久连接，或 2.22-Mbps 吞吐量。
+每个容量单位最多包括：1 个计算单位，2500 个持久连接和 2.22-Mbps 吞吐量。
 
 计算单位指导：
 
@@ -59,8 +59,8 @@ ms.locfileid: "83748141"
 
 可将应用程序网关和 WAF 配置为以两种模式进行缩放：
 
-- **自动缩放** - 启用自动缩放后，应用程序网关和 WAF v2 SKU 将会根据应用程序流量要求进行纵向缩放。 此模式为应用程序提供更好的弹性，使你无需猜测应用程序网关大小或实例计数。 使用此模式还可以不要求网关为预期的最大流量负载以最大预配容量运行，从而节省成本。 必须指定最小和（可选）最大实例计数。 最小容量确保应用程序网关和 WAF v2 不会低于指定的最小实例计数，即使在没有流量时也是如此。 每个实例大约相当于 10 个额外的预留容量单元。 0 表示没有预留容量，本质上是纯自动缩放。 你还可以选择性地指定最大实例计数，这样可以确保应用程序网关不会扩展到超出指定数量的实例。 你只需为网关服务的流量付费。 实例计数的范围为 0 到 125。 如果未指定，最大实例计数的默认值为 20。
-- **手动** - 也可以选择“手动”模式，在这种情况下，网关不会自动缩放。 在此模式下，如果流量超过了应用程序网关或 WAF 可以处理的流量，可能会导致流量丢失。 使用手动模式时，必须指定实例计数。 实例计数可以在 1 到 125 的范围内变化。
+- **自动缩放** - 启用自动缩放后，应用程序网关和 WAF v2 SKU 将会根据应用程序流量要求进行纵向缩放。 此模式可为应用程序提供更好的弹性，无需猜测应用程序网关大小或实例计数。 使用此模式还可以不要求网关为预期的最大流量负载以最大预配容量运行，从而节省成本。 必须指定最小和（可选）最大实例计数。 最小容量可确保应用程序网关和 WAF v2 不低于指定的最小实例计数，即使在没有流量时也是如此。 每个实例大约相当于 10 个额外的预留容量单元。 零表示没有保留容量，在本质上是纯自动缩放。 还可以选择指定最大实例计数，以确保应用程序网关不会缩放到超出指定实例数。 你只需为网关服务的流量付费。 实例计数的范围介于 0 到 125 之间。 如果未指定，最大实例计数的默认值为 20。
+- **手动** - 也可以选择“手动”模式，在这种情况下，网关不会自动缩放。 在此模式下，如果流量超过了应用程序网关或 WAF 可以处理的流量，可能会导致流量丢失。 使用手动模式时，必须指定实例计数。 实例计数可以在 1 到 125 个实例间变化。
 
 ## <a name="autoscaling-and-high-availability"></a>自动缩放和高可用性
 
@@ -96,9 +96,11 @@ Azure 应用程序网关始终以高度可用的方式部署。 服务由多个�
 | 连接清空                               | &#x2713; | &#x2713; |
 
 > [!NOTE]
-> 自动缩放 v2 SKU 现在支持使用[默认的运行状况探测](application-gateway-probe-overview.md#default-health-probe)自动监视后端池中所有资源的运行状况，并突出显示那些被视为不正常的后端成员。 对于不使用任何自定义探测配置的后端，系统会自动配置默认的运行状况探测。 有关详细信息，请参阅[应用程序网关中的运行状况探测](application-gateway-probe-overview.md)。
+> 自动缩放 v2 SKU 现在支持使用[默认的运行状况探测](application-gateway-probe-overview.md#default-health-probe)自动监视后端池中所有资源的运行状况，并突出显示那些被视为不正常的后端成员。 对于不使用任何自定义探测配置的后端，系统会自动配置默认的运行状况探测。 若要了解详细信息，请参阅[应用程序网关中的 运行状况探测](application-gateway-probe-overview.md)。
 
-## <a name="differences-with-v1-sku"></a>与 v1 SKU 的差异
+## <a name="differences-from-v1-sku"></a>与 v1 SKU 的差异
+
+此部分介绍 v2 SKU 与 v1 SKU 不同的功能和限制。
 
 |差异|详细信息|
 |--|--|

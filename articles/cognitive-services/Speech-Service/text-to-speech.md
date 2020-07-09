@@ -11,18 +11,18 @@ ms.topic: conceptual
 origin.date: 03/23/2020
 ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 0485d8731835b81d53ae06a4754847d91b9b10aa
-ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
+ms.openlocfilehash: d2834cc9d52b7f66cf3d8a07dd4ac678efc8f5ae
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85095949"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85613379"
 ---
 # <a name="what-is-text-to-speech"></a>什么是文本转语音？
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-语音服务中的文本转语音可让应用程序、工具或设备将文本转换为类似于人类的合成语音。 从标准语音和神经语音中进行选择。 50 多种标准语音已在 10 种以上的语言和区域设置中提供，5 种神经语音已在一组精选的语言和区域设置中提供。 有关支持的语音、语言和区域设置的完整列表，请参阅[支持的语言](language-support.md#text-to-speech)。
+语音服务中的文本转语音可让应用程序、工具或设备将文本转换为类似于人类的合成语音。 从标准语音和神经语音中进行选择。 40 多种标准语音已在 10 种以上的语言和区域设置中提供，5 种神经语音已在一组精选的语言和区域设置中提供。 有关支持的语音、语言和区域设置的完整列表，请参阅[支持的语言](language-support.md#text-to-speech)。
 
 <!-- > [!NOTE] -->
 <!-- > Bing Speech was decommissioned on October 15, 2019. If your applications, tools, or products are using the Bing Speech APIs or Custom Speech, we've created guides to help you migrate to the Speech service. -->

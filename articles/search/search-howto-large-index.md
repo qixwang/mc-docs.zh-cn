@@ -8,17 +8,17 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 05/05/2020
-ms.date: 06/09/2020
-ms.openlocfilehash: e560de6db6399cce04e18ff91d41559c71fb7222
-ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
+ms.date: 07/02/2020
+ms.openlocfilehash: 3dd17c192a67ded3d1442c344ab6d954c3344465
+ms.sourcegitcommit: 5afd7c4c3be9b80c4c67ec55f66fcf347aad74c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84564291"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85942587"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中为大型数据集编制索引
 
-Azure 认知搜索支持采用[两种基本方法](search-what-is-data-import.md)将数据导入到搜索索引中：一种方法是以编程方式将数据** 推送到索引中；另一种方法是将 [Azure 认知搜索索引器](search-indexer-overview.md)指向受支持的数据源来拉取数据。**
+Azure 认知搜索支持采用[两种基本方法](search-what-is-data-import.md)将数据导入到搜索索引中：一种方法是以编程方式将数据推送到索引中；另一种方法是将 [Azure 认知搜索索引器](search-indexer-overview.md)指向受支持的数据源来拉取数据。
 
 随着数据量的增长或处理需求的变化，你可能发现，简单或默认的索引编制策略不再实用。 在 Azure 认知搜索中，可通过多种方法来适应较大的数据集，包括构建数据上传请求、对计划和分布式工作负荷使用特定于源的索引器，等等。
 
@@ -42,7 +42,7 @@ Azure 认知搜索支持采用[两种基本方法](search-what-is-data-import.md
 
 ### <a name="index-schema"></a>索引架构
 
-索引架构在编制数据索引方面扮演重要角色。 添加字段和向字段添加其他属性（例如“可搜索”**、“可分面”** 或“可筛选”**）都会降低索引编制速度。
+索引架构在编制数据索引方面扮演重要角色。 添加字段和向字段添加其他属性（例如“可搜索”、“可分面”或“可筛选”）都会降低索引编制速度。
 
 一般而言，建议仅在打算使用其他属性时才将其添加到字段中。
 
@@ -138,9 +138,9 @@ Azure 认知搜索的 .NET SDK 会自动重试 503 和其他失败的请求，�
 
 对于索引器，处理能力并不严格依赖于搜索服务所用每个服务单位 (SU) 的一个索引器子系统。 可以在基本或标准层上预配的、至少包含两个副本的 Azure 认知搜索服务中创建多个并发索引器。 
 
-1. 在 [Azure 门户](https://portal.azure.cn)中，在搜索服务仪表板的“概述”页上，选中“定价层”以确认它能够适应并行索引。**** **** 基本和标准层提供多个副本。
+1. 在 [Azure 门户](https://portal.azure.cn)中，在搜索服务仪表板的“概述”页上，选中“定价层”以确认它能够适应并行索引。  基本和标准层提供多个副本。
 
-2. 在“设置” > “缩放”中，为并行处理[增加副本](search-capacity-planning.md)：为每个索引器工作负荷额外添加一个副本。**** **** 保留足够数量的现有查询卷。 为索引牺牲查询工作负荷并不是一个很好的折衷方法。
+2. 可以并行运行与服务中的搜索单位数一样多的索引器。 在“设置” > “缩放”中，为并行处理[增加副本](search-capacity-planning.md)或分区：为每个索引器工作负荷额外添加一个副本或分区。  保留足够数量的现有查询卷。 为索引牺牲查询工作负荷并不是一个很好的折衷方法。
 
 3. 在 Azure 认知搜索索引器可以访问的级别，将数据分配到多个容器。 这可能是 Azure SQL 数据库中的多个表、Azure Blob 存储中的多个容器，或多个集合。 为每个表或容器定义一个数据源对象。
 

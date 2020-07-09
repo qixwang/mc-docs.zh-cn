@@ -1,22 +1,16 @@
 ---
-title: Azure 顾问简介 | Azure
+title: Azure 顾问简介
 description: 使用 Azure 顾问优化 Azure 部署。
-services: advisor
-documentationcenter: NA
-author: kasparks
-ms.service: advisor
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 02/01/2019
-ms.date: 04/12/2019
-ms.author: v-lingwu
-ms.openlocfilehash: 4b82acc534cde4b0f46d5a4181998daa37eda096
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/28/2020
+ms.author: v-tawe
+ms.openlocfilehash: 050ef4ee26f2cfc5ff1a2de607696037754396a3
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "70736754"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516636"
 ---
 # <a name="introduction-to-azure-advisor"></a>Azure 顾问简介
 
@@ -30,14 +24,15 @@ ms.locfileid: "70736754"
 * 提高资源的性能、安全性和高可用性，同时确定机会减少总体 Azure 支出。
 * 通过提议的内联操作获取建议。
 
-可通过 [Azure 门户](https://aka.ms/azureadvisor_cn)访问顾问。 登录到[门户](https://portal.azure.cn)，在导航菜单中查找“顾问”，或在“所有服务”菜单中搜索它   。
+可通过 [Azure 门户](https://aka.ms/azureadvisor_cn)访问顾问。 登录到[门户](https://portal.azure.cn)，在导航菜单中查找“顾问”，或在“所有服务”菜单中搜索它 。
 
 顾问仪表板显示针对所有订阅的个性化建议。  可为特定的订阅和资源类型应用筛选器，以显示相关建议。  建议分为四类： 
 
-* **高可用性**：确保并提高关键业务应用程序的连续性。 有关详细信息，请参阅[顾问高可用性建议](advisor-high-availability-recommendations.md)。
-* **安全性**：检测可能引起安全问题的威胁和漏洞。 有关详细信息，请参阅[顾问安全性建议](advisor-security-recommendations.md)。
+* **高可用性**：确保并提高业务关键应用程序的连续性。 有关详细信息，请参阅[顾问高可用性建议](advisor-high-availability-recommendations.md)。
+* 安全性：检测可能引起安全问题的威胁和漏洞。 有关详细信息，请参阅[顾问安全性建议](advisor-security-recommendations.md)。
 * **性能**：提高应用程序的速度。 有关详细信息，请参阅[顾问性能建议](advisor-performance-recommendations.md)。
-* 成本：优化并降低 Azure 总支出  。 有关详细信息，请参阅[顾问成本建议](advisor-cost-recommendations.md)。
+* **成本**：优化并降低 Azure 总支出。 有关详细信息，请参阅[顾问成本建议](advisor-cost-recommendations.md)。
+* **卓越运营**：帮助你实现流程和工作流效率、资源可管理性和部署最佳做法。 上获取。 有关详细信息，请参阅[顾问卓越运营建议](advisor-operational-excellence-recommendations.md)。
 
   ![顾问建议类型](./media/advisor-overview/advisor-dashboard.png)
 
@@ -52,22 +47,23 @@ ms.locfileid: "70736754"
 ## <a name="frequently-asked-questions"></a>常见问题
 
 ### <a name="how-do-i-access-advisor"></a>如何访问顾问？
-可通过 [Azure 门户](https://aka.ms/azureadvisor_cn)访问顾问。 登录到[门户](https://portal.azure.cn)，在导航菜单中查找“顾问”，或在“所有服务”菜单中搜索它   。
+可通过 [Azure 门户](https://aka.ms/azureadvisor_cn)访问顾问。 登录到[门户](https://portal.azure.cn)，在导航菜单中查找“顾问”，或在“所有服务”菜单中搜索它 。
 
 还可通过虚拟机资源接口查看顾问建议。 选择虚拟机，并滚动到菜单中的顾问建议。 
 
 ### <a name="what-permissions-do-i-need-to-access-advisor"></a>需要哪些权限才能访问顾问？
  
-可以访问订阅的所有者、参与者或读者身份访问顾问建议    。
+可以访问订阅的所有者、参与者或读者身份访问顾问建议  。
 
 ### <a name="what-resources-does-advisor-provide-recommendations-for"></a>顾问为哪些资源提供建议？
 
-顾问可提供有关虚拟机、可用性集、应用程序网关、应用服务、SQL 服务器和 Redis Cache 的建议。
+顾问提供了有关应用程序网关、应用服务、可用性集、Azure 缓存、Azure 数据工厂、Azure Database for MySQL、Azure Database for PostgreSQL、Azure Database for MariaDB、Azure ExpressRoute、Azure Cosmos DB、Azure 公共 IP 地址、SQL 数据仓库、SQL Server、存储帐户、流量管理器配置文件和虚拟机的建议。
+
 Azure 顾问还包括来自 [Azure 安全中心](/security-center/security-center-recommendations)的建议，其中可能包含有关其他资源类型的建议。
 
 ### <a name="can-i-postpone-or-dismiss-a-recommendation"></a>是否可以推迟或消除建议？
 
-若要推迟或消除建议，请单击“推迟”链接  。 可以指定推迟时间段，或选择“从不”  以消除该建议。
+若要推迟或消除建议，请单击“推迟”链接。 可以指定推迟时间段，或选择“从不”以消除该建议。
 
 ## <a name="next-steps"></a>后续步骤
 

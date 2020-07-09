@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 05/29/2020
+ms.date: 07/01/2020
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 049c47780efb6012359024628cd03179ecd9315d
-ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
+ms.openlocfilehash: 70bc60235f274424e2579e04fe319ece223d8924
+ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84186666"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945063"
 ---
 # <a name="conditional-access-grant"></a>条件访问：授予
 
@@ -28,7 +28,7 @@ ms.locfileid: "84186666"
 
 阻止操作会考虑到任何分配，根据条件访问策略配置阻止访问。
 
-阻止是一种强有力的控制，运用此项控制时，应具备相应的知识。 在启用该控制之前，管理员应使用“仅限报告”模式进行测试。
+阻止是一种强有力的控制，运用此项控制时，应具备相应的知识。 带有块语句的策略可能会产生意外的副作用。 在大规模启用之前，正确的测试和验证至关重要。 进行更改时，管理员应使用[条件访问中的 What If 工具](what-if-tool.md)之类的工具。
 
 ## <a name="grant-access"></a>授予访问权限
 

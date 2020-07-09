@@ -1,164 +1,222 @@
 ---
-title: 教程 - 使用 Azure PowerShell 创建 Azure VM 的自定义映像
-description: 本教程介绍如何使用 Azure PowerShell 在 Azure 中创建自定义虚拟机映像
-documentationcenter: virtual-machines
+title: 教程 - 使用 Azure PowerShell 创建 Windows VM 映像
+description: 本教程介绍如何使用 Azure PowerShell 创建一个存储在 Azure 共享映像库中的 Windows 自定义虚拟机映像。
 author: rockboyfor
-manager: digimobile
-tags: azure-resource-manager
 ms.service: virtual-machines-windows
+ms.subservice: imaging
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-origin.date: 11/30/2018
-ms.date: 04/27/2020
+origin.date: 05/01/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: c608bd157a3c3f2aa08d340fa0cb5f76f38387b5
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: 181ee40052c7ba7420e37a47b139df5ac22d763a
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392396"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945861"
 ---
-# <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-azure-powershell"></a>教程：使用 Azure PowerShell 创建 Azure VM 的自定义映像
+# <a name="tutorial-create-windows-vm-images-with-azure-powershell"></a>教程：使用 Azure PowerShell 创建 Windows VM 映像
 
-自定义映像类似于市场映像，不同的是自定义映像的创建者是自己。 自定义映像可用于启动部署并确保多个 VM 的一致性。 在本教程中，需使用 PowerShell 创建自己的 Azure 虚拟机自定义映像。 你将学习如何执行以下操作：
+映像可用于启动部署并确保多个 VM 的一致性。 在本教程中，我们使用 PowerShell 创建自己的 Azure 虚拟机专用化映像，并将其存储在共享映像库中。 你将学习如何执行以下操作：
 
 > [!div class="checklist"]
-> * 使用 Sysprep 通用化 VM
-> * 创建自定义映像
-> * 从自定义映像创建 VM
-> * 列出订阅中的所有映像
-> * 删除映像
-
-<!--Not Available on [Azure VM Image Builder](/virtual-machines/windows/image-builder-overview)-->
+> * 创建共享映像库
+> * 创建映像定义
+> * 创建映像版本
+> * 从映像创建 VM 
+> * 共享映像库
 
 ## <a name="before-you-begin"></a>准备阶段
 
-下列步骤详细说明了如何将现有 VM 转换为可重用自定义映像，用于创建新的 VM 实例。
+下列步骤详细说明如何将现有 VM 转换为可重用自定义映像，以便将其用于创建新的 VM。
 
-若要完成本教程中的示例，必须现有一个虚拟机。 如果需要，此[脚本示例](../scripts/virtual-machines-windows-powershell-sample-create-vm.md)可为你创建一个虚拟机。 按照教程进行操作时，请根据需要替换资源组和 VM 名称。
+若要完成本教程中的示例，必须现有一个虚拟机。 如果需要，可以参阅 [PowerShell 快速入门](quick-create-powershell.md)来创建本教程所用的 VM。 在学习本教程期间，请根据需要替换资源名称。
 
-## <a name="launch-azure-powershell"></a>启动 Azure PowerShell
+## <a name="overview"></a>概述
 
-打开 Azure Powershell 控制台，并以管理员权限运行以下脚本。
+[共享映像库](shared-image-galleries.md)大大简化了整个组织中的自定义映像共享。 自定义映像类似于市场映像，不同的是自定义映像的创建者是自己。 自定义映像可用于启动配置，例如预加载应用程序、应用程序配置和其他 OS 配置。 
 
+共享映像库可让你与他人共享自定义 VM 映像。 选择要共享哪些映像，要在哪些区域中共享，以及希望与谁共享它们。 
 
-## <a name="prepare-vm"></a>准备 VM
+共享映像库功能具有多种资源类型：
 
-若要创建虚拟机的映像，需通过以下方式准备源 VM：通用化该 VM、解除分配，然后在 Azure 中将其标记为通用化。
+[!INCLUDE [virtual-machines-shared-image-gallery-resources](../../../includes/virtual-machines-shared-image-gallery-resources.md)]
 
-### <a name="generalize-the-windows-vm-using-sysprep"></a>使用 Sysprep 通用化 Windows VM
+## <a name="launch-azure-local-powershell"></a>启动 Azure 本地 PowerShell
 
-Sysprep 将删除所有个人帐户信息及其他某些数据，并准备好要用作映像的计算机。 有关 Sysprep 的详细信息，请参阅[如何使用 Sysprep：简介](https://technet.microsoft.com/library/bb457073.aspx)。
+<!--Not Available on Azure Cloud Cloud--> 
 
-1. 连接到虚拟机。
-2. 以管理员身份打开“命令提示符”窗口。 将目录切换到 *%windir%\system32\sysprep*，然后运行 `sysprep.exe`。
-3. 在“系统准备工具”对话框中，选择“进入系统全新体验(OOBE)”，确保已选中“通用化”复选框。  
-4. 在“关机选项”中选择“关机”，然后单击“确定”。
-5. Sysprep 在完成运行后会关闭虚拟机。 请勿重启 VM。
+打开 Azure Powershell 控制台，以管理员权限运行下面列出的脚本。
 
-### <a name="deallocate-and-mark-the-vm-as-generalized"></a>解除分配 VM 并将其标记为通用化
+## <a name="get-the-vm"></a>获取 VM
 
-若要创建映像，需解除分配 VM，并在 Azure 中将其标记为通用化。
-
-使用 [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) 对 VM 解除分配。
+可以使用 [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) 查看资源组中可用的 VM 列表。 了解 VM 名称和资源组后，可以再次使用 `Get-AzVM` 来获取 VM 对象并将其存储在变量中，供稍后使用。 此示例从“myResourceGroup”资源组获取名为 sourceVM 的 VM，并将其分配给变量 $vm 。 
 
 ```powershell
-Connect-AzAccount -Environment AzureChinaCloud
-
-Stop-AzVM `
-   -ResourceGroupName myResourceGroup `
-   -Name myVM -Force
-```
-
-使用 [Set-AzVm](https://docs.microsoft.com/powershell/module/az.compute/set-azvm) 将虚拟机的状态设置为 `-Generalized`。 
-
-```powershell
-Set-AzVM `
-   -ResourceGroupName myResourceGroup `
-   -Name myVM -Generalized
-```
-
-## <a name="create-the-image"></a>创建映像
-
-现在，可以使用 [New-AzImageConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azimageconfig) 和 [New-AzImage](https://docs.microsoft.com/powershell/module/az.compute/new-azimage) 来创建 VM 的映像。 以下示例从名为 myVM 的 VM 创建名为 myImage 的映像。
-
-获取虚拟机。 
-
-```powershell
-$vm = Get-AzVM `
-   -Name myVM `
+$sourceVM = Get-AzVM `
+   -Name sourceVM `
    -ResourceGroupName myResourceGroup
 ```
 
-创建映像配置。
+## <a name="create-a-resource-group"></a>创建资源组
+
+使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 命令创建资源组。
+
+Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 以下示例在“ChinaEast”区域中创建名为“myGalleryRG”的资源组 ：
 
 ```powershell
-$image = New-AzImageConfig `
-   -Location ChinaEast `
-   -SourceVirtualMachineId $vm.ID 
+$resourceGroup = New-AzResourceGroup `
+   -Name 'myGalleryRG' `
+   -Location 'ChinaEast'
 ```
 
-创建映像。
+## <a name="create-an-image-gallery"></a>创建映像库 
+
+映像库是用于启用映像共享的主要资源。 允许用于库名称的字符为大写或小写字母、数字、点和句点。 库名称不能包含短划线。 库名称在你的订阅中必须唯一。 
+
+使用 [New-AzGallery](https://docs.microsoft.com/powershell/module/az.compute/new-azgallery) 创建映像库。 以下示例在“myGalleryRG”资源组中创建名为“myGallery”的库 。
 
 ```powershell
-New-AzImage `
-   -Image $image `
-   -ImageName myImage `
-   -ResourceGroupName myResourceGroup
-``` 
-
-## <a name="create-vms-from-the-image"></a>从映像创建 VM
-
-现在，你已有了一个映像，可以从该映像创建一个或多个新 VM。 从自定义映像创建 VM 与使用市场映像创建 VM 很相似。 如果使用市场映像，需提供有关映像、映像提供程序、产品/服务、SKU 和版本的信息。 使用为 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) cmdlet 设置的简化参数时，如果自定义映像位于同一资源组中，则只需提供该映像的名称。 如果计划在其他资源组中创建 VM，请为 -ImageName 参数提供映像的资源 ID。
-
-本示例从“myResourceGroup”中的“myImage”映像创建名为“myVMfromImage”的 VM。
-
-```powershell
-New-AzVm `
-    -ResourceGroupName "myResourceGroup" `
-    -Name "myVMfromImage" `
-    -ImageName "myImage" `
-    -Location "China East" `
-    -VirtualNetworkName "myImageVnet" `
-    -SubnetName "myImageSubnet" `
-    -SecurityGroupName "myImageNSG" `
-    -PublicIpAddressName "myImagePIP" `
-    -OpenPorts 3389
+$gallery = New-AzGallery `
+   -GalleryName 'myGallery' `
+   -ResourceGroupName $resourceGroup.ResourceGroupName `
+   -Location $resourceGroup.Location `
+   -Description 'Shared Image Gallery for my organization'  
 ```
 
-我们建议你将单个映像的并发部署数量限制为 20 个 VM。 如果计划从同一自定义映像中同时大规模部署 20 多个 VM，则应将[共享映像库](shared-image-galleries.md)与多个映像副本一起使用。 
+## <a name="create-an-image-definition"></a>创建映像定义 
 
-## <a name="image-management"></a>映像管理 
+映像定义为映像创建一个逻辑分组。 它们用于管理有关映像版本的信息，这些版本是在其中创建的。 映像定义名称可能包含大写或小写字母、数字、点、短划线和句点。 若要详细了解可以为映像定义指定的值，请参阅[映像定义](/virtual-machines/windows/shared-image-galleries#image-definitions)。
 
-下面是一些常见的托管映像任务示例，并说明了如何使用 PowerShell 完成这些任务。
-
-按名称列出所有映像。
+使用 [New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) 创建映像定义。 在此示例中，库映像名为 myGalleryImage，它是为专用化映像创建的。 
 
 ```powershell
-$images = Get-AzResource -ResourceType Microsoft.Compute/images 
-$images.name
+$galleryImage = New-AzGalleryImageDefinition `
+   -GalleryName $gallery.Name `
+   -ResourceGroupName $resourceGroup.ResourceGroupName `
+   -Location $gallery.Location `
+   -Name 'myImageDefinition' `
+   -OsState specialized `
+   -OsType Windows `
+   -Publisher 'myPublisher' `
+   -Offer 'myOffer' `
+   -Sku 'mySKU'
 ```
 
-删除映像。 此示例将从 *myResourceGroup* 中删除名为 *myImage* 的映像。
+## <a name="create-an-image-version"></a>创建映像版本
+
+使用 [New-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) 从 VM 创建映像版本。 
+
+允许用于映像版本的字符为数字和句点。 数字必须在 32 位整数范围内。 格式：*MajorVersion*.*MinorVersion*.*Patch*。
+
+<!--MOONCAKE: EAST US map to China East, South Central US to China North-->
+
+在此示例中，映像版本为 1.0.0，该版本将复制到“中国东部”和“中国北部”数据中心  。 选择复制的目标区域时，需要将源区域包含为复制目标。
+
+若要从 VM 创建映像版本，请对 `-Source` 使用 `$vm.Id.ToString()`。
 
 ```powershell
-Remove-AzImage `
-    -ImageName myImage `
-    -ResourceGroupName myResourceGroup
+   $region1 = @{Name='China East';ReplicaCount=1}
+   $region2 = @{Name='China North';ReplicaCount=2}
+   $targetRegions = @($region1,$region2)
+
+New-AzGalleryImageVersion `
+   -GalleryImageDefinitionName $galleryImage.Name`
+   -GalleryImageVersionName '1.0.0' `
+   -GalleryName $gallery.Name `
+   -ResourceGroupName $resourceGroup.ResourceGroupName `
+   -Location $resourceGroup.Location `
+   -TargetRegion $targetRegions  `
+   -Source $vm.Id.ToString() `
+   -PublishingProfileEndOfLifeDate '2020-12-01'
 ```
+
+可能需要一段时间才能将映像复制到所有目标区域。
+
+## <a name="create-a-vm"></a>创建 VM 
+
+获得专用化映像后，可以创建一个或多个新 VM。 使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) cmdlet。 要使用映像，请使用 `Set-AzVMSourceImage` 并将 `-Id` 设置为映像定义 ID（在本例中为 $galleryImage.Id），以始终使用最新的映像版本。 
+
+在此示例中，请根据需要替换资源名称。 
+
+<!--MOONCAKE: South Central US MAP TO China North-->
+
+```powershell
+# Create some variables for the new VM.
+$resourceGroup = "myResourceGroup"
+$location = "China North"
+$vmName = "mySpecializedVM"
+
+# Create a resource group
+New-AzResourceGroup -Name $resourceGroup -Location $location
+
+# Create the network resources.
+$subnetConfig = New-AzVirtualNetworkSubnetConfig -Name mySubnet -AddressPrefix 192.168.1.0/24
+$vnet = New-AzVirtualNetwork -ResourceGroupName $resourceGroup -Location $location `
+  -Name MYvNET -AddressPrefix 192.168.0.0/16 -Subnet $subnetConfig
+$pip = New-AzPublicIpAddress -ResourceGroupName $resourceGroup -Location $location `
+  -Name "mypublicdns$(Get-Random)" -AllocationMethod Static -IdleTimeoutInMinutes 4
+$nsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name myNetworkSecurityGroupRuleRDP  -Protocol Tcp `
+  -Direction Inbound -Priority 1000 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * `
+  -DestinationPortRange 3389 -Access Allow
+$nsg = New-AzNetworkSecurityGroup -ResourceGroupName $resourceGroup -Location $location `
+  -Name myNetworkSecurityGroup -SecurityRules $nsgRuleRDP
+$nic = New-AzNetworkInterface -Name $vmName -ResourceGroupName $resourceGroup -Location $location `
+  -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id
+
+# Create a virtual machine configuration using $imageVersion.Id to specify the image version.
+$vmConfig = New-AzVMConfig -VMName $vmName -VMSize Standard_D1_v2 | `
+Set-AzVMSourceImage -Id $galleryImage.Id | `
+Add-AzVMNetworkInterface -Id $nic.Id
+
+# Create a virtual machine
+New-AzVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
+```
+
+## <a name="share-the-gallery"></a>共享库
+
+我们建议你在映像库级别共享访问权限。 使用电子邮件地址和 [Get-AzADUser](https://docs.microsoft.com/powershell/module/az.resources/get-azaduser) cmdlet 获取用户的对象 ID，然后使用 [New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/Az.Resources/New-AzRoleAssignment) 授予他们对该库的访问权限。 请将此示例中的示例电子邮件地址 alinne_montes@contoso.com 替换为你自己的信息。
+
+```powershell
+# Get the object ID for the user
+$user = Get-AzADUser -StartsWith alinne_montes@contoso.com
+# Grant access to the user for our gallery
+New-AzRoleAssignment `
+   -ObjectId $user.Id `
+   -RoleDefinitionName Reader `
+   -ResourceName $gallery.Name `
+   -ResourceType Microsoft.Compute/galleries `
+   -ResourceGroupName $resourceGroup.ResourceGroupName
+```
+
+## <a name="clean-up-resources"></a>清理资源
+
+不再需要时，可以使用 [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) cmdlet 删除资源组和所有相关资源：
+
+```powershell
+# Delete the gallery 
+Remove-AzResourceGroup -Name myGalleryRG
+
+# Delete the VM
+Remove-AzResourceGroup -Name myResoureceGroup
+```
+
+<!--Not Available on ## Azure Image Builder-->
+
+<!--Not Available on [Azure VM Image Builder](/virtual-machines/windows/image-builder-overview)-->
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已创建了一个自定义 VM 映像。 你已了解如何：
+在本教程中，你已创建一个专用化 VM 映像。 你已了解如何：
 
 > [!div class="checklist"]
-> * 使用 Sysprep 通用化 VM
-> * 创建自定义映像
-> * 从自定义映像创建 VM
-> * 列出订阅中的所有映像
-> * 删除映像
+> * 创建共享映像库
+> * 创建映像定义
+> * 创建映像版本
+> * 从映像创建 VM 
+> * 共享映像库
 
 请转到下一教程，了解如何创建高度可用的虚拟机。
 

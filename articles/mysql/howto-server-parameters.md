@@ -5,23 +5,23 @@ author: WenJason
 ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
-origin.date: 4/16/2020
-ms.date: 06/01/2020
-ms.openlocfilehash: 2bfa129000e8d2e3f0489487bca7c76d35cc8a1a
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+origin.date: 6/11/2020
+ms.date: 06/29/2020
+ms.openlocfilehash: 5bbe140eba09a924c661a8b8af8365d7105c5c8c
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199564"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516445"
 ---
-# <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>如何使用 Azure 门户在适用于 MySQL 的 Azure 数据库中配置服务器参数
+# <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-using-the-azure-portal"></a>如何使用 Azure 门户在用于 MySQL 的 Azure 数据库中配置服务器参数
 
 > [!NOTE]
 > 将要查看的是 Azure Database for MySQL 的新服务。 若要查看经典 MySQL Database for Azure 的文档，请访问[此页](https://docs.azure.cn/zh-cn/mysql-database-on-azure/)。
 
 用于 MySQL 的 Azure 数据库支持配置某些服务器参数。 本文介绍如何使用 Azure 门户配置这些参数。 并非所有服务器参数都可调整。
 
-## <a name="navigate-to-server-parameters-on-azure-portal"></a>在 Azure 门户中导航到“服务器参数”
+## <a name="configure-server-parameters"></a>配置服务器参数
 
 1. 登录到 Azure 门户，然后定位到适用于 MySQL 服务器的 Azure 数据库。
 2. 在“设置”部分下，单击“服务器参数”，打开 Azure Database for MySQL 服务器的“服务器参数”页。
@@ -33,41 +33,16 @@ ms.locfileid: "84199564"
 5. 保存参数的新值后，随时可以通过选择“全部重置为默认设置”，将所有设置还原为默认值。
 ![全部重置为默认设置](./media/howto-server-parameters/5-reset_parameters.png)
 
-## <a name="list-of-configurable-server-parameters"></a>可配置的服务器参数列表
+## <a name="setting-parameters-not-listed"></a>设置参数未列出
 
-受支持服务器参数的列表还在不断增加。 在 Azure 门户中使用服务器参数选项卡，以根据应用程序要求获取定义并配置服务器参数。
+如果 Azure 门户中未列出你要更新的服务器参数，则可以选择性地使用 `init_connect` 在连接级别设置参数。 此项可为每个连接到服务器的客户端设置服务器参数。 
 
-## <a name="non-configurable-server-parameters"></a>不可配置的服务器参数
+1. 在“设置”部分下，单击“服务器参数”，打开 Azure Database for MySQL 服务器的“服务器参数”页。
+2. 搜索 `init_connect`
+3. 在 value 列的 value 中添加服务器参数，格式为 `SET parameter_name=YOUR_DESIRED_VALUE`。
 
-InnoDB 缓冲池大小不可配置，并且与[定价层](concepts-service-tiers.md)关联。
-
-|**定价层**|**vCore(s)**|**InnoDB 缓冲池 (MB)**|
-|:---|---:|---:|
-|基本| 1| 832|
-|基本| 2| 2560|
-|常规用途| 2| 3584|
-|常规用途| 4| 7680|
-|常规用途| 8| 15360|
-|常规用途| 16| 31232|
-|常规用途| 32| 62976|
-|常规用途| 64| 125952|
-|内存优化| 2| 7168|
-|内存优化| 4| 15360|
-|内存优化| 8| 30720|
-|内存优化| 16| 62464|
-|内存优化| 32| 125952|
-
-以下附加服务器参数不可在系统中配置：
-
-|**参数**|**固定值**|
-| :------------------------ | :-------- |
-|基本层中的 innodb_file_per_table|OFF|
-|innodb_flush_log_at_trx_commit|1|
-|sync_binlog|1|
-|innodb_log_file_size|256 MB|
-|innodb_log_files_in_group|2|
-
-在版本 [5.7](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html) 和 [5.6](https://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html) 中，上表中未列出的其他服务器参数将设置为其 MySQL 现成默认值。
+    例如，可以通过将 `init_connect` 设置为 `SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;` 来更改服务器的字符集
+4.  以保存更改。
 
 ## <a name="working-with-the-time-zone-parameter"></a>使用时区参数
 
@@ -93,16 +68,16 @@ SELECT name FROM mysql.time_zone_name;
 
 ### <a name="setting-the-global-level-time-zone"></a>设置全局级时区
 
-可以从 Azure 门户中的“服务器参数”页设置全局级时区。 下面将全局时区值设置为“美国/太平洋”。
+可以从 Azure 门户中的“服务器参数”页设置全局级时区。 下面将全局时区值设置为“亚洲/上海”。
 
 ![设置时区参数](./media/howto-server-parameters/timezone.png)
 
 ### <a name="setting-the-session-level-time-zone"></a>设置会话级时区
 
-可以通过从 MySQL 命令行或 MySQL Workbench 等工具运行 `SET time_zone` 命令来设置会话级时区。 以下示例将时区设置为“美国/太平洋”时区。
+可以通过从 MySQL 命令行或 MySQL Workbench 等工具运行 `SET time_zone` 命令来设置会话级时区。 以下示例将时区设置为“亚洲/上海”时区。
 
 ```sql
-SET time_zone = 'US/Pacific';
+SET time_zone = 'Asia/Shanghai';
 ```
 
 若要了解[日期和时间函数](https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_convert-tz)，请参阅 MySQL 文档。

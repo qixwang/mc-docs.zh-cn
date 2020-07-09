@@ -4,14 +4,14 @@ description: 介绍如何使用 Azure 备份与 PowerShell 来备份和恢复 Az
 ms.topic: conceptual
 author: Johnnytechn
 origin.date: 09/11/2019
-ms.date: 06/09/2020
+ms.date: 06/22/2020
 ms.author: v-johya
-ms.openlocfilehash: 3066f55d675da82a884316ee98cc8be616677986
-ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
+ms.openlocfilehash: 05d443d9a8352da5bc6203a92e7e020f2c05181c
+ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84683970"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85852092"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>使用 PowerShell 备份和恢复 Azure VM
 
@@ -478,7 +478,7 @@ $restorejob
 >
 >
 
-提供了附加参数 TargetResourceGroupName**** 来指定托管磁盘要还原到的 RG。
+提供了附加参数 TargetResourceGroupName 来指定托管磁盘要还原到的 RG。
 
 > [!IMPORTANT]
 > 强烈建议使用 **TargetResourceGroupName** 参数来还原托管磁盘，因为它可以显著提高性能。 如果未指定此参数，则客户将无法从即时还原功能中受益，并且相比之下，还原操作的速度将更慢。 如果目的是将托管磁盘还原为非托管磁盘，则不要提供此参数，而应通过提供 -RestoreAsUnmanagedDisks 参数，使该目的明确。 从 Az PS 3.7.0 开始，可以使用 -RestoreAsUnmanagedDisks 参数。 在将来的版本中，必须提供其中任意一个参数，以获得正确的还原体验
@@ -489,7 +489,7 @@ $restorejob
 $restorejob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -TargetResourceGroupName "DestRGforManagedDisks" -VaultId $targetVault.ID
 ```
 
-VMConfig.JSON**** 文件将还原到存储帐户，托管磁盘将还原到指定的目标 RG。
+VMConfig.JSON 文件将还原到存储帐户，托管磁盘将还原到指定的目标 RG。
 
 输出类似于以下示例：
 
@@ -691,7 +691,7 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $tar
         }
     ```
 
-    * 托管的非加密 VM**** -对于托管的非加密 VM，将附加还原的托管磁盘。 有关深入信息，请参阅[使用 PowerShell 将数据磁盘附加到 Windows VM](../virtual-machines/windows/attach-disk-ps.md)。
+    * 托管的非加密 VM -对于托管的非加密 VM，将附加还原的托管磁盘。 有关深入信息，请参阅[使用 PowerShell 将数据磁盘附加到 Windows VM](../virtual-machines/windows/attach-disk-ps.md)。
 
     * **使用 Azure AD 的托管加密 VM（仅限 BEK）** - 对于使用 Azure AD 的托管加密 VM（仅限使用 BEK 加密），请附加已还原的托管磁盘。 有关深入信息，请参阅[使用 PowerShell 将数据磁盘附加到 Windows VM](../virtual-machines/windows/attach-disk-ps.md)。
 
@@ -884,4 +884,3 @@ Disable-AzRecoveryServicesBackupRPMountScript -RecoveryPoint $rp[0] -VaultId $ta
 
 如果你更愿意使用 PowerShell 来处理 Azure 资源，请查看 PowerShell 文章：[为 Windows Server 部署和管理备份](backup-client-automation.md)。 如果管理 DPM 备份，请参阅[为 DPM 部署和管理备份](backup-dpm-automation.md)。
 
-<!-- Update_Description: wording update -->

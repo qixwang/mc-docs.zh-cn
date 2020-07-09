@@ -9,18 +9,18 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 04/02/2020
-ms.date: 04/20/2020
+ms.date: 06/19/2020
 ms.author: v-tawe
-ms.openlocfilehash: 125ff4356d9317e99f2a3097429476841cf9182a
-ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
+ms.openlocfilehash: becf1cd6d26f180d311c27ce5b81179019071838
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85095898"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85613317"
 ---
 # <a name="configure-rhelcentos-7-for-speech-sdk"></a>为语音 SDK 配置 RHEL/CentOS 7
 
-语音 SDK 1.11.0 及更高版本正式支持 Red Hat Enterprise Linux (RHEL) 8 x64 和 CentOS 8 x64。 也可以在 RHEL/CentOS 7 x64 上使用语音 SDK，但这需要更新你的系统上的 C++ 编译器（用于 C++ 开发）和共享的 C++ 运行时库。
+语音 SDK 1.10.0 及更高版本正式支持 Red Hat Enterprise Linux (RHEL) 8 x64 和 CentOS 8 x64。 也可以在 RHEL/CentOS 7 x64 上使用语音 SDK，但这需要更新你的系统上的 C++ 编译器（用于 C++ 开发）和共享的 C++ 运行时库。
 
 若要检查 C++ 编译器版本，请运行：
 
@@ -46,7 +46,7 @@ ldconfig -p | grep libstdc++
 
 vanilla RHEL/CentOS 7 (x64) 上的输出为：
 
-```
+```bash
 libstdc++.so.6 (libc6,x86-64) => /lib64/libstdc++.so.6
 ```
 
@@ -58,7 +58,7 @@ strings /lib64/libstdc++.so.6 | egrep "GLIBCXX_|CXXABI_"
 
 输出应该是：
 
-```
+```bash
 ...
 GLIBCXX_3.4.19
 ...
@@ -69,11 +69,15 @@ CXXABI_1.3.7
 语音 SDK 需要 **CXXABI_1.3.9** 和 **GLIBCXX_3.4.21**。 可以通过对 Linux 包中的语音 SDK 库运行 `ldd libMicrosoft.CognitiveServices.Speech.core.so` 来查找此信息。
 
 > [!NOTE]
-> 建议在系统上安装的 GCC 版本至少为 5.4.0****，它具有匹配的运行时库。
+> 建议在系统上安装的 GCC 版本至少为 5.4.0，它具有匹配的运行时库。
 
 ## <a name="example"></a>示例
 
-下面的示例命令展示了如何配置 RHEL/CentOS 7 x64 以使用语音 SDK 1.11.0 或更高版本进行开发（C++、C#、Java、Python）：
+下面的示例命令集展示了如何配置 RHEL/CentOS 7 x64 以使用语音 SDK 1.10.0 或更高版本进行开发（C++、C#、Java、Python）：
+
+### <a name="1-general-setup"></a>1.常规安装
+
+首先安装所有常规依赖项：
 
 ```bash
 # Only run ONE of the following two commands
@@ -87,16 +91,53 @@ sudo yum update -y
 sudo yum groupinstall -y "Development tools"
 sudo yum install -y alsa-lib dotnet-sdk-2.1 java-1.8.0-openjdk-devel openssl python3
 sudo yum install -y gstreamer1 gstreamer1-plugins-base gstreamer1-plugins-good gstreamer1-plugins-bad-free gstreamer1-plugins-ugly-free
+```
 
-# Build GCC 5.4.0 and runtimes and install them under /usr/local
+### <a name="2-cc-compiler-and-runtime-libraries"></a>2.C/C++ 编译器和运行时库
+
+使用此命令安装必备组件包：
+
+```bash
 sudo yum install -y gmp-devel mpfr-devel libmpc-devel
+```
+
+> [!NOTE]
+> libmpc-devel 包在 RHEL 7.8 更新中已弃用。 如果上述命令的输出包含一条消息，
+>
+> ```bash
+> No package libmpc-devel available.
+> ```
+>
+> 则需从原始源安装所需的文件。 运行以下命令：
+>
+> ```bash
+> curl https://ftp.gnu.org/gnu/mpc/mpc-1.1.0.tar.gz -O
+> tar zxf mpc-1.1.0.tar.gz
+> mkdir mpc-1.1.0-build && cd mpc-1.1.0-build
+> ../mpc-1.1.0/configure --prefix=/usr/local --libdir=/usr/local/lib64
+> make -j$(nproc)
+> sudo make install-strip
+> ```
+
+接下来，更新编译器和运行时库：
+
+```bash
+# Build GCC 5.4.0 and runtimes and install them under /usr/local
 curl https://ftp.gnu.org/gnu/gcc/gcc-5.4.0/gcc-5.4.0.tar.bz2 -O
 tar jxf gcc-5.4.0.tar.bz2
 mkdir gcc-5.4.0-build && cd gcc-5.4.0-build
 ../gcc-5.4.0/configure --enable-languages=c,c++ --disable-bootstrap --disable-multilib --prefix=/usr/local
 make -j$(nproc)
 sudo make install-strip
+```
 
+如果需要将更新的编译器和库部署在多台计算机上，则只需将它们从 `/usr/local` 下复制到其他计算机上。 如果只需要运行时库，则 `/usr/local/lib64` 中的文件已足够。
+
+### <a name="3-environment-settings"></a>3.环境设置
+
+运行以下命令来完成配置：
+
+```bash
 # Set SSL cert file location
 # (this is required for any development/testing with Speech SDK)
 export SSL_CERT_FILE=/etc/pki/tls/certs/ca-bundle.crt

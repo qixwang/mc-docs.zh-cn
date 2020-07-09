@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: v-johya
-ms.openlocfilehash: e2ee4862428cc1ca2402a165cb06309939b03d44
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: aeb7dcf01e6ff0cded88ce1d78b427b0c2299a9a
+ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83001969"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85852048"
 ---
 # <a name="azure-blob-storage-as-an-event-grid-source"></a>充当事件网格源的 Azure Blob 存储
 
@@ -20,7 +20,7 @@ ms.locfileid: "83001969"
 
 
 >[!NOTE]
-> 只有种类为“StorageV2 (常规用途 v2)”和“BlobStorage”的存储帐户支持事件集成。   “存储(常规用途 v1)”  不  支持与事件网格集成。
+> 只有种类为“StorageV2 (常规用途 v2)”和“BlobStorage”的存储帐户支持事件集成。  “存储(常规用途 v1)”不支持与事件网格集成。
 <!-- Not available in china about BlockBlobStorage -->
 
 ## <a name="event-grid-event-schema"></a>事件网格事件架构
@@ -53,7 +53,7 @@ ms.locfileid: "83001969"
 > [!NOTE]
 > 若要确保 **Microsoft.Storage.BlobCreated** 事件仅在块 Blob 完全提交后触发，请针对 `FlushWithClose` REST API 调用筛选此事件。 此 API 调用仅在数据已完全提交到块 Blob 后才触发 **Microsoft.Storage.BlobCreated** 事件。 若要了解如何创建筛选器，请参阅[筛选事件网格的事件](/event-grid/how-to-filter-events)。
 
-<a id="example-event" />
+<a id="example-event" ></a>
 
 ### <a name="the-contents-of-an-event-response"></a>事件响应的内容
 
@@ -319,7 +319,7 @@ ms.locfileid: "83001969"
 | contentOffset | number | 在事件触发应用程序完成写入文件时执行的写入操作的偏移量（以字节为单位）。 <br>只有对具有分层命名空间的 Blob 存储帐户触发的事件才显示此值。|
 | destinationUrl |string | 操作完成后存在的文件的 URL。 例如，如果重命名了某个文件，则 `destinationUrl` 属性将包含新文件名的 URL。 <br>只有对具有分层命名空间的 Blob 存储帐户触发的事件才显示此值。|
 | sourceUrl |string | 执行操作之前存在的文件的 URL。 例如，如果重命名了某个文件，则 `sourceUrl` 将包含执行重命名操作之前的原始文件名的 URL。 <br>只有对具有分层命名空间的 Blob 存储帐户触发的事件才显示此值。 |
-| url | string | Blob 的路径。 <br>如果客户端使用 Blob REST API，则 URL 采用以下结构：\<存储帐户名\>.blob.core.chinacloudapi.cn/\<容器名\>/\<文件名\>。  <br>如果客户端使用 Data Lake Storage REST API，则 URL 采用以下结构：\<存储帐户名\>.dfs.core.chinacloudapi.cn/\<文件系统名\>/\<文件名\>。  |
+| url | string | Blob 的路径。 <br>如果客户端使用 Blob REST API，则 URL 采用以下结构：\<storage-account-name\>.blob.core.chinacloudapi.cn/\<container-name\>/\<file-name\>。 <br>如果客户端使用 Data Lake Storage REST API，则 URL 采用以下结构：\<storage-account-name\>.dfs.core.chinacloudapi.cn/\<file-system-name\>/\<file-name\>。 |
 | recursive | string | 若要对所有子目录执行该操作，则为 `True`；否则为 `False`。 <br>只有对具有分层命名空间的 Blob 存储帐户触发的事件才显示此值。 |
 | sequencer | string | 一个不透明的字符串值，表示任何特定 blob 名称的事件的逻辑顺序。  用户可以使用标准字符串比较，了解同一个 blob 名称上两个事件的相对序列。 |
 | storageDiagnostics | object | Azure 存储服务中偶尔附带的诊断数据。 如果存在，事件使用者应忽略它。 |

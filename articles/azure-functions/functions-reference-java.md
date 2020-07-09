@@ -2,21 +2,21 @@
 title: Azure Functions Java 开发人员参考
 description: 了解如何使用 Java 开发函数。
 ms.topic: conceptual
-ms.date: 06/08/2020
-ms.openlocfilehash: cc8a94d2c63c961904d3d25abd23d3adfd9976fe
-ms.sourcegitcommit: f1a76ee3242698123a3d77f44c860db040b48f70
+ms.date: 07/02/2020
+ms.openlocfilehash: 744e74ad9cdea6b66e309d40e8c68959724a3228
+ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84563742"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945248"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions Java 开发人员指南
 
-Azure Functions 运行时支持 [Java SE 8 LTS (zulu8.31.0.2-jre8.0.181-win_x64)](https://repos.azul.com/azure-only/zulu/packages/zulu-8/8u181/)。 本指南包含有关使用 Java 编写 Azure Functions 的复杂性的信息。
+Azure Functions 运行时支持 [Java SE 8 LTS (zulu8.31.0.2-jre8.0.181-win_x64)](https://repos.azul.com/azure-only/zulu/packages/zulu-8/8u181/)。 本指南介绍了用 Java 编写 Azure Functions 的复杂性。
 
-与其他语言一样，函数应用可能有一个或多个函数。 Java 函数是一个 `public` 方法，使用注释 `@FunctionName` 进行修饰。 此方法定义 java 函数的条目，必须在特定的包中独一无二。 使用 Java 编写的一个函数应用可能有多个类，这些类具有使用 `@FunctionName` 批注的多个公共方法。
+与其他语言一样，函数应用可能有一个或多个函数。 Java 函数是一个 `public` 方法，使用注释 `@FunctionName` 进行修饰。 此方法定义了 Java 函数的输入，在特定包中必须唯一。 使用 Java 编写的一个函数应用可能有多个类，这些类具有使用 `@FunctionName` 批注的多个公共方法。
 
-本文假定你已阅读 [Azure Functions 开发人员参考](functions-reference.md)。 此外，应该完成有关如何使用 [Visual Studio Code](/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java) 或 [Maven](/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java) 创建第一个函数的 Functions 快速入门。
+本文假定你已阅读 [Azure Functions 开发人员参考](functions-reference.md)。 你还应学完下面其中一篇 Functions 快速入门：[使用 Visual Studio Code 创建第一个 Java 函数](/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java)或[使用 Maven 通过命令行创建第一个 Java 函数](/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)。
 
 ## <a name="programming-model"></a>编程模型 
 
@@ -36,9 +36,9 @@ Azure Functions 运行时支持 [Java SE 8 LTS (zulu8.31.0.2-jre8.0.181-win_x64)
 
 以上文章链接介绍了如何使用所选的 IDE 创建前几个函数。 
 
-### <a name="project-scaffolding"></a>项目基架
+### <a name="project-scaffolding"></a>创建项目基架
 
-如果更喜欢从终端进行命令行开发，搭建基于 Java 的函数项目的最简单方法是使用 `Apache Maven` 原型。 适用于 Azure Functions 的 Java Maven 原型发布在以下 groupId:artifactId 之下：[com.microsoft.azure:azure-functions-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/)__ __。 
+如果更喜欢从终端进行命令行开发，那么要对基于 Java 的函数项目创建基架，最简单的方法是使用 `Apache Maven` 原型。 适用于 Azure Functions 的 Java Maven 原型发布在以下 groupId:artifactId 之下：[com.microsoft.azure:azure-functions-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/) 。 
 
 以下命令使用此原型生成新的 Java 函数项目：
 
@@ -52,7 +52,7 @@ mvn archetype:generate \
 
 ## <a name="create-kotlin-functions-preview"></a>创建 Kotlin 函数（预览）
 
-还有一个 Maven 原型用来生成 Kotlin 函数。 此原型当前处于预览阶段，发布在以下 groupId:artifactId 之下：[com.microsoft.azure:azure-functions-kotlin-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-kotlin-archetype/)__ __。 
+还有一个 Maven 原型用来生成 Kotlin 函数。 此原型当前处于预览阶段，发布在以下 groupId:artifactId 之下：[com.microsoft.azure:azure-functions-kotlin-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-kotlin-archetype/) 。 
 
 以下命令使用此原型生成新的 Java 函数项目：
 
@@ -90,7 +90,7 @@ FunctionsProject
 
 _* Kotlin 项目看起来非常相似，因为它仍然是 Maven_
 
-可以使用共享的 [host json](functions-host-json.md) 文件配置函数应用。 每个函数都有自己的代码文件 (.java) 和绑定配置文件 (function.json)。
+可使用共享的 [host.json](functions-host-json.md) 文件来配置函数应用。 每个函数都有自己的代码文件 (.java) 和绑定配置文件 (function.json)。
 
 可在项目中放置多个函数。 不要将函数放入单独的 jar 中。 目标目录中的 `FunctionApp` 是部署到 Azure 中的函数应用的内容。
 
@@ -147,7 +147,7 @@ public class Function {
 
 ## <a name="customize-jvm"></a>自定义 JVM
 
-在 Functions 中可以自定义用于运行 Java 函数的 Java 虚拟机 (JVM)。 默认情况下使用[以下 JVM 选项](https://github.com/Azure/azure-functions-java-worker/blob/master/worker.config.json#L7)：
+在 Functions 中可以自定义用于运行 Java 函数的 Java 虚拟机 (JVM)。 默认使用[以下 JVM 选项](https://github.com/Azure/azure-functions-java-worker/blob/master/worker.config.json#L7)。
 
 * `-XX:+TieredCompilation`
 * `-XX:TieredStopAtLevel=1`
@@ -155,10 +155,10 @@ public class Function {
 * `-Djava.net.preferIPv4Stack=true`
 * `-jar`
 
-可以在名为 `JAVA_OPTS` 的应用设置中提供其他参数。 可以在 Azure 门户或 Azure CLI 中将应用设置添加到已部署至 Azure 的函数应用。
+可在名为 `JAVA_OPTS` 的应用设置中提供其他参数。 可在 Azure 门户或 Azure CLI 中将应用设置添加到部署给 Azure 的函数应用。
 
 > [!IMPORTANT]  
-> 在消耗计划中，还必须添加值为 0 的 WEBSITE_USE_PLACEHOLDER 设置，才能使自定义操作生效。 此设置确实可增加 Java 函数的冷启动时间。
+> 在消耗计划中，还必须添加值为 0 的 WEBSITE_USE_PLACEHOLDER 设置，才能使自定义操作生效。 此设置将增加 Java 函数的冷启动时间。
 
 ### <a name="azure-portal"></a>Azure 门户
 
@@ -166,7 +166,7 @@ public class Function {
 
 ### <a name="azure-cli"></a>Azure CLI
 
-可以使用 [az functionapp config appsettings set](/cli/functionapp/config/appsettings) 命令来设置 `JAVA_OPTS`，如以下示例所示：
+可使用 [az functionapp config appsettings set](/cli/functionapp/config/appsettings) 命令设置 `JAVA_OPTS`，如下例中所示：
 
 #### <a name="consumption-plan"></a>[消耗计划](#tab/consumption)
 ```azurecli
@@ -175,9 +175,15 @@ az functionapp config appsettings set \
 "WEBSITE_USE_PLACEHOLDER=0" \
 --name <APP_NAME> --resource-group <RESOURCE_GROUP>
 ```
+#### <a name="dedicated-plan"></a>[专用计划](#tab/dedicated)
+```azurecli
+az functionapp config appsettings set \
+--settings "JAVA_OPTS=-Djava.awt.headless=true" \
+--name <APP_NAME> --resource-group <RESOURCE_GROUP>
+```
 ---
 
-此示例将启用无外设模式。 请将 `<APP_NAME>` 替换为函数应用的名称，将 `<RESOURCE_GROUP>` 替换为资源组的名称。 
+此示例将启用无外设模式。 将 `<APP_NAME>` 替换为函数应用的名称，将 `<RESOURCE_GROUP>` 替换为资源组。 
 
 ## <a name="third-party-libraries"></a>第三方库 
 
@@ -255,7 +261,7 @@ public class Function {
 - 以 `String` 的形式为参数 `inputReq` 传递 HTTP 请求有效负载。
 - 从表存储中检索一个项，并将其作为 `TestInputData` 传递给参数 `inputData`。
 
-若要接收一批输入，可以绑定到 `String[]`、`POJO[]`、`List<String>` 或 `List<POJO>`。
+若要接收一批输入，可绑定到 `String[]`、`POJO[]`、`List<String>` 或 `List<POJO>`。
 
 ```java
 @FunctionName("ProcessIotMessages")
@@ -342,7 +348,7 @@ public class Function {
 
 ## <a name="metadata"></a>Metadata
 
-少量的触发器会连同输入数据一起发送[触发器元数据](/azure-functions/functions-triggers-bindings)。 可以使用注释 `@BindingName` 绑定到触发器元数据。
+少量的触发器会连同输入数据一起发送[触发器元数据](/azure-functions/functions-triggers-bindings)。 可使用注释 `@BindingName` 绑定到触发器元数据。
 
 
 ```Java
@@ -362,7 +368,7 @@ public class Function {
     }
 }
 ```
-在前面的示例中，`queryValue` 绑定到 HTTP 请求 URL `http://{example.host}/api/metadata?name=test` 中的查询字符串参数 `name`。 下面是另一个示例，演示如何从队列触发器元数据绑定到 `Id`。
+在前面的示例中，`queryValue` 绑定到 HTTP 请求 URL `http://{example.host}/api/metadata?name=test` 中的查询字符串参数 `name`。 下面是另一个示例，它展示了如何从队列触发器元数据绑定到 `Id`。
 
 ```java
  @FunctionName("QueueTriggerMetadata")
@@ -383,7 +389,7 @@ public class Function {
 
 ## <a name="execution-context"></a>执行上下文
 
-`azure-functions-java-library` 中定义的 `ExecutionContext` 包含用来与 Functions 运行时通信的帮助器方法。
+`azure-functions-java-library` 中定义的 `ExecutionContext` 包含用来与 Functions 运行时通信的帮助器方法。 有关详细信息，请参阅 [ExecutionContext 参考文章](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.executioncontext)。
 
 ### <a name="logger"></a>记录器
 
@@ -433,9 +439,9 @@ az webapp log download --resource-group resourcegroupname --name functionappname
 
 ## <a name="environment-variables"></a>环境变量
 
-在 Functions 中，服务连接字符串等[应用设置](functions-app-settings.md)在执行过程中将公开为环境变量。 可以使用 `System.getenv("AzureWebJobsStorage")` 访问这些设置。
+在 Functions 中，服务连接字符串等[应用设置](functions-app-settings.md)在执行过程中将公开为环境变量。 可使用 `System.getenv("AzureWebJobsStorage")` 访问这些设置。
 
-以下示例获取[应用程序设置](functions-how-to-use-azure-function-app-settings.md#settings)，其键名为 `myAppSetting`：
+以下示例获取了[应用程序设置](functions-how-to-use-azure-function-app-settings.md#settings)，其中键名为 `myAppSetting`：
 
 ```java
 
@@ -458,8 +464,8 @@ public class Function {
 * [Azure Functions 最佳实践](functions-best-practices.md)
 * [Azure Functions 开发人员参考](functions-reference.md)
 * [Azure Functions 触发器和绑定](functions-triggers-bindings.md)
-* 使用 [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions)、[IntelliJ](functions-create-maven-intellij.md) 和 [Eclipse](functions-create-maven-eclipse.md) 进行本地开发和调试
-* [使用 Visual Studio Code 远程调试 Java Azure Functions](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud)
+* 使用 [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions)、[IntelliJ](functions-create-maven-intellij.md) 和 [Eclipse](functions-create-maven-eclipse.md) 的本地开发和调试
+* [使用 Visual Studio Code 远程调试 Azure 函数](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud)
 * [适用于 Azure Functions 的 Maven 插件](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-functions-maven-plugin/README.md) 
 * 通过 `azure-functions:add` 目标简化函数创建并准备临时目录以用于 [ZIP 文件部署](deployment-zip-push.md)。
 

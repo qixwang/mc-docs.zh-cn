@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 05/08/2020
 ms.author: v-tawe
 origin.date: 03/13/2020
-ms.openlocfilehash: eac9400516b822dd7041da0bea09a8567d495235
-ms.sourcegitcommit: b81ea2ab9eafa986986fa3eb1e784cfe9bbf9ec1
+ms.openlocfilehash: 59ae9cc9d1d51579d323e8c7a54d23d12aaa58e0
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83367812"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516692"
 ---
 # <a name="quick-fix-remediation-for-advisor"></a>顾问的快速修复修正
 通过**快速修复**，可以更快、更轻松地根据建议对多个资源进行修正。 它提供了对资源批量修正的功能，并通过对资源进行大规模修正来帮助你更快地优化订阅。
@@ -50,4 +50,5 @@ ms.locfileid: "83367812"
 * [顾问成本建议](advisor-cost-recommendations.md)
 * [顾问性能建议](advisor-performance-recommendations.md)
 * [顾问安全性建议](advisor-security-recommendations.md)
+* [顾问卓越运营建议](advisor-operational-excellence-recommendations.md)
 * [顾问 REST API](https://docs.microsoft.com/rest/api/advisor/)

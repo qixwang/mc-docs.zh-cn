@@ -5,20 +5,20 @@ author: WenJason
 ms.author: v-jay
 ms.service: mariadb
 ms.topic: conceptual
-origin.date: 3/30/2020
-ms.date: 04/27/2020
-ms.openlocfilehash: bb9af066f950eead742a32af921fa5bd5d4c86c0
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+origin.date: 6/11/2020
+ms.date: 07/06/2020
+ms.openlocfilehash: 1dbdfa7727ae2247410c620d7cd2bb14c7c81e57
+ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82127079"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85845769"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>在 Azure Database for MariaDB 中配置数据传入复制
 
-本文介绍如何通过配置主服务器和副本服务器在 Azure Database for MariaDB 中设置数据传入复制。 本文假设读者在 MariaDB 服务器和数据库方面有一定的经验。
+本文介绍如何通过配置主服务器和副本服务器在 Azure Database for MariaDB 中设置[数据传入复制](concepts-data-in-replication.md)。 本文假设读者在 MariaDB 服务器和数据库方面有一定的经验。
 
-若要在 Azure Database for MariaDB 服务中创建副本，数据传入复制需同步本地 MariaDB 主服务器、虚拟机 (VM) 或云数据库服务中的数据。
+若要在 Azure Database for MariaDB 服务中创建副本，[数据传入复制](concepts-data-in-replication.md)需同步本地 MariaDB 主服务器、虚拟机 (VM) 或云数据库服务中的数据。 数据传入复制功能依靠的是基于二进制日志 (binlog) 文件位置、从本机到 MariaDB 的复制。 要详细了解 binlog 复制，请参阅 [binlog 复制概述](https://mariadb.com/kb/en/library/replication-overview/)。
 
 在执行本文中的步骤之前，请查看数据传入复制的[限制和要求](concepts-data-in-replication.md#limitations-and-considerations)。
 
@@ -49,7 +49,7 @@ ms.locfileid: "82127079"
 
 1. 请先查看[主服务器要求](concepts-data-in-replication.md#requirements)，然后再继续。 
 
-   例如，请确保主服务器允许端口 3306 上的入站和出站流量，并且主服务器具有公共 IP 地址  ，DNS 可公开访问或者具有完全限定的域名 (FQDN)。 
+   例如，请确保主服务器允许端口 3306 上的入站和出站流量，并且主服务器具有公共 IP 地址，DNS 可公开访问或者具有完全限定的域名 (FQDN)。 
    
    尝试从另一台计算机上托管的工具（如 MySQL 命令行）进行连接，以测试与主服务器的连接。
 
@@ -105,15 +105,15 @@ ms.locfileid: "82127079"
 
    **MySQL Workbench**
 
-   若要在 MySQL Workbench 中创建复制角色，请在“管理”窗格中选择“用户和特权”。   然后选择“添加帐户”。 
+   若要在 MySQL Workbench 中创建复制角色，请在“管理”窗格中选择“用户和特权”。  然后选择“添加帐户”。
  
    ![用户和特权](./media/howto-data-in-replication/users_privileges.png)
 
-   在“登录名”字段中输入用户名。 
+   在“登录名”字段中输入用户名。
 
    ![同步用户](./media/howto-data-in-replication/syncuser.png)
  
-   选择“管理角色”面板，然后在“全局特权”列表中选择“复制从属实例”。    选择“应用”以创建复制角色。 
+   选择“管理角色”面板，然后在“全局特权”列表中选择“复制从属实例”。   选择“应用”以创建复制角色。
 
    ![复制从属实例](./media/howto-data-in-replication/replicationslave.png)
 

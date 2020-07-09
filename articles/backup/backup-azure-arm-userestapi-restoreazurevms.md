@@ -1,19 +1,18 @@
 ---
 title: 使用 REST API 还原 Azure VM
 description: 本文介绍如何使用 REST API 管理 Azure 虚拟机备份的还原操作。
-author: lingliw
-manager: digimobile
+author: Johnnytechn
 ms.topic: conceptual
 origin.date: 09/12/2018
-ms.date: 11/20/2019
-ms.author: v-lingwu
+ms.date: 06/22/2020
+ms.author: v-johya
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: 6fb131d6c4fcf862a23b1af24f574025a3297079
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: bf651bc1afabb0aa3b6386609ab77fe30443e130
+ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290890"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85852094"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>使用 REST API 还原 Azure 虚拟机
 
@@ -52,7 +51,7 @@ x-ms-client-request-id: c48f4436-ce3f-42da-b537-12710d4d1a24; c48f4436-ce3f-42da
 Strict-Transport-Security: max-age=31536000; includeSubDomains
 x-ms-ratelimit-remaining-subscription-reads: 14998
 x-ms-correlation-request-id: 03453538-2f8d-46de-8374-143ccdf60f40
-x-ms-routing-request-id: SOUTHINDIA:20180604T071851Z:03453538-2f8d-46de-8374-143ccdf60f40
+x-ms-routing-request-id: CHINAEAST:20180604T071851Z:03453538-2f8d-46de-8374-143ccdf60f40
 Cache-Control: no-cache
 Date: Mon, 04 Jun 2018 07:18:51 GMT
 Server: Microsoft-IIS/8.0
@@ -126,7 +125,7 @@ X-Powered-By: ASP.NET
 触发磁盘还原是一个 *POST* 请求。 若要详细了解“还原磁盘”操作，请参阅[“触发还原”REST API](https://docs.microsoft.com/rest/api/backup/restores/trigger)。
 
 ```http
-POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2019-05-13
+POST https://management.chinacloudapi.cn/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2019-05-13
 ```
 
 `{containerName}` 和 `{protectedItemName}` 是按[此处](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1)所述构造的。 `{fabricName}` 是“Azure”，`{recoveryPointId}` 是[上述](#example-response)恢复点的 `{name}` 字段。
@@ -167,7 +166,7 @@ POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/
 
 触发磁盘还原是一个[异步操作](/azure-resource-manager/resource-manager-async-operations)。 这意味着，此操作会创建另一个需要单独跟踪的操作。
 
-它将返回两个响应：创建另一个操作时为 202（已接受），该操作完成时为 200（确定）。
+它将返回两个响应：创建另一个操作时为 202（已接受），该操作完成时为 200（正常）。
 
 |名称  |类型  |说明  |
 |---------|---------|---------|
@@ -181,24 +180,24 @@ POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/
 HTTP/1.1 202 Accepted
 Pragma: no-cache
 Retry-After: 60
-Azure-AsyncOperation: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationsStatus/781a0f18-e250-4d73-b059-5e9ffed4069e?api-version=2019-05-13
+Azure-AsyncOperation: https://management.chinacloudapi.cn/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationsStatus/781a0f18-e250-4d73-b059-5e9ffed4069e?api-version=2019-05-13
 X-Content-Type-Options: nosniff
 x-ms-request-id: 893fe372-8d6c-4c56-b589-45a95eeef95f
 x-ms-client-request-id: a15ce064-25bd-4ac6-87e5-e3bc6ec65c0b; a15ce064-25bd-4ac6-87e5-e3bc6ec65c0b
 Strict-Transport-Security: max-age=31536000; includeSubDomains
 x-ms-ratelimit-remaining-subscription-writes: 1198
 x-ms-correlation-request-id: 893fe372-8d6c-4c56-b589-45a95eeef95f
-x-ms-routing-request-id: SOUTHINDIA:20180604T130003Z:893fe372-8d6c-4c56-b589-45a95eeef95f
+x-ms-routing-request-id: CHINAEAST:20180604T130003Z:893fe372-8d6c-4c56-b589-45a95eeef95f
 Cache-Control: no-cache
 Date: Mon, 04 Jun 2018 13:00:03 GMT
-Location: https://management.azure.com/subscriptions//subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationResults/781a0f18-e250-4d73-b059-5e9ffed4069e?api-version=2019-05-13
+Location: https://management.chinacloudapi.cn/subscriptions//subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationResults/781a0f18-e250-4d73-b059-5e9ffed4069e?api-version=2019-05-13
 X-Powered-By: ASP.NET
 ```
 
-然后通过简单的 GET 命令并使用 location 标头或 Azure-AsyncOperation 标头跟踪生成的操作  。
+然后通过简单的 GET 命令并使用 location 标头或 Azure-AsyncOperation 标头跟踪生成的操作。
 
 ```http
-GET https://management.azure.com/subscriptions//subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationResults/781a0f18-e250-4d73-b059-5e9ffed4069e?api-version=2019-05-13
+GET https://management.chinacloudapi.cn/subscriptions//subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationResults/781a0f18-e250-4d73-b059-5e9ffed4069e?api-version=2019-05-13
 ```
 
 操作完成后，它将返回 200 (OK)，以及响应正文中生成的还原作业的 ID。
@@ -212,7 +211,7 @@ x-ms-client-request-id: a7f3a144-ed80-41ee-bffe-ae6a90c35a2f; a7f3a144-ed80-41ee
 Strict-Transport-Security: max-age=31536000; includeSubDomains
 x-ms-ratelimit-remaining-subscription-reads: 14973
 x-ms-correlation-request-id: ea2a8011-eb83-4a4b-9ed2-e694070a966a
-x-ms-routing-request-id: SOUTHINDIA:20180604T130917Z:ea2a8011-eb83-4a4b-9ed2-e694070a966a
+x-ms-routing-request-id: CHINAEAST:20180604T130917Z:ea2a8011-eb83-4a4b-9ed2-e694070a966a
 Cache-Control: no-cache
 Date: Mon, 04 Jun 2018 13:09:17 GMT
 Server: Microsoft-IIS/8.0
@@ -283,3 +282,4 @@ X-Powered-By: ASP.NET
 
 - [Azure 恢复服务提供程序 REST API](https://docs.microsoft.com/rest/api/recoveryservices/)
 - [Azure REST API 入门](https://docs.microsoft.com/rest/api/azure/)
+

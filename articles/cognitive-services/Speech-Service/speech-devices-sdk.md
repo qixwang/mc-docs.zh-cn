@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 03/11/2020
-ms.date: 04/20/2020
+ms.date: 06/19/2020
 ms.author: v-tawe
-ms.openlocfilehash: e0e405f9fa5083f673dfdc650c04f2c29ecdbadc
-ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
+ms.openlocfilehash: 86a9f98827808ddd1e9b06fb1bad9f4699afcc8b
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85095950"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611881"
 ---
 # <a name="what-is-the-speech-devices-sdk"></a>什么是语音设备 SDK？
 
@@ -41,7 +41,11 @@ ms.locfileid: "85095950"
 
 ### <a name="android"></a>Android
 
-对于 Android，设备将下载最新版本的 [Android 语音设备 SDK](https://aka.ms/sdsdk-download-android)。
+适用于 Android 的语音设备 SDK 支持 [Roobo v1](speech-devices-sdk-roobo-v1.md) 和等效设备，请为这些设备下载 [Android 语音设备 SDK](https://aka.ms/sdsdk-download-android) 的最新版本。
+
+
+如果使用其他 Android 设备（如手机或移动设备），请从 [Android 语音 SDK](speech-sdk.md) 开始
+
 
 ### <a name="windows"></a>Windows
 
@@ -53,11 +57,11 @@ ms.locfileid: "85095950"
 对于 Linux，示例应用程序以跨平台 Java 应用程序的形式提供。 下载最新版本的 [JRE 语音设备 SDK](https://aka.ms/sdsdk-download-JRE)。
 该应用程序是使用语音 SDK 程序包和 Eclipse Java IDE (v4) 在 64 位 Linux（Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 8、CentOS 8）上构建的。 它在 64 位 Java 8 运行时环境 (JRE) 中运行。
 
-提供了其他二进制文件来支持即将推出的设备，例如 [Roobo v2 DDK](https://aka.ms/sdsdk-download-roobov2)、[Urbetter DDK](https://aka.ms/sdsdk-download-urbetter) 和 [GGEC 扬声器](https://aka.ms/sdsdk-download-speaker)。
+提供了其他二进制文件来支持即将推出的设备，例如 [Roobo v2 DDK](https://aka.ms/sdsdk-download-roobov2)、[Urbetter DDK](https://aka.ms/sdsdk-download-urbetter)、[GGEC 扬声器](https://aka.ms/sdsdk-download-speaker)、[Linux ARM32](https://aka.ms/sdsdk-download-linux-arm32) 和 [Linux ARM64](https://aka.ms/sdsdk-download-linux-arm64)。
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
 > [选择语音设备](get-speech-devices-sdk.md)
 > [!div class="nextstepaction"]
-> [获取语音服务订阅密钥以进行试用](get-started.md)
+> [免费获取语音服务订阅密钥](get-started.md)

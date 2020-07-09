@@ -6,19 +6,19 @@ author: rwike77
 manager: CelesteDG
 ms.author: v-junlch
 ms.reviewer: jmprieur, saeeda
-ms.date: 04/22/2020
+ms.date: 07/02/2020
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
 ROBOTS: NOINDEX
-ms.openlocfilehash: 0728a31d28aa72d116c8d2926bcd06e2cbf7192f
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 5183a826c23b2bb32c7058c0281c9041b93ba9ba
+ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82127169"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945093"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问开发人员指南
 
@@ -30,7 +30,7 @@ ms.locfileid: "82127169"
 * 仅允许已注册 Intune 的设备访问特定服务
 * 限制用户位置和 IP 范围
 
-有关条件访问完整功能的详细信息，请参阅 [Azure Active Directory 中的条件访问](/active-directory/conditional-access/overview)。
+有关条件访问完整功能的详细信息，请参阅[什么是条件访问](../conditional-access/overview.md)。
 
 对于生成 Azure AD 应用的开发人员，本文演示了条件访问的使用方法，并介绍了访问应用了条件访问策略且你无法控制的资源将产生的影响。 此外，本文还探讨了条件访问对代理流、Web 应用、访问 Microsoft Graph 和调用 API 的影响。
 
@@ -49,7 +49,7 @@ ms.locfileid: "82127169"
 * 使用 ADAL.js 的单页应用
 * 调用资源的 Web 应用
 
-条件访问策略不仅可应用于应用，还可应用于应用访问的 Web API。 若要详细了解如何配置条件访问策略，请参阅[快速入门：使用 Azure Active Directory 条件访问要求针对特定应用进行 MFA](/active-directory/authentication/tutorial-enable-azure-mfa)。
+条件访问策略不仅可应用于应用，还可应用于应用访问的 Web API。 要详细了解如何配置条件访问策略，请参阅[常用条件访问策略](../conditional-access/concept-conditional-access-policy-common.md)。
 
 根据具体的情况，企业客户随时可以应用和删除条件访问策略。 应用新策略后，若要使应用继续正常工作，需执行“质询”处理。 以下示例演示了质询处理的过程。
 
@@ -90,7 +90,7 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 
 ### <a name="prerequisites"></a>先决条件
 
-Azure AD 条件访问是 [Azure AD Premium](/active-directory/active-directory-whatis) 包含的一项功能。 可以在[未授权用户使用情况报表](/active-directory/reports-monitoring/overview-reports)中了解有关许可要求的更多信息。 开发人员可以加入 [Microsoft 开发人员网络](https://msdn.microsoft.com/dn308572.aspx)，其中包含企业移动套件（含有 Azure AD Premium）订阅。
+Azure AD 条件访问是 [Azure AD Premium](/active-directory/active-directory-whatis) 包含的一项功能。 可以在[未授权用户使用情况报表](/active-directory/reports-monitoring/overview-reports)中了解有关许可要求的更多信息。 开发人员可以加入 [Microsoft 开发人员网络](https://msdn.microsoft.com/dn308572.aspx)，其中包含企业移动套件（包含 Azure AD Premium）订阅。
 
 ### <a name="considerations-for-specific-scenarios"></a>特定应用场景的注意事项
 

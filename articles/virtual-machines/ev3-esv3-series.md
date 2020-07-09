@@ -1,29 +1,29 @@
 ---
-title: Ev3 系列和 Esv3 系列 - Azure 虚拟机
+title: Ev3 系列和 Esv3 系列
 description: Ev3 和 Esv3 系列 VM 的规范。
-services: virtual-machines
 author: rockboyfor
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 origin.date: 02/03/2020
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 27bac8a1bc203eb5fd0ecfa170ff866aa7bb8c4c
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: 383ad0a20a9c960fdfab06a1721aa248b33eb3b7
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392478"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945668"
 ---
 <!--Verified successfully-->
 <!--Partical Content from verified-->
 # <a name="ev3-and-esv3-series"></a>Ev3 和 Esv3 系列
 
-Ev3 和 Esv3 系列具有采用超线程配置的 Intel® Xeon® 8171M 2.1 GHz (Skylake) 或 Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) 处理器，为大多数常规用途工作负荷提供更好的价值定位，并使 Ev3 满足大多数其他云的常规用途 VM 的要求。  在磁盘和网络限制已基于核心进行了调整以适应超线程技术的同时，内存也得到了扩展（从 7 GiB/vCPU 到 8 GiB/vCPU）。 Ev3 是 D/Dv2 系列的高内存 VM 大小产品的后继产品。
+Ev3 和 Esv3 系列在采用超线程配置的 Intel® Xeon® Platinum 8272CL (Cascade Lake)、Intel® Xeon® 8171M 2.1 GHz (Skylake) 或 Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) 处理器上运行，为大多数常规用途工作负荷提供更好的价值定位，并使 Ev3 满足大多数其他云的常规用途 VM 的要求。  在磁盘和网络限制已基于核心进行了调整以适应超线程技术的同时，内存也得到了扩展（从 7 GiB/vCPU 到 8 GiB/vCPU）。 Ev3 是 D/Dv2 系列的高内存 VM 大小产品的后继产品。
 
 ## <a name="ev3-series"></a>Ev3 系列
 
-Ev3 系列实例采用 Intel® Xeon® 8171M 2.1 GHz (Skylake) 或 Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) 处理器和 Intel Turbo Boost Technology 2.0。 Ev3 系列实例适用于内存密集型企业应用程序。
+Ev3 系列实例在 Intel® Xeon® Platinum 8272CL (Cascade Lake)、Intel® Xeon® 8171M 2.1 GHz (Skylake) 或 Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) 处理器上运行，并配置了 Intel Turbo Boost Technology 2.0。 Ev3 系列实例适用于内存密集型企业应用程序。
 
 数据磁盘存储与虚拟机分开计费。 若要使用高级存储磁盘，请使用 ESv3 大小。 ESv3 系列大小的定价和计费标准与 Ev3 系列相同。
 
@@ -57,7 +57,7 @@ ACU：160 - 190
 
 ## <a name="esv3-series"></a>Esv3 系列
 
-Esv3 系列实例采用 Intel® Xeon® 8171M 2.1 GHz (Skylake) 或 Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) 处理器、Intel Turbo Boost Technology 2.0，并使用高级存储。 Esv3 系列实例最适用于内存密集型企业应用程序。
+Esv3 系列实例在 Intel® Xeon® Platinum 8272CL (Cascade Lake)、Intel® Xeon® 8171M 2.1 GHz (Skylake) 或 Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) 处理器上运行，配置了 Intel Turbo Boost Technology 2.0，并使用高级存储。 Esv3 系列实例最适用于内存密集型企业应用程序。
 
 Esv3 系列 VM 采用 Intel® 超线程技术。
 

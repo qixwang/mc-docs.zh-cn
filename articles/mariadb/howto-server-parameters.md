@@ -5,20 +5,20 @@ author: WenJason
 ms.author: v-jay
 ms.service: mariadb
 ms.topic: conceptual
-origin.date: 4/16/2020
-ms.date: 06/08/2020
-ms.openlocfilehash: 7ee0bdb1f0f4a93473e13f7289ca09b89849b219
-ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
+origin.date: 6/11/2020
+ms.date: 07/06/2020
+ms.openlocfilehash: 2a6c0ae6135a3416af49fd8b2203fd186c2e54d0
+ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84275604"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85845796"
 ---
-# <a name="how-to-configure-server-parameters-in-azure-database-for-mariadb-by-using-the-azure-portal"></a>如何使用 Azure 门户在 Azure Database for MariaDB 中配置服务器参数
+# <a name="configure-server-parameters-in-azure-database-for-mariadb-using-the-azure-portal"></a>使用 Azure 门户在 Azure Database for MariaDB 中配置服务器参数
 
 Azure Database for MariaDB 支持配置某些服务器参数。 本文介绍如何使用 Azure 门户配置这些参数。 并非所有服务器参数都可调整。
 
-## <a name="navigate-to-server-parameters-on-azure-portal"></a>在 Azure 门户中导航到“服务器参数”
+## <a name="configure-server-parameters"></a>配置服务器参数
 
 1. 登录到 Azure 门户，然后定位到 Azure Database for MariaDB 服务器。
 2. 在“设置”部分下，单击“服务器参数”，打开 Azure Database for MariaDB 服务器的“服务器参数”页。
@@ -30,41 +30,16 @@ Azure Database for MariaDB 支持配置某些服务器参数。 本文介绍如�
 5. 保存参数的新值后，随时可以通过选择“全部重置为默认设置”，将所有设置还原为默认值。
 ![全部重置为默认设置](./media/howto-server-parameters/5-reset_parameters.png)
 
-## <a name="list-of-configurable-server-parameters"></a>可配置的服务器参数列表
+## <a name="setting-parameters-not-listed"></a>设置参数未列出
 
-受支持服务器参数的列表还在不断增加。 在 Azure 门户中使用服务器参数选项卡，以根据应用程序要求获取定义并配置服务器参数。
+如果 Azure 门户中未列出你要更新的服务器参数，则可以选择性地使用 `init_connect` 在连接级别设置参数。 此项可为每个连接到服务器的客户端设置服务器参数。 
 
-## <a name="non-configurable-server-parameters"></a>不可配置的服务器参数
+1. 在“设置”部分下，单击“服务器参数”，打开 Azure Database for MariaDB 服务器的“服务器参数”页。
+2. 搜索 `init_connect`
+3. 在 value 列的 value 中添加服务器参数，格式为 `SET parameter_name=YOUR_DESIRED_VALUE`。
 
-InnoDB 缓冲池和最大连接数不可配置，因[定价层](concepts-pricing-tiers.md)而定。
-
-|**定价层**| **vCore(s)**|InnoDB 缓冲池 (MB)|
-|---|---|---|
-|基本| 1| 1024|
-|基本| 2| 2560|
-|常规用途| 2| 3584|
-|常规用途| 4| 7680|
-|常规用途| 8| 15360|
-|常规用途| 16| 31232|
-|常规用途| 32| 62976|
-|常规用途| 64| 125952|
-|内存优化| 2| 7168|
-|内存优化| 4| 15360|
-|内存优化| 8| 30720|
-|内存优化| 16| 62464|
-|内存优化| 32| 125952|
-
-以下附加服务器参数不可在系统中配置：
-
-|**参数**|**固定值**|
-| :------------------------ | :-------- |
-|基本层中的 innodb_file_per_table|OFF|
-|innodb_flush_log_at_trx_commit|1|
-|sync_binlog|1|
-|innodb_log_file_size|256 MB|
-|innodb_log_files_in_group|2|
-
-在 [MariaDB](https://mariadb.com/kb/en/library/xtradbinnodb-server-system-variables/) 中，上表中未列出的其他服务器参数将设置为其 MariaDB 现成默认值。
+    例如，可以通过将 `init_connect` 设置为 `SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;` 来更改服务器的字符集
+4.  以保存更改。
 
 ## <a name="working-with-the-time-zone-parameter"></a>使用时区参数
 
@@ -89,22 +64,20 @@ SELECT name FROM mysql.time_zone_name;
 
 ### <a name="setting-the-global-level-time-zone"></a>设置全局级时区
 
-可以从 Azure 门户中的“服务器参数”页设置全局级时区。 下面将全局时区值设置为“美国/太平洋”。
+可以从 Azure 门户中的“服务器参数”页设置全局级时区。 下面将全局时区值设置为“亚洲/上海”。
 
 ![设置时区参数](./media/howto-server-parameters/timezone.png)
 
 ### <a name="setting-the-session-level-time-zone"></a>设置会话级时区
 
-可以通过从 MySQL 命令行或 MySQL Workbench 等工具运行 `SET time_zone` 命令来设置会话级时区。 以下示例将时区设置为“美国/太平洋”时区。
+可以通过从 MySQL 命令行或 MySQL Workbench 等工具运行 `SET time_zone` 命令来设置会话级时区。 以下示例将时区设置为“亚洲/上海”时区。
 
 ```sql
-SET time_zone = 'US/Pacific';
+SET time_zone = 'Asia/Shanghai';
 ```
 
 若要了解[日期和时间函数](https://mariadb.com/kb/en/library/convert_tz/)，请参阅 MariaDB 文档。
 
-<!--
-## Next steps
+## <a name="next-steps"></a>后续步骤
 
-- [Connection libraries for Azure Database for MariaDB](concepts-connection-libraries.md).
--->
+- 详细了解[服务器参数](concepts-server-parameters.md)

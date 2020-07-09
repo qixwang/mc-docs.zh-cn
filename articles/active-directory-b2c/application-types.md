@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/04/2020
+ms.date: 06/28/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: a2bc48c740b04a557420dcffd4a1ae1525302798
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: cb7e1a292615bb4b296c3983aae4cf65952b8612
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78265942"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516528"
 ---
 # <a name="application-types-that-can-be-used-in-active-directory-b2c"></a>可在 Azure Active Directory B2C 中使用的应用程序类型
 
@@ -24,7 +24,7 @@ Azure Active Directory B2C (Azure AD B2C) 支持各种新式应用程序体系�
 
 必须通过 [Azure 门户](https://portal.azure.cn/)将使用 Azure AD B2C 的每个应用程序注册到 [Azure AD B2C 租户](tutorial-create-tenant.md)中。 应用程序注册过程将收集和分配一些值，例如：
 
-* 用于唯一标识应用程序的应用程序 ID  。
+* 用于唯一标识应用程序的应用程序 ID。
 * 可用于将响应定向回应用程序的**回复 URL**。
 
 发送到 Azure AD B2C 的每个请求都指定了**用户流**（内置策略）或用于控制 Azure AD B2C 行为的**自定义策略**。 两种策略类型都可以用来创建一系列自定义程度很高的用户体验。
@@ -119,9 +119,11 @@ Web API 可从许多类型的客户端（包括 Web 应用程序、桌面和移�
 
 包含长时运行进程或不需要用户操作的应用程序还需要通过其他方法访问受保护的资源，例如 Web API。 这些应用程序可使用应用程序的标识（而不是用户的委派标识）并使用 OAuth 2.0 客户端凭据流来进行身份验证和获取令牌。 客户端凭据流与代表流不同，代表流不会应用于服务器到服务器的身份验证。
 
-虽然 Azure AD B2C 当前不支持客户端凭据流，但可使用 Azure AD 设置客户端凭据流。 Azure AD B2C 租户与 Azure AD 企业租户共享某些功能。  使用 Azure AD B2C 租户的 Azure AD 功能支持客户端凭据流。
+尽管 Azure AD B2C 身份验证服务目前不直接支持 OAuth 2.0 客户端凭据授予流，但你可以使用 Azure AD 和 Microsoft 标识平台/令牌终结点为 Azure AD B2C 租户中的应用程序设置客户端凭据流。 Azure AD B2C 租户与 Azure AD 企业租户共享某些功能。
 
 若要设置客户端凭据流，请参阅 [Azure Active Directory v2.0 和 OAuth 2.0 客户端凭据流](/active-directory/develop/active-directory-v2-protocols-oauth-client-creds)。 如 [Azure AD 令牌参考](/active-directory/develop/active-directory-token-and-claims)中所述，身份验证成功后会收到格式化的令牌，以便 Azure AD 可使用它。
+
+有关注册管理应用程序的说明，请参阅[使用 Microsoft Graph 管理 Azure AD B2C](microsoft-graph-get-started.md)。
 
 #### <a name="web-api-chains-on-behalf-of-flow"></a>Web API 链（代理流）
 

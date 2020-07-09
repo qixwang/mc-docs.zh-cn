@@ -6,16 +6,16 @@ author: amitbapat
 ms.author: v-tawe
 manager: rkarlin
 origin.date: 01/02/2019
-ms.date: 06/02/2020
+ms.date: 07/01/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 78170725c7c266b2eda7f76c54d5ee0949384653
-ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
+ms.openlocfilehash: 71b81550cb717688291ee9d222bb026f9aa23349
+ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84275610"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85796246"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault 的虚拟网络服务终结点
 
@@ -41,9 +41,9 @@ ms.locfileid: "84275610"
 以下是配置防火墙和虚拟网络所需的步骤。 无论使用的是 PowerShell、Azure CLI 还是 Azure 门户，上述步骤均适用。
 
 1. 启用 [Key Vault 日志记录](logging.md)以查看详细的访问日志。 当防火墙和虚拟网络规则阻止访问 Key Vault 时，此操作有助于进行诊断。 （此为可选步骤，但强烈建议你执行。）
-2. 为目标虚拟网络和子网启用“Key Vault 的服务终结点”  。
+2. 为目标虚拟网络和子网启用“Key Vault 的服务终结点”。
 3. 为 Key Vault 设置防火墙和虚拟网络规则，仅限特定虚拟网络、子网和 IPv4 地址范围能够访问该 Key Vault。
-4. 如果需要所有受信任的 Microsoft 服务都能够访问此 Key Vault，则启用该选项，允许“受信任的 Azure 服务”连接到 Key Vault。 
+4. 如果需要所有受信任的 Microsoft 服务都能够访问此 Key Vault，则启用该选项，允许“受信任的 Azure 服务”连接到 Key Vault。
 
 有关详细信息，请参阅[配置 Azure 密钥保管库防火墙和虚拟网络](network-security.md)。
 
@@ -60,13 +60,14 @@ ms.locfileid: "84275610"
 
 ## <a name="trusted-services"></a>受信服务
 
-以下是允许访问 Key Vault 的受信服务列表（前提是启用了“允许受信任的服务”选项）。 
+以下是允许访问 Key Vault 的受信服务列表（前提是启用了“允许受信任的服务”选项）。
 
 |受信服务|支持的使用方案|
 | --- | --- |
 |Azure 虚拟机部署服务|[将证书从客户托管的 Key Vault 部署到 VM](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/)。|
 |Azure 资源管理器模板部署服务|[在部署期间传递安全值](../../azure-resource-manager/templates/key-vault-parameter.md)。|
-|Azure 磁盘加密卷加密服务|允许在虚拟机部署期间访问 BitLocker 密钥 (Windows VM) 或 DM 密码 (Linux VM) 和密钥加密密钥。 这将启用“Azure 磁盘加密”。|
+|Azure 应用程序网关 v2 SKU|[使用 Key Vault 证书进行 TLS 终止](/application-gateway/key-vault-certs)|
+|Azure 磁盘加密卷加密服务|允许在虚拟机部署期间访问 BitLocker 密钥 (Windows VM) 或 DM 密码 (Linux VM) 和密钥加密密钥。 这将启用 [Azure 磁盘加密](../../security/fundamentals/encryption-overview.md)。|
 |Azure 备份|允许使用 [Azure 备份](../../backup/backup-introduction-to-azure-backup.md)在 Azure 虚拟机备份期间备份和还原相关密钥和机密。|
 |Azure 应用服务|[通过 Key Vault 部署 Azure Web 应用证书](https://azure.github.io/AppService/2016/05/24/Deploying-Azure-Web-App-Certificate-through-Key-Vault.html)。|
 |Azure SQL 数据库|[使用 Azure SQL 数据库和数据仓库的“创建自己的密钥”支持进行透明数据加密](../../sql-database/transparent-data-encryption-byok-azure-sql.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current)。|

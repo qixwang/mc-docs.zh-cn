@@ -3,8 +3,8 @@ title: Azure 服务总线高级层和标准层
 description: 本文介绍 Azure 服务总线的标准层和高级层。 比较这些层并提供技术差异。
 services: service-bus-messaging
 documentationcenter: .net
-author: lingliw
-manager: digimobile
+author: axisc
+manager: timlt
 editor: spelluru
 ms.assetid: e211774d-821c-4d79-8563-57472d746c58
 ms.service: service-bus-messaging
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 origin.date: 01/27/2020
-ms.date: 2/6/2020
-ms.author: v-lingwu
-ms.openlocfilehash: 735293205ee8cb4d7588a7112d0415906ee97f01
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+ms.date: 06/30/2020
+ms.author: v-tawe
+ms.openlocfilehash: 61a3b308b269a8ec15ee45ac51ca221e6488afa9
+ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796781"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85796218"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>服务总线高级和标准消息传送层
 
@@ -52,13 +52,53 @@ ms.locfileid: "83796781"
 
 ### <a name="express-entities"></a>快速实体
 
-由于高级消息传送在一个完全隔离的运行时环境中运行，因此高级命名空间中不支持快速实体。 有关快速功能的详细信息，请参阅 [QueueDescription.EnableExpress](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) 属性。
+由于高级消息传送在一个完全隔离的运行时环境中运行，因此高级命名空间中不支持快速实体。 有关快速功能的详细信息，请参阅 [QueueDescription.EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) 属性。
 
-如果有在标准传送下运行的代码并且希望将其移植到高级层，请确保将 [EnableExpress](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) 属性设置为 **false**（默认值）。
+如果有在标准传送下运行的代码并且希望将其移植到高级层，请确保将 [EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) 属性设置为 **false**（默认值）。
+
+## <a name="premium-messaging-resource-usage"></a>高级消息传送资源使用情况
+通常，对实体进行的任何操作都可能导致 CPU 和内存使用率增高。 下面是一些这样的操作： 
+
+- 管理操作，例如对队列、主题和订阅的 CRUD（创建、检索、更新和删除）操作。
+- 运行时操作（发送和接收消息）
+- 监视操作和警报
+
+但是，额外的 CPU 和内存使用量并不额外定价。 对于“高级消息传送”层，消息单元有一个单价。
+
+由于以下原因，系统会跟踪并显示 CPU 和内存使用情况： 
+
+- 让你透彻了解系统内部情况
+- 让你了解所购资源的容量。
+- 让你通过容量计划来决定是进行纵向扩展还是缩减。
+
+## <a name="messaging-unit---how-many-are-needed"></a>消息传送单元 - 需要多少？
+
+预配 Azure 服务总线高级命名空间时，必须指定分配的消息传送单元数。 这些消息传送单元是分配给命名空间的专用资源。
+
+分配给服务总线高级命名空间的消息传送单元数可以**动态调整**，将工作负荷的变化（增加或减少）因素考虑进去。
+
+为体系结构确定消息传送单元数量时，需要考虑以下几个因素：
+
+- 从分配给命名空间的 1 个或 2 个消息传送单元开始。
+- 在命名空间的[资源使用情况指标](service-bus-metrics-azure-monitor.md#resource-usage-metrics)中研究 CPU 使用情况指标。
+    - 如果 CPU 使用率低于 20%，则可纵向缩减分配给命名空间的消息传送单元数。
+    - 如果 CPU 使用率超过 70%，则以纵向扩展的方式增加分配给命名空间的消息传送单元数将有益于应用程序。
+
+可以使用 [Azure 自动化 Runbook](../automation/automation-quickstart-create-runbook.md) 来自动缩放分配给服务总线命名空间的资源。
+
+> [!NOTE]
+> **缩放**分配给命名空间的资源的操作可以抢先进行，也可以被动进行。
+>
+>  * **抢先**：如果预期会有额外的工作负荷（考虑到季节性或趋势），可以在达到工作负荷限制之前向命名空间分配额外的消息传送单元。
+>
+>  * **被动**：如果通过研究资源使用情况指标确定了额外的工作负荷，则可将额外的资源分配给命名空间来应对不断增长的需求。
+>
+> 服务总线的费用按小时计。 进行纵向扩展时，只需按额外资源的使用小时数付费。
+>
 
 ## <a name="get-started-with-premium-messaging"></a>高级消息传送入门
 
-高级消息传送很容易入门，其操作过程类似于标准消息传送。 一开始时，请在 [Azure 门户](https://portal.azure.cn)中[创建命名空间](service-bus-create-namespace-portal.md)。 确保在“定价层”下选择“高级”。   单击“查看完整的定价详细信息”  以查看有关每个层级的详细信息。
+高级消息传送很容易入门，其操作过程类似于标准消息传送。 一开始时，请在 [Azure 门户](https://portal.azure.cn)中[创建命名空间](service-bus-create-namespace-portal.md)。 确保在“定价层”下选择“高级”。  单击“查看完整的定价详细信息”以查看有关每个层级的详细信息。
 
 ![create-premium-namespace][create-premium-namespace]
 

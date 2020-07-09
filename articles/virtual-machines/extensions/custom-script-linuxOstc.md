@@ -1,5 +1,5 @@
 ---
-title: 在 Linux 虚拟机上使用 Azure 自定义脚本扩展版本 1 | Azure
+title: 在 Linux 虚拟机上使用 Azure 自定义脚本扩展版本 1
 description: 使用自定义脚本扩展 v1 自动化 Linux VM 配置任务
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 origin.date: 08/14/2018
-ms.date: 11/11/2019
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: b86069f87d607e1874decc9faf883b8fb8693b0a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 579dad9da125587fb84e4acd23d2b8385bdd6883
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73831375"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945663"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>在 Linux 虚拟机上使用 Azure 自定义脚本扩展版本 1
 
@@ -75,7 +75,7 @@ ms.locfileid: "73831375"
 * 该扩展只会运行一个脚本一次，如果想要在每次启动时运行一个脚本，则可以使用 [cloud-init 映像](../linux/using-cloud-init.md)和 [Scripts Per Boot](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) 模块。 或者，可以使用脚本创建 Systemd 服务单元。
 * 如果想要计划脚本何时运行，应使用扩展创建一个 Cron 作业。
 * 脚本运行时，Azure 门户或 CLI 中只会显示“正在转换”扩展状态。 如果希望更频繁地更新正在运行的脚本的状态，需要创建自己的解决方案。
-* 自定义脚本扩展本身不支持代理服务器，但可以使用脚本中支持代理服务器的文件传输工具，如 Curl  。
+* 自定义脚本扩展本身不支持代理服务器，但可以使用脚本中支持代理服务器的文件传输工具，如 Curl。
 * 请注意脚本或命令可能依赖的非默认目录位置，按逻辑对其进行处理。
 
 ## <a name="extension-schema"></a>扩展架构
@@ -127,7 +127,7 @@ ms.locfileid: "73831375"
 | publisher | Microsoft.OSTCExtensions | string |
 | type | CustomScriptForLinux | string |
 | typeHandlerVersion | 1.5 | int |
-| fileUris（例如） | https://github.com/MyProject/Archive/MyPythonScript.py | array |
+| fileUris（例如） | `https://github.com/MyProject/Archive/MyPythonScript.py` | array |
 | commandToExecute（例如） | python MyPythonScript.py \<my-param1\> | string |
 | enableInternalDNSCheck | 是 | boolean |
 | storageAccountName（例如） | examplestorageacct | string |
@@ -190,17 +190,19 @@ ms.locfileid: "73831375"
 
 在使用 Azure CLI 运行自定义脚本扩展时，请创建一个或多个配置文件。 至少必须具有“commandToExecute”。
 
-<!--MOONCAKE: OUTSIDE " INNER '-->
-
 ```azurecli
 az vm extension set -n VMAccessForLinux \
   --publisher Microsoft.OSTCExtensions \
   --version 1.5 \
   --vm-name MyVm --resource-group MyResourceGroup \
-  --protected-settings "{'commandToExecute': 'echo hello'}"
+  --protected-settings '{"commandToExecute": "echo hello"}'
 ```
 
-<!--MOONCAKE: OUTSIDE " INNER '-->
+> [!NOTE]
+> 当我们在 Microsoft PowrShell 环境中运行 Azure CLI 时，应在相应的脚本中替换以下格式：
+> 1. 将 `\` 的串联替换为 ```。
+> 2. 将 `protected-settings` 的属性替换为实际值。
+>     `--protected-settings "{'commandToExecute': 'echo hello'}"`
 
 （可选）可以在命令中以 JSON 格式字符串的形式指定设置。 这样，便可以在执行期间指定配置，而无需使用单独的配置文件。
 
@@ -210,10 +212,8 @@ az vm extension set \
   --vm-name exttest \
   --name CustomScriptForLinux \
   --publisher Microsoft.OSTCExtensions \
-  --settings "{'fileUris': ['https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-linux/scripts/config-music.sh'],'commandToExecute': './config-music.sh'}"
+  --settings '{"fileUris": ["https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-linux/scripts/config-music.sh"],"commandToExecute": "./config-music.sh"}'
 ```
-
-<!--MOONCAKE: OUTSIDE " INNER '-->
 
 ### <a name="azure-cli-examples"></a>Azure CLI 示例
 
@@ -284,7 +284,7 @@ az vm extension set
 
 应该查找如下所示的扩展执行：
 
-```text
+```output
 2018/04/26 15:29:44.835067 INFO [Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2] Target handler state: enabled
 2018/04/26 15:29:44.867625 INFO [Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2] [Enable] current handler state is: notinstalled
 2018/04/26 15:29:44.959605 INFO Event: name=Microsoft.OSTCExtensions.CustomScriptForLinux, op=Download, message=Download succeeded, duration=59
@@ -315,7 +315,7 @@ az vm extension set
 
 应该查找如下所示的个别执行：
 
-```text
+```output
 2018/04/26 15:29:46 [Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2] Enable,transitioning,0,Launching the script...
 2018/04/26 15:29:46 [Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2] sequence number is 0
 2018/04/26 15:29:46 [Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2] setting file path is/var/lib/waagent/Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2/config/0.settings
@@ -357,7 +357,7 @@ az vm extension list -g myResourceGroup --vm-name myVM
 
 输出类似于以下文本：
 
-```azurecli
+```output
 Name                  ProvisioningState    Publisher                   Version  AutoUpgradeMinorVersion
 --------------------  -------------------  ------------------------  ---------  -------------------------
 CustomScriptForLinux  Succeeded            Microsoft.OSTCExtensions        1.5  True
@@ -367,4 +367,4 @@ CustomScriptForLinux  Succeeded            Microsoft.OSTCExtensions        1.5  
 
 若要查看代码、当前问题和版本，请参阅 [CustomScript 扩展存储库](https://github.com/Azure/azure-linux-extensions/tree/master/CustomScript)。
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

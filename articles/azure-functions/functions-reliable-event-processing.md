@@ -3,14 +3,14 @@ title: Azure Functions 可靠事件处理
 description: 避免 Azure Functions 中缺少事件中心消息
 author: craigshoemaker
 ms.topic: conceptual
-ms.date: 01/13/2020
+ms.date: 07/02/2020
 ms.author: v-junlch
-ms.openlocfilehash: de57e5d29542c93f9a4363e61627f75962827a28
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a355387db628db04a79df88aaa78fa8ada566de0
+ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76116836"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945235"
 ---
 # <a name="azure-functions-reliable-event-processing"></a>Azure Functions 可靠事件处理
 
@@ -50,8 +50,8 @@ Azure Functions 在循环执行以下步骤的同时使用事件中心事件：
 
 此行为揭示了几个要点：
 
-- 未经处理的异常可能导致丢失消息。  导致异常的执行会继续递进指针。
-- 函数保证至少传送一次。  代码和相关系统可能需要[考虑到同一消息可能会接收两次这一事实](./functions-idempotent.md)。
+- 未经处理的异常可能导致丢失消息。 导致异常的执行会继续递进指针。
+- 函数保证至少传送一次。 代码和相关系统可能需要[考虑到同一消息可能会接收两次这一事实](./functions-idempotent.md)。
 
 ## <a name="handling-exceptions"></a>处理异常
 
@@ -91,7 +91,7 @@ Azure Functions 在循环执行以下步骤的同时使用事件中心事件：
 
 实现详细信息可能有所不同，但对于实例之间的共享状态，需要使用一个存储机制。 可以选择将状态存储在 Azure 存储、Redis 缓存或者可由函数集合访问的任何其他帐户中。
 
-[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)或[持久实体](./durable/durable-functions-overview.md)原生就很适合用于管理工作流和线路状态。 其他服务可能也适用，不过，本示例使用逻辑应用。 使用逻辑应用时，可以暂停和重启函数的执行，以便能够控制断路器模式的实现。
+[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)或[持久函数](./durable/durable-functions-overview.md)原本就很适合用来管理工作流和线路状态。 其他服务可能也适用，不过，本示例使用逻辑应用。 使用逻辑应用时，可以暂停和重启函数的执行，以便能够控制断路器模式的实现。
 
 ### <a name="define-a-failure-threshold-across-instances"></a>定义实例之间的故障阈值
 
@@ -123,7 +123,7 @@ Azure 逻辑应用随附了不同服务的内置连接器，提供有状态业�
 ## <a name="resources"></a>资源
 
 - [可靠事件处理的示例](https://github.com/jeffhollan/functions-csharp-eventhub-ordered-processing)
-- [Azure Durable Functions 断路器](https://github.com/jeffhollan/functions-durable-actor-circuitbreaker)
+- [Azure 持久实体线路断路器](https://github.com/jeffhollan/functions-durable-actor-circuitbreaker)
 
 ## <a name="next-steps"></a>后续步骤
 

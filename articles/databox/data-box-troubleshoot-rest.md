@@ -7,14 +7,14 @@ ms.service: databox
 ms.subservice: disk
 ms.topic: article
 origin.date: 04/19/2019
-ms.date: 04/06/2020
+ms.date: 07/06/2020
 ms.author: v-jay
-ms.openlocfilehash: 4bf9735254c09272336b6665ab8a3d68651ac0a1
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4a349df735006e3bccea7234a76e6391ae8dd231
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80634386"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945800"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-blob-storage"></a>排查与 Azure Data Box Blob 存储相关的问题
 
@@ -26,9 +26,9 @@ ms.locfileid: "80634386"
 
 |错误消息  |建议的操作 |
 |---------|---------|
-|无法检索子资源。 其中一个 HTTP 标头的值的格式不正确。|在“编辑”菜单中，选择“目标 Azure Stack API”。   <br>重启Azure 存储资源管理器。|
+|无法检索子资源。 其中一个 HTTP 标头的值的格式不正确。|在“编辑”菜单中，选择“目标 Azure Stack API”。  <br>重启Azure 存储资源管理器。|
 |`getaddrinfo ENOTFOUND <accountname>.blob.<serialnumber>.microsoftdatabox.cn` |检查是否已在以下路径将终结点名称 `<accountname>.blob.<serialnumber>.microsoftdatabox.cn` 添加到 hosts 文件： <li>`C:\Windows\System32\drivers\etc\hosts`（在 Windows 上），或者 </li><li> `/etc/hosts`（在 Linux 上）。</li>|
-|无法检索子资源。 <br>详细信息：自签名证书 |将设备的 TLS/SSL 证书导入 Azure 存储资源管理器： <li>从 Azure 门户下载证书。 有关详细信息，请转到[下载证书](data-box-deploy-copy-data-via-rest.md#download-certificate)。</li><li>在“编辑”菜单中，选择“SSL 证书”，然后选择“导入证书”。   </li>|
+|无法检索子资源。 <br>详细信息：自签名证书 |将设备的 TLS/SSL 证书导入 Azure 存储资源管理器： <li>从 Azure 门户下载证书。 有关详细信息，请转到[下载证书](data-box-deploy-copy-data-via-rest.md#download-certificate)。</li><li>在“编辑”菜单中，选择“SSL 证书”，然后选择“导入证书”。  </li>|
 
 ## <a name="errors-seen-in-azcopy-for-windows"></a>在 Windows 的 AzCopy 中看到的错误
 
@@ -36,8 +36,8 @@ ms.locfileid: "80634386"
 
 |错误消息  |建议的操作 |
 |---------|---------|
-|AzCopy 命令在显示以下错误之前，似乎挂起了一分钟： <br>无法枚举目录 https://… 无法解析远程名称 `<accountname>.blob.<serialnumber>.microsoftdatabox.cn`|检查是否已在 `C:\Windows\System32\drivers\etc\hosts` 将终结点名称 `<accountname>.blob.<serialnumber>.microsoftdatabox.cn` 添加到 hosts 文件。|
-|AzCopy 命令在显示以下错误之前，似乎挂起了一分钟： <br>分析源位置出错。 基础连接已关闭:无法建立 SSL/TLS 安全通道的信任关系。|将设备的 TLS/SSL 证书导入系统的证书存储。 有关详细信息，请转到[下载证书](data-box-deploy-copy-data-via-rest.md#download-certificate)。|
+|AzCopy 命令在显示以下错误之前，似乎停止了响应，时间长达一分钟： <br>无法枚举目录 https://… 无法解析远程名称 `<accountname>.blob.<serialnumber>.microsoftdatabox.cn`|检查是否已在 `C:\Windows\System32\drivers\etc\hosts` 将终结点名称 `<accountname>.blob.<serialnumber>.microsoftdatabox.cn` 添加到 hosts 文件。|
+|AzCopy 命令在显示以下错误之前，似乎停止了响应，时间长达一分钟： <br>分析源位置出错。 基础连接已关闭:无法建立 SSL/TLS 安全通道的信任关系。|将设备的 TLS/SSL 证书导入系统的证书存储。 有关详细信息，请转到[下载证书](data-box-deploy-copy-data-via-rest.md#download-certificate)。|
 
 
 ## <a name="errors-seen-in-azcopy-for-linux"></a>在 Linux 的 AzCopy 中看到的错误
@@ -46,8 +46,8 @@ ms.locfileid: "80634386"
 
 |错误消息  |建议的操作 |
 |---------|---------|
-|AzCopy 命令在显示以下错误之前，似乎挂起了 20 分钟： <br>分析源位置 `https://<accountname>.blob.<serialnumber>.microsoftdatabox.cn/<cntnr>` 出错。 没有此类设备或地址|检查是否已在 `/etc/hosts` 将终结点名称 `<accountname>.blob.<serialnumber>.microsoftdatabox.cn` 添加到 hosts 文件。|
-|AzCopy 命令在显示以下错误之前，似乎挂起了 20 分钟： <br>分析源位置出错… 无法建立 SSL 连接。|将设备的 TLS/SSL 证书导入系统的证书存储。 有关详细信息，请转到[下载证书](data-box-deploy-copy-data-via-rest.md#download-certificate)。|
+|AzCopy 命令在显示以下错误之前，似乎停止了响应，时间长达 20 分钟： <br>分析源位置 `https://<accountname>.blob.<serialnumber>.microsoftdatabox.cn/<cntnr>` 出错。 没有此类设备或地址|检查是否已在 `/etc/hosts` 将终结点名称 `<accountname>.blob.<serialnumber>.microsoftdatabox.cn` 添加到 hosts 文件。|
+|AzCopy 命令在显示以下错误之前，似乎停止了响应，时间长达 20 分钟： <br>分析源位置出错… 无法建立 SSL 连接。|将设备的 TLS/SSL 证书导入系统的证书存储。 有关详细信息，请转到[下载证书](data-box-deploy-copy-data-via-rest.md#download-certificate)。|
 
 ## <a name="errors-seen-in-azure-storage-library-for-python"></a>在用于 Python 的 Azure 存储库中看到的错误
 

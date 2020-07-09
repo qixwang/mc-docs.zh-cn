@@ -1,19 +1,19 @@
 ---
-title: Azure 高级存储：高性能设计
+title: Azure 高级存储 - 高性能设计
 description: 使用 Azure 高级 SSD 托管磁盘设计高性能应用程序。 高级存储为 Azure 虚拟机上运行的 I/O 密集型工作负载提供高性能、低延迟的磁盘支持。
 author: rockboyfor
 ms.service: virtual-machines-windows
 ms.topic: conceptual
 origin.date: 06/27/2017
-ms.date: 02/10/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.subservice: disks
-ms.openlocfilehash: 1c8a3b0c7d6e61fbee8b8161e40970dbd9222ea9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ee29eea2dedc697836a543c1f2de9f225266fbce
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428769"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945991"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure 高级存储：高性能设计
 
@@ -37,6 +37,6 @@ ms.locfileid: "77428769"
 SQL Server 用户请阅读有关 SQL Server 性能最佳实践的文章：
 
 * [Azure 虚拟机中 SQL Server 的性能最佳做法](sql/virtual-machines-windows-sql-performance.md)
-* [Azure 高级存储为 Azure VM 中的 SQL Server 提供最高性能](https://blogs.technet.com/b/dataplatforminsider/archive/2015/04/23/azure-premium-storage-provides-highest-performance-for-sql-server-in-azure-vm.aspx)
+* [Azure 高级存储为 Azure VM 中的 SQL Server 提供最高性能](https://cloudblogs.microsoft.com/sqlserver/2015/04/23/azure-premium-storage-provides-highest-performance-for-sql-server-in-azure-vm/)
 
-<!-- Update_Description: update meta properties -->
+<!-- Update_Description: update meta properties, wording update, update link -->

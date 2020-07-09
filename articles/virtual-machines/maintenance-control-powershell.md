@@ -3,17 +3,16 @@ title: 使用 PowerShell 对 Azure 虚拟机进行维护控制
 description: 了解如何使用维护控制和 PowerShell 来控制对 Azure VM 应用维护的时间。
 author: rockboyfor
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure-services
-origin.date: 01/31/2020
-ms.date: 04/30/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 367abdf4a8695c94d7b736f78fc708c44b9c0a2b
-ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
+ms.openlocfilehash: 6e443d021c665a4df8c24ea59a2e08b562e779a0
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83417705"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945691"
 ---
 <!--Verified successfully-->
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>使用维护控制和 Azure PowerShell 来控制更新
@@ -27,6 +26,12 @@ ms.locfileid: "83417705"
 ```powershell
 Install-Module -Name PowerShellGet -Repository PSGallery -Force
 ```
+
+安装 `Az.Maintenance` PowerShell 模块。     
+
+```powershell   
+Install-Module -Name Az.Maintenance
+``` 
 
 如果在本地安装，请确保以管理员身份打开 PowerShell 提示符。
 
@@ -230,5 +235,4 @@ Remove-AzMaintenanceConfiguration `
 ## <a name="next-steps"></a>后续步骤
 若要了解详细信息，请参阅[维护和更新](maintenance-and-updates.md)。
 
-<!-- Update_Description: new article about maintenance control powershell -->
-<!--NEW.date: 04/27/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

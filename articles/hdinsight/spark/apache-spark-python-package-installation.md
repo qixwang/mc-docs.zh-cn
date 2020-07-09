@@ -10,12 +10,12 @@ ms.topic: conceptual
 origin.date: 11/19/2019
 ms.date: 04/06/2020
 ms.author: v-yiso
-ms.openlocfilehash: 3134ff07dc5c772daa483f4523b7e96ce2c53f9a
-ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
+ms.openlocfilehash: ebbcdfd227b8892ce097dea1c69919b037012e56
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84186436"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516581"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>使用脚本操作在 Azure HDInsight 上安全管理 Python 环境
 
@@ -23,7 +23,7 @@ ms.locfileid: "84186436"
 > * [使用单元格 magic](apache-spark-jupyter-notebook-use-external-packages.md)
 > * [使用脚本操作](apache-spark-python-package-installation.md)
 
-HDInsight 在 Spark 群集中包含两个内置的 Python 安装：Anaconda Python 2.7 和 Python 3.5。 客户可能需要自定义 Python 环境。 例如，安装外部 Python 包或其他 Python 版本。 本文介绍的最佳做法涉及如何安全地管理 HDInsight 上 Apache Spark 群集的 Python 环境。
+HDInsight 在 Spark 群集中有两个内置 Python 安装，即 Anaconda Python 2.7 和 Python 3.5。 客户可能需要自定义 Python 环境。 例如，安装外部 Python 包或其他 Python 版本。 本文介绍的最佳做法涉及如何安全地管理 HDInsight 上 Apache Spark 群集的 Python 环境。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -45,7 +45,7 @@ HDInsight 服务中有两种类型的开放源代码组件：
 >
 > 自定义组件可获得合理范围的支持，有助于进一步解决问题。 Microsoft 支持部门也许能够解决问题，也可能要求你参与可用的开放源代码技术渠道，获取该技术的深入专业知识。 有许多可以使用的社区站点，例如：[面向 HDInsight 的 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)、`https://stackoverflow.com`。 此外，Apache 项目在 `https://apache.org` 上有项目站点。
 
-## <a name="understand-default-python-installation"></a>了解默认的 Python 安装
+## <a name="understand-default-python-installation"></a>了解默认 Python 安装
 
 HDInsight Spark 群集是通过 Anaconda 安装创建的。 群集中有两个 Python 安装：Anaconda Python 2.7 和 Python 3.5。 下表显示了 Spark、Livy 和 Jupyter 的默认 Python 设置。
 
@@ -58,9 +58,9 @@ HDInsight Spark 群集是通过 Anaconda 安装创建的。 群集中有两个 P
 
 ## <a name="safely-install-external-python-packages"></a>安全安装外部 Python 包
 
-HDInsight 群集依赖于内置的 Python 环境，即 Python 2.7 和 Python 3.5。 直接在这些默认内置环境中安装自定义包可能会导致意外的库版本更改， 并进一步破坏群集。 若要为 Spark 应用程序安全地安装自定义的外部 Python 包，请执行以下步骤。
+HDInsight 群集依赖于内置 Python 环境（Python 2.7 和 Python 3.5）。 直接在这些默认内置环境中安装自定义包可能会导致意外的库版本更改， 并进一步破坏群集。 若要为 Spark 应用程序安全地安装自定义的外部 Python 包，请执行以下步骤。
 
-1. 使用 conda 创建 Python 虚拟环境。 虚拟环境为你的项目提供隔离的空间，且不会破坏其他项目。 创建 Python 虚拟环境时，可以指定要使用的 Python 版本。 即使要使用 Python 2.7 和 3.5，仍需要创建虚拟环境。 此要求是为了确保群集的默认环境不会受到破坏。 使用以下脚本针对群集上的所有节点运行脚本操作，以创建 Python 虚拟环境。
+1. 使用 conda 创建 Python 虚拟环境。 虚拟环境为你的项目提供隔离的空间，且不会破坏其他项目。 创建 Python 虚拟环境时，可以指定要使用的 python 版本。 即使要使用 Python 2.7 和 3.5，仍需要创建虚拟环境。 此要求是为了确保群集的默认环境不会受到破坏。 使用以下脚本在群集上为所有节点运行脚本操作，以创建 Python 虚拟环境。
 
     -   `--prefix` 指定 conda 虚拟环境所在的路径。 需要根据此处指定的路径进一步更改几项配置。 本示例使用 py35new，因为群集中已包含名为 py35 的现有虚拟环境。
     -   `python=` 指定虚拟环境的 Python 版本。 本示例使用版本 3.5，即群集的内置版本。 也可以使用其他 Python 版本来创建虚拟环境。
@@ -70,7 +70,7 @@ HDInsight 群集依赖于内置的 Python 环境，即 Python 2.7 和 Python 3.5
     sudo /usr/bin/anaconda/bin/conda create --prefix /usr/bin/anaconda/envs/py35new python=3.5 anaconda --yes 
     ```
 
-2. 根据需要在创建的虚拟环境中安装外部 Python 包。 使用以下脚本针对群集上的所有节点运行脚本操作，以安装外部 Python 包。 此处需要有 sudo 权限才能将文件写入虚拟环境文件夹。
+2. 根据需要在创建的虚拟环境中安装外部 Python 包。 使用以下脚本在群集上为所有节点运行脚本操作，以安装外部 Python 包。 此处需要有 sudo 权限才能将文件写入虚拟环境文件夹。
 
     在[包索引](https://pypi.python.org/pypi)中搜索可用包的完整列表。 也可以从其他源获取可用包的列表。 例如，可以安装通过 [conda-forge](https://conda-forge.org/feedstocks/) 提供的包。
 
@@ -78,8 +78,8 @@ HDInsight 群集依赖于内置的 Python 环境，即 Python 2.7 和 Python 3.5
     
     - 使用 conda 通道：
 
-        -   `seaborn` 要安装的包名称。
-        -   `-n py35new` 指定刚刚创建的虚拟环境名称。 请务必根据虚拟环境创建过程相应地更改此名称。
+        -   `seaborn` 是要安装的包名称。
+        -   `-n py35new` 指定刚刚创建的虚拟环境名称。 确保根据虚拟环境创建相应地更改名称。
 
         ```bash
         sudo /usr/bin/anaconda/bin/conda install seaborn -n py35new --yes
@@ -95,7 +95,7 @@ HDInsight 群集依赖于内置的 Python 环境，即 Python 2.7 和 Python 3.5
     - 使用 conda 通道：
 
         -   `numpy=1.16.1` 是要安装的包名称和版本。
-        -   `-n py35new` 指定刚刚创建的虚拟环境名称。 请务必根据虚拟环境创建过程相应地更改此名称。
+        -   `-n py35new` 指定刚创建的虚拟环境名称。 确保根据虚拟环境创建相应地更改名称。
 
         ```bash
         sudo /usr/bin/anaconda/bin/conda install numpy=1.16.1 -n py35new --yes
@@ -107,7 +107,7 @@ HDInsight 群集依赖于内置的 Python 环境，即 Python 2.7 和 Python 3.5
         sudo /usr/bin/anaconda/env/py35new/bin/pip install numpy==1.16.1
         ```
 
-    如果你不知道虚拟环境名称，可以通过 SSH 连接到群集的头节点，然后运行 `/usr/bin/anaconda/bin/conda info -e` 以显示所有虚拟环境。
+    如果不知道虚拟环境名称，则可以通过 SSH 连接到群集的头节点并运行 `/usr/bin/anaconda/bin/conda info -e` 以显示所有虚拟环境。
 
 3. 更改 Spark 和 Livy 配置，并指向创建的虚拟环境。
 
@@ -136,7 +136,7 @@ HDInsight 群集依赖于内置的 Python 环境，即 Python 2.7 和 Python 3.5
 
         ![通过 Ambari 更改 Spark 配置](./media/apache-spark-python-package-installation/ambari-restart-services.png)
 
-4. 若要在 Jupyter 上使用新建的虚拟环境， 更改 Jupyter 配置并重启 Jupyter。 使用以下语句针对所有头节点运行脚本操作，使 Jupyter 指向新建的虚拟环境。 请务必修改针对虚拟环境指定的前缀的路径。 运行此脚本操作后，通过 Ambari UI 重启 Jupyter 服务，使此项更改生效。
+4. 如果要在 Jupyter 上使用新创建的虚拟环境。 更改 Jupyter 配置并重启 Jupyter。 使用以下语句在所有头节点上运行脚本操作，使 Jupyter 指向新创建的虚拟环境。 请务必修改针对虚拟环境指定的前缀的路径。 运行此脚本操作后，通过 Ambari UI 重启 Jupyter 服务，使此项更改生效。
 
     ```bash
     sudo sed -i '/python3_executable_path/c\ \"python3_executable_path\" : \"/usr/bin/anaconda/envs/py35new/bin/python3\"' /home/spark/.sparkmagic/config.json
@@ -148,7 +148,7 @@ HDInsight 群集依赖于内置的 Python 环境，即 Python 2.7 和 Python 3.5
 
 ## <a name="known-issue"></a>已知问题
 
-Anaconda 版本 `4.7.11`、`4.7.12`、`4.8.0` 有一个已知的 bug。 如果发现脚本操作在执行 `"Collecting package metadata (repodata.json): ...working..."` 时挂起，同时失败并显示 `"Python script has been killed due to timeout after waiting 3600 secs"`， 可以下载[此脚本](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh)，并在所有节点上将其作为脚本操作运行，这样即可解决此问题。
+Anaconda 版本 `4.7.11`、`4.7.12`、`4.8.0` 有一个已知的 bug。 如果发现脚本操作在执行 `"Collecting package metadata (repodata.json): ...working..."` 时停止响应，然后失败并显示 `"Python script has been killed due to timeout after waiting 3600 secs"`， 可以下载[此脚本](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh)，并在所有节点上将其作为脚本操作运行，这样即可解决此问题。
 
 若要检查 Anaconda 版本，可以通过 SSH 连接到群集头节点并运行 `/usr/bin/anaconda/bin/conda --v`。
 

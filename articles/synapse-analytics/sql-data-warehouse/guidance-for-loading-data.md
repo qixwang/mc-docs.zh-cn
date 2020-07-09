@@ -7,17 +7,17 @@ manager: digimobile
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
-origin.date: 02/04/2020
-ms.date: 05/11/2020
+origin.date: 06/07/2020
+ms.date: 07/06/2020
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 6cf9e2cbe9bdbbb33bb94454a3b2d4246d90fe20
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.openlocfilehash: 07650ab7e7b05ba162368c124664013f3d475c4c
+ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198644"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85845823"
 ---
 # <a name="best-practices-for-loading-data-using-synapse-sql-pool"></a>使用 Synapse SQL 池加载数据的最佳做法
 
@@ -29,8 +29,6 @@ ms.locfileid: "82198644"
 
 将数据导出为 ORC 文件格式时，如果存在较大的文本列，可能会收到“Java 内存不足”错误。 若要解决此限制方面的问题，请仅导出列的一个子集。
 
-PolyBase 无法加载数据大小超过 1,000,000 字节的行。 将数据置于 Azure Blob 存储或 Azure Data Lake Store 的文本文件中时，这些数据必须少于 1,000,000 字节。 无论表架构如何，都有此字节限制。
-
 所有文件格式有不同的性能特征。 为实现最快加载，请使用压缩的分隔文本文件。 UTF-8 和 UTF-16 之间的性能差异是最小的。
 
 将大型压缩文件拆分为较小的压缩文件。
@@ -39,38 +37,47 @@ PolyBase 无法加载数据大小超过 1,000,000 字节的行。 将数据置�
 
 若要尽量提高加载速度，请一次只运行一个加载作业。 如果这不可行，请将同时运行的负载的数量降至最低。 如果预期的加载作业较大，可以考虑在加载前纵向扩展 SQL 池。
 
-若要使用适当的计算资源运行负载，请创建指定运行负载的加载用户。 将每个加载用户分配给一个特定的资源类或工作负载组。 若要运行负载，请以某个加载用户的身份登录，然后运行该负载。 该负载使用用户的资源类运行。  
-
-> [!NOTE]
-> 与尝试根据当前的资源类需求更改用户的资源类相比，此方法更简单。
+若要使用适当的计算资源运行负载，请创建指定运行负载的加载用户。 将每个加载用户分类到特定的工作负荷组。 若要运行负载，请以某个加载用户的身份登录，然后运行该负载。 负载与用户的工作负荷组一起运行。  
 
 ### <a name="example-of-creating-a-loading-user"></a>创建加载用户的示例
 
-此示例为 staticrc20 资源类创建加载用户。 第一步是**连接到主服务器**并创建登录名。
+此示例将创建一个分类到特定工作负荷组的加载用户。 第一步是**连接到主服务器**并创建登录名。
 
 ```sql
    -- Connect to master
-   CREATE LOGIN LoaderRC20 WITH PASSWORD = 'a123STRONGpassword!';
+   CREATE LOGIN loader WITH PASSWORD = 'a123STRONGpassword!';
 ```
 
-连接到 SQL 池并创建一个用户。 以下代码假定你连接到名为 mySampleDataWarehouse 的数据库。 它演示如何创建一个名为 LoaderRC20 的用户，并向该用户授予对某个数据库的控制权限， 然后将该用户添加为 staticrc20 数据库角色的成员。  
+连接到 SQL 池并创建一个用户。 以下代码假定你连接到名为 mySampleDataWarehouse 的数据库。 它展示了如何创建一个名为“loader”的用户，并授予该用户使用 [COPY 语句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)创建表和进行加载的权限。 然后，它将该用户分类到包含最多资源的 DataLoads 工作负荷组。 
 
 ```sql
-   -- Connect to the database
-   CREATE USER LoaderRC20 FOR LOGIN LoaderRC20;
-   GRANT CONTROL ON DATABASE::[mySampleDataWarehouse] to LoaderRC20;
-   EXEC sp_addrolemember 'staticrc20', 'LoaderRC20';
+   -- Connect to the SQL pool
+   CREATE USER loader FOR LOGIN loader;
+   GRANT ADMINISTER DATABASE BULK OPERATIONS TO loader;
+   GRANT INSERT ON <yourtablename> TO loader;
+   GRANT SELECT ON <yourtablename> TO loader;
+   GRANT CREATE TABLE TO loader;
+   GRANT ALTER ON SCHEMA::dbo TO loader;
+   
+   CREATE WORKLOAD GROUP DataLoads
+   WITH ( 
+      MIN_PERCENTAGE_RESOURCE = 100
+       ,CAP_PERCENTAGE_RESOURCE = 100
+       ,REQUEST_MIN_RESOURCE_GRANT_PERCENT = 100
+    );
+
+   CREATE WORKLOAD CLASSIFIER [wgcELTLogin]
+   WITH (
+         WORKLOAD_GROUP = 'DataLoads'
+       ,MEMBERNAME = 'loader'
+   );
 ```
 
-若要使用 staticRC20 资源类的资源运行负载，请以 LoaderRC20 身份登录，然后运行该负载。
+若要使用加载工作负荷组的资源运行加载，请以 loader 身份登录并运行该加载。
 
-在静态而非动态资源类下运行负载。 使用静态资源类可确保不管[数据仓库单元](what-is-a-data-warehouse-unit-dwu-cdwu.md)如何，资源始终不变。 如果使用动态资源类，则资源因服务级别而异。
+## <a name="allowing-multiple-users-to-load-polybase"></a>允许多个用户加载 (PolyBase)
 
-对于动态类，如果服务级别降低，则意味着可能需要对加载用户使用更大的资源类。
-
-## <a name="allowing-multiple-users-to-load"></a>允许多个用户进行加载
-
-通常需要允许多个用户将数据加载到 SQL 池中。 使用 [CREATE TABLE AS SELECT (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 进行加载需要数据库的“控制”权限。  “控制”权限允许对所有架构进行控制性访问。
+通常需要允许多个用户将数据加载到 SQL 池中。 使用 [CREATE TABLE AS SELECT (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (PolyBase) 进行加载需要数据库的“控制”权限。  “控制”权限允许对所有架构进行控制性访问。
 
 可能不需要让所有加载用户都具有对所有架构的控制访问权限。 若要限制权限，请使用 DENY CONTROL 语句。
 
@@ -105,14 +112,14 @@ PolyBase 无法加载数据大小超过 1,000,000 字节的行。 将数据置�
 
 ## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>使用 SqLBulkCopy API 或 bcp 时增加批大小
 
-使用 PolyBase 进行加载将为 SQL 池提供最高吞吐量。 如果无法使用 PolyBase 进行加载，并且必须使用 [SqLBulkCopy API](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 或 [bcp](https://docs.microsoft.com/sql/tools/bcp-utility?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)，则应考虑增加批大小以获得更高的吞吐量。
+使用 COPY 语句进行加载将为 SQL 池提供最高吞吐量。 如果无法使用 COPY 进行加载，并且必须使用 [SqLBulkCopy API](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 或 [bcp](https://docs.microsoft.com/sql/tools/bcp-utility?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)，则应考虑增加批大小以提高吞吐量。
 
 > [!TIP]
 > 10 万行到 1 百万行之间的批大小是建议用于确定最佳批大小容量的基线。
 
 ## <a name="handling-loading-failures"></a>处理加载失败
 
-使用外部表的加载可能因“查询已中止 -- 从外部源读取时已达最大拒绝阈值”错误而失败。  此消息表示外部数据包含脏记录。
+使用外部表的加载可能因“查询已中止 -- 从外部源读取时已达最大拒绝阈值”错误而失败。 此消息表示外部数据包含脏记录。
 
 如果数据记录满足以下条件之一，则会将其视为脏记录：
 
@@ -143,7 +150,7 @@ create statistics [Speed] on [Customer_Speed] ([Speed]);
 create statistics [YearMeasured] on [Customer_Speed] ([YearMeasured]);
 ```
 
-## <a name="rotate-storage-keys"></a>轮换存储密钥
+## <a name="rotate-storage-keys-polybase"></a>轮换存储密钥 (PolyBase)
 
 好的安全做法是定期更改 Blob 存储的访问密钥。 由于有两个用于 Blob 存储帐户的存储密钥，因此可以转换着使用这两个密钥。
 
@@ -169,6 +176,6 @@ ALTER DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SE
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要详细了解 PolyBase 以及如何设计提取、加载和转换 (ELT) 过程，请参阅[为 SQL 数据仓库设计 ELT](design-elt-data-loading.md)。
-- 如需加载教程，请参阅[使用 PolyBase 将数据从 Azure Blob 存储加载到 Azure SQL 数据仓库](load-data-from-azure-blob-storage-using-polybase.md)。
+- 若要详细了解在设计提取、加载和转换 (ELT) 过程时如何使用 COPY 语句或 PolyBase，请参阅[为 SQL 数据仓库设计 ELT](design-elt-data-loading.md)。
+- 如需加载教程，请参阅[使用 COPY 语句将数据从 Azure Blob 存储加载到 Synapse SQL](load-data-from-azure-blob-storage-using-polybase.md)。
 - 若要监视数据加载，请参阅[使用 DMV 监视工作负荷](sql-data-warehouse-manage-monitor.md)。

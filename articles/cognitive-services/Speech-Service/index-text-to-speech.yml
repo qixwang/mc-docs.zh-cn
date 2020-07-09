@@ -10,14 +10,14 @@ metadata:
   ms.service: speech-service
   ms.topic: landing-page
   origin.date: 03/10/2020
-  ms.date: 04/20/2020
+  ms.date: 06/19/2020
   ms.author: v-tawe
-  ms.openlocfilehash: bf9f9e2bc56571eb97e4bcec0631e8d24f72817d
-  ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
+  ms.openlocfilehash: e3ec5f06ebaf1675cdd8465045a0fc072c9ba1da
+  ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/19/2020
-  ms.locfileid: "85095958"
+  ms.lasthandoff: 07/01/2020
+  ms.locfileid: "85613326"
 landingContent:
 - title: 关于文本转语音
   linkLists:
@@ -27,6 +27,8 @@ landingContent:
       url: text-to-speech.md
     - text: 语音合成基础知识
       url: text-to-speech-basics.md
+    - text: 使用语音 CLI 在没有代码的情况下进行文本到语音转换
+      url: spx-overview.md
   - linkListType: quickstart
     links:
     - text: 将语音合成到扬声器

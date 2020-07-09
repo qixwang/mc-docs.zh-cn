@@ -1,27 +1,22 @@
 ---
-title: 教程 - 使用 Azure PowerShell 为 Windows 虚拟机创建和管理 Azure 虚拟网络 | Azure
+title: 教程 - 使用 Azure PowerShell 为 Windows 虚拟机创建和管理 Azure 虚拟网络
 description: 本教程介绍如何使用 Azure PowerShell 为 Windows 虚拟机创建和管理 Azure 虚拟网络
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: rockboyfor
-manager: digimobile
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
+ms.subservice: networking
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 12/04/2018
-ms.date: 10/14/2019
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 7a6b439f7668ca8d6bc0c41230cbbb5555bfd5ba
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 1f19dafe9ecf824bdf32508c3846ab26e983c2e9
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293346"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945844"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-windows-virtual-machines-with-azure-powershell"></a>教程：使用 Azure PowerShell 为 Windows 虚拟机创建和管理 Azure 虚拟网络
 
@@ -52,11 +47,9 @@ Azure 虚拟网络在虚拟机、Internet 与其他 Azure 服务（例如 Azure 
 - *myBackendNic* - *myBackendVM* 用于与 *myFrontendVM* 进行通信的网络接口。
 - *myBackendVM* - 使用端口 1433 与 *myFrontendVM* 通信的 VM。
 
-## <a name="launch-azure-powershell"></a>启动 Azure PowerShell
+## <a name="launch-azure-local-powershell"></a>启动 Azure 本地 PowerShell
 
-打开 Azure Powershell 控制台，并以管理员权限运行以下脚本。
-
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+打开 Azure Powershell 控制台，以管理员权限运行下面列出的脚本。
 
 ## <a name="create-subnet"></a>创建子网 
 
@@ -182,7 +175,7 @@ $nsgFrontendRule = New-AzNetworkSecurityRuleConfig `
   -Access Allow
 ```
 
-可通过为后端子网创建 NSG，将内部流量限制为仅从 myFrontendVM 流向 myBackendVM。 以下示例创建名为“myBackendNSGRule”  的 NSG 规则：
+可通过为后端子网创建 NSG，将内部流量限制为仅从 myFrontendVM 流向 myBackendVM。 以下示例创建名为“myBackendNSGRule”的 NSG 规则：
 
 ```powershell
 $nsgBackendRule = New-AzNetworkSecurityRuleConfig `
@@ -242,7 +235,7 @@ Set-AzVirtualNetwork -VirtualNetwork $vnet
 
 创建本教程的后端 VM 的最简单方法是使用 SQL Server 映像。 本教程仅使用数据库服务器创建 VM，但不提供有关访问数据库的信息。
 
-创建 myBackendNic  ：
+创建 myBackendNic：
 
 ```powershell
 $backendNic = New-AzNetworkInterface `
@@ -258,7 +251,7 @@ $backendNic = New-AzNetworkInterface `
 $cred = Get-Credential
 ```
 
-创建 myBackendVM  。
+创建 myBackendVM。
 
 ```powershell
 New-AzVM `

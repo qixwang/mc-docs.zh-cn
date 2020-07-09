@@ -8,16 +8,16 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
 origin.date: 08/29/2018
-ms.date: 05/11/2020
+ms.date: 07/06/2020
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 11185847f1af0f2eed5390708816ffecadfdaafe
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.openlocfilehash: e7280907955a36445b66c78fa9ba16978bc44e72
+ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198767"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85845829"
 ---
 # <a name="restore-an-existing-sql-pool"></a>还原现有的 SQL 池
 
@@ -25,7 +25,7 @@ ms.locfileid: "82198767"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-**验证 DTU 容量。** 每个池都由一个具有默认 DTU 配额的 SQL 服务器（例如 myserver.database.chinacloudapi.cn）托管。 验证 SQL Server 的剩余 DTU 配额是否足够进行数据库还原。
+**验证 DTU 容量。** 每个池都由一个具有默认 DTU 配额的逻辑 SQL Server（例如 myserver.database.chinacloudapi.cn）托管。 验证该服务器的剩余 DTU 配额是否足够进行数据库还原。
 
 ## <a name="before-you-begin"></a>准备阶段
 
@@ -47,7 +47,8 @@ ms.locfileid: "82198767"
 5. 使用 RestorePointCreationDate 选取所需的还原点。
 
 6. 使用 [Restore-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) PowerShell cmdlet 将 SQL 池还原到所需还原点。
-        * 若要将 SQL 池还原到另一逻辑服务器，请确保指定其他逻辑服务器名称。  该逻辑服务器也可以位于另一资源组和区域中。
+
+    * 若要将 SQL 池还原到另一服务器，请确保指定其他服务器名称。  该服务器也可以位于另一资源组和区域中。
 
 7. 验证已还原的 SQL 池是否处于联机状态。
 
@@ -58,7 +59,7 @@ ms.locfileid: "82198767"
 $SubscriptionName="<YourSubscriptionName>"
 $ResourceGroupName="<YourResourceGroupName>"
 $ServerName="<YourServerNameWithoutURLSuffixSeeNote>"  # Without database.chinacloudapi.cn
-#$TargetResourceGroupName="<YourTargetResourceGroupName>" # uncomment to restore to a different logical server.
+#$TargetResourceGroupName="<YourTargetResourceGroupName>" # uncomment to restore to a different server.
 #$TargetServerName="<YourtargetServerNameWithoutURLSuffixSeeNote>"  
 $DatabaseName="<YourDatabaseName>"
 $NewDatabaseName="<YourDatabaseName>"
@@ -79,7 +80,7 @@ $PointInTime="<RestorePointCreationDate>"
 # Restore database from a restore point
 $RestoredDatabase = Restore-AzSqlDatabase –FromPointInTimeBackup –PointInTime $PointInTime -ResourceGroupName $Database.ResourceGroupName -ServerName $Database.ServerName -TargetDatabaseName $NewDatabaseName –ResourceId $Database.ResourceID
 
-# Use the following command to restore to a different logical server
+# Use the following command to restore to a different server
 #$RestoredDatabase = Restore-AzSqlDatabase –FromPointInTimeBackup –PointInTime $PointInTime -ResourceGroupName $Database.ResourceTargetGroupName -ServerName $TargetServerName -TargetDatabaseName $NewDatabaseName –ResourceId $Database.ResourceID
 
 # Verify the status of restored database
@@ -91,11 +92,11 @@ $RestoredDatabase.status
 
 1. 登录到 [Azure 门户](https://portal.azure.cn/)。
 2. 导航到要从中进行还原的 SQL 池。
-3. 在“概览”边栏选项卡顶部，选择“还原”  。
+3. 在“概览”边栏选项卡顶部，选择“还原”。
 
     ![ 还原概述](./media/sql-data-warehouse-restore-active-paused-dw/restoring-01.png)
 
-4. 选择“自动还原点”或“用户定义的还原点”。   如果 SQL 池没有任何自动还原点，请等待数小时或创建一个用户定义的还原点，然后再进行还原。 对于用户定义的还原点，请选择一个现有的，或者创建一个新的。 对于**服务器**，可以选取另一资源组和区域中的逻辑服务器，也可以创建一个新的。 在提供所有参数后，请单击“查看 + 还原”。 
+4. 选择“自动还原点”或“用户定义的还原点”。  如果 SQL 池没有任何自动还原点，请等待数小时或创建一个用户定义的还原点，然后再进行还原。 对于用户定义的还原点，请选择一个现有的，或者创建一个新的。 对于“服务器”，可以选取另一资源组和区域中的服务器，也可以创建一个新服务器。 在提供所有参数后，请单击“查看 + 还原”。
 
     ![自动还原点](./media/sql-data-warehouse-restore-active-paused-dw/restoring-11.png)
 

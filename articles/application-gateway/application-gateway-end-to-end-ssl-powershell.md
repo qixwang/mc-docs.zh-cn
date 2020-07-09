@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 04/26/2020
+ms.date: 06/23/2020
 ms.author: v-junlch
-ms.openlocfilehash: 6dff3b1f51f07c3b714cc9c85955c830195dd1b5
-ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
+ms.openlocfilehash: 0d9afe681458976fed099deb9b284cf766acac27
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82267640"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516742"
 ---
 # <a name="configure-end-to-end-tls-by-using-application-gateway-with-powershell"></a>使用 PowerShell 通过应用程序网关配置端到端 TLS
 
@@ -33,9 +33,9 @@ Azure 应用程序网关支持对流量进行端到端加密。 该应用程序�
 
 此方案将：
 
-* 创建名为 appgw-rg 的资源组  。
-* 创建名为 appgwvnet，地址空间为 10.0.0.0/16 的虚拟网络   。
-* 创建名为“appgwsubnet”和“appsubnet”的两个子网   。
+* 创建名为 appgw-rg 的资源组。
+* 创建名为 appgwvnet，地址空间为 10.0.0.0/16 的虚拟网络 。
+* 创建名为“appgwsubnet”和“appsubnet”的两个子网 。
 * 创建支持端到端 TLS 加密且限制 TLS 协议版本和密码套件的小型应用程序网关。
 
 ## <a name="before-you-begin"></a>准备阶段
@@ -138,7 +138,7 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name 'publicIP01'
    ```
 
    > [!NOTE]
-   > 完全限定的域名 (FQDN) 也是可用于替换后端服务器 IP 地址的有效值。 可通过 -BackendFqdns 开关启用它  。 
+   > 完全限定的域名 (FQDN) 也是可用于替换后端服务器 IP 地址的有效值。 可通过 -BackendFqdns 开关启用它。 
 
 4. 配置公共 IP 终结点的前端 IP 端口。 此端口是最终用户连接到的端口。
 
@@ -165,16 +165,18 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name 'publicIP01'
 7. 上传要在已启用 TLS 的后端池资源上使用的证书。
 
    > [!NOTE]
-   > 默认探测从后端的 IP 地址上的默认  TLS 绑定获取公钥，并将其收到的公钥值与用户在此处提供的公钥值进行比较。 
+   > 默认探测从后端的 IP 地址上的默认 TLS 绑定获取公钥，并将其收到的公钥值与用户在此处提供的公钥值进行比较。 
    > 
-   > 如果正在后端使用主机头和服务器名称指示 (SNI)，则检索到的公钥可能不是流量预期流向的站点。 如有疑问，请访问后端服务器上的 https://127.0.0.1/ ，确认用于默认 TLS 绑定的证书  。 本部分使用该请求中的公钥。 如果对 HTTPS 绑定使用主机头和 SNI，但未从后端服务器的 https://127.0.0.1/ 手动浏览器请求收到响应和证书，则必须在其上设置默认 TLS 绑定。 如果不这样做，探测会失败，后端不会列入允许名单。
+   > 如果正在后端使用主机头和服务器名称指示 (SNI)，则检索到的公钥可能不是流量预期流向的站点。 如有疑问，请访问后端服务器上的 https://127.0.0.1/ ，确认用于默认 TLS 绑定的证书。 本部分使用该请求中的公钥。 如果对 HTTPS 绑定使用主机头和 SNI，但未从后端服务器的 https://127.0.0.1/ 手动浏览器请求收到响应和证书，则必须在其上设置默认 TLS 绑定。 如果不这样做，探测会失败，后端不会被系统允许。
+   
+   有关应用程序网关中 SNI 的详细信息，请参阅[应用程序网关的 TLS 终止和端到端 TLS 概述](ssl-overview.md)。
 
    ```powershell
    $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name 'allowlistcert1' -CertificateFile C:\cert.cer
    ```
 
    > [!NOTE]
-   > 在上一步中提供的证书应该是后端中存在的 .pfx 证书的公钥。 以索赔、证据和推理 (CER) 格式导出后端服务器上安装的证书（不是根证书），将其用在此步骤。 此步骤会将后端加入应用程序网关的允许列表。
+   > 上一步骤中提供的证书应该是后端中存在的 .pfx 证书的公钥。 以索赔、证据和推理 (CER) 格式导出后端服务器上安装的证书（不是根证书），将其用在此步骤。 此步骤会使用应用程序网关来允许后端。
 
    如果使用的是应用程序网关 v2 SKU，则创建受信任的根证书而不是身份验证证书。 有关详细信息，请参阅[应用程序网关的端到端 TLS 概述](ssl-overview.md#end-to-end-tls-with-the-v2-sku)：
 
@@ -200,7 +202,7 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name 'publicIP01'
    $rule = New-AzApplicationGatewayRequestRoutingRule -Name 'rule01' -RuleType basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
    ```
 
-10. 配置应用程序网关的实例大小。 可用大小为 Standard\_Small、Standard\_Medium 和 Standard\_Large    。  对于容量，可用值为 1 到 10   。
+10. 配置应用程序网关的实例大小。 可用大小为 Standard\_Small、Standard\_Medium 和 Standard\_Large  。  对于容量，可用值为 1 到 10 。
 
     ```powershell
     $sku = New-AzApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
@@ -217,7 +219,7 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name 'publicIP01'
     - **TLSV1_1**
     - **TLSV1_2**
     
-    以下示例将最低协议版本设置为 TLSv1_2 并仅启用 TLS\_ECDHE\_ECDSA\_WITH\_AES\_128\_GCM\_SHA256、TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384 和 TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256     。
+    以下示例将最低协议版本设置为 TLSv1_2 并仅启用 TLS\_ECDHE\_ECDSA\_WITH\_AES\_128\_GCM\_SHA256、TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384 和 TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256   。
 
     ```powershell
     $SSLPolicy = New-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -PolicyType Custom
@@ -237,7 +239,7 @@ $appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -Resou
 $appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -ResourceGroupName "appgw-rg" -Location "China North 2" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SSLPolicy $SSLPolicy -TrustedRootCertificate $trustedRootCert01 -Verbose
 ```
 
-## <a name="apply-a-new-certificate-if-the-back-end-certificate-is-expired"></a>如果后端证书已过期，则应用新证书
+## <a name="apply-a-new-certificate-if-the-back-end-certificate-is-expired"></a>如果后端证书已过期，请应用新证书
 
 如果后端证书已过期，请使用此过程应用新证书。
 
@@ -253,7 +255,7 @@ $appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -Resou
    Add-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw -Name 'NewCert' -CertificateFile "appgw_NewCert.cer" 
    ```
     
-3. 将新的身份验证证书对象放入变量 (TypeName:Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAuthenticationCertificate)。
+3. 将新的身份验证证书对象导入变量 (TypeName:Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAuthenticationCertificate)。
 
    ```powershell
    $AuthCert = Get-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw -Name NewCert
@@ -310,7 +312,7 @@ $appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -Resou
    $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
 
-2. 定义 TLS 策略。 如下示例禁用了 TLSv1.0 和 TLSv1.1，仅允许密码套件 TLS\_ECDHE\_ECDSA\_WITH\_AES\_128\_GCM\_SHA256、TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384 和 TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256      。
+2. 定义 TLS 策略。 如下示例禁用了 TLSv1.0 和 TLSv1.1，仅允许密码套件 TLS\_ECDHE\_ECDSA\_WITH\_AES\_128\_GCM\_SHA256、TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384 和 TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256    。
 
    ```powershell
    Set-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -PolicyType Custom -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -ApplicationGateway $gw
@@ -327,7 +329,7 @@ $appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -Resou
 
 创建网关后，下一步是配置前端以进行通信。 使用公共 IP 时，应用程序网关需要动态分配的 DNS 名称，这会造成不便。 若要确保最终用户能够访问应用程序网关，可以使用 CNAME 记录指向应用程序网关的公共终结点。 有关详细信息，请参阅[在 Azure 中配置自定义域名](../cloud-services/cloud-services-custom-domain-name-portal.md)。 
 
-若要配置别名，可使用附加到应用程序网关的 PublicIPAddress 元素检索应用程序网关及其关联的 IP/DNS 名称的详细信息  。 使用应用程序网关的 DNS 名称来创建 CNAME 记录，使两个 Web 应用程序都指向此 DNS 名称。 不建议使用 A 记录，因为重新启动应用程序网关后 VIP 可能会变化。
+若要配置别名，可使用附加到应用程序网关的 PublicIPAddress 元素检索应用程序网关及其关联的 IP/DNS 名称的详细信息。 使用应用程序网关的 DNS 名称来创建 CNAME 记录，使两个 Web 应用程序都指向此 DNS 名称。 不建议使用 A 记录，因为重新启动应用程序网关后 VIP 可能会变化。
 
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName appgw-RG -Name publicIP01
@@ -357,7 +359,7 @@ DnsSettings              : {
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅 [Web 应用程序防火墙概述](application-gateway-webapplicationfirewall-overview.md)，详细了解如何通过应用程序网关的 Web 应用程序防火墙强化 Web 应用程序的安全性。
+请参阅 [Web 应用程序防火墙概述](/web-application-firewall/ag/ag-overview)，详细了解如何通过应用程序网关的 Web 应用程序防火墙强化 Web 应用程序的安全性。
 
 [scenario]: ./media/application-gateway-end-to-end-SSL-powershell/scenario.png
 

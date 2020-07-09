@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/10/2019
+ms.date: 06/30/2020
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: edeb368f62ea70d461cbd48794bbc572dbdb9d12
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d947625863b088c0a90aca3c83dd424aa480c1e2
+ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290965"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945185"
 ---
 # <a name="create-list-delete-or-assign-a-role-to-a-user-assigned-managed-identity-using-the-azure-portal"></a>使用 Azure 门户创建、列出和删除用户分配的托管标识以及为其分配角色
 
@@ -32,7 +32,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 ## <a name="prerequisites"></a>先决条件
 
-- 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#how-does-the-managed-identities-for-azure-resources-work)  。
+- 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#managed-identity-types)。
 - 如果还没有 Azure 帐户，请先[注册试用帐户](https://www.azure.cn/pricing/1rmb-trial/)，然后再继续。
 
 ## <a name="create-a-user-assigned-managed-identity"></a>创建用户分配的托管标识
@@ -40,12 +40,12 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 若要创建用户分配的托管标识，你的帐户需要[托管标识参与者](/role-based-access-control/built-in-roles#managed-identity-contributor)角色分配。
 
 1. 使用与 Azure 订阅关联的帐户登录 [Azure 门户](https://portal.azure.cn)，以创建用户分配的托管标识。
-2. 在搜索框中，键入托管标识，然后在“服务”下单击“托管标识”    。
-3. 单击“添加”，然后在“创建用户分配的托管标识”窗格下的以下字段中输入值   ：
+2. 在搜索框中，键入托管标识，然后在“服务”下单击“托管标识” 。
+3. 单击“添加”，然后在“创建用户分配的托管标识”窗格下的以下字段中输入值 ：
    - **资源名称**：这是用户分配的托管标识的名称，例如 UAI1。
    - **订阅**：选择要在其下创建用户分配的托管标识的订阅
-   - **资源组**：新建一个包含用户分配的托管标识的资源组，或者选择“使用现有项”，在现有资源组中创建用户分配的托管标识  。
-   - **位置**：选择用于部署用户分配的托管标识的位置，例如“中国北部”  。
+   - **资源组**：新建一个包含用户分配的托管标识的资源组，或者选择“使用现有项”，在现有资源组中创建用户分配的托管标识。
+   - **位置**：选择用于部署用户分配的托管标识的位置，例如“中国北部”。
 4. 单击**创建**。
 
 ![创建用户分配的托管标识](./media/how-to-manage-ua-identity-portal/create-user-assigned-managed-identity-portal.png)
@@ -55,7 +55,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 若要列出/读取用户分配的托管标识，你的帐户需要[托管标识操作员](/role-based-access-control/built-in-roles#managed-identity-operator)或[托管标识参与者](/role-based-access-control/built-in-roles#managed-identity-contributor)角色分配。
 
 1. 使用与 Azure 订阅关联的帐户登录 [Azure 门户](https://portal.azure.cn)，以列出用户分配的托管标识。
-2. 在搜索框中，键入托管标识，然后在“服务”下单击“托管标识”   。
+2. 在搜索框中，键入托管标识，然后在“服务”下单击“托管标识”。
 3. 这会返回一个列表，其中包含订阅中的用户分配的托管标识。  要查看用户分配的托管标识的详细信息，请单击其名称。
 
 ![列出用户分配的托管标识](./media/how-to-manage-ua-identity-portal/list-user-assigned-managed-identity-portal.png)
@@ -67,8 +67,8 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 删除用户分配的标识不会将其从 VM 或其他已分配给的资源中删除。  要从 VM 中删除用户分配的标识，请参阅[从 VM 中删除用户分配的托管标识](/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#remove-a-user-assigned-managed-identity-from-a-vm)。
 
 1. 使用与 Azure 订阅关联的帐户登录 [Azure 门户](https://portal.azure.cn)，以删除用户分配的托管标识。
-2. 选择用户分配的托管标识，然后单击“删除”  。
-3. 在确认框中选择“是”  。
+2. 选择用户分配的托管标识，然后单击“删除”。
+3. 在确认框中选择“是”。
 
 ![删除用户分配的托管标识](./media/how-to-manage-ua-identity-portal/delete-user-assigned-managed-identity-portal.png)
 
@@ -77,17 +77,16 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 若要为用户分配的托管标识分配角色，你的帐户需要[用户访问管理员](/role-based-access-control/built-in-roles#user-access-administrator)角色分配。
 
 1. 使用与 Azure 订阅关联的帐户登录 [Azure 门户](https://portal.azure.cn)，以列出用户分配的托管标识。
-2. 在搜索框中，键入托管标识，然后在“服务”下单击“托管标识”   。
+2. 在搜索框中，键入托管标识，然后在“服务”下单击“托管标识”。
 3. 这会返回一个列表，其中包含订阅中的用户分配的托管标识。  选择要为其分配角色的用户分配托管标识。
-4. 依次选择“访问控制(IAM)”、“添加角色分配”   。
+4. 依次选择“访问控制(IAM)”、“添加角色分配” 
 
    ![用户分配的托管标识启动](./media/how-to-manage-ua-identity-portal/assign-role-screenshot1.png)
 
-5. 在“添加角色分配”边栏选项卡中，配置以下值，然后单击“保存”  ：
+5. 在“添加角色分配”边栏选项卡中，配置以下值，然后单击“保存”：
    - **角色** - 要分配的角色
    - **将访问权限分配到** - 要将用户分配的托管标识分配到的资源
    - **选择** - 要将访问权限分配到的成员
    
    ![用户分配的托管标识 IAM](./media/how-to-manage-ua-identity-portal/assign-role-screenshot2.png)  
 
-<!-- Update_Description: link update -->

@@ -1,5 +1,5 @@
 ---
-title: 知识存储（预览版）中的投影
+title: 投影概念（预览版）
 titleSuffix: Azure Cognitive Search
 description: 将 AI 扩充索引编制管道中的扩充数据保存并整型到知识存储中，以便在除了全文搜索以外的方案中使用。 知识存储目前以公开预览版提供。
 manager: nitinme
@@ -8,15 +8,15 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 01/08/2020
-ms.date: 03/16/2020
-ms.openlocfilehash: b92fdf02e20669104eca3a22f9699e0dba5b7543
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 07/02/2020
+ms.openlocfilehash: 30cbf1ae9a23bb223434b31ce24a1e0c18a16680
+ms.sourcegitcommit: 5afd7c4c3be9b80c4c67ec55f66fcf347aad74c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80243724"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85942570"
 ---
-# <a name="projections-in-a-knowledge-store-in-azure-cognitive-search"></a>Azure 认知搜索中的知识存储中的投影
+# <a name="knowledge-store-projections-in-azure-cognitive-search"></a>Azure 认知搜索中的知识存储“投影”
 
 > [!IMPORTANT] 
 > 知识存储目前以公开预览版提供。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。
@@ -53,9 +53,9 @@ Azure 认知搜索允许通过编制索引功能附带的内置认知技能和�
 
 ## <a name="input-shaping"></a>输入整形
 
-获取采用适当形状或结构（表或对象）的数据对于有效利用数据而言至关重要。 根据访问和使用数据的方式塑造或结构化数据的功能，是在技能集中作为“整形程序”公开的关键功能。   
+获取采用适当形状或结构（表或对象）的数据对于有效利用数据而言至关重要。 根据访问和使用数据的方式塑造或结构化数据的功能，是在技能集中作为“整形程序”公开的关键功能。  
 
-如果扩充树中存在与投影架构匹配的对象，则可以更轻松地定义投影。 使用更新的[整形程序技能](cognitive-search-skill-shaper.md)可以从扩充树的不同节点编写对象，并将其指定为新节点下的父级。 使用“整形程序”技能可以定义包含嵌套对象的复杂类型。 
+如果扩充树中存在与投影架构匹配的对象，则可以更轻松地定义投影。 使用更新的[整形程序技能](cognitive-search-skill-shaper.md)可以从扩充树的不同节点编写对象，并将其指定为新节点下的父级。 使用“整形程序”技能可以定义包含嵌套对象的复杂类型。
 
 如果定义的新形状包含需要投影出的所有元素，则你现在可以使用此形状作为投影的源，或作为另一技能的输入。
 
@@ -71,7 +71,7 @@ Azure 认知搜索允许通过编制索引功能附带的内置认知技能和�
 
 ### <a name="defining-a-table-projection"></a>定义表投影
 
-在技能集的 `knowledgeStore` 元素中定义表投影时，请先将扩充树中的某个节点映射到表源。 此节点通常是添加到技能列表的、用于生成需要投影到表的“整形程序”技能的输出。  选择投影的节点可以分片，以投影到多个表。 表定义是要投影的表列表。
+在技能集的 `knowledgeStore` 元素中定义表投影时，请先将扩充树中的某个节点映射到表源。 此节点通常是添加到技能列表的、用于生成需要投影到表的“整形程序”技能的输出。 选择投影的节点可以分片，以投影到多个表。 表定义是要投影的表列表。
 
 每个表需要三个属性：
 
@@ -118,7 +118,7 @@ Azure 认知搜索允许通过编制索引功能附带的内置认知技能和�
 
 ## <a name="object-projections"></a>对象投影
 
-对象投影是可以从任何节点寻源的扩充树的 JSON 表示形式。 在许多情况下，可以使用用于创建表投影的同一个“整形程序”技能来生成对象投影。  
+对象投影是可以从任何节点寻源的扩充树的 JSON 表示形式。 在许多情况下，可以使用用于创建表投影的同一个“整形程序”技能来生成对象投影。 
 
 ```json
 {

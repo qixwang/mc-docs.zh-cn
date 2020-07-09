@@ -1,19 +1,19 @@
 ---
-title: Azure 中可用的磁盘类型 | Azure
+title: Azure 有哪些可用的磁盘类型？
 description: 了解 Windows 虚拟机的可用 Azure 磁盘类型，包括超级磁盘、高级 SSD、标准 SSD 和标准 HDD。
 author: rockboyfor
-origin.date: 11/04/2019
-ms.date: 04/27/2020
+origin.date: 06/03/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.topic: conceptual
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: db59458d11e009723f08bf08a1e66eb61df61148
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: 4b4877670815124e6fd80bc39ce394de6ff2af72
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392308"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945731"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Azure 有哪些可用的磁盘类型？
 

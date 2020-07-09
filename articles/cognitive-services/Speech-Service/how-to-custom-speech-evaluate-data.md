@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 09/06/2019
-ms.date: 03/02/2020
+ms.date: 06/19/2020
 ms.author: v-tawe
-ms.openlocfilehash: 347634549221eef709e72ab72b09d4ca0d695a45
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c7cdcd42fa3b7ec5c07ae83a141983888d4b44e3
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77541138"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85613321"
 ---
 # <a name="evaluate-custom-speech-accuracy"></a>评估自定义语音识别准确度
 
@@ -24,7 +24,7 @@ ms.locfileid: "77541138"
 
 ## <a name="what-is-word-error-rate-wer"></a>什么是误字率 (WER)？
 
-用于度量模型准确度的行业标准是误字率  (WER)。 计算 WER 时，先对识别过程中标识的错误单词计数，然后将其除以人为标记的听录中提供的单词的总数， 最后将该数字乘以 100%。
+用于度量模型准确度的行业标准是误字率 (WER)。 计算 WER 时，先对识别过程中标识的错误单词计数，然后将其除以人为标记的听录中提供的单词的总数， 最后将该数字乘以 100%。
 
 ![WER 公式](./media/custom-speech/custom-speech-wer-formula.png)
 
@@ -53,9 +53,9 @@ ms.locfileid: "77541138"
 若要并排评估模型，请执行以下操作：
 
 1. 登录到[自定义语音识别门户](https://speech.azure.cn/customspeech)。
-2. 导航到“语音转文本”&gt;“自定义语音识别”&gt;“测试”。 
-3. 单击“添加测试”。 
-4. 选择“评估准确度”。  为测试提供名称和说明，然后选择你的音频和人为标记的听录数据集。
+2. 导航到“语音转文本”>“自定义语音识别”> [项目名称] >“测试”。
+3. 单击“添加测试”。
+4. 选择“评估准确度”。 为测试提供名称和说明，然后选择你的音频和人为标记的听录数据集。
 5. 选择最多两个要测试的模型。
 6. 单击**创建**。
 
@@ -63,7 +63,7 @@ ms.locfileid: "77541138"
 
 ## <a name="side-by-side-comparison"></a>并排比较
 
-测试完成（状态更改为“成功”即表明完成）后，就可以找到测试中包括的两个模型的 WER 值。  单击测试名称可查看测试详细信息页。 该详细信息页会列出数据集中的所有言语，指示两个模型的识别结果以及提供的数据集中的听录。 可以通过切换各种错误类型（包括插入、删除和替换）来查看并排比较的结果。 通过听音频并比较每个列（显示人为标记的听录和两个语音转文本模型的结果）中的识别结果，你可以确定哪个模型符合自己的需求，以及需要在哪些方面进行更多的训练和改进。
+测试完成（状态更改为“成功”即表明完成）后，就可以找到测试中包括的两个模型的 WER 值。 单击测试名称可查看测试详细信息页。 该详细信息页会列出数据集中的所有言语，指示两个模型的识别结果以及提供的数据集中的听录。 可以通过切换各种错误类型（包括插入、删除和替换）来查看并排比较的结果。 通过听音频并比较每个列（显示人为标记的听录和两个语音转文本模型的结果）中的识别结果，你可以确定哪个模型符合自己的需求，以及需要在哪些方面进行更多的训练和改进。
 
 ## <a name="next-steps"></a>后续步骤
 

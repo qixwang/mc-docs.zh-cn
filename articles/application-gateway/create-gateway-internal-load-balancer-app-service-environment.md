@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/26/2020
+ms.date: 06/24/2020
 ms.author: v-junlch
-ms.openlocfilehash: b1ba0b645d724770ef021ed4617f18d3e68267de
-ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
+ms.openlocfilehash: c4fc6187cda6fc8fe293e09517686bbdad576718
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82267652"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516682"
 ---
-# <a name="back-end-server-certificate-is-not-whitelisted-for-an-application-gateway-using-an-internal-load-balancer-with-an-app-service-environment"></a>未使用内部负载均衡器和应用服务环境将应用程序网关的后端服务器证书加入允许列表。
+# <a name="back-end-server-certificate-is-not-allow-listed-for-an-application-gateway-using-an-internal-load-balancer-with-an-app-service-environment"></a>未使用内部负载均衡器和应用服务环境将应用程序网关的后端服务器证书加入允许列表。
 
 本文排查以下问题：在 Azure 中使用端到端 TLS 期间，在后端结合使用内部负载均衡器 (ILB) 和应用服务环境 (ASE) 创建应用程序网关时，证书未加入允许列表。
 
@@ -66,7 +66,7 @@ ms.locfileid: "82267652"
 
 - 在 ILB 和后端服务器上使用通配符证书，这样对于所有网站来说，证书都是通用的。 但是，此解决方案仅在子域的情况下才可行，不适用于每个网站都要求不同的主机名这种情形。
 
-- 如果使用的是 ILB 的 IP 地址，请清除应用程序网关的“用于应用服务”选项  。
+- 如果使用的是 ILB 的 IP 地址，请清除应用程序网关的“用于应用服务”选项。
 
 若要降低开销，可在 HTTP 设置中上传 ILB 证书，使探测路径正常工作。 （此步骤仅适用于允许列表操作， 不可用于 TLS 通信。）可通过如下方式检索 ILB 证书：在浏览器中使用 ILB 的 HTTPS IP 地址访问 ILB，然后以 Base-64 编码的 CER 格式导出 TLS/SSL 证书，并在相应 HTTP 设置中上传该证书。
 

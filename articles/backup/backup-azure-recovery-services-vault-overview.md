@@ -4,14 +4,14 @@ description: 恢复服务保管库和 Azure 备份保管库的概述和比较。
 author: Johnnytechn
 origin.date: 08/10/2018
 ms.topic: conceptual
-ms.date: 06/09/2020
+ms.date: 06/22/2020
 ms.author: v-johya
-ms.openlocfilehash: d879cb16ff3686cbab0a83ec7b23dfa3fc050c95
-ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
+ms.openlocfilehash: 8ac9ea193d2693f4dc158edd8f5bfa11df1c9c51
+ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84683903"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851942"
 ---
 # <a name="recovery-services-vaults-overview"></a>恢复服务保管库概述
 
@@ -45,7 +45,7 @@ Azure 备份会自动处理保管库的存储。 查看如何[更改存储设置
 
 ## <a name="managing-your-recovery-services-vaults-in-the-portal"></a>在门户中管理恢复服务保管库
 
-在 Azure 门户中创建和管理恢复服务保管库很容易，因为备份服务已集成到其他 Azure 服务中。 这种集成意味着，可以在目标服务上下文中** 创建和管理恢复服务保管库。 例如，若要查看 VM 的恢复点，请选中该 VM，并在“操作”菜单中单击“备份”。****
+在 Azure 门户中创建和管理恢复服务保管库很容易，因为备份服务已集成到其他 Azure 服务中。 这种集成意味着，可以在目标服务上下文中创建和管理恢复服务保管库。 例如，若要查看 VM 的恢复点，请选中该 VM，并在“操作”菜单中单击“备份”。
 
 ![恢复服务保管库详细信息 VM](./media/backup-azure-recovery-services-vault-overview/rs-vault-in-context-vm.png)
 
@@ -53,7 +53,7 @@ Azure 备份会自动处理保管库的存储。 查看如何[更改存储设置
 
 ![VM 中的恢复服务保管库详细信息](./media/backup-azure-recovery-services-vault-overview/vm-recovery-point-list.png)
 
-在上一示例中，ContosoVM**** 是虚拟机的名称。 **ContosoVM-demovault** 是恢复服务保管库的名称。 不需记住用于存储恢复点的恢复服务保管库的名称，可以在虚拟机中访问该信息。  
+在上一示例中，ContosoVM 是虚拟机的名称。 **ContosoVM-demovault** 是恢复服务保管库的名称。 不需记住用于存储恢复点的恢复服务保管库的名称，可以在虚拟机中访问该信息。  
 
 如果一个恢复服务保管库保护多个服务器，则查看恢复服务保管库可能更合乎逻辑。 可以在订阅中搜索所有恢复服务保管库，并从列表中选择一个。
 
@@ -65,8 +65,6 @@ Azure 备份会自动处理保管库的存储。 查看如何[更改存储设置
 ### <a name="back-up-data"></a>备份数据
 
 - [备份 Azure VM](backup-azure-vms-first-look-arm.md)
-- [备份 Windows Server 或 Windows 工作站](backup-windows-with-mars-agent.md)
-- [将 DPM 工作负荷备份到 Azure](backup-azure-dpm-introduction.md)
 - [准备使用 Azure 备份服务器来备份工作负荷](backup-azure-microsoft-azure-backup.md)
 
 ### <a name="manage-recovery-points"></a>管理恢复点

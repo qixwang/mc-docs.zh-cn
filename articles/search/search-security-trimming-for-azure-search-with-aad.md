@@ -1,20 +1,20 @@
 ---
 title: 使用 Active Directory 修剪结果的安全筛选器
 titleSuffix: Azure Cognitive Search
-description: 使用安全筛选器和 Azure Active Directory (AAD) 标识对 Azure 认知搜索内容进行访问控制。
+description: 使用安全筛选器和 Azure Active Directory (AAD) 标识的 Azure 认知搜索搜索结果的文档级别安全权限。
 manager: nitinme
-author: brjohnstmsft
+author: HeidiSteen
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 11/04/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: bf6e20ddf8c53f5f8a97f001c23d2ac50ad6d21d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 06/04/2020
+ms.date: 07/02/2020
+ms.openlocfilehash: 643725a3c38dfdcf474659ff79da3b4dcf339388
+ms.sourcegitcommit: 5afd7c4c3be9b80c4c67ec55f66fcf347aad74c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75336485"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85942539"
 ---
 # <a name="security-filters-for-trimming-azure-cognitive-search-results-using-active-directory-identities"></a>用于使用 Active Directory 标识修剪 Azure 认知搜索结果的安全筛选器
 
@@ -31,7 +31,7 @@ ms.locfileid: "75336485"
 > [!NOTE]
 > 本文中的示例代码片段是用 C# 语言编写的。 可以 [在 GitHub 上](https://aka.ms/search-dotnet-howto)找到完整的源代码。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 Azure 认知搜索中的索引必须有一个[安全字段](search-security-trimming-for-azure-search.md)用于存储对文档拥有读取访问权限的组标识列表。 此用例假设某个安全对象项（例如个人的大学申请）与指定谁有权访问该项（招生人员）的安全字段之间存在一对一的对应关系。
 
@@ -43,12 +43,12 @@ Azure 认知搜索中的索引必须有一个[安全字段](search-security-trim
 
 此步骤将应用程序与 AAD 集成，以接受用户和组帐户的登录。 如果你不是组织中的 AAD 管理员，可能需要[创建新租户](https://docs.azure.cn/active-directory/develop/active-directory-howto-tenant)才能执行以下步骤。
 
-1. 转到[**应用程序注册门户**](https://apps.dev.microsoft.com) >   选择“聚合应用” > “添加应用”。
-2. 输入应用程序的名称，单击“创建”。  
+1. 转到[**应用程序注册门户**](https://apps.dev.microsoft.com) >   选择“聚合应用” > “添加应用”。 
+2. 输入应用程序的名称，单击“创建”。 
 3. 在“我的应用程序”页中选择新注册的应用程序。
-4. 在应用程序注册页上 > 选择“平台” > “添加平台”>“Web API”。
-5. 仍在应用程序注册页上，转到“Microsoft Graph 权限” > “添加”。
-6. 在“选择权限”中添加以下委托权限，单击“确定”： 
+4. 在应用程序注册页上 > 选择“平台” > “添加平台”>“Web API”。  
+5. 仍在应用程序注册页上，转到“Microsoft Graph 权限” > “添加”。 
+6. 在“选择权限”中添加以下委托权限，单击“确定”：
 
    + **Directory.ReadWrite.All**
    + **Group.ReadWrite.All**
@@ -183,7 +183,7 @@ DocumentSearchResult<SecuredFiles> results = _indexClient.Documents.Search<Secur
 
 响应包含文档的筛选列表，该列表由用户有权查看的文档构成。 根据搜索结果页的构造方式，可能需要包含视觉线索来反映筛选的结果集。
 
-## <a name="conclusion"></a>结束语
+## <a name="conclusion"></a>结论
 
 本演练已介绍如何使用 AAD 登录名筛选 Azure 认知搜索结果中的文档，以及修剪与请求中提供的筛选器不匹配的文档结果。
 

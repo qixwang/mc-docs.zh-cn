@@ -10,15 +10,15 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/27/2020
+ms.date: 06/29/2020
 ms.author: v-junlch
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 935b231178e0d121779afd04411e9f7bcbe0deb9
-ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
+ms.openlocfilehash: e535bb89c0dabc96879f985ef4c4bf14e7c7cb27
+ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84186758"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945121"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>如何：为租户中的特定应用自定义在令牌中发出的声明（预览版）
 
@@ -325,6 +325,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 | User | jobtitle | 职务 |
 | User | employeeid | 员工 ID |
 | User | facsimiletelephonenumber | 传真电话号码 |
+| User | assignedroles | 分配给用户的应用角色列表|
 | application、resource、audience | displayname | 显示名称 |
 | application、resource、audience | objectid | ObjectID |
 | application、resource、audience | 标记 | 服务主体标记 |
@@ -417,7 +418,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 必须为服务主体对象分配自定义签名密钥，否则声明映射策略无法生效。 这可以确保确认令牌是由声明映射策略的创建者修改的，并防止应用程序被恶意参与者创建的声明映射策略破坏。 若要添加自定义签名密钥，可以使用 Azure PowerShell cmdlet `new-azureadapplicationkeycredential` 为应用程序对象创建对称密钥凭据。 有关此 Azure PowerShell cmdlet 的详细信息，请参阅 [New-AzureADApplicationKeyCredential](https://docs.microsoft.com/powerShell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0)。
 
-启用了声明映射的应用必须通过将 `appid={client_id}` 追加到其 [OpenID 连接元数据请求](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)来验证其令牌签名密钥。 下面是你应该使用的 OpenID 连接元数据文档的格式： 
+启用了声明映射的应用必须通过将 `appid={client_id}` 追加到其 [OpenID Connect 元数据请求](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)来验证令牌签名密钥。 下面是你应该使用的 OpenID 连接元数据文档的格式： 
 
 ```
 https://login.partner.microsoftonline.cn/{tenant}/v2.0/.well-known/openid-configuration?appid={client-id}

@@ -5,23 +5,23 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: overview
-ms.date: 06/22/2020
+ms.date: 07/01/2020
 ms.author: v-junlch
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ea15955d2a58f5f203f7958a6bb89a0039007db
-ms.sourcegitcommit: 74841b13b4fa011b40570db0763d076c1525e4fc
+ms.openlocfilehash: 7140d7d57d98b9c63bc7240492464962733a8252
+ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85129531"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945073"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>什么是 Azure Active Directory B2B 中的来宾用户访问权限？
 
-使用 Azure Active Directory (Azure AD) 企业到企业 (B2B) 协作可以安全地将公司的应用程序和服务与来自任何其他组织的来宾用户共享，同时保持对自己公司数据的控制。 与外部合作伙伴安全放心地合作，不论其规模是大是小，甚至就算他们没有 Azure AD 或 IT 部门也无妨。 合作伙伴通过一个简单的邀请和兑换过程即可使用自己的凭据来访问公司资源。 开发人员可以使用 Azure AD 企业到企业 API 自定义邀请处理或编写自助注册门户之类的应用程序。
+使用 Azure Active Directory (Azure AD) 企业到企业 (B2B) 协作可以安全地将公司的应用程序和服务与来自任何其他组织的来宾用户共享，同时保持对自己公司数据的控制。 与外部合作伙伴安全放心地合作，不论其规模是大是小，甚至就算他们没有 Azure AD 或 IT 部门也无妨。 合作伙伴通过一个简单的邀请和兑换过程即可使用自己的凭据来访问公司资源。 开发人员可以使用 Azure AD 企业到企业 API 自定义邀请过程或编写应用程序。
 
 请观看视频，了解如何邀请来宾用户使用他们自己的标识登录公司的应用和服务以安全地与之协作。
 
@@ -37,7 +37,7 @@ ms.locfileid: "85129531"
 
 ## <a name="invite-guest-users-with-a-simple-invitation-and-redemption-process"></a>通过一个简单的邀请和兑换过程邀请来宾用户
 
-来宾用户可使用自己的工作或学校标识登录应用和服务。 如果来宾用户没有 Azure AD 帐户，当他们在兑换邀请时，系统会为他们创建一个帐户。 
+来宾用户可使用自己的工作或学校标识登录应用和服务。 如果来宾用户没有 Azure AD 帐户，当他们兑换邀请时，系统会为他们创建一个帐户。 
 
 - 邀请使用自选电子邮件标识的来宾用户。
 - 发送应用的直接链接，或发送邀请至来宾用户自己的访问面板。

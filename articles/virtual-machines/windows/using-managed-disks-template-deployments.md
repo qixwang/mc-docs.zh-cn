@@ -1,25 +1,22 @@
 ---
-title: 在 Azure 资源管理器模板中使用托管磁盘
-description: 详细介绍如何在 Azure 资源管理器模板中将托管磁盘用于 Windows VM
-services: virtual-machines-windows
-documentationcenter: ''
+title: 在 Azure Resource Manager 模板中使用托管磁盘
+description: 详细介绍如何在 Azure 资源管理器模板中将托管磁盘用于 VM
 author: rockboyfor
-manager: digimobile
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: storage
+ms.service: virtual-machines
+ms.topic: how-to
+ms.workload: infrastructure
 origin.date: 06/01/2017
-ms.date: 02/10/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.subservice: disks
-ms.openlocfilehash: be360ded123dda24b0a8896b8f0097f52563bff8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 63a6eaf036cad03a762aaff1a51b3f76ecc2fc5f
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428662"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945837"
 ---
-# <a name="using-managed-disks-in-azure-resource-manager-templates"></a>在 Azure 资源管理器模板中使用托管磁盘
+# <a name="using-managed-disks-in-azure-resource-manager-templates"></a>在 Azure Resource Manager 模板中使用托管磁盘
 
 [!INCLUDE [virtual-machines-using-managed-disks-template-deployments](../../../includes/virtual-machines-using-managed-disks-template-deployments.md)]
 

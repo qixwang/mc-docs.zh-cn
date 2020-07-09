@@ -2,27 +2,20 @@
 title: Azure Functions 运行时版本概述
 description: Azure Functions 支持多个版本的运行时。 了解这些版本之间的差异以及如何选择最适合你的版本。
 ms.topic: conceptual
-ms.date: 06/08/2020
-ms.openlocfilehash: d00c73491d4a98e63f0f1ed7a6267222d3bc4fa0
-ms.sourcegitcommit: f1a76ee3242698123a3d77f44c860db040b48f70
+ms.date: 07/02/2020
+ms.openlocfilehash: d6ded3aad458ee11ceb7ad711c01bcef76fbe56b
+ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84563608"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945254"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions 运行时版本概述
 
-Azure Functions 运行时的主版本与运行时所基于的 .NET 版本相关。 下表指示了运行时的当前版本、发布级别以及相关的 .NET 版本。 
+Azure Functions 当前支持三个版本的运行时主机：1.x、2.x 和 3.x。 生产方案支持所有三个版本。  
 
-| 运行时版本 | 发布级别<sup>1</sup> | .NET 版本 | 
-| --------------- | ------------- | ------------ |
-| 3.x | GA | .NET Core 3.1 | 
-| 2.x | GA | .NET Core 2.2 |
-| 1.x | 正式版<sup>2</sup> | .NET Framework 4.7.2<sup>3</sup> |
-
-<sup>1</sup> 生产方案支持正式版。   
-<sup>2</sup> 版本 1.x 处于维护模式。 仅在更高版本中提供增强功能。   
-<sup>3</sup> 仅支持在 Azure 门户或本地 Windows 计算机上进行开发。
+> [!IMPORTANT]
+> 版本 1.x 处于维护模式，仅支持在 Azure 门户或本地 Windows 计算机上进行开发。 仅在更高版本中提供增强功能。 
 
 本文详细介绍了不同版本之间的一些差异、如何创建每个版本，以及如何更改版本。
 
@@ -30,7 +23,7 @@ Azure Functions 运行时的主版本与运行时所基于的 .NET 版本相关�
 
 从版本 2.x 开始，运行时使用语言扩展性模型，并且函数应用中的所有函数必须共享同一语言。 函数应用中的函数语言是在创建应用时选择的，并且在 [FUNCTIONS\_WORKER\_RUNTIME](functions-app-settings.md#functions_worker_runtime) 设置中进行维护。 
 
-Azure Functions 1.x 试验性语言不能使用新模型，因此它们在 2.x 中不受支持。 下表指示每个运行时版本目前支持的编程语言。
+下表指示每个运行时版本目前支持的编程语言。
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 

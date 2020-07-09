@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/29/2020
+ms.date: 07/01/2020
 ms.author: v-junlch
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b0055e9380b3d0e2f3d5257653f084f5d541573
-ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
+ms.openlocfilehash: eae6796cbf8ae2c52234d08f0e15d054a8a466b3
+ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84186784"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945078"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>启用 B2B 外部协作并管理谁可以邀请来宾
 
@@ -37,7 +37,7 @@ ms.locfileid: "84186784"
 
 1. 以租户管理员身份登录到 [Azure 门户](https://portal.azure.cn)。
 2. 选择“Azure Active Directory” 。
-3. 依次选择“组织关系” > “设置”（或选择“外部标识” > “外部协作设置”）   。
+3. 选择“外部标识” > “外部协作设置”。
 6. 在“外部协作设置”页上，选择要启用的策略。
 
    ![外部协作设置](./media/delegate-invitations/control-who-to-invite.png)
@@ -47,6 +47,9 @@ ms.locfileid: "84186784"
    - **成员可以邀请**：若要允许目录的非管理员成员邀请来宾，请将此策略设置为“是”。
    - **来宾可以邀请**：若要允许来宾邀请其他来宾，请将此策略设置为“是”。
    - **协作限制**：若要详细了解如何允许或阻止向特定的域发送邀请，请参阅[允许或阻止向特定组织中的 B2B 用户发送邀请](allow-deny-list.md)。
+   
+   > [!NOTE]
+   > 如果“成员可以邀请”设为“否”，而“来宾邀请者角色中的管理员和用户可以邀请”设为“是”，则“来宾邀请者”角色中的用户仍将能够邀请来宾。
 
 ## <a name="assign-the-guest-inviter-role-to-a-user"></a>将“来宾邀请者”角色分配给用户
 
@@ -65,6 +68,5 @@ Add-MsolRoleMember -RoleObjectId 95e79109-95c0-4d8e-aee3-d01accf2d47b -RoleMembe
 - [什么是 Azure AD B2B 协作？](what-is-b2b.md)
 - [在没有邀请的情况下添加 B2B 协作来宾用户](add-user-without-invite.md)
 - [将 B2B 协作用户添加到角色](add-guest-to-role.md)
-
 
 

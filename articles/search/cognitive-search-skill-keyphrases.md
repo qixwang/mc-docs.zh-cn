@@ -8,17 +8,17 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 03/16/2020
-ms.openlocfilehash: f3d88b83be6ff41fafe02dd723880902b73673d0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 07/02/2020
+ms.openlocfilehash: 981746af6bce5ae3f681339867d5aaf471910e06
+ms.sourcegitcommit: 5afd7c4c3be9b80c4c67ec55f66fcf347aad74c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78934849"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85942525"
 ---
 #   <a name="key-phrase-extraction-cognitive-skill"></a>关键短语提取认知技能
 
-关键短语提取  技能可以计算非结构化的文本，并针对每个记录返回关键短语列表。 此技能使用认知服务中的[文本分析](https://docs.azure.cn/cognitive-services/text-analytics/overview)提供的机器学习模型。
+关键短语提取技能可以计算非结构化的文本，并针对每个记录返回关键短语列表。 此技能使用认知服务中的[文本分析](https://docs.azure.cn/cognitive-services/text-analytics/overview)提供的机器学习模型。
 
 如果你需要快速确定记录中的谈话要点，此功能十分有用。 例如，给定输入文本“The food was delicious and there were wonderful staff”，服务会返回“food”和“wonderful staff”。
 
@@ -40,17 +40,35 @@ Microsoft.Skills.Text.KeyPhraseExtractionSkill
 
 | 输入                | 说明 |
 |---------------------|-------------|
-| defaultLanguageCode | （可选）要应用到未显式指定语言的文档的语言代码。  如果未指定默认语言代码，会将英语 (en) 用作默认语言代码。 <br/> 请参阅[支持的语言的完整列表](https://docs.azure.cn/cognitive-services/text-analytics/text-analytics-supported-languages)。 |
-| maxKeyPhraseCount   | （可选）要生成的关键短语的最大数量。 |
+| `defaultLanguageCode` | （可选）要应用到未显式指定语言的文档的语言代码。  如果未指定默认语言代码，会将英语 (en) 用作默认语言代码。 <br/> 请参阅[支持的语言的完整列表](https://docs.azure.cn/cognitive-services/text-analytics/text-analytics-supported-languages)。 |
+| `maxKeyPhraseCount`   | （可选）要生成的关键短语的最大数量。 |
 
 ## <a name="skill-inputs"></a>技能输入
 
-| 输入     | 说明 |
+| 输入  | 说明 |
 |--------------------|-------------|
-| text | 要分析的文本。|
-| languageCode  |  表示记录的语言的字符串。 如果未指定此参数，将使用默认语言代码分析记录。 <br/>请参阅[支持的语言的完整列表](https://docs.azure.cn/cognitive-services/text-analytics/text-analytics-supported-languages)|
+| `text` | 要分析的文本。|
+| `languageCode`    |  表示记录的语言的字符串。 如果未指定此参数，将使用默认语言代码分析记录。 <br/>请参阅[支持的语言的完整列表](https://docs.azure.cn/cognitive-services/text-analytics/text-analytics-supported-languages)|
+
+## <a name="skill-outputs"></a>技能输出
+
+| 输出     | 说明 |
+|--------------------|-------------|
+| `keyPhrases` | 从输入文本中提取的关键短语的列表。 关键短语按重要性顺序返回。 |
+
 
 ##  <a name="sample-definition"></a>示例定义
+
+考虑具有以下字段的 SQL 记录：
+
+```json
+{
+    "content": "Glaciers are huge rivers of ice that ooze their way over land, powered by gravity and their own sheer weight. They accumulate ice from snowfall and lose it through melting. As global temperatures have risen, many of the world’s glaciers have already started to shrink and retreat. Continued warming could see many iconic landscapes – from the Canadian Rockies to the Mount Everest region of the Himalayas – lose almost all their glaciers by the end of the century.",
+    "language": "en"
+}
+```
+
+然后，技能定义可能会如下所示：
 
 ```json
  {
@@ -62,7 +80,7 @@ Microsoft.Skills.Text.KeyPhraseExtractionSkill
       },
       {
         "name": "languageCode",
-        "source": "/document/languagecode" 
+        "source": "/document/language" 
       }
     ],
     "outputs": [
@@ -74,33 +92,12 @@ Microsoft.Skills.Text.KeyPhraseExtractionSkill
   }
 ```
 
-##  <a name="sample-input"></a>示例输入
-
-```json
-{
-    "values": [
-      {
-        "recordId": "1",
-        "data":
-           {
-             "text": "Glaciers are huge rivers of ice that ooze their way over land, powered by gravity and their own sheer weight. They accumulate ice from snowfall and lose it through melting. As global temperatures have risen, many of the world’s glaciers have already started to shrink and retreat. Continued warming could see many iconic landscapes – from the Canadian Rockies to the Mount Everest region of the Himalayas – lose almost all their glaciers by the end of the century.",
-             "language": "en"
-           }
-      }
-    ]
-```
-
-
 ##  <a name="sample-output"></a>示例输出
 
+对于上面的示例，技能输出将写入到扩充树中名为“document/myKeyPhrases”的新节点，因为这是我们指定的 `targetName`。 如果未指定 `targetName`，则为“document/keyPhrases”。
+
+#### <a name="documentmykeyphrases"></a>document/myKeyPhrases 
 ```json
-{
-    "values": [
-      {
-        "recordId": "1",
-        "data":
-           {
-            "keyPhrases": 
             [
               "world’s glaciers", 
               "huge rivers of ice", 
@@ -109,12 +106,9 @@ Microsoft.Skills.Text.KeyPhraseExtractionSkill
               "Mount Everest region",
               "Continued warming"
             ]
-           }
-      }
-    ]
-}
 ```
 
+可以使用“document/myKeyPhrases”作为其他技能的输入，或者将其作为[输出字段映射](cognitive-search-output-field-mapping.md)的源。
 
 ## <a name="errors-and-warnings"></a>错误和警告
 如果提供了不支持的语言代码，会生成错误且不提取关键短语。
@@ -125,3 +119,4 @@ Microsoft.Skills.Text.KeyPhraseExtractionSkill
 
 + [内置技能](cognitive-search-predefined-skills.md)
 + [如何定义技能集](cognitive-search-defining-skillset.md)
++ [如何定义输出字段映射](cognitive-search-output-field-mapping.md)

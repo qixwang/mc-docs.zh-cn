@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-origin.date: 01/16/2020
-ms.date: 05/29/2020
+origin.date: 05/28/2020
+ms.date: 07/01/2020
 ms.author: v-tawe
-ms.openlocfilehash: 8dd7575f3983c2ca9c3417ffe38532049e1dea99
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: 346116590e2b6d9448439df722dd19f96365c093
+ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199767"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85796311"
 ---
 # <a name="balance-partition-load-across-multiple-instances-of-your-application"></a>跨应用程序的多个实例均衡分区负载
 若要缩放事件处理应用程序，可以运行应用程序的多个实例，并让这些实例自行进行负载均衡。 在旧版本中，[EventProcessorHost](event-hubs-event-processor-host.md) 允许在接收检查点事件时，在程序的多个实例与这些事件之间进行负载均衡。 在新版本（5.0 或以上）中，**EventProcessorClient**（.NET 和 Java）或 **EventHubConsumerClient**（Python 和 JavaScript）允许执行相同的操作。 使用事件使开发模型变得更简单。 通过注册事件处理程序来订阅你感兴趣的事件。
@@ -45,7 +45,7 @@ ms.locfileid: "84199767"
 
 ## <a name="event-processor-or-consumer-client"></a>事件处理器或使用者客户端
 
-无需生成自己的解决方案即可满足这些要求。 Azure 事件中心 SDK 提供此功能。 在 .NET 或 Java Sdk 中使用事件处理器客户端 (EventProcessorClient)，在 Python 和 JavaScript SDK 中使用 EventHubConsumerClient。 在旧版 SDK 中，它是支持这些功能的事件处理器主机 (EventProcessorHost)。
+无需生成自己的解决方案即可满足这些要求。 Azure 事件中心 SDK 提供此功能。 在 .NET 或 Java SDK 中使用事件处理器客户端 (EventProcessorClient)，在 Python 和 JavaScript SDK 中使用 EventHubConsumerClient。 在旧版 SDK 中，它是支持这些功能的事件处理器主机 (EventProcessorHost)。
 
 对于大多数生产方案，我们建议使用事件处理器客户端来读取和处理事件。 处理器客户端旨在提供可靠的体验用于以高效且容错的方式跨事件中心的所有分区处理事件，同时提供设置处理进度检查点的方式。 在给定事件中心的使用者组上下文中，事件处理器客户端还能够以协作方式工作。 当实例可用或不可用于组时，客户端会自动管理工作的分配和均衡。
 
@@ -55,7 +55,7 @@ ms.locfileid: "84199767"
 
 每个事件处理器具有唯一的标识符，通过在检查点存储中添加或更新条目来声明分区的所有权。 所有事件处理器实例定期与此存储通信，以更新自身的处理状态以及了解其他活动实例。 然后，使用此数据在活动处理器之间均衡负载。 新实例可以加入处理池以进行纵向扩展。 当实例发生故障时（无论是由于故障还是纵向缩减），分区所有权都会正常转移到其他活动处理器。
 
-检查点存储中的分区所有权记录将会跟踪事件中心命名空间、事件中心名称、使用者组、事件处理器标识符（也称为所有者）、分区 ID 和上次修改时间。
+检查点存储中的分区所有权记录会跟踪事件中心命名空间、事件中心名称、使用者组、事件处理器标识符（也称为所有者）、分区 ID 和上次修改时间。
 
 
 
@@ -93,7 +93,7 @@ ms.locfileid: "84199767"
 
 ## <a name="thread-safety-and-processor-instances"></a>线程安全性和处理程序实例
 
-默认情况下，事件处理器或使用者是线程安全的，并以同步方式运行。 当事件抵达分区时，将调用处理事件的函数。 后续消息以及对此函数的调用在幕后排队，因为消息泵持续在其他线程上后台运行。 此线程安全性消除了线程安全集合的需要，并显著提高了性能。
+默认情况下，将会针对给定分区按顺序调用处理事件的函数。 当事件泵继续在后台的其他线程上运行时，来自同一分区的后续事件和对该函数的调用将在后台排队。 请注意，可以同时处理来自不同分区的事件，但必须同步跨分区访问的任何共享状态。
 
 ## <a name="next-steps"></a>后续步骤
 参阅以下快速入门：

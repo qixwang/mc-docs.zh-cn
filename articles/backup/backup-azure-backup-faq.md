@@ -2,17 +2,16 @@
 title: 常见问题的解答
 description: '针对以下常见问题的解答：包括恢复服务保管库在内的 Azure 备份功能、能够备份的内容、原理、加密和限制。 '
 author: Johnnytechn
-manager: digimobile
 ms.topic: conceptual
 origin.date: 07/07/2019
-ms.date: 06/09/2020
+ms.date: 06/22/2020
 ms.author: v-johya
-ms.openlocfilehash: afa70a7bf3001496b2f4d79684b65cfb25ec2348
-ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
+ms.openlocfilehash: f84863468d6ffb68829f901a268fff21091d8bef
+ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84683853"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85852044"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure 备份 - 常见问题
 
@@ -40,6 +39,7 @@ ms.locfileid: "84683853"
 ### <a name="if-my-organization-has-one-vault-how-can-i-isolate-data-from-different-servers-in-the-vault-when-restoring-data"></a>如果本组织有一个保管库，如何在还原数据时将数据与保管库中的其他服务器隔离？
 
 设置备份时，你想要一起恢复的服务器数据应使用相同密码。 如果要将恢复隔离到一个特定服务器或多个服务器，仅使用该服务器的密码。 例如，人力资源服务器可能使用一个加密通行短语，会计结算服务器使用另一个通行短语，而存储服务器使用第三个通行短语。
+<!--Unsupported in China-->
 
 ### <a name="can-i-move-backup-data-to-another-vault"></a>是否可以将备份数据移动到另一个保管库？
 
@@ -168,7 +168,7 @@ BMR/系统状态 |正在备份计算机的 BMR 或系统状态的每个副本。
 典型的长期保留点产品将备份数据存储为完整的点。
 
 - 完整点的存储 *效率不高* ，但能使还原变得更方便和快速。
-- 增量复制为高效** 存储，但要求还原数据链，这会影响恢复时间
+- 增量复制为高效存储，但要求还原数据链，这会影响恢复时间
 
 Azure 备份存储体系结构在这两方面都能提供最佳性能，它以最佳方式存储数据，以便快速还原，且产生的存储成本低。 这种方法可确保提高（入口和出口）带宽使用效率。 数据存储量和恢复数据所需的时间都会尽量减少。 了解有关[增量备份](https://azure.microsoft.com/blog/microsoft-azure-backup-save-on-long-term-storage/)的更多信息。
 
@@ -190,7 +190,7 @@ Azure 备份存储体系结构在这两方面都能提供最佳性能，它以�
 
 应用新策略时，将遵循新策略的计划和保留期。
 
-- 如果延长保留期，则会对现有的恢复点进行标记，按新策略要求保留它们。
+- 如果延长保留期，则会对现有的恢复点进行标记，按新策略要求来保留它们。
 - 如果缩短保留期，则会将其标记为在下一清理作业中删除，随后会将其删除。
 
 ## <a name="encryption"></a>Encryption
@@ -208,7 +208,7 @@ Azure 备份存储体系结构在这两方面都能提供最佳性能，它以�
 
 Azure 不会在任何时候解密备份数据。
 
-### <a name="what-is-the-minimum-length-of-encryption-the-key-used-to-encrypt-backup-data"></a>用于加密备份数据的加密密钥的最小长度是多少？
+### <a name="what-is-the-minimum-length-of-the-encryption-key-used-to-encrypt-backup-data"></a>用于加密备份数据的加密密钥的最小长度是多少？
 
 使用 Azure 备份代理时，加密密钥至少应该为 16 个字符。 就 Azure VM 来说，Azure KeyVault 所使用的密钥没有长度限制。
 

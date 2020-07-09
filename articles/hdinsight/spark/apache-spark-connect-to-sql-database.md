@@ -1,21 +1,19 @@
 ---
 title: 使用 Apache Spark 在 Azure SQL 数据库中读取和写入数据
-description: 了解如何在 HDInsight Spark 群集与 Azure SQL 数据库之间设置连接，以便在 SQL 数据库中读取数据、写入数据和流式传输数据
-services: hdinsight
+description: 了解如何在 HDInsight Spark 群集与 Azure SQL 数据库之间设置连接。 在 SQL 数据库中读取数据、写入数据，以及将数据流式传输到 SQL 数据库中
 author: hrasheed-msft
 ms.author: nitinme
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-origin.date: 10/03/2019
-ms.date: 11/11/2019
-ms.openlocfilehash: d8a9adfcbc8e086ef4d36ef6a405e67baa1bb42e
-ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
+origin.date: 04/20/2020
+ms.date: 07/06/2020
+ms.openlocfilehash: dbbb36cfe63a9bcfb07a06a44e36ae778c5e1679
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84186457"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516668"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>使用 HDInsight Spark 群集在 Azure SQL 数据库中读取和写入数据
 
@@ -25,13 +23,13 @@ ms.locfileid: "84186457"
 
 * **Azure HDInsight Spark 群集**。  遵照[在 HDInsight 中创建 Apache Spark 群集](apache-spark-jupyter-spark-sql.md)中的说明。
 
-* **Azure SQL 数据库**。 遵照[创建 Azure SQL 数据库](../../sql-database/sql-database-get-started-portal.md)中的说明。 确保使用示例 **AdventureWorksLT** 架构和数据创建数据库。 另外，请确保创建服务器级防火墙规则，以允许客户端的 IP 地址访问服务器上的 SQL 数据库。 同一篇文章中提供了有关添加防火墙规则的说明。 创建 Azure SQL 数据库后，请确保准备好以下值。 从 Spark 群集连接到数据库时需要这些值。
+* Azure SQL 数据库。 按照[创建 Azure SQL 数据库](../../azure-sql/database/single-database-create-quickstart.md)中的说明进行操作。 确保使用示例 **AdventureWorksLT** 架构和数据创建数据库。 另外，请确保创建服务器级防火墙规则，以允许客户端的 IP 地址访问服务器上的 SQL 数据库。 同一篇文章中提供了有关添加防火墙规则的说明。 创建 Azure SQL 数据库后，请确保准备好以下值。 从 Spark 群集连接到数据库时需要这些值。
 
     * 托管 Azure SQL 数据库的服务器名称
     * Azure SQL 数据库名称
     * Azure SQL 数据库管理员用户名/密码
 
-* SQL Server Management Studio (SSMS)。 遵照[使用 SSMS 连接和查询数据](../../sql-database/sql-database-connect-query-ssms.md)中的说明。
+* SQL Server Management Studio (SSMS)。 遵照[使用 SSMS 连接和查询数据](../../azure-sql/database/connect-query-ssms.md)中的说明。
 
 ## <a name="create-a-jupyter-notebook"></a>创建 Jupyter Notebook 
 

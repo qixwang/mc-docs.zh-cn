@@ -5,42 +5,58 @@ author: WenJason
 ms.author: v-jay
 ms.service: postgresql
 ms.topic: conceptual
-origin.date: 03/31/2020
-ms.date: 04/27/2020
-ms.openlocfilehash: 243aa831a1e5b257a1bf55b5033bd9a1d1923756
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+origin.date: 06/09/2020
+ms.date: 07/06/2020
+ms.openlocfilehash: 534b5fef8690dbb7cf00a069b726c8d81597bc9d
+ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82127261"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85845856"
 ---
 # <a name="logical-decoding"></a>逻辑解码
  
 使用 [PostgreSQL 中的逻辑解码](https://www.postgresql.org/docs/current/logicaldecoding.html)可将数据更改流式传输到外部使用者。 逻辑解码广泛用于事件流和变更数据捕获方案。
 
 逻辑解码使用一个输出插件将 Postgres 的预写日志 (WAL) 转换为可读格式。 Azure Database for PostgreSQL 提供两个输出插件：[test_decoding](https://www.postgresql.org/docs/current/test-decoding.html) 和 [wal2json](https://github.com/eulerto/wal2json)。
- 
 
 > [!NOTE]
 > Azure Database for PostgreSQL - 单一服务器上的逻辑解码目前为公共预览版。
 
 
-## <a name="set-up-your-server"></a>设置服务器
-若要开始使用逻辑解码，请让服务器保存并流式传输 WAL。 
+## <a name="set-up-your-server"></a>设置服务器 
+逻辑解码和[只读副本](concepts-read-replicas.md)都依赖于 Postgres 预写日志 (WAL) 来获取信息。 这两个功能需要使用来自 Postgres 的不同级别的日志记录。 逻辑解码需要的日志记录的级别比只读副本需要的更高。
 
-1. 使用 Azure CLI 将 azure.replication_support 设置为 `logical`。 
+若要配置正确的日志记录级别，请使用 Azure 复制支持参数。 Azure 复制支持有三个设置选项：
+
+* **关闭** - 在 WAL 中包含最少的信息。 大多数 Azure Database for PostgreSQL 服务器上都不提供此设置。  
+* **副本** - 比“关闭”详细。 这是运行[只读副本](concepts-read-replicas.md)所需的最低日志记录级别。 此设置是大多数服务器上的默认设置。
+* **逻辑** - 比“副本”详细。 这是运行逻辑解码所需的最低日志记录级别。 使用此设置时，只读副本也可以运行。
+
+更改此参数后，需要重启服务器。 在内部，此参数设置 Postgres 参数 `wal_level`、`max_replication_slots` 和 `max_wal_senders`。
+
+### <a name="using-azure-cli"></a>使用 Azure CLI
+
+1. 将 azure.replication_support 设置为 `logical`。
    ```
    az postgres server configuration set --resource-group mygroup --server-name myserver --name azure.replication_support --value logical
-   ```
-
-   > [!NOTE]
-   > 如果使用只读副本，则将 azure.replication_support 设置为 `logical` 还可允许副本运行。 如果停止使用逻辑解码，请将该设置改回到 `replica`。 
-
+   ``` 
 
 2. 重启服务器以应用更改。
    ```
    az postgres server restart --resource-group mygroup --name myserver
    ```
+
+### <a name="using-azure-portal"></a>使用 Azure 门户
+
+1. 将 Azure 复制支持设置为“逻辑”。 选择“保存” 。
+
+   ![Azure Database for PostgreSQL - 复制 - Azure 复制支持](./media/concepts-logical/replication-support.png)
+
+2. 通过选择“是”，重启服务器以应用更改。
+
+   ![Azure Database for PostgreSQL - 复制 - 确认重启](./media/concepts-logical/confirm-restart.png)
+
 
 ## <a name="start-logical-decoding"></a>开始逻辑解码
 
@@ -128,7 +144,7 @@ pg_replication_slots 视图中的“active”列指示是否有使用者连接�
 SELECT * FROM pg_replication_slots;
 ```
 
-请针对“已用存储”和“副本的最大滞后时间”指标[设置警报](howto-alert-on-metric.md)，以便在值超过正常阈值时收到通知。   
+请针对“已用存储”和“副本的最大滞后时间”指标[设置警报](howto-alert-on-metric.md)，以便在值超过正常阈值时收到通知。  
 
 > [!IMPORTANT]
 > 必须删除未使用的复制槽。 否则可能会导致服务器不可用。

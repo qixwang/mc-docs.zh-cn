@@ -5,23 +5,23 @@ author: WenJason
 ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
-origin.date: 3/27/2020
-ms.date: 04/27/2020
-ms.openlocfilehash: f7716dd20001bd6875b63561050909d8572c72d1
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+origin.date: 6/11/2020
+ms.date: 06/29/2020
+ms.openlocfilehash: ce41b485555391cdbfd8ad126ea787a814a36918
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82127046"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516729"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>如何配置 Azure Database for MySQL 的数据传入复制
+
+本文介绍如何通过配置主服务器和副本服务器在 Azure Database for MySQL 中设置[数据传入复制](concepts-data-in-replication.md)。 本文假设读者在 MySQL 服务器和数据库方面有一定的经验。
 
 > [!NOTE]
 > 将要查看的是 Azure Database for MySQL 的新服务。 若要查看经典 MySQL Database for Azure 的文档，请访问[此页](https://docs.azure.cn/zh-cn/mysql-database-on-azure/)。
 
-本文介绍如何通过配置主服务器和副本服务器在 Azure Database for MySQL 中设置数据传入复制。 本文假设读者在 MySQL 服务器和数据库方面有一定的经验。
-
-若要在 Azure Database for MySQL 服务中创建副本，数据传入复制需将本地主 MySQL 服务器中的数据同步到虚拟机 (VM) 或云数据库服务中。
+若要在 Azure Database for MySQL 服务中创建副本，[数据传入复制](concepts-data-in-replication.md)需同步本地 MySQL 主服务器、虚拟机 (VM) 或云数据库服务中的数据。 复制中数据以基于二进制日志 (binlog) 文件位置的从本机到 MySQL 的复制为基础。 若要了解有关 binlog 复制的详细信息，请参阅 [MySQL binlog 复制概述](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)。
 
 在执行本文中的步骤之前，请查看数据传入复制的[限制和要求](concepts-data-in-replication.md#limitations-and-considerations)。
 
@@ -49,7 +49,7 @@ ms.locfileid: "82127046"
 
 1. 请先查看[主服务器要求](concepts-data-in-replication.md#requirements)，然后再继续。 
 
-   例如，请确保主服务器允许端口 3306 上的入站和出站流量，并且主服务器具有公共 IP 地址  ，DNS 可公开访问或者具有完全限定的域名 (FQDN)。 
+   例如，请确保主服务器允许端口 3306 上的入站和出站流量，并且主服务器具有公共 IP 地址，DNS 可公开访问或者具有完全限定的域名 (FQDN)。 
    
    尝试从另一台计算机上托管的工具（如 MySQL 命令行）进行连接，以测试与主服务器的连接。
 
@@ -101,15 +101,15 @@ ms.locfileid: "82127046"
 
    **MySQL Workbench**
 
-   若要在 MySQL Workbench 中创建复制角色，请在“管理”面板中打开“用户和特权”面板。   然后单击“添加帐户”  。 
+   若要在 MySQL Workbench 中创建复制角色，请在“管理”面板中打开“用户和特权”面板。  然后单击“添加帐户”。 
  
    ![用户和特权](./media/howto-data-in-replication/users_privileges.png)
 
-   在“登录名称”字段中键入用户名。  
+   在“登录名称”字段中键入用户名。 
 
    ![同步用户](./media/howto-data-in-replication/syncuser.png)
  
-   单击“管理角色”面板，然后从“全局特权”列表中选择“复制从属实例”。    然后单击“应用”  ，创建复制角色。
+   单击“管理角色”面板，然后从“全局特权”列表中选择“复制从属实例”。   然后单击“应用”，创建复制角色。
 
    ![复制从属实例](./media/howto-data-in-replication/replicationslave.png)
 
@@ -174,7 +174,7 @@ ms.locfileid: "82127046"
        - 建议以变量形式传入此参数。 有关详细信息，请参阅以下示例。
 
 > [!NOTE]
-> 如果主服务器托管在 Azure VM 中，请将“允许访问 Azure 服务”设置为“启用”，以允许主服务器和副本服务器相互通信。 从“连接安全性”选项可更改此设置  。 请参阅[使用门户管理防火墙规则](howto-manage-firewall-using-portal.md)获取详细信息。
+> 如果主服务器托管在 Azure VM 中，请将“允许访问 Azure 服务”设置为“启用”，以允许主服务器和副本服务器相互通信。 从“连接安全性”选项可更改此设置。 请参阅[使用门户管理防火墙规则](howto-manage-firewall-using-portal.md)获取详细信息。
 
    **示例**
 

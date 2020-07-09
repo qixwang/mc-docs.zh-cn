@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 02/17/2020
-ms.date: 04/20/2020
+ms.date: 06/19/2020
 ms.author: v-tawe
-ms.openlocfilehash: 7ced8d92e1d5f6436385dd34fe1a99497405064e
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 8b1fe241868cce5b256a5c2cbcbfe2d21b96ecd3
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82127055"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85613291"
 ---
 # <a name="what-is-custom-speech"></a>什么是自定义语音识别？
 
@@ -36,11 +36,13 @@ ms.locfileid: "82127055"
 
 3. [检查识别质量](how-to-custom-speech-inspect-data.md) - 使用[自定义语音识别门户](https://speech.azure.cn/customspeech)播放上传的音频，检查测试数据的语音识别质量。 如需进行量化度量，请参阅[检查数据](how-to-custom-speech-inspect-data.md)。
 
-4. [评估准确度](how-to-custom-speech-evaluate-data.md) - 评估语音转文本模型的准确度。 [自定义语音识别门户](https://speech.azure.cn/customspeech)会提供误字率，该指标可以用来确定是否需要更多的训练。  如果对准确度满意，可以直接使用语音服务 API。 如果希望提高准确度 5% - 20%（相对平均值），请在门户中使用“训练”选项卡  上传更多的训练数据，例如人为标记的听录和相关的文本。
+4. [评估准确度](how-to-custom-speech-evaluate-data.md) - 评估语音转文本模型的准确度。 [自定义语音识别门户](https://speech.azure.cn/customspeech)会提供误字率，该指标可以用来确定是否需要更多的训练。 如果对准确度满意，可以直接使用语音服务 API。 如果希望提高准确度 5% - 20%（相对平均值），请在门户中使用“训练”选项卡上传更多的训练数据，例如人为标记的听录和相关的文本。
 
-5. [训练模型](how-to-custom-speech-train-model.md) - 提供编写的脚本（10-1,000 小时）和相关的文本 (<200 MB) 以及音频测试数据，以便提高语音转文本模型的准确度。 该数据有助于训练语音转文本模型。 训练并重新测试后，如果对结果感到满意，则可部署模型。
+5. [提高准确性](how-to-custom-speech-improve-accuracy.md) - 根据你的方案，策略性地选择其他训练数据以提高语音转文本模型的质量。
 
-6. [部署模型](how-to-custom-speech-deploy-model.md) - 为语音转文本模型创建自定义终结点，并在应用程序、工具或产品中使用它。
+6. [训练模型](how-to-custom-speech-train-model.md) - 提供编写的脚本（10-1,000 小时）和相关的文本 (<200 MB) 以及音频测试数据，以便提高语音转文本模型的准确度。 该数据有助于训练语音转文本模型。 训练并重新测试后，如果对结果感到满意，则可部署模型。
+
+7. [部署模型](how-to-custom-speech-deploy-model.md) - 为语音转文本模型创建自定义终结点，并在应用程序、工具或产品中使用它。
 
 ## <a name="set-up-your-azure-account"></a>设置 Azure 帐户
 
@@ -60,7 +62,7 @@ ms.locfileid: "82127055"
 
 数据、模型、测试和终结点等内容在[自定义语音识别门户](https://speech.azure.cn/customspeech)中组织成**项目**。 每个项目特定于域和国家/地区或语言。 例如，可以为使用美式英语的呼叫中心创建一个项目。
 
-若要创建第一个项目，请选择“语音转文本/自定义语音识别”选项卡，然后单击“新建项目”。   遵照向导中的说明创建项目。 创建项目后，应该看到四个选项卡：“数据”、“测试”、“训练”和“部署”。     使用[后续步骤](#next-steps)中提供的链接了解如何使用每个选项卡。
+若要创建第一个项目，请选择“语音转文本/自定义语音识别”选项卡，然后单击“新建项目”。  遵照向导中的说明创建项目。 创建项目后，应该看到四个选项卡：“数据”、“测试”、“训练”和“部署”。    使用[后续步骤](#next-steps)中提供的链接了解如何使用每个选项卡。
 
 > [!IMPORTANT]
 > [“自定义语音识别”门户](https://speech.azure.cn/customspeech)最近已更新！ 如果以前已在 CRIS.ai 门户或使用 API 创建了数据、模型、测试并已发布了终结点，则需要在新门户中创建一个新项目以连接到这些旧实体。

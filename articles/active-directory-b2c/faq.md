@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/04/2020
+ms.date: 06/28/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 4f523c69c636b4688b0af48be735d32ec3aa5787
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2e75b3b51ffe64a8470e9a0b9da2a7b2a4e6c826
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78265964"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516500"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C：常见问题 (FAQ)
 
@@ -27,13 +27,13 @@ ms.locfileid: "78265964"
 
 ### <a name="can-i-use-azure-ad-b2c-features-in-my-existing-employee-based-azure-ad-tenant"></a>我可以在基于员工的现有 Azure AD 租户中使用 Azure AD B2C 功能吗？
 
-Azure AD 和 Azure AD B2C 是独立的产品/服务，不能在同一租户中共存。 Azure AD 租户表示组织。 Azure AD B2C 租户表示信赖方应用使用的标识集合。 通过在“Azure AD B2C”>“标识提供者”下添加“新的 OpenID Connect 提供程序”，或者通过使用自定义策略，Azure AD B2C 可以联合 Azure AD，以便对组织中的员工进行身份验证。  
+Azure AD 和 Azure AD B2C 是独立的产品/服务，不能在同一租户中共存。 Azure AD 租户表示组织。 Azure AD B2C 租户表示信赖方应用使用的标识集合。 通过在“Azure AD B2C”>“标识提供者”下添加“新的 OpenID Connect 提供程序”，或者通过使用自定义策略，Azure AD B2C 可以联合 Azure AD，以便对组织中的员工进行身份验证。 
 
 ### <a name="what-are-local-accounts-in-azure-ad-b2c-how-are-they-different-from-work-or-school-accounts-in-azure-ad"></a>什么是 Azure AD B2C 中的本地帐户？ 它们与 Azure AD 中的工作或学校帐户有何不同？
 
 在 Azure AD 租户中，属于租户的用户使用 `<xyz>@<tenant domain>` 形式的电子邮件地址登录。 `<tenant domain>` 是租户中已验证域之一或初始的 `<...>.partner.onmschina.cn` 域。 此类型的帐户是工作或学校帐户。
 
-在 Azure AD B2C 租户中，大多数应用都希望用户使用任意电子邮件地址（例如 joe@comcast.net、bob@gmail.com、sarah@contoso.com 或 jim@live.com）登录。 此类型的帐户是本地帐户。 我们还支持任意用户名作为本地帐户（例如，joe、bob、sarah 或 jim）。 在 Azure 门户中配置 Azure AD B2C 的标识提供者时，可以选择这两种本地帐户类型中的一种。 在 Azure AD B2C 租户中，依次选择“标识提供者”  、“本地帐户”  和“用户名”  。
+在 Azure AD B2C 租户中，大多数应用都希望用户使用任意电子邮件地址（例如 joe@comcast.net、bob@gmail.com、sarah@contoso.com 或 jim@live.com）登录。 此类型的帐户是本地帐户。 我们还支持任意用户名作为本地帐户（例如，joe、bob、sarah 或 jim）。 在 Azure 门户中配置 Azure AD B2C 的标识提供者时，可以选择这两种本地帐户类型中的一种。 在 Azure AD B2C 租户中，依次选择“标识提供者”、“本地帐户”和“用户名”。
 
 可以通过注册用户流、注册或登录用户流、Microsoft Graph API 或 Azure 门户来创建应用程序的用户帐户。
 
@@ -77,13 +77,17 @@ Azure AD B2C 还支持[自定义策略](custom-policy-overview.md)。 自定义�
 
 Azure AD B2C 不适用于 SharePoint 外部合作伙伴共享的情况；请改为参阅 [Azure AD B2B](https://cloudblogs.microsoft.com/enterprisemobility/2015/09/15/learn-all-about-the-azure-ad-b2b-collaboration-preview/)。
 
+### <a name="should-i-use-azure-ad-b2c-or-b2b-to-manage-external-identities"></a>我应该使用 Azure AD B2C 还是 B2B 来管理外部标识？
+
+请阅读[比较 Azure AD 中的 B2B 协作和 B2C](../active-directory/b2b/compare-with-b2c.md)，详细了解如何将适当功能应用于外部标识方案。
+
 ### <a name="what-reporting-and-auditing-features-does-azure-ad-b2c-provide-are-they-the-same-as-in-azure-ad-premium"></a>Azure AD B2C 提供哪些报告和审核功能？ 它们是否与 Azure AD Premium 中提供的功能相同？
 
 否，Azure AD B2C 不支持与 Azure AD Premium 相同的报告集。 但是，有许多共性：
 
-*  登录报告提供每次登录的记录以及简短的详细信息。
-*  审核报告包括管理活动和应用程序活动。
-*  使用情况报告包括用户数、登录次数和 MFA 次数。
+* 登录报告提供每次登录的记录以及简短的详细信息。
+* 审核报告包括管理活动和应用程序活动。
+* 使用情况报告包括用户数、登录次数和 MFA 次数。
 
 ### <a name="can-i-localize-the-ui-of-pages-served-by-azure-ad-b2c-what-languages-are-supported"></a>我可以本地化 Azure AD B2C 所提供页面的 UI 吗？ 支持哪些语言？
 
@@ -91,54 +95,54 @@ Azure AD B2C 不适用于 SharePoint 外部合作伙伴共享的情况；请改�
 
 ### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c-for-instance-can-i-change-the-url-from-contosob2clogincn-to-logincontosocom"></a>我可以在 Azure AD B2C 提供的注册和登录页面上使用自己的 URL 吗？ 例如，可以将 URL 从 contoso.b2clogin.cn 更改为 login.contoso.com 吗？
 
-目前不可以。 该功能在我们的计划之中。 在 Azure 门户上的“域”选项卡中验证域并不能实现此目标。  但是，通过 b2clogin.cn，我们提供了[中立顶级域](b2clogin.md)，因此可以在不提及 Microsoft 的情况下实现外部外观。
+目前不可以。 该功能在我们的计划之中。 在 Azure 门户上的“域”选项卡中验证域并不能实现此目标。 但是，通过 b2clogin.cn，我们提供了[中立顶级域](b2clogin.md)，因此可以在不提及 Microsoft 的情况下实现外部外观。
 
 ### <a name="how-do-i-delete-my-azure-ad-b2c-tenant"></a>如何删除 Azure AD B2C 租户？
 
 请按照以下步骤删除 Azure AD B2C 租户。
 
-可以使用当前的“应用程序”体验，或者使用我们新推出的统一“应用注册(预览版)”体验   。 [详细了解此新体验](/active-directory/develop/app-registrations-training-guide-for-app-registrations-legacy-users)。
+可以使用新的统一“应用注册”体验或遗留下来的“应用程序(旧版)”体验。 [详细了解此新体验](app-registrations-training-guide.md)。
 
-#### <a name="applications"></a>[应用程序](#tab/applications/)
-
-1. 以订阅管理员身份登录到 [Azure 门户](https://portal.azure.cn/)。 使用在注册 Azure 时使用的同一工作或学校帐户。
-1. 在顶部菜单中选择“目录 + 订阅”  筛选器，然后选择包含Azure AD B2C 租户的目录。
-1. 在左侧菜单中，选择“Azure AD B2C”  。 或者，选择“所有服务”  并搜索并选择“Azure AD B2C”  。
-1. 删除 Azure AD B2C 租户中的所有**用户流(策略)** 。
-1. 删除你在 Azure AD B2C 租户中注册的所有**应用程序**。
-1. 在左侧菜单中，选择“Azure Active Directory”  。
-1. 在“管理”下，选择“用户”   。
-1. 依次选择每个用户（不包括你当前作为用户登录的订阅管理员  用户）。 选择页面底部的“删除”  ，并在出现提示时选择“是”  。
-1. 在“管理”  下，选择“应用注册”  或“应用注册(旧版)”  。
-1. 选择“查看所有应用程序” 
-1. 选择名为“b2c-extensions-app”  的应用程序，选择“删除”  ，然后在出现提示时选择“是”  。
-1. 在“管理”下，选择“用户设置”   。
-1. 如果存在，请在“LinkedIn 帐户连接”  下选择“否”  ，然后选择“保存”  。
-1. 在“管理”下，选择“属性”  
-1. 在“Azure 资源的访问管理”  下，选择“是”  ，然后选择“保存”  。
-1. 从 Azure 门户注销，然后重新登录以刷新你的访问权限。
-1. 在左侧菜单中，选择“Azure Active Directory”  。
-1. 在“概述”  页上，选择“删除目录”  。 按照屏幕上的说明完成该过程。
-
-#### <a name="app-registrations-preview"></a>[应用注册（预览版）](#tab/app-reg-preview/)
+#### <a name="app-registrations"></a>[应用注册](#tab/app-reg-ga/)
 
 1. 以订阅管理员身份登录到 [Azure 门户](https://portal.azure.cn/)。 使用在注册 Azure 时使用的同一工作或学校帐户。
-1. 在顶部菜单中选择“目录 + 订阅”  筛选器，然后选择包含Azure AD B2C 租户的目录。
-1. 在左侧菜单中，选择“Azure AD B2C”  。 或者，选择“所有服务”  并搜索并选择“Azure AD B2C”  。
+1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
+1. 在左侧菜单中，选择“Azure AD B2C”。 或者，选择“所有服务”并搜索并选择“Azure AD B2C”。
 1. 删除 Azure AD B2C 租户中的所有**用户流(策略)** 。
-1. 选择“应用注册(预览版)”，然后选择“所有应用程序”选项卡。  
+1. 选择“应用注册”，然后选择“所有应用程序”选项卡。 
 1. 删除已注册的所有应用程序。
 1. 删除 **b2c-extensions-app**。
-1. 在“管理”下，选择“用户”   。
-1. 依次选择每个用户（不包括你当前作为用户登录的订阅管理员  用户）。 选择页面底部的“删除”  ，并在出现提示时选择“是”  。
-1. 在左侧菜单中，选择“Azure Active Directory”  。
-1. 在“管理”下，选择“用户设置”   。
-1. 如果存在，请在“LinkedIn 帐户连接”  下选择“否”  ，然后选择“保存”  。
-1. 在“管理”下，选择“属性”  
-1. 在“Azure 资源的访问管理”  下，选择“是”  ，然后选择“保存”  。
+1. 在“管理”下，选择“用户” 。
+1. 依次选择每个用户（不包括你当前作为用户登录的订阅管理员用户）。 选择页面底部的“删除”，并在出现提示时选择“是”。
+1. 在左侧菜单中，选择“Azure Active Directory”。
+1. 在“管理”下，选择“用户设置” 。
+1. 如果存在，请在“LinkedIn 帐户连接”下选择“否”，然后选择“保存”。
+1. 在“管理”下，选择“属性” 
+1. 在“Azure 资源的访问管理”下，选择“是”，然后选择“保存”。
 1. 从 Azure 门户注销，然后重新登录以刷新你的访问权限。
-1. 在左侧菜单中，选择“Azure Active Directory”  。
-1. 在“概述”  页上，选择“删除目录”  。 按照屏幕上的说明完成该过程。
+1. 在左侧菜单中，选择“Azure Active Directory”。
+1. 在“概述”页上，选择“删除目录”。 按照屏幕上的说明完成该过程。
+
+#### <a name="applications-legacy"></a>[应用程序(旧版)](#tab/applications-legacy/)
+
+1. 以订阅管理员身份登录到 [Azure 门户](https://portal.azure.cn/)。 使用在注册 Azure 时使用的同一工作或学校帐户。
+1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
+1. 在左侧菜单中，选择“Azure AD B2C”。 或者，选择“所有服务”并搜索并选择“Azure AD B2C”。
+1. 删除 Azure AD B2C 租户中的所有**用户流(策略)** 。
+1. 删除你在 Azure AD B2C 租户中注册的所有“应用程序(旧版)”。
+1. 在左侧菜单中，选择“Azure Active Directory”。
+1. 在“管理”下，选择“用户” 。
+1. 依次选择每个用户（不包括你当前作为用户登录的订阅管理员用户）。 选择页面底部的“删除”，并在出现提示时选择“是”。
+1. 在“管理”下，选择“应用注册”。
+1. 选择“查看所有应用程序”
+1. 选择名为“b2c-extensions-app”的应用程序，选择“删除”，然后在出现提示时选择“是”。
+1. 在“管理”下，选择“用户设置” 。
+1. 如果存在，请在“LinkedIn 帐户连接”下选择“否”，然后选择“保存”。
+1. 在“管理”下，选择“属性” 
+1. 在“Azure 资源的访问管理”下，选择“是”，然后选择“保存”。
+1. 从 Azure 门户注销，然后重新登录以刷新你的访问权限。
+1. 在左侧菜单中，选择“Azure Active Directory”。
+1. 在“概述”页上，选择“删除目录”。 按照屏幕上的说明完成该过程。
 
 * * *
 

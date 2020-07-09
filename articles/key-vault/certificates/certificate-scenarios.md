@@ -3,20 +3,19 @@ title: Key Vault 证书入门
 description: 以下方案概述了 Key Vault 的证书管理服务的多种主要使用方式，包括在密钥保管库中创建第一个证书所需的其他步骤。
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: conceptual
-origin.date: 01/07/2019
-ms.date: 04/20/2020
+origin.date: 06/13/2020
+ms.date: 07/01/2020
 ms.author: v-tawe
-ms.openlocfilehash: d038e0b407bef6617d1af84340aaf046b7a553c6
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.openlocfilehash: e5c7eb1875309efd56aa9d5871c738d09458b97b
+ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588894"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85796220"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Key Vault 证书入门
 以下方案概述了 Key Vault 的证书管理服务的多种主要使用方式，包括在密钥保管库中创建第一个证书所需的其他步骤。
@@ -98,13 +97,19 @@ ms.locfileid: "82588894"
 -   另外，用户可以编辑策略。策略在导入时生效，但其包含的默认设置在导入时并未指定任何信息。 例如： 无颁发者信息  
 
 ### <a name="formats-of-import-we-support"></a>我们支持的导入格式
+Azure Key Vault 支持 .pem 和 .pfx 证书文件（用于将证书导入到 Key Vault 中）。
 对于 PEM 文件格式，我们支持以下导入类型。 单个 PEM 编码的证书，以及一个包含以下内容的 PKCS#8 编码和解密的密钥
 
 -----BEGIN CERTIFICATE----- -----END CERTIFICATE-----
 
 -----BEGIN PRIVATE KEY----- -----END PRIVATE KEY-----
 
-进行证书合并时，我们支持 2 种基于 PEM 的格式。 可以合并单个 PKCS#8 编码的证书或 base64 编码的 P7B 文件。 -----BEGIN CERTIFICATE----- -----END CERTIFICATE-----
+导入证书时，需要确保该密钥包含在文件本身中。 如果让私钥单独采用另一格式，则需将私钥与证书组合在一起。 某些证书颁发机构提供不同格式的证书，因此在导入证书之前，请确保证书采用 .pem 或 .pfx 格式。 
+
+### <a name="formats-of-merge-csr-we-support"></a>我们支持的合并 CSR 的格式
+AKV 支持 2 种基于 PEM 的格式。 可以合并单个 PKCS#8 编码的证书或 base64 编码的 P7B（由 CA 签名的证书链） 
+
+-----BEGIN CERTIFICATE----- -----END CERTIFICATE-----
 
 我们目前不支持 PEM 格式的 EC 密钥。
 

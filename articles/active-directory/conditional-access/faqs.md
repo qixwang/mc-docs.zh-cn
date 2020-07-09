@@ -5,18 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 02/25/2020
+ms.date: 07/01/2020
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10ea9b8a4e4827402d7e35a4e3b4cf1b09bb852a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.custom: has-adal-ref
+ms.openlocfilehash: e2f0f57c9d7e56b57603a48554df6cfa9dfeef9c
+ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77653331"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945056"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Azure Active Directory 条件访问常见问题解答
 
@@ -24,21 +25,21 @@ ms.locfileid: "77653331"
 
 有关使用条件访问策略的应用程序的信息，请参阅[使用 Azure Active Directory 中条件访问规则的应用程序和浏览器](concept-conditional-access-cloud-apps.md)。
 
+## <a name="are-conditional-access-policies-enforced-for-b2b-collaboration-and-guest-users"></a>是否对 B2B 协作用户和来宾用户强制实施条件访问策略？
+
+对企业到企业 (B2B) 协作用户执行策略。 但在某些情况下，用户可能无法满足策略要求。 例如，来宾用户的组织可能不支持多重身份验证。 
+
 ## <a name="does-a-sharepoint-online-policy-also-apply-to-onedrive-for-business"></a>SharePoint Online 策略是否也适用于 OneDrive for Business？
 
-是的。 SharePoint Online 策略也适用于 OneDrive for Business。
+是的。 SharePoint Online 策略也适用于 OneDrive for Business。 有关详细信息，请参阅[条件访问服务依赖项](service-dependencies.md)一文，并考虑改将策略定向到 [Office 365 应用](concept-conditional-access-cloud-apps.md#office-365-preview)。
 
 ## <a name="why-cant-i-set-a-policy-directly-on-client-apps-like-word-or-outlook"></a>为何无法对诸如 Word 或 Outlook 等客户端应用直接设置策略？
 
-条件访问策略设置访问服务的要求。 它在对该服务执行身份验证时执行。 不在客户端应用程序上直接设置策略。 相反，在客户端调用服务时应用策略。 例如，在 SharePoint 上设置的策略适用于调用 SharePoint 的客户端。 在 Exchange 上设置的策略适用于 Outlook。
+条件访问策略设置访问服务的要求。 它在对该服务执行身份验证时执行。 不在客户端应用程序上直接设置策略。 相反，在客户端调用服务时应用策略。 例如，在 SharePoint 上设置的策略适用于调用 SharePoint 的客户端。 在 Exchange 上设置的策略适用于 Outlook。 有关详细信息，请参阅[条件访问服务依赖项](service-dependencies.md)一文，并考虑改将策略定向到 [Office 365 应用](concept-conditional-access-cloud-apps.md#office-365-preview)。
 
 ## <a name="does-a-conditional-access-policy-apply-to-service-accounts"></a>条件访问策略是否应用于服务帐户？
 
-条件访问策略适用于所有用户帐户， 其中包括用作服务帐户的用户帐户。 通常情况下，运行时无人参与的服务帐户无法满足条件访问策略的要求。 例如，可能需要多重身份验证。 可使用条件访问策略管理设置从策略中排除服务帐户。 
-
-## <a name="are-microsoft-graph-apis-available-for-configuring-conditional-access-policies"></a>Microsoft Graph API 是否可用于配置条件访问策略？
-
-目前不可以。 
+条件访问策略适用于所有用户帐户， 其中包括用作服务帐户的用户帐户。 通常情况下，运行时无人参与的服务帐户无法满足条件访问策略的要求。 例如，可能需要多重身份验证。 可以通过使用[用户或组排除](concept-conditional-access-users-groups.md#exclude-users)，从策略中排除服务帐户。 
 
 ## <a name="what-is-the-default-exclusion-policy-for-unsupported-device-platforms"></a>针对不受支持的设备平台的默认排除策略是什么？
 
@@ -48,9 +49,11 @@ ms.locfileid: "77653331"
 
 Microsoft Teams 的核心工作效率方案严重依赖 Exchange Online 和 SharePoint Online，例如会议、日历和文件共享。 用户直接登录到 Microsoft Teams 时，为这些云应用设置的条件访问策略会应用于 Microsoft Teams。
 
-Microsoft Teams 还在 Azure Active Directory 条件访问策略中作为云应用单独受到支持。 用户登录时，为云应用设置的条件访问策略会应用于 Microsoft Teams。 然而，在没有对其他应用（如 Exchange Online 和 SharePoint Online）实施正确策略的情况下，用户仍可能能够直接访问这些资源。
+Microsoft Teams 还在条件访问策略中作为云应用单独受到支持。 用户登录时，为云应用设置的条件访问策略会应用于 Microsoft Teams。 然而，在没有对其他应用（如 Exchange Online 和 SharePoint Online）实施正确策略的情况下，用户仍可能能够直接访问这些资源。
 
 适用于 Windows 和 Mac 的 Microsoft Teams 桌面客户端支持新式身份验证。 新式身份验证将基于 Azure Active Directory 身份验证库 (ADAL) 的登录引入 Microsoft Office 客户端应用程序。
+
+有关详细信息，请参阅[条件访问服务依赖项](service-dependencies.md)一文，并考虑改将策略定向到 [Office 365 应用](concept-conditional-access-cloud-apps.md#office-365-preview)。
 
 ## <a name="next-steps"></a>后续步骤
 

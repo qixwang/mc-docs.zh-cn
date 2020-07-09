@@ -7,17 +7,17 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
 origin.date: 04/17/2018
-ms.date: 05/11/2020
+ms.date: 07/06/2020
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 1f6d50256586b2226550d33d3d956470ba8eb842
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.openlocfilehash: ba968309d0d53730b820f723aceae97f3666a909
+ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198597"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85845809"
 ---
 # <a name="secure-a-database-in-azure-synapse"></a>保护 Azure Synapse 中的数据库
 
@@ -34,9 +34,9 @@ ms.locfileid: "82198597"
 
 连接安全性是指如何使用防火墙规则和连接加密来限制和保护数据库连接。
 
-服务器和数据库使用防火墙规则来拒绝源自未明确列入允许列表的 IP 地址的连接企图。 若要从应用程序或客户端计算机的公共 IP 地址进行连接，必须先使用 Azure 门户、REST API 或 PowerShell 创建服务器级防火墙规则。
+逻辑 SQL Server 及其数据库使用防火墙规则来拒绝源自未明确列入允许列表的 IP 地址的连接企图。 若要从应用程序或客户端计算机的公共 IP 地址进行连接，必须先使用 Azure 门户、REST API 或 PowerShell 创建服务器级防火墙规则。
 
-最佳做法是尽量通过服务器防火墙来限制允许的 IP 地址范围。  要从本地计算机访问 SQL 池，请确保网络和本地计算机上的防火墙允许在 TCP 端口 1433 上的传出通信。  
+最佳做法是尽量通过服务器级防火墙来限制允许的 IP 地址范围。  要从本地计算机访问 SQL 池，请确保网络和本地计算机上的防火墙允许在 TCP 端口 1433 上的传出通信。  
 
 Azure Synapse Analytics 使用服务器级 IP 防火墙规则。 不支持数据库级 IP 防火墙规则。 有关详细信息，请参阅 [Azure SQL 数据库防火墙规则](../../sql-database/sql-database-firewall-configure.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 
@@ -46,11 +46,11 @@ Azure Synapse Analytics 使用服务器级 IP 防火墙规则。 不支持数据
 
 身份验证是指连接到数据库时如何证明身份。 SQL 池当前支持通过用户名和密码，以及 Azure Active Directory 进行 SQL Server 身份验证。
 
-在为数据库创建逻辑服务器时，已指定了一个包含用户名和密码的“服务器管理员”登录名。 使用这些凭据，可以通过 SQL Server 身份验证以数据库所有者（或“dbo”）的身份在该服务器对任何数据库进行验证。
+在为数据库创建服务器时，已指定了一个包含用户名和密码的“服务器管理员”登录名。 使用这些凭据，可以通过 SQL Server 身份验证以数据库所有者（或“dbo”）的身份在该服务器对任何数据库进行验证。
 
 但是，组织的用户最好使用不同的帐户进行身份验证。 这样，便可以限制授予应用程序的权限，并在应用程序代码容易受到 SQL 注入攻击的情况下降低恶意活动的风险。
 
-若要创建 SQL Server 验证的用户，请使用服务器管理员登录名连接到服务器上的 **master** 数据库，并创建新的服务器登录名。  最好也在 master 数据库中创建一个用户。 在 master 中创建用户以后，用户即可使用 SSMS 之类的工具登录，不需指定数据库名称。  此外，用户还可以使用对象资源管理器查看 SQL Server 上的所有数据库。
+若要创建 SQL Server 验证的用户，请使用服务器管理员登录名连接到服务器上的 **master** 数据库，并创建新的服务器登录名。  最好也在 master 数据库中创建一个用户。 在 master 中创建用户以后，用户即可使用 SSMS 之类的工具登录，不需指定数据库名称。  此外，用户还可以使用对象资源管理器查看服务器上的所有数据库。
 
 ```sql
 -- Connect to master database and create a login
@@ -58,7 +58,7 @@ CREATE LOGIN ApplicationLogin WITH PASSWORD = 'Str0ng_password';
 CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 ```
 
-然后，使用服务器管理员登录名连接到“SQL 池数据库”，并基于刚刚创建的服务器登录名创建数据库用户  。
+然后，使用服务器管理员登录名连接到“SQL 池数据库”，并基于刚刚创建的服务器登录名创建数据库用户。
 
 ```sql
 -- Connect to the database and create a database user
@@ -93,13 +93,13 @@ EXEC sp_addrolemember 'db_datawriter', 'ApplicationUser'; -- allows ApplicationU
 GRANT SELECT ON SCHEMA::Test to ApplicationUser
 ```
 
-从 Azure 门户或使用 Azure 资源管理器 API 管理数据库和逻辑服务器的操作会根据门户用户帐户的角色分配进行控制。 有关详细信息，请参阅 [Azure 门户中基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
+通过 Azure 门户或 Azure 资源管理器 API 管理数据库和服务器的操作可根据门户用户帐户的角色分配进行控制。 有关详细信息，请参阅 [Azure 门户中基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
 
-## <a name="encryption"></a>加密
+## <a name="encryption"></a>Encryption
 
 透明数据加密 (TDE) 可以对静态数据进行加密和解密，避免恶意活动造成的威胁。 在加密数据库时，可以对关联的备份和事务日志文件加密，无需对应用程序进行任何更改。 TDE 使用称为数据库加密密钥的对称密钥来加密整个数据库的存储。
 
-在 SQL 数据库中，数据库加密密钥由内置服务器证书保护。 内置服务器证书对每个 SQL 数据库服务器都是唯一的。 Azure 至少每隔 90 天自动轮换这些证书。 使用的加密算法为 AES-256。 有关 TDE 的一般描述，请参阅[透明数据加密](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
+在 SQL 数据库中，数据库加密密钥由内置服务器证书保护。 内置服务器证书是每个服务器特有的。 Azure 至少每隔 90 天自动轮换这些证书。 使用的加密算法为 AES-256。 有关 TDE 的一般描述，请参阅[透明数据加密](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
 可以使用 [Azure 门户](sql-data-warehouse-encryption-tde.md)或 [T-SQL](sql-data-warehouse-encryption-tde-tsql.md) 加密数据库。
 
