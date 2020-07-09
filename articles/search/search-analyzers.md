@@ -7,40 +7,39 @@ manager: nitinme
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 12/10/2019
-ms.date: 06/09/2020
-ms.openlocfilehash: 5c5bcf7c03e2a65f4af772bb560f0b81690ed283
-ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
+origin.date: 06/05/2020
+ms.date: 07/02/2020
+ms.openlocfilehash: de066abce9dc08ece2e9fe42ea82255c2b819411
+ms.sourcegitcommit: 5afd7c4c3be9b80c4c67ec55f66fcf347aad74c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84564357"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85942588"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>用于 Azure 认知搜索中文本处理的分析器
 
-分析器是[全文搜索引擎](search-lucene-query-architecture.md)的组成部分，负责在查询字符串和带索引文档中进行文本处理  。 不同的分析器根据具体的方案以不同的方式处理文本。 语言分析器使用语言规则处理文本，以提高搜索质量；其他分析器执行其他基本任务，例如，将字符转换为小写。 
+分析器是[全文搜索引擎](search-lucene-query-architecture.md)的组成部分，负责在查询字符串和带索引文档中进行文本处理。 进程具有转换性，可通过以下操作修改字符串：
+
++ 删除非必需字（非索引字）和标点
++ 将短语和用连字符连接的词语拆分为组成部分
++ 将大写单词转换为小写单词
++ 将单词分解为原根形式以提高存储效率，以便无论是哪种时态都可以找到匹配项。
+
+在生成索引以编制索引时进行分析，在读取索引以执行查询时再次进行转换。 如果将同一个分析器用于这两种操作，则更有可能获得所需的搜索结果。
 
 <!--
-The following video segment fast-forwards to an explanation of how text processing works in Azure Cognitive Search.
+If you are unfamiliar with text analysis, listen to the following video clip for a brief explanation of how text processing works in Azure Cognitive Search.
 
 > [!VIDEO https://www.youtube.com/embed/Y_X6USgvB1g?version=3&start=132&end=189]
 -->
 
-语言分析器是用得最多的类型，Azure 认知搜索索引中的每个可搜索字段都分配有默认的语言分析器。 下面是文本分析过程中的典型语言转换：
-
-+ 删除非必需字（非索引字）和标点。
-+ 将短语和用连字符连接的词语分解为组成部分。
-+ 将大写单词转换为小写单词。
-+ 将单词分解为词根形式，以便查找匹配项，而不考虑时态。
-
-语言分析器将文本输入转换为原始形式或词根形式，以快速实现信息存储和信息检索。 在生成索引以编制索引时会发生此转换，在读取索引以执行搜索时会再次进行转换。 如果将同一个分析器用于这两种操作，则更有可能获得所需的搜索结果。
-
 ## <a name="default-analyzer"></a>默认分析器  
+
+在 Azure 认知搜索查询中，文本分析器会自动调用标记为“可搜索”的所有字符串字段。 
 
 Azure 认知搜索默认使用 [Apache Lucene 标准分析器 (standard lucene)](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html)，该分析器按照[“Unicode 文本分段”](https://unicode.org/reports/tr29/)规则将文本分解成多个元素。 此外，标准分析器将所有字符转换为其小写形式。 已编入索引的文档和搜索词在索引和查询处理期间完成分析。  
 
-将会针对每个可搜索字段使用此分析器。 你可以逐字段替代默认值。 替代的分析器可以是[语言分析器](index-add-language-analyzers.md)、[自定义分析器](index-add-custom-analyzers.md)，也可以是[可用分析器列表](index-add-custom-analyzers.md#AnalyzerTable)中的预定义分析器。
-
+你可以逐字段替代默认值。 替代的分析器可以是用于语言处理的[语言分析器](index-add-language-analyzers.md)、[自定义分析器](index-add-custom-analyzers.md)，也可以是[可用分析器列表](index-add-custom-analyzers.md#AnalyzerTable)中的预定义分析器。
 
 ## <a name="types-of-analyzers"></a>分析器类型
 
@@ -48,8 +47,8 @@ Azure 认知搜索默认使用 [Apache Lucene 标准分析器 (standard lucene)]
 
 | Category | 说明 |
 |----------|-------------|
-| [标准 Lucene 分析器](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | 默认。 无需任何规范或配置。 这种通用分析器适用于大多数语言和方案。|
-| 预定义分析器 | 以成品的形式提供，旨在按原样使用。 <br/>有两种类型：专用和语言特定。 之所以称作“预定义”分析器，是因为它们按名称引用，不需要进行额外的配置或自定义。 <br/><br/>需要对文本输入进行专业处理或最小处理时，请使用[专业（不区分语言）分析器](index-add-custom-analyzers.md#AnalyzerTable)。 非语言预定义分析器包括 Asciifolding、Keyword、Pattern、Simple、Stop 和 Whitespace       。<br/><br/>当需要为各种语言提供丰富的语言支持时，请使用[语言分析器](index-add-language-analyzers.md)。 Azure 认知搜索支持 35 种 Lucene 语言分析器和 50 种 Microsoft 自然语言处理分析器。 |
+| [标准 Lucene 分析器](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | 默认。 无需任何规范或配置。 这种通用分析器适用于大多数语言和场景。|
+| 预定义分析器 | 以成品的形式提供，旨在按原样使用。 <br/>有两种类型：专用和语言特定。 之所以称作“预定义”分析器，是因为它们按名称引用，不需要进行额外的配置或自定义。 <br/><br/>需要对文本输入进行专业处理或最小处理时，请使用[专业（不区分语言）分析器](index-add-custom-analyzers.md#AnalyzerTable)。 非语言预定义分析器包括 Asciifolding、Keyword、Pattern、Simple、Stop 和 Whitespace     。<br/><br/>当需要为各种语言提供丰富的语言支持时，请使用[语言分析器](index-add-language-analyzers.md)。 Azure 认知搜索支持 35 种 Lucene 语言分析器和 50 种 Microsoft 自然语言处理分析器。 |
 |[自定义分析器](https://docs.microsoft.com/rest/api/searchservice/Custom-analyzers-in-Azure-Search) | 称为结合了现有元素的用户定义配置，由一个 tokenizer（必需）和可选的筛选器（字符或词元）组成。|
 
 某些预定义分析器（例如 **Pattern** 或 **Stop**）支持有限的一组配置选项。 若要设置这些选项，请有效地创建一个自定义分析器，其中包括某个预定义分析器，以及[预定义分析器参考](index-add-custom-analyzers.md#AnalyzerTable)中所述的一个替代选项。 对于任何自定义配置，请为新配置提供一个名称，例如 *myPatternAnalyzer*，以便将它与 Lucene Pattern 分析器区分开来。

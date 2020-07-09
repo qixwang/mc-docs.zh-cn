@@ -11,16 +11,16 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 origin.date: 06/03/2019
 ms.date: 09/16/2019
-ms.openlocfilehash: 8fc1b0c959a78a3fc5d05d6184257c75992fdfb0
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.openlocfilehash: 56e4b24642baba8a27127886ce46d8886d10427b
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723201"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516552"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>在 HDInsight 中上传 Apache Hadoop 作业的数据
 
-HDInsight 提供基于 Azure 存储和 Azure Data Lake Storage 的 Hadoop 分布式文件系统 (HDFS)。 此存储包括 Gen1 和 Gen2。 Azure 存储以及 Data Lake Storage Gen1 和 Data Lake Storage Gen2 设计为 HDFS 扩展。 它们通过启用 Hadoop 环境中的整套组件直接操作其管理的数据。 Azure 存储、Data Lake Storage Gen1 和 Data Lake Storage Gen2 是不同的文件系统。 系统已针对此类数据的存储和计算进行优化。 若要了解使用 Azure 存储的优点，请参阅[将 Azure 存储与 HDInsight 配合使用](hdinsight-hadoop-use-blob-storage.md)。 另请参阅[将 Data Lake Storage Gen1 与 HDInsight 配合使用](hdinsight-hadoop-use-data-lake-store.md)和[将 Data Lake Storage Gen2 与 HDInsight 配合使用](hdinsight-hadoop-use-data-lake-storage-gen2.md)。
+HDInsight 提供基于 Azure 存储和 Azure Data Lake Storage 的 Hadoop 分布式文件系统 (HDFS)。 此存储包括 Gen1 和 Gen2。 Azure 存储以及 Data Lake Storage Gen1 和 Data Lake Storage Gen2 设计为 HDFS 扩展。 它们通过启用 Hadoop 环境中的整套组件直接操作其管理的数据。 Azure 存储、Data Lake Storage Gen1 和 Data Lake Storage Gen2 是不同的文件系统。 系统已针对此类数据的存储和计算进行优化。 若要了解使用 Azure 存储的优点，请参阅[将 Azure 存储与 HDInsight 配合使用](hdinsight-hadoop-use-blob-storage.md)。 另请参阅[将 Data Lake Storage Gen2 与 HDInsight 配合使用](hdinsight-hadoop-use-data-lake-storage-gen2.md)。
 
 ## <a name="prerequisites"></a>先决条件
 

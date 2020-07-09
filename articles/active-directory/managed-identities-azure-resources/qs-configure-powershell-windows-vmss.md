@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/10/2019
+ms.date: 06/30/2020
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fe79321d49d79253b780d5c395c77e0ebdbcf8b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 39ad06f499c4bfb7a3679e57eaea12a1578dc787
+ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75335559"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945170"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-virtual-machine-scale-sets-using-powershell"></a>使用 PowerShell 在虚拟机规模集上配置 Azure 资源的托管标识
 
@@ -36,7 +36,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 ## <a name="prerequisites"></a>先决条件
 
-- 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#how-does-the-managed-identities-for-azure-resources-work)。
+- 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#managed-identity-types)。
 - 如果还没有 Azure 帐户，请先[注册试用帐户](https://www.azure.cn/pricing/1rmb-trial/)，然后再继续。
 - 若要执行本文中的管理操作，帐户需要以下基于 Azure 角色的访问控制分配：
 
@@ -152,7 +152,7 @@ Update-AzVmss -ResourceGroupName myResourceGroup -Name myVmss -IdentityType "Sys
   - [使用 PowerShell 创建 Windows 虚拟机](../../virtual-machines/windows/quick-create-powershell.md) 
   - [使用 PowerShell 创建 Linux 虚拟机](../../virtual-machines/linux/quick-create-powershell.md) 
 
-<!-- Update_Description: link update -->
+
 
 
 

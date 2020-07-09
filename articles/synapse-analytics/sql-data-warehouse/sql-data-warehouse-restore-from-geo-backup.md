@@ -8,16 +8,16 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
 origin.date: 07/12/2019
-ms.date: 05/11/2020
+ms.date: 07/06/2020
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 4c695b55b8462e891b7d4401102e10b83018701b
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.openlocfilehash: 9fe6fee799138998ff1a2a6959253a8501dbadab
+ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198756"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85845892"
 ---
 # <a name="geo-restore-for-sql-pool"></a>SQL 池的异地还原
 
@@ -50,7 +50,7 @@ ms.locfileid: "82198756"
 $SubscriptionName="<YourSubscriptionName>"
 $ResourceGroupName="<YourResourceGroupName>"
 $ServerName="<YourServerNameWithoutURLSuffixSeeNote>"  # Without database.chinacloudapi.cn
-$TargetResourceGroupName="<YourTargetResourceGroupName>" # Restore to a different logical server.
+$TargetResourceGroupName="<YourTargetResourceGroupName>" # Restore to a different server.
 $TargetServerName="<YourtargetServerNameWithoutURLSuffixSeeNote>"  
 $DatabaseName="<YourDatabaseName>"
 $NewDatabaseName="<YourDatabaseName>"
@@ -78,23 +78,23 @@ $GeoRestoredDatabase.status
 按下述步骤从异地备份还原 SQL 池：
 
 1. 登录到 [Azure 门户](https://portal.azure.cn/)帐户。
-2. 单击“+ 创建资源”  。
+2. 单击“+ 创建资源”。
 
    ![新建 DW](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new.png)
 
-3. 依次单击“数据库”  、“Azure Synapse Analytics”（以前称为“SQL DW”）。
+3. 依次单击“数据库”、“Azure Synapse Analytics”（以前称为“SQL DW”） 。
 
    ![新建 DW 2](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new-02.png)
 
-4. 填充在“基本信息”选项卡中请求的信息，然后  单击“下一步:  其他设置”。
+4. 填充在“基本信息”选项卡中请求的信息，然后单击“下一步:其他设置”。
 
    ![基础知识](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
 
-5. 对于“使用现有的数据”参数，  请选择“备份”，然后从向下滚动选项中选择适当的备份。  单击“查看 + 创建”  。
+5. 对于“使用现有的数据”参数，请选择“备份”，然后从向下滚动选项中选择适当的备份。 单击“查看 + 创建”。
 
    ![backup](./media/sql-data-warehouse-restore-from-geo-backup/georestore-select.png)
 
-6. 数据仓库还原后，请检查“状态”是否为“联机”  。
+6. 数据仓库还原后，请检查“状态”是否为“联机”。
 
 ## <a name="next-steps"></a>后续步骤
 

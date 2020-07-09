@@ -1,17 +1,17 @@
 ---
 title: 自动缩放 Azure Batch 池中的计算节点
 description: 对云池启用自动缩放功能可以动态调整池中计算节点的数目。
-ms.topic: article
+ms.topic: how-to
 origin.date: 10/24/2019
 ms.date: 04/27/2020
 ms.author: v-tawe
 ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: 019a1fe6d0bb0c3c1593c5235b80e33307ed5b78
-ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
+ms.openlocfilehash: 9bf2def7be684a36ee9912ae1af716c6f586a0bb
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84126788"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85613405"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>创建用于缩放 Batch 池中的计算节点的自动公式
 
@@ -24,7 +24,7 @@ Azure Batch 可以根据定义的参数自动缩放池。 通过自动缩放，B
 本文讨论构成自动缩放公式的各个实体，包括变量、运算符、操作和函数。 本文介绍如何在 Batch 中获取各种计算资源和任务指标。 可以使用这些指标，根据资源使用情况和任务状态对池的节点计数进行调整。 然后介绍如何使用 Batch REST 和 .NET API 构建公式以及对池启用自动缩放。 最后，讨论几个示例公式。
 
 > [!IMPORTANT]
-> 创建 Batch 帐户时，可以指定[帐户配置](batch-api-basics.md#account)，用于确定是要在 Batch 服务订阅（默认设置）还是用户订阅中分配池。 如果使用默认的 Batch 服务配置创建了 Batch 帐户，则该帐户会限制为可用于处理的最大核心数。 Batch 服务最多只能将计算节点数扩展到该核心数限制。 出于此原因，Batch 服务可能达不到自动缩放公式所指定的目标计算节点数。 请参阅 [Azure Batch 服务的配额和限制](batch-quota-limit.md)了解有关查看和提高帐户配额的信息。
+> 创建 Batch 帐户时，可以指定[帐户配置](accounts.md)，用于确定是要在 Batch 服务订阅（默认设置）还是用户订阅中分配池。 如果使用默认的 Batch 服务配置创建了 Batch 帐户，则该帐户会限制为可用于处理的最大核心数。 Batch 服务最多只能将计算节点数扩展到该核心数限制。 出于此原因，Batch 服务可能达不到自动缩放公式所指定的目标计算节点数。 请参阅 [Azure Batch 服务的配额和限制](batch-quota-limit.md)了解有关查看和提高帐户配额的信息。
 >
 >如果使用用户订阅配置创建了帐户，则该帐户会共享订阅的核心配额。 有关详细信息，请参阅 [Azure 订阅和服务限制、配额和约束条件](../azure-resource-manager/management/azure-subscription-service-limits.md)中的[虚拟机限制](../azure-resource-manager/management/azure-subscription-service-limits.md#virtual-machines-limits)。
 >
@@ -128,6 +128,9 @@ $NodeDeallocationOption = taskcompletion;
 | $CurrentDedicatedNodes |当前的专用计算节点数。 |
 | $CurrentLowPriorityNodes |当前低优先级计算节点数，包括任何已占用的节点。 |
 | $PreemptedNodeCount | 池中处于预占状态的节点数。 |
+
+> [!IMPORTANT]
+> 作业释放任务当前未包含在提供任务计数的上述变量中，例如 $ActiveTasks 和 $PendingTasks。 根据你的自动缩放公式，这可能会导致节点被删除，并且没有节点可用于运行作业释放任务。
 
 > [!TIP]
 > 上表中所示的服务定义的只读变量是一些对象，它们提供各种方法来访问与其相关的数据。 有关详细信息，请参阅本文稍后的[获取样本数据](#getsampledata)。
@@ -617,7 +620,7 @@ AutoScaleRun.Results:
 - [AutoScaleRun.Results](https://docs.azure.cn/dotnet/api/microsoft.azure.batch.autoscalerun.results)
 - [AutoScaleRun.Error](https://docs.azure.cn/dotnet/api/microsoft.azure.batch.autoscalerun.error)
 
-在 REST API 中，[获取有关池的信息](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-pool)请求返回有关池的信息，其中包括 [autoScaleRun](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-pool#bk_autrun) 属性中最新自动缩放运行的信息。
+在 REST API 中，[获取有关池的信息](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-pool)请求返回有关池的信息，其中包括 [autoScaleRun](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-pool) 属性中最新自动缩放运行的信息。
 
 以下 C# 代码片段使用 Batch .NET 库来打印有关池 _myPool_ 上的最新自动缩放运行的信息：
 

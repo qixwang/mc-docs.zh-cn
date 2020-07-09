@@ -8,12 +8,12 @@ ms.topic: conceptual
 origin.date: 02/14/2020
 ms.date: 3/13/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 5d637a535f9b11767fd8086c52440000a6adf362
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3cc5072330ed5dbb617c7093af5d66c067731b8a
+ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79452579"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851985"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Monitor 代理概述
 
@@ -85,7 +85,7 @@ Azure 诊断扩展的限制包括：
 
 ## <a name="telegraf-agent"></a>Telegraf 代理
 
-[InfluxData Telegraf 代理](collect-custom-metrics-linux-telegraf.md)用于将性能数据从 Linux 计算机收集到 Azure Monitor 指标。
+InfluxData Telegraf 代理用于将性能数据从 Linux 计算机收集到 Azure Monitor 指标。
 
 如果需要执行以下操作，请使用 Telegraf 代理：
 
@@ -117,4 +117,3 @@ Azure 诊断扩展的限制包括：
 
 - [Log Analytics 代理概述](log-analytics-agent.md)
 - [Azure 诊断扩展概述](diagnostics-extension-overview.md)
-- [使用 InfluxData Telegraf 代理收集 Linux VM 的自定义指标](collect-custom-metrics-linux-telegraf.md)

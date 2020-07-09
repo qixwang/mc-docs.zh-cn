@@ -1,5 +1,5 @@
 ---
-title: Linux 救援 VM 中的 Chroot 环境。
+title: Linux 救援 VM 中的 Chroot 环境
 description: 本文介绍如何排查 Linux 中救援虚拟机 (VM) 上的 chroot 环境问题。
 mservices: virtual-machines-linux
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.topic: troubleshooting
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 origin.date: 05/05/2020
-ms.date: 05/25/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: e28dacac7d027ade0ab6dc7fc16d8a443d5bbc25
-ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
+ms.openlocfilehash: 4452b829c501062958bfbce3d702e9b10725a9fd
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83801839"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85946029"
 ---
 <!--Verified the Character Content-->
 # <a name="chroot-environment-in-a-linux-rescue-vm"></a>Linux 救援 VM 中的 Chroot 环境
@@ -279,7 +279,7 @@ ms.locfileid: "83801839"
 <!--Not Available on ## RHEL 8.x with LVM-->
 <!--Not Available on ## Oracle 7.x-->
 
-## <a name="suse-sles-12-sp4-suse-sles-12-sp4-for-sap--suse-sles-15-sp1-suse-sles-15-sp1-for-sap"></a>SUSE-SLES 12 SP4、SUSE-SLES 12 SP4 For SAP 以及 SUSE-SLES 15 SP1、SUSE-SLES 15 SP1 For SAP
+## <a name="suse-sles-12-sp4-suse-sles-12-sp4-for-sap---suse-sles-15-sp1-suse-sles-15-sp1-for-sap"></a>SUSE-SLES 12 SP4、SUSE-SLES 12 SP4 For SAP 以及 ## SUSE-SLES 15 SP1、SUSE-SLES 15 SP1 For SAP
 
 <!--CORRECT TO REMOVE ## IN ABOVE H2 TITLE-->
 

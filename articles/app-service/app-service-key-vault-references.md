@@ -4,15 +4,15 @@ description: 了解如何使用 Key Vault 引用设置 Azure 应用服务和 Azu
 author: mattchenderson
 ms.topic: article
 origin.date: 10/09/2019
-ms.date: 05/22/2020
+ms.date: 06/22/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: c968fb5556d12a078298dfc045c877e1bcc8f015
-ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
+ms.openlocfilehash: 525ce4a09f60000de856292eebeb1b96a91efe95
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83801262"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85613330"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>使用应用服务和 Azure Functions 的 Key Vault 引用
 
@@ -44,11 +44,15 @@ Key Vault 引用采用 `@Microsoft.KeyVault({referenceString})` 格式，其中 
 > | SecretUri=_secretUri_                                                       | **SecretUri** 应该是 Key Vault 中机密的完整数据平面 URI（包括版本），例如 https://myvault.vault.azure.cn/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
 > | VaultName=_vaultName_;SecretName=_secretName_;SecretVersion=_secretVersion_ | **VaultName** 应该是 Key Vault 资源的名称。 **SecretName** 应该是目标机密的名称。 **SecretVersion** 应该是要使用的机密的版本。 |
 
-例如，使用版本的完整引用如下所示：
+> [!NOTE] 
+> 当前需要版本。 轮换机密时，需在应用程序配置中更新版本。
+
+例如，完整的引用将如下所示：
 
 ```
 @Microsoft.KeyVault(SecretUri=https://myvault.vault.azure.cn/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931)
 ```
+
 也可使用以下命令：
 
 ```
@@ -188,15 +192,15 @@ Key Vault 引用可以用作[应用程序设置](configure-common.md#configure-a
 ### <a name="using-the-detector-for-app-service"></a>使用应用服务的检测程序
 
 1. 在门户中导航到你的应用。
-2. 选择“诊断和解决问题”。 
-3. 依次选择“可用性和性能”、“Web 应用关闭”。  
-4. 找到“Key Vault 应用程序设置诊断”，单击“更多信息”。  
+2. 选择“诊断和解决问题”。
+3. 依次选择“可用性和性能”、“Web 应用关闭”。 
+4. 找到“Key Vault 应用程序设置诊断”，单击“更多信息”。 
 
 
 ### <a name="using-the-detector-for-azure-functions"></a>使用 Azure Functions 的检测程序
 
 1. 在门户中导航到你的应用。
-2. 导航到“平台功能”。 
-3. 选择“诊断和解决问题”。 
-4. 依次选择“可用性和性能”、“函数应用关闭或报告错误”。  
-5. 单击“Key Vault 应用程序设置诊断”。 
+2. 导航到“平台功能”。
+3. 选择“诊断和解决问题”。
+4. 依次选择“可用性和性能”、“函数应用关闭或报告错误”。 
+5. 单击“Key Vault 应用程序设置诊断”。

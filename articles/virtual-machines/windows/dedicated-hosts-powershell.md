@@ -6,14 +6,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.workload: infrastructure
 origin.date: 08/01/2019
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 5ea448e02d2bd291af21d7b718a0302405cb8223
-ms.sourcegitcommit: 275203d0f144aa809792f2c570fd64797f405c80
+ms.reviewer: zivr
+ms.openlocfilehash: f88970c813a77fd878f4620aff2511b2ef731787
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82125803"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85946014"
 ---
 <!--Verified successfully-->
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>使用 Azure PowerShell 将 VM 部署到专用主机
@@ -25,11 +26,11 @@ ms.locfileid: "82125803"
 ## <a name="limitations"></a>限制
 
 - 专用主机上目前不支持虚拟机规模集。
-- 专用主机可用的大小和硬件类型因区域而异。 请参阅主机[定价页](https://aka.ms/ADHPricing)来了解详细信息。
+- 专用主机可用的大小和硬件类型因区域而异。 请参阅主机[定价页](https://www.azure.cn/pricing/details/virtual-machines/)来了解详细信息。
 
 ## <a name="create-a-host-group"></a>创建主机组
 
-主机组  是表示专用主机集合的资源。 你在某个区域中创建主机组，并向其中添加主机。 规划高可用性时，有其他选项可供选择。 你可以将以下一个或两个选项与专用主机一起使用： 
+主机组是表示专用主机集合的资源。 你在某个区域中创建主机组，并向其中添加主机。 规划高可用性时，有其他选项可供选择。 你可以将以下一个或两个选项与专用主机一起使用： 
 
 <!--Not Avaialble on availability zone-->
 <!--Not Available on - Span across multiple availability zones. In this case, you are required to have a host group in each of the zones you wish to use.-->
@@ -65,7 +66,7 @@ $hostGroup = New-AzHostGroup `
 
 现在，让我们在主机组中创建一个专用主机。 除了主机名称外，还需要提供主机的 SKU。 主机 SKU 捕获受支持的 VM 系列以及专用主机的硬件代系。
 
-有关主机 SKU 和定价的详细信息，请参阅 [Azure 专用主机定价](https://aka.ms/ADHPricing)。
+有关主机 SKU 和定价的详细信息，请参阅 [Azure 专用主机定价](https://www.azure.cn/pricing/details/virtual-machines/)。
 
 如果为主机组设置了容错域计数，则系统会要求你为主机指定容错域。 在此示例中，我们将主机的容错域设置为 1。
 
@@ -254,7 +255,6 @@ Remove-AzResourceGroup -Name $rgName
 
 - [此处](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)有一个示例模板，该模板使用区域和容错域来最大限度地提高在某个地区的复原能力。
 
-<!--Not Available on [Azure portal](dedicated-hosts-portal.md)-->
+- 也可以使用 [Azure 门户](dedicated-hosts-portal.md)专用主机。
 
-<!-- Update_Description: new article about dedicated hosts powershell -->
-<!--NEW.date: 04/27/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

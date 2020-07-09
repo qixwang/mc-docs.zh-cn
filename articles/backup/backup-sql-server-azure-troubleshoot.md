@@ -4,14 +4,14 @@ description: 有关使用 Azure 备份来备份在 Azure VM 上运行的 SQL Ser
 ms.topic: troubleshooting
 author: Johnnytechn
 origin.date: 06/18/2019
-ms.date: 06/09/2020
+ms.date: 06/22/2020
 ms.author: v-johya
-ms.openlocfilehash: 30b365bd0582f95e0415ec9454ec4f49ad0aa19e
-ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
+ms.openlocfilehash: af8bdd993f80535a2a7cb2742ffdd0738b599b15
+ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84683874"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851938"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>排查使用 Azure 备份进行 SQL Server 数据库备份的问题
 
@@ -29,7 +29,7 @@ ms.locfileid: "84683874"
 
 ![sql](./media/backup-azure-sql-database/sql.png)
 
-在备份配置过程中，如果 SQL VM 及其实例在“发现 VM 中的 DB”和“配置备份”（参见上图）中不可见，请确保**** ****：
+在备份配置过程中，如果 SQL VM 及其实例在“发现 VM 中的 DB”和“配置备份”（参见上图）中不可见，请确保 ：
 
 ### <a name="step-1-discovery-dbs-in-vms"></a>步骤 1：发现 VM 中的 DB
 
@@ -49,7 +49,7 @@ ms.locfileid: "84683874"
 
     `C:\Program Files\Azure Workload Backup` `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.WorkloadBackup.Edp.AzureBackupWindowsWorkload`
 
-    将 `C:\` 替换为 SystemDrive 的字母**。
+    将 `C:\` 替换为 SystemDrive 的字母。
 
 1. 通过防病毒扫描排除 VM 内运行的以下三个进程：
 
@@ -78,7 +78,7 @@ ms.locfileid: "84683874"
 
 | 错误消息 | 可能的原因 | 建议的操作 |
 |---|---|---|
-| SQL 数据库不存在。 | 该数据库已被删除或重命名。 | 检查是否意外删除或重命名了该数据库。<br/><br/> 如果意外删除了该数据库，若要继续备份，请将该数据库还原到原始位置。<br/><br/> 如果删除了该数据库，且将来不需要备份，请在恢复服务保管库中选择“停止备份”和“保留备份数据”或“删除备份数据”。**** **** **** 有关详细信息，请参阅[管理和监视已备份的 SQL Server 数据库](manage-monitor-sql-database-backup.md)。
+| SQL 数据库不存在。 | 该数据库已被删除或重命名。 | 检查是否意外删除或重命名了该数据库。<br/><br/> 如果意外删除了该数据库，若要继续备份，请将该数据库还原到原始位置。<br/><br/> 如果删除了该数据库，且将来不需要备份，请在恢复服务保管库中选择“停止备份”和“保留备份数据”或“删除备份数据”。   有关详细信息，请参阅[管理和监视已备份的 SQL Server 数据库](manage-monitor-sql-database-backup.md)。
 
 ### <a name="usererrorsqllsnvalidationfailure"></a>UserErrorSQLLSNValidationFailure
 
@@ -90,7 +90,7 @@ ms.locfileid: "84683874"
 
 | 错误消息 | 可能的原因 | 建议的操作 |
 |---|---|---|
-| Azure 备份无法连接到 SQL 实例。 | Azure 备份无法连接到 SQL Server 实例。 | 使用 Azure 门户上错误菜单中的“其他详细信息”缩小根本原因的范围。 请参阅 [SQL 备份故障排除](https://docs.microsoft.com/sql/database-engine/configure-windows/troubleshoot-connecting-to-the-sql-server-database-engine)来解决错误。<br/><ul><li>如果默认 SQL 设置不允许远程连接，请更改设置。 有关更改设置的信息，请参阅以下文章：<ul><li>[MSSQLSERVER_-1](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-1-database-engine-error?view=sql-server-ver15)</li><li>[MSSQLSERVER_2](/sql/relational-databases/errors-events/mssqlserver-2-database-engine-error)</li><li>[MSSQLSERVER_53](/sql/relational-databases/errors-events/mssqlserver-53-database-engine-error)</li></ul></li></ul><ul><li>如果出现登录问题，请使用以下链接予以修复：<ul><li>[MSSQLSERVER_18456](/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error)</li><li>[MSSQLSERVER_18452](/sql/relational-databases/errors-events/mssqlserver-18452-database-engine-error)</li></ul></li></ul> |
+| Azure 备份无法连接到 SQL 实例。 | Azure 备份无法连接到 SQL Server 实例。 | 使用 Azure 门户上错误菜单中的“其他详细信息”缩小根本原因的范围。 请参阅 [SQL 备份故障排除](https://docs.microsoft.com/sql/database-engine/configure-windows/troubleshoot-connecting-to-the-sql-server-database-engine)来解决错误。<br/><ul><li>如果默认 SQL 设置不允许远程连接，请更改设置。 有关更改设置的信息，请参阅以下文章：<ul><li>[MSSQLSERVER_-1](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-1-database-engine-error?view=sql-server-ver15)</li><li>[MSSQLSERVER_2](/sql/relational-databases/errors-events/mssqlserver-2-database-engine-error)</li><li>[MSSQLSERVER_53](/sql/relational-databases/errors-events/mssqlserver-53-database-engine-error)</li></ul></li></ul><ul><li>如果出现登录问题，请使用以下链接予以修复：<ul><li>[MSSQLSERVER_18456](/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error)</li><li>[MSSQLSERVER_18452](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-18452-database-engine-error)</li></ul></li></ul> |
 
 ### <a name="usererrorparentfullbackupmissing"></a>UserErrorParentFullBackupMissing
 
@@ -150,7 +150,7 @@ ms.locfileid: "84683874"
 
 | 错误消息 | 可能的原因 | 建议的操作 |
 |---|---|---|
-| 自动保护意向被删除或不再有效。 | 在 SQL Server 实例上启用自动保护时，将为该实例中的所有数据库运行“配置备份”作业。**** 如果在作业运行时禁用自动保护，则会使用此错误代码取消**正在进行的**作业。 | 重新启用自动保护可帮助保护所有剩余的数据库。 |
+| 自动保护意向被删除或不再有效。 | 在 SQL Server 实例上启用自动保护时，将为该实例中的所有数据库运行“配置备份”作业。 如果在作业运行时禁用自动保护，则会使用此错误代码取消**正在进行的**作业。 | 重新启用自动保护可帮助保护所有剩余的数据库。 |
 
 ### <a name="clouddosabsolutelimitreached"></a>CloudDosAbsoluteLimitReached
 
@@ -175,7 +175,7 @@ ms.locfileid: "84683874"
 在触发重新注册操作之前，请检查是否存在以下一种或多种症状：
 
 - 所有操作（例如备份、还原和配置备份）在 VM 失败，并出现以下错误代码之一：**WorkloadExtensionNotReachable**、**UserErrorWorkloadExtensionNotInstalled**、**WorkloadExtensionNotPresent**、**WorkloadExtensionDidntDequeueMsg**。
-- 如果备份项的“备份状态”**** 区域显示为“无法访问”****，请排除可能导致相同状态的其他所有原因：
+- 如果备份项的“备份状态”区域显示为“无法访问”，请排除可能导致相同状态的其他所有原因：
 
   - 缺少在 VM 上执行备份相关操作的权限。
   - VM 已关闭，因此备份无法进行。
@@ -188,7 +188,7 @@ ms.locfileid: "84683874"
 这些症状可能是以下一种或多种原因造成的：
 
 - 从门户中删除或卸载了某个扩展。
-- 从该 VM 的“控制面板”中的“卸载或更改程序”下卸载了某个扩展。**** ****
+- 从该 VM 的“控制面板”中的“卸载或更改程序”下卸载了某个扩展。 
 - 已通过就地磁盘还原将该 VM 还原到某个时间点。
 - 该 VM 已关闭较长时间，因此其上的扩展配置已过期。
 - 删除了该 VM，并在该 VM 所在的同一资源组中创建了同名的另一个 VM。
@@ -271,4 +271,4 @@ SELECT mf.name AS LogicalName FROM sys.master_files mf
 ## <a name="next-steps"></a>后续步骤
 
 有 SQL Server VM 的 Azure 备份（公共预览版）的详细信息，请参阅 [SQL VM 的 Azure 备份](../virtual-machines/windows/sql/virtual-machines-windows-sql-backup-recovery.md#azbackup)。
-
+<!--Correct in MC: /virtual-machines/windows/sql/virtual-machines-windows-sql-backup-recovery.md#azbackup-->

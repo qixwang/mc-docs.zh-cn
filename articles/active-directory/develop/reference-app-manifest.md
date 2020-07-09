@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/22/2020
+ms.date: 06/30/2020
 ms.author: v-junlch
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: 1642c6928177796f616a5ce50167d08060211aef
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 4c2bb856c70c0733ed73093d745cbb03c90e556e
+ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126460"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945229"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory 应用清单
 
@@ -25,7 +25,7 @@ ms.locfileid: "82126460"
 
 可以通过 Azure 门户或者使用 [REST API](https://docs.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity) 或 [PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#applications) 以编程方式配置应用的属性。 但是，在某些情况下，需要编辑应用清单来配置应用的属性。 这些方案包括：
 
-* 如果已将应用注册为 Azure AD 多租户，则无法在 UI 中更改支持的 Microsoft 帐户。 而是必须使用应用程序清单编辑器来更改支持的帐户类型。
+* 如果已将应用注册为 Azure AD 多租户，则无法在 UI 中更改支持的帐户。 而是必须使用应用程序清单编辑器来更改支持的帐户类型。
 * 如果需要定义你的应用支持的权限和角色，则必须修改应用程序清单。
 
 ## <a name="configure-the-app-manifest"></a>配置应用清单
@@ -33,9 +33,9 @@ ms.locfileid: "82126460"
 若要配置应用程序清单，请执行以下操作：
 
 1. 转到 [Azure 门户](https://portal.azure.cn)。 搜索并选择 **Azure Active Directory** 服务。
-1. 选择“应用注册”  。
+1. 选择“应用注册” 。
 1. 选择要配置的应用。
-1. 在应用的“概览”页中，选择“清单”部分。   此时会打开一个基于 Web 的清单编辑器，可在其中编辑门户中的清单。 （可选）可以选择“下载”以在本地编辑清单，然后使用“上传”将清单重新应用于应用程序。  
+1. 在应用的“概览”页中，选择“清单”部分。  此时会打开一个基于 Web 的清单编辑器，可在其中编辑门户中的清单。 （可选）可以选择“下载”以在本地编辑清单，然后使用“上传”将清单重新应用于应用程序。 
 
 ## <a name="manifest-reference"></a>清单参考
 
@@ -73,7 +73,7 @@ ms.locfileid: "82126460"
 | :--- | :--- |
 | addIns | 集合 |
 
-定义使用方服务在特定上下文中调用某个应用时可以使用的自定义行为。 例如，呈现文件流的应用程序可以设置其“FileHandler”功能的 `addIns` 属性。 Office 365 等服务可以通过此参数在用户正在处理的文档上下文中调用该应用程序。
+定义自定义行为，供消耗型服务在特定上下文中调用应用。 例如，呈现文件流的应用程序可以设置其“FileHandler”功能的 `addIns` 属性。 此参数将允许 Office 365 等服务在用户正在处理的文档的上下文中调用应用程序。
 
 示例：
 
@@ -115,7 +115,7 @@ ms.locfileid: "82126460"
 如果应用程序与其他租户共享，则设为 true；否则为 false。
 
 > [!NOTE]
-> 此属性仅在应用注册（旧版）体验中可用。  此功能已被[应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)体验中的 `signInAudience` 取代。
+> 此属性仅在应用注册（旧版）体验中可用。 在[应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)体验中替换为了 `signInAudience`。
 
 ### <a name="appid-attribute"></a>appId 属性
 
@@ -145,7 +145,7 @@ ms.locfileid: "82126460"
     "appRoles": [
         {
            "allowedMemberTypes": [
-               "User"
+               "User"
            ],
            "description": "Read-only access to device information",
            "displayName": "Read Only",
@@ -165,7 +165,7 @@ ms.locfileid: "82126460"
 应用的显示名称。
 
 > [!NOTE]
-> 此属性仅在应用注册（旧版）体验中可用。  此功能已被[应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)体验中的 `name` 取代。
+> 此属性仅在应用注册（旧版）体验中可用。 在[应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)体验中替换为了 `name`。
 
 ### <a name="errorurl-attribute"></a>errorUrl 属性
 
@@ -173,7 +173,7 @@ ms.locfileid: "82126460"
 | :--- | :--- |
 | errorUrl | String |
 
-不支持。
+不受支持。
 
 ### <a name="groupmembershipclaims-attribute"></a>groupMembershipClaims 属性
 
@@ -185,7 +185,7 @@ ms.locfileid: "82126460"
 
 - `"None"`
 - `"SecurityGroup"`（适用于安全组和 Azure AD 角色）
-- `"All"`（此项将获取登录用户所属的所有安全组、通讯组和 Azure AD 目录角色）。
+- `"All"`（该操作可获取登录用户所属的所有安全组、通讯组和 Azure AD 目录角色。
 
 示例：
 
@@ -202,7 +202,7 @@ ms.locfileid: "82126460"
 应用程序主页的 URL。
 
 > [!NOTE]
-> 此属性仅在应用注册（旧版）体验中可用。  此功能已被[应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)体验中的 `signInUrl` 取代。
+> 此属性仅在应用注册（旧版）体验中可用。 在[应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)体验中替换为了 `signInUrl`。
 
 ### <a name="objectid-attribute"></a>objectId 属性
 
@@ -212,7 +212,7 @@ ms.locfileid: "82126460"
 
 应用在目录中的唯一标识符。
 
-这仅在应用注册（旧版）体验中可用。  此功能已被[应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)体验中的 `id` 取代。
+这仅在应用注册（旧版）体验中可用。 在[应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)体验中替换为了 `id`。
 
 示例：
 
@@ -371,7 +371,7 @@ ms.locfileid: "82126460"
 | :--- | :--- |
 | oauth2AllowIdTokenImplicitFlow | 布尔 |
 
-指定此 Web 应用是否可以请求 OAuth2.0 隐式流 ID 令牌。 默认值为 false。 此标志用于基于浏览器的应用，例如 Javascript 单页应用。
+指定此 Web 应用是否可以请求 OAuth2.0 隐式流 ID 令牌。 默认值为 false。 此标志用于基于浏览器的应用，例如 JavaScript 单页应用。
 
 示例：
 
@@ -485,9 +485,9 @@ ms.locfileid: "82126460"
 | :--- | :--- |
 | publicClient | 布尔|
 
-指定此应用程序是否为公共客户端（例如在移动设备上运行的已安装应用程序）。 
+指定此应用程序是否是公共客户端（例如在移动设备上运行的已安装应用程序）。 
 
-此属性仅在应用注册（旧版）体验中可用。  此功能已被[应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)体验中的 `allowPublicClient` 取代。
+此属性仅在应用注册（旧版）体验中可用。 在[应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)体验中替换为了 `allowPublicClient`。
 
 ### <a name="publisherdomain-attribute"></a>publisherDomain 属性
 
@@ -511,7 +511,7 @@ ms.locfileid: "82126460"
 
 此多值属性保存 Azure AD 在返回令牌时接受用作目标的已注册 redirect_uri 值列表。
 
-此属性仅在应用注册（旧版）体验中可用。  此功能已被[应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)体验中的 `replyUrlsWithType` 取代。
+此属性仅在应用注册（旧版）体验中可用。 在[应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)体验中替换为了 `replyUrlsWithType`。
 
 ### <a name="replyurlswithtype-attribute"></a>replyUrlsWithType 属性
 
@@ -598,7 +598,7 @@ ms.locfileid: "82126460"
 | :--- | :--- |
 | signInAudience | String |
 
-指定当前应用程序支持哪些 Microsoft 帐户。 支持的值是：
+指定当前应用程序支持的帐户。 支持的值是：
 - `AzureADMyOrg` - 在我组织的 Azure AD 租户（例如单租户）中具有 Microsoft 工作或学校帐户的用户
 - `AzureADMultipleOrgs` - 在任何组织的 Azure AD 租户（例如多租户）中具有 Microsoft 工作或学校帐户的用户
 
@@ -622,16 +622,16 @@ ms.locfileid: "82126460"
 
 ### <a name="manifest-limits"></a>清单限制
 
-应用程序清单包含多个称为集合的属性，例如 appRoles、keyCredentials、knownClientApplications、identifierUris、redirectUris、requiredResourceAccess 和 oauth2Permissions。 在任一应用程序的完整应用程序清单中，所有合并集合中的条目总数不能超过 1200 个。 如果以前在应用程序清单中指定了 100 个重定向 URI，则在构成该清单的其他所有合并集合中，只剩下 1100 个条目可供使用。
+应用程序清单包含多个称为集合的属性，例如 appRoles、keyCredentials、knownClientApplications、identifierUris、redirectUris、requiredResourceAccess 和 oauth2Permissions。 在任何应用程序的完整应用程序清单中，所有合并集合中的条目总数的上限为 1200。 如果以前在应用程序清单中指定了 100 个重定向 URI，则在构成该清单的其他所有合并集合中，只剩下 1100 个条目可供使用。
 
 > [!NOTE]
-> 如果尝试在应用程序清单中添加 1200 个以上的条目，可能会看到错误 **“无法更新应用程序 xxxxxx。错误详细信息: 清单大小已超过其限制。请减少值数，然后重试请求。”**
+> 如果你尝试在应用程序清单中添加超过 1200 个条目，则可能会显示错误“未能更新应用程序 xxxxxx **。错误详细信息: 清单的大小已超出其限制。请减少值数，然后重试请求。”**
 
 ### <a name="unsupported-attributes"></a>不支持的属性
 
-应用程序清单代表 Azure AD 中底层应用程序模型的架构。 随着底层架构的不断演进，清单编辑器将不时地更新，以反映新的架构。 因此，你可能会在应用程序清单中看到新的属性。 在极少数情况下，可能会注意现有属性中出现了语法或语义的更改，或者以前存在的某个属性不再受支持。 例如，你会在[应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)中看到新的属性，而这些属性在应用注册（旧版）体验中使用不同的名称。
+应用程序清单代表 Azure AD 中底层应用程序模型的架构。 随着底层架构的不断演进，清单编辑器将不时地更新，以反映新的架构。 因此，你可能会在应用程序清单中看到新的属性。 在极少数情况下，你可能会注意到现有属性中的语法或语义发生了变化，或者你可能会发现以前存在的属性不再受支持。 例如，你会在[应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)中看到新的属性，而这些属性在应用注册（旧版）体验中使用不同的名称。
 
-| 应用注册（旧版）| 应用注册           |
+| 应用注册(旧版)| 应用注册           |
 |---------------------------|-----------------------------|
 | `availableToOtherTenants` | `signInAudience`            |
 | `displayName`             | `name`                      |
@@ -643,17 +643,17 @@ ms.locfileid: "82126460"
 
 有关这些属性的说明，请参阅[清单参考](#manifest-reference)部分。
 
-尝试上传以前下载的清单时，可能会看到以下错误之一。 此错误可能的原因是清单编辑器现在支持更新版本的架构，而该架构与你尝试上传的架构不匹配。
+尝试上传之前下载的清单时，可能会出现以下错误之一。 此错误很可能是因为清单编辑器现在支持较新版本的架构，该架构与你尝试上传的清单不匹配。
 
-* “无法更新 xxxxxx 应用程序。 错误详细信息:无效的对象标识符 'undefined'。 []。”
-* “无法更新 xxxxxx 应用程序。 错误详细信息:指定的一个或多个属性值无效。 []。”
-* “无法更新 xxxxxx 应用程序。 错误详细信息:不允许在此 api 版本中设置要更新的 availableToOtherTenants。 []。”
-* “无法更新 xxxxxx 应用程序。 错误详细信息:不允许更新此应用程序的 'replyUrls' 属性。 请改用 'replyUrlsWithType' 属性。 []。”
-* “无法更新 xxxxxx 应用程序。 错误详细信息:找到了没有类型名称的值，且没有预期的类型可用。 如果指定该模型，则有效负载中的每个值都必须具有可在有效负载中指定、显式由调用方调用或隐式从父值推断的类型。 []”
+* “无法更新 xxxxxx 应用程序。 错误详细信息：无效的对象标识符 'undefined'。 []。”
+* “无法更新 xxxxxx 应用程序。 错误详细信息：指定的一个或多个属性值无效。 []。”
+* “无法更新 xxxxxx 应用程序。 错误详细信息：不允许在此 api 版本中设置要更新的 availableToOtherTenants。 []。”
+* “无法更新 xxxxxx 应用程序。 错误详细信息：不允许对此应用程序的 replyUrls 属性进行更新。 请改用 'replyUrlsWithType' 属性。 []。”
+* “无法更新 xxxxxx 应用程序。 错误详细信息：找到了没有类型名称的值，并且没有可用的预期类型。 如果指定该模型，则有效负载中的每个值都必须具有可在有效负载中指定、显式由调用方调用或隐式从父值推断的类型。 []”
 
-如果看到以下错误之一，我们建议采取以下操作：
+显示这些错误之一时，建议执行以下操作：
 
-1. 单独在清单编辑器中编辑属性，而不要上传以前下载的清单。 使用[清单参考](#manifest-reference)表来了解旧属性和新属性的语法与语义，以便能够成功编辑所需的属性。 
+1. 在清单编辑器中逐个编辑属性，而不是上传之前下载的清单。 使用[清单参考](#manifest-reference)表来了解旧属性和新属性的语法与语义，以便能够成功编辑所需的属性。 
 1. 如果工作流要求在源存储库中保存清单供以后使用，我们建议使用**应用注册**体验中显示的清单来变基存储库中保存的清单。
 
 ## <a name="next-steps"></a>后续步骤

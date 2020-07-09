@@ -5,14 +5,14 @@ author: WenJason
 ms.author: v-jay
 ms.service: mariadb
 ms.topic: conceptual
-origin.date: 12/02/2019
-ms.date: 01/13/2020
-ms.openlocfilehash: 2542b169ca6174c55bd89f241322c19f0930cc6e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 6/8/2020
+ms.date: 07/06/2020
+ms.openlocfilehash: 28097ba3f4d42e0ff759dd419fd07f101cc98df0
+ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75776759"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85845906"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的连接体系结构
 本文介绍 Azure Database for MariaDB 的连接体系结构，以及如何在 Azure 内部和外部将流量从客户端定向到 Azure Database for MariaDB 实例。
@@ -34,6 +34,17 @@ ms.locfileid: "75776759"
 | 中国东部 2 | 40.73.82.1  |
 | 中国北部 2 | 40.73.50.0     |
 ||||
+
+## <a name="connection-redirection"></a>连接重定向
+
+Azure Database for MariaDB 支持一个额外的连接策略（即“重定向”），该策略有助于降低客户端应用程序与 MariaDB 服务器之间的网络延迟。 利用此功能，在建立与 Azure Database for MariaDB 服务器的初始 TCP 会话后，服务器会将承载 MariaDB 服务器的节点的后端地址返回到客户端。 此后，所有后续数据包会绕过网关直接流向服务器。 由于数据包会直接流向服务器，因此延迟和吞吐量这两个指标的表现得到了改善。
+
+引擎版本为 10.2 和 10.3 的 Azure Database for MariaDB 服务器支持此功能。
+
+对重定向的支持可通过 Microsoft 开发的 PHP [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) 扩展获得，也可在 [PECL](https://pecl.php.net/package/mysqlnd_azure) 上获得。 有关如何在应用程序中使用重定向的详细信息，请参阅[配置重定向](./howto-redirection.md)一文。
+
+> [!IMPORTANT]
+> PHP [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) 扩展对重定向的支持目前为预览版。
 
 ## <a name="next-steps"></a>后续步骤
 

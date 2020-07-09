@@ -1,34 +1,25 @@
 ---
 title: Azure Resource Manager 模板中的虚拟机 | Azure
 description: 详细了解如何在 Azure Resource Manager 模板中定义虚拟机资源。
-services: virtual-machines-windows
-documentationcenter: ''
 author: rockboyfor
-manager: digimobile
-editor: ''
-tags: azure-resource-manager
-ms.assetid: f63ab5cc-45b8-43aa-a4e7-69dc42adbb99
 ms.service: virtual-machines-windows
-ms.workload: na
-ms.tgt_pltfrm: vm-windows
+ms.workload: infrastructure
 ms.topic: article
 origin.date: 01/03/2019
-ms.date: 10/14/2019
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 6fc303072cc74bb49bb899898832248ff6fc6017
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: bf3bf219b209119795e81f16344d99e5ea81d204
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292849"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945905"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure Resource Manager 模板中的虚拟机
 
 本文介绍 Azure Resource Manager 模板中与虚拟机相关的方面。 本文不会介绍用于创建虚拟机的完整模板；在完整的模板中，需要提供存储帐户、网络接口、公共 IP 地址和虚拟网络的资源定义。 有关如何统一定义这些资源的详细信息，请参阅 [Resource Manager 模板演练](../../azure-resource-manager/resource-manager-template-walkthrough.md)。
 
 [在库中](https://github.com/Azure/azure-quickstart-templates/?term=VM) 有许多包含 VM 资源的模板。 本文并未介绍可在模板中包含的所有元素。
-
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 本示例演示了模板中用于创建指定数量的 VM 的典型资源节：
 
@@ -156,7 +147,7 @@ ms.locfileid: "79292849"
 
 使用模板部署资源时，必须指定要使用的 API 版本。 本示例使用以下 apiVersion 元素显示虚拟机资源：
 
-```
+```json
 "apiVersion": "2016-04-30-preview",
 ```
 
@@ -168,13 +159,11 @@ ms.locfileid: "79292849"
 - PowerShell - [Get-AzResourceProvider](https://docs.microsoft.com/powershell/module/az.resources/get-azresourceprovider)
 - Azure CLI - [az provider show](https://docs.azure.cn/cli/provider?view=azure-cli-latest#az-provider-show)
 
-[!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
-
 ## <a name="parameters-and-variables"></a>参数和变量
 
 使用[参数](../../resource-group-authoring-templates.md)可在运行模板时轻松指定模板值。 本示例使用了以下 parameters 节：
 
-```        
+```json
 "parameters": {
   "adminUsername": { "type": "string" },
   "adminPassword": { "type": "securestring" },
@@ -186,7 +175,7 @@ ms.locfileid: "79292849"
 
 使用[变量](../../resource-group-authoring-templates.md)可以轻松设置在整个模板中重复使用的值，或者可随时变化的值。 本示例使用了以下 variables 节：
 
-```
+```json
 "variables": { 
   "storageName": "mystore1",
   "accountid": "[concat('/subscriptions/', subscription().subscriptionId, 
@@ -223,7 +212,7 @@ ms.locfileid: "79292849"
 
 如果需要为应用程序创建多个虚拟机，可在模板中使用 copy 元素。 此可选元素根据以参数形式指定的数目反复创建 VM：
 
-```
+```json
 "copy": {
   "name": "virtualMachineLoop", 
   "count": "[parameters('numberOfInstances')]"
@@ -232,7 +221,7 @@ ms.locfileid: "79292849"
 
 另请注意，在本示例中，为资源指定某些值时使用了循环索引。 例如，如果输入实例计数 3，则操作系统磁盘的名称是 myOSDisk1、myOSDisk2 和 myOSDisk3：
 
-```
+```json
 "osDisk": { 
   "name": "[concat('myOSDisk', copyindex())]",
   "caching": "ReadWrite", 
@@ -247,7 +236,7 @@ ms.locfileid: "79292849"
 
 请记住，如果为模板中的一个资源创建了循环，则创建或访问其他资源时，可能需要使用该循环。 例如，多个 VM 不能使用同一个网络接口，因此，如果模板反复创建三个 VM，则它也必须反复创建三个网络接口。 将网络接口分配到 VM 时，会使用循环索引来标识该接口：
 
-```
+```json
 "networkInterfaces": [ { 
   "id": "[resourceId('Microsoft.Network/networkInterfaces',
     concat('myNIC', copyindex()))]" 
@@ -258,7 +247,7 @@ ms.locfileid: "79292849"
 
 大多数资源必须依赖于其他资源才能正常工作。 虚拟机必须与虚拟网络相关联，因此需要一个网络接口。 [dependsOn](../../resource-group-define-dependencies.md) 元素用于确保在创建 VM 之前，网络接口随时可供使用：
 
-```
+```json
 "dependsOn": [
   "[concat('Microsoft.Network/networkInterfaces/', 'myNIC', copyindex())]" 
 ],
@@ -268,7 +257,7 @@ ms.locfileid: "79292849"
 
 如何知道是否需要指定依赖关系？ 查看模板中设置的值即可。 如果虚拟机资源定义中的某个元素指向同一模板中部署的另一个资源，则需要指定依赖关系。 例如，示例虚拟机定义了一个网络配置文件：
 
-```
+```json
 "networkProfile": { 
   "networkInterfaces": [ { 
     "id": "[resourceId('Microsoft.Network/networkInterfaces',
@@ -284,7 +273,10 @@ ms.locfileid: "79292849"
 定义虚拟机资源时，需要使用几个 profile 元素。 其中一些元素是必需的，还有一些是可选的。 例如，hardwareProfile、osProfile、storageProfile 和 networkProfile 元素是必需的，而 diagnosticsProfile 是可选的。 这些配置文件定义如下所述的设置：
 
 - [大小](sizes.md)
-- [名称](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)和凭据
+- 名称和凭据
+
+    <!--Not Available on - [name](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)-->
+    
 - 磁盘和[操作系统设置](cli-ps-findimage.md)
 - [网络接口](../../virtual-network/virtual-network-deploy-multinic-classic-ps.md) 
 - 启动诊断
@@ -297,7 +289,7 @@ ms.locfileid: "79292849"
 
 创建 VM 时，必须确定要使用哪个操作系统。 imageReference 元素用于定义新 VM 的操作系统。 本示例显示了 Windows Server 操作系统的定义：
 
-```
+```json
 "imageReference": { 
   "publisher": "MicrosoftWindowsServer", 
   "offer": "WindowsServer", 
@@ -308,7 +300,7 @@ ms.locfileid: "79292849"
 
 若要创建 Linux 操作系统，可使用以下定义：
 
-```
+```json
 "imageReference": {
   "publisher": "Canonical",
   "offer": "UbuntuServer",
@@ -319,7 +311,7 @@ ms.locfileid: "79292849"
 
 操作系统磁盘的配置设置是使用 osDisk 元素分配的。 此示例定义了一个新的托管磁盘，其缓存模式设置为 **ReadWrite**，并且该磁盘是从[平台映像](cli-ps-findimage.md)创建的：
 
-```
+```json
 "osDisk": { 
   "name": "[concat('myOSDisk', copyindex())]",
   "caching": "ReadWrite", 
@@ -331,7 +323,7 @@ ms.locfileid: "79292849"
 
 如果要从现有磁盘创建虚拟机，请删除 imageReference 和 osProfile 元素，并定义以下磁盘设置：
 
-```
+```json
 "osDisk": { 
   "osType": "Windows",
   "managedDisk": { 
@@ -346,7 +338,7 @@ ms.locfileid: "79292849"
 
 如果要从托管映像创建虚拟机，请更改 imageReference 元素，并定义以下磁盘设置：
 
-```
+```json
 "storageProfile": { 
   "imageReference": {
     "id": "[resourceId('Microsoft.Compute/images', 'myImage')]"
@@ -364,7 +356,7 @@ ms.locfileid: "79292849"
 
 可以选择性地将数据磁盘添加到 VM。 [磁盘数目](sizes.md)取决于要使用的操作系统磁盘的大小。 如果 VM 的大小设置为 Standard_DS1_v2，则可添加到 VM 的数据磁盘数目上限为 2。 本示例中向每个 VM 添加一个托管数据磁盘：
 
-```
+```json
 "dataDisks": [
   {
     "name": "[concat('myDataDisk', copyindex())]",
@@ -380,7 +372,7 @@ ms.locfileid: "79292849"
 
 尽管[扩展](extensions-features.md)是独立的资源，但它们与 VM 密切相关。 可将扩展添加为 VM 的子资源，或添加为独立的资源。 本示例显示添加到 VM 的[诊断扩展](extensions-diagnostics-template.md)：
 
-```
+```json
 { 
   "name": "Microsoft.Insights.VMDiagnosticsSettings", 
   "type": "extensions", 
@@ -415,7 +407,7 @@ ms.locfileid: "79292849"
 
 可在 VM 上安装许多扩展，但最有用的扩展也许是[自定义脚本扩展](extensions-customscript.md)。 在本示例中，首次启动每个 VM 时，会在 VM 上运行名为 start.ps1 的 PowerShell 脚本：
 
-```
+```json
 {
   "name": "MyCustomScriptExtension",
   "type": "extensions",
@@ -446,7 +438,7 @@ start.ps1 脚本可以完成许多配置任务。 例如，在本示例中已添
 
 ![获取扩展状态](./media/template-description/virtual-machines-show-extensions.png)
 
-此外，也可以使用 Get-AzVMExtension PowerShell 命令、vm extension get Azure CLI 命令或“获取扩展信息”REST API 来获取扩展信息    。
+此外，也可以使用 Get-AzVMExtension PowerShell 命令、vm extension get Azure CLI 命令或“获取扩展信息”REST API 来获取扩展信息  。
 
 ## <a name="deployments"></a>部署
 
@@ -456,7 +448,7 @@ start.ps1 脚本可以完成许多配置任务。 例如，在本示例中已添
 
 ![获取部署信息](./media/template-description/virtual-machines-deployment-info.png)
 
-完全可以使用同一个模板来创建资源或更新现有资源。 使用命令部署模板时，可以指定想要使用的[模式](../../resource-group-template-deploy.md)。 模式可设置为“完整”(Complete) 或“增量”(Incremental)。   默认设置为执行增量更新。 请谨慎使用“完整”模式，因为这可能会意外删除资源。  在模式设置为“完整”时，资源管理器会删除资源组中不包含在模板内的所有资源。 
+完全可以使用同一个模板来创建资源或更新现有资源。 使用命令部署模板时，可以指定想要使用的[模式](../../resource-group-template-deploy.md)。 模式可设置为“完整”(Complete) 或“增量”(Incremental)。  默认设置为执行增量更新。 请谨慎使用“完整”模式，因为这可能会意外删除资源。 在模式设置为“完整”时，资源管理器会删除资源组中不包含在模板内的所有资源。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -464,5 +456,5 @@ start.ps1 脚本可以完成许多配置任务。 例如，在本示例中已添
 - 参考[使用 Resource Manager 模板创建 Windows 虚拟机](ps-template.md)部署创建的模板。
 - 请参阅[使用 Azure PowerShell 模块创建并管理 Windows VM](tutorial-manage-vm.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)，了解如何管理创建的 VM。
 
-<!--Not Available on  [Azure Resource Manager template reference](https://docs.microsoft.com/zh-cn/azure/templates/)-->
+<!--Not Available on  [Azure Resource Manager template reference](https://docs.microsoft.com/azure/templates/)-->
 <!--Update_Description: update meta properties -->

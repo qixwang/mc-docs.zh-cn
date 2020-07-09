@@ -1,22 +1,22 @@
 ---
-title: Azure Database for MariaDB 中支持的版本
-description: 说明 Azure Database for MariaDB 中支持的版本。
+title: 支持的版本 - Azure Database for MariaDB
+description: 了解 Azure Database for MariaDB 服务支持哪些版本的 MariaDB 服务器。
 author: WenJason
 ms.author: v-jay
 ms.service: mariadb
 ms.topic: conceptual
-origin.date: 09/12/2019
-ms.date: 09/30/2019
-ms.openlocfilehash: 18a727b29468eff9d49252a3aee4b872cf7f4e2a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 6/3/2020
+ms.date: 07/06/2020
+ms.openlocfilehash: 1259ba115fc450d549612cda57ff409252d296a2
+ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "71307882"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85845879"
 ---
 # <a name="supported-azure-database-for-mariadb-server-versions"></a>支持的 Azure Database for MariaDB 服务器版本
 
-已使用 InnoDB 引擎从开放源代码 [MariaDB 服务器](https://downloads.mariadb.org/)开发了 Azure Database for MariaDB。 
+已使用 InnoDB 引擎从开放源代码 [MariaDB 服务器](https://downloads.mariadb.org/)开发了 Azure Database for MariaDB。
 
 MariaDB 使用 X.Y.Z 命名方案。 X 是主版本，Y 是次版本，Z 是修补程序版本。
 
@@ -27,15 +27,15 @@ Azure Database for MariaDB 目前支持以下版本：
 
 ## <a name="mariadb-version-102"></a>MariaDB 版本 10.2
 
-修补程序版本：10.2.25
+修补程序版本：10.2.31
 
-若要详细了解此版本中的改进和修复，请参阅 [MariaDB 文档](https://mariadb.com/kb/en/library/mariadb-10225-release-notes/)。
+若要详细了解此版本中的改进和修复，请参阅 [MariaDB 文档](https://mariadb.com/kb/en/mariadb-10231-release-notes/)。
 
 ## <a name="mariadb-version-103"></a>MariaDB 版本 10.3
 
-修补程序版本：10.3.16
+修补程序版本：10.3.22
 
-若要详细了解此版本中的改进和修复，请参阅 [MariaDB 文档](https://mariadb.com/kb/en/library/mariadb-10316-release-notes/)。
+若要详细了解此版本中的改进和修复，请参阅 [MariaDB 文档](https://mariadb.com/kb/en/mariadb-10322-release-notes/)。
 
 ## <a name="managing-updates-and-upgrades"></a>管理更新和升级
 该服务自动管理修补程序更新的升级。 例如，10.2.21 到 10.2.23。  
@@ -44,4 +44,4 @@ Azure Database for MariaDB 目前支持以下版本：
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关基于服务层级  的具体资源配额和限制的信息，请参阅[服务层级](./concepts-pricing-tiers.md)。
+- 有关基于服务层级的具体资源配额和限制的信息，请参阅[服务层级](./concepts-pricing-tiers.md)。

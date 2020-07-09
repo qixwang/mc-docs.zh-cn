@@ -1,27 +1,19 @@
 ---
-title: 通过资源管理器模板创建 Windows 虚拟机 | Azure
+title: 通过 Resource Manager 模板创建 Windows 虚拟机
 description: 将 Resource Manager 模板与 PowerShell 配合使用，轻松创建新的 Windows VM。
-services: virtual-machines-windows
-documentationcenter: ''
 author: rockboyfor
-manager: digimobile
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 19129d61-8c04-4aa9-a01f-361a09466805
 ms.service: virtual-machines-windows
-ms.workload: na
-ms.tgt_pltfrm: vm-windows
 ms.topic: article
 origin.date: 03/22/2019
-ms.date: 10/14/2019
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7e83780667a60c793f4490e4b1cf245f750218e8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 172042e6281f6767372cd2393b859e868c073645
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72272539"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945801"
 ---
 # <a name="create-a-windows-virtual-machine-from-a-resource-manager-template"></a>通过 Resource Manager 模板创建 Windows 虚拟机
 
@@ -40,7 +32,7 @@ ms.locfileid: "72272539"
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "adminUsername": {
@@ -77,6 +69,13 @@ ms.locfileid: "72272539"
         "description": "The Windows version for the VM. This will pick a fully patched image of this given Windows version."
       }
     },
+    "vmSize": {
+      "type": "string",
+      "defaultValue": "Standard_D2_v3",
+      "metadata": {
+        "description": "Size of the virtual machine."
+      }
+    },
     "location": {
       "type": "string",
       "defaultValue": "[resourceGroup().location]",
@@ -86,6 +85,7 @@ ms.locfileid: "72272539"
     }
   },
   "variables": {
+    "storageAccountEndPoint": "https://core.chinacloudapi.cn/",
     "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'sawinvm')]",
     "nicName": "myVMNic",
     "addressPrefix": "10.0.0.0/16",
@@ -94,7 +94,8 @@ ms.locfileid: "72272539"
     "publicIPAddressName": "myPublicIP",
     "vmName": "SimpleWinVM",
     "virtualNetworkName": "MyVNET",
-    "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('subnetName'))]"
+    "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('subnetName'))]",
+    "networkSecurityGroupName": "default-NSG"
   },
   "resources": [
     {
@@ -121,10 +122,37 @@ ms.locfileid: "72272539"
       }
     },
     {
+      "comments":  "Default Network Security Group for template",
+      "type":  "Microsoft.Network/networkSecurityGroups",
+      "apiVersion":  "2019-08-01",
+      "name":  "[variables('networkSecurityGroupName')]",
+      "location":  "[parameters('location')]",
+      "properties": {
+        "securityRules": [
+          {
+            "name":  "default-allow-3389",
+            "properties": {
+              "priority":  1000,
+              "access":  "Allow",
+              "direction":  "Inbound",
+              "destinationPortRange":  "3389",
+              "protocol":  "Tcp",
+              "sourcePortRange":  "*",
+              "sourceAddressPrefix":  "*",
+              "destinationAddressPrefix":  "*"
+            }
+          }
+        ]
+      }
+    },
+    {
       "type": "Microsoft.Network/virtualNetworks",
       "apiVersion": "2018-11-01",
       "name": "[variables('virtualNetworkName')]",
       "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]"
+      ],
       "properties": {
         "addressSpace": {
           "addressPrefixes": [
@@ -135,7 +163,10 @@ ms.locfileid: "72272539"
           {
             "name": "[variables('subnetName')]",
             "properties": {
-              "addressPrefix": "[variables('subnetPrefix')]"
+              "addressPrefix": "[variables('subnetPrefix')]",
+              "networkSecurityGroup": {
+                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]"
+              }
             }
           }
         ]
@@ -178,7 +209,7 @@ ms.locfileid: "72272539"
       ],
       "properties": {
         "hardwareProfile": {
-          "vmSize": "Standard_A2"
+          "vmSize": "[parameters('vmSize')]"
         },
         "osProfile": {
           "computerName": "[variables('vmName')]",
@@ -229,7 +260,7 @@ ms.locfileid: "72272539"
 
 ```
 
-若要使用 Azure 本地 Powershell 运行 PowerShell 脚本，需要具有管理员权限。
+在 Azure 本地 Powershell 控制台上以管理员权限运行 PowerShell 脚本。
 
 <!--Not Avaialble on instead of from the Azure Cloud shell-->
 
@@ -252,7 +283,7 @@ New-AzResourceGroupDeployment `
 
 ```
 
-如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount -Environment AzureChinaCloud` 以创建与 Azure 的连接。
+如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount -Environment AzureChinaCloud` 以创建与 Azure 的连接。
 
 <!--Not Available on instead of from the Azure local Shell-->
 
@@ -262,7 +293,7 @@ New-AzResourceGroupDeployment `
 
 - 若要了解如何开发资源管理器模板，请参阅 [Azure 资源管理器文档](/azure-resource-manager/)。
     
-    <!--Not Available on  [Azure template reference](https://docs.microsoft.com/zh-cn/azure/templates/microsoft.compute/allversions)-->
+    <!--Not Available on  [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.compute/allversions)-->
 
 - 若要查看更多的虚拟机模板示例，请参阅 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular)。
 

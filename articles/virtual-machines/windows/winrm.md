@@ -1,26 +1,20 @@
 ---
 title: 为 Azure Resource Manager 中的虚拟机设置 WinRM 访问权限
 description: 设置 WinRM 访问，与 Resource Manager 部署模型中创建的 Azure 虚拟机一起使用。
-services: virtual-machines-windows
-documentationcenter: ''
 author: rockboyfor
 manager: digimobile
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 9718e85b-d360-4621-90b8-0b0b84a21208
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.topic: how-to
 origin.date: 06/16/2016
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: eb374ce433311074b27074522a4f3ebec7cfed72
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: 8a3b6fef98d267b3930fef0475d83dba1f3c84d1
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392445"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945830"
 ---
 # <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>为 Azure Resource Manager 中的虚拟机设置 WinRM 访问权限
 
@@ -135,7 +129,7 @@ Set-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>" -SecretValu
 此模板的源代码可在 [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-winrm-keyvault-windows) 上找到
 
 > [!NOTE]
-> 必须修改从 GitHub 存储库“azure-quickstart-templates”下载或参考的模板，以适应 Azure 中国云环境。 例如，替换某些终结点（将“blob.core.windows.net”替换为“blob.core.chinacloudapi.cn”，将“cloudapp.azure.com”替换为“cloudapp.chinacloudapi.cn”）；必要时更改某些不受支持的位置、VM 映像、VM 大小、SKU 以及资源提供程序的 API 版本。
+> 必须修改从 GitHub 存储库“azure-quickstart-templates”下载或参考的模板，以适应 Azure 中国云环境。 例如，替换某些终结点（将“blob.core.windows.net”替换为“blob.core.chinacloudapi.cn”，将“cloudapp.azure.com”替换为“chinacloudapp.cn”）；必要时更改某些不受支持的位置、VM 映像、VM 大小、SKU 以及资源提供程序的 API 版本。
 
 #### <a name="powershell"></a>PowerShell
 

@@ -3,19 +3,18 @@ author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
 origin.date: 04/03/2020
-ms.date: 04/20/2020
+ms.date: 06/19/2019
 ms.author: v-tawe
-ms.openlocfilehash: 5388c00958c1107a8bf6ab5495eae0c1a6947c6d
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 9881dc945ee458891c256516d6ac91495cec55a1
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126956"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85805731"
 ---
 :::row:::
     :::column span="3":::
-        语音 SDK 在 Linux 上使用时，仅支持以下目标体系结构上的 Ubuntu 16.04/18.04  、Debian 9  、Red Hat Enterprise Linux (RHEL) 7/8  和 CentOS 7/8  ：
-        - x64
+        语音 SDK 在 Linux 上使用时，仅支持以下目标体系结构上的 Ubuntu 16.04/18.04、Debian 9、Red Hat Enterprise Linux (RHEL) 7/8 和 CentOS 7/8：
     :::column-end:::
     :::column:::
         <br>
@@ -25,11 +24,13 @@ ms.locfileid: "82126956"
     :::column-end:::
 :::row-end:::
 
-> [!IMPORTANT]
-> 针对 Linux ARM64 并使用 C# 时 - 需要 .NET Core 3.x（dotnet-sdk-3.x 包）。 如果针对 ARM32 或 ARM64，则不支持 Python。
+- 用于 C++ 开发的 x86 (Debian/Ubuntu)、x64、ARM32 (Debian/Ubuntu) 和 ARM64 (Debian/Ubuntu)
+- 用于 Java 的 x64、ARM32 (Debian/Ubuntu) 和 ARM64 (Debian/Ubuntu)
+- 用于 .NET Core 的 x64、ARM32 (Debian/Ubuntu) 和 ARM64 (Debian/Ubuntu)
+- 适用于 Python 的 x64
 
-> [!NOTE]
-> Ubuntu 16.04、Ubuntu 18.04 和 Debian 9 的 x86 体系结构仅支持使用语音 SDK 进行 C++ 开发。
+> [!IMPORTANT]
+> 对于 Linux ARM64 上的 C#，需要 .NET Core 3.x（dotnet-sdk-3.x 包）。
 
 ### <a name="system-requirements"></a>系统要求
 
@@ -61,10 +62,8 @@ sudo yum install alsa-lib openssl
 ```
 
 > [!IMPORTANT]
-> 请按照[如何为语音 SDK 配置 RHEL/CentOS 7](~/articles/cognitive-services/speech-service/how-to-configure-rhel-centos-7.md) 中的说明进行操作。
-
-> [!TIP]
-> 在 RHEL/CentOS 8 上，按照[如何配置 OpenSSL for Linux](../how-to-configure-openssl-linux.md) 上的说明进行操作。
+> - 在 RHEL/CentOS 7 上，按照[如何为语音 SDK 配置 RHEL/CentOS 7](~/articles/cognitive-services/speech-service/how-to-configure-rhel-centos-7.md) 上的说明进行操作。
+> - 在 RHEL/CentOS 8 上，按照[如何配置 OpenSSL for Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md) 上的说明进行操作。
 
 ---
 

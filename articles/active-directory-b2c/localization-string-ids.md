@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 05/18/2020
+ms.date: 06/28/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 287d3735c422936ec21dcce36d9bc5bfda79cb29
-ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
+ms.openlocfilehash: 140bbfc67cda97424d254ed5884bec287ed869f8
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83748132"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516508"
 ---
 # <a name="localization-string-ids"></a>本地化字符串 ID
 
@@ -224,6 +224,31 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 </LocalizedResources>
 ```
 
+## <a name="restful-service-error-messages"></a>Restful 服务错误消息
+
+以下是 [Restful 服务技术配置文件](restful-technical-profile.md)错误消息的 ID：
+
+| ID | 默认值 |
+| -- | ------------- |
+|DefaultUserMessageIfRequestFailed | 未能建立与 Restful 服务终结点的连接。 Restful 服务 URL：{0} |
+|UserMessageIfCircuitOpen | {0}Restful 服务 URL：{1} |
+|UserMessageIfDnsResolutionFailed | 未能解析 Restful 服务终结点的主机名。 Restful 服务 URL：{0} |
+|UserMessageIfRequestTimeout | 未能在 {0} 秒的超时限制内建立与 Restful 服务终结点的连接。 Restful 服务 URL：{1} |
+
+
+### <a name="example"></a>示例
+
+```XML
+<LocalizedResources Id="api.localaccountsignup.en">
+  <LocalizedStrings>
+    <LocalizedString ElementType="ErrorMessage" StringId="DefaultUserMessageIfRequestFailed">Failed to establish connection to restful service end point.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfCircuitOpen">Unable to connect to the restful service end point.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfDnsResolutionFailed">Failed to resolve the hostname of the restful service endpoint.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfRequestTimeout">Failed to establish connection to restful service end point within timeout limit.</LocalizedString>
+  </LocalizedStrings>
+</LocalizedResources>
+```
+
 ## <a name="azure-mfa-error-messages"></a>Azure MFA 错误消息
 
 以下是 [Azure MFA 技术配置文件](multi-factor-auth-technical-profile.md)错误消息的 ID：
@@ -277,7 +302,6 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
   </LocalizedStrings>
 </LocalizedResources>
 ```
-
 
 ## <a name="claims-transformations-error-messages"></a>声明转换错误消息
 

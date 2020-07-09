@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 05/25/2020
+ms.date: 07/02/2020
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 731c9b2b9b3e8b7b699b2b8453a63177517b542e
-ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
+ms.openlocfilehash: 116595ac9650c7b710797a3ad7f69d8d5d53a065
+ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84186970"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945194"
 ---
 # <a name="continuous-access-evaluation"></a>连续访问评估
 
@@ -40,6 +40,7 @@ Azure Active Directory (Azure AD) 和 Office 365 等 Microsoft 服务使用开�
 
 - 用户帐户已删除或禁用
 - 用户的密码已更改或已重置
+- 为用户启用 MFA
 - 管理员显式地撤销用户的所有刷新令牌
 
 将来我们希望添加更多事件，包括位置和设备状态更改等事件。 虽然我们的目标是即时强制执行，但在某些情况下，由于事件传播时间的原因，延迟可能会长达 15 分钟。 
@@ -49,13 +50,13 @@ Azure Active Directory (Azure AD) 和 Office 365 等 Microsoft 服务使用开�
 在进行连续访问评估之前，只要访问令牌未过期，客户端将始终试图从其缓存中重播访问令牌。 通过使用 CAE，我们引入了一种新的事例 - 即使令牌没有过期，资源提供程序也可以拒绝令牌。 为了在缓存的令牌尚未过期的情况下通知客户端绕过其缓存，我们引入了一种称为“声明质询”的机制。 CAE 要求客户端更新以理解声明质询。 以下应用程序的最新版本支持声明质询：
 
 - 适用于 Windows 的 Outlook 
-- Outlook iOS 
-- Outlook Android 
-- Outlook Mac 
+- 适用于 iOS 的 Outlook 
+- 适用于 Android 的 Outlook 
+- 适用于 Mac 的 Outlook 
 - 适用于 Windows 的 Teams
-- Teams iOS 
-- Teams Android 
-- Teams Mac 
+- 适用于 iOS 的 Teams 
+- 适用于 Android 的 Teams 
+- 适用于 Mac 的 Teams 
 
 ## <a name="token-lifetime"></a>令牌生存期
 
@@ -75,7 +76,7 @@ Azure Active Directory (Azure AD) 和 Office 365 等 Microsoft 服务使用开�
 1. 向资源提供程序提供访问令牌。 资源提供程序评估令牌的有效性，并检查用户是否存在任何吊销事件。 资源提供程序使用此信息来决定是否授予对资源的访问权限。
 1. 在这种情况下，资源提供程序会拒绝访问，并将 401+ 声明质询发送回客户端
 1. 支持 CAE 的客户端理解 401+ 声明质询。 它绕过缓存并返回到步骤 1，将其刷新令牌和声明质询一起发送回 Azure AD。 然后在此情况下，Azure AD 将重新评估所有条件，并提示用户重新进行身份验证。
- 
+
 ## <a name="faqs"></a>常见问题
 
 ### <a name="what-is-the-lifetime-of-my-access-token"></a>我的访问令牌的生存期是多少？

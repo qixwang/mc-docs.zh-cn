@@ -1,26 +1,20 @@
 ---
 title: 教程 - 使用自定义脚本扩展将应用程序部署到 Azure 中的 Windows 虚拟机
 description: 本教程介绍如何使用自定义脚本扩展运行脚本并将应用程序部署到 Azure 中的 Windows 虚拟机
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: rockboyfor
-manager: digimobile
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 11/29/2018
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 33992bc4cb96c1bc2c312033a305df779628be25
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: 857b21850fa58b41517a33ddeac65df6e986b892
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392462"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945892"
 ---
 # <a name="tutorial---deploy-applications-to-a-windows-virtual-machine-in-azure-with-the-custom-script-extension"></a>教程 - 使用自定义脚本扩展将应用程序部署到 Azure 中的 Windows 虚拟机
 
@@ -31,7 +25,11 @@ ms.locfileid: "83392462"
 > * 创建使用自定义脚本扩展的 VM
 > * 在应用扩展后查看正在运行的 IIS 站点
 
-## <a name="launch-azure-powershell"></a>启动 Azure PowerShell
+## <a name="launch-azure-local-powershell"></a>启动 Azure 本地 PowerShell
+
+打开 Azure Powershell 控制台，并以管理员权限运行以下脚本。
+
+<!--Not Available on Azure Cloud Shell-->
 
 ## <a name="custom-script-extension-overview"></a>自定义脚本扩展概述
 自定义脚本扩展在 Azure VM 上下载和执行脚本。 此扩展适用于部署后配置、软件安装或其他任何配置/管理任务。 可以从 Azure 存储或 GitHub 下载脚本，或者在扩展运行时将脚本提供给 Azure 门户。

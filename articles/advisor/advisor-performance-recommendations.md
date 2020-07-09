@@ -1,28 +1,24 @@
 ---
-title: 使用 Azure 顾问提高 Azure 应用程序的性能 | Azure
+title: 使用 Azure 顾问提高 Azure 应用程序的性能
 description: 使用顾问优化 Azure 部署的性能。
-services: advisor
-documentationcenter: NA
-author: kasparks
-ms.service: advisor
 ms.topic: article
 origin.date: 01/29/2019
-ms.date: 04/12/2019
-ms.author: lingliw
-ms.openlocfilehash: 3029ca27540dfe879dc7ce848db789cdbfcb676b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/28/2020
+ms.author: v-tawe
+ms.openlocfilehash: 9f5033df2929d43b7001d798574a8736959c2fc9
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74838970"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516691"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>使用 Azure 顾问提高 Azure 应用程序的性能
 
-Azure 顾问性能建议有助于提高关键业务应用程序的速度和响应能力。 可通过顾问从顾问仪表板的“性能”  选项卡获取性能建议。
+Azure 顾问性能建议有助于提高关键业务应用程序的速度和响应能力。 可通过顾问从顾问仪表板的“性能”选项卡获取性能建议。
 
 ## <a name="reduce-dns-time-to-live-on-your-traffic-manager-profile-to-fail-over-to-healthy-endpoints-faster"></a>减少流量管理器配置文件上的 DNS 生存时间，可更快地故障转移到正常运行的终结点
 <!--
-[Time to Live (TTL) settings](https://docs.azure.cn/zh-cn/traffic-manager/traffic-manager-performance-considerations) on your Traffic Manager profile allow you to specify how quickly to switch endpoints if a given endpoint stops responding to queries. Reducing the TTL values means that clients will be routed to functioning endpoints faster.
+[Time to Live (TTL) settings](https://docs.azure.cn/traffic-manager/traffic-manager-performance-considerations) on your Traffic Manager profile allow you to specify how quickly to switch endpoints if a given endpoint stops responding to queries. Reducing the TTL values means that clients will be routed to functioning endpoints faster.
 -->
 Azure 顾问将识别配置了较长 TTL 的流量管理器配置文件，并建议将 TTL 配置为 20 秒或 60 秒，具体取决于配置文件是否配置为使用[快速故障转移](https://azure.microsoft.com/roadmap/fast-failover-and-tcp-probing-in-azure-traffic-manager/)。
 
@@ -35,13 +31,17 @@ Azure 顾问将识别配置了较长 TTL 的流量管理器配置文件，并建
 
 有关 SQL 数据库顾问的详细信息，请参阅 [SQL 数据库顾问](/sql-database/sql-database-advisor)。
 
+## <a name="upgrade-your-storage-client-library-to-the-latest-version-for-better-reliability-and-performance"></a>将存储客户端库升级到最新版本，以提高可靠性和性能
+
+最新版存储客户端库/SDK 包含问题修复，这些问题有客户报告的，也有我们通过 QA 过程主动标识的。 最新版除了新功能，还有可靠性和性能优化，可以改进你在使用 Azure 存储时的总体体验。 如果你使用的是旧版本，顾问会为你提供升级到最新版本的 SDK 的建议和步骤。 建议适用于支持的语言 - C++ 和 .Net。
+
 ## <a name="improve-app-service-performance-and-reliability"></a>提高应用服务性能和可靠性
 
 Azure 顾问集成最佳做法建议，可改善应用服务体验，并发现相关平台的功能。 以下为应用服务建议示例：
 * 检测其中应用运行时已耗尽内存或 CPU 资源的实例，并提出缓解措施。
 * 检测在其中并置资源（如 Web 应用和数据库）的实例，以改善性能并降低成本。
 
-有关应用服务建议的详细信息，请参阅 [Best Practices for Azure App Service](https://docs.azure.cn/zh-cn/app-service/app-service-best-practices)（Azure 应用服务的最佳实践）。
+有关应用服务建议的详细信息，请参阅 [Best Practices for Azure App Service](https://docs.azure.cn/app-service/app-service-best-practices)（Azure 应用服务的最佳实践）。
 
 ## <a name="use-managed-disks-to-prevent-disk-io-throttling"></a>使用托管磁盘防止磁盘 I/O 限制
 
@@ -55,11 +55,16 @@ Azure 高级存储为运行 I/O 密集型工作负荷的虚拟机提供高性能
 
 ## <a name="remove-data-skew-on-your-sql-data-warehouse-table-to-increase-query-performance"></a>删除 SQL 数据仓库表的数据倾斜以提高查询性能
 
-运行工作负荷时，数据倾斜可能会造成不必要的数据移动或资源瓶颈。 顾问将检测大于 15% 的分布数据倾斜，并建议重新分布数据和重新访问表分布键选择。 若要了解有关识别和删除倾斜的详细信息，请参阅[倾斜疑难解答](https://docs.azure.cn/zh-cn/sql-data-warehouse/sql-data-warehouse-tables-distribute#how-to-tell-if-your-distribution-column-is-a-good-choice)。
+运行工作负荷时，数据倾斜可能会造成不必要的数据移动或资源瓶颈。 顾问将检测大于 15% 的分布数据倾斜，并建议重新分布数据和重新访问表分布键选择。 若要了解有关识别和删除倾斜的详细信息，请参阅[倾斜疑难解答](https://docs.azure.cn/sql-data-warehouse/sql-data-warehouse-tables-distribute#how-to-tell-if-your-distribution-column-is-a-good-choice)。
 
 ## <a name="create-or-update-outdated-table-statistics-on-your-sql-data-warehouse-table-to-increase-query-performance"></a>创建或更新 SQL 数据仓库表的过期表统计信息以提高查询性能
 
-顾问标识不包含最新[表统计信息](https://docs.azure.cn/zh-cn/sql-data-warehouse/sql-data-warehouse-tables-statistics)的表并建议创建或更新表统计信息。 SQL 数据仓库查询优化器使用最新统计信息来估计基数或查询结果中的行数，这样一来，查询优化器能够创建高质量的查询计划，以提高性能。
+顾问标识不包含最新[表统计信息](https://docs.azure.cn/sql-data-warehouse/sql-data-warehouse-tables-statistics)的表并建议创建或更新表统计信息。 SQL 数据仓库查询优化器使用最新统计信息来估计基数或查询结果中的行数，这样一来，查询优化器能够创建高质量的查询计划，以提高性能。
+
+## <a name="improve-mysql-connection-management"></a>改进 MySQL 连接管理
+
+顾问分析有助于指示连接到 MySQL 服务器的应用程序可能无法有效地管理连接。 这可能会导致不必要的资源消耗和应用程序的总体延迟过高。 为了改进连接管理，建议你减少短期连接数并消除不必要的空闲连接。 这可以通过配置服务器端连接池程序（如 ProxySQL）来实现。
+
 
 ## <a name="scale-up-to-optimize-cache-utilization-on-your-sql-data-warehouse-tables-to-increase-query-performance"></a>通过纵向扩展来优化 SQL 数据仓库上的缓存利用率，从而提升查询性能
 
@@ -67,7 +72,7 @@ Azure 顾问会检测 SQL 数据仓库是否具有高缓存使用百分比和低
 
 ## <a name="convert-sql-data-warehouse-tables-to-replicated-tables-to-increase-query-performance"></a>将 SQL 数据仓库表转换为复制表以提高查询性能
 
-顾问会识别非复制但是会受益于转换的表，并建议转换这些表。 建议是基于 SQL 数据仓库表的复制表大小、列数、表分布类型以及分区数提出的。 还可能会根据上下文在建议中提供额外的启发。 若要详细了解此建议是如何确定的，请参阅 [SQL 数据仓库建议](https://docs.azure.cn/zh-cn/sql-data-warehouse/sql-data-warehouse-concept-recommendations#replicate-tables)。 
+顾问会识别非复制但是会受益于转换的表，并建议转换这些表。 建议是基于 SQL 数据仓库表的复制表大小、列数、表分布类型以及分区数提出的。 还可能会根据上下文在建议中提供额外的启发。 若要详细了解此建议是如何确定的，请参阅 [SQL 数据仓库建议](https://docs.azure.cn/sql-data-warehouse/sql-data-warehouse-concept-recommendations#replicate-tables)。 
 
 ## <a name="migrate-your-storage-account-to-azure-resource-manager-to-get-all-of-the-latest-azure-features"></a>将存储帐户迁移到 Azure 资源管理器来获取所有最新 Azure 功能。
 
@@ -80,7 +85,7 @@ Azure 顾问会检测 SQL 数据仓库是否具有高缓存使用百分比和低
 
 1. 登录 [Azure 门户](https://portal.azure.cn)，并打开[顾问](https://aka.ms/azureadvisor_cn)。
 
-2.  在顾问仪表板中，单击“性能”  选项卡。
+2.  在顾问仪表板中，单击“性能”选项卡。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -88,6 +93,7 @@ Azure 顾问会检测 SQL 数据仓库是否具有高缓存使用百分比和低
 
 * [顾问简介](advisor-overview.md)
 * [顾问入门](advisor-get-started.md)
-* [顾问成本建议](advisor-performance-recommendations.md)
+* [顾问成本建议](advisor-cost-recommendations.md)
 * [顾问高可用性建议](advisor-high-availability-recommendations.md)
 * [顾问安全性建议](advisor-security-recommendations.md)
+* [顾问卓越运营建议](advisor-operational-excellence-recommendations.md)

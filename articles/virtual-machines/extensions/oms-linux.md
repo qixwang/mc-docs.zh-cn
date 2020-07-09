@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 origin.date: 02/18/2020
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 11487f6b0dafb0807287bca79f0bf17b085fa44b
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: 54d2754b03e5aa69d4880f2c405b6bb5c5cabca3
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596414"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945980"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>适用于 Linux 的 Log Analytics 虚拟机扩展
 
@@ -51,6 +51,7 @@ Azure Monitor 日志提供跨云和本地资产的监视、警报和警报修正
 
 | Log Analytics Linux VM 扩展版本 | Log Analytics 代理捆绑包版本 | 
 |--------------------------------|--------------------------|
+| 1.13.13 | [1.13.7-0](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.13.7-0) |
 | 1.12.25 | [1.12.15-0](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.12.15-0) |
 | 1.11.15 | [1.11.0-9](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.11.0-9) |
 | 1.10.0 | [1.10.0-1](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.10.0-1) |
@@ -94,7 +95,7 @@ Azure 安全中心自动预配 Log Analytics 代理并将其连接到 Azure 订�
   "properties": {
     "publisher": "Microsoft.EnterpriseCloud.Monitoring",
     "type": "OmsAgentForLinux",
-    "typeHandlerVersion": "1.7",
+    "typeHandlerVersion": "1.13",
     "autoUpgradeMinorVersion": true,
     "settings": {
       "workspaceId": "myWorkspaceId"
@@ -178,7 +179,7 @@ Azure 安全中心自动预配 Log Analytics 代理并将其连接到 Azure 订�
 
 ## <a name="azure-cli-deployment"></a>Azure CLI 部署
 
-可以使用 Azure CLI 将 Log Analytics 代理 VM 扩展部署到现有的虚拟机。 将下面的 myWorkspaceKey  值替换为工作区密钥，并将 myWorkspaceId  值替换为工作区 ID。 这些值可以在 Azure 门户的 Log Analytics 工作区中的“高级设置”  下找到。 
+可以使用 Azure CLI 将 Log Analytics 代理 VM 扩展部署到现有的虚拟机。 将下面的 myWorkspaceKey 值替换为工作区密钥，并将 myWorkspaceId 值替换为工作区 ID。 这些值可以在 Azure 门户的 Log Analytics 工作区中的“高级设置”下找到。 
 
 ```azurecli
 az vm extension set \
@@ -186,11 +187,17 @@ az vm extension set \
   --vm-name myVM \
   --name OmsAgentForLinux \
   --publisher Microsoft.EnterpriseCloud.Monitoring \
-  --version 1.10.1 --protected-settings "{'workspaceKey':'myWorkspaceKey'}" \
-  --settings "{'workspaceId':'myWorkspaceId'}"
+  --version 1.10.1 --protected-settings '{"workspaceKey":"myWorkspaceKey"}' \
+  --settings '{"workspaceId":"myWorkspaceId"}'
 ```
 
-<!--MOONCAKE: OUT IS " WITH IN `-->
+> [!NOTE]
+> 当我们在 Microsoft PowrShell 环境中运行 Azure CLI 时，应在相应的脚本中替换以下格式：
+> 1. 将 `\` 的串联替换为 ```。
+> 2. 将 `protected-settings` 和 `settings` 的属性替换为实际值。
+>     `--protected-settings "{'workspaceKey':'myWorkspaceKey'}"`
+>     `--settings "{'workspaceId':'myWorkspaceId'}"`
+
 
 ## <a name="troubleshoot-and-support"></a>故障排除和支持
 

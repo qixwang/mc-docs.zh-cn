@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.topic: howto
 origin.date: 11/13/2019
 ms.date: 04/06/2020
-ms.openlocfilehash: 080dd0faea43c811b048d1ec37bf1760f53b86b8
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.openlocfilehash: d97a80394e789debc9944b3f1caec94ae9674909
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723177"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516673"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>将 Azure HDInsight 3.6 Hive 工作负荷迁移到 HDInsight 4.0
 
@@ -41,7 +41,7 @@ HDInsight 3.6 和 HDInsight 4.0 ACID 表以不同的方式理解 ACID 增量数�
 ### <a name="3-upgrade-metastore-schema"></a>3.升级元存储架构
 完成元存储的**复制**后，在现有 HDInsight 3.6 群集上运行[脚本操作](../hdinsight-hadoop-customize-cluster-linux.md)中的架构升级脚本，将新的元存储升级到 Hive 3 架构。 （此步骤不需要将新的元存储连接到群集。）这样，便可以将数据库附加为 HDInsight 4.0 元存储。
 
-接下来使用下表中的值。 请将 `SQLSERVERNAME DATABASENAME USERNAME PASSWORD` 替换为 Hive 元存储副本**** 的相应值，并以空格分隔。 在指定 SQL 服务器名称时，请勿包含“.database.chinacloudapi.cn”。
+接下来使用下表中的值。 请将 `SQLSERVERNAME DATABASENAME USERNAME PASSWORD` 替换为 Hive 元存储副本的相应值，并以空格分隔。 在指定 SQL 服务器名称时，请勿包含“.database.chinacloudapi.cn”。
 
 |属性 | Value |
 |---|---|
@@ -119,7 +119,7 @@ HDInsight 3.6 和 4.0 群集必须使用同一存储帐户。
 
 1. 使用[安全外壳 (SSH) 客户端](../hdinsight-hadoop-linux-use-ssh-unix.md)连接到 HDInsight 3.6 群集。
 
-1. 在打开的 SSH 会话中，下载以下脚本文件，以生成名为 alltables.hql**** 的文件。
+1. 在打开的 SSH 会话中，下载以下脚本文件，以生成名为 alltables.hql 的文件。
 
     ```bash
     wget https://hdiconfigactions.blob.core.chinacloudapi.cn/hivemetastoreschemaupgrade/exporthive_hdi_3_6.sh
@@ -127,19 +127,19 @@ HDInsight 3.6 和 4.0 群集必须使用同一存储帐户。
     ```
 
 
-1. 退出 SSH 会话。 然后输入一条 scp 命令，以在本地下载 alltables.hql****。
+1. 退出 SSH 会话。 然后输入一条 scp 命令，以在本地下载 alltables.hql。
 
     ```bash
     scp sshuser@CLUSTERNAME-ssh.azurehdinsight.cn:alltables.hql c:/hdi
     ```
 
-1. 将 alltables.hql**** 上传到新的 HDInsight 群集。**
+1. 将 alltables.hql 上传到新的 HDInsight 群集。
 
     ```bash
     scp c:/hdi/alltables.hql sshuser@CLUSTERNAME-ssh.azurehdinsight.cn:/home/sshuser/
     ```
 
-1. 然后使用 SSH 连接到新的** HDInsight 4.0 群集。 在此群集的 SSH 会话中运行以下代码：
+1. 然后使用 SSH 连接到新的 HDInsight 4.0 群集。 在此群集的 SSH 会话中运行以下代码：
 
     不使用 ESP：
 
@@ -173,7 +173,7 @@ HDInsight 3.6 和 4.0 群集必须使用同一存储帐户。
 1. 在 HDInsight 3.6 群集中导航到 Ranger 服务管理器面板。
 2. 导航到名为 **HIVE** 的策略，并将该策略导出到某个 JSON 文件。
 3. 确保导出的策略 JSON 中引用的所有用户都存在于新群集中。 如果该策略 JSON 中引用的某个用户不存在于新群集中，请将该用户添加到新群集，或者从策略中删除引用。
-4. 在 HDInsight 4.0 群集中导航到“Ranger 服务管理器”面板。****
+4. 在 HDInsight 4.0 群集中导航到“Ranger 服务管理器”面板。
 5. 导航到名为 **HIVE** 的策略，并导入步骤 2 中导出的 Ranger 策略 JSON。
 
 ## <a name="check-compatibility-and-modify-codes-as-needed-in-test-app"></a>在测试应用中检查兼容性并根据需要修改代码
@@ -198,13 +198,13 @@ HDInsight 3.6 和 4.0 群集必须使用同一存储帐户。
 
 在 HDInsight 4.0 中，HiveCLI 已由 Beeline 取代。 HiveCLI 是 Hiveserver 1 的 thrift 客户端，Beeline 是用于访问 Hiveserver 2 的 JDBC 客户端。 Beeline 还可用于连接 JDBC 兼容的其他任何数据库终结点。 Beeline 可以现成地在 HDInsight 4.0 上使用，而无需进行任何安装。
 
-在 HDInsight 3.6 中，用来与 Hive 服务器交互的 GUI 客户端是 Ambari Hive 视图。 HDInsight 4.0 使用 Hortonworks Data Analytics Studio (DAS) 取代了 Hive 视图。 DAS 未随附现成可用的 HDInsight 群集，并不是受官方支持的包。 但是，可以使用[脚本操作](../hdinsight-hadoop-customize-cluster-linux.md)在群集上安装 DAS，如下所示：
+在 HDInsight 3.6 中，用来与 Hive 服务器交互的 GUI 客户端是 Ambari Hive 视图。 HDInsight 4.0 未随附 Ambari 视图。 我们为客户提供了一种使用 Data Analytics Studio (DAS) 的方法，DAS 不是核心 HDInsight 服务。 DAS 未随附现成可用的 HDInsight 群集，并且不是受官方支持的包。 但是，可以使用[脚本操作](../hdinsight-hadoop-customize-cluster-linux.md)在群集上安装 DAS，如下所示：
 
 <!--PAY ATTENTION HERE-->
 
 <!--Launch a script action against your cluster, with "Head nodes" as the node type for execution. -->
 
-1. 在[此处](https://hdiconfigactions.blob.core.chinacloudapi.cn/dasinstaller/install-data-analytics-studio.sh)下载脚本，将脚本中的“azurehdinsight.net”替换为“azurehdinsight.cn”，并使用名称 `install-data-analytics-studio.sh` 在本地保存。 
+1. 在[此处](https://hdiconfigactions.blob.core.chinacloudapi.cn/dasinstaller/install-data-analytics-studio.sh)下载脚本，将脚本中的“azurehdinsight.cn”替换为“azurehdinsight.cn”，并使用名称 `install-data-analytics-studio.sh` 在本地保存。 
 
     将脚本文件上传到 Azure 存储帐户，完成后，Azure 门户中该文件的 URL 将会为 `https://<storage_account_name>.blob.core.chinacloudapi.cn/<container_name>/install-data-analytics-studio.sh`。 
 
@@ -240,15 +240,15 @@ HDInsight 3.6 和 4.0 群集必须使用同一存储帐户。
 
     转到 [Azure 门户](https://portal.azure.cn)，导航到已创建的 HDInsight 群集。
     
-    在默认视图中的“设置”下，选择“脚本操作”****。
+    在默认视图中的“设置”下，选择“脚本操作”。
 
     ![](media/apache-hive-migrate-workloads/1.png)
 
-    在“脚本操作”页顶部，选择“+ 提交新项”**** ****。
+    在“脚本操作”页顶部，选择“+ 提交新项” 。
 
     ![](media/apache-hive-migrate-workloads/2.png)
 
-    对于“脚本类型”，请选择“自定义”。**** 然后，请提供**名称**并将在上一步保存的 URI `https://<storage_account_name>.blob.core.chinacloudapi.cn/<container_name>/LaunchDASInstaller.sh` 粘贴到标为“Bash 脚本 URI”的文本框中。**** 最后，选择“创建”按钮将脚本应用到群集。****
+    对于“脚本类型”，请选择“自定义”。 然后，请提供**名称**并将在上一步保存的 URI `https://<storage_account_name>.blob.core.chinacloudapi.cn/<container_name>/LaunchDASInstaller.sh` 粘贴到标为“Bash 脚本 URI”的文本框中。 最后，选择“创建”按钮将脚本应用到群集。
 
     ![](media/apache-hive-migrate-workloads/3.png)
 

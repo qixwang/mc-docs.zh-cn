@@ -14,12 +14,12 @@ origin.date: 11/04/2019
 ms.topic: article
 ms.date: 06/04/2020
 ms.author: v-johya
-ms.openlocfilehash: 08c377a3967371f3f48cc8e61e31d1e2d1326483
-ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
+ms.openlocfilehash: a196a999d47520a18480338b59070d620d364c0d
+ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84440536"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851987"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>在 Azure API 管理中使用 Azure Active Directory 授权开发人员帐户
 
@@ -96,6 +96,7 @@ ms.locfileid: "84440536"
 
 1. 选择“组”选项卡。
 2. 选择“添加 AAD 组”按钮。
+
     ![“添加 AAD 组”按钮](./media/api-management-howto-aad/api-management-with-aad008.png)
 3. 选择要添加的组。
 4. 按“选择”按钮。
@@ -104,7 +105,7 @@ ms.locfileid: "84440536"
  
 配置的 Azure AD 实例中的用户现在可以登录开发人员门户。 他们可以查看和订阅可见的任何组。
 
-## <a name="developer-portal---add-azure-ad-account-authentication"></a><a id="log_in_to_dev_portal"/> 开发人员门户 - 添加 Azure AD 帐户身份验证
+## <a name="developer-portal---add-azure-ad-account-authentication"></a><a id="log_in_to_dev_portal"></a> 开发人员门户 - 添加 Azure AD 帐户身份验证
 
 在开发人员门户中，可以使用小组件“登录按钮：OAuth”通过 AAD 登录。 此小组件已包括在默认开发人员门户内容的登录页上。
 

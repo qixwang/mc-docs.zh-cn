@@ -7,12 +7,12 @@ ms.topic: conceptual
 origin.date: 03/14/2019
 ms.date: 05/28/2020
 ms.author: v-johya
-ms.openlocfilehash: d0bd6a310cc94bdd3c6b2af1f9b351b6790a0205
-ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
+ms.openlocfilehash: 6da082d6e9ae7b498baa4f5da74bc02a763f4546
+ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84440692"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851945"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure 监视器合作伙伴集成
 
@@ -279,7 +279,6 @@ Turbonomic 为混合云提供工作负荷自动化解决方案，同时实时优
 [datadog-doc]: https://docs.datadoghq.com/integrations/azure/ "Datadog 文档。"
 [dynatrace-doc]: https://help.dynatrace.com/infrastructure-monitoring/paas/how-do-i-monitor-microsoft-azure-web-apps/ "Dynatrace 文档。"
 [elastic-doc]: https://www.elastic.co/guide/en/logstash/master/azure-module.html "Elastic 文档。"
-[influxdata-doc]: ./../../azure-monitor/platform/collect-custom-metrics-linux-telegraf.md "Azure Monitor Influxdata Telegraf 集成。"
 [logicmonitor-doc]: https://www.logicmonitor.com/lp/azure-monitoring/ "Logic Monitor 文档。"
 [moogsoft-doc]: https://www.moogsoft.com/partners/microsoft-azure "Moogsoft 文档。"
 [newrelic-doc]: https://newrelic.com/azure "NewRelic 文档。"

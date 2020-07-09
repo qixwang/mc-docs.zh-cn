@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 origin.date: 04/25/2018
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: afad286d945ebfbedb4fd44176ef0be04335f0b1
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: 8afa13046bdf2f92554cd7bd6640c3da1192d0bd
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596108"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945661"
 ---
 <!--Verify successfully-->
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>在 Linux 虚拟机上使用 Azure 自定义脚本扩展版本 2
@@ -59,7 +59,7 @@ ms.locfileid: "82596108"
 * 该扩展只会运行一个脚本一次，如果想要在每次启动时运行一个脚本，则可以使用 [cloud-init 映像](/virtual-machines/linux/using-cloud-init)和 [Scripts Per Boot](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) 模块。 或者，可以使用脚本创建 SystemD 服务单元。
 * 如果想要计划脚本何时运行，应使用扩展创建一个 Cron 作业。 
 * 脚本运行时，Azure 门户或 CLI 中只会显示“正在转换”扩展状态。 如果希望更频繁地更新正在运行的脚本的状态，需要创建自己的解决方案。
-* 自定义脚本扩展本身不支持代理服务器，但可以使用脚本中支持代理服务器的文件传输工具，如 Curl  。 
+* 自定义脚本扩展本身不支持代理服务器，但可以使用脚本中支持代理服务器的文件传输工具，如 Curl。 
 * 请注意脚本或命令可能依赖的非默认目录位置，按逻辑对其进行处理。
 * 将自定义脚本部署到生产 VMSS 实例时，建议通过 json 模板进行部署，并将脚本存储帐户存储在你可以控制 SAS 令牌的位置。 
 
@@ -98,7 +98,7 @@ ms.locfileid: "82596108"
        "storageAccountName": "<storage-account-name>",
        "storageAccountKey": "<storage-account-key>",
        "fileUris": ["https://.."],
-        "managedIdentity" : "<managed-identity-identifier>"
+       "managedIdentity" : "<managed-identity-identifier>"
     }
   }
 }
@@ -115,7 +115,7 @@ ms.locfileid: "82596108"
 | publisher | Microsoft.Compute.Extensions | string |
 | type | CustomScript | string |
 | typeHandlerVersion | 2.1 | int |
-| fileUris（例如） | https://github.com/MyProject/Archive/MyPythonScript.py | array |
+| fileUris（例如） | `https://github.com/MyProject/Archive/MyPythonScript.py` | array |
 | commandToExecute（例如） | python MyPythonScript.py \<my-param1> | string |
 | 脚本 | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | string |
 | skipDos2Unix（示例） | false | boolean |
@@ -151,7 +151,7 @@ ms.locfileid: "82596108"
 
 #### <a name="property-skipdos2unix"></a>属性：skipDos2Unix
 
-默认值为 false，这意味着执行 dos2unix 转换。 
+默认值为 false，这意味着执行 dos2unix 转换。
 
 旧版 CustomScript (Microsoft.OSTCExtensions.CustomScriptForLinux) 会将 `\r\n` 转换为 `\n`，从而将 DOS 文件自动转换为 UNIX 文件。 此转换仍然存在，并且默认为启用状态。 此转换适用于从 fileUris 下载的所有文件或基于任何下述标准的脚本设置。
 
@@ -205,13 +205,13 @@ CustomScript 使用以下算法来执行脚本。
 
  1. 断言脚本值的长度不得超过 256 KB。
  1. base64 对脚本的值进行解码
- 1.  尝试对 base64 解码的值执行 gunzip 操作
+ 1. 尝试对 base64 解码的值执行 gunzip 操作
  1. 将解码（以及可以选择进行解压缩）的值写入磁盘 (/var/lib/waagent/custom-script/#/script.sh)
  1. 使用 _/bin/sh -c /var/lib/waagent/custom-script/#/script.sh 执行脚本。
 
 #### <a name="property-managedidentity"></a>属性：managedIdentity
 > [!NOTE]
->  只应在受保护的设置中指定此属性。
+> 只应在受保护的设置中指定此属性。
 
 CustomScript（2.1 版及更高版本）支持使用[托管标识](/active-directory/managed-identities-azure-resources/overview)从“fileUris”设置中提供的 URL 下载文件。 它允许 CustomScript 访问 Azure 存储专用 Blob 或容器，而无需用户传递 SAS 令牌或存储帐户密钥等机密。
 

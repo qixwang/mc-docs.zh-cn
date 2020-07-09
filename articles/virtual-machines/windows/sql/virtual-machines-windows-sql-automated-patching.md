@@ -13,15 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 origin.date: 03/07/2018
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.reviewer: jroth
-ms.openlocfilehash: 4bb5526f584a3fae33643a424ccc20ad92ed3aa5
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: f0c987e4e2d15791c28a9089d9f9e8e0a6e82cfe
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596418"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85946065"
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-resource-manager"></a>Azure 虚拟机中 SQL Server 的自动修补 (Resource Manager)
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.locfileid: "82596418"
 自动修补为运行 SQL Server 的 Azure 虚拟机建立一个维护时段。 只能在此维护时段内安装自动更新。 对于 SQL Server，此限制可以确保在数据库的最佳可能时间发生系统更新和任何关联的重新启动。 
 
 > [!IMPORTANT]
-> 仅安装标记为“重要”或“关键”的 Windows 更新和 SQL Server 更新   。 其他 SQL Server 更新（如服务包和未标记为“重要”  或“关键”  的累积更新）必须手动安装。 
+> 仅安装标记为“重要”或“关键”的 Windows 更新和 SQL Server 更新 。 其他 SQL Server 更新（如服务包和未标记为“重要”或“关键”的累积更新）必须手动安装。 
 
 自动修补依赖于 [SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)。
 
@@ -81,7 +81,11 @@ ms.locfileid: "82596418"
 ### <a name="new-vms"></a>新的 VM
 在 Resource Manager 部署模型中创建新的 SQL Server 虚拟机时，可以使用 Azure 门户配置自动修补。
 
-在“SQL Server 设置”  选项卡中，选择“自动修补”  下的“更改配置”  。 下面的 Azure 门户屏幕截图显示了“SQL 自动修补”  边栏选项卡。
+<!--MOONCAKE: CUSTOMIZATION ON 07/06/2020-->
+
+在“SQL Server 设置”选项卡中，选择“自动修补” 。 下面的 Azure 门户屏幕截图显示了“SQL 自动修补”边栏选项卡。
+
+<!--CORRECT ON REMOVE **Change configuration** under-->
 
 ![Azure 门户中的 SQL 自动修补](./media/virtual-machines-windows-sql-automated-patching/azure-sql-arm-patching.png)
 
@@ -92,18 +96,18 @@ ms.locfileid: "82596418"
 <!--MOONCAKE: CUSTOMIZATION ON 10/10/2019-->
 <!--Not Available on virtual-machines-windows-sql-manage-portal.md-->
 
-对于现有的 SQL Server 虚拟机，请选择 SQL Server 虚拟机。 然后选择“设置”边栏选项卡的“SQL Server 配置”部分。  
+对于现有的 SQL Server 虚拟机，请选择 SQL Server 虚拟机。 然后选择“设置”边栏选项卡的“SQL Server 配置”部分。 
 
 ![现有 VM 的 SQL 自动修补](./media/virtual-machines-windows-sql-automated-patching/azure-sql-rm-patching-existing-vms.png)
 
-在“SQL Server 配置”  边栏选项卡的“自动修补”部分中，单击“编辑”  按钮。
+在“SQL Server 配置”边栏选项卡的“自动修补”部分中，单击“编辑”按钮。
 
 ![配置现有 VM 的 SQL 自动修补](./media/virtual-machines-windows-sql-automated-patching/azure-sql-rm-patching-configuration.png)
 
 <!--Not Available on virtual-machines-windows-sql-manage-portal.md-->
 <!--MOONCAKE: CUSTOMIZATION ON 10/10/2019-->
 
-完成后，单击“SQL Server 配置”边栏选项卡底部的“确定”按钮保存更改。  
+完成后，单击“SQL Server 配置”边栏选项卡底部的“确定”按钮保存更改。 
 
 当你首次启用自动修补时，Azure 会在后台配置 SQL Server IaaS 代理。 在此期间，Azure 门户可能不会显示已配置自动修补。 请等待几分钟，以便安装和配置代理。 随后，Azure 门户将反映新设置。
 
@@ -133,7 +137,7 @@ Set-AzVMSqlServerExtension -AutoPatchingSettings $aps -VMName $vmname -ResourceG
 | **DayOfWeek** |每个星期四安装修补程序。 |
 | **MaintenanceWindowStartingHour** |在上午 11:00 开始更新。 |
 | **MaintenanceWindowsDuration** |必须在 120 分钟内完成修补程序安装。 根据开始时间，修补必须在下午 1:00 之前完成。 |
-| **PatchCategory** |此参数的唯一可能设置为“Important”  。 这会安装标记为“重要”的 Windows 更新；不安装未包含在此类别中的任何 SQL Server 更新。 |
+| **PatchCategory** |此参数的唯一可能设置为“Important”。 这会安装标记为“重要”的 Windows 更新；不安装未包含在此类别中的任何 SQL Server 更新。 |
 
 可能需要花费几分钟来安装和配置 SQL Server IaaS 代理。
 

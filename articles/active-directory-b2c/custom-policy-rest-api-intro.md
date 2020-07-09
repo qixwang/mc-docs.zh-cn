@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 06/28/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: ccddfafab798138ad63d1712efe9bcf2e89d98f4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d07ca377121f254987b02e321682d158ac55f536
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80581851"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516511"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-custom-policy"></a>在 Azure AD B2C 自定义策略中集成 REST API 声明交换
 
@@ -26,24 +26,27 @@ ms.locfileid: "80581851"
 
 使用 Azure AD B2C 可以通过调用 RESTful 服务，将自己的业务逻辑添加到用户旅程中。 Identity Experience Framework 可以在 RESTful 服务中发送和接收数据，以交换声明。 例如，可以：
 
-- 验证用户输入数据。  例如，可以验证用户提供的电子邮件地址是否在客户数据库中存在，如果不存在，则显示错误消息。
-- 处理声明。  如果用户使用全小写或全大写字母输入了其名字，REST API 可以设置该名字的格式，只将第一个字母，然后将此名字返回到 Azure AD B2C。
-- 通过进一步与企业业务线应用程序集成来丰富用户数据。  RESTful 服务可以接收用户的电子邮件地址、查询客户的数据库，并向 Azure AD B2C 返回用户的会员号。 返回声明可以存储在用户 Azure AD 帐户中、在后续的业务流程步骤中进行评估，或包含在访问令牌中。
-- 运行自定义业务逻辑。  可以发送推送通知、更新企业数据库、运行用户迁移过程、管理权限、审核数据库，以及执行任何其他工作流。
+- 验证用户输入数据。 例如，可以验证用户提供的电子邮件地址是否在客户数据库中存在，如果不存在，则显示错误消息。
+- 处理声明。 如果用户使用全小写或全大写字母输入了其名字，REST API 可以设置该名字的格式，只将第一个字母，然后将此名字返回到 Azure AD B2C。
+- 通过进一步与企业业务线应用程序集成来丰富用户数据。 RESTful 服务可以接收用户的电子邮件地址、查询客户的数据库，并向 Azure AD B2C 返回用户的会员号。 返回声明可以存储在用户 Azure AD 帐户中、在后续的业务流程步骤中进行评估，或包含在访问令牌中。
+- 运行自定义业务逻辑。 可以发送推送通知、更新企业数据库、运行用户迁移过程、管理权限、审核数据库，以及执行任何其他工作流。
 
 ![RESTful 服务声明交换示意图](./media/custom-policy-rest-api-intro/restful-service-claims-exchange.png)
+
+> [!NOTE]
+> 如果 RESTful 服务对 Azure AD B2C 的响应速度缓慢或没有响应，则超时为 30 秒，重试计数为 2 次（这意味着总共有 3 次尝试）。 超时和重试计数设置当前不可配置。
 
 ## <a name="calling-a-restful-service"></a>调用 RESTful 服务
 
 交互包括 REST API 声明与 Azure AD B2C 之间的声明信息交换。 可通过以下方式来设计与 RESTful 服务的集成：
 
-- 验证技术配置文件。  对 RESTful 服务的调用在指定的[自我断言技术配置文件](self-asserted-technical-profile.md)的[验证技术配置文件](validation-technical-profile.md)中发生，或者在[显示控制](display-controls.md)的[验证显示控制](display-control-verification.md)中发生。 在用户旅程推进之前，验证技术配置文件会验证用户提供的数据。 使用验证技术配置文件，可以：
+- 验证技术配置文件。 对 RESTful 服务的调用在指定的[自我断言技术配置文件](self-asserted-technical-profile.md)的[验证技术配置文件](validation-technical-profile.md)中发生，或者在[显示控制](display-controls.md)的[验证显示控制](display-control-verification.md)中发生。 在用户旅程推进之前，验证技术配置文件会验证用户提供的数据。 使用验证技术配置文件，可以：
 
   - 将声明发送到 REST API。
   - 验证声明，并引发向用户显示的自定义错误消息。
   - 将 REST API 中的声明发回到后续的业务流程步骤。
 
-- 声明交换。  可以通过从[用户旅程](userjourneys.md)的业务流程步骤直接调用 REST API 技术配置文件，来配置直接声明交换。 此定义仅限于：
+- 声明交换。 可以通过从[用户旅程](userjourneys.md)的业务流程步骤直接调用 REST API 技术配置文件，来配置直接声明交换。 此定义仅限于：
 
   - 将声明发送到 REST API。
   - 验证声明，并引发返回给应用程序的自定义错误消息。
@@ -65,12 +68,12 @@ ms.locfileid: "80581851"
 
 可以使用 SendClaimsIn 特性来配置如何将输入声明发送到 RESTful 声明提供程序。 可能的值包括：
 
-- Body，以 JSON 格式在 HTTP POST 请求正文中发送。 
-- Form，以“&”符号分隔的键值格式在 HTTP POST 请求正文中发送。 
-- Header，在 HTTP GET 请求标头中发送。 
-- QueryString，在 HTTP GET 请求查询字符串中发送。 
+- Body，以 JSON 格式在 HTTP POST 请求正文中发送。
+- Form，以“&”符号分隔的键值格式在 HTTP POST 请求正文中发送。
+- Header，在 HTTP GET 请求标头中发送。
+- QueryString，在 HTTP GET 请求查询字符串中发送。
 
-配置 Body 选项时，REST API 技术配置文件允许将复杂的 JSON 有效负载发送到终结点。  有关详细信息，请参阅[发送 JSON 有效负载](restful-technical-profile.md#send-a-json-payload)。
+配置 Body 选项时，REST API 技术配置文件允许将复杂的 JSON 有效负载发送到终结点。 有关详细信息，请参阅[发送 JSON 有效负载](restful-technical-profile.md#send-a-json-payload)。
 
 ## <a name="receiving-data"></a>接收数据
 
@@ -132,8 +135,8 @@ RESTful 声明提供程序分析的输出声明始终预期分析平面 JSON 正
 
 必须保护 REST API 终结点，以便只有经过身份验证的客户端才能与其通信。 REST API 必须使用 HTTPS 终结点。 将 AuthenticationType 元数据设置为以下身份验证方法之一：
 
-- “客户端证书”使用客户端证书身份验证来限制访问。  只有具有适当证书的服务才能访问你的 API。 将客户端证书存储在 Azure AD B2C 策略密钥中。 
-- “持有者”使用客户端 OAuth2 访问令牌来限制访问。  访问令牌存储在 Azure AD B2C 策略密钥中。 
+- “客户端证书”使用客户端证书身份验证来限制访问。 只有具有适当证书的服务才能访问你的 API。 将客户端证书存储在 Azure AD B2C 策略密钥中。 
+- “持有者”使用客户端 OAuth2 访问令牌来限制访问。 访问令牌存储在 Azure AD B2C 策略密钥中。 
 
 ## <a name="rest-api-platform"></a>REST API 平台
 REST API 可以基于任何平台，并可以使用任何编程语言编写，前提是该 API 安全，并可以根据 [RESTful 技术配置文件](restful-technical-profile.md)中的指定发送和接收声明。
@@ -161,7 +164,7 @@ REST API 可以基于任何平台，并可以使用任何编程语言编写，�
 
 ## <a name="handling-error-messages"></a>处理错误消息
 
-REST API 可能需要返回错误消息，例如“在 CRM 系统中未找到该用户”。 如果发生错误，REST API 应返回 HTTP 409 错误消息（冲突响应状态代码）。 有关详细信息，请参阅 [RESTful 技术配置文件](https://identitydivision.visualstudio.com/defaultcollection/Identity%20CXP/_git/GTP?path=%2Fyoelh%2Fdocs%2Frest-api%2Frestful-technical-profile.md&version=GBmaster&anchor=returning-error-message)。
+REST API 可能需要返回错误消息，例如“在 CRM 系统中未找到该用户”。 如果发生错误，REST API 应返回 HTTP 409 错误消息（冲突响应状态代码）。 有关详细信息，请参阅 [RESTful 技术配置文件](restful-technical-profile.md#returning-validation-error-message)。
 
 只能通过从验证技术配置文件调用 REST API 技术配置文件来实现此目的。 这样，用户就可以更正页面上的数据，并在提交页面后再次运行验证。
 

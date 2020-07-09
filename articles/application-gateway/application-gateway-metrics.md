@@ -5,14 +5,14 @@ services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-ms.date: 05/19/2020
+ms.date: 06/23/2020
 ms.author: v-junlch
-ms.openlocfilehash: 761ee3ab10dda6f789b9c183c3ac7de189f8c6d0
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+ms.openlocfilehash: eca7ee76b5e1b70a2dba6c63dfa18f127cbe95b6
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796847"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516739"
 ---
 # <a name="metrics-for-application-gateway"></a>应用程序网关的指标
 
@@ -24,7 +24,7 @@ ms.locfileid: "83796847"
 
 应用程序网关提供多个与请求和响应相关的内置计时指标，这些指标的度量单位均为毫秒。 
 
-![](./media/application-gateway-metrics/application-gateway-metrics.png)
+![用于应用程序网关的计时指标图。](./media/application-gateway-metrics/application-gateway-metrics.png)
 
 > [!NOTE]
 >

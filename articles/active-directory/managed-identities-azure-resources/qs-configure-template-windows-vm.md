@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/06/2020
+ms.date: 06/30/2020
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63d76043c0f527c4fda23b792f32a1722ceba89c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b78f3fb84f0e32e93ef066bc44e6873f5143ac57
+ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77067687"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945158"
 ---
-# <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-a-templates"></a>使用模板在 Azure VM 上配置 Azure 资源的托管标识
+# <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-templates"></a>使用模板在 Azure VM 上配置 Azure 资源的托管标识
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -32,7 +32,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 ## <a name="prerequisites"></a>先决条件
 
-- 如果不熟悉 Azure 管理器部署模板，请查看[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#how-does-the-managed-identities-for-azure-resources-work)。
+- 如果不熟悉 Azure 管理器部署模板，请查看[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#managed-identity-types)。
 - 如果还没有 Azure 帐户，请先[注册试用帐户](https://www.azure.cn/pricing/1rmb-trial/)，然后再继续。
 
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager 模板
@@ -105,13 +105,13 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 ### <a name="assign-a-role-the-vms-system-assigned-managed-identity"></a>向 VM 的系统分配的托管标识分配一个角色
 
-在 VM 上启用系统分配的托管标识后，建议向其授予一个角色，例如对创建它的资源组的“读者”访问权限  。
+在 VM 上启用系统分配的托管标识后，建议向其授予一个角色，例如对创建它的资源组的“读者”访问权限。
 
 若要为 VM 的系统分配标识分配角色，你的帐户需要[用户访问管理员](/role-based-access-control/built-in-roles#user-access-administrator)角色分配。
 
 1. 无论是在本地登录到 Azure 还是通过 Azure 门户登录，请使用与包含 VM 的 Azure 订阅关联的帐户。
 
-2. 将模板加载到[编辑器](#azure-resource-manager-templates)并添加以下信息，向 VM 授予对创建它的资源组的“读者”访问权限  。  模板结构可能会有所不同，具体取决于所选的编辑器和部署模型。
+2. 将模板加载到[编辑器](#azure-resource-manager-templates)并添加以下信息，向 VM 授予对创建它的资源组的“读者”访问权限。  模板结构可能会有所不同，具体取决于所选的编辑器和部署模型。
 
    在 `parameters` 部分下添加以下代码：
 
@@ -348,5 +348,3 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 - [Azure 资源概述的托管标识](overview.md)。
 
-
-<!-- Update_Description: link update -->

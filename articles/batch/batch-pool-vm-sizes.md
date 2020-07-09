@@ -1,17 +1,17 @@
 ---
 title: 选择池的 VM 大小
 description: 如何选择 Azure Batch 池中计算节点的可用 VM 大小
-ms.topic: article
-origin.date: 09/12/2019
-ms.date: 09/23/2019
-ms.author: v-lingwu
+ms.topic: conceptual
+origin.date: 06/10/2020
+ms.date: 06/29/2020
+ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 235fdda9fa2274c76f90cb34beac2f3f4cfbd3d1
-ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
+ms.openlocfilehash: 034a8d0db84a96a6c2ff7c409f66090add354973
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84126568"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85613400"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>选择 Azure Batch 池中计算节点的 VM 大小
 
@@ -26,20 +26,24 @@ ms.locfileid: "84126568"
 
 ### <a name="pools-in-virtual-machine-configuration"></a>虚拟机配置中的池
 
-虚拟机配置中的 Batch 池支持几乎所有的 VM 大小（[Linux](../virtual-machines/linux/sizes.md)、[Windows](../virtual-machines/windows/sizes.md)）。 请查看下表以了解有关支持的大小和限制的详细信息。
+虚拟机配置中的 Batch 池支持几乎所有的 VM 大小（[Linux](../virtual-machines/linux/sizes.md)、[Windows](../virtual-machines/windows/sizes.md)）。 请参阅下表以了解有关支持的大小和限制的详细信息。
 
 | VM 系列  | 支持的大小 |
 |------------|---------|
-| 基本 A | 除 Basic_A0 (A0) 外的所有大小 |
-| A | 除 Standard_A0 外的所有大小 |
+| 基本 A | 除 Basic_A0 (A0) 之外的所有大小 |
+| A | 除 Standard_A0 之外的所有大小 |
 | Av2 | 所有大小 |
 | B | 无 |
 | DC | 无 |
 | Dv2, DSv2 | 所有大小 |
 | Dv3, Dsv3 | 所有大小 |
-| Dav4, Dasv4 | 无（尚不可用） |
+| Dav4<sup>1</sup> | 无（尚不可用） |
+| Dasv4<sup>1</sup> | 除 Standard_D48as_v4、Standard_D64as_v4、Standard_D96as_v4 之外的所有大小 |
+| Ddv4、Ddsv4 |  无（尚不可用） |
 | Ev3, Esv3 | 除 E64is_v3 和 E64i_v3 之外的所有大小 |
-| Eav4, Easv4 | 无（尚不可用） |
+| Eav4<sup>1</sup> | 除 Standard_E48a_v4、Standard_E64a_v4、Standard_E96a_v4 之外的所有大小 |
+| Easv4<sup>1</sup> | 除 Standard_E48as_v4、Standard_E64as_v4、Standard_E96as_v4 之外的所有大小 |
+| Edv4, Edsv4 |  无（尚不可用） |
 | F, Fs | 所有大小 |
 | Fsv2 | 所有大小 |
 | G, Gs | 所有大小 |
@@ -48,8 +52,8 @@ ms.locfileid: "84126568"
 | HBv2<sup>1</sup> | 所有大小 |
 | HC<sup>1</sup> | 所有大小 |
 | Ls | 所有大小 |
-| Lsv2 | 无（尚不可用） |
-| M<sup>1</sup> | 除 M64、M64m、M128、M128m 之外的所有大小 |
+| Lsv2<sup>1</sup> | 所有大小 |
+| M<sup>1</sup> | 所有大小 |
 | Mv2 | 无（尚不可用） |
 | NC | 所有大小 |
 | NCv2<sup>1</sup> | 所有大小 |
@@ -74,7 +78,7 @@ ms.locfileid: "84126568"
 
 ## <a name="size-considerations"></a>大小注意事项
 
-* **应用程序要求** - 请考虑要在节点上运行的应用程序的特征和要求。 考虑应用程序是否是多线程的以及其消耗的内存量等因素有助于确定最合适且经济高效的节点大小。 对于多实例 [MPI 工作负荷](batch-mpi.md)或 CUDA 应用程序，请考虑使用专用[启用了 GPU](../virtual-machines/linux/sizes-gpu.md) 的 VM 大小。 
+* **应用程序要求** - 请考虑要在节点上运行的应用程序的特征和要求。 考虑应用程序是否是多线程的以及其消耗的内存量等因素有助于确定最合适且经济高效的节点大小。 对于多实例 [MPI 工作负荷](batch-mpi.md)或 CUDA 应用程序，请考虑使用专用[启用了 GPU](../virtual-machines/linux/sizes-gpu.md) 的 VM 大小。 （请参阅[在 Batch 池中使用支持 RDMA 或启用 GPU 的实例](batch-pool-compute-intensive-sizes.md)。）
 
 * **每个节点的任务数** - 通常，选择节点大小时会假设一个任务要在节点上运行一次。 但是，在作业执行期间，让多个任务（因此有多个应用程序实例）在计算节点上[并行运行](batch-parallel-node-tasks.md)可能是很有利的。 在此情况下，往往会选择多核节点大小，以满足更高的并行任务执行需求。
 
@@ -88,5 +92,5 @@ ms.locfileid: "84126568"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 Batch 深入概述的信息，请参阅[使用 Batch 开发大规模并行计算解决方案](batch-api-basics.md)。
+* 了解 [Batch 服务工作流和主要资源](batch-service-workflow-features.md)，例如池、节点、作业和任务。
 * 有关使用计算密集型 VM 大小的信息，请参阅[在 Batch 池中使用支持 RDMA 或启用 GPU 的实例](batch-pool-compute-intensive-sizes.md)。

@@ -2,20 +2,22 @@
 title: Azure 磁盘加密故障排除指南
 description: 本文提供适用于 Windows VM 的 Azure 磁盘加密的故障排除提示。
 author: rockboyfor
-ms.service: security
+ms.service: virtual-machines-windows
+ms.subservice: security
 ms.topic: article
 origin.date: 08/06/2019
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.custom: seodec18
-ms.openlocfilehash: e205cc9ecb0554e33db877add47b1e5fb877c4fd
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: 5afd2b70cc24e259531bf7459f5abb84d1276594
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83002075"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85946004"
 ---
-# <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure 磁盘加密故障排除指南
+<!--Mooncake: Unique H1 title with docset-->
+# <a name="azure-disk-encryption-troubleshooting-guide-for-windows"></a>适用于 Windows 的 Azure 磁盘加密故障排除指南
 
 本指南面向使用 Azure 磁盘加密的组织中的 IT 专业人员、信息安全分析人员和云管理员。 本文旨在帮助排查与磁盘加密相关的问题。
 
@@ -34,7 +36,7 @@ ms.locfileid: "83002075"
 
 ### <a name="azure-key-vault-behind-a-firewall"></a>防火墙保护下的 Azure Key Vault
 
-使用 [Azure AD 凭据](disk-encryption-windows-aad.md#)启用加密时，目标 VM 必须允许连接到 Azure Active Directory 终结点和密钥保管库终结点。 当前 Azure Active Directory 身份验证终结点在 [Office 365 URL 和 IP 地址范围](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges-21vianet)文档中的第 56 和 59 节中进行维护。 在有关如何[访问防火墙保护下的 Azure 密钥保管库](../../key-vault/key-vault-access-behind-firewall.md)的文档中提供了密钥保管库说明。
+使用 [Azure AD 凭据](disk-encryption-windows-aad.md#)启用加密时，目标 VM 必须允许连接到 Azure Active Directory 终结点和密钥保管库终结点。 当前 Azure Active Directory 身份验证终结点在 [Office 365 URL 和 IP 地址范围](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges-21vianet)文档中的第 56 和 59 节中进行维护。 在有关如何[访问防火墙保护下的 Azure 密钥保管库](../../key-vault/general/access-behind-firewall.md)的文档中提供了密钥保管库说明。
 
 ### <a name="azure-instance-metadata-service"></a>Azure 实例元数据服务 
 VM 必须能够访问这样的 [Azure 实例元数据服务](../windows/instance-metadata-service.md)终结点：该终结点使用只能从 VM 内访问的已知不可路由 IP 地址 (`169.254.169.254`)。  不支持将本地 HTTP 流量更改为此地址的代理配置（例如，添加 X-Forwarded-For 标头）。
@@ -62,17 +64,17 @@ VM 必须能够访问这样的 [Azure 实例元数据服务](../windows/instance
 
 1. 使用 DiskPart 检查卷，然后继续。  
 
-例如：
+    例如：
 
-```
-DISKPART> list vol
+    ```
+    DISKPART> list vol
 
-  Volume ### Ltr  Label        Fs     Type        Size     Status     Info
-  ----------  ---  -----------  -----  ----------  -------  ---------  --------
-  Volume 0     C                NTFS   Partition    126 GB  Healthy    Boot
-  Volume 1                      NTFS   Partition    550 MB  Healthy    System
-  Volume 2     D   Temporary S  NTFS   Partition     13 GB  Healthy    Pagefile
-```
+      Volume ### Ltr  Label        Fs     Type        Size     Status     Info
+      ----------  ---  -----------  -----  ----------  -------  ---------  --------
+      Volume 0     C                NTFS   Partition    126 GB  Healthy    Boot
+      Volume 1                      NTFS   Partition    550 MB  Healthy    System
+      Volume 2     D   Temporary S  NTFS   Partition     13 GB  Healthy    Pagefile
+    ```
 
 ## <a name="troubleshooting-encryption-status"></a>加密状态故障排除 
 
@@ -82,11 +84,12 @@ DISKPART> list vol
 
 若要使用 CLI 禁用 Azure 磁盘加密，请使用 [az vm encryption disable](https://docs.azure.cn/cli/vm/encryption?view=azure-cli-latest#az-vm-encryption-disable)。 
 
-<!--Not Available on -## Next steps-->
-<!--Not Available on - [Apply disk encryption in Azure Security Center](../../security-center-virtual-machine-protection.md)-->
+## <a name="next-steps"></a>后续步骤
 
-<!--CORRECT ON security-center-virtual-machine-protection.md-->
+本文档已详细描述有关 Azure 磁盘加密的一些常见问题和解决这些问题的方法。 有关此服务及其功能的详细信息，请参阅以下文章：
 
-<!--Not Available on - [Azure data encryption at rest](../../security/fundamentals/encryption-atrest.md)-->
+<!--Not Available on - [Apply disk encryption in Azure Security Center](../../security-center/security-center-apply-disk-encryption.md)-->
+
+- [Azure 静态数据加密](../../security/fundamentals/encryption-atrest.md)
 
 <!-- Update_Description: update meta properties, wording update, update link -->

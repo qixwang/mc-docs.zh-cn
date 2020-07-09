@@ -1,34 +1,31 @@
 ---
 title: 通过 Visual Studio 将 ASP.NET Web 应用发布到 Azure VM
 description: 通过 Visual Studio 将 ASP.NET Web 应用程序发布到 Azure 虚拟机
-services: virtual-machines-windows
 author: rockboyfor
 manager: digimobile
-tags: azure-service-management
-ms.assetid: 70267837-3629-41e0-bb58-2167ac4932b3
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 11/03/2017
-ms.date: 11/11/2019
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 7cb29c07c75ec127ef9eac8a633a774bf24e9ba6
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 25c1b7b0926e5b98887dec8717bf7723c2deefa8
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74593823"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945804"
 ---
 # <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>通过 Visual Studio 将 ASP.NET Web 应用发布到 Azure VM
 
 本文档介绍如何使用 Visual Studio 2019 中的 **Azure 虚拟机**发布功能，将 ASP.NET Web 应用程序发布到 Azure 虚拟机 (VM)。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 若要使用 Visual Studio 将 ASP.NET 项目发布到某个 Azure VM，必须正确设置该 VM。
 
-- 计算机必须配置为运行 ASP.NET Web 应用程序，并且必须装有 WebDeploy。
+- 计算机必须配置为运行 ASP.NET Web 应用程序，并且必须装有 WebDeploy。 有关详细信息，请参阅[使用 WebDeploy 创建 ASP.NET VM](https://github.com/aspnet/Tooling/blob/AspNetVMs/docs/create-asp-net-vm-with-webdeploy.md)。
 
 - 必须为 VM 配置 DNS 名称。 有关详细信息，请参阅[在 Azure 门户中创建 Windows VM 的完全限定域名](portal-create-fqdn.md)。
 
@@ -36,12 +33,12 @@ ms.locfileid: "74593823"
 以下部分介绍如何将现有的 ASP.NET Web 应用程序发布到 Azure 虚拟机。
 
 1. 在 Visual Studio 2019 中打开自己的 Web 应用解决方案。
-2. 在解决方案资源管理器中右键单击该项目，并选择“发布...”。 
-3. 使用页面右侧的箭头滚动浏览发布选项，直到发现“Azure 虚拟机”。   
+2. 在解决方案资源管理器中右键单击该项目，并选择“发布...”。
+3. 使用页面右侧的箭头滚动浏览发布选项，直到发现“Azure 虚拟机”。  
 
     ![发布页 - 右侧箭头]
 
-4. 选择“Azure 虚拟机”图标，然后选择“发布”。  
+4. 选择“Azure 虚拟机”图标，然后选择“发布”。 
 
     ![发布页 -“Azure 虚拟机”图标]
 
@@ -83,7 +80,7 @@ ms.locfileid: "74593823"
 
 ### <a name="re-publish"></a>重新发布
 
-若要将更新发布到 Web 应用程序，请在“发布”页上选择“发布”按钮。   
+若要将更新发布到 Web 应用程序，请在“发布”页上选择“发布”按钮。  
 - 根据提示输入用户名和密码。  
 - 随即会开始发布。
 
@@ -91,7 +88,7 @@ ms.locfileid: "74593823"
 
 ### <a name="modify-publish-profile-settings"></a>修改发布配置文件设置
 
-若要查看和修改发布配置文件设置，请选择“设置...”。   
+若要查看和修改发布配置文件设置，请选择“设置...”。  
 
 ![发布页-“设置”按钮]
 
@@ -100,12 +97,12 @@ ms.locfileid: "74593823"
 ![发布设置 -“连接”页]
 
 #### <a name="save-user-name-and-password"></a>保存用户名和密码
-- 避免在每次发布时提供身份验证信息。 为此，请填写“用户名”  和“密码”  字段，并选中“保存密码”  框。
-- 使用“验证连接”按钮确认是否输入了正确的信息。 
+- 避免在每次发布时提供身份验证信息。 为此，请填写“用户名”和“密码”字段，并选中“保存密码”框。
+- 使用“验证连接”按钮确认是否输入了正确的信息。
 
 #### <a name="deploy-to-clean-web-server"></a>部署到干净的 Web 服务器
 
-- 如果想要确保每次上传后 Web 服务器包含 Web 应用程序的干净副本（不包含先前部署留下的其他文件），可以在“设置”选项卡中选中“删除目标中的其他文件”复选框。  
+- 如果想要确保每次上传后 Web 服务器包含 Web 应用程序的干净副本（不包含先前部署留下的其他文件），可以在“设置”选项卡中选中“删除目标中的其他文件”复选框。 
 
 - 警告：使用此设置进行发布会删除 Web 服务器上存在的所有文件（包括 wwwroot 目录）。 在启用此选项的情况下进行发布之前，请务必了解计算机的状态。 
 

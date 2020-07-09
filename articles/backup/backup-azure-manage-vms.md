@@ -5,14 +5,14 @@ ms.reviewer: sogup
 author: Johnnytechn
 ms.topic: conceptual
 origin.date: 09/18/2019
-ms.date: 05/20/2020
+ms.date: 06/22/2020
 ms.author: v-johya
-ms.openlocfilehash: 1a2a35eaaf0dd409c2b329739ddf2c987ecc84e5
-ms.sourcegitcommit: cada23b6400453ff9c08cfb08393e635e2fddac1
+ms.openlocfilehash: 65e4ff46c0a8737c3ae90a38866d5d4aa48517b9
+ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83734519"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85852109"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>使用 Azure 备份服务管理 Azure VM 备份
 
@@ -102,7 +102,7 @@ ms.locfileid: "83734519"
 
 可通过两种方法来停止保护 VM：
 
-* **停止保护并保留备份数据**。 此选项将使所有将来的备份作业停止保护你的 VM；但是，Azure 备份服务将保留已备份的恢复点。  你需要付费才能将恢复点保留在保管库中（有关详细信息，请参阅 [Azure 备份定价](https://www.azure.cn/pricing/details/backup/index.html)）。 如果需要，你将能够还原 VM。 如果决定恢复 VM 保护，则可以使用“恢复备份”选项。
+* **停止保护并保留备份数据**。 此选项将使所有将来的备份作业停止保护你的 VM；但是，Azure 备份服务将保留已备份的恢复点。  你需要付费才能将恢复点保留在保管库中（有关详细信息，请参阅 [Azure 备份定价](https://www.azure.cn/pricing/details/backup/)）。 如果需要，你将能够还原 VM。 如果决定恢复 VM 保护，则可以使用“恢复备份”选项。
 * **停止保护并删除备份数据**。 此选项将使所有将来的备份作业停止保护你的 VM 并删除所有恢复点。 你将无法还原 VM，也无法使用“恢复备份”选项。
 
 >[!NOTE]
@@ -161,7 +161,7 @@ ms.locfileid: "83734519"
 
   * 若要删除项的备份数据，请选择“删除”。 一条通知消息将让你获悉备份数据已删除。
 
-为保护数据，Azure 备份包含了软件删除功能。 使用软删除，即使在删除 VM 的备份（所有恢复点）后，备份数据也会额外保留 14 天。 有关详细信息，请参阅[软删除文档](https://docs.azure.cn/backup/backup-azure-security-feature-cloud)。
+为保护数据，Azure 备份包含了软件删除功能。 使用软删除，即使在删除 VM 的备份（所有恢复点）后，备份数据也会额外保留 14 天。 有关详细信息，请参阅[软删除文档](/backup/backup-azure-security-feature-cloud)。
 
   > [!NOTE]
   > 删除备份数据时，将删除所有关联的恢复点。 无法选择要删除的特定恢复点。
@@ -174,6 +174,7 @@ ms.locfileid: "83734519"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何[通过 VM 的设置备份 Azure VM](backup-azure-vms-first-look-arm.md)。
-- 了解如何[还原 VM](backup-azure-arm-restore-vms.md)。
-<!-- Update_Description: update metedata properties -->
+* 了解如何[通过 VM 的设置备份 Azure VM](backup-azure-vms-first-look-arm.md)。
+* 了解如何[还原 VM](backup-azure-arm-restore-vms.md)。
+* 了解如何[监视 Azure VM 备份](backup-azure-monitoring-built-in-monitor.md)。
+

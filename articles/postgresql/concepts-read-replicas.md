@@ -5,14 +5,14 @@ author: WenJason
 ms.author: v-jay
 ms.service: postgresql
 ms.topic: conceptual
-origin.date: 01/23/2020
-ms.date: 04/27/2020
-ms.openlocfilehash: b86d85556572d2c8ee4a723077b66bb3a9d78f25
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+origin.date: 06/11/2020
+ms.date: 07/06/2020
+ms.openlocfilehash: 81ad0d6690fa044fa5ed922a2e50249832c31492
+ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126976"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85845811"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL（单一服务器）中的只读副本
 
@@ -33,6 +33,9 @@ ms.locfileid: "82126976"
 
 ## <a name="cross-region-replication"></a>跨区域复制
 可以在与主服务器不同的区域中创建只读副本。 跨区域复制对于灾难恢复规划或使数据更接近用户等方案非常有用。
+
+>[!NOTE]
+> 基本层服务器仅支持相同区域复制。
 
 可以在任何 [Azure Database for PostgreSQL 区域](https://azure.microsoft.com/global-infrastructure/services/?regions=china-non-regional,china-east,china-east-2,china-north,china-north-2&products=mysql)中设置主服务器。 主服务器可以在其配对区域中有一个副本。
 
@@ -62,11 +65,11 @@ psql -h myreplica.postgres.database.chinacloudapi.cn -U myadmin@myreplica -d pos
 在提示符下，输入用户帐户的密码。
 
 ## <a name="monitor-replication"></a>监视复制
-Azure Database for PostgreSQL 提供了两个用于监视复制的指标。 这两个指标是**副本的最大滞后时间**和**副本滞后时间**。 若要了解如何查看这些指标，请参阅[只读副本操作指南文章](howto-read-replicas-portal.md)的“监视副本”  部分。
+Azure Database for PostgreSQL 提供了两个用于监视复制的指标。 这两个指标是**副本的最大滞后时间**和**副本滞后时间**。 若要了解如何查看这些指标，请参阅[只读副本操作指南文章](howto-read-replicas-portal.md)的“监视副本”部分。
 
-“副本的最大滞后时间”指标显示主服务器与滞后时间最长的副本之间的滞后时间（以字节为单位）  。 此指标仅适用于主服务器。
+“副本的最大滞后时间”指标显示主服务器与滞后时间最长的副本之间的滞后时间（以字节为单位）。 此指标仅适用于主服务器。
 
-“副本滞后时间”指标显示的是自上次重放事务以来所经历的时间  。 如果主服务器上未发生任何事务，则该指标会反映此滞后时间。 此指标仅适用于副本服务器。 “副本滞后时间”是从 `pg_stat_wal_receiver` 视图计算得出的：
+“副本滞后时间”指标显示的是自上次重放事务以来所经历的时间。 如果主服务器上未发生任何事务，则该指标会反映此滞后时间。 此指标仅适用于副本服务器。 “副本滞后时间”是从 `pg_stat_wal_receiver` 视图计算得出的：
 
 ```SQL
 EXTRACT (EPOCH FROM now() - pg_last_xact_replay_timestamp());
@@ -107,7 +110,7 @@ AS total_log_delay_in_bytes from pg_stat_replication;
 ## <a name="failover"></a>故障转移
 在主服务器与副本服务器之间无法自动进行故障转移。 
 
-由于复制是异步的，因此在主体和副本之间存在延迟。 延迟程度受许多因素影响，例如，在主服务器上运行的工作负荷有多大，以及数据中心之间的延迟有多严重。 大多数情况下，副本验证在几秒钟到几分钟之间。 可以使用“副本延迟”指标来跟踪实际的副本延迟，该指标适用于每个副本。  该指标显示的是自上次重播事务以来所经历的时间。 建议观察一段时间的副本延迟，以便确定平均延迟。 可以针对副本延迟设置警报，这样，当它超出预期范围时，你就可以采取行动。
+由于复制是异步的，因此在主体和副本之间存在延迟。 延迟程度受许多因素影响，例如，在主服务器上运行的工作负荷有多大，以及数据中心之间的延迟有多严重。 大多数情况下，副本验证在几秒钟到几分钟之间。 可以使用“副本延迟”指标来跟踪实际的副本延迟，该指标适用于每个副本。 该指标显示的是自上次重播事务以来所经历的时间。 建议观察一段时间的副本延迟，以便确定平均延迟。 可以针对副本延迟设置警报，这样，当它超出预期范围时，你就可以采取行动。
 
 > [!Tip]
 > 如果故障转移到副本，则取消副本与主体之间的链接时遇到的延迟会指示丢失了多少数据。
@@ -128,7 +131,15 @@ AS total_log_delay_in_bytes from pg_stat_replication;
 本部分汇总了有关只读副本功能的注意事项。
 
 ### <a name="prerequisites"></a>先决条件
-创建只读副本之前，必须将主服务器上的 `azure.replication_support` 参数设置为 **REPLICA**。 更改此参数后，需要重启服务器才能使更改生效。 `azure.replication_support` 参数仅适用于“常规用途”和“内存优化”层。
+只读副本和[逻辑解码](concepts-logical.md)都依赖 Postgres 预写日志 (WAL) 来获取信息。 这两个功能需要来自 Postgres 的不同级别的日志记录。 逻辑解码需要的日志记录的级别比只读副本需要的更高。
+
+若要配置正确的日志记录级别，请使用 Azure 复制支持参数。 Azure 复制支持有三个设置选项：
+
+* **关闭** - 在 WAL 中提供的信息最少。 在大多数 Azure Database for PostgreSQL 服务器上都不提供此设置。  
+* **副本** - 比“关闭”详细。 这是运行[只读副本](concepts-read-replicas.md)所需的最低日志记录级别。 此设置是大多数服务器上的默认设置。
+* **逻辑** - 比“副本”详细。 这是运行逻辑解码所需的最低日志记录级别。 使用此设置时，只读副本也可以运行。
+
+更改此参数后，需要重新启动服务器。 在内部，此参数设置 Postgres 参数 `wal_level`、`max_replication_slots` 和 `max_wal_senders`。
 
 ### <a name="new-replicas"></a>新副本
 只读副本创建为新的 Azure Database for PostgreSQL 服务器。 无法将现有的服务器设为副本。 无法创建另一个只读副本的副本。
@@ -144,6 +155,9 @@ PostgreSQL 要求只读副本上的 `max_connections` 参数值大于或等于�
 在不遵守限制的情况下尝试更新上述服务器值会导致出错。
 
 创建副本时或之后，防火墙规则、虚拟网络规则和参数设置不会从主服务器继承到副本服务器。
+
+### <a name="basic-tier"></a>基本层
+基本层服务器仅支持相同区域复制。
 
 ### <a name="max_prepared_transactions"></a>max_prepared_transactions
 [PostgreSQL 要求](https://www.postgresql.org/docs/current/runtime-config-resource.html#GUC-MAX-PREPARED-TRANSACTIONS)只读副本上的 `max_prepared_transactions` 参数值大于或等于主服务器上的值，否则副本不会启动。 如果要更改主服务器上的 `max_prepared_transactions`，请先在副本上进行相应更改。

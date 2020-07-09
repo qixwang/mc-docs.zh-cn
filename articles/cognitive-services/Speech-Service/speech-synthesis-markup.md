@@ -11,12 +11,12 @@ ms.topic: conceptual
 origin.date: 03/23/2020
 ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 3f51455cd2299cf4ecda0eca48a64d87da770e7d
-ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
+ms.openlocfilehash: 46cdbe01b38513e576b0e5a47c3d41f209123412
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85095951"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85613387"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>通过语音合成标记语言 (SSML) 改善合成
 
@@ -31,7 +31,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 ## <a name="standard-and-neural-voices"></a>标准语音和神经语音
 
-请从标准语音和神经语音中进行选择，50 多种标准语音已在 10 种以上的语言和区域设置中提供，5 种神经语音已在 4 种语言和区域设置中提供。 有关支持的语言、区域设置和语音（神经和标准）的完整列表，请参阅[语言支持](language-support.md)。
+请从标准语音和神经语音中进行选择，40 多种标准语音已在 10 种以上的语言和区域设置中提供，5 种神经语音已在 4 种语言和区域设置中提供。 有关支持的语言、区域设置和语音（神经和标准）的完整列表，请参阅[语言支持](language-support.md)。
 
 若要详细了解标准语音和神经语音，请参阅[文本转语音概述](text-to-speech.md)。
 
@@ -194,11 +194,12 @@ speechConfig!.setPropertyTo(
 > [!IMPORTANT]
 > 调整讲话风格的操作仅适用于神经语音。
 
-默认情况下，对于标准和神经语音，文本转语音服务将使用中性讲话风格合成文本。 使用神经语音时，可以使用 `<mstts:express-as>` 元素调整讲话风格，以表达喜悦、同情或情绪。 这是语音服务特有的可选元素。
+默认情况下，对于标准和神经语音，文本转语音服务将使用中性讲话风格合成文本。 使用神经语音，可以调整讲话风格来表达不同的情感（例如愉悦、同情和冷静），或使用 <mstts:express-as> 元素针对不同场景（例如自定义服务、新闻广播和语音助手）优化语音。 这是语音服务特有的可选元素。
 
 目前，支持调整以下神经语音的讲话风格：
 * `en-US-AriaNeural`
 * `zh-CN-XiaoxiaoNeural`
+* `zh-CN-YunyangNeural`
 
 更改将在句子级别应用，风格因语音而异。 如果某种风格不受支持，该服务将以默认的中性讲话风格返回语音。
 
@@ -226,7 +227,8 @@ speechConfig!.setPropertyTo(
 | `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | 以正式专业的语气叙述新闻 |
 |                         | `style="customerservice"` | 以友好热情的语气为客户提供支持  |
 |                         | `style="assistant"`       | 以热情而轻松的语气对数字助理讲话    |
-|                         | `style="lyrical"`         | 以优美又带感伤的方式表达情感         |
+|                         | `style="lyrical"`         | 以优美又带感伤的方式表达情感         |   
+| `zh-CN-YunyangNeural`   | `style="customerservice"` | 以友好热情的语气为客户提供支持  | 
 
 **示例**
 
@@ -277,7 +279,7 @@ speechConfig!.setPropertyTo(
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-AriaRUS">
+    <voice name="en-US-AriaNeural">
         Welcome to Microsoft Cognitive Services <break time="100ms" /> Text-to-Speech API.
     </voice>
 </speak>
@@ -331,7 +333,7 @@ speechConfig!.setPropertyTo(
 
 | 属性 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
-| `alphabet` | 指定在 `ph` 属性中合成字符串发音时要使用的音标。 指定音标的字符串必须以小写字母指定。 下面是可以指定的可能音标。<ul><li>`ipa` &ndash; 国际音标 </li><li>`sapi` &ndash; [语音服务音标](speech-ssml-phonetic-sets.md)</li><li>`ups` &ndash; 通用音素集</li></ul><br>音标仅适用于元素中的 `phoneme`。 | 可选 |
+| `alphabet` | 指定在 `ph` 属性中合成字符串发音时要使用的音标。 指定音标的字符串必须以小写字母指定。 下面是可以指定的可能音标。<ul><li>`ipa` &ndash; <a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">国际音标 <span class="docon docon-navigate-external x-hidden-focus"></span></a></li><li>`sapi` &ndash; [语音服务音标](speech-ssml-phonetic-sets.md)</li><li>`ups` &ndash;<a href="https://documentation.help/Microsoft-Speech-Platform-SDK-11/17509a49-cae7-41f5-b61d-07beaae872ea.htm" target="_blank"> 通用音素集</a></li></ul><br>音标仅适用于元素中的 `phoneme`。 | 可选 |
 | `ph` | 一个字符串，包含用于在 `phoneme` 元素中指定单词发音的音素。 如果指定的字符串包含无法识别的音素，则文本转语音 (TTS) 服务将拒绝整个 SSML 文档，并且不会生成文档中指定的任何语音输出。 | 如果使用音素，则此属性是必需的。 |
 
 **示例**
@@ -362,7 +364,10 @@ speechConfig!.setPropertyTo(
 
 ## <a name="use-custom-lexicon-to-improve-pronunciation"></a>使用自定义词典改善发音
 
-TTS 有时不能准确地对某个词发音，例如，公司名称或外文名称。 开发人员可以使用 `phoneme` 和 `sub` 标记在 SSML 中定义这些实体的读取，或使用 `lexicon` 标记来引用自定义词典文件以定义多个实体的读取。
+有时文本转语音服务无法准确地根据字词发音。 例如，公司的名称或医学术语。 开发人员可以使用 `phoneme` 和 `sub` 标记来定义采用 SSML 朗读单个实体的方式。 但是，如果需要定义朗读多个实体的方式，则可以使用 `lexicon` 标记创建自定义词典。
+
+> [!NOTE]
+> 自定义词典当前支持 UTF-8 编码。 
 
 **语法**
 
@@ -378,14 +383,10 @@ TTS 有时不能准确地对某个词发音，例如，公司名称或外文名�
 
 **使用情况**
 
-步骤 1：定义自定义词典 
-
-可以按自定义字典项的列表（存储为 .xml 或 .pls 文件）定义实体的读取。
-
-**示例**
+若要定义朗读多个实体的方式，可以创建一个以 .xml 或 .pls 文件形式存储的自定义词典。 以下是示例 .xml 文件。
 
 ```xml
-<?xml version="1.0" encoding="UTF-16"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <lexicon version="1.0" 
       xmlns="http://www.w3.org/2005/01/pronunciation-lexicon"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
@@ -403,26 +404,46 @@ TTS 有时不能准确地对某个词发音，例如，公司名称或外文名�
 </lexicon>
 ```
 
-每个 `lexeme` 元素都是一个词典项。 `grapheme` 包含描述 `lexeme` 的拼字法的文本。 读出形式可作为 `alias` 提供。 可以在 `phoneme` 元素中提供语音字符串。
+`lexicon` 元素包含至少一个 `lexeme` 元素。 每个 `lexeme` 元素包含至少一个 `grapheme` 元素以及一个或多个 `grapheme`、`alias` 和 `phoneme` 元素。 `grapheme` 元素包含描述<a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">拼字法 <span class="docon docon-navigate-external x-hidden-focus"></span></a> 的文本。 `alias` 元素用于指示某个首字母缩写词或某个缩写词的发音。 `phoneme` 元素提供了描述 `lexeme` 发音方式的文本。
 
-`lexicon` 元素包含至少一个 `lexeme` 元素。 每个 `lexeme` 元素包含至少一个 `grapheme` 元素以及一个或多个 `grapheme`、`alais` 和 `phoneme` 元素。 `grapheme` 元素包含描述<a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">拼字法 <span class="docon docon-navigate-external x-hidden-focus"></span></a> 的文本。 `alias` 元素用于指示某个首字母缩写词或某个缩写词的发音。 `phoneme` 元素提供了描述 `lexeme` 发音方式的文本。
+需要特别注意的是，不能使用自定义词典直接设置字词的发音。 如果需要设置发音，首先提供 `alias`，再将 `phoneme` 与该 `alias` 关联。 例如：
 
-有关自定义词典文件的详细信息，请参阅 W3C 网站上的 [Pronunciation Lexicon Specification (PLS) Version 1.0](https://www.w3.org/TR/pronunciation-lexicon/)（发音词典规范 (PLS) 版本 1.0）。
+```xml
+  <lexeme>
+    <grapheme>Scotland MV</grapheme> 
+    <alias>ScotlandMV</alias> 
+  </lexeme>
+  <lexeme>
+    <grapheme>ScotlandMV</grapheme> 
+    <phoneme>ˈskɒtlənd.ˈmiːdiəm.weɪv</phoneme>
+  </lexeme>
+```
 
-步骤 2：将在步骤 1 中创建的自定义词典文件上传到网上。可以将其存储在任何位置。建议你将其存储在 Microsoft Azure（例如 [Azure Blob 存储](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)）中。
+> [!IMPORTANT]
+> 使用 IPA 时，`phoneme` 元素不能包含空格。
 
-步骤 3：请参阅 SSML 中的自定义词典文件
+有关自定义词典文件的详细信息，请参阅 [Pronunciation Lexicon Specification (PLS) Version 1.0](https://www.w3.org/TR/pronunciation-lexicon/)（发音词典规范 (PLS) 版本 1.0）。
+
+接下来，发布自定义词典文件。 虽然对此文件的存储位置没有限制，但建议使用 [Azure Blob 存储](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)。
+
+发布自定义词典后，可以从 SSML 引用它。
+
+> [!NOTE]
+> `lexicon` 元素必须位于 `voice` 元素内部。
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" 
           xmlns:mstts="http://www.w3.org/2001/mstts" 
           xml:lang="en-US">
-<lexicon uri="http://www.example.com/customlexicon.xml"/>
-BTW, we will be there probably 8:00 tomorrow morning.
-Could you help leave a message to Robert Benigni for me?
+    <voice name="en-US-AriaRUS">
+        <lexicon uri="http://www.example.com/customlexicon.xml"/>
+        BTW, we will be there probably at 8:00 tomorrow morning.
+        Could you help leave a message to Robert Benigni for me?
+    </voice>
 </speak>
 ```
-“BTW”将读作“By the way”。 “Benigni”将通过提供的 IPA“bɛˈniːnji”朗读。  
+
+使用此自定义词典时，“BTW”将读作“By the way”。 “Benigni”将通过提供的 IPA“bɛˈniːnji”朗读。  
 
 **限制**
 - 文件大小：自定义词典文件大小的最大限制为 100KB。如果超过此大小，合成请求会失败。
@@ -430,12 +451,14 @@ Could you help leave a message to Robert Benigni for me?
 
 **语音服务语音集**
 
-在上面的示例中，我们使用的是国际音标（也称为 IPA 语音集）。 我们建议开发人员使用 IPA，因为它是国际标准。 考虑到 IPA 不容易记住，语音服务为七种语言（`en-US`、`fr-FR`、`de-DE`、`es-ES`、`ja-JP`、`zh-CN`和 `zh-TW`）定义语音集。
+在上面的示例中，我们使用的是国际音标（也称为 IPA 语音集）。 我们建议开发人员使用 IPA，因为它是国际标准。 对于某些 IPA 字符，当使用 Unicode 表示时，它们具有“预构”和“分解”版本。 自定义词典仅支持分解的 Unicode。
+
+考虑到 IPA 不容易记住，语音服务为七种语言（`en-US`、`fr-FR`、`de-DE`、`es-ES`、`ja-JP`、`zh-CN`和 `zh-TW`）定义语音集。
 
 可以使用 `sapi` 作为 `alphabet` 属性的值，而自定义词典则如下所示：
 
 ```xml
-<?xml version="1.0" encoding="UTF-16"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <lexicon version="1.0" 
       xmlns="http://www.w3.org/2005/01/pronunciation-lexicon"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -472,7 +495,7 @@ Could you help leave a message to Robert Benigni for me?
 | 属性 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
 | `pitch` | 指示文本的基线音节。 可将音节表述为：<ul><li>以某个数字后接“Hz”（赫兹）表示的绝对值。 例如，600 Hz。</li><li>以前面带有“+”或“-”的数字，后接“Hz”或“st”（用于指定音节的变化量）表示的相对值。 例如：+80 Hz 或 -2st。 “st”表示变化单位为半音，即，标准全音阶中的半调（半步）。</li><li>常量值：<ul><li>x-low</li><li>low</li><li>中</li><li>high</li><li>x-high</li><li>默认值</li></ul></li></ul>上获取。 | 可选 |
-| `contour` | 神经语音不支持调型。 调型表示音节的变化。 这些变化以语音输出中指定时间处的目标数组形式表示。 每个目标由参数对的集定义。 例如： <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>每参数集中的第一个值以文本持续时间百分比的形式指定音节变化的位置。 第二个值使用音节的相对值或枚举值指定音节的升高或降低量（请参阅 `pitch`）。 | 可选 |
+| `contour` |调型现在同时支持神经语音和标准语音。 调型表示音节的变化。 这些变化以语音输出中指定时间处的目标数组形式表示。 每个目标由参数对的集定义。 例如： <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>每参数集中的第一个值以文本持续时间百分比的形式指定音节变化的位置。 第二个值使用音节的相对值或枚举值指定音节的升高或降低量（请参阅 `pitch`）。 | 可选 |
 | `range` | 表示文本音节范围的值。 可以使用用于描述 `pitch` 的相同绝对值、相对值或枚举值表示 `range`。 | 可选 |
 | `rate` | 指示文本的讲出速率。 可将 `rate` 表述为：<ul><li>以充当默认值倍数的数字表示的相对值。 例如，如果值为 *1*，则速率不会变化。 如果值为 *0.5*，则速率会减慢一半。 如果值为 *3*，则速率为三倍。</li><li>常量值：<ul><li>x-slow</li><li>slow</li><li>中</li><li>fast</li><li>x-fast</li><li>默认值</li></ul></li></ul> | 可选 |
 | `duration` | 语音合成 (TTS) 服务读取文本时应该消逝的时长，以秒或毫秒为单位。 例如 *2s* 或 *1800ms*。 | 可选 |
@@ -480,13 +503,13 @@ Could you help leave a message to Robert Benigni for me?
 
 ### <a name="change-speaking-rate"></a>更改语速
 
-可以在单词或句子级别对标准语音应用语速。 只能在句子级别对神经语音应用语速。
+可以在单词或句子级别对神经语音和标准语音应用语速。 
 
 **示例**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Guy24kRUS">
+    <voice name="en-US-GuyNeural">
         <prosody rate="+30.00%">
             Welcome to Microsoft Cognitive Services Text-to-Speech API.
         </prosody>
@@ -527,15 +550,15 @@ Could you help leave a message to Robert Benigni for me?
 ### <a name="change-pitch-contour"></a>更改音高升降曲线
 
 > [!IMPORTANT]
-> 神经语音不支持音节调型变化。
+> 神经语音现在支持音节调型变化。
 
 **示例**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-AriaRUS">
-        <prosody contour="(80%,+20%) (90%,+30%)" >
-            Good morning.
+    <voice name="en-US-AriaNeural">
+        <prosody contour="(60%,-60%) (100%,+80%)" >
+            Were you the only person in the room? 
         </prosody>
     </voice>
 </speak>

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/28/2020
+ms.date: 06/30/2020
 ms.author: v-junlch
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: aaddev, fasttrack-edit
-ms.openlocfilehash: 05c45cc748562944832f927cc58064aefbd22c2f
-ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
+ms.openlocfilehash: 152c591b966d34ed3e9ebf00d71f2675785014b8
+ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84186847"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945198"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft 标识平台终结点中的权限和许可
 
@@ -68,7 +68,9 @@ Microsoft 标识平台支持两种类型的权限：**委托的权限**和**应�
 
 ## <a name="openid-connect-scopes"></a>OpenID Connect 范围
 
-OpenID Connect 的 Microsoft 标识平台实现有一些明确定义但未应用到指定资源的范围 - `openid`、`email`、`profile` 和 `offline_access`。 不支持 `address` 和 `phone` OpenID Connect 范围。
+OpenID Connect 的 Microsoft 标识平台实现具有一些明确定义并托管在 Microsoft Graph 上的作用域：`openid``email`、`profile` 和 `offline_access`。 不支持 `address` 和 `phone` OpenID Connect 范围。
+
+请求 OIDC 作用域和令牌将为你提供一个令牌来调用 [UserInfo 终结点](userinfo.md)。
 
 ### <a name="openid"></a>openid
 

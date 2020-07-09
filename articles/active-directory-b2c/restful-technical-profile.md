@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/01/2020
+ms.date: 06/28/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 27f37473882f8a536a46bebc500f7ac64f332dd0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f85ccffefbc94ad3a831c93cab7af03f715013f8
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80581635"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516487"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 RESTful 技术配置文件
 
@@ -26,7 +26,7 @@ Azure Active Directory B2C (Azure AD B2C) 为集成你自己的 RESTful 服务�
 
 ## <a name="protocol"></a>协议
 
-“Protocol”  元素的“Name”  属性必须设置为 `Proprietary`。 **handler** 属性必须包含 Azure AD B2C 使用的协议处理程序程序集的完全限定名称：`Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`。
+“Protocol”元素的“Name”属性必须设置为 `Proprietary`。 **handler** 属性必须包含 Azure AD B2C 使用的协议处理程序程序集的完全限定名称：`Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`。
 
 以下示例演示了一个 RESTful 技术配置文件：
 
@@ -75,6 +75,7 @@ Azure Active Directory B2C (Azure AD B2C) 为集成你自己的 RESTful 服务�
     <Item Key="AuthenticationType">Bearer</Item>
     <Item Key="SendClaimsIn">Body</Item>
     <Item Key="ClaimUsedForRequestPayload">sendGridReqBody</Item>
+    <Item Key="DefaultUserMessageIfRequestFailed">Cannot process your request right now, please try again later.</Item>
   </Metadata>
   <CryptographicKeys>
     <Key Id="BearerAuthenticationToken" StorageReferenceId="B2C_1A_SendGridApiKey" />
@@ -119,10 +120,21 @@ Azure Active Directory B2C (Azure AD B2C) 为集成你自己的 RESTful 服务�
 | SendClaimsIn | 否 | 指定如何将输入声明发送到 RESTful 声明提供程序。 可能的值：`Body`（默认值）、`Form`、`Header` 或 `QueryString`。 `Body` 值是在请求正文中以 JSON 格式发送的输入声明。 `Form` 值是在请求正文中以“&”分隔键值格式发送的输入声明。 `Header` 值是在请求标头中发送的输入声明。 `QueryString` 值是在请求查询字符串中发送的输入声明。 每个输入声明调用的 HTTP 谓词如下所示：<br /><ul><li>`Body`：POST</li><li>`Form`：POST</li><li>`Header`：GET</li><li>`QueryString`：GET</li></ul> |
 | ClaimsFormat | 否 | 当前未使用，可以忽略。 |
 | ClaimUsedForRequestPayload| 否 | 包含要发送到 REST API 的有效负载的字符串声明名称。 |
-| DebugMode | 否 | 在调试模式下运行技术配置文件。 可能的值：`true` 或 `false`（默认值）。 在调试模式下，REST API 可以返回更多信息。 请参阅[返回错误消息](#returning-error-message)部分。 |
+| DebugMode | 否 | 在调试模式下运行技术配置文件。 可能的值：`true` 或 `false`（默认值）。 在调试模式下，REST API 可以返回更多信息。 请参阅[返回错误消息](#returning-validation-error-message)部分。 |
 | IncludeClaimResolvingInClaimsHandling  | 否 | 对于输入和输出声明，指定[声明解析](claim-resolver-overview.md)是否包含在技术配置文件中。 可能的值：`true` 或 `false` （默认值）。 若要使用技术配置文件中的声明解析程序，请将此项设为 `true`。 |
 | ResolveJsonPathsInJsonTokens  | 否 | 指示技术配置文件是否解析 JSON 路径。 可能的值：`true` 或 `false`（默认值）。 使用此元数据从嵌套 JSON 元素中读取数据。 在 [OutputClaim](technicalprofiles.md#outputclaims) 中，将 `PartnerClaimType` 设为要输出的 JSON 路径元素。 例如：`firstName.localized` 或 `data.0.to.0.email`。|
 | UseClaimAsBearerToken| 否| 包含持有者令牌的声明的名称。|
+
+## <a name="error-handling"></a>错误处理。
+
+以下元数据可用于配置 REST API 失败时显示的错误消息。 可以将错误消息[本地化](localization-string-ids.md#restful-service-error-messages)。
+
+| 属性 | 必须 | 说明 |
+| --------- | -------- | ----------- |
+| DefaultUserMessageIfRequestFailed | 否 | 所有 REST API 异常的默认自定义错误消息。|
+| UserMessageIfCircuitOpen | 否 | 无法访问 REST API 时的错误消息。 如果未指定，则将返回 DefaultUserMessageIfRequestFailed。 |
+| UserMessageIfDnsResolutionFailed | 否 | DNS 解析异常的错误消息。 如果未指定，则将返回 DefaultUserMessageIfRequestFailed。 | 
+| UserMessageIfRequestTimeout | 否 | 连接超时时的错误消息。如果未指定，则将返回 DefaultUserMessageIfRequestFailed。 | 
 
 ## <a name="cryptographic-keys"></a>加密密钥
 
@@ -182,7 +194,7 @@ Azure Active Directory B2C (Azure AD B2C) 为集成你自己的 RESTful 服务�
 </TechnicalProfile>
 ```
 
-## <a name="returning-error-message"></a>返回错误消息
+## <a name="returning-validation-error-message"></a>返回验证错误消息
 
 REST API 可能需要返回错误消息，例如“在 CRM 系统中未找到该用户”。 如果发生错误，REST API 应返回 HTTP 4xx 错误消息，例如“400 (错误请求)”或“409 (冲突)”响应状态代码。 响应正文包含 JSON 格式的错误消息：
 

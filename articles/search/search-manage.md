@@ -9,30 +9,30 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 03/02/2020
-ms.openlocfilehash: 8730c16cf53946c164eb5b79ce25dc31934e576a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 07/02/2020
+ms.openlocfilehash: 4f8f113c50f34b74d35c7b00f93affe901471e41
+ms.sourcegitcommit: 5afd7c4c3be9b80c4c67ec55f66fcf347aad74c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291162"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85942552"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Azure 门户中 Azure 认知搜索服务管理
 > [!div class="op_single_selector"]
 > * [PowerShell](search-manage-powershell.md)
 > * [REST API](https://docs.microsoft.com/rest/api/searchmanagement/)
 > * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
-> * [门户](search-manage.md)
+> * [Portal](search-manage.md)
 > * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
 Azure 认知搜索是一种完全托管的、基于云的搜索服务，用于在自定义应用中生成丰富的搜索体验。 本文介绍可在 [Azure 门户](https://portal.azure.cn)中对已预配的搜索服务执行的服务管理任务。 服务管理设计成轻型，它限于以下任务：
 
 > [!div class="checklist"]
-> * 管理对用于服务读取或写入的 api-keys  的访问。
+> * 管理对用于服务读取或写入的 api-keys 的访问。
 > * 通过更改分区和副本的分配以调整服务容量。
 > * 根据服务层级的最大限制，监视资源使用情况。
 
-请注意，“升级”  未列为管理任务。 因为预配服务时会分配资源，所以移动到其他层需要新的服务。 有关详细信息，请参阅[创建 Azure 认知搜索服务](search-create-service-portal.md)。
+请注意，“升级”未列为管理任务。 因为预配服务时会分配资源，所以移动到其他层需要新的服务。 有关详细信息，请参阅[创建 Azure 认知搜索服务](search-create-service-portal.md)。
 
 可以监视查询量和其他指标，并根据这些见解调整自己的服务以缩短响应时间。 有关详细信息，请参阅[监视使用情况和查询度量值](search-monitor-usage.md)以及[性能和优化](search-performance-optimization.md)。
 
@@ -85,7 +85,7 @@ Azure 认知搜索服务不会通过门户或程序设计界面公开单个服�
 <a id="scale"></a>
 
 ## <a name="scale-up-or-down"></a>增加或减少
-每个搜索服务从至少一个副本和一个分区开始操作。 如果已注册[提供专用资源的层](search-limits-quotas-capacity.md)，请单击服务仪表板中的“规模”磁贴，调整资源使用情况  。
+每个搜索服务从至少一个副本和一个分区开始操作。 如果已注册[提供专用资源的层](search-limits-quotas-capacity.md)，请单击服务仪表板中的“规模”磁贴，调整资源使用情况。
 
 如果通过任一资源添加容量，服务会自动使用它们。 无需执行任何进一步的操作，但在新资源产生作用之前，会有轻微延迟。 可能需要 15 分钟或更长的时间才能预配其他资源。
 
@@ -99,9 +99,9 @@ Azure 认知搜索服务不会通过门户或程序设计界面公开单个服�
 尽管添加副本时查询吞吐量会提高，但不会按在将向服务添加副本时的恰好两倍或三倍来提高。 所有搜索应用程序都会因可能影响到查询性能的外部因素而受到约束。 复杂的查询和网络延迟是造成查询响应次数变化的两个因素。
 
 ### <a name="add-partitions"></a>添加分区
-大多数服务应用程序都有多个副本而非分区方面的内置需求。 如果已注册标准服务，则在需要增加文档计数的情况下，可以添加分区。 基本层不提供其他分区。
+添加副本更为常见，但当存储受到限制时，你可以添加分区以获得更多容量。 预配服务的层确定是否可以添加分区。 基本层锁定在一个分区上。 标准层及以上层支持其他数量的分区。
 
-在标准层中，分区按 12 的倍数进行添加（具体而言，1、2、3、4、6 或 12）。 这是分片的项目。 索引会在 12 个分区中创建，可以全部存储在 1 个分区上，也可以平均分配到 2、3、4、6 或 12 个分区（每个分区一个分片）。
+分区数按 12 的因数进行添加（具体而言为 1、2、3、4、6 或 12）。 这是分片的项目。 索引会在 12 个分区中创建，可以全部存储在 1 个分区上，也可以平均分配到 2、3、4、6 或 12 个分区（每个分区一个分片）。
 
 ### <a name="remove-replicas"></a>删除副本
 在高查询量期间过后，可以使用滑块在搜索查询负载正常后（例如，假日销售结束后）减少副本。 无须再执行其他步骤。 降低副本计数会消除数据中心内的虚拟机。 相较于之前的情况而言，现在会在较少的 VM 上执行查询和数据引入操作。 最低要求是一个副本。

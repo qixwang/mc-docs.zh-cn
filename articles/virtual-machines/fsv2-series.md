@@ -1,25 +1,25 @@
 ---
-title: Fsv2 系列 - Azure 虚拟机
+title: Fsv2 系列
 description: Fsv2 系列 VM 的规范。
-services: virtual-machines
 author: rockboyfor
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 origin.date: 02/03/2020
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 68a51b312af41376d3ba0e15b929ce25025bae50
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: 8bb2460bde187186078b00fc52363e4d0a8d5e51
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392435"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85946000"
 ---
 <!--Verified successfully-->
 <!--Partical contents from verified content. -->
 # <a name="fsv2-series"></a>Fsv2 系列
 
-Fsv2 系列基于 Intel® Xeon® Platinum 8168 处理器。 它具有稳定的 3.4 GHz 的全核 Turbo 时钟速度和最大为 3.7 GHz 的单核 Turbo 频率。 Intel 可扩展处理器上提供了全新的 Intel® AVX-512 指令。 对于单精度和双精度浮点运算，这些指令可为向量处理工作负荷提供高达 2 倍的性能提升。 换而言之，对于任何计算工作负荷，它们的处理速度相当快。
+Fsv2 系列在英特尔® 至强® 铂金 8272CL (Cascade Lake) 处理器和英特尔® 至强® 铂金 8168 处理器上运行。 它具有稳定的 3.4 GHz 的全核 Turbo 时钟速度和最大为 3.7 GHz 的单核 Turbo 频率。 Intel 可扩展处理器上提供了全新的 Intel® AVX-512 指令。 对于单精度和双精度浮点运算，这些指令可为向量处理工作负荷提供高达 2 倍的性能提升。 换而言之，对于任何计算工作负荷，它们的处理速度相当快。
 
 Fsv2 系列 VM 采用了 Intel® 超线程技术。
 

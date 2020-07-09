@@ -6,14 +6,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 04/26/2020
+ms.date: 06/23/2020
 ms.author: v-junlch
-ms.openlocfilehash: 2c08b6fa9498edd16f84c7aee321ce0b998b83cd
-ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
+ms.openlocfilehash: 7e37d3caa779a75d7537c7c76ffd558258891de6
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82267633"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516736"
 ---
 # <a name="application-gateway-support-for-multi-tenant-back-ends-such-as-app-service"></a>应用程序网关对多租户后端（例如应用服务）的支持
 
@@ -42,7 +42,7 @@ ms.locfileid: "82267633"
 
 ### <a name="tls-termination-and-end-to-end-tls-with-multi-tenant-services"></a>多租户服务的 TLS 终止和端到端 TLS
 
-多租户服务支持 TLS 终止和端到端 TLS 加密。 若要在应用程序网关上实现 TLS 终止，仍然需要将 TLS 证书添加到应用程序网关侦听器。 但是，在实现端到端 TLS 时，受信任的 Azure 服务（例如 Azure 应用服务 Web 应用）不需要在应用程序网关中将后端加入允许列表。 因此，无需添加任何身份验证证书。 
+多租户服务支持 TLS 终止和端到端 TLS 加密。 若要在应用程序网关上实现 TLS 终止，仍然需要将 TLS 证书添加到应用程序网关侦听器。 但是，在实现端到端 TLS 时，受信任的 Azure 服务（例如 Azure 应用服务 Web 应用）不需要在应用程序网关中允许后端。 因此，无需添加任何身份验证证书。 
 
 ![端到端 TLS](./media/application-gateway-web-app-overview/end-to-end-ssl.png)
 

@@ -1,26 +1,19 @@
 ---
 title: 有关 Windows 虚拟机的常见问题
 description: 解答通过 Resource Manager 模型创建 Windows 虚拟机的一些常见问题。
-services: virtual-machines-windows
-documentationcenter: ''
 author: rockboyfor
-manager: digimobile
-editor: ''
-tags: azure-resource-management
-ms.assetid: 757da816-a050-4889-a010-6f75d7978eb7
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.topic: conceptual
 origin.date: 05/08/2019
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: fb53c6ed76bf3389d803c7b62386d0e0c16a4f8a
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: 2244f83a75abd058b97eea308551472347488d8c
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392147"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945965"
 ---
 # <a name="frequently-asked-question-about-windows-virtual-machines"></a>有关 Windows 虚拟机的常见问题
 本文讨论了在 Azure 中使用 Resource Manager 部署模型创建的 Windows 虚拟机的一些常见问题。 有关本主题的 Linux 版本，请参阅[有关 Linux 虚拟机的常见问题](../linux/faq.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)。
@@ -30,9 +23,9 @@ ms.locfileid: "83392147"
 
 <!-- MOONCAKE: CORRECT ON Microsoft server software in Azure-->
 
-某些版本的 Windows 10 可供标准预付费套餐订户及以上用户使用。
+某些版本的 Windows 7 和 Windows 10 可供 MSDN Azure 权益订阅者以及 MSDN 开发和测试标准预付费套餐订阅者用于开发和测试任务。 有关详细信息（包括说明和限制），请参阅[适用于 MSDN 订户的 Windows 客户端映像](https://azure.microsoft.com/blog/2014/05/29/windows-client-images-on-azure/)。 
 
-<!-- Not Available on Windows 7, Windows 8.1, and Windows 10-->
+<!-- Not Available on Windows 8.1-->
 <!-- Not Available on MSDN Azure benefit subscribers and MSDN Dev -->
 
 ## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>使用虚拟机时，我可以使用多少存储？
@@ -142,4 +135,4 @@ Azure 存储帐户还可为操作系统磁盘和任何数据磁盘提供存储�
     </tr>
 </table>
 
-<!--Update_Description: wording update, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

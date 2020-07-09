@@ -3,14 +3,14 @@ title: Azure Functions 自定义处理程序（预览版）
 description: 了解如何在任何语言或运行时版本中使用 Azure Functions。
 author: craigshoemaker
 ms.author: v-junlch
-ms.date: 03/30/2020
+ms.date: 07/02/2020
 ms.topic: article
-ms.openlocfilehash: 8c01a864f5caf7240a12757ce163729e3ab43ffa
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: df565c6c0d66aeafdbf0a551d2aa9231f489fefe
+ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80581857"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945256"
 ---
 # <a name="azure-functions-custom-handlers-preview"></a>Azure Functions 自定义处理程序（预览版）
 
@@ -20,9 +20,9 @@ ms.locfileid: "80581857"
 
 自定义处理程序最适合用于以下场合：
 
-- 在超出官方支持语言范畴的某种语言中实现函数应用
-- 在默认不支持的某个语言版本或运行时中实现函数应用
-- 对应用执行环境进行精细控制
+- 使用不受官方支持的语言实现函数应用。
+- 在默认不支持的某个语言版本或运行时中实现函数应用。
+- 提供对应用执行环境的更精细控制。
 
 使用自定义处理程序时，将通过[扩展绑定](./functions-bindings-register.md)来支持所有[触发器以及输入和输出绑定](./functions-triggers-bindings.md)。
 
@@ -37,14 +37,14 @@ ms.locfileid: "80581857"
 - Web 服务器执行单个函数，并向 Functions 主机返回[响应有效负载](#response-payload)。
 - Functions 主机以代理身份将输出绑定有效负载形式的响应发送到目标。
 
-作为自定义处理程序实现的 Azure Functions 应用必须根据几条约定配置 host.json 和 function.json 文件。  
+作为自定义处理程序实现的 Azure Functions 应用必须根据几条约定配置 host.json 和 function.json 文件。 
 
 ## <a name="application-structure"></a>应用程序结构
 
 若要实现自定义处理程序，需要准备好应用程序的以下方面的内容：
 
-- 位于应用根目录的 host.json 文件 
-- 每个函数有一个 function.json 文件（位于与函数名称匹配的文件夹中） 
+- 位于应用根目录的 host.json 文件
+- 每个函数有一个 function.json 文件（位于与函数名称匹配的文件夹中）
 - 用于运行 Web 服务器的命令、脚本或可执行文件
 
 下图显示了名为“order”的函数的这些文件在文件系统中的结构。
@@ -58,7 +58,7 @@ ms.locfileid: "80581857"
 
 ### <a name="configuration"></a>配置
 
-应用程序是通过 host.json 文件配置的。  此文件指向能够处理 HTTP 事件的 Web 服务器，以此告知 Functions 主机要将请求发送到哪个位置。
+应用程序是通过 host.json 文件配置的。 此文件指向能够处理 HTTP 事件的 Web 服务器，以此告知 Functions 主机要将请求发送到哪个位置。
 
 自定义处理程序的定义方式是通过 `httpWorker` 节在 host.json 文件中配置有关如何运行 Web 服务器的详细信息。
 
@@ -111,11 +111,11 @@ ms.locfileid: "80581857"
 
 #### <a name="bindings-support"></a>绑定支持
 
-可以通过在 host.json 文件中引用[扩展捆绑](./functions-bindings-register.md)来使用标准触发器以及输入和输出绑定。 
+可以通过在 host.json 文件中引用[扩展捆绑](./functions-bindings-register.md)来使用标准触发器以及输入和输出绑定。
 
 ### <a name="function-metadata"></a>函数元数据
 
-与自定义处理程序配合使用时，function.json 的内容与在任何其他上下文中定义函数时包含的内容没有什么不同。  唯一的要求是 function.json 文件必须位于名称与函数名称匹配的文件夹中。 
+与自定义处理程序配合使用时，function.json 的内容与在任何其他上下文中定义函数时包含的内容没有什么不同。 唯一的要求是 function.json 文件必须位于名称与函数名称匹配的文件夹中。
 
 ### <a name="request-payload"></a>请求有效负载
 
@@ -125,11 +125,11 @@ ms.locfileid: "80581857"
 
 以下代码是一个示例请求有效负载。 该有效负载中的 JSON 结构包含以下两个成员：`Data` 和 `Metadata`。
 
-`Data` 成员包含与 function.json 文件中的绑定数组内定义的输入和触发器名称匹配的键。 
+`Data` 成员包含与 function.json 文件中的绑定数组内定义的输入和触发器名称匹配的键。
 
 `Metadata` 成员包含[从事件源生成的元数据](./functions-bindings-expressions-patterns.md#trigger-metadata)。
 
-假设以下 function.json 文件中定义的绑定是： 
+假设以下 function.json 文件中定义的绑定是：
 
 ```json
 {
@@ -181,9 +181,9 @@ ms.locfileid: "80581857"
 
 | <nobr>有效负载键</nobr>   | 数据类型 | 备注                                                      |
 | ------------- | --------- | ------------------------------------------------------------ |
-| `Outputs`     | JSON      | 保存 function.json 文件中 `bindings` 数组定义的响应值。 <br /><br />例如，如果为某个函数定义了名为“blob”的 blob 存储输出绑定，则 `Outputs` 将包含名为 `blob` 的键，此键设置为 blob 的值。 |
+| `Outputs`     | JSON      | 保存 function.json 文件中 `bindings` 数组定义的响应值。<br /><br />例如，如果为某个函数定义了名为“blob”的 blob 存储输出绑定，则 `Outputs` 将包含名为 `blob` 的键，此键设置为 blob 的值。 |
 | `Logs`        | array     | 消息将显示在 Functions 调用日志中。<br /> |
-| `ReturnValue` | 字符串    | 将输出配置为 function.json 文件中的 `$return` 时用于提供响应。  |
+| `ReturnValue` | string    | 将输出配置为 function.json 文件中的 `$return` 时用于提供响应。 |
 
 请参阅[示例有效负载](#bindings-implementation)。
 
@@ -213,7 +213,7 @@ content-type: application/json
 
 ### <a name="implementation"></a>实现
 
-在名为 http 的文件夹中，function.json 文件将配置 HTTP 触发的函数。  
+在名为 http 的文件夹中，function.json 文件将配置 HTTP 触发的函数。 
 
 ```json
 {
@@ -249,7 +249,7 @@ content-type: application/json
 }
 ```
 
-文件 server.js 实现 Web 服务器和 HTTP 函数。 
+文件 server.js 实现 Web 服务器和 HTTP 函数。
 
 ```javascript
 const express = require("express");
@@ -302,7 +302,7 @@ content-type: application/json
 
 ### <a name="implementation"></a>实现
 
-在名为 order 的文件夹中，function.json 文件将配置 HTTP 触发的函数。  
+在名为 order 的文件夹中，function.json 文件将配置 HTTP 触发的函数。 
 
 ```json
 {
@@ -347,7 +347,7 @@ content-type: application/json
 }
 ```
 
-文件 server.js 实现 Web 服务器和 HTTP 函数。 
+文件 server.js 实现 Web 服务器和 HTTP 函数。
 
 ```javascript
 const express = require("express");
@@ -388,7 +388,7 @@ app.post("/order", (req, res) => {
 - 请求正文通过 `req.body` 提供
 - 通过 `req.body.Data.req.Body` 提供发布到函数的数据
 
-函数的响应采用键/值对格式，其中，`Outputs` 成员保存一个 JSON 值，该值中的键与 function.json 文件中定义的输出相匹配。 
+函数的响应采用键/值对格式，其中，`Outputs` 成员保存一个 JSON 值，该值中的键与 function.json 文件中定义的输出相匹配。
 
 如果将 `message` 设置为与来自请求的消息相同，并将 `res` 设置为预期的 HTTP 响应，则此函数会将一条消息输出到队列存储，并返回 HTTP 响应。
 
@@ -396,7 +396,7 @@ app.post("/order", (req, res) => {
 
 若要调试 Functions 自定义处理程序应用，需要根据语言和运行时添加相应的参数才能启用调试。
 
-例如，若要调试 Node.js 应用程序，需在 host.json 文件中以参数形式传递 `--inspect` 标志。 
+例如，若要调试 Node.js 应用程序，需在 host.json 文件中以参数形式传递 `--inspect` 标志。
 
 ```json
 {
@@ -412,7 +412,7 @@ app.post("/order", (req, res) => {
 ```
 
 > [!NOTE]
-> 调试配置是 host.json 文件的一部分，这意味着，在部署到生产环境之前，可能需要删除一些参数。 
+> 调试配置是 host.json 文件的一部分，这意味着，在部署到生产环境之前，可能需要删除一些参数。
 
 使用此配置，可以通过以下命令启动函数的主机进程：
 
@@ -424,7 +424,7 @@ func host start
 
 ### <a name="visual-studio-code"></a>Visual Studio Code
 
-下面是一个示例配置，演示如何设置 launch.json 文件，以将应用连接到 Visual Studio Code 调试器。 
+下面是一个示例配置，演示如何设置 launch.json 文件，以将应用连接到 Visual Studio Code 调试器。
 
 此示例适用于 Node.js，对于其他语言或运行时，可能需要更改此示例。
 
@@ -449,7 +449,6 @@ func host start
 
 ## <a name="restrictions"></a>限制
 
-- Linux 消耗计划中不支持自定义处理程序。
 - Web 服务器需要在 60 秒内启动。
 
 ## <a name="samples"></a>示例

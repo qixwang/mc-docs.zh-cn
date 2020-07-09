@@ -1,26 +1,20 @@
 ---
 title: 快速入门 - 使用 Azure CLI 创建 Windows 虚拟机 | Azure
 description: 本快速入门介绍如何使用 Azure CLI 创建 Windows 虚拟机
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: rockboyfor
-manager: digimobile
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.topic: quickstart
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 07/02/2019
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 227a7ab7051a9822e82159e797d6a84b73c2d952
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: d3932ec80d61275b9f5dbbfe43556c890722627c
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392217"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85946074"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-with-the-azure-cli"></a>快速入门：使用 Azure CLI 创建 Windows 虚拟机
 
@@ -32,8 +26,7 @@ Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本快速�
 
 <!--MOONCAKE: az cli 2.0 is put next paragrapgh-->
 
-打开本地 Azure CLI 运行以下脚本。 如果需要安装或升级，请参阅[安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)。
-
+打开 Azure 本地 CLI 或 PowerShell 控制台，以运行以下脚本。
 [!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
 
 ## <a name="create-a-resource-group"></a>创建资源组

@@ -12,12 +12,12 @@ origin.date: 03/26/2020
 ms.date: 04/20/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 7ea6e5d7a03859b2b80650a6fbb1f2eacaf557d1
-ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
+ms.openlocfilehash: 01876a52cdce48b19fb5d7ea32a86bbe19e33752
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85095921"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611855"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>语音服务的语言和语音支持
 
@@ -99,8 +99,6 @@ Microsoft Speech SDK 和 REST API 均支持这些语音，每种语音支持区�
 | `de-DE` | 德语（德国）    | 是       | 女 | "Microsoft Server Speech Text to Speech Voice (de-DE, KatjaNeural)"     | "de-DE-KatjaNeural"     |
 | `en-US` | 英语(美国)        | 是       | 女 | "Microsoft Server Speech Text to Speech Voice (en-US, AriaNeural)"      | "en-US-AriaNeural"      |
 | `en-US` | 英语(美国)        | 是       | 男   | "Microsoft Server Speech Text to Speech Voice (en-US, GuyNeural)"       | "en-US-GuyNeural"       |
-| `it-IT` | 意大利语（意大利）     | 否        | 女 | "Microsoft Server Speech Text to Speech Voice (it-IT, ElsaNeural)"      | "it-IT-ElsaNeural"      |
-| `pt-BR` | 葡萄牙语（巴西） | 否        | 女 | "Microsoft Server Speech Text to Speech Voice (pt-BR, FranciscaNeural)" | "pt-BR-FranciscaNeural" |
 | `zh-CN` | 中文(普通话，简体)  | 是       | 女 | "Microsoft Server Speech Text to Speech Voice (zh-CN, XiaoxiaoNeural)"  | "zh-CN-XiaoxiaoNeural"  |
 
 > [!IMPORTANT]
@@ -113,7 +111,7 @@ Microsoft Speech SDK 和 REST API 均支持这些语音，每种语音支持区�
 
 ### <a name="standard-voices"></a>标准语音
 
-50 多种标准语音在 10 多种语言和区域设置中提供，允许你将文本转换为合成语音。 有关区域可用性的详细信息，请参阅[区域](regions.md#standard-and-neural-voices)。
+40 多种标准语音在 10 多种语言和区域设置中提供，允许你将文本转换为合成语音。 有关区域可用性的详细信息，请参阅[区域](regions.md#standard-and-neural-voices)。
 
 | Locale | 语言 | 支持 | 性别 | 完整服务名称映射 | 短名称 |
 |--|--|--|--|--|--|

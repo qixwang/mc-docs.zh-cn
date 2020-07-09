@@ -1,18 +1,17 @@
 ---
 title: 备份 Azure VM 中的 SQL Server 数据库
-description: 本文介绍如何使用 Azure 备份在 Azure 虚拟机上备份 SQL Server 数据库。
-ms.reviewer: vijayts
+description: 本文介绍如何使用 Azure 备份来备份 Azure 虚拟机上的 SQL Server 数据库。
 author: Johnnytechn
 ms.topic: conceptual
 origin.date: 09/11/2019
-ms.date: 05/11/2020
+ms.date: 06/22/2020
 ms.author: v-johya
-ms.openlocfilehash: 69d740a23921657c38460ee774577640dea593a1
-ms.sourcegitcommit: 08b42258a48d96d754244064d065e4d5703f1cfb
+ms.openlocfilehash: abc3c1d394a137a16ad13bf971a340fadbdae224
+ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2020
-ms.locfileid: "83445194"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85852037"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>备份 Azure VM 中的 SQL Server 数据库
 
@@ -30,79 +29,77 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 
 >[!NOTE]
 >**针对 Azure VM 中 SQL 服务器的软删除以及针对 Azure VM 工作负荷中 SAP HANA 的软删除**现已推出预览版。<br>
->若要注册预览版，请向 AskAzureBackupTeam@microsoft.com 发送邮件
 
 ## <a name="prerequisites"></a>先决条件
 
 在备份 SQL Server 数据库之前，请检查以下条件：
 
 1. 在托管 SQL Server 实例的 VM 所在的区域和订阅中标识或创建一个[恢复服务保管库](backup-sql-server-database-azure-vms.md#create-a-recovery-services-vault)。
-2. 验证 VM 是否已建立[网络连接](backup-sql-server-database-azure-vms.md#establish-network-connectivity)。
-3. 确保 SQL Server 数据库遵循 [Azure 备份的数据库命名准则](#database-naming-guidelines-for-azure-backup)。
-4. 检查是否未为该数据库启用了其他任何备份解决方案。 在备份数据库之前，请禁用其他所有 SQL Server 备份。
+1. 验证 VM 是否已建立[网络连接](backup-sql-server-database-azure-vms.md#establish-network-connectivity)。
+1. 确保 SQL Server 数据库遵循 [Azure 备份的数据库命名准则](#database-naming-guidelines-for-azure-backup)。
+1. 对于 Azure 资源管理器 (ARM) VM，请确保 SQL Server VM 名称和资源组名称的组合长度不超过 84 个字符（对于经典 VM，则不超过 77 个字符）。 此限制是因为某些字符由该服务预留。
+1. 检查是否未为该数据库启用了其他任何备份解决方案。 在备份数据库之前，请禁用其他所有 SQL Server 备份。
 
 > [!NOTE]
 > 可以同时针对某个 Azure VM 以及该 VM 上运行的 SQL Server 数据库启用 Azure 备份，这不会发生冲突。
 
 ### <a name="establish-network-connectivity"></a>建立网络连接
 
-对于所有操作，SQL Server VM 都需要连接到 Azure 公共 IP 地址。 如果未连接到 Azure 公共 IP 地址，VM 操作（数据库发现、配置备份、计划备份、还原恢复点等）将会失败。
+对于所有操作，SQL Server VM 需要连接到 Azure 备份服务、Azure 存储和 Azure Active Directory。 这可以通过使用专用终结点，或允许访问所需的公共 IP 地址或 FQDN 来实现。 如果不允许正确连接到所需的 Azure 服务，则可能会导致诸如数据库发现、配置备份、执行备份和还原数据等操作失败。
 
-使用以下选项之一建立连接：
+下表列出了可用于建立连接的各种备选方案：
 
-#### <a name="allow-the-azure-datacenter-ip-ranges"></a>允许 Azure 数据中心 IP 范围
+| **选项**                        | **优点**                                               | **缺点**                                            |
+| --------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 专用终结点                 | 允许通过虚拟网络中的专用 IP 进行备份  <br><br>   提供网络和保管库端的精细控制 | 产生标准专用终结点成本|
+| NSG 服务标记                  | 由于范围更改会自动合并，因此管理变得更容易   <br><br>   无额外成本 | 只可用于 NSG  <br><br>    提供对整个服务的访问 |
+| Azure 防火墙 FQDN 标记          | 自动管理必需的 FQDN，因此更易于管理 | 只可用于 Azure 防火墙                         |
+| 允许访问服务 FQDN/IP | 无额外成本   <br><br>  适用于所有网络安全设备和防火墙 | 可能需要访问一组广泛的 IP 或 FQDN   |
+| 使用 HTTP 代理                 | 对 VM 进行单点 Internet 访问                       | 通过代理软件运行 VM 带来的额外成本         |
 
-此选项允许已下载文件中的 [IP 范围](https://www.microsoft.com/download/details.aspx?id=42064)。 若要访问网络安全组 (NSG)，请使用 Set-AzureNetworkSecurityRule cmdlet。 如果安全收件人列表仅包含特定于区域的 IP，则还需更新 Azure Active Directory (Azure AD) 服务标记的安全收件人列表以启用身份验证。
+关于使用这些选项的更多细节如下：
 
-#### <a name="allow-access-using-nsg-tags"></a>允许使用 NSG 标记进行访问
+#### <a name="private-endpoints"></a>专用终结点
 
-如果使用 NSG 来限制连接，则应使用 AzureBackup 服务标记以允许对 Azure 备份进行出站访问。 此外，还应允许使用 Azure AD 和 Azure 存储的[规则](/virtual-network/security-overview#service-tags)，在连接后进行身份验证和数据传输。 这可以通过 Azure 门户或 PowerShell 来完成。
+使用专用终结点，可以从虚拟网络内的服务器安全地连接到恢复服务保管库。 专用终结点为保管库使用 VNET 地址空间中的 IP。 虚拟网络中的资源与保管库之间的网络流量将通过虚拟网络和 Microsoft 主干网络上的专用链接传输。 这样就不会从公共 Internet 泄露信息。 在[此处](/backup/private-endpoints)详细了解 Azure 备份的专用终结点。
 
-若要使用门户创建规则，请执行以下操作：
+#### <a name="nsg-tags"></a>NSG 标记
 
-  1. 在“所有服务”中转到“网络安全组”，然后选择“网络安全组”。
-  2. 在“设置”下选择“出站安全规则”。 
-  3. 选择“添加”  。 根据[安全规则设置](/virtual-network/manage-network-security-group#security-rule-settings)中所述，输入创建新规则所需的所有详细信息。 确保选项“目标”设置为“服务标记”，“目标服务标记”设置为“AzureBackup”。   
-  4. 单击“添加”，保存新创建的出站安全规则。
+如果使用网络安全组 (NSG)，请使用 AzureBackup 服务标记以允许对 Azure 备份进行出站访问。 除了 Azure 备份标记外，还需要通过为 Azure AD 和 Azure 存储创建类似的 [NSG 规则](/virtual-network/security-overview#service-tags)，以便在连接后进行身份验证和数据传输。  以下步骤介绍了为 Azure 备份标记创建规则的过程：
 
-若要使用 PowerShell 创建规则，请执行以下操作：
+1. 在“所有服务”中，转到“网络安全组”并选择网络安全组。 
 
- 1. 添加 Azure 帐户凭据并更新国家/地区云<br/>
-      `Add-AzureRmAccount`<br/>
+1. 在“设置”下选择“出站安全规则”。 
 
- 2. 选择 NSG 订阅<br/>
-      `Select-AzureRmSubscription "<Subscription Id>"`
+1. 选择“添加”  。 根据[安全规则设置](/virtual-network/manage-network-security-group#security-rule-settings)中所述，输入创建新规则所需的所有详细信息。 请确保将选项“目标”设置为“服务标记”，将“目标服务标记”设置为“AzureBackup”。
 
- 3. 选择 NSG<br/>
-    `$nsg = Get-AzureRmNetworkSecurityGroup -Name "<NSG name>" -ResourceGroupName "<NSG resource group name>"`
+1. 单击“添加”，保存新创建的出站安全规则。
 
- 4. 为 Azure 备份服务标记添加允许出站规则<br/>
-    `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "AzureBackupAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "AzureBackup" -DestinationPortRange 443 -Description "Allow outbound traffic to Azure Backup service"`
+同样，可以为 Azure 存储和 Azure AD 创建 NSG 出站安全规则。
 
- 5. 为 Azure 存储服务标记添加允许出站规则<br/>
-    `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "StorageAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "Storage" -DestinationPortRange 443 -Description "Allow outbound traffic to Azure Backup service"`
+#### <a name="azure-firewall-tags"></a>Azure 防火墙标记
 
- 6. 为 AzureActiveDirectory 服务标记添加允许出站规则<br/>
-    `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "AzureActiveDirectoryAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "AzureActiveDirectory" -DestinationPortRange 443 -Description "Allow outbound traffic to AzureActiveDirectory service"`
+如果使用 Azure 防火墙，请使用 *AzureBackup* [Azure 防火墙 FQDN 标记](https://docs.microsoft.com/azure/firewall/fqdn-tags)创建应用程序规则。 这允许对 Azure 备份进行所有出站访问。
 
- 7. 保存 NSG<br/>
-    `Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg`
+#### <a name="allow-access-to-service-ip-ranges"></a>允许访问服务 IP 范围
 
-- **允许使用 Azure 防火墙标记进行访问**。 如果使用 Azure 防火墙，请使用 AzureBackup [FQDN 标记](/firewall/fqdn-tags)创建一个应用程序规则。 此规则允许对 Azure 备份进行出站访问。
+如果选择允许访问服务 IP，请参阅[此处](https://www.microsoft.com/download/confirmation.aspx?id=56519)的 JSON 文件中的 IP 范围。 你需要允许访问与 Azure 备份、Azure 存储和 Azure Active Directory 对应的 IP。
 
-**部署用于路由流量的 HTTP 代理服务器**。 在 Azure VM 中备份 SQL Server 数据库时，该 VM 上的备份扩展将使用 HTTPS API 将管理命令发送到 Azure 备份，并将数据发送到 Azure 存储。 备份扩展还使用 Azure AD 进行身份验证。 通过 HTTP 代理路由这三个服务的备份扩展流量。 没有任何用于 Azure 备份的通配符域要添加到代理规则的允许列表。 你将需要使用 Azure 提供的这些服务的公共 IP 范围。 该扩展是为了访问公共 Internet 而配置的唯一组件。
+#### <a name="allow-access-to-service-fqdns"></a>允许访问服务 FQDN
 
-连接选项包括以下优点和缺点：
+还可以使用以下 FQDN 以允许从服务器访问所需的服务：
 
-**选项** | **优点** | **缺点**
---- | --- | ---
-允许 IP 范围 | 无额外成本 | 管理起来很复杂，因为 IP 地址范围随时会更改 <br/><br/> 允许访问整个 Azure，而不只是 Azure 存储
-使用 NSG 服务标记 | 由于范围更改会自动合并，因此管理变得更容易 <br/><br/> 无额外成本 <br/><br/> | 只可用于 NSG <br/><br/> 提供对整个服务的访问
-使用 Azure 防火墙 FQDN 标记 | 由于可自动管理所需的 FQDN，因此管理变得更容易 | 只可用于 Azure 防火墙
-使用 HTTP 代理 | 对 VM 进行单点 Internet 访问 <br/> | 通过代理软件运行 VM 带来的额外成本 <br/> 没有已发布的 FQDN 地址，允许规则将受 Azure IP 地址更改的影响
+| 服务    | 要访问的域名                             |
+| -------------- | ------------------------------------------------------------ |
+| Azure 备份  | `*.backup.azure.cn`                             |
+| Azure 存储 | `*.blob.core.chinacloudapi.cn` <br><br> `*.queue.core.chinacloudapi.cn` |
+| Azure AD      | 根据[这篇文章](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online)，允许访问第 56 和 59 节下的 FQDN |
 
-<!-- Not available in China now -->
-### <a name="database-naming-guidelines-for-azure-backup"></a>Azure 备份的数据库命名准则
+#### <a name="use-an-http-proxy-server-to-route-traffic"></a>使用 HTTP 代理服务器路由流量
+
+在 Azure VM 中备份 SQL Server 数据库时，该 VM 上的备份扩展将使用 HTTPS API 将管理命令发送到 Azure 备份，并将数据发送到 Azure 存储。 备份扩展还使用 Azure AD 进行身份验证。 通过 HTTP 代理路由这三个服务的备份扩展流量。 使用上面提到的 IP 和 FQDN 列表，以允许访问所需的服务。 不支持已经过身份验证的代理服务器。
+
+### <a name="database-naming-guidelines-for-azure-backup"></a>适用于 Azure 备份的数据库命名准则
 
 避免在数据库名称中使用以下元素：
 
@@ -263,7 +260,7 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 14. 完成备份策略的编辑后，选择“确定”。
 
 > [!NOTE]
-> 每个日志备份都链接到上一个完整备份，以形成恢复链。 此完整备份将一直保留到最后一个日志备份的保留期结束为止。 这可能意味着完整备份会多保留一段时间，以确保所有日志都可以恢复。 假设用户有每周完整备份、每日差异备份和 2 小时日志备份。 这些备份都保留 30 天。 但是，只有在下一个完整备份可用后（即 30 + 7 天后），才能真正清除/删除这个每周完整备份。 假设每周完整备份发生在 11 月 16 日。 根据保留策略，它应保留到 12 月 16 日。 该完整备份的最后一次日志备份发生在下一次计划的完整备份之前，即 11 月 22 日。 必须等到 12 月 22 日此日志备份可用后，才能删除 11 月 16 日的完整备份。 因此，11 月 16 日的完整备份会保留到 12 月 22 日。
+> 每个日志备份都链接到上一个完整备份，以形成恢复链。 此完整备份将一直保留到最后一个日志备份的保留期结束为止。 这可能意味着完整备份会保留一段额外的时间，以确保所有日志都可以恢复。 假设用户有每周完整备份、每日差异备份和 2 小时日志备份。 所有这些备份都将保留 30 天。 但是，只有在下一个完整备份可用后（即 30 + 7 天后），才能真正清除/删除这个每周完整备份。 假设每周完整备份发生在 11 月 16 日。 根据保留策略，它应保留到 12 月 16 日。 该完整备份的最后一次日志备份发生在下一次计划的完整备份之前，即 11 月 22 日。 必须等到 12 月 22 日此日志备份可用后，才能删除 11 月 16 日的完整备份。 因此，11 月 16 日的完整备份会保留到 12 月 22 日。
 
 ## <a name="enable-auto-protection"></a>启用自动保护  
 

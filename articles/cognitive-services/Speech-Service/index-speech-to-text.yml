@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: 语音转文本文档
-summary: 使用语音服务提供的语音转文本（也称为语音识别）功能，可将音频流实时听录为文本和批量听录为文本。
+summary: 使用语音服务提供的语音转文本（也称为语音识别）功能，可将音频流实时听录为文本和批量听录为文本。 借助附加的参考文本输入，它还可以进行实时发音评估，并向说话人提供有关语音准确性和流畅性的反馈。
 metadata:
   title: 语音转文本文档 - 教程和 API 参考 - Azure 认知服务 | Microsoft Docs
   titleSuffix: Azure Cognitive Services
@@ -10,14 +10,14 @@ metadata:
   ms.service: speech-service
   ms.topic: landing-page
   origin.date: 03/19/2020
-  ms.date: 04/20/2020
+  ms.date: 06/19/2020
   ms.author: v-tawe
-  ms.openlocfilehash: 64db9b3cb901e256b9662db02648487b318c5115
-  ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+  ms.openlocfilehash: f3e5c588d2a39724f015b3c58777af4ba36f5ba3
+  ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/24/2020
-  ms.locfileid: "82126843"
+  ms.lasthandoff: 07/01/2020
+  ms.locfileid: "85613328"
 landingContent:
 - title: 关于语音转文本
   linkLists:
@@ -29,6 +29,8 @@ landingContent:
       url: batch-transcription.md
     - text: 语音识别基础知识
       url: speech-to-text-basics.md
+    - text: 使用语音 CLI 无需代码即可将语音转换为文本
+      url: spx-overview.md
   - linkListType: quickstart
     links:
     - text: 识别来自麦克风输入的语音

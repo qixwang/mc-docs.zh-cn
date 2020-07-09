@@ -6,12 +6,12 @@ origin.date: 08/02/2018
 ms.date: 10/19/2018
 ms.author: v-lingwu
 ms.topic: tutorial
-ms.openlocfilehash: 7bae58f8126e47c4b24ebb8bd908447cd89a7d40
-ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
+ms.openlocfilehash: 1a3fa27663fb61b5d2a30a1c2b148e716208c2d0
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84126776"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611862"
 ---
 # <a name="tutorial-render-a-blender-scene-using-batch-explorer"></a>教程：使用 Batch Explorer 渲染 Blender 场景
 
@@ -25,6 +25,8 @@ ms.locfileid: "84126776"
 > * 查看并下载渲染的帧文件
 
 ## <a name="prerequisites"></a>先决条件
+
+需要预付的订阅或试用帐户。
 
 需要有一个具有关联的存储帐户的 Azure Batch 帐户。  请参阅任何 Batch 快速入门文章（例如 [CLI 文章](/batch/quick-create-cli)），了解如何创建 Batch 帐户。
 

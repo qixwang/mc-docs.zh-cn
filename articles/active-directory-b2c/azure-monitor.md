@@ -10,13 +10,13 @@ ms.workload: identity
 ms.topic: conceptual
 ms.author: v-junlch
 ms.subservice: B2C
-ms.date: 05/18/2020
-ms.openlocfilehash: 87e00571ebadcb91e62912f48eda027b073786a2
-ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
+ms.date: 06/28/2020
+ms.openlocfilehash: e4cf50560d97f36e11bad4603568e74827e3bfe6
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83748071"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516534"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>使用 Azure Monitor 监视 Azure AD B2C
 
@@ -25,8 +25,8 @@ ms.locfileid: "83748071"
 可将日志事件路由到：
 
 * Azure [存储帐户](../storage/blobs/storage-blobs-introduction.md)。
-* Azure [事件中心](../event-hubs/event-hubs-about.md)（并与 Splunk 和 Sumo Logic 实例集成）。
 * [Log Analytics 工作区](../azure-monitor/platform/resource-logs-collect-workspace.md)（以分析数据、创建仪表板以及针对特定事件发出警报）。
+* Azure [事件中心](../event-hubs/event-hubs-about.md)（并与 Splunk 和 Sumo Logic 实例集成）。
 
 ![Azure Monitor](./media/azure-monitor/azure-monitor-flow.png)
 
@@ -37,6 +37,8 @@ ms.locfileid: "83748071"
 * [Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps) 6.13.1 或更高版本。
 
 ## <a name="delegated-resource-management"></a>委托的资源管理
+
+Azure AD B2C 使用 [Azure Active Directory 监视](../active-directory/reports-monitoring/overview-monitoring.md)。 
 
 授权 Azure AD B2C 目录（**服务提供商**）中的某个用户或组在包含你的 Azure 订阅（**客户**）的租户中配置 Azure Monitor 实例。 若要创建授权，请将 [Azure 资源管理器](../azure-resource-manager/index.yml)模板部署到包含该订阅的 Azure AD 租户。 以下部分将引导你完成该过程。
 
@@ -215,7 +217,7 @@ Parameters              :
 
 ### <a name="create-diagnostic-settings"></a>创建诊断设置
 
-你已准备好在 Azure 门户中`Create diagnostic settings`。
+你已准备好在 Azure 门户中[创建诊断设置](../active-directory/reports-monitoring/overview-monitoring.md)。
 
 为 Azure AD B2C 活动日志配置监视设置：
 
@@ -238,4 +240,10 @@ Parameters              :
 
 1. 选择“AuditLogs”和“SignInLogs” 。
 1. 选择“保存” 。
+
+## <a name="next-steps"></a>后续步骤
+
+有关在 Azure Monitor 中添加和配置诊断设置的详细信息，请参阅[教程：从 Azure 资源收集和分析资源日志](../azure-monitor/insights/monitor-azure-resource.md)。
+
+有关将 Azure AD 日志流式传输到事件中心的信息，请参阅[教程：将 Azure Active Directory 日志流式传输到 Azure 事件中心](../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)。
 

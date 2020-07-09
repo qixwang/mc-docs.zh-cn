@@ -6,16 +6,16 @@ ms.author: v-jay
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
-origin.date: 4/1/2020
+origin.date: 6/11/2020
 ms.date: 04/27/2020
-ms.openlocfilehash: a1ed79435fe9ba3d541fd0310a8833e54705ff60
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: f5238f52df9bc2f1392fa3a11e5bfbc5c52e06d5
+ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126718"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85845903"
 ---
-# <a name="customize-server-configuration-parameters-by-using-azure-cli"></a>使用 Azure CLI 自定义服务器配置参数
+# <a name="configure-server-parameters-in-azure-database-for-mariadb-using-the-azure-cli"></a>使用 Azure CLI 在 Azure Database for MariaDB 中配置服务器参数
 可以使用 Azure CLI、Azure 命令行实用工具来列出、显示和更新 Azure Database for MariaDB 服务器的配置参数。 在服务器级别会公开引擎配置的一个子集，并可以进行修改。
 
 ## <a name="prerequisites"></a>先决条件
@@ -56,6 +56,14 @@ az mariadb server configuration set --name slow_query_log --resource-group myres
 
 此代码会将 slow\_query\_log 配置重置为默认值 OFF。 
 
+## <a name="setting-parameters-not-listed"></a>未列出设置参数
+如果 Azure 门户中未列出你要更新的服务器参数，则可以选择性使用 `init_connect` 在连接级别设置参数。 此项可为每个连接到服务器的客户端设置服务器参数。 
+
+更新资源组 myresourcegroup 下的服务器 mydemoserver.mariadb.database.chinacloudapi.cn 的 init\_connect 服务器配置参数，以设置字符集之类的值  。
+```azurecli
+az mariadb server configuration set --name init_connect --resource-group myresourcegroup --server mydemoserver --value "SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;"
+```
+
 ## <a name="working-with-the-time-zone-parameter"></a>使用时区参数
 
 ### <a name="populating-the-time-zone-tables"></a>填充时区表
@@ -82,18 +90,18 @@ SELECT name FROM mysql.time_zone_name;
 
 可以使用 [az mariadb server configuration set](https://docs.microsoft.com/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-set) 命令来设置全局级时区。
 
-以下命令将资源组 **myresourcegroup** 下的服务器 **mydemoserver.mariadb.database.chinacloudapi.cn** 的服务器配置参数 **time\_zone** 更新为 **US/Pacific**。
+下面的命令用于将资源组 myresourcegroup 下的服务器 mydemoserver.mariadb.database.chinacloudapi.cn 的服务器配置参数“time\_zone”更新为“Asia/Shanghai”   。
 
 ```azurecli
-az mariadb server configuration set --name time_zone --resource-group myresourcegroup --server mydemoserver --value "US/Pacific"
+az mariadb server configuration set --name time_zone --resource-group myresourcegroup --server mydemoserver --value "Asia/Shanghai"
 ```
 
 ### <a name="setting-the-session-level-time-zone"></a>设置会话级时区
 
-可以通过从 MariaDB 命令行或 MariaDB Workbench 等工具运行 `SET time_zone` 命令来设置会话级时区。 以下示例将时区设置为“美国/太平洋”时区。  
+可以通过从 MariaDB 命令行或 MariaDB Workbench 等工具运行 `SET time_zone` 命令来设置会话级时区。 以下示例将时区设置为“Asia/Shanghai”时区。  
 
 ```sql
-SET time_zone = 'US/Pacific';
+SET time_zone = 'Asia/Shanghai';
 ```
 
 若要了解[日期和时间函数](https://mariadb.com/kb/en/library/date-time-functions/)，请参阅 MariaDB 文档。

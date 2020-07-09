@@ -5,14 +5,14 @@ author: WenJason
 ms.author: v-jay
 ms.service: mariadb
 ms.topic: conceptual
-origin.date: 5/4/2020
-ms.date: 06/08/2020
-ms.openlocfilehash: f372bf1e8383d20722e7c39d343b08b2233eb3a0
-ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
+origin.date: 6/10/2020
+ms.date: 07/06/2020
+ms.openlocfilehash: 569ab07e31a4dc985e8c9a52b15d26457cc8bdf4
+ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84275563"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85845896"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的只读副本
 
@@ -42,6 +42,9 @@ ms.locfileid: "84275563"
 
 
 ## <a name="create-a-replica"></a>创建副本
+
+> [!IMPORTANT]
+> 只读副本功能仅适用于“常规用途”或“内存优化”定价层中的 Azure Database for MariaDB 服务器。 请确保主服务器位于其中一个定价层中。
 
 如果主服务器没有现有的副本服务器，主服务器会先重启，以自行准备复制。
 
@@ -92,9 +95,12 @@ Azure Database for MariaDB 在 Azure Monitor 中提供“复制滞后时间(秒)
 
 只读副本当前仅适用于“常规用途”和“内存优化”的定价层。
 
+> [!NOTE]
+> 运行副本服务器的成本取决于副本服务器的运行区域。
+
 ### <a name="master-server-restart"></a>主服务器重启
 
-如果为没有现有副本的主服务器创建副本，主服务器将首先重启以便为复制准备自身。 请考虑这一点并在非高峰期执行这些操作。
+为没有现有副本的主服务器创建副本时，主服务器将首先重启以便为复制做好准备。 请考虑这一点并在非高峰期执行这些操作。
 
 ### <a name="new-replicas"></a>新副本
 
@@ -107,7 +113,7 @@ Azure Database for MariaDB 在 Azure Monitor 中提供“复制滞后时间(秒)
 > [!IMPORTANT]
 > 将主服务器的配置更新为新值之前，请将副本配置更新为与这些新值相等或更大的值。 此操作可确保副本与主服务器发生的任何更改保持同步。
 
-创建副本服务器时，防火墙规则和参数设置会从主服务器继承到副本服务器。 之后，副本服务器的规则将独立。
+创建副本服务器时，防火墙规则和参数设置会从主服务器继承到副本服务器。 之后，副本的规则便会独立。
 
 ### <a name="stopped-replicas"></a>停止的副本
 
@@ -129,7 +135,7 @@ Azure Database for MariaDB 在 Azure Monitor 中提供“复制滞后时间(秒)
 - [`innodb_file_per_table`](https://mariadb.com/kb/en/library/innodb-system-variables/#innodb_file_per_table) 
 - [`log_bin_trust_function_creators`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#log_bin_trust_function_creators)
 
-将在副本服务器上锁定 [`event_scheduler`](https://mariadb.com/kb/en/library/server-system-variables/#event_scheduler) 参数。
+副本服务器上的 [`event_scheduler`](https://mariadb.com/kb/en/library/server-system-variables/#event_scheduler) 参数处于锁定状态。
 
 若要更新主服务器上的上述参数之一，请删除副本服务器，更新主服务器上的参数值，然后重新创建副本。
 

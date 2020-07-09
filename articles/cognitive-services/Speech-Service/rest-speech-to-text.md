@@ -3,20 +3,20 @@ title: 语音转文本 API 参考 (REST) - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 了解如何使用语音转文本 REST API。 本文介绍授权选项、查询选项，以及如何构建请求和接收响应。
 services: cognitive-services
-author: trevorbye
+author: yinhew
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-origin.date: 03/16/2020
-ms.date: 04/20/2020
+origin.date: 05/13/2020
+ms.date: 06/19/2020
 ms.author: v-tawe
-ms.openlocfilehash: e7d7c3d522818846ade2bd173c4b80c2e4bcaa63
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: e404f1a2272927b119278d2319d709425ac9cd20
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126777"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85613316"
 ---
 # <a name="speech-to-text-rest-api"></a>语音转文本 REST API
 
@@ -52,10 +52,10 @@ https://<REGION_IDENTIFIER>.stt.speech.azure.cn/speech/recognition/conversation/
 
 | 参数 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
-| `language` | 标识所要识别的口语。 请参阅[支持的语言](language-support.md#speech-to-text)。 | 必需 |
-| `format` | 指定结果格式。 接受的值为 `simple` 和 `detailed`。 简单结果包括 `RecognitionStatus`、`DisplayText`、`Offset` 和 `Duration`。 详细响应包括多个具有置信度值的结果，以及四种不同的表示形式。 默认设置为 `simple`。 | 可选 |
+| `language` | 标识所要识别的口语。 请参阅[支持的语言](language-support.md#speech-to-text)。 | 必须 |
+| `format` | 指定结果格式。 接受的值为 `simple` 和 `detailed`。 简单结果包括 `RecognitionStatus`、`DisplayText`、`Offset` 和 `Duration`。 Detailed 响应包括显示文本的四种不同的表示形式。 默认设置为 `simple`。 | 可选 |
 | `profanity` | 指定如何处理识别结果中的不雅内容。 接受的值为 `masked`（将亵渎内容替换为星号）、`removed`（删除结果中的所有亵渎内容）或 `raw`（包含结果中的亵渎内容）。 默认设置为 `masked`。 | 可选 |
-| `cid` | 使用[自定义语音门户](how-to-custom-speech.md)创建自定义模型时，可以通过在“部署”  页上找到的其终结点 ID  使用自定义模型。 使用终结点 ID  作为 `cid` 查询字符串形式参数的实际参数。 | 可选 |
+| `cid` | 使用[自定义语音门户](how-to-custom-speech.md)创建自定义模型时，可以通过在“部署”页上找到的其终结点 ID 使用自定义模型。 使用终结点 ID 作为 `cid` 查询字符串形式参数的实际参数。 | 可选 |
 
 ## <a name="request-headers"></a>请求标头
 
@@ -65,7 +65,7 @@ https://<REGION_IDENTIFIER>.stt.speech.azure.cn/speech/recognition/conversation/
 |------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | 语音服务订阅密钥。 | 此标头或 `Authorization` 是必需的。 |
 | `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 此标头或 `Ocp-Apim-Subscription-Key` 是必需的。 |
-| `Content-type` | 描述所提供音频数据的格式和编解码器。 接受的值为 `audio/wav; codecs=audio/pcm; samplerate=16000` 和 `audio/ogg; codecs=opus`。 | 必需 |
+| `Content-type` | 描述所提供音频数据的格式和编解码器。 接受的值为 `audio/wav; codecs=audio/pcm; samplerate=16000` 和 `audio/ogg; codecs=opus`。 | 必须 |
 | `Transfer-Encoding` | 指定要发送分块的音频数据，而不是单个文件。 仅当要对音频数据进行分块时才使用此标头。 | 可选 |
 | `Expect` | 如果使用分块传输，则发送 `Expect: 100-continue`。 语音服务将确认初始请求并等待附加的数据。| 如果发送分块的音频数据，则是必需的。 |
 | `Accept` | 如果提供此标头，则值必须是 `application/json`。 语音服务以 JSON 格式提供结果。 某些请求框架提供不兼容的默认值。 最好始终包含 `Accept`。 | 可选，但建议提供。 |
@@ -75,12 +75,14 @@ https://<REGION_IDENTIFIER>.stt.speech.azure.cn/speech/recognition/conversation/
 在 HTTP `POST` 请求的正文中发送音频。 它必须采用下表中的格式之一：
 
 | 格式 | 编解码器 | 比特率 | 采样率  |
-|--------|-------|---------|--------------|
-| WAV    | PCM   | 16 位  | 16 kHz，单声道 |
-| OGG    | OPUS  | 16 位  | 16 kHz，单声道 |
+|--------|-------|----------|--------------|
+| WAV    | PCM   | 256 kbps | 16 kHz，单声道 |
+| OGG    | OPUS  | 256 kpbs | 16 kHz，单声道 |
 
 >[!NOTE]
 >通过语音服务中的 REST API 和 WebSocket 支持上述格式。 [语音 SDK](speech-sdk.md) 当前支持使用 PCM 编解码器的 WAV 格式以及[其他格式](how-to-use-codec-compressed-audio-input-streams.md)。
+
+<!-- ## Pronunciation assessment parameters -->
 
 ## <a name="sample-request"></a>示例请求
 
@@ -95,6 +97,12 @@ Host: chinaeast2.stt.speech.azure.cn
 Transfer-Encoding: chunked
 Expect: 100-continue
 ```
+
+<!-- To enable pronunciation assessment, you can add below header. See [Pronunciation assessment parameters](#pronunciation-assessment-parameters) for how to build this header.
+
+```HTTP
+Pronunciation-Assessment: eyJSZWZlcm...
+``` -->
 
 ## <a name="http-status-codes"></a>HTTP 状态代码
 
@@ -168,9 +176,10 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 > [!NOTE]
 > 如果音频仅包含亵渎内容，并且 `profanity` 查询参数设置为 `remove`，则服务不会返回语音结果。
 
-`detailed` 格式包含的数据与 `simple` 格式相同，另外还包含 `NBest`，这是相同识别结果的替代解释列表。 这些结果从最有可能到最不可能进行排序。 第一个条目与主要识别结果相同。  使用 `detailed` 格式时，将以 `Display` 形式为 `NBest` 列表中的每条结果提供 `DisplayText`。
+`detailed` 格式包括其他形式的已识别结果。
+使用 `detailed` 格式时，将以 `Display` 形式为 `NBest` 列表中的每条结果提供 `DisplayText`。
 
-`NBest` 列表中的每个对象包括：
+`NBest` 列表中的对象可以包括：
 
 | 参数 | 说明 |
 |-----------|-------------|
@@ -179,6 +188,11 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 | `ITN` | 已识别文本的反向文本规范化（“规范”）形式，已应用电话号码、数字、缩写（“doctor smith”缩写为“dr smith”）和其他转换。 |
 | `MaskedITN` | 可根据请求提供应用了亵渎内容屏蔽的 ITN 形式。 |
 | `Display` | 已识别文本的显示形式，其中添加了标点符号和大小写形式。 此参数与将格式设置为 `simple` 时提供的 `DisplayText` 相同。 |
+| `AccuracyScore` | 指示给定语音的发音准确性的分数。 |
+| `FluencyScore` | 指示给定语音流畅性的分数。 |
+| `CompletenessScore` | 通过计算发音词与整个输入的比率来指示给定语音完整性的分数。 |
+| `PronScore` | 指示给定语音的发音质量的总分。 此分数根据权重 `AccuracyScore`、`FluencyScore` 和 `CompletenessScore` 进行计算。 |
+| `ErrorType` | 此值指示与 `ReferenceText` 相比，是省略、插入还是错误读出字词。 可能的值为 `None`（表示此词没有错误）、`Omission`、`Insertion` 和 `Mispronunciation`。 |
 
 ## <a name="sample-responses"></a>示例响应
 
@@ -207,17 +221,51 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
         "ITN" : "remind me to buy 5 pencils",
         "MaskedITN" : "remind me to buy 5 pencils",
         "Display" : "Remind me to buy 5 pencils.",
-      },
-      {
-        "Confidence" : "0.54",
-        "Lexical" : "rewind me to buy five pencils",
-        "ITN" : "rewind me to buy 5 pencils",
-        "MaskedITN" : "rewind me to buy 5 pencils",
-        "Display" : "Rewind me to buy 5 pencils.",
       }
   ]
 }
 ```
+
+<!-- A typical response for recognition with pronunciation assessment: -->
+
+<!--
+```json
+{
+  "RecognitionStatus": "Success",
+  "Offset": "400000",
+  "Duration": "11000000",
+  "NBest": [
+      {
+        "Confidence" : "0.87",
+        "Lexical" : "good morning",
+        "ITN" : "good morning",
+        "MaskedITN" : "good morning",
+        "Display" : "Good morning.",
+        "PronScore" : 84.4,
+        "AccuracyScore" : 100.0,
+        "FluencyScore" : 74.0,
+        "CompletenessScore" : 100.0,
+        "Words": [
+            {
+              "Word" : "Good",
+              "AccuracyScore" : 100.0,
+              "ErrorType" : "None",
+              "Offset" : 500000,
+              "Duration" : 2700000
+            },
+            {
+              "Word" : "morning",
+              "AccuracyScore" : 100.0,
+              "ErrorType" : "None",
+              "Offset" : 5300000,
+              "Duration" : 900000
+            }
+        ]
+      }
+  ]
+}
+```
+-->
 
 ## <a name="next-steps"></a>后续步骤
 

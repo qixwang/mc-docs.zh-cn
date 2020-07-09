@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 05/28/2020
+ms.date: 06/30/2020
 ms.author: v-junlch
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 11f72dd06d49dde1480e5f5f6e9982d0e9e5ae64
-ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
+ms.openlocfilehash: 663fc720b797ff5c3960088b5e4f475744a715d3
+ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84186870"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945230"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD 身份验证和授权错误代码
 
@@ -173,7 +173,7 @@ ms.locfileid: "84186870"
 | AADSTS50187 | DeviceInformationNotProvided - 服务无法执行设备身份验证。 |
 | AADSTS50196 | LoopDetected - 检测到客户端循环。 检查应用的逻辑，以确保实现了令牌缓存，并且正确处理了错误情况。  该应用在太短的时间内发出了太多相同请求，表明它处于错误状态或滥用请求令牌。 |
 | AADSTS50197 | ConflictingIdentities - 找不到用户。 请尝试再次登录。 |
-| AADSTS50199 | CmsiInterrupt - 出于安全原因，此请求需要用户确认。  由于这是“interaction_required”错误，因此客户端应进行交互式身份验证。之所以发生这种情况，是因为系统 Web 视图已用于请求本机应用程序的令牌，必须提示用户询问此应用是否确实为他们要登录的应用。|
+| AADSTS50199 | CmsiInterrupt - 出于安全原因，此请求需要用户确认。  由于这是“interaction_required”错误，因此客户端应进行交互式身份验证。之所以发生这种情况，是因为系统 Web 视图已用于请求本机应用程序的令牌，必须提示用户询问此应用是否确实为他们要登录的应用。 要避免此提示，重定向 URI 应是以下安全列表的一部分： <br />http://<br />https://<br />msauth://（仅限 iOS）<br />msauthv2://（仅限 iOS）<br />chrome-extension://（仅限桌面 Chrome 浏览器） |
 | AADSTS51000 | RequiredFeatureNotEnabled - 已禁用该功能。 |
 | AADSTS51001 | DomainHintMustbePresent - 必须使用本地安全标识符或本地 UPN 提供域提示。 |
 | AADSTS51004 | UserAccountNotInDirectory - 目录中不存在该用户帐户。 |
@@ -314,7 +314,7 @@ ms.locfileid: "84186870"
 | AADSTS700022 | InvalidMultipleResourcesScope - 为输入参数范围提供的值无效，因为它包含多个资源。 |
 | AADSTS700023 | InvalidResourcelessScope - 请求访问令牌时，为输入参数范围提供的值无效。 |
 | AADSTS7000215 | 提供的客户端密码无效。 开发人员错误 - 应用尝试在没有必需的或正确的身份验证参数的情况下登录。|
-| AADSTS7000222| InvalidClientSecretExpiredKeysProvided - 提供的客户端密钥已过期。 访问 Azure 门户，为你的应用创建新密钥，或者考虑使用证书凭据提高安全性： https://docs.azure.cn/active-directory/develop/active-directory-certificate-credentials |
+| AADSTS7000222 | InvalidClientSecretExpiredKeysProvided - 提供的客户端密钥已过期。 访问 Azure 门户，为你的应用创建新密钥，或者考虑使用证书凭据提高安全性：[https://docs.azure.cn/active-directory/develop/active-directory-certificate-credentials](https://docs.azure.cn/active-directory/develop/active-directory-certificate-credentials) |
 | AADSTS700005 | InvalidGrantRedeemAgainstWrongTenant - 提供的授权代码是用于其他租户的，因此已被拒绝。 兑换 OAuth2 授权代码时所针对的租户必须是获取该代码时所针对的租户（根据情况使用 /common 或 {tenant ID} 进行指定） |
 | AADSTS1000000 | UserNotBoundError - 绑定 API 要求 Azure AD 用户同时使用外部 IDP 进行身份验证，但尚未执行此操作。 |
 | AADSTS1000002 | BindCompleteInterruptError - 绑定已成功完成，但必须通知用户。 |

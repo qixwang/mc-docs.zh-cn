@@ -5,19 +5,19 @@ ms.reviewer: sogup
 author: Johnnytechn
 ms.topic: conceptual
 origin.date: 04/23/2019
-ms.date: 06/09/2020
+ms.date: 06/22/2020
 ms.author: v-johya
-ms.openlocfilehash: 95d2efbb03faa5ec359df7a5a6e86a189bd4450c
-ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
+ms.openlocfilehash: ec721225dea5b99c298918e5a4c0ca0af1a2aabb
+ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84683877"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85852079"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>使用 Azure 备份即时还原功能获得更高的备份和还原性能
 
 > [!NOTE]
-> 根据用户的反馈，我们正在将“VM 备份堆栈 V2”**** 重命名为“即时还原”****，以减少与 Azure Stack 功能的混淆。
+> 根据用户的反馈，我们正在将“VM 备份堆栈 V2”重命名为“即时还原”，以减少与 Azure Stack 功能的混淆。
 > 所有 Azure 备份用户现在已升级到**即时还原**。
 
 即时还原的新模型提供以下功能增强：
@@ -27,7 +27,7 @@ ms.locfileid: "84683877"
 * 最大支持 32 TB 的磁盘大小。 Azure 备份不建议重设磁盘大小。
 * 支持标准 SSD 磁盘、标准 HDD 磁盘和高级 SSD 磁盘。
 * 还原时可以使用非托管 VM 的原始存储帐户（按磁盘）。 即使 VM 的磁盘跨存储帐户进行分布，也具备此能力。 这可以加快各种 VM 配置的还原操作。
-* 对于在存储帐户中使用非托管高级磁盘的 VM 的备份（使用即时还原），建议从总的已分配存储空间中分配 50% 的可用空间，这仅在首次备份时是必需的******。 首次备份完成后，50% 的可用空间不再是备份的要求。
+* 对于在存储帐户中使用非托管高级磁盘的 VM 的备份（使用即时还原），建议从总的已分配存储空间中分配 50% 的可用空间，这仅在首次备份时是必需的。 首次备份完成后，50% 的可用空间不再是备份的要求。
 
 ## <a name="whats-new-in-this-feature"></a>功能亮点
 
@@ -56,6 +56,7 @@ ms.locfileid: "84683877"
 ## <a name="cost-impact"></a>成本影响
 
 增量快照存储在 VM 的存储帐户中，用于即时恢复。 使用增量快照意味着快照占用的空间等于创建该快照后写入的页面所占用的空间。 仍然对快照占用的每 GB 使用空间计费，每 GB 价格与[定价页](https://www.azure.cn/pricing/details/storage/managed-disks/index.html)上提到的价格相同。 对于使用非托管磁盘的 VM，可以在每个磁盘的 VHD 文件的菜单中看到快照。 对于托管磁盘，快照存储在指定资源组的还原点集合资源中，并且快照本身不直接可见。
+<!--Correct in China: https://www.azure.cn/pricing/details/storage/managed-disks/index.html-->
 
 >[!NOTE]
 > 就每周策略来说，快照保留期固定为 5 天。
@@ -64,7 +65,7 @@ ms.locfileid: "84683877"
 
 ### <a name="using-azure-portal"></a>使用 Azure 门户
 
-在 Azure 门户中可以看到，“即时还原”部分下的“VM 备份策略”边栏选项卡中添加了一个字段。**** **** 对于与特定备份策略关联的所有 VM，可以在“VM 备份策略”边栏选项卡中更改快照保留持续时间。****
+在 Azure 门户中可以看到，“即时还原”部分下的“VM 备份策略”边栏选项卡中添加了一个字段。  对于与特定备份策略关联的所有 VM，可以在“VM 备份策略”边栏选项卡中更改快照保留持续时间。
 
 ![即时还原功能](./media/backup-azure-vms/instant-restore-capability.png)
 

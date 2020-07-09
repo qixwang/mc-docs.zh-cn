@@ -7,37 +7,65 @@ author: HeidiSteen
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 02/25/2020
-ms.date: 03/16/2020
-ms.openlocfilehash: c88f7921b348d39b7bef9d129cf5f6e5fc65bafa
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 06/12/2020
+ms.date: 07/02/2020
+ms.openlocfilehash: 383234bb917bfe788ad9ecd91d887ecc5b5c80ee
+ms.sourcegitcommit: 5afd7c4c3be9b80c4c67ec55f66fcf347aad74c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497195"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85942528"
 ---
 # <a name="documentation-resources-for-ai-enrichment-in-azure-cognitive-search"></a>Azure 认知搜索中的 AI 扩充文档资源
 
-AI 扩充是 Azure 认知搜索索引的一项功能，用于查找非文本源和无差别文本中的潜在信息，并将其转换为 Azure 认知搜索中的全文可搜索内容。
+AI 扩充是基于索引器的索引的加载项，用于查找非文本源和无差别文本中的潜在信息，并将其转换为 Azure 认知搜索中的全文可搜索内容。 
 
-下文是 AI 扩充的完整文档。
+进行内置处理时，系统会在内部调用认知服务中预先训练的 AI 模型来执行分析。 你也可以使用 Azure 机器学习、Azure Functions 或其他方法来集成自定义模型。
 
-## <a name="getting-started"></a>入门
-+ [认知搜索中的 AI 简介](cognitive-search-concept-intro.md)
+下面是 AI 扩充文档的综合列表。
+
+## <a name="concepts"></a>概念
+
++ [AI 扩充](cognitive-search-concept-intro.md)
++ [技能组](cognitive-search-working-with-skillsets.md)
++ [知识存储](knowledge-store-concept-intro.md)
++ [投影](knowledge-store-projection-overview.md)
++ [增量扩充（重复使用缓存的扩充文档）](cognitive-search-incremental-indexing-conceptual.md)
+
+## <a name="hands-on-walkthroughs"></a>动手演练
+
 + [快速入门：在 Azure 门户中创建认知技能集](cognitive-search-quickstart-blob.md)
 + [教程：使用 AI 扩充的索引](cognitive-search-tutorial-blob.md)
-+ [示例：创建 AI 扩充的自定义技能](cognitive-search-create-custom-skill-example.md)
+
+## <a name="knowledge-stores"></a>知识存储
+
++ [快速入门：在 Azure 门户中创建知识存储](knowledge-store-create-portal.md)
++ [使用 REST 和 Postman 创建知识存储](knowledge-store-create-rest.md)
++ [使用存储资源管理器查看知识存储](knowledge-store-view-storage-explorer.md)
++ [使用 Power BI 连接知识存储](knowledge-store-connect-power-bi.md)
++ [投影示例（如何整形和导出扩充内容）](knowledge-store-projections-examples.md)
+
+## <a name="custom-skills-advanced"></a>自定义技能（高级）
+
++ [如何定义自定义技能接口](cognitive-search-custom-skill-interface.md)
++ [示例：使用 Azure Functions（和必应实体搜索 API）创建自定义技能](cognitive-search-create-custom-skill-example.md)
++ [示例：使用 Python 创建自定义技能](cognitive-search-custom-skill-python.md)
+
+<!-- + [Example: Create a custom skill using Form Recognizer](cognitive-search-custom-skill-form.md)  -->
 
 ## <a name="how-to-guidance"></a>操作说明指南
-+ [如何定义技能集](cognitive-search-defining-skillset.md)
-+ [如何在技能集中引用注释](cognitive-search-concept-annotations-syntax.md)
-+ [如何将字段映射到索引](cognitive-search-output-field-mapping.md)
-+ [处理和提取图像中的信息](cognitive-search-concept-image-scenarios.md)
-+ [如何重新生成 Azure 认知搜索索引](search-howto-reindex.md)
-+ [如何定义自定义技能接口](cognitive-search-custom-skill-interface.md)
-+ [故障排除提示](cognitive-search-concept-troubleshooting.md)
 
-## <a name="reference"></a>参考
++ [附加认知服务资源](cognitive-search-attach-cognitive-services.md)
++ [定义技能集](cognitive-search-defining-skillset.md)
++ [在技能组中引用注释](cognitive-search-concept-annotations-syntax.md)
++ [将字段映射到索引](cognitive-search-output-field-mapping.md)
++ [处理和提取图像中的信息](cognitive-search-concept-image-scenarios.md)
++ [为增量扩充配置缓存](search-howto-incremental-index.md)
++ [如何重新生成 Azure 认知搜索索引](search-howto-reindex.md)
++ [设计提示](cognitive-search-concept-troubleshooting.md)
++ [常见错误和警告](cognitive-search-common-errors-warnings.md)
+
+## <a name="skills-reference"></a>技能参考
 
 + [内置技能](cognitive-search-predefined-skills.md)
   + [Microsoft.Skills.Text.KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md)
@@ -59,6 +87,8 @@ AI 扩充是 Azure 认知搜索索引的一项功能，用于查找非文本源�
 
 + [弃用的技能](cognitive-search-skill-deprecated.md)
   + [Microsoft.Skills.Text.NamedEntityRecognitionSkill](cognitive-search-skill-named-entity-recognition.md)
+
+## <a name="apis"></a>API
 
 + [REST API](https://docs.microsoft.com/rest/api/searchservice/)
   + [创建技能集 (api-version=2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)

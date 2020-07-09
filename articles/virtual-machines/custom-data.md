@@ -6,20 +6,18 @@ author: rockboyfor
 ms.service: virtual-machines
 ms.topic: article
 origin.date: 03/06/2020
-ms.date: 05/06/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 140e271400025f38c1ae62409a1e830f5785a2ba
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: 5ac517fd10da625c6d726c051b9e86e97cb46569
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83002261"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945655"
 ---
 # <a name="custom-data-and-cloud-init-on-azure-virtual-machines"></a>Azure 虚拟机上的自定义数据和 Cloud-Init
 
-## <a name="what-is-custom-data"></a>什么是自定义数据？
-
-客户经常问到，在预配时如何将脚本或其他元数据注入到 Microsoft Azure 虚拟机。  在其他云中，此概念通常称为用户数据。  在 Azure 中有一项称作自定义数据的类似功能。 
+你可能需要在预配时将脚本或其他元数据注入 Azure 虚拟机。  在其他云中，此概念通常称为用户数据。  在 Azure 中有一项称作自定义数据的类似功能。 
 
 自定义数据仅在首次启动/初始设置（称为“预配”）期间提供给 VM。 预配是指向 VM 提供“VM 创建”参数（例如主机名、用户名、密码、证书、自定义数据、密钥等）的过程，某个预配代理（例如 [Linux 代理](/virtual-machines/extensions/agent-linux)和 [cloud-init](/virtual-machines/linux/using-cloud-init#troubleshooting-cloud-init)）会处理这些参数。 
 
@@ -54,7 +52,7 @@ Azure 资源管理器 (ARM) 中有一个 [base64 函数](/azure-resource-manager
         "computerName": "[parameters('virtualMachineName')]",
         "adminUsername": "[parameters('adminUsername')]",
         "adminPassword": "[parameters('adminPassword')]",
-        "customDataBase64": "[variables('customData')]"
+        "customData": "[variables('customDataBase64')]"
         },
 ```
 
@@ -67,6 +65,8 @@ VM 上安装的预配代理负责处理与平台的对接并将其放到文件�
 ### <a name="linux"></a>Linux  
 在 Linux OS 上，自定义数据将通过 ovf-env.xml 文件传递给 VM。在预配期间，该文件会复制到 */var/lib/waagent* 目录。  为了方便操作，较新版本的 Microsoft Azure Linux 代理还会将 base64 编码的数据复制到 */var/lib/waagent/CustomData*。
 
+<!--Mooncake: CORRECT ON Microsoft Azure Linux Agent-->
+
 Azure 目前支持两个预配代理：
 * Linux 代理 - 默认情况下，该代理不会处理自定义数据，你需要在启用自定义数据的情况下生成自定义映像。 [文档](https://github.com/Azure/WALinuxAgent#configuration)中介绍的相关设置为：
     * Provisioning.DecodeCustomData
@@ -76,13 +76,13 @@ Azure 目前支持两个预配代理：
 
 若要排查自定义数据执行问题，请查看 */var/log/waagent.log*
 
-* cloud-init - 默认会处理自定义数据。cloud-init 接受[多种格式](https://cloudinit.readthedocs.io/en/latest/topics/format.html)的自定义数据，如 cloud-init 配置、脚本等。类似于 Linux 代理，cloud-init 会处理自定义数据。 如果在执行配置处理或脚本期间出错，系统不会将此问题视为严重的预配失败，而你需要创建一个通知路径来提醒自己有关脚本的完成状态。 但是，与 Linux 代理不同，cloud-init 不会等待用户自定义数据配置完成后再向平台报告 VM 已准备就绪。 有关 Azure 上的 cloud-init 的详细信息，请查看[文档](/virtual-machines/linux/using-cloud-init)。
+* 云初始化 - 默认情况下会处理自定义数据，云初始化接受[多种格式](https://cloudinit.readthedocs.io/en/latest/topics/format.html)的自定义数据，如云初始化配置、脚本等。当云初始化处理自定义数据时，类似于 Linux 代理。 如果在执行配置处理或脚本的过程中出现错误，则不会将其视为致命的预配失败，需要创建通知路径以提醒你脚本的完成状态。 但是，与 Linux 代理不同，cloud-init 不会等待用户自定义数据配置完成后再向平台报告 VM 已准备就绪。 有关 Azure 上的 cloud-init 的详细信息，请查看[文档](/virtual-machines/linux/using-cloud-init)。
 
 若要排查自定义数据执行问题，请查看故障排除[文档](/virtual-machines/linux/using-cloud-init#troubleshooting-cloud-init)。
 
 ## <a name="faq"></a>常见问题
 ### <a name="can-i-update-custom-data-after-the-vm-has-been-created"></a>是否可以在创建 VM 后更新自定义数据？
-对于单个 VM，无法更新 VM 模型中的自定义数据，但对于 VMSS，可以通过 REST API 更新 VMSS 自定义数据（不适用于 PS 或 AZ CLI 客户端）。 在 VMSS 模型中更新自定义数据时，会出现以下情况：
+对于单个 VM，无法更新 VM 模型中的自定义数据，但对于 VMSS，你可以通过 [REST API](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/update) 更新 VMSS 自定义数据（不适用于 PS 或 AZ CLI 客户端）。 在 VMSS 模型中更新自定义数据时：
 * VMSS 中的现有实例只有在重置映像之后，才会获得更新的自定义数据。
 * VMSS 中已升级的现有实例不会获得更新的自定义数据。
 * 新实例会接收新的自定义数据。
@@ -93,5 +93,4 @@ Azure 目前支持两个预配代理：
 ### <a name="is-custom-data-made-available-in-imds"></a>自定义数据在 IMDS 中是否可用？
 目前不提供此功能。
 
-<!-- Update_Description: new article about custom data -->
-<!--NEW.date: 05/06/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

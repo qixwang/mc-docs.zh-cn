@@ -7,14 +7,14 @@ author: luiscabrer
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 11/04/2019
-ms.date: 03/16/2020
-ms.openlocfilehash: 3026bc7e45b23f1d5296638ccd180ea6f9c0218b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 06/08/2020
+ms.date: 07/02/2020
+ms.openlocfilehash: 971f3de99106cf83ef53ffb39f720215d9a6c67c
+ms.sourcegitcommit: 5afd7c4c3be9b80c4c67ec55f66fcf347aad74c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292315"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85942529"
 ---
 # <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Azure 认知搜索中的 AI 扩充提示
 
@@ -77,6 +77,10 @@ https://docs.azure.cn/search/search-howto-indexing-azure-blob-storage#how-to-spe
   ]
 }
 ```
+
+### <a name="debug-sessions"></a>调试会话
+
+调试会话是一个可视化编辑器，可与 Azure 门户中的现有技能组配合使用。 在调试会话中，可以识别和解决错误、验证更改，以及将更改推送到 AI 扩充管道中的生产技能组。 这是一项预览功能，将根据具体情况授予访问权限。 请[阅读文档](https://docs.azure.cn/search/cognitive-search-debug-session)，了解如何申请访问权限。
 
 ## <a name="tip-5-expected-content-fails-to-appear"></a>提示 5：预期的内容没有出现
 

@@ -175,8 +175,10 @@
           href: sap-hana-db-manage.md
     - name: Azure 备份服务器 (MABS)
       items:
-        - name: Azure 备份服务器保护矩阵
-          href: backup-mabs-protection-matrix.md
+        - name: 保护矩阵
+          items:
+            - name: MABS V3 UR1 保护矩阵
+              href: backup-mabs-protection-matrix.md
         - name: 安装或升级
           items:
             - name: 安装 Azure 备份服务器
@@ -185,7 +187,7 @@
               href: backup-mabs-add-storage.md
             - name: MABS 中的新增功能
               href: backup-mabs-whats-new-mabs.md
-            - name: 发行说明 MABS V3
+            - name: 发行说明 MABS
               href: backup-mabs-release-notes-v3.md
             - name: 无人参与的安装
               href: backup-mabs-unattended-install.md
@@ -219,8 +221,6 @@
           href: backup-mabs-sql-azure-stack.md
     - name: Data Protection Manager (DPM)
       items:
-        - name: 在 Azure 门户中准备 DPM 工作负荷
-          href: backup-azure-dpm-introduction.md
         - name: 使用 DPM 备份 Exchange 服务器
           href: backup-azure-backup-exchange-server.md
         - name: 将数据恢复到备用 DPM 服务器
@@ -236,7 +236,7 @@
         - name: 使用导入/导出 (MARS) 进行脱机备份
           href: backup-azure-backup-import-export.md
         - name: 使用导入/导出 (DPM/MABS) 进行脱机备份
-          href: backup-azure-backup-server-import-export-.md
+          href: backup-azure-backup-server-import-export.md
     - name: 监视和警报
       items:
         - name: 使用备份资源管理器
@@ -345,8 +345,10 @@
       href: /dotnet/api/microsoft.azure.management.recoveryservices.backup
     - name: Azure CLI
       href: /cli/backup?view=azure-cli-latest
-    - name: PowerShell
+    - name: Azure PowerShell
       href: 'https://docs.microsoft.com/powershell/module/az.recoveryservices'
+    - name: PowerShell - Azure 备份代理
+      href: 'https://docs.microsoft.com/powershell/module/msonlinebackup'
     - name: REST - 备份
       href: 'https://docs.microsoft.com/rest/api/backup/'
     - name: REST - 恢复服务保管库
@@ -357,8 +359,6 @@
   items:
     - name: 合规性
       href: compliance-offerings.md
-    - name: MSDN 论坛
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowsazureonlinebackup'
     - name: 定价计算器
       href: 'https://www.azure.cn/pricing/calculator/'
     - name: 服务更新

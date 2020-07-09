@@ -1,5 +1,5 @@
 ---
-title: 增量扩充（预览版）
+title: 增量扩充概念（预览版）
 titleSuffix: Azure Cognitive Search
 description: 在 Azure 存储中缓存 AI 扩充管道的中间内容和增量更改，以保护对现有已处理文档的投资。 此功能目前处于公开预览状态。
 manager: nitinme
@@ -8,15 +8,15 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 01/09/2020
-ms.date: 03/16/2020
-ms.openlocfilehash: 9e5062ede067d3f0898b1fed5c383ad6e7ad497b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 07/02/2020
+ms.openlocfilehash: 63dd2e77a29db1b0703010f4a75bbb1a8ccf4b1a
+ms.sourcegitcommit: 5afd7c4c3be9b80c4c67ec55f66fcf347aad74c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78934863"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85942516"
 ---
-# <a name="introduction-to-incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Azure 认知搜索中的增量扩充和缓存简介
+# <a name="incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Azure 认知搜索中的增量扩充和缓存
 
 > [!IMPORTANT] 
 > 增量扩充目前以公共预览版提供。 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。

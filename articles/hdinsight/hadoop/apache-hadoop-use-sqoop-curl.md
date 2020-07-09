@@ -15,14 +15,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
 origin.date: 01/06/2020
-ms.date: 03/02/2020
+ms.date: 07/06/2020
 ms.author: v-yiso
-ms.openlocfilehash: 986c4490b5307f38459dc29553d50c63df1ca4d7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 48bc2757d87638314e49b1978e56e527334dc1e0
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77563498"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516549"
 ---
 # <a name="run-apache-sqoop-jobs-in-hdinsight-with-curl"></a>使用 Curl 在 HDInsight 中运行 Apache Sqoop 作业
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -31,11 +31,11 @@ ms.locfileid: "77563498"
 
 本文档使用 Curl 演示如何使用原始 HTTP 请求来与 HDInsight 交互，以便运行、监视和检索 Sqoop 作业的结果。 若要执行这些操作，需要使用 HDInsight 群集提供的 WebHCat REST API（前称 Templeton）。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 从[在 HDInsight 中将 Apache Sqoop 与 Hadoop 配合使用](./hdinsight-use-sqoop.md)中完成[设置测试环境](./hdinsight-use-sqoop.md#create-cluster-and-sql-database)。
 
-* 用于查询 Azure SQL 数据库的客户端。 考虑使用 [SQL Server Management Studio](../../sql-database/sql-database-connect-query-ssms.md) 或 [Visual Studio Code](../../sql-database/sql-database-connect-query-vscode.md)。
+* 用于查询 Azure SQL 数据库的客户端。 考虑使用 [SQL Server Management Studio](../../azure-sql/database/connect-query-ssms.md) 或 [Visual Studio Code](../../azure-sql/database/connect-query-vscode.md)。
 
 * [Curl](https://curl.haxx.se/). Curl 是一种将数据传入或传出 HDInsight 群集的工具。
 * [jq](https://stedolan.github.io/jq/). jq 实用工具用于处理从 REST 请求返回的 JSON 数据。
@@ -107,16 +107,16 @@ REST API 通过 [基本身份验证](https://en.wikipedia.org/wiki/Basic_access_
     curl -G -u %USERNAME%:%PASSWORD% -d user.name=%USERNAME% https://%CLUSTERNAME%.azurehdinsight.cn/templeton/v1/jobs/%JOBID% | C:\HDI\jq-win64.exe .status.state
     ```
 
-    如果作业已完成，状态将是 **SUCCEEDED**。
+    如果作业已完成，状态是 **SUCCEEDED**。
 
    > [!NOTE]
    > 此 Curl 请求返回具有作业相关信息的 JavaScript 对象表示法 (JSON) 文档；使用 jq 可以仅检索状态值。
 
-4. 在作业的状态更改为“SUCCEEDED”  后，可以从 Azure Blob 存储中检索作业的结果。 随查询一起传递的 `statusdir` 参数包含输出文件的位置；在本例中，该位置为 `wasb:///example/data/sqoop/curl`。 此地址会将作业的输出存储在 HDInsight 群集所用的默认存储容器的 `example/data/sqoop/curl` 目录中。
+4. 在作业的状态更改为“SUCCEEDED”后，可以从 Azure Blob 存储中检索作业的结果。 随查询一起传递的 `statusdir` 参数包含输出文件的位置；在本例中，该位置为 `wasb:///example/data/sqoop/curl`。 此地址会将作业的输出存储在 HDInsight 群集所用的默认存储容器的 `example/data/sqoop/curl` 目录中。
 
     可使用 Azure 门户访问 stderr 和 stdout blob。
 
-5. 若要验证数据是否已导出，请从 SQL 客户端使用以下查询，以查看导出的数据：
+5. 若要验证数据是否已导出，请在 SQL 客户端中使用以下查询查看已导出的数据：
 
     ```sql
     SELECT COUNT(*) FROM [dbo].[log4jlogs] WITH (NOLOCK);
@@ -125,9 +125,9 @@ REST API 通过 [基本身份验证](https://en.wikipedia.org/wiki/Basic_access_
 
 ## <a name="limitations"></a>限制
 * 批量导出 - 在基于 Linux 的 HDInsight 上，用于将数据导出到 Microsoft SQL Server 或 Azure SQL 数据库的 Sqoop 连接器目前不支持批量插入。
-* 批处理 - 在基于 Linux 的 HDInsight 上，如果执行插入时使用 `-batch` 开关，Sqoop 将执行多次插入而不是批处理插入操作。
+* 批处理 - 在基于 Linux 的 HDInsight 上，如果执行插入时使用 `-batch` 开关，Sqoop 会执行多次插入而不是批处理插入操作。
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>摘要
 如本文档中所示，可以使用原始 HTTP 请求来运行、监视和查看 HDInsight 群集上的 Sqoop 作业的结果。
 
 有关本文中使用的 REST 接口的详细信息，请参阅 <a href="https://sqoop.apache.org/docs/1.99.3/RESTAPI.html" target="_blank">Apache Sqoop REST API 指南</a>。

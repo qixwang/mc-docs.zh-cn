@@ -8,12 +8,12 @@ origin.date: 12/18/2019
 ms.date: 05/28/2020
 ms.author: v-johya
 ms.subservice: metrics
-ms.openlocfilehash: f587a1ab7b218873ef1a7110047d935b7ec6ef3d
-ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
+ms.openlocfilehash: 5718dd977c45f882c40cca0e008f9ca5017e3579
+ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84440682"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851977"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure 监视器支持的指标
 
@@ -29,7 +29,7 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 
 ## <a name="guest-os-metrics"></a>来宾 OS 指标
 
-此处未列出在 Azure 虚拟机、Service Fabric 和云服务中运行的来宾操作系统（来宾 OS）的指标。 来宾 OS 性能指标必须通过一个或多个在来宾操作系统上运行或作为来宾操作系统一部分运行的代理来进行收集。  来宾 OS 指标包括性能计数器，该性能计数器跟踪来宾 CPU 百分比或内存使用率的，这两者经常用于自动缩放或警报功能。  使用 [Azure 诊断扩展](diagnostics-extension-overview.md)，可以将来宾 OS 性能指标发送到存储平台指标的同一数据库。 它通过[自定义指标](metrics-custom-overview.md) API 来路由来宾 OS 指标。 然后，你可以像使用平台指标那样，绘制图表、发送警报和以其他方式使用来宾 OS 指标。 有关详细信息，请参阅[监视代理概述](agents-overview.md)。    
+此处未列出在 Azure 虚拟机、Service Fabric 和云服务中运行的来宾操作系统（来宾 OS）的指标。 来宾 OS 性能指标必须通过一个或多个在来宾操作系统上运行或作为来宾操作系统一部分运行的代理来进行收集。  来宾 OS 指标包括性能计数器，该性能计数器跟踪来宾 CPU 百分比或内存使用率的，这两者经常用于自动缩放或警报功能。  使用 [Azure 诊断扩展](diagnostics-extension-overview.md)，可以将来宾 OS 性能指标发送到存储平台指标的同一数据库。 它通过自定义指标 API 来路由来宾 OS 指标。 然后，你可以像使用平台指标那样，绘制图表、发送警报和以其他方式使用来宾 OS 指标。 有关详细信息，请参阅[监视代理概述](agents-overview.md)。    
 
 ## <a name="routing-platform-metrics-to-other-locations"></a>将平台指标路由到其他位置
 
@@ -593,8 +593,8 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |OS 磁盘读取操作次数/秒|OS 磁盘读取操作数/秒（预览版）|每秒计数|平均值|OS 磁盘监视期间从单个磁盘执行的读取 IOPS|无|
 |OS 磁盘写入操作次数/秒|OS 磁盘写入操作数/秒（预览版）|每秒计数|平均值|OS 磁盘监视期间从单个磁盘执行的写入 IOPS|无|
 |OS 磁盘队列深度|OS 磁盘队列深度（预览版）|计数|平均值|OS 磁盘队列深度(或队列长度)|无|
-|入站流数|入站流数|计数|平均值|入站流数是入站方向的当前流（传入 VM 的流量）的数目|无|
-|出站流数|出站流数|计数|平均值|出站流数是出站方向的当前流（传出 VM 的流量）的数目|无|
+|入站流数|入站流量|计数|平均值|入站流数是入站方向的当前流（传入 VM 的流量）的数目|无|
+|出站流数|出站流|计数|平均值|出站流数是出站方向的当前流（传出 VM 的流量）的数目|无|
 |入站流最大创建速率|入站流最大创建速率|每秒计数|平均值|入站流（传入 VM 的流量）的最大创建速率|无|
 |出站流最大创建速率|出站流最大创建速率|每秒计数|平均值|出站流（传出 VM 的流量）的最大创建速率|无|
 |高级数据磁盘缓存读取命中|高级数据磁盘缓存读取命中（预览版）|百分比|平均值|高级数据磁盘缓存读取命中|LUN|
@@ -638,8 +638,8 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |OS 磁盘读取操作次数/秒|OS 磁盘读取操作数/秒（预览版）|每秒计数|平均值|OS 磁盘监视期间从单个磁盘执行的读取 IOPS|VMName|
 |OS 磁盘写入操作次数/秒|OS 磁盘写入操作数/秒（预览版）|每秒计数|平均值|OS 磁盘监视期间从单个磁盘执行的写入 IOPS|VMName|
 |OS 磁盘队列深度|OS 磁盘队列深度（预览版）|计数|平均值|OS 磁盘队列深度(或队列长度)|VMName|
-|入站流数|入站流数|计数|平均值|入站流数是入站方向的当前流（传入 VM 的流量）的数目|VMName|
-|出站流数|出站流数|计数|平均值|出站流数是出站方向的当前流（传出 VM 的流量）的数目|VMName|
+|入站流数|入站流量|计数|平均值|入站流数是入站方向的当前流（传入 VM 的流量）的数目|VMName|
+|出站流数|出站流|计数|平均值|出站流数是出站方向的当前流（传出 VM 的流量）的数目|VMName|
 |入站流最大创建速率|入站流最大创建速率|每秒计数|平均值|入站流（传入 VM 的流量）的最大创建速率|VMName|
 |出站流最大创建速率|出站流最大创建速率|每秒计数|平均值|出站流（传出 VM 的流量）的最大创建速率|VMName|
 |高级数据磁盘缓存读取命中|高级数据磁盘缓存读取命中（预览版）|百分比|平均值|高级数据磁盘缓存读取命中|LUN,VMName|
@@ -683,8 +683,8 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |OS 磁盘读取操作次数/秒|OS 磁盘读取操作数/秒（预览版）|每秒计数|平均值|OS 磁盘监视期间从单个磁盘执行的读取 IOPS|无|
 |OS 磁盘写入操作次数/秒|OS 磁盘写入操作数/秒（预览版）|每秒计数|平均值|OS 磁盘监视期间从单个磁盘执行的写入 IOPS|无|
 |OS 磁盘队列深度|OS 磁盘队列深度（预览版）|计数|平均值|OS 磁盘队列深度(或队列长度)|无|
-|入站流数|入站流数|计数|平均值|入站流数是入站方向的当前流（传入 VM 的流量）的数目|无|
-|出站流数|出站流数|计数|平均值|出站流数是出站方向的当前流（传出 VM 的流量）的数目|无|
+|入站流数|入站流量|计数|平均值|入站流数是入站方向的当前流（传入 VM 的流量）的数目|无|
+|出站流数|出站流|计数|平均值|出站流数是出站方向的当前流（传出 VM 的流量）的数目|无|
 |入站流最大创建速率|入站流最大创建速率|每秒计数|平均值|入站流（传入 VM 的流量）的最大创建速率|无|
 |出站流最大创建速率|出站流最大创建速率|每秒计数|平均值|出站流（传出 VM 的流量）的最大创建速率|无|
 |高级数据磁盘缓存读取命中|高级数据磁盘缓存读取命中（预览版）|百分比|平均值|高级数据磁盘缓存读取命中|LUN|
@@ -1653,7 +1653,7 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |BitsOutPerSecond|BitsOutPerSecond|每秒计数|平均值|每秒流出 Azure 的位数|PeeringType|
 |GlobalReachBitsInPerSecond|GlobalReachBitsInPerSecond|每秒计数|平均值|每秒流入 Azure 的位数|PeeredCircuitSKey|
 |GlobalReachBitsOutPerSecond|GlobalReachBitsOutPerSecond|每秒计数|平均值|每秒流出 Azure 的位数|PeeredCircuitSKey|
-|BgpAvailability|BGP 可用性|百分比|平均值|从 MSEE 到所有对等方的 BGP 可用性。|PeeringType,Peer|
+|BgpAvailability|Bgp 可用性|百分比|平均值|从 MSEE 到所有对等方的 BGP 可用性。|PeeringType,Peer|
 |ArpAvailability|Arp 可用性|百分比|平均值|从 MSEE 到所有对等方的 ARP 可用性。|PeeringType,Peer|
 |QosDropBitsInPerSecond|DroppedInBitsPerSecond|每秒计数|平均值|每秒丢弃的数据流入位数|无|
 |QosDropBitsOutPerSecond|DroppedOutBitsPerSecond|每秒计数|平均值|每秒丢弃的数据流出位数|无|
@@ -2076,7 +2076,7 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |cpu_limit|CPU 限制|计数|平均值|CPU 限制。 适用于基于 vCore 的弹性池。|无|
 |database_cpu_limit|CPU 限制|计数|平均值|CPU 限制|DatabaseResourceId|
 |cpu_used|已用 CPU|计数|平均值|已用 CPU。 适用于基于 vCore 的弹性池。|无|
-|database_cpu_used|已用 CPU|计数|平均值|已用 CPU|DatabaseResourceId|
+|database_cpu_used|使用的 CPU|计数|平均值|已用 CPU|DatabaseResourceId|
 |sqlserver_process_core_percent<sup>1</sup>|SQL Server 进程核心百分比|百分比|最大值|SQL Server 进程的 CPU 使用率百分比（由操作系统度量）。 适用于弹性池。 |无|
 |sqlserver_process_memory_percent<sup>1</sup>|SQL Server 进程内存百分比|百分比|最大值|SQL Server 进程的内存使用率百分比（由操作系统度量）。 适用于弹性池。 |无|
 |tempdb_data_size<sup>2</sup>|Tempdb 数据文件大小 (KB)|计数|最大值|Tempdb 数据文件大小 (KB)。|无|
@@ -2237,7 +2237,7 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 
 |指标|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|SyncGroupSyncSessionAppliedFilesCount|已同步的文件数|计数|总计|已同步的文件计数|SyncGroupName,ServerEndpointName,SyncDirection|
+|SyncGroupSyncSessionAppliedFilesCount|同步的文件|计数|总计|已同步的文件计数|SyncGroupName,ServerEndpointName,SyncDirection|
 |SyncGroupSyncSessionPerItemErrorsCount|未同步的文件|计数|总计|无法同步的文件计数|SyncGroupName,ServerEndpointName,SyncDirection|
 |SyncGroupBatchTransferredFileBytes|同步的字节数|字节|总计|为同步会话传输的总文件大小|SyncGroupName,ServerEndpointName,SyncDirection|
 
@@ -2245,7 +2245,7 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 
 |指标|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|ServerEndpointSyncSessionAppliedFilesCount|已同步的文件数|计数|总计|已同步的文件计数|ServerEndpointName,SyncDirection|
+|ServerEndpointSyncSessionAppliedFilesCount|同步的文件|计数|总计|已同步的文件计数|ServerEndpointName,SyncDirection|
 |ServerEndpointSyncSessionPerItemErrorsCount|未同步的文件|计数|总计|无法同步的文件计数|ServerEndpointName,SyncDirection|
 |ServerEndpointBatchTransferredFileBytes|同步的字节数|字节|总计|为同步会话传输的总文件大小|ServerEndpointName,SyncDirection|
 

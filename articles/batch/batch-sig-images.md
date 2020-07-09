@@ -1,16 +1,16 @@
 ---
 title: 使用共享映像库创建自定义池
-description: 使用共享映像库创建 Batch 池，以便将自定义映像预配到计算节点，这些节点包含应用程序所需的软件和数据。 自定义映像是配置计算节点以运行 Batch 工作负载的高效方法。
-ms.topic: article
-origin.date: 08/28/2019
-ms.date: 04/27/2020
+description: 自定义映像是配置计算节点以运行 Batch 工作负载的高效方法。
+ms.topic: conceptual
+origin.date: 05/22/2020
+ms.date: 06/29/2020
 ms.author: v-tawe
-ms.openlocfilehash: bb8376fa59632b7c39e107c0b050d318f4a172db
-ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
+ms.openlocfilehash: 984cf7183482fb2b78fa6472d867d83b801f9311
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84126603"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611856"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-pool"></a>使用共享映像库创建自定义池
 
@@ -30,8 +30,8 @@ ms.locfileid: "84126603"
 * **配置操作系统 (OS)。** 可以自定义映像操作系统磁盘的配置。
 * **预安装应用程序。** 在 OS 磁盘中预装应用程序，与使用启动任务预配计算节点后再安装应用程序相比，这种方法更加高效，且不容易出错。
 * **一次复制大量的数据。** 将静态数据复制到托管映像的数据磁盘，使这些数据成为托管的共享映像的一部分。 只需执行此操作一次，然后，数据可供池的每个节点使用。
-* **扩大池的大小。** 可以通过共享映像库创建更大的池，其中包含自定义映像和更多共享映像副本。
-* **性能优于自定义映像。** 使用共享映像时，池达到稳定状态所需的时间最多可以缩短 25%，VM 空闲延迟最多可以缩短 30%。
+* **扩大池的大小。** 利用共享映像库，可以通过自定义映像和更多的共享映像副本创建更大的池。
+* **性能优于自定义映像。** 使用共享映像，池达到稳定状态所用的时间最多可加快 25%，并且 VM 空闲延迟时间最多可缩短 30%。
 * **进行映像版本控制和分组，以便于管理。** 映像分组定义包含的信息涉及创建映像的原因、它适用于哪个 OS，以及映像的用法。 对映像分组可以方便映像的管理。 有关详细信息，请参阅[映像定义](../virtual-machines/windows/shared-image-galleries.md#image-definitions)。
 
 ## <a name="prerequisites"></a>先决条件
@@ -41,29 +41,32 @@ ms.locfileid: "84126603"
 
 * 一个 Azure Batch 帐户。 若要创建 Batch 帐户，请参阅 Batch 快速入门（使用 [Azure 门户](quick-create-portal.md)或 [Azure CLI](quick-create-cli.md)）。
 
-* **一个共享映像库映像**。 若要创建共享映像，需要具有或创建托管映像资源。 应该基于 VM 的 OS 磁盘快照及其附加的数据磁盘（可选）创建该映像。 有关详细信息，请参阅[准备托管映像](#prepare-a-managed-image)。
+* 共享映像库映像。 若要创建共享映像，需要具有或创建托管映像资源。 应该基于 VM 的 OS 磁盘快照及其附加的数据磁盘（可选）创建该映像。
 
 > [!NOTE]
-> 共享映像必须与 Batch 帐户属于同一订阅。 共享映像可以位于不同的区域中，前提是它在 Batch 帐户所在的区域中有副本。
+> 共享映像必须与 Batch 帐户位于同一订阅中。 只要映像的副本与 Batch 帐户位于同一区域，该映像就可以位于不同区域中。
 
-## <a name="prepare-a-managed-image"></a>准备托管映像
+如果使用 Azure AD 应用程序创建具有共享映像库映像的自定义映像池，则必须向该应用程序授予允许其访问共享映像的 [Azure 内置角色](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles)。 可以通过导航到共享映像，选择“访问控制(IAM)”，并为应用程序添加角色分配，在 Azure 门户中授予此访问权限。
 
-在 Azure 中，可以通过以下项准备托管映像：
+## <a name="prepare-a-custom-image"></a>准备自定义映像
 
-* Azure VM 的 OS 和数据磁盘的快照
+在 Azure 中，可以通过以下项来准备自定义映像：
+
+* Azure VM 的 OS 和数据磁盘快照
 * 带托管磁盘的通用 Azure VM
 * 已上传到云的通用本地 VHD
 
-若要使用自定义映像来可靠地缩放 Batch 池，建议仅使用第一种方法创建托管映像，即使用 VM 磁盘的快照。 请参阅以下步骤来准备 VM、创建快照，然后基于该快照创建映像。
+> [!NOTE]
+> 目前，Batch 仅支持通用共享映像。 此时无法通过专用共享映像创建自定义映像池。
+
+以下步骤展示了如何准备 VM、创建快照，然后基于该快照创建映像。
 
 ### <a name="prepare-a-vm"></a>准备 VM
 
 若要为映像创建新 VM，请使用 Batch 支持的第一方 Azure 市场映像作为托管映像的基础映像。 仅第一方映像可以用作基础映像。 若要获取 Azure Batch 支持的 Azure 市场映像参考的完整列表，请参阅[列出节点代理 SKU](/java/api/com.microsoft.azure.batch.protocol.accounts.listnodeagentskus) 操作。
 
 > [!NOTE]
-> 不能使用具有附加许可和购买条款的第三方映像作为基础映像。 有关这些市场映像的信息，请参阅 [Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
-) 或 [Windows](../virtual-machines/windows/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
-) VM 指南。
+> 不能使用具有附加许可和购买条款的第三方映像作为基础映像。 有关这些市场映像的信息，请参阅 [Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms) 或 [Windows](../virtual-machines/windows/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms) VM 指南。
 
 * 确保使用托管磁盘创建 VM。 这是创建 VM 时的默认存储设置。
 * 不要在 VM 上安装自定义脚本扩展等 Azure 扩展。 如果映像包含预装的扩展，在部署 Batch 池时 Azure 可能会遇到问题。
@@ -81,11 +84,11 @@ ms.locfileid: "84126603"
 
 ### <a name="create-a-shared-image-gallery"></a>创建共享映像库
 
-成功创建托管映像后，需要创建一个共享映像库，使自定义映像可用。 若要了解如何为映像创建共享映像库，请参阅[使用 Azure CLI 创建共享映像库](../virtual-machines/linux/shared-images.md)或[使用 Azure 门户创建共享映像库](../virtual-machines/linux/shared-images-portal.md)。
+成功创建托管映像后，需要创建一个共享映像库，以便可以使用自定义映像。 若要了解如何为映像创建共享映像库，请参阅[使用 Azure CLI 创建共享映像库](../virtual-machines/linux/shared-images.md)或[使用 Azure 门户创建共享映像库](../virtual-machines/linux/shared-images-portal.md)。
 
-## <a name="create-a-pool-from-a-shared-image-using-the-azure-cli"></a>使用 Azure CLI 从共享映像创建池
+## <a name="create-a-pool-from-a-shared-image-using-the-azure-cli"></a>使用 Azure CLI 通过共享映像创建池
 
-若要使用 Azure CLI 从共享映像创建池，请使用 `az batch pool create` 命令。 在 `--image` 字段中指定共享映像 ID。 确保 OS 类型和 SKU 与通过 `--node-agent-sku-id` 指定的版本匹配
+若要使用 Azure CLI 从共享映像创建池，请使用 `az batch pool create` 命令。 在 `--image` 字段中指定共享映像 ID。 确保 OS 类型和 SKU 与 `--node-agent-sku-id` 指定的版本匹配
 
 > [!NOTE]
 > 需要使用 Azure AD 进行身份验证。 如果使用共享密钥身份验证，则会出现身份验证错误。  
@@ -98,9 +101,9 @@ az batch pool create \
     --node-agent-sku-id "batch.node.ubuntu 16.04"
 ```
 
-## <a name="create-a-pool-from-a-shared-image-using-c"></a>使用 C# 从共享映像创建池
+## <a name="create-a-pool-from-a-shared-image-using-c"></a>使用 C# 通过共享映像创建池
 
-也可使用 C# SDK 从共享映像创建池。
+或者，可以使用 C# SDK 通过共享映像创建池。
 
 ```csharp
 private static VirtualMachineConfiguration CreateVirtualMachineConfiguration(ImageReference imageReference)
@@ -132,7 +135,72 @@ private static void CreateBatchPool(BatchClient batchClient, VirtualMachineConfi
 }
 ```
 
-## <a name="create-a-pool-from-a-shared-image-using-the-azure-portal"></a>使用 Azure 门户从共享映像创建池
+## <a name="create-a-pool-from-a-shared-image-using-python"></a>使用 Python 通过共享映像创建池
+
+还可以使用 Python SDK 通过共享映像创建池： 
+
+```python
+# Import the required modules from the
+# Azure Batch Client Library for Python
+import azure.batch as batch
+import azure.batch.models as batchmodels
+from azure.common.credentials import ServicePrincipalCredentials
+
+# Specify Batch account and service principal account credentials
+account = "{batch-account-name}"
+batch_url = "{batch-account-url}"
+ad_client_id = "{sp-client-id}"
+ad_tenant = "{tenant-id}"
+ad_secret = "{sp-secret}"
+
+# Pool settings
+pool_id = "LinuxNodesSamplePoolPython"
+vm_size = "STANDARD_D2_V3"
+node_count = 1
+
+# Initialize the Batch client with Azure AD authentication
+creds = ServicePrincipalCredentials(
+    client_id=ad_client_id,
+    secret=ad_secret,
+    tenant=ad_tenant,
+    resource="https://batch.core.chinacloudapi.cn/"
+)
+client = batch.BatchServiceClient(creds, batch_url)
+
+# Configure the start task for the pool
+start_task = batchmodels.StartTask(
+    command_line="printenv AZ_BATCH_NODE_STARTUP_DIR"
+)
+start_task.run_elevated = True
+
+# Create an ImageReference which specifies the image from
+# Shared Image Gallery to install on the nodes.
+ir = batchmodels.ImageReference(
+    virtual_machine_image_id="/subscriptions/{sub id}/resourceGroups/{resource group name}/providers/Microsoft.Compute/galleries/{gallery name}/images/{image definition name}/versions/{version id}"
+)
+
+# Create the VirtualMachineConfiguration, specifying
+# the VM image reference and the Batch node agent to
+# be installed on the node.
+vmc = batchmodels.VirtualMachineConfiguration(
+    image_reference=ir,
+    node_agent_sku_id="batch.node.ubuntu 18.04"
+)
+
+# Create the unbound pool
+new_pool = batchmodels.PoolAddParameter(
+    id=pool_id,
+    vm_size=vm_size,
+    target_dedicated_nodes=node_count,
+    virtual_machine_configuration=vmc,
+    start_task=start_task
+)
+
+# Create pool in the Batch service
+client.pool.add(new_pool)
+```
+
+## <a name="create-a-pool-from-a-shared-image-using-the-azure-portal"></a>使用 Azure 门户通过共享映像创建池
 
 在 Azure 门户中，使用以下步骤从共享映像创建池。
 
@@ -149,10 +217,11 @@ private static void CreateBatchPool(BatchClient batchClient, VirtualMachineConfi
 
 如果打算使用共享映像创建包含数百或数千 VM 或更多 VM 的池，请按以下指南操作。
 
-* **共享映像库副本数目。**  对于实例数多达 600 的每个池，我们建议至少保留一个副本。 例如，如果创建的池包含 3000 个 VM，则应保留至少 5 个映像副本。 我们始终建议保留超出最低要求的副本数，以便获取更佳性能。
+* **共享映像库副本数目。**  对于实例数多达 600 的每个池，我们建议至少保留一个副本。 例如，如果创建的池包含 3000 个 VM，则应保留至少 5 个映像副本。 我们始终建议保留比最低要求更多的副本，以便获得更好的性能。
 
-* **调整超时。** 如果池包含固定数目的节点（如果池不会自动缩放），请根据池大小增大池的 `resizeTimeout` 属性的值。 建议将每 1000 个 VM 的重设大小超时设置为至少 15 分钟。 例如，如果池包含 2000 个 VM，建议将重设大小超时设置为至少 30 分钟。
+* **调整超时。** 如果池包含固定数目的节点（如果池不会自动缩放），请根据池大小增大池的 `resizeTimeout` 属性的值。 对于每 1000 个 VM，建议的调整超时值至少为 15 分钟。 例如，如果池包含 2000 个 VM，建议将重设大小超时设置为至少 30 分钟。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 Batch 深入概述的信息，请参阅[使用 Batch 开发大规模并行计算解决方案](batch-api-basics.md)。
+- 有关 Batch 的详细概述，请参阅 [Batch 服务工作流和资源](batch-service-workflow-features.md)。
+- 了解[共享映像库](../virtual-machines/windows/shared-image-galleries.md)。

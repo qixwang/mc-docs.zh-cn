@@ -3,14 +3,14 @@ title: 配置 Azure 备份报表
 description: 使用 Log Analytics 和 Azure 工作簿配置和查看 Azure 备份的报表
 ms.topic: conceptual
 author: Johnnytechn
-ms.date: 06/09/2020
+ms.date: 06/22/2020
 ms.author: v-johya
-ms.openlocfilehash: 204fff521a07c1ba23eb7d6aedf0fac77795831a
-ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
+ms.openlocfilehash: d2be55b10c1bd09175a213f83228239399f3985f
+ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84684012"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85852038"
 ---
 # <a name="configure-azure-backup-reports"></a>配置 Azure 备份报表
 
@@ -20,15 +20,16 @@ ms.locfileid: "84684012"
 - 审核备份和还原。
 - 确定不同粒度级别的关键趋势。
 
-如今，Azure 备份提供了一种使用 [Azure Monitor 日志](/azure-monitor/log-query/get-started-portal)和 [Azure 工作簿](/azure-monitor/app/usage-workbooks)的报表解决方案。 这些资源有助于你跨整个备份资产获得有关备份的丰富见解。 本文介绍如何配置和查看 Azure 备份报表。
+如今，Azure 备份提供了一种使用 [Azure Monitor 日志](/azure-monitor/log-query/get-started-portal)和 [Azure 工作簿](/azure-monitor/platform/workbooks-overview)的报表解决方案。 这些资源有助于你跨整个备份资产获得有关备份的丰富见解。 本文介绍如何配置和查看 Azure 备份报表。
 
 ## <a name="supported-scenarios"></a>支持的方案
 
-* Azure VM、Azure VM 中的 SQL、Azure VM 中的 SAP HANA/ASE、Azure 恢复服务 (MARS) 代理、Azure 备份服务器 (MABS) 和 System Center Data Protection Manager (DPM) 支持备份报表。
-* 对于 DPM 工作负载，DPM 版本 5.1.363.0 及更高版本和代理版本 2.0.9127.0 及更高版本支持备份报表。
-* 对于 MABS 工作负载，MABS 版本 13.0.415.0 及更高版本和代理版本 2.0.9170.0 及更高版本支持备份报表。
-* 只要将备份报告的数据发送到用户有权访问的 Log Analytics 工作区，就可以在所有备份项目、保管库、订阅和区域中查看备份报表。 若要查看一组保管库的报表，只需具有对 Log Analytics 工作区（保管库将数据发送到该工作区）的读取访问权限。 无需具有对单个保管库的访问权限。
-* 报表中当前不显示日志备份作业的数据。
+- Azure VM、Azure VM 中的 SQL、Azure VM 中的 SAP HANA、Azure 恢复服务 (MARS) 代理、Azure 备份服务器 (MABS) 和 System Center Data Protection Manager (DPM) 支持备份报表。
+- 对于 DPM 工作负载，DPM 版本 5.1.363.0 及更高版本和代理版本 2.0.9127.0 及更高版本支持备份报表。
+- 对于 MABS 工作负载，MABS 版本 13.0.415.0 及更高版本和代理版本 2.0.9170.0 及更高版本支持备份报表。
+- 只要将备份报告的数据发送到用户有权访问的 Log Analytics 工作区，就可以在所有备份项目、保管库、订阅和区域中查看备份报表。 若要查看一组保管库的报表，只需具有对 Log Analytics 工作区（保管库将数据发送到该工作区）的读取访问权限。 无需具有对单个保管库的访问权限。
+- 目前可以在备份报表中查看最多 100 个 Log Analytics 工作区（跨租户）的数据。
+- 报表中目前不显示日志备份作业的数据。
 <!--Not available in MC: lighthouse-->
 
 ## <a name="get-started"></a>入门
@@ -47,7 +48,7 @@ ms.locfileid: "84684012"
 
 恢复服务保管库等 Azure 资源管理器资源会记录有关计划的操作和用户触发的操作的信息作为诊断数据。
 
-在“恢复服务保管库”的“监视”部分，选择“诊断设置”并指定恢复服务保管库的诊断数据的目标****。 若要了解有关使用诊断事件的详细信息，请参阅[对恢复服务保管库使用诊断设置](/backup/backup-azure-diagnostic-events)。
+在“恢复服务保管库”的“监视”部分，选择“诊断设置”并指定恢复服务保管库的诊断数据的目标。 若要了解有关使用诊断事件的详细信息，请参阅[对恢复服务保管库使用诊断设置](/backup/backup-azure-diagnostic-events)。
 
 ![诊断设置窗格](./media/backup-azure-configure-backup-reports/resource-specific-blade.png)
 
@@ -58,7 +59,7 @@ Azure 备份还提供内置 Azure Policy 定义，该定义会自动配置给定
 
 #### <a name="3-view-reports-in-the-azure-portal"></a>3.在 Azure 门户中查看报表
 
-将保管库配置为将数据发送到 Log Analytics 后，请转到任何保管库的窗格并选择“备份报表”来查看备份报表****。
+将保管库配置为将数据发送到 Log Analytics 后，请转到任何保管库的窗格并选择“备份报表”来查看备份报表。
 
 ![保管库仪表板](./media/backup-azure-configure-backup-reports/vault-dashboard.png)
 
@@ -75,13 +76,16 @@ Azure 备份还提供内置 Azure Policy 定义，该定义会自动配置给定
 
    ![“摘要”选项卡](./media/backup-azure-configure-backup-reports/summary.png)
 
-- **备份项**：使用此选项卡能够以备份项级别查看使用的云存储空间的信息和趋势。 例如，如果在 Azure VM 备份中使用 SQL，则可以看到正在备份的每个 SQL 数据库所使用的云存储空间。 你还可以选择查看特定保护状态的备份项的数据。 例如，选择选项卡顶部的“保护已停止”磁贴将对下面的小组件进行筛选，只显示处于“保护已停止”状态的备份项的数据****。
+- **备份项**：使用此选项卡能够以备份项级别查看使用的云存储空间的信息和趋势。 例如，如果在 Azure VM 备份中使用 SQL，则可以看到正在备份的每个 SQL 数据库所使用的云存储空间。 你还可以选择查看特定保护状态的备份项的数据。 例如，选择选项卡顶部的“保护已停止”磁贴将对下面的小组件进行筛选，只显示处于“保护已停止”状态的备份项的数据。
 
    ![“备份项”选项卡](./media/backup-azure-configure-backup-reports/backup-items.png)
 
 - **使用情况**：使用此选项卡可以查看备份的关键计费参数。 此选项卡上显示的信息可归于计费实体（受保护容器）级别。 例如，在将 DPM 服务器备份到 Azure 的情况下，你可以查看 DPM 服务器使用的受保护实例和云存储空间的趋势。 同样，如果在 Azure 备份中使用 SQL，或者在 Azure 备份中使用 SAP HANA，此选项卡将在包含这些数据库的虚拟机级别上提供与使用情况相关的信息。
 
    ![“使用情况”选项卡](./media/backup-azure-configure-backup-reports/usage.png)
+
+> [!NOTE]
+> 对于 DPM 工作负荷，用户可能会发现报表中显示的使用情况值与“恢复服务保管库概述”选项卡中显示的聚合使用情况值之间存在细微差异（每个 DPM 服务器相差大约 20 MB）。出现这种差异的原因在于，每个要注册备份的 DPM 服务器都有一个关联的“元数据”数据源，该数据源未作为报告项目显示。
 
 - **作业**：使用此选项卡可以查看作业的长时间运行趋势，例如每天失败的作业数和作业失败的主要原因。 你可以在聚合级别和备份项级别查看此信息。 选择网格中的特定备份项，即可查看在选定时间范围内该备份项上触发的每个作业的详细信息。
 
@@ -93,7 +97,7 @@ Azure 备份还提供内置 Azure Policy 定义，该定义会自动配置给定
 
 ## <a name="export-to-excel"></a>导出到 Excel
 
-选择任何小组件（如表或图表）右上角的向下箭头按钮，并在应用了现有筛选器的情况下，将该小组件的内容按原样导出为 Excel 工作表。 若要将表的更多行导出到 Excel，可以使用每个网格顶部的“每页行数”下拉箭头来增加页面上显示的行数****。
+选择任何小组件（如表或图表）右上角的向下箭头按钮，并在应用了现有筛选器的情况下，将该小组件的内容按原样导出为 Excel 工作表。 若要将表的更多行导出到 Excel，可以使用每个网格顶部的“每页行数”下拉箭头来增加页面上显示的行数。
 
 ## <a name="pin-to-dashboard"></a>固定到仪表板
 
@@ -103,12 +107,12 @@ Azure 备份还提供内置 Azure Policy 定义，该定义会自动配置给定
 ## <a name="conventions-used-in-backup-reports"></a>备份报表中使用的约定
 
 - 筛选器在每个选项卡上从左到右、从上到下工作。也就是说，任何筛选器都只应用于位于筛选器右侧或筛选器下方的所有小组件。
-- 选择彩色磁贴将筛选磁贴下面的小组件，仅显示与该磁贴的值相关的记录。 例如，选择备份项选项卡上的“保护已停止”磁贴将筛选下面的网格和图表，以显示处于“保护已停止”状态的备份项的数据**** ****。
+- 选择彩色磁贴将筛选磁贴下面的小组件，仅显示与该磁贴的值相关的记录。 例如，选择备份项选项卡上的“保护已停止”磁贴将筛选下面的网格和图表，以显示处于“保护已停止”状态的备份项的数据 。
 - 无法单击未着色的磁贴。
-- 报表中不显示当前未满一天的数据。 因此，当选定的“时间范围”值为“过去 7 天”时，报告将显示过去完整的 7 天内的记录**** ****。 当前日期不包括在内。
-- 报表显示在选定的时间范围内触发的作业（日志作业除外）的详细信息**。
-- 显示的“云存储空间”和“受保护的实例”的值为选定时间范围结束时的值**** ******。
-- 报表中显示的备份项为选定时间范围结束时的项**。 不会显示在选定时间范围中间删除的备份项。 同样的约定也适用于备份策略。
+- 报表中不显示当前未满一天的数据。 因此，当选定的“时间范围”值为“过去 7 天”时，报告将显示过去完整的 7 天内的记录 。 当前日期不包括在内。
+- 报表显示在选定的时间范围内触发的作业（日志作业除外）的详细信息。
+- 显示的“云存储空间”和“受保护的实例”的值为选定时间范围结束时的值 。
+- 报表中显示的备份项为选定时间范围结束时的项。 不会显示在选定时间范围中间删除的备份项。 同样的约定也适用于备份策略。
 
 ## <a name="query-load-times"></a>查询加载时间
 
@@ -124,9 +128,9 @@ Azure 备份还提供内置 Azure Policy 定义，该定义会自动配置给定
 
 ## <a name="what-happened-to-the-power-bi-reports"></a>Power BI 报表有哪些变化？
 
-- 早期用于报表的 Power BI 模板应用（从 Azure 存储帐户中获取数据）即将弃用。 建议你开始向 Log Analytics 发送保管库诊断数据以查看报表。
+- 早期用于报表的 Power BI 模板应用（从 Azure 存储帐户中获取数据）即将弃用。 我们建议开始将保管库诊断数据发送到 Log Analytics 以查看报表。
 
-- * 此外，将诊断数据发送到存储帐户或 LA 工作区的 [V1 架构](/backup/backup-azure-diagnostics-mode-data-model#v1-schema-vs-v2-schema)也即将弃用。 这意味着，如果基于 V1 架构编写了任何自定义查询或自动化，则建议更新这些查询以使用当前支持的 V2 架构。
+- 此外，将诊断数据发送到存储帐户或 LA 工作区的 [V1 架构](/backup/backup-azure-diagnostics-mode-data-model#v1-schema-vs-v2-schema)也即将弃用。 这意味着，如果基于 V1 架构编写了任何自定义查询或自动化，则建议更新这些查询以使用当前支持的 V2 架构。
 
 ## <a name="next-steps"></a>后续步骤
 

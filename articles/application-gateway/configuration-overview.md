@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 05/19/2020
+ms.date: 06/23/2020
 ms.author: v-junlch
-ms.openlocfilehash: 717d5f3308d8311495784d75da2123a86744233b
-ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
+ms.openlocfilehash: b8eb3e5584ee6134e7963cf5d905fe6ca2b6589f
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83748152"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516686"
 ---
 # <a name="application-gateway-configuration-overview"></a>应用程序网关配置概述
 
@@ -224,9 +224,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 #### <a name="order-of-processing-rules"></a>规则的处理顺序
 
-使用 v1 SKU 时，将按照路径在基于路径的规则的 URL 路径映射中的列出顺序处理传入请求的模式匹配。 如果某个请求与 URL 路径映射中的两个或更多个路径的模式相匹配，则会匹配最先列出的路径。 请求将转发到与该路径关联的后端。
-
-对于 v2 SKU，完全匹配的优先级高于 URL 路径映射中的路径顺序。 如果请求与两个或更多路径中的模式匹配，则会将请求转发到与完全匹配请求的路径关联的后端。 如果传入请求中的路径与映射中的任何路径都不完全匹配，则将在基于路径的规则的路径映射顺序列表中处理请求的模式匹配。
+使用 v1 和 v2 SKU 时，将按照路径在基于路径的规则的 URL 路径映射中列出的顺序处理传入请求的模式匹配。 如果某个请求与 URL 路径映射中的两个或更多个路径的模式相匹配，则会匹配最先列出的路径。 请求将转发到与该路径关联的后端。
 
 ### <a name="associated-listener"></a>关联的侦听器
 

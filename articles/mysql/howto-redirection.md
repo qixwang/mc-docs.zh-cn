@@ -5,23 +5,30 @@ author: WenJason
 ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
-origin.date: 03/16/2020
-ms.date: 04/27/2020
-ms.openlocfilehash: c085c6b3e569474d0cc42bd0b08250877699fa66
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+origin.date: 6/8/2020
+ms.date: 06/29/2020
+ms.openlocfilehash: bdab81eb4c7ffd0ffaa9cc0c190da8dedb01bfdb
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82127259"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516439"
 ---
 # <a name="connect-to-azure-database-for-mysql-with-redirection"></a>使用重定向连接到 Azure Database for MySQL
+
+> [!NOTE] 
+> 将要查看的是 Azure Database for MySQL 的新服务。 若要查看经典 MySQL Database for Azure 的文档，请访问[此页](https://docs.azure.cn/zh-cn/mysql-database-on-azure/)。
 
 本主题介绍了如何使用重定向模式将应用程序连接到 Azure Database for MySQL 服务器。 重定向是为了减小客户端应用程序与 MySQL 服务器之间的网络延迟，因为它允许应用程序直接连接到后端服务器节点。
 
 ## <a name="before-you-begin"></a>准备阶段
-登录到 [Azure 门户](https://portal.azure.cn)。 使用引擎版本 5.6、5.7 或 8.0 创建 Azure Database for MySQL 服务器。 有关详细信息，请参阅[如何在门户中创建 Azure Database for MySQL 服务器](quickstart-create-mysql-server-database-using-azure-portal.md)或[如何使用 CLI 创建 Azure Database for MySQL 服务器](quickstart-create-mysql-server-database-using-azure-cli.md)。
+登录到 [Azure 门户](https://portal.azure.cn)。 使用引擎版本 5.6、5.7 或 8.0 创建 Azure Database for MySQL 服务器。 
 
-目前，仅当已在 Azure Database for MySQL 服务器上启用了 SSL 时，才支持重定向  。 有关如何配置 SSL 的详细信息，请参阅[通过 Azure Database for MySQL 使用 SSL](howto-configure-ssl.md#step-6--enforcing-ssl-connections-in-azure)。
+有关详细信息，请参阅如何使用 [Azure 门户](quickstart-create-mysql-server-database-using-azure-portal.md)或 [Azure CLI](quickstart-create-mysql-server-database-using-azure-cli.md) 创建 Azure Database for MySQL 服务器。
+
+## <a name="enable-redirection"></a>启动重定向
+
+在 Azure Database for MySQL 服务器中，将 `redirect_enabled` 参数配置为 `ON` 以允许使用重定向模式进行连接。 要更新该服务器参数，请使用 [Azure 门户](howto-server-parameters.md)或 [Azure CLI](howto-configure-server-parameters-using-cli.md)。
 
 ## <a name="php"></a>PHP
 
@@ -35,19 +42,19 @@ PHP 应用程序中的重定向支持是通过 Microsoft 开发的 [mysqlnd_azur
 ### <a name="redirection-logic"></a>重定向逻辑
 
 >[!IMPORTANT]
-> 从版本 1.1.0 开始，重定向逻辑/行为已更新，建议使用版本 1.1.0+  。
+> 从版本 1.1.0 开始，重定向逻辑/行为已更新，建议使用版本 1.1.0+。
 
-重定向行为由 `mysqlnd_azure.enableRedirect` 的值决定。 下表概述了从版本 1.1.0+ 开始，基于此参数值的重定向行为  。
+重定向行为由 `mysqlnd_azure.enableRedirect` 的值决定。 下表概述了从版本 1.1.0+ 开始，基于此参数值的重定向行为。
 
 如果使用的是旧版 mysqlnd_azure 扩展（版本 1.0.0-1.0.3），则重定向行为由 `mysqlnd_azure.enabled` 的值决定。 有效值为 `off`（行为与下表中所述的行为类似）和 `on`（行为类似于下表中的 `preferred`）。  
 
 |**mysqlnd_azure enableRedirect 值**| **行为**|
 |----------------------------------------|-------------|
 |`off` 或 `0`|不会使用重定向。 |
-|`on` 或 `1`|- 如果未在 Azure Database for MySQL 服务器上启用 SSL，则不会建立连接。 将返回以下错误：“mysqlnd_azure.enableRedirect 已开启，但连接字符串中未设置 SSL 选项。  只能使用 SSL 实现重定向。”<br>- 如果在 MySQL 服务器上启用了 SSL，但该服务器不支持重定向，则第一个连接将会中止并返回以下错误：“由于 MySQL 服务器上未启用重定向或者网络数据包不符合重定向协议，连接已中止。” <br>- 如果 MySQL 服务器支持重定向，但重定向的连接出于任何原因而失败，则还会中止第一个代理连接。 返回重定向连接错误。|
-|`preferred` 或 `2`<br> （默认值）|- mysqlnd_azure 会尽可能地使用重定向。<br>- 如果连接未使用 SSL、服务器不支持重定向，或者在代理连接仍然有效时重定向的连接出于任何非致命原因而无法建立连接，则会回退到第一个代理连接。|
+|`on` 或 `1`|- 如果连接未在驱动程序端使用 SSL，则不会建立连接。 将返回以下错误：“mysqlnd_azure.enableRedirect 为 on，但连接字符串中未设置 SSL 选项。仅在使用了 SSL 的情况下才支持重定向。”<br>- 如果在驱动程序端使用了 SSL，但服务器不支持重定向，则第一个连接将中止并返回以下错误：“由于 MySQL 服务器上未启用重定向，或网络包不符合重定向协议，连接已中止。”<br>- 如果 MySQL 服务器支持重定向，但重定向的连接出于任何原因而失败，则还会中止第一个代理连接。 返回重定向连接错误。|
+|`preferred` 或 `2`<br> （默认值）|- mysqlnd_azure 将尽可能使用重定向。<br>- 如果连接未在驱动程序端使用 SSL，则服务器不支持重定向，或者重定向的连接由于任何非致命原因而无法连接，而代理连接仍然有效，则服务器将回退到第一个代理连接。|
 
-本文档的后续部分将会概述如何使用 PECL 安装 `mysqlnd_azure` 扩展和设置此参数的值。
+本文档的后续部分将概述如何使用 PECL 安装 `mysqlnd_azure` 扩展并设置此参数的值。
 
 ### <a name="ubuntu-linux"></a>Ubuntu Linux
 
@@ -55,9 +62,9 @@ PHP 应用程序中的重定向支持是通过 Microsoft 开发的 [mysqlnd_azur
 - PHP 版本 7.2.15+ 和 7.3.2+
 - PHP PEAR 
 - php-mysql
-- 已启用 SSL 的 Azure Database for MySQL 服务器
+- Azure Database for MySQL 服务器
 
-1. 使用 [PECL](https://pecl.php.net/package/mysqlnd_azure) 安装 [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure)。 建议使用版本 1.1.0+。
+1. 通过 [PECL](https://pecl.php.net/package/mysqlnd_azure) 安装 [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure)。 建议使用版本 1.1.0+。
 
     ```bash
     sudo pecl install mysqlnd_azure
@@ -93,9 +100,9 @@ PHP 应用程序中的重定向支持是通过 Microsoft 开发的 [mysqlnd_azur
 #### <a name="prerequisites"></a>先决条件 
 - PHP 版本 7.2.15+ 和 7.3.2+
 - php-mysql
-- 已启用 SSL 的 Azure Database for MySQL 服务器
+- Azure Database for MySQL 服务器
 
-1. 运行以下命令来确定运行的是 x64 还是 x86 版本的 PHP：
+1. 通过运行以下命令确定运行的是 x64 还是 x86 版本的 PHP：
 
     ```cmd
     php -i | findstr "Thread"

@@ -11,24 +11,24 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 01/24/2020
-ms.date: 2/6/2020
-ms.author: v-lingwu
-ms.openlocfilehash: 282d727cefc356e1d8740cdae64a4f5f22502c4a
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+origin.date: 05/20/2020
+ms.date: 06/30/2020
+ms.author: v-tawe
+ms.openlocfilehash: 5020622e7192d17ce825a74bdf0f7ea04ee4e76c
+ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796836"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85796319"
 ---
 # <a name="message-sessions"></a>消息会话
 使用 Microsoft Azure 服务总线会话，能够以连贯有序的方式处理一系列无限多的相关消息。 会话可以在先进先出 (FIFO) 和请求-响应模式下使用。 本文展示了如何在使用服务总线时使用会话来实现这些模式。 
 
+> [!NOTE]
+> 服务总线的基本层不支持会话。 标准层和高级层支持会话。 有关这些层之间的差异，请参阅[服务总线定价](https://www.azure.cn/pricing/details/service-bus/)。
+
 ## <a name="first-in-first-out-fifo-pattern"></a>先进先出 (FIFO) 模式
 若要在服务总线中实现 FIFO 保证，请使用会话。 服务总线没有规定消息之间的关系性质，也没有定义用于确定消息序列开始或结束位置的特定模型。
-
-> [!NOTE]
-> 基本层的服务总线不支持会话。 标准层和高级层支持会话。 有关这些层级之间的差异，请参阅[服务总线定价](https://www.azure.cn/pricing/details/service-bus/)。
 
 任何发送程序都可以在将消息提交到主题或队列时创建会话，方法是将 [SessionId](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message.sessionid#Microsoft_Azure_ServiceBus_Message_SessionId) 属性设置为会话专属的由应用程序定义的某标识符。 在 AMQP 1.0 协议一级，此值映射到 group-id 属性。
 
@@ -42,7 +42,7 @@ ms.locfileid: "83796836"
 
 在门户中，选中下图中展示的复选框设置标志：
 
-![][2]
+![queue-sessions][2]
 
 > [!NOTE]
 > 在队列或订阅上启用会话时，客户端应用程序可以***不再***发送/接收常规消息。 所有消息必须作为会话的一部分发送（通过设置会话 ID），并通过接收会话来接收。
@@ -53,7 +53,7 @@ ms.locfileid: "83796836"
 
 会话支持对交错消息流进行并发解多路复用，同时保留和保证有序传递。
 
-![][1]
+![会话][1]
 
 [MessageSession](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.messagesession) 接收程序是由接受会话的客户端创建。 客户端调用 C# 编写的 [QueueClient.AcceptMessageSession](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesession#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSession) 或 [QueueClient.AcceptMessageSessionAsync](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesessionasync#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSessionAsync)。 在反应回调模型中，它会注册会话处理程序。
 
@@ -83,23 +83,23 @@ ms.locfileid: "83796836"
 
 队列或订阅中保留的会话状态计入相应实体的存储配额。 因此，当应用程序完成会话时，建议应用程序清理保留的状态，以杜绝外部管理成本。
 
-### <a name="impact-of-delivery-count"></a>传递计数的影响
+### <a name="impact-of-delivery-count"></a>传送计数的影响
 
-在会话上下文中，每条消息的传递计数的定义与在没有会话的情况下的定义略有不同。 下面的表总结了传递计数何时递增。
+在会话上下文中，每条消息的传递计数的定义与在没有会话的情况下的定义略有不同。 下表汇总了递增传送计数的时间。
 
 | 方案 | 消息的传递计数是否递增 |
 |----------|---------------------------------------------|
 | 接受会话，但会话锁已过期（由于超时） | 是 |
 | 接受会话，会话中的消息未完成（即使它们已锁定），并且会话已关闭 | 否 |
-| 接受会话，完成消息，然后显式关闭会话 | 不适用（它是标准流。 此处的消息将从会话中删除） |
+| 会话被接受，消息完成，然后显式关闭会话 | 不适用（它是标准流。 此处的消息将从会话中删除） |
 
 ## <a name="request-response-pattern"></a>“请求-响应”模式
 [“请求-回复”模式](https://www.enterpriseintegrationpatterns.com/patterns/messaging/RequestReply.html)是一种成熟的集成模式，它使发送方应用程序能够发送请求，并为接收程序提供了一种正确地将响应发送回发送方应用程序的方法。 此模式通常需要一个生存期较短的队列或主题，以便应用程序向其发送响应。 在此方案中，会话提供了一个具有可比较语义的简单替代解决方案。 
 
-多个应用程序可以将其请求发送到单个请求队列，并设置一个特定标头参数来唯一地标识发送方应用程序。 接收方应用程序可以处理来自队列中的请求，并将回复发送到支持会话的队列，将会话 ID 设置为发送方在请求消息中发送的唯一标识符。 然后，发送请求的应用程序通过特定的会话 ID 接收消息，并正确地处理回复。
+多个应用程序可以将其请求发送到单个请求队列，并将特定标头参数设置为唯一标识发送程序应用程序。 接收程序应用程序可以处理传入队列的请求并在启用了会话的队列上发送答复，将会话 ID 设置为发送程序已在请求消息上发送的唯一标识符。 然后，发送请求的应用程序可以在特定会话 ID 上接收消息，并正确地处理答复。
 
 > [!NOTE]
-> 发送初始请求的应用程序应当知道会话 ID，并使用 `SessionClient.AcceptMessageSession(SessionID)` 锁定它预期在其中接收响应的会话。 一个不错的做法是使用可独一无二地将应用程序实例标识为会话 ID 的 GUID。队列上不应存在会话处理程序或 `AcceptMessageSession(timeout)`，这是为了确保响应可由特定接收程序锁定和处理。
+> 发送初始请求的应用程序应了解会话 ID，并使用 `SessionClient.AcceptMessageSession(SessionID)` 锁定需要响应的会话。 一个不错的做法是使用可独一无二地将应用程序实例标识为会话 ID 的 GUID。队列上不应存在会话处理程序或 `AcceptMessageSession(timeout)`，这是为了确保响应可由特定接收程序锁定和处理。
 
 ## <a name="next-steps"></a>后续步骤
 

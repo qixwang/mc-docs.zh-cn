@@ -1,19 +1,19 @@
 ---
-title: 使用 Azure 应用程序网关管理发往多租户应用（例如应用服务 Web 应用）的流量 - 门户
+title: 使用门户管理多租户应用的流量
+titleSuffix: Azure Application Gateway
 description: 本文提供有关如何在现有或新的应用程序网关上将 Azure 应用服务 Web 应用配置为后端池成员的指导。
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-origin.date: 03/11/2019
-ms.date: 09/02/2019
+ms.date: 06/24/2020
 ms.author: v-junlch
-ms.openlocfilehash: 3e812d7b6460a4a3e3c6f5e44128f72ebd94207b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2422cf1046d066c77575aa9262b7ccda66863266
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "70310804"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516690"
 ---
 # <a name="configure-app-service-with-application-gateway"></a>使用应用程序网关配置应用服务
 
@@ -37,37 +37,37 @@ ms.locfileid: "70310804"
 
 1. 在 Azure 门户中，打开应用程序网关的配置视图。
 
-2. 在“后端池”下，单击“添加”以创建新的后端池。  
+2. 在“后端池”下，单击“添加”以创建新的后端池。 
 
 3. 为后端池提供适当的名称。 
 
-4. 在“目标”下，单击下拉列表并选择“应用服务”作为选项。  
+4. 在“目标”下，单击下拉列表并选择“应用服务”作为选项。 
 
-5. 紧靠在“目标”下拉列表的下面会显示另一个下拉列表，其中包含应用服务的列表。  在此下拉列表中，选择要添加为后端池成员的应用服务，然后单击“添加”。
+5. 紧靠在“目标”下拉列表的下面会显示另一个下拉列表，其中包含应用服务的列表。 在此下拉列表中，选择要添加为后端池成员的应用服务，然后单击“添加”。
 
    ![应用服务后端](./media/configure-web-app-portal/backendpool.png)
    
    > [!NOTE]
-   > 下拉列表中只填充了与应用程序网关位于同一订阅中的应用服务。 若要使用与应用程序网关不同的订阅中的应用服务，请在“目标”下拉列表中选择“应用服务”，选择“IP 地址或主机名”选项，然后输入应用服务的主机名（例如    chinacloudsites.cn）。
+   > 下拉列表中只填充了与应用程序网关位于同一订阅中的应用服务。 若要使用与应用程序网关不同的订阅中的应用服务，请在“目标”下拉列表中选择“应用服务”，选择“IP 地址或主机名”选项，然后输入应用服务的主机名（例如   chinacloudsites.cn）。
 
 ## <a name="create-http-settings-for-app-service"></a>创建应用服务的 HTTP 设置
 
-1. 在“HTTP 设置”下，单击“添加”以创建新的 HTTP 设置。  
+1. 在“HTTP 设置”下，单击“添加”以创建新的 HTTP 设置。 
 
 2. 输入该 HTTP 设置的名称，并根据要求启用或禁用“基于 Cookie 的相关性”。
 
 3. 根据用例选择“HTTP”或“HTTPS”作为协议。 
 
    > [!NOTE]
-   > 如果选择“HTTPS”，则无需上传任何身份验证证书或受信任的根证书即可将应用服务后端加入允许列表，因为应用服务是受信任的 Azure 服务。
+   > 如果选择“HTTPS”，则无需上传任何身份验证证书或受信任的根证书即可允许服务后端，因为应用服务是受信任的 Azure 服务。
 
-4. 选中“用于应用服务”对应的框。  请注意，开关 `Create a probe with pick host name from backend address` 和 `Pick host name from backend address` 会自动启用。`Pick host name from backend address` 会在将请求从应用程序网关路由到后端时，使用后端的主机名来替代请求中的主机标头。  
+4. 选中“用于应用服务”对应的框。 请注意，开关 `Create a probe with pick host name from backend address` 和 `Pick host name from backend address` 会自动启用。`Pick host name from backend address` 会在将请求从应用程序网关路由到后端时，使用后端的主机名来替代请求中的主机标头。  
 
    `Create a probe with pick host name from backend address` 会自动创建运行状况探测，并将其关联到此 HTTP 设置。 无需为此 HTTP 设置创建任何其他运行状况探测。 可以检查名为 <HTTP Setting name><Unique GUID> 的新探测是否已添加运行状况探测列表并已包含开关 `Pick host name from backend http settings enabled`。
 
    如果你已将一个或多个 HTTP 设置用于应用服务，并且这些 HTTP 设置使用的协议与正在创建的设置中使用的协议相同，则你不会获得 `Create a probe with pick host name from backend address` 开关，而是看到一个下拉列表，可在其中选择某个自定义探测。 这是因为，已存在一个包含应用服务的 HTTP 设置，因此也存在一个具有开关 `Pick host name from backend http settings enabled` 的运行状况探测。 从下拉列表中选择该自定义探测。
 
-5. 单击“确定”以创建该 HTTP 设置。 
+5. 单击“确定”以创建该 HTTP 设置。
 
    ![HTTP-setting1](./media/configure-web-app-portal/http-setting1.png)
 
@@ -77,15 +77,15 @@ ms.locfileid: "70310804"
 
 ## <a name="create-rule-to-tie-the-listener-backend-pool-and-http-setting"></a>创建用于绑定侦听器、后端池和 HTTP 设置的规则
 
-1. 在“规则”下，单击“基本”以创建新的基本规则。  
+1. 在“规则”下，单击“基本”以创建新的基本规则。 
 
 2. 提供适当的名称，并选择用于接受应用服务传入请求的侦听器。
 
-3. 在“后端池”下拉列表中，选择前面创建的后端池。 
+3. 在“后端池”下拉列表中，选择前面创建的后端池。
 
-4. 在“HTTP 设置”下拉列表中，选择前面创建的 HTTP 设置。 
+4. 在“HTTP 设置”下拉列表中，选择前面创建的 HTTP 设置。
 
-5. 单击“确定”以保存此规则。 
+5. 单击“确定”以保存此规则。
 
    ![规则](./media/configure-web-app-portal/rule.png)
 

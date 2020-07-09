@@ -6,16 +6,16 @@ ms.author: v-jay
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: conceptual
-origin.date: 4/1/2020
-ms.date: 04/27/2020
-ms.openlocfilehash: 085698ccc8506944246e69e1bf41dbe758bfd397
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+origin.date: 6/11/2020
+ms.date: 06/29/2020
+ms.openlocfilehash: 6d7e76428cda7a3b1eba7f44ce535c5f3dac2370
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126852"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516721"
 ---
-# <a name="customize-server-parameters-by-using-azure-cli"></a>使用 Azure CLI 自定义服务器参数
+# <a name="configure-server-parameters-in-azure-database-for-mysql-using-the-azure-cli"></a>使用 Azure CLI 在 Azure Database for MySQL 中配置服务器参数
 
 > [!NOTE]
 > 将要查看的是 Azure Database for MySQL 的新服务。 若要查看经典 MySQL Database for Azure 的文档，请访问[此页](https://docs.azure.cn/zh-cn/mysql-database-on-azure/)。
@@ -56,6 +56,14 @@ az mysql server configuration set --name slow_query_log --resource-group myresou
 ```
 此代码会将 slow\_query\_log 配置重置为默认值 OFF。 
 
+## <a name="setting-parameters-not-listed"></a>设置参数未列出
+如果 Azure 门户中未列出你要更新的服务器参数，则可以选择使用 `init_connect` 在连接级别设置参数。 此项可为每个连接到服务器的客户端设置服务器参数。 
+
+更新资源组 myresourcegroup 下的服务器 mydemoserver.mysql.database.chinacloudapi.cn 的 init\_connect 服务器配置参数，以设置字符集之类的值  。
+```azurecli
+az mysql server configuration set --name init_connect --resource-group myresourcegroup --server mydemoserver --value "SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;"
+```
+
 ## <a name="working-with-the-time-zone-parameter"></a>使用时区参数
 
 ### <a name="populating-the-time-zone-tables"></a>填充时区表
@@ -82,18 +90,18 @@ SELECT name FROM mysql.time_zone_name;
 
 可以使用 [az mysql server configuration set](/cli/mysql/server/configuration#az-mysql-server-configuration-set) 命令来设置全局级时区。
 
-以下命令将资源组 myresourcegroup 下的服务器 mydemoserver.mysql.database.chinacloudapi.cn 的 time\_zone 服务器配置参数更新为“美国/太平洋”   。
+以下命令将资源组 myresourcegroup 下的服务器 mydemoserver.mysql.database.chinacloudapi.cn 的服务器配置参数 time\_zone 更新为 Asia/Shanghai   。
 
 ```azurecli
-az mysql server configuration set --name time_zone --resource-group myresourcegroup --server mydemoserver --value "US/Pacific"
+az mysql server configuration set --name time_zone --resource-group myresourcegroup --server mydemoserver --value "Asia/Shanghai"
 ```
 
 ### <a name="setting-the-session-level-time-zone"></a>设置会话级时区
 
-可以通过从 MySQL 命令行或 MySQL Workbench 等工具运行 `SET time_zone` 命令来设置会话级时区。 以下示例将时区设置为“美国/太平洋”时区。  
+可以通过从 MySQL 命令行或 MySQL Workbench 等工具运行 `SET time_zone` 命令来设置会话级时区。 以下示例将时区设置为“Asia/Shanghai”时区。  
 
 ```sql
-SET time_zone = 'US/Pacific';
+SET time_zone = 'Asia/Shanghai';
 ```
 
 若要了解[日期和时间函数](https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_convert-tz)，请参阅 MySQL 文档。

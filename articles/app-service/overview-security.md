@@ -4,30 +4,21 @@ description: 了解应用服务如何帮助保护应用，以及如何进一步�
 keywords: azure 应用服务, web 应用, 移动应用, api 应用, 函数应用, 安全性, 保护, 受保护, 符合性, 符合, 证书, 证书, https, ftps, tls, 信任, 加密, 加密, 已加密, ip 限制, 身份验证, 授权, 身份验证, 授权, msi, 托管服务标识, 托管标识, 机密, 机密, 修补, 修补程序, 修补程序, 版本, 隔离, 网络隔离, ddos, mitm
 ms.topic: article
 origin.date: 08/24/2018
-ms.date: 03/30/2020
+ms.date: 06/22/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: c2086cb6bae17d6feea65e65b474beb06f587b76
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.openlocfilehash: 683374f7417fffa4f6a2c645ab65095de6b59999
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588541"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85613339"
 ---
 # <a name="security-in-azure-app-service"></a>Azure 应用服务中的安全性
 
 本文介绍 [Azure 应用服务](overview.md)如何帮助保护 Web 应用、移动应用后端、API 应用和[函数应用](/azure-functions/)。 它还介绍如何使用内置的应用服务功能进一步保护应用。
 
-应用服务的各个平台组件（包括 Azure VM、存储、网络连接、Web 框架、管理和集成功能）都得到了积极保护和加强。 应用服务持续进行严格的符合性检查，以确保：
-
-- 你的应用资源与其他客户的 Azure 资源隔离开来，从而[受到保护](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)。
-- [定期更新 VM 实例和运行时软件](overview-patch-os-runtime.md)，以解决新发现的漏洞。 
-- 你的应用与其他 Azure 资源（例如 [SQL 数据库](/sql-database/)）之间的密钥（例如连接字符串）通信一直在 Azure 中进行，不跨越任何网络边界。 存储密钥时始终对其加密。
-- 通过应用服务连接功能（例如[混合连接](app-service-hybrid-connections.md)）进行的所有通信均已加密。 
-- 与 Azure PowerShell、Azure CLI、Azure SDK、REST API 等远程管理工具的连接均已加密。
-- 24 小时威胁管理可保护基础结构和平台免受恶意软件、分布式拒绝服务 (DDoS)、中间人 (MITM) 和其他威胁的危害。
-
-<!-- For more information on infrastructure and platform security in Azure, see [Azure Trust Center](https://azure.microsoft.com/overview/trusted-cloud/). -->
+[!INCLUDE [app-service-security-intro](../../includes/app-service-security-intro.md)]
 
 以下部分介绍如何进一步保护应用服务应用使其免受威胁。
 
@@ -38,9 +29,9 @@ ms.locfileid: "82588541"
 - 免费应用服务托管证书
 - 应用服务证书
 - 第三方证书
-- 从 Azure 密钥保管库导入的证书
+- 从 Azure Key Vault 导入的证书
 
-有关详细信息，请参阅[在 Azure 应用服务中添加 SSL 证书](configure-ssl-certificate.md)。
+有关详细信息，请参阅[在 Azure 应用服务中添加 TLS/SSL 证书](configure-ssl-certificate.md)。
 
 ## <a name="insecure-protocols-http-tls-10-ftp"></a>不安全的协议（HTTP、TLS 1.0、FTP）
 
@@ -54,7 +45,7 @@ PCI DSS 等行业标准已不再将 TLS 1.0 视为安全协议。 应用服务�
 
 默认情况下，应用服务应用接受来自 Internet 的所有 IP 地址的请求，但你可以将该访问权限限定于一小部分 IP 地址。 通过 Windows 上的应用服务，可定义允许访问应用的 IP 地址的列表。 允许列表可包括单个 IP 地址或由子网掩码定义的 IP 地址范围。 有关详细信息，请参阅 [Azure 应用服务静态 IP 限制](app-service-ip-restrictions.md)。
 
-对于 Windows 上的应用服务，还可以通过配置 _web.config_ 来动态限制 IP 地址。有关详细信息，请参阅[动态 IP 安全性 \<dynamicIpSecurity>](https://docs.microsoft.com/iis/configuration/system.webServer/security/dynamicIpSecurity/).。
+对于 Windows 上的应用服务，还可以通过配置 _web.config_ 来动态限制 IP 地址。有关详细信息，请参阅[动态 IP 安全性\<dynamicIpSecurity>](https://docs.microsoft.com/iis/configuration/system.webServer/security/dynamicIpSecurity/)。
 
 ## <a name="client-authentication-and-authorization"></a>客户端身份验证和授权
 

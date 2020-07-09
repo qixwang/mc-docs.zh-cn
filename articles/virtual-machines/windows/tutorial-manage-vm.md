@@ -1,26 +1,20 @@
 ---
 title: 教程 - 使用 Azure PowerShell 创建和管理 Windows VM
 description: 本教程介绍如何使用 Azure PowerShell 在 Azure 中创建和管理 Windows VM
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: rockboyfor
-manager: digimobile
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 06/06/2019
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: cbf7df3ef64dc7e674e8b055edac1a04dc0f21be
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: f24c171bf959059b6b434764478a47764bf69895
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392449"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945848"
 ---
 # <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>教程：使用 Azure PowerShell 创建和管理 Windows VM
 
@@ -33,7 +27,7 @@ Azure 虚拟机提供完全可配置的灵活计算环境。 本教程介绍 Azu
 > * 调整 VM 的大小
 > * 查看并了解 VM 状态
 
-## <a name="launch-azure-powershell"></a>启动 Azure PowerShell
+## <a name="launch-azure-local-powershell"></a>启动 Azure 本地 PowerShell
 
 打开 Azure Powershell 控制台，并以管理员权限运行以下脚本。
 
@@ -56,7 +50,7 @@ New-AzResourceGroup `
 
 ## <a name="create-a-vm"></a>创建 VM
 
-创建 VM 时，可使用多个选项，例如操作系统映像、网络配置和管理凭据。 此示例创建名为“myVM”的 VM，并运行默认版本的 Windows Server 2016 Datacenter。
+创建 VM 时，可使用多个选项，例如操作系统映像、网络配置和管理凭据。 此示例创建名为 *myVM* 的 VM，运行默认版本的 Windows Server 2016 Datacenter。
 
 使用 [Get-Credential](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential?view=powershell-6) 设置 VM 上管理员帐户所需的用户名和密码：
 

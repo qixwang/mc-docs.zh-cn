@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure VM 上的托管标识进行登录 - Azure AD
-description: 有关使用 Azure 资源服务主体的 Azure VM 托管标识进行脚本客户端登录和资源访问的逐步说明与示例。
+title: 使用 Azure VM 上的托管标识进行登录 - Azure ADV
+description: 有关使用 Azure 资源服务主体的 Azure VM 托管标识进行登录和资源访问的逐步说明与客户端脚本示例。
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/10/2019
+ms.date: 06/30/2020
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de98e109b23366c413e4dd493b9c759abb547e0d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3819ac6b4a300b1673a86fb6541b7336c056dcbb
+ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75335627"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945178"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>如何在 Azure VM 上使用 Azure 资源的托管标识进行登录 
 
@@ -41,7 +41,7 @@ ms.locfileid: "75335627"
 
 ## <a name="overview"></a>概述
 
-Azure 资源的托管标识提供一个[服务主体对象](../develop/developer-glossary.md#service-principal-object)，此对象是在 VM 上[启用 Azure 资源的托管标识时创建的](overview.md#how-does-the-managed-identities-for-azure-resources-work)。 可向此服务主体授予对 Azure 资源的访问权限；脚本/命令行客户端可将此服务主体用作标识进行登录和资源访问。 传统上，若要使用自身的标识访问受保护资源，脚本客户端需要：  
+Azure 资源的托管标识提供一个[服务主体对象](../develop/developer-glossary.md#service-principal-object)，此对象是在 VM 上[启用 Azure 资源的托管标识时创建的](overview.md)。 可向此服务主体授予对 Azure 资源的访问权限；脚本/命令行客户端可将此服务主体用作标识进行登录和资源访问。 传统上，若要使用自身的标识访问受保护资源，脚本客户端需要：  
 
    - 注册到 Azure AD，并同意将 Azure AD 用作机密/Web 客户端应用程序
    - 使用应用的凭据（可能会嵌入在脚本中）以自身的服务主体登录
@@ -86,13 +86,13 @@ Azure 资源的托管标识提供一个[服务主体对象](../develop/developer
 
 如下所示的响应可能表示未正确配置 VM 的 Azure 资源的托管标识：
 
-- PowerShell：Invoke-WebRequest：  无法连接到远程服务器
-- CLI：MSI：  无法从 `http://localhost:50342/oauth2/token` 检索令牌，出现错误 HTTPConnectionPool (主机='localhost'，端口=50342) 
+- PowerShell：Invoke-WebRequest：无法连接到远程服务器
+- CLI：MSI：无法从 `http://localhost:50342/oauth2/token` 检索令牌，出现错误 HTTPConnectionPool (主机='localhost'，端口=50342) 
 
 如果收到以下错误之一，请在 [Azure 门户](https://portal.azure.cn)中返回到 Azure VM 并执行以下操作：
 
-- 转到“标识”页面，确保“系统分配的”已设置为“是”   。
-- 转到“扩展”页面，确保已成功部署 Azure 资源扩展的托管标识（计划在 2019 年 1 月弃用）   。
+- 转到“标识”页面，确保“系统分配的”已设置为“是” 。
+- 转到“扩展”页面，确保已成功部署 Azure 资源扩展的托管标识（计划在 2019 年 1 月弃用） 。
 
 如果有任何一项不正确，可能都需要在资源上再次重新部署 Azure 资源的托管标识，或排查部署故障。 如需 VM 配置方面的帮助，请参阅[使用 Azure 门户在 VM 上配置 Azure 资源的托管标识](qs-configure-portal-windows-vm.md)。
 
@@ -104,5 +104,5 @@ Azure 资源的托管标识提供一个[服务主体对象](../develop/developer
 
 
 
-<!-- Update_Description: link update -->
+
 

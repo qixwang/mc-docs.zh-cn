@@ -1,113 +1,29 @@
 ---
 title: 将 Apache Beeline 与 Apache Hive 配合使用 - Azure HDInsight
 description: 了解如何使用 Beeline 客户端通过 Hadoop on HDInsight 运行 Hive 查询。 Beeline 是用于通过 JDBC 操作 HiveServer2 的实用工具。
-services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-keywords: beeline hive,hive beeline
-ms.assetid: 3adfb1ba-8924-4a13-98db-10a67ab24fca
+author: hrasheed-msft
+ms.author: v-yiso
+ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
 origin.date: 04/17/2020
-ms.date: 06/22/2020
-ms.author: v-yiso
-ms.openlocfilehash: cb81645e5c320812b26e29b6122e5e4dc48a2da9
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.date: 07/06/2020
+ms.openlocfilehash: cc50e9ace91725f1567ceff82d2fbf23535e6a26
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723039"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516704"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>将 Apache Beeline 客户端与 Apache Hive 配合使用
 
 了解如何使用 [Apache Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline-NewCommandLineShell) 在 HDInsight 上运行 Apache Hive 查询。
 
-Beeline 是一个 Hive 客户端，包含在 HDInsight 群集的头节点上。 若要在本地安装 Beeline，请参阅下面的[安装 Beeline 客户端](#install-beeline-client)。 Beeline 使用 JDBC 连接到 HiveServer2，后者是 HDInsight 群集上托管的一项服务。 还可以使用 Beeline 通过 Internet 远程访问 Hive on HDInsight。 以下示例提供最常见的连接字符串，用于从 Beeline 连接到 HDInsight：
+Beeline 是一个 Hive 客户端，包含在 HDInsight 群集的头节点上。 要连接到 HDInsight 群集上安装的 Beeline 客户端，或在本地安装 Beeline，请参阅[连接到或安装 Apache Beeline](connect-install-beeline.md)。 Beeline 使用 JDBC 连接到 HiveServer2，后者是 HDInsight 群集上托管的一项服务。 还可以使用 Beeline 通过 Internet 远程访问 Hive on HDInsight。 以下示例提供用于从 Beeline 连接到 HDInsight 的最常见连接字符串。
 
-## <a name="types-of-connections"></a>连接类型
-
-### <a name="from-an-ssh-session"></a>从 SSH 会话
-
-如果从 SSH 会话连接到群集头节点，则可随后连接到端口 `headnodehost` 上的 `10001` 地址：
-
-```bash
-beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http'
-```
-
----
-
-### <a name="over-an-azure-virtual-network"></a>通过 Azure 虚拟网络
-
-通过 Azure 虚拟网络从客户端连接到 HDInsight 时，必须提供群集头节点的完全限定域名 (FQDN)。 由于直接与群集节点建立此连接，因此此连接使用端口 `10001`：
-
-```bash
-beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/;transportMode=http'
-```
-
-将 `<headnode-FQDN>` 替换为群集头节点的完全限定域名。 若要查找头节点的完全限定域名，请使用[使用 Apache Ambari REST API 管理 HDInsight](../hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes) 文档中的信息。
-
----
-
-### <a name="over-public-or-private-endpoints"></a>通过公共或专用终结点
-
-使用公共或专用终结点连接到群集时，必须提供群集登录帐户名（默认值为 `admin`）和密码。 例如，使用 Beeline 从客户端系统连接到 `<clustername>.azurehdinsight.cn` 地址。 此连接通过端口 `443` 建立，并使用 SSL 进行加密：
-
-将 `clustername` 替换为 HDInsight 群集的名称。 将 `admin` 替换为群集的群集登录帐户。 对于 ESP 群集，请使用完整的 UPN（例如 user@domain.com）。 将 `password` 替换为群集登录帐户的密码。
-
-```bash
-beeline -u 'jdbc:hive2://clustername.azurehdinsight.cn:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p password
-```
-
-或对于专用终结点：
-
-```bash
-beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.cn:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p password
-```
-
-专用终结点指向一个基本的负载均衡器，后者只能从在同一区域中进行对等互连的 VNET 访问。 有关详细信息，请参阅[对全局 VNet 对等互连和负载均衡器的约束](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)。 在使用 beeline 之前，可以将 `curl` 命令与 `-v` 选项配合使用，以便排查公共或专用终结点的任何连接问题。
-
----
-
-### <a name="use-beeline-with-apache-spark"></a><a id="sparksql"></a>将 Beeline 与 Apache Spark 配合使用
-
-Apache Spark 提供自己的 HiveServer2 实现（有时称为 Spark Thrift 服务器）。 此服务使用 Spark SQL 而不是 Hive 来解析查询，并且可以根据查询改善性能。
-
-#### <a name="through-public-or-private-endpoints"></a>通过公共或专用终结点
-
-使用的连接字符串略有不同。 它使用 `httpPath/sparkhive2`，而不包含 `httpPath=/hive2`。 将 `clustername` 替换为 HDInsight 群集的名称。 将 `admin` 替换为群集的群集登录帐户。 对于 ESP 群集，请使用完整的 UPN（例如 user@domain.com）。 将 `password` 替换为群集登录帐户的密码。
-
-```bash 
-beeline -u 'jdbc:hive2://clustername.azurehdinsight.cn:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p 'password'
-```
-
-或对于专用终结点：
-
-```bash 
-beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.cn:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p 'password'
-```
-
-专用终结点指向一个基本的负载均衡器，后者只能从在同一区域中进行对等互连的 VNET 访问。 有关详细信息，请参阅[对全局 VNet 对等互连和负载均衡器的约束](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)。 在使用 beeline 之前，可以将 `curl` 命令与 `-v` 选项配合使用，以便排查公共或专用终结点的任何连接问题。
-
----
-
-#### <a name="from-cluster-head-or-inside-azure-virtual-network-with-apache-spark"></a>使用 Apache Spark 从群集头或 Azure 虚拟网络中
-
-当直接从群集头节点或者从 HDInsight 群集所在的 Azure 虚拟网络中的资源进行连接时，应当为 Spark Thrift 服务器使用端口 `10002` 而非 `10001`。 以下示例演示如何直接连接到头节点：
-
-```bash
-/usr/hdp/current/spark2-client/bin/beeline -u 'jdbc:hive2://headnodehost:10002/;transportMode=http'
-```
-
----
-
-## <a name="prerequisites-for-examples"></a><a id="prereq"></a>示例的先决条件
+## <a name="prerequisites-for-examples"></a>先决条件示例
 
 * HDInsight 上的 Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](./apache-hadoop-linux-tutorial-get-started.md)。
 
@@ -118,8 +34,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.cn:443/;ssl=true;transpo
 
 * 选项 2：本地 Beeline 客户端。
 
-
-## <a name="run-a-hive-query"></a><a id="beeline"></a>运行 Hive 查询
+## <a name="run-a-hive-query"></a>运行 Hive 查询
 
 此示例的基础是通过 SSH 连接使用 Beeline 客户端。
 
@@ -135,7 +50,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.cn:443/;ssl=true;transpo
     beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http'
     ```
 
-2. Beeline 命令以 `!` 字符开头，例如，`!help` 显示帮助。 但是，`!` 对于某些命令可以省略。 例如，`help` 也是有效的。
+3. Beeline 命令以 `!` 字符开头，例如，`!help` 显示帮助。 但是，`!` 对于某些命令可以省略。 例如，`help` 也是有效的。
 
     有 `!sql`，用于执行 HiveQL 语句。 但是，由于 HiveQL 非常流行，因此可以省略前面的 `!sql`。 以下两个语句等效：
 
@@ -268,7 +183,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.cn:443/;ssl=true;transpo
      > [!NOTE]
      > 与外部表不同，删除内部表会同时删除基础数据。
 
-3. 如果要保存文件，请使用 **Ctrl**+ **_X**，并输入 **Y**，最后按 **Enter**。
+1. 如果要保存文件，请使用 Ctrl+X，并输入 Y，最后按 Enter   。
 
 4. 使用以下命令通过 Beeline 运行该文件：
 
@@ -296,90 +211,8 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.cn:443/;ssl=true;transpo
         +---------------+---------------+---------------+---------------+---------------+---------------+---------------+--+
         3 rows selected (0.813 seconds)
 
-## <a name="install-beeline-client"></a><a name="install-beeline-client"/>安装 beeline 客户端
-
-虽然头节点上包含 Beeline，但建议将其安装在本地。  本地计算机的安装步骤基于[适用于 Linux 的 Windows 子系统](https://docs.microsoft.com/windows/wsl/install-win10)。
-
-1. 更新包列表。 在 bash shell 中输入以下命令：
-
-    ```bash
-    sudo apt-get update
-    ```
-
-1. 安装 Java（如果未安装）。 可以使用 `which java` 命令进行检查。
-
-    1. 如果未安装 java 包，请输入以下命令：
-
-        ```bash
-        sudo apt install openjdk-11-jre-headless
-        ```
-
-    1. 打开 bashrc 文件（通常位于 ~/.bashrc 中）：`nano ~/.bashrc`。
-
-    1. 修改 bashrc 文件。 在该文件的末尾添加以下行：
-
-        ```bash
-        export JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64
-        ```
-
-        依次按 **Ctrl+X**、**Y**、Enter。
-
-1. 下载 Hadoop 和 Beeline 存档，输入以下命令：
-
-    ```bash
-    wget https://archive.apache.org/dist/hadoop/core/hadoop-2.7.3/hadoop-2.7.3.tar.gz
-    wget https://archive.apache.org/dist/hive/hive-1.2.1/apache-hive-1.2.1-bin.tar.gz
-    ```
-
-1. 解压缩这些存档，输入以下命令：
-
-    ```bash
-    tar -xvzf hadoop-2.7.3.tar.gz
-    tar -xvzf apache-hive-1.2.1-bin.tar.gz
-    ```
-
-1. 进一步修改 bashrc 文件。 你需要确定存档解压缩到的路径。 如果使用[适用于 Linux 的 Windows 子系统](https://docs.microsoft.com/windows/wsl/install-win10)，并严格按步骤操作，则路径为 `/mnt/c/Users/user/`，其中 `user` 是你的用户名。
-
-    1. 打开文件 `nano ~/.bashrc`
-    1. 用适当的路径修改下面的命令，并将其输入到 bashrc 文件的末尾：
-
-        ```bash
-        export HADOOP_HOME=/path_where_the_archives_were_unpacked/hadoop-2.7.3
-        export HIVE_HOME=/path_where_the_archives_were_unpacked/apache-hive-1.2.1-bin
-        PATH=$PATH:$HIVE_HOME/bin
-        ```
-
-    1. 依次按 **Ctrl+X**、**Y**、Enter。
-
-1. 关闭并重新打开 bash 会话。
-
-1. 测试连接。 使用上面的[公共或专用终结点](#over-public-or-private-endpoints)的连接格式。
-
 ## <a name="next-steps"></a>后续步骤
 
 * 有关 HDInsight 中的 Hive 的更多常规信息，请参阅[将 Apache Hive 与 Apache Hadoop on HDInsight 配合使用](hdinsight-use-hive.md)
 
 * 若要深入了解使用 Hadoop on HDInsight 的其他方法，请参阅[将 MapReduce 与 Apache Hadoop on HDInsight 配合使用](hdinsight-use-mapreduce.md)
-
-[azure-purchase-options]: https://www.azure.cn/pricing/overview/
-[azure-member-offers]: https://www.azure.cn/pricing/member-offers/
-[azure-trial]: https://www.azure.cn/pricing/1rmb-trial/
-
-[apache-tez]: https://tez.apache.org
-[apache-hive]: https://hive.apache.org/
-[apache-log4j]: https://en.wikipedia.org/wiki/Log4j
-[hive-on-tez-wiki]: https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez
-[import-to-excel]: apache-hadoop-connect-excel-power-query.md
-
-[hdinsight-use-oozie]: hdinsight-use-oozie.md
-[hdinsight-analyze-flight-data]: hdinsight-analyze-flight-delay-data.md
-
-[putty]: https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
-
-[hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md
-[hdinsight-submit-jobs]:submit-apache-hadoop-jobs-programmatically.md
-[hdinsight-upload-data]: hdinsight-upload-data.md
-
-
-[powershell-here-strings]: https://technet.microsoft.com/library/ee692792.aspx
-

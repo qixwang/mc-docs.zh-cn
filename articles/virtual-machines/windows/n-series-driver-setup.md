@@ -1,32 +1,32 @@
 ---
 title: 在运行 Windows 的 N 系列 VM 上安装 NVIDIA GPU 驱动程序
 description: 如何为 Azure 中运行 Windows Server 或 Windows 的 N 系列 VM 安装 NVIDIA GPU 驱动程序
-services: virtual-machines-windows
 author: rockboyfor
 manager: digimobile
-editor: ''
-tags: azure-resource-manager
-ms.assetid: f3950c34-9406-48ae-bcd9-c0418607b37d
 ms.service: virtual-machines-windows
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 origin.date: 09/24/2018
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 14bc96460de2ea31cebf1bfe38a9bef5a94fc4b3
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: 1f1414dbbabe0e882f5b7812dafbfb00a2ecc4d3
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392475"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85946038"
 ---
+<!--Not Available on Mooncake-->
+<!--NVV4 series is not Available on MOONCAKE-->
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-windows"></a>在运行 Windows 的 N 系列 VM 上安装 NVIDIA GPU 驱动程序 
 
-若要利用运行 Windows 的 Azure N 系列 VM 的 GPU 功能，必须安装 NVIDIA GPU 驱动程序。 [NVIDIA GPU 驱动程序扩展](../extensions/hpccompute-gpu-windows.md)可在 N 系列 VM 上安装适当的 NVIDIA CUDA 或 GRID 驱动程序。 请使用 Azure 门户或工具（例如 Azure PowerShell 或 Azure 资源管理器模板）安装或管理该扩展。 有关受支持的操作系统和部署步骤，请参阅 [NVIDIA GPU 驱动程序扩展文档](../extensions/hpccompute-gpu-windows.md)。
+若要利用 NVIDIA GPU 支持的 Azure N 系列 VM 的 GPU 功能，必须安装 NVIDIA GPU 驱动程序。 [NVIDIA GPU 驱动程序扩展](../extensions/hpccompute-gpu-windows.md)可在 N 系列 VM 上安装适当的 NVIDIA CUDA 驱动程序。 请使用 Azure 门户或工具（例如 Azure PowerShell 或 Azure 资源管理器模板）安装或管理该扩展。 有关受支持的操作系统和部署步骤，请参阅 [NVIDIA GPU 驱动程序扩展文档](../extensions/hpccompute-gpu-windows.md)。
 
-如果选择手动安装 GPU 驱动程序，本文提供了受支持的操作系统、驱动程序以及安装和验证步骤。 针对 [Linux VM](../linux/n-series-driver-setup.md?toc=%2fvirtual-machines%2flinux%2ftoc.json) 也提供了驱动程序手动安装信息。
+<!--Not Available on or GRID -->
+
+如果选择手动安装 NVIDIA GPU 驱动程序，请参阅本文，其中提供了受支持的操作系统、驱动程序以及安装和验证步骤。 针对 [Linux VM](../linux/n-series-driver-setup.md?toc=%2fvirtual-machines%2flinux%2ftoc.json) 也提供了驱动程序手动安装信息。
 
 有关基本规范、存储容量和磁盘详细信息，请参阅 [GPU Windows VM 大小](sizes-gpu.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)。 
 
@@ -52,17 +52,17 @@ ms.locfileid: "83392475"
 
 若要查询 GPU 设备状态，请运行与驱动程序一起安装的 [nvidia-smi](https://developer.nvidia.com/nvidia-system-management-interface) 命令行实用工具。
 
-1. 打开命令提示符，并更改为 C:\Program Files\NVIDIA Corporation\NVSMI  目录。
+1. 打开命令提示符，并更改为 C:\Program Files\NVIDIA Corporation\NVSMI 目录。
 
-2. 运行 `nvidia-smi`。 如果安装了驱动程序，将看到如下输出。 除非当前正在 VM 上运行 GPU 工作负荷，否则“GPU-Util”将显示“0%”   。 驱动程序版本和 GPU 详细信息可能与所示的内容不同。
+2. 运行 `nvidia-smi`。 如果安装了驱动程序，将看到如下输出。 除非当前正在 VM 上运行 GPU 工作负荷，否则“GPU-Util”将显示“0%” 。 驱动程序版本和 GPU 详细信息可能与所示的内容不同。
 
     ![NVIDIA 设备状态](./media/n-series-driver-setup/smi.png)  
 
 ## <a name="rdma-network-connectivity"></a>RDMA 网络连接
 
-可以在同一可用性集或虚拟机规模集的单个放置组中部署的支持 RDMA 的 N 系列 VM（例如 NCV3）上启用 RDMA 网络连接。 必须添加 HpcVmDrivers 扩展才能安装用来启用 RDMA 连接的 Windows 网络设备驱动程序。 若要向支持 RDMA 的 N 系列 VM 添加 VM 扩展，请使用 Azure 资源管理器的 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) cmdlet。
+可以在同一可用性集或虚拟机规模集的单个放置组中部署的支持 RDMA 的 N 系列 VM（例如 NC24r）上启用 RDMA 网络连接。 必须添加 HpcVmDrivers 扩展才能安装用来启用 RDMA 连接的 Windows 网络设备驱动程序。 若要向支持 RDMA 的 N 系列 VM 添加 VM 扩展，请使用 Azure 资源管理器的 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) cmdlet。
 
-<!--MOONCAKE: CORRECT NCV3 REPLACE WITH NC24R/nc24r-->
+<!--MOONCAKE: CORRECT NC24R/nc24r means Standard_NC24rs_v3 support RDMA-->
 <!--Notice: NCV3 is valid on chinaeast2 and chinanorth2-->
 
 若要在“中国北部 2”区域中名为 myVM 且支持 RDMA 的现有 VM 上安装最新版本 1.1 HpcVMDrivers 扩展，请执行以下命令：

@@ -1,18 +1,17 @@
 ---
 title: 教程 - 使用 CLI 在 Azure 上进行 SAP HANA 数据库备份
 description: 在本教程中，了解如何使用 Azure CLI 将 Azure VM 上运行的 SAP HANA 数据库备份到 Azure 备份恢复服务保管库。
-author: lingliw
-manager: digimobile
+author: Johnnytechn
 ms.topic: tutorial
 origin.date: 11/7/2019
-ms.date: 03/12/2020
-ms.author: v-lingwu
-ms.openlocfilehash: e183c4f8ada21b79ab2c477593f22ee1954bc275
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/22/2020
+ms.author: v-johya
+ms.openlocfilehash: 91428bfa7d91ec02a085421b4bcf742429b716d7
+ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80586764"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85852018"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>教程：使用 Azure CLI 备份 Azure VM 中的 SAP HANA 数据库
 
@@ -39,16 +38,16 @@ Azure CLI 用于从命令行或通过脚本创建和管理 Azure 资源。 本�
 
 本教程将使用以下内容：
 
-* 名为 saphanaResourceGroup 的资源组 
-* 名为 saphanaVM 的 VM 
-* westus2 位置中的资源  。
+* 名为 saphanaResourceGroup 的资源组
+* 名为 saphanaVM 的 VM
+* chinanorth2 位置的资源。
 
-我们将创建一个名为 saphanaVault 的保管库  。
+我们将创建一个名为 saphanaVault 的保管库。
 
-```azurecli-interactive
+```azurecli
 az backup vault create --resource-group saphanaResourceGroup \
     --name saphanaVault \
-    --location westus2
+    --location chinanorth2
 ```
 
 默认情况下，恢复服务保管库是针对异地冗余存储设置的。 异地冗余存储可确保将备份数据复制到距主区域数百英里以外的辅助 Azure 区域。 如果存储冗余设置需要修改，请使用 [az backup vault backup-properties set](/cli/backup/vault/backup-properties?view=azure-cli-latest#az-backup-vault-backup-properties-set) cmdlet。
@@ -65,26 +64,26 @@ az backup vault backup-properties set \
 ```output
 Location   Name             ResourceGroup
 ---------  ---------------  -------------  
-westus2    saphanaVault     saphanaResourceGroup
+chinanorth2    saphanaVault     saphanaResourceGroup
 ```
 
 ## <a name="register-and-protect-the-sap-hana-instance"></a>注册并保护 SAP HANA 实例
 
 对于要由 Azure 服务发现的 SAP HANA 实例（该实例上安装有包含 SAP HANA 的 VM），必须在 SAP HANA 计算机上运行[预注册脚本](https://aka.ms/scriptforpermsonhana)。 运行脚本之前，请确保满足所有[先决条件](/backup/tutorial-backup-sap-hana-db#prerequisites)。 若要了解脚本的更多功能，请参阅[预注册脚本的功能](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does)部分。
 
-脚本运行后，可通过之前创建的恢复服务保管库注册 SAP HANA 实例。 若要注册实例，请使用 [az backup container register](/cli/backup/container?view=azure-cli-latest#az-backup-container-register) cmdlet。 VMResourceId 是你创建的用于安装 SAP HANA 的 VM 资源 ID  。
+脚本运行后，可通过之前创建的恢复服务保管库注册 SAP HANA 实例。 若要注册实例，请使用 [az backup container register](/cli/backup/container?view=azure-cli-latest#az-backup-container-register) cmdlet。 VMResourceId 是你创建的用于安装 SAP HANA 的 VM 资源 ID。
 
-```azurecli-interactive
+```azurecli
 az backup container register --resource-group saphanaResourceGroup \
     --vault-name saphanaVault \
-    --location westus2 \
+    --location chinanorth2 \
     --workload-type SAPHANA \
     --backup-management-type AzureWorkload \
     --resource-id VMResourceId
 ```
 
 >[!NOTE]
->如果 VM 与保管库不在同一个资源组中，则 saphanaResourceGroup 引用创建保管库所在的资源组  。
+>如果 VM 与保管库不在同一个资源组中，则 saphanaResourceGroup 引用创建保管库所在的资源组。
 
 注册 SAP HANA 实例会自动发现其所有当前数据库。 但是，若要发现将来可能添加的任何新数据库，请参考[发现已添加到已注册 SAP HANA 的新数据库](tutorial-sap-hana-manage-cli.md#protect-new-databases-added-to-an-sap-hana-instance)实例部分。
 
@@ -97,13 +96,14 @@ VMAppContainer;Compute;saphanaResourceGroup;saphanaVM   saphanaVM        saphana
 ```
 
 >[!NOTE]
-> 以上输出中的“name”列是指容器名。 以下部分将使用此容器名，以启用备份并触发它们。 在本例中，为 VMAppContainer;Compute;saphanaResourceGroup;saphanaVM  。
+> 以上输出中的“name”列是指容器名。 以下部分将使用此容器名，以启用备份并触发它们。 在本例中，为 VMAppContainer;Compute;saphanaResourceGroup;saphanaVM。
 
 ## <a name="enable-backup-on-sap-hana-database"></a>在 SAP HANA 数据库上启用备份
 
-[az backup protectable-item list](/cli/backup/protectable-item?view=azure-cli-latest#az-backup-protectable-item-list) cmdlet 列出了在上一步中注册的 SAP HANA 实例上发现的所有数据库。
+[az backup protectable-item list](https://docs.microsoft.com/cli/azure/backup/protectable-item?view=azure-cli-latest#az-backup-protectable-item-list) cmdlet 列出了在上一步中注册的 SAP HANA 实例上发现的所有数据库。
+<!--Correct in China: https://docs.microsoft.com/cli/azure/backup/protectable-item-->
 
-```azurecli-interactive
+```azurecli
 az backup protectable-item list --resource-group saphanaResourceGroup \
     --vault-name saphanaVault \
     --workload-type SAPHANA \
@@ -120,11 +120,11 @@ saphanadatabase;hxe;systemdb   SAPHanaDatabase          HXE           hxehost   
 saphanadatabase;hxe;hxe        SAPHanaDatabase          HXE           hxehost       NotProtected
 ```
 
-从上面的输出中可以看出，SAP HANA 系统的 SID 是 HXE。 在本教程中，我们将为 hxehost 服务器上的 saphanadatabase;hxe;hxe 数据库配置备份   。
+从上面的输出中可以看出，SAP HANA 系统的 SID 是 HXE。 在本教程中，我们将为 hxehost 服务器上的 saphanadatabase;hxe;hxe 数据库配置备份 。
 
-若要在数据库上一次保护和配置一个备份，请使用 [az backup protection enable-for-azurewl](/cli/backup/protection?view=azure-cli-latest#az-backup-protection-enable-for-azurewl) cmdlet。 提供要使用的策略名。 若要使用 CLI 创建策略，请使用 [az backup policy create](/cli/backup/policy?view=azure-cli-latest#az-backup-policy-create) cmdlet。 本教程将使用 sapahanaPolicy 策略  。
+若要在数据库上一次保护和配置一个备份，请使用 [az backup protection enable-for-azurewl](/cli/backup/protection?view=azure-cli-latest#az-backup-protection-enable-for-azurewl) cmdlet。 提供要使用的策略名。 若要使用 CLI 创建策略，请使用 [az backup policy create](/cli/backup/policy?view=azure-cli-latest#az-backup-policy-create) cmdlet。 本教程将使用 sapahanaPolicy 策略。
 
-```azurecli-interactive
+```azurecli
 az backup protection enable-for-azurewl --resource-group saphanaResourceGroup \
     --policy-name saphanaPolicy \
     --protectable-item-name saphanadatabase;hxe;hxe  \
@@ -144,6 +144,11 @@ e0f15dae-7cac-4475-a833-f52c50e5b6c3  ConfigureBackup   Completed  hxe         2
 
 [az backup job list](/cli/backup/job?view=azure-cli-latest#az-backup-job-list) cmdlet 列出了在受保护数据库上已运行或当前正在运行的所有（计划或按需）备份作业，以及注册、配置备份、删除备份数据等其他操作。
 
+>[!NOTE]
+>备份 Azure VM 中运行的 SAP HANA 数据库时，Azure 备份不会针对夏令时更改自动进行调整。
+>
+>请根据需要手动修改策略。
+
 ## <a name="trigger-an-on-demand-backup"></a>触发按需备份
 
 尽管上述部分详细介绍了如何配置计划的备份，但本部分介绍如何触发按需备份。 为此，我们现在使用 [az backup protection backup-now](/cli/backup/protection#az-backup-protection-backup-now) cmdlet。
@@ -151,7 +156,7 @@ e0f15dae-7cac-4475-a833-f52c50e5b6c3  ConfigureBackup   Completed  hxe         2
 >[!NOTE]
 > 按需备份的保留策略由数据库的基础保留策略决定。
 
-```azurecli-interactive
+```azurecli
 az backup protection backup-now --resource-group saphanaResourceGroup \
     --item-name saphanadatabase;hxe;hxe \
     --vault-name saphanaVault \
@@ -169,7 +174,7 @@ Name                                  ResourceGroup
 e0f15dae-7cac-4475-a833-f52c50e5b6c3  saphanaResourceGroup
 ```
 
-响应将为你提供作业名。 此作业名可用于使用 [az backup job show](/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet 来跟踪作业状态。
+响应将为你提供作业名。 此作业名可用于使用 [az backup job show](/cli/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet 来跟踪作业状态。
 
 >[!NOTE]
 >除了安排完整备份或差异备份，当前还可以手动触发它们。 日志备份由 SAP HANA 内部自动触发和管理。
@@ -181,3 +186,4 @@ e0f15dae-7cac-4475-a833-f52c50e5b6c3  saphanaResourceGroup
 * 若要了解如何使用 CLI 在 Azure VM 中还原 SAP HANA 数据库，请继续学习教程 - [使用 CLI 在 Azure VM 中还原 SAP HANA 数据库](tutorial-sap-hana-restore-cli.md)
 
 * 若要了解如何使用 Azure 门户备份 Azure VM 中运行的 SAP HANA 数据库，请参阅[在 Azure VM 上备份 SAP HANA 数据库](/backup/backup-azure-sap-hana-database)
+

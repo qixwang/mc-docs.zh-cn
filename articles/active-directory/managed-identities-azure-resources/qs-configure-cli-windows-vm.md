@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/10/2019
+ms.date: 06/30/2020
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a6a7725ad5ee65856bb1269580c2beeb5245e95
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 36ec5975b6b8b7501dceb7afb671a03e759ac60d
+ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290956"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945173"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-azure-cli"></a>使用 Azure CLI 在 Azure VM 上配置 Azure 资源托管标识
 
@@ -35,12 +35,12 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 ## <a name="prerequisites"></a>先决条件
 
-- 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#how-does-the-managed-identities-for-azure-resources-work)。
+- 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#managed-identity-types)。
 - 如果还没有 Azure 帐户，请先[注册试用帐户](https://www.azure.cn/pricing/1rmb-trial/)，然后再继续。
 - 若要运行 CLI 脚本示例，如果你喜欢使用本地 CLI 控制台，则可以[安装 Azure CLI 的最新版本](/cli/install-azure-cli)。 
       
-    > [!NOTE]
-    > 命令已更新，以反映最新版本的 [Azure CLI](/cli/install-azure-cli)。     
+      > [!NOTE]
+      > The commands have been updated to reflect the latest release of the [Azure CLI](/cli/install-azure-cli).     
 
 ## <a name="system-assigned-managed-identity"></a>系统分配的托管标识
 
@@ -48,7 +48,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 ### <a name="enable-system-assigned-managed-identity-during-creation-of-an-azure-vm"></a>在创建 Azure VM 的过程中启用系统分配托管标识
 
-若要创建启用了系统分配的托管标识的 Azure VM，你的帐户需要[虚拟机参与者](/role-based-access-control/built-in-roles#virtual-machine-contributor)角色分配。  无需其他 Azure AD 目录角色分配。
+若要创建启用了系统分配的托管标识的 Azure VM，你的帐户需要分配有[虚拟机参与者](/role-based-access-control/built-in-roles#virtual-machine-contributor)角色。  无需其他 Azure AD 目录角色分配。
 
 1. 如果在本地控制台中使用 Azure CLI，首先请使用 [az login](/cli/reference-index#az-login) 登录到 Azure。 使用与要在其下部署 VM 的 Azure 订阅关联的帐户：
 
@@ -56,7 +56,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
    az login
    ```
 
-2. 运行 [az group create](/cli/group/#az-group-create)，创建用于容纳和部署 VM 及其相关资源的[资源组](../../azure-resource-manager/resource-group-overview.md#terminology)。 如果已有要改用的资源组，可以跳过这一步：
+2. 运行 [az group create](/cli/group/#az-group-create)，创建用于容纳和部署 VM 及其相关资源的[资源组](../../azure-resource-manager/management/overview.md#terminology)。 如果已有要改用的资源组，可以跳过这一步：
 
    ```azurecli 
    az group create --name myResourceGroup --location chinanorth
@@ -112,7 +112,7 @@ az vm update -n myVM -g myResourceGroup --set identity.type="none"
 
 若要在 VM 创建期间将用户分配的标识分配给 VM，你的帐户需要[虚拟机参与者](/role-based-access-control/built-in-roles#virtual-machine-contributor)和[托管标识操作员](/role-based-access-control/built-in-roles#managed-identity-operator)角色分配。 无需其他 Azure AD 目录角色分配。
 
-1. 如果已有要使用的资源组，可跳过此步骤。 使用 [az group create](/cli/group/#az-group-create) 创建用于包含和部署用户分配托管标识的[资源组](/azure-resource-manager/resource-group-overview#terminology)。 请务必将 `<RESOURCE GROUP>` 和 `<LOCATION>` 参数值替换为自己的值。 解码的字符：
+1. 如果已有要使用的资源组，可跳过此步骤。 使用 [az group create](/cli/group/#az-group-create) 创建用于包含和部署用户分配托管标识的[资源组](/azure-resource-manager/management/overview#terminology)。 请务必将 `<RESOURCE GROUP>` 和 `<LOCATION>` 参数值替换为自己的值。 解码的字符：
 
    ```azurecli 
    az group create --name <RESOURCE GROUP> --location <LOCATION>
@@ -215,7 +215,7 @@ az vm update -n myVM -g myResourceGroup --set identity.type='SystemAssigned' ide
   - [使用 CLI 创建 Linux 虚拟机](../../virtual-machines/linux/quick-create-cli.md) 
 
 
-<!-- Update_Description: link update -->
+
 
 
 

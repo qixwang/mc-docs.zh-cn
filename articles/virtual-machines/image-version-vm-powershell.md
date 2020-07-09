@@ -1,5 +1,5 @@
 ---
-title: 从 VM 创建映像（预览版）
+title: 预览版 - 从 VM 创建映像
 description: 了解如何使用 Azure PowerShell，在共享映像库中从 Azure 中的现有 VM 创建映像。
 author: rockboyfor
 ms.topic: how-to
@@ -7,15 +7,15 @@ ms.service: virtual-machines
 ms.subservice: imaging
 ms.workload: infrastructure
 origin.date: 05/04/2020
-ms.date: 06/01/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.reviewer: akjosh
-ms.openlocfilehash: 538770fc83703a30ee630df2ba3c1dc05e705bb2
-ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
+ms.openlocfilehash: 8f4fc575fdd90ac08ecaabd5c1ef1ebf5a1fca12
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83801821"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945993"
 ---
 <!--Verified Successfully-->
 # <a name="preview-create-an-image-from-a-vm"></a>预览版：从 VM 创建映像
@@ -25,8 +25,8 @@ ms.locfileid: "83801821"
 你可以使用 Azure PowerShell 从[专用化和通用化](/virtual-machines/windows/shared-image-galleries#generalized-and-specialized-images) VM 捕获映像。 
 
 映像库中的映像具有两个组件，我们将在此示例中创建这两个组件：
-- “映像定义”包含有关映像及其使用要求的信息。 这包括了该映像是 Windows 还是 Linux 映像、是专用映像还是通用映像、发行说明以及最低和最高内存要求。 它是某种映像类型的定义。 
-- 使用共享映像库时，将使用映像版本来创建 VM。 可根据环境的需要创建多个映像版本。 创建 VM 时，将使用该映像版本来为 VM 创建新磁盘。 可以多次使用映像版本。
+- “映像定义”包含有关映像及其使用要求的信息。 这包括该映像是 Windows 映像还是 Linux 映像、是专用映像还是通用映像，此外还包括发行说明以及最低和最高内存要求。 它是某种映像类型的定义。 
+- 使用共享映像库时，将使用映像版本来创建 VM。 可根据环境的需要创建多个映像版本。 创建 VM 时，将使用该映像版本为 VM 创建新磁盘。 可以多次使用映像版本。
 
 ## <a name="before-you-begin"></a>准备阶段
 
@@ -105,6 +105,8 @@ $imageDefinition = New-AzGalleryImageDefinition `
 在此示例中，映像版本为 1.0.0，该版本被复制到中国北部和中国东部数据中心  。 选择复制的目标区域时，请记住，你还需包括源区域作为复制的目标。
 
 若要从 VM 创建映像版本，请对 `-Source` 使用 `$vm.Id.ToString()`。
+
+<!--CORRECT ON Source Central US MAP TO China North, and East US MAP TO China East-->
 
 ```powershell
    $region1 = @{Name='China North';ReplicaCount=1}

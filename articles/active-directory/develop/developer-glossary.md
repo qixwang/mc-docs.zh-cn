@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/27/2020
+ms.date: 06/30/2020
 ms.author: v-junlch
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
-ms.openlocfilehash: cd5e1d788163dccf7e95e67d805d384c2c415550
-ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
+ms.openlocfilehash: a9a555314e2bbb582ffb2bde9531094584398b0a
+ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84186742"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945035"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft 标识平台开发人员术语表
 
@@ -202,7 +202,7 @@ Azure AD 目录的实例称为 Azure AD 租户。 它提供的一些功能包括
 * 对用户帐户和已注册应用程序进行身份验证
 * 为各种协议（包括 OAuth2 和 SAML）提供支持所需的 REST 终结点，包括[授权终结点](#authorization-endpoint)、[令牌终结点](#token-endpoint)以及[多租户应用程序](#multi-tenant-application)使用的“通用”终结点。
 
-在注册期间创建 Azure AD 租户/将 Azure AD 租户与 Azure 和 Office 365 订阅相关联，以便为该订阅提供标识和访问管理功能。 Azure 订阅管理员还可通过 Azure 门户创建其他 Azure AD 租户。 有关可访问租户的各种方式的详细信息，请参阅[如何获取 Azure Active Directory 租户][AAD-How-To-Tenant]。 若要了解订阅和 Azure AD 租户之间的详细关系，请参阅 [How Azure subscriptions are associated with Azure Active Directory][AAD-How-Subscriptions-Assoc] （Azure 订阅与 Azure Active Directory 的关联方式）。
+在注册期间创建 Azure AD 租户/将 Azure AD 租户与 Azure 和 Office 365 订阅相关联，以便为该订阅提供标识和访问管理功能。 Azure 订阅管理员还可通过 Azure 门户创建其他 Azure AD 租户。 有关可访问租户的各种方式的详细信息，请参阅[如何获取 Azure Active Directory 租户][AAD-How-To-Tenant]。 若要详细了解订阅和 Azure AD 租户之间的关系，以及如何向 Azure AD 租户关联或添加订阅的说明，请参阅[将 Azure 订阅关联或添加到 Azure Active Directory 租户][AAD-How-Subscriptions-Assoc]。
 
 ## <a name="token-endpoint"></a>令牌终结点
 

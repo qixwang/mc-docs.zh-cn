@@ -1,5 +1,5 @@
 ---
-title: AI 扩充简介
+title: AI 扩充概念
 titleSuffix: Azure Cognitive Search
 description: 通过预定义的认知技能和自定义 AI 算法，使用内容提取、自然语言处理 (NLP) 和图像处理在 Azure 认知搜索索引中创建可搜索的内容。
 manager: nitinme
@@ -8,21 +8,21 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 03/24/2020
-ms.date: 04/20/2020
-ms.openlocfilehash: c2330884215ad5220426dca51109397ae76a007e
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.date: 07/02/2020
+ms.openlocfilehash: dd91feafccfbf0186ed03cb6ea72ec96181f3b53
+ms.sourcegitcommit: 5afd7c4c3be9b80c4c67ec55f66fcf347aad74c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588763"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85942531"
 ---
-# <a name="getting-started-with-ai-enrichment"></a>AI 扩充入门
+# <a name="ai-enrichment-in-azure-cognitive-search"></a>Azure 认知搜索中的 AI 扩充
 
-AI 扩充是 Azure 认知搜索索引的一项功能，用于从图像、Blob 和其他非结构化的数据源中提取文本。 利用扩充和提取，可以使内容在[索引](search-what-is-an-index.md)或[知识存储](knowledge-store-concept-intro.md)中更容易搜索。 使用附加到索引编制管道的“认知技能”进行提取和扩充  。 服务内置的认知技能分为以下几类： 
+AI 扩充是 Azure 认知搜索索引的一项功能，用于从图像、Blob 和其他非结构化的数据源中提取文本。 利用扩充和提取，可以使内容在[索引](search-what-is-an-index.md)或[知识存储](knowledge-store-concept-intro.md)中更容易搜索。 使用附加到索引编制管道的“认知技能”进行提取和扩充。 服务内置的认知技能分为以下几类： 
 
-+ “自然语言处理”技能包括[实体识别](cognitive-search-skill-entity-recognition.md)、[语言检测](cognitive-search-skill-language-detection.md)、[关键短语提取](cognitive-search-skill-keyphrases.md)、文本操作、[情绪检测](cognitive-search-skill-sentiment.md)和 [PII 检测](cognitive-search-skill-pii-detection.md)  。 通过这些技能，非结构化文本在索引中映射为可搜索和可筛选的字段。
++ “自然语言处理”技能包括[实体识别](cognitive-search-skill-entity-recognition.md)、[语言检测](cognitive-search-skill-language-detection.md)、[关键短语提取](cognitive-search-skill-keyphrases.md)、文本操作、[情绪检测](cognitive-search-skill-sentiment.md)和 [PII 检测](cognitive-search-skill-pii-detection.md)。 通过这些技能，非结构化文本在索引中映射为可搜索和可筛选的字段。
 
-+ “图像处理”技能包括 [光学字符识别 (OCR)](cognitive-search-skill-ocr.md) 和[视觉特征](cognitive-search-skill-image-analysis.md)标识，例如面部检测、图像解释、图像识别（名人和地标）或属性（例如图像方向）  。 这些技能创建图像内容的文本表示形式，这样就可以使用 Azure 认知搜索的查询功能来搜索这些内容了。
++ “图像处理”技能包括 [光学字符识别 (OCR)](cognitive-search-skill-ocr.md) 和[视觉特征](cognitive-search-skill-image-analysis.md)标识，例如面部检测、图像解释、图像识别（名人和地标）或属性（例如图像方向）。 这些技能创建图像内容的文本表示形式，这样就可以使用 Azure 认知搜索的查询功能来搜索这些内容了。
 
 ![扩充管道关系图](./media/cognitive-search-intro/cogsearch-architecture.png "扩充管道概述")
 
@@ -59,7 +59,7 @@ Azure 认知搜索中的认知技能基于认知服务 API 中预先训练的机
 
 ## <a name="steps-in-an-enrichment-pipeline"></a>扩充管道中的步骤
 
-扩充管道基于[索引器  ](search-indexer-overview.md)。 索引器根据索引与数据源之间的字段到字段映射填充索引，以进行文档破解。 技能（现已附加到索引器）根据你定义的技能组截获并扩充文档。 编制索引后，可以使用所有[受 Azure 认知搜索支持的查询类型](search-query-overview.md)通过搜索请求来访问内容。  本部分引导索引器的新手完成这些步骤。
+扩充管道基于[索引器](search-indexer-overview.md)。 索引器根据索引与数据源之间的字段到字段映射填充索引，以进行文档破解。 技能（现已附加到索引器）根据你定义的技能组截获并扩充文档。 编制索引后，可以使用所有[受 Azure 认知搜索支持的查询类型](search-query-overview.md)通过搜索请求来访问内容。  本部分引导索引器的新手完成这些步骤。
 
 ### <a name="step-1-connection-and-document-cracking-phase"></a>步骤 1：连接和文档破解阶段
 
@@ -71,7 +71,7 @@ Azure 认知搜索中的认知技能基于认知服务 API 中预先训练的机
 
 ### <a name="step-2-cognitive-skills-and-enrichment-phase"></a>步骤 2：认知技能和扩充阶段
 
-扩充通过认知技能执行，这些技能执行原子操作。  例如，在破解 PDF 后，可以应用实体识别、语言检测或关键短语提取，以便在索引中生成本来未在源代码中提供的新字段。 管道中使用的技能的集合统称为技能集。   
+扩充通过认知技能执行，这些技能执行原子操作。 例如，在破解 PDF 后，可以应用实体识别、语言检测或关键短语提取，以便在索引中生成本来未在源代码中提供的新字段。 管道中使用的技能的集合统称为技能集。  
 
 ![扩充阶段](./media/cognitive-search-intro/enrichment-phase-blowup.png "扩充阶段")
 
@@ -101,13 +101,13 @@ Azure 认知搜索中的认知技能基于认知服务 API 中预先训练的机
 
 1. 使用扩充步骤创建[技能集](https://docs.microsoft.com/rest/api/searchservice/create-skillset)。
 
-1. 定义[索引架构](https://docs.microsoft.com/rest/api/searchservice/create-index)。 字段集合包含源数据中的字段  。 还应该抽出其他字段，以保存扩充期间创建的内容的生成值。
+1. 定义[索引架构](https://docs.microsoft.com/rest/api/searchservice/create-index)。 字段集合包含源数据中的字段。 还应该抽出其他字段，以保存扩充期间创建的内容的生成值。
 
-1. 定义引用数据源、技能集和索引的[索引器](https://docs.microsoft.com/rest/api/searchservice/create-skillset)。
+1. 定义引用数据源、技能集和索引的[索引器](https://docs.microsoft.com/rest/api/searchservice/create-indexer)。
 
-1. 在索引器中，添加 outputFieldMappings  。 此节将技能集的输出（步骤 3）映射到索引架构中的输入字段（步骤 4）。
+1. 在索引器中，添加 outputFieldMappings。 此节将技能集的输出（步骤 3）映射到索引架构中的输入字段（步骤 4）。
 
-1. 发送刚刚创建的“创建索引器”请求（一个 POST 请求，其请求正文包含索引器定义），用于表示 Azure 认知搜索中的索引器  。 通过此步骤运行索引器，并调用管道。
+1. 发送刚刚创建的“创建索引器”请求（一个 POST 请求，其请求正文包含索引器定义），用于表示 Azure 认知搜索中的索引器。 通过此步骤运行索引器，并调用管道。
 
 1. 运行查询以评估结果，并修改代码以更新技能集、架构或索引器配置。
 

@@ -3,23 +3,21 @@ author: rockboyfor
 ms.service: virtual-machines
 ms.topic: include
 origin.date: 04/11/2019
-ms.date: 05/18/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: a6528c9fb6c016406aff2b4dc94d818f83cecd54
-ms.sourcegitcommit: 8d56bc6baeb42d675695ecef1909d76f5c4a6ae3
+ms.openlocfilehash: becfe0c603d4d474b1a05372e3c5613bf146990e
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83406210"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945628"
 ---
 若要以一致的方式大规模创建和管理 Azure 虚拟机 (VM)，通常需要某种形式的自动化。 可以通过许多工具和解决方案来自动完成整个 Azure 基础结构部署和管理生命周期。 本文介绍了一些可以在 Azure 中使用的基础结构自动化工具。 这些工具通常适合以下某个方法：
 
 - 自动执行 VM 的配置
-    - 工具包括 [Ansible](#ansible)、[Chef](#chef) 和 [Azure 资源管理器模板](#azure-resource-manager-template)。
+    - 工具包括 [Ansible](#ansible)、[Chef](#chef)、[Puppet](#puppet) 和 [Azure 资源管理器模板](#azure-resource-manager-template)。
     - 特定于 VM 自定义的工具包括适用于 Linux VM 的 [cloud-init](#cloud-init)、[PowerShell Desired State Configuration (DSC)](#powershell-dsc)，以及适用于所有 Azure VM 的 [Azure 自定义脚本扩展](#azure-custom-script-extension)。
-    
-    <!--Not Available [Puppet](#puppet) -->
-    
+
 - 自动化基础结构管理
     - 工具包括用于自动完成自定义 VM 映像生成的 [Packer](#packer)，以及用于自动完成基础结构生成过程的 [Terraform](#terraform)。
     - [Azure 自动化](#azure-automation)可以跨 Azure 和本地基础结构执行操作。
@@ -43,7 +41,9 @@ ms.locfileid: "83406210"
 <!--Not Avaiable on [Install Chef on Windows and create Azure VMs](../articles/chef/chef-automation.md)-->
 
 
-<!--Not Available ## Puppet-->
+## <a name="puppet"></a>Puppet
+[Puppet](https://www.puppet.com) 是可供企业使用的自动化平台，用于处理应用程序交付和部署过程。 代理安装在目标计算机上，因此 Puppet Master 可以通过运行清单来定义 Azure 基础结构和 VM 的所需配置。 Puppet 可以通过集成其他解决方案（例如 Jenkins 和 GitHub）来改进 DevOps 工作流。 有关详细信息，请参阅 [How Puppet works](https://puppet.com/products/how-puppet-works)（Puppet 工作原理）。
+<!--Not Avaiable on - [Deploy Puppet from the Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Puppet.puppet-agent-windows-asm?tab=Overview)-->
 ## <a name="cloud-init"></a>Cloud-init
 [Cloud-init](https://cloudinit.readthedocs.io) 是一种广泛使用的方法，用于在首次启动 Linux VM 时对其进行自定义。 可使用 cloud-init 来安装程序包和写入文件，或者配置用户和安全性。 由于是在初始启动过程中调用 cloud-init，因此无需额外的步骤且无需代理来应用配置。  有关如何正确设置 `#cloud-config` 文件格式的详细信息，请参阅 [cloud-init 文档站点](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data)。  `#cloud-config` 文件是采用 base64 编码的文本文件。
 

@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 origin.date: 08/02/2017
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: fa6f4797c73ccb8607c12756ff98d05ba30a35ce
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: a05a05f22861be3346bc51ae4a706c87137b59c3
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596411"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945999"
 ---
 # <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>如何更新 VM 上的 Azure Linux 代理
 
@@ -30,6 +30,9 @@ ms.locfileid: "82596411"
 - 使用 SHH 连接到该 Linux VM。
 
 应始终先对 Linux 发行版存储库中的程序包进行检查。 虽然可用的程序包很有可能不是最新版本，但启用自动更新可确保 Linux 代理始终获得最新的更新。 如果从程序包管理器进行安装遇到问题，应向发行版供应商寻求支持。
+
+> [!NOTE]
+> 有关详细信息，请参阅 [Azure 认可的 Linux 分发版](/virtual-machines/linux/endorsed-distros)
 
 ## <a name="minimum-virtual-machine-agent-support-in-azure"></a>Azure 中的最小虚拟机代理支持
 验证 [Azure 中的虚拟机代理的最低版本支持](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)，然后再继续。
@@ -328,7 +331,7 @@ sudo apt-get -qq update
 sudo apt-get install waagent
 ```
 
-#### <a name="ensure-auto-update-is-enabled"></a>确保已启用自动更新 
+#### <a name="ensure-auto-update-is-enabled"></a>确保已启用自动更新
 
 首先，检查是否已启用自动更新：
 

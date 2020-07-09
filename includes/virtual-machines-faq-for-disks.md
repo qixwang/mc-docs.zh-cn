@@ -6,15 +6,15 @@ author: rockboyfor
 ms.service: virtual-machines
 ms.topic: include
 origin.date: 03/31/2019
-ms.date: 05/18/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 95d792d0986bbde3dec67cd61ee02a94163e771c
-ms.sourcegitcommit: 8d56bc6baeb42d675695ecef1909d76f5c4a6ae3
+ms.openlocfilehash: 18b35f1a62f10bd2c251fb422136f6efe892ec6d
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83406195"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945631"
 ---
 本文将对有关 Azure 托管磁盘和 Azure 高级 SSD 盘的一些常见问题进行解答。
 
@@ -138,7 +138,7 @@ Azure 托管磁盘当前仅支持本地冗余存储托管磁盘。
 
 [第 2 代映像](/virtual-machines/linux/generation-2)可以在 OS 磁盘和数据磁盘上使用 GPT 分区。
 
-**哪些磁盘类型支持快照？**
+哪些磁盘类型支持快照？
 
 高级 SSD、标准 SSD 和标准 HDD 支持快照。 对于这三种磁盘类型，所有磁盘大小（包括最大为 32 TiB 的磁盘）都支持快照。
 
@@ -151,13 +151,13 @@ Azure 托管磁盘当前仅支持本地冗余存储托管磁盘。
 
 **是否可将数据上传到现有的托管磁盘？**
 
-不可以。只能在创建 **ReadyToUpload** 状态的新空磁盘期间使用上传。
+不可以，只能在创建状态为 ReadyToUpload 的新的空磁盘期间使用上传。
 
 **如何上传到托管磁盘？**
 
 创建一个托管磁盘，并将 [creationData](https://docs.microsoft.com/rest/api/compute/disks/createorupdate#creationdata) 的 [createOption](https://docs.microsoft.com/rest/api/compute/disks/createorupdate#diskcreateoption) 属性设置为“Upload”，然后可以将数据上传到该磁盘。
 
-**是否可将处于上传状态的磁盘附加到 VM？**
+是否可以在 VM 处于上传状态时将磁盘附加到它？
 
 否。
 
@@ -176,32 +176,6 @@ Azure 标准 SSD 盘是什么？
 
 **使用标准 SSD 时是否可以使用 Azure 备份？**
 是的，Azure 备份现已可用。
-
-如何创建标准 SSD 盘？
-可以使用 Azure 资源管理器模板、SDK、PowerShell 或 CLI 创建标准 SSD 盘。 以下为创建标准 SSD 盘时资源管理器模板中所需的参数：
-
-* Microsoft.Compute 的 apiVersion 必须设置为 `2018-04-01`（或更高）
-* 将 managedDisk.storageAccountType 指定为 `StandardSSD_LRS`
-
-以下示例显示了使用标准 SSD 盘的 VM 的 properties.storageProfile.osDisk 部分：
-
-```json
-"osDisk": {
-    "osType": "Windows",
-    "name": "myOsDisk",
-    "caching": "ReadWrite",
-    "createOption": "FromImage",
-    "managedDisk": {
-        "storageAccountType": "StandardSSD_LRS"
-    }
-}
-```
-
-有关如何使用模板创建标准 SSD 盘的完整模板示例，请参阅[使用标准 SSD 数据磁盘从 Windows 映像创建 VM](https://github.com/azure/azure-quickstart-templates/tree/master/101-vm-with-standardssd-disk/)。
-
-是否可以将现有磁盘转换为标准 SSD？
-可以。 请参阅[将 Azure 托管磁盘存储从标准转换为高级，反之亦然](/virtual-machines/windows/convert-disk-storage)，以了解有关转换托管磁盘的常规指南。 此外，使用以下值将磁盘类型更新为标准 SSD。
--AccountType StandardSSD_LRS
 
 **使用标准 SSD 盘而不使用 HDD 的好处是什么？**
 与 HDD 磁盘相比，标准 SSD 盘可以提供更好的延迟、一致性、可用性和可靠性。 因此，应用程序工作负荷可以更平稳地在标准 SSD 上运行。 注意，高级 SSD 盘是适用于大多数 IO 密集型生产工作负荷的建议解决方案。
@@ -252,44 +226,39 @@ Azure 标准 SSD 盘是什么？
 
 ## <a name="managed-disks-and-storage-service-encryption"></a>托管磁盘和存储服务加密
 
-创建托管磁盘时，是否会默认启用 Azure 存储服务加密？
+创建托管磁盘时，是否会默认启用服务器端加密？
 
-是的。
+是的。 托管磁盘通过使用平台托管密钥的服务器端加密进行加密。 
 
-**默认情况下，托管磁盘上的启动卷是否已加密？**
+默认情况下，托管磁盘上的引导卷是否会加密？
 
 是的。 默认情况下，所有托管磁盘均已加密，包括 OS 磁盘。
 
 **加密密钥由谁管理？**
 
-世纪互联将管理加密密钥。
+平台托管密钥由 21Vianet 管理。 你还可以使用和管理 Azure 密钥保管库中存储的你自己的密钥。 
 
 <!-- Notice: Change Microsoft to 21Vianet -->
 
-是否可以为托管磁盘禁用存储服务加密？
+是否可以为托管磁盘禁用服务器端加密？
 
 否。
 
-存储服务加密是否仅适用于特定区域？
+服务器端加密是否仅适用于特定区域？
 
-否。 它适用于托管磁盘可用的所有区域。 托管磁盘适用于所有公共区域。 这也适用于中国，但仅适用于 21Vianet 托管密钥，不适用于客户托管密钥。
+否。 使用平台和客户托管密钥的服务器端加密适用于托管磁盘可用的所有区域。 
 
-<!--Not Available on And German-->
+对于本地到 Azure 和 Azure 到 Azure 灾难恢复方案，Azure Site Recovery 是否支持使用客户托管密钥的服务器端加密？
 
-如何确定托管磁盘是否已加密？
+是的。 
 
-可以从 Azure 门户、Azure CLI 和 PowerShell 确定托管磁盘的创建时间。 如果时间是在 2017 年 6 月 9 日之后，则磁盘已加密。
+是否可以使用 Azure 备份服务来备份通过使用客户托管密钥的服务器端加密进行加密的托管磁盘？
 
-如何对 2017 年 6 月 10 日之前创建的现有磁盘加密？
-
-自 2017 年 6 月 10 日起，写入到现有托管磁盘的新数据会自动加密。 我们还打算对现有数据进行加密，且在后台以异步方式加密。 如果必须立即对现有数据进行加密，请创建磁盘的副本。 将对新磁盘进行加密。
-
-* [使用 Azure CLI 复制托管磁盘](../articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fcli%2fmodule%2ftoc.json)
-* [使用 PowerShell 复制托管磁盘](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fcli%2fmodule%2ftoc.json)
+是的。
 
 **托管快照和映像是否加密？**
 
-是的。 2017 年 6 月 9 日之后创建的所有托管快照和映像均会自动加密。 
+是的。 所有托管快照和映像均会自动加密。 
 
 是否可以将 VM 的位于存储帐户且现在或以前已加密的非托管磁盘转换为托管磁盘？
 
@@ -371,7 +340,7 @@ Azure 支持的最大页 blob 大小是 8 TiB (8,191 GiB)。 附加到 VM 作为
 |Azure PowerShell | 版本号 4.1.0：2017 年 6 月版本或更高版本|
 |Azure CLI v1     | 版本号 0.10.13：2017 年 5 月版本或更高版本|
 |Azure CLI v2     | 版本号 2.0.12：2017 年 7 月版本或更高版本|
-|AzCopy           | 版本号 6.1.0：2017 年 6 月版本或更高版本|
+|AzCopy              | 版本号 6.1.0：2017 年 6 月版本或更高版本|
 
 非托管磁盘或页 blob 是否支持 P4 和 P6 磁盘大小？
 
@@ -389,11 +358,11 @@ Azure 支持的最大页 blob 大小是 8 TiB (8,191 GiB)。 附加到 VM 作为
 
 是的。
 
-**Azure 备份和 Azure Site Recovery 服务支持的最大磁盘大小是多少？**
+Azure 备份和 Azure Site Recovery 服务支持的最大磁盘大小是多少？
 
 Azure 备份支持的最大磁盘大小是 32 TiB（加密磁盘为 4 TiB）。 Azure Site Recovery 支持的最大磁盘大小为 8 TiB。 目前 Azure Site Recovery 中尚不支持高达 32 TiB 的大型磁盘。
 
-**标准 SSD 和标准 HDD 大型磁盘大小 (>4 TiB) 用于实现优化磁盘 IOPS 和带宽建议的 VM 大小是多少？**
+标准 SSD 和标准 HDD 磁盘大磁盘大小 (>4 TiB) 用于实现优化磁盘 IOPS 和带宽建议的 VM 大小是多少？
 
 要使标准 SSD 和标准 HDD 大型磁盘 (>4 TiB) 的磁盘吞吐量超过 500 IOPS 和 60 MiB/秒，我们建议部署下列 VM 大小之一的新 VM 来优化性能：B 系列、DSv2 系列、Dsv3 系列、ESv3 系列、Fs 系列、Fsv2 系列、M 系列或 NCv3 系列。 将大型磁盘附加到现有 VM 或者不使用上述建议大小的 VM 可能会遇到性能下降的问题。
 
@@ -411,7 +380,7 @@ Azure 全球、 Microsoft Azure 政府和 Azure 中国世纪互联涵盖的所�
 
 **是否支持在所有磁盘大小上启用主机缓存？**
 
-我们支持在小于 4 TiB 的磁盘大小上启用只读和读/写主机缓存。 对于超过 4 TiB 的磁盘大小，我们并不支持设置“无”以外的缓存选项。 建议利用较小磁盘大小的缓存，以便通过缓存到 VM 的数据观察到明显的性能提升。
+我们支持在小于 4 TiB 的磁盘大小上启用只读和读/写主机缓存。 对于超过 4 TiB 的磁盘大小，除提供“无”选项外，我们并不支持设置缓存选项。 建议利用较小磁盘大小的缓存，以便通过缓存到 VM 的数据观察到明显的性能提升。
 
 ## <a name="what-if-my-question-isnt-answered-here"></a>如果未在此处找到相关问题怎么办？
 
@@ -420,5 +389,7 @@ Azure 全球、 Microsoft Azure 政府和 Azure 中国世纪互联涵盖的所�
 <!--Not Available on You can post a question at the end of this article in the comments.-->
 
 若要提出功能请求，请将请求和想法提交到 [Azure 支持站点](https://support.azure.cn/support/support-azure/)。
+
+<!--CORRECT ON [Azure support site](https://support.azure.cn/support/support-azure/)-->
 
 <!--Update_Description: wording update, update link -->

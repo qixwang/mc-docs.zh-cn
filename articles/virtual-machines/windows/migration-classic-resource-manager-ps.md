@@ -1,26 +1,20 @@
 ---
 title: 使用 PowerShell 将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器部署模型
 description: 本文介绍如何在支持的平台上使用 Azure PowerShell 命令将 IaaS 资源（例如虚拟机 (VM)、虚拟网络和存储帐户）从经典部署模型迁移到 Azure 资源管理器部署模型
-services: virtual-machines-windows
-documentationcenter: ''
 author: rockboyfor
 manager: digimobile
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 2b3dff9b-2e99-4556-acc5-d75ef234af9c
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.topic: how-to
 origin.date: 02/06/2020
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 7a3d431478981c8527cf9f8e49866224aa6ba092
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: ff545b5abb4a6c9107a7db82bd05144ba705dc9f
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392389"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945712"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-powershell"></a>使用 PowerShell 将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器部署模型
 

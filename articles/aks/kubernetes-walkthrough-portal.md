@@ -8,12 +8,12 @@ origin.date: 01/21/2020
 ms.date: 05/25/2020
 ms.author: v-yeche
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: e3e93e7bf3067d27e311fef6787d44de8d427251
-ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
+ms.openlocfilehash: 70cc0c7bc82dc1f3420e968f8fa347dd5bea8537
+ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735046"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85796183"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>快速入门：使用 Azure 门户部署 Azure Kubernetes 服务 (AKS) 群集
 
@@ -76,7 +76,7 @@ Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管�
 
 若要将 `kubectl` 配置为连接到 Kubernetes 群集，请使用 [az aks get-credentials][az-aks-get-credentials] 命令。 此命令将下载凭据，并将 Kubernetes CLI 配置为使用这些凭据。 以下示例获取名为 myResourceGroup 的资源组中群集名称 myAKSCluster 的凭据 ：
 
-[!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
+[!INCLUDE [azure-cli-2-e-azurechinacloud-environment-parameter](../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
 
 
 ```azurecli
@@ -244,7 +244,7 @@ azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 
 1. 在左侧的“监视”下，选择“见解”
 1. 在顶部，选择“+ 添加筛选器”
-1. 选择“命名空间”作为属性，然后选择“\<除 kube-system 之外的所有项\>”
+1. 选择“命名空间”作为属性，然后选择 \<All but kube-system\>
 1. 选择查看“容器”。
 
 将显示 *azure-vote-back* 和 *azure-vote-front* 容器，如下面的示例中所示：

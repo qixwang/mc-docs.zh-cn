@@ -6,19 +6,19 @@ author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: howto
-origin.date: 02/20/2020
-ms.date: 03/23/2020
+origin.date: 04/24/2020
+ms.date: 07/06/2020
 ms.author: v-yiso
-ms.openlocfilehash: 57dc7d4e2d7a01c5f314499eaa6d19586dd947bc
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: bfb865472805a8049fa2da009af08d0c6f2c52d5
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79295967"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516667"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>配合使用 Azure Data Lake Storage Gen2 和 Azure HDInsight 群集
 
-Azure Data Lake Storage Gen2 是构建在 Azure Blob 存储基础之上的，专用于大数据分析的云存储服务。 Data Lake Storage Gen2 将 Azure Blob 存储和 Azure Data Lake Storage Gen1 的功能组合在一起。 组合后的服务既可提供 Azure Data Lake Storage Gen1 的功能（例如文件系统语义、目录级别和文件级别的安全性及可伸缩性），也可提供 Azure Blob 存储的高性价比、分层存储、高可用性和灾难恢复功能。
+Azure Data Lake Storage Gen2 是构建在 Azure Blob 存储基础之上的，专用于大数据分析的云存储服务。 Data Lake Storage Gen2 将 Azure Blob 存储和 Azure Data Lake Storage Gen1 的功能组合在一起。 生成的服务提供 Azure Data Lake Storage Gen1 的功能。 这些功能包括：文件系统语义、目录级和文件级安全性以及适应性。 以及 Azure Blob 存储的低成本、分层存储、高可用性和灾难恢复功能。
 
 ## <a name="data-lake-storage-gen2-availability"></a>Data Lake Storage Gen2 可用性
 
@@ -36,8 +36,8 @@ Data Lake Storage Gen2 能够以默认存储和附加存储帐户的形式用作
 创建用户分配的托管标识（如果还没有）。 
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
-1. 在左上角，单击“创建资源”  。
-1. 在搜索框中键入“用户分配”  并单击“用户分配的托管标识”  。
+1. 在左上角，单击“创建资源”。
+1. 在搜索框中键入“用户分配”并单击“用户分配的托管标识”。
 1. 单击**创建**。
 1. 输入托管标识的名称，选择正确的订阅、资源组和位置。
 1. 单击**创建**。
@@ -51,15 +51,15 @@ Data Lake Storage Gen2 能够以默认存储和附加存储帐户的形式用作
 创建 Azure Data Lake Storage Gen2 存储帐户。 
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
-1. 在左上角，单击“创建资源”  。
+1. 在左上角，单击“创建资源”。
 1. 在搜索框中，键入 **storage**，然后单击 **Storage account**。
 1. 单击**创建**。
-1. 在“创建存储帐户”  屏幕上：
+1. 在“创建存储帐户”屏幕上：
     1. 选择正确的订阅和资源组。
     1. 输入 Data Lake Storage Gen2 帐户的名称。 有关存储帐户命名约定的详细信息，请参阅 [Azure 资源的命名约定](/azure-resource-manager/management/resource-name-rules#microsoftstorage)。
-    1. 单击“高级”选项卡  。
-    1. 单击 **Data Lake Storage Gen2** 下的“分层命名空间”  旁边的“启用”  。
-    1. 单击“查看 + 创建”  。
+    1. 单击“高级”选项卡。
+    1. 单击 **Data Lake Storage Gen2** 下的“分层命名空间”旁边的“启用”。
+    1. 单击“查看 + 创建”。
     1. 单击“创建” 
 
 有关存储帐户创建过程中其他选项的详细信息，请参阅[快速入门：创建 Azure Data Lake Storage Gen2 存储帐户](../storage/blobs/data-lake-storage-quickstart-create-account.md)。
@@ -68,25 +68,25 @@ Data Lake Storage Gen2 能够以默认存储和附加存储帐户的形式用作
 
 ### <a name="set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account"></a>在 Data Lake Storage Gen2 帐户中设置托管标识的权限
 
-将托管标识分配到存储帐户上的“存储 Blob 数据所有者”角色  。
+将托管标识分配到存储帐户上的“存储 Blob 数据所有者”角色。
 
 1. 在 [Azure 门户](https://portal.azure.cn)中转到自己的存储帐户。
-1. 选择存储帐户，然后选择“访问控制(IAM)”以显示该帐户的访问控制设置  。 选择“角色分配”  选项卡以查看角色分配列表。
+1. 选择存储帐户，然后选择“访问控制(IAM)”以显示该帐户的访问控制设置。 选择“角色分配”选项卡以查看角色分配列表。
     
     ![显示存储访问控制设置的屏幕截图](./media/hdinsight-hadoop-use-data-lake-storage-gen2/portal-access-control.png)
     
-1. 选择“+ 添加角色分配”按钮以添加一个新角色  。
-1. 在“添加角色分配”窗口中，选择“存储 Blob 数据所有者”角色   。 然后，选择具有托管标识和存储帐户的订阅。 接下来，搜索并找到之前创建的用户分配托管标识。 最后，选择托管标识，它将在“选定成员”下列出  。
+1. 选择“+ 添加角色分配”按钮以添加一个新角色。
+1. 在“添加角色分配”窗口中，选择“存储 Blob 数据所有者”角色 。 然后，选择具有托管标识和存储帐户的订阅。 接下来，搜索并找到之前创建的用户分配托管标识。 最后，选择托管标识，它将在“选定成员”下列出。
     
     ![显示如何分配 RBAC 角色的屏幕截图](./media/hdinsight-hadoop-use-data-lake-storage-gen2/add-rbac-role3-window.png)
     
-1. 选择“保存”  。 现在，选定的用户分配的标识会列在选定的角色下。
-1. 此初始设置完成后，可通过门户创建群集。 群集必须与存储帐户位于同一 Azure 区域中。 在群集创建菜单的“存储”选项卡中，选择以下选项  ：
+1. 选择“保存” 。 现在，选定的用户分配的标识会列在选定的角色下。
+1. 此初始设置完成后，可通过门户创建群集。 群集必须与存储帐户位于同一 Azure 区域中。 在群集创建菜单的“存储”选项卡中，选择以下选项：
 
-    * 对于“主要存储类型”，请选择“Azure Data Lake Storage Gen2”   。
-    * 在“主存储帐户”下，搜索并选择新建的 Data Lake Storage Gen2 存储帐户  。
+    * 对于“主要存储类型”，请选择“Azure Data Lake Storage Gen2” 。
+    * 在“主存储帐户”下，搜索并选择新建的 Data Lake Storage Gen2 存储帐户。
 
-    * 在“标识”下，选择新建的用户分配的托管标识  。
+    * 在“标识”下，选择新建的用户分配的托管标识。
 
         ![用于配合使用 Data Lake Storage Gen2 和 Azure HDInsight 的存储设置](./media/hdinsight-hadoop-use-data-lake-storage-gen2/azure-portal-cluster-storage-gentwo.png)
 
@@ -135,7 +135,7 @@ az storage account create --name <STORAGEACCOUNTNAME> \
     --kind StorageV2 --hierarchical-namespace true
 ```
 
-接下来，登录到门户。 根据[使用 Azure 门户](hdinsight-hadoop-use-data-lake-storage-gen2.md)中的步骤 3 所述，将新的用户分配的托管标识添加到存储帐户中的“存储 Blob 数据参与者”角色。 
+接下来，登录到门户。 根据[使用 Azure 门户](hdinsight-hadoop-use-data-lake-storage-gen2.md)中的步骤 3 所述，将新的用户分配的托管标识添加到存储帐户中的“存储 Blob 数据参与者”角色。
 
 为用户分配的托管标识分配角色后，使用以下代码片段部署模板。
 
@@ -168,11 +168,11 @@ HDInsight 群集在 Data Lake Storage Gen2 中访问文件的能力通过托管�
 
 Azure 服务有两种类型的托管标识：系统分配的托管标识和用户分配的托管标识。 HDInsight 使用用户分配的托管标识来访问 Data Lake Storage Gen2。 用户分配的托管标识作为独立的 Azure 资源创建。 在创建过程中，Azure 会在由所用订阅信任的 Azure AD 租户中创建一个标识。 在创建标识后，可以将标识分配到一个或多个 Azure 服务实例。
 
-用户分配标识的生命周期与它所分配到的 Azure 服务实例的生命周期是分开管理的。 有关托管标识的详细信息，请参阅 [Azure 资源托管标识的工作原理](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work)。
+用户分配标识的生命周期与它所分配到的 Azure 服务实例的生命周期是分开管理的。 有关托管标识的详细信息，请参阅[什么是 Azure 资源托管标识？](../active-directory/managed-identities-azure-resources/overview.md)。
 
 ### <a name="how-do-i-set-permissions-for-azure-ad-users-to-query-data-in-data-lake-storage-gen2-by-using-hive-or-other-services"></a>如何设置 Azure AD 用户的权限，以使用 Hive 或其他服务在 Data Lake Storage Gen2 中查询数据？
 
-若要为用户设置权限以查询数据，请将 Azure AD 安全组用作 ACL 中分配的主体。 不要直接向单个用户或服务主体分配文件访问权限。 使用 Azure AD 安全组控制权限流时，可以添加和删除用户或服务主体，而无需将 ACL 重新应用到整个目录结构。 只需要从相应的 Azure AD 安全组添加或删除用户。 ACL 不可继承，因此，重新应用 ACL 需要更新针对每个文件和子目录应用的 ACL。
+若要为用户设置权限以查询数据，请将 Azure AD 安全组用作 ACL 中分配的主体。 不要直接向单个用户或服务主体分配文件访问权限。 使用 AD 安全组来控制权限流时，可以添加和删除用户或服务主体，而无需将 ACL 重新应用到整个目录结构。 只需要从相应的 Azure AD 安全组添加或删除用户。 ACL 不可继承，因此，重新应用 ACL 需要更新针对每个文件和子目录应用的 ACL。
 
 ## <a name="access-files-from-the-cluster"></a>从群集访问文件
 
@@ -200,7 +200,7 @@ Azure 服务有两种类型的托管标识：系统分配的托管标识和用�
 
 示例基于到群集的头节点的 [ssh 连接](./hdinsight-hadoop-linux-use-ssh-unix.md)。 示例使用所有三个 URI 方案。 将 `CONTAINERNAME` 和 `STORAGEACCOUNT` 替换为相关值
 
-#### <a name="a-few-hdfs-commands"></a>一些 hdfs 命令
+#### <a name="a-few-hdfs-commands"></a>几个 hdfs 命令
 
 1. 在本地存储上创建一个文件。
 

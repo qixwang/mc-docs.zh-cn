@@ -1,26 +1,20 @@
 ---
 title: 教程 - 在 Azure 中使用 Azure PowerShell 均衡 Windows 虚拟机负载以创建高度可用的应用程序
 description: 本教程介绍如何使用 Azure PowerShell 创建负载均衡器，以实现在三个 Windows 虚拟机上高度可用且安全的应用程序
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: rockboyfor
-manager: digimobile
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 12/03/2018
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 9b6588130f75551b4e90d03a41803b129aeafa9b
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: 0522c148b5d33933aa93c4a49b2bc83e77711868
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392394"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945854"
 ---
 # <a name="tutorial-load-balance-windows-virtual-machines-in-azure-to-create-a-highly-available-application-with-azure-powershell"></a>教程：在 Azure 中使用 Azure PowerShell 均衡 Windows 虚拟机负载以创建高可用性应用程序
 负载均衡通过将传入请求分布到多个虚拟机来提供更高级别的可用性。 本教程介绍了 Azure 负载均衡器的不同组件，这些组件用于分发流量和提供高可用性。 你将学习如何执行以下操作：
@@ -43,7 +37,7 @@ Azure 负载均衡器是位于第 4 层（TCP、UDP）的负载均衡器，通�
 
 若要控制流量流，需为映射到 VM 的特定端口和协议定义负载均衡器规则。
 
-## <a name="launch-azure-powershell"></a>启动 Azure PowerShell
+## <a name="launch-azure-local-powershell"></a>启动 Azure 本地 PowerShell
 
 打开 Azure Powershell 控制台，并以管理员权限运行以下脚本。
 
@@ -78,7 +72,7 @@ $frontendIP = New-AzLoadBalancerFrontendIpConfig `
   -PublicIpAddress $publicIP
 ```
 
-使用 [New-AzLoadBalancerBackendAddressPoolConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) 创建一个后端地址池。 在剩余的步骤中，各个 VM 将附加到此后端池。 以下示例创建名为“myBackEndPool”的后端地址池：
+使用 [New-AzLoadBalancerBackendAddressPoolConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) 创建一个后端地址池。 在剩余的步骤中，各个 VM 将附加到此后端池。 以下示例创建名为 myBackEndPool 的后端地址池：
 
 ```powershell
 $backendPool = New-AzLoadBalancerBackendAddressPoolConfig `
@@ -101,7 +95,7 @@ $lb = New-AzLoadBalancer `
 
 以下示例创建一个 TCP 探测器。 还可创建自定义 HTTP 探测器，以便执行更精细的运行状况检查。 使用自定义 HTTP 探测器时，必须创建运行状况检查页，例如 healthcheck.aspx。 探测器必须为负载均衡器返回 HTTP 200 OK 响应，以保持主机处于旋转状态。
 
-若要创建 TCP 运行状况探测，请使用 [Add-AzLoadBalancerProbeConfig](https://docs.microsoft.com/powershell/module/az.network/add-azloadbalancerprobeconfig)。 以下示例创建名为“myHealthProbe”的运行状况探测，用于在 TCP 端口 80 上监视每个 VM：
+若要创建 TCP 运行状况探测，请使用 [Add-AzLoadBalancerProbeConfig](https://docs.microsoft.com/powershell/module/az.network/add-azloadbalancerprobeconfig)。 以下示例创建名为 *myHealthProbe* 的运行状况探测器，用于在 *TCP* 端口 *80* 上监视每个 VM：
 
 ```powershell
 Add-AzLoadBalancerProbeConfig `
@@ -122,7 +116,7 @@ Set-AzLoadBalancer -LoadBalancer $lb
 ### <a name="create-a-load-balancer-rule"></a>创建负载均衡器规则
 负载均衡器规则用于定义将流量分配给 VM 的方式。 定义传入流量的前端 IP 配置和后端 IP 池以接收流量，同时定义所需源和目标端口。 若要确保仅正常运行的 VM 接收流量，还需定义要使用的运行状况探测器。
 
-使用 [Add-AzLoadBalancerRuleConfig](https://docs.microsoft.com/powershell/module/az.network/add-azloadbalancerruleconfig) 创建一个负载均衡器规则。 以下示例创建名为“myLoadBalancerRule”的负载均衡器规则并均衡 TCP 端口 80 上的流量：
+使用 [Add-AzLoadBalancerRuleConfig](https://docs.microsoft.com/powershell/module/az.network/add-azloadbalancerruleconfig) 创建一个负载均衡器规则。 以下示例创建名为 *myLoadBalancerRule* 的负载均衡器规则并均衡 *TCP* 端口 *80* 上的流量：
 
 ```powershell
 $probe = Get-AzLoadBalancerProbeConfig -LoadBalancer $lb -Name "myHealthProbe"
@@ -148,7 +142,7 @@ Set-AzLoadBalancer -LoadBalancer $lb
 需要先创建提供支持的虚拟网络资源，然后才能部署某些 VM 并测试均衡器。 有关虚拟网络的详细信息，请参阅[管理 Azure 虚拟网络](tutorial-virtual-network.md)教程。
 
 ### <a name="create-network-resources"></a>创建网络资源
-使用 [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) 创建虚拟网络。 以下示例创建包含 mySubnet 的名为“myVnet”的虚拟网络：
+使用 [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) 创建虚拟网络。 以下示例创建包含 mySubnet 的名为 myVnet 的虚拟网络：
 
 ```powershell
 # Create subnet config
@@ -182,7 +176,7 @@ for ($i=1; $i -le 3; $i++)
 ## <a name="create-virtual-machines"></a>创建虚拟机
 若要提高应用的高可用性，请将 VM 放置在可用性集中。
 
-使用 [New-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/new-azavailabilityset) 创建一个可用性集。 以下示例创建名为“myAvailabilitySet”的可用性集：
+使用 [New-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/new-azavailabilityset) 创建一个可用性集。 以下示例创建名为 myAvailabilitySet 的可用性集：
 
 ```powershell
 $availabilitySet = New-AzAvailabilitySet `

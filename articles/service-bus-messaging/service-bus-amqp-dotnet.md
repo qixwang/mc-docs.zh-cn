@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-origin.date: 01/24/2020
-ms.date: 2/6/2020
-ms.author: v-yiso
-ms.openlocfilehash: a11769a02905a2f5bb4c85e8e351637a09977ed6
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+origin.date: 06/10/2020
+ms.date: 06/30/2020
+ms.author: v-tawe
+ms.openlocfilehash: 994dc31917298e15434b082ea4f45066abb589c6
+ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796744"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85796314"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>使用 AMQP 1.0 通过 .NET 使用服务总线
 
@@ -28,7 +28,7 @@ AMQP 1.0 支持在服务总线包 2.1 版或更高版本中提供。 为确保�
 
 ## <a name="configure-net-applications-to-use-amqp-10"></a>将 .NET 应用程序配置为使用 AMQP 1.0
 
-默认情况下，Service Bus .NET 客户端库使用基于 SOAP 的专用协议与 Service Bus 服务通信。 若要使用 AMQP 1.0 而非默认协议，需要对服务总线连接字符串进行显式配置，如下一部分所述。 除了此更改之外，在使用 AMQP 1.0 时应用程序代码基本保持不变。
+默认情况下，服务总线 .NET 客户端库使用 AMQP 协议与服务总线服务进行通信。 还可以显式指定 AMQP 作为传输类型，如以下部分所示。 
 
 在当前版本中，有一些在使用 AMQP 时不受支持的 API 功能。 这些不受支持的功能在[行为差异](#behavioral-differences)部分列出。 在使用 AMQP 时，一些高级配置设置还具有不同的含义。
 

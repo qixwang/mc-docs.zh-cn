@@ -1,33 +1,27 @@
 ---
-title: 使用 Azure PowerShell 在 Azure 市场中查找 Windows VM 映像
+title: 在 Azure 中选择 Windows VM 映像
 description: 使用 Azure PowerSHell 来确定市场 VM 映像的发布者、产品/服务、SKU 和版本。
-services: virtual-machines-windows
-documentationcenter: ''
 author: rockboyfor
-manager: digimobile
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 188b8974-fabd-4cd3-b7dc-559cbb86b98a
 ms.service: virtual-machines-windows
+ms.subservice: imaging
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 01/25/2019
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 537a2c537b935080a707292ba30a00f621d38a93
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: 044dd58bb76384ed14e1318e48c38d51d1ff7832
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596382"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945787"
 ---
 # <a name="find-windows-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>使用 Azure PowerShell 在 Azure 市场中查找 Windows VM 映像
 
 本文介绍如何使用 Azure PowerShell 在 Azure 市场中查找 VM 映像。 然后，使用 PowerShell、资源管理器模板或其他工具以编程方式创建 VM 时，你可以指定市场映像。
 
 你还可以使用 [Azure 市场](https://market.azure.cn/marketplace/)店面、[Azure 门户](https://portal.azure.cn)或 [Azure CLI](../linux/cli-ps-findimage.md) 浏览可用的映像和产品/服务。 
-
 
 [!INCLUDE [virtual-machines-common-image-terms](../../../includes/virtual-machines-common-image-terms.md)]
 
@@ -126,7 +120,7 @@ Canonical
 
 <!--MOONCCAKE: CUSTOMIZE-->
 
-对于“MicrosoftWindowsServer”  发布者：
+对于“MicrosoftWindowsServer”发布者：
 
 ```powershell
 $pubName="MicrosoftWindowsServer"
@@ -146,7 +140,7 @@ WindowsServerSemiAnnual
 
 <!--MOONCAKE CUSTOMIZE: invalid on Windows-HUB-->
 
-对于“WindowsServer”  产品/服务：
+对于“WindowsServer”产品/服务：
 
 ```powershell
 $offerName="WindowsServer"
@@ -215,7 +209,7 @@ Get-AzVMImage -Location $locName -PublisherName $pubName -Offer $offerName -Sku 
 
 ```powershell
 $version = "2019.0.20190115"
-Get-AzVMImage -Location $locName -Publisher $pubName -Offer $offerName -Skus $skuName -Version $version
+Get-AzVMImage -Location $locName -PublisherName $pubName -Offer $offerName -Skus $skuName -Version $version
 ```
 
 输出：

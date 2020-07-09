@@ -7,15 +7,15 @@ ms.service: mysql
 ms.devlang: azurepowershell
 ms.topic: conceptual
 origin.date: 4/29/2020
-ms.date: 06/01/2020
-ms.openlocfilehash: 7ccb010969643d532d45c6417e1586d79d071752
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.date: 06/26/2020
+ms.openlocfilehash: 827806e030862d3335efc9d42e7e2722cdb239d3
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199915"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516728"
 ---
-# <a name="customize-azure-database-for-mysql-server-parameters-using-powershell"></a>使用 PowerShell 自定义 Azure Database for MySQL 服务器参数
+# <a name="configure-server-parameters-in-azure-database-for-mysql-using-powershell"></a>使用 PowerShell 在 Azure Database for MySQL 中配置服务器参数
 
 可以使用 PowerShell 列出、显示和更新 Azure Database for MySQL 服务器的配置参数。 在服务器级别会公开引擎配置的一个子集，并可以进行修改。
 

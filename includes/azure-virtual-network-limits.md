@@ -6,19 +6,19 @@ author: rockboyfor
 ms.service: networking
 ms.topic: include
 origin.date: 01/14/2020
-ms.date: 05/18/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 32ba469d444de9ebc7f94b3f02fd1e23307149d8
-ms.sourcegitcommit: 8d56bc6baeb42d675695ecef1909d76f5c4a6ae3
+ms.openlocfilehash: ccb5ee0fe69e7abd20502ccc7c5816d06f552e49
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83406217"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945769"
 ---
 <a name="azure-resource-manager-virtual-networking-limits"></a>
 ### <a name="networking-limits---azure-resource-manager"></a>网络限制 - Azure 资源管理器
-以下限制仅适用于通过每个订阅的每个区域的 Azure 资源管理器  进行管理的网络资源。 了解如何[针对订阅限制查看当前资源使用情况](../articles/networking/check-usage-against-limits.md)。
+以下限制仅适用于通过每个订阅的每个区域的 Azure 资源管理器进行管理的网络资源。 了解如何[针对订阅限制查看当前资源使用情况](../articles/networking/check-usage-against-limits.md)。
 
 > [!NOTE]
 > 我们最近将所有默认限制提高到了最大限制。 如果没有最大限制列，则资源没有可调整的限制。 如果过去已通过客户支持提高了这些上限，因此在以下表中看不到更新的限制，可[免费提交联机客户支持请求](../articles/azure-resource-manager/templates/error-resource-quota.md)
@@ -82,7 +82,7 @@ ms.locfileid: "83406217"
 | 每个负载均衡器的出站规则        | 600                           |
 | [TCP 空闲超时](/load-balancer/load-balancer-tcp-idle-timeout#tcp-idle-timeout) | 4 分钟/30 分钟          |
 
-<sup>1</sup>限制是最多 150 种资源，采用独立虚拟机资源、可用性集资源和虚拟机规模集资源的任意组合。
+<sup>1</sup>限制是最多 150 种资源，采用独立虚拟机资源、可用性集资源和虚拟机规模集放置组的任意组合。
 
 **基本负载均衡器**
 
@@ -95,7 +95,7 @@ ms.locfileid: "83406217"
 | 后端池大小                       | 单个可用性集 300 个 IP 配置 |
 | 每个负载均衡器的可用性集数     | 150                          |
 
-<a name="virtual-networking-limits-classic"></a>以下限制仅适用于每个订阅通过经典  部署模型托管的网络资源。 了解如何[针对订阅限制查看当前资源使用情况](../articles/networking/check-usage-against-limits.md)。
+<a name="virtual-networking-limits-classic"></a>以下限制仅适用于每个订阅通过经典部署模型托管的网络资源。 了解如何[针对订阅限制查看当前资源使用情况](../articles/networking/check-usage-against-limits.md)。
 
 | 资源 | 默认限制 | 最大限制 |
 | --- | --- | --- |

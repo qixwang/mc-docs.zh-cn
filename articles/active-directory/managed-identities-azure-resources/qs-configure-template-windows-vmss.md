@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/11/2020
+ms.date: 06/30/2020
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e00a9f69affdd83a72a5642ca56e14bc1fef53e8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2cbb644908904d39ada8b703b0d272d1944bcc8a
+ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79133807"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945150"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-virtual-machine-scale-using-a-template"></a>使用模板在 Azure 虚拟机规模集上为 Azure 资源配置托管标识
 
@@ -34,7 +34,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 ## <a name="prerequisites"></a>先决条件
 
-- 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#how-does-the-managed-identities-for-azure-resources-work)。
+- 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#managed-identity-types)。
 - 如果还没有 Azure 帐户，请先[注册试用帐户](https://www.azure.cn/pricing/1rmb-trial/)，然后再继续。
 - 若要执行本文中的管理操作，帐户需要以下基于 Azure 角色的访问控制分配：
 

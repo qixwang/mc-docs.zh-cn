@@ -1,26 +1,25 @@
 ---
 title: Azure Functions 中支持的语言
-description: 了解支持哪些语言 (GA) 以及哪些语言是实验性的或处于预览状态。
+description: 了解支持哪些语言 (GA)，哪些是预览语言，以及将 Functions 开发扩展到其他语言的方法。
 ms.topic: conceptual
-ms.date: 12/31/2019
-ms.openlocfilehash: b782b416714533a69613032e083883285e206518
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 07/02/2020
+ms.openlocfilehash: cb05aa9c6114ea12383ecc7144a7f50499caed23
+ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75624303"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945234"
 ---
 # <a name="supported-languages-in-azure-functions"></a>Azure Functions 中支持的语言
 
-本文介绍为可用于 Azure Functions 的语言提供的支持级别。
+本文介绍为可用于 Azure Functions 的语言提供的支持级别。 它还介绍了使用不受本机支持的语言创建函数时可使用的策略。
 
 ## <a name="levels-of-support"></a>支持级别
 
-有三个支持级别：
+有两个级别的支持：
 
 * **正式发布 (GA)** - 完全支持并获得批准在生产中使用。
 * **预览** - 尚不支持，但将来应达到 GA 状态。
-* **实验性** - 不支持，将来可能会弃用；不保证最终达到预览或 GA 状态。
 
 ## <a name="languages-by-runtime-version"></a>按运行时版本列出的语言 
 
@@ -28,15 +27,11 @@ ms.locfileid: "75624303"
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
-### <a name="experimental-languages"></a>实验性语言
+## <a name="custom-handlers-preview"></a>自定义处理程序（预览版） 
 
-1\.x 版中的实验性语言扩展性不好，并且不支持所有绑定。
+自定义处理程序是可以从 Azure Functions 主机接收事件的轻型 Web 服务器。 支持 HTTP 基元的任何语言都可以实现自定义处理程序。 这意味着可以使用自定义处理程序以不受官方支持的语言创建函数。 有关详细信息，请参阅 [Azure Functions 自定义处理程序（预览版）](functions-custom-handlers.md)。
 
-不要对所依赖的任何内容使用实验性功能，因为对其没有官方支持。 不应针对实验性语言的问题开启支持案例。 
-
-更高的运行时版本不支持实验性语言。 只有在生产环境中支持该语言时，才会添加对新语言的支持。 
-
-### <a name="language-extensibility"></a>语言扩展性
+## <a name="language-extensibility"></a>语言扩展性
 
 从版本 2.x 开始，运行时旨在提供[语言扩展性](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Language-Extensibility)。 2\.x 运行时中的 JavaScript 和 Java 语言是使用此扩展性生成的。
 

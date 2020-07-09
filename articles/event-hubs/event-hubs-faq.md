@@ -7,15 +7,16 @@ author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.topic: article
+ms.custom: seodec18
 origin.date: 12/02/2019
-ms.date: 05/29/2020
+ms.date: 07/01/2020
 ms.author: v-tawe
-ms.openlocfilehash: 17fd32116bce971c99656b709ec16f756e8825c4
-ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
+ms.openlocfilehash: 2922dd28f8b564c5d26db91017f7fb193bcaf2e6
+ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84275616"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85796136"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>事件中心常见问题
 
@@ -24,7 +25,7 @@ ms.locfileid: "84275616"
 ### <a name="what-is-an-event-hubs-namespace"></a>什么是事件中心命名空间？
 命名空间是事件中心/Kafka 主题的范围容器。 它提供唯一的 FQDN。 命名空间充当容装多个事件中心/Kafka 主题的应用程序容器。 
 
-### <a name="when-do-i-create-a-new-namespace-vs-use-an-existing-namespace"></a>何时创建新的命名空间而不是使用现有的命名空间？
+### <a name="when-do-i-create-a-new-namespace-vs-use-an-existing-namespace"></a>何时创建新的命名空间与使用现有命名空间？
 容量分配（[吞吐量单位 (TU)](#throughput-units)）在命名空间级别进行计费。 命名空间也与区域相关联。
 
 在以下任一情况下，你可能希望创建新的命名空间，而不是使用现有的命名空间： 
@@ -62,14 +63,14 @@ Azure 事件中心标准层提供的功能超出了基本层中提供的功能�
 ### <a name="how-do-i-monitor-my-event-hubs"></a>如何监视事件中心？
 事件中心向 [Azure Monitor](../azure-monitor/overview.md) 发出详尽指标用于提供资源的状态。 此外，参考指标不仅可以在命名空间级别，而且还能在实体级别评估事件中心服务的总体运行状况。 了解 [Azure 事件中心](event-hubs-metrics-azure-monitor.md)提供哪些监视功能。
 
-### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>我需要在防火墙上打开哪些端口？ 
+### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>需要在防火墙上打开哪些端口？ 
 可以将以下协议与 Azure 服务总线配合使用，以便发送和接收消息：
 
 - 高级消息队列协议 (AMQP)
 - HTTP
 - Apache Kafka
 
-请查看下表，了解需要打开哪些出站端口，以便使用这些协议与 Azure 事件中心通信。 
+请参阅下表，了解需要打开的出站端口，以使用这些协议与 Azure 事件中心通信。 
 
 | 协议 | 端口 | 详细信息 | 
 | -------- | ----- | ------- | 
@@ -77,17 +78,17 @@ Azure 事件中心标准层提供的功能超出了基本层中提供的功能�
 | HTTP、HTTPS | 80、443 |  |
 | Kafka | 9093 | 请参阅[使用 Kafka 应用程序中的事件中心](event-hubs-for-kafka-ecosystem-overview.md)
 
-### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>我需要将哪些 IP 地址加入允许列表？
+### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>需要将哪些 IP 地址列入白名单？
 若要找到适合加入连接的允许列表的 IP 地址，请执行以下步骤：
 
-1. 从命令提示符处运行以下命令： 
+1. 从命令提示符运行以下命令： 
 
     ```
     nslookup <YourNamespaceName>.servicebus.chinacloudapi.cn
     ```
-2. 记下在 `Non-authoritative answer` 中返回的 IP 地址。 只有在你将命名空间还原到另一群集时，它才会更改。
+2. 记下 `Non-authoritative answer` 中返回的 IP 地址。 只有在你将命名空间还原到另一群集时，它才会更改。
 
-如果对命名空间使用区域冗余，则需执行一些额外的步骤： 
+如果对命名空间使用区域冗余，则需要执行一些额外步骤： 
 
 1. 首先，在命名空间中运行 nslookup。
 
@@ -97,11 +98,29 @@ Azure 事件中心标准层提供的功能超出了基本层中提供的功能�
 2. 记下“非权威回答”部分中的名称，该名称采用下述格式之一： 
 
     ```
-    <name>-s1.servicebus.chinacloudapi.cn
-    <name>-s2.servicebus.chinacloudapi.cn
-    <name>-s3.servicebus.chinacloudapi.cn
+    <name>-s1.servicebus.chinacloudapp.cn
+    <name>-s2.servicebus.chinacloudapp.cn
+    <name>-s3.servicebus.chinacloudapp.cn
     ```
 3. 为每一个运行 nslookup，使用后缀 s1、s2 和 s3 获取所有三个在三个可用性区域中运行的实例的 IP 地址。 
+
+### <a name="where-can-i-find-client-ip-sending-or-receiving-msgs-to-my-namespace"></a>在哪里可以找到向命名空间发送消息或从命名空间接收消息的客户端 IP？
+首先，在命名空间上启用 [IP 筛选](event-hubs-ip-filtering.md)。 
+
+然后，按照[启用诊断日志](event-hubs-diagnostic-logs.md#enable-diagnostic-logs)中的说明，为[事件中心虚拟网络连接事件](event-hubs-diagnostic-logs.md#event-hubs-virtual-network-connection-event-schema)启用诊断日志。 将看到连接遭到拒绝的 IP 地址。
+
+```json
+{
+    "SubscriptionId": "0000000-0000-0000-0000-000000000000",
+    "NamespaceName": "namespace-name",
+    "IPAddress": "1.2.3.4",
+    "Action": "Deny Connection",
+    "Reason": "IPAddress doesn't belong to a subnet with Service Endpoint enabled.",
+    "Count": "65",
+    "ResourceId": "/subscriptions/0000000-0000-0000-0000-000000000000/resourcegroups/testrg/providers/microsoft.eventhub/namespaces/namespace-name",
+    "Category": "EventHubVNetConnectionEvent"
+}
+```
 
 ## <a name="apache-kafka-integration"></a>Apache Kafka 集成
 
@@ -150,9 +169,11 @@ bootstrap.servers=dummynamespace.servicebus.chinacloudapi.cn:9093 request.timeou
 此功能**不会**产生相关的费用。 
 
 ### <a name="how-are-throughput-limits-enforced"></a>如何强制实施吞吐量限制？
-如果某个命名空间中所有事件中心间的总入口吞吐量或总入口事件率超过了聚合吞吐量单位限额，发送方会受到限制，并会收到指明已超出入口配额的错误信息。
+如果某个命名空间中所有事件中心间的总入口吞吐量或总入口事件率超过了聚合吞吐量单位限额，那么发送方会受到限制，并会收到指明已超出入口配额的错误信息。
 
-如果某个命名空间中所有事件中心间的总出口吞吐量或总出口事件率超过了聚合吞吐量单位限额，接收方会受到限制，并会收到指明已超出出口配额的错误信息。 入口和出口配额是分开强制实施的，因此，任何发送方都不会使事件耗用速度减慢，并且接收方也无法阻止事件发送到事件中心。
+如果某个命名空间中所有事件中心间的总出口吞吐量或总出口事件率超过了聚合吞吐量单位限额，那么接收方会受到限制，但不会生成任何限制错误。 
+
+入口和出口配额是分开强制实施的，因此，任何发送方都不会使事件耗用速度减慢，并且接收方也无法阻止事件发送到事件中心。
 
 ### <a name="is-there-a-limit-on-the-number-of-throughput-units-tus-that-can-be-reservedselected"></a>可预留/选择的吞吐量单位 (TU) 数量是否有限制？
 在多租户产品/服务中，吞吐量单位最多可扩展到 40 TU（可在门户中最多选择 20 TU，然后提出支持票证，在同一命名空间中将数目提高到 40 TU）。 如果超出 40 TU，事件中心可提供名为“事件中心专用群集”的基于资源/容量的模型。 专用群集按容量单位 (CU) 销售。
@@ -189,7 +210,7 @@ bootstrap.servers=dummynamespace.servicebus.chinacloudapi.cn:9093 request.timeou
 ### <a name="how-many-partitions-do-i-need"></a>需要多少分区？
 分区数在创建时指定，必须介于 2 到 32 之间。 分区计数不可更改，因此在设置分区计数时应考虑长期规模。 分区是一种数据组织机制，与使用方应用程序中所需的下游并行度相关。 事件中心的分区数与预期会有的并发读取者数直接相关。 有关分区的详细信息，请参阅[分区](event-hubs-features.md#partitions)。
 
-你可能希望在创建时将其设置为最高可能值，即 32。 请记住，拥有多个分区将导致事件发送到多个分区而不保留顺序，除非你将发送方配置为仅发送到 32 个分区中的一个分区，剩下的 31 个分区是冗余分区。 在前一种情况下，必须跨所有 32 个分区读取事件。 在后一种情况下，除了必须在事件处理器主机上进行额外配置外，没有明显的额外成本。
+你可能希望在创建时将其设置为最高可能值，即 32。 请记住，具有多个分区将导致事件发送到多个分区，不会保留顺序，除非将发送方配置为：仅发送到 32 个分区中的一个分区，而让其余 31 个分区冗余。 在前一种情况下，必须跨所有 32 个分区读取事件。 在后一种情况下，除了必须在事件处理器主机上进行额外配置外，没有明显的额外成本。
 
 事件中心设计用于允许每个用户组使用单个分区读取器。 在大多数用例中，四个分区的默认设置就足够了。 如果希望扩展事件处理，则可以考虑添加其他分区。 对分区没有特定的吞吐量限制，但是命名空间中的聚合吞吐量受吞吐量单位数限制。 增加命名空间中吞吐量单位的数量时，可能需要添加额外分区来允许并发读取器实现其自身的最大吞吐量。
 

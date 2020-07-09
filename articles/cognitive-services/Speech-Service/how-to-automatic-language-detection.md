@@ -9,15 +9,15 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 03/16/2020
-ms.date: 04/20/2020
+ms.date: 06/19/2020
 ms.author: v-tawe
-zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: c0d65437c3a20cece64bdf9496c069d7e3a20826
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+zone_pivot_groups: programming-languages-set-nineteen
+ms.openlocfilehash: b8caa383839681c14ecf73a0eb4c476f644c34d1
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126979"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85613318"
 ---
 # <a name="automatic-language-detection-for-speech-to-text"></a>语音转文本的自动语言检测
 
@@ -26,11 +26,11 @@ ms.locfileid: "82126979"
 本文介绍如何使用 `AutoDetectSourceLanguageConfig` 来构造 `SpeechRecognizer` 对象并检索检测到的语言。
 
 > [!IMPORTANT]
-> 此功能仅适用于 C#、C++、Java 和 Python 的语音 SDK。
+> 此功能仅适用于具有 C#、C++、Java、Python 和 Objective-C 的语音 SDK。
 
 ## <a name="automatic-language-detection-with-the-speech-sdk"></a>使用语言 SDK 进行自动语言检测
 
-自动语言检测目前存在每次检测仅限两种语言的服务端限制。 在构造 `AudoDetectSourceLanguageConfig` 对象时，请牢记此限制。 在下面的示例中，我们将创建 `AutoDetectSourceLanguageConfig`，然后使用它来构造 `SpeechRecognizer`。
+自动语言检测目前存在每次检测仅限四种语言的服务端限制。 在构造 `AudoDetectSourceLanguageConfig` 对象时，请牢记此限制。 在下面的示例中，我们将创建 `AutoDetectSourceLanguageConfig`，然后使用它来构造 `SpeechRecognizer`。
 
 > [!TIP]
 > 还可以指定一个自定义模型，供执行语音转文本操作时使用。 有关详细信息，请参阅[使用自定义模型来自动检测语言](#use-a-custom-model-for-automatic-language-detection)。
@@ -119,6 +119,23 @@ detected_language = auto_detect_source_language_result.language
 
 ::: zone-end
 
+::: zone pivot="programming-language-objectivec"
+
+```Objective-C
+NSArray *languages = @[@"zh-CN", @"de-DE"];
+SPXAutoDetectSourceLanguageConfiguration* autoDetectSourceLanguageConfig = \
+        [[SPXAutoDetectSourceLanguageConfiguration alloc]init:languages];
+SPXSpeechRecognizer* speechRecognizer = \
+        [[SPXSpeechRecognizer alloc] initWithSpeechConfiguration:speechConfig
+                           autoDetectSourceLanguageConfiguration:autoDetectSourceLanguageConfig
+                                              audioConfiguration:audioConfig];
+SPXSpeechRecognitionResult *result = [speechRecognizer recognizeOnce];
+SPXAutoDetectSourceLanguageResult *languageDetectionResult = [[SPXAutoDetectSourceLanguageResult alloc] init:result];
+NSString *detectedLanguage = [languageDetectionResult language];
+```
+
+::: zone-end
+
 ## <a name="use-a-custom-model-for-automatic-language-detection"></a>使用自定义模型来自动检测语言
 
 除了使用语音服务模型来检测语言，还可以指定自定义模型来增强识别功能。 如果未提供自定义模型，服务会使用默认的语言模型。
@@ -179,6 +196,20 @@ AutoDetectSourceLanguageConfig autoDetectSourceLanguageConfig =
  fr_language_config = speechsdk.languageconfig.SourceLanguageConfig("fr-FR", "The Endpoint Id for custom model of fr-FR")
  auto_detect_source_language_config = speechsdk.languageconfig.AutoDetectSourceLanguageConfig(
         sourceLanguageConfigs=[en_language_config, fr_language_config])
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-objectivec"
+
+```Objective-C
+SPXSourceLanguageConfiguration* enLanguageConfig = [[SPXSourceLanguageConfiguration alloc]init:@"en-US"];
+SPXSourceLanguageConfiguration* frLanguageConfig = \
+        [[SPXSourceLanguageConfiguration alloc]initWithLanguage:@"fr-FR"
+                                                     endpointId:@"The Endpoint Id for custom model of fr-FR"];
+NSArray *languageConfigs = @[enLanguageConfig, frLanguageConfig];
+SPXAutoDetectSourceLanguageConfiguration* autoDetectSourceLanguageConfig = \
+        [[SPXAutoDetectSourceLanguageConfiguration alloc]initWithSourceLanguageConfigurations:languageConfigs];
 ```
 
 ::: zone-end

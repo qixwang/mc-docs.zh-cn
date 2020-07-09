@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 03/18/2019
-ms.date: 05/11/2020
+ms.date: 07/06/2020
 ms.author: v-jay
-ms.openlocfilehash: 758fe52a26e2431de5587c7db8a1c4837e3dcaf9
-ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
+ms.openlocfilehash: 0d38ad523f843849d844ab1d135851b83c0545b3
+ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85096236"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85845790"
 ---
 # <a name="deliver-content-to-customers"></a>向客户传送内容
 向客户传送流或视频点播内容时，目标在于向处于不同网络条件下的各种设备传送优质视频。
@@ -56,7 +56,7 @@ ms.locfileid: "85096236"
 
 有关详细信息，请参阅[筛选器和动态清单](media-services-dynamic-manifest-overview.md)。
 
-## <a name="locators"></a><a id="locators"/>定位符
+## <a name="locators"></a><a id="locators"></a>定位符
 若要为用户提供一个可用于流式传输内容或下载内容的 URL，首先需要通过创建定位符来发布资产。 定位符提供访问资产中所含文件的入口点。 媒体服务支持两种类型的定位符：
 
 * OnDemandOrigin 定位符。 这些定位符用于流媒体（例如，MPEG-DASH、HLS 或平滑流式处理）或渐进式下载文件。
@@ -88,7 +88,7 @@ ms.locfileid: "85096236"
 
 如果要从中传送内容的流式处理终结点是在 2014 年 9 月 10 日之后创建的，则只能通过 TLS 流式传输内容。 如果流式处理 URL 基于 2014 年 9 月 10 日之后创建的流式处理终结点，则 URL 会包含“streaming.mediaservices.chinacloudapi.cn”。 包含“origin.mediaservices.chinacloudapi.cn”（旧格式）的流式处理 URL 不支持 TLS。 如果 URL 采用旧格式，并且你希望能够通过 TLS 流式传输内容，请创建新的流式处理终结点。 使用基于新流式处理终结点的 URL 通过 TLS 流式传输内容。
 
-## <a name="streaming-url-formats"></a><a id="URLs"/>流式处理 URL 格式
+## <a name="streaming-url-formats"></a><a id="URLs"></a>流式处理 URL 格式
 
 ### <a name="mpeg-dash-format"></a>MPEG-DASH 格式
 {流式处理终结点名称-媒体服务帐户名称}.streaming.mediaservices.chinacloudapi.cn/{定位符 ID}/{文件名}.ism/Manifest(format=mpd-time-csf) 

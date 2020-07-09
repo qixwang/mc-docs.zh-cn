@@ -1,27 +1,21 @@
 ---
 title: 教程 - 使用 Azure PowerShell 创建和部署高度可用的虚拟机
 description: 本教程介绍如何使用 Azure PowerShell 在可用性集中部署高度可用的虚拟机
-documentationcenter: ''
 services: virtual-machines-windows
 author: rockboyfor
-manager: digimobile
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
 ms.topic: tutorial
 origin.date: 11/30/2018
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 5c9a94616522306681f86c28e51a49b66ad7d54f
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: 9d0f2a4807df168d451d3350a75eef43ef719a65
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392237"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945889"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-azure-powershell"></a>教程：使用 Azure PowerShell 创建和部署高度可用的虚拟机
 
@@ -43,7 +37,11 @@ ms.locfileid: "83392237"
 
 在 Azure 中部署基于 VM 的可靠解决方案时，使用可用性集。
 
-## <a name="launch-azure-powershell"></a>启动 Azure PowerShell
+## <a name="launch-azure-local-powershell"></a>启动 Azure 本地 PowerShell
+
+打开 Azure Powershell 控制台，并以管理员权限运行以下脚本。
+
+<!--Not Available on Azure Cloud Shell-->
 
 ## <a name="create-an-availability-set"></a>创建可用性集
 

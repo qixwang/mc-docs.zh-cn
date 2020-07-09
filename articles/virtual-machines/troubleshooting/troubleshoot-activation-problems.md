@@ -1,5 +1,5 @@
 ---
-title: 排查 Azure Windows 虚拟机激活问题 | Azure
+title: 排查 Azure Windows 虚拟机激活问题
 description: 介绍用于修复 Azure 中的 Windows 虚拟机激活问题的疑难解答步骤
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 origin.date: 11/15/2018
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: c0a51711dafa6f1ef670ad7d5081c745d4a02a2e
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: d4b511c62bde6dd0f19c3d32bf78fa8ec3d6e13a
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596361"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945979"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>排查 Azure Windows 虚拟机激活问题
 
@@ -98,7 +98,7 @@ Azure 使用不同的终结点进行 KMS（密钥管理服务）激活，具体�
 4. 使用 Psping 验证是否已连接到 KMS 服务器。 切换到将 Pstools.zip 下载内容提取到的文件夹，再运行以下命令：
 
     ```
-    \psping.exe kms.core.chinacloudapi.cn:1688
+    .\psping.exe kms.core.chinacloudapi.cn:1688
     ```
     
     确保输出的倒数第二行显示以下内容：Sent = 4, Received = 4, Lost = 0 (0% loss)。
@@ -109,7 +109,7 @@ Azure 使用不同的终结点进行 KMS（密钥管理服务）激活，具体�
 
     另外，请确保到具有 1688 端口的 KMS 终结点的出站网络流量未被 VM 上的防火墙阻止。
 
-5. 使用[网络观察程序下一跃点](/network-watcher/network-watcher-next-hop-overview)验证从相关 VM 到目标 IP 42.159.7.249（适用于kms.core.chinacloudapi.cn）或适用于你区域的相应 KMS 终结点的 IP 的下一跃点类型是否为“Internet”  。  如果结果为“VirtualAppliance”或“VirtualNetworkGateway”，则可能存在默认路由。  请与网络管理员联系并协作，以便确定正确的操作过程。  如果该解决方案与你组织的策略一致，则这可能是[自定义路由](/virtual-machines/troubleshooting/custom-routes-enable-kms-activation)。
+5. 使用[网络观察程序下一跃点](/network-watcher/network-watcher-next-hop-overview)验证从相关 VM 到目标 IP 42.159.7.249（适用于kms.core.chinacloudapi.cn）或适用于你区域的相应 KMS 终结点的 IP 的下一跃点类型是否为“Internet”。  如果结果为“VirtualAppliance”或“VirtualNetworkGateway”，则可能存在默认路由。  请与网络管理员联系并进行协作，以便确定正确的操作过程。  如果该解决方案与你组织的策略一致，则这可能是[自定义路由](/virtual-machines/troubleshooting/custom-routes-enable-kms-activation)。
 
 6. 验证成功连接到 kms.core.chinacloudapi.cn 后，在提升的 Windows PowerShell 提示符处运行以下命令。 此命令可多次尝试激活。
 
@@ -119,7 +119,7 @@ Azure 使用不同的终结点进行 KMS（密钥管理服务）激活，具体�
 
     如果激活成功，会返回如下信息：
 
-    正在激活 Windows(R)，已成功激活服务器数据中心版本(12345678-1234-1234-1234-12345678) … 产品。 
+    正在激活 Windows(R)，已成功激活服务器数据中心版本(12345678-1234-1234-1234-12345678) … 产品。
 
 ## <a name="faq"></a>常见问题 
 

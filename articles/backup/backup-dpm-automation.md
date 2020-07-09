@@ -4,14 +4,14 @@ description: 了解如何使用 PowerShell 部署和管理 Data Protection Manag
 ms.topic: conceptual
 author: Johnnytechn
 origin.date: 1/23/2017
-ms.date: 06/09/2020
+ms.date: 06/22/2020
 ms.author: v-johya
-ms.openlocfilehash: 032158327b4683057062e2b2c231ad5d73686037
-ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
+ms.openlocfilehash: 9e90a207bcf96485144fd22232997fd726b2b8d2
+ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84684007"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85852082"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>使用 PowerShell 部署和管理 Data Protection Manager (DPM) 服务器的 Azure 备份
 
@@ -114,7 +114,7 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 MARSAgentInstaller.exe /q
 ```
 
-这会以所有默认选项安装代理。 安装在几分钟内在后台完成。 如果没有指定 */nu* 选项，则安装结束时，会打开“Windows Update”**** 窗口，以检查是否有任何更新。
+这会以所有默认选项安装代理。 安装在几分钟内在后台完成。 如果没有指定 */nu* 选项，则安装结束时，会打开“Windows Update”窗口，以检查是否有任何更新。
 
 代理在已安装程序列表中显示。 若要查看已安装的程序列表，请转到“**控制面板**”“ > **程序** > ”“**程序和功能**”。
 
@@ -157,7 +157,7 @@ $credsfilename
 C:\downloads\testvault\_Sun Apr 10 2016.VaultCredentials
 ```
 
-在 DPM 服务器上，运行 [Start-OBRegistration](https://docs.microsoft.com/powershell/module/msonlinebackup/start-obregistration?view=winserver2012-ps) cmdlet，将计算机注册到保管库。
+在 DPM 服务器上，运行 [Start-OBRegistration](https://docs.microsoft.com/powershell/module/msonlinebackup/start-obregistration) cmdlet，将计算机注册到保管库。
 
 ```powershell
 $cred = $credspath + $credsfilename
@@ -389,8 +389,5 @@ Restore-DPMRecoverableItem -RecoverableItem $RecoveryPoints[0] -RecoveryOption $
 
 可针对任何数据源类型轻松扩展这些命令。
 
-## <a name="next-steps"></a>后续步骤
-
-* 有关 DPM 到 Azure 备份的详细信息，请参阅 [DPM 备份简介](backup-azure-dpm-introduction.md)
 
 <!-- Update_Description: update metedata properties -->

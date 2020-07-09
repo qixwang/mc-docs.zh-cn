@@ -2,38 +2,44 @@
 title: 向字符串字段添加语言分析器
 titleSuffix: Azure Cognitive Search
 description: Azure 认知搜索中适用于非英语查询和索引的多语言词法文本分析。
+author: HeidiSteen
 manager: nitinme
-author: Yahnoosh
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 12/10/2019
-ms.date: 03/16/2020
-translation.priority.mt:
-- de-de
-- es-es
-- fr-fr
-- it-it
-- ja-jp
-- ko-kr
-- pt-br
-- ru-ru
-- zh-cn
-- zh-tw
-ms.openlocfilehash: 8795ccf63acf47b6220a59d9f0118405103a17d6
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 06/05/2020
+ms.date: 07/02/2020
+ms.openlocfilehash: 8cee038461bd98cc59488eb9ed1a68f7af93773b
+ms.sourcegitcommit: 5afd7c4c3be9b80c4c67ec55f66fcf347aad74c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292314"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85942574"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>向 Azure 认知搜索索引中的字符串字段添加语言分析器
 
-语言分析器是特定类型的[文本分析器](search-analyzers.md)，可以使用目标语言的语言规则执行词法分析。 每个可搜索字段都有一个“分析器”属性  。 如果索引包含翻译的字符串，例如针对英文文本和中文文本的单独字段，则可在每个字段上指定语言分析器，以便访问这些分析器的丰富语言功能。  
+语言分析器是特定类型的[文本分析器](search-analyzers.md)，可以使用目标语言的语言规则执行词法分析。 每个可搜索字段都有一个“分析器”属性。 如果内容包含翻译后的字符串，例如针对英文文本和中文文本的单独字段，则可在每个字段上指定语言分析器，以便访问这些分析器的丰富语言功能。
 
-Azure 认知搜索支持 35 个受 Lucene 支持的分析器，以及 Office 和必应中使用的专有 Microsoft 自然语言处理技术支持的 50 个分析器。
+## <a name="when-to-use-a-language-analyzer"></a>何时使用语言分析器
 
-## <a name="comparing-analyzers"></a>比较分析器
+如果感知词汇或句子结构可以为文本分析带来好处，则应该考虑使用语言分析器。 常见例子为不规则动词形式（“bring”和“brought”）或复数名词（“mice”和“mouse”）的关联。 如果没有语言感知功能，仅根据物理特征分析这些字符串，则无法抓住这种联系。 由于大段文本更有可能包含此内容，因此，由描述、评论或摘要组成的字段很适合使用语言分析器。
+
+当内容包含非西方语言字符串时，也应该考虑使用语言分析器。 尽管[默认分析器](search-analyzers.md#default-analyzer)与语言无关，但使用空格和特殊字符（连字符和斜杠）分隔字符串的概念通常更适用于西方语言，而不是非西方语言。 
+
+例如，在中文、日语、韩语 (CJK) 和其他亚洲语言中，空格不一定是词汇分隔符。 请看下面的日语字符串。 因为它没有空格，所以与语言无关的分析器可能会将整个字符串作为一个标记进行分析，但该字符串实际上是一个短语。
+
+```
+これは私たちの銀河系の中ではもっとも重く明るいクラスの球状星団です。
+(This is the heaviest and brightest group of spherical stars in our galaxy.)
+```
+
+对于上面的示例，成功的查询必须包含完整的标记或使用后缀通配符的部分标记，这样会带来不自然且有限的搜索体验。
+
+更好的体验是搜索单个词汇：明るい（明亮）、私たちの（我们的）、銀河系（银河系）。 通过使用认知搜索中可用的日语分析器之一，更有可能解锁此行为，因为这些分析器更擅长将文本段拆分为目标语言中有意义的词汇。
+
+## <a name="comparing-lucene-and-microsoft-analyzers"></a>比较 Lucene 和 Microsoft 分析器
+
+Azure 认知搜索支持 35 个受 Lucene 支持的语言分析器，以及 Office 和必应中使用的专有 Microsoft 自然语言处理技术支持的 50 个语言分析器。
 
 某些开发人员可能首选更熟悉、简单的开源 Lucene 解决方案。 Lucene 语言分析器更快，但 Microsoft 分析器具有高级功能，如词形还原、字词分解（在德语、丹麦语、荷兰语、瑞典语、挪威语、爱沙尼亚语、芬兰语、匈牙利语、斯洛伐克语中）和实体识别（URL、电子邮件、日期、数字）。 如果可能，应对 Microsoft 和 Lucene 分析器进行比较以确定哪一个更合适。 
 
@@ -49,7 +55,7 @@ Microsoft 分析器的索引平均比 Lucene 的索引慢两到三倍，具体�
 
 ## <a name="configuring-analyzers"></a>配置分析器
 
-语言分析器按原样使用。 对于索引定义中的每个字段，可将分析器属性设置为用于指定语言和语言学堆栈（Microsoft 或 Lucene）的分析器名称  。 将在为该字段编入索引和搜索时应用相同的分析器。 例如，可以为在同一个索引中并行存在的英语、法语和西班牙语酒店说明使用单独的字段。
+语言分析器按原样使用。 对于索引定义中的每个字段，可将分析器属性设置为用于指定语言和语言学堆栈（Microsoft 或 Lucene）的分析器名称。 将在为该字段编入索引和搜索时应用相同的分析器。 例如，可以为在同一个索引中并行存在的英语、法语和西班牙语酒店说明使用单独的字段。
 
 > [!NOTE]
 > 不能在为字段编制索引时和查询时使用不同的语言分析器。 该功能是为[自定义分析器](index-add-custom-analyzers.md)保留的。 因此，如果尝试将 **searchAnalyzer** 或 **indexAnalyzer** 属性设为语言分析器的名称，REST API 将返回错误响应。 必须改用 **analyzer** 属性。

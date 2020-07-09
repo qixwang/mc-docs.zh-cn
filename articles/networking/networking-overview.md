@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.workload: infrastructure-services
 origin.date: 03/12/2020
-ms.date: 06/03/2020
+ms.date: 07/01/2020
 ms.author: v-tawe
-ms.openlocfilehash: 22d2c592d8ea10e0d6437ac3c22db2a83c651f23
-ms.sourcegitcommit: 40d1ff17251ab1d2d607845523470f11ce087039
+ms.openlocfilehash: ee00cfa3c35ec0ed69be9af13f27b88370633919
+ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84320487"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85796305"
 ---
 # <a name="azure-networking-services-overview"></a>Azure 网络服务概述
 
@@ -24,9 +24,9 @@ ms.locfileid: "84320487"
 
 Azure 中的网络服务提供可以搭配使用或单独使用的各种网络功能。 请单击以下任一重要功能了解更多相关信息：
 - [**连接服务**](#connect)：使用 Azure 中的以下任一网络服务或其组合连接 Azure 资源和本地资源 - 虚拟网络 (VNet)、虚拟 WAN、ExpressRoute、VPN 网关和 Azure DNS。
-- [**应用程序保护服务**](#protect)：使用 Azure 中的以下任一网络服务或其组合来保护应用程序 - 防火墙、网络安全组、Web 应用程序防火墙和虚拟网络终结点。
-- [**应用程序分发服务**](#deliver)：使用 Azure 中的以下任一网络服务或其组合在 Azure 网络中分发应用程序 - 内容分发网络 (CDN)、流量管理器、应用程序网关和负载均衡器。
-- [**网络监视**](#monitor)：使用 Azure 中的以下任一网络服务或其组合来监视网络资源 - 网络观察程序、ExpressRoute Monitor 和 Azure Monitor。
+- [**应用程序保护服务**](#protect)：使用 Azure 中的以下任一网络服务或其组合来保护应用程序：防火墙、网络安全组、Web 应用程序防火墙和虚拟网络终结点。
+- [**应用程序分发服务**](#deliver)：使用 Azure 中的以下任一网络服务或其组合在 Azure 网络中分发应用程序：内容分发网络 (CDN)、流量管理器、应用程序网关和负载均衡器。
+- [**网络监视**](#monitor)：使用 Azure 中的以下任一网络服务或其组合来监视网络资源：网络观察程序、ExpressRoute Monitor 和 Azure Monitor。
 
 ## <a name="connectivity-services"></a><a name="connect"></a>连接服务
  

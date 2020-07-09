@@ -5,14 +5,14 @@ author: WenJason
 ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
-origin.date: 12/05/2019
-ms.date: 02/10/2020
-ms.openlocfilehash: 602dd3e8745c73e68a63d15acddf36a52df9a659
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 5/7/2020
+ms.date: 06/29/2020
+ms.openlocfilehash: e0ed9148f8e21a5d345e01a916dca7f98094060a
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77068305"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516732"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>配置应用程序的 SSL 连接性以安全连接到 Azure Database for MySQL
 
@@ -39,10 +39,10 @@ OpenSSL>x509 -inform DEV -in DigiCertGlobalRootCA.crt -out DigiCertGlobalRootCA.
 
 ## <a name="step-5-bind-ssl"></a>步骤 5：绑定 SSL
 ### <a name="connecting-to-server-using-the-mysql-workbench-over-ssl"></a>使用 MySQL Workbench 通过 SSL 连接到服务器
-配置 MySQL Workbench，以便安全地通过 SSL 连接。 从“设置新连接”对话框，导航到“SSL”选项卡  。在“SSL CA 文件:”字段中输入 **DigiCertGlobalRootCA.pem** 的文件位置。  
-![保存自定义磁贴](./media/howto-configure-ssl/mysql-workbench-ssl.png)
+配置 MySQL Workbench，以便安全地通过 SSL 连接。 从“设置新连接”对话框，导航到“SSL”选项卡。在“SSL CA 文件:”字段中输入 **DigiCertGlobalRootCA.pem** 的文件位置。 
+![保存 SSL 配置](./media/howto-configure-ssl/mysql-workbench-ssl.png)
 
-对于现有连接，可以通过右键单击“连接”图标并选择“编辑”来绑定 SSL。 然后导航到“SSL”  选项卡，并绑定证书文件。
+对于现有连接，可以通过右键单击“连接”图标并选择“编辑”来绑定 SSL。 然后导航到“SSL”选项卡，并绑定证书文件。
 
 ### <a name="connecting-to-server-using-the-mysql-cli-over-ssl"></a>使用 MySQL CLI 通过 SSL 连接到服务器
 绑定 SSL 证书的另一种方法是使用 MySQL 命令行接口执行以下命令。 
@@ -56,21 +56,21 @@ mysql.exe -h mydemoserver.mysql.database.chinacloudapi.cn -u Username@mydemoserv
 
 ## <a name="step-6--enforcing-ssl-connections-in-azure"></a>步骤 6：在 Azure 中强制实施 SSL 连接 
 ### <a name="using-the-azure-portal"></a>使用 Azure 门户
-在 Azure 门户中，访问 Azure Database for MySQL 服务器，并单击“连接安全性”  。 使用切换按钮来启用或禁用“强制实施 SSL 连接”设置，并单击“保存”   。 Azure 建议你始终启用“强制实施 SSL 连接”设置，以增强安全性  。
+在 Azure 门户中，访问 Azure Database for MySQL 服务器，并单击“连接安全性”。 使用切换按钮来启用或禁用“强制实施 SSL 连接”设置，并单击“保存” 。 Azure 建议你始终启用“强制实施 SSL 连接”设置，以增强安全性。
 ![enable-ssl](./media/howto-configure-ssl/enable-ssl.png)
 
 ### <a name="using-azure-cli"></a>使用 Azure CLI
-可以通过在 Azure CLI 中分别使用“Enabled”或“Disabled”值来启用或禁用“ssl-enforcement”参数  。
-```cli
+可以通过在 Azure CLI 中分别使用“Enabled”或“Disabled”值来启用或禁用“ssl-enforcement”参数。
+```azurecli
 az mysql server update --resource-group myresource --name mydemoserver --ssl-enforcement Enabled
 ```
 
 ## <a name="step-7-verify-the-ssl-connection"></a>步骤 7：验证 SSL 连接
-执行 mysql status 命令，验证是否已使用 SSL 连接到 MySQL 服务器： 
+执行 mysql status 命令，验证是否已使用 SSL 连接到 MySQL 服务器：
 ```dos
 mysql> status
 ```
-查看输出以确认连接是否已加密，如果已加密，输出应显示为：“SSL:  使用中的密码为 AES256-SHA” 
+查看输出以确认连接是否已加密，如果已加密，输出应显示为：“SSL: 使用中的密码为 AES256-SHA” 
 
 ## <a name="sample-code"></a>代码示例
 若要从应用程序通过 SSL 与 Azure Database for MySQL 建立安全连接，请参阅以下代码示例：
