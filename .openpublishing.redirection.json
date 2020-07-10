@@ -24993,7 +24993,12 @@
       "source_path": "articles/virtual-machines/linux/sql/provision-sql-server-linux-virtual-machine.md",
       "redirect_url": "/azure-sql/virtual-machines/linux/sql-vm-create-portal-quickstart",
       "redirect_document_id": false
-	}
+	},
+    {
+      "source_path": "articles/aks/ingress.md",
+      "redirect_url": "/aks/ingress-tls",
+      "redirect_document_id": true
+    }
 
 
 
