@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 author: Johnnytechn
 ms.author: v-johya
-ms.openlocfilehash: 424e7a66033ae4860146b6417c762691f5bde604
-ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
+ms.openlocfilehash: 8bf782af997e9f289352a462e9457f6839f3474d
+ms.sourcegitcommit: 92b9b1387314b60661f5f62db4451c9ff2c49500
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85852555"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165022"
 ---
 # <a name="about-azure-vm-restore"></a>关于 Azure VM 还原
 
@@ -34,8 +34,7 @@ ms.locfileid: "85852555"
 - **可用性（复制类型）** ：Azure 备份提供了两种类型的复制来保持存储/数据的高可用性：
   - [本地冗余存储 (LRS)](../storage/common/storage-redundancy-lrs.md) 将数据中心的存储缩放单元中的数据复制三次（创建三个数据副本）。 数据的所有副本存在于同一区域。 LRS 是一个低成本选项，可在本地硬件故障时保护数据。
   - [异地冗余存储 (GRS)](../storage/common/storage-redundancy-grs.md) 是默认的和推荐的复制选项。 GRS 将数据复制到离源数据主位置数英里之外的次要区域中。 GRS 的成本比 LRS 的高，但 GRS 提供更高的数据持久度，即使出现区域性服务中断也是如此。
-
-- **跨区域还原 (CRR)** ：作为[还原选项](/backup/backup-azure-arm-restore-vms#restore-options)之一，跨区域还原 (CRR) 允许你在某个次要区域（[Azure 配对区域](/best-practices-availability-paired-regions#what-are-paired-regions)）中还原 Azure VM。
+<!--Not available in MC: cross region restore feature-->
 
 ## <a name="restore-scenarios"></a>还原方案
 
@@ -47,7 +46,7 @@ ms.locfileid: "85852555"
 | [还原 VM 的磁盘](/backup/backup-azure-arm-restore-vms#restore-disks) | 还原附加到 VM 的磁盘                             |  所有磁盘：此选项将创建模板并还原磁盘。 你可以使用特殊配置（例如，可用性集）编辑此模板以满足你的要求，然后使用模板并还原磁盘来重新创建 VM。 |
 | [还原 VM 内的特定文件](/backup/backup-azure-restore-files-from-vm) | 选择还原点，浏览，选择文件并将它们还原到与备份的 VM 相同的（或兼容的）OS。 |  如果你知道要还原的具体文件，请使用此选项而不是还原整个 VM。 |
 | [还原加密的 VM](/backup/backup-azure-vms-encryption) | 在门户中，还原磁盘，然后使用 PowerShell 创建 VM | <li> [带 Azure Active Directory (AAD) 的加密 VM](/virtual-machines/windows/disk-encryption-windows-aad)  <li> [不带 AAD 的加密 VM](/virtual-machines/windows/disk-encryption-windows) <li> [从带 AAD 的加密 VM 迁移到不带 AAD 的加密 VM ](/virtual-machines/windows/disk-encryption-faq#can-i-migrate-vms-that-were-encrypted-with-an-azure-ad-app-to-encryption-without-an-azure-ad-app) |
-| [跨区域还原](/backup/backup-azure-arm-restore-vms#cross-region-restore) | 创建新的 VM，或将磁盘还原到次要区域（Azure 配对区域） | <li> **完全中断**：使用跨区域还原功能，在次要区域中恢复数据没有等待时间。 即使在 Azure 声明服务中断之前，也可以在次要区域中启动还原。 <li> **部分中断**：停机可能发生在特定的存储群集中（Azure 备份在其中存储着你的已备份数据），甚至可能发生在网络中（该网络连接 Azure 备份与那些与你的已备份数据相关联的存储群集）。 使用跨区域还原，你可以使用次要区域中已备份数据的副本在次要区域中执行还原。 <li> **无中断**：出于审核或合规性目的，你可以使用次要区域数据进行业务连续性和灾难恢复 (BCDR) 演练。 这样，即使主要区域中没有发生完全或部分中断，你也能够在次要区域中执行已备份数据的还原，以进行业务连续性和灾难恢复演练。  |
+<!--Not available in MC: cross region restore feature-->
 
 ------
 

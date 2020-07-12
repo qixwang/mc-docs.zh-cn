@@ -6,36 +6,18 @@ ms.author: v-johya
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/12/2020
-ms.openlocfilehash: d94d52a43a01e8e6a17f727234bbd7cb974915d2
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.openlocfilehash: 81855734158a5bbc708c2c86648ee8f107455176
+ms.sourcegitcommit: 9bc3e55f01e0999f05e7b4ebaea95f3ac91d32eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723628"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86226137"
 ---
 # <a name="azure-stream-analytics-data-errors"></a>Azure 流分析数据错误
 
 数据错误是处理数据时发生的错误。  这些错误往往发生在数据反序列化、序列化和写入操作期间。  发生数据错误时，流分析会将详细信息和示例事件写入资源日志。  在某些情况下，还会通过门户通知来提供此信息的摘要。
 
 本文概述输入和输出数据错误的不同错误类型、原因和资源日志详细信息。
-
-## <a name="resource-logs-schema"></a>资源日志架构
-
-请参阅[使用诊断日志对 Azure 流分析进行故障排除](stream-analytics-job-diagnostic-logs.md#resource-logs-schema)，了解资源日志的架构。 以下 JSON 是数据错误资源日志的“属性”字段示例值****。
-
-```json
-{
-    "Source": "InputTelemetryData",
-    "Type": "DataError",
-    "DataErrorType": "InputDeserializerError.InvalidData",
-    "BriefMessage": "Json input stream should either be an array of objects or line separated objects. Found token type: Integer",
-    "Message": "Input Message Id: https:\\/\\/exampleBlob.blob.core.chinacloudapi.cn\\/inputfolder\\/csv.txt Error: Json input stream should either be an array of objects or line separated objects. Found token type: Integer",
-    "ExampleEvents": "[\"1,2\\\\u000d\\\\u000a3,4\\\\u000d\\\\u000a5,6\"]",
-    "FromTimestamp": "2019-03-22T22:34:18.5664937Z",
-    "ToTimestamp": "2019-03-22T22:34:18.5965248Z",
-    "EventCount": 1
-}
-```
 
 ## <a name="input-data-errors"></a>输入数据错误
 
@@ -288,8 +270,6 @@ ms.locfileid: "84723628"
 ```
 
 ## <a name="next-steps"></a>后续步骤
-
-* [使用诊断日志对 Azure 流分析进行故障排除](stream-analytics-job-diagnostic-logs.md)
 
 * [了解流分析作业监视以及如何监视查询](stream-analytics-monitoring.md)
 

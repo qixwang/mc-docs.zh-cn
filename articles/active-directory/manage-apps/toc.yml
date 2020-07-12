@@ -1,11 +1,19 @@
 - name: 应用程序管理文档
   href: index.yml
 - name: 快速入门
+  items:
+    - name: 查看你的应用
+      href: view-applications-portal.md
+    - name: 配置应用
+      href: add-application-portal-configure.md
+    - name: 删除应用
+      href: delete-application-portal.md
+- name: 概念
   expanded: true
   items:
     - name: 查看租户应用 - 门户
       href: view-applications-portal.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 云应用集成
       items:
@@ -37,17 +45,15 @@
           href: application-sign-in-problem-custom-dev.md
 - name: 资源
   items:
+    - name: 开发人员的支持和帮助选项
+      href: /active-directory/develop/developer-support-help-options
     - name: Azure 反馈论坛
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
-    - name: Azure 路线图
-      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
-    - name: MSDN 论坛
-      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
+    - name: Microsoft Q&A 问题页面
+      href: 'https://docs.microsoft.com/answers/topics/azure-active-directory.html'
     - name: 定价
       href: 'https://www.azure.cn/pricing/details/active-directory'
-    - name: 定价计算器
-      href: 'https://www.azure.cn/pricing/calculator'
     - name: 服务更新
       href: 'https://azure.microsoft.com/updates/?product=active-directory'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'

@@ -5,25 +5,24 @@ services: virtual-network
 documentationcenter: virtual-network
 author: rockboyfor
 manager: digimobile
-editor: ''
 tags: azure-resource-manager
 Customer intent: I want to filter network traffic to virtual machines that perform similar functions, such as web servers.
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: ''
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 origin.date: 03/30/2018
-ms.date: 07/22/2019
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: f3185d18205c4f305f6218f707730a17faf89556
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 18399559a38811a51ac97129c2e2db978f5701e3
+ms.sourcegitcommit: af71b9199d47fb81e85d70da0cfb265cc814a644
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "68514438"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85969048"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-powershell"></a>在 PowerShell 中使用网络安全组筛选网络流量
 

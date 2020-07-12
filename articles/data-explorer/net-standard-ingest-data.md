@@ -6,14 +6,14 @@ ms.author: v-tawe
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-origin.date: 06/03/2019
-ms.date: 03/16/2020
-ms.openlocfilehash: ae285bda409dc5a04d222e704ff0a861440d555e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 05/19/2020
+ms.date: 07/08/2020
+ms.openlocfilehash: 4b0e044a4b2bb7d3961ff5b3b8b2105358e72643
+ms.sourcegitcommit: 5fb9ae9adc04e79d6d0e78c9e69dbe8aa3ceb00a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80522122"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86100249"
 ---
 # <a name="ingest-data-using-the-azure-data-explorer-net-standard-sdk-preview"></a>使用 Azure 数据资源管理器 .NET Standard SDK（预览版）引入数据
 
@@ -124,41 +124,41 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
 ## <a name="define-ingestion-mapping"></a>定义引入映射
 
 将传入的 CSV 数据映射到创建表时使用的列名称。
-在该表上预配 [CSV 列映射对象](https://docs.microsoft.com/azure/kusto/management/create-ingestion-mapping-command)
+在该表上预配 [CSV 列映射对象](https://docs.microsoft.com/azure/data-explorer/kusto/management/create-ingestion-mapping-command)
 
 ```csharp
 var tableMapping = "StormEvents_CSV_Mapping";
 using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnectionStringBuilder))
 {
     var command =
-        CslCommandGenerator.GenerateTableCsvMappingCreateCommand(
+        CslCommandGenerator.GenerateTableMappingCreateCommand(
+            Data.Ingestion.IngestionMappingKind.Csv,
             table,
             tableMapping,
-            new[]
-            {
-                new CsvColumnMapping { ColumnName = "StartTime", Ordinal = 0 },
-                new CsvColumnMapping { ColumnName = "EndTime", Ordinal = 1 },
-                new CsvColumnMapping { ColumnName = "EpisodeId", Ordinal = 2 },
-                new CsvColumnMapping { ColumnName = "EventId", Ordinal = 3 },
-                new CsvColumnMapping { ColumnName = "State", Ordinal = 4 },
-                new CsvColumnMapping { ColumnName = "EventType", Ordinal = 5 },
-                new CsvColumnMapping { ColumnName = "InjuriesDirect", Ordinal = 6 },
-                new CsvColumnMapping { ColumnName = "InjuriesIndirect", Ordinal = 7 },
-                new CsvColumnMapping { ColumnName = "DeathsDirect", Ordinal = 8 },
-                new CsvColumnMapping { ColumnName = "DeathsIndirect", Ordinal = 9 },
-                new CsvColumnMapping { ColumnName = "DamageProperty", Ordinal = 10 },
-                new CsvColumnMapping { ColumnName = "DamageCrops", Ordinal = 11 },
-                new CsvColumnMapping { ColumnName = "Source", Ordinal = 12 },
-                new CsvColumnMapping { ColumnName = "BeginLocation", Ordinal = 13 },
-                new CsvColumnMapping { ColumnName = "EndLocation", Ordinal = 14 },
-                new CsvColumnMapping { ColumnName = "BeginLat", Ordinal = 15 },
-                new CsvColumnMapping { ColumnName = "BeginLon", Ordinal = 16 },
-                new CsvColumnMapping { ColumnName = "EndLat", Ordinal = 17 },
-                new CsvColumnMapping { ColumnName = "EndLon", Ordinal = 18 },
-                new CsvColumnMapping { ColumnName = "EpisodeNarrative", Ordinal = 19 },
-                new CsvColumnMapping { ColumnName = "EventNarrative", Ordinal = 20 },
-                new CsvColumnMapping { ColumnName = "StormSummary", Ordinal = 21 },
-            });
+            new[] {
+                new ColumnMapping() { ColumnName = "StartTime", Properties = new Dictionary<string, string>() { { MappingConsts.Ordinal, "0" } } },
+                new ColumnMapping() { ColumnName = "EndTime", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "1" } } },
+                new ColumnMapping() { ColumnName = "EpisodeId", Properties = new Dictionary<string, string>() { { MappingConsts.Ordinal, "2" } } },
+                new ColumnMapping() { ColumnName = "EventId", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "3" } } },
+                new ColumnMapping() { ColumnName = "State", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "4" } } },
+                new ColumnMapping() { ColumnName = "EventType", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "5" } } },
+                new ColumnMapping() { ColumnName = "InjuriesDirect", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "6" } } },
+                new ColumnMapping() { ColumnName = "InjuriesIndirect", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "7" } } },
+                new ColumnMapping() { ColumnName = "DeathsDirect", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "8" } } },
+                new ColumnMapping() { ColumnName = "DeathsIndirect", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "9" } } },
+                new ColumnMapping() { ColumnName = "DamageProperty", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "10" } } },
+                new ColumnMapping() { ColumnName = "DamageCrops", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "11" } } },
+                new ColumnMapping() { ColumnName = "Source", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "12" } } },
+                new ColumnMapping() { ColumnName = "BeginLocation", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "13" } } },
+                new ColumnMapping() { ColumnName = "EndLocation", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "14" } } },
+                new ColumnMapping() { ColumnName = "BeginLat", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "15" } } },
+                new ColumnMapping() { ColumnName = "BeginLon", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "16" } } },
+                new ColumnMapping() { ColumnName = "EndLat", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "17" } } },
+                new ColumnMapping() { ColumnName = "EndLon", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "18" } } },
+                new ColumnMapping() { ColumnName = "EpisodeNarrative", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "19" } } },
+                new ColumnMapping() { ColumnName = "EventNarrative", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "20" } } },
+                new ColumnMapping() { ColumnName = "StormSummary", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "21" } } }
+        });
 
     kustoClient.ExecuteControlCommand(command);
 }
@@ -186,11 +186,14 @@ using (var ingestClient = KustoIngestFactory.CreateQueuedIngestClient(ingestConn
         new KustoQueuedIngestionProperties(database, table)
         {
             Format = DataSourceFormat.csv,
-            CSVMappingReference = tableMapping,
+            IngestionMapping = new IngestionMapping()
+            { 
+                IngestionMappingReference = tableMapping
+            },
             IgnoreFirstRecord = true
         };
 
-    ingestClient.IngestFromSingleBlob(blobPath, deleteSourceOnSuccess: false, ingestionProperties: properties);
+    ingestClient.IngestFromStorageAsync(blobPath ingestionProperties: properties);
 }
 ```
 

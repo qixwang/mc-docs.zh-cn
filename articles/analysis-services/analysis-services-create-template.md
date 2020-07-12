@@ -6,15 +6,17 @@ tags: azure-resource-manager
 ms.service: analysis-services
 ms.topic: quickstart
 origin.date: 04/14/2020
-ms.date: 05/06/2020
+ms.date: 07/13/2020
+ms.testscope: no
+ms.testdate: 05/06/2020
 ms.author: v-yeche
 ms.custom: subject-armqs
-ms.openlocfilehash: 5a295a823625059ac2e44cf4f2d1725bfdd539ce
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: 9ac70fce9dc2d31cf0a85bdc6a12636d08eb54ea
+ms.sourcegitcommit: 9bc3e55f01e0999f05e7b4ebaea95f3ac91d32eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199392"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86226098"
 ---
 <!--Verified successfully-->
 # <a name="quickstart-create-a-server---azure-resource-manager-template"></a>快速入门：创建服务器 - Azure 资源管理器模板
@@ -122,7 +124,7 @@ ms.locfileid: "84199392"
 
 1. 选择以下“部署到 Azure”链接，登录到 Azure 并打开一个模板。 此模板用来创建 Analysis Services 服务器资源，并指定必需属性和可选属性。
 
-   <a href="https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-analysis-services-create%2Fazuredeploy.json"><img src="./media/analysis-services-create-template/deploy-azure.png" alt="deploy to azure"/></a>
+    [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-analysis-services-create%2Fazuredeploy.json)
 
 2. 选择或输入以下值。
 
@@ -135,6 +137,7 @@ ms.locfileid: "84199392"
     * **位置**：对于 Analysis Services，请忽略此项。 位置在“服务器位置”中指定。
     * **服务器位置**：输入 Analysis Services 服务器的位置。 这通常是为资源组指定的默认位置所在的区域，但不是必需的。 例如，“中国北部”。 有关支持的区域，请参阅 [Analysis Services 可用性（按区域）](analysis-services-overview.md#availability-by-region)。
     * **Sku 名称**：输入要创建的 Analysis Services 服务器的 Sku 名称。 从下列项中进行选择：B1、B2、S0、S1、S2、S3、S4、S8v2、S9v2。 Sku 可用性取决于区域。 对于评估和测试，建议使用 S0。
+        
         <!--Not Available on or D1 -->
         <!--Not Available on D1 sku-->
         
@@ -151,7 +154,7 @@ ms.locfileid: "84199392"
 
 使用 Azure 门户或 Azure PowerShell 来验证资源组和服务器资源是否已创建。
 
-#### <a name="powershell"></a>PowerShell
+### <a name="powershell"></a>PowerShell
 
 ```powershell
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -191,5 +194,4 @@ Write-Host "Press [ENTER] to continue..."
 - [从门户中添加示例模型](analysis-services-create-sample-model.md)
 - [配置服务器管理员和用户角色](tutorials/analysis-services-tutorial-roles.md)
 
-<!-- Update_Description: new article about analysis services create template -->
-<!--NEW.date: 05/06/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

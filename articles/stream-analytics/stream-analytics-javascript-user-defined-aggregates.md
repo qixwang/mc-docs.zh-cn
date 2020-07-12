@@ -1,20 +1,19 @@
 ---
 title: Azure 流分析中 JavaScript 用户定义的聚合
 description: 本文介绍如何在 Azure 流分析中通过 JavaScript 用户定义的聚合执行高级查询机制。
-author: lingliw
-ms.author: v-lingwu
-manager: digimobile
+author: Johnnytechn
+ms.author: v-johya
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 10/28/2017
-ms.date: 07/12/2019
-ms.openlocfilehash: 38521b7c6fefce97fc31268b98ab79df8984af0b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 07/06/2020
+ms.openlocfilehash: 2a0e1d1094d4fe2c56ef95c8541e86cac6d154f2
+ms.sourcegitcommit: 9bc3e55f01e0999f05e7b4ebaea95f3ac91d32eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75856848"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86225980"
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates"></a>Azure 流分析 JavaScript 用户定义的聚合
  
@@ -98,19 +97,19 @@ function main() {
 
 Init() 方法初始化聚合的状态。 窗口启动时会调用此方法。
 
-### <a name="method--accumulate"></a>方法 � accumulate()
+### <a name="method---accumulate"></a>方法 - accumulate()
 
 Accumulate() 方法基于前一状态和当前事件值计算 UDA 状态。 当某个事件进入时间窗口（TUMBLINGWINDOW、HOPPINGWINDOW、SLIDINGWINDOW 或 SESSIONWINDOW）时，会调用此方法。
 
-### <a name="method--deaccumulate"></a>方法 � deaccumulate()
+### <a name="method---deaccumulate"></a>方法 - deaccumulate()
 
 deaccumulate() 方法基于前一状态和当前事件值重新计算状态。 当事件退出 SLIDINGWINDOW 或 SESSIONWINDOW 时，会调用此方法。
 
-### <a name="method--deaccumulatestate"></a>方法 � deaccumulateState()
+### <a name="method---deaccumulatestate"></a>方法 - deaccumulateState()
 
 deaccumulateState() 方法基于前一状态和跃点状态重新计算状态。 当一组事件退出 HOPPINGWINDOW 时，会调用此方法。
 
-### <a name="method--computeresult"></a>方法 � computeResult()
+### <a name="method---computeresult"></a>方法 - computeResult()
 
 computeResult() 方法基于当前状态返回聚合结果。 在时间窗口（TUMBLINGWINDOW、HOPPINGWINDOW、SLIDINGWINDOW 或 SESSIONWINDOW）结束时调用此方法。
 
@@ -121,12 +120,12 @@ computeResult() 方法基于当前状态返回聚合结果。 在时间窗口（
 
 下面演练通过门户创建 UDA 的过程。 此处使用的示例计算时间加权平均值。
 
-现在，让我们执行以下步骤，在现有的 ASA 作业下创建一个 JavaScript UDA。
+现在，让我们执行以下步骤在现有的 ASA 作业下创建一个 JavaScript UDA。
 
 1. 登录到 Azure 门户，并找到现有的流分析作业。
-1. 然后单击“作业拓扑”下的函数链接。 
-1. 单击“添加”图标添加新函数。 
-1. 在“新建函数”视图中，选择“JavaScript UDA”作为函数类型，然后，编辑器中会显示默认的 UDA 模板。 
+1. 然后单击“作业拓扑”下的函数链接。
+1. 单击“添加”图标添加新函数。
+1. 在“新建函数”视图中，选择“JavaScript UDA”作为函数类型，然后，编辑器中会显示默认的 UDA 模板。
 1. 填入“TWA”作为 UDA 别名，并按如下所示更改函数实现：
 
     ```JavaScript
@@ -227,15 +226,13 @@ GROUP BY TumblingWindow(minute, 5)
 
 ## <a name="get-help"></a>获取帮助
 
-如需更多帮助，请访问我们的 [Azure 流分析论坛](https://www.azure.cn/support/contact/)。
+如需更多帮助，请访问[有关 Azure 流分析的 Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [Azure 流分析简介](stream-analytics-introduction.md)
 * [Azure 流分析入门](stream-analytics-real-time-fraud-detection.md)
 * [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
-* [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Azure 流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-
-<!-- Update_Description: update meta properties, wording update-->
 

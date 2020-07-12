@@ -6,13 +6,13 @@ ms.author: v-johya
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/23/2020
-ms.openlocfilehash: b28d1ab0cd58b00fff17606bec56f208471144ac
-ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
+ms.date: 07/03/2020
+ms.openlocfilehash: 72498e4adf6fcb7ae1ed40b8739b9e9b0702355f
+ms.sourcegitcommit: 9bc3e55f01e0999f05e7b4ebaea95f3ac91d32eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159034"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86226171"
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>使用 Azure PowerShell cmdlet 监视和管理流分析作业
 了解如何使用可执行基本流分析任务的 Azure PowerShell cmdlet 和 PowerShell 脚本来监视和管理流分析资源。
@@ -20,7 +20,7 @@ ms.locfileid: "82159034"
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites-for-running-azure-powershell-cmdlets-for-stream-analytics"></a>针对流分析运行 Azure PowerShell cmdlet 的先决条件
-* 在订阅中创建 Azure 资源组。 下面是 Azure PowerShell 脚本示例。 有关 Azure PowerShell 的信息，请参阅 [安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)；  
+* 在订阅中创建 Azure 资源组。 下面是 Azure PowerShell 脚本示例。 有关 Azure PowerShell 的信息，请参阅[安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)；  
 
 Azure PowerShell 0.9.8：  
 
@@ -51,13 +51,13 @@ New-AzResourceGroup -Name <YOUR RESOURCE GROUP NAME> -Location <LOCATION>
 
 
 > [!NOTE]
-> 以编程方式创建的流分析作业默认情况下并不启用监视功能。  可以在 Azure 门户中手动启用监视功能，只需导航到作业的“监视”页，并单击“启用”按钮即可；也可以通过编程方式来执行此操作，只需按照 [Azure 流分析 - 以编程方式监视流分析作业](stream-analytics-monitor-jobs.md)中的步骤操作即可。
+> 以编程方式创建的流分析作业默认情况下并不启用监视功能。  可以在 Azure 门户中手动启用监视功能，只需导航到作业的“监视”页，并单击“启用”按钮即可；也可以通过编程方式来执行此操作，只需遵循 [Azure 流分析 - 以编程方式监视流分析作业](stream-analytics-monitor-jobs.md)中的步骤即可。
 > 
 > 
 
 ## <a name="azure-powershell-cmdlets-for-stream-analytics"></a>适用于流分析的 Azure PowerShell cmdlet
 下面的 Azure PowerShell cmdlet 可用于监视和管理 Azure 流分析作业。 请注意，Azure PowerShell 具有不同版本。 
-**在所列示例中，第一个命令用于 Azure PowerShell 0.9.8，第二个命令用于 Azure PowerShell 1.0。** Azure PowerShell 1.0 命令在命令中始终包含“Az”。
+**在所列示例中，第一个命令用于 Azure PowerShell 0.9.8，第二个命令用于 Azure PowerShell 1.0。** Azure PowerShell 1.0 命令会在命令中始终包含“Az”。
 
 ### <a name="get-azurestreamanalyticsjob--get-azstreamanalyticsjob"></a>Get-AzureStreamAnalyticsJob | Get-AzStreamAnalyticsJob
 列出所有在 Azure 订阅或指定资源组中定义的流分析作业，或者获取有关某个资源组中特定作业的作业信息。
@@ -76,7 +76,7 @@ Azure PowerShell 1.0：
 Get-AzStreamAnalyticsJob
 ```
 
-此 PowerShell 命令返回 Azure 订阅中所有关于流分析作业的信息。
+此 PowerShell 命令返回有关在 Azure 订阅中所有流分析作业的信息。
 
 **示例 2**
 
@@ -223,7 +223,7 @@ Get-AzStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-E
 
 输入的名称可以在 .json 文件中指定，也可以在命令行中指定。 如果在两处同时指定，则命令行的名称必须与文件中的名称相同。
 
-如果所指定的输入已存在，而且并未指定 -Force 参数，则该 cmdlet 会询问用户是否替换现有输入。
+如果所指定的输入已存在，而且你并未指定 -Force 参数，则该 cmdlet 会询问你是否替换现有输入。
 
 如果指定了 -Force 参数，同时又指定了一个现有的输入名称，则会在不进行确认的情况下替换该输入。
 
@@ -282,7 +282,7 @@ Azure PowerShell 1.0：
 
 作业的名称可以在 .json 文件中指定，也可以在命令行中指定。 如果在两处同时指定，则命令行的名称必须与文件中的名称相同。
 
-如果所指定的作业名称已存在，而且并未指定 -Force 参数，则该 cmdlet 会询问用户是否替换现有作业。
+如果所指定的作业名称已存在，而且你并未指定 -Force 参数，则该 cmdlet 会询问你是否替换现有作业。
 
 如果指定了 -Force 参数，同时又指定了一个现有的作业名称，则会在不进行确认的情况下替换作业定义。
 
@@ -325,7 +325,7 @@ Azure PowerShell 1.0：
 
 输出的名称可以在 .json 文件中指定，也可以在命令行中指定。 如果在两处同时指定，则命令行的名称必须与文件中的名称相同。
 
-如果所指定的输出已存在，而且并未指定 -Force 参数，则该 cmdlet 会询问用户是否替换现有输出。
+如果所指定的输出已存在，而且你并未指定 -Force 参数，则该 cmdlet 会询问你是否替换现有输出。
 
 如果指定了 -Force 参数，同时又指定了一个现有的输出名称，则会在不进行确认的情况下替换该输出。
 
@@ -368,7 +368,7 @@ Azure PowerShell 1.0：
 
 转换的名称可以在 .json 文件中指定，也可以在命令行中指定。 如果在两处同时指定，则命令行的名称必须与文件中的名称相同。
 
-如果所指定的转换已存在，而且并未指定 -Force 参数，则该 cmdlet 会询问用户是否替换现有转换。
+如果所指定的转换已存在，而且你并未指定 -Force 参数，则该 cmdlet 会询问你是否替换现有转换。
 
 如果指定了 -Force 参数，同时又指定了一个现有的转换名称，则会在不进行确认的情况下替换转换。
 
@@ -408,7 +408,7 @@ Azure PowerShell 1.0：
 
 ### <a name="remove-azurestreamanalyticsinput--remove-azstreamanalyticsinput"></a>Remove-AzureStreamAnalyticsInput | Remove-AzStreamAnalyticsInput
 以异步方式从 Azure 的流分析作业中删除特定的输入。  
-如果指定了 -Force 参数，则会在不确认的情况下删除输入。
+如果指定 -Force 参数，则会在不确认的情况下删除输入。
 
 **示例 1**
 
@@ -428,7 +428,7 @@ Azure PowerShell 1.0：
 
 ### <a name="remove-azurestreamanalyticsjob--remove-azstreamanalyticsjob"></a>Remove-AzureStreamAnalyticsJob | Remove-AzStreamAnalyticsJob
 以异步方式删除 Azure 中的特定流分析作业。  
-如果指定了 -Force 参数，则会在不确认的情况下删除作业。
+如果指定 -Force 参数，则会在不确认的情况下删除作业。
 
 **示例 1**
 
@@ -448,7 +448,7 @@ Azure PowerShell 1.0：
 
 ### <a name="remove-azurestreamanalyticsoutput--remove-azstreamanalyticsoutput"></a>Remove-AzureStreamAnalyticsOutput | Remove-AzStreamAnalyticsOutput
 以异步方式从 Azure 的流分析作业中删除特定的输出。  
-如果指定了 -Force 参数，则会在不确认的情况下删除输出。
+如果指定 -Force 参数，则会在不确认的情况下删除输出。
 
 **示例 1**
 
@@ -543,13 +543,13 @@ Azure PowerShell 1.0：
 此 PowerShell 命令测试 StreamingJob 中输出 Output 的连接状态。  
 
 ## <a name="get-support"></a>获取支持
-如需更多帮助，请尝试访问我们的 [Azure 流分析论坛](https://www.azure.cn/support/contact/)。 
+若要获得进一步的帮助，可前往 [Azure 流分析的 Microsoft 问答问题页面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)。 
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)
 * [Azure 流分析入门](stream-analytics-real-time-fraud-detection.md)
 * [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
-* [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Azure 流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
 [msdn-switch-azuremode]: https://msdn.microsoft.com/library/dn722470.aspx
@@ -568,5 +568,4 @@ Azure PowerShell 1.0：
 [stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: https://go.microsoft.com/fwlink/?LinkId=517301
 
-<!--Update_Description: update meta properties, update link, wording update -->
 

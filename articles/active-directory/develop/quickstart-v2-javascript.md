@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 06/30/2020
+ms.date: 07/09/2020
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript
-ms.openlocfilehash: d807f01bcd8b5fbaea9477e4800798a2ae1a8859
-ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
+ms.openlocfilehash: cc4532a309b8f01a9c815dcd4d2a3982dd98f6d0
+ms.sourcegitcommit: 92b9b1387314b60661f5f62db4451c9ff2c49500
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85945008"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86164943"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>快速入门：在 JavaScript SPA 中登录用户并获得访问令牌
 
@@ -204,7 +204,7 @@ npm install msal
 const myMSALObj = new Msal.UserAgentApplication(msalConfig);
 ```
 
-> |Where  |  |
+> |Where  | 说明 |
 > |---------|---------|
 > |`clientId`     | 在 Azure 门户中注册的应用程序的应用程序 ID|
 > |`authority`    | （可选）支持帐户类型的颁发机构 URL，如前面的配置部分所述。 默认颁发机构为 `https://login.partner.microsoftonline.cn/common`。 |
@@ -232,7 +232,7 @@ myMSALObj.loginPopup(loginRequest)
 });
 ```
 
-> |Where  |  |
+> |Where  | 说明 |
 > |---------|---------|
 > | `scopes`   | （可选）包含在登录时为了获得用户许可而请求的范围。 例如：`["https://microsoftgraph.chinacloudapi.cn/user.read"]`（针对 Microsoft Graph）或 `[ "<Application ID URL>/scope" ]`（针对自定义 Web API，即 `api://<Application ID>/access_as_user`）。 |
 
@@ -262,9 +262,9 @@ myMSALObj.acquireTokenSilent(tokenRequest)
     });
 ```
 
-> |Where  |  |
+> |Where  | 说明 |
 > |---------|---------|
-> | `scopes`   | 包含请求的需要在 API 的访问令牌中返回的作用域。 例如：`[ "https://microsoftgraph.chinacloudapi.cn/mail.read" ]` 适用于 Microsoft Graph，`[ "<Application ID URL>/scope" ]` 适用于自定义 Web API（即 `api://<Application ID>/access_as_user`）。|
+> | `scopes`   | 包含请求的需要在 API 的访问令牌中返回的作用域。 例如：`[ "https://microsoftgraph.chinacloudapi.cn/mail.read" ]`（针对 Microsoft Graph）或 `[ "<Application ID URL>/scope" ]`（针对自定义 Web API，即 `api://<Application ID>/access_as_user`）。|
 
 #### <a name="get-a-user-token-interactively"></a>以交互方式获取用户令牌
 

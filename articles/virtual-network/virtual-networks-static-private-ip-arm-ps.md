@@ -5,24 +5,24 @@ services: virtual-network
 documentationcenter: na
 author: rockboyfor
 manager: digimobile
-editor: ''
 tags: azure-resource-manager
 ms.assetid: d5f18929-15e3-40a2-9ee3-8188bc248ed8
 ms.service: virtual-network
+ms.subservice: ip-services
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 02/07/2019
-ms.date: 06/10/2019
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.custom: ''
-ms.openlocfilehash: e87521673f2958868e08e46699ae3cde0a497ca1
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a2ed3fe6d7bcded09b5d2d4af4ef510384377d4e
+ms.sourcegitcommit: af71b9199d47fb81e85d70da0cfb265cc814a644
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292054"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85969022"
 ---
 # <a name="create-a-virtual-machine-with-a-static-private-ip-address-using-powershell"></a>使用 PowerShell 创建具有静态专用 IP 地址的虚拟机
 
@@ -35,7 +35,9 @@ ms.locfileid: "79292054"
 可以从本地计算机完成以下步骤。 若要使用本地计算机，请确保[安装了 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?toc=%2fvirtual-network%2ftoc.json)。 
 
 1. 打开命令会话并使用 `Connect-AzAccount -Environment AzureChinaCloud` 登录到 Azure。
+   
     <!--Not Available on If using the Cloud Shell, skip to step 2. -->
+    
 2. 使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 命令创建资源组。 以下示例在“中国东部”Azure 区域中创建一个资源组：
 
     ```powershell

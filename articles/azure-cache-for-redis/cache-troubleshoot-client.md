@@ -5,13 +5,13 @@ author: yegu-ms
 ms.author: v-junlch
 ms.service: cache
 ms.topic: troubleshooting
-ms.date: 03/04/2020
-ms.openlocfilehash: 7d90600ce10f670aefeb5e8a76169e9afedae027
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 07/10/2020
+ms.openlocfilehash: c0f3cb7193892648a9afd7f5006934ca173497d9
+ms.sourcegitcommit: 65a7360bb14b0373e18ec8eaa288ed3ac7b24ef4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291929"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86219724"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-client-side-issues"></a>排查 Azure Cache for Redis 客户端问题
 
@@ -43,8 +43,10 @@ ms.locfileid: "79291929"
 
 使用[示例 `ThreadPoolLogger`](https://github.com/JonCole/SampleCode/blob/master/ThreadPoolMonitor/ThreadPoolLogger.cs) 监视 `ThreadPool` 统计信息在不同时间的变化。 可以使用 StackExchange.Redis 发出的 `TimeoutException` 消息（如下所示）做进一步的调查：
 
+```output
     System.TimeoutException: Timeout performing EVAL, inst: 8, mgr: Inactive, queue: 0, qu: 0, qs: 0, qc: 0, wr: 0, wq: 0, in: 64221, ar: 0,
     IOCP: (Busy=6,Free=999,Min=2,Max=1000), WORKER: (Busy=7,Free=8184,Min=2,Max=8191)
+```
 
 在上面的异常中，有几个需要注意的问题：
 

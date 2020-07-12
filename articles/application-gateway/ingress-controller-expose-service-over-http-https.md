@@ -4,16 +4,15 @@ description: 本文介绍如何使用应用程序网关通过 HTTP 或 HTTPS 公
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
-origin.date: 11/04/2019
-ms.date: 11/19/2019
+ms.topic: how-to
+ms.date: 07/10/2020
 ms.author: v-junlch
-ms.openlocfilehash: 107a62ec0510dadb310bf930797f5fc82f3c5df8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2fb8738b1dc8127abdeadefe70666ffa6cd2d85a
+ms.sourcegitcommit: 65a7360bb14b0373e18ec8eaa288ed3ac7b24ef4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74328435"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86219700"
 ---
 # <a name="expose-an-aks-service-over-http-or-https-using-application-gateway"></a>使用应用程序网关通过 HTTP 或 HTTPS 公开 AKS 服务 
 
@@ -163,23 +162,23 @@ spec:
 
 以下入口允许你将其他路径添加到此入口中，并将这些路径重定向到其他服务：
 
-    ```yaml
-    apiVersion: extensions/v1beta1
-    kind: Ingress
-    metadata:
-      name: guestbook
-      annotations:
-        kubernetes.io/ingress.class: azure/application-gateway
-    spec:
-      rules:
-      - http:
-          paths:
-          - path: </other/*>
-            backend:
-              serviceName: <other-service>
-              servicePort: 80
-          - backend:
-              serviceName: frontend
-              servicePort: 80
-    ```
+```yaml
+apiVersion: extensions/v1beta1
+  kind: Ingress
+  metadata:
+    name: guestbook
+    annotations:
+      kubernetes.io/ingress.class: azure/application-gateway
+  spec:
+    rules:
+    - http:
+        paths:
+        - path: </other/*>
+          backend:
+            serviceName: <other-service>
+            servicePort: 80
+        - backend:
+            serviceName: frontend
+            servicePort: 80
+```
 

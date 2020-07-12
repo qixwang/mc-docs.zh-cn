@@ -6,13 +6,13 @@ ms.author: v-johya
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/23/2020
-ms.openlocfilehash: 8d703eea00a88eae042a64727c183d0d743371f1
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.date: 07/06/2020
+ms.openlocfilehash: 4d7d7b2a518e008a4c30bb20f95ff0817fac352b
+ms.sourcegitcommit: 9bc3e55f01e0999f05e7b4ebaea95f3ac91d32eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723312"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86226165"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Azure 流分析预览功能
 
@@ -36,7 +36,7 @@ ms.locfileid: "84723312"
 
 ### <a name="visual-studio-code-for-azure-stream-analytics"></a>适用于 Azure 流分析的 Visual Studio Code
 
-可以在 Visual Studio Code 中创建 Azure 流分析作业。 请参阅我们的 [VS Code 入门教程](https://docs.azure.cn/zh-cn/stream-analytics/quick-create-vs-code)。
+可以在 Visual Studio Code 中创建 Azure 流分析作业。 请参阅我们的 [VS Code 入门教程](/stream-analytics/quick-create-vs-code)。
 
 
 ### <a name="real-time-high-performance-scoring-with-custom-ml-models-managed-by-azure-machine-learning"></a>通过 Azure 机器学习管理的自定义 ML 模型进行实时高性能评分
@@ -49,10 +49,7 @@ Azure 流分析通过利用自定义预先训练的机器学习模型（由 Azur
 适用于 Azure 流分析的 Visual Studio 工具增强了本地测试功能，通过该功能可针对来自云源（如事件中心或 IoT 中心）的实时事件流测试查询。 了解如何[使用适用于 Visual Studio 的 Azure 流分析工具在本地测试实时数据](stream-analytics-live-data-local-testing.md)。
 
 
-### <a name="net-user-defined-functions-on-iot-edge"></a>IoT Edge 上的 .NET 用户定义函数
-
-使用 .NET Standard 用户定义函数，可以将 .NET Standard 代码作为流式管道的一部分运行。 可以创建简单的 C# 类或导入完整的项目和库。 Visual Studio 支持完整的创作和调试体验。
-
+<!--.NET user-defined-function is not available in China.-->
 ## <a name="other-previews"></a>其他预览
 
 如若请求，还可以使用以下预览功能。

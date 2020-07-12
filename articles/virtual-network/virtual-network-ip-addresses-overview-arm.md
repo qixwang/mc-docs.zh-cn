@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 04/27/2020
-ms.date: 06/15/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 5e36b8e516c71efe0ac92d392b471afa7d696c81
-ms.sourcegitcommit: ff67734e01c004be575782b4812cfe857e435f4d
+ms.openlocfilehash: 328c7e2123f801676c34357e7d7e266744c15e77
+ms.sourcegitcommit: af71b9199d47fb81e85d70da0cfb265cc814a644
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84487067"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85969042"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Azure 中的 IP 地址类型和分配方法
 

@@ -4,27 +4,29 @@ description: 此快速入门可帮助你使用Azure 门户为 Azure Analysis Ser
 author: rockboyfor
 ms.service: azure-analysis-services
 ms.topic: quickstart
-origin.date: 10/30/2019
-ms.date: 03/23/2020
+origin.date: 05/19/2020
+ms.date: 07/13/2020
+ms.testscope: no
+ms.testdate: 03/23/2020
 ms.author: v-yeche
 ms.reviewer: minewiskan
-ms.openlocfilehash: 1dc9860c3f95433069266708842ccc9d14ab9539
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 1c692d446723e68a1dffc72d2e6534af0c6b2d5f
+ms.sourcegitcommit: 9bc3e55f01e0999f05e7b4ebaea95f3ac91d32eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79543751"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86226083"
 ---
 <!--Notice: Verified successfully-->
 # <a name="quickstart-configure-server-firewall---portal"></a>快速入门：配置服务器防火墙 - 门户
 
 此快速入门可帮助你为 Azure Analysis Services 服务器配置防火墙。 仅为访问服务器的计算机启用防火墙并配置 IP 地址范围是保护服务器和数据的重要部分。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 订阅中的 Analysis Services 服务器。 若要了解详细信息，请参阅[快速入门：创建服务器 - 门户](analysis-services-create-server.md)或[快速入门：创建服务器 - PowerShell](analysis-services-create-powershell.md)
 - 客户端计算机的一个或多个 IP 地址范围（如果需要）。
-- 即使启用了“允许从 Power BI 访问”，当前也不支持将 Power BI Premium 连接到 Azure Analysis Services 的某些方案，包括数据导入（刷新）和分页报表。 支持在 Power BI Premium 中使用 Live Connect 这种更常见的方案。 支持所有 Power BI Pro 方案。
+- 即使启用了“允许从 Power BI 访问”，当前也不支持 Power BI Premium 连接到 Azure Analysis Services 的某些方案，包括数据导入（刷新）和分页报告。 支持从 Power BI Premium 使用 Live Connect 的更常见方案。 支持所有 Power BI Pro 方案。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户 
 
@@ -33,10 +35,10 @@ ms.locfileid: "79543751"
 ## <a name="configure-a-firewall"></a>配置防火墙
 
 1. 单击服务器打开“概述”页。 
-2. 在“设置”   > “防火墙”   > “启用防火墙”  ，单击“开”  。
-3. 若要允许从 Power BI 服务进行 DirectQuery 访问，请在“允许从Power BI 访问”  中，单击“开”  。  
+2. 在“设置” > “防火墙” > “启用防火墙”，单击“开”。
+3. 若要允许从 Power BI 服务进行 DirectQuery 访问，请在“允许从Power BI 访问”中，单击“开”。  
 4. （可选）指定一个或多个 IP 地址范围。 输入每个范围的名称、起始和结束 IP 地址。 防火墙规则名称应限制为 128 个字符，并且只能包含大写字符、小写字符、数字、下划线和连字符。 不允许使用空格和其他特殊字符。
-5. 单击“保存”  。
+5. 单击“保存” 。
 
     ![防火墙设置](./media/analysis-services-qs-firewall/aas-qs-firewall.png)
 

@@ -5,15 +5,17 @@ author: rockboyfor
 ms.service: azure-analysis-services
 ms.topic: conceptual
 origin.date: 04/17/2020
-ms.date: 04/30/2020
+ms.date: 07/13/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
 ms.reviewer: minewiskan
-ms.openlocfilehash: c073a2d972b43595b053d95cb591f7990fcf5b4b
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: 27e85cf1dbb7872511a7b499f951e534b95d737c
+ms.sourcegitcommit: 9bc3e55f01e0999f05e7b4ebaea95f3ac91d32eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392235"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86226100"
 ---
 # <a name="connecting-to-servers"></a>连接到服务器
 
@@ -21,7 +23,7 @@ ms.locfileid: "83392235"
 
 ## <a name="client-libraries"></a>客户端库
 
-[获取最新的客户端库](analysis-services-data-providers.md)
+[获取最新的客户端库](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current)
 
 与服务器的所有连接（无论连接类型）都需要更新后的 AMO、ADOMD.NET 和 OLEDB 客户端库才能连接到 Analysis Services 服务器。 对于 SSMS、Visual Studio、Excel 2016 及更高版本和 Power BI，最新的客户端库会与每月发布一起安装或更新。 但是在某些情况下，应用程序可能不是最新版本。 例如，当策略延迟更新或 Office 365 更新在延期频道上时。
 

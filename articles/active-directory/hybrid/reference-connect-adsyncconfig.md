@@ -5,17 +5,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.date: 06/02/2020
+ms.date: 07/06/2020
 ms.subservice: hybrid
 ms.author: v-junlch
 ms.topic: reference
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a202d1f42bb66f3b2e3700bb45980a4e82f3bceb
-ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
+ms.openlocfilehash: c49f1be5ed41db7fbf32529f7b665d40100f6c30
+ms.sourcegitcommit: 92b9b1387314b60661f5f62db4451c9ff2c49500
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84275313"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86164844"
 ---
 # <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect：ADSyncConfig PowerShell 参考
 以下文档提供了 Azure AD Connect 附带的 ADSyncConfig.psm1 PowerShell 模块的参考信息。
@@ -1080,28 +1080,19 @@ Set-ADSyncRestrictedPermissions [-ADConnectorAccountDN] <String> [-Credential] <
 ### <a name="description"></a>说明
 Set-ADSyncRestrictedPermissions 函数将增强所提供帐户的权限。
 限制权限操作包括以下步骤：
-1.
-禁用指定对象上的继承
-2.
-删除特定对象上的所有 ACE，但特定于 SELF 的 ACE 除外。
+1. 禁用指定对象上的继承
+2. 删除特定对象上的所有 ACE，但特定于 SELF 的 ACE 除外。
 我们希望在处理 SELF 时默认权限保持不变。
-3.
-分配以下特定权限：
+3. 分配以下特定权限：
 
-        Type    Name                                        Access              Applies To
-        =============================================================================================
-        Allow   SYSTEM                                      Full Control        This object
-        Allow   Enterprise Admins                           Full Control        This object
-        Allow   Domain Admins                               Full Control        This object
-        Allow   Administrators                              Full Control        This object
-
-        Allow   Enterprise Domain Controllers               List Contents
-                                                            Read All Properties
-                                                            Read Permissions    This object
-
-        Allow   Authenticated Users                         List Contents
-                                                            Read All Properties
-                                                            Read Permissions    This object
+   | 类型 | 名称 | 访问 | 应用到 |
+   |------|------|--------|------------|
+   | 允许 | SYSTEM | 完全控制 | 此对象 |
+   | 允许 | 企业管理员 | 完全控制 | 此对象 |
+   | 允许 | 域管理员 | 完全控制 | 此对象 | 
+   | 允许 | 管理员 | 完全控制 | 此对象 |
+   | 允许 | 企业域控制器 | 列出内容 <br> 读取所有属性 <br> 读取权限 | 此对象 |
+   | 允许 | 经过身份验证的用户 | 列出内容 <br> 读取所有属性 <br> 读取权限 | 此对象 |
 
 ### <a name="examples"></a>示例
 

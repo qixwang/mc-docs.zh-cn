@@ -4,29 +4,31 @@ description: 本文了解 Azure Analysis Services 如何使用 Azure Active Dire
 author: rockboyfor
 ms.service: azure-analysis-services
 ms.topic: conceptual
-origin.date: 10/30/2019
-ms.date: 11/25/2019
+origin.date: 05/19/2020
+ms.date: 07/13/2020
+ms.testscope: no
+ms.testdate: 11/25/2019
 ms.author: v-yeche
 ms.reviewer: minewiskan
-ms.openlocfilehash: 6d6831f32874c41fa2190b32ee34804056bfab4d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 9ce1557c645d4848f01e8c8152009520fe3b77ad
+ms.sourcegitcommit: 9bc3e55f01e0999f05e7b4ebaea95f3ac91d32eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74203594"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86226092"
 ---
 # <a name="authentication-and-user-permissions"></a>身份验证和用户权限
 
-Azure Analysis Services 使用 Azure Active Directory (Azure AD) 进行身份管理和用户身份验证。 在相同订阅中，创建、管理或连接到 Azure Analysis Services 服务器的任何用户均需具备 [Azure AD 租户](../active-directory/fundamentals/active-directory-administer.md)中的有效用户标识。
+Azure Analysis Services 使用 Azure Active Directory (Azure AD) 进行标识管理和用户身份验证。 在相同订阅中，创建、管理或连接到 Azure Analysis Services 服务器的任何用户均需具备 [Azure AD 租户](../active-directory/fundamentals/active-directory-administer.md)中的有效用户标识。
 
 <!-- Not Available [Azure AD B2B collaboration](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md)-->
 <!--MOONCAKE: Not Available on B2B-->
 
 ![Azure Analysis Services 身份验证体系结构](./media/analysis-services-manage-users/aas-manage-users-arch.png)
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>身份验证
 
-所有客户端应用程序和工具都使用一个或多个 Analysis Services [客户端库](analysis-services-data-providers.md)（AMO、MSOLAP、ADOMD）连接到服务器。 
+所有客户端应用程序和工具都使用一个或多个 Analysis Services [客户端库](/analysis-services/client-libraries?view=azure-analysis-services-current)（AMO、MSOLAP、ADOMD）连接到服务器。 
 
 所有 3 个客户端库均支持 Azure AD 交互流和非交互式身份验证方法。 可在利用 AMOMD 和 MSOLAP 的应用程序中使用两种非交互式方法，即 Active Directory 密码和 Active Directory 集成身份验证方法。 这两种方法绝对不会产生弹出式对话框。
 
@@ -34,11 +36,9 @@ Azure Analysis Services 使用 Azure Active Directory (Azure AD) 进行身份管
 
 根据使用的客户端应用程序或工具，身份验证类型和登录方式可能有所不同。 每个应用程序可能支持连接到云服务（如 Azure Analysis Services）的不同功能。
 
-Power BI Desktop、Visual Studio 和 SSMS 支持 Active Directory 通用身份验证，该通用身份验证是一种交互式方法，还支持 Azure 多重身份验证 (MFA)。 Azure MFA 可帮助保护对数据和应用程序的访问，同时提供简单的登录过程。 它利用一些验证选项提供强身份验证，这些选项包括电话、短信、含有 PIN 码的智能卡或移动应用通知。 配合使用 Azure AD 和交互式 MFA 时会出现用于验证的弹出式对话框。 建议使用通用身份验证  。
+Power BI Desktop、Visual Studio 和 SSMS 支持 Active Directory 通用身份验证，该通用身份验证是一种交互式方法，还支持 Azure 多重身份验证 (MFA)。 Azure MFA 可帮助保护对数据和应用程序的访问，同时提供简单的登录过程。 它通过多个验证选项（电话、短信、含有 PIN 码的智能卡或移动应用通知）提供强身份验证。 配合使用 Azure AD 和交互式 MFA 时会出现用于验证的弹出式对话框。 **建议使用通用身份验证**。
 
-如果使用 Windows 帐户登录到 Azure 并且通用身份验证未选中或不可用 (Excel)，则需要 Active Directory 联合身份验证服务 (AD FS)。 使用联合身份验证，Azure AD 和 Office 365 用户可使用本地凭据进行身份验证，并且可访问 Azure 资源。
-
-<!--Not Available on [Active Directory Federation Services (AD FS)](../active-directory/hybrid/how-to-connect-fed-azure-adfs.md)-->
+如果使用 Windows 帐户登录到 Azure 并且通用身份验证未选中或不可用 (Excel)，则需要 [Active Directory 联合身份验证服务 (AD FS)](../active-directory/hybrid/how-to-connect-fed-azure-adfs.md)。 使用联合身份验证时，Azure AD 和 Office 365 用户使用本地凭据进行身份验证，并且可以访问 Azure 资源。
 
 ### <a name="sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS)
 
@@ -64,11 +64,11 @@ Excel 用户可使用 Windows 帐户、组织 ID（电子邮件地址）或外�
 
 ## <a name="user-permissions"></a>用户权限
 
-服务器管理员特定于 Azure Analysis Services 服务器实例  。 他们通过连接 Azure 门户、SSMS 和 Visual Studio 等工具，执行诸如添加数据库和管理用户角色等任务。 默认情况下，创建服务器的用户将被自动添加为 Analysis Services 服务器管理员。 可使用 Azure 门户或 SSMS 添加其他管理员。 在相同订阅中，服务器管理员必须具有 Azure AD 租户中的帐户。 若要了解详细信息，请参阅[管理服务器管理员](analysis-services-server-admins.md)。 
+**服务器管理员**特定于 Azure Analysis Services 服务器实例。 他们通过连接 Azure 门户、SSMS 和 Visual Studio 等工具，执行诸如添加数据库和管理用户角色等任务。 默认情况下，创建服务器的用户将被自动添加为 Analysis Services 服务器管理员。 可使用 Azure 门户或 SSMS 添加其他管理员。 在相同订阅中，服务器管理员必须具有 Azure AD 租户中的帐户。 若要了解详细信息，请参阅[管理服务器管理员](analysis-services-server-admins.md)。 
 
-数据库用户通过使用 Excel 或 Power BI 等客户端应用程序，连接模型数据库  。 必须将用户添加到数据库角色。 数据库角色为数据库确定管理员、进程或读取权限。 具有管理员权限的数据库用户与服务器管理员不同，请务必了解这一点。 但默认情况下，服务器管理员也是数据库管理员。 若要了解详细信息，请参阅[管理数据库角色和用户](analysis-services-database-users.md)。
+**数据库用户**通过使用 Excel 或 Power BI 等客户端应用程序，连接模型数据库。 必须将用户添加到数据库角色。 数据库角色为数据库确定管理员、进程或读取权限。 具有管理员权限的数据库用户与服务器管理员不同，请务必了解这一点。 但默认情况下，服务器管理员也是数据库管理员。 若要了解详细信息，请参阅[管理数据库角色和用户](analysis-services-database-users.md)。
 
-Azure 资源所有者  。 资源所有者管理 Azure 订阅的资源。 资源所有者可通过以下方式在订阅中向“所有者角色”或“参与者角色”添加 Azure AD 用户标识：在 Azure 门户中使用访问控制或使用 Azure 资源管理器模板  。 
+**Azure 资源所有者**。 资源所有者管理 Azure 订阅的资源。 资源所有者可通过以下方式在订阅中向“所有者角色”或“参与者角色”添加 Azure AD 用户标识：在 Azure 门户中使用“访问控制”或使用 Azure 资源管理器模板。 
 
 ![Azure 门户中的访问控制](./media/analysis-services-manage-users/aas-manage-users-rbac.png)
 
@@ -76,9 +76,9 @@ Azure 资源所有者  。 资源所有者管理 Azure 订阅的资源。 资源
 
 ## <a name="database-roles"></a>数据库角色
 
- 为表格模型定义的角色是数据库角色。 也就是说，此类角色包含由 Azure AD 用户和安全组构成的成员，并拥有特定权限来定义这些成员可以对模型数据库执行的操作。 数据库角色作为数据库中的单独对象创建，并且仅适用于创建该角色的数据库。   
+ 为表格模型定义的角色就是数据库角色。 也就是说，此类角色包含由 Azure AD 用户和安全组构成的成员，并拥有特定权限来定义这些成员可以对模型数据库执行的操作。 数据库角色作为数据库中的单独对象创建，并且仅适用于创建该角色的数据库。   
 
- 默认情况下，当您创建某一新的表格模型项目时，该模型项目不具有任何角色。 可使用 Visual Studio 中的“角色管理器”对话框定义角色。 如果在模型项目设计期间定义了角色，则这些角色仅适用于模型工作区数据库。 部署模型时，应对已部署模型使用相同的角色。 部署模型后，服务器和数据库管理员就可以使用 SSMS 管理角色和成员。 若要了解详细信息，请参阅[管理数据库角色和用户](analysis-services-database-users.md)。
+ 默认情况下，创建新的表格模型项目时，该模型项目没有任何角色。 可使用 Visual Studio 中的“角色管理器”对话框定义角色。 如果在模型项目设计期间定义了角色，则这些角色仅适用于模型工作区数据库。 部署模型时，应对已部署模型使用相同的角色。 部署模型后，服务器和数据库管理员就可以使用 SSMS 管理角色和成员。 若要了解详细信息，请参阅[管理数据库角色和用户](analysis-services-database-users.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

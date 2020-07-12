@@ -2,28 +2,22 @@
 title: 授权代理及其启用方式 | Azure
 description: 了解 Microsoft 身份验证库 (MSAL) 允许 Android 应用使用的不同授权代理，以及如何启用这些代理。
 services: active-directory
-documentationcenter: dev-center-name
-author: tylermsft
+author: mmacy
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 09/05/2019
-ms.date: 11/01/2019
+ms.date: 07/08/2020
 ms.author: v-junlch
-ms.reviewer: ''
+ms.reviewer: shoatman, brianmel, hahamil
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84c842490ff30332935e8b39e80cbb590e180514
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 956f99108a995e3e8e0306ab3430cb0c0f1c43ac
+ms.sourcegitcommit: 92b9b1387314b60661f5f62db4451c9ff2c49500
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73831051"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86164976"
 ---
 # <a name="authorization-agents-android"></a>授权代理 (Android)
 
@@ -69,7 +63,7 @@ MSAL 默认使用浏览器和[自定义标签页](https://developer.chrome.com/m
 
 由于 MSAL 无法指定可在众多 Android 手机上使用的确切浏览器包，因此 MSAL 实施浏览器选择试探法，以尝试提供最佳的跨设备 SSO。
 
-MSAL 将检索设备上安装的浏览器的完整列表，以选择要使用的浏览器。 该列表由包管理器按顺序（间接反映了用户的偏好）返回。 例如，如果已设置默认浏览器，则它是列表中的第一个条目。 始终会选择列表中的第一个浏览器，无论它是否支持自定义标签页。  如果浏览器支持自定义标签页，MSAL 将启动自定义标签页。自定义标签页的外观更接近应用中 `WebView`，允许基本的 UI 自定义。 有关详细信息，请参阅 [Android 中的自定义标签页](https://developer.chrome.com/multidevice/android/customtabs)。
+MSAL 将检索设备上安装的浏览器的完整列表，以选择要使用的浏览器。 该列表由包管理器按顺序（间接反映了用户的偏好）返回。 例如，如果已设置默认浏览器，则它是列表中的第一个条目。 始终会选择列表中的第一个浏览器，无论它是否支持自定义标签页。 如果浏览器支持自定义标签页，MSAL 将启动自定义标签页。自定义标签页的外观更接近应用中 `WebView`，允许基本的 UI 自定义。 有关详细信息，请参阅 [Android 中的自定义标签页](https://developer.chrome.com/multidevice/android/customtabs)。
 
 如果设备上没有浏览器包，MSAL 将使用应用中 `WebView`。
 
@@ -82,7 +76,7 @@ MSAL 将检索设备上安装的浏览器的完整列表，以选择要使用的
 
 我们已对以下浏览器进行测试，以确定它们是否可以正确重定向到配置文件中指定的 `"redirect_uri"`：
 
-| | 内置浏览器 | Chrome | Opera  | Microsoft Edge | UC 浏览器 | Firefox |
+| 设备 | 内置浏览器 | Chrome | Opera  | Microsoft Edge | UC 浏览器 | Firefox |
 | -- |:-------------:| -----:|-----:|-----:|-----:|-----:|
 | Nexus 4 (API 17) | 通过 | 通过 |不适用 |不适用 |不适用 |不适用 |
 | Samsung S7 (API 25) | 通过* | 通过 | 通过 | 通过 | 失败 |通过 |

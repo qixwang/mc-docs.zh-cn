@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 06/27/2019
 ms.date: 06/12/2020
-ms.openlocfilehash: 95002e69f0b8571887f4563d0894c9af783b14b0
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.openlocfilehash: e9b0f331c5b285cb587276ccce0246d7c753b31b
+ms.sourcegitcommit: 9bc3e55f01e0999f05e7b4ebaea95f3ac91d32eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723562"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86226042"
 ---
 # <a name="azure-stream-analytics-feature-comparison"></a>Azure 流分析功能比较
 
@@ -72,7 +72,6 @@ ms.locfileid: "84723562"
 ## <a name="next-steps"></a>后续步骤
 
 * [Azure IoT Edge 流分析](stream-analytics-edge.md)
-* [教程：为 Azure 流分析 IoT Edge 作业编写 C# 用户定义函数（预览）](stream-analytics-edge-csharp-udf.md)
 * [使用 Visual Studio 工具开发流分析 IoT Edge 作业](stream-analytics-tools-for-visual-studio-edge-jobs.md)
 * [使用 Visual Studio 查看 Azure 流分析作业](stream-analytics-vs-tools.md)
 * [使用 Visual Studio Code（预览版）浏览 Azure 流分析](visual-studio-code-explore-jobs.md)

@@ -5,23 +5,22 @@ services: virtual-network
 documentationcenter: na
 author: rockboyfor
 manager: digimobile
-editor: ''
 tags: azure-resource-manager
 ms.assetid: a54feccf-0123-4e49-a743-eb8d0bdd1ebc
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 05/29/2018
-ms.date: 06/10/2019
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: f96a7b7e64ede6f2466cfac6c0b8468e4293300d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c52615d9eb24fc546ccd956ae026c0bb0c4e9290
+ms.sourcegitcommit: af71b9199d47fb81e85d70da0cfb265cc814a644
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293336"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85969044"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>诊断虚拟机网络流量筛选器问题
 
@@ -106,7 +105,7 @@ $VM.NetworkProfile
 
 将会收到类似于以下示例的输出：
 
-```powershell
+```output
 NetworkInterfaces
 -----------------
 {/subscriptions/<ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myVMVMNic
@@ -116,11 +115,11 @@ NetworkInterfaces
 
 ## <a name="diagnose-using-azure-cli"></a>使用 Azure CLI 诊断
 
-如果使用 Azure 命令行界面 (CLI) 命令来完成本文中的任务，请从计算机运行 CLI。 本文需要 Azure CLI 2.0.32 或更高版本。 运行 `az --version` 查找已安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](https://docs.azure.cn/zh-cn/cli/install-azure-cli?view=azure-cli-latest)。 如果在本地运行 Azure CLI，则还需要运行 `az login`，并使用拥有[所需权限](virtual-network-network-interface.md#permissions)的帐户登录到 Azure。
+如果使用 Azure 命令行界面 (CLI) 命令来完成本文中的任务，请从计算机运行 CLI。 本文需要 Azure CLI 2.0.32 或更高版本。 运行 `az --version` 查找已安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)。 如果在本地运行 Azure CLI，则还需要运行 `az login`，并使用拥有[所需权限](virtual-network-network-interface.md#permissions)的帐户登录到 Azure。
 
 <!-- Not Available on [Azure Cloud Shell](https://shell.azure.com/powershell)-->
 
-使用 [az network nic list-effective-nsg](https://docs.azure.cn/zh-cn/cli/network/nic?view=azure-cli-latest#az-network-nic-list-effective-nsg) 获取网络接口的有效安全规则。 以下示例获取资源组 *myResourceGroup* 中名为 *myVMVMNic* 的网络接口的有效安全规则：
+使用 [az network nic list-effective-nsg](https://docs.azure.cn/cli/network/nic?view=azure-cli-latest#az-network-nic-list-effective-nsg) 获取网络接口的有效安全规则。 以下示例获取资源组 *myResourceGroup* 中名为 *myVMVMNic* 的网络接口的有效安全规则：
 
 ```azurecli
 az network nic list-effective-nsg \
@@ -143,7 +142,7 @@ az vm show \
 
 在返回的输出中，将会看到类似于以下示例的信息：
 
-```azurecli
+```output
 "networkProfile": {
     "additionalProperties": {},
     "networkInterfaces": [
@@ -212,4 +211,4 @@ az vm show \
 - 了解[网络安全组](manage-network-security-group.md#work-with-network-security-groups)和[安全规则](manage-network-security-group.md#work-with-security-rules)的所有任务、属性和设置。
 - 了解 VM 的[默认安全规则](security-overview.md#default-security-rules)、[服务标记](security-overview.md#service-tags)，以及 [Azure 如何处理入站和出站流量的安全规则](security-overview.md#network-security-groups)。
 
-<!-- Update_Description: wording update, update link -->
+<!-- Update_Description: update meta properties, wording update, update link -->

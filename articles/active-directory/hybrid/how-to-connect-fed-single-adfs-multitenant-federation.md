@@ -12,18 +12,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
-origin.date: 07/17/2017
-ms.date: 07/04/2019
+ms.topic: how-to
+ms.date: 07/06/2020
 ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f97e8614e35e50a8a0b2be9d48d360b6e70e16ff
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 9db46047debac60c907bb42a92f5ebd393ce47c9
+ms.sourcegitcommit: 92b9b1387314b60661f5f62db4451c9ff2c49500
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "67568630"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86164870"
 ---
 # <a name="federate-multiple-instances-of-azure-ad-with-single-instance-of-ad-fs"></a>将 Azure AD 的多个实例与 AD FS 的单个实例联合
 
@@ -56,15 +55,17 @@ ms.locfileid: "67568630"
  
 在 Azure AD PowerShell 会话中，执行以下步骤：连接到 Azure Active Directory，其中包含域 fabrikam.com
 
-    Connect-MsolService -AzureEnvironment AzureChinaCloud
-
+```powershell
+Connect-MsolService -AzureEnvironment AzureChinaCloud
+```
 将 fabrikam.com 托管域转换为联合身份验证域：
 
-    Convert-MsolDomainToFederated -DomainName fabrikam.com -Verbose -SupportMultipleDomain
+```powershell
+Convert-MsolDomainToFederated -DomainName fabrikam.com -Verbose -SupportMultipleDomain
+```
  
 上述操作会将域 fabrikam.com 与同一 AD FS 联合。 可以对两个域使用 Get-MsolDomainFederationSettings，以便验证域设置。
 
 ## <a name="next-steps"></a>后续步骤
 [将 Active Directory 连接到 Azure Active Directory](whatis-hybrid-identity.md)
 
-<!-- Update_Description: update metedata properties -->

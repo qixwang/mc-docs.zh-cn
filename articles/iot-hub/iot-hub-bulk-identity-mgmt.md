@@ -9,12 +9,12 @@ ms.topic: conceptual
 origin.date: 10/02/2019
 ms.author: v-yiso
 ms.date: 04/06/2020
-ms.openlocfilehash: d47d28f2b4c8ecc55f000599d55be9dd5362a653
-ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
+ms.openlocfilehash: 5874bbea9ce88e868e0f85d7af4aa766f924fcd6
+ms.sourcegitcommit: 9bc3e55f01e0999f05e7b4ebaea95f3ac91d32eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84186841"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86226116"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>批量导入和导出 IoT 中心设备标识
 
@@ -25,13 +25,13 @@ ms.locfileid: "84186841"
 
 **RegistryManager** 类包括使用**作业**框架的 **ExportDevicesAsync** 和 **ImportDevicesAsync** 方法。 这些方法可以导出、导入和同步整个 IoT 中心标识注册表。
 
-本主题讨论如何使用 RegistryManager  类和作业  系统执行设备到 IoT 中心的标识注册表的批量导入，以及从 IoT 中心的标识注册表到设备的批量导出。 还可以使用 Azure IoT 中心设备预配服务实现无需人工干预，零接触实时预配到一个或多个 IoT 中心。 若要了解详细信息，请参阅[预配服务文档](/iot-dps)。
+本主题讨论如何使用 RegistryManager 类和作业系统执行设备到 IoT 中心的标识注册表的批量导入，以及从 IoT 中心的标识注册表到设备的批量导出。 还可以使用 Azure IoT 中心设备预配服务实现无需人工干预，零接触实时预配到一个或多个 IoT 中心。 若要了解详细信息，请参阅[预配服务文档](/iot-dps)。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 ## <a name="what-are-jobs"></a>什么是作业？
 
-当操作出现以下情况时，标识注册表操作使用“作业”  系统：
+当操作出现以下情况时，标识注册表操作使用“作业”系统：
 
 * 相较标准运行时操作，其执行时间可能很长。
 * 向用户返回大量数据。
@@ -57,7 +57,7 @@ RegistryManager registryManager = RegistryManager.CreateFromConnectionString("{y
 若要查找 IoT 中心的连接字符串，请在 Azure 门户中执行以下操作：
 
 - 导航到 IoT 中心。
-- 选择“共享访问策略”  。
+- 选择“共享访问策略”。
 - 选择一个策略（考虑到所需的权限）。
 - 从屏幕右侧的面板中复制 connectionstring。
 
@@ -80,8 +80,7 @@ while(true)
 }
 ```
 
-> [!NOTE]
-> 如果存储帐户具有限制 IoT 中心连接的防火墙配置，请考虑使用 [Microsoft 信任的第一方例外](./virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing)（在具有托管服务标识的 IoT 中心的选定区域中可用）。
+
 
 
 ## <a name="device-importexport-job-limits"></a>设备导入/导出作业限制
@@ -212,7 +211,7 @@ using (var streamReader = new StreamReader(await blob.OpenReadAsync(AccessCondit
 
 **ImportDevicesAsync** 方法采用两个参数：
 
-* 一个字符串  ，其中包含作为作业的输入  使用的 [Azure 存储](../storage/index.yml) Blob 容器的 URI。 此 URI 必须包含可授予容器读取权限的 SAS 令牌。 此容器必须包含名为 **devices.txt** 的 Blob，其中包含要导入标识注册表的序列化设备数据。 导入数据包含的设备信息必须采用 **ExportImportDevice** 作业在创建 **devices.txt** Blob 时使用的同一种 JSON 格式。 SAS 令牌必须包含这些权限：
+* 一个字符串，其中包含作为作业的输入使用的 [Azure 存储](../storage/index.yml) Blob 容器的 URI。 此 URI 必须包含可授予容器读取权限的 SAS 令牌。 此容器必须包含名为 **devices.txt** 的 Blob，其中包含要导入标识注册表的序列化设备数据。 导入数据包含的设备信息必须采用 **ExportImportDevice** 作业在创建 **devices.txt** Blob 时使用的同一种 JSON 格式。 SAS 令牌必须包含这些权限：
 
    ```csharp
    SharedAccessBlobPermissions.Read

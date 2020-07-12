@@ -6,14 +6,14 @@ ms.author: v-tawe
 ms.reviewer: kerend
 ms.service: data-explorer
 ms.topic: tutorial
-origin.date: 01/29/2020
-ms.date: 06/09/2020
-ms.openlocfilehash: 308ac7f1116b24d023bb8151f96096f3a71aec7c
-ms.sourcegitcommit: 73697fa9c19a40d235df033400c74741e7d0f3f4
+origin.date: 05/29/2020
+ms.date: 07/08/2020
+ms.openlocfilehash: 28a780db62dcb5834d331db5760a5be8ddc8f386
+ms.sourcegitcommit: 5fb9ae9adc04e79d6d0e78c9e69dbe8aa3ceb00a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84574900"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86100225"
 ---
 # <a name="tutorial-ingest-and-query-monitoring-data-in-azure-data-explorer"></a>教程：在 Azure 数据资源管理器中引入和查询监视数据 
 
@@ -291,7 +291,7 @@ Azure Monitor 日志的结构不是表格。 你将操纵数据并将每个事�
 若要将诊断指标和日志数据映射到表，请使用以下查询：
 
 ```kusto
-.create table DiagnosticRawRecords ingestion json mapping 'DiagnosticRawRecordsMapping' '[{"column":"Records","path":"$.records"}]'
+.create table DiagnosticRawRecords ingestion json mapping 'DiagnosticRawRecordsMapping' '[{"column":"Records","Properties":{"path":"$.records"}}]'
 ```
 
 # <a name="activity-logs"></a>[活动日志](#tab/activity-logs)
@@ -300,7 +300,7 @@ Azure Monitor 日志的结构不是表格。 你将操纵数据并将每个事�
 若要将活动日志数据映射到表，请使用以下查询：
 
 ```kusto
-.create table ActivityLogsRawRecords ingestion json mapping 'ActivityLogsRawRecordsMapping' '[{"column":"Records","path":"$.records"}]'
+.create table ActivityLogsRawRecords ingestion json mapping 'ActivityLogsRawRecordsMapping' '[{"column":"Records","Properties":{"path":"$.records"}}]'
 ```
 ---
 

@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
-ms.date: 06/02/2020
+ms.date: 07/07/2020
 ms.author: v-junlch
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d8061d701589831a0d203375e4449c9ff5c2819
-ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
+ms.openlocfilehash: 19645bfd0a51373f4b5da15a102884d1c41e5d28
+ms.sourcegitcommit: 92b9b1387314b60661f5f62db4451c9ff2c49500
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84275375"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165021"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>排查自助密码重置问题
 
@@ -255,7 +255,7 @@ Azure AD Connect 需要 Active Directory“重置密码”权限才能执行密�
 
 ## <a name="azure-ad-forums"></a>Azure AD 论坛
 
-如果遇到 Azure AD 和自助密码重置的一般性问题，可以在 [Azure AD 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WindowsAzureAD)中请求社区帮助。 社区的成员包括工程师、产品经理、MVP 和其他 IT 专业人员。
+如果遇到 Azure AD 和自助式密码重置的一般性问题，可以在[有关 Azure Active Directory 的 Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-active-directory.html)中请求社区帮助。 社区的成员包括工程师、产品经理、MVP 和其他 IT 专业人员。
 
 ## <a name="contact-microsoft-support"></a>请与 Microsoft 支持部门联系
 

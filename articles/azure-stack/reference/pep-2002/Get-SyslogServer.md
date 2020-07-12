@@ -8,12 +8,12 @@ ms.date: 06/22/2020
 ms.author: digimobile
 ms.reviewer: fiseraci
 ms.lastreviewed: 04/27/2020
-ms.openlocfilehash: a4173def642a5dec4836702e92170c12ed40b3a0
-ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
+ms.openlocfilehash: 93e6391733cdb00751b511c852d417d971fc61cf
+ms.sourcegitcommit: fa26665aab1899e35ef7b93ddc3e1631c009dd04
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85096906"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86227069"
 ---
 # <a name="get-syslogserver"></a>Get-SyslogServer
 
@@ -52,4 +52,4 @@ Accept wildcard characters: False
 
 ## <a name="next-steps"></a>后续步骤
 
-有关如何访问和使用特权终结点的信息，请参阅[使用 Azure Stack Hub 中的特权终结点](https://docs.microsoft.com/azure-stack/operator/azure-stack-privileged-endpoint)。
+有关如何访问和使用特权终结点的信息，请参阅[使用 Azure Stack Hub 中的特权终结点](/azure-stack/operator/azure-stack-privileged-endpoint)。

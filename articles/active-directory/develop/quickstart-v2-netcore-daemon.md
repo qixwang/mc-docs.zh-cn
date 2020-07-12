@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 04/22/2020
+ms.date: 07/09/2020
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: ec4c798db2bfd1a8aedad9c7e67eb9329ef5653e
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 08be84e7c75feaffd646d916a42b8a013cf0db70
+ms.sourcegitcommit: 92b9b1387314b60661f5f62db4451c9ff2c49500
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126478"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86164944"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>快速入门：使用控制台应用的标识获取令牌并调用 Microsoft Graph API
 
@@ -37,7 +37,7 @@ ms.locfileid: "82126478"
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>选项 1：注册并自动配置应用，然后下载代码示例
 >
 > 1. 转到新的 [Azure 门户 - 应用注册](https://portal.azure.cn/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/DotNetCoreDaemonQuickstartPage/sourceType/docs)窗格。
-> 1. 输入应用程序的名称并选择“注册”  。
+> 1. 输入应用程序的名称并选择“注册”。
 > 1. 遵照说明下载内容，并只需单击一下自动配置新应用程序。
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>选项 2：注册并手动配置应用程序和代码示例
@@ -49,14 +49,14 @@ ms.locfileid: "82126478"
 > 1. 使用工作或学校帐户登录到 [Azure 门户](https://portal.azure.cn)。
 > 1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，并将门户会话设置为所需的 Azure AD 租户。
 > 1. 导航到面向开发人员的 Microsoft 标识平台的[应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)页。
-> 1. 选择“新注册”。 
-> 1. 出现“注册应用程序”页后，请输入应用程序的注册信息。 
-> 1. 在“名称”  部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `Daemon-console`，然后选择“注册”以创建应用程序。 
-> 1. 注册以后，选择“证书和机密”菜单。 
-> 1. 在“客户端机密”下，选择“+ 新建客户端机密”。   为它提供一个名称，然后选择“添加”。  将机密复制到安全位置。 稍后需要在代码中使用它。
-> 1. 现在请依次选择“API 权限”菜单、“+ 添加权限”按钮、“Microsoft Graph”。   
-> 1. 选择“应用程序权限”。 
-> 1. 在“用户”节点下选择“User.Read.All”，然后选择“添加权限”。   
+> 1. 选择“新注册”。
+> 1. 出现“注册应用程序”页后，请输入应用程序的注册信息。
+> 1. 在“名称”部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `Daemon-console`，然后选择“注册”以创建应用程序。
+> 1. 注册以后，选择“证书和机密”菜单。
+> 1. 在“客户端机密”下，选择“+ 新建客户端机密”。  为它提供一个名称，然后选择“添加”。 将机密复制到安全位置。 稍后需要在代码中使用它。
+> 1. 现在请依次选择“API 权限”菜单、“+ 添加权限”按钮、“Microsoft Graph”。  
+> 1. 选择“应用程序权限”。
+> 1. 在“用户”节点下选择“User.Read.All”，然后选择“添加权限”。  
 
 > [!div class="sxs-lookup" renderon="portal"]
 > ### <a name="download-and-configure-your-quickstart-app"></a>下载并配置快速入门应用
@@ -102,7 +102,7 @@ ms.locfileid: "82126478"
 
 > [!div renderon="docs"]
 > > [!TIP]
-> > 若要查找“应用程序(客户端) ID”、“目录(租户) ID”的值，请转到 Azure 门户中应用的“概览”页。    若要生成新密钥，请转到“证书和机密”页。 
+> > 若要查找“应用程序(客户端) ID”、“目录(租户) ID”的值，请转到 Azure 门户中应用的“概览”页。   若要生成新密钥，请转到“证书和机密”页。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-admin-consent"></a>步骤 3：管理员同意
@@ -110,15 +110,15 @@ ms.locfileid: "82126478"
 > [!div renderon="docs"]
 > #### <a name="step-4-admin-consent"></a>步骤 4：管理员同意
 
-如果尝试在此时运行应用程序，则会收到“HTTP 403 - 禁止访问”  错误：`Insufficient privileges to complete the operation`。 之所以发生这种情况，是因为任何仅限应用的权限都需要管理员许可  ，这意味着目录的全局管理员必须为应用程序授予许可。 根据自己的角色选择下面的一个选项：
+如果尝试在此时运行应用程序，则会收到“HTTP 403 - 禁止访问”错误：`Insufficient privileges to complete the operation`。 之所以发生这种情况，是因为任何仅限应用的权限都需要管理员许可，这意味着目录的全局管理员必须为应用程序授予许可。 根据自己的角色选择下面的一个选项：
 
 ##### <a name="global-tenant-administrator"></a>全局租户管理员
 
 > [!div renderon="docs"]
-> 如果你是全局租户管理员，请转到  Azure 门户的应用程序注册（预览版）中的“API 权限”页，选择“为 {租户名称} 授予管理员许可”  （其中，{租户名称} 是目录的名称）。
+> 如果你是全局租户管理员，请转到 Azure 门户的应用程序注册（预览版）中的“API 权限”页，选择“为 {租户名称} 授予管理员许可”（其中，{租户名称} 是目录的名称）。
 
 > [!div renderon="portal" class="sxs-lookup"]
-> 如果你是全局管理员，请转到“API 权限”页，  选择“为 Enter_the_Tenant_Name_Here 授予管理员许可” 
+> 如果你是全局管理员，请转到“API 权限”页，选择“为 Enter_the_Tenant_Name_Here 授予管理员许可”
 > > [!div id="apipermissionspage"]
 > > [转到“API 权限”页]()
 
@@ -136,7 +136,7 @@ https://login.partner.microsoftonline.cn/Enter_the_Tenant_Id_Here/adminconsent?c
 >> * `Enter_the_Application_Id_Here` - 是已注册应用程序的**应用程序（客户端）ID**。
 
 > [!NOTE]
-> 在使用前面的 URL 授予应用许可以后，可能会出现错误“AADSTS50011:  未为应用程序注册回复地址”。 之所以发生该错误，是因为此应用程序和 URL 没有重定向 URI - 请忽略该错误。
+> 在使用前面的 URL 授予应用许可以后，可能会出现错误“AADSTS50011: 未为应用程序注册回复地址”。 之所以发生该错误，是因为此应用程序和 URL 没有重定向 URI - 请忽略该错误。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-4-run-the-application"></a>步骤 4：运行应用程序
@@ -144,7 +144,7 @@ https://login.partner.microsoftonline.cn/Enter_the_Tenant_Id_Here/adminconsent?c
 > [!div renderon="docs"]
 > #### <a name="step-5-run-the-application"></a>步骤 5：运行应用程序
 
-如果使用 Visual Studio，请按 F5 运行该应用程序，否则请通过命令提示符或控制台来运行该应用程序  ：
+如果使用 Visual Studio，请按 F5 运行该应用程序，否则请通过命令提示符或控制台来运行该应用程序：
 
 ```console
 cd {ProjectFolder}\daemon-console\1-Call-Graph
@@ -166,9 +166,9 @@ dotnet run
 
 ### <a name="msalnet"></a>MSAL.NET
 
-MSAL ([Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)) 是一个库，用于用户登录和请求令牌，此类令牌用于访问受 Microsoft 标识平台保护的 API。 如前所述，本快速入门请求令牌的方法是使用应用程序自身的标识而不是委托的权限。 在此示例中使用的身份验证流称为  [客户端凭据 oauth 流](v2-oauth2-client-creds-grant-flow.md)。 若要详细了解如何将 MSAL.NET 与客户端凭据流配合使用，请参阅[此文](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-credential-flows)。
+MSAL ([Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)) 是一个库，用于用户登录和请求令牌，此类令牌用于访问受 Microsoft 标识平台保护的 API。 如前所述，本快速入门请求令牌的方法是使用应用程序自身的标识而不是委托的权限。 在此示例中使用的身份验证流称为[客户端凭据 oauth 流](v2-oauth2-client-creds-grant-flow.md)。 若要详细了解如何将 MSAL.NET 与客户端凭据流配合使用，请参阅[此文](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-credential-flows)。
 
- 可在 Visual Studio 的包管理器控制台中运行以下命令，以便安装 MSAL.NET  ：
+ 可在 Visual Studio 的包管理器控制台中运行以下命令，以便安装 MSAL.NET：
 
 ```powershell
 Install-Package Microsoft.Identity.Client
@@ -198,10 +198,10 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .Build();
 ```
 
-> | 其中： ||
+> | 其中： | 说明 |
 > |---------|---------|
 > | `config.ClientSecret` | 是在 Azure 门户中为应用程序创建的客户端机密。 |
-> | `config.ClientId` | 是在 Azure 门户中注册的应用程序的**应用程序(客户端) ID**。 可以在 Azure 门户的应用的“概览”  页中找到此值。 |
+> | `config.ClientId` | 是在 Azure 门户中注册的应用程序的**应用程序(客户端) ID**。 可以在 Azure 门户的应用的“概览”页中找到此值。 |
 > | `config.Authority`    | （可选）用户要进行身份验证的 STS 终结点。 对于公有云，通常为 <https://login.partner.microsoftonline.cn/{tenant}>，其中 {tenant} 是租户名称或租户 ID。|
 
 有关详细信息，请参阅 [`ConfidentialClientApplication` 的参考文档](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.identity.client.iconfidentialclientapplication?view=azure-dotnet)
@@ -215,9 +215,9 @@ result = await app.AcquireTokenForClient(scopes)
                   .ExecuteAsync();
 ```
 
-> |其中：| |
+> |其中：| 说明 |
 > |---------|---------|
-> | `scopes` | 包含请求的范围。 对于机密客户端，这应该使用与 `{Application ID URI}/.default` 类似的格式，指示所请求的范围是在 Azure 门户的应用对象集中静态定义的范围（就 Microsoft Graph 来说，`{Application ID URI}` 指向 `https://microsoftgraph.chinacloudapi.cn`）。 对于自定义 Web API，`{Application ID URI}` 是在 Azure 门户的应用程序注册（预览版）的“公开 API”  部分中定义的。 |
+> | `scopes` | 包含请求的范围。 对于机密客户端，这应该使用与 `{Application ID URI}/.default` 类似的格式，指示所请求的范围是在 Azure 门户的应用对象集中静态定义的范围（就 Microsoft Graph 来说，`{Application ID URI}` 指向 `https://microsoftgraph.chinacloudapi.cn`）。 对于自定义 Web API，`{Application ID URI}` 是在 Azure 门户的应用程序注册（预览版）的“公开 API”部分中定义的。 |
 
 有关详细信息，请参阅 [`AcquireTokenForClient` 的参考文档](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplication.acquiretokenforclient?view=azure-dotnet)
 

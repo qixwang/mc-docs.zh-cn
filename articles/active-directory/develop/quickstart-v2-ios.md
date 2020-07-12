@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 06/30/2020
+ms.date: 07/09/2020
 ms.author: v-junlch
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: 2e94b1948fcce19e1eb3a138071dfcf6c83d6597
-ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
+ms.openlocfilehash: 604d52818c382a0cc70ac7ccdc98f4a66025493d
+ms.sourcegitcommit: 92b9b1387314b60661f5f62db4451c9ff2c49500
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85945017"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86164947"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>快速入门：从 iOS 或 macOS 应用将用户登录并调用 Microsoft Graph API
 
@@ -173,7 +173,7 @@ let msalConfiguration = MSALPublicClientApplicationConfig(clientId: kClientID, r
 self.applicationContext = try MSALPublicClientApplication(configuration: msalConfiguration)
 ```
 
-> |其中： ||
+> |其中： | 说明 |
 > |---------|---------|
 > | `clientId` | 在 *portal.azure.cn* 中注册的应用程序的应用程序 ID |
 > | `authority` | Microsoft 标识平台终结点。 在大多数情况下，这将是 *https<span/>://login.partner.microsoftonline.cn/common* |
@@ -237,7 +237,7 @@ let parameters = MSALInteractiveTokenParameters(scopes: kScopes, webviewParamete
 self.applicationContext!.acquireToken(with: parameters) { (result, error) in /* Add your handling logic */}
 ```
 
-> |其中：||
+> |其中：| 说明 |
 > |---------|---------|
 > | `scopes` | 包含所请求的范围（即针对 Microsoft Graph 的 `["https://microsoftgraph.chinacloudapi.cn/user.read"]` 或针对自定义 Web API (`api://<Application ID>/access_as_user`) 的 `[ "<Application ID URL>/scope" ]`） |
 
@@ -257,7 +257,7 @@ self.applicationContext!.getCurrentAccount(with: nil) { (currentAccount, previou
 }
 ```
 
-> |其中： ||
+> |其中： | 说明 |
 > |---------|---------|
 > | `scopes` | 包含所请求的范围（即针对 Microsoft Graph 的 `["https://microsoftgraph.chinacloudapi.cn/user.read"]` 或针对自定义 Web API (`api://<Application ID>/access_as_user`) 的 `[ "<Application ID URL>/scope" ]`） |
 > | `account` | 请求令牌时对应的帐户。 本快速入门介绍单帐户应用程序。 如果要构建多帐户应用，则需要定义相关逻辑，以使用 `accountsFromDeviceForParameters:completionBlock:` 并传递正确的 `accountIdentifier` 来标识用于令牌请求的帐户 |

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 06/30/2020
+ms.date: 07/09/2020
 ms.author: v-junlch
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ae968264a82397864dfa9c86ca83a9bc69e76db0
-ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
+ms.openlocfilehash: eff5dd179e06ce1575b263558605ce0854204e79
+ms.sourcegitcommit: 92b9b1387314b60661f5f62db4451c9ff2c49500
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85945223"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86164912"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-or-macos-app"></a>从 iOS 或 macOS 应用将用户登录并调用 Microsoft Graph
 
@@ -48,7 +48,7 @@ ms.locfileid: "85945223"
 
 ## <a name="prerequisites"></a>先决条件
 
-- XCode 11.x 或更高版本是在本指南中构建应用所必需的。 可以从 [iTunes 网站](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12 "XCode 下载 URL")下载 XCode。
+- XCode 11.x 或更高版本是在本指南中构建应用所必需的。 可以从 [Mac App Store](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12 "XCode 下载 URL") 下载 XCode。
 - Microsoft 身份验证库 ([MSAL.framework](https://github.com/AzureAD/microsoft-authentication-library-for-objc))。 可使用依赖项管理器或手动添加库。 以下说明演示了如何操作。
 
 本教程将创建新项目。 如果想要改为下载完整教程，请下载代码：

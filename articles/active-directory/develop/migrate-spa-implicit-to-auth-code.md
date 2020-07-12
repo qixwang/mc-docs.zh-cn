@@ -7,17 +7,17 @@ author: hahamil
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: tutorial
+ms.topic: how-to
 ms.workload: identity
-ms.date: 06/29/2020
+ms.date: 07/08/2020
 ms.author: v-junlch
 ms.custom: aaddev
-ms.openlocfilehash: 2f44e9148c9ad8bbe33c6b76c1934a48e8f2b496
-ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
+ms.openlocfilehash: fe96ed0748c9168892732862fa150deb5d9360d2
+ms.sourcegitcommit: 92b9b1387314b60661f5f62db4451c9ff2c49500
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85945310"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86164965"
 ---
 # <a name="migrate-a-javascript-single-page-app-from-implicit-grant-to-auth-code-flow"></a>将 JavaScript 单页应用从隐式授权迁移到授权代码流
 
@@ -70,7 +70,7 @@ import * as msal from "msal";
 const msalInstance = new msal.UserAgentApplication(config);
 ```
 
-在 MSAL 2.x 中，改为初始化 `PublicClientApplication`：
+在 MSAL 2.x 中，请改为初始化 [PublicClientApplication][msal-js-publicclientapplication]：
 
 ```javascript
 // MSAL 2.x
@@ -87,7 +87,7 @@ const msalInstance = new msal.PublicClientApplication(config);
 
 在应用注册中取消选中隐式授权设置后，将对使用注册及其客户端 ID 的所有应用程序禁用隐式流。
 
-在将所有应用程序更新为 MSAL.js 2.x 和 `PublicClientApplication` 之前，请勿禁用隐式授权流。
+在将所有应用程序更新为 MSAL.js 2.x 和 [PublicClientApplication][msal-js-publicclientapplication] 之前，请勿禁用隐式授权流。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -97,3 +97,5 @@ const msalInstance = new msal.PublicClientApplication(config);
 
 <!-- LINKS - external -->
 [msal-js-useragentapplication]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-core/modules/_useragentapplication_.html
+[msal-js-publicclientapplication]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-browser/classes/_src_app_publicclientapplication_.publicclientapplication.html
+

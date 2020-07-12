@@ -7,13 +7,15 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: 9fef82fc7e49e043f9430df9acd140aba58dab97
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: 0a4a3a1f6fe6d36d193118a58e990dc25969cb19
+ms.sourcegitcommit: 873e5c5e4156efed505a78d4f5a6e50c494e76d4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85102027"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86036750"
 ---
+<!--Not Available on Azure China Cloud-->
+<!--Not Available on Microsoft.Resources.deploymentScripts-->
 # <a name="use-deployment-scripts-in-templates-preview"></a>在模板中使用部署脚本（预览版）
 
 了解如何使用 Azure 资源模板中的部署脚本。 使用名为 `Microsoft.Resources/deploymentScripts` 的新资源类型，用户可以在模板部署中执行部署脚本并查看执行结果。 这些脚本可用于执行自定义步骤，如：

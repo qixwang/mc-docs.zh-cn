@@ -4,15 +4,15 @@ description: 本文概述 Azure 应用程序网关基于 URL 的内容路由、U
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.date: 05/19/2020
+ms.date: 07/10/2020
 ms.author: v-junlch
 ms.topic: conceptual
-ms.openlocfilehash: b4dfc6bbb128587a3a97abc0d38d879b3edf6b94
-ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
+ms.openlocfilehash: 8b2b217eceba5c61b42c28ee1570b5060f42caa5
+ms.sourcegitcommit: 65a7360bb14b0373e18ec8eaa288ed3ac7b24ef4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83748163"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86219693"
 ---
 # <a name="url-path-based-routing-overview"></a>基于 URL 路径的路由概述
 
@@ -75,7 +75,7 @@ PathPattern 是要匹配的路径模式列表。 每个模式必须以 / 开头�
 |v1 路径模式  |是否支持？  |
 |---------|---------|
 |`/images/*`     |是|
-|`/images*`     |否|
+|`/images*`     |是|
 |`/images/*.jpg`     |否|
 |`/*.jpg`     |否|
 |`/Repos/*/Comments/*`     |否|

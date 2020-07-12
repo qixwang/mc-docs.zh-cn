@@ -1,24 +1,23 @@
 ---
-title: 在 Azure Active Directory 中向企业应用分配用户或组 | Microsoft Docs
+title: 在 Azure AD 中将用户或组分配到企业应用
 description: 如何选择企业应用，在 Azure Active Directory 中向其分配用户或组
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
-origin.date: 10/24/2019
-ms.date: 11/13/2019
+ms.topic: how-to
+ms.date: 07/07/2020
 ms.author: v-junlch
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 789f7843c176c945d3c80b8c354f8bf4b8cc60fb
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 9fac3c409b69401461d3c398874adaf0065807b8
+ms.sourcegitcommit: 92b9b1387314b60661f5f62db4451c9ff2c49500
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74084597"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86164826"
 ---
 # <a name="assign-a-user-to-an-enterprise-app-in-azure-active-directory"></a>在 Azure Active Directory 中向企业应用分配用户
 
@@ -28,30 +27,30 @@ ms.locfileid: "74084597"
 > 有关本文中讨论的功能的许可要求，请参阅 [Azure Active Directory 定价页](https://www.azure.cn/pricing/details/active-directory)。
 
 ## <a name="assign-a-user-to-an-app---portal"></a>将用户分配到应用 - 门户
-1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.cn)。
-1. 选择“所有服务”  ，在文本框中输入 Azure Active Directory，并选择“Enter”  。
-1. 选择“企业应用程序”。 
-1. 在“企业应用程序 - 所有应用程序”  窗格上，你会看到你可以管理的应用的列表。 选择一个应用。
-1. 在 ***appname*** 窗格（即标题中包含所选应用的名称的窗格）中，选择“用户和组”  。
-1. 在“appname - 用户和组”窗格中，选择“添加用户”。  
-1. 在“添加分配”窗格中选择“用户”   。
+1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.cn) 。
+1. 选择“所有服务”，在文本框中输入 Azure Active Directory，并选择“Enter”。
+1. 选择“企业应用程序”。
+1. 在“企业应用程序 - 所有应用程序”窗格上，你会看到你可以管理的应用的列表。 选择一个应用。
+1. 在 ***appname*** 窗格（即标题中包含所选应用的名称的窗格）中，选择“用户和组”。
+1. 在“appname - 用户和组”窗格中，选择“添加用户”。 
+1. 在“添加分配”窗格中选择“用户” 。
 
     ![将用户分配到应用](./media/assign-user-or-group-access-portal/assign-users.png)
-1. 在“用户”窗格的列表中选择一个或多个用户，然后选择窗格底部的“选择”按钮。  
-1. 在“添加分配”窗格中选择“角色”   。 然后，在“选择角色”窗格中选择一个需要应用到所选用户的角色，然后选择窗格底部的“确定”。  
-1. 在“添加分配”窗格中，选择窗格底部的“分配”按钮。   已分配用户的权限将是该企业应用的选定角色所定义的权限。
+1. 在“用户”窗格的列表中选择一个或多个用户，然后选择窗格底部的“选择”按钮。 
+1. 在“添加分配”窗格中选择“角色” 。 然后，在“选择角色”窗格中选择一个需要应用到所选用户的角色，然后选择窗格底部的“确定”。 
+1. 在“添加分配”窗格中，选择窗格底部的“分配”按钮。  已分配用户的权限将是该企业应用的选定角色所定义的权限。
 
 ## <a name="allow-all-users-to-access-an-app---portal"></a>允许所有用户访问某个应用 - 门户
 
-1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.cn)。
-1. 选择“所有服务”  ，在文本框中输入 Azure Active Directory，并选择“Enter”  。
-1. 选择“企业应用程序”。 
-1. 在“企业应用程序”  窗格中，选择“所有应用程序”  。 随后会列出你可以管理的应用。
-1. 在“企业应用程序 - 所有应用程序”  窗格中，选择一个应用。
-1. 在“appname”窗格上，选择“属性”  。
-1. 在“appname - 属性”窗格上，将“需要进行用户分配?”设置设置为“否”    。
+1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.cn) 。
+1. 选择“所有服务”，在文本框中输入 Azure Active Directory，并选择“Enter”。
+1. 选择“企业应用程序”。
+1. 在“企业应用程序”窗格中，选择“所有应用程序”。 随后会列出你可以管理的应用。
+1. 在“企业应用程序 - 所有应用程序”窗格中，选择一个应用。
+1. 在“appname”窗格上，选择“属性”。
+1. 在“appname - 属性”窗格上，将“需要进行用户分配?”设置设置为“否”  。
 
-“需要进行用户分配?”选项  ：
+“需要进行用户分配?”选项：
 
 - 如果此选项设置为“是”，则必须先将用户分配到此应用程序，然后用户才能访问它。
 - 如果此选项设置为“否”，则任何直接导航到应用程序深层链接 URL 或应用程序 URL 的用户都将被授予访问权限
@@ -81,7 +80,7 @@ ms.locfileid: "74084597"
     New-AzureADUserAppRoleAssignment -ObjectId $user.ObjectId -PrincipalId $user.ObjectId -ResourceId $sp.ObjectId -Id $appRole.Id
     ```
 
-有关如何将用户分配到应用程序角色的详细信息，请访问 [New-AzureADUserAppRoleAssignment](https://docs.microsoft.com/powershell/module/azuread/new-azureaduserapproleassignment?view=azureadps-2.0) 的文档
+有关如何将用户分配到应用程序角色的详细信息，请参阅 [New-AzureADUserAppRoleAssignment](https://docs.microsoft.com/powershell/module/azuread/new-azureaduserapproleassignment?view=azureadps-2.0) 的文档。
 
 ### <a name="example"></a>示例
 
@@ -105,7 +104,7 @@ ms.locfileid: "74084597"
 
 1. 运行命令 `$sp.AppRoles`，显示可用于 Workplace Analytics 应用程序的角色。 在此示例中，我们要为 Britta Simon 分配“分析员”（访问权限受限）角色。
 
-    ![显示使用 Workplace Analytics 角色的用户可用的角色](./media/assign-user-or-group-access-portal/workplace-analytics-role.png)
+   ![显示使用 Workplace Analytics 角色的用户可用的角色](./media/assign-user-or-group-access-portal/workplace-analytics-role.png)
 
 1. 将角色名称分配到 `$app_role_name` 变量。
 
@@ -126,7 +125,7 @@ ms.locfileid: "74084597"
 
 - [查看所有组](../fundamentals/active-directory-groups-view-azure-portal.md)
 - [删除企业应用的用户分配](remove-user-or-group-access-portal.md)
-- [禁用企业应用的用户登录](disable-user-sign-in-portal.md)
-- [更改企业应用的名称或徽标](change-name-or-logo-portal.md)
+- [Disable user sign-ins for an enterprise app](disable-user-sign-in-portal.md)
+- [Change the name or logo of an enterprise app](change-name-or-logo-portal.md)
 
 <!-- Update_Description: wording update -->

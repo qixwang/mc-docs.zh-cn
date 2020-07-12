@@ -4,15 +4,15 @@ description: 本文说明如何使用应用程序网关指标和 Azure Kubernete
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
-ms.date: 03/30/2020
+ms.topic: how-to
+ms.date: 07/10/2020
 ms.author: v-junlch
-ms.openlocfilehash: f07d047f679558e1107b1ad561af3caf4edc61d1
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3a44d81fbb63b9425cf0400ac6f6bb8e5f1cfffd
+ms.sourcegitcommit: 65a7360bb14b0373e18ec8eaa288ed3ac7b24ef4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80581661"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86219708"
 ---
 # <a name="autoscale-your-aks-pods-using-application-gateway-metrics-beta"></a>根据应用程序网关指标 (Beta) 自动缩放 AKS Pod
 
@@ -39,7 +39,7 @@ ms.locfileid: "80581661"
 
     ```bash
     kubectl create namespace custom-metrics
-    # use values from service principle created above to create secret
+    # use values from service principal created above to create secret
     kubectl create secret generic azure-k8s-metrics-adapter -n custom-metrics \
         --from-literal=azure-tenant-id=<tenantid> \
         --from-literal=azure-client-id=<clientid> \

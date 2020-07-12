@@ -7,22 +7,22 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
-ms.date: 03/11/2020
+ms.topic: quickstart
+ms.date: 07/06/2020
 ms.author: v-junlch
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 668dbd778b0ff2abcde718b3ae50257793bb6cbc
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: daf7d17bb840060bb97497a701375e0431628938
+ms.sourcegitcommit: 92b9b1387314b60661f5f62db4451c9ff2c49500
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79133851"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165027"
 ---
 # <a name="quickstart-grant-permission-to-create-unlimited-app-registrations"></a>快速入门：授权创建无限数目的应用注册的权限
 
-在本快速入门中，你将创建一个有权创建无限数目的应用注册的自定义角色，然后将该角色分配给某个用户。 然后，分配的用户可以使用 Azure AD 门户、Azure AD PowerShell 或 Microsoft Graph API 创建应用程序注册。 与内置的“应用程序开发人员”角色不同，使用此自定义角色可以创建无限数目的应用程序注册。 “应用程序开发人员”角色授予该能力，但创建的对象总数限制为 250 个，目的是防止达到[目录范围的对象配额](directory-service-limits-restrictions.md)。
+在本快速入门中，你将创建一个有权创建无限次应用注册的自定义角色，然后将该角色分配给某个用户。 然后，分配的用户可以使用 Azure AD 门户、Azure AD PowerShell 或 Microsoft Graph API 创建应用程序注册。 与内置的“应用程序开发人员”角色不同，使用此自定义角色可以创建无限次应用程序注册。 “应用程序开发人员”角色授予该能力，但创建的对象总数限制为 250 个，目的是防止达到[目录范围的对象配额](directory-service-limits-restrictions.md)。
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
@@ -33,26 +33,26 @@ ms.locfileid: "79133851"
 ## <a name="create-a-new-custom-role-using-the-azure-ad-portal"></a>使用 Azure AD 门户创建新的自定义角色
 
 1. 使用 Azure AD 组织中的“特权角色管理员”或“全局管理员”权限登录到  [Azure 门户](https://portal.azure.cn)。
-1. 依次选择“Azure Active Directory”  、“角色和管理员”  和“新建自定义角色”  。
+1. 依次选择“Azure Active Directory”、“角色和管理员”和“新建自定义角色”。
 
-    ![在“角色和管理员”页中创建或编辑角色](./media/roles-create-custom/new-custom-role.png)
+    ![从“角色和管理员”页创建或编辑角色](./media/roles-create-custom/new-custom-role.png)
 
-1. 在“基本信息”选项卡上输入“应用程序注册创建者”作为角色名称，输入“可以创建无限数目的应用程序注册”作为角色说明，然后选择“下一步”。  
+1. 在“基本信息”选项卡上输入“应用程序注册创建者”作为角色名称，输入“可以创建无限数目的应用程序注册”作为角色说明，然后选择“下一步”。 
 
     ![在“基本信息”选项卡中提供自定义角色的名称和说明](./media/roles-quickstart-app-registration-limits/basics-tab.png)
 
-1. 在“权限”选项卡上的搜索框中输入“microsoft.directory/applications/create”，选中所需权限旁边的复选框，然后选择“下一步”。  
+1. 在“权限”选项卡上的搜索框中输入“microsoft.directory/applications/create”，选中所需权限旁边的复选框，然后选择“下一步”。 
 
     ![在“权限”选项卡上选择自定义角色的权限](./media/roles-quickstart-app-registration-limits/permissions-tab.png)
 
-1. 在“查看 + 创建”选项卡上查看权限，然后选择“创建”。  
+1. 在“查看 + 创建”选项卡上查看权限，然后选择“创建” 。
 
 ### <a name="assign-the-role-to-a-user-using-the-azure-ad-portal"></a>使用 Azure AD 门户将角色分配给用户
 
 1. 使用 Azure AD 组织中的“特权角色管理员”或“全局管理员”权限登录到  [Azure 门户](https://portal.azure.cn)。
-1. 依次选择“Azure Active Directory”、“角色和管理员”。  
-1. 选择“应用程序注册创建者”角色，然后选择“添加分配”。 
-1. 选择所需的用户，然后单击“选择”将该用户添加到该角色。 
+1. 依次选择“Azure Active Directory”、“角色和管理员”。 
+1. 选择“应用程序注册创建者”角色，然后选择“添加分配”。
+1. 选择所需的用户，然后单击“选择”将该用户添加到该角色。
 
 完成！ 在本快速入门中，你已成功创建一个有权创建无限数目的应用注册的自定义角色，然后将该角色分配给了某个用户。
 

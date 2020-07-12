@@ -11,17 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-origin.date: 08/23/2019
-ms.date: 04/23/2019
+ms.date: 07/06/2020
 ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ebbb9834a8213eac35e3c859e6f311aa80c7b10
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 69bab3d9d0527dc702d691ad2d7afdf2f9472610
+ms.sourcegitcommit: 92b9b1387314b60661f5f62db4451c9ff2c49500
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126550"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86164843"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect 常见问题解答
 
@@ -29,7 +28,7 @@ ms.locfileid: "82126550"
 
 **问：如何加强 Azure AD Connect 服务器以减少安全攻击面？**
 
-Microsoft 建议你加固 Azure AD Connect 服务器来减小 IT 环境中的此关键组件的安全攻击面。  遵循以下建议可降低你的组织的安全风险。
+Microsoft 建议强化 Azure AD Connect 服务器，以降低这一 IT 环境关键组件的安全攻击面。  遵循以下建议将减少组织面临的安全风险。
 
 * 将 Azure AD Connect 部署在已加入域的服务器上，并仅限域管理员或其他严格受控的安全组进行管理性访问
 
@@ -41,7 +40,7 @@ Microsoft 建议你加固 Azure AD Connect 服务器来减小 IT 环境中的此
 
 * [通过减小攻击面改进并维护安全性](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access#2-reduce-attack-surfaces )
 
-* [减小 Active Directory 攻击面](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)
+* [减少 Active Directory 攻击面](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)
 
 **问：如果 Azure Active Directory (Azure AD) 全局管理员已启用双重身份验证 (2FA)，安装是否能够正常进行？**  
 2016 年 2 月版开始支持此方案。
@@ -137,10 +136,10 @@ Azure AD Connect 不支持纯 IPv6 环境。
 否。 此选项不会检索所有配置设置，因此不应使用。 请改用向导在第二台服务器上创建基础配置，并使用同步规则编辑器生成 PowerShell 脚本，如此即可在服务器之间移动任何自定义规则。 有关详细信息，请参阅[交叉迁移](how-to-upgrade-previous-version.md#swing-migration)。
 
 **问：是否可以为 Azure 登录页缓存密码，这是否会因为包含一个具有 *autocomplete = "false"* 属性的密码输入元素而阻止此缓存？**  
-目前不支持修改“密码”字段的 HTML 属性，包括 autocomplete 标记。  我们目前正在开发一种功能，它将允许使用自定义 JavaScript 向“密码”字段添加任何属性。 
+目前不支持修改“密码”字段的 HTML 属性，包括 autocomplete 标记。 我们目前正在开发一种功能，它将允许使用自定义 JavaScript 向“密码”字段添加任何属性。
 
 **问：Azure 登录页会显示之前已成功登录的用户的用户名。此行为是否可以关闭？**  
-目前不支持修改“密码”输入字段的 HTML 属性，包括 autocomplete 标记。  我们目前正在开发一种功能，它将允许使用自定义 JavaScript 向“密码”字段添加任何属性。 
+目前不支持修改“密码”输入字段的 HTML 属性，包括 autocomplete 标记。 我们目前正在开发一种功能，它将允许使用自定义 JavaScript 向“密码”字段添加任何属性。
 
 **问：是否有方法来阻止并发会话？**  
 否。
@@ -174,7 +173,7 @@ Azure AD Connect 不支持纯 IPv6 环境。
 不需要知道最初用来升级 Azure AD Connect 的用户名和密码。 可以使用任何具有全局管理员角色的 Azure AD 帐户。
 
 **问：如何确定所用 Azure AD Connect 的版本？**  
-若要确定安装在服务器上的 Azure AD Connect 的具体版本，请转到“控制面板”，然后选择“程序” > “程序和功能”并找到已安装的 Azure AD Connect 版本，如下所示：  
+若要确定安装在服务器上的 Azure AD Connect 的具体版本，请转到“控制面板”，然后选择“程序” > “程序和功能”并找到已安装的 Azure AD Connect 版本，如下所示： 
 
 ![控制面板中的 Azure AD Connect 版本](./media/reference-connect-faq/faq1.png)
 
@@ -215,9 +214,9 @@ Azure AD Connect 服务偶尔会在升级以后无法启动。 在这种情况�
 
 * 在知识库 (KB) 中搜索有关 Azure AD Connect 支持的常见故障维修服务问题的技术解决方案。
 
-[Azure Active Directory 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD)
+[有关 Azure Active Directory 的 Microsoft Q&A 问题页面](https://docs.microsoft.com/answers/topics/azure-active-directory.html)
 
-* 转到 [Azure AD 社区](https://social.msdn.microsoft.com/Forums/azure/en-US/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required)，搜索技术问题与答案，或提出自己的问题。
+* 转到 [Azure AD 社区](https://docs.microsoft.com/answers/topics/azure-active-directory.html)，搜索技术问题与答案，或提出自己的问题。
 
 [获取 Azure AD 支持](https://support.azure.cn/en-us/support/support-azure/)
 

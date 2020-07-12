@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: dacc7675258cae968039b7672d79b63ab9134608
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 7e043b89d75c041aaeb6465c2ddfa57f7f44be37
+ms.sourcegitcommit: 9bc3e55f01e0999f05e7b4ebaea95f3ac91d32eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78155459"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86226381"
 ---
 [消息路由](../articles/iot-hub/iot-hub-devguide-messages-d2c.md)能够将遥测数据从 IoT 设备发送到内置的与事件中心兼容的终结点或自定义终结点，例如，Blob 存储、服务总线队列、服务总线主题和事件中心。 若要配置自定义消息路由，请创建[路由查询](../articles/iot-hub/iot-hub-devguide-routing-query-syntax.md)来自定义与特定条件匹配的路由。 设置完成后，引入的数据将通过 IoT 中心自动路由到终结点。 如果某个消息不匹配定义的任何路由查询，它将路由到默认终结点。
 
@@ -45,7 +45,7 @@ ms.locfileid: "78155459"
   - 必须事先完成本教程的第 1 部分，并保留一些可用的资源。
   - 安装 [Visual Studio](https://www.visualstudio.com/)。
   - 有权访问用于分析默认终结点的流分析的 Power BI 帐户。 （[免费试用 Power BI](https://app.powerbi.com/signupredirect?pbi_source=web)。）
-  - 提供一个用于发送通知电子邮件的 Office 365 帐户。
+  - 提供一个用于发送通知电子邮件的工作或学校帐户。
   - 确保已在防火墙中打开端口 8883。 本教程中的示例使用 MQTT 协议，该协议通过端口 8883 进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](../articles/iot-hub/iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 <!-- [!INCLUDE [cloud-shell-try-it.md](cloud-shell-try-it.md)] -->

@@ -1,0 +1,7 @@
+- name: Azure
+  tocHref: 'https://docs.microsoft.com/sql/'
+  topicHref: /index
+  items:
+    - name: SQL 托管实例
+      tocHref: 'https://docs.microsoft.com/sql/'
+      topicHref: /azure-sql/managed-instance

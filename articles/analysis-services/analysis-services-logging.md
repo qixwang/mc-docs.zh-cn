@@ -1,18 +1,21 @@
 ---
-title: Azure Analysis Services 诊断日志记录 | Azure Docs
+title: Azure Analysis Services 诊断日志记录 | Azure
 description: 介绍如何设置日志记录以监视 Azure Analysis Services 服务器。
 author: rockboyfor
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 06/08/2020
+origin.date: 05/19/2020
+ms.date: 07/13/2020
+ms.testscope: no
+ms.testdate: 06/08/2020
 ms.author: v-yeche
 ms.reviewer: minewiskan
-ms.openlocfilehash: 91f5e874688e9890bcf3489613ed31b7138ef271
-ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
+ms.openlocfilehash: bcd8515dd916d74bdb952d7ef468bc441a669925
+ms.sourcegitcommit: 9bc3e55f01e0999f05e7b4ebaea95f3ac91d32eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84564315"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86226094"
 ---
 <!--Verify successfully-->
 # <a name="setup-diagnostic-logging"></a>设置诊断日志记录
@@ -95,7 +98,7 @@ ms.locfileid: "84564315"
 
 3. 单击“保存” 。
 
-    如果收到一个错误，指出“无法更新 \<workspace name> 的诊断。 订阅 \<subscription id> 未注册，无法使用 microsoft.insights”， 请按 [Azure 诊断故障排除](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage)说明注册帐户，然后重试此过程。
+    如果收到一个错误，指出“无法更新 \<workspace name> 的诊断。 订阅 \<subscription id> 未注册，无法使用 microsoft.insights”， 请按 [Azure 诊断故障排除](/log-analytics/log-analytics-azure-storage)说明注册帐户，然后重试此过程。
 
     若要在将来的任意时间点更改资源日志的保存方式，可以返回此页修改设置。
 

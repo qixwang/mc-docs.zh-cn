@@ -5,24 +5,21 @@ services: active-directory
 documentationcenter: .net
 author: rwike77
 manager: CelesteDG
-editor: ''
-ms.assetid: 29142f7e-d862-4076-9a1a-ecae5bcd9d9b
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/24/2020
+ms.date: 07/08/2020
 ms.author: v-junlch
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: dfe68091b583758d401b8038d80453649dc771e7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ROBOTS: NOINDEX
+ms.openlocfilehash: 7809d2304a6671537b9d5e83f35629d7a25b5cdb
+ms.sourcegitcommit: 92b9b1387314b60661f5f62db4451c9ff2c49500
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291094"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165004"
 ---
 # <a name="authorize-access-to-web-applications-using-openid-connect-and-azure-active-directory"></a>使用 OpenID Connect 和 Azure Active Directory 来授权访问 Web 应用程序
 
@@ -37,23 +34,23 @@ ms.locfileid: "79291094"
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
    
-1. 通过以下方式选择 Azure AD 租户：在页面右上角选择你的帐户，接着选择“切换目录”导航，然后选择合适的租户  。 
+1. 通过以下方式选择 Azure AD 租户：在页面右上角选择你的帐户，接着选择“切换目录”导航，然后选择合适的租户。 
    - 如果你的帐户下只有一个 Azure AD 租户，或者已选择了合适的 Azure AD 租户，请跳过此步骤。
    
-1. 在 Azure 门户中，搜索并选择“Azure Active Directory”。 
+1. 在 Azure 门户中，搜索并选择“Azure Active Directory”。
    
-1. 在 **Azure Active Directory** 左侧菜单中，选择“应用注册”  ，然后选择“新建注册”  。
+1. 在 **Azure Active Directory** 左侧菜单中，选择“应用注册”，然后选择“新建注册”。
    
 1. 根据提示创建新的应用程序。 对于本教程来说，它是 Web 应用程序还是公共客户端（移动和桌面）应用程序并不重要，但是如果你想要 Web 应用程序或公共客户端应用程序的特定示例，请查看我们的[快速入门](v1-overview.md)。
    
    - **名称**是应用程序名称，它向最终用户描述该应用程序。
-   - 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”。  
+   - 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”。 
    - 提供**重定向 URI**。 对于 Web 应用程序，这是用户可以登录的应用的基 URL。  例如，`http://localhost:12345`。 对于公共客户端（移动和桌面），Azure AD 使用它来返回令牌响应。 输入特定于应用程序的值。  例如，`http://MyFirstAADApp`。
    <!--TODO: add once App ID URI is configurable: The **App ID URI** is a unique identifier for your application. The convention is to use `https://<tenant-domain>/<app-name>`, e.g. `https://contoso.partner.onmschina.cn/my-first-aad-app`-->  
    
-1. 完成注册后，Azure AD 将为应用程序分配一个唯一的客户端标识符（即应用程序 ID）  。 在后面的部分中会用到此值，因此，请从应用程序页复制此值。
+1. 完成注册后，Azure AD 将为应用程序分配一个唯一的客户端标识符（即应用程序 ID）。 在后面的部分中会用到此值，因此，请从应用程序页复制此值。
    
-1. 若要在 Azure 门户中找到应用程序，请依次选择“应用注册”  、“查看所有应用程序”  。
+1. 若要在 Azure 门户中找到应用程序，请依次选择“应用注册”、“查看所有应用程序”。
 
 ## <a name="authentication-flow-using-openid-connect"></a>使用 OpenID Connect 的身份验证流
 
@@ -111,15 +108,15 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &nonce=7362CAEA-9CA5-4B43-9BA3-34D7C303EBA7
 ```
 
-| 参数 |  | 说明 |
+| 参数 | 类型 | 说明 |
 | --- | --- | --- |
 | tenant |必填 |请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 允许值为租户标识符，例如独立于租户令牌的 `8eaef023-2b34-4da1-9baa-8bc8c9d6a490`、`contoso.partner.onmschina.cn` 或 `common` |
-| client_id |必填 |将应用注册到 Azure AD 时，分配给应用的应用程序 ID。 可以在 Azure 门户中找到该值。 依次单击“Azure Active Directory”  和“应用注册”  ，选择应用程序并在应用程序页上找到应用程序 ID。 |
+| client_id |必填 |将应用注册到 Azure AD 时，分配给应用的应用程序 ID。 可以在 Azure 门户中找到该值。 依次单击“Azure Active Directory”和“应用注册”，选择应用程序并在应用程序页上找到应用程序 ID。 |
 | response_type |必填 |必须包含 OpenID Connect 登录的 `id_token` 。 还可以包含其他 response_type，例如 `code` 或 `token`。 |
 | scope | 建议 | OpenID Connect 规范要求范围 `openid`，该范围在许可 UI 中会转换为“将你登录”权限。 在 v1.0 终结点上，此范围和其他 OIDC 范围会被忽略，但对符合标准的客户端而言仍是最佳做法。 |
 | nonce |必填 |由应用生成且包含在请求中的值，以声明方式包含在生成的 `id_token` 中。 应用程序接着便可确认此值，以减少令牌重新执行攻击。 此值通常是随机的唯一字符串或 GUID，可用以识别请求的来源。 |
 | redirect_uri | 建议 |应用的 redirect_uri，应用可向其发送及从其接收身份验证响应。 它必须完全符合在门户中注册的其中一个 redirect_uris，否则必须是编码的 url。 如果缺失，则会将用户代理随机发送回某个为应用注册的重定向 URI。 最大长度为 255 字节 |
-| response_mode |可选 |指定将生成的 authorization_code 送回到应用程序所应使用的方法。 HTTP 窗体发布  支持的值为 `form_post`，URL 片段  支持的值为 `fragment`。 对于 Web 应用程序，建议使用 `response_mode=form_post` ，确保以最安全的方式将令牌传输到应用程序。 包含 id_token 的任何流的默认值为 `fragment`。|
+| response_mode |可选 |指定将生成的 authorization_code 送回到应用程序所应使用的方法。 HTTP 窗体发布支持的值为 `form_post`，URL 片段支持的值为 `fragment`。 对于 Web 应用程序，建议使用 `response_mode=form_post` ，确保以最安全的方式将令牌传输到应用程序。 包含 id_token 的任何流的默认值为 `fragment`。|
 | state |建议 |随令牌响应返回的请求中所包含的值。 可以是想要的任何内容的字符串。 随机生成的唯一值通常用于 [防止跨站点请求伪造攻击](https://tools.ietf.org/html/rfc6749#section-10.12)。 该 state 也用于在身份验证请求出现之前，于应用中编码用户的状态信息，例如之前所在的网页或视图。 |
 | prompt |可选 |表示需要的用户交互类型。 当前仅有的有效值为“login”、“none”和“consent”。 `prompt=login` 强制用户在该请求上输入其凭据，从而使单一登录无效。 `prompt=none` 完全相反，它会确保无论如何都不向用户显示任何交互提示。 如果请求无法通过单一登录静默完成，则终结点返回一个错误。 `prompt=consent` 在用户登录后触发 OAuth 许可对话框，要求用户向应用授予权限。 |
 | login_hint |可选 |如果事先知道用户名，可用于预先填充用户登录页的用户名/电子邮件地址字段。 通常，应用在重新身份验证期间使用此参数，并且已经使用 `preferred_username` 声明从前次登录提取用户名。 |
@@ -200,9 +197,9 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 ```
 
-| 参数 |  | 说明 |
+| 参数 | 类型 | 说明 |
 | --- | --- | --- |
-| post_logout_redirect_uri |建议 |用户在成功注销后应重定向到的 URL。此 URL 必须与在应用注册门户中为应用程序注册的重定向 URI 之一匹配。  如果未包含 post_logout_redirect_uri  ，系统会向用户显示一条常规消息。 |
+| post_logout_redirect_uri |建议 |用户在成功注销后应重定向到的 URL。此 URL 必须与在应用注册门户中为应用程序注册的重定向 URI 之一匹配。  如果未包含 post_logout_redirect_uri，系统会向用户显示一条常规消息。 |
 
 ## <a name="single-sign-out"></a>单一登录
 
@@ -210,8 +207,8 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 1. 导航到 [Azure 门户](https://portal.azure.cn)。
 2. 通过单击页面右上角的帐户选择 Active Directory。
-3. 从左侧导航面板中，选择“Azure Active Directory”  ，选择“应用注册”  ，并选择应用程序。
-4. 单击“设置”  和“属性”  ，并查找“注销 URL”  文本框。 
+3. 从左侧导航面板中，选择“Azure Active Directory”，选择“应用注册”，并选择应用程序。
+4. 单击“设置”和“属性”，并查找“注销 URL”文本框。 
 
 ## <a name="token-acquisition"></a>令牌获取
 许多 Web 应用不仅需要将用户登录，而且还要代表该用户使用 OAuth 来访问 Web 服务。 此方案合并了用于对用户进行身份验证的 OpenID Connect，同时将获取 `authorization_code`，可用于通过 [OAuth 授权代码流](v1-protocols-oauth-code.md#use-the-authorization-code-to-request-an-access-token)来获取 `access_tokens`。

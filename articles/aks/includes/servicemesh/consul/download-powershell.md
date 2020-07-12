@@ -1,16 +1,15 @@
 ---
 author: rockboyfor
-ms.service: container-service
 ms.topic: include
 origin.date: 10/09/2019
-ms.date: 10/28/2019
+ms.date: 07/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 429e285a04a6724bcbebe32cd1eca66248170209
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.openlocfilehash: 3290d9f03a66dd93635942f5601145d8c678fcbb
+ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73426404"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86218804"
 ---
 在 Windows 上基于 PowerShell 的 shell 中，使用 `Invoke-WebRequest` 下载 Consul Helm 图表版本，然后使用 `Expand-Archive` 进行解压缩，如下所示：
 

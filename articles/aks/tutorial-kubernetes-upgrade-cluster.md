@@ -7,25 +7,25 @@ origin.date: 02/25/2020
 ms.date: 05/25/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: faf4253cdc46ea7ace7717aa13e5fe299a8fbe61
-ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
+ms.openlocfilehash: e7d0b71d925bb720abed25cb426c01759897b3d3
+ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735127"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86218795"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>教程：在 Azure Kubernetes 服务 (AKS) 中升级 Kubernetes
 
 在应用程序和群集生命周期中，你可能希望升级到最新可用的 Kubernetes 版本并使用新功能。 可使用 Azure CLI 升级 Azure Kubernetes 服务 (AKS) 群集。
 
-在本教程的第 7 部分中，升级了 Kubernetes 群集。 你将学习如何执行以下操作：
+在本教程的第 7 部分中，升级了 Kubernetes 群集。 学习如何：
 
 > [!div class="checklist"]
 > * 确定 Kubernetes 的当前版本和可用版本
 > * 升级 Kubernetes 节点
 > * 验证升级是否成功
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 上一教程中，应用程序已打包到容器映像中。 该映像已上传到 Azure容器注册表，同时，你创建了 AKS 群集。 然后，应用程序部署到了 AKS 群集。 如果尚未完成这些步骤，并且想要逐一完成，请先参阅[教程 1 - 创建容器映像][aks-tutorial-prepare-app]。
 
@@ -36,15 +36,30 @@ ms.locfileid: "83735127"
 在升级群集之前，请使用 [az aks get-upgrades][] 命令检查哪些 Kubernetes 版本可用于升级：
 
 ```azurecli
-az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
+az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
 ```
 
-在以下示例中，当前版本为 1.14.8，可用版本将显示在“升级”列下 。
+在以下示例中，当前版本为 1.15.11，可用版本将显示在“升级”下 。
 
-```
-Name     ResourceGroup    MasterVersion    NodePoolVersion    Upgrades
-------- ---------------  --------------- -----------------  --------------
-default  myResourceGroup  1.14.8           1.14.8             1.15.5, 1.15.7
+```json
+{
+  "agentPoolProfiles": null,
+  "controlPlaneProfile": {
+    "kubernetesVersion": "1.15.11",
+    ...
+    "upgrades": [
+      {
+        "isPreview": null,
+        "kubernetesVersion": "1.16.8"
+      },
+      {
+        "isPreview": null,
+        "kubernetesVersion": "1.16.9"
+      }
+    ]
+  },
+  ...
+}
 ```
 
 ## <a name="upgrade-a-cluster"></a>升级群集
@@ -57,16 +72,19 @@ default  myResourceGroup  1.14.8           1.14.8             1.15.5, 1.15.7
 1. 准备好新节点并将其加入群集后，Kubernetes 计划程序开始在该群集上运行 Pod。
 1. 删除旧节点，群集的下一个节点随即开始隔离和排空进程。
 
-使用 [az aks upgrade][] 命令升级 AKS 群集。 以下示例将群集升级到 Kubernetes 版本 1.14.6。
+使用 [az aks upgrade][] 命令升级 AKS 群集。
+
+```azurecli
+az aks upgrade \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --kubernetes-version KUBERNETES_VERSION
+```
 
 > [!NOTE]
 > 一次只能升级一个次要版本。 例如，可以从 1.14.x 升级到 1.15.x，但不能从 1.14.x 直接升级到 1.16.x   。 若要从 1.14.x 升级到 1.16.x，请先从 1.14.x 升级到 1.15.x，然后再执行一次升级从 1.15.x 升级到 1.16.x     。
 
-```azurecli
-az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.15.5
-```
-
-以下精简示例输出显示 kubernetesVersion 现在报告 1.15.5 ：
+以下精简示例输出显示升级到 1.16.8 的结果。 请注意，kubernetesVersion 现报告 1.16.8 ：
 
 ```json
 {
@@ -84,7 +102,7 @@ az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes
   "enableRbac": false,
   "fqdn": "myaksclust-myresourcegroup-19da35-bd54a4be.hcp.chinaeast2.cx.prod.service.azk8s.cn",
   "id": "/subscriptions/<Subscription ID>/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster",
-  "kubernetesVersion": "1.15.5",
+  "kubernetesVersion": "1.16.8",
   "location": "chinaeast2",
   "name": "myAKSCluster",
   "type": "Microsoft.ContainerService/ManagedClusters"
@@ -99,12 +117,12 @@ az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes
 az aks show --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-以下示例输出显示 AKS 群集运行 KubernetesVersion 1.15.5：
+以下示例输出显示 AKS 群集运行 KubernetesVersion 1.16.8：
 
 ```
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
 ------------  ----------  ---------------  -------------------  -------------------  ----------------------------------------------------------------
-myAKSCluster  chinaeast2      myResourceGroup  1.15.5               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.chinaeast2.cx.prod.service.azk8s.cn
+myAKSCluster  chinaeast2      myResourceGroup  1.16.8               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.chinaeast2.cx.prod.service.azk8s.cn
 ```
 
 ## <a name="delete-the-cluster"></a>删除群集
@@ -116,13 +134,11 @@ az group delete --name myResourceGroup --yes --no-wait
 ```
 
 > [!NOTE]
-> 删除群集时，AKS 群集使用的 Azure Active Directory 服务主体不会被删除。 有关如何删除服务主体的步骤，请参阅 [AKS 服务主体的注意事项和删除][sp-delete]。
-
-<!--Not Available on  managed identity-->
+> 删除群集时，AKS 群集使用的 Azure Active Directory 服务主体不会被删除。 有关如何删除服务主体的步骤，请参阅 [AKS 服务主体的注意事项和删除][sp-delete]。 如果你使用了托管标识，则该标识由平台托管，不需要你预配或轮换任何机密。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，在 AKS 群集中升级了 Kubernetes。 你已了解如何：
+在本教程中，在 AKS 群集中升级了 Kubernetes。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 确定 Kubernetes 的当前版本和可用版本

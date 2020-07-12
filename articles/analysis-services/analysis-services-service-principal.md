@@ -4,20 +4,22 @@ description: 了解如何创建服务主体以自动完成 Azure Analysis Servic
 author: rockboyfor
 ms.service: azure-analysis-services
 ms.topic: conceptual
-origin.date: 10/30/2019
-ms.date: 11/25/2019
+origin.date: 05/26/2020
+ms.date: 07/13/2020
+ms.testscope: no
+ms.testdate: 11/25/2019
 ms.author: v-yeche
 ms.reviewer: minewiskan
-ms.openlocfilehash: beddcd2238e414c222362a9b3abfa92958866647
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ed47e5b603b8557517623735d8f5f08431cb241a
+ms.sourcegitcommit: 9bc3e55f01e0999f05e7b4ebaea95f3ac91d32eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292777"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86226082"
 ---
 # <a name="automation-with-service-principals"></a>使用服务主体进行自动化
 
-服务主体是在租户中创建的 Azure Active Directory 应用程序资源，用于执行无人参与的资源和服务级别操作。 服务主体是特殊类型的用户标识，  具有应用程序 ID 和密码或证书。 服务主体只具有特定任务所需的权限，这些任务是按分配的角色和权限来定义的。 
+服务主体是在租户中创建的 Azure Active Directory 应用程序资源，用于执行无人参与的资源和服务级别操作。 服务主体是特殊类型的用户标识，具有应用程序 ID 和密码或证书。 服务主体只具有特定任务所需的权限，这些任务是按分配的角色和权限来定义的。 
 
 在 Analysis Services 中，服务主体可以与 Azure 自动化、PowerShell 无人参与模式、自定义客户端应用程序和 Web 应用配合使用，以便自动完成常见的任务。 例如，预配服务器、部署模型、数据刷新、垂直缩放、暂停/恢复等操作均可使用服务主体自动完成。 权限通过角色成员身份分配给服务主体，十分类似于常规的 Azure AD UPN 帐户。
 
@@ -94,7 +96,7 @@ Invoke-ProcessTable -Server "asazure://chinanorth.asazure.chinacloudapi.cn/myser
 
 ### <a name="amo-and-adomd"></a>AMO 和 ADOMD 
 
-通过客户端应用程序和 Web 应用进行连接时，由 NuGet 提供的 [AMO 和 ADOMD 客户端库](analysis-services-data-providers.md) 15.0.2 及更高版本的可安装包支持在连接字符串中使用服务主体，可以使用 `app:AppID` 语法以及密码或 `cert:thumbprint`。 
+通过客户端应用程序和 Web 应用进行连接时，由 NuGet 提供的 [AMO 和 ADOMD 客户端库](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current) 15.0.2 及更高版本的可安装包支持在连接字符串中使用服务主体，可以使用 `app:AppID` 语法以及密码或 `cert:thumbprint`。 
 
 以下示例使用 `appID` 和 `password` 执行模型数据库刷新操作：
 
@@ -112,6 +114,11 @@ db.Model.SaveChanges();
 
 ## <a name="next-steps"></a>后续步骤
 [使用 Azure PowerShell 进行登录](https://docs.microsoft.com/powershell/azure/authenticate-azureps)   
-[将服务主体添加到服务器管理员角色](analysis-services-addservprinc-admins.md)
+[使用逻辑应用进行刷新](analysis-services-refresh-logic-app.md)
+  
+<!--Not Available on [Refresh with Azure Automation](analysis-services-refresh-azure-automation.md)-->
+
+[将服务主体添加到服务器管理员角色](analysis-services-addservprinc-admins.md)  
+[使用服务主体自动完成 Power BI Premium 工作区和数据集任务](https://docs.microsoft.com/power-bi/admin/service-premium-service-principal)
 
 <!-- Update_Description: update meta properties, wording update, update link -->

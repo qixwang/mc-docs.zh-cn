@@ -5,23 +5,20 @@ services: virtual-network
 documentationcenter: virtual-network
 author: rockboyfor
 manager: digimobile
-editor: ''
-tags: ''
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 origin.date: 07/15/2019
-ms.date: 04/13/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 6cf4354c6cfa69ebea708ad621f25f5b560de6dd
-ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
+ms.openlocfilehash: c08d07e88cb6f287a0b4f26fb4f4aca511e78617
+ms.sourcegitcommit: af71b9199d47fb81e85d70da0cfb265cc814a644
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82093361"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85969001"
 ---
 # <a name="azure-cli-samples-for-virtual-network"></a>适用于虚拟网络的 Azure CLI 示例
 

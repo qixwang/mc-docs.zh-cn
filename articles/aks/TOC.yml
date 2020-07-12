@@ -12,6 +12,8 @@
       items:
         - name: 使用 Azure CLI
           href: kubernetes-walkthrough.md
+        - name: 使用 Azure PowerShell
+          href: kubernetes-walkthrough-powershell.md
         - name: 使用 Azure 门户
           href: kubernetes-walkthrough-portal.md
         - name: 使用 ARM 模板
@@ -20,8 +22,8 @@
     - name: 开发应用程序
       expanded: true
       items:
-        - name: 使用 Draft
-          href: kubernetes-draft.md
+        - name: 使用 Helm 进行开发
+          href: quickstart-helm.md
 - name: 教程
   items:
     - name: 1 - 为 AKS 准备应用程序
@@ -38,6 +40,11 @@
       href: tutorial-kubernetes-app-update.md
     - name: 7 - 升级群集
       href: tutorial-kubernetes-upgrade-cluster.md
+- name: 示例
+  items:
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 群集和工作负荷
@@ -88,7 +95,9 @@
     - name: 配额和区域限制
       href: quotas-skus-regions.md
     - name: 迁移到 AKS
-      href: aks-migration.md
+      items:
+        - name: 规划和执行迁移
+          href: aks-migration.md
     - name: 受支持的 Kubernetes 版本
       href: supported-kubernetes-versions.md
     - name: 主机 OS 中的安全强化
@@ -163,6 +172,8 @@
       items:
         - name: 创建服务主体
           href: kubernetes-service-principal.md
+        - name: 使用托管标识
+          href: use-managed-identity.md
         - name: 限制对群集配置文件的访问
           href: control-kubeconfig-access.md
         - name: 使用网络策略保护 Pod 流量
@@ -171,17 +182,19 @@
           href: api-server-authorized-ip-ranges.md
         - name: 更新群集凭据
           href: update-credentials.md
+        - name: 限制和控制群集出口流量
+          href: limit-egress-traffic.md
         - name: 实现 Azure Active Directory 集成
           items:
             - name: 使用 Azure CLI
               href: azure-ad-integration-cli.md
-            - name: 使用 Azure 门户
-              href: azure-ad-integration.md
         - name: 将 Kubernetes RBAC 用于 Azure AD 集成
           href: azure-ad-rbac.md
           maintainContext: true
         - name: 轮换证书
           href: certificate-rotation.md
+        - name: 为磁盘使用 BYOK
+          href: azure-disk-customer-managed-keys.md
     - name: 监视和日志记录
       items:
         - name: 用于容器的 Azure Monitor
@@ -191,6 +204,25 @@
           href: view-master-logs.md
         - name: 查看 kubelet 日志
           href: kubelet-logs.md
+        - name: 实时查看容器数据
+          href: ../azure-monitor/insights/container-insights-livedata-overview.md
+          maintainContext: true
+    - name: 使用 Windows Server 容器
+      items:
+        - name: 创建 AKS 群集
+          href: windows-container-cli.md
+        - name: 使用 PowerShell 创建 AKS 群集
+          href: windows-container-powershell.md
+        - name: 远程连接
+          href: rdp.md
+        - name: 已知的限制
+          href: windows-node-limitations.md
+        - name: 使用 Kubernetes 仪表板
+          href: kubernetes-dashboard.md
+        - name: 创建用于 Windows Server 容器的 Dockerfile
+          href: 'https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/manage-windows-dockerfile?context=/aks/context/aks-context'
+        - name: 优化用于 Windows Server 容器的 Dockerfile
+          href: 'https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/optimize-windows-dockerfile?context=/aks/context/aks-context'
     - name: 开发和运行应用程序
       items:
         - name: 通过 Helm 安装现有应用程序
@@ -260,7 +292,7 @@
 - name: 资源
   items:
     - name: 上市区域
-      href: 'https://status.azure.com/status/'
+      href: 'https://azure.microsoft.com/regions/services/'
     - name: 支持策略
       href: support-policies.md
     - name: 提供产品反馈

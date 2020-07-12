@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 06/02/2020
+ms.topic: how-to
+ms.date: 07/06/2020
 ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99e3121124b9cebf9f32b116b717ef99f967b306
-ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
+ms.openlocfilehash: 46c8fce4e3c0c61527186c1c11895c98be7ac349
+ms.sourcegitcommit: 92b9b1387314b60661f5f62db4451c9ff2c49500
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84275346"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86164877"
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>续订 Office 365 和 Azure Active Directory 的联合身份验证证书
 ## <a name="overview"></a>概述
@@ -62,7 +62,9 @@ Azure AD 将尝试监视联合元数据，并按照此元数据的指示更新�
 ### <a name="step-1-check-the-autocertificaterollover-state"></a>步骤 1：检查 AutoCertificateRollover 状态
 在 AD FS 服务器上打开 PowerShell。 检查 AutoCertRollover 值是否设置为 True。
 
-    Get-Adfsproperties
+```azurepowershell
+Get-Adfsproperties
+```
 
 ![AutoCertificateRollover](./media/how-to-connect-fed-o365-certs/autocertrollover.png)
 
@@ -78,16 +80,22 @@ Azure AD 将尝试监视联合元数据，并按照此元数据的指示更新�
 > 
 >
 
-    Install-Module MSOnline
+```azurepowershell
+Install-Module MSOnline
+```
 
 使用 MSOnline PowerShell-Module 连接到 Azure AD。
 
-    Import-Module MSOnline
-    Connect-MsolService -AzureEnvironment AzureChinaCloud
+```azurepowershell
+Import-Module MSOnline
+Connect-MsolService -AzureEnvironment AzureChinaCloud
+```
 
 检查 AD FS 和 Azure AD 信任属性中针对指定域配置的证书。
 
-    Get-MsolFederationProperty -DomainName <domain.name> | FL Source, TokenSigningCertificate
+```azurepowershell
+Get-MsolFederationProperty -DomainName <domain.name> | FL Source, TokenSigningCertificate
+```
 
 ![Get-MsolFederationProperty](./media/how-to-connect-fed-o365-certs/certsync.png)
 

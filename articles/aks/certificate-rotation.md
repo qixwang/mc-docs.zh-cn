@@ -2,17 +2,18 @@
 title: 轮换 Azure Kubernetes 服务 (AKS) 中的证书
 description: 了解如何轮换 Azure Kubernetes 服务 (AKS) 群集中的证书。
 services: container-service
-author: rockboyfor
 ms.topic: article
 origin.date: 11/15/2019
-ms.date: 05/25/2020
+ms.date: 07/13/2020
+ms.testscope: yes
+ms.testdate: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: 0ce561c4e14d913d995450cbe453bc5f73d91770
-ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
+ms.openlocfilehash: 69c4f25c148fd2f28db11179417b17ba918eced5
+ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735172"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86218758"
 ---
 <!--CONFIRME WITH DONG LIU SUCCESSFULLY-->
 <!--NEW FEATURES HAS BEEN RELEASED ON AZURE CHINA CLOUD-->
@@ -44,8 +45,7 @@ AKS 生成并使用以下证书、证书颁发机构和服务帐户：
 > 
 > 此外，还可以检查群集证书的到期日期。 例如，以下命令会显示 *myAKSCluster* 群集的证书详细信息。
 > ```console
-> kubectl config view --raw -o jsonpath="{.clusters[?(@.name == 'myAKSCluster')].cluster.certificate-authority-data}" | base64 -d > my-cert.crt
-> openssl x509 -in my-cert.crt -text
+> kubectl config view --raw -o jsonpath="{.clusters[?(@.name == 'myAKSCluster')].cluster.certificate-authority-data}" | base64 -d | openssl x509 -text | grep -A2 Validity
 > ```
 
 ## <a name="rotate-your-cluster-certificates"></a>轮换群集证书

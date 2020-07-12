@@ -3,23 +3,22 @@ title: 如何设置或编辑 Azure API 管理策略
 description: 本主题介绍如何设置或编辑 Azure API 管理策略。
 services: api-management
 documentationcenter: ''
-author: mikebudzynski
+author: Johnnytechn
 manager: cflower
 editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 origin.date: 11/01/2018
-ms.date: 10/21/2019
-ms.author: v-yiso
-ms.openlocfilehash: 05e0a32a99be303740e99e4a22fc45b4735bfa32
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 07/10/2020
+ms.author: v-johya
+ms.openlocfilehash: cad5d64f6db089f6e203233f9d070e6d66996fcd
+ms.sourcegitcommit: 9bc3e55f01e0999f05e7b4ebaea95f3ac91d32eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74389503"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86226055"
 ---
 # <a name="how-to-set-or-edit-azure-api-management-policies"></a>如何设置或编辑 Azure API 管理策略
 
@@ -43,7 +42,7 @@ ms.locfileid: "74389503"
 7. 在“入站处理”或“出站处理”部分中选择“</>(代码编辑器)”图标。
 8. 将所需的策略代码粘贴到某个相应的块中。
 
-    ```XML
+    ```xml
     <policies>
         <inbound>
             <base />
@@ -139,3 +138,4 @@ API 范围是针对选定 API 的**所有操作**配置的。
 + [转换 API](transform-api.md)
 + [策略参考](api-management-policies.md)，获取策略语句及其设置的完整列表
 + [策略示例](policy-samples.md)
+

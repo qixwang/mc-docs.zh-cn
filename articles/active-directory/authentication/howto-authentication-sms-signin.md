@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 06/02/2020
+ms.date: 07/07/2020
 ms.author: v-junlch
 author: iainfoulds
 manager: daveba
 ms.reviewer: rateller
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6beba3dad20cb38835940958e0d26fa14d5e0f6
-ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
+ms.openlocfilehash: c745c12188f2f8491a8410008fdb66212a8f80a0
+ms.sourcegitcommit: 92b9b1387314b60661f5f62db4451c9ff2c49500
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84275361"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165019"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory-preview"></a>为用户配置和启用通过 Azure Active Directory 进行基于短信的身份验证（预览版）
 
@@ -24,10 +24,8 @@ ms.locfileid: "84275361"
 
 本文介绍如何在 Azure AD 中为选定的用户或组启用基于短信的身份验证。
 
-|     |
-| --- |
-| 面向用户的基于短信的身份验证是 Azure Active Directory 的一项公共预览版功能。 有关预览版的详细信息，请参阅 [Azure 预览版补充使用条款](https://www.azure.cn/support/legal/)|
-|     |
+> [!NOTE]
+> 面向用户的基于短信的身份验证是 Azure Active Directory 的一项公共预览版功能。 有关预览版的详细信息，请参阅 [Azure 预览版补充使用条款](https://www.azure.cn/support/legal/)。
 
 ## <a name="before-you-begin"></a>准备阶段
 
@@ -38,9 +36,9 @@ ms.locfileid: "84275361"
 * 一个与订阅关联的 Azure Active Directory 租户。
     * 如果需要，请[创建一个 Azure Active Directory 租户][create-azure-ad-tenant]或[将 Azure 订阅关联到你的帐户][associate-azure-ad-tenant]。
 * 需要在 Azure AD 租户中拥有“全局管理员”特权才能启用基于短信的身份验证。
-* 短信身份验证方法策略中启用的每个用户都必须获得许可，即使他们不使用该方法也是如此。 每个允许使用的用户必须拥有以下 Azure AD、Office 365 或 Microsoft 365 许可证之一：
+* 短信身份验证方法策略中启用的每个用户都必须获得许可，即使他们不使用该方法也是如此。 每个启用的用户都必须具有以下 Azure AD、EMS、Microsoft 365 许可证之一：
     * [Azure AD Premium P1 或 P2][azuread-licensing]
-    * [Microsoft 365 (M365) F1 或 F3][m365-firstline-workers-licensing] 或 [Office 365 F1][o365-f1] 或 [F3][o365-f3]
+    * [Microsoft 365 (M365) F1 或 F3][m365-firstline-workers-licensing]
     * [企业移动性 + 安全性 (EMS) E3 或 E5][ems-licensing] 或 [Microsoft 365 (M365) E3 或 E5][m365-licensing]
 
 ## <a name="limitations"></a>限制
@@ -91,7 +89,7 @@ ms.locfileid: "84275361"
 
 ## <a name="set-a-phone-number-for-user-accounts"></a>为用户帐户设置电话号码
 
-现在已为用户启用了基于短信的身份验证，但必须将其电话号码与 Azure AD 中的用户个人资料相关联，然后用户才能登录。 用户可以在“我的个人资料”中[自行设置此电话号码](../user-help/sms-sign-in-explainer.md)，或者，也可以由你使用 Azure 门户分配电话号码。 电话号码可以由全局管理员、身份验证管理员或特权身份验证管理员设置。  
+现在已为用户启用了基于短信的身份验证，但必须将其电话号码与 Azure AD 中的用户个人资料相关联，然后用户才能登录。 用户可以在“我的个人资料”中[自行设置此电话号码](../user-help/sms-sign-in-explainer.md)，或者，也可以由你使用 Azure 门户分配电话号码。 电话号码可由全局管理员、身份验证管理员或特权身份验证管理员进行设置。
 
 设置用于短信登录的电话号码后，在进行 [Azure 多重身份验证][tutorial-azure-mfa]和[自助式密码重置][tutorial-sspr]时，也可以使用此电话号码。
 
@@ -144,7 +142,7 @@ ms.locfileid: "84275361"
 1. 确认用户帐户已在“短信”身份验证方法策略中启用。
 1. 确保使用已在 Azure 门户中经过验证的正确格式设置电话号码（例如 +1 4251234567）。
 1. 确保电话号码未在租户中的其他地方使用。
-1. 检查帐户中是否未设置任何语音号码。 如果设置了语音号码，请将其删除，然后再次尝试设置电话号码。
+1. 检查帐户中是否设置了语音号码。 如果设置了语音号码，请将其删除，然后再次尝试设置电话号码。
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../fundamentals/sign-up-organization.md

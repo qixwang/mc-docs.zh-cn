@@ -6,12 +6,12 @@ origin.date: 06/10/2020
 ms.date: 07/06/2020
 ms.author: v-yeche
 ms.custom: generated
-ms.openlocfilehash: de0b524b68622441815071a6c277a85c2fb21d5c
-ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
+ms.openlocfilehash: af62addb183c3d6d97ad81219e9b43d564cec10a
+ms.sourcegitcommit: 873e5c5e4156efed505a78d4f5a6e50c494e76d4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85946043"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050256"
 ---
 <!--Verified successfully-->
 
@@ -185,7 +185,7 @@ ms.locfileid: "85946043"
 
 <!--Not Available on line 12+1 [\[Preview\] Vulnerability Assessment should be enabled on Virtual Machines](https://portal.azure.cn/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F501541f7-f7e7-4cd6-868c-4190fdad3ac9)-->
 <!--Not Available on line 19+1 [Audit Linux virtual machines on which the use of passwords for SSH is allowed](https://portal.azure.cn/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F630c64f9-8b6b-4c64-b511-6544ceff6fd6)-->
-<!--Not Available on line 21+1 [Audit prerequisites to enable Guest Configuration policies on Windows VMs.](https://portal.azure.cn/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5fc23db3-dd4d-4c56-bcc7-43626243e601)--》
+<!--Not Available on line 21+1 [Audit prerequisites to enable Guest Configuration policies on Windows VMs.](https://portal.azure.cn/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5fc23db3-dd4d-4c56-bcc7-43626243e601)-->
 <!--Not Available on line 23+1 [Audit Windows VMs on which Windows Defender Exploit Guard is not enabled](https://portal.azure.cn/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbed48b13-6647-468e-aa2f-1af1d3f4dd40)-->
 <!--Not Available on line 24+1 [Configure backup on VMs of a location to an existing central Vault in the same location](https://portal.azure.cn/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F09ce66bc-1220-4153-8104-e3f51c936913)-->
 <!--Not Available on line 24+2 [Configure time zone on Windows machines.](https://portal.azure.cn/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6141c932-9384-44c6-a395-59e4c057d7c9)-->

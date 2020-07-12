@@ -8,18 +8,18 @@ manager: digimobile
 ms.assetid: c668cd8e-4e43-4d05-acc3-db64fa78d828
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 10/30/2018
-ms.date: 06/15/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 43239e8ee4e46029f344cb822b9edabacbc6f74f
-ms.sourcegitcommit: ff67734e01c004be575782b4812cfe857e435f4d
+ms.openlocfilehash: 4ddb6cb4b599bb5fc8498a573dafe4e5c7cc3d8e
+ms.sourcegitcommit: af71b9199d47fb81e85d70da0cfb265cc814a644
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84486981"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85969009"
 ---
 # <a name="viewing-and-modifying-hostnames"></a>查看和修改主机名
 若要允许通过主机名引用角色实例，必须在服务配置文件中为每个角色设置主机名的值。 可以通过将所需主机名添加到 **Role** 元素的 **vmName** 属性来执行该操作。 **vmName** 属性的值用作每个角色实例的主机名的基本元素。 例如，如果 **vmName** 是 *webrole*，并且该角色有三个实例，则这些实例的主机名将为 *webrole0*、*webrole1* 和 *webrole2*。 无需在配置文件中为虚拟机指定主机名，因为虚拟机的主机名会基于虚拟机名称填充。 有关配置 Microsoft Azure 服务的详细信息，请参阅 [Azure Service 配置架构（.cscfg 文件）](https://msdn.microsoft.com/library/azure/ee758710.aspx)
@@ -28,7 +28,7 @@ ms.locfileid: "84486981"
 可以使用下列任一工具来查看云服务中虚拟机和角色实例的主机名。
 
 ### <a name="service-configuration-file"></a>服务配置文件
-可以从 Azure 门户中服务的“配置”边栏选项卡下载已部署服务的服务配置文件。**** 然后，可以查找**角色名称**元素的 **vmName** 属性以查看主机名。 请记住，此主机名用作每个角色实例的主机名的基本元素。 例如，如果 **vmName** 是 *webrole*，并且该角色有三个实例，则这些实例的主机名将为 *webrole0*、*webrole1* 和 *webrole2*。
+可以从 Azure 门户中服务的“配置”边栏选项卡下载已部署服务的服务配置文件。 然后，可以查找**角色名称**元素的 **vmName** 属性以查看主机名。 请记住，此主机名用作每个角色实例的主机名的基本元素。 例如，如果 **vmName** 是 *webrole*，并且该角色有三个实例，则这些实例的主机名将为 *webrole0*、*webrole1* 和 *webrole2*。
 
 ### <a name="remote-desktop"></a>远程桌面
 启用与你的虚拟机或角色实例的远程桌面 (Windows) 连接、Windows PowerShell 远程处理 (Windows) 连接或 SSH（Linux 和 Windows）连接后，你可以通过多种方式从活动的远程桌面连接查看主机名：
@@ -58,8 +58,8 @@ ms.locfileid: "84486981"
 
 [Azure 服务配置架构 (.cscfg)](https://msdn.microsoft.com/library/azure/ee758710.aspx)
 
-<!-- Not Available on PreviousVersion in Virtual Network[Azure Virtual Network Configuration Schema](https://go.microsoft.com/fwlink/?LinkId=248093)-->
+[Azure 虚拟网络配置架构](https://go.microsoft.com/fwlink/?LinkId=248093)
 
 [使用网络配置文件指定 DNS 设置](virtual-networks-specifying-a-dns-settings-in-a-virtual-network-configuration-file.md)
 
-<!-- Update_Description: update meta properties -->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -8,14 +8,14 @@ metadata:
   ms.topic: landing-page
   author: rockboyfor
   origin.date: 03/25/2020
-  ms.date: 05/25/2020
+  ms.date: 07/13/2020
   ms.author: v-yeche
-  ms.openlocfilehash: cc14e75f07b09e2b4289d1ef127a33e85d2a02d9
-  ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
+  ms.openlocfilehash: 285989c18e842c93fffb4ce2fbae1f9023fc9b27
+  ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/21/2020
-  ms.locfileid: "83735152"
+  ms.lasthandoff: 07/10/2020
+  ms.locfileid: "86218740"
 landingContent:
 - title: 关于 Azure Kubernetes 服务 (AKS)
   linkLists:

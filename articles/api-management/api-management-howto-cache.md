@@ -3,31 +3,30 @@ title: 添加缓存以提高 Azure API 管理中的性能
 description: 了解如何改善 API 管理服务调用的延迟、带宽消耗和 web 服务负载。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: Johnnytechn
 manager: erikre
 editor: ''
 ms.assetid: 740f6a27-8323-474d-ade2-828ae0c75e7a
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: get-started-article
-origin.date: 11/27/2018
-ms.author: v-yiso
-ms.date: 02/24/2020
-ms.openlocfilehash: 175eabf148c80ce0ab99937492b77c903b072996
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.topic: conceptual
+ms.date: 07/10/2020
+ms.author: v-johya
+ms.openlocfilehash: e74fc65a376021cbc7a86b7f4553b4c0fe77a7c4
+ms.sourcegitcommit: 9bc3e55f01e0999f05e7b4ebaea95f3ac91d32eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428636"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86226080"
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>添加缓存以提高 Azure API 管理中的性能
+
 API 管理中的操作可以配置为响应缓存。 响应缓存可以显著减少 API 延迟、带宽消耗和不经常更改数据的 web 服务负载。
- 
+
 若要更详细地了解缓存，请参阅 [API 管理缓存策略](api-management-caching-policies.md)和 [Azure API 管理中的自定义缓存](api-management-sample-cache-by-key.md)。
 
-![缓存策略](media/api-management-howto-cache/cache-policies.png)
+![缓存策略](./media/api-management-howto-cache/cache-policies.png)
 
 学习内容：
 
@@ -35,7 +34,10 @@ API 管理中的操作可以配置为响应缓存。 响应缓存可以显著减
 > * 为 API 添加响应缓存
 > * 验证作用的缓存
 
+## <a name="availability"></a>可用性
 
+> [!NOTE]
+> 内部缓存在 Azure API 管理的“消耗”层中不可用。 可以改为[使用外部 Azure Redis 缓存](api-management-howto-cache-external.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -56,19 +58,23 @@ API 管理中的操作可以配置为响应缓存。 响应缓存可以显著减
 6. 选择屏幕顶部的“设计”选项卡。
 7. 在“入站处理”部分中，单击 **</>** 图标。
 
-    ![代码编辑器](media/api-management-howto-cache/code-editor.png) 
+    ![代码编辑器](./media/api-management-howto-cache/code-editor.png)
 
 8. 在 **inbound** 元素中添加以下策略：
 
-        <cache-lookup vary-by-developer="false" vary-by-developer-groups="false">
-            <vary-by-header>Accept</vary-by-header>
-            <vary-by-header>Accept-Charset</vary-by-header>
-            <vary-by-header>Authorization</vary-by-header>
-        </cache-lookup>
+   ```
+   <cache-lookup vary-by-developer="false" vary-by-developer-groups="false">
+       <vary-by-header>Accept</vary-by-header>
+       <vary-by-header>Accept-Charset</vary-by-header>
+       <vary-by-header>Authorization</vary-by-header>
+   </cache-lookup>
+   ```
 
-10. 在 **outbound** 元素中添加以下策略：
+9. 在 **outbound** 元素中添加以下策略：
 
-        <cache-store duration="20" />
+   ```
+   <cache-store duration="20" />
+   ```
 
     **持续时间**指定缓存响应的到期时间间隔。 此示例中的时间间隔为 **20** 秒。
 
@@ -102,11 +108,11 @@ API 管理中的操作可以配置为响应缓存。 响应缓存可以显著减
 [api-management-console]: ./media/api-management-howto-cache/api-management-console.png
 
 
-[How to add operations to an API]: mock-api-responses
-[How to add and publish a product]: ./api-management-howto-add-products.md
-[Monitoring and analytics]: ./api-management-monitoring.md
-[Add APIs to a product]: ./api-management-howto-add-products.md#add-apis
-[Publish a product]: ./api-management-howto-add-products.md#publish-product
+[How to add operations to an API]: api-management-howto-add-operations.md
+[How to add and publish a product]: api-management-howto-add-products.md
+[Monitoring and analytics]: api-management-howto-use-azure-monitor.md
+[Add APIs to a product]: api-management-howto-add-products.md#add-apis
+[Publish a product]: api-management-howto-add-products.md#publish-product
 [Get started with Azure API Management]: get-started-create-service-instance.md
 
 [API Management policy reference]: https://msdn.microsoft.com/library/azure/dn894081.aspx
@@ -118,3 +124,4 @@ API 管理中的操作可以配置为响应缓存。 响应缓存可以显著减
 [Review the caching policies]: #caching-policies
 [Call an operation and test the caching]: #test-operation
 [Next steps]: #next-steps
+

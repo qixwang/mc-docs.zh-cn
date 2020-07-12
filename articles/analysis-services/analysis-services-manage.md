@@ -5,15 +5,17 @@ author: rockboyfor
 ms.service: azure-analysis-services
 ms.topic: conceptual
 origin.date: 10/28/2019
-ms.date: 11/25/2019
+ms.date: 07/13/2020
+ms.testscope: no
+ms.testdate: 11/25/2019
 ms.author: v-yeche
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7d531d91f81ee6890fe324e00f8426200d9ba8a4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e317d0a93edbade078b98a3740de5518fd6d4add
+ms.sourcegitcommit: 9bc3e55f01e0999f05e7b4ebaea95f3ac91d32eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74203593"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86226091"
 ---
 # <a name="manage-analysis-services"></a>管理 Analysis Services
 在 Azure 中创建 Analysis Services 服务器后，可能会有一些需要立即执行或在稍后操作期间执行的管理任务。 例如，处理刷新数据、控制谁有权访问服务器上的模型，或者监视服务器的运行状况。 某些管理任务仅可在 Azure 门户中执行，而其他一些可在 SQL Server Management Studio (SSMS) 中执行，还有部分在两者中均可执行。

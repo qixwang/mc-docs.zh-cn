@@ -15,6 +15,8 @@
 - name: 概念
   expanded: true
   items:
+    - name: 委托 Azure AD 管理员角色
+      href: roles-concept-delegation.md
     - name: 比较默认用户权限
       href: /active-directory/fundamentals/users-default-permissions
     - name: 比较 Azure 和 Azure AD 角色

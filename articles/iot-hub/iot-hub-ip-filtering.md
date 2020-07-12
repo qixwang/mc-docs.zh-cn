@@ -5,15 +5,15 @@ author: rezasherafat
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-origin.date: 07/22/2017
+origin.date: 05/25/2020
 ms.author: v-yiso
-ms.date: 09/02/2019
-ms.openlocfilehash: 482beef44d03b3352ad0bf51de18fb25df39968e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 07/20/2020
+ms.openlocfilehash: 6aa5b82bd4c143d5f3ce422b6dfced8d677c6519
+ms.sourcegitcommit: 9bc3e55f01e0999f05e7b4ebaea95f3ac91d32eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "69993613"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86226132"
 ---
 # <a name="use-ip-filters"></a>使用 IP 筛选器
 
@@ -28,23 +28,28 @@ ms.locfileid: "69993613"
 
 ## <a name="how-filter-rules-are-applied"></a>筛选器规则的应用方式
 
-在 IoT 中心服务级别应用 IP 筛选器规则。 因此，IP 筛选器规则适用于使用任意受支持协议和从设备和后端应用发出的所有连接。
+在 IoT 中心服务级别应用 IP 筛选器规则。 因此，IP 筛选器规则适用于使用任意受支持协议和从设备和后端应用发出的所有连接。 但是，直接从[与事件中心兼容的内置终结点](iot-hub-devguide-messages-read-builtin.md)（而不是通过 IoT 中心连接字符串）读取数据的客户端不会绑定到 IP 筛选器规则。 
 
-与 IoT 中心的拒绝 IP 规则匹配的 IP 地址发出的任何连接尝试都会收到“未授权”401 状态代码和说明。 响应消息不提及 IP 规则。
+与 IoT 中心的拒绝 IP 规则匹配的 IP 地址发出的任何连接尝试都会收到“未授权”401 状态代码和说明。 响应消息不提及 IP 规则。 拒绝 IP 地址可以阻止其他 Azure 服务（例如 Azure 门户中的 Azure 流分析、Azure 虚拟机或设备资源管理器）与 IoT 中心进行交互。
+
+> [!NOTE]
+> 如果必须使用 Azure 流分析 (ASA) 从启用了 IP 筛选器的 IoT 中心读取消息，请使用 IoT 中心的与事件中心兼容的名称和终结点在 ASA 中手动添加[事件中心流输入](../stream-analytics/stream-analytics-define-inputs.md#stream-data-from-event-hubs)。
 
 ## <a name="default-setting"></a>默认设置
 
-默认情况下，门户中针对 IoT 中心的“IP 筛选器”网格为空。  此默认设置意味着中心会接受来自任何 IP 地址的连接。 此默认设置等效于接受 0.0.0.0/0 IP 地址范围的规则。
+默认情况下，门户中针对 IoT 中心的“IP 筛选器”网格为空。 此默认设置意味着中心会接受来自任何 IP 地址的连接。 此默认设置等效于接受 0.0.0.0/0 IP 地址范围的规则。
+
+若要转到 IP 筛选器设置页，请依次选择“网络”、“公共访问”、“选定的 IP 范围”：  
 
 ![IoT 中心默认 IP 筛选器设置](./media/iot-hub-ip-filtering/ip-filter-default.png)
 
 ## <a name="add-or-edit-an-ip-filter-rule"></a>添加或编辑 IP 筛选器规则
 
-若要添加 IP 筛选器规则，请选择“+ 添加 IP 筛选器规则”。 
+若要添加 IP 筛选器规则，请选择“+ 添加 IP 筛选器规则”。
 
 ![向 IoT 中心添加 IP 筛选规则](./media/iot-hub-ip-filtering/ip-filter-add-rule.png)
 
-选择“添加 IP 筛选器规则”  后，请填写字段。
+选择“添加 IP 筛选器规则”后，请填写字段。
 
 ![在选择“添加 IP 筛选器规则”后](./media/iot-hub-ip-filtering/ip-filter-after-selecting-add.png)
 
@@ -52,25 +57,19 @@ ms.locfileid: "69993613"
 
 * 提供单个 IPv4 地址或者以 CIDR 表示法提供一个 IP 地址块。 例如，在 CIDR 表示法中，192.168.100.0/22 表示从 192.168.100.0 到 192.168.103.255 的 1024 个 IPv4 地址。
 
-* 选择“允许”或“阻止”作为 IP 筛选器规则的“操作”。   
+* 选择“允许”或“阻止”作为 IP 筛选器规则的“操作”。  
 
-填写这些字段后，请选择“保存”以保存该规则  。 会出现一个提醒，通知你更新正在进行。
+填写这些字段后，请选择“保存”以保存该规则。 会出现一个提醒，通知你更新正在进行。
 
 ![关于保存 IP 筛选规则的通知](./media/iot-hub-ip-filtering/ip-filter-save-new-rule.png)
 
-当存在的 IP 筛选规则达到最大数目 10 时，“添加”  选项被禁用。
+当存在的 IP 筛选规则达到最大数目 10 时，“添加”选项被禁用。
 
-若要编辑现有规则，请选择要更改的数据，进行更改，然后选择“保存”以保存所做的编辑。 
-
-> [!NOTE]
-> 拒绝 IP 地址可以防止其他 Azure 服务（例如门户中的 Azure 流分析、Azure 虚拟机或设备资源管理器）与 IoT 中心交互。
-
-> [!WARNING]
-> 如果使用 Azure 流分析 (ASA) 并启用 IP 筛选从 IoT 中心读取消息，请在 ASA 连接字符串中使用与事件中心兼容的名称和 IoT 中心的终结点。
+若要编辑现有规则，请选择要更改的数据，进行更改，然后选择“保存”以保存编辑内容。
 
 ## <a name="delete-an-ip-filter-rule"></a>删除 IP 筛选器规则
 
-若要删除 IP 筛选器规则，请选择与该行对应的垃圾桶图标，然后选择“保存”。  此时会删除规则并保存所做的更改。
+若要删除 IP 筛选器规则，请选择与该行对应的垃圾桶图标，然后选择“保存”。 此时会删除规则并保存所做的更改。
 
 ![删除 IoT 中心 IP 筛选规则](./media/iot-hub-ip-filtering/ip-filter-delete-rule.png)
 
@@ -162,7 +161,7 @@ IP 筛选器规则按顺序应用，与 IP 地址匹配的第一条规则决定�
 
 可以通过单击行开头的三个竖直点并使用拖放操作更改 IP 筛选规则在网格中的顺序。
 
-若要保存新的 IP 筛选器规则顺序，请单击“保存”。 
+若要保存新的 IP 筛选器规则顺序，请单击“保存”。
 
 ![更改 IoT 中心 IP 筛选规则的顺序](./media/iot-hub-ip-filtering/ip-filter-rule-order.png)
 

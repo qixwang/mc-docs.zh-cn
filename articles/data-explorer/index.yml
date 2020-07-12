@@ -9,13 +9,13 @@ metadata:
   author: orspod
   ms.author: v-tawe
   origin.date: 03/19/2020
-  ms.date: 05/09/2020
-  ms.openlocfilehash: 391806b859b6576c2ee8d8fa2a49584b54cd6f63
-  ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
+  ms.date: 07/08/2020
+  ms.openlocfilehash: b33714640b650b542c4c2db2e10a31eb7ea4557f
+  ms.sourcegitcommit: 5fb9ae9adc04e79d6d0e78c9e69dbe8aa3ceb00a
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/15/2020
-  ms.locfileid: "83417621"
+  ms.lasthandoff: 07/08/2020
+  ms.locfileid: "86100219"
 landingContent:
 - title: 关于 Azure 数据资源管理器
   linkLists:

@@ -1,22 +1,22 @@
 ---
 title: Azure Cache for Redis 的内置策略定义
-description: 列出适用于 Azure Cache for Redis 的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-ms.date: 06/16/2020
+description: 列出 Azure Cache for Redis 的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
+ms.date: 07/10/2020
 ms.topic: sample
 author: yegu-ms
 ms.author: v-junlch
 ms.service: cache
 ms.custom: subject-policy-samples
-ms.openlocfilehash: dfc7ef77ca2b47aa1a0ddaa34469454b5d702e4a
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: ebc320110dfe6b882fa8c75424dae2e237cd7100
+ms.sourcegitcommit: 65a7360bb14b0373e18ec8eaa288ed3ac7b24ef4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097095"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86219714"
 ---
-# <a name="azure-policy-built-in-policy-definitions-for-azure-cache-for-redis"></a>适用于 Azure Cache for Redis 的 Azure Policy 内置策略定义
+# <a name="azure-policy-built-in-definitions-for-azure-cache-for-redis"></a>Azure Cache for Redis 的 Azure Policy 内置定义
 
-此页是适用于 Azure Cache for Redis 的 [Azure Policy](../governance/policy/overview.md) 内置策略定义的索引。 有关其他服务的其他 Azure Policy 内置定义，请参阅 [Azure Policy 内置定义](../governance/policy/samples/built-in-policies.md)。
+此页是 Azure Cache for Redis 的 [Azure Policy](../governance/policy/overview.md) 内置策略定义的索引。 有关其他服务的其他 Azure Policy 内置定义，请参阅 [Azure Policy 内置定义](../governance/policy/samples/built-in-policies.md)。
 
 每个内置策略定义链接（指向 Azure 门户中的策略定义）的名称。 使用“版本”列中的链接查看 [Azure Policy GitHub 存储库](https://github.com/Azure/azure-policy)上的源。
 

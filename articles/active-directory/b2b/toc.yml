@@ -85,8 +85,10 @@
           href: customize-invitation-api.md
     - name: 资源
       items:
-        - name: 常见问题
+        - name: 常见问题解答
           href: faq.md
+        - name: 获取支持
+          href: 'https://support.azure.cn/en-us/support/support-azure/'
         - name: Azure 反馈论坛
           href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
         - name: Azure 路线图

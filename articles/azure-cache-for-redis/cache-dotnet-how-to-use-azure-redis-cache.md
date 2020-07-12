@@ -7,13 +7,13 @@ ms.service: cache
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 03/17/2020
-ms.openlocfilehash: 90ca79b5ba44fe588b136d0d69377a439fca9f27
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 07/10/2020
+ms.openlocfilehash: b7c07f946909276f484df0a21e92137ad2e33ad9
+ms.sourcegitcommit: 65a7360bb14b0373e18ec8eaa288ed3ac7b24ef4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497174"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86219735"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-framework-application"></a>快速入门：将 Azure Redis 缓存与 .NET Framework 应用程序配合使用
 
@@ -36,7 +36,7 @@ ms.locfileid: "79497174"
 
 ```xml
 <appSettings>
-    <add key="CacheConnection" value="<cache-name>.redis.cache.chinacloudapi.cn,abortConnect=false,ssl=true,password=<access-key>"/>
+    <add key="CacheConnection" value="<cache-name>.redis.cache.chinacloudapi.cn,abortConnect=false,ssl=true,allowAdmin=true,password=<access-key>"/>
 </appSettings>
 ```
 
@@ -55,15 +55,15 @@ ms.locfileid: "79497174"
 
 ## <a name="configure-the-cache-client"></a>配置缓存客户端
 
-在本部分中，你将配置控制台应用程序来将 [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) 客户端用于 .NET。
+在本部分，请配置控制台应用程序，以便将 [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) 客户端用于 .NET。
 
-在 Visual Studio 中，单击“工具” > “NuGet 包管理器” > “包管理器控制台”，然后从“包管理器控制台”窗口运行以下命令。   
+在 Visual Studio 中单击“工具”   >   “NuGet 包管理器” >   “包管理器控制台”，然后在“包管理器控制台”窗口中运行以下命令。
 
 ```powershell
 Install-Package StackExchange.Redis
 ```
 
-安装完成后，*StackExchange.Redis* 缓存客户端可供用于你的项目。
+完成安装后，*StackExchange.Redis* 缓存客户端可供与项目一起使用。
 
 
 ## <a name="connect-to-the-cache"></a>连接到缓存
@@ -77,23 +77,22 @@ Install-Package StackExchange.Redis
         <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.7.1" />
     </startup>
 
-    <appSettings file="C:\AppSecrets\CacheSecrets.config"></appSettings>  
-
+    <appSettings file="C:\AppSecrets\CacheSecrets.config"></appSettings>
 </configuration>
 ```
 
-在解决方案资源管理器中，右键单击“引用”并单击“添加引用”。   添加对 **System.Configuration** 程序集的引用。
+在解决方案资源管理器中右键单击“引用”，然后单击“添加引用”。   添加对 **System.Configuration** 程序集的引用。
 
-向 *Program.cs* 中添加以下 `using` 语句：
+将以下 `using` 语句添加到 *Program.cs*：
 
 ```csharp
 using StackExchange.Redis;
 using System.Configuration;
 ```
 
-与 Azure Redis 缓存的连接由 `ConnectionMultiplexer` 类管理。 应当在整个客户端应用程序中共享并重复使用此类。 不要为每个操作都创建新连接。 
+与 Azure Redis 缓存的连接由 `ConnectionMultiplexer` 类管理。 应当在整个客户端应用程序中共享和重用此类。 不要为每个操作创建新连接。 
 
-切勿将凭据存储在源代码中。 为了保持简单，此示例仅使用一个外部机密配置文件。 更好的方法是使用[包含证书的 Azure Key Vault](https://docs.microsoft.com/rest/api/keyvault/certificate-scenarios)。
+切勿将凭据存储在源代码中。 为了使此示例简单明了，我将只使用外部机密配置文件。 更好的方法是[将 Azure Key Vault 与证书配合使用](https://docs.microsoft.com/rest/api/keyvault/certificate-scenarios)。
 
 在 *Program.cs* 中，将以下成员添加到控制台应用程序的 `Program` 类：
 
@@ -114,9 +113,9 @@ public static ConnectionMultiplexer Connection
 ```
 
 
-此方式在应用程序中共享 `ConnectionMultiplexer` 实例，它使用返回所连接的实例的静态属性。 该代码提供了一种线程安全方式，它仅初始化单个已连接的 `ConnectionMultiplexer` 实例。 `abortConnect` 设置为 false，这意味着即使未建立与 Azure Redis 缓存的连接，调用也会成功。 `ConnectionMultiplexer` 的一个关键功能是，一旦解决网络问题和其他原因，它便会自动还原缓存连接。
+这种在应用程序中共享 `ConnectionMultiplexer` 实例的方法使用一个返回已连接实例的静态属性。 此代码提供了一种线程安全方法，它仅初始化单个已连接的 `ConnectionMultiplexer` 实例。 `abortConnect` 设置为 false，这意味着即使未建立与 Azure Redis 缓存的连接，调用也会成功。 `ConnectionMultiplexer` 的一个关键功能是，一旦解决网络问题和其他原因，它会自动还原缓存连接。
 
-*CacheConnection* appSetting 的值用来将 Azure 门户中的缓存连接字符串引用为 password 参数。
+*CacheConnection* appSetting 的值用于将 Azure 门户中的缓存连接字符串作为密码参数引用。
 
 ## <a name="executing-cache-commands"></a>执行缓存命令
 
@@ -151,15 +150,24 @@ static void Main(string[] args)
     Console.WriteLine("Cache response : " + cache.StringGet("Message").ToString());
 
     // Get the client list, useful to see if connection list is growing...
+    // Note that this requires the allowAdmin=true
     cacheCommand = "CLIENT LIST";
     Console.WriteLine("\nCache command  : " + cacheCommand);
-    Console.WriteLine("Cache response : \n" + cache.Execute("CLIENT", "LIST").ToString().Replace("id=", "id="));
+    var endpoint = (System.Net.DnsEndPoint) Connection.GetEndPoints()[0];
+    var server = Connection.GetServer(endpoint.Host, endpoint.Port);
+
+    var clients = server.ClientList(); 
+    Console.WriteLine("Cache response :");
+    foreach (var client in clients)
+    {
+        Console.WriteLine(client.Raw);
+    }
 
     lazyConnection.Value.Dispose();
 }
 ```
 
-Azure Redis 缓存具有可配置的数据库数量（默认为 16 个），因此可以通过逻辑方式隔离 Azure Redis 缓存中的数据。 该代码将连接到默认数据库 DB 0。 有关详细信息，请参阅[什么是 Redis 数据库？](cache-faq.md#what-are-redis-databases)和[默认 Redis 服务器配置](cache-configure.md#default-redis-server-configuration)。
+Azure Redis 缓存具有可配置的数据库数量（默认为 16 个），因此可以通过逻辑方式隔离 Azure Redis 缓存中的数据。 该代码连接到默认数据库 DB 0。 有关详细信息，请参阅[什么是 Redis 数据库？](cache-faq.md#what-are-redis-databases)和[默认 Redis 服务器配置](cache-configure.md#default-redis-server-configuration)。
 
 可以使用 `StringSet` 和 `StringGet` 方法来存储和检索缓存项。
 
@@ -167,7 +175,7 @@ Redis 将大多数数据存储为 Redis 字符串，但这些字符串可能包�
 
 按 **Ctrl+F5** 生成并运行控制台应用。
 
-在以下示例中可以看到，`Message` 键事先已包含一个缓存值，该值是使用 Azure 门户中的 Redis 控制台设置的。 应用更新了该缓存值。 应用还执行了 `PING` 和 `CLIENT LIST` 命令。
+在下面的示例中，可以看到 `Message` 键以前有一个缓存值，该值是使用 Azure 门户中的 Redis 控制台设置的。 应用更新了该缓存值。 应用还执行了 `PING` 和 `CLIENT LIST` 命令。
 
 ![控制台应用的一部分](./media/cache-dotnet-how-to-use-azure-redis-cache/cache-console-app-partial.png)
 
@@ -176,21 +184,21 @@ Redis 将大多数数据存储为 Redis 字符串，但这些字符串可能包�
 
 Azure Redis 缓存可以缓存 .NET 对象以及基元数据类型，但在缓存 .NET 对象之前，必须将其序列化。 此 .NET 对象序列化是应用程序开发人员的责任，同时赋与开发人员选择序列化程序的弹性。
 
-将对象序列化的一种简单方式是使用 [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/) 中的 `JsonConvert` 序列化方法，并以 JSON 为源和目标进行序列化。 在本部分中，将向缓存添加一个 .NET 对象。
+将对象序列化的一种简单方式是使用 [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/) 中的 `JsonConvert` 序列化方法，并与 JSON 相互序列化。 在本部分中，将向缓存中添加一个 .NET 对象。
 
-在 Visual Studio 中，单击“工具” > “NuGet 包管理器” > “包管理器控制台”，然后从“包管理器控制台”窗口运行以下命令。   
+在 Visual Studio 中单击“工具”   >   “NuGet 包管理器” >   “包管理器控制台”，然后在“包管理器控制台”窗口中运行以下命令。
 
 ```powershell
 Install-Package Newtonsoft.Json
 ```
 
-将下面的 `using` 语句添加到 *Program.cs* 的开头：
+将以下 `using` 语句添加到 *Program.cs* 的顶部：
 
 ```csharp
 using Newtonsoft.Json;
 ```
 
-将下面的 `Employee` 类定义添加到 *Program.cs* 中：
+将以下 `Employee` 类定义添加到 *Program.cs*：
 
 ```csharp
 class Employee
@@ -208,13 +216,13 @@ class Employee
 }
 ```
 
-在 *Program.cs* 中 `Main()` 过程的底部并且在 `Dispose()` 调用之前，添加以下代码行来缓存和检索序列化的 .NET 对象：
+在 *Program.cs* 中的 `Main()` 过程的底部，在对 `Dispose()` 的调用之前，添加以下代码行来缓存和检索已序列化的 .NET 对象：
 
 ```csharp
     // Store .NET object to cache
     Employee e007 = new Employee("007", "Davide Columbo", 100);
     Console.WriteLine("Cache response from storing Employee .NET object : " + 
-        cache.StringSet("e007", JsonConvert.SerializeObject(e007)));
+    cache.StringSet("e007", JsonConvert.SerializeObject(e007)));
 
     // Retrieve .NET object from cache
     Employee e007FromCache = JsonConvert.DeserializeObject<Employee>(cache.StringGet("e007"));
@@ -224,7 +232,7 @@ class Employee
     Console.WriteLine("\tEmployee.Age  : " + e007FromCache.Age + "\n");
 ```
 
-按 **Ctrl+F5** 来生成并运行控制台应用以测试 .NET 对象的序列化。 
+按 **Ctrl+F5** 生成并运行控制台应用，以便测试 .NET 对象的序列化。 
 
 ![已完成的控制台应用](./media/cache-dotnet-how-to-use-azure-redis-cache/cache-console-app-complete.png)
 
@@ -239,11 +247,11 @@ class Employee
 > 删除资源组的操作不可逆，资源组以及其中的所有资源将被永久删除。 请确保不会意外删除错误的资源组或资源。 如果在现有资源组（其中包含要保留的资源）中为托管此示例而创建了相关资源，可从各自的边栏选项卡逐个删除这些资源，而不要删除资源组。
 >
 
-登录到 [Azure 门户](https://portal.azure.cn)，然后单击“资源组”。 
+登录到 [Azure 门户](https://portal.azure.cn)，并单击“资源组”。 
 
 在“按名称筛选...”文本框中键入资源组的名称  。 本文的说明使用了名为 *TestResources* 的资源组。 在结果列表中的资源组上，单击“...”，然后单击“删除资源组”   。
 
-![Delete](./media/cache-dotnet-how-to-use-azure-redis-cache/cache-delete-resource-group.png)
+![删除](./media/cache-dotnet-how-to-use-azure-redis-cache/cache-delete-resource-group.png)
 
 系统会要求确认是否删除资源组。 键入资源组的名称进行确认，然后单击“删除”  。
 

@@ -7,14 +7,14 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 06/21/2018
-ms.date: 06/12/2020
+ms.date: 07/06/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4a11b223b2c271771791c1ce5b9450c794ade81a
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.openlocfilehash: 5c383b8fe97d73528d8d5390864d5b55a9a47c88
+ms.sourcegitcommit: 9bc3e55f01e0999f05e7b4ebaea95f3ac91d32eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723655"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86226170"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>了解流分析作业监视以及如何监视查询
 
@@ -30,8 +30,7 @@ Azure 门户提供了可用于监视和排查查询和作业性能问题的关�
 ## <a name="metrics-available-for-stream-analytics"></a>可用于流分析的指标
 | 指标                 | 定义                               |
 | ---------------------- | ---------------------------------------- |
-| 积压的输入事件数       | 积压的输入事件的数量。 此指标的非零值意味着作业无法跟上传入事件的数量。 如果此值缓慢增长或始终为非零，则应横向扩展作业。 可以访问[了解和调整流单元](stream-analytics-streaming-unit-consumption.md)了解详细信息。 |
-| 数据转换错误数 | 无法转换为预期输出架构的输出事件的数量。 可以将错误策略更改为“删除”，以删除遇到此情况的事件。 |
+|| 数据转换错误数 | 无法转换为预期输出架构的输出事件的数量。 可以将错误策略更改为“删除”，以删除遇到此情况的事件。 |
 | 早期输入事件数       | 应用程序时间戳早于其到达时间超过 5 分钟的事件。 |
 | 失败的函数请求数 | 失败的 Azure 机器学习函数（如果存在）调用数。 |
 | 函数事件数        | 发送到 Azure 机器学习函数（如果存在）的事件数。 |
@@ -48,6 +47,7 @@ Azure 门户提供了可用于监视和排查查询和作业性能问题的关�
 | 水印延迟       | 作业中所有输出的所有分区之间的最大水印延迟。 |
 
 可以使用这些指标来[监视流分析作业的性能](/stream-analytics/stream-analytics-set-up-alerts#scenarios-to-monitor)。 
+<!--Correct in MC: https://docs.azure.cn/stream-analytics/stream-analytics-time-handling-->
 
 ## <a name="customizing-monitoring-in-the-azure-portal"></a>在 Azure 门户中自定义监视
 可以在“编辑图表”设置中调整图表类型、显示的指标和时间范围。 有关详细信息，请参阅[如何自定义监视](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)。
@@ -60,7 +60,7 @@ Azure 门户提供了可用于监视和排查查询和作业性能问题的关�
 此时间是作业的最新输出的应用程序时间（即，使用来自事件数据的时间戳的时间）。
 
 ## <a name="get-help"></a>获取帮助
-如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)
+如需进一步的帮助，请参阅[有关 Azure 流分析的 Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)
@@ -69,4 +69,3 @@ Azure 门户提供了可用于监视和排查查询和作业性能问题的关�
 * [Azure 流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!--Update_Description: update meta properties, update link -->

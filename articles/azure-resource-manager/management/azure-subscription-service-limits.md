@@ -6,12 +6,12 @@ author: rockboyfor
 origin.date: 06/04/2020
 ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 16094642ec06ee0d7ad0412c54f6f16d81dc04d1
-ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
+ms.openlocfilehash: c1dbaaced57e2976e21c5a156bc75d476bded502
+ms.sourcegitcommit: 873e5c5e4156efed505a78d4f5a6e50c494e76d4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85945768"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86036754"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 
@@ -287,6 +287,14 @@ ms.locfileid: "85945768"
 ### <a name="private-link-limits"></a>专用链接限制
 
 [!INCLUDE [private-link-limits](../../../includes/private-link-limits.md)]
+
+<!--Not Available on Private Link
+
+### <a name="private-link-limits"></a><span data-ttu-id="2f8e4-200">专用链接限制</span><span class="sxs-lookup"><span data-stu-id="2f8e4-200">Private Link limits</span></span>
+
+[!INCLUDE [private-link-limits](../../../includes/private-link-limits.md)]
+
+-->
 
 ### <a name="traffic-manager-limits"></a>流量管理器限制
 

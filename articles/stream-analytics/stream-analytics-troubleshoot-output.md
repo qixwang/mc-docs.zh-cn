@@ -6,18 +6,18 @@ ms.author: v-johya
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/12/2020
+ms.date: 07/06/2020
 ms.custom: seodec18
-ms.openlocfilehash: dccafdd1f7d2a463aa279099982b24bf4b8f5f73
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.openlocfilehash: 6e3a5c9d67158ddf6ca95275f0b6db18b1632efb
+ms.sourcegitcommit: 9bc3e55f01e0999f05e7b4ebaea95f3ac91d32eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723626"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86226010"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Azure 流分析输出的故障排除
 
-本文介绍了 Azure 流分析输出连接的常见问题，以及如何排查输出问题。 许多故障排除步骤都需要为流分析作业启用资源日志和其他诊断日志。 如果没有启用资源日志，请参阅[使用资源日志对 Azure 流分析进行故障排除](stream-analytics-job-diagnostic-logs.md)。
+本文介绍了 Azure 流分析输出连接的常见问题，以及如何排查输出问题。 许多故障排除步骤都需要为流分析作业启用资源日志和其他诊断日志。
 
 ## <a name="the-job-doesnt-produce-output"></a>作业不生成输出
 
@@ -67,7 +67,7 @@ ms.locfileid: "84723626"
 * 上游源是否受限制
 * 查询中的处理逻辑是否是计算密集型的
 
-若要查看输出详细信息，请在 Azure 门户中依次选择流式处理作业和“作业关系图”****。 对于每个输入，每个分区都有一个积压工作 (backlog) 事件指标。 如果指标持续增长，则表明系统资源受到约束。 指标增长可能是由于输出接收器限制或 CPU 利用率高引起的。 有关详细信息，请参阅[使用作业关系图进行数据驱动调试](stream-analytics-job-diagram-with-metrics.md)。
+若要查看输出详细信息，请在 Azure 门户中依次选择流式处理作业和“作业关系图”****。 对于每个输入，每个分区都有一个积压工作 (backlog) 事件指标。 如果指标持续增长，则表明系统资源受到约束。 指标增长可能是由于输出接收器限制或 CPU 利用率高引起的。
 
 ## <a name="key-violation-warning-with-azure-sql-database-output"></a>Azure SQL 数据库输出键冲突警告
 
@@ -89,7 +89,7 @@ ms.locfileid: "84723626"
 
 ## <a name="get-help"></a>获取帮助
 
-如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
+如需获取进一步的帮助，可前往 [Azure 流分析的 Microsoft 问答页面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)。
 
 ## <a name="next-steps"></a>后续步骤
 

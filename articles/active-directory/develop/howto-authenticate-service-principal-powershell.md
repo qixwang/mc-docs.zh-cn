@@ -5,21 +5,20 @@ description: 介绍如何使用 Azure PowerShell 创建 Azure Active Directory �
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: d2caf121-9fbe-4f00-bf9d-8f3d1f00a6ff
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: multiple
-ms.date: 03/10/2020
+ms.date: 07/08/2020
 ms.author: v-junlch
 ms.reviewer: tomfitz
-ms.openlocfilehash: 213a2cf3ca7e265538708b0855eccc1d67c95229
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4f5cae9cff5aa3b07b79aae10a221fef87dbd711
+ms.sourcegitcommit: 92b9b1387314b60661f5f62db4451c9ff2c49500
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291084"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86164975"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>如何：通过 Azure PowerShell 使用证书创建服务主体
 
@@ -41,7 +40,7 @@ ms.locfileid: "79291084"
 
 若要完成本文，必须在 Azure AD 和 Azure 订阅中均有足够的权限。 具体而言，必须能够在 Azure AD 中创建应用并向角色分配服务主体。
 
-检查帐户是否有足够权限的最简方法是使用门户。 请参阅[检查所需的权限](howto-create-service-principal-portal.md#required-permissions)。
+检查帐户是否有足够权限的最简方法是使用门户。 请参阅[检查所需的权限](howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)。
 
 ## <a name="assign-the-application-to-a-role"></a>将应用程序分配给角色
 要访问订阅中的资源，必须将应用程序分配到角色。 判定哪个角色能为应用程序提供适当的权限。 若要了解有关可用角色的信息，请参阅 [RBAC：内置角色](/role-based-access-control/built-in-roles)。
@@ -227,6 +226,6 @@ Get-AzADApplication -DisplayName exampleapp | New-AzADAppCredential `
 
 * 若要使用密码设置服务主体，请参阅[使用 Azure PowerShell 创建 Azure 服务主体](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps)。
 * 有关应用程序和服务主体的详细说明，请参阅 [Application Objects and Service Principal Objects](app-objects-and-service-principals.md)（应用程序对象和服务主体对象）。
-* 有关 Azure AD 身份验证的详细信息，请参阅 [Azure AD 的身份验证方案](authentication-scenarios.md)。
+* 有关 Azure AD 身份验证的详细信息，请参阅 [Azure AD 的身份验证方案](authentication-vs-authorization.md)。
 
 <!-- Update_Description: wording update -->

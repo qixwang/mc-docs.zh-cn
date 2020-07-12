@@ -4,19 +4,21 @@ description: 此 Azure Kubernetes 服务 (AKS) 教程介绍如何缩放 Kubernet
 services: container-service
 ms.topic: tutorial
 origin.date: 01/14/2019
-ms.date: 05/25/2020
+ms.date: 07/13/2020
+ms.testscope: no
+ms.testdate: 05/25/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 63ff3d6c92e2c396e94f344ea3fc73ecbdb9263d
-ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
+ms.openlocfilehash: cbaacb257a9fe0c521aab779a29bd4ce90ba9177
+ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735148"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86218797"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>教程：在 Azure Kubernetes 服务 (AKS) 中缩放应用程序
 
-如果已按照教程执行，则在 AKS 中已有可正常工作的 Kubernetes 群集，并且已部署了示例 Azure 投票应用。 在本教程第 5 部分（共 7 部分）中，会在应用中扩大 Pod 并尝试 Pod 自动缩放。 还会了解如何缩放 Azure VM 节点数以更改群集用于托管工作负荷的容量。 你将学习如何执行以下操作：
+如果已按照教程执行，则在 AKS 中已有可正常工作的 Kubernetes 群集，并且已部署了示例 Azure 投票应用。 在本教程第 5 部分（共 7 部分）中，会在应用中扩大 Pod 并尝试 Pod 自动缩放。 还会了解如何缩放 Azure VM 节点数以更改群集用于托管工作负荷的容量。 学习如何：
 
 > [!div class="checklist"]
 > * 缩放 Kubernetes 节点
@@ -25,7 +27,7 @@ ms.locfileid: "83735148"
 
 在另外的教程中，Azure 投票应用程序将更新为新版本。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 上一教程中，应用程序已打包到容器映像中。 该映像已上传到 Azure容器注册表，同时，你创建了 AKS 群集。 然后，应用程序部署到了 AKS 群集。 如果尚未完成这些步骤，并且想要逐一完成，请先参阅[教程 1 - 创建容器映像][aks-tutorial-prepare-app]。
 
@@ -47,7 +49,7 @@ azure-vote-back-2549686872-4d2r5   1/1       Running   0          31m
 azure-vote-front-848767080-tf34m   1/1       Running   0          31m
 ```
 
-若要手动更改 *azure-vote-front* 部署中的 Pod 数，请使用 [kubectl scale][kubectl-scale] 命令。 以下示例将前端 Pod 数增加到 5：
+若要手动更改 *azure-vote-front* 部署中的 Pod 数，请使用 [kubectl scale][kubectl-scale] 命令。 以下示例将前端 Pod 数增加到 *5*：
 
 ```console
 kubectl scale --replicas=5 deployment/azure-vote-front
@@ -69,7 +71,7 @@ azure-vote-front-3309479140-qphz8   1/1       Running   0          3m
 
 ## <a name="autoscale-pods"></a>自动缩放 Pod
 
-Kubernetes 支持[水平 Pod 自动缩放][kubernetes-hpa]以根据 CPU 利用率或其他选择指标调整部署中的 Pod 数。 [指标服务器][metrics-server]用于向 Kubernetes 提供资源利用率，并自动部署在 AKS 群集版本 1.10 及更高版本中。 若要查看 AKS 群集的版本，请使用 [az aks show][az-aks-show] 命令，如以下示例所示：
+Kubernetes 支持[水平 Pod 自动缩放][kubernetes-hpa]以根据 CPU 利用率或其他选择指标调整部署中的 Pod 数。 [指标服务器][metrics-server]用来将资源利用率提供给 Kubernetes，可自动部署在 AKS 群集 1.10 及更高版本中。 若要查看 AKS 群集的版本，请使用 [az aks show][az-aks-show] 命令，如以下示例所示：
 
 ```azurecli
 az aks show --resource-group myResourceGroup --name myAKSCluster --query kubernetesVersion --output table
@@ -114,6 +116,8 @@ spec:
     kind: Deployment
     name: azure-vote-back
   targetCPUUtilizationPercentage: 50 # target CPU utilization
+
+---
 
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
@@ -176,7 +180,7 @@ az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 3
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，在 Kubernetes 群集中使用了不同的缩放功能。 你已了解如何：
+在本教程中，在 Kubernetes 群集中使用了不同的缩放功能。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 手动缩放运行应用程序的 Kubernetes Pod

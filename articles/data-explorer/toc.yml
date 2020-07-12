@@ -19,7 +19,7 @@
       href: write-queries.md
     - name: E2E 编程 Blob 引入
       items:
-        - name: 'C#'
+        - name: C#
           href: end-to-end-csharp.md
         - name: Python
           href: end-to-end-python.md
@@ -56,7 +56,7 @@
           href: create-cluster-database-cli.md
         - name: PowerShell
           href: create-cluster-database-powershell.md
-        - name: 'C#'
+        - name: C#
           href: create-cluster-database-csharp.md
         - name: Python
           href: create-cluster-database-python.md
@@ -65,14 +65,16 @@
     - name: 引入数据
       items:
         - name: 流式引入
-          href: ingest-data-streaming.md
+          items:
+            - name: 流式引入
+              href: ingest-data-streaming.md
         - name: 使用 LightIngest
           href: lightingest.md
         - name: 事件中心
           items:
             - name: Azure 门户
               href: ingest-data-event-hub.md
-            - name: 'C#'
+            - name: C#
               href: data-connection-event-hub-csharp.md
             - name: Python
               href: data-connection-event-hub-python.md
@@ -82,7 +84,7 @@
           items:
             - name: Azure 门户
               href: ingest-data-iot-hub.md
-            - name: 'C#'
+            - name: C#
               href: data-connection-iot-hub-csharp.md
             - name: Python
               href: data-connection-iot-hub-python.md
@@ -164,23 +166,22 @@
               href: check-cluster-health.md
             - name: 添加群集主体
               items:
-                - name: 'C#'
+                - name: C#
                   href: cluster-principal-csharp.md
                 - name: Python
                   href: cluster-principal-python.md
                 - name: Azure Resource Manager 模板
                   href: cluster-principal-resource-manager.md
             - name: 管理群集语言扩展
+              displayName: 'Python, R'
               href: language-extensions.md
         - name: 数据库
           items:
-            - name: 后继数据库
-              href: follower.md
             - name: 管理数据库权限
               href: manage-database-permissions.md
             - name: 添加数据库主体
               items:
-                - name: 'C#'
+                - name: C#
                   href: database-principal-csharp.md
                 - name: Python
                   href: database-principal-python.md
@@ -188,7 +189,7 @@
                   href: database-principal-resource-manager.md
             - name: 策略
               items:
-                - name: 'C#'
+                - name: C#
                   href: database-table-policies-csharp.md
                 - name: Python
                   href: database-table-policies-python.md
@@ -206,6 +207,10 @@
           href: using-diagnostic-logs.md
         - name: 使用指标来监视群集运行状况
           href: using-metrics.md
+    - name: 共享数据
+      items:
+        - name: 后继数据库
+          href: follower.md
     - name: 与其他工具集成
       items:
         - name: Azure 数据工厂
@@ -218,8 +223,12 @@
               href: data-factory-template.md
             - name: 使用 Azure 数据工厂运行控制命令
               href: data-factory-command-activity.md
+        - name: 逻辑应用
+          href: 'https://docs.microsoft.com/azure/data-explorer/kusto/tools/logicapps'
         - name: Apache Spark 连接器
           href: spark-connector.md
+        - name: Cosmos DB
+          href: 'https://github.com/Azure/azure-kusto-labs/tree/master/cosmosdb-adx-integration'
         - name: 在 Jupyter Notebook 和 Kqlmagic 中分析数据
           href: kqlmagic.md
         - name: 分析 Azure Notebooks 中的数据

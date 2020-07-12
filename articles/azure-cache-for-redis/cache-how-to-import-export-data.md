@@ -4,14 +4,14 @@ description: 了解如何使用高级 Azure Redis 缓存实例在 blob 存储中
 author: yegu-ms
 ms.service: cache
 ms.topic: conceptual
-ms.date: 02/05/2020
+ms.date: 07/10/2020
 ms.author: v-junlch
-ms.openlocfilehash: 0aa35913275b0eb010cc54f97a4ffaef3986b928
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 6b5e698a4c2cc1cda40c7f989c1387c08a1da3ef
+ms.sourcegitcommit: 65a7360bb14b0373e18ec8eaa288ed3ac7b24ef4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291940"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86219734"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>在 Azure Redis 缓存中导入和导出数据
 导入/导出是一种 Azure Redis 缓存数据管理操作，可用于通过从高级缓存导入 Azure Redis 缓存数据库 (RDB) 快照以及将 Azure Redis 缓存数据库 (RDB) 快照导出到 Azure 存储帐户中的 blob 来相应地将数据导入到 Azure Redis 缓存以及从 Azure Redis 缓存导出数据。
@@ -142,7 +142,9 @@ Azure Redis 缓存暂留能够将 Redis 中存储的数据长期保存在 Azure 
 ### <a name="i-received-a-timeout-error-during-my-importexport-operation-what-does-it-mean"></a>在导入/导出操作期间收到超时错误。 它意味着什么？
 如果在发起操作前停留在“导入数据”或“导出数据”边栏选项卡的时间超过 15 分钟，则将收到错误，其错误消息类似于以下示例   ：
 
-    The request to import data into cache 'contoso55' failed with status 'error' and error 'One of the SAS URIs provided could not be used for the following reason: The SAS token end time (se) must be at least 1 hour from now and the start time (st), if given, must be at least 15 minutes in the past.
+```output
+The request to import data into cache 'contoso55' failed with status 'error' and error 'One of the SAS URIs provided could not be used for the following reason: The SAS token end time (se) must be at least 1 hour from now and the start time (st), if given, must be at least 15 minutes in the past.
+```
 
 若要解决此问题，请在经过 15 分钟前发起导入或导出操作。
 

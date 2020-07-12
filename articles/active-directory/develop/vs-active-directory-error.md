@@ -1,27 +1,25 @@
 ---
-title: 使用 Azure Active Directory 连接服务诊断错误
+title: 使用 Azure AD 连接服务诊断错误 (Visual Studio)
 description: Active Directory 连接服务可检测到不兼容的身份验证类型
 author: ghogen
 manager: jillfra
-ms.assetid: dd89ea63-4e45-4da1-9642-645b9309670a
 ms.prod: visual-studio-windows
 ms.technology: vs-azure
 ms.workload: azure-vs
-ms.topic: conceptual
-ms.date: 12/10/2019
+ms.topic: how-to
+ms.date: 07/09/2020
 ms.author: v-junlch
 ms.custom: aaddev, vs-azure
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 596d86f63272d5552acce74b72cb5845c26dad40
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 1627e9d3b4031b960e37aa57d456613d07cb5e39
+ms.sourcegitcommit: 92b9b1387314b60661f5f62db4451c9ff2c49500
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75335247"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86164891"
 ---
 # <a name="diagnosing-errors-with-the-azure-active-directory-connected-service"></a>使用 Azure Active Directory 连接服务诊断错误
 
-检测以前的身份验证代码时，Azure Active Directory 连接服务检测到了不兼容的身份验证类型。
+检测以前的身份验证代码时，Azure Active Directory 连接服务器检测到不兼容的身份验证类型。
 
 若要正确检测某个项目中以前的身份验证代码，必须重新生成该项目。 如果看到此错误，并且项目中不存在以前的身份验证代码，请重新生成项目并重试。
 
@@ -31,20 +29,24 @@ ms.locfileid: "75335247"
 
 ## <a name="compatible-authentication-code"></a>兼容的身份验证代码
 
-连接服务还会检查是否存在以前配置的身份验证设置或与该服务兼容的身份验证设置。 如果所有设置都存在，则会将其视为可重入情况，连接服务将打开并显示这些设置。  如果只存在某些设置，则会将其视为错误情况。
+连接服务还会检查是否存在以前配置的身份验证设置或与该服务兼容的身份验证设置。 如果所有这些设置都存在，则将视为可重入情况，连接服务将打开并显示这些设置。  如果只存在某些设置，则将视为错误情况。
 
 在 MVC 项目中，连接服务会检查是否存在以下任何设置（这些设置是以前使用该服务生成的）：
 
-    <add key="ida:ClientId" value="" />
-    <add key="ida:Tenant" value="" />
-    <add key="ida:AADInstance" value="" />
-    <add key="ida:PostLogoutRedirectUri" value="" />
+```xml
+<add key="ida:ClientId" value="" />
+<add key="ida:Tenant" value="" />
+<add key="ida:AADInstance" value="" />
+<add key="ida:PostLogoutRedirectUri" value="" />
+```
 
-此外，连接服务还会在 Web API 项目中检查是否存在以下任何设置（这些设置是以前使用该服务时生成的）：
+此外，连接服务还会在 Web API 项目中检查是否存在以下任何设置（这些设置是以前使用该服务生成的）：
 
-    <add key="ida:ClientId" value="" />
-    <add key="ida:Tenant" value="" />
-    <add key="ida:Audience" value="" />
+```xml
+<add key="ida:ClientId" value="" />
+<add key="ida:Tenant" value="" />
+<add key="ida:Audience" value="" />
+```
 
 ## <a name="incompatible-authentication-code"></a>不兼容的身份验证代码
 
@@ -94,6 +96,6 @@ ms.locfileid: "75335247"
 
 若要更改身份验证类型，请删除不兼容的身份验证类型，并尝试重新添加连接服务。
 
-有关详细信息，请参阅 [Azure AD 的身份验证方案](authentication-scenarios.md)。
+有关详细信息，请参阅 [Azure AD 的身份验证方案](authentication-vs-authorization.md)。
 
 <!-- Update_Description: wording update -->

@@ -1,18 +1,20 @@
 ---
 title: 使用网络策略保护 Pod 流量
 titleSuffix: Azure Kubernetes Service
-description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用 Kubernetes 网络策略保护流入和流出 Pod 的流量
+description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用 Kubernetes 网络策略保护流入流出 Pod 的流量
 services: container-service
 ms.topic: article
 origin.date: 05/06/2019
-ms.date: 05/25/2020
+ms.date: 07/13/2020
+ms.testscope: no
+ms.testdate: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: 285dc6f4562f618f67d0372ce1652c7c794e3da7
-ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
+ms.openlocfilehash: d162110af831cd8619c77bcc1a26d31f3c63337c
+ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735091"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86218785"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中使用网络策略保护 Pod 之间的流量
 
@@ -83,9 +85,9 @@ Azure 提供两种方式来实现网络策略。 可以在创建 AKS 群集时�
 * 创建用于 AKS 群集的 Azure Active Directory (Azure AD) 服务主体。
 * 对虚拟网络的 AKS 服务主体授予“参与者”权限。
 * 在定义的虚拟网络中创建 AKS 群集并启用网络策略。
-    * 将使用 *azure* 网络策略选项。 若要改用 Calico 作为网络策略选项，请使用 `--network-policy calico` 参数。 注意：可以结合 `--network-plugin azure` 或 `--network-plugin kubenet` 使用 Calico。
+    * 系统使用 Azure 网络策略选项。 若要改用 Calico 作为网络策略选项，请使用 `--network-policy calico` 参数。 注意：Calico 既可与 `--network-plugin azure` 一起使用，也可与 `--network-plugin kubenet` 一起使用。
 
-<!--Not Available on [Use managed identities](use-managed-identity.md)-->
+请注意，可以使用托管标识而不是服务主体来获得权限。 有关详细信息，请参阅[使用托管标识](use-managed-identity.md)。
 
 提供自己的安全 SP_PASSWORD。 可以替换 *RESOURCE_GROUP_NAME* 和 *CLUSTER_NAME* 变量：
 
@@ -148,7 +150,7 @@ az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAM
 
 ## <a name="deny-all-inbound-traffic-to-a-pod"></a>拒绝流向 Pod 的所有入站流量
 
-定义规则以允许特定网络流量之前，请首先创建用于拒绝所有流量的网络策略。 可以使用此策略作为起点，仅将所需的流量加入允许列表。 此外，还可清楚看到，应用网络策略后，相关流量被丢弃。
+定义规则以允许特定网络流量之前，请首先创建用于拒绝所有流量的网络策略。 使用此策略，可为你提供起始点，仅为所需的流量创建允许列表。 此外，还可清楚看到，应用网络策略后，相关流量被丢弃。
 
 对于示例应用程序环境和流量规则，让我们先创建名为 *development* 的命名空间，以运行示例 Pod：
 
@@ -330,7 +332,7 @@ exit
 
 ## <a name="allow-traffic-only-from-within-a-defined-namespace"></a>仅允许来自定义命名空间的流量
 
-在前面的示例中，你已创建拒绝所有流量的网络策略，然后更新了该策略，以允许来自具有特定标签的 Pod 的流量。 另一个常见需求是将流量限制在给定的命名空间内。 如果前面的示例适用于 development 命名空间中的流量，请创建一个网络策略用于阻止来自另一命名空间（例如 production）的流量访问 Pod 。
+在前面的示例中，你已创建拒绝所有流量的网络策略，然后更新了该策略，以允许来自具有特定标签的 Pod 的流量。 另一个常见需求是将流量限制在给定的命名空间内。 如果前面的示例适用于 *development* 命名空间中的流量，请创建一个网络策略用于阻止来自另一命名空间（例如 *production*）的流量访问 Pod。
 
 首先，创建新的命名空间，模拟生产命名空间：
 
@@ -477,9 +479,9 @@ kubectl delete namespace development
 [policy-rules]: https://kubernetes.io/docs/concepts/services-networking/network-policies/#behavior-of-to-and-from-selectors
 [aks-github]: https://github.com/azure/aks/issues
 [tigera]: https://www.tigera.io/
-[calicoctl]: https://docs.projectcalico.org/v3.9/reference/calicoctl/
+[calicoctl]: https://docs.projectcalico.org/reference/calicoctl/
 [calico-support]: https://www.tigera.io/tigera-products/calico/
-[calico-logs]: https://docs.projectcalico.org/v3.9/maintenance/component-logs
+[calico-logs]: https://docs.projectcalico.org/maintenance/troubleshoot/component-logs
 [calico-aks-cleanup]: https://github.com/Azure/aks-engine/blob/master/docs/topics/calico-3.3.1-cleanup-after-upgrade.yaml
 
 <!-- LINKS - internal -->

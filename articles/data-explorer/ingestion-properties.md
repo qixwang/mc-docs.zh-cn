@@ -7,13 +7,13 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 03/19/2020
-ms.date: 06/09/2020
-ms.openlocfilehash: a411a3423a81f7ec20215c9faf03c475804822b7
-ms.sourcegitcommit: 73697fa9c19a40d235df033400c74741e7d0f3f4
+ms.date: 07/08/2020
+ms.openlocfilehash: bad690c4cf55c394630cd27a22546986dcd71e4d
+ms.sourcegitcommit: 5fb9ae9adc04e79d6d0e78c9e69dbe8aa3ceb00a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84574893"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86100245"
 ---
 # <a name="azure-data-explorer-data-ingestion-properties"></a>Azure 数据资源管理器的数据引入属性 
 
@@ -37,7 +37,7 @@ ms.locfileid: "84574893"
 |`policy_ingestiontime`|一个布尔值，在指定的情况下，说明是否在通过此命令创建的表上启用[引入时间策略](https://docs.microsoft.com/azure/data-explorer/kusto/management/ingestiontimepolicy)。 默认为 `true`。|`with (policy_ingestiontime=false)`|
 |`recreate_schema` |一个布尔值，在指定的情况下，说明此命令是否会重新创建表的架构。 此属性只适用于 `.set-or-replace` 命令。 在同时设置的情况下，此属性优先于 `extend_schema` 属性。|`with (recreate_schema=true)`|
 |`tags`|与引入的数据（格式化为 JSON 字符串）相关联的[标记](https://docs.microsoft.com/azure/data-explorer/kusto/management/extents-overview#extent-tagging)的列表 |`with (tags="['Tag1', 'Tag2']")`|
-|`validationPolicy`|一个 JSON 字符串，表示在引入期间要运行哪些验证。 请参阅[数据引入](https://docs.microsoft.com/azure/data-explorer/kusto/management/data-ingestion/index)，了解不同选项的说明。| `with (validationPolicy='{"ValidationOptions":1, "ValidationImplications":1}')`（实际上，这是默认策略）。|
+|`validationPolicy`|一个 JSON 字符串，表示在引入期间要运行哪些验证。 请参阅[数据引入](ingest-data-overview.md)，了解不同选项的说明。| `with (validationPolicy='{"ValidationOptions":1, "ValidationImplications":1}')`（实际上，这是默认策略）。|
 |`zipPattern`|从包含 ZIP 存档的存储中引入数据时，请使用此属性。 这是一个字符串值，表示在要引入的 ZIP 存档中选择具体文件时需使用的正则表达式。  存档中的所有其他文件会被忽略。|`with (zipPattern="*.csv")`|
 
 ## <a name="next-steps"></a>后续步骤

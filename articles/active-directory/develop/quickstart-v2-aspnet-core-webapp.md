@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 06/30/2020
+ms.date: 07/08/2020
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 2892f7edf6dc5381e99441fa5edea88eef93fcc5
-ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
+ms.openlocfilehash: 2163992670a760cf6ab73933d583b208d8d25461
+ms.sourcegitcommit: 92b9b1387314b60661f5f62db4451c9ff2c49500
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85945231"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86164960"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>快速入门：向 ASP.NET Core Web 应用添加 Microsoft 登录功能
 本快速入门通过代码示例了解 ASP.NET Core Web 应用如何从任何 Azure Active Directory (Azure AD) 实例登录工作和学校帐户。 （有关说明，请参阅[示例工作原理](#how-the-sample-works)。）
@@ -48,7 +48,7 @@ ms.locfileid: "85945231"
 >    - 在“重定向 URI”中添加 `https://localhost:44321/signin-oidc`，然后选择“保存”。 
 >    - 在“高级设置”部分，将“注销 URL”设置为 `https://localhost:44321/signout-oidc`。
 >    - 在“隐式授权”下，勾选“ID 令牌”。 
->    - 选择“保存” 。
+>    - 选择“保存”。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>步骤 1：在 Azure 门户中配置应用程序
@@ -144,7 +144,7 @@ public void ConfigureServices(IServiceCollection services)
 
 包含 `.AddAzureAd` 的行可向应用程序添加 Microsoft 标识平台身份验证。 然后，它会被配置为使用 Microsoft 标识平台终结点登录。
 
-> |Where  |  |
+> |其中 | 说明 |
 > |---------|---------|
 > | ClientId  | Azure 门户中注册的应用程序的应用程序（客户端）ID。 |
 > | 颁发机构 | 用户要进行身份验证的 STS 终结点。 对于公有云，此项通常为 <https://login.partner.microsoftonline.cn/{tenant}/v2.0>，其中 {tenant} 是租户名称、租户 ID 或者引用常用终结点（用于多租户应用程序）的 common |

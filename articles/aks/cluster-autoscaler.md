@@ -3,17 +3,20 @@ title: 使用 Azure Kubernetes 服务 (AKS) 中的群集自动缩放程序
 description: 了解如何使用群集自动缩放程序自动缩放群集以满足 Azure Kubernetes 服务 (AKS) 群集中的应用程序需求。
 services: container-service
 ms.topic: article
-ms.date: 06/22/2020
+origin.date: 07/18/2019
+ms.date: 07/13/2020
+ms.testscope: yes
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: fcfc5958a943c1d1bd4e2e0d80b45cc57ad88788
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: 754d350f9c43503a79d16b78c261c34cbf0f004f
+ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098550"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86218764"
 ---
 <!--NOT SUITABLE FOR MOONCAKE-->
-<!--REASON: PRODUCTION TEAM NOTIFIED-->
+<!--REASON: WAITING FOR PRODUCTION TEAM NOTIFIED-->
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>自动缩放群集以满足 Azure Kubernetes 服务 (AKS) 中的应用程序需求
 
 若要满足 Azure Kubernetes 服务 (AKS) 中的应用程序需求，可能需要调整运行工作负载的节点数。 群集自动缩放程序组件可以监视群集中由于资源约束而无法进行计划的 Pod。 检测到问题时，节点池中的节点数会增加，以满足应用程序需求。 还会定期检查节点是否缺少正在运行的 Pod，随后根据需要减少节点数。 这种自动增加或减少 AKS 群集中的节点数的功能使你可以运行具有成本效益的高效群集。

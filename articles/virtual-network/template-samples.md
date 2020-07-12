@@ -5,23 +5,20 @@ services: virtual-network
 documentationcenter: virtual-network
 author: rockboyfor
 manager: digimobile
-editor: ''
-tags: ''
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 origin.date: 04/22/2019
-ms.date: 02/24/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: e145c9a8b3f45da307f1c9e6996a5aeeeb17c84a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: bf243582f23a84367d0622d86600cea9d83ee15c
+ms.sourcegitcommit: af71b9199d47fb81e85d70da0cfb265cc814a644
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77653272"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85969016"
 ---
 # <a name="azure-resource-manager-template-samples-for-virtual-network"></a>适用于虚拟网络的 Azure 资源管理器模板示例
 

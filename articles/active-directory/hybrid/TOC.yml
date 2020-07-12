@@ -91,8 +91,14 @@
           href: plan-connect-userprincipalname.md
         - name: 有关实例的特殊注意事项
           href: reference-connect-instances.md
+        - name: 迁移
+          items:
+            - name: 将组从一个林移到另一个林
+              href: how-to-connect-migrate-groups.md
     - name: 管理 Azure AD Connect
       items:
+        - name: Azure AD Connect 中的其他功能
+          href: how-to-connect-preview.md
         - name: 防止意外删除
           href: how-to-connect-sync-feature-prevent-accidental-deletes.md
         - name: 启用 AD 回收站
@@ -137,9 +143,11 @@
           href: how-to-connect-sync-configure-filtering.md
         - name: 管理计划程序
           href: how-to-connect-sync-feature-scheduler.md
-        - name: Azure AD Connect 同步服务管理器
         - name: 创建和自定义同步规则
           href: how-to-connect-create-custom-sync-rule.md
+        - name: Azure AD Connect 同步 V2 终结点 API
+          href: how-to-connect-sync-endpoint-api-v2.md
+        - name: Azure AD Connect 同步服务管理器
           items:
             - name: 管理“服务管理器操作”选项卡
               href: how-to-connect-sync-service-manager-ui-operations.md

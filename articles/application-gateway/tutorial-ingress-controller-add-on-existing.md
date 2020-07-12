@@ -4,15 +4,15 @@ description: 本教程介绍了如何使用现有的应用程序网关为现有�
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
-ms.date: 06/23/2020
+ms.topic: how-to
+ms.date: 07/10/2020
 ms.author: v-junlch
-ms.openlocfilehash: cb945ff98d09aef93f83d9bbe76479d342e3f9d6
-ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
+ms.openlocfilehash: d21d42068e0c5cc4776e7a86688f995804a32fb8
+ms.sourcegitcommit: 65a7360bb14b0373e18ec8eaa288ed3ac7b24ef4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85516789"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86219691"
 ---
 # <a name="tutorial-enable-application-gateway-ingress-controller-add-on-for-an-existing-aks-cluster-with-an-existing-application-gateway-through-azure-cli-preview"></a>教程：通过 Azure CLI 使用现有的应用程序网关为现有 AKS 群集启用应用程序网关入口控制器加载项（预览版）
 
@@ -110,7 +110,7 @@ az aks enable-addons -n myCluster -g myResourceGroup -a ingress-appgw --appgw-id
 nodeResourceGroup=$(az aks show -n myCluster -g myResourceGroup -o tsv --query "nodeResourceGroup")
 aksVnetName=$(az network vnet list -g $nodeResourceGroup -o tsv --query "[0].name")
 
-aksVnetId=$(az network vnet show -n $aksVnetName -g MC_$nodeResourceGroup -o tsv --query "id")
+aksVnetId=$(az network vnet show -n $aksVnetName -g $nodeResourceGroup -o tsv --query "id")
 az network vnet peering create -n AppGWtoAKSVnetPeering -g myResourceGroup --vnet-name myVnet --remote-vnet $aksVnetId --allow-vnet-access
 
 appGWVnetId=$(az network vnet show -n myVnet -g myResourceGroup -o tsv --query "id")

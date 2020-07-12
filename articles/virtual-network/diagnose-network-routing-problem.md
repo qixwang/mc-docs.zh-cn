@@ -5,23 +5,22 @@ services: virtual-network
 documentationcenter: na
 author: rockboyfor
 manager: digimobile
-editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 05/30/2018
-ms.date: 01/13/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 8d60b5428f208b40dc061f65c49379b9ff469789
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 6bd3e91f23f5f29a5c2fd5a1da21a5aa4c49205d
+ms.sourcegitcommit: af71b9199d47fb81e85d70da0cfb265cc814a644
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75859226"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85969041"
 ---
 # <a name="diagnose-a-virtual-machine-routing-problem"></a>诊断虚拟机路由问题
 

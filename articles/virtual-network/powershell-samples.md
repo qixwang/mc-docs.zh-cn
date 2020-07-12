@@ -5,23 +5,20 @@ services: virtual-network
 documentationcenter: virtual-network
 author: rockboyfor
 manager: digimobile
-editor: ''
-tags: ''
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 origin.date: 07/15/2019
-ms.date: 11/25/2019
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 3c6b2c0dfea04d312e0f47b9802df2740e0a96c8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 988cc2fb50183848639aacade1995865136831fd
+ms.sourcegitcommit: af71b9199d47fb81e85d70da0cfb265cc814a644
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74657911"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85969015"
 ---
 # <a name="azure-powershell-samples-for-virtual-network"></a>适用于虚拟网络的 Azure PowerShell 示例
 

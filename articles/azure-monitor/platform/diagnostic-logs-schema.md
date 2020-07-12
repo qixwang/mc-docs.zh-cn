@@ -7,12 +7,12 @@ author: Johnnytechn
 ms.author: v-johya
 ms.date: 05/28/2020
 origin.date: 10/22/2019
-ms.openlocfilehash: 4762c2ac6b54f2f9caec6824ef70b7a34fdf84c6
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: 12e1871a10db8da5dc0fa3967b3884ea44bb1cb3
+ms.sourcegitcommit: 9bc3e55f01e0999f05e7b4ebaea95f3ac91d32eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097264"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86226111"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Azure 资源日志支持的服务、架构和类别
 
@@ -71,7 +71,6 @@ ms.locfileid: "85097264"
 | 搜索 |[允许并使用搜索流量分析](../../search/search-traffic-analytics.md) |
 | 服务总线 |[Azure 服务总线日志](../../service-bus-messaging/service-bus-diagnostic-logs.md) |
 | SQL 数据库 | [Azure SQL 数据库日志记录](../../sql-database/sql-database-metrics-diag-logging.md) |
-| 流分析 |[作业日志](../../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
 | 虚拟网络 | 架构不可用。 |
 | 虚拟网络网关 | 架构不可用。 |
 

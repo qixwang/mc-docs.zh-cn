@@ -14,13 +14,15 @@ origin.date: 04/23/2020
 ms.date: 06/22/2020
 ms.topic: tutorial
 ms.author: v-yeche
-ms.openlocfilehash: e9ef98434bbcad7861e1a3c35a6e11a51fb66cb4
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: 4510ab3c92ebcf24a811a787146b82174216d601
+ms.sourcegitcommit: 873e5c5e4156efed505a78d4f5a6e50c494e76d4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85102094"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86036745"
 ---
+<!--Not Available on Azure China Cloud-->
+<!--Not Available on Microsoft.Resources.deploymentScripts-->
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>教程：使用部署脚本创建自签名证书（预览版）
 
 了解如何使用 Azure 资源管理器 (ARM) 模板中的部署脚本。 可以使用部署脚本执行无法由 ARM 模板完成的自定义步骤。 例如，创建自签名证书。  在本教程中，你将创建一个模板来部署 Azure 密钥保管库，然后在同一模板中使用 `Microsoft.Resources/deploymentScripts` 资源来创建证书并将证书添加到密钥保管库。 若要详细了解部署脚本，请参阅[使用 ARM 模板中的部署脚本](./deployment-script-template.md)。

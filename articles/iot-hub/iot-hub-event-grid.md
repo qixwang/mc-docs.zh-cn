@@ -9,12 +9,12 @@ ms.topic: conceptual
 origin.date: 02/20/2019
 ms.date: 01/13/2020
 ms.author: v-yiso
-ms.openlocfilehash: 05cd0f55f948d5826433dc01cba6c79c74d2d0a0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 1d26c60b8944db493aa469571a2f6224882a4f24
+ms.sourcegitcommit: 9bc3e55f01e0999f05e7b4ebaea95f3ac91d32eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293427"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86225985"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>通过使用事件网格触发操作来响应 IoT 中心事件
 
@@ -44,7 +44,7 @@ IoT 中心将发布以下事件类型：
 
 ## <a name="event-schema"></a>事件架构
 
-IoT 中心事件包含响应设备生命周期中更改所需的全部信息。 可通过检查 eventType 属性是否以“Microsoft.Devices”开头来标识 IoT 中心事件  。 有关如何使用事件网格事件属性的详细信息，请参阅[事件网格事件架构](../event-grid/event-schema.md)。
+IoT 中心事件包含响应设备生命周期中更改所需的全部信息。 可通过检查 eventType 属性是否以“Microsoft.Devices”开头来标识 IoT 中心事件。 有关如何使用事件网格事件属性的详细信息，请参阅[事件网格事件架构](../event-grid/event-schema.md)。
 
 ### <a name="device-connected-schema"></a>设备已连接架构
 
@@ -75,7 +75,6 @@ IoT 中心事件包含响应设备生命周期中更改所需的全部信息。 
 
 设备遥测消息必须采用有效的 JSON 格式，并且在消息[系统属性](iot-hub-devguide-routing-query-syntax.md#system-properties)中将 contentType 设置为 **application/json**，将 contentEncoding 设置为 **UTF-8**。 这两个属性都不区分大小写。 如果未设置内容编码，则 IoT 中心将以 base 64 编码格式写入消息。
 
-在通过选择终结点作为事件网格来将设备遥测事件发布到事件网格之前，你可以扩充设备遥测事件。 有关详细信息，请参阅[消息扩充概述](iot-hub-message-enrichments-overview.md)。
 
 以下示例显示了设备遥测事件的架构：
 
@@ -167,7 +166,7 @@ IoT 中心事件包含响应设备生命周期中更改所需的全部信息。 
 
 IoT 中心事件订阅可以根据事件类型、数据内容和使用者（即设备名称）来筛选事件。
 
-事件网格启用了基于事件类型、使用者和数据内容的[筛选](../event-grid/event-filtering.md)。 创建事件网格订阅时，可以选择订阅所选择的 IoT 事件。 事件网格中的使用者筛选器基于“开头为”（前缀）和“结尾为”（后缀）匹配进行筛选   。 该筛选器使用 `AND` 运算符，以便将含有与前缀和后缀都匹配的使用者的事件传送给订阅方。
+事件网格启用了基于事件类型、使用者和数据内容的[筛选](../event-grid/event-filtering.md)。 创建事件网格订阅时，可以选择订阅所选择的 IoT 事件。 事件网格中的使用者筛选器基于“开头为”（前缀）和“结尾为”（后缀）匹配进行筛选 。 该筛选器使用 `AND` 运算符，以便将含有与前缀和后缀都匹配的使用者的事件传送给订阅方。
 
 IoT 事件使用者使用的格式：
 

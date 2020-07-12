@@ -5,15 +5,17 @@ description: 了解如何使用 Azure 门户快速创建 Kubernetes 群集、部
 services: container-service
 ms.topic: quickstart
 origin.date: 01/21/2020
-ms.date: 05/25/2020
+ms.date: 07/13/2020
+ms.testscope: yes
+ms.testdate: 05/25/2020
 ms.author: v-yeche
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 70cc0c7bc82dc1f3420e968f8fa347dd5bea8537
-ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
+ms.openlocfilehash: 679151693df29b42f8f7ad99bf9b4e38b858b79a
+ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85796183"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86218738"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>快速入门：使用 Azure 门户部署 Azure Kubernetes 服务 (AKS) 群集
 
@@ -52,15 +54,17 @@ Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管�
 4. 在“缩放”页上，保留默认选项。 单击屏幕底部的“下一步:身份验证”。
     
     > [!CAUTION]
-    > 创建新的 AAD 服务主体可能需要几分钟的时间才能传播并变得可用，这样会导致 Azure 门户中出现“找不到服务主体”错误和验证失败。 如果遇到这种情况，请访问[此处](troubleshooting.md#im-receiving-errors-that-my-service-principal-was-not-found-when-i-try-to-create-a-new-cluster-without-passing-in-an-existing-one)进行缓解。
+    > 创建新的 AAD 服务主体可能需要几分钟的时间才能传播并变得可用，这样会导致 Azure 门户中出现“找不到服务主体”错误和验证失败。 如果遇到这种情况，请访问[此处](troubleshooting.md#received-an-error-saying-my-service-principal-wasnt-found-or-is-invalid-when-i-try-to-create-a-new-cluster)进行缓解。
 
 5. 在“身份验证”页上，配置以下选项：
     - 通过将“服务主体”字段保留为“(新)默认服务主体”来创建新的服务主体。 或者，可以选择“配置服务主体”以使用现有的服务主体。 如果使用现有的服务主体，则需要提供 SPN 客户端 ID 和机密。
     - 启用 Kubernetes 基于角色的访问控制 (RBAC) 所对应的选项。 这样可以对部署在 AKS 群集中的 Kubernetes 资源进行更精细的访问控制。
 
+    或者，可以使用托管标识而不是服务主体。 有关详细信息，请参阅[使用托管标识](use-managed-identity.md)。
+
 默认情况下将使用“基本”网络，并且会启用适用于容器的 Azure Monitor。 验证完成后，依次单击“查看 + 创建”、“创建”。
 
-创建 AKS 群集需要几分钟时间。 完成部署后，单击“转到资源”，或浏览到 AKS 群集资源组（如 myResourceGroup），然后选择 AKS 资源（如 myAKSCluster ）。 此时会显示 AKS 群集仪表板，如以下示例所示：
+创建 AKS 群集需要几分钟时间。 完成部署后，单击“转到资源”，或浏览到 AKS 群集资源组（如 myResourceGroup），然后选择 AKS 资源（如 myAKSCluster）。 此时会显示 AKS 群集仪表板，如以下示例所示：
 
 ![Azure 门户中的示例 AKS 仪表板](media/kubernetes-walkthrough-portal/aks-portal-dashboard.png)
 
@@ -74,7 +78,7 @@ Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管�
 
 <!--Not Available on  ![Open the Azure Cloud Shell in the portal](media/kubernetes-walkthrough-portal/aks-cloud-shell.png)-->
 
-若要将 `kubectl` 配置为连接到 Kubernetes 群集，请使用 [az aks get-credentials][az-aks-get-credentials] 命令。 此命令将下载凭据，并将 Kubernetes CLI 配置为使用这些凭据。 以下示例获取名为 myResourceGroup 的资源组中群集名称 myAKSCluster 的凭据 ：
+若要将 `kubectl` 配置为连接到 Kubernetes 群集，请使用 [az aks get-credentials][az-aks-get-credentials] 命令。 此命令将下载凭据，并将 Kubernetes CLI 配置为使用这些凭据。 以下示例获取名为 *myResourceGroup* 的资源组中群集名称 *myAKSCluster* 的凭据：
 
 [!INCLUDE [azure-cli-2-e-azurechinacloud-environment-parameter](../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
 
@@ -89,7 +93,7 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 kubectl get nodes
 ```
 
-以下示例输出显示在上一步创建的单个节点。 请确保节点的状态为“就绪”：
+以下示例输出显示在上一步创建的单个节点。 请确保节点的状态为 *Ready*：
 
 ```output
 NAME                       STATUS    ROLES     AGE       VERSION
@@ -264,9 +268,7 @@ az aks delete --resource-group myResourceGroup --name myAKSCluster --no-wait
 ```
 
 > [!NOTE]
-> 删除群集时，AKS 群集使用的 Azure Active Directory 服务主体不会被删除。 有关如何删除服务主体的步骤，请参阅 [AKS 服务主体的注意事项和删除][sp-delete]。
-
-<!--Not Available on managed identity-->
+> 删除群集时，AKS 群集使用的 Azure Active Directory 服务主体不会被删除。 有关如何删除服务主体的步骤，请参阅 [AKS 服务主体的注意事项和删除][sp-delete]。 如果你使用了托管标识，则该标识由平台托管，不需要删除。
 
 ## <a name="get-the-code"></a>获取代码
 

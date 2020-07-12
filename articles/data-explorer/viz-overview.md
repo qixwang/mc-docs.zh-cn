@@ -7,20 +7,32 @@ ms.author: v-tawe
 ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
-origin.date: 01/30/2020
-ms.date: 06/09/2020
-ms.openlocfilehash: afa5a8e5d3b697d8bf64f0cb396779f978593c56
-ms.sourcegitcommit: 73697fa9c19a40d235df033400c74741e7d0f3f4
+origin.date: 06/02/2020
+ms.date: 07/08/2020
+ms.openlocfilehash: 8b337b62f5257adea352a8772ea12decfd147f27
+ms.sourcegitcommit: 5fb9ae9adc04e79d6d0e78c9e69dbe8aa3ceb00a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84574868"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86100213"
 ---
 # <a name="data-visualization-with-azure-data-explorer"></a>使用 Azure 数据资源管理器进行数据可视化 
 
 Azure 数据资源管理器是一项适用于日志和遥测数据的快速且高度可缩放的数据探索服务，可以用来针对大量数据构建复杂的分析解决方案。 Azure 数据资源管理器集成各种可视化工具，因此可以用来可视化数据，并在组织内共享结果。 该数据可以转换成能够对业务造成影响的可操作见解。
 
 数据可视化和报告是数据分析过程中的关键步骤。 Azure 数据资源管理器支持许多项 BI 服务，因此你可以使用最适合自己方案和预算的一项。
+
+<!--
+## Azure Data Explorer dashboards
+
+Azure Data Explorer dashboards is a web application that enables you to run queries and build dashboards in the stand-alone web application, the [Web UI](web-query-data.md). Azure Data Explorer dashboards provide three main advantages:
+
+* Natively export queries from the Web UI to Azure Data Explorer dashboards. 
+* Explore the data in the Web UI.
+* Optimized dashboard rendering performance.
+
+For more information see, [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md).
+-->
 
 ## <a name="kusto-query-language-visualizations"></a>Kusto 查询语言可视化
 

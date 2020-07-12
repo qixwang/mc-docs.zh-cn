@@ -4,15 +4,15 @@ description: 本文介绍如何使用 AKS 群集的入口控制器向应用程�
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
-ms.date: 03/16/2020
+ms.topic: how-to
+ms.date: 07/10/2020
 ms.author: v-junlch
-ms.openlocfilehash: edcaf320b619b7c8c9f5b4a0fc46fc4a125674e1
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 14bb09624e384c458420d3af165f2ab23f3e6368
+ms.sourcegitcommit: 65a7360bb14b0373e18ec8eaa288ed3ac7b24ef4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497115"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86219696"
 ---
 # <a name="expose-a-websocket-server-to-application-gateway"></a>向应用程序网关公开 WebSocket 服务器
 
@@ -78,7 +78,7 @@ spec:
 由于所有先决条件都已满足，并且你有一个受 AKS 中的 Kubernetes 入口控制的应用程序网关，因此上面的部署会导致在应用程序网关的公共 IP 和 `ws.contoso.com` 域的端口 80 上公开 WebSockets 服务器。
 
 以下 cURL 命令会测试 WebSocket 服务器部署：
-```sh
+```shell
 curl -i -N -H "Connection: Upgrade" \
         -H "Upgrade: websocket" \
         -H "Origin: http://localhost" \

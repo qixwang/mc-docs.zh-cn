@@ -2,22 +2,22 @@
 title: 向应用程序授予租户范围的管理员许可 - Azure AD
 description: 了解如何向应用程序授予租户范围的许可，以便在最终用户登录到该应用程序时不提示他们授予许可。
 services: active-directory
-author: psignoret
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 01/08/2020
+ms.topic: how-to
+ms.date: 07/07/2020
 ms.author: v-junlch
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 100b7030f49d982a3b6b2a9b5750495e31844848
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4538c6e4f44487bd262c5b1b355bb0cab0fa4b80
+ms.sourcegitcommit: 92b9b1387314b60661f5f62db4451c9ff2c49500
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75777093"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86164828"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>向应用程序授予租户范围的管理员许可
 
@@ -30,7 +30,7 @@ ms.locfileid: "75777093"
 授予租户范围的管理员许可需要以[全局管理员](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator)、[应用程序管理员](../users-groups-roles/directory-assign-admin-roles.md#application-administrator)或[云应用程序管理员](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator)的身份登录。
 
 > [!IMPORTANT]
-> 为应用程序授予租户范围的管理员许可后，除非已配置为需要用户分配，否则所有用户都可以登录到该应用。 若要限制哪些用户可登录到某个应用程序，需要提供用户分配，然后将用户或组分配到该应用程序。 有关详细信息，请参阅[分配用户和组的方法](methods-for-assigning-users-and-groups.md)。
+> 为应用程序授予租户范围的管理员许可后，除非已配置为需要用户分配，否则所有用户都可以登录到该应用。 若要限制哪些用户可登录到某个应用程序，需要提供用户分配，然后将用户或组分配到该应用程序。 有关详细信息，请参阅[分配用户和组的方法](assign-user-or-group-access-portal.md)。
 
 > [!WARNING]
 > 向某个应用程序授予租户范围的管理员许可将为该应用及其发布者授予对组织数据的访问权限。 在授予许可之前，请仔细查看应用程序请求的权限。
@@ -69,7 +69,9 @@ ms.locfileid: "75777093"
 
 租户范围的管理员许可 URL 采用以下格式：
 
-    https://login.partner.microsoftonline.cn/{tenant-id}/adminconsent?client_id={client-id}
+```http
+https://login.partner.microsoftonline.cn/{tenant-id}/adminconsent?client_id={client-id}
+```
 
 其中：
 

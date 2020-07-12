@@ -6,12 +6,12 @@ origin.date: 04/23/2020
 ms.date: 06/22/2020
 ms.topic: tutorial
 ms.author: v-yeche
-ms.openlocfilehash: 52ec4ca1acb4a616541a40e0fb19f692767e3c94
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: bab76eaeea3c848e374d3657b1eb535e85efb457
+ms.sourcegitcommit: 873e5c5e4156efed505a78d4f5a6e50c494e76d4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098634"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86036747"
 ---
 <!--Verify successfully on 06/177/2020 by harris-->
 # <a name="tutorial-create-arm-templates-with-dependent-resources"></a>教程：创建包含所依赖资源的 ARM 模板
@@ -186,11 +186,7 @@ Azure 快速入门模板是 ARM 模板的存储库。 无需从头开始创建�
 3. 选择资源组名称。 应会看到，该资源组中总共有六个资源。
 4. 在顶部菜单中选择“删除资源组”。
 
-## <a name="next-steps"></a>后续步骤
-
-本教程介绍如何通过开发和部署模板来创建虚拟机、虚拟网络和依赖资源。 若要了解如何使用部署脚本来执行部署前/后操作，请参阅：
-
-> [!div class="nextstepaction"]
-> [使用部署脚本](./template-tutorial-deployment-script.md)
+<!--Not Avaialble on ## Next steps-->
+<!--Not Avaialble on > [Use deployment script](./template-tutorial-deployment-script.md)-->
 
 <!-- Update_Description: update meta properties, wording update, update link -->

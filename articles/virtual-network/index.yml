@@ -10,14 +10,14 @@ metadata:
   ms.collection: collection
   author: rockboyfor
   origin.date: 08/28/2019
-  ms.date: 06/15/2020
+  ms.date: 07/06/2020
   ms.author: v-yeche
-  ms.openlocfilehash: 206544f4b28ee54797b499aa9a1e20ba69ec2a46
-  ms.sourcegitcommit: ff67734e01c004be575782b4812cfe857e435f4d
+  ms.openlocfilehash: 0ee13b9c98e1e3bca2914a0fe7aa69ed3217b62d
+  ms.sourcegitcommit: af71b9199d47fb81e85d70da0cfb265cc814a644
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/08/2020
-  ms.locfileid: "84487032"
+  ms.lasthandoff: 07/06/2020
+  ms.locfileid: "85969040"
 landingContent:
 - title: 关于虚拟网络
   linkLists:
@@ -131,7 +131,7 @@ landingContent:
       url: virtual-network-ip-addresses-overview-arm.md
     - text: Azure 虚拟网络的 IPv6 是什么？
       url: ipv6-overview.md
-    - text: 公共 IP 前缀
+    - text: 公共 IP 地址前缀
       url: public-ip-address-prefix.md
   - linkListType: how-to-guide
     links:
@@ -139,5 +139,5 @@ landingContent:
       url: virtual-network-public-ip-address.md
     - text: 部署 IPV6 双堆栈应用程序
       url: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md
-    - text: 创建、更改或删除公共 IP 前缀
+    - text: 创建、更改或删除公共 IP 地址前缀
       url: manage-public-ip-address-prefix.md

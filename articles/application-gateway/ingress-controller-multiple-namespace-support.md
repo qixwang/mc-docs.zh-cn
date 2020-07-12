@@ -4,16 +4,15 @@ description: 本文提供有关如何在使用应用程序网关入口控制器�
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
-origin.date: 11/04/2019
-ms.date: 11/19/2019
+ms.topic: how-to
+ms.date: 07/10/2020
 ms.author: v-junlch
-ms.openlocfilehash: d35183d78b0e00d60c9a3014e8f11746861bbc55
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5a498c46a69b75d0d80f5f302963c5c2370a5ea1
+ms.sourcegitcommit: 65a7360bb14b0373e18ec8eaa288ed3ac7b24ef4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293413"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86219698"
 ---
 # <a name="enable-multiple-namespace-support-in-an-aks-cluster-with-application-gateway-ingress-controller"></a>在使用应用程序网关入口控制器的 AKS 群集中启用多命名空间支持
 
@@ -46,6 +45,7 @@ AGIC 版本 0.7 将继续专门观察 `default` 命名空间，除非在 Helm �
 另一方面 - 路径、后端池、HTTP 设置和 TLS 证书只能由一个命名空间创建，重复项将被删除。
 
 例如，假设以下重复入口资源为 `www.contoso.com` 定义了命名空间 `staging` 和 `production`：
+
 ```yaml
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -102,6 +102,7 @@ spec:
   - 使用[角色/角色绑定](/aks/azure-ad-rbac)来限制 AGIC 只能访问特定的命名空间
 
 ## <a name="sample-helm-config-file"></a>示例 Helm 配置文件
+
 ```yaml
     # This file contains the essential configs for the ingress controller helm chart
 
@@ -153,6 +154,6 @@ spec:
     # Specify aks cluster related information. THIS IS BEING DEPRECATED.
     aksClusterConfiguration:
         apiServerAddress: <aks-api-server-address>
-    ```
+```
 
 

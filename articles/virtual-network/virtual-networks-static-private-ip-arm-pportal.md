@@ -8,19 +8,20 @@ manager: digimobile
 tags: azure-resource-manager
 ms.assetid: 11245645-357d-4358-9a14-dd78e367b494
 ms.service: virtual-network
+ms.subservice: ip-services
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 02/07/2020
-ms.date: 06/15/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 4fa7f84216a2fe10103dac79aa632573978cfb9f
-ms.sourcegitcommit: ff67734e01c004be575782b4812cfe857e435f4d
+ms.openlocfilehash: 31a39531831c948367acc54c7252443dfd2d62b3
+ms.sourcegitcommit: af71b9199d47fb81e85d70da0cfb265cc814a644
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84487082"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85969039"
 ---
 # <a name="configure-a-private-ip-address-for-a-vm-using-the-azure-portal"></a>使用 Azure 门户为 VM 配置专用 IP 地址
 
@@ -48,10 +49,11 @@ ms.locfileid: "84487082"
     ![创建资源，Azure 门户](./media/virtual-networks-static-ip-arm-pportal/create-a-resource.png)
 2. 在筛选器框中输入“Windows Server 2019 Datacenter”并按 Enter 键，然后在搜索结果中选择“Windows Server 2019 Datacenter”   。
 
-    ![创建 VM，Azure 门户](./media/virtual-networks-static-ip-arm-pportal/compute-virtual-machine.png)
+    <!--Picture not suitable for that it may confuse the reader-->
+    
 3. 在“基本信息”中，按下表中所述指定项的值。  然后依次选择“下一步: 磁盘”、“下一步: 网络”。 **&nbsp;&nbsp;** **&nbsp;&nbsp;**
 
-    | 项目 | Value |
+    | 项 | 值 |
     | --- | --- |
     | **订阅** | 你的当前订阅 |
     | **资源组** | **TestRG**（从下拉列表中选择） |

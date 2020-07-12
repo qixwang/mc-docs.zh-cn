@@ -7,13 +7,13 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 06/21/2019
-ms.date: 06/12/2020
-ms.openlocfilehash: af42e0b43a3e9e3a3b87041f5aff0b227927906e
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.date: 07/06/2020
+ms.openlocfilehash: 322faa45eb91d83607655842bb348b2e386aa6e7
+ms.sourcegitcommit: 9bc3e55f01e0999f05e7b4ebaea95f3ac91d32eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723734"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86226162"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>使用 Azure 机器学习工作室（经典）函数缩放流分析作业
 
@@ -138,7 +138,7 @@ ms.locfileid: "84723734"
 2. 运行流分析作业允许延迟（因而影响了机器学习 Web 服务的批大小）。
 3. 预配的流分析 SU 和机器学习 Web 服务请求数（与函数相关的额外成本）。
 
-以完全分区的流分析查询为例。 如果需要更复杂的查询，[Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)是一项绝佳资源，可以获取流分析团队的额外帮助。
+以完全分区的流分析查询为例。 如果需要更复杂的查询，[有关 Azure 流分析的 Microsoft Q&A 问题页面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)是一项绝佳资源，可以获取流分析团队的额外帮助。
 
 ## <a name="next-steps"></a>后续步骤
 若要了解流分析的更多内容，请参阅：

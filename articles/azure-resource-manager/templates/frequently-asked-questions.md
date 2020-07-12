@@ -6,12 +6,12 @@ origin.date: 05/30/2020
 ms.date: 06/22/2020
 ms.author: v-yeche
 author: rockboyfor
-ms.openlocfilehash: 12c4bea8abccff7d92b1f874a6c2cbead63cf712
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: f69b38302e2ab58fce4a1091f9de93842881918c
+ms.sourcegitcommit: 873e5c5e4156efed505a78d4f5a6e50c494e76d4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85102030"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86036751"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>有关 ARM 模板的常见问题解答
 
@@ -123,19 +123,8 @@ ms.locfileid: "85102030"
 
   可以，只要用户具有对模板规格的读取访问权限，就可以跨订阅使用它们。不能跨租户使用模板规格。
 
-## <a name="scripts-in-templates"></a>模板中的脚本
-
-* **是否可以在模板中包含脚本来执行模板中无法执行的任务？**
-
-  可以，请使用[部署脚本](deployment-script-template.md)。 可在模板中包含 Azure PowerShell 或 Azure CLI 脚本。 此功能以预览版提供。
-
-* **是否仍可使用自定义脚本扩展和 Desired State Configuration (DSC)？**
-
-  这些选项仍可用且未发生更改。 部署脚本旨在执行与 VM 来宾无关的操作。 如果需要在 VM 中的主机操作系统上运行脚本，则客户脚本扩展和/或 DSC 将是更好的选择。 但部署脚本具有一些优势，例如可设置超时持续时间。
-
-* **Azure 中国云中是否支持部署脚本？**
-
-  支持，你可以使用 US Gov 亚利桑那州和 US Gov 弗吉尼亚州中的部署脚本。
+<!--Not Available on ## Scripts in templates-->
+<!--Not Available on ResourceType of Microsoft.Resources.deploymentScripts-->
 
 ## <a name="preview-changes-before-deployment"></a>在部署前预览更改
 

@@ -7,17 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-origin.date: 12/05/2018
-ms.date: 07/04/2019
+ms.date: 07/06/2020
 ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70f8438999c4490fb6a524783d34fe42569a219f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: dfcfde22dd5829fc51870268411fac8a17f6335c
+ms.sourcegitcommit: 92b9b1387314b60661f5f62db4451c9ff2c49500
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "67568604"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86164838"
 ---
 # <a name="what-is-password-hash-synchronization-with-azure-ad"></a>什么是与 Azure AD 的密码哈希同步？
 密码哈希同步是用来实现混合标识的登录方法之一。 Azure AD Connect 将用户密码的哈希从本地 Active Directory 实例同步到基于云的 Azure AD 实例。
@@ -50,4 +49,3 @@ ms.locfileid: "67568604"
 - [什么是联合身份验证？](whatis-fed.md)
 - [密码哈希同步的工作原理](how-to-connect-password-hash-synchronization.md)
 
-<!-- Update_Description: link update -->

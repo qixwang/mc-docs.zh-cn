@@ -5,13 +5,13 @@ author: yegu-ms
 ms.author: v-junlch
 ms.service: cache
 ms.topic: conceptual
-ms.date: 06/16/2020
-ms.openlocfilehash: b6aa40271721a3a6f2aeb748f0f44b37b16160a0
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.date: 07/10/2020
+ms.openlocfilehash: fa2ef0c978f26c1641ecdcdad667cf366a04cc3a
+ms.sourcegitcommit: 65a7360bb14b0373e18ec8eaa288ed3ac7b24ef4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097301"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86219740"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>Azure Redis 缓存的 ASP.NET 会话状态提供程序
 
@@ -94,6 +94,7 @@ NuGet 包会下载并添加所需的程序集引用，并将以下节添加到 w
 * **operationTimeoutInMilliseconds** - 此设置允许覆盖 StackExchange.Redis 客户端中的 syncTimeout 设置。 如果未指定，则使用默认 syncTimeout 设置 1000。 有关详细信息，请参阅 [StackExchange.Redis 配置模型](https://go.microsoft.com/fwlink/?LinkId=398705)。
 * **redisSerializerType** - 此设置允许你为发送到 Redis 的会话内容指定自定义序列化。 指定的类型必须实现 `Microsoft.Web.Redis.ISerializer` 并且必须声明公共无参数构造函数。 默认情况下使用 `System.Runtime.Serialization.Formatters.Binary.BinaryFormatter`。
 
+有关这些属性的详细信息，请参阅 [宣布推出适用于 Redis 的 ASP.NET 会话状态提供程序](https://devblogs.microsoft.com/aspnet/announcing-asp-net-session-state-provider-for-redis-preview-release/)中的原始博客文章公告。
 
 别忘了在 web.config 中注释掉标准 InProc 会话状态提供程序部分。
 

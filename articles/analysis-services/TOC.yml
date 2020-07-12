@@ -30,9 +30,9 @@
     - name: 使用服务主体进行自动化
       href: analysis-services-service-principal.md
     - name: 客户端库
-      href: analysis-services-data-providers.md
+      href: 'https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current'
     - name: 兼容性级别
-      href: 'https://docs.microsoft.com/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services'
+      href: 'https://docs.microsoft.com/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services?view=azure-analysis-services-current'
     - name: 连接到本地数据源
       href: analysis-services-gateway.md
     - name: 连接到服务器
@@ -116,9 +116,9 @@
     - name: 示例
       href: analysis-services-samples.md
     - name: Analysis Services 团队博客
-      href: 'https://blogs.msdn.microsoft.com/analysisservices/'
-    - name: Azure Analysis Services 论坛
-      href: 'https://support.azure.cn/support/contact/'
+      href: 'https://powerbi.microsoft.com/blog/category/analysis-services/'
+    - name: Azure 更新
+      href: 'https://azure.microsoft.com/updates/?query=Analysis%20Services'
     - name: Azure 状态
       href: 'https://status.azure.com/status/'
     - name: 反馈

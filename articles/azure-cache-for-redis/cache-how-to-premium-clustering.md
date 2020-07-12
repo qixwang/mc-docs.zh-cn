@@ -5,13 +5,13 @@ author: yegu-ms
 ms.author: v-junlch
 ms.service: cache
 ms.topic: conceptual
-ms.date: 04/26/2020
-ms.openlocfilehash: 281b3eb24336f46b541467c181541bdf791e0a4f
-ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
+ms.date: 07/10/2020
+ms.openlocfilehash: ef9b44396679f42dcbbcb7acab505c0c710c3cee
+ms.sourcegitcommit: 65a7360bb14b0373e18ec8eaa288ed3ac7b24ef4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82267609"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86219729"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>如何为高级 Azure Redis 缓存配置 Redis 群集功能
 Azure Redis 缓存具有不同的缓存产品/服务，从而在缓存大小和功能（包括群集、暂留和虚拟网络支持等高级层功能）的选择上具有灵活性。 本文介绍如何配置高级 Azure Redis 缓存实例中的群集功能。
@@ -127,11 +127,13 @@ Redis 群集协议要求每个客户端以群集模式直接连接到每个分�
 
 对于非 TLS，请使用以下命令。
 
-    Redis-cli.exe -h <<cachename>> -p 13000 (to connect to instance 0)
-    Redis-cli.exe -h <<cachename>> -p 13001 (to connect to instance 1)
-    Redis-cli.exe -h <<cachename>> -p 13002 (to connect to instance 2)
-    ...
-    Redis-cli.exe -h <<cachename>> -p 1300N (to connect to instance N)
+```bash
+Redis-cli.exe -h <<cachename>> -p 13000 (to connect to instance 0)
+Redis-cli.exe -h <<cachename>> -p 13001 (to connect to instance 1)
+Redis-cli.exe -h <<cachename>> -p 13002 (to connect to instance 2)
+...
+Redis-cli.exe -h <<cachename>> -p 1300N (to connect to instance N)
+```
 
 对于 TLS，请将 `1300N` 替换为 `1500N`。
 

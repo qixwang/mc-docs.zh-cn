@@ -1,5 +1,5 @@
 ---
-title: IoT DevKit 到云 - 将 IoT DevKit AZ3166 连接到 Azure IoT 中心
+title: 将 IoT DevKit AZ3166 连接到 Azure IoT 中心
 description: 在本教程中了解如何设置 IoT DevKit AZ3166 并将其连接到 Azure IoT 中心，使其能够将数据发送到 Azure 云平台。
 author: wesmc7777
 manager: philmea
@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 origin.date: 06/25/2019
 ms.author: v-yiso
-ms.date: 06/08/2019
-ms.openlocfilehash: 8a26aba8edebc975b163e300c75f7004ef1542ab
-ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
+ms.date: 07/20/2020
+ms.openlocfilehash: 87544c9d5d0d913f416d14da64b6f8b55729feb9
+ms.sourcegitcommit: 9bc3e55f01e0999f05e7b4ebaea95f3ac91d32eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84186940"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86226173"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>将 IoT DevKit AZ3166 连接到 Azure IoT 中心
 
@@ -166,7 +166,7 @@ DevKit 将连接到 IoT 中心内特定于设备的终结点，并发送温度�
     或者将此 URL 复制并粘贴到浏览器窗口中：`vscode:extension/vsciot-vscode.azure-iot-tools`
 
     > [!NOTE]
-    > Azure IoT Tools 扩展包包含用于在各种 IoT devkit 设备上进行开发和调试的 [Azure IoT Device Workbench](https://aka.ms/iot-workbench)。 同样随附在 Azure IoT Tools 扩展包中的 [Azure IoT 中心扩展](https://aka.ms/iot-toolkit)用于管理 Azure IoT 中心并与之交互。
+    > Azure IoT Tools 扩展包包含 [Azure IoT 设备工作台](https://aka.ms/iot-workbench)，用于在各种 IoT devkit 设备上进行开发和调试。 同样随附在 Azure IoT Tools 扩展包中的 [Azure IoT 中心扩展](https://aka.ms/iot-toolkit)用于管理 Azure IoT 中心并与之交互。
 
 5. 为 VS Code 配置 Arduino 设置。
 
@@ -223,7 +223,7 @@ DevKit 将连接到 IoT 中心内特定于设备的终结点，并发送温度�
 
 ## <a name="build-your-first-project"></a>生成第一个项目
 
-### <a name="open-sample-code-from-sample-gallery"></a>从示例库打开示例代码
+### <a name="open-sample-code-from-sample-gallery"></a>从示例库中打开示例代码
 
 IoT DevKit 包含丰富的示例库，可以使用这些示例来了解如何将 DevKit 连接到各种 Azure 服务。
 
@@ -379,7 +379,8 @@ DevKit 将重新启动并开始运行代码。
 1. 在 VS Code 中，单击 `F1`，键入并选择“Azure IoT Hub:Set IoT Hub Connection String”。 将连接字符串复制到其中。
     ![设置 Azure IoT 中心连接字符串](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/set-iothub-connection-string.png)
 
-1. 展开右侧的“AZURE IOT 中心设备”窗格，右键单击创建的设备名称，然后选择“开始监视内置事件终结点”。 
+1. 展开左侧的“Azure IoT 中心设备”窗格，右键单击创建的设备名称，然后选择“开始监视内置事件终结点”。 
+
     ![监视 D2C 消息](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/monitor-d2c.png)
 
 1. 在“输出”窗格中，可以看到传入 IoT 中心的 D2C 消息。

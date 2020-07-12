@@ -5,12 +5,12 @@ ms.topic: conceptual
 origin.date: 04/06/2020
 ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: b336eb6e44a5095e9cf76896a6c1c580456adede
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: aa467cccd9915030818d6a89fc8dd579e24449de
+ms.sourcegitcommit: 873e5c5e4156efed505a78d4f5a6e50c494e76d4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098683"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86036752"
 ---
 <!--Verify successfully-->
 # <a name="what-are-arm-templates"></a>什么是 ARM 模板？
@@ -33,12 +33,11 @@ ms.locfileid: "85098683"
 
     ![模板部署的比较](./media/overview/template-processing.png)
 
-
 * **模块化文件**：可将模板分解为较小的可重用组件，并在部署时将其链接到一起。 还可以在一个模板中嵌套另一个模板。
 
 * **创建任何 Azure 资源**：可以立即在模板中使用新的 Azure 服务和功能。 一旦资源提供程序引入了新资源，你就可以通过模板立即部署这些资源。 在使用新服务之前，无需等待工具或模块完成更新。
 
-* **扩展性**：使用[部署脚本](deployment-script-template.md)时，可以将 PowerShell 或 Bash 脚本添加到模板。 使用部署脚本可扩展在部署过程中设置资源的功能。 脚本可以包含在模板中，也可存储在外部源中并在模板中引用。 使用部署脚本可以在单个 ARM 模板中完成端到端环境设置。
+    <!--Not Available on * **Extensibility**: With [deployment scripts](deployment-script-template.md)-->
 
 * **测试**：可以使用 ARM 模板工具包 (arm-ttk) 对模板进行测试，确保模板符合建议的准则。 此测试工具包是一个 PowerShell 脚本，可从 [GitHub](https://github.com/Azure/arm-ttk) 下载。 使用此工具包，可以更轻松地使用模板语言开发专门技术。
 

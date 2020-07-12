@@ -4,14 +4,16 @@ description: 获取 Consul 的概述
 author: rockboyfor
 ms.topic: article
 origin.date: 10/09/2019
-ms.date: 03/09/2020
+ms.date: 07/13/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 11afff6a8b88108cc5096d053c69a0eed78132dc
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2d654edefcc1e2f6f9265c329098de86db4a9884
+ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290710"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86218803"
 ---
 # <a name="consul"></a>Consul
 
@@ -37,7 +39,7 @@ ms.locfileid: "79290710"
 
 为工作负荷评估 Consul 时，请务必了解并考虑以下方面：
 
-- [Consul 原则](#consul-principles)
+- [Consul 准则](#consul-principles)
 - [功能](#capabilities)
 - [方案](#scenarios)
 
@@ -86,8 +88,9 @@ Consul 非常适合以下方案，建议采用：
 > [!div class="nextstepaction"]
 > [在 Azure Kubernetes 服务 (AKS) 中安装 Consul][consul-install]
 
-还可以进一步探索 Consul 的功能和体系结构：
+此外，还可以通过以下文章进一步了解 Consul 的功能和体系结构：
 
+- [Consul 入门教程][consul-getting-started]
 - [Consul 功能][consul-features]
 - [Consul 体系结构][consul-architecture]
 - [Consul - Connect 工作原理][consul-how-connect-works]
@@ -100,6 +103,7 @@ Consul 非常适合以下方案，建议采用：
 [consul-sidecar]: https://www.consul.io/docs/connect/proxies.html
 [consul-how-connect-works]: https://www.consul.io/docs/connect/connect-internals.html
 [consul-principles]: https://www.consul.io/
+[consul-getting-started]:https://learn.hashicorp.com/consul?track=gs-consul-service-mesh#gs-consul-service-mesh
 
 [envoy-proxy]: https://www.envoyproxy.io/
 [grafana]: https://grafana.com/

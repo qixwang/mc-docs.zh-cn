@@ -5,14 +5,16 @@ services: container-service
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 02/28/2019
-ms.date: 05/25/2020
+ms.date: 07/13/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: f224b9e47409ce2ae1d020c002505103970f17cf
-ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
+ms.openlocfilehash: 48fa4bd57ce33c18865a4d4d0fabd5bfd6df1ac1
+ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735107"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86218755"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的应用程序缩放选项
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 origin.date: 06/23/2020
 ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 765ad88330c8519ec4c3a65ef66b3612b958a09b
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+ms.openlocfilehash: 52f8fcef52a2a122b9db85feba407a4ce0288c90
+ms.sourcegitcommit: 873e5c5e4156efed505a78d4f5a6e50c494e76d4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323278"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86036739"
 ---
 <!--Verified successfully-->
 <!-- ONLY CHARACTOR CONTENT-->
@@ -79,7 +79,9 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
 在网关模式下，当你使用 Azure Cosmos DB API for MongoDB 时，Azure Cosmos DB 会使用端口 443 以及端口 10250、10255 和 10256。 端口 10250 映射到没有异地复制功能的默认 MongoDB 实例。 端口 10255 和 10256 映射到具有异地复制功能的 MongoDB 实例。
 
-在直接模式下使用时 TCP 时，除了网关端口，还需确保 10000 到 20000 这个范围的端口处于打开状态，因为 Azure Cosmos DB 使用动态 TCP 端口（在[专用终结点](./how-to-configure-private-endpoints.md)上使用直接模式时，必须打开所有 TCP 端口（即从 0 到 65535））。 默认情况下，标准 Azure VM 配置的端口是打开的。 如果这些端口未处于打开状态，你会在尝试使用 TCP 时收到“503 服务不可用”错误。 下表显示了可用于各种 API 的连接模式，以及用于每个 API 的服务端口：
+在直接模式下使用时 TCP 时，除了网关端口，还需确保 10000 到 20000 这个范围的端口处于打开状态，因为 Azure Cosmos DB 使用动态 TCP 端口（在专用终结点上使用直接模式时，必须打开所有 TCP 端口（即从 0 到 65535））。 默认情况下，标准 Azure VM 配置的端口是打开的。 如果这些端口未处于打开状态，你会在尝试使用 TCP 时收到“503 服务不可用”错误。 下表显示了可用于各种 API 的连接模式，以及用于每个 API 的服务端口：
+
+<!--Not Available on [private endpoints](./how-to-configure-private-endpoints.md)-->
 
 |连接模式  |支持的协议  |支持的 SDK  |API/服务端口  |
 |---------|---------|---------|---------|

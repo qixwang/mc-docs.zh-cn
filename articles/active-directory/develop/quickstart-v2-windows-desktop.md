@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 05/28/2020
+ms.date: 07/09/2020
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: eb7e638b8116eb9277fdf98fe5174ac7b99b193e
-ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
+ms.openlocfilehash: 060b503b4953b36113c9021462df6a132bc3f200
+ms.sourcegitcommit: 92b9b1387314b60661f5f62db4451c9ff2c49500
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84186873"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86164937"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>快速入门：获取令牌并从 Windows 桌面应用中调用 Microsoft Graph API
 
@@ -48,7 +48,7 @@ ms.locfileid: "84186873"
 >      - 选择“注册”以创建应用程序。
 > 1. 在应用的页面列表中，选择“身份验证”。
 > 1. 在“重定向 URI” | “建议用于公共客户端(移动、桌面)的重定向 URI”部分中，使用 **https://login.partner.microsoftonline.cn/common/oauth2/nativeclient** 。
-> 1. 选择“保存” 。
+> 1. 选择“保存”。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>步骤 1：在 Azure 门户中配置应用程序
@@ -127,7 +127,7 @@ PublicClientApplicationBuilder.Create(ClientId)
                 .Build();
 ```
 
-> |其中： ||
+> |其中： | 说明 |
 > |---------|---------|
 > | `ClientId` | 是在 Azure 门户中注册的应用程序的**应用程序(客户端) ID**。 可以在 Azure 门户的应用的“概览”页中找到此值。 |
 
@@ -149,9 +149,9 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(_scopes)
                                       .ExecuteAsync();
 ```
 
-> |其中：||
+> |其中：| 说明 |
 > |---------|---------|
-> | `_scopes` | 包含所请求的作用域，例如针对 Microsoft Graph 的 `{ "https://microsoftgraph.chinacloudapi.cn/user.read" }` 或针对自定义 Web API 的 `{ "api://<Application ID>/access_as_user" }`。 |
+> | `_scopes` | 包含所请求的范围，例如 `{ "https://microsoftgraph.chinacloudapi.cn/user.read" }`（针对 Microsoft Graph）或 `{ "api://<Application ID>/access_as_user" }`（针对自定义 Web API）。 |
 
 #### <a name="get-a-user-token-silently"></a>以无提示方式获取用户令牌
 
@@ -164,9 +164,9 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
                                       .ExecuteAsync();
 ```
 
-> |其中： ||
+> |其中： | 说明 |
 > |---------|---------|
-> | `scopes` | 包含所请求的作用域，例如针对 Microsoft Graph 的 `{ "https://microsoftgraph.chinacloudapi.cn/user.read" }` 或针对自定义 Web API 的 `{ "api://<Application ID>/access_as_user" }`。 |
+> | `scopes` | 包含所请求的范围，例如 `{ "https://microsoftgraph.chinacloudapi.cn/user.read" }`（针对 Microsoft Graph）或 `{ "api://<Application ID>/access_as_user" }`（针对自定义 Web API）。 |
 > | `firstAccount` | 指定缓存中的第一个用户（MSAL 支持单个应用中的多个用户）。 |
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

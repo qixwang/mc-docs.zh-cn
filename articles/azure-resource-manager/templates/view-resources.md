@@ -5,12 +5,12 @@ ms.topic: conceptual
 origin.date: 06/10/2020
 ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: 41ca903742400b5492e1398247d9bd3291dd4746
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: 664a1a974f8fe30d8f96f0c2a9da99a70937144c
+ms.sourcegitcommit: 873e5c5e4156efed505a78d4f5a6e50c494e76d4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85102047"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86036753"
 ---
 # <a name="discover-resource-properties"></a>发现资源属性
 
@@ -62,32 +62,7 @@ Visual Studio Code 和 Azure 资源管理器工具扩展有助于确切了解每
 
     ![Azure 门户资源浏览器存储帐户 sku](./media/view-resources/azure-portal-resource-explorer-sku.png)
 
-## <a name="use-resourcesazurecom"></a>使用 Resources.azure.com
-
-Resources.azure.com 是一个公共网站，可供具有 Azure 订阅的任何人员访问。 它现在是预览版。  请考虑改用“[资源浏览器](#use-resource-explorer)”。 此工具提供了这些功能：
-
-- 发现 Azure 资源管理 API。
-- 获取 API 文档和架构信息。
-- 直接在自己的订阅中进行 API 调用。
-
-若要演示如何通过使用此工具来检索架构信息，需要有一个存储帐户。 如果还没有，请选择以下按钮来创建一个：
-
-[![“部署到 Azure”](https://aka.ms/deploytoazurebutton)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-storage-account-create%2fazuredeploy.json)
-
-1. 浏览到 [resources.azure.com](https://resources.azure.com/)。 该工具填充左侧窗格需要几分钟时间。
-1. 选择“订阅”。
-
-    ![resource.azure.com api 映射](./media/view-resources/resources-azure-com-api-mapping.png)
-
-    左侧的节点与右侧的 API 调用匹配。 可通过选择“获取”按钮进行 API 调用。
-1. 从左侧展开“订阅”，然后展开你的 Azure 订阅。 在“提供程序”或“ResourceGroups”下可找到存储帐户。
-
-    - 提供程序：展开“提供程序” -> “Microsoft.Storage” -> “storageAccounts”，然后浏览到该存储帐户。
-    - ResourceGroups：选择包含该存储帐户的资源组，然后选择“资源”。
-
-    在右侧，可以看到现有存储帐户的 sku 配置，如下所示：
-
-    ![Azure 门户资源浏览器存储帐户 sku](./media/view-resources/azure-portal-resource-explorer-sku.png)
+<!--Not Available on ## Use Resources.azure.com-->
 
 ## <a name="next-steps"></a>后续步骤
 

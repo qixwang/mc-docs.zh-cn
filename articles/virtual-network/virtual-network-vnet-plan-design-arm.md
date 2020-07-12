@@ -11,14 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 04/08/2020
-ms.date: 06/15/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 904d495bd7e36a8cd808b204c3ab473b659fc854
-ms.sourcegitcommit: ff67734e01c004be575782b4812cfe857e435f4d
+ms.openlocfilehash: 488fa7cb6988bf6bc8117b40dcc858ed82598821
+ms.sourcegitcommit: af71b9199d47fb81e85d70da0cfb265cc814a644
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84487064"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85969037"
 ---
 # <a name="plan-virtual-networks"></a>计划虚拟网络
 
@@ -37,7 +37,6 @@ ms.locfileid: "84487064"
     
     <!--CORRECT ON [Azure geographies](https://azure.microsoft.com/global-infrastructure/geographies/) -->
     
-    <!--Not Available on -->
     <!-- Not Available on [Availability zones](../availability-zones/az-overview.md?toc=%2fvirtual-network%2ftoc.json)-->
 
 ## <a name="subscriptions"></a>订阅
