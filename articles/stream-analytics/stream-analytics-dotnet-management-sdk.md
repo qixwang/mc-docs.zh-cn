@@ -1,20 +1,20 @@
 ---
 title: 用于 Azure 流分析的管理 .NET SDK
 description: 流分析管理 .NET SDK 入门。 了解如何设置和运行分析作业。 创建项目、输入、输出和转换。
-author: lingliw
-ms.author: v-lingwu
-manager: digimobile
-ms.reviewer: jasonh
+author: Johnnytechn
+ms.author: v-johya
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 12/06/2018
-ms.date: 07/12/2019
-ms.openlocfilehash: 3083ef5841f5e8be667bd78e56ef7c4882e321aa
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 07/06/2020
+ms.custom: seodec18
+ms.openlocfilehash: a2f5a89bd06aba0d93cb556e98e0226e94a886c7
+ms.sourcegitcommit: 9bc3e55f01e0999f05e7b4ebaea95f3ac91d32eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75857014"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86225983"
 ---
 # <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Management .NET SDK：使用用于 .NET 的 Azure 流分析 API 设置和运行分析作业
 了解如何通过管理 .NET SDK 设置和运行使用 .NET 版流分析 API 的分析作业。 设置项目、创建输入和输出源、转换，以及开始和停止作业。 就分析作业来说，可以从 Blob 存储或事件中心流式传输数据。
@@ -24,14 +24,15 @@ ms.locfileid: "75857014"
 Azure 流分析是一种完全托管的服务，可以在云中通过流式数据处理复杂的事件，具有延迟性低、可用性高和大小灵活等特点。 客户可以使用流分析来设置流式处理作业，分析数据流和进行近实时分析。  
 
 > [!NOTE]
-> 本文中的示例代码已使用 Azure 流分析的 Management .NET SDK v2.x 版本进行了更新。 有关使用旧版 (1.x) SDK 的示例代码，请参阅[使用流分析的 Management .NET SDK v1.x ](/stream-analytics/stream-analytics-dotnet-management-sdk-v1)。
+> 本文中的示例代码已使用 Azure 流分析的 Management .NET SDK v2.x 版本进行了更新。 有关使用旧版 (1.x) SDK 的示例代码，请参阅[使用流分析的 Management .NET SDK v1.x ](/stream-analytics/stream-analytics-dotnet-management-sdk)。
+<!--Correct in MC: /stream-analytics/stream-analytics-dotnet-management-sdk-->
 
 ## <a name="prerequisites"></a>先决条件
 在开始阅读本文前，必须完成以下要求：
 
 * 安装 Visual Studio 2019 或 2015。
-* 下载并安装 [Azure .NET SDK](https://azure.microsoft.com/downloads/)。
-* 在订阅中创建 Azure 资源组。 以下示例是 Azure PowerShell 脚本示例。 有关 Azure PowerShell 的信息，请参阅 [安装和配置 Azure PowerShell](https://docs.microsoft.com//powershell/azure/overview)；  
+* 下载并安装 [Azure .NET SDK](/downloads/)。
+* 在订阅中创建 Azure 资源组。 以下示例是 Azure PowerShell 脚本示例。 有关 Azure PowerShell 的信息，请参阅 [安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)；  
 
    ```powershell
    # Log in to your Azure account
@@ -105,7 +106,7 @@ Azure 流分析是一种完全托管的服务，可以在云中通过流式数�
    {
        var activeDirectoryClientSettings = ActiveDirectoryClientSettings.UsePromptOnly(ConfigurationManager.AppSettings["ClientId"], new Uri("urn:ietf:wg:oauth:2.0:oob"));
        ServiceClientCredentials credentials = await UserTokenProvider.LoginWithPromptAsync(ConfigurationManager.AppSettings["ActiveDirectoryTenantId"], activeDirectoryClientSettings);
-
+       
        return credentials;
     }
    ```
@@ -121,12 +122,12 @@ Azure 流分析是一种完全托管的服务，可以在云中通过流式数�
     string inputName = "<YOUR JOB INPUT NAME>";
     string transformationName = "<YOUR JOB TRANSFORMATION NAME>";
     string outputName = "<YOUR JOB OUTPUT NAME>";
-
+    
     SynchronizationContext.SetSynchronizationContext(new SynchronizationContext());
-
+    
     // Get credentials
     ServiceClientCredentials credentials = GetCredentials().Result;
-
+    
     // Create Stream Analytics management client
     StreamAnalyticsManagementClient streamAnalyticsManagementClient = new StreamAnalyticsManagementClient(credentials)
     {
@@ -286,7 +287,7 @@ Azure 流分析是一种完全托管的服务，可以在云中通过流式数�
    ```
 
 ## <a name="get-support"></a>获取支持
-如需更多帮助，请尝试访问我们的 [Azure 流分析论坛](https://www.azure.cn/support/contact/)。
+如需进一步的帮助，请参阅[ Azure 流分析的 Microsoft 问答问题页面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)。
 
 ## <a name="next-steps"></a>后续步骤
 现已学习了使用 .NET SDK 创建和运行分析作业的基础知识。 要了解更多信息，请参阅下列文章：
@@ -295,7 +296,7 @@ Azure 流分析是一种完全托管的服务，可以在云中通过流式数�
 * [Azure 流分析入门](stream-analytics-real-time-fraud-detection.md)
 * [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
 * [Azure 流分析管理 .NET SDK](https://msdn.microsoft.com/library/azure/dn889315.aspx)。
-* [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Azure 流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
 <!--Image references-->
@@ -318,4 +319,3 @@ Azure 流分析是一种完全托管的服务，可以在云中通过流式数�
 <!-- Not Avaialble on [stream.analytics.developer.guide]: stream-analytics-developer-guide.md -->
 [stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md [stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299 [stream.analytics.rest.api.reference]: https://go.microsoft.com/fwlink/?LinkId=517301
 
-<!--Update_Description: update meta properties, wording update, update link -->
