@@ -24186,31 +24186,6 @@
       "redirect_url": "/security-center/security-center-alerts-overview",
       "redirect_document_id": false
     },
-    {
-      "source_path": "articles/azure-stack/operator/azure-stack-help-and-support-overview.md",
-      "redirect_url": "/azure-stack/operator/azure-stack-help-and-support-overview-tzl",
-      "redirect_document_id": false
-    },
-    {
-      "source_path": "articles/azure-stack/operator/azure-stack-best-practices-automatic-diagnostic-log-collection.md",
-      "redirect_url": "/azure-stack/operator/azure-stack-help-and-support-overview-tzl",
-      "redirect_document_id": true
-    },
-    {
-      "source_path": "articles/azure-stack/operator/azure-stack-diagnostic-log-collection-overview.md",
-      "redirect_url": "/azure-stack/operator/azure-stack-diagnostic-log-collection-overview-tzl",
-      "redirect_document_id": false
-    },
-    {
-      "source_path": "articles/azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection.md",
-      "redirect_url": "/azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection-portal-tzl",
-      "redirect_document_id": false
-    },
-    {
-      "source_path": "articles/azure-stack/operator/azure-stack-configure-automatic-diagnostic-log-collection.md",
-      "redirect_url": "/azure-stack/operator/azure-stack-configure-automatic-diagnostic-log-collection-tzl",
-      "redirect_document_id": false
-    },
     { 
       "source_path": "articles/azure-stack/operator/azure-stack-hci-overview.md", 
       "redirect_url": "/azure-stack/hci/overview", 
@@ -26463,7 +26438,45 @@
       "source_path": "articles/sql-database/elastic-jobs-powershell.md",
       "redirect_url": "/azure/azure-sql/database/elastic-jobs-powershell-create",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/azure-stack/operator/azure-stack-diagnostic-log-collection-overview-tzl.md", 
+      "redirect_url": "/azure-stack/operator/azure-stack-diagnostic-log-collection-overview", 
+      "redirect_document_id": true 
+    },
+    { 
+      "source_path": "articles/azure-stack/operator/azure-stack-configure-automatic-diagnostic-log-collection-tzl.md", 
+      "redirect_url": "/azure-stack/operator/azure-stack-configure-automatic-diagnostic-log-collection", 
+      "redirect_document_id": true 
+    },
+    { 
+      "source_path": "articles/azure-stack/operator/azure-stack-help-and-support-overview-tzl.md", 
+      "redirect_url": "/azure-stack/operator/azure-stack-help-and-support-overview", 
+      "redirect_document_id": true 
+    },
+    { 
+      "source_path": "articles/azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection-portal-tzl.md", 
+      "redirect_url": "/azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection-portal", 
+      "redirect_document_id": true 
+    },
+    { 
+      "source_path": "articles/azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection-powershell-tzl.md", 
+      "redirect_url": "/azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection-powershell", 
+      "redirect_document_id": true 
+    },
+    {
+      "source_path": "articles/azure-stack/user/azure-stack-solution-pipeline.md",
+      "redirect_url": "https://aka.ms/hybriddevopsdeploy",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/azure-stack/operator/azure-stack-best-practices-automatic-diagnostic-log-collection.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-overview",
+      "redirect_document_id": false
     }
+
+
+
 
 
 
