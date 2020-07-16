@@ -7,21 +7,21 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 08/30/2019
-ms.date: 06/09/2020
-ms.openlocfilehash: f24d376f42baab2f070ca1f6c8c4c562c630c45b
-ms.sourcegitcommit: 73697fa9c19a40d235df033400c74741e7d0f3f4
+ms.date: 07/08/2020
+ms.openlocfilehash: dd8b3e326f978e0dc947de13e3c95db1a5cf6e64
+ms.sourcegitcommit: 5fb9ae9adc04e79d6d0e78c9e69dbe8aa3ceb00a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84574895"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86100216"
 ---
 # <a name="streaming-ingestion-preview"></a>流式引入（预览版）
 
 对于不同的量级数据，当需要低延迟且引入时间小于 10 秒时，请使用流式引入。 它用于优化一个或多个数据库中多个表的操作处理，其中进入每个表的数据流相对较小（每秒很少条记录），但总体数据引入量较高（每秒数千条记录）。 
 
-当每个表的数据量增大到每秒 1 MB 以上时，请使用批量引入而不是流式引入。 请阅读[数据引入概述](ingest-data-overview.md)来详细了解各种引入方法。
+当每张表的数据量每小时增加到 4 GB 以上时，请批量引入而不是流式引入。 请阅读[数据引入概述](ingest-data-overview.md)来详细了解各种引入方法。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 如果没有 Azure 订阅，请在开始前创建一个[试用 Azure 帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 * 登录到 [Web UI](https://dataexplorer.azure.cn/)。
@@ -32,9 +32,9 @@ ms.locfileid: "84574895"
 > [!WARNING]
 > 启用流式引入之前，请查看[限制](#limitations)。
 
-1. 在 Azure 门户中，转到 Azure 数据资源管理器群集。 在“设置”中选择“配置”。   
-1. 在“配置”窗格中，选择“打开”以启用“流式引入”。   
-1. 选择“保存”。 
+1. 在 Azure 门户中，转到 Azure 数据资源管理器群集。 在“设置”中选择“配置”。  
+1. 在“配置”窗格中，选择“打开”以启用“流式引入”。  
+1. 选择“保存” 。
  
     ![打开流式引入](media/ingest-data-streaming/streaming-ingestion-on.png)
  
@@ -48,9 +48,8 @@ ms.locfileid: "84574895"
 
 支持两种流式引入类型：
 
-
-* 用作数据源的[事件中心  ](ingest-data-event-hub.md)
-* **自定义引入**需要编写使用某个 Azure 数据资源管理器客户端库的应用程序。 有关示例应用程序，请参阅[流式引入示例](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample)。
+* [事件中心](ingest-data-event-hub.md)，充当数据源。
+* “自定义引入”需要编写使用某个 Azure 数据资源管理器[客户端库](https://docs.microsoft.com/azure/data-explorer/kusto/api/client-libraries)之一的应用程序。 有关示例应用程序，请参阅[流式引入示例](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample)。
 
 ### <a name="choose-the-appropriate-streaming-ingestion-type"></a>选择适当的流式引入类型
 
@@ -65,18 +64,19 @@ ms.locfileid: "84574895"
 > 禁用流式引入可能需要几个小时。
 
 1. 从所有相关表和数据库中删除[流式引入策略](https://docs.microsoft.com/azure/data-explorer/kusto/management/streamingingestionpolicy)。 删除流式引入策略会触发将流式引入数据从初始存储移到列存储中的永久存储（盘区或分片）的行为。 数据移动的持续时间从几秒钟到几小时不等，具体取决于初始存储中的数据量，以及群集使用 CPU 和内存的方式。
-1. 在 Azure 门户中，转到 Azure 数据资源管理器群集。 在“设置”中选择“配置”。   
-1. 在“配置”窗格中，选择“关闭”以禁用“流式引入”。   
-1. 选择“保存”。 
+1. 在 Azure 门户中，转到 Azure 数据资源管理器群集。 在“设置”中选择“配置”。 
+1. 在“配置”窗格中，选择“关闭”以禁用“流式引入”。  
+1. 选择“保存” 。
 
     ![关闭流式引入](media/ingest-data-streaming/streaming-ingestion-off.png)
 
 ## <a name="limitations"></a>限制
 
-* 流式引入不支持[数据库游标](https://docs.microsoft.com/azure/data-explorer/kusto/management/databasecursor)或[数据映射](https://docs.microsoft.com/azure/data-explorer/kusto/management/mappings)。 仅支持[预先创建](https://docs.microsoft.com/azure/data-explorer/kusto/management/create-ingestion-mapping-command)的数据映射。 
-* 增大 VM 和群集大小可以提高流式引入的性能和容量。 并发引入限制为每个核心 6 个引入。 例如，对于 16 核 SKU（如 D14 和 L16），支持的最大负载为 96 个并发引入。 对于双核 SKU（例如 D11），支持的最大负载为 12 个并发引入。
-* 每个引入请求的数据大小限制为 4 MB。
-* 对流式引入服务进行架构更新（例如创建和修改表与引入映射）最长可能需要花费 5 分钟时间。
+* 如果数据库本身或其任何表已定义并启用了[流式引入策略](https://docs.microsoft.com/azure/data-explorer/kusto/management/streamingingestionpolicy)，则数据库不支持[数据库游标](https://docs.microsoft.com/azure/data-explorer/kusto/management/databasecursor)。
+* [数据映射](](https://docs.microsoft.com/azure/data-explorer/kusto/management/mappings) 必须是 [预先创建的](](https://docs.microsoft.com/azure/data-explorer/kusto/management/create-ingestion-mapping-command) 以便在流式引入中使用。 单个流式处理引入请求不包含内联数据映射。
+* 增大 VM 和群集大小可以提高流式引入的性能和容量。 并发引入请求数量限制为每个核心六个。 例如，对于 16 核 SKU（如 D14 和 L16），支持的最大负载为 96 个并发引入请求。 对于双核 SKU（例如 D11），支持的最大负载为 12 个并发引入请求。
+* 每个流式引入请求的数据大小限制为 4 MB。
+* 对流式引入服务进行架构更新（例如创建和修改表与引入映射）最长可能需要花费 5 分钟时间。 有关详细信息，请参阅 [流式引入和架构更改]（]（ https://docs.microsoft.com/azure/data-explorer/kusto/management/data-ingestion/streaming-ingestion-schema-changes) 。
 * 即使数据不是流式引入的，在群集上启用流式引入也会占用群集计算机的一部分本地 SSD 磁盘用于存储流式引入数据，因此会减少热缓存的可用存储。
 * [盘区标记](https://docs.microsoft.com/azure/data-explorer/kusto/management/extents-overview#extent-tagging)不能在流式引入数据上设置。
 

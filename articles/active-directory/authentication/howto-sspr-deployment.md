@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 04/24/2020
+ms.date: 07/07/2020
 ms.author: v-junlch
 author: barbaraselden
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 967c498b46375cda141feb07e9e212f477d518a4
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 0d0efcef4db0635047127d6a7b54346e9f46beff
+ms.sourcegitcommit: 92b9b1387314b60661f5f62db4451c9ff2c49500
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126346"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165010"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>规划 Azure Active Directory 自助式密码重置部署
 
@@ -31,7 +31,7 @@ SSPR 提供以下重要功能：
 
 * 自助式服务可让最终用户重置其过期或未过期的密码，而无需请求管理员或帮助台提供支持。
 * [密码写回](/active-directory/authentication/concept-sspr-writeback)可以通过云管理本地密码以及解决帐户锁定问题。
-* 密码管理活动报告使管理员可以深入了解发生在其组织中的密码重置和注册活动。
+* 借助密码管理活动报告，管理员能够深入了解发生在其组织中的密码重置和注册活动。
 
 本部署指南展示了如何规划并测试 SSPR 推出策略。
 
@@ -77,7 +77,7 @@ Azure Active Directory 按用户许可，这意味着，每个用户需要为其
 | - | - |
 | |[如何为 Azure AD 中的用户配置自助式密码重置？](https://azure.microsoft.com/resources/videos/self-service-password-reset-azure-ad/) |
 | 在线课程|[管理 Azure Active Directory 中的标识](https://www.pluralsight.com/courses/microsoft-azure-active-directory-managing-identities) 使用 SSPR 为用户指定新式受保护体验。 请专门参阅[管理 Azure Active Directory 用户和组](https://app.pluralsight.com/library/courses/microsoft-azure-active-directory-managing-identities/table-of-contents)模块。 |
-|Pluralsight 付费课程 |[标识和访问管理的问题](https://www.pluralsight.com/courses/identity-access-management-issues) 了解在组织中要注意的 IAM 和安全问题。 请专门参阅“其他身份验证方法”模块。|
+|Pluralsight 付费课程 |[标识和访问管理问题](https://www.pluralsight.com/courses/identity-access-management-issues) 了解你的组织中需要得到关注的 IAM 和安全问题。 请专门参阅“其他身份验证方法”模块。|
 | |[Microsoft 企业移动性套件入门](https://www.pluralsight.com/courses/microsoft-enterprise-mobility-suite-getting-started) 了解有关以支持身份验证、授权、加密和安全移动体验的方式，将本地资产扩展到云的最佳做法。 请专门参阅“配置 Azure Active Directory Premium 的高级功能”模块。
 |教程 |[完成 Azure AD 自助式密码重置试点推行](/active-directory/authentication/tutorial-sspr-pilot) |
 | |[启用密码写回](/active-directory/authentication/tutorial-enable-writeback) |
@@ -103,9 +103,9 @@ Azure Active Directory 按用户许可，这意味着，每个用户需要为其
 
 ### <a name="best-practices"></a>最佳实践
 
-连同组织中的其他常用应用程序或服务一起部署 SSPR 可帮助用户快速完成注册。 此操作会产生大量的登录，并推动注册过程。
+连同组织中的其他常用应用程序或服务一起部署 SSPR 可帮助用户快速完成注册。 此操作会产生大量登录，可推进注册操作。
 
-在部署 SSPR 之前，可以确定与密码重置相关的呼叫次数，以及每次呼叫的平均成本。 部署后，可以使用此数据来展示 SSPR 为组织带来的价值。
+在部署 SSPR 之前，可以选择确定每个密码重置调用的数量和平均成本。 可以使用此“数据发布”部署来展示 SSPR 为组织带来的价值。
 
 #### <a name="enable-combined-registration-for-sspr-and-mfa"></a>启用 SSPR 和 MFA 的组合注册
 
@@ -117,14 +117,14 @@ Microsoft 建议组织为 SSPR 和多重身份验证启用组合注册体验。 
 
 在环境中确定此部署的策略时，请考虑组织的需求。
 
-### <a name="engage-the-right-stakeholders"></a>吸引适当的利益干系人
+### <a name="engage-the-right-stakeholders"></a>让合适的利益干系人参与
 
 当技术项目失败时，失败的原因往往是对影响、结果和责任的预期不符。 若要避免这些问题，请确保吸引适当的利益干系人，并通过阐述利益干系人及其项目输入和责任，来充分了解项目中的利益干系人角色。
 
 #### <a name="required-administrator-roles"></a>所需的管理员角色
 
 
-| 业务角色/角色| Azure AD 角色（如果需要） |
+| 业务角色/角色| Azure AD 角色（如有必要） |
 | - | - |
 | 1 级支持人员| 密码管理员 |
 | 2 级支持人员| 用户管理员 |
@@ -133,7 +133,7 @@ Microsoft 建议组织为 SSPR 和多重身份验证启用组合注册体验。 
 
 ### <a name="plan-communications"></a>规划沟通
 
-沟通对于任何新服务的成功至关重要。 主动与用户沟通，告诉他们其体验会发怎样的变化，何时会有变化，以及在遇到问题时如何获取支持。 有关如何规划最终用户沟通策略的思路，请参阅 [Microsoft 下载中心上的自助式密码重置推广材料](https://www.microsoft.com/download/details.aspx?id=56768)。
+通信对于任何新服务的成功至关重要。 主动与用户沟通，告诉他们其体验会发怎样的变化，何时会有变化，以及在遇到问题时如何获取支持。 请查看 [Microsoft 下载中心上的自助式密码重置推出材料](https://www.microsoft.com/download/details.aspx?id=56768)，了解有关如何规划最终用户通信策略的建议。
 
 ### <a name="plan-a-pilot"></a>规划试点
 
@@ -143,11 +143,11 @@ Microsoft 建议组织为 SSPR 和多重身份验证启用组合注册体验。 
 
 ## <a name="plan-configuration"></a>规划配置
 
-下面是启用 SSPR 所需的设置及其建议值。
+若要启用 SSPR 并使用推荐值，需要以下设置。
 
 | 区域 | 设置 | Value |
 | --- | --- | --- |
-| **SSPR 属性** | 已启用自助式密码重置 | 在试运行环境中为“选定组”/在生产环境中为“全部”   |
+| **SSPR 属性** | 已启用自助式密码重置 | 在试运行环境中为“选定组”/在生产环境中为“全部”  |
 | **身份验证方法** | 注册所需的身份验证方法数 | 至少比重置所需的数目多 1 个 |
 |   | 重置所需的身份验证方法数 | 1 或 2 |
 | **注册** | 要求用户在登录时注册 | 是 |
@@ -163,7 +163,7 @@ Microsoft 建议组织为 SSPR 和多重身份验证启用组合注册体验。 
 
 启用 SSPR 时，请在试点环境中选择适当的安全组。
 
-* 若要为每个人强制实施 SSPR 注册，我们建议使用“全部”选项。 
+* 若要为每个人强制实施 SSPR 注册，我们建议使用“全部”选项。
 * 否则，请选择适当的 Azure AD 或 AD 安全组。
 
 ### <a name="authentication-methods"></a>身份验证方法
@@ -172,25 +172,25 @@ Microsoft 建议组织为 SSPR 和多重身份验证启用组合注册体验。 
 
 我们建议使用以下身份验证方法设置：
 
-* 将“注册所需的身份验证方法数”设置为至少比重置所需的身份验证方法数多 1 个。  允许使用多种身份验证方法可让用户在需要重置时获得灵活性。
+* 将“注册所需的身份验证方法数”设置为至少比重置所需的身份验证方法数多 1 个。 允许使用多种身份验证方法可让用户在需要重置时获得灵活性。
 
-* 将“重置所需的方法数”设置为适合组织的级别。  使用 1 个可以尽量消除不便，但使用 2 个可以改善安全态势。 
+* 将“重置时所需的方法数”设置为适合你的组织的数量。 如果只设置一种方法，只能提供最低程度的安全保障，设置两种就可能进一步改善安全状况。 
 
 注意：必须根据 [Azure Active Directory 中的密码策略和限制](/active-directory/authentication/concept-sspr-policy)为用户配置身份验证方法。
 
 ### <a name="registration-settings"></a>注册设置
 
-将“要求用户在登录时注册”设置为“是”。   此设置要求用户在登录时注册，确保所有用户受到保护。
+将“要求用户在登录时注册”设置为“是” 。 此设置要求用户在登录时注册，确保所有用户受到保护。
 
-将“用户必须在几天后重新确认其身份验证信息”设置为 **90** 到 **180** 天，除非组织需要使用更短的时限。 
+将“用户必须在几天后重新确认其身份验证信息”设置为 **90** 到 **180** 天，除非组织需要使用更短的时限。
 
 ### <a name="notifications-settings"></a>通知设置
 
-将“重置密码时通知用户”和“当其他管理员重置其密码时通知所有管理员”都设置为“是”。    对这两个选项都选择“是”可以提高安全性，因为这可以确保用户知道其密码已重置。  此外，可以确保当某个管理员更改密码时，所有管理员都知道这种情况。 如果用户或管理员收到通知但他们并未发起更改，他们可以立即报告潜在的安全问题。
+将“在密码重置时通知用户”和“当有管理员重置其密码时通知所有管理员”均设置为“是”  。 对这两个选项都选择“是”可以提高安全性，因为这可以确保用户知道其密码已重置。 此外，可以确保当某个管理员更改密码时，所有管理员都知道这种情况。 如果用户或管理员收到通知但他们并未发起更改，他们可以立即报告潜在的安全问题。
 
 ### <a name="customization-settings"></a>自定义设置
 
-自定义支持电子邮件或 URL，确保遇到问题的用户能够立即获得帮助，这一点至关重要。 请将此选项设置为用户熟悉的常见服务台电子邮件地址或网页。 
+自定义支持电子邮件或 URL，确保遇到问题的用户能够立即获得帮助，这一点至关重要。 将此选项设置为用户熟悉的常见支持人员电子邮件地址或网页。 
 
 有关详细信息，请参阅[自定义自助式密码重置的 Azure AD 功能](/active-directory/authentication/concept-sspr-customization)。
 
@@ -200,8 +200,8 @@ Microsoft 建议组织为 SSPR 和多重身份验证启用组合注册体验。 
 
 我们建议使用以下设置：
 
-* 确保“将密码写回到本地 AD”设置为“是”。   
-* 将“允许用户在不重置密码的情况下解锁帐户”设置为“是”。  
+* 确保“将密码写回到本地 AD”设置为“是”。  
+* 将“允许用户在不重置密码的情况下解锁帐户”设置为“是”。 
 
 默认情况下，Azure AD 在执行密码重置时会解锁帐户。
 
@@ -216,7 +216,7 @@ Microsoft 建议组织为 SSPR 和多重身份验证启用组合注册体验。 
 
 ### <a name="environments-with-multiple-identity-management-systems"></a>具有多个标识管理系统的环境
 
-某些环境包含多个标识管理系统。 Oracle AM 和 SiteMinder 等本地标识管理器要求与 AD 同步以管理密码。 为此，可以配合 Microsoft Identity Manager (MIM) 使用密码更改通知服务 (PCNS) 之类的工具。 若要查找有关此类较复杂方案的信息，请参阅[在域控制器上部署 MIM 密码更改通知服务](https://docs.microsoft.com/microsoft-identity-manager/deploying-mim-password-change-notification-service-on-domain-controller)一文。
+某些环境具有多个标识管理系统。 Oracle AM 和 SiteMinder 等本地标识管理器要求与 AD 同步以管理密码。 为此，可以将密码更改通知服务 (PCNS) 这类工具与 Microsoft Identity Manager (MIM) 配合使用。 若要查找更为复杂的相关方案的信息，请参阅文章[在域控制器上部署 MIM 密码更改通知服务](https://docs.microsoft.com/microsoft-identity-manager/deploying-mim-password-change-notification-service-on-domain-controller)。
 
 ## <a name="plan-testing-and-support"></a>规划测试和支持
 
@@ -232,31 +232,31 @@ Microsoft 建议组织为 SSPR 和多重身份验证启用组合注册体验。 
 
 | 业务案例| 预期结果 |
 | - | - |
-| 可从企业网络内部访问 SSPR 门户| 由组织确定 |
+| 可以从企业网络内部访问 SSPR 门户| 由组织确定 |
 | 可从企业网络外部访问 SSPR 门户| 由组织确定 |
 | 未为用户启用密码重置时从浏览器重置用户密码| 用户无法访问密码重置流 |
 | 用户未注册密码重置时从浏览器重置用户密码| 用户无法访问密码重置流 |
 | 强制实施密码重置注册时用户登录| 提示用户注册安全信息 |
 | 密码重置注册完成时用户登录| 提示用户注册安全信息 |
-| 当用户没有许可证时可以访问 SSPR 门户| 可访问 |
+| 当用户没有许可证时，可以访问 SSPR 门户| 可访问 |
 | 从已加入 Windows 10 Azure AD 或已加入混合 Azure AD 的设备锁屏界面重置用户密码| 用户可以重置密码 |
-| 管理员可以近实时地使用 SSPR 注册和使用情况数据| 可通过审核日志使用 |
+| 管理员可以近实时地使用 SSPR 注册和使用情况数据| 可通过审核日志获取 |
 
 另请参阅 [全面完成 Azure AD 自助式密码重置试点推行](/active-directory/authentication/tutorial-sspr-pilot)。 在本教程中，你将在组织中启用 SSPR 的试点推行，并使用非管理员帐户进行测试。
 
 ### <a name="plan-support"></a>规划支持
 
-尽管 SSPR 通常不会产生用户问题，但支持人员必须准备好应对可能出现的问题。 尽管管理员可以通过 Azure AD 门户重置最终用户的密码，但最好是帮助最终用户通过自助支持过程来解决问题。
+尽管 SSPR 通常不会产生用户问题，但支持人员必须准备好应对可能出现的问题。 虽然管理员可以通过 Azure AD 门户为最终用户重置密码，但最好是借助自助式支持过程来解决问题。
 
 为使支持团队取得成功，可以根据用户发来的问题撰写常见问题解答。 以下是一些示例：
 
 | 方案| 说明 |
 | - | - |
-| 用户无法使用任何已注册的身份验证方法| 用户正在尝试重置其密码，但无法使用已注册的任何身份验证方法（例如：其手机遗忘在家中，并且无法访问电子邮件） |
-| 用户的办公电话或手机上未收到短信或呼叫| 用户正在尝试通过短信或呼叫来验证其身份，但未收到短信/呼叫。 |
+| 用户无法使用任何已注册的可用身份验证方法| 用户正在尝试重置其密码，但无法使用已注册的任何身份验证方法（例如：其手机遗忘在家中，并且无法访问电子邮件） |
+| 用户未在其办公室电话或手机上收到短信或呼叫| 用户正在尝试通过短信或呼叫来验证其身份，但未收到短信/呼叫。 |
 | 用户无法访问密码重置门户| 用户想要重置其密码，但未启用密码重置，因此无法访问该页来更新密码。 |
 | 用户无法设置新密码| 用户在密码重置流期间完成了验证，但无法设置新密码。 |
-| 用户在 Windows 10 设备上未看到“重置密码”链接| 用户正在尝试从 Windows 10 锁屏界面重置密码，但该设备未加入 Azure AD，或者未启用 Intune 设备策略 |
+| 用户在 Windows 10 设备上未看到“重置密码”链接| 用户尝试从 Windows 10 锁屏界面重置密码，但设备未加入 Azure AD，或 Intune 设备策略未启用 |
 
 ### <a name="plan-rollback"></a>规划回滚
 

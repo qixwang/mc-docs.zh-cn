@@ -4,19 +4,19 @@ description: 了解如何设计条件访问策略，并在组织中有效地部�
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: conceptual
-ms.date: 07/01/2020
+ms.topic: how-to
+ms.date: 07/08/2020
 ms.author: v-junlch
 author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88e434124ab04fd7a145915c8d241ab6404eb258
-ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
+ms.openlocfilehash: df6bd276bac4532165af70f8d69277d8fa1bc126
+ms.sourcegitcommit: 92b9b1387314b60661f5f62db4451c9ff2c49500
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85945145"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86164992"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>计划条件访问部署
 
@@ -188,7 +188,7 @@ CA 策略是 if-then 语句：如果满足分配条件，则应用这些访问�
 
 ### <a name="minimize-the-number-of-ca-policies"></a>最大程度地减少 CA 策略的数量
 
-为每个应用创建一个策略并不是很有效，而且会导致难以管理。 条件访问只会对每个用户应用前 195 个策略。 我们建议你对应用进行分析，并按对相同用户具有相同的资源要求将应用分组。 例如，如果所有 Office 365 应用或所有 HR 应用对相同用户具有相同的要求，请创建一个策略，并包括应用该策略的所有应用。 
+为每个应用创建一个策略并不是很有效，而且会导致难以管理。 条件访问只会对每个用户应用前 195 个策略。 我们建议你对应用进行分析，并按对相同用户具有相同的资源要求将应用分组。 例如，如果所有 Microsoft 365 应用或所有 HR 应用对同一用户具有相同的要求，请创建一个策略，并包括应用该策略的所有应用。 
 
 ### <a name="set-up-emergency-access-accounts"></a>设置紧急访问帐户
 

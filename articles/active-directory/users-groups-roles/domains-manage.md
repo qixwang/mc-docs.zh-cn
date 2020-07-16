@@ -8,18 +8,18 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
-ms.date: 06/01/2020
+ms.topic: how-to
+ms.date: 07/06/2020
 ms.author: v-junlch
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc653e3fccddf627c1ec960a82585af6d2d8a058
-ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
+ms.openlocfilehash: 228f3007041c8277f0a3a95d086d2427b7234ba5
+ms.sourcegitcommit: 92b9b1387314b60661f5f62db4451c9ff2c49500
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84275587"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165032"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>管理 Azure Active Directory 中的自定义域名
 
@@ -48,6 +48,10 @@ ms.locfileid: "84275587"
 ## <a name="add-subdomains-of-a-custom-domain"></a>添加自定义域的子域
 
 如果想要将第三级域名（如 “test.contoso.com”）添加到目录，则应首先添加并验证第二级域，例如 contoso.com。 子域由 Azure AD 自动验证。 若要查看添加的子域是否已验证，请在浏览器中刷新域列表。
+
+注意
+
+如果已将 contoso.com 域添加到 Azure AD 租户，则还可以将子域 test.contoso.com 添加到第二个 Azure AD 租户。 添加子域时，系统将提示在 DNS 宿主提供程序中添加 TXT 记录。
 
 ## <a name="what-to-do-if-you-change-the-dns-registrar-for-your-custom-domain-name"></a>更改自定义域名的 DNS 注册机构会发生什么情况
 

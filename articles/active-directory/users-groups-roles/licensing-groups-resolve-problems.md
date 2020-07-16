@@ -8,19 +8,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
-ms.date: 06/01/2020
+ms.date: 07/06/2020
 ms.author: v-junlch
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 963236e7be934977cc8d6d91ab3c4e61b1371649
-ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
+ms.openlocfilehash: 02a0074fb4528f788f1d84810656e9f470113aa5
+ms.sourcegitcommit: 92b9b1387314b60661f5f62db4451c9ff2c49500
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84275594"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165033"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>识别和解决 Azure Active Directory 中组的许可证分配问题
 
@@ -120,7 +120,7 @@ Azure Active Directory (Azure AD) 中基于组的许可引入了处于许可错�
 ## <a name="licenseassignmentattributeconcurrencyexception-in-audit-logs"></a>审核日志中的 LicenseAssignmentAttributeConcurrencyException
 
 **问题：** 用户在审核日志中有针对许可证分配的 LicenseAssignmentAttributeConcurrencyException。
-当基于组的许可尝试处理对某个用户进行的相同许可证的并发许可证分配时，将在该用户上记录此异常。 当用户是分配有相同许可证的多个组的成员时，通常会发生这种情况。 Azure AD 将重试处理用户许可证，并解决此问题。 客户无需执行任何操作即可解决此问题。
+当基于组的许可尝试处理对某个用户进行的相同许可证的并发许可证分配时，将在该用户上记录此异常。 当用户是分配有相同许可证的多个组的成员时，通常会发生这种情况。 Azure AD 将重新尝试处理用户许可证，并解决此问题。 客户无需执行任何操作即可解决此问题。
 
 ## <a name="more-than-one-product-license-assigned-to-a-group"></a>分配给一个组的多个产品许可证
 

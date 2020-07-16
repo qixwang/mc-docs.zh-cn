@@ -8,12 +8,13 @@ origin.date: 04/13/2020
 ms.date: 06/08/2020
 ms.author: v-yeche
 ms.reviewer: minewiskan
-ms.openlocfilehash: 015159e145622498b0a0913ce74978475ed9baa9
-ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
+ms.custom: references_regions
+ms.openlocfilehash: 35effda8d313826240ddb4270bcb97e7c37e64e4
+ms.sourcegitcommit: 9bc3e55f01e0999f05e7b4ebaea95f3ac91d32eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84564312"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86226089"
 ---
 # <a name="what-is-azure-analysis-services"></a>什么是 Azure Analysis Services？
 
@@ -35,14 +36,14 @@ Azure Analysis Services 集成许多 Azure 服务，因此可以生成复杂的�
 
 ## <a name="the-right-tier-when-you-need-it"></a>符合需要的层级
 
-可在基本层**** 和标准层**** 中使用 Azure Analysis Services。 每个层中的计划成本因处理能力、查询处理单位 (QPU) 和内存大小而异。 创建服务器时，将在层内选择计划。 可以在同一层内上下更改计划，或者升级到更高的层，但不能从较高的层降级到较低的层。
+可在基本层和标准层中使用 Azure Analysis Services。 每个层中的计划成本因处理能力、查询处理单位 (QPU) 和内存大小而异。 创建服务器时，将在层内选择计划。 可以在同一层内上下更改计划，或者升级到更高的层，但不能从较高的层降级到较低的层。
 
 <!--MOONCAKE Not Available on **Developer** -->
 <!--MOONCAKE Not Available on ### Developer tier-->
 
 ### <a name="basic-tier"></a>基本层
 
-建议在具有小型表格模型的生产解决方案、限制用户并发性和要求简单数据刷新的场合下使用该层。 查询副本横向扩展不适用于** 此层。 此层不支持透视图、多个分区和 DirectQuery 表格模型功能。**  
+建议在具有小型表格模型的生产解决方案、限制用户并发性和要求简单数据刷新的场合下使用该层。 查询副本横向扩展不适用于此层。 此层不支持透视图、多个分区和 DirectQuery 表格模型功能。  
 
 |计划  |QPU  |内存 (GB)  |
 |---------|---------|---------|
@@ -61,31 +62,31 @@ Azure Analysis Services 集成许多 Azure 服务，因此可以生成复杂的�
 |S1    |    100     |    25     |
 |S2    |    200     |    50     |
 |S4    |    400     |    100     |
-|S8v2 <sup>[1](#depr)</sup>   |    640     |    200     |
-|S9v2 <sup>[1](#depr)</sup>    |    1280    |    400     |
+|S8v2 <sup>[1](#naar)</sup>   |    640     |    200     |
+|S9v2 <sup>[1](#naar)</sup>    |    1280    |    400     |
 
-<a name="depr">1</a> - 并未在所有区域推出。   
+<a name="naar">1</a> - 并未在所有区域推出。   
 
 <!--MOONCAKE Notice: Standared tier from S0,S1,S2,S4,S8v2,S9v2 -->
 <!--MOONCAKE: Available on China East 2 and China North regions-->
 
 ## <a name="availability-by-region"></a>按区域列出的可用性
 
-在中国，Azure Analysis Services 目前在“中国东部 2”区域和“中国北部”区域受支持。 支持的计划和查询副本可用性取决于所选的区域。 计划和查询副本可用性可能会根据每个区域的需求和可用资源而变化。 
+目前，中国的“中国东部 2”区域和“中国北部”区域支持 Azure Analysis Services。 支持的计划和查询副本可用性取决于所选的区域。 计划和查询副本可用性可能会根据每个区域的需求和可用资源而变化。 
 
-<!--MOONCAKE: China East 2 Expected on Q3 2019-->
+<!--MOONCAKE: Available on China East 2 and China North regions-->
 
 ### <a name="china"></a>中国
 
 <!--Notice: Standared tier from S0,S1,S2,S4,S8v2,S9v2 in Mooncake-->
 
 |区域  | 支持的计划 | 查询副本（仅限标准计划） |
-|---------|---------|---------|
+|---------|---------|:---------:|
 |中国北部     |    B1, B2, S0, S1, S2, S4    | 1 |
 |中国东部 2     |    B1, B2, S0, S1, S2, S4    | 7 |
 |中国东部 2     |    S8v2、S9v2    | 3 |
 
-<!--MOONCAKE: Available on China North regions-->
+<!--MOONCAKE: Available on China East 2 and China North regions-->
 <!--Notice: Standared tier from S0,S1,S2,S4,S8v2,S9v2 in Mooncake-->
 
 ## <a name="scale-to-your-needs"></a>按需求缩放
@@ -96,7 +97,7 @@ Azure Analysis Services 集成许多 Azure 服务，因此可以生成复杂的�
 
 ### <a name="scale-out-resources-for-fast-query-responses"></a>进行快速查询响应的横向扩展资源
 
-启用横向扩展后，客户端查询就会分布在查询池中的多个查询副本中。** 查询副本已同步表格模型的副本。 可以通过分散查询工作负荷，缩短查询工作负荷高峰期间的响应时间。 可以将模型处理操作与查询池分开，确保客户端查询不受处理操作的负面影响。 
+启用横向扩展后，客户端查询就会分布在查询池中的多个查询副本中。 查询副本已同步表格模型的副本。 可以通过分散查询工作负荷，缩短查询工作负荷高峰期间的响应时间。 可以将模型处理操作与查询池分开，确保客户端查询不受处理操作的负面影响。 
 
 <!--MOONCAKE: Replicas is Max with seven on China East 2-->
 
@@ -108,15 +109,17 @@ Azure Analysis Services 集成许多 Azure 服务，因此可以生成复杂的�
 
 ## <a name="pricing"></a>定价
 
-总费用取决于许多因素：例如，所选的区域、层、查询副本和暂停/恢复操作。 请使用 [Azure Analysis Services 定价](https://www.azure.cn/pricing/details/analysis-services/)计算器确定所在区域的一般定价。 此工具可计算单个区域中单个服务器实例的定价。 请记住，查询副本的计费方式与服务器相同。 
+总成本取决于多种因素。 例如，所选的区域、层级、查询副本和暂停/恢复操作。 请使用 [Azure Analysis Services 定价](https://www.azure.cn/pricing/details/analysis-services/)计算器确定所在区域的一般定价。 此工具可计算单个区域中单个服务器实例的定价。 请记住，查询副本的计费方式与服务器相同。 
 
 ## <a name="built-on-sql-server-analysis-services"></a>基于 SQL Server Analysis Services
 
-Azure Analysis Services 兼容 SQL Server Analysis Services Enterprise Edition 中已有的多个强大功能。 Azure Analysis Services 支持 1200 和更高[兼容级别](analysis-services-compat-level.md)的表格模型。 表格模型属于关系建模构造（模型、表、列），在表格元数据对象定义中以表格模型脚本语言 (TMSL) 和表格对象模型 (TOM) 代码阐述。 支持分区、透视图、行级安全性、双向关系和转换\*。 Azure Analysis Services 不支持多维模型和 PowerPivot for SharePoint。**
+Azure Analysis Services 兼容 SQL Server Analysis Services Enterprise Edition 中已有的多个强大功能。 Azure Analysis Services 支持 1200 和更高[兼容级别](analysis-services-compat-level.md)的表格模型。 表格模型属于关系建模构造（模型、表、列），在表格元数据对象定义中以表格模型脚本语言 (TMSL) 和表格对象模型 (TOM) 代码阐述。 支持分区、透视图、行级安全性、双向关系和转换\*。 Azure Analysis Services 不支持多维模型和 PowerPivot for SharePoint。
 
-支持内存中模式和 DirectQuery 模式的表格模型。 内存中模式（默认）表格模型支持多个数据源。 由于模型数据经过高度压缩并缓存在内存中，因此，此模式可针对大量数据提供最快的查询响应。 此外，它还针对复杂数据集和查询提供最高的灵活性。 分区可以实现增量加载、提高并行度，并减少内存消耗。 其他高级数据建模功能（例如计算表）和所有 DAX 函数均受支持。 必须刷新（处理）内存中模型才能更新数据源中的缓存数据。 借助 Azure 服务主体支持，使用 PowerShell、TOM、TMSL 和 REST 的无人参与刷新操作可灵活确保模型数据始终保持最新。 
+支持内存中模式和 DirectQuery 模式的表格模型。 内存中模式（默认）表格模型支持多个数据源。 由于模型数据经过高度压缩并缓存在内存中，因此，此模式可针对大量数据提供最快的查询响应。 此外，它还针对复杂数据集和查询提供最高的灵活性。 
 
-DirectQuery 模式* 利用后端关系数据库进行存储和查询执行。 支持单个 SQL Server、SQL Server 数据仓库、Azure SQL 数据库、Azure Synapse Analytics（SQL 数据仓库）、Oracle 和 Teradata 数据源中的极大型数据集。 后端数据集可以超出可用的服务器资源内存。 不需要复杂的数据模型刷新方案。 此外还存在一些限制（例如，受限的数据源类型、DAX 公式限制），并且某些高级数据建模功能不受支持。 在确定最合适的模式之前，请参阅[直接查询模式](https://docs.microsoft.com/analysis-services/tabular-models/directquery-mode-ssas-tabular)。
+分区可以实现增量加载、提高并行度，并减少内存消耗。 其他高级数据建模功能（例如计算表）和所有 DAX 函数均受支持。 必须刷新（处理）内存中模型才能更新数据源中的缓存数据。 借助 Azure 服务主体支持，使用 PowerShell、TOM、TMSL 和 REST 的无人参与刷新操作可灵活确保模型数据始终保持最新。 
+
+DirectQuery 模式* 利用后端关系数据库进行存储和查询执行。 支持单个 SQL Server、SQL Server 数据仓库、Azure SQL 数据库、Azure Synapse Analytics（旧称为 SQL 数据仓库）、Oracle 和 Teradata 数据源中的极大型数据集。 后端数据集可以超出可用的服务器资源内存。 不需要复杂的数据模型刷新方案。 此外还存在一些限制（例如，受限的数据源类型、DAX 公式限制），并且某些高级数据建模功能不受支持。 在确定最合适的模式之前，请参阅[直接查询模式](https://docs.microsoft.com/analysis-services/tabular-models/directquery-mode-ssas-tabular)。
 
 \* 功能是否可用取决于层。
 
@@ -211,8 +214,6 @@ Analysis Services 有一个生机勃勃的开发人员社区，他们会创建�
 
 Azure Analysis Services 与 Azure Monitor 指标集成，提供数量众多的资源特定指标来帮助你监视服务器的性能与运行状况。 有关详细信息，请参阅[监视服务器指标](analysis-services-monitor.md)。 使用[资源平台日志](../azure-monitor/platform/platform-logs-overview.md)记录指标。 监视日志并将其发送到 [Azure 存储](https://www.azure.cn/home/features/storage/)，将其流式传输到 [Azure 事件中心](https://www.azure.cn/home/features/event-hubs/)，并将其导出到 [Azure](https://www.azure.cn/) 服务 [Azure Monitor 日志](https://www.azure.cn/home/features/monitor/)。 有关详细信息，请参阅[设置诊断日志记录](analysis-services-logging.md)。
 
-<!--MOONCAKE: CORRECT ON  [Azure Monitor logs](https://www.azure.cn/zh-cn/home/features/monitor/)-->
-
 Azure Analysis Services 还支持使用[动态管理视图 (DMV)](https://docs.microsoft.com/analysis-services/instances/use-dynamic-management-views-dmvs-to-monitor-analysis-services)。 DMV 基于 SQL 语法，能够与返回元数据和监视有关服务器实例的信息的架构行集相对接。
 
 ## <a name="documentation"></a>文档
@@ -225,9 +226,10 @@ Azure Analysis Services 还支持使用[动态管理视图 (DMV)](https://docs.m
 
 ### <a name="contribute"></a>欢迎供稿！
 
-与本文一样，Analysis Services 文档也是开源的。 若要详细了解如何供稿，请参阅[文档供稿指南](https://docs.microsoft.com/contribute/)。 
+与本文一样，Analysis Services 文档也是开放源代码的。 若要详细了解如何供稿，请参阅[文档供稿指南](https://docs.microsoft.com/contribute/)。 
 
 <!--MOONCAKE: CORRECT ON (https://docs.microsoft.com/contribute/)-->
+<!--FEED MESSAGE NOT BE SUITABLE FOR AZURE CHINA CLIOUD-->
 <!--Not Suitable on [GitHub Issues](https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs)-->
 <!-- Not Available on ## Blogs-->
 <!-- Not Available on ## Community-->

@@ -6,15 +6,15 @@ manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-origin.date: 02/27/2019
-ms.date: 07/15/2019
+origin.date: 04/21/2020
+ms.date: 07/20/2020
 ms.author: v-yiso
-ms.openlocfilehash: 9e229b20edf0a326adf8c793a55ff418d4b68d67
-ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
+ms.openlocfilehash: 005c0cbedb2446f24efb18a4cb0f944d3a1e9711
+ms.sourcegitcommit: 9bc3e55f01e0999f05e7b4ebaea95f3ac91d32eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84186814"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86226113"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>监视 Azure IoT 中心的运行状况并快速诊断问题
 
@@ -32,8 +32,6 @@ IoT 中心还提供了其自己的指标，可使用这些指标了解 IoT 资�
 ## <a name="use-azure-monitor"></a>使用 Azure Monitor
 
 Azure Monitor 提供 Azure 资源的诊断信息，这意味着，你可以监视在 IoT 中心内部发生的操作。
-
-Azure Monitor 的诊断设置会取代 IoT 中心操作监视功能。 如果当前正在使用操作监视，应迁移工作流。 有关详细信息，请参阅[从操作监视迁移到诊断设置](iot-hub-migrate-to-diagnostics-settings.md)。
 
 若要详细了解 Azure Monitor 监视的具体指标和事件，请参阅 [Azure Monitor 支持的指标](../azure-monitor/platform/metrics-supported.md)和 [Azure 诊断日志支持的服务、架构和类别](../azure-monitor/platform/diagnostic-logs-schema.md)。
 
@@ -121,7 +119,7 @@ Azure Monitor 跟踪 IoT 中心内发生的不同操作。 每个类别都有一
 
 #### <a name="routes"></a>路由
 
-消息路由类别跟踪消息路由评估期间发生的错误以及 IoT 中心感知到的终结点运行状况。 此类别包括诸如下列项的事件：
+[消息路由](/iot-hub/iot-hub-devguide-messages-d2c)类别跟踪消息路由评估期间发生的错误以及 IoT 中心感知到的终结点运行状况。 此类别包括诸如下列项的事件：
 
 * 规则评估结果为“未定义”，
 * IoT 中心将某个终结点标记为死终结点，或者
@@ -131,20 +129,27 @@ Azure Monitor 跟踪 IoT 中心内发生的不同操作。 每个类别都有一
 
 ```json
 {
-    "records": 
+    "records":
     [
         {
-            "time": "UTC timestamp",
-            "resourceId": "Resource Id",
-            "operationName": "endpointUnhealthy",
-            "category": "Routes",
-            "level": "Error",
-            "properties": "{\"deviceId\": \"<deviceId>\",\"endpointName\":\"<endpointName>\",\"messageId\":<messageId>,\"details\":\"<errorDetails>\",\"routeName\": \"<routeName>\"}",
-            "location": "Resource location"
+            "time":"2019-12-12T03:25:14Z",
+            "resourceId":"/SUBSCRIPTIONS/91R34780-3DEC-123A-BE2A-213B5500DFF0/RESOURCEGROUPS/ANON-TEST/PROVIDERS/MICROSOFT.DEVICES/IOTHUBS/ANONHUB1",
+            "operationName":"endpointUnhealthy",
+            "category":"Routes",
+            "level":"Error",
+            "resultType":"403004",
+            "resultDescription":"DeviceMaximumQueueDepthExceeded",
+            "properties":"{\"deviceId\":null,\"endpointName\":\"anon-sb-1\",\"messageId\":null,\"details\":\"DeviceMaximumQueueDepthExceeded\",\"routeName\":null,\"statusCode\":\"403\"}",
+            "location":"chinaeast"
         }
     ]
 }
 ```
+
+以下是有关路由诊断日志的更多详细信息：
+
+* [路由诊断日志错误代码列表](troubleshoot-message-routing.md#diagnostics-error-codes)
+* [路由诊断日志操作名称列表](troubleshoot-message-routing.md#diagnostics-operation-names)
 
 #### <a name="device-telemetry"></a>设备遥测
 

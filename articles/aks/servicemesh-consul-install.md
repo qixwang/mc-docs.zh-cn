@@ -4,17 +4,19 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 群集中安装和使
 author: rockboyfor
 ms.topic: article
 origin.date: 10/09/2019
-ms.date: 04/06/2020
+ms.date: 07/09/2020
+ms.testscope: no
+ms.testdate: 05/25/2020
 ms.author: v-yeche
-zone_pivot_groups: client-operating-system-aks-lm
-ms.openlocfilehash: 841fea30e315d079c8f5eae3456785fce791ea7a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+zone_pivot_groups: client-operating-system
+ms.openlocfilehash: 9ba83d656e7382a090372071f3486d971c019993
+ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80517007"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86218805"
 ---
-<!--CORRECT ON client-operating-system-aks-lm-->
+<!--CORRECT ON client-operating-system-->
 
 # <a name="install-and-use-consul-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中安装并使用 Consul
 
@@ -34,7 +36,7 @@ ms.locfileid: "80517007"
 > * 验证 Consul 安装
 > * 从 AKS 中卸载 Consul
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 本文中详述的步骤假设已创建 AKS 群集（已启用 RBAC 的 Kubernetes `1.13` 及更高版本）并已与该群集建立 `kubectl` 连接。 如果需要帮助完成这些项目，请参阅 [AKS 快速入门][aks-quickstart]。 确保群集在 Linux 节点池中至少有 3 个节点。
 
@@ -46,25 +48,27 @@ ms.locfileid: "80517007"
 
 首先，下载 Consul Helm 图表的 `v0.10.0` 版本。 此版本的图表包括 Consul 版本 `1.6.0`。
 
-<!--CORRECT ON client-operating-system-aks-lm-->
+<!--CORRECT ON client-operating-system-->
 
-::: zone pivot="client-operating-system-aks-lm-linux"
+::: zone pivot="client-operating-system-linux"
 
 [!INCLUDE [Linux - download](includes/servicemesh/consul/download-bash.md)]
 
 ::: zone-end
 
-::: zone pivot="client-operating-system-aks-lm-macos"
+::: zone pivot="client-operating-system-macos"
 
 [!INCLUDE [macOS - download](includes/servicemesh/consul/download-bash.md)]
 
 ::: zone-end
 
-<!--MOONCAKE: ONLY LINUX NODE ON AZURE CHINA CLOUD-->
-<!--Not Available on [!INCLUDE [Windows - download](includes/servicemesh/consul/download-powershell.md)]-->
+::: zone pivot="client-operating-system-windows"
 
+[!INCLUDE [Windows - download](includes/servicemesh/consul/download-powershell.md)]
 
-<!--CORRECT ON client-operating-system-aks-lm-->
+::: zone-end
+
+<!--CORRECT ON client-operating-system-->
 
 使用 Helm 和下载的 `consul-helm` 图表将 Consul 组件安装到 AKS 群集的 `consul` 命名空间中。 
 
@@ -79,28 +83,29 @@ ms.locfileid: "80517007"
 >
 > **节点选择器**
 >
-> Consul 目前必须安排在 Linux 节点上运行。
+> Consul 目前必须安排在 Linux 节点上运行。 如果群集中有 Windows Server 节点，则必须确保 Consul Pod 仅安排在 Linux 节点上运行。 我们将使用[节点选择器][kubernetes-node-selectors]来确保将 Pod 安排到正确的节点。
 
-<!--Not Available on  If you have Windows Server nodes in your cluster, you must ensure that the Consul pods are only scheduled to run on Linux nodes. We'll use [node selectors][kubernetes-node-selectors] to make sure pods are scheduled to the correct nodes.-->
-<!--Not Available on [node selectors][kubernetes-node-selectors]-->
+<!--CORRECT ON client-operating-system-->
 
-<!--CORRECT ON client-operating-system-aks-lm-->
-
-::: zone pivot="client-operating-system-aks-lm-linux"
+::: zone pivot="client-operating-system-linux"
 
 [!INCLUDE [Bash - install Istio components](includes/servicemesh/consul/install-components-bash.md)]
 
 ::: zone-end
 
-::: zone pivot="client-operating-system-aks-lm-macos"
+::: zone pivot="client-operating-system-macos"
 
 [!INCLUDE [Bash - install Istio components](includes/servicemesh/consul/install-components-bash.md)]
 
 ::: zone-end
 
-<!--MOONCAKE: ONLY LINUX NODE ON AZURE CHINA CLOUD-->
-<!--Not Available on [!INCLUDE [PowerShell - install Istio components](includes/servicemesh/consul/install-components-powershell.md)]-->
-<!--CORRECT ON client-operating-system-aks-lm-->
+::: zone pivot="client-operating-system-windows"
+
+[!INCLUDE [PowerShell - install Istio components](includes/servicemesh/consul/install-components-powershell.md)]
+
+::: zone-end
+
+<!--CORRECT ON client-operating-system-->
 
 `Consul` Helm 图表将部署许多对象。 上述 `helm install` 命令的输出会显示对象列表。 部署 Consul 组件可能需要大约 3 分钟才能完成，具体取决于群集环境。
 
@@ -115,7 +120,7 @@ kubectl get svc --namespace consul --output wide
 kubectl get pod --namespace consul --output wide
 ```
 
-以下示例输出显示了现在应该正在运行的服务和 Pod（在 Linux 节点上计划）：
+以下示例输出显示了现在应该正在运行的服务和 Pod（安排在 Linux 节点上）：
 
 ```output
 NAME                                 TYPE           CLUSTER-IP    EXTERNAL-IP             PORT(S)                                                                   AGE     SELECTOR
@@ -171,9 +176,11 @@ kubectl delete namespace consul
 - [Consul - Helm 安装指南][consul-install-k8]
 - [Consul - Helm 安装选项][consul-install-helm-options]
 
-也可使用以下项按照其他方案操作：
+也可以使用以下示例应用程序按照其他方案操作：
 
 - [Consul 示例应用程序][consul-app-example]
+- [Consul Kubernetes 参考体系结构][consul-reference]
+- [Consul 网格网关][consul-mesh-gateways]
 
 <!-- LINKS - external -->
 
@@ -186,9 +193,11 @@ kubectl delete namespace consul
 [consul-github-releases]: https://github.com/hashicorp/consul/releases
 [consul-release-notes]: https://github.com/hashicorp/consul/blob/master/CHANGELOG.md
 [consul-install-download]: https://www.consul.io/downloads.html
-[consul-install-k8]: https://www.consul.io/docs/platform/k8s/run.html
+[consul-install-k8]: https://learn.hashicorp.com/consul/kubernetes/kubernetes-deployment-guide
 [consul-install-helm-options]: https://www.consul.io/docs/platform/k8s/helm.html#configuration-values-
-[consul-app-example]: https://github.com/hashicorp/demo-consul-101/tree/master/k8s
+[consul-mesh-gateways]: https://learn.hashicorp.com/consul/kubernetes/mesh-gateways
+[consul-reference]: https://learn.hashicorp.com/consul/kubernetes/kubernetes-reference
+[consul-app-example]: https://learn.hashicorp.com/consul?track=gs-consul-service-mesh#gs-consul-service-mesh
 [install-wsl]: https://docs.microsoft.com/windows/wsl/install-win10
 
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get

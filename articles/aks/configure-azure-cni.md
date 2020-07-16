@@ -4,14 +4,16 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 中配置 Azure CNI�
 services: container-service
 ms.topic: article
 origin.date: 06/03/2019
-ms.date: 05/25/2020
+ms.date: 07/13/2020
+ms.testscope: yes
+ms.testdate: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: 2fdba1c0826aeaee4d793ca0c51c911dbe313cca
-ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
+ms.openlocfilehash: c8a9209393a67043fabfe597f476a1b119752382
+ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735059"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86218752"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中配置 Azure CNI 网络
 
@@ -28,9 +30,7 @@ ms.locfileid: "83735059"
 * AKS 群集使用的服务主体在虚拟网络中的子网上必须至少具有[网络参与者](../role-based-access-control/built-in-roles.md#network-contributor)权限。 如果希望定义[自定义角色](../role-based-access-control/custom-roles.md)而不是使用内置的网络参与者角色，则需要以下权限：
     * `Microsoft.Network/virtualNetworks/subnets/join/action`
     * `Microsoft.Network/virtualNetworks/subnets/read`
-    
-    <!--Not Available on [Use managed identities](use-managed-identity.md)-->
-    
+* 你可以使用系统分配的托管标识来获得权限，而不是使用服务主体。 有关详细信息，请参阅[使用托管标识](use-managed-identity.md)。
 * 分配给 AKS 节点池的子网不能是[委托子网](../virtual-network/subnet-delegation-overview.md)。
 
 ## <a name="plan-ip-addressing-for-your-cluster"></a>规划群集的 IP 地址
@@ -43,11 +43,9 @@ Pod 和群集节点的 IP 地址是从虚拟网络中指定的子网分配的。
 > 应在考虑到升级和缩放操作的基础上确定所需的 IP 地址数。 如果设置的 IP 地址范围仅支持固定数量的节点，则无法升级或缩放群集。
 >
 > - **升级** AKS 群集时，会将一个新节点部署到该群集中。 服务和工作负荷开始在新节点上运行，旧节点将从群集中删除。 这种滚动升级过程要求至少有一个额外的 IP 地址块可用。 那么，节点计数是 `n + 1`。
+>     - 使用 Windows Server 节点池时，此注意事项尤其重要。 AKS 中的 Windows Server 节点不会自动应用 Windows 更新，相反，你需要在节点池上执行升级。 此升级使用最新的 Window Server 2019 基本节点映像和安全修补程序部署新节点。 有关升级 Windows Server 节点池的详细信息，请参阅[升级 AKS 中的节点池][nodepool-upgrade]。
 >
 > - **缩放** AKS 群集时，会将一个新节点部署到该群集中。 服务和工作负荷开始在新节点上运行。 确定 IP 地址范围时需要考虑到如何纵向扩展群集可以支持的节点和 Pod 数目。 此外，应该为升级操作包含一个额外的节点。 那么，节点计数是 `n + number-of-additional-scaled-nodes-you-anticipate + 1`。
-
-<!--Not Available on Line 40-41 Windows Server node pools (currently in preview in AKS)-->
-<!--Not Available on [Upgrade a node pool in AKS][nodepool-upgrade]-->
 
 如果预期节点将会运行最大数目的 Pod，并且会定期销毁和部署 Pod，则还应该考虑为每个节点分配一些额外的 IP 地址。 分配这些额外的 IP 地址是考虑到删除某个服务以及为了部署新服务并获取地址而释放 IP 地址可能需要几秒钟时间。
 
@@ -160,7 +158,7 @@ az aks create \
 
 * 是否可以在群集子网中部署 VM？
 
-    否。 不支持在 Kubernetes 群集使用的子网中部署 VM。 可将 VM 部署在同一虚拟网络中，但必须部署在不同的子网中。
+    是的。
 
 * *是否可以配置基于 Pod 的网络策略？*
 

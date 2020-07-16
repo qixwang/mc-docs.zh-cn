@@ -14,23 +14,27 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 04/14/2019
-ms.date: 06/10/2019
+ms.date: 07/13/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 5789e34307c4a3418e919e7a85bef500709c31c3
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5af5ef5caf6e5be2d625492bc67d6cefa365b7fd
+ms.sourcegitcommit: 873e5c5e4156efed505a78d4f5a6e50c494e76d4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292281"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86036749"
 ---
+<!--Not Available on Mooncake-->
+<!--Preview Request has been handle off-->
 # <a name="virtual-network-tap"></a>虚拟网络 TAP
 
 通过 Azure 虚拟网络 TAP（终端接入点），可让你持续将虚拟机网络流量流式传输到网络数据包收集器或分析工具。 收集器或分析工具由[网络虚拟设备](https://www.azure.cn/solutions/network-appliances/)合作伙伴提供。 有关经验证可与虚拟网络 TAP 一起使用的合作伙伴解决方案列表，请参阅[合作伙伴解决方案](#virtual-network-tap-partner-solutions)。
 
 > [!IMPORTANT]
-> 虚拟网络 TAP 目前正在所有 Azure 区域中以预览版提供。 若要使用虚拟网络 TAP，必须通过使用订阅 ID 向  <https://support.azure.cn/zh-cn/support/support-azure/> 提出请求来注册预览版。 注册订阅后，你会收到电子邮件。 只有在收到确认电子邮件后，才能使用该功能。 此预览版在提供时没有附带服务级别协议，不应用于生产工作负荷。 某些功能可能不受支持或受到约束，或者不一定在所有 Azure 位置都可用。 有关详细信息，请参阅  [Azure 预览版补充使用条款](https://www.azure.cn/support/legal/) 。
+> 虚拟网络 TAP 目前正在所有 Azure 区域中以预览版提供。 若要使用虚拟网络 TAP，必须通过电子邮件将订阅 ID 发送到  <azurevnettap@microsoft.com> 来注册预览版。 注册订阅后，你会收到电子邮件。 只有在收到确认电子邮件后，才能使用该功能。 此预览版在提供时没有附带服务级别协议，不应用于生产工作负荷。 某些功能可能不受支持或受到约束，或者不一定在所有 Azure 位置都可用。 有关详细信息，请参阅  [Azure 预览版补充使用条款](https://www.azure.cn/support/legal/subscription-agreement/) 。
 
-<!--MOONCAKE: customize-->
+<!--MOONCAKE: CORRECT ON sending an email to <azurevnettap@microsoft.com> -->
 
 ## <a name="virtual-network-tap-partner-solutions"></a>虚拟网络 TAP 合作伙伴解决方案
 
@@ -46,21 +50,22 @@ ms.locfileid: "79292281"
 - [Awake Security](https://awakesecurity.com/technology-partners/microsoft-azure/)
 - [Cisco Stealthwatch Cloud](https://blogs.cisco.com/security/cisco-stealthwatch-cloud-and-microsoft-azure-reliable-cloud-infrastructure-meets-comprehensive-cloud-security)
 - [Darktrace](https://www.darktrace.com/en/azure/)
-- [ExtraHop Reveal(x)](https://www.extrahop.com/company/tech-partners/microsoft/)
+- [ExtraHop Reveal(x)](https://www.extrahop.com/partners/tech-partners/microsoft/)
 - [Fidelis Cybersecurity](https://www.fidelissecurity.com/technology-partners/microsoft-azure )
 - [Flowmon](https://www.flowmon.com/blog/azure-vtap)
 - [NetFort LANGuardian](https://www.netfort.com/languardian/solutions/visibility-in-azure-network-tap/)
 - [Netscout vSTREAM]( https://www.netscout.com/technology-partners/microsoft/azure-vtap)
+- [Riverbed SteelCentral AppResponse]( https://www.riverbed.com/products/steelcentral/steelcentral-appresponse-11.html)
 - [RSA NetWitness® 平台](https://www.rsa.com/azure)
 - [Vectra Cognito](https://vectra.ai/microsoftazure)
 
-下图显示虚拟网络 TAP 的工作原理。 可以在[网络接口](virtual-network-network-interface.md)（连接到虚拟网络中部署的虚拟机）上添加 TAP 配置。 目标是与受监视网络接口或[对等虚拟](virtual-network-peering-overview.md)网络位于同一虚拟网络中的虚拟网络 IP 地址。 虚拟网络 TAP 的收集器解决方案可以部署在 [Azure 内部负载均衡器](../load-balancer/load-balancer-overview.md?toc=%2fvirtual-network%2ftoc.json#concepts)后面，以实现高可用性。 若要评估单个解决方案的部署选项，请参阅[合作伙伴解决方案](#virtual-network-tap-partner-solutions)。
+下图显示虚拟网络 TAP 的工作原理。 可以在[网络接口](virtual-network-network-interface.md)（连接到虚拟网络中部署的虚拟机）上添加 TAP 配置。 目标是与受监视网络接口或[对等虚拟](virtual-network-peering-overview.md)网络位于同一虚拟网络中的虚拟网络 IP 地址。 虚拟网络 TAP 的收集器解决方案可以部署在 Azure 内部负载均衡器后面，以实现高可用性。 若要评估单个解决方案的部署选项，请参阅[合作伙伴解决方案](#virtual-network-tap-partner-solutions)。
 
 ![虚拟网络 TAP 的工作原理](./media/virtual-network-tap/architecture.png)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-在创建虚拟网络 TAP 之前，必须已收到你注册预览版的确认邮件，并且已使用 [Azure 资源管理器](../azure-resource-manager/resource-group-overview.md?toc=%2fvirtual-network%2ftoc.json)部署模型和合作伙伴解决方案创建了一个或多个虚拟机，以聚合同一 Azure 区域的 TAP 流量。 如果在虚拟网络中没有合作伙伴解决方案，请参阅[合作伙伴解决方案](#virtual-network-tap-partner-solutions)来部署一个解决方案。 你可以使用相同的虚拟网络 TAP 资源来聚合来自相同或不同订阅的多个网络接口的流量。 如果受监视的网络接口位于不同的订阅中，则订阅必须关联到同一 Azure Active Directory 租户。 此外，用于聚合 TAP 流量的受监视网络接口和目标终结点可以位于同一区域中的对等虚拟网络中。 如果你使用的是这种部署模型，请务必在配置虚拟网络 TAP 之前启用[虚拟网络对等互连](virtual-network-peering-overview.md)。
+在创建虚拟网络 TAP 之前，必须已收到注册预览版的确认邮件，并且已使用 [Azure 资源管理器](../azure-resource-manager/management/overview.md?toc=%2fvirtual-network%2ftoc.json)部署模型和合作伙伴解决方案创建了一个或多个虚拟机，以聚合在同一 Azure 区域的 TAP 流量。 如果在虚拟网络中没有合作伙伴解决方案，请参阅[合作伙伴解决方案](#virtual-network-tap-partner-solutions)来部署一个解决方案。 你可以使用相同的虚拟网络 TAP 资源来聚合来自相同或不同订阅的多个网络接口的流量。 如果受监视的网络接口位于不同的订阅中，则订阅必须关联到同一 Azure Active Directory 租户。 此外，用于聚合 TAP 流量的受监视网络接口和目标终结点可以位于同一区域中的对等虚拟网络中。 如果你使用的是这种部署模型，请务必在配置虚拟网络 TAP 之前启用[虚拟网络对等互连](virtual-network-peering-overview.md)。
 
 ## <a name="permissions"></a>权限
 

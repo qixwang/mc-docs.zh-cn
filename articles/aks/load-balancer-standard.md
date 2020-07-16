@@ -1,82 +1,108 @@
 ---
-title: 使用标准 SKU 负载均衡器
+title: 使用公共负载均衡器
 titleSuffix: Azure Kubernetes Service
-description: 了解如何使用采用标准 SKU 的负载均衡器通过 Azure Kubernetes 服务 (AKS) 公开你的服务。
+description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用标准 SKU 公共负载均衡器来公开服务。
 services: container-service
 author: rockboyfor
 ms.topic: article
-origin.date: 09/27/2019
-ms.date: 05/25/2020
+origin.date: 06/14/2020
+ms.date: 07/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: b5da8ae0d82a3016a0f724ee0bd03b725b430c46
-ms.sourcegitcommit: cf336265d64517417ed2ecc7b2c13505dffb4451
+ms.openlocfilehash: 17cf4ca7e658638c980e61b9ef08d7b34251fb3d
+ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84800420"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86218809"
 ---
-# <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中使用标准 SKU 负载均衡器
+# <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中使用公共标准负载均衡器
 
-若要通过 Azure Kubernetes 服务 (AKS) 中 `LoadBalancer` 类型的 Kubernetes 服务提供对应用程序的访问权限，可以使用 Azure 负载均衡器。 在 AKS 上运行的负载均衡器可用作内部或外部负载均衡器。 内部负载均衡器使得仅 AKS 群集所在的同一虚拟网络中运行的应用程序能够访问 Kubernetes 服务。 外部负载均衡器接收入口的一个或多个公共 IP，并使得 Kubernetes 服务可以通过公共 IP 在外部进行访问。
+Azure 负载均衡器是开放式系统互连 (OSI) 模型的 L4，支持入站和出站场景。 负载均衡器将抵达负载均衡器前端的入站流量分配到后端池实例。
 
-Azure 负载均衡器以两种 SKU 提供：“基本”和“标准” 。 默认情况下，创建 AKS 群集时将使用标准 SKU。 使用标准 SKU 负载均衡器可提供其他特性和功能，例如更大的后端池和可用性区域。 在选择使用哪种负载均衡器之前，请务必了解标准与基本负载均衡器之间的区别。 创建 AKS 群集后，无法更改该群集的负载均衡器 SKU。
+公共负载均衡器与 AKS 集成时有两个用途：
 
-<!--Remove the document on Mooncake For more information on the *Basic* and *Standard* SKUs, see [Azure load balancer SKU comparison][azure-lb-comparison]-->
+1. 提供到 AKS 虚拟网络内群集节点的出站连接。 它通过将节点专用 IP 地址转换为作为其“出站池”一部分的公共 IP 地址来实现此目标。
+2. 通过类型为 `LoadBalancer` 的 Kubernetes 服务提供对应用程序的访问。 使用负载均衡器你可轻松缩放应用程序，并创建高度可用的服务。
 
+内部（或专用）负载平衡器用于仅在前端允许专用 IP 的情况。 内部负载均衡器用于对虚拟网络内部的流量进行负载均衡。 负载均衡器前端还可在混合场景中从本地网络进行访问。
 
-本文假设读者基本了解 Kubernetes 和 Azure 负载均衡器的概念。 有关详细信息，请参阅 [Azure Kubernetes 服务 (AKS) 的 Kubernetes 核心概念][kubernetes-concepts]和[什么是 Azure 负载均衡器？][azure-lb]。
-
-如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
-
-<!--REMOVE THE INCLUDES FILE IN NEXT PARAGRAPH-->
-
-如果选择在本地安装并使用 CLI，本文要求运行 Azure CLI 2.0.81 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][install-azure-cli]。
-
-[!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
+本文档介绍与公共负载均衡器的集成。 如需了解内部负载均衡器集成，请参阅 [AKS 内部负载均衡器文档](internal-lb.md)。
 
 ## <a name="before-you-begin"></a>准备阶段
 
-本文假设已有一个 AKS 群集，其中包含标准 SKU Azure 负载均衡器。 如果你需要 AKS 群集，请参阅[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]时的 AKS 快速入门。
+Azure 负载均衡器以两种 SKU 提供：“基本”和“标准” 。 默认情况下，创建 AKS 群集时将使用标准 SKU。 使用标准 SKU 访问附加功能，例如大型后端池、[多个节点池](use-multiple-node-pools.md)。 这是推荐的 AKS 的负载均衡器 SKU。
 
-如果使用现有子网或资源组，则 AKS 群集服务主体还需要有权管理网络资源。 通常，将“网络参与者”角色分配给委派资源上的服务主体。 有关权限的详细信息，请参阅[委派 AKS 访问其他 Azure 资源][aks-sp]。
+<!--Not Available on , and [**Availability Zones**](availability-zones.md)-->
 
-<!--Not Available on  [Use managed identities](use-managed-identity.md)-->
+有关基本和标准 SKU 的详细信息，请参阅 [Azure 负载均衡器 SKU 的比较][azure-lb-comparison]。 
 
-### <a name="moving-from-a-basic-sku-load-balancer-to-standard-sku"></a>从基本 SKU 负载均衡器转移到标准 SKU
-
-如果现有的群集包含基本 SKU 负载均衡器，则在进行迁移以使用包含标准 SKU 负载均衡器的群集时，需要注意一些重要的行为差异。
-
-例如，假设只能在创建群集时定义群集的 `load-balancer-sku` 类型，则通过蓝/绿部署迁移群集是常用的做法。 但是，基本 SKU 负载均衡器使用基本 SKU IP 地址，而这些地址与标准 SKU 负载均衡器不兼容，因为这些负载均衡器需要标准 SKU IP 地址。    在迁移群集以升级负载均衡器 SKU 时，需要提供一个具有兼容 IP 地址 SKU 的新 IP 地址。
-
-有关如何迁移群集的更多注意事项，请访问[有关迁移注意事项的文档](aks-migration.md)，以查看迁移时要考虑的重要主题列表。 以下限制也是在 AKS 中使用标准 SKU 负载均衡器时要注意的重要行为差异。
-
-### <a name="limitations"></a>限制
-
-创建和管理支持标准 SKU 负载均衡器的 AKS 群集时存在以下限制：
-
-* 至少需要指定一个公共 IP 或 IP 前缀来允许 AKS 群集的出口流量。 此外，需要使用公共 IP 或 IP 前缀来保持控制平面与代理节点之间的连接，以及保持与旧版 AKS 的兼容性。 可以使用以下选项指定标准 SKU 负载均衡器的公共 IP 或 IP 前缀：
-    * 提供自己的公共 IP。
-    * 提供自己的公共 IP 前缀。
-    * 指定最大为 100 的数字，以允许 AKS 群集在其所在的同一个资源组（名称通常以 *MC_* 开头）中创建多个标准 SKU 公共 IP。 AKS 会将公共 IP 分配到标准 SKU 负载均衡器。 默认情况下，如果未指定公共 IP、公共 IP 前缀或 IP 数目，系统会在 AKS 群集所在的同一个资源组中自动创建一个公共 IP。 还必须允许公共地址，并避免创建任何禁止创建 IP 的 Azure Policy。
-* 对负载均衡器使用标准 SKU 时，必须使用 Kubernetes 1.13 或更高版本。 
-* 只有在创建 AKS 群集时，才能定义负载均衡器 SKU。 创建 AKS 群集后，无法更改负载均衡器 SKU。
-* 在一个群集中只能使用一种类型的负载均衡器 SKU（基本或标准）。
-* 标准 SKU 负载均衡器仅支持标准 SKU IP 地址。 
-
-## <a name="use-the-standard-sku-load-balancer"></a>使用标准 SKU 负载均衡器
-
-如果创建 AKS 群集，默认情况下，在该群集中运行服务时将使用标准 SKU 负载均衡器。 例如，[使用 Azure CLI 的快速入门][aks-quickstart-cli]部署了一个使用标准 SKU 负载均衡器的示例应用程序。
+本文假定你拥有具有标准 SKU Azure 负载均衡器的 AKS 群集，并介绍如何使用和配置负载均衡器的一些功能和特性。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
 > [!IMPORTANT]
-> 通过自定义用户定义路由 (UDR)，可以避免使用公共 IP 地址。 将 AKS 群集的出站类型指定为“UDR”可以跳过 AKS 创建的 Azure 负载均衡器的 IP 预配和后端池设置。 请参阅[将群集的 `outboundType` 设置为“userDefinedRouting”](egress-outboundtype.md)。
+> 如果不想利用 Azure 负载均衡器提供出站连接，而希望为此拥有自己的网关、防火墙或代理，则可以使用[出站类型作为 UserDefinedRouting (UDR)](egress-outboundtype.md)，跳过创建负载均衡器出站池和相应的前端 IP 的操作。 出站类型定义群集的出口方法，它默认为负载均衡器类型。
 
-## <a name="configure-the-load-balancer-to-be-internal"></a>将负载均衡器配置为内部负载均衡器
+## <a name="use-the-public-standard-load-balancer"></a>使用公共标准负载均衡器
 
-你还可以将负载均衡器配置为内部负载均衡器，而不是公开一个公共 IP。 若要将负载均衡器配置为内部负载均衡器，请添加 `service.beta.kubernetes.io/azure-load-balancer-internal: "true"` 作为 *LoadBalancer* 服务的注释。 可以在[此处][internal-lb-yaml]查看 yaml 清单示例以及有关内部负载均衡器的更多详细信息。
+创建默认出站类型为负载均衡器的 AKS 群集后，群集也可使用负载均衡器公开服务。
 
-## <a name="scale-the-number-of-managed-public-ips"></a>调整托管公共 IP 的数量
+为此，你可创建类型为 `LoadBalancer` 的公共服务，如以下示例所示。 首先创建名为 `public-svc.yaml` 的服务清单：
 
-使用具有默认创建的托管出站公共 IP 的标准 SKU 负载平衡器时，可以使用 load-balancer-managed-ip-count 参数缩放托管出站公共 IP 的数量。
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: public-svc
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: public-app
+```
+
+使用 [kubectl apply][kubectl-apply] 部署公共服务清单，并指定 YAML 清单的名称：
+
+```azurecli
+kubectl apply -f public-svc.yaml
+```
+
+将为 Azure 负载均衡器配置一个支持此新服务的新公共 IP。 由于 Azure 负载均衡器可以有多个前端 IP，因此部署的每个新服务都将获得唯一的专用前端 IP。
+
+你可以确认你的服务已创建，并且通过运行来配置负载均衡器，例如：
+
+```azurecli
+kubectl get service public-svc
+```
+
+```console
+NAMESPACE     NAME          TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)         AGE
+default       public-svc    LoadBalancer   10.0.39.110    52.156.88.187   80:32068/TCP    52s
+```
+
+查看服务详细信息时，为负载均衡器上的该服务创建的公共 IP 地址显示在“EXTERNAL-IP”列中。 可能需要一两分钟，IP 地址才会从 \<pending\> 更改为实际的公共 IP 地址，如以下示例所示。
+
+## <a name="configure-the-public-standard-load-balancer"></a>配置公共标准负载均衡器
+
+使用标准 SKU 公共负载均衡器时，可以在创建时或通过更新群集自定义一组选项。 通过这些选项，你可自定义负载均衡器以满足工作负载需求，并应相应地进行审查。 使用标准负载均衡器，你可以执行以下操作：
+
+* 设置或缩放受管理出站 IP 的数量
+* 自带自定义[出站 IP 或出站 IP 前缀](#provide-your-own-outbound-public-ips-or-prefixes)
+* 自定义分配给群集的每个节点的出站端口数
+* 为空闲连接配置超时设置
+
+### <a name="scale-the-number-of-managed-outbound-public-ips"></a>缩放受管理出站公共 IP 的数量
+
+除了入站连接以外，Azure 负载均衡器还提供从虚拟网络的出站连接。 使用出站规则可以更方便地配置公共标准负载均衡器的出站网络地址转换。
+
+与所有负载均衡器规则一样，出站规则遵循负载均衡和入站 NAT 规则的类似语法：
+
+***前端 IP + 参数 + 后端池***
+
+出站规则为后端池识别的、要转换为前端的所有虚拟机配置出站 NAT。 参数针对出站 NAT 算法提供更精细的控制。
+
+尽管出站规则只能配合单个公共 IP 地址使用，但出站规则减轻了缩放出站 NAT 的负担。 规划大规模部署场景时可以使用多个 IP 地址，并可以使用出站规则来缓解容易出现 SNAT 耗尽的模式。 前端提供的每个附加 IP 地址可提供 64,000 个临时端口，供负载均衡器用作 SNAT 端口。 
+
+结合默认创建的受管理出站公共 IP 使用标准 SKU 负载均衡器时，可以使用 `load-balancer-managed-ip-count` 参数来调整受管理出站公共 IP 的数量。
 
 若要更新现有群集，请运行以下命令。 还可以在创建群集时设置此参数，以获得多个托管出站公共 IP。
 
@@ -89,27 +115,22 @@ az aks update \
 
 以上示例将 *myResourceGroup* 中 *myAKSCluster* 群集的托管出站公共 IP 数量设置为 *2*。 
 
-还可以在创建群集时，通过追加 `--load-balancer-managed-outbound-ip-count` 参数并将其设置为所需的值，使用 *load-balancer-managed-ip-count* 参数来设置托管出站公共 IP 的初始数量。 托管出站公共 IP 的默认数量为 1。
+还可以在创建群集时，通过追加 `--load-balancer-managed-outbound-ip-count` 参数并将其设置为所需的值，使用 `load-balancer-managed-ip-count` 参数来设置托管出站公共 IP 的初始数量 。 托管出站公共 IP 的默认数量为 1。
 
-## <a name="provide-your-own-public-ips-or-prefixes-for-egress"></a>提供自己的出口公共 IP 或前缀
+### <a name="provide-your-own-outbound-public-ips-or-prefixes"></a>提供自己的出站公共 IP 或前缀
 
-使用标准 SKU 负载均衡器时，AKS 群集会自动在为 AKS 群集创建的资源组中创建公共 IP，并将公共 IP 分配给标准 SKU 负载均衡器。 或者，可以在创建群集时分配自己的公共 IP，或更新现有群集的负载均衡器属性。
+使用标准 SKU 负载均衡器时，默认情况下，AKS 群集会自动在 AKS 管理的基础结构资源组中创建公共 IP 并将其分配给负载均衡器出站池。
 
-通过引入多个 IP 地址或前缀，可以在单个负载均衡器对象后面定义 IP 地址时定义多个后备服务。 特定节点的出口终结点将取决于与之关联的服务。
+AKS 创建的公共 IP 被视为受 AKS 管理的资源。 这意味着该公共 IP 的生命周期由 AKS 管理，并且用户不需要直接对公共 IP 资源执行操作。 或者，你可以在群集创建时分配自己的自定义公共 IP 或公共 IP 前缀。 还可以在现有群集的负载均衡器属性上更新自定义 IP。
 
-### <a name="pre-requisites-to-bring-your-own-ip-addresses-or-ip-prefixes"></a>自带 IP 地址或 IP 前缀的先决条件
-1. 使用标准 SKU 负载均衡器时，必须使用标准 SKU 公共 IP 进行出口通信。 可以使用 [az network public-ip show][az-network-public-ip-show] 命令验证公共 IP 的 SKU：
+> [!NOTE]
+> 自定义公共 IP 地址必须由用户创建和拥有。 由 AKS 创建的托管公共 IP 地址不能重新用于自带的自定义 IP，因为它可能会导致管理冲突。
 
-    ```azurecli
-    az network public-ip show --resource-group myResourceGroup --name myPublicIP --query sku.name -o tsv
-    ```
-1. 公共 IP 和 IP 前缀必须与 AKS 群集位于同一区域且属于同一订阅。
-1. 公共 IP 和 IP 前缀不能是由 AKS 创建的作为托管 IP 的 IP。 确保任何指定为自定义 IP 的 IP 都是手动创建的，而不是 AKS 服务创建的。
-1. 公共 IP 和 IP 前缀不能由其他资源或服务使用。
+在执行此操作前，请确保满足配置出站 IP 或出站 IP 前缀所需的[先决条件和限制](../virtual-network/public-ip-address-prefix.md#constraints)。
 
- ### <a name="define-your-own-public-ip-or-prefixes-on-an-existing-cluster"></a>在现有群集上定义自己的公共 IP 或前缀
+#### <a name="update-the-cluster-with-your-own-outbound-public-ip"></a>使用自己的出站公共 IP 更新群集
 
-使用 [az network public-ip show][az-network-public-ip-show] 命令列出你的公共 IP 的 ID。
+使用 [az network public-ip show][az-network-public-ip-show] 命令列出公共 IP 的 ID。
 
 ```azurecli
 az network public-ip show --resource-group myResourceGroup --name myPublicIP --query id -o tsv
@@ -117,9 +138,9 @@ az network public-ip show --resource-group myResourceGroup --name myPublicIP --q
 
 以上命令显示 *myResourceGroup* 资源组中 *myPublicIP* 公共 IP 的 ID。
 
-结合 *load-balancer-outbound-ips* 参数使用 *az aks update* 命令，以更新群集中的公共 IP。
+将 `az aks update` 命令与 `load-balancer-outbound-ips` 参数一起使用，以使用公共 IP 更新群集。
 
-以下示例结合前一命令返回的 ID 使用 *load-balancer-outbound-ips* 参数。
+以下示例结合前一命令返回的 ID 使用 `load-balancer-outbound-ips` 参数。
 
 ```azurecli
 az aks update \
@@ -127,6 +148,8 @@ az aks update \
     --name myAKSCluster \
     --load-balancer-outbound-ips <publicIpId1>,<publicIpId2>
 ```
+
+#### <a name="update-the-cluster-with-your-own-outbound-public-ip-prefix"></a>使用自己的出站公共 IP 前缀更新群集
 
 你也可以将出口的公共 IP 前缀与标准 SKU 负载均衡器配合使用。 以下示例使用 [az network public-ip prefix show][az-network-public-ip-prefix-show] 命令列出公共 IP 前缀的 ID：
 
@@ -136,7 +159,7 @@ az network public-ip prefix show --resource-group myResourceGroup --name myPubli
 
 以上命令显示 *myResourceGroup* 资源组中 *myPublicIPPrefix* 公共 IP 前缀的 ID。
 
-以下示例将 load-balancer-outbound-ip-prefixes 参数与来自上一命令的 ID 配合使用。
+以下示例将 *load-balancer-outbound-ip-prefixes* 参数与前一命令返回的 ID 配合使用。
 
 ```azurecli
 az aks update \
@@ -145,7 +168,7 @@ az aks update \
     --load-balancer-outbound-ip-prefixes <publicIpPrefixId1>,<publicIpPrefixId2>
 ```
 
-### <a name="define-your-own-public-ip-or-prefixes-at-cluster-create-time"></a>在创建群集时定义你自己的公共 IP 或 IP 前缀
+#### <a name="create-the-cluster-with-your-own-public-ip-or-prefixes"></a>使用自己的公共 IP 或前缀创建群集
 
 在创建群集时，你可能想要使用自己的出口 IP 地址或 IP 前缀，以支持出口终结点允许列表等方案。 将上面所示的相同参数追加到群集创建步骤，可在群集生命周期的起始部分定义自己的公共 IP 和 IP 前缀。
 
@@ -155,41 +178,30 @@ az aks update \
 az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
-    --vm-set-type VirtualMachineScaleSets \
-    --node-count 1 \
-    --load-balancer-sku standard \
-    --generate-ssh-keys \
     --load-balancer-outbound-ips <publicIpId1>,<publicIpId2>
 ```
 
-一开始就将 az aks create 命令与 load-balancer-outbound-ip-prefixes 参数配合使用，以便使用公共 IP 前缀创建新群集。
+结合 *load-balancer-outbound-ip-prefixes* 参数使用 *az aks create* 命令可在启动时使用你的公共 IP 前缀创建新的群集。
 
 ```azurecli
 az aks create \
     --resource-group myResourceGroup \
-    --name myAKSCluster \
-    --vm-set-type VirtualMachineScaleSets \
-    --node-count 1 \
-    --load-balancer-sku standard \
-    --generate-ssh-keys \
     --load-balancer-outbound-ip-prefixes <publicIpPrefixId1>,<publicIpPrefixId2>
 ```
 
-## <a name="configure-outbound-ports-and-idle-timeout"></a>配置出站端口和空闲超时
+### <a name="configure-the-allocated-outbound-ports"></a>配置分配的出站端口
 
-> [!WARNING]
-> 以下部分适用于较大规模网络的高级方案，或用于解决默认配置的 SNAT 耗尽问题。 在将 *AllocatedOutboundPorts* 或 *IdleTimeoutInMinutes* 从默认值更改为其他值之前，对于 VM 和 IP 地址的可用配额必须有一个准确的清单，以便维持正常运行的群集。
-> 
-> 更改 *AllocatedOutboundPorts* 和 *IdleTimeoutInMinutes* 的值可能会显著更改负载均衡器的出站规则的行为。 在更新这些值之前请查看[负载均衡器出站规则][azure-lb-outbound-rules-overview]、[负载均衡器出站规则][azure-lb-outbound-rules]和 [Azure 中的出站连接][azure-lb-outbound-connections]，以充分了解更改会带来的影响。
+> [!IMPORTANT]
+> 如果你的群集上有一些应用程序，它们预期会与一小组目标集（例如， 许多连接到 SQL DB 的前端实例）建立大量连接，你的情况是很容易遇到 SNAT 端口耗尽（要连接的端口用完）。 对于这些场景，强烈建议增加负载均衡器上分配的出站端口和出站前端 IP。 此增加操作应考虑一 (1) 个附加 IP 地址添加 64,000 个附加端口，以便分布在所有群集节点上。
 
-出站已分配端口及其空闲超时用于 [SNAT][azure-lb-outbound-connections]。 默认情况下，“标准” SKU 负载均衡器[根据后端池大小自动分配出站端口数][azure-lb-outbound-preallocatedports]并为每个端口使用 30 分钟的空闲超时。 若要查看这些值，请使用 [az network lb outbound-rule list][az-network-lb-outbound-rule-list] 显示负载均衡器的出站规则：
+除非另有说明，否则 AKS 将使用标准负载均衡器在配置时所定义的分配出站端口的默认值。 在 AKS API 上此值为 null，或在 SLB API 上为 0，如以下命令所示 ：
 
 ```azurecli
 NODE_RG=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
 az network lb outbound-rule list --resource-group $NODE_RG --lb-name kubernetes -o table
 ```
 
-前面的命令将列出负载均衡器的出站规则，例如：
+上述命令将列出负载均衡器的出站规则，例如：
 
 ```console
 AllocatedOutboundPorts    EnableTcpReset    IdleTimeoutInMinutes    Name             Protocol    ProvisioningState    ResourceGroup
@@ -197,48 +209,72 @@ AllocatedOutboundPorts    EnableTcpReset    IdleTimeoutInMinutes    Name        
 0                         True              30                      aksOutboundRule  All         Succeeded            MC_myResourceGroup_myAKSCluster_chinaeast2  
 ```
 
-示例输出显示了 *AllocatedOutboundPorts* 和 *IdleTimeoutInMinutes* 的默认值。 如果 *AllocatedOutboundPorts* 的值为 0，则会根据后端池大小自动分配出站端口数。 例如，如果群集有 50 个或更少节点，则会为每个节点分配 1024 个端口。
+此输出并不意味着你有 0 个端口，而是你利用[基于后端池大小的自动出站端口分配][azure-lb-outbound-preallocatedports]，因此，举例来说，如果群集有 50 个或更少的节点，则为每个节点分配 1024 个端口，当你增加节点数时，每个节点的端口数将逐渐减少。
 
-如果你预计采用上述默认配置时会出现 SNAT 耗尽问题，请考虑更改 *allocatedOutboundPorts* 或 *IdleTimeoutInMinutes* 的设置。 每个额外的 IP 地址会启用 64,000 个额外端口用于分配，但在添加更多 IP 地址时，Azure 标准负载均衡器不会自动增加每个节点的端口数。 可以通过设置 *load-balancer-outbound-ports* 和 *load-balancer-idle-timeout* 参数来更改这些值。 例如：
+若要定义或增加分配的出站端口的数量，可以按照以下示例操作：
 
 ```azurecli
 az aks update \
     --resource-group myResourceGroup \
     --name myAKSCluster \
-    --load-balancer-outbound-ports 0 \
-    --load-balancer-idle-timeout 30
+    --load-balancer-managed-outbound-ip-count 7 \
+    --load-balancer-outbound-ports 4000
 ```
 
-> [!IMPORTANT]
-> 在自定义 *allocatedOutboundPorts* 之前，必须[计算所需的配额][calculate-required-quota]以避免连接或缩放问题。 为 *allocatedOutboundPorts* 指定的值还必须是 8 的倍数。
+此示例假设为群集中的每个节点提供 4000 个分配的出站端口以及 7 个 IP，则你会得到以下结果：每个节点 4000 个端口 * 100 个节点 = 400,000 个总端口 < = 448,000 个总端口 = 7 个 IP * 每个 IP 64,000 端口。 这样你便可安全地缩放到 100 个节点，并执行默认升级操作。 为升级和其他操作所需的其他节点分配足够的端口至关重要。 AKS 默认为一个缓冲区节点用于升级，在此示例中，这要求在任何给定时间点有 4000 个可用端口。
 
-创建群集时也可以使用 *load-balancer-outbound-ports* 和 *load-balancer-idle-timeout* 参数，但还必须同时指定 *load-balancer-managed-outbound-ip-count*、*load-balancer-outbound-ips* 或 *load-balancer-outbound-ip-prefixes*。  例如：
+<!--Not Available on  If using maxSurge values, multiply the outbound ports per node by your maxSurge value.-->
+<!--Not Available on [maxSurge values](upgrade-cluster.md#customize-node-surge-upgrade-preview)-->
+
+要安全地超过 100 个节点，必须添加更多 IP。
+
+> [!IMPORTANT]
+> 在自定义 allocatedOutboundPort 之前，必须[计算所需的配额并检查要求][requirements]以避免连接或缩放问题。
+
+创建群集时，还可以使用 `load-balancer-outbound-ports` 参数，但必须同时指定 `load-balancer-managed-outbound-ip-count`、`load-balancer-outbound-ips` 或 `load-balancer-outbound-ip-prefixes`   。  例如：
 
 ```azurecli
 az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
-    --vm-set-type VirtualMachineScaleSets \
-    --node-count 1 \
     --load-balancer-sku standard \
-    --generate-ssh-keys \
     --load-balancer-managed-outbound-ip-count 2 \
-    --load-balancer-outbound-ports 0 \
-    --load-balancer-idle-timeout 30
+    --load-balancer-outbound-ports 1024 
 ```
 
-将 *load-balancer-outbound-ports* 和 *load-balancer-idle-timeout* 参数从默认值更改为其他值时，会影响负载均衡器配置文件的行为，这将影响整个群集。
+### <a name="configure-the-load-balancer-idle-timeout"></a>配置负载均衡器的空闲超时
 
-### <a name="required-quota-for-customizing-allocatedoutboundports"></a>自定义 allocatedOutboundPorts 时所需的配额
-你必须有足够的出站 IP 容量，具体取决于节点 VM 和所需的已分配出站端口的数量。 若要验证是否有足够的出站 IP 容量，请使用以下公式： 
+如果 SNAT 端口资源已经耗尽，那么在现有流释放 SNAT 端口之前出站流会失败。 当流关闭时，负载均衡器将回收 SNAT 端口，AKS 配置的负载均衡器将使用 30 分钟空闲超时回收空闲流中的 SNAT 端口。
+还可以使用传输（例如 `TCP keepalives`）或 `application-layer keepalives` 刷新空闲流，并在必要时重置此空闲超时 。 可以按照以下示例配置此超时： 
 
-*outboundIPs* \* 64,000 \> *nodeVMs* \* *desiredAllocatedOutboundPorts*。
+```azurecli
+az aks update \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --load-balancer-idle-timeout 4
+```
 
-例如，如果你有 3 个 nodeVM 和 50,000 个 desiredAllocatedOutboundPort，则至少需要有 3 个 outboundIP。 建议你在所需容量的基础上增加额外的出站 IP 容量。 此外，在计算出站 IP 容量时，必须考虑群集自动缩放程序和节点池升级的可能性。 对于群集自动缩放程序，请查看当前节点计数和最大节点计数，并使用较高的值。 对于升级，请考虑为允许升级的节点池添加一个额外的节点 VM。
+如果你希望具有许多短生存期的连接，而不想有长生存期且可能有长时间空闲的连接（例如利用 `kubectl proxy` 或 `kubectl port-forward`），请考虑使用低超时值（如 4 分钟）。 另外，使用 TCP keepalive 时，在连接的一端启用它们就足够了。 例如，若要重置流的空闲计时器，在服务器端启用它们就足够了，没有必要在两端都启动 TCP keepalive。 应用程序层（包括数据库客户端-服务器配置）也存在类似的概念。 检查服务器端对于特定于应用程序的 keepalive 存在哪些选项。
 
-将 *IdleTimeoutInMinutes* 设置为默认值 30 分钟之外的值时，请考虑你的工作负荷多长时间将需要出站连接。 还要考虑在 AKS 外部使用的“标准”SKU 负载平衡器的默认超时值是 4 分钟。 如果 *idletimeoutminutes* 值较准确地反映你的具体 AKS 工作负载，则有助于降低由于绑定不再使用的连接而导致的 SNAT 耗尽。
+> [!IMPORTANT]
+> AKS 默认启用“空闲时执行 TCP 重置”，建议保持此配置，并利用它在你的场景中实现可预测性更高的应用程序行为。
+> 只有在 TCP 连接的状态为“已建立”时才会发送 TCP RST。 在[此处](../load-balancer/load-balancer-tcp-reset.md)阅读详细信息。
 
-## <a name="restrict-access-to-specific-ip-ranges"></a>限制访问，仅允许特定 IP 范围进行访问
+### <a name="requirements-for-customizing-allocated-outbound-ports-and-idle-timeout"></a>自定义分配的出站端口和空闲超时的要求
+
+- 为 *allocatedOutboundPorts* 指定的值还必须是 8 的倍数。
+- 你必须有足够的出站 IP 容量，具体取决于节点 VM 和所需的已分配出站端口的数量。 若要验证是否有足够的出站 IP 容量，请使用以下公式： 
+
+    *outboundIPs* \* 64,000 \> *nodeVMs* \* *desiredAllocatedOutboundPorts*。
+
+    例如，如果你有 3 个 *nodeVM* 和 50,000 个 *desiredAllocatedOutboundPort*，则至少需要有 3 个 *outboundIP*。 建议你在所需容量的基础上增加额外的出站 IP 容量。 此外，在计算出站 IP 容量时，必须考虑群集自动缩放程序和节点池升级的可能性。 对于群集自动缩放程序，请查看当前节点计数和最大节点计数，并使用较高的值。 对于升级，请考虑为允许升级的节点池添加一个额外的节点 VM。
+    
+- 将 *IdleTimeoutInMinutes* 设置为默认值 30 分钟之外的值时，请考虑你的工作负荷多长时间将需要出站连接。 还要考虑在 AKS 外部使用的“标准”SKU 负载平衡器的默认超时值是 4 分钟。 如果 *idletimeoutminutes* 值较准确地反映你的具体 AKS 工作负载，则有助于降低由于绑定不再使用的连接而导致的 SNAT 耗尽。
+
+> [!WARNING]
+> 更改 AllocatedOutboundPort 和 IdleTimeoutInMinute 的值可能会显著更改负载均衡器的出站规则的行为，因此在不了解弊端和应用程序连接模式的情况下，不应轻易去做，请查看[下面的 SNAT 故障排除部分][troubleshoot-snat]，并在更新这些值之前查看[负载均衡器出站规则][azure-lb-outbound-rules-overview]和 [Azure 中的出站连接][azure-lb-outbound-connections]，以充分了解更改的影响 。
+
+## <a name="restrict-inbound-traffic-to-specific-ip-ranges"></a>将入站流量限制为特定 IP 范围
 
 默认情况下，与负载均衡器的虚拟网络关联的网络安全组 (NSG) 包含一个允许所有入站外部流量的规则。 可以更新此规则，以便仅允许来自特定 IP 范围的入站流量。 以下清单使用 *loadBalancerSourceRanges* 来指定允许其发送入站外部流量的新 IP 范围：
 
@@ -257,16 +293,76 @@ spec:
   - MY_EXTERNAL_IP_RANGE
 ```
 
-以上示例将更新规则，以便仅允许来自 *MY_EXTERNAL_IP_RANGE* 范围的入站外部流量。 [Kubernetes 文档][kubernetes-cloud-provider-firewall]中提供了有关使用此方法限制负载均衡器服务访问权限的详细信息。
+## <a name="additional-customizations-via-kubernetes-annotations"></a>通过 Kubernetes 注释进行其他自定义
+
+下面是类型 `LoadBalancer` 的 Kubernetes 服务支持的注释列表，这些注释仅适用于入站流：
+
+| Annotation | Value | 说明
+| ----------------------------------------------------------------- | ------------------------------------- | ------------------------------------------------------------ 
+| `service.beta.kubernetes.io/azure-load-balancer-internal`         | `true` 或 `false`                     | 指定负载均衡器是否应为“内部”。 如果未设置，则默认为“公共”。
+| `service.beta.kubernetes.io/azure-load-balancer-internal-subnet`  | 子网的名称                    | 指定内部负载均衡器应绑定到的子网。 如果未设置，则默认为云配置文件中配置的子网。
+| `service.beta.kubernetes.io/azure-dns-label-name`                 | 公共 IP 上的 DNS 标签的名称   | 指定公共服务的 DNS 标签的名称。 如果设置为空字符串，则不会使用公共 IP 中的 DNS 条目。
+| `service.beta.kubernetes.io/azure-shared-securityrule`            | `true` 或 `false`                     | 指定应使用可能与其他服务共享的 Azure 安全规则公开服务，交易规则的特定性，以增加可公开的服务数量。 此注释依赖于网络安全组的 Azure [扩充式安全规则](../virtual-network/security-overview.md#augmented-security-rules)功能。 
+| `service.beta.kubernetes.io/azure-load-balancer-resource-group`   | 资源组的名称            | 指定与群集基础结构（节点资源组）不在同一资源组中的负载均衡器公共 IP 的资源组。
+| `service.beta.kubernetes.io/azure-allowed-service-tags`           | 允许的服务标记列表          | 指定以逗号隔开的允许[服务标记](../virtual-network/security-overview.md#service-tags)的列表。
+| `service.beta.kubernetes.io/azure-load-balancer-tcp-idle-timeout` | TCP 空闲超时（以分钟为单位）          | 指定 TCP 连接空闲超时在负载均衡器上发生的时间（以分钟为单位）。 默认值和最小值为 4。 最大值为 30。 必须为整数。
+|`service.beta.kubernetes.io/azure-load-balancer-disable-tcp-reset` | `true`                                | 为 SLB 禁用 `enableTcpReset`
+
+## <a name="troubleshooting-snat"></a>SNAT 疑难解答
+
+如果知道正在启动与同一目标 IP 地址和端口的多个出站 TCP 或 UDP 连接，观察失败的出站连接，或者支持人员通知已耗尽 SNAT 端口（PAT 使用的预先分配的临时端口），则有几个常见缓解选项可供选择。 查看这些选项，确定可用且最适合自己的方案的选项。 一个或多个选项可能有助于管理此方案。 有关详细信息，请查看[出站连接故障排除指南](../load-balancer/troubleshoot-outbound-connection.md)。
+
+通常，SNAT 耗尽的根本原因是建立和管理出站连接的方式出现了对立模式，或者可配置的计时器已更改，不再使用默认值。 请认真阅读本部分。
+
+### <a name="steps"></a>步骤
+1. 检查连接是否长时间处于空闲状态，以及是否依靠默认的空闲超时释放该端口。 如果是，可能需要为你的场景减少 30 分钟的默认超时。
+2. 调查应用程序如何建立出站连接（例如，通过代码评审或数据包捕获进行调查）。
+3. 确定此活动是否为预期行为，或者应用程序是否行为异常。 使用 Azure Monitor 中的[指标](../load-balancer/load-balancer-standard-diagnostics.md)和[日志](../load-balancer/load-balancer-monitor-log.md)来证实发现结果。 例如，对“SNAT 连接”指标使用“失败”类别。
+4. 评估是否遵循适当的[模式](#design-patterns)。
+5. 评估[更多出站 IP 地址 + 更多分配的出站端口](#configure-the-allocated-outbound-ports)是否应可以缓解 SNAT 端口耗尽的问题。
+
+### <a name="design-patterns"></a>设计模式
+始终尽量利用连接重用和连接池。 这些模式可以避免资源耗尽问题，并使行为可预测。 在许多开发库和框架中，都可以找到这些模式的根源。
+
+- 原子请求（每个连接一个请求）是一个通常并不良好的设计选项。 这种对立模式会限制缩放，降低性能并降低可靠性。 应该重复使用 HTTP/S 连接来减少连接数和关联的 SNAT 端口数。 由于使用 TLS 时可以减少握手次数、系统开销以及加密操作的开销，因此应用规模与性能都会提高。
+- 如果你使用的是群集/自定义 DNS，或者 coreDNS 上的自定义上游服务器，请记住，当客户端不缓存 DNS 解析器结果时，DNS 可以在卷上引入许多单独的流。 请确保首先自定义 coreDNS 而不是使用自定义 DNS 服务器，并定义合适的缓存值。
+- UDP 流（例如 DNS 查找）根据空闲超时持续时间分配 SNAT 端口。 空闲超时越长，SNAT 端口上的压力越大。 使用较短的空闲超时（例如 4 分钟）。
+使用连接池来调整连接卷。
+- 切勿以静默方式丢弃 TCP 流，且不要依赖 TCP 计时器来清理流。 如果不允许 TCP 显式关闭连接，中间系统和终结点上将保持已分配状态，使 SNAT 端口不可用于其他连接。 此模式可能会触发应用程序故障和 SNAT 耗尽。
+- 在对造成的影响了解不深的情况下，请不要更改与 OS 级别的 TCP 关闭相关的计时器值。 当某个连接的终结点不符合预期时，尽管 TCP 堆栈会恢复，但应用程序的性能可能会受负面影响。 希望更改计时器往往意味着底层设计出现了问题。 查看以下建议：
+
+以上示例将更新规则，以便仅允许来自 *MY_EXTERNAL_IP_RANGE* 范围的入站外部流量。 如果将 MY_EXTERNAL_IP_RANGE 替换为内部子网 IP 地址，则流量仅限于群集内部 IP。 这样，来自 Kubernetes 群集外部的客户端不能访问负载均衡器。
+
+## <a name="moving-from-a-basic-sku-load-balancer-to-standard-sku"></a>从基本 SKU 负载均衡器转移到标准 SKU
+
+如果现有的群集包含基本 SKU 负载均衡器，则在进行迁移以使用包含标准 SKU 负载均衡器的群集时，需要注意一些重要的行为差异。
+
+例如，假设只能在创建群集时定义群集的 `load-balancer-sku` 类型，则通过蓝/绿部署迁移群集是常用的做法。 但是，基本 SKU 负载均衡器使用基本 SKU IP 地址，而这些地址与标准 SKU 负载均衡器不兼容，因为这些负载均衡器需要标准 SKU IP 地址   。 在迁移群集以升级负载均衡器 SKU 时，需要提供一个具有兼容 IP 地址 SKU 的新 IP 地址。
+
+有关如何迁移群集的更多注意事项，请访问[有关迁移注意事项的文档](aks-migration.md)，以查看迁移时要考虑的重要主题列表。 以下限制也是在 AKS 中使用标准 SKU 负载均衡器时要注意的重要行为差异。
+
+## <a name="limitations"></a>限制
+
+创建和管理支持标准 SKU 负载均衡器的 AKS 群集时存在以下限制：
+
+* 至少需要指定一个公共 IP 或 IP 前缀来允许 AKS 群集的出口流量。 此外，需要使用公共 IP 或 IP 前缀来保持控制平面与代理节点之间的连接，以及保持与旧版 AKS 的兼容性。 可以使用以下选项指定标准 SKU 负载均衡器的公共 IP 或 IP 前缀：
+    * 提供自己的公共 IP。
+    * 提供自己的公共 IP 前缀。
+    * 指定最大为 100 的数字，以允许 AKS 群集在其所在的同一个资源组（名称通常以 *MC_* 开头）中创建多个标准 SKU 公共 IP。 AKS 会将公共 IP 分配到标准 SKU 负载均衡器。 默认情况下，如果未指定公共 IP、公共 IP 前缀或 IP 数目，系统会在 AKS 群集所在的同一个资源组中自动创建一个公共 IP。 此外，必须允许公共地址，并避免创建任何会阻止创建 IP 的 Azure Policy。
+* 由 AKS 创建的公共 IP 不能重复使用为自定义自带的公共 IP 地址。 所有自定义 IP 地址必须由用户创建和管理。
+* 只能在创建 AKS 群集时定义负载均衡器 SKU。 创建 AKS 群集后，无法更改负载均衡器 SKU。
+* 在一个群集中只能使用一种类型的负载均衡器 SKU（基本或标准）。
+* 标准 SKU 负载均衡器仅支持标准 SKU IP 地址。 
 
 ## <a name="next-steps"></a>后续步骤
 
 在 [Kubernetes 服务文档][kubernetes-services]中详细了解 Kubernetes 服务。
 
+如需详细了解使用入站流量的内部负载均衡器，请参阅 [AKS 内部负载均衡器文档](internal-lb.md)。
+
 <!-- LINKS - External -->
 
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
-[kubernetes-cloud-provider-firewall]: https://kubernetes.io/docs/tasks/access-application-cluster/configure-cloud-provider-firewall/#restrict-access-for-loadbalancer-service
 [kubectl-delete]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#delete
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
@@ -295,11 +391,9 @@ spec:
 [az-network-public-ip-prefix-show]: https://docs.azure.cn/cli/network/public-ip/prefix?view=azure-cli-latest#az-network-public-ip-prefix-show
 [az-role-assignment-create]: https://docs.azure.cn/cli/role/assignment?view=azure-cli-latest#az-role-assignment-create
 [azure-lb]: ../load-balancer/load-balancer-overview.md
-
-<!--Not Avaialble on [azure-lb-comparison]: ../load-balancer/concepts-limitations.md#skus-->
-
+[azure-lb-comparison]: ../load-balancer/skus.md
 [azure-lb-outbound-rules]: ../load-balancer/load-balancer-outbound-rules-overview.md#snatports
-[azure-lb-outbound-connections]: ../load-balancer/load-balancer-outbound-connections.md#snat
+[azure-lb-outbound-connections]: ../load-balancer/load-balancer-outbound-connections.md
 [azure-lb-outbound-preallocatedports]: ../load-balancer/load-balancer-outbound-connections.md#preallocatedports
 [azure-lb-outbound-rules-overview]: ../load-balancer/load-balancer-outbound-rules-overview.md
 [install-azure-cli]: https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest
@@ -308,6 +402,8 @@ spec:
 [use-kubenet]: configure-kubenet.md
 [az-extension-add]: https://docs.azure.cn/cli/extension?view=azure-cli-latest#az-extension-add
 [az-extension-update]: https://docs.azure.cn/cli/extension?view=azure-cli-latest#az-extension-update
-[calculate-required-quota]: #required-quota-for-customizing-allocatedoutboundports
+[requirements]: #requirements-for-customizing-allocated-outbound-ports-and-idle-timeout
+[use-multiple-node-pools]: use-multiple-node-pools.md
+[troubleshoot-snat]: #troubleshooting-snat
 
 <!-- Update_Description: update meta properties, wording update, update link -->

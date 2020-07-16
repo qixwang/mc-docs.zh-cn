@@ -1,11 +1,11 @@
 ---
-title: 管理紧急访问管理员帐户 - Azure Active Directory | Microsoft Docs
+title: 管理紧急访问管理员帐户 - Azure AD | Microsoft Docs
 description: 本文介绍如何借助紧急访问帐户来防止意外地被锁在 Azure Active Directory (Azure AD) 组织之外的情况。
 services: active-directory
 author: markwahl-msft
+manager: daveba
 ms.author: v-junlch
-origin.date: 09/09/2019
-ms.date: 10/25/2019
+ms.date: 07/06/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,16 +13,16 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b4465c73a920aa7360fc8778afd68d443a7d3d03
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b27ea0fdc33df97f16579307c5bad21e3418b9a7
+ms.sourcegitcommit: 92b9b1387314b60661f5f62db4451c9ff2c49500
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73830736"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165034"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>在 Azure AD 中管理紧急访问帐户
 
-必须防止意外地被锁在 Azure Active Directory (Azure AD) 组织之外，因为在这种情况下，无法以管理员的身份登录或激活其他用户帐户。 可在组织中创建两个或更多个紧急访问帐户，缓解意外丧失管理访问权限造成的影响。 
+必须防止意外地被锁在 Azure Active Directory (Azure AD) 组织之外，因为在这种情况下，无法以管理员的身份登录或激活其他用户帐户。 可在组织中创建两个或更多个紧急访问帐户，缓解意外丧失管理访问权限造成的影响。
 
 紧急访问帐户拥有较高的特权，因此请不要将其分配给特定的个人。 紧急访问帐户只能用于“不受限”紧急情况，即不能使用正常管理帐户的情况。 建议你始终以将紧急帐户的使用限于绝对必要情况为目标。
 
@@ -52,7 +52,11 @@ ms.locfileid: "73830736"
 
 为降低泄露密码所致攻击的风险，Azure AD 建议要求所有用户使用多重身份验证。 此组包括管理员和被盗帐户将产生重大影响的其他所有用户（例如财务）。
 
-但是，至少应有一个紧急访问帐户的多重身份验证机制与其他非紧急帐户不同。 这包括第三方多重身份验证解决方案。 如果条件访问策略要求每个管理员针对 Azure AD 及连接的其他软件即服务 (SaaS) 应用执行[多重身份验证](../authentication/howto-mfa-userstates.md)，则应从此要求中排除紧急访问帐户，并改而配置其他机制。 此外，应确保这些帐户不使用按用户的多重身份验证策略。
+但是，至少应有一个紧急访问帐户的多重身份验证机制与其他非紧急帐户不同。 这包括第三方多重身份验证解决方案。 如果条件访问策略要求每个管理员针对 Azure AD 执行[多重身份验证](../authentication/howto-mfa-userstates.md)，则应从此要求中排除紧急访问帐户，并改而配置其他机制。 此外，应确保这些帐户不使用按用户的多重身份验证策略。
+
+### <a name="exclude-at-least-one-account-from-conditional-access-policies"></a>从条件访问策略中排除至少一个帐户
+
+在紧急情况下，你不希望某个策略阻止你进行访问以解决问题。 应从所有条件访问策略中排除至少一个紧急访问帐户。
 
 ## <a name="federation-guidance"></a>联合身份验证指南
 
@@ -76,7 +80,7 @@ ms.locfileid: "73830736"
 - 确保使用这些帐户的紧急破窗流程有文档记录，且是最新的流程。
 - 确保在紧急情况下可能需要执行这些步骤的管理员和保安员接受了该流程的培训。
 - 更新紧急访问帐户的帐户凭据，尤其是所有密码，然后验证紧急访问帐户是否可以登录并执行管理任务。
-- 确保用户未对任何个人用户设备或个人详细信息注册多重身份验证。 
+- 确保用户未对任何个人用户设备或个人详细信息注册多重身份验证或自助服务密码重置 (SSPR)。 
 - 如果帐户已注册为通过多重身份验证登录到设备，以便在登录或角色激活期间使用，请确保需在紧急情况下使用该设备的所有管理员都可访问该设备。 另请验证设备是否可以通过不存在共同故障模式的至少两条网络路径进行通信。 例如，设备可通过公司无线网络和移动网络提供商网络与 Internet 通信。
 
 应定期执行以下步骤，进行重大更改后也应执行这些步骤：
@@ -90,7 +94,6 @@ ms.locfileid: "73830736"
 - [使用 Azure AD 添加用户](../fundamentals/add-users-azure-active-directory.md)并[将新用户分配到全局管理员角色](../fundamentals/active-directory-users-assign-role-azure-portal.md)
 - [注册 Azure AD Premium](../fundamentals/active-directory-get-started-premium.md)（如果尚未注册）
 - [如何要求用户进行双重验证](../authentication/howto-mfa-userstates.md)
-- [在 Office 365 中为全局管理员配置额外的保护](https://docs.microsoft.com/office365/enterprise/protect-your-global-administrator-accounts)（如果使用 Office 365）
-- [将现有全局管理员转换为更具体的管理员角色](directory-assign-admin-roles.md)
+- 如果使用 Microsoft 365，则[在 Microsoft 365 中为全局管理员配置额外的保护](https://docs.microsoft.com/office365/enterprise/protect-your-global-administrator-accounts)
+- [启动全局管理员访问评审](../privileged-identity-management/pim-how-to-start-security-review.md)并[将现有全局管理员转换为更具体的管理员角色](directory-assign-admin-roles.md)
 
-<!-- Update_Description: wording update -->

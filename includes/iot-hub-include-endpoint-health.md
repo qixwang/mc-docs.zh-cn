@@ -1,0 +1,27 @@
+---
+title: include 文件
+description: include 文件
+author: robinsh
+ms.service: iot-hub
+services: iot-hub
+ms.topic: conceptual
+ms.date: 04/28/2019
+ms.author: robinsh
+ms.custom: include file
+ms.openlocfilehash: 1dbd352d9603fe5b295e38ab476ea6438fd39bea
+ms.sourcegitcommit: 9bc3e55f01e0999f05e7b4ebaea95f3ac91d32eb
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86226126"
+---
+可以使用 REST API [Get Endpoint Health](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) 获取终结点的运行状况状态。 我们建议使用与路由消息延迟相关的 [IoT 中心指标](../articles/iot-hub/iot-hub-metrics.md)来识别和调试终结点运行状况不佳或运行不正常时的错误，因为我们预计当终结点处于其中一种状态时，延迟会更高。
+
+
+|运行状况状态|说明|
+|---|---|
+|healthy|终结点按预期方式接受消息。|
+|不正常|终结点未接受消息，IoT 中心正重试将消息发送到此终结点。|
+|未知|IoT 中心尚未尝试将消息传递到此终结点。|
+|已降级|终结点正在接受比预期慢的消息或正在从不正常状态恢复。|
+|不活动|IoT 中心不再向此终结点传递消息。 重新尝试将消息发送到此终结点时失败。|

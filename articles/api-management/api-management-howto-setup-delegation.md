@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 05/09/2020
+ms.date: 07/10/2020
 ms.author: v-johya
-ms.openlocfilehash: 631c3658c1925a101f6b333c6cbd90eb2981b451
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: 47abab1dbae0a8caa9af29933e32e68db21c2da9
+ms.sourcegitcommit: 9bc3e55f01e0999f05e7b4ebaea95f3ac91d32eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83001943"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86226063"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>如何委派用户注册和产品订阅
 
@@ -28,7 +28,7 @@ ms.locfileid: "83001943"
 
 ## <a name="delegating-developer-sign-in-and-sign-up"></a><a name="delegate-signin-up"> </a>委派开发人员登录和注册
 
-若要委托开发人员登录并注册现有网站，需要在该站点上创建一个特殊的委托终结点。 该终结点需要充当从 API 管理开发人员门户发起的任何此类请求的入口点。
+若要将开发人员登录和注册委派给现有网站，需在站点上创建一个特殊的委派终结点。 它需要充当从 API 管理开发人员门户发起的任何此类请求的入口点。
 
 最终工作流将如下所示：
 
@@ -37,14 +37,14 @@ ms.locfileid: "83001943"
 3. 委派终结点反过来会重定向到 UI 或呈现 UI，要求用户登录或注册
 4. 成功后，用户会重定向回一开始使用的 API 管理开发人员门户页
 
-一开始需先将 API 管理设置为通过委派终结点来路由请求。 在 Azure 门户的 API 管理资源中搜索“安全性”  ，然后单击“委派”  项。 单击用于启用“委派登录和注册”的复选框。
+一开始需先将 API 管理设置为通过委派终结点来路由请求。 在 Azure 门户的 API 管理资源中搜索“开发人员门户”，然后单击“委派”项 。 单击用于启用“委派登录和注册”的复选框。
 
 ![“委派”页][api-management-delegation-signin-up]
 
-* 确定特殊委派终结点的 URL，将其输入到“委派终结点 URL”字段中。  
-* 在”委派身份验证密钥”字段中输入一个密钥，该密钥用于计算提供给用户进行验证的签名，确保请求确实来自 Azure API 管理。 可以单击“生成”按钮让 API 管理随机生成一个密钥。 
+* 确定特殊委派终结点的 URL，将其输入到“委派终结点 URL”字段中。 
+* 在”委派身份验证密钥”字段中输入一个密钥，该密钥用于计算提供给用户进行验证的签名，确保请求确实来自 Azure API 管理。 可以单击“生成”按钮让 API 管理随机生成一个密钥。
 
-现在需创建“委派终结点”。  该终结点需执行多项操作：
+现在需创建“委派终结点”。 该终结点需执行多项操作：
 
 1. 接收以下形式的请求：
    
@@ -74,7 +74,7 @@ ms.locfileid: "83001943"
    * 通过 API 管理 REST API [请求单一登录 (SSO) 令牌]
    * 将 returnUrl 查询参数追加到从上述 API 调用接收的 SSO URL：
      
-     > 例如， https://customer.portal.azure-api.net/signin-sso?token&returnUrl=/return/url 
+     > 例如，`https://customer.portal.azure-api.cn/signin-sso?token&returnUrl=/return/url` 
      > 
      > 
    * 将用户重定向到上述生成的 URL
@@ -99,7 +99,7 @@ ms.locfileid: "83001943"
 2. 浏览器将重定向到委托终结点。
 3. 委托终结点执行所需的产品订阅步骤。 具体的步骤由你设计。 步骤可以包括重定向到另一个用于请求计费信息的页面、提出更多提问，或者只是存储信息而不要求执行任何用户操作
 
-若要启用此功能，请在“委派”页上单击“委派产品订阅”。  
+若要启用此功能，请在“委派”页上单击“委派产品订阅”。 
 
 接下来，确保委托终结点执行以下操作：
 
@@ -128,14 +128,14 @@ ms.locfileid: "83001943"
      > 
      > 
    * 将上面计算的哈希与 **sig** 查询参数的值进行比较。 如果两个哈希匹配，则转到下一步，否则拒绝该请求。
-3. 根据在 **operation** 中请求的操作类型（例如请求计费信息、提问更多问题，等等）处理产品订阅。
+3. 根据在 operation 中请求的操作类型（例如请求计费信息、提问更多问题，等等）处理产品订阅。
 4. 在这一端成功为用户订阅产品以后，即可[调用订阅 REST API] 为用户订阅 API 管理产品。
 
-## <a name="example-code"></a><a name="delegate-example-code"> </a> 示例代码
+## <a name="example-code"></a><a name="delegate-example-code"> </a>示例代码
 
 这些代码示例演示如何：
 
-* 提取发布者门户的“委托”屏幕中设置的委托验证密钥 
+* 提取发布者门户的“委托”屏幕中设置的委托验证密钥
 * 创建 HMAC，随后它将用于验证签名，以证实所传递的 returnUrl 的有效性。
 
 同样的代码也适用于 productId 和 userId，只需进行轻微修改。

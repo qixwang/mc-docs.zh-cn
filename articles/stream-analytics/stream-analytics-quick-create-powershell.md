@@ -1,20 +1,19 @@
 ---
 title: 快速入门 - 使用 Azure PowerShell 创建流分析作业
 description: 本快速入门演示如何使用 Azure PowerShell 模块来部署并运行 Azure 流分析作业。
-services: stream-analytics
-author: lingliw
-ms.author: v-lingwu
-manager: digimobile
+author: Johnnytechn
+ms.author: v-johya
+ms.date: 07/06/2020
 ms.topic: quickstart
 ms.service: stream-analytics
 origin.date: 12/20/2018
-ms.date: 06/21/2019
-ms.openlocfilehash: 66106d70cdfd925036bd91f0196c962df73ad7ea
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.custom: mvc
+ms.openlocfilehash: 6497039adc34ae39f47faf5b0b4e96af89fdebb5
+ms.sourcegitcommit: 9bc3e55f01e0999f05e7b4ebaea95f3ac91d32eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292897"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86226164"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建流分析作业
 
@@ -25,11 +24,12 @@ Azure PowerShell 模块用于通过 PowerShell cmdlet 或脚本创建和管理 A
 ## <a name="before-you-begin"></a>准备阶段
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-* 如果没有 Azure 订阅，请创建一个[试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。  
+
+* 如果没有 Azure 订阅，请创建[试用版](https://www.azure.cn/pricing/1rmb-trial/)。
 
 * 本快速入门需要 Azure PowerShell 模块。 运行 `Get-Module -ListAvailable Az` 即可找到在本地计算机上安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-Az-ps)。
 
-* 某些 IoT 中心操作不受 Azure PowerShell 的支持，必须使用 Azure CLI 2.0.24 或更高版本以及 Azure CLI 的 IoT 扩展来完成。 [安装 Azure CLI](https://docs.azure.cn/zh-cn/cli/install-azure-cli?view=azure-cli-latest)，并使用 `az extension add --name azure-cli-iot-ext` 来安装 IoT 扩展。
+* 某些 IoT 中心操作不受 Azure PowerShell 支持，必须使用 Azure CLI 2.0.70 或更高版本以及 Azure CLI 的 IoT 扩展来完成。 [安装 Azure CLI](/cli/install-azure-cli?view=azure-cli-latest)，并使用 `az extension add --name azure-iot` 来安装 IoT 扩展。
 
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
@@ -41,7 +41,7 @@ Azure PowerShell 模块用于通过 PowerShell cmdlet 或脚本创建和管理 A
 Connect-AzAccount -Environment AzureChinaCloud
 ```
 
-如果有多个订阅，请运行以下 cmdlet，选择要用于本快速入门的订阅。 请确保将 `<your subscription name>` 替换为订阅的名称：  
+如果有多个订阅，请运行以下 cmdlet，选择要用于本快速入门的订阅。 请确保将 `<your subscription name>` 替换为订阅的名称：
 
 ```powershell
 # List all available subscriptions.
@@ -57,10 +57,10 @@ Get-AzSubscription -SubscriptionName "<your subscription name>" | Select-AzSubsc
 
 ```powershell
 $resourceGroup = "StreamAnalyticsRG"
-$location = "China North"
+$location = "ChinaNorth2"
 New-AzResourceGroup `
-   -Name $resourceGroup `
-   -Location $location 
+    -Name $resourceGroup `
+    -Location $location
 ```
 
 ## <a name="prepare-the-input-data"></a>对输入数据进行准备
@@ -69,45 +69,45 @@ New-AzResourceGroup `
 
 以下 Azure CLI 代码块通过多项命令来准备作业所需的输入数据。 查看介绍代码的部分。
 
-1. 在 PowerShell 窗口中运行 [az login](https://docs.azure.cn/zh-cn/cli/authenticate-azure-cli?view=azure-cli-latest) 命令，以便登录到 Azure 帐户。 
+1. 在 PowerShell 窗口中运行 [az login](/cli/authenticate-azure-cli?view=azure-cli-latest) 命令，以便登录到 Azure 帐户。
 
-   当你成功登录后，Azure CLI 会返回订阅的列表。 复制用于本快速入门的订阅，然后运行 [az account set](https://docs.azure.cn/zh-cn/cli/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#change-the-active-subscription) 命令以选择该订阅。 选择在上一部分使用 PowerShell 选择的订阅。 确保将 `<your subscription name>` 替换为订阅的名称。
+    当你成功登录后，Azure CLI 会返回订阅的列表。 复制用于本快速入门的订阅，然后运行 [az account set](/cli/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#change-the-active-subscription) 命令以选择该订阅。 选择在上一部分使用 PowerShell 选择的订阅。 确保将 `<your subscription name>` 替换为订阅的名称。
 
-   ```azurecli
-   az login
-   
-   az account set --subscription "<your subscription>"
-   ```
+    ```azurecli
+    az login
+
+    az account set --subscription "<your subscription>"
+    ```
 
 2. 使用 [az iot hub create](../iot-hub/iot-hub-create-using-cli.md#create-an-iot-hub) 命令创建 IoT 中心。 此示例创建名为 **MyASAIoTHub** 的 IoT 中心。 由于 IoT 中心名称是唯一的，因此需使用你自己的 IoT 中心名称。 将 SKU 设置为 F1 即可使用免费层，前提是它在订阅中可用。 否则，请选择下一个最低的层。
 
-   ```azurecli
-   az iot hub create --name "<your IoT Hub name>" --resource-group $resourceGroup --sku S1
-   ```
+    ```azurecli
+    az iot hub create --name "<your IoT Hub name>" --resource-group $resourceGroup --sku S1
+    ```
 
-   创建 IoT 中心以后，请使用 [az iot hub show-connection-string](https://docs.azure.cn/zh-cn/cli/iot/hub?view=azure-cli-latest) 命令获取 IoT 中心连接字符串。 复制整个连接字符串并将其保存。这样，在将 IoT 中心作为输入添加到流分析作业时，就可以使用该字符串。
-   
-   ```azurecli
-   az iot hub show-connection-string --hub-name "MyASAIoTHub"
-   ```
+    创建 IoT 中心以后，请使用 [az iot hub show-connection-string](/cli/iot/hub?view=azure-cli-latest) 命令获取 IoT 中心连接字符串。 复制整个连接字符串并将其保存。这样，在将 IoT 中心作为输入添加到流分析作业时，就可以使用该字符串。
+
+    ```azurecli
+    az iot hub show-connection-string --hub-name "MyASAIoTHub"
+    ```
 
 3. 使用 [az iothub device-identity create](../iot-hub/quickstart-send-telemetry-c.md#register-a-device) 命令将设备添加到 IoT 中心。 此示例创建名为 **MyASAIoTDevice** 的设备。
 
-   ```azurecli
-   az iot hub device-identity create --hub-name "MyASAIoTHub" --device-id "MyASAIoTDevice"
-   ```
+    ```azurecli
+    az iot hub device-identity create --hub-name "MyASAIoTHub" --device-id "MyASAIoTDevice"
+    ```
 
-4. 使用 [az iot hub device-identity show-connection-string](https://docs.azure.cn/zh-cn/cli/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-device-identity-show-connection-string) 命令获取设备连接字符串。 复制整个连接字符串并将其保存。这样，在创建 Raspberry Pi 模拟器时，就可以使用该字符串。
+4. 使用 [az iot hub device-identity show-connection-string](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-show-connection-string) 命令获取设备连接字符串。 复制整个连接字符串并将其保存。这样，在创建 Raspberry Pi 模拟器时，就可以使用该字符串。
 
-   ```azurecli
-   az iot hub device-identity show-connection-string --hub-name "MyASAIoTHub" --device-id "MyASAIoTDevice" --output table
-   ```
+    ```azurecli
+    az iot hub device-identity show-connection-string --hub-name "MyASAIoTHub" --device-id "MyASAIoTDevice" --output table
+    ```
 
-   **输出示例：**
+    **输出示例：**
 
-   ```azurecli
-   HostName=MyASAIoTHub.azure-devices.net;DeviceId=MyASAIoTDevice;SharedAccessKey=a2mnUsg52+NIgYudxYYUNXI67r0JmNubmfVafojG8=
-   ```
+    ```output
+    HostName=MyASAIoTHub.azure-devices.net;DeviceId=MyASAIoTDevice;SharedAccessKey=a2mnUsg52+NIgYudxYYUNXI67r0JmNubmfVafojG8=
+    ```
 
 ## <a name="create-blob-storage"></a>创建 Blob 存储
 
@@ -150,20 +150,20 @@ New-AzResourceGroup `
 请使用 [New-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsjob) cmdlet 创建流分析作业。 此 cmdlet 使用作业名称、资源组名称和作业定义作为参数。 作业名称可以是用于标识作业的任何友好名称， 但只能包含字母数字字符、连字符和下划线，且其长度必须介于 3 到 63 个字符之间。 作业定义是一个 JSON 文件，其中包含创建作业所需的属性。 在本地计算机上创建名为 `JobDefinition.json` 的文件，并向其添加以下 JSON 数据：
 
 ```json
-{    
-   "location":"China North",  
-   "properties":{    
-      "sku":{    
-         "name":"standard"  
-      },  
-      "eventsOutOfOrderPolicy":"adjust",  
-      "eventsOutOfOrderMaxDelayInSeconds":10,  
-      "compatibilityLevel": 1.1
-   }
+{
+  "location":"ChinaNorth2",
+  "properties":{
+    "sku":{
+      "name":"standard"
+    },
+    "eventsOutOfOrderPolicy":"adjust",
+    "eventsOutOfOrderMaxDelayInSeconds":10,
+    "compatibilityLevel": 1.1
+  }
 }
 ```
 
-接下来运行 `New-AzStreamAnalyticsJob` cmdlet。 将 `jobDefinitionFile` 变量的值替换为在其中存储了作业定义 JSON 文件的路径。 
+接下来运行 `New-AzStreamAnalyticsJob` cmdlet。 将 `jobDefinitionFile` 变量的值替换为在其中存储了作业定义 JSON 文件的路径。
 
 ```powershell
 $jobName = "MyStreamingJob"
@@ -172,7 +172,7 @@ New-AzStreamAnalyticsJob `
   -ResourceGroupName $resourceGroup `
   -File $jobDefinitionFile `
   -Name $jobName `
-  -Force 
+  -Force
 ```
 
 ## <a name="configure-input-to-the-job"></a>配置作业输入
@@ -298,6 +298,7 @@ New-AzStreamAnalyticsTransformation `
   -File $jobTransformationDefinitionFile `
   -Name $jobTransformationName -Force
 ```
+
 ## <a name="run-the-iot-simulator"></a>运行 IoT 模拟器
 
 1. 打开 [Raspberry Pi Azure IoT 联机模拟器](https://azure-samples.github.io/raspberry-pi-web-simulator/)。
@@ -339,4 +340,3 @@ Remove-AzResourceGroup `
 > [!div class="nextstepaction"]
 > [使用 Azure 流分析实时检测欺诈行为](stream-analytics-real-time-fraud-detection.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->

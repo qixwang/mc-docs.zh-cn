@@ -12,12 +12,12 @@ origin.date: 05/26/2020
 ms.date: 06/22/2020
 ms.author: v-tawe
 ms.custom: tracking-python
-ms.openlocfilehash: 465ff88b85d5b287aa8f238549161cddfdad5b88
-ms.sourcegitcommit: 43db4001be01262959400663abf8219e27e5cb8b
+ms.openlocfilehash: b32ec810b1e86a70aaa4d799a5da7e3c7e6c0547
+ms.sourcegitcommit: 08619b8fabb47a328c3ca43bf314ddc389328880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85241576"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86164525"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>教程：生成使用 Azure 认知服务的 Flask 应用
 
@@ -662,7 +662,7 @@ flask run
 
 ## <a name="convert-text-to-speech"></a>将文本转换到语音
 
-应用可以使用[文本转语音 API](/cognitive-services/speech-service/text-to-speech) 将文本转换为类似于人类的自然合成语音。 该服务支持标准语音、神经语音和自定义语音。 我们的示例应用使用了少量的可用声音，有关完整语音列表，请参阅[支持的语言](/cognitive-services/speech-service/language-support#text-to-speech)。
+应用可以使用[文本转语音 API](/cognitive-services/speech-service/text-to-speech) 将文本转换为类似于人类的自然合成语音。 该服务支持标准语音和神经语音。 我们的示例应用使用了少量的可用声音，有关完整语音列表，请参阅[支持的语言](/cognitive-services/speech-service/language-support#text-to-speech)。
 
 在本部分，你将执行以下几项操作：
 

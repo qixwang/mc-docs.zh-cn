@@ -7,25 +7,37 @@ ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 04/29/2019
-ms.date: 06/09/2020
-ms.openlocfilehash: ad1a183de54d2d6f5803de666c78e2221c013e8b
-ms.sourcegitcommit: 73697fa9c19a40d235df033400c74741e7d0f3f4
+ms.date: 07/08/2020
+ms.openlocfilehash: 50308bf62c278f4c84cf9f513ab57c764e812913
+ms.sourcegitcommit: 5fb9ae9adc04e79d6d0e78c9e69dbe8aa3ceb00a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84574882"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86100247"
 ---
 # <a name="machine-learning-capability-in-azure-data-explorer"></a>Azure 数据资源管理器中的机器学习功能
 
-Azure 数据资源管理器是一个大数据分析平台，它可以使用内置的[异常情况检测和预测](anomaly-detection.md)函数监视服务运行状况、QoS 或故障设备的异常行为。 一旦检测到异常模式，就会执行根本原因分析 (RCA) 来缓解或解决异常情况。
+Azure 数据资源管理器是一个大数据分析平台。 它用于监视服务运行状况、QoS 或故障设备。 内置的[异常检测和预测](anomaly-detection.md)函数检查异常行为。 一旦检测到此模式，就会运行根本原因分析 (RCA) 来缓解或解决异常情况。
 
-诊断过程比较复杂且冗长，需由领域专家完成。 该过程包括提取和联接不同的源在相同时间范围内的附加数据，查找多个维度上的值的分布变化，绘制附加变量的图表，并根据领域知识和直觉应用其他技术。 由于这些诊断方案在 Azure 数据资源管理器中很常用，其中提供了机器学习插件来简化诊断过程及缩短 RCA 的持续时间。
+诊断过程比较复杂且冗长，需由领域专家完成。 此过程包括：
+* 在同一时间段内从不同的源获取和连接其他数据
+* 在多个维度上查找值分布的变化
+* 绘制其他变量图表
+* 其他基于域知识和直觉的技术
+
+由于这些诊断方案在 Azure 数据资源管理器中很常用，其中提供了机器学习插件来简化诊断过程及缩短 RCA 的持续时间。
 
 Azure 数据资源管理器包含三个机器学习插件：[`autocluster`](https://docs.microsoft.com/azure/data-explorer/kusto/query/autoclusterplugin)、[`basket`](https://docs.microsoft.com/azure/data-explorer/kusto/query/basketplugin) 和 [`diffpatterns`](https://docs.microsoft.com/azure/data-explorer/kusto/query/diffpatternsplugin)。 所有插件实现聚类算法。 `autocluster` 和 `basket` 插件聚类单个记录集，`diffpatterns` 插件聚类两个记录集之间的差异。
 
 ## <a name="clustering-a-single-record-set"></a>聚类单个记录集
 
-常见方案包括根据特定的条件（例如，出现异常行为迹象的时间范围、高温设备读数、长时间运行的命令，以及开销最高的用户）选择数据集。 我们希望通过一种简单快速的方法找出数据中的常见模式（段）。 模式是其记录共享多个维度（分类列）中相同值的数据集的子集。 以下查询以 10 分钟箱为单位生成并显示一周内的服务时序异常：
+常见的方案包括按特定条件选择的数据集：
+* 存在异常行为的时间范围
+* 读取高温设备数据
+* 长时间的命令
+* 主要消费用户 你需要一种快速而简单的方法来发现数据中隐藏的惯常模式（段）。 模式是其记录共享多个维度（分类列）中相同值的数据集的子集。 
+
+以下查询以 10 分钟箱为单位生成并显示一周内的服务时序异常：
 
 **\[** [**单击以运行查询**](https://dataexplorer.azure.cn/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5XPsaoCQQyF4d6nCFa7oHCtZd9B0F6G8ajByWTJZHS5+PDOgpVgYRn485EkOAnno9NAriWGFKw7QfQYUy0O43zZ0JNKFQnG/5jrbmeIXHBgwd6DjH2/JVqk2QrTL1aYvlifa4tni29YlzaiUK4yRK3Zu54006dBZ1N5/+X6PqpRI23+pFGGfIKRtz5egzk92K+dsycMyz3szhGEKWJ01lxI760O9ABuq0bMcvV2hqFoqnOz7F9BdSHlSgEAAA==) **\]**
 
@@ -39,9 +51,9 @@ demo_clustering1
 
 ![服务异常时间图表](media/machine-learning-clustering/service-exceptions-timechart.png)
 
-服务异常计数与服务总流量相关联。 在工作日星期一到星期五的每日模式中可以清晰地看到，午间的服务异常计数出现提升，而夜间的计数出现下降。 在周末，计数平稳地保持较低水平。 可以使用 Azure 数据资源管理器中的[时序异常情况检测](anomaly-detection.md#time-series-anomaly-detection)来检测异常高峰。
+服务异常计数与服务总流量相关联。 你可以清楚地看到工作日（周一到周五）的每日模式。 一天的中间时段，服务异常的数量会增加，在晚上会下降。 在周末，计数平稳地保持较低水平。 可以使用 Azure 数据资源管理器中的[时序异常情况检测](anomaly-detection.md#time-series-anomaly-detection)来检测异常高峰。
 
-数据中的第二个高峰发生在星期二下午。 以下查询用于进一步诊断此高峰。 使用该查询以更高的分辨率（以一分钟箱为单位，绘制八个小时的数据）围绕峰值重绘图表，以验证它是否为尖峰，并查看其边界。
+数据中的第二个高峰发生在星期二下午。 下面的查询用于进一步诊断和验证它是否是尖峰。 该查询以更高的分辨率（8 小时时段，以分钟为单位）围绕峰值重新绘制了图表。然后你可以研究它的边界。
 
 **\[** [**单击以运行查询**](https://dataexplorer.azure.cn/clusters/help/databases/Samples?query=H4sIAAAAAAAAAyXNwQrCMBAE0Hu/YvHUooWkghSl/yDoyUsJyWpCk2xJNnjx403pbeYwbzwyBBdnnoxiZBewHYS89GLshzNIeRWiuzUGA83al8yYXPzI5gdBLdjnWjFDLGHSVCK3HVCEe0LtMj4r9mAVVngnCvsLMO3hOFqo2goyVCxhNJhgu9dWJYavY9uyY4/T4UV1XVm2CEM0kFe34AnkBhXGOs7kCzuKh+4P3/XM5M8AAAA=) **\]**
 
@@ -54,7 +66,7 @@ demo_clustering1
 
 ![在高峰时间图表上聚焦](media/machine-learning-clustering/focus-spike-timechart.png)
 
-我们可以看到，从 15:00 到 15:02 出现了较窄的两分钟高峰。 以下查询统计了此两分钟时段内的异常数：
+你将看到，从 15:00 到 15:02 出现了较窄的两分钟高峰。 以下查询统计了此两分钟时段内的异常数：
 
 **\[** [**单击以运行查询**](https://dataexplorer.azure.cn/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVHIzcyLL0hNzI4vsU1JLEktycxN1TAyMDTTNbDQNTJWMDS1MjDQtObKASlNrCCk1AioNCU1Nz8+Oae0uCS1KDMv3ZCrRqE8I7UoVSGgKDU5szg1BKgvuCQxt0AhKbWkPDU1TwPhBj09hCWaQI3J+aV5JQACnQoRpwAAAA==) **\]**
 
@@ -107,7 +119,7 @@ demo_clustering1
 
 ### <a name="use-autocluster-for-single-record-set-clustering"></a>使用 autocluster() 聚类单个记录集
 
-即使异常数不到 1000 个，也仍很难发现常见段，因为每个列中包含多个值。 可以使用 [`autocluster()`](https://docs.microsoft.com/azure/data-explorer/kusto/query/autoclusterplugin) 插件即时提取常见段的简短列表，并在高峰的两分钟时段内找出相关的聚类，如以下查询中所示：
+即使异常数不到 1000 个，也仍很难发现常见段，因为每个列中包含多个值。 可以使用 [`autocluster()`](](https://docs.microsoft.com/azure/data-explorer/kusto/query/autoclusterplugin) 插件即时提取常见段的简短列表，并在高峰的两分钟时段内找出相关的聚类，如以下查询中所示：
 
 **\[** [**单击以运行查询**](https://dataexplorer.azure.cn/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WOsQrCMBRF937FG5OhJYkoovQfBN1DbC8aTNqSvlgHP94IQkf3c+65AUzRD3aCe1hue8dgHyGM0rta7WuzIb09KCWPVfii7vUPNQXtEUfbhTwzkh9uunrTckcCnRI6P+NSvDO7ONEVvACDWD80zRqRRcTThVxa5DKPv00hP81KL1+4AAAA) **\]**
 
@@ -127,9 +139,9 @@ demo_clustering1
 | 3 | 68 | 6.99588477366255 | scus | su3 | 90d3d2fc7ecc430c9621ece335651a01 |  |
 | 4 | 55 | 5.65843621399177 | weu | su4 | be1d6d7ac9574cbc9a22cb8ee20f16fc |  |
 
-在上面的结果中可以看到，最具主导性的段包含异常记录总数中的 65.74%，并共享四个维度。 下一个段的常见性要低得多，仅包含记录数的 9.67%，共享三个维度。 其他段的常见性更低。 
+在上面的结果中可以看到，最具主导性的段包含异常记录总数中的 65.74%，并共享四个维度。 下一个段中异常出现的频率要低得多。 仅包含记录数的 9.67%，并共享三个维度。 其他段的常见性更低。
 
-autocluster 使用专属算法来挖掘多个维度并提取相关的段。 “相关”是指每个段明显覆盖了记录集和特征集。 段也有分歧，这意味着，每个段与其他段截然不同。 其中一个或多个段可能与 RCA 过程相关。 为了尽量减少段的审查和评估，autocluster 只会提取精简的段列表。
+autocluster 使用专属算法来挖掘多个维度并提取相关的段。 “相关”是指每个段明显覆盖了记录集和特征集。 段也有分歧，这意味着，每个段与其他段不同。 其中一个或多个段可能与 RCA 过程相关。 为了尽量减少段的审查和评估，autocluster 只会提取精简的段列表。
 
 ### <a name="use-basket-for-single-record-set-clustering"></a>使用 basket() 聚类单个记录集
 
@@ -161,15 +173,15 @@ demo_clustering1
 | 11 | 90 | 9.25925925925926 |  |  |  | 10007006 |  |
 | 12 | 57 | 5.8641975308642 |  |  |  |  | 00000000-0000-0000-0000-000000000000 |
 
-basket 对项集挖掘实现先验算法 (Apriori)，并提取其记录集覆盖率超过阈值（默认为 5%）的所有段。 可以看到，已提取多个相似的段（例如段 0,1 或 2,3）。
+Basket 实现了用于项集挖掘的“Apriori”算法。 它提取记录集覆盖率高于阈值（默认为 5%）的所有段。 可以看到，已提取多个相似的段（例如段 0、1 或 2、3）。
 
-这两个插件的功能非常强大且易于使用，但也存在明显的限制，因为它们以非监督式方法聚类单个记录集（不带标签）。 因此，不清楚提取的模式特征化的是所选记录集（异常记录）还是全局记录集。
+这两个插件功能都很强大且易于使用。 它们的局限性在于，它们以无监督的方式聚集单个记录集，不带任何标签。 不清楚提取的模式特征化的是所选记录集（异常记录）还是全局记录集。
 
 ## <a name="clustering-the-difference-between-two-records-sets"></a>聚类两个记录集之间的差异
 
-[`diffpatterns()`](https://docs.microsoft.com/azure/data-explorer/kusto/query/diffpatternsplugin) 插件克服了 `autocluster` 和 `basket` 的限制。 `Diffpatterns` 采用两个记录集，并提取两者之间不同的主段。 一个集通常包含正在调查的异常记录集（`autocluster` 和 `basket` 分析的集）。 另一个集包含参考记录集（基线）。 
+[`diffpatterns()`](](https://docs.microsoft.com/azure/data-explorer/kusto/query/diffpatternsplugin) 插件克服了 `autocluster` 和 `basket` 的限制。 `Diffpatterns` 采用两个记录集，并提取不同的主段。 一个集通常包含正在调查的异常记录集。 一个集由 `autocluster` 和 `basket` 进行分析。 另一个集包含参考记录集，即基线。
 
-以下查询使用 `diffpatterns` 查找高峰的两分钟时段内的相关聚类（不同于基线中的聚类）。 我们将基线时间范围定义为 15:00 之前的 8 分钟（开始出现高峰的时间）。 我们还需要按二元列 (AB) 进行扩展，指定特定的记录是属于基线还是异常集。 `Diffpatterns` 实现监督式学习算法，其中，会按异常标志与基线标志 (AB) 生成两个类标签。
+以下查询使用 `diffpatterns` 查找高峰的两分钟时段内的相关聚类，这不同于基线中的聚类。 我们将基线时间范围定义为 15:00 之前的 8 分钟（开始出现高峰的时间）。 可以按二元列 (AB) 进行扩展，并指定特定的记录是属于基线还是异常集。 `Diffpatterns` 实现监督式学习算法，其中，会按异常标志与基线标志 (AB) 生成两个类标签。
 
 **\[** [**单击以运行查询**](https://dataexplorer.azure.cn/clusters/help/databases/Samples?query=H4sIAAAAAAAAA42QzU+DQBDF7/wVcwOi5UtrmhJM4OzBRO9kWqbtpssuYacfGv94t0CrxFTd02by5jfvPUkMtVBlQ7gtOauQiUVNXhLFD5NoNknuIJ7Oo8hPHXmS4vEvaXKWWuoCDUmh6Jr8fj79Tv6HfOanEIbwRLgnQFhjAwviA5EC3hCcCYCq6gamEVsC1oB7LfoRt6iMYKEVvGtFQXfeNFKc7mXe2MjNVzl+mARR6lRU63Ipd4apFWodOx9w2FBL4D23tBSGXi3mhbG+OPPGVQTB+ITvg24dGN7vlN5JTxhc+dYAHZls4LzIxGr1k/B4iXcLbq50jfLNtd9i8OB2jD3KnW0dKstokG08Zby8uLbyCfX/tG46AgAA) **\]**
 
@@ -196,7 +208,7 @@ demo_clustering1
 | 5 | 55 | 252 | 5.66 | 20.45 | 14.8 | weu | su4 | be1d6d7ac9574cbc9a22cb8ee20f16fc |  |
 | 6 | 57 | 204 | 5.86 | 16.56 | 10.69 |  |  |  |  |
 
-最具主导性的段是 `autocluster` 提取的同一个段，它在两分钟异常时段内的覆盖率也是 65.74%。 但是，它在八分钟基线时段内的覆盖率仅为 1.7%。 两者相差 64.04%。 这种差异看起来与异常高峰相关。 若要验证这种假设，可将原始图表拆分为属于这个有问题的段的记录，以及属于其他段的记录，如以下查询中所示：
+最具主导性的段是由 `autocluster` 提取的片段。 它在两分钟异常时段内的覆盖率也为 65.74%。 但是，它在八分钟基线时段内的覆盖率仅为 1.7%。 两者相差 64.04%。 这种差异看起来与异常高峰相关。 若要验证此假设，请将原始图表拆分为属于此问题段的记录和其他段中的记录。 请参阅下面的查询。
 
 **\[** [**单击以运行查询**](https://dataexplorer.azure.cn/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WRsWrDMBCG9zzF4cmGGuJUjh2Ktw7tUkLTzuEsnRNRnRQkuSQlD185yRTo0EWIO913/J8MRWBttxE6iC5INOhzRey20owhktd2V8EZwsiMXv/Q9Dpfe5I60Idm2kTkQ1E8AczMxMLjf1h4/IN1PzY7Ax0jWQWBdomvhyF/p512FroOMsIxA0zdTdpKn1bHSzmMzbX8TAfjTkw2vqpLp69VpYQaatEogXOBsqrbtl5WDake6yabXWjkv7WkFxeuPGqG5VzWqhQrIUqx6B/L1WKB6aBViy01imT2ANnau94QT9c35xlNVqQAjF9UhpSHAtiRO+lGG/MCUoZ7CTB4x7ePie5mNbk4QDVn6E+ThUT0SQh5iGlM7tHHX4WFgLHOAQAA) **\]**
 
@@ -218,4 +230,4 @@ and ServiceHost == "e7f60c5d-4944-42b3-922a-92e98a8e7dec", "Problem", "Normal")
 
 Azure 数据资源管理器机器学习插件在很多方案中可以发挥作用。 `autocluster` 和 `basket` 实现非监督式学习算法，且易于使用。 `Diffpatterns` 实现监督式学习算法，尽管它更复杂，但在提取 RCA 的差异段时功能更强大。
 
-在临时方案以及自动化的近实时监视服务中可以交互方式使用这些插件。 在 Azure 数据资源管理器中完成时序异常情况检测后，接着可以执行诊断过程，该过程经过高度优化，能够达到所需的性能标准。
+在临时方案以及自动化的近实时监视服务中可以交互方式使用这些插件。 在 Azure 数据资源管理器中，在时间序列异常检测之后会执行一个诊断过程。 此过程经过高度优化，可满足必要的性能标准。

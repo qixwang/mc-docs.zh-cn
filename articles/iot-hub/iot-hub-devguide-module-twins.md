@@ -12,20 +12,20 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-origin.date: 02/01/2020
-ms.date: 04/06/2020
+origin.date: 06/29/2020
+ms.date: 07/20/2020
 ms.author: v-yiso
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 097ba4a2e1abfbc52a43f210e74ba85700136156
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b6ff11fc4b304a227f945d815144ca7914c01dd7
+ms.sourcegitcommit: 9bc3e55f01e0999f05e7b4ebaea95f3ac91d32eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80343592"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86226159"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>在 IoT 中心内了解并使用模块孪生
 
-本文假设读者事先已阅读[了解并在 IoT 中心内使用设备孪生][lnk-devguide-device-twins]。 在 IoT 中心的每个设备标识下，最多可以创建 20 个模块标识。 每个模块标识隐式生成模块孪生。 模块孪生与设备孪生类似，是存储模块状态信息（例如元数据、配置和条件）的 JSON 文档。 Azure IoT 中心为连接到 IoT 中心的每个模块保留一个模块孪生。 
+本文假设读者事先已阅读[了解并在 IoT 中心内使用设备孪生][lnk-devguide-device-twins]。 在 IoT 中心的每个设备标识下，最多可以创建 50 个模块标识。 每个模块标识隐式生成模块孪生。 模块孪生与设备孪生类似，是存储模块状态信息（例如元数据、配置和条件）的 JSON 文档。 Azure IoT 中心为连接到 IoT 中心的每个模块保留一个模块孪生。 
 
 在设备端，可以使用 IoT 中心设备 SDK 创建模块，其中每个模块与 IoT 中心建立独立连接。 通过此功能，可对设备上的不同组件使用不同的命名空间。 例如，某个自动贩卖机包含三个不同的传感器。 每个传感器由公司的不同部门控制。 可为每个传感器创建一个模块。 这样，每个部门只能向他们控制的传感器发送作业或直接方法，避免发生冲突和用户失误。
 
@@ -35,7 +35,7 @@ ms.locfileid: "80343592"
 
 本文介绍：
 
-* 模块孪生的结构：标记、所需的属性和报告的属性    。
+* 模块孪生的结构：标记、所需的属性和报告的属性  。
 * 模块和后端可在模块孪生上执行的操作。
 
 有关使用报告的属性、设备到云的消息或文件上传的指导，请参阅[设备到云的通信指南][lnk-d2c-guidance]。
@@ -212,7 +212,7 @@ ms.locfileid: "80343592"
     }
     ```
 
-上述所有操作均支持[乐观并发][lnk-concurrency]，并且需要[控制对 IoT 中心的访问](iot-hub-devguide-security.md)文章中定义的 ServiceConnect 权限  。
+上述所有操作均支持[乐观并发][lnk-concurrency]，并且需要[控制对 IoT 中心的访问](iot-hub-devguide-security.md)文章中定义的 ServiceConnect 权限。
 
 除了上述操作以外，解决方案后端还可以使用类似于 SQL 的 [IoT 中心查询语言](iot-hub-devguide-query-language.md)查询模块孪生。
 
@@ -230,35 +230,45 @@ ms.locfileid: "80343592"
 ## <a name="tags-and-properties-format"></a>标记和属性格式
 标记、所需的属性和报告的属性是具有以下限制的 JSON 对象：
 
-* 密钥  ：JSON 对象中的所有键是区分大小写的 64 字节 UTF-8 UNICODE 字符串。 允许的字符不包括 UNICODE 控制字符（段 C0 和 C1）以及 `.`、SP 和 `$`。
+* **密钥**：JSON 对象中的所有键都是 UTF-8 编码、区分大小写且长度不超过 1 KB。 允许的字符不包括 UNICODE 控制字符（段 C0 和 C1）以及 `.`、`$` 和 SP。
 
 * **值**：JSON 对象中的所有值可采用以下 JSON 类型：布尔值、数字、字符串、对象。 不允许数组。
 
     * 整数的最小值可以为 -4503599627370496，最大值可以为 4503599627370495。
 
-    * 字符串值已进行 UTF-8 编码，最大长度为 512 字节。
+    * 字符串值是 UTF-8 编码的，最大长度为 4 KB。
 
-* 深度  ：标记、所需属性和报告属性中的所有 JSON 对象的最大嵌套深度为 5 层。 例如，以下对象是有效的：
+* **深度**：标记、所需属性和报告属性中的 JSON 对象的最大深度为 10 层。 例如，以下对象是有效的：
 
-    ```json
-    {
-        ...
-        "tags": {
-            "one": {
-                "two": {
-                    "three": {
-                        "four": {
-                            "five": {
-                                "property": "value"
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        ...
-    }
-    ```
+   ```json
+   {
+       ...
+       "tags": {
+           "one": {
+               "two": {
+                   "three": {
+                       "four": {
+                           "five": {
+                               "six": {
+                                   "seven": {
+                                       "eight": {
+                                           "nine": {
+                                               "ten": {
+                                                   "property": "value"
+                                               }
+                                           }
+                                       }
+                                   }
+                               }
+                           }
+                       }
+                   }
+               }
+           }
+       },
+       ...
+   }
+   ```
 
 ## <a name="module-twin-size"></a>模块孪生大小
 

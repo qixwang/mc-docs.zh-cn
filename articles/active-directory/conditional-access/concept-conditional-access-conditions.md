@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 05/29/2020
+ms.date: 07/08/2020
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88977b0c2c3aa71a68262d708a69fcedc878cc80
-ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
+ms.openlocfilehash: c29a542e07436ad09abf5d62179440bfcde9ab53
+ms.sourcegitcommit: 92b9b1387314b60661f5f62db4451c9ff2c49500
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84186664"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86164995"
 ---
 # <a name="conditional-access-conditions"></a>条件访问：Conditions
 
@@ -111,21 +111,17 @@ Azure AD 条件访问支持以下设备平台：
 
 若要自动将此扩展部署到 Chrome 浏览器，请创建以下注册表项：
 
-|    |    |
-| --- | --- |
-| `Path` | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
-| 名称 | 1 |
-| 类型 | REG_SZ (String) |
-| 数据 | ppnbnpeolgkicgegkbkbjmhlideopiji;https\://clients2.google.com/service/update2/crx |
+- Path HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist
+- 名称 1
+- 类型 REG_SZ（字符串）
+- Data ppnbnpeolgkicgegkbkbjmhlideopiji;https\://clients2.google.com/service/update2/crx
 
 对于 Windows 8.1 和 7 中的 Chrome 支持，请创建以下注册表项：
 
-|    |    |
-| --- | --- |
-| `Path` | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
-| 名称 | 1 |
-| 类型 | REG_SZ (String) |
-| 数据 | {"pattern":"https://device.login.partner.microsoftonline.cn","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}} |
+- Path HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls
+- 名称 1
+- 类型 REG_SZ（字符串）
+- Data {"pattern":"https://device.login.partner.microsoftonline.cn","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}}
 
 这些浏览器支持设备身份验证，允许根据策略对设备进行识别和验证。 如果浏览器以专用模式运行，设备检查将失败。
 

@@ -4,15 +4,17 @@ description: 介绍如何使用 Azure Analysis Services REST API 对模型数据
 author: rockboyfor
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/30/2020
+ms.date: 07/13/2020
+ms.testscope: no
+ms.testdate: 04/30/2020
 ms.author: v-yeche
 ms.reviewer: minewiskan
-ms.openlocfilehash: b7ff1bbf9d97278ada0739d68b39193346c1dd0c
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: 843f7f758a66c4d7abde1149bce694e1c4f4b71e
+ms.sourcegitcommit: 9bc3e55f01e0999f05e7b4ebaea95f3ac91d32eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392403"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86226107"
 ---
 <!--Verify successfully-->
 # <a name="asynchronous-refresh-with-the-rest-api"></a>使用 REST API 执行异步刷新
@@ -159,14 +161,14 @@ CommitMode 等于 partialBatch。 针对大型数据集执行可能需要几个�
 [
     {
         "refreshId": "1344a272-7893-4afa-a4b3-3fb87222fdac",
-        "startTime": "2017-12-09T01:58:04.76",
-        "endTime": "2017-12-09T01:58:12.607",
+        "startTime": "2017-12-07T02:06:57.1838734Z",
+        "endTime": "2017-12-07T02:07:00.4929675Z",
         "status": "succeeded"
     },
     {
         "refreshId": "474fc5a0-3d69-4c5d-adb4-8a846fa5580b",
-        "startTime": "2017-12-07T02:05:48.32",
-        "endTime": "2017-12-07T02:05:54.913",
+        "startTime": "2017-12-07T01:05:54.157324Z",
+        "endTime": "2017-12-07T01:05:57.353371Z",
         "status": "succeeded"
     }
 ]
@@ -227,7 +229,7 @@ CommitMode 等于 partialBatch。 针对大型数据集执行可能需要几个�
     
     <!--MOONCAKE: CUSTOMIZED-->
     
-2. 注释/取消注释，以便使用 ClientCredential 类来实例化 cred 对象。 确保以安全方式访问 \<App ID> 和 \<App Key> 值，或者对服务主体使用基于证书的身份验证。
+2. 注释/取消注释，以便使用 ClientCredential 类来实例化 cred 对象。 确保以安全的方式访问 \<App ID> 和 \<App Key> 值，或对服务主体使用基于证书的身份验证。
 3. 运行该示例。
 
 ## <a name="see-also"></a>另请参阅

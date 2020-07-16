@@ -5,21 +5,21 @@ description: 本文概述了应用程序网关上的 Web 应用程序防火墙 (
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 06/24/2020
+ms.date: 07/10/2020
 ms.author: v-junlch
 ms.topic: overview
-ms.openlocfilehash: 666de56809428c85d2eba2ecf654420091a369cf
-ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
+ms.openlocfilehash: 7b83b63a8f790986bfd9f32a39126cea0759d6f8
+ms.sourcegitcommit: 65a7360bb14b0373e18ec8eaa288ed3ac7b24ef4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85516745"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86219706"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Azure 应用程序网关上的 Azure Web 应用程序防火墙
 
 Azure 应用程序网关提供的 Azure Web 应用程序防火墙 (WAF) 可以对 Web 应用程序进行集中保护，避免其受到常见的攻击和漏洞伤害。 Web 应用程序正逐渐成为利用常见已知漏洞的恶意攻击的目标。 最常见的攻击包括 SQL 注入和跨站点脚本。
 
-应用程序网关上的 WAF 基于开放 Web 应用程序安全项目 (OWASP) 中的[核心规则集 (CRS)](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.1、3.0 或 2.2.9。 WAF 会自动更新以包含针对新漏洞的保护，而无需其他配置。 
+应用程序网关上的 WAF 基于开放 Web 应用程序安全项目 (OWASP) 中的[核心规则集 (CRS)](https://owasp.org/www-project-modsecurity-core-rule-set/) 3.1、3.0 或 2.2.9。 WAF 会自动更新以包含针对新漏洞的保护，而无需其他配置。 
 
 下面列出了 WAF 策略中存在的所有 WAF 功能。 可以创建多个策略，并可将它们与应用程序网关或应用程序网关上的单个侦听器或基于路径的路由规则相关联。 这样，如果需要，你可以为应用程序网关后面的每个站点提供单独的策略。
 
@@ -140,6 +140,12 @@ OWASP 使用两种模式来确定是否阻止流量：传统模式和异常评�
 #### <a name="azure-monitor"></a>Azure Monitor
 
 应用程序网关日志与 [Azure Monitor](../../azure-monitor/overview.md) 集成。 这样，便可以跟踪包括 WAF 警报和日志在内的诊断信息。 可以在门户上的应用程序网关资源中的“诊断”选项卡上访问此功能，或者直接通过 Azure Monitor 访问。 有关如何启用日志的详细信息，请参阅[应用程序网关诊断](../../application-gateway/application-gateway-diagnostics.md)。
+
+#### <a name="azure-security-center"></a>Azure 安全中心
+
+[安全中心](../../security-center/security-center-intro.md)可帮助防范、检测和应对威胁。 它可提高对 Azure 资源安全性的可见性和控制力度。 应用程序网关与安全中心集成。 安全中心会扫描环境以检测未受保护的 Web 应用程序。 它可以建议应用程序网关 WAF 保护这些易受攻击的资源。 直接从安全中心创建防火墙。 这些 WAF 实例已与安全中心集成。 他们将警报和运行状况信息发送到安全中心以进行报告。
+
+![安全中心概述窗口](../media/ag-overview/figure1.png)
 
 #### <a name="logging"></a>日志记录
 

@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: conceptual
 origin.date: 2/27/2020
 ms.date: 06/29/2020
-ms.openlocfilehash: d9d6ae2bf62ab4adb50dbb28c6833aa693952242
-ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
+ms.openlocfilehash: c2926a37414dd0850636081f2dd0f595a0a93f38
+ms.sourcegitcommit: fa26665aab1899e35ef7b93ddc3e1631c009dd04
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85516607"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86227067"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>使用转储和还原将 MySQL 数据库迁移到 Azure Database for MySQL
 
@@ -97,13 +97,13 @@ $ mysqldump -u root -p --databases testdb1 testdb3 testdb5 > testdb135_backup.sq
 
 ## <a name="preparing-the-target-azure-database-for-mysql-server-for-fast-data-loads"></a>准备目标 Azure Database for MySQL 服务器以实现快速数据加载
 若要准备目标 Azure Database for MySQL 服务器以实现快速数据加载，需要更改以下服务器参数和配置。
-- max_allowed_packet � 设置为 1073741824（即 1 GB），以防止由于长行而引起的溢出问题。
-- slow_query_log � 设置为“关闭”以关闭慢速查询日志。 这将消除数据加载过程中由慢速查询日志记录导致的开销。
-- query_store_capture_mode � 设置为“无”以关闭查询存储。 这将消除由查询存储的采样活动导致的开销。
-- innodb_buffer_pool_size � 在迁移期间从门户的定价层纵向扩展服务器到 32 vCore 内存优化 SKU，以增大 innodb_buffer_pool_size。 只能通过纵向扩展 Azure Database for MySQL 服务器的计算来增大 innodb_buffer_pool_size。
+- max_allowed_packet - 设置为 1073741824（即 1GB），以防止由于长行而引起的溢出问题。
+- slow_query_log - 设置为“关闭”以关闭慢速查询日志。 这将消除数据加载过程中由慢速查询日志记录导致的开销。
+- query_store_capture_mode - 设置为“无”以关闭查询存储。 这将消除由查询存储的采样活动导致的开销。
+- innodb_buffer_pool_size - 在迁移期间从门户的定价层纵向扩展服务器到 32 vCore 内存优化 SKU，以增大 innodb_buffer_pool_size。 只能通过纵向扩展 Azure Database for MySQL 服务器的计算来增大 innodb_buffer_pool_size。
 - innodb_io_capacity 和 innodb_io_capacity_max - 从 Azure 门户中的服务器参数更改为 9000，以提高 IO 利用率，从而优化迁移速度。
 - innodb_write_io_threads 和 innodb_write_io_threads - 从 Azure 门户中的服务器参数更改为 4 以加快迁移速度。
-- 纵向扩展存储层 � 随着存储层的增加，Azure Database for MySQL 服务器的 IOP 也会逐渐增加。 为了更快地加载，可能需要增加存储层以增加预配的 IOP。 请记住，存储只能纵向扩展，而不能横向扩展。
+- 纵向扩展存储层 - 随着存储层的增加，Azure Database for MySQL 服务器的 IOP 会逐渐增加。 为了更快地加载，可能需要增加存储层以增加预配的 IOP。 请记住，存储只能纵向扩展，而不能横向扩展。
 
 迁移完成后，可以将服务器参数和计算层配置还原为以前的值。 
 

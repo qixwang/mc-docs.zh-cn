@@ -6,12 +6,12 @@ origin.date: 02/28/2019
 ms.date: 05/25/2020
 ms.author: v-yeche
 ms.custom: fasttrack-edit
-ms.openlocfilehash: cd55dd8aba84b59978f8c12a92fa6281005deebc
-ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
+ms.openlocfilehash: a9082ae1c6e8b14866b978957a151f7c559afbee
+ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735115"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86218757"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中应用程序的网络概念
 
@@ -131,13 +131,17 @@ Kubenet 和 Azure CNI 之间存在以下行为差异：
 
 ![显示 AKS 群集中入口流量的示意图][aks-ingress]
 
-在 AKS 中，可以使用 NGINX 之类的服务器创建入口资源，或使用 AKS HTTP 应用程序路由功能。 为 AKS 群集启用 HTTP 应用程序路由时，Azure 平台会创建入口控制器和 External-DNS 控制器。 在 Kubernetes 中创建新的入口资源时，系统会在特定于群集的 DNS 区域中创建所需的 DNS A 记录。
+在 AKS 中，可使用 NGINX 等服务器创建入口资源。
 
+<!--Not Available on  or use the AKS HTTP application routing feature-->
+<!--Not Available on  When you enable HTTP application routing for an AKS cluster, the Azure platform creates the Ingress controller and an *External-DNS* controller. As new Ingress resources are created in Kubernetes, the required DNS A records are created in a cluster-specific DNS zone.-->
 <!--Not Available on  For more information, see [deploy HTTP application routing][aks-http-routing]-->
+
+应用程序网关入口控制器 (AGIC) 加载项使 AKS 客户能够利用 Azure 的本机应用程序网关级别 7 负载均衡器向 Internet 公开云软件。 AGIC 监视托管时所在的 Kubernetes 群集并持续更新应用程序网关，以便向 Internet 公开所选服务。 若要了解有关 AKS 的 AGIC 加载项的详细信息，请参阅[什么是应用程序网关入口控制器？][agic-overview]
 
 入口的另一个常见功能是 SSL/TLS 终止。 在通过 HTTPS 访问的大型 Web 应用程序上，TLS 终止可以由入口资源处理，而不是在应用程序自身内部处理。 要提供自动 TLS 认证生成和配置，可以将入口资源配置为使用 Let's Encrypt 之类的提供程序。 有关使用 Let's Encrypt 配置 NGINX 入口控制器的详细信息，请参阅 [Ingress 和 TLS][aks-ingress-tls]。
 
-还可以配置入口控制器，以便在对 AKS 群集中的容器发出请求时保留客户端源 IP。 如果客户端的请求通过入口控制器路由到 AKS 群集中的容器，则该请求的原始源 IP 将不可用于目标容器。 启用“客户端源 IP 保留”时，客户端的源 IP 将在“X-Forwarded-For”下的请求标头中提供。 如果在入口控制器上使用“客户端源 IP 保留”，则无法使用 TLS 直通。 可对其他服务（例如 LoadBalancer 类型的服务）使用“客户端源 IP 保留”和 TLS 直通。
+还可以配置入口控制器，以便在对 AKS 群集中的容器发出请求时保留客户端源 IP。 如果客户端的请求通过入口控制器路由到 AKS 群集中的容器，则该请求的原始源 IP 将不可用于目标容器。 如果启用客户端源 IP 保留，则可以在请求标头中的 *X-Forwarded-For* 下使用客户端的源 IP。 如果在入口控制器上使用“客户端源 IP 保留”，则无法使用 TLS 直通。 可对其他服务（例如 LoadBalancer 类型的服务）使用“客户端源 IP 保留”和 TLS 直通。
 
 ## <a name="network-security-groups"></a>网络安全组
 
@@ -181,10 +185,7 @@ Kubenet 和 Azure CNI 之间存在以下行为差异：
 <!-- LINKS - Internal -->
 <!--Not Available on [aks-http-routing]: http-application-routing.md-->
 
-[aks-ingress-tls]: ingress-tls.md
-
-<!--Mooncake : URL ingress redirect to ingress-tls.md-->
-
+[aks-ingress-tls]: ingress.md
 [aks-configure-kubenet-networking]: configure-kubenet.md
 [aks-configure-advanced-networking]: configure-azure-cni.md
 [aks-concepts-clusters-workloads]: concepts-clusters-workloads.md
@@ -192,6 +193,7 @@ Kubenet 和 Azure CNI 之间存在以下行为差异：
 [aks-concepts-scale]: concepts-scale.md
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-identity]: concepts-identity.md
+[agic-overview]: ../application-gateway/ingress-controller-overview.md
 [use-network-policies]: use-network-policies.md
 [operator-best-practices-network]: operator-best-practices-network.md
 [support-policies]: support-policies.md

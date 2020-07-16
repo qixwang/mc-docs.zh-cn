@@ -7,13 +7,13 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 11/07/2019
-ms.date: 06/09/2020
-ms.openlocfilehash: e62bebd3af370a108898a8e58789f540fa793e33
-ms.sourcegitcommit: 73697fa9c19a40d235df033400c74741e7d0f3f4
+ms.date: 07/08/2020
+ms.openlocfilehash: 8f79beb4c4959139d10ecd341a86ac74b84fda6d
+ms.sourcegitcommit: 5fb9ae9adc04e79d6d0e78c9e69dbe8aa3ceb00a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84574898"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86100243"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>在 Azure 数据资源管理器中使用后继数据库来附加数据库
 
@@ -35,7 +35,7 @@ ms.locfileid: "84574898"
 
 ## <a name="attach-a-database"></a>附加数据库
 
-可以使用多种方法来附加数据库。 本文介绍如何使用 C# 或 Azure 资源管理器模板附加数据库。 若要附加数据库，必须对先导群集和后继群集拥有权限。 有关权限的详细信息，请参阅[管理权限](#manage-permissions)。
+可以使用多种方法来附加数据库。 本文介绍如何使用 C#、Python 或 Azure 资源管理器模板附加数据库。 若要附加数据库，必须在先导群集和后继群集上拥有至少具有参与者角色的用户、组、服务主体或托管标识。 可以使用 [Azure 门户](/role-based-access-control/role-assignments-portal)、[PowerShell](/role-based-access-control/role-assignments-powershell)、[Azure CLI](/role-based-access-control/role-assignments-cli) 和 [ARM 模板](/role-based-access-control/role-assignments-template)添加或删除角色分配。 可以深入了解 [Azure 基于角色的访问控制 (Azure RBAC)](/role-based-access-control/overview) 和[不同角色](/role-based-access-control/rbac-and-directory-admin-roles)。 
 
 ### <a name="attach-a-database-using-c"></a>使用 C# 附加数据库
 
@@ -253,6 +253,9 @@ var attachedDatabaseConfigurationsName = "uniqueName";
 resourceManagementClient.AttachedDatabaseConfigurations.Delete(followerResourceGroupName, followerClusterName, attachedDatabaseConfigurationsName);
 ```
 
+若要从从后继方拆离数据库，必须在后继群集上拥有至少具有参与者角色的用户、组、服务主体或托管标识。
+在上面的示例中，我们使用服务主体。
+
 ### <a name="detach-the-attached-follower-database-from-the-leader-cluster"></a>从先导群集中分离已附加的后继数据库
 
 先导群集可按如下所示分离任何附加的数据库：
@@ -282,6 +285,8 @@ var followerDatabaseDefinition = new FollowerDatabaseDefinition()
 
 resourceManagementClient.Clusters.DetachFollowerDatabases(leaderResourceGroupName, leaderClusterName, followerDatabaseDefinition);
 ```
+
+若要从从先导方拆离数据库，必须在先导群集上拥有至少具有参与者角色的用户、组、服务主体或托管标识。 在上面的示例中，我们使用服务主体。
 
 ## <a name="detach-the-follower-database-using-python"></a>使用 Python 拆离后继数据库
 
@@ -315,6 +320,8 @@ attached_database_configurationName = "uniqueName"
 #Returns an instance of LROPoller, see https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
 poller = kusto_management_client.attached_database_configurations.delete(follower_resource_group_name, follower_cluster_name, attached_database_configurationName)
 ```
+若要从从后继方拆离数据库，必须在后继群集上拥有至少具有参与者角色的用户、组、服务主体或托管标识。
+在上面的示例中，我们使用服务主体。
 
 ### <a name="detach-the-attached-follower-database-from-the-leader-cluster"></a>从先导群集中分离已附加的后继数据库
 
@@ -354,6 +361,9 @@ cluster_resource_id = "/subscriptions/" + follower_subscription_id + "/resourceG
 #Returns an instance of LROPoller, see https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
 poller = kusto_management_client.clusters.detach_follower_databases(resource_group_name = leader_resource_group_name, cluster_name = leader_cluster_name, cluster_resource_id = cluster_resource_id, attached_database_configuration_name = attached_database_configuration_name)
 ```
+
+若要从从先导方拆离数据库，必须在先导群集上拥有至少具有参与者角色的用户、组、服务主体或托管标识。
+在上面的示例中，我们使用服务主体。
 
 ## <a name="manage-principals-permissions-and-caching-policy"></a>管理主体、权限和缓存策略
 

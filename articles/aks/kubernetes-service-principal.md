@@ -3,25 +3,25 @@ title: 适用于 Azure Kubernetes 服务 (AKS) 的服务主体
 description: 在 Azure Kubernetes 服务 (AKS) 中为群集创建和管理 Azure Active Directory 服务主体
 services: container-service
 ms.topic: conceptual
-origin.date: 04/02/2020
-ms.date: 05/25/2020
+origin.date: 06/16/2020
+ms.date: 07/13/2020
+ms.testscope: yes
+ms.testdate: 06/16/2020
 ms.author: v-yeche
-ms.openlocfilehash: 165eef76f475d452ae544bb9cc2129f095468131
-ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
+ms.openlocfilehash: df42c0e6ad62ce3ea1aa82fd436ae69fb56a83c5
+ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735067"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86218811"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes 服务 (AKS) 的服务主体
 
-AKS 群集需要 [Azure Active Directory (AD) 服务主体][aad-service-principal]才能与 Azure API 交互。 需要服务主体才能动态创建和管理其他 Azure 资源，例如 Azure 负载均衡器或容器注册表 (ACR)。
-
-<!--Not Available on [managed identity](use-managed-identity.md)-->
+AKS 群集需要 [Azure Active Directory (AD) 服务主体][aad-service-principal]或[托管标识](use-managed-identity.md)才能与 Azure API 交互。 需要服务主体或托管标识才能动态创建和管理其他 Azure 资源，例如 Azure 负载均衡器或容器注册表 (ACR)。
 
 本文介绍如何创建和使用适用于 AKS 群集的服务主体。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 若要创建 Azure AD 服务主体，必须具有相应的权限，能够向 Azure AD 租户注册应用程序，并将应用程序分配到订阅中的角色。 如果没有必需的权限，可能需要请求 Azure AD 或订阅管理员来分配必需的权限，或者预先创建一个可以与 AKS 群集配合使用的服务主体。
 
@@ -74,10 +74,10 @@ az aks create \
 > [!NOTE]
 > 如果使用的是具有自定义机密的现有服务主体，请确保该机密不超过 190 字节。
 
-如果使用 Azure 门户来部署 AKS 群集，请在“创建 Kubernetes 群集”对话框的“身份验证”页上选择“配置服务主体”。    选择“使用现有”并指定以下值： 
+如果使用 Azure 门户来部署 AKS 群集，请在“创建 Kubernetes 群集”对话框的“身份验证”页上选择“配置服务主体”。  选择“使用现有”并指定以下值：
 
 - **服务主体客户端 ID** 是你的 *appId*
-- **服务主体客户端机密**是  密码值
+- **服务主体客户端机密**是密码值
 
 ![浏览到 Azure Vote 的图像](media/kubernetes-service-principal/portal-configure-service-principal.png)
 
@@ -91,7 +91,10 @@ AKS 群集的服务主体可以用来访问其他资源。 例如，如果希望
 az role assignment create --assignee <appId> --scope <resourceScope> --role Contributor
 ```
 
-资源的 `--scope` 需要是完整的资源 ID，例如 */subscriptions/\<guid\>/resourceGroups/myResourceGroup* 或 */subscriptions/\<guid\>/resourceGroups/myResourceGroupVnet/providers/Microsoft.Network/virtualNetworks/myVnet*
+资源的 `--scope` 需要是完整的资源 ID，例如 /subscriptions/\<guid\>/resourceGroups/myResourceGroup 或 /subscriptions/\<guid\>/resourceGroups/myResourceGroupVnet/providers/Microsoft.Network/virtualNetworks/myVnet
+
+> [!NOTE]
+> 如果从节点资源组删除了参与者角色分配，则以下操作可能会失败。  
 
 以下各部分详述了可能需要使用的常见委托。
 
@@ -110,6 +113,9 @@ az role assignment create --assignee <appId> --scope <resourceScope> --role Cont
     - *Microsoft.Network/publicIPAddresses/join/action*
     - *Microsoft.Network/publicIPAddresses/read*
     - *Microsoft.Network/publicIPAddresses/write*
+    - 如果[在 Kubenet 群集上使用自定义路由表](configure-kubenet.md#bring-your-own-subnet-and-route-table-with-kubenet)，请添加以下附加权限：
+        - Microsoft.Network/routeTables/write
+        - Microsoft.Network/routeTables/read
 - 或者，在虚拟网络的子网上分配[网络参与者][rbac-network-contributor]内置角色
 
 ### <a name="storage"></a>存储
@@ -123,7 +129,7 @@ az role assignment create --assignee <appId> --scope <resourceScope> --role Cont
 
 ### <a name="azure-container-instances"></a>Azure 容器实例
 
-如果使用虚拟 Kubelet 与 AKS 集成并选择在与 AKS 群集分开的资源组中运行 Azure 容器实例 (ACI)，则必须在 ACI 资源组上授予 AKS 服务主体“参与者”  权限。
+如果使用虚拟 Kubelet 与 AKS 集成并选择在与 AKS 群集分开的资源组中运行 Azure 容器实例 (ACI)，则必须在 ACI 资源组上授予 AKS 服务主体“参与者”权限。
 
 ## <a name="additional-considerations"></a>其他注意事项
 

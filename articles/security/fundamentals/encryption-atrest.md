@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 05/29/2020
 ms.author: v-tawe
 origin.date: 04/07/2020
-ms.openlocfilehash: edb34db10c4a3a0c7987e9f5790575b6f1225b18
-ms.sourcegitcommit: 79c99a9ea013b3c74706a1038a505f4eea2aaac4
+ms.openlocfilehash: 42368c2892d89e4ea2dc44ed67cfcae13a049949
+ms.sourcegitcommit: 5fb9ae9adc04e79d6d0e78c9e69dbe8aa3ceb00a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84439532"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86100248"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure 静态数据加密
 
@@ -259,6 +259,11 @@ Azure SQL 数据库目前支持将静态加密用于 Microsoft 托管的服务�
 
 #### <a name="encryption-model-and-key-management-table"></a>加密模型和密钥管理表
 
+<!--  Data Lake Store not available-->
+<!-- DevOps not available -->
+<!--IoT Services not available-->
+<!-- Iot  and Sentinel not avaiable-->
+
 |                                  |                    | **加密模型和密钥管理** |                    |
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
 |                                  | **使用服务托管密钥的服务器端**     | **使用客户管理的密钥的服务器端**             | **使用客户端管理的密钥的客户端**      |
@@ -286,14 +291,64 @@ Azure SQL 数据库目前支持将静态加密用于 Microsoft 托管的服务�
 | Azure Monitor Log Analytics      | 是                | 是                | -                  |
 | Azure 数据资源管理器              | 是                | 是                | -                  |
 | Azure 数据工厂               | 是                | 是                | -                  |
-<!--  Data Lake Store not available-->
-| **容器**                   |                    |                    |                    | | Azure Kubernetes 服务         | 是                | 是                | -                  | | 容器实例             | 是                | 是                | -                  | | 容器注册表               | 是                | 是                | -                  | | **计算**                      |                    |                    |                    | | 虚拟机                 | 是                | 是，RSA 2048 位  | -                  | | 虚拟机规模集        | 是                | 是，RSA 2048 位  | -                  | | SAP HANA                         | 是                | 是，RSA 2048 位  | -                  | | 应用服务                      | 是                | 是\*\*            | -                  | | 自动化                       | 是                | 是\*\*            | -                  | | Azure Functions                  | 是                | 是\*\*            | -                  | | Azure 门户                     | 是                | 是\*\*            | -                  | | 逻辑应用                       | 是                | 是                | -                  | | Azure 托管应用程序       | 是                | 是\*\*            | -                  | | 服务总线                      | 是                | 是                | -                  | | Site Recovery                    | 是                | 是                | -                  | | **数据库**                    |                    |                    |                    | | 虚拟机上的 SQL Server   | 是                | 是，RSA 2048 位  | 是                | | Azure SQL 数据库               | 是                | 是，RSA 2048 位  | 是                | | Azure SQL Database for MariaDB   | 是                | -                  | -                  | | Azure SQL Database for MySQL     | 是                | 是                | -                  | | Azure SQL Database for PostgreSQL | 是               | 是                | -                  | | Azure Synapse Analytics          | 是                | 是，RSA 2048 位  | -                  | | SQL Server Stretch Database      | 是                | 是，RSA 2048 位  | 是                | | 表存储                    | 是                | 是                | 是                | | Azure Cosmos DB                  | 是                | 是                | -                  | | Azure Databricks                 | 是                | 是                | -                  | | Azure 数据库迁移服务 | 是                | 不适用\*              | -                  |
-<!-- DevOps not available -->
-| **标识**                     |                    |                    |                    | | Azure Active Directory           | 是                | -                  | -                  | | Azure Active Directory 域服务 | 是          | 是，RSA 2048 位  | -                  | | **集成**                  |                    |                    |                    | | 服务总线                      | 是                | 是                | 是                | | 事件网格                       | 是                | -                  | -                  | | API 管理                   | 是                | -                  | -                  |
-<!--IoT Services not available-->
-| **管理和治理**    |                    |                    |                    | | Azure Site Recovery              | 是                | -                  | -                  | | Azure Migrate                    | 是                | 是                | -                  | | **媒体**                        |                    |                    |                    | | 媒体服务                   | 是                | -                  | 是                |
-<!-- Iot  and Sentinel not avaiable-->
-| **存储**                      |                    |                    |                    | | Blob 存储                     | 是                | 是，RSA 2048 位  | 是                | | 高级 Blob 存储             | 是                | 是，RSA 2048 位  | 是                | | 磁盘存储                     | 是                | 是                | -                  | | 超级磁盘存储               | 是                | 是                | -                  | | 托管磁盘存储             | 是                | 是                | -                  | | 文件存储                     | 是                | 是，RSA 2048 位  | -                  | | 文件高级存储             | 是                | 是，RSA 2048 位  | -                  | | 文件同步                        | 是                | 是，RSA 2048 位  | -                  | | 队列存储                    | 是                | 是                | 是                | | Avere vFXT                       | 是                | -                  | -                  | | Azure Cache for Redis            | 是                | 不适用\*              | -                  | | Azure NetApp 文件               | 是                | 是                | -                  | | 存档存储                  | 是                | 是，RSA 2048 位  | -                  | | StorSimple                       | 是                | 是，RSA 2048 位  | 是                | | Azure 备份                     | 是                | 是                | 是                | | Data Box                         | 是                | -                  | 是                | | Data Box Edge                    | 是                | 是                | -                  |
+| **容器**                   |                    |                    |                    |
+| Azure Kubernetes 服务         | 是                | 是                | -                  |
+| 容器实例              | 是                | 是                | -                  |
+| 容器注册表               | 是                | 是                | -                  |
+| **计算**                      |                    |                    |                    |
+| 虚拟机                 | 是                | 是，RSA 2048 位  | -                  |
+| 虚拟机规模集        | 是                | 是，RSA 2048 位  | -                  |
+| SAP HANA                         | 是                | 是，RSA 2048 位  | -                  |
+| 应用服务                      | 是                | 是\*\*            | -                  |
+| 自动化                       | 是                | 是\*\*            | -                  |
+| Azure Functions                  | 是                | 是\*\*            | -                  |
+| Azure 门户                     | 是                | 是\*\*            | -                  |
+| 逻辑应用                       | 是                | 是                | -                  |
+| Azure 托管应用程序       | 是                | 是\*\*            | -                  |
+| 服务总线                      | 是                | 是                | -                  |
+| 站点恢复                    | 是                | 是                | -                  |
+| **数据库**                    |                    |                    |                    |
+| 虚拟机上的 SQL Server   | 是                | 是，RSA 2048 位  | 是                |
+| Azure SQL 数据库               | 是                | 是，RSA 2048 位  | 是                |
+| Azure SQL Database for MariaDB   | 是                | -                  | -                  |
+| Azure SQL Database for MySQL     | 是                | 是                | -                  |
+| Azure SQL Database for PostgreSQL | 是               | 是                | -                  |
+| Azure Synapse Analytics          | 是                | 是，RSA 2048 位  | -                  |
+| SQL Server Stretch Database      | 是                | 是，RSA 2048 位  | 是                |
+| 表存储                    | 是                | 是                | 是                |
+| Azure Cosmos DB                  | 是                | 是                | -                  |
+| Azure Databricks                 | 是                | 是                | -                  |
+| Azure 数据库迁移服务 | 是                | 暂无\*              | -                  |
+| **标识**                     |                    |                    |                    |
+| Azure Active Directory           | 是                | -                  | -                  |
+| Azure Active Directory 域服务 | 是          | 是，RSA 2048 位  | -                  |
+| **集成**                  |                    |                    |                    |
+| 服务总线                      | 是                | 是                | 是                |
+| 事件网格                       | 是                | -                  | -                  |
+| API 管理                   | 是                | -                  | -                  |
+| **管理和治理**    |                    |                    |                    |
+| Azure Site Recovery              | 是                | -                  | -                  |
+| Azure Migrate                    | 是                | 是                | -                  |
+| **介质**                        |                    |                    |                    |
+| 媒体服务                   | 是                | -                  | 是                |
+| **存储**                      |                    |                    |                    |
+| Blob 存储                     | 是                | 是，RSA 2048 位  | 是                |
+| 高级 Blob 存储             | 是                | 是，RSA 2048 位  | 是                |
+| 磁盘存储                     | 是                | 是                | -                  |
+| 超级磁盘存储               | 是                | 是                | -                  |
+| 托管磁盘存储             | 是                | 是                | -                  |
+| 文件存储                     | 是                | 是，RSA 2048 位  | -                  |
+| 文件高级存储             | 是                | 是，RSA 2048 位  | -                  |
+| 文件同步                        | 是                | 是，RSA 2048 位  | -                  |
+| 队列存储                    | 是                | 是                | 是                |
+| Avere vFXT                       | 是                | -                  | -                  |
+| 用于 Redis 的 Azure 缓存            | 是                | 暂无\*              | -                  |
+| Azure NetApp 文件               | 是                | 是                | -                  |
+| 存档存储                  | 是                | 是，RSA 2048 位  | -                  |
+| StorSimple                       | 是                | 是，RSA 2048 位  | 是                |
+| Azure 备份                     | 是                | 是                | 是                |
+| Data Box                         | 是                | -                  | 是                |
+| Data Box Edge                    | 是                | 是                | -                  |
 
 \* 此服务不会持久保存数据。 将使用 Microsoft 密钥来加密暂时性缓存（如果有）。
 

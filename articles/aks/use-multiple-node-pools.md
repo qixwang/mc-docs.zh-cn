@@ -6,12 +6,12 @@ ms.topic: article
 origin.date: 04/08/2020
 ms.date: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: de08e30d9d63dd51fa3e489a4494126ab7402d8e
-ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
+ms.openlocfilehash: 9b4f67f240dfa423af7dfefb39484e990cc91e60
+ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735092"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86218788"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>为 Azure Kubernetes 服务 (AKS) 中的群集创建和管理多个节点池
 
@@ -44,7 +44,7 @@ ms.locfileid: "83735092"
 > [!Important]
 > 如果在生产环境中为 AKS 群集运行单个系统节点池，则建议至少将三个节点用作节点池。
 
-若要开始，请创建包含单个节点池的 AKS 群集。 以下示例使用 [az group create][az-group-create] 命令在 *chinaeast2* 区域中创建名为 *myResourceGroup* 的资源组。 然后使用 [az AKS create][az-aks-create] 命令创建名为 *myAKSCluster* 的 AKS 群集。 值为 1.15.7 的 --kubernetes-version 用于演示如何在以下步骤中更新节点池。 可以指定任何[支持的 Kubernetes 版本][supported-versions]。
+若要开始，请创建包含单个节点池的 AKS 群集。 以下示例使用 [az group create][az-group-create] 命令在 *chinaeast2* 区域中创建名为 *myResourceGroup* 的资源组。 然后使用 [az AKS create][az-aks-create] 命令创建名为 *myAKSCluster* 的 AKS 群集。
 
 > [!NOTE]
 > 使用多个节点池时，**不支持**“基本”负载均衡器 SKU。 默认情况下，AKS 群集是在 Azure CLI 和 Azure 门户中使用“标准”负载均衡器 SKU 创建的。
@@ -60,7 +60,6 @@ az aks create \
     --vm-set-type VirtualMachineScaleSets \
     --node-count 2 \
     --generate-ssh-keys \
-    --kubernetes-version 1.15.7 \
     --load-balancer-sku standard
 ```
 
@@ -84,8 +83,7 @@ az aks nodepool add \
     --resource-group myResourceGroup \
     --cluster-name myAKSCluster \
     --name mynodepool \
-    --node-count 3 \
-    --kubernetes-version 1.15.5
+    --node-count 3
 ```
 
 > [!NOTE]
@@ -106,7 +104,7 @@ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSCluste
     "count": 3,
     ...
     "name": "mynodepool",
-    "orchestratorVersion": "1.15.5",
+    "orchestratorVersion": "1.15.7",
     ...
     "vmSize": "Standard_DS2_v2",
     ...
@@ -125,37 +123,58 @@ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSCluste
 ```
 
 > [!TIP]
-> 如果在添加节点池时未指定 VmSize，则 Linux 节点池的默认大小为 Standard_DS2_v2。 如果未指定 OrchestratorVersion，则它将默认为与控制平面相同的版本。
+> 如果在添加节点池时未指定 VmSize ，则 Windows 节点池的默认大小为 Standard_D2s_v3，Linux 节点池的默认大小为 Standard_DS2_v2  。 如果未指定 OrchestratorVersion，则它将默认为与控制平面相同的版本。
 
-<!--Not Available on *Standard_DS2_v3* for Windows node pools and-->
+### <a name="add-a-node-pool-with-a-unique-subnet-preview"></a>添加一个具有唯一子网的节点池（预览）
 
-<!--Not Available on ### Add a node pool with a unique subnet (preview)-->
+某个工作负载可能会要求将群集的节点拆分为单独的池以进行逻辑隔离。 可使用专用于群集中每个节点池的单独子网来支持这种隔离。 这可以满足例如在节点池中拆分非连续的虚拟网络地址空间的要求。
 
+#### <a name="limitations"></a>限制
+
+* 分配给节点池的所有子网都必须属于同一虚拟网络。
+* 系统 Pod 必须有权访问群集中的所有节点以提供关键功能，例如通过 coreDNS 进行 DNS 解析。
+* 在预览版期间，为每个节点池分配唯一子网仅限于 Azure CNI。
+* 预览期间不支持将网络策略与每个节点池的唯一子网一起使用。
+
+若要创建具有专用子网的节点池，请在创建节点池时将子网资源 ID 作为附加参数传递。
+
+```azurecli
+az aks nodepool add \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name mynodepool \
+    --node-count 3 \
+    --vnet-subnet-id <YOUR_SUBNET_RESOURCE_ID>
+```
 
 ## <a name="upgrade-a-node-pool"></a>升级节点池
 
 > [!NOTE]
 > 不能对群集或节点池同时执行升级和缩放操作，否则会返回错误。 而只能先在目标资源上完成一个操作类型，然后再在同一资源上执行下一个请求。 请阅读[故障排除指南](https://docs.azure.cn/aks/troubleshooting#im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-currently-being-upgraded-or-has-failed-upgrade)中的详细信息。
 
-最初在第一个步骤中创建 AKS 群集时，为 `--kubernetes-version` 指定了 1.15.7。 这同时设置了控制平面和默认节点池的 Kubernetes 版本。 本部分中的命令说明如何升级单个特定的节点池。
-
-[下一部分](#upgrade-a-cluster-control-plane-with-multiple-node-pools)将会说明升级控制平面与节点池的 Kubernetes 版本之间的关系。
+本部分中的命令说明如何升级单个特定的节点池。 [下一部分](#upgrade-a-cluster-control-plane-with-multiple-node-pools)将会说明升级控制平面与节点池的 Kubernetes 版本之间的关系。
 
 > [!NOTE]
 > 节点池的 OS 映像版本与群集的 Kubernetes 版本相关联。 只能先升级 OS 映像，然后再升级群集。
 
-由于本示例包含两个节点池，因此必须使用 [az aks nodepool upgrade][az-aks-nodepool-upgrade] 来升级节点池。 让我们将 mynodepool 升级到 Kubernetes 1.15.7。 如以下示例中所示，使用 [az aks nodepool upgrade][az-aks-nodepool-upgrade] 命令升级节点池：
+由于本示例包含两个节点池，因此必须使用 [az aks nodepool upgrade][az-aks-nodepool-upgrade] 来升级节点池。 若要查看可用的升级，请使用 [az aks get-upgrades][az-aks-get-upgrades]
+
+```azurecli
+az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
+```
+
+现在升级 mynodepool。 如以下示例中所示，使用 [az aks nodepool upgrade][az-aks-nodepool-upgrade] 命令升级节点池：
 
 ```azurecli
 az aks nodepool upgrade \
     --resource-group myResourceGroup \
     --cluster-name myAKSCluster \
     --name mynodepool \
-    --kubernetes-version 1.15.7 \
+    --kubernetes-version KUBERNETES_VERSION \
     --no-wait
 ```
 
-使用 [az aks node pool list][az-aks-nodepool-list] 命令再次列出节点池的状态。 以下示例显示 mynodepool 的状态为“正在升级到 1.15.7”：
+使用 [az aks node pool list][az-aks-nodepool-list] 命令再次列出节点池的状态。 以下示例显示“mynodepool”处于“升级”状态，正在升级到 KUBERNETES_VERSION  ：
 
 ```azurecli
 az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -168,7 +187,7 @@ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
     "count": 3,
     ...
     "name": "mynodepool",
-    "orchestratorVersion": "1.15.7",
+    "orchestratorVersion": "KUBERNETES_VERSION",
     ...
     "provisioningState": "Upgrading",
     ...
@@ -232,7 +251,7 @@ AKS 群集包含两个具有关联 Kubernetes 版本的群集资源对象。
 
 <!--If you scale down, nodes are carefully [cordoned and drained][kubernetes-drain] to minimize disruption to running applications.-->
 
-若要缩放节点池中的节点数，请使用 [az aks node pool scale][az-aks-nodepool-scale] 命令。 以下示例将 mynodepool 中的节点数缩减为 5：
+若要缩放节点池中的节点数，请使用 [az aks node pool scale][az-aks-nodepool-scale] 命令。 以下示例将 *mynodepool* 中的节点数缩放为 *5*：
 
 ```azurecli
 az aks nodepool scale \
@@ -338,7 +357,7 @@ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
 以下示例创建使用 *Standard_NC6s_v3* VM 大小的基于 GPU 的节点池。 这些 VM 采用 NVIDIA Tesla K80 卡。 有关可用 VM 大小的信息，请参阅 [Azure 中的 Linux 虚拟机大小][vm-sizes]。
 
-再次使用 [az aks node pool add][az-aks-nodepool-add] 命令创建节点池。 这一次请指定名称“gpunodepool”，并使用 `--node-vm-size` 参数指定 Standard_NC6s_v3 大小：
+再次使用 [az aks node pool add][az-aks-nodepool-add] 命令创建节点池。 这一次请指定名称 *gpunodepool*，并使用 `--node-vm-size` 参数指定 *Standard_NC6s_v3* 大小：
 
 ```azurecli
 az aks nodepool add \
@@ -350,7 +369,7 @@ az aks nodepool add \
     --no-wait
 ```
 
-[az aks node pool list][az-aks-nodepool-list] 命令的以下示例输出显示 gpunodepool 正在创建具有指定 VmSize 的节点：
+[az aks node pool list ][az-aks-nodepool-list] 命令的以下示例输出显示 *gpunodepool* 正在创建具有指定 *VmSize* 的节点：
 
 ```azurecli
 az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -708,10 +727,11 @@ az group deployment create \
 
 <!--Not Available on ## Assign a public IP per node for your node pools (preview)-->
 <!--The feature 'NodePublicIPPreview' could not be found.-->
+<!--Not Available on az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerService-->
 
 ## <a name="clean-up-resources"></a>清理资源
 
-在本文中，你已创建包含基于 GPU 的节点的 AKS 群集。 为了减少不必要的开销，建议删除 gpunodepool 或整个 AKS 群集。
+在本文中，你已创建包含基于 GPU 的节点的 AKS 群集。 为了减少不必要的费用，我们建议删除 *gpunodepool* 或整个 AKS 群集。
 
 若要删除基于 GPU 的节点池，请如以下示例中所示使用 [az aks nodepool delete][az-aks-nodepool-delete] 命令：
 
@@ -733,8 +753,9 @@ az group delete --name myResourceGroup --yes --no-wait
 
 本文已介绍如何在 AKS 群集中创建和管理多个节点池。 有关如何跨节点池控制 pod 的详细信息，请参阅[有关 AKS 中的高级计划程序功能的最佳做法][operator-best-practices-advanced-scheduler]。
 
-<!--Not Available on [Create a Windows Server container in AKS][aks-windows]-->
+要创建和使用 Windows Server 容器节点池，请参阅[在 AKS 中创建 Windows Server 容器][aks-windows]。
 
+<!--Not Available on [proximity placement groups][reduce-latency-ppg]-->
 <!-- EXTERNAL LINKS -->
 
 [kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/
@@ -746,10 +767,10 @@ az group delete --name myResourceGroup --yes --no-wait
 
 <!-- INTERNAL LINKS -->
 
-<!--Not Available on [aks-windows]: windows-container-cli.md-->
-
+[aks-windows]: windows-container-cli.md
 [az-aks-get-credentials]: https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
 [az-aks-create]: https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-create
+[az-aks-get-upgrades]: https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-get-upgrades
 [az-aks-nodepool-add]: https://docs.microsoft.com/cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-add
 [az-aks-nodepool-list]: https://docs.microsoft.com/cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-list
 [az-aks-nodepool-update]: https://docs.microsoft.com/cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-update
@@ -770,7 +791,11 @@ az group delete --name myResourceGroup --yes --no-wait
 [taints-tolerations]: operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations
 [vm-sizes]: ../virtual-machines/linux/sizes.md
 [use-system-pool]: use-system-pools.md
+[ip-limitations]: ../virtual-network/virtual-network-ip-addresses-overview-arm#standard
+[node-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks
 [vmss-commands]: ../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine
 [az-list-ips]: https://docs.azure.cn/cli/vmss?view=azure-cli-latest.md?view=azure-cli-latest#az-vmss-list-instance-public-ips
+
+<!--Not Available on [reduce-latency-ppg]: reduce-latency-ppg.md-->
 
 <!-- Update_Description: update meta properties, wording update, update link -->

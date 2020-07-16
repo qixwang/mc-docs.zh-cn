@@ -5,15 +5,15 @@ description: 本文通过示例演示如何将 TLS/SSL 证书转换为允许 Azu
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
-ms.date: 06/23/2020
+ms.topic: how-to
+ms.date: 07/10/2020
 ms.author: v-junlch
-ms.openlocfilehash: 99b6d29de7c4d8b69992dacf16d34de60d16106d
-ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
+ms.openlocfilehash: d43f880853c90108bb8729719ba686952c1b144a
+ms.sourcegitcommit: 65a7360bb14b0373e18ec8eaa288ed3ac7b24ef4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85516741"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86219712"
 ---
 # <a name="create-certificates-to-allow-the-backend-with-azure-application-gateway"></a>创建证书以允许 Azure 应用程序网关中的后端
 
@@ -78,7 +78,7 @@ ms.locfileid: "85516741"
 
 以下步骤用于导出证书的 .cer 文件：
 
-1. 使用上面的“从后端证书中导出身份验证证书（适用于 v1 SKU）”部分提到的步骤 1-9，从后端证书导出公钥。
+1. 使用前面的[导出身份验证证书（适用于 v1 SKU）](#export-authentication-certificate-for-v1-sku)部分提到的步骤 1-8，从后端证书导出公钥。
 
 2. 导出公钥后，打开该文件。
 

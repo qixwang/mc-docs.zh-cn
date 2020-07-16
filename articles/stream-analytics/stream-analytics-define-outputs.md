@@ -6,13 +6,13 @@ ms.author: v-johya
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/23/2020
-ms.openlocfilehash: 0a5b1fdc5bf522c10935f9e3c00d123a891c0d94
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.date: 07/06/2020
+ms.openlocfilehash: 68633e2e800faccc7750616dce2f922ad4f0aaf0
+ms.sourcegitcommit: 9bc3e55f01e0999f05e7b4ebaea95f3ac91d32eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097157"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86226003"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>了解 Azure 流分析的输出
 
@@ -22,17 +22,14 @@ ms.locfileid: "85097157"
 
 若要创建、编辑和测试流分析作业输出，可使用 [Azure 门户](stream-analytics-quick-create-portal.md#configure-job-output)、[Azure PowerShell](stream-analytics-quick-create-powershell.md#configure-output-to-the-job)、[.NET API](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet)、[REST API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-output) 和 [Visual Studio](stream-analytics-quick-create-vs.md)。
 
-<!-- Not Available on [Visual Studio](stream-analytics-quick-create-vs.md)-->
-
 某些输出类型支持[分区](#partitioning)。 [输出批大小](#output-batch-size)可变，这是为了优化吞吐量。
 <!-- Not Available ## Azure Data Lake Storage Gen 1-->
 
 ## <a name="sql-database"></a>SQL 数据库
 
-可以将 [Azure SQL 数据库](https://docs.azure.cn/zh-cn/sql-database/)用作本质上为关系型数据的输出，也可以将其用于所依赖的内容在关系数据库中托管的应用程序。 流分析作业将写入到 SQL 数据库的现有表中。 表架构必须与作业输出中的字段及其类型完全匹配。 还可以通过 SQL 数据库输出选项将 [Azure SQL 数据仓库](https://docs.azure.cn/zh-cn/sql-data-warehouse/)指定为输出。 若要了解提高写入吞吐量的方法，请参阅[以 Azure SQL 数据库作为输出的流分析](stream-analytics-sql-output-perf.md)一文。
+可以将 [Azure SQL 数据库](https://www.azure.cn/home/features/sql-database/)用作本质上为关系型数据的输出，也可以将其用于所依赖的内容在关系数据库中托管的应用程序。 流分析作业将写入到 SQL 数据库的现有表中。 表架构必须与作业输出中的字段及其类型完全匹配。 还可以通过 SQL 数据库输出选项将 [Azure SQL 数据仓库](https://azure.microsoft.com/documentation/services/sql-data-warehouse/)指定为输出。 若要了解提高写入吞吐量的方法，请参阅[以 Azure SQL 数据库作为输出的流分析](stream-analytics-sql-output-perf.md)一文。
 
-<!--waiting to be moved about https://docs.azure.cn/zh-cn/sql-data-warehouse/ -->
-还可以使用 [Azure SQL 数据库托管实例](/sql-database/sql-database-managed-instance)作为输出。 必须[在 Azure SQL 数据库托管实例中配置公共终结点](/sql-database/sql-database-managed-instance-public-endpoint-configure)，然后在 Azure 流分析中手动配置以下设置。 还可以通过手动配置以下设置来支持运行附加了数据库的 SQL Server 的 Azure 虚拟机。
+还可以使用 [Azure SQL 托管实例](/sql-database/sql-database-managed-instance)作为输出。 必须[在 SQL 托管实例中配置公共终结点](/sql-database/sql-database-managed-instance-public-endpoint-configure)，然后在 Azure 流分析中手动配置以下设置。 还可以通过手动配置以下设置来支持运行附加了数据库的 SQL Server 的 Azure 虚拟机。
 
 下表列出了属性名称和用于创建 SQL 数据库输出的属性说明。
 
@@ -40,13 +37,14 @@ ms.locfileid: "85097157"
 | --- | --- |
 | 输出别名 |在查询中使用的友好名称，用于将查询输出定向到此数据库。 |
 | 数据库 | 将输出发送到的数据库的名称。 |
-| 服务器名称 | SQL 数据库服务器名称。 对于 Azure SQL 数据库托管实例，需要指定端口 3342。 例如，“sampleserver.public.database.chinacloudapi.cn,3342” |
+| 服务器名称 | 逻辑 SQL 服务器名称或托管实例名称。 对于 SQL 托管实例，需要指定端口 3342。 例如，“sampleserver.public.database.chinacloudapi.cn,3342” |
 | 用户名 | 对数据库拥有写入访问权限的用户名。 流分析仅支持 SQL 身份验证。 |
 | 密码 | 用于连接到数据库的密码。 |
 | 表 | 将写入输出的表名称。 表名称区分大小写。 此表的架构应与字段数量以及作业输出生成的字段类型完全匹配。 |
 |继承分区方案| 一个用于继承先前查询步骤的分区方案，以启用具有多个表的写入器的完全并行拓扑的选项。 有关详细信息，请参阅从 [Azure 流分析输出到 Azure SQL 数据库](stream-analytics-sql-output-perf.md)。|
 |最大批数| 每个批量插入事务一起发送的推荐记录数上限。|
 
+<!-- Not Available Azure Synapse-->
 ## <a name="blob-storage-and-azure-data-lake-gen2"></a>Blob 存储和 Azure Data Lake Gen2
 
 Data Lake Storage Gen2 使 Azure 存储成为在 Azure 上构建企业 Data Lake 的基础。 Data Lake Storage Gen2 从一开始就设计为处理数千万亿字节的信息，同时保持数百千兆位的吞吐量，可让你轻松管理大量数据。Data Lake Storage Gen2 的一个基本特征是在 Blob 存储中添加分层命名空间。
@@ -65,8 +63,8 @@ Azure Blob 存储提供了一种经济高效且可扩展的解决方案，用于
 | 日期格式 | 可选。 如果在前缀路径中使用日期令牌，可以选择组织文件所采用的日期格式。 示例：YYYY/MM/DD |
 | 时间格式 | 可选。 如果在前缀路径中使用时间令牌，可指定组织文件所采用的时间格式。 目前唯一支持的值是 HH。 |
 | 事件序列化格式 | 输出数据的序列化格式。 支持 JSON、CSV、Avro 和 Parquet。 |
-|最小行数（仅 Parquet）|每批的最小行数。 对于 Parquet，每个批处理都将创建一个新文件。 当前默认值为 2000 行，允许的最大值为 10000 行。|
-|最长时间（仅 Parquet）|每批的最长等待时间。 在此时间后，即使不满足最小行数要求，也会将该批写入输出。 当前默认值为 1 分钟，允许的最大值为 2 小时。 如果 blob 输出具有路径模式频率，则等待时间不能超出分区时间范围。|
+|最小行数 |每批的最小行数。 对于 Parquet，每个批处理都将创建一个新文件。 当前默认值为 2000 行，允许的最大值为 10000 行。|
+|最长时间 |每批的最长等待时间。 在此时间后，即使不满足最小行数要求，也会将该批写入输出。 当前默认值为 1 分钟，允许的最大值为 2 小时。 如果 blob 输出具有路径模式频率，则等待时间不能超出分区时间范围。|
 | 编码    | 如果使用 CSV 或 JSON 格式，则必须指定一种编码格式。 目前只支持 UTF-8 这种编码格式。 |
 | 分隔符   | 仅适用于 CSV 序列化。 流分析支持大量的常见分隔符以对 CSV 数据进行序列化。 支持的值为逗号、分号、空格、制表符和竖线。 |
 | 格式      | 仅适用于 JSON 序列化。 分隔行指定通过新行分隔各个 JSON 对象，从而格式化输出。 如果选择“行分隔”，则读取 JSON 时，一次读取一个对象。 整个内容本身将不是有效的 JSON。 数组指定输出会被格式化为 JSON 对象的数组。 仅当作业停止或流分析移动到下个时间段时，才关闭此数组。 一般而言，最好使用分隔行 JSON，因为在继续写入输出文件时，无需任何特殊处理。 |
@@ -84,7 +82,7 @@ Azure Blob 存储提供了一种经济高效且可扩展的解决方案，用于
 
 ## <a name="event-hubs"></a>事件中心
 
-[Azure 事件中心](https://docs.azure.cn/zh-cn/event-hubs/)服务是具有高扩展性的发布 - 订阅事件引入器。 事件中心每秒可收集数百万个事件。 当流分析作业的输出成为另一个流式处理作业的输入时，可以将事件中心用作输出。 若要了解最大消息大小和批大小优化，请参阅[输出批大小](#output-batch-size)部分。
+[Azure 事件中心](https://www.azure.cn/home/features/event-hubs/)服务是具有高扩展性的发布 - 订阅事件引入器。 事件中心每秒可收集数百万个事件。 当流分析作业的输出成为另一个流式处理作业的输入时，可以将事件中心用作输出。 有关最大消息大小和批大小优化的信息，请参阅[输出批大小](#output-batch-size)部分。
 
 需要使用几个参数将事件中心的数据流配置为输出。
 
@@ -105,7 +103,7 @@ Azure Blob 存储提供了一种经济高效且可扩展的解决方案，用于
 <!-- Not Available ## Power BI-->
 ## <a name="table-storage"></a>表存储
 
-[Azure 表存储](../storage/common/storage-introduction.md)提供了具有高可用性且可大规模缩放的存储，因此应用程序可以自动缩放以满足用户需求。 表存储是 Azure 推出的 NoSQL 键/属性存储，适用于对架构的约束较少的结构化数据。 Azure 表存储可用于持久地存储数据，方便进行高效的检索。
+[Azure 表存储](../storage/common/storage-introduction.md) 提供了具有高可用性且可大规模缩放的存储，因此应用程序可以自动缩放以满足用户需求。 表存储是 Microsoft 推出的 NoSQL 键/属性存储，适用于对架构的约束性较少的结构化数据。 Azure 表存储可用于持久地存储数据，方便进行高效的检索。
 
 下表列出了用于创建表输出的属性名称及其说明。
 
@@ -163,10 +161,52 @@ Azure Blob 存储提供了一种经济高效且可扩展的解决方案，用于
 
 分区数[基于服务总线 SKU 和大小](../service-bus-messaging/service-bus-partitioning.md)。 分区键是每个分区的唯一整数值。
 
-<!-- Not Available on ## Azure Cosmos DB -->
+## <a name="azure-cosmos-db"></a>Azure Cosmos DB
+[Azure Cosmos DB](https://www.azure.cn/home/features/documentdb/) 是一种分布全球的数据库服务，它提供全球范围内不设限的弹性缩放、丰富查询和自动索引（经由与构架无关的数据模型）。 若要了解流分析的 Azure Cosmos DB 容器选项，请参阅[将 Azure Cosmos DB 用作输出的流分析](stream-analytics-documentdb-output.md)一文。
 
+流分析中的 Azure Cosmos DB 输出当前不可在 Azure 中国世纪互联和 Azure 德国 (T-Systems International) 区域中使用。
 
-<!-- Not Available on ## Azure Functions-->
+> [!Note]
+> 目前，Azure 流分析仅支持使用 SQL API 连接到 Azure Cosmos DB。
+> 尚不支持使用其他 Azure Cosmos DB API。 如果使用其他 API 将 Azure 流分析指向 创建的 Azure Cosmos DB 帐户，则可能无法正确存储数据。
+
+下表描述了用于创建 Azure Cosmos DB 输出的属性。
+
+| 属性名称 | 说明 |
+| --- | --- |
+| 输出别名 | 用于在流分析查询中引用此输出的别名。 |
+| 接收器 | Azure Cosmos DB。 |
+| 导入选项 | 选择“从订阅中选择 Cosmos DB”或“手动提供 Cosmos DB 设置” 。
+| 帐户 ID | Azure Cosmos DB 帐户的名称或终结点 URI。 |
+| 帐户密钥 | Azure Cosmos DB 帐户的共享访问密钥。 |
+| 数据库 | Azure Cosmos DB 数据库名称。 |
+| 容器名称 | 要使用的容器名称，该名称必须在 Cosmos DB 中存在。 示例：  <br /><ul><li> _MyContainer_：名为“MyContainer”的容器必须存在。</li>|
+| 文档 ID |可选。 输出事件中的字段的名称，该字段用于指定插入或更新操作所基于的主键。
+
+## <a name="azure-functions"></a>Azure Functions
+Azure Functions 是一个无服务器计算服务，可以使用它按需运行代码，而无需显式预配或管理基础结构。 它允许实现由 Azure 或合作伙伴服务中出现的事件所触发的代码。 Azure Functions 响应触发的这一功能使其成为 Azure 流分析的自然输出。 此输出适配器允许用户将流分析连接到 Azure Functions，并运行脚本或一段代码来响应各种事件。
+
+流分析中的 Azure Functions 输出当前不可在 Azure 中国世纪互联和 Azure 德国 (T-Systems International) 区域中使用。
+
+Azure 流分析通过 HTTP 触发器调用 Azure Functions。 提供具有以下可配置属性的 Azure Functions 输出适配器：
+
+| 属性名称 | 说明 |
+| --- | --- |
+| 函数应用 |Azure Functions 应用的名称。 |
+| 函数 |Azure Functions 应用中的函数的名称。 |
+| 键 |若要使用其他订阅中的 Azure 函数，可提供用于访问该函数的密钥。 |
+| 最大批大小 |此属性可用于设置将发送到 Azure 函数的每个输出批的最大大小。 输入单元以字节为单位。 默认情况下，此值为 262,144 字节 (256 KB)。 |
+| 最大批数  |一个用于指定发送到 Azure Functions 的每个批中的最大事件数的属性。 默认值为 100。 |
+
+对于已成功处理的批，Azure 流分析预期函数应用中的 HTTP 状态为 200。
+
+当 Azure 流分析从 Azure 函数中收到 413（“http 请求实体过大”）异常时，它将减小发送到 Azure Functions 的批的大小。 在 Azure 函数代码中，使用此异常以确保 Azure 流分析不会发送过大的批。 此外，确保函数中使用的最大批数和最大批大小值与在流分析门户中输入的值一致。
+
+> [!NOTE]
+> 在测试连接过程中，流分析会将空批发送到 Azure Functions，以测试两者之间的连接是否正常。 确保 Functions 应用处理空批请求，以确保通过连接测试。
+
+另外，如果时间窗口中没有任何事件登录，则不生成任何输出。 因此，不会调用 **computeResult** 函数。 此行为与内置窗口化聚合函数一致。
+
 ## <a name="custom-metadata-properties-for-output"></a>输出的自定义元数据属性 
 
 可将查询列作为用户属性附加到传出的消息。 这些列不会进入有效负载。 这些属性以字典形式在输出消息中提供。 键是列名，值是属性字典中的列值。  支持除“记录”和“数组”以外的其他所有流分析数据类型。  
@@ -222,7 +262,7 @@ Azure Blob 存储提供了一种经济高效且可扩展的解决方案，用于
 | Azure Cosmos DB | 是 | 基于查询中的 PARTITION BY 子句。 | 按照[完全并行化的查询](stream-analytics-scale-jobs.md)的输入分区。 |
 | Azure Functions | 是 | 基于查询中的 PARTITION BY 子句。 | 按照[完全并行化的查询](stream-analytics-scale-jobs.md)的输入分区。 |
 
-还可以在查询中使用 `INTO <partition count>`子句（请参阅 [INTO](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count)）来控制输出写入器的数量，这可能有助于实现所需的作业拓扑。 如果输出适配器未分区，则一个输入分区中缺少数据将导致延迟最多可达延迟到达的时间量。 在这种情况下，输出将合并到单个写入器，这可能会导致管道中出现瓶颈。
+还可以在查询中使用 `INTO <partition count>`子句（请参阅 [INTO](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count)）来控制输出写入器的数量，这可能有助于实现所需的作业拓扑。 如果输出适配器未分区，则一个输入分区中缺少数据将导致延迟最多可达延迟到达的时间量。 在这种情况下，输出将合并到单个写入器，这可能会导致管道中出现瓶颈。 若要了解有关延迟到达策略的详细信息，请参阅 [Azure 流分析事件顺序注意事项](stream-analytics-time-handling.md)。
 
 ## <a name="output-batch-size"></a>输出批大小
 Azure 流分析使用大小可变的批来处理事件和写入到输出。 通常流分析引擎不会一次写入一条消息，而是使用批来提高效率。 当传入和传出事件的速率较高时，流分析将使用更大的批。 输出速率低时，使用较小的批来保证低延迟。
@@ -240,7 +280,7 @@ Azure 流分析使用大小可变的批来处理事件和写入到输出。 通�
 | Azure 服务总线队列    | 在标准层中为每条消息 256 KB，在高级层中为 1MB。<br /> 请参阅[服务总线限制](../service-bus-messaging/service-bus-quotas.md)。 | 对每条消息使用单个事件。 |
 | Azure 服务总线主题 | 在标准层中为每条消息 256 KB，在高级层中为 1MB。<br /> 请参阅[服务总线限制](../service-bus-messaging/service-bus-quotas.md)。 | 对每条消息使用单个事件。 |
 | Azure Cosmos DB    | 请参阅 [Azure Cosmos DB 限制](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cosmos-db-limits)。 | 批大小和写入频率根据 Azure Cosmos DB 响应动态调整。 <br /> 流分析不会施加预先确定的限制。 |
-| Azure Functions    | | 默认批大小为 262,144 字节 (256 KB)。 <br /> 每批的默认事件计数为 100。 <br /> 批大小是可配置的，可在流分析输出选项中增大或减小。
+| Azure Functions    | | 默认批大小为 262,144 字节 (256 KB)。 <br /> 每个批的默认事件计数为 100。 <br /> 批大小是可配置的，可在流分析[输出选项](#azure-functions)中增加或减少。
 
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]
@@ -248,8 +288,7 @@ Azure 流分析使用大小可变的批来处理事件和写入到输出。 通�
 > [快速入门：使用 Azure 门户创建流分析作业](stream-analytics-quick-create-portal.md)
 
 <!--Link references-->
-<!-- URL is not Correct on [stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md -->
-
+<!-- URL is not Correct on stream-analytics-developer-guide.md -->
 [stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md
 [stream.analytics.introduction]: stream-analytics-introduction.md
 [stream.analytics.get.started]: stream-analytics-real-time-fraud-detection.md

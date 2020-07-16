@@ -5,14 +5,16 @@ description: 了解有关为 Azure Kubernetes 服务 (AKS) 中的群集管理身
 services: container-service
 ms.topic: conceptual
 origin.date: 04/24/2019
-ms.date: 05/25/2020
+ms.date: 07/13/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 993072dfae53a430d31ac2901b69ed693d9f4081
-ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
+ms.openlocfilehash: ab3f5c2eea27103b578951435fce10ee4d66ae76
+ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735153"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86218810"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的身份验证和授权的最佳做法
 
@@ -21,6 +23,7 @@ ms.locfileid: "83735153"
 本最佳做法文章重点介绍群集操作员如何管理 AKS 群集的访问和标识。 在本文中，学习如何：
 
 > [!div class="checklist"]
+>
 > * 使用 Azure Active Directory 对 AKS 群集用户进行身份验证
 > * 使用基于角色的访问控制 (RBAC) 来控制对资源的访问
 > * 使用托管标识在其他服务中进行自我身份验证
@@ -99,14 +102,14 @@ roleRef:
 
 当 pod 请求 Azure 服务访问权限时，网络规则会将流量重定向到节点管理标识 (NMI) 服务器。 NMI 服务器根据远程地址识别请求 Azure 服务访问权限的 pod，并查询托管标识控制器 (MIC)。 MIC 检查 AKS 群集中的 Azure 标识映射，然后，NMI 服务器根据 pod 的标识映射从 Azure Active Directory (AD) 请求访问令牌。 Azure AD 提供对 NMI 服务器的访问权限，该访问权限将返回给 pod。 然后，pod 可以使用此访问令牌请求对 Azure 中服务的访问权限。
 
-在以下示例中，开发人员创建了一个使用托管标识请求 Azure SQL Server 实例访问权限的 pod：
+在以下示例中，开发人员创建使用托管标识请求 Azure SQL 数据库访问权限的 Pod：
 
 ![pod 标识可让 pod 自动请求对其他服务的访问权限](media/operator-best-practices-identity/pod-identities.png)
 
 1. 群集操作员首先创建一个服务帐户，当 pod 请求服务访问权限时，可以使用该帐户来映射标识。
 1. 部署 NMI 服务器和 MIC，以便将访问令牌的任何 pod 请求中继到 Azure AD。
 1. 开发人员使用托管标识部署一个 pod，该 pod 可通过 NMI 服务器请求访问令牌。
-1. 该令牌将返回给 pod，并用于访问 Azure SQL Server 实例。
+1. 该令牌将返回给 Pod，并用于访问 Azure SQL 数据库
 
 > [!NOTE]
 > 托管 Pod 标识是开源项目，Azure 技术支持部门不为其提供支持。

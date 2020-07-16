@@ -5,14 +5,16 @@ description: 了解有关如何在 Azure Kubernetes 服务 (AKS) 中管理群集
 services: container-service
 ms.topic: conceptual
 origin.date: 12/06/2018
-ms.date: 05/25/2020
+ms.date: 07/13/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 9775aaf4a07c15d4650134eded75f4a2184966fe
-ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
+ms.openlocfilehash: e0f9aa10fa3c816665e45401c12146d39f38f487
+ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735155"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86218713"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的群集安全性和升级的最佳做法
 
@@ -28,7 +30,7 @@ ms.locfileid: "83735155"
 
 还可以阅读有关[容器映像管理][best-practices-container-image-management]和 [Pod 安全性][best-practices-pod-security]的最佳做法。
 
-<!--Not Available on [Azure Kubernetes Services integration with Security Center][security-center-aks]-->
+还可使用 [Azure Kubernetes 服务与安全中心的集成][security-center-aks]，帮助检测威胁和查看关于保护 AKS 群集的建议。
 
 ## <a name="secure-access-to-the-api-server-and-cluster-nodes"></a>保护对 API 服务器和群集节点的访问
 
@@ -175,7 +177,7 @@ chmod-prevented           0/1       Error     0          7s
 
 ## <a name="regularly-update-to-the-latest-version-of-kubernetes"></a>定期更新到最新的 Kubernetes 版本
 
-**最佳做法指南** - 若要及时了解新功能和 bug 修复，请定期升级到 AKS 群集中的 Kubernetes 版本。
+**最佳做法指南** - 若要及时了解新功能和 bug 修复，请定期升级 AKS 群集中的 Kubernetes 版本。
 
 与更传统的基础结构平台相比，Kubernetes 发布新功能的速度更快。 Kubernetes 更新包括新功能和 bug 或安全修补程序。 新功能通常会在经历 *alpha*、*beta* 状态后变得*稳定*，这时便可公开发布，并建议用于生产环境中。 在此发布周期内，可对 Kubernetes 进行更新，而不会经常遇到中断性变更，也无需调整部署和模板。
 
@@ -197,9 +199,7 @@ az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes
 
 ## <a name="process-linux-node-updates-and-reboots-using-kured"></a>使用 kured 处理 Linux 节点更新和重启
 
-**最佳做法指南** - AKS 会自动在每个 Linux 节点上下载并安装安全修补程序，但不会在必要时自动重启。 使用 `kured` 监视挂起的重启操作，然后安全地封锁并排空节点以允许节点重启，应用更新并尽可能安全地保护 OS。
-
-<!--Not Available on For Windows Server nodes, regularly perform an AKS upgrade operation to safely cordon and drain pods and deploy updated nodes.-->
+**最佳做法指南** - AKS 会自动在每个 Linux 节点上下载并安装安全修补程序，但不会在必要时自动重启。 使用 `kured` 监视挂起的重启操作，然后安全地封锁并排空节点以允许节点重启，应用更新并尽可能安全地保护 OS。 对于 Windows Server 节点，定期执行 AKS 升级操作，以安全隔离和清空 Pod 并部署更新的节点。
 
 每天晚上，AKS 中的 Linux 节点都会通过其发行版更新通道获得安全修补程序。 当在 AKS 群集中部署节点时，会​​自动配置此行为。 为了尽量减少对正在运行的工作负荷的中断和潜在影响，AKS 不会在安全修补程序或内核更新需要进行重启时自动重启节点。
 
@@ -241,6 +241,6 @@ Weaveworks 的 [kured（KUbernetes 重启守护程序）][kured]开源项目可�
 [best-practices-pod-security]: developer-best-practices-pod-security.md
 [pod-security-contexts]: developer-best-practices-pod-security.md#secure-pod-access-to-resources
 [aks-ssh]: ssh.md
+[security-center-aks]: /security-center/azure-kubernetes-service-integration
 
-<!--Not Available on [security-center-aks]: /security-center/azure-kubernetes-service-integration-->
 <!-- Update_Description: wording update, update link -->

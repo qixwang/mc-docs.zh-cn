@@ -9,26 +9,27 @@
 - name: 快速入门
   expanded: true
   items:
-    - name: 创建作业 - Azure 门户
-      href: stream-analytics-quick-create-portal.md
-    - name: 创建作业 - PowerShell
-      href: stream-analytics-quick-create-powershell.md
-    - name: 创建作业 - Visual Studio
-      href: stream-analytics-quick-create-vs.md
-    - name: 创建作业 - Visual Studio Code
-      href: quick-create-vs-code.md
+    - name: 创建作业
+      items:
+        - name: Azure 门户
+          href: stream-analytics-quick-create-portal.md
+        - name: Azure CLI
+          href: quick-create-azure-cli.md
+        - name: ARM 模板
+          displayName: Resource Manager
+          href: quick-create-azure-resource-manager.md
+        - name: PowerShell
+          href: stream-analytics-quick-create-powershell.md
+        - name: Visual Studio
+          href: stream-analytics-quick-create-vs.md
+        - name: Visual Studio Code
+          href: quick-create-vs-code.md
 - name: 教程
   items:
-    - name: 1 - 创建/管理作业
-      href: stream-analytics-manage-job.md
-    - name: 2 - 运行 Azure Functions
+    - name: 1 - 运行 Azure Functions
       href: stream-analytics-with-azure-functions.md
-    - name: 3 - 在 Azure Pipelines 中通过 CI/CD 进行部署
+    - name: 2 - 在 Azure Pipelines 中使用 CI/CD 进行部署
       href: stream-analytics-tools-visual-studio-cicd-vsts.md
-    - name: '4 - 运行 C# UDF'
-      href: stream-analytics-edge-csharp-udf.md
-    - name: 5 - 创建自定义 .NET 反序列化程序
-      href: custom-deserializer.md
 - name: 示例
   items:
     - name: 代码示例
@@ -44,6 +45,10 @@
       href: feature-comparison.md
     - name: 本地开发
       href: develop-locally.md
+    - name: 安全性
+      items:
+        - name: 安全基线
+          href: security-baseline.md
     - name: 作业的输入类型
       items:
         - name: 输入概述
@@ -56,6 +61,7 @@
       items:
         - name: 输出概述
           href: stream-analytics-define-outputs.md
+          displayName: 'adls, sql, blob, event hubs, table, service bus, cosmos, functions'
         - name: 输出到 Cosmos DB
           href: stream-analytics-documentdb-output.md
         - name: 输出到 Azure SQL DB
@@ -103,6 +109,8 @@
   items:
     - name: 管理
       items:
+        - name: 自动缩放作业
+          href: stream-analytics-autoscale.md
         - name: 更新凭据
           href: stream-analytics-login-credentials-inputs-outputs.md
         - name: 配置事件排序策略
@@ -119,12 +127,8 @@
           href: copy-job.md
         - name: 进行作业配对以确保可靠性
           href: stream-analytics-job-reliability.md
-        - name: 使用托管标识进行身份验证 - ADLS Gen 1 输出
-          href: stream-analytics-managed-identities-adls.md
         - name: 使用 SQL 参考数据
           href: sql-reference-data.md
-        - name: 使用托管标识进行身份验证 - Blob 输出
-          href: blob-output-managed-identity.md
     - name: 构建解决方案
       items:
         - name: 实时欺诈检测
@@ -189,6 +193,8 @@
           href: visual-studio-code-local-run.md
         - name: 使用实时数据在本地进行测试
           href: visual-studio-code-local-run-live-input.md
+        - name: 使用作业关系图调试查询
+          href: debug-locally-using-job-diagram-vs-code.md
         - name: 设置 CI/CD 管道
           href: setup-cicd-vs-code.md
         - name: 探索作业
@@ -201,10 +207,20 @@
           href: stream-analytics-troubleshoot-output.md
         - name: 查询逻辑
           href: stream-analytics-troubleshoot-query.md
-        - name: 活动和资源日志
-          href: stream-analytics-job-diagnostic-logs.md
         - name: 数据错误
           href: data-errors.md
+        - name: 错误代码
+          items:
+            - name: 配置错误
+              href: configuration-error-codes.md
+            - name: 数据错误
+              href: data-error-codes.md
+            - name: 外部可用性错误
+              href: external-availability-error-codes.md
+            - name: 外部错误
+              href: external-error-codes.md
+            - name: 内部错误
+              href: internal-error-codes.md
     - name: 与机器学习集成
       items:
         - name: 使用 ML 模型进行情绪分析
@@ -213,277 +229,275 @@
           href: stream-analytics-machine-learning-anomaly-detection.md
         - name: 使用 REST API
           href: stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md
-    - name: 使用作业关系图进行调试
-      href: stream-analytics-job-diagram-with-metrics.md
     - name: 利用 ML 函数进行缩放
       href: stream-analytics-scale-with-machine-learning-functions.md
 - name: 流分析查询语言
   items:
     - name: 流分析查询语言概述
-      href: /stream-analytics-query/stream-analytics-query-language-reference
+      href: 'https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference'
       maintainContext: true
     - name: 内置函数
       items:
         - name: 内置函数概述
-          href: /stream-analytics-query/built-in-functions-azure-stream-analytics
+          href: 'https://docs.microsoft.com/stream-analytics-query/built-in-functions-azure-stream-analytics'
           maintainContext: true
         - name: 聚合函数
           items:
             - name: 聚合函数概述
-              href: /stream-analytics-query/aggregate-functions-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/aggregate-functions-azure-stream-analytics'
               maintainContext: true
             - name: 平均值
-              href: /stream-analytics-query/avg-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/avg-azure-stream-analytics'
               maintainContext: true
             - name: COUNT
-              href: /stream-analytics-query/count-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/count-azure-stream-analytics'
               maintainContext: true
             - name: Collect
-              href: /stream-analytics-query/collect-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/collect-azure-stream-analytics'
               maintainContext: true
             - name: CollectTOP
-              href: /stream-analytics-query/collecttop-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/collecttop-azure-stream-analytics'
               maintainContext: true
             - name: MAX
-              href: /stream-analytics-query/max-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/max-azure-stream-analytics'
               maintainContext: true
             - name: 最小值
-              href: /stream-analytics-query/min-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/min-azure-stream-analytics'
               maintainContext: true
             - name: Percentile_Cont
-              href: /stream-analytics-query/percentile-cont-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/percentile-cont-azure-stream-analytics'
               maintainContext: true
             - name: Percentile_Disc
-              href: /stream-analytics-query/percentile-disc-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/percentile-disc-azure-stream-analytics'
               maintainContext: true
             - name: STDEV
-              href: /stream-analytics-query/stdev-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/stdev-azure-stream-analytics'
               maintainContext: true
             - name: STDEVP
-              href: /stream-analytics-query/stdevp-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/stdevp-azure-stream-analytics'
               maintainContext: true
             - name: SUM
-              href: /stream-analytics-query/sum-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/sum-azure-stream-analytics'
               maintainContext: true
             - name: TopOne
-              href: /stream-analytics-query/topone-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/topone-azure-stream-analytics'
               maintainContext: true
             - name: VAR
-              href: /stream-analytics-query/var-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/var-azure-stream-analytics'
               maintainContext: true
             - name: VARP
-              href: /stream-analytics-query/varp-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/varp-azure-stream-analytics'
               maintainContext: true
         - name: 分析函数
           items:
             - name: 分析函数概述
-              href: /stream-analytics-query/analytic-functions-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/analytic-functions-azure-stream-analytics'
               maintainContext: true
             - name: AnomalyDetection_SpikeAndDip
-              href: /stream-analytics-query/anomalydetection-spikeanddip-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/anomalydetection-spikeanddip-azure-stream-analytics'
               maintainContext: true
             - name: AnomalyDetection_ChangePoint
-              href: /stream-analytics-query/anomalydetection-changepoint-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/anomalydetection-changepoint-azure-stream-analytics'
               maintainContext: true
             - name: ISFIRST
-              href: /stream-analytics-query/isfirst-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/isfirst-azure-stream-analytics'
               maintainContext: true
             - name: LAG
-              href: /stream-analytics-query/lag-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/lag-azure-stream-analytics'
               maintainContext: true
             - name: LAST
-              href: /stream-analytics-query/last-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/last-azure-stream-analytics'
               maintainContext: true
         - name: 数组函数
           items:
             - name: 数组函数概述
-              href: /stream-analytics-query/array-functions-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/array-functions-stream-analytics'
               maintainContext: true
             - name: GetArrayLength
-              href: /stream-analytics-query/getarraylength-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/getarraylength-azure-stream-analytics'
               maintainContext: true
             - name: GetArrayElement
-              href: /stream-analytics-query/getarrayelement-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/getarrayelement-azure-stream-analytics'
               maintainContext: true
             - name: GetArrayElements
-              href: /stream-analytics-query/getarrayelements-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics'
               maintainContext: true
         - name: 转换函数
           items:
             - name: 转换函数概述
-              href: /stream-analytics-query/conversion-functions-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/conversion-functions-azure-stream-analytics'
               maintainContext: true
             - name: CAST
-              href: /stream-analytics-query/cast-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/cast-azure-stream-analytics'
               maintainContext: true
             - name: GetType
-              href: /stream-analytics-query/gettype-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/gettype-azure-stream-analytics'
               maintainContext: true
             - name: TRY_CAST
-              href: /stream-analytics-query/try-cast-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/try-cast-azure-stream-analytics'
               maintainContext: true
         - name: 日期和时间函数
           items:
             - name: 日期和时间函数概述
-              href: /stream-analytics-query/date-and-time-functions-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/date-and-time-functions-azure-stream-analytics'
               maintainContext: true
             - name: DATEADD
-              href: /stream-analytics-query/dateadd-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/dateadd-azure-stream-analytics'
               maintainContext: true
             - name: DATEDIFF
-              href: /stream-analytics-query/datediff-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/datediff-azure-stream-analytics'
               maintainContext: true
             - name: DATENAME
-              href: /stream-analytics-query/datename-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/datename-azure-stream-analytics'
               maintainContext: true
             - name: DATEPART
-              href: /stream-analytics-query/datepart-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/datepart-azure-stream-analytics'
               maintainContext: true
             - name: DATETIMEFROMPARTS
-              href: /stream-analytics-query/datetimefromparts-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/datetimefromparts-azure-stream-analytics'
               maintainContext: true
             - name: DAY
-              href: /stream-analytics-query/day-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/day-azure-stream-analytics'
               maintainContext: true
             - name: MONTH
-              href: /stream-analytics-query/month-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/month-azure-stream-analytics'
               maintainContext: true
             - name: YEAR
-              href: /stream-analytics-query/year-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/year-azure-stream-analytics'
               maintainContext: true
         - name: 地理空间函数
           items:
             - name: 地理空间函数概述
-              href: /stream-analytics-query/geospatial-functions
+              href: 'https://docs.microsoft.com/stream-analytics-query/geospatial-functions'
               maintainContext: true
             - name: CreateLineString
-              href: /stream-analytics-query/createlinestring
+              href: 'https://docs.microsoft.com/stream-analytics-query/createlinestring'
               maintainContext: true
             - name: CreatePoint
-              href: /stream-analytics-query/createpoint
+              href: 'https://docs.microsoft.com/stream-analytics-query/createpoint'
               maintainContext: true
             - name: CreatePolygon
-              href: /stream-analytics-query/createpolygon
+              href: 'https://docs.microsoft.com/stream-analytics-query/createpolygon'
               maintainContext: true
             - name: ST_DISTANCE
-              href: /stream-analytics-query/st-distance
+              href: 'https://docs.microsoft.com/stream-analytics-query/st-distance'
               maintainContext: true
             - name: ST_OVERLAPS
-              href: /stream-analytics-query/st-overlaps
+              href: 'https://docs.microsoft.com/stream-analytics-query/st-overlaps'
               maintainContext: true
             - name: ST_INTERSECTS
-              href: /stream-analytics-query/st-intersects
+              href: 'https://docs.microsoft.com/stream-analytics-query/st-intersects'
               maintainContext: true
             - name: ST_WITHIN
-              href: /stream-analytics-query/st-within
+              href: 'https://docs.microsoft.com/stream-analytics-query/st-within'
               maintainContext: true
         - name: 输入元数据函数
           items:
             - name: 输入元数据函数概述
-              href: /stream-analytics-query/input-metadata-functions
+              href: 'https://docs.microsoft.com/stream-analytics-query/input-metadata-functions'
               maintainContext: true
             - name: GetMetadataPropertyValue
-              href: /stream-analytics-query/getmetadatapropertyvalue
+              href: 'https://docs.microsoft.com/stream-analytics-query/getmetadatapropertyvalue'
               maintainContext: true
         - name: 数学函数
           items:
             - name: 数学函数概述
-              href: /stream-analytics-query/mathematical-functions-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/mathematical-functions-azure-stream-analytics'
               maintainContext: true
             - name: ABS
-              href: /stream-analytics-query/abs-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/abs-azure-stream-analytics'
               maintainContext: true
             - name: CEILING
-              href: /stream-analytics-query/ceiling-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/ceiling-azure-stream-analytics'
               maintainContext: true
             - name: EXP
-              href: /stream-analytics-query/exp-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/exp-azure-stream-analytics'
               maintainContext: true
             - name: FLOOR
-              href: /stream-analytics-query/floor-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/floor-azure-stream-analytics'
               maintainContext: true
             - name: POWER
-              href: /stream-analytics-query/power-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/power-azure-stream-analytics'
               maintainContext: true
             - name: ROUND
-              href: /stream-analytics-query/round-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/round-azure-stream-analytics'
               maintainContext: true
             - name: SIGN
-              href: /stream-analytics-query/sign-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/sign-azure-stream-analytics'
               maintainContext: true
             - name: SQUARE
-              href: /stream-analytics-query/square-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/square-azure-stream-analytics'
               maintainContext: true
             - name: SQRT
-              href: /stream-analytics-query/sqrt-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/sqrt-azure-stream-analytics'
               maintainContext: true
         - name: 记录函数
           items:
             - name: 记录函数概述
-              href: /stream-analytics-query/record-functions-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/record-functions-azure-stream-analytics'
               maintainContext: true
             - name: GetRecordProperties
-              href: /stream-analytics-query/getrecordproperties-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/getrecordproperties-azure-stream-analytics'
               maintainContext: true
             - name: GetRecordPropertyValue
-              href: /stream-analytics-query/getrecordpropertyvalue-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/getrecordpropertyvalue-azure-stream-analytics'
               maintainContext: true
         - name: 字符串函数
           items:
             - name: 字符串函数概述
-              href: /stream-analytics-query/string-functions-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/string-functions-azure-stream-analytics'
               maintainContext: true
             - name: CHARINDEX
-              href: /stream-analytics-query/charindex-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/charindex-azure-stream-analytics'
               maintainContext: true
             - name: CONCAT
-              href: /stream-analytics-query/concat-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/concat-azure-stream-analytics'
               maintainContext: true
             - name: LEN
-              href: /stream-analytics-query/len-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/len-azure-stream-analytics'
               maintainContext: true
             - name: LOWER
-              href: /stream-analytics-query/lower-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/lower-azure-stream-analytics'
               maintainContext: true
             - name: PATINDEX
-              href: /stream-analytics-query/patindex-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/patindex-azure-stream-analytics'
               maintainContext: true
             - name: REGEXMATCH
-              href: /stream-analytics-query/regexmatch-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/regexmatch-azure-stream-analytics'
               maintainContext: true
             - name: REPLACE
-              href: /stream-analytics-query/replace-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/replace-azure-stream-analytics'
               maintainContext: true
             - name: SUBSTRING
-              href: /stream-analytics-query/substring-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/substring-azure-stream-analytics'
               maintainContext: true
             - name: UPPER
-              href: /stream-analytics-query/upper-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/upper-azure-stream-analytics'
               maintainContext: true
         - name: 开窗函数
           items:
             - name: 开窗函数概述
-              href: /stream-analytics-query/windowing-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics'
               maintainContext: true
             - name: 跳跃窗口
-              href: /stream-analytics-query/hopping-window-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/hopping-window-azure-stream-analytics'
               maintainContext: true
             - name: 会话窗口
-              href: /stream-analytics-query/session-window-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/session-window-azure-stream-analytics'
               maintainContext: true
             - name: 滑动窗口
-              href: /stream-analytics-query/sliding-window-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/sliding-window-azure-stream-analytics'
               maintainContext: true
             - name: 翻转窗口
-              href: /stream-analytics-query/tumbling-window-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics'
               maintainContext: true
             - name: 聚合开窗函数
-              href: /stream-analytics-query/windows-azure-stream-analytics
+              href: 'https://docs.microsoft.com/stream-analytics-query/windows-azure-stream-analytics'
               maintainContext: true
     - name: 数据类型
       items:
         - name: 数据类型概述
-          href: /stream-analytics-query/data-types-azure-stream-analytics
+          href: 'https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics'
           maintainContext: true
         - name: 分析 JSON 和 AVRO 数据
           href: stream-analytics-parsing-json.md
@@ -491,69 +505,69 @@
     - name: 查询语言元素
       items:
         - name: 查询语言元素概述
-          href: /stream-analytics-query/query-language-elements-azure-stream-analytics
+          href: 'https://docs.microsoft.com/stream-analytics-query/query-language-elements-azure-stream-analytics'
           maintainContext: true
         - name: APPLY
-          href: /stream-analytics-query/apply-azure-stream-analytics
+          href: 'https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics'
           maintainContext: true
         - name: CASE
-          href: /stream-analytics-query/case-azure-stream-analytics
+          href: 'https://docs.microsoft.com/stream-analytics-query/case-azure-stream-analytics'
           maintainContext: true
         - name: COALESCE
-          href: /stream-analytics-query/coalesce-azure-stream-analytics
+          href: 'https://docs.microsoft.com/stream-analytics-query/coalesce-azure-stream-analytics'
           maintainContext: true
         - name: CREATE TABLE
-          href: /stream-analytics-query/create-table-stream-analytics
+          href: 'https://docs.microsoft.com/stream-analytics-query/create-table-stream-analytics'
           maintainContext: true
         - name: FROM
-          href: /stream-analytics-query/from-azure-stream-analytics
+          href: 'https://docs.microsoft.com/stream-analytics-query/from-azure-stream-analytics'
           maintainContext: true
         - name: GROUP BY
-          href: /stream-analytics-query/group-by-azure-stream-analytics
+          href: 'https://docs.microsoft.com/stream-analytics-query/group-by-azure-stream-analytics'
           maintainContext: true
         - name: HAVING
-          href: /stream-analytics-query/having-azure-stream-analytics
+          href: 'https://docs.microsoft.com/stream-analytics-query/having-azure-stream-analytics'
           maintainContext: true
         - name: INTO
-          href: /stream-analytics-query/into-azure-stream-analytics
+          href: 'https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics'
           maintainContext: true
         - name: JOIN
-          href: /stream-analytics-query/join-azure-stream-analytics
+          href: 'https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics'
           maintainContext: true
         - name: MATCH_RECOGNIZE
-          href: /stream-analytics-query/match-recognize-stream-analytics
+          href: 'https://docs.microsoft.com/stream-analytics-query/match-recognize-stream-analytics'
           maintainContext: true
         - name: 参考数据 JOIN
-          href: /stream-analytics-query/reference-data-join-azure-stream-analytics
+          href: 'https://docs.microsoft.com/stream-analytics-query/reference-data-join-azure-stream-analytics'
           maintainContext: true
         - name: SELECT
-          href: /stream-analytics-query/select-azure-stream-analytics
+          href: 'https://docs.microsoft.com/stream-analytics-query/select-azure-stream-analytics'
           maintainContext: true
         - name: UNION
-          href: /stream-analytics-query/union-azure-stream-analytics
+          href: 'https://docs.microsoft.com/stream-analytics-query/union-azure-stream-analytics'
           maintainContext: true
         - name: WHERE
-          href: /stream-analytics-query/where-azure-stream-analytics
+          href: 'https://docs.microsoft.com/stream-analytics-query/where-azure-stream-analytics'
           maintainContext: true
         - name: WITH
-          href: /stream-analytics-query/with-azure-stream-analytics
+          href: 'https://docs.microsoft.com/stream-analytics-query/with-azure-stream-analytics'
           maintainContext: true
     - name: 时间管理
       items:
         - name: 时间管理概述
-          href: /stream-analytics-query/time-management-azure-stream-analytics
+          href: 'https://docs.microsoft.com/stream-analytics-query/time-management-azure-stream-analytics'
           maintainContext: true
         - name: System.Timestamp
-          href: /stream-analytics-query/system-timestamp-stream-analytics
+          href: 'https://docs.microsoft.com/stream-analytics-query/system-timestamp-stream-analytics'
           maintainContext: true
         - name: TIMESTAMP BY
-          href: /stream-analytics-query/timestamp-by-azure-stream-analytics
+          href: 'https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics'
           maintainContext: true
         - name: 时间偏差策略
-          href: /stream-analytics-query/time-skew-policies-azure-stream-analytics
+          href: 'https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics'
           maintainContext: true
     - name: 事件传递保证
-      href: /stream-analytics-query/event-delivery-guarantees-azure-stream-analytics
+      href: 'https://docs.microsoft.com/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics'
       maintainContext: true
 - name: 参考
   items:
@@ -576,3 +590,5 @@
       href: 'https://www.azure.cn/pricing/details/stream-analytics/'
     - name: 定价计算器
       href: 'https://www.azure.cn/pricing/calculator/'
+    - name: 白皮书 - 实时事件处理
+      href: stream-analytics-real-time-event-processing-reference-architecture.md

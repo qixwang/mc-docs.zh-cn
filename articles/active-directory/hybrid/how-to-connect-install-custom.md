@@ -9,20 +9,20 @@ manager: daveba
 ms.assetid: 6d42fb79-d9cf-48da-8445-f482c4c536af
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 04/23/2020
+ms.topic: how-to
+ms.date: 07/06/2020
 ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9dac0596c93b3ea13dc2e50430d9ac192842ed3f
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 416e4345a4f41b5192aea7da27518070da7fffad
+ms.sourcegitcommit: 92b9b1387314b60661f5f62db4451c9ff2c49500
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126595"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86164888"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Azure AD Connect 的自定义安装
-如果希望有更多的安装选项，可以使用 Azure AD Connect“自定义设置”。  如果拥有多个林或希望配置未覆盖在快速安装中的可选功能，可以使用它。 它适用于[**快速安装**](how-to-connect-install-express.md)不能满足部署或拓扑的所有情况。
+如果希望有更多的安装选项，可以使用 Azure AD Connect“自定义设置”。 如果拥有多个林或希望配置未覆盖在快速安装中的可选功能，可以使用它。 它适用于[**快速安装**](how-to-connect-install-express.md)不能满足部署或拓扑的所有情况。
 
 开始安装 Azure AD Connect 之前，请务必[下载 Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771)，并完成 [Azure AD Connect：硬件和先决条件](how-to-connect-install-prerequisites.md)。 此外请确保拥有 [Azure AD Connect 帐户和权限](reference-connect-accounts-permissions.md)所述的可用的必需帐户。
 
@@ -56,7 +56,7 @@ ms.locfileid: "82126595"
 | 不配置 |不安装和配置用户登录功能。 如果已有第三方联合服务器或部署了另一个现有解决方案，请选择此选项。 |
 
 ### <a name="connect-to-azure-ad"></a>连接到 Azure AD
-在“连接到 Azure AD”屏幕中，输入全局管理员的帐户和密码。 如果在前一个页面选择了“与 AD FS 联合”  ，不要以计划启用联合的域中的帐户登录。 建议使用默认“partner.onmschina.cn”  域中的帐户，Azure AD 租户随附该域。
+在“连接到 Azure AD”屏幕中，输入全局管理员的帐户和密码。 如果在前一个页面选择了“与 AD FS 联合”  ，不要以计划启用联合的域中的帐户登录。 建议使用默认“partner.onmschina.cn”域中的帐户，Azure AD 租户随附该域。
 
 此帐户只用于在 Azure AD 中创建服务帐户，向导完成后不会使用。  
 ![用户登录](./media/how-to-connect-install-custom/connectaad.png)
@@ -75,7 +75,7 @@ ms.locfileid: "82126595"
 
 ![连接目录](./media/how-to-connect-install-custom/connectdir01.png)
 
-在输入林名称并单击“添加目录”后，会显示一个弹出对话框，提示选择以下选项： 
+在输入林名称并单击“添加目录”后，会显示一个弹出对话框，提示选择以下选项：
 
 | 选项 | 说明 |
 | --- | --- |
@@ -85,7 +85,7 @@ ms.locfileid: "82126595"
 ![连接目录](./media/how-to-connect-install-custom/connectdir02.png)
 
 #### <a name="enterprise-admin-and-domain-admin-accounts-not-supported"></a>不支持企业管理员和域管理员帐户
-从内部版本 1.4.18.0 起，不再支持使用企业管理员或域管理员帐户作为 AD DS 连接器帐户。  如果在指定“使用现有帐户”  时尝试输入是企业管理员或域管理员的帐户，你将收到以下错误：
+从内部版本 1.4.18.0 起，不再支持使用企业管理员或域管理员帐户作为 AD DS 连接器帐户。  如果在指定“使用现有帐户”时尝试输入是企业管理员或域管理员的帐户，你将收到以下错误：
 
   **“不允许对 AD 林帐户使用企业或域管理员帐户。让 Azure AD Connect 为你创建帐户，或者指定一个具有适当权限的同步帐户。&lt;了解更多&gt;”**
 
@@ -93,9 +93,9 @@ ms.locfileid: "82126595"
 在此页中，可以查看本地 AD DS 中存在的 UPN 域，以及已在 Azure AD 中验证的 UPN 域。 还可以在此页中配置要用于 userPrincipalName 的属性。
 
 ![未验证的域](./media/how-to-connect-install-custom/aadsigninconfig2.png)  
-查看标记为“未添加”和“未验证”的每个域。   确保使用的域都已在 Azure AD 中验证。 验证域后，请单击“刷新”符号。 有关详细信息，请参阅[添加和验证域](../add-custom-domain.md)
+查看标记为“未添加”和“未验证”的每个域。  确保使用的域都已在 Azure AD 中验证。 验证域后，请单击“刷新”符号。 有关详细信息，请参阅[添加和验证域](../add-custom-domain.md)
 
-**UserPrincipalName** - 属性 userPrincipalName 是用户登录 Azure AD 和 Office 365 时使用的属性。 应在同步处理用户前在 Azure AD 中对使用的域（也称为 UPN 后缀）进行验证。 Microsoft 建议保留默认属性 userPrincipalName。 如果此属性不可路由且无法验证，可以选择另一个属性。 例如，可以选择 email 作为保存登录 ID 的属性。 使用除 userPrincipalName 以外的其他属性被称为“替代 ID”  。 “替代 ID”属性值必须遵循 RFC822 标准。 替代 ID 可以配合密码同步和联合使用。 不得在 Active Directory 中将该属性定义为多值，即使它只有单个值。
+**UserPrincipalName** - 属性 userPrincipalName 是用户登录 Azure AD 和 Office 365 时使用的属性。 应在同步处理用户前在 Azure AD 中对使用的域（也称为 UPN 后缀）进行验证。 Microsoft 建议保留默认属性 userPrincipalName。 如果此属性不可路由且无法验证，可以选择另一个属性。 例如，可以选择 email 作为保存登录 ID 的属性。 使用除 userPrincipalName 以外的其他属性被称为“替代 ID” 。 “替代 ID”属性值必须遵循 RFC822 标准。 替代 ID 可以配合密码同步和联合使用。 不得在 Active Directory 中将该属性定义为多值，即使它只有单个值。
 
 
 > [!WARNING]
@@ -129,7 +129,7 @@ ms.locfileid: "82126595"
 | [邮件属性](plan-connect-topologies.md#multiple-forests-single-azure-ad-tenant) |如果邮件属性在不同的林中具有相同的值，此选项将联接用户和联系人。 当已使用 GALSync 创建了联系人时，请使用此选项。 如果选择此选项，则不会将 Mail 属性尚未填充的 User 对象同步到 Azure AD。 |
 | [ObjectSID 和 msExchangeMasterAccountSID/ msRTCSIP-OriginatorSid](plan-connect-topologies.md#multiple-forests-single-azure-ad-tenant) |此选项将帐户林中的已启用用户与资源林中的已禁用用户进行联接。 在 Exchange 中，此配置称为链接邮箱。 如果只使用 Lync 并且资源林中没有 Exchange，也可以使用此选项。 |
 | sAMAccountName 和 MailNickName |此选项根据预期可以在其中找到用户登录 ID 的属性进行联接。 |
-| 特定的属性 |此选项允许选择自己的属性。 如果选择此选项，则不会将其选定属性尚未填充的 User 对象同步到 Azure AD。 **限制：** 确保选择已可在 Metaverse 中找到的属性。 如果选择自定义属性（不在 Metaverse 中），向导将无法完成。 |
+| 特定的属性 |此选项允许选择自己的属性。 如果选择此选项，则不会将其选定属性尚未填充的 User 对象同步到 Azure AD。 **限制：** 仅 metaverse 中已有的属性适用此选项。 |
 
 #### <a name="select-how-users-should-be-identified-with-azure-ad---source-anchor"></a>选择应如何使用 Azure AD 标识用户 - 源定位点
 sourceAnchor 属性是一个在用户对象的生命周期内不会改变的属性。 它是链接本地用户与 Azure AD 中用户的主密钥。
@@ -182,7 +182,7 @@ sourceAnchor 属性是一个在用户对象的生命周期内不会改变的属�
 >
 
 ### <a name="directory-extension-attribute-sync"></a>目录扩展属性同步
-可以使用组织添加的自定义属性或 Active Directory 中的其他属性，在 Azure AD 中扩展架构。 若要使用这项功能，请在“可选功能”页上选择“目录扩展属性同步”。   可以在此页上选择要同步的其他属性。
+可以使用组织添加的自定义属性或 Active Directory 中的其他属性，在 Azure AD 中扩展架构。 若要使用这项功能，请在“可选功能”页上选择“目录扩展属性同步”。  可以在此页上选择要同步的其他属性。
 
 >[!NOTE]
 >“可用属性”框区分大小写。
@@ -343,13 +343,13 @@ Azure AD Connect 将尝试验证从上一步中的 PingFederate 元数据检索�
 若要验证端到端身份验证是否成功，应当手动执行下列一个或多个测试：
 
 * 在同步完成后，使用 Azure AD Connect 中的”验证联合登录”附加任务来验证你选择的本地用户帐户的身份验证。
-* 验证富客户端登录。 连接到 https://testconnectivity.microsoft.com ，选择“Office 365”选项卡，并选择“Office 365 单一登录测试”。  
+* 验证富客户端登录。 连接到 https://testconnectivity.microsoft.com ，选择“Office 365”选项卡，并选择“Office 365 单一登录测试”。 
 
 ## <a name="troubleshooting"></a>故障排除
 以下部分包含故障排除内容以及在遇到 Azure AD Connect 安装问题时可以使用的信息。
 
 ### <a name="the-adsync-database-already-contains-data-and-cannot-be-overwritten"></a>“ADSync 数据库已经包含数据，无法重写”
-对 Azure AD Connect 进行自定义安装并在“安装所需的组件”页上选择“使用现有的 SQL Server”选项时，   可能会遇到一个错误，指出“ADSync 数据库已经包含数据，无法重写。  请删除现有的数据库，然后重试。”
+对 Azure AD Connect 进行自定义安装并在“安装所需的组件”页上选择“使用现有的 SQL Server”选项时， 可能会遇到一个错误，指出“ADSync 数据库已经包含数据，无法重写。请删除现有的数据库，然后重试。”
 
 ![错误](./media/how-to-connect-install-custom/error1.png)
 
@@ -361,11 +361,11 @@ Azure AD Connect 将尝试验证从上一步中的 PingFederate 元数据检索�
 
 接下来，建议在删除数据库之前先备份数据库。
 
-最后，需删除该数据库。  为此，可使用 **Microsoft SQL Server Management Studio** 连接到 SQL 实例。 找到 **ADSync** 数据库后右键单击它，从上下文菜单中选择“删除”。   然后单击“确定”按钮，将其删除。 
+最后，需删除该数据库。  为此，可使用 **Microsoft SQL Server Management Studio** 连接到 SQL 实例。 找到 **ADSync** 数据库后右键单击它，从上下文菜单中选择“删除”。  然后单击“确定”按钮，将其删除。
 
 ![错误](./media/how-to-connect-install-custom/error2.png)
 
-删除 **ADSync** 数据库后，可以单击“安装”按钮来重试安装。 
+删除 **ADSync** 数据库后，可以单击“安装”按钮来重试安装。
 
 ## <a name="next-steps"></a>后续步骤
 安装完成后，请注销并再次登录到 Windows，即可使用同步服务管理器或同步规则编辑器。

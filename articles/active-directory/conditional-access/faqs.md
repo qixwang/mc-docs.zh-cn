@@ -4,20 +4,20 @@ description: 获取有关 Azure Active Directory 中条件访问的常见问题�
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
-ms.date: 07/01/2020
+ms.topic: troubleshooting
+ms.date: 07/08/2020
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: e2f0f57c9d7e56b57603a48554df6cfa9dfeef9c
-ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
+ms.openlocfilehash: dff4de0a91efc280f0faa6bf1e3a16802ed30756
+ms.sourcegitcommit: 92b9b1387314b60661f5f62db4451c9ff2c49500
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85945056"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86164994"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Azure Active Directory 条件访问常见问题解答
 
@@ -54,6 +54,12 @@ Microsoft Teams 还在条件访问策略中作为云应用单独受到支持。 
 适用于 Windows 和 Mac 的 Microsoft Teams 桌面客户端支持新式身份验证。 新式身份验证将基于 Azure Active Directory 身份验证库 (ADAL) 的登录引入 Microsoft Office 客户端应用程序。
 
 有关详细信息，请参阅[条件访问服务依赖项](service-dependencies.md)一文，并考虑改将策略定向到 [Office 365 应用](concept-conditional-access-cloud-apps.md#office-365-preview)。
+
+## <a name="why-are-some-tabs-not-working-in-microsoft-teams-after-enabling-conditional-access-policies"></a>启用条件访问策略后，为什么某些选项卡在 Microsoft Teams 中无法正常运行？
+
+在 Microsoft Teams 中的租户上启用某些条件访问策略后，特定选项卡可能不再按预期在桌面客户端中正常运行。 但是，使用 Microsoft Teams Web 客户端时，受影响的选项卡可正常运行。 受影响的选项卡可能包括 Power BI、Forms、VSTS、PowerApps 和 SharePoint 列表。
+
+若要查看受影响的选项卡，必须在 Edge、Internet Explorer 或 Chrome 中使用 Teams Web 客户端并安装 Windows 10 帐户扩展。 某些选项卡依赖于 Web 身份验证，启用条件访问后，该选项在 Microsoft Teams 桌面客户端中无法正常运行。 Microsoft 正在与合作伙伴合作，以实现这些方案。 到目前为止，我们已实现涉及 Planner、OneNote 和 Stream 的方案。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -4,15 +4,15 @@ description: 本文概述应用程序网关的端到端 TLS 支持。
 services: application-gateway
 author: amsriva
 ms.service: application-gateway
-ms.topic: article
-ms.date: 06/24/2020
+ms.topic: conceptual
+ms.date: 07/10/2020
 ms.author: v-junlch
-ms.openlocfilehash: f560761f1b20196b45b68a5cce611da8bc4f3a50
-ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
+ms.openlocfilehash: 88d5c8b7cce01ffed0c94d6d8d1a76a581b9b80e
+ms.sourcegitcommit: 65a7360bb14b0373e18ec8eaa288ed3ac7b24ef4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85516433"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86219697"
 ---
 # <a name="overview-of-tls-termination-and-end-to-end-tls-with-application-gateway"></a>应用程序网关的 TLS 终止和端到端 TLS 概述
 
@@ -103,15 +103,15 @@ ms.locfileid: "85516433"
 
    例如，如果后端证书由知名 CA 颁发并具有 contoso.com 的 CN，并且后端 http 设置的主机字段也设置为 contoso.com，则不需要其他步骤。 可以将后端 HTTP 设置协议设置为 HTTPS，则运行状况探测和数据路径都会启用 TLS。 如果使用 Azure 应用服务或其他 Azure Web 服务作为后端，则这些服务也是受隐式信任的，不需要对端到端 TLS 执行其他步骤。
    
-    > [!NOTE] 
-    >
-    > 为了使 TLS/SSL 证书受信任，后端服务器的证书必须由已知 CA 颁发。 如果证书不是由受信任的 CA 颁发的，应用程序网关会检查发证 CA 的证书是否由受信任的 CA 颁发，依此类推，直到找到受信任的 CA（此时会建立受信任的安全连接），或者直到找不到受信任的 CA（此时，应用程序网关会将后端标记为“运行不正常”）。 因此，建议后端服务器证书同时包含根 CA 和中间 CA。
-    
+> [!NOTE] 
+>
+> 为了使 TLS/SSL 证书受信任，后端服务器的证书必须由已知 CA 颁发。 如果证书不是由受信任的 CA 颁发的，应用程序网关会检查发证 CA 的证书是否由受信任的 CA 颁发，依此类推，直到找到受信任的 CA（此时会建立受信任的安全连接），或者直到找不到受信任的 CA（此时，应用程序网关会将后端标记为“运行不正常”）。 因此，建议后端服务器证书同时包含根 CA 和中间 CA。
+
 - 如果证书是自签名证书，或是由未知中介签名的证书，那么，要在 v2 SKU 中启用端到端 TLS，必须定义受信任的根证书。 应用程序网关仅与符合以下条件的后端通信：其服务器证书的根证书与池关联的后端 http 设置中的受信任根证书列表之一匹配。
 
 - 除了根证书匹配之外，应用程序网关 v2 还会验证后端 http 设置中指定的主机设置是否与后端服务器的 TLS/SSL 证书提供的公用名 (CN) 的主机设置相匹配。 尝试与后端建立 TLS 连接时，应用程序网关 v2 会将服务器名称指示 (SNI) 扩展设置为后端 http 设置中指定的主机。
 
-- 如果已选择从后端地址选择主机名，而不是选择后端 http 设置中的主机字段，则 SNI 标头始终设置为后端池 FQDN，并且后端服务器 TLS/SSL 证书上的 CN 必须与其 FQDN 匹配。 此方案不支持具有 IP 的后端池成员。
+- 如果已选择“从后端目标选择主机名”，而不是选择后端 HTTP 设置中的主机字段，则 SNI 标头始终设置为后端池 FQDN，并且后端服务器 TLS/SSL 证书上的 CN 必须与其 FQDN 匹配。 此方案不支持具有 IP 的后端池成员。
 
 - 根证书是来自后端服务器证书的 base64 编码的根证书。
 

@@ -8,19 +8,19 @@ manager: daveba
 ms.assetid: 05f16c3e-9d23-45dc-afca-3d0fa9dbf501
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 04/23/2020
+ms.topic: how-to
+ms.date: 07/06/2020
 ms.subservice: hybrid
 ms.author: v-junlch
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e05ea71d3d4832768e7f4aead7f44f36722b4e5c
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: b5cb8a1640062509ad5b63b6b865273ff94372f8
+ms.sourcegitcommit: 92b9b1387314b60661f5f62db4451c9ff2c49500
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126565"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86164855"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>使用 Azure AD Connect 同步实现密码哈希同步
 本文提供将用户密码从本地 Active Directory 实例同步到基于云的 Azure Active Directory (Azure AD) 实例时所需的信息。
@@ -85,18 +85,17 @@ Active Directory 域服务以实际用户密码的哈希值表示形式存储密
 
 #### <a name="password-expiration-policy"></a>密码过期策略
 
-如果用户属于密码哈希同步的范围，云帐户密码则默认设置为“永不过期”  。
+如果用户属于密码哈希同步的范围，云帐户密码则默认设置为“永不过期”。
 
 可以继续使用在本地环境中过期的同步密码来登录云服务。 下次在本地环境中更改密码时，云密码会更新。
 
-##### <a name="public-preview-of-the-enforcecloudpasswordpolicyforpasswordsyncedusers-feature"></a>公共预览版 *EnforceCloudPasswordPolicyForPasswordSyncedUsers* 功能
+##### <a name="enforcecloudpasswordpolicyforpasswordsyncedusers"></a>EnforceCloudPasswordPolicyForPasswordSyncedUsers
 
 如果某些已同步的用户仅与 Azure AD 集成服务交互，同时必须遵守密码过期策略，则你可以通过启用 *EnforceCloudPasswordPolicyForPasswordSyncedUsers* 功能来强制他们遵守 Azure AD 密码过期策略。
 
 如果 *EnforceCloudPasswordPolicyForPasswordSyncedUsers* 处于禁用状态（默认设置），Azure AD Connect 会将已同步用户的 PasswordPolicies 属性设置为“DisablePasswordExpiration”。 每当用户的密码同步时都会执行此操作，同时，系统会指示 Azure AD 忽略该用户的云密码过期策略。 可以在 Azure AD PowerShell 模块中使用以下命令检查该属性的值：
 
 `(Get-AzureADUser -objectID <User Object ID>).passwordpolicies`
-
 
 若要启用 EnforceCloudPasswordPolicyForPasswordSyncedUsers 功能，请按如下所示使用 MSOnline PowerShell 模块运行以下命令。 你必须为 Enable 参数键入“yes”，如下所示：
 
@@ -123,16 +122,15 @@ Azure AD 支持为每个已注册的域单独设置密码过期策略。
 `Set-AzureADUser -ObjectID <User Object ID> -PasswordPolicies "DisablePasswordExpiration"`
 
 > [!NOTE]
-> 此功能目前以公共预览版提供。
 > Set-MsolPasswordPolicy PowerShell 命令对联合域不起作用。 
 
-#### <a name="public-preview-of-synchronizing-temporary-passwords-and-force-password-change-on-next-logon"></a>同步临时密码和“下次登录时强制更改密码”的公共预览版功能
+#### <a name="synchronizing-temporary-passwords-and-force-password-change-on-next-logon"></a>同步临时密码和“下次登录时强制更改密码”
 
 典型的做法是强制用户在首次登录时更改其密码，尤其是发生管理员密码重置后。  这种做法通常称为设置“临时”密码，它是通过对 Active Directory (AD) 中的用户对象选中“用户下次登录时必须更改密码”标志来完成的。
   
 临时密码功能有助于确保首次使用凭据时完成其所有权转移，以最大程度地减少多个人员知道该凭据的持续时间。
 
-若要在 Azure AD 中支持同步用户的临时密码，可以通过在 Azure AD Connect 服务器上运行以下命令来启用 ForcePasswordChangeOnLogOn  功能：
+若要在 Azure AD 中支持同步用户的临时密码，可以通过在 Azure AD Connect 服务器上运行以下命令来启用 ForcePasswordChangeOnLogOn 功能：
 
 `Set-ADSyncAADCompanyFeature  -ForcePasswordChangeOnLogOn $true`
 
@@ -141,9 +139,6 @@ Azure AD 支持为每个已注册的域单独设置密码过期策略。
 
 > [!CAUTION]
 > 仅当在租户上启用了 SSPR 和密码写回时，才应使用此功能。  这样，如果用户通过 SSPR 更改其密码，该密码将同步到 Active Directory。
-
-> [!NOTE]
-> 此功能目前以公共预览版提供。
 
 #### <a name="account-expiration"></a>帐户过期
 
@@ -169,7 +164,7 @@ Azure AD 支持为每个已注册的域单独设置密码过期策略。
 >[!IMPORTANT]
 >如果要从 AD FS（或其他联合技术）迁移到密码哈希同步，我们强烈建议你按照[此处](https://aka.ms/adfstophsdpdownload)发布的详细部署指南进行操作。
 
-使用“快速设置”选项  安装 Azure AD Connect 时，会自动启用密码哈希同步。 有关详细信息，请参阅[通过快速设置开始使用 Azure AD Connect](how-to-connect-install-express.md)。
+使用“快速设置”选项安装 Azure AD Connect 时，会自动启用密码哈希同步。 有关详细信息，请参阅[通过快速设置开始使用 Azure AD Connect](how-to-connect-install-express.md)。
 
 如果在安装 Azure AD Connect 时使用了自定义设置，则可在用户登录页上使用密码哈希同步。 有关详细信息，请参阅 [Azure AD Connect 的自定义安装](how-to-connect-install-custom.md)。
 
@@ -196,6 +191,7 @@ Azure AD 支持为每个已注册的域单独设置密码过期策略。
     </configuration>
 ```
 
+有关安全性与 FIPS 的信息，请参阅 [Azure AD password hash sync, encryption, and FIPS compliance](https://blogs.technet.microsoft.com/enterprisemobility/2014/06/28/aad-password-sync-encryption-and-fips-compliance/)（Azure AD 密码哈希同步、加密和 FIPS 符合性）。
 
 ## <a name="troubleshoot-password-hash-synchronization"></a>排查密码哈希同步问题
 如果遇到密码哈希同步问题，请参阅[排查密码哈希同步问题](tshoot-connect-password-hash-synchronization.md)。

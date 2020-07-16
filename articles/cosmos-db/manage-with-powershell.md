@@ -8,12 +8,12 @@ origin.date: 05/13/2020
 ms.date: 06/22/2020
 ms.author: v-yeche
 ms.custom: seodec18
-ms.openlocfilehash: 702c059e06bde133366b05396ec3e12b616f4a78
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: 1e2e371634df1348450294fd58a7bbeac8e4bcb8
+ms.sourcegitcommit: 873e5c5e4156efed505a78d4f5a6e50c494e76d4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098294"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86036748"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>使用 PowerShell 管理 Azure Cosmos DB SQL API 资源
 
@@ -77,7 +77,10 @@ New-AzCosmosDBAccount `
 * `$apiKind`：要创建的 Cosmos 帐户的类型。 有关详细信息，请参阅 [Cosmos DB 中的 API](introduction.md#develop-applications-on-cosmos-db-using-popular-open-source-software-oss-apis)。
 * `$consistencyPolicy`、`$maxStalenessInterval` 和 `$maxStalenessPrefix`：Azure Cosmos 帐户的默认一致性级别和设置。 有关详细信息，请参阅 [Azure Cosmos DB 中的一致性级别](consistency-levels.md)。
 
-可以为 Azure Cosmos 帐户配置 IP 防火墙、虚拟网络服务终结点和专用终结点。 有关如何为 Azure Cosmos DB 配置 IP 防火墙的信息，请参阅[配置 IP 防火墙](how-to-configure-firewall.md)。 若要了解如何为 Azure Cosmos DB 启用服务终结点，请参阅[配置从虚拟网络进行访问的权限](how-to-configure-vnet-service-endpoint.md)。 若要了解如何为 Azure Cosmos DB 启用专用终结点，请参阅[配置从专用终结点进行访问的权限](how-to-configure-private-endpoints.md)。
+可以为 Azure Cosmos 帐户配置 IP 防火墙和虚拟网络服务终结点。 有关如何为 Azure Cosmos DB 配置 IP 防火墙的信息，请参阅[配置 IP 防火墙](how-to-configure-firewall.md)。 若要了解如何为 Azure Cosmos DB 启用服务终结点，请参阅[配置从虚拟网络进行访问的权限](how-to-configure-vnet-service-endpoint.md)。
+
+<!--Not Available on , and private endpoints-->
+<!--Not Available on [Configure access from private endpoints](how-to-configure-private-endpoints.md)-->
 
 <a name="list-accounts"></a>
 ### <a name="list-all-azure-cosmos-accounts-in-a-resource-group"></a>列出资源组中的所有 Azure Cosmos 帐户

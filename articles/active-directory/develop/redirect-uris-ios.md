@@ -1,29 +1,24 @@
 ---
-title: 将重定向 URI 与 Microsoft 身份验证库配合使用 | Microsoft 标识平台
+title: 将重定向 URI 与 MSAL (iOS/macOS) 配合使用 | Azure
+titleSuffix: Microsoft identity platform
 description: 了解用于 ObjectiveC 的 Microsoft 身份验证库（用于 iOS 和 macOS 的 MSAL）和用于 ObjectiveC 的 Azure AD 身份验证库 (ADAL.ObjC) 之间的差异，以及如何在其间进行迁移。
 services: active-directory
-documentationcenter: dev-center-name
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
-ms.topic: overview
-ms.tgt_pltfrm: na
+ms.topic: how-to
 ms.workload: identity
-origin.date: 08/28/2019
-ms.date: 11/01/2019
+ms.date: 07/09/2020
 ms.author: v-junlch
 ms.reviewer: jak
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8eff9fa4b401743c3cb80ead5c86d5a142435bb
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 6e52c59998dbabaf8b484ed0956f588bd9c86805
+ms.sourcegitcommit: 92b9b1387314b60661f5f62db4451c9ff2c49500
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291054"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86164925"
 ---
 # <a name="using-redirect-uris-with-the-microsoft-authentication-library-for-ios-and-macos"></a>将重定向 URI 与用于 iOS 和 macOS 的 Microsoft 身份验证库配合使用
 
@@ -41,14 +36,16 @@ Microsoft 身份验证库 (MSAL) 要求重定向 URI 按特定格式注册到 Az
 
 如果希望 Microsoft 标识平台跨应用共享令牌，每个应用都需要有相同的客户端 ID 或应用程序 ID。 这是在门户中注册应用时系统提供的唯一标识符（不是按应用注册到 Apple 时的应用程序捆绑 ID）。
 
-每个 iOS 应用的重定向 URI 必须是不同的。 这样 Microsoft 标识服务才能唯一标识共享某个应用程序 ID 的不同应用。 每个应用程序可以在 Azure 门户中注册多个重定向 URI。 套件中的每个应用程序具有不同的重定向 URI。 例如：
+每个 iOS 应用的重定向 URI 必须是不同的。 这样 Microsoft 标识服务才能唯一标识共享某个应用程序 ID 的不同应用。 每个应用程序可以在 Azure 门户中注册多个重定向 URI。 套件中的每个应用都具有不同的重定向 URI。 例如：
 
 在 Azure 门户中进行以下应用程序注册时：
 
-    Client ID: ABCDE-12345 (this is a single client ID)
-    RedirectUris: msauth.com.contoso.app1://auth, msauth.com.contoso.app2://auth, msauth.com.contoso.app3://auth
+* 客户端 ID：`ABCDE-12345`（这是单个客户端 ID）
+* RedirectUris：`msauth.com.contoso.app1://auth`、`msauth.com.contoso.app2://auth`、`msauth.com.contoso.app3://auth`
 
-App1 使用重定向 `msauth.com.contoso.app1://auth`，App2 使用 `msauth.com.contoso.app2://auth`，App3 使用 `msauth.com.contoso.app1://auth`
+App1 使用重定向 `msauth.com.contoso.app1://auth`。\
+App2 使用 `msauth.com.contoso.app2://auth`。\
+App3 使用 `msauth.com.contoso.app1://auth`。
 
 ### <a name="migrating-from-adal-to-msal"></a>从 ADAL 迁移到 MSAL
 
@@ -75,7 +72,6 @@ App1 使用重定向 `msauth.com.contoso.app1://auth`，App2 使用 `msauth.com.
         </dict>
     </array>
     ```
-    
 
 MSAL 会验证重定向 URI 是否已正确注册，否则会返回错误。
     

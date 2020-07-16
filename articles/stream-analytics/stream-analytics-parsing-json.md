@@ -1,29 +1,26 @@
 ---
 title: 在 Azure 流分析中分析 JSON 和 AVRO
 description: 本文介绍如何针对复杂数据类型（如数组、JSON、CSV 格式数据）进行操作。
-author: lingliw
-ms.author: v-lingwu
-manager: digimobile
+author: Johnnytechn
 ms.service: stream-analytics
+ms.author: v-johya
 ms.topic: conceptual
 origin.date: 01/29/2020
-ms.date: 2/6/2020
-ms.openlocfilehash: ca7a7dac0266a2540d6db2aee191d65fc1854a5f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 07/06/2020
+ms.openlocfilehash: 7eac68b7d188fa5c3406fb4b53590809bd1bb127
+ms.sourcegitcommit: 9bc3e55f01e0999f05e7b4ebaea95f3ac91d32eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78155132"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86226166"
 ---
 # <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>在 Azure 流分析中分析 JSON 和 Avro 数据
 
-Azure 流分析支持处理采用 CSV、JSON 和 Avro 数据格式的事件。 JSON 和 Avro 数据都可以结构化，并包含一些复杂类型，例如嵌套对象（记录）和数组。 
+Azure 流分析支持处理采用 CSV 和 JSON 格式的事件。 JSON 和 Avro 数据都可以结构化，并包含一些复杂类型，例如嵌套对象（记录）和数组。 
 
-
-
-
+<!--custom deserializer feature is not supported in MC.-->
 ## <a name="record-data-types"></a>记录数据类型
-如果在输入数据流中使用相应的格式，记录数据类型将用于表示 JSON 和 Avro 数组。 这些示例演示示例传感器，该传感器读取 JSON 格式的输入事件。 下面是单一事件的示例：
+如果在输入数据流中使用相应的格式，记录数据类型将用于表示 JSON 数组。 这些示例演示示例传感器，该传感器读取 JSON 格式的输入事件。 下面是单一事件的示例：
 
 ```json
 {
@@ -86,9 +83,10 @@ FROM input
 
 
 ### <a name="access-nested-fields-when-property-name-is-a-variable"></a>当属性名称是变量时访问嵌套字段
- 
 
-例如，假设示例数据流需要**与包含各设备传感器阈值的参考数据联接**。 下面显示了此类参考数据的片段。
+如果属性名称是变量，请使用 [GetRecordPropertyValue](https://docs.microsoft.com/stream-analytics-query/getrecordpropertyvalue-azure-stream-analytics) 函数。 这样可以构建动态查询，无需对属性名称进行硬编码。
+
+例如，假设示例数据流需要与包含每个设备传感器阈值的**参考数据相联接**： 下面显示了此类参考数据的代码片段。
 
 ```json
 {
@@ -151,7 +149,7 @@ CROSS APPLY GetRecordProperties(event.SensorReadings) AS sensorReading
 |12345|CustomSensor02|99|
 |12345|SensorMetadata|[object Object]|
 
-使用 [WITH](https://docs.microsoft.com/stream-analytics-query/with-azure-stream-analytics)，可以将这些事件路由到不同的目标：
+然后，可以使用 [WITH](https://docs.microsoft.com/stream-analytics-query/with-azure-stream-analytics) 将这些事件路由到不同的目标：
 
 ```SQL
 WITH Stage0 AS
@@ -166,6 +164,38 @@ WITH Stage0 AS
 
 SELECT DeviceID, PropertyValue AS Temperature INTO TemperatureOutput FROM Stage0 WHERE PropertyName = 'Temperature'
 SELECT DeviceID, PropertyValue AS Humidity INTO HumidityOutput FROM Stage0 WHERE PropertyName = 'Humidity'
+```
+
+### <a name="parse-json-record-in-sql-reference-data"></a>分析 SQL 参考数据中的 JSON 记录
+在作业中使用 Azure SQL 数据库作为参考数据时，可能会有一个列包含 JSON 格式的数据。 下面显示了一个示例。
+
+|DeviceID|数据|
+|-|-|
+|12345|{"key" : "value1"}|
+|54321|{"key" : "value2"}|
+
+可以通过编写简单的 JavaScript 用户定义函数来分析 *Data* 列中的 JSON 记录。
+
+```javascript
+function parseJson(string) {
+return JSON.parse(string);
+}
+```
+
+然后，可以如下所示在流分析查询中创建一个步骤，以访问 JSON 记录的字段。
+
+ ```SQL
+ WITH parseJson as
+ (
+ SELECT DeviceID, udf.parseJson(sqlRefInput.Data) as metadata,
+ FROM sqlRefInput
+ )
+ 
+ SELECT metadata.key
+ INTO output
+ FROM streamInput
+ JOIN parseJson 
+ ON streamInput.DeviceID = parseJson.DeviceID
 ```
 
 ## <a name="array-data-types"></a>数组数据类型
@@ -198,7 +228,8 @@ SELECT DeviceID, PropertyValue AS Humidity INTO HumidityOutput FROM Stage0 WHERE
 }
 ```
 
-### <a name="working-with-a-specific-array-element"></a>使用特定数组元素
+### <a name="working-with-a-specific-array-element"></a>处理特定的数组元素
+
 选择指定索引中的数组元素（选择第一个数组元素）：
 
 ```SQL
@@ -293,8 +324,6 @@ LEFT JOIN DynamicCTE M ON M.smKey = 'Manufacturer' and M.DeviceId = i.DeviceId A
 |-|-|-|-|-|
 |12345|47|122|1.2.45|ABC|
 
-## <a name="see-also"></a>另请参阅  
- [Azure 流分析中的数据类型](https://msdn.microsoft.com/azure/stream-analytics/reference/data-types-azure-stream-analytics)
- 
-<!-- Update_Description: new articles on stream analytics parsing json -->
-<!--ms.date: 09/17/2018-->
+## <a name="see-also"></a>另请参阅
+[Azure 流分析中的数据类型](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)
+

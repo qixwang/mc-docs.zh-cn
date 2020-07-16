@@ -5,15 +5,15 @@ description: 本页提供有关 Web 应用程序防火墙 CRS 规则组和规则
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 05/19/2020
+ms.date: 07/10/2020
 ms.author: v-junlch
 ms.topic: conceptual
-ms.openlocfilehash: e0e8d695e8f80115daf294e046de723d48677bf8
-ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
+ms.openlocfilehash: f8dee5bb4e3bebad76ad83d61f2d44d5afb1b708
+ms.sourcegitcommit: 65a7360bb14b0373e18ec8eaa288ed3ac7b24ef4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83748161"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86219692"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Web 应用程序防火墙 CRS 规则组和规则
 
@@ -39,6 +39,9 @@ WAF 可针对以下 Web 漏洞提供保护：
 ### <a name="owasp-crs-31"></a>OWASP CRS 3.1
 
 CRS 3.1 包含下表中所示的 13 个规则组。 每个组包含多个可以禁用的规则。
+
+> [!NOTE]
+> CRS 3.1 仅在 WAF_v2 SKU 上可用。
 
 |规则组|说明|
 |---|---|

@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 04/02/2019
 ms.date: 07/12/2019
-ms.openlocfilehash: 40d03d644054422fce3bc1abac49df3b96888684
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 08c0bddeb8b9a814f8f8335f6a87e550e70529db
+ms.sourcegitcommit: 9bc3e55f01e0999f05e7b4ebaea95f3ac91d32eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75858372"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86226041"
 ---
 # <a name="geofencing-and-geospatial-aggregation-scenarios-with-azure-stream-analytics"></a>使用 Azure 流分析的地理围栏和地理空间聚合方案
 
@@ -72,7 +72,7 @@ WHERE DeviceStreamInput.DeviceID = SiteReferenceInput.AllowedDeviceID
 
 ### <a name="site-with-multiple-allowed-devices"></a>包含多个允许的设备的场地
 
-如果某个场地允许多个设备，则可以在 `AllowedDeviceID` 中定义设备 ID 的数组，并在 `WHERE` 子句中使用用户定义的函数，来验证流设备 ID 是否与该列表中的任何设备 ID 相匹配。 有关详细信息，请查看适用于云作业的 [Javascript UDF](stream-analytics-javascript-user-defined-functions.md) 教程，以及适用于 Edge 作业的 [C# UDF](stream-analytics-edge-csharp-udf.md) 教程。
+如果某个场地允许多个设备，则可以在 `AllowedDeviceID` 中定义设备 ID 的数组，并在 `WHERE` 子句中使用用户定义的函数，来验证流设备 ID 是否与该列表中的任何设备 ID 相匹配。 有关详细信息，请参阅有关云作业的 [Javascript UDF](stream-analytics-javascript-user-defined-functions.md) 教程。
 
 ## <a name="geospatial-aggregation"></a>地理空间聚合
 

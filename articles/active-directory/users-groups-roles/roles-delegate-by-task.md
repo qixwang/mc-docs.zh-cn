@@ -8,24 +8,24 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
-ms.date: 06/01/2020
+ms.topic: reference
+ms.date: 07/06/2020
 ms.author: v-junlch
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a6dc77fabcbb12ca5b4320f3f485bcbee23e808
-ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
+ms.openlocfilehash: e8362b8116652e6fc98e8094f40595afb3235f71
+ms.sourcegitcommit: 92b9b1387314b60661f5f62db4451c9ff2c49500
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84275622"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165024"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>在 Azure Active Directory 中按管理员任务委托管理员角色
 
 本文介绍了通过在 Azure Active Directory (Azure AD) 中分配最小特权角色来限制用户管理员权限所需的信息。 你将能查找按功能区域整理的管理员任务、执行每项任务所需的最小特权角色，以及可以执行任务的其他非全局管理员角色。
 
-## <a name="b2c"></a>B2C
+## <a name="external-identitiesb2c"></a>外部标识/B2C
 
 任务 | 最小特权角色 | 其他角色
 ---- | --------------------- | ----------------
@@ -34,11 +34,11 @@ ms.locfileid: "84275622"
 创建企业应用程序 | 云应用管理员 | 应用程序管理员
 创建、读取、更新和删除 B2C 策略 | B2C IEF 策略管理员 | 
 创建、读取、更新和删除标识提供者 | 外部标识提供者管理员 | 
-创建、读取、更新和删除密码重置用户流 | B2C 用户流管理员 | 
-创建、读取、更新和删除配置文件编辑用户流 | B2C 用户流管理员 | 
-创建、读取、更新和删除登录用户流 | B2C 用户流管理员 | 
-创建、读取、更新和删除注册用户流 |B2C 用户流管理员 | 
-创建、读取、更新和删除用户特性 | B2C 用户流属性管理员 | 
+创建、读取、更新和删除密码重置用户流 | 外部 ID 用户流管理员 | 
+创建、读取、更新和删除配置文件编辑用户流 | 外部 ID 用户流管理员 | 
+创建、读取、更新和删除登录用户流 | 外部 ID 用户流管理员 | 
+创建、读取、更新和删除注册用户流 |外部 ID 用户流管理员 | 
+创建、读取、更新和删除用户特性 | 外部 ID 用户流属性管理员 | 
 创建、读取、更新和删除用户 | 用户管理员
 读取所有配置 | 全局读取者 | 
 读取 B2C 审核日志 | 全局读取者（[请参阅文档](/active-directory-b2c/active-directory-b2c-faqs)） | 
@@ -63,7 +63,7 @@ ms.locfileid: "84275622"
 
 任务 | 最小特权角色 | 其他角色
 ---- | --------------------- | ----------------
-读取所有配置 | 全局读取者 | 混合标识管理员  |
+读取所有配置 | 全局读取者 | 全局管理员角色  |
 
 ## <a name="custom-domain-names"></a>自定义域名
 
@@ -98,7 +98,7 @@ ms.locfileid: "84275622"
 任务 | 最小特权角色 | 其他角色
 ---- | --------------------- | ----------------
 分配许可证 | 用户管理员 | 
-创建组 | 用户管理员 | 
+创建组 | 组管理员 | 用户管理员
 创建、更新或删除组或应用的访问评审 | 用户管理员 | 
 管理组到期时间 | 用户管理员 | 
 管理组设置 | 组管理员 | 用户管理员 | 
@@ -109,6 +109,7 @@ ms.locfileid: "84275622"
 更新组成员身份 | 组所有者（[请参阅文档](/active-directory/fundamentals/users-default-permissions)） | 用户管理员
 更新组所有者 | 组所有者（[请参阅文档](/active-directory/fundamentals/users-default-permissions)） | 用户管理员
 更新组属性 | 组所有者（[请参阅文档](/active-directory/fundamentals/users-default-permissions)） | 用户管理员
+删除组 | 组管理员 | 用户管理员
 
 ## <a name="licenses"></a>许可证
 
@@ -186,6 +187,7 @@ ms.locfileid: "84275622"
 任务 | 最小特权角色 | 其他角色
 ---- | --------------------- | ----------------
 配置身份验证方法 | 全局管理员角色 | 
+配置密码保护 | 安全管理员
 读取所有配置 | 全局读取者 | 
 
 ## <a name="security---conditional-access"></a>安全性 - 条件访问

@@ -5,19 +5,21 @@ services: container-service
 manager: digimobile
 ms.topic: article
 origin.date: 02/25/2020
-ms.date: 05/25/2020
+ms.date: 07/13/2020
+ms.testscope: yes
+ms.testdate: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: a7157ba3acc05dc9dbd60a892d1e717b48764f86
-ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
+ms.openlocfilehash: 7b103af97ce80222ce43c4846de4edb8a1dfe683
+ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735171"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86218772"
 ---
 <!--Verify successfully-->
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>使用 Azure 容器注册表从 Azure Kubernetes 服务进行身份验证
 
-结合使用 Azure 容器注册表 (ACR) 和 Azure Kubernetes 服务 (AKS) 时，需要建立身份验证机制。 本文提供了在这两个 Azure 服务之间配置身份验证的示例。
+结合使用 Azure 容器注册表 (ACR) 和 Azure Kubernetes 服务 (AKS) 时，需要建立身份验证机制。 此操作通过向 ACR 授予所需权限的方式实现，是 CLI 和门户体验的一部分。 本文提供了在这两个 Azure 服务之间配置身份验证的示例。 
 
 可以使用 Azure CLI 通过几个简单的命令设置 AKS 与 ACR 的集成。 此集成会将 AcrPull 角色分配给关联到 AKS 群集的服务主体。
 
@@ -26,7 +28,7 @@ ms.locfileid: "83735171"
 这些示例需要：
 
 * **Azure 订阅**上的**所有者**或 **Azure 帐户管理员**角色
-* Azure CLI 2.0.73 版或更高版本
+* Azure CLI 2.7.0 版或更高版本
 
 为了避免需要“所有者”或“Azure 帐户管理员”角色，可以手动配置服务主体或使用现有服务主体从 AKS 进行 ACR 身份验证。 有关详细信息，请参阅[使用服务主体进行 ACR 身份验证](../container-registry/container-registry-auth-service-principal.md)或[使用请求密码从 Kubernetes 进行身份验证](../container-registry/container-registry-auth-kubernetes.md)。
 
@@ -38,7 +40,7 @@ ms.locfileid: "83735171"
 
 ```azurecli
 # set this to the name of your Azure Container Registry.  It must be globally unique
-$MYACR=myContainerRegistry
+MYACR=myContainerRegistry
 
 # Run the following line to create an Azure Container Registry if you do not already have one
 az acr create -n $MYACR -g myContainerRegistryResourceGroup --sku basic
@@ -146,6 +148,10 @@ NAME                                 READY   STATUS    RESTARTS   AGE
 nginx0-deployment-669dfc4d4b-x74kr   1/1     Running   0          20s
 nginx0-deployment-669dfc4d4b-xdpd6   1/1     Running   0          20s
 ```
+
+### <a name="troubleshooting"></a>故障排除
+* 详细了解 [ACR 诊断](../container-registry/container-registry-diagnostics-audit-logs.md)
+* 详细了解 [ACR 运行状况](../container-registry/container-registry-check-health.md)
 
 <!-- LINKS - external -->
 

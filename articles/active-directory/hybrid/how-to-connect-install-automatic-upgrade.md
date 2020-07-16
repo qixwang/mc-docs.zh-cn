@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: 6b395e8f-fa3c-4e55-be54-392dd303c472
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/02/2020
+ms.date: 07/06/2020
 ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 586d68ac073a812f89d51c3c12c39f78e0d0f5e7
-ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
+ms.openlocfilehash: e9e245381970e1429b5638c75c0fdfe3e5c3180d
+ms.sourcegitcommit: 92b9b1387314b60661f5f62db4451c9ff2c49500
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84275321"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86164863"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect：自动升级
 此功能是随内部版本 1.1.105.0（于 2016 年 2 月发布）一起推出的。  此功能已在内部版本 1.1.561 中更新，现在支持以前不支持的其他方案。
@@ -43,7 +43,7 @@ ms.locfileid: "84275321"
 | 已挂起 |只能由系统设置。 系统**目前没有**资格接收自动升级。 |
 | 已禁用 |自动升级已禁用。 |
 
-可以使用 `Set-ADSyncAutoUpgrade` 在“已启用”与“已禁用”之间切换。   只有系统才能设置“暂停”状态。   在 1.1.750.0 之前，如果自动升级状态设置为“已暂停”，则 Set-ADSyncAutoUpgrade cmdlet 会阻止自动升级。 此功能现已更改，不阻止自动升级。
+可以使用 `Set-ADSyncAutoUpgrade` 在“已启用”与“已禁用”之间切换。  只有系统才能设置“暂停”状态。  在 1.1.750.0 之前，如果自动升级状态设置为“已暂停”，则 Set-ADSyncAutoUpgrade cmdlet 会阻止自动升级。 此功能现已更改，不阻止自动升级。
 
 如果服务器上正在运行 **同步服务管理器** UI，则会暂停升级，直到 UI 关闭为止。
 
@@ -54,9 +54,13 @@ ms.locfileid: "84275321"
 
 如果认为有问题，请先运行 `Get-ADSyncAutoUpgrade` 确保已启用自动升级。
 
-然后，确保已在防火墙中打开所需的 URL。
+如果状态为“已暂停”，则可以使用 `Get-ADSyncAutoUpgrade -Detail` 查看原因。  暂停原因可能包含任何字符串值，但通常包含 UpgradeResult 的字符串值，即 `UpgradeNotSupportedNonLocalDbInstall` 或 `UpgradeAbortedAdSyncExeInUse`。  也可能返回一个复合值，例如 `UpgradeFailedRollbackSuccess-GetPasswordHashSyncStateFailed`。
 
-确认与 Azure AD 建立连接后，可以深入了解事件日志。 启动事件查看器，并查看 **应用程序** 事件日志。 为源 Azure AD Connect 升级和事件 ID 范围 300-399 添加事件日志筛选器。    
+还有可能得到不是 UpgradeResult 的结果，即“AADHealthEndpointNotDefined”或“DirSyncInPlaceUpgradeNonLocalDb”。
+
+然后，确保已在代理或防火墙中打开所需的 URL。 
+
+确认与 Azure AD 建立连接后，可以深入了解事件日志。 启动事件查看器，并查看 **应用程序** 事件日志。 为源 Azure AD Connect 升级和事件 ID 范围 300-399 添加事件日志筛选器。   
 ![用于自动升级的事件日志筛选器](./media/how-to-connect-install-automatic-upgrade/eventlogfilter.png)  
 
 此时可以看到与自动升级状态关联的事件日志。  
@@ -86,15 +90,11 @@ ms.locfileid: "84275321"
 | UpgradeAbortedSyncExeInUse |服务器上打开了 [Synchronization Service Manager UI](how-to-connect-sync-service-manager-ui.md)。 |
 | UpgradeAbortedSyncOrConfigurationInProgress |安装向导正在运行，或者在计划程序外部计划了同步。 |
 | **UpgradeNotSupported** | |
-| UpgradeNotSupportedAdfsSignInMethod | 已选择 Adfs 作为登录方法。 |
 | UpgradeNotSupportedCustomizedSyncRules |已将自己的自定义规则添加到配置中。 |
 | UpgradeNotSupportedInvalidPersistedState |安装不是快速设置或 DirSync 升级。 |
-| UpgradeNotSupportedMetaverseSizeExceeeded |metaverse 中的对象超过 100,000 个。 |
-| UpgradeNotSupportedMultiForestSetup |正在连接到多个林。 快速设置仅连接到一个林。 |
 | UpgradeNotSupportedNonLocalDbInstall |使用的不是 SQL Server Express LocalDB 数据库。 |
-| UpgradeNotSupportedNonMsolAccount |[AD DS 连接器帐户](reference-connect-accounts-permissions.md#ad-ds-connector-account)不再是默认的 MSOL_ 帐户。 |
-| UpgradeNotSupportedNotConfiguredSignInMethod | 在设置 AAD Connect 期间，请在选择登录方法时选择“不配置”。  |
-| UpgradeNotSupportedStagingModeEnabled |服务器已设置为[暂存模式](how-to-connect-sync-staging-server.md)。 |
+|UpgradeNotSupportedLocalDbSizeExceeded|本地 DB 大小大于或等于 8 GB|
+|UpgradeNotSupportedAADHealthUploadDisabled|已从门户中禁用运行状况数据上传|
 
 ## <a name="next-steps"></a>后续步骤
 了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

@@ -6,20 +6,20 @@ ms.author: v-johya
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/12/2020
+ms.date: 07/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7d50e72599e0b9eb4588e7f571b8b3e71339b92b
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: c26c97343bbea8e001309bba049cf5ce4f878216
+ms.sourcegitcommit: 9bc3e55f01e0999f05e7b4ebaea95f3ac91d32eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097250"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86226022"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Azure 流分析查询的故障排除
 
 本文介绍开发流分析查询的常见问题以及如何进行故障排除。
 
-本文介绍了编写 Azure 流分析查询时遇到的常见问题，以及如何排查和更正查询问题。 许多故障排除步骤都需要为流分析作业启用资源日志。 如果没有启用资源日志，请参阅[使用资源日志对 Azure 流分析进行故障排除](stream-analytics-job-diagnostic-logs.md)。
+本文介绍了编写 Azure 流分析查询时遇到的常见问题，以及如何排查和更正查询问题。 许多故障排除步骤都需要为流分析作业启用资源日志。
 
 ## <a name="query-is-not-producing-expected-output"></a>查询未生成预期输出
 
@@ -30,9 +30,9 @@ ms.locfileid: "85097250"
 
 2.  在适用于 Visual Studio 的 Azure 流分析工具中，[使用作业关系图对查询进行本地分步调试](debug-locally-using-job-diagram.md)。 作业关系图显示数据如何从输入源（事件中心、IoT 中心等）流经多个查询步骤，最后流向输出接收器。 每个查询步骤都使用 WITH 语句映射到脚本中定义的临时结果集。 可以在每个中间结果集中查看数据和指标，以找到问题的根源。
 
-    ![作业关系图 - 预览结果](./media/debug-locally-using-job-diagram/preview-result.png)
+    ![作业关系图预览结果](./media/debug-locally-using-job-diagram/preview-result.png)
 
-3.  如果使用了 [Timestamp By](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics)，请验证事件的时间戳是否大于作业开始时间。
+3.  如果使用了 [Timestamp By](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics)，请验证事件的时间戳是否大于[作业开始时间](stream-analytics-time-handling.md)。
 
 4.  避免常犯的错误，例如：
     - 查询中的一个 [WHERE](https://docs.microsoft.com/stream-analytics-query/where-azure-stream-analytics) 子句筛选掉了所有事件，从而阻止生成输出。
@@ -41,11 +41,11 @@ ms.locfileid: "85097250"
     - 事件时间戳先于作业开始时间，事件被删除。
     - [JOIN](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics) 条件不匹配。 如果没有匹配，则输出为零。
 
-5.  确保按预期方式配置事件排序策略。 转到“设置”并选择“事件排序” 。 使用“测试”按钮测试查询时，不会应用此策略。 这是在浏览器中测试与在生产中运行作业之间的一个差别。 
+5.  确保按预期方式配置事件排序策略。 转到“设置”，选择“[事件排序](stream-analytics-time-handling.md)” 。 使用“测试”按钮测试查询时，不会应用此策略。 这是在浏览器中测试与在生产中运行作业之间的一个差别。 
 
 6. 使用活动和资源日志进行调试：
     - 使用[审核日志](../azure-resource-manager/resource-group-audit.md)，并进行筛选来发现和调试错误。
-    - 使用[作业资源日志](stream-analytics-job-diagnostic-logs.md)来发现和调试错误。
+    - 使用作业资源日志来发现和调试错误。
 
 ## <a name="resource-utilization-is-high"></a>资源利用率高
 
@@ -103,7 +103,7 @@ ms.locfileid: "85097250"
 
 ## <a name="get-help"></a>获取帮助
 
-如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
+如需获取进一步的帮助，可前往 [Azure 流分析的 Microsoft 问答页面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)。
 
 ## <a name="next-steps"></a>后续步骤
 

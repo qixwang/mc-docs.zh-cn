@@ -5,15 +5,15 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 06/23/2020
+ms.date: 07/10/2020
 ms.author: v-junlch
 ms.custom: references_regions
-ms.openlocfilehash: bb33749b461daf687dac3778635c236513e6e02e
-ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
+ms.openlocfilehash: 61179b2c2e6300454a93d238462be2fef08f49c1
+ms.sourcegitcommit: 65a7360bb14b0373e18ec8eaa288ed3ac7b24ef4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85516740"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86219715"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>应用程序网关常见问题
 
@@ -73,9 +73,15 @@ Azure 应用程序网关以服务形式提供应用程序传送控制器 (ADC)�
 
 Keep-Alive 超时控制应用程序网关在重新使用或关闭它之前将等待客户端在持久连接上发送另一个 HTTP 请求的时间。 TCP 空闲超时控制在无活动的情况下 TCP 连接保持打开状态的时间。 
 
-应用程序网关 v1 SKU 中的 Keep-Alive 超时为 120 秒，而在 v2 SKU 中为 75 秒。 在应用程序网关 v1 和 v2 SKU 的前端虚拟 IP (VIP) 上，“TCP 空闲超时”默认值为 4 分钟。 无法更改这些值。
+应用程序网关 v1 SKU 中的 Keep-Alive 超时为 120 秒，而在 v2 SKU 中为 75 秒。 在应用程序网关的 v1 和 v2 SKU 的前端虚拟 IP (VIP) 上，TCP 空闲超时是默认的 4 分钟。 你可以将 v1 和 v2 应用程序网关上的 TCP 空闲超时值配置为 4 分钟到 30 分钟之间的任何时间值。 对于 v1 和 v2 应用程序网关，需要导航到应用程序网关的公共 IP，并更改门户上公共 IP 的“配置”边栏选项卡下的 TCP 空闲超时。 可以通过运行以下命令，通过 PowerShell 设置公共 IP 的 TCP 空闲超时值： 
 
-### <a name="does-the-ip-or-dns-name-change-over-the-lifetime-of-the-application-gateway"></a>在应用程序网关的生存期内，其 IP 或 DNS 名称是否会更改？
+```azurepowershell
+$publicIP = Get-AzPublicIpAddress -Name MyPublicIP -ResourceGroupName MyResourceGroup
+$publicIP.IdleTimeoutInMinutes = "15"
+Set-AzPublicIpAddress -PublicIpAddress $publicIP
+```
+
+### <a name="does-the-ip-or-dns-name-change-over-the-lifetime-of-the-application-gateway"></a>在应用程序网关的生存期内，其 IP 或 DNS 名称是否会变化？
 
 在应用程序网关 V1 SKU 中，如果停止再启动应用程序网关，则 VIP 可能会变化。 但是，与应用程序网关关联的 DNS 名称在网关的整个生命周期内不会更改。 由于 DNS 名称不会更改，建议使用 CNAME 别名并使其指向应用程序网关的 DNS 地址。 在应用程序网关 V2 SKU 中，可以将 IP 地址设置为静态，因此 IP 和 DNS 名称将在应用程序网关的生存期内不会更改。 
 

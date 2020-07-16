@@ -1,37 +1,36 @@
 ---
 title: 以编程方式监视和管理 Azure 流分析作业
 description: 本文说明如何以编程方式监视通过 REST API、Azure SDK 或 PowerShell 创建的流分析作业。
-author: lingliw
-ms.author: v-lingwu
-manager: digimobile
+author: Johnnytechn
+ms.author: v-johya
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 04/20/2017
-ms.date: 02/27/2020
-ms.openlocfilehash: d0b42895e519e48dc3fc560e719403e88ab4a115
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 07/06/2020
+ms.openlocfilehash: 9f8691714fb67da8f4c4b0d690657bcb0077cda5
+ms.sourcegitcommit: 9bc3e55f01e0999f05e7b4ebaea95f3ac91d32eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78155128"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86226169"
 ---
 # <a name="programmatically-create-a-stream-analytics-job-monitor"></a>以编程方式创建流分析作业监视器
 
-本文说明如何为流分析作业启用监视功能。 通过 REST API、Azure SDK 或 PowerShell 创建的流分析作业默认不启用监视功能。 可以在 Azure 门户中手动启用此功能，只需转到作业的“监视”页并单击“启用”按钮即可；也可以按本文中所述步骤自动执行此过程。 流分析作业的监视数据会显示在 Azure 门户的“指标”区域。
+本文说明如何对流分析作业启用监视功能。 通过 REST API、Azure SDK 或 PowerShell 创建的流分析作业默认不启用监视功能。 可以在 Azure 门户中手动启用此功能，只需转到作业的“监视”页并单击“启用”按钮即可；也可以按本文中所述步骤自动执行此过程。 流分析作业的监视数据会显示在 Azure 门户的“指标”区域。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-在开始执行此过程之前，必须具备以下先决条件：
+在开始此过程之前，必须具有以下必备组件：
 
 * Visual Studio 2019 或 2015
-* 已下载并安装了 [Azure.NET SDK](https://www.azure.cn/downloads/)
-* 具有需要已启用监视功能的现有流分析作业
+* 已下载并安装了 [Azure.NET SDK](/downloads/)
+* 需要已启用监视功能的现有流分析作业
 
 ## <a name="create-a-project"></a>创建一个项目
 
 1. 创建 Visual Studio C# .NET 控制台应用程序。
-2. 在程序包管理器控制台中运行以下命令以安装 NuGet 包。 第一个是 Azure 流分析管理 .NET SDK。 第二个是 Azure Monitor SDK，用于启用监视功能。 最后一个是用于进行身份验证的 Azure Active Directory 客户端。
+2. 在程序包管理器控制台中运行以下命令来安装 NuGet 包。 第一个是 Azure 流分析管理 .NET SDK。 第二个是 Azure Monitor SDK，将用于启用监视功能。 最后一个是用于进行身份验证的 Azure Active Directory 客户端。
    
    ```powershell
    Install-Package Microsoft.Azure.Management.StreamAnalytics
@@ -39,28 +38,27 @@ ms.locfileid: "78155128"
    Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
    ```
 3. 将下面的 appSettings 部分添加到 App.config 文件。
-
-    ```
-    <appSettings>
-       <!--CSM Prod related values-->
-       <add key="ResourceGroupName" value="RESOURCE GROUP NAME" />
-       <add key="JobName" value="YOUR JOB NAME" />
-       <add key="StorageAccountName" value="YOUR STORAGE ACCOUNT"/>
-       <add key="ActiveDirectoryEndpoint" value="https://login.chinacloudapi.cn/" />
-       <add key="ResourceManagerEndpoint" value="https://management.chinacloudapi.cn/" />
-       <add key="WindowsManagementUri" value="https://management.core.chinacloudapi.cn/" />
-       <add key="AsaClientId" value="1950a258-227b-4e31-a9cf-717495945fc2" />
-       <add key="RedirectUri" value="urn:ietf:wg:oauth:2.0:oob" />
-       <add key="SubscriptionId" value="YOUR AZURE SUBSCRIPTION ID" />
-       <add key="ActiveDirectoryTenantId" value="YOUR TENANT ID" />
-    </appSettings>
-    ```
-    将 *SubscriptionId* 和 *ActiveDirectoryTenantId* 的值替换为 Azure 订阅 ID 和租户 ID。 可以通过运行以下 PowerShell cmdlet 来获取这些值：
-
-    ```
-    Login-AzAccount -Environment AzureChinaCloud
-    Get-AzSubscription
-    ```
+   
+   ```csharp
+   <appSettings>
+     <!--CSM Prod related values-->
+     <add key="ResourceGroupName" value="RESOURCE GROUP NAME" />
+     <add key="JobName" value="YOUR JOB NAME" />
+     <add key="StorageAccountName" value="YOUR STORAGE ACCOUNT"/>
+     <add key="ActiveDirectoryEndpoint" value="https://login.partner.microsoftonline.cn/" />
+     <add key="ResourceManagerEndpoint" value="https://management.chinacloudapi.cn/" />
+     <add key="WindowsManagementUri" value="https://management.core.chinacloudapi.cn/" />
+     <add key="AsaClientId" value="1950a258-227b-4e31-a9cf-717495945fc2" />
+     <add key="RedirectUri" value="urn:ietf:wg:oauth:2.0:oob" />
+     <add key="SubscriptionId" value="YOUR AZURE SUBSCRIPTION ID" />
+     <add key="ActiveDirectoryTenantId" value="YOUR TENANT ID" />
+   </appSettings>
+   ```
+   将 *SubscriptionId* 和 *ActiveDirectoryTenantId* 的值替换为 Azure 订阅 ID 和租户 ID。 可以通过运行以下 PowerShell cmdlet 来获取这些值：
+   
+   ```powershell
+   Get-AzureAccount
+   ```
 4. 将以下 using 语句添加到项目中的源文件 (Program.cs)。
    
    ```csharp
@@ -114,7 +112,7 @@ ms.locfileid: "78155128"
 
 ## <a name="create-management-clients"></a>创建管理客户端
 
-以下代码将设置必需变量和管理客户端。
+以下代码可设置必需变量和管理客户端。
 
    ```csharp
     string resourceGroupName = "<YOUR AZURE RESOURCE GROUP NAME>";
@@ -138,16 +136,16 @@ ms.locfileid: "78155128"
 
 ## <a name="enable-monitoring-for-an-existing-stream-analytics-job"></a>为现有流分析作业启用监视功能
 
-以下代码为现有  流分析作业启用监视功能。 代码的第一部分针对流分析服务执行 GET 请求，目的是检索特定流分析作业的信息。 它使用“ID”  属性（从 GET 请求检索而得）作为代码第二部分中 Put 方法的参数，该方法将 PUT 请求发送到 Insights 服务以为流分析作业启用监视功能。
+以下代码为**现有**流分析作业启用监视功能。 代码的第一部分针对流分析服务执行 GET 请求，目的是检索特定流分析作业的信息。 它使用“ID”属性（从 GET 请求检索而得）作为代码第二部分中 Put 方法的参数，该方法将 PUT 请求发送到 Insights 服务以为流分析作业启用监视功能。
 
 > [!WARNING]
-> 如果此前为其他流分析作业启用了监视功能，那么不管是通过 Azure 门户进行还是通过以下代码以编程方式完成，我们都建议提供在之前启用监视功能时所使用的同一个存储帐户名称。 
+> 如果此前为其他流分析作业启用了监视功能，那么不管是通过 Azure 门户进行还是通过以下代码以编程方式完成，**我们都建议提供在之前启用监视功能时所使用的同一个存储帐户名称。**
 > 
 > 存储帐户将链接到创建流分析作业时所在的区域，并不特定于作业本身。
 > 
-> 该同一区域中的所有流分析作业（以及所有其他的 Azure 资源）在存储监视数据时会共享此存储帐户。 如果提供其他的存储帐户，则可能会产生意想不到的副作用，这会影响对其他流分析作业或其他 Azure 资源的监视。
+> 该同一区域中的所有流分析作业（以及所有其他 Azure 资源）在存储监视数据时将共享此存储帐户。 如果提供其他存储帐户，则可能会产生意想不到的副作用，这将影响对其他流分析作业或其他 Azure 资源的监视。
 > 
-> 用于替换以下代码中的 `<YOUR STORAGE ACCOUNT NAME>` 的存储帐户名称应该是与为其启用监视功能的流分析作业所在的同一订阅中的存储帐户。
+> 用于替换以下代码中的 `<YOUR STORAGE ACCOUNT NAME>` 的存储帐户名称应该是为其启用监视功能的流分析作业所在的同一订阅中的存储帐户。
 > 
 > 
 >    ```csharp
@@ -172,14 +170,13 @@ ms.locfileid: "78155128"
 
 ## <a name="get-support"></a>获取支持
 
-如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://www.azure.cn/support/contact/)。
+如需获取进一步的帮助，可前往[有关 Azure 流分析的 Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [Azure 流分析简介](stream-analytics-introduction.md)
 * [Azure 流分析入门](stream-analytics-real-time-fraud-detection.md)
 * [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
-* [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Azure 流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!--Update_Description: wording update, update meta properties -->

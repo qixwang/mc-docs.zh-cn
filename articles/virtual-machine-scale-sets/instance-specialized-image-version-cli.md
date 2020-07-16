@@ -6,19 +6,19 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: imaging
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 05/21/2020
+ms.date: 07/10/2020
 ms.author: v-junlch
 ms.reviewer: akjosh
-ms.openlocfilehash: 4f349140cfba5b120d88dd76acb9707f34882981
-ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
+ms.openlocfilehash: 2e871d21dd2a8b3d5ba0c4b494ca7be0caa3d7a4
+ms.sourcegitcommit: 65a7360bb14b0373e18ec8eaa288ed3ac7b24ef4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83749541"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86219750"
 ---
 # <a name="create-a-scale-set-using-a-specialized-image-version-with-the-azure-cli"></a>使用 Azure CLI 通过专用化映像版本创建规模集
 
-从共享映像库中存储的[专用化映像版本](/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images)创建规模集。 若要使用通用化映像版本创建规模集，请参阅[从通用化映像版本创建 VM](instance-generalized-image-version-cli.md)。
+从共享映像库中存储的[专用化映像版本](/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images)创建规模集。 若要使用通用化映像版本创建规模集，请参阅[从通用化映像创建规模集](instance-generalized-image-version-cli.md)。
 
 如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.4.0 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/install-azure-cli)。
 

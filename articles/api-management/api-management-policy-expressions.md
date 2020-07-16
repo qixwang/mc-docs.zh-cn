@@ -6,30 +6,29 @@ documentationcenter: ''
 author: vladvino
 manager: erikre
 editor: ''
+origin.date: 03/22/2019
 ms.assetid: ea160028-fc04-4782-aa26-4b8329df3448
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 03/22/2019
-ms.author: v-yiso
-ms.date: 11/04/2019
-ms.openlocfilehash: defbe44d4d3b1140ac27aa294db4f57a09906c01
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 07/10/2020
+ms.author: v-johya
+ms.openlocfilehash: 06af1bfcd0127a56eb48240ab60eca0ec5ab3835
+ms.sourcegitcommit: 9bc3e55f01e0999f05e7b4ebaea95f3ac91d32eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291791"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86226052"
 ---
 # <a name="api-management-policy-expressions"></a>API 管理策略表达式
-本文讨论策略表达式语法 C# 7。 每个表达式都可以访问隐式提供的[上下文](api-management-policy-expressions.md#ContextVariables)变量以及允许的 .NET Framework 类型[子集](api-management-policy-expressions.md#CLRTypes)。
+本文讨论 C# 7 中的策略表达式语法。 每个表达式都可以访问隐式提供的[上下文](api-management-policy-expressions.md#ContextVariables)变量以及允许的 .NET Framework 类型[子集](api-management-policy-expressions.md#CLRTypes)。
 
 更多相关信息：
 
 - 了解如何向后端服务提供上下文信息。 使用[设置查询字符串参数](api-management-transformation-policies.md#SetQueryStringParameter)和[设置 HTTP 标头](api-management-transformation-policies.md#SetHTTPheader)策略来提供此信息。
 - 了解如何使用[验证 JWT](api-management-access-restriction-policies.md#ValidateJWT) 策略根据令牌声明预先授予操作访问权限。
-- 了解如何使用 [API 检查器](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/)跟踪查看策略求值方法和这些求值的结果。
+- 了解如何使用 [API 检查器](api-management-howto-api-inspector.md)跟踪查看策略求值方法和这些求值的结果。
 - 了解如何对[从缓存获取](api-management-caching-policies.md#GetFromCache)和[存储到缓存](api-management-caching-policies.md#StoreToCache)策略使用表达式，以便配置 API 管理响应缓存。 设置持续时间，使之匹配由后端服务的 `Cache-Control` 指令指定的后端服务响应缓存。
 - 了解如何进行内容筛选。 删除使用[控制流](api-management-advanced-policies.md#choose)和[设置正文](api-management-transformation-policies.md#SetBody)策略从后端接收的响应中的数据元素。
 - 要下载策略语句，请参阅 [api-management-samples/policies](https://github.com/Azure/api-management-samples/tree/master/policies) GitHub 存储库。
@@ -247,6 +246,7 @@ ms.locfileid: "79291791"
 |byte[] Decrypt(input: this byte[], alg:System.Security.Cryptography.SymmetricAlgorithm, key:byte[], iv:byte[])|input - 要解密的密文<br /><br />alg - 加密算法<br /><br />key - 加密密钥<br /><br />iv - 初始化矢量<br /><br />返回明文。|
 |bool VerifyNoRevocation(input: this System.Security.Cryptography.X509Certificates.X509Certificate2)|在不检查证书吊销状态的情况下执行 X.509 链验证。<br /><br />输入 - 证书对象<br /><br />如果验证成功，则返回 `true`；如果验证失败，则返回 `false`。|
 
+
 ## <a name="next-steps"></a>后续步骤
 
 有关如何使用策略的详细信息，请参阅：
@@ -254,4 +254,5 @@ ms.locfileid: "79291791"
 + [API 管理中的策略](api-management-howto-policies.md)
 + [转换 API](transform-api.md)
 + [策略参考](api-management-policies.md)，获取策略语句及其设置的完整列表
-+ [策略示例](policy-samples.md)   
++ [策略示例](policy-samples.md)
+

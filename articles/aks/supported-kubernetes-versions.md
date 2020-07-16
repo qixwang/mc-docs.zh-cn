@@ -5,14 +5,16 @@ services: container-service
 author: rockboyfor
 ms.topic: article
 origin.date: 12/09/2019
-ms.date: 03/09/2020
+ms.date: 07/13/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: ce6bf90f350126106a3940fe6db5e5056f0c3346
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: dce0cea2bf270144284e629be703aa345b13fdfd
+ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290689"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86218800"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中支持的 Kubernetes 版本
 
@@ -96,10 +98,10 @@ New Supported Version List
 * 对于 Kubernetes 的新**次要**版本
     * 在发布新版本以及删除版本之前，我们会公开通知所有用户。
     * 在发布新修补程序版本的同时，会删除最早的修补程序版本。
-    * 客户自公告之日起 **30 天**内可以升级到受支持的次要版本。
+    * Azure 支持会为客户提供 30 天的时间（自公告之日起）升级到受支持的次要版本。 30 天过后，你需要更新次要版本才能继续获得支持。
 * 对于 Kubernetes 的新**修补程序**版本
     * 在发布新的修补程序版本以及升级到最新修补程序版本之前，我们会通知所有用户。
-    * 用户有 **30 天**时间升级到受支持的新修补程序版本，然后再删除最旧的修补程序版本。
+    * 删除较旧的修补程序版本后，Azure 支持会为客户提供 30 天的时间升级到受支持的修补程序版本。 30 天过后，你需要更新修补程序版本才能继续获得支持。
 
 AKS 将“发布版本”定义为正式版本，所有 SLO/服务质量衡量方案都采用此术语，并且在所有区域都是如此。 AKS 可能还支持预览版本，这些版本带有明确的标签，使用时需遵守预览版条款和条件。
 
@@ -137,12 +139,12 @@ az aks get-versions --location chinaeast2 --output table
 
 ## <a name="faq"></a>常见问题
 
- 客户升级的 Kubernetes 群集具有不受支持的次要版本时，会发生什么情况？
+客户升级的 Kubernetes 群集具有不受支持的次要版本时，会发生什么情况？
 
 如果你当前使用的是 *n-3* 版本，则不再可接受支持，系统会要求你升级。 如果从版本 n-3 成功升级到了 n-2，则你现在涵盖在我们的支持策略中。 例如：
 
 - 如果支持的最低 AKS 版本为 *1.13.a*，而你使用的版本是 *1.12.b* 或更低，则你无法接受支持。
-- 如果从 1.12.b  升级到 1.13.a  或更高版本成功，则你将重新涵盖在我们的支持策略中。
+- 如果从 1.12.b 升级到 1.13.a 或更高版本成功，则你将重新涵盖在我们的支持策略中。
 
 不支持升级到早于 *N-2* 支持窗口的版本。 在这种情况下，我们会建议客户创建新的 AKS 群集，并使用支持窗口中的版本重新部署其工作负荷。
 
@@ -150,13 +152,13 @@ az aks get-versions --location chinaeast2 --output table
 
 “停止支持”是指运行的版本不在支持的版本列表内，当你请求支持时，系统会要求你将群集升级到支持的版本。 此外，对于受支持版本列表以外的群集，AKS 不会在正常运行时间或其他方面做出任何保证。
 
- 客户缩放的 Kubernetes 群集具有不受支持的次要版本时，会发生什么情况？
+客户缩放的 Kubernetes 群集具有不受支持的次要版本时，会发生什么情况？
 
 对于 AKS 不支持的次要版本，缩减或扩展可继续进行，但我们强烈建议升级，使群集重新可接受支持。
 
- 客户可以永久保留 Kubernetes 版本吗？
+客户可以永久保留 Kubernetes 版本吗？
 
-是的。 但是，如果群集不使用 AKS 支持的版本之一，该群集不会涵盖在 AKS 支持策略内。 Azure 不会自动升级群集或将其删除。
+如果群集有 3 个以上的次要版本不受支持，并被发现存在安全风险，则 Azure 会联系你主动升级群集。 如果你不采取进一步的措施，Azure 将保留代表你强制升级群集的权利。
 
 **如果节点池不在某个受支持的 AKS 版本中，控制平面支持哪个版本？**
 
@@ -169,7 +171,7 @@ az aks get-versions --location chinaeast2 --output table
 <!-- LINKS - External -->
 
 [aks-engine]: https://github.com/Azure/aks-engine
-[azure-update-channel]: https://www.azure.cn/what-is-new/
+[azure-update-channel]: https://updates.azure.cn/
 
 <!-- LINKS - Internal -->
 

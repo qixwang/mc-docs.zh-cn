@@ -5,19 +5,19 @@ services: active-directory
 author: CelesteDG
 manager: daveba
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: fundamentals
-ms.date: 06/29/2020
+ms.date: 07/09/2020
 ms.author: v-junlch
 ms.reviewer: asteen, jlu, hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 832e601d11b6c253d4ddd93b5eb84aed95669556
-ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
+ms.openlocfilehash: b8a1d9bab2baf10ebf150b04f715a3ca64627b61
+ms.sourcegitcommit: 92b9b1387314b60661f5f62db4451c9ff2c49500
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85945319"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86164894"
 ---
 # <a name="configure-the-stay-signed-in-prompt-for-azure-ad-accounts"></a>为 Azure AD 帐户 配置“保持登录状态？”提示
 
@@ -28,7 +28,7 @@ ms.locfileid: "85945319"
 :::image type="content" source="./media/keep-me-signed-in/kmsi-workflow.png" alt-text="显示托管与联合租户的用户登录流的图示":::
 
 > [!NOTE]
-> 配置“使我保持登录状态”选项需要你使用 Azure Active Directory (Azure AD) Premium 1、Premium 2 或 Basic 版本，或拥有 Office 365 许可证。 有关许可和版本的详细信息，请参阅[注册 Azure AD Premium](active-directory-get-started-premium.md)。<br><br>在中国，使用 Azure AD 全球实例的客户可以使用 Azure AD Premium 和 Basic 版本。 中国区 21Vianet 运营的 Azure 服务目前不支持 Azure AD Premium 和 Azure AD Basic 版本。 有关详细信息，请通过 [Azure AD 论坛](https://feedback.azure.com/forums/169401-azure-active-directory/)与我们联系。
+> 配置“使我保持登录状态”选项需要使用 Azure Active Directory (Azure AD) Premium 1、Premium 2 或 Basic 版本，或拥有 Microsoft 365 许可证。 有关许可和版本的详细信息，请参阅[注册 Azure AD Premium](active-directory-get-started-premium.md)。<br><br>在中国，使用 Azure AD 全球实例的客户可以使用 Azure AD Premium 和 Basic 版本。 中国区 21Vianet 运营的 Azure 服务目前不支持 Azure AD Premium 和 Azure AD Basic 版本。 有关详细信息，请通过 [Azure AD 论坛](https://feedback.azure.com/forums/169401-azure-active-directory/)与我们联系。
 
 ## <a name="configure-kmsi"></a>配置 KMSI
 
@@ -61,6 +61,6 @@ ms.locfileid: "85945319"
 
 了解影响登录会话超时的其他设置：
 
-* Office 365 - [空闲会话超时](https://docs.microsoft.com/sharepoint/sign-out-inactive-users)
+* Microsoft 365 - [空闲会话超时](https://docs.microsoft.com/sharepoint/sign-out-inactive-users)
 * Azure portal - [目录级别非活动超时](/azure-portal/admin-timeout)
 

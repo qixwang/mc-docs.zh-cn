@@ -3,21 +3,22 @@ title: 影响 Azure AD Connect 性能的因素
 description: 本文档介绍多种因素对 Azure AD Connect 预配引擎的影响。 这些因素可帮助组织规划 Azure AD Connect 部署，确保满足其同步要求。
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 tags: azuread
 ms.service: active-directory
+ms.subservice: hybrid
 ms.topic: conceptual
 ms.workload: identity
-origin.date: 10/06/2018
-ms.date: 10/25/2019
+ms.date: 07/06/2020
 ms.reviewer: martincoetzer
 ms.author: v-junlch
-ms.openlocfilehash: 599f41c89cfef5225dac22f421c48457a30e7b14
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 1f5fac3e838dc93218fa923d4e2c947d5377bc12
+ms.sourcegitcommit: 92b9b1387314b60661f5f62db4451c9ff2c49500
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72912741"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86164845"
 ---
 # <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>影响 Azure AD Connect 性能的因素
 
@@ -46,10 +47,10 @@ Azure AD Connect 将 Active Directory 同步到 Azure AD。 此服务器是将�
 
 Azure AD Connect 使用以下临时区域、规则和过程，以实现从 Active Directory 到 Azure AD 的同步：
 
-- **连接器空间 (CS)** - 在此暂存每个已连接目录（缩写为 CD，是实际目录）的对象，然后再由预配引擎处理它们。 Azure AD 具有自己的 CS，并且连接的每个林也都有自己的 CS。
-- **Metaverse (MV)** - 在此根据同步规则创建需要同步的对象。 对象必须存在于 MV 中，然后它们才能将对象和属性填充到其他连接的目录。 只有一个 MV。
-- **同步规则** - 决定将创建（投射）哪些对象或将哪些对象连接（联接）到 MV 中的对象。 还决定要从目录或向目录复制或转换的属性值。
-- **运行配置文件** - 根据暂存区域和已连接目录之间的同步规则，捆绑复制对象及其属性值的过程步骤。
+* **连接器空间 (CS)** - 在此暂存每个已连接目录（缩写为 CD，是实际目录）的对象，然后再由预配引擎处理它们。 Azure AD 具有自己的 CS，并且连接的每个林也都有自己的 CS。
+* **Metaverse (MV)** - 在此根据同步规则创建需要同步的对象。 对象必须存在于 MV 中，然后它们才能将对象和属性填充到其他连接的目录。 只有一个 MV。
+* **同步规则** - 决定将创建（投射）哪些对象或将哪些对象连接（联接）到 MV 中的对象。 还决定要从目录或向目录复制或转换的属性值。
+* **运行配置文件** - 根据暂存区域和已连接目录之间的同步规则，捆绑复制对象及其属性值的过程步骤。
 
 有多种用于优化预配引擎性能的运行配置文件。 大多数组织使用默认的计划和运行配置文件来处理常规操作，但某些组织可能需要[更改计划](/active-directory/hybrid/how-to-connect-sync-feature-scheduler)或触发其他运行配置文件以应对不常见的情况。 可用的运行配置文件如下：
 
@@ -99,10 +100,10 @@ Azure AD Connect 使用以下临时区域、规则和过程，以实现从 Activ
 
 同步过程运行时具有以下性能特征：
 
-- 同步是单线程的，因此，预配引擎不会并行处理已连接目录、对象或属性的运行配置文件。
-- 导入时间随同步的对象数呈线性增长。 例如，如果导入 1 万个对象需要 10 分钟，则在同一服务器上导入 2 万个对象大约需要 20 分钟。
-- 导出也是线性的。
-- 同步将基于引用其他对象的对象的数量呈指数级增加。 组成员身份和嵌套组具有严重的性能影响，因为其成员引用用户对象或其他组。 要想完成同步周期，必须找到这些引用并使其引用到 MV 中的实际对象。
+* 同步是单线程的，因此，预配引擎不会并行处理已连接目录、对象或属性的运行配置文件。
+* 导入时间随同步的对象数呈线性增长。 例如，如果导入 1 万个对象需要 10 分钟，则在同一服务器上导入 2 万个对象大约需要 20 分钟。
+* 导出也是线性的。
+* 同步将基于引用其他对象的对象的数量呈指数级增加。 组成员身份和嵌套组具有严重的性能影响，因为其成员引用用户对象或其他组。 要想完成同步周期，必须找到这些引用并使其引用到 MV 中的实际对象。
 
 ### <a name="filtering"></a>筛选
 
@@ -171,7 +172,7 @@ Azure AD 使用限制来防止云服务受到拒绝服务 (DoS) 攻击。 目前
 
 - 拥有 10 万名以上用户的组织，可通过使 SQL 数据库和预配引擎位于同一服务器来减少网络延迟。
 - 鉴于同步过程的磁盘输入和输出 (I/O) 要求高，为获得最佳结果，请对预配引擎的 SQL 数据库使用固态硬盘 (SSD)；如果无法使用，则考虑使用 RAID 0 或 RAID 1 配置。
-- 请勿提前执行完全同步，这会造成不必要的改动和增加响应时间。
+- 请勿提前执行完全同步；这会造成不必要的改动并增加响应时间。
 
 ## <a name="conclusion"></a>结论
 

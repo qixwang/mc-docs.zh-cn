@@ -6,12 +6,12 @@ ms.topic: conceptual
 origin.date: 06/03/2019
 ms.date: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: ffa8f70828ddcd91997860917e6ba00c6d363cf0
-ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
+ms.openlocfilehash: 26f9b35fb4c328dd3b5433d75b6580cbb5f57644
+ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735113"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86218765"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 的 Kubernetes 核心概念
 
@@ -69,14 +69,11 @@ AKS 提供单租户控制平面、专用 API 服务器、计划程序等。你�
 
 节点的 Azure VM 大小定义了 CPU 数量、内存大小以及可用存储的大小和类型（如高性能 SSD 或常规 HDD）。 如果预计需要大量 CPU 和内存或高性能存储的应用程序，则相应地规划节点大小。 还可以根据需要横向扩展 AKS 群集中的节点数。
 
-在 AKS 中，群集中节点的 VM 映像当前基于 Ubuntu Linux。 创建 AKS 群集或横向扩展节点数时，Azure 平台会创建所请求数量的 VM 并对其进行配置。 无需执行手动配置。
+在 AKS 中，群集中节点的 VM 映像当前基于 Ubuntu Linux 或 Windows Server 2019。 创建 AKS 群集或横向扩展节点数时，Azure 平台会创建所请求数量的 VM 并对其进行配置。 无需执行手动配置。
 
-<!--Not Available on Windows Server 2019-->
 <!--Not Available on [Azure reservations][reservation-discounts]-->
 
-如果需要使用不同的容器运行时或包含自定义包，可以使用 [aks-engine][aks-engine] 部署自己的 Kubernetes 群集。 上游 `aks-engine` 正式在 AKS 群集中受支持之前会发布功能并提供配置选项。 例如，如果要使用 Moby 以外的容器运行时，可以使用 `aks-engine` 来配置和部署满足当前需求的 Kubernetes 群集。
-
-<!--Not Available on a different host OS,-->
+如果需要使用不同的主机 OS、容器运行时或包含自定义包，可以使用 [aks-engine][aks-engine] 部署自己的 Kubernetes 群集。 上游 `aks-engine` 正式在 AKS 群集中受支持之前会发布功能并提供配置选项。 例如，如果要使用 Moby 以外的容器运行时，可以使用 `aks-engine` 来配置和部署满足当前需求的 Kubernetes 群集。
 
 ### <a name="resource-reservations"></a>资源预留
 
@@ -112,9 +109,9 @@ kubectl describe node [NODE_NAME]
 
 上述内存和 CPU 分配规则用于保持代理节点正常运行，包括一些对群集运行状况至关重要的托管系统 Pod。 这些分配规则还会使节点报告的可分配内存和 CPU 少于它不是 Kubernetes 群集一部分的情况， 上述资源预留无法更改。
 
-例如，如果一个节点提供 7 GB 内存，它会报告 34% 的内存不可分配（基于硬逐出阈值为 750Mi 的情况）。
+例如，如果一个节点提供 7 GB 内存，它会报告 34% 的内存不可分配，包括 750Mi 硬逐出阈值。
 
-`(0.25*4) + (0.20*3) = + 1 GB + 0.6GB = 1.6GB / 7GB = 22.86% reserved`
+`0.75 + (0.25*4) + (0.20*3) = 0.75GB + 1GB + 0.6GB = 2.35GB / 7GB = 33.57% reserved`
 
 除了 Kubernetes 本身的预留外，基础节点 OS 还预留了一定数量的 CPU 和内存资源以维持 OS 功能的运行。
 
@@ -123,8 +120,6 @@ kubectl describe node [NODE_NAME]
 ### <a name="node-pools"></a>节点池
 
 具有相同配置的节点将统一合并成节点池。 Kubernetes 群集包含一个或多个节点池。 创建 AKS 群集时会定义初始节点数和大小，从而创建默认节点池。 AKS 中的此默认节点池包含运行代理节点的基础 VM。
-
-<!--CORRECT FOR Multiple node pool support in AKS.-->
 
 > [!NOTE]
 > 为确保群集可靠运行，应在默认节点池中至少运行 2（两）个节点。
@@ -135,10 +130,7 @@ kubectl describe node [NODE_NAME]
 
 ### <a name="node-selectors"></a>节点选择器
 
-在包含多个节点池的 AKS 群集中，可能需要告知 Kubernetes 计划程序要将哪个节点池用于给定的资源。 可以通过节点选择器定义各种参数，以控制对 Pod 进行计划的位置。
-
-<!--Not Available on ingress controllers shouldn't run on Windows Server nodes (currently in preview in AKS)-->
-<!--Not Available on  such as the node OS,-->
+在包含多个节点池的 AKS 群集中，可能需要告知 Kubernetes 计划程序要将哪个节点池用于给定的资源。 例如，入口控制器不应在 Windows Server 节点上运行。 可以通过节点选择器定义各种参数（如节点 OS），以控制对 Pod 进行计划的位置。
 
 以下基本示例使用节点选择器 *"beta.kubernetes.io/os": linux* 来计划 Linux 节点上的 NGINX 实例：
 
@@ -216,11 +208,9 @@ spec:
 
 在 Kubernetes 中管理应用程序的常用方法是使用 [Helm][helm]。 可以生成和使用包含应用程序代码打包版本和 Kubernetes YAML 清单的现有公共 Helm chart 来部署资源。 这些 Helm chart 可以存储在本地，通常也可以存储在远程存储库中，例如 [Azure 容器注册表 Helm chart 存储库][acr-helm]。
 
-为使用 Helm，Kubernetes 群集中会安装名为 Tiller 的服务器组件。 Tiller 管理群集中 chart 的安装。 Helm 客户端本身安装在本地计算机上，也可以在 [Azure 本地 Shell][azure-cloud-shell] 中使用。 可以使用客户端搜索或创建 Helm chart，然后将其安装到 Kubernetes 群集。
+若要使用 Helm，请在计算机上安装 Helm 客户端。 可以使用客户端搜索或创建 Helm chart，然后将其安装到 Kubernetes 群集。 有关详细信息，请参阅[在 AKS 中使用 Helm 安装现有应用程序][aks-helm]。
 
-![Helm 包括客户端组件和服务器端 Tiller 组件，用于在 Kubernetes 群集内创建资源](media/concepts-clusters-workloads/use-helm.png)
-
-有关详细信息，请参阅[在 Azure Kubernetes 服务 (AKS) 中使用 Helm 安装应用程序][aks-helm]。
+<!--Not Available on  or use the Helm client in the [Azure local Shell][azure-cloud-shell]-->
 
 ## <a name="statefulsets-and-daemonsets"></a>StatefulSet 和 DaemonSet
 
@@ -286,7 +276,8 @@ Kubernetes 资源（如 Pod 和部署）以逻辑方式分组到命名空间中�
 [kubernetes-daemonset]: https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/
 [kubernetes-namespaces]: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
 [helm]: https://helm.sh/
-[azure-cloud-shell]: https://shell.azure.com
+
+<!--Not Available on [azure-cloud-shell]: https://shell.azure.com-->
 
 <!-- INTERNAL LINKS -->
 

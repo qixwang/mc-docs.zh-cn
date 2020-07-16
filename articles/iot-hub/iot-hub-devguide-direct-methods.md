@@ -9,12 +9,12 @@ origin.date: 07/17/2018
 ms.custom: H1Hack27Feb2017
 ms.date: 03/23/2020
 ms.author: v-yiso
-ms.openlocfilehash: a58407b6c4465e07f45434d18a3ead91646b1f06
-ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
+ms.openlocfilehash: b4a9ae5c684a8e9c33b22b79c38c71a049961785
+ms.sourcegitcommit: 9bc3e55f01e0999f05e7b4ebaea95f3ac91d32eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84186622"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86225984"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>了解和调用 IoT 中心的直接方法
 借助 IoT 中心，用户可以从云中对设备调用直接方法。 直接方法表示与设备进行的请求-答复式交互，类似于会立即成功或失败（在用户指定的超时时间后）的 HTTP 调用。 此方法用于即时操作过程不同的情况，即时操作的不同取决于设备能否响应。
@@ -39,7 +39,7 @@ ms.locfileid: "84186622"
 
 直接方法是同步的，在超时期限（默认：30 秒，可设置为 5 到 300 秒）。 直接方法适用于交互式场景，即当且仅当设备处于联机状态且可接收命令时，用户希望设备做出响应。 例如，打开手机的灯。 在此类方案中，用户需要立即看到结果是成功还是失败，以便云服务可以尽快根据结果进行操作。 设备可能返回某些消息正文作为方法的结果，但系统不会要求方法一定这样做。 无法保证基于方法调用的排序或者任何并发语义。
 
-直接方法从云端只能通过 HTTPS 调用，从设备端可以通过 MQTT 或 AMQP 调用。
+直接方法从云端只能通过 HTTPS 调用，从设备端可以通过 MQTT、AMQP、基于 WebSocket 的 MQTT 或 基于 WebSockets 的 AMQP 调用。
 
 方法请求和响应的有效负载为最大 128 KB 的 JSON 文档。
 

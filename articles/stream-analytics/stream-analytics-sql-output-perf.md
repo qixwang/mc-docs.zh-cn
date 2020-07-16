@@ -7,19 +7,19 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 03/18/2019
-ms.date: 06/12/2020
-ms.openlocfilehash: 81f73bcb359423f117041119c74a0f0889bd16de
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.date: 07/06/2020
+ms.openlocfilehash: 91b6393ffdd16830c18b72bbb1651604fdae7514
+ms.sourcegitcommit: 9bc3e55f01e0999f05e7b4ebaea95f3ac91d32eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723311"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86226023"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>从 Azure 流分析输出到 Azure SQL 数据库
 
-本文提供有关在使用 Azure 流分析将数据载入 SQL Azure 数据库时，如何提高写入吞吐量性能的提示。
+本文提供有关在使用 Azure 流分析将数据载入 Azure SQL 数据库时，如何提高写入吞吐量性能的提示。
 
-Azure 流分析中的 SQL 输出支持使用并行写入作为一个选项。 此选项允许[完全并行](stream-analytics-parallelization.md#embarrassingly-parallel-jobs)作业拓扑，其中，多个输出分区将并行写入到目标表。 但是，在 Azure 流分析中启用此选项可能并不足以提高吞吐量，因为此选项严重依赖于 SQL Azure 数据库配置和表架构。 选择的索引、群集键、索引填充因子和压缩都会对加载表所需的时间产生影响。 有关如何基于内部基准优化 SQL Azure 数据库以提高查询和加载性能的详细信息，请参阅 [SQL 数据库性能指南](../sql-database/sql-database-performance-guidance.md)。 与 SQL Azure 数据库并行编写时，无法保证写入顺序。
+Azure 流分析中的 SQL 输出支持使用并行写入作为一个选项。 此选项允许[完全并行](stream-analytics-parallelization.md#embarrassingly-parallel-jobs)作业拓扑，其中，多个输出分区将并行写入到目标表。 但是，在 Azure 流分析中启用此选项可能并不足以提高吞吐量，因为此选项严重依赖于 Azure SQL 数据库配置和表架构。 选择的索引、群集键、索引填充因子和压缩都会对加载表所需的时间产生影响。 有关如何基于内部基准优化 Azure SQL 数据库以提高查询和加载性能的详细信息，请参阅 [SQL 数据库性能指南](../sql-database/sql-database-performance-guidance.md)。 与 SQL 数据库并行编写时，无法保证写入顺序。
 
 下面是每个服务中一些可以帮助提高解决方案整体吞吐量的配置。
 
@@ -42,7 +42,7 @@ Azure 流分析中的 SQL 输出支持使用并行写入作为一个选项。 �
 
 ## <a name="azure-data-factory-and-in-memory-tables"></a>Azure 数据工厂和内存中表
 
-- **用作临时表的内存中表** - 使用[内存中表](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)可以大大提高数据加载速度，但内存必须能够装得下这些数据。 基准测试表明，从内存中表批量加载到基于磁盘的表，比使用单个写入器直接批量插入到包含标识列和聚集索引的基于磁盘的表的速度大约要快 10 倍。 若要利用这种批量插入性能，请设置一个[使用 Azure 数据工厂的复制作业](/data-factory/connector-azure-sql-database)，用于将数据从内存中表复制到基于磁盘的表。
+- **用作临时表的内存中表** - 使用[内存中表](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)可以大大提高数据加载速度，但内存必须能够装得下这些数据。 基准测试表明，从内存中表批量加载到基于磁盘的表，比使用单个写入器直接批量插入到包含标识列和聚集索引的基于磁盘的表的速度大约要快 10 倍。 若要利用这种批量插入性能，请设置一个[使用 Azure 数据工厂的复制作业](/data-factory/connector-azure-sql-database.md)，用于将数据从内存中表复制到基于磁盘的表。
 
 ## <a name="avoiding-performance-pitfalls"></a>避免性能陷阱
 批量插入数据比通过单次插入加载数据的速度要快得多，因为避免了传输数据、分析 insert 语句、运行该语句以及发出事务记录的重复开销。 因而在存储引擎中使用更高效的路径流式传输数据。 但是，此路径的设置成本比基于磁盘的表中的单个 insert 语句的成本要高得多。 保本点通常约为 100 行，如果超过此数量，批量加载几乎总是更高效。 

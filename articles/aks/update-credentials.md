@@ -5,14 +5,16 @@ description: 了解如何为 Azure Kubernetes 服务 (AKS) 群集更新或重置
 services: container-service
 ms.topic: article
 origin.date: 03/11/2019
-ms.date: 05/25/2020
+ms.date: 07/13/2020
+ms.testscope: no
+ms.testdate: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: 282f5c9fac4640b82bf8b0708bcfa8a5eeb5682c
-ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
+ms.openlocfilehash: 93c78c757065ac28994273717c684e9c526b21b2
+ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735058"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86218793"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>更新或轮换 Azure Kubernetes 服务 (AKS) 的凭据
 
@@ -20,7 +22,7 @@ ms.locfileid: "83735058"
 
 还可以[将 AKS 群集与 Azure Active Directory 集成][aad-integration]，并将其用作群集的身份验证提供程序。 在这种情况下，你将为群集、AAD 服务器应用和 AAD 客户端应用创建另外 2 个标识，还可以重置这些凭据。
 
-<!--Not Avaialble on managed identity-->
+或者，可以使用托管标识而不是服务主体来获得权限。 托管标识比服务主体更易于管理，并且不需要更新或轮换。 有关详细信息，请参阅[使用托管标识](use-managed-identity.md)。
 
 ## <a name="before-you-begin"></a>准备阶段
 
@@ -35,7 +37,7 @@ ms.locfileid: "83735058"
 
 ### <a name="reset-existing-service-principal-credential"></a>重置现有的服务主体凭据
 
-若要为现有服务主体更新凭据，请使用 [az aks show][az-aks-show] 命令获取群集的服务主体 ID。 以下示例获取 myResourceGroup 资源组中名为 myAKSCluster 的群集的 ID 。 服务主体 ID 设置为名为“SP_ID”变量以供在其他命令中使用。
+若要为现有服务主体更新凭据，请使用 [az aks show][az-aks-show] 命令获取群集的服务主体 ID。 以下示例获取 myResourceGroup 资源组中名为 myAKSCluster 的群集的 ID 。 服务主体 ID 设置为名为“SP_ID”变量以供在其他命令中使用。 这些命令使用 Bash 语法。
 
 ```azurecli
 SP_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster \
@@ -71,7 +73,7 @@ az ad sp create-for-rbac --skip-assignment
 }
 ```
 
-现在使用自己的 [az ad sp create-for-rbac][az-ad-sp-create] 命令的输出为服务主体 ID 和客户端密码定义变量，如下面的示例所示。 SP_ID是你的 appId，而 SP_SECRET 是你的密码：
+现在使用自己的 [az ad sp create-for-rbac][az-ad-sp-create] 命令的输出为服务主体 ID 和客户端密码定义变量，如下面的示例所示。 SP_ID 是 appId，SP_SECRET 是 password：
 
 ```console
 SP_ID=7d837646-b1f3-443d-874c-fd83c7c739c5

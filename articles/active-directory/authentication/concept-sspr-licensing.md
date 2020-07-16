@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 04/24/2020
+ms.date: 07/07/2020
 ms.author: v-junlch
 author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de07a5fd80e85641d07ef486a375be690f584ee2
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: bfc5125244deb4634067e83d346f84663acf81a0
+ms.sourcegitcommit: 92b9b1387314b60661f5f62db4451c9ff2c49500
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126223"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165017"
 ---
 # <a name="licensing-requirements-for-azure-active-directory-self-service-password-reset"></a>Azure Active Directory 自助式密码重置的许可要求
 
-为了减少用户无法登录到其设备或应用程序时的支持人员呼叫和生产力损失，可以为 Azure Active Directory (Azure AD) 中的用户帐户启用自助式密码重置 (SSPR)。 构成 SSPR 的功能包括密码更改、重置、解锁和写回到本地目录。 Office 365 用户和所有 Azure AD 用户都可以免费使用基本的 SSPR 功能。
+为了减少用户无法登录到其设备或应用程序时的支持人员呼叫和生产力损失，可以为 Azure Active Directory (Azure AD) 中的用户帐户启用自助式密码重置 (SSPR)。 构成 SSPR 的功能包括密码更改、重置、解锁和写回到本地目录。 可在 Microsoft 365 商业标准版或更高版本以及所有 Azure AD Premium SKU 中免费使用基本 SSPR 功能。
 
 本文详细介绍了可以许可和使用自助式密码重置的各种方法。 有关定价和计费的具体详细信息，请参阅 [Azure AD 定价页](https://www.azure.cn/pricing/details/active-directory/)。
 
@@ -30,14 +30,14 @@ SSPR 按用户许可。 为了保持合规性，组织需要为其用户分配�
 
 下表概述了需要进行密码更改、重置或本地写回的各种 SSPR 场景，以及哪些 SKU 提供此功能。
 
-| 功能 | Azure AD Free | Office 365 商业高级版 | Microsoft 365 商业版 | Azure AD Premium P1 或 P2 |
+| 功能 | Azure AD Free | Microsoft 365 商业标准版 | Microsoft 365 商业高级版 | Azure AD Premium P1 或 P2 |
 | --- |:---:|:---:|:---:|:---:|
 | **仅限云的用户密码更改**<br />Azure AD 中的用户知道自己的密码，并希望将其更改为新密码。 | ● | ● | ● | ● |
 | **仅限云的用户密码重置**<br />Azure AD 中的用户忘记了自己的密码，需要对其进行重置。 | | ● | ● | ● |
 | **带本地写回功能的混合用户密码更改或重置**<br />使用 Azure AD Connect 从本地目录同步的 Azure AD 中的用户想要更改或重置其密码并将新密码写回到本地。 | | | ● | ● |
 
 > [!WARNING]
-> 独立的 Office 365 许可计划不支持带本地写回的 SSPR。 那些 Office 365 许可计划需要使用 Azure AD Premium P1、Premium P2 或 Microsoft 365 商业版才能使用此功能。
+> 独立的 Microsoft 365 基本和标准许可计划不支持具有本地写回功能的 SSPR。 本地写回功能需要 Azure AD Premium P1、Premium P2 或 Microsoft 365 商业高级版。
 
 有关其他许可信息（包括成本），请参阅以下页面：
 
@@ -51,7 +51,7 @@ SSPR 按用户许可。 为了保持合规性，组织需要为其用户分配�
 
 Azure AD 支持基于组的许可。 管理员可以将许可证批量分配给一组用户，而不是一次一个用户地分配。 有关详细信息，请参阅[分配、验证许可证和解决许可证问题](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses)。
 
-某些 Microsoft 服务并非在所有位置都可以使用。 将许可证分配给用户之前，管理员必须为该用户指定“使用位置”  属性。 可在 Azure 门户中的“用户” > “配置文件” > “设置”部分下完成分配许可证    。 *使用组许可证分配时，任何没有指定使用位置的用户将继承该目录的位置。*
+某些 Microsoft 服务并非在所有位置都可以使用。 将许可证分配给用户之前，管理员必须为该用户指定“使用位置”属性。 可在 Azure 门户中的“用户” > “配置文件” > “设置”部分下完成分配许可证  。 *使用组许可证分配时，任何没有指定使用位置的用户将继承该目录的位置。*
 
 ## <a name="next-steps"></a>后续步骤
 
