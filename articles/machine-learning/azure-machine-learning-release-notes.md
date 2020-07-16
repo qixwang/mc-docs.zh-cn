@@ -264,7 +264,7 @@ ms.locfileid: "85097470"
     + 当使用一个嵌入到 ModuleStep 中的模块时，允许使用 regenerate_outputs 选项。
   + **azureml-train-automl-client**
     + 弃用了 AutoML 的 Tensorflow 模型。
-    + 修复了用户在本地模式下将不受支持的算法列入白名单的问题
+    + 修复了用户在本地模式下将不受支持的算法列入允许列表的问题
     + 修复了 AutoMLConfig 的文档。
     + 在 AutoMLConfig 中对 cv_split_indices 输入强制执行数据类型检查。
     + 修复了 show_output 中的 AutoML 运行失败问题
