@@ -4,21 +4,20 @@ description: 了解如何使用位置条件基于用户的网络位置来控制�
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
-ms.workload: identity
-ms.date: 07/01/2020
+ms.topic: conceptual
+ms.date: 07/08/2020
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: d9affc0e03eb0acfdc785e48cf5faba9a55ebf36
-ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
+ms.openlocfilehash: e0aeff993136d04ae046cea344051f4463743a1a
+ms.sourcegitcommit: 92b9b1387314b60661f5f62db4451c9ff2c49500
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85945044"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86164998"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>在条件访问策略中使用位置条件 
 
@@ -141,6 +140,30 @@ ms.locfileid: "85945044"
 ### <a name="selected-locations"></a>选定的位置
 
 使用此选项可以选择一个或多个命名位置。 对于要应用此设置的策略，用户需要从任一选定位置建立连接。 单击“选择”时，将会打开显示命名网络列表的命名网络选择控件。 此列表还显示网络位置是否已标记为可信。 名为“MFA 受信任的 IP”的命名位置用于包含可在多重身份验证服务设置页中配置的 IP 设置。
+
+## <a name="ipv6-traffic"></a>IPv6 流量
+
+默认情况下，条件访问策略将应用于所有 IPv6 流量。 使用[命名位置预览](#preview-features)，可以从条件访问策略中排除特定的 IPv6 地址范围。 当不想针对特定 IPv6 范围强制执行策略时，此选项非常有用。 例如，如果不想强制执行针对企业网络使用的策略，且企业网络托管在公共 IPv6 范围内。  
+
+### <a name="when-will-my-tenant-have-ipv6-traffic"></a>我的租户什么时候会有 IPv6 流量？
+
+Azure Active Directory (Azure AD) 当前不支持使用 IPv6 的直接网络连接。 但在某些情况下，身份验证流量是通过其他服务代理的。 在这些情况下，将在策略评估期间使用 IPv6 地址。
+
+通过代理发送到 Azure AD 的大多数 IPv6 流量来自 Microsoft Exchange Online。 如果可行，Exchange 会首选 IPv6 连接。 **因此，如果你有针对特定 IPv4 范围配置的 Exchange 条件访问策略，需要确保你还添加了组织的 IPv6 范围。** 如果不包含 IPv6 范围，会导致在以下两种情况下出现意外行为：
+
+- 使用邮件客户端通过旧版身份验证连接到 Exchange Online 时，Azure AD 可能会收到 IPv6 地址。 初始身份验证请求转到 Exchange，然后通过代理发送到 Azure AD。
+- 当在浏览器中使用 Outlook Web Access (OWA) 时，它将定期验证是否仍然满足所有条件访问策略。 此检查用于发现用户可能已从允许的 IP 地址移动到新位置（例如街上的咖啡店）的情况。 在这种情况下，如果使用的是 IPv6 地址并且 IPv6 地址不在配置的范围内，用户的会话可能会中断，并被定向回 Azure AD 进行重新验证。 
+
+这些是可能需要在命名位置配置 IPv6 范围的最常见原因。 另外，如果使用的是 Azure VNet，会收到来自 IPv6 地址的流量。 如果有条件访问策略阻止了 VNet 流量，请检查 Azure AD 登录日志。 识别流量后，就可以获取正在使用的 IPv6 地址，并将其从策略中排除。 
+
+> [!NOTE]
+> 如果要为单个地址指定 IP CIDR 范围，请应用 /32 位掩码。 如果 IPv6 地址是 2607:fb90:b27a:6f69:f8d5:dea0:fb39:74a，并想从地址范围中排除该单一地址，应使用 2607:fb90:b27a:6f69:f8d5:dea0:fb39:74a/32。
+
+### <a name="identifying-ipv6-traffic-in-the-azure-ad-sign-in-activity-reports"></a>在 Azure AD 登录活动报告中标识 IPv6 流量
+
+可以通过转到 [Azure AD 登录活动报告](../reports-monitoring/concept-sign-ins.md)来发现租户中的 IPv6 流量。 打开活动报告后，添加“IP 地址”列。 可通过此列标识 IPv6 流量。
+
+还可以通过单击报告中的行，然后转到登录活动详细信息中的“位置”选项卡来查找客户端 IP。 
 
 ## <a name="what-you-should-know"></a>要点
 

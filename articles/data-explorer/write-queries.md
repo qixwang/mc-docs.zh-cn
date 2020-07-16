@@ -7,13 +7,13 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 04/07/2019
-ms.date: 05/09/2020
-ms.openlocfilehash: b8e026dc705f12e710f3360f889bb891d3e98fb8
-ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
+ms.date: 07/08/2020
+ms.openlocfilehash: 7e5cba2fe4bf757a9502801e6d3589b54d96a0b8
+ms.sourcegitcommit: 5fb9ae9adc04e79d6d0e78c9e69dbe8aa3ceb00a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83417551"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86100214"
 ---
 # <a name="write-queries-for-azure-data-explorer"></a>Azure 数据资源管理器的编写查询
 
@@ -23,7 +23,7 @@ ms.locfileid: "83417551"
 
 可以通过以下两种方式之一运行本文中的查询：
 
-- 在 Azure 数据资源管理器的“帮助群集”  上，我们已设置辅助学习。
+- 在 Azure 数据资源管理器的“帮助群集”上，我们已设置辅助学习。
     使用属于 Azure Active Directory 成员的组织电子邮件帐户[登录到群集](https://dataexplorer.azure.cn/clusters/help/databases/samples)。
 
 - 在你自己的群集上，其中包括 StormEvents 示例数据。 有关详细信息，请参阅[快速入门：创建 Azure 数据资源管理器群集和数据库](create-cluster-database-portal.md)和[将示例数据引入到 Azure 数据资源管理器](ingest-sample-data.md)。
@@ -32,7 +32,7 @@ ms.locfileid: "83417551"
 
 ## <a name="overview-of-the-query-language"></a>查询语言概述
 
-Azure 数据资源管理器中的查询语言是处理数据并返回结果的只读请求。 该请求用纯文本形式表示，使用的数据流模型旨在使语法更易于阅读、创作和自动执行。 该查询使用以类似于 SQL 的层次结构组织的架构实体：数据库、表和列。
+Azure 数据资源管理器中的查询是处理数据并返回结果的只读请求。 该请求用纯文本形式表示，使用的数据流模型旨在使语法更易于阅读、创作和自动执行。 该查询使用以类似于 SQL 的层次结构组织的架构实体：数据库、表和列。
 
 该查询包含一系列由分号 (`;`) 分隔的查询语句，至少有一个语句是表格表达式语句，该语句可以生成按列和行的表式网格排列的数据。 查询的表格表达式语句生成查询结果。
 
@@ -62,13 +62,13 @@ StormEvents
 
 本部分介绍的运算符是在 Azure 数据资源管理器中了解查询的构建基块。 你编写的大多数查询将包含其中一些运算符。
 
-若要在帮助群集上运行查询：选择每个查询上方的“单击以运行查询”  。
+若要在帮助群集上运行查询：选择每个查询上方的“单击以运行查询”。
 
 若要在自己的群集上运行查询：
 
 1. 将每个查询复制到基于 Web 的查询应用程序，然后选择查询，或将光标置于查询中。
 
-1. 在应用程序顶部，选择“运行”  。
+1. 在应用程序顶部，选择“运行”。
 
 ### <a name="count"></a>count
 
@@ -84,9 +84,9 @@ StormEvents | count
 
 ### <a name="take"></a>take
 
-[take  ](https://docs.microsoft.com/azure/data-explorer/kusto/query/takeoperator)：返回最多指定数量的数据行。
+[take](https://docs.microsoft.com/azure/data-explorer/kusto/query/takeoperator)：返回最多指定数量的数据行。
 
-以下查询从 StormEvents 表返回 5 行。 关键字“limit”  是“take”  的别名。
+以下查询从 StormEvents 表返回 5 行。 关键字“limit”是“take”的别名。
 
 **\[** [**单击以运行查询**](https://dataexplorer.azure.cn/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVqhRKEnMTlUwBQDEz2b8FAAAAA%3d%3d) **\]**
 
@@ -99,7 +99,7 @@ StormEvents | take 5
 
 ### <a name="project"></a>project
 
-[project  ](https://docs.microsoft.com/azure/data-explorer/kusto/query/projectoperator)：选择列的子集。
+[project](https://docs.microsoft.com/azure/data-explorer/kusto/query/projectoperator)：选择列的子集。
 
 以下查询将返回一组特定的列。
 
@@ -147,7 +147,7 @@ StormEvents
 
 ### <a name="top"></a>top
 
-[top  ](https://docs.microsoft.com/azure/data-explorer/kusto/query/topoperator)：返回按指定列排序的前 *N* 列。
+[top](https://docs.microsoft.com/azure/data-explorer/kusto/query/topoperator)：返回按指定列排序的前 *N* 列。
 
 以下查询返回与上面相同的结果，并减少了一个运算符。
 
@@ -162,7 +162,7 @@ StormEvents
 
 ### <a name="extend"></a>extend
 
-[extend  ](https://docs.microsoft.com/azure/data-explorer/kusto/query/extendoperator)：计算派生的列。
+[extend](https://docs.microsoft.com/azure/data-explorer/kusto/query/extendoperator)：计算派生的列。
 
 以下查询通过计算每行中的值来创建新列。
 
@@ -180,7 +180,7 @@ StormEvents
 
 ### <a name="summarize"></a>summarize
 
-[summarize  ](https://docs.microsoft.com/azure/data-explorer/kusto/query/summarizeoperator)：聚合行组。
+[summarize](https://docs.microsoft.com/azure/data-explorer/kusto/query/summarizeoperator)：聚合行组。
 
 以下查询返回按 `State` 统计的事件计数。
 
@@ -191,9 +191,9 @@ StormEvents
 | summarize event_count = count() by State
 ```
 
-summarize  运算符将在 by  子句中拥有相同值的行组合在一起，然后使用聚合函数（如 count  ）将每个组合并到单个行。 因此，在此情况下，每个州都有相应的行，还有一个列，用来表示该州的行计数。
+summarize 运算符将在 by 子句中拥有相同值的行组合在一起，然后使用聚合函数（如 count）将每个组合并到单个行。 因此，在此情况下，每个州都有相应的行，还有一个列，用来表示该州的行计数。
 
-有一系列聚合函数，并且可以在一个 summarize  运算符中使用其中多个函数，以生成多个计算列。 例如，可以获取每个州的风暴计数，以及每个州的唯一风暴数，然后使用 top  来获取受风暴影响最大的州。
+有一系列聚合函数，并且可以在一个 summarize 运算符中使用其中多个函数，以生成多个计算列。 例如，可以获取每个州的风暴计数，以及每个州的唯一风暴数，然后使用 top 来获取受风暴影响最大的州。
 
 **\[** [**单击以运行查询**](https://dataexplorer.azure.cn/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSguzc1NLMqsSlUIBkk455fmlSjYKiSDaA1NHYWQyoJU%2fzSwXDFQPAUiAdYPktJUSKoE6kwsSQUZVpJfoGAKEYGblZJanAwAgbFb73QAAAA%3d) **\]**
 
@@ -203,9 +203,9 @@ StormEvents
 | top 5 by StormCount desc
 ```
 
-summarize  运算的结果是：
+summarize 运算的结果是：
 
-- 以 by  命名的各列
+- 以 by 命名的各列
 
 - 每个计算表达式相应的列
 
@@ -213,7 +213,7 @@ summarize  运算的结果是：
 
 ### <a name="render"></a>render
 
-[render  ](https://docs.microsoft.com/azure/data-explorer/kusto/query/renderoperator)：以图形输出的形式呈现结果。
+[render](https://docs.microsoft.com/azure/data-explorer/kusto/query/renderoperator)：以图形输出的形式呈现结果。
 
 以下查询显示柱形图。
 
@@ -263,7 +263,7 @@ StormEvents
 ```
 
 > [!NOTE]
-> render  运算符为客户端功能，而不是引擎的一部分。 它被集成到语言以方便使用。 Web 应用程序支持以下选项：条形图、柱形图、饼图、时间表和线形图。 
+> render 运算符为客户端功能，而不是引擎的一部分。 它被集成到语言以方便使用。 Web 应用程序支持以下选项：条形图、柱形图、饼图、时间表和线形图。 
 
 ## <a name="scalar-operators"></a>标量运算符
 
@@ -285,7 +285,7 @@ StormEvents
 
 ### <a name="case"></a>case()
 
-[case()  ](https://docs.microsoft.com/azure/data-explorer/kusto/query/casefunction)：计算谓词列表，并返回第一个满足其谓词的结果表达式，或最终的 else 表达式  。 此运算符可用于分类或分组数据：
+[case()](https://docs.microsoft.com/azure/data-explorer/kusto/query/casefunction)：计算谓词列表，并返回第一个满足其谓词的结果表达式，或最终的 else 表达式。 此运算符可用于分类或分组数据：
 
 以下查询将返回一个新列 `deaths_bucket`，并按编号对死亡进行分组。
 
@@ -316,11 +316,11 @@ MyData
 | extend Duration = extract("Duration=([0-9.]+)", 1, Trace, typeof(real)) * time(1s)
 ```
 
-此查询使用 let  语句，将名称（在此情况下为 `MyData`）绑定到表达式。 对于范围中的其余部分，其中出现 let  语句（全局范围或在函数正文范围内），可以使用名称来引用其绑定值。
+此查询使用 let 语句，将名称（在此情况下为 `MyData`）绑定到表达式。 对于范围中的其余部分，其中出现 let 语句（全局范围或在函数正文范围内），可以使用名称来引用其绑定值。
 
 ### <a name="parse_json"></a>parse_json()
 
-[**parse_json()** ](https://docs.microsoft.com/azure/data-explorer/kusto/query/parsejsonfunction)：将字符串解释为 JSON 值并以动态方式返回值。 当需要提取 JSON 复合对象的多个元素时，使用它比使用 extractjson()  函数更好。
+[**parse_json()** ](https://docs.microsoft.com/azure/data-explorer/kusto/query/parsejsonfunction)：将字符串解释为 JSON 值并以动态方式返回值。 当需要提取 JSON 复合对象的多个元素时，使用它比使用 extractjson() 函数更好。
 
 以下查询从数组中提取 JSON 元素。
 
@@ -385,7 +385,7 @@ range offset from -1 to 1 step 1
 | project weekStart = startofweek(now(), offset),offset
 ```
 
-此查询使用 range  运算符，将生成单列值表。 另请参阅：[startofday()  ](https://docs.microsoft.com/azure/data-explorer/kusto/query/startofdayfunction)、[startofweek()  ](https://docs.microsoft.com/azure/data-explorer/kusto/query/startofweekfunction)、[startofyear()  ](https://docs.microsoft.com/azure/data-explorer/kusto/query/startofyearfunction))、[startofmonth()  ](https://docs.microsoft.com/azure/data-explorer/kusto/query/startofmonthfunction)、[endofday()  ](https://docs.microsoft.com/azure/data-explorer/kusto/query/endofdayfunction)、[endofweek()  ](https://docs.microsoft.com/azure/data-explorer/kusto/query/endofweekfunction)、[endofmonth()  ](https://docs.microsoft.com/azure/data-explorer/kusto/query/endofmonthfunction) 和 [endofyear()  ](https://docs.microsoft.com/azure/data-explorer/kusto/query/endofyearfunction)。
+此查询使用 range 运算符，将生成单列值表。 另请参阅：[startofday()](https://docs.microsoft.com/azure/data-explorer/kusto/query/startofdayfunction)、[startofweek()](https://docs.microsoft.com/azure/data-explorer/kusto/query/startofweekfunction)、[startofyear()](https://docs.microsoft.com/azure/data-explorer/kusto/query/startofyearfunction))、[startofmonth()](https://docs.microsoft.com/azure/data-explorer/kusto/query/startofmonthfunction)、[endofday() ](https://docs.microsoft.com/azure/data-explorer/kusto/query/endofdayfunction)、[endofweek() ](https://docs.microsoft.com/azure/data-explorer/kusto/query/endofweekfunction)、[endofmonth() ](https://docs.microsoft.com/azure/data-explorer/kusto/query/endofmonthfunction) 和 [endofyear() ](https://docs.microsoft.com/azure/data-explorer/kusto/query/endofyearfunction)。
 
 ### <a name="between"></a>between()
 
@@ -413,7 +413,7 @@ StormEvents
 
 ## <a name="tabular-operators"></a>表格运算符
 
-Kusto 有多个表格运算符，本文的其他部分介绍了其中一些运算符。 此处我们将重点介绍 parse  。 
+Kusto 有多个表格运算符，本文的其他部分介绍了其中一些运算符。 此处我们将重点介绍 parse。 
 
 ### <a name="parse"></a>parse
 
@@ -477,7 +477,7 @@ MyTrace
 
 ### <a name="make-series"></a>make-series
 
-[make-series  ](https://docs.microsoft.com/azure/data-explorer/kusto/query/make-seriesoperator)：将 [summarize](https://docs.microsoft.com/azure/data-explorer/kusto/query/summarizeoperator) 之类的行组聚合在一起，但每个 by 值组合会生成一个（时间）序列向量。
+[make-series](https://docs.microsoft.com/azure/data-explorer/kusto/query/make-seriesoperator)：将 [summarize](https://docs.microsoft.com/azure/data-explorer/kusto/query/summarizeoperator) 之类的行组聚合在一起，但每个 by 值组合会生成一个（时间）序列向量。
 
 以下查询将返回一组有关每日风暴事件计数的时间序列。 该查询涵盖了每个州三个月的时段，用常数 0 填充缺少的量化：
 
@@ -506,7 +506,7 @@ StormEvents
 
 ## <a name="advanced-aggregations"></a>高级聚合
 
-本文前面部分介绍了基本聚合，如 count  和 summarize  。 本部分将介绍更高级的选项。
+本文前面部分介绍了基本聚合，如 count 和 summarize。 本部分将介绍更高级的选项。
 
 ### <a name="top-nested"></a>top-nested
 
@@ -543,7 +543,7 @@ StormEvents
 
 ### <a name="dcount"></a>dcount()
 
-[**dcount()** ](https://docs.microsoft.com/azure/data-explorer/kusto/query/dcount-aggfunction)：返回对组中某个表达式的非重复值数的估计值。 使用 [count()  ](https://docs.microsoft.com/azure/data-explorer/kusto/query/countoperator) 来计数所有值。
+[**dcount()** ](https://docs.microsoft.com/azure/data-explorer/kusto/query/dcount-aggfunction)：返回对组中某个表达式的非重复值数的估计值。 使用 [count()](https://docs.microsoft.com/azure/data-explorer/kusto/query/countoperator) 来计数所有值。
 
 以下查询根据 `State` 来计数非重复 `Source`。
 
@@ -570,7 +570,7 @@ StormEvents
 
 ### <a name="dcount_hll"></a>dcount_hll()
 
-[**dcount_hll()** ](https://docs.microsoft.com/azure/data-explorer/kusto/query/dcount-hllfunction)：从 HyperLogLog 结果计算 dcount  （由 [**hll**](https://docs.microsoft.com/azure/data-explorer/kusto/query/hll-aggfunction) or [**hll_merge**](https://docs.microsoft.com/azure/data-explorer/kusto/query/hll-merge-aggfunction) 生成）。
+[**dcount_hll()** ](https://docs.microsoft.com/azure/data-explorer/kusto/query/dcount-hllfunction)：从 HyperLogLog 结果计算 dcount（由 [**hll**](https://docs.microsoft.com/azure/data-explorer/kusto/query/hll-aggfunction) or [**hll_merge**](https://docs.microsoft.com/azure/data-explorer/kusto/query/hll-merge-aggfunction) 生成）。
 
 以下查询使用 HLL 算法来生成计数。
 
@@ -632,7 +632,7 @@ FloodDataSet
 
 ### <a name="percentiles"></a>percentiles()
 
-[**percentiles()** ](https://docs.microsoft.com/azure/data-explorer/kusto/query/percentiles-aggfunction)：返回表达式定义的人口中指定[**最近排名百分位数**](https://docs.microsoft.com/azure/data-explorer/kusto/query/percentiles-aggfunction)的估计值。 准确性取决于百分位区域中的填充密度。 只能在 [summarize  ](https://docs.microsoft.com/azure/data-explorer/kusto/query/summarizeoperator) 内的聚合上下文中使用。
+[**percentiles()** ](https://docs.microsoft.com/azure/data-explorer/kusto/query/percentiles-aggfunction)：返回表达式定义的人口中指定[**最近排名百分位数**](https://docs.microsoft.com/azure/data-explorer/kusto/query/percentiles-aggfunction)的估计值。 准确性取决于百分位区域中的填充密度。 只能在 [summarize](https://docs.microsoft.com/azure/data-explorer/kusto/query/summarizeoperator) 内的聚合上下文中使用。
 
 以下查询计算风暴持续时间的百分位数。
 
@@ -665,7 +665,7 @@ StormEvents
 
 ### <a name="let"></a>let
 
-[**let**](https://docs.microsoft.com/azure/data-explorer/kusto/query/letstatement)：改进模块化和重复使用。 let  语句可以将潜在的复杂表达式拆分为多个部分，每个部分绑定到一个名称，然后将这些部分组合在一起。 此外，let  语句还可用于创建用户定义的函数和视图（表的结果类似于新表的表达式）。 通过 let  语句绑定的表达式可以是标量类型、表格类型或用户定义的函数 (lambda)。
+[**let**](https://docs.microsoft.com/azure/data-explorer/kusto/query/letstatement)：改进模块化和重复使用。 let 语句可以将潜在的复杂表达式拆分为多个部分，每个部分绑定到一个名称，然后将这些部分组合在一起。 此外，let 语句还可用于创建用户定义的函数和视图（表的结果类似于新表的表达式）。 通过 let 语句绑定的表达式可以是标量类型、表格类型或用户定义的函数 (lambda)。
 
 以下示例创建一个表格类型变量，并在后续表达式中使用。
 
@@ -685,7 +685,7 @@ LightningStorms
 
 ### <a name="join"></a>join
 
-[**join**](https://docs.microsoft.com/azure/data-explorer/kusto/query/joinoperator)：通过匹配每个表中指定列的值，合并两个表的行以组成新表。 Kusto 支持一系列完整的联接类型：fullouter  、inner  、innerunique  、leftanti  、leftantisemi  、leftouter  、leftsemi  、rightanti  、rightantisemi  、rightouter  、rightsemi  。
+[**join**](https://docs.microsoft.com/azure/data-explorer/kusto/query/joinoperator)：通过匹配每个表中指定列的值，合并两个表的行以组成新表。 Kusto 支持一系列完整的联接类型：fullouter、inner、innerunique、leftanti、leftantisemi、leftouter、leftsemi、rightanti、rightantisemi、rightouter 、rightsemi 。
 
 以下示例使用内部联接来联接两个表。
 
@@ -711,11 +711,11 @@ X
 ```
 
 > [!TIP]
-> 在联接前，使用 where  和 project  运算符可以减少输入表中的行数和列数。 如果某个表始终小于另一个表，则将其用作 join 的左侧（通过管道传送）。 join 匹配的列必须具有相同名称。 如有必要，请使用 project  运算符重命名其中一个表中的一列。
+> 在联接前，使用 where 和 project 运算符可以减少输入表中的行数和列数。 如果某个表始终小于另一个表，则将其用作 join 的左侧（通过管道传送）。 join 匹配的列必须具有相同名称。 如有必要，请使用 project 运算符重命名其中一个表中的一列。
 
 ### <a name="serialize"></a>serialize
 
-[**serialize**](https://docs.microsoft.com/azure/data-explorer/kusto/query/serializeoperator)：序列化行集，以便可以使用需要序列化数据的函数，如 row_number()  。
+[**serialize**](https://docs.microsoft.com/azure/data-explorer/kusto/query/serializeoperator)：序列化行集，以便可以使用需要序列化数据的函数，如 row_number()。
 
 以下查询将成功执行，因为已序列化数据。
 
@@ -728,7 +728,7 @@ StormEvents
 | extend row_number = row_number()
 ```
 
-如果行集是以下运算的结果，则同样视为已序列化：sort  、top  或 range  运算符，后可跟 project  、project-away  、extend  、where  、parse  、mv-expand  或 take  运算符。
+如果行集是以下运算的结果，则同样视为已序列化：sort、top 或 range 运算符，后可跟 project、project-away、extend、where、parse、mv-expand 或 take 运算符。
 
 **\[** [**单击以运行查询**](https://dataexplorer.azure.cn/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSguzc1NLMqsSlVIzi%2fNK9HQVEiqVAguSSxJBcvmF5XABRQSi5NBgqkVJal5KQpF%2beXxeaW5SalFCrZIHA1NAEGimf5iAAAA) **\]**
 
@@ -791,7 +791,7 @@ window)
 
 ### <a name="activity_engagement-plugin"></a>activity_engagement 插件
 
-[**activity_engagement plugin**](https://docs.microsoft.com/azure/data-explorer/kusto/query/activity-engagement-plugin)：在滑动时间线窗口中，根据 ID 列计算活动参与比率。 activity_engagement 插件  可用于计算 DAU、WAU 和 MAU（每日、每周和每月的活动用户）。
+[**activity_engagement plugin**](https://docs.microsoft.com/azure/data-explorer/kusto/query/activity-engagement-plugin)：在滑动时间线窗口中，根据 ID 列计算活动参与比率。 activity_engagement 插件可用于计算 DAU、WAU 和 MAU（每日、每周和每月的活动用户）。
 
 以下查询在一个移动的七天窗口中，返回使用每日应用程序的不同用户总数，与使用每周应用程序的不同用户总数之间的比率。
 
@@ -842,7 +842,7 @@ range _day from _start to _end step 1d
 
 ### <a name="new_activity_metrics-plugin"></a>new_activity_metrics 插件
 
-[**new_activity_metrics plugin**](https://docs.microsoft.com/azure/data-explorer/kusto/query/new-activity-metrics-plugin)：为新用户队列计算有用的活动指标（非重复计数值、非重复计数的新值、保留率和改动率）。 此插件的概念类似于 [activity_metrics 插件  ](https://docs.microsoft.com/azure/data-explorer/kusto/query/activity-metrics-plugin)，但关注的是新用户。
+[**new_activity_metrics plugin**](https://docs.microsoft.com/azure/data-explorer/kusto/query/new-activity-metrics-plugin)：为新用户队列计算有用的活动指标（非重复计数值、非重复计数的新值、保留率和改动率）。 此插件的概念类似于 [activity_metrics 插件](https://docs.microsoft.com/azure/data-explorer/kusto/query/activity-metrics-plugin)，但关注的是新用户。
 
 以下查询计算新用户队列（第一周到达的用户）在周间窗口的保留率和改动率。
 

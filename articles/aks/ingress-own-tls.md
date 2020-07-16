@@ -4,15 +4,17 @@ titleSuffix: Azure Kubernetes Service
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 群集中安装和配置使用你自己的证书的 NGINX 入口控制器。
 services: container-service
 ms.topic: article
-origin.date: 04/27/2020
-ms.date: 05/25/2020
+origin.date: 07/02/2020
+ms.date: 07/13/2020
+ms.testscope: yes
+ms.testdate: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: a10f14e1a838f59e2cd404becbfcffea22873c7f
-ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
+ms.openlocfilehash: 993fa46b1747a797c6d8516c6ad33827ce09c782
+ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735080"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86218717"
 ---
 # <a name="create-an-https-ingress-controller-and-use-your-own-tls-certificates-on-azure-kubernetes-service-aks"></a>创建 HTTPS 入口控制器并在 Azure Kubernetes 服务 (AKS) 中使用自己的 TLS 证书
 
@@ -39,15 +41,13 @@ ms.locfileid: "83735080"
 
 若要创建入口控制器，请使用 `Helm` 来安装 *nginx-ingress*。 对于增加的冗余，NGINX 入口控制器的两个副本会在部署时具备 `--set controller.replicaCount` 参数。 若要充分利用正在运行的入口控制器副本，请确保 AKS 群集中有多个节点。
 
-还需要在 Linux 节点上计划入口控制器。 使用 `--set nodeSelector` 参数指定节点选择器，以告知 Kubernetes 计划程序在基于 Linux 的节点上运行 NGINX 入口控制器。
-
-<!--Not Available on  Windows Server nodes shouldn't run the ingress controller.-->
+还需要在 Linux 节点上计划入口控制器。 Windows Server 节点不应运行入口控制器。 使用 `--set nodeSelector` 参数指定节点选择器，以告知 Kubernetes 计划程序在基于 Linux 的节点上运行 NGINX 入口控制器。
 
 > [!TIP]
 > 以下示例为名为 *ingress-basic* 的入口资源创建 Kubernetes 命名空间。 根据需要为你自己的环境指定一个命名空间。 如果 AKS 群集未启用 RBAC，请将 `--set rbac.create=false` 添加到 Helm 命令中。
 
 > [!TIP]
-> 若要为对群集中容器的请求启用[客户端源 IP 保留][client-source-ip]，请将 `--set controller.service.externalTrafficPolicy=Local` 添加到 Helm install 命令中。 客户端源 IP 存储在 X-Forwarded-For 下的请求头中。 使用启用了客户端源 IP 保留的入口控制器时，TLS 传递将不起作用。
+> 若要为对群集中容器的请求启用[客户端源 IP 保留][client-source-ip]，请将 `--set controller.service.externalTrafficPolicy=Local` 添加到 Helm install 命令中。 客户端源 IP 存储在 X-Forwarded-For 下的请求头中。 使用启用了“客户端源 IP 保留”的入口控制器时，TLS 直通将不起作用。
 
 <!--MOONCAKE: Add --set defaultBackend.image.repository=gcr.azk8s.cn/google_containers/defaultbackend-amd64-->
 
@@ -68,7 +68,13 @@ helm install nginx-ingress stable/nginx-ingress \
 
 在安装过程中，将为入口控制器创建一个 Azure 公共 IP 地址。 此公共 IP 地址在入口控制器的寿命期内是静态的。 如果你删除入口控制器，则公共 IP 地址分配会丢失。 如果你然后创建了另外的入口控制器，则会分配新的公共 IP 地址。 如果希望保持使用此公共 IP 地址，则可以改为[创建具有静态公共 IP 地址的入口控制器][aks-ingress-static-tls]。
 
-若要获取公共 IP 地址，请使用 `kubectl get service` 命令。 将 IP 地址分配给服务需要几分钟时间。
+若要获取公共 IP 地址，请使用 `kubectl get service` 命令。
+
+```console
+kubectl get service -l app=nginx-ingress --namespace ingress-basic
+```
+
+将 IP 地址分配给服务需要几分钟时间。
 
 ```
 $ kubectl get service -l app=nginx-ingress --namespace ingress-basic
@@ -192,7 +198,7 @@ spec:
     app: ingress-demo
 ```
 
-使用 `kubectl apply` 来运行这两个演示应用程序：
+使用 `kubectl apply` 运行这两个演示应用程序：
 
 ```console
 kubectl apply -f aks-helloworld.yaml --namespace ingress-basic
@@ -241,6 +247,12 @@ spec:
 ```
 
 使用 `kubectl apply -f hello-world-ingress.yaml` 命令创建入口资源。
+
+```console
+kubectl apply -f hello-world-ingress.yaml
+```
+
+示例输出中显示创建了入口资源。
 
 ```
 $ kubectl apply -f hello-world-ingress.yaml
@@ -311,7 +323,13 @@ kubectl delete namespace ingress-basic
 
 ### <a name="delete-resources-individually"></a>单独删除资源
 
-也可采用更细致的方法来删除单个已创建的资源。 使用 `helm list` 命令列出 Helm 版本。 查找名为“nginx-ingress”的图表，如以下示例输出中所示：
+也可采用更细致的方法来删除单个已创建的资源。 使用 `helm list` 命令列出 Helm 版本。 
+
+```console
+helm list --namespace ingress-basic
+```
+
+查找名为“nginx-ingress”的图表，如以下示例输出中所示：
 
 ```
 $ helm list --namespace ingress-basic
@@ -320,7 +338,13 @@ NAME                    NAMESPACE       REVISION        UPDATED                 
 nginx-ingress           ingress-basic   1               2020-01-06 19:55:46.358275 -0600 CST    deployed        nginx-ingress-1.27.1    0.26.1 
 ```
 
-使用 `helm uninstall` 命令卸载这些版本。 下面的示例将卸载 NGINX 入口部署。
+使用 `helm uninstall` 命令卸载这些版本。 
+
+```console
+helm uninstall nginx-ingress --namespace ingress-basic
+```
+
+下面的示例将卸载 NGINX 入口部署。
 
 ```
 $ helm uninstall nginx-ingress --namespace ingress-basic

@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 origin.date: 03/13/2020
 ms.date: 06/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: 66b22b2281a26b1ce5ee9ab7c89e8b0bafd100d2
-ms.sourcegitcommit: ff67734e01c004be575782b4812cfe857e435f4d
+ms.openlocfilehash: dc7c91bf9cfa91f21de0f5b745d32c2258a7af8a
+ms.sourcegitcommit: 873e5c5e4156efed505a78d4f5a6e50c494e76d4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84487058"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86036743"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>创建、更改或删除网络安全组
 
@@ -94,7 +94,9 @@ ms.locfileid: "84487058"
 
 在网络安全组的菜单栏中的“设置”下，可以查看与网络安全组关联的“入站安全规则”、“出站安全规则”、“网络接口”和“子网”    。
 
-在“监视”下，可以启用或禁用“诊断设置”。  在“支持 + 故障排除”下，可以查看“有效安全规则” 。 有关详细信息，请参阅[网络安全组的诊断日志记录](virtual-network-nsg-manage-log.md)和[诊断 VM 网络流量筛选器问题](diagnose-network-traffic-filter-problem.md)。
+在“监视”下，可以启用或禁用“诊断设置”。  在“支持 + 故障排除”下，可以查看“有效安全规则” 。 若要了解详细信息，请参阅[诊断 VM 网络流量筛选器问题](diagnose-network-traffic-filter-problem.md)。
+
+<!--Not Avaialble on [Diagnostic logging for a network security group](virtual-network-nsg-manage-log.md)-->
 
 要了解有关列出的常见 Azure 设置的详细信息，请参阅以下文章：
 

@@ -3,24 +3,21 @@ title: 配置调用 Web API 的移动应用 | Azure
 titleSuffix: Microsoft identity platform
 description: 了解如何构建调用 Web API 的移动应用（应用的代码配置）
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/25/2020
+ms.date: 07/09/2020
 ms.author: v-junlch
 ms.custom: aaddev
-ms.openlocfilehash: 1d930bdab88ea250e2534ab5991c9437dce85941
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d2780df8f898e9782bc7a7d1728730590ede5782
+ms.sourcegitcommit: 92b9b1387314b60661f5f62db4451c9ff2c49500
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77653166"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86164915"
 ---
 # <a name="configure-a-mobile-app-that-calls-web-apis"></a>配置调用 Web API 的移动应用
 
@@ -315,6 +312,8 @@ MSAL 使用 `-canOpenURL:` 来检查是否在设备上安装了中介。 在 iOS
 
 > [!NOTE]
 > 如果在 iOS 13 或更高版本中采用了 `UISceneDelegate`，请改为将 MSAL 回调放入 `UISceneDelegate` 的 `scene:openURLContexts:` 中。 只能对每个 URL 调用 MSAL `handleMSALResponse:sourceApplication:` 一次。
+>
+> 有关详细信息，请参阅 [Apple 文档](https://developer.apple.com/documentation/uikit/uiscenedelegate/3238059-scene?language=objc)。
 
 #### <a name="step-2-register-a-url-scheme"></a>步骤 2：注册 URL 方案
 
@@ -364,7 +363,7 @@ MSAL 使用 `-canOpenURL:` 来检查是否在设备上安装了中介。 在 iOS
 
 ### <a name="brokered-authentication-for-xamarinandroid"></a>适用于 Xamarin.Android 的中介身份验证
 
-MSAL.NET 不支持适用于 Android 的中介。
+有关在 Android 上启用中介的信息，请参阅 [Xamarin.Android 上的中介身份验证](msal-net-use-brokers-with-xamarin-apps.md#brokered-authentication-for-android)。
 
 ## <a name="next-steps"></a>后续步骤
 

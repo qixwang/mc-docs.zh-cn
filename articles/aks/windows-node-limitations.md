@@ -4,15 +4,16 @@ titleSuffix: Azure Kubernetes Service
 description: 了解在 Azure Kubernetes 服务 (AKS) 中运行 Windows Server 节点池和应用程序工作负荷时的已知限制
 services: container-service
 ms.topic: article
-origin.date: 05/25/2020
-ms.date: 06/15/2020
+ms.date: 07/13/2020
+ms.testscope: no
+ms.testdate: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1dd885d63f7ccbc7f68504d24c887a05a9bbe758
-ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
+ms.openlocfilehash: 56d282b98f52d7a84f36acca0ab8a9ad956dfae6
+ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84685450"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86218781"
 ---
 <!--Verified successfully-->
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的 Windows Server 节点池和应用程序工作负荷的当前限制
@@ -35,7 +36,7 @@ Kubernetes 历来以 Linux 为中心。 上游 [Kubernetes.io][kubernetes] 网�
     - Windows Server 使用更大的二进制安全标识符 (SID)，该标识符存储在 Windows Security Access Manager (SAM) 数据库中。 此数据库不在主机与容器之间或容器之间共享。
 - **文件权限** - Windows Server 使用基于 SID 的访问控制列表，而不是权限和 UID + GID 的位掩码
 - **文件路径** - Windows Server 上的约定是使用 \，而不是 /。
-    - 在装载卷的 Pod 规范中，为 Windows Server 容器正确指定路径。 例如，不要在 Linux 容器中指定装入点 /mnt/volume**，而是将要装载的驱动器号和位置（例如 */K/Volume*）指定为 K:** 驱动器。
+    - 在装载卷的 Pod 规范中，为 Windows Server 容器正确指定路径。 例如，不要在 Linux 容器中指定装入点 /mnt/volume，而是将要装载的驱动器号和位置（例如 */K/Volume*）指定为 K: 驱动器。
 
 ## <a name="what-kind-of-disks-are-supported-for-windows"></a>Windows 支持哪种磁盘？
 
@@ -55,11 +56,24 @@ AKS 群集中的主节点（控制平面）由 AKS 服务托管，不会向你�
 
 ## <a name="how-do-patch-my-windows-nodes"></a>如何修补 Windows 节点？
 
-必须升级** AKS 中的 Windows Server 节点才能获取最新的修补程序和更新。 AKS 中的节点上未启用 Windows 更新。 AKS 会在修补程序可用时尽快发布新的节点池映像，客户负责升级节点池来保持修补程序的最新状态。 对于所使用的 Kubernetes 版本也是如此。 AKS 发行说明将指示何时有新版本可用。 有关升级 Windows Server 节点池的详细信息，请参阅[升级 AKS 中的节点池][nodepool-upgrade]。
+必须升级 AKS 中的 Windows Server 节点才能获取最新的修补程序和更新。 AKS 中的节点上未启用 Windows 更新。 AKS 会在修补程序可用时尽快发布新的节点池映像，客户负责升级节点池来保持修补程序的最新状态。 对于所使用的 Kubernetes 版本也是如此。 AKS 发行说明将指示何时有新版本可用。 有关升级 Windows Server 节点池的详细信息，请参阅[升级 AKS 中的节点池][nodepool-upgrade]。
 
 > [!NOTE]
 > 仅当在升级节点池之前执行了群集升级（控制平面升级）时，才会使用更新的 Windows Server 映像
 >
+
+## <a name="why-am-i-seeing-an-error-when-i-try-to-create-a-new-windows-agent-pool"></a>尝试创建新的 Windows 代理池时，为什么会发生错误？
+
+如果在 2020 年 2 月之前创建了群集，并且从未执行过任何群集升级操作，则该群集仍使用旧的 Windows 映像。 你可能会看到类似于以下内容的错误：
+
+“找不到以下从部署模板引用的映像：发布者：MicrosoftWindowsServer，产品/服务：WindowsServer, Sku:2019-datacenter-core-smalldisk-2004，版本：最新版本。 有关如何查找可用映像的说明，请参阅 https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage 。”
+
+解决方法：
+
+1. 升级[集群控制平面][upgrade-cluster-cp]。 这会更新提供的映像和映像发布者。
+1. 创建新的 Windows 代理池。
+1. 将 Windows Pod 从现有 Windows 代理池移动到新的 Windows 代理池。
+1. 删除旧的 Windows 代理池。
 
 ## <a name="how-do-i-rotate-the-service-principal-for-my-windows-node-pool"></a>如何轮换 Windows 节点池的服务主体？
 
@@ -75,7 +89,7 @@ AKS 群集最多可以包含 10 个节点池。 这些节点池中最多可以�
 
 ## <a name="are-all-features-supported-with-windows-nodes"></a>Windows 节点是否支持所有功能？
 
-Windows 节点当前不支持网络策略和 Kubenet。 
+Windows 节点当前不支持网络策略和 Kubenet。
 
 ## <a name="can-i-run-ingress-controllers-on-windows-nodes"></a>我是否可以在 Windows 节点上运行入口控制器？
 
@@ -91,7 +105,7 @@ AKS 当前不提供组托管服务帐户 (gMSA) 支持。
 
 ## <a name="can-i-use-azure-monitor-for-containers-with-windows-nodes-and-containers"></a>是否可以将 Azure Monitor 用于包含 Windows 节点和容器的容器？
 
-是，可以，但 Azure Monitor 不会从 Windows 容器收集日志 (stdout)。 你仍可从 Windows 容器附加到 stdout 日志的实时传送流。
+可以，但 Azure Monitor 现为公共预览版，用于从 Windows 容器收集日志（stdout，stderr）和指标。 你仍可从 Windows 容器附加到 stdout 日志的实时传送流。
 
 ## <a name="what-if-i-need-a-feature-which-is-not-supported"></a>如果需要不支持的功能，怎么办？
 
@@ -117,11 +131,13 @@ AKS 当前不提供组托管服务帐户 (gMSA) 支持。
 [windows-node-cli]: windows-container-cli.md
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
+[upgrade-cluster]: upgrade-cluster.md
+[upgrade-cluster-cp]: use-multiple-node-pools.md#upgrade-a-cluster-control-plane-with-multiple-node-pools
 [azure-outbound-traffic]: ../load-balancer/load-balancer-outbound-connections.md#defaultsnat
 [nodepool-limitations]: use-multiple-node-pools.md#limitations
 [windows-container-compat]: https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility?tabs=windows-server-2019%2Cwindows-10-1909
 [maximum-number-of-pods]: configure-azure-cni.md#maximum-pods-per-node
+[azure-monitor]: ../azure-monitor/insights/container-insights-overview.md#what-does-azure-monitor-for-containers-provide
 
 
-<!-- Update_Description: new article about windows node limitations -->
-<!--NEW.date: 06/15/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

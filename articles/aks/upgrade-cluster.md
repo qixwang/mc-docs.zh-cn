@@ -3,23 +3,23 @@ title: 升级 Azure Kubernetes 服务 (AKS) 群集
 description: 了解如何升级 Azure Kubernetes 服务 (AKS) 群集以获取最新的功能和安全更新。
 services: container-service
 ms.topic: article
-origin.date: 05/31/2019
-ms.date: 05/25/2020
+origin.date: 05/28/2020
+ms.date: 07/13/2020
+ms.testscope: no
+ms.testdate: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: 6302de82aea90efc30ddd1b0e0444c53151fe376
-ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
+ms.openlocfilehash: 90ccb85887d29bb668ac58fa94bfb2c6bbed29e8
+ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735116"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86218791"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>升级 Azure Kubernetes 服务 (AKS) 群集
 
 在 AKS 群集的生命周期中，经常需要升级到最新的 Kubernetes 版本。 必须应用最新的 Kubernetes 安全版本，或者通过升级来获取最新功能。 本文演示如何在 AKS 群集中升级主组件或单个默认的节点池。
 
-对于使用多个节点池的 AKS 群集，请参阅[在 AKS 中升级节点池][nodepool-upgrade]。
-
-<!--Not Available on or Windows Server nodes (currently in preview in AKS)-->
+对于使用多个节点池或 Windows Server 节点的 AKS 群集（当前在 AKS 中为预览版），请参阅[升级 AKS 中的节点池][nodepool-upgrade]。
 
 ## <a name="before-you-begin"></a>准备阶段
 
@@ -28,11 +28,9 @@ ms.locfileid: "83735116"
 > [!WARNING]
 > AKS 群集升级会触发节点的隔离和排空。 如果可用计算配额较低，则升级可能会失败。 有关详细信息，请参阅[增加配额](https://support.azure.cn/support/support-azure/)。
 
-<!--MOONCAKE: CORRECT ON (https://support.azure.cn/support/support-azure/)-->
-
 ## <a name="check-for-available-aks-cluster-upgrades"></a>检查是否有可用的 AKS 群集升级
 
-若要检查哪些 Kubernetes 版本可用于群集，请使用 [az aks get-upgrades][az-aks-get-upgrades] 命令。 以下示例在名为“myResourceGroup”的资源组中检查是否有可供名为“myAKSCluster”的群集使用的升级：
+若要检查哪些 Kubernetes 版本可用于群集，请使用 [az aks get-upgrades][az-aks-get-upgrades] 命令。 以下示例在名为 *myResourceGroup* 的资源组中检查是否有可供名为 *myAKSCluster* 的群集使用的升级：
 
 ```azurecli
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
@@ -56,17 +54,21 @@ default  myResourceGroup   1.12.8           1.12.8             1.13.9, 1.13.10
 ERROR: Table output unavailable. Use the --query option to specify an appropriate query. Use --debug for more info.
 ```
 
+<!--Not Available on ## Customize node surge upgrade (Preview) till 07/09/2020-->
+<!--Not Available on ## Set up the preview feature for customizing node surge upgrade-->
+<!--Not Available on feature `MaxSurgePreview` az feature register --namespace "Microsoft.ContainerService" --name "MaxSurgePreview"-->
 ## <a name="upgrade-an-aks-cluster"></a>升级 AKS 群集
 
 如果有一系列适用于 AKS 群集的版本，则可使用 [az aks upgrade][az-aks-upgrade] 命令进行升级。 在升级过程中，AKS 将向运行指定 Kubernetes 版本的群集添加一个新节点，然后仔细地一次[隔离并清空][kubernetes-drain]一个旧节点，将对正在运行的应用程序造成的中断情况降到最低。 确认新节点运行应用程序 Pod 以后，就会删除旧节点。 此过程会重复进行，直至群集中的所有节点都已升级完毕。
 
-以下示例将群集升级到版本 1.13.10：
-
 ```azurecli
-az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.13.10
+az aks upgrade \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --kubernetes-version KUBERNETES_VERSION
 ```
 
-升级群集需要几分钟时间，具体取决于有多少节点。 
+升级群集需要几分钟时间，具体取决于有多少节点。
 
 > [!NOTE]
 > 允许群集升级完成的总时间。 此时间是通过取 `10 minutes * total number of nodes in the cluster` 的乘积来计算的。 例如，在 20 节点群集中，升级操作必须在 200 分钟内成功，否则 AKS 将使操作失败，以避免出现无法恢复的群集状态。 若要在升级失败时恢复，请在达到超时值后重试升级操作。
@@ -104,5 +106,7 @@ myAKSCluster  chinaeast2      myResourceGroup  1.13.10               Succeeded  
 [az-aks-upgrade]: https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-upgrade
 [az-aks-show]: https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-show
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
+[az-extension-add]: https://docs.azure.cn/cli/extension?view=azure-cli-latest#az-extension-add
+[az-extension-update]: https://docs.azure.cn/cli/extension?view=azure-cli-latest#az-extension-update
 
 <!-- Update_Description: update meta properties, wording update, update link -->

@@ -4,20 +4,20 @@ description: 邀请兑换前后的 Azure Active Directory B2B 来宾用户属性
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
-ms.date: 06/22/2020
+ms.topic: how-to
+ms.date: 07/08/2020
 ms.author: v-junlch
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a7b34cf27ba3e2e1e85aff4fdd89268487b3d13
-ms.sourcegitcommit: fac10504efdfd3806dead4b74ca6ae5fcb5ea906
+ms.openlocfilehash: db87ef02016f892d835e6499716bc7b3c412fd0c
+ms.sourcegitcommit: 92b9b1387314b60661f5f62db4451c9ff2c49500
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85129721"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165001"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Azure Active Directory B2B 协作用户的属性
 
@@ -93,7 +93,11 @@ ms.locfileid: "85129721"
 ![屏幕截图，显示用户设置中的“外部用户”选项](./media/user-properties/remove-guest-limitations.png)
 
 ## <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>能否在 Exchange 全局地址列表中显示来宾用户？
-是的。 默认情况下，来宾对象在组织的全局地址列表中不可见，但可使用 Azure Active Directory PowerShell 使其可见。 有关详细信息，请参阅[在 Office 365 组中管理来宾访问权限](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?redirectSourcePath=%252fen-us%252farticle%252fmanage-guest-access-in-office-365-groups-9de497a9-2f5c-43d6-ae18-767f2e6fe6e0&view=o365-worldwide#add-guests-to-the-global-address-list)中的**能否在全局地址列表中显示来宾对象？** 。 
+是的。 默认情况下，来宾对象在组织的全局地址列表中不可见，但可使用 Azure Active Directory PowerShell 使其可见。 有关详细信息，请参阅[在 Office 365 组中管理来宾访问权限](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups)中的**能否在全局地址列表中显示来宾对象？** 。
+
+## <a name="can-i-update-a-guest-users-email-address"></a>是否可以更新来宾用户的电子邮件地址？
+
+如果来宾用户接受邀请，并随后更改其电子邮件地址，新电子邮件不会自动同步到目录中的来宾用户对象。 邮件属性是通过 [Microsoft Graph API](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0) 创建的。 可以通过 Exchange 管理中心或 [Exchange Online PowerShell](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/set-mailuser?view=exchange-ps) 更新邮件属性，Azure AD 来宾用户对象中会反映出该更改。
 
 ## <a name="next-steps"></a>后续步骤
 

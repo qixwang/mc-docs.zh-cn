@@ -5,14 +5,16 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用 Azure 磁�
 services: container-service
 ms.topic: article
 origin.date: 03/01/2019
-ms.date: 05/25/2020
+ms.date: 07/13/2020
+ms.testscope: yes
+ms.testdate: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: 4b15c583828a7318bf350e74e3a63a8e5c0ef564
-ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
+ms.openlocfilehash: 54e1dd1b7268770f58c1bc10d68c88e26f805fc9
+ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735044"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86218767"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中动态创建永久性卷并将其用于 Azure 磁盘
 
@@ -40,7 +42,11 @@ ms.locfileid: "83735044"
 * managed-premium 存储类可预配高级 Azure 磁盘。
     * 高级磁盘由基于 SSD 的高性能、低延迟磁盘提供支持。 完美适用于运行生产工作负荷的 VM。 如果群集中的 AKS 节点使用高级存储，请选择 managed-premium 类。
 
-这些默认存储类不允许你在创建卷后更新卷大小。 若要启用此功能，请将 *allowVolumeExpansion: true* 行添加到其中一个默认存储类，或创建你自己的自定义存储类。 可以使用 `kubectl edit sc` 命令编辑现有存储类。 有关存储类和创建自己的存储类的详细信息，请参阅 [AKS 中应用程序的存储选项][storage-class-concepts]。
+如果使用默认存储类之一，则创建存储类后将无法更新卷大小。 若要能够在创建存储类后更新卷大小，请将行 `allowVolumeExpansion: true` 添加到其中一个默认存储类，或者也可以创建自己的自定义存储类。 可以使用 `kubectl edit sc` 命令编辑现有存储类。 
+
+例如，如果要使用大小为 4 TiB 的磁盘，需要创建一个定义 `cachingmode: None` 的存储类，因为[磁盘缓存不支持 4 TiB 及更大的磁盘](../virtual-machines/windows/premium-storage-performance.md#disk-caching)。
+
+有关存储类和创建自己的存储类的详细信息，请参阅 [AKS 中应用程序的存储选项][storage-class-concepts]。
 
 使用 [kubectl get sc][kubectl-get] 命令查看预先创建的存储类。 以下示例显示了 AKS 群集中可用的预先创建存储类：
 
@@ -88,9 +94,7 @@ persistentvolumeclaim/azure-managed-disk created
 
 ## <a name="use-the-persistent-volume"></a>使用永久性卷
 
-创建永久性卷声明并成功预配磁盘以后，即可创建可以访问磁盘的 Pod。 以下清单创建的基本 NGINX Pod 使用名为 *azure-managed-disk* 的永久性卷声明将 Azure 磁盘装载到 `/mnt/azure` 路径。
-
-<!--Not Available on For Windows Server containers (currently in preview in AKS)-->
+创建永久性卷声明并成功预配磁盘以后，即可创建可以访问磁盘的 Pod。 以下清单创建的基本 NGINX Pod 使用名为 *azure-managed-disk* 的永久性卷声明将 Azure 磁盘装载到 `/mnt/azure` 路径。 对于 Windows Server 容器，请使用 Windows 路径约定指定 mountPath，例如“D:”。
 
 创建名为 `azure-pvc-disk.yaml` 的文件，并将其复制到以下清单中。
 
@@ -174,8 +178,10 @@ azure-managed-disk   Bound     pvc-faf0f176-8b8d-11e8-923b-deb28c58d242   5Gi   
 ```azurecli
 $ az disk list --query '[].id | [?contains(@,`pvc-faf0f176-8b8d-11e8-923b-deb28c58d242`)]' -o tsv
 
-/subscriptions/<guid>/resourceGroups/MC_MYRESOURCEGROUP_MYAKSCLUSTER_EASTUS/providers/MicrosoftCompute/disks/kubernetes-dynamic-pvc-faf0f176-8b8d-11e8-923b-deb28c58d242
+/subscriptions/<guid>/resourceGroups/MC_MYRESOURCEGROUP_MYAKSCLUSTER_China_East_2/providers/MicrosoftCompute/disks/kubernetes-dynamic-pvc-faf0f176-8b8d-11e8-923b-deb28c58d242
 ```
+
+<!--CORRECT ON MC_MYRESOURCEGROUP_MYAKSCLUSTER_China_East_2-->
 
 运行 [az snapshot create][az-snapshot-create]，使用磁盘 ID 创建快照磁盘。 以下示例在 AKS 群集所在的同一资源组 (*MC_myResourceGroup_myAKSCluster_chinaeast2*) 中创建名为 *pvcSnapshot* 的快照。 如果在 AKS 群集无权访问的资源组中创建快照和还原磁盘，可能会遇到权限问题。
 

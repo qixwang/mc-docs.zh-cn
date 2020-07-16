@@ -7,18 +7,18 @@ author: shoatman
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: reference
 ms.workload: identity
-ms.date: 04/22/2020
+ms.date: 07/08/2020
 ms.author: v-junlch
 ms.custom: aaddev
 ms.reviewer: shoatman
-ms.openlocfilehash: fb4b8ed2be680083e7f1317afea769f7495b03ce
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: babbd0dce5f9214979c455e5b30fb408c48a6d73
+ms.sourcegitcommit: 92b9b1387314b60661f5f62db4451c9ff2c49500
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126508"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86164959"
 ---
 # <a name="android-microsoft-authentication-library-configuration-file"></a>Android Microsoft 身份验证库配置文件
 
@@ -131,7 +131,7 @@ Android Microsoft 身份验证库 (MSAL) 随附了一个[默认的配置 JSON �
 | 属性 | 数据类型  | 必须 | 注释 |
 | ----------|-------------|-----------|---------|
 | `pii_enabled`  | boolean | 否 | 是否发出个人数据 |
-| `log_level`   | boolean | 否 | 要输出的日志消息 |
+| `log_level`   | string | 否 | 要输出的日志消息。 支持的日志级别包括 `ERROR`、`WARNING`、`INFO` 和 `VERBOSE`。 |
 | `logcat_enabled` | boolean | 否 | 除了输出到日志记录界面以外，是否还要输出到 logcat |
 
 ### <a name="account_mode"></a>account_mode

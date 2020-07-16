@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 06/29/2020
+ms.date: 07/08/2020
 ms.author: v-junlch
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: f2ce2bd55d60b8010c4cc4991201f95ca81af782
-ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
+ms.openlocfilehash: 98d3bf5d940b62b502a2f77cd95779ae4f8cb9fe
+ms.sourcegitcommit: 92b9b1387314b60661f5f62db4451c9ff2c49500
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85945125"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86164977"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft 标识平台访问令牌
 
@@ -230,11 +230,13 @@ https://login.partner.microsoftonline.cn/common/v2.0/.well-known/openid-configur
 
 ## <a name="user-and-application-tokens"></a>用户和应用程序令牌
 
-应用程序可以代表用户（通常的流）或直接从应用程序（通过客户端凭据流（[v1.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md)、[v2.0](v2-oauth2-client-creds-grant-flow.md)）接收令牌。 这些仅限应用的令牌表示这种调用来自应用程序，而没有支持它的用户。 这些令牌的处理方式大致相同，但存在一些差别：
+应用程序可以为用户（经常讨论的流）或直接从应用程序（通过[客户端凭据流](v1-oauth2-client-creds-grant-flow.md)）接收令牌。 这些仅限应用的令牌表示这种调用来自应用程序，而没有支持它的用户。 这些令牌的处理方式大致相同：
 
-* 仅限应用的令牌不包含 `scp` 声明，而是包含 `roles` 声明。 这是记录应用程序权限的位置（与委托的权限相反）。 有关委托的权限和应用程序权限的详细信息，请参阅权限和同意（[v1.0](../azuread-dev/v1-permissions-consent.md)、[v2.0](v2-permissions-and-consent.md)）。
-* 许多特定于用户的声明将会缺失，例如 `name` 或 `upn`。
-* `sub` 和 `oid` 声明相同。
+* 使用 `roles` 查看已向令牌使用者（在本例中为服务主体，而不是用户）授予的权限。
+* 使用 `oid` 或 `sub` 来验证调用服务主体是否是预期的服务主体。
+
+如果应用需要区分仅限应用的访问令牌和用户的访问令牌，请使用 `idtyp` [可选声明](active-directory-optional-claims.md)。  通过将 `idtyp` 声明添加到 `accessToken` 字段，并检查值 `app`，可以检测仅限应用的访问令牌。  用户的 ID 令牌和访问令牌不包含 `idtyp` 声明。
+
 
 ## <a name="token-revocation"></a>令牌吊销
 
@@ -253,7 +255,7 @@ https://login.partner.microsoftonline.cn/common/v2.0/.well-known/openid-configur
 
 服务器可能会由于以下原因而撤销刷新令牌：凭据发生更改，或者用户或管理员执行了相关操作。  刷新令牌分为两类：颁发给机密客户端的刷新令牌（最右边的列），和颁发给公共客户端的刷新令牌（所有其他列）。   
 
-|   | 基于密码的 Cookie | 基于密码的令牌 | 不基于密码的 Cookie | 不基于密码的令牌 | 机密客户端令牌 |
+| 更改 | 基于密码的 Cookie | 基于密码的令牌 | 不基于密码的 Cookie | 不基于密码的令牌 | 机密客户端令牌 |
 |---|-----------------------|----------------------|---------------------------|--------------------------|---------------------------|
 | 密码过期 | 一直有效 | 一直有效 | 一直有效 | 一直有效 | 一直有效 |
 | 用户更改了密码 | 已撤销 | 已撤销 | 一直有效 | 一直有效 | 一直有效 |

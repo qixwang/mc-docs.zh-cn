@@ -3,15 +3,17 @@ title: 在 Azure Kubernetes 服务 (AKS) 群集上创建 Windows Server 容器
 description: 了解如何使用 Azure CLI 在 Azure Kubernetes 服务 (AKS) 的 Windows Server 容器中快速创建 Kubernetes 群集并部署应用程序。
 services: container-service
 ms.topic: article
-origin.date: 05/25/2020
-ms.date: 06/15/2020
+origin.date: 05/06/2020
+ms.date: 07/13/2020
+ms.testscope: yes
+ms.testdate: 06/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: 5c7560703e18164e6a1c198b2476e3129529c3ea
-ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
+ms.openlocfilehash: 8ead5778e71e9121a805fdde2ff87aa4b81f32e1
+ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84685452"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86218787"
 ---
 <!--Verified successfully-->
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>使用 Azure CLI 在 Azure Kubernetes 服务 (AKS) 群集上创建 Windows Server 容器
@@ -22,7 +24,7 @@ Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管�
 
 本文假定你对 Kubernetes 概念有基本的了解。 有关详细信息，请参阅 [Azure Kubernetes 服务 (AKS) 的 Kubernetes 核心概念][kubernetes-concepts]。
 
-如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial-full)。
+如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
 [!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
 
@@ -42,7 +44,7 @@ Windows Server 节点池存在以下额外限制：
 
 Azure 资源组是一个逻辑组，用于部署和管理 Azure 资源。 创建资源组时，系统会要求你指定一个位置， 此位置是资源组元数据的存储位置，如果你在创建资源期间未指定另一个区域，则它还是你的资源在 Azure 中的运行位置。 使用 [az group create][az-group-create] 命令创建资源组。
 
-以下示例在“chinaeast2”** 位置创建名为“myResourceGroup”** 的资源组。
+以下示例在“chinaeast2”位置创建名为“myResourceGroup”的资源组。
 
 <!--Not Avialble on If you are using Azure Cloud Shell-->
 
@@ -68,24 +70,35 @@ az group create --name myResourceGroup --location chinaeast2
 
 ## <a name="create-an-aks-cluster"></a>创建 AKS 群集
 
-若要运行支持 Windows Server 容器的节点池的 AKS 群集，群集需要采用使用 [Azure CNI][azure-cni-about]（高级）网络插件的网络策略。 有关帮助计划所需子网范围和网络注意事项的更多详细信息，请参阅[配置 Azure CNI 网络][use-advanced-networking]。 使用下面的 [az aks create][az-aks-create] 命令创建名为 myAKSCluster** 的 AKS 群集。 此命令将创建必要的网络资源（如果这些资源不存在）。
+若要运行支持 Windows Server 容器的节点池的 AKS 群集，群集需要采用使用 [Azure CNI][azure-cni-about]（高级）网络插件的网络策略。 有关帮助计划所需子网范围和网络注意事项的更多详细信息，请参阅[配置 Azure CNI 网络][use-advanced-networking]。 使用 [az aks create][az-aks-create] 命令创建名为 *myAKSCluster* 的 AKS 群集。 此命令将创建必要的网络资源（如果这些资源不存在）。
+
+* 集群配置了两个节点
+* Windows-admin-password 和 windows-admin-username 参数为群集上创建的任何 Windows Server 容器设置管理员凭据 。
+* 节点池使用 `VirtualMachineScaleSets`
 
 > [!NOTE]
 > 为确保群集可靠运行，应在默认节点池中至少运行 2（两）个节点。
 
+提供自己的安全 PASSWORD_WIN（请注意，本文中的命令是输入到 BASH shell 中）：
+
 ```azurecli
+PASSWORD_WIN="P@ssw0rd1234"
+
 az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
     --node-count 2 \
     --enable-addons monitoring \
-    --kubernetes-version 1.16.7 \
     --generate-ssh-keys \
+    --windows-admin-password $PASSWORD_WIN \
+    --windows-admin-username azureuser \
+    --vm-set-type VirtualMachineScaleSets \
     --network-plugin azure
 ```
 
-> [!Note]
-> 如果无法创建 AKS 群集，原因是此区域不支持该版本，则可以使用 [az aks get-versions --location chinaeast2] 命令查找此区域的受支持版本列表。
+> [!NOTE]
+> 如果出现密码验证错误，请尝试在另一个区域中创建资源组。
+> 然后尝试创建包含新资源组的群集。
 
 片刻之后，该命令将会完成，并返回有关群集的 JSON 格式信息。 有时，预配群集所需的时间可能不止几分钟。 在这种情况下，最多需要 10 分钟。
 
@@ -99,11 +112,10 @@ az aks nodepool add \
     --cluster-name myAKSCluster \
     --os-type Windows \
     --name npwin \
-    --node-count 1 \
-    --kubernetes-version 1.16.7
+    --node-count 1
 ```
 
-上述命令将创建名为 npwin 的新节点池，并将其添加到 myAKSCluster** **。 创建节点池以运行 Windows Server 容器时，node-vm-size 的默认值为 Standard_D2s_v3** **。 如果选择设置 node-vm-size 参数，请检查[受限 VM 大小][restricted-vm-sizes]的列表**。 最小推荐大小为 Standard_D2s_v3**。 上述命令还使用运行 `az aks create` 时创建的默认 VNet 中的默认子网。
+上述命令将创建名为 npwin 的新节点池，并将其添加到 myAKSCluster 。 创建节点池以运行 Windows Server 容器时，node-vm-size 的默认值为 Standard_D2s_v3 。 如果选择设置 node-vm-size 参数，请检查[受限 VM 大小][restricted-vm-sizes]的列表。 最小推荐大小为 Standard_D2s_v3。 上述命令还使用运行 `az aks create` 时创建的默认 VNet 中的默认子网。
 
 ## <a name="connect-to-the-cluster"></a>连接至群集
 
@@ -127,19 +139,19 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 kubectl get nodes
 ```
 
-以下示例输出显示了群集中的所有节点。 请确保所有节点的状态均为“就绪”**：
+以下示例输出显示了群集中的所有节点。 请确保所有节点的状态均为“就绪”：
 
 ```output
 NAME                                STATUS   ROLES   AGE    VERSION
-aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.16.7
-aksnpwin987654                      Ready    agent   108s   v1.16.7
+aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.16.9
+aksnpwin987654                      Ready    agent   108s   v1.16.9
 ```
 
 ## <a name="run-the-application"></a>运行应用程序
 
 Kubernetes 清单文件定义群集的所需状态，例如，要运行哪些容器映像。 在本文中，清单用于创建在 Windows Server 容器中运行 ASP.NET 示例应用程序所需的所有对象。 此清单包括用于 ASP.NET 示例应用程序的 [Kubernetes 部署][kubernetes-deployment]，以及用于从 Internet 访问应用程序的外部 [Kubernetes 服务][kubernetes-service]。
 
-ASP.NET 示例应用程序作为 [.NET Framework 示例][dotnet-samples]的一部分提供并在 Windows Server 容器中运行。 AKS 要求 Windows Server 容器基于 Windows Server 2019 或更高版本的映像**。 Kubernetes 清单文件还必须定义[节点选择器][node-selector]，以指示 AKS 群集在可运行 Windows Server 容器的节点上运行 ASP.NET 示例应用程序的 Pod。
+ASP.NET 示例应用程序作为 [.NET Framework 示例][dotnet-samples]的一部分提供并在 Windows Server 容器中运行。 AKS 要求 Windows Server 容器基于 Windows Server 2019 或更高版本的映像。 Kubernetes 清单文件还必须定义[节点选择器][node-selector]，以指示 AKS 群集在可运行 Windows Server 容器的节点上运行 ASP.NET 示例应用程序的 Pod。
 
 创建名为 `sample.yaml` 的文件，并将其复制到以下 YAML 定义中。 如果使用 Azure 本地 Shell，则可以使用 `vi` 或 `nano` 来创建此文件，就像在虚拟或物理系统中操作一样：
 
@@ -212,7 +224,7 @@ service/sample created
 kubectl get service sample --watch
 ```
 
-最初，示例服务的 EXTERNAL-IP 显示为“挂起”** ** **。
+最初，示例服务的 EXTERNAL-IP 显示为“挂起”  。
 
 ```output
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
@@ -276,7 +288,7 @@ az group delete --name myResourceGroup --yes --no-wait
 [az-group-create]: https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-create
 [az-group-delete]: https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-delete
 [az-provider-register]: https://docs.azure.cn/cli/provider?view=azure-cli-latest#az-provider-register
-[azure-cli-install]: https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest?view=azure-cli-latest
+[azure-cli-install]: https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest
 [azure-cni-about]: concepts-network.md#azure-cni-advanced-networking
 [sp-delete]: kubernetes-service-principal.md#additional-considerations
 [azure-portal]: https://portal.azure.cn

@@ -7,13 +7,13 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 07/14/2019
-ms.date: 05/09/2020
-ms.openlocfilehash: 86ecf2bf602a0ea20bb593eff6d993aff8a3a7e8
-ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
+ms.date: 07/08/2020
+ms.openlocfilehash: 8605534985307c000cb8256bbb76428e3a00af44
+ms.sourcegitcommit: 5fb9ae9adc04e79d6d0e78c9e69dbe8aa3ceb00a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83417738"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86100242"
 ---
 # <a name="select-the-correct-vm-sku-for-your-azure-data-explorer-cluster"></a>为 Azure 数据资源管理器群集选择正确的 VM SKU 
 
@@ -71,17 +71,18 @@ Azure 数据资源管理器提供两种类型的群集：
 
 |**名称**| **类别** | **SSD 大小** | **核心数** | **RAM** | **高级存储磁盘 (1&nbsp;TB)**| **每个群集的最小实例计数** | **每个群集的最大实例计数**
 |---|---|---|---|---|---|---|---
-|D11 v2| 计算优化 | 75&nbsp;GB    | 2 | 14&nbsp;GB | 0 | 1 | 8（开发/测试 SKU 除外，其计数为 1）
-|D12 v2| 计算优化 | 150&nbsp;GB   | 4 | 28&nbsp;GB | 0 | 2 | 16
-|D13 v2| 计算优化 | 307&nbsp;GB   | 8 | 56&nbsp;GB | 0 | 2 | 1,000
-|D14 v2| 计算优化 | 614&nbsp;GB   | 16| 112&nbsp;GB | 0 | 2 | 1,000
-|DS13 v2 + 1&nbsp;TB&nbsp;PS| 存储优化 | 1&nbsp;TB | 8 | 56&nbsp;GB | 1 | 2 | 1,000
-|DS13 v2 + 2&nbsp;TB&nbsp;PS| 存储优化 | 2&nbsp;TB | 8 | 56&nbsp;GB | 2 | 2 | 1,000
-|DS14 v2 + 3&nbsp;TB&nbsp;PS| 存储优化 | 3&nbsp;TB | 16 | 112&nbsp;GB | 2 | 2 | 1,000
-|DS14 v2 + 4&nbsp;TB&nbsp;PS| 存储优化 | 4&nbsp;TB | 16 | 112&nbsp;GB | 4 | 2 | 1,000
-|L4s v1| 存储优化 | 650&nbsp;GB | 4 | 32&nbsp;GB | 0 | 2 | 16
-|L8s v1| 存储优化 | 1.3&nbsp;TB | 8 | 64&nbsp;GB | 0 | 2 | 1,000
-|L16s_1| 存储优化 | 2.6&nbsp;TB | 16| 128&nbsp;GB | 0 | 2 | 1,000
+|Dev(No SLA)_Standard_D11_v2| 计算优化 | 75&nbsp;GB    | 1 | 14&nbsp;GB | 0 | 1 | 1
+|Standard_D11_v2| 计算优化 | 75&nbsp;GB    | 2 | 14&nbsp;GB | 0 | 2 | 8 
+|Standard_D12_v2| 计算优化 | 150&nbsp;GB   | 4 | 28&nbsp;GB | 0 | 2 | 16
+|Standard_D13_v2| 计算优化 | 307&nbsp;GB   | 8 | 56&nbsp;GB | 0 | 2 | 1,000
+|Standard_D14_v2| 计算优化 | 614&nbsp;GB   | 16| 112&nbsp;GB | 0 | 2 | 1,000
+|Standard_DS13_v2 + 1&nbsp;TB&nbsp;PS| 存储优化 | 1&nbsp;TB | 8 | 56&nbsp;GB | 1 | 2 | 1,000
+|Standard_DS13_v2 + 2&nbsp;TB&nbsp;PS| 存储优化 | 2&nbsp;TB | 8 | 56&nbsp;GB | 2 | 2 | 1,000
+|Standard_DS14_v2 + 3&nbsp;TB&nbsp;PS| 存储优化 | 3&nbsp;TB | 16 | 112&nbsp;GB | 2 | 2 | 1,000
+|Standard_DS14_v2 + 4&nbsp;TB&nbsp;PS| 存储优化 | 4&nbsp;TB | 16 | 112&nbsp;GB | 4 | 2 | 1,000
+|Standard_L4s| 存储优化 | 650&nbsp;GB | 4 | 32&nbsp;GB | 0 | 2 | 16
+|Standard_L8s| 存储优化 | 1.3&nbsp;TB | 8 | 64&nbsp;GB | 0 | 2 | 1,000
+|Standard_L16s| 存储优化 | 2.6&nbsp;TB | 16| 128&nbsp;GB | 0 | 2 | 1,000
 
 * 可以使用 Azure 数据资源管理器 [ListSkus API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.kusto.clustersoperationsextensions.listskus?view=azure-dotnet) 查看每个区域的已更新 VM SKU 列表。 
 * 详细了解[各种 SKU](/virtual-machines/windows/sizes)。 

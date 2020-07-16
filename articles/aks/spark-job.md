@@ -4,19 +4,21 @@ description: 使用 Azure Kubernetes 服务 (AKS) 创建并运行 Apache Spark �
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 10/18/2019
-ms.date: 05/25/2020
+ms.date: 07/13/2020
+ms.testscope: no
+ms.testdate: 05/25/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 05d3cee82691ee2718fe6ed91868d60e292e7e54
-ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
+ms.openlocfilehash: 947e5579206ec9a859542ea5029ff4db67bed25e
+ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735170"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86218802"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>在 AKS 中运行 Apache Spark 作业
 
-[Apache Spark][apache-spark] 是用于大规模数据处理的高速引擎。 从 [Spark 2.3.0 版][spark-latest-release]开始，Apache Spark 原生支持与 Kubernetes 群集集成。 Azure Kubernetes 服务 (AKS) 是 Azure 中运行的托管 Kubernetes 环境。 本文档详细说明如何在 Azure Kubernetes 服务 (AKS) 群集上准备和运行 Apache Spark 作业。
+[Apache Spark][apache-spark] 是用于大规模数据处理的高速引擎。 从 [Spark 2.3.0 版][spark-最新版] 开始，Apache Spark 支持与 Kubernetes 集群进行本机集成。 Azure Kubernetes 服务 (AKS) 是 Azure 中运行的托管 Kubernetes 环境。 本文档详细说明如何在 Azure Kubernetes 服务 (AKS) 群集上准备和运行 Apache Spark 作业。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -26,6 +28,7 @@ ms.locfileid: "83735170"
 * [Docker Hub][docker-hub] 帐户，或 [Azure 容器注册表][acr-create]。
 * 已在开发系统上[安装][azure-cli] Azure CLI。
 * 已在系统上安装 [JDK 8][java-install]。
+* 已在系统上安装 [Apache Maven][maven-install]。
 * 已在系统上安装 SBT（[Scala 生成工具][sbt-install]）。
 * 已在系统上安装 Git 命令行工具。
 
@@ -342,9 +345,10 @@ ENTRYPOINT [ "/opt/entrypoint.sh" ]
 [apache-spark]: https://spark.apache.org/
 [docker-hub]: https://docs.docker.com/docker-hub/
 [java-install]: https://docs.azure.cn/java/java-supported-jdk-runtime?view=azure-java-stable
+[maven-install]: https://maven.apache.org/install.html
 [sbt-install]: https://www.scala-sbt.org/1.0/docs/Setup.html
 [spark-docs]: https://spark.apache.org/docs/latest/running-on-kubernetes.html
-[spark-latest-release]: https://spark.apache.org/releases/spark-release-2-3-0.html
+[spark-kubernetes-earliest-version]: https://spark.apache.org/releases/spark-release-2-3-0.html
 [spark-quickstart]: https://spark.apache.org/docs/latest/quick-start.html
 
 <!-- LINKS - internal -->
