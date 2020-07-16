@@ -26440,6 +26440,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "articles/active-directory/develop/authentication-scenarios.md",
+      "redirect_url": "/active-directory/develop/authentication-vs-authorization",
+      "redirect_document_id": true
+    },
+    {
       "source_path": "articles/azure-stack/operator/azure-stack-diagnostic-log-collection-overview-tzl.md", 
       "redirect_url": "/azure-stack/operator/azure-stack-diagnostic-log-collection-overview", 
       "redirect_document_id": true 
@@ -26473,7 +26478,13 @@
       "source_path": "articles/azure-stack/operator/azure-stack-best-practices-automatic-diagnostic-log-collection.md",
       "redirect_url": "/azure-stack/operator/azure-stack-overview",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/storage/blobs/storage-xamarin-blob-storage.md",
+      "redirect_url": "/storage/blobs/storage-quickstart-blobs-xamarin",
+      "redirect_document_id": false
     }
+
 
 
 
