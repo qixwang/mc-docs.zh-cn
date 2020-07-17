@@ -26480,18 +26480,24 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "articles/machine-learning/how-to-define-task-type.md",
+      "redirect_url": "/machine-learning/concept-automated-ml",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "articles/storage/blobs/storage-xamarin-blob-storage.md",
       "redirect_url": "/storage/blobs/storage-quickstart-blobs-xamarin",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/load-balancer/tutorial-load-balancer-basic-internal-portal.md",
+      "redirect_url": "/load-balancer/tutorial-load-balancer-standard-internal-portal",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/load-balancer/load-balancer-configure-ha-ports.md",
+      "redirect_url": "/load-balancer/tutorial-load-balancer-standard-internal-portal",
+      "redirect_document_id": false
     }
-
-
-
-
-
-
-
-
-
   ]
 }
