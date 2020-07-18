@@ -1,0 +1,197 @@
+---
+title: 请求属性和 ClientRequestProperties - Azure 数据资源管理器
+description: 本文介绍了 Azure 数据资源管理器中的请求属性和 ClientRequestProperties。
+services: data-explorer
+author: orspod
+ms.author: v-tawe
+ms.reviewer: rkarlin
+ms.service: data-explorer
+ms.topic: reference
+origin.date: 09/23/2019
+ms.date: 07/01/2020
+ms.openlocfilehash: c08236b83433c92906d262a75d509d9e0a2480f5
+ms.sourcegitcommit: 9bc3e55f01e0999f05e7b4ebaea95f3ac91d32eb
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86226346"
+---
+# <a name="request-properties-and-clientrequestproperties"></a>请求属性和 ClientRequestProperties
+
+通过 .NET SDK 从 Kusto 发出请求时，请提供：
+
+* 连接字符串（指示要连接到的服务终结点）、身份验证参数，以及类似的与连接相关的信息。 连接字符串以编程方式通过 `KustoConnectionStringBuilder` 类提供。
+
+* 数据库的名称，用来描述请求的“作用域”。
+
+* 请求（查询或命令）本身的文本。
+
+* 客户端提供给服务并应用于请求的其他属性。 这些属性以编程方式包含在名为 `ClientRequestProperties` 的类中。
+
+##   <a name="clientrequestproperties"></a>ClientRequestProperties
+
+客户端请求属性有很多用途。 
+* 使调试变得更轻松。 例如，属性可以提供用于跟踪客户端/服务交互的相关字符串。 
+* 影响应用于请求的限制和策略。 
+* 使用[查询参数](../../query/queryparametersstatement.md)，客户端应用程序可以基于用户输入将 Kusto 查询参数化。
+[支持的属性的列表](#list-of-clientrequestproperties)。
+
+`Kusto.Data.Common.ClientRequestProperties` 类包含三种数据。
+
+* 命名属性。
+* 选项 - 选项名称到选项值的映射。
+* 参数 - 查询参数名称到查询参数值的映射。
+
+> [!NOTE]
+> 一些命名属性标记为“不使用”。 此类属性不应由客户端指定，不会对服务造成任何影响。
+
+## <a name="the-clientrequestid-x-ms-client-request-id-named-property"></a>ClientRequestId (x-ms-client-request-id) 命名属性
+
+此命名属性具有客户端指定的请求标识。 客户端应当为其发送的每个请求指定唯一的每请求值。 此值使得对失败进行调试更为容易，在某些情况下（例如在需要取消查询的情况下）也是必需的。
+
+此属性的编程名称是 `ClientRequestId`，并且它将转换为 HTTP 标头 `x-ms-client-request-id`。
+
+如果客户端未指定值，则 SDK 会将此属性设为一个（随机）值。
+
+此属性的内容可以是任何可输出的唯一字符串，例如 GUID。
+但是，我们建议客户端使用：ApplicationName `.` ActivityName `;` UniqueId
+
+* ApplicationName 标识发出请求的客户端应用程序。
+* ActivityName 标识客户端应用程序发出客户端请求时所针对的活动类型。
+* UniqueId 标识特定的请求。
+
+## <a name="the-application-x-ms-app-named-property"></a>application (x-ms-app) 命名属性
+
+Application (x-ms-app) 命名属性具有发出请求的客户端应用程序的名称，用于跟踪。
+
+此属性的编程名称是 `Application`，并且它将转换为 HTTP 标头 `x-ms-app`。 可以在 Kusto 连接字符串中将其指定为 `Application Name for Tracing`。
+
+如果客户端未指定其自己的值，则此属性将设置为承载 SDK 的进程的名称。
+
+## <a name="the-user-x-ms-user-named-property"></a>User (x-ms-user) 命名属性
+
+User (x-ms-user) 命名属性具有发出请求的用户的标识，用于跟踪。
+
+此属性的编程名称是 `User`，并且它将转换为 HTTP 标头 `x-ms-user`。 可以在 Kusto 连接字符串中将其指定为 `User Name for Tracing`。
+
+## <a name="controlling-request-properties-using-the-rest-api"></a>使用 REST API 控制请求属性
+
+向 Kusto 服务发出 HTTP 请求时，请在作为 POST 请求正文的 JSON 文档中使用 `properties` 槽来提供请求属性。 
+
+> [!NOTE]
+> 某些属性（例如“客户端请求 ID”，它是客户端向服务提供的用于标识请求的相关 ID）可以在 HTTP 标头中提供，也可以在使用 HTTP GET 的情况下设置。
+有关详细信息，请参阅 [Kusto REST API 请求对象](../rest/request.md)。
+
+## <a name="providing-values-for-query-parameterization-as-request-properties"></a>以请求属性的形式提供用于查询参数化的值
+
+Kusto 查询可以通过在查询文本中使用专门的[声明查询参数](../../query/queryparametersstatement.md)语句来引用查询参数。 此语句允许客户端应用程序以安全的方式基于用户输入将 Kusto 查询参数化，而无需担心注入式攻击。
+
+以编程方式使用 `ClearParameter`、`SetParameter` 和 `HasParameter` 方法设置属性值。
+
+在 REST API 中，查询参数与其他请求属性显示在相同的 JSON 编码字符串中。
+
+## <a name="sample-client-code-for-using-request-properties"></a>用于使用请求属性的示例客户端代码
+
+```csharp
+public static System.Data.IDataReader QueryKusto(
+    Kusto.Data.Common.ICslQueryProvider queryProvider,
+    string databaseName,
+    string query)
+{
+    var queryParameters = new Dictionary<String, String>()
+    {
+        { "xIntValue", "111" },
+        { "xStrValue", "abc" },
+        { "xDoubleValue", "11.1" }
+    };
+
+    // Query parameters (and many other properties) are provided
+    // by a ClientRequestProperties object handed alongside
+    // the query:
+    var clientRequestProperties = new Kusto.Data.Common.ClientRequestProperties(
+        principalIdentity: null,
+        options: null,
+        parameters: queryParameters);
+
+    // Having client code provide its own ClientRequestId is
+    // highly recommended. It not only allows the caller to
+    // cancel the query, but also makes it possible for the Kusto
+    // team to investigate query failures end-to-end:
+    clientRequestProperties.ClientRequestId
+        = "MyApp.MyActivity;"
+        + Guid.NewGuid().ToString();
+
+    // This is an example for setting an option
+    // ("notruncation", in this case). In most cases this is not
+    // needed, but it's included here for completeness:
+    clientRequestProperties.SetOption(
+        Kusto.Data.Common.ClientRequestProperties.OptionNoTruncation,
+        true);
+ 
+    try
+    {
+        return queryProvider.ExecuteQuery(query, clientRequestProperties);
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine(
+            "Failed invoking query '{0}' against Kusto."
+            + " To have the Kusto team investigate this failure,"
+            + " please open a ticket @ https://aka.ms/kustosupport,"
+            + " and provide: ClientRequestId={1}",
+            query, clientRequestProperties.ClientRequestId);
+        return null;
+    }
+}
+```
+
+## <a name="list-of-clientrequestproperties"></a>ClientRequestProperties 的列表
+
+<!-- The following is auto-generated by running  Kusto.Cli.exe -execute:"#crp -doc"           -->
+<!-- The following text can be re-produced by running the Kusto.Cli.exe directive '#crp -doc' -->
+
+* `debug_query_externaldata_projection_fusion_disabled` (OptionDebugQueryDisableExternalDataProjectionFusion)：如果设置了此项，则不要将投影融合到 ExternalData 运算符中。 [Boolean]
+* `debug_query_fanout_threads_percent_external_data` (OptionDebugQueryFanoutThreadsPercentExternalData)：要将执行扇出到的线程所占的百分比（对于外部数据节点）。 [Int]
+* `deferpartialqueryfailures` (OptionDeferPartialQueryFailures)：如果为 true，则会禁止将部分查询失败报告为结果集的一部分。 [Boolean]
+* `max_memory_consumption_per_query_per_node` (OptionMaxMemoryConsumptionPerQueryPerNode)：替代整个查询可以为每个节点分配的默认最大内存量。 [UInt64]
+* `maxmemoryconsumptionperiterator` (OptionMaxMemoryConsumptionPerIterator)：替代查询运算符可以分配的默认最大内存量。 [UInt64]
+* `maxoutputcolumns` (OptionMaxOutputColumns)：替代查询可以生成的默认最大列数。 [Long]
+* `norequesttimeout` (OptionNoRequestTimeout)：允许将请求超时设置为其最大值。 [Boolean]
+* `notruncation` (OptionNoTruncation)：启用禁止截断返回给调用方的查询结果的功能。 [Boolean]
+* `push_selection_through_aggregation` (OptionPushSelectionThroughAggregation)：如果为 true，则通过聚合推送简单的选择 [Boolean]
+* `query_admin_super_slacker_mode` (OptionAdminSuperSlackerMode)：如果为 true，则将查询的执行委托给另一个节点 [Boolean]
+* `query_bin_auto_at` (QueryBinAutoAt)：计算 bin_auto() 函数时要使用的起始值。 [LiteralExpression]
+* `query_bin_auto_size` (QueryBinAutoSize)：计算 bin_auto() 函数时要使用的 bin 大小值。 [LiteralExpression]
+* `query_cursor_after_default` (OptionQueryCursorAfterDefault)：在不使用参数的情况下调用时 cursor_after() 函数的默认参数值。 [string]
+* `query_cursor_before_or_at_default` (OptionQueryCursorBeforeOrAtDefault)：在不使用参数的情况下调用时 cursor_before_or_at() 函数的默认参数值。 [string]
+* `query_cursor_current` (OptionQueryCursorCurrent)：替代 cursor_current() 或 current_cursor() 函数返回的游标值。 [string]
+* `query_cursor_scoped_tables` (OptionQueryCursorScopedTables)：作用域应限定为 cursor_after_default 的表名称的列表。 cursor_before_or_at_default（上限为可选）。 [dynamic]
+* `query_datascope` (OptionQueryDataScope)：控制查询的 datascope，了解查询是应用于所有数据还是仅应用于它的一部分。 [“default”、“all”或“hotcache”]
+* `query_datetimescope_column` (OptionQueryDateTimeScopeColumn)：控制查询的日期/时间范围 (query_datetimescope_to / query_datetimescope_from) 的列名称。 [String]
+* `query_datetimescope_from` (OptionQueryDateTimeScopeFrom)：控制查询的日期/时间范围（最早）。 此值用作仅基于 query_datetimescope_column 的自动应用筛选器（如果已定义）。 [DateTime]
+* `query_datetime\scope_to` (OptionQueryDateTimeScopeTo)：控制查询的日期/时间范围（最新）。 此值用作仅基于 query_datetimescope_column 的自动应用筛选器（如果已定义）。 [DateTime]
+* `query_distribution_nodes_span` (OptionQueryDistributionNodesSpanSize)：如果设置了此项，则它控制子查询合并的行为方式：执行节点将在查询层次结构中为每个节点子组引入一个附加级别。 此选项设置子组的大小。 [Int]
+* `query_fanout_nodes_percent` (OptionQueryFanoutNodesPercent)：要将执行扇出到的节点所占的百分比。 [Int]
+* `query_fanout_threads_percent` (OptionQueryFanoutThreadsPercent)：要将执行扇出到的线程所占的百分比。 [Int]
+* `query_language` (OptionQueryLanguage)：控制解释查询文本的方式。 [“csl”、“kql”或“sql”]
+* `query_max_entities_in_union` (OptionMaxEntitiesToUnion)：替代允许查询生成的默认最大列数。 [Long]
+* `query_now` (OptionQueryNow)：替代 now(0s) 函数返回的日期/时间值。 [DateTime]
+* `query_python_debug` (OptionDebugPython)：如果设置了此项，则将为枚举的 python 节点（默认值为第一个）生成一个 python 调试查询。 [Boolean 或 Int]
+* `query_results_apply_getschema` (OptionQueryResultsApplyGetSchema)：如果设置了此项，则将检索查询结果中每个表格数据的架构而不检索数据本身。 [Boolean]
+* `query_results_cache_max_age` (OptionQueryResultsCacheMaxAge)：如果为正值，则控制 Kusto 可能返回的缓存查询结果的最长寿命 [TimeSpan]
+* `query_results_progressive_row_count` (OptionProgressiveQueryMinRowCountPerUpdate)：告诉 Kusto 要在每个更新中发送多少条记录。 仅当设置了 OptionResultsProgressiveEnabled 时，此值才会生效
+* `query_results_progressive_update_period` (OptionProgressiveProgressReportPeriod)：告诉 Kusto 发送进度帧的频率。 仅当设置了 OptionResultsProgressiveEnabled 时，此值才会生效
+* `query_shuffle_broadcast_join` (ShuffleBroadcastJoin)：在广播联接上启用乱序。
+* `query_take_max_records` (OptionTakeMaxRecords)：允许将查询结果限制为此数量的记录。 [Long]
+* `queryconsistency` (OptionQueryConsistency)：控制查询一致性。 [“strongconsistency”或“normalconsistency”或“weakconsistency”]
+* `request_callout_disabled` (OptionRequestCalloutDisabled)：如果指定了此项，则表示请求不能调用用户提供的服务。 [Boolean]
+* `request_description` (OptionRequestDescription)：请求创建者希望将其作为请求说明包括的任意文本。 [String]
+* `request_external_table_disabled` (OptionRequestExternalTableDisabled)：如果指定了此项，则表示请求无法调用 ExternalTable 中的代码。 [Boolean]
+* `request_readonly` (OptionRequestReadOnly)：如果指定了此项，则表示请求不能写入任何内容。 [Boolean]
+* `request_remote_entities_disabled` (OptionRequestRemoteEntitiesDisabled)：如果指定了此项，则表示请求无法访问远程数据库和群集。 [Boolean]
+* `request_sandboxed_execution_disabled` (OptionRequestSandboxedExecutionDisabled)：如果指定了此项，则表示请求无法调用沙盒中的代码。 [Boolean]
+* `results_progressive_enabled` (OptionResultsProgressiveEnabled)：如果设置了此项，则会启用渐进式查询流
+* `servertimeout` (OptionServerTimeout)：替代默认的请求超时。 [TimeSpan]
+* `truncationmaxrecords` (OptionTruncationMaxRecords)：替代查询可以返回给调用方的默认最大记录数（截断）。 [Long]
+* `truncationmaxsize` (OptionTruncationMaxSize)：替代允许查询返回给调用方的默认最大数据大小（截断）。 [Long]
+* `validate_permissions` (OptionValidatePermissions)：验证用户执行查询的权限，但不运行查询本身。 [Boolean]
