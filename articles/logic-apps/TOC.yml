@@ -7,16 +7,28 @@
 - name: 快速入门
   expanded: true
   items:
-    - name: 创建逻辑应用 - Azure 门户
+    - name: 创建逻辑应用 - 门户
       href: quickstart-create-first-logic-app-workflow.md
     - name: 创建逻辑应用 - Visual Studio
       href: quickstart-create-logic-apps-with-visual-studio.md
     - name: 创建逻辑应用 - Visual Studio Code
       href: quickstart-create-logic-apps-visual-studio-code.md
+    - name: 创建逻辑应用 - ARM 模板
+      displayName: Resource Manager
+      href: quickstart-create-deploy-azure-resource-manager-template.md
 - name: 教程
   items:
     - name: 创建 Azure 存储和 Azure Functions 工作流
       href: tutorial-process-email-attachments-workflow.md
+- name: 示例
+  items:
+    - name: Azure 代码示例
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-logic-apps'
+    - name: 资源管理器快速启动模板
+      href: 'https://github.com/Azure/azure-quickstart-templates/?resourceType=Microsoft.Logic'
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 适用于逻辑应用的连接器
@@ -29,6 +41,8 @@
       href: logic-apps-enterprise-integration-overview.md
     - name: 业务连续性和灾难恢复
       href: business-continuity-disaster-recovery-guidance.md
+    - name: 安全基线
+      href: security-baseline.md
 - name: 操作指南
   items:
     - name: 开发
@@ -70,12 +84,6 @@
           href: logic-apps-handle-large-messages.md
         - name: 处理限制问题或 429 错误
           href: handle-throttling-problems-429-errors.md
-        - name: 安全
-          items:
-            - name: 提高逻辑应用的安全性
-              href: logic-apps-securing-a-logic-app.md
-            - name: 使用托管标识进行身份验证
-              href: create-managed-service-identity.md
         - name: 开发自定义连接器
           href: custom-connector-overview.md
         - name: 开发自定义 API
@@ -240,6 +248,14 @@
           href: logic-apps-enterprise-integration-x12.md
         - name: XML 验证
           href: logic-apps-enterprise-integration-xml-validation.md
+    - name: 安全
+      items:
+        - name: 保护逻辑应用
+          href: logic-apps-securing-a-logic-app.md
+        - name: 使用托管标识进行身份验证
+          href: create-managed-service-identity.md
+        - name: 阻止逻辑应用中的连接
+          href: block-connections-connectors.md
     - name: 管理
       items:
         - name: 管理逻辑应用 - Azure 门户
@@ -287,8 +303,10 @@
       href: logic-apps-limits-and-config.md
     - name: 定价模型与用量计量
       href: logic-apps-pricing.md
+    - name: Azure CLI
+      href: 'https://docs.microsoft.com/cli/azure/ext/logic/logic?view=azure-cli-latest?view=azure-cli-latest'
     - name: Azure PowerShell
-      href: 'https://docs.microsoft.com/en-us/powershell/module/azurerm.logicapp'
+      href: 'https://docs.microsoft.com/powershell/module/az.logicapp'
     - name: REST API
       href: 'https://docs.microsoft.com/rest/api/logic/'
     - name: 工作流定义语言架构
@@ -310,9 +328,13 @@
           href: logic-apps-track-integration-account-custom-tracking-schema.md
 - name: 资源
   items:
-    - name: MSDN 论坛
-      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azurelogicapps'
     - name: 定价
       href: 'https://www.azure.cn/pricing/details/logic-apps/'
     - name: 定价计算器
       href: 'https://www.azure.cn/pricing/calculator/'
+    - name: 视频
+      href: 'https://www.azure.cn/video-center/'
+    - name: Azure Q&A 问题页
+      href: 'https://docs.microsoft.com/answers/topics/azure-logic-apps.html'
+    - name: 服务更新
+      href: 'https://updates.azure.cn/'

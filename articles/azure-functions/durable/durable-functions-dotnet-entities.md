@@ -3,14 +3,14 @@ title: 有关 .NET 中的持久实体的开发人员指南 - Azure Functions
 description: 如何通过 Azure Functions 的 Durable Functions 扩展使用 .NET 中的持久实体。
 author: sebastianburckhardt
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 07/17/2020
 ms.author: v-junlch
-ms.openlocfilehash: 838294f35c6559d3861b8f8e7ea3d73dcc2bab6c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d53b097472b6197711ccbd9d5d8c92b43ae2e982
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292940"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440431"
 ---
 # <a name="developers-guide-to-durable-entities-in-net"></a>有关 .NET 中的持久实体的开发人员指南
 
@@ -103,9 +103,9 @@ public class Counter
 ```csharp
     public void Add(int amount) 
     {
-        if (this.Value < 100 && this.Value + amount > 100)
+        if (this.Value < 100 && this.Value + amount >= 100)
         {
-            Entity.Current.StartNewOrchestration("MilestoneReached", Entity.Current.EntityId)
+            Entity.Current.StartNewOrchestration("MilestoneReached", Entity.Current.EntityId);
         }
         this.Value += amount;      
     }
@@ -512,4 +512,3 @@ public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 > [!div class="nextstepaction"]
 > [了解实体的概念](durable-functions-entities.md)
 
-<!-- Update_Description: link update -->

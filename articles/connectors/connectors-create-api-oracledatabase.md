@@ -3,18 +3,20 @@ title: 连接到 Oracle 数据库
 description: 使用 Oracle Database REST API 和 Azure 逻辑应用插入和管理记录
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: estfan, logicappspm
 ms.topic: article
-origin.date: 03/29/2017
-ms.date: 06/08/2020
+origin.date: 05/20/2020
+ms.date: 07/20/2020
+ms.testscope: no
+ms.testdate: 06/08/2020
 ms.author: v-yeche
 tags: connectors
-ms.openlocfilehash: 01a5da640d2e72a8abea0f1391b948e0ed32c662
-ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
+ms.openlocfilehash: 8762b6f4811fb857b1cff06a29f0b831fd525e9f
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84564370"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414579"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Oracle 数据库连接器入门
 
@@ -22,6 +24,13 @@ ms.locfileid: "84564370"
 
 * 通过向客户数据库添加新客户或在订单数据库中更新订单生成工作流。
 * 使用操作获取数据行、插入新行，甚至删除。 例如，在 Dynamics CRM Online 中创建记录时（触发器），则在 Oracle 数据库中插入行（操作）。 
+
+该连接器不支持以下项：
+
+* 视图 
+* 包含复合键的任意表
+* 表中的嵌套对象类型
+* 具有非标量值的数据库函数
 
 本文介绍如何在逻辑应用中使用 Oracle 数据库连接器。
 
@@ -46,24 +55,24 @@ ms.locfileid: "84564370"
 ## <a name="add-the-connector"></a>添加连接器
 
 > [!IMPORTANT]
-> 此连接器没有任何触发器。 它只有操作。 因此，请在创建逻辑应用时，添加另一个用于启动逻辑应用的触发器，例如“计划 - 重复周期”或“请求/响应 - 响应”。**** **** 
+> 此连接器没有任何触发器。 它只有操作。 因此，请在创建逻辑应用时，添加另一个用于启动逻辑应用的触发器，例如“计划 - 重复周期”或“请求/响应 - 响应”。  
 
 1. 在 [Azure 门户](https://portal.azure.cn)中，创建一个空白逻辑应用。
 
-2. 在启动逻辑应用时，请选择“请求/响应 - 请求”触发器：**** 
+2. 在启动逻辑应用时，请选择“请求/响应 - 请求”触发器： 
 
     ![](./media/connectors-create-api-oracledatabase/request-trigger.png)
 
-3. 选择“保存” ****。 保存时，会自动生成请求 URL。 
+3. 选择“保存” 。 保存时，会自动生成请求 URL。 
 
-4. 选择“新步骤”****，并选择“添加操作”****。 若要查看可用操作，请键入 `oracle`： 
+4. 选择“新步骤”，并选择“添加操作”。 若要查看可用操作，请键入 `oracle`： 
 
     ![](./media/connectors-create-api-oracledatabase/oracledb-actions.png)
 
     > [!TIP]
     > 这也是查看适用于任何连接器的触发器和操作的最快方式。 键入连接器的部分名称，例如 `oracle`。 设计器会列出任何触发器和任何操作。 
 
-5. 选择其中一个操作，例如“Oracle 数据库 - 获取行”。**** 选择“通过本地数据网关连接”。**** 输入 Oracle 服务器名称、身份验证方法、用户名、密码，并选择网关：
+5. 选择其中一个操作，例如“Oracle 数据库 - 获取行”。 选择“通过本地数据网关连接”。 输入 Oracle 服务器名称、身份验证方法、用户名、密码，并选择网关：
 
     ![](./media/connectors-create-api-oracledatabase/create-oracle-connection.png)
 
@@ -77,7 +86,7 @@ ms.locfileid: "84564370"
 
     ![](./media/connectors-create-api-oracledatabase/oracle-send-email.png)
 
-8. **保存**逻辑应用，并选择“运行”。**** 关闭设计器，并在运行历史记录中查看状态。 如果该操作失败，请选择失败的消息行。 设计器会打开，并且会显示具体的失败步骤，以及错误信息。 如果该操作成功，应该会收到一封电子邮件，其中包含你添加的信息。
+8. **保存**逻辑应用，并选择“运行”。 关闭设计器，并在运行历史记录中查看状态。 如果该操作失败，请选择失败的消息行。 设计器会打开，并且会显示具体的失败步骤，以及错误信息。 如果该操作成功，应该会收到一封电子邮件，其中包含你添加的信息。
 
 ### <a name="workflow-ideas"></a>工作流创意
 
@@ -109,21 +118,13 @@ ms.locfileid: "84564370"
 
 **解决方法**：Oracle Database 连接器要求使用包含主键列的表。
 
-#### <a name="currently-not-supported"></a>目前不受支持。
-
-* 视图 
-* 包含复合键的任意表
-* 表中的嵌套对象类型
-
 ## <a name="connector-specific-details"></a>特定于连接器的详细信息
 
 在[连接器详细信息](https://docs.microsoft.com/connectors/oracle/)中查看在 Swagger 中定义的触发器和操作，并查看限制。 
 
 ## <a name="get-some-help"></a>获取帮助
 
-若要提问、解答问题和了解其他逻辑应用用户的活动，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。 
-
-<!--CORRECT ON https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps-->
+若要提问、解答问题和了解其他逻辑应用用户的活动，请访问[有关 Azure 逻辑应用的 Microsoft 问答页面](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)。 
 
 可以在 [https://aka.ms/logicapps-wish](https://aka.ms/logicapps-wish) 上投票并提交自己的创意，帮助改进逻辑应用和连接器。 
 

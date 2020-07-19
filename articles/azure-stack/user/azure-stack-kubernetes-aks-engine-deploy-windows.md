@@ -4,16 +4,16 @@ description: 了解如何在 Azure Stack Hub 中使用 Windows 计算机托管 A
 author: WenJason
 ms.topic: article
 origin.date: 3/19/2020
-ms.date: 06/22/2020
+ms.date: 07/20/2020
 ms.author: v-jay
 ms.reviewer: waltero
 ms.lastreviewed: 3/19/2020
-ms.openlocfilehash: dcac91ec11f5f182d3f88bfcfeb3f578812facde
-ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
+ms.openlocfilehash: d532926a7873f92d2e911d4c3b2ee50ca4969061
+ms.sourcegitcommit: e9ffd50aa5eaab402a94bfabfc70de6967fe6278
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85096958"
+ms.lasthandoff: 07/14/2020
+ms.locfileid: "86307433"
 ---
 # <a name="install-the-aks-engine-on-windows-in-azure-stack-hub"></a>在 Azure Stack Hub 中的 Windows 上安装 AKS 引擎
 
@@ -41,7 +41,7 @@ AKS 引擎是一种命令行工具，用于部署和管理 Kubernetes 群集。 
 5. 从提升的提示符运行以下命令，并添加版本号：
 
     ```PowerShell  
-        choco install aks-engine --version 0.48.0 -y
+        choco install aks-engine --version 0.51.0 -y
     ```
 
 > [!Note]  
@@ -66,7 +66,7 @@ AKS 引擎是一种命令行工具，用于部署和管理 Kubernetes 群集。 
 7.  在提升的提示符下运行以下命令。 包括正确的版本号：
 
     ```PowerShell  
-        choco install aks-engine --version 0.48.0 -y
+        choco install aks-engine --version 0.51.0 -y
     ```
 
 ## <a name="verify-the-installation"></a>验证安装

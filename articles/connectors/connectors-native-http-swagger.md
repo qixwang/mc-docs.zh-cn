@@ -6,15 +6,17 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 origin.date: 11/01/2019
-ms.date: 03/09/2020
+ms.date: 07/20/2020
+ms.testscope: no
+ms.testdate: 03/09/2020
 ms.author: v-yeche
 tags: connectors
-ms.openlocfilehash: 963e100e03a36beda26fd0771d020c1b63fd446e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: dcea721fd6b96320f8707b143e9ed21f99347446
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78304655"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414711"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用调用 REST 终结点
 
@@ -26,7 +28,7 @@ ms.locfileid: "78304655"
 
 * 用于描述目标 REST 终结点的 Swagger（非 OpenAPI）文件的 URL
 
-    通常，REST 终结点必须符合此条件，才能让连接器正常工作：
+    通常，REST 终结点必须满足此条件，连接器才能工作：
 
     * Swagger 文件必须托管在可公开访问的 HTTPS URL 上。
 
@@ -46,11 +48,11 @@ ms.locfileid: "78304655"
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。 在逻辑应用设计器中打开空白逻辑应用。
 
-1. 在设计器的搜索框中，输入“swagger”作为筛选器。 在“触发器”列表中选择“HTTP + Swagger”触发器。  
+1. 在设计器的搜索框中，输入“swagger”作为筛选器。 在“触发器”列表中选择“HTTP + Swagger”触发器。 
 
     ![选择 HTTP + Swagger 触发器](./media/connectors-native-http-swagger/select-http-swagger-trigger.png)
 
-1. 在“SWAGGER 终结点 URL”框中，输入 Swagger 文件的 URL，然后选择“下一步”。  
+1. 在“SWAGGER 终结点 URL”框中，输入 Swagger 文件的 URL，然后选择“下一步”。 
 
     对于[认知服务人脸 API](https://chinanorth.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)，此示例使用位于“中国北部”区域的 Swagger URL：
 
@@ -68,13 +70,13 @@ ms.locfileid: "78304655"
 
     ![操作详细信息](./media/connectors-native-http-swagger/http-swagger-trigger-operation-details.png)
 
-1. 若要添加其他可用参数，请打开“添加新参数”列表，并选择所需的参数。 
+1. 要添加其他可用参数，请打开“添加新参数”列表，然后选择所需参数。
 
     有关 HTTP + Swagger 可用的身份验证类型的详细信息，请参阅[向出站调用添加身份验证](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。
 
 1. 继续使用触发器激发时运行的操作生成逻辑应用的工作流。
 
-1. 完成后，请记得保存逻辑应用。 在设计器工具栏上选择“保存”。 
+1. 完成后，请记得保存逻辑应用。 在设计器工具栏上选择“保存”。
 
 ## <a name="add-an-http--swagger-action"></a>添加 HTTP + Swagger 操作
 
@@ -82,15 +84,15 @@ ms.locfileid: "78304655"
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。 在逻辑应用设计器中打开逻辑应用。
 
-1. 在要添加 HTTP + Swagger 操作的步骤下，选择“新建步骤”。 
+1. 在要添加 HTTP + Swagger 操作的步骤下，选择“新建步骤”。
 
-    若要在步骤之间添加操作，请将鼠标指针移到步骤之间的箭头上。 选择出现的加号 ( **+** )，然后选择“添加操作”。 
+    若要在步骤之间添加操作，请将鼠标指针移到步骤之间的箭头上。 选择出现的加号 ( **+** )，然后选择“添加操作”。
 
-1. 在设计器的搜索框中，输入“swagger”作为筛选器。 在“操作”列表中选择“HTTP + Swagger”操作。  
+1. 在设计器的搜索框中，输入“swagger”作为筛选器。 在“操作”列表中选择“HTTP + Swagger”操作。 
 
     ![选择 HTTP + Swagger 操作](./media/connectors-native-http-swagger/select-http-swagger-action.png)
 
-1. 在“SWAGGER 终结点 URL”框中，输入 Swagger 文件的 URL，然后选择“下一步”。  
+1. 在“SWAGGER 终结点 URL”框中，输入 Swagger 文件的 URL，然后选择“下一步”。 
 
     对于[认知服务人脸 API](https://chinanorth.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)，此示例使用位于“中国北部”区域的 Swagger URL：
 
@@ -108,11 +110,11 @@ ms.locfileid: "78304655"
 
     ![操作详细信息](./media/connectors-native-http-swagger/http-swagger-action-operation-details.png)
 
-1. 若要添加其他可用参数，请打开“添加新参数”列表，并选择所需的参数。 
+1. 要添加其他可用参数，请打开“添加新参数”列表，然后选择所需参数。
 
     有关 HTTP + Swagger 可用的身份验证类型的详细信息，请参阅[向出站调用添加身份验证](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。
 
-1. 完成后，请记得保存逻辑应用。 在设计器工具栏上选择“保存”。 
+1. 完成后，请记得保存逻辑应用。 在设计器工具栏上选择“保存”。
 
 <a name="host-swagger"></a>
 
@@ -122,7 +124,7 @@ ms.locfileid: "78304655"
 
 1. [创建 Azure 存储帐户](../storage/common/storage-create-storage-account.md)。
 
-1. 现在，为 Blob 启用 CORS。 在存储帐户的菜单中选择“CORS”。  在“Blob 服务”选项卡上指定值，然后选择“保存”。  
+1. 现在，为 Blob 启用 CORS。 在存储帐户的菜单中选择“CORS”。 在“Blob 服务”选项卡上指定值，然后选择“保存”。 
 
     | 属性 | Value |
     |----------|-------|
@@ -135,13 +137,13 @@ ms.locfileid: "78304655"
 
     此示例使用 [Azure 门户](https://portal.azure.cn)，不过，你也可以使用 [Azure 存储资源管理器](https://storageexplorer.com/)之类的工具，或使用此示例 [PowerShell 脚本](https://github.com/logicappsio/EnableCORSAzureBlob/blob/master/EnableCORSAzureBlob.ps1)自动配置此设置。
 
-1. [创建 Blob 容器](../storage/blobs/storage-quickstart-blobs-portal.md)。 在容器的“概述”窗格中，选择“更改访问级别”。   在“公共访问级别”列表中，选择“Blob (仅限对 Blob 进行匿名读取访问)”，然后选择“确定”。   
+1. [创建 Blob 容器](../storage/blobs/storage-quickstart-blobs-portal.md)。 在容器的“概述”窗格中，选择“更改访问级别”。  在“公共访问级别”列表中，选择“Blob (仅限对 Blob 进行匿名读取访问)”，然后选择“确定”。  
 
-1. 通过 [Azure 门户](https://portal.azure.cn)或 [Azure 存储资源管理器](https://storageexplorer.com/)[将 Swagger 文件上传到 Blob容器](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob)。
+1. 通过 [Azure 门户](https://portal.azure.cn)或 [Azure 存储资源管理器](https://storageexplorer.com/)[将 Swagger 文件上传到 Blob 容器](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob)。
 
-1. 若要在 Blob 容器中引用该文件，请使用以下格式的 HTTPS 链接（区分大小写）：
+1. 若要在 Blob 容器中引用该文件，请从 Azure 存储资源管理器获取采用以下格式（区分大小写）的 HTTPS URL：
 
-    `https://<storage-account-name>.blob.core.chinacloudapi.cn/<blob-container-name>/<swagger-file-name>`
+    `https://<storage-account-name>.blob.core.chinacloudapi.cn/<blob-container-name>/<complete-swagger-file-name>?<query-parameters>`
 
 ## <a name="connector-reference"></a>连接器参考
 

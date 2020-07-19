@@ -11,12 +11,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: overview
 ms.date: 03/24/2020
-ms.openlocfilehash: 72106be8c11db2786b78198c97e38efc8d066167
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.openlocfilehash: 0a38c2977c7b17692c1073b1cae6aeca972b56b8
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723280"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86441064"
 ---
 # <a name="what-is-machine-learning-studio-classic"></a>什么是机器学习工作室（经典版）？
 
@@ -83,7 +83,6 @@ Azure 机器学习工作室（经典版）提供交互式的可视工作区，�
 
 模块可能提供一组参数用于配置模块的内部算法。 在画布上选择模块时，模块的参数会显示在画布右侧的“属性”  窗格中。 可以在该窗格中修改参数来调整模型。
 
-在浏览可用的机器学习算法大型库时如需帮助，请参阅 [How to choose algorithms for Microsoft Azure Machine Learning Studio](algorithm-choice.md)（如何选择 Microsoft Azure 机器学习工作室（经典版）的算法）。
 
 ## <a name="deploying-a-predictive-analytics-web-service"></a>部署预测分析 Web 服务
 准备好预测分析模型后，可以从机器学习工作室（经典版）将它部署为 Web 服务。 有关此过程的信息，请参阅 [Deploy an Azure Machine Learning web service](deploy-a-machine-learning-web-service.md)（部署 Azure 机器学习 Web 服务）。

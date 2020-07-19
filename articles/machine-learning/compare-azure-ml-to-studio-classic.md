@@ -8,18 +8,18 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 03/25/2020
-ms.openlocfilehash: 8beb03fa3d10a00e6317fd024e48888347a32aac
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: 1df3746df521fdd2e6923195b4e2eed2dced32d3
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097084"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86441125"
 ---
 # <a name="azure-machine-learning-vs-machine-learning-studio-classic"></a>Azure 机器学习与机器学习工作室（经典版）
 
 本文介绍 Azure 机器学习和机器学习工作室（经典版）的区别。 
 
-Azure 机器学习提供 Python 和 R SDK 以及  “拖放”设计器，用于构建和部署机器学习模型。 工作室（经典版）仅提供独立的拖放体验。
+Azure 机器学习提供 Python 和 R SDK 以及“拖放”设计器，用于构建和部署机器学习模型。 工作室（经典版）仅提供独立的拖放体验。
 
 建议新用户选择 Azure 机器学习，以便获取最广泛的先进机器学习工具。
 
@@ -29,20 +29,20 @@ Azure 机器学习提供 Python 和 R SDK 以及  “拖放”设计器，用于
 
 | | 机器学习工作室（经典版） | Azure 机器学习 |
 |---| --- | --- |
-| 拖放界面 | 支持 | 支持 - [Azure 机器学习设计器（预览版）](concept-designer.md) | 
+| 拖放界面 | 支持 | 支持 - [Azure 机器学习设计器（预览版）](concept-designer.md) <br/>（需要企业工作区） | 
 | 试验 | 可缩放（10 GB 训练数据限制） | 使用计算目标进行缩放 |
 | 训练计算目标 | 专用计算目标，仅限 CPU 支持 | 各种可自定义的[训练计算目标](concept-compute-target.md#train)。 包括 GPU 和 CPU 支持 | 
 | 部署计算目标 | 专用 Web 服务格式，不可自定义 | 各种可自定义的[部署计算目标](concept-compute-target.md#deploy)。 包括 GPU 和 CPU 支持 |
 | ML 管道 | 不支持 | 生成灵活的模块化[管道](concept-ml-pipelines.md)，用于自动完成工作流 |
 | MLOps | 基本模型管理和部署 | 实体版本控制（模型、数据、工作流）、工作流自动化、与 CICD 工具集成，[等等](concept-model-management-and-deployment.md) |
-| 模型格式 | 专用格式，仅限工作室（经典版） | 多个受支持的格式，具体取决于训练作业类型 |
+| 模型格式 | 专用格式，仅限工作室（经典） | 多个受支持的格式，具体取决于训练作业类型 |
 | 自动化模型训练和超参数优化 |  不支持 | [在 SDK 和可视化工作区中受支持](concept-automated-ml.md) | 
 | 数据偏移检测 | 不支持 | [在 SDK 和可视化工作区中受支持](how-to-monitor-datasets.md) |
 
 
 ## <a name="migrate-from-machine-learning-studio-classic"></a>从机器学习工作室（经典版）迁移
 
-目前没有办法将工作室（经典版）资产迁移到 Azure 机器学习设计器（预览版）。 当前的工作室（经典版）用户可以继续使用其机器学习资产。 但是，我们建议所有用户考虑使用此设计器，它提供用户熟悉的拖放式体验和改进的工作流以及可伸缩性、版本控制和企业安全性。 
+目前没有办法将工作室（经典版）资产迁移到 Azure 机器学习设计器（预览版）。 当前的工作室（经典版）用户可以继续使用其机器学习资产。 但是，我们建议所有用户考虑使用此设计器，它提供用户熟悉的拖放式体验和改进的工作流以及可伸缩性、版本控制和企业安全性。
 
 ## <a name="get-started-with-azure-machine-learning"></a>开始使用 Azure 机器学习
 

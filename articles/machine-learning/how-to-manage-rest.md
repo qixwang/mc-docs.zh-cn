@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 01/31/2020
 ms.custom: tracking-python
-ms.openlocfilehash: f2cd11d03d58bfb720d800b80075f291076c2c5b
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: 4c7581b1e32a254de5a558db1df67ace1d0b0395
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097508"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86441181"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>使用 REST 创建、运行和删除 Azure ML 资源
 
@@ -103,7 +103,7 @@ curl https://management.azure.com/subscriptions/{your-subscription-id}/resourceG
             "id": "/subscriptions/12345abc-abbc-1b2b-1234-57ab575a5a5a/resourceGroups/RG1",
             "name": "RG1",
             "type": "Microsoft.Resources/resourceGroups",
-            "location": "westus2",
+            "location": "chinaeast",
             "properties": {
                 "provisioningState": "Succeeded"
             }
@@ -112,7 +112,7 @@ curl https://management.azure.com/subscriptions/{your-subscription-id}/resourceG
             "id": "/subscriptions/12345abc-abbc-1b2b-1234-57ab575a5a5a/resourceGroups/RG2",
             "name": "RG2",
             "type": "Microsoft.Resources/resourceGroups",
-            "location": "eastus",
+            "location": "chinanorth",
             "properties": {
                 "provisioningState": "Succeeded"
             }

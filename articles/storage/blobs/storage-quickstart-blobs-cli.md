@@ -7,15 +7,15 @@ author: WenJason
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-origin.date: 04/23/2020
-ms.date: 06/01/2020
+origin.date: 06/04/2020
+ms.date: 07/20/2020
 ms.author: v-jay
-ms.openlocfilehash: 424347059430820b46ebbb376eecca39dab7a16a
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: 7753062f0e24942a1146f4736cb24a9706fc668a
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199661"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414662"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>快速入门：使用 Azure CLI 创建、下载和列出 blob
 
@@ -74,9 +74,13 @@ az storage account create \
 
 ## <a name="create-a-container"></a>创建容器
 
-始终将 Blob 上传到容器中。 可以在容器中整理 Blob 组，就像在计算机的文件夹中整理文件一样。
+始终将 Blob 上传到容器中。 可以在容器中整理 Blob 组，就像在计算机的文件夹中整理文件一样。 可以使用 [az storage container create](/cli/storage/container) 命令创建用于存储 blob 的容器。 
 
-可以使用 [az storage container create](/cli/storage/container) 命令创建用于存储 blob 的容器。 请务必将尖括号中的占位符值替换为你自己的值：
+下面的示例使用 Azure AD 帐户授权操作创建容器。 创建容器之前，请将[存储 Blob 数据参与者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)角色分配给自己。 即使你是帐户所有者，也需要显式权限才能对存储帐户执行数据操作。 有关分配 RBAC 角色的详细信息，请参阅[使用 Azure CLI 为访问分配 RBAC 角色](../common/storage-auth-aad-rbac-cli.md?toc=/storage/blobs/toc.json)。  
+
+你还可以使用存储帐户密钥来授权操作创建容器。 有关使用 Azure CLI 授权数据操作的详细信息，请参阅[使用 Azure CLI 授权访问 blob 或队列数据](../common/authorize-data-operations-cli.md?toc=/storage/blobs/toc.json)。
+
+请务必将尖括号中的占位符值替换为你自己的值：
 
 ```azurecli
 az storage container create \

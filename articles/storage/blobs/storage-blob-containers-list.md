@@ -9,23 +9,23 @@ origin.date: 10/01/2019
 ms.date: 10/28/2019
 ms.author: v-jay
 ms.subservice: blobs
-ms.openlocfilehash: 93c494ad0550881061da450942424afd6f4d4b17
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2946f8a6a3acfeb531435abe7f7aa720fdaebf4b
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77028955"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414577"
 ---
 # <a name="list-blob-containers-with-net"></a>使用 .NET 列出 Blob 容器
 
-通过代码列出 Azure 存储帐户中的容器时，可以指定多个选项来管理如何从 Azure 存储返回结果。 本文介绍如何使用[适用于 .NET 的 Azure 存储客户端库](https://docs.azure.cn/zh-cn/dotnet/api/overview/storage/client?view=azure-dotnet)列出容器。  
+通过代码列出 Azure 存储帐户中的容器时，可以指定多个选项来管理如何从 Azure 存储返回结果。 本文介绍如何使用[适用于 .NET 的 Azure 存储客户端库](https://docs.azure.cn/dotnet/api/overview/storage/client?view=azure-dotnet)列出容器。  
 
 ## <a name="understand-container-listing-options"></a>了解容器列出选项
 
 若要列出存储帐户中的容器，请调用以下方法之一：
 
-- [ListContainersSegmented](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobclient.listcontainerssegmented?view=azure-dotnet)
-- [ListContainersSegmentedAsync](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobclient.listcontainerssegmentedasync?view=azure-dotnet)
+- [ListContainersSegmented](https://docs.azure.cn/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobclient.listcontainerssegmented?view=azure-dotnet)
+- [ListContainersSegmentedAsync](https://docs.azure.cn/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobclient.listcontainerssegmentedasync?view=azure-dotnet)
 
 这些方法的重载提供更多选项用于管理列出操作返回容器的方式。 后续部分将介绍这些选项。
 

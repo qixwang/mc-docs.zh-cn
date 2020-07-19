@@ -10,20 +10,16 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/20/2017
-ms.openlocfilehash: c93c095f4a99777fbd70c90d73d71a0d793b4384
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.openlocfilehash: 0e8951756fad8e3d0a991be0c64bd6f47eb4effb
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723050"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86441200"
 ---
 # <a name="manage-experiment-runs-in-azure-machine-learning-studio-classic"></a>在 Azure 机器学习工作室（经典）中管理试验运行
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
-
 开发预测分析模型是一个迭代过程 - 在修改试验的各种函数和参数时，结果会不断聚合，直到对经过培训的有效模型感到满意为止。 此过程的关键是跟踪试验参数和配置的各种迭代。
-
-
 
 可以在任何时候复查前面运行的试验，以便质询、回顾并最终确认或优化以前的假设。 在运行试验时，机器学习工作室（经典）会保留一份运行历史记录，包括数据集、模块以及端口连接数和参数。 此历史记录还会捕获结果和运行时信息，如启动和停止时间、日志消息和执行状态。 可以在任何时候回头查看这些运行，以复查实验和中间结果的时间顺序。 在创建简单、复杂，甚至建模解决方案的过程中，甚至可以使用上一次运行的试验来启动新一阶段的查询和探索。
 

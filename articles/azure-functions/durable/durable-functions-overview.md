@@ -3,19 +3,19 @@ title: Durable Functions 概述 - Azure
 description: Azure Functions 的 Durable Functions 扩展简介。
 author: cgillum
 ms.topic: overview
-ms.date: 02/14/2020
+ms.date: 07/17/2020
 ms.author: v-junlch
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 505635e697bd1363c7eb6f81d24f1be7b6d3d27d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 7f4f2a68cb0290f4ef5a9104896546aa15230995
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292737"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440356"
 ---
 # <a name="what-are-durable-functions"></a>什么是 Durable Functions？
 
-*Durable Functions* 是 [Azure Functions](../functions-overview.md) 的一个扩展，可用于在无服务器计算环境中编写有状态函数。 在该扩展中，可以通过编写[业务流程协调程序函数](durable-functions-orchestrations.md)和有状态实体并使用 Azure Functions 编程模型编写[实体函数](durable-functions-entities.md)，来定义有状态工作流。   在幕后，该扩展可以管理状态、检查点和重启，使你可以专注于业务逻辑。
+*Durable Functions* 是 [Azure Functions](../functions-overview.md) 的一个扩展，可用于在无服务器计算环境中编写有状态函数。 在该扩展中，可以通过编写[业务流程协调程序函数](durable-functions-orchestrations.md)和有状态实体并使用 Azure Functions 编程模型编写[实体函数](durable-functions-entities.md)，来定义有状态工作流。  在幕后，该扩展可以管理状态、检查点和重启，使你可以专注于业务逻辑。
 
 ## <a name="supported-languages"></a><a name="language-support"></a>支持的语言
 
@@ -384,7 +384,7 @@ module.exports = async function (context) {
 
 ### <a name="pattern-6-aggregator-stateful-entities"></a><a name="aggregator"></a>模式 #6：聚合器（有状态实体）
 
-第六种模式是关于将一段时间内的事件数据聚合到单个可寻址的实体  中。 在此模式下，聚合的数据可能来自多个源，可能分批传送，也可能分散在很长一段时间内。 聚合器可能需要在事件数据到达时对其执行操作，外部客户端可能需要查询聚合的数据。
+第六种模式是关于将一段时间内的事件数据聚合到单个可寻址的实体中。 在此模式下，聚合的数据可能来自多个源，可能分批传送，也可能分散在很长一段时间内。 聚合器可能需要在事件数据到达时对其执行操作，外部客户端可能需要查询聚合的数据。
 
 ![聚合器关系图](./media/durable-functions-concepts/aggregator.png)
 
@@ -459,7 +459,7 @@ module.exports = df.entity(function(context) {
 
 ---
 
-客户端可以使用[实体客户端绑定](durable-functions-bindings.md#entity-client)将实体函数的操作排入队列（也称为“信号发送”）。 
+客户端可以使用[实体客户端绑定](durable-functions-bindings.md#entity-client)将实体函数的操作排入队列（也称为“信号发送”）。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -495,7 +495,7 @@ module.exports = async function (context) {
 
 ---
 
-实体函数在 [Durable Functions 2.0](durable-functions-versions.md) 及更高版本中可用。
+实体函数在 [Durable Functions 2.0](durable-functions-versions.md) 及更高版本中可用于 C# 和 JavaScript。
 
 ## <a name="the-technology"></a>技术
 

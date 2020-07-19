@@ -5,14 +5,14 @@ author: WenJason
 ms.author: v-jay
 ms.service: postgresql
 ms.topic: conceptual
-origin.date: 10/25/2019
-ms.date: 06/08/2020
-ms.openlocfilehash: 1d956a49df4dbee348ea3e78369aa69e729f9498
-ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
+origin.date: 06/25/2020
+ms.date: 07/20/2020
+ms.openlocfilehash: 333f7fd0a4f0e5ff444d21412e269286f409f3f4
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84275600"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440371"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - 单一服务器中的日志
 
@@ -83,6 +83,7 @@ Azure Monitor 日志将发送到所选的工作区。 Postgres 日志使用 **Az
 ```
 AzureDiagnostics
 | where LogicalServerName_s == "myservername"
+| where Category == "PostgreSQLLogs"
 | where TimeGenerated > ago(1d) 
 ```
 

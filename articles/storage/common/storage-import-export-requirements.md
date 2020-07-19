@@ -4,17 +4,17 @@ description: 了解 Azure 导入/导出服务的软件和硬件要求。
 author: WenJason
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 origin.date: 08/12/2019
-ms.date: 02/10/2020
+ms.date: 07/20/2020
 ms.author: v-jay
 ms.subservice: common
-ms.openlocfilehash: 894af88df84581aa028e6afc7e43bf88442a1c1e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 21633921c2c1a72b2e67e71d5cc26f3a79400dd9
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291406"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414638"
 ---
 # <a name="azure-importexport-system-requirements"></a>Azure 导入/导出系统要求
 
@@ -34,7 +34,7 @@ ms.locfileid: "79291406"
 
 |平台 |版本 |
 |---------|---------|
-|.NET Framework    | 4.5.1       |
+|.NET framework    | 4.5.1       |
 | BitLocker        |  _          |
 
 
@@ -48,10 +48,10 @@ Azure 导入/导出服务支持以下类型的存储帐户：
 
 有关存储帐户的详细信息，请参阅 [Azure 存储帐户概述](storage-account-overview.md)。
 
-每个作业只能用于将数据传输到一个存储帐户或者从一个存储帐户传输数据。 换言之，一个导入/导出作业不能跨多个存储帐户。 有关创建新存储帐户的信息，请参阅[如何创建存储帐户](storage-account-create.md)。
+每个作业只能用于将数据传入/传出一个存储帐户。 换言之，一个导入/导出作业不能跨多个存储帐户。 有关创建新存储帐户的信息，请参阅[如何创建存储帐户](storage-account-create.md)。
 
 > [!IMPORTANT]
-> Azure 导入导出服务不支持已启用[虚拟网络服务终结点](../../virtual-network/virtual-network-service-endpoints-overview.md) 功能的存储帐户。 
+> Azure 导入导出服务不支持已启用 [虚拟网络服务终结点](../../virtual-network/virtual-network-service-endpoints-overview.md) 功能的存储帐户。 
 
 ## <a name="supported-storage-types"></a>受支持的存储类型
 
@@ -60,8 +60,8 @@ Azure 导入/导出服务支持以下类型的存储帐户：
 
 |作业  |存储服务 |支持  |不支持  |
 |---------|---------|---------|---------|
-|Import     |  Azure Blob 存储 <br><br> Azure 文件存储       | 支持块 Blob 和页 Blob <br><br> 支持文件          |
-|Export     |   Azure Blob 存储       | 支持块 Blob、页 Blob 和追加 Blob         | 不支持 Azure 文件
+|导入     |  Azure Blob 存储 <br><br> Azure 文件存储       | 支持块 Blob 和页 Blob <br><br> 支持文件          |
+|导出     |   Azure Blob 存储       | 支持块 Blob、页 Blob 和追加 Blob         | 不支持 Azure 文件
 
 
 ## <a name="supported-hardware"></a>支持的硬件
@@ -79,21 +79,20 @@ Azure 导入/导出服务支持以下类型的存储帐户：
 |HDD     |  2.5"<br>3.5"       |SATA II、SATA III         |
 
 不支持以下磁盘类型：
+
 - USB。
 - 带有内置 USB 适配器的外部 HDD。
 - 外部 HDD 外壳内的磁盘。
 
 单个导入/导出作业可以有：
+
 - 最多 10 个 HDD/SSD。
 - 任意大小的 HDD/SSD 的组合。
 
-大量驱动器可以分布在多个作业上，并且可创建的作业数没有限制。 对于导入作业，仅处理驱动器上的第一个数据卷。 该数据卷必须使用 NTFS 进行格式化。
+大量驱动器可在多个作业中分布，且对可创建的作业数量没有限制。 对于导入作业，仅处理驱动器上的第一个数据卷。 该数据卷必须使用 NTFS 进行格式化。
 
 当使用 WAImportExport 工具准备硬盘驱动器并复制数据时，可以使用外部 USB 适配器。 大多数现成的 USB 3.0 或更高版本的适配器应可以工作。
 
-
 ## <a name="next-steps"></a>后续步骤
 
-* [设置 WAImportExport 工具](storage-import-export-tool-how-to.md)
 * [使用 AzCopy 命令行实用程序传输数据](storage-use-azcopy.md)
-* [Azure 导入/导出 REST API 示例](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/)

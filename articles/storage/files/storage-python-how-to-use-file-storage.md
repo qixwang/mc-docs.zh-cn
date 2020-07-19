@@ -1,21 +1,20 @@
 ---
 title: 使用 Python 针对 Azure 文件进行开发 | Microsoft Docs
 description: 了解如何开发使用 Azure 文件存储文件数据的 Python 应用程序和服务。
-services: storage
 author: WenJason
 ms.service: storage
-ms.devlang: python
-ms.topic: article
+ms.topic: how-to
 origin.date: 12/14/2018
-ms.date: 02/25/2019
+ms.date: 07/20/2020
 ms.author: v-jay
 ms.subservice: files
-ms.openlocfilehash: d8476fbd897be34d269f68bf1572b679ba185d4d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.custom: tracking-python
+ms.openlocfilehash: 8d7cdfd40c78df4ecb4174a29b3d9c13bbfd1e6f
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "63824494"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414586"
 ---
 # <a name="develop-for-azure-files-with-python"></a>使用 Python 针对 Azure 文件进行开发
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -50,7 +49,6 @@ pip install azure-storage-file
 有关备用安装方法，请访问 [Github 上用于 Python 的 Azure 存储 SDK](https://github.com/Azure/azure-storage-python/)。
 
 ## <a name="view-the-sample-application"></a>查看示例应用程序
-
 若要查看和运行示例应用程序，了解如何将 Python 与 Azure 文件存储配合使用，请参阅 [Azure Storage:Getting Started with Azure Files in Python](https://github.com/Azure-Samples/storage-file-python-getting-started)（Azure 存储：开始在 Python 中使用 Azure 文件存储）。 
 
 若要运行示例应用程序，请确保已安装 `azure-storage-file` 和 `azure-storage-common` 软件包。
@@ -105,7 +103,7 @@ Azure 文件共享至少包含文件可以驻留的根目录。 本部分会介�
 from azure.storage.file import ContentSettings
 file_service.create_file_from_path(
     'myshare',
-    None, # We want to create this blob in the root directory, so we specify None for the directory_name
+    None,  # We want to create this blob in the root directory, so we specify None for the directory_name
     'myfile',
     'sunset.png',
     content_settings=ContentSettings(content_type='image/png'))
@@ -153,7 +151,8 @@ shares = list(file_service.list_shares(include_snapshots=True))
 可以浏览每个共享快照的内容来检索相应时间点的文件和目录。
 
 ```python
-directories_and_files = list(file_service.list_directories_and_files(share_name, snapshot=snapshot_id))
+directories_and_files = list(
+    file_service.list_directories_and_files(share_name, snapshot=snapshot_id))
 ```
 
 ## <a name="get-file-from-share-snapshot"></a>从共享快照获取文件
@@ -161,7 +160,8 @@ directories_and_files = list(file_service.list_directories_and_files(share_name,
 
 ```python
 with open(FILE_PATH, 'wb') as stream:
-    file = file_service.get_file_to_stream(share_name, directory_name, file_name, stream, snapshot=snapshot_id)
+    file = file_service.get_file_to_stream(
+        share_name, directory_name, file_name, stream, snapshot=snapshot_id)
 ```
 
 ## <a name="delete-a-single-share-snapshot"></a>删除单个共享快照  
@@ -184,4 +184,3 @@ file_service.delete_share(share_name, delete_snapshots=DeleteSnapshot.Include)
 * [Python 开发人员中心](/develop/python/)
 * [Azure 存储服务 REST API](https://msdn.microsoft.com/library/azure/dd179355)
 * [Microsoft Azure Storage SDK for Python](https://github.com/Azure/azure-storage-python)
-<!--Update_Description: add "Download and Install Azure Storage SDK for Python" section-->

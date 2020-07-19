@@ -10,12 +10,12 @@ ms.author: v-yiso
 author: sdgilley
 origin.date: 12/27/2019
 ms.date: 03/09/2020
-ms.openlocfilehash: 39991850add1d0d24899be948dc90390c9f3239d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: cf87259cb59fe3e2e9a2c6959e2b3f7eab328226
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78154520"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86441081"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>什么是 Azure 机器学习工作区？
 
@@ -79,6 +79,9 @@ ms.locfileid: "78154520"
 | 创建和管理计算资源    | **&check;**   | **&check;** | **&check;** |  **&check;**   |
 | 创建笔记本 VM |   | **&check;** | |     |
 
+> [!WARNING]
+> 不支持将 Azure 机器学习工作区移动到另一个订阅，或将拥有的订阅移到新租户。 这样做可能会导致错误。
+
 ## <a name="create-a-workspace"></a><a name='create-workspace'></a> 创建工作区
 
 创建工作区时，可以选择使用[基本版或企业版](overview-what-is-azure-ml.md#sku)来创建工作区。 版本确定工作区中可用的功能。 企业版的突出功能包括可以访问 [Azure 机器学习设计器](concept-designer.md)和提供工作室版本的[自动机器学习试验](tutorial-first-experiment-automated-ml.md)构建功能。  有关详细信息和定价信息，请参阅 [Azure 机器学习定价](https://www.azure.cn/pricing/details/machine-learning/)。
@@ -101,7 +104,7 @@ ms.locfileid: "78154520"
 
 创建新工作区时，它会自动创建工作区使用的几个 Azure 资源：
 
-+ [Azure 容器注册表](/container-registry/)：注册在训练期间和部署模型时使用的 Docker 容器。 要最大程度地降低成本，ACR 在创建部署映像之前会“延迟加载”  。
++ [Azure 容器注册表](/container-registry/)：注册在训练期间和部署模型时使用的 Docker 容器。 要最大程度地降低成本，ACR 在创建部署映像之前会“延迟加载”。
 + [Azure 存储帐户](/storage/)，用作工作区的默认数据存储。  与 Azure 机器学习计算实例一起使用的 Jupyter 笔记本也存储在此处。
 + [Azure Application Insights](/azure-monitor/)：存储有关模型的监视信息。
 + [Azure Key Vault](/key-vault/)：存储计算目标使用的机密和工作区所需的其他敏感信息。

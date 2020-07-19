@@ -5,15 +5,15 @@ author: WenJason
 ms.service: storage
 ms.topic: overview
 origin.date: 02/22/2020
-ms.date: 03/09/2020
+ms.date: 07/20/2020
 ms.author: v-jay
 ms.subservice: files
-ms.openlocfilehash: ff5f25792902b5ced5229d7030ccc98c0296d412
-ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
+ms.openlocfilehash: 14224566f566aa91c1e56ad4633158f591368cf4
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85845744"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414588"
 ---
 # <a name="azure-files-networking-considerations"></a>Azure 文件存储的网络注意事项 
 可以通过一种方式连接到 Azure 文件共享：
@@ -22,7 +22,9 @@ ms.locfileid: "85845744"
 
 本文重点介绍如何在用例要求直接访问 Azure 文件共享时配置网络。
 
-Azure 文件共享的网络配置是在 Azure 存储帐户中完成的。 存储帐户是代表共享存储池的管理结构，你可以在其中部署多个文件共享以及其他存储资源（例如，Blob 容器或队列）。 存储帐户公开多种设置用于帮助保护对文件共享的网络访问：网络终结点、存储帐户防火墙设置和传输中加密。
+Azure 文件共享的网络配置是在 Azure 存储帐户中完成的。 存储帐户是代表共享存储池的管理结构，你可以在其中部署多个文件共享以及其他存储资源（例如，Blob 容器或队列）。 存储帐户公开多种设置用于帮助保护对文件共享的网络访问：网络终结点、存储帐户防火墙设置和传输中加密。 
+
+在阅读本概念指南之前，我们建议先阅读[规划 Azure 文件存储部署](storage-files-planning.md)。
 
 ## <a name="accessing-your-azure-file-shares"></a>访问 Azure 文件共享
 在存储帐户中部署 Azure 文件共享时，可以通过该存储帐户的公共终结点立即访问该文件共享。 这意味着，已经过身份验证的请求（例如已由用户登录标识授权的请求）可以安全地从 Azure 内部或外部发起。 

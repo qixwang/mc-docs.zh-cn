@@ -8,12 +8,12 @@ ms.date: 03/09/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: 0a7962892ecd98c4b3adacc91ba7393e6aa88eee
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: fc3a1191148ca8efcb26127e176fdd9cef0f6757
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78412594"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414596"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-java"></a>快速入门：适用于 Java 的 Azure 队列存储客户端库 v12
 
@@ -43,9 +43,9 @@ ms.locfileid: "78412594"
 
 ### <a name="create-the-project"></a>创建项目
 
-创建名为 queues-quickstart-v12 的 Java 应用程序  。
+创建名为 queues-quickstart-v12 的 Java 应用程序。
 
-1. 在控制台窗口（例如 cmd、PowerShell 或 Bash）中，使用 Maven 创建名为 queues-quickstart-v12 的新控制台应用  。 键入以下“mvn”命令  ，创建“Hello World!” Java 项目。
+1. 在控制台窗口（例如 cmd、PowerShell 或 Bash）中，使用 Maven 创建名为 queues-quickstart-v12 的新控制台应用。 键入以下“mvn”命令，创建“Hello World!” Java 项目。
 
    ```console
    mvn archetype:generate -DgroupId=com.queues.quickstart \
@@ -92,7 +92,7 @@ ms.locfileid: "78412594"
     [INFO] ------------------------------------------------------------------------
     ```
 
-1. 切换到新创建的 queues-quickstart-v12 目录  。
+1. 切换到新创建的 queues-quickstart-v12 目录。
 
    ```console
    cd queues-quickstart-v12
@@ -100,7 +100,7 @@ ms.locfileid: "78412594"
 
 ### <a name="install-the-package"></a>安装包
 
-在文本编辑器中打开 pom.xml 文件  。 将以下依赖项元素添加到依赖项组。
+在文本编辑器中打开 pom.xml 文件。 将以下依赖项元素添加到依赖项组。
 
 ```xml
 <dependency>
@@ -114,8 +114,8 @@ ms.locfileid: "78412594"
 
 从项目目录中执行以下操作：
 
-1. 导航到 /src/main/java/com/queues/quickstart 目录 
-1. 在编辑器中打开 App.java 文件 
+1. 导航到 /src/main/java/com/queues/quickstart 目录
+1. 在编辑器中打开 App.java 文件
 1. 删除 `System.out.println("Hello world!");` 语句
 1. 添加 `import` 指令
 
@@ -358,7 +358,7 @@ Done
 
 当应用在接收到消息之前暂停时，请在 [Azure 门户](https://portal.azure.cn)中检查存储帐户。 验证消息是否在队列中。
 
-按“Enter”  键接收和删除消息。 出现提示时，请再次按“Enter”  键，删除队列并完成演示。
+按“Enter”键接收和删除消息。 出现提示时，请再次按“Enter”键，删除队列并完成演示。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -367,6 +367,6 @@ Done
 有关教程、示例、快速入门和其他文档，请访问：
 
 > [!div class="nextstepaction"]
-> [面向 Java 云开发人员的 Azure](/java/)
+> [面向 Java 云开发人员的 Azure](/developer/java/)
 
 * 若要查看更多 Azure 队列存储示例应用，请继续阅读 [Azure 队列存储 SDK v12 Java 客户端库示例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue)。

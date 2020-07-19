@@ -2,13 +2,13 @@
 title: Azure Functions 的 Zip 推送部署
 description: 使用 Kudu 部署服务的 .zip 文件部署功能来发布 Azure Functions。
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: d0ecc6a3305713850a30988cb9ab8712fba0a04e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 07/14/2020
+ms.openlocfilehash: 699ee28d9a564cafe03bffa25522e9609aa09044
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76116911"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440442"
 ---
 # <a name="zip-deployment-for-azure-functions"></a>Azure Functions 的 Zip 部署
 
@@ -56,7 +56,9 @@ Azure Functions 具有完整的持续部署范围，以及由 Azure 应用服务
 
     使用以下部署 GET API 从 `<function_app>` 项目中下载文件： 
 
-        https://<function_app>.scm.chinacloudsites.cn/api/zip/site/wwwroot/
+    ```http
+    https://<function_app>.scm.chinacloudsites.cn/api/zip/site/wwwroot/
+    ```
 
     包含 `/site/wwwroot/` 可确保 zip 文件仅包含函数应用项目文件，而不是整个站点。 如果尚未登录 Azure，系统会要求你登录。  
 

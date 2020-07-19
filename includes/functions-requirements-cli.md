@@ -2,14 +2,14 @@
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 06/05/2020
+ms.date: 07/17/2020
 ms.author: v-junlch
-ms.openlocfilehash: 032792323b045f2753683578b75ee7fe5c2c5ce3
-ms.sourcegitcommit: f1a76ee3242698123a3d77f44c860db040b48f70
+ms.openlocfilehash: 91f759bc84f55f07e5cccd1fcecd6b301594c8c9
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "85945267"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86441256"
 ---
 ## <a name="configure-your-local-environment"></a>配置本地环境
 

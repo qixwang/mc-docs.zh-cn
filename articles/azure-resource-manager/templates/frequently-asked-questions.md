@@ -3,15 +3,17 @@ title: ARM 模板常见问题解答
 description: 有关 Azure 资源管理器模板的常见问题解答 (FAQ)。
 ms.topic: conceptual
 origin.date: 05/30/2020
-ms.date: 06/22/2020
+ms.date: 07/13/2020
+ms.testscope: no
+ms.testdate: 07/13/2020Null
 ms.author: v-yeche
 author: rockboyfor
-ms.openlocfilehash: f69b38302e2ab58fce4a1091f9de93842881918c
-ms.sourcegitcommit: 873e5c5e4156efed505a78d4f5a6e50c494e76d4
+ms.openlocfilehash: 692493d1f9c92a8c3406407b884707c7ecb36d82
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86036751"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440952"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>有关 ARM 模板的常见问题解答
 
@@ -124,7 +126,6 @@ ms.locfileid: "86036751"
   可以，只要用户具有对模板规格的读取访问权限，就可以跨订阅使用它们。不能跨租户使用模板规格。
 
 <!--Not Available on ## Scripts in templates-->
-<!--Not Available on ResourceType of Microsoft.Resources.deploymentScripts-->
 
 ## <a name="preview-changes-before-deployment"></a>在部署前预览更改
 
@@ -184,5 +185,4 @@ ms.locfileid: "86036751"
 
 有关 ARM 模板的简介，请参阅[什么是 ARM 模板？](overview.md)。
 
-<!-- Update_Description: new article about frequently asked questions -->
-<!--NEW.date: 06/22/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

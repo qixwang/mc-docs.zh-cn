@@ -4,16 +4,16 @@ description: Azure 存储模拟器为开发和测试 Azure 存储应用程序提
 author: WenJason
 ms.author: v-jay
 origin.date: 08/21/2018
-ms.date: 06/01/2020
+ms.date: 07/20/2020
 ms.service: storage
 ms.subservice: common
-ms.topic: conceptual
-ms.openlocfilehash: 68bd5d798c8587b0165c1b102814ce4bf2220574
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.topic: how-to
+ms.openlocfilehash: 77139242298755babca26631b15edc8ea49ed1a2
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199742"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414637"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>使用 Azure 存储模拟器进行开发和测试
 

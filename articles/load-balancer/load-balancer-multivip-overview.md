@@ -11,14 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 08/07/2019
-ms.date: 06/22/2020
+ms.date: 07/20/2020
 ms.author: v-jay
-ms.openlocfilehash: c9fbf35e2f102ae1a0addaf731d2bab693e4492c
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: d1d6967d8e30827b85174d091c553abeda1eedd6
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098698"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440553"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Azure 负载均衡器的多个前端
 
@@ -103,20 +103,31 @@ DIP 是入站流量的目标。 在后端池中，每个 VM 公开 DIP 上唯一
 
 若要获取 VM 上的接口名称列表，请键入以下命令：
 
-    netsh interface show interface 
+```console
+netsh interface show interface 
+```
 
 对于 VM NIC（Azure 托管），请键入以下命令：
 
-    netsh interface ipv4 set interface "interfacename" weakhostreceive=enabled
-   （将 interfacename 替换为此接口的名称）
+```console
+netsh interface ipv4 set interface "interfacename" weakhostreceive=enabled
+```
+
+（将 interfacename 替换为此接口的名称）
 
 对于添加的每个环回接口，重复以下命令：
 
-    netsh interface ipv4 set interface "interfacename" weakhostreceive=enabled 
-   （将 interfacename 替换为此环回接口的名称）
-     
-    netsh interface ipv4 set interface "interfacename" weakhostsend=enabled 
-   （将 interfacename 替换为此环回接口的名称）
+```console
+netsh interface ipv4 set interface "interfacename" weakhostreceive=enabled 
+```
+
+（将 interfacename 替换为此环回接口的名称）
+
+```console
+netsh interface ipv4 set interface "interfacename" weakhostsend=enabled 
+```
+
+（将 interfacename 替换为此环回接口的名称）
 
 > [!IMPORTANT]
 > 环回接口的配置在来宾 OS 中执行。 此配置不是由 Azure 执行或管理。 如果没有此配置，规则将无法正常运行。 运行状况探测定义使用 VM 的 DIP（而不是环回接口）表示 DSR 前端。 因此，服务必须在 DIP 端口上提供探测响应，以反映表示 DSR 前端的环回接口上提供的服务的状态。
@@ -147,7 +158,7 @@ DIP 是入站流量的目标。 在后端池中，每个 VM 公开 DIP 上唯一
 
 请注意，本示例未更改目标端口。 这是一个浮动 IP 方案，不过 Azure 负载均衡器也支持定义规则来重写后端的目标端口，使其与前端的目标端口不同。
 
-浮动 IP 规则类型是多种负载均衡器配置模式的基础。 [具有多个侦听器的 SQL AlwaysOn](/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-ps-alwayson-int-listener) 配置是目前提供的示例之一。 一段时间后，我们会介绍更多此类方案。
+浮动 IP 规则类型是多种负载均衡器配置模式的基础。 [具有多个侦听器的 SQL AlwaysOn](../azure-sql/virtual-machines/windows/availability-group-listener-powershell-configure.md) 配置是目前提供的示例之一。 一段时间后，我们会介绍更多此类方案。
 
 ## <a name="limitations"></a>限制
 

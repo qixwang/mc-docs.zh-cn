@@ -6,19 +6,21 @@ author: WenJason
 ms.service: storage
 ms.topic: overview
 origin.date: 09/05/2019
-ms.date: 02/10/2020
+ms.date: 07/20/2020
 ms.author: v-jay
 ms.subservice: blobs
-ms.openlocfilehash: 82b37c39aeae9b9a83ea2f2bf0f43f9b557746c2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b2ab9db6f9f4b5e9da137459ffa66145e8f3f9aa
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77028948"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414633"
 ---
 # <a name="latency-in-blob-storage"></a>Blob 存储中的延迟
 
 延迟（有时被称为响应时间）是指应用程序必须等待请求完成的时间。 延迟可能会直接影响应用程序的性能。 对于在循环中有人工操作的情况（如处理信用卡交易或加载网页），低延迟通常很重要。 需要以较高速率处理传入事件（如遥测日志记录或 IoT 事件）的系统，也需要低延迟。 本文介绍如何了解和测量块 blob 上操作的延迟，以及如何针对低延迟设计应用程序。
+
+Azure 存储为块 blob 提供两个不同的性能选项：高级和标准。 与标准块 blob 相比，高级块 blob 可以通过高性能 SSD 磁盘显著降低延迟并提高一致性。 有关详细信息，请参阅 [Azure Blob 存储：热、冷以及存档访问层](storage-blob-storage-tiers.md)中的**高级性能块 blob存储**。
 
 ## <a name="about-azure-storage-latency"></a>关于 Azure 存储延迟
 
@@ -45,6 +47,8 @@ Azure 存储为块 blob 提供两个延迟指标。 可以在 Azure 门户中查
 在正常情况下，端到端延迟和服务器延迟之间的间隔很小，这就是图像对示例工作负荷显示的内容。
 
 如果查看端到端和服务器延迟指标，发现端到端延迟明显高于服务器延迟，请调查并解决其他延迟的源。
+
+如果你的端到端和服务器延迟相似，但你需要较低的延迟，则考虑迁移到高级块 blob 存储。
 
 ## <a name="factors-influencing-latency"></a>影响延迟的因素
 

@@ -13,14 +13,14 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 1/14/2020
-ms.date: 06/08/2020
+ms.date: 07/20/2020
 ms.author: v-jay
-ms.openlocfilehash: a71e28486b52779b2d50b92e63116744552967e1
-ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
+ms.openlocfilehash: b62de61446f4e9110c4dff753522c52e6e67d8ac
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84275411"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440463"
 ---
 # <a name="what-is-azure-load-balancer"></a>什么是 Azure 负载均衡器？
 
@@ -45,7 +45,7 @@ Azure 负载均衡器在开放式系统互连 (OSI) 模型的第四层上运行�
 
 可以使用标准负载均衡器完成的关键方案包括：
 
-- 对发往 Azure 虚拟机的 **[内部](/load-balancer/tutorial-load-balancer-standard-manage-portal)** 和 **[外部](/load-balancer/tutorial-load-balancer-standard-internal-portal)** 流量进行负载均衡。
+- 对发往 Azure 虚拟机的 **[内部](/load-balancer/tutorial-load-balancer-standard-internal-portal)** 和 **[外部](/load-balancer/tutorial-load-balancer-standard-manage-portal)** 流量进行负载均衡。
 
 - 配置 Azure 虚拟机的 **[出站连接](/load-balancer/load-balancer-outbound-connections)** 。
 

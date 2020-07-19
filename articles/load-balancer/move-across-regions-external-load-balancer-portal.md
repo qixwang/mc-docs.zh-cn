@@ -3,16 +3,16 @@ title: 使用 Azure 门户将 Azure 外部负载均衡器移到另一个 Azure �
 description: 使用 Azure 门户通过 Azure 资源管理器模板将外部负载均衡器从一个 Azure 区域移到另一个区域。
 author: WenJason
 ms.service: load-balancer
-ms.topic: article
+ms.topic: how-to
 origin.date: 09/17/2019
-ms.date: 02/24/2020
+ms.date: 07/20/2020
 ms.author: v-jay
-ms.openlocfilehash: c8555e64df2d75419e95ac43926af4eea6c000a0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4b2a95f85fb3c1ba41c20a6d03dc1d4b22a0804e
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540985"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440535"
 ---
 # <a name="move-an-external-load-balancer-to-another-region-by-using-the-azure-portal"></a>使用 Azure 门户将外部负载均衡器移到另一个区域
 

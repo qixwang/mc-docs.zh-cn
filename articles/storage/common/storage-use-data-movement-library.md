@@ -7,16 +7,16 @@ author: WenJason
 ms.service: storage
 ms.devlang: dotnet
 ms.topic: how-to
-origin.date: 12/04/2019
-ms.date: 03/30/2020
+origin.date: 06/16/2020
+ms.date: 07/20/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ca462d8479c39c87e27195afb85b136763e9ae2f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c8064839389811099b43aedaf398f55f4ee603ab
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80290461"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414658"
 ---
 # <a name="transfer-data-with-the-data-movement-library"></a>通过数据移动库传输数据
 
@@ -526,7 +526,7 @@ public static async Task TransferAzureBlobToAzureBlob(CloudStorageAccount accoun
     ConsoleKeyInfo keyinfo;
     try
     {
-        task = TransferManager.CopyAsync(sourceBlob, destinationBlob, true, null, context, cancellationSource.Token);
+        task = TransferManager.CopyAsync(sourceBlob, destinationBlob, CopyMethod.ServiceSideAsyncCopy, null, context, cancellationSource.Token);
         while(!task.IsCompleted)
         {
             if(Console.KeyAvailable)

@@ -1,19 +1,17 @@
 ---
 title: Azure Monitor 日志查询中的函数 | Azure Docs
 description: 本文介绍了如何在 Azure Monitor 中从一个日志查询中使用函数调用另一个查询。
-author: lingliw
-manager: digimobile
 ms.subservice: logs
 ms.topic: conceptual
-origin.date: 11/15/2018
-ms.date: 01/21/2019
-ms.author: v-lingwu
-ms.openlocfilehash: 73cd8bf9ea4b583a92ebf6ec9f696f35829acf01
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+author: Johnnytechn
+ms.author: v-johya
+ms.date: 07/17/2020
+ms.openlocfilehash: 71f95c643eca4acf7b2306a8b855a949a094143d
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850276"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440353"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>在 Azure Monitor 日志查询中使用函数
 
@@ -21,17 +19,14 @@ ms.locfileid: "78850276"
 
 ## <a name="create-a-function"></a>创建函数
 
-在 Azure 门户中单击“保存”  ，然后提供下表中的信息，使用 Log Analytics 创建函数。
+在 Azure 门户中单击“保存”，然后提供下表中的信息，使用 Log Analytics 创建函数。
 
 | 设置 | 说明 |
 |:---|:---|
-| 名称           | 查询资源管理器中查询的显示名称  。 |
+| 名称           | 查询资源管理器中查询的显示名称。 |
 | 另存为        | 函数 |
 | 函数别名 | 在其他查询中使用该函数的短名称。 不可包含空格，必须唯一。 |
-| 类别       | 用于在查询资源管理器中整理已保存的查询和函数的类别  。 |
-
-> [!NOTE]
-> Azure Monitor 中的函数不能包含其他函数。
+| Category       | 用于在查询资源管理器中整理已保存的查询和函数的类别。 |
 
 
 
@@ -40,7 +35,7 @@ ms.locfileid: "78850276"
 通过在另一个查询中添加其别名来使用函数。 可以像使用其他任何表一样使用它。
 
 ## <a name="example"></a>示例
-以下示例查询将返回最近一天报告的所有缺失的安全更新。 使用别名 security_updates_last_day  将此查询另存为函数。 
+以下示例查询将返回最近一天报告的所有缺失的安全更新。 使用别名 security_updates_last_day 将此查询另存为函数。 
 
 ```Kusto
 Update
@@ -49,7 +44,7 @@ Update
 | where UpdateState == "Needed"
 ```
 
-创建另一个查询并引用 security_updates_last_day 函数，以搜索 SQL 相关的必需安全更新  。
+创建另一个查询并引用 security_updates_last_day 函数，以搜索 SQL 相关的必需安全更新。
 
 ```Kusto
 security_updates_last_day | where Title contains "SQL"
@@ -65,3 +60,4 @@ security_updates_last_day | where Title contains "SQL"
 - [JSON 和数据结构](json-data-structures.md)
 - [联接](joins.md)
 - [图表](charts.md)
+

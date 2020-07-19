@@ -11,15 +11,15 @@ origin.date: 12/24/2019
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: quickstart
-ms.date: 05/28/2020
+ms.date: 07/17/2020
 ms.author: v-johya
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: c6a3536c4b3d17511c025d5d56e107b906db535c
-ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
+ms.openlocfilehash: c134b1b5bfeadedeea25d883c48442c7679c0eac
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84440521"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440460"
 ---
 # <a name="quickstart-collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>快速入门：使用 Azure Monitor 从混合环境中的 Linux 计算机收集数据
 
@@ -116,7 +116,7 @@ ms.locfileid: "84440521"
 
 Azure Monitor 可以从你为长期分析和报告指定的 Linux syslog 和性能计数器中收集事件。 检测到特定的状况时，它还可以采取措施。 首先，请按照下列步骤操作，配置 Linux Syslog 以及几个常见性能计数器中收集事件。  
 
-1. 在 Azure 门户左下角选择“更多服务”。 在搜索框中输入 **Log Analytics**。 键入时，列表会根据输入的内容进行筛选。 选择“Log Analytics 工作区”。
+1. 在 Azure 门户中，选择“所有服务”。 在资源列表中，键入 Log Analytics。 键入时，列表会根据输入的内容进行筛选。 选择“Log Analytics 工作区”，并在 Log Analytics 工作区列表中选择要查找的工作区，然后选择 Log Analytics 工作区的“高级设置”  。
 
 2. 选择“数据”，然后选择 **Syslog**。  
 
@@ -169,3 +169,6 @@ Azure Monitor 可以从你为长期分析和报告指定的 Linux syslog 和性�
 若要了解如何查看和分析数据，请继续本教程。
 
 > [!div class="nextstepaction"]
+> [在 Log Analytics 中查看或分析数据](../../azure-monitor/log-query/get-started-portal.md)
+<!--Correct in MC: ../../azure-monitor/log-query/get-started-portal.md-->
+

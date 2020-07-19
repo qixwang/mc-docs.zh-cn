@@ -7,15 +7,15 @@ author: WenJason
 ms.service: storage
 ms.topic: how-to
 origin.date: 02/07/2020
-ms.date: 03/09/2020
+ms.date: 07/20/2020
 ms.author: v-jay
 ms.subservice: common
-ms.openlocfilehash: 6d8d5a88fca73462a70d348d909aa7dbce463baa
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 35a509a311fd5dc9d36f6c86c3e05eff8e76b787
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78412262"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414646"
 ---
 # <a name="create-an-azure-storage-account"></a>创建 Azure 存储帐户
 
@@ -75,7 +75,7 @@ Connect-AzAccount -Environment AzureChinaCloud
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要登录到本地安装的 CLI，请运行 [az login](/cli/azure/reference-index#az-login) 命令：
+若要登录到本地安装的 CLI，请运行 [az login](/cli/reference-index#az-login) 命令：
 
 ```azurecli
 az login

@@ -4,17 +4,17 @@ description: 使用 DistCp 工具将数据复制到 Data Lake Storage Gen2 和�
 author: WenJason
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 12/06/2018
-ms.date: 01/06/2020
+ms.date: 07/20/2020
 ms.author: v-jay
 ms.reviewer: stewu
-ms.openlocfilehash: 11f2343da7ce679a7ed323f99912d136c10c436d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4cd5b0dec3b7f99aed0cd855467e2e44bf1e8c2f
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292753"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414731"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>使用 DistCp 在 Azure 存储 Blob 与 Data Lake Storage Gen2 之间复制数据
 
@@ -25,10 +25,10 @@ DistCp 提供了各种命令行参数，强烈建议你阅读本文以优化对 
 ## <a name="prerequisites"></a>先决条件
 
 * **一个 Azure 订阅**。 请参阅[获取 Azure 1 元人民币的试用订阅](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
-* **未启用 Data Lake Storage Gen2 功能（分层命名空间）的现有 Azure 存储帐户**。
-* **已启用 Data Lake Storage Gen2 功能的 Azure 存储帐户**。 有关如何创建帐户的说明，请参阅[创建 Azure Data Lake Storage Gen2 存储帐户](data-lake-storage-quickstart-create-account.md)
-* 在已启用分层命名空间的存储帐户中创建的**文件系统**。
-* 可以访问启用了 Data Lake Storage Gen2 的存储帐户的 **Azure HDInsight 群集**。 请参阅[配合使用 Azure Data Lake Storage Gen2 和 Azure HDInsight 群集](/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。 请确保对该群集启用远程桌面。
+* 未启用 Data Lake Storage Gen2 功能（分层命名空间）的现有 Azure 存储帐户。
+* 启用 Data Lake Storage Gen2 功能（分层命名空间）的 Azure 存储帐户。 有关如何创建 Azure 存储帐户的说明，请参阅[创建 Azure 存储帐户](../common/storage-account-create.md)
+* 在已启用分层命名空间的存储帐户中创建的容器。
+* 可以访问启用了分层命名空间功能的存储帐户的 Azure HDInsight 群集。 请参阅[配合使用 Azure Data Lake Storage Gen2 和 Azure HDInsight 群集](/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fstorage%2fblobs%2ftoc.json)。 请确保对该群集启用远程桌面。
 
 ## <a name="use-distcp-from-an-hdinsight-linux-cluster"></a>从 HDInsight Linux 群集使用 DistCp
 
@@ -38,35 +38,35 @@ HDInsight 群集附带 DistCp 实用工具，该实用工具可用于从不同�
 
 2. 验证是否可以访问现有的常规用途 V2 帐户（未启用分层命名空间）。
 
-        hdfs dfs –ls wasbs://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.chinacloudapi.cn/
+        hdfs dfs –ls wasbs://<container-name>@<storage-account-name>.blob.core.chinacloudapi.cn/
 
-    输出应提供容器中内容的列表。
+   输出应提供容器中内容的列表。
 
 3. 同样，验证是否可从此群集访问启用分层命名空间的存储帐户。 运行以下命令：
 
-        hdfs dfs -ls abfss://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.chinacloudapi.cn/
+        hdfs dfs -ls abfss://<container-name>@<storage-account-name>.dfs.core.chinacloudapi.cn/
 
     输出会提供 Data Lake Storage 帐户中文件/文件夹的列表。
 
 4. 使用 DistCp 从 WASB 将数据复制到 Data Lake Storage 帐户。
 
-        hadoop distcp wasbs://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.chinacloudapi.cn/example/data/gutenberg abfss://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.chinacloudapi.cn/myfolder
+        hadoop distcp wasbs://<container-name>@<storage-account-name>.blob.core.chinacloudapi.cn/example/data/gutenberg abfss://<container-name>@<storage-account-name>.dfs.core.chinacloudapi.cn/myfolder
 
-    该命令会将 Blob 存储中 /example/data/gutenberg/ 文件夹的内容复制到 Data Lake Storage 帐户中的 /myfolder   。
+    该命令会将 Blob 存储中 /example/data/gutenberg/ 文件夹的内容复制到 Data Lake Storage 帐户中的 /myfolder 。
 
 5. 同样，使用 DistCp 从 Data Lake Storage 帐户将数据复制到 Blob 存储 (WASB)。
 
-        hadoop distcp abfss://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.chinacloudapi.cn/myfolder wasbs://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.chinacloudapi.cn/example/data/gutenberg
+        hadoop distcp abfss://<container-name>@<storage-account-name>.dfs.core.chinacloudapi.cn/myfolder wasbs://<container-name>@<storage-account-name>.blob.core.chinacloudapi.cn/example/data/gutenberg
 
-    该命令会将 Data Lake Store 帐户中 /myfolder 的内容复制到 WASB 中的 /example/data/gutenberg/ 文件夹   。
+    该命令会将 Data Lake Store 帐户中 /myfolder 的内容复制到 WASB 中的 /example/data/gutenberg/ 文件夹 。
 
 ## <a name="performance-considerations-while-using-distcp"></a>使用 DistCp 时的性能注意事项
 
-由于 DistCp 的最小粒度是单个文件，设置同步复制的最大数目是针对 Data Lake Storage 对其进行优化的最重要参数。 同步复制的数目等于命令行上的映射器数 (m  ) 参数。 此参数指定用于复制数据的映射器的最大数目。 默认值为 20。
+由于 DistCp 的最小粒度是单个文件，设置同步复制的最大数目是针对 Data Lake Storage 对其进行优化的最重要参数。 同步复制的数目等于命令行上的映射器数 (m) 参数。 此参数指定用于复制数据的映射器的最大数目。 默认值为 20。
 
 **示例**
 
-    hadoop distcp -m 100 wasbs://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.chinacloudapi.cn/example/data/gutenberg abfss://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.chinacloudapi.cn/myfolder
+    hadoop distcp -m 100 wasbs://<container-name>@<storage-account-name>.blob.core.chinacloudapi.cn/example/data/gutenberg abfss://<container-name>@<storage-account-name>.dfs.core.chinacloudapi.cn/myfolder
 
 ### <a name="how-do-i-determine-the-number-of-mappers-to-use"></a>如何确定要使用的映射器数？
 

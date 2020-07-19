@@ -4,16 +4,16 @@ description: 本快速入门介绍如何使用适用于 .NET 的 Azure Blob 存�
 author: WenJason
 ms.author: v-jay
 origin.date: 07/20/2019
-ms.date: 01/06/2020
+ms.date: 07/20/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 6935ebc1771ecb57fa615c5abbf8308c5033592e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4636a185bf7d032cbf666855305162f752d85688
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75624086"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414661"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v11-for-net"></a>快速入门：适用于 .NET 的 Azure Blob 存储客户端库 v11
 
@@ -44,15 +44,15 @@ ms.locfileid: "75624086"
 
 ### <a name="create-the-project"></a>创建项目
 
-首先，创建名为 blob-quickstart 的 .NET Core 应用程序  。
+首先，创建名为 blob-quickstart 的 .NET Core 应用程序。
 
-1. 在控制台窗口（例如 cmd、PowerShell 或 Bash）中，使用 `dotnet new` 命令创建名为 blob-quickstart  的新控制台应用程序。 此命令将创建包含单个源文件的简单“Hello World”C# 项目：*Program.cs*。
+1. 在控制台窗口（例如 cmd、PowerShell 或 Bash）中，使用 `dotnet new` 命令创建名为 blob-quickstart 的新控制台应用程序。 此命令将创建包含单个源文件的简单“Hello World”C# 项目：*Program.cs*。
 
    ```console
    dotnet new console -n blob-quickstart
    ```
 
-2. 切换到新建的 blob-quickstart 文件夹，并生成应用以验证一切是否正常  。
+2. 切换到新建的 blob-quickstart 文件夹，并生成应用以验证一切是否正常。
 
    ```console
    cd blob-quickstart
@@ -91,7 +91,7 @@ dotnet add package Microsoft.Azure.Storage.Blob
 
 从项目目录中执行以下操作：
 
-1. 在编辑器中打开 Program.cs  文件
+1. 在编辑器中打开 Program.cs 文件
 2. 删除 `Console.WriteLine` 语句
 3. 添加 `using` 指令
 4. 创建一个 `ProcessAsync` 方法，其中包含示例的主代码
@@ -110,12 +110,11 @@ namespace blob_quickstart
 {
     class Program
     {
-        public static void Main()
+        public static async Task Main()
         {
             Console.WriteLine("Azure Blob Storage - .NET quickstart sample\n");
 
-            // Run the examples asynchronously, wait for the results before proceeding
-            ProcessAsync().GetAwaiter().GetResult();
+            await ProcessAsync();
 
             Console.WriteLine("Press any key to exit the sample application.");
             Console.ReadLine();
@@ -134,8 +133,8 @@ namespace blob_quickstart
 
 1. 导航到 [Azure 门户](https://portal.azure.cn)。
 2. 找到自己的存储帐户。
-3. 在存储帐户概述的“设置”部分，选择“访问密钥”。   在这里，可以查看你的帐户访问密钥以及每个密钥的完整连接字符串。
-4. 找到“密钥 1”下面的“连接字符串”值，选择“复制”按钮复制该连接字符串。    下一步需将此连接字符串值添加到某个环境变量。
+3. 在存储帐户概述的“设置”部分，选择“访问密钥”。  在这里，可以查看你的帐户访问密钥以及每个密钥的完整连接字符串。
+4. 找到“密钥 1”下面的“连接字符串”值，选择“复制”按钮复制该连接字符串。   下一步需将此连接字符串值添加到某个环境变量。
 
     ![显示如何从 Azure 门户复制连接字符串的屏幕截图](../../../includes/media/storage-copy-connection-string-portal/portal-connection-string.png)
 

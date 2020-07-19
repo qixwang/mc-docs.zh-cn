@@ -2,14 +2,14 @@
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 06/03/2020
+ms.date: 07/17/2020
 ms.author: v-junlch
-ms.openlocfilehash: 14cf11360e0059c0a040fb1a7a3aa900ffe0edab
-ms.sourcegitcommit: f1a76ee3242698123a3d77f44c860db040b48f70
+ms.openlocfilehash: e72a8a5d7ecab75e8978ca96af2ed8908a31ff9a
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "85945269"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86441276"
 ---
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell" 
 使用以下命令将一个函数添加到项目，其中，`--name` 参数是该函数 (HttpExample) 的唯一名称，`--template` 参数指定该函数的触发器 (HTTP)。 

@@ -3,15 +3,15 @@ title: Azure Functions 的 Azure 事件网格触发器
 description: 了解如何在调度 Azure Functions 中的事件网格事件时运行代码。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 07/02/2020
+ms.date: 07/14/2020
 ms.author: v-junlch
 ms.custom: fasttrack-edit
-ms.openlocfilehash: cf726b85b86d842fe54dee2cf7a75d4a932c7d09
-ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
+ms.openlocfilehash: 9e9712a9222020e7285c0ff62be2e299091a343f
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85945244"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440412"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Functions 的 Azure 事件网格触发器
 
@@ -370,11 +370,15 @@ JavaScript 不支持特性。
 
 #### <a name="version-2x-and-higher-runtime"></a>版本 2.x（及更高版本）运行时
 
-    https://{functionappname}.chinacloudsites.cn/runtime/webhooks/eventgrid?functionName={functionname}&code={systemkey}
+```http
+https://{functionappname}.chinacloudsites.cn/runtime/webhooks/eventgrid?functionName={functionname}&code={systemkey}
+```
 
 #### <a name="version-1x-runtime"></a>1\.x 版运行时
 
-    https://{functionappname}.chinacloudsites.cn/admin/extensions/EventGridExtensionConfig?functionName={functionname}&code={systemkey}
+```http
+https://{functionappname}.chinacloudsites.cn/admin/extensions/EventGridExtensionConfig?functionName={functionname}&code={systemkey}
+```
 
 系统密钥是必须包含在事件网格触发器终结点 URL 中的授权密钥。 以下部分介绍如何获取系统密钥。
 

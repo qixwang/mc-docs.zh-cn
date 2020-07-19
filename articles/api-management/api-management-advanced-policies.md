@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 origin.date: 01/10/2020
 ms.topic: article
-ms.date: 06/04/2020
+ms.date: 07/10/2020
 ms.author: v-johya
-ms.openlocfilehash: 9885874b201647def2c7984c4f600753be492e67
-ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
+ms.openlocfilehash: 544509e8c2736ccb259898fd40a89a6e542a67fa
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84440664"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440552"
 ---
 # <a name="api-management-advanced-policies"></a>API 管理高级策略
 
@@ -289,7 +289,7 @@ ms.locfileid: "84440664"
   <backend>
     <limit-concurrency key="@((string)context.Variables["connectionId"])" max-count="3">
       <forward-request timeout="120"/>
-    <limit-concurrency/>
+    </limit-concurrency>
   </backend>
   <outbound>…</outbound>
 </policies>
@@ -1041,5 +1041,6 @@ status code and media type. If no example or schema found, the content is empty.
 
 -   [API 管理中的策略](api-management-howto-policies.md)
 -   [策略表达式](api-management-policy-expressions.md)
+-   [策略参考](api-management-policies.md)，获取策略语句及其设置的完整列表
 -   [策略示例](policy-samples.md)
 

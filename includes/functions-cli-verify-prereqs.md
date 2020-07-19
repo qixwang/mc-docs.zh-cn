@@ -2,14 +2,14 @@
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 06/03/2020
+ms.date: 07/17/2020
 ms.author: v-junlch
-ms.openlocfilehash: 44c9b8f122e6b298a77ede959b53203bf2ead709
-ms.sourcegitcommit: f1a76ee3242698123a3d77f44c860db040b48f70
+ms.openlocfilehash: ce268806904b5ca4a43feb2882db3c84b0c5de07
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "85945270"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86441264"
 ---
 ### <a name="prerequisite-check"></a>先决条件检查
 

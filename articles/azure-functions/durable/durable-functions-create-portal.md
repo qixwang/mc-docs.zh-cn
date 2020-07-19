@@ -2,14 +2,14 @@
 title: 使用 Azure 门户创建 Durable Functions
 description: 了解如何针对门户开发安装 Azure Functions 的 Durable Functions 扩展。
 ms.topic: conceptual
-ms.date: 07/02/2020
+ms.date: 07/17/2020
 ms.reviewer: azfuncdf
-ms.openlocfilehash: eb32a25a74a41ab45e37fca2edf61055789390e7
-ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
+ms.openlocfilehash: 27be3f1cf43a5b1db48e63c96ae9a997a8399b17
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85945249"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440515"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>使用 Azure 门户创建 Durable Functions
 
@@ -83,7 +83,7 @@ Azure Functions 的 [Durable Functions](durable-functions-overview.md) 扩展是
 1. 使用 HTTP 工具（例如 Postman 或 cURL）将 POST 请求发送到已复制的 URL。 以下示例是一个 cURL 命令，该命令将 POST 请求发送到持久函数：
 
     ```bash
-    curl -X POST https://{your-function-app-name}.chinacloudsites.cn/api/orchestrators/HelloSequence
+    curl -X POST https://{your-function-app-name}.chinacloudsites.cn/api/orchestrators/HelloSequence --header "Content-Length: 0"
     ```
 
     在此示例中，`{your-function-app-name}` 是域，该域是函数应用的名称。 响应消息包含一组 URI 终结点，这些终结点可以用来监视并管理执行，该执行如以下示例所示：

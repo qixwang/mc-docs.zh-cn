@@ -6,21 +6,21 @@ author: WenJason
 ms.service: storage
 ms.topic: include
 origin.date: 03/13/2020
-ms.date: 06/01/2020
+ms.date: 07/20/2020
 ms.author: v-jay
 ms.custom: include file
-ms.openlocfilehash: e8a1dbc55443d37e3ab0622c147fbf1cacce14db
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: 23a88286257b0a351dafe3fb34ba11be9b760a1c
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199480"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414979"
 ---
-下表说明适用于 Azure 常规用途 v1 存储帐户、v2 存储帐户、Blob 存储帐户以及启用了 Data Lake Storage Gen2 的存储帐户的默认限制。 “流入量”限制是指针对发送到存储帐户的所有数据的限制。 “流出量”限制是指针对从存储帐户接收的所有数据的限制。
+下表描述了 Azure 常规用途 v1、v2、Blob 存储和块 blob 存储帐户的默认限制。 “流入量”限制是指针对发送到存储帐户的所有数据的限制。 “流出量”限制是指针对从存储帐户接收的所有数据的限制。
 
 | 资源 | 限制 |
 | --- | --- |
-| 每个订阅每个区域的存储帐户（包括标准存储帐户、高级存储帐户以及启用了 Data Lake Storage Gen2 的存储帐户）数量。<sup>3</sup> | 250 |
+| 每个订阅每个区域的存储帐户数，包括标准存储帐户和高级存储帐户。| 250 |
 | 最大存储帐户容量 | 5 PiB <sup>1</sup>|
 | 每个存储帐户的 Blob 容器、Blob、文件共享、表、队列、实体或消息数目上限 | 无限制 |
 | 每个存储帐户的最大请求速率<sup>1</sup> | 每秒 20,000 个请求 |
@@ -36,7 +36,7 @@ ms.locfileid: "84199480"
 
 [!INCLUDE [azure-storage-redundancy](azure-storage-redundancy.md)]
 
-<sup>3</sup> [Azure Data Lake Storage Gen2](../articles/storage/blobs/data-lake-storage-introduction.md) 是一组专用于大数据分析的功能，基于 Azure Blob 存储而构建。 Azure 存储和 Blob 存储限制适用于 Data Lake Storage Gen2。
+<sup>3</sup> [Azure Data Lake Storage Gen2](../articles/storage/blobs/data-lake-storage-introduction.md) 是一组专用于大数据分析的功能，基于 Azure Blob 存储而构建。
 
 > [!NOTE]
 > 大多数情况下，Azure 建议使用常规用途 v2 存储帐户。 可以轻松将常规用途 v1 或 Azure Blob 存储帐户升级到常规用途 v2 帐户，无需停机且无需复制数据。 有关详细信息，请参阅[升级到常规用途 v2 存储帐户](../articles/storage/common/storage-account-upgrade.md)。

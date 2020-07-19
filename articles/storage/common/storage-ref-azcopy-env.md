@@ -5,16 +5,16 @@ author: WenJason
 ms.service: storage
 ms.topic: reference
 origin.date: 10/16/2019
-ms.date: 11/25/2019
+ms.date: 07/20/2019
 ms.author: v-jay
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: f39a041210334808cb73ae73b924c697801fd07e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3bdc5ef6be97ff0def0fa8c5bd6e36699acd6a38
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74328809"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414659"
 ---
 # <a name="azcopy-env"></a>azcopy env
 
@@ -49,6 +49,7 @@ azcopy env [flags]
 |---|---|
 |--cap-mbps uint32|以兆位/秒为单位限制传输速率。 瞬间吞吐量可能与上限略有不同。 如果此选项设置为零，或者省略，则吞吐量不受限制。|
 |--output-type string|命令输出的格式。 选项包括：text、json。 默认值为“text”。|
+|--trusted-microsoft-suffixes 字符串  | 指定可在其中发送 Azure Active Directory 登录令牌的其他域后缀。  默认值为“.core.windows.net;.core.chinacloudapi.cn;.core.cloudapi.de;.core.usgovcloudapi.net” 。 此处列出的任何内容都会添加到默认值。 为安全起见，应只在此处放置 Azure 域。 用分号分隔多个条目。|
 
 ## <a name="see-also"></a>另请参阅
 

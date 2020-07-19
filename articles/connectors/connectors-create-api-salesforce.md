@@ -9,12 +9,12 @@ origin.date: 08/24/2018
 ms.date: 03/09/2020
 ms.author: v-yeche
 tags: connectors
-ms.openlocfilehash: a5b7b6364ced8c19fc8e345c583a673b6684a25c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4550943bfa8fe301a8344594cb673655f909e6dd
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78304670"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414578"
 ---
 # <a name="monitor-create-and-manage-salesforce-resources-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用监视、创建和管理 Salesforce 资源
 
@@ -25,7 +25,7 @@ ms.locfileid: "78304670"
 
 可以使用 Salesforce 触发器从 Salesforce 获取响应，并使输出可用于其他操作。 可以使用逻辑应用中的操作来执行 Salesforce 资源的任务。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个 Azure 试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。 
 
@@ -46,9 +46,9 @@ ms.locfileid: "78304670"
     * 对于空白逻辑应用，请在搜索框中输入“salesforce”作为筛选器。 
     在触发器列表下，选择所需的触发器。 
 
-        -或-
+    -或-
 
-    * 对于现有逻辑应用，请在要添加操作的步骤下，选择“新建步骤”  。 在搜索框中，输入“salesforce”作为筛选器。 在操作列表下，选择所需的操作。
+    * 对于现有逻辑应用，请在要添加操作的步骤下，选择“新建步骤”。 在搜索框中，输入“salesforce”作为筛选器。 在操作列表下，选择所需的操作。
 
 1. 如果系统提示你登录 Salesforce，请立即登录并允许访问。
 
@@ -62,7 +62,7 @@ ms.locfileid: "78304670"
 
 ## <a name="get-support"></a>获取支持
 
-* 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
+* 如有问题，请访问[有关 Azure 逻辑应用的 Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)。
 * 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>后续步骤

@@ -4,17 +4,17 @@ description: Azure 队列用于在应用程序组件之间进行可靠的异步�
 author: WenJason
 ms.author: v-jay
 origin.date: 05/08/2020
-ms.date: 06/01/2020
+ms.date: 07/20/2020
 ms.service: storage
 ms.subservice: queues
-ms.topic: conceptual
-ms.reviewer: cbrooks
-ms.openlocfilehash: 7246d04113e86caaafaaed6af13572aee6312061
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.topic: how-to
+ms.reviewer: dineshm
+ms.openlocfilehash: 7074794ea69c656bf511e14ad7749098b5fb995b
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199729"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414600"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>通过 .NET 开始使用 Azure 队列存储
 
@@ -670,7 +670,7 @@ queue.Delete();
 - 查看更多功能指南，以了解在 Azure 中存储数据的其他方式。
   - [通过 .NET 开始使用 Azure 表存储](../../cosmos-db/table-storage-how-to-use-dotnet.md) 来存储结构化数据。
   - [通过 .NET 开始使用 Azure Blob 存储](../blobs/storage-dotnet-how-to-use-blobs.md) 来存储非结构化数据。
-  - [使用.NET (C#) 连接到 SQL 数据库](../../sql-database/sql-database-connect-query-dotnet-core.md)，存储关系数据。
+  - [使用.NET (C#) 连接到 SQL 数据库](../../azure-sql/database/connect-query-dotnet-core.md)，存储关系数据。
 
 [Download and install the Azure SDK for .NET]: /develop/net/
 [.NET client library reference]: https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409

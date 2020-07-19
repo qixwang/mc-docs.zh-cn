@@ -7,14 +7,16 @@ author: rockboyfor
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 origin.date: 02/27/2020
-ms.date: 03/30/2020
+ms.date: 07/20/2020
+ms.testscope: no
+ms.testdate: 03/30/2020
 ms.author: v-yeche
-ms.openlocfilehash: fc49ad88d8d04079d797ed102be153401b675c81
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e3c7e1bff6a0ca3113404f06ba905717f9aeab23
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80115817"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414621"
 ---
 <!--Verified AS2 Encode/Decode successfully-->
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>在带有 Enterprise Integration Pack 的 Azure 逻辑应用中交换 AS2 消息以实现 B2B 企业集成
@@ -63,11 +65,11 @@ ms.locfileid: "80115817"
 
 * 在使用 AS2 连接器之前，必须在贸易合作伙伴之间制定 AS2 [协议](../logic-apps/logic-apps-enterprise-integration-agreements.md)，并将该协议存储在集成帐户中。
 
-* 如果使用 [Azure Key Vault](../key-vault/key-vault-overview.md) 进行证书管理，请检查保管库密钥是否允许“加密”  和“解密”  操作。 否则，编码和解码操作会失败。
+* 如果使用 [Azure Key Vault](../key-vault/general/overview.md) 进行证书管理，请检查保管库密钥是否允许“加密”  和“解密”  操作。 否则，编码和解码操作会失败。
 
-  在 Azure 门户中，转到密钥保管库中的密钥，查看密钥的“允许的操作”  ，确认已选择“加密”  和“解密”  操作，例如：
+    在 Azure 门户中，转到密钥保管库中的密钥，查看密钥的“允许的操作”  ，确认已选择“加密”  和“解密”  操作，例如：
 
-  ![检查保管库密钥操作](media/logic-apps-enterprise-integration-as2/key-vault-permitted-operations.png)
+    ![检查保管库密钥操作](media/logic-apps-enterprise-integration-as2/key-vault-permitted-operations.png)
 
 <a name="encode"></a>
 
@@ -124,10 +126,10 @@ ms.locfileid: "80115817"
 有关此连接器的更多技术方面的详细信息，例如操作和限制（如此连接器的 Swagger 文件所述），请参阅[连接器的参考页](https://docs.microsoft.com/connectors/as2/)。 
 
 <!--Not Available on [integration service environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)-->
+<!--Not Available on ISE-labeled-->
 
 ## <a name="next-steps"></a>后续步骤
 
 * 了解其他[逻辑应用连接器](../connectors/apis-list.md)
 
-<!-- Update_Description: new article about logic apps enterprise integration as2 -->
-<!--NEW.date: 03/30/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

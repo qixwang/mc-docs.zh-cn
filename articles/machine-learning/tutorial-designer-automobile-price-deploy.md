@@ -8,14 +8,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 11/04/2019
+ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 3ec39321a777065896ea7ecabd9e5e56bbc2c504
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: a5208571db5b679bcba6f487e46b48a440847ee6
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097115"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440902"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>教程：使用设计器部署机器学习模型（预览版）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -40,7 +40,7 @@ ms.locfileid: "85097115"
 
 1. 在管道画布上方，选择“创建推理管道” > “实时推理管道” 。
 
-    ![显示“创建管道”按钮位置的屏幕截图](./media/tutorial-designer-automobile-price-deploy/tutorial2-create-inference-pipeline.png)
+    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/tutorial2-create-inference-pipeline.png"alt-text="显示“创建管道”按钮位置的屏幕截图":::
 
     管道现在应如下所示： 
 
@@ -96,8 +96,8 @@ ms.locfileid: "85097115"
 1. 选择已创建的 AKS 群集。
 
 1. 选择“部署”。
-
-    ![屏幕截图，显示如何设置新的实时终结点](./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png)
+    
+    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png"alt-text="显示如何设置新的实时终结点的屏幕截图":::
 
     部署完成后，将在画布上方显示成功通知。 这可能需要几分钟时间。
 

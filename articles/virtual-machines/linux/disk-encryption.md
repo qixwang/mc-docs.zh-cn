@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.author: v-yeche
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: 4b52f903f3fdd9dbda35d0478811b29060c05bf1
-ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
+ms.openlocfilehash: 6d6950c2df6918075f8c9a99731d720569bc7695
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86218839"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86441175"
 ---
 <!--Verified successfully-->
 <!--PG notified the Customer-managed keys GA on global-->
@@ -162,7 +162,7 @@ az vm disk attach --vm-name $vmName --lun $diskLUN --ids $diskId
 
 ```
 
-#### <a name="change-the-key-of-a-diskencryptionset-to-rotate-the-key-for-all-the-resources-referencing-the-diskencryptionset"></a>更改 DiskEncryptionSet 的密钥，以轮替引用 DiskEncryptionSet 的所有资源的密钥
+#### <a name="change-the-key-of-a-diskencryptionset-to-rotate-the-key-for-all-the-resources-referencing-the-diskencryptionset"></a>更改 DiskEncryptionSet 的密钥，以轮替所有引用 DiskEncryptionSet 的资源的密钥
 
 ```azurecli
 
@@ -186,10 +186,9 @@ az disk-encryption-set update -n keyrotationdes -g keyrotationtesting --key-url 
 > [!IMPORTANT]
 > 客户托管密钥依赖于 Azure 资源的托管标识（Azure Active Directory (Azure AD) 的一项功能）。 配置客户托管密钥时，实际上会自动将托管标识分配给你的资源。 如果随后将订阅、资源组或托管磁盘从一个 Azure AD 目录移动到另一个目录，则与托管磁盘关联的托管标识不会转移到新租户，因此，客户托管密钥可能不再有效。 有关详细信息，请参阅[在 Azure AD 目录之间转移订阅](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)。
 
-[!INCLUDE [virtual-machines-disks-encryption-portal](../../../includes/virtual-machines-disks-encryption-portal.md)]
-
-> [!IMPORTANT]
-> 客户托管密钥依赖于 Azure 资源的托管标识（Azure Active Directory (Azure AD) 的一项功能）。 配置客户托管密钥时，实际上会自动将托管标识分配给你的资源。 如果随后将订阅、资源组或托管磁盘从一个 Azure AD 目录移动到另一个目录，则与托管磁盘关联的托管标识不会转移到新租户，因此，客户托管密钥可能不再有效。 有关详细信息，请参阅[在 Azure AD 目录之间转移订阅](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)。
+<!--MOONCAKE: *Disk Encryption Sets* FEATURE IS INVALID ON AZURE CHINA PORTAL-->
+<!--Not Avaiable on [!INCLUDE [virtual-machines-disks-encryption-portal](../../../includes/virtual-machines-disks-encryption-portal.md)]-->
+<!--Not Avaiable on  Customer-managed keys rely on managed identities for Azure resources-->
 
 ## <a name="server-side-encryption-versus-azure-disk-encryption"></a>服务器端加密与 Azure 磁盘加密
 

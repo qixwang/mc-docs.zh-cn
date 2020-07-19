@@ -4,13 +4,15 @@ description: 描述如何搜索资源属性。
 ms.topic: conceptual
 origin.date: 06/10/2020
 ms.date: 06/22/2020
+ms.testscope: yes
+ms.testdate: 07/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 664a1a974f8fe30d8f96f0c2a9da99a70937144c
-ms.sourcegitcommit: 873e5c5e4156efed505a78d4f5a6e50c494e76d4
+ms.openlocfilehash: c54538670435efe9b1044cffa4dd0c37e3771b96
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86036753"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86441079"
 ---
 # <a name="discover-resource-properties"></a>发现资源属性
 

@@ -6,13 +6,13 @@ ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
 origin.date: 2/27/2020
-ms.date: 06/29/2020
-ms.openlocfilehash: c2926a37414dd0850636081f2dd0f595a0a93f38
-ms.sourcegitcommit: fa26665aab1899e35ef7b93ddc3e1631c009dd04
+ms.date: 07/20/2020
+ms.openlocfilehash: 088fb1c8c53274319251ccb172fc89fa2455b271
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86227067"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440502"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>使用转储和还原将 MySQL 数据库迁移到 Azure Database for MySQL
 
@@ -27,7 +27,9 @@ ms.locfileid: "86227067"
 若要逐步执行本操作方法指南，需要具备以下条件：
 - [创建 Azure Database for MySQL 服务器 - Azure 门户](quickstart-create-mysql-server-database-using-azure-portal.md)
 - 已在计算机上安装 [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html) 命令行实用程序。
-- MySQL Workbench [MySQL Workbench 下载](https://dev.mysql.com/downloads/workbench/)或其他用于执行转储和还原命令的第三方 MySQL 工具。
+- 用于执行转储和还原命令的 MySQL Workbench [MySQL Workbench 下载](https://dev.mysql.com/downloads/workbench/)或其他第三方 MySQL 工具。
+
+如果希望迁移数据库大小超过 1 TB 的大型数据库，则可能需要考虑使用支持并行导出和导入的社区工具（如 mydumper/myloader）。 并行转储和还原有助于大幅缩短大型数据库的迁移时间。
 
 ## <a name="use-common-tools"></a>使用常用工具
 使用常用的实用程序和工具（例如 MySQL Workbench 或 mysqldump）进行远程连接，并将数据还原到 Azure Database for MySQL 中。 在具有 Internet 连接的客户端计算机上使用此类工具连接到 Azure Database for MySQL。 使用具有 SSL 加密的连接是最安全的做法，另请参阅[在 Azure Database for MySQL 中配置 SSL 连接](concepts-ssl-connection-security.md)。 迁移到 Azure Database for MySQL 时，无需将转储文件移到任何特殊的云位置。 

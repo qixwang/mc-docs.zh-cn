@@ -3,14 +3,14 @@ title: 使用 JavaScript 在 Azure 中创建你的第一个持久函数
 description: 使用 Visual Studio Code 创建并发布 Azure 持久函数。
 author: anthonychu
 ms.topic: quickstart
-ms.date: 06/09/2020
+ms.date: 07/17/2020
 ms.reviewer: azfuncdf, antchu
-ms.openlocfilehash: 5e054e40332bee08430dc899f3bb70d5dc3bda04
-ms.sourcegitcommit: f1a76ee3242698123a3d77f44c860db040b48f70
+ms.openlocfilehash: f4b04b147cbc0ce68b2b8e54e753423b1b8935b5
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84563709"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440481"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>使用 JavaScript 创建你的第一个持久函数
 
@@ -58,25 +58,6 @@ ms.locfileid: "84563709"
 Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会在某个文件夹中创建一个函数应用项目。 此项目包含 [host.json](../functions-host-json.md) 和 [local.settings.json](../functions-run-local.md#local-settings-file) 配置文件。
 
 此外，还会在根文件夹中创建 package.json 文件。
-
-### <a name="enable-compatibility-mode"></a>启用兼容模式
-
-目前，JavaScript Durable Functions 要求启用 Azure Functions V2 兼容模式。
-
-1. 打开 *local.settings.json* 以编辑在本地运行应用时要使用的设置。
-
-1. 添加名为 `FUNCTIONS_V2_COMPATIBILITY_MODE` 的设置并将其值指定为 `true`。
-
-    ```json
-    {
-        "IsEncrypted": false,
-        "Values": {
-            "AzureWebJobsStorage": "",
-            "FUNCTIONS_WORKER_RUNTIME": "node",
-            "FUNCTIONS_V2_COMPATIBILITY_MODE": "true"
-        }
-    }
-    ```
 
 ## <a name="install-the-durable-functions-npm-package"></a>安装 Durable Functions npm 包
 
@@ -166,7 +147,7 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
 
     ![Azure 本地输出](./media/quickstart-js-vscode/functions-f5.png)
 
-1. 使用 [Postman](https://www.getpostman.com/) 或 [cURL](https://curl.haxx.se/) 之类的工具向 URL 终结点发送一个 HTTP POST 请求。 将最后一个段替换为业务流程协调程序函数的名称 (`HelloOrchestrator`)。 URL 应类似于 `http://localhost:7071/api/orchestrators/HelloOrchestrator`。
+1. 使用浏览器或者 [Postman](https://www.getpostman.com/) 或 [cURL](https://curl.haxx.se/) 之类的工具向 URL 终结点发送一个 HTTP POST 请求。 将最后一个段替换为业务流程协调程序函数的名称 (`HelloOrchestrator`)。 URL 应类似于 `http://localhost:7071/api/orchestrators/HelloOrchestrator`。
 
    响应是来自 HTTP 函数的初始结果，告知持久业务流程已成功启动。 它还不是业务流程的最终结果。 响应中包括了几个有用的 URL。 现在，让我们查询业务流程的状态。
 
@@ -198,20 +179,6 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
 [!INCLUDE [functions-create-function-app-vs-code](../../../includes/functions-sign-in-vs-code.md)]
 
 [!INCLUDE [functions-publish-project-vscode](../../../includes/functions-publish-project-vscode.md)]
-
-### <a name="enable-compatibility-mode"></a>启用兼容模式
-
-需要在 Azure 上的应用中启用本地所启用的相同 Azure Functions V2 兼容性。
-
-1. 使用命令面板搜索并选择 `Azure Functions: Edit Setting...`。
-
-1. 按照提示在 Azure 订阅中找到你的函数应用。
-
-1. 选择 `Create new App Setting...`。
-
-1. 输入新设置键 `FUNCTIONS_V2_COMPATIBILITY_MODE`。
-
-1. 输入设置值 `true`。
 
 ## <a name="test-your-function-in-azure"></a>在 Azure 中测试函数
 

@@ -11,14 +11,16 @@ metadata:
   ms.collection: na
   author: rockboyfor
   origin.date: 03/09/2020
-  ms.date: 03/23/2020
+  ms.date: 07/13/2020
+  ms.testscope: no
+  ms.testdate: 
   ms.author: v-yeche
-  ms.openlocfilehash: f7d3726c987edc8dddd7a52077506b1e7e25f8d1
-  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+  ms.openlocfilehash: d84af5aad5ab76802b400da44a8d442641aa85c9
+  ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/17/2020
-  ms.locfileid: "79543918"
+  ms.lasthandoff: 07/17/2020
+  ms.locfileid: "86440953"
 landingContent:
 - title: 关于 ARM 模板
   linkLists:
@@ -28,11 +30,11 @@ landingContent:
       url: overview.md
   - linkListType: concept
     links:
-    - text: 最佳做法
+    - text: 最佳实践
       url: template-best-practices.md
     - text: 部署模式
       url: deployment-modes.md
-    - text: 链接模板
+    - text: 链接的模板
       url: linked-templates.md
 - title: 入门
   linkLists:
@@ -88,6 +90,8 @@ landingContent:
       url: deploy-portal.md
     - text: REST API
       url: deploy-rest.md
+    - text: 模拟部署
+      url: template-deploy-what-if.md
 - title: 作用域内部署
   linkLists:
   - linkListType: how-to-guide
@@ -96,6 +100,8 @@ landingContent:
       url: deploy-to-subscription.md
     - text: 管理组
       url: deploy-to-management-group.md
+    - text: 租户
+      url: deploy-to-tenant.md
 - title: 浏览参考内容
   linkLists:
   - linkListType: reference

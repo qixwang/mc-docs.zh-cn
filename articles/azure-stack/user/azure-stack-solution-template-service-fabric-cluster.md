@@ -3,17 +3,17 @@ title: 在 Azure Stack Hub 中部署受保护的 Service Fabric 群集
 description: 了解如何在 Azure Stack Hub 中部署受保护的 Service Fabric 群集
 author: WenJason
 ms.topic: tutorial
-origin.date: 1/22/2020
-ms.date: 05/18/2020
+origin.date: 5/27/2020
+ms.date: 07/20/2020
 ms.author: v-jay
 ms.reviewer: shnatara
 ms.lastreviewed: 09/25/2019
-ms.openlocfilehash: 54cede449beb50269248d60296c6341e8143a6df
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: cd34ac1360f80ed4db77e92452b41e5988215dfd
+ms.sourcegitcommit: e9ffd50aa5eaab402a94bfabfc70de6967fe6278
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422447"
+ms.lasthandoff: 07/14/2020
+ms.locfileid: "86307430"
 ---
 # <a name="deploy-a-service-fabric-cluster-in-azure-stack-hub"></a>在 Azure Stack Hub 中部署 Service Fabric 群集
 
@@ -231,4 +231,7 @@ Azure Stack Hub 中的 Service Fabric 群集不使用资源提供程序 Microsof
    
    > [!NOTE]  
    > 脚本中群集名称的前面没有 *https://* 。 必须指定端口 19000。
- 
+
+## <a name="next-steps"></a>后续步骤
+
+[将 Kubernetes 部署到 Azure Stack Hub](azure-stack-solution-template-kubernetes-deploy.md)

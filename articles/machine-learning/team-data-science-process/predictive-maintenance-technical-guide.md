@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 1775d83c792c0f58af2d637f5c6c1d2ba8bea1ad
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: 3c48f9ad2527166e2136d4e188f0a910edb0f4e6
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097473"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440937"
 ---
 # <a name="technical-guide-to-the-solution-template-for-predictive-maintenance-in-aerospace"></a>航空航天预测性维护的解决方案模板的技术指南
 
@@ -159,7 +159,7 @@ Power BI 连接到充当其数据源、用于存储预测结果的 Azure SQL 数
 
 注意： 
 1.    部署解决方案后，预测会在 3 小时内在数据库中显示。 生成器下载附带的 pbix 文件包含某些种子数据，因此需要立即创建 Power BI 仪表板。 
-2.    此步骤的先决条件是下载并安装免费软件 [Power BI desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)。
+2.    此步骤的先决条件是下载并安装免费软件 [Power BI desktop](https://docs.microsoft.com/power-bi/fundamentals/desktop-get-the-desktop)。
 
 以下步骤介绍如何将 pbix 文件连接到解决方案部署包含可视化数据时启动的 SQL 数据库（例如预测结果）。
 
@@ -207,7 +207,6 @@ Power BI 连接到充当其数据源、用于存储预测结果的 Azure SQL 数
 
 1. 在 Azure 流分析 (ASA) 中添加 Power BI 输出。
    
-   * 必须按照 [Azure 流分析和 Power BI：用于实时查看流数据的分析仪表板](../../stream-analytics/stream-analytics-power-bi-dashboard.md)中的说明操作，将 Azure 流分析作业的输出设置为 Power BI 仪表板。
    * ASA 查询具有三个输出，分别为 **aircraftmonitor**、**aircraftalert** 和 **flightsbyhour**。 可通过单击查询选项卡查看查询。需要根据相应的表将输出添加到 ASA。 添加第一个输出时 (**aircraftmonitor**)，请确保“输出别名”、“数据集名称”和“表名称”都相同 (**aircraftmonitor**)。**** **** **** 重复以上步骤为 **aircraftalert** 和 **flightsbyhour** 添加输出。 将三个输出表全部添加完成并启动 ASA 作业后，应收到一条确认消息（“成功启动流分析作业 maintenancesa02asapbi”）。
 2. 登录到 [Power BI online](https://www.powerbi.com)
    

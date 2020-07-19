@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: fc9227975e74a7fa03ea6ae14c758fcd7de4b29e
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: 35d0e80b99b4862fbaefcf6a545bc9fbc5cf23e1
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097806"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86441187"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>为 Azure 机器学习工作区配置 Azure 专用链接（预览版）
 
@@ -74,9 +74,9 @@ ms.locfileid: "85097806"
 此示例假设你已将本文档末尾提供的模板之一保存到当前目录中名为 `azuredeploy.json` 的文件：
 
 ```powershell
-New-AzResourceGroup -Name examplegroup -Location "East US"
+New-AzResourceGroup -Name examplegroup -Location "China East"
 new-azresourcegroupdeployment -name exampledeployment `
-  -resourcegroupname examplegroup -location "East US" `
+  -resourcegroupname examplegroup -location "China East" `
   -templatefile .\azuredeploy.json -workspaceName "exampleworkspace" -sku "basic"
 ```
 
@@ -87,7 +87,7 @@ new-azresourcegroupdeployment -name exampledeployment `
 此示例假设你已将本文档末尾提供的模板之一保存到当前目录中名为 `azuredeploy.json` 的文件：
 
 ```azurecli
-az group create --name examplegroup --location "East US"
+az group create --name examplegroup --location "China East"
 az group deployment create \
   --name exampledeployment \
   --resource-group examplegroup \
@@ -204,9 +204,10 @@ az group deployment create \
     "location": {
       "type": "string",
       "allowedValues": [
-        "eastus",
-        "southcentralus",
-        "westus2"
+        "chinaeast",
+        "chinaeast2",
+        "chinanorth",
+        "chinanorth2"
       ],
       "metadata": {
         "description": "Specifies the location for all resources."
@@ -507,9 +508,10 @@ az group deployment create \
     "location": {
       "type": "string",
       "allowedValues": [
-        "eastus",
-        "southcentralus",
-        "westus2"
+        "chinaeast",
+        "chinaeast2",
+        "chinanorth",
+        "chinanorth2"
       ],
       "metadata": {
         "description": "Specifies the location for all resources."
@@ -733,9 +735,10 @@ az group deployment create \
     "location": {
       "type": "string",
       "allowedValues": [
-        "eastus",
-        "southcentralus",
-        "westus2"
+        "chinaeast",
+        "chinaeast2",
+        "chinanorth",
+        "chinanorth2"
       ],
       "metadata": {
         "description": "Specifies the location for all resources."
@@ -994,9 +997,10 @@ az group deployment create \
     "location": {
       "type": "string",
       "allowedValues": [
-        "eastus",
-        "southcentralus",
-        "westus2"
+        "chinaeast",
+        "chinaeast2",
+        "chinanorth",
+        "chinanorth2"
       ],
       "metadata": {
         "description": "Specifies the location for all resources."

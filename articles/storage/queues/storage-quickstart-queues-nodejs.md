@@ -4,16 +4,16 @@ description: 了解如何使用 Azure 队列 JavaScript v12 库创建队列并�
 author: WenJason
 ms.author: v-jay
 origin.date: 12/13/2019
-ms.date: 03/09/2020
+ms.date: 07/20/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: 14fba3148f805fc62ac5eb8cb091378718df53ab
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 878c2060b14cc7bd4e4d8b0f2b2d502ed188b830
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78412297"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414595"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-javascript"></a>快速入门：适用于 JavaScript 的 Azure 队列存储客户端库 v12
 
@@ -43,7 +43,7 @@ ms.locfileid: "78412297"
 
 ### <a name="create-the-project"></a>创建项目
 
-创建名为 queues-quickstart-v12 的 Node.js 应用程序  。
+创建名为 queues-quickstart-v12 的 Node.js 应用程序。
 
 1. 在控制台窗口（例如 cmd、PowerShell 或 Bash）中，为项目创建新目录。
 
@@ -51,13 +51,13 @@ ms.locfileid: "78412297"
     mkdir queues-quickstart-v12
     ```
 
-1. 切换到新创建的 queues-quickstart-v12 目录  。
+1. 切换到新创建的 queues-quickstart-v12 目录。
 
     ```console
     cd queues-quickstart-v12
     ```
 
-1. 创建名为 package.json 的新文本文件  。 此文件定义 Node.js 项目。 将此文件保存到 queues-quickstart-v12 目录中  。 下面是文件的内容：
+1. 创建名为 package.json 的新文本文件。 此文件定义 Node.js 项目。 将此文件保存到 queues-quickstart-v12 目录中。 下面是文件的内容：
 
     ```json
     {
@@ -82,13 +82,13 @@ ms.locfileid: "78412297"
 
 ### <a name="install-the-package"></a>安装包
 
-当仍在 queues-quickstart-v12 目录中时，使用 `npm install` 命令安装适用于 JavaScript 包的 Azure 队列存储客户端库  。
+当仍在 queues-quickstart-v12 目录中时，使用 `npm install` 命令安装适用于 JavaScript 包的 Azure 队列存储客户端库。
 
 ```console
 npm install
 ```
 
- 此命令读取 package.json 文件，并安装适用于 JavaScript 包的 Azure 队列存储客户端库 v12 及其依赖的所有库  。
+ 此命令读取 package.json 文件，并安装适用于 JavaScript 包的 Azure 队列存储客户端库 v12 及其依赖的所有库。
 
 ### <a name="set-up-the-app-framework"></a>设置应用框架
 
@@ -113,7 +113,7 @@ npm install
 
     ```
 
-1. 将新文件在 queues-quickstart-v12 目录中另存为 queues-quickstart-v12.js   。
+1. 将新文件在 queues-quickstart-v12 目录中另存为 queues-quickstart-v12.js 。
 
 [!INCLUDE [storage-quickstart-credentials-include](../../../includes/storage-quickstart-credentials-include.md)]
 
@@ -159,7 +159,7 @@ Azure 队列存储是一个可存储大量消息的服务。 队列消息大小�
 // connection string is stored in an environment variable on the machine
 // running the application called AZURE_STORAGE_CONNECTION_STRING. If the
 // environment variable is created after the application is launched in a
-// console or with Visual Studio, the shell or application needs to be 
+// console or with Visual Studio, the shell or application needs to be
 // closed and reloaded to take the environment variable into account.
 const AZURE_STORAGE_CONNECTION_STRING = process.env.AZURE_STORAGE_CONNECTION_STRING;
 ```
@@ -299,7 +299,7 @@ console.log("Queue deleted, requestId:", deleteQueueResponse.requestId);
 
 此应用创建三条消息并将其添加到 Azure 队列。 此代码列出队列中的消息，然后检索并删除它们，最后删除队列。
 
-在控制台窗口中，导航到包含 queues-quickstart-v12.js 文件的目录，然后执行以下 `node` 命令来运行应用  。
+在控制台窗口中，导航到包含 queues-quickstart-v12.js 文件的目录，然后执行以下 `node` 命令来运行应用。
 
 ```console
 node queues-quickstart-v12.js
@@ -349,7 +349,7 @@ Done
 有关教程、示例、快速入门和其他文档，请访问：
 
 > [!div class="nextstepaction"]
-> [Azure for JavaScript 文档](https://docs.microsoft.com/azure/javascript/)
+> [Azure for JavaScript 文档](https://docs.microsoft.com/azure/developer/javascript/)
 
 * 若要了解详细信息，请参阅[适用于 JavaScript 的 Azure 存储队列客户端库](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue)。
 * 若要查看更多 Azure 队列存储示例应用，请继续阅读 [Azure 队列存储客户端库 v12 JavaScript 示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue/samples)。

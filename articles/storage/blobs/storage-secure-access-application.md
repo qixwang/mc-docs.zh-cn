@@ -5,18 +5,19 @@ description: 使用 SAS 令牌、加密和 HTTPS 保护云中的应用程序数�
 services: storage
 author: WenJason
 ms.service: storage
+ms.subservice: blobs
 ms.topic: tutorial
-origin.date: 03/06/3030
-ms.date: 03/30/2020
+origin.date: 06/10/2020
+ms.date: 07/20/2020
 ms.author: v-jay
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.custom: mvc
-ms.openlocfilehash: f453d553dbe738e77d3e336cd0de1548bfd0bae6
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b210df2d49ee253fdaea5c0ee33e5f604e74d5f3
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80290331"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414648"
 ---
 # <a name="secure-access-to-application-data"></a>安全访问应用程序数据
 
@@ -39,16 +40,29 @@ ms.locfileid: "80290331"
 
 在系列教程的此部分中，SAS 令牌用于访问缩略图。 在此步骤中，请将 *thumbnails* 容器的公共访问权限设置为 `off`。
 
-```azurecli 
+```bash
 blobStorageAccount="<blob_storage_account>"
 
 blobStorageAccountKey=$(az storage account keys list -g myResourceGroup \
-    --name $blobStorageAccount --query [0].value --output tsv) 
+    --account-name $blobStorageAccount --query [0].value --output tsv) 
 
 az storage container set-permission \
     --account-name $blobStorageAccount \
     --account-key $blobStorageAccountKey \
     --name thumbnails \
+    --public-access off
+```
+
+```powershell
+$blobStorageAccount="<blob_storage_account>"
+
+blobStorageAccountKey=$(az storage account keys list -g myResourceGroup `
+    --account-name $blobStorageAccount --query [0].value --output tsv) 
+
+az storage container set-permission `
+    --account-name $blobStorageAccount `
+    --account-key $blobStorageAccountKey `
+    --name thumbnails `
     --public-access off
 ```
 
@@ -60,12 +74,20 @@ az storage container set-permission \
 
 在下面的命令中，`<web-app>` 是 Web 应用的名称。
 
-```azurecli 
+```bash
 az webapp deployment source delete --name <web-app> --resource-group myResourceGroup
 
 az webapp deployment source config --name <web_app> \
     --resource-group myResourceGroup --branch sasTokens --manual-integration \
-    --repo-url https://github.com/WenJason/storage-blob-upload-from-webapp-1
+    --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp
+```
+
+```powershell
+az webapp deployment source delete --name <web-app> --resource-group myResourceGroup
+
+az webapp deployment source config --name <web_app> `
+    --resource-group myResourceGroup --branch sasTokens --manual-integration `
+    --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp
 ```
 
 存储库的 `sasTokens` 分支更新了 `StorageHelper.cs` 文件。 它将使用下面的代码示例替换 `GetThumbNailUrls` 任务。 已更新的任务通过使用 [BlobSasBuilder](https://docs.microsoft.com/dotnet/api/azure.storage.sas.blobsasbuilder) 指定 SAS 令牌的开始时间、到期时间和权限来检索缩略图 URL。 部署 Web 应用后，使用 SAS 令牌检索带 URL 的缩略图。 以下示例显示已更新任务：
@@ -135,11 +157,13 @@ public static async Task<List<string>> GetThumbNailUrls(AzureStorageConfig _stor
 |[UriBuilder](https://docs.microsoft.com/dotnet/api/system.uribuilder) | [查询](https://docs.microsoft.com/dotnet/api/system.uribuilder.query) |  |
 |[列表](https://docs.microsoft.com/dotnet/api/system.collections.generic.list-1) | | [添加](https://docs.microsoft.com/dotnet/api/system.collections.generic.list-1.add) |
 
-## <a name="server-side-encryption"></a>服务器端加密
+## <a name="azure-storage-encryption"></a>Azure 存储加密
 
-[Azure 存储服务加密 (SSE)](../common/storage-service-encryption.md) 可帮助你保护数据。 SSE 加密静态数据，处理加密、解密和密钥管理。 采用 256 位 [AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)所有数据，它是现在最强有力的分组密码之一。
+[Azure 存储加密](../common/storage-service-encryption.md)通过加密静态数据以及处理加密和解密来帮助你的保护数据。 采用 256 位 [AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)所有数据，它是现在最强有力的分组密码之一。
 
-SSE 自动加密所有性能层（标准和高级）、所有部署模型（Azure 资源管理器和经典）、所有 Azure 存储服务（Blob、队列、表和文件）中的数据。 
+可以选择让 Microsoft 管理加密密钥，也可以使用 Azure Key Vault 客户托管的密钥实现自带密钥。 有关详细信息，请参阅[使用 Azure Key Vault 客户托管的密钥管理 Azure 存储加密](../common/encryption-customer-managed-keys.md)。
+
+Azure 存储加密自动加密所有性能层（标准和高级）、所有部署模型（Azure 资源管理器和经典）以及所有 Azure 存储服务（Blob、队列、表和文件）中的数据。
 
 ## <a name="enable-https-only"></a>仅启用 HTTPS
 

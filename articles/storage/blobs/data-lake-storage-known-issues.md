@@ -6,15 +6,15 @@ ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 origin.date: 05/10/2020
-ms.date: 06/01/2020
+ms.date: 07/20/2020
 ms.author: v-jay
 ms.reviewer: jamesbak
-ms.openlocfilehash: 358de9ce556bf3a90dee30a4aaec3175c8b91121
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: 51c1c0b2412d9ace0d9eea5c07a15dbc354cdd6d
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199605"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414682"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 的已知问题
 
@@ -61,38 +61,25 @@ Blob API 和 Data Lake Storage Gen2 API 可以对相同的数据执行操作。
 
 具有分层命名空间的帐户不支持非托管 VM 磁盘。 若要在存储帐户中启用分层命名空间，请将非托管 VM 磁盘置于未启用分层命名空间功能的存储帐户中。
 
-<a id="api-scope-data-lake-client-library" />
+<a id="api-scope-data-lake-client-library"></a>
 
 ## <a name="file-system-support-in-sdks-powershell-and-azure-cli"></a>SDK、PowerShell 和 Azure CLI 中的文件系统支持
 
-- 当前不能以递归方式获取和设置 ACL 操作。
+- 获取和设置 ACL 的操作当前不是递归的。
 
-
-## <a name="lifecycle-management-policies"></a>生命周期管理策略
-
-目前不支持删除 blob 快照。 
-
-## <a name="archive-tier"></a>存档层级
-
-当前有一个影响存档访问层级的 bug。
-
-## <a name="blobfuse"></a>Blobfuse
-
-不支持 Blobfuse。
-
-<a id="known-issues-tools" />
+<a id="known-issues-tools"></a>
 
 ## <a name="azcopy"></a>AzCopy
 
 仅使用最新版本的 AzCopy ([AzCopy v10](/storage/common/storage-use-azcopy-v10?toc=%2fstorage%2ftables%2ftoc.json))。 不支持早期版本的 AzCopy，例如 AzCopy v8.1。
 
-<a id="storage-explorer" />
+<a id="storage-explorer"></a>
 
 ## <a name="azure-storage-explorer"></a>Azure 存储资源管理器
 
-请仅使用 `1.6.0` 或更高版本。
+仅使用版本 `1.6.0` 或更高版本。
 
-<a id="third-party-apps" />
+<a id="third-party-apps"></a>
 
 ## <a name="third-party-applications"></a>第三方应用程序
 

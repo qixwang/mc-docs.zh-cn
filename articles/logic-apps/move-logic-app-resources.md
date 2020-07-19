@@ -1,19 +1,21 @@
 ---
-title: 跨订阅、资源组或区域迁移逻辑应用
+title: 跨订阅、资源组或区域移动逻辑应用
 description: 将逻辑应用或集成帐户迁移到其他 Azure 订阅、资源组或位置（区域）
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: conceptual
-origin.date: 07/31/2019
-ms.date: 05/06/2020
+origin.date: 04/06/2020
+ms.date: 07/20/2020
+ms.testscope: no
+ms.testdate: 05/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: b2cf421e7d4f090d3e684aa7d1b44e0b535fab1e
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: d19809e8788ca2f8384965262e7fcb5ee764cac1
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83002099"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414590"
 ---
 # <a name="move-logic-app-resources-to-other-azure-resource-groups-regions-or-subscriptions"></a>将逻辑应用资源移到其他 Azure 资源组、区域或订阅
 
@@ -43,15 +45,15 @@ ms.locfileid: "83002099"
 
 1. 在 [Azure 门户](https://portal.azure.cn)中，找到并选择要移动的逻辑应用资源。
 
-1. 在该资源的“概述”页上的“订阅”旁边，选择“更改”链接。   
+1. 在该资源的“概述”页上的“订阅”旁边，选择“更改”链接。  
 
-1. 在“移动资源”页上，选择要移动的逻辑应用资源和任何相关资源。 
+1. 在“移动资源”页上，选择要移动的逻辑应用资源和任何相关资源。
 
-1. 在“订阅”列表中选择目标订阅。 
+1. 在“订阅”列表中选择目标订阅。
 
-1. 在“资源组”列表中选择目标资源组。  若要创建不同的资源组，请选择“创建新组”。 
+1. 在“资源组”列表中选择目标资源组。 若要创建不同的资源组，请选择“创建新组”。
 
-1. 为了确认你已知道在使用新资源 ID 更新与所要移动的资源关联的任何脚本或工具之前，这些脚本或工具不会正常运行，请选中确认框，然后选择“确定”。 
+1. 为了确认你已知道在使用新资源 ID 更新与所要移动的资源关联的任何脚本或工具之前，这些脚本或工具不会正常运行，请选中确认框，然后选择“确定”。
 
 <a name="move-resource-group"></a>
 
@@ -65,13 +67,13 @@ ms.locfileid: "83002099"
 
 1. 在 [Azure 门户](https://portal.azure.cn)中，找到并选择要移动的逻辑应用资源。
 
-1. 在该资源的“概述”页上的“资源组”旁边，选择“更改”链接。   
+1. 在该资源的“概述”页上的“资源组”旁边，选择“更改”链接。  
 
-1. 在“移动资源”页上，选择要移动的逻辑应用资源和任何相关资源。 
+1. 在“移动资源”页上，选择要移动的逻辑应用资源和任何相关资源。
 
-1. 在“资源组”列表中选择目标资源组。  若要创建不同的资源组，请选择“创建新组”。 
+1. 在“资源组”列表中选择目标资源组。 若要创建不同的资源组，请选择“创建新组”。
 
-1. 为了确认你已知道在使用新资源 ID 更新与所要移动的资源关联的任何脚本或工具之前，这些脚本或工具不会正常运行，请选中确认框，然后选择“确定”。 
+1. 为了确认你已知道在使用新资源 ID 更新与所要移动的资源关联的任何脚本或工具之前，这些脚本或工具不会正常运行，请选中确认框，然后选择“确定”。
 
 <a name="move-location"></a>
 
@@ -79,7 +81,7 @@ ms.locfileid: "83002099"
 
 若要将逻辑应用移到不同的区域，可用的选项取决于逻辑应用的创建方式。 根据选择的选项，必须在逻辑应用中重新创建或重新授权连接。
 
-* 在 Azure 门户中，在新区域中重新创建逻辑应用，并重新配置工作流设置。 为了节省时间，可将源应用中基础工作流定义和连接复制到目标应用。 若要查看逻辑应用附带的“代码”，请在逻辑应用设计器工具栏上选择“代码视图”。 
+* 在 Azure 门户中，在新区域中重新创建逻辑应用，并重新配置工作流设置。 为了节省时间，可将源应用中基础工作流定义和连接复制到目标应用。 若要查看逻辑应用附带的“代码”，请在逻辑应用设计器工具栏上选择“代码视图”。
 
 * 使用 Visual Studio 和适用于 Visual Studio 的 Azure 逻辑应用工具，可以在 Azure 门户中以 [Azure 资源管理器模板](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)的形式[打开和下载逻辑应用](../logic-apps/manage-logic-apps-with-visual-studio.md)。 此模板基本上已做好部署的准备，包含逻辑应用的资源定义（包括工作流本身和连接）。 该模板还声明了在部署时要使用的值的参数。 这样，你便可以根据自己的需求，更轻松地更改逻辑应用的部署位置和方式。 若要指定部署的位置和其他必要信息，可以使用单独的参数文件。
 
@@ -98,6 +100,8 @@ ms.locfileid: "83002099"
 
 例如，若要将某个逻辑应用链接到某个集成帐户，则这两个资源必须位于同一区域。 在灾难恢复等方案中，你通常希望集成帐户使用相同配置的和项目。 在其他方案中，你可能需要让集成帐户使用不同的配置和项目。
 
+<!--CORRECT ON https://docs.microsoft.com/connectors/custom-connectors/share-->
+
 具有相同 Azure 订阅和相同 Azure Active Directory 租户的连接器作者与用户可以看到 Azure 逻辑应用中的自定义连接器。 在部署逻辑应用的同一区域中，可以使用这些连接器。 有关详细信息，请参阅[在组织中共享自定义连接器](https://docs.microsoft.com/connectors/custom-connectors/share)。
 
 从 Visual Studio 获取的模板仅包含逻辑应用及其连接的资源定义。 因此，如果逻辑应用使用其他资源（例如集成帐户，以及合作伙伴、协议和架构等 B2B 项目），则必须使用 Azure 门户导出该集成帐户的模板。 此模板包含集成帐户和项目的资源定义。 但是，该模板尚未完全参数化。 因此，必须手动参数化要用于部署的值。
@@ -106,9 +110,9 @@ ms.locfileid: "83002099"
 
 1. 在 [Azure 门户](https://portal.azure.cn)中，找到并打开你的集成帐户。
 
-1. 在集成帐户菜单中的“设置”下，选择“导出模板”。  
+1. 在集成帐户菜单中的“设置”下，选择“导出模板”。 
 
-1. 在工具栏上选择“下载”，然后保存该模板。 
+1. 在工具栏上选择“下载”，然后保存该模板。
 
 1. 打开并编辑该模板，以参数化所需的部署值。
 

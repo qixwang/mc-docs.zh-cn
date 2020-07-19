@@ -1,18 +1,18 @@
 ---
 title: Azure Stack HCI 解决方案概述
 description: Azure Stack HCI 解决方案概述。
-ms.topic: article
+ms.topic: overview
 author: WenJason
 ms.author: v-jay
 ms.localizationpriority: medium
 origin.date: 11/04/2019
-ms.date: 05/18/2020
-ms.openlocfilehash: f79cd7520128cd6977c73b841660c1ef371fedc0
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.date: 07/20/2020
+ms.openlocfilehash: 6a14e0f4be2bec18cd65790708b73152feaa1f46
+ms.sourcegitcommit: e9ffd50aa5eaab402a94bfabfc70de6967fe6278
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422567"
+ms.lasthandoff: 07/14/2020
+ms.locfileid: "86307428"
 ---
 # <a name="azure-stack-hci-solutions-overview"></a>Azure Stack HCI 解决方案概述
 
@@ -65,7 +65,7 @@ Azure Stack HCI 解决方案在行业标准的 x86 服务器和组件上结合�
 - Azure Monitor 是一个集中式中心，通过 AI 驱动的高级分析来跟踪应用、网络和基础结构中发生的所有事件。
 - 云见证使用 Azure 作为群集仲裁的轻量决胜策略。
 - Azure 备份可以保护场外数据和防范勒索软件。
-
+- Azure 更新管理可以评估更新，以及更新 Azure 和本地环境中运行的 Windows VM 部署。
 - Azure 网络适配器可通过点到站点 VPN 将本地资源连接到 Azure 中的 VM。
 
 ## <a name="management-tools-and-system-center"></a>管理工具和 System Center

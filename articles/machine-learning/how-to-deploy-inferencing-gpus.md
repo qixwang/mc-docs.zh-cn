@@ -11,12 +11,12 @@ author: csteegz
 ms.reviewer: larryfr
 ms.date: 03/05/2020
 ms.custom: tracking-python
-ms.openlocfilehash: d550b2af1a5a119a2a344874caca5e1159046931
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: f96ac5b01435eb911a1452beccb638a239459294
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097537"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86441189"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>使用 GPU 为推理部署深度学习模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -214,9 +214,6 @@ aks_service.wait_for_deployment(show_output=True)
 print(aks_service.state)
 ```
 
-> [!NOTE]
-> 如果 `InferenceConfig` 对象具有 `enable_gpu=True`，则 `deployment_target` 参数必须引用提供 GPU 的群集。 否则，部署会失败。
-
 有关详细信息，请参阅[模型](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py)的参考文档。
 
 ## <a name="issue-a-sample-query-to-your-service"></a>向服务发出示例查询
@@ -290,6 +287,5 @@ aks_target.delete()
 
 ## <a name="next-steps"></a>后续步骤
 
-* [在 FPGA 上部署模型](how-to-deploy-fpga-web-service.md)
 * [用 ONNX 部署模型](concept-onnx.md#deploy-onnx-models-in-azure)
 * [训练 Tensorflow DNN 模型](how-to-train-tensorflow.md)

@@ -5,17 +5,17 @@ services: storage
 author: WenJason
 ms.service: storage
 ms.subservice: common
-ms.topic: article
+ms.topic: how-to
 origin.date: 05/11/2020
-ms.date: 06/01/2020
+ms.date: 07/20/2020
 ms.author: v-jay
 ms.reviewer: dineshm
-ms.openlocfilehash: 869922092c341d47067569e8270efc262f1ebe03
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: 5bcb1a6693609868959aede1a2894db2ef1ab7b7
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199534"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414645"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>将 Azure 存储帐户移到另一个区域
 
@@ -38,7 +38,7 @@ ms.locfileid: "84199534"
 
 - 对于预览版功能，请确保你的订阅已列入目标区域的允许列表。
 
-<a id="prepare" />
+<a id="prepare"></a>
 
 ## <a name="prepare"></a>准备
 
@@ -175,7 +175,7 @@ ms.locfileid: "84199534"
     ```
 ---
 
-<a id="move" />
+<a id="move"></a>
 
 ## <a name="move"></a>移动
 
@@ -228,7 +228,7 @@ ms.locfileid: "84199534"
 | **警报** | [使用 Azure Monitor 创建、查看和管理活动日志警报](../../azure-monitor/platform/alerts-activity-log.md) |
 
 > [!NOTE] 
-> 如果已为源存储帐户设置了 CDN，只需将现有 CDN 的源更改为新帐户的主 blob 服务终结点即可。 
+> 如果为源存储帐户设置 CDN，只需将现有 CDN 的源更改为新帐户的主 blob 服务终结点（或主静态网站终结点）。 
 
 ### <a name="move-data-to-the-new-storage-account"></a>将数据移到新的存储帐户
 

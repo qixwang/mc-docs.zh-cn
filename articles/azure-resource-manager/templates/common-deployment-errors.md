@@ -3,15 +3,17 @@ title: 排查常见部署错误
 description: 说明如何解决使用 Azure Resource Manager 将资源部署到 Azure 时的常见错误。
 tags: top-support-issue
 ms.topic: troubleshooting
-origin.date: 10/04/2019
-ms.date: 03/23/2020
+origin.date: 06/25/2020
+ms.date: 07/13/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 76bb4b61d0a1ff8ace77f0059f18ce9269a9ee38
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: fc29f8385921615f410a755ce20defe2b140b316
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79543812"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86441112"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>排查使用 Azure Resource Manager 时的常见 Azure 部署错误
 
@@ -66,8 +68,8 @@ ms.locfileid: "79543812"
 | OperationNotAllowed | 部署所尝试的操作超出订阅、资源组或区域的配额。 请尽可能修改部署，使之保持在配额范围内。 否则，请考虑请求更改配额。 | [解决配额问题](error-resource-quota.md) |
 | ParentResourceNotFound | 确保在创建子资源之前存在父资源。 | [解决父资源问题](error-parent-resource.md) |
 | PasswordTooLong | 你可能选择了包含太多字符的密码，或在将密码值作为参数传递之前将其转换成了一个安全字符串。 如果模板包括一个**安全字符串**参数，则不需要将值转换为安全字符串。 请以文本形式提供密码值。 |  |
-| PrivateIPAddressInReservedRange | 指定的 IP 地址包括 Azure 所需的地址范围。 请更改 IP 地址，避免使用保留的范围。 | [IP 地址](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) |
-| PrivateIPAddressNotInSubnet | 指定的 IP 地址位于子网范围之外。 请更改 IP 地址，使之位于子网范围之内。 | [IP 地址](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) |
+| PrivateIPAddressInReservedRange | 指定的 IP 地址包括 Azure 所需的地址范围。 请更改 IP 地址，避免使用保留的范围。 | [IP 地址](../../virtual-network/public-ip-addresses.md) |
+| PrivateIPAddressNotInSubnet | 指定的 IP 地址位于子网范围之外。 请更改 IP 地址，使之位于子网范围之内。 | [IP 地址](../../virtual-network/public-ip-addresses.md) |
 | PropertyChangeNotAllowed | 已部署资源上的某些属性不能更改。 更新资源时，请仅更改允许的属性。 |  |
 | RequestDisallowedByPolicy | 订阅中的某个资源策略阻止你在部署期间尝试执行的操作。 请找出阻止该操作的策略。 如果可能，请更改部署，使之符合策略的限制。 | [解决策略问题](error-policy-requestdisallowedbypolicy.md) |
 | ReservedResourceName | 提供不包含保留名称的资源名称。 | [保留的资源名称](error-reserved-resource-name.md) |
@@ -121,7 +123,7 @@ ms.locfileid: "79543812"
 若要通过 Azure CLI 查看部署错误代码和消息，请使用：
 
 ```azurecli
-az group deployment operation list --name exampledeployment -g examplegroup --query "[*].properties.statusMessage"
+az deployment operation group list --name exampledeployment -g examplegroup --query "[*].properties.statusMessage"
 ```
 
 在门户中，选择通知。
@@ -179,7 +181,7 @@ New-AzResourceGroupDeployment `
 使用以下命令检查部署操作：
 
 ```azurecli
-az group deployment operation list \
+az deployment operation group list \
   --resource-group examplegroup \
   --name exampledeployment
 ```
@@ -187,7 +189,7 @@ az group deployment operation list \
 使用以下命令检查请求内容：
 
 ```azurecli
-az group deployment operation list \
+az deployment operation group list \
   --name exampledeployment \
   -g examplegroup \
   --query [].properties.request
@@ -196,7 +198,7 @@ az group deployment operation list \
 使用以下命令检查响应内容：
 
 ```azurecli
-az group deployment operation list \
+az deployment operation group list \
   --name exampledeployment \
   -g examplegroup \
   --query [].properties.response
@@ -208,19 +210,19 @@ az group deployment operation list \
 
 ```json
 {
-    "type": "Microsoft.Resources/deployments",
-    "apiVersion": "2016-09-01",
-    "name": "nestedTemplate",
-    "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-            "uri": "{template-uri}",
-            "contentVersion": "1.0.0.0"
-        },
-        "debugSetting": {
-           "detailLevel": "requestContent, responseContent"
-        }
+  "type": "Microsoft.Resources/deployments",
+  "apiVersion": "2016-09-01",
+  "name": "nestedTemplate",
+  "properties": {
+    "mode": "Incremental",
+    "templateLink": {
+      "uri": "{template-uri}",
+      "contentVersion": "1.0.0.0"
+    },
+    "debugSetting": {
+       "detailLevel": "requestContent, responseContent"
     }
+  }
 }
 ```
 
@@ -230,19 +232,19 @@ az group deployment operation list \
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
     "storageName": {
         "type": "string"
     },
     "storageResourceGroup": {
         "type": "string"
     }
-  },
-  "variables": {},
-  "resources": [],
-  "outputs": {
+    },
+    "variables": {},
+    "resources": [],
+    "outputs": {
     "exampleOutput": {
         "value": "[reference(resourceId(parameters('storageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('storageName')), '2016-05-01')]",
         "type" : "object"

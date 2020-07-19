@@ -9,13 +9,13 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 origin.date: 03/11/2020
-ms.date: 06/01/2020
-ms.openlocfilehash: f457242ef95e7ab86d8676fc0b50e19af278588b
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.date: 07/20/2020
+ms.openlocfilehash: 84c7bf8d64ce7250e91facc2699f776210f269e3
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199352"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414575"
 ---
 # <a name="security-controls-for-azure-storage"></a>Azure 存储的安全控制
 
@@ -63,3 +63,7 @@ ms.locfileid: "84199352"
 | 安全控制 | Yes/No | 注释|
 |---|---|--|
 | 配置管理支持（配置的版本控制等）| 是 | 支持通过 Azure 资源管理器 API 进行资源提供程序版本控制 |
+
+## <a name="next-steps"></a>后续步骤
+
+- 详细了解[跨 Azure 服务的内置安全控制](../../security/fundamentals/security-controls.md)。

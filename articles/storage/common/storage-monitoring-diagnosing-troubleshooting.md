@@ -3,18 +3,19 @@ title: 对 Azure 存储进行监视、诊断和故障排除 | Microsoft Docs
 description: 使用存储分析、客户端日志记录等功能及其他第三方工具，确定、诊断和排查与 Azure 存储相关的问题。
 author: WenJason
 ms.service: storage
-ms.topic: conceptual
+ms.topic: troubleshooting
 origin.date: 09/23/2019
-ms.date: 02/10/2020
+ms.date: 07/20/2020
 ms.author: v-jay
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 4d087b104d480f95e8ad81ff34ec874ad3dc3e79
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.custom: monitoring
+ms.openlocfilehash: 4ff4a760a151164000af4ebf9e25126d5f03710a
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291946"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414734"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-azure-storage"></a>对 Azure 存储进行监视、诊断和故障排除
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -129,7 +130,7 @@ ms.locfileid: "79291946"
 虽然 [Azure 门户](https://portal.azure.cn)从 Azure 数据中心内部收集运行状况信息（由内而外监视），但你也可以考虑采用由外而内的方法来生成定期从多个位置访问 Azure 托管的 Web 应用程序的综合事务。 [Dynatrace](http://www.dynatrace.com/en/synthetic-monitoring) 和 Application Insights for Azure DevOps 提供的服务是此方法的示例。 有关 Application Insights for Azure DevOps 的详细信息，请参阅附录“[附录 5：使用 Application Insights for Azure DevOps 进行监视](#appendix-5)”。
 
 ### <a name="monitoring-capacity"></a><a name="monitoring-capacity"></a>监视容量
-存储度量值仅存储 Blob 服务的容量度量值，因为 Blob 通常占所存储数据的最大比例（撰写本文时，尚不能使用存储度量值来监视表和队列的容量）。 如果已为 Blob 服务启用监视，则可以在 **$MetricsCapacityBlob** 表中找到此数据。 存储度量值每天记录一次此数据，然后可以使用 RowKey  的值来确定某行是否包含与用户数据（值 data  ）或分析数据（值 analytics  ）相关的实体。 每个存储的实体均包含有关所用的存储量（**Capacity**，以字节为单位）、当前的容器数 (**ContainerCount**) 以及存储帐户中正在使用的 Blob 数 (**ObjectCount**) 的信息。 有关 **$MetricsCapacityBlob** 表中存储的容量度量值的详细信息，请参阅[存储分析度量值表架构](https://msdn.microsoft.com/library/azure/hh343264.aspx)。
+存储度量值仅存储 Blob 服务的容量度量值，因为 Blob 通常占所存储数据的最大比例（撰写本文时，尚不能使用存储度量值来监视表和队列的容量）。 如果已为 Blob 服务启用监视，则可以在 **$MetricsCapacityBlob** 表中找到此数据。 存储度量值每天记录一次此数据，然后可以使用 RowKey 的值来确定某行是否包含与用户数据（值 data）或分析数据（值 analytics）相关的实体。 每个存储的实体均包含有关所用的存储量（**Capacity**，以字节为单位）、当前的容器数 (**ContainerCount**) 以及存储帐户中正在使用的 Blob 数 (**ObjectCount**) 的信息。 有关 **$MetricsCapacityBlob** 表中存储的容量度量值的详细信息，请参阅[存储分析度量值表架构](https://msdn.microsoft.com/library/azure/hh343264.aspx)。
 
 > [!NOTE]
 > 应监视这些值以便获取“已接近存储帐户的容量限制”的早期警告。 在 Azure 门户中，可以添加警报规则，以便在聚合存储使用量超过或低于指定阈值时发出通知。
@@ -139,11 +140,11 @@ ms.locfileid: "79291946"
 若要帮助估算各种存储对象（如 Blob）的大小，请参阅博客文章[了解 Azure 存储计费 — 带宽、事务和容量](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx)。
 
 ### <a name="monitoring-availability"></a><a name="monitoring-availability"></a>监视可用性
-应通过监视以下每小时或每分钟度量值表中的“可用性”  列中的值来监视存储帐户中存储服务的可用性： **$MetricsHourPrimaryTransactionsBlob**、 **$MetricsHourPrimaryTransactionsTable**、 **$MetricsHourPrimaryTransactionsQueue**、 **$MetricsMinutePrimaryTransactionsBlob**、 **$MetricsMinutePrimaryTransactionsTable**、 **$MetricsMinutePrimaryTransactionsQueue**、 **$MetricsCapacityBlob**。 **可用性**列包含一个百分比值，指示该服务的可用性或该行所表示的 API 操作的可用性（**RowKey** 显示行是包含整体服务的度量值还是包含特定 API 操作的度量值）。
+应通过监视以下每小时或每分钟度量值表中的“可用性”列中的值来监视存储帐户中存储服务的可用性： **$MetricsHourPrimaryTransactionsBlob**、 **$MetricsHourPrimaryTransactionsTable**、 **$MetricsHourPrimaryTransactionsQueue**、 **$MetricsMinutePrimaryTransactionsBlob**、 **$MetricsMinutePrimaryTransactionsTable**、 **$MetricsMinutePrimaryTransactionsQueue**、 **$MetricsCapacityBlob**。 **可用性**列包含一个百分比值，指示该服务的可用性或该行所表示的 API 操作的可用性（**RowKey** 显示行是包含整体服务的度量值还是包含特定 API 操作的度量值）。
 
 任何小于 100% 的值指示某些存储请求将失败。 可以通过检查度量值数据中显示具有不同错误类型（如 **ServerTimeoutError**）的请求数的其他列来了解失败原因。 由于以下原因，应该会看到 **Availability** 暂时低于 100%：比如在该服务移动分区以更好地负载均衡请求时，出现暂时性服务器超时；客户端应用程序中的重试逻辑应处理此类间歇性情况。 [Storage Analytics Logged Operations and Status Messages](https://msdn.microsoft.com/library/azure/hh343260.aspx) （存储分析记录的操作和状态消息）一文列出了存储度量值纳入其 **可用性** 计算中的事务类型。
 
-在 [Azure 门户](https://portal.azure.cn)中，可以添加警报规则，以便在某项服务的“可用性”  低于指定阈值时通知用户。
+在 [Azure 门户](https://portal.azure.cn)中，可以添加警报规则，以便在某项服务的“可用性”低于指定阈值时通知用户。
 
 本指南的“[故障排除指南]”一节介绍与可用性相关的一些常见存储服务问题。
 
@@ -237,8 +238,8 @@ Azure SDK 提供了一个存储模拟器，可以在开发工作站上运行它�
 ### <a name="client-request-id"></a><a name="client-request-id"></a>客户端请求 ID
 存储客户端库自动为每个请求生成唯一的客户端请求 ID。
 
-* 在存储客户端库创建的客户端日志中，客户端请求 ID 显示在与请求相关的每个日志项的“客户端请求 ID”字段中  。
-* 在网络跟踪（如 Fiddler 捕获的跟踪）中，客户端请求 ID 在请求消息中显示为 x-ms-client-request-id HTTP 标头值  。
+* 在存储客户端库创建的客户端日志中，客户端请求 ID 显示在与请求相关的每个日志项的“客户端请求 ID”字段中。
+* 在网络跟踪（如 Fiddler 捕获的跟踪）中，客户端请求 ID 在请求消息中显示为 x-ms-client-request-id HTTP 标头值。
 * 在服务器端存储日志记录日志中，客户端请求 ID 显示在“客户端请求 ID”列中。
 
 > [!NOTE]
@@ -249,16 +250,16 @@ Azure SDK 提供了一个存储模拟器，可以在开发工作站上运行它�
 ### <a name="server-request-id"></a><a name="server-request-id"></a>服务器请求 ID
 存储服务会自动生成服务器请求 ID。
 
-* 在服务器端存储日志记录日志中，服务器请求 ID 显示在“请求 ID 标头”列中  。
-* 在网络跟踪（如 Fiddler 捕获的跟踪）中，服务器请求 ID 在响应消息中显示为 x-ms-request-id HTTP 标头值  。
-* 在存储客户端库创建的客户端日志中，服务器请求 ID 出现在显示服务器响应详细信息的日志项的“操作文本”列中  。
+* 在服务器端存储日志记录日志中，服务器请求 ID 显示在“请求 ID 标头”列中。
+* 在网络跟踪（如 Fiddler 捕获的跟踪）中，服务器请求 ID 在响应消息中显示为 x-ms-request-id HTTP 标头值。
+* 在存储客户端库创建的客户端日志中，服务器请求 ID 出现在显示服务器响应详细信息的日志项的“操作文本”列中。
 
 > [!NOTE]
 > 存储服务始终为它接收的每个请求分配唯一的服务器请求 ID，因此客户端进行的每次重试尝试和批处理中包含的每个操作均使用唯一的服务器请求 ID。
 >
 >
 
-如果存储客户端库在客户端上引发 StorageException  ，则 RequestInformation  属性将包含 RequestResult  对象（其中包含 ServiceRequestID  属性）。 也可以通过 **OperationContext** 实例访问 **RequestResult** 对象。
+如果存储客户端库在客户端上引发 StorageException，则 RequestInformation 属性将包含 RequestResult 对象（其中包含 ServiceRequestID 属性）。 也可以通过 **OperationContext** 实例访问 **RequestResult** 对象。
 
 下面的代码示例演示如何通过附加 **OperationContext** 对象（向存储服务发出的请求）设置自定义 **ClientRequestId** 值。 它还演示了如何从响应消息中检索 **ServerRequestId** 值。
 
@@ -358,7 +359,7 @@ catch (StorageException storageException)
 #### <a name="investigating-client-performance-issues"></a>调查客户端的性能问题
 客户端响应速度慢的可能原因包括：可用连接数或可用线程数有限，或者 CPU、内存或网络带宽等资源不足。 可以通过以下方式解决此问题：修改客户端代码使其更高效（例如，对存储服务使用异步调用），或者使用更大的虚拟机（包含更多内核和更多内存）。
 
-对于表和队列服务，Nagle 算法也可能会导致高 **AverageE2ELatency**（与 **AverageServerLatency** 相比）：有关详细信息，请参阅博客文章 [Nagle’s Algorithm is Not Friendly towards Small Requests](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/06/25/nagle-s-algorithm-is-not-friendly-towards-small-requests.aspx)（Nagle 算法对小型请求不友好）。 可以通过使用 **System.Net** 命名空间中的 **ServicePointManager** 类在代码中禁用 Nagle 算法。 应在应用程序中调用表或队列服务之前执行此操作，因为这样做不会影响已打开的连接。 下面的示例来自辅助角色中的 **Application_Start** 方法。
+对于表和队列服务，Nagle 算法也可能会导致高 **AverageE2ELatency**（与 **AverageServerLatency** 相比）：有关详细信息，请参阅博客文章 [Nagle’s Algorithm is Not Friendly towards Small Requests](https://docs.microsoft.com/archive/blogs/windowsazurestorage/nagles-algorithm-is-not-friendly-towards-small-requests)（Nagle 算法对小型请求不友好）。 可以通过使用 **System.Net** 命名空间中的 **ServicePointManager** 类在代码中禁用 Nagle 算法。 应在应用程序中调用表或队列服务之前执行此操作，因为这样做不会影响已打开的连接。 下面的示例来自辅助角色中的 **Application_Start** 方法。
 
 ```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);
@@ -411,7 +412,7 @@ queueServicePoint.UseNagleAlgorithm = false;
 
 * 验证应用程序是否成功地将该消息添加到队列。 检查应用程序在成功添加前是否未多次重试 **AddMessage** 方法。 存储客户端库日志会显示存储操作的任何重复重试。
 * 验证将消息添加到队列的辅助角色与从队列读取该消息的辅助角色之间不存在任何时钟偏差，使得处理看起来就像出现延迟。
-* 检查从队列中读取该消息的辅助角色是否出现故障。 如果队列客户端调用了 GetMessage  方法，但无法响应确认消息，则该消息将一直在队列中保持不可见，直到 invisibilityTimeout  期限过期。 此时，该消息可供再次处理。
+* 检查从队列中读取该消息的辅助角色是否出现故障。 如果队列客户端调用了 GetMessage 方法，但无法响应确认消息，则该消息将一直在队列中保持不可见，直到 invisibilityTimeout 期限过期。 此时，该消息可供再次处理。
 * 检查队列长度是否随着时间的推移不断增长。 如果没有足够多的辅助角色可用于处理其他辅助角色放入队列的所有消息，会出现这种情况。 此外，还应检查指标以了解删除请求是否失败，并应查看消息的出队计数，该计数可能指示删除消息的重复失败尝试次数。
 * 检查存储日志记录日志以查找在长于平常的时间段内具有高于预期的 **E2ELatency** 和 **ServerLatency** 值的任何队列操作。
 
@@ -470,7 +471,7 @@ queueServicePoint.UseNagleAlgorithm = false;
 | Source | 详细程度 | 详细程度 | 客户端请求 ID | 操作文本 |
 | --- | --- | --- | --- | --- |
 | Microsoft.Azure.Storage |信息 |3 |85d077ab-... |正在按位置模式 PrimaryOnly 使用主位置启动操作。 |
-| Microsoft.Azure.Storage |信息 |3 |85d077ab -… |开始将同步请求发送到 <https://domemaildist.blob.core.chinacloudapi.cnazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&sr=c&si=mypolicy&sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&api-version=2014-02-14> |
+| Microsoft.Azure.Storage |信息 |3 |85d077ab -… |开始向 <https://domemaildist.blob.core.chinacloudapi.cnazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&sr=c&si=mypolicy&sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&api-version=2014-02-14> 发出同步请求 |
 | Microsoft.Azure.Storage |信息 |3 |85d077ab -… |正在等待响应。 |
 | Microsoft.Azure.Storage |警告 |2 |85d077ab -… |等待响应时引发了异常：远程服务器返回了错误：(403) 禁止访问。 |
 | Microsoft.Azure.Storage |信息 |3 |85d077ab -… |收到响应。 状态代码 = 403，请求 ID = 9d67c64a-64ed-4b0d-9515-3b14bbcdc63d，Content-MD5 =，ETag = 。 |
@@ -515,24 +516,24 @@ queueServicePoint.UseNagleAlgorithm = false;
 
 | 请求 ID | 操作文本 |
 | --- | --- |
-| 07b26a5d-... |Starting synchronous request to https://domemaildist.blob.core.chinacloudapi.cn/azuremmblobcontainer. |
+| 07b26a5d-... |Starting synchronous request to `https://domemaildist.blob.core.chinacloudapi.cn/azuremmblobcontainer`. |
 | 07b26a5d-... |StringToSign = HEAD............x-ms-client-request-id:07b26a5d-....x-ms-date:Tue, 03 Jun 2014 10:33:11 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container。 |
 | 07b26a5d-... |正在等待响应。 |
 | 07b26a5d-... |收到响应。 Status code = 200, Request ID = eeead849-...Content-MD5 = , ETag =    &quot;0x8D14D2DC63D059B&quot;. |
 | 07b26a5d-... |响应标头已成功处理，继续执行该操作的剩余部分。 |
 | 07b26a5d-... |正在下载响应正文。 |
 | 07b26a5d-... |操作已成功完成。 |
-| 07b26a5d-... |Starting synchronous request to https://domemaildist.blob.core.chinacloudapi.cn/azuremmblobcontainer. |
+| 07b26a5d-... |Starting synchronous request to `https://domemaildist.blob.core.chinacloudapi.cn/azuremmblobcontainer`. |
 | 07b26a5d-... |StringToSign = DELETE............x-ms-client-request-id:07b26a5d-....x-ms-date:Tue, 03 Jun 2014 10:33:12    GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container. |
 | 07b26a5d-... |正在等待响应。 |
 | 07b26a5d-... |收到响应。 状态代码 = 202，请求 ID = 6ab2a4cf-...，Content-MD5 = ，ETag = 。 |
 | 07b26a5d-... |响应标头已成功处理，继续执行该操作的剩余部分。 |
 | 07b26a5d-... |正在下载响应正文。 |
 | 07b26a5d-... |操作已成功完成。 |
-| e2d06d78-... |Starting asynchronous request to https://domemaildist.blob.core.chinacloudapi.cn/azuremmblobcontainer.</td> |
+| e2d06d78-... |Starting asynchronous request to `https://domemaildist.blob.core.chinacloudapi.cn/azuremmblobcontainer`.</td> |
 | e2d06d78-... |StringToSign = HEAD............x-ms-client-request-id:e2d06d78-....x-ms-date:Tue, 03 Jun 2014 10:33:12 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container。 |
 | e2d06d78-... |正在等待响应。 |
-| de8b1c3c-... |Starting synchronous request to https://domemaildist.blob.core.chinacloudapi.cn/azuremmblobcontainer/blobCreated.txt. |
+| de8b1c3c-... |Starting synchronous request to `https://domemaildist.blob.core.chinacloudapi.cn/azuremmblobcontainer/blobCreated.txt`. |
 | de8b1c3c-... |StringToSign = PUT...64.qCmF+TQLPhq/YYK50mP9ZQ==........x-ms-blob-type:BlockBlob.x-ms-client-request-id:de8b1c3c-....x-ms-date:Tue, 03 Jun 2014 10:33:12 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer/blobCreated.txt。 |
 | de8b1c3c-... |正在准备写入请求数据。 |
 | e2d06d78-... |等待响应时引发了异常：远程服务器返回了错误：(404) 未找到。 |
@@ -540,7 +541,7 @@ queueServicePoint.UseNagleAlgorithm = false;
 | e2d06d78-... |响应标头已成功处理，继续执行该操作的剩余部分。 |
 | e2d06d78-... |正在下载响应正文。 |
 | e2d06d78-... |操作已成功完成。 |
-| e2d06d78-... |Starting asynchronous request to https://domemaildist.blob.core.chinacloudapi.cn/azuremmblobcontainer. |
+| e2d06d78-... |Starting asynchronous request to `https://domemaildist.blob.core.chinacloudapi.cn/azuremmblobcontainer`. |
 | e2d06d78-... |StringToSign = PUT...0.........x-ms-client-request-id:e2d06d78-....x-ms-date:Tue, 03 Jun 2014 10:33:12 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container。 |
 | e2d06d78-... |正在等待响应。 |
 | de8b1c3c-... |正在写入请求数据。 |
@@ -566,10 +567,10 @@ queueServicePoint.UseNagleAlgorithm = false;
 | 请求开始时间 | 2014-05-30T06:17:48.4473697Z |
 | 操作类型     | GetBlobProperties            |
 | 请求状态     | SASAuthorizationError        |
-| HTTP 状态代码   | 404                          |
+| HTTP 状态代码   | 404                            |
 | 身份验证类型| Sas                          |
 | 服务类型       | Blob                         |
-| 请求 URL        | https://domemaildist.blob.core.chinacloudapi.cn/azureimblobcontainer/blobCreatedViaSAS.txt |
+| 请求 URL         | `https://domemaildist.blob.core.chinacloudapi.cn/azureimblobcontainer/blobCreatedViaSAS.txt` |
 | &nbsp;                 |   ?sv=2014-02-14&sr=c&si=mypolicy&sig=XXXXX&;api-version=2014-02-14 |
 | 请求 ID 标头  | a1f348d5-8032-4912-93ef-b393e5252a3b |
 | 客户端请求 ID  | 2d064953-8436-4ee0-aa0c-65cb874f7929 |
@@ -619,7 +620,7 @@ client.SetServiceProperties(sp);
 
 服务器端日志文件还包含另一个具有同一 **client-request-id** 值 (813ea74f…) 的条目，该条目针对从同一客户端对同一实体进行的成功删除操作。 此成功的删除操作在失败的删除请求之前很短的时间内发生。
 
-此情况最有可能的原因是客户端将针对实体的删除请求发送到表服务，该请求成功，但未从服务器收到确认消息（可能是因为临时网络问题）。 然后，客户端自动重试该操作（使用同一 client-request-id  ），但此重试失败，因为该实体已删除。
+此情况最有可能的原因是客户端将针对实体的删除请求发送到表服务，该请求成功，但未从服务器收到确认消息（可能是因为临时网络问题）。 然后，客户端自动重试该操作（使用同一 client-request-id），但此重试失败，因为该实体已删除。
 
 如果此问题频繁出现，应该调查为什么客户端无法从表服务收到确认消息。 如果此问题是间歇性的，则应捕获“HTTP (404) 找不到”错误并在客户端中记录它，但允许客户端继续执行。
 
@@ -633,7 +634,7 @@ client.SetServiceProperties(sp);
 | 05:10:13.8987407 |GetContainerProperties |404 |mmcont |bc881924-... |
 | 05:10:14.2147723 |CreateContainer |409 |mmcont |bc881924-... |
 
-客户端应用程序中的代码先删除 blob 容器，然后立即使用同一名称重新创建该容器：CreateIfNotExists  方法（客户端请求 ID bc881924-...）最终失败，显示“HTTP 409 (冲突)”错误。 当客户端删除 Blob 容器、表或队列时，需要经过一段较短的时间，该名称才能再次变为可用。
+客户端应用程序中的代码先删除 blob 容器，然后立即使用同一名称重新创建该容器：CreateIfNotExists 方法（客户端请求 ID bc881924-...）最终失败，显示“HTTP 409 (冲突)”错误。 当客户端删除 Blob 容器、表或队列时，需要经过一段较短的时间，该名称才能再次变为可用。
 
 客户端应用程序在创建新容器时应使用唯一的容器名称（如果“删除/重新创建”模式很常见）。
 
@@ -651,7 +652,7 @@ client.SetServiceProperties(sp);
 ### <a name="capacity-metrics-show-an-unexpected-increase-in-storage-capacity-usage"></a><a name="capacity-metrics-show-an-unexpected-increase"></a>容量度量值显示存储容量使用量意外增加
 如果发现存储帐户中的容量使用量意外突变，可调查其原因，具体方法是先查看可用性指标；例如，失败的删除请求数增加可能导致所用的 Blob 存储量增加，本来希望应用程序特定的清理操作可释放一些空间，但却未按预期工作（例如，因为用于释放空间的 SAS 令牌已过期）。
 
-### <a name="your-issue-arises-from-using-the-storage-emulator-for-development-or-test"></a><a name="your-issue-arises-from-using-the-storage-emulator"></a>你的问题是由于使用存储模拟器进行开发或测试而导致
+### <a name="your-issue-arises-from-using-the-storage-emulator-for-development-or-test"></a><a name="your-issue-arises-from-using-the-storage-emulator"></a>该问题是由于使用存储模拟器进行开发或测试而导致
 通常，在开发和测试过程中使用存储模拟器以避免需要 Azure 存储帐户。 使用存储模拟器时可能发生的常见问题包括：
 
 * [功能“X”在存储模拟器中无法正常工作]
@@ -664,7 +665,7 @@ client.SetServiceProperties(sp);
 对于存储模拟器不支持的这些功能，请使用云中的 Azure 存储服务。
 
 #### <a name="error-the-value-for-one-of-the-http-headers-is-not-in-the-correct-format-when-using-the-storage-emulator"></a><a name="error-HTTP-header-not-correct-format"></a>使用存储模拟器时出现错误“其中一个 HTTP 标头的值的格式不正确”
-正在针对本地存储模拟器测试使用存储客户端库的应用程序，方法调用（如 CreateIfNotExists）失败并显示错误消息“其中一个 HTTP 标头值的格式不正确”  。 这表示所用的存储模拟器版本不支持所用的存储客户端库版本。 存储客户端库会为它发出的所有请求添加标头 **x-ms-version** 。 如果存储模拟器无法识别 **x-ms-version** 标头中的值，则会拒绝该请求。
+正在针对本地存储模拟器测试使用存储客户端库的应用程序，方法调用（如 CreateIfNotExists）失败并显示错误消息“其中一个 HTTP 标头值的格式不正确”。 这表示所用的存储模拟器版本不支持所用的存储客户端库版本。 存储客户端库会为它发出的所有请求添加标头 **x-ms-version** 。 如果存储模拟器无法识别 **x-ms-version** 标头中的值，则会拒绝该请求。
 
 可以使用存储库客户端日志来查看其发送的 **x-ms-version header** 值。 如果使用 Fiddler 跟踪客户端应用程序发出的请求，也可以查看 **x-ms-version 标头** 的值。
 
@@ -720,10 +721,10 @@ sqllocaldb create v11.0
 
 启动 Fiddler 后，它会开始捕获你的本地计算机上的 HTTP 和 HTTPS 流量。 以下是一些用于控制 Fiddler 的有用命令：
 
-* 停止和启动捕获流量。 在主菜单上，转到“文件”  ，然后单击“捕获流量”  在打开和关闭捕获之间进行切换。
-* 保存捕获的通信数据。 在主菜单上，转到“文件”  ，单击“保存”  ，然后单击“所有会话”  ，这样即可将流量保存在一个会话存档文件中。 以后可以重新加载“会话存档”以供分析，或者将其发送到 Azure 支持部门（如果要求）。
+* 停止和启动捕获流量。 在主菜单上，转到“文件”，然后单击“捕获流量”在打开和关闭捕获之间进行切换。
+* 保存捕获的通信数据。 在主菜单上，转到“文件”，单击“保存”，然后单击“所有会话”，这样即可将流量保存在一个会话存档文件中。 以后可以重新加载“会话存档”以供分析，或者将其发送到 Azure 支持部门（如果要求）。
 
-若要限制 Fiddler 捕获的通信量，可以使用在“筛选器”  选项卡中配置的筛选器。**contosoemaildist.table.core.chinacloudapi.cn** 存储终结点的流量的筛选器：
+若要限制 Fiddler 捕获的通信量，可以使用在“筛选器”选项卡中配置的筛选器。**contosoemaildist.table.core.chinacloudapi.cn** 存储终结点的流量的筛选器：
 
 ![][5]
 
@@ -734,19 +735,19 @@ sqllocaldb create v11.0
 
 1. 在本地计算机上启动 Wireshark。
 2. 在“启动”  部分中，选择本地网络接口或连接到 Internet 的接口。
-3. 单击“捕获选项”  。
-4. 将一个筛选器添加到“捕获筛选器”  文本框中。 例如，host contosoemaildist.table.core.chinacloudapi.cn  会将 Wireshark 配置为只捕获发送到 contosoemaildist  存储帐户中的表服务终结点或从该终结点发送的数据包。 请查看[捕获筛选器的完整列表](https://wiki.wireshark.org/CaptureFilters)。
+3. 单击“捕获选项”。
+4. 将一个筛选器添加到“捕获筛选器”文本框中。 例如，host contosoemaildist.table.core.chinacloudapi.cn 会将 Wireshark 配置为只捕获发送到 contosoemaildist 存储帐户中的表服务终结点或从该终结点发送的数据包。 请查看[捕获筛选器的完整列表](https://wiki.wireshark.org/CaptureFilters)。
 
    ![][6]
-5. 单击“启动”  。 现在，当在本地计算机上使用客户端应用程序时，Wireshark 将捕获发送到表服务终结点或从该终结点发送的所有数据包。
-6. 完成后，在主菜单上，依次单击“捕获”  和“停止”  。
-7. 若要将捕获的数据保存到 Wireshark 捕获文件中，请在主菜单上依次单击“文件”  和“保存”  。
+5. 单击“启动”。 现在，当在本地计算机上使用客户端应用程序时，Wireshark 将捕获发送到表服务终结点或从该终结点发送的所有数据包。
+6. 完成后，在主菜单上，依次单击“捕获”和“停止”。
+7. 若要将捕获的数据保存到 Wireshark 捕获文件中，请在主菜单上依次单击“文件”和“保存”。
 
-WireShark 会在 **packetlist** 窗口中突出显示存在的任何错误。 还可以使用“专家信息”  窗口（依次单击“分析”  和“专家信息”  ）来查看错误和警告的摘要。
+WireShark 会在 **packetlist** 窗口中突出显示存在的任何错误。 还可以使用“专家信息”窗口（依次单击“分析”和“专家信息”）来查看错误和警告的摘要。
 
 ![][7]
 
-还可选择查看 TCP 数据（如果应用程序层看到该数据），方法是右键单击 TCP 数据，并选择“跟踪 TCP 流”  。 在不使用捕获筛选器捕获了转储时，此方法很有用。 有关详细信息，请参阅 [Following TCP Streams](https://www.wireshark.org/docs/wsug_html_chunked/ChAdvFollowTCPSection.html)（跟踪 TCP 流）。
+还可选择查看 TCP 数据（如果应用程序层看到该数据），方法是右键单击 TCP 数据，并选择“跟踪 TCP 流”。 在不使用捕获筛选器捕获了转储时，此方法很有用。 有关详细信息，请参阅 [Following TCP Streams](https://www.wireshark.org/docs/wsug_html_chunked/ChAdvFollowTCPSection.html)（跟踪 TCP 流）。
 
 ![][8]
 
@@ -759,7 +760,7 @@ WireShark 会在 **packetlist** 窗口中突出显示存在的任何错误。 �
 可以使用 Microsoft Message Analyzer 以与 Fiddler 类似的方式捕获 HTTP 和 HTTPS 流量，并以与 Wireshark 类似的方式捕获网络流量。
 
 #### <a name="configure-a-web-tracing-session-using-microsoft-message-analyzer"></a>使用 Microsoft Message Analyzer 配置 Web 跟踪会话
-若要使用 Microsoft Message Analyzer 为 HTTP 和 HTTPS 通信配置 Web 跟踪会话，请运行 Microsoft Message Analyzer 应用程序，然后在“文件”  菜单上单击“捕获/跟踪”  。 在可用的跟踪方案列表中，选择“Web 代理”  。 然后在“跟踪方案配置”  面板的“HostnameFilter”  文本框中，添加存储终结点的名称（可以在 [Azure 门户](https://portal.azure.cn)中查找这些名称）。 例如，如果 Azure 存储帐户的名称是 contosodata  ，则应将以下内容添加到 HostnameFilter  文本框：
+若要使用 Microsoft Message Analyzer 为 HTTP 和 HTTPS 通信配置 Web 跟踪会话，请运行 Microsoft Message Analyzer 应用程序，然后在“文件”菜单上单击“捕获/跟踪”。 在可用的跟踪方案列表中，选择“Web 代理”。 然后在“跟踪方案配置”面板的“HostnameFilter”文本框中，添加存储终结点的名称（可以在 [Azure 门户](https://portal.azure.cn)中查找这些名称）。 例如，如果 Azure 存储帐户的名称是 contosodata，则应将以下内容添加到 HostnameFilter 文本框：
 
 ```
 contosodata.blob.core.chinacloudapi.cn contosodata.table.core.chinacloudapi.cn contosodata.queue.core.chinacloudapi.cn
@@ -783,7 +784,7 @@ Microsoft Message Analyzer 中内置的“Web 代理”  跟踪基于 Fiddler；
 
 ![][9]
 
-当在 Microsoft Message Analyzer 中创建跟踪会话时，可以指定筛选器，以减少跟踪中的干扰项量。 在定义跟踪的“捕获/跟踪”  页上，单击 **Microsoft-Windows-NDIS-PacketCapture** 旁边的“配置”  链接。 下面的屏幕截图显示了筛选三个存储服务的 IP 地址的 TCP 通信的配置：
+当在 Microsoft Message Analyzer 中创建跟踪会话时，可以指定筛选器，以减少跟踪中的干扰项量。 在定义跟踪的“捕获/跟踪”页上，单击 **Microsoft-Windows-NDIS-PacketCapture** 旁边的“配置”链接。 下面的屏幕截图显示了筛选三个存储服务的 IP 地址的 TCP 通信的配置：
 
 ![][10]
 
@@ -794,11 +795,11 @@ Microsoft Message Analyzer 中内置的“Web 代理”  跟踪基于 Fiddler；
 
 要将存储日志记录数据导入 Excel（从 Blob 存储下载后），请执行以下操作：
 
-* 在“数据”  菜单上，单击“从文本”  。
-* 浏览到要查看的日志文件，并单击“导入”  。
-* 在“文本导入向导”  的第 1 步中，选择“带分隔符”  。
+* 在“数据”菜单上，单击“从文本”。
+* 浏览到要查看的日志文件，并单击“导入”。
+* 在“文本导入向导”的第 1 步中，选择“带分隔符”。
 
-在“文本导入向导”  的第 1 步中，选择分号  作为唯一的分隔符，然后选择双引号作为文本限定符  。 然后单击“完成”  ，并选择数据在工作簿中的位置。
+在“文本导入向导”的第 1 步中，选择分号作为唯一的分隔符，然后选择双引号作为文本限定符。 然后单击“完成” ，并选择数据在工作簿中的位置。
 
 ### <a name="appendix-5-monitoring-with-application-insights-for-azure-devops"></a><a name="appendix-5"></a>附录 5：使用 Application Insights for Azure DevOps 进行监视
 在性能和可用性监视过程中，还可以使用用于 Azure DevOps 的 Application Insights 功能。 此工具可以：

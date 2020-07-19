@@ -7,15 +7,15 @@ author: WenJason
 ms.service: storage
 ms.topic: article
 origin.date: 04/02/2020
-ms.date: 06/01/2020
+ms.date: 07/20/2020
 ms.author: v-jay
 ms.subservice: blobs
-ms.openlocfilehash: 3fee9f35d740881ab281ba34670c266f977c4136
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: 4475f598c704f63b0246c99d9765480c6246acce
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199842"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414655"
 ---
 # <a name="blob-snapshots"></a>Blob 快照
 
@@ -23,7 +23,7 @@ ms.locfileid: "84199842"
 
 ## <a name="about-blob-snapshots"></a>关于 Blob 快照
 
-[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 Blob 的快照与其基本 Blob 相同，不过，Blob URI 的后面追加了一个 **DateTime** 值，用于指示快照的生成时间。 例如，如果页 Blob URI 为 `http://storagesample.core.blob.chinacloudapi.cn/mydrives/myvhd`，则快照 URI 将类似于 `http://storagesample.core.blob.chinacloudapi.cn/mydrives/myvhd?snapshot=2011-03-09T01:42:34.9360000Z`。
 

@@ -10,12 +10,12 @@ origi n.date: 05/11/2020
 ms.date: 06/01/2020
 ms.author: v-jay
 ms.subservice: blobs
-ms.openlocfilehash: 74a663ab3a4975e6c488246b646819d84f0b2396
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: 65a66c3423ca864f9712af1e7b51c90e03d1bdfd
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199841"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414654"
 ---
 # <a name="enable-and-manage-soft-delete-for-blobs"></a>启用和管理 blob 的软删除
 
@@ -27,9 +27,9 @@ ms.locfileid: "84199841"
 
 ## <a name="enable-soft-delete"></a>启用软删除
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
-使用 Azure 门户为存储帐户上的 Blob 启用软删除：
+使用 Azure 门户为存储帐户上的 blob 启用软删除：
 
 1. 在 [Azure 门户](https://portal.azure.cn/)中，选择存储帐户。 
 
@@ -39,7 +39,7 @@ ms.locfileid: "84199841"
 
 4. 在“保留策略”下输入要保留的天数
 
-5. 选择“保存”按钮以确认“数据保护”设置
+5. 选择“保存”按钮以确认数据保护设置
 
 ![](media/soft-delete-enable/storage-blob-soft-delete-portal-configuration.png)
 
@@ -138,7 +138,46 @@ block_blob_service.set_blob_service_properties(
     delete_retention_policy=DeleteRetentionPolicy(enabled=True, days=7))
 ```
 
-# <a name="net"></a>[.NET](#tab/net)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
+
+若要启用软删除，请更新 blob 客户端的服务属性：
+
+```csharp
+// Configure soft delete
+serviceProperties.DeleteRetentionPolicy.Enabled = true;
+serviceProperties.DeleteRetentionPolicy.Days = 7;
+
+// Set the blob client's service property settings
+blobServiceClient.SetProperties(serviceProperties);
+```
+
+若要恢复意外删除的 blob，请对这些 blob 调用撤销删除。 请记住，如果对活动和软删除状态的 blob 调用撤销删除，则会将所有相关软删除快照还原为活动状态。 下面的示例对容器中的所有软删除和活动 blob 调用了撤销删除：
+
+```csharp
+foreach (BlobItem blob in container.GetBlobs(BlobTraits.None, BlobStates.Deleted))
+{
+    await container.GetBlockBlobClient(blob.Name).UndeleteAsync();
+}
+```
+
+若要恢复到特定 blob 版本，请先对 blob 调用撤销删除，然后将所需快照复制到该 blob。 下面的示例将块 blob 恢复到其最新生成的快照：
+
+```csharp
+// undelete
+await blockBlob.UndeleteAsync();
+
+// List all blobs and snapshots in the container prefixed by the blob name
+IEnumerable<BlobItem> allBlobVersions =  container.GetBlobs
+    (BlobTraits.None, BlobStates.Snapshots, prefix: blockBlob.Name);
+
+// Restore the most recently generated snapshot to the active blob    
+BlobItem copySource = allBlobVersions.First(version => ((BlobItem)version).Snapshot.Length > 0 
+&& ((BlobItem)version).Name == blockBlob.Name) as BlobItem;
+
+blockBlob.StartCopyFromUri(container.GetBlockBlobClient(copySource.Name).Uri);
+```
+
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 若要启用软删除，请更新 blob 客户端的服务属性：
 
@@ -154,7 +193,7 @@ serviceProperties.DeleteRetentionPolicy.RetentionDays = RetentionDays;
 blobClient.SetServiceProperties(serviceProperties);
 ```
 
-若要恢复意外删除的 blob，请对这些 blob 调用撤销删除。 请记住，如果对活动和软删除 blob 调用撤销删除 Blob，则会将所有相关软删除快照还原为活动状态。 下面的示例对容器中的所有软删除和活动 blob 调用了撤销删除：
+若要恢复意外删除的 blob，请对这些 blob 调用撤销删除。 请记住，如果对活动和软删除状态的 blob 调用撤销删除，则会将所有相关软删除快照还原为活动状态。 下面的示例对容器中的所有软删除和活动 blob 调用了撤销删除：
 
 ```csharp
 // Recover all blobs in a container
@@ -178,7 +217,7 @@ IEnumerable<IListBlobItem> allBlobVersions = container.ListBlobs(
 CloudBlockBlob copySource = allBlobVersions.First(version => ((CloudBlockBlob)version).IsSnapshot &&
     ((CloudBlockBlob)version).Name == blockBlob.Name) as CloudBlockBlob;
 blockBlob.StartCopy(copySource);
-```
+```  
 
 ---
 

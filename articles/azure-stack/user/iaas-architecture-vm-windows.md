@@ -4,16 +4,16 @@ description: 了解如何在 Azure Stack Hub 上运行 Windows 虚拟机。
 author: WenJason
 ms.topic: how-to
 origin.date: 3/9/2020
-ms.date: 03/23/2020
+ms.date: 07/20/2020
 ms.author: v-jay
 ms.reviewer: kivenkat
 ms.lastreviewed: 3/9/2020
-ms.openlocfilehash: 62fd19af8bce4ad9a03d96f10f9b2a81b074c7d7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 8dfe7e1b7dec8eccc17c609cdcd20a59538254b8
+ms.sourcegitcommit: e9ffd50aa5eaab402a94bfabfc70de6967fe6278
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79547060"
+ms.lasthandoff: 07/14/2020
+ms.locfileid: "86307427"
 ---
 # <a name="run-a-windows-virtual-machine-on-azure-stack-hub"></a>在 Azure Stack Hub 上运行 Windows 虚拟机
 
@@ -86,7 +86,7 @@ OS 磁盘是存储在 Azure Stack Hub blob 存储中的 VHD，因此即使主机
 
 将 VM 载入到 [Azure 安全中心](/security-center/quick-onboard-azure-stack)以获取 Azure 资源的安全状态的中心视图。 安全中心监视潜在的安全问题，并全面描述了部署的安全运行状况。 安全中心针对每个 Azure 订阅进行配置。 根据[将 Azure 订阅载入安全中心标准版](/security-center/security-center-get-started)中所述启用安全数据收集。 启用数据收集后，安全中心会自动扫描该订阅下创建的所有 VM。
 
-**修补程序管理**。 在 VM 上配置修补程序管理。 如果启用，安全中心会检查是否缺少任何安全更新和关键更新。 使用 VM 上的[组策略设置](https://docs.microsoft.com/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates)可启用自动系统更新。
+**修补程序管理**。 若要在 VM 上配置修补程序管理，请参阅[此文](/azure-stack/user/vm-update-management)。 如果启用，安全中心会检查是否缺少任何安全更新和关键更新。 使用 VM 上的[组策略设置](https://docs.microsoft.com/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates)可启用自动系统更新。
 
 **反恶意软件**。 如果启用，安全中心会检查是否已安装反恶意软件。 还可以使用安全中心从 Azure 门户中安装反恶意软件。
 

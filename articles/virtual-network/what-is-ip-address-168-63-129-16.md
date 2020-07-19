@@ -14,14 +14,16 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 05/15/2019
-ms.date: 02/24/2020
+ms.date: 07/13/2020
+ms.testscope: no
+ms.testdate: 07/13/2020Null
 ms.author: v-yeche
-ms.openlocfilehash: 8cf2f6bb56c6aabba8713891dad4f845290ea6c4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4a3a40d45bc157f1c798527922a6e19dc547cb7a
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77653473"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440981"
 ---
 # <a name="what-is-ip-address-1686312916"></a>IP 地址 168.63.129.16 是什么？
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 origin.date: 05/26/2020
 ms.date: 07/06/2020
 ms.custom: mvc
-ms.openlocfilehash: 4edc1b50f305acf25a72096c40d0e6b1e1492608
-ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
+ms.openlocfilehash: 0378f865ddfea907db6379f878f65a2e59e9eacc
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85845961"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440309"
 ---
 # <a name="quickstart-create-an-azure-database-for-mariadb-server-using-powershell"></a>快速入门：使用 PowerShell 创建 Azure Database for MariaDB 服务器
 
@@ -207,7 +207,7 @@ mydemoserver.mariadb.database.chinacloudapi.cn       myadmin
     | ----------------- | ----------------------------------------- | ---------------------------------------------------------- |
     | 连接名称   | 我的连接                             | 指定此连接的标签                        |
     | 连接方法 | 标准 (TCP/IP)                         | 使用 TCP/IP 协议连接到 Azure Database for MariaDB |
-    | 主机名          | `mydemoserver.mariadb.database.azure.com` | 你在前面记下的服务器名称。                           |
+    | 主机名          | `mydemoserver.mariadb.database.chinacloudapi.cn` | 你在前面记下的服务器名称。                           |
     | 端口              | 3306                                      | MariaDB 的默认端口                                 |
     | 用户名          | myadmin@mydemoserver                      | 你在前面记下的服务器管理员登录名                |
     | 密码          | *************                             | 使用前面配置的管理员帐户密码      |

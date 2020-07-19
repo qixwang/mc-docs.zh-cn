@@ -1,15 +1,15 @@
 ---
 title: 使用 Visual Studio Code 将 Azure Functions 连接到 Azure 存储
 description: 了解如何通过将输出绑定添加到 Visual Studio Code 项目将 Azure Functions 连接到 Azure 存储队列。
-ms.date: 06/03/2020
+ms.date: 07/14/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 522826a7c199763bc73bf2584c8281115f97ac0c
-ms.sourcegitcommit: f1a76ee3242698123a3d77f44c860db040b48f70
+ms.openlocfilehash: 579253178a7e45c70970988943edf34502578e38
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84563710"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440365"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-visual-studio-code"></a>使用 Visual Studio Code 将 Azure Functions 连接到 Azure 存储
 
@@ -75,7 +75,7 @@ ms.locfileid: "84563710"
 除了 HTTP 和计时器触发器，绑定将实现为扩展包。 在终端窗口中运行以下 [dotnet add package](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) 命令，将存储扩展包添加到项目中。
 
 ```bash
-dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
+dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage
 ```
 
 ::: zone-end

@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.author: mesameki
 author: mesameki
 ms.reviewer: Luis.Quintanilla
-ms.date: 04/02/2020
-ms.openlocfilehash: 2b25cd4b5f2673908544a8d5fc59adb5c86f2426
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.date: 06/30/2020
+ms.openlocfilehash: 86723efb648eaebb49287886f5d25be67c58fadd
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097511"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440887"
 ---
 # <a name="model-interpretability-in-azure-machine-learning"></a>Azure 机器学习中的模型可解释性
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -44,14 +44,12 @@ ms.locfileid: "85097511"
 
 * `azureml.contrib.interpret`，可以尝试的预览版和试验性功能。
 
-* `azureml.train.automl.automlexplainer` 包，用于解释自动化机器学习模型。
-
-将 `pip install azureml-interpret` 和 `pip install azureml-interpret-contrib` 用于常规用途，将 `pip install azureml-interpret-contrib` 用于自动化机器学习用途来获取可解释性包。
+将 `pip install azureml-interpret` 和 `pip install azureml-interpret-contrib` 用于常规用途，将 `pip install azureml-contrib-interpret` 用于自动化机器学习用途来获取可解释性包。
 
 
 > [!IMPORTANT]
 > `contrib` 命名空间中的内容不完全受支持。 试验性功能变成熟后，会逐渐转移到主命名空间。
-。
+上获取。
 
 
 

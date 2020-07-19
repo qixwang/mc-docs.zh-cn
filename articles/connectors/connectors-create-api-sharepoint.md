@@ -6,15 +6,17 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 origin.date: 08/25/2018
-ms.date: 03/09/2020
+ms.date: 07/20/2020
+ms.testscope: no
+ms.testdate: 03/09/2020
 ms.author: v-yeche
 tags: connectors
-ms.openlocfilehash: 9e74486492da1a948996b1a3c9570b4137103202
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 700ed5939f7134fc5c2a01406517f384b8372365
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78304673"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414715"
 ---
 # <a name="monitor-and-manage-sharepoint-resources-with-azure-logic-apps"></a>使用 Azure 逻辑应用监视和管理 SharePoint 资源
 
@@ -35,7 +37,7 @@ ms.locfileid: "78304673"
 可以使用触发器从 SharePoint 获取响应，并使输出可用于其他操作。 可以使用逻辑应用中的操作在 SharePoint 中执行任务。 还可以让其他操作使用 SharePoint 操作的输出。 例如，如果你定期从 SharePoint 提取文件，可以使用 Slack 连接器向团队发送消息。
 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个 Azure 试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。 
 
@@ -52,9 +54,9 @@ ms.locfileid: "78304673"
     若要使用 SharePoint 触发器启动，请[创建一个空白逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 
     若要使用 SharePoint 操作，请使用触发器启动逻辑应用，例如，如果你有 Salesforce 帐户，则可使用 Salesforce 触发器。
 
-    例如，可以使用“创建记录时”Salesforce 触发器来启动逻辑应用。  
+    例如，可以使用“创建记录时”Salesforce 触发器来启动逻辑应用。 
     每当在 Salesforce 中创建新记录（例如潜在顾客）时，此触发器都会激发。 
-    然后，可以使用 SharePoint 的“创建文件”操作来跟踪此触发器。  这样，在创建新记录时，逻辑应用就会在 SharePoint 中创建一个包含有关该新记录的信息的文件。
+    然后，可以使用 SharePoint 的“创建文件”操作来跟踪此触发器。 这样，在创建新记录时，逻辑应用就会在 SharePoint 中创建一个包含有关该新记录的信息的文件。
 
 ## <a name="connect-to-sharepoint"></a>连接到 SharePoint
 
@@ -67,16 +69,16 @@ ms.locfileid: "78304673"
 
     -或-
 
-    对于现有逻辑应用，请在要添加 SharePoint 操作的最后一个步骤下，选择“新建步骤”  。 
+    对于现有逻辑应用，请在要添加 SharePoint 操作的最后一个步骤下，选择“新建步骤”。 
     在搜索框中，输入“sharepoint”作为筛选器。 
     在操作列表下，选择所需的操作。
 
     若要在步骤之间添加操作，请将鼠标指针移到步骤之间的箭头上。 
-    选择出现的加号 ( **+** )，然后选择“添加操作”。 
+    选择出现的加号 ( **+** )，然后选择“添加操作”。
 
 1. 系统提示登录时，请提供所需的连接信息。 
-    如果使用 SharePoint 服务器，请务必选择“通过本地数据网关连接”。  
-    完成后，选择“创建”  。
+    如果使用 SharePoint 服务器，请务必选择“通过本地数据网关连接”。 
+    完成后，选择“创建”。
 
 1. 为所选触发器或操作提供所需的详细信息，然后继续生成逻辑应用的工作流。
 
@@ -86,7 +88,7 @@ ms.locfileid: "78304673"
 
 ## <a name="get-support"></a>获取支持
 
-* 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
+* 如有问题，请访问[有关 Azure 逻辑应用的 Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)。
 * 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>后续步骤

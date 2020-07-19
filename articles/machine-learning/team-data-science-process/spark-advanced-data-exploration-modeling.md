@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e3448ad420044a3ae0147cb9ea54e7eb899a55ba
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3a80afd3c3b58bc687e67cd76224fec78864bf41
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75599293"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86441183"
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>使用 Spark 进行高级数据探索和建模
 
@@ -31,7 +31,7 @@ ms.locfileid: "75599293"
 
 **超参数优化**是为学习算法选择一组超参数的问题，通常目标是优化算法在独立数据集上的性能度量值。 **超参数**是必须在模型训练过程之外指定的值。 关于这些值的假设可能影响模型的灵活性和准确性。 例如，决策树具有超参数，如所需的深度和树中的树叶数量。 支持向量机 (SVM) 需要设置错误分类惩罚项。 
 
-执行此处使用的超参数优化的常用方法是网格搜索或**参数扫描**。 这包括为学习算法在这些值（超参数空间的指定子集）中执行详尽搜索。 交叉验证可提供性能指标，用于为网格搜索算法生成的最佳结果排序。 与超参数扫描一起使用的 CV 有助于解决极限问题（如使模型过渡拟合训练数据），从而使模型保留适用于一般数据集（从中提取了训练数据）的能力。
+执行此处使用的超参数优化的常用方法是网格搜索或**参数扫描**。 此搜索是指在超参数空间子集中搜索学习算法。 交叉验证可提供性能指标，用于为网格搜索算法生成的最佳结果排序。 与超参数扫描一起使用的 CV 有助于解决极限问题（如使模型过渡拟合训练数据），从而使模型保留适用于一般数据集（从中提取了训练数据）的能力。
 
 我们使用的模型包括逻辑和线性回归、随机林和梯度提升树：
 
@@ -52,11 +52,11 @@ ms.locfileid: "75599293"
 
 ### <a name="spark-16-notebooks"></a>Spark 1.6 笔记本
 
-[pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb)：包含笔记本 #1 中的主题，以及使用超参数优化和交叉验证进行模型开发的说明。
+[pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure-Samples/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb)：包括笔记本 #1 中的主题，以及使用超参数优化和交叉验证的模型开发。
 
 ### <a name="spark-20-notebooks"></a>Spark 2.0 笔记本
 
-[Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb)：此文件提供有关如何在 Spark 2.0 群集中执行数据探索、建模和评分的信息。
+[Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure-Samples/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb)：此文件提供有关如何在 Spark 2.0 群集中执行数据探索、建模和评分的信息。
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -241,7 +241,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 
 ![按乘客数的行程频率](./media/spark-advanced-data-exploration-modeling/frequency-of-trips-by-passenger-count.png)
 
-可通过使用笔记本中的“类型”  菜单按钮从多个不同类型的可视化（表、饼图、线图、面积图或条形图）中选择。 此处显示了条形图。
+可通过使用笔记本中的“类型”菜单按钮从多个不同类型的可视化（表、饼图、线图、面积图或条形图）中选择。 此处显示了条形图。
 
 ### <a name="plot-a-histogram-of-tip-amounts-and-how-tip-amount-varies-by-passenger-count-and-fare-amounts"></a>绘制小费金额以及小费金额如何随乘客数和车费金额变化的直方图。
 使用 SQL 查询为数据采样。
@@ -386,7 +386,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 执行以上单元格所花的时间：3.14 秒
 
 ### <a name="create-labeled-point-objects-for-input-into-ml-functions"></a>创建标签点对象用于输入到 ML 函数中
-本节包含的代码演示如何将分类文本数据索引为标签点数据类型以及如何对其进行编码。 这会准备将其用于训练和测试 MLlib 逻辑回归和其他分类模型。 标签点对象是弹性分布式数据集 (RDD)，格式化为 MLlib 中的大多数 ML 算法所需的输入数据。 [标签点](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point)是本地向量，可能密集，也可能稀疏，与标签/响应相关联。
+本节包含的代码演示如何将分类文本数据索引为标签点数据类型以及如何对其进行编码。 此转换会准备将文本数据用于训练和测试 MLlib 逻辑回归和其他分类模型。 标签点对象是弹性分布式数据集 (RDD)，格式化为 MLlib 中的大多数 ML 算法所需的输入数据。 [标签点](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point)是本地向量，可能密集，也可能稀疏，与标签/响应相关联。
 
 下面是用于针对二元分类为文本特征编制索引和编码的代码。
 
@@ -434,8 +434,8 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
         return  labPt
 
 
-### <a name="create-a-random-sub-sampling-of-the-data-and-split-it-into-training-and-testing-sets"></a>创建数据的随机子采样，并将其拆分为训练集和测试集
-此代码创建数据的随机采样（此处使用 25%）。 尽管由于数据集的大小，本示例不需要此操作，但我们将演示如何在此处对数据采样。 然后，就会知道如何在需要时针对自己的问题使用它。 当样本很大时，这可以在训练模型时节省大量时间。 接下来我们将样本拆分为训练部分（此处为 75%）和测试部分（此处为 25%），用于分类和回归建模。
+### <a name="create-a-random-subsampling-of-the-data-and-split-it-into-training-and-testing-sets"></a>创建数据的随机子采样，并将其拆分为训练集和测试集
+此代码创建数据的随机采样（此处使用 25%）。 尽管由于数据集的大小，本示例不需要此操作，但我们将演示如何在此处对数据采样。 然后，就会知道如何在需要时针对自己的问题使用它。 当样本很大时，采样可以在训练模型时节省大量时间。 接下来我们将样本拆分为训练部分（此处为 75%）和测试部分（此处为 25%），用于分类和回归建模。
 
     # RECORD START TIME
     timestart = datetime.datetime.now()
@@ -565,10 +565,10 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 
 我们介绍如何通过两种方法使用参数扫描进行交叉验证 (CV)：
 
-1. 使用**泛型**自定义代码，此代码可应用到 MLlib 中的任何算法以及算法中的任何参数集。 
-2. 使用 **pySpark CrossValidator 管道函数**。 请注意，CrossValidator 对于 Spark 1.5.0 有几个限制： 
+1. 使用泛型自定义代码，此代码可应用到 MLlib 中的任何算法以及算法中的任何参数集。 
+2. 使用 **pySpark CrossValidator 管道函数**。 CrossValidator 对于 Spark 1.5.0 有几个限制： 
    
-   * 无法保存/保留管道模型以供将来使用。
+   * 无法保存或保留管道模型以供将来使用。
    * 无法用于模型中的每个参数。
    * 无法用于每个 MLlib 算法。
 
@@ -998,9 +998,9 @@ ROC = 0.985336538462 下的面积
 2. 测试数据集上的使用指标的**模型评估**
 3. 在 blob 中**保存模型**以供将来使用   
 
-> AZURE 备注：交叉验证在本部分中不与三个回归模型一起使用，因为已针对逻辑回归模型详细显示此操作。 本主题的附录中提供了显示如何将 CV 和弹性网络一起用于线性回归的示例。
+> Azure 备注：交叉验证在本部分中不与三个回归模型一起使用，因为已针对逻辑回归模型详细显示此操作。 本主题的附录中提供了显示如何将 CV 和弹性网络一起用于线性回归的示例。
 > 
-> AZURE 备注：在我们的经验中，LinearRegressionWithSGD 模型的收敛可能出现问题，需要仔细更改/优化参数以获取有效的模型。 变量的缩放对收敛帮助很大。 还可使用本主题的附录中显示的弹性网络回归代替 LinearRegressionWithSGD。
+> Azure 备注：根据我们的经验，LinearRegressionWithSGD 模型的收敛可能出现问题，需要仔细更改/优化参数以获取有效的模型。 变量的缩放对收敛帮助很大。 还可使用本主题的附录中显示的弹性网络回归代替 LinearRegressionWithSGD。
 > 
 > 
 
@@ -1408,7 +1408,7 @@ R-sqr = 0.740751197012
 
 **OUTPUT**
 
-PythonRDD[122] at RDD at PythonRDD.scala: 43
+PythonRDD[122] at RDD at PythonRDD.scala:43
 
 **打印输出要在使用笔记本中使用的模型文件的路径。 **若要使用独立数据集和为其评分，则需要在“使用笔记本”中复制并粘贴这些文件名。
 
@@ -1435,8 +1435,8 @@ BoostedTreeClassificationFileLoc = modelDir + "GradientBoostingTreeClassificatio
 
 BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-05-0316_52_18.827237"
 
-## <a name="whats-next"></a>下一步是什么？
+## <a name="whats-next"></a>后续步骤
 现在已使用 Spark MlLib 创建了回归和分类模型，可了解如何评分和评估这些模型。
 
-**模型使用：** 若要了解如何评分和评估在本主题中创建的分类和回归模型，请参阅[评分和评估 Spark 构建的机器学习模型](spark-model-consumption.md)。
+**使用模型：** 若要了解如何评分和评估在本主题中创建的分类和回归模型，请参阅[评分和评估 Spark 构建的机器学习模型](spark-model-consumption.md)。
 

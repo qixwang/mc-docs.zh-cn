@@ -9,20 +9,21 @@ ms.topic: article
 origin.date: 03/15/2018
 ms.date: 05/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 74851fb61aa67cdbe5a9b2d0f787bd7fa4ad3007
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: 3bb4b908ad1337ead2a345684d68d9bd1c553451
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83002086"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414581"
 ---
+<!--CAN NOT RELEASE ON AZURE CHINA CLOUD-->
 <!--NOT SUITABLE FOR AZURE CHINA, THERE IS NOT AVAILABLE POSTS ACTION TO REPLACE TWITTER, SUCH AS WEIBO, OR QQ-->
 <!--Change Twitter to Office 365-->
 # <a name="create-a-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>使用 Azure 逻辑应用和 Azure Functions 创建流式处理客户见解仪表板
 
 Azure 提供[无服务器](https://azure.microsoft.com/solutions/serverless/)工具，可帮助在云中快速构建和托管应用程序，而无需考虑基础结构问题。 在本教程中，我们将创建一个仪表板，以便针对客户反馈触发相关操作、通过机器学习分析反馈，以及通过 Power BI 或 Azure Data Lake 之类的源发布见解。
 
-对于此解决方案，我们将使用无服务器应用的以下关键 Azure 组件：[Azure Functions](https://www.azure.cn/home/features/functions/) 和 [Azure 逻辑应用](https://www.azure.cn/home/features/logic-apps/)。
+对于此解决方案，我们将使用无服务器应用的以下关键 Azure 组件：[Azure Functions](https://www.azure.cn/home/features/azure-functions/) 和 [Azure 逻辑应用](https://www.azure.cn/home/features/logic-apps/)。
 Azure 逻辑应用在云中提供无服务器工作流引擎，以便能够跨无服务器组件提供业务流程，以及连接到 200 多个服务和 API。 Azure Functions 在云中提供无服务器计算。 此解决方案使用 Azure Functions 根据预定义的关键字来标记客户推文。
 
 在此场景中，我们将会创建一个逻辑应用，在查找客户的反馈时，将会触发此应用。 部分有助于对客户反馈做出响应的连接器包括：Outlook.com、Office 365、Survey Monkey，以及[来自 Web 窗体的 HTTP 请求](https://blogs.msdn.microsoft.com/logicapps/2017/01/30/calling-a-logic-app-from-an-html-form/)。 创建的工作流会监视 Outlook.com 上的井号标签。

@@ -4,18 +4,18 @@ titleSuffix: Azure Storage
 description: 将自定义域映射到 Azure 存储帐户中的 Blob 存储或 Web 终结点。
 author: WenJason
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 01/23/2020
-ms.date: 03/30/2020
+ms.date: 07/20/2020
 ms.author: v-jay
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: e58995f4d176c2246cc0874f29bf0f2589af6353
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a527494bca6281d4b3675af8f892de0a420f98e8
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80290440"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414703"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>将自定义域映射到 Azure Blob 存储终结点
 
@@ -26,13 +26,13 @@ ms.locfileid: "80290440"
 > [!NOTE] 
 > 这种映射仅适用于子域（例如：`www.contoso.com`）。 
 
-<a id="enable-http" />
+<a id="enable-http"></a>
 
 ## <a name="map-a-custom-domain-with-only-http-enabled"></a>在启用仅限 HTTP 的情况下映射自定义域
 
 此方法更简单，但要启用仅限 HTTP 的访问。
 
-<a id="map-a-domain" />
+<a id="map-a-domain"></a>
 
 ### <a name="map-a-custom-domain"></a>映射自定义域
 
@@ -49,7 +49,7 @@ ms.locfileid: "80290440"
 
 :heavy_check_mark:步骤 4：测试自定义域。
 
-<a id="endpoint" />
+<a id="endpoint"></a>
 
 #### <a name="step-1-get-the-host-name-of-your-storage-endpoint"></a>步骤 1：获取存储终结点的主机名 
 
@@ -70,7 +70,7 @@ ms.locfileid: "80290440"
   
    请设置此值供稍后使用。
 
-<a id="create-cname-record" />
+<a id="create-cname-record"></a>
 
 #### <a name="step-2-create-a-canonical-name-cname-record-with-your-domain-provider"></a>步骤 2：在域提供商的配合下创建规范名称 (CNAME) 记录
 
@@ -90,7 +90,7 @@ ms.locfileid: "80290440"
       
    - 在本文前面的[获取存储终结点的主机名](#endpoint)部分获取的主机名。 
 
-<a id="register" />
+<a id="register"></a>
 
 #### <a name="step-3-register-your-custom-domain-with-azure"></a>步骤 3：将自定义域注册到 Azure
 
@@ -116,7 +116,7 @@ ms.locfileid: "80290440"
 
 例如，若要访问 *photos.contoso.com* 自定义子域中的 *myforms* 容器内的 Web 窗体：可使用以下 URI：`http://photos.contoso.com/myforms/applicationform.htm`
 
-<a id="zero-down-time" />
+<a id="zero-down-time"></a>
 
 ### <a name="map-a-custom-domain-with-zero-downtime"></a>在不停机的情况下映射自定义域
 
@@ -135,7 +135,7 @@ ms.locfileid: "80290440"
 
 :heavy_check_mark:步骤 5：测试自定义域。
 
-<a id="endpoint-2" />
+<a id="endpoint-2"></a>
 
 #### <a name="step-1-get-the-host-name-of-your-storage-endpoint"></a>步骤 1：获取存储终结点的主机名 
 

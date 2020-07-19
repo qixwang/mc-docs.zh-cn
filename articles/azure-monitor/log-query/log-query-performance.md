@@ -9,12 +9,12 @@ ms.topic: conceptual
 origin.date: 01/17/2019
 ms.date: 02/17/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 8a37af66d29ffe6167cfd5b687180e3500e96345
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d352bc95de6090f77c8ec1fb5a41baa2409c181b
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73730453"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440446"
 ---
 # <a name="writing-efficient-log-queries-in-azure-monitor"></a>在 Azure Monitor 中编写有效的日志查询
 本文提供有关在 Azure Monitor 中编写有效日志查询的建议。 使用这些策略可确保以最低的开销快速运行查询。
@@ -44,7 +44,7 @@ union requests, traces | ...
 ```
 
 ### <a name="specify-a-time-range"></a>指定时间范围
-还应将查询限制为所需数据的时间范围。 默认情况下，查询包括过去 24 小时内收集的数据。 可以在[时间范围选择器](get-started-portal.md#select-a-time-range)中更改该选项，或将其显式添加到查询。 最好是紧接在表名后面添加时间筛选器，使剩余的查询部分只处理该范围内的数据：
+还应将查询限制为所需数据的时间范围。 默认情况下，查询包括过去 24 小时内收集的数据。 可以在[时间范围选择器](get-started-portal.md)中更改该选项，或将其显式添加到查询。 最好是紧接在表名后面添加时间筛选器，使剩余的查询部分只处理该范围内的数据：
 
 ``` Kusto
 requests | where timestamp > ago(1h)

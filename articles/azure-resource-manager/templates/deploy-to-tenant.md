@@ -2,15 +2,17 @@
 title: 将资源部署到租户
 description: 介绍如何在 Azure 资源管理器模板中的租户范围内部署资源。
 ms.topic: conceptual
-origin.date: 03/16/2020
-ms.date: 06/22/2020
+origin.date: 05/08/2020
+ms.date: 07/13/2020
+ms.testscope: yes
+ms.testdate: 07/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 2d84f0c275e24108de6caa0d269cd162356dfc1b
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: 270165dc7c27921b4461103988de2cfc20e3abc8
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098281"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86441106"
 ---
 <!--Verified successfully-->
 # <a name="create-resources-at-the-tenant-level"></a>在租户级别创建资源
@@ -191,5 +193,4 @@ New-AzTenantDeployment `
 * 若要了解如何分配角色，请参阅[使用 RBAC 和 Azure 资源管理器模板管理对 Azure 资源的访问权限](../../role-based-access-control/role-assignments-template.md)。
 * 还可在[订阅级别](deploy-to-subscription.md)或[管理组级别](deploy-to-management-group.md)部署模板。
 
-<!-- Update_Description: new article about deploy to tenant -->
-<!--NEW.date: 06/16/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

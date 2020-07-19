@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 02/22/2019
-ms.openlocfilehash: 1745d6a74805cdda3be5ddf092f6b929ff1c2055
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: 9e0f841c68ddb554b7abd349d4f13880b4af65b8
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097551"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440999"
 ---
 # <a name="what-is-the-azure-data-science-virtual-machine-for-linux-and-windows"></a>什么是适用于 Linux 和 Windows 的 Azure Data Science Virtual Machine？
 
@@ -53,7 +53,7 @@ DSVM 创建可缓解支持和不兼容性挑战的一致设置的按需环境。
 ### <a name="custom-compute-power-for-azure-notebooks"></a>自定义 Azure Notebooks 的计算能力
 [Azure Notebooks](../../notebooks/azure-notebooks-overview.md) 是一项免费的托管服务，用于在云中开发、运行和共享 Jupyter 笔记本而无需进行安装。 免费服务层限制为 4 GB 内存和 1 GB 数据。 
 
-若要放开所有限制，可以将 Notebooks 项目附加到 DSVM 或任何其他运行 Jupyter 服务器的 VM。 如果你经由使用 Azure Active Directory 的帐户（例如公司帐户）登录到 Azure Notebooks，则 Notebooks 会自动在与该帐户关联的任意订阅中显示 DSVM。 可以[将 DSVM 附加到 Azure Notebooks](../../notebooks/configure-manage-azure-notebooks-projects.md#compute-tier) 以扩展可用计算能力。
+若要放开所有限制，可以将 Notebooks 项目附加到 DSVM 或任何其他运行 Jupyter 服务器的 VM。 如果你经由使用 Azure Active Directory 的帐户（例如公司帐户）登录到 Azure Notebooks，则 Notebooks 会自动在与该帐户关联的任意订阅中显示 DSVM。 
 
 ### <a name="short-term-experimentation-and-evaluation"></a>短期实验和评估
 可以使用 DSVM，专门参考我们发布的一些[示例和演练](./dsvm-samples-and-walkthroughs.md)来评估或学习新的数据科学[工具](./tools-included.md)。
@@ -78,7 +78,7 @@ Windows 版本的 DSVM 预安装了 GPU 驱动程序、框架和 GPU 版本的�
 
 通过以下文章，了解详细信息：
 
-+ Windows:
++ Windows：
   + [设置 Windows DSVM](provision-vm.md)
   + [可以在 Windows DSVM 上执行的十项操作](vm-do-ten-things.md)
 

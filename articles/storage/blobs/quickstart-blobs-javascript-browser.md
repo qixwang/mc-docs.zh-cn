@@ -4,16 +4,16 @@ description: 本快速入门介绍了如何在浏览器中使用适用于 JavaSc
 author: WenJason
 ms.author: v-jay
 origin.date: 04/18/2020
-ms.date: 06/01/2020
+ms.date: 07/20/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 6f113b68a6c7411b3ac6902fab3f381af21f5b3a
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: ba3a163e8da5b21334ff51a1844efb314fd56095
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199951"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414709"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -33,9 +33,9 @@ Azure Blob 存储已经过优化，可以存储大量的非结构化数据。 Bl
 * [Node.js](https://nodejs.org)
 * [Microsoft Visual Studio Code](https://code.visualstudio.com)
 * 一个用于进行浏览器调试的 Visual Studio Code 扩展，例如：
-    * [适用于 Microsoft Edge 的调试器](vscode:extension/msjsdiag.debugger-for-edge)
-    * [适用于 Chrome 的调试器](vscode:extension/msjsdiag.debugger-for-chrome)
-    * [适用于 Firefox 的调试器](vscode:extension/firefox-devtools.vscode-firefox-debug)
+    * [适用于 Microsoft Edge 的调试器](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-edge)
+    * [适用于 Chrome 的调试器](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome)
+    * [适用于 Firefox 的调试器](https://marketplace.visualstudio.com/items?itemName=firefox-devtools.vscode-firefox-debug)
 
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
@@ -72,7 +72,7 @@ Blob 存储提供了三种类型的资源：
 
 下表描述了每项 CORS 设置，并对用于定义规则的值进行了说明。
 
-|设置  |Value  | 说明 |
+|设置  |值  | 说明 |
 |---------|---------|---------|
 | **允许的源** | **\*** | 接受一个逗号分隔的列表，其中的域设置为可以接受的域。 将值设置为 `*` 意味着所有域都可以访问存储帐户。 |
 | **允许的方法** | “DELETE”、“GET”、“HEAD”、“MERGE”、“POST”、“OPTIONS”和“PUT”       | 列出允许对存储帐户执行操作的 HTTP 谓词。 对于本快速入门，请选择所有可用的选项。 |
@@ -87,7 +87,7 @@ Blob 存储提供了三种类型的资源：
 
 ### <a name="create-a-shared-access-signature"></a>创建共享访问签名
 
-在浏览器中运行的代码使用共享访问签名 (SAS) 来向 Azure Blob 存储请求授权。 使用 SAS 时，客户端可以在没有帐户访问密钥或连接字符串的情况下授权对存储资源的访问。 有关 SAS 的详细信息，请参阅[使用共享访问签名 (SAS)](../common/storage-sas-overview.md)。
+在浏览器中运行的代码使用共享访问签名 (SAS) 来向 Azure Blob 存储请求授权。 使用 SAS 时，客户端可以在没有帐户访问密钥或连接字符串的情况下授权访问存储资源。 有关 SAS 的详细信息，请参阅[使用共享访问签名 (SAS)](../common/storage-sas-overview.md)。
 
 按照以下步骤获取 Blob 服务 SAS URL：
 
@@ -461,7 +461,7 @@ Parcel 会捆绑你的代码，并在 `http://localhost:1234/index.html` 上为�
 #### <a name="step-4---delete-the-container"></a>步骤 4 - 删除容器
 
 1. 在 Web 应用中，选择“删除容器”。 状态将指示容器已删除。
-2. 在 Azure 门户中，选择门户窗格左上角的“\<account-name\> | 容器”链接。
+2. 在 Azure 门户中，选择门户窗格左上角的 \<account-name\> |“容器”链接。
 3. 选择“刷新”。 新容器随即消失。
 4. 关闭 Web 应用。
 
@@ -478,7 +478,7 @@ Parcel 会捆绑你的代码，并在 `http://localhost:1234/index.html` 上为�
 有关教程、示例、快速入门和其他文档，请访问：
 
 > [!div class="nextstepaction"]
-> [Azure for JavaScript 文档](https://docs.microsoft.com/azure/javascript/)
+> [Azure for JavaScript 文档](https://docs.microsoft.com/azure/developer/javascript/)
 
 * 若要了解详细信息，请参阅[适用于 JavaScript 的 Azure Blob 存储客户端库](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob)。
-* 若要查看 Blob 存储示例应用，请继续阅读 [Azure Blob 存储客户端库 v12 JavaScript 示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples)。
+* 若要查看 Blob 存储示例应用，请继续学习 [Azure Blob 存储客户端库 v12 JavaScript 示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples)。

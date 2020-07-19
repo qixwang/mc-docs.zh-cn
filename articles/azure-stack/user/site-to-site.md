@@ -4,16 +4,16 @@ description: 配置本地网络与 Azure Stack Hub 虚拟网络之间的站点�
 author: WenJason
 ms.author: v-jay
 origin.date: 05/12/2020
-ms.date: 06/22/2020
+ms.date: 07/20/2020
 ms.topic: article
 ms.reviewer: sranthar
 ms.lastreviewed: 05/12/2020
-ms.openlocfilehash: f8c351040c1f4972345d9430612d36a991296ad2
-ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
+ms.openlocfilehash: d40c6b6b0a9e818b391ecd7481a33ee7968f883f
+ms.sourcegitcommit: e9ffd50aa5eaab402a94bfabfc70de6967fe6278
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85096928"
+ms.lasthandoff: 07/14/2020
+ms.locfileid: "86307441"
 ---
 # <a name="troubleshoot-site-to-site-vpn-connections"></a>排查站点到站点 VPN 连接问题
 
@@ -78,4 +78,4 @@ IPsec/IKEV2 的 Azure Stack Hub 默认参数已更改[（从内部版本 1910 �
 
 ## <a name="create-a-support-ticket"></a>创建支持票证
 
-如果前面的步骤都无法解决你的问题，请创建[支持票证](../operator/azure-stack-manage-basics.md#where-to-get-support)并使用[按需日志收集工具](../operator/azure-stack-configure-on-demand-diagnostic-log-collection.md)来提供日志。
+如果前面的步骤都无法解决你的问题，请创建[支持票证](../operator/azure-stack-manage-basics.md#where-to-get-support)并使用[按需日志收集工具](../operator/azure-stack-diagnostic-log-collection-overview.md)来提供日志。

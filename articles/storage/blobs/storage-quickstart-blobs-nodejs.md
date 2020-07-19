@@ -1,19 +1,19 @@
 ---
 title: 快速入门：Azure Blob 存储库 v12 - JavaScript
-description: 本快速入门介绍如何使用适用于 JavaScript 的 Azure Blob 存储客户端库版本 12 在 Blob（对象）存储中创建容器和 blob。 接下来，介绍如何将 blob 下载到本地计算机，以及如何列出容器中的所有 blob。
+description: 本快速入门介绍如何使用适用于 JavaScript 的 Azure Blob 存储客户端库版本 12 在 Blob（对象）存储中创建容器和 blob。 接下来，将介绍如何将 blob 下载到本地计算机，以及如何在容器中列出所有 blob。
 author: WenJason
 ms.author: v-jay
 origin.date: 01/24/2020
-ms.date: 03/30/2020
+ms.date: 07/20/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 0475a577f8c13286e034f90e26162bbb91d8aa6c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 7ba5143407e6923bc1fb5d1aab67d40b9d490b26
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80290390"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414652"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v12-sdk-in-nodejs"></a>快速入门：在 Node.js 中使用 JavaScript v12 SDK 管理 blob
 
@@ -72,9 +72,9 @@ ms.locfileid: "80290390"
         }
     }
     ```
-    
+
     如果需要，可以在 `author` 字段中输入自己的名字。
-   
+
 ### <a name="install-the-package"></a>安装包
 
 当仍在 blob-quickstart-v12 目录中时，使用 `npm install` 命令安装适用于 JavaScript 包的 Azure Blob 存储客户端库  。 此命令读取 package.json 文件，并安装适用于 JavaScript 包的 Azure Blob 存储客户端库 v12 及其依赖的所有库  。
@@ -96,12 +96,12 @@ npm install
     ```javascript
     const { BlobServiceClient } = require('@azure/storage-blob');
     const uuidv1 = require('uuid/v1');
-    
+
     async function main() {
         console.log('Azure Blob storage v12 - JavaScript quickstart sample');
         // Quick start code goes here
     }
-    
+
     main().then(() => console.log('Done')).catch((ex) => console.log(ex.message));
     ```
 
@@ -167,7 +167,7 @@ const AZURE_STORAGE_CONNECTION_STRING = process.env.AZURE_STORAGE_CONNECTION_STR
 
 ```javascript
 // Create the BlobServiceClient object which will be used to create a container client
-const blobServiceClient = await BlobServiceClient.fromConnectionString(AZURE_STORAGE_CONNECTION_STRING);
+const blobServiceClient = BlobServiceClient.fromConnectionString(AZURE_STORAGE_CONNECTION_STRING);
 
 // Create a unique name for the container
 const containerName = 'quickstart' + uuidv1();
@@ -176,7 +176,7 @@ console.log('\nCreating container...');
 console.log('\t', containerName);
 
 // Get a reference to a container
-const containerClient = await blobServiceClient.getContainerClient(containerName);
+const containerClient = blobServiceClient.getContainerClient(containerName);
 
 // Create the container
 const createContainerResponse = await containerClient.create();
@@ -225,7 +225,7 @@ for await (const blob of containerClient.listBlobsFlat()) {
 
 ### <a name="download-blobs"></a>下载 Blob
 
-通过调用 [download](https://docs.microsoft.com/javascript/api/@azure/storage-blob/blockblobclient#download-undefined---number--undefined---number--blobdownloadoptions-) 方法，下载以前创建的 blob。 示例代码包括名为 `streamToString` 的帮助器函数，用于将 Node.js 可读流读入字符串。
+通过调用 [download](https://docs.microsoft.com/javascript/api/@azure/storage-blob/blockblobclient#download-undefined---number--undefined---number--blobdownloadoptions-) 方法，下载以前创建的 blob。 示例代码包括名为 `streamToString` 的帮助程序函数，用于将 Node.js 可读流读入字符串。
 
 将此代码添加到 `main` 函数的末尾：
 
@@ -301,7 +301,7 @@ Deleting container...
 Done
 ```
 
-在调试器中单步执行代码，并在整个过程中检查 [Azure 门户](https://portal.azure.cn)。 检查是否正在创建容器。 可以在容器中打开 blob 并查看内容。
+逐步执行调试器中的代码，并在整个过程中检查 [Azure 门户](https://portal.azure.cn)。 检查是否正在创建容器。 可以在容器中打开 blob 并查看内容。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -310,7 +310,7 @@ Done
 有关教程、示例、快速入门和其他文档，请访问：
 
 > [!div class="nextstepaction"]
-> [Azure for JavaScript 文档](https://docs.microsoft.com/azure/javascript/)
+> [Azure for JavaScript 文档](https://docs.microsoft.com/azure/developer/javascript/)
 
 * 若要了解详细信息，请参阅[适用于 JavaScript 的 Azure Blob 存储客户端库](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob)。
-* 若要查看 Blob 存储示例应用，请继续阅读 [Azure Blob 存储客户端库 v12 JavaScript 示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples)。
+* 若要查看 Blob 存储示例应用，请继续学习 [Azure Blob 存储客户端库 v12 JavaScript 示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples)。

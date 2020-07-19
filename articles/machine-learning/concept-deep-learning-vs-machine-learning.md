@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 11/04/2019
-ms.openlocfilehash: 7373e92f29aa54772abdee52d012e9737e698161
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: bbb9fa3f1bea3e94faab45cc1ac4e320a8d364d6
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75599088"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440913"
 ---
 # <a name="deep-learning-vs-machine-learning"></a>深度学习与机器学习
 
@@ -110,14 +110,14 @@ ms.locfileid: "75599088"
 
 ## <a name="next-steps"></a>后续步骤
 
-以下文章介绍了如何使用 [Azure 机器学习](/machine-learning/service/?WT.mc_id=docs-article-lazzeri)中的深度学习技术：
+以下文章介绍了如何使用 [Azure 机器学习](/machine-learning/?WT.mc_id=docs-article-lazzeri)中的深度学习技术：
 
-- [使用 TensorFlow 模型将手写数字分类](/machine-learning/service/how-to-train-tensorflow?WT.mc_id=docs-article-lazzeri)
+- [使用 TensorFlow 模型将手写数字分类](/machine-learning/how-to-train-tensorflow?WT.mc_id=docs-article-lazzeri)
 
-- [使用 TensorFlow 估算器和 Keras 将手写数字分类](/machine-learning/service/how-to-train-keras?WT.mc_id=docs-article-lazzeri)
+- [使用 TensorFlow 估算器和 Keras 将手写数字分类](/machine-learning/how-to-train-keras?WT.mc_id=docs-article-lazzeri)
 
-- [使用 Pytorch 模型将图像分类](/machine-learning/service/how-to-train-pytorch?WT.mc_id=docs-article-lazzeri)
+- [使用 Pytorch 模型将图像分类](/machine-learning/how-to-train-pytorch?WT.mc_id=docs-article-lazzeri)
 
-- [使用 Chainer 模型将手写数字分类](/machine-learning/service/how-to-train-chainer?WT.mc_id=docs-article-lazzeri)
+- [使用 Chainer 模型将手写数字分类](/machine-learning/how-to-train-ml-models)
 
 此外，请使用[机器学习算法速查表](algorithm-cheat-sheet.md)为模型选择算法。

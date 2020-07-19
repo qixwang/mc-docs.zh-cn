@@ -10,14 +10,14 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 05/05/2020
-ms.date: 06/08/2020
+ms.date: 07/20/2020
 ms.author: v-jay
-ms.openlocfilehash: 6ee067ffa7700402f6420083229c9d68863f1086
-ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
+ms.openlocfilehash: c7f7c9500abb3a081df98c408a035a10530ab619
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84275654"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440485"
 ---
 # <a name="azure-load-balancer-concepts"></a>Azure 负载均衡器的概念
 
@@ -58,7 +58,7 @@ ms.locfileid: "84275654"
 ## <a name="load-balancer-terminology"></a>负载均衡器术语
 | 概念 | 它意味着什么？ | 详细文档 |
 | ---------- | ---------- | ----------|
-| 出站连接 | 从后端池到公共 IP 的流将映射到前端。 Azure 通过负载均衡出站规则将出站连接转换为公共前端 IP 地址。 此配置具有以下优点。 可以轻松地对服务进行升级和灾难恢复操作，因为前端可以动态映射到服务的其他实例。 简化了访问控制列表 (ACL) 管理。 以前端 IP 表示的 ACL 不会随着服务的缩放或重新部署而更改。 将出站连接转换为较小数量的 IP 地址而不是计算机，可以减少实施安全收件人列表的负担。| 若要详细了解源网络地址转换 (SNAT) 和 Azure 负载均衡器，请参阅 [SNAT 和 Azure 负载均衡器](load-balancer-outbound-connections.md#snat)。
+| 出站连接 | 从后端池到公共 IP 的流将映射到前端。 Azure 通过负载均衡出站规则将出站连接转换为公共前端 IP 地址。 此配置具有以下优点。 可以轻松地对服务进行升级和灾难恢复操作，因为前端可以动态映射到服务的其他实例。 简化了访问控制列表 (ACL) 管理。 以前端 IP 表示的 ACL 不会随着服务的缩放或重新部署而更改。 将出站连接转换为较小数量的 IP 地址而不是计算机，可以减少实施安全收件人列表的负担。| 若要详细了解源网络地址转换 (SNAT) 和 Azure 负载均衡器，请参阅 [SNAT 和 Azure 负载均衡器](load-balancer-outbound-connections.md)。
 | HA 端口 | 你可以配置 HA 端口负载均衡规则，让应用程序可缩放，并且变得高度可靠。 这些规则在内部负载均衡器前端 IP 的短生存期端口上为每个流提供负载均衡。 无法或不需要指定各个端口时，该功能很有用。 HA 端口规则允许创建主动-被动或主动-主动 n+1 方案。 这些方案适用于网络虚拟设备以及任何需要大范围入站端口的应用程序。 可以使用运行状况探测来确定哪些后端应当接收新流。  可使用网络安全组模拟端口范围方案。 基本负载均衡器不支持 HA 端口。 | 请查看[有关 HA 端口的详细讨论](load-balancer-ha-ports-overview.md)
 | 多个前端 | 负载均衡器支持具有多个前端的多个规则。  标准负载均衡器将此功能扩展到了出站方案。 出站规则与入站规则相反。 出站规则创建出站连接的关联。 标准负载均衡器通过负载均衡规则使用与虚拟机资源关联的所有前端。 此外，负载均衡规则中的参数允许为了出站连接取消负载均衡规则，并允许选择特定前端（包括无前端）。 与之相对的是，基本负载均衡器随机选择单个前端。 无法控制选择哪一个前端。|
 

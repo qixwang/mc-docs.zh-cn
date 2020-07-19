@@ -1,21 +1,22 @@
 ---
-title: 使用 .NET 创建帐户 SAS - Azure 存储
+title: 使用 .NET 创建帐户 SAS
+titleSuffix: Azure Storage
 description: 了解如何使用 .NET 客户端库创建帐户共享访问签名 (SAS)。
 services: storage
 author: WenJason
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 origin.date: 08/06/2019
-ms.date: 09/09/2019
+ms.date: 07/20/2020
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: f4c6dc9aa4b5411a12173e779efefef06a091eef
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5bc8753bf49cfc029ce036b38f0b51a4b2b81a87
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "70209392"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414701"
 ---
 # <a name="create-an-account-sas-with-net"></a>使用 .NET 创建帐户 SAS
 
@@ -27,7 +28,7 @@ ms.locfileid: "70209392"
 
 若要为容器创建帐户 SAS，请调用 [CloudStorageAccount.GetSharedAccessSignature](/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount.getsharedaccesssignature) 方法。
 
-以下代码示例将创建一个帐户 SAS，该 SAS 对 Blob 和文件服务是有效的，并授予客户端读取、写入和列表权限，使其能够访问服务级别 API。 帐户 SAS 将协议限制为 HTTPS，因此请求必须使用 HTTPS 发出。 请务必将尖括号中的占位符值替换为你自己的值：
+以下代码示例创建一个帐户 SAS，该 SAS 对 Blob 和文件服务是有效的，并授予客户端读取、写入和列表权限，使其能够访问服务级别 API。 帐户 SAS 将协议限制为 HTTPS，因此请求必须使用 HTTPS 发出。 请务必将尖括号中的占位符值替换为你自己的值：
 
 ```csharp
 static string GetAccountSASToken()

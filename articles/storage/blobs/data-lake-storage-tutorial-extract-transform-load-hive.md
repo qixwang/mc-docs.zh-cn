@@ -6,15 +6,15 @@ ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: tutorial
 origin.date: 11/19/2019
-ms.date: 01/06/2020
+ms.date: 07/20/2020
 ms.author: v-jay
 ms.reviewer: jamesbak
-ms.openlocfilehash: a3f4970553527e43f4c0795599fc8af0fb47795f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: bb36e3b0337b8a107e239c3f8bdc1e051f422007
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75623696"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414694"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>教程：使用 Azure HDInsight 提取、转换和加载数据
 
@@ -59,7 +59,7 @@ ms.locfileid: "75623696"
    
    清除所有其他字段。
 
-3. 选择“下载”  。 你将得到一个具有所选数据字段的 zip 文件。
+3. 选择“下载”。 你将得到一个具有所选数据字段的 zip 文件。
 
 ## <a name="extract-and-upload-the-data"></a>提取并上传数据
 
@@ -121,9 +121,9 @@ ms.locfileid: "75623696"
 
 本部分使用 Beeline 运行 Apache Hive 作业。
 
-在 Apache Hive 作业运行期间，请将 .csv 文件中的数据导入到名为“delays”的 Apache Hive 表中  。
+在 Apache Hive 作业运行期间，请将 .csv 文件中的数据导入到名为“delays”的 Apache Hive 表中。
 
-1. 在 HDInsight 群集已有的 SSH 提示符中，使用以下命令创建并编辑名为 flightdelays.hql 的新文件  ：
+1. 在 HDInsight 群集已有的 SSH 提示符中，使用以下命令创建并编辑名为 flightdelays.hql 的新文件：
 
    ```bash
    nano flightdelays.hql
@@ -201,7 +201,7 @@ ms.locfileid: "75623696"
    beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -f flightdelays.hql
    ```
 
-5. flightdelays.hql 脚本完成运行后，使用以下命令打开交互式 Beeline 会话  ：
+5. flightdelays.hql 脚本完成运行后，使用以下命令打开交互式 Beeline 会话：
 
    ```bash
    beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http'
@@ -229,11 +229,11 @@ ms.locfileid: "75623696"
 
 1. 转到 [Azure 门户](https://portal.azure.cn)。
 
-2. 选择“SQL 数据库”  。
+2. 选择“SQL 数据库”。
 
-3. 针对选择使用的数据库的名称进行筛选。 服务器名称在“服务器名称”列中列出  。
+3. 针对选择使用的数据库的名称进行筛选。 服务器名称在“服务器名称”列中列出。
 
-4. 针对要使用的数据库的名称进行筛选。 服务器名称在“服务器名称”列中列出  。
+4. 针对要使用的数据库的名称进行筛选。 服务器名称在“服务器名称”列中列出。
 
     ![获取 Azure SQL 服务器详细信息](./media/data-lake-storage-tutorial-extract-transform-load-hive/get-azure-sql-server-details.png "获取 Azure SQL 服务器详细信息")
 
@@ -245,7 +245,7 @@ ms.locfileid: "75623696"
    sudo apt-get --assume-yes install freetds-dev freetds-bin
    ```
 
-6. 安装完成后，使用以下命令连接到 SQL 数据库服务器。
+6. 安装完成后，使用以下命令连接到 SQL 数据库。
 
    ```bash
    TDSVER=8.0 tsql -H '<server-name>.database.chinacloudapi.cn' -U '<admin-login>' -p 1433 -D '<database-name>'

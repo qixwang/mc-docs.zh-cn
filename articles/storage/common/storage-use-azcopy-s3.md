@@ -4,17 +4,17 @@ description: 使用 AzCopy 和 Amazon S3 桶传输数据
 services: storage
 author: WenJason
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 01/13/2020
-ms.date: 02/10/2020
+ms.date: 07/20/2020
 ms.author: v-jay
 ms.subservice: common
-ms.openlocfilehash: b16b02696cb4321376acb9c15f6a37f241e415da
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 129197c8b026916931a5e0f71b8b10f7b1038f23
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77028528"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414573"
 ---
 # <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>使用 AzCopy 将数据从 Amazon S3 复制到 Azure 存储
 
@@ -136,7 +136,7 @@ AWS S3 和 Azure 允许在对象键名称中使用不同的字符集。 可在[�
 | **FailIfInvalid** | 不复制对象。 AzCopy 将记录错误，并将该错误包含到传输摘要显示的失败计数中。  |
 | **RenameIfInvalid**  | AzCopy 将解析无效的元数据键，并使用已解析的元数据键值对将对象复制到 Azure。 若要确切地了解 AzCopy 采取哪些步骤来重命名对象键，请参阅下面的 [AzCopy 如何重命名对象键](#rename-logic)部分。 如果 AzCopy 无法重命名该键，则不会复制该对象。 |
 
-<a id="rename-logic" />
+<a id="rename-logic"></a>
 
 ### <a name="how-azcopy-renames-object-keys"></a>AzCopy 如何重命名对象键
 
