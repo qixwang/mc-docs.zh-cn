@@ -7,14 +7,14 @@ manager: digimobile
 ms.service: storage
 ms.topic: troubleshooting
 origin.date: 06/15/2018
-ms.date: 06/01/2020
+ms.date: 07/20/2020
 ms.author: v-jay
-ms.openlocfilehash: b5890e3f782026fcd9e0a6f5255477cad0ba7a76
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: a2a3df62c1a1b1af6c0c7299b8c2f13c9eb3b9e0
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199693"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414640"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure 存储资源管理器故障排除指南
 
@@ -49,7 +49,7 @@ Azure 存储资源管理器是一个独立的应用，使用它可在 Windows、
 
 Azure 存储提供两个访问层：“管理”和“数据”。  订阅和存储帐户是通过管理层访问的。 容器、Blob 和其他数据资源是通过数据层访问的。 例如，若要从 Azure 获取存储帐户的列表，应向管理终结点发送请求。 若要列出帐户中的 Blob 容器，应向相应的服务终结点发送请求。
 
-RBAC 角色可以包含对管理或数据访问层的权限。 例如，“读取者”角色授予对管理层资源的只读访问权限。
+RBAC 角色可以授予你进行管理或数据层访问的权限。 例如，“读取者”角色授予对管理层资源的只读访问权限。
 
 严格地讲，“读取者”角色不提供数据层的权限，并非一定要有该角色才能访问数据层。
 
@@ -59,7 +59,14 @@ RBAC 角色可以包含对管理或数据访问层的权限。 例如，“读�
 
 ### <a name="what-if-i-cant-get-the-management-layer-permissions-i-need-from-my-administrator"></a>如果我无法从管理员获取管理层权限，该怎么办？
 
-目前，对于此问题，我们尚未制定 RBAC 相关的解决方法。 一种解决方法是请求一个 SAS URI 并将其[附加到资源](/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri)。
+若要访问 blob 容器或队列，可以使用 Azure 凭据连接到这些资源。
+
+1. 打开“连接”对话框。
+2. 选择“通过 Azure Active Directory (Azure AD)添加资源”。 单击“下一步”。
+3. 选择与要连接到的资源关联的用户帐户和租户。 单击“下一步”。
+4. 选择资源类型，输入资源的 URL，并为连接输入唯一的显示名称。 单击“下一步”。 单击“连接”。
+
+目前，对于其他资源类型，我们尚未制定与 RBAC 相关的解决方案。 一种解决方法是请求一个 SAS URI 并将其[附加到资源](/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri)。
 
 ### <a name="recommended-built-in-rbac-roles"></a>建议的内置 RBAC 角色
 
@@ -76,7 +83,7 @@ RBAC 角色可以包含对管理或数据访问层的权限。 例如，“读�
 
 如果存在以下情况之一，则往往会发生证书错误：
 
-- 应用通过透明代理进行连接，这意味着一台服务器（例如公司的服务器）正在截取 HTTPS 流量，对其进行解密，然后使用自签名证书对其进行加密。
+- 应用通过_透明代理_进行连接。 这意味着一台服务器（例如公司的服务器）正在截取 HTTPS 流量，对其进行解密，然后使用自签名证书对其进行加密。
 - 正在运行的应用程序正在向收到的 HTTPS 消息注入自签名 TLS/SSL 证书。 注入证书的应用程序示例包括防病毒软件和网络流量检查软件。
 
 当存储资源管理器看到自签名或不受信任的证书时，无法再判断收到的 HTTPS 消息是否被更改。 如果拥有自签名证书的副本，可通过执行以下步骤，让存储资源管理器信任它：
@@ -294,6 +301,8 @@ RBAC 角色可以包含对管理或数据访问层的权限。 例如，“读�
 
 ## <a name="linux-dependencies"></a>Linux 依赖项
 
+### <a name="snap"></a>对齐
+
 Snap Store 中以内嵌项的形式提供了存储资源管理器 1.10.0 和更高版本。 存储资源管理器内嵌项会自动安装其所有依赖项，并在新版内嵌项推出时更新。 安装存储资源管理器内嵌项是建议的安装方法。
 
 存储资源管理器要求使用密码管理器，你可能需要手动连接密码管理器才能正常运行存储资源管理器。 可以运行以下命令，将存储资源管理器连接到系统的密码管理器：
@@ -302,57 +311,76 @@ Snap Store 中以内嵌项的形式提供了存储资源管理器 1.10.0 和更�
 snap connect storage-explorer:password-manager-service :password-manager-service
 ```
 
+### <a name="targz-file"></a>.tar.gz 文件
+
 还可以下载 .tar.gz 文件格式的应用程序，但必须手动安装依赖项。
 
-> [!IMPORTANT]
-> 仅 Ubuntu 分发版支持 .tar.gz 下载内容中提供的存储资源管理器。 其他分发版尚未经过验证，可能需要替代包或附加包。
+仅以下 Ubuntu 版本支持 .tar.gz 下载中提供的存储资源管理器。 存储资源管理器可以在其他 Linux 发行版上运行，但未得到正式支持。
 
-这些包是 Linux 上存储资源管理器的最常见要求：
+- Ubuntu 20.04 x64
+- Ubuntu 18.04 x64
+- Ubuntu 16.04 x64
 
-* [.NET Core 2.2 运行时](https://docs.microsoft.com/dotnet/core/install/dependencies?tabs=netcore22&pivots=os-linux)
-* `libgconf-2-4`
-* `libgnome-keyring0` 或 `libgnome-keyring-dev`
-* `libgnome-keyring-common`
+存储资源管理器要求在系统上安装 .NET Core。 建议安装 .NET Core 2.1，但存储资源管理器也可使用 .NET Core 2.2。
 
 > [!NOTE]
-> 存储资源管理器 1.7.0 及更低版本需要 .NET Core 2.0。 如果安装了更高版本的 .NET Core，则必须[修补存储资源管理器](#patching-storage-explorer-for-newer-versions-of-net-core)。 如果运行存储资源管理器 1.8.0 或更高版本，则可以使用的最高版本为 .NET Core 2.2。 高于 2.2 的版本目前尚未验证其使用情况。
+> 存储资源管理器 1.7.0 及更低版本需要 .NET Core 2.0。 如果安装了更高版本的 .NET Core，则必须[修补存储资源管理器](#patching-storage-explorer-for-newer-versions-of-net-core)。 如果运行存储资源管理器 1.8.0 或更高版本，则至少需要 .NET Core 2.1。
 
-# <a name="ubuntu-1904"></a>[Ubuntu 19.04](#tab/1904)
+# <a name="ubuntu-2004"></a>[Ubuntu 20.04](#tab/2004)
 
-1. 下载存储资源管理器。
-2. 安装 [.NET Core 运行时](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu19-04/runtime-current)。
-3. 运行以下命令：
+1. 下载存储资源管理器 .tar.gz 文件。
+2. 安装 [.NET Core 运行时](https://docs.microsoft.com/dotnet/core/install/linux)：
    ```bash
-   sudo apt-get install libgconf-2-4 libgnome-keyring0
+   wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
+     dpkg -i packages-microsoft-prod.deb; \
+     sudo apt-get update; \
+     sudo apt-get install -y apt-transport-https && \
+     sudo apt-get update && \
+     sudo apt-get install -y dotnet-runtime-2.1
    ```
 
 # <a name="ubuntu-1804"></a>[Ubuntu 18.04](#tab/1804)
 
-1. 下载存储资源管理器。
-2. 安装 [.NET Core 运行时](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu18-04/runtime-current)。
-3. 运行以下命令：
+1. 下载存储资源管理器 .tar.gz 文件。
+2. 安装 [.NET Core 运行时](https://docs.microsoft.com/dotnet/core/install/linux)：
    ```bash
-   sudo apt-get install libgconf-2-4 libgnome-keyring-common libgnome-keyring0
+   wget https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
+     dpkg -i packages-microsoft-prod.deb; \
+     sudo apt-get update; \
+     sudo apt-get install -y apt-transport-https && \
+     sudo apt-get update && \
+     sudo apt-get install -y dotnet-runtime-2.1
    ```
 
 # <a name="ubuntu-1604"></a>[Ubuntu 16.04](#tab/1604)
 
-1. 下载存储资源管理器。
-2. 安装 [.NET Core 运行时](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu16-04/runtime-current)。
-3. 运行以下命令：
+1. 下载存储资源管理器 .tar.gz 文件。
+2. 安装 [.NET Core 运行时](https://docs.microsoft.com/dotnet/core/install/linux)：
    ```bash
-   sudo apt install libgnome-keyring-dev
-   ```
-
-# <a name="ubuntu-1404"></a>[Ubuntu 14.04](#tab/1404)
-
-1. 下载存储资源管理器。
-2. 安装 [.NET Core 运行时](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu14-04/runtime-current)。
-3. 运行以下命令：
-   ```bash
-   sudo apt install libgnome-keyring-dev
+   wget https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
+     dpkg -i packages-microsoft-prod.deb; \
+     sudo apt-get update; \
+     sudo apt-get install -y apt-transport-https && \
+     sudo apt-get update && \
+     sudo apt-get install -y dotnet-runtime-2.1
    ```
 ---
+
+存储资源管理器所需的许多库都已随 Canonical 的 Ubuntu 标准安装进行预安装。 自定义环境可能缺少其中某些库。 如果在启动存储资源管理器时遇到问题，建议确保以下包已安装在系统上：
+
+- iproute2
+- libasound2
+- libatm1
+- libgconf2-4
+- libnspr4
+- libnss3
+- libpulse0
+- libsecret-1-0
+- libx11-xcb1
+- libxss1
+- libxtables11
+- libxtst6
+- xdg-utils
 
 ### <a name="patching-storage-explorer-for-newer-versions-of-net-core"></a>修补适用于 .NET Core 更高版本的存储资源管理器
 

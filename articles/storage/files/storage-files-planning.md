@@ -5,15 +5,15 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 1/3/2020
-ms.date: 06/15/2020
+ms.date: 07/20/2020
 ms.author: v-jay
 ms.subservice: files
-ms.openlocfilehash: 2f5c2e748a2016e114aafdf69d9b79c0801c7320
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.openlocfilehash: 14ca0f7109ea10ae157e69dbb5fb239edb218f99
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723570"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414719"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>规划 Azure 文件部署
 可通过以下主要方式部署 [Azure 文件存储](storage-files-introduction.md)：直接装载无服务器 Azure 文件共享。
@@ -31,7 +31,7 @@ ms.locfileid: "84723570"
 
 - 部署 Azure 文件共享时请注意存储帐户的 IOPS 限制。 理想情况下，应该以 1:1 的形式将文件共享与存储帐户相映射，但由于组织和 Azure 施加的各种限制和制约，不一定总能实现这种映射。 无法在一个存储帐户中部署一个文件共享时，请考虑哪些共享高度活跃，哪些共享不够活跃，以确保不会将访问量最大的文件共享一起放到同一存储帐户中。
 
-- 仅当在环境中发现了 GPv2 帐户以及 GPv1 和经典存储帐户时，才部署和升级这些帐户。 
+- 仅部署 GPv2 帐户和 FileStorage 帐户，在环境中找到 GPv1 帐户和经典存储帐户时对其进行升级。 
 
 ## <a name="identity"></a>标识
 若要访问某个 Azure 文件共享，该文件共享的用户必须完成身份验证，并已获得授权。 这种授权是根据访问文件共享的用户的标识完成的。 使用 Azure 存储帐户密钥装载 Azure 文件共享。 若要以这种方式装载文件共享，需使用存储帐户名称作为用户名，使用存储帐户密钥作为密码。 使用存储帐户密钥装载 Azure 文件共享实际上是一项管理员操作，因为装载的文件共享对其上的所有文件和文件夹拥有完全权限，即使对这些文件和文件夹应用了 ACL。 使用存储帐户密钥通过 SMB 装载时，将使用 NTLMv2 身份验证协议。
@@ -71,6 +71,20 @@ Azure 文件存储支持两种不同类型的加密：传输中加密（与装�
 
 ## <a name="storage-tiers"></a>存储层
 [!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]
+
+通常，Azure 文件存储功能以及与其他服务的互操作性在高级文件共享和标准文件共享之间是相同的，但有几个重要区别：
+- **冗余选项**
+    - 高级文件共享仅适用于本地冗余 (LRS) 存储。
+    - 标准文件共享可用于本地冗余、异地冗余 (GRS) 和异地区域冗余 (GZRS) 存储。
+- **文件共享的最大大小**
+    - 高级文件共享最多可预配 100 TiB，无需任何额外的操作。
+    - 默认情况下，标准文件共享的上限是 5 TiB，但可以通过选择“大文件共享”存储帐户功能标志将共享限制增加到 100 TiB。 对于本地冗余存储帐户或区域冗余存储帐户，标准文件共享的上限是 100 TiB。 有关增加文件共享大小的详细信息，请参阅[启用和创建大文件共享](/storage/files/storage-files-how-to-create-large-file-share)。
+- **区域可用性**
+    - 高级文件共享并非在每个区域中都可用。 
+    - 标准文件共享在每个 Azure 区域中可用。
+- Azure Kubernetes 服务 (AKS) 在 1.13 及更高版本中支持高级文件共享。
+
+将文件共享创建为高级文件共享或标准文件共享后，便无法自动将其转换为其他层。 若要切换到其他层，必须在该层中创建新的文件共享，并手动将原始共享中的数据复制到所创建的新共享。 建议使用 `robocopy`（适用于 Windows）或 `rsync`（适用于 macOS 和 Linux）来执行该复制。
 
 ### <a name="understanding-provisioning-for-premium-file-shares"></a>了解高级文件共享的预配
 高级文件共享是基于固定的 GiB/IOPS/吞吐量比率预配的。 对于预配的每个 GiB，将向该共享分配 1 IOPS 和 0.1 MiB/秒的吞吐量，最多可达每个共享的最大限制。 允许的最小预配为 100 GiB 以及最小的 IOPS/吞吐量。
@@ -137,12 +151,6 @@ Azure 文件存储支持两种不同类型的加密：传输中加密（与装�
 
 ## <a name="migration"></a>迁移
 在很多情况下，你不想要为组织建立全新的文件共享，而是将现有文件共享从本地文件服务器或 NAS 设备迁移到 Azure 文件存储。 Microsoft 和第三方提供了许多用于迁移到文件共享的工具，这些工具大致划分为两种类别：
-
-- **用于维护 ACL 和时间戳等文件系统属性的工具**：
-    - **[Robocopy](https://technet.microsoft.com/library/cc733145.aspx)** ：Robocopy 是 Windows 和 Windows Server 自带的一款知名复制工具。 Robocopy 可用于将数据传输到 Azure 文件，方法是在本地装载文件共享，然后使用装载位置作为 Robocopy 命令的目标位置。
-
-- **不维护文件系统属性的工具**：
-    - **[AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fstorage%2ffiles%2ftoc.json)** ：AzCopy 是一个命令行实用程序，专用于使用具有优化性能的简单命令在 Azure 文件和 Azure Blob 存储中复制/粘贴数据。
 
 ## <a name="next-steps"></a>后续步骤
 * [部署 Azure 文件](storage-files-deployment-guide.md)

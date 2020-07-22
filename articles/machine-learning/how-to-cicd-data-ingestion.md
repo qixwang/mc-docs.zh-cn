@@ -12,44 +12,65 @@ manager: davete
 ms.reviewer: larryfr
 ms.date: 01/30/2020
 ms.custom: tracking-python
-ms.openlocfilehash: d75b87a55daef90d356a376e9b7835d4b150a18b
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: fb8cc2c690955d837394302dd6e0b755fee42652
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097325"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440971"
 ---
 # <a name="devops-for-a-data-ingestion-pipeline"></a>数据引入管道的 DevOps
 
-在大多数方案中，数据引入解决方案是脚本、服务调用以及协调所有活动的管道的复合体。 本文介绍如何将 DevOps 做法应用到常用数据引入管道的开发生命周期。 管道为机器学习模型训练准备数据。
+在大多数方案中，数据引入解决方案是脚本、服务调用以及协调所有活动的管道的复合体。 本文介绍如何将 DevOps 做法应用到常用数据引入管道的开发生命周期，以便准备数据来进行机器学习模型训练。 管道是使用以下 Azure 服务构建的：
 
-## <a name="the-solution"></a>解决方案
+* __Azure 数据工厂__：读取原始数据并协调数据准备。
 
-考虑以下数据引入工作流：
+* __Azure Pipelines__：实现持续集成和开发过程的自动化。
 
-![data-ingestion-pipeline](media/how-to-cicd-data-ingestion/data-ingestion-pipeline.png)
+## <a name="data-ingestion-pipeline-workflow"></a>数据引入管道工作流
 
-在此方法中，训练数据存储在 Azure Blob 存储中。 Azure 数据工厂管道从输入 Blob 容器提取数据，转换数据，然后将数据保存到输出 Blob 容器。 此容器充当 Azure 机器学习服务的[数据存储](concept-data.md)。 准备好数据后，数据工厂管道将调用训练机器学习管道来训练模型。 在此特定示例中，数据转换由 Azure Databricks 群集上运行的 Python 笔记本执行。 
+数据引入管道实现以下工作流：
 
-## <a name="what-we-are-building"></a>生成的内容
+1. 原始数据将读取到 Azure 数据工厂 (ADF) 管道中。
+1. ADF 管道将数据发送到 Azure Databricks 群集，该群集运行 Python 笔记本以转换数据。
+1. 数据会存储到 Blob 容器中，Azure 机器学习可以在该容器中使用这些数据训练模型。
 
-与任何软件解决方案一样，会有某个团队（例如“数据工程师”）处理此过程。 
+![数据引入管道工作流](media/how-to-cicd-data-ingestion/data-ingestion-pipeline.png)
 
-![cicd-data-ingestion](media/how-to-cicd-data-ingestion/cicd-data-ingestion.png)
+## <a name="continuous-integration-and-delivery-overview"></a>持续集成和交付概述
 
-他们相互协作并共享相同的 Azure 资源，例如 Azure 数据工厂、Azure Databricks、Azure 存储帐户等。 这些资源的集合构成了开发环境。 数据工程师为同一源代码库贡献代码。 持续集成过程汇编代码，使用代码质量测试和单元测试检查代码，并生成经过测试的代码和 Azure 资源管理器模板等项目。 持续交付过程将项目部署到下游环境。 本文演示如何使用 [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) 将 CI 和 CD 过程自动化。
+与许多软件解决方案一样，会有某个团队（例如“数据工程师”）在致力于它。 他们相互协作并共享相同的 Azure 资源，例如 Azure 数据工厂、Azure Databricks 和 Azure 存储帐户。 这些资源的集合构成了开发环境。 数据工程师为同一源代码库贡献代码。
+
+持续集成和交付系统会自动执行生成、测试和交付（部署）解决方案的过程。 持续集成 (CI) 过程执行以下任务：
+
+* 汇编代码
+* 执行代码质量测试来检查代码
+* 运行单元测试
+* 生成经过测试的代码和 Azure 资源管理器模板等项目
+
+持续交付 (CD) 过程将项目部署到下游环境。
+
+![cicd 数据引入示意图](media/how-to-cicd-data-ingestion/cicd-data-ingestion.png)
+
+本文演示如何使用 [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) 将 CI 和 CD 过程自动化。
 
 ## <a name="source-control-management"></a>源代码管理
 
-团队成员的工作方式略有不同，他们针对 Python 笔记本源代码和 Azure 数据工厂源代码展开协作。 但是，在这两种情况下，代码都存储在源代码管理存储库（例如 Azure DevOps、GitHub、GitLab）中，协作通常是基于某个分支模型（例如 [GitFlow](https://datasift.github.io/gitflow/IntroducingGitFlow.html)）展开的。
+若要跟踪更改并使得团队成员之间可以进行协作，需要进行源代码管理。
+例如，将代码存储在 Azure DevOps、GitHub 或 GitLab 存储库中。 协作工作流基于分支模型。 例如，[GitFlow](https://datasift.github.io/gitflow/IntroducingGitFlow.html)。
 
 ### <a name="python-notebook-source-code"></a>Python 笔记本源代码
 
-数据工程师可以在 IDE（例如 [Visual Studio Code](https://code.visualstudio.com)）本地或者直接在 Databricks 工作区中处理 Python 笔记本源代码。 使用后一种方式可以在开发环境中调试代码。 在任一情况下，代码都会根据分支策略合并到存储库中。 强烈建议将代码存储在 `.py` 文件中，而不要以 `.ipynb` Jupyter 笔记本格式存储。 这样可以改善代码的可读性，并在 CI 过程中实现自动代码质量检查。
+数据工程师可以在 IDE（例如 [Visual Studio Code](https://code.visualstudio.com)）本地或者直接在 Databricks 工作区中处理 Python 笔记本源代码。 代码更改完成后，代码更改会根据分支策略合并到存储库中。
+
+> [!TIP] 
+> 建议将代码存储在 `.py` 文件中，而不要以 `.ipynb` Jupyter 笔记本格式存储。 这样可以改善代码的可读性，并在 CI 过程中实现自动代码质量检查。
 
 ### <a name="azure-data-factory-source-code"></a>Azure 数据工厂源代码
 
-Azure 数据工厂管道的源代码是工作区生成的 JSON 文件的集合。 通常，数据工程师会在 Azure 数据工厂工作区中使用可视化设计器，而不是直接处理源代码文件。 根据 [Azure 数据工厂文档](https://docs.microsoft.com/azure/data-factory/source-control#author-with-azure-repos-git-integration)中所述，使用源代码管理存储库配置工作区。 完成此配置后，数据工程师可以在运行首选的分支工作流之后，针对源代码展开协作。    
+Azure 数据工厂管道的源代码是 Azure 数据工厂工作区生成的 JSON 文件的集合。 通常，数据工程师会在 Azure 数据工厂工作区中使用可视化设计器，而不是直接处理源代码文件。 
+
+若要将工作区配置为使用源代码管理存储库，请参阅[通过 Azure Repos Git 集成进行创作](../data-factory/source-control.md#author-with-azure-repos-git-integration)。   
 
 ## <a name="continuous-integration-ci"></a>持续集成 (CI)
 
@@ -88,18 +109,23 @@ steps:
 
 ```
 
-该管道使用 ***flake8*** 执行 Python 代码检查。 它运行源代码中定义的单元测试，并发布检查和测试结果以便在 Azure 管道执行屏幕中显示：
+该管道使用 [flake8](https://pypi.org/project/flake8/) 执行 Python 代码检查。 它运行源代码中定义的单元测试，并发布检查和测试结果以便在 Azure 管道执行屏幕中显示：
 
-![linting-unit-tests](media/how-to-cicd-data-ingestion/linting-unit-tests.png)
+![Lint 分析单元测试](media/how-to-cicd-data-ingestion/linting-unit-tests.png)
 
-如果检查和单元测试成功，管道会将源代码复制到项目存储库，供后续的部署步骤使用。
+如果Lint 分析和单元测试成功，管道会将源代码复制到项目存储库，供后续的部署步骤使用。
 
 ### <a name="azure-data-factory-ci"></a>Azure 数据工厂 CI
 
-Azure 数据工厂管道的 CI 过程是数据引入管道的整个 CI/CD 历程中的瓶颈。 不会执行持续集成。 Azure 数据工厂的可部署项目是 Azure 资源管理器模板的集合。 生成这些模板的唯一方式是单击 Azure 数据工厂工作区中的“发布”按钮。 此处不提供自动化功能。
-数据工程师将源代码从其功能分支合并到协作分支（例如 ***master*** 或 ***develop***）。 然后，已被授予权限的人员可以单击“发布”按钮，从协作分支中的源代码生成 Azure 资源管理器模板。 单击此按钮时，工作区将验证管道（将其视为检查和单元测试），生成 Azure 资源管理器模板（将其视为生成），并将生成的模板保存到同一代码存储库中的技术分支 ***adf_publish***（将其视为发布项目）。 此分支由 Azure 数据工厂工作区自动创建。 [Azure 数据工厂文档](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment)中详细介绍了此过程。
+Azure 数据工厂管道的 CI 过程是数据引入管道的瓶颈。 不会执行持续集成。 Azure 数据工厂的可部署项目是 Azure 资源管理器模板的集合。 生成这些模板的唯一方式是单击 Azure 数据工厂工作区中的“发布”按钮。
 
-必须确保生成的 Azure 资源管理器模板不区分环境。 这意味着，在不同环境中可能不同的所有值将会参数化。 Azure 数据工厂足够智能，可将大多数此类值作为参数公开。 例如，在以下模板中，Azure 机器学习工作区的连接属性将作为参数公开：
+1. 数据工程师将源代码从其功能分支合并到协作分支（例如 ***master*** 或 ***develop***）。 
+1. 已被授予权限的人员单击“发布”按钮，从协作分支中的源代码生成 Azure 资源管理器模板。 
+1. 工作区将验证管道（将其视为 Lint 分析和单元测试），生成 Azure 资源管理器模板（将其视为生成），并将生成的模板保存到同一代码存储库中的技术分支 ***adf_publish***（将其视为发布项目）。 此分支由 Azure 数据工厂工作区自动创建。 
+
+有关此过程的详细信息，请参阅 [Azure 数据工厂中的持续集成和交付](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment)。
+
+必须确保生成的 Azure 资源管理器模板不区分环境。 这意味着，所有在不同环境中可能会有所不同的值均会参数化。 Azure 数据工厂足够智能，可将大多数此类值作为参数公开。 例如，在以下模板中，Azure 机器学习工作区的连接属性将作为参数公开：
 
 ```json
 {
@@ -149,7 +175,7 @@ labels = np.array(data['target'])
 
 ![adf-notebook-parameters](media/how-to-cicd-data-ingestion/adf-notebook-parameters.png)
 
-Azure 数据工厂工作区默认不会将管道变量作为 Azure 资源管理器模板参数公开。 工作区使用[默认参数化模板](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#default-parameterization-template)，指明应将哪些管道属性作为 Azure 资源管理器模板参数公开。 若要将管道变量添加到列表中，请使用以下代码片段更新[默认参数化模板](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#default-parameterization-template)的“Microsoft.DataFactory/factories/pipelines”节，并将结果 JSON 文件放在源文件夹的根目录中：
+Azure 数据工厂工作区默认不会将管道变量作为 Azure 资源管理器模板参数公开。 工作区使用[默认参数化模板](/data-factory/continuous-integration-deployment#default-parameterization-template)，指明应将哪些管道属性作为 Azure 资源管理器模板参数公开。 若要将管道变量添加到列表中，请使用以下代码片段更新[默认参数化模板](/data-factory/continuous-integration-deployment#default-parameterization-template)的“Microsoft.DataFactory/factories/pipelines”节，并将结果 JSON 文件放在源文件夹的根目录中：
 
 ```json
 "Microsoft.DataFactory/factories/pipelines": {
@@ -185,7 +211,10 @@ JSON 文件中的值是在管道定义中配置的默认值。 部署 Azure 资�
 
 ## <a name="continuous-delivery-cd"></a>持续交付 (CD)
 
-持续交付过程提取项目并将其部署到第一个目标环境。 它通过运行测试来确保解决方案可正常运行。 如果测试成功，则继续部署到下一个环境。 CD Azure 管道由多个表示环境的阶段组成。 每个阶段包含[部署](https://docs.microsoft.com/azure/devops/pipelines/process/deployment-jobs?view=azure-devops)，以及执行以下步骤的[作业](https://docs.microsoft.com/azure/devops/pipelines/process/phases?view=azure-devops&tabs=yaml)：
+持续交付过程提取项目并将其部署到第一个目标环境。 它通过运行测试来确保解决方案可正常运行。 如果测试成功，则继续部署到下一个环境。 
+
+CD Azure 管道由多个表示环境的阶段组成。 每个阶段包含[部署](https://docs.microsoft.com/azure/devops/pipelines/process/deployment-jobs?view=azure-devops)，以及执行以下步骤的[作业](https://docs.microsoft.com/azure/devops/pipelines/process/phases?view=azure-devops&tabs=yaml)：
+
 * 将 Python 笔记本部署到 Azure Databricks 工作区
 * 部署 Azure 数据工厂管道 
 * 运行管道
@@ -231,12 +260,13 @@ JSON 文件中的值是在管道定义中配置的默认值。 部署 Azure 资�
               displayName: 'Deploy (copy) data processing notebook to the Databricks cluster'       
 ```            
 
-CI 生成的项目将自动复制到部署代理，并在 ***$(Pipeline.Workspace)*** 文件夹中提供。 在本例中，部署任务引用包含 Python 笔记本的 ***di-notebooks*** 项目。 此[部署](https://docs.microsoft.com/azure/devops/pipelines/process/deployment-jobs?view=azure-devops)使用 [Databricks Azure DevOps 扩展](https://marketplace.visualstudio.com/items?itemName=riserrad.azdo-databricks)将笔记本文件复制到 Databricks 工作区。
-***Deploy_to_QA*** 阶段包含对 Azure DevOps 项目中定义的 ***devops-ds-qa-vg*** 变量组的引用。 此阶段中的步骤引用此变量组中的变量（例如 $(DATABRICKS_URL), $(DATABRICKS_TOKEN)）。 其思路是，下一阶段（例如 ***Deploy_to_UAT***）将使用其自身 UAT 范围的变量组中定义的相同变量名称运行。
+CI 生成的项目将自动复制到部署代理，并在 `$(Pipeline.Workspace)` 文件夹中提供。 在本例中，部署任务引用包含 Python 笔记本的 `di-notebooks` 项目。 此[部署](https://docs.microsoft.com/azure/devops/pipelines/process/deployment-jobs?view=azure-devops)使用 [Databricks Azure DevOps 扩展](https://marketplace.visualstudio.com/items?itemName=riserrad.azdo-databricks)将笔记本文件复制到 Databricks 工作区。
+
+`Deploy_to_QA` 阶段包含对 Azure DevOps 项目中定义的 `devops-ds-qa-vg` 变量组的引用。 此阶段中的步骤引用此变量组中的变量（例如 `$(DATABRICKS_URL)` 和 `$(DATABRICKS_TOKEN)`）。 其思路是，下一阶段（例如 `Deploy_to_UAT`）将使用其自己的 UAT 范围内的变量组中定义的相同变量名称运行。
 
 ### <a name="deploy-an-azure-data-factory-pipeline"></a>部署 Azure 数据工厂管道
 
-Azure 数据工厂的可部署项目是一个 Azure 资源管理器模板。 因此，它将通过“Azure 资源组部署”任务来部署，如以下代码片段所示：
+Azure 数据工厂的可部署项目是一个 Azure 资源管理器模板。 它将通过“Azure 资源组部署”任务来部署，如以下代码片段所示：
 
 ```yaml
   - deployment: "Deploy_to_ADF"
@@ -257,7 +287,7 @@ Azure 数据工厂的可部署项目是一个 Azure 资源管理器模板。 因
                 csmParametersFile: '$(Pipeline.Workspace)/adf-pipelines/ARMTemplateParametersForFactory.json'
                 overrideParameters: -data-ingestion-pipeline_properties_variables_data_file_name_defaultValue "$(DATA_FILE_NAME)"
 ```
-数据文件名参数的值取自 QA 阶段变量组中定义的 $(DATA_FILE_NAME) 变量。 同样，可以重写 ***ARMTemplateForFactory.json*** 中定义的所有参数。 如果未重写，则使用默认值。
+数据文件名参数的值取自 QA 阶段变量组中定义的 `$(DATA_FILE_NAME)` 变量。 同样，可以重写 ***ARMTemplateForFactory.json*** 中定义的所有参数。 如果未重写，则使用默认值。
 
 ### <a name="run-the-pipeline-and-check-the-data-ingestion-result"></a>运行管道并检查数据引入结果
 
@@ -306,7 +336,7 @@ Azure 数据工厂的可部署项目是一个 Azure 资源管理器模板。 因
 
 ## <a name="putting-pieces-together"></a>将各个部分组合到一起
 
-本文的结果是由以下阶段构成的 CI/CD Azure 管道：
+完整的 CI/CD Azure 管道包括以下阶段：
 * CI
 * 部署到 QA
     * 部署到 Databricks + 部署到 ADF

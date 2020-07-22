@@ -5,16 +5,19 @@ author: WenJason
 ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
-origin.date: 6/5/2020
-ms.date: 06/29/2020
-ms.openlocfilehash: 52a2a6a66bfe86b93a441d70cbe7b08406da7d9d
-ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
+origin.date: 6/25/2020
+ms.date: 07/20/2020
+ms.openlocfilehash: c92c6b4bc5b157c4680d7ca9efbfc912713eb811
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85516848"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440394"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的服务器参数
+
+> [!NOTE] 
+> 将要查看的是 Azure Database for MySQL 的新服务。 若要查看经典 MySQL Database for Azure 的文档，请访问[此页](https://docs.azure.cn/zh-cn/mysql-database-on-azure/)。
 
 本文提供了在 Azure Database for MySQL 中配置服务器参数的注意事项和准则。
 
@@ -29,6 +32,32 @@ Azure Database for MySQL 公开了通过 [Azure 门户](./howto-server-parameter
 受支持服务器参数的列表还在不断增加。 在 Azure 门户中使用服务器参数选项卡可查看完整列表并配置服务器参数值。
 
 请参阅以下各部分，详细了解多个经常更新的服务器参数的限制。 这些限制取决于服务器的定价层和 vCore 数。
+
+### <a name="thread-pools"></a>线程池
+
+MySQL 通常会为每个客户端连接分配一个线程。 随着并发用户数量的增加，性能会相应下降。 由于上下文切换增加、线程争用以及 CPU 缓存位置不正确，许多活动线程会严重影响性能。
+
+线程池是服务器端的一项功能。与连接池不同，它通过引入工作线程的动态池来最大限度提高性能，该动态池可用于限制服务器上运行的活动线程数，并最大程度地减少线程变动。 这有助于确保连接突发不会导致服务器资源用尽或因内存不足错误而崩溃。 对于短查询和 CPU 密集型工作负荷（例如 OLTP 工作负荷），线程池最有效。
+
+若要详细了解线程池，请参阅[在 Azure Database for MySQL 中引入线程池](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/introducing-thread-pools-in-azure-database-for-mysql-service/ba-p/1504173)
+
+> [!NOTE]
+> MySQL 5.6 版本不支持线程池功能。 
+
+### <a name="configuring-the-thread-pool"></a>配置线程池
+若要启用线程池，请将 `thread_handling` 服务器参数更新为“pool-of-threads”。 默认情况下，此参数设置为 `one-thread-per-connection`，这意味着 MySQL 会为每个新连接创建一个新线程。 请注意，这是一个静态参数，需要重启服务器才能应用。
+
+还可通过设置以下服务器参数，配置池中的最大和最小线程数： 
+- `thread_pool_max_threads`：此值可确保池中的线程数不超过此数目。
+- `thread_pool_min_threads`：此值设置即使在连接关闭后也会保留的线程数。
+
+为了改善对线程池的短查询的性能问题，Azure Database for MySQL 允许你启用批处理执行，其中的线程会在短时间内保持活动状态，以便通过此连接等待下一个查询，而不是在执行查询后立即返回线程池。 然后，线程会快速执行查询，完成后，便会等待下一个查询，直到此进程的总时间消耗超过阈值。 批处理执行行为使用以下服务器参数确定：  
+
+-  `thread_pool_batch_wait_timeout`：此值指定线程等待另一个查询进行处理的时间。
+- `thread_pool_batch_max_time`：此值确定线程重复查询执行周期并等待下一个查询的最长时间。
+
+> [!IMPORTANT]
+> 请在生产环境中启用线程池之前对其进行测试。 
 
 ### <a name="innodb_buffer_pool_size"></a>innodb_buffer_pool_size
 
@@ -106,6 +135,9 @@ MySQL 根据你在表创建期间提供的配置，将 InnoDB 表存储在不同
 > 为了获得最佳体验，我们建议你使用 ProxySQL 之类的连接池程序来有效地管理连接。
 
 创建与 MySQL 的新客户端连接需要时间，一旦建立，这些连接就会占用数据库资源，即使在空闲时也是如此。 大多数应用程序请求许多生存期短的连接，这加剧了这种情况。 其结果是可用于实际工作负荷的资源减少，从而导致性能下降。 连接池程序不仅会减少空闲连接，还会重用现有连接，因而有助于避免这种情况。 若要了解如何设置 ProxySQL，请访问我们的[博客文章](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042)。
+
+>[!Note]
+>ProxySQL 是一个开源社区工具。 Microsoft 尽最大努力为它提供支持。 若要获得包含权威指导的生产支持，可以评估并联系 [ProxySQL 产品支持](https://proxysql.com/services/support/)。
 
 ### <a name="max_heap_table_size"></a>max_heap_table_size
 
@@ -194,7 +226,7 @@ MySQL 根据你在表创建期间提供的配置，将 InnoDB 表存储在不同
 
 ### <a name="time_zone"></a>time_zone
 
-可以通过从 MySQL 命令行或 MySQL Workbench 等工具调用 `mysql.az_load_timezone` 存储过程来填充时区表。 若要了解如何调用存储过程并设置全局时区或会话级时区，请参阅 [Azure 门户](howto-server-parameters.md#working-with-the-time-zone-parameter)或 [Azure CLI](howto-configure-server-parameters-using-cli.md#working-with-the-time-zone-parameter) 一文。
+初始部署后，Azure for MySQL 服务器包含用于时区信息的系统表，但这些表没有填充。 可以通过从 MySQL 命令行或 MySQL Workbench 等工具调用 `mysql.az_load_timezone` 存储过程来填充时区表。 若要了解如何调用存储过程并设置全局时区或会话级时区，请参阅 [Azure 门户](howto-server-parameters.md#working-with-the-time-zone-parameter)或 [Azure CLI](howto-configure-server-parameters-using-cli.md#working-with-the-time-zone-parameter) 一文。
 
 ## <a name="non-configurable-server-parameters"></a>不可配置的服务器参数
 
