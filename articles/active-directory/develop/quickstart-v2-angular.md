@@ -10,18 +10,16 @@ ms.subservice: develop
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 04/21/2020
+ms.date: 06/30/2020
 ms.author: v-junlch
-ms.openlocfilehash: f6fe333071c4b53b5ec75ebf4193be364eb30a8c
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: bd414af4ef9824b02044f99a8bcf60d579e4d6e1
+ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82127190"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945016"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>快速入门：在 Angular 单页应用程序中将用户登录并获取访问令牌
-
-> [!IMPORTANT]
-> 此功能目前以预览版提供。 需同意[补充使用条款](https://www.azure.cn/support/legal/)才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会更改。
 
 在本快速入门中，你将通过代码示例了解 Angular 单页应用程序 (SPA) 如何将具有工作帐户或学校帐户的用户登录。 Angular SPA 还可以获取用于调用 Microsoft Graph API 或任何 Web API 的访问令牌。
 
