@@ -2,27 +2,27 @@
 title: 通过将 Visual Studio 与 Cloud Explorer 配合使用来编辑和管理逻辑应用
 description: 通过将 Visual Studio 与 Cloud Explorer 配合使用来编辑、更新、管理和部署逻辑应用以及将其添加到源代码管理
 services: logic-apps
-documentationcenter: ''
-ms.assetid: ''
-ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.custom: mvc
-origin.date: 10/29/2019
-ms.author: v-yiso
-ms.date: 02/24/2020
-ms.openlocfilehash: 2228b0bd769a55c1a1b34afa255289c08d46b1af
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 04/29/2020
+ms.date: 07/20/2020
+ms.testscope: no
+ms.testdate: ''
+ms.author: v-yeche
+ms.openlocfilehash: 94008c64aa218dadfdb0820781624f24f387cf67
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428938"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414718"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>使用 Visual Studio 管理逻辑应用
 
-尽管可以在 <a href="https://portal.azure.cn" target="_blank">Azure 门户</a>中创建、编辑、管理和部署逻辑应用，但在需要将逻辑应用添加到源代码管理、发布不同的版本，以及为各种部署环境创建 [Azure 资源管理器](../azure-resource-manager/resource-group-overview.md)模板时，也可以使用 Visual Studio。 使用 Visual Studio Cloud Explorer 可以查找和管理逻辑应用以及其他 Azure 资源。 例如，可以打开、下载、编辑、运行、禁用和启用已在 Azure 门户中部署的逻辑应用，以及查看其运行历史记录。 如果你还不太熟悉如何在 Visual Studio 中处理 Azure 逻辑应用，请参阅[如何使用 Visual Studio 创建逻辑应用](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)。
+尽管可以在 [Azure 门户](https://portal.azure.cn)中创建、编辑、管理和部署逻辑应用，但在需要将逻辑应用添加到源代码管理、发布不同的版本，以及为各种部署环境创建 [Azure 资源管理器](../azure-resource-manager/management/overview.md)模板时，也可以使用 Visual Studio。 使用 Visual Studio Cloud Explorer 可以查找和管理逻辑应用以及其他 Azure 资源。 例如，可以打开、下载、编辑、运行、禁用和启用已在 Azure 门户中部署的逻辑应用，以及查看其运行历史记录。 如果你还不太熟悉如何在 Visual Studio 中处理 Azure 逻辑应用，请参阅[如何使用 Visual Studio 创建逻辑应用](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)。
+
+还可以[在 Azure 门户中管理逻辑应用](manage-logic-apps-with-azure-portal.md)。
 
 > [!IMPORTANT]
 > 从 Visual Studio 部署或发布逻辑应用会覆盖该应用在 Azure 门户中的版本。 因此，若要在 Azure 门户进行更改并保存这些更改，请务必通过 Azure 门户[刷新 Visual Studio 中的逻辑应用](#refresh)，然后，便可以通过 Visual Studio 部署或发布该应用。
@@ -31,39 +31,35 @@ ms.locfileid: "77428938"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 如果没有 Azure 订阅，请<a href="https://www.azure.cn/pricing/1rmb-trial" target="_blank">注册一个免费 Azure 帐户</a>。
+* Azure 订阅。 如果没有 Azure 订阅，请[注册一个 Azure 试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
-* 下载并安装以下工具（如果没有）： 
+* 下载并安装以下工具（如果没有）：
 
-  * <a href="https://aka.ms/download-visual-studio" target="_blank">Visual Studio 2019、2017 或 2015 - Community Edition 或更高版本</a>。 
-  本快速入门使用免费的 Visual Studio Community 2017。
+    * [Visual Studio 2019、2017 或 2015 - Community Edition 或更高版本](https://aka.ms/download-visual-studio)。 本快速入门使用免费的 Visual Studio Community 2017。
 
-    > [!IMPORTANT]
-    > 安装 Visual Studio 2019 或 2017 时，请务必选择“Azure 开发”工作负荷。 
-    > 有关详细信息，请参阅[在 Visual Studio Cloud Explorer 中管理与 Azure 帐户关联的资源](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view)。
+        > [!IMPORTANT]
+        > 安装 Visual Studio 2019 或 2017 时，请务必选择“Azure 开发”工作负荷。
+        > 有关详细信息，请参阅[在 Visual Studio Cloud Explorer 中管理与 Azure 帐户关联的资源](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view)。
 
-    若要安装 Cloud Explorer for Visual Studio 2015，请[从 Visual Studio Marketplace 下载 Cloud Explorer](https://marketplace.visualstudio.com/items?itemName=MicrosoftCloudExplorer.CloudExplorerforVisualStudio2015)。 
-    有关详细信息，请参阅[在 Visual Studio Cloud Explorer (2015) 中管理与 Azure 帐户关联的资源](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2015)。
+        若要安装 Cloud Explorer for Visual Studio 2015，请[从 Visual Studio Marketplace 下载 Cloud Explorer](https://marketplace.visualstudio.com/items?itemName=MicrosoftCloudExplorer.CloudExplorerforVisualStudio2015)。 有关详细信息，请参阅[在 Visual Studio Cloud Explorer (2015) 中管理与 Azure 帐户关联的资源](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2015)。
 
-  * [Azure SDK（2.9.1 或更高版本）](/downloads/) 
+    * [Azure SDK（2.9.1 或更高版本）](https://www.azure.cn/downloads/)
 
-  * [Azure PowerShell](https://github.com/Azure/azure-powershell#installation)
+    * [Azure PowerShell](https://github.com/Azure/azure-powershell#installation)
 
-  * 适用于所需版本的 Visual Studio 扩展的最新 Azure 逻辑应用工具：
+    * 适用于所需版本的 Visual Studio 扩展的最新 Azure 逻辑应用工具：
 
-    * [Visual Studio 2019](https://aka.ms/download-azure-logic-apps-tools-visual-studio-2019)
+        * [Visual Studio 2019](https://aka.ms/download-azure-logic-apps-tools-visual-studio-2019)
 
-    * [Visual Studio 2017](https://aka.ms/download-azure-logic-apps-tools-visual-studio-2017)
+        * [Visual Studio 2017](https://aka.ms/download-azure-logic-apps-tools-visual-studio-2017)
 
-    * [Visual Studio 2015](https://aka.ms/download-azure-logic-apps-tools-visual-studio-2015)
+        * [Visual Studio 2015](https://aka.ms/download-azure-logic-apps-tools-visual-studio-2015)
 
-    可以直接从 Visual Studio Marketplace 下载并安装 Azure 逻辑应用工具，或了解[如何从 Visual Studio 内部安装此扩展](https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions)。 
-    完成安装后，请务必重启 Visual Studio。
+        可以直接从 Visual Studio Marketplace 下载并安装 Azure 逻辑应用工具，或了解[如何从 Visual Studio 内部安装此扩展](https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions)。 完成安装后，请务必重启 Visual Studio。
 
 * 使用嵌入式逻辑应用设计器时访问 Web
 
-  设计器需要通过 Internet 连接在 Azure 中创建资源，以及从逻辑应用中的连接器读取属性和数据。 
-  例如，如果使用 Dynamics CRM Online 连接器，则设计器在 CRM 实例中检查可用的默认属性和自定义属性。
+    设计器需要通过 Internet 连接在 Azure 中创建资源，以及从逻辑应用中的连接器读取属性和数据。 例如，如果使用 Dynamics CRM Online 连接器，则设计器在 CRM 实例中检查可用的默认属性和自定义属性。
 
 <a name="find-logic-apps-vs"></a>
 
@@ -71,18 +67,17 @@ ms.locfileid: "77428938"
 
 在 Visual Studio 中，可以使用 Cloud Explorer 来查找与 Azure 订阅关联的，以及在 Azure 门户中部署的所有逻辑应用。
 
-1. 打开 Visual Studio。 在“视图”  菜单中选择“Cloud Explorer”  。
+1. 打开 Visual Studio。 在“视图”菜单中选择“Cloud Explorer”。
 
-2. 在 Cloud Explorer 中选择“帐户管理”。  选择与逻辑应用关联的 Azure 订阅，然后选择“应用”。  例如：
+1. 在 Cloud Explorer 中选择“帐户管理”。 选择与逻辑应用关联的 Azure 订阅，然后选择“应用”。 例如：
 
-   ![选择“帐户管理”](./media/manage-logic-apps-with-visual-studio/account-management-select-Azure-subscription.png)
+    ![选择“帐户管理”](./media/manage-logic-apps-with-visual-studio/account-management-select-Azure-subscription.png)
 
-2. 根据搜索依据是“资源组”还是“资源类型”执行以下步骤：  
+1. 根据搜索依据是“资源组”还是“资源类型”执行以下步骤： 
 
-   * **资源组**：Cloud Explorer 会在 Azure 订阅下显示与该订阅关联的所有资源组。 
-   展开包含你的逻辑应用的资源组，然后选择该逻辑应用。
+    * **资源组**：Cloud Explorer 会在 Azure 订阅下显示与该订阅关联的所有资源组。 展开包含你的逻辑应用的资源组，然后选择你的逻辑应用。
 
-   * **资源类型**：在 Azure 订阅下展开“逻辑应用”。  在 Cloud Explorer 显示与订阅关联的所有已部署逻辑应用后，请选择自己的逻辑应用。
+    * **资源类型**：在 Azure 订阅下展开“逻辑应用”。 在 Cloud Explorer 显示与订阅关联的所有已部署逻辑应用后，请选择自己的逻辑应用。
 
 <a name="open-designer"></a>
 
@@ -90,42 +85,41 @@ ms.locfileid: "77428938"
 
 在 Visual Studio 中，可以打开以前直接通过 Azure 门户或者使用 Visual Studio 作为 Azure 资源组项目创建和部署的逻辑应用。
 
-1. 打开 Cloud Explorer 并找到自己的逻辑应用。 
+1. 打开 Cloud Explorer 并找到自己的逻辑应用。
 
-1. 在逻辑应用的快捷菜单中，选择“使用逻辑应用编辑器打开”  。
+1. 在逻辑应用的快捷菜单中，选择“使用逻辑应用编辑器打开”。
 
-   > [!TIP]
-   > 如果你的 Visual Studio 2019 中没有此命令，请检查是否安装了 Visual Studio 的最新更新。
+    > [!TIP]
+    > 如果你的 Visual Studio 2019 中没有此命令，请检查是否安装了 Visual Studio 的最新更新。
 
-   此示例按资源类型演示逻辑应用，因此，你的逻辑应用会显示在“逻辑应用”部分下。 
+    此示例按资源类型演示逻辑应用，因此，你的逻辑应用会显示在“逻辑应用”部分下。
 
-   ![从 Azure 门户打开部署的逻辑应用](./media/manage-logic-apps-with-visual-studio/open-logic-app-in-editor.png)
+    ![从 Azure 门户打开部署的逻辑应用](./media/manage-logic-apps-with-visual-studio/open-logic-app-in-editor.png)
 
-   逻辑应用在逻辑应用设计器中打开后，可以在设计器的底部选择“代码视图”，以便查看逻辑应用的基础定义结构  。 
-   若要为逻辑应用创建部署模板，请了解如何为该逻辑应用[下载 Azure 资源管理器模板](#download-logic-app)。 详细了解[资源管理器模板](../azure-resource-manager/template-deployment-overview.md)。
+    逻辑应用在逻辑应用设计器中打开后，可以在设计器的底部选择“代码视图”，以便查看逻辑应用的基础定义结构。 若要为逻辑应用创建部署模板，请了解如何为该逻辑应用[下载 Azure 资源管理器模板](#download-logic-app)。 详细了解[资源管理器模板](../azure-resource-manager/templates/overview.md)。
 
 <a name="download-logic-app"></a>
 
 ## <a name="download-from-azure"></a>从 Azure 下载
 
-可以从 [Azure 门户](https://portal.azure.cn)下载逻辑应用，并将其保存为 [Azure 资源管理器](../azure-resource-manager/resource-group-overview.md)模板。 然后，可以在本地使用 Visual Studio 编辑模板，并根据不同的部署环境自定义逻辑应用。  下载逻辑应用会在[资源管理器模板](../azure-resource-manager/template-deployment-overview.md)中将这些逻辑应用的定义（也使用 JavaScript 对象表示法 (JSON)）*参数化*。
+可以从 [Azure 门户](https://portal.azure.cn)下载逻辑应用，并将其保存为 [Azure 资源管理器](../azure-resource-manager/management/overview.md)模板。 然后，可以在本地使用 Visual Studio 编辑模板，并根据不同的部署环境自定义逻辑应用。  下载逻辑应用会在[资源管理器模板](../azure-resource-manager/templates/overview.md)中将这些逻辑应用的定义（也使用 JavaScript 对象表示法 (JSON)）*参数化*。
 
 1. 在 Visual Studio 中打开 Cloud Explorer。 找到并选择要从 Azure 下载的逻辑应用。
 
-1. 在该应用的快捷菜单中，选择“使用逻辑应用编辑器打开”  。
+1. 在该应用的快捷菜单中，选择“使用逻辑应用编辑器打开”。
 
-   > [!TIP]
-   > 如果你的 Visual Studio 2019 中没有此命令，请检查是否安装了 Visual Studio 的最新更新。
+    > [!TIP]
+    > 如果你的 Visual Studio 2019 中没有此命令，请检查是否安装了 Visual Studio 的最新更新。
 
-   逻辑应用设计器随即打开并显示该逻辑应用。 若要查看逻辑应用的基础定义和结构，请在设计器的底部选择“代码视图”。 
+    逻辑应用设计器随即打开并显示该逻辑应用。 若要查看逻辑应用的基础定义和结构，请在设计器的底部选择“代码视图”。
 
-1. 在设计器工具栏上选择“下载”。 
+1. 在设计器工具栏上选择“下载”。
 
-   ![从 Azure 门户下载逻辑应用](./media/manage-logic-apps-with-visual-studio/download-logic-app-from-portal.png)
+    ![从 Azure 门户下载逻辑应用](./media/manage-logic-apps-with-visual-studio/download-logic-app-from-portal.png)
 
 1. 当系统提示输入位置时，请浏览到该位置，并在资源管理器模板中以 JSON (.json) 文件格式保存逻辑应用的定义。
 
-   逻辑应用定义显示在资源管理器模板中的 `resources` 子节内。 现在，可以使用 Visual Studio 来编辑逻辑应用定义和资源管理器模板。 还可以将模板作为 [Azure 资源组项目](../azure-resource-manager/templates/create-visual-studio-deployment-project.md)添加到 Visual Studio 解决方案中。 了解 [Visual Studio 中逻辑应用的 Azure 资源组项目](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)。
+    逻辑应用定义显示在资源管理器模板中的 `resources` 子节内。 现在，可以使用 Visual Studio 来编辑逻辑应用定义和资源管理器模板。 还可以将模板作为 [Azure 资源组项目](../azure-resource-manager/templates/create-visual-studio-deployment-project.md)添加到 Visual Studio 解决方案中。 了解 [Visual Studio 中逻辑应用的 Azure 资源组项目](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)。
 
 <a name="link-integration-account"></a>
 
@@ -135,102 +129,156 @@ ms.locfileid: "77428938"
 
 1. 在 Visual Studio 中，打开逻辑应用所在的 Azure 资源组项目。
 
-1. 在解决方案资源管理器中打开 **<logic-app-name>.json** 文件的快捷菜单，然后选择“使用逻辑应用设计器打开”。  （键盘：Ctrl+L）
+1. 在解决方案资源管理器中打开 **<logic-app-name>.json** 文件的快捷菜单，然后选择“使用逻辑应用设计器打开”。 （键盘：Ctrl+L）
 
-   ![使用逻辑应用设计器打开逻辑应用的 .json 文件](./media/manage-logic-apps-with-visual-studio/open-logic-app-designer.png)
+    ![使用逻辑应用设计器打开逻辑应用的 .json 文件](./media/manage-logic-apps-with-visual-studio/open-logic-app-designer.png)
 
-   > [!TIP]
-   > 如果 Visual Studio 2019 中没有此命令，请检查是否安装了 Visual Studio 和 Azure 逻辑应用工具扩展的最新更新。
+    > [!TIP]
+    > 如果 Visual Studio 2019 中没有此命令，请检查是否安装了 Visual Studio 和 Azure 逻辑应用工具扩展的最新更新。
 
-1. 确保逻辑应用设计器有焦点，方法是：选择设计器的选项卡或图面，使“属性”窗口显示逻辑应用的“集成帐户”属性。 
+1. 确保逻辑应用设计器有焦点，方法是：选择设计器的选项卡或图面，使“属性”窗口显示逻辑应用的“集成帐户”属性。
 
-   ![“属性”窗口 -“集成帐户”属性](./media/manage-logic-apps-with-visual-studio/open-logic-app-properties-integration-account.png)
+    ![“属性”窗口 -“集成帐户”属性](./media/manage-logic-apps-with-visual-studio/open-logic-app-properties-integration-account.png)
 
-   > [!TIP]
-   > 如果尚未打开“属性”窗口，请选择“视图”  菜单中的“属性窗口”  。 （键盘：按 F4）
+    > [!TIP]
+    > 如果尚未打开“属性”窗口，请选择“视图”菜单中的“属性窗口”。 （键盘：按 F4）
 
-1. 打开“集成帐户”属性列表，选择要关联到逻辑应用的集成帐户，例如： 
+1. 打开“集成帐户”属性列表，选择要关联到逻辑应用的集成帐户，例如：
 
    ![打开“集成帐户”属性列表](./media/manage-logic-apps-with-visual-studio/select-integration-account.png)
 
 1. 完成后，请记得保存 Visual Studio 解决方案。
 
-在 Visual Studio 中设置“集成帐户”属性并将逻辑应用另存为 Azure 资源管理器模板时，该模板也包含一个针对所选集成帐户的参数声明。  有关模板参数和逻辑应用的详细信息，请参阅[概述：自动完成逻辑应用部署](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#template-parameters)。
+在 Visual Studio 中设置“集成帐户”属性并将逻辑应用另存为 Azure 资源管理器模板时，该模板也包含一个针对所选集成帐户的参数声明。 有关模板参数和逻辑应用的详细信息，请参阅[概述：自动完成逻辑应用部署](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#template-parameters)。
+
+<a name="change-location"></a>
+
+## <a name="change-deployment-location"></a>更改部署位置
+
+在 Visual Studio 中，如果逻辑应用在用于自动执行部署的 [Azure 资源组项目](../azure-resource-manager/templates/create-visual-studio-deployment-project.md)中作为 JSON (.json) 文件存在，则会为该逻辑应用设置一个位置类型和一个具体位置。 此位置可以是 Azure 区域，也可以是现有的集成服务环境 (ISE)。
+
+<!--Not Available on an existing [integration service environment (ISE)](connect-virtual-network-vnet-isolated-environment.md)-->
+
+若要更改逻辑应用的位置类型或位置，必须使用逻辑应用设计器从解决方案资源管理器中打开逻辑应用的工作流定义 (.json) 文件。 不能使用 Cloud Explorer 更改这些属性。
+
+<!--Not Available on [**Integration Service Environment**](connect-virtual-network-vnet-isolated-environment-overview.md)-->
+<!--Not Available on [limits](logic-apps-limits-and-config.md#integration-account-limits), [integration account support](connect-virtual-network-vnet-isolated-environment-overview.md#ise-skus)-->
+
+
+1. 在 Visual Studio 中，打开逻辑应用所在的 Azure 资源组项目。
+
+1. 在解决方案资源管理器中打开 `<logic-app-name>.json` 文件的快捷菜单，然后选择“使用逻辑应用设计器打开”。 （键盘：Ctrl + L）
+
+    ![使用逻辑应用设计器打开逻辑应用的 .json 文件](./media/manage-logic-apps-with-visual-studio/open-logic-app-designer.png)
+
+    > [!TIP]
+    > 如果 Visual Studio 2019 中没有此命令，请检查是否安装了 Visual Studio 和 Azure 逻辑应用工具扩展的最新更新。
+
+1. 确保逻辑应用设计器有焦点，方法是：选择设计器的选项卡或图面，使“属性”窗口显示逻辑应用的“选择位置类型”和“位置”属性。  项目的位置类型设置为“区域”或“集成服务环境”。
+
+    ![属性窗口 -“选择位置类型”和“位置”属性](./media/manage-logic-apps-with-visual-studio/open-logic-app-properties-location.png)
+
+    > [!TIP]
+    > 如果尚未打开“属性”窗口，请选择“视图”菜单中的“属性窗口”。 （键盘：按 F4）
+
+1. 若要更改位置类型，请打开“选择位置类型”属性列表，然后选择所需的位置类型。
+
+    例如，如果位置类型为“集成服务环境”，则可以选择“区域”。
+
+    ![“选择位置类型”属性 - 更改位置类型](./media/manage-logic-apps-with-visual-studio/change-location-type.png)
+
+1. 若要更改具体位置，请打开“位置”属性列表。 根据位置类型选择所需的位置，例如：
+
+    * 选择其他 Azure 区域：
+
+        ![打开“位置”属性列表，选择另一个 Azure 区域](./media/manage-logic-apps-with-visual-studio/change-azure-resource-group-region.png)
+
+    * 选择其他 ISE：
+
+        ![打开“位置”属性列表，选择另一个 ISE](./media/manage-logic-apps-with-visual-studio/change-integration-service-environment.png)
+
+1. 完成后，请记得保存 Visual Studio 解决方案。
+
+在 Visual Studio 中更改位置类型或位置并将逻辑应用另存为 Azure 资源管理器模板时，该模板还会包含针对该位置类型和位置的参数声明。 有关模板参数和逻辑应用的详细信息，请参阅[概述：自动完成逻辑应用部署](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#template-parameters)。
 
 <a name="refresh"></a>
 
 ## <a name="refresh-from-azure"></a>从 Azure 刷新
 
-如果在 Azure 门户中编辑了逻辑应用并想要保存这些更改，请务必在 Visual Studio 中使用这些更改刷新该应用的版本。 
+如果在 Azure 门户中编辑了逻辑应用并想要保存这些更改，请务必在 Visual Studio 中使用这些更改刷新该应用的版本。
 
-* 在 Visual Studio 中的逻辑应用设计器工具栏上，选择“刷新”。 
+* 在 Visual Studio 中的逻辑应用设计器工具栏上，选择“刷新”。
 
   -或-
 
-* 在 Visual Studio Cloud Explorer 中打开逻辑应用的快捷菜单，选择“刷新”。  
+* 在 Visual Studio Cloud Explorer 中打开逻辑应用的快捷菜单，选择“刷新”。
 
-![使用更新内容刷新逻辑应用](./media/manage-logic-apps-with-visual-studio/refresh-logic-app.png)
+![使用更新内容刷新逻辑应用](./media/manage-logic-apps-with-visual-studio/refresh-logic-app-with-updates-from-portal.png)
 
 ## <a name="publish-logic-app-updates"></a>发布逻辑应用更新
 
-准备好将逻辑应用更新从 Visual Studio 部署到 Azure 时，请在逻辑应用设计器工具栏上选择“发布”。 
+准备好将逻辑应用更新从 Visual Studio 部署到 Azure 时，请在逻辑应用设计器工具栏上选择“发布”。
 
-![发布更新的逻辑应用](./media/manage-logic-apps-with-visual-studio/publish-logic-app.png)
+![将更新的逻辑应用发布到 Azure 门户](./media/manage-logic-apps-with-visual-studio/publish-logic-app-to-azure-portal.png)
 
 ## <a name="manually-run-your-logic-app"></a>手动运行逻辑应用
 
-可以通过 Visual Studio 手动触发 Azure 中部署的逻辑应用。 在逻辑应用设计器工具栏上，选择“运行触发器”  。
+可以通过 Visual Studio 手动触发 Azure 中部署的逻辑应用。 在逻辑应用设计器工具栏上，选择“运行触发器”。
 
-![手动运行逻辑应用](./media/manage-logic-apps-with-visual-studio/manually-run-logic-app.png)
+![为逻辑应用手动运行触发器](./media/manage-logic-apps-with-visual-studio/manually-run-logic-app.png)
 
 ## <a name="review-run-history"></a>查看运行历史记录
 
 若要检查逻辑应用运行的状态和诊断问题，可以在 Visual Studio 中查看这些运行的详细信息，例如输入和输出。
 
-1. 在 Cloud Explorer 中打开逻辑应用的快捷菜单，选择“打开运行历史记录”。 
+1. 在 Cloud Explorer 中打开逻辑应用的快捷菜单，选择“打开运行历史记录”。
 
-   ![打开运行历史记录](./media/manage-logic-apps-with-visual-studio/view-run-history.png)
+    ![打开逻辑应用的运行历史记录](./media/manage-logic-apps-with-visual-studio/open-run-history-for-logic-app.png)
 
-2. 若要查看特定运行的详细信息，请双击该运行。 例如：
+1. 若要查看特定运行的详细信息，请双击该运行。 例如：
 
-   ![详细运行历史记录](./media/manage-logic-apps-with-visual-studio/view-run-history-details.png)
-  
-   > [!TIP]
-   > 若要按属性将表排序，请选择该属性的列标题。 
+    ![查看有关特定运行的信息](./media/manage-logic-apps-with-visual-studio/view-run-history-details.png)
 
-3. 展开要查看其输入和输出的步骤。 例如：
+    > [!TIP]
+    > 若要按属性将表排序，请选择该属性的列标题。
 
-   ![查看每个步骤的输入和输出](./media/manage-logic-apps-with-visual-studio/run-inputs-outputs.png)
+1. 展开要查看其输入和输出的步骤，例如：
+
+    ![查看每个步骤的输入和输出](./media/manage-logic-apps-with-visual-studio/view-run-history-inputs-outputs.png)
 
 ## <a name="disable-or-enable-logic-app"></a>禁用或启用逻辑应用
 
-如果不删除逻辑应用，可以在下一次满足触发条件时，阻止触发器激发。 禁用逻辑应用可以防止逻辑应用引擎创建和运行以后的逻辑应用工作流实例。
-在 Cloud Explorer 中打开逻辑应用的快捷菜单，选择“禁用”。 
+如果不删除逻辑应用，可以在下一次满足触发条件时，阻止触发器激发。 禁用逻辑应用可以防止逻辑应用引擎创建和运行以后的逻辑应用工作流实例。 在 Cloud Explorer 中打开逻辑应用的快捷菜单，选择“禁用”。
 
-![禁用逻辑应用](./media/manage-logic-apps-with-visual-studio/disable-logic-app.png)
+![在 Cloud Explorer 中禁用逻辑应用](./media/manage-logic-apps-with-visual-studio/disable-logic-app-cloud-explorer.png)
 
 > [!NOTE]
-> 禁用逻辑应用后，任何新运行都不会实例化。 所有正在进行的和挂起的运行将继续进行，直到完成，这可能要花费一些时间才能完成。 
+> 禁用逻辑应用后，任何新运行都不会实例化。 所有正在进行的和挂起的运行将继续进行，直到完成，这可能要花费一些时间才能完成。
 
-准备好让逻辑应用恢复操作时，可以重新激活逻辑应用。 在 Cloud Explorer 中打开逻辑应用的快捷菜单，选择“启用”。 
+若要重新激活逻辑应用，请在 Cloud Explorer 中打开逻辑应用的快捷菜单，然后选择“启用”。
 
-![启用逻辑应用](./media/manage-logic-apps-with-visual-studio/enable-logic-app.png)
+![在 Cloud Explorer 中启用逻辑应用](./media/manage-logic-apps-with-visual-studio/enable-logic-app-cloud-explorer.png)
 
 ## <a name="delete-your-logic-app"></a>删除逻辑应用
 
-若要从 Azure 门户删除逻辑应用，请在 Cloud Explorer 中打开逻辑应用的快捷菜单，并选择“删除”。 
+若要从 Azure 门户删除逻辑应用，请在 Cloud Explorer 中打开逻辑应用的快捷菜单，并选择“删除”。
 
-![删除逻辑应用](./media/manage-logic-apps-with-visual-studio/delete-logic-app.png)
+![从 Azure 门户删除逻辑应用](./media/manage-logic-apps-with-visual-studio/delete-logic-app-from-azure-portal.png)
 
 > [!NOTE]
-> 删除逻辑应用后，任何新运行都不会实例化。 所有正在进行和挂起的运行都将取消。 如果有成千上万个运行，取消操作可能需要很长时间才能完成。 
+> 删除逻辑应用后，任何新运行都不会实例化。 所有正在进行和挂起的运行都将取消。 如果有成千上万个运行，取消操作可能需要很长时间才能完成。
+
+> [!NOTE]
+> 如果删除并重新创建了子逻辑应用，则必须重新保存父逻辑应用。 重新创建的子应用将具有不同的元数据。
+> 如果在重新创建父逻辑应用的子逻辑应用后未重新保存父逻辑应用，则对子逻辑应用的调用将失败，并出现“未授权”错误。 此行为适用于父子逻辑应用，例如，那些使用集成帐户中的项目或调用 Azure 函数的逻辑应用。
 
 ## <a name="troubleshooting"></a>故障排除
 
 在逻辑应用设计器中打开逻辑应用项目时，可能无法获取用于选择 Azure 订阅的选项。 而在逻辑应用打开时，Azure 订阅并非所要使用的订阅。 之所以发生此行为，原因在于当你打开逻辑应用的 .json 文件后，Visual Studio 将缓存首次选择的订阅，以供将来使用。 若要解决该问题，请尝试执行以下步骤之一：
 
-* 重命名逻辑应用的 .json 文件。 订阅缓存依赖于该文件名。 
-* 若要删除解决方案中以前针对所有逻辑应用选择的订阅  ，请删除该解决方案目录中隐藏的 Visual Studio 设置文件夹 (.vs)。 此位置用于存储订阅信息。
+* 重命名逻辑应用的 .json 文件。 订阅缓存依赖于该文件名。
+
+* 若要删除解决方案中以前针对所有逻辑应用选择的订阅，请删除该解决方案目录中隐藏的 Visual Studio 设置文件夹 (.vs)。 此位置用于存储订阅信息。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -238,3 +286,5 @@ ms.locfileid: "77428938"
 
 > [!div class="nextstepaction"]
 > [以 JSON 编写逻辑应用定义](../logic-apps/logic-apps-author-definitions.md)
+
+<!-- Update_Description: update meta properties, wording update, update link -->
