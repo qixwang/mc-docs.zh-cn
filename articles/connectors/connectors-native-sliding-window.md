@@ -3,22 +3,24 @@ title: 计划任务以处理连续数据
 description: 在 Azure 逻辑应用中使用滑动窗口来创建和运行处理连续数据的定期任务
 services: logic-apps
 ms.suite: integration
-ms.reviewer: deli, klam, logicappspm
+ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 origin.date: 03/25/2020
-ms.date: 06/08/2020
+ms.date: 07/20/2020
+ms.testscope: no
+ms.testdate: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1d7d28d81a475b6384bcd4407a9e7853b9133fcb
-ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
+ms.openlocfilehash: 25df037015091e3c54e8207c02a4322f0a484f06
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84564268"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414667"
 ---
 <!--Verified successfully on 05/08/2020-->
 # <a name="schedule-and-run-tasks-for-contiguous-data-by-using-the-sliding-window-trigger-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用“滑动窗口”触发器来计划和运行处理连续数据的任务
 
-若要定期运行那些必须以连续区块的形式处理数据的任务、进程或作业，可以使用**滑动窗口**触发器来启动逻辑应用工作流。 可以设置启动工作流的日期、时间和时区，以及设置设置重复该工作流的定期计划。 如果定期计划因某种原因而缺失，此触发器会处理这些缺失的定期计划。 例如，在数据库和备份存储之间同步数据时，请使用“滑动窗口”触发器，使数据在同步时没有产生间隔。 有关内置计划触发器和操作的详细信息，请参阅[使用 Azure 逻辑应用计划和运行定期自动执行的任务和工作流](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)。
+若要定期运行那些必须以连续区块的形式处理数据的任务、进程或作业，可以使用**滑动窗口**触发器来启动逻辑应用工作流。 可以设置启动工作流的日期、时间和时区，以及设置设置重复该工作流的定期计划。 如果由于某种原因错过了重复周期（例如，由于中断或工作流禁用而错过），则此触发器会处理这些错过的重复周期。 例如，在数据库和备份存储之间同步数据时，请使用“滑动窗口”触发器，使数据在同步时没有产生间隔。 有关内置计划触发器和操作的详细信息，请参阅[使用 Azure 逻辑应用计划和运行定期自动执行的任务和工作流](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)。
 
 下面是此触发器支持的一些模式：
 
@@ -43,7 +45,7 @@ ms.locfileid: "84564268"
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。 创建空白逻辑应用。
 
-1. 显示逻辑应用设计器后，在搜索框中输入 `sliding window` 作为筛选器。 从触发器列表中选择“滑动窗口”触发器****，这是逻辑应用工作流的第一步。
+1. 显示逻辑应用设计器后，在搜索框中输入 `sliding window` 作为筛选器。 从触发器列表中选择“滑动窗口”触发器，这是逻辑应用工作流的第一步。
 
     ![选择“滑动窗口”触发器](./media/connectors-native-sliding-window/add-sliding-window-trigger.png)
 
@@ -54,12 +56,12 @@ ms.locfileid: "84564268"
     | 属性 | JSON 名称 | 必须 | 类型 | 说明 |
     |----------|----------|-----------|------|-------------|
     | **时间间隔** | `interval` | 是 | Integer | 一个正整数，描述工作流基于频率运行的频繁度。 下面是最小和最大间隔： <p>- 月：1-16 个月 <br />- 周：1-71 周 <br />- 天：1-500 天 <br />- 小时：1-12,000 小时 <br />- 分钟：1-72,000 分钟 <br />- 秒：1-9,999,999 秒 <p>例如，如果间隔为 6，频率为“月”，则重复周期为每 6 个月。 |
-    | **频率** | `frequency` | 是 | String | 定期计划的时间单位：“秒”、“分钟”、“小时”、“天”、“周”或“月”**** **** **** **** **** **** |
+    | **频率** | `frequency` | 是 | String | 定期计划的时间单位：“秒”、“分钟”、“小时”、“天”、“周”或“月”      |
     ||||||
 
     ![高级定期选项](./media/connectors-native-sliding-window/sliding-window-trigger-more-options-details.png)
 
-    如需更多定期选项，请打开“添加新参数”列表。**** 选择的任何选项会在选定后显示在触发器中。
+    如需更多定期选项，请打开“添加新参数”列表。 选择的任何选项会在选定后显示在触发器中。
 
     | 属性 | 必须 | JSON 名称 | 类型 | 说明 |
     |----------|----------|-----------|------|-------------|
@@ -72,7 +74,7 @@ ms.locfileid: "84564268"
 
 ## <a name="workflow-definition---sliding-window"></a>工作流定义 - 滑动窗口
 
-在逻辑应用的基础工作流定义（使用 JSON）中，可以通过选定的选项查看“滑动窗口”触发器定义。 若要查看此定义，请在设计器工具栏上选择“代码视图”。**** 若要返回到设计器，请选择设计器工具栏上的“设计器”****。
+在逻辑应用的基础工作流定义（使用 JSON）中，可以通过选定的选项查看“滑动窗口”触发器定义。 若要查看此定义，请在设计器工具栏上选择“代码视图”。 若要返回到设计器，请选择设计器工具栏上的“设计器”。
 
 本示例介绍了“滑动窗口”触发器定义在基础工作流定义中看起来是什么样的，具体说来，对于按小时进行的重复触发，每个重复触发的延迟是 5 秒：
 

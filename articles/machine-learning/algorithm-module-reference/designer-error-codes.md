@@ -9,12 +9,12 @@ ms.topic: troubleshooting
 author: likebupt
 ms.author: zhanxia
 ms.date: 04/16/2020
-ms.openlocfilehash: f657ce9474a0189591b0b49e1f40f12de249cf3b
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: 9a611586bd7449ddbddc87d32ea5a32e0d82aa1c
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097492"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440973"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer-preview"></a>设计器的异常和错误代码（预览）
 
@@ -1494,9 +1494,9 @@ For general information about how the Matchbox recommendation algorithm works, a
 
 |异常消息|
 |------------------------------------------------------------|
-|给定的 TransformationDirectory 无效。|
-|TransformationDirectory“{arg_name}”无效。 原因: {reason}。 请重新运行训练实验，以生成转换文件。 如果训练实验被删除，请重新创建并保存转换文件。|
-|TransformationDirectory“{arg_name}”无效。 原因: {reason}。 {troubleshoot_hint}|
+|给定的转换目录无效。|
+|转换目录“{arg_name}”无效。 原因: {reason}。 请重新运行训练实验，以生成转换文件。 如果训练实验被删除，请重新创建并保存转换文件。|
+|转换目录“{arg_name}”无效。 原因: {reason}。 {troubleshoot_hint}|
 
 
 ## <a name="error-0159"></a>错误 0159
@@ -1520,6 +1520,6 @@ For general information about how the Matchbox recommendation algorithm works, a
 |异常消息|
 |------------------------|
 |库异常。|
-|库异常：{0}。|
-|未知的库异常：{0}。 {1}。|
+|库异常: {exception}。|
+|未知库异常: {exception}。 {customer_support_guidance}。|
 

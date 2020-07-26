@@ -1,17 +1,17 @@
 ---
-title: Azure Functions 的 Azure 服务总线绑定
+title: Azure Functions 的 Azure 服务总线触发器
 description: 了解如何在创建 Azure 服务总线消息时运行 Azure Functions。
 author: craigshoemaker
 ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
-ms.date: 06/05/2020
+ms.date: 07/15/2020
 ms.author: v-junlch
-ms.openlocfilehash: b499b0cff12fdcd6f35c39b72256fe1c50ea737e
-ms.sourcegitcommit: f1a76ee3242698123a3d77f44c860db040b48f70
+ms.openlocfilehash: 9635047819b56d8eb43ecf0de0280e2053649c6b
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84563814"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440441"
 ---
 # <a name="azure-service-bus-trigger-for-azure-functions"></a>Azure Functions 的 Azure 服务总线触发器
 
@@ -257,6 +257,7 @@ JavaScript 不支持特性。
 * `byte[]` - 适用于二进制数据。
 * 自定义类型 - 如果消息包含 JSON，Azure Functions 会尝试反序列化 JSON 数据。
 * `BrokeredMessage` - 提供带 [BrokeredMessage.GetBody\<T>()](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) 方法的反序列化消息。
+* [`MessageReceiver`](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet) - 用于接收和确认来自消息容器的消息（当 [`autoComplete`](functions-bindings-service-bus-output.md#hostjson-settings) 设置为 `false` 时为必需）
 
 这些参数类型适用于 Azure Functions 版本 1.x；对于 2.x 及更高版本，请使用 [`Message`](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.azure.servicebus.message) 而非 `BrokeredMessage`。
 

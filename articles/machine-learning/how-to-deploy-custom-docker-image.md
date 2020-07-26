@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 03/16/2020
 ms.custom: tracking-python
-ms.openlocfilehash: e3d23525d0623a7bb4f3f064f98d2f08569695e7
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: c335eb927eb6c1380c584b69767e5a7d1a77ab21
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097540"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86441190"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>使用自定义 Docker 基础映像部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -175,7 +175,7 @@ Azure 机器学习提供了一个默认的 Docker 基础映像，因此你无需
 
 若要使用自定义映像，需要以下信息：
 
-* 映像名称。 例如，`mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` 是 Microsoft 提供的基础 Docker 映像的路径。
+* 映像名称。 例如，`mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda:latest` 是 Microsoft 提供的基础 Docker 映像的路径。
 
     > [!IMPORTANT]
     > 对于已创建的自定义映像，请确保包含用于该映像的任何标记。 例如，如果映像是使用特定标记（如 `:v1`）创建的。 如果创建映像时未使用特定标记，则应用标记 `:latest`。
@@ -205,15 +205,7 @@ Microsoft 在可公开访问的存储库中提供了多个 docker 映像，可�
 > [!TIP]
 > 由于这些映像是公开可用的，因此在使用它们时不需要提供地址、用户名或密码。
 
-有关详细信息，请参阅 [Azure 机器学习容器](https://github.com/Azure/AzureML-Containers)。
-
-> [!TIP]
->如果在 Azure 机器学习计算上使用版本 1.0.22 或更高版本的 Azure 机器学习 SDK 训练模型，则会在训练期间创建一个映像 。 可使用 `run.properties["AzureML.DerivedImageName"]` 发现此映像的名称。 下面的示例演示如何使用此映像：
->
-> ```python
-> # Use an image built during training with SDK 1.0.22 or greater
-> image_config.base_image = run.properties["AzureML.DerivedImageName"]
-> ```
+有关详细信息，请参阅 GitHub 上的 [Azure 机器学习容器](https://github.com/Azure/AzureML-Containers)存储库。
 
 ### <a name="use-an-image-with-the-azure-machine-learning-sdk"></a>将映像与 Azure 机器学习 SDK 结合使用
 
@@ -228,7 +220,7 @@ from azureml.core.environment import Environment
 myenv = Environment(name="myenv")
 # Enable Docker and reference an image
 myenv.docker.enabled = True
-myenv.docker.base_image = "mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda"
+myenv.docker.base_image = "mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda:latest"
 ```
 
 若要使用不在工作区中的专用容器注册表中的映像，必须使用 `docker.base_image_registry` 指定存储库的地址以及用户名和密码：
@@ -289,7 +281,7 @@ print(service.state)
         "docker": {
             "arguments": [],
             "baseDockerfile": null,
-            "baseImage": "mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda",
+            "baseImage": "mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda:latest",
             "enabled": false,
             "sharedVolumes": true,
             "shmSize": null

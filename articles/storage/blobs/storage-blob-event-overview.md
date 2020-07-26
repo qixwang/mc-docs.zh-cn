@@ -4,17 +4,17 @@ description: 使用 Azure 事件网格订阅 Blob 存储事件。
 author: WenJason
 ms.author: v-jay
 origin.date: 04/06/2020
-ms.date: 06/01/2020
+ms.date: 07/20/2020
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
-ms.reviewer: cbrooks
-ms.openlocfilehash: 67bc9439318579d4fb9495b3aa70f1144d334395
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.reviewer: dineshm
+ms.openlocfilehash: a0ecfa8e5c5e52f08d4a6eb3b3746e106496383a
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199752"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414589"
 ---
 # <a name="reacting-to-blob-storage-events"></a>响应 Blob 存储事件
 
@@ -39,7 +39,7 @@ Azure 存储事件允许应用程序响应事件，例如 Blob 的创建和删�
 - [教程：使用事件网格自动调整已上传图像的大小](https://docs.azure.cn/event-grid/resize-images-on-storage-blob-upload-event?tabs=dotnet)
 
 >[!NOTE]
-> 只有种类为“StorageV2 (常规用途 v2)”和“BlobStorage”的存储帐户支持事件集成。  “存储(常规用途 v1)”不支持与事件网格集成。
+> 只有种类为“StorageV2 (常规用途 v2)”、“BlockBlobStorage”和“BlobStorage”的存储帐户支持事件集成。   “存储(常规用途 v1)”不支持与事件网格集成。
 
 ## <a name="the-event-model"></a>事件模型
 

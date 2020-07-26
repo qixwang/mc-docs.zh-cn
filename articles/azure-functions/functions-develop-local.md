@@ -1,21 +1,14 @@
 ---
-title: 在本地开发并运行 Azure Functions | Microsoft Docs
+title: 在本地开发并运行 Azure Functions
 description: 了解如何在本地计算机上对 Azure 函数进行编码和测试，然后在 Azure Functions 中运行。
-services: functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
-ms.service: azure-functions
 ms.topic: conceptual
-origin.date: 09/04/2018
-ms.date: 10/28/2019
-ms.author: v-junlch
-ms.openlocfilehash: 187f0b27063d9b2f9d4aa652a4d926fd7098e522
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 07/15/2020
+ms.openlocfilehash: 78859e576d6260171e78343bacb92c052d8d9f96
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73034447"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440384"
 ---
 # <a name="code-and-test-azure-functions-locally"></a>在本地对 Azure Functions 进行编码和测试
 
@@ -25,7 +18,7 @@ ms.locfileid: "73034447"
 
 在本地计算机开发函数的方式取决于[语言](supported-languages.md)和工具偏好。 下表中的环境支持本地开发：
 
-|环境                              |Languages         |说明|
+|环境                              |语言         |说明|
 |-----------------------------------------|------------|---|
 |[Visual Studio Code](functions-develop-vs-code.md)| [C#（类库）](functions-dotnet-class-library.md)、[C# 脚本 (.csx)](functions-reference-csharp.md)、[JavaScript](functions-reference-node.md)| [适用于 VS Code 的 Azure Functions 扩展](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)在 VS Code 中添加了 Functions 支持。 需要 Core Tools。 使用 2.x 版 Core Tools 时，支持 Linux、MacOS 和 Windows 上的开发。 若要了解详细信息，请参阅[使用 Visual Studio Code 创建第一个函数](functions-create-first-function-vs-code.md)。 |
 | [命令提示符或终端](functions-run-local.md) | [C#（类库）](functions-dotnet-class-library.md)、[C# 脚本 (.csx)](functions-reference-csharp.md)、[JavaScript](functions-reference-node.md)| [Azure Functions Core Tools] 提供核心运行时和模板用于创建函数，以实现本地开发。 版本 2.x 支持 Linux、MacOS 和 Windows 上的开发。 所有环境依赖于 Core Tools 提供本地 Functions 运行时。 |
@@ -34,18 +27,18 @@ ms.locfileid: "73034447"
 
 [!INCLUDE [Don't mix development environments](../../includes/functions-mixed-dev-environments.md)]
 
-其中每个本地开发环境允许创建函数应用项目，并使用预定义的 Functions 模板创建新函数。 每个环境使用 Core Tools，使你能够在自己的计算机上针对实际的 Functions 运行时测试和调试函数，就像对其他任何应用执行此操作一样。 还可以将函数应用项目从其中的任何环境发布到 Azure。  
+其中每个本地开发环境允许创建函数应用项目，并使用预定义的 Functions 模板创建新函数。 每个环境使用 Core Tools，使你能够在自己的计算机上针对实际的 Functions 运行时测试和调试函数，就像对其他任何应用执行此操作一样。 还可以将函数应用项目从其中的任何环境发布到 Azure。
 
 ## <a name="next-steps"></a>后续步骤
 
 + 若要详细了解如何使用 Visual Studio 2019 在本地开发编译的 C# 函数，请参阅[使用 Visual Studio 开发 Azure Functions](functions-develop-vs.md)。
-+ 若要详细了解如何在 Mac、Linux 或 Windows 计算机上使用 VS Code 本地开发函数，请参阅[从 VS Code 部署 Azure Functions](https://docs.microsoft.com/azure/javascript/tutorial-vscode-serverless-node-01)。
++ 若要详细了解如何在 Mac、Linux 或 Windows 计算机上使用 VS Code 本地开发函数，请参阅[从 VS Code 部署 Azure Functions](https://docs.microsoft.com/azure/developer/javascript/tutorial-vscode-serverless-node-01)。
 + 若要详细了解如何通过命令提示符或终端开发函数，请参阅[使用 Azure Functions Core Tools](functions-run-local.md)。
 
 <!-- LINKS -->
 
 [Azure Functions Core Tools]: https://www.npmjs.com/package/azure-functions-core-tools
-[Azure 门户]: https://portal.azure.cn 
+[Azure 门户]: https://portal.azure.cn
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
 
 <!-- Update_Description: wording update -->

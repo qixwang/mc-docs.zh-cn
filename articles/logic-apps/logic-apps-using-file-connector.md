@@ -9,12 +9,12 @@ ms.topic: article
 origin.date: 01/13/2019
 ms.date: 05/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 5518c7aefc49af222b744a15b76457b9b1f0acce
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: a4d663a978f2b7369eb38eef8934506151b396a1
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83002087"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414723"
 ---
 <!--NOT SUITABLE FOR AZURE CHINA CLOUD-->
 <!--DROPBOX NOT EXISTS-->
@@ -38,7 +38,10 @@ ms.locfileid: "83002087"
 
 * 访问特定的计算机，其中的文件系统是你需要使用的。 例如，如果在与文件系统相同的计算机上安装数据网关，则需要该计算机的帐户凭据。
 
-* 逻辑应用支持的提供商（例如 Office 365 Outlook、Outlook.com 或 Gmail）提供的电子邮件帐户。 至于其他提供商，请[查看此处的连接器列表](https://docs.microsoft.com/connectors/)。 此逻辑应用使用 Office 365 Outlook 帐户。 如果使用其他电子邮件帐户，整个步骤仍然是相同的，但 UI 可能稍有不同。
+* 逻辑应用支持的提供商（例如 Office 365 Outlook 或 Outlook.com）提供的电子邮件帐户。 至于其他提供商，请[查看此处的连接器列表](https://docs.microsoft.com/connectors/)。 此逻辑应用使用 Office 365 Outlook 帐户。 如果使用其他电子邮件帐户，整个步骤仍然是相同的，但 UI 可能稍有不同。
+    
+    <!--Not Available on , or Gmail-->
+    <!--Not Available on Gmail connector-->
 
 * 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识。 对于本示例，需要一个空白逻辑应用。
 
@@ -60,7 +63,7 @@ ms.locfileid: "83002087"
 
 ## <a name="add-actions"></a>添加操作
 
-1. 在触发器下，选择“下一步”。  在搜索框中，输入“文件系统”作为筛选器。 在操作列表中选择此操作：**创建文件**
+1. 在触发器下，选择“下一步”。 在搜索框中，输入“文件系统”作为筛选器。 在操作列表中选择此操作：**创建文件**
 
     ![查找文件系统连接器](media/logic-apps-using-file-connector/find-file-system-action.png)
 
@@ -73,16 +76,16 @@ ms.locfileid: "83002087"
     | **连接名称** | 是 | <*connection-name*> | 连接使用的名称 |
     | **根文件夹** | 是 | <*root-folder-name*> | 文件系统的根文件夹，例如，如果安装了本地数据网关，比如安装了本地数据网关的计算机上的本地文件夹，或者计算机可以访问的网络共享文件夹。 <p>例如： `\\PublicShare\\DropboxFiles` <p>根文件夹是主要的父文件夹，用作所有与文件有关的操作的相对路径。 |
     | **身份验证类型** | 否 | <*auth-type*> | 文件系统使用的身份验证类型：**Windows** |
-    | **用户名** | 是 | <*domain*>\\<*username*> | 拥有文件系统的计算机用户名 |
+    | **用户名** | 是 | <*domain*>\\<*username*> <p>-或- <p><*local-computer*>\\<*username*> | 具有文件系统文件夹的计算机的用户名。 <p>如果文件系统文件夹与本地数据网关在同一台计算机上，则可使用 <*local-computer*>\\<*username*>。 |
     | **密码** | 是 | <*your-password*> | 拥有文件系统的计算机密码 |
     | **gateway** | 是 | <*installed-gateway-name*> | 以前安装的网关的名称 |
     |||||
 
-1. 完成后，选择“创建”  。
+1. 完成后，选择“创建”。
 
    逻辑应用会配置和测试连接，以确保连接正常运行。 如果正确建立连接，会显示用于之前所选操作的选项。
 
-1. 在“创建文件”操作中，提供用于将文件从 Dropbox 复制到本地文件共享中的根文件夹的详细信息  。 若要添加前面步骤的输出，请在框中单击，然后在显示动态内容列表时从可用字段中进行选择。
+1. 在“创建文件”操作中，提供用于将文件从 Dropbox 复制到本地文件共享中的根文件夹的详细信息。 若要添加前面步骤的输出，请在框中单击，然后在显示动态内容列表时从可用字段中进行选择。
 
    ![创建文件操作](media/logic-apps-using-file-connector/create-file-filled.png)
 

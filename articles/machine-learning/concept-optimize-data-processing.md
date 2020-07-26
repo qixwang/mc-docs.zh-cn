@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: 459fedcb6b93f2322d2df971f462cae5fd6a3226
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: 96f73a881f4aa2e8ddc89200102e6d1395ca6e00
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097739"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86441109"
 ---
 # <a name="optimize-data-processing-with-azure-machine-learning"></a>使用 Azure 机器学习优化数据处理
 
@@ -75,6 +75,8 @@ CSV 文件通常用于导入和导出数据，因为它们易于在 Excel 中进
 如果偏好 `Spark` | `PySpark`
 适用于小于 1 GB 的数据 | 在本地或对远程 Azure 机器学习计算实例执行 `Pandas`
 适用于大于 10 GB 的数据| 使用 `Ray`、`Dask` 或 `Spark` 移动到群集
+
+可以使用 [dask-cloudprovider](https://cloudprovider.dask.org/en/latest/#azure) 包在 Azure ML 计算群集上创建 `Dask` 群集。 或者，可以在计算实例上以本地方式运行 `Dask`。
 
 ## <a name="next-steps"></a>后续步骤
 

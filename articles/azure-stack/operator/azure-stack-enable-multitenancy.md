@@ -2,18 +2,18 @@
 title: 在 Azure Stack Hub 中配置多租户
 description: 了解如何在 Azure Stack Hub 中启用和禁用多个 Azure Active Directory 租户。
 author: WenJason
-ms.topic: article
-origin.date: 03/04/2020
-ms.date: 05/18/2020
+ms.topic: how-to
+oigin.date: 06/18/2020
+ms.date: 07/20/2020
 ms.author: v-jay
 ms.reviewer: bryanr
 ms.lastreviewed: 06/10/2019
-ms.openlocfilehash: 96b191c1d5d951b377db0d624179a56861c4b8fd
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: b96ef5ebf4c373f50d9e3f788f8984a0c7a800e8
+ms.sourcegitcommit: e9ffd50aa5eaab402a94bfabfc70de6967fe6278
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422500"
+ms.lasthandoff: 07/14/2020
+ms.locfileid: "86307396"
 ---
 # <a name="configure-multi-tenancy-in-azure-stack-hub"></a>在 Azure Stack Hub 中配置多租户
 
@@ -77,7 +77,7 @@ Register-AzSGuestDirectoryTenant -AdminResourceManagerEndpoint $adminARMEndpoint
 
 在 Azure Stack Hub 操作员使得 Fabrikam 目录能够与 Azure Stack Hub 一起使用后，Mary 必须向 Fabrikam 的目录租户注册 Azure Stack Hub。
 
-#### <a name="registering-azure-stack-hub-with-the-guest-directory"></a>将 Azure Stack Hub 注册到来宾目录
+#### <a name="register-azure-stack-hub-with-the-guest-directory"></a>将 Azure Stack Hub 注册到来宾目录
 
 Mary（Fabrikam 的目录管理员）在来宾目录 fabrikam.partner.onmschina.cn 中运行以下命令。
 

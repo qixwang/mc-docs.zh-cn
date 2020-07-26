@@ -7,15 +7,15 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 01/17/2020
-ms.date: 06/01/2020
+ms.date: 07/20/2020
 ms.author: v-jay
 ms.subservice: common
-ms.openlocfilehash: c2c585b280a95c818da945127f6602cf8842619f
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: e8dbdc42e321b14ce1172f894b551a879756f1ab
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199536"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414702"
 ---
 # <a name="storage-account-overview"></a>存储帐户概述
 
@@ -63,6 +63,12 @@ Azure 存储帐户包含所有的 Azure 存储数据对象：Blob、文件、队
 
 - 使用的[存储服务 REST API](https://msdn.microsoft.com/library/azure/dd894041.aspx) 版本早于 2014-02-14，或使用的客户端库的版本低于 4.x， 并且无法升级应用程序。
 
+### <a name="blockblobstorage-accounts"></a>BlockBlobStorage 帐户
+
+BlockBlobStorage 帐户是高级性能层中的专用存储帐户，用于将非结构化对象数据作为块 Blob 或追加 Blob 存储。 与常规用途 v2 和 BlobStorage 帐户相比，BlockBlobStorage 帐户提供低且一致的延迟和更高的事务速率。
+
+BlockBlobStorage 帐户目前不支持分层为 “热”、“冷”或“存档”访问层。 此类型的存储帐户不支持页 blob、表或队列。
+
 ### <a name="filestorage-accounts"></a>FileStorage 帐户
 
 FileStorage 帐户是用于存储和创建高级文件共享的专用存储帐户。 此存储帐户类型支持文件，但不支持块 blob、追加 blob、页 blob、表或队列。
@@ -86,6 +92,14 @@ FileStorage 帐户提供了独特的性能专用特征，例如 IOPS 突发。 �
 
 - 用于存储 Blob、文件、表、队列和 Azure 虚拟机磁盘的标准性能层。 有关标准存储帐户的可伸缩性目标的详细信息，请参阅[标准存储帐户的可伸缩性目标](scalability-targets-standard-account.md)。
 - 用于存储非托管虚拟机磁盘的高级性能层。 Azure 建议在 Azure 虚拟机中使用托管磁盘，而不是使用非托管磁盘。 若要详细了解高级性能层的可伸缩性目标，请参阅[高级页 Blob 存储帐户的可伸缩性目标](../blobs/scalability-targets-premium-page-blobs.md)。
+
+### <a name="blockblobstorage-storage-accounts"></a>BlockBlobStorage 存储帐户
+
+BlockBlobStorage 存储帐户提供用于存储块 blob 和追加 blob 的高级性能层。 有关详细信息，请参阅[高级块 blob 存储帐户的可伸缩性目标](../blobs/scalability-targets-premium-block-blobs.md)。
+
+### <a name="filestorage-storage-accounts"></a>FileStorage 存储帐户
+
+FileStorage 存储帐户为 Azure 文件共享提供高级性能层。 有关详细信息，请参阅 [Azure 文件存储可伸缩性和性能目标](../files/storage-files-scale-targets.md)。
 
 ## <a name="access-tiers-for-block-blob-data"></a>块 Blob 数据的访问层
 
@@ -122,7 +136,7 @@ Azure 存储提供不同的选项，适用于根据使用模型访问块 Blob �
 - Azure 文件存储：`https://*mystorageaccount*.file.core.chinacloudapi.cn`
 
 > [!NOTE]
-> Blob 存储帐户仅公开 Blob 服务终结点。
+> 块 blob 和 blob 存储帐户仅公开 Blob 服务终结点。
 
 构造用于访问存储帐户中某个对象的 URL，方法是：将对象在存储帐户中的位置追加到终结点。 例如，Blob 地址可能具有以下格式： http://*mystorageaccount*.blob.core.chinacloudapi.cn/*mycontainer*/*myblob*。
 
@@ -147,7 +161,7 @@ Azure 存储提供不同的选项，适用于根据使用模型访问块 Blob �
 
 ## <a name="copying-data-into-a-storage-account"></a>将数据复制到存储帐户中
 
-我们提供的实用程序和库适用于从本地存储设备或第三方云存储提供商处导入数据。 使用哪种解决方案取决于要传输的数据量。 
+我们提供的实用程序和库适用于从本地存储设备或第三方云存储提供商处导入数据。 使用哪种解决方案取决于要传输的数据量。
 
 从常规用途 v1 存储帐户或 Blob 存储帐户升级到常规用途 v2 帐户时，数据会自动迁移。 建议使用此路径来升级帐户。 但是，如果决定将数据从常规用途 v1 帐户移到 Blob 存储帐户，则使用下述工具和库手动迁移数据。 
 
@@ -175,3 +189,4 @@ AzCopy 是一个 Windows 命令行实用程序，用于将数据高性能复制�
 ## <a name="next-steps"></a>后续步骤
 
 - [创建存储帐户](storage-account-create.md)
+- [创建块 Blob 存储帐户](../blobs/storage-blob-create-account-block-blob.md)

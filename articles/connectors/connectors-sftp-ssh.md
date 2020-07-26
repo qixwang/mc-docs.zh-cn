@@ -6,20 +6,31 @@ ms.suite: integration
 author: rockboyfor
 ms.reviewer: estfan, logicappspm
 ms.topic: article
-origin.date: 05/06/2020
-ms.date: 06/08/2020
+origin.date: 06/17/2020
+ms.date: 07/20/2020
+ms.testscope: no
+ms.testdate: 06/08/2020
 ms.author: v-yeche
 tags: connectors
-ms.openlocfilehash: 76632a202f0347e407e41e420d616aa161914a09
-ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
+ms.openlocfilehash: 30e1bef8ed2b5fca1470255bc371140c18fb7f41
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84564264"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414725"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>使用 SSH 和 Azure 逻辑应用监视、创建和管理 SFTP 文件
 
-若要使用[安全外壳 (SSH)](https://www.ssh.com/ssh/protocol/) 协议自动完成用于在[安全文件传输协议 (SFTP)](https://www.ssh.com/ssh/sftp/) 服务器上监视、创建、发送和接收文件的任务，可以使用 Azure 逻辑应用和 SFTP-SSH 连接器来生成并自动完成集成工作流。 SFTP 是通过任何可靠数据流提供文件访问、文件传输和文件管理的网络协议。 下面是可以自动完成的一些示例任务：
+若要使用[安全外壳 (SSH)](https://www.ssh.com/ssh/protocol/) 协议自动完成用于在[安全文件传输协议 (SFTP)](https://www.ssh.com/ssh/sftp/) 服务器上监视、创建、发送和接收文件的任务，可以使用 Azure 逻辑应用和 SFTP-SSH 连接器来生成并自动完成集成工作流。 SFTP 是通过任何可靠数据流提供文件访问、文件传输和文件管理的网络协议。
+
+> [!NOTE]
+> SFTP-SSH 连接器目前不支持以下 SFTP 服务器：
+> 
+> * IBM DataPower
+> * OpenText Secure MFT
+> * OpenText GXS
+
+下面是可以自动完成的一些示例任务：
 
 * 添加或更改文件时进行监视。
 * 获取、创建、复制、重命名、更新、列出和删除文件。
@@ -75,7 +86,7 @@ ms.locfileid: "84564264"
 
 * 提供“重命名文件”操作，用于在 SFTP 服务器上重命名文件。
 
-* 将 SFTP 服务器连接缓存最长 1 小时，这可以提高性能，并减少服务器的连接尝试次数。** 若要设置此缓存行为的持续时间，请在 SFTP 服务器上编辑 SSH 配置中的 [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) 属性。
+* 将 SFTP 服务器连接缓存最长 1 小时，这可以提高性能，并减少服务器的连接尝试次数。 若要设置此缓存行为的持续时间，请在 SFTP 服务器上编辑 SSH 配置中的 [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) 属性。
 
 ## <a name="prerequisites"></a>先决条件
 

@@ -1,5 +1,6 @@
 ---
-title: 数据库迁移方案状态 | Microsoft Docs
+title: 数据库迁移方案状态
+titleSuffix: Azure Database Migration Service
 description: 详细了解 Azure 数据库迁移服务支持的迁移方案的状态。
 services: database-migration
 author: WenJason
@@ -10,14 +11,14 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-origin.date: 09/05/2019
-ms.date: 09/30/2019
-ms.openlocfilehash: 1d2708eec3a2d194c84c3e7c4baf05f9bc5d4cdd
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 06/20/2020
+ms.date: 07/20/2020
+ms.openlocfilehash: 52217e4c7e403a7a00c1c0edf890a742b61df31f
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "71333655"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440411"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Azure 数据库迁移服务支持的迁移方案的状态
 
@@ -25,7 +26,7 @@ Azure 数据库迁移服务旨在支持脱机（一次性）和联机（连续�
 
 ## <a name="offline-versus-online-migrations"></a>脱机和联机迁移
 
-使用 Azure 数据库迁移服务可以执行脱机或联机迁移。 通过“脱机”迁移，应用程序停机时间在迁移开始的同时开始  。 若要限制迁移完成时交接到新环境所需的停机时间，请使用联机迁移。  建议对脱机迁移进行测试，以便确定其停机时间是否可以接受；如果不能接受，请执行联机迁移。
+使用 Azure 数据库迁移服务可以执行脱机或联机迁移。 通过“脱机”迁移，应用程序停机时间在迁移开始的同时开始。 若要限制迁移完成时交接到新环境所需的停机时间，请使用联机迁移。 建议对脱机迁移进行测试，以便确定其停机时间是否可以接受；如果不能接受，请执行联机迁移。
 
 ## <a name="migration-scenario-status"></a>迁移方案状态
 
@@ -42,40 +43,40 @@ Azure 数据库迁移服务支持的迁移方案的状态随时间而变化。 �
 
 下表显示了 Azure 数据库迁移服务对脱机迁移的支持。
 
-| 目标  | 源 | 支持 | 状态 |
+| 目标  | Source | 支持 | 状态 |
 | ------------- | ------------- |:-------------:|:-------------:|
 | **Azure SQL DB** | SQL Server | ✔ | GA |
-|   | RDS SQL |  |  |
-|   | Oracle |  |  |
+|   | RDS SQL | X |  |
+|   | Oracle | X |  |
 | **Azure SQL DB MI** | SQL Server | ✔ | GA |
-|   | RDS SQL |  |  |
-|   | Oracle |  |   |
+|   | RDS SQL | X |  |
+|   | Oracle | X |   |
 | **Azure SQL VM** | SQL Server | ✔ | GA |
-|   | Oracle |   |   |
+|   | Oracle | X |   |
 | **Azure Cosmos DB** | MongoDB | ✔ | GA |
-| **Azure DB for MySQL** | MySQL |   |   |
-|   | RDS MySQL |   |   |
-| **用于 PostgreSQL 的 Azure DB** | PostgreSQL |  |
-|  | RDS PostgreSQL |   |   |
+| **Azure DB for MySQL** | MySQL | X |   |
+|   | RDS MySQL | X |   |
+| **Azure DB for PostgreSQL（单一服务器）** | PostgreSQL | X |
+|  | RDS PostgreSQL | X |   |
 
 ### <a name="online-continuous-sync-migration-support"></a>联机（连续同步）迁移支持
 
 下表显示了 Azure 数据库迁移服务对联机迁移的支持。
 
-| 目标  | 源 | 支持 | 状态 |
+| 目标  | Source | 支持 | 状态 |
 | ------------- | ------------- |:-------------:|:-------------:|
 | **Azure SQL DB** | SQL Server | ✔ | GA |
 |   | RDS SQL | ✔ | GA |
-|   | Oracle |  |  |
+|   | Oracle | X |  |
 | **Azure SQL DB MI** | SQL Server | ✔ | GA |
 |   | RDS SQL | ✔ | GA |
 |   | Oracle | ✔ | 个人预览版 |
-| **Azure SQL VM** | SQL Server |   |   |
-|   | Oracle  |  |  |
+| **Azure SQL VM** | SQL Server | X |   |
+|   | Oracle  | X |  |
 | **Azure Cosmos DB** | MongoDB | ✔ | GA |
 | **Azure DB for MySQL** | MySQL | ✔ | GA |
 |   | RDS MySQL | ✔ | GA |
-| **用于 PostgreSQL 的 Azure DB** | PostgreSQL | ✔ | GA |
+| **Azure DB for PostgreSQL（单一服务器）** | PostgreSQL | ✔ | GA |
 |   | RDS PostgreSQL | ✔ | GA |
 |   | Oracle | ✔ | 公共预览版 |
 

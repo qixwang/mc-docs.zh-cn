@@ -4,14 +4,16 @@ description: 提供常见的 Azure 订阅和服务限制、配额和约束的列
 ms.topic: conceptual
 author: rockboyfor
 origin.date: 06/04/2020
-ms.date: 07/06/2020
+ms.date: 07/13/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: c1dbaaced57e2976e21c5a156bc75d476bded502
-ms.sourcegitcommit: 873e5c5e4156efed505a78d4f5a6e50c494e76d4
+ms.openlocfilehash: c15f94754003ab755c8cb9bd1ce278e10424068c
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86036754"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86441060"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 
@@ -26,9 +28,9 @@ ms.locfileid: "86036754"
 > [!NOTE]
 > 某些服务的限制可调整。
 >
-> 当某个服务的限制不可调整时，下面的表会使用表头“限制”  。 在这些情况下，默认值和最大限制相同。
+> 当某个服务的限制不可调整时，下面的表会使用表头“限制”。 在这些情况下，默认值和最大限制相同。
 >
-> 如果可以调整限制，则表中包含“默认限制”  和“最大限制”  表头。 可以将限制提高到默认限制以上，但不能超过最大限制。
+> 如果可以调整限制，则表中包含“默认限制”和“最大限制”表头。 可以将限制提高到默认限制以上，但不能超过最大限制。
 >
 > 如果想要提高限制或配额，使其超出默认限制，可以[免费建立联机客户支持请求](../templates/error-resource-quota.md)。
 
@@ -92,9 +94,9 @@ ms.locfileid: "86036754"
 
 定价层决定了搜索服务的容量和限制。 层包括：
 
-* “免费”层  为多租户服务，可与其他 Azure 订阅用户共享，旨在用于评估和小型开发项目。
-* 基本层  为规模较小的生产工作负荷提供专用计算资源，并为高可用查询工作负荷提供最多 3 个副本。
-* “标准”层（包括 S1、S2、S3 和 S3 高密度）  适用于较大型生产工作负荷。 “标准”层内有多个级别，以便可以选择与工作负荷配置文件最匹配的资源配置。
+* “免费”层为多租户服务，可与其他 Azure 订阅用户共享，旨在用于评估和小型开发项目。
+* 基本层为规模较小的生产工作负荷提供专用计算资源，并为高可用查询工作负荷提供最多 3 个副本。
+* “标准”层（包括 S1、S2、S3 和 S3 高密度）适用于较大型生产工作负荷。 “标准”层内有多个级别，以便可以选择与工作负荷配置文件最匹配的资源配置。
 
 **基于订阅的限制**
 
@@ -130,6 +132,8 @@ ms.locfileid: "86036754"
 
 [!INCLUDE [functions-limits](../../../includes/functions-limits.md)]
 
+有关详细信息，请参阅 [Functions 托管计划比较](../../azure-functions/functions-scale.md#hosting-plans-comparison)。
+
 ## <a name="azure-kubernetes-service-limits"></a>Azure Kubernetes 服务限制
 
 [!INCLUDE [container-service-limits](../../../includes/container-service-limits.md)]
@@ -137,7 +141,6 @@ ms.locfileid: "86036754"
 ## <a name="azure-machine-learning-limits"></a>Azure 机器学习限制
 
 可在[“Azure 机器学习配额”页](../../machine-learning/how-to-manage-quotas.md)中找到 Azure 机器学习计算配额的最新值
-
 
 <!--Not Available on ## Azure Maps limits-->
 
@@ -205,19 +208,14 @@ ms.locfileid: "86036754"
 [!INCLUDE [azure-data-factory-limits](../../../includes/azure-data-factory-limits.md)]
 
 <!--Not Available on ## Data Lake Analytics limits-->
-
-
-
-<!--Not Available on azure-data-lake-store-limits.md->
-
-
-
+<!--Not Available on ## Data Lake Store limits-->
 <!--Not Available on ## Data Share limits-->
-
 
 ## <a name="database-migration-service-limits"></a>数据库迁移服务限制
 
 [!INCLUDE [database-migration-service-limits](../../../includes/database-migration-service-limits.md)]
+
+<!--Not Available on## Digital Twins limits-->
 
 ## <a name="event-grid-limits"></a>事件网格限制
 
@@ -284,9 +282,6 @@ ms.locfileid: "86036754"
 [!INCLUDE [network-watcher-limits](../../../includes/network-watcher-limits.md)]
 
 <a name="private-link-limits"></a>
-### <a name="private-link-limits"></a>专用链接限制
-
-[!INCLUDE [private-link-limits](../../../includes/private-link-limits.md)]
 
 <!--Not Available on Private Link
 
@@ -330,11 +325,11 @@ ms.locfileid: "86036754"
 
 ## <a name="sql-database-limits"></a>SQL 数据库限制
 
-有关 SQL 数据库的限制，请参阅[单一数据库的 SQL 数据库资源限制](../../sql-database/sql-database-vcore-resource-limits-single-databases.md)、[弹性池和共用数据库的 SQL 数据库资源限制](../../sql-database/sql-database-vcore-resource-limits-elastic-pools.md)以及[托管实例的 SQL 数据库资源限制](../../sql-database/sql-database-managed-instance-resource-limits.md)。
-<!-- There is not such a file in the directory by 06/18/20020-->
-## <a name="sql-data-warehouse-limits"></a>SQL 数据仓库限制
+有关 SQL 数据库的限制，请参阅[单一数据库的 SQL 数据库资源限制](../../azure-sql/database/resource-limits-vcore-single-databases.md)、[弹性池和共用数据库的 SQL 数据库资源限制](../../azure-sql/database/resource-limits-vcore-elastic-pools.md)以及[托管实例的 SQL 数据库资源限制](../../azure-sql/managed-instance/resource-limits.md)。
 
-有关 SQL 数据仓库限制，请参阅 [SQL 数据仓库资源限制](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md)。
+## <a name="azure-synapse-analytics-limits"></a>Azure Synapse Analytics 限制
+
+有关 Azure Synapse Analytics 限制，请参阅 [Azure Synapse 资源限制](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md)。
 
 ## <a name="storage-limits"></a>存储限制
 

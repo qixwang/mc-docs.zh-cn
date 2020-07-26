@@ -4,14 +4,16 @@ description: 使用 Azure 门户通过 Azure 资源管理器管理资源组。 �
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 03/26/2019
-ms.date: 04/30/2020
+ms.date: 07/13/2020
+ms.testscope: yes
+ms.testdate: 07/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 4269f5efb3c43608621a1bd881f84a5daa179b63
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: 51c90290072648dea4847af599cd393f20e1d88e
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596269"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86441176"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>使用 Azure 门户管理 Azure 资源管理器资源组
 
@@ -33,42 +35,42 @@ ms.locfileid: "82596269"
 ## <a name="create-resource-groups"></a>创建资源组
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
-2. 选择“资源组” 
+2. 选择“资源组”
 
     ![添加资源组](./media/manage-resource-groups-portal/manage-resource-groups-add-group.png)
-3. 选择“添加”   。
+3. 选择“添加”  。
 4. 输入以下值：
 
     - **订阅**：选择 Azure 订阅。 
     - **资源组**：输入新的资源组名称。 
-    - **区域**：选择某个 Azure 位置，例如“中国北部”。 
+    - **区域**：选择某个 Azure 位置，例如“中国北部”。
 
         ![创建资源组](./media/manage-resource-groups-portal/manage-resource-groups-create-group.png)
-5. 选择“查看 + 创建” 
-6. 选择“创建”  。 创建资源组需要几秒钟的时间。
-7. 在顶部菜单中选择“刷新”以刷新资源组列表，然后选择新建的资源组将其打开。  或者，选择顶部的“通知”（钟形图标），然后选择“转到资源组”打开新建的资源组  
+5. 选择“查看 + 创建”
+6. 选择“创建” 。 创建资源组需要几秒钟的时间。
+7. 在顶部菜单中选择“刷新”以刷新资源组列表，然后选择新建的资源组将其打开。 或者，选择顶部的“通知”（钟形图标），然后选择“转到资源组”打开新建的资源组 
 
     ![转到资源组](./media/manage-resource-groups-portal/manage-resource-groups-add-group-go-to-resource-group.png)
 
 ## <a name="list-resource-groups"></a>列出资源组
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
-2. 若要列出资源组，请选择“资源组” 
+2. 若要列出资源组，请选择“资源组”
 
     ![浏览资源组](./media/manage-resource-groups-portal/manage-resource-groups-list-groups.png)
 
-3. 若要自定义显示的资源组信息，请选择“编辑列”  。 以下屏幕截图显示了可添加到画面中的附加列：
+3. 若要自定义显示的资源组信息，请选择“编辑列”。 以下屏幕截图显示了可添加到画面中的附加列：
 
 ## <a name="open-resource-groups"></a>打开资源组
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
-2. 选择“资源组”  。
+2. 选择“资源组”。
 3. 选择要打开的资源组。
 
 ## <a name="delete-resource-groups"></a>删除资源组
 
 1. 打开要删除的资源组。  参阅[打开资源组](#open-resource-groups)。
-2. 选择“删除资源组”  。
+2. 选择“删除资源组”。
 
     ![删除 Azure 资源组](./media/manage-resource-groups-portal/delete-group.png)
 
@@ -86,10 +88,10 @@ ms.locfileid: "82596269"
 
 锁定可以防止组织中的其他用户意外删除或修改关键资源，例如 Azure 订阅、资源组或资源。 
 
-1. 打开要删除的资源组。  参阅[打开资源组](#open-resource-groups)。
-2. 在左窗格中选择“锁定”  。
-3. 若要将锁添加到资源组，请选择“添加”。 
-4. 输入“锁定名”、“锁类型”和“备注”。    锁类型包括“只读”和“删除”。  
+1. 打开要锁定的资源组。  参阅[打开资源组](#open-resource-groups)。
+2. 在左窗格中选择“锁定”。
+3. 若要将锁添加到资源组，请选择“添加”。
+4. 输入“锁定名”、“锁类型”和“备注”。   锁类型包括“只读”和“删除”。 
 
     ![锁定 Azure 资源组](./media/manage-resource-groups-portal/manage-resource-groups-add-lock.png)
 

@@ -7,14 +7,14 @@ author: WenJason
 ms.service: storage
 ms.topic: how-to
 origin.date: 02/25/2019
-ms.date: 03/09/2020
+ms.date: 07/20/2020
 ms.author: v-jay
-ms.openlocfilehash: 9177fb09fa059c24d69b4e7035be7b19933825e1
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 280688d0d47158de1d71a7d26fd969fd268fc84b
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291420"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414700"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>升级到常规用途 v2 存储帐户
 
@@ -29,10 +29,10 @@ ms.locfileid: "79291420"
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
 2. 导航到存储帐户。
-3. 在“设置”部分单击“配置”。  
-4. 在“帐户类型”下单击“升级”   。
-5. 在“确认升级”下键入帐户名称。 
-6. 单击边栏选项卡底部的“升级”。 
+3. 在“设置”部分单击“配置”。 
+4. 在“帐户类型”下单击“升级” 。
+5. 在“确认升级”下键入帐户名称。
+6. 单击边栏选项卡底部的“升级”。
 
     ![升级帐户种类](../blobs/media/storage-blob-account-upgrade/upgrade-to-gpv2-account.png)
 
@@ -53,7 +53,7 @@ Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-a
 
 接下来，调用以下命令来升级帐户（请使用自己的资源组名称、存储帐户名称和所需帐户访问层级来代替相应项）。
 
-```cli
+```azurecli
 az storage account update -g <resource-group> -n <storage-account> --set kind=StorageV2 --access-tier=<Hot/Cool>
 ```
 
@@ -117,9 +117,9 @@ Blob 访问层允许根据预期使用模式选择最具经济效益的存储。
 > Blob 存储帐户公开表服务终结点的目的只是为了存储和访问该帐户的指标数据。
 
 若要监视 Blob 存储的存储消耗情况，需启用容量指标。
-启用此功能后，会每天为存储帐户的 Blob 服务记录容量数据，并将容量数据记录为表条目写入到同一存储帐户中的  $MetricsCapacityBlob 表。
+启用此功能后，会每天为存储帐户的 Blob 服务记录容量数据，并将容量数据记录为表条目写入到同一存储帐户中的 $MetricsCapacityBlob 表。
 
-若要监视 Blob 存储的数据访问模式，需通过 API 启用每小时事务指标。 启用每小时事务指标后，会每小时聚合按 API 进行的事务，并将这些事务记录为表条目写入到同一存储帐户中的 *$MetricsHourPrimaryTransactionsBlob* 表。 在使用 RA-GRS 存储帐户时，  $MetricsHourSecondaryTransactionsBlob 表会将事务记录到辅助终结点。
+若要监视 Blob 存储的数据访问模式，需通过 API 启用每小时事务指标。 启用每小时事务指标后，会每小时聚合按 API 进行的事务，并将这些事务记录为表条目写入到同一存储帐户中的 *$MetricsHourPrimaryTransactionsBlob* 表。 在使用 RA-GRS 存储帐户时，$MetricsHourSecondaryTransactionsBlob 表会将事务记录到辅助终结点。
 
 > [!NOTE]
 > 如果有一个常规用途存储帐户，在其中存储了页 Blob、虚拟机磁盘、队列、文件、表以及块 Blob 数据和追加 Blob 数据，则不适合使用此估算过程。 容量数据不区分块 Blob 与其他类型，因此不会给出其他数据类型的容量数据。 如果使用这些类型，则也可查看最新账单上的数量，作为一种替代方法。
@@ -135,13 +135,13 @@ Blob 访问层允许根据预期使用模式选择最具经济效益的存储。
 
 #### <a name="capacity-costs"></a>容量费用
 
-容量度量值表 *$MetricsCapacityBlob* 中行键为 *'data'* 的最新条目显示了用户数据所占用的存储容量。 容量指标表 $MetricsCapacityBlob  中行键为 'analytics'  的最新条目显示了分析日志所占用的存储容量。
+容量度量值表 *$MetricsCapacityBlob* 中行键为 *'data'* 的最新条目显示了用户数据所占用的存储容量。 容量指标表 $MetricsCapacityBlob 中行键为 'analytics' 的最新条目显示了分析日志所占用的存储容量。
 
 用户数据和分析日志（如果已启用）所占用的这个总容量就可以用来估算在存储帐户中存储数据的费用。 也可以使用相同方法来估算 GPv1 存储帐户中的存储成本。
 
 #### <a name="transaction-costs"></a>事务成本
 
-事务度量值表中某个 API 的所有条目的 *'TotalBillableRequests'* 计得之和表示该特定 API 的事务总数。 例如  ，通过对行健为 'user;GetBlob'  的所有条目的计费请求进行求和可以算出一段给定时间中 'GetBlob'  事务的总数。
+事务度量值表中某个 API 的所有条目的 *'TotalBillableRequests'* 计得之和表示该特定 API 的事务总数。 例如，通过对行健为 'user;GetBlob' 的所有条目的计费请求进行求和可以算出一段给定时间中 'GetBlob' 事务的总数。
 
 若要估算 Blob 存储帐户的事务费用，需将事务细分成三组，因为这些事务价格不一样。
 

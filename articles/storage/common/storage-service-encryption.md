@@ -4,18 +4,18 @@ description: Azure 存储在将数据保存到云之前会自动对其进行加�
 services: storage
 author: WenJason
 ms.service: storage
-origin.date: 04/10/2020
-ms.date: 06/01/2020
+origin.date: 06/17/2020
+ms.date: 07/20/2020
 ms.topic: conceptual
 ms.author: v-jay
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: f25f271f25d7627bed9302d485df95f9de35ad33
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: c6eab7213c2daf928f596436d7dcad45b824bbe8
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199726"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414743"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>静态数据的 Azure 存储加密
 
@@ -48,8 +48,9 @@ Azure 存储中的数据将使用 256 位 [AES 加密法](https://en.wikipedia.o
 |    支持的 Azure 存储服务    |    全部                                                |    Blob 存储、Azure 文件存储                                                                                                              |    Blob 存储                                                                  |
 |    密钥存储                         |    Microsoft 密钥存储    |    Azure Key Vault                                                                                                                              |    客户自己的密钥存储                                                                 |
 |    密钥轮换责任         |    Microsoft                                          |    客户                                                                                                                                     |    客户                                                                      |
-|    密钥使用情况                           |    Microsoft                                          |    Azure 门户、存储资源提供程序 REST API、Azure 存储管理库、PowerShell、CLI        |    Azure 存储 REST API（Blob 存储）、Azure 存储客户端库    |
 |    密钥控制                          |    Microsoft                                     |    客户                                                                                                                    |    客户                                                                 |
+
+有关 Azure 托管磁盘的加密和密钥管理的信息，请参阅适用于 Windows VM 的 [Azure 托管磁盘的服务器端加密](../../virtual-machines/windows/disk-encryption.md)或适用于 Linux VM 的 [Azure 托管磁盘的服务器端加密](../../virtual-machines/linux/disk-encryption.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

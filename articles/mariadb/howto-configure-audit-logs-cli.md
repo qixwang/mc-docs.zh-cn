@@ -5,21 +5,18 @@ author: WenJason
 ms.author: v-jay
 ms.service: mariadb
 ms.topic: conceptual
-origin.date: 4/13/2020
-ms.date: 04/27/2020
-ms.openlocfilehash: b6c42724c626e823876d50b057246bc22e53b1f2
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+origin.date: 6/24/2020
+ms.date: 07/20/2020
+ms.openlocfilehash: 67d9389b67e86f801ce68d2e4c7a5f3393c1bc4f
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82127265"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440482"
 ---
 # <a name="configure-and-access-audit-logs-in-the-azure-cli"></a>在 Azure CLI 中配置和访问审核日志
 
 可以从 Azure CLI 配置 [Azure Database for MariaDB 审核日志](concepts-audit-logs.md)。
-
-> [!IMPORTANT]
-> 审核日志功能目前为预览版。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -32,14 +29,17 @@ ms.locfileid: "82127265"
 
 ## <a name="configure-audit-logging"></a>配置审核日志记录
 
+>[!IMPORTANT]
+> 建议仅记录审核所需的事件类型和用户，以确保服务器的性能不会受到严重影响。
+
 使用以下步骤启用和配置审核日志记录： 
 
-1. 通过将“audit_logs_enabled”  参数设为“ON”来启用审核日志。 
+1. 通过将“audit_logs_enabled”参数设为“ON”来启用审核日志。 
     ```azurecli
     az mariadb server configuration set --name audit_log_enabled --resource-group myresourcegroup --server mydemoserver --value ON
     ```
 
-1. 通过更新“audit_log_egitvents”  参数，选择要记录的[事件类型](concepts-audit-logs.md#configure-audit-logging)。
+1. 通过更新“audit_log_egitvents”参数，选择要记录的[事件类型](concepts-audit-logs.md#configure-audit-logging)。
     ```azurecli
     az mariadb server configuration set --name audit_log_events --resource-group myresourcegroup --server mydemoserver --value "ADMIN,CONNECTION"
     ```
@@ -49,7 +49,7 @@ ms.locfileid: "82127265"
     az mariadb server configuration set --name audit_log_exclude_users --resource-group myresourcegroup --server mydemoserver --value "azure_superuser"
     ```
 
-1. 通过更新“audit_log_include_users”  参数，添加要包括在日志中的任何特定 MariaDB 用户。 通过提供 MariaDB 用户名来指定用户。
+1. 通过更新“audit_log_include_users”参数，添加要包括在日志中的任何特定 MariaDB 用户。 通过提供 MariaDB 用户名来指定用户。
     ```azurecli
     az mariadb server configuration set --name audit_log_include_users --resource-group myresourcegroup --server mydemoserver --value "sampleuser"
     ```

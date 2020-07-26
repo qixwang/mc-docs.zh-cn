@@ -1,18 +1,18 @@
 ---
-title: 适用于 Functions 2.x 的 Azure Cosmos DB 触发器
+title: 适用于 Functions 2.x 及更高版本的 Azure Cosmos DB 触发器
 description: 了解如何在 Azure Functions 中使用 Azure Cosmos DB 触发器。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 03/18/2020
+ms.date: 07/14/2020
 ms.author: v-junlch
-ms.openlocfilehash: 967e46da14b6cce90a241cb320fa30a456d1e809
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 196d2449ccc73c510b28335e9f5bf0fad7da1975
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79546887"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440415"
 ---
-# <a name="azure-cosmos-db-trigger-for-azure-functions-2x"></a>适用于 Azure Functions 2.x 的 Azure Cosmos DB 触发器
+# <a name="azure-cosmos-db-trigger-for-azure-functions-2x-and-higher"></a>适用于 Azure Functions 2.x 及更高版本的 Azure Cosmos DB 触发器
 
 Azure Cosmos DB 触发器使用 [Azure Cosmos DB 更改源](../cosmos-db/change-feed.md)来侦听跨分区的插入和更新。 更改源发布插入和更新，不发布删除。
 
@@ -58,7 +58,7 @@ namespace CosmosDBSamplesV2
 
 以下示例演示 *function.json* 文件中的一个 Cosmos DB 触发器绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。 添加或修改 Cosmos DB 记录时，该函数会写入日志消息。
 
-下面是 function.json  文件中的绑定数据：
+下面是 function.json 文件中的绑定数据：
 
 ```json
 {
@@ -94,7 +94,7 @@ C# 脚本代码如下所示：
 
 以下示例演示 *function.json* 文件中的一个 Cosmos DB 触发器绑定以及使用该绑定的 [JavaScript 脚本函数](functions-reference-node.md)。 添加或修改 Cosmos DB 记录时，该函数会写入日志消息。
 
-下面是 function.json  文件中的绑定数据：
+下面是 function.json 文件中的绑定数据：
 
 ```json
 {
@@ -173,13 +173,13 @@ JavaScript 不支持特性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-在 [Java 函数运行时库](https://docs.microsoft.comhttps://docs.microsoft.com/java/api/overview/azure/functions/runtime)中，对从 Cosmos DB 读取数据的参数使用 `@CosmosDBInput` 注释。
+在 [Java 函数运行时库](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)中，对从 Cosmos DB 读取数据的参数使用 `@CosmosDBInput` 注释。
 
 ---
 
 ## <a name="configuration"></a>配置
 
-下表解释了在 function.json  文件和 `CosmosDBTrigger` 特性中设置的绑定配置属性。
+下表解释了在 function.json 文件和 `CosmosDBTrigger` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|

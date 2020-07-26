@@ -5,14 +5,14 @@ author: WenJason
 ms.author: v-jay
 ms.service: postgresql
 ms.topic: conceptual
-origin.date: 06/19/2019
-ms.date: 06/08/2020
-ms.openlocfilehash: b8be4236d82f5dcd287a06ed5b660066086f6777
-ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
+origin.date: 06/25/2019
+ms.date: 07/20/2020
+ms.openlocfilehash: a62159feda38f4ecee4098026b62b51c2211cba4
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84275384"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440393"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>监视和优化 Azure Database for PostgreSQL（单一服务器）
 监视服务器的相关数据有助于排查工作负荷故障及优化工作负荷。 Azure Database for PostgreSQL 提供各种监视选项，帮助用户深入了解服务器的行为。
@@ -27,7 +27,7 @@ Azure Database for PostgreSQL 提供了各种指标来帮助用户深入了解�
 |---|---|---|---|
 |cpu_percent|CPU 百分比|百分比|使用的 CPU 百分比。|
 |memory_percent|内存百分比|百分比|使用的内存百分比。|
-|io_consumption_percent|IO 百分比|百分比|使用的 IO 百分比。|
+|io_consumption_percent|IO 百分比|百分比|使用的 IO 百分比。 （不适用于基本层服务器。）|
 |storage_percent|存储百分比|百分比|所用存储占服务器最大存储的百分比。|
 |storage_used|已用的存储量|字节|使用的存储量。 服务使用的存储可能包括数据库文件、事务日志和服务器日志。|
 |storage_limit|存储限制|字节|此服务器的最大存储。|

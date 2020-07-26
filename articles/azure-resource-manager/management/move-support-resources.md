@@ -2,15 +2,17 @@
 title: 资源类型支持的移动操作
 description: 列出可移到新资源组或订阅的 Azure 资源类型。
 ms.topic: conceptual
-origin.date: 06/11/2020
-ms.date: 06/22/2020
+origin.date: 06/15/2020
+ms.date: 07/13/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 7085155aef1ef3f2bd6d9cec48e7c10870b04c66
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: d780798d76e9248b1253cdd449579811f08158d0
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098631"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440970"
 ---
 # <a name="move-operation-support-for-resources"></a>支持移动操作的资源
 本文列出某个 Azure 资源类型是否支持移动操作。 它还提供了有关移动资源时要考虑的特殊条件的信息。
@@ -23,9 +25,7 @@ ms.locfileid: "85098631"
 > - [Microsoft.AlertsManagement](#microsoftalertsmanagement)
 > - [Microsoft.AnalysisServices](#microsoftanalysisservices)
 > - [Microsoft.ApiManagement](#microsoftapimanagement)
-> - [Microsoft.AppService](#microsoftappservice)
 > - [Microsoft.Authorization](#microsoftauthorization)
-> - [Microsoft.Automation](#microsoftautomation)
 > - [Microsoft.AzureActiveDirectory](#microsoftazureactivedirectory)
 > - [Microsoft.AzureStack](#microsoftazurestack)
 > - [Microsoft.Batch](#microsoftbatch)
@@ -263,7 +263,6 @@ ms.locfileid: "85098631"
 > | locations / quotas | 否 | 否 |
 > | 操作 | 否 | 否 |
 
-<!-- Not Available on ## ## Microsoft.BatchAI-->
 <!-- Not Available on ## Microsoft.Billing-->
 <!-- Not Available on ## Microsoft.BingMaps-->
 <!-- Not Available on ## Microsoft.BizTalkServices-->
@@ -309,6 +308,9 @@ ms.locfileid: "85098631"
 
 <!--MOONCAKE CUSTOMIZATION: PROFILES AND PROFILES / ENDPOOINTS IS NO FOR SUBSCRIPTION-->
 <!--UPDATE CAREFULLY, CORRECT BY EMAIL-->
+<!--CORRECT ON > | profiles | Yes | No |-->
+<!--CORRECT ON > | profiles / endpoints | Yes | No |-->
+
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
@@ -325,27 +327,24 @@ ms.locfileid: "85098631"
 > | operationresults / profileresults / endpointresults / origingroupresults | 否 | 否 |
 > | operationresults / profileresults / endpointresults / originresults | 否 | 否 |
 > | 操作 | 否 | 否 |
-> | 配置文件 | 是 | 是 |
-> | profiles/endpoints | 是 | 是 |
+> | 配置文件 | 是 | 否 |
+> | profiles/endpoints | 是 | 否 |
 > | profiles / endpoints / customdomains | 否 | 否 |
 > | profiles / endpoints / origingroups | 否 | 否 |
 > | profiles / endpoints / origins | 否 | 否 |
 > | validateprobe | 否 | 否 |
 
-
-
-
 > [!NOTE]
 > 目前，Azure 中国不支持有关跨订阅移动 CDN 资源的自助服务。
 > 当尝试在 Azure 中国中跨订阅移动 CDN 配置文件或配置文件/终结点时，请联系 [Azure 支持](https://support.azure.cn/support/contact/)或在 [Azure 支持网站](https://support.azure.cn/support/support-azure/)上提交请求以获得帮助。
 >
+
 <!--UPDATE CAREFULLY, CORRECT BY EMAIL-->
 <!--MOONCAKE CUSTOMIZATION: PROFILES AND PROFILES / ENDPOOINTS IS NO FOR SUBSCRIPTION-->
 
-<!--Not Available on ## Microsoft.CertificateRegistration-->
+<!--Not registered yet on ## Microsoft.CertificateRegistration-->
 
 <!--Not Available on ## Microsoft.ChangeAnalysis-->
-
 
 ## <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
 
@@ -379,7 +378,6 @@ ms.locfileid: "85098631"
 > 请参阅[经典部署移动指南](./move-limitations/classic-model-move-limitations.md)。 可以使用特定于该方案的操作跨订阅移动经典部署资源。
 
 <!--Not registered yet on ## Microsoft.ClassicInfrastructureMigrate-->
-<a name="microsoftclassicnetwork"></a>
 ## <a name="microsoftclassicnetwork"></a>Microsoft.ClassicNetwork
 
 > [!div class="mx-tableFixed"]
@@ -400,7 +398,6 @@ ms.locfileid: "85098631"
 > [!IMPORTANT]
 > 请参阅[经典部署移动指南](./move-limitations/classic-model-move-limitations.md)。 可以使用特定于该方案的操作跨订阅移动经典部署资源。
 
-<a name="microsoftclassicstorage"></a>
 ## <a name="microsoftclassicstorage"></a>Microsoft.ClassicStorage
 
 > [!div class="mx-tableFixed"]
@@ -458,6 +455,7 @@ ms.locfileid: "85098631"
 > | 操作 | 否 | 否 |
 
 <!--Not Available on ## Microsoft.Commerce-->
+
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
 > [!div class="mx-tableFixed"]
@@ -510,6 +508,7 @@ ms.locfileid: "85098631"
 
 <!-- Not Available on ## Microsoft.Consumption-->
 <!-- Not Available on ## Microsoft.Container-->
+
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
 
@@ -650,7 +649,6 @@ ms.locfileid: "85098631"
 > | services | 否 | 否 |
 > | services/projects | 否 | 否 |
 > | slots | 否 | 否 |
-
 
 <!-- Not Available on ## Microsoft.DataProtection-->
 <!-- Not Available on ## Microsoft.DataShare-->
@@ -809,7 +807,6 @@ ms.locfileid: "85098631"
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
 > | domains | 是 | 是 |
-> | eventSubscriptions | 否 - 无法独立移动，但会自动随已订阅的资源移动。 | 否 - 无法独立移动，但会自动随订阅的资源一起移动。 |
 > | domains / topics | 否 | 否 |
 > | eventsubscriptions | 否 - 无法独立移动，但会自动随订阅的资源一起移动。 | 否 - 无法独立移动，但会自动随订阅的资源一起移动。 |
 > | extensiontopics | 否 | 否 |
@@ -865,6 +862,7 @@ ms.locfileid: "85098631"
 > | 操作 | 否 | 否 |
 > | providers | 否 | 否 |
 > | subscriptionfeatureregistrations | 否 | 否 |
+
 <!-- Not Available on ## Microsoft.Genomics-->
 
 ## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
@@ -882,6 +880,7 @@ ms.locfileid: "85098631"
 
 <!-- Not Available on ## Microsoft.HanaOnAzure-->
 <!--Not Available on ## Microsoft.HardwareSecurityModules-->
+
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
 
 > [!div class="mx-tableFixed"]
@@ -909,6 +908,7 @@ ms.locfileid: "85098631"
 <!-- Not Available on ## Microsoft.HybridData-->
 <!-- Not Available on ## Microsoft.Hydra-->
 <!--Not Available on ## Microsoft.Hydra-->
+
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport
 
 > [!div class="mx-tableFixed"]
@@ -916,7 +916,7 @@ ms.locfileid: "85098631"
 > | ------------- | ----------- | ---------- |
 > | jobs | 是 | 是 |
 > | locations | 否 | 否 |
-> | locations / operationresults | 否 | 否 |R
+> | locations / operationresults | 否 | 否 |
 > | 操作 | 否 | 否 |
 
 ## <a name="microsoftinsights"></a>microsoft.insights
@@ -1095,7 +1095,6 @@ ms.locfileid: "85098631"
 > | 操作 | 否 | 否 |
 > | userassignedidentities | 否 | 否 |
 
-
 <!-- Not Available on ## Microsoft.ManagedNetwork-->
 <!-- Not Available on ## Microsoft.ManagedServices-->
 <!--Not Available on ## Microsoft.Management-->
@@ -1103,6 +1102,7 @@ ms.locfileid: "85098631"
 <!--Not Available on ## Microsoft.Marketplace-->
 <!-- Not Available on ## Microsoft.MarketplaceApps-->
 <!--Not Available on ## Microsoft.MarketplaceOrdering-->
+
 ## <a name="microsoftmedia"></a>Microsoft.Media
 
 > [!div class="mx-tableFixed"]
@@ -1133,6 +1133,7 @@ ms.locfileid: "85098631"
 <!-- Not Available on ## Microsoft.Migrate-->
 <!--Not Available on ## Microsoft.MixedReality-->
 <!-- Not Available on ## Microsoft.NetApp-->
+
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
 > [!div class="mx-tableFixed"]
@@ -1274,6 +1275,7 @@ ms.locfileid: "85098631"
 
 <!-- Not Available on ## Microsoft.ObjectStore-->
 <--在 ## Microsoft.OffAzure 上不可用-->
+
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
 
 > [!div class="mx-tableFixed"]
@@ -1336,9 +1338,6 @@ ms.locfileid: "85098631"
 > | locations / usersettings | 否 | 否 |
 > | 操作 | 否 | 否 |
 > | usersettings | 否 | 否 |
-<a name="microsoftportalsdk"><a/>
-
-<!--Not Available on ## Microsoft.PortalSdk-->
 
 ## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
 
@@ -1391,9 +1390,7 @@ ms.locfileid: "85098631"
 > | vaults | 是 | 是 |
 
 <!--Not Available on [Recovery Services move guidance](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure-resource-manager/toc.json)-->
-
 <!--Not Available on ## Microsoft.RedHatOpenShift-->
-
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 
@@ -1545,7 +1542,6 @@ ms.locfileid: "85098631"
 > | workspacesettings | 否 | 否 |
 
 <!-- Not Available on ## Microsoft.SecurityInsights-->
-
 <!-- Not Available on ## Microsoft.SerialConsole-->
 <!-- Not Available on ## Microsoft.ServerManagement-->
 
@@ -1635,7 +1631,6 @@ ms.locfileid: "85098631"
 > | checknameavailability | 否 | 否 |
 > | instancepools | 否 | 否 |
 > | locations | 是 | 是 |
-> | locations | 否 | 否 |
 > | locations / administratorazureasyncoperation | 否 | 否 |
 > | locations / administratoroperationresults | 否 | 否 |
 > | locations / auditingsettingsazureasyncoperation | 否 | 否 |
@@ -1805,10 +1800,11 @@ ms.locfileid: "85098631"
 > | virtualclusters | 是 | 是 |
 
 > [!IMPORTANT]
-> 数据库和服务器必须位于同一个资源组中。 移动 SQL 服务器时，也会移动其所有数据库。 此行为适用于 Azure SQL 数据库和 Azure SQL 数据仓库数据库。
+> 数据库和服务器必须位于同一个资源组中。 移动 SQL 服务器时，也会移动其所有数据库。 此行为适用于 Azure SQL 数据库和 Azure Synapse Analytics 数据库。
 
 <!-- Not Available on ## Microsoft.SqlVirtualMachine-->
 <!-- Not Available on ## Microsoft.SqlVM-->
+
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 
 > [!div class="mx-tableFixed"]
@@ -1940,6 +1936,7 @@ ms.locfileid: "85098631"
 
 <!-- Not Available on ## Microsoft.WindowsESU-->
 <!-- Not Available on ## Microsoft.WindowsIoT-->
+<!-- Not Available on## Microsoft.WorkloadBuilder-->
 <!-- Not Available on ## Microsoft.WorkloadMonitor-->
 
 ## <a name="third-party-services"></a>第三方服务

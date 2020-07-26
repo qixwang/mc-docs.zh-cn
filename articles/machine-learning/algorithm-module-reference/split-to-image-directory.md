@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: ac84a5ef58c18ab48015defdef48835c6221889b
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: c73185940d5874d8aacd3380d7ead0ccab04fc68
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097780"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440903"
 ---
 # <a name="split-image-directory"></a>拆分图像目录
 
@@ -37,7 +37,7 @@ ms.locfileid: "85097780"
 
 | 名称                  | 类型           | 说明              |
 | --------------------- | -------------- | ------------------------ |
-| 输入图像目录 | ImageDirectory | 要拆分的图像目录 |
+| 输入图像目录 | 图像目录 | 要拆分的图像目录 |
 
 ### <a name="module-parameters"></a>模块参数
 
@@ -49,8 +49,8 @@ ms.locfileid: "85097780"
 
 | 名称                    | 类型           | 说明                              |
 | ----------------------- | -------------- | ---------------------------------------- |
-| 输出图像目录 1 | ImageDirectory | 包含所选图像的图像目录 |
-| 输出图像目录 2 | ImageDirectory | 包含所有其他图像的图像目录 |
+| 输出图像目录 1 | 图像目录 | 包含所选图像的图像目录 |
+| 输出图像目录 2 | 图像目录 | 包含所有其他图像的图像目录 |
 
 ## <a name="next-steps"></a>后续步骤
 

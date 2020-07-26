@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 11/06/2019
-ms.openlocfilehash: 22a2ef372a0501655a3664782248a6f30504d12d
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: 83f0d51522f80edda06c8240f6f25e9234a7f302
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097144"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440965"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>重新生成存储帐户访问密钥
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -23,6 +23,9 @@ ms.locfileid: "85097144"
 了解如何更改 Azure 机器学习使用的 Azure 存储帐户的访问密钥。 Azure 机器学习可以使用存储帐户来存储数据或训练后的模型。
 
 出于安全考虑，你可能需要更改 Azure 存储帐户的访问密钥。 重新生成访问密钥时，必须更新 Azure 机器学习以使用新密钥。 Azure 机器学习可以将存储帐户同时用作模型存储和数据存储。
+
+> [!IMPORTANT]
+> 注册到数据存储的凭据会保存在与工作区关联的 Azure Key Vault 库中。 如果已为 Key Vault 启用了[软删除](/key-vault/general/overview-soft-delete)，请务必按照本文中的步骤更新凭据。 取消注册数据存储并使用相同的名称重新注册将失败。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -85,7 +88,7 @@ for name, ds in datastores.items():
 
 1. 重新生成密钥。 有关重新生成访问密钥的信息，请参阅[管理存储帐户访问密钥](../storage/common/storage-account-keys-manage.md)。 保存新密钥。
 
-1. 若要更新工作区以使用新密钥，请执行以下步骤：
+1. Azure 机器学习工作区会自动同步新密钥并在一小时后开始使用该密钥。 若要强制工作区立即同步到新密钥，请执行以下步骤：
 
     1. 使用以下 Azure CLI 命令登录到包含你的工作区的 Azure 订阅：
 

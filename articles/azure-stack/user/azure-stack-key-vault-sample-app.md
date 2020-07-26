@@ -3,22 +3,22 @@ title: 允许应用访问 Azure Stack Hub Key Vault 机密
 description: 了解如何运行从 Azure Stack Hub 中的密钥保管库检索密钥和机密的示例应用。
 author: WenJason
 ms.topic: conceptual
-origin.date: 02/19/2020
-ms.date: 03/23/2020
+origin.date: 06/15/2020
+ms.date: 07/20/2020
 ms.author: v-jay
 ms.lastreviewed: 04/08/2019
-ms.openlocfilehash: 8905575ae1d245089de73191496aabc09c000a58
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 8df064d18491191114d9f918f5c238c0d28742d6
+ms.sourcegitcommit: e9ffd50aa5eaab402a94bfabfc70de6967fe6278
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79547083"
+ms.lasthandoff: 07/14/2020
+ms.locfileid: "86307435"
 ---
 # <a name="allow-apps-to-access-azure-stack-hub-key-vault-secrets"></a>允许应用访问 Azure Stack Hub Key Vault 机密
 
-按照本文中的步骤运行示例应用 **HelloKeyVault**，从 Azure Stack Hub 中的密钥保管库检索密钥和机密。
+本文中的步骤说明如何运行示例应用 HelloKeyVault，该应用从 Azure Stack Hub 中的密钥保管库检索密钥和机密。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 如果已[通过 VPN 建立连接](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn)，可以从 [Azure Stack 开发工具包](../asdk/asdk-connect.md#connect-to-azure-stack-using-rdp)或从基于 Windows 的外部客户端安装以下必备组件：
 
@@ -131,7 +131,7 @@ Write-Host
 
 ## <a name="download-and-configure-the-sample-application"></a>下载并配置示例应用程序
 
-从 Azure [密钥保管库客户端示例](https://www.microsoft.com/download/details.aspx?id=45343)页下载密钥保管库示例。 将 .zip 文件的内容解压缩到开发工作站上。 samples 文件夹中有两个应用。 本文使用 **HelloKeyVault**。
+从 Azure [密钥保管库客户端示例](https://www.microsoft.com/download/details.aspx?id=45343)页下载密钥保管库示例。 将 .zip 文件的内容解压缩到开发工作站上。 samples 文件夹中有两个应用，本文使用了 HelloKeyVault。
 
 若要加载 **HelloKeyVault** 示例，请执行以下操作：
 
@@ -157,7 +157,7 @@ Write-Host
 
 3. 重新生成解决方案。
 
-## <a name="run-the-app"></a>运行应用
+## <a name="run-the-app"></a>运行应用程序
 
 运行 **HelloKeyVault** 时，应用会登录到 Azure AD，然后使用 `AuthClientSecret` 令牌向 Azure Stack Hub 中的密钥保管库进行身份验证。
 

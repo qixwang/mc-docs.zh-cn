@@ -3,18 +3,18 @@ title: 使用 AzCopy v10 向/从 Azure Blob 存储传输数据 | Microsoft Docs
 description: 本文包含一系列 AzCopy 示例命令，以帮助你创建容器，并在本地文件系统与容器之间复制文件和同步目录。
 author: WenJason
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 04/10/2020
-ms.date: 06/01/2020
+ms.date: 07/20/2020
 ms.author: v-jay
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 37fdfa421b99f90cdb664b14130bece87ceeb40b
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: e3c71b5595ee9564bc195f881483c424ae117486
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199746"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414733"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>使用 AzCopy 和 Blob 存储传输数据
 
@@ -242,7 +242,7 @@ AzCopy 使用[服务器到服务器](https://docs.microsoft.com/rest/api/storage
 > [!NOTE]
 > 此方案在当前版本中存在以下限制。
 >
-> - 必须向每个源 URL 追加一个 SAS 令牌。 如果使用 Azure Active Directory (AD) 提供授权凭据，则只能从目标 URL 中省略 SAS 令牌。
+> - 必须向每个源 URL 追加一个 SAS 令牌。 如果使用 Azure Active Directory (AD) 提供授权凭据，则只能从目标 URL 中省略 SAS 令牌。 请确保已在目标帐户中设置了适当的角色。 请参阅[选项 1：使用 Azure Active Directory](storage-use-azcopy-v10.md?toc=/storage/blobs/toc.json#option-1-use-azure-active-directory)。
 >-  高级块 Blob 存储帐户不支持访问层。 请通过将 `s2s-preserve-access-tier` 设置为 `false`（例如：`--s2s-preserve-access-tier=false`），在复制操作中省略 Blob 的访问层。
 
 本部分包含以下示例：

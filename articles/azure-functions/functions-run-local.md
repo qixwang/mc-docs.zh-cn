@@ -3,14 +3,14 @@ title: 使用 Azure Functions Core Tools
 description: 了解如何通过本地计算机上的命令提示符或终端编写和测试 Azure 函数，然后在 Azure Functions 中运行这些函数。
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 07/17/2020
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 2b6d49d8c384f9eb1dfeb327b9949fde36498a38
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: cea2d93b04e6cd906047094cd639495045940a07
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79546878"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440363"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>使用 Azure Functions Core Tools
 
@@ -35,7 +35,7 @@ Azure Functions Core Tools 有三个版本。 使用的版本取决于本地开�
 
 + **版本 1.x**：支持 1.x 版的 Azure Functions 运行时。 此 Tools 版本仅在 Windows 计算机上受支持，需从 [npm 包](https://www.npmjs.com/package/azure-functions-core-tools)安装。
 
-+ [**版本 2.x/3.x**](#v2)：支持 [2.x 或 3.x 版的 Azure Functions 运行时](functions-versions.md)。 这些版本支持 [Windows](/azure-functions/functions-run-local?tabs=windows#v2)、[macOS](/azure-functions/functions-run-local?tabs=macos#v2) 和 [Linux](/azure-functions/functions-run-local?tabs=linux#v2)，并使用特定于平台的包管理器或 npm 进行安装。
++ [版本 3.x/2.x](#v2)：支持 [3.x 或 2.x 版的 Azure Functions 运行时](functions-versions.md)。 这些版本支持 [Windows](/azure-functions/functions-run-local?tabs=windows#v2)、[macOS](/azure-functions/functions-run-local?tabs=macos#v2) 和 [Linux](/azure-functions/functions-run-local?tabs=linux#v2)，并使用特定于平台的包管理器或 npm 进行安装。
 
 除非另有说明，否则本文中的示例适用于版本 3.x。
 
@@ -46,9 +46,9 @@ Azure Functions Core Tools 有三个版本。 使用的版本取决于本地开�
 >[!IMPORTANT]
 >必须在本地安装 [Azure CLI](/cli/install-azure-cli)，才能从 Azure Functions Core Tools 发布到 Azure。  
 
-### <a name="version-2x-and-3x"></a><a name="v2"></a>版本 2.x 和 3.x
+### <a name="version-3x-and-2x"></a><a name="v2"></a>版本 3.x 和 2.x
 
-2\.x/3.x 版工具使用构建在 .NET Core 之上的 Azure Functions 运行时。 .NET Core 支持的所有平台（包括 [Windows](/azure-functions/functions-run-local?tabs=windows#v2)、[macOS](/azure-functions/functions-run-local?tabs=macos#v2) 和 [Linux](/azure-functions/functions-run-local?tabs=linux#v2)）都支持此版本。 
+3\.x/2.x 版工具使用构建在 .NET Core 之上的 Azure Functions 运行时。 .NET Core 支持的所有平台（包括 [Windows](/azure-functions/functions-run-local?tabs=windows#v2)、[macOS](/azure-functions/functions-run-local?tabs=macos#v2) 和 [Linux](/azure-functions/functions-run-local?tabs=linux#v2)）都支持此版本。 
 
 > [!IMPORTANT]
 > 可以使用[扩展捆绑包]绕过安装 .NET Core SDK 的要求。
@@ -58,26 +58,26 @@ Azure Functions Core Tools 有三个版本。 使用的版本取决于本地开�
 以下步骤使用 npm 在 Windows 上安装 Core Tools。 也可使用 [Chocolatey](https://chocolatey.org/)。 有关详细信息，请参阅 [Core Tools 自述文件](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows)。
 
 1. 安装 [Node.js]，其中包括 npm。
-    - 对于 2.x 版工具，仅支持 Node.js 8.5 和更高版本。
     - 对于 3.x 版工具，仅支持 Node.js 10 及更高版本。
+    - 对于 2.x 版工具，仅支持 Node.js 8.5 和更高版本。
 
 1. 安装 Core Tools 包：
 
-    ##### <a name="v2x"></a>v2.x
-
-    ```cmd
-    npm install -g azure-functions-core-tools
-    ```
-
-    ##### <a name="v3x"></a>v3.x
+    ##### <a name="v3x-recommended"></a>v3.x（推荐）
 
     ```cmd
     npm install -g azure-functions-core-tools@3
     ```
 
+    ##### <a name="v2x"></a>v2.x
+
+    ```cmd
+    npm install -g azure-functions-core-tools@2
+    ```
+
    npm 下载并安装 Core Tools 包可能需要几分钟的时间。
 
-1. 如果不打算使用[扩展捆绑包]，请安装[用于 Windows 的 .NET Core 2.x SDK](https://www.microsoft.com/net/download/windows)。
+1. 如果不打算使用[扩展捆绑包](functions-bindings-register.md#extension-bundles)，请安装[用于 Windows 的 .NET Core 3.x SDK](https://dotnet.microsoft.com/download)。
 
 # <a name="macos"></a>[macOS](#tab/macos)
 
@@ -87,14 +87,7 @@ Azure Functions Core Tools 有三个版本。 使用的版本取决于本地开�
 
 1. 安装 Core Tools 包：
 
-    ##### <a name="v2x"></a>v2.x
-
-    ```bash
-    brew tap azure/functions
-    brew install azure-functions-core-tools
-    ```
-
-    ##### <a name="v3x"></a>v3.x
+    ##### <a name="v3x-recommended"></a>v3.x（推荐）
 
     ```bash
     brew tap azure/functions
@@ -102,6 +95,15 @@ Azure Functions Core Tools 有三个版本。 使用的版本取决于本地开�
     # if upgrading on a machine that has 2.x installed
     brew link --overwrite azure-functions-core-tools@3
     ```
+    
+    ##### <a name="v2x"></a>v2.x
+
+    ```bash
+    brew tap azure/functions
+    brew install azure-functions-core-tools@2
+    ```
+    
+1. 如果不打算使用[扩展捆绑包](functions-bindings-register.md#extension-bundles)，请安装[用于 macOS 的 .NET Core 3.x SDK](https://dotnet.microsoft.com/download)。
 
 # <a name="linux"></a>[Linux](#tab/linux)
 
@@ -132,8 +134,9 @@ Azure Functions Core Tools 有三个版本。 使用的版本取决于本地开�
 
     | Linux 分发版 | 版本 |
     | --------------- | ----------- |
-    | Debian 9 | `stretch` |
-    | Debian 8 | `jessie` |
+    | Debian 10 | `buster`  |
+    | Debian 9  | `stretch` |
+    | Ubuntu 19.04    | `disco`     |
     | Ubuntu 18.10    | `cosmic`    |
     | Ubuntu 18.04    | `bionic`    |
     | Ubuntu 17.04    | `zesty`     |
@@ -147,11 +150,19 @@ Azure Functions Core Tools 有三个版本。 使用的版本取决于本地开�
 
 1. 安装 Core Tools 包：
 
+    ##### <a name="v3x-recommended"></a>v3.x（推荐）
     ```bash
-    sudo apt-get install azure-functions-core-tools
+    sudo apt-get update
+    sudo apt-get install azure-functions-core-tools-3
+    ```
+    
+    ##### <a name="v2x"></a>v2.x
+    ```bash
+    sudo apt-get update
+    sudo apt-get install azure-functions-core-tools-2
     ```
 
-1. 如果不打算使用[扩展捆绑包]，请安装[用于 Linux 的 .NET Core 2.x SDK](https://www.microsoft.com/net/download/linux)。
+1. 如果不打算使用[扩展捆绑包](functions-bindings-register.md#extension-bundles)，请安装[用于 Linux 的 .NET Core 3.x SDK](https://dotnet.microsoft.com/download)。
 
 ---
 
@@ -159,7 +170,7 @@ Azure Functions Core Tools 有三个版本。 使用的版本取决于本地开�
 
 Functions 项目目录包含文件 [host.json](functions-host-json.md) 和 [local.settings.json](#local-settings-file) 以及若干个子文件夹，这些子文件夹包含各个函数的代码。 此目录相当于 Azure 中的一个函数应用。 若要详细了解 Functions 文件夹的结构，请参阅 [Azure Functions 开发人员指南](functions-reference.md#folder-structure)。
 
-版本 2.x 要求在初始化项目时为项目选择默认语言。 在版本 2.x 中，添加的所有函数使用默认语言模板。 在版本 1.x 中，每次创建函数时都要指定语言。
+版本 3.x/2.x 要求在初始化项目时为项目选择默认语言。 在版本 3.x/2.x 中，添加的所有函数均使用默认语言模板。 在版本 1.x 中，每次创建函数时都要指定语言。
 
 在终端窗口中或者在命令提示符下，运行以下命令创建项目和本地 Git 存储库：
 
@@ -168,7 +179,7 @@ func init MyFunctionProj
 ```
 
 提供项目名称后，系统就会创建并初始化使用该名称的新文件夹， 否则会初始化当前文件夹。  
-在版本 2.x 中运行命令时，必须为项目选择一个运行时。 
+在版本 3.x/2.x 中运行命令时，必须为项目选择一个运行时。 
 
 <pre>
 Select a worker runtime:
@@ -177,7 +188,7 @@ node
 powershell
 </pre>
 
-使用向上/向下箭头键选择语言，然后按 Enter。 如果计划开发 JavaScript 或 TypeScript 函数，请选择“节点”  ，然后选择语言。 TypeScript 具有[一些其他要求](functions-reference-node.md#typescript)。 
+使用向上/向下箭头键选择语言，然后按 Enter。 如果计划开发 JavaScript 或 TypeScript 函数，请选择“节点”，然后选择语言。 TypeScript 具有[一些其他要求](functions-reference-node.md#typescript)。 
 
 JavaScript 项目的输出如以下示例所示：
 
@@ -190,7 +201,7 @@ Writing C:\myfunctions\myMyFunctionProj\.vscode\extensions.json
 Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 </pre>
 
-`func init` 支持以下选项。除非另有说明，否则这些选项仅限版本 2.x：
+`func init` 支持以下选项。除非另有说明，否则这些选项仅限版本 3.x/2.x：
 
 | 选项     | 说明                            |
 | ------------ | -------------------------------------- |
@@ -201,14 +212,14 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 | **`--force`** | 即使项目中存在现有的文件，也要初始化该项目。 此设置会覆盖同名的现有文件。 项目文件夹中的其他文件不受影响。 |
 | **`--java`**  | 初始化 [Java 项目](functions-reference-java.md)。 |
 | **`--javascript`**<br/>**`--node`**  | 初始化 [JavaScript 项目](functions-reference-node.md)。 |
-| **`--no-source-control`**<br/>**`-n`** | 阻止版本 1.x 中默认创建 Git 存储库的行为。 在版本 2.x 中，默认不会创建 git 存储库。 |
+| **`--no-source-control`**<br/>**`-n`** | 阻止版本 1.x 中默认创建 Git 存储库的行为。 在版本 3.x/2.x 中，默认不创建 git 存储库。 |
 | **`--powershell`**  | 初始化 PowerShell 项目。 |
 | **`--source-control`** | 控制是否创建 git 存储库。 默认不会创建存储库。 如果为 `true`，则会创建存储库。 |
 | **`--typescript`**  | 初始化 [TypeScript 项目](functions-reference-node.md#typescript)。 |
 | **`--worker-runtime`** | 设置项目的语言运行时。 支持的值为：`csharp`、`dotnet`、`java`、`javascript`、`node` (JavaScript)、`powershell` 和 `typescript`。 如果未设置，则初始化期间系统会提示你选择运行时。 |
 
 > [!IMPORTANT]
-> 默认情况下，Core Tools 版本 2.x 会为 .NET 运行时创建函数应用项目作为 [C# 类项目](functions-dotnet-class-library.md) (.csproj)。 这些 C# 项目可以与 Visual Studio 或 Visual Studio Code 结合使用，在测试期间以及发布到 Azure 时进行编译。 如果希望创建并使用在版本 1.x 和门户中创建的相同 C# 脚本 (.csx) 文件，则在创建和部署函数时必须包含 `--csx` 参数。
+> 默认情况下，Core Tools 的版本 3.x/2.x 会为 .NET 运行时创建函数应用项目作为 [C# 类项目](functions-dotnet-class-library.md) (.csproj)。 这些 C# 项目可以与 Visual Studio 或 Visual Studio Code 结合使用，在测试期间以及发布到 Azure 时进行编译。 如果希望创建并使用在版本 1.x 和门户中创建的相同 C# 脚本 (.csx) 文件，则在创建和部署函数时必须包含 `--csx` 参数。
 
 [!INCLUDE [functions-core-tools-install-extension](../../includes/functions-core-tools-install-extension.md)]
 
@@ -231,13 +242,13 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 即使在使用 Azure 存储仿真器进行开发时，也可能需要使用实际的存储连接进行测试。 假设已[创建了存储帐户](../storage/common/storage-create-storage-account.md)，则可以通过下列方式之一获取有效的存储连接字符串：
 
-- 在 [Azure 门户]中，搜索并选择“存储帐户”  。 
+- 在 [Azure 门户]中，搜索并选择“存储帐户”。 
   ![从 Azure 门户选择存储帐户](./media/functions-run-local/select-storage-accounts.png)
   
-  选择你的存储帐户，在“设置”中选择“访问密钥”，然后复制其中一个**连接字符串**值。  
+  选择你的存储帐户，在“设置”中选择“访问密钥”，然后复制其中一个**连接字符串**值。 
   ![从 Azure 门户复制连接字符串](./media/functions-run-local/copy-storage-connection-portal.png)
 
-- 使用 [Azure 存储资源管理器](https://storageexplorer.com/)连接到你的 Azure 帐户。 在“资源管理器”  中，展开你的订阅，展开“存储帐户”，选择你的存储帐户，然后复制主或辅助连接字符串。 
+- 使用 [Azure 存储资源管理器](https://storageexplorer.com/)连接到你的 Azure 帐户。 在“资源管理器”中，展开你的订阅，展开“存储帐户”，选择你的存储帐户，然后复制主或辅助连接字符串。
 
   ![从存储资源管理器复制连接字符串](./media/functions-run-local/storage-explorer.png)
 
@@ -264,7 +275,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 func new
 ```
 
-在版本 2.x 中运行 `func new` 时，系统会提示你选择采用函数应用默认语言的模板，另外还会提示你选择函数的名称。 在版本 1.x 中，系统还会提示你选择语言。
+在版本 3.x/2.x 中运行 `func new` 时，系统会提示你选择采用函数应用默认语言的模板，另外还会提示你选择函数的名称。 在版本 1.x 中，系统还会提示你选择语言。
 
 <pre>
 Select a language: Select a template:
@@ -294,8 +305,8 @@ Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
 
 | 参数     | 说明                            |
 | ------------------------------------------ | -------------------------------------- |
-| **`--csx`** | （版本 2.x）生成版本 1.x 和门户所用的相同 C# 脚本 (.csx) 模板。 |
-| **`--language`** , **`-l`**| C#、F# 或 JavaScript 等模板编程语言。 此选项在版本 1.x 中是必需的。 在版本 2.x 中，请不要使用此选项或选择与辅助角色运行时匹配的语言。 |
+| **`--csx`** | （版本 3.x/2.x）生成在版本 1.x 和门户中使用的 C# 脚本 (.csx) 模板。 |
+| **`--language`** , **`-l`**| C#、F# 或 JavaScript 等模板编程语言。 此选项在版本 1.x 中是必需的。 在版本 3.x/2.x 中，请不要使用此选项或选择与辅助角色运行时匹配的语言。 |
 | **`--name`** , **`-n`** | 函数名称。 |
 | **`--template`** , **`-t`** | 使用 `func templates list` 命令查看每种受支持语言的可用模板的完整列表。   |
 
@@ -355,7 +366,7 @@ npm start
 | **`--password`** | 密码或包含 .pfx 文件密码的文件。 只能与 `--cert` 配合使用。 版本 1.x 不支持。 |
 | **`--port`** , **`-p`** | 要侦听的本地端口。 默认值：7071。 |
 | **`--pause-on-error`** | 退出进程前，暂停增加其他输入。 仅当从集成开发环境 (IDE) 启动 Core Tools 时才使用。|
-| **`--script-root`** , **`--prefix`** | 用于指定要运行或部署的函数应用的根目录路径。 此选项用于可在子文件夹中生成项目文件的已编译项目。 例如，生成 C# 类库项目时，将在某个根子文件夹中生成 host.json、local.settings.json 和 function.json 文件，其路径类似于 `MyProject/bin/Debug/netstandard2.0`。  在这种情况下，请将前缀设置为 `--script-root MyProject/bin/Debug/netstandard2.0`。 这是在 Azure 中运行的函数应用的根目录。 |
+| **`--script-root`** , **`--prefix`** | 用于指定要运行或部署的函数应用的根目录路径。 此选项用于可在子文件夹中生成项目文件的已编译项目。 例如，生成 C# 类库项目时，将在某个根子文件夹中生成 host.json、local.settings.json 和 function.json 文件，其路径类似于 `MyProject/bin/Debug/netstandard2.0`。 在这种情况下，请将前缀设置为 `--script-root MyProject/bin/Debug/netstandard2.0`。 这是在 Azure 中运行的函数应用的根目录。 |
 | **`--timeout`** , **`-t`** | Functions 主机启动的超时时间（以秒为单位）。 默认值：20 秒。|
 | **`--useHttps`** | 绑定到 `https://localhost:{port}` ，而不是绑定到 `http://localhost:{port}` 。 默认情况下，此选项会在计算机上创建可信证书。|
 
@@ -385,17 +396,19 @@ Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 
 调用以下终结点，以在本地运行 HTTP 和 webhook 触发的函数：
 
-    http://localhost:{port}/api/{function_name}
+```http
+http://localhost:{port}/api/{function_name}
+```
 
 请确保使用相同的服务器名称和 Functions 主机正在侦听的端口。 在启动 Function 主机时所生成的输出中可以看到该信息。 可以使用触发器所支持的任何 HTTP 方法来调用此 URL。
 
-以下 cURL 命令使用查询字符串中传递的 name  参数从 GET 请求触发 `MyHttpTrigger` quickstart 函数。
+以下 cURL 命令使用查询字符串中传递的 name 参数从 GET 请求触发 `MyHttpTrigger` quickstart 函数。
 
 ```
 curl --get http://localhost:7071/api/MyHttpTrigger?name=Azure%20Rocks
 ```
 
-下面的示例是在请求主体中传递 name  的 POST 请求中调用的相同函数：
+下面的示例是在请求主体中传递 name 的 POST 请求中调用的相同函数：
 
 # <a name="bash"></a>[Bash](#tab/bash)
 ```bash
@@ -415,11 +428,13 @@ curl --request POST http://localhost:7071/api/MyHttpTrigger --data "{'name':'Azu
 
 若要在本地测试事件网格触发函数，请参阅[使用查看器 Web 应用进行本地测试](functions-bindings-event-grid-trigger.md#local-testing-with-viewer-web-app)。
 
-可以选择通过 POST 请求正文将测试数据传递给执行。 此功能类似于 Azure 门户中的“测试”  选项卡。
+可以选择通过 POST 请求正文将测试数据传递给执行。 此功能类似于 Azure 门户中的“测试”选项卡。
 
 可以调用以下管理员终结点以触发非 HTTP 函数：
 
-    http://localhost:{port}/admin/functions/{function_name}
+```http
+http://localhost:{port}/admin/functions/{function_name}
+```
 
 若要将测试数据传递给函数的管理员终结点，必须在 POST 请求消息的正文中提供数据。 消息正文需要具有以下 JSON 格式：
 
@@ -446,7 +461,7 @@ curl --request POST -H "Content-Type:application/json" --data "{'input':'sample 
 >[!IMPORTANT]
 > `func run` 命令仅在该工具的 1.x 版中受支持。 有关详细信息，请参阅主题[如何指向 Azure Functions 运行时版本](set-runtime-version.md)。
 
-在版本 1.x 中，也可以使用 `func run <FunctionName>` 直接调用函数并为函数提供输入数据。 此命令类似于在 Azure 门户中使用“测试”  选项卡运行函数。
+在版本 1.x 中，也可以使用 `func run <FunctionName>` 直接调用函数并为函数提供输入数据。 此命令类似于在 Azure 门户中使用“测试”选项卡运行函数。
 
 `func run` 支持以下选项：
 
@@ -484,17 +499,17 @@ func azure functionapp publish <FunctionAppName>
 此命令发布到 Azure 中的现有函数应用。 如果尝试发布到订阅中不存在的 `<FunctionAppName>`，则会收到错误。 若要了解如何使用 Azure CLI 从命令提示符或终端窗口创建函数应用，请参阅[为无服务器执行创建函数应用](./scripts/functions-cli-create-serverless.md)。 默认情况下，此命令使用[远程生成](functions-deployment-technologies.md#remote-build)并将应用部署为[从部署包运行](run-functions-from-deployment-package.md)。 若要禁用此建议的部署模式，请使用 `--nozip` 选项。
 
 >[!IMPORTANT]
-> 在 Azure 门户中创建函数应用时，该应用默认使用 2.x 版函数运行时。 若要让函数应用使用 1.x 版运行时，请遵照[在版本 1.x 上运行](functions-versions.md#creating-1x-apps)中的说明操作。
+> 在 Azure 门户中创建函数应用时，该应用默认使用 3.x 版函数运行时。 若要让函数应用使用 1.x 版运行时，请遵照[在版本 1.x 上运行](functions-versions.md#creating-1x-apps)中的说明操作。
 > 无法为包含现有函数的函数应用更改运行时版本。
 
-以下发布选项同时适用于 1.x 和 2.x 版本：
+以下发布选项适用于版本 3.x、2.x 和 1.x：
 
 | 选项     | 说明                            |
 | ------------ | -------------------------------------- |
 | **`--publish-local-settings -i`** |  将 local.settings.json 中的设置发布到 Azure，如果该设置已存在，则提示进行覆盖。 如果使用的是 Azure 存储仿真器，请先将应用设置更改为[实际的存储连接](#get-your-storage-connection-strings)。 |
 | **`--overwrite-settings -y`** | 使用 `--publish-local-settings -i` 时隐藏覆盖应用设置的提示。|
 
-以下发布选项仅在版本 2.x 中受支持：
+以下发布选项仅在版本 3.x 和 2.x 中受支持：
 
 | 选项     | 说明                            |
 | ------------ | -------------------------------------- |

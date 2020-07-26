@@ -2,24 +2,24 @@
 title: 概述 - 自动化 Azure 逻辑应用的部署
 description: 了解用于将 Azure 逻辑应用部署自动化的 Azure 资源管理器模板
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 origin.date: 07/25/2019
-ms.date: 02/24/2020
-ms.openlocfilehash: 70c1bed23001a64c7871091c05a79e3180590833
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 07/20/2020
+ms.testscope: no
+ms.testdate: 02/24/2020
+ms.author: v-yeche
+ms.openlocfilehash: 36f0f4425b2b86445cd17667d82538479c66311c
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291526"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414625"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>概述：使用 Azure 资源管理器模板将 Azure 逻辑应用部署自动化
 
-准备好自动创建和部署逻辑应用时，可将逻辑应用的基础工作流定义扩展到 [Azure 资源管理器模板](../azure-resource-manager/management/overview.md)中。 此模板定义了用于预配和部署逻辑应用的基础结构、资源、参数和其他信息。 通过为部署时会发生改变的值定义参数（也称为“参数化”），可以根据不同的部署需求重复且一致地部署逻辑应用。 
+准备好自动创建和部署逻辑应用时，可将逻辑应用的基础工作流定义扩展到 [Azure 资源管理器模板](../azure-resource-manager/management/overview.md)中。 此模板定义了用于预配和部署逻辑应用的基础结构、资源、参数和其他信息。 通过为部署时会发生改变的值定义参数（也称为“参数化”），可以根据不同的部署需求重复且一致地部署逻辑应用。
 
 例如，如果部署到开发、测试和生产环境，则可以对每个环境使用不同的连接字符串。 可以声明接受不同连接字符串的模板参数，然后将这些字符串存储在单独的[参数文件](../azure-resource-manager/templates/parameter-files.md)中。 这样，无需更新和重新部署模板即可更改这些值。 对于其中的参数值比较敏感或者必须予以保护（例如密码和机密）的方案，可将这些值存储在 [Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md) 中，并让参数文件检索这些值。 但是，在这些方案中，需要重新部署才能检索当前值。
 
@@ -30,7 +30,7 @@ ms.locfileid: "79291526"
 >
 > 或者，可以[结合 LogicAppTemplate 模块使用 Azure PowerShell](../logic-apps/logic-apps-create-azure-resource-manager-templates.md#azure-powershell) 创建逻辑应用模板。
 
-本主题中的示例逻辑应用使用一个 [Office 365 Outlook 触发器](/connectors/office365/)（在新电子邮件抵达时触发）以及一个 [Azure Blob 存储操作](/connectors/azureblob/)（用于创建电子邮件正文的 Blob，并将该 Blob 上传到 Azure 存储容器）。 这些示例还演示如何参数化在部署时会改变的值。
+本主题中的示例逻辑应用使用一个 [Office 365 Outlook 触发器](https://docs.microsoft.com/connectors/office365/)（在新电子邮件抵达时触发）以及一个 [Azure Blob 存储操作](https://docs.microsoft.com/connectors/azureblob/)（用于创建电子邮件正文的 Blob，并将该 Blob 上传到 Azure 存储容器）。 这些示例还演示如何参数化在部署时会改变的值。
 
 有关资源管理器模板的详细信息，请参阅以下主题：
 
@@ -88,6 +88,8 @@ ms.locfileid: "79291526"
 * 逻辑用来通过[托管连接器](../connectors/apis-list.md)访问其他服务和系统的连接
 * 逻辑应用需要对部署使用的其他资源
 
+例如，如果逻辑应用针对企业对企业 (B2B) 方案使用[集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)，则模板的顶级 `parameters` 对象会声明接受该集成帐户的资源 ID 的参数。
+
 下面是参数定义的一般结构和语法，[参数 - 资源管理器模板的结构和语法](../azure-resource-manager/templates/template-syntax.md#parameters)中对此做了全面介绍：
 
 ```json
@@ -123,7 +125,7 @@ ms.locfileid: "79291526"
       },
       "LogicAppLocation": {
          "type": "string",
-         "min length": 1,
+         "minLength": 1,
          "defaultValue": "[resourceGroup().location]",
          "metadata": {
             "description": "The resource location for the logic app"
@@ -147,17 +149,17 @@ ms.locfileid: "79291526"
 
 除了用于处理敏感值或必须保护的值（例如用户名、密码和机密）的参数以外，所有这些参数都包含 `defaultValue` 属性，不过，在某些情况下，默认值为空值。 用于这些模板参数的部署值由本主题稍后所述的示例[参数文件](#template-parameter-files)提供。
 
-若要保护模板参数，请参阅以下主题：
+有关保护模板参数的详细信息，请参阅以下主题：
 
 * [有关模板参数的安全性建议](../azure-resource-manager/templates/template-best-practices.md#parameters)
-* [保护模板参数](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
-* [使用 Azure Key Vault 传递安全参数值](../azure-resource-manager/templates/key-vault-parameter.md)
+* [提高模板参数的安全性](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
+* [使用 Azure Key Vault 传递受保护的参数值](../azure-resource-manager/templates/key-vault-parameter.md)
 
 其他模板对象通常引用模板参数，以便可以使用通过模板参数传递的值，例如：
 
 * 本主题稍后所述的[模板的资源对象](#template-resources)定义 Azure 中要创建和部署的每个资源，例如[逻辑应用的资源定义](#logic-app-resource-definition)。 这些资源通常使用模板参数值，例如逻辑应用的名称、位置和连接信息。
 
-* 在逻辑应用资源定义的较深级别，[工作流定义的参数对象](#workflow-definition-parameters)声明要在逻辑应用运行时使用的值的参数。 例如，可以针对 HTTP 触发器用来进行身份验证的用户名和密码声明工作流定义参数。 若要指定工作流定义参数的值，请使用位于工作流定义的外部、但仍位于逻辑应用资源定义的内部的 `parameters` 对象。   在此外部 `parameters` 对象中，可以引用以前声明的模板参数，在部署时，这些参数可以接受参数文件中的值。
+* 在逻辑应用资源定义的较深级别，[工作流定义的参数对象](#workflow-definition-parameters)声明要在逻辑应用运行时使用的值的参数。 例如，可以针对 HTTP 触发器用来进行身份验证的用户名和密码声明工作流定义参数。 若要指定工作流定义参数的值，请使用位于工作流定义的外部、但仍位于逻辑应用资源定义的内部的 `parameters` 对象。  在此外部 `parameters` 对象中，可以引用以前声明的模板参数，在部署时，这些参数可以接受参数文件中的值。
 
 引用参数时，模板表达式和函数将使用不同的语法，其行为与工作流定义表达式和函数不同。 有关这些差异的详细信息，请参阅本主题稍后的[对参数的引用](#parameter-references)。
 
@@ -173,9 +175,9 @@ ms.locfileid: "79291526"
 
   * [有关模板参数的安全性建议](../azure-resource-manager/templates/template-best-practices.md#parameters)
 
-  * [保护模板参数](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
+  * [提高模板参数的安全性](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
 
-  * [使用 Azure Key Vault 传递安全参数值](../azure-resource-manager/templates/key-vault-parameter.md)
+  * [使用 Azure Key Vault 传递受保护的参数值](../azure-resource-manager/templates/key-vault-parameter.md)
 
 * 若要区分工作流定义参数名称和模板参数名称，可以使用描述性的模板参数名称，例如：`TemplateFabrikamPassword`
 
@@ -190,7 +192,7 @@ ms.locfileid: "79291526"
 * 逻辑应用模板文件名： **<*逻辑应用名称*>.json**
 * 参数文件名： **<*逻辑应用名称*>.parameters.json**
 
-下面是参数文件中的结构，其中包括一个用于[通过 Azure Key Vault 传递安全参数值](../azure-resource-manager/templates/key-vault-parameter.md)的 Key Vault 引用：
+下面是参数文件中的结构，其中包括一个用于[通过 Azure Key Vault 传递受保护参数值](../azure-resource-manager/templates/key-vault-parameter.md)的密钥保管库引用：
 
 ```json
 {
@@ -229,7 +231,7 @@ ms.locfileid: "79291526"
          "value": "Email-Processor-Logic-App"
       },
       "LogicAppLocation": {
-         "value": "westeurope"
+         "value": "chinanorth"
       }
    }
 }
@@ -338,11 +340,11 @@ ms.locfileid: "79291526"
 
 逻辑应用的工作流定义显示在 `definition` 对象中，而该对象显示在逻辑应用资源定义中的 `properties` 对象内。 此 `definition` 对象是代码视图中显示的相同对象，[工作流定义语言的架构参考](../logic-apps/logic-apps-workflow-definition-language.md)主题中对此做了全面介绍。 工作流定义包含一个内部 `parameters` 声明对象，在对象中，可以定义在运行时工作流定义要使用的值的新参数，或编辑现有的参数。 然后，可以在工作流中的触发器或操作内部引用这些参数。 默认情况下，除非逻辑应用通过[托管连接器](../connectors/apis-list.md)与其他服务和系统建立了连接，否则此 `parameters` 对象是空的。
 
-若要设置工作流定义参数的值，请使用位于工作流定义的外部、但仍位于逻辑应用资源定义的内部的 `parameters` 对象。   然后，在此外部 `parameters` 对象中，可以引用以前声明的模板参数，在部署时，这些参数可以接受参数文件中的值。
+若要设置工作流定义参数的值，请使用位于工作流定义的外部、但仍位于逻辑应用资源定义的内部的 `parameters` 对象。  然后，在此外部 `parameters` 对象中，可以引用以前声明的模板参数，在部署时，这些参数可以接受参数文件中的值。
 
 > [!TIP]
 >
-> 最佳做法是，不要直接从工作流定义内部引用部署时要评估的模板参数。 而是声明一个工作流定义参数，然后可以在位于工作流定义的外部、但仍位于逻辑应用资源定义的内部的 `parameters` 对象中设置该参数。   有关详细信息，请参阅[对参数的引用](#parameter-references)。
+> 最佳做法是，不要直接从工作流定义内部引用部署时要评估的模板参数。 而是声明一个工作流定义参数，然后可以在位于工作流定义的外部、但仍位于逻辑应用资源定义的内部的 `parameters` 对象中设置该参数。  有关详细信息，请参阅[对参数的引用](#parameter-references)。
 
 此语法显示了可在模板和工作流定义级别声明的哪个位置声明参数，以及可在哪个位置通过引用模板和工作流定义参数来设置这些参数值：
 
@@ -393,7 +395,9 @@ ms.locfileid: "79291526"
             },
             // Workflow definition parameter value
             "parameters": {
-               "<workflow-definition-parameter-name>": "[parameters('<template-parameter-name>')]"
+               "<workflow-definition-parameter-name>": { 
+                  "value": "[parameters('<template-parameter-name>')]"
+               }
             },
             "accessControl": {}
          },
@@ -411,11 +415,11 @@ ms.locfileid: "79291526"
 
 对于用于在运行时处理敏感信息、密码、访问密钥或机密的工作流定义参数，请将该参数声明或编辑为使用 `securestring` 或 `secureobject` 参数类型。 可以在工作流定义中全面引用此参数。 在模板的最高级别，声明一个用于在部署时处理此信息的相同类型的参数。
 
-若要设置工作流定义参数的值，请使用位于工作流定义的外部、但仍位于逻辑应用资源定义的内部的 `parameters` 对象来引用模板参数。   最后，若要在部署时将值传递给模板参数，请将该值存储在 [Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md) 中，并在部署时由模板使用的[参数文件](#template-parameter-files)中引用该 Key Vault。
+若要设置工作流定义参数的值，请使用位于工作流定义的外部、但仍位于逻辑应用资源定义的内部的 `parameters` 对象来引用模板参数。  最后，若要在部署时将值传递给模板参数，请将该值存储在 [Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md) 中，并在部署时由模板使用的[参数文件](#template-parameter-files)中引用该 Key Vault。
 
 此示例模板演示如何在必要时定义安全参数来完成这些任务，以便可以将这些参数的值存储在 Azure Key Vault 中：
 
-* 为用于对访问进行身份验证的值声明安全参数。
+* 为用于对访问进行身份验证的值声明受保护参数。
 * 在模板和工作流定义级别使用这些值。
 * 使用参数文件提供这些值。
 
@@ -652,7 +656,7 @@ ms.locfileid: "79291526"
 
 * 在工作流定义中，`parameters` 对象为逻辑应用运行时要使用的连接值声明一个 `$connections` 参数。 此外，创建连接的触发器或操作将使用通过此 `$connections` 参数传递的相应值。
 
-* 在工作流定义的外部、但仍在逻辑应用资源定义的内部，另一个 `parameters` 对象通过引用相应的模板参数，来设置要在运行时对 `$connections` 参数使用的值。   这些值使用模板表达式来引用安全存储逻辑应用中的连接的元数据的资源。
+* 在工作流定义的外部、但仍在逻辑应用资源定义的内部，另一个 `parameters` 对象通过引用相应的模板参数，来设置要在运行时对 `$connections` 参数使用的值。  这些值使用模板表达式来引用安全存储逻辑应用中的连接的元数据的资源。
 
   例如，元数据可以包含可存储在 [Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md) 中的连接字符串和访问令牌。 若要将这些值传递到模板参数，请在部署时模板要使用的[参数文件](#template-parameter-files)中引用该 Key Vault。 有关引用参数的差异的详细信息，请参阅本主题稍后的[对参数的引用](#parameter-references)。
 
@@ -762,7 +766,7 @@ ms.locfileid: "79291526"
          "value": "Email-Processor-Logic-App"
       },
       "LogicAppLocation": {
-         "value": "westeurope"
+         "value": "chinanorth"
       },
       "azureblob_1_Connection_Name": {
          "value": "Fabrikam-Azure-Blob-Storage-Connection"
@@ -910,7 +914,9 @@ ms.locfileid: "79291526"
 
 ### <a name="authenticate-connections"></a>身份验证连接
 
-部署后，逻辑应用将使用有效参数进行端到端的运行。 但是，仍然必须授权任何 OAuth 连接，以生成用于[对凭据进行身份验证](../active-directory/develop/authentication-scenarios.md)的有效访问令牌。 有关详细信息，请参阅[授权 OAuth 连接](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md#authorize-oauth-connections)。
+部署后，逻辑应用将使用有效参数进行端到端的运行。 但是，仍然必须授权任何 OAuth 连接，以生成用于[对凭据进行身份验证](../active-directory/develop/authentication-vs-authorization.md)的有效访问令牌。 有关详细信息，请参阅[授权 OAuth 连接](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md#authorize-oauth-connections)。
+
+<!--CORRECT ON authentication-vs-authorization.md-->
 
 某些连接支持使用 Azure Active Directory (Azure AD) [服务主体](../active-directory/develop/app-objects-and-service-principals.md)来授权已[在 Azure AD 中注册](../active-directory/develop/quickstart-register-app.md)的逻辑应用的连接。 例如，以下 Azure Data Lake 连接资源定义显示了如何引用用于处理服务主体信息的模板参数，以及模板如何声明这些参数：
 
@@ -1055,7 +1061,7 @@ ms.locfileid: "79291526"
       },
       "LogicAppLocation": {
          "type": "string",
-         "min length": 1,
+         "minLength": 1,
          "defaultValue": "[resourceGroup().location]",
          "metadata": {
             "description": "The resource location to use for the logic app"
@@ -1249,3 +1255,5 @@ ms.locfileid: "79291526"
 
 > [!div class="nextstepaction"]
 > [创建逻辑应用模板](../logic-apps/logic-apps-create-azure-resource-manager-templates.md)
+
+<!-- Update_Description: update meta properties, wording update, update link -->

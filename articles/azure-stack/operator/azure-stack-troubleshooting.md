@@ -5,16 +5,16 @@ description: 了解如何排查 Azure Stack Hub 的问题，包括 VM、存储�
 author: WenJason
 ms.topic: article
 origin.date: 05/13/2019
-ms.date: 06/22/2020
+ms.date: 07/20/2020
 ms.author: v-jay
 ms.reviewer: prchint
 ms.lastreviewed: 15/13/2020
-ms.openlocfilehash: b40aaa7862916f560738450b9938f723e3195a29
-ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
+ms.openlocfilehash: cd4d6ae9a3f0621ecd143aa52cc6f7149318598c
+ms.sourcegitcommit: e9ffd50aa5eaab402a94bfabfc70de6967fe6278
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85096377"
+ms.lasthandoff: 07/14/2020
+ms.locfileid: "86307388"
 ---
 # <a name="troubleshoot-issues-in-azure-stack-hub"></a>排查 Azure Stack Hub 中的问题
 
@@ -80,7 +80,7 @@ Azure Stack Hub 中的用户可以是订阅、资源组或服务的每个实例�
 
 ### <a name="get-scale-unit-metrics"></a>获取缩放单元指标
 
-可以使用 PowerShell 获取戳记使用情况信息，不需 CSS 的帮助。 若要获取戳记使用率，请执行以下操作：
+可以使用 PowerShell 获取戳记使用情况信息，不需 Azure 支持提供帮助。 若要获取戳记使用率，请执行以下操作：
 
 1. 创建 PEP 会话。
 2. 运行 `test-azurestack`。
@@ -143,6 +143,6 @@ Azure Stack Hub 修补程序和更新过程旨在让操作员以一致且简单�
 
 **原因：** 尝试安装 Azure Stack Hub 更新时，更新的状态可能会失败并将状态更改为 `PreparationFailed`。 对于连接到 Internet 的系统，这通常表明由于 Internet 连接不稳定，无法正确下载更新包。 
 
-**补救措施**：可以通过再次单击“立即安装”**** 来解决此问题。 如果此问题仍然存在，建议按照[安装更新](azure-stack-apply-updates.md?#install-updates-and-monitor-progress)部分的说明手动上传更新包。
+**补救措施**：可以通过再次单击“立即安装”来解决此问题。 如果此问题仍然存在，建议按照[安装更新](azure-stack-apply-updates.md?#install-updates-and-monitor-progress)部分的说明手动上传更新包。
 
 **发生率**：通用

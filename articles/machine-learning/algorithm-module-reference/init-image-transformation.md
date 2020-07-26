@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: 823b9f0e253c2a3449ad48a6bc9dd5f2ef49ecac
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: b72276ae15978625a6bcc5fb9c85fb740c57a514
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097798"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86441086"
 ---
 # <a name="init-image-transformation"></a>初始化图像转换
 
@@ -95,7 +95,7 @@ ms.locfileid: "85097798"
 
 | 名称                        | 类型                    | 说明                              |
 | --------------------------- | ----------------------- | ---------------------------------------- |
-| 输出图像转换 | TransformationDirectory | 输出可以连接到“应用图像转换”模块的图像转换。 |
+| 输出图像转换 | 转换目录 | 输出可以连接到“应用图像转换”模块的图像转换。 |
 
 ## <a name="next-steps"></a>后续步骤
 

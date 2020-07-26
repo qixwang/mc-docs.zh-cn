@@ -2,15 +2,17 @@
 title: 模板结构和语法
 description: 使用声明性 JSON 语法描述 Azure Resource Manager 模板的结构和属性。
 ms.topic: conceptual
-origin.date: 06/05/2020
-ms.date: 06/22/2020
+origin.date: 06/22/2020
+ms.date: 07/13/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: feddc473bd2c029f8bbd895a6c4bf3ec9b7c784d
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: 608aee5d70764df56530ce9157daf5ee64b243a0
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098602"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86441004"
 ---
 # <a name="understand-the-structure-and-syntax-of-arm-templates"></a>了解 ARM 模板的结构和语法
 
@@ -48,6 +50,7 @@ ms.locfileid: "85098602"
 | [outputs](#outputs) |否 |部署后返回的值。 |
 
 每个元素均有可设置的属性。 本文稍后将更详细地介绍模板的各个节。
+
 <a name="parameters"></a>
 ## <a name="parameters"></a>parameters
 
@@ -85,6 +88,7 @@ ms.locfileid: "85098602"
 | description |否 |通过门户向用户显示的参数的说明。 有关详细信息，请参阅[模板中的注释](#comments)。 |
 
 有关如何使用参数的示例，请参阅 [Azure 资源管理器模板中的参数](template-parameters.md)。
+
 <a name="data-types"></a>
 ### <a name="data-types"></a>数据类型
 
@@ -97,6 +101,7 @@ ms.locfileid: "85098602"
 将参数设置为安全字符串或安全对象时，参数的值不会保存到部署历史记录中，也不会记入日志。 但是，如果将该安全值设置为不应为安全值的属性，则该值不会受到保护。 例如，如果将安全字符串设置为标记，则该值将以纯文本的形式存储。 使用安全字符串作为密码和机密。
 
 如需通过示例了解如何设置数据类型的格式，请参阅[参数类型格式](parameter-files.md#parameter-type-formats)。
+
 <a name="variables"></a>
 ## <a name="variables"></a>变量
 
@@ -132,6 +137,7 @@ ms.locfileid: "85098602"
 有关使用 `copy` 为变量创建多个值的信息，请参阅[变量迭代](copy-variables.md)。
 
 有关如何使用变量的示例，请参阅 [Azure 资源管理器模板中的变量](template-variables.md)。
+
 <a name="functions"></a>
 ## <a name="functions"></a>函数
 
@@ -256,6 +262,7 @@ ms.locfileid: "85098602"
 | resources |否 |依赖于所定义的资源的子资源。 只能提供父资源的架构允许的资源类型。 不隐式表示对父资源的依赖。 必须显式定义该依赖关系。 请参阅[设置子资源的名称和类型](child-resource-name-type.md)。 |
 
 <!--Not Available on Line 239,240,250 To determine available values, see [template reference](https://docs.microsoft.com/azure/templates/)-->
+
 <a name="outputs"></a>
 ## <a name="outputs"></a>Outputs
 
@@ -295,7 +302,7 @@ ms.locfileid: "85098602"
 
 ### <a name="comments"></a>注释
 
-对于内联注释，可使用 `//` 或 `/* ... */`，但此语法不适用于所有工具。 无法使用门户模板编辑器处理带有内联注释的模板。 如果添加此类注释，请务必使用支持内联 JSON 注释的工具。
+对于内联注释，可使用 `//` 或 `/* ... */`，但此语法不适用于所有工具。 如果添加此类注释，请务必使用支持内联 JSON 注释的工具。
 
 > [!NOTE]
 > 若要使用 Azure CLI 2.3.0 或更低版本部署包含注释的模板，必须使用 `--handle-extended-json-format` 开关。
@@ -330,7 +337,7 @@ ms.locfileid: "85098602"
   },
 ```
 
-对于参数，添加具有 `description` 属性的 `metadata` 对象****。
+对于参数，添加具有 `description` 属性的 `metadata` 对象。
 
 ```json
 "parameters": {
@@ -346,7 +353,7 @@ ms.locfileid: "85098602"
 
 ![显示参数提示](./media/template-syntax/show-parameter-tip.png)
 
-对于资源，添加 `comments` 元素或元数据对象****。 以下示例同时显示了注释元素和元数据对象。
+对于资源，添加 `comments` 元素或元数据对象。 以下示例同时显示了注释元素和元数据对象。
 
 ```json
 "resources": [
@@ -372,7 +379,7 @@ ms.locfileid: "85098602"
 ]
 ```
 
-对于输出，将元数据对象添加到输出值****。
+对于输出，将元数据对象添加到输出值。
 
 ```json
 "outputs": {
@@ -417,6 +424,6 @@ ms.locfileid: "85098602"
 * 有关用户可以使用的来自模板中的函数的详细信息，请参阅 [Azure Resource Manager Template Functions](template-functions.md)（Azure Resource Manager 模板函数）。
 * 若要在部署期间合并多个模板，请参阅[将已链接的模板与 Azure 资源管理器配合使用](linked-templates.md)。
 * 有关创建模板的建议，请参阅 [Azure 资源管理器模板的最佳做法](template-best-practices.md)。
-* 有关如何创建可以跨所有 Azure 环境和 Azure Stack 使用的资源管理器模板的建议，请参阅[开发用于实现云一致性的 Azure 资源管理器模板](templates-cloud-consistency.md)。
+* 有关常见问题的解答，请参阅[有关 ARM 模板的常见问题解答](frequently-asked-questions.md)。
 
 <!-- Update_Description: update meta properties, wording update, update link -->

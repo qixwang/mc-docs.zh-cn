@@ -8,13 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
-ms.date: 11/12/2019
-ms.openlocfilehash: bf3904e7b781a10a683dcd79768f6eb8cc8ce077
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.date: 06/28/2020
+ms.custom: designer
+ms.openlocfilehash: 91cbe207669b9cdafdaad12291faf744dd998c0b
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097073"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86441192"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>什么是 Azure 机器学习设计器（预览版）？ 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -80,7 +81,8 @@ ms.locfileid: "85097073"
 
 模块可能提供一组参数用于配置模块的内部算法。 在画布上选择模块时，模块的参数会显示在画布右侧的“属性”窗格中。 可以在该窗格中修改参数来调整模型。 可以在设计器中设置各个模块的计算资源。 
 
-![模块属性](./media/concept-designer/properties.png)
+:::image type="content" source="./media/concept-designer/properties.png"alt-text="模块属性":::
+
 
 有关在可用的机器学习算法库中导航的某些帮助，请参阅[算法和模块参考概述](algorithm-module-reference/module-reference.md)。 有关选择算法的帮助，请参阅 [Azure 机器学习算法速查表](algorithm-cheat-sheet.md)。
 
@@ -94,7 +96,7 @@ ms.locfileid: "85097073"
 | Azure 机器学习计算实例 | ✓ | |
 | Azure Kubernetes 服务 | | ✓ |
 
-计算目标会附加至 [Azure 机器学习工作区](concept-workspace.md)。 可在 [Azure 机器学习工作室（经典）](https://ml.azure.com)中管理工作区中的计算目标。
+计算目标会附加到 [Azure 机器学习工作区](concept-workspace.md)。 可在 [Azure 机器学习工作室](https://ml.azure.com)的工作区中管理计算目标。
 
 ## <a name="deploy"></a>部署
 

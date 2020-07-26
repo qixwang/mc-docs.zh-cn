@@ -3,17 +3,17 @@ title: 在 Azure Stack Hub 中监视硬件运行状况
 description: 了解如何监视 Azure Stack Hub 硬件组件的运行状况。
 author: WenJason
 ms.topic: conceptual
-origin.date: 02/24/2020
-ms.date: 06/22/2020
+origin.date: 06/15/2020
+ms.date: 07/20/2020
 ms.author: v-jay
 ms.reviewer: thoroet
 ms.lastreviewed: 11/21/2019
-ms.openlocfilehash: 154269b8ae5af784fc8f29d5ad75c1e65f0ef918
-ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
+ms.openlocfilehash: 94ecba1fd85032fa9a3e8dcefa5f289ab24e13e2
+ms.sourcegitcommit: e9ffd50aa5eaab402a94bfabfc70de6967fe6278
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85096465"
+ms.lasthandoff: 07/14/2020
+ms.locfileid: "86307397"
 ---
 # <a name="monitor-azure-stack-hub-hardware-components"></a>监视 Azure Stack Hub 硬件组件
 
@@ -27,11 +27,11 @@ Azure Stack Hub 运行状况和监视系统监视存储子系统的状态，并�
 - 启动驱动器
 
 > [!NOTE]
-> 在启用此功能之前，必须向硬件合作伙伴确认它们已就绪。 硬件合作伙伴还应提供在 BMC 中启用此功能的详细步骤。
+> 在启用此功能之前，必须向硬件合作伙伴确认它们已就绪。 硬件合作伙伴还会提供在基板管理控制器 (BMC) 中启用此功能的详细步骤。
 
 ## <a name="snmp-listener-scenario"></a>SNMP 侦听器场景
 
-SNMP v3 侦听器正在 TCP 端口 162 上的所有三个 ERCS 实例上运行。 基板管理控制器 (BMC) 必须配置为向 Azure Stack Hub 侦听器发送 SNMP 陷阱。 可以通过打开区域属性视图，从管理员门户中获取三个 PEP IP。
+SNMP v3 侦听器正在 TCP 端口 162 上的所有三个 ERCS 实例上运行。 BMC 必须配置为向 Azure Stack Hub 侦听器发送 SNMP 陷阱。 可以通过打开区域属性视图，从管理员门户中获取三个 PEP IP。
 
 向侦听器发送陷阱要求进行身份验证，并且必须使用与访问基本 BMC 本身相同的凭据。
 

@@ -4,26 +4,21 @@ description: 本文介绍如何将 Azure 内部负载均衡器从基本 SKU 升�
 services: load-balancer
 author: WenJason
 ms.service: load-balancer
-ms.topic: article
+ms.topic: how-to
 origin.date: 02/23/2020
-ms.date: 04/06/2020
+ms.date: 07/20/2020
 ms.author: v-jay
-ms.openlocfilehash: 3db352b05b5a6607b1e6450c7fc696ceeff23327
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 9865c3315131aeb67148e11276d3b56a3b54056a
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80625824"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440351"
 ---
 # <a name="upgrade-azure-internal-load-balancer--no-outbound-connection-required"></a>升级 Azure 内部负载均衡器 - 不需出站连接
 [Azure 标准负载均衡器](load-balancer-overview.md)通过区域冗余提供丰富的功能和高可用性。 有关负载均衡器 SKU 的详细信息，请参阅[比较表](/load-balancer/concepts-limitations#skus)。
 
-升级分为两个阶段：
-
-1. 迁移配置
-2. 将 VM 添加到标准负载均衡器的后端池
-
-本文介绍配置迁移。 根据特定的环境，将 VM 添加到后端池的过程可能有所不同。 不过，本文提供了一些概要性的普通[建议](#add-vms-to-backend-pools-of-standard-load-balancer)。
+本文介绍了一个 PowerShell 脚本，该脚本会创建一个其配置与基本负载均衡器相同的标准负载均衡器，并会将流量从基本负载均衡器迁移到标准负载均衡器。
 
 ## <a name="upgrade-overview"></a>升级概述
 
@@ -31,17 +26,30 @@ ms.locfileid: "80625824"
 
 * 在指定的位置中创建标准内部 SKU 负载均衡器。 请注意，标准内部负载均衡器不会提供任何[出站连接](/load-balancer/load-balancer-outbound-connections)。
 * 将基本 SKU 负载均衡器的配置无缝复制到新建的标准负载均衡器。
+* 将专用 IP 从基本负载均衡器无缝移到新建的标准负载均衡器。
+* 将 VM 从基本负载均衡器的后端池无缝移到标准负载均衡器的后端池
 
 ### <a name="caveatslimitations"></a>注意事项/限制
 
 * 脚本只支持不需要出站连接的内部负载均衡器升级。 如果需要用于某些 VM 的[出站连接](/load-balancer/load-balancer-outbound-connections)，请参阅此[页面](upgrade-InternalBasic-To-PublicStandard.md)，了解相关说明。 
-* 标准负载均衡器有新的公共地址。 无法将与现有基本负载均衡器关联的 IP 地址无缝移动到标准负载均衡器，因为两者的 SKU 不同。
+* 基本负载均衡器需要与后端 VM 和 NIC 位于同一资源组中。
 * 如果标准负载均衡器是在不同的区域中创建的，则无法将旧区域中的 VM 关联到新建的标准负载均衡器。 若要克服此限制，请确保在新区域中创建新的 VM。
-* 如果负载均衡器没有任何前端 IP 配置或后端池，则运行脚本时可能会遇到错误。 请确保负载均衡器不是空的。
+* 如果负载均衡器没有任何前端 IP 配置或后端池，则运行脚本时可能会遇到错误。 确保负载均衡器不是空的。
+
+## <a name="change-ip-allocation-method-to-static-for-frontend-ip-configuration-ignore-this-step-if-its-already-static"></a>将前端 IP 配置的 IP 分配方法更改为“静态”（如果此项已为“静态”，则忽略此步骤）
+
+1. 在左侧菜单中选择“所有服务”，接着选择“所有资源”，然后在资源列表中选择你的基本负载均衡器。 
+
+2. 在“设置”下，选择“前端 IP 配置”，然后选择第一个前端 IP 配置。 
+
+3. 对于“分配”，请选择“静态”
+
+4. 对于基本负载均衡器的所有前端 IP 配置，请重复执行步骤 3。
+
 
 ## <a name="download-the-script"></a>下载脚本
 
-从 [PowerShell 库](https://www.powershellgallery.com/packages/AzureILBUpgrade/1.0)下载迁移脚本。
+从 [PowerShell 库](https://www.powershellgallery.com/packages/AzureILBUpgrade/3.0)下载迁移脚本。
 ## <a name="use-the-script"></a>使用脚本
 
 根据本地 PowerShell 环境的设置和首选项，可以使用两个选项：
@@ -63,7 +71,7 @@ ms.locfileid: "80625824"
 
 ### <a name="install-using-the-script-directly"></a>直接使用脚本安装
 
-如果已安装某些 Azure Az 模块并且无法卸载它们（或者不想卸载），可以使用脚本下载链接中的“手动下载”选项卡手动下载该脚本。  此脚本将作为原始 nupkg 文件下载。 若要安装此 nupkg 文件中的脚本，请参阅[手动下载包](https://docs.microsoft.com/powershell/scripting/gallery/how-to/working-with-packages/manual-download)。
+如果已安装某些 Azure Az 模块并且无法卸载它们（或者不想卸载），可以使用脚本下载链接中的“手动下载”选项卡手动下载该脚本。 此脚本将作为原始 nupkg 文件下载。 若要安装此 nupkg 文件中的脚本，请参阅[手动下载包](https://docs.microsoft.com/powershell/scripting/gallery/how-to/working-with-packages/manual-download)。
 
 若要运行该脚本，请执行以下操作：
 
@@ -73,7 +81,7 @@ ms.locfileid: "80625824"
 
 1. 检查所需的参数：
 
-   * **rgName: [字符串]:必需** – 这是现有基本负载均衡器和新的标准负载均衡器的资源组。 若要查找此字符串值，请导航到 Azure 门户，选择你的基本负载均衡器源，然后单击该负载均衡器的“概览”。  资源组位于该页上。
+   * **rgName: [字符串]:必需** – 这是现有基本负载均衡器和新的标准负载均衡器的资源组。 若要查找此字符串值，请导航到 Azure 门户，选择你的基本负载均衡器源，然后单击该负载均衡器的“概览”。 资源组位于该页上。
    * **oldLBName: [String]:必需** – 这是要升级的现有基本负载均衡器的名称。 
    * **newlocation: [String]:必需** – 这是要在其中创建标准负载均衡器的位置。 建议将所选基本负载均衡器的相同位置继承到标准负载均衡器，以方便与其他现有资源相关联。
    * **newLBName: [String]:必需** – 这是要创建的标准负载均衡器的名称。
@@ -85,30 +93,6 @@ ms.locfileid: "80625824"
    AzureILBUpgrade.ps1 -rgName "test_InternalUpgrade_rg" -oldLBName "LBForInternal" -newlocation "chinaeast2" -newLbName "LBForUpgrade"
    ```
 
-### <a name="add-vms-to-backend-pools-of-standard-load-balancer"></a>将 VM 添加到标准负载均衡器的后端池
-
-首先，请仔细检查脚本是否已成功创建一个新的标准内部负载均衡器，其上的配置完全是从基本内部负载均衡器迁移的。 可以从 Azure 门户验证此结果。
-
-确保通过标准负载均衡器发送少量的流量作为手动测试。
-  
-以下几种方案说明了如何配置将 VM 添加到新建标准内部负载均衡器的后端池，我们提供了每种方案的建议：
-
-* **将现有 VM 从旧基本内部负载均衡器的后端池移到新建标准内部负载均衡器的后端池**。
-    1. 若要执行本快速入门中的任务，请登录 [Azure 门户](https://portal.azure.cn)。
- 
-    1. 在左侧菜单中选择“所有资源”，然后从资源列表中选择“新建的标准负载均衡器”。  
-   
-    1. 在“设置”下，选择“后端池”。  
-   
-    1. 选择与基本负载均衡器的后端池匹配的后端池，然后选择以下值： 
-      - **虚拟机**：单击下拉控件，从基本负载均衡器的匹配后端池中选择 VM。
-    1. 选择“保存”  。
-    >[!NOTE]
-    >对于使用公共 IP 的 VM，在不保证 IP 地址相同的情况下，需要先创建标准 IP 地址。 将 VM 与基本 IP 取消关联，并将 VM 关联到新建的标准 IP 地址。 然后，即可按照说明将 VM 添加到标准负载均衡器的后端池。 
-
-* **创建要添加到新建标准内部负载均衡器的后端池的新 VM**。
-    * 在[此处](/load-balancer/quickstart-load-balancer-standard-public-portal#create-virtual-machines)可以找到有关如何创建 VM 并将关联到标准负载均衡器的详细说明。
-
 ## <a name="common-questions"></a>常见问题
 
 ### <a name="are-there-any-limitations-with-the-azure-powershell-script-to-migrate-the-configuration-from-v1-to-v2"></a>用于将配置从 v1 迁移到 v2 的 Azure PowerShell 脚本是否存在任何限制？
@@ -117,7 +101,7 @@ ms.locfileid: "80625824"
 
 ### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-basic-load-balancer-to-the-newly-created-standard-load-balancer"></a>Azure PowerShell 脚本是否还会将流量从基本负载均衡器切换到新建的标准负载均衡器？
 
-否。 该 Azure PowerShell 脚本只会迁移配置。 实际的流量迁移由你负责和控制。
+是的，它会迁移流量。 如果想要亲自迁移流量，请使用[此脚本](https://www.powershellgallery.com/packages/AzureILBUpgrade/1.0)（它不会为你移动虚拟机）。
 
 ### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>使用此脚本时我遇到了一些问题。 如何求助？
   

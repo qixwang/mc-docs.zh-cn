@@ -3,18 +3,20 @@ title: 设置资源的部署顺序
 description: 介绍如何在部署期间将一个资源设置为依赖于另一个资源，以确保按正确的顺序部署资源。
 ms.topic: conceptual
 origin.date: 12/03/2019
-ms.date: 04/30/2020
+ms.date: 07/13/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 04413a84d8cde8ca03198d95bb8227c067214b4f
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: f2ef5c86980efd98ec93f6db54b2217dbe70630a
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596252"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86441019"
 ---
 # <a name="define-the-order-for-deploying-resources-in-arm-templates"></a>在 ARM 模板中定义部署资源的顺序
 
-部署资源时，可能需要确保其他资源在部署之前存在。 例如，在部署 SQL 数据库之前，需要 SQL Server。 可通过将一个资源标记为依赖于其他资源来定义此关系。 使用 **dependsOn** 元素或 **reference** 函数定义依赖项。
+部署资源时，可能需要确保其他资源在部署之前存在。 例如，在部署数据库之前，需要逻辑 SQL Server。 可通过将一个资源标记为依赖于其他资源来定义此关系。 使用 **dependsOn** 元素或 **reference** 函数定义依赖项。
 
 Resource Manager 将评估资源之间的依赖关系，并根据其依赖顺序进行部署。 如果资源互不依赖，资源管理器将以并行方式部署资源。 只需为部署在同一模板中的资源定义依赖关系。
 
@@ -61,7 +63,7 @@ Resource Manager 将评估资源之间的依赖关系，并根据其依赖顺序
 
 每个父资源仅接受特定的资源类型作为子资源。 可接受的资源类型在父资源的 [模板架构](https://github.com/Azure/azure-resource-manager-schemas) 中指定。 子资源类型的名称包含父资源类型的名称，例如 **Microsoft.Web/sites/config** 和 **Microsoft.Web/sites/extensions** 都是 **Microsoft.Web/sites** 的子资源。
 
-以下示例演示了 SQL 服务器和 SQL 数据库。 请注意，在 SQL 数据库与 SQL 服务器之间定义了显式依赖关系，尽管数据库是服务器的子级。
+以下示例显示了逻辑 SQL Server 和数据库。 请注意，在数据库与服务器之间定义了显式依赖关系，尽管数据库是服务器的子级。
 
 ```json
 "resources": [

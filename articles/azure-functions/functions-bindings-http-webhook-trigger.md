@@ -3,14 +3,14 @@ title: Azure Functions HTTP 触发器
 description: 了解如何通过 HTTP 调用 Azure 函数。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 07/02/2020
+ms.date: 07/15/2020
 ms.author: v-junlch
-ms.openlocfilehash: 2b6ccaaf15314ef7e64444eb9e4ff79b9ce5f28f
-ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
+ms.openlocfilehash: 728dbf46e6d7160b8df65031a980107193efdd5c
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85945283"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440538"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Functions HTTP 触发器
 
@@ -437,7 +437,9 @@ public HttpResponseMessage<String> HttpTrigger(
 
 默认情况下，创建 HTTP 触发器的函数时，可通过以下格式的路由对该函数进行寻址：
 
-    http://<APP_NAME>.chinacloudsites.cn/api/<FUNCTION_NAME>
+```http
+http://<APP_NAME>.chinacloudsites.cn/api/<FUNCTION_NAME>
+```
 
 在 HTTP 触发器的输入绑定中，可以使用可选 `route` 属性自定义此路由。 例如，以下 function.json 文件定义了 HTTP 触发器的 `route` 属性：
 
@@ -667,9 +669,6 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 
 ## <a name="function-access-keys"></a><a name="authorization-keys"></a>函数访问密钥
 
-> [!IMPORTANT]
-> 尽管密钥可能有助于在开发期间模糊处理 HTTP 终结点，但它们并不适合用于在生产环境中保护 HTTP 触发器。 有关详细信息，请参阅[在生产环境中保护 HTTP 终结点](#secure-an-http-endpoint-in-production)。
-
 [!INCLUDE [functions-authorization-keys](../../includes/functions-authorization-keys.md)]
 
 ## <a name="obtaining-keys"></a>获取密钥
@@ -684,7 +683,9 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 
 大多数 HTTP 触发器模板要求在请求中提供 API 密钥。 因此，HTTP 请求通常类似于以下 URL：
 
-    https://<APP_NAME>.chinacloudsites.cn/api/<FUNCTION_NAME>?code=<API_KEY>
+```http
+https://<APP_NAME>.chinacloudsites.cn/api/<FUNCTION_NAME>?code=<API_KEY>
+```
 
 可将该密钥包含在名为 `code` 的查询字符串变量中，如上所示。 也可以将它包含在 `x-functions-key` HTTP 标头中。 密钥的值可以为任意为函数定义的函数密钥，也可以为任意主机密钥。
 
@@ -727,6 +728,14 @@ Webhook 授权由属于 HTTP 触发器的 webhook 接收器组件处理，其机
 
 * **查询字符串**：提供程序通过 `clientid` 查询字符串参数（例如，`https://<APP_NAME>.chinacloudsites.cn/api/<FUNCTION_NAME>?clientid=<KEY_NAME>`）传递密钥名称。
 * **请求标头**：提供程序通过 `x-functions-clientid` 标头传递密钥名称。
+
+## <a name="content-types"></a>内容类型
+
+将二进制文件和窗体数据传递给非 C# 函数需要使用适当的 content-type 标头。 支持的内容类型包括 `octet-stream`（适用于二进制数据）和[多部分类型](https://www.iana.org/assignments/media-types/media-types.xhtml#multipart)。
+
+### <a name="known-issues"></a>已知问题
+
+在非 C# 函数中，使用 content-type `image/jpeg` 发送的请求会导致向函数传递 `string` 值。 在这种情况下，可以手动将 `string` 值转换为字节数组以访问原始二进制数据。
 
 ## <a name="limits"></a>限制
 

@@ -5,14 +5,16 @@ author: rockboyfor
 ms.service: azure-resource-manager
 ms.topic: reference
 origin.date: 05/31/2020
-ms.date: 06/22/2020
+ms.date: 07/13/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 4075dcb8686f81a4252e7ba3907ab70084a861b7
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: fd5c06dc3074c65d7f2b01cf46e6d6877057c417
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098628"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440956"
 ---
 # <a name="support-for-moving-azure-resources-across-regions"></a>跨区域移动 Azure 资源的支持
 
@@ -134,7 +136,7 @@ ms.locfileid: "85098628"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | automationaccounts | 否 | 
+> | automationaccounts | 是（使用模板） <br/><br/> [使用异地复制](../../automation/automation-managing-data.md#geo-replication-in-azure-automation) |  
 > | automationaccounts/configurations | 否 | 
 > | automationaccounts/runbooks | 否 | 
 
@@ -159,8 +161,7 @@ ms.locfileid: "85098628"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | batchaccounts | 否 |
-
+> | batchaccounts |  Batch 帐户不能直接从一个区域移到另一个区域，但你可以使用模板来导出模板，对其进行修改，然后将模板部署到新区域。 <br/><br/> 了解如何[跨区域移动 Batch 帐户](../../batch/best-practices.md#moving-batch-accounts-across-regions) |
 <!--Not Available on ## Microsoft.BatchAI-->
 <!--Not Available on ## Microsoft.BingMaps-->
 <!--Not Available on ## Microsoft.BizTalkServices-->
@@ -198,7 +199,7 @@ ms.locfileid: "85098628"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | domainnames | 否 |  
+> | domainnames | 不会为经典服务计划任何工作。
 > | virtualmachines | 否 | 
 
 ## <a name="microsoftclassicnetwork"></a>Microsoft.ClassicNetwork
@@ -206,7 +207,7 @@ ms.locfileid: "85098628"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | networksecuritygroups | 否 |
+> | networksecuritygroups | 不会为经典服务计划任何工作。
 > | reservedips | 否 | 
 > | virtualnetworks | 否 | 
 
@@ -223,6 +224,8 @@ ms.locfileid: "85098628"
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
 > | accounts | 否 | 
+
+<!--Not Available on Learn about [moving your Azure Cognitive Search service to another region](../../search/search-howto-move-across-regions.md)-->
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
@@ -272,7 +275,7 @@ ms.locfileid: "85098628"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | containerservices | 否 | 
+> | containerservices | 否。<br/><br/> 服务[已停用](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/)。
 > | managedclusters | 否 | 
 > | openshiftmanagedclusters | 否 | 
 
@@ -316,7 +319,7 @@ ms.locfileid: "85098628"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | servers | 否 |  
+> | servers | 如果为服务预配了异地冗余备份存储，则可以使用异地还原在其他区域中进行还原。 [了解详细信息](../../mariadb/concepts-business-continuity.md#recover-from-an-azure-regional-data-center-outage)
 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 
@@ -341,9 +344,9 @@ ms.locfileid: "85098628"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | elasticpools | 否 | 
-> | elasticpools/iothubtenants | 否 | 
-> | iothubs | 是 | 
+> | elasticpools | 否。 资源未公开。
+> | elasticpools/iothubtenants | 否。 资源未公开。
+> | iothubs | 是的。 [了解详细信息](../../iot-hub/iot-hub-how-to-clone.md)
 > | provisioningservices | 否 | 
 
 <!--Not Available on ## Microsoft.DevSpaces-->
@@ -373,7 +376,7 @@ ms.locfileid: "85098628"
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
 > | clusters | 否 |  
-> | namespaces | 否 | 
+> | namespaces | 是（带模板）<br/><br/> [将事件中心命名空间移到另一个区域](../../event-hubs/move-across-regions.md) | 
 
 <!--Not Available on ## Microsoft.Genomics-->
 <!--Not Available on ## Microsoft.HanaOnAzure-->
@@ -420,8 +423,10 @@ ms.locfileid: "85098628"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | iotapps |  否 |  
+> | checknameavailability |  否。<br/><br/> IoT Central 使用地理位置而不是区域。
+> | graph | 否
 
+<!--Not Available on ## Microsoft.IoTHub-->
 <!--Not Available on ## Microsoft.IoTSpaces-->
 
 ## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
@@ -466,6 +471,7 @@ ms.locfileid: "85098628"
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
 > | workspaces | 否 | 
+
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 
 > [!div class="mx-tableFixed"]
@@ -509,7 +515,7 @@ ms.locfileid: "85098628"
 > | expressrouteports | 否 | 
 > | frontdoors | 否 | 
 > | frontdoorwebapplicationfirewallpolicies | 否 | 
-> | loadbalancers | 是 - 基本 SKU<br />否 - 标准 SKU | 是 - 基本 SKU<br /> 是 - 标准 SKU |
+> | loadbalancers | 是 <br/><br/> 可以将现有配置导出为模板，然后在新区域中部署该模板。 了解如何移动[外部](../../load-balancer/move-across-regions-external-load-balancer-portal.md)或[内部](../../load-balancer/move-across-regions-internal-load-balancer-portal.md)负载均衡器。 |
 > | localnetworkgateways |  否 | 
 > | natgateways |  否 | 
 > | networkintentpolicies |  否 | 
@@ -525,7 +531,7 @@ ms.locfileid: "85098628"
 > | privatednszones/virtualnetworklinks |  否 |  
 > | privateendpoints | 否 | 
 > | privatelinkservices | 否 | 
-> | publicipaddresses | 是 - 基本 SKU<br />否 - 标准 SKU | 是 - 基本 SKU<br />否 - 标准 SKU |
+> | publicipaddresses | 是<br/><br/> 可以将现有公共 IP 地址配置导出为模板，然后在新区域中部署该模板。 [详细了解](../../virtual-network/move-across-regions-publicip-portal.md)如何移动公共 IP 地址。 |
 > | publicipprefixes | 否 | 
 > | routefilters | 否 | 
 > | routetables |  否 | 
@@ -595,7 +601,7 @@ ms.locfileid: "85098628"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | vaults | 否。 为 Site Recovery [禁用保管库并进行重新创建](/site-recovery/move-vaults-across-regions)  | 
+> | vaults | 否。<br/><br/> 不支持跨 Azure 区域移动 Azure 备份的恢复服务保管库。<br/><br/> 在 Azure Site Recovery 的恢复服务保管库中，可以在目标区域中[禁用并重新创建保管库](/site-recovery/move-vaults-across-regions)。 | 
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 
@@ -701,7 +707,7 @@ ms.locfileid: "85098628"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | storageaccounts | 是 | 
+> | storageaccounts | 是<br/><br/> [将 Azure 存储帐户移到另一个区域](../../storage/common/storage-account-move.md) | 
 
 <!--Not Available on ## Microsoft.StorageCache-->
 <!--Not Available on ## Microsoft.StorageSync-->

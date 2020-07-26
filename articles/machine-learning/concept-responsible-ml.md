@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
 ms.date: 05/08/2020
-ms.openlocfilehash: 422db0bc654dd406feb77a33f5fa5042720dc6f1
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: 9bf6f695caf4dfa88d7ba83d84d448c1be9f0267
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097735"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440915"
 ---
 # <a name="responsible-machine-learning-ml"></a>负责机器学习 (ML)
 
@@ -36,7 +36,7 @@ ms.locfileid: "85097735"
 
 ## <a name="interpret-and-explain-model-behavior"></a>解释和说明模型行为
 
-难以解释的系统或黑盒系统可能会出问题，因为利益干系人（如系统开发人员、监管人员、用户和业务决策者）难以理解系统做出某些决策的原因。 有些 AI 系统比其他系统更容易解释，有时需要在更高准确度的系统和更容易解释的系统之间进行取舍。
+难以解释的系统或非透明盒系统可能会出问题，因为利益干系人（如系统开发人员、监管人员、用户和业务决策者）难以理解系统做出某些决策的原因。 有些 AI 系统比其他系统更容易解释，有时需要在更高准确度的系统和更容易解释的系统之间进行取舍。
 
 若要生成可解释的 AI 系统，请使用 Microsoft 生成的开放源代码包 [InterpretML](https://github.com/interpretml/interpret)。 [可以在 Azure 机器学习中使用 InterpretML](how-to-machine-learning-interpretability.md)，以[解释和说明机器学习模型](how-to-machine-learning-interpretability-aml.md)，包括[自动化机器学习模型](how-to-machine-learning-interpretability-automl.md)。
 
@@ -61,11 +61,14 @@ AI 系统中的不公平性可能会导致以下意外后果：
 
 实现差异隐私系统较为棘手。 [WhiteNoise](https://github.com/opendifferentialprivacy/whitenoise-core) 是一个开放源代码项目，其中包含用于生成全局差异隐私系统的不同组件。 若要详细了解差异隐私和 WhiteNoise 项目，请参阅[使用差异隐私和 WhiteNoise 保护数据隐私](./concept-differential-privacy.md)一文。
 
+> [!NOTE]
+> 请注意，我们正在重命名该工具包，并将在未来几周内引入新名称。 
+
 ## <a name="document-the-machine-learning-lifecycle-with-datasheets"></a>用数据表记录机器学习生命周期
 
 在机器学习过程中记录正确的信息是在每个阶段做出负责决策的关键所在。 使用数据表，可以记录在机器学习生命周期内使用和创建的机器学习资产。
 
-模型往往被认为是“黑盒”，而且往往很少有关于它们的信息。 由于机器学习系统变得越来越普遍，且被用于做出决策，因此使用数据表就是向开发更负责的机器学习系统迈进。
+模型往往被认为是“非透明盒”，而且往往很少有关于它们的信息。 由于机器学习系统变得越来越普遍，且被用于做出决策，因此使用数据表就是向开发更负责的机器学习系统迈进。
 
 不妨在数据表中记录一些模型信息：
 

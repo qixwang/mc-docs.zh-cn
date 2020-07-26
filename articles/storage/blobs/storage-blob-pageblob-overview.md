@@ -5,17 +5,17 @@ services: storage
 author: WenJason
 ms.service: storage
 ms.topic: article
-origin.date: 05/13/2019
-ms.date: 09/09/2019
+origin.date: 06/15/2020
+ms.date: 07/20/2020
 ms.author: v-jay
 ms.reviewer: wielriac
 ms.subservice: blobs
-ms.openlocfilehash: eab30d65efbc5fd36b873d6fbe1ee6852b67fc74
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 8269bfec1d3e138c01538c8b159f94ab111fcb93
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "70209322"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414585"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Azure 页 Blob 概述
 
@@ -47,6 +47,25 @@ Azure 页 Blob 的重要功能包括 REST 接口、基础存储持久性，以�
 
 #### <a name="creating-an-empty-page-blob-of-a-specified-size"></a>创建指定大小的空页 Blob
 
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
+
+首先，获取对容器的引用。 若要创建页 blob，请调用 [GetPageBlobClient](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.specialized.specializedblobextensions.getpageblobclient) 方法，然后调用 [PageBlobClient.Create](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.specialized.pageblobclient.create) 方法。 传入要创建的 blob 的最大大小。 该大小必须是 512 字节的倍数。
+
+```csharp
+long OneGigabyteAsBytes = 1024 * 1024 * 1024;
+
+BlobServiceClient blobServiceClient = new BlobServiceClient(connectionString);
+
+var blobContainerClient =
+    blobServiceClient.GetBlobContainerClient(Constants.containerName);
+
+var pageBlobClient = blobContainerClient.GetPageBlobClient("0s4.vhd");
+
+pageBlobClient.Create(16 * OneGigabyteAsBytes);
+```
+
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+
 为了创建页 Blob，让我们先创建一个 **CloudBlobClient** 对象，其中包含用于访问存储帐户（图 1 中的 *pbaccount*）的 Blob 存储的基 URI；另外创建 **StorageCredentialsAccountAndKey** 对象，如以下示例所示。 然后，该示例展示了如何创建对 **CloudBlobContainer** 对象的引用，然后创建容器 (*testvhds*)（如果它尚未存在）。 然后，使用 **CloudBlobContainer** 对象，通过指定要访问的页 Blob 名称 (os4.vhd)，来创建对 **CloudPageBlob** 对象的引用。 若要创建页 Blob，请调用 [CloudPageBlob.Create](https://docs.azure.cn/dotnet/api/microsoft.windowsazure.storage.blob.cloudpageblob.create?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudPageBlob_Create_System_Int64_Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) 并传入要创建的 blob 的最大大小。 *blobSize* 必须是 512 字节的倍数。
 
 ```csharp
@@ -72,21 +91,49 @@ CloudPageBlob pageBlob = container.GetPageBlobReference("os4.vhd");
 pageBlob.Create(16 * OneGigabyteAsBytes);
 ```
 
+---
+
 #### <a name="resizing-a-page-blob"></a>重设页 Blob 的大小
 
-若要在创建后重设页 Blob 的大小，请使用 [Resize](https://docs.azure.cn/dotnet/api/microsoft.windowsazure.storage.blob.cloudpageblob.resize?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudPageBlob_Resize_System_Int64_Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) 方法。 请求的大小应为 512 字节的倍数。
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
+
+若要在创建后重设页 Blob 的大小，请使用 [Resize](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.specialized.pageblobclient.resize?view=azure-dotnet) 方法。 请求的大小应为 512 字节的倍数。
+
+```csharp
+pageBlobClient.Resize(32 * OneGigabyteAsBytes);
+```
+
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+
+若要在创建后重设页 Blob 的大小，请使用 [Resize](/dotnet/api/microsoft.windowsazure.storage.blob.cloudpageblob.resize) 方法。 请求的大小应为 512 字节的倍数。
 
 ```csharp
 pageBlob.Resize(32 * OneGigabyteAsBytes);
 ```
 
+---
+
 #### <a name="writing-pages-to-a-page-blob"></a>将页面写入页 Blob
 
-若要写入页面，请使用 [CloudPageBlob.WritePages](https://docs.azure.cn/dotnet/api/microsoft.windowsazure.storage.blob.cloudpageblob.beginwritepages?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudPageBlob_BeginWritePages_System_IO_Stream_System_Int64_System_String_Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_System_AsyncCallback_System_Object_) 方法。  这样，便可以写入一组有序页面（最大 4MB）。 写入的偏移量必须在某个 512 字节边界处 (startingOffset % 512 == 0) 开始，在某个 512 边界 - 1 处结束。  下面的代码示例展示了如何对 blob 调用 **WritePages**：
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
+
+若要写入页面，请使用 [PageBlobClient.UploadPages](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.specialized.pageblobclient.uploadpages) 方法。  
+
+```csharp
+pageBlobClient.UploadPages(dataStream, startingOffset);
+```
+
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+
+若要写入页面，请使用 [CloudPageBlob.WritePages](/dotnet/api/microsoft.windowsazure.storage.blob.cloudpageblob.beginwritepages) 方法。  
 
 ```csharp
 pageBlob.WritePages(dataStream, startingOffset); 
 ```
+
+---
+
+这样，便可以写入一组有序页面（最大 4MB）。 写入的偏移量必须在某个 512 字节边界处 (startingOffset % 512 == 0) 开始，在某个 512 边界 - 1 处结束。 
 
 针对一组有序页面发出的写入请求在 Blob 服务中成功、已复制以实现持久性和复原能力后，即会提交写入，将向客户端返回成功响应。  
 
@@ -99,18 +146,49 @@ pageBlob.WritePages(dataStream, startingOffset);
 
 #### <a name="reading-pages-from-a-page-blob"></a>从页 Blob 中读取页面
 
-若要读取页面，请使用 [CloudPageBlob.DownloadRangeToByteArray](https://docs.azure.cn/dotnet/api/microsoft.windowsazure.storage.blob.icloudblob.downloadrangetobytearray?view=azure-dotnet) 方法从页 Blob 中读取字节范围。 这样，便可以从 Blob 中的任意偏移位置开始下载整个 Blob 或字节范围。 读取时，偏移不需要在 512 的倍数位置开始。 从 NUL 页面读取字节时，服务将返回零字节。
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
+
+若要读取页面，请使用 [PageBlobClient.Download](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.download) 方法从页 Blob 中读取某个范围的字节。 
+
+```csharp
+var pageBlob = pageBlobClient.Download(new HttpRange(bufferOffset, rangeSize));
+```
+
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+
+若要读取页面，请使用 [CloudPageBlob.DownloadRangeToByteArray](/dotnet/api/microsoft.windowsazure.storage.blob.icloudblob.downloadrangetobytearray) 方法从页 Blob 中读取字节范围。 
 
 ```csharp
 byte[] buffer = new byte[rangeSize];
 pageBlob.DownloadRangeToByteArray(buffer, bufferOffset, pageBlobOffset, rangeSize); 
 ```
 
+---
+
+这样，便可以从 Blob 中的任意偏移位置开始下载整个 Blob 或字节范围。 读取时，偏移不需要在 512 的倍数位置开始。 从 NUL 页面读取字节时，服务将返回零字节。
+
 下图显示了偏移量为 256、范围大小为 4352 的读取操作。 返回的数据以橙色突出显示。 为 NUL 页面返回了零。
 
 ![](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure3.png)
 
-如果使用稀疏填充的 Blob，可以只下载有效的页面区域，以避免支付零字节的传出费用，并降低下载延迟。  若要确定哪些页面以数据为基础，请使用 [CloudPageBlob.GetPageRanges](https://docs.azure.cn/dotnet/api/microsoft.windowsazure.storage.blob.cloudpageblob.getpageranges?view=azure-dotnet)。 然后，可以枚举返回的范围，并下载每个范围中的数据。 
+如果使用稀疏填充的 Blob，可以只下载有效的页面区域，以避免支付零字节的传出费用，并降低下载延迟。  
+
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
+
+若要确定数据支持的页面，请使用 [PageBlobClient.GetPageRanges](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.specialized.pageblobclient.getpageranges)。 然后，可以枚举返回的范围，并下载每个范围中的数据。 
+
+```csharp
+IEnumerable<HttpRange> pageRanges = pageBlobClient.GetPageRanges().Value.PageRanges;
+
+foreach (var range in pageRanges)
+{
+    var pageBlob = pageBlobClient.Download(range);
+}
+```
+
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+
+若要确定哪些页面以数据为基础，请使用 [CloudPageBlob.GetPageRanges](/dotnet/api/microsoft.windowsazure.storage.blob.cloudpageblob.getpageranges)。 然后，可以枚举返回的范围，并下载每个范围中的数据。 
 
 ```csharp
 IEnumerable<PageRange> pageRanges = pageBlob.GetPageRanges();
@@ -129,6 +207,8 @@ foreach (PageRange range in pageRanges)
     // Then use the buffer for the page range just read
 }
 ```
+
+---
 
 #### <a name="leasing-a-page-blob"></a>租赁页 Blob
 

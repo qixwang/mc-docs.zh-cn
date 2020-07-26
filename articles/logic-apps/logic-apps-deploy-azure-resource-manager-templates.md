@@ -1,21 +1,21 @@
 ---
-title: 部署逻辑应用模板 - Azure 逻辑应用
+title: 部署逻辑应用模板
 description: 了解如何为 Azure 逻辑应用部署已创建的 Azure 资源管理器模板
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: v-yiso
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 origin.date: 08/01/2019
-ms.date: 02/24/2020
-ms.openlocfilehash: d9a75b62af60cdb56445228a9769fddb7a92ff29
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 07/20/2020
+ms.testscope: yes
+ms.testdate: 02/24/2020
+ms.author: v-yeche
+ms.openlocfilehash: e7a81de648a230b62b68f18904b814315b98b91f
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291515"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414623"
 ---
 # <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>为 Azure 逻辑应用部署 Azure 资源管理器模板
 
@@ -26,13 +26,13 @@ ms.locfileid: "79291515"
 * [Azure PowerShell](#powershell)
 * [Azure CLI](#cli)
 * [Azure Resource Manager REST API](../azure-resource-manager/templates/deploy-rest.md)
-* [Azure DevOps Azure Pipelines](#azure-pipelines)
+* [Azure DevOps](#azure-pipelines)
 
 <a name="portal"></a>
 
 ## <a name="deploy-through-azure-portal"></a>通过 Azure 门户进行部署
 
-若要自动将逻辑应用模板部署到 Azure，可以选择下面的“部署到 Azure”按钮，这样可以登录到 Azure 门户，系统会提示你输入有关逻辑应用的信息。  然后，可对逻辑应用模板或参数进行任何必要的更改。
+若要自动将逻辑应用模板部署到 Azure，可以选择下面的“部署到 Azure”按钮，这样可以登录到 Azure 门户，系统会提示你输入有关逻辑应用的信息。 然后，可对逻辑应用模板或参数进行任何必要的更改。
 
 [![“部署到 Azure”](./media/logic-apps-deploy-azure-resource-manager-templates/deploybutton.png)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-logic-app-create%2Fazuredeploy.json)
 
@@ -60,7 +60,7 @@ ms.locfileid: "79291515"
 
 ## <a name="deploy-with-azure-powershell"></a>使用 Azure PowerShell 部署
 
-若要部署到特定的 Azure 资源组，请使用以下命令： 
+若要部署到特定的 Azure 资源组，请使用以下命令：
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName <Azure-resource-group-name> -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json
@@ -75,7 +75,7 @@ New-AzResourceGroupDeployment -ResourceGroupName <Azure-resource-group-name> -Te
 
 ## <a name="deploy-with-azure-cli"></a>使用 Azure CLI 进行部署
 
-若要部署到特定的 Azure 资源组，请使用以下命令： 
+若要部署到特定的 Azure 资源组，请使用以下命令：
 
 ```azurecli
 az group deployment create -g <Azure-resource-group-name> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json
@@ -83,8 +83,8 @@ az group deployment create -g <Azure-resource-group-name> --template-uri https:/
 
 有关详细信息，请参阅以下主题：
 
-* [使用 Resource Manager 模板和 Azure CLI 部署资源](../azure-resource-manager/templates/deploy-cli.md) 
-* [`az group deployment create`](/cli/group/deployment?view=azure-cli-latest#az-group-deployment-create)
+* [使用 Resource Manager 模板和 Azure CLI 部署资源](../azure-resource-manager/templates/deploy-cli.md)
+* [`az group deployment create`](https://docs.azure.cn/cli/group/deployment?view=azure-cli-latest#az-group-deployment-create)
 
 <a name="azure-pipelines"></a>
 
@@ -95,11 +95,12 @@ az group deployment create -g <Azure-resource-group-name> --template-uri https:/
 若要详细了解如何使用 Azure Pipelines 进行与 Azure 资源管理器模板相对应的持续集成和持续部署 (CI/CD)，请参阅以下主题和示例：
 
 * [将资源管理器模板与 Azure Pipelines 集成](../azure-resource-manager/templates/add-template-to-azure-pipelines.md)
-* [教程：使用 Azure Pipelines 进行与 Azure 资源管理器模板相对应的持续集成](../azure-resource-manager/templates/template-tutorial-use-azure-pipelines.md)
+* [教程：使用 Azure Pipelines 持续集成 Azure 资源管理器模板](../azure-resource-manager/templates/deployment-tutorial-pipeline.md)
 * [示例：从 Azure 逻辑应用连接到 Azure 服务总线队列并在 Azure DevOps 中使用 Azure Pipelines 进行部署](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
 * [示例：从 Azure 逻辑应用连接到 Azure 存储帐户并在 Azure DevOps 中使用 Azure Pipelines 进行部署](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
 * [示例：为 Azure 逻辑应用设置函数应用操作并在 Azure DevOps 中使用 Azure Pipelines 进行部署](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
 * [示例：从 Azure 逻辑应用连接到集成帐户并在 Azure DevOps 中使用 Azure Pipelines 进行部署](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
+* [示例：使用 Azure 逻辑应用协调 Azure Pipelines](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-pipeline-orchestration/azure-devops-orchestration-with-logic-apps/)
 
 下面是有关使用 Azure Pipelines 的一般性概要步骤：
 
@@ -107,7 +108,7 @@ az group deployment create -g <Azure-resource-group-name> --template-uri https:/
 
 1. 选择管道所需的资源，例如，手动生成的或者在生成过程中生成的逻辑应用模板和模板参数文件。
 
-1. 对于代理作业，请找到并添加“Azure 资源组部署”任务。 
+1. 对于代理作业，请找到并添加“Azure 资源组部署”任务。
 
    ![添加“Azure 资源组部署”任务](./media/logic-apps-deploy-azure-resource-manager-templates/add-azure-resource-group-deployment-task.png)
 
@@ -121,7 +122,9 @@ az group deployment create -g <Azure-resource-group-name> --template-uri https:/
 
 ## <a name="authorize-oauth-connections"></a>授权 OAuth 连接
 
-部署后，逻辑应用将使用有效参数进行端到端的运行。 但是，仍然必须授权任何 OAuth 连接，以生成用于[对凭据进行身份验证](../active-directory/develop/authentication-scenarios.md)的有效访问令牌。 下面是可以用来授权 OAuth 连接的方式：
+部署后，逻辑应用将使用有效参数进行端到端的运行。 但是，仍然必须授权任何 OAuth 连接，以生成用于[对凭据进行身份验证](../active-directory/develop/authentication-vs-authorization.md)的有效访问令牌。 下面是可以用来授权 OAuth 连接的方式：
+
+<!--CORRECT ON authentication-vs-authorization.md-->
 
 * 若要进行自动部署，可以使用脚本为每个 OAuth 连接提供许可。 下面是 GitHub 中的一个示例脚本，位于 [LogicAppConnectionAuth](https://github.com/logicappsio/LogicAppConnectionAuth) 项目中。
 
@@ -133,3 +136,5 @@ az group deployment create -g <Azure-resource-group-name> --template-uri https:/
 
 > [!div class="nextstepaction"]
 > [监视逻辑应用](../logic-apps/monitor-logic-apps.md)
+
+<!-- Update_Description: update meta properties, wording update, update link -->

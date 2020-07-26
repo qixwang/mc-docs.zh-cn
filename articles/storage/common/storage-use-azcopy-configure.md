@@ -3,18 +3,18 @@ title: 对配合 Azure 存储使用的 AzCopy 进行配置、优化和故障排�
 description: 对 AzCopy 进行配置、优化和故障排除
 author: WenJason
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 04/10/2020
-ms.date: 06/01/2020
+ms.date: 07/20/2020
 ms.author: v-jay
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 493929724225178f53d6117aa630c17d9285cb28
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: d74dad64d8e39bc652b58629d8b3143d668d651a
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199745"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414698"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>对 AzCopy 进行配置、优化和故障排除
 
@@ -35,9 +35,20 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 |--------|-----------|
 | **Windows** | 在命令提示符处使用 `set https_proxy=<proxy IP>:<proxy port>`<br> 在 PowerShell 中使用 `$env:https_proxy="<proxy IP>:<proxy port>"`|
 | **Linux** | `export https_proxy=<proxy IP>:<proxy port>` |
-| **MacOS** | `export https_proxy=<proxy IP>:<proxy port>` |
+| **macOS** | `export https_proxy=<proxy IP>:<proxy port>` |
 
 AzCopy 目前不支持要求通过 NTLM 或 Kerberos 进行身份验证的代理。
+
+### <a name="bypassing-a-proxy"></a>绕过代理 ###
+
+如果是在 Windows 上运行 AzCopy，并且想让它完全不使用代理（而不是自动检测设置），请使用以下命令。 使用这些设置时，AzCopy 不会寻求使用或尝试使用任何代理。
+
+| 操作系统 | 环境 | 命令  |
+|--------|-----------|----------|
+| **Windows** | 命令提示符 (CMD) | `set HTTPS_PROXY=dummy.invalid` <br>`set NO_PROXY=*`|
+| **Windows** | PowerShell | `$env:HTTPS_PROXY="dummy.invalid"` <br>`$env:NO_PROXY="*"`<br>|
+
+在其他操作系统上，如果想要不使用代理，只需不设置 HTTPS_PROXY 变量即可。
 
 ## <a name="optimize-performance"></a>优化性能
 
@@ -53,27 +64,27 @@ AzCopy 目前不支持要求通过 NTLM 或 Kerberos 进行身份验证的代理
 
 ### <a name="run-benchmark-tests"></a>运行基准测试
 
-可对特定的 Blob 容器运行性能基准测试，以查看一般性能统计信息和识别性能瓶颈。 
+可对特定的 Blob 容器或文件共享运行性能基准测试，以查看常规的性能统计信息和识别性能瓶颈。 
 
 使用以下命令运行性能基准测试。
 
 |    |     |
 |--------|-----------|
-| **语法** | `azcopy bench 'https://<storage-account-name>.blob.core.chinacloudapi.cn/<container-name>'` |
-| **示例** | `azcopy bench 'https://mystorageaccount.blob.core.chinacloudapi.cn/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
+| **语法** | `azcopy benchmark 'https://<storage-account-name>.blob.core.chinacloudapi.cn/<container-name>'` |
+| **示例** | `azcopy benchmark 'https://mystorageaccount.blob.core.chinacloudapi.cn/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
 
 > [!TIP]
 > 此示例将路径参数括在单引号 ('') 内。 在除 Windows 命令 Shell (cmd.exe) 以外的所有命令 shell 中，都请使用单引号。 如果使用 Windows 命令 Shell (cmd.exe)，请用双引号 ("") 而不是单引号 ('') 括住路径参数。
 
 此命令通过将测试数据上传到指定的目标来运行性能基准测试。 测试数据将在内存中生成、上传到目标，并在完成测试后从目标中删除。 可以使用可选的命令参数来指定要生成的文件数以及文件的大小。
 
-有关详细参考文档，请参阅 [azcopy bench](storage-ref-azcopy-bench.md)。
+如需详细的参考文档，请参阅 [azcopy benchmark](storage-ref-azcopy-bench.md)。
 
-若要查看此命令的详细帮助指导，请键入 `azcopy bench -h` 并按 ENTER 键。
+若要查看此命令的详细帮助指导，请键入 `azcopy benchmark -h` 并按 ENTER 键。
 
 ### <a name="optimize-throughput"></a>优化吞吐量
 
-可以在命令中使用 `cap-mbps` 标志来设置吞吐量数据速率的上限。 例如，以下命令恢复作业并将吞吐量上限设置为每秒 `10` 兆位 (MB)。 
+可以在命令中使用 `cap-mbps` 标志来设置吞吐量数据速率的上限。 例如，以下命令恢复作业并将吞吐量上限设置为每秒 `10` 兆位 (Mb)。 
 
 ```azcopy
 azcopy jobs resume <job-id> --cap-mbps 10
@@ -87,7 +98,7 @@ azcopy jobs resume <job-id> --cap-mbps 10
 |--------|-----------|
 | **Windows** | `set AZCOPY_CONCURRENCY_VALUE=<value>` |
 | **Linux** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
-| **MacOS** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
+| **macOS** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
 
 使用 `azcopy env` 检查此变量的当前值。 如果该值为空白，你可以通过查看任何 AzCopy 日志文件的开头部分来读取所用的值。 日志中会报告所选的值以及选择该值的原因。
 
@@ -102,7 +113,7 @@ azcopy jobs resume <job-id> --cap-mbps 10
 |--------|-----------|
 | **Windows** | `set AZCOPY_BUFFER_GB=<value>` |
 | **Linux** | `export AZCOPY_BUFFER_GB=<value>` |
-| **MacOS** | `export AZCOPY_BUFFER_GB=<value>` |
+| **macOS** | `export AZCOPY_BUFFER_GB=<value>` |
 
 ### <a name="optimize-file-synchronization"></a>优化文件同步
 
@@ -183,9 +194,9 @@ azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 
 | 操作系统 | 命令  |
 |--------|-----------|
-| **Windows** | `set AZCOPY_JOB_PLAN_LOCATION=<value>` |
+| **Windows** | PowerShell：`$env:AZCOPY_JOB_PLAN_LOCATION="<value>"` <br> 在命令提示符处使用 `set AZCOPY_JOB_PLAN_LOCATION=<value>` |
 | **Linux** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
-| **MacOS** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
+| **macOS** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
 
 使用 `azcopy env` 检查此变量的当前值。 如果该值为空白，则计划文件将写入默认位置。
 
@@ -195,9 +206,9 @@ azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 
 | 操作系统 | 命令  |
 |--------|-----------|
-| **Windows** | `set AZCOPY_LOG_LOCATION=<value>` |
+| **Windows** | PowerShell：`$env:AZCOPY_LOG_LOCATION="<value>"` <br> 在命令提示符处使用 `set AZCOPY_LOG_LOCATION=<value>`|
 | **Linux** | `export AZCOPY_LOG_LOCATION=<value>` |
-| **MacOS** | `export AZCOPY_LOG_LOCATION=<value>` |
+| **macOS** | `export AZCOPY_LOG_LOCATION=<value>` |
 
 使用 `azcopy env` 检查此变量的当前值。 如果该值为空白，则日志将写入默认位置。
 

@@ -2,15 +2,17 @@
 title: 模板概述
 description: 介绍使用 Azure 资源管理器模板部署资源的好处。
 ms.topic: conceptual
-origin.date: 04/06/2020
-ms.date: 06/22/2020
+origin.date: 06/22/2020
+ms.date: 07/13/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: aa467cccd9915030818d6a89fc8dd579e24449de
-ms.sourcegitcommit: 873e5c5e4156efed505a78d4f5a6e50c494e76d4
+ms.openlocfilehash: 984253c2ad7fb3094b1b07b0778bc6e9ac2883f3
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86036752"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86441016"
 ---
 <!--Verify successfully-->
 # <a name="what-are-arm-templates"></a>什么是 ARM 模板？
@@ -132,5 +134,6 @@ REQUEST BODY
 * 有关引导你完成模板创建过程的分步教程，请参阅[教程：创建和部署第一个 ARM 模板](template-tutorial-create-first-template.md)。
 * 有关模板文件中的属性的信息，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
 * 若要了解如何导出模板，请参阅[快速入门：使用 Azure 门户创建和部署 ARM 模板](quickstart-create-templates-use-the-portal.md)。
+* 有关常见问题的解答，请参阅[有关 ARM 模板的常见问题解答](frequently-asked-questions.md)。
 
 <!-- Update_Description: update meta properties, wording update, update link -->

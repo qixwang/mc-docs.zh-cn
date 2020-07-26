@@ -6,15 +6,16 @@ services: azure-monitor
 ms.service: azure-monitor
 ms.topic: reference
 origin.date: 05/01/2020
-ms.date: 06/01/2020
+ms.date: 07/20/2020
 ms.author: v-jay
 ms.subservice: logs
-ms.openlocfilehash: d782f7aa1f1d241bd8b00eab4a7d871fc41a1cb4
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.custom: monitoring
+ms.openlocfilehash: 7e365066f3f273f56f8f2fc24fa283cd1e1e3329
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199953"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414714"
 ---
 # <a name="azure-storage-monitoring-data-reference"></a>Azure 存储监视数据参考
 
@@ -32,11 +33,15 @@ Azure 存储在 Azure Monitor 中提供以下容量指标。
 
 #### <a name="account-level"></a>帐户级别
 
+下表显示[帐户级别指标](/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccounts)。
+
 | 指标 | 说明 |
 | ------------------- | ----------------- |
 | UsedCapacity | 存储帐户使用的存储量。 对于标准存储帐户，该指标是 Blob、表、文件和队列使用的容量总和。 对于高级存储帐户和 Blob 存储帐户，它与 BlobCapacity 相同。 <br/><br/> 单位：字节 <br/> 聚合类型：平均值 <br/> 值示例：1024 |
 
 #### <a name="blob-storage"></a>Blob 存储
+
+下表显示 [Blob 存储指标](/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountsblobservices)。
 
 | 指标 | 说明 |
 | ------------------- | ----------------- |
@@ -47,6 +52,8 @@ Azure 存储在 Azure Monitor 中提供以下容量指标。
 
 #### <a name="table-storage"></a>表存储
 
+下表显示[表存储指标](/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountstableservices)。
+
 | 指标 | 说明 |
 | ------------------- | ----------------- |
 | TableCapacity | 存储帐户使用的表存储量。 <br/><br/> 单位：字节 <br/> 聚合类型：平均值 <br/> 值示例：1024 |
@@ -55,13 +62,17 @@ Azure 存储在 Azure Monitor 中提供以下容量指标。
 
 #### <a name="queue-storage"></a>队列存储
 
+下表显示[队列存储指标](/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountsfileservices)。
+
 | 指标 | 说明 |
 | ------------------- | ----------------- |
 | QueueCapacity | 存储帐户使用的队列存储量。 <br/><br/> 单位：字节 <br/> 聚合类型：平均值 <br/> 值示例：1024 |
 | QueueCount   | 存储帐户中的队列数目。 <br/><br/> 单位：计数 <br/> 聚合类型：平均值 <br/> 值示例：1024 |
-| QueueMessageCount | 存储帐户中未失效的队列消息数目。 <br/><br/>单位：计数 <br/> 聚合类型：平均值 <br/> 值示例：1024 |
+| QueueMessageCount | 存储帐户的队列服务中的队列消息的大致数目。 <br/><br/>单元：计数 <br/> 聚合类型：平均值 <br/> 值示例：1024 |
 
 #### <a name="file-storage"></a>文件存储
+
+下表显示[文件存储指标](/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountsqueueservices)。
 
 | 指标 | 说明 |
 | ------------------- | ----------------- |
@@ -84,7 +95,7 @@ Azure 存储在 Azure Monitor 中提供以下事务指标。
 | SuccessE2ELatency | 向存储服务或指定的 API 操作发出的成功请求的平均端到端延迟。 此值包括在 Azure 存储中读取请求、发送响应和接收响应确认所需的处理时间。 <br/><br/> 单位：毫秒 <br/> 聚合类型：平均值 <br/> 适用的维度：GeoType、ApiName 和 Authentication（[定义](#metrics-dimensions)） <br/> 值示例：1024 |
 | 可用性 | 存储服务或指定的 API 操作的可用性百分比。 可用性通过由“计费请求总数”值除以适用的请求数（包括引发意外错误的请求）计算得出。 所有意外错误都会导致存储服务或指定的 API 操作的可用性下降。 <br/><br/> 单位：百分比 <br/> 聚合类型：平均值 <br/> 适用的维度：GeoType、ApiName 和 Authentication（[定义](#metrics-dimensions)） <br/> 值示例：99.99 |
 
-<a id="metrics-dimensions" />
+<a id="metrics-dimensions"></a>
 
 ## <a name="metrics-dimensions"></a>指标维度
 
@@ -93,7 +104,7 @@ Azure 存储支持对 Azure Monitor 中的指标使用以下维度。
 | 维度名称 | 说明 |
 | ------------------- | ----------------- |
 | **BlobType** | 仅限 Blob 指标的 Blob 类型。 支持的值为 **BlockBlob**、**PageBlob** 和 **Azure Data Lake Storage**。 BlockBlob 中包含追加 Blob。 |
-| **BlobTier** | Azure 存储提供了不同的访问层，允许以最具成本效益的方式存储 Blob 对象数据。 请在 [Azure 存储 Blob 层](../blobs/storage-blob-storage-tiers.md)中查看详细信息。 支持的值包括： <br/> <li>**Hot**：热层</li> <li>**Cool**：冷层</li> <li>**存档**：存档层</li> <li>**Premium**：块 Blob 的高级层</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**：高级页 Blob 的层类型</li> <li>**标准**：标准页 Blob 的层类型</li> <li>**Untiered**：常规用途 v1 存储帐户的层类型</li> |
+| **BlobTier** | Azure 存储提供不同的访问层，使你能够以最具成本效益的方式存储 Blob 对象数据。 请在 [Azure 存储 Blob 层](../blobs/storage-blob-storage-tiers.md)中查看详细信息。 支持的值包括： <br/> <li>**Hot**：热层</li> <li>**Cool**：冷层</li> <li>**存档**：存档层</li> <li>**Premium**：块 Blob 的高级层</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**：高级页 Blob 的层类型</li> <li>**标准**：标准页 Blob 的层类型</li> <li>**Untiered**：常规用途 v1 存储帐户的层类型</li> |
 | **GeoType** | 来自主要或辅助群集的事务。 可用值包括 **Primary** 和 **Secondary**。 从辅助租户读取对象时，该维度会应用到读取访问异地冗余存储 (RA-GRS)。 |
 | **ResponseType** | 事务响应类型。 可用的值包括： <br/><br/> <li>**ServerOtherError**：除描述的错误以外的其他所有服务器端错误 </li> <li>**ServerBusyError**：已经过身份验证的请求返回了 HTTP 503 状态代码。 </li> <li>**ServerTimeoutError**：已经过身份验证的超时请求返回了 HTTP 500 状态代码。 由于服务器错误而发生超时。 </li> <li>**AuthorizationError**：由于未经授权访问数据或者授权失败，经过身份验证的请求失败。 </li> <li>**NetworkError**：由于网络错误，经过身份验证的请求失败。 往往发生于客户端在超时失效之前提前关闭了连接时。 </li><li>**ClientAccountBandwidthThrottlingError**：因为超出了[存储帐户可伸缩性限制](scalability-targets-standard-account.md)，在带宽方面对请求进行了限制。</li><li>**ClientAccountRequestThrottlingError**：因为超出了[存储帐户可伸缩性限制](scalability-targets-standard-account.md)，在请求速率方面对请求进行了限制。<li>**ClientThrottlingError**：其他客户端限制错误。 不包括 ClientAccountBandwidthThrottlingError 和 ClientAccountRequestThrottlingError。</li> <li>**ClientTimeoutError**：已经过身份验证的超时请求返回了 HTTP 500 状态代码。 如果将客户端的网络超时或请求超时设置为比存储服务预期值更小的值，则预期会发生此超时。 否则，会报告为 ServerTimeoutError。 </li> <li>**ClientOtherError**：除描述的错误以外的其他所有客户端错误。 </li> <li>**成功**：请求成功</li> <li> **SuccessWithThrottling**：请求成功，具体表现在：头一次或头几次尝试时，SMB 客户端会被限制，但重试后会成功。</li> |
 | **ApiName** | 操作的名称。 例如： <br/> <li>**CreateContainer**</li> <li>**DeleteBlob**</li> <li>**GetBlob**</li> 有关所有操作名称，请参阅[文档](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)。 |
@@ -266,4 +277,4 @@ Azure 存储支持对 Azure Monitor 中的指标使用以下维度。
 ## <a name="see-also"></a>另请参阅
 
 - 有关如何监视 Azure 存储的说明，请参阅[监视 Azure 存储](monitor-storage.md)。
-- 有关监视 Azure 资源的详细信息，请参阅[通过 Azure Monitor 监视 Azure 资源](../../azure-monitor/insights/monitor-azure-resource.md)。
+- 有关监视 Azure 资源的详细信息，请参阅[使用 Azure Monitor 监视 Azure 资源](../../azure-monitor/insights/monitor-azure-resource.md)。

@@ -10,12 +10,12 @@ author: likebupt
 ms.author: v-yiso
 origin.date: 10/22/2019
 ms.date: 03/09/2020
-ms.openlocfilehash: 096440dc18fa03b5b2ab85c920ff7b0df4713321
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: fc9a78f56ab42ed7b6a72f0ea8b311425d0b60c6
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097484"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440895"
 ---
 # <a name="import-data-module"></a>“导入数据”模块
 
@@ -45,6 +45,10 @@ ms.locfileid: "85097484"
 
 如果源数据发生更改，可以通过重新运行[导入数据](./import-data.md)来刷新数据集并添加新数据。
 
+> [!WARNING]
+> 如果工作区位于虚拟网络中，则必须将数据存储配置为使用设计器的数据可视化功能。 若要详细了解如何在虚拟网络中使用数据存储和数据集，请参阅[使用专用虚拟网络进行训练和推理的过程中的网络隔离](../how-to-enable-virtual-network.md#machine-learning-studio)。
+
+
 ## <a name="how-to-configure-import-data"></a>如何配置“导入数据”
 
 1. 将“导入数据”模块添加到管道。 可以在设计器的“数据输入和输出”类别中找到此模块。
@@ -61,7 +65,7 @@ ms.locfileid: "85097484"
 
 1. 复选框“重新生成输出”决定是否在运行时执行模块以重新生成输出。 
 
-    默认情况下，它处于未选中状态，这意味着如果模块已经以相同的参数执行，系统将重用上次运行的输出来减少运行时间。 
+    默认情况下，它处于未选中状态，这意味着如果以前已经以相同的参数执行了模块，系统将重用上次运行的输出以减少运行时间。 
 
     如果选中它，系统将再次执行模块以重新生成输出。 因此，更新存储中的基础数据时，选择此选项可以帮助获取最新数据。
 

@@ -4,20 +4,20 @@ description: 查看 Azure Stack Hub 市场中的新功能，包括新的、弃�
 author: WenJason
 ms.topic: article
 origin.date: 06/15/2020
-ms.date: 06/22/2020
+ms.date: 07/20/2020
 ms.author: v-jay
 ms.reviewer: ihcherie
 ms.lastreviewed: 05/28/2020
-ms.openlocfilehash: 974e5ff1aa152ba3f9b11aa08a5f84b88de79931
-ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
+ms.openlocfilehash: 58494ff9f29a7172fe49d83ef9bb75f73f112044
+ms.sourcegitcommit: e9ffd50aa5eaab402a94bfabfc70de6967fe6278
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85096542"
+ms.lasthandoff: 07/14/2020
+ms.locfileid: "86307436"
 ---
 # <a name="azure-stack-hub-marketplace-changes"></a>Azure Stack Hub 市场更改
 
-本文列出近 3 个月来最新添加、更新、更改和删除的 [Azure Stack Hub 市场项](azure-stack-marketplace-azure-items.md)。 此部分中的信息经常更新，因此请经常回来查看是否有更改。
+本文列出最近添加的、更新的、更改的和删除的 [Azure Stack Hub 市场项](azure-stack-marketplace-azure-items.md)。 此部分中的信息经常更新，因此请经常回来查看是否有更改。
 
 [Azure Stack Hub 市场项](azure-stack-marketplace-azure-items.md)一文始终包含可用 Azure Stack Hub 市场项的最新列表。
 

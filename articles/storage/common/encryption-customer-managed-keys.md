@@ -6,17 +6,17 @@ services: storage
 author: WenJason
 ms.service: storage
 origin.date: 03/12/2020
-ms.date: 06/01/2020
+ms.date: 07/20/2020
 ms.topic: conceptual
 ms.author: v-jay
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: b3572ed808918e7794cc56f836369fc01533973e
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: 7dbc04f6016d001cfb991ae590d87b4528964028
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199799"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414665"
 ---
 # <a name="use-customer-managed-keys-with-azure-key-vault-to-manage-azure-storage-encryption"></a>在 Azure Key Vault 中使用客户托管密钥管理 Azure 存储加密
 
@@ -61,7 +61,7 @@ ms.locfileid: "84199799"
 
 若要在存储帐户上启用客户管理的密钥，必须使用 Azure 密钥保管库来存储密钥。 必须同时启用密钥保管库上的“软删除”和“不清除”属性 。
 
-Azure 存储加密仅支持 2048 位 RSA 密钥。 有关密钥的详细信息，请参阅[关于 Azure Key Vault 密钥、机密和证书](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)中的“Key Vault 密钥”。
+Azure 存储加密支持 2048、3072 和 4096 大小的 RSA 密钥。 有关密钥的详细信息，请参阅[关于 Azure Key Vault 密钥、机密和证书](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)中的“Key Vault 密钥”。
 
 ## <a name="rotate-customer-managed-keys"></a>轮换客户管理的密钥
 

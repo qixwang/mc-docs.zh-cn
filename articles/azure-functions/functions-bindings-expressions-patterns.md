@@ -3,14 +3,14 @@ title: Azure Functions 绑定表达式和模式
 description: 了解如何基于通用模式创建不同的 Azure Functions 绑定表达式。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 03/02/2020
+ms.date: 07/15/2020
 ms.author: v-junlch
-ms.openlocfilehash: bef966a6c0b961ebee7a633f8373b0e29ac6b5a8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 03538d18afdf6bcaa1bce45a077c83a1a3b47f76
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292831"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440541"
 ---
 # <a name="azure-functions-binding-expression-patterns"></a>Azure Functions 绑定表达式模式
 
@@ -37,7 +37,8 @@ ms.locfileid: "79292831"
 
 当函数在本地运行时，应用设置值来自 *local.settings.json* 文件。
 
-请注意，触发器和绑定的 `connection` 属性是一种特殊情况，该属性会自动将值解析为应用设置（不带百分比号）。 
+> [!NOTE]
+> 触发器和绑定的 `connection` 属性是一种特殊情况，该属性会自动将值解析为应用设置（不带百分比号）。 
 
 以下示例是一个 Azure 队列存储触发器，该触发器使用应用设置 `%input-queue-name%` 定义要触发的队列。
 
@@ -159,7 +160,7 @@ public static void Run(
 * NextVisibleTime
 * PopReceipt
 
-这些元数据值可在 function.json 文件属性中访问  。 例如，假设使用队列触发器，且队列消息中包含要读取的 blob 的名称。 在 function.json 文件中，可在 blob `path` 属性中使用 `queueTrigger` 元数据属性，如下面的示例中所示：
+这些元数据值可在 function.json 文件属性中访问。 例如，假设使用队列触发器，且队列消息中包含要读取的 blob 的名称。 在 function.json 文件中，可在 blob `path` 属性中使用 `queueTrigger` 元数据属性，如下面的示例中所示：
 
 ```json
   "bindings": [
@@ -179,7 +180,7 @@ public static void Run(
   ]
 ```
 
-相应参考文章中会详细介绍每种触发器的元数据属性。 有关示例，请参阅[队列触发器元数据](functions-bindings-storage-queue-trigger.md#message-metadata)。 在门户“集成”  选项卡的绑定配置区域下方的“文档”  部分中，还提供了文档。  
+相应参考文章中会详细介绍每种触发器的元数据属性。 有关示例，请参阅[队列触发器元数据](functions-bindings-storage-queue-trigger.md#message-metadata)。 在门户“集成”选项卡的绑定配置区域下方的“文档”部分中，还提供了文档。  
 
 ## <a name="json-payloads"></a>JSON 有效负载
 
@@ -315,10 +316,9 @@ public class BlobName
 ```
 ## <a name="binding-at-runtime"></a>在运行时绑定
 
-在 C# 和其他 .NET 语言中，可以使用命令性绑定模式，而不是 function.json  和特性中的声明式绑定。 当绑定参数需要在运行时（而非在设计时）计算时，命令性绑定很有用。 若要了解详细信息，请参阅 [C# 开发人员参考](functions-dotnet-class-library.md#binding-at-runtime)或 [C# 脚本开发人员参考](functions-reference-csharp.md#binding-at-runtime)。
+在 C# 和其他 .NET 语言中，可以使用命令性绑定模式，而不是 function.json 和特性中的声明式绑定。 当绑定参数需要在运行时（而非在设计时）计算时，命令性绑定很有用。 若要了解详细信息，请参阅 [C# 开发人员参考](functions-dotnet-class-library.md#binding-at-runtime)或 [C# 脚本开发人员参考](functions-reference-csharp.md#binding-at-runtime)。
 
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]
 > [使用 Azure 函数返回值](./functions-bindings-return-value.md)
 
-<!-- Update_Description: link update -->

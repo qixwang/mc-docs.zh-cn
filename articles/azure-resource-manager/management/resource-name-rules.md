@@ -3,19 +3,23 @@ title: 资源命名限制
 description: 说明 Azure 资源的命名规则和限制。
 ms.topic: conceptual
 origin.date: 05/21/2020
-ms.date: 06/22/2020
+ms.date: 07/13/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 16a085431aac786f7f93de5acb1a0a133e36a55c
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: a61a8b674ce91ceb177060e7c5ae21d15af9cd8b
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098627"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440890"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure 资源的命名规则和限制
 
 本文汇总了 Azure 资源的命名规则和限制。
+
 <!--Not Available on  [Ready: Recommended naming and tagging conventions](/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)-->
+
 本文按资源提供程序命名空间列出了资源。 有关资源提供程序如何匹配 Azure 服务的列表，请参阅[适用于 Azure 服务的资源提供程序](azure-services-resource-providers.md)。
 
 除非“有效字符”列中另有专门的说明，否则资源名称不区分大小写。
@@ -38,7 +42,7 @@ ms.locfileid: "85098627"
 > [!div class="mx-tableFixed"]
 > | 实体 | 作用域 | Length | 有效的字符 |
 > | --- | --- | --- | --- |
-> | 服务 | 全局 | 1-50 | 字母数字。<br /><br />以字母开头。 |
+> | 服务 | 全局 | 1-50 | 字母数字和连字符。<br /><br />以字母开头，以字母数字结尾。 |
 > | service / apis | 服务 | 1-256 | 不能使用：<br /> `*#&+:<>?` |
 > | service / apis / issues | api | 1-256 | 不能使用：<br /> `*#&+:<>?` |
 > | service / apis / issues / attachments | 问题 | 1-256 | 不能使用：<br /> `*#&+:<>?` |
@@ -429,7 +433,7 @@ ms.locfileid: "85098627"
 > [!div class="mx-tableFixed"]
 > | 实体 | 作用域 | Length | 有效的字符 |
 > | --- | --- | --- | --- |
-> | namespaces | 全局 | 6-50 | 字母数字和连字符<br /><br />以字母数字开头和结尾。 |
+> | namespaces | 全局 | 6-50 | 字母数字和连字符<br /><br />以字母开头。 以字母数字结尾。 |
 > | namespaces / AuthorizationRules | 命名空间 | 1-256 | 字母数字、句点、连字符和下划线。<br /><br />以字母数字开头。 |
 > | namespaces/notificationHubs | 命名空间 | 1-260 | 字母数字、句点、连字符和下划线。<br /><br />以字母数字开头。 |
 > | namespaces / notificationHubs / AuthorizationRules | 通知中心 | 1-256 | 字母数字、句点、连字符和下划线。<br /><br />以字母数字开头。 |

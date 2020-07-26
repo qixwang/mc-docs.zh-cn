@@ -4,18 +4,20 @@ description: 使用 Azure 或本地 IBM MQ 服务器和 Azure 逻辑应用发送
 services: logic-apps
 ms.suite: integration
 author: rockboyfor
-ms.reviewer: valthom, logicappspm
+ms.reviewer: valthom, estfan, logicappspm
 ms.topic: article
-origin.date: 03/31/2020
-ms.date: 04/30/2020
+origin.date: 05/14/2020
+ms.date: 07/20/2020
+ms.testscope: no
+ms.testdate: 04/30/2020
 ms.author: v-yeche
 tags: connectors
-ms.openlocfilehash: 5de365904e5749de63bd3263e2861029dae2a8ff
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: 9b7a901f1a51cc1f7387c3c62ebfe1748df53a98
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392419"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414583"
 ---
 # <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>从 Azure 逻辑应用连接到 IBM MQ 服务器
 
@@ -23,7 +25,7 @@ IBM MQ 连接器会发送和检索存储在 IBM MQ 服务器本地或 Azure 中�
 
 <!--CORRECT ON Microsoft MQ client-->
 
-IBM MQ 连接器包含这些操作，但不提供触发器：
+IBM MQ 连接器包含以下操作，但不提供触发器：
 
 - 浏览单条消息，而不从 IBM MQ 服务器中删除该消息。
 - 浏览一批消息，而不从 IBM MQ 服务器中删除这些消息。
@@ -36,18 +38,19 @@ IBM MQ 连接器包含这些操作，但不提供触发器：
   * MQ 7.5
   * MQ 8.0
   * MQ 9.0
+  * MQ 9.1
 
 ## <a name="prerequisites"></a>先决条件
 
 * 如果使用本地 MQ 服务器，则在网络中的服务器上[安装本地数据网关](../logic-apps/logic-apps-gateway-install.md)。 安装本地数据网关的服务器还必须安装 .NET Framework 4.6，才能使 MQ 连接器正常运行。
 
-    安装完网关以后，还必须在 Azure 中为本地数据网关创建资源。 有关详细信息，请参阅[设置网关连接](../logic-apps/logic-apps-gateway-connection.md)。
+    安装完网关以后，还必须在 Azure 中为本地数据网关创建资源。 有关详细信息，请参阅[设置数据网关连接](../logic-apps/logic-apps-gateway-connection.md)。
 
     如果 MQ 服务器公开可用，或在 Azure 中可用，则不必使用数据网关。
 
 * 要在其中添加 MQ 操作的逻辑应用。 此逻辑应用必须使用与本地数据网关连接相同的位置，并且必须已经有一个用于启动工作流的触发器。
 
-    MQ 连接器没有任何触发器，因此必须先将触发器添加到逻辑应用。 例如，可以使用定期触发器。 如果不熟悉逻辑应用，请尝试此[快速入门：创建你的第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+    MQ 连接器没有任何触发器，因此必须先将触发器添加到逻辑应用。 例如，可以使用定期触发器。 如果你不熟悉逻辑应用，请尝试[创建第一个逻辑应用的快速入门](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 <a name="create-connection"></a>
 
@@ -96,7 +99,7 @@ IBM MQ 连接器包含这些操作，但不提供触发器：
         > [!IMPORTANT]
         > 确保在“证书 - 本地计算机” > “受信任的根证书颁发机构”存储中安装证书。
 
-* MQ 服务器需要你定义要用于 SSL 连接的密码规范。 但是，.NET 中的 SsLStream 不允许你指定密码规范的顺序。 若要解决此限制，可以更改 MQ 服务器配置，使之与连接器在 SSL 协商中发送的一系列信息中的第一个密码规范相匹配。
+* MQ 服务器需要你定义要用于 TLS/SSL 连接的密码规范。 但是，.NET 中的 SslStream 不允许你指定密码规范的顺序。 若要解决此限制，可以更改 MQ 服务器配置，使之与连接器在 TLS/SSL 协商中发送的套件中的第一个密码规范相匹配。
 
     尝试连接时，MQ 服务器会记录一条事件消息，指示连接由于另一端使用了错误的密码规范而失败。 事件消息包含在列表中首先出现的密码规范。 更新通道配置中的密码规范，使之与事件消息中的密码规范匹配。
 
@@ -146,7 +149,7 @@ IBM MQ 连接器包含这些操作，但不提供触发器：
 
 1. 按照前面的步骤操作，但改为添加“浏览消息”操作。
 
-1. 如果尚未创建 MQ 连接，系统会提示你[创建该连接](#create-connection)。 否则，默认情况下，会使用之前配置的第一个连接。 若要创建新连接，请选择“更改连接”。 也可选择另一连接。
+1. 如果尚未创建 MQ 连接，系统会提示你[创建该连接](#create-connection)。 否则，默认情况下，会使用之前配置的第一个连接。 若要创建新连接，请选择“更改连接”。 或者，选择其他连接。
 
 1. 提供该操作的信息。
 
@@ -156,7 +159,7 @@ IBM MQ 连接器包含这些操作，但不提供触发器：
 
     ![“浏览消息”输出示例](media/connectors-create-api-mq/browse-messages-output.png)
 
-## <a name="receive-single-message"></a>接收单个消息
+## <a name="receive-single-message"></a>接收单条消息
 
 “接收消息”操作具有与“浏览消息”操作相同的输入和输出。 使用“接收消息”时，消息会从队列中删除。
 
@@ -173,7 +176,7 @@ IBM MQ 连接器包含这些操作，但不提供触发器：
 
 1. 请遵循前面的步骤，但改为添加“发送消息”操作。
 
-1. 如果尚未创建 MQ 连接，系统会提示你[创建该连接](#create-connection)。 否则，默认情况下，会使用之前配置的第一个连接。 若要创建新连接，请选择“更改连接”。 也可选择另一连接。
+1. 如果尚未创建 MQ 连接，系统会提示你[创建该连接](#create-connection)。 否则，默认情况下，会使用之前配置的第一个连接。 若要创建新连接，请选择“更改连接”。 或者，选择其他连接。
 
 1. 提供该操作的信息。 对于“MessageType”，请选择有效的消息类型：“数据报”、“答复”  或“请求”
 
@@ -181,7 +184,7 @@ IBM MQ 连接器包含这些操作，但不提供触发器：
 
 1. 保存并运行逻辑应用。
 
-    逻辑应用完成运行以后，可以看到“发送消息”操作的一些示例输出：
+    逻辑应用完成运行后，下面是“发送消息”操作中的一些示例输出：
 
     ![“发送消息”输出示例](media/connectors-create-api-mq/send-message-output.png)
 

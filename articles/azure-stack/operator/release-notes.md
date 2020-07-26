@@ -3,17 +3,17 @@ title: Azure Stack Hub 发行说明
 description: Azure Stack Hub 集成系统的发行说明，包括更新和 bug 修复。
 author: WenJason
 ms.topic: article
-origin.date: 06/09/2020
-ms.date: 06/22/2020
+origin.date: 07/02/2020
+ms.date: 07/20/2020
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 03/18/2020
-ms.openlocfilehash: d200fb85dd197cbd5f3457cef14822e62e23b847
-ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
+ms.openlocfilehash: 6654be2853230fd93df6840f56d48d65e3f423a9
+ms.sourcegitcommit: e9ffd50aa5eaab402a94bfabfc70de6967fe6278
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85096277"
+ms.lasthandoff: 07/14/2020
+ms.locfileid: "86307389"
 ---
 # <a name="azure-stack-hub-release-notes"></a>Azure Stack Hub 发行说明
 
@@ -225,7 +225,7 @@ Azure Stack Hub 1910 更新内部版本类型为“快速”。
     - 与 Azure Arc 集成。
     - 用适用于容器的 Azure Monitor 进行集成。
   - 将 Windows 容器与 AKS 引擎一起使用。
-  - 为其部署接收 CSS 和工程支持。
+  - 为其部署接收 Azure 支持和工程支持。
 
 ### <a name="improvements"></a>改进
 
@@ -432,7 +432,7 @@ Azure Stack Hub 1907 更新内部版本类型为“快速”。 有关更新内�
 
 <!-- What's new, also net new experiences and features. -->
 
-- 正式推出 Azure Stack Hub 诊断日志收集服务，以加速和改善诊断日志的收集。 Azure Stack Hub 诊断日志收集服务可让你轻松地通过 Microsoft 客户支持服务 (CSS) 收集和共享诊断日志。 此诊断日志收集服务可在 Azure Stack Hub 管理员门户中提供新的用户体验，让操作员设置在引发特定的关键警报时自动将诊断日志上传到存储 Blob。 该服务还可用于按需执行相同的操作。 有关详细信息，请参阅[诊断日志收集](azure-stack-diagnostic-log-collection-overview.md)一文。
+- 正式推出 Azure Stack Hub 诊断日志收集服务，以加速和改善诊断日志的收集。 Azure Stack Hub 诊断日志收集服务可让你轻松地通过 Azure 支持收集和共享诊断日志。 此诊断日志收集服务可在 Azure Stack Hub 管理员门户中提供新的用户体验，让操作员设置在引发特定的关键警报时自动将诊断日志上传到存储 Blob。 该服务还可用于按需执行相同的操作。 有关详细信息，请参阅[诊断日志收集](azure-stack-diagnostic-log-collection-overview.md)一文。
 
 - 正式推出 Azure Stack Hub 网络基础结构验证作为 Azure Stack Hub 验证工具 **Test-AzureStack** 的一部分。 Azure Stack Hub 网络基础结构将成为 **Test-AzureStack** 的一部分，可识别 Azure Stack Hub 的网络基础结构是否发生故障。 此测试绕过 Azure Stack Hub 软件定义的网络来检查网络基础结构的连接。 它会演示如何从公共 VIP 连接到配置的 DNS 转发器、NTP 服务器和标识终结点。 此外，在使用 Azure AD 作为标识提供者时，它会检查与 Azure 的连接；使用 ADFS 时，它会检查与联合服务器的连接。 有关详细信息，请参阅 [Azure Stack Hub 验证工具](azure-stack-diagnostic-test.md)一文。
 

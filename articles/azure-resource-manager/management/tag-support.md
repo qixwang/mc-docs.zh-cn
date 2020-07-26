@@ -2,15 +2,17 @@
 title: 资源的标记支持
 description: 显示支持标记的 Azure资源类型。 提供所有 Azure 服务的详细信息。
 ms.topic: conceptual
-origin.date: 04/06/2020
-ms.date: 04/30/2020
+origin.date: 06/15/2020
+ms.date: 07/13/2020
+ms.testscope: no
+ms.testdate: 07/13/2020Null
 ms.author: v-yeche
-ms.openlocfilehash: d5e8addcc56444a91ca5eef72ecf545bfe5adb9d
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: 366eea4649608284fbb3353cf34295aeda4dd9a5
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098622"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440992"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure 资源的标记支持
 本文介绍某一资源类型是否支持[标记](tag-resources.md)。 标记为“支持标记”的列指示资源类型是否具有标记的属性。 
@@ -163,7 +165,9 @@ ms.locfileid: "85098622"
 > | policyAssignments | 否 | 否 |
 > | policyDefinitions | 否 | 否 |
 > | policySetDefinitions | 否 | 否 |
+> | privateLinkAssociations | 否 | 否 |
 > | providerOperations | 否 | 否 |
+> | resourceManagementPrivateLinks | 否 | 否 |
 > | roleAssignments | 否 | 否 |
 > | roleAssignmentsUsageMetrics | 否 | 否 |
 > | roleDefinitions | 否 | 否 |
@@ -206,6 +210,8 @@ ms.locfileid: "85098622"
 > | registrations / customerSubscriptions | 否 | 否 |
 > | registrations / products | 否 | 否 |
 
+<!--Not Avaialble on ## Microsoft.AzureStackHCI-->
+<!--Not Avaialble on ## Microsoft.AzureStackResourceMonitor-->
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 
 > [!div class="mx-tableFixed"]
@@ -239,6 +245,12 @@ ms.locfileid: "85098622"
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
 > | Redis | 是 | 是 |
+> | Redis/EventGridFilters | 否 | 否 |
+> | Redis/privateEndpointConnectionProxies | 否 | 否 |
+> | Redis/privateEndpointConnectionProxies/validate | 否 | 否 |
+> | Redis/privateEndpointConnections | 否 | 否 |
+> | Redis/privateLinkResources | 否 | 否 |
+> | redisEnterprise | 是 | 是 |
 
 <!--Not Available on ## Microsoft.Capacity-->
 
@@ -259,6 +271,7 @@ ms.locfileid: "85098622"
 
 <!--Not Available on ## Microsoft.CertificateRegistration-->
 
+<!--Not Avaialble on ## Microsoft.ChangeAnalysis-->
 
 ## <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
 
@@ -349,6 +362,7 @@ ms.locfileid: "85098622"
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
 > | availabilitySets | 是 | 是 |
+> | diskAccesses | 是 | 是 |
 > | diskEncryptionSets | 是 | 是 |
 > | disks | 是 | 是 |
 > | galleries | 是 | 是 |
@@ -368,9 +382,11 @@ ms.locfileid: "85098622"
 > | sharedVMImages / versions | 否 | 否 |
 > | snapshots | 是 | 是 |
 > | sshPublicKeys | 是 | 是 |
+> | swiftlets | 是 | 是 |
 > | virtualMachines | 是 | 是 |
 > | virtualMachines / extensions | 是 | 是 |
 > | virtualMachines / metricDefinitions | 否 | 否 |
+> | virtualMachines/runCommands | 是 | 是 |
 > | virtualMachineScaleSets | 是 | 是 |
 > | virtualMachineScaleSets / extensions | 否 | 否 |
 > | virtualMachineScaleSets / networkInterfaces | 否 | 否 |
@@ -378,6 +394,8 @@ ms.locfileid: "85098622"
 > | virtualMachineScaleSets / virtualMachines | 否 | 否 |
 > | virtualMachineScaleSets / virtualMachines / networkInterfaces | 否 | 否 |
 
+> [!NOTE]
+> 不能将标记添加到已标记为“通用化”的虚拟机。 使用 [Set-AzVm -Generalized](https://docs.microsoft.com/powershell/module/Az.Compute/Set-AzVM) 或 [az vm generalize](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-generalize) 将虚拟机标记为“通用化”。
 <!--Not Available on ## Microsoft.Consumption -->
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
@@ -401,10 +419,13 @@ ms.locfileid: "85098622"
 > | registries / buildTasks | 是 | 是 |
 > | registries / buildTasks / steps | 否 | 否 |
 > | registries / eventGridFilters | 否 | 否 |
+> | registries/exportPipelines | 否 | 否 |
 > | registries / generateCredentials | 否 | 否 |
 > | registries / getBuildSourceUploadUrl | 否 | 否 |
 > | registries / GetCredentials | 否 | 否 |
 > | registries / importImage | 否 | 否 |
+> | registries/importPipelines | 否 | 否 |
+> | registries/pipelineRuns | 否 | 否 |
 > | registries / privateEndpointConnectionProxies | 否 | 否 |
 > | registries / privateEndpointConnectionProxies / validate | 否 | 否 |
 > | registries / privateEndpointConnections | 否 | 否 |
@@ -417,8 +438,8 @@ ms.locfileid: "85098622"
 > | registries / runs / cancel | 否 | 否 |
 > | registries / scheduleRun | 否 | 否 |
 > | registries / scopeMaps | 否 | 否 |
-> | registries / taskRuns | 是 | 是 |
-> | registries/tasks | 是 | 是 |
+> | registries / taskRuns | 否 | 否 |
+> | registries / tasks | 是 | 是 |
 > | registries / tokens | 否 | 否 |
 > | registries / updatePolicies | 否 | 否 |
 > | registries / webhooks | 是 | 是 |
@@ -465,7 +486,8 @@ ms.locfileid: "85098622"
 > | services | 否 | 否 |
 > | services/projects | 否 | 否 |
 
-<!--Not Available on  ## Microsoft.DataShare-->
+<!--Not Available on  ## Microsoft.DataProtection-->
+<!--Not Avaialble on ## Microsoft.DataShare-->
 
 ## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
 
@@ -587,6 +609,7 @@ ms.locfileid: "85098622"
 > | namespaces / eventhubs / consumergroups | 否 | 否 |
 > | namespaces / networkrulesets | 否 | 否 |
 
+<!--Not Available on ## Microsoft.Experimentation-->
 <!--Not Available on ## Microsoft.Falcon-->
 
 ## <a name="microsoftfeatures"></a>Microsoft.Features
@@ -630,6 +653,7 @@ ms.locfileid: "85098622"
 <!--Not Available on  ## Microsoft.HealthcareApis-->
 <!--Not Available on  ## Microsoft.HybridCompute-->
 <!--Not Available on  ## Microsoft.HybridData-->
+<!--Not Available on ## Microsoft.HybridNetwork-->
 <!--Not Available on ## Microsoft.Hydra-->
 
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport
@@ -696,6 +720,9 @@ ms.locfileid: "85098622"
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
 > | connectedClusters | 是 | 是 |
+> | registeredSubscriptions | 否 | 否 |
+
+<!--Not Available on ## Microsoft.KubernetesConfiguration-->
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 
@@ -755,6 +782,7 @@ ms.locfileid: "85098622"
 > | 标识 | 否 | 否 |
 > | userAssignedIdentities | 是 | 是 |
 
+<!--Not Available on ## Microsoft.ManagedNetwork-->
 <!--Not Available on ## Microsoft.ManagedServices-->
 
 ## <a name="microsoftmanagement"></a>Microsoft.Management
@@ -788,12 +816,15 @@ ms.locfileid: "85098622"
 > | mediaservices / liveEventOperations | 否 | 否 |
 > | mediaservices / liveEvents | 是 | 是 |
 > | mediaservices / liveEvents / liveOutputs | 否 | 否 |
+> | mediaservices/liveEvents/privateEndpointConnectionProxies | 否 | 否 |
 > | mediaservices / liveOutputOperations | 否 | 否 |
 > | mediaservices / mediaGraphs | 否 | 否 |
 > | mediaservices / streamingEndpointOperations | 否 | 否 |
 > | mediaservices / streamingEndpoints | 是 | 是 |
+> | mediaservices/streamingEndpoints/privateEndpointConnectionProxies | 否 | 否 |
 > | mediaservices / streamingLocators | 否 | 否 |
 > | mediaservices / streamingPolicies | 否 | 否 |
+> | mediaservices / streamingPrivateEndpointConnectionProxyOperations | 否 | 否 |
 > | mediaservices / transforms | 否 | 否 |
 > | mediaservices / transforms / jobs | 否 | 否 |
 
@@ -801,6 +832,9 @@ ms.locfileid: "85098622"
 <!--Not Available on  ## Microsoft.Migrate-->
 <!--Not Available on  ## Microsoft.MixedReality-->
 <!--Not Available on  ## Microsoft.NetApp-->
+
+<!--Bastion, DDos, Front Door, and Private link service are not available on Mooncake-->
+<!--MOONCAKE CUSTOMIZEIONT-->
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
@@ -812,11 +846,8 @@ ms.locfileid: "85098622"
 > | applicationSecurityGroups | 是 | 是 |
 > | azureFirewallFqdnTags | 否 | 否 |
 > | azureFirewalls | 是 | 否 |
-> | bastionHosts | 是 | 否 |
 > | bgpServiceCommunities | 否 | 否 |
 > | connections | 是 | 是 |
-> | ddosCustomPolicies | 是 | 是 |
-> | ddosProtectionPlans | 是 | 是 |
 > | dnsOperationStatuses | 否 | 否 |
 > | dnszones | 是 | 是 |
 > | dnszones / A | 否 | 否 |
@@ -865,7 +896,6 @@ ms.locfileid: "85098622"
 > | privateDnsZones / TXT | 否 | 否 |
 > | privateDnsZones / virtualNetworkLinks | 是 | 是 |
 > | privateEndpoints | 是 | 是 |
-> | privateLinkServices | 是 | 是 |
 > | publicIPAddresses | 是 | 是 |
 > | publicIPPrefixes | 是 | 是 |
 > | routeFilters | 是 | 是 |
@@ -886,6 +916,8 @@ ms.locfileid: "85098622"
 > | webApplicationFirewallPolicies | 是 | 是 |
 
 <!--Bastion, DDos, Front Door, and Private link service are not available on Mooncake-->
+<!--MOONCAKE CUSTOMIZEIONT-->
+
 <!--Not Available on Azure Front Door Service-->
 <!--Not Available on ## Microsoft.Notebooks-->
 
@@ -906,6 +938,7 @@ ms.locfileid: "85098622"
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
 > | clusters | 是 | 是 |
+> | deletedWorkspaces | 否 | 否 |
 > | linkTargets | 否 | 否 |
 > | storageInsightConfigs | 否 | 否 |
 > | workspaces | 是 | 是 |
@@ -913,6 +946,7 @@ ms.locfileid: "85098622"
 > | workspaces / dataSources | 否 | 否 |
 > | workspaces / linkedServices | 否 | 否 |
 > | workspaces / linkedStorageAccounts | 否 | 否 |
+> | workspaces / metadata | 否 | 否 |
 > | workspaces / query | 否 | 否 |
 > | workspaces / scopedPrivateLinkProxies | 否 | 否 |
 
@@ -972,6 +1006,7 @@ ms.locfileid: "85098622"
 > | ------------- | ----------- | ----------- |
 > | backupProtectedItems | 否 | 否 |
 > | vaults | 是 | 是 |
+<!--Not Available on ## Microsoft.RedHatOpenShift-->
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 
@@ -982,10 +1017,9 @@ ms.locfileid: "85098622"
 > | namespaces / authorizationrules | 否 | 否 |
 > | namespaces / hybridconnections | 否 | 否 |
 > | namespaces / hybridconnections / authorizationrules | 否 | 否 |
+> | namespaces / privateEndpointConnections | 否 | 否 |
 > | namespaces / wcfrelays | 否 | 否 |
 > | namespaces / wcfrelays / authorizationrules | 否 | 否 |
-
-<!--Not Available on  ## Microsoft.RemoteApp-->
 
 ## <a name="microsoftresourcegraph"></a>Microsoft.ResourceGraph
 
@@ -1018,6 +1052,7 @@ ms.locfileid: "85098622"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
+> | calculateTemplateHash | 否 | 否 |
 > | deployments | 是 | 否 |
 > | deployments / operations | 否 | 否 |
 > | deploymentScripts | 是 | 是 |
@@ -1027,6 +1062,8 @@ ms.locfileid: "85098622"
 > | providers | 否 | 否 |
 > | resourceGroups | 是 | 否 |
 > | subscriptions | 是 | 否 |
+> | templateSpecs | 是 | 是 |
+> | templateSpecs / versions | 是 | 是 |
 > | tenants | 否 | 否 |
 
 <!--Not Available on  ## Microsoft.SaaS-->
@@ -1047,6 +1084,7 @@ ms.locfileid: "85098622"
 > | adaptiveNetworkHardenings | 否 | 否 |
 > | advancedThreatProtectionSettings | 否 | 否 |
 > | alerts | 否 | 否 |
+> | alertsSuppressionRules | 否 | 否 |
 > | allowedConnections | 否 | 否 |
 > | applicationWhitelistings | 否 | 否 |
 > | assessmentMetadata | 否 | 否 |
@@ -1065,7 +1103,6 @@ ms.locfileid: "85098622"
 > | iotSecuritySolutions / analyticsModels / aggregatedAlerts | 否 | 否 |
 > | iotSecuritySolutions / analyticsModels / aggregatedRecommendations | 否 | 否 |
 > | jitNetworkAccessPolicies | 否 | 否 |
-> | networkData | 否 | 否 |
 > | 策略 | 否 | 否 |
 > | pricings | 否 | 否 |
 > | regulatoryComplianceStandards | 否 | 否 |
@@ -1139,7 +1176,6 @@ ms.locfileid: "85098622"
 > | SignalR | 是 | 是 |
 > | SignalR / eventGridFilters | 否 | 否 |
 
-<!--Not Available on ## Microsoft.SiteRecovery-->
 <!--Not Available on ## Microsoft.SoftwarePlan-->
 
 ## <a name="microsoftsolutions"></a>Microsoft.Solutions
@@ -1150,8 +1186,6 @@ ms.locfileid: "85098622"
 > | applicationDefinitions | 是 | 是 |
 > | applications | 是 | 是 |
 > | jitRequests | 是 | 是 |
-
-<!--Not Available on ## Microsoft.SpoolService-->
 
 ## <a name="microsoftsql"></a>Microsoft.SQL
 
@@ -1180,10 +1214,10 @@ ms.locfileid: "85098622"
 > | servers / tdeCertificates | 否 | 否 |
 > | virtualClusters | 否 | 否 |
 
-<a name="sqlnote" />
+<a name="sqlnote"></a>
 
 > [!NOTE]
-> Master 数据库不支持标记，但其他数据库（包括 Azure SQL 数据仓库数据库）支持标记。 Azure SQL 数据仓库数据库必须处于活动（而非暂停）状态。
+> Master 数据库不支持标记，但其他数据库（包括 Azure Synapse Analytics 数据库）支持标记。 Azure Synapse Analytics 数据库必须处于活动（而非暂停）状态。
 
 <!--Not Available on ## Microsoft.SqlVirtualMachine-->
 
@@ -1213,12 +1247,14 @@ ms.locfileid: "85098622"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
+> | clusters | 是 | 是 |
 > | streamingjobs | 是（见下方备注） | 是 |
 
 > [!NOTE]
 > Streamingjobs 运行时无法添加标记。 停止要添加标记的资源。
 
 <!--Not Available on ## Microsoft.Subscription-->
+<!--Not Available on ## Microsoft.Synapse-->
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 
@@ -1230,8 +1266,13 @@ ms.locfileid: "85098622"
 > | environments / eventsources | 是 | 否 |
 > | environments / referenceDataSets | 是 | 否 |
 
+<!--Not Available on ## Microsoft.Token-->
+<!--Not Available on ## Microsoft.VirtualMachineImages-->
+<!--Not Available on ## Microsoft.VMware-->
 <!--Not Available on ## Microsoft.VMwareCloudSimple-->
+<!--Not Available on ## Microsoft.VMwareOnAzure--->
 <!--Not Available on ## Microsoft.VnfManager-->
+<!--Not Available on ## Microsoft.VSOnline-->
 
 ## <a name="microsoftweb"></a>Microsoft.Web
 
@@ -1281,7 +1322,9 @@ ms.locfileid: "85098622"
 > | verifyHostingEnvironmentVnet | 否 | 否 |
 
 <!--Not Available on  ## Microsoft.WindowsDefenderATP-->
+<!--Not Available on ## Microsoft.WindowsESU-->
 <!--Not Available on  ## Microsoft.WindowsIoT-->
+<!--Not Available on ## Microsoft.WorkloadBuilder-->
 <!--Not Available on  ## Microsoft.WorkloadMonitor-->
 
 ## <a name="next-steps"></a>后续步骤

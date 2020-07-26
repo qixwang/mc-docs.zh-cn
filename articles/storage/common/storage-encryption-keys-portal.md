@@ -7,16 +7,16 @@ author: WenJason
 ms.service: storage
 ms.topic: how-to
 origin.date: 03/19/2020
-ms.date: 06/01/2020
+ms.date: 07/20/2020
 ms.author: v-jay
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: eeee5555d7a9bc5e6bc637456435ffa306928ea3
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: ba053de461c392b4592d872adeb535186fe6939c
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199402"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414642"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-the-azure-portal"></a>通过 Azure 门户使用 Azure Key Vault 配置客户管理的密钥
 
@@ -33,7 +33,7 @@ ms.locfileid: "84199402"
 - [如何通过 PowerShell 使用软删除](../../key-vault/general/soft-delete-powershell.md)。
 - [如何通过 CLI 使用软删除](../../key-vault/general/soft-delete-cli.md)。
 
-Azure 存储加密仅支持 2048 位 RSA 密钥。 有关密钥的详细信息，请参阅[关于 Azure Key Vault 密钥、机密和证书](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)中的“Key Vault 密钥”。
+Azure 存储加密支持 2048、3072 和 4096 大小的 RSA 密钥。 有关密钥的详细信息，请参阅[关于 Azure Key Vault 密钥、机密和证书](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)中的“Key Vault 密钥”。
 
 ## <a name="enable-customer-managed-keys"></a>启用客户管理的密钥
 

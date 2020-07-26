@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: 1cc6593bcc26b24166eaa3b0a00c8741e8176cfe
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: f495eb2c588d1415369edfc24bbd1f8ff56af27d
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097820"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440914"
 ---
 # <a name="train-pytorch-model"></a>训练 PyTorch 模型
 
@@ -61,8 +61,8 @@ ms.locfileid: "85097820"
 | 名称               | 类型                    | 说明                              |
 | ------------------ | ----------------------- | ---------------------------------------- |
 | 未训练的模型    | UntrainedModelDirectory | 未经训练的模型，需要 pytorch         |
-| 训练数据集   | ImageDirectory          | 训练数据集                         |
-| 验证数据集 | ImageDirectory          | 每个时期用于评估的验证数据集 |
+| 训练数据集   | 图像目录          | 训练数据集                         |
+| 验证数据集 | 图像目录          | 每个时期用于评估的验证数据集 |
 
 ###  <a name="module-parameters"></a>模块参数  
 

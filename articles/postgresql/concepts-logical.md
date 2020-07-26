@@ -5,20 +5,20 @@ author: WenJason
 ms.author: v-jay
 ms.service: postgresql
 ms.topic: conceptual
-origin.date: 06/09/2020
-ms.date: 07/06/2020
-ms.openlocfilehash: 534b5fef8690dbb7cf00a069b726c8d81597bc9d
-ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
+origin.date: 06/22/2020
+ms.date: 07/20/2020
+ms.openlocfilehash: f331bc237c869d52b7afd138d32d509c5f271bac
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85845856"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440395"
 ---
 # <a name="logical-decoding"></a>逻辑解码
  
 使用 [PostgreSQL 中的逻辑解码](https://www.postgresql.org/docs/current/logicaldecoding.html)可将数据更改流式传输到外部使用者。 逻辑解码广泛用于事件流和变更数据捕获方案。
 
-逻辑解码使用一个输出插件将 Postgres 的预写日志 (WAL) 转换为可读格式。 Azure Database for PostgreSQL 提供两个输出插件：[test_decoding](https://www.postgresql.org/docs/current/test-decoding.html) 和 [wal2json](https://github.com/eulerto/wal2json)。
+逻辑解码使用一个输出插件将 Postgres 的预写日志 (WAL) 转换为可读格式。 Azure Database for PostgreSQL 提供以下输出插件：[wal2json](https://github.com/eulerto/wal2json)、[test_decoding](https://www.postgresql.org/docs/current/test-decoding.html) 和 pgoutput。 pgoutput 由 Postgres 10 及更高版本中的 Postgres 提供。
 
 > [!NOTE]
 > Azure Database for PostgreSQL - 单一服务器上的逻辑解码目前为公共预览版。

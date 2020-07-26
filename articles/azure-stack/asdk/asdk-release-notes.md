@@ -4,22 +4,22 @@ description: Azure Stack 开发工具包 (ASDK) 的改进、修复和已知问�
 author: WenJason
 ms.topic: article
 origin.date: 04/06/2020
-ms.date: 05/18/2020
+ms.date: 07/20/2020
 ms.author: v-jay
 ms.reviewer: misainat
 ms.lastreviewed: 03/18/2020
-ms.openlocfilehash: ab902e11063afc5698b84f8daa2a2d1df2247af0
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: c21b4d2051877526365252a2dfdb8fa7ccf5561c
+ms.sourcegitcommit: e9ffd50aa5eaab402a94bfabfc70de6967fe6278
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422566"
+ms.lasthandoff: 07/14/2020
+ms.locfileid: "86307399"
 ---
 # <a name="asdk-release-notes"></a>ASDK 发行说明
 
 本文介绍了 Azure Stack 开发工具包 (ASDK) 中的更改、修复和已知问题。 如果不确定所运行的版本，请[使用门户进行查看](../operator/azure-stack-updates.md)。
 
-请订阅 [![RSS](./media/asdk-release-notes/feed-icon-14x14.png)](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#) [RSS 源](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#)，随时了解 ASDK 的新增功能。
+请订阅 ![RSS](./media/asdk-release-notes/feed-icon-14x14.png) [RSS 源](https://docs.microsoft.com/api/search/rss?search=ASDK+release+notes&locale=en-us#)，随时了解 ASDK 的新增功能。
 
 ::: moniker range="azs-2002"
 ## <a name="build-12002035"></a>内部版本 1.2002.0.35

@@ -2,15 +2,17 @@
 title: 完整模式删除
 description: 显示资源类型如何在 Azure 资源管理器模板中进行完全模式删除。
 ms.topic: conceptual
-origin.date: 04/06/2020
-ms.date: 04/30/2020
+origin.date: 06/15/2020
+ms.date: 07/13/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 7c66242fcc33453881d0ff5c5985e321cd9805d2
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: 5be3a83bea536af27717ab17a7dea992db16473f
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596170"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86441027"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>针对完全模式部署的 Azure 资源删除
 
@@ -34,7 +36,6 @@ ms.locfileid: "82596170"
 > - [Microsoft.AzureActiveDirectory](#microsoftazureactivedirectory)
 > - [Microsoft.AzureStack](#microsoftazurestack)
 > - [Microsoft.Batch](#microsoftbatch)
-> - [Microsoft.Blueprint](#microsoftblueprint)
 > - [Microsoft.Cache](#microsoftcache)
 > - [Microsoft.Cdn](#microsoftcdn)
 > - [Microsoft.ClassicCompute](#microsoftclassiccompute)
@@ -47,7 +48,6 @@ ms.locfileid: "82596170"
 > - [Microsoft.ContainerRegistry](#microsoftcontainerregistry)
 > - [Microsoft.ContainerService](#microsoftcontainerservice)
 > - [Microsoft.DataFactory](#microsoftdatafactory)
-> - [Microsoft.DataMigration](#microsoftdatamigration)
 > - [Microsoft.DBforMariaDB](#microsoftdbformariadb)
 > - [Microsoft.DBforMySQL](#microsoftdbformysql)
 > - [Microsoft.DBforPostgreSQL](#microsoftdbforpostgresql)
@@ -56,9 +56,7 @@ ms.locfileid: "82596170"
 > - [Microsoft.EventGrid](#microsofteventgrid)
 > - [Microsoft.EventHub](#microsofteventhub)
 > - [Microsoft.Features](#microsoftfeatures)
-> - [Microsoft.GuestConfiguration](#microsoftguestconfiguration)
 > - [Microsoft.HDInsight](#microsofthdinsight)
-> - [Microsoft.ImportExport](#microsoftimportexport)
 > - [Microsoft.IoTCentral](#microsoftiotcentral)
 > - [Microsoft.KeyVault](#microsoftkeyvault)
 > - [Microsoft.Kusto](#microsoftkusto)
@@ -66,16 +64,12 @@ ms.locfileid: "82596170"
 > - [Microsoft.MachineLearningServices](#microsoftmachinelearningservices)
 > - [Microsoft.Maintenance](#microsoftmaintenance)
 > - [Microsoft.ManagedIdentity](#microsoftmanagedidentity)
-> - [Microsoft.Management](#microsoftmanagement)
-> - [Microsoft.Media](#microsoftmedia)
 > - [Microsoft.Network](#microsoftnetwork)
 > - [Microsoft.NotificationHubs](#microsoftnotificationhubs)
 > - [Microsoft.OperationalInsights](#microsoftoperationalinsights)
 > - [Microsoft.OperationsManagement](#microsoftoperationsmanagement)
 > - [Microsoft.PolicyInsights](#microsoftpolicyinsights)
 > - [Microsoft.Portal](#microsoftportal)
-> - [Microsoft.PowerBI](#microsoftpowerbi)
-> - [Microsoft.PowerBIDedicated](#microsoftpowerbidedicated)
 > - [Microsoft.RecoveryServices](#microsoftrecoveryservices)
 > - [Microsoft.Relay](#microsoftrelay)
 > - [Microsoft.ResourceGraph](#microsoftresourcegraph)
@@ -90,7 +84,6 @@ ms.locfileid: "82596170"
 > - [Microsoft.SQL](#microsoftsql)
 > - [Microsoft.Storage](#microsoftstorage)
 > - [Microsoft.StreamAnalytics](#microsoftstreamanalytics)
-> - [Microsoft.TimeSeriesInsights](#microsofttimeseriesinsights)
 > - [Microsoft.Web](#microsoftweb)
 
 ## <a name="microsoftaad"></a>Microsoft.AAD
@@ -101,8 +94,7 @@ ms.locfileid: "82596170"
 > | DomainServices | 是 |
 > | DomainServices / oucontainer | 否 |
 
-
-<!--Not Available on ## Microsoft.Addons-->
+<!-- Not Available on ## Microsoft.Addons-->
 <!--Not Available on ## Microsoft.ADHybridHealthService-->
 
 ## <a name="microsoftadvisor"></a>Microsoft.Advisor
@@ -150,7 +142,6 @@ ms.locfileid: "82596170"
 <!--Not Available on ## Microsoft.AppPlatform-->
 <!--Not Available on ## Microsoft.Attestation-->
 
-
 ## <a name="microsoftauthorization"></a>Microsoft.Authorization
 
 > [!div class="mx-tableFixed"]
@@ -166,7 +157,9 @@ ms.locfileid: "82596170"
 > | policyAssignments | 否 |
 > | policyDefinitions | 否 |
 > | policySetDefinitions | 否 |
+> | privateLinkAssociations | 否 |
 > | providerOperations | 否 |
+> | resourceManagementPrivateLinks | 否 |
 > | roleAssignments | 否 |
 > | roleAssignmentsUsageMetrics | 否 |
 > | roleDefinitions | 否 |
@@ -186,9 +179,8 @@ ms.locfileid: "82596170"
 > | automationAccounts / softwareUpdateConfigurations | 否 |
 > | automationAccounts / webhooks | 否 |
 
-<!--Not Available on ## Microsoft.Azconfig-->
+<!--Not Available on ## Microsoft.AVS-->
 <!--Not Available on ## Microsoft.Azure.Geneva-->
-
 
 ## <a name="microsoftazureactivedirectory"></a>Microsoft.AzureActiveDirectory
 
@@ -210,6 +202,9 @@ ms.locfileid: "82596170"
 > | registrations / customerSubscriptions | 否 |
 > | registrations / products | 否 |
 
+<!--Not Available on ## Microsoft.AzureStackHCI-->
+<!--Not Available on ## Microsoft.AzureStackResourceMonitor-->
+
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 
 > [!div class="mx-tableFixed"]
@@ -218,7 +213,7 @@ ms.locfileid: "82596170"
 > | batchAccounts | 是 |
 
 <!--Not Available on ## Microsoft.Billing-->
-<!--Not Available on ## ## Microsoft.BingMaps-->
+<!--Not Available on ## Microsoft.BingMaps-->
 <!--Not Available on ## Microsoft.Blockchain-->
 <!--Not Available on ## Microsoft.BlockchainTokens-->
 
@@ -237,14 +232,18 @@ ms.locfileid: "82596170"
 
 <!--Not Available on ## Microsoft.BotService-->
 
-
 ## <a name="microsoftcache"></a>Microsoft.Cache
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 完整模式删除 |
 > | ------------- | ----------- |
 > | Redis | 是 |
-
+> | Redis/EventGridFilters | 否 |
+> | Redis/privateEndpointConnectionProxies | 否 |
+> | Redis/privateEndpointConnectionProxies/validate | 否 |
+> | Redis/privateEndpointConnections | 否 |
+> | Redis/privateLinkResources | 否 |
+> | redisEnterprise | 是 |
 
 <!--Not Available on ## Microsoft.Capacity-->
 
@@ -264,6 +263,8 @@ ms.locfileid: "82596170"
 > | validateProbe | 否 |
 
 <!-- Not Available on ## Microsoft.CertificateRegistration-->
+
+<!-- Not Available on ## Microsoft.ChangeAnalysis-->
 
 ## <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
 
@@ -354,6 +355,7 @@ ms.locfileid: "82596170"
 > | 资源类型 | 完整模式删除 |
 > | ------------- | ----------- |
 > | availabilitySets | 是 |
+> | diskAccesses | 是 |
 > | diskEncryptionSets | 是 |
 > | disks | 是 |
 > | galleries | 是 |
@@ -373,9 +375,11 @@ ms.locfileid: "82596170"
 > | sharedVMImages / versions | 否 |
 > | snapshots | 是 |
 > | sshPublicKeys | 是 |
+> | swiftlets | 是 |
 > | virtualMachines | 是 |
 > | virtualMachines / extensions | 是 |
 > | virtualMachines / metricDefinitions | 否 |
+> | virtualMachines/runCommands | 是 |
 > | virtualMachineScaleSets | 是 |
 > | virtualMachineScaleSets / extensions | 否 |
 > | virtualMachineScaleSets / networkInterfaces | 否 |
@@ -406,10 +410,13 @@ ms.locfileid: "82596170"
 > | registries / buildTasks | 是 |
 > | registries / buildTasks / steps | 否 |
 > | registries / eventGridFilters | 否 |
+> | registries/exportPipelines | 否 |
 > | registries / generateCredentials | 否 |
 > | registries / getBuildSourceUploadUrl | 否 |
 > | registries / GetCredentials | 否 |
 > | registries / importImage | 否 |
+> | registries/importPipelines | 否 |
+> | registries/pipelineRuns | 否 |
 > | registries / privateEndpointConnectionProxies | 否 |
 > | registries / privateEndpointConnectionProxies / validate | 否 |
 > | registries / privateEndpointConnections | 否 |
@@ -417,16 +424,16 @@ ms.locfileid: "82596170"
 > | registries / queueBuild | 否 |
 > | registries / regenerateCredential | 否 |
 > | registries / regenerateCredentials | 否 |
-> | registries/replications | 是 |
+> | registries / replications | 是 |
 > | registries / runs | 否 |
 > | registries / runs / cancel | 否 |
 > | registries / scheduleRun | 否 |
 > | registries / scopeMaps | 否 |
-> | registries / taskRuns | 是 |
-> | registries/tasks | 是 |
+> | registries / taskRuns | 否 |
+> | registries / tasks | 是 |
 > | registries / tokens | 否 |
 > | registries / updatePolicies | 否 |
-> | registries/webhooks | 是 |
+> | registries / webhooks | 是 |
 > | registries / webhooks / getCallbackConfig | 否 |
 > | registries / webhooks / ping | 否 |
 
@@ -470,6 +477,7 @@ ms.locfileid: "82596170"
 > | services | 是 |
 > | services/projects | 是 |
 
+<!--Not Available on ## Microsoft.DataShare-->
 <!--Not Available on ## Microsoft.DataShare-->
 
 ## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
@@ -546,7 +554,7 @@ ms.locfileid: "82596170"
 <!--Not Available on ## Microsoft.DevOps-->
 <!--Not Available on ## Microsoft.DevSpaces-->
 <!--Not Available on ## Microsoft.DevTestLab-->
-
+<!--Not Available on ## Microsoft.DigitalTwins-->
 
 ## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
 
@@ -558,7 +566,8 @@ ms.locfileid: "82596170"
 
 <!--Not Available on ## Microsoft.DomainRegistration-->
 <!--Not Available on ## Microsoft.DynamicsLcs-->
-<!--Not Available on ## Microsoft.EnterpriseKnowledgeGraph-->
+<!--Not Available on ## Microsoft.EnterpriseKnowledgeGraph--->
+
 
 ## <a name="microsofteventgrid"></a>Microsoft.EventGrid
 
@@ -593,7 +602,8 @@ ms.locfileid: "82596170"
 > | namespaces / eventhubs / consumergroups | 否 |
 > | namespaces / networkrulesets | 否 |
 
-<!--Not Available on ## Microsoft.Falcon-->
+<!-- Not Available on ## Microsoft.Experimentation-->
+<!-- Not Available on ## Microsoft.Falcon-->
 
 ## <a name="microsoftfeatures"></a>Microsoft.Features
 
@@ -606,7 +616,6 @@ ms.locfileid: "82596170"
 > | subscriptionFeatureRegistrations | 否 |
 
 <!--Not Available on ## Microsoft.Gallery-->
-
 <!--Not Available on ## Microsoft.Genomics-->
 
 ## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
@@ -636,6 +645,7 @@ ms.locfileid: "82596170"
 <!--Not Available on ## Microsoft.HealthcareApis-->
 <!--Not Available on ## Microsoft.HybridCompute-->
 <!--Not Available on ## Microsoft.HybridData-->
+<!--Not Available on ## Microsoft.HybridNetwork-->
 <!--Not Available on ## Microsoft.Hydra-->
 
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport
@@ -645,7 +655,7 @@ ms.locfileid: "82596170"
 > | ------------- | ----------- |
 > | jobs | 是 |
 
-<!--Not Available on ## Microsoft.Intune-->
+<!-- Not Available on ## Microsoft.Intune-->
 
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
 
@@ -663,13 +673,15 @@ ms.locfileid: "82596170"
 > | 资源类型 | 完整模式删除 |
 > | ------------- | ----------- |
 > | deletedVaults | 否 |
+> | hsmPools | 是 |
+> | managedHSMs | 是 |
 > | vaults | 是 |
 > | vaults / accessPolicies | 否 |
 > | vaults / eventGridFilters | 否 |
 > | vaults / secrets | 否 |
 
-<!--Not Available on KeyVault > | hsmPools | Yes |-->
-
+<!-- Not Available on ## Microsoft.Kubernetes-->
+<!-- Not Available on ## Microsoft.KubernetesConfiguration-->
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 
@@ -729,6 +741,7 @@ ms.locfileid: "82596170"
 > | 标识 | 否 |
 > | userAssignedIdentities | 是 |
 
+<!--Not Available on ## Microsoft.ManagedNetwork-->
 <!--Not Available on ## Microsoft.ManagedServices-->
 
 ## <a name="microsoftmanagement"></a>Microsoft.Management
@@ -748,7 +761,6 @@ ms.locfileid: "82596170"
 <!--Not Available on ## Microsoft.MarketplaceApps-->
 <!--Not Available on ## Microsoft.MarketplaceOrdering-->
 
-
 ## <a name="microsoftmedia"></a>Microsoft.Media
 
 > [!div class="mx-tableFixed"]
@@ -763,19 +775,22 @@ ms.locfileid: "82596170"
 > | mediaservices / liveEventOperations | 否 |
 > | mediaservices / liveEvents | 是 |
 > | mediaservices / liveEvents / liveOutputs | 否 |
+> | mediaservices/liveEvents/privateEndpointConnectionProxies | 否 |
 > | mediaservices / liveOutputOperations | 否 |
 > | mediaservices / mediaGraphs | 否 |
 > | mediaservices / streamingEndpointOperations | 否 |
 > | mediaservices / streamingEndpoints | 是 |
+> | mediaservices/streamingEndpoints/privateEndpointConnectionProxies | 否 |
 > | mediaservices / streamingLocators | 否 |
 > | mediaservices / streamingPolicies | 否 |
+> | mediaservices / streamingPrivateEndpointConnectionProxyOperations | 否 |
 > | mediaservices / transforms | 否 |
 > | mediaservices / transforms / jobs | 否 |
 
 <!--Not Available on ## Microsoft.Microservices4Spring-->
 <!--Not Available on ## Microsoft.Migrate-->
 <!--Not Available on ## Microsoft.MixedReality-->
-<!--Not Available on ## Microsoft.NetApp-->
+<!-- Not Available on ## Microsoft.NetApp-->
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
@@ -787,12 +802,82 @@ ms.locfileid: "82596170"
 > | applicationSecurityGroups | 是 |
 > | azureFirewallFqdnTags | 否 |
 > | azureFirewalls | 是 |
+> | bastionHosts | 是 |
+> | bgpServiceCommunities | 否 |
+> | connections | 是 |
+> | ddosCustomPolicies | 是 |
+> | ddosProtectionPlans | 是 |
+> | dnsOperationStatuses | 否 |
+> | dnszones | 是 |
+> | dnszones / A | 否 |
+> | dnszones / AAAA | 否 |
+> | dnszones / all | 否 |
+> | dnszones / CAA | 否 |
+> | dnszones / CNAME | 否 |
+> | dnszones / MX | 否 |
+> | dnszones / NS | 否 |
+> | dnszones / PTR | 否 |
+> | dnszones / recordsets | 否 |
+> | dnszones / SOA | 否 |
+> | dnszones / SRV | 否 |
+> | dnszones / TXT | 否 |
+> | expressRouteCircuits | 是 |
+> | expressRouteCrossConnections | 是 |
+> | expressRouteGateways | 是 |
+> | expressRoutePorts | 是 |
+> | expressRouteServiceProviders | 否 |
+> | firewallPolicies | 是 |
+> | frontdoors | 是 |
+> | frontdoorWebApplicationFirewallManagedRuleSets | 否 |
+> | frontdoorWebApplicationFirewallPolicies | 是 |
+> | getDnsResourceReference | 否 |
+> | internalNotify | 否 |
+> | loadBalancers | 是 |
+> | localNetworkGateways | 是 |
+> | natGateways | 是 |
+> | networkIntentPolicies | 是 |
+> | networkInterfaces | 是 |
+> | networkProfiles | 是 |
+> | networkSecurityGroups | 是 |
+> | networkWatchers | 是 |
+> | networkWatchers / connectionMonitors | 是 |
+> | networkWatchers / flowLogs | 是 |
+> | networkWatchers / lenses | 是 |
+> | networkWatchers / pingMeshes | 是 |
+> | p2sVpnGateways | 是 |
+> | privateDnsOperationStatuses | 否 |
+> | privateDnsZones | 是 |
+> | privateDnsZones / A | 否 |
+> | privateDnsZones / AAAA | 否 |
+> | privateDnsZones / all | 否 |
+> | privateDnsZones / CNAME | 否 |
+> | privateDnsZones / MX | 否 |
+> | privateDnsZones / PTR | 否 |
+> | privateDnsZones / SOA | 否 |
+> | privateDnsZones / SRV | 否 |
+> | privateDnsZones / TXT | 否 |
+> | privateDnsZones / virtualNetworkLinks | 是 |
+> | privateEndpoints | 是 |
+> | privateLinkServices | 是 |
+> | publicIPAddresses | 是 |
+> | publicIPPrefixes | 是 |
+> | routeFilters | 是 |
+> | routeTables | 是 |
+> | serviceEndpointPolicies | 是 |
+> | trafficManagerGeographicHierarchies | 否 |
+> | trafficmanagerprofiles | 是 |
+> | trafficmanagerprofiles / heatMaps | 否 |
+> | trafficManagerUserMetricsKeys | 否 |
+> | virtualHubs | 是 |
+> | virtualNetworkGateways | 是 |
+> | virtualNetworks | 是 |
+> | virtualNetworks/subnets | 否 |
+> | virtualNetworkTaps | 是 |
+> | virtualWans | 是 |
+> | vpnGateways | 是 |
+> | vpnSites | 是 |
+> | webApplicationFirewallPolicies | 是 |
 
-> | bgpServiceCommunities | 否 | | connections | 是 |
-
-> | dnsOperationStatuses | 否 | | dnszones | 是 | | dnszones / A | 否 | | dnszones / AAAA | 否 | | dnszones / all | 否 | | dnszones / CAA | 否 | | dnszones / CNAME | 否 | | dnszones / MX | 否 | | dnszones / NS | 否 | | dnszones / PTR | 否 | | dnszones / recordsets | 否 | | dnszones / SOA | 否 | | dnszones / SRV | 否 | | dnszones / TXT | 否 | | expressRouteCircuits | 是 | | expressRouteCrossConnections | 是 | | expressRouteGateways | 是 | | expressRoutePorts | 是 | | expressRouteServiceProviders | 否 | | firewallPolicies | 是 | | getDnsResourceReference | 否 | | internalNotify | 否 | | loadBalancers | 是 | | localNetworkGateways | 是 | | natGateways | 是 | | networkIntentPolicies | 是 | | networkInterfaces | 是 | | networkProfiles | 是 | | networkSecurityGroups | 是 | | networkWatchers | 是 | | networkWatchers / connectionMonitors | 是 | | networkWatchers / lenses | 是 | | networkWatchers / pingMeshes | 是 | | p2sVpnGateways | 是 | | privateDnsOperationStatuses | 否 | | privateDnsZones | 是 | | privateDnsZones / A | 否 | | privateDnsZones / AAAA | 否 | | privateDnsZones / all | 否 | | privateDnsZones / CNAME | 否 | | privateDnsZones / MX | 否 | | privateDnsZones / PTR | 否 | | privateDnsZones / SOA | 否 | | privateDnsZones / SRV | 否 | | privateDnsZones / TXT | 否 | | privateDnsZones / virtualNetworkLinks | 是 | | privateEndpoints | 是 | | publicIPAddresses | 是 | | publicIPPrefixes | 是 | | routeFilters | 是 | | routeTables | 是 | | serviceEndpointPolicies | 是 | | trafficManagerGeographicHierarchies | 否 | | trafficmanagerprofiles | 是 | | trafficmanagerprofiles / heatMaps | 否 | | trafficManagerUserMetricsKeys | 否 | | virtualHubs | 是 | | virtualNetworkGateways | 是 | | virtualNetworks | 是 | | virtualNetworkTaps | 是 | | virtualWans | 是 | | vpnGateways | 是 | | vpnSites | 是 | | webApplicationFirewallPolicies | 是 |
-
-<!--Not Available on Bstion, Ddos, Private Link, and Front Door-->
 <!--Not Available on ## Microsoft.Notebooks-->
 
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
@@ -812,6 +897,7 @@ ms.locfileid: "82596170"
 > | 资源类型 | 完整模式删除 |
 > | ------------- | ----------- |
 > | clusters | 是 |
+> | deletedWorkspaces | 否 |
 > | linkTargets | 否 |
 > | storageInsightConfigs | 否 |
 > | workspaces | 是 |
@@ -819,6 +905,7 @@ ms.locfileid: "82596170"
 > | workspaces / dataSources | 否 |
 > | workspaces / linkedServices | 否 |
 > | workspaces / linkedStorageAccounts | 否 |
+> | workspaces / metadata | 否 |
 > | workspaces / query | 否 |
 > | workspaces / scopedPrivateLinkProxies | 否 |
 
@@ -869,6 +956,7 @@ ms.locfileid: "82596170"
 > | capacities | 是 |
 
 <!--Not Available on ## Microsoft.ProjectBabylon-->
+<!--Not Available on ## Microsoft.ProviderHub-->
 <!--Not Available on ## Microsoft.Quantum-->
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
@@ -879,6 +967,8 @@ ms.locfileid: "82596170"
 > | backupProtectedItems | 否 |
 > | vaults | 是 |
 
+<!--Not Available on## Microsoft.RedHatOpenShift-->
+
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 
 > [!div class="mx-tableFixed"]
@@ -888,10 +978,9 @@ ms.locfileid: "82596170"
 > | namespaces / authorizationrules | 否 |
 > | namespaces / hybridconnections | 否 |
 > | namespaces / hybridconnections / authorizationrules | 否 |
+> | namespaces / privateEndpointConnections | 否 |
 > | namespaces / wcfrelays | 否 |
 > | namespaces / wcfrelays / authorizationrules | 否 |
-
-<!--Not Available on ## Microsoft.RemoteApp-->
 
 ## <a name="microsoftresourcegraph"></a>Microsoft.ResourceGraph
 
@@ -924,6 +1013,7 @@ ms.locfileid: "82596170"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 完整模式删除 |
 > | ------------- | ----------- |
+> | calculateTemplateHash | 否 |
 > | deployments | 否 |
 > | deployments / operations | 否 |
 > | deploymentScripts | 是 |
@@ -933,6 +1023,8 @@ ms.locfileid: "82596170"
 > | providers | 否 |
 > | resourceGroups | 否 |
 > | subscriptions | 否 |
+> | templateSpecs | 是 |
+> | templateSpecs / versions | 是 |
 > | tenants | 否 |
 
 <!--Not Available on ## Microsoft.SaaS-->
@@ -945,7 +1037,6 @@ ms.locfileid: "82596170"
 > | resourceHealthMetadata | 否 |
 > | searchServices | 是 |
 
-<a name="microsoftsecurity"></a>
 ## <a name="microsoftsecurity"></a>Microsoft.Security
 
 > [!div class="mx-tableFixed"]
@@ -954,6 +1045,7 @@ ms.locfileid: "82596170"
 > | adaptiveNetworkHardenings | 否 |
 > | advancedThreatProtectionSettings | 否 |
 > | alerts | 否 |
+> | alertsSuppressionRules | 否 |
 > | allowedConnections | 否 |
 > | applicationWhitelistings | 否 |
 > | assessmentMetadata | 否 |
@@ -972,7 +1064,6 @@ ms.locfileid: "82596170"
 > | iotSecuritySolutions / analyticsModels / aggregatedAlerts | 否 |
 > | iotSecuritySolutions / analyticsModels / aggregatedRecommendations | 否 |
 > | jitNetworkAccessPolicies | 否 |
-> | networkData | 否 |
 > | 策略 | 否 |
 > | pricings | 否 |
 > | regulatoryComplianceStandards | 否 |
@@ -995,8 +1086,8 @@ ms.locfileid: "82596170"
 > | workspaceSettings | 否 |
 
 <!-- Not Available on ## Microsoft.SecurityGraph-->
-
 <!-- Not Available on ## Microsoft.SecurityInsights-->
+<!--Not Available on ## Microsoft.SerialConsole-->
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 
@@ -1047,8 +1138,7 @@ ms.locfileid: "82596170"
 > | SignalR | 是 |
 > | SignalR / eventGridFilters | 否 |
 
-<!-- Not Available on ## Microsoft.SiteRecovery-->
-<!-- Not Available on ## Microsoft.SoftwarePlan--->
+<!-- Not Available on ## Microsoft.SoftwarePlan-->
 
 ## <a name="microsoftsolutions"></a>Microsoft.Solutions
 
@@ -1058,8 +1148,6 @@ ms.locfileid: "82596170"
 > | applicationDefinitions | 是 |
 > | applications | 是 |
 > | jitRequests | 是 |
-
-<!-- Not Available on ## Microsoft.SpoolService-->
 
 ## <a name="microsoftsql"></a>Microsoft.SQL
 
@@ -1079,7 +1167,7 @@ ms.locfileid: "82596170"
 > | servers | 是 |
 > | servers / administrators | 否 |
 > | servers / communicationLinks | 否 |
-> | servers/databases | 是 |
+> | servers / databases | 是 |
 > | servers / encryptionProtector | 否 |
 > | servers / firewallRules | 否 |
 > | servers / keys | 否 |
@@ -1116,9 +1204,11 @@ ms.locfileid: "82596170"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 完整模式删除 |
 > | ------------- | ----------- |
+> | clusters | 是 |
 > | streamingjobs | 是 |
 
 <!-- Not Available on ## Microsoft.Subscription-->
+<!-- Not Available on ## Microsoft.Synapse-->
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 
@@ -1127,11 +1217,16 @@ ms.locfileid: "82596170"
 > | ------------- | ----------- |
 > | environments | 是 |
 > | environments / accessPolicies | 否 |
-> | environments/eventsources | 是 |
+> | environments / eventsources | 是 |
 > | environments / referenceDataSets | 是 |
 
+<!-- Not Available on ## Microsoft.Token-->
+<!-- Not Available on ## Microsoft.VirtualMachineImages-->
+<!-- Not Available on ## Microsoft.VMware-->
 <!-- Not Available on ## Microsoft.VMwareCloudSimple-->
+<!-- Not Available on ## Microsoft.VMwareOnAzure-->
 <!-- Not Available on ## Microsoft.VnfManager-->
+<!-- Not Available on ## Microsoft.VSOnline-->
 
 ## <a name="microsoftweb"></a>Microsoft.Web
 
@@ -1170,7 +1265,7 @@ ms.locfileid: "82596170"
 > | sites / eventGridFilters | 否 |
 > | sites / hostNameBindings | 否 |
 > | sites / networkConfig | 否 |
-> | sites/premieraddons | 是 |
+> | sites / premieraddons | 是 |
 > | sites/slots | 是 |
 > | sites / slots / eventGridFilters | 否 |
 > | sites / slots / hostNameBindings | 否 |
@@ -1181,11 +1276,10 @@ ms.locfileid: "82596170"
 > | verifyHostingEnvironmentVnet | 否 |
 
 <!--Not Available on ## Microsoft.WindowsDefenderATP-->
+<!-- Not Available on ## Microsoft.WindowsESU-->
 <!--Not Available on ## Microsoft.WindowsIoT-->
+<!-- Not Available on ## Microsoft.WorkloadBuilder-->
 <!--Not Available on ## Microsoft.WorkloadMonitor-->
-
-
-<!--Not Available on ## Next steps-->
 <!--Not Available on [complete-mode-deletion.csv](https://github.com/tfitzmac/resource-capabilities/blob/master/complete-mode-deletion.csv)-->
 
 <!-- Update_Description: update meta properties, wording update, update link -->

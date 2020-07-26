@@ -4,16 +4,16 @@ description: 了解如何将 AKS 引擎必备组件添加到 Azure Stack Hub 市
 author: WenJason
 ms.topic: article
 origin.date: 6/08/2020
-ms.date: 06/22/2020
+ms.date: 07/20/2020
 ms.author: v-jay
 ms.reviewer: waltero
 ms.lastreviewed: 6/08/2020
-ms.openlocfilehash: fd2486b3fb2bcc81d41d5d1788d4cd8fcfb8f0af
-ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
+ms.openlocfilehash: 1629954f20e03594f6a801933a91f8959aa52268
+ms.sourcegitcommit: e9ffd50aa5eaab402a94bfabfc70de6967fe6278
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85096870"
+ms.lasthandoff: 07/14/2020
+ms.locfileid: "86307440"
 ---
 # <a name="add-the-azure-kubernetes-services-aks-engine-prerequisites-to-the-azure-stack-hub-marketplace"></a>将 Azure Kubernetes 服务 (AKS) 引擎必备组件添加到 Azure Stack Hub 市场
 
@@ -56,7 +56,7 @@ Kubernetes 群集将需要 Azure Stack Hub 中的服务主体 (SPN) 和基于角
     在该列表中，选择：
     - **发布者**：Azure Kubernetes 服务
     - **套餐**：aks
-    - **版本**：AKS Base Ubuntu 16.04-LTS Image Distro，2020 年 3 月（2020.03.19 或映射到 AKS 引擎的版本）
+    - **版本**：AKS 基础 Ubuntu 16.04-LTS 映像发行版，2020 年 5 月（2020.05.13 或映射到 AKS 引擎的版本）
 
 1. 选择“下载”。
 

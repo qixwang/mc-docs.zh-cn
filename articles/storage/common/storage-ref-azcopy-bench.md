@@ -5,24 +5,24 @@ author: WenJason
 ms.service: storage
 ms.topic: reference
 origin.date: 10/16/2019
-ms.date: 11/25/2019
+ms.date: 07/20/2019
 ms.author: v-jay
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 295c2daad16821912e1a2502e9610740cf4886ef
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 0792c4baa5b0eb78260e7dfddad0e0e4478745fe
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74354351"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414712"
 ---
-# <a name="azcopy-bench"></a>azcopy bench
+# <a name="azcopy-benchmark"></a>azcopy benchmark
 
 通过将测试数据上传到指定目标来运行性能基准测试。 测试数据是自动生成的。
 
 基准测试命令运行与“copy”命令相同的上传过程，区别在于：
 
-  - 没有源参数。  此命令只需要目标 URL。 在当前版本中，此目标 URL 必须引用 blob 容器。
+  - 没有源参数。  此命令只需要目标 URL。 
   
   - 有效负载通过命令行参数来描述，这些参数控制自动生成的文件的数量和大小。 生成过程完全在内存中进行。 不使用磁盘。
   
@@ -39,18 +39,18 @@ ms.locfileid: "74354351"
 ## <a name="examples"></a>示例
 
 ```azcopy
-azcopy bench [destination] [flags]
+azcopy benchmark [destination] [flags]
 ```
 
 使用默认参数运行基准测试（适用于对高达 1 Gbps 的网络进行基准测试）：
 
 - azcopy bench "https://[account].blob.core.chinacloudapi.cn/[container]?<SAS>"
 
-运行一个上传 100 个文件的基准测试，每个文件的大小为 2 GiB：（适用于在快速网络（例如 10 Gbps）上进行基准测试）：
+运行一个上传 100 个文件的基准测试，每个文件的大小为 2 GiB：（适用于在快速网络（例如 10 Gbps 的网络）上进行基准测试）：
 
 - azcopy bench "https://[account].blob.core.chinacloudapi.cn/[container]?<SAS>" --file-count 100 --size-per-file 2G
 
-与上面的相同，但是使用 50,000 个文件，每个文件的大小为 8 MiB，计算其 MD5 哈希（使用的方式与 --put-md5 标记在 copy 命令中使用的相同）。 进行基准测试时使用 --put-md5 的目的是测试 MD5 计算是否会影响所选文件计数和大小的吞吐量。
+运行基准测试，但使用 50,000 个文件，每个文件的大小为 8 MiB，并计算其 MD5 哈希值（使用的方式与 `--put-md5` 标记在 copy 命令中使用的相同）。 进行基准测试时使用 `--put-md5` 的目的是测试 MD5 计算是否会影响所选文件计数和大小的吞吐量：
 
 - azcopy bench "https://[account].blob.core.chinacloudapi.cn/[container]?<SAS>" --file-count 50000 --size-per-file 8M --put-md5
 
@@ -77,6 +77,8 @@ azcopy bench [destination] [flags]
 **--cap-mbps uint32**  以兆位/秒为单位限制传输速率。 瞬间吞吐量可能与上限略有不同。 如果此选项设置为零，或者省略，则吞吐量不受限制。
 
 **--output-type** 字符串  命令输出的格式。 选项包括：text、json。 默认值为“text”。 （默认值为“text”）。
+
+--trusted-microsoft-suffixes string 指定可向其中发送 Azure Active Directory 登录令牌的其他域后缀。  默认值为“.core.windows.net;.core.chinacloudapi.cn;.core.cloudapi.de;.core.usgovcloudapi.net” 。 此处列出的任何内容都会添加到默认值。 为安全起见，应只在此处放置 Azure 域。 用分号分隔多个条目。
 
 ## <a name="see-also"></a>另请参阅
 

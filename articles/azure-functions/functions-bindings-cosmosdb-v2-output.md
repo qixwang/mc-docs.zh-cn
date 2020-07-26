@@ -1,18 +1,18 @@
 ---
-title: 适用于 Functions 2.x 的 Azure Cosmos DB 输出绑定
+title: 适用于 Functions 2.x 及更高版本的 Azure Cosmos DB 输出绑定
 description: 了解如何在 Azure Functions 中使用 Azure Cosmos DB 输出绑定。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 06/05/2020
+ms.date: 07/14/2020
 ms.author: v-junlch
-ms.openlocfilehash: 2656ae581cdde4fb804797266f4521bdc43a0b2b
-ms.sourcegitcommit: f1a76ee3242698123a3d77f44c860db040b48f70
+ms.openlocfilehash: 47ee75757f64d6e039fad6572452a397987f9ee1
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84563647"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440418"
 ---
-# <a name="azure-cosmos-db-output-binding-for-azure-functions-2x"></a>适用于 Azure Functions 2.x 的 Azure Cosmos DB 输出绑定
+# <a name="azure-cosmos-db-output-binding-for-azure-functions-2x-and-higher"></a>适用于 Azure Functions 2.x 及更高版本的 Azure Cosmos DB 输出绑定
 
 Azure Cosmos DB 输出绑定允许使用 SQL API 将新文档写入 Azure Cosmos DB 数据库。
 

@@ -7,14 +7,16 @@ author: rockboyfor
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 origin.date: 08/17/2018
-ms.date: 03/23/2020
+ms.date: 07/20/2020
+ms.testscope: no
+ms.testdate: 03/23/2020
 ms.author: v-yeche
-ms.openlocfilehash: 293c24998aa7155595b4fcebec9dfd1bb120445c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b3bf6733e60f8036e684169916eb87a4005e7050
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80115816"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414619"
 ---
 # <a name="improve-security-for-b2b-messages-by-using-certificates"></a>使用证书提高 B2B 消息的安全性
 
@@ -33,74 +35,75 @@ ms.locfileid: "80115816"
 
 ## <a name="upload-a-public-certificate"></a>上传公用证书
 
-要在具有 B2B 功能的逻辑应用中使用“公用证书”  ，必须首先将证书上传到集成帐户中。 在你创建的[协议](logic-apps-enterprise-integration-agreements.md)中定义属性后，可以使用证书来帮助你保护 B2B 消息。
+要在具有 B2B 功能的逻辑应用中使用“公用证书”，必须首先将证书上传到集成帐户中。 在你创建的[协议](logic-apps-enterprise-integration-agreements.md)中定义属性后，可以使用证书来帮助你保护 B2B 消息。
 
-1. 登录 [Azure 门户](https://portal.azure.cn)。 在 Azure 主菜单中，选择“所有资源”  。 在搜索框中，输入你的集成帐户名称，然后选择所需的集成帐户。
+1. 登录到 [Azure 门户](https://portal.azure.cn)。 在 Azure 主菜单中，选择“所有资源”。 在搜索框中，输入你的集成帐户名称，然后选择所需的集成帐户。
 
-   ![查找并选择你的集成帐户](media/logic-apps-enterprise-integration-certificates/select-integration-account.png)  
+    ![查找并选择你的集成帐户](media/logic-apps-enterprise-integration-certificates/select-integration-account.png)  
 
-2. 在“组件”  下，选择“证书”  磁贴。
+2. 在“组件”下，选择“证书”磁贴。
 
-   ![选择“证书”](media/logic-apps-enterprise-integration-certificates/add-certificates.png)
+    ![选择“证书”](media/logic-apps-enterprise-integration-certificates/add-certificates.png)
 
-3. 在“证书”下，选择“添加”。   在“添加证书”  下，提供证书的这些详细信息。 完成后，选择“确定”  。
+3. 在“证书”下，选择“添加”。  在“添加证书”下，提供证书的这些详细信息。 完成后，选择“确定”。
 
-   | properties | 值 | 说明 | 
-   |----------|-------|-------------|
-   | **名称** | <*证书名称*> | 你的证书的名称，在本例中为“publicCert” | 
-   | **证书类型** | 公共 | 你的证书的类型 |
-   | **证书** | <*证书文件名*> | 若要查找并选择要上传的证书文件，请选择“证书”框旁边的文件夹图标。  |
-   ||||
+    | 属性 | Value | 说明 | 
+    |----------|-------|-------------|
+    | **名称** | <*证书名称*> | 你的证书的名称，在本例中为“publicCert” | 
+    | **证书类型** | 公共 | 你的证书的类型 |
+    | **证书** | <*证书文件名*> | 若要查找并选择要上传的证书文件，请选择“证书”框旁边的文件夹图标。 |
+    ||||
 
-   ![选择“添加”，提供证书详细信息](media/logic-apps-enterprise-integration-certificates/public-certificate-details.png)
+    ![选择“添加”，提供证书详细信息](media/logic-apps-enterprise-integration-certificates/public-certificate-details.png)
 
-   在 Azure 验证你的选择后，Azure 会上传你的证书。
+    在 Azure 验证你的选择后，Azure 会上传你的证书。
 
-   ![Azure 显示新证书](media/logic-apps-enterprise-integration-certificates/new-public-certificate.png) 
+    ![Azure 显示新证书](media/logic-apps-enterprise-integration-certificates/new-public-certificate.png) 
 
 ## <a name="upload-a-private-certificate"></a>上传私有证书
 
-要在具有 B2B 功能的逻辑应用中使用“私有证书”  ，必须首先将证书上传到集成帐户中。 还需要有一个私钥，需要首先将其添加到 [Azure Key Vault](../key-vault/key-vault-get-started.md)。 
+要在具有 B2B 功能的逻辑应用中使用“私有证书”，必须首先将证书上传到集成帐户中。 还需要有一个私钥，需要首先将其添加到 [Azure Key Vault](../key-vault/key-vault-get-started.md)。 
 
 在你创建的[协议](logic-apps-enterprise-integration-agreements.md)中定义属性后，可以使用证书来帮助你保护 B2B 消息。
 
 > [!NOTE]
-> 对于专用证书，请确保添加相应的公共证书（出现在 [AS2 协议的](logic-apps-enterprise-integration-as2.md)“发送和接收”  设置中），用于对消息进行签名和加密。
+> 对于专用证书，请确保添加相应的公共证书（出现在 [AS2 协议的](logic-apps-enterprise-integration-as2.md)“发送和接收”设置中），用于对消息进行签名和加密。
 
-1. [将私钥添加到 Azure Key Vault](../key-vault/certificate-scenarios.md#import-a-certificate) 并提供**密钥名称**。
+1. [将私钥添加到 Azure Key Vault](../key-vault/certificates/certificate-scenarios.md#import-a-certificate) 并提供**密钥名称**。
    
 2. 授权 Azure 逻辑应用对 Azure Key Vault 执行操作。 若要向逻辑应用服务主体授予访问权限，请使用 PowerShell 命令 [Set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy)，例如：
 
-   `Set-AzKeyVaultAccessPolicy -VaultName 'TestcertKeyVault' -ServicePrincipalName 
-   '7cd684f4-8a78-49b0-91ec-6a35d38739ba' -PermissionsToKeys decrypt, sign, get, list`
- 
-3. 登录 [Azure 门户](https://portal.azure.com)。 在 Azure 主菜单中，选择“所有资源”  。 在搜索框中，输入你的集成帐户名称，然后选择所需的集成帐户。
+    `Set-AzKeyVaultAccessPolicy -VaultName 'TestcertKeyVault' -ServicePrincipalName 
+    '7cd684f4-8a78-49b0-91ec-6a35d38739ba' -PermissionsToKeys decrypt, sign, get, list`
 
-   ![查找集成帐户](media/logic-apps-enterprise-integration-certificates/select-integration-account.png) 
+3. 登录到 [Azure 门户](https://portal.azure.cn)。 在 Azure 主菜单中，选择“所有资源”。 在搜索框中，输入你的集成帐户名称，然后选择所需的集成帐户。
 
-4. 在“组件”  下，选择“证书”  磁贴。  
+    ![查找集成帐户](media/logic-apps-enterprise-integration-certificates/select-integration-account.png) 
 
-   ![选择“证书”磁贴](media/logic-apps-enterprise-integration-certificates/add-certificates.png)
+4. 在“组件”下，选择“证书”磁贴。  
 
-5. 在“证书”下，选择“添加”。   在“添加证书”  下，提供证书的这些详细信息。 完成后，选择“确定”  。
+    ![选择“证书”磁贴](media/logic-apps-enterprise-integration-certificates/add-certificates.png)
 
-   | properties | 值 | 说明 | 
-   |----------|-------|-------------|
-   | **名称** | <*证书名称*> | 你的证书的名称，在本例中为“privateCert” | 
-   | **证书类型** | 专用 | 你的证书的类型 |
-   | **证书** | <*证书文件名*> | 若要查找并选择要上传的证书文件，请选择“证书”框旁边的文件夹图标。  使用密钥保管库保存私钥时，上传的文件将是公共证书。 | 
-   | **资源组** | <*集成帐户资源组*> | 你的集成帐户的资源组，在本例中为“MyResourceGroup” | 
-   | **Key Vault** | <*密钥保管库名称*> | 你的 Azure 密钥保管库的名称 |
-   | **密钥名称** | <*key-name*> | 你的密钥的名称 |
-   ||||
+5. 在“证书”下，选择“添加”。  在“添加证书”下，提供证书的这些详细信息。 完成后，选择“确定”。
 
-   ![选择“添加”，提供证书详细信息](media/logic-apps-enterprise-integration-certificates/private-certificate-details.png)
+    | 属性 | Value | 说明 | 
+    |----------|-------|-------------|
+    | **名称** | <*证书名称*> | 你的证书的名称，在本例中为“privateCert” | 
+    | **证书类型** | 专用 | 你的证书的类型 |
+    | **证书** | <*证书文件名*> | 若要查找并选择要上传的证书文件，请选择“证书”框旁边的文件夹图标。 使用密钥保管库保存私钥时，上传的文件将是公共证书。 | 
+    | **资源组** | <*集成帐户资源组*> | 你的集成帐户的资源组，在本例中为“MyResourceGroup” | 
+    | **密钥保管库** | <*密钥保管库名称*> | 你的 Azure 密钥保管库的名称 |
+    | **密钥名称** | <*key-name*> | 你的密钥的名称 |
+    ||||
 
-   在 Azure 验证你的选择后，Azure 会上传你的证书。
+    ![选择“添加”，提供证书详细信息](media/logic-apps-enterprise-integration-certificates/private-certificate-details.png)
 
-   ![Azure 显示新证书](media/logic-apps-enterprise-integration-certificates/new-private-certificate.png) 
+    在 Azure 验证你的选择后，Azure 会上传你的证书。
+
+    ![Azure 显示新证书](media/logic-apps-enterprise-integration-certificates/new-private-certificate.png) 
 
 ## <a name="next-steps"></a>后续步骤
 
 * [创建 B2B 协议](logic-apps-enterprise-integration-agreements.md)
 
+<!-- Update_Description: update meta properties, wording update, update link -->

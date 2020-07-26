@@ -12,17 +12,17 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 origin.date: 02/20/2020
-ms.date: 06/22/2020
-ms.openlocfilehash: a6d787fc0dc525e8c35a5b0002e7c8609c600fd4
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.date: 07/20/2020
+ms.openlocfilehash: a82f26a5221c300d38e27d9f304dc85e00f5691e
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098725"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440426"
 ---
 # <a name="migrate-a-sql-server-database-to-azure-sql-database-using-azure-powershell"></a>使用 Azure PowerShell 将 SQL Server 数据库迁移到 Azure SQL 数据库
 
-在本文中，我们将使用 Azure PowerShell 将还原为 SQL Server 2016 或更高版本的本地实例的 **Adventureworks2012** 数据库迁移到 Azure SQL 数据库。 可以使用 Azure PowerShell 中的 `Az.DataMigration` 模块，将数据库从 SQL Server 实例迁移到 Azure SQL 数据库。
+在本文中，我们使用 Azure PowerShell 将还原为 SQL Server 2016 或更高版本的本地实例的 Adventureworks2012 数据库迁移到 Azure SQL 数据库。 可以使用 Azure PowerShell 中的 `Az.DataMigration` 模块，将数据库从 SQL Server 实例迁移到 Azure SQL 数据库。
 
 在本文中，学习如何：
 > [!div class="checklist"]
@@ -39,7 +39,7 @@ ms.locfileid: "85098725"
 * [SQL Server 2016 或更高版本](https://www.microsoft.com/sql-server/sql-server-downloads)（任意版本）
 * 启用 TCP / IP 协议，使用 SQL Server Express 安装的情况下会默认禁用该协议。 遵循[启用或禁用服务器网络协议](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure)一文启用 TCP/IP 协议。
 * 配置[针对数据库引擎访问的 Windows 防火墙](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。
-* Azure SQL 数据库实例。 可以按照[在 Azure 门户中创建 Azure SQL 数据库](/sql-database/sql-database-get-started-portal)一文中的详细信息来创建 Azure SQL 数据库实例。
+* Azure SQL 数据库实例。 可以按照[在 Azure 门户中创建 Azure SQL 数据库中的数据库](/sql-database/sql-database-get-started-portal)一文中的详细说明来创建 Azure SQL 数据库实例。
 * [数据迁移助手](https://www.microsoft.com/download/details.aspx?id=53595) v3.3 或更高版本。
 * 使用 Azure 资源管理器部署模型创建一个 Azure 虚拟网络，该虚拟网络使用 [ExpressRoute](/expressroute/expressroute-introduction) 或 [VPN](/vpn-gateway/vpn-gateway-about-vpngateways) 使 Azure 数据库迁移服务与本地源服务器建立站点到站点连接。
 * 已使用[执行 SQL Server 迁移评估](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)一文中所述的数据迁移助手完成对本地数据库和架构迁移的评估

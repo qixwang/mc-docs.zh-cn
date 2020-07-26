@@ -6,15 +6,15 @@ ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
 origin.date: 6/11/2020
-ms.date: 06/29/2020
-ms.openlocfilehash: 5bbe140eba09a924c661a8b8af8365d7105c5c8c
-ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
+ms.date: 07/20/2020
+ms.openlocfilehash: 65418b3e535e8bceaee62d19b7e833e75c33ed70
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85516445"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440471"
 ---
-# <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-using-the-azure-portal"></a>如何使用 Azure 门户在用于 MySQL 的 Azure 数据库中配置服务器参数
+# <a name="configure-server-parameters-in-azure-database-for-mysql-using-the-azure-portal"></a>使用 Azure 门户在 Azure Database for MySQL 中配置服务器参数
 
 > [!NOTE]
 > 将要查看的是 Azure Database for MySQL 的新服务。 若要查看经典 MySQL Database for Azure 的文档，请访问[此页](https://docs.azure.cn/zh-cn/mysql-database-on-azure/)。

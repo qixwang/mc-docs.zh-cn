@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 06/11/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: f5ceef822e2f1f165750b942b6efe952905e1218
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: b47846ffe26f27b6540f5935b857a9e64500c855
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097141"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440888"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>设置并使用模型训练的计算目标 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -42,7 +42,7 @@ Azure 机器学习为不同的计算目标提供不同的支持。 典型的模�
 
 
 > [!NOTE]
-> Azure 机器学习计算资源可以创建为持久资源，也可以在你请求运行时动态创建。 基于运行的创建在训练运行完成后会删除计算目标，因此无法重复使用以这种方式创建的计算目标。
+> Azure 机器学习计算群集可以创建为持久资源，也可以在你请求某个运行时动态创建。 基于运行的创建在训练运行完成后会删除计算目标，因此无法重复使用以这种方式创建的计算目标。
 
 ## <a name="whats-a-run-configuration"></a>什么是运行配置？
 
@@ -76,7 +76,8 @@ ML 管道不仅可以训练模型，还可以在训练之前准备数据并在�
 使用以下部分配置这些计算目标：
 
 * [本地计算机](#local)
-* [Azure 机器学习计算](#amlcompute)
+* [Azure 机器学习计算群集](#amlcompute)
+* [Azure 机器学习计算实例](#instance)
 * [远程虚拟机](#vm)
 * [Azure HDInsight](#hdinsight)
 
@@ -87,13 +88,20 @@ ML 管道不仅可以训练模型，还可以在训练之前准备数据并在�
 
 1. **配置**：将本地计算机用作计算目标时，训练代码将在[开发环境](how-to-configure-environment.md)中运行。  如果该环境已包含所需的 Python 包，请使用用户管理的环境。
 
- [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/local.py?name=run_local)]
+```Python
+from azureml.core.runconfig import RunConfiguration
+
+# Edit a run configuration property on the fly.
+run_local = RunConfiguration()
+
+run_local.environment.python.user_managed_dependencies = True
+```
 
 附加计算并配置运行后，下一步是[提交训练运行](#submit)。
 
-### <a name="azure-machine-learning-compute"></a><a id="amlcompute"></a>Azure 机器学习计算
+### <a name="azure-machine-learning-compute-cluster"></a><a id="amlcompute"></a>Azure 机器学习计算群集
 
-Azure 机器学习计算是一个托管的计算基础结构，可让用户轻松创建单节点或多节点计算。 该计算是在工作区区域内部创建的，是可与工作区中的其他用户共享的资源。 提交作业时，计算会自动扩展，并可以放入 Azure 虚拟网络。 计算在容器化环境中执行，将模型的依赖项打包在 [Docker 容器](https://www.docker.com/why-docker)中。
+Azure 机器学习计算群集是一个托管的计算基础结构，可让你轻松创建单节点或多节点计算。 该计算是在工作区区域内部创建的，是可与工作区中的其他用户共享的资源。 提交作业时，计算会自动扩展，并可以放入 Azure 虚拟网络。 计算在容器化环境中执行，将模型的依赖项打包在 [Docker 容器](https://www.docker.com/why-docker)中。
 
 可以使用 Azure 机器学习计算在云中的 CPU 或 GPU 计算节点群集之间分配训练进程。 有关包括 GPU 的 VM 大小的详细信息，请参阅 [GPU 优化的虚拟机大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu)。 
 
@@ -113,7 +121,24 @@ Azure 机器学习计算对可以分配的核心数等属性实施默认限制�
     * **vm_size**：Azure 机器学习计算创建的节点的 VM 系列。
     * **max_nodes**：在 Azure 机器学习计算中运行作业时自动扩展到的最大节点数。
     
-   [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=cpu_cluster)]
+    ```Python
+    from azureml.core.compute import ComputeTarget, AmlCompute
+    from azureml.core.compute_target import ComputeTargetException
+
+    # Choose a name for your CPU cluster
+    cpu_cluster_name = "cpucluster"
+
+    # Verify that cluster does not exist already
+    try:
+        cpu_cluster = ComputeTarget(workspace=ws, name=cpu_cluster_name)
+        print('Found existing cluster, use it.')
+    except ComputeTargetException:
+        compute_config = AmlCompute.provisioning_configuration(vm_size='STANDARD_D2_V2',
+                                                            max_nodes=4)
+        cpu_cluster = ComputeTarget.create(ws, cpu_cluster_name, compute_config)
+
+    cpu_cluster.wait_for_completion(show_output=True)
+    ```
 
    还可以在创建 Azure 机器学习计算时配置多个高级属性。 使用这些属性可以创建固定大小的持久性群集，或者在订阅中的现有 Azure 虚拟网络内创建持久性群集。  有关详细信息，请参阅 [AmlCompute 类](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py
     )。
@@ -122,9 +147,91 @@ Azure 机器学习计算对可以分配的核心数等属性实施默认限制�
 
 1. **配置**：为持久性计算目标创建运行配置。
 
-   [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=run_amlcompute)]
+   ```Python
+   from azureml.core.runconfig import RunConfiguration
+    from azureml.core.conda_dependencies import CondaDependencies
+    from azureml.core.runconfig import DEFAULT_CPU_IMAGE
+
+    # Create a new runconfig object
+    run_amlcompute = RunConfiguration()
+
+    # Use the cpu_cluster you created above. 
+    run_amlcompute.target = cpu_cluster
+
+    # Enable Docker
+    run_amlcompute.environment.docker.enabled = True
+
+    # Set Docker base image to the default CPU-based image
+    run_amlcompute.environment.docker.base_image = DEFAULT_CPU_IMAGE
+
+    # Use conda_dependencies.yml to create a conda environment in the Docker image for execution
+    run_amlcompute.environment.python.user_managed_dependencies = False
+
+    # Specify CondaDependencies obj, add necessary packages
+    run_amlcompute.environment.python.conda_dependencies = CondaDependencies.create(conda_packages=['scikit-learn'])
+    ```
 
 附加计算并配置运行后，下一步是[提交训练运行](#submit)。
+
+
+### <a name="azure-machine-learning-compute-instance"></a><a id="instance"></a>Azure 机器学习计算实例
+
+[Azure 机器学习计算实例](concept-compute-instance.md)是一个托管的计算基础结构，可让你轻松创建单个 VM。 该计算是在工作区区域内创建的，但与计算群集不同，实例不能与工作区中的其他用户共享。 此外，实例不会自动纵向缩减。  你必须停止该资源，防止连续不断地产生费用。
+
+计算实例可以并行运行多个作业，它有一个作业队列。 
+
+计算实例可以在[虚拟网络环境](how-to-enable-virtual-network.md#compute-instance)中安全地运行作业，无需企业打开 SSH 端口。 作业在容器化环境中执行，并将模型依赖项打包到 Docker 容器中。 
+
+1. **创建和附加**： 
+    
+   ```Python
+   import datetime
+    import time
+
+    from azureml.core.compute import ComputeTarget, ComputeInstance
+    from azureml.core.compute_target import ComputeTargetException
+
+    # Choose a name for your instance
+    compute_name = "compute-instance"
+
+    # Verify that instance does not exist already
+    try:
+        instance = ComputeInstance(workspace=ws, name=compute_name)
+        print('Found existing instance, use it.')
+    except ComputeTargetException:
+        compute_config = ComputeInstance.provisioning_configuration(
+            vm_size='STANDARD_D3_V2',
+            ssh_public_access=False,
+            # vnet_resourcegroup_name='<my-resource-group>',
+            # vnet_name='<my-vnet-name>',
+            # subnet_name='default',
+            # admin_user_ssh_public_key='<my-sshkey>'
+        )
+        instance = ComputeInstance.create(ws, compute_name, compute_config)
+        instance.wait_for_completion(show_output=True)
+    ```
+
+1. **配置**：创建运行配置。
+    
+    ```python
+    
+    from azureml.core import ScriptRunConfig
+    from azureml.core.runconfig import DEFAULT_CPU_IMAGE
+    
+    src = ScriptRunConfig(source_directory='', script='train.py')
+    
+    # Set compute target to the one created in previous step
+    src.run_config.target = instance
+    
+    # Set environment
+    src.run_config.environment = myenv
+     
+    run = experiment.submit(config=src)
+    ```
+
+有关适用于计算实例的更多命令，请参阅笔记本 [train-on-computeinstance](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb)。 此笔记本也可在“training/train-on-computeinstance” 中的工作室 **Samples** 文件夹中找到。
+
+附加计算并配置运行后，下一步是[提交训练运行](#submit)
 
 
 ### <a name="remote-virtual-machines"></a><a id="vm"></a>远程虚拟机
@@ -166,7 +273,27 @@ Azure 机器学习还支持将自己的计算资源附加到工作区。 任意�
 
 1. **配置**：为 DSVM 计算目标创建运行配置。 Docker 与 conda 用于在 DSVM 上创建和配置训练环境。
 
-   [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/dsvm.py?name=run_dsvm)]
+   ```Python
+   import azureml.core
+    from azureml.core.runconfig import RunConfiguration
+    from azureml.core.conda_dependencies import CondaDependencies
+
+    run_dsvm = RunConfiguration(framework = "python")
+
+    # Set the compute target to the Linux DSVM
+    run_dsvm.target = compute_target_name 
+
+    # Use Docker in the remote VM
+    run_dsvm.environment.docker.enabled = True
+
+    # Use the CPU base image 
+    # To use GPU in DSVM, you must also use the GPU base Docker image "azureml.core.runconfig.DEFAULT_GPU_IMAGE"
+    run_dsvm.environment.docker.base_image = azureml.core.runconfig.DEFAULT_CPU_IMAGE
+    print('Base Docker image is:', run_dsvm.environment.docker.base_image)
+
+    # Specify the CondaDependencies object
+    run_dsvm.environment.python.conda_dependencies = CondaDependencies.create(conda_packages=['scikit-learn'])
+    ```
 
 
 附加计算并配置运行后，下一步是[提交训练运行](#submit)。
@@ -211,7 +338,22 @@ Azure HDInsight 是用于大数据分析的热门平台。 该平台提供的 Ap
 
 1. **配置**：为 HDI 计算目标创建运行配置。 
 
-   [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/hdi.py?name=run_hdi)]
+   ```Python
+   from azureml.core.runconfig import RunConfiguration
+    from azureml.core.conda_dependencies import CondaDependencies
+
+
+    # use pyspark framework
+    run_hdi = RunConfiguration(framework="pyspark")
+
+    # Set compute target to the HDI cluster
+    run_hdi.target = hdi_compute.name
+
+    # specify CondaDependencies object to ask system installing numpy
+    cd = CondaDependencies()
+    cd.add_conda_package('numpy')
+    run_hdi.environment.python.conda_dependencies = cd
+    ```
 
 
 附加计算并配置运行后，下一步是[提交训练运行](#submit)。
@@ -335,8 +477,8 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
     > [!NOTE]
     > Microsoft 建议使用 SSH 密钥，因为它们比密码更安全。 密码很容易受到暴力破解攻击。 SSH 密钥依赖于加密签名。 若要了解如何创建用于 Azure 虚拟机的 SSH 密钥，请参阅以下文档：
     >
-    > * [在 Linux 或 macOS 上创建和使用 SSH 密钥](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)
-    > * [在 Windows 上创建和使用 SSH 密钥](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)
+    > * [在 Linux 或 macOS 上创建和使用 SSH 密钥](/virtual-machines/linux/mac-create-ssh-keys)
+    > * [在 Windows 上创建和使用 SSH 密钥](/virtual-machines/linux/ssh-from-windows)
 
 1. 选择“附加”。 
 1. 通过在列表中选择计算目标来查看附加操作的状态。
@@ -374,7 +516,12 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
 首先，在工作区中创建一个试验。
 
-[!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/local.py?name=experiment)]
+```Python
+from azureml.core import Experiment
+experiment_name = 'my_experiment'
+
+exp = Experiment(workspace=ws, name=experiment_name)
+```
 
 ### <a name="submit-the-experiment"></a>提交试验
 
@@ -386,11 +533,25 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
 例如，若要使用[本地目标](#local)配置：
 
-[!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/local.py?name=local_submit)]
+```Python
+from azureml.core import ScriptRunConfig
+import os 
+
+script_folder = os.getcwd()
+src = ScriptRunConfig(source_directory = script_folder, script = 'train.py', run_config = run_local)
+run = exp.submit(src)
+run.wait_for_completion(show_output = True)
+```
 
 使用不同的运行配置（例如 [amlcompute 目标](#amlcompute)）将同一试验切换为在不同的计算目标中运行：
 
-[!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=amlcompute_submit)]
+```Python
+from azureml.core import ScriptRunConfig
+
+src = ScriptRunConfig(source_directory = script_folder, script = 'train.py', run_config = run_amlcompute)
+run = exp.submit(src)
+run.wait_for_completion(show_output = True)
+```
 
 > [!TIP]
 > 此示例默认为仅使用计算目标的一个节点进行训练。 若要使用多个节点，请将运行配置的 `node_count` 设置为所需的节点数。 例如，下面的代码将用于训练的节点数设置为 4：

@@ -2,26 +2,29 @@
 title: 如何通过 Python 使用 Azure 队列存储 v2.1 - Azure 存储
 description: 了解如何通过 Python 使用 Azure 队列服务 v2.1 创建和删除队列，以及插入、获取和删除消息。
 author: WenJason
-ms.service: storage
 ms.author: v-jay
 origin.date: 09/17/2019
-ms.date: 03/30/2020
+ms.date: 07/20/2020
+ms.service: storage
 ms.subservice: queues
-ms.topic: conceptual
-ms.reviewer: cbrooks
-ms.custom: seo-javascript-october2019
-ms.openlocfilehash: 4199a193c7205284ef23966ce4c2e5a6e6d81008
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.topic: how-to
+ms.reviewer: dineshm
+ms.custom: seo-javascript-october2019, tracking-python
+ms.openlocfilehash: 6ee125c60a66ba53eecfee5ead7ca02be9dfa82f
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80290348"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414597"
 ---
 # <a name="how-to-use-azure-queue-storage-v21-from-python"></a>如何通过 Python 使用 Azure 队列存储 v2.1
 
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
 本文演示使用 Azure 队列存储服务的常见方案。 介绍的方案包括插入、扫视、获取和删除队列消息以及创建和删除队列。
+
+> [!IMPORTANT]
+> 本文是指适用于 Python 的 Azure 存储客户端库的旧版本。 若要开始使用最新版本，请参阅[快速入门：适用于 Python 的 Azure 队列存储客户端库](storage-quickstart-queues-python.md)
 
 [!INCLUDE [storage-try-azure-tools-queues](../../../includes/storage-try-azure-tools-queues.md)]
 
@@ -64,7 +67,7 @@ pip install azure-storage-queue==2.1.0
 from azure.storage.queue import QueueService
 ```
 
-以下代码使用存储帐户名称和帐户密钥创建一个 `QueueService` 对象。 将 myaccount  和 mykey  替换为帐户名称和密钥。
+以下代码使用存储帐户名称和帐户密钥创建一个 `QueueService` 对象。 将 myaccount 和 mykey 替换为帐户名称和密钥。
 
 ```python
 queue_service = QueueService(account_name='myaccount', account_key='mykey', endpoint_suffix='core.chinacloudapi.cn')

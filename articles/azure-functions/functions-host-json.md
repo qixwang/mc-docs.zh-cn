@@ -2,13 +2,13 @@
 title: Azure Functions 2.x 的 host.json 参考
 description: 使用 v2 运行时的 Azure Functions host.json 文件的参考文档。
 ms.topic: conceptual
-ms.date: 06/08/2020
-ms.openlocfilehash: 98679ee44e44079879f0e5f811f51024b2841c85
-ms.sourcegitcommit: f1a76ee3242698123a3d77f44c860db040b48f70
+ms.date: 07/17/2020
+ms.openlocfilehash: 8ff55cc96a1db32c78fef0ea5505ca9691a8d23b
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84563747"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440530"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 及更高版本的 host.json 参考 
 
@@ -27,7 +27,7 @@ host.json 中与绑定相关的配置将同样地应用于函数应用中的每�
 
 ## <a name="sample-hostjson-file"></a>示例 host.json 文件
 
-以下版本 2.x+ 的示例 host.json  文件指定了所有可能的选项（不包括仅供内部使用的任何选项）。
+以下版本 2.x+ 的示例 host.json 文件指定了所有可能的选项（不包括仅供内部使用的任何选项）。
 
 ```json
 {
@@ -84,7 +84,7 @@ host.json 中与绑定相关的配置将同样地应用于函数应用中的每�
 
 ## <a name="extensions"></a>扩展
 
-该属性返回一个对象，其中包含所有特定于绑定的设置，例如 [http](#http) 和 [eventHub](#eventhub)。
+返回包含所有特定于绑定的设置的对象的属性，例如 [http](#http) 和 [eventHub](#eventhub)。
 
 ## <a name="extensionbundle"></a>extensionBundle 
 
@@ -94,7 +94,7 @@ host.json 中与绑定相关的配置将同样地应用于函数应用中的每�
 
 ## <a name="functions"></a>functions
 
-作业宿主运行的函数的列表。 空数组表示运行所有函数。 仅供在[本地运行](functions-run-local.md)时使用。 在 Azure 中的函数应用中，你应当改为按照[如何在 Azure Functions 中禁用函数](disable-function.md)中的步骤来禁用特定函数，而不是使用此设置。
+作业主机运行的函数列表。 空数组表示运行所有函数。 仅供在[本地运行](functions-run-local.md)时使用。 在 Azure 的函数应用中，应改为按照[如何在 Azure Functions 中禁用函数](disable-function.md)中的步骤禁用特定函数，而不是使用此设置。
 
 ```json
 {
@@ -104,9 +104,14 @@ host.json 中与绑定相关的配置将同样地应用于函数应用中的每�
 
 ## <a name="functiontimeout"></a>functionTimeout
 
-指示所有函数的超时持续时间。 它采用 timespan 字符串格式。 在无服务器消耗计划中，有效范围为 1 秒至 10 分钟，默认值为 5 分钟。  
+指示所有函数的超时持续时间。 它采用 timespan 字符串格式。 
 
-在专用（应用服务）计划中，没有总体限制，默认值为 30 分钟。 值 `-1` 指示无限执行，但建议保留固定上限。
+| 计划类型 | 默认值（分钟） | 最大值（分钟） |
+| -- | -- | -- |
+| 消耗 | 5 | 10 个 |
+| 专用（应用服务） | 30 | -1（无限制）<sup>2</sup> |
+
+<sup>2</sup> 值为 `-1` 表示无限制执行，但建议保留固定上限。
 
 ```json
 {
@@ -130,9 +135,9 @@ host.json 中与绑定相关的配置将同样地应用于函数应用中的每�
 }
 ```
 
-|properties  |默认 | 说明 |
+|属性  |默认 | 说明 |
 |---------|---------|---------| 
-|已启用|true|指定是否启用此功能。 | 
+|enabled|是|指定是否已启用该功能。 | 
 |healthCheckInterval|10 秒|定期后台运行状况检查之间的时间间隔。 | 
 |healthCheckWindow|2 分钟|与 `healthCheckThreshold` 设置结合使用的滑动时间窗口。| 
 |healthCheckThreshold|6|在启动主机回收之前，运行状况检查可以失败的最大次数。| 
@@ -183,7 +188,7 @@ host.json 中与绑定相关的配置将同样地应用于函数应用中的每�
 }
 ```
 
-|properties  |默认 | 说明 |
+|属性  |默认 | 说明 |
 |---------|---------|---------| 
 |lockPeriod|00:00:15|占用函数级锁的时间段。 锁自动续订。| 
 |listenerLockPeriod|00:01:00|占用侦听器锁的时间段。| 

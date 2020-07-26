@@ -2,15 +2,17 @@
 title: 模板函数 - 日期
 description: 介绍了可在 Azure 资源管理器模板中用来处理日期的函数。
 ms.topic: conceptual
-origin.date: 04/27/2020
-ms.date: 06/22/2020
+origin.date: 06/22/2020
+ms.date: 07/13/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 1caaaf9c78ab3218efdf79ae2080d676491dc233
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: 092bc1a54095d064c62ae92c50f39880eeaf6aea
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098633"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86441009"
 ---
 # <a name="date-functions-for-arm-templates"></a>ARM 模板的日期函数
 
@@ -152,7 +154,7 @@ ms.locfileid: "85098633"
 
 只能在表达式中对参数的默认值使用此函数。 在模板中的其他任何位置使用此函数都会返回错误。 不允许在模板的其他部分使用该函数，因为每次调用该函数，都会返回不同的值。 使用相同的参数部署同一模板不能可靠地生成相同的结果。
 
-如果[使用相应的选项来重新部署以前已成功的部署](rollback-on-error.md)，而以前的部署包含一个使用 utcNow 的参数，则不会重新评估该参数， 而是在回滚部署中自动重复使用以前部署中的参数值。
+如果使用[出错时回退选项](rollback-on-error.md)回退到以前成功的部署，而以前的部署包含一个使用 utcNow 的参数，则不会重新评估该参数， 而是在回滚部署中自动重复使用以前部署中的参数值。
 
 重新部署依赖于 utcNow 函数提供默认值的模板时请保持谨慎。 如果重新部署且不提供参数的值，则会重新评估该函数。 若要更新现有的资源而不是新建资源，请传入以前部署中的参数值。
 

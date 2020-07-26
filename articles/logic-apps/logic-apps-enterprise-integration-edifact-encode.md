@@ -6,15 +6,17 @@ ms.suite: integration
 author: rockboyfor
 ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
-origin.date: 01/27/2017
-ms.date: 03/30/2020
+origin.date: 04/22/2020
+ms.date: 07/20/2020
+ms.testscope: no
+ms.testdate: 03/30/2020
 ms.author: v-yeche
-ms.openlocfilehash: 7025fa302b0bb7b8943521b5ba8f34c21824f2f1
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 55249dc9cdb9e7281464a748bd0e052b9b0e40fb
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80243578"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414617"
 ---
 # <a name="encode-edifact-messages-for-azure-logic-apps-with-enterprise-integration-pack"></a>为带有 Enterprise Integration Pack 的 Azure 逻辑应用编码 EDIFACT 消息
 
@@ -26,17 +28,24 @@ ms.locfileid: "80243578"
 下面是需要准备好的项：
 
 * Azure 帐户；可以创建[试用帐户](https://www.azure.cn/pricing/1rmb-trial)
-* 已定义的、与 Azure 订阅关联的[集成帐户](logic-apps-enterprise-integration-create-integration-account.md)。 必须拥有集成帐户，才能使用编码 EDIFACT 消息连接器。 
+* 已定义的、与 Azure 订阅关联的[集成帐户](logic-apps-enterprise-integration-create-integration-account.md)。 
+    必须拥有集成帐户，才能使用编码 EDIFACT 消息连接器。 
 * 已在集成帐户中至少定义了两个[合作伙伴](logic-apps-enterprise-integration-partners.md)
 * 已在集成帐户中定义了 [EDIFACT 协议](logic-apps-enterprise-integration-edifact.md)
 
 ## <a name="encode-edifact-messages"></a>为 EDIFACT 消息编码
 
+> [!IMPORTANT]
+> EDIFACT 连接器仅支持 UTF-8 字符。
+> 如果输出中包含意外的字符，请检查 EDIFACT 消息是否使用 UTF-8 字符集。
+
 1. [创建逻辑应用](quickstart-create-first-logic-app-workflow.md)。
 
-2. 编码 EDIFACT 消息连接器没有触发器，因此必须添加用于启动逻辑应用的触发器，如请求触发器。 在逻辑应用设计器中，添加触发器，然后将操作添加到逻辑应用。
+2. 编码 EDIFACT 消息连接器没有触发器，因此必须添加用于启动逻辑应用的触发器，如请求触发器。 
+    在逻辑应用设计器中，添加触发器，然后将操作添加到逻辑应用。
 
-3. 在搜索框中，输入“EDIFACT”作为筛选器。 选择“编码 EDIFACT 消息(按协议名称)”或“编码为 EDIFACT 消息(按标识)”。  
+3. 在搜索框中，输入“EDIFACT”作为筛选器。 
+    选择“编码 EDIFACT 消息(按协议名称)”或“编码为 EDIFACT 消息(按标识)”。 
 
     ![搜索 EDIFACT](media/logic-apps-enterprise-integration-edifact-encode/edifactdecodeimage1.png)  
 
@@ -46,12 +55,13 @@ ms.locfileid: "80243578"
 
     带有星号的属性必填。
 
-    | properties | 详细信息 |
+    | 属性 | 详细信息 |
     | --- | --- |
     | 连接名称 * |为连接输入任何名称。 |
     | 集成帐户 * |输入集成帐户的名称。 确保集成帐户和逻辑应用位于同一 Azure 位置。 |
 
-5. 完成后，连接详细信息应如此示例所示。 若要完成连接创建，请选择“创建”  。
+5. 完成后，连接详细信息应如此示例所示。 
+    若要完成连接创建，请选择“创建”。
 
     ![集成帐户连接详细信息](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage2.png)
 
@@ -61,7 +71,7 @@ ms.locfileid: "80243578"
 
 #### <a name="encode-edifact-message-by-agreement-name"></a>编码 EDIFACT 消息(按协议名称)
 
-如果选择了按协议名称编码 EDIFACT 消息，请打开“EDIFACT 协议的名称”  列表，输入或选择现有的 EDIFACT 协议名称。 输入要编码的 XML 消息。
+如果选择了按协议名称编码 EDIFACT 消息，请打开“EDIFACT 协议的名称”列表，输入或选择现有的 EDIFACT 协议名称。 输入要编码的 XML 消息。
 
 ![输入 EDIFACT 协议名称和要编码的 XML 消息](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage6.png)
 
@@ -81,13 +91,13 @@ ms.locfileid: "80243578"
 * 为每个传出交换生成交换控制编号、组控制编号和事务集控制编号
 * 替换有效负载数据中的分隔符
 * 验证 EDI 和特定于合作伙伴的属性
-  * 针对消息架构进行的事务集数据元素架构验证。
-  * 对事务集数据元素执行的 EDI 验证。
-  * 对事务集数据元素执行的扩展验证
+    * 针对消息架构进行的事务集数据元素架构验证。
+    * 对事务集数据元素执行的 EDI 验证。
+    * 对事务集数据元素执行的扩展验证
 * 为每个事务集生成 XML 文档。
 * 请求技术和/或功能确认（如果已配置）。
-  * 作为技术确认，CONTRL 消息指示交换的接收。
-  * 作为功能确认，CONTRL 消息指示收到的交换、组或消息的接受或拒绝（具有错误或不支持的功能的列表）
+    * 作为技术确认，CONTRL 消息指示交换的接收。
+    * 作为功能确认，CONTRL 消息指示收到的交换、组或消息的接受或拒绝（具有错误或不支持的功能的列表）
 
 ## <a name="view-swagger-file"></a>查看 Swagger 文件
 若要查看 EDIFACT 连接器的 Swagger 详细信息，请参阅 [EDIFACT](https://docs.microsoft.com/connectors/edifact/)。
@@ -95,5 +105,4 @@ ms.locfileid: "80243578"
 ## <a name="next-steps"></a>后续步骤
 [了解有关 Enterprise Integration Pack 的详细信息](logic-apps-enterprise-integration-overview.md "了解 Enterprise Integration Pack")
 
-<!-- Update_Description: new article about logic apps enterprise integration edifact encode -->
-<!--NEW.date: 03/30/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

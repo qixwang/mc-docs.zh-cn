@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.reviewer: jmartens
 ms.author: larryfr
 author: Blackmist
-ms.date: 03/06/2020
+ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: c941fc77e42c15fef6d40595366aab32c7fa16d9
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: 0a14e1dcc2170b9f4007b3c6ca9754cd39ffdf1f
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097148"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440969"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>管理对 Azure 机器学习工作区的访问权限
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -58,6 +58,14 @@ az ml workspace share -w <workspace_name> -g <resource_group_name> --role <role_
 ```azurecli 
 az ml workspace share -w my_workspace -g my_resource_group --role Contributor --user jdoe@contoson.com
 ```
+
+> [!NOTE]
+> “az ml workspace share”命令对 Azure Active Directory B2B 的联合帐户不起作用。 请使用 Azure UI 门户而不是命令。
+
+
+## <a name="azure-machine-learning-operations"></a>Azure 机器学习操作
+
+适用于许多操作和任务的 Azure 机器学习内置操作。 有关完整列表，请参阅 [Azure 资源提供程序操作](/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)。
 
 ## <a name="create-custom-role"></a>创建自定义角色
 
@@ -110,9 +118,6 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
 
 有关自定义角色的详细信息，请参阅 [Azure 资源的自定义角色](/azure/role-based-access-control/custom-roles)。
 
-有关可用于自定义角色的操作的详细信息，请参阅[资源提供程序操作](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)。
-
-
 ## <a name="frequently-asked-questions"></a>常见问题
 
 
@@ -139,7 +144,7 @@ az role definition list --subscription <sub-id> --custom-role-only true
 
 ### <a name="q-how-do-i-find-the-role-definition-for-a-role-in-my-subscription"></a>问： 如何查找我的订阅中某个角色的角色定义？
 
-在 Azure CLI 中运行以下命令。 请注意，`<role-name>` 的格式应与上述命令返回的格式相同。
+在 Azure CLI 中运行以下命令。 `<role-name>` 的格式应与上述命令返回的格式相同。
 
 ```azurecli
 az role definition list -n <role-name> --subscription <sub-id>
@@ -153,7 +158,7 @@ az role definition list -n <role-name> --subscription <sub-id>
 az role definition update --role-definition update_def.json --subscription <sub-id>
 ```
 
-请注意，你需要对新角色定义的整个作用域具有权限。 例如，如果此新角色的作用域跨三个订阅，则你需要对所有三个订阅都具有权限。 
+你需要对新角色定义的整个作用域具有权限。 例如，如果此新角色的作用域跨三个订阅，则你需要对所有三个订阅都具有权限。 
 
 > [!NOTE]
 > 角色更新可能需要花费 15 分钟到一小时才能应用于该作用域中的所有角色分配。

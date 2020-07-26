@@ -10,12 +10,12 @@ ms.author: slbird
 author: slbird
 ms.reviewer: luquinta
 ms.date: 05/17/2020
-ms.openlocfilehash: 983c0fadc104ecce41abc5fe130eac9262c22af6
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: 39737bcbef85fd60f92937d82f8ad6986b3c3d54
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097809"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86441143"
 ---
 # <a name="use-differential-privacy-in-azure-machine-learning"></a>在 Azure 机器学习中使用差分隐私
 
@@ -25,6 +25,8 @@ ms.locfileid: "85097809"
 
 差分隐私是隐私的最高标准定义。 遵守此隐私定义的系统可针对各种数据重建和重新识别攻击（包括拥有辅助信息的攻击者发起的攻击）提供强大的防护保障。 详细了解[差分隐私的工作原理](./concept-differential-privacy.md)。
 
+> [!NOTE]
+> 请注意，我们正在重命名该工具包，并将在未来几周内引入新名称。 
 ## <a name="prerequisites"></a>先决条件
 
 - 如果没有 Azure 订阅，请在开始前创建一个试用帐户。 立即试用[免费版或付费版 Azure 机器学习](https://www.azure.cn/pricing/1rmb-trial)。

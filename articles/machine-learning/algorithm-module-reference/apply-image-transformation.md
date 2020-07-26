@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: 68e95f043af16c2181684febe8aedf5b2f5d3fb2
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: 3fc42007f7c5b0d632a984f9a1a9eabff7ada545
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097789"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86441076"
 ---
 # <a name="apply-image-transformation"></a>应用图像转换 
 
@@ -55,14 +55,14 @@ ms.locfileid: "85097789"
 
 | 名称                       | 类型                    | 说明                       |
 | -------------------------- | ----------------------- | --------------------------------- |
-| 输入图像转换 | TransformationDirectory | 输入图像转换        |
-| 输入图像目录      | ImageDirectory          | 要转换的图像目录 |
+| 输入图像转换 | 转换目录 | 输入图像转换        |
+| 输入图像目录      | 图像目录          | 要转换的图像目录 |
 
 ### <a name="outputs"></a>Outputs  
 
 | 名称                   | 类型           | 说明            |
 | ---------------------- | -------------- | ---------------------- |
-| 输出图像目录 | ImageDirectory | 输出图像目录 |
+| 输出图像目录 | 图像目录 | 输出图像目录 |
 
 ## <a name="next-steps"></a>后续步骤
 

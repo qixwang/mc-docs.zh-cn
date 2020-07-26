@@ -6,15 +6,17 @@ ms.suite: integration
 author: rockboyfor
 ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
-origin.date: 01/27/2017
-ms.date: 03/30/2020
+origin.date: 04/22/2020
+ms.date: 07/20/2020
+ms.testscope: no
+ms.testdate: 03/30/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1caaf3fee35e6c243e6183e2a1f8255bebfd598b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ca4b0023c2a685dc619be1e2cd1c90d77005de10
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80243579"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414618"
 ---
 # <a name="decode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>使用 Enterprise Integration Pack 为 Azure 逻辑应用解码 EDIFACT 消息
 
@@ -31,11 +33,15 @@ ms.locfileid: "80243579"
 
 ## <a name="decode-edifact-messages"></a>为 EDIFACT 消息解码
 
+> [!IMPORTANT]
+> EDIFACT 连接器仅支持 UTF-8 字符。
+> 如果输出中包含意外的字符，请检查 EDIFACT 消息是否使用 UTF-8 字符集。 
+
 1. [创建逻辑应用](quickstart-create-first-logic-app-workflow.md)。
 
 2. 解码 EDIFACT 消息连接器没有触发器，因此必须添加用于启动逻辑应用的触发器，如请求触发器。 在逻辑应用设计器中，添加触发器，然后将操作添加到逻辑应用。
 
-3. 在搜索框中，输入“EDIFACT”作为筛选器。 选择“解码 EDIFACT 消息”。 
+3. 在搜索框中，输入“EDIFACT”作为筛选器。 选择“解码 EDIFACT 消息”。
 
     ![搜索 EDIFACT](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage1.png)
 
@@ -45,12 +51,12 @@ ms.locfileid: "80243579"
 
     带有星号的属性必填。
 
-    | properties | 详细信息 |
+    | 属性 | 详细信息 |
     | --- | --- |
     | 连接名称 * |为连接输入任何名称。 |
     | 集成帐户 * |输入集成帐户的名称。 确保集成帐户和逻辑应用位于同一 Azure 位置。 |
 
-4. 在完成连接创建时，选择“创建”  。 连接详细信息应如此示例所示：
+4. 在完成连接创建时，选择“创建”。 连接详细信息应如此示例所示：
 
     ![集成帐户详细信息](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage3.png)  
 
@@ -71,26 +77,26 @@ ms.locfileid: "80243579"
 * 当交换有多个基于协议的接收设置配置的事务时，将交换拆分为多个事务。
 * 分解交换。
 * 验证 EDI 和特定于合作伙伴的属性包括：
-  * 验证交换信封结构
-  * 针对控制架构对信封进行架构验证
-  * 针对消息架构对事务集数据元素进行架构验证
-  * 对事务集数据元素执行的 EDI 验证
+    * 验证交换信封结构
+    * 针对控制架构对信封进行架构验证
+    * 针对消息架构对事务集数据元素进行架构验证
+    * 对事务集数据元素执行的 EDI 验证
 * 验证交换、组和事务集控制编号不重复（如果已配置） 
-  * 针对以前收到的交换检查交换控制编号。 
-  * 针对交换中的其他组控制编号检查组控制编号。 
-  * 针对该组中的其他事务集控制编号检查事务集控制编号。
+    * 针对以前收到的交换检查交换控制编号。 
+    * 针对交换中的其他组控制编号检查组控制编号。 
+    * 针对该组中的其他事务集控制编号检查事务集控制编号。
 * 将交换拆分为事务集，或保留整个交换：
-  * 将交换拆分为交易集 - 出错时暂停交易集：将交换拆分为交易集并分析每个交易集。 
-  X12 解码操作仅将未通过验证的事务集输出到 `badMessages`，并将剩余事务集输出到 `goodMessages`。
-  * 将交换拆分为交易集 - 出错时暂停交换：将交换拆分为交易集并分析每个交易集。 
-  如果交换中的一个或多个交易集未能通过验证，X12 解码操作会将该交换中的所有交易集输出到 `badMessages`。
-  * 保留交换 - 出错时暂停交易集：保留交换并处理整个批量交换。 
-  X12 解码操作仅将未通过验证的事务集输出到 `badMessages`，并将剩余事务集输出到 `goodMessages`。
-  * 保留交换 - 出错时暂停交易集：保留交换并处理整个批量交换。 
-  如果交换中的一个或多个交易集未能通过验证，X12 解码操作会将该交换中的所有交易集输出到 `badMessages`。
+    * 将交换拆分为事务集 - 出错时暂停事务集：将交换拆分为事务集并分析每个事务集。 
+        X12 解码操作仅将未通过验证的事务集输出到 `badMessages`，并将剩余事务集输出到 `goodMessages`。
+    * 将交换拆分为事务集 - 出错时暂停交换：将交换拆分为事务集并分析每个事务集。 
+        如果交换中的一个或多个交易集未能通过验证，X12 解码操作会将该交换中的所有交易集输出到 `badMessages`。
+    * 保留交换 - 出错时暂停事务集：保留交换并处理整个批量交换。 
+        X12 解码操作仅将未通过验证的事务集输出到 `badMessages`，并将剩余事务集输出到 `goodMessages`。
+    * 保留交换 - 出错时暂停交换：保留交换并处理整个批量交换。 
+        如果交换中的一个或多个交易集未能通过验证，X12 解码操作会将该交换中的所有交易集输出到 `badMessages`。
 * 生成技术（控制）和/或功能确认（如果已配置）。
-  * 技术确认或 CONTRL ACK 报告收到的完整交换的语法检查结果。
-  * 功能确认会确认接受或拒绝收到的交换或组
+    * 技术确认或 CONTRL ACK 报告收到的完整交换的语法检查结果。
+    * 功能确认会确认接受或拒绝收到的交换或组
 
 ## <a name="view-swagger-file"></a>查看 Swagger 文件
 若要查看 EDIFACT 连接器的 Swagger 详细信息，请参阅 [EDIFACT](https://docs.microsoft.com/connectors/edifact/)。
@@ -98,5 +104,4 @@ ms.locfileid: "80243579"
 ## <a name="next-steps"></a>后续步骤
 [了解有关 Enterprise Integration Pack 的详细信息](logic-apps-enterprise-integration-overview.md "了解 Enterprise Integration Pack")
 
-<!-- Update_Description: new article about logic apps enterprise integration edifact decode -->
-<!--NEW.date: 03/30/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

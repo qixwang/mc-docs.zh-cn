@@ -2,15 +2,17 @@
 title: 标记资源、资源组和订阅以便对其进行逻辑组织
 description: 演示如何应用标记来组织 Azure 资源进行计费和管理。
 ms.topic: conceptual
-origin.date: 06/11/2020
-ms.date: 06/22/2020
+origin.date: 07/01/2020
+ms.date: 07/13/2020
+ms.testscope: yes
+ms.testdate: 07/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 218b2ccc92f895f4d9d1134e9e43265bee03ae80
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: 5b529922ee74a3f0e6c13dfb9bb1a2af7ed44b8e
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098629"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440993"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>使用标记对 Azure 资源和管理层次结构进行组织
 
@@ -19,13 +21,15 @@ ms.locfileid: "85098629"
 有关如何实现标记策略的建议，请参阅[资源命名和标记决策指南](/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure-resource-manager/management/toc.json)。
 
 > [!IMPORTANT]
-> 标记名称不区分大小写。 标记值区分大小写。
+> 标记名称对于操作不区分大小写。 系统会更新或检索具有标记名称的标记，而不考虑大小写。 但是，资源提供程序可能会保留为标记名称提供的大小写。 你将在成本报表中看到该大小写。
+> 
+> 标记值区分大小写。
 
 [!INCLUDE [Handle personal data](../../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="required-access"></a>所需访问权限
 
-若要将标记应用到资源，必须对 Microsoft.Resources/tags 资源类型拥有写入权限****。 [标记参与者](../../role-based-access-control/built-in-roles.md#tag-contributor)角色可让你将标记应用到实体，无需访问该实体本身。 目前，标记参与者角色无法通过门户将标记应用到资源或资源组。 该角色可以通过门户将标记应用到订阅。 它支持通过 PowerShell 和 REST API 执行所有标记操作。  
+若要将标记应用到资源，必须对 Microsoft.Resources/tags 资源类型拥有写入权限。 [标记参与者](../../role-based-access-control/built-in-roles.md#tag-contributor)角色可让你将标记应用到实体，无需访问该实体本身。 目前，标记参与者角色无法通过门户将标记应用到资源或资源组。 该角色可以通过门户将标记应用到订阅。 它支持通过 PowerShell 和 REST API 执行所有标记操作。  
 
 [参与者](../../role-based-access-control/built-in-roles.md#contributor)角色还授予对任何实体应用标记所需的访问权限。 要将标记仅应用于一种资源类型，请使用该资源的参与者角色。 例如，要将标记应用到虚拟机，请使用[虚拟机参与者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)。
 
@@ -35,7 +39,7 @@ ms.locfileid: "85098629"
 
 Azure PowerShell 提供两个用于应用标记的命令 - [New-AzTag](https://docs.microsoft.com/powershell/module/az.resources/new-aztag) 和 [Update-AzTag](https://docs.microsoft.com/powershell/module/az.resources/update-aztag)。 必须安装 Az.Resources 模块 1.12.0 或更高版本。 可以使用 `Get-Module Az.Resources` 检查自己的版本。 可以安装该模块，或[安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) 3.6.1 或更高版本。
 
-New-AzTag 替换资源、资源组或订阅中的所有标记****。 调用该命令时，请传入要标记的实体的资源 ID。
+New-AzTag 替换资源、资源组或订阅中的所有标记。 调用该命令时，请传入要标记的实体的资源 ID。
 
 以下示例将一组标记应用到存储帐户：
 
@@ -70,7 +74,7 @@ Properties :
         Team         Compliance
 ```
 
-若要将标记添加到已经有标记的资源，请使用 Update-AzTag****。 将 -Operation 参数设置为 Merge**** ****。
+若要将标记添加到已经有标记的资源，请使用 Update-AzTag。 将 -Operation 参数设置为 Merge 。
 
 ```powershell
 $tags = @{"Dept"="Finance"; "Status"="Normal"}
@@ -106,7 +110,7 @@ Properties :
         Environment  Production
 ```
 
-将 -Operation 参数设置为 Replace 时，会将现有标记替换为新的标记集**** ****。
+将 -Operation 参数设置为 Replace 时，会将现有标记替换为新的标记集 。
 
 ```powershell
 $tags = @{"Project"="ECommerce"; "CostCenter"="00123"; "Team"="Web"}
@@ -212,7 +216,7 @@ Get-AzTag -ResourceId "/subscriptions/$subscription"
 
 ### <a name="remove-tags"></a>删除标记
 
-若要删除特定的标记，请使用 Update-AzTag 并将 -Operation 设置为 Delete**** **** ****。 传入要删除的标记。
+若要删除特定的标记，请使用 Update-AzTag 并将 -Operation 设置为 Delete  。 传入要删除的标记。
 
 ```powershell
 $removeTags = @{"Project"="ECommerce"; "Team"="Web"}
@@ -472,7 +476,7 @@ IFS=$origIFS
 
 ### <a name="apply-tags-to-resource-groups-or-subscriptions"></a>将标记应用到多个资源组或订阅
 
-可以通过部署 Microsoft.Resources/tags 资源类型，将标记添加到资源组或订阅****。 标记会应用到此部署的目标资源组或订阅。 每次部署模板时，都要替换以前应用的任何标记。
+可以通过部署 Microsoft.Resources/tags 资源类型，将标记添加到资源组或订阅。 标记会应用到此部署的目标资源组或订阅。 每次部署模板时，都要替换以前应用的任何标记。
 
 ```json
 {
@@ -591,21 +595,20 @@ az deployment sub create --name tagresourcegroup --location chinanorth2 --templa
 以下限制适用于标记：
 
 * 并非所有资源类型都支持标记。 若要确定是否可以将标记应用到资源类型，请参阅 [Azure 资源的标记支持](tag-support.md)。
-* 管理组目前不支持标记。
 * 每个资源、资源组和订阅最多可以有 50 个标记名称/值对。 如果需要应用的标记超过最大允许数量，请使用 JSON 字符串作为标记值。 JSON 字符串可以包含多个应用于单个标记名称的值。 一个资源组或订阅可以包含多个资源，这些资源每个都有 50 个标记名称/值对。
 * 标记名称不能超过 512 个字符，标记值不能超过 256 个字符。 对于存储帐户，标记名称不能超过 128 个字符，标记值不能超过 256 个字符。
-* 通用化 VM 不支持标记。
 * 不能将标记应用到云服务等经典资源。
 * 标记名称不能包含以下字符：`<`、`>`、`%`、`&`、`\`、`?`、`/`
 
-   > [!NOTE]
-   > 目前，Azure DNS 区域和流量管理器服务也不允许在标记中使用空格。
-   >
-   > Azure Front Door 不支持在标记名称中使用 `#`。
+    > [!NOTE]
+    > 目前，Azure DNS 区域和流量管理器服务也不允许在标记中使用空格。
+    >
+    > Azure Front Door 不支持在标记名称中使用 `#`。
 
 ## <a name="next-steps"></a>后续步骤
 
 * 并非所有资源类型都支持标记。 若要确定是否可以将标记应用到资源类型，请参阅 [Azure 资源的标记支持](tag-support.md)。
+
 <!--Not Available on [Resource naming and tagging decision guide](/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure-resource-manager/management/toc.json)-->
 
 <!-- Update_Description: update meta properties, wording update, update link -->

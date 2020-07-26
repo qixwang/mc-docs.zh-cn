@@ -4,16 +4,16 @@ description: Azure Stack Hub 服务、计划、套餐和订阅的概述。
 author: WenJason
 ms.topic: conceptual
 origin.date: 12/18/2019
-ms.date: 05/18/2020
+ms.date: 07/20/2020
 ms.author: v-jay
 ms.reviewer: efemmano
 ms.lastreviewed: 10/01/2019
-ms.openlocfilehash: 3583d7555b46d516f77d20a02614a6575ec7669f
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 3a20af57fc6942a3a9d0a8b5e48027d29741c215
+ms.sourcegitcommit: e9ffd50aa5eaab402a94bfabfc70de6967fe6278
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422376"
+ms.lasthandoff: 07/14/2020
+ms.locfileid: "86307380"
 ---
 # <a name="azure-stack-hub-services-plans-offers-subscriptions-overview"></a>Azure Stack Hub 服务、计划、套餐和订阅概述
 
@@ -99,6 +99,10 @@ Azure Stack Hub 操作员可以使用套餐、计划和订阅来配置及交付�
 用户可以通过订阅访问套餐。 如果你是服务提供商的 Azure Stack Hub 操作员，则用户（租户）可通过订阅你的套餐来购买你的服务。 如果你是组织的 Azure Stack Hub 操作员，则用户（员工）可以订阅你提供的服务，而无需付费。
 
 用户可以在登录到 Azure Stack Hub 后，创建新的订阅并获取现有订阅的访问权限。 每个订阅代表与单个套餐之间的关联。 分配给一个订阅的套餐（及其计划和配额）无法与其他订阅共享。 用户创建的每个资源都与一个订阅相关联。
+
+作为 Azure Stack Hub 操作员，你可以查看有关租户订阅的信息，但无法访问这些订阅的内容，除非你是由该订阅的租户管理员通过 RBAC 显式添加的。 这使租户可以在 Azure Stack Hub 操作员和租户空间之间实施权力和职责分离。 
+
+这种情况的例外情况是，订阅所有者无法向操作员提供访问订阅的权限，这要求管理员获取订阅的所有权，如[更改 Azure Stack Hub 用户订阅的账单所有者](azure-stack-change-subscription-owner.md)中所述。
 
 ### <a name="default-provider-subscription"></a>默认提供商订阅
 

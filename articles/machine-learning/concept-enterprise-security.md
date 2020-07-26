@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 05/19/2020
-ms.openlocfilehash: d38e7c1b114418e7dd6d6797d477748289e09ecf
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: 87921a75c6329cf7347e2d18f9a5723675b6891c
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097071"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86441194"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure 机器学习的企业安全性
 
@@ -99,7 +99,7 @@ ms.locfileid: "85097071"
 
 不建议管理员撤销托管标识对上表中所述资源的访问权限。 可以使用重新同步密钥操作来恢复访问权限。
 
-Azure 机器学习将在订阅中为每个工作区区域创建一个额外的应用程序（名称以 `aml-` 或 `Microsoft-AzureML-Support-App-` 开头），该应用程序具有参与者级别的访问权限。 例如，在同一订阅中，如果在美国东部和欧洲北部各有一个工作区，则会看到两个这样的应用程序。 通过这些应用程序，Azure 机器学习可帮助管理计算资源。
+对于每个工作区区域，Azure 机器学习将在订阅中创建一个拥有参与者级别访问权限的附加应用程序（名称以 `aml-` 或 `Microsoft-AzureML-Support-App-` 开头）。 例如，在同一订阅中，如果在中国东部和欧洲北部各有一个工作区，则会看到两个这样的应用程序。 Azure 机器学习可以通过这些应用程序来帮助你管理计算资源。
 
 ## <a name="network-security"></a>网络安全性
 
@@ -176,6 +176,11 @@ Azure 机器学习在 Azure Cosmos DB 实例中存储指标和元数据。 此�
 注册表（Azure 容器注册表）中的所有容器映像均已进行静态加密。 Azure 会在存储映像之前自动将其加密，并在 Azure 机器学习提取映像时将其解密。
 
 若要使用自己的（客户管理的）密钥来加密 Azure 容器注册表，需要创建自己的 ACR 并在预配工作区时附加它，或者加密预配工作区时创建的默认实例。
+
+> [!IMPORTANT]
+> Azure 机器学习要求在 Azure 容器注册表中启用管理员帐户。 创建容器注册表时，默认情况下此设置已禁用。 有关如何启用管理员帐户的信息，请参阅[管理员帐户](/container-registry/container-registry-authentication#admin-account)。
+>
+> 为工作区创建 Azure 容器注册表后，请不要将其删除。 删除该注册表将损坏 Azure 机器学习工作区。
 
 有关使用现有 Azure 容器注册表创建工作区的示例，请参阅以下文章：
 

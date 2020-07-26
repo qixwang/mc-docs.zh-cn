@@ -3,17 +3,17 @@ title: 保护在 Azure Stack Hub 上部署的 VM
 description: 了解如何生成恢复计划来保护 Azure Stack Hub 上部署的 VM，以防出现数据丢失和计划外停机。
 author: WenJason
 ms.topic: conceptual
-origin.date: 02/18/2020
-ms.date: 05/18/2020
+origin.date: 5/27/2020
+ms.date: 07/20/2020
 ms.author: v-jay
 ms.reviewer: hectorl
 ms.lastreviewed: 3/5/2020
-ms.openlocfilehash: 60f5fba17108096e7285488c260572647587273a
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 2c75df16c5949934c953022ec0877ddfac55a342
+ms.sourcegitcommit: e9ffd50aa5eaab402a94bfabfc70de6967fe6278
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422644"
+ms.lasthandoff: 07/14/2020
+ms.locfileid: "86307432"
 ---
 # <a name="protect-vms-deployed-on-azure-stack-hub"></a>保护在 Azure Stack Hub 上部署的 VM
 
@@ -72,9 +72,9 @@ RPO 是指发生灾难期间，可接受数据丢失的最大持续时间。 例
 > [!Important]  
 > 对于处于运行状态的 VM，当前不支持使用磁盘快照。 创建附加到运行中 VM 的磁盘的快照可能会降低性能，或者会影响 VM 中的操作系统或应用程序的可用性。 如果无法安排应用程序停机，建议使用来宾内代理来保护应用程序。 
 
-### <a name="vms-in-a-scale-set-or-availability-group"></a>规模集或可用性组中的 VM
+### <a name="vms-in-a-scale-set-or-availability-set"></a>规模集或可用性集中的 VM
 
-不应在 VM 级别备份规模集或可用性组中被视为临时资源的 VM，特别是在应用程序无状态的情况下。 对于在规模集或可用性组中部署的有状态应用程序，请考虑保护应用程序数据（例如，存储池中的数据库或卷）。 
+不应在 VM 级别备份规模集或可用性组中被视为临时资源的 VM，特别是在应用程序无状态的情况下。 对于在规模集或可用性集中部署的有状态应用程序，请考虑保护应用程序数据（例如，存储池中的数据库或卷）。 
 
 ### <a name="replicationmanual-failover"></a>复制/手动故障转移
 
@@ -84,7 +84,7 @@ RPO 是指发生灾难期间，可接受数据丢失的最大持续时间。 例
  
 ### <a name="high-availabilityautomatic-failover"></a>高可用性/自动故障转移
 
-对于只能容忍数秒或数分钟停机时间的无状态应用程序，请考虑使用高可用性配置。 根据设计，高可用性应用程序部署在主动/主动拓扑中的多个位置，其中的所有实例都可以处理请求。 对于本地硬件故障，Azure Stack Hub 基础结构使用两个架顶式交换机在物理网络中实现高可用性。 对于计算级别的故障，Azure Stack Hub 在一个缩放单元中使用多个节点。 在 VM 级别，可以组合使用规模集与容错域，确保节点故障不会导致应用程序无法使用。 需要将同一应用程序采用同一配置部署到辅助位置。 若要使应用程序采用主动/主动配置，可以使用负载均衡器或 DNS 将请求定向到所有可用实例。
+对于只能容忍数秒或数分钟停机时间的无状态应用程序，请考虑使用高可用性配置。 根据设计，高可用性应用程序部署在主动/主动拓扑中的多个位置，其中的所有实例都可以处理请求。 对于本地硬件故障，Azure Stack Hub 基础结构使用两个架顶式交换机在物理网络中实现高可用性。 对于计算级别故障，Azure Stack Hub 会在一个缩放单元中使用多个节点并会自动对 VM 进行故障转移。 在 VM 级别，可以使用规模集，也可以使用可用性集中的 VM，以确保节点故障不会导致应用程序无法使用。 需要将同一应用程序采用同一配置部署到辅助位置。 若要使应用程序采用主动/主动配置，可以使用负载均衡器或 DNS 将请求定向到所有可用实例。
 
 ### <a name="no-recovery"></a>不恢复
 

@@ -236,6 +236,8 @@
                       href: azure-stack-kubernetes-aks-engine-troubleshoot.md
                     - name: 对容器使用 Azure Monitor
                       href: /azure-monitor/insights/container-insights-hybrid-setup
+                    - name: 在 Azure Stack Hub 上使用 AKS 引擎的已知问题
+                      href: azure-stack-kubernetes-aks-engine-known-issues.md
                 - name: 市场项
                   items:
                     - name: 部署 Kubernetes 群集

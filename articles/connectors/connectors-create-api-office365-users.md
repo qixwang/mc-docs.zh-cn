@@ -5,23 +5,25 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 origin.date: 08/18/2016
-ms.date: 05/06/2020
+ms.date: 07/20/2020
+ms.testscope: no
+ms.testdate: 05/06/2020
 ms.author: v-yeche
 ms.topic: article
 tags: connectors
-ms.openlocfilehash: 6465cccf15fc6de4ccb63dc5bd2bde1a6f549cc5
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: 245c5d733cf2fd4d59a85662484c620bd79abc6a
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83002040"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414582"
 ---
 # <a name="get-and-manage-profiles-in-office-365-users-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用获取和管理 Office 365 用户中的配置文件
 
 连接到 Office 365 用户，获取配置文件、搜索用户等。 通过 Office 365 用户，可以：
 
 * 根据从 Office 365 用户中获取的数据生成业务流。 
-* 使用获取直接下属、获取经理的用户配置文件等操作。 这些操作可获得响应，并使输出可用于其他操作。 例如，获取用户的直接下属，然后使用此信息更新 SQL Azure 数据库。 
+* 使用获取直接下属、获取经理的用户配置文件等操作。 这些操作可获得响应，并使输出可用于其他操作。 例如，获取人员的直接下属，然后使用此信息更新 Azure SQL 数据库中的数据库。 
 
 若要立即开始创建逻辑应用，请参阅[创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 

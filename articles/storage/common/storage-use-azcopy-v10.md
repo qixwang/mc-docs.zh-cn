@@ -3,17 +3,17 @@ title: 使用 AzCopy v10 将数据复制或移到 Azure 存储 | Microsoft Docs
 description: AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制数据，或者在存储帐户之间复制数据。 本文将帮助你下载 AzCopy，连接到存储帐户，然后传输文件。
 author: WenJason
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 10/23/2019
-ms.date: 01/06/2020
+ms.date: 07/20/2020
 ms.author: v-jay
 ms.subservice: common
-ms.openlocfilehash: 34fdf022ece3d0092ef549e59aa83ba62c2d5bbc
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: 8b3e0150fee23b0588255ffcc2876d43aefc2565
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199743"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414574"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy 入门
 
@@ -24,7 +24,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 >
 > 如果需要使用旧版 AzCopy，请参阅本文的[使用旧版 AzCopy](#previous-version) 部分。
 
-<a id="download-and-install-azcopy" />
+<a id="download-and-install-azcopy"></a>
 
 ## <a name="download-azcopy"></a>下载 AzCopy
 
@@ -126,7 +126,7 @@ azcopy login --tenant-id=<tenant-id> --aad-endpoint https://login.partner.micros
 
 此时会出现登录窗口。 在该窗口中，使用 Azure 帐户凭据登录到 Azure 帐户。 成功登录后，可以关闭浏览器窗口，开始使用 AzCopy。
 
-<a id="service-principal" />
+<a id="service-principal"></a>
 
 #### <a name="authenticate-a-service-principal"></a>对服务主体进行身份验证
 
@@ -159,7 +159,7 @@ $env:AZCOPY_SPA_CLIENT_SECRET="$(Read-Host -prompt "Enter key")"
 接下来键入以下命令，然后按 ENTER 键。
 
 ```azcopy
-azcopy login --service-principal --application-id <application-id> --tenant-id=<tenant-id> --aad-endpoint https://login.partner.microsoftonline.cn
+azcopy login --service-principal --certificate-path path-to-certificate-file --application-id application-id --tenant-id=tenant-id --aad-endpoint https://login.partner.microsoftonline.cn
 ```
 
 请将 `<application-id>` 占位符替换为服务主体应用注册的应用程序 ID。 请将 `<tenant-id>` 占位符替换为存储帐户所属组织的租户 ID。 若要查找租户 ID，请在 Azure 门户中选择“Azure Active Directory”>“属性”>“目录 ID”。 
@@ -192,7 +192,7 @@ azcopy login --service-principal --certificate-path <path-to-certificate-file> -
 > [!NOTE]
 > 考虑使用本示例中所示的提示符。 这样，密码就不会显示在控制台的命令历史记录中。 
 
-<a id="managed-identity" />
+<a id="managed-identity"></a>
 
 #### <a name="authenticate-a-managed-identity"></a>对托管标识进行身份验证
 
@@ -301,11 +301,11 @@ azcopy copy "C:\local\path" "https://account.blob.core.chinacloudapi.cn/mycontai
 
 ## <a name="use-azcopy-in-azure-storage-explorer"></a>在 Azure 存储资源管理器中使用 AzCopy
 
-[存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)使用 AzCopy 来执行其所有数据传输操作。 如果你想要利用 AzCopy 的性能优势，但同时又偏好使用图形用户界面而不是命令行来与文件进行交互，则可以使用[存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)。
+[存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)使用 AzCopy 执行其所有数据传输操作。 如果你想要利用 AzCopy 的性能优势，但同时又偏好使用图形用户界面而不是命令行来与文件进行交互，则可以使用[存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)。
 
 存储资源管理器使用帐户密钥执行操作，因此在登录到存储资源管理器后，无需额外提供授权凭据。
 
-<a id="previous-version" />
+<a id="previous-version"></a>
 
 ## <a name="use-the-previous-version-of-azcopy"></a>使用旧版 AzCopy
 

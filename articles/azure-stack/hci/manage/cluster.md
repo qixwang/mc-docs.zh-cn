@@ -6,13 +6,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: jgerend
 origin.date: 05/20/2020
-ms.date: 06/22/2020
-ms.openlocfilehash: 06bd8ac40e47f94de85a915c2a5323c2fc857368
-ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
+ms.date: 07/20/2020
+ms.openlocfilehash: 26b33aed09c0f400a847bca3577f3bda72187bdf
+ms.sourcegitcommit: e9ffd50aa5eaab402a94bfabfc70de6967fe6278
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85096944"
+ms.lasthandoff: 07/14/2020
+ms.locfileid: "86307439"
 ---
 # <a name="manage-azure-stack-hci-clusters-using-windows-admin-center"></a>使用 Windows Admin Center 管理 Azure Stack HCI 群集
 
@@ -104,7 +104,7 @@ Windows Admin Center 可用于管理 Azure Stack HCI 中的群集。 具体来�
 
     :::image type="content" source="media/manage-cluster/cluster-settings-numa.png" alt-text="群集 NUMA 涵盖屏幕":::
 
-1. 若要指定可以在运行的同时进行迁移（实时迁移）的 VM 的数量，请选择“实时迁移”，选择一个数字，然后指定以下内容：选择“实时迁移”，选择一个数字，然后指定以下内容 ：
+1. 若要指定可以在运行的同时进行迁移（实时迁移）的 VM 的数量，请选择“实时迁移”，选择一个数字，然后指定以下内容：
 
    - 对于“身份验证协议”，选择 CredSSP 或 Kerberos  。
 

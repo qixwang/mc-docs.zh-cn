@@ -2,27 +2,25 @@
 title: 模板最佳实践
 description: 介绍创作 Azure 资源管理器模板的建议方法。 提供相关建议，避免在使用模板时出现常见问题。
 ms.topic: conceptual
-origin.date: 12/02/2019
-ms.date: 03/23/2020
+origin.date: 06/09/2020
+ms.date: 07/13/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 717427b96223e5ee79be8ec14fa1f6e188f66fad
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: cd47ba2a8b17e957edd89f35f60b7e7dd70b6015
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79543895"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86441013"
 ---
-# <a name="azure-resource-manager-template-best-practices"></a>Azure 资源管理器模板最佳做法
+# <a name="arm-template-best-practices"></a>ARM 模板最佳做法
 
-本文提供有关如何构造资源管理器模板的建议。 这些建议有助于在使用模板部署解决方案时避免出现常见问题。
-
-<!--Not Available on  [Azure enterprise scaffold: Prescriptive subscription governance](https://docs.microsoft.com/azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=%2Fen-us%2Fazure%2Fazure-resource-manager%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)-->
-
-有关如何生成在所有 Azure 云环境中工作的模板的建议，请参阅[开发用于实现云一致性的 Azure 资源管理器模板](templates-cloud-consistency.md)。
+本文介绍如何在构造 ARM 模板时使用建议的做法。 这些建议有助于在使用 ARM 模板部署解决方案时避免出现常见问题。
 
 ## <a name="template-limits"></a>模板限制
 
-将模板大小限制为 4 MB 以内，每个参数文件大小限制为 64 KB 以内。 4-MB 限制适用于模板使用迭代资源定义以及变量和参数值进行扩展后的最终状态。 
+将模板大小限制为 4 MB 以内，每个参数文件大小限制为 64 KB 以内。 4-MB 限制适用于模板使用迭代资源定义以及变量和参数值进行扩展后的最终状态。
 
 还将受限于：
 
@@ -99,7 +97,7 @@ ms.locfileid: "79543895"
 
 * 请尽量少使用 `allowedValues`。 仅当必须确保允许的选项中不含特定值时使用它。 如果过于广泛地使用 `allowedValues`，可能会因未将列表保持最新而阻碍有效部署。
 
-* 当模板中的参数名称与 PowerShell 部署命令中的参数相同时，资源管理器会将 postfix FromTemplate 添加到模板参数中，以解决此命名冲突  。 例如，如果在模板中包括一个名为“ResourceGroupName”的参数，则该参数会与 [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment) cmdlet 中的“ResourceGroupName”参数冲突。 在部署期间，系统会提示用户提供 ResourceGroupNameFromTemplate 的值  。
+* 当模板中的参数名称与 PowerShell 部署命令中的参数相同时，资源管理器会将 postfix FromTemplate 添加到模板参数中，以解决此命名冲突。 例如，如果在模板中包括一个名为“ResourceGroupName”的参数，则该参数会与 [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment) cmdlet 中的“ResourceGroupName”参数冲突。 在部署期间，系统会提示用户提供 ResourceGroupNameFromTemplate 的值。
 
 ### <a name="security-recommendations-for-parameters"></a>有关参数的安全性建议
 
@@ -156,7 +154,7 @@ ms.locfileid: "79543895"
 
 * 请勿为资源上的 `apiVersion` 使用变量。 API 版本决定资源的架构。 通常无法在不更改资源属性的情况下更改版本。
 
-* 不能在模板的“变量”节中使用 [reference](template-functions-resource.md#reference) 函数  。 **reference** 函数从资源的运行时状态中派生其值。 但是，变量是在初始模板分析期间解析的。 直接在模板的 **resources** 或 **outputs** 节中构造需要 **reference** 函数的值。
+* 不能在模板的“变量”节中使用 [reference](template-functions-resource.md#reference) 函数。 **reference** 函数从资源的运行时状态中派生其值。 但是，变量是在初始模板分析期间解析的。 直接在模板的 **resources** 或 **outputs** 节中构造需要 **reference** 函数的值。
 
 * 包括的变量适用于必须唯一的资源名称。
 
@@ -168,7 +166,7 @@ ms.locfileid: "79543895"
 
 在决定要设置的[依赖项](define-resource-dependency.md)时，请遵循以下准则：
 
-* 使用 reference 函数并传入资源名称以在需要共享属性的资源之间设置隐式依赖项  。 在已定义隐式依赖项的情况下，请勿添加显式 `dependsOn` 元素。 此方法降低了设置不必要依赖项的风险。
+* 使用 reference 函数并传入资源名称以在需要共享属性的资源之间设置隐式依赖项。 在已定义隐式依赖项的情况下，请勿添加显式 `dependsOn` 元素。 此方法降低了设置不必要依赖项的风险。
 
 * 将子资源设置为依赖于其父资源。
 
@@ -197,7 +195,7 @@ ms.locfileid: "79543895"
     ]
     ```
 
-* 如果在模板中使用“公共终结点”（例如 Azure Blob 存储公共终结点），请不要将命名空间硬编码   。 使用 **reference** 函数可动态检索命名空间。 可以使用此方法将模板部署到不同的公共命名空间环境，而无需在模板中手动更改终结点。 在模板中将 API 版本设置为用于存储帐户的同一版本：
+* 如果在模板中使用“公共终结点”（例如 Azure Blob 存储公共终结点），请不要将命名空间硬编码 。 使用 **reference** 函数可动态检索命名空间。 可以使用此方法将模板部署到不同的公共命名空间环境，而无需在模板中手动更改终结点。 在模板中将 API 版本设置为用于存储帐户的同一版本：
 
     ```json
     "diagnosticsProfile": {
@@ -280,11 +278,18 @@ ms.locfileid: "79543895"
     > [!NOTE]
     > 为了确保机密内容作为参数传递给 VM 和扩展时经过加密，请使用相关扩展的 **protectedSettings** 属性。
     > 
-    > 
+
+## <a name="use-test-toolkit"></a>使用测试工具包
+
+ARM 模板测试工具包是一个脚本，用于检查模板是否使用建议的做法。 如果模板不符合建议的做法，它将返回包含建议的更改的警告列表。 测试工具包可帮助你了解如何在模板中实施最佳做法。
+
+完成模板后，运行测试工具包，看是否有方法可以改进它的实现。
+
+<!--Not Avaialble on  [ARM template test toolkit](test-toolkit.md)-->
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关资源管理器模板文件结构的详细信息，请参阅[了解 Azure 资源管理器模板的结构和语法](template-syntax.md)。
-* 有关如何生成在所有 Azure 云环境中工作的模板的建议，请参阅[开发用于实现云一致性的 Azure 资源管理器模板](templates-cloud-consistency.md)。
+* 有关模板文件结构的信息，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
+* 有关如何生成在所有 Azure 云环境中工作的模板的建议，请参阅[开发用于实现云一致性的 ARM 模板](templates-cloud-consistency.md)。
 
 <!-- Update_Description: update meta properties, wording update, update link -->

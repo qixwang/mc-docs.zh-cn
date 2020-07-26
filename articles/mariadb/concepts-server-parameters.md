@@ -5,14 +5,14 @@ author: WenJason
 ms.author: v-jay
 ms.service: mariadb
 ms.topic: conceptual
-origin.date: 6/8/2020
-ms.date: 07/06/2020
-ms.openlocfilehash: 0caf6876a71396acb012c127b81526b33593f806
-ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
+origin.date: 6/25/2020
+ms.date: 07/20/2020
+ms.openlocfilehash: 33c146e063db55b5d49fa3436e8720abb0ab0b68
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85845957"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440359"
 ---
 # <a name="server-parameters-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的服务器参数
 
@@ -26,9 +26,9 @@ Azure Database for MariaDB 提供了通过 [Azure 门户](./howto-server-paramet
 
 ## <a name="configurable-server-parameters"></a>可配置的服务器参数
 
-受支持服务器参数的列表还在不断增加。 在 Azure 门户中使用服务器参数选项卡查看完整列表并配置服务器参数值。
+受支持服务器参数的列表还在不断增加。 在 Azure 门户中使用服务器参数选项卡可查看完整列表并配置服务器参数值。
 
-请参阅以下部分，详细了解多个经常更新的服务器参数的限制。 这些限制取决于服务器的定价层和 vCore 数。
+请参阅以下各部分，详细了解多个经常更新的服务器参数的限制。 这些限制取决于服务器的定价层和 vCore 数。
 
 ### <a name="innodb_buffer_pool_size"></a>innodb_buffer_pool_size
 
@@ -106,6 +106,9 @@ MariaDB 根据你在创建表期间提供的配置，将 InnoDB 表存储在不�
 > 为了获得最佳体验，建议使用 ProxySQL 等连接池程序来高效地管理连接。
 
 创建与 MariaDB 的新客户端连接需要时间，一旦建立，这些连接就会占用数据库资源，即使在空闲时也是如此。 大多数应用程序会请求许多生存期短的连接，这加剧了这种情况。 其结果是可用于实际工作负荷的资源减少，从而导致性能下降。 连接池程序不仅会减少空闲连接，还会重用现有连接，因而有助于避免这种情况。 若要了解如何设置 ProxySQL，请访问我们的[博客文章](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042)。
+
+>[!Note]
+>ProxySQL 是一个开源社区工具。 Microsoft 尽最大努力为它提供支持。 若要获得包含权威指导的生产支持，可以评估并联系 [ProxySQL 产品支持](https://proxysql.com/services/support/)。
 
 ### <a name="max_heap_table_size"></a>max_heap_table_size
 
@@ -191,7 +194,7 @@ MariaDB 根据你在创建表期间提供的配置，将 InnoDB 表存储在不�
 
 ### <a name="time_zone"></a>time_zone
 
-可以通过从 MySQL 命令行或 MySQL Workbench 等工具调用 `mysql.az_load_timezone` 存储过程来填充时区表。 若要了解如何调用存储过程并设置全局时区或会话级时区，请参阅 [Azure 门户](howto-server-parameters.md#working-with-the-time-zone-parameter)或 [Azure CLI](howto-configure-server-parameters-cli.md#working-with-the-time-zone-parameter) 一文。
+初始部署后，Azure for MariaDB 服务器包含用于时区信息的系统表，但这些表没有填充。 可以通过从 MySQL 命令行或 MySQL Workbench 等工具调用 `mysql.az_load_timezone` 存储过程来填充时区表。 若要了解如何调用存储过程并设置全局时区或会话级时区，请参阅 [Azure 门户](howto-server-parameters.md#working-with-the-time-zone-parameter)或 [Azure CLI](howto-configure-server-parameters-cli.md#working-with-the-time-zone-parameter) 一文。
 
 ## <a name="non-configurable-server-parameters"></a>不可配置的服务器参数
 

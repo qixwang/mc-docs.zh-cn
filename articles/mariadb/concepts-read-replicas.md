@@ -5,14 +5,14 @@ author: WenJason
 ms.author: v-jay
 ms.service: mariadb
 ms.topic: conceptual
-origin.date: 6/10/2020
-ms.date: 07/06/2020
-ms.openlocfilehash: 569ab07e31a4dc985e8c9a52b15d26457cc8bdf4
-ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
+origin.date: 6/24/2020
+ms.date: 07/20/2020
+ms.openlocfilehash: 02a6b21c5a89c9111866fdfe7b155976d3d543d0
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85845896"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440540"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的只读副本
 

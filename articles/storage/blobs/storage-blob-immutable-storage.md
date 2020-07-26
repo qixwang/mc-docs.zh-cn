@@ -6,24 +6,24 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 11/18/2019
-ms.date: 06/01/2020
+ms.date: 07/20/2020
 ms.author: v-jay
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 3dee40fb377ea5b691584e2ca3c3006a32b4e9ec
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: f3394cf860f64b0763631b0e1a22b13d1af2b2dc
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199751"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414690"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>使用不可变的存储来存储业务关键型 Blob 数据
 
-Azure Blob 存储的不可变存储可让用户以 WORM（一次写入，多次读取）状态存储业务关键型数据对象。 此状态可以根据用户指定的时间间隔使数据保持不可擦除且不可修改的状态。 在保留时间间隔期间内，可以创建和读取 Blob，但不能对其进行修改或删除。 不可变存储适用于所有 Azure 区域中的常规用途 v2、BlobStorage 和 BlockBlobStorage 存储帐户。
+Azure Blob 存储的不可变存储可让用户以 WORM（一次写入，多次读取）状态存储业务关键型数据对象。 此状态可以根据用户指定的时间间隔使数据保持不可擦除且不可修改的状态。 在保留时间间隔期间内，可以创建和读取 Blob，但不能对其进行修改或删除。 不可变存储适用于所有 Azure 区域中的常规用途 v1、常规用途 v2、BlobStorage 和 BlockBlobStorage 帐户。
 
 有关如何使用 Azure 门户、PowerShell 或 Azure CLI 来设置和清除法定保留或如何创建基于时间的保留策略的信息，请参阅[为 Blob 存储设置和管理不可变性策略](storage-blob-immutability-policies-manage.md)。
 
-[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="about-immutable-blob-storage"></a>关于不可变的 Blob 存储
 
@@ -131,7 +131,7 @@ Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于
 
 **是否需要创建新的存储帐户才能使用此功能？**
 
-否。可将不可变存储与任何现有的或新建的常规用途 v2、BlobStorage 或 BlockBlobStorage 帐户配合使用。
+否。可将不可变存储与任何现有的或新建的常规用途 v1、常规用途 v2、BlobStorage 或 BlockBlobStorage 帐户配合使用。 支持常规用途 v1 存储帐户，但我们建议升级到常规用途 v2，以便能够利用更多功能。 有关升级现有常规用途 v1 存储帐户的信息，请参阅[升级存储帐户](../common/storage-account-upgrade.md)。
 
 **是否可以同时应用法定保留和基于时间的保留策略？**
 

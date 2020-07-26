@@ -2,20 +2,20 @@
 title: 通过 Node.js 使用 Azure 队列存储 - Azure 存储
 description: 了解如何使用 Azure 队列服务创建和删除队列，以及插入、获取和删除消息。 相关示例是使用 Node.js 编写的。
 author: WenJason
-ms.service: storage
 ms.author: v-jay
 origin.date: 12/08/2016
-ms.date: 10/28/2019
+ms.date: 07/20/2020
+ms.service: storage
 ms.subservice: queues
-ms.topic: conceptual
-ms.reviewer: cbrooks
+ms.topic: how-to
+ms.reviewer: dineshm
 ms.custom: seo-javascript-september2019
-ms.openlocfilehash: 138179e2d6f27cd3d5f370a8a70d51aff5750384
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 8b08c03a756a57631db47f19c6e3c22ec668c5fe
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72914475"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414598"
 ---
 # <a name="use-azure-queue-service-to-create-and-delete-queues-from-nodejs"></a>通过 Node.js 使用 Azure 队列服务创建和删除队列
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -24,6 +24,9 @@ ms.locfileid: "72914475"
 
 ## <a name="overview"></a>概述
 本指南演示如何使用 Microsoft Azure 队列服务执行常见任务。 相关示例是使用 Node.js API 编写的。 介绍的方案包括**插入**、**扫视**、**获取**和**删除**队列消息以及**创建和删除队列**。
+
+> [!IMPORTANT]
+> 本文是指适用于 JavaScript 的 Azure 存储客户端库的旧版本。 若要开始使用最新版本，请参阅[快速入门：适用于 JavaScript 的 Azure 队列存储客户端库](storage-quickstart-queues-nodejs.md)
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 

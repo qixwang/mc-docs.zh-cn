@@ -7,19 +7,21 @@ author: rockboyfor
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 origin.date: 06/22/2019
-ms.date: 03/30/2020
+ms.date: 07/20/2020
+ms.testscope: no
+ms.testdate: 03/30/2020
 ms.author: v-yeche
-ms.openlocfilehash: dc10863520509a910a11c5cacc21aaa85375e325
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b59b267873bd07ae3bad93e568c320152929d568
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80243533"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414622"
 ---
 # <a name="create-and-manage-trading-partner-agreements-in-azure-logic-apps"></a>在 Azure 逻辑应用中创建并管理贸易合作伙伴协议
 
 [贸易合作伙伴](../logic-apps/logic-apps-enterprise-integration-partners.md) 
- ** 协议 (agreement) 通过定义在交换企业对企业 (B2B) 消息时使用的特定的行业标准协议 (protocol)，帮助组织和企业彼此无缝通信。 协议有一些常见的好处，例如：
+** 协议 (agreement) 通过定义在交换企业对企业 (B2B) 消息时使用的特定的行业标准协议 (protocol)，帮助组织和企业彼此无缝通信。 协议有一些常见的好处，例如：
 
 * 使组织能够以熟知的格式交换信息。
 * 可提高进行 B2B 交易的效率。
@@ -42,63 +44,71 @@ ms.locfileid: "80243533"
 ## <a name="create-agreements"></a>创建协议
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
-在 Azure 主菜单中，选择“所有服务”  。 在搜索框中，输入“集成”作为筛选器。 从结果中选择此资源：**集成帐户**
+在 Azure 主菜单中，选择“所有服务”。 在搜索框中，输入“集成”作为筛选器。 从结果中选择此资源：**集成帐户**
 
-   ![查找集成帐户](./media/logic-apps-enterprise-integration-agreements/find-integration-accounts.png)
+    ![查找集成帐户](./media/logic-apps-enterprise-integration-agreements/find-integration-accounts.png)
 
-1. 在“集成帐户”下，选择要在其中创建协议的集成帐户。 
+1. 在“集成帐户”下，选择要在其中创建协议的集成帐户。
 
-   ![选择要在其中创建协议的集成帐户](./media/logic-apps-enterprise-integration-agreements/select-integration-account.png)
+    ![选择要在其中创建协议的集成帐户](./media/logic-apps-enterprise-integration-agreements/select-integration-account.png)
 
-1. 在右侧窗格的“组件”  下，选择“协议”  磁贴。
+1. 在右侧窗格的“组件”下，选择“协议”磁贴。
 
-   ![选择“协议”](./media/logic-apps-enterprise-integration-agreements/agreement-1.png)
+    ![选择“协议”](./media/logic-apps-enterprise-integration-agreements/agreement-1.png)
 
-1. 在“协议”  下，选择“添加”  。 在“添加”  窗格中提供有关协议的信息，例如：
+1. 在“协议”下，选择“添加”。 在“添加”窗格中提供有关协议的信息，例如：
 
-   ![选择“添加”](./media/logic-apps-enterprise-integration-agreements/agreement-2.png)
+    ![选择“添加”](./media/logic-apps-enterprise-integration-agreements/agreement-2.png)
 
-   | 属性 | 必须 | Value | 说明 |
-   |----------|----------|-------|-------------|
-   | **名称** | 是 | <*agreement-name*> | 协议的名称 |
-   | **协议类型** | 是 | **AS2**、**X12** 或 **EDIFACT** | 协议 (agreement) 的协议 (protocol) 类型。 创建协议 (agreement) 文件时，该文件中的内容必须与协议 (agreement) 类型匹配。 | |  
-   | **主机合作伙伴** | 是 | <*host-partner-name*> | 主机合作伙伴代表指定协议的组织 |
-   | **主机标识** | 是 | <*host-partner-identifier*> | 主机合作伙伴的标识符 |
-   | **来宾合作伙伴** | 是 | <*guest-partner-name*> | 托管方代表与管理方进行交易的组织 |
-   | **来宾标识** | 是 | <*guest-partner-identifier*> | 来宾合作伙伴的标识符 |
-   | **接收设置** | 多种多样 | 多种多样 | 这些属性指定主机合作伙伴如何从协议中的来宾合作伙伴处接收所有传入消息。 有关详细信息，请参阅相应的协议类型： <p>- [AS2 消息设置](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br />- [EDIFACT 消息设置](logic-apps-enterprise-integration-edifact.md) <br />- [X12 消息设置](logic-apps-enterprise-integration-x12.md) |
-   | **发送设置** | 多种多样 | 多种多样 | 这些属性指定主机合作伙伴如何向协议中的来宾合作伙伴发送所有传出消息。 有关详细信息，请参阅相应的协议类型： <p>- [AS2 消息设置](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br />- [EDIFACT 消息设置](logic-apps-enterprise-integration-edifact.md) <br />- [X12 消息设置](logic-apps-enterprise-integration-x12.md) |
-   |||||
+    | 属性 | 必须 | Value | 说明 |
+    |----------|----------|-------|-------------|
+    | **名称** | 是 | <*agreement-name*> | 协议的名称 |
+    | **协议类型** | 是 | **AS2**、**X12** 或 **EDIFACT** | 协议 (agreement) 的协议 (protocol) 类型。 创建协议 (agreement) 文件时，该文件中的内容必须与协议 (agreement) 类型匹配。 | |  
+    | **主机合作伙伴** | 是 | <*host-partner-name*> | 主机合作伙伴代表指定协议的组织 |
+    | **主机标识** | 是 | <*host-partner-identifier*> | 主机合作伙伴的标识符 |
+    | **来宾合作伙伴** | 是 | <*guest-partner-name*> | 托管方代表与管理方进行交易的组织 |
+    | **来宾标识** | 是 | <*guest-partner-identifier*> | 来宾合作伙伴的标识符 |
+    | **接收设置** | 多种多样 | 多种多样 | 这些属性指定主机合作伙伴如何从协议中的来宾合作伙伴处接收所有传入消息。 有关详细信息，请参阅相应的协议类型： <p>- [AS2 消息设置](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br />- [EDIFACT 消息设置](logic-apps-enterprise-integration-edifact.md) <br />- [X12 消息设置](logic-apps-enterprise-integration-x12.md) |
+    | **发送设置** | 多种多样 | 多种多样 | 这些属性指定主机合作伙伴如何向协议中的来宾合作伙伴发送所有传出消息。 有关详细信息，请参阅相应的协议类型： <p>- [AS2 消息设置](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br />- [EDIFACT 消息设置](logic-apps-enterprise-integration-edifact.md) <br />- [X12 消息设置](logic-apps-enterprise-integration-x12.md) |
+    |||||
 
-1. 创建完协议后，请在“添加”页上选择“确定”，返回到集成帐户。  
+    > [!IMPORTANT]
+    > 协议的解决方案取决于是否匹配在合作伙伴和传入消息中定义的这些项：
+    >
+    > * 发送方的限定符和标识符
+    > * 接收方的限定符和标识符
+    >
+    > 如果这些值因合作伙伴而更改，请确保同时更新协议。
 
-   “协议”  列表现在会显示新协议。
+1. 创建完协议后，请在“添加”页上选择“确定”，返回到集成帐户。 
+
+    “协议”列表现在会显示新协议。
 
 ## <a name="edit-agreements"></a>编辑协议
 
-1. 在 [Azure 门户](https://portal.azure.cn)中的 Azure 主菜单上，选择“所有服务”  。
+1. 在 [Azure 门户](https://portal.azure.cn)中的 Azure 主菜单上，选择“所有服务”。
 
 1. 在搜索框中，输入“集成”作为筛选器。 从结果中选择此资源：**集成帐户**
 
-1. 在“集成帐户”下，选择要编辑其协议的集成帐户。 
+1. 在“集成帐户”下，选择要编辑其协议的集成帐户。
 
-1. 在右侧窗格的“组件”  下，选择“协议”  磁贴。
+1. 在右侧窗格的“组件”下，选择“协议”磁贴。
 
-1. 在“协议”  下选择协议，然后选择“编辑”  。
+1. 在“协议”下选择协议，然后选择“编辑”。
 
 1. 进行更改，并保存所做的更改。
 
 ## <a name="delete-agreements"></a>删除协议
 
-1. 在 [Azure 门户](https://portal.azure.cn)中的 Azure 主菜单上，选择“所有服务”  。
+1. 在 [Azure 门户](https://portal.azure.cn)中的 Azure 主菜单上，选择“所有服务”。
 
 1. 在搜索框中，输入“集成”作为筛选器。 从结果中选择此资源：**集成帐户**
 
-1. 在“集成帐户”下，选择要删除其协议的集成帐户。 
+1. 在“集成帐户”下，选择要删除其协议的集成帐户。
 
-1. 在右侧窗格的“组件”  下，选择“协议”  磁贴。
+1. 在右侧窗格的“组件”下，选择“协议”磁贴。
 
-1. 在“协议”  下选择协议，然后选择“删除”  。
+1. 在“协议”下选择协议，然后选择“删除”。
 
 1. 确认要删除所选协议。
 
@@ -108,5 +118,4 @@ ms.locfileid: "80243533"
 * [交换 EDIFACT 消息](logic-apps-enterprise-integration-edifact.md)
 * [交换 X12 消息](logic-apps-enterprise-integration-x12.md)
 
-<!-- Update_Description: new article about logic apps enterprise integration agreements -->
-<!--NEW.date: 03/30/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

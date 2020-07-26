@@ -2,15 +2,17 @@
 title: 用于部署的链接模板
 description: 介绍如何使用 Azure Resource Manager 模板中的链接模板创建一个模块化的模板的解决方案。 演示如何传递参数值、指定参数文件和动态创建的 URL。
 ms.topic: conceptual
-origin.date: 04/29/2020
-ms.date: 06/22/2020
+origin.date: 06/26/2020
+ms.date: 07/13/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 4dfaf2bf01995be46f9339bd3d838fe9f2845b52
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: 8d013b53c2f2a5234df6a0d175847080ded7e41c
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098282"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86441005"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>部署 Azure 资源时使用链接模版和嵌套模版
 
@@ -36,9 +38,9 @@ ms.locfileid: "85098282"
   "variables": {},
   "resources": [
     {
-      "name": "nestedTemplate1",
-      "apiVersion": "2019-10-01",
       "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-10-01",
+      "name": "nestedTemplate1",
       "properties": {
         "mode": "Incremental",
         "template": {
@@ -66,9 +68,9 @@ ms.locfileid: "85098282"
   },
   "resources": [
     {
-      "name": "nestedTemplate1",
-      "apiVersion": "2019-10-01",
       "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-10-01",
+      "name": "nestedTemplate1",
       "properties": {
         "mode": "Incremental",
         "template": {
@@ -280,7 +282,7 @@ ms.locfileid: "85098282"
 
 > [!NOTE]
 >
-> 当作用域设置为 `outer` 时，对于已在嵌套模板中部署的资源，无法在嵌套模板的 outputs 节中使用 `reference` 函数。 若要返回嵌套模板中部署的资源的值，请使用 inner 作用域或将嵌套模板转换为链接模板。
+> 当作用域设置为 `outer` 时，对于已在嵌套模板中部署的资源，无法在嵌套模板的 outputs 节中使用 `reference` 函数。 若要返回嵌套模板中部署的资源的值，请使用 `inner` 作用域或将嵌套模板转换为链接模板。
 
 ## <a name="linked-template"></a>链接的模板
 
@@ -362,7 +364,7 @@ ms.locfileid: "85098282"
      },
      "parameters": {
       "storageAccountEndPoint": "https://core.chinacloudapi.cn/",
-      "StorageAccountName":{"value": "[parameters('StorageAccountName')]"}
+      "storageAccountName":{"value": "[parameters('storageAccountName')]"}
     }
    }
   }
@@ -510,9 +512,9 @@ ms.locfileid: "85098282"
 }
 ```
 
-链接模板与其他资源类型相似，也可在它与其他资源之间设置依赖关系。 当其他资源需要链接模板的输出值时，请确保在部署这些资源之前部署链接模板。 或者，当链接模板依赖于其他资源时，请确保在部署链接模板之前部署其他资源。
+链接模板与其他资源类型一样，你可以在它与其他资源之间设置依赖关系。 当其他资源需要链接模板的输出值时，请确保在部署这些资源之前部署链接模板。 或者，当链接模板依赖于其他资源时，请确保在部署链接模板之前部署其他资源。
 
-以下示例演示一个部署公共 IP 地址并返回资源 ID 的模板：
+以下示例显示一个模板，该模板部署公共 IP 地址并返回该公共 IP 的 Azure 资源的资源 ID：
 
 ```json
 {
@@ -547,8 +549,8 @@ ms.locfileid: "85098282"
 }
 ```
 
-在部署负载均衡器时，若要使用前面所述模板中的公共 IP 地址，请链接到该模板，并添加与部署资源之间的依赖关系。 负载均衡器上的公共 IP 地址设置为链接模板的输出值。
-<!--Not Suitable on Microsoft.Resources-->
+在部署负载均衡器时，若要使用前面所述模板中的公共 IP 地址，请链接到该模板，并声明对 `Microsoft.Resources/deployments` 资源的依赖性。 负载均衡器上的公共 IP 地址设置为链接模板的输出值。
+
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",

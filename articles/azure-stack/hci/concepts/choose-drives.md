@@ -5,27 +5,28 @@ author: WenJason
 ms.author: v-jay
 ms.topic: article
 origin.date: 03/06/2020
-ms.date: 05/18/2020
-ms.openlocfilehash: d57fc0540994762bc57b3ba559a2b798e0c0fcb3
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.date: 07/20/2020
+ms.openlocfilehash: 2ccbc4f4c0957d77aba340ae5994f853892f5344
+ms.sourcegitcommit: e9ffd50aa5eaab402a94bfabfc70de6967fe6278
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422417"
+ms.lasthandoff: 07/14/2020
+ms.locfileid: "86307424"
 ---
 # <a name="choosing-drives-for-azure-stack-hci"></a>为 Azure Stack HCI 选择驱动器
 
->适用于：Windows Server 2019
+>适用于：Azure Stack HCI 版本 20H2；Windows Server 2019
 
 本主题提供有关如何根据 Azure Stack HCI 的性能和容量要求，为[存储空间直通](https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview)选择驱动器的指导。
 
 ## <a name="drive-types"></a>驱动器类型
 
-存储空间直通目前适用于三种类型的驱动器：
+存储空间直通目前适用于四种类型的驱动器：
 
 |||
 |----------------------|--------------------------|
-|![NVMe](media/choose-drives/NVMe-100-px.png)|**NVMe**（非易失性快速内存）是指直接位于 PCIe 总线上的固态硬盘。 常见外形规格为 2.5 英寸 U.2、PCIe 附加卡 (AIC) 和 M.2。 NVMe 提供较高的 IOPS 和 IO 吞吐量，延迟也比目前支持的其他任何驱动器类型更低。|
+|![PMem](media/choose-drives/pmem-100px.png)|PMem 是指永久性内存，一种新的低延迟、高性能存储类型。|
+|![NVMe](media/choose-drives/NVMe-100-px.png)|**NVMe**（非易失性快速内存）是指直接位于 PCIe 总线上的固态硬盘。 常见外形规格为 2.5 英寸 U.2、PCIe 附加卡 (AIC) 和 M.2。 NVMe 提供较高的 IOPS 和 IO 吞吐量，延迟也比目前支持的除 PMem 外的任何其他驱动器类型低。|
 |![SSD](media/choose-drives/SSD-100-px.png)|**SSD** 是指通过传统 SATA 或 SAS 连接的固态硬盘。|
 |![HDD](media/choose-drives/HDD-100-px.png)|**HDD** 是指旋转式的磁性硬盘，可提供巨量存储容量。|
 
@@ -62,7 +63,7 @@ ms.locfileid: "83422417"
 
 2. **SSD + HDD**。 与前面类似，SSD 将通过缓存读取和写入内容来加速这两种操作。 此方式提供类似于 SSD 的写入特征，并针对频繁读取或最近读取的数据提供类似于 SSD 的读取特征。
 
-    还有一个额外的特殊选项：使用上述所有三种类型的驱动器。 
+    还有一个额外的特殊选项：使用上述所有三种类型的驱动器。
 
 3. **NVMe + SSD + HDD。** 使用所有三种类型的驱动器时，NVMe 将同时为 SSD 和 HDD 提供缓存。 此选项的吸引力在于，可以在同一群集中的 SSD 和 HDD 上创建并列的卷，而这些卷全部可以通过 NVMe 来加速。 前者完全如同前面所述的“全闪存”部署，后者完全如同“混合”部署。 这在概念上类似于有两个池，并且容量管理、故障和修复周期等等基本上都是独立的。
 
@@ -101,3 +102,4 @@ ms.locfileid: "83422417"
 - [存储空间直通硬件要求](https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-hardware-requirements)
 - [在 Azure Stack HCI 中规划卷](plan-volumes.md)
 - [容错和存储效率](fault-tolerance.md)
+- [了解和部署永久性内存](https://docs.microsoft.com/windows-server/storage/storage-spaces/deploy-pmem)

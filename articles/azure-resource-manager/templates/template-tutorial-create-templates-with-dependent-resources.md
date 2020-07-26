@@ -3,20 +3,22 @@ title: 具有依赖资源的模板
 description: 了解如何使用多个资源创建 Azure 资源管理器模板，以及如何使用 Azure 门户部署该模板
 author: rockboyfor
 origin.date: 04/23/2020
-ms.date: 06/22/2020
+ms.date: 07/13/2020
+ms.testscope: yes
+ms.testdate: 07/13/2020
 ms.topic: tutorial
 ms.author: v-yeche
-ms.openlocfilehash: bab76eaeea3c848e374d3657b1eb535e85efb457
-ms.sourcegitcommit: 873e5c5e4156efed505a78d4f5a6e50c494e76d4
+ms.openlocfilehash: 08e77aa11e1afc78ea3d43b3118bd83a5118f730
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86036747"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440988"
 ---
-<!--Verify successfully on 06/177/2020 by harris-->
+<!--Verify successfully on 06/17/2020 by harris-->
 # <a name="tutorial-create-arm-templates-with-dependent-resources"></a>教程：创建包含所依赖资源的 ARM 模板
 
-了解如何创建 Azure 资源管理器 (ARM) 模板以部署多个资源并配置部署顺序。 创建模板后，使用 shell 部署该模板。
+了解如何创建 Azure 资源管理器 (ARM) 模板以部署多个资源并配置部署顺序。 创建模板后，使用本地 Shell 部署该模板。
 
 <!--Not Available on Cloud Shell-->
 
@@ -84,7 +86,7 @@ Azure 快速入门模板是 ARM 模板的存储库。 无需从头开始创建�
     
      <!-- Not Available on template -->
      
-     在自定义模板之前，不妨对其进行一些基本的了解。
+     在自定义模板之前查看模板参考会很有帮助。
 
 1. 展开第一个资源。 它是一个存储帐户。 
     

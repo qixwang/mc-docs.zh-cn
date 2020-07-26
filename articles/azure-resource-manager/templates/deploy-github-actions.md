@@ -2,16 +2,19 @@
 title: 使用 GitHub Actions 部署资源管理器模板
 description: 介绍如何使用 GitHub Actions 部署资源管理器模板。
 ms.topic: conceptual
-origin.date: 05/05/2020
-ms.date: 06/22/2020
+origin.date: 07/02/2020
+ms.date: 07/13/2020
+ms.testscope: yes
+ms.testdate: 07/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 88813c50c498509ffc74783416ae8b1d3a94b039
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: 89cab5fee84c4ca890fbf594600a9eaf516b1ec9
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85102103"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86441018"
 ---
+<!--Verified successfully on 2020/07/13 by harris-->
 # <a name="deploy-azure-resource-manager-templates-by-using-github-actions"></a>使用 GitHub Actions 部署 Azure 资源管理器模板
 
 [GitHub Actions](https://help.github.com/en/actions) 使你可以直接在存储 Azure 资源管理利器 (ARM) 模板的 GitHub 存储库中创建自定义软件开发生命周期工作流。 [工作流](https://help.github.com/actions/reference/workflow-syntax-for-github-actions)由 YAML 文件定义。 工作流有一个或多个作业，每个作业都包含一组执行单个任务的步骤。 这些步骤可以运行命令或使用操作。 你可以创建自己的操作或使用 [GitHub 社区](https://github.com/marketplace?type=actions)共享的操作，并根据需要对其进行自定义。 本文介绍如何使用 [Azure CLI 操作](https://github.com/marketplace/actions/azure-cli-action)部署资源管理器模板。
@@ -66,7 +69,7 @@ az ad sp create-for-rbac --name $appName --role Contributor --scopes $scope --sd
 1. 在左侧菜单中，选择“机密”。
 1. 输入以下值：
 
-    - **Name**：AZURE_CREDENTIALS
+    - **名称**：AZURE_CREDENTIALS
     - **值**：（粘贴 JSON 输出）
 1. 选择“添加机密”。
 
@@ -84,7 +87,7 @@ https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-st
 
 ## <a name="create-workflow"></a>创建工作流
 
-工作流文件必须存储在存储库根目录中的“.github/workflow”文件夹中。 工作流文件扩展名可以是“.yml”或“.yaml”。 
+工作流文件必须存储在存储库根目录的“.github/workflow”文件夹中。 工作流文件扩展名可以是“.yml”或“.yaml”。 
 
 你可以创建工作流文件，然后将该文件推送/上传到存储库，也可以使用以下过程：
 
@@ -126,7 +129,7 @@ https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-st
 
     工作流文件包含三个部分：
 
-    - **名称**：工作流的名称。
+    - **name**：工作流的名称。
     - 事件：触发工作流的 GitHub 事件的名称。 当主分支上有推送事件时，将触发工作流，修改所指定的两个文件中的至少一个。 这两个文件分别是工作流文件和模板文件。
 
         > [!IMPORTANT]

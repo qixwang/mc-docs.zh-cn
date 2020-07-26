@@ -12,12 +12,12 @@ ms.author: v-yiso
 origin.date: 02/21/2020
 ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: 04933fe5afd718032f876de77239ccf55902fe7d
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: 1c775295f6c8a3193cd08b956d4933aa8d2c35bd
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097053"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86441110"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps：使用 Azure 机器学习进行模型管理、部署和监视
 
@@ -124,6 +124,16 @@ Azure 机器学习可帮助你了解部署模型时要创建的服务的 CPU 和
 * 用于描述如何以及在何处部署模型的部署配置。
 
 有关详细信息，请参阅[部署模型](how-to-deploy-and-where.md)。
+
+#### <a name="controlled-rollout"></a>受控推出
+
+部署到 Azure Kubernetes 服务时，可以使用受控推出来实现以下方案：
+
+* 为部署创建终结点的多个版本
+* 通过将流量路由到不同版本的终结点来执行 A/B 测试。
+* 通过在终结点配置中更新流量百分比，在终结点版本之间切换。
+
+有关详细信息，请参阅 [ML 模型的受控推出](how-to-deploy-azure-kubernetes-service.md#deploy-models-to-aks-using-controlled-rollout-preview)。
 
 #### <a name="iot-edge-devices"></a>IoT Edge 设备
 

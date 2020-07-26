@@ -8,29 +8,20 @@ ms.topic: conceptual
 author: j-martens
 ms.author: jmartens
 ms.date: 06/11/2020
-ms.openlocfilehash: 825cb29e3eb9830ccdc7b844207b4ee9d2a411b7
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: 1350e00a0beb706b7cf0c9ebcc6fb12f7e23d0c9
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097745"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440921"
 ---
 # <a name="enterprise-and-basic-editions-of-azure-machine-learning"></a>Azure 机器学习的 Basic Edition 和 Basic Edition 
 
 Azure 机器学习提供了两个版本，专为你的机器学习需求提供。 这些版本确定开发人员和数据科学家的工作区中可用的机器学习工具。
 
-<br/>
-<br/>
+## <a name="choose-an-edition"></a>选择版本
 
-| Basic Edition | Enterprise Edition                 |
-|------------------------------------------------------------------------------------|-----------|
-|适合用于： <br/>+ 开放源代码开发 <br/>+ 在云规模下<br/>+ 代码优先体验 <br/><br/>Basic 工作区允许继续使用 Azure 机器学习，并[只为在 ML 过程中使用的 Azure 资源付费](concept-plan-manage-cost.md)。 |所有 Basic Edition，还包括：<br/>+ 工作室 Web 界面 <br/>+ 安全的综合性 ML 生命周期管理 <br/>+ 适用于所有技能级别<br/><br/>Enterprise Edition 工作区只对其 Azure 使用情况收费，而该版本处于预览阶段。 |
-
-## <a name="how-to-choose-an-edition"></a>如何选择版本
-
-你始终可以在创建工作区时分配版本。 而且，预先存在的工作区已转换为 Basic Edition。 
-
-客户负责在此期间因计算和其他 Azure 资源产生的成本。 了解如何[管理 Azure 机器学习的成本](concept-plan-manage-cost.md)。
+你始终可以在创建工作区时分配版本。 客户负责在此期间因计算和其他 Azure 资源产生的成本。 了解如何[管理 Azure 机器学习的成本](concept-plan-manage-cost.md)。
 
 了解如何[将 Basic 工作区升级到 Enterprise Edition](how-to-manage-workspace.md#upgrade)。 
 
@@ -72,9 +63,9 @@ Azure 机器学习提供了两个版本，专为你的机器学习需求提供�
 
 | 功能    | 版本                 |
 |------------------------------------------------------------------------------------|:-----------:|
-| [模型可说明性](how-to-machine-learning-interpretability-automl.md)                                              | 全部                     |
-| 差异隐私 WhiteNoise 工具包                           | 全部                     |
-| 自定义标记以实现数据表     | 全部                     |
+| [模型可解释性](how-to-machine-learning-interpretability-automl.md)                                              | 全部                     |
+| [差异隐私](how-to-differential-privacy.md)                          | 全部                     |
+| 自定义标记以实现数据表    | 全部                     |
 | 公平 AzureML 集成                                      | 全部                     |
 
 <br/>
@@ -114,7 +105,6 @@ Azure 机器学习提供了两个版本，专为你的机器学习需求提供�
 | 批处理推理                                                                  | 全部                     |
 | 基于 FPGA 的硬件加速模型                                             | 全部                     |
 | 模型分析                                                                    | 全部                     |
-| UI 的可说明性                                                               | 仅限 Enterprise Edition |
 
 <br/>
 <br/>

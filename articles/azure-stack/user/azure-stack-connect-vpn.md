@@ -4,16 +4,16 @@ description: 如何使用 VPN 将 Azure Stack Hub 中的虚拟网络连接到 Az
 author: WenJason
 ms.topic: conceptual
 origin.date: 04/07/2020
-ms.date: 05/18/2020
+ms.date: 07/20/2020
 ms.author: v-jay
 ms.reviewer: scottnap
 ms.lastreviewed: 10/24/2019
-ms.openlocfilehash: 3365b3bd2762d12cca4c6141db4228951d884911
-ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
+ms.openlocfilehash: a6639e0634f7400235e5bb74cfa29481b0dc774d
+ms.sourcegitcommit: e9ffd50aa5eaab402a94bfabfc70de6967fe6278
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85096324"
+ms.lasthandoff: 07/14/2020
+ms.locfileid: "86307366"
 ---
 # <a name="connect-azure-stack-hub-to-azure-using-vpn"></a>使用 VPN 将 Azure Stack Hub 连接到 Azure
 
@@ -317,3 +317,6 @@ ms.locfileid: "85096324"
 
     ![传入和传出数据](media/azure-stack-connect-vpn/Connection.png)
 
+## <a name="next-steps"></a>后续步骤
+
+* [将应用部署到 Azure 和 Azure Stack Hub](azure-stack-solution-pipeline.md)

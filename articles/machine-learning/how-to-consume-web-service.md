@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 04/14/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: 2c1a8f2cd33d862d54b81047353a4526be9adfd1
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: 5f6016e9e52438bcddbe9e07f95db9a28a36eeeb
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097525"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86441186"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>使用部署为 Web 服务的 Azure 机器学习模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -128,8 +128,16 @@ token, refresh_by = service.get_token()
 print(token)
 ```
 
+如果安装了 [Azure CLI 和机器学习扩展](reference-azure-machine-learning-cli.md)，则可使用以下命令获取令牌：
+
+```azurecli
+az ml service get-access-token -n <service-name>
+```
+
 > [!IMPORTANT]
-> 需要在令牌的 `refresh_by` 时间后请求一个新令牌。 
+> 目前，检索令牌的唯一方法是使用 Azure 机器学习 SDK 或 Azure CLI 机器学习扩展。
+
+需要在令牌的 `refresh_by` 时间后请求一个新令牌。 
 
 ## <a name="request-data"></a>请求数据
 

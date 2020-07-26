@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 origin.date: 04/27/2020
 ms.date: 06/29/2020
-ms.openlocfilehash: ace00252077b4245b00fe0755e6b4dc6fdb82f12
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: 35f49ae2a340d1cb8c5ac221e53f4e7417298863
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097490"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86441099"
 ---
 # <a name="execute-python-script-module"></a>“执行 Python 脚本”模块
 
@@ -151,6 +151,17 @@ Azure 机器学习使用 Python 的 Anaconda 分发版，其中包括用于数�
 import os
 os.system(f"pip install scikit-misc")
 ```
+
+使用以下代码来安装包，以便提高性能（尤其是推理方面）：
+```python
+import importlib.util
+package_name = 'scikit-misc'
+spec = importlib.util.find_spec(package_name)
+if spec is None:
+    import os
+    os.system(f"pip install scikit-misc")
+```
+
 > [!NOTE]
 > 如果管道包含的多个“执行 Python 脚本”模块需要使用预安装列表中未包含的包，请在每个模块中安装这些包。
 

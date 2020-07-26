@@ -4,17 +4,17 @@ description: 了解如何在 Azure 门户中创建导出作业，以便从 Azure
 author: WenJason
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 origin.date: 03/12/2020
-ms.date: 06/01/2020
+ms.date: 07/20/2020
 ms.author: v-jay
 ms.subservice: common
-ms.openlocfilehash: 6ae58997e7312ead07b027bd3304da825416e882
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: 3d80a1ddc2d08a4876841c3fde51e9cf9b1bb2cb
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199796"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414639"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>使用 Azure 导入/导出服务从 Azure Blob 存储导出数据
 
@@ -33,7 +33,7 @@ ms.locfileid: "84199796"
 
 在 Azure 门户中执行以下步骤来创建导出作业。
 
-1. 登录到 https://portal.azure.cn/ 。
+1. 登录到 <https://portal.azure.cn/>。
 2. 转到“所有服务”>“存储”>“导入/导出作业”。
 
     ![转到导入/导出作业](./media/storage-import-export-data-from-blobs/export-from-blob1.png)
@@ -119,7 +119,11 @@ ms.locfileid: "84199796"
 
 如果使用 1.4.0.300 版 WAImportExport 工具，请使用以下命令解锁驱动器：
 
-    `WAImportExport Unlock /externalKey:<BitLocker key (base 64 string) copied from journal (*.jrn*) file>`  
+   `WAImportExport Unlock /bk:<BitLocker key (base 64 string) copied from journal (*.jrn*) file> /driveLetter:<Drive letter>`  
+
+下面是示例输入的示例。
+
+   `WAImportExport.exe Unlock /bk:CAAcwBoAG8AdQBsAGQAIABiAGUAIABoAGkAZABkAGUAbgA= /driveLetter:e`
 
 如果使用该工具的更低版本，请使用 BitLocker 对话框解锁驱动器。
 

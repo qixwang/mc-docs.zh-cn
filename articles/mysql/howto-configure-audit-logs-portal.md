@@ -5,21 +5,21 @@ author: WenJason
 ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
-origin.date: 4/13/2020
-ms.date: 4/27/2020
-ms.openlocfilehash: a34bad856bb1d697fadc515d6820daf7ef86b028
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+origin.date: 6/24/2020
+ms.date: 07/20/2020
+ms.openlocfilehash: 03a643abed1df049dc226d51eeb791a21c6c9b23
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126858"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440447"
 ---
 # <a name="configure-and-access-audit-logs-for-azure-database-for-mysql-in-the-azure-portal"></a>在 Azure 门户中配置和访问 Azure Database for MySQL 的审核日志
 
-可以从 Azure 门户配置 [Azure Database for MySQL 审核日志](concepts-audit-logs.md)和诊断设置。
+> [!NOTE] 
+> 将要查看的是 Azure Database for MySQL 的新服务。 若要查看经典 MySQL Database for Azure 的文档，请访问[此页](https://docs.azure.cn/zh-cn/mysql-database-on-azure/)。
 
-> [!IMPORTANT]
-> 审核日志功能目前为预览版。
+可以从 Azure 门户配置 [Azure Database for MySQL 审核日志](concepts-audit-logs.md)和诊断设置。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -29,13 +29,16 @@ ms.locfileid: "82126858"
 
 ## <a name="configure-audit-logging"></a>配置审核日志记录
 
+>[!IMPORTANT]
+> 建议仅记录审核所需的事件类型和用户，以确保服务器的性能不会受到严重影响。
+
 启用并配置审核日志记录。
 
 1. 登录到 [Azure 门户](https://portal.azure.cn/)。
 
 1. 选择 Azure Database for MySQL 服务器。
 
-1. 在侧栏的“设置”部分，选择“服务器参数”。  
+1. 在侧栏的“设置”部分，选择“服务器参数”。 
     ![服务器参数](./media/howto-configure-audit-logs-portal/server-parameters.png)
 
 1. 将 **audit_log_enabled** 参数更新为 ON。
@@ -47,12 +50,12 @@ ms.locfileid: "82126858"
 1. 通过更新 **audit_log_exclude_users** 参数添加不进行日志记录的 MySQL 用户。 通过提供 MySQL 用户名来指定用户。
     ![审核日志排除用户](./media/howto-configure-audit-logs-portal/audit-log-exclude-users.png)
 
-1. 更改参数之后，可以单击“保存”  。 也可以放弃所做的更改  。
+1. 更改参数之后，可以单击“保存”。 也可以放弃所做的更改。
     ![保存](./media/howto-configure-audit-logs-portal/save-parameters.png)
 
 ## <a name="set-up-diagnostic-logs"></a>设置诊断日志
 
-1. 在侧栏的“监视”部分，选择“诊断设置”   。
+1. 在侧栏的“监视”部分，选择“诊断设置” 。
 
 1. 单击“+ 添加诊断设置”![添加诊断设置](./media/howto-configure-audit-logs-portal/add-diagnostic-setting.png)
 
@@ -63,7 +66,7 @@ ms.locfileid: "82126858"
 1. 选择“MySqlAuditLogs”作为日志类型。
 ![配置诊断设置](./media/howto-configure-audit-logs-portal/configure-diagnostic-setting.png)
 
-1. 配置可以通过管道向其传输审核日志的数据接收器以后，即可单击“保存”。 
+1. 配置可以通过管道向其传输审核日志的数据接收器以后，即可单击“保存”。
 ![保存诊断设置](./media/howto-configure-audit-logs-portal/save-diagnostic-setting.png)
 
 1. 访问审核日志时，可以在配置的数据接收器中浏览它们。 可能需要等待长达 10 分钟的时间这些日志才会出现。

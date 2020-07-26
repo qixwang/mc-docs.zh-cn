@@ -11,15 +11,17 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 11/08/2019
-ms.date: 07/06/2020
+ms.date: 07/13/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
 ms.custom: ''
-ms.openlocfilehash: 3308218d971c8126d8d78da0d7d29af6df0d5700
-ms.sourcegitcommit: af71b9199d47fb81e85d70da0cfb265cc814a644
+ms.openlocfilehash: 89daa5c52f4d9cc645c8f71df20d23a494506236
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85969038"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86441191"
 ---
 # <a name="virtual-network-service-endpoints"></a>虚拟网络服务终结点
 
@@ -30,8 +32,8 @@ ms.locfileid: "85969038"
 **正式发布版**
 
 - **[Azure 存储](../storage/common/storage-network-security.md?toc=%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)** (Microsoft.Storage)：在所有 Azure 区域已推出正式版。
-- **[Azure SQL 数据库](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fvirtual-network%2ftoc.json)** (Microsoft.Sql)：在所有 Azure 区域已推出正式版。
-- **[Azure SQL 数据仓库](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fvirtual-network%2ftoc.json)** (Microsoft.Sql)：在所有 Azure 区域已推出正式版。
+- **[Azure SQL 数据库](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fvirtual-network%2ftoc.json)** (Microsoft.Sql)：在所有 Azure 区域已推出正式版。
+- **[Azure SQL 数据仓库](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fvirtual-network%2ftoc.json)** (Microsoft.Sql)：在所有 Azure 区域已推出正式版。
 - **[Azure Database for PostgreSQL 服务器](../postgresql/howto-manage-vnet-using-portal.md?toc=%2fvirtual-network%2ftoc.json)** (Microsoft.Sql)：在可以使用数据库服务的 Azure 区域中通常可用。
 - **[Azure Database for MySQL 服务器](../mysql/howto-manage-vnet-using-portal.md?toc=%2fvirtual-network%2ftoc.json)** (Microsoft.Sql)：在可以使用数据库服务的 Azure 区域中通常可用。
 - **[Azure Database for MariaDB](/mariadb/concepts-data-access-security-vnet)** (Microsoft.Sql)：在可以使用数据库服务的 Azure 区域中通常可用。
@@ -40,14 +42,8 @@ ms.locfileid: "85969038"
 - **[Azure 服务总线](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fvirtual-network%2ftoc.json)** (Microsoft.ServiceBus)：在所有 Azure 区域已推出正式版。
 
     <!--Not Available on - **[Azure Event Hubs](../event-hubs/event-hubs-service-endpoints.md?toc=%2fvirtual-network%2ftoc.json)** (*Microsoft.EventHub*): Generally available in all Azure regions.-->
-    <!--Not Available on - **Azure Event Hubs**: Generally available in all Azure regions.-->
-    <!--Not Available on - [Azure Event Hubs](../event-hubs/event-hubs-service-endpoints.md?toc=%2fvirtual-network%2ftoc.json)-->
-    
-    <!--Not Available on - **[Azure Data Lake Store Gen 1](../data-lake-store/data-lake-store-network-security.md?toc=%2fvirtual-network%2ftoc.json)** (*Microsoft.AzureActiveDirectory*)-->
-
+    <!--Not Available on - **[Azure Data Lake Store Gen 1](../data-lake-store/data-lake-store-network-security.md?toc=%2fvirtual-network%2ftoc.json)** (*Microsoft.AzureActiveDirectory*): Generally available in all Azure regions where ADLS Gen1 is available.-->
     <!--Not Available on - **[Azure App Service](/app-service/app-service-ip-restrictions)**: Generally available in all Azure regions where App service is available-->
-    <!--Not Available on AZURE APP SERVICE BASED ON GP TEAM-->
-    <!--04/20/2020-->
 
 <!--Not Available on **Public Preview**-->
 <!--Not Available on - **[Azure Container Registry](../container-registry/container-registry-vnet.md)** (*Microsoft.ContainerRegistry*):-->
@@ -62,17 +58,15 @@ ms.locfileid: "85969038"
 - **来自虚拟网络的 Azure 服务流量的最佳路由**：目前，虚拟网络中强制 Internet 流量发往本地和/或虚拟设备的任何路由也会强制 Azure 服务流量采用与 Internet 流量相同的路由。 服务终结点为 Azure 流量提供最佳路由。 
 
     终结点始终将直接来自虚拟网络的服务流量转发到 Azure 主干网络上的服务。 将流量保留在 Azure 主干网络上可以通过强制隧道持续审核和监视来自虚拟网络的出站 Internet 流量，而不会影响服务流量。 有关用户定义的路由和强制隧道的详细信息，请参阅 [Azure 虚拟网络流量路由](virtual-networks-udr-overview.md)。
-- **设置简单，管理开销更少**：不再需要使用虚拟网络中的保留公共 IP 地址通过 IP 防火墙保护 Azure 资源。 无需使用网关设备即可设置服务终结点。 只需单击一下子网，即可配置服务终结点。 不会产生与终结点维护相关的额外开销。
+- **设置简单，管理开销更少**：不再需要使用虚拟网络中的保留公共 IP 地址通过 IP 防火墙保护 Azure 资源。 无需使用网络地址转换 (NAT) 或网关设备即可设置服务终结点。 只需单击一下子网，即可配置服务终结点。 不会产生与终结点维护相关的额外开销。
 
-    <!--Not Avaiable on Network Address Translation (NAT)-->
-    
 ## <a name="limitations"></a>限制
 
 - 该功能仅适用于使用 Azure 资源管理器部署模型部署的虚拟网络。
 - 终结点在 Azure 虚拟网络中配置的子网上启用。 终结点不可用于从本地发往 Azure 服务的流量。 有关详细信息，请参阅[保护从本地进行的 Azure 服务访问](#secure-azure-services-to-virtual-networks)
 - 对于 Azure SQL，服务终结点仅适用于虚拟网络区域中的 Azure 服务流量。 对于 Azure 存储，为了支持读取访问异地冗余存储 (RA-GRS) 和异地冗余存储 (GRS) 流量，终结点还会扩展以包括虚拟网络所部署到的配对区域。 有关详细信息，请参阅 [Azure 配对区域](../best-practices-availability-paired-regions.md?toc=%2fvirtual-network%2ftoc.json#what-are-paired-regions)。
 
-    <!--Not Available on For ADLS Gen 1(Azure Data Lake Store Gen 1)-->
+<!--Not Available on For ADLS Gen 1(Azure Data Lake Store Gen 1)-->
 
 ## <a name="secure-azure-services-to-virtual-networks"></a>在虚拟网络中保护 Azure 服务
 
@@ -100,7 +94,7 @@ ExpressRoute：如果在本地使用 [ExpressRoute](../expressroute/expressroute
 
 ### <a name="considerations"></a>注意事项
 
-- 启用服务终结点后，子网中虚拟机的源 IP 地址将会切换。 与该子网中的服务通信时，源 IP 地址将从使用公共 IPv4 地址切换为使用其专用 IPv4 地址。 在进行这种切换的过程中，与服务建立的所有现有打开的 TCP 连接将会关闭。 针对子网的服务启用或禁用服务终结点时，请确保未运行任何关键任务。 此外，请确保在完成 IP 地址切换后，应用程序可以自动连接到 Azure 服务。
+- 启用服务终结点后，与该子网中的服务通信时，源 IP 地址将从使用公共 IPv4 地址切换为使用其专用 IPv4 地址。 在进行这种切换的过程中，与服务建立的所有现有打开的 TCP 连接将会关闭。 针对子网的服务启用或禁用服务终结点时，请确保未运行任何关键任务。 此外，请确保在完成 IP 地址切换后，应用程序可以自动连接到 Azure 服务。
 
     IP 地址切换只会影响自己的虚拟网络发出的服务流量， 而不会影响到发往或发自分配给虚拟机的公共 IPv4 地址的其他任何流量。 对于 Azure 服务，如果现有的防火墙规则使用 Azure 公共 IP 地址，这些规则会阻止切换到虚拟网络专用地址。
 - 使用服务终结点时，Azure 服务的 DNS 条目会保持不变，继续解析为分配给 Azure 服务的公共 IP 地址。
@@ -149,6 +143,7 @@ ExpressRoute：如果在本地使用 [ExpressRoute](../expressroute/expressroute
 某些 Azure 服务（例如 Azure 存储帐户）可能会对用于保护资源的子网数目施加限制。 有关详细信息，请参阅[后续步骤](#next-steps)部分中列出的各种服务的文档。
 
 <!--Not Available on ## Virtual Network Service Endpoint Policies-->
+
 ## <a name="faqs"></a>常见问题
 
 有关常见问题的解答，请参阅[虚拟网络服务终结点常见问题解答](/virtual-network/virtual-networks-faq#virtual-network-service-endpoints)。
@@ -157,8 +152,8 @@ ExpressRoute：如果在本地使用 [ExpressRoute](../expressroute/expressroute
 
 - [配置虚拟网络服务终结点](tutorial-restrict-network-access-to-resources.md)
 - [在虚拟网络中保护 Azure 存储帐户](../storage/common/storage-network-security.md?toc=%2fvirtual-network%2ftoc.json)
-- [在虚拟网络中保护 Azure SQL 数据库](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fvirtual-network%2ftoc.json)
-- [在虚拟网络中保护 Azure SQL 数据仓库](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fsql-data-warehouse%2ftoc.json)
+- [在虚拟网络中保护 Azure SQL 数据库](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fvirtual-network%2ftoc.json)
+- [在虚拟网络中保护 Azure SQL 数据仓库](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fsql-data-warehouse%2ftoc.json)
 - [虚拟网络中的 Azure 服务集成](virtual-network-for-azure-services.md)
     
     <!--Not Available on - [Virtual Network Service Endpoint Policies](/virtual-network/virtual-network-service-endpoint-policies-overview)-->

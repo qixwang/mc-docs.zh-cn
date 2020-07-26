@@ -3,14 +3,14 @@ title: Azure Functions 自定义处理程序（预览版）
 description: 了解如何在任何语言或运行时版本中使用 Azure Functions。
 author: craigshoemaker
 ms.author: v-junlch
-ms.date: 07/02/2020
+ms.date: 07/15/2020
 ms.topic: article
-ms.openlocfilehash: df565c6c0d66aeafdbf0a551d2aa9231f489fefe
-ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
+ms.openlocfilehash: cf5dfa65371e9625f305297cb766eae3176cbd5b
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85945256"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440387"
 ---
 # <a name="azure-functions-custom-handlers-preview"></a>Azure Functions 自定义处理程序（预览版）
 
@@ -446,6 +446,12 @@ func host start
 ## <a name="deploying"></a>正在部署
 
 可将自定义处理程序部署到几乎任何 Azure Functions 托管选项（请参阅[限制](#restrictions)）。 
+
+若要使用 Azure Functions Core Tools 部署自定义处理程序应用，请运行以下命令。
+
+```bash
+func azure functionapp publish $functionAppName --no-build --force
+```
 
 ## <a name="restrictions"></a>限制
 

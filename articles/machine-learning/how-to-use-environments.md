@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 origin.date: 02/27/2020
 ms.date: 03/16/2020
-ms.openlocfilehash: f8af42fbd4b7863b11cf9467061615e92d84af82
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d75b95554ef18f991343165f9a7699923dbdb23d
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850198"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86441201"
 ---
 # <a name="reuse-environments-for-training-and-deployment-by-using-azure-machine-learning"></a>通过 Azure 机器学习重复使用用于训练和部署的环境
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -144,7 +144,7 @@ run.wait_for_completion(show_output=True)
 
 如果某个包已在 Conda 包存储库中提供，则相较于 pip 安装，我们更建议使用 Conda 安装。 Conda 包通常附带预生成的二进制文件，能提高安装的可靠性。
 
-以下示例将包添加到环境。 它将添加版本为 0.21.3 的 `scikit-learn`。 它还添加 `pillow` 包 `myenv`。 该示例分别使用 [`add_conda_package()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py#add-conda-package-conda-package-) 方法和 [`add_pip_package()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py#add-pip-package-pip-package-) 方法。
+以下示例将包添加到环境。 它添加了 1.17.0 版的 `numpy`。 它还添加 `pillow` 包 `myenv`。 该示例分别使用 [`add_conda_package()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py#add-conda-package-conda-package-) 方法和 [`add_pip_package()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py#add-pip-package-pip-package-) 方法。
 
 ```python
 from azureml.core.environment import Environment
@@ -153,12 +153,18 @@ from azureml.core.conda_dependencies import CondaDependencies
 myenv = Environment(name="myenv")
 conda_dep = CondaDependencies()
 
-# Installs scikit-learn version 0.21.3 conda package
-conda_dep.add_conda_package("scikit-learn==0.21.3")
+# Installs numpy version 1.17.0 conda package
+conda_dep.add_conda_package("numpy==1.17.0")
+
+# Installs pillow package
+conda_dep.add_pip_package("pillow")
 
 # Adds dependencies to PythonSection of myenv
 myenv.python.conda_dependencies=conda_dep
 ```
+
+>[!IMPORTANT]
+> 如果你对另一个运行使用相同的环境定义，Azure 机器学习服务将重复使用环境的已缓存映像。 如果创建了一个包含未固定包依赖项（例如 ```numpy```）的环境，该环境将继续使用创建环境时安装的包版本。 此外，将来包含匹配定义的任何环境将继续使用旧版本。 有关详细信息，请参阅[生成、缓存和重复使用环境](/machine-learning/concept-environments#environment-building-caching-and-reuse)。
 
 ### <a name="private-wheel-files"></a>专用 wheel 文件
 
@@ -241,7 +247,7 @@ build.wait_for_completion(show_output=True)
 myenv.docker.enabled = True
 ```
 
-默认情况下，新生成的 Docker 映像显示在与工作区关联的容器注册表中。  存储库名称的格式为 azureml/azureml_\<uuid\>  该名称的唯一标识符 (*uuid*) 部分对应于基于环境配置计算出的哈希。 这种对应使得服务能够确定给定的环境是否已存在可重复使用的映像。
+默认情况下，新生成的 Docker 映像显示在与工作区关联的容器注册表中。  存储库名称的格式为“azureml/azureml_\<uuid\>”。 该名称的唯一标识符 (*uuid*) 部分对应于基于环境配置计算出的哈希。 这种对应使得服务能够确定给定的环境是否已存在可重复使用的映像。
 
 此外，服务会自动使用一个基于 Ubuntu Linux 的[基础映像](https://github.com/Azure/AzureML-Containers)。 它会安装指定的 Python 包。 基础映像具有 CPU 版本和 GPU 版本。 Azure 机器学习会自动检测要使用的版本。
 
@@ -251,7 +257,7 @@ myenv.docker.base_image="your_base-image"
 myenv.docker.base_image_registry="your_registry_location"
 ```
 
-或者，可以指定自定义的 Dockerfile。 最简单的方法是使用 Docker ```FROM``` 命令从某个 Azure 机器学习基础映像开始，然后添加自己的自定义步骤。 如果需要安装非 Python 包作为依赖项，请使用此方法。
+还可以指定自定义 Dockerfile。 最简单的方法是使用 Docker ```FROM``` 命令从某个 Azure 机器学习基础映像开始，然后添加自己的自定义步骤。 如果需要安装非 Python 包作为依赖项，请使用此方法。
 
 ```python
 # Specify docker steps as a string. Alternatively, load the string from a file.
@@ -265,8 +271,29 @@ myenv.docker.base_image = None
 myenv.docker.base_dockerfile = dockerfile
 ```
 
-> [!NOTE]
-> 如果在使用自定义 Docker 映像时指定 `environment.python.user_managed_dependencies=False`，服务将在该映像中生成 Conda 环境。 它会在该环境中执行运行，而不是使用已安装在基础映像中的任何 Python 库。 请将参数设置为 `True` 以使用自己安装的包。
+### <a name="use-user-managed-dependencies"></a>使用用户管理的依赖项
+
+在某些情况下，自定义基础映像可能已包含带有你要使用的包的 Python 环境。
+
+默认情况下，Azure 机器学习服务会使用你指定的依赖项构建一个 Conda 环境，并会在该环境中执行运行，而不是使用你在基础映像上安装的任何 Python 库。 
+
+若要使用你自己的已安装包，请设置参数 `Environment.python.user_managed_dependencies = True`。 请确保基础映像包含 Python 解释器，并包含你的训练脚本所需的包。
+
+例如，若要在安装了 NumPy 包的基本 Miniconda 环境中运行，请首先指定 Dockerfile，其中包含安装包的步骤。 然后将用户管理的依赖项设置为 `True`。 
+
+还可以通过设置 `Environment.python.interpreter_path` 变量来指定特定 Python 解释器在映像中的路径。
+
+```python
+dockerfile = """
+FROM mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04
+RUN conda install numpy
+"""
+
+myenv.docker.base_image = None
+myenv.docker.base_dockerfile = dockerfile
+myenv.python.user_managed_dependencies=True
+myenv.python.interpreter_path = "/opt/miniconda/bin/python"
+```
 
 ## <a name="use-environments-for-training"></a>使用环境进行训练
 

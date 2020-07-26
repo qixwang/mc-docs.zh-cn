@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: cf570ca4f03473577c566fdc23dc2c67c25fdde7
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: d36fd9e8b9e7222d1f48740577b98c8cfb0cf85b
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097755"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440894"
 ---
 # <a name="score-image-model"></a>为图像模型评分
 
@@ -28,7 +28,7 @@ ms.locfileid: "85097755"
 
 2. 连接已定型图像模型和包含输入图像数据的数据集。 
 
-    数据应为 ImageDirectory 类型。 若要详细了解如何获取图像目录，请参阅[转换为图像目录](convert-to-image-directory.md)模块。 输入数据集的架构通常还应与用于训练模型的数据的架构相匹配。
+    数据应为“图像目录”类型。 若要详细了解如何获取图像目录，请参阅[转换为图像目录](convert-to-image-directory.md)模块。 输入数据集的架构通常还应与用于训练模型的数据的架构相匹配。
 
 3. 提交管道。
 

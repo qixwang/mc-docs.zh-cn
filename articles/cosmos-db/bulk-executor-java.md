@@ -10,12 +10,12 @@ origin.date: 06/05/2020
 ms.date: 06/22/2020
 ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: ff0c4486d28a73a13199d4a9bcc9525b9551ddc1
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: 38b88a353363ad514624e836e065c3ad88fdb33b
+ms.sourcegitcommit: 6c9d0321df43c3fe6673e0d92590bf306d6e5590
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098738"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86438964"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>使用 Bulk Executor Java 库针对 Azure Cosmos DB 数据执行批量操作
 
@@ -33,33 +33,33 @@ ms.locfileid: "85098738"
 
 * [Java 开发工具包 (JDK) 1.7+](https://docs.azure.cn/java/java-supported-jdk-runtime?view=azure-java-stable)  
     
-    <!--CORRECT ON 1.7+ (https://docs.azure.cn/java/java-supported-jdk-runtime?view=azure-java-stable)--》
+    <!--CORRECT ON 1.7+ (https://docs.azure.cn/java/java-supported-jdk-runtime?view=azure-java-stable)-->
     
-    - On Ubuntu, run `apt-get install default-jdk` to install the JDK.  
+    - 在 Ubuntu 上运行 `apt-get install default-jdk`，以便安装 JDK。  
 
-    - Be sure to set the JAVA_HOME environment variable to point to the folder where the JDK is installed.
+    - 请确保设置 JAVA_HOME 环境变量，使之指向在其中安装了 JDK 的文件夹。
 
-* [Download](https://maven.apache.org/download.cgi) and [install](https://maven.apache.org/install.html) a [Maven](https://maven.apache.org/) binary archive  
+* [下载](https://maven.apache.org/download.cgi)和[安装](https://maven.apache.org/install.html)[Maven](https://maven.apache.org/) 二进制存档  
 
-    - On Ubuntu, you can run `apt-get install maven` to install Maven.
+    - 在 Ubuntu 上，可以通过运行 `apt-get install maven` 来安装 Maven。
 
-* Create an Azure Cosmos DB SQL API account by using the steps described in the [create database account](create-sql-api-java.md#create-a-database-account) section of the Java quickstart article.
+* 使用 Java 快速入门文章的[创建数据库帐户](create-sql-api-java.md#create-a-database-account)部分所述的步骤创建 Azure Cosmos DB SQL API 帐户。
 
-## Clone the sample application
+## <a name="clone-the-sample-application"></a>克隆示例应用程序
 
-Now let's switch to working with code by downloading a sample Java application from GitHub. This application performs bulk operations on Azure Cosmos DB data. To clone the application, open a command prompt, navigate to the directory where you want to copy the application and run the following command:
+现在，我们从 GitHub 下载示例 Java 应用程序来接着处理代码。 此应用程序针对 Azure Cosmos DB 数据执行批量操作。 若要克隆该应用程序，请打开命令提示符，导航到要将该应用程序复制到的目录，然后运行以下命令：
 
 ```
  git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-java-getting-started.git 
 ```
 
-The cloned repository contains two samples "bulkimport" and "bulkupdate" relative to the "\azure-cosmosdb-bulkexecutor-java-getting-started\samples\bulkexecutor-sample\src\main\java\com\microsoft\azure\cosmosdb\bulkexecutor" folder. The "bulkimport" application generates random documents and imports them to Azure Cosmos DB. The "bulkupdate" application updates some documents in Azure Cosmos DB. In the next sections, we will review the code in each of these sample apps. 
+克隆的存储库包含相对于“\azure-cosmosdb-bulkexecutor-java-getting-started\samples\bulkexecutor-sample\src\main\java\com\microsoft\azure\cosmosdb\bulkexecutor”文件夹的两个示例：“bulkimport”和“bulkupdate”。 “bulkimport”应用程序生成随机文档并将其导入 Azure Cosmos DB。 “bulkupdate”应用程序更新 Azure Cosmos DB 中的某些文档。 在后续部分，我们将查看其中每个示例应用中的代码。 
 
-## Bulk import data to Azure Cosmos DB
+## <a name="bulk-import-data-to-azure-cosmos-db"></a>将数据批量导入 Azure Cosmos DB
 
-1. The Azure Cosmos DB's connection strings are read as arguments and assigned to variables defined in CmdLineConfiguration.java file.  
+1. Azure Cosmos DB 的连接字符串将作为参数读取，并分配到 CmdLineConfiguration.java 文件中定义的变量。  
 
-2. Next the DocumentClient object is initialized by using the following statements:  
+2. 接下来，使用以下语句初始化 DocumentClient 对象：  
 
     ```java
     ConnectionPolicy connectionPolicy = new ConnectionPolicy();
@@ -71,8 +71,10 @@ The cloned repository contains two samples "bulkimport" and "bulkupdate" relativ
       ConsistencyLevel.Session)
     ```
 
-3. The DocumentBulkExecutor object is initialized with a high retry values for wait time and throttled requests. And then they are set to 0 to pass congestion control to DocumentBulkExecutor for its lifetime.  
+3. 根据等待时间和限制请求使用较大重试值初始化 DocumentBulkExecutor 对象。 然后，这些值将设置为 0，以将阻塞控制权传递给 DocumentBulkExecutor（在其生存期内都会保留此控制权）。  
 
+    <!--CORRECT ON SCORECARDS a high retry value-->
+    
     ```java
     // Set client's retry options high for initialization
     client.getConnectionPolicy().getRetryOptions().setMaxRetryWaitTimeInSeconds(30);
@@ -94,12 +96,16 @@ The cloned repository contains two samples "bulkimport" and "bulkupdate" relativ
     client.getConnectionPolicy().getRetryOptions().setMaxRetryAttemptsOnThrottledRequests(0);
     ```
 
-4. Call the importAll API that generates random documents to bulk import into an Azure Cosmos container. You can configure the command line configurations within the CmdLineConfiguration.java file.
-
+4. 调用 importAll API，以便生成要批量导入 Azure Cosmos 容器的随机文档。 可以在 CmdLineConfiguration.java 文件中配置命令行配置。
+    
+    <!--CORRECT ON SCORECARDS command-line-->
+    
     ```java
     BulkImportResponse bulkImportResponse = bulkExecutor.importAll(documents, false, true, null);
     ```
-    The bulk import API accepts a collection of JSON-serialized documents and it has the following syntax, for more details, see the [API documentation](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor):
+    批量导入 API 接受 JSON 序列化文档的集合并使用以下语法，请参阅 [API 文档](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)以获取详细信息：
+    
+    <!--CORRECT ON SCORECARDS for more information-->
     
     ```java
     public BulkImportResponse importAll(
@@ -109,44 +115,43 @@ The cloned repository contains two samples "bulkimport" and "bulkupdate" relativ
         Integer maxConcurrencyPerPartitionRange) throws DocumentClientException;   
     ```
 
-    The importAll method accepts the following parameters:
+    importAll 方法接受以下参数：
 
-    |**Parameter**  |**Description**  |
+    |**参数**  |**说明**  |
     |---------|---------|
-    |isUpsert    |   A flag to enable upsert of the documents. If a document with given ID already exists, it's updated.  |
-    |disableAutomaticIdGeneration     |   A flag to disable automatic generation of ID. By default, it is set to true.   |
-    |maxConcurrencyPerPartitionRange    |  The maximum degree of concurrency per partition key range. The default value is 20. |
+    |isUpsert    |   用于启用文档更新插入的标志。 如果已存在具有给定 ID 的文档，则会更新该文档。  |
+    |disableAutomaticIdGeneration     |   用于禁用自动生成 ID 的标志。 此值默认设置为 true。   |
+    |maxConcurrencyPerPartitionRange    |  每个分区键范围的最大并发度。 默认值为 20。 |
 
-    **Bulk import response object definition**
-    The result of the bulk import API call contains the following get methods:
+    **批量导入响应对象定义**批量导入 API 调用的结果包含以下 get 方法：
 
-    |**Parameter**  |**Description**  |
+    |**参数**  |**说明**  |
     |---------|---------|
-    |int getNumberOfDocumentsImported()  |   The total number of documents that were successfully imported out of the documents supplied to the bulk import API call.      |
-    |double getTotalRequestUnitsConsumed()   |  The total request units (RU) consumed by the bulk import API call.       |
-    |Duration getTotalTimeTaken()   |    The total time taken by the bulk import API call to complete execution.     |
-    |List\<Exception> getErrors() |  Gets the list of errors if some documents out of the batch supplied to the bulk import API call failed to get inserted.       |
-    |List\<Object> getBadInputDocuments()  |    The list of bad-format documents that were not successfully imported in the bulk import API call. User should fix the documents returned and retry import. Bad-formatted documents include documents whose ID value is not a string (null or any other datatype is considered invalid).     |
+    |int getNumberOfDocumentsImported()  |   从提供给批量导入 API 调用的文档中成功导入的文档总数。      |
+    |double getTotalRequestUnitsConsumed()   |  批量导入 API 调用消耗的请求单位 (RU) 总数。       |
+    |Duration getTotalTimeTaken()   |    批量导入 API 调用完成执行所花费的总时间。     |
+    |List\<Exception> getErrors() |  如果分批提供给批量导入 API 调用的某些文档无法插入，则获取错误列表。       |
+    |List\<Object> getBadInputDocuments()  |    未在批量导入 API 调用中成功导入的格式不当文档列表。 用户应修复返回的文档，并重试导入。 格式不当的文档包括其 ID 值不是字符串（null 或其他任何数据类型被视为无效）的文档。     |
 
-5. After you have the bulk import application ready, build the command-line tool from source by using the 'mvn clean package' command. This command generates a jar file in the target folder:  
+5. 准备好批量导入应用程序后，请使用“mvn clean package”命令从源代码生成命令行工具。 此命令在目标文件夹中生成一个 jar 文件：  
 
     ```java
     mvn clean package
     ```
 
-6. After the target dependencies are generated, you can invoke the bulk importer application by using the following command:  
+6. 生成目标依赖关系后，可使用以下命令调用批量导入程序应用程序：  
 
     ```java
     java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint *<Fill in your Azure Cosmos DB's endpoint>*  -masterKey *<Fill in your Azure Cosmos DB's master key>* -databaseId bulkImportDb -collectionId bulkImportColl -operation import -shouldCreateCollection -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
     ```
 
-    The bulk importer creates a new database and a collection with the database name, collection name, and throughput values specified in the App.config file. 
+    批量导入程序会创建新的数据库和集合，并在 App.config 文件中指定数据库名称、集合名称与吞吐量值。 
 
-## Bulk update data in Azure Cosmos DB
+## <a name="bulk-update-data-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中批量更新数据
 
-You can update existing documents by using the BulkUpdateAsync API. In this example, you will set the Name field to a new value and remove the Description field from the existing documents. For the full set of supported field update operations, see [API documentation](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor). 
+可以使用 BulkUpdateAsync API 更新现有文档。 此示例将 Name 字段设置为新值，并从现有文档中删除 Description 字段。 有关完整的受支持字段更新操作集，请参阅 [API 文档](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)。 
 
-1. Defines the update items along with corresponding field update operations. In this example, you will use SetUpdateOperation to update the Name field and UnsetUpdateOperation to remove the Description field from all the documents. You can also perform other operations like increment a document field by a specific value, push specific values into an array field, or remove a specific value from an array field. To learn about different methods provided by the bulk update API, see the [API documentation](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor).  
+1. 定义更新项以及相应的字段更新操作。 此示例使用 SetUpdateOperation 更新 Name 字段，并使用 UnsetUpdateOperation 删除所有文档中的 Description 字段。 还可以执行其他操作，例如，根据特定的值递增文档字段、将特定的值推送到数组字段，或者从数组字段中删除特定的值。 若要了解批量更新 API 提供的不同方法，请参阅 [API 文档](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)。  
 
     ```java
     SetUpdateOperation<String> nameUpdate = new SetUpdateOperation<>("Name","UpdatedDocValue");
@@ -162,13 +167,13 @@ You can update existing documents by using the BulkUpdateAsync API. In this exam
     }).collect(Collectors.toCollection(() -> updateItems));
     ```
 
-2. Call the updateAll API that generates random documents to be then bulk imported into an Azure Cosmos container. You can configure the command-line configurations to be passed in CmdLineConfiguration.java file.
+2. 调用 updateAll API，以便生成随后要批量导入 Azure Cosmos 容器的随机文档。 可以在 CmdLineConfiguration.java 文件中配置要传递的命令行配置。
 
     ```java
     BulkUpdateResponse bulkUpdateResponse = bulkExecutor.updateAll(updateItems, null)
     ```
 
-    The bulk update API accepts a collection of items to be updated. Each update item specifies the list of field update operations to be performed on a document identified by an ID and a partition key value. for more details, see the [API documentation](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor):
+    批量更新 API 接受一系列可更新的项。 每个更新项指定要针对 ID 和分区键值标识的文档执行的字段更新操作列表。 有关更多详细信息，请参阅 [API 文档](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)：
 
     ```java
     public BulkUpdateResponse updateAll(
@@ -176,49 +181,48 @@ You can update existing documents by using the BulkUpdateAsync API. In this exam
         Integer maxConcurrencyPerPartitionRange) throws DocumentClientException;
     ```
 
-    The updateAll method accepts the following parameters:
+    updateAll 方法接受以下参数：
 
-    |**Parameter** |**Description** |
+    |**参数** |**说明** |
     |---------|---------|
-    |maxConcurrencyPerPartitionRange   |  The maximum degree of concurrency per partition key range. The default value is 20. |
+    |maxConcurrencyPerPartitionRange   |  每个分区键范围的最大并发度。 默认值为 20。 |
 
-    **Bulk import response object definition**
-    The result of the bulk import API call contains the following get methods:
+    **批量导入响应对象定义**批量导入 API 调用的结果包含以下 get 方法：
 
-    |**Parameter** |**Description**  |
+    |**参数** |**说明**  |
     |---------|---------|
-    |int getNumberOfDocumentsUpdated()  |   The total number of documents that were successfully updated out of the documents supplied to the bulk update API call.      |
-    |double getTotalRequestUnitsConsumed() |  The total request units (RU) consumed by the bulk update API call.       |
-    |Duration getTotalTimeTaken()  |   The total time taken by the bulk update API call to complete execution.      |
-    |List\<Exception> getErrors()   |       Gets the list of errors if some documents out of the batch supplied to the bulk update API call failed to get inserted.      |
+    |int getNumberOfDocumentsUpdated()  |   从提供给批量更新 API 调用的文档中成功更新的文档总数。      |
+    |double getTotalRequestUnitsConsumed() |  批量更新 API 调用消耗的请求单位 (RU) 总数。       |
+    |Duration getTotalTimeTaken()  |   批量更新 API 调用完成执行所花费的总时间。      |
+    |List\<Exception> getErrors()   |       如果分批提供给批量更新 API 调用的某些文档无法插入，则获取错误列表。      |
 
-3. After you have the bulk update application ready, build the command-line tool from source by using the 'mvn clean package' command. This command generates a jar file in the target folder:  
+3. 准备好批量更新应用程序后，请使用“mvn clean package”命令从源代码生成命令行工具。 此命令在目标文件夹中生成一个 jar 文件：  
 
     ```
     mvn clean package
     ```
 
-4. After the target dependencies are generated, you can invoke the bulk update application by using the following command:
+4. 生成目标依赖关系后，可使用以下命令调用批量更新应用程序：
 
     ```
     java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint **<Fill in your Azure Cosmos DB's endpoint>* -masterKey **<Fill in your Azure Cosmos DB's master key>* -databaseId bulkUpdateDb -collectionId bulkUpdateColl -operation update -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
     ```
 
-## Performance tips 
+## <a name="performance-tips"></a>性能提示 
 
-Consider the following points for better performance when using bulk executor library:
+使用 Bulk Executor 库时，请注意以下几点，以获得更好的性能：
 
-* For best performance, run your application from an Azure VM in the same region as your Cosmos DB account write region.  
-* For achieving higher throughput:  
+* 为获得最佳性能，请从 Cosmos DB 帐户写入区域中的 Azure VM 运行应用程序。  
+* 为实现更高的吞吐量：  
 
-    * Set the JVM's heap size to a large enough number to avoid any memory issue in handling large number of documents. Suggested heap size: max(3GB, 3 * sizeof(all documents passed to bulk import API in one batch)).  
-    * There is a preprocessing time, due to which you will get higher throughput when performing bulk operations with a large number of documents. So, if you want to import 10,000,000 documents, running bulk import 10 times on 10 bulk of documents each of size 1,000,000 is preferable than running bulk import 100 times on 100 bulk of documents each of size 100,000 documents.  
+    * 请将 JVM 的堆大小设为足够大的数字，以免在处理大量文档时出现任何内存问题。 建议的堆大小：max(3GB, 3 * sizeof(在一个批中传递给批量导入 API 的文档总数))。  
+    * 会有一段预处理时间，因此，在对大量的文档执行批量操作时可以获得更高的吞吐量。 如果想要导入 10,000,000 个文档，针对 10 批文档（每个批的大小为 1,000,000）运行批量导入 10 次，比针对 100 批文档（每个批的大小为 100,000 个文档）运行批量导入 100 次会更有利。  
 
-* It is recommended to instantiate a single DocumentBulkExecutor object for the entire application within a single virtual machine that corresponds to a specific Azure Cosmos container.  
+* 建议在单个虚拟机中，为整个应用程序实例化对应于特定 Azure Cosmos 容器的单个 DocumentBulkExecutor 对象。  
 
-* Since a single bulk operation API execution consumes a large chunk of the client machine's CPU and network IO. This happens by spawning multiple tasks internally, avoid spawning multiple concurrent tasks within your application process each executing bulk operation API calls. If a single bulk operation API call running on a single virtual machine is unable to consume your entire container's throughput (if your container's throughput > 1 million RU/s), it's preferable to create separate virtual machines to concurrently execute bulk operation API calls.
+* 原因是单个批量操作 API 执行会消耗客户端计算机的大量 CPU 和网络 IO。 而发生这种情况的原因是在内部生成了多个任务，因此，每次执行批量操作 API 调用时，请避免在应用程序进程中生成多个并发任务。 如果单个虚拟机上运行的单个批量操作 API 调用无法占用整个容器的吞吐量（如果容器吞吐量超过 100 万 RU/秒），最好是创建独立的虚拟机来并发执行批量操作 API 调用。
 
-## Next steps
-* To learn about maven package details and release notes of bulk executor Java library, see[bulk executor SDK details](sql-api-sdk-bulk-executor-java.md).
+## <a name="next-steps"></a>后续步骤
+* 若要了解 maven 包的详细信息以及 Bulk Executor Java 库的发行说明，请参阅 [Bulk Executor SDK 详细信息](sql-api-sdk-bulk-executor-java.md)。
 
 <!-- Update_Description: update meta properties, wording update -->

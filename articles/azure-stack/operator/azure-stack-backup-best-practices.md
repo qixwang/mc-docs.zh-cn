@@ -4,16 +4,16 @@ description: 在部署和管理 Azure Stack Hub 时，请遵循这些最佳做�
 author: WenJason
 ms.topic: article
 origin.date: 02/08/2019
-ms.date: 05/18/2020
+ms.date: 07/20/2020
 ms.author: v-jay
 ms.reviewer: hectorl
 ms.lastreviewed: 02/08/2019
-ms.openlocfilehash: cc0de84eadd878be8ac90be0173c63867207d7cf
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: e43aa8263c816fc6092cb392bad0b568fcc1d9fe
+ms.sourcegitcommit: e9ffd50aa5eaab402a94bfabfc70de6967fe6278
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422146"
+ms.lasthandoff: 07/14/2020
+ms.locfileid: "86307363"
 ---
 # <a name="infrastructure-backup-service-best-practices"></a>基础结构备份服务最佳做法
 
@@ -31,7 +31,7 @@ ms.locfileid: "83422146"
 
 路径的通用命名约定 (UNC) 字符串必须使用完全限定的域名 (FQDN)。 如果无法进行名称解析，则可以使用 IP 地址。 UNC 字符串指定资源（例如共享文件或设备）的位置。
 
-### <a name="encryption"></a>加密
+### <a name="encryption"></a>Encryption
 
 #### <a name="version-1901-and-newer"></a>版本 1901 及更新版本
 
@@ -54,6 +54,7 @@ ms.locfileid: "83422146"
 ### <a name="backups"></a>备份
 
  - 备份作业在系统正在运行时执行，因此管理体验或用户应用不会出现停机的情况。 对于负载合理的解决方案，备份作业预计要花费 20-40 分钟。
+ - 在执行修补、更新和 FRU 操作期间，自动备份将不会启动。 默认情况下，将跳过计划的备份作业。 在执行这些操作的过程中，也会阻止按需备份请求。    
  - 根据 OEM 提供的说明，应将手动备份的网络交换机和硬件生命周期主机 (HLH) 存储在基础结构备份控制器存储控制平面备份数据的同一备份共享上。 请考虑将交换机和 HLH 配置存储在区域文件夹中。 如果在同一区域中有多个 Azure Stack Hub 实例，请考虑对属于某个缩放单元的每个配置使用一个标识符。
 
 ### <a name="folder-names"></a>文件夹名称

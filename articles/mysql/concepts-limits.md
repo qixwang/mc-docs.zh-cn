@@ -5,14 +5,14 @@ author: WenJason
 ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
-origin.date: 6/10/2020
-ms.date: 06/29/2020
-ms.openlocfilehash: 96ea1ad7167f6ca68eb0fb2e54bc1457dc1bd430
-ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
+origin.date: 6/25/2020
+ms.date: 07/20/2020
+ms.openlocfilehash: a9bbf3a0825dd91cf8facb697664f5fd74c621d2
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85516610"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440505"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的限制
 
@@ -24,9 +24,11 @@ ms.locfileid: "85516610"
 ## <a name="server-parameters"></a>服务器参数
 
 > [!NOTE]
-> 如果要查找服务器参数（如 `max_connections` 和 `innodb_buffer_pool_size`）的最小值/最大值，此信息已移至“[服务器参数](./concepts-server-parameters.md)”一文。
+> 如果要查找服务器参数（如 `max_connections` 和 `innodb_buffer_pool_size`）的最小值/最大值，请参阅[服务器参数](./concepts-server-parameters.md)一文。
 
-Azure Database for MySQL 支持优化服务器参数的值。 某些参数（例如 `max_connections`、`join_buffer_size`、`query_cache_size`）的最小值和最大值由服务器的定价层和 vCore 决定。 有关这些限制的详细信息，请参阅[服务器参数](./concepts-server-parameters.md)。 
+Azure Database for MySQL 支持优化服务器参数的值。 某些参数（例如 `max_connections`、`join_buffer_size`、`query_cache_size`）的最小值和最大值由服务器的定价层和 vCore 数决定。 有关这些限制的详细信息，请参阅[服务器参数](./concepts-server-parameters.md)。
+
+初始部署后，Azure for MySQL 服务器包含用于时区信息的系统表，但这些表没有填充。 可以通过从 MySQL 命令行或 MySQL Workbench 等工具调用 `mysql.az_load_timezone` 存储过程来填充时区表。 若要了解如何调用存储过程并设置全局时区或会话级时区，请参阅 [Azure 门户](howto-server-parameters.md#working-with-the-time-zone-parameter)或 [Azure CLI](howto-configure-server-parameters-using-cli.md#working-with-the-time-zone-parameter) 一文。
 
 ## <a name="storage-engine-support"></a>存储引擎支持
 

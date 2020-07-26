@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 12/05/2019
-ms.openlocfilehash: 08cc629e819f7cb3b10f2e58c3562db478ac0c9b
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: ff9ad9cbf7516e4404af482dfcb56ad49b4e6233
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097535"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86441204"
 ---
 # <a name="understand-automated-machine-learning-results"></a>了解自动化机器学习的结果
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -265,6 +265,9 @@ normalized_root_mean_squared_log_error|规范化均方根对数误差指均方�
 ## <a name="model-interpretability-and-feature-importance"></a><a name="explain-model"></a> 模型可解释性和特征重要性
 自动化 ML 为运行提供机器学习可解释性仪表板。
 有关启用可解释性功能的详细信息，请参阅有关在自动化 ML 试验中启用可解释性的[操作指南](how-to-machine-learning-interpretability-automl.md)。
+
+> [!NOTE]
+> 解释客户端目前不支持 ForecastTCN 模型。 如果此模型作为最佳模型返回，则不会返回解释仪表板，并且不支持按需解释运行。
 
 ## <a name="next-steps"></a>后续步骤
 

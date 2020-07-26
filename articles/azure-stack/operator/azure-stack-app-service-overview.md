@@ -4,16 +4,16 @@ description: Azure Stack Hub 上的 Azure 应用服务和 Azure Functions 概述
 author: WenJason
 ms.topic: article
 origin.date: 05/05/2020
-ms.date: 06/22/2020
+ms.date: 07/20/2020
 ms.author: v-jay
 ms.reviewer: anwestg
 ms.lastreviewed: 01/13/2019
-ms.openlocfilehash: ee67d091ad69abff33d3ae2ccddc92d7657d888e
-ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
+ms.openlocfilehash: e11fc422bf687d39996e557c3b7d9e73ef119d8e
+ms.sourcegitcommit: e9ffd50aa5eaab402a94bfabfc70de6967fe6278
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85096234"
+ms.lasthandoff: 07/14/2020
+ms.locfileid: "86307437"
 ---
 # <a name="azure-app-service-and-azure-functions-on-azure-stack-hub-overview"></a>Azure Stack Hub 上的 Azure 应用服务和 Azure Functions 概述
 
@@ -35,9 +35,9 @@ Azure Stack Hub 上的 Azure 应用服务是 Azure 的一种可用于 Azure Stac
 
 - [Web 应用](/app-service/overview)用于托管网站和 Web 应用。
 - [API 应用](/app-service/overview)用于托管 REST API。
-- Azure Functions 用于托管事件驱动的无服务器工作负荷。
+- [Azure Functions v1](/azure-functions) 用于托管事件驱动的无服务器工作负荷。
 
-“应用”一词是指专用于运行工作负荷的托管资源。  以 Web 应用为例，你可能习惯于将 Web 应用视为计算资源和应用代码，二者共同向浏览器提供功能。  在 Azure 应用服务中，Web 应用是 Azure Stack Hub 提供的用于托管应用代码的计算资源。
+“应用”一词是指专用于运行工作负荷的托管资源。 以 Web 应用为例，你可能习惯于将 Web 应用视为计算资源和应用代码，二者共同向浏览器提供功能。 在 Azure 应用服务中，Web 应用是 Azure Stack Hub 提供的用于托管应用代码的计算资源。
 
 应用可以由多个不同类型的应用服务应用组成。 例如，如果应用由 Web 前端和 REST API 后端组成，则可以：
 
@@ -48,7 +48,7 @@ Azure Stack Hub 上的 Azure 应用服务是 Azure 的一种可用于 Azure Stac
 
 ## <a name="what-is-an-app-service-plan"></a>什么是应用服务计划？
 
-应用服务资源提供程序使用 Azure 应用服务所用的相同代码，因此两者具有一些共同的概念。 在应用服务中，应用的定价容器称为应用服务计划。  它表示一组用来保存应用的专用 VM。 在一个给定订阅中，你可以有多个应用服务计划。
+应用服务资源提供程序使用 Azure 应用服务所用的相同代码，因此两者具有一些共同的概念。 在应用服务中，应用的定价容器称为应用服务计划。 它表示一组用来保存应用的专用 VM。 在一个给定订阅中，你可以有多个应用服务计划。
 
 在 Azure 中，有共享辅助角色和专用辅助角色。 共享辅助角色支持高密度的多租户应用托管，并且只有一组共享辅助角色。 专用服务器只由一个租户使用，有三种大小：小型、中型和大型。 使用这些术语并非总是能够描述本地客户需求。 在 Azure Stack Hub 上的应用服务中，资源提供程序管理员会定义他们想要提供的辅助角色层。 根据自己的独特托管需求，你可以定义多组共享辅助角色或不同组的专用辅助角色。 使用这些辅助角色层定义，他们随后可以定义自己的定价 SKU。
 

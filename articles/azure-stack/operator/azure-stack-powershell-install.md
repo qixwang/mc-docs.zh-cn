@@ -4,16 +4,16 @@ description: 了解如何安装适用于 Azure Stack Hub 的 PowerShell。
 author: WenJason
 ms.topic: article
 origin.date: 04/14/2020
-ms.date: 05/18/2020
+ms.date: 07/20/2020
 ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 04/14/2020
-ms.openlocfilehash: f87454dd0f51f98a67fef9f4e1670e16a5631b5c
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 3115d3b3ed3b7a9ca9bb2393e9c0cc94ec0848f6
+ms.sourcegitcommit: e9ffd50aa5eaab402a94bfabfc70de6967fe6278
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422479"
+ms.lasthandoff: 07/14/2020
+ms.locfileid: "86307409"
 ---
 # <a name="install-powershell-azurerm-module-for-azure-stack-hub"></a>安装适用于 Azure Stack Hub 的 PowerShell AzureRM 模块
 
@@ -267,6 +267,25 @@ Get-Module -Name "Azs*" -ListAvailable
    #Alternatively, to prompt for separate credentials that can be used for #proxy authentication
    [System.Net.WebRequest]::DefaultWebProxy.Credentials = Get-Credential
    ```
+
+## <a name="known-issue"></a>已知问题
+
+###  <a name="method-get_serializationsettings-error"></a>get_SerializationSettings 方法错误 
+
+- 原因：PowerShell Az 模块与 PowerShell AzureRM 模块不兼容。
+
+    以下错误指示 AzureRM 模块和 Az 模块在同一会话中加载： 
+
+    ```powershell  
+    >  Method 'get_SerializationSettings' in type 'Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient' from assembly 'Microsoft.Azure.Commands.ResourceManager.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' does 
+    not have an implementation.
+    ```
+
+- 补救措施：卸载冲突的模块。 
+
+  若要使用 AzureRM 模块，请卸载 Az 模块。 或者，若要使用 Az 模块，请卸载 AzureRM 模块。 关闭 PowerShell 会话并卸载 Az 或 AzureRM 模块。 
+  
+  可以在[卸载 Azure Stack Hub PowerShell 模块的现有版本](#3-uninstall-existing-versions-of-the-azure-stack-hub-powershell-modules)中找到相关说明。
 
 ## <a name="next-steps"></a>后续步骤
 

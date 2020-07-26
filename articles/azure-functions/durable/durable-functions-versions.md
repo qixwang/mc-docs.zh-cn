@@ -3,14 +3,14 @@ title: Durable Functions 版本概述 - Azure Functions
 description: 了解 Durable Functions 版本。
 author: cgillum
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 07/17/2020
 ms.author: v-junlch
-ms.openlocfilehash: 4a0d283bd5d01683fe9839fe0a6d90e505e840e1
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 526654b588f38b74c55d6221cda25cb357e01202
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77494540"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440362"
 ---
 # <a name="durable-functions-versions-overview"></a>Durable Functions 版本概述
 
@@ -24,7 +24,7 @@ Durable Functions 是 [Azure Functions](../functions-overview.md) 和 [Azure Web
 
 在 Durable Functions 2.x 中，我们引入了一个新的[实体函数](durable-functions-entities.md)概念。
 
-实体函数定义用于读取和更新较小状态片段（称为“持久实体”）的操作。  与业务流程协调程序函数类似，实体函数是具有特殊触发器类型“实体触发器”的函数。  与业务流程协调程序函数不同，实体函数没有任何特定的代码约束。 实体函数还会显式管理状态，而不是通过控制流隐式表示状态。
+实体函数定义用于读取和更新较小状态片段（称为“持久实体”）的操作。 与业务流程协调程序函数类似，实体函数是具有特殊触发器类型“实体触发器”的函数。 与业务流程协调程序函数不同，实体函数没有任何特定的代码约束。 实体函数还会显式管理状态，而不是通过控制流隐式表示状态。
 
 有关详细信息，请参阅[持久实体](durable-functions-entities.md)一文。
 
@@ -66,7 +66,7 @@ Durable Functions 2.x 使用新的 host.json 架构。 基于 1.x 的主要更�
 
 #### <a name="public-interface-changes-net-only"></a>公共接口更改（仅 .NET）
 
-在 1.x 版中，Durable Functions 支持的各种“上下文”对象包含适合在单元测试中使用的抽象基类。  作为 Durable Functions 2.x 的一部分，这些抽象基类由接口取代。
+在 1.x 版中，Durable Functions 支持的各种“上下文”对象包含适合在单元测试中使用的抽象基类。 作为 Durable Functions 2.x 的一部分，这些抽象基类由接口取代。
 
 下表显示了主要更改：
 
@@ -83,4 +83,7 @@ Durable Functions 2.x 使用新的 host.json 架构。 基于 1.x 的主要更�
 
 在 Durable Functions 1.x 中，业务流程客户端使用的 `type` 为 `orchestrationClient`。 2\.x 版改用 `durableClient`。
 
-<!-- Update_Description: wording update -->
+#### <a name="raise-event-changes"></a>引发事件更改
+
+在 Durable Functions 1.x 中，调用[引发事件](durable-functions-external-events.md#send-events) API 并指定不存在的实例会导致静默失败。 从 2.x 开始，将事件引发到不存在的业务流程会导致异常。
+

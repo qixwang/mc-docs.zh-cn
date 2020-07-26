@@ -3,14 +3,16 @@ title: 按 Azure 服务列出的资源提供程序
 description: 列出 Azure 资源管理器的所有资源提供程序命名空间，并显示该命名空间的 Azure 服务。
 ms.topic: conceptual
 origin.date: 06/05/2020
-ms.date: 06/22/2020
+ms.date: 07/13/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 7ca22a2881b1ca94bb62db2eee6aec72262a3ca4
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: ff0706cde1cb6ca4914ec30b8cbfe76692e306ea
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098682"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86441063"
 ---
 <!--Verify sucessfully on 2020/06/18 by harris-->
 # <a name="resource-providers-for-azure-services"></a>Azure 服务的资源提供程序
@@ -19,12 +21,19 @@ ms.locfileid: "85098682"
 
 ## <a name="match-resource-provider-to-service"></a>将资源提供程序匹配到服务
 
+<!--Not Available on Microsoft.ADHybridHealthService till 07/16/2020-->
+<!--Not Available on Microsoft.Network [Azure Bastion](/bastion/) till 07/16/2020-->
+<!--Not Available on Microsoft.Network [Azure DDoS Protection](../../virtual-network/ddos-protection-overview.md) till 07/16/2020-->
+<!--Not Available on Microsoft.Network [Azure Front Door Service](../../frontdoor/index.yml) till 07/16/2020-->
+<!--Not Available on Microsoft.Network [Azure Private Link](../../private-link/index.yml) till 07/16/2020-->
+
+<!--MOONCAKE: NOT AVAILABLE ON [Azure Active Directory Domain Services](../../active-directory-domain-services/index.yml)-->
+
 | 资源提供程序命名空间 | Azure 服务 |
 | --------------------------- | ------------- |
 | Microsoft.AAD | Azure Active Directory 域服务 |
 | Microsoft.Addons | core |
-| Microsoft.ADHybridHealthService<sup>1</sup> | [Azure Active Directory](/active-directory/) |
-| Microsoft.Advisor | [Azure 顾问](/advisor/) |
+| Microsoft.Advisor | [Azure 顾问](../../advisor/index.yml) |
 | Microsoft.AlertsManagement | [Azure Monitor](../../azure-monitor/index.yml) |
 | Microsoft.AnalysisServices | [Azure Analysis Services](/analysis-services/) |
 | Microsoft.ApiManagement | [API 管理](../../api-management/index.yml) |
@@ -35,7 +44,7 @@ ms.locfileid: "85098682"
 | Microsoft.AzureStack | core |
 | Microsoft.Batch | [批处理](../../batch/index.yml) |
 | Microsoft.Billing<sup>1</sup> | [成本管理和计费](/billing/) |
-| Microsoft.Blueprint | Azure 蓝图 |
+| Microsoft.Blueprint | [Azure 蓝图](/governance/blueprints/) |
 | Microsoft.Cache | [用于 Redis 的 Azure 缓存](/azure-cache-for-redis/) |
 | Microsoft.Capacity | core |
 | Microsoft.Cdn | [内容分发网络](/cdn/) |
@@ -98,13 +107,14 @@ ms.locfileid: "85098682"
 | Microsoft.ServiceFabric | [Service Fabric](../../service-fabric/index.yml) |
 | Microsoft.SignalRService | [Azure SignalR 服务](../../azure-signalr/index.yml) |
 | Microsoft.Solutions | [Azure 托管应用程序](../managed-applications/index.yml) |
-| Microsoft.Sql | [Azure SQL 数据库](../../sql-database/index.yml)<br />[Azure Synapse Analytics](/sql-data-warehouse/) |
+| Microsoft.Sql | [Azure SQL 数据库](../../azure-sql/database/index.yml)<br /> [Azure SQL 托管实例](../../azure-sql/managed-instance/index.yml) <br />[Azure Synapse Analytics](/sql-data-warehouse/) |
 | Microsoft.Storage | [存储](../../storage/index.yml) |
 | Microsoft.StreamAnalytics | [Azure 流分析](../../stream-analytics/index.yml) |
 | Microsoft.Synapse | [Azure Synapse Analytics](/sql-data-warehouse/) |
 | Microsoft.TimeSeriesInsights | [Azure 时序见解](../../time-series-insights/index.yml) |
 | Microsoft.Web | [应用服务](../../app-service/index.yml)<br />[Azure Functions](../../azure-functions/index.yml) |
-| Microsoft.WorkloadMonitor<sup>1</sup> | [Azure Monitor](/azure-monitor/) |
+
+<!--Not Available on | Microsoft.WorkloadMonitor<sup>1</sup> | [Azure Monitor](../../azure-monitor/index.yml) | till 07/16/2020-->
 
 <sup>1</sup> 默认已注册
 

@@ -6,15 +6,15 @@ ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 origin.date: 04/07/2020
-ms.date: 05/18/2020
+ms.date: 07/20/2020
 ms.author: v-jay
 ms.reviewer: stewu
-ms.openlocfilehash: a1f35dd29669011d65ca5791ec101aee55dd70b4
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: f3c5ff75d781ccfb41694e39b87074f6541398ac
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422361"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414607"
 ---
 # <a name="azure-services-that-support-azure-data-lake-storage-gen2"></a>支持 Azure Data Lake Storage Gen2 的 Azure 服务
 
@@ -36,9 +36,9 @@ ms.locfileid: "83422361"
 |HDInsight | 正式发布|[将 Azure Data Lake Storage Gen2 用于 Azure HDInsight 群集](https://docs.azure.cn/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fstorage%2fblobs%2ftoc.json)<br>[将 HDFS CLI 与 Data Lake Storage Gen2 配合使用](data-lake-storage-use-hdfs-data-lake-storage.md) <br>[教程：使用 Apache Hive on Azure HDInsight 提取、转换和加载数据](data-lake-storage-tutorial-extract-transform-load-hive.md)|
 |IoT 中心 |正式发布|[使用 IoT 中心消息路由将设备到云的消息发送到不同的终结点](https://docs.azure.cn/iot-hub/iot-hub-devguide-messages-d2c)|
 |Power BI|正式发布|[使用 Power BI 分析 Data Lake Storage Gen2 中的数据](https://docs.microsoft.com/power-query/connectors/datalakestorage)|
-|SQL 数据仓库|正式发布|[与 Azure SQL 数据仓库配合使用](https://docs.azure.cn/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=%2fstorage%2fblobs%2ftoc.json#azure-sql-data-warehouse-polybase)|
+|Azure Synapse Analytics（以前称为 SQL 数据仓库）|正式发布|[用于 Azure Synapse Analytics（以前称为 SQL 数据仓库）](/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=%2fstorage%2fblobs%2ftoc.json#azure-sql-data-warehouse-polybase)|
 |SQL Server 集成服务 (SSIS)|正式发布|[Azure 存储连接管理器](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-storage-connection-manager?view=sql-server-2017)|
-|Azure 认知搜索| 预览|[为 Azure Data Lake Storage Gen2 文档编制索引及对其进行搜索（预览）](https://docs.azure.cn/search/search-howto-index-azure-data-lake-storage)|
+|Azure 认知搜索|预览|[为 Azure Data Lake Storage Gen2 文档编制索引及对其进行搜索（预览）](https://docs.azure.cn/search/search-howto-index-azure-data-lake-storage)|
 |Azure 内容分发网络|尚不支持|[为 Azure Data Lake Storage Gen2 文档编制索引及对其进行搜索（预览）](https://docs.azure.cn/cdn/cdn-overview)|
 
 

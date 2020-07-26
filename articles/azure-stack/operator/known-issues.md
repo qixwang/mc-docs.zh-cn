@@ -3,17 +3,17 @@ title: Azure Stack Hub 已知问题
 description: 了解 Azure Stack Hub 发行版中的已知问题。
 author: WenJason
 ms.topic: article
-origin.date: 06/10/2020
-ms.date: 06/22/2020
+origin.date: 07/06/2020
+ms.date: 07/20/2020
 ms.author: v-jay
 ms.reviewer: sranthar
 ms.lastreviewed: 03/18/2020
-ms.openlocfilehash: d021dd3eb798bd9a28907960dd1a40b0cd3fc9fb
-ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
+ms.openlocfilehash: 3e7169ea0fa5d31e1a2bcef8c00c9abc4489059c
+ms.sourcegitcommit: e9ffd50aa5eaab402a94bfabfc70de6967fe6278
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85096291"
+ms.lasthandoff: 07/14/2020
+ms.locfileid: "86307421"
 ---
 # <a name="azure-stack-hub-known-issues"></a>Azure Stack Hub 已知问题
 
@@ -103,6 +103,12 @@ ms.locfileid: "85096291"
 - 补救措施：将与 NSG 相关联的 NIC 附加到运行中的 VM，然后取消与 NSG 的关联，或者删除与 NSG 关联的所有 NIC。
 - 发生次数：通用
 
+### <a name="load-balancer-directing-traffic-to-one-backend-vm-in-specific-scenarios"></a>在特定情况下将流量定向到一个后端 VM 的负载均衡器 
+
+- 适用于：此问题适用于所有支持的版本。 
+- 原因：在负载均衡器上启用“会话相关性”时，2 元组哈希使用 PA IP（物理地址 IP）而不是分配给 VM 的专用 IP。 如果定向到负载均衡器的流量通过 VPN 到达，或者，如果所有客户端 VM（源 IP）位于同一节点上并且启用了会话相关性，则所有流量都将定向到一个后端 VM。
+- 发生次数：通用
+
 ### <a name="network-interface"></a>Linux
 
 #### <a name="addingremoving-network-interface"></a>添加/删除网络接口
@@ -142,7 +148,8 @@ ms.locfileid: "85096291"
 ### <a name="cannot-create-a-vmss-with-standard_ds2_v2-vm-size-on-portal"></a>无法在门户中创建 Standard_DS2_v2 VM 大小的 VMSS
 
 - 适用于：此问题适用于 2002 版本。
-- 原因：存在一个门户 bug，它阻止创建 Standard_DS2_v2 VM 大小的 VMSS。 创建即会产生错误：“{"code":"DeploymentFailed","message":":"至少一项资源部署操作失败。 请列出部署操作以获取详细信息。 请参阅 https://aka.ms/arm-debug 了解使用情况详细信息。","details":[{"code":"BadRequest","message":"{\r\n \" error\": {\r\n \" code\":\" NetworkProfileValidationError\" ,\r\n \" message\":\" 虚拟机大小 Standard_DS2_v2 不在 VM 大小的允许列表中，不能在 VM 规模集 /subscriptions/x/resourceGroups/RGVMSS/providers/Microsoft.Compute/virtualMachineScaleSets/vmss 的索引 0 处的 VM 上启用加速网络。 允许的大小: .\"\r\n }\r\n}"}]}”补救措施：使用 PowerShell 或资源管理器模板创建 VMSS。
+- 原因：存在一个门户 bug，它阻止创建 Standard_DS2_v2 VM 大小的 VMSS。 创建即会产生错误：“{"code":"DeploymentFailed","message":":"至少一项资源部署操作失败。 请列出部署操作以获取详细信息。 请参阅 https://aka.ms/arm-debug 了解使用情况详细信息。","details":[{"code":"BadRequest","message":"{\r\n \" error\": {\r\n \" code\":\" NetworkProfileValidationError\" ,\r\n \" message\":\" 虚拟机大小 Standard_DS2_v2 不在 VM 大小的允许列表中，不能在 VM 规模集 /subscriptions/x/resourceGroups/RGVMSS/providers/Microsoft.Compute/virtualMachineScaleSets/vmss 的索引 0 处的 VM 上启用加速网络。 允许的大小：.\"\r\n }\r\n}"}]}"
+- 补救措施：使用 PowerShell 或资源管理器模板创建 VMSS。
 
 ### <a name="vm-overview-blade-does-not-show-correct-computer-name"></a>VM 概述边栏选项卡未显示正确的计算机名称
 
@@ -152,7 +159,7 @@ ms.locfileid: "85096291"
 
 ### <a name="nvv4-vm-size-on-portal"></a>门户上的 NVv4 VM 大小
 
-- 适用于：此问题适用于 2002 及更高版本。
+- 适用于：此问题适用于版本 2002 及更高版本。
 - 原因：完成 VM 创建体验后，你将看到 VM 大小：NV4as_v4。 拥有基于 AMD Mi25 的 Azure Stack Hub GPU 预览版所需的硬件的客户可以成功部署 VM。 所有其他客户将无法使用此 VM 大小部署 VM。
 - 补救措施：按照设计为 Azure Stack Hub GPU 预览版做准备。
 
@@ -163,6 +170,7 @@ ms.locfileid: "85096291"
 - 补救措施：使用以前所用的相同名称重新创建存储帐户。
 - 发生次数：通用
 
+### <a name="vm-boot-diagnostics"></a>VM 启动诊断
 
 - 适用于：此问题适用于所有支持的版本。
 - 原因：尝试启动“已停止-解除分配”的虚拟机时，可能会显示以下错误：“找不到 VM 诊断存储帐户 "diagnosticstorageaccount"。请确保未删除存储帐户”。 如果尝试在启用了启动诊断的情况下启动 VM，但引用的启动诊断存储帐户被删除，则会发生此错误。
@@ -396,6 +404,8 @@ ms.locfileid: "85096291"
 - 适用于：此问题适用于所有支持的版本。
 - 原因：在用户门户中，“连接”边栏选项卡显示一项名为“VPN 故障排除程序”的功能。  Azure Stack Hub 目前不支持此功能。
 - 发生次数：通用
+
+#### <a name="vpn-troubleshooter"></a>VPN 故障排除程序
 
 - 适用于：此问题适用于所有支持的版本。
 - 原因：用户门户显示 VPN 网关资源中的“VPN 故障排除”功能和“指标”，但这在 Azure Stack Hub 中不受支持。 

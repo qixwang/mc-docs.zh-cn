@@ -2,14 +2,14 @@
 title: Durable Functions 的子业务流程 - Azure
 description: 如何从 Azure Functions 的 Durable Functions 扩展中的业务流程中调用业务流程。
 ms.topic: conceptual
-ms.date: 02/14/2020
+ms.date: 07/17/2020
 ms.author: v-junlch
-ms.openlocfilehash: cd9ad8c767979d2f9ea6bb57101278710a761044
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 83472b1985da50f8b443ac51e4911b9712cd08c4
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428056"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440344"
 ---
 # <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Durable Functions 中的子业务流程 (Azure Functions)
 
@@ -18,6 +18,10 @@ ms.locfileid: "77428056"
 一个业务流程协调程序函数可以使用 .NET 中的 `CallSubOrchestratorAsync` 或 `CallSubOrchestratorWithRetryAsync` 方法，或 JavaScript 中的 `callSubOrchestrator` 或 `callSubOrchestratorWithRetry` 方法来调用另一个业务流程协调程序函数。 [错误处理和修正](durable-functions-error-handling.md#automatic-retry-on-failure)一文提供了有关自动重试的更多信息。
 
 从调用方的角度来看，子业务流程协调程序函数的行为与活动函数相同。 它们可以返回值，引发异常，并且父业务流程协调程序函数可以等待它们。 
+
+> [!NOTE]
+> .NET 和 JavaScript 目前支持子业务流程。
+
 ## <a name="example"></a>示例
 
 以下示例说明了一个需要预配多台设备的 IoT（物联网）方案。 以下函数表示需要为每个设备执行的预配工作流：

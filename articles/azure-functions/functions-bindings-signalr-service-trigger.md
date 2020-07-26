@@ -3,14 +3,14 @@ title: Azure Functions SignalR 服务触发器绑定
 description: 了解如何从 Azure Functions 发送 SignalR 服务消息。
 author: chenyl
 ms.topic: reference
-ms.date: 07/01/2020
+ms.date: 07/15/2020
 ms.author: v-junlch
-ms.openlocfilehash: 3815861ebf986d502c8d08065e8a530724f27ee2
-ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
+ms.openlocfilehash: 4d2cef632fe55be3a7a6b390cdb2469e6b5bdb42
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85945339"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440498"
 ---
 # <a name="signalr-service-trigger-binding-for-azure-functions"></a>Azure Functions 的 SignalR 服务触发器绑定
 
@@ -188,7 +188,9 @@ await connection.invoke("broadcast", message1, message2);
 
 Azure Function 为 SignalR 服务触发器绑定生成 URL，其格式如下：
 
-    https://<APP_NAME>.chinacloudsites.cn/runtime/webhooks/signalr?code=<API_KEY>
+```http
+https://<APP_NAME>.chinacloudsites.cn/runtime/webhooks/signalr?code=<API_KEY>
+```
 
 `API_KEY` 由 Azure Function 生成。 使用 SignalR 服务触发器绑定时，可以从 Azure 门户中获取 `API_KEY`。
 :::image type="content" source="media/functions-bindings-signalr-service/signalr-keys.png" alt-text="API 密钥":::

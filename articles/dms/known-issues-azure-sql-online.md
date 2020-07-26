@@ -1,6 +1,7 @@
 ---
-title: 有关联机迁移到 Azure SQL 数据库时存在的已知问题/迁移限制的文章 | Microsoft Docs
-description: 了解在联机迁移到 Azure SQL 数据库时存在的已知问题/迁移限制。
+title: 已知问题：联机迁移到 SQL 数据库
+titleSuffix: Azure Database Migration Service
+description: 了解在使用 Azure 数据库迁移服务联机迁移到 Azure SQL 数据库时的已知问题/迁移限制。
 services: database-migration
 author: WenJason
 ms.author: v-jay
@@ -8,16 +9,16 @@ manager: digimobile
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: article
-origin.date: 07/27/2019
-ms.date: 09/09/2019
-ms.openlocfilehash: b08276108aa013d52316abee2dc4e3b5181273a9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 02/20/2020
+ms.date: 07/20/2020
+ms.openlocfilehash: c526a9f626f32a05ae6fe8b87f1f5f8d74ff17df
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "70736784"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440424"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-database"></a>联机迁移到 Azure SQL 数据库时存在的已知问题/迁移限制
 
@@ -48,7 +49,7 @@ ms.locfileid: "70736784"
      select name,temporal_type,temporal_type_desc,* from sys.tables where temporal_type <>0
      ```
 
-2. 在用于指定要迁移的表的“配置迁移设置”边栏选项卡中排除这些表。 
+2. 在用于指定要迁移的表的“配置迁移设置”边栏选项卡中排除这些表。
 
 3. 重新运行迁移活动。
 
@@ -74,7 +75,7 @@ ms.locfileid: "70736784"
       select object_name(object_id) 'Table name' from sys.columns where system_type_id =240 and object_id in (select object_id from sys.objects where type='U')
       ```
 
-2. 在用于指定要迁移的表的“配置迁移设置”边栏选项卡中排除这些表。 
+2. 在用于指定要迁移的表的“配置迁移设置”边栏选项卡中排除这些表。
 
 3. 重新运行迁移活动。
 
@@ -122,7 +123,7 @@ Azure 数据库迁移服务不会迁移源时间戳值，而是在目标表中�
 
 **症状**
 
-如果“数据库详细状态”视图中显示迁移失败，选择顶部功能区中的“数据迁移错误”链接可能不会提供特定于该迁移失败的其他详细信息。 
+如果“数据库详细状态”视图中显示迁移失败，选择顶部功能区中的“数据迁移错误”链接可能不会提供特定于该迁移失败的其他详细信息。
 
 ![发生数据迁移错误时不提供详细信息的示例](media/known-issues-azure-sql-online/dms-data-migration-errors-no-details.png)
 
@@ -134,7 +135,7 @@ Azure 数据库迁移服务不会迁移源时间戳值，而是在目标表中�
 
      ![迁移活动屏幕](media/known-issues-azure-sql-online/dms-migration-activity-screen.png)
 
-2. 选择“查看错误详细信息”以查看可帮助排查迁移错误的具体错误消息。 
+2. 选择“查看错误详细信息”以查看可帮助排查迁移错误的具体错误消息。
 
 ### <a name="geography-datatype-not-supported-in-sqldb-online-migration"></a>SQLDB 联机迁移不支持地理数据类型
 
@@ -142,7 +143,9 @@ Azure 数据库迁移服务不会迁移源时间戳值，而是在目标表中�
 
 迁移失败并出现包含以下文本的错误消息：
 
-     “** encountered a fatal error”, "errorEvents":<Table>.<Column> is of type 'GEOGRAPHY', which is not supported by 'Full Load' under 'Full LOB' support mode."
+```output
+"** encountered a fatal error", "errorEvents":<Table>.<Column> is of type 'GEOGRAPHY', which is not supported by 'Full Load' under 'Full LOB' support mode.
+```
 
 **解决方法**
 
@@ -154,7 +157,9 @@ Azure 数据库迁移服务不会迁移源时间戳值，而是在目标表中�
 
 迁移失败并出现包含以下文本的错误消息：
 
-    Migration settings validation error: The edition of the server [Business Intelligence Edition (64-bit)] does not match the supported edition(s) [Enterprise,Standard,Developer].
+```output
+Migration settings validation error: The edition of the server [Business Intelligence Edition (64-bit)] does not match the supported edition(s) [Enterprise,Standard,Developer].
+```
 
 **解决方法**
 

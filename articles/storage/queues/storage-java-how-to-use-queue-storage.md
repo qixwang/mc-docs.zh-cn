@@ -2,30 +2,28 @@
 title: 如何通过 Java 使用队列存储 - Azure 存储
 description: 了解如何通过适用于 Java 的 Azure 存储客户端库使用队列存储创建和删除队列，以及插入、获取和删除消息。
 author: WenJason
-ms.service: storage
 ms.author: v-jay
 origin.date: 12/08/2016
-ms.date: 11/25/2019
+ms.date: 07/20/2020
+ms.service: storage
 ms.subservice: queues
-ms.topic: conceptual
-ms.reviewer: cbrooks
-ms.openlocfilehash: 2bc7b923908b3d0c6e034275f79a97711d6024cd
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.topic: how-to
+ms.reviewer: dineshm
+ms.openlocfilehash: 62f8e30975ac817f50b71ab0dcf06d4094f8867a
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74328739"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414599"
 ---
 # <a name="how-to-use-queue-storage-from-java"></a>如何通过 Java 使用队列存储
 
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
-[!INCLUDE [storage-check-out-samples-java](../../../includes/storage-check-out-samples-java.md)]
+本指南演示如何使用 Azure 队列存储服务执行常见方案。 这些示例用 Java 编写并使用 [Azure Storage SDK for Java][Azure Storage SDK for Java]。 介绍的方案包括插入、扫视、获取和删除队列消息以及创建和删除队列。 有关队列的详细信息，请参阅[后续步骤](#next-steps)部分。
 
-本指南演示如何使用 Azure 队列存储服务执行常见方案。 这些示例用 Java 编写并使用 [Azure Storage SDK for Java][Azure Storage SDK for Java]。 介绍的方案包括插入  、扫视  、获取  和删除  队列消息以及创建  和删除  队列。 有关队列的详细信息，请参阅[后续步骤](#next-steps)部分。
-
-> [!NOTE]
-> SDK 提供给在 Android 设备上使用 Azure 存储的开发人员。 有关详细信息，请参阅 [Azure Storage SDK for Android][Azure Storage SDK for Android]。
+> [!IMPORTANT]
+> 本文是指适用于 Java 的 Azure 存储客户端库的旧版本。 若要开始使用最新版本，请参阅[快速入门：适用于 Java 的 Azure 队列存储客户端库](storage-quickstart-queues-java.md)
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
@@ -60,7 +58,7 @@ public static final String storageConnectionString =
     "EndpointSuffix=core.chinacloudapi.cn";
 ```
 
-在 Azure 的角色中运行的应用程序中，此字符串可存储在服务配置文件 *ServiceConfiguration.cscfg*中，并可通过调用 **RoleEnvironment.getConfigurationSettings** 方法进行访问。 下面是从服务配置文件中名为 *StorageConnectionString* 的 **Setting** 元素中获取连接字符串的示例：
+在 Azure 的角色中运行的应用程序中，此字符串可存储在服务配置文件 *ServiceConfiguration.cscfg*中，并可通过调用 **RoleEnvironment.getConfigurationSettings** 方法进行访问。 下面是从服务配置文件中名为 **StorageConnectionString** 的 *Setting* 元素中获取连接字符串的示例：
 
 ```java
 // Retrieve storage account from connection-string.
@@ -71,7 +69,7 @@ String storageConnectionString =
 下面的示例假定使用了这两个方法之一来获取存储连接字符串。
 
 ## <a name="how-to-create-a-queue"></a>如何：创建队列
-利用 CloudQueueClient  对象，可以获取队列的引用对象。 以下代码将创建 CloudQueueClient  对象。 （注意：还有其他方式可创建 **CloudStorageAccount** 对象；有关详细信息，请参阅 [Azure 存储客户端 SDK 参考]中的 **CloudStorageAccount**。）
+利用 CloudQueueClient 对象，可以获取队列的引用对象。 以下代码将创建 CloudQueueClient 对象。 （注意：还有其他方式来创建 CloudStorageAccount 对象；有关详细信息，请参阅 [Azure 存储客户端 SDK 参考]中的 CloudStorageAccount 。
 
 使用 **CloudQueueClient** 对象获取对要使用的队列的引用。 如果队列不存在，可以创建它。
 
@@ -99,7 +97,7 @@ catch (Exception e)
 ```
 
 ## <a name="how-to-add-a-message-to-a-queue"></a>如何：向队列添加消息
-要将消息插入现有队列，请先创建一个新的 **CloudQueueMessage**。 接下来，调用 **addMessage** 方法。 可从字符串（UTF-8 格式）或字节数组创建 CloudQueueMessage  。 以下代码创建队列（如果该队列不存在）并插入消息“Hello, World”。
+要将消息插入现有队列，请先创建一个新的 **CloudQueueMessage**。 接下来，调用 **addMessage** 方法。 可从字符串（UTF-8 格式）或字节数组创建 CloudQueueMessage。 以下代码创建队列（如果该队列不存在）并插入消息“Hello, World”。
 
 ```java
 try
@@ -244,7 +242,7 @@ catch (Exception e)
 ```
 
 ## <a name="how-to-get-the-queue-length"></a>如何：获取队列长度
-可以获取队列中消息的估计数。 **downloadAttributes** 方法会询问队列服务一些当前值，包括队列中消息的计数。 此计数仅为近似值，因为只能在队列服务响应请求后添加或删除消息。 getApproximateMessageCount  方法返回通过调用 downloadAttributes  检索到的最后一个值，而不会调用队列服务。
+可以获取队列中消息的估计数。 **downloadAttributes** 方法会询问队列服务一些当前值，包括队列中消息的计数。 此计数仅为近似值，因为只能在队列服务响应请求后添加或删除消息。 getApproximateMessageCount 方法返回通过调用 downloadAttributes 检索到的最后一个值，而不会调用队列服务。
 
 ```java
 try
@@ -340,7 +338,7 @@ catch (Exception e)
 ```
 
 ## <a name="how-to-list-the-queues"></a>如何：列出队列
-若要获取当前队列的列表，请调用 CloudQueueClient.listQueues()  方法，它将返回 CloudQueue  对象的集合。
+若要获取当前队列的列表，请调用 CloudQueueClient.listQueues() 方法，它将返回 CloudQueue 对象的集合。
 
 ```java
 try
@@ -368,7 +366,7 @@ catch (Exception e)
 ```
 
 ## <a name="how-to-delete-a-queue"></a>如何：删除队列
-若要删除队列及其包含的所有消息，请对 **CloudQueue** 对象调用 **deleteIfExists** 方法。
+若要删除队列及其包含的所有消息，请对 CloudQueue 对象调用 deleteIfExists 方法。
 
 ```java
 try
@@ -392,6 +390,11 @@ catch (Exception e)
     e.printStackTrace();
 }
 ```
+
+[!INCLUDE [storage-check-out-samples-java](../../../includes/storage-check-out-samples-java.md)]
+
+> [!NOTE]
+> SDK 提供给在 Android 设备上使用 Azure 存储的开发人员。 有关详细信息，请参阅 [Azure Storage SDK for Android][Azure Storage SDK for Android]。
 
 ## <a name="next-steps"></a>后续步骤
 现在，了解了有关队列存储的基础知识，可单击下面的链接来了解更复杂的存储任务。

@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 origin.date: 01/08/2020
-ms.date: 06/22/2020
-ms.openlocfilehash: 788b2141da4e45a6cc92ecca87fd865c0120ff65
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.date: 07/20/2020
+ms.openlocfilehash: fe9af7aed0a5cce7f503ed6c5c7b6ff6532b02bc
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098636"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440401"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-offline-using-dms"></a>教程：使用 DMS 将 SQL Server 脱机迁移到 Azure SQL 数据库
 
@@ -37,7 +37,7 @@ ms.locfileid: "85098636"
 
 [!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
 
-本文介绍如何从 SQL Server 脱机迁移到 Azure SQL 数据库中的单一数据库或共用数据库。 有关联机迁移，请参阅[使用 DMS 将 SQL Server 联机迁移到 Azure SQL 数据库](tutorial-sql-server-azure-sql-online.md)。
+本文介绍如何从 SQL Server 脱机迁移到 Azure SQL 数据库中的数据库。 有关联机迁移，请参阅[使用 DMS 将 SQL Server 联机迁移到 Azure SQL 数据库](tutorial-sql-server-azure-sql-online.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -45,7 +45,7 @@ ms.locfileid: "85098636"
 
 - 下载并安装 [SQL Server 2016 或更高版本](https://www.microsoft.com/sql-server/sql-server-downloads)。
 - 按照[启用或禁用服务器网络协议](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure)一文中的说明启用 TCP/IP 协议（在安装 SQL Server Express 时，会默认禁用它）。
-- 遵循[使用 Azure 门户在 Azure SQL 数据库中创建单一数据库](/sql-database/sql-database-single-database-get-started)一文中的详细信息在 Azure SQL 数据库中创建单一（或入池）数据库。
+- 按照[使用 Azure 门户在 Azure SQL 数据库中创建数据库](/sql-database/sql-database-single-database-get-started)一文中的详细说明在 Azure SQL 数据库中创建数据库。
 
     > [!NOTE]
     > 如果你使用 SQL Server Integration Services (SSIS) 并且希望将 SSIS 项目/包的目录数据库 (SSISDB) 从 SQL Server 迁移到 Azure SQL 数据库，则当你在 Azure 数据工厂 (ADF) 中预配 SSIS 时，系统会代表你自动创建和管理目标 SSISDB。 有关如何迁移 SSIS 包的详细信息，请参阅[将 SQL Server Integration Services 包迁移到 Azure](/dms/how-to-migrate-ssis-packages)。
@@ -69,7 +69,7 @@ ms.locfileid: "85098636"
 - 在源数据库的前面使用了防火墙设备时，可能需要添加防火墙规则以允许 Azure 数据库迁移服务访问要迁移的源数据库。
 - 为 Azure SQL 数据库创建服务器级 IP [防火墙规则](/sql-database/sql-database-firewall-configure)，以允许 Azure 数据库迁移服务访问目标数据库。 提供用于 Azure 数据库迁移服务的虚拟网络子网范围。
 - 确保用于连接到源 SQL Server 实例的凭据具有 [CONTROL SERVER](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) 权限。
-- 确保用于连接到目标 Azure SQL 数据库实例的凭据具有目标 Azure SQL 数据库的 CONTROL DATABASE 权限。
+- 确保用于连接到目标 Azure SQL 数据库实例的凭据具有目标数据库的 CONTROL DATABASE 权限。
 
 ## <a name="assess-your-on-premises-database"></a>访问本地数据库
 
@@ -96,7 +96,7 @@ ms.locfileid: "85098636"
 
     ![评估数据迁移](media/tutorial-sql-server-to-azure-sql/dma-assessments.png)
 
-    对于 Azure SQL 数据库中国的单一数据库或共用数据库，评估结果可标识出在部署到单一数据库或共用数据库时会出现的功能奇偶一致性问题和迁移阻塞性问题。
+    对于 Azure SQL 数据库中的数据库，评估结果可标识出在部署到单一数据库或共用数据库时会出现的功能奇偶一致性问题和迁移阻塞性问题。
 
     - SQL Server 功能奇偶校验类别在 Azure 中提供了一套全面的建议、可用的替代方法和缓解步骤，以帮助你在迁移项目中规划工作。
     - “兼容性问题”类别说明了部分支持的或完全不支持的功能，这些功能反映了可能会阻止 SQL Server 数据库迁移到 Azure SQL 数据库的兼容性问题。 此外，还提供了一些建议来帮助你解决这些问题。
@@ -108,7 +108,7 @@ ms.locfileid: "85098636"
 如果对评估感到满意，并确信所选数据库适合迁移到 Azure SQL 数据库中的单一数据库或共用数据库，请使用 DMA 将架构迁移到 Azure SQL 数据库。
 
 > [!NOTE]
-> 在数据迁移助手中创建迁移项目之前，请确保已按照先决条件中的说明预配了 Azure SQL 数据库。 出于本教程的目的，假设 Azure SQL 数据库的名称是“AdventureWorksAzure”，但是你可按照自己意愿使用任意名称命名。
+> 在数据迁移助手中创建迁移项目之前，请确保已按照先决条件中的说明在 Azure 中预配了数据库。 出于本教程的目的，假设 Azure SQL 数据库的名称是“AdventureWorksAzure”，但是你可按照自己意愿使用任意名称命名。
 
 > [!IMPORTANT]
 > 如果你使用 SSIS，则 DMA 目前不支持迁移源 SSISDB，但你可以将 SSIS 项目/包重新部署到由 Azure SQL 数据库托管的目标 SSISDB。 有关如何迁移 SSIS 包的详细信息，请参阅[将 SQL Server Integration Services 包迁移到 Azure](/dms/how-to-migrate-ssis-packages)。

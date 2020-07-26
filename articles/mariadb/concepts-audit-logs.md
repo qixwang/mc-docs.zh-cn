@@ -5,23 +5,23 @@ author: WenJason
 ms.author: v-jay
 ms.service: mariadb
 ms.topic: conceptual
-origin.date: 3/19/2019
-ms.date: 04/27/2020
-ms.openlocfilehash: 1ed12a4066063ec0e13b3fecfe83f706cb794df2
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+origin.date: 6/24/2020
+ms.date: 07/20/2020
+ms.openlocfilehash: 180a88a7299a09d6ab09a7ada719cafa68b09676
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82127065"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440325"
 ---
 # <a name="audit-logs-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的审核日志
 
 在 Azure Database for MariaDB 中，审核日志可供用户使用。 审核日志可以用来跟踪数据库级别的活动，通常用于确保符合性。
 
-> [!IMPORTANT]
-> 审核日志功能目前为预览版。
-
 ## <a name="configure-audit-logging"></a>配置审核日志记录
+
+>[!IMPORTANT]
+> 建议仅记录审核所需的事件类型和用户，以确保服务器的性能不会受到严重影响。
 
 默认情况下，审核日志被禁用。 若要启用它，请将 `audit_log_enabled` 设置为 ON。
 
@@ -29,9 +29,10 @@ ms.locfileid: "82127065"
 
 - `audit_log_events`：控制要记录的事件。 请查看下表以了解具体的审核事件。
 - `audit_log_include_users`：要包含在日志记录中的 MariaDB 用户。 此参数的默认值为空，这将包括所有用户进行日志记录。 此参数的优先级高于 `audit_log_exclude_users`。 此参数的最大长度为 512 个字符。
+- `audit_log_exclude_users`：要从日志记录中排除的 MariaDB 用户。 最多允许对四个用户这样做。 参数的最大长度为 256 个字符。
+
 > [!Note]
 > `audit_log_include_users` 的优先级高于 `audit_log_exclude_users`。 例如，如果 `audit_log_include_users` = `demouser` 并且 `audit_log_exclude_users` = `demouser`，则会将该用户包括在审核日志中，因为 `audit_log_include_users` 的优先级更高。
-- `audit_log_exclude_users`：要从日志记录中排除的 MariaDB 用户。 最多允许对四个用户这样做。 参数的最大长度为 256 个字符。
 
 | **事件** | **说明** |
 |---|---|
@@ -80,6 +81,9 @@ ms.locfileid: "82127065"
 ### <a name="general"></a>常规
 
 下面的架构适用于 GENERAL、DML_SELECT、DML_NONSELECT、DML、DDL、DCL 和 ADMIN 事件类型。
+
+> [!NOTE]
+> 对于 `sql_text`，如果日志超过 2048 个字符，则会截断日志。
 
 | **属性** | **说明** |
 |---|---|

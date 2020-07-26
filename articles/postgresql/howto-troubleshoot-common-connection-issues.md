@@ -7,13 +7,13 @@ ms.author: v-jay
 ms.service: postgresql
 ms.topic: conceptual
 origin.date: 5/6/2019
-ms.date: 06/08/2020
-ms.openlocfilehash: 1b0f7e7ee2f9cf33ca24f6745d0e364e7366894d
-ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
+ms.date: 07/20/2020
+ms.openlocfilehash: 3c2cb81fb44dfcd05f38cbf251a7dc72b95c3cb5
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84275586"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440316"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---single-server"></a>排查 Azure Databases for PostgreSQL - 单一服务器的连接问题
 
@@ -51,6 +51,7 @@ ms.locfileid: "84275586"
 * 客户端防火墙配置：客户端的防火墙必须允许连接到数据库服务器。 对于无法访问的服务器 IP 地址和端口，必需授予其访问权限，并且必须允许使用某些防火墙的应用程序名称（如 PostgreSQL）。
 * 用户失误：例如，你可能错误键入了连接参数（例如，在连接字符串中键入了服务器名称，或者在用户名中遗漏了 *\@servername* 后缀）。
 * 如果看到“服务器未配置为允许 IPv6 连接”错误，则请注意，基本层不支持 VNet 服务终结点。 必须从子网中删除尝试连接到“基本”服务器的 Microsoft.Sql 终结点。
+* 如果看到连接错误“未在其中编译 SSL 支持时，sslmode 值 ‘***’ 无效”，则表示 PostgreSQL 客户端不支持 SSL。 最有可能的是，客户端 libpq 尚未使用“--with-openssl”标志进行编译。 请尝试使用带有 SSL 支持的 PostgreSQL 客户端进行连接。 
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>解决永久性连接问题的步骤
 

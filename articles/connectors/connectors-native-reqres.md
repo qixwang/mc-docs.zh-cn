@@ -5,41 +5,30 @@ services: logic-apps
 ms.suite: integration
 ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
-origin.date: 05/06/2020
-ms.date: 06/08/2020
+origin.date: 05/29/2020
+ms.date: 07/20/2020
+ms.testscope: no
+ms.testdate: 06/08/2020
 ms.author: v-yeche
 tags: connectors
-ms.openlocfilehash: 65cfc5476ba39fe2e8fcb0531e2022b36a59dd64
-ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
+ms.openlocfilehash: e398ec5f8112bfa5fa7957eaeada8407c3374730
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84564279"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414668"
 ---
-# <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>使用 Azure 逻辑应用接收和响应入站 HTTPS 请求
+# <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>在 Azure 逻辑应用中接收和响应入站 HTTPS 请求
 
-借助 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和内置的请求触发器和响应操作，可以创建用于接收和响应传入的 HTTPS 请求的自动化任务和工作流。 例如，可以使用逻辑应用：
+借助 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和内置的请求触发器和响应操作，可以创建用于接收和响应传入的 HTTPS 请求的自动化任务和工作流。 例如，使用逻辑应用，你可以完成以下操作：
 
 * 接收并响应对本地数据库中数据的 HTTPS 请求。
+
 * 发生外部 Webhook 事件时触发工作流。
-* 接收并响应来自另一个逻辑应用的 HTTPS 调用。
+
+* 接收来自其他逻辑应用的 HTTPS 调用并对其作出响应。
 
 请求触发器支持 [Azure Active Directory Open Authorization](../active-directory/develop/about-microsoft-identity-platform.md) (Azure AD OAuth)，用于授权对逻辑应用的入站调用。 有关如何启用此身份验证的详细信息，请参阅[保护 Azure 逻辑应用中的访问和数据安全 - 启用 Azure AD OAuth 身份验证](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth)。
-
-> [!NOTE]
-> 对于传入呼叫，请求触发器仅支持** 传输层安全 (TLS) 1.2。 传出调用支持 TLS 1.0、1.1 和 1.2。 有关详细信息，请参阅[解决 TLS 1.0 问题](https://docs.microsoft.com/security/solving-tls1-problem/)。
->
-> 如果出现 TLS 握手错误，请确保使用 TLS 1.2。 
-> 对于传入调用，以下是受支持的密码套件：
->
-> * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
-> * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
-> * TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-> * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-> * TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
-> * TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
-> * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
-> * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -47,19 +36,43 @@ ms.locfileid: "84564279"
 
 * 有关[逻辑应用](../logic-apps/logic-apps-overview.md)的基本知识。 如果不熟悉逻辑应用，请了解[如何创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
+<a name="tls-support"></a>
+
+## <a name="transport-layer-security-tls"></a>传输层安全 (TLS) (Transport Layer Security) (TLS)
+
+* 入站调用仅支持传输层安全性 (TLS) 1.2。 如果出现 TLS 握手错误，请确保使用 TLS 1.2。 有关详细信息，请参阅[解决 TLS 1.0 问题](https://docs.microsoft.com/security/solving-tls1-problem)。 出站调用支持 TLS 1.0、1.1 和 1.2，具体取决于目标终结点的功能。
+
+* 入站调用支持以下密码套件：
+
+    * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+
+    * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+
+    * TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+
+    * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+
+    * TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+
+    * TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+
+    * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+
+    * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+
 <a name="add-request"></a>
 
 ## <a name="add-request-trigger"></a>添加请求触发器
 
-此内置触发器创建可手动调用的 HTTPS 终结点，该终结点只能接收** 传入的 HTTPS 请求。 发生此事件时，该触发器将会激发，并运行逻辑应用。 有关触发器的基础 JSON 定义以及如何调用此触发器的详细信息，请参阅[请求触发器类型](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger)和[通过 Azure 逻辑应用中的 HTTPS 终结点调用、触发或嵌套工作流](../logic-apps/logic-apps-http-endpoint.md)。
+此内置触发器创建可手动调用的 HTTPS 终结点，该终结点只能接收传入的 HTTPS 请求。 发生此事件时，触发器将触发并运行逻辑应用。 有关触发器的基础 JSON 定义以及如何调用此触发器的详细信息，请参阅[请求触发器类型](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger)和[通过 Azure 逻辑应用中的 HTTPS 终结点调用、触发或嵌套工作流](../logic-apps/logic-apps-http-endpoint.md)。
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。 创建空白逻辑应用。
 
-1. 逻辑应用设计器打开后，在搜索框中，输入 `http request` 作为筛选器。 在触发器列表中，选择“收到 HTTP 请求时”触发器（逻辑应用工作流中的第一个步骤）。****
+1. 逻辑应用设计器打开后，在搜索框中，输入 `http request` 作为筛选器。 从触发器列表中，选择“当收到 HTTP 请求时”触发器，这是逻辑应用工作流中的第一步。
 
     ![选择请求触发器](./media/connectors-native-reqres/select-request-trigger.png)
 
-    “请求”触发器显示以下属性：
+    请求触发器显示以下属性：
 
     ![请求触发器](./media/connectors-native-reqres/request-trigger.png)
 
@@ -69,7 +82,7 @@ ms.locfileid: "84564279"
     | **请求正文 JSON 架构** | `schema` | 否 | 描述传入请求正文中的属性和值的 JSON 架构 |
     |||||
 
-1. 在“请求正文 JSON 架构”框中，有选择性地输入一个用于描述传入请求中的正文的 JSON 架构，例如：****
+1. 在“请求正文 JSON 架构”框中，有选择性地输入一个用于描述传入请求中的正文的 JSON 架构，例如：
 
     ![示例 JSON 架构](./media/connectors-native-reqres/provide-json-schema.png)
 
@@ -133,11 +146,11 @@ ms.locfileid: "84564279"
 
     若要生成基于预期有效负载（数据）的 JSON 架构，可以使用 [JSONSchema.net](https://jsonschema.net) 之类的工具，也可以执行以下步骤：
 
-    1. 在请求触发器中，选择“使用示例有效负载生成架构”。****
+    1. 在请求触发器中，选择“使用示例有效负载生成架构”。
 
         ![基于有效负载生成架构](./media/connectors-native-reqres/generate-from-sample-payload.png)
 
-    1. 输入示例有效负载，然后选择“完成”。****
+    1. 输入示例有效负载，然后选择“完成”。
 
         ![基于有效负载生成架构](./media/connectors-native-reqres/enter-payload.png)
 
@@ -160,7 +173,15 @@ ms.locfileid: "84564279"
         }
         ```
 
-1. 若要添加其他属性，请打开“添加新参数”列表，并选择要添加的参数。****
+1. 若要检查入站调用是否具有与指定架构匹配的请求正文，请执行以下步骤：
+
+    1. 在请求触发器的标题栏中，选择省略号按钮 ( **...** )。
+
+    1. 在触发器的设置中，开启“架构验证”，然后选择“完成”。
+
+        如果入站调用的请求正文与架构不匹配，则触发器会返回“`HTTP 400 Bad Request`”错误。
+
+1. 若要添加其他属性，请打开“添加新参数”列表，并选择要添加的参数。
 
     | 属性名称 | JSON 属性名称 | 必须 | 说明 |
     |---------------|--------------------|----------|-------------|
@@ -176,17 +197,20 @@ ms.locfileid: "84564279"
 
     ![选择方法](./media/connectors-native-reqres/select-method.png)
 
-1. 现在，添加另一个操作作为工作流中的下一步骤。 在触发器下，选择“下一步骤”，以便可以找到要添加的操作。****
+1. 现在，添加另一个操作作为工作流中的下一步骤。 在触发器下，选择“下一步骤”，以便可以找到要添加的操作。
 
-    例如，可以通过[添加“响应”操作](#add-response)（可用于返回自定义的响应，本主题稍后将做介绍）来响应请求。
+    例如，可以通过[添加响应操作](#add-response)来响应请求，该响应操作可用于返回自定义响应，本主题后面部分将介绍此相关内容。
 
-    逻辑应用只会使传入的请求保持打开一分钟。 假设逻辑应用工作流包含“响应”操作，如果在这段时间后逻辑应用未返回响应，则逻辑应用会向调用方返回 `504 GATEWAY TIMEOUT`。 否则，如果逻辑应用不包含“响应”操作，则逻辑应用会立即向调用方返回 `202 ACCEPTED` 响应。
+    逻辑应用仅在[有限的时间](../logic-apps/logic-apps-limits-and-config.md#request-limits)内使传入请求保持打开状态。 假设逻辑应用工作流包含响应操作，如果该逻辑应用在此时间之后没有返回响应，则逻辑应用会将 `504 GATEWAY TIMEOUT` 返回给调用方。 否则，如果逻辑应用不包含“响应”操作，则逻辑应用会立即向调用方返回 `202 ACCEPTED` 响应。
 
-1. 完成后，保存逻辑应用。 在设计器工具栏上选择“保存”。**** 
+1. 完成后，保存逻辑应用。 在设计器工具栏上选择“保存”。 
 
     此步骤生成一个 URL，用于发送触发逻辑应用的请求。 若要复制此 URL，请选择 URL 旁边的复制图标。
 
     ![用于触发逻辑应用的 URL](./media/connectors-native-reqres/generated-url.png)
+
+    > [!NOTE]
+    > 若要在调用请求触发器时在 URI 中包含哈希符号或井号（“#”），请改用此编码版本：`%25%23`
 
 1. 若要触发逻辑应用，请将 HTTP POST 发送到生成的 URL。
 
@@ -206,11 +230,11 @@ ms.locfileid: "84564279"
 
 <a name="add-response"></a>
 
-## <a name="add-a-response-action"></a>添加“响应”操作
+## <a name="add-a-response-action"></a>添加响应操作
 
-可以使用“响应”操作以有效负载（数据）响应传入的 HTTPS 请求，但只能在由 HTTPS 请求触发的逻辑应用中响应。 可以在工作流中的任意位置添加“响应”操作。 有关此触发器的基础 JSON 定义的详细信息，请参阅[“响应”操作类型](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action)。
+可以使用“响应”操作以有效负载（数据）响应传入的 HTTPS 请求，但只能在由 HTTPS 请求触发的逻辑应用中响应。 可以随时在工作流中添加响应操作。 有关此触发器的基础 JSON 定义的详细信息，请参阅[响应操作类型](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action)。
 
-逻辑应用只会使传入的请求保持打开一分钟。 假设逻辑应用工作流包含“响应”操作，如果在这段时间后逻辑应用未返回响应，则逻辑应用会向调用方返回 `504 GATEWAY TIMEOUT`。 否则，如果逻辑应用不包含“响应”操作，则逻辑应用会立即向调用方返回 `202 ACCEPTED` 响应。
+逻辑应用仅在[有限的时间](../logic-apps/logic-apps-limits-and-config.md#request-limits)内使传入请求保持打开状态。 假设逻辑应用工作流包含响应操作，如果该逻辑应用在此时间之后没有返回响应，则逻辑应用会将 `504 GATEWAY TIMEOUT` 返回给调用方。 否则，如果逻辑应用不包含响应操作，则逻辑应用会立即将 `202 ACCEPTED` 响应返回给调用方。
 
 > [!IMPORTANT]
 > 如果响应操作包含这些标头，则逻辑应用会从生成的响应消息中删除这些标头，且不显示任何警告或错误：
@@ -225,15 +249,15 @@ ms.locfileid: "84564279"
 >
 > 尽管逻辑应用不会阻止保存具有这些标头的响应操作的逻辑应用，但逻辑应用会忽略这些标头。
 
-1. 在逻辑应用设计器中要添加“响应”操作的步骤下，选择“新建步骤”****。
+1. 在逻辑应用设计器中，在要添加响应操作的步骤下，选择“新步骤”。
 
     例如，使用前面所述的“请求”触发器：
 
     ![添加新步骤](./media/connectors-native-reqres/add-response.png)
 
-    若要在步骤之间添加操作，请将鼠标指针移到这些步骤之间的箭头上。 选择出现的加号 ( **+** )，然后选择“添加操作”。****
+    若要在步骤之间添加操作，请将鼠标指针移到这些步骤之间的箭头上。 选择出现的加号 (+)，然后选择“添加操作”。
 
-1. 在“选择操作”**** 下的搜索框中，输入“响应”作为筛选器，然后选择“响应”操作。****
+1. 在“选择操作”下的搜索框中，输入“响应”作为筛选器，然后选择“响应”操作。
 
     ![选择“响应”操作](./media/connectors-native-reqres/select-response-action.png)
 
@@ -243,11 +267,11 @@ ms.locfileid: "84564279"
 
     单击某些字段中的框会打开动态内容列表。 然后，可以从工作流中的前面步骤选择表示可用输出的标记。 在上述示例中指定的架构内的属性现在会显示在动态内容列表中。
 
-    例如，对于“标头”框，请包含 `Content-Type` 作为键名称，并将键值设置为 `application/json`，如本主题前面所述。**** 对于“正文”框，可以从动态内容列表中选择触发器正文输出。****
+    例如，对于“标头”框，请包含 `Content-Type` 作为键名称，并将键值设置为 `application/json`，如本主题前面所述。 对于“正文”框，可以从动态内容列表中选择触发器正文输出。
 
     ![“响应”操作详细信息](./media/connectors-native-reqres/response-details.png)
 
-    若要查看 JSON 格式的标头，请选择“切换到文本视图”。****
+    若要查看 JSON 格式的标头，请选择“切换到文本视图”。
 
     ![标头 - 切换到文本视图](./media/connectors-native-reqres/switch-to-text-view.png)
 
@@ -260,9 +284,9 @@ ms.locfileid: "84564279"
     | **正文** | `body` | 否 | 响应正文 |
     |||||
 
-1. 若要添加其他属性，例如响应正文的 JSON 架构，请打开“添加新参数”列表，并选择要添加的参数。****
+1. 若要添加其他属性，例如响应正文的 JSON 架构，请打开“添加新参数”列表，并选择要添加的参数。
 
-1. 完成后，保存逻辑应用。 在设计器工具栏上选择“保存”。**** 
+1. 完成后，保存逻辑应用。 在设计器工具栏上选择“保存”。 
 
 ## <a name="next-steps"></a>后续步骤
 

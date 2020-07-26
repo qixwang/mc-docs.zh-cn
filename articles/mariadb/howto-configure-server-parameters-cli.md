@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: conceptual
 origin.date: 6/11/2020
 ms.date: 04/27/2020
-ms.openlocfilehash: f5238f52df9bc2f1392fa3a11e5bfbc5c52e06d5
-ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
+ms.openlocfilehash: 11af902eab0806f3eb018d8698d392fa5a2b82bb
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85845903"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440517"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mariadb-using-the-azure-cli"></a>使用 Azure CLI 在 Azure Database for MariaDB 中配置服务器参数
 可以使用 Azure CLI、Azure 命令行实用工具来列出、显示和更新 Azure Database for MariaDB 服务器的配置参数。 在服务器级别会公开引擎配置的一个子集，并可以进行修改。
@@ -26,7 +26,7 @@ ms.locfileid: "85845903"
 ## <a name="list-server-configuration-parameters-for-azure-database-for-mariadb-server"></a>列出 Azure Database for MariaDB 服务器的服务器配置参数
 若要列出服务器中的所有可修改参数及其值，请运行 [az mariadb server configuration list](https://docs.microsoft.com/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-list) 命令。
 
-可以列出资源组 **myresourcegroup** 下服务器 **mydemoserver.mariadb.database.azure.com** 的服务器配置参数。
+可以列出资源组“myresourcegroup”下服务器 mydemoserver.mariadb.database.chinacloudapi.cn 的服务器配置参数。
 ```azurecli
 az mariadb server configuration list --resource-group myresourcegroup --server mydemoserver
 ```
@@ -57,7 +57,7 @@ az mariadb server configuration set --name slow_query_log --resource-group myres
 此代码会将 slow\_query\_log 配置重置为默认值 OFF。 
 
 ## <a name="setting-parameters-not-listed"></a>未列出设置参数
-如果 Azure 门户中未列出你要更新的服务器参数，则可以选择性使用 `init_connect` 在连接级别设置参数。 此项可为每个连接到服务器的客户端设置服务器参数。 
+如果 Azure 门户中未列出你要更新的服务器参数，则可以选择性地使用 `init_connect` 在连接级别设置参数。 此项可为每个连接到服务器的客户端设置服务器参数。 
 
 更新资源组 myresourcegroup 下的服务器 mydemoserver.mariadb.database.chinacloudapi.cn 的 init\_connect 服务器配置参数，以设置字符集之类的值  。
 ```azurecli

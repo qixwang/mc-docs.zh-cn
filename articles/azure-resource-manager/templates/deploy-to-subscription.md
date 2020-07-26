@@ -2,15 +2,17 @@
 title: 将资源部署到订阅
 description: 介绍了如何在 Azure 资源管理器模板中创建资源组。 它还展示了如何在 Azure 订阅范围内部署资源。
 ms.topic: conceptual
-origin.date: 05/18/2020
-ms.date: 06/22/2020
+origin.date: 07/01/2020
+ms.date: 07/20/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: b80c7bca92869abfeaab502772d04fa0196a4aa2
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: 8375e67b523d3fd869c3659fb0368182e6228109
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098283"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86441107"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>在订阅级别创建资源组和资源
 
@@ -19,15 +21,16 @@ ms.locfileid: "85098283"
 > [!NOTE]
 > 可在订阅级别部署中部署到 800 个不同的资源组。
 
-若要在订阅级别部署模板，请使用 Azure CLI、PowerShell 或 REST API。 Azure 门户不支持在订阅级别部署。
+若要在订阅级别部署模板，请使用 Azure CLI、PowerShell 或 REST API。
 
 ## <a name="supported-resources"></a>支持的资源
 
 可以在订阅级别部署以下资源类型：
 
-    <!--Not Available on blueprints-->
-    
-* 预算
+* blueprints
+
+    <!--Not Available on * budgets-->
+
 * 部署 - 适用于部署到资源组的嵌套模板。
 * eventSubscriptions
     
@@ -45,6 +48,8 @@ ms.locfileid: "85098283"
     <!--Not Available on supportPlanTypes-->
     
 * tags
+* workspacesettings
+
 <!--Noy Available on * [blueprints](https://docs.microsoft.com/azure/templates/microsoft.blueprint/blueprints)-->
 <!--Noy Available on * [budgets](https://docs.microsoft.com/azure/templates/microsoft.consumption/budgets)-->
 <!--Noy Available on * [deployments](https://docs.microsoft.com/azure/templates/microsoft.resources/deployments)-->
@@ -57,6 +62,7 @@ ms.locfileid: "85098283"
 <!--Noy Available on * [roleAssignments](https://docs.microsoft.com/azure/templates/microsoft.authorization/roleassignments)-->
 <!--Noy Available on * [roleDefinitions](https://docs.microsoft.com/azure/templates/microsoft.authorization/roledefinitions)-->
 <!--Noy Available on * [tags](https://docs.microsoft.com/azure/templates/microsoft.resources/tags)-->
+<!--Not Available on * [workspacesettings](https://docs.microsoft.com/azure/templates/microsoft.security/workspacesettings)-->
 
 ### <a name="schema"></a>架构
 
@@ -402,7 +408,97 @@ New-AzSubscriptionDeployment `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policydefineandassign.json"
 ```
 
-<!--Noy Available on * [blueprints](https://docs.microsoft.com/azure/templates/microsoft.blueprint/blueprints)-->
+<!--MOONCAKE CUSTOMIZTION: CORRECT ON Azure Blueprints-->
+
+## <a name="azure-blueprints"></a>Azure 蓝图
+
+### <a name="create-blueprint-definition"></a>创建蓝图定义
+
+可通过模板创建蓝图定义。
+
+<!--Not Available on [create](../../governance/blueprints/tutorials/create-from-sample.md)-->
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "blueprintName": {
+      "defaultValue": "sample-blueprint",
+      "type": "String",
+      "metadata": {
+        "description": "The name of the blueprint definition."
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Blueprint/blueprints",
+      "apiVersion": "2018-11-01-preview",
+      "name": "[parameters('blueprintName')]",
+      "properties": {
+        "targetScope": "subscription",
+        "description": "Blueprint with a policy assignment artifact.",
+        "resourceGroups": {
+          "sampleRg": {
+            "description": "Resource group to add the assignment to."
+          }
+        },
+        "parameters": {
+          "listOfResourceTypesNotAllowed": {
+            "type": "array",
+            "metadata": {
+              "displayName": "Resource types to pass to the policy assignment artifact."
+            },
+            "defaultValue": [
+              "Citrix.Cloud/accounts"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Blueprint/blueprints/artifacts",
+      "apiVersion": "2018-11-01-preview",
+      "name": "[concat(parameters('blueprintName'), '/policyArtifact')]",
+      "kind": "policyAssignment",
+      "dependsOn": [
+        "[parameters('blueprintName')]"
+      ],
+      "properties": {
+        "displayName": "Blocked Resource Types policy definition",
+        "description": "Block certain resource types",
+        "policyDefinitionId": "[tenantResourceId('Microsoft.Authorization/policyDefinitions', '6c112d4e-5bc7-47ae-a041-ea2d9dccd749')]",
+        "resourceGroup": "sampleRg",
+        "parameters": {
+          "listOfResourceTypesNotAllowed": {
+            "value": "[[parameters('listOfResourceTypesNotAllowed')]"
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+若要在订阅中创建蓝图定义，请使用以下 CLI 命令：
+
+```azurecli
+az deployment sub create \
+  --name demoDeployment \
+  --location chinaeast \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/subscription-deployments/blueprints-new-blueprint/azuredeploy.json"
+```
+
+若要使用 PowerShell 部署此模板，请使用：
+
+```azurepowershell
+New-AzSubscriptionDeployment `
+  -Name demoDeployment `
+  -Location chinaeast `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/subscription-deployments/blueprints-new-blueprint/azuredeploy.json"
+```
+
 ## <a name="template-samples"></a>模板示例
 
 * [创建资源组、将其锁定并授予其权限](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-deployments/create-rg-lock-role-assignment)。

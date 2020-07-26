@@ -6,20 +6,20 @@ ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
 origin.date: 4/13/2020
-ms.date: 04/27/2020
-ms.openlocfilehash: ef02f461fc127b76db34ba157b31157ce0a1708d
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.date: 07/20/2020
+ms.openlocfilehash: a1c0d295db58cbfb59afe1f4abf5909660458afe
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82127217"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440448"
 ---
 # <a name="configure-and-access-audit-logs-in-the-azure-cli"></a>在 Azure CLI 中配置和访问审核日志
 
-可以从 Azure CLI 配置 [Azure Database for MySQL 审核日志](concepts-audit-logs.md)。
+> [!NOTE] 
+> 将要查看的是 Azure Database for MySQL 的新服务。 若要查看经典 MySQL Database for Azure 的文档，请访问[此页](https://docs.azure.cn/zh-cn/mysql-database-on-azure/)。
 
-> [!IMPORTANT]
-> 审核日志功能目前为预览版。
+可以从 Azure CLI 配置 [Azure Database for MySQL 审核日志](concepts-audit-logs.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -32,9 +32,12 @@ ms.locfileid: "82127217"
 
 ## <a name="configure-audit-logging"></a>配置审核日志记录
 
+>[!IMPORTANT]
+> 建议仅记录审核所需的事件类型和用户，以确保服务器的性能不会受到严重影响。
+
 使用以下步骤启用和配置审核日志记录：
 
-1. 通过将“audit_logs_enabled”  参数设为“ON”来启用审核日志。 
+1. 通过将“audit_logs_enabled”参数设为“ON”来启用审核日志。 
     ```azurecli
     az mysql server configuration set --name audit_log_enabled --resource-group myresourcegroup --server mydemoserver --value ON
     ```
@@ -49,7 +52,7 @@ ms.locfileid: "82127217"
     az mysql server configuration set --name audit_log_exclude_users --resource-group myresourcegroup --server mydemoserver --value "azure_superuser"
     ```
 
-1. 通过更新“audit_log_include_users”  参数，添加要包括在日志记录中的任何特定 MySQL 用户。 通过提供 MySQL 用户名来指定用户。
+1. 通过更新“audit_log_include_users”参数，添加要包括在日志记录中的任何特定 MySQL 用户。 通过提供 MySQL 用户名来指定用户。
     ```azurecli
     az mysql server configuration set --name audit_log_include_users --resource-group myresourcegroup --server mydemoserver --value "sampleuser"
     ```

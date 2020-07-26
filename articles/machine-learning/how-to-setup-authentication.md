@@ -3,35 +3,32 @@ title: 设置身份验证
 titleSuffix: Azure Machine Learning
 description: 了解如何为 Azure 机器学习中的各种资源和工作流设置和配置身份验证。 可以通过多种方式在服务中配置和使用身份验证，范围从出于开发或测试目的而进行的基于 UI 的简单身份验证，到完整的 Azure Active Directory 服务主体身份验证不等。
 services: machine-learning
-author: trevorbye
-ms.author: trbye
-ms.reviewer: trbye
+author: larryfr
+ms.author: larryfr
+ms.reviewer: larryfr
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.date: 12/17/2019
+ms.date: 06/17/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: e7b4f91ca94b4afeb9ef6a2106c7a6322488103f
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: 57d17716746ab0f10db3d78a66b352425ba47a58
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097135"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86441029"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>为 Azure 机器学习资源和工作流设置身份验证
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-本文介绍了如何为 Azure 机器学习中的各种资源和工作流程设置和配置身份验证。 可以通过多种方式对服务进行身份验证，范围从出于开发或测试目的而进行的基于 UI 的简单身份验证，到完整的 Azure Active Directory 服务主体身份验证不等。 本文还介绍了 Web 服务身份验证的工作原理，以及如何对 Azure 机器学习 REST API 进行身份验证。
+了解如何向 Azure 机器学习工作区进行身份验证，以及如何向部署为 Web 服务的模型进行身份验证。
 
-该操作说明展示了如何执行以下任务：
+通常，可将两种类型的身份验证用于 Azure 机器学习：
 
-* 使用交互式 UI 身份验证进行测试/开发
-* 设置服务主体身份验证
-* 对工作区进行身份验证
-* 获取 Azure 机器学习 REST API 的 OAuth2.0 持有者类型令牌
-* 了解 Web 服务身份验证
+* __交互式__：你可以使用 Azure Active Directory 中的帐户直接进行身份验证，或者使用它来获取用于身份验证的令牌。 在试验和迭代开发期间，你使用交互式身份验证。 或者，如果你想基于每个用户控制对资源（例如 Web 服务）的访问，也使用此类身份验证。
+* __服务主体__：在 Azure Active Directory 中创建一个服务主体帐户，并使用它来进行身份验证或获取令牌。 当需要使用自动化过程向服务进行身份验证时，将使用服务主体，无需用户交互。 例如连续集成和部署脚本，它可以在训练代码每次发生更改时对模型进行训练和测试。 在下列情况下，还可以使用服务主体来检索一个用于向 Web 服务进行身份验证的令牌：你不想要求服务的最终用户进行身份验证； 或者，没有直接使用 Azure Active Directory 执行最终用户身份验证。
 
-有关 Azure 机器学习内的安全性和身份验证的一般性概述，请参阅[概念文章](concept-enterprise-security.md)。
+无论使用何种身份验证类型，都可以使用基于角色的访问控制 (RBAC) 来限定允许拥有的对资源的访问权限级别。 例如，用于获取已部署模型的访问令牌的帐户只需要对工作区的读取访问权限。 有关 RBAC 的详细信息，请参阅[管理对 Azure 机器学习工作区的访问权限](how-to-assign-roles.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,107 +37,124 @@ ms.locfileid: "85097135"
 
 ## <a name="interactive-authentication"></a>交互式身份验证
 
-此服务文档中的大多示例都使用 Jupyter Notebook 中的交互式身份验证作为测试和演示的一种简单方法。 这是一种测试正在生成的内容的轻量级方法。 有两个函数调用会自动提示你使用基于 UI 的身份验证流。
+文档和样本中的大多数示例都使用交互式身份验证。 例如，当使用 SDK 时，有两个函数调用会自动提示你使用基于 UI 的身份验证流：
 
-调用 `from_config()` 函数会触发提示。
+* 调用 `from_config()` 函数会触发提示。
 
-```python
-from azureml.core import Workspace
-ws = Workspace.from_config()
-```
+    ```python
+    from azureml.core import Workspace
+    ws = Workspace.from_config()
+    ```
 
-函数 `from_config()` 查找包含工作区连接信息的 JSON 文件。 也可使用 `Workspace` 构造函数显式指定连接详细信息，这也会提示进行交互式身份验证。 这两个调用都是等效的。
+    函数 `from_config()` 查找包含工作区连接信息的 JSON 文件。
 
-```python
-ws = Workspace(subscription_id="your-sub-id",
-               resource_group="your-resource-group-id",
-               workspace_name="your-workspace-name"
-              )
-```
+* 使用 `Workspace` 构造函数来提供订阅、资源组和工作区信息时，系统也会提示你进行交互式身份验证。
 
-如果你可访问多个租户，则可能需要导入类并显式定义目标租户。 与上述调用类似，为 `InteractiveLoginAuthentication` 调用构造函数也会提示你登录。
-
-```python
-from azureml.core.authentication import InteractiveLoginAuthentication
-interactive_auth = InteractiveLoginAuthentication(tenant_id="your-tenant-id")
-```
-
-尽管交互式身份验证对测试和学习很有帮助，但它对于你构建自动化工作流或无外设工作流并没有什么用。 对于使用 SDK 的自动化流程，最佳做法是设置服务主体身份验证。
-
-## <a name="set-up-service-principal-authentication"></a>设置服务主体身份验证
-
-如果需要启用与特定用户登录相互独立的身份验证，则需要此流程，以便在自动化工作流中对 Azure 机器学习 Python SDK 进行身份验证。 服务主体身份验证还可[对 REST API 进行身份验证](#azure-machine-learning-rest-api-auth)。
+    ```python
+    ws = Workspace(subscription_id="your-sub-id",
+                  resource_group="your-resource-group-id",
+                  workspace_name="your-workspace-name"
+                  )
+    ```
 
 > [!TIP]
-> 服务主体必须通过 [Azure 基于角色的访问控制 (RBAC)](../role-based-access-control/overview.md) 访问工作区。
+> 如果你可访问多个租户，则可能需要导入类并显式定义目标租户。 与上述调用类似，为 `InteractiveLoginAuthentication` 调用构造函数也会提示你登录。
 >
-> 通过在工作区中使用内置的“所有者”或“贡献者”角色，服务主体能够执行所有活动，如训练模型、部署模型等 。有关使用角色的详细信息，请参阅[管理对 Azure 机器学习工作区的访问权限](how-to-assign-roles.md)。
+> ```python
+> from azureml.core.authentication import InteractiveLoginAuthentication
+> interactive_auth = InteractiveLoginAuthentication(tenant_id="your-tenant-id")
+> ```
 
-若要设置服务主体身份验证，首先请在 Azure Active Directory 中创建应用注册，然后为应用分配角色。 
+## <a name="service-principal-authentication"></a>服务主体身份验证
 
+若要使用服务主体 (SP) 身份验证，必须先创建 SP，并向其授予对工作区的访问权限。 如前文所述，将使用 Azure 基于角色的访问控制 (RBAC) 来控制访问，因此你还必须确定要授予 SP 的访问权限。
 
-```azurecli
-az extension add -n azure-cli-ml
-```
+> [!IMPORTANT]
+> 使用服务主体时，请向它授予它所用于的__任务所需的最低访问权限__。 例如，如果服务主体仅用于读取 Web 部署的访问令牌，则不要向服务主体授予所有者或参与者访问权限。
+>
+> 授予最低访问权限的原因是服务主体使用密码进行身份验证，并且该密码可以存储为自动化脚本的一部分。 如果密码泄漏，由于用户仅拥有执行特定任务所需的最低访问权限，因此可最大程度地减少对 SP 的恶意使用。
+
+创建 SP 并向其授予对工作区的访问权限的最简单方法是使用 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。 若要创建服务主体并向其授予对工作区的访问权限，请执行以下步骤：
 
 > [!NOTE]
-> 必须是订阅的管理员才能执行以下步骤。
+> 你必须是订阅的管理员才能执行所有这些步骤。
 
-接下来，运行以下命令以创建服务主主体。 为该主体指定一个名称，在本例中为 ml-ayth。
+1. 对 Azure 订阅进行身份验证：
 
-```azurecli
-az ad sp create-for-rbac --sdk-auth --name ml-auth
-```
+    ```azurecli-interactive
+    az login
+    ```
 
-输出将是类似于如以下所示的 JSON。 记下 `clientId`、`clientSecret` 和 `tenantId` 字段，因为在本文的其他步骤中你需要用到它们。
+    如果 CLI 可以打开默认的浏览器，则它会打开该浏览器并加载登录页。 否则，需要打开浏览器并按照命令行中的说明操作。 按说明操作时，需要浏览到 [https://aka.ms/devicelogin](https://aka.ms/devicelogin) 并输入授权代码。
 
-```json
-{
-    "clientId": "your-client-id",
-    "clientSecret": "your-client-secret",
-    "subscriptionId": "your-sub-id",
-    "tenantId": "your-tenant-id",
-    "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
-    "resourceManagerEndpointUrl": "https://management.azure.com",
-    "activeDirectoryGraphResourceId": "https://graph.windows.net",
-    "sqlManagementEndpointUrl": "https://management.core.windows.net:5555",
-    "galleryEndpointUrl": "https://gallery.azure.com/",
-    "managementEndpointUrl": "https://management.core.windows.net"
-}
-```
+    [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
-接下来，运行以下命令，获取刚创建的服务主体的详细信息，使用上述 `clientId` 值作为 `--id` 参数的输入。
+    有关其他身份验证方法，请参阅[使用 Azure CLI 登录](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)。
 
-```azurecli
-az ad sp show --id your-client-id
-```
+1. 安装 Azure 机器学习扩展：
 
-以下是来自命令的 JSON 输出的简化示例。 记下 `objectId` 字段，因为你将在接下来的步骤中用到它的值。
+    ```azurecli-interactive
+    az extension add -n azure-cli-ml
+    ```
 
-```json
-{
-    "accountEnabled": "True",
-    "addIns": [],
-    "appDisplayName": "ml-auth",
-    ...
-    ...
-    ...
-    "objectId": "your-sp-object-id",
-    "objectType": "ServicePrincipal"
-}
-```
+1. 创建服务主体。 在以下示例中，将创建一个名为 **ml-auth** 的 SP：
 
-然后，使用以下命令将你的服务主体访问权限分配给机器学习工作区。 你将需要工作区名称，以及分别针对 `-w` 和 `-g` 参数的资源组名称。 对于 `--user` 参数，请使用 `objectId` 之前步骤中的 值。 可使用 `--role` 参数设置服务主体的访问角色，通常将使用“所有者”或“参与者” 角色。 两者都具有现有资源（如计算机群集和数据存储）的写权限，但只有“所有者”角色能预配这些资源。
+    ```azurecli-interactive
+    az ad sp create-for-rbac --sdk-auth --name ml-auth
+    ```
 
-```azurecli
-az ml workspace share -w your-workspace-name -g your-resource-group-name --user your-sp-object-id --role owner
-```
+    输出将是类似于如以下所示的 JSON。 记下 `clientId`、`clientSecret` 和 `tenantId` 字段，因为在本文的其他步骤中你需要用到它们。
 
-该调用不会生成任何输出，但你现在已具有为工作区设置的服务主体身份验证。
+    ```json
+    {
+        "clientId": "your-client-id",
+        "clientSecret": "your-client-secret",
+        "subscriptionId": "your-sub-id",
+        "tenantId": "your-tenant-id",
+        "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
+        "resourceManagerEndpointUrl": "https://management.azure.com",
+        "activeDirectoryGraphResourceId": "https://graph.windows.net",
+        "sqlManagementEndpointUrl": "https://management.core.windows.net:5555",
+        "galleryEndpointUrl": "https://gallery.azure.com/",
+        "managementEndpointUrl": "https://management.core.windows.net"
+    }
+    ```
 
-## <a name="authenticate-to-your-workspace"></a>对工作区进行身份验证
+1. 使用上一步返回的 `clientId` 值检索服务主体的详细信息：
 
-启用服务主体身份验证后，可以在 SDK 中对工作区进行身份验证，而无需作为用户进行物理登录。 使用 `ServicePrincipalAuthentication` 类构造函数，并使用从之前步骤中获取的值作为参数。 `tenant_id` 参数映射到上述的 `tenantId`，`service_principal_id` 映射到 `clientId`，`service_principal_password` 映射到 `clientSecret`。
+    ```azurecli-interactive
+    az ad sp show --id your-client-id
+    ```
+
+    下面的 JSON 是命令的输出的简化示例。 记下 `objectId` 字段，因为你将在接下来的步骤中用到它的值。
+
+    ```json
+    {
+        "accountEnabled": "True",
+        "addIns": [],
+        "appDisplayName": "ml-auth",
+        ...
+        ...
+        ...
+        "objectId": "your-sp-object-id",
+        "objectType": "ServicePrincipal"
+    }
+    ```
+
+1. 允许 SP 访问你的 Azure 机器学习工作区。 你将需要工作区名称，以及分别针对 `-w` 和 `-g` 参数的资源组名称。 对于 `--user` 参数，请使用 `objectId` 之前步骤中的 值。 `--role` 参数用于为服务主体设置访问角色。 在以下示例中，将向 SP 分配**所有者**角色。 
+
+    > [!IMPORTANT]
+    > 所有者访问权限允许服务主体在工作区中执行几乎所有操作。 本文档中使用它来演示如何授予访问权限；在生产环境中，Microsoft 建议你仅向服务主体授予行使目标角色职能所需的最低访问权限。 有关详细信息，请参阅[管理对 Azure 机器学习工作区的访问权限](how-to-assign-roles.md)。
+
+    ```azurecli-interactive
+    az ml workspace share -w your-workspace-name -g your-resource-group-name --user your-sp-object-id --role owner
+    ```
+
+    此调用在成功时不会生成任何输出。
+
+### <a name="use-a-service-principal-from-the-sdk"></a>从 SDK 中使用服务主体
+
+若要从 SDK 中使用服务主体向工作区进行身份验证，请使用 `ServicePrincipalAuthentication` 类构造函数。 使用创建服务提供程序时获得的值作为参数。 `tenant_id` 参数映射到上述的 `tenantId`，`service_principal_id` 映射到 `clientId`，`service_principal_password` 映射到 `clientSecret`。
 
 ```python
 from azureml.core.authentication import ServicePrincipalAuthentication
@@ -150,7 +164,7 @@ sp = ServicePrincipalAuthentication(tenant_id="your-tenant-id", # tenantID
                                     service_principal_password="your-client-secret") # clientSecret
 ```
 
-`sp` 变量现在包含身份验证对象，可直接在 SDK 中使用。 通常，建议将上述 ID/机密存储在环境变量中，如下面的代码所示。
+`sp` 变量现在包含身份验证对象，可直接在 SDK 中使用。 通常，建议将上述 ID/机密存储在环境变量中，如下面的代码所示。 存储在环境变量中可防止将信息意外地签入到 GitHub 存储库中。
 
 ```python
 import os
@@ -160,7 +174,7 @@ sp = ServicePrincipalAuthentication(tenant_id=os.environ['AML_TENANT_ID'],
                                     service_principal_password=os.environ['AML_PRINCIPAL_PASS'])
 ```
 
-对于在 Python 中运行并主要使用 SDK 的自动化工作流，在大多数情况下，都可按原样使用此对象进行身份验证。 以下代码使用刚创建的身份验证对象对工作区进行身份验证。
+对于在 Python 中运行并主要使用 SDK 的自动化工作流，在大多数情况下，都可按原样使用此对象进行身份验证。 以下代码使用你创建的身份验证对象向你的工作区进行身份验证。
 
 ```python
 from azureml.core import Workspace
@@ -171,14 +185,18 @@ ws = Workspace.get(name="ml-example",
 ws.get_details()
 ```
 
-## <a name="azure-machine-learning-rest-api-auth"></a>Azure 机器学习 REST API 身份验证
+### <a name="use-a-service-principal-from-the-azure-cli"></a>从 Azure CLI 中使用服务主体
 
-上述步骤中创建的服务主体也可以对 Azure 机器学习 [REST API](https://docs.microsoft.com/rest/api/azureml/) 进行身份验证。 如果使用 Azure Active Directory [客户端凭据授予流](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)，则可在自动化工作流中进行无外设身份验证的服务到服务调用。 这些示例都可通过 Python 和 Node.js 中的 [ADAL 库](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)实现，但你也可以使用任何支持 OpenID Connect 1.0 的开放源代码库。
+可以将服务主体用于 Azure CLI 命令。 有关详细信息，请参阅[使用服务主体登录](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#sign-in-using-a-service-principal)。
+
+### <a name="use-a-service-principal-with-the-rest-api-preview"></a>将服务主体用于 REST API（预览版）
+
+还可以使用服务主体向 Azure 机器学习 [REST API](https://docs.microsoft.com/rest/api/azureml/)（预览版）进行身份验证。 如果使用 Azure Active Directory [客户端凭据授予流](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)，则可在自动化工作流中进行无外设身份验证的服务到服务调用。 这些示例使用 Python 和 Node.js 中的 [ADAL 库](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)实现，但也可以使用支持 OpenID Connect 1.0 的任何开放源代码库。
 
 > [!NOTE]
-> MSAL.js 库比 ADAL 更新，但不能使用 MSAL.js 的客户端凭据进行服务到服务的身份验证，因为它主要是一个客户端库，适用于与特定用户关联的交互式/UI 身份验证。 我们建议使用如下所示的 ADAL，通过 REST API 创建自动化工作流。
+> MSAL.js 库比 ADAL 更新，但不能使用 MSAL.js 的客户端凭据进行服务到服务的身份验证，因为它主要是一个客户端库，适用于与特定用户关联的交互式/UI 身份验证。 我们建议使用如下所示的 ADAL，通过 REST API 生成自动化工作流。
 
-### <a name="nodejs"></a>Node.js
+#### <a name="nodejs"></a>Node.js
 
 使用以下步骤，通过 Node.js 生成身份验证令牌。 在你的环境中运行 `npm install adal-node`。 然后，使用在上述步骤中创建的服务主体中的 `tenantId`、`clientId` 和 `clientSecret`，作为以下脚本中匹配变量的值。
 
@@ -208,7 +226,7 @@ context.acquireTokenWithClientCredentials(
 );
 ```
 
-变量 `tokenResponse` 是包含令牌和关联元数据（如过期时间）的对象。 令牌的有效时间为 1 个小时，可以通过再次运行相同的调用检索一个新令牌来对令牌进行刷新。 以下内容是示例响应。
+变量 `tokenResponse` 是包含令牌和关联元数据（如过期时间）的对象。 令牌的有效时间为 1 个小时，可以通过再次运行相同的调用检索一个新令牌来对令牌进行刷新。 下面的代码片段是示例响应。
 
 ```javascript
 {
@@ -225,7 +243,7 @@ context.acquireTokenWithClientCredentials(
 
 使用 `accessToken` 属性获取身份验证令牌。 请参阅 [REST API 文档](https://github.com/microsoft/MLOps/tree/master/examples/AzureML-REST-API)，获取如何使用令牌进行 API 调用的示例。
 
-### <a name="python"></a>Python
+#### <a name="python"></a>Python
 
 使用以下步骤，通过 Python 生成身份验证令牌。 在你的环境中运行 `pip install adal`。 然后，使用在上述步骤中创建的服务主体中的 `tenantId`、`clientId` 和 `clientSecret`，作为以下脚本中适合的变量的值。
 
@@ -243,7 +261,7 @@ token_response = auth_context.acquire_token_with_client_credentials("https://man
 print(token_response)
 ```
 
-变量 `token_response` 是包含令牌和关联元数据（如过期时间）的字典。 令牌的有效时间为 1 个小时，可以通过再次运行相同的调用检索一个新令牌来对令牌进行刷新。 以下内容是示例响应。
+变量 `token_response` 是包含令牌和关联元数据（如过期时间）的字典。 令牌的有效时间为 1 个小时，可以通过再次运行相同的调用检索一个新令牌来对令牌进行刷新。 下面的代码片段是示例响应。
 
 ```python
 {
@@ -262,9 +280,17 @@ print(token_response)
 
 ## <a name="web-service-authentication"></a>Web 服务身份验证
 
-Azure 机器学习中的 Web 服务使用不同于上述的身份验证模式。 要对部署的 Web 服务进行身份验证，最简单的方法是使用基于密钥的身份验证，这种身份验证会生成静态持有者类型身份验证密钥，无需刷新。 如果你只需对部署的 Web 服务进行身份验证，则无需设置如上所述的服务主体身份验证。
+Azure 机器学习创建的模型部署提供了两种身份验证方法：
 
-部署在 Azure Kubernetes 服务上的 Web 服务默认情况下会启用基于密钥的身份验证。 默认情况下，Azure 容器实例部署的服务禁用基于密钥的身份验证，但你可以在创建 ACI Web 服务时通过设置 `auth_enabled=True` 来启用它。 以下是创建已启用基于密钥的身份验证的 ACI 部署配置的示例。
+* **基于密钥**：使用静态密钥向 Web 服务进行身份验证。
+* **基于令牌**：必须从工作区获取一个临时令牌，并使用该令牌向 Web 服务进行身份验证。 此令牌在一段时间后将过期，并且必须刷新才能继续使用 Web 服务。
+
+    > [!NOTE]
+    > 只有部署到 Azure Kubernetes 服务时，基于令牌的身份验证才适用。
+
+### <a name="key-based-web-service-authentication"></a>基于密钥的 Web 服务身份验证
+
+部署在 Azure Kubernetes 服务 (AKS) 上的 Web 服务默认情况下会启用基于密钥的身份验证。 默认情况下，Azure 容器实例 (ACI) 部署的服务禁用基于密钥的身份验证，但你可以在创建 ACI Web 服务时通过设置 `auth_enabled=True` 来启用它。 以下代码是一个示例，演示了如何创建启用了基于密钥的身份验证的 ACI 部署配置。
 
 ```python
 from azureml.core.webservice import AciWebservice
@@ -290,7 +316,7 @@ aci_service = Model.deploy(workspace=ws,
 aci_service.wait_for_deployment(True)
 ```
 
-使用 `aci_service.get_keys()` 获取身份验证密钥。 若要重新生成密钥，请使用 `regen_key()` 函数并传递“主要”或“辅助”密钥 。
+若要提取身份验证密钥，请使用 `aci_service.get_keys()`。 若要重新生成密钥，请使用 `regen_key()` 函数并传递“主要”或“辅助”密钥 。
 
 ```python
 aci_service.regen_key("Primary")
@@ -298,7 +324,7 @@ aci_service.regen_key("Primary")
 aci_service.regen_key("Secondary")
 ```
 
-Web 服务还支持基于令牌的身份验证，但仅用于 Azure Kubernetes 服务部署。 请参阅关于使用 Web 服务的[操作说明](how-to-consume-web-service.md)，获取有关身份验证的其他信息。
+若要详细了解如何向已部署的模型进行身份验证，请参阅[为部署为 Web 服务的模型创建客户端](how-to-consume-web-service.md)。
 
 ### <a name="token-based-web-service-authentication"></a>基于令牌的 Web 服务身份验证
 
@@ -306,8 +332,32 @@ Web 服务还支持基于令牌的身份验证，但仅用于 Azure Kubernetes �
 
 * 部署到 Azure Kubernetes 服务时，会默认禁用令牌身份验证。
 * 部署到 Azure 容器实例时，不支持令牌身份验证。
+* 令牌身份验证**不能与基于密钥的身份验证同时使用**。
 
-若要控制令牌身份验证，请在创建或更新部署时使用 `token_auth_enabled` 参数。
+若要控制令牌身份验证，请在创建或更新部署时使用 `token_auth_enabled` 参数：
+
+```python
+from azureml.core.webservice import AksWebservice
+from azureml.core.model import Model, InferenceConfig
+
+# Create the config
+aks_config = AksWebservice.deploy_configuration()
+
+#  Enable token auth and disable (key) auth on the webservice
+aks_config = AksWebservice.deploy_configuration(token_auth_enabled=True, auth_enabled=False)
+
+aks_service_name ='aks-service-1'
+
+# deploy the model
+aks_service = Model.deploy(workspace=ws,
+                           name=aks_service_name,
+                           models=[model],
+                           inference_config=inference_config,
+                           deployment_config=aks_config,
+                           deployment_target=aks_target)
+
+aks_service.wait_for_deployment(show_output = True)
+```
 
 如果启用了令牌身份验证，可以使用 `get_token` 方法检索 JSON Web (JWT) 令牌以及该令牌的到期时间：
 
@@ -315,7 +365,7 @@ Web 服务还支持基于令牌的身份验证，但仅用于 Azure Kubernetes �
 > 如果使用服务主体获取令牌，并希望它具有检索令牌所需的最小访问权限，请向其分配工作区的“读取者”角色。
 
 ```python
-token, refresh_by = service.get_token()
+token, refresh_by = aks_service.get_token()
 print(token)
 ```
 

@@ -3,26 +3,29 @@ title: 使用模板导入 SQL BACPAC 文件
 description: 了解如何使用 Azure SQL 数据库扩展，以通过 Azure 资源管理器模板导入 SQL BACPAC 文件。
 author: rockboyfor
 origin.date: 12/09/2019
-ms.date: 06/22/2020
+ms.date: 07/13/2020
+ms.testscope: no
+ms.testdate: ''
 ms.topic: tutorial
 ms.author: v-yeche
-ms.openlocfilehash: 686a7dd720152156b3a6aa1d99c7fd83aa436771
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: 72dbac5e36ed72a92e7dffe08260e456874be69c
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098606"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440918"
 ---
 <!--Verify successfully-->
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>教程：使用 ARM 模板导入 SQL BACPAC 文件
 
 了解如何使用 Azure SQL 数据库扩展，以通过 Azure 资源管理器 (ARM) 模板导入 BACPAC 文件。 部署项目包括主模板文件以及完成部署所需的任何文件。 BACPAC 文件是一个项目。
 
-在本教程中，我们将创建一个模板来部署 Azure SQL Server 和 SQL 数据库并导入一个 BACPAC 文件。 要了解如何使用 ARM 模板来部署 Azure 虚拟机扩展，请参阅[教程：使用 ARM 模板部署虚拟机扩展](./template-tutorial-deploy-vm-extensions.md)。
+在本教程中，你将创建一个模板来部署[逻辑 SQL Server](../../azure-sql/database/logical-servers.md)、单个数据库并导入 BACPAC 文件。 要了解如何使用 ARM 模板来部署 Azure 虚拟机扩展，请参阅[教程：使用 ARM 模板部署虚拟机扩展](./template-tutorial-deploy-vm-extensions.md)。
 
 本教程涵盖以下任务：
 
 > [!div class="checklist"]
+>
 > * 准备 BACPAC 文件。
 > * 打开快速入门模板。
 > * 编辑模板。
@@ -46,7 +49,7 @@ ms.locfileid: "85098606"
 
 ## <a name="prepare-a-bacpac-file"></a>准备 BACPAC 文件
 
-BACPAC 文件在 [GitHub](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac) 中共享。 若要创建自己的文件，请参阅[将 Azure SQL 数据库导出到 BACPAC 文件](../../sql-database/sql-database-export.md)。 如果选择将文件发布到你自己的位置，则必须在教程的后面部分更新模板。
+BACPAC 文件在 [GitHub](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac) 中共享。 要创建自己的文件，请参阅[将 Azure SQL 数据库中的数据库导出到 BACPAC 文件](../../azure-sql/database/database-export.md)。 如果选择将文件发布到你自己的位置，则必须在教程的后面部分更新模板。
 
 必须先将 BACPAC 文件存储在 Azure 存储帐户中，然后才能使用 ARM 模板导入该文件。 下面的 PowerShell 脚本通过以下步骤准备 BACPAC 文件：
 
@@ -56,7 +59,9 @@ BACPAC 文件在 [GitHub](https://github.com/Azure/azure-docs-json-samples/raw/m
 * 将 BACPAC 文件上传到该容器。
 * 显示存储帐户密钥和 blob URL。
 
-1. 将以下 PowerShell 脚本复制并粘贴到 PowerShell 窗口中。
+<!--MOONCAKE CUSTOMZIATION: NOT AVAILABLE ON AZURE CLOUD SHELL-->
+
+1. 在本地电脑上，以管理员权限打开 PowerShell 控制台。 然后，将以下 PowerShell 脚本复制并粘贴到 PowerShell 控制台中。
 
     ```powershell
     # Sign in the Azure China Cloud
@@ -122,7 +127,8 @@ BACPAC 文件在 [GitHub](https://github.com/Azure/azure-docs-json-samples/raw/m
     <!--Not Available on [template reference](https://docs.microsoft.com/azure/templates/microsoft.sql/servers)-->
     <!--Not Available on [template reference](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases)-->
     
-        It's helpful to get some basic understanding of the template before you customize it.
+    在自定义模板之前，不妨对其进行一些基本的了解。
+    
 1. 选择“文件” > “另存为”，将该文件的副本保存到名为 *azuredeploy.json* 的本地计算机。 
 
 ## <a name="edit-the-template"></a>编辑模板
@@ -203,7 +209,7 @@ BACPAC 文件在 [GitHub](https://github.com/Azure/azure-docs-json-samples/raw/m
 
         若要了解资源定义，请参阅 [SQL 数据库扩展参考](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases/extensions)。 下面是一些重要元素：
 
-        * **dependsOn**：必须在创建 SQL 数据库以后才能创建扩展资源。
+        * **dependsOn**：必须在创建数据库以后才能创建扩展资源。
         * **storageKeyType**：指定要使用的存储密钥的类型。 值可以是 `StorageAccessKey` 或 `SharedAccessKey`。 在本教程中使用 `StorageAccessKey`。
         * **storageKey**：指定存储 BACPAC 文件的存储帐户的密钥。 如果存储密钥类型为 `SharedAccessKey`，则它前面必须是“?”。
         * **storageUri**：指定存储帐户中存储的 BACPAC 文件的 URL。
@@ -353,9 +359,9 @@ Write-Host "Press [ENTER] to continue ..."
 
 ## <a name="verify-the-deployment"></a>验证部署
 
-若要从客户端计算机访问服务器，需要添加其他防火墙规则。 有关详细信息，请参阅[创建和管理 IP 防火墙规则](../../sql-database/sql-database-firewall-configure.md#create-and-manage-ip-firewall-rules)。
+若要从客户端计算机访问服务器，需要添加其他防火墙规则。 有关详细信息，请参阅[创建和管理 IP 防火墙规则](../../azure-sql/database/firewall-configure.md#create-and-manage-ip-firewall-rules)。
 
-在 Azure 门户中，从新部署的资源组中选择 SQL 数据库。 选择“查询编辑器(预览)”，然后输入管理员凭据。 此时会看到两个表导入到数据库中。
+在 Azure 门户中，从新部署的资源组中选择数据库。 选择“查询编辑器(预览)”，然后输入管理员凭据。 此时会看到两个表导入到数据库中。
 
 ![查询编辑器（预览版）](./media/template-tutorial-deploy-sql-extensions-bacpac/resource-manager-tutorial-deploy-sql-extensions-bacpac-query-editor.png)
 

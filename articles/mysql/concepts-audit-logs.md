@@ -5,14 +5,14 @@ author: WenJason
 ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
-origin.date: 3/19/2019
-ms.date: 04/27/2020
-ms.openlocfilehash: 43ee01e7bc3201a8a951f7523f56874b0ddc6ff5
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+origin.date: 6/24/2020
+ms.date: 07/20/2020
+ms.openlocfilehash: d6efb619be79178375e68c463b3064bca7902100
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126890"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440501"
 ---
 # <a name="audit-logs-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的审核日志
 
@@ -21,10 +21,10 @@ ms.locfileid: "82126890"
 
 在 Azure Database for MySQL 中，审核日志可供用户使用。 审核日志可以用来跟踪数据库级别的活动，通常用于确保符合性。
 
-> [!IMPORTANT]
-> 审核日志功能目前为预览版。
-
 ## <a name="configure-audit-logging"></a>配置审核日志记录
+
+>[!IMPORTANT]
+> 建议仅记录审核所需的事件类型和用户，以确保服务器的性能不会受到严重影响。
 
 默认情况下，审核日志被禁用。 若要启用它，请将 `audit_log_enabled` 设置为 ON。
 
@@ -32,12 +32,10 @@ ms.locfileid: "82126890"
 
 - `audit_log_events`：控制要记录的事件。 请查看下表以了解具体的审核事件。
 - `audit_log_include_users`：要包括 MySQL 用户进行日志记录。 此参数的默认值为空，这将包括所有用户进行日志记录。 此参数的优先级高于 `audit_log_exclude_users`。 此参数的最大长度为 512 个字符。
-> [!Note]
-> `audit_log_include_users` 的优先级高于 `audit_log_exclude_users`。 例如，如果 `audit_log_include_users` = `demouser` 并且 `audit_log_exclude_users` = `demouser`，则会将该用户包括在审核日志中，因为 `audit_log_include_users` 的优先级更高。
 - `audit_log_exclude_users`：不对 MySQL 用户进行日志记录。 此参数的最大长度为 512 个字符。
 
-> [!Note]
-> 对于 `sql_text`，如果日志超过 2048 个字符，则会截断日志。
+> [!NOTE]
+> `audit_log_include_users` 的优先级高于 `audit_log_exclude_users`。 例如，如果 `audit_log_include_users` = `demouser` 并且 `audit_log_exclude_users` = `demouser`，则会将该用户包括在审核日志中，因为 `audit_log_include_users` 的优先级更高。
 
 | **事件** | **说明** |
 |---|---|
@@ -89,6 +87,9 @@ ms.locfileid: "82126890"
 
 下面的架构适用于 GENERAL、DML_SELECT、DML_NONSELECT、DML、DDL、DCL 和 ADMIN 事件类型。
 
+> [!NOTE]
+> 对于 `sql_text`，如果日志超过 2048 个字符，则会截断日志。
+
 | **属性** | **说明** |
 |---|---|
 | `TenantId` | 租户 ID |
@@ -118,7 +119,7 @@ ms.locfileid: "82126890"
 ### <a name="table-access"></a>表访问权限
 
 > [!NOTE]
-> 只有 MySQL 5.7 输出表访问日志。
+> 只有 MySQL 5.7 输出表访问日志。<br>对于 `sql_text`，如果日志超过 2048 个字符，则会截断日志。
 
 | **属性** | **说明** |
 |---|---|
