@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 03/10/2020
-ms.openlocfilehash: 113706d089b398d84c227adefe09affa2942e44f
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: a6bee7ad515730bd8f9a84d632c043e6652cd85d
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097470"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86441124"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
@@ -22,6 +22,75 @@ ms.locfileid: "85097470"
 
 请参阅[已知问题列表](resource-known-issues.md)了解已知 bug 和解决方法。
 
+## <a name="2020-06-22"></a>2020-06-22
+
+### <a name="azure-machine-learning-sdk-for-python-v180"></a>适用于 Python 的 Azure 机器学习 SDK v1.8.0
+  
+  + **预览功能**
+    + **azureml-contrib-fairness** `azureml-contrib-fairness` 包提供在开源公平性评估与不公平性缓解包 [Fairlearn](https://fairlearn.github.io) 和 Azure 机器学习工作室之间进行的集成。 具体说来，可以通过此包在 AzureML 运行过程中上传模型公平性评估仪表板并将其显示在 Azure 机器学习工作室中
+
++ **Bug 修复与改进**
+  + **azure-cli-ml**
+    + 支持获取 init 容器的日志。
+    + 添加了新的用于管理 ComputeInstance 的 CLI 命令
+  + **azureml-automl-core**
+    + 用户现在能够为时序任务启用堆栈系综迭代，并发出一条指示该迭代可能会过度拟合的警告。
+    + 添加了新类型的用户异常 `azureml.automl.core.shared.exceptions.CacheStoreCorruptedException`，此异常在缓存存储内容被篡改的情况下引发
+  + **azureml-automl-runtime**
+    + 如果用户禁用特征化，则不会再启用类均衡扫描。  
+  + **azureml-contrib-itp**
+    + 支持 CmAks 计算类型。 你可以将自己的 AKS 群集附加到工作区来完成训练作业。
+  + **azureml-contrib-notebook**
+    + 对 azureml-contrib-notebook 包进行了文档改进。
+  + **azureml-contrib-pipeline-steps**
+    + 对 azureml-contrib--pipeline-steps 包进行了文档改进。
+  + **azureml-core**
+    + 添加了 set_connection、get_connection、list_connections、delete_connection 函数，方便客户对工作区连接资源进行操作
+    + 对 azureml-coore/azureml.exceptions 包进行了文档更新。
+    + 对 azureml-core 包进行了文档更新。
+    + 对 ComputeInstance 类进行了文档更新。
+    + 对 azureml-core/azureml.core.compute 包进行了文档改进。
+    + 对 azureml-core 中与 webservice 相关的类进行了文档改进。
+    + 支持使用用户选择的数据存储来存储分析数据
+    + 为模型列表 API 添加了 expand 和 page_count 属性
+    + 修复了这样的 bug：删除 overwrite 属性会导致提交的运行失败，并出现反序列化错误。
+    + 修复了在下载或装载对单个文件的 FileDataset 引用时出现的不一致文件夹结构。
+    + 加载 parquet 文件数据集 to_spark_dataframe 的操作现在更快，并支持所有 parquet 和 Spark SQL 数据类型。
+    + 支持获取 init 容器的日志。
+    + 现在，AutoML 运行会被标记为“并行运行步骤”的子运行。
+  + **azureml-datadrift**
+    + 对 azureml-contrib-notebook 包进行了文档改进。
+  + **azureml-dataprep**
+    + 加载 parquet 文件数据集 to_spark_dataframe 的操作现在更快，并支持所有 parquet 和 Spark SQL 数据类型。
+    + 对于 to_pandas_dataframe，改进了出现 OutOfMemory 问题时的内存处理。
+  + **azureml-interpret**
+    + 已将 azureml-interpret 升级为使用 interpret-community 版本 0.12.*
+  + **azureml-mlflow**
+    + 对 azureml-mlflow 进行了文档改进。
+    + 添加对用于 MLFlow 的 AML 模型注册表的支持。
+  + **azureml-opendatasets**
+    + 添加了对 Python 3.8 的支持
+  + **azureml-pipeline-core**
+    + 更新了 `PipelineDataset` 的文档，清楚地表明它是一个内部类。
+    + 进行了 ParallelRunStep 更新，允许一个参数接受多个值，例如："--group_column_names"、"Col1"、"Col2"、"Col3"
+    + 删除了在管道中通过 AutoMLStep 使用中间数据时的 passthru_automl_config 要求。
+  + **azureml-pipeline-steps**
+    + 对 azureml-pipeline-steps 包进行了文档改进。
+    + 删除了在管道中通过 AutoMLStep 使用中间数据时的 passthru_automl_config 要求。
+  + **azureml-telemetry**
+    + 对 azureml-telemetry 进行了文档改进。
+  + **azureml-train-automl-client**
+    + 修复了以下 bug：在 `AutoMLConfig` 对象上调用 `experiment.submit()` 两次导致不同的行为。
+    + 用户现在能够为时序任务启用堆栈系综迭代，并发出一条指示该迭代可能会过度拟合的警告。
+    + 更改了 AutoML 运行行为，在服务引发用户错误时会引发 UserErrorException
+    + 修复了一个 bug。在远程计算目标上进行 AutoML 试验时，该 bug 会导致 azureml_automl.log 无法生成，或者会导致缺少日志。
+    + 对于包含不均衡类的分类数据集，如果功能扫描程序发现权重均衡比基线更好，我们会应用权重均衡
+    + 现在，AutoML 运行会被标记为“并行运行步骤”的子运行。
+  + **azureml-train-automl-runtime**
+    + 更改了 AutoML 运行行为，在服务引发用户错误时会引发 UserErrorException
+    + 现在，AutoML 运行会被标记为“并行运行步骤”的子运行。
+
+  
 ## <a name="2020-06-08"></a>2020-06-08
 
 ### <a name="azure-machine-learning-sdk-for-python-v170"></a>适用于 Python 的 Azure 机器学习 SDK v1.7.0
@@ -1376,7 +1445,6 @@ Azure 机器学习现在是事件网格的资源提供程序，你可以通过 A
     + 可在现有群集上运行 JAR 作业。
     + 现在支持 instance_pool_id 和 cluster_log_dbfs_path 参数。
     + 添加了在将模型部署到 Web 服务时使用 Environment 对象的支持。 现在，可将 Environment 对象作为 InferenceConfig 对象的一部分提供。
-    + 为新区域（centralus、westus、northcentralus）添加了 appinsifht 映射
     + 为所有 Datastore 类中的所有特性添加了文档。
     + 已将 blob_cache_timeout 参数添加到 `Datastore.register_azure_blob_container`。
     + 已将 save_to_directory 和 load_from_directory 方法添加到 azureml.core.environment.Environment。
@@ -1750,16 +1818,6 @@ Azure 机器学习现在是事件网格的资源提供程序，你可以通过 A
 
 ## <a name="2019-04-26"></a>2019-04-26
 
-### <a name="azure-machine-learning-sdk-for-python-v1033-released"></a>已发布适用于 Python 的 Azure 机器学习 SDK v1.0.33。
-
-+ [FPGA](how-to-deploy-fpga-web-service.md) 上的 Azure ML 硬件加速模型已推出正式版。
-  + 现在可以[使用 azureml-accel-models 包](how-to-deploy-fpga-web-service.md)来：
-    + 训练支持的深度神经网络（ResNet 50、ResNet 152、DenseNet-121、VGG-16 和 SSD-VGG）的权重
-    + 结合支持的 DNN 使用迁移学习
-    + 将模型注册到模型管理服务并将模型容器化
-    + 在 Azure Kubernetes 服务 (AKS) 群集中使用 FPGA 将模型部署到 Azure VM
-  + 将容器部署到 [Azure Data Box Edge](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview) 服务器设备
-  + 参考此[示例](https://github.com/Azure-Samples/aml-hardware-accelerated-models)使用 gRPC 终结点为数据评分
 
 ### <a name="automated-machine-learning"></a>自动化机器学习
 
