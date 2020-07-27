@@ -8,12 +8,12 @@ ms.date: 06/01/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: a64b5dee96f8e2af5b9d3f35203a92802375e705
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: 8cd96ff77887c6257d0fa19755ba0379adb0a093
+ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199659"
+ms.lasthandoff: 07/16/2020
+ms.locfileid: "86414716"
 ---
 # <a name="quickstart-manage-blobs-with-java-v8-sdk"></a>快速入门：使用 Java v8 SDK 管理 blob
 
@@ -99,7 +99,7 @@ Deleting the source, and downloaded files
 
 * 创建 [CloudBlobContainer](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob.cloudblobcontainer) 对象的实例，该对象代表所访问的容器。 使用容器来组织 Blob，就像使用计算机上的文件夹组织文件一样。    
 
-    有了 **CloudBlobContainer** 后，就可以创建 [CloudBlockBlob](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob.cloudblockblob) 对象（该对象指向你感兴趣的特定 Blob）的实例，然后执行上传、下载、复制等操作。
+    有了 CloudBlobContainer 后，就可以创建 [CloudBlockBlob](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob.cloudblockblob) 对象（该对象指向你感兴趣的特定 Blob）的实例，然后执行上传、下载、复制等操作。
 
 > [!IMPORTANT]
 > 容器名称必须为小写。 有关容器的详细信息，请参阅[命名和引用容器、Blob 和元数据](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)。

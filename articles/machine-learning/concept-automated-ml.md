@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: 16b6833de09278d68004dc45a9ff2e7734c400de
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: adbd6ed1ff7c0aba8d8434e1284eff121c30e57f
+ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097083"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86441126"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>什么是自动化机器学习 (AutoML)？
 
@@ -37,7 +37,7 @@ ms.locfileid: "85097083"
 
 分类是一个常见的机器学习任务。 分类是一种监督式学习，其中的模型使用训练数据进行学习，并将学习所得应用于新数据。 Azure 机器学习为这些任务专门提供特征化，例如用于分类的深度神经网络文本特征化器。 详细了解[特征化选项](how-to-configure-auto-features.md#featurization)。 
 
-分类模型的主要目标是根据从其训练数据中获得的经验，预测新数据将属于哪些类别。 常见分类示例包括欺诈检测、手写识别和对象检测。  详细了解[使用自动化机器学习的分类](tutorial-train-models-with-aml.md)并查看其示例。
+分类模型的主要目标是根据从其训练数据中获得的经验，预测新数据将属于哪些类别。 常见分类示例包括欺诈检测、手写识别和对象检测。 详细了解[使用自动化 ML 创建分类模型](tutorial-first-experiment-automated-ml.md)并查看其示例。
 
 参阅以下 Python 笔记本中的分类和自动化机器学习示例：[欺诈检测](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb)、[营销预测](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)和[新闻组数据分类](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb)
 
@@ -267,17 +267,29 @@ ONNX 运行时还支持 C#。因此，你可以在 C# 应用中使用自动生�
 
 ## <a name="next-steps"></a>后续步骤
 
-查看示例并了解如何使用自动化机器学习来生成模型：
+有多种资源可帮助你启动并运行 AutoML。 
 
-+ 配置自动训练试验的设置：
-  + 在 Azure 机器学习工作室中[使用这些步骤](how-to-use-automated-ml-for-ml-models.md)。
-  + 在 Python SDK 中[使用这些步骤](how-to-configure-auto-train.md)。
+### <a name="tutorials-how-tos"></a>教程/操作指南
+教程是 AutoML 方案的端到端介绍性示例。
++ 若要体验 Code First，请按[教程：使用 Azure 机器学习 Python SDK 自动训练回归模型](tutorial-auto-train-models.md)的说明操作。
 
-+ 了解如何使用[远程计算目标](how-to-auto-train-remote.md)
+ + 若要实现少代码或无代码体验，请参阅[教程：使用 Azure 机器学习工作室创建自动化 ML 分类模型](tutorial-first-experiment-automated-ml.md)。
 
-+ 遵循[教程：使用 Azure 机器学习自动训练回归模型](tutorial-auto-train-models.md) 
+操作指南文章提供了 AutoML 所提供功能的更多详细信息。 例如， 
 
-+ 了解如何[使用这些步骤](how-to-auto-train-forecast.md)通过时序数据自动进行训练。
++ 配置自动训练试验的设置
+    + 在 Azure 机器学习工作室中[使用这些步骤](how-to-use-automated-ml-for-ml-models.md)。 
+    + 在 Python SDK 中[使用这些步骤](how-to-configure-auto-train.md)。
 
-+ 尝试学习[自动化机器学习的 Jupyter Notebook 示例](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)
-* 自动化 ML 也可以在其他 Microsoft 解决方案中使用，例如 [ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)、[HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md)、[Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated) 和 [SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)
++  了解如何[使用这些步骤](how-to-auto-train-forecast.md)通过时序数据自动进行训练。
+
+### <a name="jupyter-notebook-samples"></a>Jupyter 笔记本示例 
+
+查看[自动化机器学习示例的 Github 笔记本存储库](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)中的详细代码示例和用例。
+
+### <a name="python-sdk-reference"></a>Python SDK 参考 
+
+阅读 [AutoML 类参考文档](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py)，加深你对 SDK 设计模式和类规范的专业知识的理解。 
+
+> [!Note]
+> 自动化机器学习功能也可以在其他 Microsoft 解决方案（例如 [ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)、[HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md)、[Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated) 和 [SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)）中使用

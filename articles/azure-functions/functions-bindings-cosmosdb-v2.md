@@ -1,24 +1,24 @@
 ---
-title: 适用于 Functions 2.x 的 Azure Cosmos DB 绑定
+title: 适用于 Functions 2.x 及更高版本的 Azure Cosmos DB 绑定
 description: 了解如何在 Azure Functions 中使用 Azure Cosmos DB 触发器和绑定。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 03/02/2020
+ms.date: 07/14/2020
 ms.author: v-junlch
-ms.openlocfilehash: d8e8bbaf9300201d31f600726a8624855124087f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b8d4185aa3362bfafa84bfda9f5438bf69f7be0d
+ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291440"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86440413"
 ---
-# <a name="azure-cosmos-db-trigger-and-bindings-for-azure-functions-2x-overview"></a>适用于 Azure Functions 2.x 的 Azure Cosmos DB 触发器和绑定概述
+# <a name="azure-cosmos-db-trigger-and-bindings-for-azure-functions-2x-and-higher-overview"></a>适用于 Azure Functions 2.x 及更高版本的 Azure Cosmos DB 触发器和绑定概述
 
 > [!div class="op_single_selector" title1="选择要使用的 Azure Functions 运行时的版本： "]
 > * [版本 1](functions-bindings-cosmosdb.md)
-> * [第 2 版](functions-bindings-cosmosdb-v2.md)
+> * [版本 2 及更高版本](functions-bindings-cosmosdb-v2.md)
 
-此系列文章介绍如何在 Azure Functions 2.x 中使用 [Azure Cosmos DB](../cosmos-db/serverless-computing-database.md) 绑定。 Azure Functions 支持 Azure Cosmos DB 的触发器、输入和输出绑定。
+此系列文章介绍如何在 Azure Functions 2.x 及更高版本中使用 [Azure Cosmos DB](../cosmos-db/serverless-computing-database.md) 绑定。 Azure Functions 支持 Azure Cosmos DB 的触发器、输入和输出绑定。
 
 | 操作 | 类型 |
 |---------|---------|
@@ -27,9 +27,9 @@ ms.locfileid: "79291440"
 | 保存对 Azure Cosmos DB 文档的更改  |[输出绑定](./functions-bindings-cosmosdb-v2-output.md) |
 
 > [!NOTE]
-> 此参考适用于 [Azure Functions 2.x](functions-versions.md)。  若要了解如何在 Functions 1.x 中使用这些绑定，请参阅[适用于 Azure Functions 1.x 的 Azure Cosmos DB 绑定](functions-bindings-cosmosdb.md)。
+> 此参考适用于 [Azure Functions 2.x 及更高版本](functions-versions.md)。  若要了解如何在 Functions 1.x 中使用这些绑定，请参阅[适用于 Azure Functions 1.x 的 Azure Cosmos DB 绑定](functions-bindings-cosmosdb.md)。
 >
-> 此绑定最初名为 DocumentDB。 在 Functions 2.x 版中，触发器、绑定和包均称为 Cosmos DB。
+> 此绑定最初名为 DocumentDB。 在 Functions 2.x 及更高版本中，触发器、绑定和包均称为 Cosmos DB。
 
 ## <a name="supported-apis"></a>受支持的 API
 
@@ -39,7 +39,7 @@ ms.locfileid: "79291440"
 
 ### <a name="functions-2x-and-higher"></a>Functions 2.x 及更高版本
 
-使用触发器和绑定需要引用相应的包。 NuGet 包用于 .NET 类库，而扩展捆绑包用于其他所有应用程序类型。
+使用触发器和绑定需要引用相应的程序包。 NuGet 包用于 .NET 类库，而扩展捆绑包用于其他所有应用程序类型。
 
 | 语言                                        | 添加方式...                                   | 备注 
 |-------------------------------------------------|---------------------------------------------|-------------|
