@@ -9,12 +9,12 @@ origin.date: 03/12/2018
 ms.date: 10/01/2019
 ms.author: v-yiso
 ms.custom: seodec18
-ms.openlocfilehash: 431af03c9cb371b5720e942527d39c9c39f1fc5e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d02035f7e1fe7784b8e8b70f225c2183f576f216
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74389438"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162385"
 ---
 # <a name="move-a-public-peering-to-microsoft-peering"></a>将公共对等互连移动到 Microsoft 对等互连
 
@@ -35,7 +35,7 @@ Azure 公共对等互连有 1 个 NAT IP 地址与每个 BGP 会话相关联。 
 
 在配置 Microsoft 对等互连之前，请参阅[具有多个网络路径的非对称路由](/expressroute/expressroute-asymmetric-routing)了解非对称路由的注意事项。
 
-* 如果使用公共对等互连，并且当前为用于访问 [Azure 存储](../storage/common/storage-network-security.md)或 [Azure SQL 数据库](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md)的公共 IP 地址设置了 IP 网络规则，则需要确保配置了 Microsoft 对等互连的 NAT IP 池包含在 Azure 存储帐户或 Azure SQL 帐户的公共 IP 地址列表中。<br>
+* 如果使用公共对等互连，并且当前为用于访问 [Azure 存储](../storage/common/storage-network-security.md)或 [Azure SQL 数据库](../azure-sql/database/vnet-service-endpoint-rule-overview.md)的公共 IP 地址设置了 IP 网络规则，则需要确保配置了 Microsoft 对等互连的 NAT IP 池包含在 Azure 存储帐户或 Azure SQL 帐户的公共 IP 地址列表中。<br>
 * 若要移动到 Microsoft 对等互连而不停机，则需按本文介绍的顺序使用这些步骤。
 
 ## <a name="1-create-microsoft-peering"></a><a name="create"></a>1.创建 Microsoft 对等互连
@@ -84,9 +84,8 @@ Azure 公共对等互连有 1 个 NAT IP 地址与每个 BGP 会话相关联。 
 
 在验证 Microsoft 对等互连已配置且你要使用的前缀已在 Microsoft 对等互连上正确播发之后，随后即可删除公共对等互连。 若要删除公共对等互连，请使用以下任一文章：
 
-* [使用 Azure 门户删除 Azure 公共对等互连](expressroute-howto-routing-portal-resource-manager.md#deletepublic)<br>
-* [使用 Azure PowerShell 删除 Azure 公共对等互连](expressroute-howto-routing-arm.md#deletepublic)<br>
-* [使用 CLI 删除 Azure 公共对等互连](howto-routing-cli.md#deletepublic)
+* [使用 Azure PowerShell 删除 Azure 公共对等互连](about-public-peering.md#powershell)
+* [使用 CLI 删除 Azure 公共对等互连](about-public-peering.md#cli)
   
 ## <a name="5-view-peerings"></a><a name="view"></a>5.查看对等互连
   

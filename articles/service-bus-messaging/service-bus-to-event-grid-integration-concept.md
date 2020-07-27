@@ -1,26 +1,20 @@
 ---
 title: Azure 服务总线到事件网格的集成概述 | Azure
 description: 本文介绍 Azure 服务总线消息传送如何与 Azure 事件网格集成。
-services: service-bus-messaging
 documentationcenter: .net
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: f99766cb-8f4b-4baf-b061-4b1e2ae570e4
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: multiple
+author: rockboyfor
 ms.topic: conceptual
-origin.date: 01/27/2020
-ms.date: 2/6/2020
-ms.author: aschhab
-ms.openlocfilehash: 00252ba81bd415c99838b714051ffc9da21b1dbd
-ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: ''
+ms.author: v-yeche
+ms.openlocfilehash: 0513040ad9eb26d010b77e9abdf08113032bea94
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85796323"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162265"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Azure 服务总线到事件网格的集成概述
 
@@ -36,7 +30,6 @@ Azure 服务总线已推出与 Azure 事件网格集成的新功能。 此功能
 
 ![19][]
 
-
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ### <a name="verify-that-you-have-contributor-access"></a>验证你是否有参与者访问权限
@@ -49,9 +42,9 @@ Azure 服务总线已推出与 Azure 事件网格集成的新功能。 此功能
 * [ActiveMessagesWithNoListenersAvailable](#active-messages-available-event)
 * DeadletterMessagesAvailable
 
-此外，服务总线使用标准的事件网格安全性和[身份验证机制](https://docs.azure.cn/event-grid/security-authentication)。
+此外，服务总线使用标准的事件网格安全性和[身份验证机制](/event-grid/security-authentication)。
 
-有关详细信息，请参阅 [Azure 事件网格事件架构](https://docs.azure.cn/event-grid/event-schema)。
+有关详细信息，请参阅 [Azure 事件网格事件架构](/event-grid/event-schema)。
 
 #### <a name="active-messages-available-event"></a>活动消息可用事件
 
@@ -172,7 +165,7 @@ Install-Module Az.ServiceBus
 $NSID = (Get-AzServiceBusNamespace -ResourceGroupName "<YOUR RESOURCE GROUP NAME>" -Na
 mespaceName "<YOUR NAMESPACE NAME>").Id
 
-New-AzEVentGridSubscription -EventSubscriptionName "<YOUR EVENT GRID SUBSCRIPTION NAME (CAN BE ANY NOT EXISTING)>" -ResourceId $NSID -Endpoint "<YOUR FUNCTION URL>” -SubjectEndsWith "<YOUR SERVICE BUS SUBSCRIPTION NAME>"
+New-AzEVentGridSubscription -EventSubscriptionName "<YOUR EVENT GRID SUBSCRIPTION NAME (CAN BE ANY NOT EXISTING)>" -ResourceId $NSID -Endpoint "<YOUR FUNCTION URL>" -SubjectEndsWith "<YOUR SERVICE BUS SUBSCRIPTION NAME>"
 ```
 
 可以在这里浏览其他设置选项，或者测试事件是否正在流动。
@@ -180,10 +173,10 @@ New-AzEVentGridSubscription -EventSubscriptionName "<YOUR EVENT GRID SUBSCRIPTIO
 ## <a name="next-steps"></a>后续步骤
 
 * 获取服务总线和事件网格的[示例](service-bus-to-event-grid-integration-example.md)。
-* 详细了解[事件网格](https://docs.azure.cn/event-grid/)。
-* 详细了解 [Azure Functions](https://docs.azure.cn/azure-functions/)。
-* 了解有关[逻辑应用](https://docs.azure.cn/logic-apps/)的详细信息。
-* 详细了解[服务总线](https://docs.azure.cn/service-bus/)。
+* 详细了解[事件网格](/event-grid/)。
+* 详细了解 [Azure Functions](/azure-functions/)。
+* 了解有关[逻辑应用](/logic-apps/)的详细信息。
+* 详细了解[服务总线](/service-bus/)。
 
 [1]: ./media/service-bus-to-event-grid-integration-concept/sbtoeventgrid1.png
 [19]: ./media/service-bus-to-event-grid-integration-concept/sbtoeventgriddiagram.png
@@ -191,3 +184,5 @@ New-AzEVentGridSubscription -EventSubscriptionName "<YOUR EVENT GRID SUBSCRIPTIO
 [9]: ./media/service-bus-to-event-grid-integration-example/sbtoeventgrid9.png
 [20]: ./media/service-bus-to-event-grid-integration-example/sbtoeventgridportal.png
 [21]: ./media/service-bus-to-event-grid-integration-example/sbtoeventgridportal2.png
+
+<!-- Update_Description: update meta properties, wording update, update link -->

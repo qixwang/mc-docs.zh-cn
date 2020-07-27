@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: tutorial
 origin.date: 02/26/2020
-ms.date: 03/16/2020
-ms.openlocfilehash: fca12163f009d98ebbc112d424df72d4d40ae155
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 07/17/2020
+ms.openlocfilehash: 5ffe6d8881be2447f2c0ce059f5e282e346fb33b
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78934802"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471995"
 ---
 # <a name="tutorial-use-rest-and-ai-to-generate-searchable-content-from-azure-blobs"></a>教程：使用 REST 和 AI 从 Azure Blob 生成可搜索的内容
 
@@ -141,7 +141,7 @@ AI 扩充由认知服务（包括用于自然语言和图像处理的文本分�
 1. 使用 **POST** 和以下 URL（请将 YOUR-SERVICE-NAME 替换为实际的服务名称）。
 
    ```http
-   https://[YOUR-SERVICE-NAME].search.azure.cn/datasources?api-version=2019-05-06
+   https://[YOUR-SERVICE-NAME].search.azure.cn/datasources?api-version=2020-06-30
    ```
 
 1. 在请求的**正文**中复制以下 JSON 定义（请将 `connectionString` 替换为存储帐户的实际连接）。 
@@ -171,7 +171,7 @@ AI 扩充由认知服务（包括用于自然语言和图像处理的文本分�
 1. 使用 **PUT** 和以下 URL（请将 YOUR-SERVICE-NAME 替换为实际的服务名称）。
 
     ```http
-    https://[YOUR-SERVICE-NAME].search.azure.cn/skillsets/cog-search-demo-ss?api-version=2019-05-06
+    https://[YOUR-SERVICE-NAME].search.azure.cn/skillsets/cog-search-demo-ss?api-version=2020-06-30
     ```
 
 1. 在请求的**正文**中复制以下 JSON 定义。 此技能集包括以下内置技能。
@@ -256,7 +256,7 @@ AI 扩充由认知服务（包括用于自然语言和图像处理的文本分�
 1. 使用 **PUT** 和以下 URL（请将 YOUR-SERVICE-NAME 替换为实际的服务名称）来命名索引。
 
    ```http
-   https://[YOUR-SERVICE-NAME].search.azure.cn/indexes/cog-search-demo-idx?api-version=2019-05-06
+   https://[YOUR-SERVICE-NAME].search.azure.cn/indexes/cog-search-demo-idx?api-version=2020-06-30
    ```
 
 1. 在请求的**正文**中复制以下 JSON 定义。 `content` 字段存储文档本身。 `languageCode`、`keyPhrases` 和 `organizations` 的附加字段表示技能集创建的新信息（字段和值）。
@@ -340,7 +340,7 @@ AI 扩充由认知服务（包括用于自然语言和图像处理的文本分�
 1. 使用 **PUT** 和以下 URL（请将 YOUR-SERVICE-NAME 替换为实际的服务名称）来命名索引器。
 
    ```http
-   https://[servicename].search.azure.cn/indexers/cog-search-demo-idxr?api-version=2019-05-06
+   https://[servicename].search.azure.cn/indexers/cog-search-demo-idxr?api-version=2020-06-30
    ```
 
 1. 在请求的**正文**中复制以下 JSON 定义。 请注意字段映射元素；这些映射非常重要，因为它们定义了数据流。 
@@ -433,7 +433,7 @@ AI 扩充由认知服务（包括用于自然语言和图像处理的文本分�
 1. 使用 **GET** 和以下 URL（请将 YOUR-SERVICE-NAME 替换为实际的服务名称）来命名索引器。
 
    ```http
-   https://[YOUR-SERVICE-NAME].search.azure.cn/indexers/cog-search-demo-idxr/status?api-version=2019-05-06
+   https://[YOUR-SERVICE-NAME].search.azure.cn/indexers/cog-search-demo-idxr/status?api-version=2020-06-30
    ```
 
 1. 检查响应，以了解索引器是否正在运行，或者查看错误和警告信息。  
@@ -452,7 +452,7 @@ AI 扩充由认知服务（包括用于自然语言和图像处理的文本分�
 1. 使用 **GET** 和以下 URL（请将 YOUR-SERVICE-NAME 替换为实际的服务名称）来搜索某个字或短语的实例，并返回 `content` 字段和匹配文档的计数。
 
    ```http
-   https://[YOUR-SERVICE-NAME].search.azure.cn/indexes/cog-search-demo-idx?search=*&$count=true&$select=content?api-version=2019-05-06
+   https://[YOUR-SERVICE-NAME].search.azure.cn/indexes/cog-search-demo-idx?search=*&$count=true&$select=content?api-version=2020-06-30
    ```
    
    此查询的结果将返回文档内容，这与使用 Blob 索引器但不使用认知搜索管道时获取的结果相同。 此字段是可搜索的，但若要使用分面、筛选器或自动完成，则此字段不起作用。
@@ -502,7 +502,7 @@ AI 扩充由认知服务（包括用于自然语言和图像处理的文本分�
 或者使用 **DELETE** 并提供每个对象的 URL。 以下命令删除一个索引器。
 
 ```http
-DELETE https://[YOUR-SERVICE-NAME].search.azure.cn/indexers/cog-search-demo-idxr?api-version=2019-05-06
+DELETE https://[YOUR-SERVICE-NAME].search.azure.cn/indexers/cog-search-demo-idxr?api-version=2020-06-30
 ```
 
 成功删除后会返回状态代码 204。

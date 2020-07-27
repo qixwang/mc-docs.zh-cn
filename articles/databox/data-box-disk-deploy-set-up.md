@@ -7,15 +7,15 @@ ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
 origin.date: 09/04/2019
-ms.date: 12/09/2019
+ms.date: 07/27/2020
 ms.author: v-jay
 ms.localizationpriority: high
-ms.openlocfilehash: 63bb1d3c44e598f373c78c2875185a40e6218501
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5ca16dc68818f237cdd694ba3e619cec848e45ac
+ms.sourcegitcommit: c3f15613c875bb52d5a105445efd0f36b9f24c9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80634467"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86473466"
 ---
 ::: zone target="docs"
 

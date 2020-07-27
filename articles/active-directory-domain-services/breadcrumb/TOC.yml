@@ -1,0 +1,10 @@
+- name: Azure
+  tocHref: /
+  topicHref: /index
+  items:
+    - name: Azure AD 域服务文档
+      tocHref: /active-directory/fundamentals
+      topicHref: /active-directory-domain-services/index
+    - name: Azure AD 域服务文档
+      tocHref: /active-directory/hybrid/
+      topicHref: /active-directory-domain-services/index

@@ -38,12 +38,14 @@
           href: relay-authentication-and-authorization.md
         - name: 内置安全控件
           href: service-bus-relay-security-controls.md
+        - name: 网络安全
+          href: network-security.md
     - name: 混合连接协议
       href: relay-hybrid-connections-protocol.md
 - name: 如何
   items:
     - name: 从 Azure Service Manager（经典）API 迁移到资源管理器 API
-      href: ../service-bus-messaging/deprecate-service-bus-management.md?toc=service-bus-relay%2ftoc.json
+      href: ../service-bus-messaging/deprecate-service-bus-management.md?toc=%2fservice-bus-relay%2ftoc.json
     - name: 规划和设计
       items:
         - name: 从 ACS 迁移到 SAS
@@ -63,7 +65,7 @@
       items:
         - name: 配置 IP 防火墙（预览版）
           href: ip-firewall-virtual-networks.md
-    - name: 管理
+    - name: 管理和监视
       items:
         - name: 使用 Azure 监视来监视 Azure 中继
           href: relay-metrics-azure-monitor.md
@@ -77,7 +79,7 @@
           href: /dotnet/api/microsoft.azure.relay
         - name: Microsoft.ServiceBus
           href: /dotnet/api/Microsoft.ServiceBus
-    - name: 异常
+    - name: 例外
       href: relay-exceptions.md
     - name: 端口设置
       href: relay-port-settings.md
@@ -85,7 +87,7 @@
   items:
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/?category=enterprise-integration'
-    - name: 常见问题
+    - name: 常见问题解答
       href: relay-faq.md
     - name: 博客
       href: 'https://blogs.msdn.microsoft.com/servicebus/'

@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 04/21/2020
-ms.date: 06/09/2020
-ms.openlocfilehash: d0007c0eae8a1528fe5e160d3d7d1607aae368bc
-ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
+ms.date: 07/17/2020
+ms.openlocfilehash: 65f6e34ef6e196cbc2842f0768bf905f8de8e1bc
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84564239"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471988"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>创建建议器，以在查询中启用“自动完成”和“建议结果”功能
 
@@ -156,7 +156,7 @@ private static void CreateHotelsIndex(SearchServiceClient serviceClient)
 以下对自动完成 REST API 的调用演示了 API 的用法。 此示例有两个要点。 首先，与所有查询一样，操作是针对索引的文档集合执行的，查询包含一个 search 参数，在本例中该参数提供部分查询****。 其次，必须将 suggesterName 添加到请求****。 如果未在索引中定义建议器，对自动完成或建议的调用将会失败。
 
 ```http
-POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2019-05-06
+POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2020-06-30
 {
   "search": "minecraf",
   "suggesterName": "sg"

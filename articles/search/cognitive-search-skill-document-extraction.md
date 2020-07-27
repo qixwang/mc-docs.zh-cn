@@ -6,15 +6,15 @@ manager: nitinme
 author: careyjmac
 ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 11/04/2019
-ms.date: 03/16/2020
+origin.date: 06/17/2020
+ms.date: 07/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: 32a7f4eaaf2b92c8eec456ab623553eb34b17c66
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 1a93fa0ef44137f5206c0b4ddd013420d720e6a6
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78934811"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471902"
 ---
 # <a name="document-extraction-cognitive-skill"></a>文档提取认知技能
 
@@ -52,7 +52,7 @@ Microsoft.Skills.Util.DocumentExtractionSkill
 
 | 输入名称     | 说明 |
 |--------------------|-------------|
-| file_data | 应从其中提取内容的文件。 |
+| `file_data` | 应从其中提取内容的文件。 |
 
 “file_data”必须是按如下方式定义的一个对象：
 
@@ -75,8 +75,8 @@ Microsoft.Skills.Util.DocumentExtractionSkill
 
 | 输出名称    | 说明 |
 |--------------|-------------|
-| content | 文档的文本内容。 |
-| normalized_images | 将 `imageAction` 设置为 `none` 以外的值后，新的 *normalized_images* 字段将包含一个图像数组。 有关每个图像的输出格式的更多详细信息，请参阅[有关图像提取的文档](cognitive-search-concept-image-scenarios.md)。 |
+| `content` | 文档的文本内容。 |
+| `normalized_images`   | 将 `imageAction` 设置为 `none` 以外的值后，新的 *normalized_images* 字段将包含一个图像数组。 有关每个图像的输出格式的更多详细信息，请参阅[有关图像提取的文档](cognitive-search-concept-image-scenarios.md)。 |
 
 ##  <a name="sample-definition"></a>示例定义
 

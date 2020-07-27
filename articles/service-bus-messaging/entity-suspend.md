@@ -1,25 +1,19 @@
 ---
 title: Azure 服务总线 - 暂停消息实体
 description: 本文介绍如何暂时暂停和重新激活 Azure 服务总线消息实体（队列、主题和订阅）。
-services: service-bus-messaging
-documentationcenter: ''
-author: lingliw
-manager: digimobile
-editor: ''
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 01/24/2020
-ms.date: 2/6/2020
-ms.author: v-lingwu
-ms.openlocfilehash: f176d2d9c758a2771decb96007db05c2ce2ee294
-ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: ''
+ms.author: v-yeche
+author: rockboyfor
+ms.openlocfilehash: f76ac2b91e12db82ae029cacfb79e4c40a1abc51
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82886922"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162196"
 ---
 # <a name="suspend-and-reactivate-messaging-entities-disable"></a>暂停（禁用）和重新激活消息实体
 
@@ -41,10 +35,10 @@ ms.locfileid: "82886922"
 
 可以为队列设置如下状态：
 
--   **Active**：队列处于活动状态。
--   **Disabled**：队列处于暂停状态。
--   **SendDisabled**：队列部分处于暂停状态，允许执行接收操作。
--   **ReceiveDisabled**：队列部分处于暂停状态，允许执行发送操作。
+- **Active**：队列处于活动状态。
+- **Disabled**：队列处于暂停状态。
+- **SendDisabled**：队列部分处于暂停状态，允许执行接收操作。
+- **ReceiveDisabled**：队列部分处于暂停状态，允许执行发送操作。
 
 对于订阅和主题，只能设置“Active”  和“Disabled”  。
 
@@ -67,3 +61,5 @@ Set-AzServiceBusQueue -ResourceGroup mygrp -NamespaceName myns -QueueName myqueu
 * [如何使用服务总线主题和订阅](service-bus-dotnet-how-to-use-topics-subscriptions.md)
 
 [1]: ./media/entity-suspend/queue-disable.png
+
+<!-- Update_Description: update meta properties, wording update, update link -->

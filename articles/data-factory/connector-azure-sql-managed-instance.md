@@ -11,13 +11,13 @@ manager: digimobile
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 origin.date: 05/29/2020
-ms.date: 06/29/2020
-ms.openlocfilehash: 56a126d28afd06859c887fa349d6149749c47a4c
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+ms.date: 07/27/2020
+ms.openlocfilehash: c2c0deba73c14f2aae5b97377ab428966bcab679
+ms.sourcegitcommit: 0eaa82cf74477d26d06bdd8fb6e715e6ed1339c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323609"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86974230"
 ---
 # <a name="copy-data-to-and-from-azure-sql-managed-instance-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure SQL 托管实例复制数据
 
@@ -46,7 +46,7 @@ ms.locfileid: "85323609"
 
 ## <a name="prerequisites"></a>先决条件
 
-若要访问 SQL 托管实例[公共终结点](/sql-database/sql-database-managed-instance-public-endpoint-securely)，可以使用 Azure 数据工厂管理的 Azure Integration Runtime。 确保启用公共终结点，并在网络安全组中允许公共终结点流量，使 Azure 数据工厂能够连接到你的数据库。 有关详细信息，请参阅[此指南](/sql-database/sql-database-managed-instance-public-endpoint-configure)。
+若要访问 SQL 托管实例[公共终结点](../azure-sql/managed-instance/public-endpoint-overview.md)，可以使用 Azure 数据工厂管理的 Azure Integration Runtime。 确保启用公共终结点，并在网络安全组中允许公共终结点流量，使 Azure 数据工厂能够连接到你的数据库。 有关详细信息，请参阅[此指南](../azure-sql/managed-instance/public-endpoint-configure.md)。
 
 ## <a name="get-started"></a>入门
 
@@ -123,9 +123,9 @@ SQL 托管实例链接服务支持以下属性：
 
 要使用基于服务主体的 Azure AD 应用程序令牌身份验证，请执行以下步骤：
 
-1. 按步骤[为托管实例预配 Azure Active Directory 管理员](/sql-database/sql-database-aad-authentication-configure#provision-an-azure-active-directory-administrator-for-your-managed-instance)。
+1. 按步骤[为托管实例预配 Azure Active Directory 管理员](../azure-sql/database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance)。
 
-2. 从 Azure 门户[创建 Azure Active Directory 应用程序](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)。 记下应用程序名称，以及以下定义链接服务的值：
+2. 从 Azure 门户[创建 Azure Active Directory 应用程序](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)。 记下应用程序名称，以及以下定义链接服务的值：
 
     - 应用程序 ID
     - 应用程序密钥
@@ -137,7 +137,7 @@ SQL 托管实例链接服务支持以下属性：
     CREATE LOGIN [your application name] FROM EXTERNAL PROVIDER
     ```
 
-4. 为 Azure 数据工厂托管标识[创建包含的数据库用户](/sql-database/sql-database-aad-authentication-configure#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)。 连接到要从其复制数据或将数据复制到其中的数据库，运行以下 T-SQL： 
+4. 为 Azure 数据工厂托管标识[创建包含的数据库用户](../azure-sql/database/authentication-aad-configure.md#create-contained-users-mapped-to-azure-ad-identities)。 连接到要从其复制数据或将数据复制到其中的数据库，运行以下 T-SQL： 
   
     ```sql
     CREATE USER [your application name] FROM EXTERNAL PROVIDER
@@ -181,7 +181,7 @@ SQL 托管实例链接服务支持以下属性：
 
 若要使用托管标识身份验证，请执行以下步骤：
 
-1. 按步骤[为托管实例预配 Azure Active Directory 管理员](/sql-database/sql-database-aad-authentication-configure#provision-an-azure-active-directory-administrator-for-your-managed-instance)。
+1. 按步骤[为托管实例预配 Azure Active Directory 管理员](../azure-sql/database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance)。
 
 2. 为 Azure 数据工厂托管标识[创建登录名](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)。 在 SQL Server Management Studio (SSMS) 中，使用作为 **sysadmin** 的 SQL Server 帐户连接到托管实例。 在 **master** 数据库中，运行以下 T-SQL：
 
@@ -189,7 +189,7 @@ SQL 托管实例链接服务支持以下属性：
     CREATE LOGIN [your Data Factory name] FROM EXTERNAL PROVIDER
     ```
 
-3. 为 Azure 数据工厂托管标识[创建包含的数据库用户](/sql-database/sql-database-aad-authentication-configure#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)。 连接到要从其复制数据或将数据复制到其中的数据库，运行以下 T-SQL： 
+3. 为 Azure 数据工厂托管标识[创建包含的数据库用户](../azure-sql/database/authentication-aad-configure.md#create-contained-users-mapped-to-azure-ad-identities)。 连接到要从其复制数据或将数据复制到其中的数据库，运行以下 T-SQL： 
   
     ```sql
     CREATE USER [your Data Factory name] FROM EXTERNAL PROVIDER

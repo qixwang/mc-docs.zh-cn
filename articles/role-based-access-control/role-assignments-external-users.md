@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: ''
 ms.service: role-based-access-control
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 05/25/2020
+ms.date: 07/21/2020
 ms.author: v-junlch
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: e219450645c4274d7ba156948987404a8033af45
-ms.sourcegitcommit: 7429daf26cff014b040f69cdae75bdeaea4f4e93
+ms.openlocfilehash: 1f0cd9a69564bb01abcff75196ce3fe20dcf567c
+ms.sourcegitcommit: d32699135151e98471daebe6d3f5b650f64f826e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83991916"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87160377"
 ---
 # <a name="add-or-remove-azure-role-assignments-for-external-guest-users-using-the-azure-portal"></a>使用 Azure 门户为外部来宾用户添加或删除 Azure 角色分配
 
@@ -51,7 +51,7 @@ ms.locfileid: "83991916"
 
 1. 请确保你的组织的外部协作设置已配置为允许你邀请来宾。 有关详细信息，请参阅[启用 B2B 外部协作并管理谁可以邀请来宾](../active-directory/b2b/delegate-invitations.md)。
 
-1. 在 Azure 门户中，单击“Azure Active Directory” > “用户” > “新建来宾用户”。  
+1. 在 Azure 门户中，单击“Azure Active Directory” > “用户” > “新建来宾用户”。
 
     ![Azure 门户中的“新建来宾用户”功能](./media/role-assignments-external-users/invite-guest-user.png)
 
@@ -85,11 +85,13 @@ ms.locfileid: "83991916"
 
 1. 单击“角色分配”选项卡以查看在此范围内的所有角色分配。
 
-1. 单击“添加” > “添加角色分配”以打开“添加角色分配”窗格。 
+1. 单击“添加” > “添加角色分配”以打开“添加角色分配”窗格。
 
     如果没有分配角色的权限，则将禁用“添加角色分配”选项。
 
-    ![添加菜单](./media/role-assignments-external-users/add-menu.png)
+    ![“添加角色分配”菜单](./media/shared/add-role-assignment-menu.png)
+
+    将打开“添加角色分配”窗格。
 
 1. 在“角色”下拉列表中选择一个角色，例如“虚拟机参与者”。 
 
@@ -117,11 +119,13 @@ ms.locfileid: "83991916"
 
 1. 单击“角色分配”选项卡以查看在此范围内的所有角色分配。
 
-1. 单击“添加” > “添加角色分配”以打开“添加角色分配”窗格。 
+1. 单击“添加” > “添加角色分配”以打开“添加角色分配”窗格。
 
-    ![添加菜单](./media/role-assignments-external-users/add-menu.png)
+    ![“添加角色分配”菜单](./media/shared/add-role-assignment-menu.png)
 
-1. 在“角色”下拉列表中选择一个角色，例如“虚拟机参与者”。 
+    将打开“添加角色分配”窗格。
+
+1. 在“角色”下拉列表中选择一个角色，例如“虚拟机参与者”。
 
 1. 在“选择”列表中，键入要邀请的人员的电子邮件地址，然后选择该人员。
 
@@ -161,7 +165,7 @@ ms.locfileid: "83991916"
 
 1. 在显示的“删除角色分配”消息中，单击“是”。
 
-1. 在左侧导航栏中，单击“Azure Active Directory” > “用户”。 
+1. 在左侧导航栏中，单击“Azure Active Directory” > “用户”。
 
 1. 单击要删除的来宾用户。
 

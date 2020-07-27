@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 06/03/2020
 ms.date: 07/02/2020
-ms.openlocfilehash: 55f5c515bd226f222dd96ce07fc4a322b9101f9f
-ms.sourcegitcommit: 5afd7c4c3be9b80c4c67ec55f66fcf347aad74c6
+ms.openlocfilehash: 31c96e7824afdfb0e79dccea93223f9e6bfb74f4
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85942585"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471842"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Azure 认知搜索中的安全性 - 概述
 
@@ -78,13 +78,13 @@ Azure 认知搜索存储了索引定义和内容、数据源定义、索引器�
 
 需要对每个请求进行身份验证，而每个请求由必需密钥、操作和对象组成。 链接在一起后，两个权限级别（完全或只读）加上上下文（例如，索引上的查询操作）便足以针对服务操作提供全面的安全性。 有关密钥的详细信息，请参阅[创建和管理 API 密钥](search-security-api-keys.md)。
 
-### <a name="ip-restricted-access"></a>IP 限制访问
+<!-- ### IP-restricted access
 
-为了进一步控制对搜索服务的访问，可以创建入站防火墙规则，以允许访问特定 IP 地址或某个范围的 IP 地址。 所有客户端连接必须通过允许的 IP 地址建立，否则连接将被拒绝。
+To further control access to your search service, you can create inbound firewall rules that allow access to specific IP address or a range of IP addresses. All client connections must be made through an allowed IP address, or the connection is denied.
 
-可以使用门户[配置入站访问](service-configure-firewall.md)。 
+You can use the portal to [configure inbound access](service-configure-firewall.md). 
 
-或者，可以使用管理 REST API。 带有 [IpRule](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service#IpRule) 参数的 API 版本 2020-03-13 允许你标识希望向其授予搜索服务访问权限的 IP 地址（单个或在某个范围内），通过这种方式限制对该服务的访问。 
+Alternatively, you can use the management REST APIs. API version 2020-03-13, with the [IpRule](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service#IpRule) parameter, allows you to restrict access to your service by identifying IP addresses, individually or in a range, that you want to grant access to your search service.  -->
 
 <!-- ### Private access ->
 

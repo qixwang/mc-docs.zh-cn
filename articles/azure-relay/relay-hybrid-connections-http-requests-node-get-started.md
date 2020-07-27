@@ -1,26 +1,19 @@
 ---
 title: Azure 中继混合连接 - 使用 Node 的 HTTP 请求
 description: 使用 Node 为 Azure 中继混合连接 HTTP 请求编写 Node.js 控制台应用程序。
-services: service-bus-relay
-documentationcenter: node
-author: clemensv
-manager: timlt
-editor: ''
-ms.assetid: e44e4867-3cf3-46be-8f8a-7671e2013bc4
-ms.service: service-bus-relay
-ms.devlang: tbd
 ms.topic: conceptual
-ms.tgt_pltfrm: node
-ms.workload: na
-origin.date: 11/01/2018
-ms.date: 11/26/2018
-ms.author: v-lingwu
-ms.openlocfilehash: cf87252796e4a9f0a4a6e1dde60991156069a816
-ms.sourcegitcommit: cada23b6400453ff9c08cfb08393e635e2fddac1
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: yes
+ms.testdate: 07/20/2020
+ms.author: v-yeche
+author: rockboyfor
+ms.openlocfilehash: 3505654234ab3827f4c25de0e4c7e706f6ed17e5
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83734688"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162209"
 ---
 # <a name="get-started-with-relay-hybrid-connections-http-requests-in-node"></a>开始在 Node 中使用中继混合连接 HTTP 请求
 
@@ -69,4 +62,5 @@ ms.locfileid: "83734688"
 在本快速入门中，你创建了 Node.js 客户端和服务器应用程序，此类程序使用 HTTP 来发送和接收消息。 Azure 中继的混合连接功能也支持使用 WebSocket 发送和接收消息。 若要了解如何将 WebSocket 与 Azure 中继混合连接配合使用，请参阅 [WebSocket 快速入门](relay-hybrid-connections-node-get-started.md)。
 
 在本快速入门中，你使用了 Node.js 来创建客户端和服务器应用程序。 若要了解如何使用 .NET Framework 编写客户端和服务器应用程序，请参阅 [.NET WebSocket 快速入门](relay-hybrid-connections-dotnet-get-started.md)或 [.NET HTTP 快速入门](relay-hybrid-connections-http-requests-dotnet-get-started.md)。
-<!--Update_Description: update some words -->
+
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 origin.date: 11/13/2019
-ms.date: 02/24/2020
+ms.date: 07/27/2020
 ms.author: v-jay
 ms.reviewer: milanga; johndeu
-ms.openlocfilehash: 8f628fdb18a015c398117bf9ec0710893e1970e8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 84d8990dcc516e98b418afbfec97608e350be704
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77494456"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162175"
 ---
 # <a name="media-analytics-on-the-media-services-platform"></a>媒体服务平台上的媒体分析 
 
@@ -86,52 +86,58 @@ Azure 媒体修订器是一种媒体分析媒体处理器，可用于在云中�
 ### <a name="net"></a>.NET
 以下函数采用其中一个指定的 MP 名称，并返回 MP 对象。
 
-    static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
-    {
-        var processor = _context.MediaProcessors
-            .Where(p => p.Name == mediaProcessorName)
-            .ToList()
-            .OrderBy(p => new Version(p.Version))
-            .LastOrDefault();
+```csharp
+static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
+{
+    var processor = _context.MediaProcessors
+        .Where(p => p.Name == mediaProcessorName)
+        .ToList()
+        .OrderBy(p => new Version(p.Version))
+        .LastOrDefault();
 
-        if (processor == null)
-            throw new ArgumentException(string.Format("Unknown media processor",
-                                                       mediaProcessorName));
+    if (processor == null)
+        throw new ArgumentException(string.Format("Unknown media processor",
+                                                  mediaProcessorName));
 
-        return processor;
-    }
+    return processor;
+}
+```
 
 
 ### <a name="rest"></a>REST
 请求：
 
-    GET https://media.chinacloudapi.cn/api/MediaProcessors()?$filter=Name%20eq%20'Azure%20Media%20OCR' HTTP/1.1
-    DataServiceVersion: 1.0;NetFx
-    MaxDataServiceVersion: 3.0;NetFx
-    Accept: application/json
-    Accept-Charset: UTF-8
-    User-Agent: Microsoft ADO.NET Data Services
-    Authorization: Bearer <token>
-    x-ms-version: 2.19
-    Host: media.chinacloudapi.cn
+```http
+GET https://media.chinacloudapi.cn/api/MediaProcessors()?$filter=Name%20eq%20'Azure%20Media%20OCR' HTTP/1.1
+DataServiceVersion: 1.0;NetFx
+MaxDataServiceVersion: 3.0;NetFx
+Accept: application/json
+Accept-Charset: UTF-8
+User-Agent: Microsoft ADO.NET Data Services
+Authorization: Bearer <token>
+x-ms-version: 2.19
+Host: media.chinacloudapi.cn
+```
 
 响应：
 
-    . . .
+```http
+. . .
 
-    {  
-       "odata.metadata":"https://media.chinacloudapi.cn/api/$metadata#MediaProcessors",
-       "value":[  
-          {  
-             "Id":"nb:mpid:UUID:074c3899-d9fb-448f-9ae1-4ebcbe633056",
-             "Description":"Azure Media OCR",
-             "Name":"Azure Media OCR",
-             "Sku":"",
-             "Vendor":"Microsoft",
-             "Version":"1.1"
-          }
-       ]
-    }
+{  
+    "odata.metadata":"https://media.chinacloudapi.cn/api/$metadata#MediaProcessors",
+    "value":[  
+        {  
+            "Id":"nb:mpid:UUID:074c3899-d9fb-448f-9ae1-4ebcbe633056",
+            "Description":"Azure Media OCR",
+            "Name":"Azure Media OCR",
+            "Sku":"",
+            "Vendor":"Microsoft",
+            "Version":"1.1"
+        }
+    ]
+}
+```
 
 ## <a name="demos"></a>演示
 请参阅 [Azure 媒体分析演示](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)。

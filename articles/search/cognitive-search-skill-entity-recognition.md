@@ -7,14 +7,14 @@ author: luiscabrer
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 11/04/2019
-ms.date: 04/20/2020
-ms.openlocfilehash: 06801742aa2d03fbecebac60dd5d9d625b304a4f
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+origin.date: 06/17/2020
+ms.date: 07/17/2020
+ms.openlocfilehash: 69b11230a4043200b62d32c36aa7c8259bb1c3d5
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588764"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471957"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>实体识别认知技能
 
@@ -38,18 +38,18 @@ Microsoft.Skills.Text.EntityRecognitionSkill
 
 | 参数名称     | 说明 |
 |--------------------|-------------|
-| Categories    | 应提取的类别的数组。  可能的类别类型有：`"Person"`、`"Location"`、`"Organization"`、`"Quantity"`、`"Datetime"`、`"URL"`、`"Email"`。 如果不提供类别，则返回所有类型。|
-|defaultLanguageCode |    输入文本的语言代码。 支持以下语言：`ar, cs, da, de, en, es, fi, fr, hu, it, ja, ko, nl, no, pl, pt-BR, pt-PT, ru, sv, tr, zh-hans`。 并非所有实体类别都支持所有语言；请参阅下文中的说明。|
-|minimumPrecision | 一个介于 0 和 1 之间的值。 如果置信度分数（在 `namedEntities` 输出中）低于此值，则不会返回该实体。 默认值为 0。 |
-|includeTypelessEntities | 如果要识别不符合当前类别的已知实体，请设置为 `true`。 识别出的实体将在 `entities` 复杂输出字段中返回。 例如，“Windows 10”是一个众所周知的实体（产品），但由于“产品”不是受支持的类别，因此，此实体将包含在实体输出字段中。 默认为 `false` |
+| `categories`    | 应提取的类别的数组。  可能的类别类型有：`"Person"`、`"Location"`、`"Organization"`、`"Quantity"`、`"Datetime"`、`"URL"`、`"Email"`。 如果不提供类别，则返回所有类型。|
+| `defaultLanguageCode` |    输入文本的语言代码。 支持以下语言：`ar, cs, da, de, en, es, fi, fr, hu, it, ja, ko, nl, no, pl, pt-BR, pt-PT, ru, sv, tr, zh-hans`。 并非所有实体类别都支持所有语言；请参阅下文中的说明。|
+| `minimumPrecision` | 一个介于 0 和 1 之间的值。 如果置信度分数（在 `namedEntities` 输出中）低于此值，则不会返回该实体。 默认值为 0。 |
+| `includeTypelessEntities` | 如果要识别不符合当前类别的已知实体，请设置为 `true`。 识别出的实体将在 `entities` 复杂输出字段中返回。 例如，“Windows 10”是一个众所周知的实体（产品），但由于“产品”不是受支持的类别，因此，此实体将包含在实体输出字段中。 默认为 `false` |
 
 
 ## <a name="skill-inputs"></a>技能输入
 
 | 输入名称      | 说明                   |
 |---------------|-------------------------------|
-| languageCode    | 可选。 默认值为 `"en"`。  |
-| text          | 要分析的文本。          |
+| `languageCode`    | 可选。 默认值为 `"en"`。  |
+| `text`          | 要分析的文本。          |
 
 ## <a name="skill-outputs"></a>技能输出
 
@@ -58,15 +58,15 @@ Microsoft.Skills.Text.EntityRecognitionSkill
 
 | 输出名称      | 说明                   |
 |---------------|-------------------------------|
-| 人员       | 一个字符串数组，其中，一个字符串表示一个人员名称。 |
-| locations  | 一个字符串数组，其中，一个字符串表示一个位置。 |
-| 组织  | 一个字符串数组，其中，一个字符串表示一个组织。 |
-| quantities  | 一个字符串数组，其中，每个字符串都表示一个数量。 |
-| dateTimes  | 一个字符串数组，其中，每个字符串都表示一个日期时间（因为它以文本形式显示）值。 |
-| urls | 一个字符串数组，其中，每个字符串都表示一个 URL |
-| emails | 一个字符串数组，其中，每个字符串都表示一个电子邮件地址 |
-| namedEntities | 复杂类型的数组，包含以下字段： <ul><li>category</li> <li>值（实际实体名称）</li><li>偏移（在文本中找到它的位置）</li><li>置信度（值越高意味着它越有可能是一个真实的实体）</li></ul> |
-| 实体 | 一个复杂类型数组，包含有关从文本提取的实体的丰富信息，具有以下字段 <ul><li> name（实际实体名称。 这表示一个“规范化”窗体）</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl（实体的 Wikipedia 页面的链接）</li><li>bingId</li><li>type（识别的实体的类别）</li><li>subType（仅适用于某些类别，这提供实体类型的更精细视图）</li><li> matches（包含的复杂集合）<ul><li>text（实体的原始文本）</li><li>offset（找到它的位置）</li><li>length（原始实体文本的长度）</li></ul></li></ul> |
+| `persons`       | 一个字符串数组，其中，一个字符串表示一个人员名称。 |
+| `locations`  | 一个字符串数组，其中，一个字符串表示一个位置。 |
+| `organizations`  | 一个字符串数组，其中，一个字符串表示一个组织。 |
+| `quantities`  | 一个字符串数组，其中，每个字符串都表示一个数量。 |
+| `dateTimes`  | 一个字符串数组，其中，每个字符串都表示一个日期时间（因为它以文本形式显示）值。 |
+| `urls` | 一个字符串数组，其中，每个字符串都表示一个 URL |
+| `emails` | 一个字符串数组，其中，每个字符串都表示一个电子邮件地址 |
+| `namedEntities` | 复杂类型的数组，包含以下字段： <ul><li>category</li> <li>值（实际实体名称）</li><li>偏移（在文本中找到它的位置）</li><li>置信度（值越高意味着它越有可能是一个真实的实体）</li></ul> |
+| `entities` | 一个复杂类型数组，包含有关从文本提取的实体的丰富信息，具有以下字段 <ul><li> name（实际实体名称。 这表示一个“规范化”窗体）</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl（实体的 Wikipedia 页面的链接）</li><li>bingId</li><li>type（识别的实体的类别）</li><li>subType（仅适用于某些类别，这提供实体类型的更精细视图）</li><li> matches（包含的复杂集合）<ul><li>text（实体的原始文本）</li><li>offset（找到它的位置）</li><li>length（原始实体文本的长度）</li></ul></li></ul> |
 
 ##    <a name="sample-definition"></a>示例定义
 

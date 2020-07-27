@@ -7,17 +7,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 05/25/2020
-ms.date: 06/29/2020
+ms.date: 07/27/2020
 author: WenJason
 ms.author: v-jay
 ms.reviewer: douglasl
 manager: digimobile
-ms.openlocfilehash: 5cbebb5abeea19f0cef6c43401cfb6faa8c46530
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+ms.openlocfilehash: 7a225f2649d48355b2dda988f831b62b2f9c459a
+ms.sourcegitcommit: 0eaa82cf74477d26d06bdd8fb6e715e6ed1339c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323292"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86974280"
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中创建 Azure-SSIS 集成运行时
 
@@ -56,7 +56,7 @@ ms.locfileid: "85323292"
   
     如果使用包含 IP 防火墙规则/虚拟网络服务终结点的 Azure SQL 数据库服务器来承载 SSISDB，或者需要在未配置自承载 IR 的情况下访问本地数据，则需要将 Azure-SSIS IR 加入虚拟网络。 有关详细信息，请参阅[将 Azure-SSIS IR 加入虚拟网络](/data-factory/join-azure-ssis-integration-runtime-virtual-network)。
 
-  - 确认为数据库服务器启用了“允许访问 Azure 服务”设置。 使用包含 IP 防火墙规则/虚拟网络服务终结点的 Azure SQL 数据库服务器来承载 SSISDB 时，此设置不适用。 有关详细信息，请参阅[保护 Azure SQL 数据库](../sql-database/sql-database-security-tutorial.md#create-firewall-rules)。 若要通过 PowerShell 来启用此设置，请参阅 [New-AzSqlServerFirewallRule](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlserverfirewallrule)。
+  - 确认为数据库服务器启用了“允许访问 Azure 服务”设置。 使用包含 IP 防火墙规则/虚拟网络服务终结点的 Azure SQL 数据库服务器来承载 SSISDB 时，此设置不适用。 有关详细信息，请参阅[保护 Azure SQL 数据库的安全](../sql-database/sql-database-security-tutorial.md#create-firewall-rules)。 若要通过 PowerShell 来启用此设置，请参阅 [New-AzSqlServerFirewallRule](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlserverfirewallrule)。
 
   - 将客户端计算机的 IP 地址或一系列包括客户端计算机 IP 地址的 IP 地址添加到数据库服务器的防火墙设置中的客户端 IP 地址列表。 有关详细信息，请参阅 [Azure SQL 数据库服务器级和数据库级防火墙规则](../sql-database/sql-database-firewall-configure.md)。
 

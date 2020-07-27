@@ -6,16 +6,16 @@ author: HeidiSteen
 ms.service: search
 ms.custom: subject-policy-samples
 ms.author: v-tawe
-origin.date: 06/10/2020
-ms.date: 07/02/2020
-ms.openlocfilehash: 1f7919d7c948e23c4d210f382336d92abea02e24
-ms.sourcegitcommit: 5afd7c4c3be9b80c4c67ec55f66fcf347aad74c6
+origin.date: 06/23/2020
+ms.date: 07/17/2020
+ms.openlocfilehash: 63dafc5586589a5824fc807a4a07372e1845f40b
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85942591"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471871"
 ---
-# <a name="azure-policy-built-in-policy-definitions-for-azure-cognitive-search"></a>Azure 认知搜索的 Azure Policy 内置策略定义
+# <a name="azure-policy-built-in-definitions-for-azure-cognitive-search"></a>Azure 认知搜索的 Azure Policy 内置定义
 
 此页是 Azure 认知搜索的 [Azure Policy](../governance/policy/overview.md) 内置策略定义的索引。 有关其他服务的其他 Azure Policy 内置定义，请参阅 [Azure Policy 内置定义](../governance/policy/samples/built-in-policies.md)。
 

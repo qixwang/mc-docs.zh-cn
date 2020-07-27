@@ -1,26 +1,21 @@
 ---
 title: 在 Node.js 中通过 azure-sb 包使用 Azure 服务总线队列
 description: 了解如何使用 azure-sb 包创建 Node.js 应用程序，该应用程序用于向/从 Azure 服务总线队列发送/接收消息。
-services: service-bus-messaging
-documentationcenter: nodejs
-author: lingliw
-manager: digimobile
-editor: ''
-ms.assetid: a87a00f9-9aba-4c49-a0df-f900a8b67b3f
-ms.service: service-bus-messaging
-ms.workload: tbd
-ms.tgt_pltfrm: na
+author: rockboyfor
 ms.devlang: nodejs
 ms.topic: quickstart
-origin.date: 01/27/2020
-ms.date: 2/6/2020
-ms.author: v-lingwu
-ms.openlocfilehash: 69d3a00b9c2f3d848af4f9de6865cac19dbd13e6
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: yes
+ms.testdate: 07/20/2020
+ms.author: v-yeche
+ms.custom: seo-javascript-september2019, seo-javascript-october2019
+ms.openlocfilehash: fcd4ac97582e9e49cd57a765c421dc7000ff2fdd
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796793"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162344"
 ---
 # <a name="quickstart-use-service-bus-queues-in-azure-with-nodejs-and-the-azure-sb-package"></a>快速入门：通过 Node.js 和 azure-sb 包使用 Azure 中的服务总线队列
 本教程介绍如何使用 [azure-sb](https://www.npmjs.com/package/azure-sb) 包创建 Node.js 应用程序，用于向/从 Azure 服务总线队列发送/接收消息。 示例以 JavaScript 编写并使用 Node.js [Azure 模块](https://www.npmjs.com/package/azure)，该模块在内部使用 azure-sb 包。
@@ -28,10 +23,10 @@ ms.locfileid: "83796793"
 > [!IMPORTANT]
 > [azure-sb](https://www.npmjs.com/package/azure-sb) 包使用[服务总线 REST 运行时 API](https://docs.microsoft.com/rest/api/servicebus/service-bus-runtime-rest)。 可以使用新的 [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) 获得更快的体验，因为该包使用更快的 [AMQP 1.0 协议](service-bus-amqp-overview.md)。 
 > 
-> 若要详细了解新包，请参阅[如何通过 Node.js 和 @azure/service-bus 包使用服务总线队列](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-queues-new-package)，否则请继续阅读以了解如何使用 [azure](https://www.npmjs.com/package/azure) 包。
+> 若要详细了解新包，请参阅[如何通过 Node.js 和 @azure/service-bus 包使用服务总线队列](/service-bus-messaging/service-bus-nodejs-how-to-use-queues-new-package)，否则请继续阅读以了解如何使用 [azure](https://www.npmjs.com/package/azure) 包。
 
 ## <a name="prerequisites"></a>先决条件
-- Azure 订阅。 若要完成本教程，需要一个 Azure 帐户。 你可以注册[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)或购买[预付费订阅](https://wd.azure.cn/pricing/pia-waiting-list/?form-type=identityauth)。
+- Azure 订阅。 若要完成本教程，需要一个 Azure 帐户。 你可以激活 [MSDN 订阅者权益](https://www.azure.cn/offers/ms-mc-arz-msdn/)或注册[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 - 如果没有可使用的队列，请遵循[使用 Azure 门户创建服务总线队列](service-bus-quickstart-portal.md)一文来创建队列。
     1. 阅读服务总线**队列**的快速**概述**。 
     2. 创建一个服务总线**命名空间**。 
@@ -39,7 +34,6 @@ ms.locfileid: "83796793"
 
         > [!NOTE]
         > 在本教程中，需使用 Node.js 在服务总线命名空间中创建一个**队列**。 
- 
 
 ## <a name="create-a-nodejs-application"></a>创建 Node.js 应用程序
 创建一个空的 Node.js 应用程序。 有关如何创建 Node.js 应用程序的说明，请参阅[创建 Node.js 应用程序并将其部署到 Azure 网站][Create and deploy a Node.js application to an Azure Website]或 [Node.js 云服务][Node.js Cloud Service]（使用 Windows PowerShell）。
@@ -186,18 +180,23 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
 
 如果应用程序在处理消息之后，但在调用 `deleteMessage` 方法之前崩溃，则在应用程序重启时会将该消息重新传送给它。 此方法通常称作*至少处理一次*，即每条消息至少被处理一次，但在某些情况下，同一消息可能会被重新传送。 如果方案无法容忍重复处理，则应用程序开发人员应向其应用程序添加更多逻辑以处理重复消息传送。 这通常可以通过使用消息的 **MessageId** 属性来实现，该属性在多次传送尝试中保持不变。
 
+> [!NOTE]
+> 可以使用[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer/)管理服务总线资源。 服务总线资源管理器允许用户连接到服务总线命名空间并以一种简单的方式管理消息传送实体。 该工具提供高级功能，如导入/导出功能或用于对主题、队列、订阅、中继服务、通知中心和事件中心进行测试的功能。 
+
 ## <a name="next-steps"></a>后续步骤
 若要了解有关队列的详细信息，请参阅以下资源。
 
 * [队列、主题和订阅][Queues, topics, and subscriptions]
 * [Azure SDK for Node][Azure SDK for Node] 存储库
-* [Node.js 开发人员中心](https://docs.microsoft.com/develop/nodejs/)
+* [Node.js 开发人员中心](https://docs.azure.cn/develop/nodejs/)
 
-  [Azure SDK for Node]: https://github.com/Azure/azure-sdk-for-node
+[Azure SDK for Node]: https://github.com/Azure/azure-sdk-for-node
 [Azure portal]: https://portal.azure.cn
 
-  [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
-  [Queues, topics, and subscriptions]: ./service-bus-queues-topics-subscriptions.md
+[Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
+[Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [Create and deploy a Node.js application to an Azure Website]: ../app-service/app-service-web-get-started-nodejs.md
 [Node.js Web Application with Storage]:../cosmos-db/table-storage-how-to-use-nodejs.md
-  [Service Bus quotas]: ./service-bus-quotas.md
+[Service Bus quotas]: service-bus-quotas.md
+
+<!-- Update_Description: update meta properties, wording update, update link -->

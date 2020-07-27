@@ -1,25 +1,19 @@
 ---
 title: Azure 中继 - 迁移到共享访问签名授权
 description: 介绍如何将 Azure 中继应用程序从使用 Azure Active Directory 访问控制服务迁移到共享访问签名授权。
-services: service-bus-relay
-documentationcenter: ''
-author: lingliw
-manager: digimobile
-editor: ''
-ms.service: service-bus-relay
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 01/21/2020
-ms.date: 2/6/2020
-ms.author: v-lingwu
-ms.openlocfilehash: 9b40cb36409d2f19d3070d1686534548348df3b1
-ms.sourcegitcommit: cada23b6400453ff9c08cfb08393e635e2fddac1
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: ''
+ms.author: v-yeche
+author: rockboyfor
+ms.openlocfilehash: 930de8bd016a34e99ee53665d556dbccf80df811
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83734637"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162418"
 ---
 # <a name="azure-relay---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Azure 中继 - 从 Azure Active Directory 访问控制服务迁移到共享访问签名授权
 
@@ -39,27 +33,27 @@ ACS 和中继通过签名密钥  这一共用概念进行集成。 ACS 命名空
 
 迁移方案分为三大类：
 
-1.  **未更改默认值**： 一些客户使用 [SharedSecretTokenProvider](https://docs.azure.cn/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider) 对象，同时传递为 ACS 命名空间（与中继命名空间配对）自动生成的所有者  服务标识及其密钥，不添加新规则。
+1. **未更改默认值**： 一些客户使用 [SharedSecretTokenProvider](https://docs.azure.cn/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider?view=azure-dotnet) 对象，同时传递为 ACS 命名空间（与中继命名空间配对）自动生成的所有者  服务标识及其密钥，不添加新规则。
 
-2.  **包含简单规则的自定义服务标识**。 一些客户添加新的服务标识，并授予每个新服务标识对一个特定实体的“发送”  、“侦听”  和“管理”  权限。
+2. **包含简单规则的自定义服务标识**。 一些客户添加新的服务标识，并授予每个新服务标识对一个特定实体的“发送”  、“侦听”  和“管理”  权限。
 
-3.  **包含复杂规则的自定义服务标识**。 很少有客户使用复杂规则集。在这些集中，外部颁发的令牌映射到中继上的权限，或在多个命名空间路径上通过多个规则为一个服务标识分配不同的权限。
+3. **包含复杂规则的自定义服务标识**。 很少有客户使用复杂规则集。在这些集中，外部颁发的令牌映射到中继上的权限，或在多个命名空间路径上通过多个规则为一个服务标识分配不同的权限。
 
-有关复杂规则集迁移方面的帮助，可以联系 [Azure 支持部门](https://www.azure.cn/support/contact/)。 前两个方案启用的是直接迁移。
+有关复杂规则集迁移方面的帮助，可以联系 [Azure 支持部门](https://support.azure.cn/support/contact/)。 前两个方案启用的是直接迁移。
 
 ### <a name="unchanged-defaults"></a>未更改默认值
 
-如果应用程序未更改 ACS 默认值，可以将使用的所有 [SharedSecretTokenProvider](https://docs.azure.cn/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider) 替换为 [SharedAccessSignatureTokenProvider](https://docs.azure.cn/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) 对象，并使用命名空间预配置的 RootManageSharedAccessKey  ，而不是 ACS 所有者  帐户。 请注意，即使使用 ACS 所有者  帐户，通常也都不建议使用这种配置（现在仍不建议），因为此帐户/规则提供对命名空间的完整管理权限，包括删除任何实体的权限。
+如果应用程序未更改 ACS 默认值，可以将使用的所有 [SharedSecretTokenProvider](https://docs.azure.cn/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider?view=azure-dotnet) 替换为 [SharedAccessSignatureTokenProvider](https://docs.azure.cn/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider?view=azure-dotnet) 对象，并使用命名空间预配置的 RootManageSharedAccessKey  ，而不是 ACS 所有者  帐户。 请注意，即使使用 ACS 所有者  帐户，通常也都不建议使用这种配置（现在仍不建议），因为此帐户/规则提供对命名空间的完整管理权限，包括删除任何实体的权限。
 
 ### <a name="simple-rules"></a>简单规则
 
 如果应用程序使用包含简单规则的自定义服务标识，那么在创建 ACS 服务标识以提供对特定中继的访问控制时，迁移非常简单。 SaaS 式解决方案通常会出现这种情况。在此类解决方案中，每个中继被用作与租户网站或分支机构的桥梁，并且会为特定网站创建服务标识。 在这种情况下，可以直接在中继上将各自的服务标识迁移到共享访问签名规则。 服务标识名称可能会变成 SAS 规则名称，服务标识密钥可能会变成 SAS 规则密钥。 然后，将 SAS 规则的权限配置为相当于实体的各自适用 ACS 规则。
 
-可以在与 ACS 联合的任何现有命名空间上就地额外配置新 SAS，随后使用 [SharedAccessSignatureTokenProvider](https://docs.azure.cn/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider)（而不是 [SharedSecretTokenProvider](https://docs.azure.cn/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider)）从 ACS 迁移。 命名空间不需要与 ACS 取消关联。
+可以在与 ACS 联合的任何现有命名空间上就地额外配置新 SAS，随后使用 [SharedAccessSignatureTokenProvider](https://docs.azure.cn/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider?view=azure-dotnet)（而不是 [SharedSecretTokenProvider](https://docs.azure.cn/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider?view=azure-dotnet)）从 ACS 迁移。 命名空间不需要与 ACS 取消关联。
 
 ### <a name="complex-rules"></a>复杂规则
 
-SAS 规则并不是帐户，而是与权限相关联的命名签名密钥。 因此，在应用程序创建多个服务标识并向其授予访问多个实体或整个命名空间权限的情况下，仍需要令牌颁发中介。 若要获取此类中介的相关指南，可以[联系支持部门](https://www.azure.cn/support/contact/)。
+SAS 规则并不是帐户，而是与权限相关联的命名签名密钥。 因此，在应用程序创建多个服务标识并向其授予访问多个实体或整个命名空间权限的情况下，仍需要令牌颁发中介。 若要获取此类中介的相关指南，可以[联系支持部门](https://support.azure.cn/support/contact/)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -68,4 +62,4 @@ SAS 规则并不是帐户，而是与权限相关联的命名签名密钥。 因
 * [Azure 中继身份验证和授权](relay-authentication-and-authorization.md)
 * [附有共享访问签名的服务总线身份验证](../service-bus-messaging/service-bus-sas.md)
 
-
+<!-- Update_Description: update meta properties, wording update, update link -->

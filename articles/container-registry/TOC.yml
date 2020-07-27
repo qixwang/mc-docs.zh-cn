@@ -17,6 +17,9 @@
           href: container-registry-get-started-portal.md
         - name: 创建容器注册表 - PowerShell
           href: container-registry-get-started-powershell.md
+        - name: 创建容器注册表 - ARM 模板
+          displayName: Resource Manager
+          href: container-registry-get-started-geo-replication-template.md
         - name: 生成和推送 Java 映像 - CLI
           href: container-registry-java-quickstart.md
     - name: 教程
@@ -77,12 +80,18 @@
                   href: container-registry-delete.md
                 - name: 无标记清单的保留策略（预览版）
                   href: container-registry-retention-policy.md
+                - name: 自动清除标记和清单（预览版）
+                  href: container-registry-auto-purge.md
             - name: 使用 ACR webhook
               href: container-registry-webhook.md
         - name: 安全性和身份验证
           items:
-            - name: 配置服务防火墙规则
+            - name: 使用专用终结点限制访问
+              href: container-registry-private-link.md
+            - name: 配置公共注册表访问
               href: container-registry-access-selected-networks.md
+            - name: 使用服务终结点限制访问（预览版）
+              href: container-registry-vnet.md
             - name: 使用客户管理的密钥加密
               href: container-registry-customer-managed-keys.md
             - name: 在防火墙后访问
@@ -95,8 +104,14 @@
                   href: container-registry-auth-service-principal.md
                 - name: 使用托管标识进行身份验证
                   href: container-registry-authentication-managed-identity.md
+                - name: 使用令牌进行身份验证（预览版）
+                  href: container-registry-repository-scoped-permissions.md
+                - name: 从 Azure 容器实例进行身份验证
+                  href: container-registry-auth-aci.md
+                - name: 使用请求密码从 Kubernetes 进行身份验证
+                  href: container-registry-auth-kubernetes.md
                 - name: 从 Azure Kubernetes 服务 (AKS) 进行身份验证
-                  href: ../aks/cluster-container-registry-integration.md?toc=/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
+                  href: ../aks/cluster-container-registry-integration.md?toc=/container-registry/toc.json&bc=/container-registry/breadcrumb/toc.json
                 - name: 使用存储库范围内的令牌进行身份验证（预览版）
                   href: container-registry-repository-scoped-permissions.md
             - name: 基于角色的访问控制
@@ -119,14 +134,14 @@
           items:
             - name: 诊断和审核日志
               href: container-registry-diagnostics-audit-logs.md
-            - name: 使用 Azure Policy 审核符合性（预览版）
+            - name: 使用 Azure Policy 审核符合性
               href: container-registry-azure-policy.md
-        - name: 故障排除
+        - name: 疑难解答
           expanded: false
           items:
             - name: 检测常见问题
               href: container-registry-check-health.md
-            - name: 常见问题
+            - name: 常见问题解答
               href: container-registry-faq.md
 - name: 任务
   expanded: true
@@ -215,7 +230,7 @@
   expanded: false
   items:
     - name: 上市区域
-      href: 'https://status.azure.com/status/'
+      href: 'https://azure.microsoft.com/regions/services/'
     - name: 定价
       href: 'https://www.azure.cn/pricing/details/container-registry/'
     - name: 提供产品反馈

@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 03/14/2019
-ms.date: 09/23/2019
+ms.date: 07/27/2020
 ms.author: v-jay
-ms.openlocfilehash: a09bdc58b2e93ec25f85ce79cfd454814e1e470b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 77dc20612fe882b62df4cc308fdfdf3beefff7a1
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "71124411"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162176"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>如何生成平滑流式处理 Windows 应用商店应用程序  
 
@@ -152,15 +152,24 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
 
 1. 在解决方案资源管理器中，右键单击“MainPage.xaml”  ，并单击“查看代码”  。
 2. 在该文件的顶部，添加以下 using 语句：
-   
+
+    ```csharp
         using Windows.Media;
+    ```
+
 3. 在 **MainPage** 类的开头，添加以下数据成员：
-   
-         private MediaExtensionManager extensions = new MediaExtensionManager();
+
+    ```csharp
+        private MediaExtensionManager extensions = new MediaExtensionManager();
+    ```
+
 4. 在 **MainPage** 构造函数的末尾，添加以下两行：
-   
+
+    ```csharp
         extensions.RegisterByteStreamHandler("Microsoft.Media.AdaptiveStreaming.SmoothByteStreamHandler", ".ism", "text/xml");
         extensions.RegisterByteStreamHandler("Microsoft.Media.AdaptiveStreaming.SmoothByteStreamHandler", ".ism", "application/vnd.ms-sstr+xml");
+    ```
+
 5. 在 MainPage 类的末尾，粘贴以下代码  ：
    ```csharp
          # region UI Button Click Events

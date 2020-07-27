@@ -6,21 +6,21 @@ ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
 origin.date: 04/30/2020
-ms.date: 06/08/2020
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: 25b98a3ea5317d67abcba9d90b5b21aabf6d8bc3
-ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
+ms.openlocfilehash: 4a9f78df1a58cdb00294521ab66e149736ae6d50
+ms.sourcegitcommit: 5726d3b2e694f1f94f9f7d965676c67beb6ed07c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84564372"
+ms.lasthandoff: 07/21/2020
+ms.locfileid: "86863181"
 ---
 <!--Verified successfully-->
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-a-resource-manager-template"></a>快速入门：使用资源管理器模板在 Azure 中部署容器实例
 
-使用 Azure 容器实例在 Azure 中快速方便地运行无服务器 Docker 容器。 当你不需要像 AzureKubernetes 服务这样的完整容器业务流程平台时，可以按需将应用程序部署到容器实例。
-
-在本快速入门中，你将使用 Azure 资源管理器模板部署一个独立的 Docker 容器，并使其 Web 应用程序可通过公共 IP 地址使用。 
+使用 Azure 容器实例在 Azure 中快速方便地运行无服务器 Docker 容器。 当你不需要像 AzureKubernetes 服务这样的完整容器业务流程平台时，可以按需将应用程序部署到容器实例。 在本快速入门中，你将使用 Azure 资源管理器模板部署一个独立的 Docker 容器，并使其 Web 应用程序可通过公共 IP 地址使用。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -34,7 +34,7 @@ ms.locfileid: "84564372"
 
 ### <a name="review-the-template"></a>查看模板
 
-本快速入门中使用的模板来自 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-linuxcontainer-public-ip)。
+本快速入门中使用的模板来自 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-linuxcontainer-public-ip/)。
 
 ```json
 {
@@ -101,7 +101,7 @@ ms.locfileid: "84564372"
     {
       "name": "[parameters('name')]",
       "type": "Microsoft.ContainerInstance/containerGroups",
-      "apiVersion": "2018-10-01",
+      "apiVersion": "2019-12-01",
       "location": "[parameters('location')]",
       "properties": {
         "containers": [
@@ -156,13 +156,13 @@ ms.locfileid: "84564372"
 
 ### <a name="deploy-the-template"></a>部署模板
 
- 1. 选择下图登录到 Azure 并打开一个模板。 该模板将在另一位置创建注册表和副本。
+1. 选择下图登录到 Azure 并打开一个模板。 该模板将在另一位置创建注册表和副本。
 
-    [![“部署到 Azure”](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-aci-linuxcontainer-public-ip%2Fazuredeploy.json)
+    [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-aci-linuxcontainer-public-ip%2Fazuredeploy.json)
 
- 2. 选择或输入以下值。
+2. 选择或输入以下值。
 
-    * **订阅**：选择一个 Azure 订阅。
+    * 订阅：选择一个 Azure 订阅。
     * **资源组**：选择“新建”，为资源组输入一个独一无二的名称，然后选择“确定”。 
     * **位置**：选择资源组的位置。 示例：中国北部 2。
     * **名称**：接受为实例生成的名称，或者输入一个名称。
@@ -174,11 +174,11 @@ ms.locfileid: "84564372"
 
     ![模板属性](media/container-instances-quickstart-template/template-properties.png)
 
- 3. 成功创建实例后，你会收到通知：
+3. 成功创建实例后，你会收到通知：
 
     ![门户通知](media/container-instances-quickstart-template/deployment-notification.png)
 
- 使用 Azure 门户部署模板。 除了 Azure 门户之外，还可以使用 Azure PowerShell、Azure CLI 和 REST API。 若要了解其他部署方法，请参阅[部署模板](../azure-resource-manager/templates/deploy-cli.md)。
+使用 Azure 门户部署模板。 除了 Azure 门户之外，还可以使用 Azure PowerShell、Azure CLI 和 REST API。 若要了解其他部署方法，请参阅[部署模板](../azure-resource-manager/templates/deploy-cli.md)。
 
 ## <a name="review-deployed-resources"></a>查看已部署的资源
 

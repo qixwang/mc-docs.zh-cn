@@ -1,26 +1,21 @@
 ---
 title: 如何通过 Ruby 使用 Azure 服务总线队列
 description: 本教程介绍如何创建 Ruby 应用程序，以便向服务总线队列发送消息以及从中接收消息。
-services: service-bus-messaging
 documentationcenter: ruby
-author: lingliw
-manager: digimobile
-editor: spelluru
-ms.assetid: 0a11eab2-823f-4cc7-842b-fbbe0f953751
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: quickstart
-origin.date: 01/24/2020
-ms.date: 2/6/2020
-ms.author: v-lingwu
-ms.openlocfilehash: d29e3805cdaa8d8e37d62a1e085b2377450ccba6
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: yes
+ms.testdate: 07/20/2020
+ms.author: v-yeche
+author: rockboyfor
+ms.openlocfilehash: e04a5c8e43b9224c0227049e0ca08b5987d0a996
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796856"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162181"
 ---
 # <a name="quickstart-how-to-use-service-bus-queues-with-ruby"></a>快速入门：如何通过 Ruby 使用服务总线队列
 
@@ -29,7 +24,7 @@ ms.locfileid: "83796856"
 本教程介绍如何创建 Ruby 应用程序，以便向服务总线队列发送消息以及从中接收消息。 相关示例用 Ruby 编写且使用 Azure gem。
 
 ## <a name="prerequisites"></a>先决条件
-1. Azure 订阅。 若要完成本教程，需要一个 Azure 帐户。 你可以注册[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)或购买[预付费订阅](https://wd.azure.cn/pricing/pia-waiting-list/?form-type=identityauth)。
+1. Azure 订阅。 若要完成本教程，需要一个 Azure 帐户。 你可以激活 [MSDN 订阅者权益](https://www.azure.cn/offers/ms-mc-arz-msdn/)或注册[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 2. 按照[使用 Azure 门户创建服务总线队列](service-bus-quickstart-portal.md)一文中的步骤操作。
     1. 阅读服务总线**队列**的快速**概述**。 
     2. 创建一个服务总线**命名空间**。 
@@ -98,6 +93,9 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
 
 如果应用程序在处理消息之后，但在调用 `delete_queue_message()` 方法之前崩溃，则在应用程序重启时会将该消息重新传送给它。 此过程通常称作“至少处理一次”，即每条消息将至少被处理一次，但在某些情况下，同一消息可能会被重新传送。 如果方案无法容忍重复处理，则应用程序开发人员应向其应用程序添加更多逻辑以处理重复消息传送。 这通常可通过使用消息的 `message_id` 属性实现，该属性在多次传送尝试中保持不变。
 
+> [!NOTE]
+> 可以使用[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer/)管理服务总线资源。 服务总线资源管理器允许用户连接到服务总线命名空间并以一种简单的方式管理消息传送实体。 该工具提供高级功能，如导入/导出功能或用于对主题、队列、订阅、中继服务、通知中心和事件中心进行测试的功能。 
+
 ## <a name="next-steps"></a>后续步骤
 现在，已了解有关服务总线队列的基础知识，请访问下面的链接以获取详细信息。
 
@@ -106,3 +104,4 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
 
 有关本文中讨论的 Azure 服务总线队列与[如何通过 Ruby 使用队列存储](../storage/queues/storage-ruby-how-to-use-queue-storage.md)一文中讨论的 Azure 队列的比较，请参阅 [Azure 队列和 Azure 服务总线队列 - 比较与对照](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 
+<!-- Update_Description: update meta properties, wording update, update link -->

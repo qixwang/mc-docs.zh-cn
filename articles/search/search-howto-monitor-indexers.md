@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 03/16/2020
-ms.openlocfilehash: 0d2e116d0abdb1a2a1963da12db25648bd18d5f6
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: caf0e93d981cb6f5282f3558e230012a19365ab4
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850570"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471969"
 ---
 # <a name="how-to-monitor-azure-cognitive-search-indexer-status-and-results"></a>如何监视 Azure 认知搜索索引器的状态和结果
 
@@ -83,7 +83,7 @@ Azure 认知搜索提供有关每个索引器的当前和历史运行的状态�
 
 可以使用[“获取索引器状态”命令](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)检索索引器的状态和执行历史记录：
 
-    GET https://[service name].search.azure.cn/indexers/[indexer name]/status?api-version=2019-05-06
+    GET https://[service name].search.azure.cn/indexers/[indexer name]/status?api-version=2020-06-30
     api-key: [Search service admin key]
 
 响应包含总体索引器状态、最后一次（或正在进行的）索引器调用以及最近索引器调用的历史记录。

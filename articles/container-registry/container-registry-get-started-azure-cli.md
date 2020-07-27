@@ -2,16 +2,18 @@
 title: 快速入门 - 创建注册表 - Azure CLI
 description: 快速了解如何使用 Azure CLI 创建专用 Docker 容器注册表。
 ms.topic: quickstart
-origin.date: 01/22/2019
+origin.date: 06/12/2020
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: 12/09/2019
 ms.author: v-yeche
-ms.date: 12/09/2019
 ms.custom: seodec18, H1Hack27Feb2017, mvc
-ms.openlocfilehash: 89965154092e7f13538bd3e7ea5f2a11c0c8fa17
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2a600e83685cf124f9edc4bd1a27e7e5f00b82ea
+ms.sourcegitcommit: 5726d3b2e694f1f94f9f7d965676c67beb6ed07c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74885023"
+ms.lasthandoff: 07/21/2020
+ms.locfileid: "86863146"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>快速入门：使用 Azure CLI 创建专用容器注册表
 
@@ -35,12 +37,13 @@ az group create --name myResourceGroup --location chinanorth
 
 ## <a name="create-a-container-registry"></a>创建容器注册表
 
-本快速入门将创建一个“基本”注册表。该注册表已针对成本进行优化，是可供开发人员了解 Azure 容器注册表的选项。  有关可用服务层级的详细信息，请参阅[容器注册表 SKU][container-registry-skus]。
+本快速入门将创建一个“基本”注册表。该注册表已针对成本进行优化，是可供开发人员了解 Azure 容器注册表的选项。 有关可用服务层级的详细信息，请参阅[容器注册表服务层级][container-registry-skus]。
 
-使用 [az acr create][az-acr-create] 命令创建 ACR 实例。 注册表名称在 Azure 中必须唯一，并且包含 5-50 个字母数字字符。 以下示例使用 myContainerRegistry007  。 将其更新为唯一值。
+使用 [az acr create][az-acr-create] 命令创建 ACR 实例。 注册表名称在 Azure 中必须唯一，并且包含 5-50 个字母数字字符。 以下示例使用 myContainerRegistry007。 将其更新为唯一值。
 
 ```azurecli
-az acr create --resource-group myResourceGroup --name myContainerRegistry007 --sku Basic
+az acr create --resource-group myResourceGroup \
+  --name myContainerRegistry007 --sku Basic
 ```
 
 创建注册表时，输出与下面类似：
@@ -66,14 +69,14 @@ az acr create --resource-group myResourceGroup --name myContainerRegistry007 --s
 }
 ```
 
-记下输出中的 `loginServer`，这是完全限定的注册表名称（全部小写）。 在本快速入门的剩余部分，`<acrName>` 是容器注册表名称的占位符。
+记下输出中的 `loginServer`，这是完全限定的注册表名称（全部小写）。 在本快速入门的剩余部分，`<registry-name>` 是容器注册表名称的占位符，`<login-server>` 是注册表的登录服务器名称的占位符。
 
 ## <a name="log-in-to-registry"></a>登录到注册表
 
 在推送和拉取容器映像之前，必须登录到注册表。 为此，请使用 [az acr login][az-acr-login] 命令。
 
 ```azurecli
-az acr login --name <acrName>
+az acr login --name <registry-name>
 ```
 
 该命令在完成后会返回消息 `Login Succeeded`。
@@ -85,7 +88,7 @@ az acr login --name <acrName>
 以下示例列出了注册表中的存储库：
 
 ```azurecli
-az acr repository list --name <acrName> --output table
+az acr repository list --name <registry-name> --output table
 ```
 
 输出：
@@ -96,10 +99,10 @@ Result
 hello-world
 ```
 
-以下示例列出了 hello-world 存储库中的标记  。
+以下示例列出了 hello-world 存储库中的标记。
 
 ```azurecli
-az acr repository show-tags --name <acrName> --repository hello-world --output table
+az acr repository show-tags --name <registry-name> --repository hello-world --output table
 ```
 
 输出：
@@ -125,7 +128,10 @@ az group delete --name myResourceGroup
 本快速入门介绍了如何使用 Azure CLI 创建 Azure 容器注册表，如何将容器映像推送到注册表，以及如何拉取并运行注册表中的映像。 请继续阅读 Azure 容器注册表教程，以更深入地了解 ACR。
 
 > [!div class="nextstepaction"]
-> [Azure 容器注册表教程][container-registry-tutorial-quick-task]
+> [Azure 容器注册表教程][container-registry-tutorial-prepare-registry]
+
+> [!div class="nextstepaction"]
+> [Azure 容器注册表任务教程][container-registry-tutorial-quick-task]
 
 <!-- LINKS - external -->
 
@@ -147,5 +153,6 @@ az group delete --name myResourceGroup
 [azure-cli]: https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest
 [container-registry-tutorial-quick-task]: container-registry-tutorial-quick-task.md
 [container-registry-skus]: container-registry-skus.md
+[container-registry-tutorial-prepare-registry]: container-registry-tutorial-prepare-registry.md
 
 <!-- Update_Description: update meta properties, wording update, update link -->

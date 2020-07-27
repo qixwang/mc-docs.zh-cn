@@ -1,21 +1,19 @@
 ---
 title: Azure 服务总线常见问题 (FAQ) | Azure
 description: 本文提供了一些有关 Azure 服务总线的常见问题解答 (FAQ)。
-services: service-bus-messaging
-author: lingliw
-manager: digimobile
-editor: spelluru
-ms.service: service-bus-messaging
 ms.topic: article
-origin.date: 06/10/2020
-ms.date: 06/30/2020
-ms.author: v-lingwu
-ms.openlocfilehash: 3e7db10755ba15bb9c7d541cb62cf020d7b0c80e
-ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: yes
+ms.testdate: 07/20/2020
+ms.author: v-yeche
+author: rockboyfor
+ms.openlocfilehash: 9155e60447f97b5cc1aea14d1ce174258b5b5af5
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85796315"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162124"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure 服务总线 - 常见问题解答 (FAQ)
 
@@ -66,6 +64,9 @@ ms.locfileid: "85796315"
     ```
     nslookup <YourNamespaceName>.servicebus.chinacloudapi.cn
     ```
+    
+    <!--Mooncake Customization: The new command is not supported in Azure China-->
+
 2. 记下在 `Non-authoritative answer` 中返回的 IP 地址。 此 IP 地址是静态的。 只有在你将命名空间还原到另一群集时，它才会更改。
 
 如果对命名空间使用区域冗余，则需执行一些额外的步骤： 
@@ -75,6 +76,9 @@ ms.locfileid: "85796315"
     ```
     nslookup <yournamespace>.servicebus.chinacloudapi.cn
     ```
+    
+    <!--Mooncake Customization: The Global command is not supported in Azure China-->
+    
 2. 记下“非权威回答”部分中的名称，该名称采用下述格式之一： 
 
     ```
@@ -83,7 +87,6 @@ ms.locfileid: "85796315"
     <name>-s3.servicebus.chinacloudapi.cn
     ```
 3. 为每一个运行 nslookup，使用后缀 s1、s2 和 s3 获取所有三个在三个可用性区域中运行的实例的 IP 地址。 
-
 
 ## <a name="best-practices"></a>最佳实践
 ### <a name="what-are-some-azure-service-bus-best-practices"></a>Azure 服务总线的最佳实践有哪些？
@@ -100,7 +103,7 @@ ms.locfileid: "85796315"
 ## <a name="pricing"></a>定价
 本部分回答了一些关于服务总线定价结构的常见问题解答。
 
-[服务总线定价和计费](https://www.azure.cn/pricing/details/service-bus/)一文介绍了服务总线中的计费计量。有关服务总线定价选项的具体信息，请参阅[服务总线定价详细信息](https://www.azure.cn/pricing/details/messaging/)。
+[服务总线定价和计费](https://www.azure.cn/pricing/details/service-bus/)译文介绍了服务总线中的计费标准。 有关服务总线定价选项的具体信息，请参阅[服务总线定价详细信息](https://www.azure.cn/pricing/details/service-bus/)。
 
 还可以访问 [Azure 支持常见问题解答](https://support.azure.cn/support/contact/)了解常规的 Azure 定价信息。 
 
@@ -108,7 +111,7 @@ ms.locfileid: "85796315"
 有关服务总线定价的完整信息，请参阅[服务总线定价][Pricing overview]。 除标示的价格外，还需为在其中部署应用程序的数据中心之外的相关数据输出支付费用。
 
 ### <a name="what-usage-of-service-bus-is-subject-to-data-transfer-what-is-not"></a>服务总线的哪些使用情况受数据传输限制？ 哪些不受其限制？
-在给定 Azure 区域内的任何数据传输和入站数据传输均不收费。 
+在给定 Azure 区域内的任何数据传输和入站数据传输均不收费。 区域外的数据传输需收取输出费用，详见[此处](https://www.azure.cn/pricing/details/data-transfer/)。
 
 ### <a name="does-service-bus-charge-for-storage"></a>服务总线是否对存储收费？
 否，服务总线不对存储收费。 但是，对每个队列/主题可以保留的数据最大量设有配额限制。 请参阅下一个常见问题。
@@ -164,13 +167,16 @@ Move-AzResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptio
 ## <a name="next-steps"></a>后续步骤
 若要了解有关服务总线的详细信息，请参阅以下文章：
 
-- [Azure 服务总线高级版简介（博客文章）](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
-- [服务总线概述](./service-bus-messaging-overview.md)
-- [服务总线队列入门](./service-bus-dotnet-get-started-with-queues.md)
+* [Azure 服务总线高级版简介（博客文章）](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
+* [Azure 服务总线高级版简介 (Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
+* [服务总线概述](service-bus-messaging-overview.md)
+* [服务总线队列入门](service-bus-dotnet-get-started-with-queues.md)
 
-[Best practices for performance improvements using Service Bus]: ./service-bus-performance-improvements.md
-[Best practices for insulating applications against Service Bus outages and disasters]: ./service-bus-outages-disasters.md
+[Best practices for performance improvements using Service Bus]: service-bus-performance-improvements.md
+[Best practices for insulating applications against Service Bus outages and disasters]: service-bus-outages-disasters.md
 [Pricing overview]: https://www.azure.cn/pricing/details/service-bus/
-[Quotas overview]: ./service-bus-quotas.md
-[Exceptions overview]: ./service-bus-messaging-exceptions.md
-[Shared Access Signatures]: ./service-bus-sas.md
+[Quotas overview]: service-bus-quotas.md
+[Exceptions overview]: service-bus-messaging-exceptions.md
+[Shared Access Signatures]: service-bus-sas.md
+
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: quickstart
 origin.date: 06/07/2020
 ms.date: 07/02/2020
-ms.openlocfilehash: 1e85a89ae7abd2f4f336f6605e57cfde2192fb22
-ms.sourcegitcommit: 5fb9ae9adc04e79d6d0e78c9e69dbe8aa3ceb00a
+ms.openlocfilehash: 6312ede662b4fc5ae15e73680126123e53007f59
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86100244"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471894"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>快速入门：在门户中创建 Azure 认知搜索服务
 
@@ -34,7 +34,7 @@ Azure 认知搜索是用于在自定义应用中插入搜索体验的独立资�
 
 ## <a name="find-azure-cognitive-search"></a>查找 Azure 认知搜索
 
-1. 登录到 [Azure 门户](https://portal.azure.cn/)。
+1. 登录 [Azure 门户](https://portal.azure.cn/)。
 
 1. 单击左上角的加号（“+ 创建资源”）。
 
@@ -87,7 +87,7 @@ Azure 认知搜索在大多数区域中可用。 支持的区域列表可在[定
 
  如果使用 AI 扩充，请在认知服务所在的相同区域中创建搜索服务。 *将 Azure 认知搜索和认知服务归置在同一区域中是 AI 扩充的必要条件*。
 
- 具有业务连续性和灾难恢复 (BCDR) 要求的客户应在[区域对](https://docs.microsoft.com/azure/best-practices-availability-paired-regions#azure-regional-pairs)中创建其服务。 例如，如果在上海操作，可以为每个服务选择中国东部和中国东部 2。
+ 具有业务连续性和灾难恢复 (BCDR) 要求的客户应在[区域对](https://docs.azure.cn/best-practices-availability-paired-regions#azure-regional-pairs)中创建其服务。 例如，如果在上海操作，可以为每个服务选择中国东部和中国东部 2。
 
 ### <a name="recommendations"></a>建议
 

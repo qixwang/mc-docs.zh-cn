@@ -1,26 +1,19 @@
 ---
 title: 如何在 Azure 门户中创建服务总线命名空间
 description: 本文提供有关在 Azure 门户中创建 Azure 服务总线命名空间的说明。
-services: service-bus-messaging
-documentationcenter: .net
-author: lingliw
-manager: digimobile
-editor: ''
-ms.assetid: fbb10e62-b133-4851-9d27-40bd844db3ba
-ms.service: service-bus-messaging
-ms.devlang: tbd
 ms.topic: conceptual
-ms.tgt_pltfrm: dotnet
-ms.workload: na
-origin.date: 01/24/2020
-ms.date: 2/6/2020
-ms.author: v-lingwu
-ms.openlocfilehash: 00e857819482e70a20a0780be09896e38fc55c7a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: ''
+ms.author: v-yeche
+author: rockboyfor
+ms.openlocfilehash: ab4018f9ade8b0ff85f282edfd487343784f05a6
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77068273"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162397"
 ---
 # <a name="create-a-service-bus-namespace-using-the-azure-portal"></a>使用 Azure 门户创建服务总线命名空间。
 
@@ -28,7 +21,7 @@ ms.locfileid: "77068273"
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-祝贺你！ 现在已创建一个服务总线消息传送命名空间。
+祝贺！ 现在已创建一个服务总线消息传送命名空间。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -37,4 +30,4 @@ ms.locfileid: "77068273"
 [create-namespace-using-arm]: service-bus-resource-manager-overview.md
 [github-samples]: https://github.com/Azure/azure-service-bus/tree/master/samples
 
-<!--Update_Description:update meta properties and link references-->
+<!-- Update_Description: update meta properties, wording update, update link -->

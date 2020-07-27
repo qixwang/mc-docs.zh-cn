@@ -1,24 +1,26 @@
 ---
-title: 在 Azure 门户中创建搜索应用
+title: 在 Azure 门户中创建演示应用
 titleSuffix: Azure Cognitive Search
-description: 运行“创建应用(预览版)”向导为正常运行的 Web 应用生成 HTML 页面和脚本。 页面包含搜索栏、结果区域、边栏和自动提示支持。
+description: 运行“创建演示应用(预览版)”向导为正常运行的 Web 应用生成 HTML 页面和脚本。 页面包含搜索栏、结果区域、边栏和自动提示支持。
 manager: nitinme
 author: HeidiSteen
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: quickstart
-origin.date: 06/07/2020
-ms.date: 07/02/2020
-ms.openlocfilehash: d0fd5bf7b763799fbff5e614be4e495d8a98d391
-ms.sourcegitcommit: 5afd7c4c3be9b80c4c67ec55f66fcf347aad74c6
+origin.date: 07/01/2020
+ms.date: 07/17/2020
+ms.openlocfilehash: a1ab4be856db1a53c29daf2f5ff7908397e795be
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85942572"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86472048"
 ---
-# <a name="quickstart-create-a-search-app-in-the-portal-azure-cognitive-search"></a>快速入门：在门户中创建搜索应用（Azure 认知搜索）
+# <a name="quickstart-create-a-demo-app-in-the-portal-azure-cognitive-search"></a>快速入门：在门户中创建演示应用（Azure 认知搜索）
 
-使用 Azure 门户的“创建搜索应用”向导生成可在浏览器中运行的、可供下载的“localhost”样式 Web 应用。 根据其配置，生成的应用在首次使用时就能正常运行，并与远程索引建立有效连接。 默认应用可以包含搜索栏、结果区域、边栏筛选器和自动提示支持。
+使用 Azure 门户的“创建演示应用”向导生成可在浏览器中运行的、可供下载的“localhost”样式 Web 应用。 根据其配置，生成的应用在首次使用时就能正常运行，并与远程索引建立实时只读连接。 默认应用可以包含搜索栏、结果区域、边栏筛选器和自动提示支持。
+
+演示应用有助于你直观地了解索引在客户端应用中的工作方式，但其不适用于生产场景。 客户端应用应包括生成的 HTML 页未提供的安全性、错误处理和托管逻辑。 准备好创建客户端应用时，请参阅[使用 .NET SDK 创建第一个搜索应用](tutorial-csharp-create-first-app.md)以了解后续步骤。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -46,7 +48,7 @@ ms.locfileid: "85942572"
 
 1. 从现有索引的列表中选择“realestate-us-sample-index”。
 
-1. 在索引页的顶部，选择“创建搜索应用(预览版)”以启动向导。
+1. 在索引页的顶部，选择“创建演示应用(预览版)”以启动向导。
 
 1. 在第一个向导页上，选择“启用跨源资源共享(CORS)”以将 CORS 支持添加到索引定义。 此步骤是可选的，但如果不执行此步骤，本地 Web 应用无法连接到远程索引。
 
@@ -86,7 +88,7 @@ ms.locfileid: "85942572"
 
 ## <a name="create-download-and-execute"></a>创建、下载和执行
 
-1. 选择“创建搜索应用”生成 HTML 文件。
+1. 选择“创建演示应用”，生成 HTML 文件。
 
 1. 出现提示时，请选择“下载应用”以下载文件。
 

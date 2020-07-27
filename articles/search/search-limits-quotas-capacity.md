@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 05/11/2020
-ms.date: 07/02/2020
-ms.openlocfilehash: 0c1cb8dbc35f917977fd8197743f0fce5139d130
-ms.sourcegitcommit: 5afd7c4c3be9b80c4c67ec55f66fcf347aad74c6
+ms.date: 07/20/2020
+ms.openlocfilehash: 2f3a696cec92923a3201c9cf3405e88150ea19df
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85942555"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471953"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Azure 认知搜索中的服务限制
 

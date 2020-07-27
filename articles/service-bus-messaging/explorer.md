@@ -1,21 +1,21 @@
 ---
 title: 使用 Azure 服务总线资源管理器在服务总线上执行数据操作（预览版）
 description: 本文介绍如何使用基于门户的 Azure 服务总线资源管理器访问 Azure 服务总线数据。
-services: service-bus-messaging
-ms.service: service-bus
-documentationcenter: ''
-author: axisc
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.author: v-tawe
-origin.date: 03/04/2020
-ms.openlocfilehash: c41fa8c8e8243ed2ead779f6a507713ae257e40f
-ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: yes
+ms.testdate: 07/20/2020
+ms.author: v-yeche
+author: rockboyfor
+ms.openlocfilehash: 33a405b92038ce3635d6a0ca93da21e13695baba
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85802769"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162232"
 ---
+<!--Verified successfully-->
 # <a name="use-service-bus-explorer-to-perform-data-operations-on-service-bus-preview"></a>使用服务总线资源管理器在服务总线上执行数据操作（预览版）
 
 ## <a name="overview"></a>概述
@@ -23,8 +23,8 @@ ms.locfileid: "85802769"
 借助 Azure 服务总线，发送方和接收方客户端应用程序可以使用熟悉的点到点（队列）和发布-订阅（主题-订阅）语义来解耦其业务逻辑。
 
 在 Azure 服务总线命名空间上执行的操作分为两种类型 
-   * 管理操作 - 创建、更新和删除服务总线命名空间、队列、主题与订阅。
-   * 数据操作 - 向/从队列、主题和订阅发送/接收消息。
+* 管理操作 - 创建、更新和删除服务总线命名空间、队列、主题与订阅。
+* 数据操作 - 向/从队列、主题和订阅发送/接收消息。
 
 Azure 服务总线资源管理器扩展了门户功能，使其不仅支持管理操作，而且还支持对队列、主题和订阅（及其死信子实体）执行数据操作（发送、接收、速览）- 所有这些操作可以直接在 Azure 门户中执行。
 
@@ -43,7 +43,6 @@ Azure 服务总线资源管理器扩展了门户功能，使其不仅支持管�
 若要详细了解如何创建队列、主题和订阅，请参阅以下链接
    * [快速入门 - 创建队列](service-bus-quickstart-portal.md)
    * [快速入门 - 创建主题](service-bus-quickstart-topics-subscriptions-portal.md)
-
 
 ## <a name="using-the-service-bus-explorer"></a>使用服务总线资源管理器
 
@@ -107,11 +106,9 @@ Azure 服务总线资源管理器扩展了门户功能，使其不仅支持管�
 
 4. 单击“接收”按钮，然后单击“是”以确认执行“接收并删除”操作。
 
-
 接收操作成功后，消息详细信息会显示在网格中，如下所示。 可以在网格中选择该消息以显示其详细信息。
 
 :::image type="content" source="./media/service-bus-explorer/receive-message-from-queue-2.png" alt-text="ReceiveMessageFromQueue":::
-
 
 ### <a name="peeking-a-message-from-a-queue"></a>速览来自队列的消息
 
@@ -192,3 +189,5 @@ Azure 服务总线资源管理器扩展了门户功能，使其不仅支持管�
    * 详细了解服务总线[队列](service-bus-queues-topics-subscriptions.md#queues)和[主题](service-bus-queues-topics-subscriptions.md#topics-and-subscriptions)
    * 详细了解如何[通过 Azure 门户创建服务总线队列](service-bus-quickstart-portal.md)
    * 详细了解如何[通过 Azure 门户创建服务总线主题和订阅](service-bus-quickstart-topics-subscriptions-portal.md)
+
+<!-- Update_Description: update meta properties, wording update, update link -->

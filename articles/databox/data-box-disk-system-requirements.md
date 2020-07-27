@@ -7,15 +7,15 @@ ms.service: databox
 ms.subservice: disk
 ms.topic: article
 origin.date: 09/04/2019
-ms.date: 07/06/2020
+ms.date: 07/27/2020
 ms.author: v-jay
 ms.localizationpriority: high
-ms.openlocfilehash: bd3962f62eab56a5cb2405bcc2af3d9b4d73c920
-ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
+ms.openlocfilehash: 134d068b08e33d2a4cdd78f4463ec9cd745b47bf
+ms.sourcegitcommit: c3f15613c875bb52d5a105445efd0f36b9f24c9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85945866"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86473476"
 ---
 ::: zone target="docs"
 

@@ -9,13 +9,13 @@ ms.service: cognitive-search
 ms.devlang: powershell
 ms.topic: conceptual
 origin.date: 02/11/2020
-ms.date: 03/16/2020
-ms.openlocfilehash: 01eed22e07c85b25fe464be517def274c7ac9411
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 07/20/2020
+ms.openlocfilehash: e0a36518266d5c6c179050ab9aef444c34737319
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850511"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471950"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>使用 PowerShell 管理 Azure 认知搜索服务
 > [!div class="op_single_selector"]
@@ -147,7 +147,7 @@ Cmdlet          Remove-AzSearchService              0.7.1      Az.Search
 Cmdlet          Set-AzSearchService                 0.7.1      Az.Search
 ```
 
-## <a name="get-search-service-information"></a>获取搜索服务信息''''
+## <a name="get-search-service-information"></a>获取搜索服务信息
 
 导入 **Az.Search** 之后，如果你知道哪个资源组包含你的搜索服务，请运行 [Get-AzSearchService](https://docs.microsoft.com/powershell/module/az.search/get-azsearchservice?view=azps-1.4.0) 返回服务定义，包括名称、区域、层级、副本计数和分区计数。
 

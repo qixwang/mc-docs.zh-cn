@@ -8,12 +8,12 @@ ms.topic: conceptual
 origin.date: 12/13/2019
 ms.author: v-yiso
 ms.date: 01/20/2020
-ms.openlocfilehash: 5977aef51b7c50a730bbcce0039a470e60a2123c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 6b72e7ea69f37504386f23ba9e5427a0456c6b3f
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292046"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162326"
 ---
 # <a name="expressroute-circuits-and-peering"></a>ExpressRoute 线路和对等互连
 
@@ -32,7 +32,7 @@ ExpressRoute 线路不会映射到任何物理实体。 线路由称为服务密
 
 ### <a name="quotas-limits-and-limitations"></a><a name="quotas"></a>配额、限制和局限性
 
-默认配额和限制适用于每条 ExpressRoute 线路。 有关配额的最新信息，请参阅 [Azure 订阅和服务限制、配额与约束](../azure-subscription-service-limits.md)。
+默认配额和限制适用于每条 ExpressRoute 线路。 有关配额的最新信息，请参阅 [Azure 订阅和服务限制、配额与约束](../azure-resource-manager/management/azure-subscription-service-limits.md)。
 
 ## <a name="expressroute-peering"></a><a name="routingdomains"></a>ExpressRoute 对等互连
 
@@ -44,7 +44,7 @@ ExpressRoute 线路不会映射到任何物理实体。 线路由称为服务密
 
 可以通过专用对等域来连接虚拟网络内部署的 Azure 计算服务（即虚拟机 (IaaS) 和云服务 (PaaS)）。 专用对等域被视为进入 Microsoft Azure 的核心网络的受信任扩展。 可以在核心网络和 Azure 虚拟网络 (VNet) 之间设置双向连接。 利用此对等互连，可以使用专用 IP 地址直接连接到虚拟机和云服务。  
 
-可以将多个虚拟网络连接到专用对等域。 有关限制和局限性的信息，请查看[常见问题解答页](expressroute-faqs.md)。 有关限制的最新信息，请访问 [Azure 订阅和服务限制、配额与约束](../azure-subscription-service-limits.md)。  有关路由配置的详细信息，请参阅[路由](expressroute-routing.md)页。
+可以将多个虚拟网络连接到专用对等域。 有关限制和局限性的信息，请查看[常见问题解答页](expressroute-faqs.md)。 有关限制的最新信息，请访问 [Azure 订阅和服务限制、配额与约束](../azure-resource-manager/management/azure-subscription-service-limits.md)。  有关路由配置的详细信息，请参阅[路由](expressroute-routing.md)页。
 
 ### <a name="microsoft-peering"></a><a name="microsoftpeering"></a>Microsoft 对等互连
 

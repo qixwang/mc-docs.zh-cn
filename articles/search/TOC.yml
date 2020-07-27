@@ -1,13 +1,13 @@
 - name: Azure 认知搜索文档
   href: index.yml
 - name: 概述
+  expanded: true
   items:
     - name: Azure 认知搜索是什么？
       href: search-what-is-azure-search.md
     - name: 新增功能
       href: whats-new.md
 - name: 快速入门
-  expanded: true
   items:
     - name: 门户
       items:
@@ -15,7 +15,7 @@
           href: search-create-service-portal.md
         - name: 创建索引
           href: search-get-started-portal.md
-        - name: 创建应用
+        - name: 创建演示应用
           href: search-create-app-portal.md
         - name: 创建技能集
           href: cognitive-search-quickstart-blob.md
@@ -32,7 +32,7 @@
       href: search-get-started-java.md
     - name: Node.js
       href: search-get-started-nodejs.md
-    - name: postman
+    - name: Postman
       href: search-get-started-postman.md
     - name: PowerShell
       href: search-get-started-powershell.md
@@ -83,7 +83,7 @@
     - name: Python 示例
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=python'
     - name: REST 示例
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=rest'
+      href: 'https://docs.microsoft.com/samples/browse/?languages=http&expanded=azure&products=azure-cognitive-search'
     - name: Azure Policy 内置策略定义
       displayName: 'samples, policies, definitions'
       href: ./policy-samples.md
@@ -100,7 +100,7 @@
           href: cognitive-search-working-with-skillsets.md
         - name: 知识存储
           href: knowledge-store-concept-intro.md
-        - name: 投影数
+        - name: 投影
           href: knowledge-store-projection-overview.md
         - name: 增量扩充
           href: cognitive-search-incremental-indexing-conceptual.md
@@ -206,8 +206,6 @@
               href: cognitive-search-custom-skill-python.md
             - name: 示例 - Azure Functions
               href: cognitive-search-create-custom-skill-example.md
-            - name: 示例 - 容器
-              href: 'https://github.com/Microsoft/SkillsExtractorCognitiveSearch'
         - name: 设计提示
           href: cognitive-search-concept-troubleshooting.md
         - name: 知识存储
@@ -272,7 +270,7 @@
           href: index-ranking-similarity.md
     - name: 计划
       items:
-        - name: 选择层级
+        - name: 选择层
           href: search-sku-tier.md
         - name: 服务限制
           href: search-limits-quotas-capacity.md
@@ -318,8 +316,6 @@
           items:
             - name: API 访问密钥
               href: search-security-api-keys.md
-            - name: 配置 IP 防火墙
-              href: service-configure-firewall.md
         - name: 基于标识的访问
           items:
             - name: 安全筛选器
@@ -344,7 +340,7 @@
           href: search-monitor-queries.md
         - name: 搜索流量分析
           href: search-traffic-analytics.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 索引器问题
           href: search-indexer-troubleshooting.md
@@ -356,7 +352,7 @@
       href: /cli/search?view=azure-cli-latest
     - name: Azure PowerShell
       href: 'https://docs.microsoft.com/powershell/module/az.search'
-    - name: Resource Manager 模板
+    - name: 资源管理器模板
       href: 'https://docs.microsoft.com/azure/templates/microsoft.search/searchservices'
     - name: .NET
       items:
@@ -471,7 +467,7 @@
           href: 'https://www.pluralsight.com/courses/azure-adding-search-abilities-apps'
         - name: 开发人员课程 (Pluralsight)
           href: 'https://www.pluralsight.com/courses/microsoft-azure-textual-content-search-enabling'
-    - name: 常见问题
+    - name: 常见问题解答
       href: search-faq-frequently-asked-questions.md
     - name: 定价
       href: 'https://www.azure.cn/pricing/details/search/'

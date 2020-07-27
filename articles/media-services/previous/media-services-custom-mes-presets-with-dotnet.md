@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 03/26/2019
-ms.date: 09/23/2019
+ms.date: 07/27/2020
 ms.author: v-jay
-ms.openlocfilehash: 9d25df026bb21c98c8d883bf45395f44262fa0a7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a1877aac71fcf095fd8d1b451c3d0161e388b4f7
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292155"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162173"
 ---
 # <a name="customizing-media-encoder-standard-presets"></a>自定义 Media Encoder Standard 预设  
 
@@ -121,9 +121,11 @@ ms.locfileid: "79292155"
 - 创建编码作业。
 - 获取对 Media Encoder Standard 编码器的引用。
 - 加载前面部分中创建的自定义 JSON 预设。 
-  
-        // Load the JSON from the local file.
-        string configuration = File.ReadAllText(fileName);  
+
+    ```csharp
+    // Load the JSON from the local file.
+    string configuration = File.ReadAllText(fileName);  
+    ```
 
 - 将编码任务添加到作业。 
 - 指定要编码的输入资产。

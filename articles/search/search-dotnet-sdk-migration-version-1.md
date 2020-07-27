@@ -9,17 +9,17 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 177df3ab804235c26f89d5da3149f162a107a7a9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 07/17/2020
+ms.openlocfilehash: cabc59c2f3d0b5b639e2aa0312401f35328e77d5
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850188"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471891"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-11"></a>升级到 Azure 搜索 .NET SDK 版本 1.1
 
-如果使用的是版本 1.0.2-preview 或更早版本的 [Azure 搜索 .NET SDK](https://aka.ms/search-sdk)，本文有助于升级应用程序，以便使用版本 1.1。
+如果使用的是版本 1.0.2-preview 或更早版本的 [Azure 搜索 .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)，本文有助于升级应用程序，以便使用版本 1.1。
 
 有关包括示例的 SDK 的更多常规演练，请参阅[如何使用 .NET 应用程序中的 Azure 搜索](search-howto-dotnet-sdk.md)。
 

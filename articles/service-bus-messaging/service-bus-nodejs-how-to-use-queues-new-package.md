@@ -1,31 +1,26 @@
 ---
 title: 如何在 Node.js 中使用 azure/service-bus 队列
 description: 了解如何使用新的 @azure/service-bus 包编写一个 Nodejs 程序，该程序用于向/从服务总线队列发送/接收消息。
-services: service-bus-messaging
-documentationcenter: nodejs
-author: axisc
-editor: spelluru
-ms.assetid: a87a00f9-9aba-4c49-a0df-f900a8b67b3f
-ms.service: service-bus-messaging
-ms.workload: tbd
-ms.tgt_pltfrm: na
+author: rockboyfor
 ms.devlang: nodejs
 ms.topic: quickstart
-origin.date: 01/27/2020
-ms.date: 11/18/2019
-ms.author: aschhab
-ms.openlocfilehash: 4945a903212e51514596bc6d146a59b17d16176c
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: yes
+ms.testdate: 07/20/2020
+ms.author: v-yeche
+ms.openlocfilehash: 532a2b93cb00de12891e2d300bb7eecf89e08d97
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796795"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162343"
 ---
 # <a name="quickstart-how-to-use-service-bus-queues-with-nodejs-and-the-azureservice-bus-package"></a>快速入门：如何将服务总线队列与 Node.js 和 azure/service-bus 包配合使用
 本教程介绍如何使用新的 [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) 包编写一个 Nodejs 程序，用于向/从服务总线队列发送/接收消息。 此包使用速度更快的 [AMQP 1.0 协议](service-bus-amqp-overview.md)，而旧版 [azure-sb](https://www.npmjs.com/package/azure-sb) 包使用的是[服务总线 REST 运行时 API](https://docs.microsoft.com/rest/api/servicebus/service-bus-runtime-rest)。 示例是使用 JavaScript 编写的。
 
 ## <a name="prerequisites"></a>先决条件
-- Azure 订阅。 若要完成本教程，需要一个 Azure 帐户。 你可以注册[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)或[预付费](https://wd.azure.cn/pricing/pia-waiting-list/?form-type=identityauth)。
+- Azure 订阅。 若要完成本教程，需要一个 Azure 帐户。 你可以激活 [MSDN 订阅者权益](https://www.azure.cn/offers/ms-mc-arz-msdn/)或注册[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 - 如果没有可使用的队列，请遵循[使用 Azure 门户创建服务总线队列](service-bus-quickstart-portal.md)一文来创建队列。 记下服务总线实例的连接字符串以及创建的队列的名称。 我们将在示例中使用这些值。
 
 > [!NOTE]
@@ -47,16 +42,16 @@ npm install @azure/service-bus
 
     ```javascript
     const { ServiceBusClient } = require("@azure/service-bus"); 
-    
+
     // Define connection string and related Service Bus entity names here
     const connectionString = "";
     const queueName = ""; 
-    
+
     async function main(){
       const sbClient = ServiceBusClient.createFromConnectionString(connectionString); 
       const queueClient = sbClient.createQueueClient(queueName);
       const sender = queueClient.createSender();
-      
+
       try {
         for (let i = 0; i < 10; i++) {
           const message= {
@@ -69,13 +64,13 @@ npm install @azure/service-bus
           console.log(`Sending message: ${message.body}`);
           await sender.send(message);
         }
-        
+
         await queueClient.close();
       } finally {
         await sbClient.close();
       }
     }
-    
+
     main().catch((err) => {
       console.log("Error occurred: ", err);
     });
@@ -97,11 +92,11 @@ npm install @azure/service-bus
 
     ```javascript
     const { ServiceBusClient, ReceiveMode } = require("@azure/service-bus"); 
-    
+
     // Define connection string and related Service Bus entity names here
     const connectionString = "";
     const queueName = ""; 
-    
+
     async function main(){
       const sbClient = ServiceBusClient.createFromConnectionString(connectionString); 
       const queueClient = sbClient.createQueueClient(queueName);
@@ -110,13 +105,13 @@ npm install @azure/service-bus
         const messages = await receiver.receiveMessages(10)
         console.log("Received messages:");
         console.log(messages.map(message => message.body));
-         
+
         await queueClient.close();
       } finally {
         await sbClient.close();
       }
     }
-    
+
     main().catch((err) => {
       console.log("Error occurred: ", err);
     });
@@ -135,5 +130,6 @@ npm install @azure/service-bus
 有关详细信息，请参阅以下资源。
 - [队列、主题和订阅](service-bus-queues-topics-subscriptions.md)
 - 查看 [GitHub 上服务总线的其他 Nodejs 示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples/javascript)
-- [Node.js 开发人员中心](https://azure.microsoft.com/develop/nodejs/)
+- [Node.js 开发人员中心](https://docs.azure.cn/develop/nodejs/)
 
+<!-- Update_Description: update meta properties, wording update, update link -->

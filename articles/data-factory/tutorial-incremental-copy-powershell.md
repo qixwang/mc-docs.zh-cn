@@ -11,19 +11,19 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 origin.date: 01/22/2018
-ms.date: 06/29/2020
-ms.openlocfilehash: e1a2564bf06b1c4df692ffa083821f5ad9562880
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+ms.date: 07/27/2020
+ms.openlocfilehash: ca098e2b2aa571219d2cfbe0fd3d1dc88d2cd182
+ms.sourcegitcommit: 0eaa82cf74477d26d06bdd8fb6e715e6ed1339c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85321853"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86974218"
 ---
-# <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-powershell"></a>使用 PowerShell 以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储
+# <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-powershell"></a>使用 PowerShell 以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-在本教程中，请创建一个带管道的 Azure 数据工厂，将增量数据从 Azure SQL 数据库中的表加载到 Azure Blob 存储。
+在本教程中，创建一个带管道的 Azure 数据工厂，将增量数据从 Azure SQL 数据库中的表加载到 Azure Blob 存储。
 
 在本教程中执行以下步骤：
 
@@ -64,7 +64,7 @@ ms.locfileid: "85321853"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* **Azure SQL 数据库**。 将数据库用作源数据存储。 如果没有 SQL 数据库，请参阅[创建 Azure SQL 数据库](../sql-database/sql-database-get-started-portal.md)，了解创建该数据库的步骤。
+* **Azure SQL 数据库**。 将数据库用作源数据存储。 如果没有 Azure SQL 数据库，请参阅[创建 Azure SQL 数据库中的数据库](../azure-sql/database/single-database-create-quickstart.md)，了解创建数据库的步骤。
 * **Azure 存储**。 将 Blob 存储用作接收器数据存储。 如果没有存储帐户，请参阅[创建存储帐户](../storage/common/storage-account-create.md)以获取创建步骤。 创建名为 adftutorial 的容器。 
 * **Azure PowerShell**。 遵循[安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) 中的说明。
 
@@ -193,11 +193,11 @@ END
     ```
 
 * 若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于参与者或所有者角色，或者是 Azure 订阅的管理员。
-* 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?regions=china-non-regional,china-east,china-east-2,china-north,china-north-2&products=all)。 数据工厂使用的数据存储（存储、SQL 数据库等）和计算资源（Azure HDInsight 等）可以位于其他区域中。
+* 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?regions=china-non-regional,china-east,china-east-2,china-north,china-north-2&products=all)。 数据工厂使用的数据存储（Azure 存储、SQL 数据库、Azure SQL 托管实例等）和计算资源（Azure HDInsight 等）可以位于其他区域中。
 
 
 ## <a name="create-linked-services"></a>创建链接服务
-可在数据工厂中创建链接服务，将数据存储和计算服务链接到数据工厂。 在本部分中，请创建存储帐户和 SQL 数据库的链接服务。
+可在数据工厂中创建链接服务，将数据存储和计算服务链接到数据工厂。 在本部分中，创建到存储帐户和 SQL 数据库的链接服务。
 
 ### <a name="create-a-storage-linked-service"></a>创建存储链接服务
 1. 在 C:\ADF 文件夹中，创建包含以下内容的名为 AzureStorageLinkedService.json 的 JSON 文件。 （如果文件夹 ADF 不存在，请创建。）将 `<accountName>` 和 `<accountKey>` 替换为存储帐户的名称和密钥，然后保存文件。
@@ -733,7 +733,7 @@ END
 > * 运行管道。
 > * 监视管道运行。
 
-在本教程中，管道将数据从 SQL 数据库中的单个表复制到了 Blob 存储。 转到下面的教程，了解如何将数据从 SQL Server 数据库中的多个表复制到 SQL 数据库。
+在本教程中，管道将数据从 Azure SQL 数据库中的单个表复制到 Blob 存储。 转到下面的教程，了解如何将数据从 SQL Server 数据库中的多个表复制到 SQL 数据库。
 
 > [!div class="nextstepaction"]
 >[以增量方式将数据从 SQL Server 中的多个表加载到 Azure SQL 数据库](tutorial-incremental-copy-multiple-tables-powershell.md)

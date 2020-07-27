@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 03/16/2020
-ms.openlocfilehash: e42aa2ab17cd7942202230b34314dd460053a3f9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 07/17/2020
+ms.openlocfilehash: b3f181fc53c35fa540244253c440c7cabbb62cbc
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850634"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471798"
 ---
 # <a name="filters-in-azure-cognitive-search"></a>Azure 认知搜索中的筛选器 
 
@@ -72,10 +72,10 @@ ms.locfileid: "78850634"
 
 ```http
 # Option 1:  Use $filter for GET
-GET https://[service name].search.azure.cn/indexes/hotels/docs?api-version=2019-05-06&search=*&$filter=Rooms/any(room: room/BaseRate lt 150.0)&$select=HotelId, HotelName, Rooms/Description, Rooms/BaseRate
+GET https://[service name].search.azure.cn/indexes/hotels/docs?api-version=2020-06-30&search=*&$filter=Rooms/any(room: room/BaseRate lt 150.0)&$select=HotelId, HotelName, Rooms/Description, Rooms/BaseRate
 
 # Option 2: Use filter for POST and pass it in the request body
-POST https://[service name].search.azure.cn/indexes/hotels/docs/search?api-version=2019-05-06
+POST https://[service name].search.azure.cn/indexes/hotels/docs/search?api-version=2020-06-30
 {
     "search": "*",
     "filter": "Rooms/any(room: room/BaseRate lt 150.0)",

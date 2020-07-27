@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 06/09/2020
-ms.openlocfilehash: d0b09f23115a9980fd34a11a6721e01f159bac9e
-ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
+ms.date: 07/17/2020
+ms.openlocfilehash: 5fec84f9f962b087f5d37f726ba95c35d8ffd67f
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84564298"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471904"
 ---
 # <a name="how-to-map-ai-enriched-fields-to-a-searchable-index"></a>如何将 AI 扩充字段映射到可搜索索引
 
@@ -24,11 +24,12 @@ ms.locfileid: "84564298"
 
 > [!NOTE]
 > 我们最近在输出字段映射上启用了映射函数的功能。 有关映射函数的更多详细信息，请参阅[字段映射函数](https://docs.azure.cn/search/search-indexer-field-mappings#field-mapping-functions)
+
 ## <a name="use-outputfieldmappings"></a>使用 outputFieldMappings
 要映射字段，请按如下所示将 `outputFieldMappings` 添加到索引器定义：
 
 ```http
-PUT https://[servicename].search.azure.cn/indexers/[indexer name]?api-version=2019-05-06
+PUT https://[servicename].search.azure.cn/indexers/[indexer name]?api-version=2020-06-30
 api-key: [admin key]
 Content-Type: application/json
 ```
@@ -53,7 +54,10 @@ Content-Type: application/json
     "outputFieldMappings": [
         {
             "sourceFieldName": "/document/content/organizations/*/description",
-            "targetFieldName": "descriptions"
+            "targetFieldName": "descriptions",
+            "mappingFunction": {
+                "name": "base64Decode"
+            }
         },
         {
             "sourceFieldName": "/document/content/organizations",

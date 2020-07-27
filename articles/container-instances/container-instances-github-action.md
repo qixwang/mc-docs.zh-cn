@@ -2,15 +2,18 @@
 title: 通过 GitHub 操作部署容器实例
 description: 配置一个 GitHub 操作，用于自动执行生成容器映像并将其推送和部署到 Azure 容器实例的步骤
 ms.topic: article
-ms.date: 05/06/2020
+origin.date: 03/18/2020
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: 05/06/2020
 ms.author: v-yeche
 ms.custom: ''
-ms.openlocfilehash: 6fe8d1d9004d4646718fec1a2f83d65e3c11fe0e
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: 79ae564638f039df16e1b489de2a7699df226662
+ms.sourcegitcommit: 5726d3b2e694f1f94f9f7d965676c67beb6ed07c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83002298"
+ms.lasthandoff: 07/21/2020
+ms.locfileid: "86863142"
 ---
 # <a name="configure-a-github-action-to-create-a-container-instance"></a>配置 GitHub 操作以创建容器实例
 
@@ -57,7 +60,7 @@ ms.locfileid: "83002298"
 
 在 GitHub 工作流中，需要提供 Azure 凭据，以便在 Azure CLI 中进行身份验证。 以下示例创建一个服务主体，其“参与者”角色作用域限定为你的容器注册表的资源组。
 
-首先获取你的资源组的资源 ID。 请将以下 [az group show][az-acr-show] 命令中的占位符替换为你的组名称：
+首先获取你的资源组的资源 ID。 请将以下 [az group show][az-group-show] 命令中的占位符替换为你的组名称：
 
 ```azurecli
 groupId=$(az group show \
@@ -82,7 +85,7 @@ az ad sp create-for-rbac \
   "clientSecret": "xxxx79dc-xxxx-xxxx-xxxx-aaaaaec5xxxx",
   "subscriptionId": "xxxx251c-xxxx-xxxx-xxxx-bf99a306xxxx",
   "tenantId": "xxxx88bf-xxxx-xxxx-xxxx-2d7cd011xxxx",
-  "activeDirectoryEndpointUrl": "https://login.partner.microsoftonline.cn",
+  "activeDirectoryEndpointUrl": "https://login.chinacloudapi.cn",
   "resourceManagerEndpointUrl": "https://management.chinacloudapi.cn/",
   "activeDirectoryGraphResourceId": "https://graph.chinacloudapi.cn/",
   "sqlManagementEndpointUrl": "https://management.core.chinacloudapi.cn:8443/",
@@ -120,13 +123,15 @@ az role assignment create \
 
 1. 选择“添加新机密”以添加以下机密： 
 
-|Secret  |Value  |
-|---------|---------|
-|`AZURE_CREDENTIALS`     | 创建服务主体后显示的整个 JSON 输出 |
-|`REGISTRY_LOGIN_SERVER`   | 注册表的登录服务器名称（全小写）。 示例：*myregistry.azurecr.cn* |
-|`REGISTRY_USERNAME`     |  创建服务主体后显示的 JSON 输出中的 `clientId`       |
-|`REGISTRY_PASSWORD`     |  创建服务主体后显示的 JSON 输出中的 `clientSecret` |
-| `RESOURCE_GROUP` | 用来限定服务主体作用域的资源组名称 |
+    <!--CORRECT ON myregistry.azurecr.cn-->
+    
+    |Secret  |Value  |
+    |---------|---------|
+    |`AZURE_CREDENTIALS`     | 创建服务主体后显示的整个 JSON 输出 |
+    |`REGISTRY_LOGIN_SERVER`   | 注册表的登录服务器名称（全小写）。 示例：*myregistry.azurecr.cn* |
+    |`REGISTRY_USERNAME`     |  创建服务主体后显示的 JSON 输出中的 `clientId`       |
+    |`REGISTRY_PASSWORD`     |  创建服务主体后显示的 JSON 输出中的 `clientSecret` |
+    | `RESOURCE_GROUP` | 用来限定服务主体作用域的资源组名称 |
 
 ### <a name="create-workflow-file"></a>创建工作流文件
 
@@ -135,46 +140,48 @@ az role assignment create \
 1. 在“编辑新文件”中，粘贴以下 YAML 内容并覆盖示例代码。  接受默认文件名 `main.yml`，或提供你选择的文件名。
 1. 选择“开始提交”，并提供你的提交内容的简短或详细说明（可选），然后选择“提交新文件”。  
 
-```yml
-on: [push]
-name: Linux_Container_Workflow
+    ```yml
+    on: [push]
+    name: Linux_Container_Workflow
 
-jobs:
-    build-and-deploy:
-        runs-on: ubuntu-latest
-        steps:
-        # checkout the repo
-        - name: 'Checkout GitHub Action'
-          uses: actions/checkout@master
+    jobs:
+        build-and-deploy:
+            runs-on: ubuntu-latest
+            steps:
+            # checkout the repo
+            - name: 'Checkout GitHub Action'
+              uses: actions/checkout@master
           
-        - name: 'Login via Azure CLI'
-          uses: azure/login@v1
-          with:
-            creds: ${{ secrets.AZURE_CREDENTIALS }}
+            - name: 'Login via Azure CLI'
+              uses: azure/login@v1
+              with:
+                creds: ${{ secrets.AZURE_CREDENTIALS }}
         
-        - name: 'Build and push image'
-          uses: azure/docker-login@v1
-          with:
-            login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
-            username: ${{ secrets.REGISTRY_USERNAME }}
-            password: ${{ secrets.REGISTRY_PASSWORD }}
-        - run: |
-            docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/sampleapp:${{ github.sha }}
-            docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/sampleapp:${{ github.sha }}
+            - name: 'Build and push image'
+              uses: azure/docker-login@v1
+              with:
+                login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
+                username: ${{ secrets.REGISTRY_USERNAME }}
+                password: ${{ secrets.REGISTRY_PASSWORD }}
+            - run: |
+                docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/sampleapp:${{ github.sha }}
+                docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/sampleapp:${{ github.sha }}
 
-        - name: 'Deploy to Azure Container Instances'
-          uses: 'azure/aci-deploy@v1'
-          with:
-            resource-group: ${{ secrets.RESOURCE_GROUP }}
-            dns-name-label: ${{ secrets.RESOURCE_GROUP }}${{ github.run_number }}
-            image: ${{ secrets.REGISTRY_LOGIN_SERVER }}/sampleapp:${{ github.sha }}
-            registry-login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
-            registry-username: ${{ secrets.REGISTRY_USERNAME }}
-            registry-password: ${{ secrets.REGISTRY_PASSWORD }}
-            name: aci-sampleapp
-            location: 'west us'
-```
-
+            - name: 'Deploy to Azure Container Instances'
+              uses: 'azure/aci-deploy@v1'
+              with:
+                resource-group: ${{ secrets.RESOURCE_GROUP }}
+                dns-name-label: ${{ secrets.RESOURCE_GROUP }}${{ github.run_number }}
+                image: ${{ secrets.REGISTRY_LOGIN_SERVER }}/sampleapp:${{ github.sha }}
+                registry-login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
+                registry-username: ${{ secrets.REGISTRY_USERNAME }}
+                registry-password: ${{ secrets.REGISTRY_PASSWORD }}
+                name: aci-sampleapp
+                location: 'chinaeast2'
+    ```
+    
+    <!--CORRECT ON CHINAEAST2-->
+    
 ### <a name="validate-workflow"></a>验证工作流
 
 提交工作流文件后，会触发该工作流。 若要查看工作流进度，请导航到“操作” > “工作流”。   
@@ -195,10 +202,12 @@ az container show \
 
 输出类似于：
 
+<!--CORRECT ON chinaeast2-->
+
 ```console
 FQDN                                   ProvisioningState
 --------------------------------- -------------------
-aci-action01.chinanorth.azurecontainer.console.azure.cn  Succeeded
+aci-action01.chinaeast2.azurecontainer.console.azure.cn  Succeeded
 ```
 
 预配实例后，在浏览器中导航到容器的 FQDN，以查看正在运行的 Web 应用。
@@ -245,8 +254,8 @@ az container app up \
 
 * 该命令将为工作流创建存储库机密：
 
-  * 用于 Azure CLI 的服务主体凭据
-  * 用于访问 Azure 容器注册表的凭据
+    * 用于 Azure CLI 的服务主体凭据
+    * 用于访问 Azure 容器注册表的凭据
 
 * 在该命令将工作流文件提交到存储库后，会触发工作流。 
 
@@ -307,6 +316,4 @@ az group delete \
 [az-extension-add]: https://docs.azure.cn/cli/extension?view=azure-cli-latest#az-extension-add
 [az-container-app-up]: https://docs.microsoft.com/cli/azure/ext/deploy-to-azure/container/app?view=azure-cli-latest#ext-deploy-to-azure-az-container-app-up
 
-
-<!-- Update_Description: new article about container instances github action -->
-<!--NEW.date: 05/06/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

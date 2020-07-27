@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: tutorial
-origin.date: 02/28/2020
-ms.date: 06/09/2020
-ms.openlocfilehash: 06afdc542f9f385dd22f8be82801a154804e0b5e
-ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
+origin.date: 06/20/2020
+ms.date: 07/20/2020
+ms.openlocfilehash: ba08386f6d3ebe942f580fc1393679acb312e05b
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84564373"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471923"
 ---
 # <a name="tutorial-index-from-multiple-data-sources-using-the-net-sdk"></a>教程：使用 .NET SDK 从多个数据源编制索引
 
@@ -22,7 +22,7 @@ Azure 认知搜索可以导入、分析多个数据源的数据，并将其编�
 
 本教程介绍如何为来自 Azure Cosmos DB 数据源的酒店数据编制索引并将其与来自 Azure Blob 存储文档的酒店房间详细信息整合。 其结果将是包含复杂数据类型的合并的酒店搜索索引。
 
-本教程使用 C# 和 [.NET SDK](https://aka.ms/search-sdk)。 你将在本教程中执行以下任务：
+本教程使用 C# 和 [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)。 你将在本教程中执行以下任务：
 
 > [!div class="checklist"]
 > * 上传示例数据和创建数据源

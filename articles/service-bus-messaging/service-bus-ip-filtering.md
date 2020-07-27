@@ -1,26 +1,24 @@
 ---
 title: 配置 Azure 服务总线的 IP 防火墙规则
 description: 如何使用防火墙规则允许从特定 IP 地址连接到 Azure 服务总线。
-services: service-bus
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus
-ms.devlang: na
 ms.topic: article
-origin.date: 05/14/2020
-ms.date: 06/30/2020
-ms.author: v-tawe
-ms.openlocfilehash: 648c3961dd7896479b47c60af9f26cca94c1cdee
-ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: yes
+ms.testdate: 07/20/2020
+ms.author: v-yeche
+author: rockboyfor
+ms.openlocfilehash: 2f1b9eb8ad949fdef160cc7d2be62d1b81156618
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85796313"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162122"
 ---
 # <a name="configure-ip-firewall-rules-for-azure-service-bus"></a>配置 Azure 服务总线的 IP 防火墙规则
 默认情况下，只要请求附带有效的身份验证和授权，就可以从 Internet 访问服务总线命名空间。 使用 IP 防火墙，可以将其进一步限制为采用 CIDR（无类域间路由）表示法的一组 IPv4 地址或一个 IPv4 地址。
+
+<!--Not Available on Wikipedia-->
 
 在仅应从某些知名站点访问 Azure 服务总线的情况下，此功能很有用。 可以通过防火墙规则来配置规则，以便接受来自特定 IPv4 地址的流量。 例如，如果将服务总线与 [Azure Express Route][express-route] 配合使用，则可创建**防火墙规则**，以便仅允许来自本地基础结构 IP 地址或企业 NAT 网关地址的流量。 
 
@@ -55,6 +53,8 @@ IP 防火墙规则在服务总线命名空间级别应用。 因此，这些规�
     1. 选择“添加客户端 IP 地址”选项，使当前客户端 IP 可以访问命名空间。 
     2. 对于“地址范围”，请输入某个特定的 IPv4 地址或以 CIDR 表示法表示的 IPv4 地址范围。 
     3. 指定是否要“允许受信任的 Microsoft 服务绕过此防火墙”。 
+    
+        <!--CORRECT ON trusted Microsoft services-->
 
         > [!WARNING]
         > 如果选择“选定的网络”选项但未指定 IP 地址或地址范围，则服务将允许来自所有网络的流量。 
@@ -64,7 +64,6 @@ IP 防火墙规则在服务总线命名空间级别应用。 因此，这些规�
 
 ## <a name="use-resource-manager-template"></a>使用 Resource Manager 模板
 本部分提供了一个用于创建虚拟网络和防火墙规则的 Azure 资源管理器模板示例。
-
 
 以下资源管理器模板支持向现有服务总线命名空间添加虚拟网络规则。
 
@@ -161,3 +160,5 @@ IP 防火墙规则在服务总线命名空间级别应用。 因此，这些规�
 [lnk-deploy]: ../azure-resource-manager/templates/deploy-powershell.md
 [lnk-vnet]: service-bus-service-endpoints.md
 [express-route]:  /expressroute/expressroute-faqs#supported-services
+
+<!-- Update_Description: update meta properties, wording update, update link -->

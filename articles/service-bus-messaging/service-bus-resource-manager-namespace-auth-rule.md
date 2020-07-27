@@ -1,26 +1,20 @@
 ---
 title: 使用 Azure 模板创建服务总线授权规则
 description: 使用 Azure 资源管理器模板为命名空间和队列创建服务总线授权规则
-services: service-bus-messaging
-documentationcenter: .net
-author: lingliw
-manager: digimobile
-editor: ''
-ms.assetid: 7f1443a0-5fa8-4d90-8637-1a977ef0b1f0
-ms.service: service-bus-messaging
-ms.devlang: tbd
+author: rockboyfor
 ms.topic: article
 ms.tgt_pltfrm: dotnet
-ms.workload: na
-origin.date: 12/20/2019
-ms.date: 1/2/2020
-ms.author: v-lingwu
-ms.openlocfilehash: 3b6c8146b86ff42d419a47438c7740bde17cdaf1
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: ''
+ms.author: v-yeche
+ms.openlocfilehash: 91cbf77ccb1673d380fe34657dcd2a2ff34d5bd8
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75853836"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162233"
 ---
 # <a name="create-a-service-bus-authorization-rule-for-namespace-and-queue-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板为命名空间和队列创建服务总线授权规则
 
@@ -59,6 +53,7 @@ ms.locfileid: "75853836"
 模板定义以下参数。
 
 ### <a name="servicebusnamespacename"></a>serviceBusNamespaceName
+
 要创建的服务总线命名空间的名称。
 
 ```json
@@ -68,6 +63,7 @@ ms.locfileid: "75853836"
 ```
 
 ### <a name="namespaceauthorizationrulename"></a>namespaceAuthorizationRuleName
+
 命名空间的授权规则的名称。
 
 ```json
@@ -77,6 +73,7 @@ ms.locfileid: "75853836"
 ```
 
 ### <a name="servicebusqueuename"></a>serviceBusQueueName
+
 服务总线命名空间中的队列的名称。
 
 ```json
@@ -86,6 +83,7 @@ ms.locfileid: "75853836"
 ```
 
 ### <a name="servicebusapiversion"></a>serviceBusApiVersion
+
 模板的服务总线 API 版本。
 
 ```json
@@ -98,6 +96,7 @@ ms.locfileid: "75853836"
 ```
 
 ## <a name="resources-to-deploy"></a>要部署的资源
+
 创建**消息传送**类型的标准服务总线命名空间，以及命名空间和实体的服务总线授权规则。
 
 ```json
@@ -150,15 +149,20 @@ ms.locfileid: "75853836"
     ]
 ```
 
+<!--Not Available on Global Templates For JSON syntax and properties, see [namespaces](https://docs.microsoft.com/azure/templates/microsoft.servicebus/namespaces), [queues](https://docs.microsoft.com/azure/templates/microsoft.servicebus/namespaces/queues), and [AuthorizationRules](https://docs.microsoft.com/azure/templates/microsoft.servicebus/namespaces/authorizationrules).-->
+
 ## <a name="commands-to-run-deployment"></a>运行部署的命令
+
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ### <a name="powershell"></a>PowerShell
+
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName \<resource-group-name\> -TemplateFile <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/301-servicebus-create-authrule-namespace-and-queue/azuredeploy.json>
 ```
 
 ## <a name="azure-cli"></a>Azure CLI
+
 ```azurecli
 azure config mode arm
 
@@ -166,14 +170,17 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 ```
 
 ## <a name="next-steps"></a>后续步骤
+
 现在，已使用 Azure 资源管理器创建并部署了资源，请通过查看以下文章了解如何管理这些资源：
 
-- [使用 PowerShell 管理服务总线](/service-bus-messaging/service-bus-manage-with-ps)
-- [使用服务总线 Explorer 管理服务总线资源](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
-- [服务总线身份验证和授权](./service-bus-authentication-and-authorization.md)
+* [使用 PowerShell 管理服务总线](service-bus-powershell-how-to-provision.md)
+* [使用服务总线 Explorer 管理服务总线资源](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
+* [服务总线身份验证和授权](service-bus-authentication-and-authorization.md)
 
-  [Authoring Azure Resource Manager Templates]: ../azure-resource-manager/resource-group-authoring-templates.md
-  [Azure Quickstart Templates]: https://azure.microsoft.com/documentation/templates/?term=service+bus
-  [Using Azure PowerShell with Azure Resource Manager]: ../azure-resource-manager/powershell-azure-resource-manager.md
-  [Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../azure-resource-manager/xplat-cli-azure-resource-manager.md
-  [Service Bus auth rule template]: https://github.com/Azure/azure-quickstart-templates/blob/master/301-servicebus-create-authrule-namespace-and-queue/
+[Authoring Azure Resource Manager templates]: ../azure-resource-manager/templates/template-syntax.md
+[Azure Quickstart Templates]: https://github.com/Azure/azure-quickstart-templates/find/master
+[Using Azure PowerShell with Azure Resource Manager]: ../azure-resource-manager/powershell-azure-resource-manager.md
+[Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../azure-resource-manager/xplat-cli-azure-resource-manager.md
+[Service Bus auth rule template]: https://github.com/Azure/azure-quickstart-templates/blob/master/301-servicebus-create-authrule-namespace-and-queue/
+
+<!-- Update_Description: update meta properties, wording update, update link -->

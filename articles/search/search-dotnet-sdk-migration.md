@@ -9,13 +9,13 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 89ffd5a001653abdb8c7e2161ac8e3dc167d1ecb
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 07/17/2020
+ms.openlocfilehash: 4f80e273acb21276bd404a7525b037dca7e7b91d
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75335447"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471887"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-3"></a>升级到 Azure 搜索 .NET SDK 版本 3
 
@@ -26,7 +26,7 @@ Indexer execution result errors no longer have status
 the data source API will no longer return in the response of any REST operation, the connection string specified by the user.
 --->
 
-如果使用的是版本 2.0-preview 或更早版本的 [Azure 搜索 .NET SDK](https://aka.ms/search-sdk)，本文有助于升级应用程序，以便使用版本 3。
+如果使用的是版本 2.0-preview 或更早版本的 [Azure 搜索 .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)，本文有助于升级应用程序，以便使用版本 3。
 
 有关包括示例的 SDK 的更多常规演练，请参阅[如何使用 .NET 应用程序中的 Azure 搜索](search-howto-dotnet-sdk.md)。
 
@@ -42,7 +42,7 @@ the data source API will no longer return in the response of any REST operation,
 ## <a name="whats-new-in-version-3"></a>版本 3 中的新增功能
 版本 3 的 Azure 搜索 .NET SDK 针对 Azure 搜索 REST API 的最新正式发布版本，具体来说就是 2016-09-01。 这使得可以在 .NET 应用程序中使用 Azure 搜索的许多新功能，如下所示：
 
-* [自定义分析器](https://aka.ms/customanalyzers)
+* [自定义分析器](index-add-custom-analyzers.md)
 * [Azure Blob 存储](search-howto-indexing-azure-blob-storage.md)和 [Azure 表存储](search-howto-indexing-azure-tables.md)索引器支持
 * 通过[字段映射](search-indexer-field-mappings.md)实现的索引器自定义
 * 用于支持安全并发更新索引定义、索引器和数据源的 ETag 支持

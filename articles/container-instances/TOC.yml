@@ -40,7 +40,7 @@
   items:
     - name: 代码示例
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&term=aci'
-    - name: Resource Manager 模板
+    - name: 资源管理器模板
       href: container-instances-samples-rm.md
 - name: 概念
   items:
@@ -52,8 +52,14 @@
       href: container-instances-region-availability.md
     - name: 与协调器的关系
       href: container-instances-orchestrator-relationship.md
-    - name: 安全注意事项
-      href: container-instances-image-security.md
+    - name: 安全性
+      items:
+        - name: 安全基线
+          href: security-baseline.md
+        - name: 安全注意事项
+          href: container-instances-image-security.md
+    - name: 虚拟网络
+      href: container-instances-virtual-network-concepts.md
 - name: 操作指南
   items:
     - name: 部署
@@ -62,6 +68,8 @@
           href: container-instances-vnet.md
         - name: 从 Azure 容器注册表部署
           href: container-instances-using-azure-container-registry.md
+        - name: 使用 GitHub Actions 进行部署（预览版）
+          href: container-instances-github-action.md
         - name: 加密部署数据
           href: container-instances-encrypt-data.md
         - name: 在专用主机上部署
@@ -76,6 +84,8 @@
           href: container-instances-start-command.md
         - name: 执行命令 (exec)
           href: container-instances-exec.md
+        - name: 运行安装容器 (init)
+          href: container-instances-init-container.md
         - name: 使用托管标识（预览版）
           href: container-instances-managed-identity.md
         - name: 使用 GPU 资源（预览版）
@@ -112,7 +122,7 @@
           href: container-instances-get-logs.md
         - name: 使用 Azure Monitor 日志进行日志记录
           href: container-instances-log-analytics.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 排查常见问题
           href: container-instances-troubleshooting.md
@@ -139,12 +149,12 @@
 - name: 资源
   items:
     - name: 上市区域
-      href: 'https://status.azure.com/status/'
+      href: 'https://azure.microsoft.com/regions/services/'
     - name: 定价
       href: 'https://www.azure.cn/pricing/details/container-instances/'
     - name: 提供产品反馈
       href: 'https://support.azure.cn/support/contact/'
     - name: 视频
       href: 'https://www.azure.cn/video-center/'
-    - name: 常见问题
+    - name: 常见问题解答
       href: container-instances-faq.md

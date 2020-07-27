@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 04/01/2019
-ms.date: 06/08/2020
+ms.date: 07/27/2020
 ms.author: v-jay
-ms.openlocfilehash: a34f44caba3d602f1dd058371c4e69a4f097cb9d
-ms.sourcegitcommit: 79c99a9ea013b3c74706a1038a505f4eea2aaac4
+ms.openlocfilehash: 70bdce3d38aa15299756d9bf2f34611a80ab96e6
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84439485"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162143"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>通过 Azure AD 身份验证访问 Azure 媒体服务 API  
 
@@ -150,7 +150,7 @@ Azure 媒体服务 API 是 RESTful API。 可用于通过 REST API 或可用的�
 
 下面的文章概述了 Azure AD 身份验证概念： 
 
-- [Azure AD 解决的身份验证方案](../../active-directory/develop/authentication-vs-authorization.md)
+- [Azure AD 解决的身份验证方案](../../active-directory/develop/authentication-scenarios.md)
 - [在 Azure AD 中添加、更新或删除应用程序](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)
 - [使用 PowerShell 配置和管理基于角色的访问控制](../../role-based-access-control/role-assignments-powershell.md)
 

@@ -1,6 +1,6 @@
 ---
 title: 使用 PowerShell 以增量方式复制多个表
-description: 在本教程中，你将创建一个 Azure 数据工厂管道，该管道以递增方式将增量数据从 SQL Server 数据库中的多个表复制到 Azure SQL 数据库。
+description: 在本教程中，你将创建一个 Azure 数据工厂管道，该管道以递增方式将增量数据从 SQL Server 数据库中的多个表复制到 Azure SQL 数据库的数据库中。
 services: data-factory
 ms.author: v-jay
 author: WenJason
@@ -11,15 +11,15 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 origin.date: 06/10/2020
-ms.date: 06/29/2020
-ms.openlocfilehash: 894201892b540f7a726cb14522a0e33c5b04f4fc
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+ms.date: 07/27/2020
+ms.openlocfilehash: befcf14f5361c7dd404309e84b25faf18aa1ffca
+ms.sourcegitcommit: 0eaa82cf74477d26d06bdd8fb6e715e6ed1339c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85321854"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86974253"
 ---
-# <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database-using-powershell"></a>使用 PowerShell 以递增方式将数据从 SQL Server 中的多个表加载到 Azure SQL 数据库
+# <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-azure-sql-database-using-powershell"></a>使用 PowerShell 以递增方式将数据从 SQL Server 中的多个表加载到 Azure SQL 数据库
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
@@ -71,7 +71,7 @@ ms.locfileid: "85321854"
 ## <a name="prerequisites"></a>先决条件
 
 * **SQL Server**。 在本教程中，请将 SQL Server 数据库用作源数据存储。 
-* **Azure SQL 数据库**。 使用 SQL 数据库作为接收器数据存储。 如果没有 SQL 数据库，请参阅[创建 Azure SQL 数据库](../sql-database/sql-database-get-started-portal.md)，了解创建该数据库的步骤。 
+* **Azure SQL 数据库**。 使用 Azure SQL 数据库中的数据库作为接收器数据存储。 如果没有 SQL 数据库，请参阅[在 Azure SQL 数据库中创建数据库](../azure-sql/database/single-database-create-quickstart.md)了解创建步骤。 
 
 ### <a name="create-source-tables-in-your-sql-server-database"></a>在 SQL Server 数据库中创建源表
 
@@ -118,7 +118,7 @@ ms.locfileid: "85321854"
 
 2. 在**服务器资源管理器 (SSMS)** 或“连接”窗格 (Azure Data Studio) 中，右键单击数据库，然后选择“新建查询”。
 
-3. 对 SQL 数据库运行以下 SQL 命令，以便创建名为 `customer_table` 和 `project_table` 的表：  
+3. 对数据库运行以下 SQL 命令，以便创建名为 `customer_table` 和 `project_table` 的表：  
 
     ```sql
     create table customer_table
@@ -135,9 +135,9 @@ ms.locfileid: "85321854"
     );
     ```
 
-### <a name="create-another-table-in-the-azure-sql-database-to-store-the-high-watermark-value"></a>在 Azure SQL 数据库中创建另一个表，用于存储高水印值
+### <a name="create-another-table-in-azure-sql-database-to-store-the-high-watermark-value"></a>在 Azure SQL 数据库中再创建一个表，用于存储高水印值
 
-1. 针对 SQL 数据库运行以下 SQL 命令，创建名为 `watermarktable` 的表，用于存储水印值： 
+1. 针对数据库运行以下 SQL 命令，创建一个名为 `watermarktable` 的表来存储水印值： 
     
     ```sql
     create table watermarktable
@@ -160,7 +160,7 @@ ms.locfileid: "85321854"
 
 ### <a name="create-a-stored-procedure-in-the-azure-sql-database"></a>在 Azure SQL 数据库中创建存储过程 
 
-运行以下命令，在 SQL 数据库中创建存储过程。 此存储过程在每次管道运行后更新水印值。 
+运行以下命令，在数据库中创建存储过程。 此存储过程在每次管道运行后更新水印值。 
 
 ```sql
 CREATE PROCEDURE usp_write_watermark @LastModifiedtime datetime, @TableName varchar(50)
@@ -176,9 +176,9 @@ END
 
 ```
 
-### <a name="create-data-types-and-additional-stored-procedures-in-the-azure-sql-database"></a>在 Azure SQL 数据库中创建数据类型和其他存储过程
+### <a name="create-data-types-and-additional-stored-procedures-in-azure-sql-database"></a>在 Azure SQL 数据库中创建数据类型和其他存储过程
 
-运行以下查询，在 SQL 数据库中创建两个存储过程和两个数据类型， 以便将源表中的数据合并到目标表中。 
+运行以下查询，在数据库中创建两个存储过程和两个数据类型。 以便将源表中的数据合并到目标表中。 
 
 为了方便入门，我们直接使用这些存储过程通过表变量来传入增量数据，然后将其合并到目标存储中。 请注意，不能将大量的增量行（超过 100 行）存储在表变量中。  
 
@@ -284,13 +284,13 @@ END
 
 * 若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于参与者或所有者角色，或者是 Azure 订阅的管理员。
 
-* 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?regions=china-non-regional,china-east,china-east-2,china-north,china-north-2&products=all)。 数据工厂使用的数据存储（Azure 存储、SQL 数据库等）和计算资源（Azure HDInsight 等）可以位于其他区域中。
+* 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?regions=china-non-regional,china-east,china-east-2,china-north,china-north-2&products=all)。 数据工厂使用的数据存储（Azure 存储、SQL 数据库、SQL 托管实例等）和计算资源（Azure HDInsight 等）可位于其他区域中。
 
 [!INCLUDE [data-factory-create-install-integration-runtime](../../includes/data-factory-create-install-integration-runtime.md)]
 
 ## <a name="create-linked-services"></a>创建链接服务
 
-可在数据工厂中创建链接服务，将数据存储和计算服务链接到数据工厂。 在本部分中，你将创建指向 SQL Server 数据库和 Azure SQL 数据库的链接服务。 
+可在数据工厂中创建链接服务，将数据存储和计算服务链接到数据工厂。 在本部分中，你将创建 SQL Server 数据库和 Azure SQL 数据库中数据库的链接服务。 
 
 ### <a name="create-the-sql-server-linked-service"></a>创建 SQL Server 链接服务
 

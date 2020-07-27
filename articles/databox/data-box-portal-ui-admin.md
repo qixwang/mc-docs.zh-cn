@@ -5,16 +5,16 @@ services: databox
 author: WenJason
 ms.service: databox
 ms.subservice: disk
-ms.topic: overview
+ms.topic: how-to
 origin.date: 01/09/2019
-ms.date: 06/10/2019
+ms.date: 07/29/2020
 ms.author: v-jay
-ms.openlocfilehash: 300adc47632f1a9c85537f3126d0f4eadfd43bf3
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 1e8f6ff8581a49283cfd551fdf91b1dda5c728ba
+ms.sourcegitcommit: c3f15613c875bb52d5a105445efd0f36b9f24c9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293357"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86473458"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk"></a>使用 Azure 门户管理 Data Box Disk
 
@@ -28,15 +28,15 @@ ms.locfileid: "79293357"
 
 可以执行以下步骤来取消订单。
 
-1.  转到“概况”>“取消”。  
+1. 转到“概况”>“取消”。  
 
     ![取消订单 1](media/data-box-portal-ui-admin/cancel-order1.png)
 
-2.  填写取消订单的原因。  
+2. 填写取消订单的原因。  
 
     ![取消订单 2](media/data-box-portal-ui-admin/cancel-order2.png)
 
-3.  取消订单后，门户会更新订单的状态，并显示订单“已取消”。 
+3. 取消订单后，门户会更新订单的状态，并显示订单“已取消”。 
 
     ![取消订单 3](media/data-box-portal-ui-admin/cancel-order3.png)
 
@@ -48,11 +48,11 @@ ms.locfileid: "79293357"
 
 执行以下步骤来克隆订单。
 
-1.  转到“概况”>“克隆”。  
+1. 转到“概况”>“克隆”。  
 
     ![克隆订单 1](media/data-box-portal-ui-admin/clone-order1.png)
 
-2.  订单的所有详细信息保持不变。 订单名称是原始订单名称后接 *-Clone*。 选中表示确认你已查看隐私信息的复选框。 单击“创建”。     
+2. 订单的所有详细信息保持不变。 订单名称是原始订单名称后接 *-Clone*。 选中表示确认你已查看隐私信息的复选框。 单击“创建”。     
 
 几分钟后将会创建克隆的订单，并且门户会更新，以显示新订单。
 
@@ -82,11 +82,11 @@ ms.locfileid: "79293357"
 如果磁盘随附的退件发货标签错放或丢失，你可能需要下载发货标签。 
 
 执行以下步骤下载发货标签。
-1.  转到“概况”>“下载发货标签”。  只有在磁盘已发货后，此选项才可用。 
+1. 转到“概况”>“下载发货标签”。  只有在磁盘已发货后，此选项才可用。 
 
     ![下载发货标签](media/data-box-portal-ui-admin/download-shipping-label.png)
 
-2.  这会将下载以下退件发货标签。 保存标签并打印，然后粘贴在退件上。
+2. 这会将下载以下退件发货标签。 保存标签并打印，然后粘贴在退件上。
 
     ![示例发货标签](media/data-box-portal-ui-admin/example-shipping-label.png)
 

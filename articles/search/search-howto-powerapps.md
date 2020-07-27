@@ -9,13 +9,13 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: tutorial
 origin.date: 04/25/2020
-ms.date: 06/09/2020
-ms.openlocfilehash: 52c6fcff0b6f2c9c2e9808e8ab04dfe215ea97c5
-ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
+ms.date: 07/17/2020
+ms.openlocfilehash: fb73b8a7ef036b57ce9b9e5c69cbf62bc1aa59e3
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84564380"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471873"
 ---
 # <a name="tutorial-query-a-cognitive-search-index-from-power-apps"></a>教程：从 Power Apps 查询认知搜索索引
 
@@ -107,7 +107,7 @@ Power Apps 中的连接器是一个数据源连接。 在此步骤中，你将�
     parameters:
       - {name: search, in: query, required: false, type: string, default: '*'}
       - {name: $select, in: query, required: false, type: string, default: 'HotelName,Description,Address/City'}
-      - {name: api-version, in: query, required: true, type: string, default: '2019-05-06',
+      - {name: api-version, in: query, required: true, type: string, default: '2020-06-30',
         x-ms-visibility: internal}
       - {name: Content-Type, in: header, required: false, type: string}
     ```

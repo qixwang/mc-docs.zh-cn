@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 origin.date: 03/18/2019
-ms.date: 09/23/2019
+ms.date: 07/27/2020
 ms.author: v-jay
-ms.openlocfilehash: d42827a7698a95cea78b06d7ac2ec39d1c764525
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a6735b2b14a661bb72b9b2013191f8bfbcc3294e
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "71124543"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162167"
 ---
 # <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>使用 Azure Webhook 通过 .NET 监视媒体服务作业通知 
 
@@ -355,25 +355,27 @@ internal sealed class NotificationMessage
 
 Webhook 触发后，上述示例会生成以下输出，值会有所变化。
 
-    C# HTTP trigger function processed a request. RequestUri=https://juliako001-functions.chinacloudsites.cn/api/Notification_Webhook_Function?code=9376d69kygoy49oft81nel8frty5cme8hb9xsjslxjhalwhfrqd79awz8ic4ieku74dvkdfgvi
-    Request Body = 
-    {
-      "MessageVersion": "1.1",
-      "ETag": "b8977308f48858a8f224708bc963e1a09ff917ce730316b4e7ae9137f78f3b20",
-      "EventType": 4,
-      "TimeStamp": "2017-02-16T03:59:53.3041122Z",
-      "Properties": {
-        "JobId": "nb:jid:UUID:badd996c-8d7c-4ae0-9bc1-bd7f1902dbdd",
-        "TaskId": "nb:tid:UUID:80e26fb9-ee04-4739-abd8-2555dc24639f",
-        "NewState": "Finished",
-        "OldState": "Processing",
-        "AccountName": "mediapkeewmg5c3peq",
-        "AccountId": "301912b0-659e-47e0-9bc4-6973f2be3424",
-        "NotificationEndPointId": "nb:nepid:UUID:cb5d707b-4db8-45fe-a558-19f8d3306093"
-      }
-    }
-    
-    URL to the manifest for client streaming using HLS protocol: http://mediapkeewmg5c3peq.streaming.mediaservices.chinacloudapi.cn/0ac98077-2b58-4db7-a8da-789a13ac6167/BigBuckBunny.ism/manifest(format=m3u8-aapl)
+```output
+C# HTTP trigger function processed a request. RequestUri=https://juliako001-functions.chinacloudsites.cn/api/otification_Webhook_Function?code=9376d69kygoy49oft81nel8frty5cme8hb9xsjslxjhalwhfrqd79awz8ic4ieku74dvkdfgvi
+Request Body = 
+{
+  "MessageVersion": "1.1",
+  "ETag": "b8977308f48858a8f224708bc963e1a09ff917ce730316b4e7ae9137f78f3b20",
+  "EventType": 4,
+  "TimeStamp": "2017-02-16T03:59:53.3041122Z",
+  "Properties": {
+    "JobId": "nb:jid:UUID:badd996c-8d7c-4ae0-9bc1-bd7f1902dbdd",
+    "TaskId": "nb:tid:UUID:80e26fb9-ee04-4739-abd8-2555dc24639f",
+    "NewState": "Finished",
+    "OldState": "Processing",
+    "AccountName": "mediapkeewmg5c3peq",
+    "AccountId": "301912b0-659e-47e0-9bc4-6973f2be3424",
+    "NotificationEndPointId": "nb:nepid:UUID:cb5d707b-4db8-45fe-a558-19f8d3306093"
+  }
+}
+
+URL to the manifest for client streaming using HLS protocol: http://mediapkeewmg5c3peq.streaming.mediaservices.chinacloudapi.cn/0ac98077-2b58-4db7-a8da-789a13ac6167/BigBuckBunny.ism/manifest(format=m3u8-aapl)
+```
 
 ## <a name="add-a-webhook-to-your-encoding-task"></a>向编码任务添加 Webhook
 

@@ -5,24 +5,22 @@ services: notification-hubs
 documentationcenter: ios
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: 6ead4169-deff-4947-858c-8c6cf03cc3b2
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
 origin.date: 11/07/2019
-ms.date: 04/20/2020
+ms.date: 07/21/2020
 ms.author: v-tawe
 ms.reviewer: jowargo
 ms.lastreviewed: 11/07/2019
-ms.openlocfilehash: 3af9f5e882bcbb3e4d5414ec3edd78208a6bcc1d
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.openlocfilehash: 5c80d4275cc2b9e8ee227f8a038dc57d7a3a2d5a
+ms.sourcegitcommit: 5656c18d7d2faa09329b1a15e352d1622e252d5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588500"
+ms.lasthandoff: 07/21/2020
+ms.locfileid: "86862828"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向特定 iOS 设备发送推送通知
 
@@ -371,7 +369,5 @@ ms.locfileid: "82588500"
 [Notify users with Notification Hubs]: notification-hubs-aspnet-backend-ios-notify-users.md
 [Notification Hubs Guidance]: https://msdn.microsoft.com/library/dn530749.aspx
 [Notification Hubs How-To for iOS]: https://msdn.microsoft.com/library/jj927168.aspx
-[get-started]: notification-hubs-ios-apple-push-notification-apns-get-started.md
+[get-started]: ios-sdk-get-started.md
 [Azure 门户]: https://portal.azure.cn
-
-<!--Update_Description: wording update -->

@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 04/15/2020
-ms.date: 06/09/2020
-ms.openlocfilehash: f8add6a16ddd35b3db9ca91c8b91dc1c0b8b2c53
-ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
+ms.date: 07/17/2020
+ms.openlocfilehash: 4c420874a74263fba67a0f38acf09b8e0fc916de
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84564327"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86472063"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>向客户端应用添加自动完成和建议
 
@@ -35,7 +35,7 @@ ms.locfileid: "84564327"
 请求的元素包括一个“边键入边搜索”API、一个部分查询和一个建议器。 以下脚本使用“自动完成 REST API”作为示例来演示请求的组成部分。
 
 ```http
-POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2019-05-06
+POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2020-06-30
 {
   "search": "minecraf",
   "suggesterName": "sg"

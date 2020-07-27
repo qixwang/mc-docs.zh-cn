@@ -1,24 +1,19 @@
 ---
 title: 迁移 Azure 服务总线命名空间 - 从标准到高级
 description: 有关将现有 Azure 服务总线标准命名空间迁移到高级层的指南
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 04/30/2020
-ms.author: v-tawe
-origin.date: 05/18/2019
-ms.openlocfilehash: e08b1d67367b3deae32874aecb588f7a2eeaf241
-ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: yes
+ms.testdate: 07/20/2020
+ms.author: v-yeche
+author: rockboyfor
+ms.openlocfilehash: 14a9126d92705ce89923a2e7ee683d49e98f5474
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82886964"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162422"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>将现有 Azure 服务总线标准命名空间迁移到高级层
 
@@ -59,12 +54,12 @@ ms.locfileid: "82886964"
 
 1. 设置以下环境变量以简化迁移命令。
 
-   ```
-   resourceGroup = <resource group for the standard namespace>
-   standardNamespace = <standard namespace to migrate>
-   premiumNamespaceArmId = <Azure Resource Manager ID of the premium namespace to migrate to>
-   postMigrationDnsName = <post migration DNS name entry to access the standard namespace>
-   ```
+    ```
+    resourceGroup = <resource group for the standard namespace>
+    standardNamespace = <standard namespace to migrate>
+    premiumNamespaceArmId = <Azure Resource Manager ID of the premium namespace to migrate to>
+    postMigrationDnsName = <post migration DNS name entry to access the standard namespace>
+    ```
 
     >[!IMPORTANT]
     > 迁移后，将使用迁移后的别名/名称 (post_migration_dns_name) 来访问旧的标准命名空间。 使用此别名/名称清空队列和订阅，然后删除命名空间。
@@ -91,9 +86,9 @@ ms.locfileid: "82886964"
 
 1. 执行以下 complete 命令提交迁移：
 
-   ```azurecli
-   az servicebus migration complete --resource-group $resourceGroup --name $standardNamespace
-   ```
+    ```azurecli
+    az servicebus migration complete --resource-group $resourceGroup --name $standardNamespace
+    ```
 
 ### <a name="migrate-by-using-the-azure-portal"></a>使用 Azure 门户进行迁移
 
@@ -234,3 +229,5 @@ az servicebus migration abort --resource-group $resourceGroup --name $standardNa
 
 [中止流 - 中止同步]: ./media/service-bus-standard-premium-migration/abort1.png
 [中止流 - 中止完成]: ./media/service-bus-standard-premium-migration/abort3.png
+
+<!-- Update_Description: update meta properties, wording update, update link -->

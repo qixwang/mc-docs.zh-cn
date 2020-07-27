@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 04/01/2020
-ms.date: 07/02/2020
-ms.openlocfilehash: 9979cbfd506c8b0e1975eebcd9d0cbfd6dafa4a4
-ms.sourcegitcommit: 5afd7c4c3be9b80c4c67ec55f66fcf347aad74c6
+ms.date: 07/20/2020
+ms.openlocfilehash: 3a1000187e78b574578820a726ab102ce26a2763
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85942583"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471938"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中使用搜索结果
 
@@ -29,7 +29,7 @@ ms.locfileid: "85942583"
 最合适的字段包括能够对比和区分文档，并提供足够的信息来邀请用户一端做出点击响应的字段。 在电子商务网站上，这些字段可能是产品名称、说明、品牌、颜色、尺寸、价格和评级。 对于 hotels-sample-index 内置示例，它们可能是以下示例中的字段：
 
 ```http
-POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06 
+POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30 
     {  
       "search": "sandy beaches",
       "select": "HotelId, HotelName, Description, Rating, Address/City"
@@ -104,11 +104,11 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06
 在以下示例中，在 Description 字段中找到的字词“sandy”、“sand”、“beaches”和“beach”已标记为将突出显示。 在引擎中触发查询扩展的查询（例如模糊搜索和通配符搜索）对命中项突出显示的支持有限。
 
 ```http
-GET /indexes/hotels-sample-index/docs/search=sandy beaches&highlight=Description?api-version=2019-05-06 
+GET /indexes/hotels-sample-index/docs/search=sandy beaches&highlight=Description?api-version=2020-06-30 
 ```
 
 ```http
-POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06 
+POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30 
     {  
       "search": "sandy beaches",  
       "highlight": "Description"

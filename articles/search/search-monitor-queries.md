@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 02/18/2020
-ms.date: 06/09/2020
-ms.openlocfilehash: 351e836fec3b0df6b16739407e2c1e9ca0721a5c
-ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
+ms.date: 07/20/2020
+ms.openlocfilehash: 1cb83bfb5656b62b143aa94a10633ec5bbf465ab
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84564352"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471947"
 ---
 # <a name="monitor-query-requests-in-azure-cognitive-search"></a>监视 Azure 认知搜索中的查询请求
 
@@ -129,11 +129,11 @@ ms.locfileid: "84564352"
    AzureDiagnostics
    | project OperationName, Query_s, IndexName_s, Documents_d
    | where OperationName == "Query.Search"
-   | where Query_s != "?api-version=2019-05-06&search=*"
+   | where Query_s != "?api-version=2020-06-30&search=*"
    | where IndexName_s != "realestate-us-sample-index"
    ```
 
-1. （可选）在 *Query_s* 中设置列筛选器，以基于特定的语法或字符串进行搜索。 例如，可以基于“等于”进行筛选`?api-version=2019-05-06&search=*&%24filter=HotelName`。**
+1. （可选）在 *Query_s* 中设置列筛选器，以基于特定的语法或字符串进行搜索。 例如，可以基于“等于”进行筛选`?api-version=2020-06-30&search=*&%24filter=HotelName`。**
 
    ![记录的查询字符串](./media/search-monitor-usage/log-query-strings.png "记录的查询字符串")
 

@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: ae38f80ed80ae1c702e73bebda71ad45ebe1722a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 07/20/2020
+ms.openlocfilehash: 153d1e16477cc8f52bab215be23b652b18127429
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850613"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471795"
 ---
 # <a name="example-add-synonyms-for-azure-cognitive-search-in-c"></a>示例：使用 C# 为 Azure 认知搜索添加同义词
 
@@ -39,7 +39,7 @@ ms.locfileid: "78850613"
 
 * [Visual Studio](https://www.visualstudio.com/downloads/)
 * [Azure 认知搜索服务](search-create-service-portal.md)
-* [Microsoft.Azure.Search .NET 库](https://aka.ms/search-sdk)
+* [Microsoft.Azure.Search .NET 库](https://docs.microsoft.com/dotnet/api/overview/azure/search)
 * [如何通过 .NET 应用程序使用 Azure 认知搜索](https://docs.azure.cn/search/search-howto-dotnet-sdk)
 
 ## <a name="overview"></a>概述

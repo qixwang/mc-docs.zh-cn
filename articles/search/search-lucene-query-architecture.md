@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 07/02/2020
-ms.openlocfilehash: e21c4b630b8e5b53a85e38ba6255e49ccbfa6525
-ms.sourcegitcommit: 5afd7c4c3be9b80c4c67ec55f66fcf347aad74c6
+ms.openlocfilehash: 4ce716e6ea1fbf88c8201703673e15b78d44fce3
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85942556"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471951"
 ---
 # <a name="full-text-search-in-azure-cognitive-search"></a>Azure 认知搜索中的全文搜索
 
@@ -53,7 +53,7 @@ ms.locfileid: "85942556"
 以下示例是可以使用 [REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 发送到 Azure 认知搜索的一个搜索请求。  
 
 ~~~~
-POST /indexes/hotels/docs/search?api-version=2019-05-06
+POST /indexes/hotels/docs/search?api-version=2020-06-30
 {
     "search": "Spacious, air-condition* +\"Ocean view\"",
     "searchFields": "description, title",

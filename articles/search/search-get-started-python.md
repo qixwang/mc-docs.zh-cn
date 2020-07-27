@@ -9,14 +9,14 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
 origin.date: 04/01/2020
-ms.date: 07/02/2020
+ms.date: 07/17/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 1c604baf04ca1c3bd06096f1440f898bd1ea47ca
-ms.sourcegitcommit: 5afd7c4c3be9b80c4c67ec55f66fcf347aad74c6
+ms.openlocfilehash: 6e1ab3f33431c71771ac81a2a9cb913c98c1512a
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85942561"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471821"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>快速入门：在 Python 中使用 Jupyter Notebook 创建 Azure 认知搜索索引
 
@@ -70,7 +70,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
    ```python
    endpoint = 'https://<YOUR-SEARCH-SERVICE-NAME>.search.azure.cn/'
-   api_version = '?api-version=2019-05-06'
+   api_version = '?api-version=2020-06-30'
    headers = {'Content-Type': 'application/json',
            'api-key': '<YOUR-ADMIN-API-KEY>' }
    ```

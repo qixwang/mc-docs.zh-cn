@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 03/14/2019
-ms.date: 04/13/2020
+ms.date: 07/27/2020
 ms.author: v-jay
 ms.reviewer: kilroyh;yanmf;juliako
-ms.openlocfilehash: a93e12793250984791881ef64225f93a082f4fc8
-ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
+ms.openlocfilehash: 1f51649324a49691349bd4185ffe0e394ba05165
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82507698"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162172"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>使用 Azure 媒体服务设计带访问控制的内容保护系统 
 
@@ -223,8 +223,10 @@ DRM 子系统可能包含以下组件：
 
 * 颁发者 URL 必须以“/”结尾。 受众必须是播放器应用程序客户端 ID。 此外，必须在颁发者 URL 的末尾添加“/”。
 
-        <add key="ida:audience" value="[Application Client ID GUID]" />
-        <add key="ida:issuer" value="https://sts.chinacloudapi.cn/[AAD Tenant ID]/" />
+    ```xml
+    <add key="ida:audience" value="[Application Client ID GUID]" />
+    <add key="ida:issuer" value="https://sts.chinacloudapi.cn/[AAD Tenant ID]/" />
+    ```
 
     在 [JWT 解码器](http://jwt.calebb.net/)中，可以看到 JWT 中所示的 **aud** 和 **iss**：
 
@@ -236,11 +238,15 @@ DRM 子系统可能包含以下组件：
 
 * 设置动态 CENC 保护时，请使用正确的颁发者。
 
-        <add key="ida:issuer" value="https://sts.chinacloudapi.cn/[AAD Tenant ID]/"/>
+    ```xml
+    <add key="ida:issuer" value="https://sts.chinacloudapi.cn/[AAD Tenant ID]/"/>
+    ```
 
     以下代码无法运行：
 
-        <add key="ida:issuer" value="https://willzhanad.partner.onmschina.cn/" />
+    ```xml
+    <add key="ida:issuer" value="https://willzhanad.partner.onmschina.cn/" />
+    ```
 
     GUID 是 Azure AD 租户 ID。 可以在 Azure 门户上的“终结点”弹出菜单中找到该 GUID。 
 
@@ -250,7 +256,9 @@ DRM 子系统可能包含以下组件：
 
 * 创建限制要求时，请设置适当的 TokenType。
 
-        objTokenRestrictionTemplate.TokenType = TokenType.JWT;
+    ```csharp
+    objTokenRestrictionTemplate.TokenType = TokenType.JWT;
+    ```
 
     由于除了 JWT (ACS) 以外，还添加了对 SWT (Azure AD) 的支持，因此默认 TokenType 是 TokenType.JWT。 如果使用 SWT/ACS，则必须将令牌设置为 TokenType.SWT。
 
@@ -277,7 +285,7 @@ DRM 子系统可能包含以下组件：
 
 Azure AD 使用行业标准，通过 Azure AD 在本身与应用程序之间建立信任。 具体而言，Azure AD 使用签名密钥，该密钥由公钥和私钥对组成。 当 Azure AD 创建包含用户相关信息的安全令牌时，Azure AD 将使用私钥对此令牌进行签名，然后将令牌发回给应用程序。 若要验证该令牌是否有效且来自 Azure AD，应用程序验证令牌的签名。 应用程序可以使用由 Azure AD 公开且包含在租户联合元数据文档中的公钥。 此公钥以及衍生它的签名密钥是由 Azure AD 中所有租户使用的同一个密钥。
 
-有关 Azure AD 密钥滚动更新的详细信息，请参阅[有关 Azure AD 中签名密钥滚动更新的重要信息](/active-directory/develop/active-directory-signing-key-rollover)。
+有关 Azure AD 密钥滚动更新的详细信息，请参阅[有关 Azure AD 中签名密钥滚动更新的重要信息](../../active-directory/develop/active-directory-signing-key-rollover.md)。
 
 在[公钥-私钥对](https://login.partner.microsoftonline.cn/common/discovery/keys/)之间：
 
@@ -310,7 +318,7 @@ DRM 许可证传送服务始终会检查来自 Azure AD 的当前/有效公钥�
 * Azure AD 对应用程序进行身份验证并返回用来调用 Web API 的 JWT 访问令牌。
 * 通过 HTTPS，Web 应用程序使用返回的 JWT 访问令牌在发往 Web API 的请求的“Authorization”标头中添加一个具有“Bearer”限定符的 JWT 字符串。 然后，Web API 对 JWT 进行验证。 如果验证成功，则返回所需的资源。
 
-在此应用程序标识流中，Web API 相信 Web 应用程序已对用户进行了身份验证。 因此，此模式称为受信任的子系统。 [授权流示意图](/active-directory/azuread-dev/v1-protocols-oauth-code)描绘了授权代码授予流的工作原理。
+在此应用程序标识流中，Web API 相信 Web 应用程序已对用户进行了身份验证。 因此，此模式称为受信任的子系统。 [授权流示意图](/active-directory/active-directory-protocols-oauth-code)描绘了授权代码授予流的工作原理。
 
 在具有令牌限制的许可证获取中，遵循相同的受信任子系统模式。 媒体服务中的许可证传送服务是 Web API 资源，即 Web 应用程序需要访问的“后端资源”。 那么，访问令牌位于何处？
 

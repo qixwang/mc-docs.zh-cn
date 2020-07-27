@@ -7,14 +7,14 @@ ms.service: storage
 ms.devlang: multiple
 ms.topic: article
 origin.date: 11/08/2019
-ms.date: 07/02/2020
+ms.date: 07/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 27e80260919f0f11bae7488610c06379d965093b
-ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
+ms.openlocfilehash: 0373f7b632c266d5c7964adfb14e63ff4920bef3
+ms.sourcegitcommit: c17e965d4ffd82fd7cd86b2648fcb0053a65df00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85845749"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86469980"
 ---
 # <a name="get-started-with-storage-explorer"></a>存储资源管理器入门
 
@@ -56,9 +56,9 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 
 存储资源管理器还以 *.tar.gz* 下载文件格式提供。 必须手动安装依赖项。 以下 Linux 分发版支持 *.tar.gz* 安装：
 
+* Ubuntu 20.04 x64
 * Ubuntu 18.04 x64
 * Ubuntu 16.04 x64
-* Ubuntu 14.04 x64
 
 *.tar.gz* 安装也许能够在其他分发版上正常进行，但目前只有列出的分发版受到官方支持。
 

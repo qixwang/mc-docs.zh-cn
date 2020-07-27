@@ -10,12 +10,12 @@ ms.topic: conceptual
 origin.date: 12/02/2019
 ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: e1f25d26593c94ef3472e65b32176ed7e826da6c
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.openlocfilehash: 2cced5a1a870bbc34ac665b14cd247ab9fab781f
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588906"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471862"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Azure Key Vault 限制指南
 
@@ -44,7 +44,7 @@ Key Vault 最初是根据 [Azure Key Vault 服务限制](service-limits.md)中�
 |--|--|--|--|--|--|--|--|--|
 | https://mykeyvault.vault.azure.cn/ | | 键 | 签名 | EC | P-256 | 否 | 200 | 1000 |
 
-\* 有关可能值的完整列表，请参阅 [Azure Key Vault 操作](/rest/api/keyvault/key-operations)。
+\* 有关可能值的完整列表，请参阅 [Azure Key Vault 操作](https://docs.microsoft.com/rest/api/keyvault/key-operations)。
 
 如果增加容量已获批准，请注意容量增加后的以下考虑因素：
 1. 数据一致性模型更改。 将吞吐量容量更高的保管库加入允许列表后，Key Vault 服务数据一致性保证会发生更改（需要满足更大量的 RPS，因为底层 Azure 存储服务无法跟进）。  简而言之：

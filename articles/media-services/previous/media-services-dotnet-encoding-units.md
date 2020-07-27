@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 03/18/2019
-ms.date: 02/24/2020
+ms.date: 07/27/2020
 ms.author: v-jay
 ms.reviewer: milangada
-ms.openlocfilehash: db5f51efaf7511510e25a3c02505fa387e21be86
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3b97bbf2bd9d1ef690836c5dd89c52ee11792ffe
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77494440"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162251"
 ---
 # <a name="how-to-scale-encoding-with-net-sdk"></a>如何使用 .NET SDK 缩放编码
 > [!div class="op_single_selector"]
@@ -41,15 +41,17 @@ ms.locfileid: "77494440"
 
 若要使用 .NET SDK 更改预留单位类型和编码预留单位数目，请执行以下操作：
 
-    IEncodingReservedUnit encodingS1ReservedUnit = _context.EncodingReservedUnits.FirstOrDefault();
-    encodingS1ReservedUnit.ReservedUnitType = ReservedUnitType.Basic; // Corresponds to S1
-    encodingS1ReservedUnit.Update();
-    Console.WriteLine("Reserved Unit Type: {0}", encodingS1ReservedUnit.ReservedUnitType);
+```csharp
+IEncodingReservedUnit encodingS1ReservedUnit = _context.EncodingReservedUnits.FirstOrDefault();
+encodingS1ReservedUnit.ReservedUnitType = ReservedUnitType.Basic; // Corresponds to S1
+encodingS1ReservedUnit.Update();
+Console.WriteLine("Reserved Unit Type: {0}", encodingS1ReservedUnit.ReservedUnitType);
 
-    encodingS1ReservedUnit.CurrentReservedUnits = 2;
-    encodingS1ReservedUnit.Update();
+encodingS1ReservedUnit.CurrentReservedUnits = 2;
+encodingS1ReservedUnit.Update();
 
-    Console.WriteLine("Number of reserved units: {0}", encodingS1ReservedUnit.CurrentReservedUnits);
+Console.WriteLine("Number of reserved units: {0}", encodingS1ReservedUnit.CurrentReservedUnits);
+```
 
 ## <a name="opening-a-support-ticket"></a>创建支持票证
 

@@ -1,20 +1,19 @@
 ---
 title: 使用 Azure 门户创建服务总线队列
 description: 在本快速入门中，你将了解如何使用 Azure 门户创建服务总线队列。 然后，你将使用示例客户端应用程序向队列发送消息以及从中接收消息。
-services: service-bus-messaging
-author: spelluru
-ms.service: service-bus-messaging
+author: rockboyfor
 ms.topic: quickstart
-ms.custom: mvc
-origin.date: 01/16/2020
-ms.date: 06/30/2020
-ms.author: v-tawe
-ms.openlocfilehash: 3d6321aebc9798ed9dfa78ec5ab9239875df286a
-ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: yes
+ms.testdate: 07/20/2020
+ms.author: v-yeche
+ms.openlocfilehash: 8310b98c8cb89f5b923aba11b6596e01fc231033
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85796219"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162269"
 ---
 # <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>快速入门：使用 Azure 门户创建服务总线队列
 本快速入门介绍如何使用 [Azure 门户][Azure portal]创建消息命名空间并在该命名空间中创建队列，以及如何获取该命名空间上的授权凭据，以便将消息发送到服务总线队列以及从中接收消息。 然后该过程展示了如何使用 [.NET Standard 库](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)从此队列发送和接收消息。
@@ -53,9 +52,9 @@ ms.locfileid: "85796219"
 
 1. 通过发出以下命令克隆[服务总线 GitHub 存储库](https://github.com/Azure/azure-service-bus/)：
 
-   ```
-   git clone https://github.com/Azure/azure-service-bus.git
-   ```
+    ```
+    git clone https://github.com/Azure/azure-service-bus.git
+    ```
 2. 导航到示例文件夹 `azure-service-bus\samples\DotNet\GettingStarted\BasicSendReceiveQuickStart\BasicSendReceiveQuickStart`。
 3. 复制在“获取管理凭据”部分获得的连接字符串和队列名称。
 4. 在命令提示符窗口中键入以下命令：
@@ -71,7 +70,7 @@ ms.locfileid: "85796219"
     ``` 
 7. 观察发送到队列并随后从队列中接收的 10 条消息：
 
-   ![程序输出](./media/service-bus-quickstart-portal/dotnet.png)
+    ![程序输出](./media/service-bus-quickstart-portal/dotnet.png)
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -115,7 +114,7 @@ static void Main(string[] args)
     }                            
 }
 ```
- 
+
 然后，`Main()` 方法启动异步消息循环 `MainAsync()`。
 
 ### <a name="message-loop"></a>消息循环
@@ -219,8 +218,10 @@ static async Task ProcessMessagesAsync(Message message, CancellationToken token)
 > [!div class="nextstepaction"]
 > [发送和接收消息](service-bus-dotnet-get-started-with-queues.md)
 
-[trial account]: https://www.azure.cn/pricing/1rmb-trial/
+[试用帐户]: https://www.azure.cn/pricing/1rmb-trial/
 [fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name
 [Azure portal]: https://portal.azure.cn/
 
 [service-bus-flow]: ./media/service-bus-quickstart-portal/service-bus-flow.png
+
+<!-- Update_Description: update meta properties, wording update, update link -->

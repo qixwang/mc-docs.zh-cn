@@ -1,26 +1,19 @@
 ---
 title: Azure 中继 Node API 概述
 description: 本文概述了用于 Azure 中继服务的 Node.js API。 它还演示了如何使用 hyco-ws Node 包。
-services: service-bus-relay
-documentationcenter: na
-author: lingliw
-manager: timlt
-editor: ''
-ms.assetid: b7d6e822-7c32-4cb5-a4b8-df7d009bdc85
-ms.service: service-bus-relay
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-origin.date: 01/21/2020
-ms.date: 2/6/2020
-ms.author: v-lingwu
-ms.openlocfilehash: 4e6dc0e0372f8021c0c8f301eb66d18c984489be
-ms.sourcegitcommit: cada23b6400453ff9c08cfb08393e635e2fddac1
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: ''
+ms.author: v-yeche
+author: rockboyfor
+ms.openlocfilehash: ef570127eb8fc5be0a1fbde5c28c56405e471503
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83734661"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162206"
 ---
 # <a name="relay-hybrid-connections-node-api-overview"></a>中继混合连接节点 API 概述
 
@@ -29,7 +22,7 @@ ms.locfileid: "83734661"
 Azure 中继混合连接的 [`hyco-ws`](https://www.npmjs.com/package/hyco-ws) 节点包是在 [‘ws’](https://www.npmjs.com/package/ws) NPM 包的基础上进行构建和扩展的。 此包将重新导出该基程序包的所有导出，并添加允许与 Azure 中继服务混合连接功能集成的新导出。 
 
 在现有应用程序中，`require('ws')` 可以改为结合使用此包与 `require('hyco-ws')`，从而还可以实现混合方案，其中应用程序可以同时从“防火墙内”和通过混合连接本地侦听 WebSocket 连接。
-  
+
 ## <a name="documentation"></a>文档
 
 API [记录于主要的 ‘ws’ 包中](https://github.com/websockets/ws/blob/master/doc/ws.md)。 本文介绍此包与该基线有何不同。 
@@ -66,9 +59,8 @@ var uri = createRelayListenUri([namespaceName], [path], [[token]], [[id]])
 
 `token` 值是可选的，仅在不可能发送 HTTP 头和 WebSocket 握手时使用，这与 W3C WebSocket 堆栈的情况相同。                  
 
-
 #### <a name="createrelaysenduri"></a>createRelaySendUri
- 
+
 ```JavaScript
 var uri = createRelaySendUri([namespaceName], [path], [[token]], [[id]])
 ```
@@ -81,7 +73,6 @@ var uri = createRelaySendUri([namespaceName], [path], [[token]], [[id]])
 - `id`（可选）- 用于启用请求的端到端诊断跟踪的跟踪标识符。
 
 `token` 值是可选的，仅在不可能发送 HTTP 头和 WebSocket 握手时使用，这与 W3C WebSocket 堆栈的情况相同。                   
-
 
 #### <a name="createrelaytoken"></a>createRelayToken 
 
@@ -152,7 +143,6 @@ function(socket)
 
 接受新的 WebSocket 连接时发出。 此对象的类型为 `ws.WebSocket`，与基程序包相同。
 
-
 ##### <a name="error"></a>error
 
 ```JavaScript
@@ -193,7 +183,7 @@ var server = createRelayedServer([options], [connectCallback] )
 ```
 
 此方法调用构造函数以创建 RelayedServer 的新实例，并订阅提供的 'connection' 事件的回调。
- 
+
 ##### <a name="relayedconnect"></a>relayedConnect
 
 只需在函数中生成 `createRelayedServer` 帮助程序的镜像，`relayedConnect` 会创建客户端连接，并订阅生成套接字上的 'open' 事件。
@@ -214,5 +204,4 @@ WebSocket.relayedConnect(
 * [什么是 Azure 中继？](relay-what-is-it.md)
 * [可用的中继 API](relay-api-overview.md)
 
-
-<!--Update_Description:update meta properties and wording-->
+<!-- Update_Description: update meta properties, wording update, update link -->

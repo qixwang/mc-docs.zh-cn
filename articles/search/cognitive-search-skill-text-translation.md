@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 03/16/2020
-ms.openlocfilehash: 9e38b68a472882bdaebe5087cb511ef7099cd488
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 07/17/2020
+ms.openlocfilehash: 000d1bffe649bd89dcc3a0080832822c536b88ad
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78934842"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86472002"
 ---
 #   <a name="text-translation-cognitive-skill"></a>文本翻译认知技能
 

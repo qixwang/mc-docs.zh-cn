@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: tutorial
-origin.date: 02/28/2020
-ms.date: 03/16/2020
-ms.openlocfilehash: 6ed280dacb99d07c3db850620bbbf90bb03a1da9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 06/23/2020
+ms.date: 07/20/2020
+ms.openlocfilehash: 006b3852c9a7fa4599c85cb13d1ad018f01fa162
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80243703"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471808"
 ---
 # <a name="tutorial-index-json-blobs-from-azure-storage-using-rest"></a>教程：使用 REST 为 Azure 存储中的 JSON Blob 编制索引
 
@@ -113,13 +113,13 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
   ![Postman 请求 URL 和标头](media/search-get-started-postman/postman-url.png "Postman 请求 URL 和标头")
 
-URI 必须指定 api-version，每个调用应返回 **201 Created**。 用于使用 JSON 数组的正式版 api-version 为 `2019-05-06`。
+URI 必须指定 api-version，每个调用应返回 **201 Created**。 用于使用 JSON 数组的正式版 api-version 为 `2020-06-30`。
 
 ## <a name="3---create-a-data-source"></a>3 - 创建数据源
 
 [创建数据源 API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) 可创建一个 Azure 认知搜索对象，用于指定要编制索引的数据。
 
-1. 请将此调用的终结点设置为 `https://[service name].search.azure.cn/datasources?api-version=2019-05-06`。 请将 `[service name]` 替换为搜索服务的名称。 
+1. 请将此调用的终结点设置为 `https://[service name].search.azure.cn/datasources?api-version=2020-06-30`。 请将 `[service name]` 替换为搜索服务的名称。 
 
 1. 将以下 JSON 复制到请求正文中。
 
@@ -162,7 +162,7 @@ URI 必须指定 api-version，每个调用应返回 **201 Created**。 用于�
     
 第二次调用的是[创建索引 API](https://docs.microsoft.com/rest/api/searchservice/create-index)，用于创建可存储所有可搜索数据的 Azure 认知搜索索引。 索引指定所有参数及其属性。
 
-1. 请将此调用的终结点设置为 `https://[service name].search.azure.cn/indexes?api-version=2019-05-06`。 请将 `[service name]` 替换为搜索服务的名称。
+1. 请将此调用的终结点设置为 `https://[service name].search.azure.cn/indexes?api-version=2020-06-30`。 请将 `[service name]` 替换为搜索服务的名称。
 
 1. 将以下 JSON 复制到请求正文中。
 
@@ -237,7 +237,7 @@ URI 必须指定 api-version，每个调用应返回 **201 Created**。 用于�
 
 索引器连接到数据源，将数据导入目标搜索索引，并选择性地提供一个计划来自动执行数据刷新。 REST API 为[创建索引器](https://docs.microsoft.com/rest/api/searchservice/create-indexer)。
 
-1. 请将此调用的 URI 设置为 `https://[service name].search.azure.cn/indexers?api-version=2019-05-06`。 请将 `[service name]` 替换为搜索服务的名称。
+1. 请将此调用的 URI 设置为 `https://[service name].search.azure.cn/indexers?api-version=2020-06-30`。 请将 `[service name]` 替换为搜索服务的名称。
 
 1. 将以下 JSON 复制到请求正文中。
 
@@ -334,7 +334,7 @@ URI 必须指定 api-version，每个调用应返回 **201 Created**。 用于�
 可以使用门户来删除索引、索引器和数据源。 或者使用 **DELETE** 并提供每个对象的 URL。 以下命令删除一个索引器。
 
 ```http
-DELETE https://[YOUR-SERVICE-NAME].search.azure.cn/indexers/clinical-trials-json-indexer?api-version=2019-05-06
+DELETE https://[YOUR-SERVICE-NAME].search.azure.cn/indexers/clinical-trials-json-indexer?api-version=2020-06-30
 ```
 
 成功删除后会返回状态代码 204。

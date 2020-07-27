@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 07/02/2020
-ms.openlocfilehash: 981746af6bce5ae3f681339867d5aaf471910e06
-ms.sourcegitcommit: 5afd7c4c3be9b80c4c67ec55f66fcf347aad74c6
+ms.date: 07/17/2020
+ms.openlocfilehash: 51720f68e1a1b056014dbe0c5cf37cffff284201
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85942525"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471857"
 ---
 #   <a name="key-phrase-extraction-cognitive-skill"></a>关键短语提取认知技能
 

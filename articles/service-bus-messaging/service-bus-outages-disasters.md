@@ -1,21 +1,19 @@
 ---
 title: 使 Azure 服务总线应用程序免受服务中断和灾难影响
 description: 本文提供了用于保护应用程序免受潜在的 Azure 服务总线中断影响的技术。
-services: service-bus-messaging
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
 ms.topic: article
-origin.date: 01/27/2020
-ms.date: 05/21/2020
-ms.author: v-lingwu
-ms.openlocfilehash: 97ca527dabc52f5ae1a1f239523900fe9d8a5222
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: yes|no
+ms.testdate: 07/20/2020Null
+ms.author: v-yeche
+author: rockboyfor
+ms.openlocfilehash: d574364e3d6d6e0978c701ecce12df56db957862
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796789"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162329"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>使应用程序免受服务总线中断和灾难影响的最佳实践
 
@@ -32,6 +30,8 @@ ms.locfileid: "83796789"
 
 服务总线高级版支持命名空间级别的异地灾难恢复。 有关详细信息，请参阅 [Azure 服务总线异地灾难恢复](service-bus-geo-dr.md)。 灾难恢复功能仅适用于[高级 SKU](service-bus-premium-messaging.md)，可实现元数据灾难恢复，并且依赖于主要和辅助灾难恢复命名空间。
 
+<!--Not Available on ### Availability Zones-->
+
 ## <a name="protecting-against-outages-and-disasters---service-bus-standard"></a>防范中断和灾难 - 服务总线标准版
 为了在使用标准消息传送定价层时实现针对数据中心中断的恢复，服务总线支持两种方法：主动和被动复制。 对于每一种方法，如果必须在数据中心中断的情况下仍可访问给定的队列或主题，可以在两个命名空间中创建。 两个实体可以具有相同的名称。 例如，可在 **contosoPrimary.servicebus.chinacloudapi.cn/myQueue** 下访问主要队列，而在 **contosoSecondary.servicebus.chinacloudapi.cn/myQueue** 下访问其辅助队列。
 
@@ -41,7 +41,6 @@ ms.locfileid: "83796789"
 如果应用程序不需要发送方到接收方的持续通信，则该应用程序可实施一个用于防止消息丢失的持久客户端队列，从而保护发送方免受任何暂时性服务总线故障的影响。
 
 ### <a name="active-replication"></a>主动复制
-
 主动复制对于每个操作都使用这两个命名空间中的实体。 任何发送消息的客户端都会发送同一条消息的两个副本。 第一个副本发送到主要实体（例如 **contosoPrimary.servicebus.chinacloudapi.cn/sales**），该消息的第二个副本发送到辅助实体（例如 **contosoSecondary.servicebus.chinacloudapi.cn/sales**）。
 
 客户端从两个队列接收消息。 如果接收方处理了消息的第一个副本，则第二个副本会被取消。 要取消重复的消息，发送方必须用唯一标识符标记每一条消息。 必须用同一标识符标记消息的两个副本。 可使用 [BrokeredMessage.MessageId][BrokeredMessage.MessageId] 或 [BrokeredMessage.Label][BrokeredMessage.Label] 属性或自定义属性对消息进行标记。 接收方必须保留已接收消息的列表。
@@ -77,13 +76,20 @@ ms.locfileid: "83796789"
 
 * [Azure 服务总线异地灾难恢复](service-bus-geo-dr.md)
 * [Azure SQL 数据库业务连续性][Azure SQL Database Business Continuity]
-* [设计适用于 Azure 的可复原应用程序][Azure 复原技术指南]
+* [设计适用于 Azure 的弹性应用程序][Azure resiliency technical guidance]
 
-  [Service Bus Authentication]: ./service-bus-authentication-and-authorization.md
-  [Partitioned messaging entities]: ./service-bus-partitioning.md
-  [Asynchronous messaging patterns and high availability]: ./service-bus-async-messaging.md#failure-of-service-bus-within-an-azure-datacenter
+[Service Bus Authentication]: service-bus-authentication-and-authorization.md
+[Partitioned messaging entities]: service-bus-partitioning.md
+[Asynchronous messaging patterns and high availability]: service-bus-async-messaging.md#failure-of-service-bus-within-an-azure-datacenter
 [BrokeredMessage.MessageId]: https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.brokeredmessage
 [BrokeredMessage.Label]: https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.brokeredmessage
+
+<!--Available on Azure China now-->
+
 [Geo-replication with Service Bus Standard Tier]: https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoReplication
-[Azure SQL Database Business Continuity]: ../sql-database/sql-database-business-continuity.md
+[Azure SQL Database Business Continuity]:../azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview.md
+[Azure resiliency technical guidance]: https://docs.microsoft.com/azure/architecture/resiliency
+
 [1]: ./media/service-bus-outages-disasters/az.png
+
+<!-- Update_Description: update meta properties, wording update, update link-->

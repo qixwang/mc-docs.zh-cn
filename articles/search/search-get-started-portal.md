@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: quickstart
 origin.date: 06/07/2020
-ms.date: 07/02/2020
-ms.openlocfilehash: 9b279be214e8cfec91957d4931134664ebb568d6
-ms.sourcegitcommit: 5afd7c4c3be9b80c4c67ec55f66fcf347aad74c6
+ms.date: 07/17/2020
+ms.openlocfilehash: dd9ee2a187b4530e3ca476a16cb77d901f7baf40
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85942545"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471827"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure 认知搜索索引
 > [!div class="op_single_selector"]
@@ -275,4 +275,4 @@ ms.locfileid: "85942545"
 使用门户向导生成在浏览器中运行的即用型 Web 应用。 可以在刚刚创建的小索引上尝试使用此向导，也可以使用内置的示例数据集之一来获得更丰富的搜索体验。
 
 > [!div class="nextstepaction"]
-> [在门户中创建搜索应用](search-create-app-portal.md)
+> [在门户中创建演示应用](search-create-app-portal.md)

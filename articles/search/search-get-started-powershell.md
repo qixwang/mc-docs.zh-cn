@@ -9,13 +9,13 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
 origin.date: 02/10/2020
-ms.date: 03/16/2020
-ms.openlocfilehash: e176b9c3fe895bd1052e4c95a5a3ffdfa80566e0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 07/17/2020
+ms.openlocfilehash: 949fb515d2a9982014e7f772dd24050a9b06f229
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850575"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471823"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-powershell-using-rest-apis"></a>快速入门：在 PowerShell 中使用 REST API 创建 Azure 认知搜索索引
 > [!div class="op_single_selector"]
@@ -23,7 +23,7 @@ ms.locfileid: "78850575"
 > * [C#](search-create-index-dotnet.md)
 > * [Postman (REST)](search-get-started-postman.md)
 > * [Python](search-get-started-python.md)
-> * [Portal](search-create-index-portal.md)
+> * [门户](search-create-index-portal.md)
 > 
 
 本文引导你完成使用 PowerShell 和 [Azure 认知搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/) 创建、加载和查询 Azure 认知搜索索引的过程。 本文介绍如何以交互方式运行 PowerShell 命令。 你也可以[下载并运行一个 PowerShell 脚本](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart)来执行相同的操作。
@@ -34,7 +34,7 @@ ms.locfileid: "78850575"
 
 本快速入门需要以下服务和工具。 
 
-+ [PowerShell 5.1 或更高版本](https://github.com/PowerShell/PowerShell)，使用 [Invoke-RestMethod](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod) 按序完成交互式步骤。
++ [PowerShell 5.1 或更高版本](https://github.com/PowerShell/PowerShell)。你将使用 [Invoke-RestMethod](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod) 来执行有序步骤和交互式步骤。
 
 + [创建 Azure 认知搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://portal.azure.cn/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可以使用本快速入门的免费服务。 
 
@@ -52,7 +52,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 ## <a name="connect-to-azure-cognitive-search"></a>连接到 Azure 认知搜索
 
-1. 在 PowerShell 中，创建一个 **$headers** 对象用于存储内容类型和 API 密钥。 将管理 API 密钥 (YOUR-ADMIN-API-KEY) 替换为对搜索服务有效的值。 在整个会话持续时间内，只需设置此标头一次，但需要将它添加到每个请求。 
+1. 在 PowerShell 中，创建一个用于存储内容类型和 API 密钥的 **$headers** 对象。 请将管理 API 密钥 (YOUR-ADMIN-API-KEY) 替换为对搜索服务有效的密钥。 只需在会话持续时间内设置此标头一次，不过，需要将它添加到每个请求。 
 
     ```powershell
     $headers = @{
@@ -61,19 +61,19 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
     'Accept' = 'application/json' }
     ```
 
-2. 创建一个 **$url** 对象，用于指定服务的索引集合。 将服务名称 (YOUR-SEARCH-SERVICE-NAME) 替换为有效的搜索服务。
+2. 创建用于指定服务索引集合的 **$url** 对象。 请将服务名称 (YOUR-SEARCH-SERVICE-NAME) 替换为有效的搜索服务。
 
     ```powershell
-    $url = "https://<YOUR-SEARCH-SERVICE-NAME>.search.azure.cn/indexes?api-version=2019-05-06&$select=name"
+    $url = "https://<YOUR-SEARCH-SERVICE-NAME>.search.azure.cn/indexes?api-version=2020-06-30&$select=name"
     ```
 
-3. 运行 **Invoke-RestMethod** 将 GET 请求发送到服务，并验证连接。 添加 **ConvertTo-Json**，以便可以查看服务发回的响应。
+3. 运行 **Invoke-RestMethod**，将 GET 请求发送到服务并验证连接。 添加 **ConvertTo-Json**，以便可以查看服务发回的响应。
 
     ```powershell
     Invoke-RestMethod -Uri $url -Headers $headers | ConvertTo-Json
     ```
 
-   如果服务为空且没有索引，则结果将类似于以下示例。 否则，会看到索引定义的 JSON 表示形式。
+   如果服务为空且没有索引，则结果类似于以下示例。 否则，你将看到索引定义的 JSON 表示形式。
 
     ```
     {
@@ -86,13 +86,13 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 ## <a name="1---create-an-index"></a>1 - 创建索引
 
-除非使用门户，否则在加载数据之前，服务中必须存在一个索引。 此步骤定义索引并将其推送到服务。 此步骤使用[创建索引 REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)。
+除非使用门户，服务中必须预先存在一个索引才能加载数据。 此步骤定义索引并将其推送到服务。 此步骤使用[创建索引 REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)。
 
 索引的所需元素包括名称和字段集合。 字段集合定义文档的结构。  每个字段具有一个确定其用法的名称、类型和属性（例如，该字段在搜索结果是否可全文搜索、可筛选或可检索）。 在索引中，必须将一个 `Edm.String` 类型的字段指定为文档标识的键。 
 
 此索引名为“hotels-quickstart”，使用下面所示的字段定义。 它是其他演练中使用的一个更大 [Hotels 索引](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON)的子集。 为简明起见，本快速入门已对其进行修整。
 
-1. 将此示例粘贴到 PowerShell，以创建包含索引架构的 **$body** 对象。
+1. 请将此示例粘贴到 PowerShell 中，以创建包含索引架构的 **$body** 对象。
 
     ```powershell
     $body = @"
@@ -124,7 +124,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 2. 设置服务中的索引集合以及 *hotels-quickstart* 索引的 URI。
 
     ```powershell
-    $url = "https://<YOUR-SEARCH-SERVICE>.search.azure.cn/indexes/hotels-quickstart?api-version=2019-05-06"
+    $url = "https://<YOUR-SEARCH-SERVICE>.search.azure.cn/indexes/hotels-quickstart?api-version=2020-06-30"
     ```
 
 3. 结合 **$url**、 **$headers** 和 **$body** 运行该命令，以在服务中创建索引。 
@@ -180,9 +180,9 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 ## <a name="2---load-documents"></a>2 - 加载文档
 
-若要推送文档，请向索引的 URL 终结点发出 HTTP POST 请求。 此任务的 REST API 为 [添加、更新或删除文档](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)。
+若要推送文档，请向索引的 URL 终结点发出 HTTP POST 请求。 此任务的 REST API 为[添加、更新或删除文档](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)。
 
-1. 将此示例粘贴到 PowerShell，以创建包含所要上传的文档的 **$body** 对象。 
+1. 请将此示例粘贴到 PowerShell 中，以创建包含所要上传的文档的 **$body** 对象。 
 
     此请求包含两条完整记录和一条不完整的记录。 不完整的记录演示可以上传不完整的文档。 `@search.action` 参数指定如何编制索引。 有效值包括 upload、merge、mergeOrUpload 和 delete。 mergeOrUpload 行为将创建 hotelId 为 3 的新文档，如果该文档已存在，则更新内容。
 
@@ -274,7 +274,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 1. 将终结点设置为 *hotels-quickstart* 文档集合，并包含索引操作 (indexes/hotels-quickstart/docs/index)。
 
     ```powershell
-    $url = "https://<YOUR-SEARCH-SERVICE>.search.azure.cn/indexes/hotels-quickstart/docs/index?api-version=2019-05-06"
+    $url = "https://<YOUR-SEARCH-SERVICE>.search.azure.cn/indexes/hotels-quickstart/docs/index?api-version=2020-06-30"
     ```
 
 1. 结合 **$url**、 **$headers** 和 **$body** 运行该命令，以将文档载入 hotels-quickstart 索引。
@@ -282,7 +282,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
     ```powershell
     Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $body | ConvertTo-Json
     ```
-    结果应类似于以下示例。 应会看到[状态代码 201](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes)。
+    结果应如以下示例所示。 应会看到[状态代码 201](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes)。
 
     ```
     {
@@ -327,16 +327,16 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
    此字符串执行空搜索 (search=*)，返回任意文档的未排名列表 (search score  = 1.0)。 默认情况下，Azure 认知搜索每次返回 50 个匹配项。 由于已结构化，此查询将返回整个文档结构和值。 添加 **$count=true** 以获取结果中所有文档的计数。
 
     ```powershell
-    $url = 'https://<YOUR-SEARCH-SERVICE>.search.azure.cn/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=*&$count=true'
+    $url = 'https://<YOUR-SEARCH-SERVICE>.search.azure.cn/indexes/hotels-quickstart/docs?api-version=2020-06-30&search=*&$count=true'
     ```
 
-1. 运行该命令以将 **$url** 发送到服务。
+1. 运行将 **$url** 发送到服务的命令。
 
     ```powershell
     Invoke-RestMethod -Uri $url -Headers $headers | ConvertTo-Json
     ```
 
-    结果应类似于以下输出。
+    结果应如以下输出所示。
 
     ```
     {
@@ -370,27 +370,27 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
                 . . . 
     ```
 
-请尝试其他几个查询示例，以大致了解语法。 可以执行字符串搜索、原义 $filter 查询、限制结果集、将搜索范围限定为特定的字段，等待。
+尝试其他查询示例来了解语法。 你可以执行字符串搜索、逐字筛选查询、限制结果集、将搜索范围限定为特定字段等。
 
 ```powershell
 # Query example 1
 # Search the entire index for the terms 'restaurant' and 'wifi'
 # Return only the HotelName, Description, and Tags fields
-$url = 'https://<YOUR-SEARCH-SERVICE>.search.azure.cn/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=restaurant wifi&$count=true&$select=HotelName,Description,Tags'
+$url = 'https://<YOUR-SEARCH-SERVICE>.search.azure.cn/indexes/hotels-quickstart/docs?api-version=2020-06-30&search=restaurant wifi&$count=true&$select=HotelName,Description,Tags'
 
 # Query example 2 
 # Apply a filter to the index to find hotels rated 4 or highter
 # Returns the HotelName and Rating. Two documents match.
-$url = 'https://<YOUR-SEARCH-SERVICE>.search.azure.cn/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=*&$filter=Rating gt 4&$select=HotelName,Rating'
+$url = 'https://<YOUR-SEARCH-SERVICE>.search.azure.cn/indexes/hotels-quickstart/docs?api-version=2020-06-30&search=*&$filter=Rating gt 4&$select=HotelName,Rating'
 
 # Query example 3
 # Take the top two results, and show only HotelName and Category in the results
-$url = 'https://<YOUR-SEARCH-SERVICE>.search.azure.cn/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=boutique&$top=2&$select=HotelName,Category'
+$url = 'https://<YOUR-SEARCH-SERVICE>.search.azure.cn/indexes/hotels-quickstart/docs?api-version=2020-06-30&search=boutique&$top=2&$select=HotelName,Category'
 
 # Query example 4
 # Sort by a specific field (Address/City) in ascending order
 
-$url = 'https://<YOUR-SEARCH-SERVICE>.search.azure.cn/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=pool&$orderby=Address/City asc&$select=HotelName, Address/City, Tags, Rating'
+$url = 'https://<YOUR-SEARCH-SERVICE>.search.azure.cn/indexes/hotels-quickstart/docs?api-version=2020-06-30&search=pool&$orderby=Address/City asc&$select=HotelName, Address/City, Tags, Rating'
 ```
 ## <a name="clean-up-resources"></a>清理资源
 

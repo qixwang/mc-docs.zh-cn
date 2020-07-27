@@ -9,13 +9,13 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 03/02/2020
-ms.openlocfilehash: b7ede5af9521468d3e62e78be877517c872f1281
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 07/17/2020
+ms.openlocfilehash: a52c297f1f17695aaeb6fe422c8b3ac73f9fc714
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850573"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471977"
 ---
 # <a name="how-to-index-csv-blobs-using-delimitedtext-parsing-mode-and-blob-indexers-in-azure-cognitive-search"></a>如何使用 Azure 认知搜索中的 delimitedText 分析模式和 Blob 索引器为 CSV blob 编制索引
 
@@ -61,7 +61,7 @@ ms.locfileid: "78850573"
 
 数据源： 
 
-    POST https://[service name].search.azure.cn/datasources?api-version=2019-05-06-Preview
+    POST https://[service name].search.azure.cn/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -74,7 +74,7 @@ ms.locfileid: "78850573"
 
 索引器：
 
-    POST https://[service name].search.azure.cn/indexers?api-version=2019-05-06-Preview
+    POST https://[service name].search.azure.cn/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 

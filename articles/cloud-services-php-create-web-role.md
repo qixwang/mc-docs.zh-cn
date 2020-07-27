@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
 origin.date: 04/11/2018
-ms.date: 07/02/2020
+ms.date: 07/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: a90e786fbd9bb8e1e26d8967db64d0713442d48e
-ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
+ms.openlocfilehash: 58dbad90d31acaeca386601b9487784b8bdd0a41
+ms.sourcegitcommit: c17e965d4ffd82fd7cd86b2648fcb0053a65df00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85845893"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86469978"
 ---
 # <a name="create-php-web-and-worker-roles"></a>创建 PHP Web 角色和辅助角色
 
@@ -33,7 +33,7 @@ Azure 提供了三种用于运行应用程序的计算模型：Azure 应用服�
 
 ## <a name="download-the-azure-sdk-for-php"></a>下载 Azure SDK for PHP
 
-[Azure SDK for PHP](php-download-sdk.md) 由多个组件构成。 本文将使用其中的两个组件：Azure PowerShell 和 Azure 模拟器。 可以通过 Microsoft Web 平台安装程序安装这两个组件。 有关详细信息，请参阅 [如何安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)。
+[Azure SDK for PHP](https://github.com/Azure/azure-sdk-for-php) 由多个组件构成。 本文将使用其中的两个组件：Azure PowerShell 和 Azure 模拟器。 可以通过 Microsoft Web 平台安装程序安装这两个组件。 有关详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 ## <a name="create-a-cloud-services-project"></a>创建云服务项目
 
@@ -41,7 +41,9 @@ Azure 提供了三种用于运行应用程序的计算模型：Azure 应用服�
 
 若要创建新的 Azure 服务项目，请以管理员身份运行 Azure PowerShell 并执行以下命令：
 
-    PS C:\>New-AzureServiceProject myProject
+```powershell
+PS C:\>New-AzureServiceProject myProject
+```
 
 此命令将创建可将 Web 角色和辅助角色添加到的新目录 (`myProject`)。
 
@@ -49,11 +51,15 @@ Azure 提供了三种用于运行应用程序的计算模型：Azure 应用服�
 
 要将 PHP Web 角色添加到项目，请从项目的根目录中运行以下命令：
 
-    PS C:\myProject> Add-AzurePHPWebRole roleName
+```powershell
+PS C:\myProject> Add-AzurePHPWebRole roleName
+```
 
 对于辅助角色，请使用此命令：
 
-    PS C:\myProject> Add-AzurePHPWorkerRole roleName
+```powershell
+PS C:\myProject> Add-AzurePHPWorkerRole roleName
+```
 
 > [!NOTE]
 > `roleName` 参数是可选的。 如果省略该参数，则自动生成角色名称。 创建的第一个 Web 角色将为 `WebRole1`，第二个 Web 角色为 `WebRole2`，依此类推。 创建的第一个辅助角色将为 `WorkerRole1`，第二个辅助角色为 `WorkerRole2`，依此类推。
@@ -72,7 +78,10 @@ Azure 提供了三种用于运行应用程序的计算模型：Azure 应用服�
 2. 在位于 Web 角色的根目录中的 `bin` 文件夹中创建一个 `php` 文件夹，然后将 PHP 运行时（所有二进制文件、配置文件、子文件夹等）添加到该 `php` 文件夹中。
 3. （可选）如果 PHP 运行时使用 [Microsoft Drivers for PHP for SQL Server][sqlsrv drivers]，则需要将 Web 角色配置为在预配它时安装 [SQL Server Native Client 2012][sql native client]。 为此，将 [sqlncli.msi x64 安装程序]添加到 Web 角色的根目录中的 `bin` 文件夹。 下一步中所述的启动脚本在设置角色时以静默方式运行安装程序。 如果 PHP 运行时不使用 Microsoft Drivers for PHP for SQL Server，则可从下一步所示的脚本中删除以下行：
 
-        msiexec /i sqlncli.msi /qn IACCEPTSQLNCLILICENSETERMS=YES
+   ```console
+   msiexec /i sqlncli.msi /qn IACCEPTSQLNCLILICENSETERMS=YES
+   ```
+
 4. 定义一个启动任务，用以将 [Internet Information Services (IIS)][iis.net] 配置为使用 PHP 运行时来处理对 `.php` 页面的请求。 为此，请在文本编辑器中打开 `setup_web.cmd` 文件（位于 Web 角色的根目录的 `bin` 文件夹中），并将其内容替换为以下脚本：
 
     ```cmd
@@ -108,7 +117,10 @@ Azure 提供了三种用于运行应用程序的计算模型：Azure 应用服�
 2. 在辅助角色的根目录中创建一个 `php` 文件夹，然后将 PHP 运行时（所有二进制文件、配置文件、子文件夹等）添加到该 `php` 文件夹中。
 3. （可选）如果 PHP 运行时使用 [Microsoft Drivers for PHP for SQL Server][sqlsrv drivers]，则需要将辅助角色配置为在预配它时安装 [SQL Server Native Client 2012][sql native client]。 为此，将 [sqlncli.msi x64 安装程序]添加到辅助角色的根目录。 下一步中所述的启动脚本在设置角色时以静默方式运行安装程序。 如果 PHP 运行时不使用 Microsoft Drivers for PHP for SQL Server，则可从下一步所示的脚本中删除以下行：
 
-        msiexec /i sqlncli.msi /qn IACCEPTSQLNCLILICENSETERMS=YES
+   ```console
+   msiexec /i sqlncli.msi /qn IACCEPTSQLNCLILICENSETERMS=YES
+   ```
+
 4. 定义在设置角色时将 `php.exe` 可执行文件添加到辅助角色的 PATH 环境变量中的启动任务。 为此，请在文本编辑器中打开 `setup_worker.cmd` 文件（位于辅助角色的根目录中），并将其内容替换为以下脚本：
 
     ```cmd
@@ -148,20 +160,26 @@ Azure 模拟器提供了一个本地环境，可在将 Azure 应用程序部署�
 
 要在模拟器中运行项目，请从项目的根目录中执行以下命令：
 
-    PS C:\MyProject> Start-AzureEmulator
+```powershell
+PS C:\MyProject> Start-AzureEmulator
+```
 
 你会看到类似于下面的输出：
 
-    Creating local package...
-    Starting Emulator...
-    Role is running at http://127.0.0.1:81
-    Started
+```output
+Creating local package...
+Starting Emulator...
+Role is running at http://127.0.0.1:81
+Started
+```
 
 通过打开 Web 浏览器并浏览到输出中所示的本地地址（上面的示例输出中的 `http://127.0.0.1:81`），可以查看正在模拟器上运行的应用程序。
 
 若要停止模拟器，请执行此命令：
 
-    PS C:\MyProject> Stop-AzureEmulator
+```powershell
+PS C:\MyProject> Stop-AzureEmulator
+```
 
 ## <a name="publish-your-application"></a>发布应用程序
 

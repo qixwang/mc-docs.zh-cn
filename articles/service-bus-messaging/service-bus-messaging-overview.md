@@ -1,27 +1,27 @@
 ---
 title: Azure 服务总线消息传送概述 | Azure
 description: 本文粗略概述了 Azure 服务总线（一种完全托管的企业集成消息代理）。
-services: service-bus-messaging
-documentationcenter: ''
-author: lingliw
-manager: digimobile
-editor: ''
-ms.service: service-bus-messaging
 ms.topic: overview
-origin.date: 11/04/2019
-ms.date: 02/25/2020
-ms.custom: mvc
-ms.author: v-lingwu
-ms.openlocfilehash: f4f5894d18c50680f92ecd45f58370ebe9300742
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: ''
+ms.author: v-yeche
+author: rockboyfor
+ms.openlocfilehash: ffbbe1291720daa56073ee5f3e5621e175ab8119
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796802"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162429"
 ---
 # <a name="what-is-azure-service-bus"></a>什么是 Azure 服务总线？
 
-Microsoft Azure 服务总线是一种完全托管的企业集成消息中转站。 服务总线可以分离应用程序和服务。 服务总线为异步传输数据和状态提供可靠且安全的平台。
+Azure 服务总线是一种完全托管的企业集成消息中转站。 服务总线可以分离应用程序和服务。 服务总线为异步传输数据和状态提供可靠且安全的平台。
+
+数据通过消息在不同的应用程序和服务之间传输。 消息采用二进制格式，可能包含 JSON、XML 或纯文本。 
+
+<!--Not Available on For more information, see [Integration Services](https://azure.com/integration).-->
 
 一些常见的消息传送方案包括：
 
@@ -90,7 +90,7 @@ Microsoft Azure 服务总线是一种完全托管的企业集成消息中转站�
 
 ### <a name="autodelete-on-idle"></a>出现空闲队列时自动删除
 
-可以使用“出现空闲队列时自动删除”功能指定一个空闲时间间隔，该时间间隔过后系统会自动删除队列。 最短持续时间为 5 分钟。 有关详细信息，请参阅 [QueueDescription.AutoDeleteOnIdle 属性](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.queuedescription.autodeleteonidle)。
+可以使用“出现空闲队列时自动删除”功能指定一个空闲时间间隔，该时间间隔过后系统会自动删除队列。 最短持续时间为 5 分钟。 有关详细信息，请参阅 [QueueDescription.AutoDeleteOnIdle 属性](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.queuedescription.autodeleteonidle?view=azure-dotnet)。
 
 ### <a name="duplicate-detection"></a>重复检测
 
@@ -103,7 +103,7 @@ Microsoft Azure 服务总线是一种完全托管的企业集成消息中转站�
 
 ### <a name="geo-disaster-recovery"></a>异地灾难恢复
 
-在 Azure 区域或数据中心遭遇停机的情况下，可以使用异地灾难恢复在其他区域或数据中心进行数据处理，以实现连续运行。 有关详细信息，请参阅 [Azure 服务总线异地灾难恢复](service-bus-geo-dr.md)。
+在 Azure 区域数据中心遭遇停机的情况下，可以使用异地灾难恢复在其他区域或数据中心进行数据处理，以实现连续运行。 有关详细信息，请参阅 [Azure 服务总线异地灾难恢复](service-bus-geo-dr.md)。
 
 ### <a name="security"></a>安全性
 
@@ -117,15 +117,20 @@ Microsoft Azure 服务总线是一种完全托管的企业集成消息中转站�
 
 服务总线与以下 Azure 服务完全集成：
 
-- [逻辑应用](https://www.azure.cn/home/features/logic-apps/) 
-- [函数](/azure-functions/) 
-- [Dynamics 365](https://dynamics.microsoft.com)
-- [流分析](/stream-analytics/)
- 
+* [事件网格](https://www.azure.cn/home/features/event-grid/)
+* [逻辑应用](https://www.azure.cn/home/features/logic-apps/)
+* [Azure Functions](https://www.azure.cn/home/features/azure-functions/)
+* [Dynamics 365](https://dynamics.microsoft.com)
+* [Azure 流分析](https://www.azure.cn/home/features/stream-analytics/)
+
 ## <a name="next-steps"></a>后续步骤
 
 有关服务总线消息传送入门的内容，请参阅以下文章：
 
-* 详细了解 Azure 服务总线的[标准和高级](https://www.azure.cn/pricing/details/service-bus/)层及其定价
-* [Azure 服务总线高级层的性能和延迟](https://blogs.msdn.microsoft.com/servicebus/2016/07/18/premium-messaging-how-fast-is-it/)
-* 尝试 [.NET](service-bus-quickstart-powershell.md)、[Java](service-bus-quickstart-powershell.md) 或 [JMS](service-bus-quickstart-powershell.md) 中的快速入门
+* 若要比较 Azure 消息服务，请参阅服务[服务对比](../event-grid/compare-messaging-services.md?toc=%2fservice-bus-messaging%2ftoc.json&bc=%2fservice-bus-messaging%2fbreadcrumb%2ftoc.json)。
+* 尝试 [.NET](service-bus-dotnet-get-started-with-queues.md)、[Java](service-bus-java-how-to-use-queues.md) 或 [JMS](service-bus-java-how-to-use-jms-api-amqp.md) 的快速入门。
+* 若要管理服务总线资源，请参阅[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer/releases)。
+* 若要详细了解标准和高级层及其定价，请参阅[服务总线定价](https://www.azure.cn/pricing/details/service-bus/)。
+* 若要了解高级层的性能和延迟，请参阅[高级消息传送](https://techcommunity.microsoft.com/t5/Service-Bus-blog/Premium-Messaging-How-fast-is-it/ba-p/370722)。
+
+<!-- Update_Description: update meta properties, wording update, update link -->

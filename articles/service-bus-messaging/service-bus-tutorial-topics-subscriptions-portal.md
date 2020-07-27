@@ -1,25 +1,23 @@
 ---
 title: 使用 Azure 门户和主题/订阅更新清单
 description: 本教程介绍如何从主题和订阅发送和接收消息，以及如何使用 .NET 添加和使用筛选器规则
-services: service-bus-messaging
-author: lingliw
-manager: digimobile
-ms.author: v-tawe
-origin.date: 01/21/2020
-ms.date: 07/01/2020
+author: rockboyfor
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: yes
+ms.testdate: 07/20/2020
+ms.author: v-yeche
 ms.topic: tutorial
-ms.service: service-bus-messaging
-ms.custom: mvc
-ms.openlocfilehash: aa66daa95e3eb3baca2e34785b01b9edc08c7813
-ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
+ms.openlocfilehash: 41c8d4e3886e25dc0dcc8d049428bbcc553e7941
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85796149"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162192"
 ---
 # <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>教程：使用 Azure 门户和主题/订阅更新库存
 
-世纪互联 Azure 服务总线是一种多租户云消息传送服务，可以在应用程序和服务之间发送信息。 异步操作可实现灵活的中转消息传送、结构化的先进先出 (FIFO) 消息传送以及发布/订阅功能。 本教程介绍如何通过 Azure 门户和 .NET 将零售库存方案中的服务总线主题和订阅与发布/订阅渠道配合使用。
+Azure 服务总线是一种多租户云消息传送服务，可以在应用程序和服务之间发送信息。 异步操作可实现灵活的中转消息传送、结构化的先进先出 (FIFO) 消息传送以及发布/订阅功能。 本教程介绍如何通过 Azure 门户和 .NET 将零售库存方案中的服务总线主题和订阅与发布/订阅渠道配合使用。
 
 在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]
@@ -50,8 +48,6 @@ ms.locfileid: "85796149"
 
 [!INCLUDE [service-bus-create-topics-three-subscriptions-portal](../../includes/service-bus-create-topics-three-subscriptions-portal.md)]
 
-
-
 ## <a name="create-filter-rules-on-subscriptions"></a>在订阅上创建筛选规则
 
 预配命名空间和主题/订阅并且拥有所需的凭据后，便可以在订阅上创建筛选规则，然后发送和接收消息。 可以在[此 GitHub 示例文件夹](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters)中检查代码。
@@ -62,9 +58,9 @@ ms.locfileid: "85796149"
 
 1. 在命令提示符或 PowerShell 提示符窗口中发出以下命令，克隆[服务总线 GitHub 存储库](https://github.com/Azure/azure-service-bus/)：
 
-   ```shell
-   git clone https://github.com/Azure/azure-service-bus.git
-   ```
+    ```shell
+    git clone https://github.com/Azure/azure-service-bus.git
+    ```
 
 2. 导航到示例文件夹 `azure-service-bus\samples\DotNet\GettingStarted\BasicSendReceiveTutorialwithFilters`。
 
@@ -72,24 +68,24 @@ ms.locfileid: "85796149"
 
 4. 在命令提示符窗口中键入以下命令：
 
-   ```shell
-   dotnet build
-   ```
+    ```shell
+    dotnet build
+    ```
 
 5. 导航到 `BasicSendReceiveTutorialwithFilters\bin\Debug\netcoreapp2.0` 文件夹。
 
 6. 键入以下命令以运行程序。 请务必将 `myConnectionString` 替换为先前获得的值，将 `myTopicName` 替换为所创建主题的名称：
 
-   ```shell
-   dotnet BasicSendReceiveTutorialwithFilters.dll -ConnectionString "myConnectionString" -TopicName "myTopicName"
-   ``` 
+    ```shell
+    dotnet BasicSendReceiveTutorialwithFilters.dll -ConnectionString "myConnectionString" -TopicName "myTopicName"
+    ``` 
 7. 首先按控制台中的说明选择筛选器创建操作。 在创建筛选器时，其中一项操作是删除默认筛选器。 使用 PowerShell 或 CLI 时，不需删除默认筛选器，但如果是在代码中操作，则必须删除它们。 控制台命令 1 和 3 用于管理以前创建的订阅上的筛选器：
 
-   - 执行操作 1：删除默认筛选器。
-   - 执行操作 2：添加自己的筛选器。
-   - 执行操作 3：（可选）删除自己的筛选器。 请注意，这不会重新创建默认筛选器。
+    - 执行操作 1：删除默认筛选器。
+    - 执行操作 2：添加自己的筛选器。
+    - 执行操作 3：（可选）删除自己的筛选器。 请注意，这不会重新创建默认筛选器。
 
-     ![显示 2 的输出](./media/service-bus-tutorial-topics-subscriptions-portal/create-rules.png)
+    ![显示 2 的输出](./media/service-bus-tutorial-topics-subscriptions-portal/create-rules.png)
 
 8. 创建筛选器以后，即可发送消息。 按 4 即可观察到 10 条消息发送到主题：
 
@@ -422,3 +418,5 @@ private async Task ReceiveMessages(string subscription)
 
 [connection-string]: ./media/service-bus-tutorial-topics-subscriptions-portal/connection-string.png
 [service-bus-flow]: ./media/service-bus-tutorial-topics-subscriptions-portal/about-service-bus-topic.png
+
+<!-- Update_Description: update meta properties, wording update, update link -->

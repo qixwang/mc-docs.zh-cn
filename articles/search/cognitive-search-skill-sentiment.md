@@ -7,18 +7,18 @@ author: luiscabrer
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 11/04/2019
-ms.date: 03/16/2020
-ms.openlocfilehash: 483b0542646509991214eb84845856ba3d20ec9b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 06/17/2020
+ms.date: 07/17/2020
+ms.openlocfilehash: 4cc19151be9a023dc1f1d9a66e5adefb1ac632d5
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78934854"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86472004"
 ---
 # <a name="sentiment-cognitive-skill"></a>情绪认知技能
 
- 情绪技能可沿着一个积极-消极连续统评估非结构化文本，对于每个记录，会返回一个介于 0 和 1 之间的数字评分。 评分接近 1 代表积极的情绪，评分接近 0 代表消极的情绪。 此技能使用认知服务中的[文本分析](https://docs.azure.cn/cognitive-services/text-analytics/overview)提供的机器学习模型。
+情绪技能可沿着一个积极-消极连续统评估非结构化文本，对于每个记录，会返回一个介于 0 和 1 之间的数字评分。 评分接近 1 代表积极的情绪，评分接近 0 代表消极的情绪。 此技能使用认知服务中的[文本分析](https://docs.azure.cn/cognitive-services/text-analytics/overview)提供的机器学习模型。
 
 > [!NOTE]
 > 通过增大处理频率、添加更多文档或添加更多 AI 算法来扩大范围时，需要[附加可计费的认知服务资源](cognitive-search-attach-cognitive-services.md)。 调用认知服务中的 API 以及在 Azure 认知搜索中的文档破解阶段提取图像时，会产生费用。 提取文档中的文本不会产生费用。
@@ -39,20 +39,20 @@ Microsoft.Skills.Text.SentimentSkill
 
 | 参数名称 |                      |
 |----------------|----------------------|
-| defaultLanguageCode | （可选）要应用到未显式指定语言的文档的语言代码。 <br/> 请参阅[支持的语言的完整列表](../cognitive-services/text-analytics/text-analytics-supported-languages.md) |
+| `defaultLanguageCode` | （可选）要应用到未显式指定语言的文档的语言代码。 <br/> 请参阅[支持的语言的完整列表](../cognitive-services/text-analytics/text-analytics-supported-languages.md) |
 
 ## <a name="skill-inputs"></a>技能输入 
 
 | 输入名称 | 说明 |
 |--------------------|-------------|
-| text | 要分析的文本。|
-| languageCode  |  （可选）表示记录的语言的字符串。 如果未指定此属性，则默认值为“en”。 <br/>请参阅[支持的语言的完整列表](../cognitive-services/text-analytics/text-analytics-supported-languages.md)。|
+| `text` | 要分析的文本。|
+| `languageCode`    |  （可选）表示记录的语言的字符串。 如果未指定此属性，则默认值为“en”。 <br/>请参阅[支持的语言的完整列表](../cognitive-services/text-analytics/text-analytics-supported-languages.md)。|
 
 ## <a name="skill-outputs"></a>技能输出
 
 | 输出名称 | 说明 |
 |--------------------|-------------|
-| score | 介于 0 和 1 之间的值，表示所分析的文本的情绪。 值接近 0 代表消极情绪，接近 0.5 代表中性情绪，接近 1 代表积极的情绪。|
+| `score` | 介于 0 和 1 之间的值，表示所分析的文本的情绪。 值接近 0 代表消极情绪，接近 0.5 代表中性情绪，接近 1 代表积极的情绪。|
 
 
 ##  <a name="sample-definition"></a>示例定义
@@ -111,7 +111,7 @@ Microsoft.Skills.Text.SentimentSkill
 }
 ```
 
-## <a name="notes"></a>说明
+## <a name="notes"></a>注释
 如果为空，则不为这些记录返回情绪分数。
 
 ## <a name="error-cases"></a>错误案例

@@ -9,13 +9,13 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 03/16/2020
-ms.openlocfilehash: 2ea1d15c395f77a52fb85553047b4d1d3a84ad47
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 07/17/2020
+ms.openlocfilehash: 0fb712b8a805876c92118ad905de7a9ffc6854fb
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850572"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471970"
 ---
 # <a name="how-to-index-tables-from-azure-table-storage-with-azure-cognitive-search"></a>如何使用 Azure 认知搜索从 Azure 表存储索引表
 
@@ -27,7 +27,7 @@ ms.locfileid: "78850572"
 
 * [Azure 门户](https://portal.azure.cn)
 * Azure 认知搜索 [REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
-* Azure 认知搜索 [.NET SDK](https://aka.ms/search-sdk)
+* Azure 认知搜索 [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)
 
 在这里，我们使用 REST API 演示流。 
 
@@ -50,7 +50,7 @@ ms.locfileid: "78850572"
 
 若要创建数据源，请执行以下操作：
 
-    POST https://[service name].search.azure.cn/datasources?api-version=2019-05-06
+    POST https://[service name].search.azure.cn/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -82,7 +82,7 @@ ms.locfileid: "78850572"
 
 若要创建索引，请执行以下操作：
 
-    POST https://[service name].search.azure.cn/indexes?api-version=2019-05-06
+    POST https://[service name].search.azure.cn/indexes?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -101,7 +101,7 @@ ms.locfileid: "78850572"
 
 创建索引和数据源后，可以创建索引器：
 
-    POST https://[service name].search.azure.cn/indexers?api-version=2019-05-06
+    POST https://[service name].search.azure.cn/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -136,7 +136,7 @@ ms.locfileid: "78850572"
 
 若要指示必须从索引中删除某些文档，可使用软删除策略。 不删除行，而是添加一个属性来指示删除行，并对数据源设置软删除检测策略。 例如，如果某行具有值为 `"true"` 的属性 `IsDeleted`，以下策略会将该行视为已删除：
 
-    PUT https://[service name].search.azure.cn/datasources?api-version=2019-05-06
+    PUT https://[service name].search.azure.cn/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 

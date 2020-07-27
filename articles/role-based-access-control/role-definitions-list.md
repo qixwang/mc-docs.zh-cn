@@ -8,18 +8,18 @@ manager: mtillman
 ms.assetid: 8078f366-a2c4-4fbb-a44b-fc39fd89df81
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/25/2020
+ms.date: 07/21/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
-ms.openlocfilehash: a12ea80693392a6260661c556c9c6a81a824acb1
-ms.sourcegitcommit: 7429daf26cff014b040f69cdae75bdeaea4f4e93
+ms.openlocfilehash: 0184e81f184df99e70994b5ff3e852d82d39c2d1
+ms.sourcegitcommit: d32699135151e98471daebe6d3f5b650f64f826e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83991646"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87160375"
 ---
 # <a name="list-azure-role-definitions"></a>列出 Azure 角色定义
 
@@ -175,50 +175,56 @@ az role definition list
 以下示例列出了所有可用的角色定义的名称和说明：
 
 ```azurecli
-az role definition list --output json | jq '.[] | {"roleName":.roleName, "description":.description}'
+az role definition list --output json --query '[].{roleName:roleName, description:description}'
 ```
 
-```Output
-{
-  "roleName": "API Management Service Contributor",
-  "description": "Can manage service and the APIs"
-}
-{
-  "roleName": "API Management Service Operator Role",
-  "description": "Can manage service but not the APIs"
-}
-{
-  "roleName": "API Management Service Reader Role",
-  "description": "Read-only access to service and APIs"
-}
+```json
+[
+  {
+    "description": "Can manage service and the APIs",
+    "roleName": "API Management Service Contributor"
+  },
+  {
+    "description": "Can manage service but not the APIs",
+    "roleName": "API Management Service Operator Role"
+  },
+  {
+    "description": "Read-only access to service and APIs",
+    "roleName": "API Management Service Reader Role"
+  },
 
-...
+  ...
+
+]
 ```
 
 下面的示例列出了所有内置角色。
 
 ```azurecli
-az role definition list --custom-role-only false --output json | jq '.[] | {"roleName":.roleName, "description":.description, "roleType":.roleType}'
+az role definition list --custom-role-only false --output json --query '[].{roleName:roleName, description:description, roleType:roleType}'
 ```
 
-```Output
-{
-  "roleName": "API Management Service Contributor",
-  "description": "Can manage service and the APIs",
-  "roleType": "BuiltInRole"
-}
-{
-  "roleName": "API Management Service Operator Role",
-  "description": "Can manage service but not the APIs",
-  "roleType": "BuiltInRole"
-}
-{
-  "roleName": "API Management Service Reader Role",
-  "description": "Read-only access to service and APIs",
-  "roleType": "BuiltInRole"
-}
+```json
+[
+  {
+    "description": "Can manage service and the APIs",
+    "roleName": "API Management Service Contributor",
+    "roleType": "BuiltInRole"
+  },
+  {
+    "description": "Can manage service but not the APIs",
+    "roleName": "API Management Service Operator Role",
+    "roleType": "BuiltInRole"
+  },
+  {
+    "description": "Read-only access to service and APIs",
+    "roleName": "API Management Service Reader Role",
+    "roleType": "BuiltInRole"
+  },
+  
+  ...
 
-...
+]
 ```
 
 ### <a name="list-a-role-definition"></a>列出角色定义
@@ -226,7 +232,7 @@ az role definition list --custom-role-only false --output json | jq '.[] | {"rol
 若要列出角色的详细信息，请使用 [az role definition list](/cli/role/definition#az-role-definition-list)。
 
 ```azurecli
-az role definition list --name <role_name>
+az role definition list --name {roleName}
 ```
 
 下面的示例列出了“参与者”角色定义：
@@ -235,27 +241,27 @@ az role definition list --name <role_name>
 az role definition list --name "Contributor"
 ```
 
-```Output
+```json
 [
   {
-    "additionalProperties": {},
     "assignableScopes": [
       "/"
     ],
     "description": "Lets you manage everything except access to resources.",
-    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
+    "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
     "name": "b24988ac-6180-42a0-ab88-20f7382dd24c",
     "permissions": [
       {
         "actions": [
           "*"
         ],
-        "additionalProperties": {},
         "dataActions": [],
         "notActions": [
           "Microsoft.Authorization/*/Delete",
           "Microsoft.Authorization/*/Write",
-          "Microsoft.Authorization/elevateAccess/Action"
+          "Microsoft.Authorization/elevateAccess/Action",
+          "Microsoft.Blueprint/blueprintAssignments/write",
+          "Microsoft.Blueprint/blueprintAssignments/delete"
         ],
         "notDataActions": []
       }
@@ -272,43 +278,53 @@ az role definition list --name "Contributor"
 以下示例仅列出“参与者”角色的“actions”和“notActions”  。
 
 ```azurecli
-az role definition list --name "Contributor" --output json | jq '.[] | {"actions":.permissions[0].actions, "notActions":.permissions[0].notActions}'
+az role definition list --name "Contributor" --output json --query '[].{actions:permissions[0].actions, notActions:permissions[0].notActions}'
 ```
 
-```Output
-{
-  "actions": [
-    "*"
-  ],
-  "notActions": [
-    "Microsoft.Authorization/*/Delete",
-    "Microsoft.Authorization/*/Write",
-    "Microsoft.Authorization/elevateAccess/Action"
-  ]
-}
+```json
+[
+  {
+    "actions": [
+      "*"
+    ],
+    "notActions": [
+      "Microsoft.Authorization/*/Delete",
+      "Microsoft.Authorization/*/Write",
+      "Microsoft.Authorization/elevateAccess/Action",
+      "Microsoft.Blueprint/blueprintAssignments/write",
+      "Microsoft.Blueprint/blueprintAssignments/delete"
+    ]
+  }
+]
 ```
 
 以下示例仅列出了“虚拟机参与者”角色的“actions”。
 
 ```azurecli
-az role definition list --name "Virtual Machine Contributor" --output json | jq '.[] | .permissions[0].actions'
+az role definition list --name "Virtual Machine Contributor" --output json --query '[].permissions[0].actions'
 ```
 
-```Output
+```json
 [
-  "Microsoft.Authorization/*/read",
-  "Microsoft.Compute/availabilitySets/*",
-  "Microsoft.Compute/locations/*",
-  "Microsoft.Compute/virtualMachines/*",
-  "Microsoft.Compute/virtualMachineScaleSets/*",
-  "Microsoft.Insights/alertRules/*",
-  "Microsoft.Network/applicationGateways/backendAddressPools/join/action",
-  "Microsoft.Network/loadBalancers/backendAddressPools/join/action",
+  [
+    "Microsoft.Authorization/*/read",
+    "Microsoft.Compute/availabilitySets/*",
+    "Microsoft.Compute/locations/*",
+    "Microsoft.Compute/virtualMachines/*",
+    "Microsoft.Compute/virtualMachineScaleSets/*",
+    "Microsoft.Compute/disks/write",
+    "Microsoft.Compute/disks/read",
+    "Microsoft.Compute/disks/delete",
+    "Microsoft.DevTestLab/schedules/*",
+    "Microsoft.Insights/alertRules/*",
+    "Microsoft.Network/applicationGateways/backendAddressPools/join/action",
+    "Microsoft.Network/loadBalancers/backendAddressPools/join/action",
 
-  ...
+    ...
 
-  "Microsoft.Storage/storageAccounts/listKeys/action",
-  "Microsoft.Storage/storageAccounts/read"
+    "Microsoft.Storage/storageAccounts/listKeys/action",
+    "Microsoft.Storage/storageAccounts/read"
+  ]
 ]
 ```
 

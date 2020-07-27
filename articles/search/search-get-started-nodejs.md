@@ -8,14 +8,14 @@ ms.author: v-tawe
 ms.devlang: nodejs
 ms.service: cognitive-search
 ms.topic: quickstart
-origin.date: 02/25/2020
-ms.date: 06/09/2020
-ms.openlocfilehash: 032fb3a470aaced4ebec75b11a78d48aafaec721
-ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
+origin.date: 06/23/2020
+ms.date: 07/17/2020
+ms.openlocfilehash: 404c6fe22a24fc93fd221c549937220757866834
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84564369"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471828"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-nodejs-using-rest-apis"></a>快速入门：使用 REST API 在 Node.js 中创建 Azure 认知搜索索引
 > [!div class="op_single_selector"]
@@ -281,7 +281,7 @@ class AzureSearchClient {
         // The query key is used for read-only requests and so can be distributed with less risk of abuse.
         this.queryKey = queryKey;
         this.indexName = indexName;
-        this.apiVersion = '2019-05-06';
+        this.apiVersion = '2020-06-30';
     }
 
     // All methods go inside class body here!
@@ -290,7 +290,7 @@ class AzureSearchClient {
 module.exports = AzureSearchClient;
 ```
 
-该类的第一项责任是了解如何构造要将各种请求发送到的 URL。 通过使用传递给类构造函数的配置数据的实例方法生成这些 URL。 请注意，这些方法构造的 URL 与特定的 API 版本相关，必须包含一个用于指定该版本（在此应用程序中为 `2019-05-06`）的参数。 
+该类的第一项责任是了解如何构造要将各种请求发送到的 URL。 通过使用传递给类构造函数的配置数据的实例方法生成这些 URL。 请注意，这些方法构造的 URL 与特定的 API 版本相关，必须包含一个用于指定该版本（在此应用程序中为 `2020-06-30`）的参数。 
 
 这些方法中的第一个方法将返回索引本身的 URL。 将以下方法添加到类正文中：
 

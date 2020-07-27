@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 03/16/2020
-ms.openlocfilehash: 4b0a1c09cda97f50ca02fcfade217e052a79df2f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 07/20/2020
+ms.openlocfilehash: b80b518f2746aeca7569a4b7161895eb54ad43e9
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850568"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471815"
 ---
 # <a name="how-to-schedule-indexers-in-azure-cognitive-search"></a>如何计划 Azure 认知搜索中的索引器
 
@@ -69,7 +69,7 @@ ms.locfileid: "78850568"
 
 可以使用 REST API 定义索引器的计划。 为此，请在创建或更新索引器时包含 **schedule** 属性。 以下示例演示了用于更新现有索引器的 PUT 请求：
 
-    PUT https://myservice.search.azure.cn/indexers/myindexer?api-version=2019-05-06
+    PUT https://myservice.search.azure.cn/indexers/myindexer?api-version=2020-06-30
     Content-Type: application/json
     api-key: admin-key
 

@@ -1,0 +1,66 @@
+- name: Bastion 文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 关于 Azure Bastion
+      href: bastion-overview.md
+- name: 快速入门
+  items:
+    - name: 通过 VM 设置创建 Bastion 主机
+      href: quickstart-host-portal.md
+- name: 概念
+  items:
+    - name: 利用 Bastion 进行远程工作
+      href: work-remotely-support.md
+- name: 操作指南
+  items:
+    - name: 创建 Bastion 主机
+      items:
+        - name: Azure 门户
+          href: bastion-create-host-portal.md
+        - name: Azure PowerShell
+          href: bastion-create-host-powershell.md
+        - name: Azure CLI
+          href: create-host-cli.md
+    - name: 连接到虚拟机
+      items:
+        - name: SSH (Linux)
+          href: bastion-connect-vm-ssh.md
+        - name: RDP (Windows)
+          href: bastion-connect-vm-rdp.md
+    - name: 连接到虚拟机规模集
+      href: bastion-connect-vm-scale-set.md
+    - name: 用于虚拟机会话
+      items:
+        - name: 复制和粘贴
+          href: bastion-vm-copy-paste.md
+        - name: 全屏视图
+          href: bastion-vm-full-screen.md
+    - name: 使用 NSG
+      href: bastion-nsg.md
+    - name: 配置和访问诊断日志
+      href: diagnostic-logs.md
+    - name: 监视和管理会话
+      href: session-monitoring.md
+    - name: 疑难解答
+      href: troubleshoot.md
+- name: 参考
+  items:
+    - name: Azure PowerShell
+      href: 'https://docs.microsoft.com/powershell/module/az.network'
+    - name: REST
+      href: 'https://docs.microsoft.com/rest/api/virtualnetwork/bastionhosts'
+    - name: Azure CLI
+      href: 'https://docs.microsoft.com/cli/azure/network/bastion?view=azure-cli-latest'
+- name: 资源
+  items:
+    - name: Bastion 常见问题解答
+      href: bastion-faq.md
+    - name: 博客
+      href: 'https://azure.microsoft.com/blog/topics/networking'
+    - name: Azure Q&A 问题页
+      href: 'https://docs.microsoft.com/answers/topics/azure-virtual-network.html'
+    - name: 预览版 SLA
+      href: 'https://www.azure.cn/support/legal/subscription-agreement'
+    - name: SLA
+      href: 'https://www.azure.cn/support/legal/sla'

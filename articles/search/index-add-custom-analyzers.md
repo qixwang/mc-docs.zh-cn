@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 06/05/2020
-ms.date: 07/02/2020
-ms.openlocfilehash: 1a9c71057449f978978160a8f0b15557c5220c9b
-ms.sourcegitcommit: 5afd7c4c3be9b80c4c67ec55f66fcf347aad74c6
+ms.date: 07/17/2020
+ms.openlocfilehash: 187509ee5f0930c5fd741614ce30c8bf7df786d8
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85942577"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471996"
 ---
 # <a name="add-custom-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>向 Azure 认知搜索索引中的字符串字段添加自定义分析器
 

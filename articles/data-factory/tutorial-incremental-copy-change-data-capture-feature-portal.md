@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: ''
 origin.date: 05/04/2020
-ms.date: 06/29/2020
-ms.openlocfilehash: dd926d36259f6059b160e38c9bc6f9974d411220
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+ms.date: 07/27/2020
+ms.openlocfilehash: d45890dc8e92848f84bf51def3c12d121fcad5b4
+ms.sourcegitcommit: 0eaa82cf74477d26d06bdd8fb6e715e6ed1339c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323586"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86974281"
 ---
 # <a name="incrementally-load-data-from-azure-sql-managed-instance-to-azure-storage-using-change-data-capture-cdc"></a>使用变更数据捕获 (CDC)，以增量方式将 Azure SQL 托管实例中的数据加载到 Azure 存储
 
@@ -56,7 +56,8 @@ ms.locfileid: "85323586"
 * **Azure SQL 数据库托管实例**。 将数据库用作**源**数据存储。 如果没有 Azure SQL 数据库托管实例，请参阅[创建 Azure SQL 数据库托管实例](/sql-database/sql-database-managed-instance-get-started)一文获取创建步骤。
 * **Azure 存储帐户**。 将 Blob 存储用作**接收器**数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-account-create.md)一文获取创建步骤。 创建名为“raw”的容器。 
 
-### <a name="create-a-data-source-table-in-your-azure-sql-database"></a>在 Azure SQL 数据库中创建数据源表
+### <a name="create-a-data-source-table-in-azure-sql-database"></a>在 Azure SQL 数据库中创建数据源表
+
 1. 启动 **SQL Server Management Studio**，然后连接到 Azure SQL 托管实例服务器。
 2. 在“服务器资源管理器”中，右键单击你的**数据库**，然后选择“新建查询”。
 3. 针对 Azure SQL 托管实例数据库运行以下 SQL 命令，以创建名为 `customers` 的表作为数据源存储。  
@@ -124,7 +125,7 @@ ms.locfileid: "85323586"
     若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。  
 5. 选择数据工厂的**位置**。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 6. 取消选中“启用 GIT”。     
-7. 单击**创建**。
+7. 单击“创建”。
 8. 部署完成后，单击“转到资源”
 
    ![数据工厂主页](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-deploy-complete.png)
@@ -132,7 +133,7 @@ ms.locfileid: "85323586"
 
    ![数据工厂主页](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-home-page.png)
 10. 单击“创作和监视”磁贴，在单独的选项卡中启动 Azure 数据工厂用户界面 (UI)。
-11. 在“入门”页的左侧面板中，切换到“编辑”选项卡，如下图所示： 
+11. 在“入门”页的左侧面板中，切换到“编辑”选项卡，如下图所示：
 
     ![“创建管道”按钮](./media/tutorial-incremental-copy-change-data-capture-feature-portal/get-started-page.png)
 
@@ -145,14 +146,14 @@ ms.locfileid: "85323586"
 1. 依次单击“连接”、“+ 新建”。 
 
    ![“新建连接”按钮](./media/tutorial-incremental-copy-change-data-capture-feature-portal/new-connection-button-storage.png)
-2. 在“新建链接服务”窗口中，选择“Azure Blob 存储”，然后单击“继续”。  
+2. 在“新建链接服务”窗口中，选择“Azure Blob 存储”，然后单击“继续”。
 
    ![选择“Azure Blob 存储”](./media/tutorial-incremental-copy-change-data-capture-feature-portal/select-azure-storage.png)
-3. 在“新建链接服务”窗口中执行以下步骤：
+3. 在“新建链接服务”  窗口中执行以下步骤：
 
    1. 输入 **AzureStorageLinkedService** 作为**名称**。
    2. 对于“存储帐户名称”，请选择自己的 Azure 存储帐户。
-   3. 单击“保存” 。
+   3. 单击“ **保存**”。
 
    ![Azure 存储帐户设置](./media/tutorial-incremental-copy-change-data-capture-feature-portal/azure-storage-linked-service-settings.png)
 
@@ -163,7 +164,7 @@ ms.locfileid: "85323586"
 > [!NOTE]
 > 对于使用 SQL MI 的用户，请参阅[此文](/data-factory/connector-azure-sql-database-managed-instance#prerequisites)以获取通过公共终结点进行访问的相关信息。 
 
-1. 依次单击“连接”、“+ 新建”。 
+1. 依次单击“连接”、“+ 新建”。
 2. 在“新建链接服务”窗口中，选择“Azure SQL 数据库托管实例”，然后单击“继续”。
 3. 在“新建链接服务”窗口中执行以下步骤：
 
@@ -183,7 +184,7 @@ ms.locfileid: "85323586"
 ### <a name="create-a-dataset-to-represent-source-data"></a>创建用于表示源数据的数据集
 在此步骤中，请创建一个代表源数据的数据集。
 
-1. 在树状视图中，依次单击“+”（加号）、“数据集”。 
+1. 在树状视图中，依次单击“+”（加号）、“数据集”。
 
    ![“新建数据集”菜单](./media/tutorial-incremental-copy-change-data-capture-feature-portal/new-dataset-menu.png)
 2. 选择“Azure SQL 数据库托管实例”，然后单击“继续”。
@@ -200,7 +201,7 @@ ms.locfileid: "85323586"
 ### <a name="create-a-dataset-to-represent-data-copied-to-sink-data-store"></a>创建一个数据集，用于表示复制到接收器数据存储的数据。
 在此步骤中，请创建一个数据集，代表从源数据存储复制的数据。 在执行先决条件中的步骤时，你已在 Azure Blob 存储中创建了 Data Lake 容器。 创建容器（如果不存在），或者将容器设置为现有容器的名称。 在本教程中，输出文件名是使用触发器时间动态生成的，稍后将对其进行配置。
 
-1. 在树状视图中，依次单击“+”（加号）、“数据集”。 
+1. 在树状视图中，依次单击“+”（加号）、“数据集”。
 
    ![“新建数据集”菜单](./media/tutorial-incremental-copy-change-data-capture-feature-portal/new-dataset-menu.png)
 2. 选择“Azure Blob 存储”，然后单击“继续”。
@@ -211,7 +212,7 @@ ms.locfileid: "85323586"
    ![接收器数据集格式 - DelimitedText](./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-format.png)
 4. 在“设置属性”选项卡中，设置数据集名称和连接信息：
 
-   1. 为“链接服务”选择“AzureStorageLinkedService”。 
+   1. 为“链接服务”选择“AzureStorageLinkedService”。
    2. 输入“raw”作为“文件路径”的“容器”部分。
    3. 启用“第一行作为标题”
    4. 单击“确定”
@@ -221,7 +222,7 @@ ms.locfileid: "85323586"
 ## <a name="create-a-pipeline-to-copy-the-changed-data"></a>创建复制已更改数据的管道
 在此步骤中，将创建管道，该管道首先使用**查找活动**检查 change 表中存在的已更改记录的数量。 “IF 条件”活动检查已更改记录的数量是否大于零，然后运行**复制活动**以将插入/更新/删除的数据从 Azure SQL 数据库复制到 Azure Blob 存储。 最后，配置翻转窗口触发器，并且开始和结束时间将传递给活动作为开始和结束窗口参数。 
 
-1. 在数据工厂 UI 中，切换到“编辑”选项卡。依次单击左窗格中的“+”（加号）、“管道”。 
+1. 在数据工厂 UI 中，切换到“编辑”选项卡。依次单击左窗格中的“+”（加号）、“管道”。
 
     ![“新建管道”菜单](./media/tutorial-incremental-copy-change-data-capture-feature-portal/new-pipeline-menu.png)
 2. 此时会显示用于配置管道的新选项卡。 树状视图中也会显示管道。 在“属性”窗口中，将管道的名称更改为 **IncrementalCopyPipeline**。
@@ -272,10 +273,10 @@ ms.locfileid: "85323586"
 9. 接下来，返回到 True 条件步骤，并删除“等待”活动。 在“活动”工具箱中，展开“移动和转换”，然后将“复制”活动拖放到管道设计器图面。 将活动的名称设置为 **IncrementalCopyActivity**。 
 
    ![复制活动 - 名称](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-source-name.png)
-10. 在“属性”窗口中切换到“源”选项卡，然后执行以下步骤： 
+10. 在“属性”窗口中切换到“源”选项卡，然后执行以下步骤：
 
    1. 对于**源数据集**字段，请指定 SQL MI 数据集名称。 
-   2. 为“使用查询”选择“查询”。 
+   2. 为“使用查询”选择“查询”。
    3. 为“查询”输入以下内容。
 
     ```sql

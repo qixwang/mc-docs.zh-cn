@@ -9,20 +9,20 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
 origin.date: 02/10/2020
-ms.date: 03/02/2020
-ms.openlocfilehash: 03eef616143f0d8e5441b1a73ee3767fb2482328
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 07/17/2020
+ms.openlocfilehash: 66a2e738f79164d3be42c69afaefc4f27abf33e9
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850576"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471825"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-postman-using-rest-apis"></a>快速入门：使用 REST API 在 Postman 中创建 Azure 认知搜索索引
 > [!div class="op_single_selector"]
 > * [Postman](search-get-started-postman.md)
 > * [C#](search-create-index-dotnet.md)
 > * [Python](search-get-started-python.md)
-> * [Portal](search-get-started-portal.md)
+> * [门户](search-get-started-portal.md)
 > * [PowerShell](search-howto-dotnet-sdk.md)
 >*
 
@@ -58,9 +58,9 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 使用任一工具都需要选择一个命令（GET、POST、PUT 等）并提供 URL 终结点；对于某些任务，需要在请求正文中提供 JSON。 将搜索服务名称 (YOUR-SEARCH-SERVICE-NAME) 替换为一个有效值。 添加 `$select=name` 以便仅返回每个索引的名称。 
 
-    https://<YOUR-SEARCH-SERVICE-NAME>.search.azure.cn/indexes?api-version=2019-05-06&$select=name
+    https://<YOUR-SEARCH-SERVICE-NAME>.search.azure.cn/indexes?api-version=2020-06-30&$select=name
 
-请注意 HTTPS 前缀、服务的名称、对象（在本例中为索引集合）的名称和 [api-version](search-api-versions.md)。 api-version 是必需的小写字符串；对于当前版本，它指定为 `?api-version=2019-05-06`。 API 版本定期更新。 将 api-version 包括在每个请求中即可完全控制要使用的版本。  
+请注意 HTTPS 前缀、服务的名称、对象（在本例中为索引集合）的名称和 [api-version](search-api-versions.md)。 api-version 是必需的小写字符串；对于当前版本，它指定为 `?api-version=2020-06-30`。 API 版本定期更新。 将 api-version 包括在每个请求中即可完全控制要使用的版本。  
 
 请求标头组合包括两个元素：内容类型，以及用于在 Azure 认知搜索中进行身份验证的 api-key。 将管理员 API 密钥 (YOUR-AZURE-SEARCH-ADMIN-API-KEY) 替换为一个有效值。 
 
@@ -81,7 +81,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 1. 将谓词更改为“PUT”。 
 
-2. 复制此 URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.azure.cn/indexes/hotels-quickstart?api-version=2019-05-06`。
+2. 复制此 URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.azure.cn/indexes/hotels-quickstart?api-version=2020-06-30`。
 
 3. 在请求正文中提供索引定义（下方提供了可直接复制的代码）。
 
@@ -135,7 +135,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 1. 将谓词更改为  POST。
 
-2. 复制此 URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.azure.cn/indexes/hotels-quickstart/docs/index?api-version=2019-05-06`。
+2. 复制此 URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.azure.cn/indexes/hotels-quickstart/docs/index?api-version=2020-06-30`。
 
 3. 在请求的正文中提供 JSON 文档（复制就绪代码如下）。
 
@@ -256,7 +256,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
  ![使用 URL 上的搜索字符串 GET](media/search-get-started-postman/postman-query.png "使用 URL 上的搜索字符串 GET")
 
-请尝试其他几个查询示例，以大致了解语法。 可以执行字符串搜索、原义 $filter 查询、限制结果集、将搜索范围限定为特定的字段，等待。
+尝试其他查询示例来了解语法。 你可以执行字符串搜索、逐字筛选查询、限制结果集、将搜索范围限定为特定字段等。
 
 将当前 URL 替换为以下 URL，并每次单击“发送”以查看结果  。
 
@@ -280,7 +280,7 @@ https://<YOUR-SEARCH-SERVICE>.search.azure.cn/indexes/hotels-quickstart/docs?sea
 还可以使用[获取统计信息](https://docs.microsoft.com/rest/api/searchservice/get-index-statistics)来查询文档计数和索引大小： 
 
 ```
-https://<YOUR-SEARCH-SERVICE-NAME>.search.azure.cn/indexes/hotels-quickstart/stats?api-version=2019-05-06
+https://<YOUR-SEARCH-SERVICE-NAME>.search.azure.cn/indexes/hotels-quickstart/stats?api-version=2020-06-30
 ```
 
 向 URL 添加 `/stats` 会返回索引信息。 在 Postman 中，请求应如下所示，响应包括文档计数和所用空间（以字节为单位）。

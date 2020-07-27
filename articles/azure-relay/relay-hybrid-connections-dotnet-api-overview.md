@@ -1,31 +1,24 @@
 ---
 title: Azure 中继 .NET Standard API 概述
 description: 本文总结了 Azure 中继混合连接 .NET 标准 API 的一些关键技术。
-services: service-bus-relay
-documentationcenter: na
-author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: b1da9ac1-811b-4df7-a22c-ccd013405c40
-ms.service: service-bus-relay
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-origin.date: 01/23/2018
-ms.date: 09/26/2019
-ms.author: v-lingwu
-ms.openlocfilehash: 2e82d73153f2f22748946f2c4fffb37c924b1223
-ms.sourcegitcommit: cada23b6400453ff9c08cfb08393e635e2fddac1
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: ''
+ms.author: v-yeche
+author: rockboyfor
+ms.openlocfilehash: be5fa05259480076a081cb4a432fe31d3dc26a99
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83734648"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162414"
 ---
 # <a name="azure-relay-hybrid-connections-net-standard-api-overview"></a>Azure 中继混合连接 .NET 标准 API 概述
 
-本文汇总了一些重要的 Azure 中继混合连接 .NET 标准[客户端 API](https://docs.azure.cn/dotnet/api/microsoft.azure.relay)。
-  
+本文汇总了一些重要的 Azure 中继混合连接 .NET 标准[客户端 API](https://docs.azure.cn/dotnet/api/microsoft.azure.relay?view=azure-dotnet)。
+
 ## <a name="relay-connection-string-builder-class"></a>中继连接字符串生成器类
 
 [RelayConnectionStringBuilder][RelayConnectionStringBuilder] 类对特定于中继混合连接的连接字符串进行格式设置。 该类可用于验证连接字符串的格式或从头开始生成连接字符串。 有关示例，请参阅以下代码：
@@ -140,7 +133,7 @@ await textWriter.WriteLineAsync("hello");
 
 若要了解有关 Azure 中继的详细信息，请访问以下链接：
 
-* [Microsoft.Azure.Relay reference](https://docs.azure.cn/dotnet/api/microsoft.azure.relay)
+* [Microsoft.Azure.Relay reference](https://docs.azure.cn/dotnet/api/microsoft.azure.relay?view=azure-dotnet)
 * [什么是 Azure 中继？](relay-what-is-it.md)
 * [可用的中继 API](relay-api-overview.md)
 
@@ -148,3 +141,5 @@ await textWriter.WriteLineAsync("hello");
 [HCStream]: https://docs.azure.cn/dotnet/api/microsoft.azure.relay.hybridconnectionstream
 [HCClient]: https://docs.azure.cn/dotnet/api/microsoft.azure.relay.hybridconnectionclient
 [HCListener]: https://docs.azure.cn/dotnet/api/microsoft.azure.relay.hybridconnectionlistener
+
+<!-- Update_Description: update meta properties, wording update, update link-->

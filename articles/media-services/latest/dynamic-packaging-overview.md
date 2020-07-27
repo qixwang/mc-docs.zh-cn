@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-origin.date: 03/17/2020
-ms.date: 07/06/2020
+origin.date: 06/11/2020
+ms.date: 07/27/2020
 ms.author: v-jay
-ms.openlocfilehash: 202c648e27cf68a6cfa27838e3654ad2c1b6fc62
-ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
+ms.openlocfilehash: ae41bb28b6000fddf3397362b3ebcd44a17c61f1
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85845745"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162141"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>媒体服务 v3 中的动态打包
 
@@ -138,9 +138,9 @@ Azure 媒体服务可用于对许多媒体源文件格式进行编码。 它通�
 
 * [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding)（AAC-LC、HE-AAC v1 或 HE-AAC v2）
 * [Dolby Digital Plus](https://en.wikipedia.org/wiki/Dolby_Digital_Plus)（增强型 AC-3 或 E-AC3）
-* Dolby Atmos<br />
-   流式处理 Dolby Atmos 内容支持 MPEG-DASH 协议等标准，包括采用公共流式处理格式 (CSF) 或公共媒体应用程序格式 (CMAF) 分段的 MP4，以及通过具有 CMAF 的 HTTP Live Streaming (HLS)。
+* Dolby Atmos
 
+   流式处理 Dolby Atmos 内容支持 MPEG-DASH 协议等标准，包括采用公共流式处理格式 (CSF) 或公共媒体应用程序格式 (CMAF) 分段的 MP4，以及通过具有 CMAF 的 HTTP Live Streaming (HLS)。
 * [DTS](https://en.wikipedia.org/wiki/DTS_%28sound_system%29)<br />
    DASH-CSF、DASH-CMAF、HLS-M2TS 和 HLS-CMAF 打包格式支持的 DTS 编解码器包括：  
 
@@ -151,12 +151,20 @@ Azure 媒体服务可用于对许多媒体源文件格式进行编码。 它通�
 
 动态打包支持使用 DASH 或 HLS（版本 4 或更高版本）的多音轨，用于流式传输包含使用多个编解码器和语言的多音轨的资产。
 
-### <a name="additional-notes"></a>附加说明
+### <a name="limitations"></a>限制
 
-动态打包不支持包含 [Dolby Digital](https://en.wikipedia.org/wiki/Dolby_Digital) (AC3) 音频（它是旧编解码器）的文件。
+#### <a name="ios-limitation-on-aac-51-audio"></a>AAC 5.1 音频上的 iOS 限制
+
+Apple iOS 设备不支持 5.1 AAC 音频编解码器。 必须使用 Dolby Digital 或 Dolby Digital Plus 编解码器对多通道音频进行编码。
+
+有关详细信息，请参阅[适用于 Apple 设备的 HLS 创作规范](https://developer.apple.com/documentation/http_live_streaming/hls_authoring_specification_for_apple_devices)。
 
 > [!NOTE]
-> [高级编码器](/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow)支持通过旧版 v2 API 编码为 Dolby Digital Plus。
+> 媒体服务不支持 Dolby Digital、Dolby Digital Plus 或 Dolby Atmos 多通道音频格式的 Dolby Digital Plus 编码。
+
+#### <a name="dolby-digital-audio"></a>Dolby Digital 音频
+
+媒体服务动态打包目前不支持包含 [Dolby Digital](https://en.wikipedia.org/wiki/Dolby_Digital) (AC3) 音频（因为这被视为 Dolby 遗留的编解码器）的文件。
 
 ## <a name="manifests"></a>清单
 

@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 12/17/2019
-ms.date: 03/16/2020
-ms.openlocfilehash: 4c40820597c9381a33764d4b6519ffdd11381774
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 07/17/2020
+ms.openlocfilehash: 6b8faca368c95c0b0f3e52930228ebf153472fa5
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497201"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86472060"
 ---
 # <a name="attach-a-cognitive-services-resource-to-a-skillset-in-azure-cognitive-search"></a>将认知服务资源附加到 Azure 认知搜索中的技能组 
 
@@ -114,7 +114,7 @@ Azure 认知搜索依赖于认知服务，这包括用于图像分析和光学�
 以下示例演示了此模式。 请注意定义末尾的 `cognitiveServices` 节。
 
 ```http
-PUT https://[servicename].search.azure.cn/skillsets/[skillset name]?api-version=2019-05-06
+PUT https://[servicename].search.azure.cn/skillsets/[skillset name]?api-version=2020-06-30
 api-key: [admin key]
 Content-Type: application/json
 ```

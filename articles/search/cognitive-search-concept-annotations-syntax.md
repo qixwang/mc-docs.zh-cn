@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 03/16/2020
-ms.openlocfilehash: 43eece4176bbe838ddd2b365dff854f554250777
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 1810b65a0672a3d9d1c60c8c3c5e87e150e121e7
+ms.sourcegitcommit: 5656c18d7d2faa09329b1a15e352d1622e252d5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78934869"
+ms.lasthandoff: 07/21/2020
+ms.locfileid: "86862819"
 ---
 # <a name="how-to-reference-annotations-in-an-azure-cognitive-search-skillset"></a>如何在 Azure 认知搜索技能组中引用注释
 
@@ -70,7 +70,7 @@ ms.locfileid: "78934869"
   {
     "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
     "description": "Fictitious skill that gets the last name from a full name",
-    "uri": "http://names.azurewebsites.net/api/GetLastName",
+    "uri": "http://names.chinacloudsites.cn/api/GetLastName",
     "context" : "/document/people/*",
     "defaultLanguageCode": "en",
     "inputs": [
@@ -102,7 +102,7 @@ ms.locfileid: "78934869"
   {
     "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
     "description": "Fictitious skill that gets the most common string from an array of strings",
-    "uri": "http://names.azurewebsites.net/api/MostCommonString",
+    "uri": "http://names.chinacloudsites.cn/api/MostCommonString",
     "context" : "/document",
     "inputs": [
       {

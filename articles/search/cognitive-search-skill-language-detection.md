@@ -7,14 +7,14 @@ author: luiscabrer
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 11/04/2019
-ms.date: 03/16/2020
-ms.openlocfilehash: b4ac5462dc4dd3bdd429996438d099681ff0f695
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 06/17/2020
+ms.date: 07/17/2020
+ms.openlocfilehash: a45577bad04f8e0aa37da10d6133fa327ce171b1
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78934848"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86472008"
 ---
 #   <a name="language-detection-cognitive-skill"></a>语言检测认知技能
 
@@ -42,15 +42,15 @@ Microsoft.Skills.Text.LanguageDetectionSkill
 
 | 输入     | 说明 |
 |--------------------|-------------|
-| text | 要分析的文本。|
+| `text` | 要分析的文本。|
 
 ## <a name="skill-outputs"></a>技能输出
 
 | 输出名称    | 说明 |
 |--------------------|-------------|
-| languageCode | 标识语言的 ISO 6391 语言代码。 例如，“en”。 |
-| languageName | 语言的名称。 例如，“英语”。 |
-| score | 一个介于 0 和 1 之间的值。 正确标识语言的可能性。 如果句子中有混合语言，得分可能会低于 1。  |
+| `languageCode` | 标识语言的 ISO 6391 语言代码。 例如，“en”。 |
+| `languageName` | 语言的名称。 例如，“英语”。 |
+| `score` | 一个介于 0 和 1 之间的值。 正确标识语言的可能性。 如果句子中有混合语言，得分可能会低于 1。  |
 
 ##  <a name="sample-definition"></a>示例定义
 

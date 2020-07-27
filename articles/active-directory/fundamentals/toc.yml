@@ -19,6 +19,10 @@
   items:
     - name: 安全性
       items:
+        - name: 启用 MFA
+          href: concept-fundamentals-mfa-get-started.md
+        - name: 安全默认值
+          href: concept-fundamentals-security-defaults.md
         - name: 保护远程辅助角色
           href: concept-secure-remote-workers.md
         - name: 连续访问评估

@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 03/18/2019
-ms.date: 09/23/2019
+ms.date: 07/27/2020
 ms.author: v-jay
-ms.openlocfilehash: 5f6ddfd387d40f18e07e624301dd80466fabbe9f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ac0a565e2e53c431a701b0081778ce41dbc18cc5
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "71124520"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162245"
 ---
 # <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>如何使 Media Encoder Standard 通过 .NET 来生成缩略图 
 
@@ -409,9 +409,12 @@ ms.locfileid: "71124520"
 * 创建编码作业。
 * 获取对 Media Encoder Standard 编码器的引用。
 * 加载预设 [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) 或 [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json)，其中包含生成缩略图所需的编码预设和信息。 可以在某一文件中保存此 [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) 或 [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json)，并使用以下代码来加载该文件。
-  
-        // Load the XML (or JSON) from the local file.
-        string configuration = File.ReadAllText(fileName);  
+
+    ```csharp
+    // Load the XML (or JSON) from the local file.
+    string configuration = File.ReadAllText(fileName);  
+    ```
+
 * 将一个编码任务添加到该作业。 
 * 指定要编码的输入资产。
 * 创建包含所编码资产的输出资产。

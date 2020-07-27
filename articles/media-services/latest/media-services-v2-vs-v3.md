@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
 origin.date: 03/09/2020
-ms.date: 04/06/2020
+ms.date: 07/27/2020
 ms.author: v-jay
-ms.openlocfilehash: 23fc373df63f6df2e8d31dc97ee87f84ae7967d2
-ms.sourcegitcommit: 1f890a4085e184cc678485d05f08dd6de8dc973f
+ms.openlocfilehash: 8be60fbcd9401e88ca2b7249f1584b10785754d1
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84438929"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162183"
 ---
 # <a name="media-services-v2-vs-v3"></a>媒体服务 v2 与 v3
 
@@ -38,6 +38,7 @@ ms.locfileid: "84438929"
 * v3 中不存在实体 AssetFile、AccessPolicy 和 Ingestmanifest。
 * v3 中不存在 IAsset.ParentAssets 属性。
 * 现在，Contentkey 不再是实体，而是流式处理定位符的一个属性。
+* 事件网格支持替换 NotificationEndpoint。
 * 以下实体已重命名
     * 作业输出取代了任务，现在是作业的一部分。
     * 流式处理定位符取代了定位符。

@@ -1,26 +1,20 @@
 ---
 title: Azure 服务总线管理库 | Azure
 description: 本文介绍如何使用 Azure 服务总线管理库动态预配服务总线命名空间和实体。
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-origin.date: 01/24/2020
-ms.date: 2/6/2020
-ms.author: v-lingwu
-ms.openlocfilehash: 639ef9f459a6713c55c9b7dd97510e2390a9d425
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: yes
+ms.testdate: 07/20/2020
+ms.author: v-yeche
+author: rockboyfor
+ms.openlocfilehash: 09cca43dfa40ba98d5f4cec692598bf9b13df651
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796804"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162431"
 ---
 # <a name="service-bus-management-libraries"></a>服务总线管理库
 
@@ -41,7 +35,7 @@ Azure 服务总线管理库可以动态预配服务总线命名空间和实体�
 * [使用 Azure PowerShell 创建服务主体来访问资源](/azure-resource-manager/resource-group-authenticate-service-principal)
 * [使用 Azure CLI 创建服务主体来访问资源](/azure-resource-manager/resource-group-authenticate-service-principal-cli)
 
-这些教程提供 `AppId`（客户端 ID）、`TenantId` 和 `ClientSecret`（身份验证密钥），这些都将用于管理库进行的身份验证。 对于用于运行的资源组，需要至少具有 [Azure 服务总线数据所有者](/role-based-access-control/built-in-roles.md#azure-service-bus-data-owner)或[参与者](/role-based-access-control/built-in-roles.md#contributor)权限 。
+这些教程提供 `AppId`（客户端 ID）、`TenantId` 和 `ClientSecret`（身份验证密钥），这些都将用于管理库进行的身份验证。 对于用于运行的资源组，需要至少具有 [Azure 服务总线数据所有者](/role-based-access-control/built-in-roles#azure-service-bus-data-owner)或[参与者](/role-based-access-control/built-in-roles#contributor)权限 。
 
 ## <a name="programming-pattern"></a>编程模式
 
@@ -51,31 +45,31 @@ Azure 服务总线管理库可以动态预配服务总线命名空间和实体�
     ```csharp
     var context = new AuthenticationContext($"https://login.chinacloudapi.cn/{tenantId}");
 
-   var result = await context.AcquireTokenAsync("https://management.core.chinacloudapi.cn/", new ClientCredential(clientId, clientSecret));
-   ```
+    var result = await context.AcquireTokenAsync("https://management.chinacloudapi.cn/", new ClientCredential(clientId, clientSecret));
+    ```
 2. 创建 `ServiceBusManagementClient` 对象：
 
-   ```csharp
-   var creds = new TokenCredentials(token);
-   var sbClient = new ServiceBusManagementClient(creds)
-   {
-       SubscriptionId = SettingsCache["SubscriptionId"]
-   };
-   ```
+    ```csharp
+    var creds = new TokenCredentials(token);
+    var sbClient = new ServiceBusManagementClient(creds)
+    {
+        SubscriptionId = SettingsCache["SubscriptionId"]
+    };
+    ```
 3. 将 `CreateOrUpdate` 参数设置为指定值：
 
-   ```csharp
-   var queueParams = new QueueCreateOrUpdateParameters()
-   {
-       Location = SettingsCache["DataCenterLocation"],
-       EnablePartitioning = true
-   };
-   ```
+    ```csharp
+    var queueParams = new QueueCreateOrUpdateParameters()
+    {
+        Location = SettingsCache["DataCenterLocation"],
+        EnablePartitioning = true
+    };
+    ```
 4. 执行调用：
 
-   ```csharp
-   await sbClient.Queues.CreateOrUpdateAsync(resourceGroupName, namespaceName, QueueName, queueParams);
-   ```
+    ```csharp
+    await sbClient.Queues.CreateOrUpdateAsync(resourceGroupName, namespaceName, QueueName, queueParams);
+    ```
 
 ## <a name="complete-code-to-create-a-queue"></a>完成创建队列的代码
 下面是创建服务总线队列的完整代码： 
@@ -169,3 +163,5 @@ namespace SBusADApp
 
 ## <a name="next-steps"></a>后续步骤
 [Microsoft.Azure.Management.ServiceBus API 参考](https://docs.azure.cn/dotnet/api/Microsoft.Azure.Management.ServiceBus?view=azure-dotnet)
+
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: tutorial
-origin.date: 02/10/2020
-ms.date: 06/09/2020
-ms.openlocfilehash: a88ef2427aa54cbf41dba238793720347453323d
-ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
+origin.date: 06/20/2020
+ms.date: 07/20/2020
+ms.openlocfilehash: 7c784c1356b60d84e872759336f3b90087710800
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84564351"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471927"
 ---
 # <a name="tutorial-order-search-results-using-the-net-sdk"></a>教程：使用 .NET SDK 对搜索结果排序
 

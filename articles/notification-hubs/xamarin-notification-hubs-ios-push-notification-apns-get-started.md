@@ -6,8 +6,6 @@ keywords: ios 推送通知, 推送消息, 推送通知, 推送消息
 documentationcenter: xamarin
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: 4d4dfd42-c5a5-4360-9d70-7812f96924d2
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-ios
@@ -15,16 +13,16 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
 origin.date: 12/05/2019
-ms.date: 04/20/2020
+ms.date: 07/21/2020
 ms.author: v-tawe
 ms.reviewer: jowargo
 ms.lastreviewed: 05/23/2019
-ms.openlocfilehash: b4e57ed3cc0fbf75c098b2ac13cf99e15ae2593d
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.openlocfilehash: 954a630fcd5c040951b67c8b5e8d7176a8d7fd6c
+ms.sourcegitcommit: 5656c18d7d2faa09329b1a15e352d1622e252d5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588524"
+ms.lasthandoff: 07/21/2020
+ms.locfileid: "86862816"
 ---
 # <a name="tutorial-send-push-notifications-to-xamarinios-apps-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向 Xamarin.iOS 应用发送推送通知
 
@@ -54,7 +52,7 @@ ms.locfileid: "82588524"
 * [Visual Studio for Mac]
   
   > [!NOTE]
-  > 由于 iOS 推送通知配置要求，你必须在物理 iOS 设备（iPhone 或 iPad）而不是在模拟器上部署和测试示例应用程序。
+  > 由于 iOS 推送通知配置要求，必须在物理 iOS 设备（iPhone 或 iPad）而不是在模拟器上部署和测试示例应用程序。
 
 只有在完成本教程后，才能完成有关 Xamarin iOS 应用的所有其他通知中心教程。
 
@@ -211,7 +209,7 @@ ms.locfileid: "82588524"
 
 ![Azure 门户 - 测试性发送][30]
 
-通常，推送通知是在后端服务（例如，Mobile Apps，或者使用兼容库的 ASP.NET）中发送的。 如果后端没有可用库，也可使用 REST API 直接发送通知消息。
+通常，推送通知是在后端服务（例如，移动应用，或者使用兼容库的 ASP.NET）中发送的。 如果后端没有可用库，也可使用 REST API 直接发送通知消息。
 
 ## <a name="next-steps"></a>后续步骤
 

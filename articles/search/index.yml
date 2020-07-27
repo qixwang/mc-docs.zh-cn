@@ -11,13 +11,13 @@ metadata:
   author: HeidiSteen
   ms.author: v-tawe
   origin.date: 02/25/2020
-  ms.date: 06/09/2020
-  ms.openlocfilehash: 3efe7d26bbb0bcae618893e7cb12068871830b28
-  ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
+  ms.date: 07/17/2020
+  ms.openlocfilehash: 3cc50b5bf5cf498df054d3bdb6d7e30d66671cdb
+  ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/09/2020
-  ms.locfileid: "84564236"
+  ms.lasthandoff: 07/20/2020
+  ms.locfileid: "86471833"
 landingContent:
 - title: 关于认知搜索
   linkLists:
@@ -51,7 +51,7 @@ landingContent:
       url: search-create-service-portal.md
     - text: 创建索引
       url: search-get-started-portal.md
-    - text: 创建应用
+    - text: 创建演示应用
       url: search-create-app-portal.md
     - text: 从图像和应用文件中提取文本
       url: cognitive-search-quickstart-blob.md

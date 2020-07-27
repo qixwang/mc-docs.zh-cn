@@ -12,14 +12,14 @@ ms.service: cloud-services
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 04/26/2020
+ms.date: 07/20/2020
 ms.author: v-junlch
-ms.openlocfilehash: 9223383a2f9a5f3c4654dc9a175ffb787dd46ae6
-ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
+ms.openlocfilehash: b14776e5a44e2de626f58dae36f946caa77d32c2
+ms.sourcegitcommit: d32699135151e98471daebe6d3f5b650f64f826e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82267548"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87160368"
 ---
 # <a name="common-issues-that-cause-roles-to-recycle"></a>导致角色回收的常见问题
 本文讨论部署问题的一些常见原因，并提供故障排除技巧以帮助你解决这些问题。 角色实例无法启动，或者在“正在初始化”、“忙”和“正在停止”状态之间循环时，即指示应用程序存在问题。
@@ -53,7 +53,9 @@ Azure 是一个 64 位的环境。 因此，针对 32 位目标编译的 .NET �
   默认情况下，此设置指向模拟的存储帐户中，因此必须在部署应用程序包之前显式更改此设置。 如果不更改此设置，则角色实例尝试启动诊断监视器时，会引发异常。 这可能导致角色实例无限期回收。
 * 连接字符串是使用以下[格式](../storage/common/storage-configure-connection-string.md)指定的。 （协议必须指定为 HTTPS。）将 MyAccountName 替换为存储帐户名称，将 MyAccountKey 替换为访问密钥   ：    
 
-        DefaultEndpointsProtocol=https;AccountName=MyAccountName;AccountKey=MyAccountKey;EndpointSuffix=core.chinacloudapi.cn
+```console
+DefaultEndpointsProtocol=https;AccountName=MyAccountName;AccountKey=MyAccountKey;EndpointSuffix=core.chinacloudapi.cn
+```
 
   如果要使用 Microsoft Azure Visual Studio 的 Azure 工具来开发应用程序，则可使用属性页设置此值。
 

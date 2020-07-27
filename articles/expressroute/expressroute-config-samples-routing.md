@@ -15,25 +15,25 @@ ms.workload: infrastructure-services
 origin.date: 03/26/2020
 ms.author: v-yiso
 ms.date: 06/08/2020
-ms.openlocfilehash: 4406a1fa32bf26ebd703d1e4b1be9350b6c15af4
-ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
+ms.openlocfilehash: 31d1337d07b2863ce4376204f0086570aa51e289
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84186596"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162327"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-routing"></a>用于设置和管理路由的路由器配置示例
-本页提供使用 Azure ExpressRoute 时的 Cisco IOS XE 和 Juniper MX 系列路由器接口与路由配置示例。
+本页提供处理 Azure ExpressRoute 时适用于 Cisco IOS-XE 和 Juniper MX 系列路由器的接口与路由配置示例。
 
 > [!IMPORTANT]
-> 本页中的示例仅供指导。 必须与供应商的销售/技术团队和你的网络团队合作，以便找到满足需求的适当配置。 对于本页中所列配置的相关问题，Microsoft 不提供支持。 有关支持问题，请与设备供应商联系。
+> 本页中的示例仅供指导。 必须与供应商的销售/技术团队和网络团队合作，以便找到符合需要的适当配置。 对于本页中所列配置的相关问题，Microsoft 将不提供支持。 有关支持问题，请与设备供应商联系。
 > 
 > 
 
 ## <a name="mtu-and-tcp-mss-settings-on-router-interfaces"></a>路由器接口上的 MTU 和 TCP MSS 设置
-ExpressRoute 接口的最大传输单元 (MTU) 为 1500，这是路由器上以太网接口的典型默认 MTU。 默认情况下，除非路由器具有不同 MTU，否则无需在路由器接口上指定值。
+ExpressRoute 接口的最大传输单元 (MTU) 为 1500，即路由器上以太网接口的典型默认 MTU。 默认情况下，除非路由器具有不同 MTU，否则无需在路由器接口上指定值。
 
-与 Azure VPN 网关不同，不需要为 ExpressRoute 线路指定 TCP 最大片段大小 (MSS)。
+与 Azure VPN 网关不同，不需要为 ExpressRoute 线路指定 TCP 最大段大小 (MSS)。
 
 本文中的路由器配置示例适用于所有对等互连。 有关路由的更多详细信息，请查看 [ExpressRoute 对等互连](expressroute-circuit-peerings.md)和 [ExpressRoute 路由要求](expressroute-routing.md)。
 
@@ -42,7 +42,7 @@ ExpressRoute 接口的最大传输单元 (MTU) 为 1500，这是路由器上以�
 本部分中的示例适用于任何运行 IOS-XE OS 系列的路由器。
 
 ### <a name="configure-interfaces-and-subinterfaces"></a>配置接口和子接口
-在连接到 Microsoft 的每个路由器中，每个对等互连都需要有一个子接口。 子接口可使用 VLAN ID 或一对堆叠的 VLAN ID 和 IP 地址来标识。
+在连接到 Microsoft 的每个路由器中，每个对等互连都需要一个子接口。 子接口可使用 VLAN ID 或一对堆叠的 VLAN ID 和 IP 地址来标识。
 
 **Dot1Q 接口定义**
 
@@ -54,7 +54,7 @@ ExpressRoute 接口的最大传输单元 (MTU) 为 1500，这是路由器上以�
 
 **QinQ 接口定义**
 
-本示例针对包含两个 VLAN ID 的子接口提供子接口定义。 如果使用外部 VLAN ID (s-tag)，它在所有对等互连中保持不变。 在每个对等互连中，内部 VLAN ID (c-tag) 是唯一的。 IPv4 地址的最后一个八位字节将始终是奇数。
+本示例针对包含两个 VLAN ID 的子接口提供子接口定义。 外部 VLAN ID (s-tag)（如果使用）在所有对等互连中保持不变。 在每个对等互连中，内部 VLAN ID (c-tag) 是唯一的。 IPv4 地址的最后一个八位字节将始终是奇数。
 
     interface GigabitEthernet<Interface_Number>.<Number>
      encapsulation dot1Q <s-tag> seconddot1Q <c-tag>
@@ -73,7 +73,7 @@ ExpressRoute 接口的最大传输单元 (MTU) 为 1500，这是路由器上以�
     !
 
 ### <a name="set-up-prefixes-to-be-advertised-over-the-bgp-session"></a>设置要通过 BGP 会话播发的前缀
-使用以下示例将路由器配置为向 Microsoft 播发选择前缀。
+使用以下示例，将路由器配置为将所选前缀播发给 Microsoft。
 
     router bgp <Customer_ASN>
      bgp log-neighbor-changes
@@ -86,7 +86,7 @@ ExpressRoute 接口的最大传输单元 (MTU) 为 1500，这是路由器上以�
     !
 
 ### <a name="route-maps"></a>路由映射
-使用路由映射和前缀列表来筛选已传播到网络中的前缀。 请参阅以下示例，确保已设置适当的前缀列表。
+使用路由映射和前缀列表来筛选已传播到网络中的前缀。 请参阅下面的示例，并确保已设置适当的前缀列表。
 
     router bgp <Customer_ASN>
      bgp log-neighbor-changes
@@ -104,7 +104,7 @@ ExpressRoute 接口的最大传输单元 (MTU) 为 1500，这是路由器上以�
 
 ### <a name="configure-bfd"></a>配置 BFD
 
-你将在两个位置配置 BFD：一个处于接口级别，另一个处于 BGP 级别。 此处的示例适用于 QinQ 接口。 
+将在两个位置配置 BFD：一个在接口级别配置，另一个在 BGP 级别配置。 此处的示例适用于 QinQ 接口。 
 
     interface GigabitEthernet<Interface_Number>.<Number>
      bfd interval 300 min_rx 300 multiplier 3
@@ -146,7 +146,7 @@ ExpressRoute 接口的最大传输单元 (MTU) 为 1500，这是路由器上以�
 
 **QinQ 接口定义**
 
-本示例针对包含两个 VLAN ID 的子接口提供子接口定义。 如果使用外部 VLAN ID (s-tag)，它在所有对等互连中保持不变。 在每个对等互连中，内部 VLAN ID (c-tag) 是唯一的。 IPv4 地址的最后一个八位字节将始终是奇数。
+本示例针对包含两个 VLAN ID 的子接口提供子接口定义。 外部 VLAN ID (s-tag)（如果使用）在所有对等互连中保持不变。 在每个对等互连中，内部 VLAN ID (c-tag) 是唯一的。 IPv4 地址的最后一个八位字节将始终是奇数。
 
     interfaces {
         <Interface_Number> {
@@ -177,14 +177,14 @@ ExpressRoute 接口的最大传输单元 (MTU) 为 1500，这是路由器上以�
     }
 
 ### <a name="set-up-prefixes-to-be-advertised-over-the-bgp-session"></a>设置要通过 BGP 会话播发的前缀
-使用以下示例将路由器配置为向 Microsoft 播发选择前缀。
+使用以下示例，将路由器配置为将所选前缀播发给 Microsoft。
 
     policy-options {
         policy-statement <Policy_Name> {
             term 1 {
                 from protocol OSPF;
-        route-filter 
-    <Prefix_to_be_advertised/Subnet_Mask> exact;
+                route-filter; 
+                <Prefix_to_be_advertised/Subnet_Mask> exact;
                 then {
                     accept;
                 }
@@ -194,7 +194,7 @@ ExpressRoute 接口的最大传输单元 (MTU) 为 1500，这是路由器上以�
     protocols {
         bgp { 
             group <Group_Name> { 
-                export <Policy_Name>
+                export <Policy_Name>;
                 peer-as 12076;              
                 neighbor <IP#2_used_by_Azure>;
             }                               
@@ -203,7 +203,7 @@ ExpressRoute 接口的最大传输单元 (MTU) 为 1500，这是路由器上以�
 
 
 ### <a name="route-policies"></a>路由策略
-可以使用路由映射和前缀列表来筛选已传播到网络中的前缀。 请参阅以下示例，确保已设置适当的前缀列表。
+可以使用路由映射和前缀列表来筛选已传播到网络中的前缀。 请参阅下面的示例，并确保已设置适当的前缀列表。
 
     policy-options {
         prefix-list MS_Prefixes {
@@ -224,8 +224,8 @@ ExpressRoute 接口的最大传输单元 (MTU) 为 1500，这是路由器上以�
     protocols {
         bgp { 
             group <Group_Name> { 
-                export <Policy_Name>
-                import <MS_Prefixes_Inbound>
+                export <Policy_Name>;
+                import <MS_Prefixes_Inbound>;
                 peer-as 12076;              
                 neighbor <IP#2_used_by_Azure>;
             }                               
@@ -250,7 +250,7 @@ ExpressRoute 接口的最大传输单元 (MTU) 为 1500，这是路由器上以�
 
 
 ## <a name="next-steps"></a>后续步骤
-有关更多详细信息，请参阅 [ExpressRoute 常见问题解答](expressroute-faqs.md)。
+有关详细信息，请参阅 [ExpressRoute 常见问题](expressroute-faqs.md) 。
 
 
 

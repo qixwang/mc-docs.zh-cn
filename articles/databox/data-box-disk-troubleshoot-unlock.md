@@ -5,16 +5,16 @@ services: databox
 author: WenJason
 ms.service: databox
 ms.subservice: disk
-ms.topic: article
+ms.topic: troubleshooting
 origin.date: 06/14/2019
-ms.date: 07/22/2019
+ms.date: 07/27/2020
 ms.author: v-jay
-ms.openlocfilehash: fea70c95c458726bda60947f545077996646a82d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d367dd90880c262745cfd01972ad23a40b901a24
+ms.sourcegitcommit: c3f15613c875bb52d5a105445efd0f36b9f24c9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "68298223"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86473462"
 ---
 # <a name="troubleshoot-disk-unlocking-issues-in-azure-data-box-disk"></a>排查 Azure Data Box Disk 中的磁盘解锁问题
 
@@ -38,7 +38,7 @@ To figure out who accessed the **Device credentials** blade, you can query the A
 | 当前的 .NET Framework 不受支持。 支持的版本为 4.5 和以上。<br><br>工具退出并显示一条消息。  | 未安装 .NET 4.5。 在运行 Data Box 磁盘解锁工具的主机上安装 .NET 4.5 或更高版本。                                                                            |
 | 无法解锁或验证任何卷。 联系 Azure 支持部门。  <br><br>工具无法解锁或验证任何已锁定的驱动器。 | 工具无法解锁任何已使用提供的支持密钥锁定的驱动器。 请联系 Azure 支持部门以了解后续步骤。                                                |
 | 已解锁并验证以下卷。 <br>卷驱动器号:E：<br>无法使用以下支持密钥解锁任何卷: werwerqomnf、qwerwerqwdfda <br><br>工具解锁了一些驱动器，并列出了成功和失败的驱动器号。| 部分成功。 使用提供的支持密钥无法解锁某些驱动器。 请联系 Azure 支持部门以了解后续步骤。 |
-| 找不到锁定的卷。 验证从 Microsoft 收到的磁盘是否已正确连接并处于锁定状态。          | 工具找不到任何已锁定的驱动器。 驱动器已解锁，或检测不到。 确保驱动器已连接并已锁定。                                                           |
+| 找不到锁定的卷。 验证从 Azure 收到的磁盘是否已正确连接并处于锁定状态。          | 工具找不到任何已锁定的驱动器。 驱动器已解锁，或检测不到。 确保驱动器已连接并已锁定。                                                           |
 | 严重错误:参数无效<br>参数名称: invalid_arg<br>用法:<br>DataBoxDiskUnlock /PassKeys:<passkey_list_separated_by_semicolon><br><br>示例：DataBoxDiskUnlock /PassKeys:passkey1;passkey2;passkey3<br>示例：DataBoxDiskUnlock /SystemCheck<br>示例：DataBoxDiskUnlock /Help<br><br>/PassKeys:     从 Azure Data Box Disk 顺序中获取此支持密钥。 该支持密钥用于解锁磁盘。<br>/Help:         此选项提供有关 cmdlet 使用情况和示例的帮助。<br>/SystemCheck:  此选项检查你的系统是否满足运行该工具的要求。<br><br>按任意键退出。 | 输入了无效的参数。 只允许参数 /SystemCheck、/PassKey 和 /Help。|
 
 
@@ -56,7 +56,7 @@ To figure out who accessed the **Device credentials** blade, you can query the A
 
 若要解锁 Data Box Disk，需要使用 Data Box Disk解锁工具并从 Azure 门户提供密码。 有关详细信息，请转到[教程：打开包装、连接和解锁 Azure Data Box Disk](data-box-disk-deploy-set-up.md#connect-to-disks-and-get-the-passkey)。
  
-### <a name="issue-could-not-unlock-or-verify-some-volumes-contact-microsoft-support"></a>问题：无法解锁或验证某些卷。 请联系 Microsoft 支持。
+### <a name="issue-could-not-unlock-or-verify-some-volumes-contact-azure-support"></a>问题：无法解锁或验证某些卷。 联系 Azure 支持部门。
  
 **原因**
 
@@ -70,6 +70,8 @@ To figure out who accessed the **Device credentials** blade, you can query the A
 
 可以安装 [Windows PowerShell v 5.0](https://www.microsoft.com/download/details.aspx?id=54616) 并重试该操作。
  
+如果仍无法解锁卷，请从具有 Data Box Disk 解锁工具的文件夹中复制日志，然后[联系 Azure 支持部门](https://portal.azure.cn/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。
+
 ## <a name="next-steps"></a>后续步骤
 
 - 了解如何[排查验证问题](data-box-disk-troubleshoot.md)。

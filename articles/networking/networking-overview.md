@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.workload: infrastructure-services
 origin.date: 03/12/2020
-ms.date: 07/01/2020
+ms.date: 07/22/2020
 ms.author: v-tawe
-ms.openlocfilehash: ee00cfa3c35ec0ed69be9af13f27b88370633919
-ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
+ms.openlocfilehash: 4980598d234dc365347e4b76353f30ab0a03a7ee
+ms.sourcegitcommit: 4d9846bb03ac24bd98b0c9a781bb8912ff6d2f61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85796305"
+ms.lasthandoff: 07/22/2020
+ms.locfileid: "86926755"
 ---
 # <a name="azure-networking-services-overview"></a>Azure 网络服务概述
 
@@ -127,8 +127,9 @@ Azure Peering service enhances customer connectivity to Microsoft cloud services
 
 ![Web 应用程序防火墙](./media/networking-overview/waf-overview.png)
 
+
 ### <a name="azure-firewall"></a><a name="firewall"></a>Azure 防火墙
-Azure 防火墙是托管的基于云的网络安全服务，可保护 Azure 虚拟网络资源。 使用 Azure 防火墙可以跨订阅和虚拟网络集中创建、实施和记录应用程序与网络连接策略。 Azure 防火墙对虚拟网络资源使用静态公共 IP 地址，使外部防火墙能够识别来自你的虚拟网络的流量。
+Azure 防火墙是托管的基于云的网络安全服务，可保护 Azure 虚拟网络资源。 使用 Azure 防火墙可以跨订阅和虚拟网络集中创建、实施和记录应用程序与网络连接策略。 Azure 防火墙对虚拟网络资源使用静态公共 IP 地址，使外部防火墙能够识别来自你的虚拟网络的流量。 
 
 有关 Azure 防火墙的详细信息，请参阅 [Azure 防火墙文档](../firewall/overview.md)。
 
@@ -158,7 +159,7 @@ Traffic between your virtual network and the service travels the Microsoft backb
 |---|---|---|
 |[内容分发网络](#cdn)|向用户传送高带宽内容。 CDN 将缓存的内容存储在接入点 (POP) 位置（靠近最终用户的边缘服务器），以最大程度地降低延迟。|<p>[向 Web 应用添加 CDN](/cdn/cdn-how-to-create-web-cdn-endpoint)</p> <p>[- 通过 HTTPS 使用 Azure CDN 自定义域访问存储 Blob](/cdn/cdn-https-customer-supplied-cert)</p>|
 |[流量管理器](#trafficmanager)|基于 DNS 将流量分发到全球 Azure 区域中的服务，同时提供高可用性和响应度。|<p> [路由流量以降低延迟](../traffic-manager/tutorial-traffic-manager-improve-website-response.md)</p><p>[将流量路由到优先终结点](../traffic-manager/traffic-manager-configure-priority-routing-method.md)</p><p> [使用加权的终结点控制流量](../traffic-manager/tutorial-traffic-manager-weighted-endpoint-routing.md)</p><p>[基于终结点的地理位置路由流量](../traffic-manager/traffic-manager-configure-geographic-routing-method.md)</p> <p> [根据用户的子网路由流量](../traffic-manager/tutorial-traffic-manager-subnet-routing.md)</p>|
-|[负载均衡器](#loadbalancer)|通过将流量路由到不同的可用性区域和你的 VNet 来提供区域负载均衡。 通过在资源中和资源之间路由流量来提供内部负载均衡，以构建区域性应用程序。|<p> [对传入 VM 的 Internet 流量进行负载均衡](../load-balancer/tutorial-load-balancer-standard-manage-portal.md)</p> <p>[对虚拟网络中 VM 之间的流量进行负载均衡](../load-balancer/tutorial-load-balancer-basic-internal-portal.md)<p>[通过端口转发将流量发送到特定 VM 上的特定端口](../load-balancer/tutorial-load-balancer-port-forwarding-portal.md)</p><p> [配置负载均衡和出站规则](../load-balancer/configure-load-balancer-outbound-cli.md)</p>|
+|[负载均衡器](#loadbalancer)|通过将流量路由到不同的可用性区域和你的 VNet 来提供区域负载均衡。 通过在资源中和资源之间路由流量来提供内部负载均衡，以构建区域性应用程序。|<p> [对传入 VM 的 Internet 流量进行负载均衡](../load-balancer/tutorial-load-balancer-standard-manage-portal.md)</p> <p>[对虚拟网络中 VM 之间的流量进行负载均衡](../load-balancer/tutorial-load-balancer-standard-internal-portal.md)<p>[通过端口转发将流量发送到特定 VM 上的特定端口](../load-balancer/tutorial-load-balancer-port-forwarding-portal.md)</p><p> [配置负载均衡和出站规则](../load-balancer/configure-load-balancer-outbound-cli.md)</p>|
 |[应用程序网关](#applicationgateway)|Azure 应用程序网关是一种 Web 流量负载均衡器，可用于管理 Web 应用程序的流量。|<p>[使用 Azure 应用程序网关定向 Web 流量](../application-gateway/quick-create-portal.md)</p><p>[教程：通过 Azure 门户使用 TLS 终端配置应用程序网关](../application-gateway/create-ssl-portal.md)</p><p>[创建支持基于 URL 路径进行重定向的应用程序网关](../application-gateway/create-url-route-portal.md) </p>|
 |
 

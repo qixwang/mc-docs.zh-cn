@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 02/20/2020
 ms.date: 06/09/2020
-ms.openlocfilehash: 97b3242efb1d8334e54d8e20c67b97b659ddaf98
-ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
+ms.openlocfilehash: fe5397dbf6252a8f7eb645b4372a507054ae5feb
+ms.sourcegitcommit: 5656c18d7d2faa09329b1a15e352d1622e252d5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84564329"
+ms.lasthandoff: 07/21/2020
+ms.locfileid: "86862839"
 ---
 # <a name="how-to-add-a-custom-skill-to-an-azure-cognitive-search-enrichment-pipeline"></a>如何向 Azure 认知搜索扩充管道添加自定义技能
 
@@ -139,7 +139,7 @@ Web API 必须接受要处理的一组记录。 每条记录都必须包含一�
       {
         "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
         "description": "This skill calls an Azure function, which in turn calls TA sentiment",
-        "uri": "https://indexer-e2e-webskill.azurewebsites.net/api/DateExtractor?language=en",
+        "uri": "https://indexer-e2e-webskill.chinacloudsites.cn/api/DateExtractor?language=en",
         "context": "/document",
         "httpHeaders": {
             "DateExtractor-Api-Key": "foo"

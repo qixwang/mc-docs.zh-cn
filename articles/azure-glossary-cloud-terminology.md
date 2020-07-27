@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 08/16/2017
-ms.date: 07/02/2020
+ms.date: 07/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 0d56d94c9e604475ff1bd5a059b1f0a2212e65a5
-ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
+ms.openlocfilehash: a7c4fd658e4d7011c18f63a81041401d2db36cff
+ms.sourcegitcommit: c17e965d4ffd82fd7cd86b2648fcb0053a65df00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85845894"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86469982"
 ---
 # <a name="azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Azure 词汇表：Azure 平台上的云术语字典
 
@@ -33,7 +33,7 @@ Azure 词汇表是适用于 Azure 平台的简短云术语字典。 另请参阅
 ## <a name="account"></a>account
 用于访问和管理 Azure 订阅的帐户。 它通常称为 Azure 帐户，尽管帐户可以是以下任何一个：现有的工作、学校或个人 Microsoft 帐户，或 Office 365 用户名和密码。 注册[试用版](https://www.azure.cn/pricing/1rmb-trial)时，还可以创建一个帐户来管理 Azure 订阅。  
 
-<!-- See [Sign up for an Azure subscription with your Office 365 account](cost-management-billing/manage/office-365-account-for-azure-subscription.md) and [Accounts you can use to sign in](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md). -->
+<!-- See [Sign up for an Azure subscription with your Microsoft 365 account](cost-management-billing/manage/office-365-account-for-azure-subscription.md) and [Accounts you can use to sign in](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md). -->
 
 ## <a name="api-app"></a>API 应用
 又叫[应用服务应用](#app-service-app)。

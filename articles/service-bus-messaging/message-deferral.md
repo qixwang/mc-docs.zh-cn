@@ -1,25 +1,19 @@
 ---
 title: Azure 服务总线 - 消息延迟
 description: 本文介绍如何延迟传送 Azure 服务总线消息。 该消息将保留在队列或订阅中，但会搁置处理。
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 01/24/2020
-ms.date: 2/6/2020
-ms.author: v-lingwu
-ms.openlocfilehash: ff7e07e0b8eafeb41590c67912ee3580c45c2881
-ms.sourcegitcommit: 79c99a9ea013b3c74706a1038a505f4eea2aaac4
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: ''
+ms.author: v-yeche
+author: rockboyfor
+ms.openlocfilehash: 75c8671791574bc4b897c8f29067e9b1ccaa9348
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84439514"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162365"
 ---
 # <a name="message-deferral"></a>消息延迟
 
@@ -37,10 +31,9 @@ ms.locfileid: "84439514"
 
 延迟的消息连同其他所有活动消息保留在主队列中（与保留在子队列中的死信消息不同），但不再可以使用正则 Receive/ReceiveAsync 函数接收。 如果应用程序不再能跟踪延迟的消息，可以通过[消息浏览](message-browsing.md)来发现这些消息。
 
-若要检索延迟的消息，其所有者在延迟它时需负责记住 [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber)。 知道已延迟消息的序列号的任何接收器以后可使用 `Receive(sequenceNumber)` 显式接收该消息。
+若要检索延迟的消息，其所有者在延迟它时需负责记住 [SequenceNumber](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber?view=azure-dotnet#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber)。 知道已延迟消息的序列号的任何接收器以后可使用 `Receive(sequenceNumber)` 显式接收该消息。
 
 如果由于处理消息的特定资源暂时不可用，因而无法处理该消息，但同时又不能立即暂停消息处理，则将该消息搁置几分钟的方法是在要延后几分钟的[计划消息](message-sequencing.md)中记住 SequenceNumber，并在计划的消息到达时重新检索已延迟的消息。 如果消息处理程序依赖于使用某个数据库来执行所有操作，而该数据库暂时不可用，则不应使用延迟，而应全面暂停接收消息，直到数据库再次可用。
-
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -49,3 +42,5 @@ ms.locfileid: "84439514"
 * [服务总线队列、主题和订阅](service-bus-queues-topics-subscriptions.md)
 * [服务总线队列入门](service-bus-dotnet-get-started-with-queues.md)
 * [如何使用服务总线主题和订阅](service-bus-dotnet-how-to-use-topics-subscriptions.md)
+
+<!-- Update_Description: update meta properties, wording update, update link -->

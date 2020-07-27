@@ -5,12 +5,12 @@ ms.author: v-tawe
 origin.date: 04/03/2020
 ms.date: 05/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: 49fd261edd6ce6cc44d83c87f245091e94a4180b
-ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
+ms.openlocfilehash: 979824471263b014ccc4e75955005631fe68d583
+ms.sourcegitcommit: c17e965d4ffd82fd7cd86b2648fcb0053a65df00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85796321"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86469977"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
@@ -88,7 +88,10 @@ Azure Policy 可为资源建立多种约定。 策略定义描述资源符合性
 
 在预览版期间，目前支持以下资源提供程序模式：
 
-- `Microsoft.ContainerService.Data`，用于管理 [Azure Kubernetes 服务](../../../aks/intro-kubernetes.md)上的许可控制器规则。 使用此资源提供程序模式的策略必须使用 [EnforceRegoPolicy](./effects.md#enforceregopolicy) 效果。
+<!-- - `Microsoft.ContainerService.Data` for managing admission controller rules on
+  [Azure Kubernetes Service](../../../aks/intro-kubernetes.md). Policies using this Resource
+  Provider mode **must** use the [EnforceRegoPolicy](./effects.md#enforceregopolicy) effect. -->
+
 - `Microsoft.Kubernetes.Data` 用于管理 Azure 上的自托管 AKS 引擎 Kubernetes 群集。
   使用此资源提供程序模式的策略必须使用 [EnforceOPAConstraint](./effects.md#enforceopaconstraint) 效果。
 - `Microsoft.KeyVault.Data`，用于管理 [Azure Key Vault](../../../key-vault/general/overview.md) 中的保管库和证书。
@@ -326,7 +329,7 @@ strongType 的非资源类型允许值包括：
 }
 ```
 
-### <a name="value"></a>Value
+### <a name="value"></a>值
 
 也可使用 **value** 来形成条件。 **value** 会针对[参数](#parameters)、[支持的模板函数](#policy-functions)或文本来检查条件。
 **value** 可与任何支持的[条件](#conditions)配对。

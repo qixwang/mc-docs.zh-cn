@@ -1,17 +1,19 @@
 ---
-title: 快速入门 - 创建注册表 - Powershell
+title: 快速入门 - 创建注册表 - PowerShell
 description: 快速了解如何使用 PowerShell 在 Azure 容器注册表中创建专用 Docker 注册表
 ms.topic: quickstart
 origin.date: 01/22/2019
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: 12/09/2019
 ms.author: v-yeche
-ms.date: 12/09/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 88febc0db74b5a0154d956787b85152a40f339d8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 7f73998c3cb2ae918f39a9e75d0f20a6bf312e4b
+ms.sourcegitcommit: 5726d3b2e694f1f94f9f7d965676c67beb6ed07c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74885026"
+ms.lasthandoff: 07/21/2020
+ms.locfileid: "86863151"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建专用容器注册表
 
@@ -53,7 +55,7 @@ New-AzResourceGroup -Name myResourceGroup -Location ChinaEast
 $registry = New-AzContainerRegistry -ResourceGroupName "myResourceGroup" -Name "myContainerRegistry007" -EnableAdminUser -Sku Basic
 ```
 
-本快速入门将创建一个“基本”注册表。该注册表已针对成本进行优化，是可供开发人员了解 Azure 容器注册表的选项。  有关可用服务层级的详细信息，请参阅[容器注册表 SKU][container-registry-skus]。
+本快速入门将创建一个“基本”注册表。该注册表已针对成本进行优化，是可供开发人员了解 Azure 容器注册表的选项。 有关可用服务层级的详细信息，请参阅[容器注册表服务层级][container-registry-skus]。
 
 ## <a name="log-in-to-registry"></a>登录到注册表
 
@@ -83,11 +85,15 @@ $creds.Password | docker login $registry.LoginServer -u $creds.Username --passwo
 Remove-AzResourceGroup -Name myResourceGroup
 ```
 
-<!--Not Available on ## Next steps-->
-<!--Not Available on In this quickstart, you created an Azure Container Registry with Azure PowerShell, pushed a container image, and pulled and ran the image from the registry.-->
-<!--Not Available on  Continue to the Azure Container Registry tutorials for a deeper look at ACR.-->
-<!--Not Available on  > [!div class="nextstepaction"]-->
-<!--Not Available on  > [Azure Container Registry tutorials][container-registry-tutorial-quick-task]-->
+## <a name="next-steps"></a>后续步骤
+
+本快速入门介绍了如何使用 Azure PowerShell 创建 Azure 容器注册表、推送容器映像，以及提取和运行注册表中的映像。 请继续阅读 Azure 容器注册表教程，以更深入地了解 ACR。
+
+> [!div class="nextstepaction"]
+> [Azure 容器注册表教程][container-registry-tutorial-prepare-registry]
+
+> [!div class="nextstepaction"]
+> [Azure 容器注册表任务教程][container-registry-tutorial-quick-task]
 
 <!-- LINKS - external -->
 
@@ -106,9 +112,8 @@ Remove-AzResourceGroup -Name myResourceGroup
 [New-AzContainerRegistry]: https://docs.microsoft.com/powershell/module/az.containerregistry/New-AzContainerRegistry
 [New-AzResourceGroup]: https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup
 [Remove-AzResourceGroup]: https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup
-
-<!--Not Available on [container-registry-tutorial-quick-task]: container-registry-tutorial-quick-task.md-->
-
+[container-registry-tutorial-quick-task]: container-registry-tutorial-quick-task.md
 [container-registry-skus]: container-registry-skus.md
+[container-registry-tutorial-prepare-registry]: container-registry-tutorial-prepare-registry.md
 
-<!-- Update_Description: wording update, update meta properties -->
+<!-- Update_Description: update meta properties, wording update, update link -->

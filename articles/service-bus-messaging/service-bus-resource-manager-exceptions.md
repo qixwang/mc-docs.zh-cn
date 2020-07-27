@@ -1,26 +1,19 @@
 ---
 title: Azure 服务总线资源管理器异常 | Azure
 description: Azure 资源管理器显示的服务总线异常列表以及建议的处理措施。
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-manager: darosa
-editor: spelluru
-ms.assetid: 3d8526fe-6e47-4119-9f3e-c56d916a98f9
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 04/30/2020
-ms.author: v-tawe
-origin.date: 08/26/2019
-ms.openlocfilehash: 00b2609d723e25c8ca60a191a9c6625c821c609e
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: ''
+ms.author: v-yeche
+author: rockboyfor
+ms.openlocfilehash: ca3f0c41e075d65e3770581789953a0c6d6c84f0
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796767"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162266"
 ---
 # <a name="service-bus-resource-manager-exceptions"></a>服务总线资源管理器异常
 
@@ -48,7 +41,6 @@ ms.locfileid: "83796767"
 | 错误的请求 | 40000 | 子代码 = 40000。 无法更改现有队列的 RequiresSession 属性值。 | 应在创建实体时启用会话支持。 创建后无法对现有实体（队列或订阅）启用/禁用会话。 | 删除再重新创建启用了“RequiresSession”属性的新队列（或订阅）。 |
 | 错误的请求 | 40000 | 子代码 = 40000。 'URI_PATH' 包含服务总线不允许的字符。 实体段只能包含字母、数字、句点(.)、连字符(-) 和下划线(_)。 | 实体段只能包含字母、数字、句点(.)、连字符(-) 和下划线(_)。 任何其他字符都会导致请求失败。 | 确保 URI 路径中不包含任何无效字符。 |
 
-
 ## <a name="error-code-429"></a>错误代码：429
 
 与在 HTTP 中一样，“错误代码 429”指示“请求过多”。 这意味着，由于针对特定资源（命名空间）的请求过多（或由于操作冲突），导致该资源受到限制。
@@ -61,7 +53,6 @@ ms.locfileid: "83796767"
 | 429 | 40901 | 对实体“<实体名称>”的请求与另一个请求相冲突 | 针对同一资源/实体的另一个有冲突操作正在进行 | 等待前一个操作完成，然后重试 |
 | 429 | 40901 | 针对实体“<实体名称>”的另一个更新请求正在进行。 | 针对同一资源/实体的另一个有冲突操作正在进行 | 等待前一个操作完成，然后重试 |
 | 429 | 无 | 发生资源冲突。 可能正在进行另一个有冲突的操作。 如果这是针对失败的操作进行的重试，则后台清理仍处于挂起状态。 请稍后重试。 | 如果同一实体存在挂起的操作，可能会出现此状况。 | 等待前一个操作完成，然后重试。 |
-
 
 ## <a name="error-code-not-found"></a>错误代码：未找到
 
@@ -90,3 +81,5 @@ ms.locfileid: "83796767"
 | ---------- | ------------- | ------------- | ----------- | -------------- |
 | 未授权 | 无 | 针对辅助命名空间的操作无效。 辅助命名空间是只读的。 | 针对设置为只读命名空间的辅助命名空间执行了操作。 | 请针对主要命名空间重试该命令。 详细了解[辅助命名空间](service-bus-geo-dr.md) |
 | 未授权 | 无 | MissingToken:找不到授权标头。 | 当授权标头包含空值或不正确的值时，将发生此错误。 | 确保授权标头中提到的令牌值正确且不为空。 |
+
+<!-- Update_Description: update meta properties, wording update, update link -->

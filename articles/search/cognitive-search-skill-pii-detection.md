@@ -7,14 +7,14 @@ author: careyjmac
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 01/27/2020
-ms.date: 04/20/2020
-ms.openlocfilehash: e297c6aac760598a9ce888bae856ce3a23f68a57
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+origin.date: 06/17/2020
+ms.date: 07/17/2020
+ms.openlocfilehash: b42650da14c3e2d322672862a7fea6dc83ce5c21
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588757"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86472005"
 ---
 #    <a name="pii-detection-cognitive-skill"></a>PII 检测认知技能
 
@@ -41,25 +41,25 @@ Microsoft.Skills.Text.PIIDetectionSkill
 
 | 参数名称     | 说明 |
 |--------------------|-------------|
-| defaultLanguageCode |    输入文本的语言代码。 目前仅支持 `en`。 |
-| minimumPrecision | 一个介于 0.0 和 1.0 之间的值。 如果置信度分数（在 `piiEntities` 输出中）低于所设置的 `minimumPrecision` 值，则不会返回或屏蔽该实体。 默认值为 0.0。 |
-| maskingMode | 一个提供多种方法来屏蔽输入文本中检测到的 PII 的参数。 可以使用以下选项： <ul><li>`none`（默认值）：这意味着不会执行任何屏蔽，并且不会返回 `maskedText` 输出。 </li><li> `redact`：此选项将从输入文本中删除检测到的实体，并且不会将其替换为任何内容。 请注意，在这种情况下，`piiEntities` 输出中的偏移量将与原始文本（而非已屏蔽文本）相关。 </li><li> `replace`：此选项将用 `maskingCharacter` 参数中给定的字符替换检测到的实体。  将重复该字符，直至达到检测到的实体的长度，以便偏移量与输入文本和输出 `maskedText` 都正确对应。</li></ul> |
-| maskingCharacter | 当 `maskingMode` 参数设置为 `replace` 时，将用来屏蔽文本的字符。 支持以下选项：`*`（默认值）、`#`、`X`。 如果 `maskingMode` 未设置为 `replace`，则此参数只能为 `null`。 |
+| `defaultLanguageCode` |    输入文本的语言代码。 目前仅支持 `en`。 |
+| `minimumPrecision` | 一个介于 0.0 和 1.0 之间的值。 如果置信度分数（在 `piiEntities` 输出中）低于所设置的 `minimumPrecision` 值，则不会返回或屏蔽该实体。 默认值为 0.0。 |
+| `maskingMode` | 一个提供多种方法来屏蔽输入文本中检测到的 PII 的参数。 可以使用以下选项： <ul><li>`none`（默认值）：这意味着不会执行任何屏蔽，并且不会返回 `maskedText` 输出。 </li><li> `redact`：此选项将从输入文本中删除检测到的实体，并且不会将其替换为任何内容。 请注意，在这种情况下，`piiEntities` 输出中的偏移量将与原始文本（而非已屏蔽文本）相关。 </li><li> `replace`：此选项将用 `maskingCharacter` 参数中给定的字符替换检测到的实体。  将重复该字符，直至达到检测到的实体的长度，以便偏移量与输入文本和输出 `maskedText` 都正确对应。</li></ul> |
+| `maskingCharacter` | 当 `maskingMode` 参数设置为 `replace` 时，将用来屏蔽文本的字符。 支持以下选项：`*`（默认值）、`#`、`X`。 如果 `maskingMode` 未设置为 `replace`，则此参数只能为 `null`。 |
 
 
 ## <a name="skill-inputs"></a>技能输入
 
 | 输入名称      | 说明                   |
 |---------------|-------------------------------|
-| languageCode    | 可选。 默认值为 `en`。  |
-| text          | 要分析的文本。          |
+| `languageCode`    | 可选。 默认值为 `en`。  |
+| `text`          | 要分析的文本。          |
 
 ## <a name="skill-outputs"></a>技能输出
 
 | 输出名称      | 说明                   |
 |---------------|-------------------------------|
-| piiEntities | 复杂类型的数组，包含以下字段： <ul><li>text（提取的实际 PII）</li> <li>type</li><li>subType</li><li>score（值越高意味着它越有可能是一个真实的实体）</li><li>offset（输入文本中）</li><li>length</li></ul> </br> [可在此处找到可能的类型和子类型。](https://docs.azure.cn/cognitive-services/text-analytics/named-entity-types?tabs=personal) |
-| maskedText | 如果 `maskingMode` 设置为 `none` 以外的值，则此输出将是对由所选 `maskingMode` 描述的输入文本执行屏蔽后的字符串结果。  如果 `maskingMode` 设置为 `none`，则不会提供此输出。 |
+| `piiEntities` | 复杂类型的数组，包含以下字段： <ul><li>text（提取的实际 PII）</li> <li>type</li><li>subType</li><li>score（值越高意味着它越有可能是一个真实的实体）</li><li>offset（输入文本中）</li><li>length</li></ul> </br> [可在此处找到可能的类型和子类型。](https://docs.azure.cn/cognitive-services/text-analytics/named-entity-types?tabs=personal) |
+| `maskedText` | 如果 `maskingMode` 设置为 `none` 以外的值，则此输出将是对由所选 `maskingMode` 描述的输入文本执行屏蔽后的字符串结果。  如果 `maskingMode` 设置为 `none`，则不会提供此输出。 |
 
 ##    <a name="sample-definition"></a>示例定义
 

@@ -10,17 +10,17 @@ ms.devlang: powershell
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 origin.date: 03/27/2020
-ms.date: 06/29/2020
+ms.date: 07/27/2020
 author: v-jay
 ms.author: v-jay
 ms.reviewer: douglasl
 manager: digimobile
-ms.openlocfilehash: 91abfbd67eb26eb8cdd57bbfd048758ab69f28a6
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+ms.openlocfilehash: 606bb5956fef8350d05fed6c70447c54ca434394
+ms.sourcegitcommit: 0eaa82cf74477d26d06bdd8fb6e715e6ed1339c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323262"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86974248"
 ---
 # <a name="set-up-an-azure-ssis-ir-in-azure-data-factory-by-using-powershell"></a>使用 PowerShell 在 Azure 数据工厂中设置 Azure-SSIS IR
 
@@ -38,7 +38,7 @@ ms.locfileid: "85323262"
 > [!NOTE]
 > 本文演示如何使用 Azure PowerShell 设置 Azure-SSIS IR。 若要使用 Azure 门户或 Azure 数据工厂应用来设置 Azure-SSIS IR，请参阅[教程：设置 Azure-SSIS IR](tutorial-create-azure-ssis-runtime-portal.md)。 
 
-在本教程中，你将：
+在本教程中，将：
 > [!div class="checklist"]
 > * 创建数据工厂。
 > * 创建 Azure SSIS Integration Runtime。
@@ -56,8 +56,8 @@ ms.locfileid: "85323262"
     - 根据所选的数据库服务器，系统可以代表你在 SQL 数据库中将 SSISDB 创建为单一数据库或弹性池的一部分，或者在 SQL 托管实例中创建。 有关选择用来托管 SSISDB 的数据库服务器类型的指导，请参阅[比较 SQL 数据库与 SQL 托管实例](create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance)。
     
       如果使用包含 IP 防火墙或虚拟网络服务终结点的 SQL 数据库，或者需要在未配置自承载 IR 的情况下访问本地数据，请将 Azure-SSIS IR 加入虚拟网络。 有关详细信息，请参阅[在虚拟网络中创建 Azure-SSIS IR](/data-factory/create-azure-ssis-integration-runtime)。
-    - 确认为 SQL 数据库启用了“允许访问 Azure 服务”设置。 使用包含 IP 防火墙规则或虚拟网络服务终结点的 SQL 数据库来托管 SSISDB 时，此设置不适用。 有关详细信息，请参阅[保护 Azure SQL 数据库](../sql-database/sql-database-security-tutorial.md#create-firewall-rules)。 若要通过 PowerShell 来启用此设置，请参阅 [New-AzSqlServerFirewallRule](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlserverfirewallrule)。
-    - 将客户端计算机的 IP 地址或一系列包括客户端计算机 IP 地址的 IP 地址添加到 SQL 数据库的防火墙设置中的客户端 IP 地址列表。 有关详细信息，请参阅[服务器级和数据库级防火墙规则](../sql-database/sql-database-firewall-configure.md)。
+    - 确认为 SQL 数据库启用了“允许访问 Azure 服务”设置。 使用包含 IP 防火墙规则或虚拟网络服务终结点的 SQL 数据库来托管 SSISDB 时，此设置不适用。 有关详细信息，请参阅[保护 Azure SQL 数据库的安全](../azure-sql/database/secure-database-tutorial.md#create-firewall-rules)。 若要通过 PowerShell 来启用此设置，请参阅 [New-AzSqlServerFirewallRule](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlserverfirewallrule)。
+    - 将客户端计算机的 IP 地址或一系列包括客户端计算机 IP 地址的 IP 地址添加到 SQL 数据库的防火墙设置中的客户端 IP 地址列表。 有关详细信息，请参阅[服务器级和数据库级防火墙规则](../azure-sql/database/firewall-configure.md)。
     - 若要连接到 SQL 数据库或 SQL 托管实例，可以将 SQL 身份验证与服务器管理员凭据配合使用，也可以将 Azure Active Directory (Azure AD) 身份验证与数据工厂托管标识配合使用。 对于 Azure AD 身份验证，若要将数据工厂的托管标识添加到有权访问数据库服务器的 Azure AD 组，请参阅[创建使用 Azure AD 身份验证的 Azure-SSIS IR](/data-factory/create-azure-ssis-integration-runtime)。
     - 确认 SQL 数据库或 SQL 托管实例尚无 SSISDB。 设置 Azure-SSIS IR 时不支持使用现有的 SSISDB。
 
@@ -556,7 +556,7 @@ write-host("If any cmdlet is unsuccessful, please consider using -Debug option f
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已学习了如何执行以下操作： 
+在本教程中，你了解了如何执行以下操作： 
 
 > [!div class="checklist"]
 > * 创建数据工厂。

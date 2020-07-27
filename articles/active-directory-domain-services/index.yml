@@ -1,0 +1,102 @@
+### YamlMime:Landing
+title: Azure AD 域服务文档
+summary: 了解如何使用 Azure Active Directory 域服务向应用程序提供 Kerberos 或 NTLM 身份验证，或者将 Azure VM 加入托管域。
+metadata:
+  title: Azure AD 域服务文档
+  description: 了解如何使用 Azure Active Directory 域服务向应用程序提供 Kerberos 或 NTLM 身份验证，或者将 Azure VM 加入托管域。
+  services: service
+  ms.service: active-directory
+  ms.subservice: domain-services
+  ms.topic: landing-page
+  ms.collection: collection
+  author: iainfoulds
+  ms.author: v-junlch
+  manager: daveba
+  ms.date: 07/20/2020
+  ms.openlocfilehash: 5e56e72233f6616e342750c91ea96cabd7a33b89
+  ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 07/20/2020
+  ms.locfileid: "86472527"
+landingContent:
+- title: 关于 Azure AD 域服务
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure AD 域服务？
+      url: overview.md
+    - text: 比较标识解决方案
+      url: compare-identity-solutions.md
+  - linkListType: concept
+    links:
+    - text: 同步是如何工作的？
+      url: synchronization.md
+    - text: 常见问题
+      url: faqs.md
+- title: 入门
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: 创建托管域
+      url: tutorial-create-instance.md
+  - linkListType: tutorial
+    links:
+    - text: 将 Windows Server VM 加入域
+      url: join-windows-vm.md
+    - text: 安装管理工具
+      url: tutorial-create-management-vm.md
+- title: 配置
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 配置安全 LDAP
+      url: tutorial-configure-ldaps.md
+  - linkListType: how-to-guide
+    links:
+    - text: 启用密码哈希同步
+      url: tutorial-configure-password-hash-sync.md
+    - text: 创建组织单位 (OU)
+      url: create-ou.md
+    - text: 配置 Kerberos 约束委派
+      url: deploy-kcd.md
+    - text: 保护托管域
+      url: secure-your-domain.md
+- title: 管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 管理组策略
+      url: manage-group-policy.md
+    - text: 管理 DNS
+      url: manage-dns.md
+    - text: 检查运行状况状态
+      url: check-health.md
+    - text: 配置电子邮件通知
+      url: notifications.md
+    - text: 启用安全审核（预览版）
+      url: security-audit-events.md
+- title: 将 VM 加入域
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Windows Server
+      url: join-windows-vm.md
+  - linkListType: how-to-guide
+    links:
+    - text: Ubuntu Server
+      url: join-ubuntu-linux-vm.md
+    - text: Red Hat Enterprise Linux
+      url: join-rhel-linux-vm.md
+- title: 疑难解答
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 常见问题
+      url: troubleshoot.md
+    - text: 常见警报消息
+      url: troubleshoot-alerts.md
+    - text: 网络安全组问题
+      url: alert-nsg.md
+    - text: 安全 LDAP 问题
+      url: alert-ldaps.md

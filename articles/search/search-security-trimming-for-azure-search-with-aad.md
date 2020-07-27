@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 06/04/2020
-ms.date: 07/02/2020
-ms.openlocfilehash: 643725a3c38dfdcf474659ff79da3b4dcf339388
-ms.sourcegitcommit: 5afd7c4c3be9b80c4c67ec55f66fcf347aad74c6
+ms.date: 07/20/2020
+ms.openlocfilehash: fb033c76813d4c39a45ca758f0b593bdd83edab4
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85942539"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471932"
 ---
 # <a name="security-filters-for-trimming-azure-cognitive-search-results-using-active-directory-identities"></a>用于使用 Active Directory 标识修剪 Azure 认知搜索结果的安全筛选器
 
@@ -29,7 +29,7 @@ ms.locfileid: "85942539"
 > - 使用组标识符筛选器发出搜索请求
 > 
 > [!NOTE]
-> 本文中的示例代码片段是用 C# 语言编写的。 可以 [在 GitHub 上](https://aka.ms/search-dotnet-howto)找到完整的源代码。 
+> 本文中的示例代码片段是用 C# 语言编写的。 可以 [在 GitHub 上](https://github.com/Azure-Samples/search-dotnet-getting-started)找到完整的源代码。 
 
 ## <a name="prerequisites"></a>先决条件
 

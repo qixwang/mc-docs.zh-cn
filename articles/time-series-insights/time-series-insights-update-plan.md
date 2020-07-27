@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 05/20/2020
+ms.date: 07/22/2020
 ms.custom: seodec18
-ms.openlocfilehash: 0309b3988a9e9b9ec248987bb25dc1e5e198f8f1
-ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
+ms.openlocfilehash: 31ccc5940fa8cdd9499bd787e64df6c37fce1908
+ms.sourcegitcommit: d32699135151e98471daebe6d3f5b650f64f826e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83748145"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87160334"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>计划 Azure 时序见解预览版环境
 
@@ -41,7 +41,7 @@ Azure 时序见解采用即用即付业务模型。 有关费用和容量的详�
 预配 Azure 时序见解预览版环境时，会创建两个 Azure 资源：
 
 * Azure 时序见解预览版环境
-* Azure 存储常规用途 V1 帐户
+* Azure 存储帐户
 
 我们在预配过程中指定是否要启用暖存储。 暖存储提供分层的查询体验。 启用后，必须指定 7 到 30 天的保留期。 在暖存储保留期内执行的查询通常响应时间更短。 如果查询跨越暖存储保留期，系统会从冷存储为其提供服务。
 

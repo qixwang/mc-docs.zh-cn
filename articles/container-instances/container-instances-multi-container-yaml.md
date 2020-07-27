@@ -1,28 +1,30 @@
 ---
 title: 教程 - 部署多容器组 - YAML
-description: 本教程介绍如何将 YAML 文件和 Azure CLI 配合使用，以便在 Azure 容器实例中部署包含多个容器的容器组。
+description: 本教程介绍如何使用 YAML 文件和 Azure CLI 在 Azure 容器实例中部署包含多个容器的容器组。
 ms.topic: article
 origin.date: 04/03/2019
-ms.date: 01/15/2020
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: 01/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: d1afed8a8d9be422513c23557526cc866c6c2334
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 1bf72cb899d17b8ffceb2434820c6f906ec5811b
+ms.sourcegitcommit: 5726d3b2e694f1f94f9f7d965676c67beb6ed07c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428824"
+ms.lasthandoff: 07/21/2020
+ms.locfileid: "86863182"
 ---
 <!--Verified successfully-->
 # <a name="tutorial-deploy-a-multi-container-group-using-a-yaml-file"></a>教程：使用 YAML 文件部署多容器组
 
 > [!div class="op_single_selector"]
 > * [YAML](container-instances-multi-container-yaml.md)
-> * [Resource Manager](container-instances-multi-container-group.md)
+> * [资源管理器](container-instances-multi-container-group.md)
 >
 
-Azure 容器实例支持使用[容器组](container-instances-container-groups.md)将多个容器部署到单台主机上。 当生成应用程序 sidecar 以用于日志记录、监视或用于某些其他配置（其中服务需要第二个附加进程）时，容器组很有用。
+Azure 容器实例支持使用[容器组](container-instances-container-groups.md)将多个容器部署到单台主机上。 当生成应用程序 Sidecar 以用于日志记录、监视或某些其他配置（其中的服务需要第二个附加进程）时，容器组很有用。
 
-在本教程中，我们将按步骤运行简单的双容器挎斗配置，只需使用 Azure CLI 部署 [YAML 文件](container-instances-reference-yaml.md)即可。 YAML 文件提供了一种简单的格式来指定实例设置。 你将学习如何执行以下操作：
+在本教程中，按照以下步骤，通过使用 Azure CLI 部署 [YAML 文件](container-instances-reference-yaml.md)来运行简单的双容器 Sidecar 配置。 YAML 文件提供了用来指定实例设置的简洁格式。 学习如何：
 
 > [!div class="checklist"]
 > * 配置 YAML 文件
@@ -38,7 +40,7 @@ Azure 容器实例支持使用[容器组](container-instances-container-groups.m
 
 ## <a name="configure-a-yaml-file"></a>配置 YAML 文件
 
-若要在 Azure CLI 中使用 [az container create][az-container-create] 命令部署多容器组，必须在 YAML 文件中指定容器组配置。 然后，将 YAML 文件作为参数传递给命令。
+若要在 Azure CLI 中使用 [az container create][az-container-create] 命令部署多容器组，必须在 YAML 文件中指定容器组配置， 然后将该 YAML 文件作为参数传递给命令。
 
 首先将以下 YAML 复制到一个名为 **deploy-aci.yaml** 的新文件中。
 
@@ -78,14 +80,14 @@ properties:
     type: Public
     ports:
     - protocol: tcp
-      port: '80'
+      port: 80
     - protocol: tcp
-      port: '8080'
+      port: 8080
 tags: null
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-若要使用专用容器映像注册表，请将 `imageRegistryCredentials` 属性添加到容器组，其中包含针对环境修改的值：
+若要使用专用容器映像注册表，请将 `imageRegistryCredentials` 属性添加到容器组，其中包含针对你的环境修改的值：
 
 ```YAML
   imageRegistryCredentials:
@@ -128,7 +130,7 @@ myContainerGroup  danlep0318r      Running   mcr.microsoft.com/azuredocs/aci-tut
 
 ## <a name="view-container-logs"></a>查看容器日志
 
-使用 [az container logs][az-container-logs] 命令查看容器的日志输出。 `--container-name` 参数指定从中拉取日志的容器。 在此示例中，指定了 `aci-tutorial-app` 容器。
+使用 [az container logs][az-container-logs] 命令查看容器的日志输出。 `--container-name` 参数指定从中拉取日志的容器。 在此示例中，指定 `aci-tutorial-app` 容器。
 
 ```azurecli
 az container logs --resource-group myResourceGroup --name myContainerGroup --container-name aci-tutorial-app
@@ -143,7 +145,7 @@ listening on port 80
 ::1 - - [21/Mar/2019:23:17:54 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
 ```
 
-若要查看 sidecar 容器的日志，请运行一个类似的命令，指定 `aci-tutorial-sidecar` 容器。
+若要查看 Sidecar 容器的日志，请运行指定 `aci-tutorial-sidecar` 容器的类似命令。
 
 ```azurecli
 az container logs --resource-group myResourceGroup --name myContainerGroup --container-name aci-tutorial-sidecar
@@ -169,18 +171,18 @@ Date: Thu, 21 Mar 2019 20:36:41 GMT
 Connection: keep-alive
 ```
 
-如你所见，sidecar 通过该组的本地网络定期向主 Web 应用程序发出 HTTP 请求，确保其正在运行。 如果此 sidecar 示例收到的 HTTP 响应代码不是 `200 OK`，则可将其扩展以触发警报。
+如你所见，sidecar 通过该组的本地网络定期向主 Web 应用程序发出 HTTP 请求，确保其正在运行。 如果此 Sidecar 示例收到的 HTTP 响应代码不是 `200 OK`，则可将其扩展以触发警报。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你使用了 YAML 文件在 Azure 容器实例中部署多容器组。 你已了解如何：
+在本教程中，你使用了 YAML 文件在 Azure 容器实例中部署多容器组。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 为多容器组配置 YAML 文件
 > * 部署容器组
 > * 查看容器的日志
 
-也可使用[资源管理器模板](container-instances-multi-container-group.md)指定多容器组。 需要使用容器组部署其他 Azure 服务资源时，可以轻松地针对方案改编资源管理器模板。
+还可以使用[资源管理器模板](container-instances-multi-container-group.md)指定多容器组。 当你需要使用容器组部署其他 Azure 服务资源时，可以很容易地根据场景调整资源管理器模板。
 
 <!-- LINKS - External -->
 
@@ -195,5 +197,4 @@ Connection: keep-alive
 
 <!--Not Available on [template-reference]: /templates/microsoft.containerinstance/containergroups-->
 
-<!-- Update_Description: new article about container instances multi container yaml -->
-<!--NEW.date: 01/15/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

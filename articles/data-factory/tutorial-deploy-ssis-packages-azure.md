@@ -10,17 +10,17 @@ ms.devlang: ''
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 origin.date: 05/25/2020
-ms.date: 06/29/2020
+ms.date: 07/27/2020
 author: WenJason
 ms.author: v-jay
 ms.reviewer: douglasl
 manager: digimobile
-ms.openlocfilehash: 9b69cb72b18206a36af164a0bbd2f7d4abf0b5cf
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+ms.openlocfilehash: 28fb50876a6435de30f9d9b2a9a1564e10a2e4e8
+ms.sourcegitcommit: 0eaa82cf74477d26d06bdd8fb6e715e6ed1339c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323257"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86974247"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中预配 Azure-SSIS 集成运行时
 
@@ -35,7 +35,7 @@ ms.locfileid: "85323257"
 
 有关 Azure-SSIS IR 的概念性信息，请参阅 [Azure-SSIS 集成运行时概述](concepts-integration-runtime.md#azure-ssis-integration-runtime)。
 
-本教程会完成以下步骤：
+在本教程中，将完成以下步骤：
 
 > [!div class="checklist"]
 > * 创建数据工厂。
@@ -56,7 +56,7 @@ ms.locfileid: "85323257"
   
     如果使用包含 IP 防火墙规则/虚拟网络服务终结点的 Azure SQL 数据库服务器，或者需要在未配置自承载 IR 的情况下访问本地数据，则需要将 Azure-SSIS IR 加入虚拟网络。 有关详细信息，请参阅[在虚拟网络中创建 Azure-SSIS IR](/data-factory/create-azure-ssis-integration-runtime)。
 
-  - 确认为数据库服务器启用了“允许访问 Azure 服务”设置。 使用包含 IP 防火墙规则/虚拟网络服务终结点的 Azure SQL 数据库服务器时，此设置不适用。 有关详细信息，请参阅[保护 Azure SQL 数据库](../sql-database/sql-database-security-tutorial.md#create-firewall-rules)。 若要通过 PowerShell 来启用此设置，请参阅 [New-AzSqlServerFirewallRule](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlserverfirewallrule)。
+  - 确认为数据库服务器启用了“允许访问 Azure 服务”设置。 使用包含 IP 防火墙规则/虚拟网络服务终结点的 Azure SQL 数据库服务器时，此设置不适用。 有关详细信息，请参阅[保护 Azure SQL 数据库的安全](../azure-sql/database/secure-database-tutorial.md#create-firewall-rules)。 若要通过 PowerShell 来启用此设置，请参阅 [New-AzSqlServerFirewallRule](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlserverfirewallrule)。
 
   - 将客户端计算机的 IP 地址或一系列包括客户端计算机 IP 地址的 IP 地址添加到数据库服务器的防火墙设置中的客户端 IP 地址列表。 有关详细信息，请参阅 [Azure SQL 数据库服务器级和数据库级防火墙规则](../sql-database/sql-database-firewall-configure.md)。
 
@@ -77,7 +77,7 @@ ms.locfileid: "85323257"
 
 ### <a name="from-the-data-factory-overview"></a>使用数据工厂概览
 
-1. 在“入门”页中，选择“配置 SSIS 集成运行时”磁贴。  
+1. 在“入门”页中，选择“配置 SSIS 集成运行时”磁贴。 
 
    ![“配置 Azure SSIS 集成运行时”磁贴](./media/tutorial-create-azure-ssis-runtime-portal/configure-ssis-integration-runtime-tile.png)
 
@@ -85,7 +85,7 @@ ms.locfileid: "85323257"
 
 ### <a name="from-the-authoring-ui"></a>使用创作 UI
 
-1. 在 Azure 数据工厂 UI 中切换到“编辑”选项卡，选择“连接”。  然后切换到“集成运行时”选项卡以查看数据工厂中的现有集成运行时。 
+1. 在 Azure 数据工厂 UI 中切换到“编辑”选项卡，选择“连接”。 然后切换到“集成运行时”选项卡以查看数据工厂中的现有集成运行时。 
 
    ![用于查看现有 IR 的选择](./media/tutorial-create-azure-ssis-runtime-portal/view-azure-ssis-integration-runtimes.png)
 
@@ -121,7 +121,7 @@ ms.locfileid: "85323257"
 
    1. 对于“版本/许可证”，请选择集成运行时的 SQL Server 版本：“标准”或“企业”。 如果需要在集成运行时上使用高级功能，请选择“Enterprise”。 
 
-   1. 对于“节省资金”，请选择适用于集成运行时的“Azure 混合权益”选项：“是”或“否”。  如果需要自带具有软件保障的 SQL Server 许可证，以便充分利用使用混合权益带来的成本节省，请选择“是”。 
+   1. 对于“节省资金”，请选择适用于集成运行时的“Azure 混合权益”选项：“是”或“否”。 如果需要自带具有软件保障的 SQL Server 许可证，以便充分利用使用混合权益带来的成本节省，请选择“是”。 
 
    1. 选择“**下一步**”。 
 
@@ -223,7 +223,7 @@ ms.locfileid: "85323257"
 
    1. 对于“每个节点的最大并行执行数”，请选择要在集成运行时群集中并发运行的最大包数（按节点）。 仅显示支持的包数。 如果需要使用多个核心来运行单个计算密集型或内存密集型的大型包，请选择较小的数字。 如果需要在单个核心中运行一个或多个小型包，请选择较大的数字。 
 
-   1. 选中“使用其他系统配置/组件安装自定义 Azure-SSIS Integration Runtime”复选框，以选择是否要在 Azure-SSIS IR 中添加标准/快速自定义安装。 有关详细信息，请参阅 [Azure-SSIS IR 的自定义安装](/data-factory/how-to-configure-azure-ssis-ir-custom-setup)。
+   1. 选中“使用其他系统配置/组件安装自定义 Azure-SSIS 集成运行时”复选框，选择是否要在 Azure-SSIS IR 上添加标准/快速自定义设置。 有关详细信息，请参阅 [Azure-SSIS IR 的自定义安装](/data-factory/how-to-configure-azure-ssis-ir-custom-setup)。
    
    1. 选中“选择 Azure-SSIS 集成运行时要加入到的 VNet，允许 ADF 创建特定的网络资源，并提供自己的静态公共 IP 地址(可选)”复选框，选择是否要将 Azure-SSIS IR 加入虚拟网络。
 

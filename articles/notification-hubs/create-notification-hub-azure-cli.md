@@ -10,16 +10,16 @@ ms.devlang: azurecli
 ms.workload: mobile
 ms.topic: quickstart
 origin.date: 05/27/2020
-ms.date: 07/01/2020
+ms.date: 07/21/2020
 ms.author: v-tawe
 ms.reviewer: sethm
 ms.lastreviewed: 03/18/2020
-ms.openlocfilehash: 62db43aee2a216c70d54799399bfd31c0429e979
-ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
+ms.openlocfilehash: 0e0f8f3added7c5b62edf13e34a26167ed45683e
+ms.sourcegitcommit: 5656c18d7d2faa09329b1a15e352d1622e252d5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85796234"
+ms.lasthandoff: 07/21/2020
+ms.locfileid: "86862834"
 ---
 # <a name="quickstart-create-an-azure-notification-hub-using-the-azure-cli"></a>快速入门：使用 Azure CLI 创建 Azure 通知中心
 
@@ -81,7 +81,7 @@ Azure 通知中心提供易于使用且横向扩展的推送引擎，可用于�
    ```output
    {
    "id": "/subscriptions/yourSubscriptionID/providers/Microsoft.NotificationHubs/checkNamespaceAvailability",
-   "isAvailiable": true,
+   "isAvailable": true,
    "location": null,
    "name": "spnhubns",
    "properties": false,

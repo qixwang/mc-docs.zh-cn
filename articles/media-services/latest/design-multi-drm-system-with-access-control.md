@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 12/21/2018
-ms.date: 03/04/2020
+ms.date: 07/27/2020
 ms.author: v-jay
 ms.custom: seodec18
-ms.openlocfilehash: 67f184942a6a3b5fb00bb4f238dcad6a4302db64
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d47aa96fc614712f4cad9598cebbd4c52c46a3c0
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78411691"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162120"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>设计带访问控制的多 DRM 内容保护系统 
 
@@ -222,8 +222,10 @@ DRM 子系统可能包含以下组件：
 
 * 颁发者 URL 必须以“/”结尾。 受众必须是播放器应用程序客户端 ID。 此外，必须在颁发者 URL 的末尾添加“/”。
 
-        <add key="ida:audience" value="[Application Client ID GUID]" />
-        <add key="ida:issuer" value="https://sts.chinacloudapi.cn/[AAD Tenant ID]/" />
+    ```xml
+    <add key="ida:audience" value="[Application Client ID GUID]" />
+    <add key="ida:issuer" value="https://sts.chinacloudapi.cn/[AAD Tenant ID]/" />
+    ```
 
     在 [JWT 解码器](http://jwt.calebb.net/)中，可以看到 JWT 中所示的 **aud** 和 **iss**：
 
@@ -235,11 +237,15 @@ DRM 子系统可能包含以下组件：
 
 * 设置动态 CENC 保护时，请使用正确的颁发者。
 
-        <add key="ida:issuer" value="https://sts.chinacloudapi.cn/[AAD Tenant ID]/"/>
+    ```xml
+    <add key="ida:issuer" value="https://sts.chinacloudapi.cn/[AAD Tenant ID]/"/>
+    ```
 
     以下代码无法运行：
 
-        <add key="ida:issuer" value="https://willzhanad.onmicrosoft.com/" />
+    ```xml
+    <add key="ida:issuer" value="https://willzhanad.partner.onmschina.cn/" />
+    ```
 
     GUID 是 Azure AD 租户 ID。 可以在 Azure 门户上的“终结点”弹出菜单中找到该 GUID。 
 
@@ -249,7 +255,7 @@ DRM 子系统可能包含以下组件：
 
 * 创建限制要求时，请设置适当的 TokenType。
 
-        objTokenRestrictionTemplate.TokenType = TokenType.JWT;
+    `objTokenRestrictionTemplate.TokenType = TokenType.JWT;`
 
     由于除了 JWT (ACS) 以外，还添加了对 SWT (Azure AD) 的支持，因此默认 TokenType 是 TokenType.JWT。 如果使用 SWT/ACS，则必须将令牌设置为 TokenType.SWT。
 

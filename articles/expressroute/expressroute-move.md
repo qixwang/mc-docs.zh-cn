@@ -8,12 +8,12 @@ ms.topic: conceptual
 origin.date: 05/02/2017
 ms.author: v-yiso
 ms.date: 12/10/2018
-ms.openlocfilehash: 70fc3f00b1e219ec534ddd8577e0dcced0354a30
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 062dd21ec334cf89063ac252e3f8422aeaeb7be5
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "63853076"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162433"
 ---
 # <a name="moving-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>将 ExpressRoute 线路从经典部署模型转移到 Resource Manager 部署模型
 
@@ -43,7 +43,7 @@ ms.locfileid: "63853076"
 - 对经典部署模型的访问权限由 ExpressRoute 线路中的 **allowClassicOperations** 参数控制。
 
 > [!IMPORTANT]
-> 将应用 [服务限制](../azure-subscription-service-limits.md) 页中所述的所有配额。 例如，标准线路最多可以有 10 个跨经典部署模型和 Resource Manager 部署模型的虚拟网络链接/连接。
+> 将应用 [服务限制](../azure-resource-manager/management/azure-subscription-service-limits.md) 页中所述的所有配额。 例如，标准线路最多可以有 10 个跨经典部署模型和 Resource Manager 部署模型的虚拟网络链接/连接。
 > 
 > 
 

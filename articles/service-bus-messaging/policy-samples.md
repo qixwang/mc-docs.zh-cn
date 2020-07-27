@@ -1,21 +1,23 @@
 ---
 title: Azure 服务总线消息传递的内置策略定义
 description: 列出 Azure 服务总线消息传递的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-ms.date: 06/30/2020
-origin.date: 06/10/2020
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: ''
 ms.topic: sample
-author: spelluru
-ms.author: v-tawe
+author: rockboyfor
+ms.author: v-yeche
 ms.service: service-bus-messaging
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 76c99c7d620e8bf9a86d3094cf1a352e5004e35c
-ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
+ms.openlocfilehash: 8120b6f9baec697a68384a2bf75c425bb4396bc6
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85796316"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162131"
 ---
-# <a name="azure-policy-built-in-policy-definitions-for-azure-service-bus-messaging"></a>Azure 服务总线消息传递的 Azure Policy 内置策略定义
+# <a name="azure-policy-built-in-definitions-for-azure-service-bus-messaging"></a>Azure 服务总线消息传递的 Azure Policy 内置定义
 
 此页是 Azure 服务总线消息传递的 [Azure Policy](../governance/policy/overview.md) 内置策略定义的索引。 有关其他服务的其他 Azure Policy 内置定义，请参阅 [Azure Policy 内置定义](../governance/policy/samples/built-in-policies.md)。
 
@@ -30,3 +32,5 @@ ms.locfileid: "85796316"
 - 在 [Azure Policy GitHub 存储库](https://github.com/Azure/azure-policy)中查看这些内置项。
 - 查看 [Azure Policy 定义结构](../governance/policy/concepts/definition-structure.md)。
 - 查看[了解策略效果](../governance/policy/concepts/effects.md)。
+
+<!-- Update_Description: update meta properties, wording update, update link -->

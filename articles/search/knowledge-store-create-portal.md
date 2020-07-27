@@ -1,25 +1,22 @@
 ---
-title: 在 Azure 门户中创建知识存储（预览版）
+title: 在 Azure 门户中创建知识存储
 titleSuffix: Azure Cognitive Search
-description: 使用“导入数据”向导创建用于保存扩充内容的知识存储。 连接到知识存储以便从其他应用进行分析，或将扩充内容发送到下游流程。 此功能目前处于公开预览状态。
+description: 使用“导入数据”向导创建用于保存扩充内容的知识存储。 连接到知识存储以便从其他应用进行分析，或将扩充内容发送到下游流程。
 author: HeidiSteen
 ms.author: v-tawe
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: quickstart
-origin.date: 06/07/2020
-ms.date: 07/02/2020
-ms.openlocfilehash: a9abbbb3fb2a7da6f3eb5e8806c941b46ccfcd65
-ms.sourcegitcommit: 5afd7c4c3be9b80c4c67ec55f66fcf347aad74c6
+origin.date: 06/30/2020
+ms.date: 07/17/2020
+ms.openlocfilehash: 36cf6f554bdf51977ef756381224c7f3d3f32407
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85942517"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471831"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure 认知搜索知识存储
-
-> [!IMPORTANT] 
-> 知识存储目前以公开预览版提供。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。
 
 知识存储是 Azure 认知搜索的一项功能，它可以保存内容处理管道的输出，以进行后续分析或下游处理。 
 
@@ -52,7 +49,7 @@ ms.locfileid: "85942517"
 
 1. 打开 Blob 服务页并创建一个名为 hotel-reviews 的容器。
 
-1. 单击“上传”。
+1. 单击“上载” 。
 
     ![上传数据](media/knowledge-store-create-portal/upload-command-bar.png "上传酒店评论")
 
@@ -144,7 +141,7 @@ ms.locfileid: "85942517"
 
 在此向导步骤中，你将配置一个索引器，用于统一提取前面向导步骤中定义的数据源、技能集和索引。
 
-1. 输入 `hotel-reviews-idxr` 作为“名称”。
+1. 对于“名称”，请输入 `hotel-reviews-idxr`。
 
 1. 对于“计划”，请保留默认设置“一次”。 
 

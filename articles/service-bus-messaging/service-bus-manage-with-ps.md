@@ -1,30 +1,25 @@
 ---
 title: 使用 PowerShell 管理 Azure 服务总线资源 | Azure
 description: 本文介绍如何使用 Azure PowerShell 模块创建和管理服务总线实体（命名空间、队列、主题和订阅）。
-services: service-bus-messaging
-documentationcenter: .NET
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-origin.date: 01/24/2020
-ms.date: 2/6/2020
-ms.author: v-lingwu
-ms.openlocfilehash: 094da7b3d70cf00320004f960c22e3b439265b59
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: yes
+ms.testdate: 07/20/2020
+ms.author: v-yeche
+author: rockboyfor
+ms.openlocfilehash: 705be97c2c5dc43c85513cdff2a4188285c88a9c
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796806"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162395"
 ---
 # <a name="use-powershell-to-manage-service-bus-resources"></a>使用 PowerShell 管理服务总线资源
 
-Azure PowerShell 是一个脚本编写环境，可用于控制和自动执行 Azure 服务的部署和管理。 本文介绍如何通过本地 Azure PowerShell 控制台或脚本，使用[服务总线 Resource Manager PowerShell 模块](https://docs.microsoft.com/powershell/module/azurerm.servicebus)来预配和管理服务总线实体（命名空间、队列、主题和订阅）。
+Microsoft Azure PowerShell 是一个脚本编写环境，可用于控制和自动执行 Azure 服务的部署和管理。 本文介绍如何通过本地 Azure PowerShell 控制台或脚本，使用[服务总线 Resource Manager PowerShell 模块](https://docs.microsoft.com/powershell/module/az.servicebus)来预配和管理服务总线实体（命名空间、队列、主题和订阅）。
+
+<!--CORRECT ON Microsoft Azure PowerShell-->
 
 还可以使用 Azure Resource Manager 模板管理服务总线实体。 有关详细信息，请参阅[使用 Azure Resource Manager 模板创建服务总线资源](service-bus-resource-manager-overview.md)一文。
 
@@ -59,11 +54,11 @@ Azure PowerShell 是一个脚本编写环境，可用于控制和自动执行 Az
 1. 尝试使用指定名称检索服务总线命名空间。
 2. 如果找到该命名空间，则报告它找到的内容。
 3. 如果找不到该命名空间，则会创建该命名空间，并检索新创建的命名空间。
-   
+
     ``` powershell
     # Query to see if the namespace currently exists
     $CurrentNamespace = Get-AzServiceBusNamespace -ResourceGroup $ResGrpName -NamespaceName $Namespace
-   
+
     # Check if the namespace already exists or needs to be created
     if ($CurrentNamespace)
     {
@@ -78,7 +73,7 @@ Azure PowerShell 是一个脚本编写环境，可用于控制和自动执行 Az
         New-AzServiceBusNamespace -ResourceGroup $ResGrpName -NamespaceName $Namespace -Location $Location
         $CurrentNamespace = Get-AzServiceBusNamespace -ResourceGroup $ResGrpName -NamespaceName $Namespace
         Write-Host "The $Namespace namespace in Resource Group $ResGrpName in the $Location region has been successfully created."
-                
+
     }
     ```
 
@@ -118,7 +113,7 @@ else
 
     Write-Host "Show value of primary key"
     $CurrentKey = Get-AzServiceBusKey -ResourceGroup $ResGrpName -NamespaceName $Namespace -Name $AuthRule
-        
+
     Write-Host "Remove this authorization rule"
     Remove-AzServiceBusAuthorizationRule -ResourceGroup $ResGrpName -NamespaceName $Namespace -Name $AuthRule
 }
@@ -172,11 +167,13 @@ Set-AzServiceBusQueue -ResourceGroup $ResGrpName -NamespaceName $Namespace -Queu
 这些博客文章介绍管理服务总线实体的一些备选方法：
 
 * [How to create Service Bus queues, topics and subscriptions using a PowerShell script（如何使用 PowerShell 脚本创建服务总线队列、主题和订阅）](https://docs.microsoft.com/archive/blogs/paolos/how-to-create-service-bus-queues-topics-and-subscriptions-using-a-powershell-script)
-* [如何使用 PowerShell 脚本创建 Service Bus 命名空间和事件中心](https://blogs.msdn.com/b/paolos/archive/2014/12/01/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script.aspx)
+* [如何使用 PowerShell 脚本创建 Service Bus 命名空间和事件中心](https://docs.microsoft.com/archive/blogs/paolos/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script)
 * [服务总线 PowerShell 脚本](https://code.msdn.microsoft.com/Service-Bus-PowerShell-a46b7059)
 
 <!--Anchors-->
 
 [purchase options]: https://www.azure.cn/pricing/
 [member offers]: https://www.azure.cn/support/legal/offer-rate-plans/
-[trial account]: https://wd.azure.cn/pricing/1rmb-trial/
+[trial account]: https://www.azure.cn/pricing/1rmb-trial/
+
+<!-- Update_Description: update meta properties, wording update, update link -->
