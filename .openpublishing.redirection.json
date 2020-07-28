@@ -1,6 +1,11 @@
 {
   "redirections": [
     {
+      "source_path": "articles/key-vault/secrets/key-rotation-log-monitoring.md",
+      "redirect_url": "/key-vault/secrets/tutorial-rotation-dual",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "articles/notification-hubs/notification-hubs-ios-push-notifications-swift-apps-get-started.md",
       "redirect_url": "/notification-hubs/ios-sdk-swift-rest",
       "redirect_document_id": false
