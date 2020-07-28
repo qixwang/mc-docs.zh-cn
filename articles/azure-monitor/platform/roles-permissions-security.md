@@ -1,19 +1,19 @@
 ---
 title: Azure Monitor 中的角色、权限和安全性
 description: 了解如何使用 Azure Monitor 的内置角色和权限限制对监视资源的访问。
-author: lingliw
+author: Johnnytechn
 services: azure-monitor
 ms.topic: conceptual
 origin.date: 11/27/2017
-ms.date: 6/4/2019
-ms.author: v-lingwu
+ms.date: 07/17/2020
+ms.author: v-johya
 ms.subservice: ''
-ms.openlocfilehash: f315de23be41c49b223139f102ceaee6d300fcfe
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: dcc80b0aac0a218c25ce8eb716004815fc01c592
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79452551"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244972"
 ---
 # <a name="roles-permissions-and-security-in-azure-monitor"></a>Azure Monitor 中的角色、权限和安全性
 
@@ -29,7 +29,7 @@ Azure Monitor 的内置角色设计为帮助限制对订阅中资源的访问，
 
 * 在门户中查看监视仪表板和创建自己专用的监视仪表板。
 * 查看 [Azure 警报](alerts-overview.md)中定义的预警规则
-* 使用 [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931930.aspx)、[PowerShell cmdlet](powershell-quickstart-samples.md) 或 [跨平台 CLI](cli-samples.md) 查询指标。
+* 使用 [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931930.aspx)、[PowerShell cmdlet](powershell-quickstart-samples.md) 或 [跨平台 CLI](../samples/cli-samples.md) 查询指标。
 * 使用门户、Azure Monitor REST API、PowerShell cmdlet 或跨平台 CLI 查询活动日志。
 * 查看资源的[诊断设置](diagnostic-settings.md)。
 * 查看订阅的[日志配置文件](activity-log-export.md)。
@@ -190,4 +190,6 @@ Azure Monitor 需要访问 Azure 资源以提供你启用的服务。 如果你�
 ## <a name="next-steps"></a>后续步骤
 * [阅读有关 Resource Manager 中的 RBAC 和权限的信息](../../role-based-access-control/overview.md)
 * [阅读 Azure 中的监视概述](../../azure-monitor/overview.md)
+
+
 

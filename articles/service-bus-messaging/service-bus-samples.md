@@ -1,28 +1,22 @@
 ---
 title: Azure 服务总线消息传送示例概述
 description: 服务总线消息传送示例演示 Azure 服务总线消息传送方面的关键功能。 提供指向 GitHub 上的示例的链接。
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-editor: spelluru
-ms.assetid: 0b420343-2d2a-4c65-98f1-ee0e39ef55c8
-ms.service: service-bus-messaging
-ms.devlang: na
+author: rockboyfor
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-origin.date: 01/27/2020
-ms.date: 06/30/2020
-ms.author: v-tawe
-ms.openlocfilehash: aaf74cd5507394a08b9954f613b4b01a27c72462
-ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: ''
+ms.author: v-yeche
+ms.openlocfilehash: fed2bd2259bf7fc2e7a45b1c0f2e249d2fdf0b8f
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85796324"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162255"
 ---
 # <a name="service-bus-messaging-samples"></a>服务总线消息传送示例
-服务总线消息传送示例演示[服务总线消息传送](https://www.azure.cn/pricing/details/service-bus/)中的关键功能。 目前，可以在以下两个位置找到这些示例：
+服务总线消息传送示例演示[服务总线消息传送](https://www.azure.cn/home/features/service-bus/)中的关键功能。 目前，可以在以下两个位置找到这些示例：
 
 | 编程语言 | SDK 或示例位置 |
 | -------------------- | ----------------------- |
@@ -41,3 +35,4 @@ ms.locfileid: "85796324"
 * [服务总线消息传送概述](service-bus-messaging-overview.md)
 * [服务总线体系结构](service-bus-architecture.md)
 
+<!-- Update_Description: update meta properties, wording update, update link -->

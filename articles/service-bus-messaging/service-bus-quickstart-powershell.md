@@ -1,22 +1,20 @@
 ---
 title: 使用 Azure PowerShell 创建服务总线队列
 description: 在本快速入门中，你将了解如何使用 Azure PowerShell 创建服务总线队列。 然后，你将使用示例应用程序向队列发送消息以及从中接收消息。
-services: service-bus-messaging
-author: spelluru
-manager: timlt
-ms.service: service-bus-messaging
+author: rockboyfor
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.custom: mvc
-origin.date: 12/20/2019
-ms.date: 06/30/2020
-ms.author: v-tawe
-ms.openlocfilehash: 821caa1ceb9ea64931cf4a0830b19b4dda18f8a0
-ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: yes
+ms.testdate: 07/20/2020
+ms.author: v-yeche
+ms.openlocfilehash: e1c85031c1098e3268a9623583ac8748efd6e61d
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85796278"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162275"
 ---
 # <a name="quickstart-use-azure-powershell-to-create-a-service-bus-queue"></a>快速入门：使用 Azure PowerShell 创建服务总线队列
 本快速入门介绍如何使用 PowerShell 创建消息命名空间并在该命名空间中创建队列，以及如何获取该命名空间上的授权凭据，以便将消息发送到服务总线队列及从中接收消息。 然后该过程展示了如何使用 [.NET Standard 库](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)从此队列发送和接收消息。
@@ -25,43 +23,44 @@ ms.locfileid: "85796278"
 
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
-
 ## <a name="prerequisites"></a>先决条件
 
 若要完成本教程，请确保已安装：
 
-- Azure 订阅。 如果没有 Azure 订阅，请在开始前创建一个[试用帐户][]。 
+- Azure 订阅。 如果没有 Azure 订阅，可在开始前创建一个[试用帐户][]。 
 - [Visual Studio 2017 Update 3（版本 15.3 (26730.01)）](https://www.visualstudio.com/vs)或更高版本。 请使用 Visual Studio 生成一个向队列发送消息以及从队列接收消息的示例。 示例用于测试在门户中创建的队列。 
 - [NET Core SDK](https://www.microsoft.com/net/download/windows) 2.0 或更高版本。
 
 本快速入门要求运行最新版本的 Azure PowerShell。 如需进行安装或升级，请参阅[安装和配置 Azure PowerShell][]。
 
+<!--Not Available on Cloud Shell-->
+
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
 1. 首先，如果尚未安装服务总线 PowerShell 模块，请安装：
 
-   ```PowerShell
-   Install-Module Az.ServiceBus
-   ```
+    ```powershell
+    Install-Module Az.ServiceBus
+    ```
 
 2. 运行以下命令来登录到 Azure：
 
-   ```PowerShell
-   Login-AzAccount -Environment AzureChinaCloud
-   ```
+    ```powershell
+    Connect-AzAccount -Environment AzureChinaCloud
+    ```
 
 3. 发出以下命令来设置当前的订阅上下文，或者查看当前活动的订阅：
 
-   ```PowerShell
-   Select-AzSubscription -SubscriptionName "MyAzureSubName" 
-   Get-AzContext
-   ```
+    ```powershell
+    Select-AzSubscription -SubscriptionName "MyAzureSubName" 
+    Get-AzContext
+    ```
 
 ## <a name="provision-resources"></a>预配资源
 
 在 PowerShell 提示符下，发出以下命令以预配服务总线资源。 请务必将所有占位符替换为适当的值：
 
-```PowerShell
+```powershell
 # Create a resource group 
 New-AzResourceGroup -Name my-resourcegroup -Location chinaeast
 
@@ -85,41 +84,41 @@ Get-AzServiceBusKey -ResourceGroupName my-resourcegroup -Namespace namespace-nam
 
 1. 通过发出以下命令克隆[服务总线 GitHub 存储库](https://github.com/Azure/azure-service-bus/)：
 
-   ```shell
-   git clone https://github.com/Azure/azure-service-bus.git
-   ```
+    ```shell
+    git clone https://github.com/Azure/azure-service-bus.git
+    ```
 
 2. 导航到示例文件夹 `azure-service-bus\samples\DotNet\GettingStarted\BasicSendReceiveQuickStart\BasicSendReceiveQuickStart`。
 
 3. 如果尚未这样做，请使用以下 PowerShell cmdlet 获取连接字符串。 请务必将 `my-resourcegroup` 和 `namespace-name` 替换为具体值： 
 
-   ```PowerShell
-   Get-AzServiceBusKey -ResourceGroupName my-resourcegroup -Namespace namespace-name -Name RootManageSharedAccessKey
-   ```
+    ```powershell
+    Get-AzServiceBusKey -ResourceGroupName my-resourcegroup -Namespace namespace-name -Name RootManageSharedAccessKey
+    ```
 
 4. 在 PowerShell 提示符下，键入以下命令：
 
-   ```shell
-   dotnet build
-   ```
+    ```shell
+    dotnet build
+    ```
 
 5. 导航到 `bin\Debug\netcoreapp2.0` 文件夹。
 
 6. 键入以下命令以运行程序。 请务必将 `myConnectionString` 替换为先前获取的值，将 `myQueueName` 替换为所创建队列的名称：
 
-   ```shell
-   dotnet BasicSendReceiveQuickStart.dll -ConnectionString "myConnectionString" -QueueName "myQueueName"
-   ``` 
+    ```shell
+    dotnet BasicSendReceiveQuickStart.dll -ConnectionString "myConnectionString" -QueueName "myQueueName"
+    ``` 
 
 7. 观察发送到队列并随后从队列中接收的 10 条消息：
 
-   ![程序输出](./media/service-bus-quickstart-powershell/dotnet.png)
+    ![程序输出](./media/service-bus-quickstart-powershell/dotnet.png)
 
 ## <a name="clean-up-resources"></a>清理资源
 
 运行以下命令来删除资源组、命名空间和所有相关资源：
 
-```PowerShell
+```powershell
 Remove-AzResourceGroup -Name my-resourcegroup
 ```
 
@@ -161,7 +160,7 @@ static void Main(string[] args)
     }                            
 }
 ```
- 
+
 然后，`Main()` 方法启动异步消息循环 `MainAsync()`。
 
 ### <a name="message-loop"></a>消息循环
@@ -266,5 +265,7 @@ static async Task ProcessMessagesAsync(Message message, CancellationToken token)
 > [!div class="nextstepaction"]
 > [发送和接收消息](service-bus-dotnet-get-started-with-queues.md)
 
-[trial account]: https://www.azure.cn/pricing/1rmb-trial
-[安装和配置 Azure PowerShell]: https://docs.azure.cn/powershell-install-configure
+[试用帐户]: https://www.azure.cn/pricing/1rmb-trial/
+[安装和配置 Azure PowerShell]: https://docs.microsoft.com/powershell/azure/install-Az-ps
+
+<!-- Update_Description: update meta properties, wording update, update link -->

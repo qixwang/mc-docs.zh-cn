@@ -7,16 +7,19 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 origin.date: 11/05/2019
-ms.date: 07/06/2020
+ms.date: 07/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: d6e41c196a29da789bad1c837e1e017f4205c953
-ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
+ms.openlocfilehash: afee61d02eb23b95e409df44364dbf8fac68c77c
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85945919"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244277"
 ---
+<!--Verified Successfully-->
 # <a name="availability-options-for-virtual-machines-in-azure"></a>Azure 中虚拟机的可用性选项
+
+<!--Include file updated-->
 
 [!INCLUDE [virtual-machines-common-availability](../../../includes/virtual-machines-common-availability.md)]
 

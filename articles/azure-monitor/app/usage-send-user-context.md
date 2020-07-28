@@ -2,18 +2,17 @@
 title: 用于跟踪活动的用户上下文 ID - Azure Application Insights
 description: 在 Application Insights 中通过向每位用户分配一个唯一的永久性 ID（字符串），跟踪其如何使用服务。
 ms.topic: conceptual
-author: lingliw
-manager: digimobile
+author: Johnnytechn
+ms.author: v-johya
+ms.date: 07/17/2020
 origin.date: 01/03/2019
-ms.date: 6/4/2019
 ms.reviewer: abgreg;mbullwin
-ms.author: v-lingwu
-ms.openlocfilehash: ca9125983da65cc728d799a1a979ea471d2fa0e9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e221617d60c27a800ee270fa760362c5564e01da
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850344"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244916"
 ---
 # <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>发送用户上下文 ID 以启用 Azure Application Insights 中的使用体验
 
@@ -24,7 +23,8 @@ Application Insights 通过一套产品使用工具监视并跟踪用户：
 - [用户、会话、事件](/azure-monitor/app/usage-segmentation)
 - [漏斗图](/azure-monitor/app/usage-funnels)
 - [保留](/azure-monitor/app/usage-retention)队列
-- [工作簿](/azure-monitor/app/usage-workbooks)
+- [工作簿](/azure-monitor/platform/workbooks-overview)
+<!--Correct in MC about above links-->
 
 为了跟踪用户在各个时间进行的操作，Application Insights 需要每个用户或会话的 ID。 在每个自定义事件或页面视图中包含以下 ID。
 
@@ -136,8 +136,5 @@ namespace MvcWebRole.Telemetry
     - [用户、会话和事件](usage-segmentation.md)
     - [漏斗图](usage-funnels.md)
     - [保留](usage-retention.md)
-    - [工作簿](../../azure-monitor/app/usage-workbooks.md)
-
-
-
+    - [工作簿](../../azure-monitor/platform/workbooks-overview.md)
 

@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 01/20/2019
-ms.date: 03/04/2020
+ms.date: 07/27/2020
 ms.author: v-jay
-ms.openlocfilehash: d68b5ce8d756d36ceb9443ffcf1fca3f0923264b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 063855e71c1375762fd80a0a81cae1648470988c
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78411395"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162185"
 ---
 # <a name="diagnostic-logs-schemas"></a>诊断日志架构
 
@@ -34,7 +34,7 @@ ms.locfileid: "78411395"
 
 ## <a name="top-level-diagnostic-logs-schema"></a>顶级诊断日志架构
 
-有关顶级诊断日志架构的详细说明，请参阅 [Azure 诊断日志支持的服务、架构和类别](/azure-monitor/platform/diagnostic-logs-schema)。
+有关顶级诊断日志架构的详细说明，请参阅 [Azure 诊断日志支持的服务、架构和类别](../../azure-monitor/platform/resource-logs-schema.md)。
 
 ## <a name="key-delivery-log-schema"></a>密钥传送日志架构
 

@@ -8,18 +8,18 @@ ms.topic: article
 origin.date: 01/22/2020
 ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 2dfbe8a4bd7595dfcad9864b32fc2afcf7e5dfb0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4826e690c8f46e14216ccfa1b3c17cd944a6e211
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540226"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244554"
 ---
 # <a name="azure-firewall-logs-and-metrics"></a>Azure 防火墙日志和指标
 
 可以使用防火墙日志来监视 Azure 防火墙。 此外，可以使用活动日志来审核对 Azure 防火墙资源执行的操作。
 
-可通过门户访问其中部分日志。 可将日志发送到 [Azure Monitor 日志](../azure-monitor/insights/azure-networking-analytics.md)、存储和事件中心，并使用 Azure Monitor 日志或其他工具（例如 Excel 和 Power BI）对其进行分析。
+可通过门户访问其中部分日志。 可将日志发送到 Azure Monitor 日志、存储和事件中心，并使用 Azure Monitor 日志或其他工具（例如 Excel 和 Power BI）对其进行分析。
 
 指标是能够为近实时方案提供支持的轻型数据，因此，它们特别适合用于警报和快速检测问题。
 

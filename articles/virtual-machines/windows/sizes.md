@@ -6,18 +6,20 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.workload: infrastructure-services
 origin.date: 02/03/2020
-ms.date: 07/06/2020
+ms.date: 07/27/2020
+ms.testscope: yes|no
+ms.testdate: 07/27/2020Null
 ms.author: v-yeche
-ms.openlocfilehash: 0cd4880b8a21867c8969ff767267574b036a862d
-ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
+ms.openlocfilehash: cba5cede9a91be9f913f0aea55490d8f300a95a6
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85945582"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244281"
 ---
 # <a name="sizes-for-windows-virtual-machines-in-azure"></a>Azure 中 Windows 虚拟机的大小
 
-本文介绍可用于运行 Windows 应用和工作负荷的 Azure 虚拟机的可用大小和选项。 此外，还提供在计划使用这些资源时要考虑的部署注意事项。  本文适用于 Windows 和 Linux VM。
+本文介绍可用于运行 Windows 应用和工作负荷的 Azure 虚拟机的可用大小和选项。 此外，还提供在计划使用这些资源时要考虑的部署注意事项。 本文适用于 Windows 和 Linux VM。
 
 | 类型 | 大小 | 说明 |
 |------|-------|-------------|

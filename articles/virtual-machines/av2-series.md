@@ -6,14 +6,16 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: article
 origin.date: 02/03/2020
+ms.testscope: no
+ms.testdate: ''
 ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 9f366b95d32a9397c4bb938a4fefae3c427b40d1
-ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
+ms.openlocfilehash: 40bc175e2cd893b9c6830e32c7b8e1727d0a037e
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85945601"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244346"
 ---
 <!--Verified successfully-->
 <!--Partical Content from verified articles-->

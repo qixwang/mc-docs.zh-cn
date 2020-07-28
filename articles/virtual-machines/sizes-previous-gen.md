@@ -7,14 +7,16 @@ author: rockboyfor
 ms.topic: article
 ms.workload: infrastructure-services
 origin.date: 02/20/2020
-ms.date: 07/06/2020
+ms.date: 07/27/2020
+ms.testscope: yes
+ms.testdate: 07/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: e54bdfcf70ddc959c85fccab7de083899a495cd2
-ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
+ms.openlocfilehash: 611b1a491ba3a6e3e9ba2e6526a6caa394f81f42
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85945879"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244704"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>前几代虚拟机大小
 
@@ -68,8 +70,6 @@ Mbps = 每秒 10^6 字节，GiB = 1024^3 字节。
 
 <!--CORRECT ON [Windows](windows/premium-storage-performance.md)-->
 <!--Not Available on ## NVv2-series-->
-
-[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
 ## <a name="older-generations-of-virtual-machine-sizes"></a>前几代虚拟机大小
 
@@ -140,6 +140,9 @@ ACU：50-100
 
 **更新的大小建议**：[Dv3 系列](dv3-dsv3-series.md)
 
+<!--Dv4-series pending on 2020 Q3 Change this when available-->
+<!--Not Available on [Dav4-series](dav4-dasv4-series.md)-->
+
 ACU：160-250 <sup>1</sup>
 
 高级存储：不支持
@@ -160,6 +163,9 @@ ACU：160-250 <sup>1</sup>
 ### <a name="d-series---memory-optimized"></a>D 系列 - 内存优化  
 
 **更新的大小建议**：[Dv3 系列](dv3-dsv3-series.md)
+
+<!--Dv4-series pending on 2020 Q3 Change this when available-->
+<!--Not Available on [Dav4-series](dav4-dasv4-series.md)-->
 
 ACU：160-250 <sup>1</sup>
 
@@ -184,6 +190,9 @@ ACU：160-250 <sup>1</sup>
 
 **更新的大小建议**：[Dsv3 系列](dv3-dsv3-series.md)
 
+<!--Dv4-series pending on 2020 Q3 Change this when available-->
+<!--Not Available on [Dav4-series](dav4-dasv4-series.md)-->
+
 ACU：160-250 <sup>1</sup>
 
 高级存储：支持
@@ -204,6 +213,9 @@ ACU：160-250 <sup>1</sup>
 ### <a name="ds-series---memory-optimized"></a>DS 系列 - 内存优化  
 
 **更新的大小建议**：[Dsv3 系列](dv3-dsv3-series.md)
+
+<!--Dv4-series pending on 2020 Q3 Change this when available-->
+<!--Not Available on [Dav4-series](dav4-dasv4-series.md)-->
 
 ACU：160-250 <sup>1,2</sup>
 

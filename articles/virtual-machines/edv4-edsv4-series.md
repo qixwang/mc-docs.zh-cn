@@ -8,14 +8,16 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 origin.date: 02/04/2020
-ms.date: 07/06/2020
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 28b63fa5c6cd3384f40ac1135826be3d48d96fac
-ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
+ms.openlocfilehash: 7a2bb4af70b6d2ca230c23ffe2ed2ea744665f2d
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85946098"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244788"
 ---
 <!--Pending GA on Q3 2020, only be suitable for China East 2 and China North 2 site-->
 <!--RELEASE BEFORE CONFIRME AND BE CAREFULLY-->

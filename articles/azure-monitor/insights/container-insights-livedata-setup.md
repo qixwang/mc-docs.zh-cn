@@ -4,13 +4,14 @@ description: 本文介绍在不将 kubectl 与适用于容器的 Azure Monitor �
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 05/22/2020
-ms.openlocfilehash: f09689b9280e0753aff04fab45d4c8bc2e87376a
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.date: 07/17/2020
+ms.custom: references_regions
+ms.openlocfilehash: 31800e8b3e94f92fdf4a3619828e68ba4b0998ea
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199858"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244721"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>如何设置实时数据（预览版）功能
 
@@ -23,21 +24,21 @@ ms.locfileid: "84199858"
     - 配置了群集角色绑定 **[clusterMonitoringUser](https://docs.microsoft.com/rest/api/aks/managedclusters/listclustermonitoringusercredentials?view=azurermps-5.2.0)** 的 AKS
 - 启用了基于 SAML 的 Azure Active Directory (AD) 单一登录的 AKS
 
-这些说明要求对 Kubernetes 群集具有管理访问权限，在配置为使用 Azure Active Directory (AD) 进行用户身份验证的情况下，要求对 Azure AD 具有管理访问权限。  
+这些说明要求对 Kubernetes 群集具有管理访问权限，在配置为使用 Azure Active Directory (AD) 进行用户身份验证的情况下，要求对 Azure AD 具有管理访问权限。
 
 本文介绍了如何配置身份验证，以便从群集中控制对实时数据（预览版）功能的访问：
 
 - 启用了基于角色的访问控制 (RBAC) 的 AKS 群集
-- 集成了 Azure Active Directory 的 AKS 群集。 
+- 集成了 Azure Active Directory 的 AKS 群集。
 
 >[!NOTE]
->此功能不支持以[专用群集](https://azure.microsoft.com/updates/aks-private-cluster/)形式启用的 AKS 群集。 此功能依赖于从浏览器通过代理服务器直接访问 Kubernetes API。 启用网络安全以阻止通过此代理访问 Kubernetes API 会阻止此流量。 
+>此功能不支持以[专用群集](https://azure.microsoft.com/updates/aks-private-cluster/)形式启用的 AKS 群集。 此功能依赖于从浏览器通过代理服务器直接访问 Kubernetes API。 启用网络安全以阻止通过此代理访问 Kubernetes API 会阻止此流量。
 
 ## <a name="authentication-model"></a>身份验证模型
 
 实时数据（预览版）功能使用与 `kubectl` 命令行工具等同的 Kubernetes API。 Kubernetes API 终结点使用自签名证书，你的浏览器无法验证该证书的有效性。 此功能使用内部代理通过 AKS 服务来验证证书，确保流量受信任。
 
-Azure 门户会提示你验证你用于 Azure Active Directory 群集的登录凭据，并将你重定向到你在创建群集期间设置（并在本文中重新配置）的客户端注册。 此行为类似于 `kubectl` 所需的身份验证过程。 
+Azure 门户会提示你验证你用于 Azure Active Directory 群集的登录凭据，并将你重定向到你在创建群集期间设置（并在本文中重新配置）的客户端注册。 此行为类似于 `kubectl` 所需的身份验证过程。
 
 >[!NOTE]
 >对你的群集的授权由 Kubernetes 以及为它配置的安全模型管理。 访问此功能的用户需要有权下载 Kubernetes 配置 (*kubeconfig*)，类似于运行 `az aks get-credentials -n {your cluster name} -g {your resource group}`。 如果启用了 Azure RBAC 并且 AKS 群集未启用 RBAC 授权，则此配置文件包含 **Azure Kubernetes 服务群集用户角色**的授权和身份验证令牌。 当为 AKS 启用了 Azure Active Directory (AD) 基于 SAML 的单一登录时，它包含有关 Azure AD 的信息和客户端注册详细信息。
@@ -63,50 +64,50 @@ AKS 在 2020 年 1 月发布了此新的角色绑定，因此在 2020 年 1 月�
 
 以下示例步骤演示如何从此 yaml 配置模板配置群集角色绑定。
 
-1. 复制并粘贴 yaml 文件，然后将其另存为 LogReaderRBAC.yaml。  
+1. 复制并粘贴 yaml 文件，然后将其另存为 LogReaderRBAC.yaml。
 
     ```
-    apiVersion: rbac.authorization.k8s.io/v1 
-    kind: ClusterRole 
-    metadata: 
-       name: containerHealth-log-reader 
-    rules: 
-        - apiGroups: ["", "metrics.k8s.io", "extensions", "apps"] 
-          resources: 
-             - "pods/log" 
-             - "events" 
-             - "nodes" 
-             - "pods" 
-             - "deployments" 
-             - "replicasets" 
-          verbs: ["get", "list"] 
-    --- 
-    apiVersion: rbac.authorization.k8s.io/v1 
-    kind: ClusterRoleBinding 
-    metadata: 
-       name: containerHealth-read-logs-global 
-    roleRef: 
-       kind: ClusterRole 
-       name: containerHealth-log-reader 
-       apiGroup: rbac.authorization.k8s.io 
-    subjects: 
-    - kind: User 
-      name: clusterUser 
-      apiGroup: rbac.authorization.k8s.io 
+    apiVersion: rbac.authorization.k8s.io/v1
+    kind: ClusterRole
+    metadata:
+       name: containerHealth-log-reader
+    rules:
+        - apiGroups: ["", "metrics.k8s.io", "extensions", "apps"]
+          resources:
+             - "pods/log"
+             - "events"
+             - "nodes"
+             - "pods"
+             - "deployments"
+             - "replicasets"
+          verbs: ["get", "list"]
+    ---
+    apiVersion: rbac.authorization.k8s.io/v1
+    kind: ClusterRoleBinding
+    metadata:
+       name: containerHealth-read-logs-global
+    roleRef:
+       kind: ClusterRole
+       name: containerHealth-log-reader
+       apiGroup: rbac.authorization.k8s.io
+    subjects:
+    - kind: User
+      name: clusterUser
+      apiGroup: rbac.authorization.k8s.io
     ```
 
 2. 若要更新配置，请运行以下命令：`kubectl apply -f LogReaderRBAC.yaml`。
 
->[!NOTE] 
+>[!NOTE]
 > 如果已将以前版本的 `LogReaderRBAC.yaml` 文件应用于群集，请通过复制并粘贴上面步骤 1 中所示的新代码对该文件进行更新，然后运行步骤 2 中显示的命令将其应用于群集。
 
-## <a name="configure-ad-integrated-authentication"></a>配置 AD 集成式身份验证 
+## <a name="configure-ad-integrated-authentication"></a>配置 AD 集成式身份验证
 
 配置为使用 Azure Active Directory (AD) 进行用户身份验证的 AKS 群集会利用访问此功能的人员的登录凭据。 在此配置中，你可以使用自己的 Azure AD 身份验证令牌登录到 AKS 群集。
 
-必须重新配置 Azure AD 客户端注册，以允许 Azure 门户将授权页重定向为受信任的重定向 URL。 然后通过 **ClusterRoles** 和 **ClusterRoleBindings**，授予来自 Azure AD 的用户直接访问相同 Kubernetes API 终结点的权限。 
+必须重新配置 Azure AD 客户端注册，以允许 Azure 门户将授权页重定向为受信任的重定向 URL。 然后通过 **ClusterRoles** 和 **ClusterRoleBindings**，授予来自 Azure AD 的用户直接访问相同 Kubernetes API 终结点的权限。
 
-有关 Kubernetes 中的高级安全设置的详细信息，请查看 [Kubernetes 文档](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)。 
+有关 Kubernetes 中的高级安全设置的详细信息，请查看 [Kubernetes 文档](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)。
 
 >[!NOTE]
 >如果你要创建新的启用了 RBAC 的群集，请参阅[将 Azure Active Directory 与 Azure Kubernetes 服务集成](../../aks/azure-ad-integration.md)并按照步骤来配置 Azure AD 身份验证。 在创建客户端应用程序的步骤中，该部分中的一个注释突出显示了你需要为适用于容器的 Azure Monitor 创建的与下面步骤 3 中指定的 URL 匹配的两个重定向 URL。
@@ -115,24 +116,24 @@ AKS 在 2020 年 1 月发布了此新的角色绑定，因此在 2020 年 1 月�
 
 1. 在 Azure 门户中的“Azure Active Directory”>“应用注册”下，找到你在 Azure AD 中的 Kubernetes 群集的客户端注册。
 
-2. 从左侧窗格中选择“身份验证”。 
+2. 从左侧窗格中选择“身份验证”。
 
 3. 将两个重定向 URL 作为 **Web** 应用程序类型添加到此列表。 第一个基 URL 值应为 `https://afd.hosting.portal.chinacloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`，第二个基 URL 值应为 `https://monitoring.hosting.portal.chinacloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`。
 
     >[!NOTE]
-    >如果你在 Azure 中国版中使用此功能，则第一个基 URL 值应为 `https://afd.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`，第二个基 URL 值应为 `https://monitoring.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`。 
-    
+    >如果你在 Azure 中国版中使用此功能，则第一个基 URL 值应为 `https://afd.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`，第二个基 URL 值应为 `https://monitoring.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`。
+
 4. 注册重定向 URL 后，在“隐式授权”下选择“访问令牌”和“ID 令牌”选项，然后保存所做的更改。
 
 >[!NOTE]
 >通过 Azure Active Directory 配置身份验证以便实现单一登录的操作只能在初次部署新 AKS 群集过程中完成。 不能为已部署的 AKS 群集配置单一登录。
-  
+
 >[!IMPORTANT]
 >如果使用更新的 URI 重新配置了用于用户身份验证的 Azure AD，请清除浏览器的缓存，确保更新的身份验证令牌已下载并应用。
 
 ## <a name="grant-permission"></a>授予权限
 
-必须向每个 Azure AD 帐户授予对 Kubernetes 中相应 API 的权限，以便访问实时数据（预览版）功能。 向 Azure Active Directory 帐户授权的步骤类似于 [Kubernetes RBAC 身份验证](#configure-kubernetes-rbac-authorization)部分所述的步骤。 将 yaml 配置模板应用于群集之前，请将 **ClusterRoleBinding** 下的 **clusterUser** 替换为所需的用户。 
+必须向每个 Azure AD 帐户授予对 Kubernetes 中相应 API 的权限，以便访问实时数据（预览版）功能。 向 Azure Active Directory 帐户授权的步骤类似于 [Kubernetes RBAC 身份验证](#configure-kubernetes-rbac-authorization)部分所述的步骤。 将 yaml 配置模板应用于群集之前，请将 **ClusterRoleBinding** 下的 **clusterUser** 替换为所需的用户。
 
 >[!IMPORTANT]
 >如果你为其授予 RBAC 绑定的用户在同一个 Azure AD 租户中，请根据 userPrincipalName 分配权限。 如果该用户位于不同的 Azure AD 租户中，请查询并使用 objectId 属性。

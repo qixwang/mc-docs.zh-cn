@@ -4,14 +4,14 @@ description: 为 SDK 编写遥测处理器和遥测初始值设定项，以在�
 ms.topic: conceptual
 origin.date: 11/23/2016
 author: Johnnytechn
-ms.date: 05/28/2020
+ms.date: 07/17/2020
 ms.author: v-johya
-ms.openlocfilehash: 3c999b716fca07e780333916ed5baf0c76f9d4da
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: 06e8077213e32680f6bde984bf530e0e0469c17a
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199643"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244852"
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Application Insights SDK 中的筛选和预处理遥测 | Microsoft Azure
 
@@ -367,7 +367,7 @@ OpenCensus Python 中的遥测处理器是简单的回调函数，在导出遥�
 
 ```python
 def callback_function(envelope):
-    envelope.tags['ai.cloud.role'] = 'new_role_name.py'
+    envelope.tags['ai.cloud.role'] = 'new_role_name'
 ```
 
 ```python

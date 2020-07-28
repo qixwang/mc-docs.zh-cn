@@ -2,23 +2,23 @@
 title: 什么是 Azure Application Insights？ | Azure Docs
 description: 应用程序性能管理和实时 Web 应用程序的使用情况跟踪。  检测、会审和诊断问题，了解用户使用应用的方式。
 ms.topic: overview
+ms.date: 07/17/2020
 author: Johnnytechn
 ms.custom: mvc
 origin.date: 06/03/2019
-ms.date: 05/28/2020
 ms.author: v-johya
-ms.openlocfilehash: 4ca5885d76f69a56e1cb6fb7d693a8e276d601f0
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: 4c86cbb66bfed9ad2aabcd6c84751f875a6a0010
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199652"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244847"
 ---
 # <a name="what-is-application-insights"></a>什么是 Application Insights？
 Application Insights 是 [Azure Monitor](../overview.md) 的一项功能，是面向开发人员和 DevOps 专业人员的可扩展应用程序性能管理 (APM) 服务。 使用它可以监视实时应用程序。 它将自动检测性能异常，并且包含了强大的分析工具来帮助诊断问题，了解用户在应用中实际执行了哪些操作。  它旨在帮助持续提高性能与可用性。 它适用于本地云、混合云或任何公有云中托管的各种平台（包括 .NET、Node.js、Java 和 Python）上的应用。 它与 DevOps 进程集成，并且具有与不同开发工具的连接点。 可以通过与 Visual Studio App Center 集成来监视和分析移动应用的遥测数据。
 
 ## <a name="how-does-application-insights-work"></a>Application Insights 的工作原理是什么？
-你在应用程序中安装了小型检测包 (SDK)，或者以无代码方式启用了 Application Insights（如果[受支持](../../azure-monitor/app/platforms.md)）。 检测技术会监视应用，并使用我们称为“检测密钥”的唯一 GUID 将遥测数据定向到 Azure Application Insights 资源。
+你可以在应用程序中安装小型检测包 (SDK)，或者使用 Application Insights 代理启用 Application Insights（如果[受支持](../../azure-monitor/app/platforms.md)）。 检测技术会监视应用，并使用我们称为“检测密钥”的唯一 GUID 将遥测数据定向到 Azure Application Insights 资源。
 
 不仅可以检测 Web 服务应用程序，还可以检测所有后台组件以及 Web 页面中的 JavaScript。 应用程序及其组件可以在任何地方运行 - 不必在 Azure 中托管。
 
@@ -29,7 +29,7 @@ Application Insights 是 [Azure Monitor](../overview.md) 的一项功能，是�
 所有这些遥测流都将集成到 Azure Monitor 中。 在 Azure 门户中，可以对原始数据应用强大的分析和搜索工具。
 
 ### <a name="whats-the-overhead"></a>什么是开销？
-应用性能受到的影响非常小。 跟踪调用是非阻塞式的，以批量方式进行并在单独的线程中发送。
+应用性能受到的影响小。 跟踪调用是非阻塞式的，以批量方式进行并在单独的线程中发送。
 
 ## <a name="what-does-application-insights-monitor"></a>Application Insights 监视器的工作原理是什么？
 
@@ -52,7 +52,7 @@ Application Insights 主要面向开发团队，旨在帮助用户了解应用�
 
 |  |  |
 | --- | --- |
-| [**智能检测和手动警报**](../../azure-monitor/app/proactive-diagnostics.md)<br/>设置自动警报，使其适应应用的正常遥测模式并在出现异常情况时触发。 还可以在自定义或标准指标的特定级别上[设置警报](../../azure-monitor/app/alerts.md)。 |![警报示例](./media/app-insights-overview/alerts-tn.png) |
+| [**智能检测和手动警报**](../../azure-monitor/app/proactive-diagnostics.md)<br/>设置自动警报，使其适应应用的正常遥测模式并在出现异常情况时触发。 还可以在自定义或标准指标的特定级别上[设置警报](../../azure-monitor/platform/alerts-log.md)。 |![警报示例](./media/app-insights-overview/alerts-tn.png) |
 | [**应用程序映射**](../../azure-monitor/app/app-map.md)<br/>探索应用的组件，包含关键指标和警报。 |![应用程序映射](./media/app-insights-overview/appmap-tn.png)  |
 | [**探查器**](../../azure-monitor/app/profiler.md)<br/>检查抽样请求的执行配置文件。 |![探查器](./media/app-insights-overview/profiler.png) |
 | [**使用情况分析**](../../azure-monitor/app/usage-overview.md)<br/>分析用户细分和保留情况。|![留存情况工具](./media/app-insights-overview/retention.png) |
@@ -109,6 +109,7 @@ Application Insights 是 Azure 中托管的众多服务之一，遥测会发送�
   * [Python](../../azure-monitor/app/opencensus-python.md)
   * [其他平台](../../azure-monitor/app/platforms.md)
 * 针对页面视图、AJAX 和其他客户端遥测 **[检测网页](../../azure-monitor/app/javascript.md)** 。
+* 通过与 Visual Studio App Center 集成 **[分析移动应用使用情况](../../azure-monitor/learn/mobile-center-quickstart.md)** 。
 * **[可用性测试](../../azure-monitor/app/monitor-web-app-availability.md)** - 从我们的服务器定期对网站执行 ping 操作。
 
 ## <a name="next-steps"></a>后续步骤
@@ -130,7 +131,7 @@ Application Insights 是 Azure 中托管的众多服务之一，遥测会发送�
 ## <a name="support-and-feedback"></a>支持和反馈
 * 问题：
   * [故障排除][qna]
-  * [MSDN 论坛](https://social.msdn.microsoft.com/Forums/vstudio/home?forum=ApplicationInsights)
+  * [Microsoft Q&A 问题页面](https://docs.microsoft.com/answers/topics/azure-monitor.html)
   * [StackOverflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 * 用户建议：
   * [UserVoice](https://feedback.azure.com/forums/357324-application-insights/filters/top)
@@ -139,6 +140,8 @@ Application Insights 是 Azure 中托管的众多服务之一，遥测会发送�
 
 <!--Link references-->
 
+[android]: ../../azure-monitor/learn/mobile-center-quickstart.md
+[azure]: ../../insights-perf-analytics.md
 [client]: ../../azure-monitor/app/javascript.md
 [desktop]: ../../azure-monitor/app/windows-desktop.md
 [greenbrown]: ../../azure-monitor/app/asp-net.md

@@ -8,14 +8,16 @@ manager: digimobile
 ms.service: virtual-machines-windows
 ms.topic: article
 origin.date: 12/17/2018
-ms.date: 04/27/2020
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: f43d0fc28eede627b48d829fc75dca45f7b0086a
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: a40b9a41ca8cd6b8cd787d2ae60898d711d00ae6
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596348"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244678"
 ---
 # <a name="vm-snapshot-windows-extension-for-azure-backup"></a>Azure 备份的 VM 快照 Windows 扩展
 
@@ -38,7 +40,7 @@ Azure 备份支持从本地将工作负载备份到云以及将云资源备份�
   "name": "VMSnapshot",
   "location":"<myLocation>",
   "properties": {
-    "publisher": "Microsoft.RecoveryServices",
+    "publisher": "Microsoft.Azure.RecoveryServices",
     "type": "VMSnapshot",
     "typeHandlerVersion": "1.9",
     "autoUpgradeMinorVersion": true,

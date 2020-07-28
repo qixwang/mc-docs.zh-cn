@@ -5,16 +5,16 @@ ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
 ms.date: 05/22/2020
-ms.openlocfilehash: 97305367f6b13e60bbd06ea870a1dbc1654fc467
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: d1c33c47c9021527789a01d9314cd29d86e82c48
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84200013"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244535"
 ---
 # <a name="azure-monitor-for-containers-health-monitor-configuration-guide"></a>用于容器的 Azure Monitor 运行状况监视器配置指南
 
-在用于容器的 Azure Monitor 中，监视器是衡量运行状况和检测错误的主要元素。 本文可帮助你了解用于衡量运行状况的概念，以及组成运行状况模型的元素，学习这些内容后，你将能够使用[运行状况（预览版）](container-insights-health.md)功能监视和报告 Kubernetes 群集的运行状况。
+在用于容器的 Azure Monitor 中，监视器是衡量运行状况和检测错误的主要元素。 本文可帮助你了解用于衡量运行状况的概念，以及组成运行状况模型的元素，学习这些内容后，你将能够使用运行状况（预览版）功能监视和报告 Kubernetes 群集的运行状况。
 
 >[!NOTE]
 >运行状况功能目前处于公开预览状态。
@@ -77,8 +77,4 @@ ms.locfileid: "84200013"
 |Kubernetes 基础结构 |此监视器报告群集托管基础结构组件的综合运行状况状态。 其状态计算为子监视器状态中的“最差”状态，即 kube 系统工作负载和 API 服务器状态。 |最差|
 |系统工作负载 |此监视器报告 kube 系统工作负载的运行状况状态。 此监视器与具有最差运行状况状态的子监视器的状态一致，即“处于就绪状态的 Pod”（监视器和工作负载中的容器）。 |最差 |
 |容器 |此监视器报告给定工作负载中容器的总体运行状况状态。 此监视器与具有最差运行状况状态的子监视器的状态一致，即“CPU 利用率”和“内存利用率”监视器 。 |最差 |
-
-## <a name="next-steps"></a>后续步骤
-
-查看[监视器群集运行状况](container-insights-health.md)，了解如何查看 Kubernetes 群集的运行状况状态。
 

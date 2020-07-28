@@ -6,15 +6,15 @@ ms.service: virtual-machines-windows
 ms.topic: tutorial
 ms.workload: infrastructure
 origin.date: 12/05/2018
-ms.date: 07/06/2020
+ms.date: 07/27/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 30bd238b5894589578c682c6a5fc489abb86ede2
-ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
+ms.openlocfilehash: 32fc7e67292ad8cd128b346fdb08d4b03368a8a1
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85946216"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244726"
 ---
 <!--Verified successfully-->
 # <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>教程：监视更改和更新 Azure 中的 Windows 虚拟机
@@ -172,5 +172,4 @@ New-AzVm `
 > [!div class="nextstepaction"]
 > [监视虚拟机](tutorial-monitor.md)
 
-<!-- Update_Description: new article about tutorial config management -->
-<!--NEW.date: 07/06/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

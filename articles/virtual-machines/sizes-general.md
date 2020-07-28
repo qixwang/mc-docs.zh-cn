@@ -8,14 +8,16 @@ ms.devlang: na
 ms.topic: article
 ms.workload: infrastructure-services
 origin.date: 02/20/2020
-ms.date: 07/06/2020
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 2b3035150062c9ebf49f5b7ffc1ea21795048079
-ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
+ms.openlocfilehash: f53d8c97a7cd1ef76713e20b798e49799a9afb48
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85945754"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244761"
 ---
 <!--Verified successfully-->
 <!--Partical Content from verified-->
@@ -35,9 +37,11 @@ ms.locfileid: "85945754"
 - [Dv2 和 Dsv2 系列](dv2-dsv2-series.md) VM 是原 D 系列的后续产品，具有更强大的 CPU 和最优 CPU 到内存配置，使其适合于大多数生产工作负荷。 Dv2 系列比 D 系列快大约 35%。 Dv2 系列在第 2 代英特尔® 至强® 铂金 8272CL (Cascade Lake)、英特尔® 至强® 8171M 2.1GHz (Skylake)、英特尔® 至强® E5-2673 v4 2.3 GHz (Broadwell) 或英特尔® 至强® E5-2673 v3 2.4 GHz (Haswell) 处理器上运行，并采用英特尔睿频加速技术 2.0。 Dv2 系列的内存和磁盘配置与 D 系列相同。
 
 - [Dv3 和 Dsv3 系列](dv3-dsv3-series.md) VM 在采用超线程配置的第 2 代英特尔® 至强® 铂金 8272CL (Cascade Lake)、英特尔® 至强® 8171M 2.1GHz (Skylake)、英特尔® 至强® E5-2673 v4 2.3 GHz (Broadwell) 或英特尔® 至强® E5-2673 v3 2.4 GHz (Haswell) 处理器上运行，为大多数常规用途工作负载提供更好的价值定位。 在磁盘和网络限制已基于核心进行了调整以适应超线程技术的同时，内存已扩展（从 ~3.5 GiB/vCPU 到 4 GiB/vCPU）。 Dv3 系列不再具有 D/Dv2 系列的高内存 VM 大小，那些已移至内存优化的 [Ev3 和 Esv3 系列](ev3-esv3-series.md)。
+  
+    <!--Not Available on - [Dv4 and Dsv4-series](dv4-dsv4-series.md)-->
 
     <!--Not Available on - [Ddv4 and Ddsv4-series](ddv4-ddsv4-series.md)-->
-    
+
 ## <a name="other-sizes"></a>其他大小
 
 - [计算优化](sizes-compute.md)

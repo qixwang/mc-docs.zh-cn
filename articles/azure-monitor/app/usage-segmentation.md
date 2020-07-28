@@ -2,18 +2,17 @@
 title: 在 Azure Application Insights 中进行用户、会话和事件分析
 description: 对 Web 应用的用户进行人口统计学分析。
 ms.topic: conceptual
-author: lingliw
-manager: digimobile
+author: Johnnytechn
+ms.author: v-johya
+ms.date: 07/17/2020
 origin.date: 01/24/2018
-ms.date: 6/4/2019
 ms.reviewer: mbullwin
-ms.author: v-lingwu
-ms.openlocfilehash: 3cf55e62578a14cab1da3fbac974e093d16e33bd
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: dec2a0607c663c78af5e3ed0c258f00500f33d53
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850348"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244422"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>在 Application Insights 中进行用户、会话和事件分析
 
@@ -64,8 +63,6 @@ ms.locfileid: "78850348"
     - [漏斗图](usage-funnels.md)
     - [保留](usage-retention.md)
     - [用户流](usage-flows.md)
-    - [工作簿](../../azure-monitor/app/usage-workbooks.md)
+    - [工作簿](../../azure-monitor/platform/workbooks-overview.md)
     - [添加用户上下文](usage-send-user-context.md)
-
-
 

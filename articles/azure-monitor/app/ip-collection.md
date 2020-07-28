@@ -4,13 +4,13 @@ description: 了解如何使用 Azure Application Insights 处理 IP 地址和�
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 05/25/2020
-ms.openlocfilehash: 3b37e1e7bb4e9cd6d5b8b7f1946e7d6dbab8bba9
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.date: 07/17/2020
+ms.openlocfilehash: 96db50d9fc2481b612daadf59619fc70e6aa5225
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84200185"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244888"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>地理位置和 IP 地址处理
 
@@ -237,5 +237,5 @@ requests
 
 * 详细了解 Application Insights 中的[个人数据收集](/azure-monitor/platform/personal-data-mgmt)。
 
-* 详细了解 Application Insights 中 [IP 地址收集](https://apmtips.com/blog/2016/07/05/client-ip-address/)的工作原理。 （这是我们的某位工程师在较早前撰写的一篇外部博客文章。 其中所述的机制不同当前的默认行为，现在，IP 地址将记录为 `0.0.0.0`，不过此文更深入地描述了内置 `ClientIpHeaderTelemetryInitializer` 的机制。）
+* 详细了解 Application Insights 中 [IP 地址收集](https://apmtips.com/posts/2016-07-05-client-ip-address/)的工作原理。 （这是我们的某位工程师在较早前撰写的一篇外部博客文章。 其中所述的机制不同当前的默认行为，现在，IP 地址将记录为 `0.0.0.0`，不过此文更深入地描述了内置 `ClientIpHeaderTelemetryInitializer` 的机制。）
 

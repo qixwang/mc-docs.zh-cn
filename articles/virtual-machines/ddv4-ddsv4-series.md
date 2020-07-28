@@ -8,14 +8,16 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 origin.date: 06/01/2020
-ms.date: 07/06/2020
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 93b3346d55a02086efab3b7346f33bb8c3c8a895
-ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
+ms.openlocfilehash: 074b5a82cc2e6b9951c188a0374ca145fdfd8ba0
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85946213"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244273"
 ---
 <!--Pending GA on Q3 2020, only be suitable for China East 2 site-->
 <!--RELEASE BEFORE CONFIRME AND BE CAREFULLY-->
@@ -86,7 +88,9 @@ ACU：195-210
 
 - [常规用途](sizes-general.md)
 - [内存优化](sizes-memory.md)
+    
     <!--Not Avaialble on - [Storage optimized](sizes-storage.md)-->
+    
 - [GPU 优化](sizes-gpu.md)
     
     <!--Not Avaialble on - [High performance compute](sizes-hpc.md)-->

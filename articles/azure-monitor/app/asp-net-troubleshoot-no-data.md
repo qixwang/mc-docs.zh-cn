@@ -3,15 +3,15 @@ title: 排查无数据问题 - 用于 .NET 的 Application Insights
 description: 在 Azure Application Insights 中看不到数据？ 试试这里。
 ms.topic: conceptual
 origin.date: 07/23/2018
-ms.date: 05/28/2020
+ms.date: 07/17/2020
 ms.author: v-johya
 author: Johnnytechn
-ms.openlocfilehash: 00833cf6e8a534f59ee4c7223c6aa675700bf0a7
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: 705c5b30f89e42428adafb7f26b479df6a42c1e5
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097285"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244673"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>排查无数据问题 - 用于 .NET/.NET Core 的 Application Insights
 
@@ -29,7 +29,7 @@ ms.locfileid: "85097285"
 
 当应用即将停止时，控制台应用或 Web 应用中出现了数据丢失问题。
 
-* SDK 通道在缓冲区中保留遥测数据，并分批发送这些数据。 如果应用程序正在关闭，则你可能需要显式调用 [Flush()](api-custom-events-metrics.md#flushing-data)。 `Flush()` 的行为取决于使用的实际[通道](telemetry-channels.md)。
+* SDK 通道在缓冲区中保留遥测数据，并分批发送这些数据。 如果应用程序正在关闭，则你可能需要显式调用 [Flush()](api-custom-events-metrics.md#flushing-data)。 `Flush()` 的行为取决于使用的实际[通道](telemetry-channels.md#built-in-telemetry-channels)。
 
 ## <a name="no-data-from-my-server"></a>服务器未提供数据
 *我已在 Web 服务器上安装应用，但未看到服务器提供任何遥测数据。服务器在开发计算机上正常运行。*
@@ -98,9 +98,9 @@ ms.locfileid: "85097285"
 ## <a name="access-denied-on-opening-application-insights-from-visual-studio"></a>从 Visual Studio 打开 Application Insights 时出现“拒绝访问”
 *使用“打开 Application Insights”菜单命令时转到了 Azure 门户，但同时出现“拒绝访问”错误。*
 
-上一次在默认浏览器中使用的 Azure 登录名无权访问[将 Application Insights 添加到此应用时所创建的资源](../../azure-monitor/app/asp-net.md)。 有两个可能的原因：
+上一次在默认浏览器中使用的 Microsoft 登录名无权访问[将 Application Insights 添加到此应用时所创建的资源](../../azure-monitor/app/asp-net.md)。 有两个可能的原因：
 
-* 有多个 Azure 帐户 - 可能是工作帐户和个人 Azure 帐户？ 上一次在默认浏览器中使用的登录名的关联帐户不是有权[将 Application Insights 添加到项目](../../azure-monitor/app/asp-net.md)的帐户。
+* 有多个的 Microsoft 帐户 - 也许同时拥有工作帐户和个人 Microsoft 帐户。 上一次在默认浏览器中使用的登录名的关联帐户不是有权[将 Application Insights 添加到项目](../../azure-monitor/app/asp-net.md)的帐户。
   * 解决方法：单击浏览器窗口右上角的用户名并注销。使用拥有访问权限的帐户登录。 然后，在左侧导航栏中单击“Application Insights”并选择应用。
 * 其他人将 Application Insights 添加到了项目，但他们忘记向你提供创建项目的[资源组的访问权限](../../azure-monitor/app/resources-roles-access-control.md)。
   * 解决方法：如果他们使用的是组织帐户，便可以将你添加到团队；或者，他们可以单独向你授予对资源组的访问权限。
@@ -167,9 +167,7 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
 * Windows Server 2008：请确保已安装以下更新：[KB2468871](https://support.microsoft.com/kb/2468871)、[KB2533523](https://support.microsoft.com/kb/2533523)、[KB2600217](https://support.microsoft.com/kb/2600217)。
 
 ## <a name="i-used-to-see-data-but-it-has-stopped"></a>我以前看到了数据，但现在看不到
-* 请查看[状态博客](https://blogs.msdn.com/b/applicationinsights-status/)。
 * 是否达到了数据点的每月配额？ 打开“设置/配额和定价”即可检查。如果达到了配额，可以升级计划，或付费购买更多的容量。 请参阅[定价方案](https://www.azure.cn/pricing/details/monitor/)。
-<!Correct in MC: https://www.azure.cn/pricing/details/monitor/ -->
 
 ## <a name="i-dont-see-all-the-data-im-expecting"></a>未按预期看到所有数据
 如果应用程序发送大量数据，并且使用的是用于 ASP.NET 的 Application Insights SDK 2.0.0-beta3 或更高版本，则[自适应采样](../../azure-monitor/app/sampling.md)功能可以正常运行，只发送一部分遥测数据。
@@ -181,9 +179,9 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
 在 2018 年 2 月 5 日，我们宣布我们删除了客户端 IP 地址的日志记录。 这不会影响地理位置。
 
 > [!NOTE]
-> 如果需要 IP 地址的前 3 个八位字节，则可以使用[遥测初始化程序](/azure-monitor/app/api-filtering-sampling#add-properties-itelemetryinitializer)添加自定义属性。
+> 如果需要 IP 地址的前 3 个八位字节，则可以使用[遥测初始化程序](/azure-monitor/app/api-filtering-sampling#addmodify-properties-itelemetryinitializer)添加自定义属性。
 > 这不会影响 2018 年 2 月 5 日之前收集的数据。
-<!--Correct in MC: /azure-monitor/app/api-filtering-sampling#add-properties-itelemetryinitializer-->
+<!--Correct in MC: /azure-monitor/app/api-filtering-sampling#addmodify-properties-itelemetryinitializer-->
 
 ## <a name="wrong-geographical-data-in-user-telemetry"></a>用户遥测数据包含错误的地理数据
 城市、区域和国家/地区维度派生自 IP 地址，因此不一定始终都是准确的。 首先针对位置处理这些 IP 地址，然后将其更改为 0.0.0.0 以进行存储。
@@ -259,10 +257,18 @@ PerfView.exe collect -MaxCollectSec:300 -NoGui /onlyProviders=*Microsoft-Applica
 - [使用 PerfView 记录性能跟踪](https://github.com/dotnet/roslyn/wiki/Recording-performance-traces-with-PerfView)。
 - [Application Insights 事件源](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/ETW)
 
+## <a name="collect-logs-with-dotnet-trace"></a>使用 dotnet-trace 收集日志
+
+在基于 Linux 的环境中，收集用于故障排除的日志的另一种特别有用的方法是使用 [`dotnet-trace`](https://docs.microsoft.com/dotnet/core/diagnostics/dotnet-trace)
+
+```bash
+dotnet-trace collect --process-id <PID> --providers Microsoft-ApplicationInsights-Core,Microsoft-ApplicationInsights-Data,Microsoft-ApplicationInsights-WindowsServer-TelemetryChannel,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Dependency,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Web,Microsoft-ApplicationInsights-Extensibility-DependencyCollector,Microsoft-ApplicationInsights-Extensibility-HostingStartup,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector,Microsoft-ApplicationInsights-Extensibility-EventCounterCollector,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector-QuickPulse,Microsoft-ApplicationInsights-Extensibility-Web,Microsoft-ApplicationInsights-Extensibility-WindowsServer,Microsoft-ApplicationInsights-WindowsServer-Core,Microsoft-ApplicationInsights-Extensibility-EventSourceListener,Microsoft-ApplicationInsights-AspNetCore
+```
+
 ## <a name="how-to-remove-application-insights"></a>如何删除 Application Insights
 
 按照[此文](../../azure-monitor/app/remove-application-insights.md)中提供的步骤，了解如何在 Visual Studio 中删除 Application Insights。
 
 ## <a name="still-not-working"></a>仍然无法解决问题...
-* [Application Insights 论坛](https://social.msdn.microsoft.com/Forums/vstudio/en-US/home?forum=ApplicationInsights)
+* [有关 Application Insights 的 Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-monitor.html)
 

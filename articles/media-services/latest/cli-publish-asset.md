@@ -1,6 +1,6 @@
 ---
 title: Azure CLI 脚本示例 - 发布资产 | Microsoft Docs
-description: 使用 Azure CLI 脚本发布资产。
+description: 本文演示如何使用 Azure CLI 脚本发布资产。
 services: media-services
 documentationcenter: ''
 author: WenJason
@@ -13,14 +13,14 @@ ms.topic: sample
 ms.tgt_pltfrm: multiple
 ms.workload: na
 origin.date: 01/25/2019
-ms.date: 09/23/2019
+ms.date: 07/27/2020
 ms.author: v-jay
-ms.openlocfilehash: 8d7d1ffad4658e99d4bd2fa59edd834671d8473d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2e39d288ab8de199bd3921cb31e22014552cb6a9
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "71125639"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162257"
 ---
 # <a name="cli-example-publish-an-asset"></a>CLI 示例：发布资产
 
@@ -48,14 +48,14 @@ $streamingPolicyName="Predefined_DownloadAndClearStreaming"
 #contentPolicyName=""
 
 # Delete the locator if it already exists
-az ams streaming-locator delete \
+az ams streaming locator delete \
     -a $amsAccountName \
     -g $resourceGroup \
     -n $locatorName \
 
 # Create a new Streaming Locator. Modify the assetName variable to point to the Asset you want to publish
 # This uses the predefined Clear Streaming Only policy, which allows for unencypted deliver over HLS, Smooth and DASH protocols. 
-az ams streaming-locator create \
+az ams streaming locator create \
     -a $amsAccountName \
     -g $resourceGroup \
     --asset-name $assetName \
@@ -70,7 +70,7 @@ az ams streaming-locator create \
 # This next commmand lists the Streaming Endpoints, and gets the value of the "hostname" property for the 'default' endpoint to be used when building
 # the complete Streaming or download URL from the locator get-paths method following this.
 # NOTE: This command requires Python 3.5 to be installed. 
-hostName=$(az ams streaming-endpoint list \
+hostName=$(az ams streaming endpoint list \
     -a $amsAccountName \
     -g $resourceGroup  | \
     python -c "import sys, json; print(json.load(sys.stdin)[0]['hostName'])")
@@ -80,7 +80,7 @@ echo -e "Default hostname: https://"$hostName
    
 # List the Streming URLs relative paths for the new locator.  You must append your Streaming Endpoint "hostname" path to these to resolve the full URL. 
 # Note that the asset must have an .ismc and be encoded for Adaptive streaming in order to get Streaming URLs back. You can get download paths for any content type.
-paths=$(az ams streaming-locator get-paths \
+paths=$(az ams streaming locator get-paths \
     -a $amsAccountName \
     -g $resourceGroup \
     -n $locatorName )

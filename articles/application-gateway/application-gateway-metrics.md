@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 06/23/2020
 ms.author: v-junlch
-ms.openlocfilehash: eca7ee76b5e1b70a2dba6c63dfa18f127cbe95b6
-ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
+ms.openlocfilehash: e9fcc7015a9661c11f71792b15da39ece83be87d
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85516739"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244946"
 ---
 # <a name="metrics-for-application-gateway"></a>应用程序网关的指标
 
@@ -205,7 +205,6 @@ ms.locfileid: "85516739"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 使用 [Azure Monitor 日志](../azure-monitor/insights/azure-networking-analytics.md)可视化计数器和事件日志。
 * [Visualize your Azure Activity Log with Power BI](https://powerbi.microsoft.com/blog/monitor-azure-audit-logs-with-power-bi/)（使用 Power BI 直观显示 Azure 活动日志）博客文章。
 * [View and analyze Azure activity logs in Power BI and more](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/)（在 Power BI 和其他组件中查看和分析 Azure 活动日志）博客文章。
 

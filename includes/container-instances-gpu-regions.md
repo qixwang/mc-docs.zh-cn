@@ -4,18 +4,19 @@ ms.service: container-instances
 ms.topic: include
 ms.date: 03/02/2020
 ms.author: v-yeche
-ms.openlocfilehash: 392a6639ec1afd8c95884a03e8170e616eb842dd
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: 4132fd5637c5850be7000d1cfcf8f4d6c6b070f6
+ms.sourcegitcommit: 5726d3b2e694f1f94f9f7d965676c67beb6ed07c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392426"
+ms.lasthandoff: 07/21/2020
+ms.locfileid: "86863604"
 ---
 ### <a name="region-availability"></a>上市区域
+
+<!--AVAILABLE ON CHINAEAST2 SITE till on 07/21/2020-->
 
 | 区域 | 操作系统 | 可用 GPU SKU |
 | -------- | ---- | :-----------: |
 | 中国东部 2 | Linux |  V100 |
-| 中国北部 2 | Linux |  V100 |
 
 <!-- Update_Description: update meta properties, wording update, update link -->

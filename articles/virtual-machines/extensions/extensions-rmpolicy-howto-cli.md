@@ -11,15 +11,17 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 origin.date: 03/23/2018
-ms.date: 07/06/2020
+ms.date: 07/27/2020
+ms.testscope: yes
+ms.testdate: 07/27/2020
 ms.author: v-yeche
 ms.reviewer: cynthn
-ms.openlocfilehash: f56f4047ddd231736d3f61cbe9b0860daa9d7483
-ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
+ms.openlocfilehash: 8743c1aeee7f4e4d4bb0f239ecbf9c7946a6816d
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85945678"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244765"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>使用 Azure Policy 限制 Linux VM 上的扩展安装
 
@@ -36,6 +38,7 @@ ms.locfileid: "85945678"
 <!--Not Available on  When you are working in CLI locally, you can also create a local file and replace the path (~/clouddrive) with the path to the local file on your machine.-->
 <!-- Not Available on Azure Cloud Shell -->
 <!-- Not Available on [bash Cloud Shell](https://shell.azure.com/bash)-->
+<!--CORRECT ON REMOVE ~/clouddrive/ ON CLOUD SHELL-->
 
 ```azurecli 
 vim azurepolicy.rules.json
@@ -78,8 +81,9 @@ vim azurepolicy.rules.json
 <!--Not Available on  When you are working in CLI locally, you can also create a local file and replace the path (~/clouddrive) with the path to the local file on your machine.-->
 <!-- Not Available on Azure Cloud Shell -->
 <!-- Not Available on [bash Cloud Shell](https://shell.azure.com/bash)-->
+<!--CORRECT ON REMOVE ~/clouddrive/ ON CLOUD SHELL-->
 
-```bash
+```azurecli
 vim azurepolicy.parameters.json
 ```
 
@@ -91,7 +95,6 @@ vim azurepolicy.parameters.json
         "type": "Array",
         "metadata": {
             "description": "The list of extensions that will be denied. Example: CustomScriptForLinux, VMAccessForLinux etc.",
-            "strongType": "type",
             "displayName": "Denied extension"
         }
     }
@@ -106,15 +109,19 @@ vim azurepolicy.parameters.json
 
 在此示例中，规则和参数是在本地 shell 中创建并存储为 .json 文件的文件。
 
+<!--CORRECT TO REMOVE ~/clouddrive/-->
+
 ```azurecli
 az policy definition create \
    --name 'not-allowed-vmextension-linux' \
    --display-name 'Block VM Extensions' \
    --description 'This policy governs which VM extensions that are blocked.' \
-   --rules '~/clouddrive/azurepolicy.rules.json' \
-   --params '~/clouddrive/azurepolicy.parameters.json' \
+   --rules 'azurepolicy.rules.json' \
+   --params 'azurepolicy.parameters.json' \
    --mode All
 ```
+
+<!--CORRECT TO REMOVE ~/clouddrive/-->
 
 ## <a name="assign-the-policy"></a>分配策略
 
@@ -174,4 +181,4 @@ az policy definition delete --name 'not-allowed-vmextension-linux'
 
 有关详细信息，请参阅 [Azure Policy](../../governance/policy/overview.md)。
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

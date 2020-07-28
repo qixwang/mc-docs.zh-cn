@@ -4,13 +4,13 @@ description: 对在任何环境中运行的 Java 应用程序进行无代码应�
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 05/25/2020
-ms.openlocfilehash: 31d8697104cf037560de069485381cb4cbe07644
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.date: 07/17/2020
+ms.openlocfilehash: 8200327db7ee7c3debe862c1b15ef602ff9d6ce9
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84200070"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244862"
 ---
 # <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>配置选项 - Azure Monitor Application Insights 的 Java 独立代理
 
@@ -35,14 +35,14 @@ ms.locfileid: "84200070"
 
 ## <a name="configuration-file-path"></a>配置文件路径
 
-默认情况下，Application Insights Java 3.0 Preview 要求将配置文件命名为 `ApplicationInsights.json` 并置于 `applicationinsights-agent-3.0.0-PREVIEW.4.jar` 所在的目录中。
+默认情况下，Application Insights Java 3.0 Preview 要求将配置文件命名为 `ApplicationInsights.json` 并置于 `applicationinsights-agent-3.0.0-PREVIEW.5.jar` 所在的目录中。
 
 可以使用以下任一方法指定你自己的配置文件路径：
 
 * `APPLICATIONINSIGHTS_CONFIGURATION_FILE` 环境变量，或者
 * `applicationinsights.configurationFile` Java 系统属性
 
-如果你指定相对路径，系统会相对于 `applicationinsights-agent-3.0.0-PREVIEW.4.jar` 所在的目录对其进行解析。
+如果你指定相对路径，系统会相对于 `applicationinsights-agent-3.0.0-PREVIEW.5.jar` 所在的目录对其进行解析。
 
 ## <a name="connection-string"></a>连接字符串
 

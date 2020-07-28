@@ -8,15 +8,17 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.topic: conceptual
 origin.date: 04/23/2020
-ms.date: 07/06/2020
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
 keywords: visualstudio
-ms.openlocfilehash: 5791da4e5e272c4043b61871606f000d62961720
-ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
+ms.openlocfilehash: 2f0526471a2d3a7b9edf9dae7ff9246b6e7cad81
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85945834"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244460"
 ---
 <a name="top"></a>
 # <a name="visual-studio-images-on-azure"></a>Azure 上的 Visual Studio 映像
@@ -34,7 +36,7 @@ ms.locfileid: "85945834"
 
 | 发行版本                                                                                                                                                | 版本              | 产品版本   |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------:|:-----------------:|
-| [Visual Studio 2019：最新（版本 16.5）](https://market.azure.cn/marketplace/apps/filter?search=Visual%20Studio%202019%20Latest) | Enterprise、Community | 版本 16.5.4    |
+| [Visual Studio 2019：最新（版本 16.5）](https://market.azure.cn/marketplace/apps/microsoftvisualstudio.visualstudio2019latest?tab=Overview) | Enterprise、Community | 版本 16.5.4    |
 | Visual Studio 2019：RTW                         | Enterprise | 版本 16.0.13    |
 | Visual Studio 2017：最新（版本 15.9）           | Enterprise、Community | 版本 15.9.22   |
 | Visual Studio 2017：RTW                             | Enterprise、Community | 版本 15.0.28  |
@@ -120,4 +122,4 @@ Visual Studio 遵循 Azure 中的“自带许可”模式。 与专有硬件上�
 * [通过 Azure 门户创建 VM](quick-create-portal.md)
 * [Windows 虚拟机概述](overview.md)
 
-<!-- Update_Description: update meta properties, wording update-->
+<!-- Update_Description: update meta properties, wording update, update link -->

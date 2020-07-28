@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 775d1fe90ca3732ba256e4ebaaadb5f8ee8468db
-ms.sourcegitcommit: 5fb9ae9adc04e79d6d0e78c9e69dbe8aa3ceb00a
+ms.openlocfilehash: c5d6073a97a77052716afa5fa9c66ce063cda223
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86100283"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86473478"
 ---
 **数据收集量和保留期** 
 
@@ -67,4 +67,4 @@ ms.locfileid: "86100283"
 | 数据导出 | 当前不可用 | 使用 Azure 函数或逻辑应用聚合和导出数据。 | 
 
 >[!NOTE]
->根据 Log Analytics 的使用时长，你可能有权使用旧的定价层。 详细了解 [Log Analytics 的旧定价层](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#legacy-pricing-tiers)。 
+>根据 Log Analytics 的使用时长，你可能有权使用旧的定价层。 详细了解 [Log Analytics 的旧定价层](https://docs.azure.cn/azure-monitor/platform/manage-cost-storage#legacy-pricing-tiers)。 
