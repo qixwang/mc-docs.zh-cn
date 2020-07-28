@@ -36,11 +36,13 @@
     - name: 10 - 管理 VM
       href: tutorial-govern-resources.md
       displayName: scope policy RBAC lock tag
-    - name: 11 - 监视 VM
+    - name: 11 - 跟踪和更新 VM
+      href: tutorial-config-management.md
+    - name: 12 - 监视 VM
       href: tutorial-monitor.md
-    - name: 12 - 安装 SQL\IIS\.NET 堆栈
+    - name: 13 - 安装 SQL\IIS\.NET 堆栈
       href: tutorial-iis-sql.md
-    - name: 13 - 使用 SSL 保护 Web 服务器
+    - name: 14 - 使用 SSL 保护 Web 服务器
       href: tutorial-secure-web-server.md
 - name: 示例
   items:
@@ -128,12 +130,12 @@
               href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-nsg.md
         - name: 安全
           items:
-            - name: 加密 VM 和数据磁盘
+            - name: 对 VM 和数据磁盘进行加密
               href: ./../scripts/virtual-machines-windows-cli-sample-encrypt-vm.md
-            - name: 监视
-              items:
-                - name: Azure Monitor
-                  href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-oms.md
+        - name: 监视
+          items:
+            - name: Azure Monitor
+              href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-oms.md
     - name: Azure Policy 内置策略定义
       displayName: 'samples, policies, definitions'
       href: ../policy-samples.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
@@ -141,10 +143,10 @@
   items:
     - name: 映像
       href: shared-image-galleries.md
-    - name: Azure Resource Manager
+    - name: Azure 资源管理器
       href: ../../azure-resource-manager/management/overview.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
       items:
-        - name: Resource Manager 模板
+        - name: 资源管理器模板
           href: template-description.md
     - name: 区域
       href: regions.md
@@ -204,8 +206,6 @@
           items:
             - name: 概述
               href: sizes-gpu.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
-            - name: NCv3 系列
-              href: ../ncv3-series.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
             - name: 安装 NVIDIA GPU 驱动程序
               href: n-series-driver-setup.md
         - name: 前几代
@@ -282,8 +282,6 @@
         - name: 将 ARM 模板与 C# 配合使用
           href: csharp-template.md
           displayName: Azure Resource Manager
-        - name: 使用 Chef 创建 VM
-          href: chef-automation.md
         - name: 使用 Java
           href: java.md
         - name: 使用 Python
@@ -305,13 +303,13 @@
           href: migration-classic-resource-manager-deep-dive.md
         - name: 规划迁移
           href: migration-classic-resource-manager-plan.md
-        - name: 使用 PowerShell 进行迁移
+        - name: 使用 PowerShell 迁移
           href: migration-classic-resource-manager-ps.md
         - name: 常见的迁移错误
           href: migration-classic-resource-manager-errors.md
         - name: 用于迁移的社区工具
           href: migration-classic-resource-manager-community-tools.md
-        - name: 常见问题
+        - name: 常见问题解答
           href: migration-classic-resource-manager-faq.md
     - name: 使用映像
       displayName: 'SIG, AMI, image'
@@ -396,6 +394,22 @@
           href: security-recommendations.md
         - name: 实时访问
           href: ../../security-center/security-center-just-in-time.md
+        - name: 使用 Bastion
+          items:
+            - name: 创建 Bastion 主机
+              items:
+                - name: 门户
+                  href: ../../bastion/bastion-create-host-portal.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
+                - name: PowerShell
+                  href: ../../bastion/bastion-create-host-powershell.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
+                - name: CLI
+                  href: ../../bastion/create-host-cli.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
+            - name: 使用 Bastion 进行连接
+              items:
+                - name: Bastion SSH 连接
+              href: ../../bastion/bastion-connect-vm-ssh.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
+            - name: Bastion RDP 连接
+              href: ../../bastion/bastion-connect-vm-rdp.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
         - name: 加密
           items:
             - name: 适用于 Windows 的磁盘加密方案
@@ -430,6 +444,8 @@
           href: key-vault-setup.md
     - name: 保护 VM
       items:
+        - name: 灾难恢复
+          href: ../virtual-machines-disaster-recovery-guidance.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
         - name: 备份 VM
           href: ../../backup/backup-introduction-to-azure-backup.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
           items:
@@ -480,7 +496,7 @@
           href: ../extensions/agent-windows.md
         - name: 缓解推理执行
           href: mitigate-se.md
-        - name: Azure 实例元数据服务
+        - name: 监视元数据
           href: instance-metadata-service.md
         - name: 启用嵌套虚拟化
           href: nested-virtualization.md
@@ -514,7 +530,7 @@
           items:
             - name: 代理概述
               href: ../../azure-monitor/platform/agents-overview.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
-            - name: 常见问题
+            - name: 常见问题解答
               href: ../../azure-monitor/faq.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json#agents
             - name: Azure 诊断扩展
               items:
@@ -535,7 +551,7 @@
                       href: ../../azure-monitor/platform/diagnostics-extension-versions.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
                     - name: JSON Lines 资源日志格式
                       href: ../../azure-monitor/platform/diagnostic-logs-append-blobs.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
-                    - name: 故障排除
+                    - name: 疑难解答
                       href: ../../azure-monitor/platform/diagnostics-extension-troubleshooting.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
             - name: Log Analytics 代理
               items:
@@ -604,7 +620,7 @@
     - name: 运行应用程序
       items:
         - name: SQL Server
-          href: 'https://docs.azure.cn/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview'
+          href: 'https://docs.azure.cn/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview-->'
         - name: MongoDB
           href: install-mongodb.md
         - name: MATLAB 群集
@@ -698,7 +714,7 @@
           href: /active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
         - name: PowerShell
           href: /active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
-        - name: Azure Resource Manager 模板
+        - name: Azure 资源管理器模板
           displayName: ARM
           href: /active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
         - name: REST
@@ -711,7 +727,7 @@
           href: ../extensions/extensions-rmpolicy-howto-ps.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
         - name: 导出扩展
           href: ../extensions/export-templates.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
-        - name: 故障排除
+        - name: 疑难解答
           href: ../extensions/troubleshoot.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
         - name: Azure 磁盘加密
           href: ../extensions/azure-disk-enc-windows.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
@@ -796,8 +812,10 @@
     - name: 定价
       href: 'https://www.azure.cn/pricing/details/virtual-machines/'
     - name: 区域可用性
-      href: 'https://status.azure.com/status/'
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-virtual-machine'
     - name: 视频
       href: 'https://www.azure.cn/video-center/'
-    - name: 常见问题
+    - name: 常见问题解答
       href: faq.md

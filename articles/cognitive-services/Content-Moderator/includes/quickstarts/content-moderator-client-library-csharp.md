@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 06/10/2020
 origin.date: 01/27/2020
 ms.author: v-tawe
-ms.openlocfilehash: 6d30d677b60f28bcf578d597e37def0ea8b51607
-ms.sourcegitcommit: 8dae792aefbe44e8388f961b813e3da6564423ec
+ms.openlocfilehash: 09761a2296cb2c99df02cad2ab69f56212ccf900
+ms.sourcegitcommit: 5656c18d7d2faa09329b1a15e352d1622e252d5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84654963"
+ms.lasthandoff: 07/21/2020
+ms.locfileid: "86863527"
 ---
 适用于 .NET 的内容审查器客户端库入门。 请按照以下步骤安装程序包并试用基本任务的示例代码。 内容审查器是一项认知服务，用于检查文本、图像和视频中是否存在可能的冒犯性内容、有风险内容或其他令人不适的内容。 找到此类内容时，此服务会将相应的标签（标记）应用到该内容。 然后，应用会处理标记的内容，使之符合法规的要求，或者为用户维持一个理想的环境。
 
@@ -37,10 +37,10 @@ ms.locfileid: "84654963"
 
 ### <a name="create-a-content-moderator-azure-resource"></a>创建内容审查器 Azure 资源
 
-Azure 认知服务由你订阅的 Azure 资源表示。 在本地计算机上使用 [Azure 门户](https://docs.azure.cn/cognitive-services/cognitive-services-apis-create-account)或 [Azure CLI](https://docs.azure.cn/cognitive-services/cognitive-services-apis-create-account-cli) 创建内容审查器的资源。 也可执行以下操作：
+Azure 认知服务由你订阅的 Azure 资源表示。 在本地计算机上使用 [Azure 门户](https://docs.azure.cn/cognitive-services/cognitive-services-apis-create-account)或 [Azure CLI](https://docs.azure.cn/cognitive-services/cognitive-services-apis-create-account-cli) 创建内容审查器的资源。 你还可以：
 
 <!-- not available -->
-* 在 [Azure 门户](https://portal.azure.com/)上查看资源
+* 在 [Azure 门户](https://portal.azure.cn/)上查看资源
 
 获取试用订阅或资源后，请为该密钥和终结点 URL [创建环境变量](https://docs.azure.cn/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)，分别名为 `CONTENT_MODERATOR_SUBSCRIPTION_KEY` 和 `CONTENT_MODERATOR_ENDPOINT`。
 
@@ -83,7 +83,7 @@ using System.Text;
 using System.Threading;
 ```
 
-在 Program 类中，为资源的终结点位置创建变量，并将密钥创建为环境变量****。
+在 Program 类中，为资源的终结点位置创建变量，并将密钥创建为环境变量。
 
 ```csharp
 // Your Content Moderator subscription key is found in your Azure portal resource on the 'Keys' page. Add to your environment variables.
@@ -141,7 +141,7 @@ ContentModeratorClient clientReviews = Authenticate(SubscriptionKey, Endpoint);
 
 ## <a name="moderate-text"></a>审查文本
 
-以下代码使用内容审查器客户端分析文本的正文，并将结果输出到控制台。 在 Program 类的根中，定义输入和输出文件****：
+以下代码使用内容审查器客户端分析文本的正文，并将结果输出到控制台。 在 Program 类的根中，定义输入和输出文件：
 
 ```csharp
 // TEXT MODERATION
@@ -151,7 +151,7 @@ private static readonly string TextFile = "TextFile.txt";
 private static string TextOutputFile = "TextModerationOutput.txt";
 ```
 
-然后，在项目的根下添加一个 TextFile.txt 文件**。 将你自己的文本添加到此文件中，或使用以下示例文本：
+然后，在项目的根下添加一个 TextFile.txt 文件。 将你自己的文本添加到此文件中，或使用以下示例文本：
 
 ```
 Is this a grabage email abcdef@abcd.com, phone: 4255550111, IP: 255.255.255.255, 1234 Main Boulevard, Panapolis WA 96555.
@@ -165,7 +165,7 @@ Crap is the profanity here. Is this information PII? phone 4255550111
 ModerateText(clientText, TextFile, TextOutputFile);
 ```
 
-然后在 Program 类中的某个位置定义文本审查方法****：
+然后在 Program 类中的某个位置定义文本审查方法：
 
 ```csharp
 /*
@@ -232,7 +232,7 @@ private static readonly string ImageUrlFile = "ImageFiles.txt";
 private static string ImageOutputFile = "ImageModerationOutput.json";
 ```
 
-然后，在项目的根下创建输入文件 ImageFiles.txt**。 在此文件中添加要分析的图像的 URL &mdash; 在每行添加一个 URL。 可使用以下示例图像：
+然后，在项目的根下创建输入文件 ImageFiles.txt。 在此文件中添加要分析的图像的 URL &mdash; 在每行添加一个 URL。 可使用以下示例图像：
 
 ```
 https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg
@@ -248,7 +248,7 @@ ModerateText(clientText, TextFile, TextOutputFile);
 
 ### <a name="define-helper-class"></a>使用帮助器类
 
-在 Program 类中添加以下类定义****。 此内部类将处理图像审查结果。
+在 Program 类中添加以下类定义。 此内部类将处理图像审查结果。
 
 ```csharp
 // Contains the image moderation results for an image, 
@@ -271,7 +271,7 @@ public class EvaluationData
 
 ### <a name="define-the-image-moderation-method"></a>定义图像审查方法
 
-以下方法将循环访问文本文件中的图像 URL，创建 EvaluationData 实例，并分析图像中的成人/猥亵内容、文本和人脸****。 然后，它将最终的 EvaluationData 实例添加到列表中，并将返回数据的完整列表写入控制台****。
+以下方法将循环访问文本文件中的图像 URL，创建 EvaluationData 实例，并分析图像中的成人/猥亵内容、文本和人脸。 然后，它将最终的 EvaluationData 实例添加到列表中，并将返回数据的完整列表写入控制台。
 
 #### <a name="iterate-through-image-urls"></a>循环访问图像 URL
 
@@ -367,7 +367,7 @@ CreateReviews(clientReviews, IMAGE_URLS_FOR_REVIEW, TEAM_NAME, ReviewsEndpoint);
 
 ### <a name="get-sample-images"></a>获取示例图像
 
-在 Program 类的根下声明以下数组****。 此变量引用用于创建评审的示例图像。
+在 Program 类的根下声明以下数组。 此变量引用用于创建评审的示例图像。
 
 ```csharp
 // The list of URLs of the images to create review jobs for.
@@ -376,7 +376,7 @@ private static readonly string[] IMAGE_URLS_FOR_REVIEW = new string[] { "https:/
 
 ### <a name="get-review-credentials"></a>获取审阅凭据
 
-登录到[评审工具](https://contentmoderator.cognitive.microsoft.com)并检索团队名称。 然后将其分配给 Program 类中的相应变量****。 或者，可以设置一个回调终结点用于接收有关评审活动的更新。
+登录到[评审工具](https://contentmoderator.cognitive.microsoft.com)并检索团队名称。 然后将其分配给 Program 类中的相应变量。 或者，可以设置一个回调终结点用于接收有关评审活动的更新。
 
 ```csharp
 // The name of the team to assign the review to. Must be the team name used to create your Content Moderator website account. 
@@ -391,7 +391,7 @@ private static readonly string ReviewsEndpoint = Environment.GetEnvironmentVaria
 
 ### <a name="define-helper-class"></a>使用帮助器类
 
-将以下类定义添加到 Program 类中****。 此类将用于表示提交到评审工具的单个评审实例。
+将以下类定义添加到 Program 类中。 此类将用于表示提交到评审工具的单个评审实例。
 
 ```csharp
 // Associates the review ID (assigned by the service) to the internal.
@@ -424,7 +424,7 @@ private static void WriteLine(TextWriter writer, string message = null, bool ech
 
 ### <a name="define-the-review-creation-method"></a>定义评审创建方法
 
-现在，你已准备好定义将处理评审创建和查询的方法。 添加新方法 CreateReviews 并定义以下局部变量****。
+现在，你已准备好定义将处理评审创建和查询的方法。 添加新方法 CreateReviews 并定义以下局部变量。
 
 ```csharp
 // Create the reviews using the fixed list of images.
@@ -594,7 +594,7 @@ dotnet run
 
 如果想要清理并删除认知服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。
 
-* [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [门户](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>后续步骤

@@ -41,9 +41,9 @@
       href: boot-error-troubleshoot-windows.md
 - name: 意外重启
   items:
-    - name: 附加 VHD 的 VM 意外重新启动
+    - name: 附加 VHD 的 VM 意外重启
       href: unexpected-reboots-attached-vhds.md
-    - name: 了解系统重新启动
+    - name: 了解系统重启
       href: understand-vm-reboot.md
 - name: 无法启动或停止 VM
   items:
@@ -89,6 +89,8 @@
           href: troubleshoot-reboot-loop.md
         - name: 在更新 Windows 时停滞
           href: troubleshoot-stuck-updating-boot-error.md
+        - name: 意外重启或错误
+          href: troubleshoot-unexpected-restart-error-during-vm-boot.md
         - name: VM 启动时出现停滞
           href: troubleshoot-vm-boot-configure-update.md
         - name: VM 因 Windows 启动管理器而无法启动
@@ -97,6 +99,10 @@
           href: unresponsive-vm-apply-windows-update.md
         - name: 应用组策略时，VM 无响应
           href: unresponsive-vm-apply-group-policy.md
+        - name: 应用安全策略时，VM 无响应
+          href: unresponsive-vm-apply-security-policy.md
+        - name: Windows 停止错误 - 状态无内存
+          href: troubleshoot-windows-stop-error.md
 - name: 无法连接到 VM
   items:
     - name: RDP
@@ -166,7 +172,7 @@
       href: reset-local-password-without-agent.md
     - name: Linux
       href: reset-password.md
-    - name: VM 恢复访问
+    - name: VM 恢复方法
       items:
         - name: Windows
           items:
@@ -186,12 +192,14 @@
   items:
     - name: 概述
       href: ../windows/managed-disks-overview.md
-    - name: 常见问题
+    - name: 常见问题解答
       href: ../windows/faq-for-disks.md
     - name: 删除存储资源时出错
       href: storage-resource-deletion-errors.md
     - name: 删除经典存储资源时出错
       href: storage-classic-cannot-delete-storage-account-container-vhd.md
+    - name: 在 Azure 中创建 VM 中不支持 VHD
+      href: vhd-not-supported-vm-azure.md
     - name: 使用嵌套虚拟化
       href: troubleshoot-vm-by-use-nested-virtualization.md
 - name: VM 扩展问题
@@ -228,7 +236,7 @@
           href: ../windows/disk-encryption-overview.md
         - name: 故障排除
           href: ../windows/disk-encryption-troubleshooting.md
-        - name: 常见问题
+        - name: 常见问题解答
           href: ../windows/disk-encryption-faq.md
     - name: Linux
       items:

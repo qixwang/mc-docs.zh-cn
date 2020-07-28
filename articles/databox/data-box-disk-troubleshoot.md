@@ -5,20 +5,20 @@ services: databox
 author: WenJason
 ms.service: databox
 ms.subservice: disk
-ms.topic: article
+ms.topic: troubleshooting
 origin.date: 06/14/2019
-ms.date: 07/22/2019
+ms.date: 07/27/2020
 ms.author: v-jay
-ms.openlocfilehash: d900479614ad9589f0269fc8ea9f5152e3e7f380
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c7ba872afc77829566e3612a894929c811f8985c
+ms.sourcegitcommit: c3f15613c875bb52d5a105445efd0f36b9f24c9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74530606"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86473457"
 ---
 # <a name="use-logs-to-troubleshoot-validation-issues-in-azure-data-box-disk"></a>使用日志排查 Azure Data Box Disk 中的验证问题
 
-本文适用于 Microsoft Azure Data Box Disk。 本文介绍如何使用日志来排查部署此解决方案时可能会出现的验证问题。
+本文适用于 Azure Data Box Disk。 本文介绍如何使用日志来排查部署此解决方案时可能会出现的验证问题。
 
 ## <a name="validation-tool-log-files"></a>验证工具日志文件
 

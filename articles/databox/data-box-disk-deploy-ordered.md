@@ -7,19 +7,19 @@ ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
 origin.date: 07/03/2019
-ms.date: 07/06/2020
+ms.date: 07/27/2020
 ms.author: v-jay
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 35f18f4f98495972ac25ad963c362bb4e4c71bd1
-ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
+ms.openlocfilehash: d1a0bbf5d59629e7e5e47ddb1eb89078e513b83a
+ms.sourcegitcommit: c3f15613c875bb52d5a105445efd0f36b9f24c9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85945728"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86473474"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>教程：订购 Azure Data Box Disk
 
-Azure Data Box Disk 是一个混合云解决方案，可用于快速、方便、可靠地将本地数据导入 Azure 中。 你可以将数据传输到 Microsoft 提供的固态硬盘 (SSD)，并寄回磁盘。 然后，此数据将上传到 Azure。
+Azure Data Box Disk 是一个混合云解决方案，可用于快速、方便、可靠地将本地数据导入 Azure 中。 你可以将数据传输到 Azure 提供的固态硬盘 (SSD)，并寄回磁盘。 然后，此数据将上传到 Azure。
 
 本教程介绍如何订购 Azure Data Box 磁盘。 本教程的介绍内容包括：
 
@@ -49,7 +49,8 @@ Azure Data Box Disk 是一个混合云解决方案，可用于快速、方便、
 
 登录到：
 
-在 [Azure 门户](https://portal.azure.cn)中执行以下步骤订购 Data Box 磁盘。
+* 位于此 URL 的 Azure 门户： https://portal.azure.cn 以订购 Data Box Disk。
+
 按照以下步骤订购 Data Box Disk。
 
 1. 在门户的左上角单击“+ 创建资源”，然后搜索“Azure Data Box”。 单击“Azure Data Box”。
@@ -73,16 +74,16 @@ Azure Data Box Disk 是一个混合云解决方案，可用于快速、方便、
 
      ![选择 Data Box 磁盘选项](media/data-box-disk-deploy-ordered/select-data-box-sku-zoom.png)
 
-5. 在“订单”中指定“订单详细信息”。  输入或选择以下信息。
+5. 在“订单”中指定“订单详细信息”。 输入或选择以下信息。
 
     |设置|Value|
     |---|---|
     |名称|提供友好名称用于跟踪订单。<br> 名称可以为 3 到 24 个字符，包括字母、数字和连字符。 <br> 名称必须以字母或数字开头和结尾。 |
     |资源组| 使用现有资源组，或创建新的资源组。 <br> 资源组是可以统一管理或部署的资源的逻辑容器。 |
-    |目标 Azure 区域| 选择存储帐户的区域。<br> 目前，支持所有区域的存储帐户。 |
+    |目标 Azure 区域| 选择存储帐户的区域。 |
     |估计数据大小(TB)| 输入估计值，以 TB 为单位。 <br>根据数据大小，Azure 会寄送适当数量的 8 TB SSD（7 TB 可用容量）。 <br>5 个磁盘的最大可用容量高达 35 TB。 |
     |磁盘密钥| 如果选中“使用自定义密钥而不是 Azure 生成的密钥”，请提供磁盘密钥。 <br> 提供一个 12 到 32 个字符的字母数字密钥，其中至少包含一个数字和一个特殊字符。 允许使用的特殊字符是 `@?_+`。 <br> 可以选择跳过此选项并使用 Azure 生成的密钥来解锁磁盘。|
-    |存储目标     | 从存储帐户和/或托管磁盘中进行选择。 <br> 根据指定的 Azure 区域，从现有存储帐户的筛选列表中选择一个存储帐户。 Data Box Disk 只能与 1 个存储帐户链接。 <br> 也可以创建新的**常规用途 v1**、**常规用途 v2** 或 **Blob 存储帐户**。 <br>支持使用虚拟网络的存储帐户。 若要允许 Data Box 服务使用受保护的存储帐户，请在存储帐户网络防火墙设置中启用受信任的服务。 有关详细信息，请参阅如何[将 Azure Data Box 添加为受信任的服务](/storage/common/storage-network-security#exceptions)。|
+    |存储目标     | 从存储帐户和/或托管磁盘中进行选择。 <br> 根据指定的 Azure 区域，从现有存储帐户的筛选列表中选择一个存储帐户。 Data Box Disk 只能与 1 个存储帐户链接。 <br> 也可以创建新的**常规用途 v1**、**常规用途 v2** 或 **Blob 存储帐户**。 <br>支持使用虚拟网络的存储帐户。 若要允许 Data Box 服务使用受保护的存储帐户，请在存储帐户网络防火墙设置中启用受信任的服务。 有关详细信息，请了解如何[将 Azure Data Box 添加为受信任的服务](/storage/common/storage-network-security#exceptions)。|
 
     如果使用存储帐户作为存储目标，则会看到以下屏幕截图：
 
@@ -90,13 +91,13 @@ Azure Data Box Disk 是一个混合云解决方案，可用于快速、方便、
 
     如果使用 Data Box Disk 从本地 VHD 创建托管磁盘，则还需提供以下信息：
 
-    |设置  |Value  |
+    |设置  |值  |
     |---------|---------|
     |资源组     | 若要从本地 VHD 创建托管磁盘，请创建新的资源组。 使用现有资源组的前提是，它是通过 Data Box 服务为托管磁盘的 Data Box Disk 订单创建的。 <br> 只支持一个资源组。|
 
     ![托管磁盘的 Data Box Disk 订单](media/data-box-disk-deploy-ordered/order-managed-disks.png)
 
-    为托管磁盘指定的存储帐户用作临时存储帐户。 Data Box 服务将 VHD 上传到临时存储帐户，然后将其转换为托管磁盘并转移到资源组。 有关详细信息，请参阅[验证将数据上传到 Azure 的功能](data-box-disk-deploy-upload-verify.md#verify-data-upload-to-azure)。
+    为托管磁盘指定的存储帐户用作临时存储帐户。 Data Box 服务将 VHD 上传到临时存储帐户，然后将其转换为托管磁盘并转移到资源组。 有关详细信息，请参阅[验证 Azure 中的数据上传](data-box-disk-deploy-upload-verify.md#verify-data-upload-to-azure)。
 
 6. 单击“下一步”。
 
@@ -121,7 +122,7 @@ Azure Data Box Disk 是一个混合云解决方案，可用于快速、方便、
 
 ![“已订购”Data Box 磁盘状态](media/data-box-disk-deploy-ordered/data-box-portal-ordered.png)
 
-如果磁盘缺货，你会收到通知。 如果磁盘有货，Microsoft 会指定要发货的磁盘，并准备磁盘包装。 在磁盘准备期间，会执行以下操作：
+如果磁盘缺货，你会收到通知。 如果磁盘有货，Azure 会指定要发货的磁盘，并准备磁盘包装。 在磁盘准备期间，会执行以下操作：
 
 * 使用 AES-128 BitLocker 加密技术将磁盘加密。  
 * 锁定磁盘，防止有人未经授权访问磁盘。
@@ -133,13 +134,13 @@ Azure Data Box Disk 是一个混合云解决方案，可用于快速、方便、
 
 ## <a name="cancel-the-order"></a>取消订单
 
-若要取消此订单，请在 Azure 门户中转到“概览”，然后在命令栏中单击“取消”。 
+若要取消此订单，请在 Azure 门户中转到“概览”，然后在命令栏中单击“取消”。
 
 只能在订购磁盘后我们正在处理订单交货时取消订单。 一旦订单已处理，就再也不能取消订单。
 
 ![取消订单](media/data-box-disk-deploy-ordered/cancel-order1.png)
 
-若要删除已取消的订单，请转到“概况”，然后在命令栏中单击“删除”。 
+若要删除已取消的订单，请转到“概况”，然后在命令栏中单击“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 

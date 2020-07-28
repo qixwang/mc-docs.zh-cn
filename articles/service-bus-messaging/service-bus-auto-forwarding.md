@@ -1,26 +1,19 @@
 ---
 title: 自动转发 Azure 服务总线消息实体
 description: 本文介绍如何将 Azure 服务总线队列或订阅链接到另一个队列或主题。
-services: service-bus-messaging
-documentationcenter: na
-author: lingliw
-manager: digimobile
-editor: ''
-ms.assetid: f7060778-3421-402c-97c7-735dbf6a61e8
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-origin.date: 01/24/2020
-ms.date: 2/26/2020
-ms.author: v-lingwu
-ms.openlocfilehash: b8e201a953065cb3a30066c3509e529eb47245dc
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: ''
+ms.author: v-yeche
+author: rockboyfor
+ms.openlocfilehash: 51cf27923eb9cd2a35bc62cf46ce0a4962b2cee8
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78155000"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162399"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>使用自动转发链接服务总线实体
 
@@ -77,10 +70,12 @@ namespaceManager.CreateSubscription(srcSubscription));
 * [使用服务总线消息传送改进性能的最佳做法](service-bus-performance-improvements.md)
 * [分区消息实体][Partitioned messaging entities]。
 
-[QueueDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.forwardto#Microsoft_ServiceBus_Messaging_QueueDescription_ForwardTo
-[SubscriptionDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.forwardto#Microsoft_ServiceBus_Messaging_SubscriptionDescription_ForwardTo
-[QueueDescription]: /dotnet/api/microsoft.servicebus.messaging.queuedescription
-[SubscriptionDescription]: /dotnet/api/microsoft.servicebus.messaging.queuedescription
+[QueueDescription.ForwardTo]: https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.queuedescription.forwardto?view=azure-dotnet#Microsoft_ServiceBus_Messaging_QueueDescription_ForwardTo
+[SubscriptionDescription.ForwardTo]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.forwardto#Microsoft_ServiceBus_Messaging_SubscriptionDescription_ForwardTo
+[QueueDescription]: https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.queuedescription
+[SubscriptionDescription]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.queuedescription
 [0]: ./media/service-bus-auto-forwarding/IC628631.gif
 [1]: ./media/service-bus-auto-forwarding/IC628632.gif
 [Partitioned messaging entities]: service-bus-partitioning.md
+
+<!-- Update_Description: update meta properties, wording update, update link?view=azure-dotnet -->

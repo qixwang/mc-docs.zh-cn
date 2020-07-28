@@ -1,5 +1,5 @@
 ---
-title: Azure Data Box 磁盘快速入门 | Microsoft Docs
+title: Microsoft Azure Data Box 磁盘快速入门 | Microsoft Docs
 description: 使用本快速入门在 Azure 门户中快速部署 Azure Data Box 磁盘
 services: databox
 author: WenJason
@@ -7,15 +7,15 @@ ms.service: databox
 ms.subservice: disk
 ms.topic: quickstart
 origin.date: 09/03/2019
-ms.date: 02/17/2020
+ms.date: 07/27/2020
 ms.author: v-jay
 ms.localizationpriority: high
-ms.openlocfilehash: 2353e72c22e108de3a703919bf55c0a571694e5d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 0aa423f6124c06d2e11dd10fd9d5bdd74db334a8
+ms.sourcegitcommit: c3f15613c875bb52d5a105445efd0f36b9f24c9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428735"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86473467"
 ---
 ::: zone target="docs"
 
@@ -25,7 +25,7 @@ ms.locfileid: "77428735"
 
 有关详细的分步部署和跟踪说明，请转到[教程：订购 Azure Data Box Disk](data-box-disk-deploy-ordered.md)。 
 
-如果没有 Azure 订阅，请创建一个 [1 元人民币试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
+如果没有 Azure 订阅，请创建一个[试用帐户](https://wd.azure.cn/pricing/1rmb-trial-full)。
 
 ::: zone-end
 
@@ -41,11 +41,11 @@ ms.locfileid: "77428735"
 
 开始之前：
 
-- 确保为 Azure Data Box 服务启用了订阅。 若要为此服务启用订阅，请[注册服务](https://portal.azure.cn)。
+- 确保为 Azure Data Box 服务启用了订阅。 若要为此服务启用订阅，请[注册服务](https://aka.ms/azuredataboxfromdiskdocs)。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-在 [http://portal.azure.cn](https://portal.azure.cn) 中登录 Azure 门户。
+登录 [Azure 门户](https://portal.azure.cn/?feature.canmodifystamps=true&microsoft_azure_expresspod_source=proddoc&Microsoft_Azure_ExpressPod=prod&microsoft_azure_marketplace_ItemHideKey=ExpressPodHidden#create/Microsoft.AzureExpressPod)。
 
 ::: zone-end
 
@@ -69,8 +69,8 @@ ms.locfileid: "77428735"
 此步骤大约需要 5 分钟。
 
 1. 在 Azure 门户中创建新的 Azure Data Box 资源。 
-2. 选择为此服务启用的订阅，然后选择“导入”作为传输类型。  提供数据所在的**来源国家/地区**，以及数据要传输到的 **Azure 目标区域**。
-3. 选择“Data Box 磁盘”。  解决方案的最大容量为 35 TB；如果数据大小更大，你可以创建多个磁盘订单。  
+2. 选择为此服务启用的订阅，然后选择“导入”作为传输类型。 提供数据所在的**来源国家/地区**，以及数据要传输到的 **Azure 目标区域**。
+3. 选择“Data Box 磁盘”。 解决方案的最大容量为 35 TB；如果数据大小更大，你可以创建多个磁盘订单。  
 4. 输入订单详细信息和发货信息。 如果该服务在你所在的区域中可用，请提供通知电子邮件地址、查看摘要，然后创建订单。
 
 创建订单后，Microsoft 会准备磁盘发货。
@@ -92,7 +92,7 @@ Data Box 磁盘通过 UPS Express Box 寄送。 请打开包装，检查其中�
 1. 使用随附的电缆将磁盘连接到运行受支持版本的 Windows/Linux 计算机。 有关支持的 OS 版本的详细信息，请转到 [Azure Data Box 磁盘系统要求](data-box-disk-system-requirements.md)。 
 2. 解锁磁盘：
 
-    1. 在 Azure 门户中，转到“常规”>“设备详细信息”并获取支持密钥。 
+    1. 在 Azure 门户中，转到“常规”>“设备详细信息”并获取支持密钥。
     2. 在计算机上下载并提取用于将数据复制到磁盘的特定于操作系统的 Data Box Disk 解锁工具。 
     3. 运行 Data Box Disk 解锁工具并提供密钥。 每次重新插入磁盘时，请再次运行解锁工具并提供密钥。 **请勿使用 BitLocker 对话框或 BitLocker 密钥来解锁磁盘。** 有关如何解锁磁盘的更多信息，请访问[在 Windows 客户端上解锁磁盘](data-box-disk-deploy-set-up.md#unlock-disks-on-windows-client)或[在 Linux 客户端上解锁磁盘](data-box-disk-deploy-set-up.md#unlock-disks-on-linux-client)。
     4. 工具会显示分配给磁盘的驱动器号。 请记下磁盘驱动器号， 后续步骤中需要用到。
@@ -118,7 +118,7 @@ Data Box 磁盘通过 UPS Express Box 寄送。 请打开包装，检查其中�
 
 此步骤大约需要 5-7 分钟才能完成。
 
-1. 将所有磁盘一起放入原始包装中。 使用随附的发货标签。 如果该标签损坏或丢失，请从门户下载。 转到“概述”，然后在命令栏中单击“下载发货标签”。  
+1. 将所有磁盘一起放入原始包装中。 使用随附的发货标签。 如果该标签损坏或丢失，请从门户下载。 转到“概述”，然后在命令栏中单击“下载发货标签”。
 2. 在寄件处投递密封的包裹。  
 
 Data Box 磁盘服务将发送一封电子邮件通知，并在 Azure 门户上更新订单状态。
@@ -141,15 +141,15 @@ Data Box 磁盘服务将发送一封电子邮件通知，并在 Azure 门户上�
 
 - 在订单尚未处理的情况下，可以在 Azure 门户中取消 Data Box 订单。 订单处理后，无法取消订单。 订单处理会不断进行，直到完成。
 
-    若要取消订单，请转到“概况”，然后在命令栏中单击“取消”。    
+    若要取消订单，请转到“概况”，然后在命令栏中单击“取消”。  
 
-- 在 Azure 门户中的状态显示为“已完成”或“已取消”后，即可删除订单。  
+- 在 Azure 门户中的状态显示为“已完成”或“已取消”后，即可删除订单。
 
-    若要删除订单，请转到“概况”，然后在命令栏中单击“删除”。  
+    若要删除订单，请转到“概况”，然后在命令栏中单击“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，我们已部署 Azure Data Box 磁盘来帮助将数据导入 Azure。 若要详细了解 Azure Data Box 磁盘的管理，请转到以下教程：
+在本快速入门中，已部署了 Azure Data Box Disk 来帮助将数据导入到 Azure。 若要详细了解 Azure Data Box 磁盘的管理，请转到以下教程：
 
 > [!div class="nextstepaction"]
 > [使用 Azure 门户管理 Data Box 磁盘](data-box-portal-ui-admin.md)

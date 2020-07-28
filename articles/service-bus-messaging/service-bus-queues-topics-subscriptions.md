@@ -1,25 +1,23 @@
 ---
 title: Azure 服务总线消息传送队列、主题和订阅
 description: 本文概述了 Azure 服务总线消息实体（队列、主题和订阅）。
-services: service-bus-messaging
-documentationcenter: na
-author: lingliw
-manager: digimobile
-ms.service: service-bus-messaging
 ms.topic: article
-origin.date: 01/16/2020
-ms.date: 2/6/2020
-ms.author: v-lingwu
-ms.openlocfilehash: c146d83c0330e66f21967098dee7643920555dfb
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: ''
+ms.author: v-yeche
+author: rockboyfor
+ms.openlocfilehash: 7a98a3d7dcee7f4eb3b2b9b04732448c28fe427c
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796772"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162272"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>服务总线队列、主题和订阅
 
-Microsoft Azure 服务总线支持一组基于云的、面向消息的中间件技术，包括可靠的消息队列和持久的发布/订阅消息。 这些“中转”消息传送功能可被视为分离式消息传送功能，支持使用服务总线消息传送工作负载的发布-订阅、临时分离和负载均衡方案。 分离式通信具有很多优点；例如，客户端和服务器可以根据需要进行连接并以异步方式执行其操作。
+Azure 服务总线支持一组基于云的、面向消息的中间件技术，包括可靠的消息队列和持久发布/订阅消息。 这些“中转”消息传送功能可被视为分离式消息传送功能，支持使用服务总线消息传送工作负载的发布-订阅、临时分离和负载均衡方案。 分离式通信具有很多优点；例如，客户端和服务器可以根据需要进行连接并以异步方式执行其操作。
 
 构成服务总线消息传送功能核心的消息传送实体包括队列、主题/订阅、规则/操作。
 
@@ -33,7 +31,7 @@ Microsoft Azure 服务总线支持一组基于云的、面向消息的中间件�
 
 ### <a name="create-queues"></a>创建队列
 
-使用 [Azure 门户](service-bus-quickstart-portal.md)、[PowerShell](service-bus-quickstart-powershell.md)、[CLI](service-bus-quickstart-cli.md) 或[资源管理器模板](service-bus-resource-manager-namespace-queue.md)创建队列。 然后使用 [QueueClient](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.queueclient) 对象发送和接收消息。
+使用 [Azure 门户](service-bus-quickstart-portal.md)、[PowerShell](service-bus-quickstart-powershell.md)、[CLI](service-bus-quickstart-cli.md) 或[资源管理器模板](service-bus-resource-manager-namespace-queue.md)创建队列。 然后使用 [QueueClient](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.queueclient?view=azure-dotnet) 对象发送和接收消息。
 
 若要快速了解如何创建队列，然后向/从队列发送/接收消息，请参阅每个方法的[快速入门](service-bus-quickstart-portal.md)。 有关如何使用队列的更深入教程，请参阅[服务总线队列入门](service-bus-dotnet-get-started-with-queues.md)。
 
@@ -41,13 +39,13 @@ Microsoft Azure 服务总线支持一组基于云的、面向消息的中间件�
 
 ### <a name="receive-modes"></a>接收模式
 
-可以指定服务总线接收消息所用的两种不同模式：ReceiveAndDelete  或 PeekLock  。 在 [ReceiveAndDelete](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.receivemode) 模式下，接收操作是单次执行的；也就是说，当服务总线收到来自使用者的请求时，它会将该消息标记为“正在使用”，并将其返回给使用者应用程序。 **ReceiveAndDelete** 模式是最简单的模式，最适合应用程序允许在出现故障时不处理消息的方案。 为了理解此方案，可以考虑这样一种情形：使用方发出接收请求，但在处理该请求前发生了崩溃。 由于服务总线会将消息标记为“已使用”，因此当应用程序重新启动并重新开始使用消息时，它会漏掉在发生崩溃前使用的消息。
+可以指定服务总线接收消息所用的两种不同模式：ReceiveAndDelete  或 PeekLock  。 在 [ReceiveAndDelete](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.receivemode?view=azure-dotnet) 模式下，接收操作是单次执行的；也就是说，当服务总线收到来自使用者的请求时，它会将该消息标记为“正在使用”，并将其返回给使用者应用程序。 **ReceiveAndDelete** 模式是最简单的模式，最适合应用程序允许在出现故障时不处理消息的方案。 为了理解此方案，可以考虑这样一种情形：使用方发出接收请求，但在处理该请求前发生了崩溃。 由于服务总线会将消息标记为“已使用”，因此当应用程序重新启动并重新开始使用消息时，它会漏掉在发生崩溃前使用的消息。
 
-使用 [PeekLock](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.receivemode) 模式时，接收操作分成了两步，从而有可能支持无法容忍遗漏消息的应用程序。 当服务总线收到请求时，它会找到要使用的下一个消息，将其锁定以防其他使用方接收它，并将该消息返回给应用程序。 应用程序完成消息处理（或可靠地存储消息以供将来处理）后，它将通过对收到的消息调用 [CompleteAsync](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) 完成接收过程的第二个阶段。 服务总线发现 **CompleteAsync** 调用时会将消息标记为“正在使用”。
+使用 [PeekLock](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.receivemode?view=azure-dotnet) 模式时，接收操作分成了两步，从而有可能支持无法容忍遗漏消息的应用程序。 当服务总线收到请求时，它会找到要使用的下一个消息，将其锁定以防其他使用方接收它，并将该消息返回给应用程序。 应用程序完成消息处理（或可靠地存储消息以供将来处理）后，它将通过对收到的消息调用 [CompleteAsync](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync?view=azure-dotnet) 完成接收过程的第二个阶段。 服务总线发现 **CompleteAsync** 调用时会将消息标记为“正在使用”。
 
-如果应用程序出于某种原因无法处理消息，则它可对收到的消息调用 [AbandonAsync](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.queueclient.abandonasync) 方法（而不是 [CompleteAsync](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) 方法）。 此方法可使服务总线解锁消息并使其能够重新被同一个使用方或其他竞争使用方接收。 此外，还存在与锁定关联的超时，并且如果应用程序无法在锁定超时到期之前处理消息（例如，如果应用程序崩溃），则服务总线将解锁该消息并使其可再次被接收（实质上是默认执行一个 [AbandonAsync](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.queueclient.abandonasync) 操作）。
+如果应用程序出于某种原因无法处理消息，则它可对收到的消息调用 [AbandonAsync](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.queueclient.abandonasync?view=azure-dotnet) 方法（而不是 [CompleteAsync](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync?view=azure-dotnet) 方法）。 此方法可使服务总线解锁消息并使其能够重新被同一个使用方或其他竞争使用方接收。 此外，还存在与锁定关联的超时，并且如果应用程序无法在锁定超时到期之前处理消息（例如，如果应用程序崩溃），则服务总线将解锁该消息并使其可再次被接收（实质上是默认执行一个 [AbandonAsync](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.queueclient.abandonasync?view=azure-dotnet) 操作）。
 
-如果应用程序在处理消息之后，但在发出 **CompleteAsync** 请求之前发生崩溃，则在应用程序重新启动时会将该消息重新传送给它。 此过程通常称作“至少处理一次”  ，即每条消息将至少被处理一次。 但是，在某些情况下，同一消息可能会被重新传送。 如果方案不允许重复处理，则应用程序中需具备其他逻辑用于检测重复，这可通过消息中的 [MessageId](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.message.messageid) 属性实现（在整个传输尝试中，该属性保持不变）。 此功能称为“仅一次”  处理。
+如果应用程序在处理消息之后，但在发出 **CompleteAsync** 请求之前发生崩溃，则在应用程序重新启动时会将该消息重新传送给它。 此过程通常称作“至少处理一次”  ，即每条消息将至少被处理一次。 但是，在某些情况下，同一消息可能会被重新传送。 如果方案不允许重复处理，则应用程序中需具备其他逻辑用于检测重复，这可通过消息中的 [MessageId](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.message.messageid?view=azure-dotnet) 属性实现（在整个传输尝试中，该属性保持不变）。 此功能称为“仅一次”  处理。
 
 ## <a name="topics-and-subscriptions"></a>主题和订阅
 
@@ -57,7 +55,7 @@ Microsoft Azure 服务总线支持一组基于云的、面向消息的中间件�
 
 ### <a name="create-topics-and-subscriptions"></a>创建主题和订阅
 
-创建主题与创建队列类似，如前一部分中所述。 然后使用 [TopicClient](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.topicclient) 类发送消息。 若要接收消息，可以创建主题的一个或多个订阅。 与队列类似，通过 [SubscriptionClient](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.subscriptionclient) 对象而不是 [QueueClient](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.queueclient) 对象从订阅接收消息。 创建订阅客户端，将主题名称、订阅名称和接收模式（可选）作为参数传递。
+创建主题与创建队列类似，如前一部分中所述。 然后使用 [TopicClient](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.topicclient?view=azure-dotnet) 类发送消息。 若要接收消息，可以创建主题的一个或多个订阅。 与队列类似，通过 [SubscriptionClient](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.subscriptionclient?view=azure-dotnet) 对象而不是 [QueueClient](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.queueclient?view=azure-dotnet) 对象从订阅接收消息。 创建订阅客户端，将主题名称、订阅名称和接收模式（可选）作为参数传递。
 
 有关完整的工作示例，请参阅 GitHub 上的 [BasicSendReceiveUsingTopicSubscriptionClient 示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/BasicSendReceiveUsingTopicSubscriptionClient)。
 
@@ -67,7 +65,7 @@ Microsoft Azure 服务总线支持一组基于云的、面向消息的中间件�
 
 有关完整的工作示例，请参阅GitHub上的 [TopicSubscriptionWithRuleOperationsSample 示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/TopicSubscriptionWithRuleOperationsSample)。
 
-有关可能的筛选器值的详细信息，请参阅文档 [SqlFilter](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.sqlfilter) 和 [SqlRuleAction](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.sqlruleaction) 类。
+有关可能的筛选器值的详细信息，请参阅文档 [SqlFilter](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.sqlfilter?view=azure-dotnet) 和 [SqlRuleAction](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.sqlruleaction?view=azure-dotnet) 类。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -77,5 +75,4 @@ Microsoft Azure 服务总线支持一组基于云的、面向消息的中间件�
 * [快速入门：使用 Azure 门户和 .NET 发送和接收消息](service-bus-quickstart-portal.md)
 * [教程：使用 Azure 门户和主题/订阅更新清单](service-bus-tutorial-topics-subscriptions-portal.md)
 
-
-<!--Update_Description:update meta properties only-->
+<!-- Update_Description: update meta properties, wording update, update link -->

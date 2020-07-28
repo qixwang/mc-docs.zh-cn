@@ -5,16 +5,16 @@ services: databox
 author: WenJason
 ms.service: databox
 ms.subservice: disk
-ms.topic: overview
+ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 12/02/2019
+ms.date: 07/27/2020
 ms.author: v-jay
-ms.openlocfilehash: 195d152b9f8b7c4b4f8eb9cf78441515d078d78b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b4d55ce39ddaf12a511f85c3f4cd5d4d38d71a83
+ms.sourcegitcommit: c3f15613c875bb52d5a105445efd0f36b9f24c9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74530614"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86473471"
 ---
 # <a name="azure-data-box-disk-security-and-data-protection"></a>Azure Data Box Disk 安全性和数据保护
 
@@ -22,7 +22,7 @@ ms.locfileid: "74530614"
 
 ## <a name="data-flow-through-components"></a>通过组件运行的数据流
 
-Microsoft Azure Data Box 解决方案由四个彼此交互的主要组件构成：
+Azure Data Box 解决方案由四个彼此交互的主要组件构成：
 
 - **Azure 中托管的 Azure Data Box 服务** – 用于创建磁盘订单、配置磁盘，然后跟踪订单完成状态的管理服务。
 - **Data Box 磁盘** – 寄送给你的，用于将本地数据导入 Azure 的物理磁盘。 
@@ -35,7 +35,7 @@ Microsoft Azure Data Box 解决方案由四个彼此交互的主要组件构成�
 
 ## <a name="security-features"></a>安全功能
 
-Data Box 磁盘确保只有经过授权的实体能够查看、修改或删除你的数据，为数据保护提供安全的解决方案。 此解决方案的安全功能适用于该磁盘，以及用于确保磁盘中存储的数据安全性的关联服务。 
+Data Box 磁盘确保只有经过授权的实体能够查看、修改或删除你的数据，为数据保护提供安全的解决方案。 此解决方案的安全功能适用于该磁盘，以及用于确保磁盘中存储的数据安全性的关联服务。
 
 ### <a name="data-box-disk-protection"></a>Data Box 磁盘保护
 
@@ -49,7 +49,7 @@ Data Box 磁盘受以下功能的保护：
 
 流入和流出 Data Box 磁盘的数据受以下功能的保护：
 
-- 始终对数据进行 BitLocker 加密。 
+- 始终对数据进行 BitLocker 加密。
 - 将数据上传到 Azure 后，从磁盘中安全擦除数据。 数据擦除根据 NIST 800-88r1 标准进行。
 
 ### <a name="data-box-service-protection"></a>Data Box 服务保护
@@ -57,10 +57,9 @@ Data Box 磁盘受以下功能的保护：
 Data Box 服务受以下功能的保护。
 
 - 访问 Data Box 磁盘服务要求组织具备包含 Data Box 磁盘在内的 Azure 订阅。 订阅决定可以在 Azure 门户中访问的功能。
-- 由于 Data Box 服务在 Azure 中托管，因此受 Azure 安全功能的保护。 有关 Azure 提供的安全功能的详细信息，请转到 [Azure 信任中心](https://www.trustcenter.cn/)。 
+- 由于 Data Box 服务在 Azure 中托管，因此受 Azure 安全功能的保护。 有关 Azure 提供的安全功能的详细信息，请转到 [Azure 信任中心](https://www.trustcenter.cn/)。
 - Data Box 磁盘在服务中存储用于解锁磁盘的磁盘支持密钥。 
-- Data box 磁盘服务在服务中存储订单详细信息和状态。 删除订单会删除这些信息。 
-
+- Data box 磁盘服务在服务中存储订单详细信息和状态。 删除订单会删除这些信息。
 
 ## <a name="managing-personal-data"></a>管理个人数据
 
@@ -86,7 +85,7 @@ Azure Data Box 磁盘在服务中收集并显示以下关键实例中的个人�
 
     作业完成或者删除订单时，Data Box 服务会删除订单详细信息。
 
-- **寄送地址** – 下单后，Data Box 服务会向 UPS 或 DHL 等第三方承运人提供寄送地址。 
+- **寄送地址** – 下单后，Data Box 服务会向第三方承运人提供寄送地址。 
 
 有关详细信息，请在[信任中心](https://www.trustcenter.cn/)查看 Azure 隐私策略。
 

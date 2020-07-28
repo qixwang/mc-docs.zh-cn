@@ -1,31 +1,24 @@
 ---
 title: Azure 服务总线中的 SQLRuleAction 语法参考
 description: 本文提供 SQLRuleAction 语法参考。 这些操作是以针对中转消息执行的基于 SQL 语言的语法编写的。
-services: service-bus-messaging
-documentationcenter: na
-author: lingliw
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-origin.date: 01/24/2020
-ms.date: 02/26/2020
-ms.author: v-lingwu
-ms.openlocfilehash: 6a69b7cb963fb6c907601b770d1d8d85fbed1f96
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: ''
+ms.author: v-yeche
+author: rockboyfor
+ms.openlocfilehash: 1861e689bdfd4afd0e4e04f32eda874d588c9a04
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796797"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162426"
 ---
 # <a name="sqlruleaction-syntax-reference-for-azure-service-bus"></a>Azure 服务总线的 SQLRuleAction 语法参考
 
-SqlRuleAction 是 [SqlRuleAction](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.sqlruleaction) 类的实例，代表以基于 SQL 语言的语法编写的一组操作，该语法针对 [BrokeredMessage](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) 执行。   
-  
+SqlRuleAction 是 [SqlRuleAction](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.sqlruleaction?view=azure-dotnet) 类的实例，代表以基于 SQL 语言的语法编写的一组操作，该语法针对 [BrokeredMessage](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet) 执行。   
+
 本文列出了有关 SQL 规则操作语法的详细信息。  
 
 ```  
@@ -65,9 +58,9 @@ SqlRuleAction 是 [SqlRuleAction](https://docs.azure.cn/dotnet/api/microsoft.ser
 ``` 
 
 ## <a name="arguments"></a>参数  
-  
--   `<scope>` 是一个可选字符串，指示 `<property_name>` 的范围。 有效值为 `sys` 或 `user`。 `sys` 值指示系统范围，其中 `<property_name>` 是 [BrokeredMessage 类](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)的公共属性名称。 `user` 指示用户范围，其中 `<property_name>` 是 [BrokeredMessage 类](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)字典的项。 `user` 范围是默认范围（如果 `<scope>` 未指定）。  
-  
+
+- `<scope>` 是一个可选字符串，指示 `<property_name>` 的范围。 有效值为 `sys` 或 `user`。 `sys` 值指示系统范围，其中 `<property_name>` 是 [BrokeredMessage 类](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet)的公共属性名称。 `user` 指示用户范围，其中 `<property_name>` 是 [BrokeredMessage 类](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet)字典的项。 `user` 范围是默认范围（如果 `<scope>` 未指定）。  
+
 ### <a name="remarks"></a>备注  
 
 尝试访问不存在的系统属性属于错误，而尝试访问不存在的用户属性不属于错误。 不存在的用户属性在内部是作为未知值计算的。 在运算符求值过程中，未知值的处理方式很特殊。  
@@ -124,9 +117,9 @@ SqlRuleAction 是 [SqlRuleAction](https://docs.azure.cn/dotnet/api/microsoft.ser
 
  `<pattern>` 必须是以字符串形式求值的表达式， 用作 LIKE 运算符的模式，      并可能包含下列通配符：  
 
--   `%`：包含零个或多个字符的任意字符串。  
+- `%`：包含零个或多个字符的任意字符串。  
 
--   `_`：任何单个字符。  
+- `_`：任何单个字符。  
 
 ## <a name="escape_char"></a>escape_char  
 
@@ -150,27 +143,27 @@ SqlRuleAction 是 [SqlRuleAction](https://docs.azure.cn/dotnet/api/microsoft.ser
 
 ### <a name="arguments"></a>参数  
 
--   `<integer_constant>` 是一个数字字符串，不使用引号，且不包含小数点。 这些值以 `System.Int64` 形式存储在内部，并具有相同的范围。  
+- `<integer_constant>` 是一个数字字符串，不使用引号，且不包含小数点。 这些值以 `System.Int64` 形式存储在内部，并具有相同的范围。  
 
-     下面是长常量的示例：  
+    下面是长常量的示例：  
 
     ```  
     1894  
     2  
     ```  
 
--   `<decimal_constant>` 是一个数字字符串，不使用引号，但包含小数点。 这些值以 `System.Double` 形式存储在内部，并具有相同的范围/精度。  
+- `<decimal_constant>` 是一个数字字符串，不使用引号，但包含小数点。 这些值以 `System.Double` 形式存储在内部，并具有相同的范围/精度。  
 
-     在未来版本中，此数字可能以其他数据类型存储，目的是支持确切的数字语义，因此不应依赖于 `<decimal_constant>` 的基础数据类型为 `System.Double` 这一事实。  
+    在未来版本中，此数字可能以其他数据类型存储，目的是支持确切的数字语义，因此不应依赖于 `<decimal_constant>` 的基础数据类型为 `System.Double` 这一事实。  
 
-     下面是十进制常量的示例：  
+    下面是十进制常量的示例：  
 
     ```  
     1894.1204  
     2.0  
     ```  
 
--   `<approximate_number_constant>` 是以科学记数法表示的数字。 这些值以 `System.Double` 形式存储在内部，并具有相同的范围/精度。 下面是近似数常量的示例：  
+- `<approximate_number_constant>` 是以科学记数法表示的数字。 这些值以 `System.Double` 形式存储在内部，并具有相同的范围/精度。 下面是近似数常量的示例：  
 
     ```  
     101.5E5  
@@ -219,9 +212,11 @@ SqlRuleAction 是 [SqlRuleAction](https://docs.azure.cn/dotnet/api/microsoft.ser
 - 当表达式类型和现有的属性类型不同时，SET 会尽可能执行隐式转换。
 - 如果引用了不存在的系统属性，操作会失败。
 - 如果引用了不存在的用户属性，操作不会失败。
-- 不存在的用户属性在内部的求值为“未知”，其遵循的语义与 [SQLFilter](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.sqlfilter) 相同（在对运算符求值时）。
+- 不存在的用户属性在内部的求值为“未知”，其遵循的语义与 [SQLFilter](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.sqlfilter?view=azure-dotnet) 相同（在对运算符求值时）。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [SQLRuleAction 类](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)
-- [SQLFilter 类](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.sqlfilter)
+- [SQLRuleAction 类](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.sqlruleaction?view=azure-dotnet)
+- [SQLFilter 类](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.sqlfilter?view=azure-dotnet)
+
+<!-- Update_Description: update meta properties, wording update, update link -->

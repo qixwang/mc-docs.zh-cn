@@ -13,13 +13,13 @@ metadata:
   author: WenJason
   ms.author: v-jay
   origin.date: 07//2020
-  ms.date: 06/08/2020
-  ms.openlocfilehash: 227288eebe8f52cafd6b48e341e8a2bd10df3c9e
-  ms.sourcegitcommit: 79c99a9ea013b3c74706a1038a505f4eea2aaac4
+  ms.date: 07/27/2020
+  ms.openlocfilehash: bdb36cbd0c8286c2dcd4305d100d34703bd33840
+  ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/05/2020
-  ms.locfileid: "84439469"
+  ms.lasthandoff: 07/24/2020
+  ms.locfileid: "87162198"
 highlightedContent:
   items:
   - title: 关于 Azure 媒体服务 v3
@@ -28,6 +28,9 @@ highlightedContent:
   - title: Azure 媒体服务 v3 概念
     itemType: concept
     url: ./latest/concepts-overview.md
+  - title: IoT Edge 上的实时视频分析（预览版）
+    itemType: overview
+    url: ./live-video-analytics-edge/overview.md
   - title: 关于 Azure 媒体服务 v2（旧版）
     itemType: overview
     url: ./previous/media-services-overview.md
@@ -91,3 +94,20 @@ conceptualContent:
     - url: media-services-fmp4-live-ingest-overview.md
       itemType: concept
       text: 平滑流式处理引入协议
+  - title: IoT Edge 上的实时视频分析（预览版）
+    links:
+    - url: ./live-video-analytics-edge/overview.md
+      itemType: overview
+      text: 概述
+    - url: ./live-video-analytics-edge/use-your-model-quickstart.md
+      itemType: quickstart
+      text: 使用自己的模型运行实时视频分析
+additionalContent:
+  sections:
+  - items:
+    - title: Azure 存储
+      summary: 了解块 Blob 和容器
+      url: /storage/
+    - title: 事件网格
+      summary: 了解如何使用 Azure 事件网格响应相关事件
+      url: /event-grid/

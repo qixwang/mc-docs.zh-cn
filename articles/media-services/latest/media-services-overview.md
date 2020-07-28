@@ -15,15 +15,15 @@ ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
 origin.date: 03/09/2020
-ms.date: 04/06/2020
+ms.date: 07/27/2020
 ms.author: v-jay
 ms.custom: mvc
-ms.openlocfilehash: 6f5860073be30c682c5716157831be827aaeca9c
-ms.sourcegitcommit: 1f890a4085e184cc678485d05f08dd6de8dc973f
+ms.openlocfilehash: f0a75ac9c3bafed3d077d32a1294783e0581ad9f
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84438940"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162182"
 ---
 # <a name="azure-media-services-v3-overview"></a>Azure 媒体服务 v3 概述
 
@@ -95,6 +95,7 @@ Azure 媒体服务是一个基于云的平台，用于生成解决方案，以�
 * [创建帐户 - CLI](create-account-cli-how-to.md)
 * [访问 API - CLI](access-api-cli-how-to.md)
 * [在将 HTTPS 作为作业输入的情况下进行编码 - .NET](job-input-from-http-how-to.md)  
+* [监视事件 - 门户](monitor-events-portal-how-to.md)
 * [通过多重 DRM 进行动态加密 - .NET](protect-with-drm.md) 
 * [如何对自定义转换进行编码 - CLI](custom-preset-cli-howto.md)
 

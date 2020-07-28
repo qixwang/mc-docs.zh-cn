@@ -1,31 +1,23 @@
 ---
 title: Azure 中继常见问题解答
 description: 本文提供了一些有关 Azure 中继服务的常见问题解答 (FAQ)。
-services: service-bus-relay
-documentationcenter: na
-author: lingliw
-manager: digimobile
-editor: ''
-ms.assetid: 886d2c7f-838f-4938-bd23-466662fb1c8e
-ms.service: service-bus-relay
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-origin.date: 01/21/2020
-ms.date: 2/6/2020
-ms.author: v-lingwu
-ms.openlocfilehash: c4add1b323251a9b45b2a5ab85f27be7bd2b9b61
-ms.sourcegitcommit: cada23b6400453ff9c08cfb08393e635e2fddac1
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: ''
+ms.author: v-yeche
+author: rockboyfor
+ms.openlocfilehash: d296011dc31b22b78dc7ff81ca7f1a92a3093c89
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83734681"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162421"
 ---
 # <a name="azure-relay-faqs"></a>Azure 中继常见问题解答
 
-本文解答一些关于 [Azure 中继](https://www.azure.cn/pricing/details/service-bus/index.html)的常见问题 (FAQ)。 若要了解一般的 Azure 定价和支持信息，请参阅 [Azure 支持常见问题解答](https://support.azure.cn/support/contact/)。
-
+本文解答一些关于 [Azure 中继](https://www.azure.cn/home/features/service-bus/)的常见问题 (FAQ)。 若要了解一般的 Azure 定价和支持信息，请参阅 [Azure 支持常见问题解答](https://www.azure.cn/support/faq/)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -48,19 +40,19 @@ ms.locfileid: "83734681"
 ### <a name="how-am-i-billed-for-hybrid-connections"></a>使用混合连接时怎样计费？
 以下是三种示例计费方案，适用于混合连接：
 
-*   应用场景 1：
-    *   有一个侦听器，例如一个混合连接管理器实例，在安装后已持续运行一整月。
-    *   在该月通过连接发送了 3 GB 的数据。 
-    *   总费用是 5 美元。
-*   应用场景 2：
-    *   有一个侦听器，例如一个混合连接管理器实例，在安装后已持续运行一整月。
-    *   在该月通过连接发送了 10 GB 的数据。
-    *   总费用是 7.50 美元。 其中 5 美元是针对连接和第一个 5 GB 的收费，另外 2.50 美元是针对其余 5 GB 数据的收费。
-*   应用场景 3：
-    *   有两个混合连接管理器实例（A 和 B），在安装后已持续运行一整月。
-    *   在该月通过连接 A 发送了 3 GB 的数据。
-    *   在该月通过连接 B 发送了 6 GB 的数据。
-    *   总费用是 10.50 美元。 其中 5 美元是针对连接 A 的收费，5 美元是针对连接 B 的收费，还有 0.50 美元是针对连接 B 额外的 1 GB 数据的收费。
+* 应用场景 1：
+    * 有一个侦听器，例如一个混合连接管理器实例，在安装后已持续运行一整月。
+    * 在该月通过连接发送了 3 GB 的数据。 
+    * 总费用是 5 美元。
+* 应用场景 2：
+    * 有一个侦听器，例如一个混合连接管理器实例，在安装后已持续运行一整月。
+    * 在该月通过连接发送了 10 GB 的数据。
+    * 总费用是 7.50 美元。 其中 5 美元是针对连接和第一个 5 GB 的收费，另外 2.50 美元是针对其余 5 GB 数据的收费。
+* 应用场景 3：
+    * 有两个混合连接管理器实例（A 和 B），在安装后已持续运行一整月。
+    * 在该月通过连接 A 发送了 3 GB 的数据。
+    * 在该月通过连接 B 发送了 6 GB 的数据。
+    * 总费用是 10.50 美元。 其中 5 美元是针对连接 A 的收费，5 美元是针对连接 B 的收费，还有 0.50 美元是针对连接 B 额外的 1 GB 数据的收费。
 
 请注意，示例中所使用的价格仅适用于混合连接预览期。 在公开发布混合连接后，价格可能会变化。
 
@@ -86,8 +78,8 @@ WCF 中继仅适用于标准层命名空间。 其他中继的定价和[连接�
 | 中继上的并发侦听器数 |实体 |系统会拒绝后续的附加连接请求，且调用代码会收到异常。 |25 |
 | 服务命名空间中所有中继终结点的并发中继连接数 |命名空间 |- |5,000 |
 | 每个服务命名空间的中继终结点数 |命名空间 |- |10,000 |
-| [NetOnewayRelayBinding](https://docs.azure.cn/dotnet/api/microsoft.servicebus.netonewayrelaybinding) 和 [NetEventRelayBinding](https://docs.azure.cn/dotnet/api/microsoft.servicebus.neteventrelaybinding) 中继的消息大小 |命名空间 |会拒绝超过这些配额的传入消息，且调用代码会收到异常。 |64 KB |
-| [HttpRelayTransportBindingElement](https://docs.azure.cn/dotnet/api/microsoft.servicebus.httprelaytransportbindingelement) 和 [NetTcpRelayBinding](https://docs.azure.cn/dotnet/api/microsoft.servicebus.nettcprelaybinding) 中继的消息大小 |命名空间 |对消息大小没有限制。 |无限制 |
+| [NetOnewayRelayBinding](https://docs.azure.cn/dotnet/api/microsoft.servicebus.netonewayrelaybinding?view=azure-dotnet) 和 [NetEventRelayBinding](https://docs.azure.cn/dotnet/api/microsoft.servicebus.neteventrelaybinding?view=azure-dotnet) 中继的消息大小 |命名空间 |会拒绝超过这些配额的传入消息，且调用代码会收到异常。 |64 KB |
+| [HttpRelayTransportBindingElement](https://docs.azure.cn/dotnet/api/microsoft.servicebus.httprelaytransportbindingelement?view=azure-dotnet) 和 [NetTcpRelayBinding](https://docs.azure.cn/dotnet/api/microsoft.servicebus.nettcprelaybinding?view=azure-dotnet) 中继的消息大小 |命名空间 |对消息大小没有限制。 |无限制 |
 
 ### <a name="does-relay-have-any-usage-quotas"></a>中继是否具有任何使用率配额？
 默认情况下，对于任何云服务，Azure 都会设置一个聚合的每月使用率配额，此配额基于客户的所有订阅进行计算。 我们了解，有时候，你的需求可能会超过这些限制。 你可以随时联系客户服务人员，以便我们了解你的需求并相应地调整这些限制。 对于服务总线，聚合的使用率配额为如下所示：
@@ -107,7 +99,7 @@ WCF 中继仅适用于标准层命名空间。 其他中继的定价和[连接�
 
 #### <a name="azure-portal"></a>Azure 门户
 
-使用 Azure 门户将 Azure 中继命名空间从一个订阅迁移到另一个订阅。 
+要使用 Azure 门户将 Azure 中继命名空间从一个订阅迁移到另一个订阅，请参阅[将资源移到新的资源组或订阅](../azure-resource-manager/management/move-resource-group-and-subscription.md#use-the-portal)。 
 
 #### <a name="powershell"></a>PowerShell
 
@@ -142,3 +134,5 @@ Move-AzResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptio
 [Pricing overview]: https://www.azure.cn/pricing/details/service-bus/
 [Relay exceptions]: relay-exceptions.md
 [Shared Access Signatures]: ../service-bus-messaging/service-bus-sas.md
+
+<!-- Update_Description: update meta properties, wording update, update link -->

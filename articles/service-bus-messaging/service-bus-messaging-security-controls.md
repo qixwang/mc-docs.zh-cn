@@ -1,19 +1,19 @@
 ---
 title: Azure 服务总线消息的安全控制
 description: 用于评估 Azure 服务总线消息的安全控制的清单
-services: service-bus-messaging
-ms.service: service-bus-messaging
-author: spelluru
 ms.topic: conceptual
-ms.date: 04/29/2020
-ms.author: v-tawe
-origin.date: 09/23/2019
-ms.openlocfilehash: 9e0cdab177d9ec23a03f2a7354438b3b00a25e3d
-ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: ''
+ms.author: v-yeche
+author: rockboyfor
+ms.openlocfilehash: 8eae49988ada048a0e0ace26a733dca0ae568e7b
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85796287"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162427"
 ---
 # <a name="security-controls-for-azure-service-bus-messaging"></a>Azure 服务总线消息的安全控制
 
@@ -49,7 +49,7 @@ ms.locfileid: "85796287"
 
 | 安全控制 | Yes/No | 注释 | 文档 |
 |---|---|--|--|
-| 服务器端静态加密：Microsoft 管理的密钥 |  默认情况下，服务器端静态加密为“是”。 |  |  |
+| 服务器端静态加密：Azure 托管的密钥 |  默认情况下，服务器端静态加密为“是”。 |  |  |
 | 服务器端静态加密：客户管理的密钥 (BYOK) | 是的。 | 可以使用 Azure Key Vault 中的客户托管密钥来加密服务总线命名空间中的静态数据。 | [使用 Azure 门户配置客户托管密钥以加密 Azure 服务总线静态数据](configure-customer-managed-key.md)  |
 | 列级加密（Azure 数据服务）| 空值 | |   |
 | 传输中加密（例如 ExpressRoute 加密、VNet 中加密，以及 VNet-VNet 加密）| 是 | 支持标准的 HTTPS/TLS 机制。 |   |
@@ -64,3 +64,5 @@ ms.locfileid: "85796287"
 ## <a name="next-steps"></a>后续步骤
 
 - 详细了解[跨 Azure 服务的内置安全控制](../security/fundamentals/security-controls.md)。
+
+<!-- Update_Description: update meta properties, wording update, update link -->

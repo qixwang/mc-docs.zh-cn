@@ -2,17 +2,16 @@
 title: Azure Monitor Application Insights NuGet 包
 description: 用于 ASP.NET、ASP.NET Core、Python 的 Azure Monitor Application Insights NuGet 包列表
 ms.topic: reference
-author: lingliw
-manager: digimobile
+author: Johnnytechn
 origin.date: 10/16/2018
-ms.date: 12/30/2019
-ms.author: v-lingwu
-ms.openlocfilehash: 16dc2c278aee65e28ae9e4874f3db747dcc7f634
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 07/17/2020
+ms.author: v-johya
+ms.openlocfilehash: 1435ea238a1e62e1c15dbb82ef9e52af40416f01
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850400"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244918"
 ---
 # <a name="application-insights-nuget-packages"></a>Application Insights NuGet 包
 
@@ -83,7 +82,7 @@ ms.locfileid: "78850400"
 | Microsoft.ApplicationInsights.Agent_x64 | 2.2.1 |  为 x64 应用程序启用运行时数据收集功能 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Agent_x64/) |
 | Microsoft.ApplicationInsights.Agent_x86 | 2.2.1 |  为 x86 应用程序启用运行时数据收集功能。 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Agent_x86/) |
 
-这些包属于[状态监视器](../../azure-monitor/app/monitor-performance-live-website-now.md)中运行时监视的核心功能。 无需直接下载这些包，只需使用状态监视器安装程序即可。 如果要详细了解这些包如何在后台工作，请参阅我们的一位开发人员撰写的这篇[博客文章](https://apmtips.com/blog/2016/11/18/how-application-insights-status-monitor-not-monitors-dependencies/)。
+这些包属于[状态监视器](../../azure-monitor/app/monitor-performance-live-website-now.md)中运行时监视的核心功能。 无需直接下载这些包，只需使用状态监视器安装程序即可。 如果要详细了解这些包如何在后台工作，请参阅我们的一位开发人员撰写的这篇[博客文章](https://apmtips.com/posts/2016-11-18-how-application-insights-status-monitor-not-monitors-dependencies/)。
 
 ## <a name="additional-packages"></a>其他包
 
@@ -95,7 +94,3 @@ ms.locfileid: "78850400"
 ## <a name="next-steps"></a>后续步骤
 
 - 监视 [ASP.NET Core](../../azure-monitor/app/asp-net-core.md)。
-- 调试 ASP.NET [快照](../../azure-monitor/app/snapshot-debugger.md)。
-
-
-

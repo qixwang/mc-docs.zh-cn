@@ -7,19 +7,19 @@ ms.service: databox
 ms.subservice: disk
 ms.topic: overview
 origin.date: 06/18/2019
-ms.date: 07/06/2019
+ms.date: 07/27/2020
 ms.author: v-jay
 Customer intent: As an IT admin, I need to understand what Data Box Disk is and how it works so I can use it to import on-premises data into Azure.
-ms.openlocfilehash: c40665f210d7830146befb8d200cf0eab9d8c56a
-ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
+ms.openlocfilehash: 827935ffeb1ac55891bb4d1e9ed0ed945196623f
+ms.sourcegitcommit: c3f15613c875bb52d5a105445efd0f36b9f24c9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85945869"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86473461"
 ---
 # <a name="what-is-azure-data-box-disk"></a>什么是 Azure Data Box 磁盘？
 
-使用 Azure Data Box 磁盘解决方案可以通过快速、经济、可靠的方式将 TB 量级的本地数据发送到 Azure。 Microsoft 会向你寄送 1 到 5 块固态硬盘 (SSD)，帮助加速安全数据传输。 这些加密的 8 TB 磁盘将通过区域承运人寄送到你的数据中心。 
+使用 Azure Data Box 磁盘解决方案可以通过快速、经济、可靠的方式将 TB 量级的本地数据发送到 Azure。 Microsoft 会向你寄送 1 到 5 块固态硬盘 (SSD)，帮助加速安全数据传输。 这些加密的 8 TB 磁盘将通过区域运营商寄送到你的数据中心。
 
 可以通过 Azure 门户中的 Data Box 服务快速配置、连接和解锁这些磁盘。 将数据复制到磁盘，然后将磁盘寄回到 Azure。 在 Azure 数据中心，将会通过高速专用上传链路，将数据自动从驱动器上传到云中。
 
@@ -35,9 +35,18 @@ ms.locfileid: "85945869"
 
 Azure 提供程序和非 Azure 提供程序均可以从 Azure Data Box 引入数据。 提供 Azure Data Box 数据引入功能的 Azure 服务包括：
 
-- **SharePoint Online** - 使用 Azure Data Box 和 SharePoint 迁移工具 (SPMT) 将文件共享内容迁移到 SharePoint Online。 使用 Data Box，可以删除用于传输数据的 WAN 链接上依赖项。 有关详细信息，请参阅[使用 Azure Data Box Heavy 将文件共享内容迁移到 SharePoint Online](data-box-heavy-migrate-spo.md)。
+- **SharePoint Online** - 使用 Azure Data Box 和 SharePoint 迁移工具 (SPMT) 将文件共享内容迁移到 SharePoint Online。 使用 Data Box，可以删除用于传输数据的 WAN 链接上依赖项。
+
+- **HDFS 存储** - 使用 Data Box 将数据从 Hadoop 群集的本地 Hadoop 分布式文件系统 (HDFS) 存储迁移到 Azure 存储中。
 
 - **Azure 备份** - 使你能够通过脱机机制将关键企业数据的大型备份移动到 Azure 恢复服务保管库。 有关详细信息，请参阅 [Azure 备份概述](../backup/backup-overview.md)。
+
+可以将 Data Box 数据与多个非 Azure 服务提供程序协同使用。 例如：
+
+- **[Commvault](http://documentation.commvault.com/commvault/v11/article?p=97276.htm)** - 允许你使用 Azure Data Box 将大量数据迁移到 Azure。
+- **[Veeam](https://helpcenter.veeam.com/docs/backup/hyperv/osr_adding_data_box.html?ver=100)** - 使你能够将大量数据从 Hyper-V 计算机备份及复制到 Data Box。
+
+有关与 Data Box 集成的其他非 Azure 服务提供程序的列表，请参阅 [Azure Data Box 合作伙伴](https://cloudchampions.blob.core.windows.net/db-partners/PartnersTable.pdf)。
 
 ## <a name="the-workflow"></a>工作流
 

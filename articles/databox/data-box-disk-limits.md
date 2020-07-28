@@ -1,25 +1,25 @@
 ---
 title: Azure Data Box 磁盘限制 | Microsoft Docs
-description: 介绍了 Azure Data Box 磁盘的系统限制与建议的大小。
+description: 介绍了 Microsoft Azure Data Box 磁盘的系统限制与建议的大小。
 services: databox
 author: WenJason
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
 origin.date: 11/05/2019
-ms.date: 02/17/2020
+ms.date: 07/27/2020
 ms.author: v-jay
-ms.openlocfilehash: ccff638ff67811f81db84ac30ddf921e1db2edc9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ce893b933bbe5aba6911dd005efa648523ebb03f
+ms.sourcegitcommit: c3f15613c875bb52d5a105445efd0f36b9f24c9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293236"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86473459"
 ---
 # <a name="azure-data-box-disk-limits"></a>Azure Data Box 磁盘限制
 
 
-在部署和操作 Azure Data Box 磁盘解决方案时请考虑这些限制。 
+在部署和操作 Azure Data Box 磁盘解决方案时请考虑这些限制。
 
 ## <a name="data-box-service-limits"></a>Data Box 服务限制
 
@@ -55,16 +55,17 @@ ms.locfileid: "79293236"
 - 如果在订单中指定了托管磁盘，请查看以下其他注意事项：
 
     - 在所有预先创建的文件夹和所有 Data Box Disk 中，一个资源组只能包含一个具有给定名称的托管磁盘。 这意味着，上传到预先创建的文件夹的 VHD 应具有唯一的名称。 确保给定的名称与资源组中现有的托管磁盘不匹配。 如果 VHD 具有相同的名称，则只有一个 VHD 将转换为具有该名称的托管磁盘。 其他 VHD 作为页 blob 上传到临时存储帐户。
-    - 始终将 VHD 复制到某个预先创建的文件夹。 如果将 VHD 复制到这些文件夹以外或者复制到你自己创建的文件夹中，则 VHD 作为页 Blob 而不是托管磁盘上传到 Azure 存储帐户中。
+    - 始终将 VHD 复制到某个预先创建的文件夹。 如果将 VHD 复制到这些文件夹以外或者复制到你已创建的文件夹中，则 VHD 将作为页 Blob 而不是托管磁盘上传到 Azure 存储帐户中。
     - 只能上传固定的 VHD 来创建托管磁盘。 不支持动态 VHD、差异 VHD 或 VHDX 文件。
+    - 复制到预创建托管磁盘文件夹中的非 VHD 文件不会转换为托管磁盘。
 
 ## <a name="azure-storage-account-size-limits"></a>Azure 存储帐户大小限制
 
-下面是对复制到存储帐户的数据的大小限制。 请确保上传的数据符合这些限制。 有关这些限制的最新信息，请转到 [Azure blob 存储规模目标](/storage/blobs/scalability-targets#scale-targets-for-blob-storage)和 [Azure 文件规模目标](/storage/common/scalability-targets-standard-account#scale-targets-for-standard-storage-accounts)。
+下面是对可以复制到存储帐户的数据的大小限制。 请确保上传的数据符合这些限制。 
 
-| 复制到 Azure 存储帐户的数据的大小                      | 默认限制          |
-|---------------------------------------------------------------------|------------------------|
-| 块 Blob 和页 blob                                            | 每个存储帐户 500 TB。 <br> 这包括来自包括 Data Box 磁盘的所有源的数据。|
+| 数据类型             | 默认限制          |
+|--------------------------|------------------------|
+| 块 Blob、页 Blob    | 有关这些限制的最新信息，请参阅 [Azure Blob 存储缩放目标](/storage/blobs/scalability-targets#scale-targets-for-blob-storage)、[Azure 标准存储缩放目标](/storage/common/scalability-targets-standard-account#scale-targets-for-standard-storage-accounts)和 [Azure 文件存储缩放目标](/storage/files/storage-files-scale-targets#file-share-and-file-scale-targets)。 <br /><br /> 这些限制包括来自所有源（包括 Data Box Disk）的数据。|
 
 
 ## <a name="azure-object-size-limits"></a>Azure 对象大小限制

@@ -1,60 +1,67 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure 服务总线中继文档
+### YamlMime:Landing
+title: Azure 中继文档
+summary: 了解如何使用 Azure 中继服务来安全地向公有云公开企业网络中运行的服务。
 metadata:
-  title: Azure 服务总线中继文档
-  meta.description: 'Learn how the Azure Relay service work in a hybrid cloud and on-premises environment, complete with how to, Tutorials, videos, API references, and more.'
+  title: Azure 中继文档
+  description: 了解如何使用 Azure 中继服务来安全地向公有云公开企业网络中运行的服务。
   services: service-bus-relay
-  author: spelluru
-  manager: femila
   ms.service: service-bus-relay
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: 
   ms.topic: landing-page
-  ms.date: 08/21/2018
-  ms.author: spelluru
-abstract:
-  description: Azure 中继服务可在无需打开防火墙连接或者对企业网络基础结构进行侵入式改造的情况下，为企业网络和公有云中的本地环境与云环境之间的混合应用程序提供便利。
-sections:
-  - title: 分步教程
-    items:
-      - type: paragraph
-        text: <b>混合连接：</b>
-      - type: list
-        style: ordered
-        items:
-          - image:
-              src: /media/index/logo_net.svg
-            text: .NET Web Socket
-            href: /service-bus-relay/relay-hybrid-connections-dotnet-get-started
-          - image:
-              src: /media/index/logo_net.svg
-            text: .NET HTTP
-            href: /service-bus-relay/relay-hybrid-connections-http-requests-dotnet-get-started
-          - image:
-              src: /media/index/logo_nodejs.svg
-            text: Node.js Web Socket
-            href: /service-bus-relay/relay-hybrid-connections-node-get-started
-          - image:
-              src: /media/index/logo_nodejs.svg
-            text: Node.js HTTP
-            href: /service-bus-relay/relay-hybrid-connections-http-requests-node-get-started
-  - title: 分步教程
-    items:
-      - type: paragraph
-        text: <b>Windows Communication Foundation (WCF) 中继：</b>
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/service-bus-relay/service-bus-dotnet-hybrid-app-using-service-bus-relay">向云中的 Web 应用程序公开本地 WCF 服务</a>
-          - html: <a href="/service-bus-relay/service-bus-relay-tutorial">向网络外部的 WCF 客户端公开本地 WCF 服务</a>
-          - html: <a href="/service-bus-relay/service-bus-relay-rest-tutorial">向网络外部的应用程序公开本地 WCF 服务</a>
-  - title: 示例
-    items:
-      - type: paragraph
-        text: GitHub 上的示例
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: '<a href="https://github.com/Azure/azure-relay/tree/master/samples">Azure 中继示例</a>'
+  ms.collection: collection
+  author: rockboyfor
+  ms.date: 07/27/2020
+  ms.testscope: no
+  ms.testdate: 
+  ms.author: v-yeche
+  ms.openlocfilehash: 62df9326e70f1728048b18cdb196ba3c8fe34fad
+  ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 07/24/2020
+  ms.locfileid: "87162159"
+landingContent:
+- title: 关于 Azure 中继
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure 中继？
+      url: relay-what-is-it.md
+- title: 混合连接
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 使用 Websockets 发送和接收消息 - .NET
+      url: relay-hybrid-connections-dotnet-get-started.md
+    - text: 使用 HTTP 发送和接收消息 - .NET
+      url: relay-hybrid-connections-http-requests-dotnet-get-started.md
+    - text: 使用 Websockets 发送和接收消息 - Node.js
+      url: relay-hybrid-connections-node-get-started.md
+    - text: 使用 HTTP 发送和接收消息 - Node.js
+      url: relay-hybrid-connections-http-requests-node-get-started.md
+  - linkListType: download
+    links:
+    - text: GitHub 上的示例
+      url: https://github.com/Azure/azure-relay/tree/master/samples/hybrid-connections
+- title: WCF 中继
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 向云中的 Web 应用程序公开本地 WCF 服务
+      url: service-bus-dotnet-hybrid-app-using-service-bus-relay.md
+    - text: 向网络外部的 WCF 服务公开本地 WCF 服务
+      url: service-bus-relay-tutorial.md
+    - text: 向网络外部的客户端公开本地 WCF REST 服务
+      url: service-bus-relay-rest-tutorial.md
+  - linkListType: download
+    links:
+    - text: GitHub 上的示例
+      url: https://github.com/Azure/azure-relay/tree/master/samples/wcf-relay
+- title: API 参考
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: .NET
+      url: https://docs.azure.cn/dotnet/api/microsoft.azure.relay?view=azure-dotnet
+    - text: REST
+      url: https://docs.microsoft.com/rest/api/relay/

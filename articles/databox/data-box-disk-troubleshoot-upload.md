@@ -1,20 +1,21 @@
 ---
-title: 使用日志排查将数据上传到 Azure Data Box Disk 时出现的问题 | Microsoft Docs
+title: 使用日志排查数据上传问题
+titleSuffix: Azure Data Box Disk
 description: 介绍如何使用日志以及排查将数据上传到 Azure Data Box Disk 时出现的问题。
 services: databox
 author: WenJason
 ms.service: databox
 ms.subservice: disk
-ms.topic: article
+ms.topic: troubleshooting
 origin.date: 06/17/2019
-ms.date: 07/22/2019
+ms.date: 07/27/2020
 ms.author: v-jay
-ms.openlocfilehash: d3bbf5d46875eac6b77a9670234c1e8f806d45e3
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4929fef7c6e96e4c419b0cdba0c58b6e61171524
+ms.sourcegitcommit: c3f15613c875bb52d5a105445efd0f36b9f24c9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293307"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86473460"
 ---
 # <a name="understand-logs-to-troubleshoot-data-upload-issues-in-azure-data-box-disk"></a>了解如何使用日志排查将数据上传到 Azure Data Box Disk 时出现的问题
 
@@ -38,7 +39,7 @@ ms.locfileid: "79293307"
 
     ![门户中日志的链接](./media/data-box-disk-troubleshoot-upload/data-box-disk-portal-logs.png)
 
-2. 转到“waies”。 
+2. 转到“waies”。
 
     ![错误和详细日志](./media/data-box-disk-troubleshoot-upload/data-box-disk-portal-logs-1.png)
 
@@ -181,3 +182,6 @@ ms.locfileid: "79293307"
 |`DiskRenamed` |这些文件不符合 Azure 命名约定，已重命名。 请检查新名称的 `BlobPath` 字段。 |
 
 
+## <a name="next-steps"></a>后续步骤
+
+- [为 Data Box Disk 问题开具支持票证](https://portal.azure.cn/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。

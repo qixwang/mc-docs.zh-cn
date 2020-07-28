@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Azure Data Box 文档 - 脱机传输
-summary: 受到时间、网络或成本限制时，请使用 Azure Data Box 设备进行脱机数据传输。 请根据你的数据大小从 Data Box Disk、Data Box 或 Data Box Heavy 中进行选择。
+summary: 受到时间、网络或成本限制时，请使用 Azure Data Box 设备进行脱机数据传输。
 metadata:
   title: Azure Data Box 文档 - 脱机传输
   description: 受到时间、网络或成本限制时，请使用 Azure Data Box 设备进行脱机数据传输。
@@ -12,79 +12,51 @@ metadata:
   author: WenJason
   ms.author: v-jay
   origin.date: 08/16/2019
-  ms.date: 12/02/2019
-  ms.openlocfilehash: df108694fc39d50298e3682cbb683335a8b090d8
-  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+  ms.date: 07/27/2020
+  ms.openlocfilehash: 945d173c471095a8f065c6e117d833384929d82b
+  ms.sourcegitcommit: c3f15613c875bb52d5a105445efd0f36b9f24c9c
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/17/2020
-  ms.locfileid: "74530534"
+  ms.lasthandoff: 07/20/2020
+  ms.locfileid: "86473452"
 landingContent:
-- title: 关于 Data Box 系列
+- title: 关于 Data Box Disk
   linkLists:
   - linkListType: overview
     links:
-    - text: 什么是 Data Box？
-      url: data-box-overview.md
     - text: 什么是 Data Box Disk？
       url: data-box-disk-overview.md
-    - text: 什么是 Data Box Heavy？
-      url: data-box-heavy-overview.md
-  - linkListType: architecture
-    links:
-    - text: 选择 Azure 数据传输选项
-      url: /storage/common/storage-choose-data-transfer-solution
 - title: 入门
   linkLists:
   - linkListType: quickstart
     links:
-    - text: 设置 Data Box
-      url: data-box-quickstart-portal.md
     - text: 设置 Data Box Disk
       url: data-box-disk-quickstart-portal.md
-    - text: 设置 Data Box Heavy
-      url: data-box-heavy-quickstart-portal.md
 - title: 查看要求
   linkLists:
   - linkListType: concept
     links:
-    - text: 对于 Data Box
-      url: data-box-system-requirements.md
     - text: 对于 Data Box Disk
       url: data-box-disk-system-requirements.md
-    - text: Data Box Heavy
-      url: data-box-heavy-system-requirements.md
 - title: 订购、设置、复制、返回
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Data Box
-      url: data-box-deploy-ordered.md
     - text: Data Box Disk
       url: data-box-disk-deploy-ordered.md
-    - text: Data Box Heavy
-      url: data-box-heavy-deploy-ordered.md
 - title: 管理设备
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Azure 中的 Data Box
-      url: data-box-portal-admin.md
     - text: 在 Azure 中管理 Data Box Disk
       url: data-box-portal-ui-admin.md
-    - text: Azure 中的 Data Box Heavy
-      url: data-box-portal-admin.md
 - title: 故障排除
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Data Box
-      url: data-box-troubleshoot.md
     - text: Data Box Disk
       url: data-box-disk-troubleshoot.md
-    - text: Data Box Heavy
-      url: data-box-troubleshoot.md
-    - text: 通过 Data Box 常见问题解答
-      url: data-box-faq.md
     - text: 通过 Data Box Disk 常见问题解答
       url: data-box-disk-faq.md
+    - text: 创建支持票证
+      url: https://portal.azure.cn/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview
