@@ -9,14 +9,15 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 origin.date: 04/13/2020
-ms.date: 04/20/2020
+ms.date: 08/03/2020
 ms.author: v-tawe
-ms.openlocfilehash: d92726933401df9844044557207fefbeb5c51a60
-ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 070eff03d27d46e71301cb84506c44ae8364b4c5
+ms.sourcegitcommit: 3821704fee67315badba49cf628af2aa68d98f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85095886"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87516060"
 ---
 # <a name="quickstart-convert-text-to-speech-using-nodejs"></a>快速入门：使用 Node.js 将文本转换为语音
 
@@ -90,7 +91,7 @@ function getAccessToken(subscriptionKey) {
 >[!NOTE]
 > 此示例使用 `JessaRUS` 语音字体。 如需 Microsoft 提供的语音/语言的完整列表，请参阅[语言支持](language-support.md)。
 
-<!-- > If you're interested in creating a unique, recognizable voice for your brand, see [Creating custom voice fonts](how-to-customize-voice-font.md). -->
+> 若要为品牌创建唯一且可识别的语音，请参阅[创建自定义语音字体](how-to-customize-voice-font.md)。
 
 最后，向服务发出请求。 如果该请求成功，则会返回 200 状态代码，语音响应将写入为 `TTSOutput.wav`。
 
@@ -190,6 +191,5 @@ node tts.js
 ## <a name="see-also"></a>另请参阅
 
 * [文本到语音 API 参考](https://docs.azure.cn/cognitive-services/speech-service/rest-apis)
-
-<!-- * [Creating custom voice fonts](how-to-customize-voice-font.md) -->
-<!-- * [Record voice samples to create a custom voice](record-custom-voice-samples.md) -->
+* [创建自定义语音字体](how-to-customize-voice-font.md)
+* [录制语音样本用于创建自定义语音](record-custom-voice-samples.md)

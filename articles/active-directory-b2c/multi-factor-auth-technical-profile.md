@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 04/01/2020
+ms.topic: reference
+ms.date: 07/27/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 0cd6832a03673f1d690974eac0589a2fb5594510
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 21433de11712ef9db600b617dc5595ca2edea2f2
+ms.sourcegitcommit: dd2bc914f6fc2309f122b1c7109e258ceaa7c868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80581644"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87297699"
 ---
 # <a name="define-an-azure-mfa-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>在 Azure AD B2C 自定义策略中定义 Azure MFA 技术配置文件
 
@@ -42,7 +42,7 @@ Web.TPEngine.Providers.AzureMfaProtocolProvider, Web.TPEngine, Version=1.0.0.0, 
 
 以下示例演示了 Azure MFA 的技术配置文件：
 
-```XML
+```xml
 <TechnicalProfile Id="AzureMfa-SendSms">
     <DisplayName>Send Sms</DisplayName>
     <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureMfaProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -93,7 +93,7 @@ Azure MFA 协议提供程序未返回任何 OutputClaims，因此无需指定输
 
 以下示例显示了一个 Azure MFA 技术配置文件（用于通过短信发送代码）。
 
-```XML
+```xml
 <TechnicalProfile Id="AzureMfa-SendSms">
   <DisplayName>Send Sms</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureMfaProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -153,7 +153,7 @@ Azure MFA 协议提供程序未返回任何 OutputClaims，因此无需指定输
 
 以下示例显示了用来验证代码的 Azure MFA 技术配置文件。
 
-```XML
+```xml
 <TechnicalProfile Id="AzureMfa-VerifySms">
     <DisplayName>Verify Sms</DisplayName>
     <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureMfaProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />

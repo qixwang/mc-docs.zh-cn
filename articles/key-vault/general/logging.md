@@ -9,14 +9,14 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 wacn.date: 08/12/2019
-ms.date: 04/20/2020
+ms.date: 07/28/2020
 ms.author: v-tawe
-ms.openlocfilehash: 65d3f27682df8696987ae2ffb749d11f471b853b
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.openlocfilehash: 0a32e58dc02eac82a62e823f0d281b953d66c7b5
+ms.sourcegitcommit: 0e778acf5aa5eb63ab233e07e7aecce3a9a5e6d4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588941"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87296514"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault 日志记录
 
@@ -34,14 +34,14 @@ ms.locfileid: "82588941"
 > [!NOTE]
 > 本教程不包含有关如何创建密钥保管库、密钥或机密的说明。 有关信息，请参阅[什么是 Azure 密钥保管库？](overview.md)。 或者，有关跨平台 Azure CLI 的说明，请参阅[此对应教程](manage-with-cli2.md)。
 >
-> 本文提供有关更新诊断日志记录的 Azure PowerShell 说明。 也可以使用 Azure 门户的“诊断日志”部分的 Azure Monitor 来更新诊断日志记录。  
+> 本文提供有关更新诊断日志记录的 Azure PowerShell 说明。 也可以使用 Azure 门户的“诊断日志”部分的 Azure Monitor 来更新诊断日志记录。 
 >
 
 有关 Key Vault的概述信息，请参阅[什么是 Azure Key Vault？](overview.md)。 有关 Key Vault 可用位置的信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/key-vault/)。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要完成本教程，必须具备以下项目：
+要完成本教程，必须满足下列要求：
 
 * 正在使用的现有密钥保管库。  
 * Azure PowerShell，最低版本为 1.0.0。 要安装 Azure PowerShell 并将其与 Azure 订阅相关联，请参阅[如何安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)。 如果已安装了 Azure PowerShell，但不知道版本，请在 Azure PowerShell 控制台中输入 `$PSVersionTable.PSVersion`。  
@@ -96,7 +96,7 @@ Set-AzContext -SubscriptionId <subscription ID>
 $kv = Get-AzKeyVault -VaultName 'ContosoKeyVault'
 ```
 
-## <a name="enable-logging"></a><a id="enable"></a>启用日志记录
+## <a name="enable-logging-using-azure-powershell"></a><a id="enable"></a>使用 Azure PowerShell 启用日志记录
 
 为了启用 Key Vault 日志记录，我们将使用 **Set-AzDiagnosticSetting** cmdlet 并配合针对新存储帐户和 Key Vault 创建的变量。 还将 **-Enabled** 标志设置为 **$true**，并将类别设置为 **AuditEvent**（Key Vault 日志记录的唯一类别）：
 
@@ -128,10 +128,30 @@ Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Ena
 
 * 所有已经过身份验证的 REST API 请求，包括由于访问权限、系统错误或错误请求而发生的失败请求。
 * 对 Key Vault 本身执行的操作，包括创建、删除、设置 Key Vault 访问策略，以及更新 Key Vault 属性（例如标记）。
-* 针对 Key Vault 中的密钥和机密执行的操作，包括：
+* 对 Key Vault 中的密钥和机密执行的操作，包括：
   * 创建、修改或删除这些密钥或机密。
-  * 签名、验证、加密、解密、包装和解包密钥、获取机密，以及列出密钥和机密（及其版本）。
-* 导致出现 401 响应的未经身份验证的请求。 示例包括不包含持有者令牌、格式不正确或已过期，或者包含无效令牌的请求。  
+  * 签名、验证、加密、解密、包装和解包密钥、获取机密、列出密钥和机密（及其版本）。
+* 导致出现 401 响应的未经身份验证的请求。 例如，请求不包含持有者令牌、格式不正确或已过期，或者包含无效的令牌。  
+
+## <a name="enable-logging-using-azure-cli"></a>使用 Azure CLI 启用日志记录
+
+```azurecli
+az cloud set -n AzureChinaCloud
+az login
+
+az account set --subscription {AZURE SUBSCRIPTION ID}
+
+az provider register -n Microsoft.KeyVault
+
+az monitor diagnostic-settings create  \
+--name KeyVault-Diagnostics \
+--resource /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault \
+--logs    '[{"category": "AuditEvent","enabled": true}]' \
+--metrics '[{"category": "AllMetrics","enabled": true}]' \
+--storage-account /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount \
+--workspace /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/myworkspace \
+--event-hub-rule /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhub/authorizationrules/RootManageSharedAccessKey
+```
 
 ## <a name="access-your-logs"></a><a id="access"></a>访问日志
 
@@ -188,7 +208,7 @@ $blobs = Get-AzStorageBlob -Container $container -Context $sa.Context
 $blobs | Get-AzStorageBlobContent -Destination C:\Users\username\ContosoKeyVaultLogs'
 ```
 
-运行第二个命令时，blob 名称中的 / 分隔符会在目标文件夹下创建完整的文件夹结构  。 你将使用此结构下载 Blob 并将其存储为文件。
+运行第二个命令时，blob 名称中的 / 分隔符会在目标文件夹下创建完整的文件夹结构。 你将使用此结构下载 Blob 并将其存储为文件。
 
 若要选择性地下载 Blob，请使用通配符。 例如：
 
@@ -215,15 +235,10 @@ $blobs | Get-AzStorageBlobContent -Destination C:\Users\username\ContosoKeyVault
 * 若要查询密钥保管库资源的诊断设置状态：`Get-AzDiagnosticSetting -ResourceId $kv.ResourceId`
 * 若要禁用密钥保管库资源的日志记录： `Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $false -Category AuditEvent`
 
+
 ## <a name="interpret-your-key-vault-logs"></a><a id="interpret"></a>解释 Key Vault 日志
 
-每个 Blob 存储为文本，并格式化为 JSON Blob。 让我们看一个示例日志项。 运行以下命令：
-
-```powershell
-Get-AzKeyVault -VaultName 'contosokeyvault'`
-```
-
-该命令将返回类似于下面的日志项：
+每个 Blob 存储为文本，并格式化为 JSON Blob。 让我们看一个示例日志项。 
 
 ```json
     {
@@ -317,5 +332,3 @@ Get-AzKeyVault -VaultName 'contosokeyvault'`
 有关编程参考，请参阅 [Azure 密钥保管库开发人员指南](developers-guide.md)。
 
 有关 Azure Key Vault 的 Azure PowerShell 1.0 cmdlet 列表，请参阅 [Azure Key Vault cmdlet](https://docs.microsoft.com/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault)。
-
-有关使用 Azure Key Vault 进行密钥轮换和日志审核的教程，请参阅[为 Key Vault 设置端到端密钥转换和审核](../secrets/key-rotation-log-monitoring.md)。

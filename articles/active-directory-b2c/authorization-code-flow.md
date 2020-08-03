@@ -2,21 +2,21 @@
 title: 授权代码流 - Azure Active Directory B2C | Microsoft Docs
 description: 了解如何使用 Azure AD B2C 和 OpenID Connect 身份验证协议生成 Web 应用。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/03/2020
+ms.date: 07/27/2020
 ms.author: v-junlch
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 987533d937aa8be02fd0fbfe534400486aa837d7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5cf9927c2ee630a363a8bc2937d35eb802836239
+ms.sourcegitcommit: dd2bc914f6fc2309f122b1c7109e258ceaa7c868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77028248"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87297668"
 ---
 # <a name="oauth-20-authorization-code-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的 OAuth 2.0 授权代码流
 
@@ -41,7 +41,7 @@ Azure AD B2C 扩展了标准 OAuth 2.0 流，使其功能远远超出了简单�
 授权代码流始于客户端将用户定向到 `/authorize` 终结点。 这是授权代码流中用户会执行操作的交互部分。 在此请求中，客户端指示在 `scope` 参数中需要从用户处获取的权限。 下面有三个示例（为方便阅读，提供了换行符），每个示例都使用不同的用户流。
 
 
-```HTTP
+```http
 GET https://{tenant}.b2clogin.cn/{tenant}.partner.onmschina.cn/{policy}/oauth2/v2.0/authorize?
 client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &response_type=code
@@ -70,7 +70,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 
 使用 `response_mode=query` 的成功响应如下所示：
 
-```HTTP
+```http
 GET urn:ietf:wg:oauth:2.0:oob?
 code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...        // the authorization_code, truncated
 &state=arbitrary_data_you_can_receive_in_the_response                // the value provided in the request
@@ -83,7 +83,7 @@ code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...        // the auth
 
 错误响应也可能发送到重定向 URI，让应用能够对其进行适当处理：
 
-```HTTP
+```http
 GET urn:ietf:wg:oauth:2.0:oob?
 error=access_denied
 &error_description=The+user+has+cancelled+entering+self-asserted+information
@@ -101,7 +101,7 @@ error=access_denied
 
 还可以按照将应用的客户端 ID 用作所请求范围（这将导致具有该客户端 ID 的访问令牌作为“受众”）的约定，为应用自己的后端 Web API 请求访问令牌：
 
-```HTTP
+```http
 POST https://{tenant}.b2clogin.cn/{tenant}.partner.onmschina.cn/{policy}/oauth2/v2.0/token HTTP/1.1
 
 Content-Type: application/x-www-form-urlencoded
@@ -123,7 +123,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 
 成功令牌响应如下所示：
 
-```JSON
+```json
 {
     "not_before": "1442340812",
     "token_type": "Bearer",
@@ -144,7 +144,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 
 错误响应如下所示：
 
-```JSON
+```json
 {
     "error": "access_denied",
     "error_description": "The user revoked access to the app.",
@@ -159,7 +159,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 ## <a name="3-use-the-token"></a>3.使用令牌
 现在你已成功获取访问令牌，可通过在 `Authorization` 标头中加入令牌的方式，在后端 Web API 请求中使用该令牌：
 
-```HTTP
+```http
 GET /tasks
 Host: mytaskwebapi.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
@@ -168,7 +168,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 ## <a name="4-refresh-the-token"></a>4.刷新令牌
 访问令牌和 ID 令牌的生存期较短。 过期后，必须将其刷新才能继续访问资源。 若要执行此操作，请向 `/token` 终结点提交另一个 POST 请求。 这次提供的是 `refresh_token` 而不是 `code`：
 
-```HTTP
+```http
 POST https://{tenant}.b2clogin.cn/{tenant}.partner.onmschina.cn/{policy}/oauth2/v2.0/token HTTP/1.1
 
 Content-Type: application/x-www-form-urlencoded
@@ -189,7 +189,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90
 
 成功令牌响应如下所示：
 
-```JSON
+```json
 {
     "not_before": "1442340812",
     "token_type": "Bearer",
@@ -210,7 +210,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90
 
 错误响应如下所示：
 
-```JSON
+```json
 {
     "error": "access_denied",
     "error_description": "The user revoked access to the app.",

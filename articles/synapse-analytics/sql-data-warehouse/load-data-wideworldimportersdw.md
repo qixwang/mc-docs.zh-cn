@@ -8,16 +8,16 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
 origin.date: 07/17/2019
-ms.date: 07/06/2020
+ms.date: 08/03/2020
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, synapse-analytics
-ms.openlocfilehash: b736946a86d4ca1879735315b958ed89fd0450b7
-ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
+ms.openlocfilehash: dd8560fb4b4a286576e742f7996ac4581bc4d979
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85845751"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426416"
 ---
 # <a name="tutorial-load-data-to--azure-synapse-analytics-sql-pool"></a>教程：将数据加载到 Azure Synapse Analytics SQL 池
 
@@ -47,7 +47,7 @@ ms.locfileid: "85845751"
 
 ## <a name="create-a-blank-data-warehouse-in-sql-pool"></a>在 SQL 池中创建空白数据仓库
 
-SQL 池是使用定义的一组[计算资源](memory-concurrency-limits.md)创建的。 SQL 池在 [Azure 资源组](../../azure-resource-manager/management/overview.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)和[逻辑 SQL Server](../../sql-database/sql-database-features.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 中进行创建。
+SQL 池是使用定义的一组[计算资源](memory-concurrency-limits.md)创建的。 SQL 池在 [Azure 资源组](../../azure-resource-manager/management/overview.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)和[逻辑 SQL Server](../../azure-sql/database/logical-servers.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 中进行创建。
 
 按照以下步骤创建空白的 SQL 池。
 
@@ -88,7 +88,7 @@ SQL 池是使用定义的一组[计算资源](memory-concurrency-limits.md)创�
 
 ## <a name="create-a-server-level-firewall-rule"></a>创建服务器级防火墙规则
 
-Azure Synapse Analytics 服务在服务器级别创建一个防火墙，阻止外部应用程序和工具连接到服务器或服务器上的任何数据库。 要启用连接，可以添加防火墙规则，为特定 IP 地址启用连接。  按照以下步骤为客户端的 IP 地址创建[服务器级防火墙规则](../../sql-database/sql-database-firewall-configure.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。 
+Azure Synapse Analytics 服务在服务器级别创建一个防火墙，阻止外部应用程序和工具连接到服务器或服务器上的任何数据库。 要启用连接，可以添加防火墙规则，为特定 IP 地址启用连接。  按照以下步骤为客户端的 IP 地址创建[服务器级防火墙规则](../../azure-sql/database/firewall-configure.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。 
 
 > [!NOTE]
 > Azure Synapse Analytics SQL 池通过端口 1433 进行通信。 如果尝试从企业网络内部进行连接，则该网络的防火墙可能不允许经端口 1433 的出站流量。 如果是这样，则无法连接到服务器，除非 IT 部门打开了端口 1433。

@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 05/18/2020
+ms.date: 07/27/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 0347f720afeed137b585a3053a14bb3c0a7f358f
-ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
+ms.openlocfilehash: 72dbea04fd22a7f0820fdd1ac34ffee35a0ccba7
+ms.sourcegitcommit: dd2bc914f6fc2309f122b1c7109e258ceaa7c868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83748058"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87297649"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
 
@@ -121,7 +121,7 @@ OutputClaim 元素包含以下属性：
 
 例如，可能会存储用户接受的上一版本的服务条款。 更新服务条款时，可以请求用户接受新版本。 在以下示例中，HasTOSVersionChanged 声明将 TOSVersion 声明的值与 LastTOSAcceptedVersion 声明的值进行比较，然后返回布尔 TOSVersionChanged 声明。
 
-```XML
+```xml
 <BuildingBlocks>
   <ClaimsSchema>
     <ClaimType Id="TOSVersionChanged">

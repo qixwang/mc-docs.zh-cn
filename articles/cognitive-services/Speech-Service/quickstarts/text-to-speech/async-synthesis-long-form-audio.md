@@ -12,12 +12,12 @@ origin.date: 11/04/2019
 ms.date: 07/09/2020
 ms.author: v-tawe
 ms.custom: tracking-python
-ms.openlocfilehash: d10eae9851789cab447c876610331a4b8580f3fd
-ms.sourcegitcommit: 08619b8fabb47a328c3ca43bf314ddc389328880
+ms.openlocfilehash: 19a8c1a07d383b73dceefc853a872a0d92816ad6
+ms.sourcegitcommit: 0e778acf5aa5eb63ab233e07e7aecce3a9a5e6d4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86164529"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87296511"
 ---
 # <a name="quickstart-asynchronous-synthesis-for-long-form-audio-in-python-preview"></a>快速入门：Python 中用于长格式音频的异步合成（预览版）
 
@@ -253,8 +253,8 @@ if args.delete:
 
 现在，让我们检查一下你以前提交的请求。 在继续下一步操作前，你需要在以下请求中更新几项内容：
 
-* 将 `<your_key>` 替换为语音服务订阅密钥。 [Azure 门户](https://aka.ms/azureportal)中资源的“概述”选项卡内提供了此信息。
-* 将 `<region>` 替换为创建语音资源的区域（例如：`eastus` 或 `westus`）。 [Azure 门户](https://aka.ms/azureportal)中资源的“概述”选项卡内提供了此信息。
+* 将 `<your_key>` 替换为语音服务订阅密钥。 [Azure 门户](https://portal.azure.cn)中资源的“概述”选项卡内提供了此信息。
+* 将 `<region>` 替换为创建语音资源的区域（例如：`chinaeast2`）。 [Azure 门户](https://portal.azure.cn)中资源的“概述”选项卡内提供了此信息。
 
 运行以下命令：
 
@@ -273,8 +273,8 @@ ID : xxx , Name : xxx : Succeeded
 
 现在，让我们删除以前提交的请求。 你需要在以下代码中更新几项内容：
 
-* 将 `<your_key>` 替换为语音服务订阅密钥。 [Azure 门户](https://aka.ms/azureportal)中资源的“概述”选项卡内提供了此信息。
-* 将 `<region>` 替换为创建语音资源的区域（例如：`eastus` 或 `westus`）。 [Azure 门户](https://aka.ms/azureportal)中资源的“概述”选项卡内提供了此信息。
+* 将 `<your_key>` 替换为语音服务订阅密钥。 [Azure 门户](https://portal.azure.cn)中资源的“概述”选项卡内提供了此信息。
+* 将 `<region>` 替换为创建语音资源的区域（例如：`chinaeast2`）。 [Azure 门户](https://portal.azure.cn)中资源的“概述”选项卡内提供了此信息。
 * 将 `<synthesis_id>` 替换为上一个请求中返回的值。
 
 > [!NOTE]

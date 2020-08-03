@@ -6,14 +6,16 @@ manager: digimobile
 ms.service: site-recovery
 ms.topic: conceptual
 origin.date: 11/15/2019
-ms.date: 06/08/2020
+ms.date: 08/03/2020
+ms.testscope: no
+ms.testdate: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: b4c3f75b30b1981e0e892117d122c326058e1113
-ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
+ms.openlocfilehash: 18e26cf142b5cbb89c45218ecea58df5eb3b4c7e
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84440709"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426487"
 ---
 <!--Verify sucessfully before the Sample, Dialogue setting passed-->
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>使用 Azure Monitor 日志监视 Site Recovery
@@ -70,9 +72,11 @@ Site Recovery 日志将开始馈送到选定工作区中的某个表 (**AzureDia
 6. 通过提供获取的工作区 ID 和密钥[完成代理安装](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard)。
 7. 安装完成后，转到 Log Analytics 工作区并单击“高级设置”。 转到“数据”页并单击“Windows 性能计数器” 。 
 8. 单击“+”添加以下两个计数器，采样间隔为 300 秒：
-
-        ASRAnalytics(*)\SourceVmChurnRate 
-        ASRAnalytics(*)\SourceVmThrpRate 
+    
+    ```
+    ASRAnalytics(*)\SourceVmChurnRate 
+    ASRAnalytics(*)\SourceVmThrpRate 
+    ```
 
 变动和上传速率数据将开始输入工作区。
 
@@ -253,7 +257,7 @@ AzureDiagnostics 
 
 ## <a name="set-up-alerts---examples"></a>设置警报 - 示例
 
-可以基于 Azure Monitor 数据设置 Site Recovery 警报。 [详细了解](../azure-monitor/platform/alerts-log.md#managing-log-alerts-from-the-azure-portal)如何设置日志警报。 
+可以基于 Azure Monitor 数据设置 Site Recovery 警报。 [详细了解](../azure-monitor/platform/alerts-log.md#create-a-log-alert-rule-with-the-azure-portal)如何设置日志警报。 
 
 > [!NOTE]
 > 其中一些示例使用设置为 **A2A** 的 **replicationProviderName_s**。 这会针对已复制到次要 Azure 区域的 Azure VM 设置警报。 若要针对已复制到 Azure 的本地 VMware VM 或物理服务器设置警报，可在这些示例中将 **A2A** 替换为 **InMageAzureV2**。

@@ -9,16 +9,16 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 origin.date: 04/14/2020
-ms.date: 06/19/2020
+ms.date: 08/03/2020
 ms.author: v-tawe
-ms.custom: tracking-python
+ms.custom: tracking-python, devx-track-javascript
 zone_pivot_groups: programming-languages-set-two-with-js
-ms.openlocfilehash: 1c33683a6221b6e1ad3b8216509671b54cc8b16d
-ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
+ms.openlocfilehash: 578301a9aa721cd143170953f492ef08abe00fe6
+ms.sourcegitcommit: 3821704fee67315badba49cf628af2aa68d98f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85613391"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87516042"
 ---
 # <a name="learn-the-basics-of-speech-recognition"></a>了解语音识别的基本知识
 

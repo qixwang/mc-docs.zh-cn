@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: how-to
 origin.date: 07/01/2019
-ms.date: 07/06/2020
+ms.date: 08/03/2020
 ms.author: v-yeche
 ms.subservice: disks
-ms.openlocfilehash: c6c2a090f0a04e8571b58f27ab0b2b75363fdc81
-ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
+ms.openlocfilehash: 35b904b3d09e2d0d23bbfe28910b12e7f49fc7b4
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85945823"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426367"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>用于 Azure VM 的临时 OS 磁盘
 

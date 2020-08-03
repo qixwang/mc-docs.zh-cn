@@ -7,14 +7,14 @@ manager: digimobile
 ms.service: site-recovery
 ms.topic: conceptual
 origin.date: 07/03/2019
-ms.date: 08/05/2019
+ms.date: 08/03/2020
 ms.author: v-yeche
-ms.openlocfilehash: 7b1653b0fda38dec10aa8d2e564c1d1bdb379197
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 53b4c775ee69b7a95c46a5de64d3065b174b5bdc
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292762"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426350"
 ---
 # <a name="set-up-the-configuration-server-for-disaster-recovery-of-physical-servers-to-azure"></a>设置配置服务器，以便将物理服务器灾难恢复到 Azure
 

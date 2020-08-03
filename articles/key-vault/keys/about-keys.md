@@ -9,14 +9,14 @@ ms.service: key-vault
 ms.subservice: keys
 ms.topic: overview
 origin.date: 09/04/2019
-ms.date: 06/02/2020
+ms.date: 07/28/2020
 ms.author: v-tawe
-ms.openlocfilehash: c53817023801207a903e8287fc37a89ba70447de
-ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
+ms.openlocfilehash: 6c7007730b4d102d4ff95d610502c8ff6ec9b295
+ms.sourcegitcommit: 0e778acf5aa5eb63ab233e07e7aecce3a9a5e6d4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84275398"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87296506"
 ---
 # <a name="about-azure-key-vault-keys"></a>关于 Azure Key Vault 密钥
 
@@ -33,7 +33,7 @@ Key Vault 中的加密密钥表示为 JSON Web 密钥 [JWK] 对象。 JavaScript
 
 Azure Key Vault 支持软密钥：
 
-- **“软”密钥**：Key Vault 在软件中处理的密钥。 客户端可以导入现有 RSA 或 EC（椭圆曲线）密钥，也可以请求 Key Vault 生成该密钥。
+- **受软件保护的密钥**：Key Vault 在软件中处理的密钥。 客户端可以导入现有 RSA 或 EC（椭圆曲线）密钥，也可以请求 Key Vault 生成该密钥。
 
 <!-- For more information on geographical boundaries, see [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/privacy/)   -->
 
@@ -75,9 +75,9 @@ Key Vault 使用的加密模块经过 FIPS（美国联邦信息处理标准）�
 
 #### <a name="signverify"></a>SIGN/VERIFY
 
--   **PS256** - RSASSA-PSS 将 SHA-256 和 MGF1 与 SHA-256 配合使用，如 [RFC7518](https://tools.ietf.org/html/rfc7518) 中所述。
--   **PS384** - RSASSA-PSS 将 SHA-384 和 MGF1 与 SHA-384 配合使用，如 [RFC7518](https://tools.ietf.org/html/rfc7518) 中所述。
--   **PS512** - RSASSA-PSS 将 SHA-512 和 MGF1 与 SHA-512 配合使用，如 [RFC7518](https://tools.ietf.org/html/rfc7518) 中所述。
+-   **PS256** - 将 SHA-256 和 MGF1 与 SHA-256 配合使用的 RSASSA-PSS，如 [RFC7518](https://tools.ietf.org/html/rfc7518) 中所述。
+-   **PS384** - 将 SHA-384 和 MGF1 与 SHA-384 配合使用的 RSASSA-PSS，如 [RFC7518](https://tools.ietf.org/html/rfc7518) 中所述。
+-   **PS512** - 将 SHA-512 和 MGF1 与 SHA-512 配合使用的 RSASSA-PSS，如 [RFC7518](https://tools.ietf.org/html/rfc7518) 中所述。
 -   **RS256** - RSASSA-PKCS-v1_5 使用 SHA-256。 必须使用 SHA-256 计算应用程序提供的摘要值，并且该值的长度必须为 32 字节。  
 -   **RS384** - RSASSA-PKCS-v1_5 使用 SHA-384。 必须使用 SHA-384 计算应用程序提供的摘要值，并且该值的长度必须为 48 字节。  
 -   **RS512** - RSASSA-PKCS-v1_5 使用 SHA-512。 必须使用 SHA-512 计算应用程序提供的摘要值，并且该值的长度必须为 64 字节。  
@@ -145,9 +145,9 @@ Key Vault 不支持“导出”操作。 在系统中设置密钥后，便无法
 
 ##  <a name="key-access-control"></a>密钥访问控制
 
-Key Vault 托管的密钥的访问控制是在充当密钥容器的 Key Vault 级别提供的。 在同一 Key Vault 中，密钥的访问控制策略不同于机密的访问控制策略。 用户可以创建一个或多个保管库来保存密钥，并且需要维护方案相应的密钥分段和管理。 密钥的访问控制与机密的访问控制无关。  
+Key Vault 托管的密钥的访问控制是在充当密钥容器的 Key Vault 级别提供的。 在同一密钥保管库中，密钥的访问控制策略不同于机密的访问控制策略。 用户可以创建一个或多个保管库来保存密钥，并且需要维护方案相应的密钥分段和管理。 密钥的访问控制与机密的访问控制无关。  
 
-在保管库上的密钥访问控制条目中可以按用户/服务主体授予以下权限。 这些权限严密地反映了对密钥对象所允许的操作。  授予对密钥保管库中的服务主体的访问权限是一次性操作，并且对于所有 Azure 订阅都将保持相同。 可以使用它来部署所需数量的证书。 
+在保管库上的密钥访问控制条目中可以按用户/服务主体授予以下权限。 这些权限对密钥对象上允许的操作采取严密的镜像操作。  向密钥保管库中的服务主体授予访问权限是一项一次性操作，并且对所有 Azure 订阅保持不变。 可以使用它来部署所需数量的证书。 
 
 - 针对密钥管理操作的权限
   - *get*：读取密钥的公共部分及其属性

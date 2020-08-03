@@ -11,13 +11,14 @@ ms.topic: conceptual
 origin.date: 04/13/2020
 ms.date: 04/20/2020
 ms.author: v-tawe
-zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 00f779434959a188e58a70f8890968208eba6ad1
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.custom: devx-track-javascript
+zone_pivot_groups: programming-languages-set-two-with-js
+ms.openlocfilehash: 4e57bf3df89ff2d21229036124a8264c7c5801c5
+ms.sourcegitcommit: 3821704fee67315badba49cf628af2aa68d98f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82127231"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87516111"
 ---
 # <a name="learn-the-basics-of-speech-translation"></a>了解语音翻译基础知识
 
@@ -43,6 +44,10 @@ ms.locfileid: "82127231"
 
 ::: zone pivot="programming-language-python"
 [!INCLUDE [Python Basics include](includes/how-to/speech-translation-basics/speech-translation-basics-python.md)]
+::: zone-end
+
+::: zone pivot="programming-language-javascript"
+[!INCLUDE [JavaScript Basics include](includes/how-to/speech-translation-basics/speech-translation-basics-javascript.md)]
 ::: zone-end
 
 ::: zone pivot="programming-language-more"

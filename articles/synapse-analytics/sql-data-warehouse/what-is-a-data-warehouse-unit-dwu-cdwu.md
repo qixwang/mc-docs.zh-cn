@@ -6,18 +6,18 @@ author: WenJason
 manager: digimobile
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 origin.date: 11/22/2019
-ms.date: 07/06/2020
+ms.date: 08/03/2020
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: de7f253ca722b872a887470a31b991dbc40569f0
-ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
+ms.openlocfilehash: 72da89b06abefb19f8a56846a31974e2065ee732
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85845905"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426504"
 ---
 # <a name="data-warehouse-units-dwus"></a>数据仓库单位 (DWU)
 
@@ -52,7 +52,7 @@ ms.locfileid: "85845905"
 服务级别目标 (SLO) 是确定 SQL 池的成本和性能级别的可伸缩性设置。 第 2 代 SQL 池的服务级别以数据仓库单位 (DWU) 计量，例如 DW2000c。
 
 > [!NOTE]
-> Azure SQL 数据仓库 Gen2 最近添加了额外的扩展功能，以支持低至 100 cDWU 的计算层。 当前在 Gen1 上需要较低计算层的现有数据仓库现可升级到当前可用区域中的 Gen2，无需额外成本。  如果你的区域尚不支持，仍可升级到支持的区域。 有关详细信息，请参阅[升级到 Gen2](../sql-data-warehouse/upgrade-to-latest-generation.md?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json)。
+> Azure SQL 数据仓库 Gen2 最近添加了额外的扩展功能，以支持低至 100 cDWU 的计算层。 当前在 Gen1 上需要较低计算层的现有数据仓库现可升级到当前可用区域中的 Gen2，无需额外成本。  如果你的区域尚不支持，仍可升级到支持的区域。
 
 在 T-SQL 中，SERVICE_OBJECTIVE 设置决定了 SQL 池的服务级别和性能层级。
 
@@ -73,7 +73,7 @@ CREATE DATABASE mySQLDW
 
 DWU 和 cDWU 都支持增加或减少计算，以及在无需使用数据仓库时暂停计算。 这些操作均可按需进行。 第 2 代还会在计算节点上使用基于本地磁盘的缓存以提高性能。 缩放或暂停系统时，缓存将失效，因此在达到最佳性能前，缓存需要预热一段时间。  
 
-每个 SQL Server（例如 myserver.database.chinacloudapi.cn）都有一个[数据库事务单位 (DTU)](../../sql-database/sql-database-service-tiers-dtu.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 配额，允许使用特定的数据仓库单位数。 有关详细信息，请参阅[工作负荷管理容量限制](sql-data-warehouse-service-capacity-limits.md#workload-management)。
+每个 SQL Server（例如 myserver.database.chinacloudapi.cn）都有一个[数据库事务单位 (DTU)](../../azure-sql/database/service-tiers-dtu.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 配额，允许使用特定的数据仓库单位数。 有关详细信息，请参阅[工作负荷管理容量限制](sql-data-warehouse-service-capacity-limits.md#workload-management)。
 
 ## <a name="capacity-limits"></a>容量限制
 
@@ -130,7 +130,7 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 
 2. 在“缩放”下，向左或向右移动滑块，以更改 DWU 设置。
 
-3. 单击“保存” 。 此时会显示确认消息。 单击“是”确认，或者单击“否”取消。
+3. 单击“保存”  。 此时会显示确认消息。 单击“是”确认，或者单击“否”取消。
 
 #### <a name="powershell"></a>PowerShell
 

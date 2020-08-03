@@ -5,15 +5,17 @@ author: rockboyfor
 manager: digimobile
 ms.service: site-recovery
 origin.date: 01/15/2019
-ms.date: 01/13/2020
+ms.date: 08/03/2020
+ms.testscope: no
+ms.testdate: 01/13/2020
 ms.topic: conceptual
 ms.author: v-yeche
-ms.openlocfilehash: 4f3567efbcc8dc998415582c34b1f057bac6efe4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a7e84537405bf1c3d4a32c3892a162cc0af54ab3
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75776649"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426528"
 ---
 # <a name="fail-back-vmware-vms-to-on-premises-site"></a>将 VMware VM 故障回复到本地站点
 

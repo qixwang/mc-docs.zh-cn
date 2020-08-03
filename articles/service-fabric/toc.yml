@@ -82,7 +82,7 @@
           href: service-fabric-tutorial-standalone-install-an-application.md
         - name: 4- 清理群集和删除基础结构
           href: service-fabric-tutorial-standalone-clean-up.md
-- name: 最佳实践
+- name: 最佳做法
   items:
     - name: Service Fabric 最佳做法概述
       href: service-fabric-best-practices-overview.md
@@ -155,7 +155,7 @@
               href: service-fabric-concepts-partitioning.md
             - name: 重新配置有状态服务
               href: service-fabric-concepts-reconfiguration.md
-            - name: 'Reliable Services 生命周期 - C#'
+            - name: Reliable Services 生命周期 - C#
               href: service-fabric-reliable-services-lifecycle.md
             - name: Reliable Services 生命周期 - Java
               href: service-fabric-reliable-services-lifecycle-java.md
@@ -212,6 +212,8 @@
               href: service-fabric-manifest-example-container-app.md
         - name: 托管模型
           href: service-fabric-hosting-model.md
+        - name: 托管激活和取消激活生命周期高级主题
+          href: service-fabric-hosting-lifecycle.md
         - name: 应用程序安全性
           href: service-fabric-application-and-service-security.md
         - name: 服务状态
@@ -298,7 +300,7 @@
               href: service-fabric-cluster-upgrade-standalone.md
             - name: 扩展
               href: service-fabric-cluster-scaling-standalone.md
-        - name: 群集资源管理器
+        - name: 群集 Resource Manager
           items:
             - name: 群集资源管理器概述
               href: service-fabric-cluster-resource-manager-introduction.md
@@ -390,13 +392,13 @@
           href: service-fabric-get-started-containers.md
         - name: Linux 容器应用程序
           href: service-fabric-get-started-containers-linux.md
-        - name: '基于 Windows 的 C# Reliable Services 应用程序'
+        - name: 基于 Windows 的 C# Reliable Services 应用程序
           href: service-fabric-reliable-services-quick-start.md
         - name: 基于 Linux 的 Java Reliable Services 应用程序
           href: service-fabric-reliable-services-quick-start-java.md
-        - name: '基于 Linux 的 C# Reliable Services 应用程序'
+        - name: 基于 Linux 的 C# Reliable Services 应用程序
           href: service-fabric-create-your-first-linux-application-with-csharp.md
-        - name: '基于 Windows 的 C# Reliable Actors 应用程序'
+        - name: 基于 Windows 的 C# Reliable Actors 应用程序
           href: service-fabric-reliable-actors-get-started.md
         - name: 基于 Linux 的 Java Reliable Actors 应用程序
           href: service-fabric-create-your-first-linux-application-with-java.md
@@ -434,13 +436,13 @@
               items:
                 - name: 与 Reliable Services 通信
                   href: service-fabric-reliable-services-communication.md
-                - name: '服务远程处理 - C#'
+                - name: 服务远程处理 - C#
                   href: service-fabric-reliable-services-communication-remoting.md
                 - name: 服务远程处理 - Java
                   href: service-fabric-reliable-services-communication-remoting-java.md
                 - name: WCF
                   href: service-fabric-reliable-services-communication-wcf.md
-                - name: '保护通信 - C#'
+                - name: 保护通信 - C#
                   href: service-fabric-reliable-services-secure-communication.md
                 - name: 保护通信 - Java
                   href: service-fabric-reliable-services-secure-communication-java.md
@@ -547,7 +549,7 @@
           items:
             - name: VS Code 入门
               href: service-fabric-get-started-vs-code.md
-            - name: '通过 VS Code 开发 C# Service Fabric 应用程序'
+            - name: 通过 VS Code 开发 C# Service Fabric 应用程序
               href: service-fabric-develop-csharp-applications-with-vs-code.md
             - name: 通过 VS Code 开发 Java Service Fabric 应用程序
               href: service-fabric-develop-java-applications-with-vs-code.md
@@ -569,7 +571,7 @@
           href: service-fabric-how-to-specify-environment-variables.md
         - name: 部署或删除应用程序
           items:
-            - name: Azure Resource Manager
+            - name: Azure 资源管理器
               href: service-fabric-application-arm-resource.md
             - name: Azure PowerShell
               href: service-fabric-deploy-remove-applications.md
@@ -819,8 +821,8 @@
   items:
     - name: 常见问题
       href: service-fabric-common-questions.md
-    - name: MSDN 论坛
-      href: 'https://support.azure.cn/support/contact/'
+    - name: Azure Q&A 问题页
+      href: 'https://docs.microsoft.com/answers/topics/azure-service-fabric.html'
     - name: Azure 资源管理器部署准则
       href: service-fabric-azure-resource-manager-guardrails.md
     - name: 定价
@@ -834,7 +836,7 @@
     - name: Service Fabric 版本
       href: service-fabric-versions.md
     - name: 服务更新
-      href: 'https://www.azure.cn/what-is-new/'
+      href: 'https://updates.azure.cn/'
     - name: 疑难解答指南
       href: 'https://github.com/Azure/Service-Fabric-Troubleshooting-Guides'
     - name: 视频

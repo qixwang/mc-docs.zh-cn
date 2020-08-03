@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 05/18/2020
+ms.date: 07/27/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 4c8224a514876faa81ba6854f9871516397d4fc5
-ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
+ms.openlocfilehash: 76bccf0600a3ad39b1aebdce4524aa66a5b6c083
+ms.sourcegitcommit: dd2bc914f6fc2309f122b1c7109e258ceaa7c868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83748126"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87297706"
 ---
 # <a name="define-a-phone-factor-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义电话因素技术配置文件
 
@@ -36,7 +36,7 @@ Azure Active Directory B2C (Azure AD B2C) 支持注册和验证电话号码。 �
 
 以下示例演示了用于注册和验证的电话因素技术配置文件：
 
-```XML
+```xml
 <TechnicalProfile Id="PhoneFactor-InputOrVerify">
   <DisplayName>PhoneFactor</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.PhoneFactorProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -64,7 +64,7 @@ InputClaims 元素必须包含以下声明。 还可将声明名称映射到电�
 
 以下示例演示如何使用多个电话号码。 有关详细信息，请参阅[示例策略](https://github.com/azure-ad-b2c/samples/tree/master/policies/mfa-add-secondarymfa)。
 
-```XML
+```xml
 <InputClaims>
   <InputClaim ClaimTypeReferenceId="userIdForMFA" PartnerClaimType="UserId" />
   <InputClaim ClaimTypeReferenceId="strongAuthenticationPhoneNumber" />

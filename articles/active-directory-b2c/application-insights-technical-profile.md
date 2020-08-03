@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 05/18/2020
+ms.date: 07/27/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 81e9e323e092f0cb0c587329f2448d5036966f33
-ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
+ms.openlocfilehash: 72607f6ac5bda3efc2221bbe7fe21c8057626345
+ms.sourcegitcommit: dd2bc914f6fc2309f122b1c7109e258ceaa7c868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83749518"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87297686"
 ---
 # <a name="define-an-application-insights-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>在 Azure AD B2C 自定义策略中定义 Application Insights 技术配置文件
 
@@ -47,7 +47,7 @@ Azure Active Directory B2C (Azure AD B2C) 支持使用提供给 Azure AD B2C 的
 
 **InputClaims** 元素包含要发送到 Application Insights 的声明的列表。 你还可以将声明名称映射到你希望在 Application Insights 中显示的名称。 以下示例展示了如何将遥测数据发送到 Application Insights。 通过语法 `{property:NAME}` 添加事件的属性，其中的 NAME 是要添加到事件的属性。 DefaultValue 可以是静态值，也可以是由受支持的[声明解析程序](claim-resolver-overview.md)之一解析的值。
 
-```XML
+```xml
 <InputClaims>
   <InputClaim ClaimTypeReferenceId="PolicyId" PartnerClaimType="{property:Policy}" DefaultValue="{Policy:PolicyId}" />
   <InputClaim ClaimTypeReferenceId="CorrelationId" PartnerClaimType="{property:JourneyId}" DefaultValue="{Context:CorrelationId}" />

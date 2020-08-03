@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 05/18/2020
+ms.date: 07/27/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: f88c2979c01f5096f7c2345d19483145ba2fd628
-ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
+ms.openlocfilehash: 8b4367a17b7d61e5189f25aa11ae4fbf83629ff2
+ms.sourcegitcommit: dd2bc914f6fc2309f122b1c7109e258ceaa7c868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83748127"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87297712"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Predicates 和 PredicateValidations
 
@@ -73,7 +73,7 @@ Parameter 元素包含以下属性：
 
 IsLengthRange 方法检查字符串声明值的长度是否在指定的最小和最大参数的范围内。 谓词元素支持以下参数：
 
-| 参数 | 必须 | 说明 |
+| 参数 | 必需 | 说明 |
 | ------- | ----------- | ----------- |
 | 最大值 | 是 | 可输入的最大字符数。 |
 | 最小值 | 是 | 必须输入的最小字符数。 |
@@ -81,7 +81,7 @@ IsLengthRange 方法检查字符串声明值的长度是否在指定的最小和
 
 下面的示例说明 IsLengthRange 方法使用参数 `Minimum` 和 `Maximum` 指定字符串的长度范围：
 
-```XML
+```xml
 <Predicate Id="IsLengthBetween8And64" Method="IsLengthRange" HelpText="The password must be between 8 and 64 characters.">
   <Parameters>
     <Parameter Id="Minimum">8</Parameter>
@@ -94,13 +94,13 @@ IsLengthRange 方法检查字符串声明值的长度是否在指定的最小和
 
 MatchesRegex 方法检查字符串声明值是否与正则表达式相匹配。 谓词元素支持以下参数：
 
-| 参数 | 必须 | 说明 |
+| 参数 | 必需 | 说明 |
 | ------- | ----------- | ----------- |
 | RegularExpression | 是 | 要匹配的正则表达式模式。 |
 
 下面的示例说明 `MatchesRegex` 方法使用参数 `RegularExpression` 指定正则表达式：
 
-```XML
+```xml
 <Predicate Id="PIN" Method="MatchesRegex" HelpText="The password must be numbers only.">
   <Parameters>
     <Parameter Id="RegularExpression">^[0-9]+$</Parameter>
@@ -112,13 +112,13 @@ MatchesRegex 方法检查字符串声明值是否与正则表达式相匹配。 
 
 IncludesCharacters 方法检查字符串声明值是否包含字符集。 谓词元素支持以下参数：
 
-| 参数 | 必须 | 说明 |
+| 参数 | 必需 | 说明 |
 | ------- | ----------- | ----------- |
 | CharacterSet | 是 | 可输入的字符集。 例如，小写字符 `a-z`、大写字符 `A-Z`、数字 `0-9`，或 `@#$%^&amp;*\-_+=[]{}|\\:',?/~"();!` 等一系列符号。 |
 
 下面的示例说明 `IncludesCharacters` 方法使用参数 `CharacterSet` 指定字符集：
 
-```XML
+```xml
 <Predicate Id="Lowercase" Method="IncludesCharacters" HelpText="a lowercase letter">
   <Parameters>
     <Parameter Id="CharacterSet">a-z</Parameter>
@@ -130,14 +130,14 @@ IncludesCharacters 方法检查字符串声明值是否包含字符集。 谓词
 
 IsDateRange 方法检查日期声明值是否在指定的最小和最大参数范围内。 谓词元素支持以下参数：
 
-| 参数 | 必须 | 说明 |
+| 参数 | 必需 | 说明 |
 | ------- | ----------- | ----------- |
 | 最大值 | 是 | 可输入的最大日期。 日期格式遵循 `yyyy-mm-dd` 约定或 `Today`。 |
 | 最小值 | 是 | 可输入的最小日期。 日期格式遵循 `yyyy-mm-dd` 约定或 `Today`。|
 
 下面的示例说明 `IsDateRange` 方法使用参数 `Minimum` 和 `Maximum` 指定格式为 `yyyy-mm-dd` 和 `Today` 的日期范围。
 
-```XML
+```xml
 <Predicate Id="DateRange" Method="IsDateRange" HelpText="The date must be between 1970-01-01 and today.">
   <Parameters>
     <Parameter Id="Minimum">1970-01-01</Parameter>
@@ -152,7 +152,7 @@ IsDateRange 方法检查日期声明值是否在指定的最小和最大参数�
 
 **PredicateValidations** 元素必须紧跟在 [BuildingBlocks](buildingblocks.md) 元素中的 **Predicates** 元素之后。
 
-```XML
+```xml
 <PredicateValidations>
   <PredicateValidation Id="">
     <PredicateGroups>
@@ -239,7 +239,7 @@ PredicateReference 元素包含以下属性：
 - AllowedAADCharacters 使用 `MatchesRegex` 方法，验证提供了仅限密码的无效字符。
 - DisallowedWhitespace 使用 `MatchesRegex` 方法，验证密码不以空格字符开头或结尾。
 
-```XML
+```xml
 <Predicates>
   <Predicate Id="IsLengthBetween8And64" Method="IsLengthRange" HelpText="The password must be between 8 and 64 characters.">
     <Parameters>
@@ -297,7 +297,7 @@ PredicateReference 元素包含以下属性：
 - StrongPassword 验证 DisallowedWhitespace、AllowedAADCharacters、IsLengthBetween8And64。 最后一组 `CharacterClasses` 运行一组额外的谓词，其中 `MatchAtLeast` 设置为 3。 用户密码长度必须为 8 到 16 个字符，且必须包含下列其中的三类字符：小写、大写、数字或符号。
 - CustomPassword 仅验证 DisallowedWhitespace 和 AllowedAADCharacters。 因此，只要字符有效，用户可以提供任意长度的任何密码。
 
-```XML
+```xml
 <PredicateValidations>
   <PredicateValidation Id="SimplePassword">
     <PredicateGroups>
@@ -367,7 +367,7 @@ PredicateReference 元素包含以下属性：
 
 在声明类型中，添加 PredicateValidationReference 元素，并将标识符指定为 SimplePassword、StrongPassword 或 CustomPassword 等谓词验证中的一个。
 
-```XML
+```xml
 <ClaimType Id="password">
   <DisplayName>Password</DisplayName>
   <DataType>string</DataType>
@@ -386,7 +386,7 @@ PredicateReference 元素包含以下属性：
 
 借助 Predicates 和 PredicateValidations 元素，你可以通过使用 `DateTimeDropdown` 来控制 UserInputType 的最小和最大日期值。 如下例所示，可使用 `IsDateRange` 方法创建 Predicate 并提供最小和最大参数。
 
-```XML
+```xml
 <Predicates>
   <Predicate Id="DateRange" Method="IsDateRange" HelpText="The date must be between 01-01-1980 and today.">
     <Parameters>
@@ -399,7 +399,7 @@ PredicateReference 元素包含以下属性：
 
 添加引用 `DateRange` 谓词的 PredicateValidation。
 
-```XML
+```xml
 <PredicateValidations>
   <PredicateValidation Id="CustomDateRange">
     <PredicateGroups>
@@ -415,7 +415,7 @@ PredicateReference 元素包含以下属性：
 
 在声明类型中，添加 PredicateValidationReference 元素，并将标识符指定为 `CustomDateRange`。
 
-```XML
+```xml
 <ClaimType Id="dateOfBirth">
   <DisplayName>Date of Birth</DisplayName>
   <DataType>date</DataType>

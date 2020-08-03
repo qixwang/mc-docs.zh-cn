@@ -4,21 +4,23 @@ description: 在本教程中，你将学习如何通过查看 Service Fabric 事
 author: rockboyfor
 ms.topic: tutorial
 origin.date: 07/22/2019
-ms.date: 01/13/2020
+ms.date: 08/03/2020
+ms.testscope: no
+ms.testdate: 01/13/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 955f3fa74f7d1e304ba9dea10cb2759235f754f8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 9b3c8c2d518e70ffebd606a81f5cd4a052a6a2d2
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75742008"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426340"
 ---
 # <a name="tutorial-monitor-a-service-fabric-cluster-in-azure"></a>教程：在 Azure 中监视 Service Fabric 群集
 
 在任何云环境中开发、测试和部署工作负荷时，监视和诊断至关重要。 本教程是一个系列的第二部分，介绍如何使用事件、性能计数器和运行状况报告来监视和诊断 Service Fabric 群集。   有关更多信息，请阅读有关[群集监视](service-fabric-diagnostics-overview.md#platform-cluster-monitoring)和[基础结构监视](service-fabric-diagnostics-overview.md#infrastructure-performance-monitoring)的概述。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 查看 Service Fabric 事件
@@ -26,7 +28,7 @@ ms.locfileid: "75742008"
 > * 监视基础架构/收集性能计数器
 > * 查看群集运行状况报告
 
-在此系列教程中，你将学习如何：
+在此系列教程中，你会学习如何：
 > [!div class="checklist"]
 > * 使用模板在 Azure 上创建安全 [Windows 群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 > * 监视群集
@@ -41,7 +43,7 @@ ms.locfileid: "75742008"
 在开始学习本教程之前：
 
 * 如果还没有 Azure 订阅，请创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)
-* 安装 [Azure Powershell](https://docs.microsoft.com/powershell/azure/install-Az-ps) 或 [Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)。
+* 安装 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) 或 [Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)。
 * 创建安全的 [Windows 群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md) 
 * 为群集设置[诊断集合](service-fabric-tutorial-create-vnet-and-windows-cluster.md#configurediagnostics_anchor)
 * 在群集中启用 [EventStore 服务](service-fabric-tutorial-create-vnet-and-windows-cluster.md#configureeventstore_anchor)
@@ -289,7 +291,7 @@ Get-ServiceFabricService -ApplicationName fabric:/System | Get-ServiceFabricServ
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已学习了如何执行以下操作：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 查看 Service Fabric 事件
@@ -301,7 +303,7 @@ Get-ServiceFabricService -ApplicationName fabric:/System | Get-ServiceFabricServ
 > [!div class="nextstepaction"]
 > [缩放群集](service-fabric-tutorial-scale-cluster.md)
 
-[durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
+[durability]: service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster
 [template]: https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json
 
-<!--Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

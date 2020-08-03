@@ -6,19 +6,19 @@ ms.service: service-fabric
 ms.topic: quickstart
 ms.custom: subject-armqs
 origin.date: 04/24/2020
-ms.date: 06/08/2020
+ms.date: 08/03/2020
 ms.author: v-yeche
-ms.openlocfilehash: 94528d36db8f0872624217f5ea32d2e2cd5774cd
-ms.sourcegitcommit: 8a2fbc0eae8d8f7297f5334f508ff868b4077f32
+ms.openlocfilehash: f3e394ed416b327da0ed4b7c5c4827dd7a9686af
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84326245"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426406"
 ---
 <!--Verified successfully-->
 # <a name="quickstart-create-a-service-fabric-cluster-using-resource-manager-template"></a>快速入门：使用资源管理器模板创建 Service Fabric 群集
 
-Azure Service Fabric 是一种分布式系统平台，可借助它轻松打包、部署和管理可缩放且可靠的微服务和容器。 Service Fabric 群集是一组联网的虚拟机，可在其中部署和管理微服务。
+Azure Service Fabric 是一款分布式系统平台，可方便用户轻松打包、部署和管理可缩放的可靠微服务和容器。 Service Fabric 群集是一组联网的虚拟机，可在其中部署和管理微服务。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -109,7 +109,7 @@ $certThumbprint = "<Certificate Thumbprint>"
 
 ### <a name="review-the-template"></a>查看模板
 
-本快速入门中使用的模板来自 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/blob/master/service-fabric-secure-cluster-5-node-1-nodetype)。 本文的模板太长，无法在此处显示。 若要查看该模板，请参阅 https://github.com/Azure/azure-quickstart-templates/blob/master/service-fabric-secure-cluster-5-node-1-nodetype/azuredeploy.json 。
+本快速入门中使用的模板来自 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype/)。 本文的模板太长，无法在此处显示。 若要查看模板，请参阅 [azuredeploy.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/service-fabric-secure-cluster-5-node-1-nodetype/azuredeploy.json) 文件。
 
 该模板中已定义了多个 Azure 资源：
 
@@ -214,5 +214,4 @@ Write-Host "Press [ENTER] to continue..."
 > [!div class="nextstepaction"]
 > [创建 Service Fabric 群集资源管理器模板](service-fabric-cluster-creation-create-template.md)
 
-<!-- Update_Description: new article about quickstart cluster template -->
-<!--NEW.date: 05/25/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

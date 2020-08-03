@@ -3,20 +3,20 @@ title: BuildingBlocks
 titleSuffix: Azure AD B2C
 description: 在 Azure Active Directory B2C 中指定自定义策略的 BuildingBlocks 元素。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/30/2019
+ms.date: 07/27/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 653dc03a53eacde9fe4fd5a5d01471676daafb16
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c91f5c5b0520ef3ef8f628bfa9020f93e3a02da0
+ms.sourcegitcommit: dd2bc914f6fc2309f122b1c7109e258ceaa7c868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75623603"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87297685"
 ---
 # <a name="buildingblocks"></a>BuildingBlocks
 
@@ -24,7 +24,7 @@ ms.locfileid: "75623603"
 
 BuildingBlocks  元素添加到 [TrustFrameworkPolicy](trustframeworkpolicy.md) 元素中。
 
-```XML
+```xml
 <TrustFrameworkPolicy
   xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
   xmlns:xsd="https://www.w3.org/2001/XMLSchema"

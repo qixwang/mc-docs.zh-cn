@@ -1,23 +1,24 @@
 ---
 title: 快速入门：将语音合成到扬声器 - 语音服务
 titleSuffix: Azure Cognitive Services
-description: 在本快速入门中，我们将使用语音 SDK 将文本转换为合成语音，并在扬声器中播放输出。
+description: 在本快速入门中，你将使用语音 SDK 将文本转换为合成语音，并在扬声器中播放输出。
 services: cognitive-services
 author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-origin.date: 02/10/2020
-ms.date: 06/19/2020
+origin.date: 06/25/2020
+ms.date: 08/03/2020
 ms.author: v-tawe
+ms.custom: devx-track-javascript
 zone_pivot_groups: programming-languages-set-two-with-js-spx
-ms.openlocfilehash: d480ad68e11a4a7b363c6fd63186c15d531f7492
-ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
+ms.openlocfilehash: c19f0fd99bfe8849b86794a4038bb67844c24b6a
+ms.sourcegitcommit: 3821704fee67315badba49cf628af2aa68d98f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85613376"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87516125"
 ---
 # <a name="quickstart-synthesize-speech-to-a-speaker"></a>快速入门：将语音合成到扬声器
 

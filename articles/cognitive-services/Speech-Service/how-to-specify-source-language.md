@@ -9,15 +9,16 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 05/19/2020
-ms.date: 06/19/2020
+ms.date: 08/03/2020
 ms.author: v-tawe
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: e004edff5eb1109b7812c4d2933974d8ba6fe195
-ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
+ms.custom: devx-track-javascript
+ms.openlocfilehash: a4895bd85f1f3cae85ca195c838fd70fbc19de09
+ms.sourcegitcommit: 3821704fee67315badba49cf628af2aa68d98f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85611887"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87516103"
 ---
 # <a name="specify-source-language-for-speech-to-text"></a>指定语音转文本的源语言
 

@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 05/18/2020
+ms.date: 07/27/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 053c4c3e76569f7994f49709f4310bc84c47306e
-ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
+ms.openlocfilehash: d44567d859c86a62364854383d480b6380dfb2e5
+ms.sourcegitcommit: dd2bc914f6fc2309f122b1c7109e258ceaa7c868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83748129"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87297708"
 ---
 # <a name="localization"></a>本地化
 
@@ -26,7 +26,7 @@ ms.locfileid: "83748129"
 - 在策略中设置支持的语言的显式列表和选择默认语言。
 - 提供特定于语言的字符串和集合。
 
-```XML
+```xml
 <Localization Enabled="true">
   <SupportedLanguages DefaultLanguage="en" MergeBehavior="ReplaceAll">
     <SupportedLanguage>en</SupportedLanguage>
@@ -116,7 +116,7 @@ ms.locfileid: "83748129"
 
 以下示例演示了 **LocalizedCollections** 元素的用法。 其中包含两个 **LocalizedCollection** 元素，一个元素适用于英语区域设置，另一个元素适用于西班牙语区域设置。 这两个元素都设置了声明 `Gender` 的 **Restriction** 集合，以及适用于英语和西班牙语的项列表。
 
-```XML
+```xml
 <LocalizedResources Id="api.selfasserted.en">
  <LocalizedCollections>
    <LocalizedCollection ElementType="ClaimType" ElementId="Gender" TargetCollection="Restriction">
@@ -181,7 +181,7 @@ ClaimType 值用于本地化某个声明特性。
 
 以下示例演示如何本地化电子邮件声明类型的 DisplayName、UserHelpText 和 PatternHelpText 特性。
 
-```XML
+```xml
 <LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Email</LocalizedString>
 <LocalizedString ElementType="ClaimType" ElementId="email" StringId="UserHelpText">Please enter your email</LocalizedString>
 <LocalizedString ElementType="ClaimType" ElementId="email" StringId="PatternHelpText">Please enter a valid email address</LocalizedString>
@@ -204,7 +204,7 @@ ErrorMessage 值用于本地化某个系统错误消息。
 以下示例演示如何本地化 UserMessageIfClaimsPrincipalAlreadyExists 错误消息。
 
 
-```XML
+```xml
 <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsPrincipalAlreadyExists">The account you are trying to create already exists, please sign-in.</LocalizedString>
 ```
 
@@ -295,7 +295,7 @@ InputValidation 值用于本地化某个 [PredicateValidation](predicates.md) �
 
 以下示例演示如何本地化谓词验证组帮助文本。
 
-```XML
+```xml
 <LocalizedString ElementType="InputValidation" ElementId="CustomPassword" StringId="CharacterClasses">The password must have at least 3 of the following:</LocalizedString>
 ```
 
@@ -303,7 +303,7 @@ InputValidation 值用于本地化某个 [PredicateValidation](predicates.md) �
 
 UxElement 值用于本地化某个用户界面元素。 以下示例演示如何本地化继续和取消按钮。
 
-```XML
+```xml
 <LocalizedString ElementType="UxElement" StringId="button_continue">Create new account</LocalizedString>
 <LocalizedString ElementType="UxElement" StringId="button_cancel">Cancel</LocalizedString>
 ```

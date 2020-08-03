@@ -2,20 +2,20 @@
 title: TrustFrameworkPolicy - Azure Active Directory B2C | Microsoft Docs
 description: 在 Azure Active Directory B2C 中指定自定义策略的 TrustFrameworkPolicy 元素。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/21/2020
+ms.date: 07/28/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: f3bad4ba8997bd48759ee44e108f1f7a20e73b2a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 7323cf9a4d30853dd8147fa744ca231200f6e5ee
+ms.sourcegitcommit: dd2bc914f6fc2309f122b1c7109e258ceaa7c868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77531325"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87297687"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -23,7 +23,7 @@ ms.locfileid: "77531325"
 
 自定义策略以一个或多个采用 XML 格式的文件表示，这些文件在分层链中相互引用。 XML 元素定义策略的元素，例如声明架构、声明转换、内容定义、声明提供程序、技术配置文件、用户旅程和业务流程步骤。 每个策略文件在策略文件的顶级 **TrustFrameworkPolicy** 元素中定义。
 
-```XML
+```xml
 <TrustFrameworkPolicy
   xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
   xmlns:xsd="https://www.w3.org/2001/XMLSchema"
@@ -46,6 +46,8 @@ ms.locfileid: "77531325"
 | PolicyId | 是 | 策略的唯一标识符。 此标识符必须带有 *B2C_1A_* 前缀 |
 | PublicPolicyUri | 是 | 策略的 URI，它是租户 ID 和策略 ID 的组合。 |
 | DeploymentMode | 否 | 可能的值：`Production` 或 `Development`。 `Production` 为默认值。 使用此属性来调试策略。  |
+| UserJourneyRecorderEndpoint | 否 | 当 **DeploymentMode** 设置为 `Development` 时使用的终结点。 值必须是 `urn:journeyrecorder:applicationinsights`。 |
+
 
 以下示例演示如何指定 **TrustFrameworkPolicy** 元素：
 
@@ -87,7 +89,7 @@ ms.locfileid: "77531325"
 | 元素 | 出现次数 | 说明 |
 | ------- | ----------- | --------|
 | TenantId | 1:1 | Azure AD B2C 租户的标识符。 |
-| PolicyId | 1:1 | 父策略的标识符。 |
+| `PolicyId` | 1:1 | 父策略的标识符。 |
 
 
 以下示例演示如何指定基本策略。 此 **B2C_1A_TrustFrameworkExtensions** 策略派生自 **B2C_1A_TrustFrameworkBase** 策略。
@@ -118,7 +120,7 @@ ms.locfileid: "77531325"
 
 B2C_1A_signup_signin 策略：
 
-```XML
+```xml
 <RelyingParty>
   <DefaultUserJourney ReferenceId="SignUpOrSignIn">
   ...
@@ -126,7 +128,7 @@ B2C_1A_signup_signin 策略：
 
 B2C_1A_TrustFrameWorkBase 或 B2C_1A_TrustFrameworkExtensionPolicy：
 
-```XML
+```xml
 <UserJourneys>
   <UserJourney Id="SignUpOrSignIn">
   ...

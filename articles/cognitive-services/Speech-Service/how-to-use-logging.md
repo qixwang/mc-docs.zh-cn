@@ -9,14 +9,15 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 07/05/2019
-ms.date: 01/13/2020
+ms.date: 08/03/2020
 ms.author: v-tawe
-ms.openlocfilehash: 51229c1829a1ad0d5a4859245785c226e46ddce3
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 652cdb863ab6250acc93854712f41c3f1a0b3f68
+ms.sourcegitcommit: 3821704fee67315badba49cf628af2aa68d98f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75630790"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87516100"
 ---
 # <a name="enable-logging-in-the-speech-sdk"></a>在语音 SDK 中启用日志记录
 
@@ -119,4 +120,4 @@ NSString *filePath = [
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [浏览 GitHub 上的示例](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
+> [浏览 GitHub 上的示例](https://aka.ms/csspeech/samples)

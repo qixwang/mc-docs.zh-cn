@@ -12,12 +12,12 @@ origin.date: 04/13/2020
 ms.date: 06/19/2020
 ms.author: v-tawe
 ms.custom: tracking-python
-ms.openlocfilehash: 83991c468516f4e45c026ef7d74f8a707fda7f3f
-ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
+ms.openlocfilehash: 7df854ebdb008cd39c351343d52708692d6f2e28
+ms.sourcegitcommit: 3821704fee67315badba49cf628af2aa68d98f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85611888"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87516121"
 ---
 # <a name="get-the-list-of-text-to-speech-voices-using-python"></a>使用 Python 获取“文本转语音”语音的列表
 
@@ -138,6 +138,5 @@ python get-voices.py
 ## <a name="see-also"></a>另请参阅
 
 * [文本到语音 API 参考](https://docs.azure.cn/cognitive-services/speech-service/rest-apis)
-
-<!-- * [Creating custom voice fonts](how-to-customize-voice-font.md) -->
-<!-- * [Record voice samples to create a custom voice](record-custom-voice-samples.md) -->
+* [创建自定义语音字体](how-to-customize-voice-font.md)
+* [录制语音样本用于创建自定义语音](record-custom-voice-samples.md)

@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 07/05/2019
-ms.date: 01/13/2020
+ms.date: 08/03/2020
 ms.author: v-tawe
-ms.openlocfilehash: 6c9c5633379f8914b7977f918ff59f21ad274094
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d4cfd12c7907fcb6a658f62080ffa4636aa22b56
+ms.sourcegitcommit: 3821704fee67315badba49cf628af2aa68d98f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75630778"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87516113"
 ---
 # <a name="device-roobo-smart-audio-dev-kit"></a>设备：Roobo 智能音频开发工具包
 
@@ -70,7 +70,7 @@ ms.locfileid: "75630778"
 
 ## <a name="audio"></a>音频
 
-Roobo 提供一个工具用于将所有音频捕获到闪存。 它可能有助于排查音频问题。 已针对每个开发工具包配置提供该工具的一个版本。 在 [Roobo 站点](https://ddk.roobo.com/)上选择设备，然后选择页面底部的“Roobo 工具”链接。 
+Roobo 提供一个工具用于将所有音频捕获到闪存。 它可能有助于排查音频问题。 已针对每个开发工具包配置提供该工具的一个版本。 在 [Roobo 站点](http://ddk.roobo.com/)上选择设备，然后选择页面底部的“Roobo 工具”链接。 
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,14 +7,16 @@ manager: digimobile
 ms.service: site-recovery
 ms.topic: article
 origin.date: 10/21/2019
-ms.date: 02/24/2020
+ms.date: 08/03/2020
+ms.testscope: no
+ms.testdate: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 83d4caa8b55b9972ebe84a19f72c0995ac154e96
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e60cd8403adfed6c67da0ebfe2c5e16f21bf291c
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77611252"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426467"
 ---
 <!--Verify sucessfully-->
 # <a name="customize-networking-configurations-of-the-target-azure-vm"></a>自定义目标 Azure VM 的网络配置
@@ -30,7 +32,7 @@ ms.locfileid: "77611252"
 复制 Azure VM 时，可以为故障转移 VM 提供以下关键资源配置：
 
 - [内部负载均衡器](/load-balancer/load-balancer-overview)
-- [公共 IP](/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses)
+- [公共 IP](../virtual-network/public-ip-addresses.md)
 - 子网和 NIC 的[网络安全组](/virtual-network/manage-network-security-group)
 
 ## <a name="prerequisites"></a>必备条件

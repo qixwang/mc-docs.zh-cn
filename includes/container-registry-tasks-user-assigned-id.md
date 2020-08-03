@@ -6,17 +6,17 @@ author: rockboyfor
 ms.service: container-registry
 ms.topic: include
 origin.date: 07/12/2019
-ms.date: 07/27/2020
+ms.date: 08/03/2020
 ms.testscope: no
 ms.testdate: 05/18/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: f14409a5531399aaec6aaaaa969001b18a27e350
-ms.sourcegitcommit: 5726d3b2e694f1f94f9f7d965676c67beb6ed07c
+ms.openlocfilehash: 4ae38c0f4f31741e2cdd18f512a3a58523ee9a7a
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/21/2020
-ms.locfileid: "86863534"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87427556"
 ---
 ### <a name="create-a-user-assigned-identity"></a>创建用户分配的标识
 

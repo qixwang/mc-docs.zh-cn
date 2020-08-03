@@ -8,16 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-origin.date: 02/10/2020
-ms.date: 06/19/2019
+origin.date: 06/25/2020
+ms.date: 08/03/2020
 ms.author: v-tawe
+ms.custom: devx-track-javascript
 zone_pivot_groups: programming-languages-set-two-with-js
-ms.openlocfilehash: 76e08f33f5a07b6ae2d940307447d11d59694184
-ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
+ms.openlocfilehash: c069befb71537fe1e9af9e5894a95603a8ddbd04
+ms.sourcegitcommit: 3821704fee67315badba49cf628af2aa68d98f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85613345"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87516053"
 ---
 # <a name="quickstart-recognize-speech-stored-in-blob-storage"></a>快速入门：识别存储在 Blob 存储中的语音
 

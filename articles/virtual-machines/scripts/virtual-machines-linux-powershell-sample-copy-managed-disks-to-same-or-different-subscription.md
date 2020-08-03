@@ -12,14 +12,14 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 origin.date: 06/06/2017
-ms.date: 04/27/2020
+ms.date: 08/03/2020
 ms.author: v-yeche
-ms.openlocfilehash: 7164c07371f06af834851043d0a6b32a7cbcd99f
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: 9127eb63e3cf4c4e0433b0550b799c23c79eb981
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596324"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426357"
 ---
 # <a name="copy-managed-disks-in-the-same-subscription-or-different-subscription-with-powershell"></a>在相同或不同订阅中通过 PowerShell 复制托管磁盘
 

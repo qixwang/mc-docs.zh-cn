@@ -12,12 +12,12 @@ metadata:
   origin.date: 03/19/2020
   ms.date: 06/19/2020
   ms.author: v-tawe
-  ms.openlocfilehash: f3e5c588d2a39724f015b3c58777af4ba36f5ba3
-  ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
+  ms.openlocfilehash: 1a8f90ce13459bd80a50f7a6acabb583431466f8
+  ms.sourcegitcommit: 3821704fee67315badba49cf628af2aa68d98f28
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/01/2020
-  ms.locfileid: "85613328"
+  ms.lasthandoff: 08/03/2020
+  ms.locfileid: "87516050"
 landingContent:
 - title: 关于语音转文本
   linkLists:
@@ -39,6 +39,8 @@ landingContent:
       url: quickstarts/speech-to-text-from-file.md
     - text: 识别存储在 Blob 存储中的语音
       url: quickstarts/from-blob.md
+    - text: 通过参考输入进行发音评估
+      url: rest-speech-to-text.md#pronunciation-assessment-parameters
 - title: 使用语音转文本进行开发
   linkLists:
   - linkListType: how-to-guide
@@ -47,8 +49,22 @@ landingContent:
       url: how-to-choose-recognition-mode.md
     - text: 更改语音识别源语言
       url: how-to-specify-source-language.md
+    - text: 使用自定义语音识别提高准确性
+      url: how-to-custom-speech.md
     - text: 使用压缩的音频输入格式
       url: how-to-use-codec-compressed-audio-input-streams.md
+  - linkListType: tutorial
+    links:
+    - text: 使用租户模型提高准确性
+      url: tutorial-tenant-model.md
+  - linkListType: concept
+    links:
+    - text: 准备自定义语音识别的数据
+      url: how-to-custom-speech-test-and-train.md
+    - text: 训练自定义语音识别模型
+      url: how-to-custom-speech-train-model.md
+    - text: 创建用户标记的听录内容
+      url: how-to-custom-speech-human-labeled-transcriptions.md
 - title: 参考
   linkLists:
   - linkListType: reference

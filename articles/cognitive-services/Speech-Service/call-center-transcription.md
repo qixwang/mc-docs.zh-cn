@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 0f731493355ee6f790607f875e2a5d9d7450fec1
-ms.sourcegitcommit: 08619b8fabb47a328c3ca43bf314ddc389328880
+ms.openlocfilehash: b954c6d50c5a089b63bf4ebb64421743a3bbf46d
+ms.sourcegitcommit: 3821704fee67315badba49cf628af2aa68d98f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86164526"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87516136"
 ---
 # <a name="speech-service-for-telephony-data"></a>用于处理电话数据的语音服务
 
@@ -126,8 +126,7 @@ ms.locfileid: "86164526"
 | 语音转文本 | [声学模型](how-to-customize-acoustic-models.md) | 为特定环境（例如汽车或工厂车间）中使用的应用程序、工具或设备创建自定义声学模型，每个模型具有特定的录制条件。 示例包括带有口音的讲话、特定的背景噪音，或使用特定的麦克风录制音频。 |
 |                | [语言模型](how-to-customize-language-model.md) | 创建自定义语言模型来改善行业特定的词汇和语法的听录，例如医疗术语中或 IT 行话。 |
 |                | [发音模型](how-to-customize-pronunciation.md) | 借助自定义发音模型，可以定义语音形式以及字词或术语的显示。 它适用于处理自定义术语，如产品名称或首字母缩略词。 只需使用发音文件（简单的 `.txt` 文件）即可。 |
-
-<!-- | Text-to-speech | [Voice font](how-to-customize-voice-font.md) | Custom voice fonts allow you to create a recognizable, one-of-a-kind voice for your brand. It only takes a small amount of data to get started. The more data that you provide, the more natural and human-like your voice font will sound. | -->
+| 文本转语音 | [语音字体](how-to-customize-voice-font.md) | 使用自定义语音字体可为自有品牌创建可识别的独一无二的声音。 只需使用少量的数据即可开始创建。 提供的数据越多，语音字体就越自然，且越接近人类语音。 |
 
 ## <a name="sample-code"></a>代码示例
 
@@ -143,7 +142,7 @@ GitHub 中提供了每个语音服务功能的示例代码。 这些示例涵盖
 - [语音设备 SDK](speech-devices-sdk.md)
 - [REST API：语音转文本](rest-speech-to-text.md)
 - [REST API：文本转语音](rest-text-to-speech.md)
-- [REST API：批量听录和自定义](https://westus.cris.ai/swagger/ui/index)
+- [REST API：批量听录和自定义](https://chinaeast2.cris.azure.cn/swagger/ui/index)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-origin.date: 12/09/2019
-ms.date: 01/27/2020
+origin.date: 06/25/2020
+ms.date: 07/29/2020
 ms.author: v-tawe
-ms.openlocfilehash: 58f4ce6fd501db9be6d0fe0d18c22ccfae053df4
-ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
+ms.openlocfilehash: b4135d624b2db2ff4c188e09507c8fb509a30b5d
+ms.sourcegitcommit: 5d167ad5411b018522a0fac9f5435a48f4ceb3a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85613393"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87378138"
 ---
 # <a name="quickstart-synthesize-speech-in-objective-c-on-macos-using-the-speech-sdk"></a>快速入门：在 macOS 上使用语音 SDK 通过 Objective-C 合成语音
 
@@ -40,7 +40,7 @@ ms.locfileid: "85613393"
 
 ## <a name="create-an-xcode-project"></a>创建 Xcode 项目
 
-启动 Xcode，然后通过单击“文件” > “新建” > “项目”来启动新项目。  
+启动 Xcode，然后通过单击“文件” > “新建” > “项目”来启动新项目。
 在模板选择对话框中，选择“Cocoa 应用”模板。
 
 在随后的对话框中，进行以下选择：

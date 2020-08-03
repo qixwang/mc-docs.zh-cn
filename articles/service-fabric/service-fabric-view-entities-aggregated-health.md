@@ -4,14 +4,16 @@ description: 说明如何通过运行状况查询和常规查询来查询、查�
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 02/28/2018
-ms.date: 01/13/2020
+ms.date: 08/03/2020
+ms.testscope: no
+ms.testdate: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: fad18dd9bd41fb63ff29fc251019190cf38de61a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 1ab9ef0e64da18c703ba80d6f7677825466edbbf
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75741932"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426280"
 ---
 # <a name="view-service-fabric-health-reports"></a>查看 Service Fabric 运行状况报告
 Azure Service Fabric 引入了一种具有运行状况实体的[运行状况模型](service-fabric-health-introduction.md)，系统组件和监视器可以在其上报告它们监视的本地状况。 [运行状况存储](service-fabric-health-introduction.md#health-store)聚合所有运行状况数据以确定实体是否正常运行。
@@ -1218,4 +1220,4 @@ HealthEvents          :
 
 [Service Fabric 应用程序升级](service-fabric-application-upgrade.md)
 
-<!--Update_Description: update meta properties, update link  -->
+<!-- Update_Description: update meta properties, wording update, update link -->

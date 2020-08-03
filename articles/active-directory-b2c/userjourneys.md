@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 05/18/2020
+ms.date: 07/28/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: ef6eb6fa81671fe95dc0f098c5d3aa439f2d4f4d
-ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
+ms.openlocfilehash: 18ee09b6fff867034650c959c82f7f780ea8e2cf
+ms.sourcegitcommit: dd2bc914f6fc2309f122b1c7109e258ceaa7c868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83748087"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87297709"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -106,7 +106,7 @@ Precondition 元素包含以下元素：
 
 以下前置条件检查是否存在用户的 objectId。 在用户旅程中，用户已选择使用本地帐户进行登录。 如果存在 objectId，请跳过此业务流程步骤。
 
-```XML
+```xml
 <OrchestrationStep Order="2" Type="ClaimsExchange">
   <Preconditions>
     <Precondition Type="ClaimsExist" ExecuteActionsIf="true">
@@ -122,7 +122,7 @@ Precondition 元素包含以下元素：
 
 以下前置条件检查用户是否使用社交帐户登录。 已尝试在目录中查找用户帐户。 如果用户使用本地帐户登录或注册，请跳过此业务流程步骤。
 
-```XML
+```xml
 <OrchestrationStep Order="3" Type="ClaimsExchange">
   <Preconditions>
     <Precondition Type="ClaimEquals" ExecuteActionsIf="true">
@@ -139,7 +139,7 @@ Precondition 元素包含以下元素：
 
 Preconditions 可以检查多个前置条件。 以下示例检查是否存在“objectId”或“电子邮件”。 如果第一个条件为 true，旅程将跳到下一个业务流程步骤。
 
-```XML
+```xml
 <OrchestrationStep Order="4" Type="ClaimsExchange">
   <Preconditions>
   <Precondition Type="ClaimsExist" ExecuteActionsIf="true">
@@ -184,7 +184,7 @@ ClaimsProviderSelection 元素包含以下属性：
 
 在以下业务流程步骤中，用户可以选择使用 LinkIn 或本地帐户登录。 如果用户选择其中一个社交标识提供者，则第二个业务流程步骤将使用 `TargetClaimsExchangeId` 属性中指定的所选声明交换执行。 第二个业务流程步骤将用户重定向到社交标识提供者以完成登录过程。 如果用户选择使用本地帐户登录，Azure AD B2C 将保持相同的业务流程步骤（相同的注册页面或登录页面），并跳过第二个业务流程步骤。
 
-```XML
+```xml
 <OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsignin">
     <ClaimsProviderSelections>
     <ClaimsProviderSelection TargetClaimsExchangeId="LinkedInExchange" />

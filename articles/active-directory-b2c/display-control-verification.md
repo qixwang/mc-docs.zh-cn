@@ -3,20 +3,20 @@ title: 用显示控件验证声明
 titleSuffix: Azure AD B2C
 description: 了解如何使用 Azure AD B2C 显示控件验证你的自定义策略提供的用户旅程中的声明。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/30/2019
+ms.date: 07/27/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 4429301ff04676547fcdf7f73ea05a2035a7c9d4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 356777f5defbf169c911882ddae6c8dde3748443
+ms.sourcegitcommit: dd2bc914f6fc2309f122b1c7109e258ceaa7c868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75624375"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87297682"
 ---
 # <a name="verification-display-control"></a>验证显示控件
 
@@ -53,7 +53,7 @@ ms.locfileid: "75624375"
 
 然后，用户输入 **verificationCode** 并选择 **VerifyCode**，以在后端触发 **VerifyCode** 操作。 如果所有验证都通过，则 **VerificationControl** 将被视为已完成，用户可以继续执行下一步。
 
-```XML
+```xml
 <DisplayControl Id="emailVerificationControl" UserInterfaceControlType="VerificationControl">
   <DisplayClaims>
     <DisplayClaim ClaimTypeReferenceId="email"  Required="true" />

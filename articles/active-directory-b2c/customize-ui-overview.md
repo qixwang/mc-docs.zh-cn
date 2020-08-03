@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 06/28/2020
+ms.topic: how-to
+ms.date: 07/27/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: c2d23b136138f1565bbc6872743fcb9b038543cd
-ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
+ms.openlocfilehash: 61841bbd722047f2c1c1e7b15cb3271e1825d903
+ms.sourcegitcommit: dd2bc914f6fc2309f122b1c7109e258ceaa7c868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85516510"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87297680"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>自定义 Azure Active Directory B2C 中的用户界面
 
@@ -156,13 +156,13 @@ Azure AD B2C 使用称作[跨源资源共享 (CORS)](https://www.w3.org/TR/cors/
 
 例如，自定义的页面 URI 可能类似于以下内容：
 
-```HTTP
+```http
 https://contoso.blob.core.chinacloudapi.cn/{Culture:RFC5646}/myHTML/unified.html
 ```
 
 可以通过从以下位置提取内容来加载法语页面：
 
-```HTTP
+```http
 https://contoso.blob.core.chinacloudapi.cn/fr/myHTML/unified.html
 ```
 

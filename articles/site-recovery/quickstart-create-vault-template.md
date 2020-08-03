@@ -4,15 +4,17 @@ description: 本快速入门介绍如何使用 Azure 资源管理器模板创建
 ms.topic: quickstart
 ms.custom: subject-armqs
 origin.date: 04/29/2020
-ms.date: 06/08/2020
+ms.date: 08/03/2020
+ms.testscope: no
+ms.testdate: 06/08/2020
 author: rockboyfor
 ms.author: v-yeche
-ms.openlocfilehash: d2ff804db7739c923b43aa67303d5e561057a3c7
-ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
+ms.openlocfilehash: 1fb13a816c58ece636b538b50f31b6d3fc903149
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84440643"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426522"
 ---
 <!--Verified successfully-->
 # <a name="quickstart-create-a-recovery-services-vault-using-a-resource-manager-template"></a>快速入门：使用资源管理器模板创建恢复服务保管库
@@ -31,7 +33,7 @@ ms.locfileid: "84440643"
 
 ### <a name="review-the-template"></a>查看模板
 
-本快速入门中使用的模板来自 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-vault-create/)。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-vault-create/)。
 
 ```json
 {
@@ -53,10 +55,10 @@ ms.locfileid: "84440643"
     },
     "vaultStorageType": {
       "type": "string",
-      "defaultValue": "GloballyRedundant",
+      "defaultValue": "GeoRedundant",
       "allowedValues": [
         "LocallyRedundant",
-        "GloballyRedundant"
+        "GeoRedundant"
       ],
       "metadata": {
         "description": "Change Vault Storage Type (not allowed if the vault has registered backups)"
@@ -122,7 +124,7 @@ ms.locfileid: "84440643"
 
 1. 若要登录到 Azure 并打开模板，请选择“部署到 Azure”图像。
 
-    [![“部署到 Azure”](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-recovery-services-vault-create%2Fazuredeploy.json)
+    [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-recovery-services-vault-create%2Fazuredeploy.json)
 
 1. 选择或输入以下值：
 
@@ -232,5 +234,4 @@ Write-Host "Press [ENTER] to continue..."
 > [!div class="nextstepaction"]
 > [设置灾难恢复](azure-to-azure-quickstart.md)
 
-<!-- Update_Description: new article about quickstart create vault template -->
-<!--NEW.date: 05/25/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

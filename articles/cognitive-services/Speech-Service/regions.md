@@ -9,15 +9,15 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 11/05/2019
-ms.date: 04/20/2020
+ms.date: 07/29/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 21e2f3b2ddf59bc6b719229220c4347d625b8d9f
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: dc5d57d0208f5f88b1375d54eb91a90fa096d47d
+ms.sourcegitcommit: 5d167ad5411b018522a0fac9f5435a48f4ceb3a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134991"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87378201"
 ---
 # <a name="speech-service-supported-regions"></a>语音服务支持的区域
 
@@ -41,10 +41,19 @@ ms.locfileid: "82134991"
 
 如果使用[语音 SDK](speech-sdk.md)，则区域由**区域标识符**指定（例如，作为 `SpeechConfig.FromSubscription` 的参数）。 请确保该区域与订阅的区域匹配。
 
-<!-- ### Intent recognition -->
+### <a name="intent-recognition"></a>意向识别
+
+通过语音 SDK 实现**意向识别**的可用区域如下：
+
+| 区域           | 区域标识符 |
+| ---------------- | -------------------- |
+| 中国东部        | `chinaeast2`           |
+
+这是[语言理解服务 (LUIS)](/cognitive-services/luis/luis-reference-regions) 支持的发布区域的子集。
 
 <!-- ### Voice assistants -->
 
+<!-- ### Speaker Recognition -->
 ## <a name="rest-apis"></a>REST API
 
 语音服务还为语音转文本和文本转语音请求公开 REST 终结点。

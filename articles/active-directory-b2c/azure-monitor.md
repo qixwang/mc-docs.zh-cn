@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: v-junlch
 ms.subservice: B2C
-ms.date: 06/28/2020
-ms.openlocfilehash: e4cf50560d97f36e11bad4603568e74827e3bfe6
-ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
+ms.date: 07/27/2020
+ms.openlocfilehash: 377e649ad96ff2215d9518bbf9ef0c32cea92f2a
+ms.sourcegitcommit: dd2bc914f6fc2309f122b1c7109e258ceaa7c868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85516534"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87297656"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>使用 Azure Monitor 监视 Azure AD B2C
 
@@ -87,7 +87,7 @@ Azure AD B2C 目录的“目录 ID”（也称为租户 ID）。
 
 接下来，请使用前面记下的值更新参数文件。 以下 JSON 代码片段演示了 Azure 资源管理器模板参数文件的示例。 对于 `authorizations.value.roleDefinitionId`，请使用“参与者”角色的[内置角色](../role-based-access-control/built-in-roles.md)值 `b24988ac-6180-42a0-ab88-20f7382dd24c`。
 
-```JSON
+```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",

@@ -6,14 +6,16 @@ documentationcenter: .net
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 02/13/2020
-ms.date: 06/08/2020
+ms.date: 08/03/2020
+ms.testscope: no
+ms.testdate: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: ae23d7b1491c23af52ac35c8a1c3243e3cf6b83d
-ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
+ms.openlocfilehash: 63a6c7466d25d3fae85f8ce49c9d2408ecd91fd7
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84356253"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426448"
 ---
 <!--Verified successfully-->
 # <a name="service-fabric-guardrails"></a>Service Fabric 准则 
@@ -69,7 +71,7 @@ Service Fabric 节点类型的持久性值在 Azure 资源管理器模板的两�
 
 ## <a name="seed-node-deletion"></a>删除种子节点 
 ### <a name="overview"></a>概述
-Service Fabric 群集提供一个[可靠性层](/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster)属性，用于确定主节点类型的群集上运行的系统服务副本数。 所需副本数将确定必须在主节点类型的群集中维护的最小节点数。 如果主节点类型中的节点数小于可靠性层所需的最小数目，则群集将变得不稳定。  
+Service Fabric 群集提供一个[可靠性层](/service-fabric/service-fabric-cluster-capacity#reliability-characteristics-of-the-cluster)属性，用于确定主节点类型的群集上运行的系统服务副本数。 所需副本数将确定必须在主节点类型的群集中维护的最小节点数。 如果主节点类型中的节点数小于可靠性层所需的最小数目，则群集将变得不稳定。  
 
 ### <a name="error-messages"></a>错误消息 
 已检测到种子节点删除操作，将拒绝该操作。 

@@ -4,14 +4,16 @@ description: 了解如何横向或纵向扩展、放大或缩减 Service Fabric 
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 11/13/2018
-ms.date: 01/06/2020
+ms.date: 08/03/2020
+ms.testscope: no
+ms.testdate: 01/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 34a4425b5aea2593de06fb25b390fb788f284b23
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 414f891d96a0ddc8639407d7c95b10279c617027
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75742327"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426458"
 ---
 # <a name="scaling-service-fabric-standalone-clusters"></a>缩放 Service Fabric 独立群集
 Service Fabric 群集是一组通过网络连接在一起的虚拟机或物理计算机，微服务会在其中部署和管理。 属于群集一部分的计算机或 VM 称为节点。 群集可以包含数千个节点。 创建 Service Fabric 群集后，可以群集横向缩放（更改节点数）或纵向缩放（更改节点资源）该群集。  随时可以缩放群集，即使该群集上正在运行工作负荷。  在缩放群集的同时，应用程序也会随之自动缩放。
@@ -29,7 +31,7 @@ Service Fabric 群集是一组通过网络连接在一起的虚拟机或物理�
 删除可能启动多个升级的节点。 某些节点标有 `IsSeedNode="true"` 标记，可使用 [Get-ServiceFabricClusterManifest](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclustermanifest) 通过查询群集清单进行标识。 在此类方案中，因为种子节点需要移动，因此删除此类节点相比其他节点需要较长时间。 群集必须至少维护三个主节点类型的节点。
 
 > [!WARNING]
-> 我们建议你不要将节点数降低到群集的[可靠性层的群集大小](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster)以下。 这会干扰 Service Fabric 系统服务在群集中复制的能力，并且会破坏群集的稳定性或可能销毁群集。
+> 我们建议你不要将节点数降低到群集的[可靠性层的群集大小](service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster)以下。 这会干扰 Service Fabric 系统服务在群集中复制的能力，并且会破坏群集的稳定性或可能销毁群集。
 >
 
 缩放独立群集时，请记住以下准则：

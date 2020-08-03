@@ -5,16 +5,19 @@ services: firewall
 author: rockboyfor
 ms.service: firewall
 origin.date: 04/10/2019
-ms.date: 12/09/2019
+ms.date: 08/03/2020
+ms.testscope: yes
+ms.testdate: 08/03/2020
 ms.author: v-yeche
-ms.topic: conceptual
-ms.openlocfilehash: 9f04f493a9b92cfbf65c74fb5e28a045318fd9c7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.topic: how-to
+ms.openlocfilehash: c5c833bbfbd0bf4252b9ec73aa08a0a0214aa392
+ms.sourcegitcommit: 362814dc7ac5b56cf0237b9016a67c35d8d72c32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75335360"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87455597"
 ---
+<!--Verify Successfully by changing some of the parameters to fit Azure China-->
 # <a name="deploy-and-configure-azure-firewall-using-azure-powershell"></a>使用 Azure PowerShell 部署和配置 Azure 防火墙
 
 控制出站网络访问是整个网络安全计划的重要组成部分。 例如，你可能想要限制对网站的访问， 或者限制可以访问的出站 IP 地址和端口。
@@ -76,7 +79,6 @@ $FWsub = New-AzVirtualNetworkSubnetConfig -Name AzureFirewallSubnet -AddressPref
 $Worksub = New-AzVirtualNetworkSubnetConfig -Name Workload-SN -AddressPrefix 10.0.2.0/24
 $Jumpsub = New-AzVirtualNetworkSubnetConfig -Name Jump-SN -AddressPrefix 10.0.3.0/24
 ```
-
 现在，创建虚拟网络：
 
 ```azurepowershell
@@ -95,7 +97,7 @@ $testVnet = New-AzVirtualNetwork -Name Test-FW-VN -ResourceGroupName Test-FW-RG 
 New-AzVm `
     -ResourceGroupName Test-FW-RG `
     -Name "Srv-Jump" `
-    -Location "chinaeast" `
+    -Location "China East" `
     -VirtualNetworkName Test-FW-VN `
     -SubnetName Jump-SN `
     -OpenPorts 3389 `
@@ -179,7 +181,7 @@ $AppRule1 = New-AzFirewallApplicationRule -Name Allow-QQ -SourceAddress 10.0.2.0
 $AppRuleCollection = New-AzFirewallApplicationRuleCollection -Name App-Coll01 `
   -Priority 200 -ActionType Allow -Rule $AppRule1
 
-$Azfw.ApplicationRuleCollections = $AppRuleCollection
+$Azfw.ApplicationRuleCollections.Add($AppRuleCollection)
 
 Set-AzFirewall -AzureFirewall $Azfw
 ```
@@ -197,7 +199,7 @@ $NetRule1 = New-AzFirewallNetworkRule -Name "Allow-DNS" -Protocol UDP -SourceAdd
 $NetRuleCollection = New-AzFirewallNetworkRuleCollection -Name RCNet01 -Priority 200 `
    -Rule $NetRule1 -ActionType "Allow"
 
-$Azfw.NetworkRuleCollections = $NetRuleCollection
+$Azfw.NetworkRuleCollections.Add($NetRuleCollection)
 
 Set-AzFirewall -AzureFirewall $Azfw
 ```

@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 origin.date: 04/04/2020
-ms.date: 06/19/2019
+ms.date: 07/29/2020
 ms.author: v-tawe
-ms.openlocfilehash: 8da4814eb84db25707cf1c23b728919f0d139df1
-ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
+ms.openlocfilehash: 1ff09532afad1d586f17563bf9266ae40831d02d
+ms.sourcegitcommit: 5d167ad5411b018522a0fac9f5435a48f4ceb3a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85706599"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87378166"
 ---
 # <a name="learn-the-basics-of-the-speech-cli"></a>了解语音 CLI 的基础知识
 
@@ -71,18 +71,22 @@ spx recognize --files C:\your_wav_file_dir\*.wav --output file C:\output_dir\spe
 
 使用 `--output file` 参数将识别的语音输出写入到 `speech_output.tsv`。 下面是输出文件结构的示例。
 
-    audio.input.id    recognizer.session.started.sessionid    recognizer.recognized.result.text
-    sample_1    07baa2f8d9fd4fbcb9faea451ce05475    A sample wave file.
-    sample_2    8f9b378f6d0b42f99522f1173492f013    Sample text synthesized.
+```output
+audio.input.id    recognizer.session.started.sessionid    recognizer.recognized.result.text
+sample_1    07baa2f8d9fd4fbcb9faea451ce05475    A sample wave file.
+sample_2    8f9b378f6d0b42f99522f1173492f013    Sample text synthesized.
+```
 
 ## <a name="batch-text-to-speech-synthesis"></a>批处理文本转语音合成
 
 运行批处理文本转语音的最简单方法是创建一个新的 `.tsv`（制表符分隔值）文件，并利用语音 CLI 中的 `--foreach` 命令。 请考虑以下文件 `text_synthesis.tsv`：
 
-    audio.output    text
-    C:\batch_wav_output\wav_1.wav    Sample text to synthesize.
-    C:\batch_wav_output\wav_2.wav    Using the Speech CLI to run batch-synthesis.
-    C:\batch_wav_output\wav_3.wav    Some more text to test capabilities.
+```output
+audio.output    text
+C:\batch_wav_output\wav_1.wav    Sample text to synthesize.
+C:\batch_wav_output\wav_2.wav    Using the Speech CLI to run batch-synthesis.
+C:\batch_wav_output\wav_3.wav    Some more text to test capabilities.
+```
 
  接下来，运行命令以指向 `text_synthesis.tsv`，对每个 `text` 字段执行合成，然后将结果作为 `.wav` 文件写入相应的 `audio.output` 路径中。 
 
@@ -98,10 +102,12 @@ spx synthesize --foreach in @C:\your\path\to\text_synthesis.tsv
 
 但是，如果你具有如下面示例的 `.tsv` 文件（其列标头不匹配命令行参数）：
 
-    wav_path    str_text
-    C:\batch_wav_output\wav_1.wav    Sample text to synthesize.
-    C:\batch_wav_output\wav_2.wav    Using the Speech CLI to run batch-synthesis.
-    C:\batch_wav_output\wav_3.wav    Some more text to test capabilities.
+```output
+wav_path    str_text
+C:\batch_wav_output\wav_1.wav    Sample text to synthesize.
+C:\batch_wav_output\wav_2.wav    Using the Speech CLI to run batch-synthesis.
+C:\batch_wav_output\wav_3.wav    Some more text to test capabilities.
+```
 
 可以在 `--foreach` 调用中使用以下语法将这些字段名称替代为正确的参数。 此调用与上面相同。
 

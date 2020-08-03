@@ -12,12 +12,12 @@ origin.date: 04/13/2020
 ms.date: 06/19/2020
 ms.author: v-tawe
 ms.custom: tracking-python
-ms.openlocfilehash: 745de0ccd0fe10344998b4e35965f858847be9ac
-ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
+ms.openlocfilehash: ca2a20c91eab17cc58241c0f3006755b6e71c30d
+ms.sourcegitcommit: 3821704fee67315badba49cf628af2aa68d98f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85613337"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87516056"
 ---
 # <a name="convert-text-to-speech-using-python"></a>使用 Python 将文本转换为语音
 
@@ -104,7 +104,7 @@ def get_token(self):
 >[!NOTE]
 > 此示例使用 `Guy24kRUS` 语音字体。 如需 Microsoft 提供的语音/语言的完整列表，请参阅[语言支持](language-support.md)。
 
-<!-- > If you're interested in creating a unique, recognizable voice for your brand, see [Creating custom voice fonts](how-to-customize-voice-font.md). -->
+> 若要为品牌创建唯一且可识别的语音，请参阅[创建自定义语音字体](how-to-customize-voice-font.md)。
 
 最后，向服务发出请求。 如果该请求成功，则会返回 200 状态代码，语音响应将写入到带时间戳的文件。
 
@@ -176,6 +176,5 @@ python tts.py
 
 * [文本到语音 API 参考](https://docs.azure.cn/cognitive-services/speech-service/rest-apis)
 * [使用 Python 和语音 SDK 文本到语音转换](quickstarts/speech-to-text-from-microphone.md)
-
-<!-- * [Creating custom voice fonts](how-to-customize-voice-font.md) -->
-<!-- * [Record voice samples to create a custom voice](record-custom-voice-samples.md) -->
+* [创建自定义语音字体](how-to-customize-voice-font.md)
+* [录制语音样本用于创建自定义语音](record-custom-voice-samples.md)

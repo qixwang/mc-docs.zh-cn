@@ -6,15 +6,17 @@ author: rockboyfor
 ms.service: virtual-wan
 ms.topic: include
 origin.date: 10/07/2019
-ms.date: 06/15/2020
+ms.date: 08/03/2020
+ms.testscope: no
+ms.testdate: 06/15/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: afc076f413a64d5469142e1a7a98b3a378990a2e
-ms.sourcegitcommit: 8dae792aefbe44e8388f961b813e3da6564423ec
+ms.openlocfilehash: a3defebe801d1d40ed74c6d579a733b9efa84959
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84654875"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87427546"
 ---
 使用自定义 IPsec 策略时，请记住以下要求：
 
@@ -36,5 +38,4 @@ ms.locfileid: "84654875"
 | IPsec 完整性 | GCMAES256、GCMAES128、SHA256 |
 | PFS 组 | ECP384、ECP256、PFS24、PFS14、None |
 
-<!-- Update_Description: new article about virtual wan ipsec custom include -->
-<!--NEW.date: 03/02/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

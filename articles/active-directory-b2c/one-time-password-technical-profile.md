@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 05/18/2020
+ms.date: 07/27/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 67e07ef559cb2afea9cdf502246d29788e7c4168
-ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
+ms.openlocfilehash: 416b43447447734b4c78ee8a4616a6327980b438
+ms.sourcegitcommit: dd2bc914f6fc2309f122b1c7109e258ceaa7c868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83748128"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87297698"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>在 Azure AD B2C 自定义策略中定义一次性密码技术配置文件
 
@@ -30,13 +30,13 @@ Azure Active Directory B2C (Azure AD B2C) 为管理一次性密码的生成和�
 
 “Protocol”元素的“Name”属性必须设置为 `Proprietary`。 handler 属性必须包含 Azure AD B2C 使用的协议处理程序程序集的完全限定名称：
 
-```XML
+```xml
 Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 ```
 
 以下示例显示了一次性密码技术配置文件：
 
-```XML
+```xml
 <TechnicalProfile Id="VerifyCode">
   <DisplayName>Validate user input verification code</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -84,7 +84,7 @@ OutputClaims 元素包含由一次性密码协议提供程序生成的声明列�
 
 下面的示例 `TechnicalProfile` 用于生成代码：
 
-```XML
+```xml
 <TechnicalProfile Id="GenerateCode">
   <DisplayName>Generate Code</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -151,7 +151,7 @@ InputClaimsTransformations 元素可以包含 InputClaimsTransformation 元素�
 
 下面的示例 `TechnicalProfile` 用于验证代码：
 
-```XML
+```xml
 <TechnicalProfile Id="VerifyCode">
   <DisplayName>Verify Code</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />

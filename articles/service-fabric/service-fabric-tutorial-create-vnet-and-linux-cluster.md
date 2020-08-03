@@ -3,15 +3,17 @@ title: 在 Azure 中创建 Linux Service Fabric 群集
 description: 了解如何使用 Azure CLI 将 Linux Service Fabric 群集部署到现有 Azure 虚拟网络。
 ms.topic: conceptual
 origin.date: 02/14/2019
-ms.date: 06/08/2020
+ms.date: 08/03/2020
+ms.testscope: no
+ms.testdate: 06/08/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: a82447efd280c6817393dc5aa9e02d728c70adac
-ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
+ms.openlocfilehash: 2b88be75e9da52c4aa40a87837ebafe5853a3a58
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84356147"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426423"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>将 Linux Service Fabric 群集部署到 Azure 虚拟网络
 
@@ -74,8 +76,8 @@ ms.locfileid: "84356147"
 * OS：(Ubuntu 16.04 LTS / Ubuntu 18.04 LTS)（可在模板参数中配置）
 * 证书保护（可在模板参数中配置）
 * 已启用 [DNS 服务](service-fabric-dnsservice.md)
-* 铜级[持久性级别](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster)（可在模板参数中配置）
-* 银级[可靠性级别](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster)（可在模板参数中配置）
+* 铜级[持久性级别](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)（可在模板参数中配置）
+* 银级[可靠性级别](service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster)（可在模板参数中配置）
 * 客户端连接终结点：19000（可在模板参数中配置）
 * HTTP 网关终结点：19080（可在模板参数中配置）
 

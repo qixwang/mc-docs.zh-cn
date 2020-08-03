@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: reference
-ms.date: 06/28/2020
+ms.topic: how-to
+ms.date: 07/27/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 1746e1dfcb398a0250dd42abf956dfc7141b9446
-ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
+ms.openlocfilehash: d170f4ae419cfc8a914e4eb266b750d4ed4be003
+ms.sourcegitcommit: dd2bc914f6fc2309f122b1c7109e258ceaa7c868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85516513"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87297627"
 ---
 # <a name="localize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略来本地化应用程序的用户界面
 
@@ -33,7 +33,7 @@ ms.locfileid: "85516513"
 1. 添加包含支持的语言的 `Localization` 元素：英语（默认）和西班牙语。  
 
 
-```XML
+```xml
 <Localization Enabled="true">
   <SupportedLanguages DefaultLanguage="en" MergeBehavior="ReplaceAll">
     <SupportedLanguage>en</SupportedLanguage>
@@ -51,7 +51,7 @@ ms.locfileid: "85516513"
 > [!NOTE]
 > 在下面的示例中，我们在每行的开头都添加了井字符号 `#`，以便你可以在屏幕上轻松找到本地化的标签。
 
-```XML
+```xml
 <!--Local account sign-up or sign-in page English-->
 <LocalizedResources Id="api.signuporsignin.en">
   <LocalizedStrings>
@@ -218,7 +218,7 @@ ms.locfileid: "85516513"
 
 在以下示例中，英语 (en) 和西班牙语 (es) 自定义字符串已添加到注册或登录页面，并已添加到本地帐户注册页面。 每个 **LocalizedResourcesReference** 的 **LocalizedResourcesReferenceId** 与其区域设置相同，但可将任何字符串用作标识符。 对于每个语言和页面组合，请指向前面创建的相应 **LocalizedResources**。
 
-```XML
+```xml
 <ContentDefinitions>
   <ContentDefinition Id="api.signuporsignin">
     <LocalizedResourcesReferences MergeBehavior="Prepend">

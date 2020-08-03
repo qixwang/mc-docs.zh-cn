@@ -4,14 +4,16 @@ description: 支持的 Azure Service Fabric 群集版本，以及文件支持票
 author: rockboyfor
 ms.topic: troubleshooting
 origin.date: 08/24/2018
-ms.date: 01/13/2020
+ms.date: 08/03/2020
+ms.testscope: yes|no
+ms.testdate: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 5cf41f731b3b78f2e50db476e2003e8d92d12506
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2e698d9e98ff0c46c4fffc307bdaa5d80f5a9058
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292004"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426274"
 ---
 # <a name="azure-service-fabric-support-options"></a>Azure Service Fabric 支持选项
 
@@ -31,9 +33,9 @@ ms.locfileid: "79292004"
     <!--Not Available on - [Microsoft premier support](https://support.microsoft.com/premier)-->
 
 > [!Note]
-> 在青铜级可靠性层级或单节点群集上运行的群集只能用来运行测试性工作负荷。 如果你遇到在青铜可靠性级别或单节点群集上运行的群集的问题，Azure 支持团队会协助你解决问题，但不会进行根本原因分析。 请参阅[群集的可靠性特征](/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster)以获取更多详细信息。
+> 在青铜级可靠性层级或单节点群集上运行的群集只能用来运行测试性工作负荷。 如果你遇到在青铜可靠性级别或单节点群集上运行的群集的问题，Azure 支持团队会协助你解决问题，但不会进行根本原因分析。 有关更多详细信息，请参阅[群集的可靠性特征](/service-fabric/service-fabric-cluster-capacity#reliability-characteristics-of-the-cluster)。
 >
-> 若要详细了解生产就绪性群集的必要信息，请参阅[生产就绪性核对清单](/service-fabric/service-fabric-production-readiness-checklist)。
+> 有关生产就绪群集所需满足的要求的详细信息，请参阅[生产就绪情况核对清单](/service-fabric/service-fabric-production-readiness-checklist)。
 
 <a name="getlivesitesupportonprem"></a>
 
@@ -71,10 +73,10 @@ ms.locfileid: "79292004"
 
 <!--references-->
 
-[msdn-forum]: https://support.azure.cn/support/contact/
-
 <!--Not Available on [stackoverflow]: http://stackoverflow.com/questions/tagged/azure-service-fabric-->
 <!-- Not Referenced on [acom-docs]: ../service-fabric/index.yml-->
-<!-- Not Referenced on [sample-repos]: http://aka.ms/servicefabricsamples-->
+<!-- Not Referenced on [sample-repos]: https://aka.ms/servicefabricsamples-->
 
-<!--Update_Description: update meta properties, wording update-->
+[msdn-forum]: https://support.azure.cn/support/contact/
+
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -6,17 +6,17 @@ author: WenJason
 manager: digimobile
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 origin.date: 04/01/2019
-ms.date: 07/06/2020
+ms.date: 08/03/2020
 ms.author: v-jay
 ms.reviewer: igorstan
-ms.openlocfilehash: e53b65108ab6fa12547edcab6381188661926a0a
-ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
+ms.openlocfilehash: d7a40ff4dc789ecd47b2af0a54784ae4408b7e0f
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85845784"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426353"
 ---
 # <a name="temporary-tables-in-synapse-sql-pool"></a>Synapse SQL 池中的临时表
 本文包含使用临时表的基本指导，并重点介绍会话级别临时表的原则。 
@@ -195,7 +195,7 @@ SELECT
     THEN 'UPDATE STATISTICS '+[two_part_name]+'('+[stats_name]+') WITH RESAMPLE;'
     END AS [update_stats_ddl]
 ,   [seq_nmbr]
-FROM    t1
+FROM    #stats_ddl
 ;
 GO
 ```

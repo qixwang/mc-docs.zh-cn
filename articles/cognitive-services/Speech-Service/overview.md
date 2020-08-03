@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: overview
-origin.date: 03/12/2020
-ms.date: 06/19/2020
+origin.date: 06/25/2020
+ms.date: 07/29/2020
 ms.author: v-tawe
-ms.openlocfilehash: 00e559e9d6009b0ae4ac271e1e0e46a5ec992666
-ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
+ms.openlocfilehash: 33427d768c0125295fd6faf1ac7ac79ba731f665
+ms.sourcegitcommit: 5d167ad5411b018522a0fac9f5435a48f4ceb3a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85613369"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87378181"
 ---
 # <a name="what-is-the-speech-service"></a>什么是语音服务？
 
@@ -27,7 +27,7 @@ ms.locfileid: "85613369"
 
 这些功能构成了语音服务。 请使用下表中的链接详细了解每项功能的常见用例或浏览 API 参考信息。
 
-| 服务 | 功能 | 说明 | SDK | REST |
+| 服务 | Feature | 说明 | SDK 中 IsInRole 中的声明 | REST |
 |---------|---------|-------------|-----|------|
 | [语音转文本](speech-to-text.md) | 实时语音转文本 | 语音转文本可将音频流或本地文件实时转录或翻译为文本，应用程序、工具或设备可以使用或显示这些文本。 结合[语言理解 (LUIS)](https://docs.azure.cn/cognitive-services/luis/) 使用语音转文本可以从听录的语音中派生用户意向，以及处理语音命令。 | [是](https://docs.azure.cn/cognitive-services/speech-service/speech-sdk-reference) | [是](https://docs.azure.cn/cognitive-services/speech-service/rest-apis) |
 | | [批量语音转文本](batch-transcription.md) | 批量语音转文本支持对 Azure Blob 存储中存储的大量语音音频数据进行异步语音到文本转录。 除了将语音音频转换为文本，批量语音转文本还允许进行分割聚类和情感分析。 | 否 | [是](https://chinaeast2.cris.azure.cn/swagger/ui/index) |
@@ -46,14 +46,14 @@ ms.locfileid: "85613369"
 |----------------------|----------------------|-------------------|
 | [识别来自音频文件的语音](quickstarts/speech-to-text-from-file.md) | [将语音合成为音频文件](quickstarts/text-to-speech-audio-file.md) | [将语音转换为文本](quickstarts/translate-speech-to-text.md) |
 | [使用麦克风识别语音](quickstarts/speech-to-text-from-microphone.md) | [将语音合成到扬声器](quickstarts/text-to-speech.md) | [将语音翻译为多种目标语言](quickstarts/translate-speech-to-text-multiple-languages.md) |
-| [识别存储在 Blob 存储中的语音](quickstarts/from-blob.md) | | [将语音转换为语音](quickstarts/translate-speech-to-speech.md) |
+| [识别存储在 Blob 存储中的语音](quickstarts/from-blob.md) | [用于长格式音频的异步合成](quickstarts/text-to-speech/async-synthesis-long-form-audio.md) | [将语音转换为语音](quickstarts/translate-speech-to-speech.md) |
 
 > [!NOTE]
 > “语音转文本”和“文本转语音”功能也有 REST 终结点和相关联的快速入门。
 
-<!-- After you've had a chance to use the Speech service, try our tutorial that teaches you how to recognize intents from speech using the Speech SDK and LUIS. -->
+在你有机会使用语音服务后，请尝试一下我们的教程，了解如何解决各种情况。
 
-<!-- - [Tutorial: Build a Flask app to translate text, analyze sentiment, and synthesize translated text to speech, REST](/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis) -->
+- [教程：使用适用于 C# 的语音 SDK 和 LUIS 从语音中识别意向](how-to-recognize-intents-from-speech-csharp.md)
 
 ## <a name="get-sample-code"></a>获取示例代码
 

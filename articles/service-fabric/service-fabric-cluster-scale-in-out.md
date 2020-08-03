@@ -3,14 +3,16 @@ title: 扩展或缩减 Service Fabric 群集
 description: 通过为每个节点类型/虚拟机规模集设置自动缩放规则，根据需要扩展或缩减 Service Fabric 群集。 在 Service Fabric 群集中添加或删除节点
 ms.topic: conceptual
 origin.date: 03/12/2019
-ms.date: 06/08/2020
+ms.date: 08/03/2020
+ms.testscope: no
+ms.testdate: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: b1ef47b319715ded7a99d95a33a2987652fc21e3
-ms.sourcegitcommit: 8a2fbc0eae8d8f7297f5334f508ff868b4077f32
+ms.openlocfilehash: d16735dc784a07f506559e742389eab9bef6a5e9
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84326248"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426425"
 ---
 <!--Verified successfully, ONLY CHARACTERS CONTENT-->
 # <a name="scale-a-cluster-in-or-out"></a>缩小或扩大群集
@@ -261,7 +263,6 @@ Service Fabric Explorer 中列出的节点是 Service Fabric 系统服务（特�
 [BrowseServiceFabricClusterResource]: ./media/service-fabric-cluster-scale-in-out/BrowseServiceFabricClusterResource.png
 [ClusterResources]: ./media/service-fabric-cluster-scale-in-out/ClusterResources.png
 
-[durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
+[durability]: service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster
 
-<!-- Update_Description: new article about service fabric cluster scale in out -->
-<!--NEW.date: 05/25/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

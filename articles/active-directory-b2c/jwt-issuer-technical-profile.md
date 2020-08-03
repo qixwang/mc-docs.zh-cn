@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 05/18/2020
+ms.date: 07/27/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 6c5535cd36ccc4c31c73ec27bd207a9c732d9071
-ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
+ms.openlocfilehash: 4e18d5aec29e236403a06eb86a9f5ffed99d3811
+ms.sourcegitcommit: dd2bc914f6fc2309f122b1c7109e258ceaa7c868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83748081"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87297703"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 JWT 令牌颁发者的技术配置文件
 
@@ -30,7 +30,7 @@ Azure Active Directory B2C (Azure AD B2C) 在处理每个身份验证流时颁�
 
 以下示例演示了 `JwtIssuer` 的技术配置文件：
 
-```XML
+```xml
 <TechnicalProfile Id="JwtIssuer">
   <DisplayName>JWT Issuer</DisplayName>
   <Protocol Name="OpenIdConnect" />

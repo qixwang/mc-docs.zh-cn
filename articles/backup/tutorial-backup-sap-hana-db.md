@@ -4,14 +4,14 @@ description: 在本教程中，了解如何将 Azure VM 上运行的 SAP HANA �
 author: Johnnytechn
 ms.topic: tutorial
 origin.date: 11/12/2019
-ms.date: 06/22/2020
+ms.date: 07/31/2020
 ms.author: v-johya
-ms.openlocfilehash: 71eb23301d342044e4545e1ae28cb3f5b00ceb05
-ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
+ms.openlocfilehash: 6a1f7d566e65c5fd6876a69664f3773db5d1bd18
+ms.sourcegitcommit: b5794af488a336d84ee586965dabd6f45fd5ec6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85852029"
+ms.lasthandoff: 08/01/2020
+ms.locfileid: "87508381"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>教程：备份 Azure VM 中的 SAP HANA 数据库
 
@@ -32,7 +32,9 @@ ms.locfileid: "85852029"
 
 在配置备份之前，请确保执行以下操作：
 
+* 在运行 SAP HANA 的 VM 所在的同一区域和订阅中标识或创建一个[恢复服务保管库](backup-sql-server-database-azure-vms.md#create-a-recovery-services-vault)。
 * 允许从 VM 连接到 Internet，以便 VM 可以访问 Azure，如下面的[设置网络连接](#set-up-network-connectivity)过程中所述。
+* 对于 Azure 资源管理器，请确保 SAP HANA 服务器 VM 名称和资源组名称的组合长度不超过 84 个字符（对于经典 VM，则不超过 77 个字符）。 此限制是因为某些字符由该服务预留。
 * **hdbuserstore** 中应存在一个满足以下条件的密钥：
   * 它应该出现在默认的 hdbuserstore 中。 默认值为安装 SAP HANA 的 `<sid>adm` 帐户。
   * 对于 MDC，该密钥应指向 **NAMESERVER** 的 SQL 端口。 对于 SDC，它应指向 INDEXSERVER 的 SQL 端口
@@ -59,8 +61,8 @@ ms.locfileid: "85852029"
 若要使用门户创建规则，请执行以下操作：
 
   1. 在“所有服务”中转到“网络安全组”，然后选择“网络安全组”。
-  2. 在“设置”下选择“出站安全规则”。 
-  3. 选择“添加”  。 根据[安全规则设置](/virtual-network/manage-network-security-group#security-rule-settings)中所述，输入创建新规则所需的所有详细信息。 确保选项“目标”设置为“服务标记”，“目标服务标记”设置为“AzureBackup”。   
+  2. 在“设置”下选择“出站安全规则”。
+  3. 选择“添加”  。 根据[安全规则设置](/virtual-network/manage-network-security-group#security-rule-settings)中所述，输入创建新规则所需的所有详细信息。 确保选项“目标”设置为“服务标记”，“目标服务标记”设置为“AzureBackup”。
   4. 单击“添加”，保存新创建的出站安全规则。
 
 若要使用 PowerShell 创建规则，请执行以下操作：
@@ -147,7 +149,7 @@ hdbuserstore list
 
    ![添加恢复服务保管库](./media/tutorial-backup-sap-hana-db/add-vault.png)
 
-   此时会打开“恢复服务保管库”对话框。 提供“名称”、“订阅”、“资源组”和“位置”的值 
+   此时会打开“恢复服务保管库”对话框。 提供“名称”、“订阅”、“资源组”和“位置”的值
 
    ![创建恢复服务保管库](./media/tutorial-backup-sap-hana-db/create-vault.png)
 
@@ -221,7 +223,7 @@ hdbuserstore list
    * 每月和每年保留范围的行为类似。
 4. 在“完整备份策略”菜单中，单击“确定”接受设置 。
 5. 然后选择“差异备份”，以添加差异策略。
-6. 在“差异备份策略”中，选择“启用”打开频率和保留控件。  我们在每个星期日的凌晨 2:00 启用了差异备份，保持期为 30 天  。
+6. 在“差异备份策略”中，选择“启用”打开频率和保留控件。 我们在每个星期日的凌晨 2:00 启用了差异备份，保持期为 30 天  。
 
    ![差异备份策略](./media/tutorial-backup-sap-hana-db/differential-backup-policy.png)
 

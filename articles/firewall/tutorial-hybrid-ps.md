@@ -4,17 +4,19 @@ description: 本文介绍如何使用 Azure PowerShell 部署和配置 Azure 防
 services: firewall
 author: rockboyfor
 ms.service: firewall
-ms.topic: article
+ms.topic: how-to
 origin.date: 01/08/2020
-ms.date: 04/06/2020
+ms.date: 08/03/2020
+ms.testscope: yes
+ms.testdate: 08/03/2020
 ms.author: v-yeche
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: e6c4c37300e6faa538ca001909632f18913cdd39
-ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
+ms.openlocfilehash: ed06ba3347ecc150d4f1259582cf4206cf82c81b
+ms.sourcegitcommit: 362814dc7ac5b56cf0237b9016a67c35d8d72c32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82093250"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87455571"
 ---
 # <a name="deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>使用 Azure PowerShell 在混合网络中部署和配置 Azure 防火墙
 
@@ -450,7 +452,7 @@ $NIC.IpConfigurations.privateipaddress
 
 在 Azure 门户中，连接到 **VM-Onprem** 虚拟机。
 
-在 **VM-Onprem** 上打开 Web 浏览器并浏览到 http://\<VM-spoke-01 的专用 IP\>。
+在 VM-Onprem 上打开 Web 浏览器并浏览到 http://\<VM-spoke-01 private IP\>。
 
 应会看到 Internet Information Services 的默认页。
 

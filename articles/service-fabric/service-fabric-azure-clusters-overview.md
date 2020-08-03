@@ -6,14 +6,16 @@ documentationcenter: .net
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 02/01/2019
-ms.date: 02/24/2020
+ms.date: 08/03/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: f256d38b00882c1993d5736bbef3263708c4f6c6
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 363e98779bf6e0c98debd7b5e8d67c1e0791129f
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540488"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426442"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Azure 上 Service Fabric 群集的概述
 Service Fabric 群集是一组通过网络连接在一起的虚拟机或物理计算机，微服务会在其中部署和管理。 群集中的计算机或 VM 称为群集节点。 群集可以扩展到数千个节点。 如果向群集添加新节点，Service Fabric 会在新增加的节点间重新平衡服务分区副本和实例。 应用程序总体性能提高，访问内存的争用减少。 如果没有高效使用群集中的节点，可以减少群集中节点的数量。 Service Fabric 会再次在减少的节点间重新平衡分区副本和实例以更加充分利用每个节点上的硬件。
@@ -49,9 +51,9 @@ Azure 上的 Service Fabric 群集是一种 Azure 资源，它使用其他 Azure
 有关详细信息，请阅读 [Service Fabric 节点类型与虚拟机规模集](service-fabric-cluster-nodetypes.md)。
 
 ### <a name="azure-load-balancer"></a>Azure 负载均衡器
-VM 实例在 [Azure 负载均衡器](/load-balancer/load-balancer-overview)后面联接，该负载均衡器与[公共 IP 地址](/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses)和 DNS 标签相关联。  使用 *&lt;clustername&gt;* 预配群集时，DNS 名称 *&lt;clustername&gt;.&lt;location&gt;.cloudapp.chinacloudapi.cn* 便是与规模集前面的负载均衡器相关联的 DNS 标签。
+VM 实例在 [Azure 负载均衡器](/load-balancer/load-balancer-overview)后面联接，该负载均衡器与[公共 IP 地址](../virtual-network/public-ip-addresses.md)和 DNS 标签相关联。  使用 *&lt;clustername&gt;* 预配群集时，DNS 名称 *&lt;clustername&gt;.&lt;location&gt;.cloudapp.chinacloudapi.cn* 便是与规模集前面的负载均衡器相关联的 DNS 标签。
 
-群集中的 VM 只有[专用 IP 地址](/virtual-network/virtual-network-ip-addresses-overview-arm#private-ip-addresses)。  管理流量和服务流量通过面向公众的负载均衡器进行路由。  网络流量通过 NAT 规则（客户端连接到特定节点/实例）或负载均衡规则（流量进入 VM 轮循机制）路由到这些计算机。  负载均衡器具有关联的公共 IP，其 DNS 名称的格式为： *&lt;clustername&gt;.&lt;location&gt;.cloudapp.chinacloudapi.cn*。  公共 IP 是资源组中的另一个 Azure 资源。  如果在群集中定义多个节点类型，则会为每个节点类型/规模集创建一个负载均衡器。 或者，可以为多个节点类型设置单个负载均衡器。  主节点类型具有 DNS 标签 *&lt;clustername&gt;.&lt;location&gt;.cloudapp.chinacloudapi.cn*，其他节点类型具有 DNS 标签 *&lt;clustername&gt;-&lt;nodetype&gt;.&lt;location&gt;.cloudapp.chinacloudapi.cn*。
+群集中的 VM 只有[专用 IP 地址](../virtual-network/private-ip-addresses.md)。  管理流量和服务流量通过面向公众的负载均衡器进行路由。  网络流量通过 NAT 规则（客户端连接到特定节点/实例）或负载均衡规则（流量进入 VM 轮循机制）路由到这些计算机。  负载均衡器具有关联的公共 IP，其 DNS 名称的格式为： *&lt;clustername&gt;.&lt;location&gt;.cloudapp.chinacloudapi.cn*。  公共 IP 是资源组中的另一个 Azure 资源。  如果在群集中定义多个节点类型，则会为每个节点类型/规模集创建一个负载均衡器。 或者，可以为多个节点类型设置单个负载均衡器。  主节点类型具有 DNS 标签 *&lt;clustername&gt;.&lt;location&gt;.cloudapp.chinacloudapi.cn*，其他节点类型具有 DNS 标签 *&lt;clustername&gt;-&lt;nodetype&gt;.&lt;location&gt;.cloudapp.chinacloudapi.cn*。
 
 ### <a name="storage-accounts"></a>存储帐户
 每个群集节点类型均受 [Azure 存储帐户](/storage/common/storage-introduction)和托管磁盘的支持。
@@ -103,10 +105,10 @@ Azure Service Fabric 群集是你拥有的，但部分由 Azure 管理的资源�
 | Windows Server 2016 | 所有版本 |
 | Windows Server 1709 | 6.0 |
 | Windows Server 1803 | 6.4 |
+| Windows Server 2019 | 6.4.654.9590 |
 | Linux Ubuntu 16.04 | 6.0 |
 
-<!--Update on 01/06/2020 Not Available on | Windows Server 1809 | 6.4.654.9590 |-->
-<!--Update on 01/06/2020 Not Available on | Windows Server 2019 | 6.4.654.9590 |-->
+<!--Update on 07/08/2020 Not Available on | Windows Server 1809 | 6.4.654.9590 |-->
 
 有关其他信息，请参阅 [Azure 中支持的群集版本](/service-fabric/service-fabric-versions#supported-operating-systems)
 

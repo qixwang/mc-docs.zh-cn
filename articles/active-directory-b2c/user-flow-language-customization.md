@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C 中的语言自定义
 description: 了解如何在用户流中自定义语言体验。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 02/04/2020
+ms.topic: how-to
+ms.date: 07/28/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 00fa65b7e48a7af06e6b15e19f4d4c13caffa7ea
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 99668cfe4d656e10082f6abac2f0bda76669cdde
+ms.sourcegitcommit: dd2bc914f6fc2309f122b1c7109e258ceaa7c868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77028270"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87297722"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的语言自定义
 
@@ -84,7 +84,7 @@ ms.locfileid: "77028270"
 
 若要更改自定义用户属性的字符串或者想要在 JSON 中添加一个字符串，该字符串需采用以下格式：
 
-```JSON
+```json
 {
   "LocalizedStrings": [
     {
@@ -106,7 +106,7 @@ ms.locfileid: "77028270"
 
 若要为响应提供一组值列表，需要创建 `LocalizedCollections` 属性。 `LocalizedCollections` 是 `Name` 和 `Value` 对的数组。 项目的顺序将是它们显示的顺序。 若要添加 `LocalizedCollections`，请使用以下格式：
 
-```JSON
+```json
 {
   "LocalizedStrings": [...],
   "LocalizedCollections": [{

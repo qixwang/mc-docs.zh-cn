@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/18/2020
+ms.date: 07/27/2020
 ms.author: v-junlch
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 5d1dc7ac9c80535e89de15366d67ed8340cd54c9
-ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
+ms.openlocfilehash: 60a4c473a993c3e9c0b61e473dd60078dad71acf
+ms.sourcegitcommit: dd2bc914f6fc2309f122b1c7109e258ceaa7c868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83748125"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87297696"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用 OpenID Connect 进行 Web 登录
 
@@ -34,7 +34,7 @@ Azure AD B2C 扩展了标准 OpenID Connect 协议，使其功能远远超出了
 
 在此请求中，客户端指示需要在 `scope` 参数中从用户获取的权限，并指定要运行的用户流。 若要了解该请求的工作原理，请尝试将该请求粘贴到浏览器中并运行它。 将 `{tenant}` 替换为租户的名称。 将 `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` 替换为之前在租户中注册的应用程序的应用程序 ID。 此外，将策略名称 (`{policy}`) 更改为租户中的策略名称，例如 `b2c_1_sign_in`。
 
-```HTTP
+```http
 GET https://{tenant}.b2clogin.cn/{tenant}.partner.onmschina.cn/{policy}/oauth2/v2.0/authorize?
 client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &response_type=code+id_token
@@ -64,7 +64,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 
 使用 `response_mode=fragment` 的成功的响应如下所示：
 
-```HTTP
+```http
 GET https://aadb2cplayground.chinacloudsites.cn/#
 id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 &code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...
@@ -79,7 +79,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 
 错误响应也可能会被发送到 `redirect_uri` 参数，以便应用程序对它们进行恰当的处理：
 
-```HTTP
+```http
 GET https://aadb2cplayground.chinacloudsites.cn/#
 error=access_denied
 &error_description=the+user+canceled+the+authentication
@@ -98,13 +98,13 @@ error=access_denied
 
 Azure AD B2C 具有 OpenID Connect 元数据终结点，允许应用程序在运行时获取有关 Azure AD B2C 的信息。 此信息包括终结点、令牌内容和令牌签名密钥。 B2C 租户中的每个用户流都有一个 JSON 元数据文档。 例如，`fabrikamb2c.partner.onmschina.cn` 中 `b2c_1_sign_in` 用户流的元数据文档位于：
 
-```HTTP
+```http
 https://fabrikamb2c.b2clogin.cn/fabrikamb2c.partner.onmschina.cn/b2c_1_sign_in/v2.0/.well-known/openid-configuration
 ```
 
 此配置文档的一个属性为 `jwks_uri`，对于相同用户流，该属性的值为：
 
-```HTTP
+```http
 https://fabrikamb2c.b2clogin.cn/fabrikamb2c.partner.onmschina.cn/b2c_1_sign_in/discovery/v2.0/keys
 ```
 
@@ -136,7 +136,7 @@ https://fabrikamb2c.b2clogin.cn/fabrikamb2c.partner.onmschina.cn/b2c_1_sign_in/d
 
 还可以按照将应用的客户端 ID 用作所请求范围（这将导致具有该客户端 ID 的访问令牌作为“受众”）的约定，为应用自己的后端 Web API 请求访问令牌：
 
-```HTTP
+```http
 POST {tenant}.partner.onmschina.cn/{policy}/oauth2/v2.0/token HTTP/1.1
 Host: {tenant}.b2clogin.cn
 Content-Type: application/x-www-form-urlencoded
@@ -157,7 +157,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 
 成功的令牌响应如下所示：
 
-```JSON
+```json
 {
     "not_before": "1442340812",
     "token_type": "Bearer",
@@ -179,7 +179,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 
 错误响应如下所示：
 
-```JSON
+```json
 {
     "error": "access_denied",
     "error_description": "The user revoked access to the app.",
@@ -195,7 +195,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 
 现在你已成功获取访问令牌，可通过在 `Authorization` 标头中加入令牌的方式，在后端 Web API 请求中使用该令牌：
 
-```HTTP
+```http
 GET /tasks
 Host: mytaskwebapi.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
@@ -205,7 +205,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 
 ID 令牌在短时间内即会过期。 在它们过期后，请刷新令牌以便能够继续访问资源。 可以通过向 `/token` 终结点提交另一个 `POST` 请求来刷新令牌。 此时，提供 `refresh_token` 参数而不是 `code` 参数：
 
-```HTTP
+```http
 POST {tenant}.partner.onmschina.cn/{policy}/oauth2/v2.0/token HTTP/1.1
 Host: {tenant}.b2clogin.cn
 Content-Type: application/x-www-form-urlencoded
@@ -226,7 +226,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 
 成功的令牌响应如下所示：
 
-```JSON
+```json
 {
     "not_before": "1442340812",
     "token_type": "Bearer",
@@ -248,7 +248,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 
 错误响应如下所示：
 
-```JSON
+```json
 {
     "error": "access_denied",
     "error_description": "The user revoked access to the app.",
@@ -266,7 +266,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 
 若要将用户注销，请将用户重定向到前面所述的 OpenID Connect 元数据文档中列出的 `end_session` 终结点：
 
-```HTTP
+```http
 GET https://{tenant}.b2clogin.cn/{tenant}.partner.onmschina.cn/{policy}/oauth2/v2.0/logout?post_logout_redirect_uri=https%3A%2F%2Fjwt.ms%2F
 ```
 

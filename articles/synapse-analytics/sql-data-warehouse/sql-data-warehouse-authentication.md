@@ -6,19 +6,19 @@ author: WenJason
 manager: digimobile
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 origin.date: 04/02/2019
-ms.date: 07/06/2020
+ms.date: 08/03/2020
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-synapse
-ms.openlocfilehash: b4c782f902d51f33aea8e354738bf17cf1915659
-ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
+ms.openlocfilehash: d508b7e72b8d004a62101c4f92c105e5312d9189
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85845738"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426415"
 ---
 # <a name="authenticate-to-azure-synapse-analytics"></a>对 Azure Synapse Analytics 进行身份验证
 
@@ -61,10 +61,10 @@ Azure Active Directory 的优点包括：
 * 通过启用集成的 Windows 身份验证和 Azure Active Directory 支持的其他形式的身份验证来消除存储密码。
 * 使用包含的数据库用户在数据库级别对标识进行身份验证。
 * 支持对连接到 SQL 池的应用程序进行基于令牌的身份验证。
-* 通过对各种工具（包括 [SQL Server Management Studio](../../sql-database/sql-database-ssms-mfa-authentication.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 和 [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/azure-active-directory?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)）的 Active Directory 通用身份验证支持多重身份验证。
+* 通过对各种工具（包括 [SQL Server Management Studio](../../azure-sql/database/authentication-mfa-ssms-overview.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 和 [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/azure-active-directory?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)）的 Active Directory 通用身份验证支持多重身份验证。
 
 > [!NOTE]
-> Azure Active Directory 仍然相对较新，具有某些限制。 若要确保 Azure Active Directory 适用于环境，请参阅 [Azure AD features and limitations](../../sql-database/sql-database-aad-authentication.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#azure-ad-features-and-limitations)（Azure AD 功能和限制），尤其是那些需要额外考虑的内容。
+> Azure Active Directory 仍然相对较新，具有某些限制。 若要确保 Azure Active Directory 适用于环境，请参阅 [Azure AD features and limitations](../../azure-sql/database/authentication-aad-overview.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#azure-ad-features-and-limitations)（Azure AD 功能和限制），尤其是那些需要额外考虑的内容。
 
 ### <a name="configuration-steps"></a>配置步骤
 
@@ -81,7 +81,7 @@ Azure Active Directory 的优点包括：
 
 ### <a name="find-the-details"></a>查看详细信息
 
-* 配置和使用 Azure Active Directory 身份验证的步骤与适用于 Azure SQL 数据库和 Azure Synapse 中的 Synapse SQL 的步骤几乎完全相同。 请遵循主题[使用 Azure Active Directory 身份验证连接到 SQL 数据库或 SQL 池](../../sql-database/sql-database-aad-authentication.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)中的详细步骤。
+* 配置和使用 Azure Active Directory 身份验证的步骤与适用于 Azure SQL 数据库和 Azure Synapse 中的 Synapse SQL 的步骤几乎完全相同。 请遵循主题[使用 Azure Active Directory 身份验证连接到 SQL 数据库或 SQL 池](../../azure-sql/database/authentication-aad-overview.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)中的详细步骤。
 * 创建自定义数据库角色，并向角色添加用户。 然后授予角色具体权限。 有关详细信息，请参阅 [数据库引擎权限入门](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
 ## <a name="next-steps"></a>后续步骤

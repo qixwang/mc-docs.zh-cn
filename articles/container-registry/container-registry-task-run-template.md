@@ -3,14 +3,14 @@ title: 通过模板实现快速任务运行
 description: 将 ACR 任务运行排入队列，以使用 Azure 资源管理器模板生成映像
 ms.topic: article
 origin.date: 04/22/2020
-ms.date: 06/08/2020
+ms.date: 08/03/2020
 ms.author: v-yeche
-ms.openlocfilehash: ea9d910a8fc853420170d724e47178c2f77efbc0
-ms.sourcegitcommit: 8dae792aefbe44e8388f961b813e3da6564423ec
+ms.openlocfilehash: 19218007bbe41be68351083097c8e47b6fd99efd
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84654872"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426515"
 ---
 <!--Verified successfully-->
 # <a name="run-acr-tasks-using-resource-manager-templates"></a>使用资源管理器模板运行 ACR 任务

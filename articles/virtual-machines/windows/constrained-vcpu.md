@@ -9,14 +9,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 origin.date: 03/09/2018
-ms.date: 07/06/2020
+ms.date: 08/03/2020
 ms.author: v-yeche
-ms.openlocfilehash: e5e411c0d7aac16e02f8089be0e981be8b073e44
-ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
+ms.openlocfilehash: 55faeb023369c671741283932df5b2ba8441648d
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85946026"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426368"
 ---
 # <a name="constrained-vcpu-capable-vm-sizes"></a>支持受约束 vCPU 的 VM 大小
 

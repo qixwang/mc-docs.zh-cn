@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/01/2020
+ms.date: 07/27/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 950596bb707ac6ffa86954a374caa0641ad9f4ce
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: cecb589f1be18a3b39faecdb91a5873f97a37be1
+ms.sourcegitcommit: dd2bc914f6fc2309f122b1c7109e258ceaa7c868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80581648"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87297715"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定义采用 Azure Active Directory B2C 中自定义策略的自断言技术配置文件
 
@@ -30,7 +30,7 @@ ms.locfileid: "80581648"
 
 下面的示例显示了电子邮件注册的自断言技术配置文件：
 
-```XML
+```xml
 <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
   <DisplayName>Email signup</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -40,7 +40,7 @@ ms.locfileid: "80581648"
 
 在自断言技术配置文件中，你可以使用“InputClaims”和“InputClaimsTransformations”元素预填充自断言页面上出现的声明的值（显示声明）   。 例如，在编辑配置文件策略中，用户旅程首先从 Azure AD B2C 目录服务读取用户配置文件，然后自断言技术配置文件使用用户配置文件中存储的用户数据设置输入声明。 这些声明是从用户配置文件中收集的，然后呈现给可以编辑现有数据的用户。
 
-```XML
+```xml
 <TechnicalProfile Id="SelfAsserted-ProfileUpdate">
 ...
   <InputClaims>
@@ -71,7 +71,7 @@ ms.locfileid: "80581648"
 * 第五个显示声明引用收集和验证电话号码的 `phoneVerificationControl` 显示控件。
 * 其他显示声明为 ClaimTypes，要从用户处收集。
 
-```XML
+```xml
 <TechnicalProfile Id="Id">
   <DisplayClaims>
     <DisplayClaim DisplayControlReferenceId="emailVerificationControl" />
@@ -93,7 +93,7 @@ ms.locfileid: "80581648"
 
 请思考以下示例，其中 `age` 声明被定义为基本策略中的输出声明  。 在将任何显示声明添加到自断言技术配置文件之前，屏幕上会显示 `age` 声明，用于从用户处收集数据：
 
-```XML
+```xml
 <TechnicalProfile Id="id">
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="age" />
@@ -103,7 +103,7 @@ ms.locfileid: "80581648"
 
 如果继承了该基本策略的叶策略随后指定 `officeNumber` 作为显示声明  ：
 
-```XML
+```xml
 <TechnicalProfile Id="id">
   <DisplayClaims>
     <DisplayClaim ClaimTypeReferenceId="officeNumber" />
@@ -140,7 +140,7 @@ ms.locfileid: "80581648"
 
 以下示例演示如何使用同时包含显示声明和输出声明的自断言技术配置文件。
 
-```XML
+```xml
 <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
   <DisplayName>Email signup</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />

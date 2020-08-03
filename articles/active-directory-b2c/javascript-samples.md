@@ -3,20 +3,20 @@ title: JavaScript 示例
 titleSuffix: Azure AD B2C
 description: 了解如何在 Azure Active Directory B2C 中使用 JavaScript。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 02/20/2020
+ms.topic: how-to
+ms.date: 07/27/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: fae0f00be848a00bc9432bd571d86cd5f2f89b8e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3fc531d95cc2613920aa296da04e22923e34ce4f
+ms.sourcegitcommit: dd2bc914f6fc2309f122b1c7109e258ceaa7c868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77531316"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87297704"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>用于 Azure Active Directory B2C 中的 JavaScript 示例
 
@@ -50,7 +50,7 @@ ms.locfileid: "77531316"
 1. 打开自定义策略文件。 例如，SignUpOrSignin.xml  。
 2. 向 RelyingParty 的 UserJourneyBehaviors 元素添加 ScriptExecution 元素    ：
 
-    ```XML
+    ```xml
     <RelyingParty>
       <DefaultUserJourney ReferenceId="B2CSignUpOrSignInWithPassword" />
       <UserJourneyBehaviors>

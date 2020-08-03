@@ -20,6 +20,8 @@
     - name: Azure Policy 内置策略定义
       displayName: 'samples, policies, definitions'
       href: ../policy-samples.md?toc=/key-vault/certificates/toc.json&bc=/key-vault/breadcrumb/toc.json
+    - name: Key Vault 代码示例
+      href: 'https://docs.microsoft.com/samples/browse/?expanded=azure&products=azure-key-vault'
 - name: 教程
   items:
     - name: 导入证书
@@ -34,6 +36,12 @@
       href: create-certificate-scenarios.md
     - name: 证书创建方法
       href: create-certificate.md
+    - name: 创建证书签名请求
+      href: create-certificate-signing-request.md
+- name: 操作指南
+  items:
+    - name: 将 Key Vault 与 DigiCert CA 集成
+      href: how-to-integrate-certificate-authority.md
 - name: 参考
   items:
     - name: Azure PowerShell
@@ -41,16 +49,16 @@
     - name: Azure CLI
       href: /cli/keyvault
     - name: .NET
-      href: 'https://docs.microsoft.com/dotnet/api/overview/azure/key-vault?view=azure-dotnet'
+      href: 'https://docs.microsoft.com/dotnet/api/overview/azure/security.keyvault.certificates-readme?view=azure-dotnet'
     - name: Java
       href: 'https://docs.microsoft.com/java/api/overview/azure/keyvault?view=azure-java-stable'
     - name: Node.js
       href: 'https://docs.microsoft.com/javascript/api/overview/azure/key-vault?view=azure-node-latest'
     - name: Python
-      href: 'https://docs.microsoft.com/python/api/overview/azure/key-vault?view=azure-python'
+      href: 'https://docs.microsoft.com/python/api/overview/azure/keyvault-certificates-readme?view=azure-python'
     - name: REST
       href: 'https://docs.microsoft.com/rest/api/keyvault'
-    - name: Resource Manager 模板
+    - name: 资源管理器模板
       href: 'https://docs.microsoft.com/azure/templates/microsoft.keyvault/allversions'
       displayName: ARM
 - name: 资源

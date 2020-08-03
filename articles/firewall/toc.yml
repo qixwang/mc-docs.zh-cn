@@ -17,7 +17,7 @@
 - name: 快速入门
   expanded: true
   items:
-    - name: 使用多个地址进行部署
+    - name: 使用多个地址进行部署 - ARM 模板
       displayName: Resource Manager
       href: quick-create-multiple-ip-template.md
 - name: 示例
@@ -28,6 +28,8 @@
       href: log-analytics-samples.md
 - name: 概念
   items:
+    - name: Azure 防火墙功能
+      href: features.md
     - name: FQDN 标记
       href: fqdn-tags.md
     - name: 基础结构 FQDN
@@ -44,6 +46,8 @@
       href: forced-tunneling.md
     - name: 远程工作支持
       href: remote-work-support.md
+    - name: 网络规则中的 FQDN
+      href: fqdn-filtering-network-rules.md
 - name: 操作指南
   items:
     - name: 使用 Azure PowerShell 进行部署
@@ -60,6 +64,10 @@
       href: sql-fqdn-filtering.md
     - name: SNAT 专用范围
       href: snat-private-range.md
+    - name: 保护 Azure Kubernetes 服务 (AKS)
+      href: protect-azure-kubernetes-service.md
+    - name: DNS 设置
+      href: dns-settings.md
 - name: 参考
   items:
     - name: Azure CLI
@@ -76,11 +84,11 @@
       href: 'https://docs.azure.cn/develop/python/'
     - name: REST
       href: 'https://docs.microsoft.com/rest/api/firewall'
-    - name: Azure Resource Manager
+    - name: Azure 资源管理器
       href: ../azure-resource-manager/management/overview.md
 - name: 资源
   items:
-    - name: 常见问题
+    - name: 常见问题解答
       href: firewall-faq.md
     - name: 创作模板
       href: ../azure-resource-manager/templates/template-syntax.md

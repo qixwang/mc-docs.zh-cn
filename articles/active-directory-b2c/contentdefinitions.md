@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/01/2020
+ms.date: 07/27/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 2d43e3e5df7a4ecfd7d1f26260728b0b89b195a9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 25ada93add43884587b3815509896c112ccd1c39
+ms.sourcegitcommit: dd2bc914f6fc2309f122b1c7109e258ceaa7c868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80581592"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87297681"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -30,7 +30,7 @@ ms.locfileid: "80581592"
 
 以下示例演示了本地化资源的内容定义标识符和定义：
 
-```XML
+```xml
 <ContentDefinition Id="api.localaccountsignup">
   <LoadUri>~/tenant/default/selfAsserted.cshtml</LoadUri>
   <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
@@ -46,7 +46,7 @@ ms.locfileid: "80581592"
 
 **LocalAccountSignUpWithLogonEmail** 自我断言技术配置文件的元数据包含设置为 `api.localaccountsignup` 的内容定义标识符 **ContentDefinitionReferenceId**
 
-```XML
+```xml
 <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
   <DisplayName>Email signup</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -166,7 +166,7 @@ ms.locfileid: "80581592"
 
 以下示例演示包含对英语、法语和西班牙语本地化的引用的注册或登录内容定义：
 
-```XML
+```xml
 <ContentDefinition Id="api.signuporsignin">
   <LoadUri>~/tenant/default/unified.cshtml</LoadUri>
   <RecoveryUri>~/common/default_page_error.html</RecoveryUri>

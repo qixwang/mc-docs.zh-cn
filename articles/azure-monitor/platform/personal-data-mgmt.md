@@ -1,19 +1,18 @@
 ---
 title: 关于 Azure Log Analytics 中存储的个人数据的指南 | Azure Docs
 description: 本文介绍如何管理存储在 Azure Log Analytics 中的个人数据以及识别和删除这些数据的方法。
-author: lingliw
-manager: digimobile
 ms.subservice: logs
 ms.topic: conceptual
+author: Johnnytechn
+ms.author: v-johya
+ms.date: 07/17/2020
 origin.date: 05/18/2018
-ms.date: 6/4/2019
-ms.author: v-lingwu
-ms.openlocfilehash: 568cb0ee91956eb6e65a0e79a33f0b72352454c5
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 103063b4d28139cd81465db2dadd5ad01ff6c8b0
+ms.sourcegitcommit: b5794af488a336d84ee586965dabd6f45fd5ec6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79452424"
+ms.lasthandoff: 08/01/2020
+ms.locfileid: "87508481"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>存储在 Log Analytics 和 Application Insights 中的个人数据指南
 
@@ -62,7 +61,7 @@ Log Analytics 是十分灵活的存储，可在规定数据架构的同时允许
     | summarize numNonObfuscatedIPs_24h = count() by $table
     ```
 * *用户 ID*：默认情况下，Application Insights 会使用为用户随机生成的 ID，以便进行会话跟踪。 不过，这些字段常常会被替代，改为存储与应用程序更相关的 ID。 例如：用户名、AAD GUID 等。这些 ID 通常会被视为范围内的个人数据，因此应处理得当。 我们的建议始终是尝试对这些 ID 进行混淆或匿名处理。 通常可以在其中发现这些值的字段包括：session_Id、user_Id、user_AuthenticatedId、user_AccountId、customDimensions。
-* *自定义数据*：Application Insights 允许向任何数据类型追加一组自定义维度。 这些维度可以是任何数据。  使用以下查询来确定在过去 24 小时内收集的任何自定义维度：
+* *自定义数据*：Application Insights 允许向任何数据类型追加一组自定义维度。 这些维度可以是任何数据。 使用以下查询来确定在过去 24 小时内收集的任何自定义维度：
     ```
     search * 
     | where isnotempty(customDimensions)
@@ -80,12 +79,12 @@ Log Analytics 是十分灵活的存储，可在规定数据架构的同时允许
 
 ### <a name="view-and-export"></a>查看和导出
 
-对于查看和导出数据请求，应使用 [Log Analytics 查询 API](https://dev.loganalytics.io/) 或 [Application Insights 查询 API](https://dev.applicationinsights.io/quickstart)。 将数据形状转换为适当形状以提供给用户时，将由你实现相关逻辑。
+对于查看和导出数据请求，应使用 [Log Analytics 查询 API](https://dev.loganalytics.io/) 或 [Application Insights 查询 API](https://dev.applicationinsights.io/quickstart)。 将数据形状转换为适当形状以提供给用户时，将由你实现相关逻辑。 [Azure Functions](https://www.azure.cn/home/features/azure-functions/) 非常适合托管此类逻辑。
 
 > [!IMPORTANT]
->  虽然绝大多数清除操作的完成速度可能比 SLA 快得多，但**完成清除操作的正式 SLA 设置为 30 天**，因为它们对所使用的数据平台产生了重大影响。 这是一个自动化过程；没有办法请求更快地处理操作。
+>  虽然绝大多数清除操作完成起来会比 SLA 快得多，但由于其对所用数据平台造成的严重影响，因此**完成清除操作所需的正式 SLA 设置为 30 天**。 这是一个自动化过程；无法请求以更快的速度处理操作。
 
-### <a name="delete"></a>Delete
+### <a name="delete"></a>删除
 
 > [!WARNING]
 > Log Analytics 中的删除操作具有破坏性且不可逆！ 执行时请特别小心。
@@ -94,15 +93,20 @@ Log Analytics 是十分灵活的存储，可在规定数据架构的同时允许
 
 清除是一项高特权操作，如果未向 Azure 中的应用或用户显式授予 Azure 资源管理器中的某个角色，则任何应用或用户（甚至包括资源所有者）都无权执行该操作。 此角色为_数据清除程序_，由于可能会丢失数据，应谨慎委托。 
 
+> [!IMPORTANT]
+> 若要管理系统资源，清除请求被限制为每小时 50 个请求。 应该通过发送一条命令并在其谓词中包含所有需要清除的用户标识，批量执行清除请求。 使用 [in 运算符](https://docs.microsoft.com/azure/kusto/query/inoperator)来指定多个标识。 在执行清除请求之前，应运行查询来验证结果是否符合预期。 
+
+
+
 一旦分配该 Azure 资源管理器角色，就有两个新的 API 路径可用： 
 
 #### <a name="log-data"></a>日志数据
 
-* [POST purge](https://docs.microsoft.com/rest/api/loganalytics/workspaces%202015-03-20/purge) - 使用一个对象来指定要删除的数据的参数，并返回引用 GUID 
+* [POST purge](https://docs.microsoft.com/rest/api/loganalytics/workspacepurge/purge) - 使用一个对象来指定要删除的数据的参数，并返回引用 GUID 
 * GET purge status：POST purge 调用将返回“x-ms-status-location”标头，其中包含一个 URL，可以调用该 URL 来确定清除 API 的状态。 例如：
 
     ```
-    x-ms-status-location: https://management.chinacloudapi.cn/subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/Microsoft.OperatonalInsights/workspaces/[WorkspaceName]/operations/purge-[PurgeOperationId]?api-version=2015-03-20
+    x-ms-status-location: https://management.chinacloudapi.cn/subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/Microsoft.OperationalInsights/workspaces/[WorkspaceName]/operations/purge-[PurgeOperationId]?api-version=2015-03-20
     ```
 
 > [!IMPORTANT]
@@ -123,7 +127,4 @@ Log Analytics 是十分灵活的存储，可在规定数据架构的同时允许
 ## <a name="next-steps"></a>后续步骤
 - 若要详细了解如何收集、处理和保护 Log Analytics 数据，请参阅 [Log Analytics 数据安全性](../../azure-monitor/platform/data-security.md)。
 - 若要详细了解如何收集、处理和保护 Application Insights 数据，请参阅 [Application Insights 数据安全性](../../azure-monitor/app/data-retention-privacy.md)。
-
-
-
 

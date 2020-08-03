@@ -9,12 +9,12 @@ ms.date: 07/13/2020
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: fd5c06dc3074c65d7f2b01cf46e6d6877057c417
-ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
+ms.openlocfilehash: 67c875abdabc912382b5be7e215336ca44243b7e
+ms.sourcegitcommit: 662a98c98968e8c1b49c3705b80882c5c7f697f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "86440956"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426898"
 ---
 # <a name="support-for-moving-azure-resources-across-regions"></a>跨区域移动 Azure 资源的支持
 
@@ -161,7 +161,7 @@ ms.locfileid: "86440956"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | batchaccounts |  Batch 帐户不能直接从一个区域移到另一个区域，但你可以使用模板来导出模板，对其进行修改，然后将模板部署到新区域。 <br/><br/> 了解如何[跨区域移动 Batch 帐户](../../batch/best-practices.md#moving-batch-accounts-across-regions) |
+> | batchaccounts |  Batch 帐户不能直接从一个区域移到另一个区域，但你可以使用模板来导出模板，对其进行修改，然后将模板部署到新区域。 <br/><br/> 了解如何[跨区域移动 Batch 帐户](../../batch/best-practices.md#move-batch-account-across-regions) |
 <!--Not Available on ## Microsoft.BatchAI-->
 <!--Not Available on ## Microsoft.BingMaps-->
 <!--Not Available on ## Microsoft.BizTalkServices-->

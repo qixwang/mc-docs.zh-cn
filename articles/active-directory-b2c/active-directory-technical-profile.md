@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/01/2020
+ms.date: 07/27/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: e7eb7b93bd2901aa4216122a4250fcf0a64d7ee7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 80f316d5e8bd8795c8eb222dbb23d090ead3a7d3
+ms.sourcegitcommit: dd2bc914f6fc2309f122b1c7109e258ceaa7c868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80581591"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87297618"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 Azure Active Directory 技术配置文件
 
@@ -41,7 +41,7 @@ Azure Active Directory B2C (Azure AD B2C) 为 Azure Active Directory 用户管�
 
 以下示例演示了 **AAD-Common** 技术配置文件：
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-Common">
   <DisplayName>Azure Active Directory</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -96,7 +96,7 @@ InputClaims 元素包含一个声明，该声明用于在目录中查找帐户�
 
 **AAD-UserWriteUsingLogonEmail** 技术配置文件，它可以创建新本地帐户并保存以下声明：
 
-```XML
+```xml
   <PersistedClaims>
     <!-- Required claims -->
     <PersistedClaim ClaimTypeReferenceId="email" PartnerClaimType="signInNames.emailAddress" />
@@ -126,7 +126,7 @@ InputClaims 元素包含一个声明，该声明用于在目录中查找帐户�
 
 **Read** 操作读取有关单个用户帐户的数据。 以下技术配置文件使用用户的 objectId 读取有关用户帐户的数据：
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-UserReadUsingObjectId">
   <Metadata>
     <Item Key="Operation">Read</Item>
@@ -156,7 +156,7 @@ InputClaims 元素包含一个声明，该声明用于在目录中查找帐户�
 
 **Write** 操作创建或更新单个用户帐户。 以下技术配置文件创建新社交帐户：
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
   <Metadata>
     <Item Key="Operation">Write</Item>
@@ -196,7 +196,7 @@ InputClaims 元素包含一个声明，该声明用于在目录中查找帐户�
 
 **DeleteClaims** 操作从提供的声明列表中清除信息。 以下技术配置文件删除声明：
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-DeleteClaimsUsingObjectId">
   <Metadata>
     <Item Key="Operation">DeleteClaims</Item>
@@ -217,7 +217,7 @@ InputClaims 元素包含一个声明，该声明用于在目录中查找帐户�
 
 **DeleteClaimsPrincipal** 操作从目录中删除单个用户帐户。 以下技术配置文件使用用户主体名称从目录中删除用户帐户：
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-DeleteUserUsingObjectId">
   <Metadata>
     <Item Key="Operation">DeleteClaimsPrincipal</Item>
@@ -232,7 +232,7 @@ InputClaims 元素包含一个声明，该声明用于在目录中查找帐户�
 
 以下技术配置文件使用 **alternativeSecurityId** 删除社交用户帐户：
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-DeleteUserUsingAlternativeSecurityId">
   <Metadata>
     <Item Key="Operation">DeleteClaimsPrincipal</Item>

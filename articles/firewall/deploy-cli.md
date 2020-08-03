@@ -5,16 +5,19 @@ services: firewall
 author: rockboyfor
 ms.service: firewall
 origin.date: 08/29/2019
-ms.date: 12/09/2019
+ms.date: 08/03/2020
+ms.testscope: yes
+ms.testdate: 08/03/2020
 ms.author: v-yeche
-ms.topic: article
-ms.openlocfilehash: 278d1433a0a05143b40c1d942ee716fce48847cc
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.topic: how-to
+ms.openlocfilehash: e1827c2eb7ddb291b22fb186553b15ec907f603d
+ms.sourcegitcommit: 362814dc7ac5b56cf0237b9016a67c35d8d72c32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75335363"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87455598"
 ---
+<!--Verify Successsfully-->
 # <a name="deploy-and-configure-azure-firewall-using-azure-cli"></a>使用 Azure CLI 部署和配置 Azure 防火墙
 
 控制出站网络访问是整个网络安全计划的重要组成部分。 例如，你可能想要限制对网站的访问， 或者限制可以访问的出站 IP 地址和端口。
@@ -46,11 +49,11 @@ ms.locfileid: "75335363"
 
 如果你愿意，可以使用 [Azure 门户](tutorial-firewall-deploy-portal.md)或 [Azure PowerShell](deploy-ps.md) 完成此过程。
 
-如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.azure.cn/pricing/1rmb-trial) 。
+如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
 [!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="azure-cli"></a>Azure CLI
 

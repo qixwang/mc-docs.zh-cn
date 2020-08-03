@@ -6,18 +6,18 @@ author: WenJason
 manager: digimobile
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
-origin.date: 04/08/2020
-ms.date: 05/11/2020
+ms.subservice: sql-dw
+origin.date: 06/18/2020
+ms.date: 08/03/2020
 ms.author: v-jay
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 82bd2ef1accf1663b989110a9d94232694dce8aa
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.openlocfilehash: 1921701ac2671a6b7173791deb9252d0c3a93d28
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198476"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426253"
 ---
 # <a name="quickstart-bulk-load-data-using-the-copy-statement"></a>快速入门：使用 COPY 语句批量加载数据
 
@@ -36,6 +36,34 @@ ms.locfileid: "82198476"
 ## <a name="prerequisites"></a>先决条件
 
 本快速入门假设你已有一个 SQL 池。 如果尚未创建 SQL 池，请使用[创建和连接 - 门户](create-data-warehouse-portal.md)快速入门。
+
+## <a name="set-up-the-required-permissions"></a>设置所需权限
+
+```sql
+-- List the permissions for your user
+select  princ.name
+,       princ.type_desc
+,       perm.permission_name
+,       perm.state_desc
+,       perm.class_desc
+,       object_name(perm.major_id)
+from    sys.database_principals princ
+left join
+        sys.database_permissions perm
+on      perm.grantee_principal_id = princ.principal_id
+where name = '<yourusername>';
+
+--Make sure your user has the permissions to CREATE tables in the [dbo] schema
+GRANT CREATE TABLE TO <yourusername>;
+GRANT ALTER ON SCHEMA::dbo TO <yourusername>;
+
+--Make sure your user has ADMINISTER DATABASE BULK OPERATIONS permissions
+GRANT ADMINISTER DATABASE BULK OPERATIONS TO <yourusername>
+
+--Make sure your user has INSERT permissions on the target table
+GRANT INSERT ON <yourtable> TO <yourusername>
+
+```
 
 ## <a name="create-the-target-table"></a>创建目标表
 

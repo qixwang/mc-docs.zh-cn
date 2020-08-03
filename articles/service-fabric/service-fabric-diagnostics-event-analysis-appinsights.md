@@ -3,14 +3,17 @@ title: 使用 Application Insights 进行 Azure Service Fabric 事件分析
 description: 了解通过使用 Application Insights 可视化和分析事件来监视和诊断 Azure Service Fabric 群集。
 author: rockboyfor
 ms.topic: conceptual
-ms.date: 01/13/2020
+origin.date: 11/21/2018
+ms.date: 08/03/2020
+ms.testscope: no
+ms.testdate: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: f165cc76e49e911b62f92befe11cdfdf4f38ab3d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 9fd8d2fce6f5508e3304a53f60b4cf530d115df3
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75741902"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426446"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>使用 Application Insights 进行事件分析和可视化
 
@@ -38,9 +41,7 @@ Application Insights 提供指定的视图用于查询所有传入的数据。 �
 
 ![Application Insights 请求详细信息](media/service-fabric-diagnostics-event-analysis-appinsights/ai-metrics-explorer.png)
 
-若要进一步了解 Application Insights 门户的功能，请转到 [Application Insights 门户文档](/azure-monitor/app/overview-dashboard)。
-
-<!--Correct URL direct to (/azure-monitor/app/overview-dashboard)-->
+若要进一步了解 Application Insights 门户的功能，请转到 [Application Insights 门户文档](../azure-monitor/app/app-insights-dashboards.md)。
 
 ### <a name="configuring-application-insights-with-eventflow"></a>使用 EventFlow 配置 Application Insights
 
@@ -69,16 +70,13 @@ Application Insights 提供指定的视图用于查询所有传入的数据。 �
 
 配置 Application Insights 作为事件和日志输出的数分钟后，Application Insights 资源中应开始显示信息。 导航到 Application Insights 资源，此时会转到 Application Insights 资源仪表板。 单击 Application Insights 任务栏中的“搜索”，查看其最近收到的跟踪，并能够筛选它们。 
 
-指标资源管理器  是非常有用的工具，能够基于应用程序、服务和群集报告的指标创建自定义仪表板。 请参阅[了解 Application Insights 中的指标](/azure-monitor/log-query/log-query-overview)，基于收集的数据为自身设置数个图表。
-
-<!--Correct on redirect to (/azure-monitor/log-query/log-query-overview)-->
+指标资源管理器  是非常有用的工具，能够基于应用程序、服务和群集报告的指标创建自定义仪表板。 请参阅[了解 Application Insights 中的指标](../azure-monitor/app/metrics-explorer.md)，基于收集的数据为自身设置数个图表。
 
 单击“分析”会转到 Application Insights 分析门户，可在此处基于更广的范围和可选性查询事件和跟踪。  若要阅读详细信息，请转到 [Application Insights 中的分析](../azure-monitor/app/analytics.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [在 AI 中设置警报](../azure-monitor/app/alerts.md)以获取有关性能或使用情况的通知
+* [在 AI 中设置警报](/azure-monitor/platform/alerts-log)以获取有关性能或使用情况的通知
 * [Application Insights 中的智能检测](../azure-monitor/app/proactive-diagnostics.md)针对发送给 Application Insights 的遥测进行主动分析，向你警告潜在的性能问题
 
-<!-- Update_Description: new article about service fabric diagnostics event analysis appinsights -->
-<!--NEW.date: 12/16/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

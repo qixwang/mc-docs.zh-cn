@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 06/28/2020
+ms.date: 07/27/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 2b7a0cc26fe5e0fefb09e92b546f7f8aef429917
-ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
+ms.openlocfilehash: 9c2c0a98e33630d19173f4b6a26a2a473deea618
+ms.sourcegitcommit: dd2bc914f6fc2309f122b1c7109e258ceaa7c868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85516533"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87297674"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中请求访问令牌
 
@@ -67,7 +67,7 @@ scope=https%3A%2F%2Fcontoso.partner.onmschina.cn%2Fapi%2Fread%20openid%20offline
 - `<application-ID>` - 注册用于支持用户流的 Web 应用程序的应用程序标识符。
 - `<redirect-uri>` - 注册客户端应用程序时输入的重定向 URI。
 
-```HTTP
+```http
 GET https://<tenant-name>.b2clogin.cn/tfp/<tenant-name>.partner.onmschina.cn/<policy-name>/oauth2/v2.0/authorize?
 client_id=<application-ID>
 &nonce=anyRandomValue
@@ -84,7 +84,7 @@ https://jwt.ms/?code=eyJraWQiOiJjcGltY29yZV8wOTI1MjAxNSIsInZlciI6IjEuMC...
 
 成功接收授权代码以后，可以将其用于请求访问令牌：
 
-```HTTP
+```http
 POST <tenant-name>.partner.onmschina.cn/<policy-name>/oauth2/v2.0/token HTTP/1.1
 Host: <tenant-name>.b2clogin.cn
 Content-Type: application/x-www-form-urlencoded
@@ -99,7 +99,7 @@ grant_type=authorization_code
 
 看到的内容应该类似于以下响应：
 
-```JSON
+```json
 {
     "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ilg1ZVhrN...",
     "token_type": "Bearer",
@@ -113,7 +113,7 @@ grant_type=authorization_code
 
 使用 https://jwt.ms 检查返回的访问令牌时，看到的内容应该类似于以下示例：
 
-```JSON
+```json
 {
   "typ": "JWT",
   "alg": "RS256",

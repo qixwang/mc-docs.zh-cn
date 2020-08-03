@@ -1,22 +1,22 @@
 ---
 title: 快速入门：创建 LUIS 密钥
 titleSuffix: Azure Cognitive Services
-description: 本快速入门介绍如何创建 LUIS 应用程序和获取密钥。
+description: 在本快速入门中，你将了解如何创建 LUIS 应用程序和获取密钥。
 services: cognitive-services
 author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: tutorial
-origin.date: 02/10/2020
-ms.date: 06/19/2019
+origin.date: 06/25/2020
+ms.date: 07/29/2020
 ms.author: v-tawe
-ms.openlocfilehash: 5c8682c85920d86fe8cfc5efe638cb4f32f1e9f0
-ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
+ms.openlocfilehash: c6533fa2dc6f4bc718c4b62ce9d1a383f09652b9
+ms.sourcegitcommit: 5d167ad5411b018522a0fac9f5435a48f4ceb3a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85613343"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87378162"
 ---
 # <a name="quickstart-getting-a-luis-endpoint-key"></a>快速入门：获取 LUIS 终结点密钥
 
@@ -62,8 +62,7 @@ LUIS 使用三种密钥：
 ![LUIS 应用订阅密钥](~/articles/cognitive-services/Speech-Service/media/sdk/luis-keys-assigned.png)
 
 
-<!-- ## Next steps -->
+## <a name="next-steps"></a>后续步骤
 
-<!-- > [!div class="nextstepaction"] -->
-<!-- > [Recognize Intents](~/articles/cognitive-services/Speech-Service/quickstarts/intent-recognition.md) -->
-
+> [!div class="nextstepaction"]
+> [识别意向](~/articles/cognitive-services/Speech-Service/quickstarts/intent-recognition.md)

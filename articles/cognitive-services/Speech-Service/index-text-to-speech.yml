@@ -12,12 +12,12 @@ metadata:
   origin.date: 03/10/2020
   ms.date: 06/19/2020
   ms.author: v-tawe
-  ms.openlocfilehash: e3ec5f06ebaf1675cdd8465045a0fc072c9ba1da
-  ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
+  ms.openlocfilehash: 96f7b94555403780d02798d970543c4a051f813b
+  ms.sourcegitcommit: 3821704fee67315badba49cf628af2aa68d98f28
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/01/2020
-  ms.locfileid: "85613326"
+  ms.lasthandoff: 08/03/2020
+  ms.locfileid: "87516059"
 landingContent:
 - title: 关于文本转语音
   linkLists:
@@ -35,6 +35,8 @@ landingContent:
       url: quickstarts/text-to-speech.md
     - text: 将语音合成到音频文件
       url: quickstarts/text-to-speech-audio-file.md
+    - text: 将语音合成为长格式音频
+      url: quickstarts/text-to-speech/async-synthesis-long-form-audio.md
 - title: 使用文本转语音进行开发
   linkLists:
   - linkListType: how-to-guide
@@ -45,6 +47,14 @@ landingContent:
       url: quickstart-python-get-text-to-speech-voices.md
     - text: 使用 REST 将文本转换为语音 (Python)
       url: quickstart-python-text-to-speech.md
+  - linkListType: concept
+    links:
+    - text: 自定义语音入门
+      url: how-to-custom-voice.md
+    - text: 创建并使用自定义语音模型
+      url: how-to-custom-voice-create-voice.md
+    - text: 自定义语音的限制
+      url: concepts-gating-overview.md
 - title: 参考
   linkLists:
   - linkListType: reference

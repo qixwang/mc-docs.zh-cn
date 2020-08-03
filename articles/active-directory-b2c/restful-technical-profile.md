@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 06/28/2020
+ms.date: 07/27/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: f85ccffefbc94ad3a831c93cab7af03f715013f8
-ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
+ms.openlocfilehash: b5611f390824b069ba81e48819ad699ad345dd24
+ms.sourcegitcommit: dd2bc914f6fc2309f122b1c7109e258ceaa7c868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85516487"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87297719"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 RESTful 技术配置文件
 
@@ -30,7 +30,7 @@ Azure Active Directory B2C (Azure AD B2C) 为集成你自己的 RESTful 服务�
 
 以下示例演示了一个 RESTful 技术配置文件：
 
-```XML
+```xml
 <TechnicalProfile Id="REST-UserMembershipValidator">
   <DisplayName>Validate user input data and return loyaltyNumber claim</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -41,7 +41,7 @@ Azure Active Directory B2C (Azure AD B2C) 为集成你自己的 RESTful 服务�
 
 **InputClaims** 元素包含要发送到 REST API 的声明列表。 还可将声明名称映射到 REST API 中定义的名称。 以下示例演示策略与 REST API 之间的映射。 **givenName** 声明作为 **firstName** 发送到 REST API，而 **surname** 作为 **lastName** 发送。 **email** 声明的设置保留原样。
 
-```XML
+```xml
 <InputClaims>
   <InputClaim ClaimTypeReferenceId="email" />
   <InputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="firstName" />
@@ -66,7 +66,7 @@ Azure Active Directory B2C (Azure AD B2C) 为集成你自己的 RESTful 服务�
 
 以下示例 `TechnicalProfile` 使用第三方电子邮件服务（在本例中为 SendGrid）发送验证电子邮件。
 
-```XML
+```xml
 <TechnicalProfile Id="SendGrid">
   <DisplayName>Use SendGrid's email API to send the code the the user</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -140,7 +140,7 @@ Azure Active Directory B2C (Azure AD B2C) 为集成你自己的 RESTful 服务�
 
 如果身份验证类型设置为 `None`，则不使用 **CryptographicKeys** 元素。
 
-```XML
+```xml
 <TechnicalProfile Id="REST-API-SignUp">
   <DisplayName>Validate user's input data and return loyaltyNumber claim</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -158,7 +158,7 @@ Azure Active Directory B2C (Azure AD B2C) 为集成你自己的 RESTful 服务�
 | --------- | -------- | ----------- |
 | ClientCertificate | 是 | 用于身份验证的 X509 证书（RSA 密钥集）。 |
 
-```XML
+```xml
 <TechnicalProfile Id="REST-API-SignUp">
   <DisplayName>Validate user's input data and return loyaltyNumber claim</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -179,7 +179,7 @@ Azure Active Directory B2C (Azure AD B2C) 为集成你自己的 RESTful 服务�
 | --------- | -------- | ----------- |
 | BearerAuthenticationToken | 否 | OAuth 2.0 持有者令牌。 |
 
-```XML
+```xml
 <TechnicalProfile Id="REST-API-SignUp">
   <DisplayName>Validate user's input data and return loyaltyNumber claim</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -198,7 +198,7 @@ Azure Active Directory B2C (Azure AD B2C) 为集成你自己的 RESTful 服务�
 
 REST API 可能需要返回错误消息，例如“在 CRM 系统中未找到该用户”。 如果发生错误，REST API 应返回 HTTP 4xx 错误消息，例如“400 (错误请求)”或“409 (冲突)”响应状态代码。 响应正文包含 JSON 格式的错误消息：
 
-```JSON
+```json
 {
   "version": "1.0.0",
   "status": 409,

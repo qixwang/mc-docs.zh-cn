@@ -7,15 +7,15 @@ ms.subservice: imaging
 ms.topic: how-to
 ms.workload: infrastructure
 origin.date: 05/04/2020
-ms.date: 07/06/2020
+ms.date: 08/03/2020
 ms.author: v-yeche
 ms.reviewer: akjosh
-ms.openlocfilehash: 751650649a85c4fb551080eb9e970e18591e8ff8
-ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
+ms.openlocfilehash: 87d925da88d34a41290cdd580c98d78d3d3bbb07
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85945763"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426404"
 ---
 # <a name="create-a-shared-image-gallery-with-the-azure-cli"></a>使用 Azure CLI 创建共享映像库
 

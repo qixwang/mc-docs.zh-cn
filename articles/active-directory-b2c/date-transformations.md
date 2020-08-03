@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/01/2020
+ms.date: 07/27/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: c4f42c2740f6077e17c5d7521ef2cd2f3326b120
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5e8c290a8efc583236c9ea3ecbac7aae85acfe2f
+ms.sourcegitcommit: dd2bc914f6fc2309f122b1c7109e258ceaa7c868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80581605"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87297646"
 ---
 # <a name="date-claims-transformations"></a>日期声明转换
 
@@ -41,7 +41,7 @@ AssertDateTimeIsGreaterThan  声明转换始终从[验证技术配置文件](val
 
 下面的示例比较 `currentDateTime` 声明与 `approvedDateTime` 声明。 如果 `currentDateTime` 晚于 `approvedDateTime`，则引发错误。 如果它们的差异在 5 分钟（30000 毫秒）内，则转换将值视为相等。
 
-```XML
+```xml
 <ClaimsTransformation Id="AssertApprovedDateTimeLaterThanCurrentDateTime" TransformationMethod="AssertDateTimeIsGreaterThan">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="approvedDateTime" TransformationClaimType="leftOperand" />
@@ -56,7 +56,7 @@ AssertDateTimeIsGreaterThan  声明转换始终从[验证技术配置文件](val
 ```
 
 `login-NonInteractive` 验证技术配置文件会调用 `AssertApprovedDateTimeLaterThanCurrentDateTime` 声明转换。
-```XML
+```xml
 <TechnicalProfile Id="login-NonInteractive">
   ...
   <OutputClaimsTransformations>
@@ -67,7 +67,7 @@ AssertDateTimeIsGreaterThan  声明转换始终从[验证技术配置文件](val
 
 自断言技术配置文件调用验证 login-NonInteractive  技术配置文件。
 
-```XML
+```xml
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
   <Metadata>
     <Item Key="DateTimeGreaterThan">Custom error message if the provided left operand is greater than the right operand.</Item>
@@ -96,7 +96,7 @@ AssertDateTimeIsGreaterThan  声明转换始终从[验证技术配置文件](val
 
 下面的示例演示声明 `dateOfBirth`（date 数据类型）到另一个声明 `dateOfBirthWithTime`（dateTime 数据类型）的转换。
 
-```XML
+```xml
   <ClaimsTransformation Id="ConvertToDateTime" TransformationMethod="ConvertDateToDateTimeClaim">
     <InputClaims>
       <InputClaim ClaimTypeReferenceId="dateOfBirth" TransformationClaimType="inputClaim" />
@@ -125,7 +125,7 @@ AssertDateTimeIsGreaterThan  声明转换始终从[验证技术配置文件](val
 
 以下示例演示如何将声明 `systemDateTime`（日期/时间数据类型）转换为另一个声明`systemDate`（日期数据类型）。
 
-```XML
+```xml
 <ClaimsTransformation Id="ConvertToDate" TransformationMethod="ConvertDateTimeToDateClaim">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="systemDateTime" TransformationClaimType="inputClaim" />
@@ -151,7 +151,7 @@ AssertDateTimeIsGreaterThan  声明转换始终从[验证技术配置文件](val
 | ---- | ----------------------- | --------- | ----- |
 | OutputClaim | currentDateTime | dateTime | 调用此 ClaimsTransformation 后生成的 ClaimType。 |
 
-```XML
+```xml
 <ClaimsTransformation Id="GetSystemDateTime" TransformationMethod="GetCurrentDateTime">
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="systemDateTime" TransformationClaimType="currentDateTime" />
@@ -179,7 +179,7 @@ AssertDateTimeIsGreaterThan  声明转换始终从[验证技术配置文件](val
 使用此声明转换可确定两个 ClaimType 之间是相等、晚于还是早于。 例如，可能会存储用户接受服务条款 (TOS) 的上次时间。 3 个月后，可以要求用户再次访问 TOS。
 若要运行声明转换，首先需要获取当前日期/时间，以及用户接受 TOS 的上次时间。
 
-```XML
+```xml
 <ClaimsTransformation Id="CompareLastTOSAcceptedWithCurrentDateTime" TransformationMethod="DateTimeComparison">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="currentDateTime" TransformationClaimType="firstDateTime" />

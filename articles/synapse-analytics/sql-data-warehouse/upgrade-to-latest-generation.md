@@ -6,18 +6,18 @@ author: WenJason
 manager: digimobile
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 origin.date: 02/19/2019
-ms.date: 05/11/2020
+ms.date: 08/03/2020
 ms.author: v-jay
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 877b7063aa47b81f0b110eb6368436a207a809bc
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.openlocfilehash: 0a91ee462b519befef59e692d4b633fea3cbce4e
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198715"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426344"
 ---
 # <a name="optimize-performance-by-upgrading-azure-synapse-analytics-sql-pool"></a>通过升级 Azure Synapse Analytics SQL 池优化性能
 
@@ -237,7 +237,7 @@ $GeoRestoredDatabase.status
 ```
 
 > [!NOTE]
-> 若要在完成还原后配置数据库，请参阅 [Configure your database after recovery](../../sql-database/sql-database-disaster-recovery.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery)（在恢复后配置数据库）。
+> 若要在完成还原后配置数据库，请参阅 [Configure your database after recovery](../../azure-sql/database/disaster-recovery-guidance.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery)（在恢复后配置数据库）。
 
 如果源数据库启用了 TDE，则已恢复的数据库会启用 TDE。
 

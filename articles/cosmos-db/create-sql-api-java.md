@@ -7,15 +7,17 @@ ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: quickstart
 origin.date: 05/11/2020
-ms.date: 06/22/2020
+ms.date: 08/03/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 90dd538cd4fb1130f07cbcc84b4b165cc6bcc0e8
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: 13ad273e62a2e7536a235545ed5121537ede5eaf
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098661"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426386"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>快速入门：生成 Java 应用以管理 Azure Cosmos DB SQL API 数据
 
@@ -47,7 +49,7 @@ ms.locfileid: "85098661"
 
 Cosmos DB 帐户的结构。 不管使用 API 还是编程语言，都具有以下特点：一个 Cosmos DB 帐户包含零个或零个以上的数据库，一个数据库 (DB) 包含零个或零个以上的容器，一个容器包含零个或零个以上的项，如下图所示：
 
-![Azure Cosmos 帐户实体](./media/databases-containers-items/cosmos-entities.png)
+:::image type="content" source="./media/databases-containers-items/cosmos-entities.png" alt-text="Azure Cosmos 帐户实体" border="false":::
 
 可在[此处](databases-containers-items.md)阅读有关数据库、容器和项的详细信息。 几个重要属性在容器级别定义，其中包括预配吞吐量和分区键。 
 
@@ -76,7 +78,7 @@ Cosmos DB 帐户的结构。 不管使用 API 还是编程语言，都具有以�
 
 ## <a name="clone-the-sample-application"></a>克隆示例应用程序
 
-现在，让我们转到如何使用代码上来。 接下来，克隆 GitHub 中的一个 SQL API 应用，设置连接字符串，并运行该应用。 会看到以编程方式处理数据是多么容易。 
+现在，让我们转到如何使用代码上来。 接下来，克隆 GitHub 中的 SQL API 应用程序，设置连接字符串，并运行应用程序。 会看到以编程方式处理数据是多么容易。 
 
 运行下列命令，克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
 
@@ -365,7 +367,7 @@ git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
 
 ---
 
-## <a name="run-the-app"></a>运行应用程序
+## <a name="run-the-app"></a>运行应用
 
 现在返回到 Azure 门户，获取连接字符串信息，并使用终结点信息启动应用。 这样，应用程序就可以与托管的数据库进行通信。
 

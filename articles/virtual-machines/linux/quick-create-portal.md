@@ -5,15 +5,15 @@ author: Johnnytechn
 ms.service: virtual-machines-linux
 ms.topic: quickstart
 ms.workload: infrastructure
-ms.date: 06/05/2020
+ms.date: 07/29/2020
 ms.author: v-johya
 ms.custom: mvc
-ms.openlocfilehash: b12808aa93917a7a22c2572c2820c1fbbcfe33cf
-ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
+ms.openlocfilehash: fc18d673a6e86c4b1e6ae8988d1d48b1776ae4a4
+ms.sourcegitcommit: b5794af488a336d84ee586965dabd6f45fd5ec6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84684039"
+ms.lasthandoff: 08/01/2020
+ms.locfileid: "87508463"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Linux 虚拟机
 
@@ -21,34 +21,16 @@ ms.locfileid: "84684039"
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
-## <a name="create-ssh-key-pair"></a>创建 SSH 密钥对
-
-需要一个 SSH 密钥对才能完成本快速入门。 如果已有一个 SSH 密钥对，则可以跳过此步骤。
-
-打开 bash shell，使用 [ssh-keygen](https://www.ssh.com/ssh/keygen/) 创建一个 SSH 密钥对。
-
-<!--MOONCAKE: CUSTOMIZATION-->
-<!-- Not Available on [Azure Cloud Shell](https://shell.azure.com/bash)-->
-
-1. 在本地计算机上打开 bash shell。
-1. 键入 `ssh-keygen -t rsa -b 2048` 以创建 ssh 密钥。 
-1. 系统将提示你输入用于保存密钥对的文件。 只需按 **Enter** 即可保存到括号中列出的默认位置。 
-1. 系统会要求你输入密码。 你可以为 SSH 密钥键入密码，或按 **Enter** 继续而不键入密码。
-1. `ssh-keygen` 命令会在 `~/.ssh directory` 中生成默认名称为 `id_rsa` 的公钥和私钥。 此命令返回公钥的完整路径。 通过键入 `cat ~/.ssh/id_rsa.pub`，使用 `cat` 和此公钥路径显示其内容。
-1. 复制此命令的输出，并将其保存到某个位置，以供本文后面使用。 这是你的公钥，在配置登录 VM 所需的管理员帐户时，需要用到它。
-
-<!-- Not Available on [automatically mounted by the Cloud Shell](/cloud-shell/persisting-shell-storage)-->
-
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
 如果尚未登录到 [Azure 门户](https://portal.azure.cn)，请进行登录。
 
 ## <a name="create-virtual-machine"></a>创建虚拟机
 
-1. 在搜索中键入“虚拟机”  。
-1. 在“服务”下，选择“虚拟机”   。
-1. 在“虚拟机”页上，选择“添加”   。 此时将打开“创建虚拟机”页  。
-1. 在“基本信息”  选项卡中的“项目详细信息”  下，确保选择了正确的订阅，然后选择**新建**资源组。 对于名称.*，请键入 myResourceGroup  。 
+1. 在搜索中键入“虚拟机”。
+1. 在“服务”下，选择“虚拟机” 。
+1. 在“虚拟机”页上，选择“添加” 。 此时将打开“创建虚拟机”页。
+1. 在“基本信息”选项卡中的“项目详细信息”下，确保选择了正确的订阅，然后选择**新建**资源组。 对于名称.*，请键入 myResourceGroup。 
 
     ![为 VM 创建新的资源组](./media/quick-create-portal/project-details.png)
 
@@ -56,21 +38,27 @@ ms.locfileid: "84684039"
 
     ![“实例详细信息”部分](./media/quick-create-portal/instance-details.png)
 
+<!--Correct in MC: select **SSH public key**, type your user name, then paste in your public key. Remove any leading or trailing white space in your public key.-->
 1. 在“管理员帐户”  下，选择“SSH 公钥”  ，键入用户名，然后粘贴公钥。 删除公钥中任何开头或结尾处的空格。
 
     ![管理员帐户](./media/quick-create-portal/administrator-account.png)
 
-1. 在“入站端口规则” > “公共入站端口”下，选择“允许所选端口”，然后从下拉列表中选择“SSH (22)”和“HTTP (80)”。      
+1. 在“入站端口规则” > “公共入站端口”下，选择“允许所选端口”，然后从下拉列表中选择“SSH (22)”和“HTTP (80)”。 
 
-    ![为 RDP 和 HTTP 打开端口](./media/quick-create-portal/inbound-port-rules.png)
+    ![打开 RDP 和 HTTP 的端口](./media/quick-create-portal/inbound-port-rules.png)
 
-1. 保留剩余的默认值，然后选择页面底部的“查看 + 创建”  按钮。
+1. 保留其余默认值，然后选择页面底部的“查看 + 创建”按钮。
 
-1. 在“创建虚拟机”页上，  可以查看要创建的 VM 的详细信息。 准备好以后，选择“创建”  。
+1. 在“创建虚拟机”页上，可以查看要创建的 VM 的详细信息。 准备好以后，选择“创建”。
 
-部署 VM 需要数分钟。 部署完成后，请转到下一部分。
+<!--Not available in MC-->
+1. 部署完成后，选择“转到资源”。
 
-    
+1. 在新 VM 的页面上，选择公共 IP 地址并将其复制到剪贴板。
+
+
+    ![复制公共 IP 地址](./media/quick-create-portal/ip-address.png)
+
 ## <a name="connect-to-virtual-machine"></a>连接到虚拟机
 
 创建与 VM 的 SSH 连接。
@@ -109,11 +97,11 @@ sudo apt-get -y install nginx
 
 ## <a name="clean-up-resources"></a>清理资源
 
-当不再需要时，可以删除资源组、虚拟机和所有相关资源。 为此，请选择虚拟机的资源组，选择“删除”  ，然后确认要删除的资源组的名称。
+当不再需要时，可以删除资源组、虚拟机和所有相关资源。 为此，请选择虚拟机的资源组，选择“删除”，然后确认要删除的资源组的名称。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你部署了一台简单的虚拟机、创建了网络安全组及其规则，并安装了一台基本 Web 服务器。 若要详细了解 Azure 虚拟机，请继续学习 Linux VM 教程。
+在本快速入门中，你部署了一台简单的虚拟机、一条网络安全组规则组和规则，并安装了一台基本 Web 服务器。 若要详细了解 Azure 虚拟机，请继续学习 Linux VM 的教程。
 
 > [!div class="nextstepaction"]
 > [Azure Linux 虚拟机教程](./tutorial-manage-vm.md)

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 06/28/2020
+ms.date: 07/27/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 4d490124899bd46a7e4d55223d1ed26057c51b6b
-ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
+ms.openlocfilehash: 6a3b5f01299a87e2f962b3a2bea2ab4fee0242f9
+ms.sourcegitcommit: dd2bc914f6fc2309f122b1c7109e258ceaa7c868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85516486"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87297691"
 ---
 # <a name="string-claims-transformations"></a>字符串声明转换
 
@@ -41,7 +41,7 @@ AssertStringClaimsAreEqual 声明转换始终从[验证技术配置文件](valid
 
 可以使用此声明转换来确保两个 ClaimTypes 具有相同的值。 如果没有，则会引发错误消息。 以下示例检查 strongAuthenticationEmailAddress ClaimType 是否等同于 email ClaimType， 否则会引发错误消息。
 
-```XML
+```xml
 <ClaimsTransformation Id="AssertEmailAndStrongAuthenticationEmailAddressAreEqual" TransformationMethod="AssertStringClaimsAreEqual">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="strongAuthenticationEmailAddress" TransformationClaimType="inputClaim1" />
@@ -55,7 +55,7 @@ AssertStringClaimsAreEqual 声明转换始终从[验证技术配置文件](valid
 
 
 login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenticationEmailAddressAreEqual 声明转换。
-```XML
+```xml
 <TechnicalProfile Id="login-NonInteractive">
   ...
   <OutputClaimsTransformations>
@@ -66,7 +66,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 自断言技术配置文件调用验证 login-NonInteractive 技术配置文件。
 
-```XML
+```xml
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
   <Metadata>
     <Item Key="UserMessageIfClaimsTransformationStringsAreNotEqual">Custom error message the email addresses you provided are not the same.</Item>
@@ -98,7 +98,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 使用此声明转换将任何字符串 ClaimType 更改为小写或大写。
 
-```XML
+```xml
 <ClaimsTransformation Id="ChangeToLower" TransformationMethod="ChangeCase">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="inputClaim1" />
@@ -132,7 +132,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 使用此声明转换设置一个字符串 ClaimType 值。
 
-```XML
+```xml
 <ClaimsTransformation Id="CreateTermsOfService" TransformationMethod="CreateStringClaim">
   <InputParameters>
     <InputParameter Id="value" DataType="string" Value="Contoso terms of service..." />
@@ -164,7 +164,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 使用此声明转换检查一个声明是否等于另一个声明。 例如，以下声明转换检查 email 声明的值是否等于 Verified.Email 声明的值。
 
-```XML
+```xml
 <ClaimsTransformation Id="CheckEmail" TransformationMethod="CompareClaims">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="Email" TransformationClaimType="inputClaim1" />
@@ -205,7 +205,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 可以使用此声明转换检查一个声明是否等于指定的值。 例如，以下声明转换将检查 termsOfUseConsentVersion 声明的值是否等于 `v1`。
 
-```XML
+```xml
 <ClaimsTransformation Id="IsTermsOfUseConsentRequiredForVersion" TransformationMethod="CompareClaimToValue">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="termsOfUseConsentVersion" TransformationClaimType="inputClaim1" />
@@ -246,7 +246,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 下面的示例将生成全局唯一 ID。 此声明转换用于创建随机 UPN（用户主体名称）。
 
-```XML
+```xml
 <ClaimsTransformation Id="CreateRandomUPNUserName" TransformationMethod="CreateRandomString">
   <InputParameters>
     <InputParameter Id="randomGeneratorType" DataType="string" Value="GUID" />
@@ -265,7 +265,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 下面的示例生成 0 到 1000 之间的随机整数值。 值被格式化为 OTP_{random value}。
 
-```XML
+```xml
 <ClaimsTransformation Id="SetRandomNumber" TransformationMethod="CreateRandomString">
   <InputParameters>
     <InputParameter Id="randomGeneratorType" DataType="string" Value="INTEGER" />
@@ -302,7 +302,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 使用此声明转换格式化任何带一个参数 {0} 的字符串。 以下示例创建一个 userPrincipalName。 所有社交标识提供者技术配置文件都调用 **CreateUserPrincipalName** 来生成 **userPrincipalName**。
 
-```XML
+```xml
 <ClaimsTransformation Id="CreateUserPrincipalName" TransformationMethod="FormatStringClaim">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="upnUserName" TransformationClaimType="inputClaim" />
@@ -338,7 +338,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 使用此声明转换格式化任何带两个参数 {0} 和 {1} 的字符串。 下面的示例创建带指定格式的 displayName：
 
-```XML
+```xml
 <ClaimsTransformation Id="CreateDisplayNameFromFirstNameAndLastName" TransformationMethod="FormatStringMultipleClaims">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="givenName" TransformationClaimType="inputClaim1" />
@@ -385,7 +385,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 定义英语（默认）和西班牙语的已本地化字符串。
 
-```XML
+```xml
 <Localization Enabled="true">
   <SupportedLanguages DefaultLanguage="en" MergeBehavior="Append">
     <SupportedLanguage>en</SupportedLanguage>
@@ -413,7 +413,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 声明转换使用 `StringId` 值 *email_subject* 设置声明类型 *subject* 的值。
 
-```XML
+```xml
 <ClaimsTransformation Id="GetLocalizedStringsForEmail" TransformationMethod="GetLocalizedStringsTransformation">
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="subject" TransformationClaimType="email_subject" />
@@ -444,7 +444,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 下面的示例基于错误密钥查找错误消息描述。 ResponseMsg 声明包含一系列要显示给最终用户或发送给信赖方的错误消息。
 
-```XML
+```xml
 <ClaimType Id="responseMsg">
   <DisplayName>Error message: </DisplayName>
   <DataType>string</DataType>
@@ -458,7 +458,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 ```
 声明转换将查找项文本，并返回其值。 如果使用 `<LocalizedCollection>` 本地化限制，则声明转换返回本地化的值。
 
-```XML
+```xml
 <ClaimsTransformation Id="GetResponseMsgMappedToResponseCode" TransformationMethod="GetMappedValueFromLocalizedCollection">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="responseCode" TransformationClaimType="mapFromClaim" />
@@ -489,7 +489,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 下面的示例在某一个 inputParameters 集合中查找域名。 声明转换查找标识符中的域名，并返回其值（应用程序 ID）。
 
-```XML
+```xml
  <ClaimsTransformation Id="DomainToClientId" TransformationMethod="LookupValue">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="domainName" TransformationClaimType="inputParameterId" />
@@ -524,7 +524,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 下面的示例在某一个 inputParameters 集合中查找域名。 声明转换查找标识符中的域名，并返回其值（应用程序 ID）或引发错误消息。
 
-```XML
+```xml
  <ClaimsTransformation Id="DomainToClientId" TransformationMethod="LookupValue">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="domainName" TransformationClaimType="inputParameterId" />
@@ -564,7 +564,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 使用此声明转换可从声明属性包中删除不必要的数据，因此会话 Cookie 会更小。 以下示例将删除 `TermsOfService` 声明类型的值。
 
-```XML
+```xml
 <ClaimsTransformation Id="SetTOSToNull" TransformationMethod="NullClaim">
   <OutputClaims>
   <OutputClaim ClaimTypeReferenceId="TermsOfService" TransformationClaimType="claim_to_null" />
@@ -588,7 +588,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 使用此声明转换分析用户 @ 符号之后的域名。 以下声明转换演示如何分析 email 声明中的域名。
 
-```XML
+```xml
 <ClaimsTransformation Id="SetDomainName" TransformationMethod="ParseDomain">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="emailAddress" />
@@ -624,7 +624,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 根据电话号码正则表达式模式检查提供的电话号码是否有效。
 
-```XML
+```xml
 <ClaimsTransformation Id="SetIsPhoneRegex" TransformationMethod="SetClaimsIfRegexMatch">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="phone" TransformationClaimType="claimToMatch" />
@@ -653,7 +653,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 检查提供的电子邮件地址是否有效，并返回电子邮件别名。
 
-```XML
+```xml
 <ClaimsTransformation Id="GetAliasFromEmail" TransformationMethod="SetClaimsIfRegexMatch">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="claimToMatch" />
@@ -699,7 +699,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 可以使用此声明转换检查一个声明是否等于指定的值。 例如，以下声明转换将检查 termsOfUseConsentVersion 声明的值是否等于 `v1`。 如果是，则将值更改为 `v2`。
 
-```XML
+```xml
 <ClaimsTransformation Id="CheckTheTOS" TransformationMethod="SetClaimsIfStringsAreEqual">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="termsOfUseConsentVersion" TransformationClaimType="inputClaim" />
@@ -746,7 +746,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 例如，以下声明转换检查 ageGroup 声明的值是否等于 `Minor`。 如果是，则返回 `B2C_V1_90001` 值。
 
-```XML
+```xml
 <ClaimsTransformation Id="SetIsMinor" TransformationMethod="SetClaimsIfStringsMatch">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="ageGroup" TransformationClaimType="claimToMatch" />
@@ -789,7 +789,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 使用此声明转换可以检查字符串声明类型是否包含某个子字符串。 以下示例检查 `roles` 字符串声明类型是否包含 **admin** 值。
 
-```XML
+```xml
 <ClaimsTransformation Id="CheckIsAdmin" TransformationMethod="StringContains">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="inputClaim"/>
@@ -828,7 +828,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 例如，获取国家/地区电话号码前缀。
 
 
-```XML
+```xml
 <ClaimsTransformation Id="GetPhonePrefix" TransformationMethod="StringSubstring">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="phoneNumber" TransformationClaimType="inputClaim" />
@@ -866,7 +866,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 例如，通过删除 `-` 字符来规范化某个电话号码
 
 
-```XML
+```xml
 <ClaimsTransformation Id="NormalizePhoneNumber" TransformationMethod="StringReplace">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="phoneNumber" TransformationClaimType="inputClaim" />
@@ -902,7 +902,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 以下示例提取用户角色的字符串集合，并将其转换为逗号分隔符字符串。 可以使用此方法在 Azure AD 用户帐户中存储字符串集合。 以后在从目录读取帐户时，可以使用 `StringSplit` 将逗号分隔符字符串转换回字符串集合。
 
-```XML
+```xml
 <ClaimsTransformation Id="ConvertRolesStringCollectionToCommaDelimiterString" TransformationMethod="StringJoin">
   <InputClaims>
    <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="inputClaim" />
@@ -938,7 +938,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 以下示例提取用户角色的逗号分隔符字符串，并将其转换为字符串集合。
 
-```XML
+```xml
 <ClaimsTransformation Id="ConvertRolesToStringCollection" TransformationMethod="StringSplit">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="rolesCommaDelimiter" TransformationClaimType="inputClaim" />

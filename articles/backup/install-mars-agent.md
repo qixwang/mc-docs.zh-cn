@@ -3,14 +3,14 @@ title: 安装 Azure 恢复服务 (MARS) 代理
 description: 了解如何安装用于备份 Windows 计算机的 Azure 恢复服务 (MARS) 代理。
 ms.topic: conceptual
 author: Johnnytechn
-ms.date: 06/22/2020
+ms.date: 07/31/2020
 ms.author: v-johya
-ms.openlocfilehash: fd29836ce969691305ef304db2bbae5f18475500
-ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
+ms.openlocfilehash: d88a8512e26fea02ebbfeec9188ee3f95fdf26b3
+ms.sourcegitcommit: b5794af488a336d84ee586965dabd6f45fd5ec6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85852042"
+ms.lasthandoff: 08/01/2020
+ms.locfileid: "87508356"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>安装 Azure 备份 MARS 代理
 
@@ -84,8 +84,9 @@ Azure 备份使用 MARS 代理备份本地计算机和 Azure VM 中的文件、�
 若要使用公共对等互连，请首先确保能够访问以下域和地址：
 
 * `http://www.msftncsi.com/ncsi.txt`
+* `http://www.msftconnecttest.com/connecttest.txt`
 * `microsoft.com`
-* `.WindowsAzure.com`
+* `.WindowsAzure.cn`
 * `.partner.microsoftonline.cn`
 * `.chinacloudapi.cn`
 

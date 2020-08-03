@@ -3,14 +3,16 @@ title: Azure Service Fabric 的网络模式
 description: 介绍 Service Fabric 的常见网络模式以及如何使用 Azure 网络功能创建群集。
 ms.topic: conceptual
 origin.date: 01/19/2018
-ms.date: 01/13/2020
+ms.date: 08/03/2020
+ms.testscope: no
+ms.testdate: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: c850a09516138e477f75d885b2a98d0f20cbdd06
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 65ba07e4611a6dd0900fe06fa303987c8ee60e3f
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75742485"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426362"
 ---
 # <a name="service-fabric-networking-patterns"></a>Service Fabric 网络模式
 可将 Azure Service Fabric 群集与其他 Azure 网络功能集成。 本文说明如何创建使用以下功能的群集：
@@ -172,7 +174,7 @@ DnsSettings              : {
     C:>\Users\users>ping NOde1000000 -n 1
     ```
 
-请参阅[并非特定于 Service Fabric 的另一个示例](https://github.com/gbowerman/azure-myriad/tree/master/existing-vnet)。
+请参阅[并非特定于 Service Fabric 的另一个示例](https://github.com/gbowerman/azure-myriad/tree/main/existing-vnet)。
 
 <a name="staticpublicip"></a>
 ## <a name="static-public-ip-address"></a>静态公共 IP 地址

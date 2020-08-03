@@ -9,14 +9,15 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 04/14/2020
-ms.date: 06/19/2019
+ms.date: 08/03/2020
 ms.author: v-tawe
-ms.openlocfilehash: d4ec5b83f3f5e8e754461a56d9275c3e77b6fdfa
-ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 25e40913f1e5498d4d32df830752214f573d9989
+ms.sourcegitcommit: 3821704fee67315badba49cf628af2aa68d98f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85706598"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87516110"
 ---
 # <a name="what-is-the-speech-cli"></a>什么是语音 CLI？
 

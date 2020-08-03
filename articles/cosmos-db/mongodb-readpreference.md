@@ -5,16 +5,18 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 02/26/2019
-ms.date: 04/27/2020
+ms.date: 08/03/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: a9cb68cc2a36d90b33a9f29a1c93b78c5e757ca7
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 2dd2f0c3f4dc99ab7b00a4f5fad849f267c3b76f
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134543"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426372"
 ---
 # <a name="how-to-multiple-regionally-distribute-reads-using-azure-cosmos-dbs-api-for-mongodb"></a>如何使用 Azure Cosmos DB 的 API for MongoDB 在多个区域中分配读取操作
 

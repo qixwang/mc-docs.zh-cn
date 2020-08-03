@@ -17,6 +17,8 @@
       href: quick-create-python.md
 - name: 示例
   items:
+    - name: Key Vault 代码示例
+      href: 'https://docs.microsoft.com/samples/browse/?expanded=azure&products=azure-key-vault'
     - name: Azure Policy 内置策略定义
       displayName: 'samples, policies, definitions'
       href: ../policy-samples.md?toc=/azure/key-vault/keys/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
@@ -27,16 +29,16 @@
     - name: Azure CLI
       href: /cli/keyvault
     - name: .NET
-      href: 'https://docs.microsoft.com/dotnet/api/overview/azure/key-vault?view=azure-dotnet'
+      href: 'https://docs.microsoft.com/dotnet/api/overview/azure/security.keyvault.keys-readme?view=azure-dotnet'
     - name: Java
-      href: 'https://docs.microsoft.com/java/api/overview/azure/keyvault?view=azure-java-stable'
+      href: /java/api/overview/keyvault?view=azure-java-stable
     - name: Node.js
       href: 'https://docs.microsoft.com/javascript/api/overview/azure/key-vault?view=azure-node-latest'
     - name: Python
-      href: 'https://docs.microsoft.com/python/api/overview/azure/key-vault?view=azure-python'
+      href: 'https://docs.microsoft.com/python/api/overview/azure/keyvault-keys-readme?view=azure-python'
     - name: REST
       href: 'https://docs.microsoft.com/rest/api/keyvault'
-    - name: Resource Manager 模板
+    - name: 资源管理器模板
       href: 'https://docs.microsoft.com/azure/templates/microsoft.keyvault/allversions'
       displayName: ARM
 - name: 资源

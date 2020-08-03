@@ -9,12 +9,12 @@ origin.date: 10/29/2018
 ms.date: 04/12/2019
 ms.author: v-lingwu
 ms.subservice: alerts
-ms.openlocfilehash: 5eceda0837283d47ecf5b2fd9b644e934891a305
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: aa9346f60c8b0d17d80de94a203701c70edbec3a
+ms.sourcegitcommit: b5794af488a336d84ee586965dabd6f45fd5ec6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79452565"
+ms.lasthandoff: 08/01/2020
+ms.locfileid: "87508431"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>在 Azure Monitor 中排查日志警报问题  
 
@@ -47,7 +47,7 @@ ms.locfileid: "79452565"
 
 ### <a name="suppress-alerts-option-is-set"></a>设置“抑制警报”选项
 
-根据[在 Azure 门户中创建日志警报规则](../platform/alerts-log.md#managing-log-alerts-from-the-azure-portal)一文中的步骤 8 所述，日志警报提供一个“抑制警报”选项，用于在配置的一段时间内抑制触发和通知操作。  因此，你可能认为某个警报未激发， 但实际上它已激发，只不过是抑制了而已。  
+根据[在 Azure 门户中创建日志警报规则](../platform/alerts-log.md)一文中的步骤 8 所述，日志警报提供一个“抑制警报”选项，用于在配置的一段时间内抑制触发和通知操作。  因此，你可能认为某个警报未激发， 但实际上它已激发，只不过是抑制了而已。  
 
 ![阻止警报](media/alert-log-troubleshoot/LogAlertSuppress.png)
 

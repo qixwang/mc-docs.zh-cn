@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 05/18/2020
+ms.date: 07/27/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: a52ba691d756cec7d95259a3112558157020bb60
-ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
+ms.openlocfilehash: 11d9476d79d98d992d00b5ac30282453f64997fe
+ms.sourcegitcommit: dd2bc914f6fc2309f122b1c7109e258ceaa7c868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83748123"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87297713"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -25,7 +25,7 @@ RelyingParty 元素指定用户旅程，以执行当前对 Azure Active Director
 
 下面的示例演示 B2C_1A_signup_signin 策略文件中的 RelyingParty 元素：
 
-```XML
+```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <TrustFrameworkPolicy
   xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
@@ -86,7 +86,7 @@ RelyingParty 元素指定用户旅程，以执行当前对 Azure Active Director
 
 B2C_1A_signup_signin 策略：
 
-```XML
+```xml
 <RelyingParty>
   <DefaultUserJourney ReferenceId="SignUpOrSignIn">
   ...
@@ -94,7 +94,7 @@ B2C_1A_signup_signin 策略：
 
 B2C_1A_TrustFrameWorkBase 或 B2C_1A_TrustFrameworkExtensionPolicy：
 
-```XML
+```xml
 <UserJourneys>
   <UserJourney Id="SignUpOrSignIn">
   ...
@@ -218,7 +218,7 @@ SubjectNamingInfo 元素包含以下属性：
 
 下面的示例演示如何定义 OpenID Connect 信赖方。 使用者名称信息配置为 `objectId`：
 
-```XML
+```xml
 <RelyingParty>
   <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
   <TechnicalProfile Id="PolicyProfile">
@@ -238,7 +238,7 @@ SubjectNamingInfo 元素包含以下属性：
 ```
 JWT 令牌包括带用户 objectId 的 `sub` 声明：
 
-```JSON
+```json
 {
   ...
   "sub": "6fbbd70d-262b-4b50-804c-257ae1706ef2",

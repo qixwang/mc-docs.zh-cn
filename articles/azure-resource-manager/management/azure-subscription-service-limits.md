@@ -6,14 +6,14 @@ author: rockboyfor
 origin.date: 06/04/2020
 ms.date: 07/13/2020
 ms.testscope: no
-ms.testdate: ''
+ms.testdate: 08/03/2020
 ms.author: v-yeche
-ms.openlocfilehash: c15f94754003ab755c8cb9bd1ce278e10424068c
-ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
+ms.openlocfilehash: 106b7874539f76f0eb4d94076306386d833b9f2c
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "86441060"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426291"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 

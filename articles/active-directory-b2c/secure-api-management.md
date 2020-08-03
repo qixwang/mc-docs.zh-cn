@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 06/28/2020
+ms.topic: how-to
+ms.date: 07/27/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 65466eef2b7a1e5b79f5117bec65ba1545b887b8
-ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
+ms.openlocfilehash: 9817c5019b323c2a4938d717ba94b775e57bb393
+ms.sourcegitcommit: dd2bc914f6fc2309f122b1c7109e258ceaa7c868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85516494"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87297716"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>使用 Azure AD B2C 保护 Azure API 管理 API
 
@@ -35,7 +35,7 @@ ms.locfileid: "85516494"
 
 使用 Azure AD B2C 保护 Azure API 管理中的 API 时，需要为 APIM 中创建的[入站策略](../api-management/api-management-howto-policies.md)提供多个值。 首先，请记下以前在 Azure AD B2C 租户中创建的应用程序的 ID。 如果使用的是在先决条件中创建的应用程序，请使用 *webbapp1* 的应用程序 ID。
 
-要在 Azure AD B2C 租户中注册应用程序，可以使用新的统一“应用注册”体验或旧版“应用程序(旧版)”体验 。 [详细了解此新体验](app-registrations-training-guide.md)。
+要在 Azure AD B2C 租户中注册应用程序，可以使用新的统一“应用注册”体验或旧版“应用程序(旧版)”体验 。 [详细了解此新体验](/active-directory-b2c/app-registrations-training-guide)。
 
 #### <a name="app-registrations"></a>[应用注册](#tab/app-reg-ga/)
 
@@ -171,7 +171,7 @@ https://<tenant-name>.b2clogin.cn/99999999-0000-0000-0000-999999999999/v2.0/
 
 1. 在 Postman 中选择“发送”按钮以执行该请求。 如果配置全部正确，你应会看到一个 JSON 响应，以及一系列会议发言人（此处的内容已截断）：
 
-    ```JSON
+    ```json
     {
       "collection": {
         "version": "1.0",
@@ -206,7 +206,7 @@ https://<tenant-name>.b2clogin.cn/99999999-0000-0000-0000-999999999999/v2.0/
 
 1. 选择“发送”按钮以执行该请求。 使用无效令牌时，预期的结果是 `401` 未授权状态代码：
 
-    ```JSON
+    ```json
     {
         "statusCode": 401,
         "message": "Unauthorized. Access token is missing or invalid."
@@ -219,7 +219,7 @@ https://<tenant-name>.b2clogin.cn/99999999-0000-0000-0000-999999999999/v2.0/
 
 通常有多个应用程序会与单个 REST API 交互。 要使 API 接受用于多个应用程序的令牌，请将其应用程序 ID 添加到 APIM 入站策略中的 `<audiences>` 元素。
 
-```XML
+```xml
 <!-- Accept tokens intended for these recipient applications -->
 <audiences>
     <audience>44444444-0000-0000-0000-444444444444</audience>
@@ -229,7 +229,7 @@ https://<tenant-name>.b2clogin.cn/99999999-0000-0000-0000-999999999999/v2.0/
 
 同样，若要支持多个令牌颁发者，请将其终结点 URI 添加到 APIM 入站策略中的 `<issuers>` 元素。
 
-```XML
+```xml
 <!-- Accept tokens from multiple issuers -->
 <issuers>
     <issuer>https://<tenant-name>.b2clogin.cn/99999999-0000-0000-0000-999999999999/v2.0/</issuer>
@@ -249,7 +249,7 @@ https://<tenant-name>.b2clogin.cn/99999999-0000-0000-0000-999999999999/v2.0/
 
 以下示例 APIM 入站策略演示了如何接受 b2clogin.cn 和 login.partner.microsoftonline.cn 颁发的令牌。 此外，它还支持来自两个应用程序的 API 请求。
 
-```XML
+```xml
 <policies>
     <inbound>
         <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">

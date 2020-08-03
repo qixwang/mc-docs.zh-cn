@@ -3,14 +3,17 @@ title: 创建 Azure Service Fabric 容器应用程序
 description: 在 Azure Service Fabric 上创建第一个 Windows 容器应用程序。 使用 Python 应用程序生成 Docker 映像，将该映像推送到容器注册表，然后生成容器并将其部署到 Azure Service Fabric。
 ms.topic: conceptual
 origin.date: 01/25/2019
-ms.date: 02/24/2020
+ms.date: 08/03/2020
+ms.testscope: no
+ms.testdate: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 114915970aa5178ff36f1296907e120e8a5f7374
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.custom: tracking-python
+ms.openlocfilehash: e5007bfb45aac87af3dd276cf1ad30eb6edbdf6c
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292031"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426277"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>在 Windows 上创建第一个 Service Fabric 容器应用程序
 

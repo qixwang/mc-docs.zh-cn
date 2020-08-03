@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 06/28/2020
+ms.date: 07/28/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: b50a924e1c9499ce3e1c0a2820b558846ad117c8
-ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
+ms.openlocfilehash: 864767fb61f0a26d33d55eeb8f9330c4f3deb165
+ms.sourcegitcommit: dd2bc914f6fc2309f122b1c7109e258ceaa7c868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85516448"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87297720"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定义采用 Azure Active Directory B2C 的自定义策略的验证技术配置文件
 
@@ -24,7 +24,7 @@ ms.locfileid: "85516448"
 
 验证技术配置文件是来自任何协议（如 [Azure Active Directory](active-directory-technical-profile.md) 或 [REST API](restful-technical-profile.md)）的普通技术配置文件。 验证技术配置文件返回输出声明，或返回 4xx HTTP 状态代码，其中包含以下数据。 有关详细信息，请参阅[返回错误消息](restful-technical-profile.md#returning-validation-error-message)
 
-```JSON
+```json
 {
     "version": "1.0.0",
     "status": 409,
@@ -87,7 +87,7 @@ Precondition  元素包含以下元素：
 2. 如果 userType 声明不存在，或 userType 的值为 `Partner`，则下一个验证技术配置文件不会执行。 验证技术配置文件会尝试从内部客户数据库读取用户配置文件，并在发生错误（如 REST API 服务不可用或任何内部错误）时继续。
 3. 如果 userType 声明不存在，或 userType 的值为 `Customer`，则最后一个验证技术配置文件不会执行。 验证技术配置文件会尝试从内部合作伙伴数据库读取用户配置文件，并在发生错误（如 REST API 服务不可用或任何内部错误）时继续。
 
-```XML
+```xml
 <ValidationTechnicalProfiles>
   <ValidationTechnicalProfile ReferenceId="login-NonInteractive" ContinueOnError="false" />
   <ValidationTechnicalProfile ReferenceId="REST-ReadProfileFromCustomertsDatabase" ContinueOnError="true" >

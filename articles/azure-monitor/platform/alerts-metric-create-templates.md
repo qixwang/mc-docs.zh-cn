@@ -6,14 +6,14 @@ ms.author: v-johya
 services: azure-monitor
 ms.topic: conceptual
 origin.date: 2/24/2020
-ms.date: 05/28/2020
+ms.date: 07/17/2020
 ms.subservice: alerts
-ms.openlocfilehash: ae387180ce17033c26d855e9a65b9324ce12eeaf
-ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
+ms.openlocfilehash: 77f6f02c52ae1e48a30d80f212b818c4a7265876
+ms.sourcegitcommit: b5794af488a336d84ee586965dabd6f45fd5ec6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84440413"
+ms.lasthandoff: 08/01/2020
+ms.locfileid: "87508478"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>使用 Resource Manager 模板创建指标警报
 
@@ -814,10 +814,10 @@ az group deployment create \
 2. **ApiName** - 只对“GetBlob”和“PutBlob”维度值监视不同的时序 。
 
 例如，该警报规则监视的几个潜在时序是：
-- Metric = 事务、ResponseType = 成功、ApiName = GetBlob  
-- Metric = 事务、ResponseType = 成功、ApiName = PutBlob  
-- Metric = 事务、ResponseType = 服务器超时、ApiName = GetBlob  
-- Metric = 事务、ResponseType = 服务器超时、ApiName = PutBlob  
+- Metric = 事务、ResponseType = 成功、ApiName = GetBlob
+- Metric = 事务、ResponseType = 成功、ApiName = PutBlob
+- Metric = 事务、ResponseType = 服务器超时、ApiName = GetBlob
+- Metric = 事务、ResponseType = 服务器超时、ApiName = PutBlob
 
 为进行本次演练，请将下面的 json 保存为 multidimensionalstaticmetricalert.json。
 
@@ -1034,10 +1034,10 @@ az group deployment create \
 2. **ApiName** - 只对“GetBlob”和“PutBlob”维度值监视不同的时序 。
 
 例如，该警报规则监视的几个潜在时序是：
-- Metric = 事务、ResponseType = 成功、ApiName = GetBlob  
-- Metric = 事务、ResponseType = 成功、ApiName = PutBlob  
-- Metric = 事务、ResponseType = 服务器超时、ApiName = GetBlob  
-- Metric = 事务、ResponseType = 服务器超时、ApiName = PutBlob  
+- Metric = 事务、ResponseType = 成功、ApiName = GetBlob
+- Metric = 事务、ResponseType = 成功、ApiName = PutBlob
+- Metric = 事务、ResponseType = 服务器超时、ApiName = GetBlob
+- Metric = 事务、ResponseType = 服务器超时、ApiName = PutBlob
 
 为进行本次演练，请将下面的 json 保存为 advanceddynamicmetricalert.json。
 
@@ -1250,8 +1250,6 @@ az group deployment create \
 ## <a name="template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric"></a>用于监视自定义指标的静态阈值指标警报的模板
 
 可以使用以下模板创建基于自定义指标的更高级静态阈值指标警报规则。
-
-若要详细了解 Azure Monitor 中的自定义指标，请参阅 [Azure Monitor 中的自定义指标](/azure-monitor/platform/metrics-custom-overview)。
 
 基于自定义指标创建警报规则时，需要同时指定指标名称和指标命名空间。 还应确保已报告自定义指标，因为无法针对尚不存在的自定义指标创建警报规则。
 
@@ -1505,10 +1503,6 @@ az group deployment create \
     --parameters @customstaticmetricalert.parameters.json
 ```
 
->[!NOTE]
->
-> [通过 Azure 门户浏览自定义指标](/azure-monitor/platform/metrics-custom-overview#browse-your-custom-metrics-via-the-azure-portal)可以查找特定的自定义指标的指标命名空间
-
 
 ## <a name="template-for-a-metric-alert-that-monitors-multiple-resources"></a>用于监视多个资源的指标警报的模板
 
@@ -1582,19 +1576,19 @@ az group deployment create \
         "targetResourceRegion":{
             "type": "string",
             "allowedValues": [
-                "ChinaNorth",
-                "ChinaNorth2",
+                "EastUS",
+                "EastUS2",
                 "CentralUS",
                 "NorthCentralUS",
                 "SouthCentralUS",
                 "WestCentralUS",
-                "ChinaNorth",
-                "ChinaNorth2",
+                "WestUS",
+                "WestUS2",
                 "CanadaEast",
                 "CanadaCentral",
                 "BrazilSouth",
                 "NorthEurope",
-                "chinanorth",
+                "WestEurope",
                 "FranceCentral",
                 "FranceSouth",
                 "UKWest",
@@ -1620,8 +1614,8 @@ az group deployment create \
                 "CentralIndia",
                 "WestIndia",
                 "SouthIndia",
-                "ChinaNorth",
-                "ChinaNorth",
+                "JapanEast",
+                "JapanWest",
                 "KoreaCentral",
                 "KoreaSouth",
                 "SouthAfricaWest",
@@ -1895,19 +1889,19 @@ az group deployment create \
         "targetResourceRegion":{
             "type": "string",
             "allowedValues": [
-                "ChinaNorth",
-                "ChinaNorth2",
+                "EastUS",
+                "EastUS2",
                 "CentralUS",
                 "NorthCentralUS",
                 "SouthCentralUS",
                 "WestCentralUS",
-                "ChinaNorth",
-                "ChinaNorth2",
+                "WestUS",
+                "WestUS2",
                 "CanadaEast",
                 "CanadaCentral",
                 "BrazilSouth",
                 "NorthEurope",
-                "chinanorth",
+                "WestEurope",
                 "FranceCentral",
                 "FranceSouth",
                 "UKWest",
@@ -1933,8 +1927,8 @@ az group deployment create \
                 "CentralIndia",
                 "WestIndia",
                 "SouthIndia",
-                "ChinaNorth",
-                "ChinaNorth",
+                "JapanEast",
+                "JapanWest",
                 "KoreaCentral",
                 "KoreaSouth",
                 "SouthAfricaWest",
@@ -2230,19 +2224,19 @@ az group deployment create \
         "targetResourceRegion":{
             "type": "string",
             "allowedValues": [
-                "ChinaNorth",
-                "ChinaNorth2",
+                "EastUS",
+                "EastUS2",
                 "CentralUS",
                 "NorthCentralUS",
                 "SouthCentralUS",
                 "WestCentralUS",
-                "ChinaNorth",
-                "ChinaNorth2",
+                "WestUS",
+                "WestUS2",
                 "CanadaEast",
                 "CanadaCentral",
                 "BrazilSouth",
                 "NorthEurope",
-                "chinanorth",
+                "WestEurope",
                 "FranceCentral",
                 "FranceSouth",
                 "UKWest",
@@ -2268,8 +2262,8 @@ az group deployment create \
                 "CentralIndia",
                 "WestIndia",
                 "SouthIndia",
-                "ChinaNorth",
-                "ChinaNorth",
+                "JapanEast",
+                "JapanWest",
                 "KoreaCentral",
                 "KoreaSouth",
                 "SouthAfricaWest",
@@ -2540,19 +2534,19 @@ az group deployment create \
         "targetResourceRegion":{
             "type": "string",
             "allowedValues": [
-                "ChinaNorth",
-                "ChinaNorth2",
+                "EastUS",
+                "EastUS2",
                 "CentralUS",
                 "NorthCentralUS",
                 "SouthCentralUS",
                 "WestCentralUS",
-                "ChinaNorth",
-                "ChinaNorth2",
+                "WestUS",
+                "WestUS2",
                 "CanadaEast",
                 "CanadaCentral",
                 "BrazilSouth",
                 "NorthEurope",
-                "chinanorth",
+                "WestEurope",
                 "FranceCentral",
                 "FranceSouth",
                 "UKWest",
@@ -2578,8 +2572,8 @@ az group deployment create \
                 "CentralIndia",
                 "WestIndia",
                 "SouthIndia",
-                "ChinaNorth",
-                "ChinaNorth",
+                "JapanEast",
+                "JapanWest",
                 "KoreaCentral",
                 "KoreaSouth",
                 "SouthAfricaWest",
@@ -2872,19 +2866,19 @@ az group deployment create \
         "targetResourceRegion":{
             "type": "string",
             "allowedValues": [
-                "ChinaNorth",
-                "ChinaNorth2",
+                "EastUS",
+                "EastUS2",
                 "CentralUS",
                 "NorthCentralUS",
                 "SouthCentralUS",
                 "WestCentralUS",
-                "ChinaNorth",
-                "ChinaNorth2",
+                "WestUS",
+                "WestUS2",
                 "CanadaEast",
                 "CanadaCentral",
                 "BrazilSouth",
                 "NorthEurope",
-                "chinanorth",
+                "WestEurope",
                 "FranceCentral",
                 "FranceSouth",
                 "UKWest",
@@ -2910,8 +2904,8 @@ az group deployment create \
                 "CentralIndia",
                 "WestIndia",
                 "SouthIndia",
-                "ChinaNorth",
-                "ChinaNorth",
+                "JapanEast",
+                "JapanWest",
                 "KoreaCentral",
                 "KoreaSouth",
                 "SouthAfricaWest",
@@ -3185,19 +3179,19 @@ az group deployment create \
         "targetResourceRegion":{
             "type": "string",
             "allowedValues": [
-                "ChinaNorth",
-                "ChinaNorth2",
+                "EastUS",
+                "EastUS2",
                 "CentralUS",
                 "NorthCentralUS",
                 "SouthCentralUS",
                 "WestCentralUS",
-                "ChinaNorth",
-                "ChinaNorth2",
+                "WestUS",
+                "WestUS2",
                 "CanadaEast",
                 "CanadaCentral",
                 "BrazilSouth",
                 "NorthEurope",
-                "chinanorth",
+                "WestEurope",
                 "FranceCentral",
                 "FranceSouth",
                 "UKWest",
@@ -3223,8 +3217,8 @@ az group deployment create \
                 "CentralIndia",
                 "WestIndia",
                 "SouthIndia",
-                "ChinaNorth",
-                "ChinaNorth",
+                "JapanEast",
+                "JapanWest",
                 "KoreaCentral",
                 "KoreaSouth",
                 "SouthAfricaWest",
@@ -3553,7 +3547,6 @@ az group deployment create \
         ],
         "evaluationFrequency": "PT1M",
         "windowSize": "PT5M",
-        "templateType": 0,
         "criteria": {
           "odata.type": "Microsoft.Azure.Monitor.WebtestLocationAvailabilityCriteria",
           "webTestId": "[resourceId('Microsoft.Insights/webtests', variables('pingTestName'))]",

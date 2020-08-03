@@ -117,6 +117,8 @@
               href: backup-azure-linux-app-consistent.md
         - name: 还原
           items:
+            - name: 关于 Azure VM 还原
+              href: about-azure-vm-restore.md
             - name: 在门户中还原 Azure VM
               href: backup-azure-arm-restore-vms.md
             - name: 从 Azure VM 备份恢复文件
@@ -149,7 +151,7 @@
               href: install-mars-agent.md
             - name: 升级 MARS 代理
               href: upgrade-mars-agent.md
-        - name: Backup
+        - name: 备份
           items:
             - name: 备份 Windows Server 文件和文件夹
               href: backup-windows-with-mars-agent.md
@@ -179,6 +181,8 @@
           items:
             - name: MABS V3 UR1 保护矩阵
               href: backup-mabs-protection-matrix.md
+            - name: MABS V3 RTM 保护矩阵
+              href: microsoft-azure-backup-server-protection-v3.md
         - name: 安装或升级
           items:
             - name: 安装 Azure 备份服务器
@@ -221,6 +225,8 @@
           href: backup-mabs-sql-azure-stack.md
     - name: Data Protection Manager (DPM)
       items:
+        - name: 在 Azure 门户中准备 DPM 工作负荷
+          href: backup-azure-dpm-introduction.md
         - name: 使用 DPM 备份 Exchange 服务器
           href: backup-azure-backup-exchange-server.md
         - name: 将数据恢复到备用 DPM 服务器
@@ -245,7 +251,7 @@
           href: backup-azure-monitoring-built-in-monitor.md
         - name: 使用 Azure Monitor
           href: backup-azure-monitoring-use-azuremonitor.md
-    - name: 报告
+    - name: 报表
       items:
         - name: 配置 Azure 备份报表
           items:
@@ -293,7 +299,7 @@
               href: backup-azure-arm-userestapi-restoreazurevms.md
             - name: 管理 Azure 备份作业
               href: backup-azure-arm-userestapi-managejobs.md
-        - name: Resource Manager 模板
+        - name: 资源管理器模板
           href: backup-rm-template-samples.md
     - name: 安全性
       items:
@@ -313,13 +319,13 @@
           href: backup-azure-security-feature.md
         - name: 专用终结点
           href: private-endpoints.md
-        - name: Encryption
+        - name: 加密
           href: backup-encryption.md
         - name: 内置安全控件
           href: backup-security-controls.md
         - name: 安全基线
           href: security-baseline.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: Azure VM
           href: backup-azure-vms-troubleshoot.md
@@ -353,13 +359,13 @@
       href: 'https://docs.microsoft.com/rest/api/backup/'
     - name: REST - 恢复服务保管库
       href: 'https://docs.microsoft.com/rest/api/recoveryservices/'
-    - name: Resource Manager 模板
+    - name: 资源管理器模板
       href: 'https://docs.microsoft.com/azure/templates/microsoft.recoveryservices/allversions'
 - name: 资源
   items:
     - name: 合规性
       href: compliance-offerings.md
     - name: 定价计算器
-      href: 'https://www.azure.cn/pricing/calculator/'
+      href: azure-backup-pricing.md
     - name: 服务更新
       href: 'https://azure.microsoft.com/updates/?product=backup'

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 05/18/2020
+ms.date: 07/27/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: c753d2362dee12d2005bea638759a0df4abf1d29
-ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
+ms.openlocfilehash: 63c10c4f27df0491e454dbf56d108fb1c27e75b6
+ms.sourcegitcommit: dd2bc914f6fc2309f122b1c7109e258ceaa7c868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83748107"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87297690"
 ---
 # <a name="stringcollection-claims-transformations"></a>StringCollection 声明转换
 
@@ -38,7 +38,7 @@ ms.locfileid: "83748107"
 
 以下声明转换会将 email ClaimType 添加到 otherMails ClaimType。
 
-```XML
+```xml
 <ClaimsTransformation Id="CreateOtherMailsFromEmail" TransformationMethod="AddItemToStringCollection">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="item" />
@@ -70,7 +70,7 @@ ms.locfileid: "83748107"
 
 使用此声明转换将字符串值添加到新的或现有的 stringCollection。 以下示例将常量电子邮件地址 (admin@contoso.com) 添加到 **otherMails** 声明。
 
-```XML
+```xml
 <ClaimsTransformation Id="SetCompanyEmail" TransformationMethod="AddParameterToStringCollection">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="otherMails" TransformationClaimType="collection" />
@@ -104,7 +104,7 @@ ms.locfileid: "83748107"
 
 以下示例读取 otherMails 声明，并将第一项返回到 email 声明中。
 
-```XML
+```xml
 <ClaimsTransformation Id="CreateEmailFromOtherMails" TransformationMethod="GetSingleItemFromStringCollection">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="otherMails" TransformationClaimType="collection" />
@@ -136,7 +136,7 @@ ms.locfileid: "83748107"
 
 以下示例检查 `roles` stringCollection 声明类型是否包含 **admin** 值。
 
-```XML
+```xml
 <ClaimsTransformation Id="IsAdmin" TransformationMethod="StringCollectionContains">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="inputClaim"/>
@@ -172,7 +172,7 @@ ms.locfileid: "83748107"
 
 以下示例检查 `roles` stringCollection 声明类型是否包含 `role` 声明类型。
 
-```XML
+```xml
 <ClaimsTransformation Id="HasRequiredRole" TransformationMethod="StringCollectionContainsClaim">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="collection" />

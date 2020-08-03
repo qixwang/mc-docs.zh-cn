@@ -4,17 +4,17 @@ description: 了解如何使用 Python 客户端库在 Azure 密钥保管库中�
 author: msmbaldwin
 ms.author: v-tawe
 origin.date: 10/20/2019
-ms.date: 07/01/2020
+ms.date: 07/28/2020
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: tracking-python
-ms.openlocfilehash: 8c9aaade229ac162727af299b5fd3995e32e8882
-ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
+ms.openlocfilehash: 16b16b0a6af42ec9149bb54219d9816ceea4b023
+ms.sourcegitcommit: 0e778acf5aa5eb63ab233e07e7aecce3a9a5e6d4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85796152"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87296461"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-python"></a>快速入门：适用于 Python 的 Azure Key Vault 客户端库
 
@@ -72,12 +72,12 @@ az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
 
 对基于云的 Python 应用程序进行身份验证的最简单方法是使用托管标识；有关详细信息，请参阅[使用应用服务托管标识访问 Azure Key Vault](../general/managed-identity.md)。 
 
-不过，为了简单起见，本快速入门创建了一个需要使用服务主体和访问控制策略的桌面应用程序。 服务主体要求使用格式为“http://&lt;my-unique-service-principle-name&gt;”的唯一名称。
+不过，为了简单起见，本快速入门创建了一个需要使用服务主体和访问控制策略的桌面应用程序。 服务主体要求使用格式为“http://&lt;my-unique-service-principal-name&gt;”的唯一名称。
 
 使用 Azure CLI [az ad sp create-for-rbac](/cli/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) 命令创建服务主体：
 
 ```azurecli
-az ad sp create-for-rbac -n "http://&lt;my-unique-service-principle-name&gt;" --sdk-auth
+az ad sp create-for-rbac -n "http://&lt;my-unique-service-principal-name&gt;" --sdk-auth
 ```
 
 此操作将返回一系列键/值对。 

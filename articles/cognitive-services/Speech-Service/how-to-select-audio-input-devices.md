@@ -9,14 +9,15 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 07/05/2019
-ms.date: 01/13/2020
+ms.date: 08/03/2020
 ms.author: v-tawe
-ms.openlocfilehash: 85275a4af0d661e83ff05ac5770fe5243fa18f6e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 247662954578db983e6f7736a4d64615ef393358
+ms.sourcegitcommit: 3821704fee67315badba49cf628af2aa68d98f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75630981"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87516102"
 ---
 # <a name="how-to-select-an-audio-input-device-with-the-speech-sdk"></a>如何：使用语音 SDK 选择音频输入设备
 
@@ -384,7 +385,7 @@ iOS 不支持通过语音 SDK 来选择音频设备。 但是，使用 SDK 的�
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [浏览 GitHub 上的示例](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
+> [浏览 GitHub 上的示例](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>另请参阅
 

@@ -9,16 +9,16 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 origin.date: 04/14/2020
-ms.date: 06/19/2020
+ms.date: 08/03/2020
 ms.author: v-tawe
-ms.custom: tracking-python
+ms.custom: tracking-python, devx-track-javascript
 zone_pivot_groups: programming-languages-set-two-with-js
-ms.openlocfilehash: f3d00d636f897d3db681fb776977c879c94af187
-ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
+ms.openlocfilehash: af8487017214b70eac5844102df43a4f42a6806d
+ms.sourcegitcommit: 3821704fee67315badba49cf628af2aa68d98f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85613384"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87516109"
 ---
 # <a name="learn-the-basics-of-speech-synthesis"></a>了解语音合成的基础知识
 
@@ -30,8 +30,8 @@ ms.locfileid: "85613384"
 * 使用神经语音
 
 > [!TIP]
-> 如果你没有机会完成我们的快速入门之一，我们建议你进行尝试，自行试用语音识别。
-> * [识别来自麦克风的语音](quickstarts/text-to-speech.md)
+> 如果你没有机会完成我们的快速入门，我们建议你进行尝试，自行试用文本转语音功能。
+> * [将语音合成到扬声器](quickstarts/text-to-speech.md)
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# Basics include](includes/how-to/text-to-speech-basics/text-to-speech-basics-csharp.md)]
@@ -59,6 +59,5 @@ ms.locfileid: "85613384"
 
 ## <a name="next-steps"></a>后续步骤
 
-<!-- * [Get started with Custom Voice](how-to-custom-voice.md) -->
-
+* [自定义语音入门](how-to-custom-voice.md)
 * [通过 SSML 改进合成](speech-synthesis-markup.md)

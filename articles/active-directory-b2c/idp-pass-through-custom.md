@@ -3,20 +3,20 @@ title: 通过自定义策略将访问令牌传递给应用
 titleSuffix: Azure AD B2C
 description: 了解如何在 Azure Active Directory B2C 中通过自定义策略将 OAuth 2.0 标识提供者的访问令牌作为声明传递给应用程序。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 02/04/2020
+ms.topic: how-to
+ms.date: 07/27/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: ee84866e7357d2121d7eace9cbcc49d63ec4cd01
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a1aa2f769c550a06e6f1ee9b29e11f9100e7282f
+ms.sourcegitcommit: dd2bc914f6fc2309f122b1c7109e258ceaa7c868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77028171"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87297695"
 ---
 # <a name="pass-an-access-token-through-a-custom-policy-to-your-application-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略将访问令牌传递给应用程序
 
@@ -32,7 +32,7 @@ Azure AD B2C 支持传递 [OAuth 2.0](authorization-code-flow.md) 和 [OpenID Co
 
 1. 打开 *TrustframeworkExtensions.xml* 文件，向 **ClaimsSchema** 元素中添加标识符为 `identityProviderAccessToken` 的以下 **ClaimType** 元素：
 
-    ```XML
+    ```xml
     <BuildingBlocks>
       <ClaimsSchema>
         <ClaimType Id="identityProviderAccessToken">
@@ -50,7 +50,7 @@ Azure AD B2C 支持传递 [OAuth 2.0](authorization-code-flow.md) 和 [OpenID Co
 3. 保存 *TrustframeworkExtensions.xml* 文件。
 4. 打开你的信赖方策略文件，例如 *SignUpOrSignIn.xml*，向 **TechnicalProfile** 中添加 **OutputClaim** 元素：
 
-    ```XML
+    ```xml
     <RelyingParty>
       <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
       <TechnicalProfile Id="PolicyProfile">
@@ -93,4 +93,3 @@ Azure AD B2C 支持传递 [OAuth 2.0](authorization-code-flow.md) 和 [OpenID Co
 
 在 [Azure Active Directory B2C 令牌参考](tokens-overview.md)中了解有关令牌的更多信息。
 
-<!-- Update_Description: links update -->

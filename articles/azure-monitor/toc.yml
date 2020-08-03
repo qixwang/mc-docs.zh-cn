@@ -82,7 +82,7 @@
         - name: 日志数据引入时间
           displayname: latency
           href: platform/data-ingestion-time.md
-    - name: 洞察力
+    - name: 见解
       href: insights/insights-overview.md
     - name: 监视解决方案
       href: insights/solutions-inventory.md
@@ -185,7 +185,7 @@
                 - name: Spring Boot 应用
                   displayname: java
                   href: /java/azure/spring-framework/configure-spring-boot-java-applicationinsights
-                - name: 故障排除
+                - name: 疑难解答
                   href: app/java-troubleshoot.md
             - name: Node.js
               href: app/nodejs.md
@@ -196,7 +196,7 @@
                   href: app/opencensus-python.md
                 - name: 依赖项
                   href: app/opencensus-python-dependency.md
-                - name: Requests
+                - name: 请求
                   href: app/opencensus-python-request.md
             - name: 网页
               items:
@@ -408,7 +408,7 @@
               displayname: 'correlation, dependency, dependencies, track dependency, OWIN, queue, service bus, background tasks, long running background tasks, outgoing dependency tracking, parallel operations, System.Diagnostics.Activity, System.Diagnostics.DiagnosticSource, StartOperation, StopOperation'
             - name: 自定义电子邮件报告
               href: app/automate-custom-reports.md
-            - name: 例外
+            - name: 异常
               href: app/asp-net-exceptions.md
             - name: 日志跟踪
               href: app/asp-net-trace-logs.md
@@ -536,8 +536,6 @@
                       items:
                         - name: VM 规模集
                           href: platform/collect-custom-metrics-guestos-resource-manager-vmss.md
-                        - name: 云服务
-                          href: platform/collect-custom-metrics-guestos-vm-cloud-service-classic.md
                     - name: 发送到事件中心
                       href: platform/diagnostics-extension-stream-event-hubs.md
                     - name: 发送到日志
@@ -548,7 +546,7 @@
                       href: platform/diagnostics-extension-versions.md
                     - name: JSON Lines 资源日志格式
                       href: platform/diagnostic-logs-append-blobs.md
-                    - name: 疑难解答
+                    - name: 故障排除
                       href: platform/diagnostics-extension-troubleshooting.md
                 - name: Linux
                   displayname: diagnostics extension
@@ -808,7 +806,7 @@
               items:
                 - name: 访问控制
                   href: platform/workbooks-access-control.md
-                - name: 参数
+                - name: parameters
                   items:
                     - name: 参数摘要
                       href: platform/workbooks-parameters.md
@@ -950,7 +948,7 @@
               href: platform/autoscale-get-started.md
             - name: 配置设置
               href: platform/autoscale-understanding-settings.md
-            - name: 最佳实践
+            - name: 最佳做法
               href: platform/autoscale-best-practices.md
             - name: 常见指标
               href: platform/autoscale-common-metrics.md
@@ -998,7 +996,7 @@
               href: insights/solutions-resources-searches-alerts.md
             - name: 视图
               href: insights/solutions-resources-views.md
-            - name: 最佳实践
+            - name: 最佳做法
               href: insights/solutions-best-practices.md
 - name: 参考
   items:

@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 06/12/2020
 ms.author: v-tawe
 origin.date: 04/14/2020
-ms.openlocfilehash: 8e0d6119b87660810143a4b01486f895433e9f46
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.openlocfilehash: 8c62fea0db553bc851bf70db4a426d0674b0e39d
+ms.sourcegitcommit: 0e778acf5aa5eb63ab233e07e7aecce3a9a5e6d4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723785"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87298887"
 ---
 适用于 .NET 的人脸客户端库入门。 请按照以下步骤安装程序包并试用基本任务的示例代码。 通过人脸服务，可以访问用于检测和识别图像中的人脸的高级算法。
 
@@ -174,7 +174,7 @@ const string RECOGNITION_MODEL1 = RecognitionModel.Recognition01;
 
 ## <a name="detect-faces-in-an-image"></a>在图像中检测人脸
 
-将以下方法调用添加到 main**** 方法。 接下来将定义该方法。 最后的检测操作将使用 **[FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)** 对象、图像 URL 和识别模型。
+将以下方法调用添加到 main 方法。 接下来将定义该方法。 最后的检测操作将使用 **[FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)** 对象、图像 URL 和识别模型。
 
 ```csharp
 // Detect - get features from faces.
@@ -372,7 +372,7 @@ Console.WriteLine();
 
 ## <a name="identify-a-face"></a>识别人脸
 
-识别操作采用一个或多个人员的图像，并在图像中查找每个人脸的标识。 它将每个检测到的人脸与某个 **PersonGroup**（面部特征已知的不同 **Person** 对象的数据库）进行比较。 为了执行“识别”操作，你首先需要创建并训练 PersonGroup****
+识别操作采用一个或多个人员的图像，并在图像中查找每个人脸的标识。 它将每个检测到的人脸与某个 **PersonGroup**（面部特征已知的不同 **Person** 对象的数据库）进行比较。 为了执行“识别”操作，你首先需要创建并训练 PersonGroup
 
 ### <a name="create-and-train-a-person-group"></a>创建和训练人员组
 
@@ -468,7 +468,7 @@ List<DetectedFace> detectedFaces = await DetectFaceRecognize(client, $"{url}{sou
 foreach (var detectedFace in detectedFaces) { sourceFaceIds.Add(detectedFace.FaceId.Value); }
 ```
 
-下一代码片段将调用 IdentifyAsync**** 操作，并将结果输出到控制台。 此处，服务会尝试将源图像中的每个人脸与给定 **PersonGroup** 中的某个 **Person** 进行匹配。 Identify 方法就此结束。
+下一代码片段将调用 IdentifyAsync 操作，并将结果输出到控制台。 此处，服务会尝试将源图像中的每个人脸与给定 **PersonGroup** 中的某个 **Person** 进行匹配。 Identify 方法就此结束。
 
 ```csharp
 // Identify the faces in a person group. 
@@ -539,7 +539,7 @@ IFaceClient clientTarget = Authenticate(TARGET_ENDPOINT, TARGET_SUBSCRIPTION_KEY
     ```csharp
         /*
      * SNAPSHOT OPERATIONS
-     * Copies a person group from one Azure region (or subscription) to another. For example: from the EastUS region to the WestUS.
+     * Copies a person group from one Azure region (or subscription) to another. For example: from the ChinaEast2 region to the WestUS.
      * The same process can be used for face lists. 
      * NOTE: the person group in the target region has a new person group ID, so it no longer associates with the source person group.
      */
@@ -632,7 +632,7 @@ dotnet run
 
 如果想要清理并删除认知服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。
 
-* [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [门户](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 如果你在本快速入门中创建了 **PersonGroup** 并想要删除它，请在程序中运行以下代码：

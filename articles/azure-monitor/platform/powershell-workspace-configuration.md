@@ -1,48 +1,54 @@
 ---
-title: 使用 PowerShell 创建和配置 Log Analytics 工作区 | Azure Docs
-description: Azure Monitor 中的 Log Analytics 工作区存储来自本地或云基础结构中的服务器的数据。 当由 Azure 诊断生成时，可从 Azure 存储收集计算机数据。
-author: lingliw
+title: 使用 PowerShell 创建和配置 Log Analytics
+description: Azure Monitor 中的 Log Analytics 工具区会将服务器中的数据存储在本地或云基础结构。 当由 Azure 诊断生成时，可从 Azure 存储收集计算机数据。
 ms.subservice: logs
 ms.topic: conceptual
+author: Johnnytechn
+ms.author: v-johya
+ms.date: 07/17/2020
 origin.date: 05/19/2019
-ms.date: 06/19/2019
-ms.author: v-lingwu
-ms.openlocfilehash: b8bb130dbe3481c0caa31e02c8d6226984134eb0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 7ab3a4edbf0917a2da598955b2f1f544aad06102
+ms.sourcegitcommit: b5794af488a336d84ee586965dabd6f45fd5ec6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79452412"
+ms.lasthandoff: 08/01/2020
+ms.locfileid: "87508427"
 ---
-# <a name="manage-log-analytics-workspace-in-azure-monitor-using-powershell"></a>使用 PowerShell 管理 Azure Monitor 中的 Log Analytics 工作区
+# <a name="create-and-configure-a-log-analytics-workspace-in-azure-monitor-using-powershell"></a>使用 PowerShell 在 Azure Monitor 中创建和配置 Log Analytics 工作区
+本文提供两个代码示例，它们展示了如何在 Azure Monitor 中创建和配置 Log Analytics 工作区。  
 
-可使用 [Log Analytics PowerShell cmdlet](https://docs.microsoft.com/powershell/module/az.operationalinsights/) 从命令行或作为脚本的一部分在 Azure Monitor 的 Log Analytics 工作区中执行各种函数。  可使用 PowerShell 执行的任务示例包括：
-
-* 创建工作区
-* 添加或删除解决方案
-* 导入和导出保存的搜索
-* 创建计算机组
-* 从装有 Windows 代理的计算机启用 IIS 日志收集
-* 从 Linux 和 Windows 计算机中收集性能计数器
-* 从 Linux 计算机的 syslog 中收集事件
-* 从 Windows 事件日志中收集事件
-* 收集自定义事件日志
-* 将日志分析代理添加到 Azure 虚拟机
-* 配置 Log Analytics 以便为使用 Azure 诊断收集的数据编制索引
-
-本文提供两个代码示例，用于演示一些可从 PowerShell 执行的函数。  有关其他函数，可以参阅 [Log Analytics PowerShell cmdlet 参考](https://docs.microsoft.com/powershell/module/az.operationalinsights/)。
 
 > [!NOTE]
 > Log Analytics 之前称为 Operational Insights，这就是在 cmdlet 中使用此名称的原因。
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备条件
-这些示例适用于 Az.OperationalInsights 模块 1.0.0 或更高版本。
+## <a name="prerequisites"></a>先决条件
+这些示例适用于 Az.OperationalInsights 模板 1.0.0 版或更高版本。
 
+## <a name="create-workspace"></a>创建工作区
+下面的示例脚本会创建一个未配置任何数据源的工作区。 
 
-## <a name="create-and-configure-a-log-analytics-workspace"></a>创建和配置 Log Analytics 工作区
-以下脚本示例演示了如何：
+```powershell
+$ResourceGroup = "my-resource-group"
+$WorkspaceName = "log-analytics-" + (Get-Random -Maximum 99999) # workspace names need to be unique across all Azure subscriptions - Get-Random helps with this for the example code
+$Location = "chinaeast2"
+
+# Create the resource group if needed
+try {
+    Get-AzResourceGroup -Name $ResourceGroup -ErrorAction Stop
+} catch {
+    New-AzResourceGroup -Name $ResourceGroup -Location $Location
+}
+
+# Create the workspace
+New-AzOperationalInsightsWorkspace -Location $Location -Name $WorkspaceName -Sku Standard -ResourceGroupName $ResourceGroup
+```
+
+## <a name="create-workspace-and-configure-data-sources"></a>创建工作区并配置数据源
+
+下面的示例脚本会创建一个工作区并配置多个数据源。 仅在使用 [Log Analytics 代理](log-analytics-agent.md)监视虚拟机时才需要这些数据源。
+
+此脚本可执行以下功能：
 
 1. 创建工作区
 2. 列出可用解决方案
@@ -58,10 +64,19 @@ ms.locfileid: "79452412"
 12. 收集自定义日志
 
 ```powershell
-
-$ResourceGroup = "oms-example"
+$ResourceGroup = "my-resource-group"
 $WorkspaceName = "log-analytics-" + (Get-Random -Maximum 99999) # workspace names need to be unique across all Azure subscriptions - Get-Random helps with this for the example code
-$Location = "China East"
+$Location = "chinaeast2"
+
+# Create the resource group if needed
+try {
+    Get-AzResourceGroup -Name $ResourceGroup -ErrorAction Stop
+} catch {
+    New-AzResourceGroup -Name $ResourceGroup -Location $Location
+}
+
+# Create the workspace
+New-AzOperationalInsightsWorkspace -Location $Location -Name $WorkspaceName -Sku Standard -ResourceGroupName $ResourceGroup
 
 # List of solutions to enable
 $Solutions = "Security", "Updates", "SQLAssessment"
@@ -159,7 +174,7 @@ New-AzOperationalInsightsComputerGroup -ResourceGroupName $ResourceGroup -Worksp
 Enable-AzOperationalInsightsIISLogCollection -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName
 
 # Linux Perf
-New-AzOperationalInsightsLinuxPerformanceObjectDataSource -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -ObjectName "Logical Disk" -InstanceName "*"  -CounterNames @("% Used Inodes", "Free Megabytes", "% Used Space", "Disk Transfers/sec", "Disk Reads/sec", "Disk Reads/sec", "Disk Writes/sec") -IntervalSeconds 20  -Name "Example Linux Disk Performance Counters"
+New-AzOperationalInsightsLinuxPerformanceObjectDataSource -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -ObjectName "Logical Disk" -InstanceName "*"  -CounterNames @("% Used Inodes", "Free Megabytes", "% Used Space", "Disk Transfers/sec", "Disk Reads/sec", "Disk Writes/sec") -IntervalSeconds 20  -Name "Example Linux Disk Performance Counters"
 Enable-AzOperationalInsightsLinuxPerformanceCollection -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName
 
 # Linux Syslog
@@ -177,6 +192,10 @@ New-AzOperationalInsightsWindowsPerformanceCounterDataSource -ResourceGroupName 
 New-AzOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -CustomLogRawJson "$CustomLog" -Name "Example Custom Log Collection"
 
 ```
+
+> [!NOTE]
+> 为自定义日志定义配置的 CustomLogRawJson 的格式可能很复杂。 使用 [Get-AzOperationalInsightsDataSource](https://docs.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightsdatasource?view=azps-3.2.0) 检索现有自定义日志的配置。 Properties 属性是 CustomLogRawJson 参数的必需配置 。
+
 在上面的示例中，regexDelimiter 定义为“\\n”表示换行符。 日志分隔符也可能是时间戳。  以下是支持的格式：
 
 | 格式 | Json 正则表达式格式使用两个 \\ 表示标准正则表达式中的每个 \，因此，如果在正则表达式应用中测试，请将 \\ 减少为 \ | | |
@@ -193,87 +212,13 @@ New-AzOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -
 | `dd/MMM/yyyy:HH:mm:ss +zzzz` <br> 其中 + 是 + 或 - <br> 其中 zzzz 是时间偏移量 | `(([0-2][1-9]|[3][0-1])\\/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\/((19|20)[0-9][0-9]):([0][0-9]|[1][0-2]):([0-5][0-9]):([0-5][0-9])\\s[\\+|\\-][0-9]{4})` | | |
 | `yyyy-MM-ddTHH:mm:ss` <br> T 是文字字母 T | `((\\d{2})|(\\d{4}))-([0-1]\\d)-(([0-3]\\d)|(\\d))T((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9]` | | |
 
-## <a name="configuring-log-analytics-to-send-azure-diagnostics"></a>将 Log Analytics 配置为发送 Azure 诊断
-要对 Azure 资源进行无代理监视，则需要为资源启用 Azure 诊断，并将其配置为写入到 Log Analytics 工作区。 此方法将数据直接发送到工作区并且不要求将数据写入到存储帐户。 支持的资源包括：
-
-| 资源类型 | 日志 | 度量值 |
-| --- | --- | --- |
-| 应用程序网关    | 是 | 是 |
-| 自动化帐户     | 是 | |
-| 批处理帐户          | 是 | 是 |
-| Data Lake Analytics     | 是 | |
-| Data Lake Store         | 是 | |
-| SQL 弹性池        |     | 是 |
-| 事件中心命名空间     |     | 是 |
-| IoT 中心                |     | 是 |
-| Key Vault               | 是 | |
-| 负载均衡器          | 是 | |
-| 逻辑应用              | 是 | 是 |
-| 网络安全组 | 是 | |
-| 用于 Redis 的 Azure 缓存             |     | 是 |
-| 搜索服务         | 是 | 是 |
-| 服务总线命名空间   |     | 是 |
-| SQL (v12)               |     | 是 |
-| 网站               |     | 是 |
-| Web 服务器场        |     | 是 |
-
-有关可用指标的详细信息，请参阅 [Azure 监视器支持的指标](../../azure-monitor/platform/metrics-supported.md)。
-
-有关可用日志的详细信息，请参阅[资源日志支持的服务和架构](../../azure-monitor/platform/diagnostic-logs-schema.md)。
-
-```powershell
-$workspaceId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/resourcegroups/oi-default-east-china/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
-
-$resourceId = "/SUBSCRIPTIONS/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/RESOURCEGROUPS/DEMO/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/DEMO"
-
-Set-AzDiagnosticSetting -ResourceId $resourceId -WorkspaceId $workspaceId -Enabled $true
-```
-
-还可以使用前面的 cmdlet 从不同订阅中的资源收集日志。 该 cmdlet 能够跨订阅工作，你同时提供创建日志的资源的 ID 和日志发送到的工作区的 ID。
-
-
-## <a name="configuring-log-analytics-workspace-to-collect-azure-diagnostics-from-storage"></a>配置 Log Analytics 工作区，以便收集存储中的 Azure 诊断信息
-要从正在运行的经典云服务或 service fabric 群集实例内收集日志数据，需要首先将数据写入到 Azure 存储。 然后，Log Analytics 工作区将配置为从存储帐户收集日志。 支持的资源包括：
-
-* 经典云服务（Web 和辅助角色）
-* Service Fabric 群集
-
-以下示例介绍如何：
-
-1. 列出工作区将为其中的数据编制索引的现有存储帐户和位置
-2. 创建配置以从存储帐户读取
-3. 更新新创建的配置以为来自其他位置的数据编制索引
-4. 删除新创建的配置
-
-```powershell
-# validTables = "WADWindowsEventLogsTable", "LinuxsyslogVer2v0", "WADServiceFabric*EventTable", "WADETWEventTable"
-$workspace = (Get-AzOperationalInsightsWorkspace).Where({$_.Name -eq "your workspace name"})
-
-# Update these two lines with the storage account resource ID and the storage account key for the storage account you want the workspace to index
-$storageId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/resourceGroups/demo/providers/Microsoft.Storage/storageAccounts/wadv2storage"
-$key = "abcd=="
-
-# List existing insights
-Get-AzOperationalInsightsStorageInsight -ResourceGroupName $workspace.ResourceGroupName -WorkspaceName $workspace.Name
-
-# Create a new insight
-New-AzOperationalInsightsStorageInsight -ResourceGroupName $workspace.ResourceGroupName -WorkspaceName $workspace.Name -Name "newinsight" -StorageAccountResourceId $storageId -StorageAccountKey $key -Tables @("WADWindowsEventLogsTable") -Containers @("wad-iis-logfiles")
-
-# Update existing insight
-Set-AzOperationalInsightsStorageInsight -ResourceGroupName $workspace.ResourceGroupName -WorkspaceName $workspace.Name -Name "newinsight" -Tables @("WADWindowsEventLogsTable", "WADETWEventTable") -Containers @("wad-iis-logfiles")
-
-# Remove the insight
-Remove-AzOperationalInsightsStorageInsight -ResourceGroupName $workspace.ResourceGroupName -WorkspaceName $workspace.Name -Name "newinsight"
-
-```
-
-还可以使用前面的脚本从不同订阅中的存储帐户收集日志。 该脚本能够跨订阅工作，你同时提供存储帐户资源 ID 和对应的访问密钥。 当更改了访问密钥时，需要更新存储见解以采用新密钥。
+## <a name="troubleshooting"></a>疑难解答
+如果创建了一个工作区，该工作区已在过去 14 天内删除且处于[软删除状态](/azure-monitor/platform/delete-workspace#soft-delete-behavior)，那么该操作可能会有不同的结果，具体取决于你的工作区配置：
+1. 如果你提供的工作区名称、资源组、订阅和区域与已删除的工作区中的相同，则将恢复你的工作区，包括其数据、配置和连接的代理。
+<!--Not available in MC: Permanently delete-->
 
 
 ## <a name="next-steps"></a>后续步骤
 * 有关使用 Log Analytics 的 PowerShell 配置的其他信息，请[查看 Log Analytics PowerShell cmdlet](https://docs.microsoft.com/powershell/module/az.operationalinsights/)。
-
-
-
 
 

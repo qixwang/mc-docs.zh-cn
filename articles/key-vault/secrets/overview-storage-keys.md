@@ -9,17 +9,17 @@ author: msmbaldwin
 ms.author: v-tawe
 manager: rkarlin
 origin.date: 09/18/2019
-ms.date: 06/02/2020
-ms.openlocfilehash: 15597d99b1f0939944e5613249bbeb28b23eb2a2
-ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
+ms.date: 07/28/2020
+ms.openlocfilehash: 4edddbe10ad2164e598142df8ba3e699609ac0ab
+ms.sourcegitcommit: 0e778acf5aa5eb63ab233e07e7aecce3a9a5e6d4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84275434"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87296508"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>使用 Key Vault 和 Azure CLI 管理存储帐户密钥
 
-Azure 存储帐户使用由帐户名和密钥构成的凭据。 密钥是自动生成的，充当密码而不是加密密钥。 Key Vault 可以通过将存储帐户密钥存储为 Key Vault 机密来对其进行管理。 
+Azure 存储帐户使用由帐户名和密钥构成的凭据。 密钥是自动生成的，充当密码而不是加密密钥。 Key Vault 通过在存储帐户中定期重新生成存储帐户密钥来管理存储帐户密钥，并提供共享访问签名令牌，以便对存储帐户中的资源进行委托访问。
 
 可以使用 Key Vault 托管的存储帐户密钥功能列出（同步） Azure 存储帐户中的密钥，并定期重新生成（轮换）密钥。 可以管理存储帐户和经典存储帐户的密钥。
 
@@ -66,6 +66,7 @@ az cloud set -n AzureChinaCloud
 az login
 ``` 
 
+<!-- no need change the --assignee-object-id 0 -->
 ### <a name="give-key-vault-access-to-your-storage-account"></a>向 Key Vault 授予对你的存储帐户的访问权限
 
 使用 Azure CLI [az role assignment create](/cli/role/assignment?view=azure-cli-latest) 命令授予 Key Vault 访问你的存储帐户的权限。 为该命令提供以下参数值：

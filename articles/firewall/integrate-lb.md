@@ -4,16 +4,18 @@ description: 可将 Azure 防火墙集成到使用 Azure 标准负载均衡器�
 services: firewall
 author: rockboyfor
 ms.service: firewall
-ms.topic: article
+ms.topic: how-to
 origin.date: 02/28/2020
-ms.date: 04/06/2020
+ms.date: 08/03/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: bb3f8e01cfdf960673e0ba4decd56043d7edf1a9
-ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
+ms.openlocfilehash: a6cba98221620303839d60e2318407c2bc26ff21
+ms.sourcegitcommit: 362814dc7ac5b56cf0237b9016a67c35d8d72c32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82093462"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87455587"
 ---
 # <a name="integrate-azure-firewall-with-azure-standard-load-balancer"></a>将 Azure 防火墙与 Azure 标准负载均衡器相集成
 

@@ -8,15 +8,15 @@ ms.topic: quickstart
 origin.date: 04/14/2020
 ms.date: 07/13/2020
 ms.testscope: no
-ms.testdate: 05/06/2020
+ms.testdate: 08/03/2020
 ms.author: v-yeche
 ms.custom: subject-armqs
-ms.openlocfilehash: 9ac70fce9dc2d31cf0a85bdc6a12636d08eb54ea
-ms.sourcegitcommit: 9bc3e55f01e0999f05e7b4ebaea95f3ac91d32eb
+ms.openlocfilehash: 16e8f0b9e0b9beabeaeaf7e6351d4d6c2c77b9a4
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86226098"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426538"
 ---
 <!--Verified successfully-->
 # <a name="quickstart-create-a-server---azure-resource-manager-template"></a>快速入门：创建服务器 - Azure 资源管理器模板
@@ -28,7 +28,7 @@ ms.locfileid: "86226098"
 ## <a name="prerequisites"></a>先决条件
 
 * **Azure 订阅**：访问 [Azure 试用版](https://www.azure.cn/pricing/1rmb-trial-full)来创建一个帐户。
-* **Azure Active Directory**：订阅必须与 Azure Active Directory 租户相关联。 并且，需要使用该 Azure Active Directory 中的一个帐户登录 Azure。 若要了解详细信息，请参阅[身份验证和用户权限](analysis-services-manage-users.md)。
+* **Azure Active Directory**：订阅必须与 Azure Active Directory 租户相关联。 并且，需要使用 Azure Active Directory 中的一个帐户登录 Azure。 若要了解详细信息，请参阅[身份验证和用户权限](analysis-services-manage-users.md)。
 
 ## <a name="create-a-server"></a>创建服务器
 
@@ -130,11 +130,11 @@ ms.locfileid: "86226098"
 
     除非另行指定，否则请使用默认值。
 
-    * **订阅**：选择 Azure 订阅。
-    * **资源组**：单击“新建”，然后为新资源组输入唯一名称。
-    * **位置**：为在资源组中创建的资源选择一个默认位置。
+    * 订阅：选择 Azure 订阅。
+    * 资源组：单击“新建”，然后为新资源组输入唯一名称。
+    * 位置：为在资源组中创建的资源选择一个默认位置。
     * **服务器名称**：为服务器资源输入一个名称。 
-    * **位置**：对于 Analysis Services，请忽略此项。 位置在“服务器位置”中指定。
+    * 位置：对于 Analysis Services，请忽略此项。 位置在“服务器位置”中指定。
     * **服务器位置**：输入 Analysis Services 服务器的位置。 这通常是为资源组指定的默认位置所在的区域，但不是必需的。 例如，“中国北部”。 有关支持的区域，请参阅 [Analysis Services 可用性（按区域）](analysis-services-overview.md#availability-by-region)。
     * **Sku 名称**：输入要创建的 Analysis Services 服务器的 Sku 名称。 从下列项中进行选择：B1、B2、S0、S1、S2、S3、S4、S8v2、S9v2。 Sku 可用性取决于区域。 对于评估和测试，建议使用 S0。
         

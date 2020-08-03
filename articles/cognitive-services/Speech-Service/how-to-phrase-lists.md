@@ -9,15 +9,16 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 02/04/2020
-ms.date: 04/20/2020
+ms.date: 08/03/2020
 ms.author: v-tawe
-zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 78519bf1d3bbb2c815e70fc280f00ff3245af09f
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+zone_pivot_groups: programming-languages-speech-services-one-nomore-no-go
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 01fb366d3c276f84de48bcfce2898443b6baa5f2
+ms.sourcegitcommit: 3821704fee67315badba49cf628af2aa68d98f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82127054"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87516104"
 ---
 # <a name="phrase-lists-for-speech-to-text"></a>语音转文本的短语列表
 
@@ -78,7 +79,7 @@ phrase_list_grammar.addPhrase("Move to Ted")
 
 ::: zone-end
 
-::: zone pivot="programming-language-more"
+::: zone pivot="programming-language-javascript"
 
 ```JavaScript
 var phraseListGrammar = SpeechSDK.PhraseListGrammar.fromRecognizer(reco);
@@ -126,7 +127,7 @@ phrase_list_grammar.clear()
 
 ::: zone-end
 
-::: zone pivot="programming-language-more"
+::: zone pivot="programming-language-javascript"
 
 ```JavaScript
 phraseListGrammar.clear();

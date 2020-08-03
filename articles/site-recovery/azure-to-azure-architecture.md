@@ -7,14 +7,16 @@ manager: digimobile
 ms.service: site-recovery
 ms.topic: conceptual
 origin.date: 03/13/2020
-ms.date: 06/08/2020
+ms.date: 08/03/2020
+ms.testscope: no
+ms.testdate: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: 64e736575a70a56aba2543789b5ebae09d599ff3
-ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
+ms.openlocfilehash: f13aa38dc2a688cc33ed099847bd11f11bb9fc51
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84440676"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426473"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure 到 Azure 的灾难恢复体系结构
 
@@ -32,7 +34,7 @@ ms.locfileid: "84440676"
 **缓存存储帐户** | 源网络中需要一个缓存存储帐户。 在复制期间，VM 更改将存储在缓存中，然后再发送到目标存储。  缓存存储帐户必须是标准存储帐户。<br/><br/> 使用缓存可确保尽量减少对 VM 上运行的生产应用程序造成的影响。<br/><br/> [详细了解](azure-to-azure-support-matrix.md#cache-storage)缓存存储要求。 
 **目标资源** | 在复制期间以及发生故障转移时将使用目标资源。 Site Recovery 默认可以设置目标资源，你也可以自行创建/自定义目标资源。<br/><br/> 在目标区域中，请检查是否能够创建 VM，以及你的订阅是否有足够的资源用于支持目标区域中所需的 VM 大小。 
 
-![源和目标复制](./media/concepts-azure-to-azure-architecture/enable-replication-step-1.png)
+![源和目标复制](./media/concepts-azure-to-azure-architecture/enable-replication-step-1-v2.png)
 
 ## <a name="target-resources"></a>目标资源
 
@@ -56,7 +58,7 @@ ms.locfileid: "84440676"
 - 启用复制时可以修改目标设置。
 - 已开始复制后可以修改目标设置。 请注意，目标区域 VM 的默认 SKU 与源 VM 的 SKU（或仅次于源 VM SKU 的最佳可用 SKU）相同。 与目标资源组、目标名称和其他资源类似，目标区域 VM SKU 也可以在复制期间进行更新。 可用性类型（单一实例或集）是无法更新的资源。 若要更改此设置，需要禁用复制、修改设置，然后重新启用复制。 
 
-    <!--Not Availabl on or zone-->
+<!--Not Availabl on or zone-->
     
 ## <a name="replication-policy"></a>复制策略 
 
@@ -114,7 +116,7 @@ Site Recovery 按如下所述创建快照：
 4. Site Recovery 处理缓存中的数据，并将其发送到目标存储帐户或副本托管磁盘。
 5. 处理数据后，每隔五分钟生成崩溃一致性恢复点。 根据复制策略中指定的设置生成应用一致性恢复点。
 
-    ![启用复制过程，步骤 2](./media/concepts-azure-to-azure-architecture/enable-replication-step-2.png)
+    ![启用复制过程，步骤 2](./media/concepts-azure-to-azure-architecture/enable-replication-step-2-v2.png)
 
 **复制过程**
 
@@ -190,7 +192,7 @@ Site Recovery 按如下所述创建快照：
 
 如果启动故障转移，系统会在目标资源组、目标虚拟网络、目标子网和目标可用性集中创建 VM。 可在故障转移过程中使用任意恢复点。
 
-![故障转移过程](./media/concepts-azure-to-azure-architecture/failover.png)
+![故障转移过程](./media/concepts-azure-to-azure-architecture/failover-v2.png)
 
 ## <a name="next-steps"></a>后续步骤
 

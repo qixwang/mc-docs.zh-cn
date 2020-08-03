@@ -3,20 +3,20 @@ title: 使用 OpenID Connect 设置注册和登录
 titleSuffix: Azure AD B2C
 description: 在 Azure Active Directory B2C 中使用任何 OpenID Connect 标识提供者 (IdP) 设置注册和登录。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 02/04/2020
+ms.topic: how-to
+ms.date: 07/27/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 597be627d2f9edfe7efc8631aee9fd37e4f6c268
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a61bcd6dcf7f212b43bdf6dcdb9faddd849e0188
+ms.sourcegitcommit: dd2bc914f6fc2309f122b1c7109e258ceaa7c868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77028343"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87297692"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-openid-connect-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过 OpenID Connect 注册与登录
 
@@ -31,7 +31,7 @@ ms.locfileid: "77028343"
 
 ## <a name="configure-the-identity-provider"></a>配置标识提供者
 
-每个 OpenID Connect 标识提供者都描述一个元数据文档，该文档包含了登录所需的大部分信息。 这些信息包括要使用的 URL 以及服务公共签名密钥的位置。 OpenID Connect 元数据文档始终位于以 `.well-known\openid-configuration` 结尾的的终结点上。 输入想要添加的 OpenID Connect 标识提供者的元数据 URL。
+每个 OpenID Connect 标识提供者都描述一个元数据文档，该文档包含了登录所需的大部分信息。 这些信息包括要使用的 URL 以及服务公共签名密钥的位置。 OpenID Connect 元数据文档始终位于以 `.well-known/openid-configuration` 结尾的的终结点上。 输入想要添加的 OpenID Connect 标识提供者的元数据 URL。
 
 ## <a name="client-id-and-secret"></a>客户端 ID 和密码
 

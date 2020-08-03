@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-origin.date: 02/10/2020
-ms.date: 06/19/2019
+origin.date: 06/25/2020
+ms.date: 07/29/2020
 ms.author: v-tawe
-ms.openlocfilehash: 5d29972943195a76cd1d0c1c9a4d18e693dab306
-ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
+ms.openlocfilehash: 6b073e889e369d8a43d28e004529929294818118
+ms.sourcegitcommit: 5d167ad5411b018522a0fac9f5435a48f4ceb3a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85706594"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87378159"
 ---
 # <a name="quickstart-test-a-model-using-an-audio-file-in-speech-studio"></a>快速入门：在 Speech Studio 中使用音频文件测试模型
 

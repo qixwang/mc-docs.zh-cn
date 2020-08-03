@@ -8,12 +8,12 @@ origin.date: 01/29/2019
 ms.date: 08/29/2019
 ms.author: v-lingwu
 ms.subservice: ''
-ms.openlocfilehash: 4db8f52159b00fa53a1d1f3f1ea7a0efd5f74ba6
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c07562a0265b81cd5a8d9334ad5ec7989fa153b1
+ms.sourcegitcommit: b5794af488a336d84ee586965dabd6f45fd5ec6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79452558"
+ms.lasthandoff: 08/01/2020
+ms.locfileid: "87508460"
 ---
 # <a name="metric-chart-examples"></a>指标图表示例 
 
@@ -53,5 +53,6 @@ Azure 平台提供了[一千多个指标](/azure-monitor/platform/metrics-suppor
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解有关 Azure Monitor [工作簿](../../azure-monitor/app/usage-workbooks.md)的信息
+* 了解有关 Azure Monitor [工作簿](../../azure-monitor/platform/workbooks-overview.md)的信息
 * 详细了解[指标资源管理器](metrics-charts.md)
+

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 05/18/2020
+ms.date: 07/27/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 13b7f86e4c9190ff80fd393911028c3380ffba34
-ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
+ms.openlocfilehash: c8c222fcfbdffcc6e80461b37d84d7b7973646c8
+ms.sourcegitcommit: dd2bc914f6fc2309f122b1c7109e258ceaa7c868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83748085"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87297701"
 ---
 # <a name="json-claims-transformations"></a>JSON 声明转换
 
@@ -36,7 +36,7 @@ ms.locfileid: "83748085"
 
 以下示例基于“email”和“otp”的声明值以及常量字符串生成 JSON 字符串。
 
-```XML
+```xml
 <ClaimsTransformation Id="GenerateRequestBody" TransformationMethod="GenerateJson">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="personalizations.0.to.0.email" />
@@ -67,7 +67,7 @@ ms.locfileid: "83748085"
 - 输出声明：
   - **requestBody**:JSON 值
 
-```JSON
+```json
 {
   "personalizations": [
     {
@@ -102,7 +102,7 @@ ms.locfileid: "83748085"
 
 在以下示例中，声明转换提取 JSON 数据中的 `emailAddress` 元素：`{"emailAddress": "someone@example.com", "displayName": "Someone"}`
 
-```XML
+```xml
 <ClaimsTransformation Id="GetEmailClaimFromJson" TransformationMethod="GetClaimFromJson">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="customUserData" TransformationClaimType="inputJson" />
@@ -141,11 +141,11 @@ ms.locfileid: "83748085"
 
 在以下示例中，声明转换从 JSON 数据中提取以下声明：email（字符串）、displayName（字符串）、membershipNum (int)、active（布尔值）和 birthdate（日期时间）。
 
-```JSON
+```json
 [{"key":"email","value":"someone@example.com"}, {"key":"displayName","value":"Someone"}, {"key":"membershipNum","value":6353399}, {"key":"active","value":true}, {"key":"birthdate","value":"1980-09-23T00:00:00Z"}]
 ```
 
-```XML
+```xml
 <ClaimsTransformation Id="GetClaimsFromJson" TransformationMethod="GetClaimsFromJsonArray">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="jsonSourceClaim" TransformationClaimType="jsonSource" />
@@ -192,7 +192,7 @@ ms.locfileid: "83748085"
 
 在以下示例中，声明转换提取 JSON 数据中的 `id` 元素。
 
-```JSON
+```json
 {
     "emailAddress": "someone@example.com",
     "displayName": "Someone",
@@ -200,7 +200,7 @@ ms.locfileid: "83748085"
 }
 ```
 
-```XML
+```xml
 <ClaimsTransformation Id="GetIdFromResponse" TransformationMethod="GetNumericClaimFromJson">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="exampleInputClaim" TransformationClaimType="inputJson" />
@@ -235,7 +235,7 @@ ms.locfileid: "83748085"
 
 在下面的示例中，声明转换从 JSON 数据中提取第一个元素（名字）。
 
-```XML
+```xml
 <ClaimsTransformation Id="GetGivenNameFromResponse" TransformationMethod="GetSingleItemFromJson">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="json" TransformationClaimType="inputJson" />
@@ -267,7 +267,7 @@ ms.locfileid: "83748085"
 
 在以下示例中，声明转换提取 JSON 数组 `["someone@example.com", "Someone", 6353399]` 中的第一个元素（电子邮件地址）。
 
-```XML
+```xml
 <ClaimsTransformation Id="GetEmailFromJson" TransformationMethod="GetSingleValueFromJsonArray">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="userData" TransformationClaimType="inputJsonClaim" />
@@ -294,7 +294,7 @@ ms.locfileid: "83748085"
 | InputClaim | xml | string | 由声明转换用于将数据从 XML 转换为 JSON 格式的 ClaimTypes。 |
 | OutputClaim | json | string | 调用此 ClaimsTransformation 后生成的 ClaimType，即采用 JSON 格式的数据。 |
 
-```XML
+```xml
 <ClaimsTransformation Id="ConvertXmlToJson" TransformationMethod="XmlStringToJsonString">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="intpuXML" TransformationClaimType="xml" />
@@ -310,7 +310,7 @@ ms.locfileid: "83748085"
 #### <a name="example"></a>示例
 输入声明：
 
-```XML
+```xml
 <user>
   <name>Someone</name>
   <email>someone@example.com</email>
@@ -319,7 +319,7 @@ ms.locfileid: "83748085"
 
 输出声明：
 
-```JSON
+```json
 {
   "user": {
     "name":"Someone",

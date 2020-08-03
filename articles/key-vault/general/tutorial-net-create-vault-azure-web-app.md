@@ -10,12 +10,12 @@ ms.topic: tutorial
 origin.date: 05/06/2020
 ms.date: 06/02/2020
 ms.author: v-tawe
-ms.openlocfilehash: 37ec17e152718b95e90638f9a83ab442aeba5ef1
-ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
+ms.openlocfilehash: 3b8ae60ad33242899a1c40c45210ef7aa7c20180
+ms.sourcegitcommit: 0e778acf5aa5eb63ab233e07e7aecce3a9a5e6d4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84275538"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87296525"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-with-net"></a>教程：使用托管标识将 Key Vault 连接到 .NET Azure Web 应用
 
@@ -36,7 +36,7 @@ ms.locfileid: "84275538"
 资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用 [az group create](/cli/group?view=azure-cli-latest#az-group-create) 命令创建一个资源组，用于存放密钥保管库和 Web 应用：
 
 ```azurecli
-az group create --name "myResourceGroup" -l "EastUS"
+az group create --name "myResourceGroup" -l "ChinaEast"
 ```
 
 ## <a name="set-up-your-key-vault"></a>设置密钥保管库

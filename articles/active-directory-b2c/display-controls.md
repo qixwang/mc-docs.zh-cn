@@ -3,20 +3,20 @@ title: 显示控件参考
 titleSuffix: Azure AD B2C
 description: Azure AD B2C 显示控件参考。 使用显示控件自定义你的自定义策略中定义的用户旅程。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/20/2020
+ms.date: 07/27/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: d83dec354457054a40d50bd35116221cd944a128
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5cbdd080bae4a36ddc8f81524563f9f2c22da5dc
+ms.sourcegitcommit: dd2bc914f6fc2309f122b1c7109e258ceaa7c868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77531306"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87297676"
 ---
 # <a name="display-controls"></a>显示控件
 
@@ -34,7 +34,7 @@ ms.locfileid: "77531306"
 
  在[自断言技术配置文件](self-asserted-technical-profile.md)的[元数据](self-asserted-technical-profile.md#metadata)部分中，引用的 [ContentDefinition](contentdefinitions.md) 需要将 `DataUri` 设置为页面协定版本2.0.0 或更高版本。 例如：
 
-```XML
+```xml
 <ContentDefinition Id="api.selfasserted">
   <LoadUri>~/tenant/default/selfAsserted.cshtml</LoadUri>
   <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
@@ -66,7 +66,7 @@ ms.locfileid: "77531306"
 
 以下示例使用已存在的地址预填充要验证的电子邮件地址。
 
-```XML
+```xml
 <DisplayControl Id="emailControl" UserInterfaceControlType="VerificationControl">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="emailAddress" />
@@ -82,7 +82,7 @@ ms.locfileid: "77531306"
 
 某些显示声明是某些类型的显示控件所必需的。 例如，**VerificationCode** 是 **VerificationControl** 类型的显示控件所必需的。 请使用 **ControlClaimType** 属性指定为该必需声明指定了哪个 DisplayClaim。 例如：
 
-```XML
+```xml
 <DisplayClaim ClaimTypeReferenceId="otpCode" ControlClaimType="VerificationCode" Required="true" />
 ```
 
@@ -100,7 +100,7 @@ ms.locfileid: "77531306"
 
 下面的示例根据用户选择的 **mfaType** 声明通过电子邮件或短信来发送代码。
 
-```XML
+```xml
 <Action Id="SendCode">
   <ValidationClaimsExchange>
     <ValidationClaimsExchangeTechnicalProfile TechnicalProfileReferenceId="AzureMfa-SendSms">
@@ -131,7 +131,7 @@ ms.locfileid: "77531306"
 
 例如：
 
-```XML
+```xml
 <TechnicalProfile Id="SelfAsserted-ProfileUpdate">
   ...
   <DisplayClaims>

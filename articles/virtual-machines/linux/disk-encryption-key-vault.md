@@ -5,14 +5,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 06/17/2020
+ms.date: 07/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7cd5aa34a783a20deb9481476a4d2931dff81e03
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: b55e236c284e6444db482ab46cf024886caf82d8
+ms.sourcegitcommit: b5794af488a336d84ee586965dabd6f45fd5ec6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097339"
+ms.lasthandoff: 08/01/2020
+ms.locfileid: "87508339"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>创建和配置用于 Azure 磁盘加密的密钥保管库
 
@@ -30,7 +30,7 @@ Azure Disk Encryption 使用 Azure Key Vault 来控制和管理磁盘加密密�
 以下快速入门说明了这些步骤：
 
 - [使用 Azure CLI 创建和加密 Linux VM](disk-encryption-cli-quickstart.md)
-- [使用 Azure Powershell 创建和加密 Linux VM](disk-encryption-cli-quickstart.md)
+- [使用 Azure Powershell 创建和加密 Linux VM](disk-encryption-powershell-quickstart.md)
 
 还可以根据需要生成或导入密钥加密密钥 (KEK)。
 

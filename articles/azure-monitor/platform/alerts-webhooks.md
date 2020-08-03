@@ -1,21 +1,21 @@
 ---
 title: 在 Azure Monitor 中对经典指标警报调用 Webhook
 description: 了解如何将 Azure 指标警报重新路由到其他非 Azure 系统。
-author: snehithm
-ms.service: azure-monitor
+author: Johnnytechn
+ms.author: v-johya
 ms.topic: conceptual
 origin.date: 04/03/2017
-ms.date: 02/16/2018
-ms.author: snmuvva
+ms.date: 07/17/2020
 ms.subservice: alerts
-ms.openlocfilehash: 3988fd9c9bbe0d74322507895d51e5a194f44f02
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 52402704f10a3ed819c87144479f2da09f9ad7db
+ms.sourcegitcommit: b5794af488a336d84ee586965dabd6f45fd5ec6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79452368"
+ms.lasthandoff: 08/01/2020
+ms.locfileid: "87508474"
 ---
 # <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>在 Azure Monitor 中对经典指标警报调用 Webhook
+
 可以使用 Webhook 将 Azure 警报通知路由到其他系统，以便进行后续处理或自定义操作。 可以针对警报使用 Webhook，以将警报路由到可以发送短信的服务，以记录 Bug、通过聊天/消息服务通知团队，或进行各种其他操作。 
 
 本文介绍如何针对 Azure 指标警报设置 Webhook。 此外，还说明向 Webhook 发出的 HTTP POST 的有效负载的大致形式。 有关 Azure 活动日志警报（事件警报）的设置和架构的信息，[针对 Azure 活动日志警报调用 Webhook](alerts-log-webhook.md)。
@@ -27,7 +27,7 @@ Azure 警报使用 HTTP POST 将警报内容以 JSON 格式发送到创建警报
 
 ![“添加警报规则”窗格](./media/alerts-webhooks/Alertwebhook.png)
 
-还可以使用 [Azure PowerShell cmdlet](../../azure-monitor/platform/powershell-quickstart-samples.md#create-metric-alerts)、[跨平台 CLI](../../azure-monitor/platform/cli-samples.md#work-with-alerts) 或 [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn933805.aspx) 将警报配置为发布到 Webhook URI。
+还可以使用 [Azure PowerShell cmdlet](../samples/powershell-samples.md#create-metric-alerts)、[跨平台 CLI](../samples/cli-samples.md#work-with-alerts) 或 [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn933805.aspx) 将警报配置为发布到 Webhook URI。
 
 ## <a name="authenticate-the-webhook"></a>对 webhook 进行身份验证
 Webhook 可使用基于令牌的身份验证进行身份验证。 保存的 Webhook URI 具有令牌 ID。 例如： `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`
@@ -54,11 +54,11 @@ POST 操作对于所有基于指标的警报包含以下 JSON 有效负载和架
             "operator": "GreaterThanOrEqual"
         },
         "subscriptionId": "s1",
-        "resourceGroupName": "China East",
+        "resourceGroupName": "chinaeast",
         "resourceName": "mysite1",
         "resourceType": "microsoft.foo/sites",
         "resourceId": "/subscriptions/s1/resourceGroups/chinaeast/providers/microsoft.foo/sites/mysite1",
-        "resourceRegion": "China East 2",
+        "resourceRegion": "chinaeast2",
         "portalLink": "https://portal.azure.cn/#resource/subscriptions/s1/resourceGroups/chinaeast/providers/microsoft.foo/sites/mysite1"
     },
     "properties": {
@@ -106,3 +106,5 @@ POST 操作对于所有基于指标的警报包含以下 JSON 有效负载和架
 * 了解如何[使用逻辑应用通过 Twilio 从 Azure 警报发送短信](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app)。
 * 了解如何[使用逻辑应用从 Azure 警报发送 Slack 消息](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app)。
 * 了解如何[使用逻辑应用从 Azure 警报将消息发送到 Azure 队列](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app)。
+
+

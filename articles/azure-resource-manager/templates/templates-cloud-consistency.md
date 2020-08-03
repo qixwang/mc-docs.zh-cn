@@ -4,15 +4,15 @@ description: 开发可针对不同的云环境一致地工作的 Azure 资源管
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 12/09/2018
-ms.date: 06/22/2020
+ms.date: 08/03/2020
 ms.author: v-yeche
 ms.custom: seodec18
-ms.openlocfilehash: 3710d620bc02bd021098dd1012e30cbdfc59c19d
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: ad099783957bcb1e008c28456d2d3ce58a6e09cf
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098681"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426343"
 ---
 # <a name="develop-arm-templates-for-cloud-consistency"></a>开发用于确保云一致性的 ARM 模板
 

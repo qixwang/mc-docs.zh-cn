@@ -9,16 +9,16 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 origin.date: 04/04/2020
-ms.date: 06/19/2020
+ms.date: 08/03/2020
 ms.author: v-tawe
-ms.custom: tracking-python
+ms.custom: tracking-python, devx-track-javascript
 zone_pivot_groups: programming-languages-speech-services-one-nomore
-ms.openlocfilehash: 40149e0c9f0da525b057dc61b4fb9d174b470795
-ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
+ms.openlocfilehash: 8be8686e457b9dfbdb866c3b1401e3bb3aee0678
+ms.sourcegitcommit: 3821704fee67315badba49cf628af2aa68d98f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85613440"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87516049"
 ---
 # <a name="quickstart-setup-development-environment"></a>快速入门：安装开发环境
 

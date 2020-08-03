@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/16/2020
+ms.date: 07/27/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: f910f6e160b07ed4d9aa4fe79cdafe1bb67e2a1c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 450919e6ad6b24d36e8fa0ac4490ac8179d1d65e
+ms.sourcegitcommit: dd2bc914f6fc2309f122b1c7109e258ceaa7c868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497159"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87297688"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -24,7 +24,7 @@ ms.locfileid: "79497159"
 
 **TechnicalProfiles** 元素包含声明提供程序支持的一组技术配置文件。 每个声明提供程序必须包含一个或多个用于确定终结点的技术配置文件，以及与该声明提供程序通信所需的协议。 一个声明提供程序可以包含多个技术配置文件。
 
-```XML
+```xml
 <ClaimsProvider>
   <DisplayName>Display name</DisplayName>
   <TechnicalProfiles>

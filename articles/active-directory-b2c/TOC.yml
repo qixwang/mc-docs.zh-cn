@@ -228,6 +228,8 @@
                     - name: Azure 多重身份验证
                       href: multi-factor-auth-technical-profile.md
                       displayName: mfa
+                    - name: Azure AD SSPR
+                      href: aad-sspr-technical-profile.md
                     - name: JWT 令牌颁发者
                       href: jwt-issuer-technical-profile.md
                     - name: 一次性密码

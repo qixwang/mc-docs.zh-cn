@@ -1,30 +1,32 @@
 ---
-title: 在 Azure 中缩放 Service Fabric 群集
+title: 缩放 Azure 中的 Service Fabric 群集
 description: 本教程介绍如何横向扩展和缩小 Azure 中的 Service Fabric 群集，以及如何清理剩余资源。
 ms.topic: tutorial
 origin.date: 07/22/2019
-ms.date: 06/08/2020
+ms.date: 08/03/2020
+ms.testscope: no
+ms.testdate: 06/08/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 26e0a311fc32e08e3d822594271324d3d09b9d63
-ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
+ms.openlocfilehash: e2048b8fb3c1741db12ed203f8700e25f0ba2607
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84356202"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426339"
 ---
-# <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>教程：在 Azure 中缩放 Service Fabric 群集
+# <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>教程：缩放 Azure 中的 Service Fabric 群集
 
 本教程是系列教程的第三部分，介绍如何扩大和缩小现有群集。 完成时，将知道如何缩放群集以及如何清理剩余的资源。  有关缩放 Azure 中运行的群集的详细信息，请阅读[缩放 Service Fabric 群集](service-fabric-cluster-scaling.md)。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 添加和删除节点（横向扩展和横向缩减）
 > * 添加和删除节点类型（横向扩展和横向缩减）
 > * 增加节点资源（纵向扩展）
 
-在此系列教程中，你将学习如何：
+在此系列教程中，你会学习如何：
 > [!div class="checklist"]
 > * 使用模板在 Azure 上创建安全 [Windows 群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 > * [监视群集](service-fabric-tutorial-monitor-cluster.md)
@@ -48,9 +50,9 @@ ms.locfileid: "84356202"
 
 是否需要向群集添加超过 100 个节点？  单一 Service Fabric 节点类型/规模集不能包含超过 100 个节点/VM。  若要将群集扩展到超过 100 个节点，需[添加更多节点类型](#add-nodes-to-or-remove-nodes-from-a-node-type)。
 
-应用程序是否有多个服务，其中是否有任何服务需面向公众或面向 Internet？  典型的应用程序包含可接收客户端输入的前端网关服务，以及一个或多个与前端服务通信的后端服务。 在这种情况下，建议向群集[添加至少两个节点类型](#add-nodes-to-or-remove-nodes-from-a-node-type)。  
+应用程序是否有多个服务，其中是否有任何服务需是面向公众或面向 Internet 的服务？  典型的应用程序包含可接收客户端输入的前端网关服务，以及一个或多个与前端服务通信的后端服务。 在这种情况下，建议向群集[添加至少两个节点类型](#add-nodes-to-or-remove-nodes-from-a-node-type)。  
 
-服务是否有不同的基础结构需求，例如，更多的 RAM 或更高的 CPU 周期？ 例如，应用程序包含前端服务和后端服务。 前端服务可以在容量较小（如 D2 的 VM 大小）且向 Internet 开放了端口的 VM 上运行。 但是，后端服务是计算密集型的服务，需要放在容量较大（D4、D6、D15 等的 VM 大小）且不面向 Internet 的 VM 上运行。 在这种情况下，建议向群集[添加两个或多个节点类型](#add-nodes-to-or-remove-nodes-from-a-node-type)。 这样，每个节点类型都有不同的属性，例如，Internet 连接或 VM 大小。 也可以单独缩放 VM 的数目。
+服务是否有不同的基础结构需求，例如，更多的 RAM 或更高的 CPU 周期？ 例如，应用程序包含前端服务和后端服务。 前端服务可以在容量较小（D2 等的 VM 大小）且向 Internet 开放了端口的 VM 上运行。 但是，后端服务计算密集型的服务，需要放在容量较大（D4、D6、D15 等的 VM 大小）且不连接到 Internet 的 VM 上运行。 在这种情况下，建议向群集[添加两个或多个节点类型](#add-nodes-to-or-remove-nodes-from-a-node-type)。 这样，每个节点类型都有不同的属性，例如，Internet 连接或 VM 大小。 也可以单独缩放 VM 的数目。
 
 缩放 Azure 群集时，请记住以下准则：
 
@@ -69,7 +71,7 @@ ms.locfileid: "84356202"
 
 1. 在 [Azure 门户](https://portal.azure.cn)中，转到包含群集的资源组（如果按本教程操作，即为 **sfclustertutorialgroup**）。 
 
-2. 在左窗格中选择“部署”，或者选择“部署”下的链接。  
+2. 在左窗格中，选择“部署”或选择“部署”下的链接。 
 
 3. 从列表中选择最近的成功部署。
 
@@ -834,13 +836,12 @@ Foreach($node in $nodes)
 ```
 
 ## <a name="increase-node-resources"></a>增加节点资源 
-创建 Service Fabric 群集后，可以纵向缩放群集节点类型（更改节点的资源）或升级节点类型 VM 的操作系统。  
+创建 Service Fabric 群集后，可以纵向扩展群集节点类型（更改节点的资源）或升级节点类型 VM 的操作系统，方法是使用新节点类型（带有更新的 VM SKU 或 OS 映像）替换原始节点类型。 有关更多详细信息，请参阅[纵向扩展 Azure Service Fabric 节点类型](service-fabric-scale-up-node-type.md)。
 
-> [!WARNING]
-> 我们建议不要更改规模集/节点类型的 VM SKU，除非它在银级持久性或更高的级别运行。 更改 VM SKU 大小是一种破坏数据的就地基础结构操作。 由于无法延迟或监视此更改，此操作可能会导致有状态服务的数据丢失或其他意外操作问题（甚至可能影响无状态工作负载）。
+> [!IMPORTANT]
+> 切勿尝试就地更改 VM SKU 或 OS 映像，这是一项危险操作，不受支持。
 
-> [!WARNING]
-> 我们建议不要更改主节点类型的 VM SKU，这是一种不受支持的危险操作。  如果需要更多群集容量，可以添加更多 VM 实例或更多节点类型。  如果这不可行，可以创建新群集并从旧群集[还原应用程序状态](service-fabric-reliable-services-backup-restore.md)（如果适用）。  如果无法执行此操作，则可以[更改主节点类型的 VM SKU](service-fabric-scale-up-node-type.md)。
+如果那不可行，可以创建新群集并从旧群集[还原应用程序状态](service-fabric-reliable-services-backup-restore.md)（如果适用）。 不需要还原任何系统服务状态；它们会在你将应用程序部署到新群集时重新创建。 如果只在群集上运行无状态应用程序，则只需将应用程序部署到新群集即可，无需还原任何内容。
 
 ### <a name="update-the-template"></a>更新模板
 
@@ -863,7 +864,7 @@ az group deployment create --resource-group sfclustertutorialgroup --template-fi
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已学习了如何执行以下操作：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 添加和删除节点（横向扩展和横向缩减）
@@ -874,10 +875,9 @@ az group deployment create --resource-group sfclustertutorialgroup --template-fi
 > [!div class="nextstepaction"]
 > [升级群集的运行时](service-fabric-tutorial-upgrade-cluster.md)
 
-[durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
-[reliability]: service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster
+[durability]: service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster
+[reliability]: service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster
 [template]: https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json
 [parameters]: https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.Parameters.json
 
-<!--MOONCAKE: Duplicate the article's next step content-->
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

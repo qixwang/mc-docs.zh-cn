@@ -6,15 +6,17 @@ author: rockboyfor
 ms.service: virtual-machines
 ms.topic: include
 origin.date: 03/09/2018
-ms.date: 07/01/2019
+ms.date: 08/03/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 673c9b10ceaed3ba8e669920dfc263aece5e7071
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 66accac8ad3d87ae04bc531d3b6d890f6d74d465
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "68332778"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87427543"
 ---
 某些数据库工作负荷（如 SQL Server 或 Oracle）需要高内存、存储和 I/O 带宽，但不需要高核心计数。 许多数据库工作负荷不是 CPU 密集型工作负荷。 Azure 提供了某些 VM 大小（其中你可以限制 VM vCPU 计数），以降低软件许可成本，同时保持相同的内存、存储和 I/O 带宽。
 
@@ -53,6 +55,7 @@ ms.locfileid: "68332778"
 | Standard_DS14-8_v2  | 8    | 与 DS14_v2 相同 |
 | Standard_DS14-4_v2  | 4    | 与 DS14_v2 相同 |
 
-<!-- Not Available on Standard GS seriese -->
+<!-- Not Available on Standard Easv4 series -->
+<!-- Not Available on Standard GS series -->
 <!-- Update_Description: wording update-->
 
