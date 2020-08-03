@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 04/24/2020
-ms.date: 06/09/2020
-ms.openlocfilehash: 1d627f15064f838e9ad8c72f54567afb43a671d4
-ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
+ms.date: 07/17/2020
+ms.openlocfilehash: d8d179302ae76b4d75fb46d0e7202fe3ffc60252
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84564354"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471984"
 ---
 # <a name="simple-query-syntax-in-azure-cognitive-search"></a>Azure 认知搜索中的简单查询语法
 
@@ -34,7 +34,7 @@ Azure 认知搜索实现两种基于 Lucene 的查询语言：[简单查询分�
 
 包含一个或多个词条的任何文本都被视为查询执行的有效起点。 Azure 认知搜索将匹配包含任何或所有词条的文档，其中包括在分析文本期间发现的任何变体。
 
-尽管听起来很简单，但 Azure 认知搜索中的查询执行的一个方面*可能会*产生意外结果，导致搜索结果增加而不是减少，因为更多的词条和运算符被添加到输入字符串中。 这种扩展是否会实际发生取决于是否包含 NOT 运算符，以及组合使用的 searchMode**** 参数设置，该参数设置决定了如何根据 AND 或 OR 行为解释 NOT。 有关详细信息，请参阅 [NOT 运算符](#not-operator)。
+尽管听起来很简单，但 Azure 认知搜索中的查询执行的一个方面*可能会*产生意外结果，导致搜索结果增加而不是减少，因为更多的词条和运算符被添加到输入字符串中。 这种扩展是否会实际发生取决于是否包含 NOT 运算符，以及组合使用的 searchMode 参数设置，该参数设置决定了如何根据 AND 或 OR 行为解释 NOT。 有关详细信息，请参阅 [NOT 运算符](#not-operator)。
 
 ### <a name="precedence-operators-grouping"></a>优先运算符（分组）
 
@@ -63,6 +63,14 @@ Azure 认知搜索实现两种基于 Lucene 的查询语言：[简单查询分�
 
 不安全字符为 ``" ` < > # % { } | \ ^ ~ [ ]``。 保留字符为 `; / ? : @ = + &`。
 
+### <a name="querying-for-special-characters"></a>查询特殊字符
+
+在某些情况下，可能需要搜索特殊字符，如“❤”表情符号或“€”符号。 在此类情况下，请确保所使用的分析器不会筛选掉这些字符。标准分析器会忽略很多特殊字符，因此这些字符不会成为索引中的标记。
+
+因此，第一步是确保所使用的分析器会考虑这些元素标记。 例如，“空格”分析器将由空格分隔的任何字符序列视为标记，因此“❤”字符串会被视为标记。 另外，诸如 Microsoft 英语分析器（“en.microsoft”）之类的分析器会将“€”字符串视为标记。 可以[测试分析器](https://docs.microsoft.com/rest/api/searchservice/test-analyzer)，看它为给定的查询生成什么标记。
+
+使用 Unicode 字符时，请确保在查询 URL 中正确转义了符号（例如，对于“❤”，将使用转义序列 `%E2%9D%A4+`）。 Postman 会自动执行此转换。
+
 ###  <a name="query-size-limits"></a><a name="bkmk_querysizelimits"></a> 查询大小限制
 
  存在对可以发送到 Azure 认知搜索的查询大小的限制。 具体而言，最多可以有 1024 条子句（以 AND、OR 等分隔的表达式）。 此外，查询中任何单个术语的大小限制为大约 32 KB。 如果应用程序以编程方式生成搜索查询，则建议将其设计为不会生成无限大小的查询。  
@@ -73,7 +81,7 @@ Azure 认知搜索实现两种基于 Lucene 的查询语言：[简单查询分�
 
 ### <a name="and-operator-"></a>AND 运算符 `+`
 
-AND 运算符是一个加号。 例如，`wifi+luxury` 将搜索包含 `wifi` 和 `luxury` 的文档。
+AND 运算符是一个加号。 例如，`wifi + luxury` 将搜索包含 `wifi` 和 `luxury` 的文档。
 
 ### <a name="or-operator-"></a>OR 运算符 `|`
 
@@ -85,27 +93,27 @@ OR 运算符是一个竖条或管状字符。 例如，`wifi | luxury` 将搜索
 
 NOT 运算符是一个减号。 例如：`wifi –luxury` 将搜索包含 `wifi` 词语且/或不包含 `luxury` 的文档。
 
-查询请求中的 searchMode**** 参数控制具有 NOT 运算符的词语是通过 AND 运算符还是通过 OR 运算符与查询中的其他词语组合到一起（假定其他词语中没有 `+` 或 `|` 运算符）。 有效值包括 `any` 或 `all`。
+查询请求中的 searchMode 参数控制具有 NOT 运算符的词语是通过 AND 运算符还是通过 OR 运算符与查询中的其他词语组合到一起（假定其他词语中没有 `+` 或 `|` 运算符）。 有效值包括 `any` 或 `all`。
 
 `searchMode=any` 通过包含更多结果来提高查询的查全率，且默认情况下 `-` 会被解释为“OR NOT”。 例如，`wifi -luxury` 将匹配包含 `wifi` 词条或不包含 `luxury` 词条的文档。
 
-`searchMode=all` 通过包含更少结果来提高查询的查准率，且默认情况下“-”会被解释为“AND NOT”。 例如，`wifi -luxury` 将匹配包含 `wifi` 词条且不包含“luxury”词条的文档。 这对于 `-` 运算符来说可能是更直观的行为。 因此，如果想要优化搜索的查准率（而非查全率），且** 用户在搜索中频繁使用 `-` 运算符，则应考虑使用 `searchMode=all` 而不是 `searchMode=any`。
+`searchMode=all` 通过包含更少结果来提高查询的查准率，且默认情况下“-”会被解释为“AND NOT”。 例如，`wifi -luxury` 将匹配包含 `wifi` 词条且不包含“luxury”词条的文档。 这对于 `-` 运算符来说可能是更直观的行为。 因此，如果想要优化搜索的查准率（而非查全率），且用户在搜索中频繁使用 `-` 运算符，则应考虑使用 `searchMode=all` 而不是 `searchMode=any`。
 
-在决定 searchMode**** 设置时，请考虑不同应用程序中的查询的用户交互模式。 搜索信息的用户更有可能在查询中包含运算符，相对而言，电子商务网站具有更多的内置导航结构。
+在决定 searchMode 设置时，请考虑不同应用程序中的查询的用户交互模式。 搜索信息的用户更有可能在查询中包含运算符，相对而言，电子商务网站具有更多的内置导航结构。
 
 <a name="prefix-search"></a>
 
-## <a name="prefix-search"></a>前缀搜索
+## <a name="wildcard-prefix-matching--"></a>通配符前缀匹配（*、?）
 
-后缀运算符是一个星号 `*`。 例如，`lingui*` 会查找“linguistic”或“linguini”并忽略大小写。 
+对于“开头为”查询，请添加后缀运算符作为词条剩余部分的占位符。 使用星号 `*` 表示多个字符，或使用 `?` 表示单个字符。 例如，`lingui*` 会匹配“linguistic”或“linguini”（忽略大小写）。 
 
-与筛选器类似，前缀查询查找完全匹配项。 因此，不存在相关性评分（所有结果的搜索分数均为 1.0）。 前缀查询可能会很慢，尤其是在索引较大但前缀包含的字符数量较少的情况下。 
+与筛选器类似，前缀查询查找完全匹配项。 因此，不存在相关性评分（所有结果的搜索分数均为 1.0）。 请注意，前缀查询可能会很慢，尤其是在索引较大且前缀包含的字符数较少的情况下。 另一种方法（如“边缘 n 元语法标记化”）执行速度可能较快。
 
-如果要执行后缀查询（针对字符串的最后一部分进行匹配），请使用[通配符搜索](query-lucene-syntax.md#bkmk_wildcard)和完整的 Lucene 语法。
+对于其他通配符查询变体，比如后缀或中缀与一个词的末尾或中间匹配，请使用[适用于通配符搜索的完整 Lucene 语法](query-lucene-syntax.md#bkmk_wildcard)。
 
 ## <a name="phrase-search-"></a>短语搜索 `"`
 
-词语搜索是针对一个或多个词语的查询，其中任何词语都被视为一个匹配项。 短语搜索是用引号 `" "` 引起来的精确短语。 例如，`Roach Motel`（没有引号）会以任何顺序在任何位置搜索包含 `Roach` 和/或 `Motel` 的文档，而 `"Roach Motel"`（带引号）只会匹配包含整个短语并按该顺序排列的文档（文本分析仍然适用）。
+词语搜索是针对一个或多个词语的查询，其中任何词语都被视为一个匹配项。 短语搜索是用引号 `" "` 引起来的精确短语。 例如，`Roach Motel`（没有引号）会以任何顺序在任何位置搜索包含 `Roach` 和/或 `Motel` 的文档，而 `"Roach Motel"`（带引号）则只会匹配包含整个短语并按该顺序排列的文档（词法分析仍然适用）。
 
 ## <a name="see-also"></a>另请参阅  
 

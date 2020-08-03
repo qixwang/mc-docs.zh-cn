@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 11/19/2019
-ms.date: 06/29/2020
-ms.openlocfilehash: ffddbb658966effc02a63063853da18889139ab2
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+ms.date: 07/29/2020
+ms.openlocfilehash: 8852cfb4e134d4e2785c15ac6a0fb08e4c60353f
+ms.sourcegitcommit: 0eaa82cf74477d26d06bdd8fb6e715e6ed1339c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85321317"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86974319"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure 数据工厂中的管道和活动
 
@@ -47,6 +47,7 @@ Azure 数据工厂支持以下转换活动，这些活动既可以单独添加�
 
 数据转换活动 | 计算环境
 ---------------------------- | -------------------
+[Azure Function](control-flow-azure-function-activity.md) | Azure Functions
 [Hive](transform-data-using-hadoop-hive.md) | HDInsight [Hadoop]
 [Pig](transform-data-using-hadoop-pig.md) | HDInsight [Hadoop]
 [MapReduce](transform-data-using-hadoop-map-reduce.md) | HDInsight [Hadoop]
@@ -97,10 +98,10 @@ Azure 数据工厂支持以下转换活动，这些活动既可以单独添加�
 }
 ```
 
-标记 | 说明 | 类型 | 必须
+标记 | 说明 | 类型 | 必需
 --- | ----------- | ---- | --------
 name | 管道的名称。 指定一个名称，它表示管道要执行的操作。 <br/><ul><li>最大字符数：140</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\" </li></ul> | String | 是
-description | 指定描述管道用途的文本。 | String | 否
+description | 指定描述管道用途的文本。 | 字符串 | 否
 活动 | **activities** 节中可定义有一个或多个活动。 请参阅[活动 JSON](#activity-json) 一节，以了解有关活动 JSON 元素的详细信息。 | Array | 是
 参数 | **参数**部分可在在管道内定义一个或多个参数，使你的管道能够灵活地重复使用。 | 列出 | 否
 concurrency | 管道可以具有的最大并发运行数。 默认情况下，没有最大值。 如果达到并发限制，则附加管道运行将排队，直到较早的管道完成为止 | Number | 否 
@@ -132,7 +133,7 @@ annotations | 与管道关联的标记的列表 | Array | 否
 
 下表描述了活动 JSON 定义中的属性：
 
-标记 | 说明 | 必须
+标记 | 说明 | 必需
 --- | ----------- | ---------
 name | 活动的名称。 指定一个名称，它表示活动要执行的操作。 <br/><ul><li>最大字符数：55</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\" | 是</li></ul>
 description | 描述活动用途的文本 | 是
@@ -173,7 +174,7 @@ dependsOn | 该属性用于定义活动依赖项，以及后续活动对以前�
 }
 ```
 
-JSON 名称 | 说明 | 允许的值 | 必须
+JSON 名称 | 说明 | 允许的值 | 必需
 --------- | ----------- | -------------- | --------
 timeout | 指定活动运行的超时。 | Timespan | 否。 默认超时为 7 天。
 retry | 最大重试次数 | Integer | 否。 默认值为 0
@@ -197,7 +198,7 @@ secureOutput | 当设置为 true 时，来自活动的输出会被视为安全�
 }
 ```
 
-标记 | 说明 | 必须
+标记 | 描述 | 必选
 --- | ----------- | --------
 name | 活动的名称。 指定一个名称，它表示活动要执行的操作。<br/><ul><li>最大字符数：55</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\" | 是</li><ul>
 description | 描述活动用途的文本 | 是
@@ -259,7 +260,7 @@ dependsOn | 该属性用于定义活动依赖项，以及后续活动对以前�
 ```
 
 ## <a name="sample-copy-pipeline"></a>复制管道示例
-在以下示例管道中，**activities** 节有一个 **Copy** 类型的活动。 在此示例中，[复制活动](copy-activity-overview.md)将 Azure Blob 存储中的数据复制到 Azure SQL 数据库。
+在以下示例管道中，**activities** 节有一个 **Copy** 类型的活动。 在此示例中，[复制活动](copy-activity-overview.md)将 Azure Blob 存储中的数据复制到 Azure SQL 数据库中的数据库。
 
 ```json
 {

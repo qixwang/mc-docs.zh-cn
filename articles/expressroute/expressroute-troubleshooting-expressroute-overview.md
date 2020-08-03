@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 origin.date: 10/31/2019
 ms.author: v-yiso
 ms.date: 12/02/2019
-ms.openlocfilehash: 4be10114e53f98fec28b1a0c22d23cdd02a33024
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 1b8ff9186c4d9cc9adc2c9e175f39eb998dc7204
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74389442"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162386"
 ---
 # <a name="verifying-expressroute-connectivity"></a>验证 ExpressRoute 连接
 本文可帮助验证 ExpressRoute 连接并对其进行故障排除。 ExpressRoute 可以通过往往已由连接服务提供商优化的专用连接，将本地网络扩展到 Microsoft 云中。 在传统上，ExpressRoute 连接涉及到三个不同的网络区域，如下所述：
@@ -90,7 +90,7 @@ ms.locfileid: "74389442"
 若要确保 ExpressRoute 线路正常运行，“线路状态”必须为“已启用”，“提供商状态”必须为“已预配”     。
 
 > [!NOTE]
-> 配置 ExpressRoute 线路后，如果“线路状态”停滞在“未启用”状态，请联系 [Microsoft 支持部门][Support]。  另一方面，如果“提供商状态”停滞在“未预配”状态，请联系服务提供商。 
+> 配置 ExpressRoute 线路后，如果“线路状态”停滞在“未启用”状态，请联系 [Microsoft 支持部门][Support]。 另一方面，如果“提供商状态”停滞在“未预配”状态，请联系服务提供商。
 >
 >
 
@@ -143,7 +143,7 @@ ServiceProviderProvisioningState : Provisioned
 ```
 
 > [!NOTE]
-> 配置 ExpressRoute 线路后，如果“线路状态”停滞在“未启用”状态，请联系 [Microsoft 支持部门][Support]。  另一方面，如果“提供商状态”停滞在“未预配”状态，请联系服务提供商。 
+> 配置 ExpressRoute 线路后，如果“线路状态”停滞在“未启用”状态，请联系 [Microsoft 支持部门][Support]。 另一方面，如果“提供商状态”停滞在“未预配”状态，请联系服务提供商。
 >
 >
 
@@ -241,7 +241,7 @@ ARP 表为特定的对等互连提供 IP 地址和 MAC 地址的映射。 用于
 
 ## <a name="validate-bgp-and-routes-on-the-msee"></a>验证 BGP 以及 MSEE 上的路由
 
-对于“专用”路由上下文，若要获取“主要”路径上的 MSEE 的路由表，请使用以下命令：  
+对于“专用”路由上下文，若要获取“主要”路径上的 MSEE 的路由表，请使用以下命令：
 
     Get-AzExpressRouteCircuitRouteTable -DevicePath Primary -ExpressRouteCircuitName ******* -PeeringType AzurePrivatePeering -ResourceGroupName ****
 
@@ -284,9 +284,7 @@ ARP 表为特定的对等互连提供 IP 地址和 MAC 地址的映射。 用于
 ## <a name="confirm-the-traffic-flow"></a>确认流量流
 若要获取对等互连上下文在主要路径和辅助路径上的综合流量统计信息（出入字节数），请使用以下命令：
 
-```
-Get-AzureDedicatedCircuitStats -ServiceKey 97f85950-01dd-4d30-a73c-bf683b3a6e5c -AccessType Private
-```
+    Get-AzExpressRouteCircuitStats -ResourceGroupName $RG -ExpressRouteCircuitName $CircuitName -PeeringType 'AzurePrivatePeering'
 
 该命令的示例输出如下：
 

@@ -9,15 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-origin.date: 03/11/2020
-ms.date: 05/11/2020
+origin.date: 06/08/2020
+ms.date: 07/27/2020
 ms.author: v-jay
-ms.openlocfilehash: 03c2cecbd27433023aa940e335873c2eb173be6e
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.openlocfilehash: 5d38f186344a2c50f92c9c36d3eb9d213f8ad1b9
+ms.sourcegitcommit: 0eaa82cf74477d26d06bdd8fb6e715e6ed1339c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82197875"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86974252"
 ---
 # <a name="monitor-copy-activity"></a>监视复制活动
 
@@ -29,7 +29,7 @@ ms.locfileid: "82197875"
 
 在 Azure 数据工厂中创建并发布管道以后，即可将其与触发器关联，或者手动启动临时运行。 可以在 Azure 数据工厂用户体验中以本机方式监视所有管道运行。 参阅[直观监视 Azure 数据工厂](monitor-visually.md)，对 Azure 数据工厂监视进行常规了解。
 
-若要监视复制活动运行，请转到数据工厂的“创作和监视”UI。  在“监视器”选项卡上，可以看到一个管道运行列表，单击“管道名称”链接即可访问管道运行中的活动运行的列表。  
+若要监视复制活动运行，请转到数据工厂的“创作和监视”UI。 在“监视器”选项卡上，可以看到一个管道运行列表，单击“管道名称”链接即可访问管道运行中的活动运行的列表。
 
 ![监视复制活动运行](./media/copy-activity-overview/monitor-pipeline-run.png)
 
@@ -39,7 +39,7 @@ ms.locfileid: "82197875"
 
 在此图形监视视图中，Azure 数据工厂会提供复制活动执行信息，其中包括数据读取/写入量、从源复制到接收器的数据的文件数/行数、吞吐量、针对复制方案应用的配置、使用相应的持续时间和详细信息执行复制活动的步骤，等等。 请参阅[此表](#monitor-programmatically)，了解每个可能的指标及其详细说明。 
 
-在某些方案中，当你运行数据工厂中的复制活动时，会在复制活动监视视图顶部看到“性能调优提示”，如示例中所示。  这些提示告知 ADF 针对此特定复制运行确定的瓶颈，并建议如何进行更改，以便提升复制吞吐量。 详细了解[自动性能优化提示](copy-activity-performance-troubleshooting.md#performance-tuning-tips)。
+在某些方案中，当你运行数据工厂中的复制活动时，会在复制活动监视视图顶部看到“性能调优提示”，如示例中所示。 这些提示告知 ADF 针对此特定复制运行确定的瓶颈，并建议如何进行更改，以便提升复制吞吐量。 详细了解[自动性能优化提示](copy-activity-performance-troubleshooting.md#performance-tuning-tips)。
 
 底部的**执行详细信息和持续时间**描述了复制活动所要经历的重要阶段，这对于排查复制性能问题特别有用。 复制运行的瓶颈就是持续时间最长的那个运行。 请参阅[排查复制活动性能问题](copy-activity-performance-troubleshooting.md)，了解每个阶段所代表的内容以及详细的故障排除指南。
 
@@ -49,7 +49,7 @@ ms.locfileid: "82197875"
 
 ## <a name="monitor-programmatically"></a>以编程方式监视
 
-“复制活动运行结果” > “输出”部分（用于呈现 UI 监视视图）中也会返回复制活动执行详细信息和性能特征。   下面是可能返回的属性的完整列表。 只会显示适用于你的复制方案的属性。 若要对如何以编程方式监视活动运行进行常规了解，请参阅[以编程方式监视 Azure 数据工厂](monitor-programmatically.md)。
+“复制活动运行结果” > “输出”部分（用于呈现 UI 监视视图）中也会返回复制活动执行详细信息和性能特征。 下面是可能返回的属性的完整列表。 只会显示适用于你的复制方案的属性。 若要对如何以编程方式监视活动运行进行常规了解，请参阅[以编程方式监视 Azure 数据工厂](monitor-programmatically.md)。
 
 | 属性名称  | 说明 | 输出中的单位 |
 |:--- |:--- |:--- |
@@ -59,8 +59,8 @@ ms.locfileid: "82197875"
 | filesWritten | 写入/提交到基于文件的接收器的文件数。 | Int64 值（未指定单位） |
 | sourcePeakConnections | 复制活动运行期间与源数据存储建立的并发连接峰值数量。 | Int64 值（未指定单位） |
 | sinkPeakConnections | 复制活动运行期间与接收器数据存储建立的并发连接峰值数量。 | Int64 值（未指定单位） |
-| rowsRead | 从源读取的行数（不适用于二进制副本）。 | Int64 值（未指定单位） |
-| rowsCopied | 复制到接收器的行数（不适用于二进制副本）。 | Int64 值（未指定单位） |
+| rowsRead | 从源中读取的行数。 此指标不适用于不进行分析而按原样复制文件的情况，例如，当源和接收器数据集是二进制格式类型或具有相同设置的其他格式类型时。 | Int64 值（未指定单位） |
+| rowsCopied | 复制到接收器的行数。 此指标不适用于不进行分析而按原样复制文件的情况，例如，当源和接收器数据集是二进制格式类型或具有相同设置的其他格式类型时。  | Int64 值（未指定单位） |
 | rowsSkipped | 跳过的不兼容行数。 可通过将 `enableSkipIncompatibleRow` 设置为 true 来跳过不兼容的行。 | Int64 值（未指定单位） |
 | copyDuration | 复制运行的持续时间。 | Int32 值，以秒为单位 |
 | throughput | 数据传输速率。 | 浮点数，以 KBps 为单位 |

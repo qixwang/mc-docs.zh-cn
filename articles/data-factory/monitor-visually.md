@@ -9,14 +9,14 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-origin.date: 05/15/2020
-ms.date: 06/29/2020
-ms.openlocfilehash: 93c1af08cec3dbd33593f1534a551faea7d27219
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+origin.date: 06/30/2020
+ms.date: 07/27/2020
+ms.openlocfilehash: d6dd5979e99834fea7d502e56baa98884012f783
+ms.sourcegitcommit: 0eaa82cf74477d26d06bdd8fb6e715e6ed1339c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323317"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86974330"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>以可视化方式监视 Azure 数据工厂
 
@@ -51,12 +51,12 @@ ms.locfileid: "85323317"
 
 ## <a name="monitor-activity-runs"></a>监视活动运行
 
-若要查看每个管道运行的活动运行，请在“操作”列下选择“查看活动运行”图标。  此列表视图显示了与每个管道运行对应的活动运行。
+若要查看每个管道运行的活动运行，请在“操作”列下选择“查看活动运行”图标。 此列表视图显示了与每个管道运行对应的活动运行。
 
 | **列名** | **说明** |
 | --- | --- |
 | 活动名称 | 管道中的活动的名称 |
-| 活动类型 | 活动类型，例如“复制”、“HDInsightSpark”或“HDInsightHive”。   |
+| 活动类型 | 活动类型，例如“复制”、“HDInsightSpark”或“HDInsightHive”。 |
 | 操作 | 图标，用于查看 JSON 输入信息、JSON 输出信息或详细的特定于活动的监视体验 | 
 | 运行开始时间 | 活动运行的开始日期和时间（MM/DD/YYYY，HH:MM:SS AM/PM） |
 | 持续时间 | 运行持续时间 (HH:MM:SS) |
@@ -94,7 +94,7 @@ ms.locfileid: "85323317"
 | **列名** | **说明** |
 | --- | --- |
 | 管道名称 | 按管道名称筛选。 |
-| 运行开始时间 |  确定所显示的管道运行的时间范围。 选项包括针对“过去 24 小时”、“过去一周”、“过去 30 天”的快速筛选器，还可以选择一个自定义日期和时间。   |
+| 运行开始时间 |  确定所显示的管道运行的时间范围。 选项包括针对“过去 24 小时”、“过去一周”、“过去 30 天”的快速筛选器，还可以选择一个自定义日期和时间。 |
 | 运行状态 | 按状态筛选运行：**成功**、**失败**、**已排队**、**已取消**或**正在进行**。 |
 | 批注 | 按应用到每个管道的标记进行筛选 |
 | 运行次数 | 筛选是否要查看重新运行的管道 |
@@ -188,6 +188,10 @@ ms.locfileid: "85323317"
     ![目标条件的框](media/monitor-visually/add-criteria-1.png)
 
     ![条件列表](media/monitor-visually/add-criteria-2.png)
+
+    ![条件列表](media/monitor-visually/add-criteria-3.png)
+
+    可以针对各种指标创建警报，包括 ADF 实体计数/大小、活动/管道/触发器运行、Integration Runtime (IR) CPU 利用率/内存/节点计数/队列，以及 SSIS 包执行和 SSIS IR 启动/停止操作的指标。
 
 1.  配置警报逻辑。 可以针对所选的指标为所有管道和对应的活动创建警报。 还可以选择特定的活动类型、活动名称、管道名称或故障类型。
 

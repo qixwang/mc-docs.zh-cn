@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 02/14/2020
-ms.date: 03/16/2020
-ms.openlocfilehash: c9c27119117491e61c7716e23a7e1bbe3d6b4005
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 06/18/2020
+ms.date: 07/20/2020
+ms.openlocfilehash: 764ea96b79d12a19ca5684dd224e4ee5213d5f3e
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850569"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471817"
 ---
 # <a name="how-to-rebuild-an-index-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中重新生成索引
 
@@ -22,7 +22,17 @@ ms.locfileid: "78850569"
 
 “重新生成”是指删除并重新创建与索引关联的物理数据结构，包括所有基于字段的反向索引  。 在 Azure 认知搜索中，无法删除并重新创建各个字段。 若要重新生成索引，必须删除所有字段存储、基于现有或修订的索引架构重新创建，然后使用推送到索引或从外部源提取的数据重新填充。 
 
-在开发期间重新生成索引很常见，但可能还需要重新生成生产级索引以适应结构化的更改，例如，向建议器添加复杂类型或添加字段。
+在开发期间以迭代方式进行索引设计时常常会重新生成索引，但可能还需要重新生成生产级索引以适应结构化的更改，例如，向建议器添加复杂类型或添加字段。
+
+## <a name="rebuild-versus-refresh"></a>“重新生成”与“刷新”
+
+不应将重新生成与使用新的、已修改的或已删除的文档来刷新索引内容相混淆。 刷新搜索语料库几乎是每个搜索应用的规定，有些场景需要精确到分钟的更新（例如，当搜索语料库需要反映在线销售应用中的库存变化时就是如此）。
+
+只要不更改索引的结构，就可以使用最初用于加载索引的相同技术来刷新索引：
+
+* 对于推送模式索引，请调用[添加、更新或删除文档](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)，将更改推送到索引。
+
+* 对于索引器，你可以[计划索引器执行](search-howto-schedule-indexers.md)并使用更改跟踪或时间戳来确定增量。 如果更新的反映速度必须快于计划程序的管理速度，那么可以改用推送模式索引。
 
 ## <a name="rebuild-conditions"></a>重新生成条件
 
@@ -31,7 +41,7 @@ ms.locfileid: "78850569"
 | 条件 | 说明 |
 |-----------|-------------|
 | 更改字段定义 | 修改字段名称、数据类型或特定的[索引属性](https://docs.microsoft.com/rest/api/searchservice/create-index)（可搜索、可筛选、可排序、可查找）需要完全重新生成。 |
-| 向字段分配分析器 | [分析器](search-analyzers.md)是在索引中定义的，然后分配给字段。 随时都可以向索引添加新的分析器定义，但只有在创建字段时才能分配  分析器。 对于 **analyzer** 和 **indexAnalyzer** 属性都是如此。 **searchAnalyzer** 属性是一个例外（可以向现有字段分配此属性）。 |
+| 向字段分配分析器 | [分析器](search-analyzers.md)是在索引中定义的，然后分配给字段。 随时都可以向索引添加新的分析器定义，但只有在创建字段时才能分配分析器。 对于 **analyzer** 和 **indexAnalyzer** 属性都是如此。 **searchAnalyzer** 属性是一个例外（可以向现有字段分配此属性）。 |
 | 更新或删除索引中的分析器定义 | 无法删除或更改索引中的现有分析器配置（分析器、tokenizer、令牌筛选器或字符筛选器），除非重新生成整个索引。 |
 | 将字段添加到建议器 | 如果某个字段已存在，并且希望将其添加到[建议器](index-add-suggesters.md)构造，则必须重新生成索引。 |
 | 删除字段 | 若要以物理方式删除字段的所有跟踪，必须重新生成索引。 当即时重新生成不可行时，可以修改应用程序代码以禁用对“已删除的”字段的访问，或使用 [$select 查询参数](search-query-odata-select.md)选择要在结果集中显示的字段。 实际上，当你应用省略了相关字段的架构时，字段定义和内容会一直保留在索引中，直至下次重新生成。 |
@@ -39,10 +49,10 @@ ms.locfileid: "78850569"
 
 ## <a name="update-conditions"></a>更新条件
 
-可以在不影响现有物理结构的情况下进行许多其他修改。 具体而言，以下更改不需要重新生成索引。  对于这些更改，可以通过你的更改来[更新索引定义](https://docs.microsoft.com/rest/api/searchservice/update-index)。
+可以在不影响现有物理结构的情况下进行许多其他修改。 具体而言，以下更改不需要重新生成索引。 对于这些更改，可以通过你的更改来[更新索引定义](https://docs.microsoft.com/rest/api/searchservice/update-index)。
 
 + 添加新字段
-+ 在现有字段上设置“可检索”属性 
++ 在现有字段上设置“可检索”属性
 + 在现有字段上设置 **searchAnalyzer**
 + 在索引中添加新的分析器定义
 + 添加、更新或删除计分概要文件

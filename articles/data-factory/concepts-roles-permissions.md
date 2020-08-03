@@ -2,7 +2,7 @@
 title: Azure 数据工厂的角色和权限
 description: 介绍创建数据工厂并使用子资源所需的角色和权限。
 origin.date: 11/5/2018
-ms.date: 06/29/2020
+ms.date: 07/27/2020
 ms.topic: conceptual
 ms.service: data-factory
 services: data-factory
@@ -11,12 +11,12 @@ ms.workload: data-services
 author: WenJason
 ms.author: v-jay
 manager: digimobile
-ms.openlocfilehash: f1e00ac48ec9cbf080e713e70a2cc462a3ab214d
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+ms.openlocfilehash: 9e7e767451960a81eb50671b195621be5b2e9bc9
+ms.sourcegitcommit: 0eaa82cf74477d26d06bdd8fb6e715e6ed1339c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85321263"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86974314"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Azure 数据工厂的角色和权限
 
@@ -27,7 +27,7 @@ ms.locfileid: "85321263"
 
 ## <a name="roles-and-requirements"></a>角色和要求
 
-若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于参与者或所有者角色，或者是 Azure 订阅的管理员。   若要查看你在订阅中拥有的权限，请在 Azure 门户中，选择右上角的用户名，然后选择“权限”。 如果可以访问多个订阅，请选择相应的订阅。 
+若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于参与者或所有者角色，或者是 Azure 订阅的管理员。 若要查看你在订阅中拥有的权限，请在 Azure 门户中，选择右上角的用户名，然后选择“权限”。 如果可以访问多个订阅，请选择相应的订阅。 
 
 若要为数据工厂创建和管理子资源（包括数据集、链接服务、管道、触发器和集成运行时），以下要求适用：
 - 若要在 Azure 门户中创建和管理子资源，你必须属于资源组级别或更高级别的**数据工厂参与者**角色。
@@ -79,13 +79,13 @@ ms.locfileid: "85321263"
   1. 在数据工厂级别分配内置的“参与者”角色。
   2. 创建权限为 **Microsoft.Resources/deployments/** 的自定义角色。 将此自定义角色分配给资源组级别的用户。
 
-- 让用户只能测试链接服务中的连接
+- 让用户能够测试链接服务中的连接或预览数据集中的数据
 
-    创建具有以下操作权限的自定义角色：Microsoft.DataFactory/factories/getFeatureValue/read 和 Microsoft.DataFactory/factories/getDataPlaneAccess/read 。 在数据工厂资源上为用户分配此自定义角色。
+    创建具有以下操作权限的自定义角色：Microsoft.DataFactory/factories/getFeatureValue/read 和 Microsoft.DataFactory/factories/getDataPlaneAccess/action。 在数据工厂资源上为用户分配此自定义角色。
 
 - 允许用户通过 PowerShell 或 SDK 更新数据工厂，但不允许其在 Azure 门户中进行更新。
 
-  为用户分配内置的“参与者”角色，其权限范围为数据工厂资源。 此角色允许用户在 Azure 门户中查看资源，但不允许其访问“发布”和“全部发布”按钮。 
+  为用户分配内置的“参与者”角色，其权限范围为数据工厂资源。 此角色允许用户在 Azure 门户中查看资源，但不允许其访问“发布”和“全部发布”按钮。
 
 ## <a name="next-steps"></a>后续步骤
 

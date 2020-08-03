@@ -12,12 +12,12 @@ ms.topic: article
 origin.date: 02/03/2020
 ms.date: 04/13/2020
 ms.author: v-jay
-ms.openlocfilehash: dac17da5ff788967533f2b41a33465e43e61b30a
-ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
+ms.openlocfilehash: 3daf808d860e7e51a62962cf8061d1d787658bcc
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85845776"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162223"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒体服务 v3 发行说明
 
@@ -33,10 +33,10 @@ ms.locfileid: "85845776"
 ## <a name="known-issues"></a>已知问题
 
 > [!NOTE]
-> 可以使用 [Azure 门户](https://portal.azure.cn/)执行以下操作：管理 v3 [直播活动](live-events-outputs-concept.md)、查看 v3 [资产](assets-concept.md)、获取有关访问 API 的信息。 对于其他所有管理任务（例如，转换和作业），请使用 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref) 或某个受支持的 [SDK](media-services-apis-overview.md#sdks)。
+> 可以使用 [Azure 门户](https://portal.azure.cn/)执行以下操作：管理 v3 [实时事件](live-events-outputs-concept.md)、查看 v3 [资产](assets-concept.md)和作业、获取有关访问 API 的信息以及加密内容。 对于所有其他的管理任务（例如，管理转换和作业），请使用 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref) 或某个受支持的 [SDK](media-services-apis-overview.md#sdks)。
+>
+> 有关详细信息，请参阅：[媒体服务 v3的 Azure 门户限制](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3)。
 
-有关详细信息，请参阅[有关从媒体服务 v2 迁移到 v3 的指导](migrate-from-v2-to-v3.md#known-issues)。
- 
 ## <a name="january-2020"></a>2020 年 1 月
 
 ### <a name="improvements-in-media-processors"></a>媒体处理器中的改进
@@ -113,8 +113,8 @@ ms.locfileid: "85845776"
 
 添加了包括媒体服务性能改进的更新。
 
-* 更新了处理所支持的最大文件大小。 请参阅[配额和限制](limits-quotas-constraints.md)。
-* [编码速度提高](media-reserved-units-cli-how-to.md#choosing-between-different-reserved-unit-types)。
+* 更新了支持处理的最大文件大小。 请参阅[配额和限制](limits-quotas-constraints.md)。
+* [编码速度改进](media-reserved-units-cli-how-to.md#choosing-between-different-reserved-unit-types)。
 
 ## <a name="april-2019"></a>2019 年 4 月
 
@@ -131,6 +131,8 @@ ms.locfileid: "85845776"
 ## <a name="february-2019"></a>2019 年 2 月
 
 媒体服务 v3 目前在 Azure 国家云中受支持。 目前，并非所有功能在所有云中都可用。 有关详细信息，请参阅[存在 Azure 媒体服务 v3 的云和区域](azure-clouds-regions.md)。
+
+[Microsoft.Media.JobOutputProgress](media-services-event-schemas.md#monitoring-job-output-progress) 事件已添加到媒体服务的 Azure 事件网格架构中。
 
 ## <a name="january-2019"></a>2019 年 1 月
 
@@ -274,9 +276,10 @@ CMAF 和“cbcs”加密支持 Apple HLS (iOS 11+) 以及支持 CMAF 的 MPEG-DA
 
 ### <a name="known-issues"></a>已知问题
 
-* 提交作业时，可以指定使用 HTTPS URL、SAS URL 或位于 Azure Blob 存储中的文件路径引入源视频。 目前，AMS v3 不支持基于 HTTPS URL 的块传输编码。
+* 提交作业时，可以指定使用 HTTPS URL、SAS URL 或位于 Azure Blob 存储中的文件路径引入源视频。 媒体服务 v3 目前不支持基于 HTTPS URL 的块式传输编码。
 
 ## <a name="next-steps"></a>后续步骤
 
 - [概述](media-services-overview.md)
+- [媒体服务 v3 文档更新](docs-release-notes.md)
 - [媒体服务 v2 发行说明](../previous/media-services-release-notes.md)

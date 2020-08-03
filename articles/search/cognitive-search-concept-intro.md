@@ -8,17 +8,21 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 03/24/2020
-ms.date: 07/02/2020
-ms.openlocfilehash: dd91feafccfbf0186ed03cb6ea72ec96181f3b53
-ms.sourcegitcommit: 5afd7c4c3be9b80c4c67ec55f66fcf347aad74c6
+ms.date: 07/17/2020
+ms.openlocfilehash: 462de4b5a021acd88c45baa09ddbaad0b49d88da
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85942531"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471908"
 ---
 # <a name="ai-enrichment-in-azure-cognitive-search"></a>Azure 认知搜索中的 AI 扩充
 
-AI 扩充是 Azure 认知搜索索引的一项功能，用于从图像、Blob 和其他非结构化的数据源中提取文本。 利用扩充和提取，可以使内容在[索引](search-what-is-an-index.md)或[知识存储](knowledge-store-concept-intro.md)中更容易搜索。 使用附加到索引编制管道的“认知技能”进行提取和扩充。 服务内置的认知技能分为以下几类： 
+AI 扩充是[索引器](search-indexer-overview.md)的扩展，可用于从图像、Blob 和其他非结构化数据源中提取文本。 利用扩充和提取，可以使内容在索引器输出对象（[搜索索引](search-what-is-an-index.md)或[知识存储](knowledge-store-concept-intro.md)）中更容易搜索。 
+
+提取和扩充使用附加到索引器驱动管道上的认知技能来实现。 可以使用 Microsoft 的内置技能，也可以将外部处理嵌入到所创建的[自定义技能](cognitive-search-create-custom-skill-example.md)中。 自定义技能的示例可能包括面向特定领域（例如金融、科技出版或医疗）的自定义实体模块或文档分类器。
+
+内置技能分为以下类别： 
 
 + “自然语言处理”技能包括[实体识别](cognitive-search-skill-entity-recognition.md)、[语言检测](cognitive-search-skill-language-detection.md)、[关键短语提取](cognitive-search-skill-keyphrases.md)、文本操作、[情绪检测](cognitive-search-skill-sentiment.md)和 [PII 检测](cognitive-search-skill-pii-detection.md)。 通过这些技能，非结构化文本在索引中映射为可搜索和可筛选的字段。
 
@@ -26,9 +30,9 @@ AI 扩充是 Azure 认知搜索索引的一项功能，用于从图像、Blob �
 
 ![扩充管道关系图](./media/cognitive-search-intro/cogsearch-architecture.png "扩充管道概述")
 
-Azure 认知搜索中的认知技能基于认知服务 API 中预先训练的机器学习模型：[计算机视觉](https://docs.azure.cn/cognitive-services/computer-vision/)和[文本分析](https://docs.azure.cn/cognitive-services/text-analytics/overview)。 
+Azure 认知搜索中的内置技能基于认知服务 API 中预先训练的机器学习模型：[计算机视觉](https://docs.azure.cn/cognitive-services/computer-vision/)和[文本分析](https://docs.azure.cn/cognitive-services/text-analytics/overview)。 若要在内容处理期间利用这些资源，可以附加认知服务资源。
 
-数据引入阶段应用了自然语言和图形处理，其结果会成为 Azure 认知搜索的可搜索索引中文档撰写内容的一部分。 数据作为 Azure 数据集的来源，然后使用任意所需的[内置技能](cognitive-search-predefined-skills.md)通过索引管道进行推送。 体系结构可扩展，因此如果内置技能不足，可以创建并附加[自定义技能](cognitive-search-create-custom-skill-example.md)，以集成自定义处理。 示例包括面向特定领域（例如金融、科技出版或医疗）的自定义实体模块或文档分类器。
+数据引入阶段应用了自然语言和图形处理，其结果会成为 Azure 认知搜索的可搜索索引中文档撰写内容的一部分。 数据作为 Azure 数据集的来源，然后使用任意所需的[内置技能](cognitive-search-predefined-skills.md)通过索引管道进行推送。  
 
 ## <a name="when-to-use-ai-enrichment"></a>何时使用 AI 扩充
 
@@ -56,8 +60,7 @@ Azure 认知搜索中的认知技能基于认知服务 API 中预先训练的机
 
 自定义技能可以支持更复杂的方案，例如识别表单，或者使用你提供的模型进行自定义实体检测，以及在[自定义技能 Web 界面](cognitive-search-custom-skill-interface.md)中进行包装。 自定义技能的几个示例包括[自定义实体识别](https://github.com/Microsoft/SkillsExtractorCognitiveSearch)。
 
-
-## <a name="steps-in-an-enrichment-pipeline"></a>扩充管道中的步骤
+<a name="enrichment-steps"> ## 扩充管道中的步骤 </a>
 
 扩充管道基于[索引器](search-indexer-overview.md)。 索引器根据索引与数据源之间的字段到字段映射填充索引，以进行文档破解。 技能（现已附加到索引器）根据你定义的技能组截获并扩充文档。 编制索引后，可以使用所有[受 Azure 认知搜索支持的查询类型](search-query-overview.md)通过搜索请求来访问内容。  本部分引导索引器的新手完成这些步骤。
 
@@ -81,7 +84,7 @@ Azure 认知搜索中的认知技能基于认知服务 API 中预先训练的机
 
 #### <a name="add-a-knowledgestore-element-to-save-enrichments"></a>添加用于保存扩充的 knowledgeStore 元素
 
-[搜索 REST api-version=2019-05-06-Preview](search-api-preview.md) 使用 `knowledgeStore` 定义扩展技能集。该定义提供 Azure 存储连接以及描述如何存储扩充的投影。 这是对索引的补充。 在标准的 AI 管道中，扩充文档是临时的，仅在编制索引期间使用，然后被丢弃。 扩充文档将通过知识存储保存起来。 有关详细信息，请参阅[知识存储（预览版）](knowledge-store-concept-intro.md)。
+[搜索 REST api-version=2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) 使用 `knowledgeStore` 定义来扩展技能组。该定义提供 Azure 存储连接以及描述如何存储扩充的投影。 这是对索引的补充。 在标准的 AI 管道中，扩充文档是临时的，仅在编制索引期间使用，然后被丢弃。 扩充文档将通过知识存储保存起来。 有关详细信息，请参阅[知识存储](knowledge-store-concept-intro.md)。
 
 ### <a name="step-3-search-index-and-query-based-access"></a>步骤 3：搜索索引和基于查询的访问
 
@@ -119,6 +122,6 @@ Azure 认知搜索中的认知技能基于认知服务 API 中预先训练的机
 + [示例：创建 AI 扩充的自定义技能 (C#)](cognitive-search-create-custom-skill-example.md)
 + [快速入门：在门户演练中试用 AI 扩充](cognitive-search-quickstart-blob.md)
 + [教程：了解 AI 扩充 API](cognitive-search-tutorial-blob.md)
-+ [知识存储（预览版）](knowledge-store-concept-intro.md)
++ [知识存储](knowledge-store-concept-intro.md)
 + [在 REST 中创建知识存储](knowledge-store-create-rest.md)
 + [故障排除提示](cognitive-search-concept-troubleshooting.md)

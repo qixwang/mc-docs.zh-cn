@@ -7,93 +7,92 @@ author: brjohnstmsft
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 11/04/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 61d11f38dc3fcf1099d546a6d8dd82be2734958a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 06/30/2020
+ms.date: 07/17/2020
+ms.openlocfilehash: c1a22471c7a3e8542163ef54eb608f570b099e65
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850643"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471847"
 ---
 # <a name="upgrade-to-the-latest-azure-cognitive-search-service-rest-api-version"></a>升级到最新的 Azure 认知搜索服务 REST API 版本
 
-如果使用的是早期版本的[搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/)，本文有助于升级应用程序，以便使用正式发布的最新 API 版本 2019-05-06。
+如果你使用的是早期版本的[搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/)，则可参阅本文来升级应用程序，以便使用正式发布的最新 API 版本 2020-06-30。
 
-REST API 版本 2019-05-06 包含某些针对早期版本进行的更改。 这些更改主要涉及向后兼容性，因此更改代码只需最小的工作量，具体取决于之前使用的是哪个版本。 [升级步骤](#UpgradeSteps)概述了使用新功能所要做出的代码更改。
+REST API 版本 2020-06-30 包含早期版本中的一些更改。 这些更改主要涉及向后兼容性，因此更改代码只需最小的工作量，具体取决于之前使用的是哪个版本。 [升级步骤](#UpgradeSteps)概述了使用新功能所要做出的代码更改。
 
 > [!NOTE]
 > Azure 认知搜索服务实例支持各种 REST API 版本，包括以前的版本。 你可以继续使用这些 API 版本，但我们建议将代码迁移到最新版本，以便可以访问新功能。
 
-<a name="WhatsNew"></a>
-
-## <a name="whats-new-in-version-2019-05-06"></a>版本 2019-05-06 中的新增功能
-版本 2019-05-06 是 REST API 的最新正式版。 此 API 版本中已正式发布的功能包括：
-
-* [自动完成](index-add-suggesters.md)是一项自动提示功能，可以完成部分指定的字词输入。
-
-* [复杂类型](search-howto-complex-data-types.md)原生支持搜索索引中的结构化对象数据。
-
-* [JsonLines 分析模式](search-howto-index-json-blobs.md)（Azure Blob 编制索引的一部分）可为每个 JSON 实体创建以换行符分隔的搜索文档。
-
-* [AI 扩充](cognitive-search-concept-intro.md)提供可以利用认知服务 AI 扩充引擎的索引编制功能。
-
-有多个预览版功能版本与此正式版更新相一致。 若要查看新的预览版功能列表，请参阅[搜索 REST API 版本 2019-05-06-Preview](search-api-preview.md)。
-
-## <a name="breaking-changes"></a>重大更改
-
-在 api-version=2019-05-06 中，包含以下功能的现有代码将会中断。
-
-### <a name="indexer-for-azure-cosmos-db---datasource-is-now-type-cosmosdb"></a>Azure Cosmos DB - 数据源的索引器现在是 "type": "cosmosdb"
-
-如果使用 [Cosmos DB 索引器](search-howto-index-cosmosdb.md )，必须将 `"type": "documentdb"` 更改为 `"type": "cosmosdb"`。
-
-### <a name="indexer-execution-result-errors-no-longer-have-status"></a>索引器执行结果错误不再提供状态
-
-索引器执行的错误结构以前包含 `status` 元素。 此元素已被删除，因为它不能提供有用的信息。
-
-### <a name="indexer-data-source-api-no-longer-returns-connection-strings"></a>索引器数据源 API 不再返回连接字符串
-
-从 API 版本 2019-05-06 和 2019-05-06-Preview 开始，数据源 API 不再在任何 REST 操作的响应中返回连接字符串。 在以前的 API 版本中，对于使用 POST 创建的数据源，Azure 认知搜索会返回 **201** 后接 OData 响应，该响应包含纯文本格式的连接字符串。
-
-### <a name="named-entity-recognition-cognitive-skill-is-now-discontinued"></a>“命名实体识别”认知技能现已停用
-
-如果在代码中调用[命名实体识别](cognitive-search-skill-named-entity-recognition.md)技能，调用将会失败。 替代的功能是[实体识别](cognitive-search-skill-entity-recognition.md)。 无需进行任何其他更改应该就能替换技能引用。 两个版本的 API 签名相同。 
-
 <a name="UpgradeSteps"></a>
 
-## <a name="steps-to-upgrade"></a>升级步骤
-如果从以前的正式版 2017-11-11 或 2016-09-01 升级，除了更改版本号，可能无需对代码进行任何其他更改。 仅对于以下情况，可能需要更改代码：
+## <a name="how-to-upgrade"></a>如何升级
+
+升级到新版本时，除了更改版本号，可能无需对代码进行任何其他更改。 仅对于以下情况，可能需要更改代码：
 
 * 当 API 响应中返回无法识别的属性时，代码失效。 默认情况下，应用程序应忽略无法理解的属性。
 
 * 代码仍坚持 API 请求，并尝试将其重新发送到新 API 版本。 例如，如果应用程序仍存留从搜索 API 返回的延续标记（有关详细信息，请查找[搜索 API 参考](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)中的 `@search.nextPageParameters`）。
 
-如果任一种情况适用，都可能需要更改相应代码。 否则，如果不是要开始使用版本 2019-05-06 的[新功能](#WhatsNew)，便无需进行任何更改。
+* 你的代码引用的 API 版本早于 2019-05-06，并且受该版本中一项或多项中断性变更的影响。 [升级到 2019-05-06](#upgrade-to-2019-05-06) 部分提供了更多详细信息。 
 
-如果从预览版 API 升级，上述内容同样适用，但还必须注意，某些预览功能并未在版本 2019-05-06 中提供：
+如果其中任一种情况适用，则可能需要相应地更改代码。 否则，如果不是要开始使用新版本中添加的功能，便无需进行任何更改。
 
-* [“More like this”查询](search-more-like-this.md)
-* [CSV Blob 索引编制](search-howto-index-csv-blobs.md)
-* [对 Cosmos DB 索引器的 MongoDB API 支持](search-howto-index-cosmosdb.md)
+## <a name="upgrade-to-2020-06-30"></a>升级到 2020-06-30
 
-如果代码使用这些功能，只有消除它们的使用，才能升级到 API 版本 2019-05-06。
+版本 2020-06-30 是 REST API 的新正式版。 没有中断性变更，但存在一些行为差异。 
 
-> [!IMPORTANT]
-> 预览 API 用于测试和评估，不应在生产环境中使用。
-> 
+此 API 版本中现在通常可用的功能包括：
+
+* [知识存储](knowledge-store-concept-intro.md)，通过技能组创建的扩充内容的持久存储，创建的目的是通过其他应用程序进行下游分析和处理。 有了此功能，索引器驱动的 AI 扩充管道除了可以填充搜索索引外，还可以填充知识存储。 如果你使用了此功能的预览版，则它相当于正式版。 唯一需要的代码更改是修改 api-version。
+
+行为变更包括以下内容：
+
+* [BM25 排名算法](index-ranking-similarity.md)将以前的排名算法替换为更新的技术。 新服务将自动使用此算法。 对于现有服务，必须将参数设置为使用新算法。
+
+* 在此版本中，NULL 值的排序结果发生了变化，如果排序是 `asc`，则 NULL 值首先出现；如果排序是 `desc`，则 NULL 值最后出现。 如果你编写代码来处理 NULL 值的排序方式，请注意此更改。
+
+## <a name="upgrade-to-2019-05-06"></a>升级到 2019-05-06
+
+版本 2019-05-06 是 REST API 的上一个正式版。 此 API 版本中正式可用的功能包括：
+
+* [自动完成](index-add-suggesters.md)是一项自动提示功能，可以完成部分指定的字词输入。
+* [复杂类型](search-howto-complex-data-types.md)原生支持搜索索引中的结构化对象数据。
+* [JsonLines 分析模式](search-howto-index-json-blobs.md)（Azure Blob 编制索引的一部分）可为每个 JSON 实体创建以换行符分隔的搜索文档。
+* [AI 扩充](cognitive-search-concept-intro.md)提供可以利用认知服务 AI 扩充引擎的索引编制功能。
+
+### <a name="breaking-changes"></a>重大变化
+
+如果代码包含以下功能，则针对早期 API 版本编写的现有代码将在 api-version = 2019-05-06 时中断：
+
+#### <a name="indexer-for-azure-cosmos-db---datasource-is-now-type-cosmosdb"></a>Azure Cosmos DB - 数据源的索引器现在是 "type": "cosmosdb"
+
+如果使用 [Cosmos DB 索引器](search-howto-index-cosmosdb.md )，必须将 `"type": "documentdb"` 更改为 `"type": "cosmosdb"`。
+
+#### <a name="indexer-execution-result-errors-no-longer-have-status"></a>索引器执行结果错误不再提供状态
+
+索引器执行的错误结构以前包含 `status` 元素。 此元素已被删除，因为它不能提供有用的信息。
+
+#### <a name="indexer-data-source-api-no-longer-returns-connection-strings"></a>索引器数据源 API 不再返回连接字符串
+
+从 API 版本 2019-05-06 和 2019-05-06-Preview 开始，数据源 API 不再在任何 REST 操作的响应中返回连接字符串。 在以前的 API 版本中，对于使用 POST 创建的数据源，Azure 认知搜索会返回 **201** 后接 OData 响应，该响应包含纯文本格式的连接字符串。
+
+#### <a name="named-entity-recognition-cognitive-skill-is-now-discontinued"></a>“命名实体识别”认知技能现已停用
+
+如果在代码中调用[命名实体识别](cognitive-search-skill-named-entity-recognition.md)技能，调用会失败。 替代的功能是[实体识别](cognitive-search-skill-entity-recognition.md)。 无需进行任何其他更改应该就能替换技能引用。 两个版本的 API 签名相同。 
 
 ### <a name="upgrading-complex-types"></a>升级复杂类型
 
-如果代码使用在 2017-11-11-Preview 或 2016-09-01-Preview 旧版 API 中创建的复杂类型，需要注意版本 2019-05-06 中存在一些新的和已更改的限制：
+API 版本 2019-05-06 添加了对复杂类型的正式支持。 如果你的代码在 2017-11-11-Preview 或 2016-09-01-Preview 中实现了以前关于复杂类型等效性的建议，那么从 2019-05-06 版本开始，你需要注意一些新的和更改的限制：
 
 + 每个索引的子字段深度和复杂集合数目限制已降低。 如果使用预览版 API 创建了超出这些限制的索引，尝试使用 API 版本 2019-05-06 更新或重新创建这些索引将会失败。 如果遇到这种情况，需要重新设计架构，使其不会超出新的限制，然后重新生成索引。
 
-+ API 版本 2019-05-06 对每个文档的复杂集合元素数目施加了新的限制。 如果使用预览版 API 创建了文档超出这些限制的索引，尝试使用 API 版本 2019-05-06 重建该数据的索引将会失败。 如果遇到这种情况，需要在重建数据的索引之前，减少每个文档的复杂集合元素数目。
++ 从 API 版本 2019-05-06 开始，对每个文档的复杂集合元素数目施加了新的限制。 如果使用预览版 API 创建了文档超出这些限制的索引，尝试使用 API 版本 2019-05-06 重建该数据的索引将会失败。 如果遇到这种情况，需要在重建数据的索引之前，减少每个文档的复杂集合元素数目。
 
 有关详细信息，请参阅 [Azure 认知搜索的服务限制](search-limits-quotas-capacity.md)。
 
-### <a name="how-to-upgrade-an-old-complex-type-structure"></a>如何升级旧的复杂类型结构
+#### <a name="how-to-upgrade-an-old-complex-type-structure"></a>如何升级旧的复杂类型结构
 
 如果代码使用在早期 API 预览版中创建的复杂类型，则你可能正在使用如下所示的索引定义格式：
 

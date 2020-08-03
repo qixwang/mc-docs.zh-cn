@@ -9,14 +9,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 06/12/2020
-ms.date: 06/29/2020
+ms.date: 07/27/2020
 ms.author: v-jay
-ms.openlocfilehash: f9e5948e84443427a8f8779343a2266627b1235f
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+ms.openlocfilehash: 6a06c9661d95fc442f5619aa838b6430009da6a8
+ms.sourcegitcommit: 0eaa82cf74477d26d06bdd8fb6e715e6ed1339c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85322562"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86974320"
 ---
 # <a name="copy-data-from-google-cloud-storage-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Google 云存储复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -232,7 +232,7 @@ Google 云存储支持基于格式的复制源中 `storeSettings` 设置下的�
 
 ## <a name="legacy-models"></a>旧模型
 
-如果你过去使用 Amazon S3 连接器从 Google 云存储复制数据，为了后向兼容，我们现在仍按原样支持此操作。 建议你使用前述新模型，直到数据工厂创作 UI 在经过切换后可以生成新模型为止。
+如果你过去使用 Amazon S3 连接器从 Google 云存储复制数据，为了后向兼容，我们现在仍按原样支持此操作。 建议使用前面提到的新模型。 数据工厂创作 UI 已切换为生成新模型。
 
 ## <a name="next-steps"></a>后续步骤
 有关数据存储（Azure 数据工厂中的复制活动支持将其用作源和接收器）的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

@@ -13,14 +13,14 @@ ms.service: cloud-services
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 04/26/2020
+ms.date: 07/20/2020
 ms.author: v-junlch
-ms.openlocfilehash: fe0199acc2d3cd99b6b85689b62f77657e16a98f
-ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
+ms.openlocfilehash: b35ad482abadbcfb4960b21485b5c989c446ff4a
+ms.sourcegitcommit: d32699135151e98471daebe6d3f5b650f64f826e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82267679"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87160373"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务配置和管理问题：常见问题 (FAQ)
 
@@ -97,11 +97,13 @@ CSR 只是一个文本文件。 无需从最终使用此证书的计算机中创
 
 可使用以下 PowerShell 命令续订管理证书：
 
-    Add-AzureAccount -Environment AzureChinaCloud
-    Select-AzureSubscription -Current -SubscriptionName <your subscription name>
-    Get-AzurePublishSettingsFile
+```powershell
+Add-AzureAccount -Environment AzureChinaCloud
+Select-AzureSubscription -Current -SubscriptionName <your subscription name>
+Get-AzurePublishSettingsFile
+```
 
-**AzurePublishSettingsFile** 将在 Azure 门户上的“订阅” > “管理证书”中创建新的管理证书。   新证书的名称类似于“[订阅名称]-[当前日期]-credentials”。
+**AzurePublishSettingsFile** 将在 Azure 门户上的“订阅” > “管理证书”中创建新的管理证书。 新证书的名称类似于“[订阅名称]-[当前日期]-credentials”。
 
 ### <a name="how-to-automate-the-installation-of-main-tlsssl-certificatepfx-and-intermediate-certificatep7b"></a>如何自动安装主要 TLS/SSL 证书 (.pfx) 和中间证书 (.p7b)？
 
@@ -126,7 +128,7 @@ $cert = New-SelfSignedCertificate -DnsName yourdomain.chinacloudapp.cn -CertStor
 $password = ConvertTo-SecureString -String "your-password" -Force -AsPlainText
 Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $password
 ```
-选择 blob 或本地作为 csdef 和 cscfg 上传位置的功能即将推出。 使用 [New-AzureDeployment](https://docs.microsoft.com/powershell/module/servicemanagement/azure/new-azuredeployment?view=azuresmps-4.0.0)，可以设置每个位置值。
+选择 blob 或本地作为 csdef 和 cscfg 上传位置的功能即将推出。 使用 `New-AzureDeployment`，可以设置每个位置值。
 
 能够监视实例级别的指标。 其他监视功能在[如何监视云服务](cloud-services-how-to-monitor.md)中提供。
 
@@ -194,7 +196,7 @@ Windows 10 和 Windows Server 2016 随附了对客户端和服务器端上的 HT
 3. 创建名为 **DuoEnabled** 的新 DWORD 值。
 4. 将其值设置为 1。
 5. 重启服务器。
-6. 转到“默认网站”，在“绑定”下，使用刚刚创建的自签名证书创建新的 TLS 绑定。   
+6. 转到“默认网站”，在“绑定”下，使用刚刚创建的自签名证书创建新的 TLS 绑定。 
 
 有关详细信息，请参阅：
 
@@ -224,7 +226,7 @@ Microsoft 遵循严格的流程，未经所有者或其被委派者书面许可�
 
 如果在已加入 Azure Active Directory 的计算机上使用 RDP 文件，则可能会发生此错误。 若要解决此问题，请执行以下步骤：
 
-1. 右键单击下载的 RDP 文件，然后选择“编辑”。 
+1. 右键单击下载的 RDP 文件，然后选择“编辑”。
 2. 在用户名的前面添加“&#92;”前缀。 例如，使用 **.\username** 而不要使用 **username**。
 
 ## <a name="scaling"></a>扩展
@@ -238,6 +240,7 @@ Azure 订阅对可以使用的内核数存在限制。 如果已使用所有可�
 
 若要解决此问题，可以使用 Application Insights。 自动缩放支持将 Application Insights 作为指标源，可以基于“内存”等来宾指标缩放角色实例计数。  必须在云服务项目包文件 (*.cspkg) 中配置 Application Insights 并对该服务启用 Azure 诊断扩展，才能实现此功能。
 
+有关如何在云服务上通过 Application Insights 利用自定义指标来配置自动缩放的更多详细信息，请参阅[在 Azure 中根据自定义指标自动缩放入门](../azure-monitor/platform/autoscale-custom-metric.md)
 
 有关如何针对云服务将 Azure 诊断与 Application Insights 集成的详细信息，请参阅[将云服务、虚拟机或 Service Fabric 诊断数据发送到 Application Insights](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
 
@@ -275,7 +278,7 @@ Azure 订阅对可以使用的内核数存在限制。 如果已使用所有可�
 ### <a name="why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space"></a>云服务 VM 上的驱动器为何显示可用磁盘空间不足？
 这是预期的行为，不会导致应用程序出现任何问题。 为 Azure PaaS VM 中的 %approot% 驱动器启用了日记，因此，占用的空间量在实际上是文件平时占用的空间量的两倍。 但是，有几个因素会在本质上消除此状态造成的问题。
 
-%approot% 驱动器大小计算为 \<.cspkg 大小 + 最大日记大小 + 富余的可用空间> 或 1.5 GB，以较大者为准。 VM 大小对于计算结果没有任何影响。 （VM 大小只会影响临时 C: 驱动器的大小。） 
+%approot% 驱动器大小计算为 \<size of .cspkg + max journal size + a margin of free space> 或 1.5 GB（取两者中较大的一个）。 VM 大小对于计算结果没有任何影响。 （VM 大小只会影响临时 C: 驱动器的大小。） 
 
 不支持写入 %approot% 驱动器。 如果要写入 Azure VM，必须在临时 LocalStorage 资源中执行此操作（或使用其他选项，例如 Blob 存储、Azure 文件，等等）。 因此，%approot% 文件夹的可用空间量没有意义。 如果不确定应用程序是否写入 %approot% 驱动器，始终可以让服务运行数日，然后比较“之前”和“之后”的大小。 
 
@@ -288,7 +291,7 @@ Azure 不会将任何数据写入 %approot% 驱动器。 从 .cspkg 创建 VHD �
 可在启动任务中使用 PowerShell 脚本启用反恶意软件扩展。 请遵循以下文章中的步骤实现此目的： 
  
 - [创建 PowerShell 启动任务](cloud-services-startup-tasks-common.md#create-a-powershell-startup-task)
-- [Set-AzureServiceAntimalwareExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/Set-AzureServiceAntimalwareExtension?view=azuresmps-4.0.0 )
+- `Set-AzureServiceAntimalwareExtension`
 
 有关反恶意软件部署方案以及如何在门户中启用此类方案的详细信息，请参阅[反恶意软件部署方案](../security/fundamentals/antimalware.md#antimalware-deployment-scenarios)。
 
@@ -299,9 +302,11 @@ Azure 不会将任何数据写入 %approot% 驱动器。 从 .cspkg 创建 VHD �
 **方法 1：使用 PowerShell**
 
 可在启动任务中使用 PowerShell cmdlet **New-WebBinding** 为云服务角色实例配置 SNI 绑定，如下所示：
-    
-    New-WebBinding -Name $WebsiteName -Protocol "https" -Port 443 -IPAddress $IPAddress -HostHeader $HostHeader -SslFlags $sslFlags 
-    
+
+```powershell
+New-WebBinding -Name $WebsiteName -Protocol "https" -Port 443 -IPAddress $IPAddress -HostHeader $HostHeader -SslFlags $sslFlags
+```
+
 如[此文](https://technet.microsoft.com/library/ee790567.aspx)所述，$sslFlags 可为以下值之一：
 
 |值|含义|
@@ -315,14 +320,15 @@ Azure 不会将任何数据写入 %approot% 驱动器。 从 .cspkg 创建 VHD �
 
 也可以根据此[博客文章](https://blogs.msdn.microsoft.com/jianwu/2014/12/17/expose-ssl-service-to-multi-domains-from-the-same-cloud-service/)中所述，通过角色启动中的代码配置 SNI 绑定：
 
-    
-    //<code snip> 
-                    var serverManager = new ServerManager(); 
-                    var site = serverManager.Sites[0]; 
-                    var binding = site.Bindings.Add(":443:www.test1.com", newCert.GetCertHash(), "My"); 
-                    binding.SetAttributeValue("sslFlags", 1); //enables the SNI 
-                    serverManager.CommitChanges(); 
-    //</code snip> 
+```csharp
+//<code snip> 
+                var serverManager = new ServerManager(); 
+                var site = serverManager.Sites[0]; 
+                var binding = site.Bindings.Add(":443:www.test1.com", newCert.GetCertHash(), "My"); 
+                binding.SetAttributeValue("sslFlags", 1); //enables the SNI 
+                serverManager.CommitChanges(); 
+//</code snip>
+```
     
 使用上述任一方法时，必须先使用启动任务或通过代码在角色实例上安装特定主机名的相应证书 (*.pfx)，这样才能使 SNI 绑定生效。
 
@@ -334,7 +340,9 @@ Azure 不会将任何数据写入 %approot% 驱动器。 从 .cspkg 创建 VHD �
 
 我们正努力在 Azure 门户中实现此功能。 在此同时，你可以使用以下 PowerShell 命令获取 SDK 版本：
 
-    Get-AzureService -ServiceName "<Cloud Service name>" | Get-AzureDeployment | Where-Object -Property SdkVersion -NE -Value "" | select ServiceName,SdkVersion,OSVersion,Slot
+```powershell
+Get-AzureService -ServiceName "<Cloud Service name>" | Get-AzureDeployment | Where-Object -Property SdkVersion -NE -Value "" | select ServiceName,SdkVersion,OSVersion,Slot
+```
 
 ### <a name="i-want-to-shut-down-the-cloud-service-for-several-months-how-to-reduce-the-billing-cost-of-cloud-service-without-losing-the-ip-address"></a>我想要关闭云服务几个月。 如何在不丢失 IP 地址的情况下降低云服务的计费成本？
 

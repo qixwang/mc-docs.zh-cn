@@ -2,15 +2,17 @@
 title: 关于存储库和映像
 description: Azure 容器注册表、存储库和容器映像的重要概念简介。
 ms.topic: article
-origin.date: 09/10/2019
-ms.date: 04/06/2020
+origin.date: 06/16/2020
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: 04/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 7af7cf66c9ebec50c9d63802dc5cfc8699ebf5b0
-ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
+ms.openlocfilehash: 66edfed8959bb5b2c305db5bee53cce439d87615
+ms.sourcegitcommit: 5726d3b2e694f1f94f9f7d965676c67beb6ed07c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82093234"
+ms.lasthandoff: 07/21/2020
+ms.locfileid: "86863163"
 ---
 <!--Verify sucessfully, spliting articles-->
 # <a name="about-registries-repositories-and-images"></a>关于注册表、存储库和映像
@@ -19,9 +21,7 @@ ms.locfileid: "82093234"
 
 ## <a name="registry"></a>注册表
 
-容器注册表是一项存储和分发容器映像的服务  。 Docker Hub 是一个公共容器注册表，支持开放源社区并充当映像的通用目录。 Azure 容器注册表为用户提供映像直接控制、集成身份验证、支持全局分发和网络邻近部署可靠性的[异地复制](container-registry-geo-replication.md)、[标记锁定](container-registry-image-lock.md)以及其他许多增强功能。 
-
-<!--Not Available on [virtual network and firewall configuration](container-registry-vnet.md)-->
+容器注册表是一项存储和分发容器映像的服务  。 Docker Hub 是一个公共容器注册表，支持开放源社区并充当映像的通用目录。 Azure 容器注册表为用户提供映像直接控制、集成身份验证、支持全局分发和网络邻近部署可靠性的[异地复制](container-registry-geo-replication.md)、[虚拟网络和防火墙配置](container-registry-vnet.md)、[标记锁定](container-registry-image-lock.md)以及许多其他的增强功能。 
 
 除了 Docker 容器映像以外，Azure 容器注册表还支持相关的[内容项目](container-registry-image-formats.md)，包括开放容器计划 (OCI) 映像格式。
 
@@ -29,12 +29,11 @@ ms.locfileid: "82093234"
 
 Azure 容器注册表中的项目地址包括以下元素。 
 
-`[loginUrl]/[namespace]/[artifact:][tag]`
+`[loginUrl]/[repository:][tag]`
 
 * **loginUrl** - 注册表主机的完全限定名称。 Azure 容器注册表中的注册表主机采用 *myregistry*.azurecr.cn 格式（全小写）。 使用 Docker 或其他客户端工具将项目提取或推送到 Azure 容器注册表时，必须指定 loginUrl。 
-* **namespace** - 以斜杠分隔的、相关映像或项目（例如工作组或应用）的逻辑分组
-* **artifact** - 特定映像或项目的存储库名称
-* **tag** - 存储在存储库中的映像或项目的特定版本
+* **repository** - 一个或多个相关映像或项目（例如，应用程序或基本操作系统的映像）的逻辑分组的名称。 可能包括命名空间路径。 
+* **tag** - 存储在存储库中的映像或项目的特定版本的标识符。
 
 例如，Azure 容器注册表中映像的完整名称可能类似于：
 
@@ -44,13 +43,13 @@ Azure 容器注册表中的项目地址包括以下元素。
 
 ## <a name="repository-name"></a>存储库名称
 
-容器注册表管理存储库，并管理名称相同但标记不同的容器映像或其他项目的集合。  例如，以下三个映像位于“acr-helloworld”存储库中：
+存储库是名称相同但标记不同的容器映像或其他项目的集合。 例如，以下三个映像位于“acr-helloworld”存储库中：
 
 - *acr-helloworld:latest*
 - *acr-helloworld:v1*
 - *acr-helloworld:v2*
 
-存储库名称还可包括[命名空间](container-registry-best-practices.md#repository-namespaces)。 借助命名空间，可使用正斜杠分隔的存储库名称分组映像，例如：
+存储库名称还可包括[命名空间](container-registry-best-practices.md#repository-namespaces)。 命名空间允许你使用正斜杠分隔的名称标识组织中的相关存储库和项目所有权。 但是，注册表独立管理所有存储库，而不是将其作为层次结构进行管理。 例如：
 
 - *marketing/campaign10-18/web:v2*
 - *marketing/campaign10-18/api:v3*
@@ -58,21 +57,27 @@ Azure 容器注册表中的项目地址包括以下元素。
 - *product-returns/web-submission:20180604*
 - *product-returns/legacy-integrator:20180715*
 
+存储库名称只能包含小写字母数字字符、句点、短划线、下划线和正斜杠。 
+
+有关完整的存储库命名规则，请参阅[开放容器计划分发规范](https://github.com/docker/distribution/blob/master/docs/spec/api.md#overview)。
+
 ## <a name="image"></a>映像
 
 注册表中的容器映像或其他项目与一个或多个标记相关联，具有一个或多个层，并由一个清单标识。 了解这些组件之间的关系有助于有效管理注册表。
 
 ### <a name="tag"></a>标记
 
-映像或其他项目的标记指定了其版本。  存储库中的单个项目可分配有一个或多个标记，但也可能“无标记”。 也就是说，可删除映像中的所有标记，而映像的数据（其层）保留在注册表中。
+映像或其他项目的标记指定了其版本。 存储库中的单个项目可分配有一个或多个标记，但也可能“无标记”。 也就是说，可删除映像中的所有标记，而映像的数据（其层）保留在注册表中。
 
-映像的名称由存储库（或存储库和命名空间）和标记进行定义。 在推送或拉取操作中指定映像名称，可以推送和拉取映像。
+映像的名称由存储库（或存储库和命名空间）和标记进行定义。 在推送或拉取操作中指定映像名称，可以推送和拉取映像。 如果未在 Docker 命令中提供标记，则默认使用标记 `latest`。
 
 如何对容器映像进行标记由其开发或部署方案引导。 例如，建议使用稳定标记来维护基础映像，使用唯一标记来部署映像。 有关详细信息，请参阅[有关对容器映像进行标记和版本控制的建议](container-registry-image-tag-version.md)。
 
+有关标记命名规则，请参阅 [Docker 文档](https://docs.docker.com/engine/reference/commandline/tag/)。
+
 ### <a name="layer"></a>层
 
-容器映像由一个或多个层构成，每个层对应于 Dockerfile 中定义该映像的某行。  注册表中的映像共享常用层，从而提高存储效率。 例如，不同存储库中的多个映像可能共享同一个 Alpine Linux 基础层，但注册表中仅存储该层的一个副本。
+容器映像由一个或多个层构成，每个层对应于 Dockerfile 中定义该映像的某行。 注册表中的映像共享常用层，从而提高存储效率。 例如，不同存储库中的多个映像可能共享同一个 Alpine Linux 基础层，但注册表中仅存储该层的一个副本。
 
 由于多个映像共享常用层，层共享也可优化到节点的层分发。 例如，如果某节点上已有的映像包含 Alpine Linux 层作为其基础层，则在后续拉取引用同一层的不同映像时，不会将层传输到节点。 相反，它会引用节点上已存在的层。
 
@@ -80,7 +85,7 @@ Azure 容器注册表中的项目地址包括以下元素。
 
 ### <a name="manifest"></a>清单
 
-推送到容器注册表的每个容器映像或项目都与一个清单相关联。  推送映像时由注册表生成的清单唯一标识映像并指定其层。 可以使用 Azure CLI 命令 [az acr repository show-manifests][az-acr-repository-show-manifests] 列出存储库的清单：
+推送到容器注册表的每个容器映像或项目都与一个清单相关联。 推送映像时由注册表生成的清单唯一标识映像并指定其层。 可以使用 Azure CLI 命令 [az acr repository show-manifests][az-acr-repository-show-manifests] 列出存储库的清单：
 
 ```azurecli
 az acr repository show-manifests --name <acrName> --repository <repositoryName>

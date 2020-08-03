@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 origin.date: 06/08/2020
-ms.date: 06/29/2020
-ms.openlocfilehash: 4457f6f4676dd9e2f176770323680296445bc0dc
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+ms.date: 07/27/2020
+ms.openlocfilehash: 9bc474edfd37e93900930474bf966e73eb2a6cc6
+ms.sourcegitcommit: 0eaa82cf74477d26d06bdd8fb6e715e6ed1339c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323345"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86974285"
 ---
 # <a name="load-data-into-azure-synapse-analytics-by-using-azure-data-factory"></a>使用 Azure 数据工厂将数据加载到 Azure Synapse Analytics 中
 
@@ -43,7 +43,7 @@ ms.locfileid: "85323345"
 
 * Azure 订阅：如果没有 Azure 订阅，可在开始前创建一个 [1 元人民币试用帐户](https://www.azure.cn/en-us/pricing/1rmb-trial-full/?form-type=identityauth)。
 * Azure Synapse Analytics：此数据仓库保存从 SQL 数据库复制的数据。 如果没有 Azure Synapse Analytics，请参阅[创建 Azure Synapse Analytics](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md) 中的说明。
-* Azure SQL 数据库：本教程使用 Adventure Works LT 示例数据从 Azure SQL 数据库复制数据。 可以遵照[创建 Azure SQL 数据库](../sql-database/sql-database-get-started-portal.md)中的说明创建 SQL 数据库。
+* Azure SQL 数据库：本教程从 Azure SQL 数据库中的 Adventure Works LT 示例数据集复制数据。 可以按照[在 Azure SQL 数据库中创建示例数据库](../azure-sql/database/single-database-create-quickstart.md)中的说明在 SQL 数据库中创建此示例数据库。
 * Azure 存储帐户：Azure 存储用作大容量复制操作中的暂存 blob。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-account-create.md)中的说明。
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
@@ -90,7 +90,7 @@ ms.locfileid: "85323345"
 
     d. 选择新创建的链接服务作为源，然后单击“下一步”。
 
-1. 在“选择要从中复制数据的表或使用自定义查询”页中，输入 **SalesLT** 以筛选表。 选中“(全选)”复选框以便对副本使用所有表，然后选择“下一步”。 
+1. 在“选择要从中复制数据的表或使用自定义查询”页中，输入 **SalesLT** 以筛选表。 选中“(全选)”复选框以便对副本使用所有表，然后选择“下一步”。
 
     ![选择源表](./media/load-azure-sql-data-warehouse/select-source-tables.png)
 
@@ -113,14 +113,14 @@ ms.locfileid: "85323345"
 
     d. 选择新创建的链接服务作为接收器，然后单击“下一步”。
 
-1. 在“表映射”页中查看内容并选择“下一步”。  此时会显示智能表映射。 源表已根据表名映射到目标表。 如果目标中不存在表，则默认情况下 Azure 数据工厂将创建一个具有相同名称的目标表。 还可以将源表映射到现有目标表。
+1. 在“表映射”页中查看内容并选择“下一步”。 此时会显示智能表映射。 源表已根据表名映射到目标表。 如果目标中不存在表，则默认情况下 Azure 数据工厂将创建一个具有相同名称的目标表。 还可以将源表映射到现有目标表。
 
    > [!NOTE]
    > 当 SQL Server 或 Azure SQL 数据库为源时，将应用 Azure Synapse Analytics 接收器的自动创建表的功能。 若从其他源数据存储复制数据，则在执行数据复制操作前，需先在接收器 Azure Synapse Analytics 中预创建架构。
 
    ![“表映射”页](./media/load-azure-sql-data-warehouse/table-mapping.png)
 
-1. 在“列映射”页中，查看内容并选择“下一步”。  智能表映射基于列名。 如果自动创建的表的数据工厂，源和目标存储之间存在不兼容时，可能发生数据类型转换。 如果在源列与目标列之间进行不受支持的数据类型转换，会显示错误消息以及相应的表。
+1. 在“列映射”页中，查看内容并选择“下一步”。 智能表映射基于列名。 如果自动创建的表的数据工厂，源和目标存储之间存在不兼容时，可能发生数据类型转换。 如果在源列与目标列之间进行不受支持的数据类型转换，会显示错误消息以及相应的表。
 
     ![“列映射”页](./media/load-azure-sql-data-warehouse/schema-mapping.png)
 

@@ -1,25 +1,19 @@
 ---
 title: Azure 服务总线重复消息检测 | Azure
 description: 本文介绍如何检测 Azure 服务总线消息中的重复项。 可以忽略并丢弃重复消息。
-services: service-bus-messaging
-documentationcenter: ''
-author: lingliw
-manager: digimobile
-editor: ''
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 01/24/2020
-ms.date: 2/6/2020
-ms.author: v-lingwu
-ms.openlocfilehash: 8fd7fd165a1401c4f8aac1217dd190d2a6f560c5
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: ''
+ms.author: v-yeche
+author: rockboyfor
+ms.openlocfilehash: 0abc080b7863eca59d09eea9a63ce6bc01a4376b
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796859"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162391"
 ---
 # <a name="duplicate-detection"></a>重复检测
 
@@ -49,13 +43,13 @@ ms.locfileid: "83796859"
 > [!IMPORTANT]
 > 创建队列后，无法启用/禁用重复检测。 只能在创建队列时执行此操作。 
 
-通过编程方式，可以结合使用 [QueueDescription.requiresDuplicateDetection](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.queuedescription.requiresduplicatedetection#Microsoft_ServiceBus_Messaging_QueueDescription_RequiresDuplicateDetection) 属性和整个 .NET Framework API，从而设置标志。 借助 Azure 资源管理器 API，可以使用 [queueProperties.requiresDuplicateDetection](https://docs.microsoft.com/azure/templates/microsoft.servicebus/namespaces/queues#property-values) 属性设置此值。
+通过编程方式，可以结合使用 [QueueDescription.requiresDuplicateDetection](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.queuedescription.requiresduplicatedetection?view=azure-dotnet#Microsoft_ServiceBus_Messaging_QueueDescription_RequiresDuplicateDetection) 属性和整个 .NET Framework API，从而设置标志。 借助 Azure 资源管理器 API，可以使用 [queueProperties.requiresDuplicateDetection](https://docs.microsoft.com/azure/templates/microsoft.servicebus/namespaces/queues#property-values) 属性设置此值。
 
 队列和主题的重复检测时间历史记录默认为 30 秒，最大值不得超过 7 天。 可以在 Azure 门户的队列和主题属性窗口中更改此设置。
 
 ![][2]
 
-通过编程方式，可以结合使用 [QueueDescription.DuplicateDetectionHistoryTimeWindow](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.queuedescription.duplicatedetectionhistorytimewindow#Microsoft_ServiceBus_Messaging_QueueDescription_DuplicateDetectionHistoryTimeWindow) 和整个 .NET Framework API，配置重复检测窗口大小，即消息 ID 的保留时长。 借助 Azure 资源管理器 API，可以使用 [queueProperties.duplicateDetectionHistoryTimeWindow](https://docs.microsoft.com/azure/templates/microsoft.servicebus/namespaces/queues#property-values) 属性设置此值。
+通过编程方式，可以结合使用 [QueueDescription.DuplicateDetectionHistoryTimeWindow](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.queuedescription.duplicatedetectionhistorytimewindow?view=azure-dotnet#Microsoft_ServiceBus_Messaging_QueueDescription_DuplicateDetectionHistoryTimeWindow) 和整个 .NET Framework API，配置重复检测窗口大小，即消息 ID 的保留时长。 借助 Azure 资源管理器 API，可以使用 [queueProperties.duplicateDetectionHistoryTimeWindow](https://docs.microsoft.com/azure/templates/microsoft.servicebus/namespaces/queues#property-values) 属性设置此值。
 
 启用重复检测和窗口大小直接影响队列（和主题）的吞吐量，因为必须将记录的所有消息 ID 都与新提交的消息标识符进行匹配。
 
@@ -69,5 +63,9 @@ ms.locfileid: "83796859"
 * [服务总线队列入门](service-bus-dotnet-get-started-with-queues.md)
 * [如何使用服务总线主题和订阅](service-bus-dotnet-how-to-use-topics-subscriptions.md)
 
+在客户端代码无法使用与以前相同的 MessageId 重新提交消息的场景中，设计能够安全地重新进行处理的消息非常重要。 这篇[关于幂等性的博客文章](https://particular.net/blog/what-does-idempotent-mean)介绍了如何实现这一点的各种技术。
+
 [1]: ./media/duplicate-detection/create-queue.png
 [2]: ./media/duplicate-detection/queue-prop.png
+
+<!-- Update_Description: update meta properties, wording update, update link -->

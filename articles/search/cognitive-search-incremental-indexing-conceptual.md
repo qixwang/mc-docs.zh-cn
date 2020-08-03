@@ -9,20 +9,32 @@ ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 01/09/2020
 ms.date: 07/02/2020
-ms.openlocfilehash: 63dd2e77a29db1b0703010f4a75bbb1a8ccf4b1a
-ms.sourcegitcommit: 5afd7c4c3be9b80c4c67ec55f66fcf347aad74c6
+ms.openlocfilehash: a1e22e7a22f883715c1a166c58a39108291ee40b
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85942516"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471905"
 ---
 # <a name="incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Azure 认知搜索中的增量扩充和缓存
 
 > [!IMPORTANT] 
 > 增量扩充目前以公共预览版提供。 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。
-> [REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供了此功能。 目前不支持门户或 .NET SDK。
+> [REST API 版本 2020-06-30-Preview](search-api-preview.md) 提供此功能。 目前不支持门户或 .NET SDK。
 
-增量扩充将缓存和有状态性添加到扩充管道，可以保护对现有输出的投资，同时仅更改受特定修改影响的文档。 这不仅可以保护在处理（特别是 OCR 和图像处理）方面的投资，而且还能提高系统的效率。 缓存结构和内容时，索引器可以确定哪些技能已更改，并仅运行已修改的技能以及任何下游相关技能。 
+“增量扩充”是一项针对[技能组](cognitive-search-working-with-skillsets.md)的功能。 它利用 Azure 存储保存扩充管道发出的处理输出，方便在将来的索引器运行中重复使用。 索引器会尽可能重复使用任何仍有效的缓存输出。 
+
+增量扩充不仅可以保护在处理（特别是 OCR 和图像处理）方面的投资，而且还能提高系统的效率。 缓存结构和内容时，索引器可以确定哪些技能已更改，并仅运行已修改的技能以及任何下游相关技能。 
+
+使用增量缓存的工作流包括以下步骤：
+
+1. [创建或标识用于存储缓存的 Azure 存储帐户](../storage/common/storage-account-create.md)。
+1. 在索引器中[启用增量扩充](search-howto-incremental-index.md)。
+1. [创建索引器](https://docs.microsoft.com/rest/api/searchservice/create-indexer)加上[技能组](https://docs.microsoft.com/rest/api/searchservice/create-skillset)以调用管道。 在处理过程中，会为 Blob 存储中的每个文档保存扩充的各个阶段，供将来使用。
+1. 测试代码，对其进行更改后使用[更新技能组](https://docs.microsoft.com/rest/api/searchservice/update-skillset)修改定义。
+1. [运行索引器](https://docs.microsoft.com/rest/api/searchservice/run-indexer)以调用管道，从而检索缓存的输出以进行更快且更经济高效的处理。
+
+若要详细了解使用现有索引器时的步骤和注意事项，请参阅[设置增量扩充](search-howto-incremental-index.md)。
 
 ## <a name="indexer-cache"></a>索引器缓存
 
@@ -84,7 +96,7 @@ ms.locfileid: "85942516"
 以下示例演示带有参数的“更新技能集”请求：
 
 ```http
-PUT https://customerdemos.search.azure.cn/skillsets/callcenter-text-skillset?api-version=2019-05-06-Preview&disableCacheReprocessingChangeDetection=true
+PUT https://customerdemos.search.azure.cn/skillsets/callcenter-text-skillset?api-version=2020-06-30-Preview&disableCacheReprocessingChangeDetection=true
 ```
 
 ### <a name="bypass-data-source-validation-checks"></a>绕过数据源验证检查
@@ -92,7 +104,7 @@ PUT https://customerdemos.search.azure.cn/skillsets/callcenter-text-skillset?api
 对数据源定义进行的大部分更改都会使缓存失效。 但是，如果你知道某项更改不会使缓存失效 - 例如，在存储帐户中更改连接字符串或轮换密钥 - 请在数据源更新中追加 `ignoreResetRequirement` 参数。 将此参数设置为 `true` 可让提交操作继续，而不会触发重置条件，导致重新生成并从头开始填充所有对象。
 
 ```http
-PUT https://customerdemos.search.azure.cn/datasources/callcenter-ds?api-version=2019-05-06-Preview&ignoreResetRequirement=true
+PUT https://customerdemos.search.azure.cn/datasources/callcenter-ds?api-version=2020-06-30-Preview&ignoreResetRequirement=true
 ```
 
 ### <a name="force-skillset-evaluation"></a>强制技能集评估
@@ -140,15 +152,15 @@ PUT https://customerdemos.search.azure.cn/datasources/callcenter-ds?api-version=
 
 ## <a name="api-reference"></a>API 参考
 
-REST API 版本 `2019-05-06-Preview` 通过索引器、技能集和数据源中的附加属性提供增量扩充。 除参考文档以外，另请参阅[为增量扩充配置缓存](search-howto-incremental-index.md)来了解有关如何调用 API 的详细信息。
+REST API 版本 `2020-06-30-Preview` 通过索引器中的附加属性提供增量扩充。 技能组和数据源可以使用正式版。 除参考文档以外，另请参阅[为增量扩充配置缓存](search-howto-incremental-index.md)来了解有关如何调用 API 的详细信息。
 
-+ [创建索引器 (api-version=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-indexer) 
++ [创建索引器 (api-version=2020-06-30-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-indexer) 
 
-+ [更新索引器 (api-version=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-indexer) 
++ [更新索引器 (api-version=2020-06-30-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-indexer) 
 
-+ [更新技能集 (api-version=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-skillset)（请求中的新 URI 参数）
++ [更新技能组 (api-version=2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/update-skillset)（请求中的新 URI 参数）
 
-+ [重置技能集 (api-version=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/reset-skills)
++ [重置技能 (api-version=2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/reset-skills)
 
 + 数据库索引器（Azure SQL、Cosmos DB）。 某些索引器通过查询检索数据。 对于检索数据的查询，[更新数据源](https://docs.microsoft.com/rest/api/searchservice/update-data-source)支持在请求中使用新参数 **ignoreResetRequirement**，如果更新操作不应使缓存失效，则应将此参数设置为 `true`。 
 

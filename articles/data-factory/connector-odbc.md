@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 数据工厂从 ODBC 源复制数据
-description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 OData 源复制到支持的接收器数据存储。
+title: 使用 Azure 数据工厂从/向 ODBC 数据存储复制数据
+description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，从/向 ODBC 数据存储复制数据。
 services: data-factory
 documentationcenter: ''
 author: WenJason
@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 04/22/2020
-ms.date: 06/15/2020
+ms.date: 07/27/2020
 ms.author: v-jay
-ms.openlocfilehash: 6c74f58abeacf743ec7bf800bb57f50b03ef148d
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.openlocfilehash: 99df7133db548a2662f35e12944878e7da2842ac
+ms.sourcegitcommit: 0eaa82cf74477d26d06bdd8fb6e715e6ed1339c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723386"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86974302"
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 ODBC 数据存储复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -33,7 +33,7 @@ ms.locfileid: "84723386"
 
 可将数据从 ODBC 源复制到任何受支持的接收器数据存储，或者从任何受支持的源数据存储复制到 ODBC 接收器。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
-具体而言，此 ODBC 连接器支持使用 **Basic** 或 **Anonymous** 身份验证从/向任何与 ODBC 兼容的数据存储**** 复制数据。 需要 **64 位 ODBC 驱动程序**。 对于 ODBC 接收器，ADF 支持 ODBC 版本 2.0 标准版。
+具体而言，此 ODBC 连接器支持使用 **Basic** 或 **Anonymous** 身份验证从/向任何与 ODBC 兼容的数据存储复制数据。 需要 **64 位 ODBC 驱动程序**。 对于 ODBC 接收器，ADF 支持 ODBC 版本 2.0 标准版。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -190,7 +190,7 @@ ODBC 链接服务支持以下属性：
 
 ### <a name="odbc-as-sink"></a>ODBC 作为接收器
 
-要向与 ODBC 兼容的数据存储复制数据，请将复制活动中的接收器类型设置为“OdbcSink”****。 复制活动接收器部分中支持以下属性****：
+要向与 ODBC 兼容的数据存储复制数据，请将复制活动中的接收器类型设置为“OdbcSink”。 复制活动接收器部分中支持以下属性：
 
 | 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
@@ -240,13 +240,13 @@ ODBC 链接服务支持以下属性：
 
 ## <a name="troubleshoot-connectivity-issues"></a>解决连接问题
 
-若要解决连接问题，请使用“集成运行时配置管理器”**** 的“诊断”**** 选项卡。
+若要解决连接问题，请使用“集成运行时配置管理器”的“诊断”选项卡。
 
-1. 启动集成运行时配置管理器****。
-2. 切换到“诊断”**** 选项卡。
-3. 在“测试连接”部分下，选择数据存储的“类型”****（链接服务）。
-4. 指定用于连接数据存储的“连接字符串”****，选择“身份验证”**** 并输入“用户名”****、“密码”**** 和/或“凭据”****。
-5. 单击“测试连接”**** 以测试数据存储的连接。
+1. 启动集成运行时配置管理器。
+2. 切换到“诊断”选项卡。
+3. 在“测试连接”部分下，选择数据存储的“类型”（链接服务）。
+4. 指定用于连接数据存储的“连接字符串”，选择“身份验证”并输入“用户名”、“密码”和/或“凭据”。
+5. 单击“测试连接”以测试数据存储的连接。
 
 ## <a name="next-steps"></a>后续步骤
 有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

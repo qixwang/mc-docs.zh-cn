@@ -8,21 +8,25 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: e3db9dc5eb419f30449cc1dd9128c8e19edb7a76
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 07/20/2020
+ms.openlocfilehash: 3b41e08e810aeb7370ecca5d9baa51969cbad00a
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292924"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471790"
 ---
 # <a name="data-import-overview---azure-cognitive-search"></a>数据导入概述 - Azure 认知搜索
 
-在 Azure 认知搜索中，将会针对已加载和已保存到[搜索索引](search-what-is-an-index.md)中的内容执行查询。 本文介绍填充索引的两种基本方法：一种是推送，即以编程方式将数据推送至索引；  另一种是拉取，即将 [Azure 认知搜索索引器](search-indexer-overview.md)指向支持的数据源，以便拉取数据。 
+在 Azure 认知搜索中，将会针对已加载和已保存到[搜索索引](search-what-is-an-index.md)中的内容执行查询。 本文介绍填充索引的两种基本方法：一种是推送，即以编程方式将数据推送至索引；  另一种是拉取，即将 [Azure 认知搜索索引器](search-indexer-overview.md)指向支持的数据源，以便拉取数据。
 
-不管使用哪种方法，目的都是将数据从外部数据源加载到 Azure 认知搜索索引中。  Azure 认知搜索会允许你创建空索引，但在你将数据推送到其中或从其拉取数据之前，该索引是不可查询的。
+不管使用哪种方法，目的都是将数据从外部数据源加载到 Azure 认知搜索索引中。 Azure 认知搜索会允许你创建空索引，但在你将数据推送到其中或从其拉取数据之前，该索引是不可查询的。
+
+> [!NOTE]
+> 如果 [AI 扩充](cognitive-search-concept-intro.md)是解决方案要求，则必须使用拉取模型（索引器）来加载索引。 只能通过附加到索引器的技能组来支持外部处理。
 
 ## <a name="pushing-data-to-an-index"></a>将数据推送至索引
+
 推送模式用于以编程方式将数据发送到 Azure 认知搜索，是最灵活的方法。 首先，它对数据源类型没有限制。 任何由 JSON 文档组成的数据集都可以推送至 Azure 认知搜索索引，前提是数据集中的每个文档的字段都映射到索引架构中定义的字段。 其次，它对执行频率没有限制。 可以根据需要选择相应的频率，将更改推送到索引。 对于具有极低延迟要求的应用程序（例如，如果需要搜索操作与动态库存数据库同步），只能选择推送模型。
 
 此方法相比拉模型更加灵活，因为可以单个或批量上传文档（每批最多 1000 个或 16MB，以先达到为准）。 推送模型还允许将文档上传到 Azure 认知搜索，而不考虑数据的位置。
@@ -56,27 +60,26 @@ ms.locfileid: "79292924"
 | `mergeOrUpload` |如果索引中已存在具有给定关键字段的文档，则此操作的行为类似于 `merge`。 如果该文档不存在，则它的行为类似于对新文档进行 `upload` 。 |键，以及要定义的任何其他字段 |- |
 | `delete` |从索引中删除指定文档。 |仅关键字段 |所指定关键字段以外的所有字段都会被忽略。 如果要从文档中删除单个字段，请改用 `merge`，只需将该字段显式设置为 null。 |
 
-## <a name="decide-which-indexing-action-to-use"></a>确定要使用的索引操作
-若要使用 .NET SDK 导入数据，请执行 upload、merge、delete 和 mergeOrUpload 操作。 根据选择的以下操作，每个文档必须仅包含某些特定的字段：
-
-
 ### <a name="formulate-your-query"></a>表述查询
+
 有两种方法可以 [使用 REST API 搜索索引](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)。 一种方法是发出 HTTP POST 请求，这种请求的查询参数在请求主题的 JSON 对象中定义。 另一种方法是发出 HTTP GET 请求，这种请求的查询参数在请求 URL 中定义。 POST 的查询参数大小限制比 GET [宽松](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)。 因此建议使用 POST，使用 GET 更方便的特殊情况除外。
 
-POST 和 GET 都需要在请求 URL 中提供*服务名称*、*索引名称*和正确的 *API 版本*（发布本文档时的 API 版本为 `2019-05-06`）。 GET 的 URL 末尾为*查询字符串*，用于提供查询参数。 有关 URL 格式，请参见以下内容：
+对于 POST 和 GET，都需要在请求 URL 中提供“服务名称”、“索引名称”和“API 版本”。 
 
-    https://[service name].search.azure.cn/indexes/[index name]/docs?[query string]&api-version=2019-05-06
+GET 的 URL 末尾为*查询字符串*，用于提供查询参数。 有关 URL 格式，请参见以下内容：
 
-POST 的 URL 格式相同，只是查询字符串参数仅包含 API 版本。
+    https://[service name].search.azure.cn/indexes/[index name]/docs?[query string]&api-version=2020-06-30
 
+POST 的 URL 格式相同，但查询字符串参数包含 `api-version`。
 
 ## <a name="pulling-data-into-an-index"></a>将数据拉取到索引中
-提取模型对支持的数据源进行爬网，将数据自动上传到索引中。 在 Azure 认知搜索中，此功能是通过索引器  实现的，目前适用于以下平台：
+
+提取模型对支持的数据源进行爬网，将数据自动上传到索引中。 在 Azure 认知搜索中，此功能是通过索引器实现的，目前适用于以下平台：
 
 + [Blob 存储](search-howto-indexing-azure-blob-storage.md)
 + [表存储](search-howto-indexing-azure-tables.md)
-+ [Azure Cosmos DB](https://aka.ms/documentdb-search-indexer)
-+ [Azure VM 上的 Azure SQL 数据库和 SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
++ [Azure Cosmos DB](search-howto-index-cosmosdb.md)
++ [Azure VM 上的 Azure SQL 数据库、SQL 托管实例和 SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 
 索引器将索引连接到数据源（通常是表、视图或等效的结构），将源字段映射到索引中的等效字段。 在执行期间，行集会自动转换为 JSON 并载入指定的索引中。 所有索引器支持计划，使用户能够指定数据的刷新频率。 大多数索引器提供更改跟踪（如果受数据源的支持）。 除了识别新文档外，通过跟踪对现有文档的更改和删除外，索引器免除了主动管理索引中数据的必要。 
 

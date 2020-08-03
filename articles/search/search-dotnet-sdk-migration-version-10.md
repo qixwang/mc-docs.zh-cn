@@ -9,21 +9,21 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 4c3e8b9364a3126b63bb473d628ec4d3956ca5ac
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 07/17/2020
+ms.openlocfilehash: 37bc6fe31cfd75b2fc940875f360dbd25f623095
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850187"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471892"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-10"></a>升级到 Azure 认知搜索 .NET SDK 版本 10
 
-如果你使用的是 9.0 或更低版本的 [Azure 搜索 .NET SDK](https://aka.ms/search-sdk)，本文可帮助你升级应用程序，以使用版本 10。
+如果你使用的是 9.0 或更低版本的 [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)，本文可帮助你升级应用程序，以使用版本 10。
 
 Azure 搜索在版本 10 中重命名为 Azure 认知搜索，但命名空间和包名不变。 以前的 SDK 版本（9.0 及更低版本）仍使用以前的名称。 若要详细了解如何使用 SDK（包括示例），请参阅[如何从 .NET 应用程序使用 Azure 认知搜索](search-howto-dotnet-sdk.md)。
 
-版本 10 中增加了多项功能和 bug 修复，其功能级别与最新的 REST API 版本 `2019-05-06` 相同。 如果某项更改会中断现有的代码，我们将[逐步引导你解决相关的问题](#UpgradeSteps)。
+版本 10 中增加了多项功能和 bug 修复，使其功能级别与 REST API 版本 `2019-05-06` 相同。 如果某项更改会中断现有的代码，我们将[逐步引导你解决相关的问题](#UpgradeSteps)。
 
 > [!NOTE]
 > 如果你使用的是版本 8.0-preview 或更低版本，应先升级到版本 9，再升级到版本 10。 有关说明，请参阅[升级到 Azure 搜索 .NET SDK 版本 9](search-dotnet-sdk-migration-version-9.md)。
@@ -33,7 +33,7 @@ Azure 搜索在版本 10 中重命名为 Azure 认知搜索，但命名空间和
 <a name="WhatsNew"></a>
 
 ## <a name="whats-new-in-version-10"></a>版本 10 中的新增功能
-Azure 认知搜索 .NET SDK 版本 10 面向 REST API 的最新正式版 (`2019-05-06`)，其中包含以下更新：
+Azure 认知搜索 .NET SDK 版本 10 面向 REST API `2019-05-06`，其中包含以下更新：
 
 * 引入了两项新技能 - [条件技能](cognitive-search-skill-conditional.md)和[文本翻译技能](cognitive-search-skill-text-translation.md)。
 * 重新组织了[整形程序技能](cognitive-search-skill-shaper.md)输入的结构，以适应嵌套上下文的合并。 有关详细信息，请参阅此[示例 JSON 定义](https://docs.azure.cn/search/cognitive-search-skill-shaper#scenario-3-input-consolidation-from-nested-contexts)。
@@ -69,7 +69,7 @@ Azure 认知搜索 .NET SDK 版本 10 面向 REST API 的最新正式版 (`2019-
 
 版本 9 和更低版本中错误地指定了[自定义 Web API 技能](cognitive-search-custom-skill-web-api.md)的定义。 
 
-`WebApiSkill` 的模型将 `HttpHeaders` 指定为包含字典的对象属性。  以这种方式创建带有 `WebApiSkill` 构造的技能集会导致异常，因为 REST API 会将请求视为格式不当。 此问题已得到更正，`HttpHeaders` 现在会设置为 `WebApiSkill` 模型本身上的**顶级字典属性** - 请求被视为来自 REST API 的有效请求。
+`WebApiSkill` 的模型将 `HttpHeaders` 指定为包含字典的对象属性。 以这种方式创建带有 `WebApiSkill` 构造的技能集会导致异常，因为 REST API 会将请求视为格式不当。 此问题已得到更正，`HttpHeaders` 现在会设置为 `WebApiSkill` 模型本身上的**顶级字典属性** - 请求被视为来自 REST API 的有效请求。
 
 例如，如果你以前尝试按如下所示实例化 `WebApiSkill`：
 

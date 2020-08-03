@@ -3,15 +3,17 @@ title: 常见问题
 description: 有关 Azure 容器实例服务的常见问题解答
 author: rockboyfor
 ms.topic: article
-origin.date: 04/10/2020
-ms.date: 06/08/2020
+origin.date: 06/02/2020
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 122d4af42f14bba569c6ec369943dd52db7f1a04
-ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
+ms.openlocfilehash: c5602c7f233a07f317e2757aaedbfd5c61b78222
+ms.sourcegitcommit: 5726d3b2e694f1f94f9f7d965676c67beb6ed07c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84564332"
+ms.lasthandoff: 07/21/2020
+ms.locfileid: "86863139"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>有关 Azure 容器实例的常见问题解答
 
@@ -27,24 +29,34 @@ ms.locfileid: "84564332"
 
 ### <a name="how-can-i-speed-up-the-deployment-of-my-container"></a>如何加速容器的部署？
 
-由于部署速度的主要决定因素之一是映像大小，因此请找到减小大小的办法。 删除不需要的层，或者减小映像中的层大小（选择较精简的基础 OS 映像）。 例如，如果运行 Linux 容器，请考虑使用 Alpine 作为基础映像，而不是使用完整的 Ubuntu Server。
+由于部署速度的主要决定因素之一是映像大小，因此请找到减小大小的办法。 删除不需要的层，或者减小映像中的层大小（选择较精简的基础 OS 映像）。 例如，如果运行 Linux 容器，请考虑使用 Alpine 作为基础映像，而不是使用完整的 Ubuntu Server。 同样，对于 Windows 容器，请尽可能地使用 Nano Server 基础映像。 
 
-<!--Not Available on  Similarly, for Windows containers, use a Nano Server base image if possible. -->
-
-还应查看 Azure 容器映像中预缓存映像的列表（通过[列出缓存的映像](https://docs.microsoft.com/rest/api/container-instances/listcachedimages) API 获取）。 也许可以换出某个预缓存映像的映像层。 
+还应查看 Azure 容器映像中预缓存映像的列表（通过[列出缓存的映像](https://docs.microsoft.com/rest/api/container-instances/location/listcachedimages) API 获取）。 也许可以换出某个预缓存映像的映像层。 
 
 有关如何减少容器启动时间，请参阅[更详细的指南](container-instances-troubleshooting.md#container-takes-a-long-time-to-start)。
 
-<!--Not Available on ### What Windows base OS images are supported?-->
+### <a name="what-windows-base-os-images-are-supported"></a>支持哪些 Windows 基础 OS 映像？
 
-<!--Not Available on #### Windows Server 2016 base image-->
-<!--Not Available on #### Windows Server 2019 and client base images (preview)-->
+> [!NOTE]
+> 由于 Windows 在 2020 年更新后存在后向兼容性问题，因此以下映像版本包括我们建议你在基础映像中使用的最低版本号。 使用较旧映像版本的当前部署不受影响，但新部署应遵循以下基础映像的要求。 
+
+#### <a name="windows-server-2016-base-images"></a>Windows Server 2016 基础映像
+
+* [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver)：`sac2016`、`10.0.14393.3506` 或更新版本
+* [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore)：`ltsc2016`、`10.0.14393.3506` 或更新版本
+
+> [!NOTE]
+> 不支持基于半年频道版本 1709 或 1803 的 Windows 映像。
+
+#### <a name="windows-server-2019-and-client-base-images-preview"></a>Windows Server 2019 和客户端基础映像（预览版）
+
+* [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver)：`1809`、`10.0.17763.1040` 或更新版本
+* [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore)：`ltsc2019`、`1809`、`10.0.17763.1040` 或更新版本
+* [Windows](https://hub.docker.com/_/microsoft-windows)：`1809`、`10.0.17763.1040` 或更新版本
 
 ### <a name="what-net-or-net-core-image-layer-should-i-use-in-my-container"></a>应在容器中使用哪个 .NET 或 .NET Core 映像层？ 
 
-使用符合要求的最小映像。 对于 Linux，可以使用 *runtime-alpine* .NET Core 映像，从 .NET Core 2.1 版本开始就已支持此映像。
-
-<!--Not Available on  For Windows, if you are using the full .NET Framework, then you need to use a Windows Server Core image (runtime-only image, such as  *4.7.2-windowsservercore-ltsc2016*). Runtime-only images are smaller but do not support workloads that require the .NET SDK.-->
+使用符合要求的最小映像。 对于 Linux，可以使用 *runtime-alpine* .NET Core 映像，从 .NET Core 2.1 版本开始就已支持此映像。 对于 Windows，如果使用完整的 .NET Framework，则需要使用 Windows Server Core 映像（仅限运行时的映像，例如 *4.7.2-windowsservercore-ltsc2016*）。 仅限运行时的映像较小，但不支持需要 .NET SDK 的工作负荷。
 
 ## <a name="availability-and-quotas"></a>可用性和配额
 
@@ -79,8 +91,9 @@ Azure 容器实例旨在用作无服务器按需容器服务，因此，我们�
 
 目前，容器或容器组不可缩放。 如果需要运行更多实例，请使用我们的 API 进行自动化，并创建更多请求以在服务中创建容器组。 
 
-<!--Not Available on ### What features are available to instances running in a custom VNet?-->
-<!--Not Available on [deploy container groups in an Azure virtual network](container-instances-vnet.md)-->
+### <a name="what-features-are-available-to-instances-running-in-a-custom-vnet"></a>自定义 VNet 中运行的实例可以使用哪些功能？
+
+可以[在所选 Azure 虚拟网络中部署容器组](container-instances-vnet.md)，并将专用 IP 委托给容器组，以在 VNet 中跨 Azure 资源路由流量。 将容器组部署到虚拟网络目前适用于一部分 Azure 区域中的生产工作负荷。
 
 ## <a name="pricing"></a>定价
 

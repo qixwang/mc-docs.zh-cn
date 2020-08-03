@@ -4,25 +4,23 @@ description: 了解如何使用 Azure 通知中心向特定用户推送通知。
 documentationcenter: ios
 author: sethm
 manager: femila
-editor: jwargo
 services: notification-hubs
-ms.assetid: 1f7d1410-ef93-4c4b-813b-f075eed20082
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
 origin.date: 01/04/2019
-ms.date: 12/09/2019
+ms.date: 07/21/2020
 ms.author: v-tawe
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 7ead37d90127d3b3ddea3a4c8f407f2572263e97
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 78af0b52d0816542899bfe1746e6280b43dd0a3a
+ms.sourcegitcommit: 5656c18d7d2faa09329b1a15e352d1622e252d5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74885034"
+ms.lasthandoff: 07/21/2020
+ms.locfileid: "86862833"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-users-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向特定用户发送推送通知
 
@@ -43,14 +41,14 @@ ms.locfileid: "74885034"
 
 ## <a name="prerequisites"></a>先决条件
 
-本教程假设已根据[通知中心入门 (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md) 中所述创建并配置了通知中心。 此外，只有在学习本教程后，才可以学习[安全推送 (iOS)](notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md) 教程。
+本教程假设你已按照[使用 Azure 通知中心将推送通知发送到 iOS 应用](ios-sdk-get-started.md)中所述的要求创建并配置了通知中心。 此外，只有在学习本教程后，才可以学习[安全推送 (iOS)](notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md) 教程。
 如果要使用移动应用作为后端服务，请参阅[移动应用中的推送通知入门](../app-service-mobile/app-service-mobile-ios-get-started-push.md)。
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
 ## <a name="modify-your-ios-app"></a>修改 iOS 应用
 
-1. 打开在[通知中心入门 (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md) 教程中创建的“单页视图”应用。
+1. 打开你在[使用 Azure 通知中心将推送通知发送到 iOS 应用](ios-sdk-get-started.md)教程中创建的单页视图应用。
 
    > [!NOTE]
    > 本节假定项目配置了空的组织名称。 如果未配置，需要在所有类名前面追加组织名称。
@@ -63,12 +61,12 @@ ms.locfileid: "74885034"
 
    * **用户名**：包含占位符文本“*输入用户名*”的 UITextField，直接位于发送结果标签的下面并受左右边距的限制。
    * **密码**：包含占位符文本“*输入密码*”的 UITextField，直接位于用户名文本字段的下面并受左右边距的限制。 选中属性检查器中“返回密钥”下的“安全文本输入”选项   。
-   * **登录**：直接位于密码文本字段下方的标签式 UIButton，并取消选中属性检查器中“控件内容”下的“已启用”选项  
+   * **登录**：直接位于密码文本字段下方的标签式 UIButton，并取消选中属性检查器中“控件内容”下的“已启用”选项
    * **WNS**：标签和开关，用于已在中心设置 Windows 通知服务时，启用将通知发送到 Windows 通知服务。 请参阅 [Windows 入门](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)教程。
    * **APNS**：标签和开关，用于启用将通知发送到 Apple 平台通知服务。
    * **收件人用户名：** 包含占位符文本的 UITextField
 
-     某些组件已在[通知中心入门 (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md) 教程中添加。
+     在[使用 Azure 通知中心将推送通知发送到 iOS 应用](ios-sdk-get-started.md)教程中添加了一些组件。
 
 3. 按 **Ctrl** 的同时从视图中的组件拖至 `ViewController.h` 并添加这些新插座。
 
@@ -84,6 +82,7 @@ ms.locfileid: "74885034"
 
     // Used to enabled sending notifications across platforms
     @property (weak, nonatomic) IBOutlet UISwitch *WNSSwitch;
+    @property (weak, nonatomic) IBOutlet UISwitch *GCMSwitch;
     @property (weak, nonatomic) IBOutlet UISwitch *APNSSwitch;
 
     - (IBAction)LogInAction:(id)sender;
@@ -344,9 +343,9 @@ ms.locfileid: "74885034"
     }
     ```
 
-    请注意设置设备令牌时如何启用登录按钮。 这是因为在登录操作过程中，视图控制器将使用应用后端注册推送通知。 因此，在正确设置设备令牌前，系统不希望出现登录操作。 只要登录操作发生在推送注册前，即可分离这两个操作。
+    请注意设置设备令牌时如何启用“登录”按钮。 这是因为在登录操作过程中，视图控制器将使用应用后端注册推送通知。 你不希望在正确设置设备令牌之前能够访问“登录”操作。 只要登录操作发生在推送注册前，即可分离这两个操作。
 
-11. 在 ViewController.m 中，使用以下代码段实现“登录”按钮的操作方法以及使用 ASP.NET 后端发送通知消息的方法  。
+11. 在 ViewController.m 中，使用以下代码片段实现“登录”按钮的操作方法以及使用 ASP.NET 后端发送通知消息的方法。
 
     ```objc
     - (IBAction)LogInAction:(id)sender {
@@ -439,6 +438,9 @@ ms.locfileid: "74885034"
         if ([self.WNSSwitch isOn])
             [self SendNotificationASPNETBackend:@"wns" UsernameTag:self.RecipientField.text Message:json];
 
+        if ([self.GCMSwitch isOn])
+            [self SendNotificationASPNETBackend:@"gcm" UsernameTag:self.RecipientField.text Message:json];
+
         if ([self.APNSSwitch isOn])
             [self SendNotificationASPNETBackend:@"apns" UsernameTag:self.RecipientField.text Message:json];
     }
@@ -453,7 +455,7 @@ ms.locfileid: "74885034"
     self.registerClient = [[RegisterClient alloc] initWithEndpoint:BACKEND_ENDPOINT];
     ```
 
-14. 现在，在 AppDelegate.m 中，删除 `application:didRegisterForPushNotificationWithDeviceToken:` 方法的所有内容并将其替换为以下内容，以确保视图控制器包含从 APN 中检索到的最新设备令牌  ：
+14. 现在，在 `AppDelegate.m` 中，删除 `application:didRegisterForPushNotificationWithDeviceToken:` 方法的所有内容并将其替换为以下内容（以确保视图控制器包含从 APN 中检索到的最新设备令牌）：
 
     ```objc
     // Add import to the top of the file
@@ -479,7 +481,7 @@ ms.locfileid: "74885034"
 ## <a name="test-the-application"></a>测试应用程序
 
 1. 在 XCode 中，在物理 iOS 设备上运行此应用（推送通知无法在模拟器中正常工作）。
-2. 在 iOS 应用 UI 中，为用户名和密码输入相同的值。 然后，单击“登录”  。
+2. 在 iOS 应用 UI 中，为用户名和密码输入相同的值。 然后单击“登录”。
 
     ![iOS 测试应用程序][2]
 

@@ -2,19 +2,19 @@
 title: 容器组的静态 IP 地址
 description: 在虚拟网络中创建容器组，并使用 Azure 应用程序网关向容器化 Web 应用公开静态前端 IP 地址
 ms.topic: article
-ms.date: 05/06/2020
+origin.date: 03/16/2020
+ms.date: 07/27/2020
+ms.testscope: yes
+ms.testdate: 07/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 5a8092a70e7dbc4fabd7328dc7c3a5a98b2263ef
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: dccfdc21a964ebd66c41ac33566406d947974adf
+ms.sourcegitcommit: 5726d3b2e694f1f94f9f7d965676c67beb6ed07c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392421"
+ms.lasthandoff: 07/21/2020
+ms.locfileid: "86863105"
 ---
-<!--Failed to create appContainer-->
-<!--DO NOT RELEASE THIS ARTICLES-->
-<!--Verified cmdlet to Line 65-->
-<!--Need to Verified the next cmdlet-->
+<!--Verified successfull-->
 # <a name="expose-a-static-ip-address-for-a-container-group"></a>公开容器组的静态 IP 地址
 
 本文介绍一种使用 Azure [应用程序网关](../application-gateway/overview.md)公开[容器组](container-instances-container-groups.md)的静态公共 IP 地址的方法。 如果需要在 Azure 容器实例中运行的某个面向外部的容器化应用的静态入口点，请按这些步骤操作。 
@@ -22,7 +22,7 @@ ms.locfileid: "83392421"
 本文使用 Azure CLI 为此方案创建资源：
 
 * Azure 虚拟网络
-* 部署在[虚拟网络（预览版）](container-instances-vnet.md)中的一个容器组，其中托管了一个小型 Web 应用
+* 部署在[虚拟网络](container-instances-vnet.md)中的一个容器组，其中托管了一个小型 Web 应用
 * 一个使用公共前端 IP 地址的应用程序网关、一个用于在网关上托管网站的侦听器，以及一个用于连接后端容器组的路由
 
 只要应用程序网关运行，并且容器组公开网络委托子网中的某个稳定专用 IP 地址，就可以通过此公共 IP 地址访问该容器组。
@@ -72,9 +72,6 @@ az network public-ip create \
   --sku Standard
 ```
 
-<!--Verified successfully above-->
-<!--Need to Verified the below-->
-
 ## <a name="create-container-group"></a>创建容器组
 
 运行以下 [az container create][az-container-create] 命令，在上一步配置的虚拟网络中创建一个容器组。 
@@ -111,7 +108,7 @@ ACI_IP=$(az container show \
 
 ## <a name="create-application-gateway"></a>创建应用程序网关
 
-按照[应用程序网关快速入门](../application-gateway/quick-create-cli.md)中的步骤，在虚拟网络中创建应用程序网关。 以下 [az network application-gateway create][az-network-application-gateway-create] 命令创建一个网关，该网关使用某个公共前端 IP 地址以及用于连接后端容器组的路由。 有关网关设置的详细信息，请参阅[应用程序网关文档](/azure/application-gateway/)。
+按照[应用程序网关快速入门](../application-gateway/quick-create-cli.md)中的步骤，在虚拟网络中创建应用程序网关。 以下 [az network application-gateway create][az-network-application-gateway-create] 命令创建一个网关，该网关使用某个公共前端 IP 地址以及用于连接后端容器组的路由。 有关网关设置的详细信息，请参阅[应用程序网关文档](/application-gateway/)。
 
 ```azurecli
 az network application-gateway create \
@@ -127,11 +124,10 @@ az network application-gateway create \
   --servers "$ACI_IP" 
 ```
 
-
 Azure 最长可能需要花费 15 分钟时间来创建应用程序网关。 
 
 ## <a name="test-public-ip-address"></a>测试公共 IP 地址
-  
+
 现在，可以测试性地访问在应用程序网关后面的容器组中运行的 Web 应用。
 
 运行 [az network public-ip show][az-network-public-ip-show] 命令以检索网关的前端公共 IP 地址：
@@ -165,4 +161,4 @@ az network public-ip show \
 [az-container-show]: https://docs.microsoft.com/cli/azure/container?view=azure-cli-latest#az-container-show
 
 <!-- Update_Description: new article about container instances application gateway -->
-<!--NEW.date: 05/06/2020-->
+<!--NEW.date: 07/20/2020-->

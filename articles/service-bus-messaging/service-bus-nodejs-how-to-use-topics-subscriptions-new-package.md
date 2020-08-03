@@ -1,32 +1,26 @@
 ---
 title: 通过 Node.js 使用 Azure/服务总线主题和订阅
-description: 快速入门：了解如何通过 Node.js 应用在 Azure 中使用服务总线主题和订阅。
-services: service-bus-messaging
-documentationcenter: nodejs
-author: lingliw
-manager: digimobile
-editor: spelluru
-ms.assetid: b9f5db85-7b6c-4cc7-bd2c-bd3087c99875
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
+description: 快速入门 - 了解如何通过 Node.js 应用在 Azure 中使用服务总线主题和订阅。
+author: rockboyfor
 ms.devlang: nodejs
 ms.topic: quickstart
-origin.date: 01/16/2020
-ms.date: 2/6/2020
-ms.author: aschhab
-ms.openlocfilehash: bec843bc5f4b7ff43541625064bde1a187f3f521
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: yes
+ms.testdate: 07/20/2020
+ms.author: v-yeche
+ms.openlocfilehash: bf2aedfe071721e4c04d70ffe972d03855c56d15
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796792"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162342"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azureservice-bus-package"></a>快速入门：如何将服务总线主题和订阅与 Node.js 和 azure/service-bus 包配合使用
 本教程介绍如何使用新的 [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) 包编写一个 Node.js 程序，用于将消息发送到服务总线主题，并从服务总线订阅接收消息。 此包使用速度更快的 [AMQP 1.0 协议](service-bus-amqp-overview.md)，而旧版 [azure-sb](https://www.npmjs.com/package/azure-sb) 包使用的是[服务总线 REST 运行时 API](https://docs.microsoft.com/rest/api/servicebus/service-bus-runtime-rest)。 示例是使用 JavaScript 编写的。
 
 ## <a name="prerequisites"></a>先决条件
-- Azure 订阅。 若要完成本教程，需要一个 Azure 帐户。 你可以注册[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)或[预付费](https://wd.azure.cn/pricing/pia-waiting-list/?form-type=identityauth)。
+- Azure 订阅。 若要完成本教程，需要一个 Azure 帐户。 你可以激活 [MSDN 订阅者权益](https://www.azure.cn/offers/ms-mc-arz-msdn/)或注册[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 - 如果你没有可用的主题和订阅，请遵循[使用 Azure 门户创建服务总线主题和订阅](service-bus-quickstart-topics-subscriptions-portal.md)一文中的步骤创建主题和订阅。 记下服务总线实例的连接字符串，以及创建的主题和订阅的名称。 我们将在示例中使用这些值。
 
 > [!NOTE]
@@ -48,16 +42,16 @@ npm install @azure/service-bus
 
     ```javascript
     const { ServiceBusClient } = require("@azure/service-bus"); 
-    
+
     // Define connection string and related Service Bus entity names here
     const connectionString = "";
     const topicName = ""; 
-    
+
     async function main(){
       const sbClient = ServiceBusClient.createFromConnectionString(connectionString); 
       const topicClient = sbClient.createTopicClient(topicName);
       const sender = topicClient.createSender();
-      
+
         try {
             for (let i = 0; i < 10; i++) {
               const message= {
@@ -76,7 +70,7 @@ npm install @azure/service-bus
             await sbClient.close();
           }
     }
-    
+
     main().catch((err) => {
       console.log("Error occurred: ", err);
     });
@@ -98,28 +92,28 @@ npm install @azure/service-bus
 
     ```javascript
     const { ServiceBusClient, ReceiveMode } = require("@azure/service-bus"); 
-    
+
     // Define connection string and related Service Bus entity names here
     const connectionString = "";
     const topicName = ""; 
     const subscriptionName = ""; 
-    
+
     async function main(){
       const sbClient = ServiceBusClient.createFromConnectionString(connectionString); 
       const subscriptionClient = sbClient.createSubscriptionClient(topicName, subscriptionName);
       const receiver = subscriptionClient.createReceiver(ReceiveMode.receiveAndDelete);
-      
+
       try {
         const messages = await receiver.receiveMessages(10);
         console.log("Received messages:");
         console.log(messages.map(message => message.body));
-        
+
         await subscriptionClient.close();
       } finally {
         await sbClient.close();
       }
     }
-    
+
     main().catch((err) => {
       console.log("Error occurred: ", err);
     });
@@ -150,6 +144,6 @@ npm install @azure/service-bus
 
 - [队列、主题和订阅](service-bus-queues-topics-subscriptions.md)
 - 查看 [GitHub 上服务总线的其他 Nodejs 示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples/javascript)
-- [Node.js 开发人员中心](https://azure.microsoft.com/develop/nodejs/)
+- [Node.js 开发人员中心](https://docs.azure.cn/develop/nodejs/)
 
-
+<!-- Update_Description: update meta properties, wording update, update link -->

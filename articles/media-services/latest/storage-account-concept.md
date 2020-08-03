@@ -11,14 +11,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: article
 origin.date: 07/01/2019
-ms.date: 04/06/2020
+ms.date: 07/27/2020
 ms.author: v-jay
-ms.openlocfilehash: 187735a6b814987aed5b04a5a3c27c478cccea4c
-ms.sourcegitcommit: 1f890a4085e184cc678485d05f08dd6de8dc973f
+ms.openlocfilehash: d92acf9e9e46479bb50ba2b927a8e1e73eed1e7b
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84438924"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162221"
 ---
 # <a name="azure-storage-accounts"></a>Azure 存储帐户
 
@@ -33,7 +33,7 @@ ms.locfileid: "84438924"
 > [!NOTE]
 > 仅热访问层支持与 Azure 媒体服务配合使用，尽管其他访问层可用于降低未活跃使用的内容的存储成本。
 
-可以为存储帐户选择不同的 SKU。 有关详细信息，请参阅[存储帐户](/cli/storage/account?view=azure-cli-latest)。 若要通过存储帐户进行试验，请使用 `--sku Standard_LRS`。 但是，在选取用于生产的 SKU 时，应考虑 `--sku Standard_RAGRS`，以便通过异地复制确保业务连续性。 
+可以为存储帐户选择不同的 SKU。 有关详细信息，请参阅[存储帐户](/cli/storage/account?view=azure-cli-latest)。 若要通过存储帐户进行试验，请使用 `--sku Standard_LRS`。 但是，在选取用于生产的 SKU 时，应考虑 `--sku Standard_RAGRS`，以便通过异地复制确保业务连续性。
 
 ## <a name="assets-in-a-storage-account"></a>存储帐户中的资产
 

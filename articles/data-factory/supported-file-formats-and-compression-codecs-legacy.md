@@ -8,14 +8,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 12/10/2019
-ms.date: 05/11/2020
+ms.date: 07/27/2020
 ms.author: v-jay
-ms.openlocfilehash: c3565e1dfee83dd8b6496e2d92eac42281445557
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.openlocfilehash: 4e8623206ba6fa75a39828559efd30544ac7ee8c
+ms.sourcegitcommit: 0eaa82cf74477d26d06bdd8fb6e715e6ed1339c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82197983"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86974327"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory-legacy"></a>Azure 数据工厂（旧版）中支持的文件格式和压缩编解码器
 

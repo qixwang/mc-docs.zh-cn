@@ -7,45 +7,48 @@ author: HeidiSteen
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 04/09/2020
-ms.date: 06/09/2020
-ms.openlocfilehash: 092c3510923bd6003a99b90fa4b060e6e5c01e97
-ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
+origin.date: 06/23/2020
+ms.date: 07/20/2020
+ms.openlocfilehash: c079c3c134335627f3a03ce075355d8ba2e55cee
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84564224"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471844"
 ---
 # <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>部分字词搜索和包含特殊字符（通配符、正则表达式、模式）的模式
 
-部分字词搜索是指由字词片段组成的查询，其中没有包含整个字词，而可能只是包含字词的开头、中间部分或末尾（有时称为前缀查询、中缀查询或后缀查询）  。 模式可能是片段的组合形式，其中通常包含特殊字符，例如属于查询字符串一部分的短划线或斜杠  。 常见用例包括查询电话号码、URL、人员或产品代码或者组合词的组成部分。
+部分字词搜索是指由字词片段组成的查询，其中没有包含整个字词，而可能只是包含字词的开头、中间部分或末尾（有时称为前缀查询、中缀查询或后缀查询）  。 部分字词搜索可能包括片段的组合，其中通常包含特殊字符，例如属于查询字符串一部分的短划线或斜杠。 常见的用例包括电话号码、URL、代码或带连字符的组合词的一部分。
 
-如果索引未以预期格式提供字词，则部分搜索和模式搜索可能会出现问题。 在编制索引的[词法分析阶段](search-lucene-query-architecture.md#stage-2-lexical-analysis)（假设使用默认的标准分析器），会丢弃特殊字符，拆分复合和组合字符串，并删除空格；找不到任何匹配项时，所有这些操作可能导致模式查询失败。 例如，类似于 `+1 (425) 703-6214` 的电话号码（标记化为 `"1"`、`"425"`、`"703"`、`"6214"`）不会显示在 `"3-62"` 查询中，因为该内容并不实际存在于索引中。 
+如果索引未采用预期格式的标记，则包含特殊字符的部分字词搜索和查询字符串可能会出现问题。 在编制索引的[词法分析阶段](search-lucene-query-architecture.md#stage-2-lexical-analysis)（假设使用默认的标准分析器），会丢弃特殊字符，拆分复合词，并删除空格；找不到任何匹配项时，所有这些操作都可能会导致查询失败。 例如，类似于 `+1 (425) 703-6214` 的电话号码（标记化为 `"1"`、`"425"`、`"703"`、`"6214"`）不会显示在 `"3-62"` 查询中，因为该内容并不实际存在于索引中。 
 
-解决方法是调用一个分析器来保留完整的字符串（在必要的情况下包括空格和特殊字符），以便能够与部分字词和模式匹配。 为原有字符串创建附加的字段并使用内容保留分析器是该解决方法的基础。
+解决方案是在索引编制期间调用一个分析器来保留完整的字符串（在必要的情况下包括空格和特殊字符），以便可以在查询字符串中包括空格和这些字符。 同样，使用未标记化为较小部分的完整字符串可以为“开头为”或“结尾为”查询启用模式匹配，因此可以根据未经词法分析转换的字词评估你提供的模式。 为完整的字符串创建另外一个字段并使用发出完整字词标记的内容保留分析器，是同时适用于模式匹配和查询字符串（包含特殊字符）匹配的解决方案。
 
 > [!TIP]
-> 是否熟悉 Postman 和 REST API？ [下载查询示例集合](https://github.com/Azure-Samples/azure-search-postman-samples/)以查询本文中所述的部分字词和特殊字符。
+> 如果你熟悉 Postman 和 REST API，请[下载查询示例集合](https://github.com/Azure-Samples/azure-search-postman-samples/)以查询本文中所述的部分字词和特殊字符。
 
-## <a name="what-is-partial-search-in-azure-cognitive-search"></a>Azure 认知搜索中的部分搜索是什么
+## <a name="what-is-partial-term-search-in-azure-cognitive-search"></a>什么是 Azure 认知搜索中的部分字词搜索
 
-在 Azure 认知搜索中，部分搜索和模式采用以下形式：
+Azure 认知搜索在索引中扫描完整的标记化字词，不会基于部分字词查找匹配项，除非你包括通配符占位符运算符（`*` 和 `?`）或将查询格式设置为正则表达式。 部分字词是使用以下方法指定的：
 
-+ [前缀搜索](query-simple-syntax.md#prefix-search)，例如 `search=cap*`，匹配“Cap'n Jack's Waterfront Inn”或“Gacc Capital”。 可以使用简单查询语法或完整 Lucene 查询语法进行前缀搜索。
++ [正则表达式查询](query-lucene-syntax.md#bkmk_regex)，可以是在 Apache Lucene 下有效的任何正则表达式。 
 
-+ [通配符搜索](query-lucene-syntax.md#bkmk_wildcard)或[正则表达式](query-lucene-syntax.md#bkmk_regex)，搜索嵌入的字符串的模式或组成部分。 通配符和正则表达式需要完整 Lucene 语法。 后缀查询和索引查询以正则表达式的形式编写。
++ [进行前缀匹配的通配符运算符](query-simple-syntax.md#prefix-search)，指的是一种公认的模式，它包括一个字词的开头，后跟 `*` 或 `?` 后缀运算符，例如，`search=cap*` 将匹配“Cap'n Jack's Waterfront Inn”或“Gacc Capital”。 简单和完整的 Lucene 查询语法都支持前缀匹配。
 
-  下面是部分字词搜索的一些示例。 对于后缀查询，如果字词为“alphanumeric”，可以使用通配符搜索 (`search=/.*numeric.*/`) 来查找匹配项。 对于包含内部字符的部分字词，例如 URL 片段，可能需要添加转义字符。 在 JSON 中，使用反斜杠 `\` 来转义正斜杠 `/`。 因此，`search=/.*microsoft.com\/azure\/.*/` 是 URL 片段“microsoft.com/azure/”的语法。
++ [进行中缀和后缀匹配的通配符](query-lucene-syntax.md#bkmk_wildcard)，它将 `*` 和 `?` 运算符置于字词的内部或开头，并需要使用正则表达式语法（表达式用正斜杠围起来）。 例如，查询字符串 (`search=/.*numeric*./`) 会返回将“alphanumeric”和“alphanumerical”作为后缀匹配项和中缀匹配项的结果。
 
-如前所述，以上形式都要求索引包含有利于模式匹配的格式的字符串，但标准分析器并不提供这种格式。 执行本文中的步骤可以确保提供支持这些方案的所需内容。
+对于部分字词搜索或模式搜索以及一些其他的查询形式（例如模糊搜索），查询时不使用分析器。 对于分析程序根据运算符和分隔符的存在检测到的这些查询形式，查询字符串不经词法分析便直接传递给引擎。 对于这些查询形式，将忽略在字段上指定的分析器。
+
+> [!NOTE]
+> 当部分查询字符串在 URL 片段中包含诸如斜杠之类的字符时，你可能需要添加转义字符。 在 JSON 中，使用反斜杠 `\` 来转义正斜杠 `/`。 因此，`search=/.*microsoft.com\/azure\/.*/` 是 URL 片段“microsoft.com/azure/”的语法。
 
 ## <a name="solving-partialpattern-search-problems"></a>解决部分搜索/模式搜索的问题
 
-如果需要根据片段、模式或特殊字符进行搜索，可将默认分析器替代为自定义分析器，后者按照更简单的标记化规则运行，并保留完整的字符串。 退一步讲，该方法如下所述：
+如果需要根据片段、模式或特殊字符进行搜索，可将默认分析器替代为自定义分析器，后者按照更简单的标记化规则运行，在索引中保留整个字符串。 退一步讲，该方法如下所述：
 
-+ 定义一个字段，用于存储字符串的原有版本（假设需要已分析的和未分析的文本）
-+ 选择预定义的分析器或定义一个自定义分析器来输出未分析的原有字符串
-+ 将自定义分析器分配到字段
++ 定义一个字段，用于存储字符串的原有版本（假设在查询时需要已分析的和未分析的文本）
++ 对各种可在适当粒度级别发出标记的分析器进行评估和选择
++ 将分析器分配到字段
 + 生成并测试索引
 
 > [!TIP]
@@ -53,7 +56,7 @@ ms.locfileid: "84564224"
 
 ## <a name="duplicate-fields-for-different-scenarios"></a>不同方案的重复字段
 
-分析器按字段分配，这意味着可以在索引中创建字段，以针对不同的方案进行优化。 具体而言，可以定义“featureCode”和“featureCodeRegex”，以支持先执行普通的全文搜索，再执行高级模式匹配的操作。
+分析器将确定如何在索引中标记化字词。 由于分析器是按字段分配的，因此你可以在索引中创建字段，以针对不同的方案进行优化。 例如，可以定义“featureCode”和“featureCodeRegex”，这样就可以先执行常规的全文搜索，再进行高级模式匹配。 分配给每个字段的分析器将确定如何在索引中标记化每个字段的内容。  
 
 ```json
 {
@@ -85,9 +88,9 @@ ms.locfileid: "84564224"
 
 如果使用 Postman 等 Web API 测试工具，则可以添加[测试分析器 REST 调用](https://docs.microsoft.com/rest/api/searchservice/test-analyzer)来检查标记化的输出。
 
-必须有一个可供使用的现有索引。 对于现有的索引以及包含短划线或部分字词的字段，可以针对特定字词尝试各种分析器，以查看发出哪些标记。  
+你必须有一个可供使用的已填充索引。 对于现有的索引以及包含短划线或部分字词的字段，可以针对特定字词尝试各种分析器，以查看发出哪些标记。  
 
-1. 检查标准分析器，以查看默认情况下如何标记化字词。
+1. 首先，检查标准分析器，看默认情况下如何标记化字词。
 
    ```json
    {
@@ -96,7 +99,7 @@ ms.locfileid: "84564224"
    }
     ```
 
-1. 评估响应，以查看文本如何在索引中标记化。 注意每个字词如何转换为小写和分解。
+1. 评估响应，以查看文本如何在索引中标记化。 注意每个字词如何转换为小写和分解。 只有与这些标记匹配的查询才会在结果中返回此文档。 包含“10-NOR”的查询会失败。
 
     ```json
     {
@@ -122,7 +125,7 @@ ms.locfileid: "84564224"
         ]
     }
     ```
-1. 修改请求以使用 `whitespace` 或 `keyword` 分析器：
+1. 现在，请修改请求以使用 `whitespace` 或 `keyword` 分析器：
 
     ```json
     {
@@ -131,7 +134,7 @@ ms.locfileid: "84564224"
     }
     ```
 
-1. 现在，响应包含单个大写的标记，其中包含作为字符串一部分保留的短划线。 如果需要对模式或部分字词进行搜索，查询引擎现在可以用作查找匹配项的基础。
+1. 现在，响应包含单个大写的标记，其中包含作为字符串一部分保留的短划线。 如果你需要基于某个模式或部分字词（例如 10-NOR）进行搜索，你会发现，查询引擎现在有了查找匹配项的基础。
 
 
     ```json
@@ -148,7 +151,7 @@ ms.locfileid: "84564224"
     }
     ```
 > [!Important]
-> 请注意，在生成查询树时，查询分析程序往往会将搜索表达式中的字词小写。 如果使用的分析器不会将文本输入小写，并且你未获得预期的结果，则原因可能就在于此。 解决方法是根据下面的“使用自定义分析器”部分所述添加小写标记筛选器。
+> 请注意，在生成查询树时，查询分析程序往往会将搜索表达式中的字词小写。 如果使用的分析器在编制索引期间不会将文本输入小写，并且你未获得预期的结果，则原因可能就在于此。 解决方法是根据下面的“使用自定义分析器”部分所述添加小写标记筛选器。
 
 ## <a name="configure-an-analyzer"></a>配置分析器
  
@@ -234,13 +237,13 @@ ms.locfileid: "84564224"
 
   若要进行中缀和后缀查询，例如，查询“num”或“numeric”以找到“alphanumeric”的匹配项，请使用完整 Lucene 语法和正则表达式：`search=/.*num.*/&queryType=full`
 
-## <a name="tips-and-best-practices"></a>提示和最佳实践
-
-### <a name="tune-query-performance"></a>调整查询性能
+## <a name="tune-query-performance"></a>调整查询性能
 
 如果实现包含 keyword_v2 标记器和小写标记筛选器的建议配置，可能会注意到查询性能下降，因为需要对索引中的现有标记进行额外的标记筛选处理。 
 
-以下示例添加一个 [EdgeNGramTokenFilter](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/ngram/EdgeNGramTokenizer.html)，使前缀匹配速度更快。 为包含字符的 2-25 个字符的组合生成额外的标记：（不局限于 MS、MSF、MSFT、MSFT/、MSFT/S、MSFT/SQ、MSFT/SQL）。 可以想象到，额外的标记化操作会导致索引变得更大。
+以下示例添加一个 [EdgeNGramTokenFilter](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/ngram/EdgeNGramTokenizer.html)，使前缀匹配速度更快。 为包含字符的 2-25 个字符的组合生成额外的标记：（不局限于 MS、MSF、MSFT、MSFT/、MSFT/S、MSFT/SQ、MSFT/SQL）。 
+
+可以想象到，额外的标记化操作会导致索引变得更大。 如果有足够的容量来容纳较大的索引，则此方法的响应时间更短，可能是更好的解决方案。
 
 ```json
 {
@@ -277,20 +280,6 @@ ms.locfileid: "84564224"
   "side": "front"
   }
 ]
-```
-
-### <a name="use-different-analyzers-for-indexing-and-query-processing"></a>使用不同的分析器进行索引编制和查询处理
-
-在编制索引和执行查询期间调用分析器。 我们通常使用同一个分析器来完成这两项操作，但可为每个工作负荷配置自定义分析器。 在[索引定义](https://docs.microsoft.com/rest/api/searchservice/create-index)的 `analyzers` 节中指定分析器重写，然后在特定的字段中引用重写。 
-
-如果只是在编制索引期间需要自定义分析，则可以应用自定义分析器来仅完成索引编制，并继续使用标准 Lucene 分析器（或其他分析器）完成查询。
-
-若要指定角色特定的分析，可在每个角色的字段中设置属性：设置 `indexAnalyzer` 和 `searchAnalyzer`，而不是默认的 `analyzer` 属性。
-
-```json
-"name": "featureCode",
-"indexAnalyzer":"my_customanalyzer",
-"searchAnalyzer":"standard",
 ```
 
 ## <a name="next-steps"></a>后续步骤

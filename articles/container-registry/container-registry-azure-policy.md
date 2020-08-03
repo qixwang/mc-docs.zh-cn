@@ -2,27 +2,25 @@
 title: 使用 Azure Policy 实现合规性
 description: 分配 Azure Policy 中的内置策略来审核 Azure 容器注册表的合规性
 ms.topic: article
-origin.date: 02/26/2020
-ms.date: 06/08/2020
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: 24363965f2b36717d1a8cf04fa92df9eb09b4a26
-ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
+ms.openlocfilehash: c8de0d96178d36da3347ff4400981b243cf84a87
+ms.sourcegitcommit: 5726d3b2e694f1f94f9f7d965676c67beb6ed07c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84564363"
+ms.lasthandoff: 07/21/2020
+ms.locfileid: "86863169"
 ---
 <!--Verified successfully-->
 # <a name="audit-compliance-of-azure-container-registries-using-azure-policy"></a>使用 Azure Policy 审核 Azure 容器注册表的合规性
 
 [Azure Policy](../governance/policy/overview.md) 是 Azure 中的一项服务，用于创建、分配和管理策略。 这些策略将在整个资源中强制实施不同的规则和效果，使这些资源符合公司标准和服务级别协议。
 
-本文介绍了适用于 Azure 容器注册表的内置策略（预览版）。 可以使用这些策略来审核新的和现有的注册表的合规性。
+本文介绍适用于 Azure 容器注册表的内置策略。 可以使用这些策略来审核新的和现有的注册表的合规性。
 
 可以免费使用 Azure Policy。
-
-> [!IMPORTANT]
-> 此功能目前以预览版提供。 需同意[补充使用条款][terms-of-use]才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。
 
 ## <a name="built-in-policy-definitions"></a>内置策略定义
 
@@ -30,7 +28,7 @@ ms.locfileid: "84564363"
 
 [!INCLUDE [azure-policy-samples-policies-container-registry](../../includes/policy/samples/bycat/policies-container-registry.md)]
 
-另请参阅内置网络策略定义：[[预览版] 容器注册表应使用虚拟网络服务终结点](https://portal.azure.cn/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc4857be7-912a-4c75-87e6-e30292bcdf78)。
+另请参阅内置网络策略定义：[容器注册表应使用虚拟网络服务终结点](https://portal.azure.cn/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc4857be7-912a-4c75-87e6-e30292bcdf78)。
 
 ## <a name="assign-policies"></a>分配策略
 
@@ -49,9 +47,12 @@ ms.locfileid: "84564363"
 
 ### <a name="policy-compliance-in-the-portal"></a>门户中的策略合规性：
 
-1. 选择“所有服务”  ，然后搜索“策略”。 
-1. 选择“合规性”。 
-1. 使用筛选器来限制合规性状态或搜索策略。![门户中的策略合规性](./media/container-registry-azure-policy/azure-policy-compliance.png)
+1. 选择“所有服务”  ，然后搜索“策略”。
+1. 选择“合规性”。
+1. 将筛选器用于限制合规性状态，或用于搜索策略。
+
+    ![门户中的策略合规性](./media/container-registry-azure-policy/azure-policy-compliance.png)
+    
 1. 选择一个策略来查看聚合合规性详细信息和事件。 然后，根据需要选择一个适用于资源合规性的特定注册表。
 
 ### <a name="policy-compliance-in-the-azure-cli"></a>Azure CLI 中的策略合规性
@@ -66,9 +67,9 @@ az policy assignment list --query "[?contains(displayName,'Container Registries'
 
 ```
 Name                                                                                   ID
--------------------------------------------------------------------------------------  --------------------------------------------------------------------------------------------------------------------------------
-[Preview]: Container Registries should not allow unrestricted network access           /subscriptions/<subscriptionID>/providers/Microsoft.Authorization/policyAssignments/b4faf132dc344b84ba68a441
-[Preview]: Container Registries should be encrypted with a Customer-Managed Key (CMK)  /subscriptions/<subscriptionID>/providers/Microsoft.Authorization/policyAssignments/cce1ed4f38a147ad994ab60a
+------------------------------------------------------------------------------------- --------------------------------------------------------------------------------------------------------------------------------
+Container Registries should not allow unrestricted network access           /subscriptions/<subscriptionID>/providers/Microsoft.Authorization/policyAssignments/b4faf132dc344b84ba68a441
+Container Registries should be encrypted with a Customer-Managed Key (CMK)  /subscriptions/<subscriptionID>/providers/Microsoft.Authorization/policyAssignments/cce1ed4f38a147ad994ab60a
 ```
 
 然后运行 [az policy state list](https://docs.azure.cn/cli/policy/state?view=azure-cli-latest#az-policy-state-list)，以便返回特定策略 ID 下所有资源的 JSON 格式合规性状态：
@@ -78,7 +79,7 @@ az policy state list \
   --resource <policyID>
 ```
 
-也可运行 [az policy state list](https://docs.azure.cn/cli/policy/state?view=azure-cli-latest#az-policy-state-list)，以便返回特定注册表资源（例如 *myregistry*）的 JSON 格式合规性状态：
+也可运行 [az policy state list](https://docs.azure.cn/cli/policy/state?view=azure-cli-latest#az-policy-state-list)，以便返回特定注册表资源（例如 myregistry）的 JSON 格式合规性状态：
 
 ```azurecli
 az policy state list \
@@ -90,14 +91,10 @@ az policy state list \
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解 Azure Policy [定义](../governance/policy/concepts/definition-structure.md)和[效果](../governance/policy/concepts/effects.md)
+* 详细了解 Azure Policy [定义](../governance/policy/concepts/definition-structure.md)和[效果](../governance/policy/concepts/effects.md)。
 
-* 创建[自定义策略定义](../governance/policy/tutorials/create-custom-policy-definition.md)
+* 创建[自定义策略定义](../governance/policy/tutorials/create-custom-policy-definition.md)。
 
-* 详细了解 Azure 中的[治理功能](../governance/index.yml)
-
-<!-- LINKS - External -->
-
-[terms-of-use]: https://www.azure.cn/support/legal/subscription-agreement/
+* 详细了解 Azure 中的[治理功能](../governance/index.yml)。
 
 <!-- Update_Description: update meta properties, wording update, update link -->

@@ -11,14 +11,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-origin.date: 05/29/2020
-ms.date: 06/29/2020
-ms.openlocfilehash: eadeb7ae3b452a7036ffd9c5f9e19ceb236e5618
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+origin.date: 06/28/2020
+ms.date: 07/27/2020
+ms.openlocfilehash: 7426ed2f92f9930369deed37f0044824b12b26c8
+ms.sourcegitcommit: 0eaa82cf74477d26d06bdd8fb6e715e6ed1339c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85322428"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86974288"
 ---
 # <a name="copy-data-to-and-from-sql-server-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 SQL Server 复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -37,7 +37,7 @@ ms.locfileid: "85322428"
 
 具体而言，此 SQL Server 连接器支持：
 
-- SQL Server 版本 2016、2014、2012、2008 R2、2008 和 2005。
+- SQL Server 版本 2005 及更高版本。
 - 使用 SQL 或 Windows 身份验证复制数据。
 - 作为源，使用 SQL 查询或存储过程检索数据。
 - 作为接收器，根据源架构自动创建目标表（如果不存在）；在复制过程中，将数据追加到表或使用自定义逻辑调用存储过程。 

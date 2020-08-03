@@ -1,25 +1,19 @@
 ---
 title: 结合使用 Azure 资源的托管标识与 Azure 服务总线
 description: 本文介绍如何使用托管标识访问 Azure 服务总线实体（队列、主题和订阅）。
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-editor: spelluru
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-origin.date: 01/24/2020
-ms.date: 2/6/2020
-ms.author: aschhab
-ms.openlocfilehash: da30503837a0fc8453196e7e0d6d0ba8bfad4190
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: yes
+ms.testdate: 07/20/2020
+ms.author: v-yeche
+author: rockboyfor
+ms.openlocfilehash: 9171d0fe3e29c9d256c2996989fcd8b256d6f12e
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796807"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162432"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>使用 Azure Active Directory 对托管标识进行身份验证，以便访问 Azure 服务总线资源
 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)是一项跨 Azure 功能，可便于用户创建与其中运行应用程序代码的部署关联的安全标识。 然后可以将该标识与访问控制角色进行关联，后者授予的自定义权限可用于访问应用程序需要的特定 Azure 资源。
@@ -37,7 +31,6 @@ ms.locfileid: "83796807"
 授权步骤需要将一个或多个 RBAC 角色分配给安全主体。 Azure 服务总线提供 RBAC 角色，这些角色涵盖了针对服务总线资源的权限集。 分配给安全主体的角色确定了该主体拥有的权限。 若要详细了解如何向 Azure 服务总线分配 RBAC 角色，请参阅[针对 Azure 服务总线的内置 RBAC 角色](#built-in-rbac-roles-for-azure-service-bus)。 
 
 向服务总线发出请求的本机应用程序和 Web 应用程序也可以使用 Azure AD 进行授权。 本文介绍如何请求访问令牌，并使用它针对服务总线资源进行请求授权。 
-
 
 ## <a name="assigning-rbac-roles-for-access-rights"></a>分配 RBAC 角色以授予访问权限
 Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../role-based-access-control/overview.md) 授权访问受保护的资源。 Azure 服务总线定义了一组内置的 RBAC 角色，它们包含用于访问服务总线实体的通用权限集。你也可以定义用于访问数据的自定义角色。
@@ -76,6 +69,7 @@ Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../
 ## <a name="enable-managed-identities-on-a-vm"></a>在 VM 上启用托管标识
 在使用 Azure 资源的托管标识对 VM 中的服务总线资源授权之前，必须首先在 VM 上启用 Azure 资源的托管标识。 若要了解如何为 Azure 资源启用托管标识，请参阅下述文章之一：
 
+- [Azure 门户](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 - [Azure PowerShell](../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
 - [Azure Resource Manager 模板](../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
@@ -89,13 +83,15 @@ Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../
 ## <a name="use-service-bus-with-managed-identities-for-azure-resources"></a>结合使用服务总线与 Azure 资源的托管标识
 若要将服务总线与托管标识配合使用，需为标识分配角色和相应的范围。 此部分的过程使用一个简单的应用程序，该应用程序在托管标识下运行并访问服务总线资源。
 
-在这里，我们将使用一个在 [Azure 应用服务](https://www.azure.cn/pricing/details/app-service/index.html)中托管的示例 Web 应用程序。 有关如何创建 Web 应用程序的分步说明，请参阅[在 Azure 中创建 ASP.NET Core Web 应用](../app-service/app-service-web-get-started-dotnet.md)
+在这里，我们将使用一个在 [Azure 应用服务](https://www.azure.cn/pricing/details/app-service/)中托管的示例 Web 应用程序。 有关如何创建 Web 应用程序的分步说明，请参阅[在 Azure 中创建 ASP.NET Core Web 应用](../app-service/app-service-web-get-started-dotnet.md)
+
+<!--Mooncake: Pricing part is different from the Global-->
 
 创建应用程序后，请执行以下步骤： 
 
-1. 转到“设置”，然后选择“标识”  。  
-1. 选择“状态”  ，将其切换到“启用”  。 
-1. 选择“保存”  ，保存设置。 
+1. 转到“设置”，然后选择“标识”。 
+1. 选择“状态”，将其切换到“启用”。 
+1. 选择“保存”，保存设置。 
 
     ![Web 应用的托管标识](./media/service-bus-managed-service-identity/identity-web-app.png)
 
@@ -111,15 +107,15 @@ Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../
 > 
 > [创建服务总线消息传递命名空间](service-bus-create-namespace-portal.md)（如果没有该空间）。 
 
-1. 在 Azure 门户中导航到服务总线命名空间，显示该命名空间的“概览”。  
+1. 在 Azure 门户中导航到服务总线命名空间，显示该命名空间的“概览”。 
 1. 选择左侧菜单上的“访问控制(标识和访问管理)”，显示服务总线命名空间的访问控制设置  。
-1.  选择“角色分配”  选项卡以查看角色分配列表。
-3.  选择“添加”以添加新角色。 
-4.  在“添加角色分配”页上，选择要分配的 Azure 服务总线角色  。 然后通过搜索找到已注册的服务标识，以便分配该角色。
-    
+1. 选择“角色分配”  选项卡以查看角色分配列表。
+3. 选择“添加”以添加新角色。
+4. 在“添加角色分配”页上，选择要分配的 Azure 服务总线角色  。 然后通过搜索找到已注册的服务标识，以便分配该角色。
+
     ![“添加角色分配”页](./media/service-bus-managed-service-identity/add-role-assignment-page.png)
-5.  选择“保存”  。 分配有该角色的标识列出在该角色下。 例如，下图显示服务标识有 Azure 服务总线数据所有者。
-    
+5. 选择“保存”  。 分配有该角色的标识列出在该角色下。 例如，下图显示服务标识有 Azure 服务总线数据所有者。
+
     ![分配给角色的标识](./media/service-bus-managed-service-identity/role-assigned.png)
 
 分配此角色后，Web 应用程序即可访问已定义范围内的服务总线实体。 
@@ -130,17 +126,16 @@ Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../
 
 Default.aspx 页是登陆页面。 可以在 Default.aspx.cs 文件中找到代码。 结果是一个最小的 Web 应用程序，其中包含几个输入字段以及用来连接到服务总线以发送或接收消息的 **send** 和 **receive** 按钮。
 
-注意 [MessagingFactory](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.messagingfactory) 对象是如何初始化的。 此代码通过 `var msiTokenProvider = TokenProvider.CreateManagedIdentityTokenProvider();` 调用为托管标识创建令牌提供程序，而不是使用共享访问令牌 (SAS) 令牌提供程序。 因此，不需要保留和使用任何机密。 从托管标识上下文到服务总线的流以及授权握手都是由令牌提供程序自动处理。 这是比使用 SAS 更简单的模型。
+注意 [MessagingFactory](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.messagingfactory?view=azure-dotnet) 对象是如何初始化的。 此代码通过 `var msiTokenProvider = TokenProvider.CreateManagedIdentityTokenProvider();` 调用为托管标识创建令牌提供程序，而不是使用共享访问令牌 (SAS) 令牌提供程序。 因此，不需要保留和使用任何机密。 从托管标识上下文到服务总线的流以及授权握手都是由令牌提供程序自动处理。 这是比使用 SAS 更简单的模型。
 
 进行这些更改后，发布并运行应用程序。 若要轻松获取正确的发布数据，可下载发布配置文件，并在 Visual Studio 中导入它：
 
 ![获取发布配置文件](./media/service-bus-managed-service-identity/msi3.png)
- 
+
 若要发送或接收消息，请输入所创建的命名空间和实体的名称。 然后，单击“发送”  或“接收”  。
 
-
 > [!NOTE]
-> - 托管标识仅适用于 Azure 环境、应用服务、Azure VM 和规模集。 对于 .NET 应用程序，Microsoft.Azure.Services.AppAuthentication 库（由服务总线 NuGet 包使用）提供此协议的摘要并支持本地开发体验。 此库还允许通过 Visual Studio、Azure CLI 2.0 或 Active Directory 集成身份验证使用用户帐户，在开发计算机上对代码进行本地测试。 有关此库的本地开发选项的详细信息，请参阅[使用 .NET 向 Azure Key Vault 进行服务到服务身份验证](../key-vault/service-to-service-authentication.md)。  
+> - 托管标识仅适用于 Azure 环境、应用服务、Azure VM 和规模集。 对于 .NET 应用程序，Microsoft.Azure.Services.AppAuthentication 库（由服务总线 NuGet 包使用）提供此协议的摘要并支持本地开发体验。 此库还允许通过 Visual Studio、Azure CLI 2.0 或 Active Directory 集成身份验证使用用户帐户，在开发计算机上对代码进行本地测试。 有关此库的本地开发选项的详细信息，请参阅[使用 .NET 向 Azure Key Vault 进行服务到服务身份验证](../key-vault/general/service-to-service-authentication.md)。  
 > 
 > - 目前，托管标识无法用于应用服务部署槽位。
 
@@ -151,3 +146,5 @@ Default.aspx 页是登陆页面。 可以在 Default.aspx.cs 文件中找到代�
 * [服务总线队列、主题和订阅](service-bus-queues-topics-subscriptions.md)
 * [服务总线队列入门](service-bus-dotnet-get-started-with-queues.md)
 * [如何使用服务总线主题和订阅](service-bus-dotnet-how-to-use-topics-subscriptions.md)
+
+<!-- Update_Description: update meta properties, wording update, update link -->

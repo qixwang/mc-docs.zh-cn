@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 06/08/2020
-ms.date: 07/02/2020
-ms.openlocfilehash: 971f3de99106cf83ef53ffb39f720215d9a6c67c
-ms.sourcegitcommit: 5afd7c4c3be9b80c4c67ec55f66fcf347aad74c6
+ms.date: 07/17/2020
+ms.openlocfilehash: 342ffd086a1fa089f4b4265d9e21137ba2755d54
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85942529"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471909"
 ---
 # <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Azure 认知搜索中的 AI 扩充提示
 
@@ -50,7 +50,16 @@ https://docs.azure.cn/search/search-howto-indexing-azure-blob-storage#how-to-spe
    }
 }
 ```
-## <a name="tip-4-looking-at-enriched-documents-under-the-hood"></a>提示 4：深入了解扩充的文档 
+> [!NOTE]
+> 最佳做法是，对于生产工作负载，将 maxFailedItems、maxFailedItemsPerBatch 设置为 0
+
+## <a name="tip-4-use-debug-sessions-to-identify-and-resolve-issues-with-your-skillset"></a>提示 4：使用“调试”会话来识别和解决技能组的问题 
+
+调试会话是一个可视化编辑器，可与 Azure 门户中的现有技能组配合使用。 在调试会话中，可以识别和解决错误、验证更改，以及将更改提交到 AI 扩充管道中的生产技能组。 这是一项预览功能（请[阅读文档](https://docs.azure.cn/search/cognitive-search-debug-session)）。 有关概念和入门的详细信息，请参阅[调试会话](https://docs.azure.cn/search/cognitive-search-tutorial-debug-sessions)。
+
+调试会话适用于单个文档，可让你以迭代方式生成更复杂的扩充管道。
+
+## <a name="tip-5-looking-at-enriched-documents-under-the-hood"></a>提示 5：深入了解扩充的文档 
 扩充的文档是在扩充期间创建但在完成处理后会删除的临时结构。
 
 若要捕获索引编制期间创建的扩充文档的快照，请将名为 ```enriched``` 的字段添加到索引。 索引器将作为该文档的所有扩充项的字符串表示形式自动转储到字段中。
@@ -78,11 +87,7 @@ https://docs.azure.cn/search/search-howto-indexing-azure-blob-storage#how-to-spe
 }
 ```
 
-### <a name="debug-sessions"></a>调试会话
-
-调试会话是一个可视化编辑器，可与 Azure 门户中的现有技能组配合使用。 在调试会话中，可以识别和解决错误、验证更改，以及将更改推送到 AI 扩充管道中的生产技能组。 这是一项预览功能，将根据具体情况授予访问权限。 请[阅读文档](https://docs.azure.cn/search/cognitive-search-debug-session)，了解如何申请访问权限。
-
-## <a name="tip-5-expected-content-fails-to-appear"></a>提示 5：预期的内容没有出现
+## <a name="tip-6-expected-content-fails-to-appear"></a>提示 6：预期的内容没有出现
 
 缺少内容可能是由于文档在索引编制过程中被丢弃。 免费层和基本层对文档大小的限制都很低。 如果文件超出此限制，则会在索引编制过程中将其丢弃。 可以在 Azure 门户中查找丢弃的文档。 在搜索服务仪表板中，双击“索引器”磁贴。 查看成功地进行索引的文档的比率。 如果不是 100%，可以单击该比率以获取更多详细信息。 
 
@@ -90,7 +95,7 @@ https://docs.azure.cn/search/search-howto-indexing-azure-blob-storage#how-to-spe
 
 内容没有出现的另一原因可能与输入/输出映射错误相关。 例如，输出目标名称为“People”，但索引字段名称为“people”（小写）。 系统可能会针对整个管道返回“201 成功”消息，因此你认为索引编制成功，但实际上有一个字段是空的。 
 
-## <a name="tip-6-extend-processing-beyond-maximum-run-time-24-hour-window"></a>提示 6：延长处理时间至超出最长运行时间（24 小时）
+## <a name="tip-7-extend-processing-beyond-maximum-run-time-24-hour-window"></a>提示 7：延长处理时间至超出最长运行时间（24 小时）
 
 即使情况很简单，图像分析也是计算密集型操作，因此当图像特别大或特别复杂时，处理时间可能会超过允许的最长时间。 
 
@@ -103,7 +108,7 @@ https://docs.azure.cn/search/search-howto-indexing-azure-blob-storage#how-to-spe
 
 进行基于门户的索引编制（如快速入门中所述）时，选择“运行一次”索引器选项即可将处理时间限制为 1 小时 (`"maxRunTime": "PT1H"`)。 可能需要延长处理时间至更长。
 
-## <a name="tip-7-increase-indexing-throughput"></a>提示 7：提高索引编制吞吐量
+## <a name="tip-8-increase-indexing-throughput"></a>提示 8：提高索引编制吞吐量
 
 进行[并行索引编制](search-howto-large-index.md)时，请将数据置于多个容器中，或者置于同一容器的多个虚拟文件夹中， 然后创建多个数据源和索引器对。 所有索引器可以使用同一技术集并写入同一目标搜索索引，因此你的搜索应用不需了解这种分区。
 有关详细信息，请参阅[为大型数据集编制索引](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)。

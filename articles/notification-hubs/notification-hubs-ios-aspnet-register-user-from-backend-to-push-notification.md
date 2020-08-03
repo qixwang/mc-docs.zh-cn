@@ -5,24 +5,22 @@ services: notification-hubs
 documentationcenter: ios
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: 4e3772cf-20db-4b9f-bb74-886adfaaa65d
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
 origin.date: 01/04/2019
-ms.date: 10/08/2019
+ms.date: 07/21/2020
 ms.author: v-tawe
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 3838277d15ef9deed7c1cf2a56f2c32155e72a6d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 59484f13cc827c19368fd5aae8cc2634dd8a07db
+ms.sourcegitcommit: 5656c18d7d2faa09329b1a15e352d1622e252d5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74884871"
+ms.lasthandoff: 07/21/2020
+ms.locfileid: "86862827"
 ---
 # <a name="register-the-current-user-for-push-notifications-by-using-aspnet"></a>通过使用 ASP.NET 注册推送通知的当前用户
 
@@ -125,7 +123,7 @@ ms.locfileid: "74884871"
     这为请求设置设备标记。
 
    > [!NOTE]
-   > 此时，此方法中不应有任何其他代码。 如果已调用在完成[通知中心入门](notification-hubs-ios-apple-push-notification-apns-get-started.md)教程的学习时添加的 `registerNativeWithDeviceToken` 方法，必须注释掉或删除该调用。
+   > 此时，此方法中不应有任何其他代码。 如果已调用在完成[使用 Azure 通知中心向 iOS 应用发送推送通知](ios-sdk-get-started.md)教程时添加的 `registerNativeWithDeviceToken` 方法，必须注释掉或删除该调用。
 
 8. 在 `PushToUserAppDelegate.m` 文件中，添加以下处理程序方法：
 
@@ -259,4 +257,4 @@ ms.locfileid: "74884871"
 
 <!-- URLs. -->
 [使用通知中心通知用户]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
-[通知中心入门]: notification-hubs-ios-apple-push-notification-apns-get-started.md
+[通知中心入门]: ios-sdk-get-started.md

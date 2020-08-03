@@ -1,30 +1,26 @@
 ---
-title: 知识存储概念（预览版）
+title: 知识存储概念
 titleSuffix: Azure Cognitive Search
-description: 将扩充文档发送到 Azure 存储，随后可以在 Azure 认知搜索和其他应用中查看、整形和使用扩充文档。 此功能目前以公共预览版提供。
+description: 将扩充文档发送到 Azure 存储，随后可以在 Azure 认知搜索和其他应用中查看、整形和使用扩充文档。
 author: HeidiSteen
 manager: nitinme
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 05/05/2020
-ms.date: 07/02/2020
-ms.openlocfilehash: e40f8884492cf17884ed20efaa1077d825d2a0dc
-ms.sourcegitcommit: 5afd7c4c3be9b80c4c67ec55f66fcf347aad74c6
+origin.date: 06/30/2020
+ms.date: 07/17/2020
+ms.openlocfilehash: db448c036c345104eae6ed441037f6e0df64ab0f
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85942522"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471832"
 ---
 # <a name="knowledge-store-in-azure-cognitive-search"></a>Azure 认知搜索中的知识存储
 
-> [!IMPORTANT] 
-> 知识存储目前以公开预览版提供。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。
-> [REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供预览版功能。 目前提供有限的门户支持，不提供 .NET SDK 支持。
+知识存储是 Azure 认知搜索中的一项功能，它可以保留 [AI 扩充管道](cognitive-search-concept-intro.md)的输出进行独立分析或下游处理。 扩充文档是管道的输出，是基于使用 AI 流程提取、结构化和分析的内容创建的。 在标准的 AI 管道中，扩充文档是临时的，仅在编制索引期间使用，然后被丢弃。 选择创建知识存储将允许你保存扩充文档。 
 
-知识存储是 Azure 认知搜索中的一项功能，它可以保留 [AI 扩充管道](cognitive-search-concept-intro.md)的输出进行独立分析或下游处理。 扩充文档是管道的输出，是基于使用 AI 流程提取、结构化和分析的内容创建的。 在标准的 AI 管道中，扩充文档是临时的，仅在编制索引期间使用，然后被丢弃。 扩充文档将通过知识存储保存起来。 
-
-如果你过去曾经用过认知技能，则已经知道技能集可以通过一系列扩充来移动文档。 结果可以是搜索索引，也可以是知识存储中的投影（此预览版中新增的）。 搜索索引和知识存储这两种输出是同一管道的产出；它们派生自相同的输入，但导致以非常不同的方式构建、存储和使用输出。
+如果你过去曾经用过认知技能，则已经知道技能集可以通过一系列扩充来移动文档。 结果可以是搜索索引，也可以是知识存储中的投影。 搜索索引和知识存储这两种输出是同一管道的产出；它们派生自相同的输入，但导致以非常不同的方式构建、存储和使用输出。
 
 在物理上，知识存储是一个 [Azure 存储](https://docs.azure.cn/storage/common/storage-account-overview)，可以是 Azure 表存储和/或 Azure Blob 存储。 任何可以连接到 Azure 存储的工具或进程都可以使用知识存储的内容。
 
@@ -44,7 +40,7 @@ ms.locfileid: "85942522"
 
 + 在除搜索以外的[分析和报表工具](#tools-and-apps)中使用扩充文档。 包含 Power Query 的 Power BI 就是个极具吸引力的选择，但只要是能连接到 Azure 存储，任何工具或应用都可以从你创建的知识存储中提取文档。
 
-+ 优化 AI 索引管道，同时调试步骤和技能集定义。 知识存储展示 AI 索引管道中的技能集定义的结果。 这些结果可用于设计更好的技能集，因为你可以清楚地看到扩充是什么样的。 可以使用 Azure 存储中的[存储资源管理器](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows)来查看知识存储的内容。
++ 优化 AI 索引管道，同时调试步骤和技能集定义。 知识存储展示 AI 索引管道中的技能集定义的结果。 这些结果可用于设计更好的技能集，因为你可以清楚地看到扩充是什么样的。 可以使用 Azure 存储中的[存储资源管理器](https://docs.azure.cn/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows)来查看知识存储的内容。
 
 + 将数据整形到新表单中。 整形在技能集中编码化，但重点是技能集现在可以提供此功能。 Azure 认知搜索中的[整形程序技能](cognitive-search-skill-shaper.md)已扩展为包含此任务。 通过整形，可以定义与数据预期用途保持一致的投影，同时保留关系。
 
@@ -105,7 +101,7 @@ ms.locfileid: "85942522"
 
 ## <a name="how-to-create-a-knowledge-store"></a>如何创建知识存储
 
-若要创建知识存储，请使用门户或预览版 REST API (`api-version=2019-05-06-Preview`)。
+若要创建知识存储，请使用门户或 REST API (`api-version=2020-06-30`)。
 
 ### <a name="use-the-azure-portal"></a>使用 Azure 门户
 
@@ -119,13 +115,11 @@ ms.locfileid: "85942522"
 
 1. 运行向导。 提取、扩充和存储操作在此最后一个步骤中发生。
 
-### <a name="use-create-skillset-and-the-preview-rest-api"></a>使用“创建技能集”和预览版 REST API
+### <a name="use-create-skillset-rest-api"></a>使用“创建技能组”(REST API)
 
 `knowledgeStore` 是在[技能集](cognitive-search-working-with-skillsets.md)中定义的，后者又由[索引器](search-indexer-overview.md)调用。 在扩充期间，Azure 认知搜索会在 Azure 存储帐户中创建一个空间，并根据配置将扩充文档投影到 Blob 或表。
 
-目前，只能使用预览版 REST API 机制以编程方式创建知识存储。 一种简单的探索方法是[使用 Postman 和 REST API 创建第一个知识存储](knowledge-store-create-rest.md)。
-
-本文的 [API 参考](#kstore-rest-api)部分提供了此预览版功能的参考内容。 
+REST API 是一种可以通过编程方式创建知识存储的机制。 一种简单的探索方法是[使用 Postman 和 REST API 创建第一个知识存储](knowledge-store-create-rest.md)。
 
 <a name="tools-and-apps"></a>
 
@@ -143,17 +137,17 @@ ms.locfileid: "85942522"
 
 ## <a name="api-reference"></a>API 参考
 
-REST API 版本 `2019-05-06-Preview` 通过技能集中的附加定义提供知识存储。 除了参考资料以外，另请参阅[使用 Postman 创建知识存储](knowledge-store-create-rest.md)来了解有关如何调用 API 的详细信息。
+REST API 版本 `2020-06-30` 通过技能集中的附加定义提供知识存储。 除了参考资料以外，另请参阅[使用 Postman 创建知识存储](knowledge-store-create-rest.md)来了解有关如何调用 API 的详细信息。
 
-+ [创建技能组 (api-version=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-skillset) 
-+ [更新技能集 (api-version=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-skillset) 
++ [创建技能组 (api-version=2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/2020-06-30/create-skillset)
++ [更新技能组 (api-version=2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/2020-06-30/update-skillset)
 
 
 ## <a name="next-steps"></a>后续步骤
 
 知识存储提供扩充文档的持久性，在设计技能集，或者在创建新的结构和内容供可访问 Azure 存储帐户的任何客户端应用程序使用时，知识存储非常有用。
 
-创建扩充文档的最简单方法是使用[门户](knowledge-store-create-portal.md)，但也可以使用 Postman 和 REST API，想要深入了解对象的创建和引用方式时，这两个工具更有用。
+创建扩充文档的最简单方法是[使用门户](knowledge-store-create-portal.md)，但也可以使用 Postman 和 REST API，想要深入了解对象的创建和引用方式时，后者更有用。
 
 > [!div class="nextstepaction"]
 > [使用 Postman 和 REST 创建知识存储](knowledge-store-create-rest.md)

@@ -3,14 +3,16 @@ title: 基础映像更新 - 任务
 description: 了解应用程序容器映像的基础映像，并了解基础映像更新如何触发 Azure 容器注册表任务。
 ms.topic: article
 origin.date: 01/22/2019
-ms.date: 04/06/2020
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: 04/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 2fd04c61c8f5226ab5133160765927e262d5707b
-ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
+ms.openlocfilehash: bac8de75c9d7cb20ff2ad9caf27cc764c648a074
+ms.sourcegitcommit: 5726d3b2e694f1f94f9f7d965676c67beb6ed07c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82093481"
+ms.lasthandoff: 07/21/2020
+ms.locfileid: "86863195"
 ---
 <!--Verify sucessfully-->
 <!--Parts of released files-->
@@ -21,7 +23,7 @@ ms.locfileid: "82093481"
 
 ## <a name="what-are-base-images"></a>什么是基础映像？
 
-定义了大部分容器映像的 Dockerfile 会指定映像所基于的父级映像，通常将父级映像称为它的基础映像。 基础映像通常包含操作系统，例如 [Alpine Linux][base-alpine] 或 [Windows Nano Server][base-windows]，其余的容器层应用于这些操作系统上。 这些映像可能还包括应用程序框架，例如 [Node.js][base-node] 或 [.NET Core][base-dotnet]。 这些基础映像本身通常基于公共上游映像。 多个应用程序映像可以共享一个通用基本映像。
+定义了大部分容器映像的 Dockerfile 会指定映像所基于的父级映像，通常将父级映像称为它的基础映像  。 基础映像通常包含操作系统，例如 [Alpine Linux][base-alpine] 或 [Windows Nano Server][base-windows]，其余的容器层应用于这些操作系统上。 这些映像可能还包括应用程序框架，例如 [Node.js][base-node] 或 [.NET Core][base-dotnet]。 这些基础映像本身通常基于公共上游映像。 多个应用程序映像可以共享一个通用基本映像。
 
 基础映像通常通过映像维护程序更新，以将 OS 或框架的新功能或改进添加进该映像中。 安全补丁是更新基础映像的另一常见原因。 当这些上游更新发生时，你还必须更新基础映像，使之包括关键修复。 然后，还必须重新生成每个应用程序映像，以包含目前已包含在基础映像中的这些上游修复。
 
@@ -44,6 +46,13 @@ ms.locfileid: "82093481"
 
 如果 `FROM` 语句中指定的基础映像驻留在上述某个位置，则 ACR 任务会添加一个挂钩，以确保它的基础映像更新时会重新生成该映像。
 
+## <a name="base-image-notifications"></a>基础映像通知
+
+更新基础映像和触发依赖任务之间间隔的时间取决于基础映像位置：
+
+* **Docker Hub 或 MCR 的公共存储库中的基础映像** - 对于公共存储库中的基础映像，ACR 任务会按 10 到 60 分钟的随机时间间隔检查映像更新。 依赖任务会相应地运行。
+* **Azure 容器注册表中的基础映像** - 对于 Azure 容器注册表中的基础映像，ACR 任务会在更新其基础映像时立即触发运行。 基础映像可以位于运行任务的 ACR 中，也可以位于任何区域的另一 ACR 中。
+
 ## <a name="additional-considerations"></a>其他注意事项
 
 * **应用程序映像的基础映像** - 目前，ACR 任务仅跟踪应用程序（*运行时*）映像的基础映像更新。 它不跟踪多阶段 Dockerfile 中使用的中间 (buildtime) 映像的基础映像更新。  
@@ -54,7 +63,7 @@ ms.locfileid: "82093481"
     az acr task update --registry myregistry --name mytask --base-image-trigger-enabled False
     ```
     
-    <!--CORRECT FORMAT ON --registry myregistry -->
+    <!--CORRECT FORMAT ON --registry myregistry(MANDATORY) -->
 
 * **触发依赖项跟踪** - 若要启用某个 ACR 任务来确定并跟踪容器映像的依赖项（包括其基础映像），必须先将该任务触发**至少一次**。 例如，使用 [az acr task run][az-acr-task-run] 命令手动触发该任务。
 
@@ -83,7 +92,7 @@ ms.locfileid: "82093481"
 
 [azure-cli]: https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest
 [az-acr-build]: https://docs.azure.cn/cli/acr?view=azure-cli-latest#az-acr-build
-[az-acr-pack-build]: https://docs.azure.cn/cli/acr/pack?view=azure-cli-latest#az-acr-pack-build
+[az-acr-pack-build]: https://docs.microsoft.com/cli/azure/acr/pack?view=azure-cli-latest#az-acr-pack-build
 [az-acr-task]: https://docs.azure.cn/cli/acr/task?view=azure-cli-latest
 [az-acr-task-create]: https://docs.azure.cn/cli/acr/task?view=azure-cli-latest#az-acr-task-create
 [az-acr-task-run]: https://docs.azure.cn/cli/acr/task?view=azure-cli-latest#az-acr-task-run

@@ -1,26 +1,22 @@
 ---
-title: 快速入门：通过 Python 使用 Azure 服务总线主题和订阅
+title: 快速入门 - 通过 Python 使用 Azure 服务总线主题和订阅
 description: 本文介绍如何创建 Azure 服务总线主题、订阅、向主题发送消息以及从订阅接收消息。
-services: service-bus-messaging
 documentationcenter: python
-author: lingliw
-manager: digimobile
-editor: spelluru
-ms.assetid: c4f1d76c-7567-4b33-9193-3788f82934e4
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
+author: rockboyfor
 ms.devlang: python
 ms.topic: quickstart
-origin.date: 01/27/2020
-ms.date: 2/6/2020
-ms.author: v-lingwu
-ms.openlocfilehash: 8028df6cdf92129026956f425777447e5b336ec4
-ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: yes
+ms.testdate: 07/20/2020
+ms.author: v-yeche
+ms.custom: tracking-python
+ms.openlocfilehash: 50151672fb54e32d7f52fb8302b15dc7c94e92d9
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85796215"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162278"
 ---
 # <a name="quickstart-use-service-bus-topics-and-subscriptions-with-python"></a>快速入门：通过 Python 使用服务总线主题和订阅
 
@@ -35,9 +31,11 @@ ms.locfileid: "85796215"
 - 删除主题和订阅
 
 ## <a name="prerequisites"></a>先决条件
-1. Azure 订阅。 若要完成本教程，需要一个 Azure 帐户。 你可以注册[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)或购买[预付费订阅](https://wd.azure.cn/pricing/pia-waiting-list/?form-type=identityauth)。
+- Azure 订阅。 可以激活 [Visual Studio 或 MSDN 订阅者权益](https://www.azure.cn/offers/ms-mc-arz-msdn/)或者注册[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 - 遵循以下文章中的步骤创建的服务总线命名空间：[快速入门：使用 Azure 门户创建服务总线主题和订阅](service-bus-quickstart-topics-subscriptions-portal.md)。 复制“共享访问策略”屏幕中的命名空间名称、共享访问密钥名称和主密钥值，以便稍后在本快速入门中使用。 
-- 装有 [Azure Python SDK][Azure Python package] 包的 Python 3.4x 或更高版本。<!-- delete invalid link -->
+- 装有 [Azure Python SDK][Azure Python package] 包的 Python 3.4x 或更高版本。 有关详细信息，请参阅 [Python 安装指南](https://docs.microsoft.com/azure/developer/python/azure-sdk-install)。
+
+    <!--Mooncake Correct on Link [Python Installation Guide](https://docs.microsoft.com/azure/developer/python/azure-sdk-install).-->
 
 ## <a name="create-a-servicebusservice-object"></a>创建 ServiceBusService 对象
 
@@ -196,7 +194,9 @@ bus_service.delete_subscription('mytopic', 'HighMessages')
 * [SqlFilter.SqlExpression][SqlFilter.SqlExpression] 参考
 
 [Azure portal]: https://portal.azure.cn
-[Azure Python package]: https://pypi.python.org/pypi/azure  
-[Queues, topics, and subscriptions]: ./service-bus-queues-topics-subscriptions.md
-[SqlFilter.SqlExpression]: ./service-bus-messaging-sql-filter.md
-[Service Bus quotas]: ./service-bus-quotas.md
+[Azure Python package]: https://pypi.python.org/pypi/azure
+[Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
+[SqlFilter.SqlExpression]: service-bus-messaging-sql-filter.md
+[Service Bus quotas]: service-bus-quotas.md
+
+<!-- Update_Description: update meta properties, wording update, update link -->

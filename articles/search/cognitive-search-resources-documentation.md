@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 06/12/2020
-ms.date: 07/02/2020
-ms.openlocfilehash: 383234bb917bfe788ad9ecd91d887ecc5b5c80ee
-ms.sourcegitcommit: 5afd7c4c3be9b80c4c67ec55f66fcf347aad74c6
+ms.date: 07/17/2020
+ms.openlocfilehash: 2496a6da9674b64563384e933fb72e5e465f4e5d
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85942528"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471900"
 ---
 # <a name="documentation-resources-for-ai-enrichment-in-azure-cognitive-search"></a>Azure 认知搜索中的 AI 扩充文档资源
 
@@ -25,6 +25,8 @@ AI 扩充是基于索引器的索引的加载项，用于查找非文本源和�
 下面是 AI 扩充文档的综合列表。
 
 ## <a name="concepts"></a>概念
+
+<!-- + [Debug sessions](cognitive-search-debug-session.md) -->
 
 + [AI 扩充](cognitive-search-concept-intro.md)
 + [技能组](cognitive-search-working-with-skillsets.md)
@@ -37,6 +39,8 @@ AI 扩充是基于索引器的索引的加载项，用于查找非文本源和�
 + [快速入门：在 Azure 门户中创建认知技能集](cognitive-search-quickstart-blob.md)
 + [教程：使用 AI 扩充的索引](cognitive-search-tutorial-blob.md)
 
+<!-- + [Tutorial: Diagnose, repair, and commit changes to your skillset with Debug Sessions](cognitive-search-tutorial-debug-sessions.md) -->
+
 ## <a name="knowledge-stores"></a>知识存储
 
 + [快速入门：在 Azure 门户中创建知识存储](knowledge-store-create-portal.md)
@@ -48,10 +52,11 @@ AI 扩充是基于索引器的索引的加载项，用于查找非文本源和�
 ## <a name="custom-skills-advanced"></a>自定义技能（高级）
 
 + [如何定义自定义技能接口](cognitive-search-custom-skill-interface.md)
-+ [示例：使用 Azure Functions（和必应实体搜索 API）创建自定义技能](cognitive-search-create-custom-skill-example.md)
++ [示例：使用 Azure Functions 创建自定义技能](cognitive-search-create-custom-skill-example.md)
 + [示例：使用 Python 创建自定义技能](cognitive-search-custom-skill-python.md)
 
 <!-- + [Example: Create a custom skill using Form Recognizer](cognitive-search-custom-skill-form.md)  -->
+<!-- + [Example: Create a custom skill using Azure Machine Learning](cognitive-search-tutorial-aml-custom-skill.md)  -->
 
 ## <a name="how-to-guidance"></a>操作说明指南
 
@@ -91,8 +96,8 @@ AI 扩充是基于索引器的索引的加载项，用于查找非文本源和�
 ## <a name="apis"></a>API
 
 + [REST API](https://docs.microsoft.com/rest/api/searchservice/)
-  + [创建技能集 (api-version=2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
-  + [创建索引器 (api-version=2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
+  + [创建技能组 (api-version=2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
+  + [创建索引器 (api-version=2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 
 ## <a name="see-also"></a>另请参阅
 

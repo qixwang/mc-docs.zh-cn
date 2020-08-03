@@ -1,24 +1,24 @@
 ---
 title: 使用 Azure 门户将数据导入搜索索引
 titleSuffix: Azure Cognitive Search
-description: 了解如何使用 Azure 门户中的“导入数据”向导从 Cosmos DB、Blob 存储、表存储、SQL 数据库和 Azure VM 上的 SQL Server 抓取 Azure 数据。
+description: 了解如何使用 Azure 门户中的“导入数据”向导从 Azure VM 上的 Cosmos DB、Blob 存储、表存储、SQL 数据库、SQL 托管实例和 SQL Server 抓取 Azure 数据。
 author: HeidiSteen
 manager: nitinme
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 03/16/2020
-ms.openlocfilehash: b816a5595607902526876305509947a58881daa8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 07/20/2020
+ms.openlocfilehash: 8aa943db746c355e39bb691fd386119e103f612d
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850566"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471816"
 ---
 # <a name="import-data-wizard-for-azure-cognitive-search"></a>Azure 认知搜索的导入数据向导
 
-Azure 门户在 Azure 认知搜索仪表板上提供了“导入数据”向导，用于制作索引的原型和加载索引。  本文介绍该向导的优点和限制、输入和输出以及一些用法信息。 有关使用内置示例数据逐步运行该向导的实践指导，请参阅[使用 Azure 门户创建 Azure 认知搜索索引](search-get-started-portal.md)快速入门。
+Azure 门户在 Azure 认知搜索仪表板上提供了“导入数据”向导，用于制作索引的原型和加载索引。 本文介绍该向导的优点和限制、输入和输出以及一些用法信息。 有关使用内置示例数据逐步运行该向导的实践指导，请参阅[使用 Azure 门户创建 Azure 认知搜索索引](search-get-started-portal.md)快速入门。
 
 此向导执行的操作包括：
 
@@ -56,17 +56,17 @@ Azure 门户在 Azure 认知搜索仪表板上提供了“导入数据”向导�
 
 ## <a name="data-source-input"></a>数据源输入
 
-“导入数据”向导使用 Azure 认知搜索索引器提供的内部逻辑连接到外部数据源。索引器旨在对源采样、读取元数据、破解文档以读取内容和结构，并将内容序列化为 JSON，供后续导入到 Azure 认知搜索。 
+“导入数据”向导使用 Azure 认知搜索索引器提供的内部逻辑连接到外部数据源。索引器旨在对源采样、读取元数据、破解文档以读取内容和结构，并将内容序列化为 JSON，供后续导入到 Azure 认知搜索。
 
 只能从单个表、数据库视图或等效的数据结构导入，但是，此结构可能包含分层的或嵌套的子结构。 有关详细信息，请参阅[如何为复杂类型建模](search-howto-complex-data-types.md)。
 
-在运行向导之前，应创建此单个表或视图，其中必须包含内容。 针对空数据源运行“导入数据”向导并无意义，其原因显而易见。 
+在运行向导之前，应创建此单个表或视图，其中必须包含内容。 针对空数据源运行“导入数据”向导并无意义，其原因显而易见。
 
 |  选项 | 说明 |
 | ---------- | ----------- |
-| **现有数据源** |如果已在搜索服务中定义索引器，则可能已经获得了一个可以重用的现有数据源定义。 在 Azure 认知搜索中，数据源对象仅供索引器使用。 可以编程方式或通过“导入数据”向导创建数据源对象，然后按需重用这些对象。 |
+| **现有数据源** |如果已在搜索服务中定义索引器，则可能已经获得了一个可以重用的现有数据源定义。 在 Azure 认知搜索中，数据源对象仅供索引器使用。 可以编程方式或通过“导入数据”向导创建数据源对象，然后按需重用这些对象。|
 | **示例**| Azure 认知搜索提供了两个在教程和快速入门中使用的内置示例数据源：房地产 SQL 数据库，以及托管在 Cosmos DB 上的“酒店”数据库。 若要根据“酒店”示例进行演练，请参阅[在 Azure 门户中创建索引](search-get-started-portal.md)快速入门。 |
-| [**Azure SQL 数据库**](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) |可以在此页上或通过 ADO.NET 连接字符串，指定服务名称、具有读取权限的数据库用户的凭据和数据库名称。 选择要查看或自定义属性的连接字符串选项。 <br/><br/>必须在此页上指定提供行集的表或视图。 连接成功后会显示此选项，并提供下拉列表以便可以进行选择。|
+| [Azure SQL 数据库或 SQL 托管实例](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) |可以在此页上或通过 ADO.NET 连接字符串，指定服务名称、具有读取权限的数据库用户的凭据和数据库名称。 选择要查看或自定义属性的连接字符串选项。 <br/><br/>必须在此页上指定提供行集的表或视图。 连接成功后会显示此选项，并提供下拉列表以便可以进行选择。|
 | **Azure VM 上的 SQL Server** |指定完全限定的服务名、用户 ID 和密码以及数据库作为连接字符串。 若要使用此数据源，以前必须已在加密连接的本地存储中安装了证书。 有关说明，请参阅[SQL VM 与 Azure 认知搜索的连接](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)。 <br/><br/>必须在此页上指定提供行集的表或视图。 连接成功后会显示此选项，并提供下拉列表以便可以进行选择。 |
 | [**Azure Cosmos DB**](search-howto-index-cosmosdb.md)|要求包括帐户、数据库和集合。 集合中的所有文档都将包含在索引中。 可以定义查询以平展或筛选行集，或者将查询留空。 在此向导中，不需要查询。|
 | [**Azure Blob 存储**](search-howto-indexing-azure-blob-storage.md) |要求包括存储帐户和容器。 （可选）如果 blob 名称遵循用于分组的虚拟命名约定，可以将名称的虚拟目录部分指定为容器下的某个文件夹。 有关详细信息，请参阅[为 Blob 存储编制索引](search-howto-indexing-azure-blob-storage.md)。 |
@@ -94,7 +94,7 @@ Azure 门户在 Azure 认知搜索仪表板上提供了“导入数据”向导�
 
    ![门户中的“导入数据”命令](./media/search-import-data-portal/import-data-cmd2.png "启动“导入数据”向导")
 
-还可以通过其他 Azure 服务（包括 Azure Cosmos DB、Azure SQL 数据库和 Azure Blob 存储）启动“导入数据”。  在服务概述页上的左侧导航窗格中查找“添加 Azure 认知搜索”。 
+还可以通过其他 Azure 服务（包括 Azure Cosmos DB、Azure SQL 数据库、SQL 托管实例和 Azure Blob 存储）启动“导入数据”。 在服务概述页上的左侧导航窗格中查找“添加 Azure 认知搜索”。
 
 <a name="index-definition"></a>
 
@@ -106,7 +106,7 @@ Azure 门户在 Azure 认知搜索仪表板上提供了“导入数据”向导�
 
 1. 数据类型是否适合传入的数据？ Azure 认知搜索支持[实体数据模型 (EDM) 数据类型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)。 对于 Azure SQL 数据，有一个[映射图表](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#TypeMapping)会列出等效值。 有关更多背景信息，请参阅[字段映射和转换](search-indexer-field-mappings.md)。
 
-1. 是否有一个可用作键的字段？  此字段的类型必须是 Edm.string，并且必须唯一标识某个文档。 对于关系数据，它可能会映射到主键。 对于 Blob，它可能是 `metadata-storage-path`。 如果字段值包含空格或短划线，则必须在“高级选项”下的“创建索引器”步骤中设置“Base 64 编码密钥”选项以禁止验证检查这些字符    。
+1. 是否有一个可用作键的字段？ 此字段的类型必须是 Edm.string，并且必须唯一标识某个文档。 对于关系数据，它可能会映射到主键。 对于 Blob，它可能是 `metadata-storage-path`。 如果字段值包含空格或短划线，则必须在“高级选项”下的“创建索引器”步骤中设置“Base 64 编码密钥”选项以禁止验证检查这些字符    。
 
 1. 设置属性以确定如何在索引中使用该字段。 
 

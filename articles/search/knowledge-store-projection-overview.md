@@ -1,26 +1,22 @@
 ---
-title: 投影概念（预览版）
+title: 投影概念
 titleSuffix: Azure Cognitive Search
-description: 将 AI 扩充索引编制管道中的扩充数据保存并整型到知识存储中，以便在除了全文搜索以外的方案中使用。 知识存储目前以公开预览版提供。
+description: 将 AI 扩充索引编制管道中的扩充数据保存并整型到知识存储中，以便在除了全文搜索以外的方案中使用。
 manager: nitinme
 author: vkurpad
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 01/08/2020
-ms.date: 07/02/2020
-ms.openlocfilehash: 30cbf1ae9a23bb223434b31ce24a1e0c18a16680
-ms.sourcegitcommit: 5afd7c4c3be9b80c4c67ec55f66fcf347aad74c6
+origin.date: 06/30/2020
+ms.date: 07/17/2020
+ms.openlocfilehash: 04e75cab92f6882e4b3ea3ce3a02d59d7bb667a0
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85942570"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471856"
 ---
 # <a name="knowledge-store-projections-in-azure-cognitive-search"></a>Azure 认知搜索中的知识存储“投影”
-
-> [!IMPORTANT] 
-> 知识存储目前以公开预览版提供。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。
-> [REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供预览版功能。 目前提供有限的门户支持，不提供 .NET SDK 支持。
 
 Azure 认知搜索允许通过编制索引功能附带的内置认知技能和自定义技能来扩充内容。 扩充创建以前不存在的新信息：从图像中提取信息，从文本中检测情感、关键短语和实体等等。 扩充还向无差别文本中添加结构。 所有这些过程将产生使全文搜索更有效的文档。 在许多情况下，扩充的文档可用于除搜索以外的方案，例如知识挖掘。
 
