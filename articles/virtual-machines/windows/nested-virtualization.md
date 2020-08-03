@@ -3,18 +3,21 @@ title: 如何在 Azure VM 中启用嵌套虚拟化
 description: 如何在 Azure 虚拟机中启用嵌套虚拟化
 author: rockboyfor
 origin.date: 10/09/2017
-ms.date: 07/06/2020
+ms.date: 07/27/2020
+ms.testscope: yes
+ms.testdate: 07/27/2020
 ms.author: v-yeche
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
-ms.openlocfilehash: ccb636b885af68d3d60f795033676360b4ffb742
-ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
+ms.openlocfilehash: 4f2186d0442ba2b5a3a2a1dd419a4340decb7915
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85946036"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244463"
 ---
+<!--Verify Successfully -->
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>如何在 Azure VM 中启用嵌套虚拟化
 
 多个 Azure 虚拟机系列支持嵌套虚拟化。 此功能可在支持开发、测试、培训和演示环境等方面提供极大的灵活性。   
@@ -41,11 +44,11 @@ ms.locfileid: "85946036"
 
 1. 单击虚拟机属性上的“连接”  按钮。 此时会创建和下载远程桌面协议文件（.rdp 文件）。
 
-2. 若要连接到 VM，请打开下载的 RDP 文件。 出现提示时，请单击“连接”。  在 Mac 上，需要一个 RDP 客户端，例如 Mac 应用商店提供的这个[远程桌面客户端](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12)。
+2. 若要连接到 VM，请打开下载的 RDP 文件。 出现提示时，请单击“连接”。 在 Mac 上，需要一个 RDP 客户端，例如 Mac 应用商店提供的这个[远程桌面客户端](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12)。
 
-3. 输入在创建虚拟机时指定的用户名和密码，并单击“确定”。 
+3. 输入在创建虚拟机时指定的用户名和密码，并单击“确定”。
 
-4. 你可能会在登录过程中收到证书警告。 单击“是”或“继续”继续进行连接。  
+4. 你可能会在登录过程中收到证书警告。 单击“是”或“继续”继续进行连接。
 
 ## <a name="enable-the-hyper-v-feature-on-the-azure-vm"></a>启用 Azure VM 上的 HYPER-V 功能
 你可以手动配置这些设置，或者使用我们提供的 PowerShell 脚本来自动完成配置。
@@ -139,7 +142,7 @@ New-NetNat -Name "InternalNat" -InternalIPInterfaceAddressPrefix 192.168.0.0/24
 ### <a name="option-1-configure-dhcp-to-dynamically-assign-an-ip-address-to-the-guest-virtual-machine"></a>选项 1：配置 DHCP 以将 IP 地址动态分配给来宾虚拟机
 按照下面的步骤在主机虚拟机上配置 DHCP，以实现动态地址分配。
 
-#### <a name="install-dchp-server-on-the-azure-vm"></a>在 Azure VM 上安装 DCHP 服务器
+#### <a name="install-dhcp-server-on-the-azure-vm"></a>在 Azure VM 上安装 DHCP 服务器
 
 1. 打开服务器管理器。 在仪表板中，单击“添加角色和功能”  。 随即会出现“添加角色和功能”向导。
 
@@ -157,7 +160,7 @@ New-NetNat -Name "InternalNat" -InternalIPInterfaceAddressPrefix 192.168.0.0/24
 
 3. 输入作用域的名称和说明，然后单击“下一步”  。
 
-4. 为你的 DCHP 服务器定义 IP 范围（例如，192.168.0.100 到 192.168.0.200）。
+4. 为 DHCP 服务器定义 IP 范围（例如，192.168.0.100 到 192.168.0.200）。
 
 5. 单击“下一步”  直到出现“默认网关”页。 输入之前创建的 IP 地址（例如，192.168.0.1）作为默认网关，然后单击“添加”  。
 

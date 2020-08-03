@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 origin.date: 04/24/2019
 ms.author: v-yiso
 ms.date: 12/23/2019
-ms.openlocfilehash: afc774d4553ea9f88987bc1257a896cf8086ae77
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2bd71d4642e7e936fafce1ef7d90b51eb937b9b9
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291915"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162435"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-powershell"></a>使用 PowerShell 创建和修改 ExpressRoute 线路的对等互连
 
@@ -32,6 +32,7 @@ ms.locfileid: "79291915"
 > * [Azure 门户](expressroute-howto-routing-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-routing-arm.md)
 > * [Azure CLI](howto-routing-cli.md)
+> * [公共对等互连](about-public-peering.md)
 > * [PowerShell（经典）](expressroute-howto-routing-classic.md)
 
 
@@ -126,9 +127,9 @@ ms.locfileid: "79291915"
      * MD5 哈希（如果选择使用）。
 
 > [!IMPORTANT]
-> Microsoft 会验证是否在 Internet 路由注册表中为你分配了指定的“播发公共前缀”和“对等 ASN”（或“客户 ASN”）。 如果要从另一个实体获取公共前缀，并且该分配没有记录在路由注册表中，则自动验证将不会完成，并且将需要手动验证。 如果自动验证失败，则会在“Get-AzExpressRouteCircuitPeeringConfig”（请参阅下面的“获取 Microsoft 对等互连详细信息”）命令的输出中看到作为”需要验证”的“AdvertisedPublicPrefixesState”。 
+> Microsoft 会验证指定的“播发的公用前缀”和“对等 ASN”（或“客户 ASN”）是否已在 Internet 路由注册表中分配给你。 如果要从其他实体获取公用前缀，并且没有在路由注册表中记录分配，则自动验证不会完成，需要手动验证。 如果自动验证失败，则会在“Get-AzExpressRouteCircuitPeeringConfig”（请参阅下面的“获取 Microsoft 对等互连详细信息”）命令的输出中看到作为”需要验证”的“AdvertisedPublicPrefixesState”。 
 > 
-> 如果看到消息“需要验证”，请收集显示公共前缀将由路由注册表中作为前缀所有者列出的实体分配给你组织的文档，并通过开具支持票证提交这些文档进行手动验证，如下所示。 
+> 如果看到消息“需要验证”，请收集相关文档，它们显示公用前缀已由在路由注册表中作为前缀所有者列出的实体分配给你的组织，然后通过开具支持票证来提交这些文档以进行手动验证，如下所示。 
 > 
 >
 
@@ -182,7 +183,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 
 1. 为 ExpressRoute 导入 PowerShell 模块。
 
-   必须从 [PowerShell 库](https://www.powershellgallery.com/)安装最新的 PowerShell 安装程序，并将 Azure Resource Manager 模块导入 PowerShell 会话，以便开始使用 ExpressRoute cmdlet。 需要以管理员身份运行 PowerShell。
+   必须从 [PowerShell 库](https://www.powershellgallery.com/) 安装最新的 PowerShell 安装程序，并将 Azure 资源管理器模块导入 PowerShell 会话，以便开始使用 ExpressRoute cmdlet。 需要以管理员身份运行 PowerShell。
 
    ```powershell
    Install-Module Az
@@ -317,7 +318,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 
 1. 为 ExpressRoute 导入 PowerShell 模块。
 
-   必须从 [PowerShell 库](https://www.powershellgallery.com/)安装最新的 PowerShell 安装程序，并将 Azure Resource Manager 模块导入 PowerShell 会话，以便开始使用 ExpressRoute cmdlet。 需要以管理员身份运行 PowerShell。
+   必须从 [PowerShell 库](https://www.powershellgallery.com/) 安装最新的 PowerShell 安装程序，并将 Azure 资源管理器模块导入 PowerShell 会话，以便开始使用 ExpressRoute cmdlet。 需要以管理员身份运行 PowerShell。
 
    ```powershell
    Install-Module Az

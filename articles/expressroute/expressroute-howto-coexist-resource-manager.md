@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 origin.date: 12/11/2019
 ms.author: v-yiso
 ms.date: 01/20/2020
-ms.openlocfilehash: 75b0ddf962619e4bd0145d8a6aae755e58f291c8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2e26fde92e86fcc50523fca5b5c889556ecbbedb
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75859556"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162363"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>使用 PowerShell 配置 ExpressRoute 和站点到站点共存连接
 > [!div class="op_single_selector"]
@@ -45,6 +45,7 @@ ms.locfileid: "75859556"
 * **仅支持基于路由的 VPN 网关。** 必须使用基于路由的 [VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)。 还可以将基于路由的 VPN 网关与为“基于策略的流量选择器”配置的 VPN 连接一起使用，如[连接到多个基于策略的 VPN 设备](../vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md)中所述。
 * **应该为 VPN 网关配置静态路由。** 如果本地网络同时连接到 ExpressRoute 和站点到站点 VPN，则必须在本地网络中配置静态路由，以便将站点到站点 VPN 连接路由到公共 Internet。
 * **如果未指定，则 VPN 网关将默认为 ASN 65515。** Azure VPN 网关支持 BGP 路由协议。 通过添加 -Asn 开关，可为虚拟网络指定 ASN（AS 编号）。 如果未指定此参数，则默认 AS 编号为 65515。 可以将任何 ASN 用于配置，但如果选择 65515 以外的其他 ASN，则必须重置网关才能使设置生效。
+* 网关子网必须是 /27 或更短的前缀（例如 /26、/25），否则，添加 ExpressRoute 虚拟网络网关时将收到错误消息。
 
 ## <a name="configuration-designs"></a>配置设计
 
@@ -70,15 +71,15 @@ ms.locfileid: "75859556"
 > 
 
 ## <a name="selecting-the-steps-to-use"></a>选择要使用的步骤
-有两组不同的过程可供选择。 选择的配置过程取决于是要连接到现有虚拟网络，还是要创建新的虚拟网络。
+有两组不同的过程可供选择。 选择的配置过程将取决于有要连接到的现有虚拟网络，还是要创建新的虚拟网络。
 
 * 我没有 VNet，需要创建一个。
   
-    如果没有虚拟网络，此过程将指导你使用 Resource Manager 部署模型创建新的虚拟网络，然后创建新的 ExpressRoute 和站点到站点 VPN 连接。 若要配置虚拟网络，请遵循[创建新的虚拟网络和并存连接](#new)中的步骤。
+    如果还没有虚拟网络，此过程将指导使用 Resource Manager 部署模型创建新的虚拟网络，并创建新的 ExpressRoute 和站点到站点 VPN 连接。 若要配置虚拟网络，请遵循[创建新的虚拟网络和并存连接](#new)中的步骤。
     
 * 我已有一个 Resource Manager 部署模型 VNet。
   
-    可能已在具有现有站点到站点 VPN 连接或 ExpressRoute 连接的位置拥有虚拟网络。 在此场景下，如果网关子网掩码为 /28 或更小（/28、/29、等等），则必须删除现有网关。 [为现有的 VNet 配置并存连接](#add)部分将指导你删除网关，然后创建新的 ExpressRoute 连接和站点到站点 VPN 连接。
+    可能已在具有现有站点到站点 VPN 连接或 ExpressRoute 连接的位置拥有虚拟网络。 在此场景下，如果网关子网掩码为 /28 或更小（/28、/29、等等），则必须删除现有网关。 [为现有的 VNet 配置并存连接](#add) 部分指导删除网关，然后创建新的 ExpressRoute 连接和站点到站点 VPN 连接。
   
     如果删除并重新创建网关，则跨界连接将会中断一段时间。 但是，在配置网关时，如果进行了相应配置，VM 和服务仍可以通过负载均衡器与外界通信。
 
@@ -236,7 +237,7 @@ ms.locfileid: "75859556"
    创建网关。
 
    ```azurepowershell
-   $gw = New-AzVirtualNetworkGateway -Name <yourgatewayname> -ResourceGroupName <yourresourcegroup> -Location <yourlocation) -IpConfigurations $gwConfig -GatewayType "ExpressRoute" -GatewaySku Standard
+   $gw = New-AzVirtualNetworkGateway -Name <yourgatewayname> -ResourceGroupName <yourresourcegroup> -Location <yourlocation> -IpConfigurations $gwConfig -GatewayType "ExpressRoute" -GatewaySku Standard
    ```
 
    创建连接。

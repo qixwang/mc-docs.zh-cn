@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 06/16/2020
+ms.date: 07/22/2020
 ms.custom: seodec18
-ms.openlocfilehash: cd2ae026d7d5bc3011898ddfc4b57a8ef13fba8a
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: 0b214e5b4e9de7faec07e9453e352dba47147d46
+ms.sourcegitcommit: d32699135151e98471daebe6d3f5b650f64f826e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097034"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87160367"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure 时序见解预览版中的数据存储和入口
 
@@ -60,8 +60,13 @@ Azure 时序见解支持通过 Azure IoT 中心或 Azure 事件中心发送的 U
 |---|---|
 | **bool** | 具有两种状态之一的数据类型：`true` 或 `false`。 |
 | **dateTime** | 表示时间上的一刻，通常以日期和当天的时间表示。 以 [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) 格式表示。 |
+| **long** | 已签名的 64 位整数  |
 | **double** | 双精度 64 位 [IEEE 754](https://ieeexplore.ieee.org/document/8766229) 浮点数。 |
 | **string** | 文本值，包含 Unicode 字符。          |
+
+> [!IMPORTANT]
+>
+> * 你的 TSI 环境为强类型。 如果设备或标记同时发送整型和非整型数据，则设备属性值将存储在两个分开的 double 和 long 列中，并且在进行 API 调用以及定义时序模型变量表达式时应使用 [coalesce() 函数](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)。
 
 #### <a name="objects-and-arrays"></a>对象和数组
 
@@ -231,9 +236,11 @@ Parquet 是一种开源的列式文件格式，旨在提高存储效率和性能
 
 * 其次，重新分区的副本按时序 ID 分组，驻留在 `PT=TsId` 文件夹中：
 
-  `V=1/PT=TsId/Y=<YYYY>/M=<MM>/<YYYYMMDDHHMMSSfff>_<TSI_INTERNAL_SUFFIX>.parquet`
+  `V=1/PT=TsId/<TSI_INTERNAL_STRUCTURE>/<TSI_INTERNAL_NAME>.parquet`
 
-在这两种情况下，Parquet 文件的时间属性对应于 Blob 创建时间。 当数据写入文件以后，将原封不动地保留 `PT=Time` 文件夹中的数据。 `PT=TsId` 文件夹中的数据会不断针对查询进行优化，不是静态的。
+`PT=Time` 文件夹中的 blob 名称中的时间戳对应于数据到达 TSI 的时间（而不是事件的时间戳）。
+
+`PT=TsId` 文件夹中的数据会不断针对查询进行优化，不是静态的。 在重新分区期间，相同的事件可能会出现在多个 blob 中。 此外，blob 的命名以后可能会更改。
 
 > [!NOTE]
 >

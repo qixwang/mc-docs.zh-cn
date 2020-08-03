@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 04/10/2020
-ms.date: 04/20/2020
-ms.openlocfilehash: d7d699341ed4cadf5e947a17f255a04d3aa53d37
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.date: 07/17/2020
+ms.openlocfilehash: 8f43e4f2337ac0e21b86e1d60710fc9b52ca0236
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588582"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86472049"
 ---
 # <a name="azure-cognitive-search---frequently-asked-questions-faq"></a>Azure 认知搜索 - 常见问题解答 (FAQ)
 

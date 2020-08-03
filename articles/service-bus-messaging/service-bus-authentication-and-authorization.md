@@ -1,25 +1,19 @@
 ---
 title: Azure 服务总线身份验证和授权 | Azure
 description: 使用共享访问签名 (SAS) 身份验证向服务总线验证应用程序。
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-editor: spelluru
-ms.assetid: 18bad0ed-1cee-4a5c-a377-facc4785c8c9
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-origin.date: 06/11/2020
-ms.date: 06/30/2020
-ms.author: v-tawe
-ms.openlocfilehash: adf41a37e9d2dda4af055d09833b649bb087ad8e
-ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: ''
+ms.author: v-yeche
+author: rockboyfor
+ms.openlocfilehash: 0f1d2b41f8e96e85534e3bf1962bdbca1be63ec2
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85796166"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162400"
 ---
 # <a name="service-bus-authentication-and-authorization"></a>服务总线身份验证和授权
 可通过两种方式验证和授权对 Azure 服务总线资源的访问：Azure Activity Directory (Azure AD) 和共享访问签名 (SAS)。 本文将详细介绍如何使用这两种类型的安全机制。 
@@ -43,18 +37,18 @@ ms.locfileid: "85796166"
 
 可以在服务总线命名空间上配置用于 SAS 的密钥。 该密钥将应用到该命名空间中的所有消息传送实体。 还可在服务总线队列和主题上配置密钥。 [Azure 中继](../service-bus-relay/relay-authentication-and-authorization.md)也支持 SAS。
 
-若要使用 SAS，可以为命名空间、队列或主题配置 [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 对象。 此规则由以下元素组成：
+若要使用 SAS，可以为命名空间、队列或主题配置 [SharedAccessAuthorizationRule](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule?view=azure-dotnet) 对象。 此规则由以下元素组成：
 
 * *KeyName*：标识规则。
 * *PrimaryKey*：用于对 SAS 令牌进行签名/验证的加密密钥。
 * *SecondaryKey*：用于对 SAS 令牌进行签名/验证的加密密钥。密钥。
-* *Rights*：表示授予的“侦听”、“发送”或“管理”权限的集合。  
+* *Rights*：表示授予的“侦听”、“发送”或“管理”权限的集合。
 
-通过在命名空间级别配置的授权规则，可以向具有使用相应密钥签名的令牌的客户端授予对命名空间中所有实体的访问权限。 在服务总线命名空间、队列或主题上最多可配置 12 个此类规则。 默认情况下，首次预配时，为每个命名空间配置具有所有权限的 [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 。
+通过在命名空间级别配置的授权规则，可以向具有使用相应密钥签名的令牌的客户端授予对命名空间中所有实体的访问权限。 在服务总线命名空间、队列或主题上最多可配置 12 个此类规则。 默认情况下，首次预配时，为每个命名空间配置具有所有权限的 [SharedAccessAuthorizationRule](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule?view=azure-dotnet) 。
 
-若要访问某个实体，客户端需要使用特定 [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 生成的 SAS 令牌。 SAS 令牌是通过使用资源字符串的 HMAC-SHA256 生成的，该字符串由要授予对其访问权限的资源 URI 和授权规则相关加密密钥的到期时间组成。
+若要访问某个实体，客户端需要使用特定 [SharedAccessAuthorizationRule](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule?view=azure-dotnet) 生成的 SAS 令牌。 SAS 令牌是通过使用资源字符串的 HMAC-SHA256 生成的，该字符串由要授予对其访问权限的资源 URI 和授权规则相关加密密钥的到期时间组成。
 
-Azure .NET SDK 2.0 版和更高版本支持服务总线的 SAS 身份验证。 SAS 支持 [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)。 允许将连接字符串作为参数的所有 API 都支持 SAS 连接字符串。
+Azure .NET SDK 2.0 版和更高版本支持服务总线的 SAS 身份验证。 SAS 支持 [SharedAccessAuthorizationRule](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule?view=azure-dotnet)。 允许将连接字符串作为参数的所有 API 都支持 SAS 连接字符串。
 
 > [!IMPORTANT]
 > 如果结合使用 Azure Active Directory 访问控制（又称为访问控制服务或 ACS）与服务总线，请注意当前对此方法的支持有限，应[迁移应用程序以使用 SAS](service-bus-migrate-acs-sas.md) 或通过 Azure AD 使用 OAuth 2.0 身份验证（推荐）。有关弃用 ACS 的详细信息，请参阅[此博客文章](https://blogs.msdn.microsoft.com/servicebus/2017/06/01/upcoming-changes-to-acs-enabled-namespaces/)。
@@ -68,3 +62,5 @@ Azure .NET SDK 2.0 版和更高版本支持服务总线的 SAS 身份验证。 S
 有关使用 SAS 进行身份验证的详细信息，请参阅以下文章：
 
 - [使用 SAS 进行身份验证](service-bus-sas.md)
+
+<!-- Update_Description: update meta properties, wording update, update link -->

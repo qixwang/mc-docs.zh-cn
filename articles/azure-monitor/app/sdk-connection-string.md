@@ -4,14 +4,14 @@ description: 如何使用连接字符串。
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 05/25/2020
+ms.date: 07/17/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: ad42c495141c8aae5a08070148b3ee0eaf0d0e8b
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: 1b051db525765aeaea15d391334a1bc9f197ee3e
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199879"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244461"
 ---
 # <a name="connection-strings"></a>连接字符串
 
@@ -31,7 +31,7 @@ ms.locfileid: "84199879"
 
 - 防火墙例外或代理重定向 
 
-    如果需要监视 Intranet Web 服务器，我们的早期解决方案会要求客户将各个服务终结点添加到你的配置中。
+    如果需要监视 Intranet Web 服务器，我们的早期解决方案会要求客户将各个服务终结点添加到你的配置中。 有关详细信息，请参阅[此文](/azure-monitor/faq.md)。 
     连接字符串只需进行单个设置，简化了此工作，因此是一种更好的选择。 简单的前缀后缀修正，允许自动填充所有终结点并将其重定向到正确的服务。 
 
 - 主权云或混合云环境
@@ -90,7 +90,7 @@ ms.locfileid: "84199879"
 - [遥测引入](./app-insights-overview.md)：`dc`
 - [实时指标](./live-stream.md)：`live`
 - [探查器](./profiler-overview.md)：`profiler`
-- [快照](./snapshot-debugger.md)：`snapshot`
+- 快照：`snapshot`
 
 
 
@@ -149,7 +149,7 @@ ms.locfileid: "84199879"
 以下 SDK 版本支持连接字符串：
 - .NET 和 .NET Core v2.12.0
 - Java v2.5.1 和 Java 3.0
-- Javascript v2.3.0
+- JavaScript v2.3.0
 - NodeJS v1.5.0
 - Python v1.0.0
 
@@ -165,7 +165,7 @@ ms.locfileid: "84199879"
 
 TelemetryConfiguration.ConnectionString： https://github.com/microsoft/ApplicationInsights-dotnet/blob/add45ceed35a817dc7202ec07d3df1672d1f610d/BASE/src/Microsoft.ApplicationInsights/Extensibility/TelemetryConfiguration.cs#L271-L274
 
-.Net 显式设置：
+.NET 显式设置：
 ```csharp
 var configuration = new TelemetryConfiguration
 {
@@ -173,7 +173,7 @@ var configuration = new TelemetryConfiguration
 };
 ```
 
-.Net 配置文件：
+.NET 配置文件：
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -182,6 +182,14 @@ var configuration = new TelemetryConfiguration
 </ApplicationInsights>
 ```
 
+NetCore 显式设置：
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    var options = new ApplicationInsightsServiceOptions { ConnectionString = "InstrumentationKey=00000000-0000-0000-0000-000000000000;" };
+    services.AddApplicationInsightsTelemetry(options: options);
+}
+```
 
 NetCore config.json： 
 
@@ -212,7 +220,7 @@ ApplicationInsights.xml
 
 # <a name="javascript"></a>[JavaScript](#tab/js)
 
-重要说明：Javascript 不支持使用环境变量。
+重要说明：JavaScript 不支持使用环境变量。
 
 使用代码片段：
 

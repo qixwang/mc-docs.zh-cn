@@ -2,13 +2,13 @@
 title: 服务运行状况概述 | Microsoft Docs
 description: 有关当前和将来的 Azure 服务问题及维护对 Azure 应用造成的影响的个性化信息。
 ms.topic: conceptual
-ms.date: 05/20/2020
-ms.openlocfilehash: aecb144dbd1e8c5800a5202e60107b869614e3a4
-ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
+ms.date: 07/21/2020
+ms.openlocfilehash: a336668f976ca35f7766b134564bc9f25803496a
+ms.sourcegitcommit: d32699135151e98471daebe6d3f5b650f64f826e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83748158"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87160360"
 ---
 # <a name="service-health-overview"></a>服务运行状况概述
 
@@ -21,7 +21,7 @@ ms.locfileid: "83748158"
 1. **服务问题** - Azure 服务中目前已经造成了影响的问题。 
 2. **计划内维护** - 即将进行的且将来可能会影响服务可用性的维护。  
 3. **运行状况通告** - Azure 服务中发生的、需要引以注意的更改。 示例包括弃用 Azure 功能或升级要求（如升级到受支持的 PHP 框架）。
-4. **安全公告（预览版）** - 与安全性相关的通知，可能会影响 Azure 服务的可用性。
+4. **安全公告** - 可能会影响 Azure 服务可用性的安全相关通知或违规。
 
 > [!NOTE]
 > 若要查看服务运行状况事件，必须授予用户对订阅的[读者角色](../role-based-access-control/role-assignments-portal.md)。
@@ -36,11 +36,11 @@ ms.locfileid: "83748158"
 
 “服务问题”视图显示 Azure 服务中当前正在影响资源的所有问题。 可以了解问题的开始时间，以及受影响的服务和区域。 还可以阅读最新的更新，了解 Azure 正在采取哪些措施来解决问题。 
 
-![管理服务问题](./media/service-health-overview/azure-service-health-overview-2.png)
+[![管理服务问题](./media/service-health-overview/azure-service-health-overview-2.png)](./media/service-health-overview/azure-service-health-overview-2.png#lightbox)
 
 选择“潜在影响”选项卡查看自己拥有的、可能被问题影响的特定资源列表。 可以下载这些资源的 CSV 列表，以便与团队共享。
 
-![管理服务问题 - 影响](./media/service-health-overview/azure-service-health-overview-4.png)
+[![管理服务问题 - 影响](./media/service-health-overview/azure-service-health-overview-4.png)](./media/service-health-overview/azure-service-health-overview-4.png#lightbox)
 
 ## <a name="see-emerging-issues-which-may-impact-your-services"></a>查看可能会影响服务的新出现的问题
 
@@ -52,7 +52,7 @@ ms.locfileid: "83748158"
 
 可以获取要在问题管理系统中使用的问题链接。 可以下载 PDF 文件（有时是 CSV 文件），以便与无法访问 Azure 门户的人员共享。   
 
-![管理服务问题 - 问题管理](./media/service-health-overview/azure-service-health-overview-3.png)
+[![管理服务问题 - 问题管理](./media/service-health-overview/azure-service-health-overview-3.png)](./media/service-health-overview/azure-service-health-overview-3.png#lightbox)
 
 ## <a name="get-support-from-microsoft"></a>获取 Microsoft 支持
 
@@ -62,7 +62,7 @@ ms.locfileid: "83748158"
 
 筛选服务运行状况，显示业务关键型订阅、区域和资源类型。 保存筛选结果，将个性化运行状况全局图固定到门户仪表板。 
 
-![筛选个性化运行状况图](./media/service-health-overview/azure-service-health-overview-6a.png)
+[![筛选个性化运行状况图](./media/service-health-overview/azure-service-health-overview-6a.png)](./media/service-health-overview/azure-service-health-overview-6a.png#lightbox)
 
 ![固定个性化运行状况图](./media/service-health-overview/azure-service-health-overview-6b.png)
 

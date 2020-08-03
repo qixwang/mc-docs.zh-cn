@@ -1,22 +1,19 @@
 ---
 title: 为 Azure 服务总线配置虚拟网络服务终结点
 description: 本文提供了有关如何向虚拟网络中添加 Microsoft.ServiceBus 服务终结点的信息。
-services: service-bus
-documentationcenter: ''
-author: axisc
-editor: spelluru
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-origin.date: 12/20/2019
-ms.date: 05/21/2020
-ms.author: v-tawe
-ms.openlocfilehash: 985e4f71b7c723f952990f7628eaf94103144a87
-ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: yes
+ms.testdate: 07/20/2020
+ms.author: v-yeche
+author: rockboyfor
+ms.openlocfilehash: 2f7c8d764a11d176ca6123ffe6a46cb65d29266a
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85796326"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162252"
 ---
 # <a name="configure-virtual-network-service-endpoints-for-azure-service-bus"></a>为 Azure 服务总线配置虚拟网络服务终结点
 
@@ -29,14 +26,14 @@ ms.locfileid: "85796326"
 >[!WARNING]
 > 实现虚拟网络集成可以防止其他 Azure 服务与服务总线交互。
 >
-> 实现虚拟网络时，受信任的 Microsoft 服务不受支持。
+> 实现虚拟网络时，受信任的 Azure 服务不受支持。
 >
 > 不适用于虚拟网络常见 Azure 方案（请注意，该列表内容并不详尽）-
 > - 与 Azure 事件网格的集成
 > - Azure IoT 中心路由
 > - Azure IoT Device Explorer
 >
-> 以下 Microsoft 服务必须在虚拟网络中
+> 以下 Azure 服务必须在虚拟网络中
 > - Azure 应用服务
 > - Azure Functions
 
@@ -50,7 +47,7 @@ ms.locfileid: "85796326"
 对于需要严格和隔离安全性的解决方案和虚拟网络子网在其中的隔离服务之间提供分段的解决方案，它们通常仍然需要驻留在这些隔离舱中的服务之间的通信路径。
 
 隔离舱之间的任何即时 IP 路由（包括通过 TCP/IP 承载 HTTPS 的）都存在利用网络层漏洞的风险。 消息传递服务提供完全隔离的通信路径，其中消息在各方之间转换时会以平均方式写入磁盘。 绑定到同一个服务总线实例的两个不同虚拟网络中的工作负荷可通过消息进行高效和可靠的通信，同时保留各自的网络隔离边界完整性。
- 
+
 这意味着安全敏感云解决方案不仅可以访问 Azure 行业领先的可靠且可扩展的异步消息传递功能，而且现在可以使用消息传递在安全解决方案隔离舱之间创建通信路径，这些隔离舱本质上比利用任何对等通信模式（包括 HTTPS 和其他 TLS 安全套接字协议）更加安全。
 
 ## <a name="binding-service-bus-to-virtual-networks"></a>将服务总线绑定到虚拟网络
@@ -73,7 +70,7 @@ ms.locfileid: "85796326"
 
     ![添加现有虚拟网络](./media/service-endpoints/add-vnet-menu.png)
 3. 从虚拟网络列表中选择虚拟网络，然后选择“子网”。 将虚拟网络添加到列表之前，必须启用服务终结点。 如果未启用服务终结点，门户将提示启用。
-   
+
    ![选择子网](./media/service-endpoints/select-subnet.png)
 
 4. 为 Microsoft.ServiceBus 启用子网的服务终结点后，应显示指示启用成功的以下消息。 选择页面底部的“添加”，添加网络。 
@@ -221,3 +218,5 @@ ms.locfileid: "85796326"
 [vnet-sep]: ../virtual-network/virtual-network-service-endpoints-overview.md
 [lnk-deploy]: ../azure-resource-manager/templates/deploy-powershell.md
 [ip-filtering]: service-bus-ip-filtering.md
+
+<!-- Update_Description: update meta properties, wording update, update link -->

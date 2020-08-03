@@ -4,14 +4,14 @@ description: 使用 Application Insights 监视来自本地或 Azure Web 应用�
 ms.topic: conceptual
 author: Johnnytechn
 origin.date: 06/25/2019
-ms.date: 05/28/2020
+ms.date: 07/17/2020
 ms.author: v-johya
-ms.openlocfilehash: 282cfa764ba0bc58aa9c4a2304963bc9a32af741
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: 7512bc62794ad9589e40d762e35d2ba73aa27b81
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199626"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244832"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>在 Azure Application Insights 中跟踪依赖项 
 
@@ -94,16 +94,27 @@ ms.locfileid: "84199626"
 
 对于 SQL 调用，始终会收集服务器和数据库的名称，并将其存储为收集的 `DependencyTelemetry` 的名称。 有一个名为“data”的附加字段，其中可以包含完整的 SQL 查询文本。
 
-对于 ASP.NET Core 应用程序，无需执行额外的步骤即可获取完整的 SQL 查询。
+对于 ASP.NET Core 应用程序，现在需要通过使用以下命令来选择加入 SQL 文本收集
+```csharp
+services.ConfigureTelemetryModule<DependencyTrackingTelemetryModule>((module, o) => { module. EnableSqlCommandTextInstrumentation = true; });
+```
 
-对于 ASP.NET 应用程序，完整的 SQL 查询是在字节代码检测的帮助下收集的，这需要检测引擎，或者使用 [Microsoft.Data.SqlClient ](https://www.nuget.org/packages/Microsoft.Data.SqlClient)NuGet 包而不是 System.Data.SqlClient 库。 这需要执行其他特定于平台的步骤，如下所述。
+对于 ASP.NET 应用程序，完整 SQL 查询文本是在字节代码检测的帮助下收集的，这需要使用检测引擎，或者使用 [Microsoft.Data.SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet 包而不是 System.Data.SqlClient 库。 下面介绍了启用完整 SQL 查询集合的平台特定步骤：
 
 | 平台 | 获取完整 SQL 查询所要执行的步骤 |
 | --- | --- |
 | Azure Web 应用 |在 Web 应用控制面板中，[打开“Application Insights”边栏选项卡](../../azure-monitor/app/azure-web-apps.md)并启用“.NET”下的“SQL 命令” |
 | IIS 服务器（Azure VM、本地服务器，等等。） | 使用 [Microsoft.Data.SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet 包或使用状态监视器 PowerShell 模块[安装检测引擎](../../azure-monitor/app/status-monitor-v2-api-reference.md)并重启 IIS。 |
 | Azure 云服务 | 添加[启动任务以安装 StatusMonitor](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional) <br> 应通过为 [ASP.NET](/azure-monitor/app/asp-net) 或 [ASP.NET Core](/azure-monitor/app/asp-net-core) 应用程序安装 NuGet 包，在生成应用时将其加入 ApplicationInsights SDK |
-| IIS Express | 使用 [Microsoft.Data.SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet 包
+| IIS Express | 使用 [Microsoft.Data.SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet 包。
+
+除了上述平台特定的步骤之外，还必须通过使用以下命令修改 applicationInsights.config 文件来显式选择启用 SQL 命令集合：
+
+```xml
+<Add Type="Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule, Microsoft.AI.DependencyCollector">
+<EnableSqlCommandTextInstrumentation>true</EnableSqlCommandTextInstrumentation>
+</Add>
+```
 
 在上述情况下，验证是否已正确安装该检测引擎的适当方法是验证收集的 `DependencyTelemetry` 的 SDK 版本是否为“rddp”。 “rdddsd”或“rddf”表示依赖项是通过 DiagnosticSource 或 EventSource 回调收集的，因此不会捕获完整的 SQL 查询。
 
@@ -121,7 +132,7 @@ ms.locfileid: "84199626"
 
 ### <a name="tracing-from-requests-to-dependencies"></a>从发往依赖项的请求开始跟踪
 
-打开“性能”选项卡，导航到顶部的操作旁边的“依赖项”选项卡。 
+打开“性能”选项卡，导航到顶部的操作旁边的“依赖项”选项卡。
 
 单击整个选项卡下面的某个**依赖项名称**。 选择一个依赖项后，右侧会显示该依赖项的持续时间分布图。
 
@@ -139,7 +150,7 @@ ms.locfileid: "84199626"
 
 失败的请求还可能与依赖项的失败调用相关联。
 
-我们可以转到左侧的“失败”选项卡，然后单击顶部的“依赖项”选项卡。 
+我们可以转到左侧的“失败”选项卡，然后单击顶部的“依赖项”选项卡。
 
 ![单击失败的请求图表](./media/asp-net-dependencies/4-fail.png)
 

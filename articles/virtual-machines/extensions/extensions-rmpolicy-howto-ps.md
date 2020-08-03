@@ -11,15 +11,17 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 origin.date: 03/23/2018
-ms.date: 07/06/2020
+ms.date: 07/27/2020
+ms.testscope: yes
+ms.testdate: 07/27/2020
 ms.author: v-yeche
 ms.reviewer: cynthn
-ms.openlocfilehash: 64940c5c4d710e395e622662b8fa9051cbceebed
-ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
+ms.openlocfilehash: 93ffc36292bd66cbefdad4faf7ed69fcbfc31e57
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85945681"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244914"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>使用 Azure Policy 限制 Windows VM 上的扩展安装
 
@@ -35,13 +37,15 @@ ms.locfileid: "85945681"
 
 若要限制可以安装哪些扩展，需要使用[规则](../../governance/policy/concepts/definition-structure.md#policy-rule)来提供用于识别扩展的逻辑。
 
-此示例演示了如何通过在 Azure 本地 Shell 中创建规则文件来拒绝“Microsoft.Compute”发布的扩展。 如果在本地使用 PowerShell，也可以创建一个本地文件并将路径 ($home/clouddrive) 替换为计算机上本地文件的路径。
+本示例演示如何通过在 Azure 本地 Shell 中创建规则文件来拒绝“Microsoft.Compute”发布的扩展，但如果在本地 PowerShell 中操作，也可以创建一个本地文件并将路径 ($home/clouddrive) 替换为计算机上本地文件的路径。
 
 <!-- Not Available on in Azure Cloud Shell-->
 <!-- Not Available on [Cloud Shell](https://shell.azure.com/powershell)-->
 
+<!--CORRECT ON REMOVE $home/clouddrive/ ON CLOUD SHELL-->
+
 ```powershell
-nano $home/clouddrive/rules.json
+nano rules.json
 ```
 
 将以下 .json 的内容复制并粘贴到该文件。
@@ -76,13 +80,16 @@ nano $home/clouddrive/rules.json
 
 还需要一个[参数](../../governance/policy/concepts/definition-structure.md#parameters)文件，以创建一个用于传入要阻止的扩展列表的结构。 
 
-此示例演示如何为 VM 创建参数文件。 如果在本地使用 PowerShell，也可以创建一个本地文件并将路径 ($home/clouddrive) 替换为计算机上本地文件的路径。
+此示例演示如何在本地 PowerShell 中为 VM 创建参数文件。 在本地 PowerShell 中操作时，可以在计算机上创建一个本地文件。
 
+<!--Not Available on and replace the path ($home/clouddrive) with the path to the local file-->
 <!-- Not Available on in Cloud Shell-->
 <!-- Not Available on [Cloud Shell](https://shell.azure.com/powershell)-->
 
+<!--CORRECT ON REMOVE $home/clouddrive/ ON CLOUD SHELL-->
+
 ```powershell
-nano $home/clouddrive/parameters.json
+nano parameters.json
 ```
 
 将以下 .json 的内容复制并粘贴到该文件。
@@ -93,7 +100,6 @@ nano $home/clouddrive/parameters.json
         "type": "Array",
         "metadata": {
             "description": "The list of extensions that will be denied.",
-            "strongType": "type",
             "displayName": "Denied extension"
         }
     }
@@ -109,15 +115,18 @@ nano $home/clouddrive/parameters.json
  策略规则和参数是在本地 shell 中创建并存储为 .json 文件的文件。
  
 <!-- Notice: Change cloud shell to local shell -->
+<!--CORRECT ON REMOVE C:\Users\ContainerAdministrator\clouddrive\-->
 
 ```powershell
 $definition = New-AzPolicyDefinition `
    -Name "not-allowed-vmextension-windows" `
    -DisplayName "Not allowed VM Extensions" `
    -description "This policy governs which VM extensions that are explicitly denied."   `
-   -Policy 'C:\Users\ContainerAdministrator\clouddrive\rules.json' `
-   -Parameter 'C:\Users\ContainerAdministrator\clouddrive\parameters.json'
+   -Policy 'rules.json' `
+   -Parameter 'parameters.json'
 ```
+
+<!--CORRECT ON REMOVE C:\Users\ContainerAdministrator\clouddrive\-->
 
 ## <a name="assign-the-policy"></a>分配策略
 

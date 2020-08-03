@@ -1,30 +1,25 @@
 ---
 title: 使用模板创建 Azure 服务总线命名空间
 description: 使用 Azure 资源管理器模板创建服务总线消息命名空间
-services: service-bus-messaging
 documentationcenter: .net
-author: lingliw
-manager: digimobile
-editor: ''
-ms.assetid: dc0d6482-6344-4cef-8644-d4573639f5e4
-ms.service: service-bus-messaging
-ms.devlang: tbd
+author: rockboyfor
 ms.topic: article
 ms.tgt_pltfrm: dotnet
-ms.workload: na
-origin.date: 06/21/2019
-ms.date: 09/21/2019
-ms.author: v-lingwu
-ms.openlocfilehash: 1af2f5a50e786e9e232fdb786436b3be47a38a0e
-ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: ''
+ms.author: v-yeche
+ms.openlocfilehash: e6f5df272354d7308e21795062de2522f2c2c0e6
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82886818"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162347"
 ---
 # <a name="create-a-service-bus-namespace-by-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建服务总线命名空间
 
-了解如何部署 Azure 资源管理器模板以创建服务总线命名空间。 可将此模板用于自己的部署，或自定义此模板以满足要求。 有关创建模板的详细信息，请参阅 [Azure 资源管理器文档](/azure/azure-resource-manager/)。
+了解如何部署 Azure 资源管理器模板以创建服务总线命名空间。 可将此模板用于自己的部署，或自定义此模板以满足要求。 有关创建模板的详细信息，请参阅 [Azure 资源管理器文档](/azure-resource-manager/)。
 
 还可使用以下模板创建服务总线命名空间：
 
@@ -35,15 +30,15 @@ ms.locfileid: "82886818"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-如果没有 Azure 订阅，请在开始前[创建一个试用帐户](https://www.azure.cn/pricing/1rmb-trial-full/?form-type=identityauth)。
+如果没有 Azure 订阅，请在开始前[创建一个试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
 ## <a name="create-a-service-bus-namespace"></a>创建服务总线命名空间
 
-在本快速入门中，使用 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/)中的[现有资源管理器模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-servicebus-create-namespace/azuredeploy.json)：
+在本快速入门中，使用 [Azure 快速启动模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-servicebus-create-namespace/azuredeploy.json)中的[现有资源管理器模板](https://github.com/Azure/azure-quickstart-templates/)：
 
-```
+```json
 {
-  "$schema": "https://schema.management.chinacloudapi.cn/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "serviceBusNamespaceName": {
@@ -101,15 +96,15 @@ ms.locfileid: "82886818"
 }
 ```
 
-若要查找更多模板示例，请参阅 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Servicebus&pageNumber=1&sort=Popular)。
+若要查找更多模板示例，请参阅 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/?resourceType=Microsoft.Servicebus&pageNumber=1&sort=Popular)。
 
 若要通过部署模板创建服务总线命名空间，请执行以下操作：
 
-1. 从以下代码块中选择“试一试”，然后按照说明登录到 Azure PowerShell。
+1. 使用 PowerShell 登录到 Azure。
 
-    ```
+    ```powershell
     $serviceBusNamespaceName = Read-Host -Prompt "Enter a name for the service bus namespace to be created"
-    $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+    $location = Read-Host -Prompt "Enter the location (i.e. chinaeast)"
     $resourceGroupName = "${serviceBusNamespaceName}rg"
     $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-servicebus-create-namespace/azuredeploy.json"
 
@@ -122,15 +117,15 @@ ms.locfileid: "82886818"
     资源组名称是追加了 **rg** 的服务总线命名空间名称。
 
 2. 选择“复制”以复制 PowerShell 脚本。
-3. 右键单击 shell 控制台，然后选择“粘贴”。
+3. 右键单击 shell 控制台并选择“粘贴”  。
 
-创建事件中心需要一些时间。
+创建事件中心需要花费片刻时间。
 
 ## <a name="verify-the-deployment"></a>验证部署
 
 若要查看部署的服务总线命名空间，可以从 Azure 门户打开资源组，或者使用以下 Azure PowerShell 脚本。 如果 PowerShell 仍处于打开状态，则无需复制/运行以下脚本的第一行和第二行。
 
-```
+```powershell
 $serviceBusNamespaceName = Read-Host -Prompt "Enter the same service bus namespace name used earlier"
 $resourceGroupName = "${serviceBusNamespaceName}rg"
 
@@ -149,7 +144,7 @@ Write-Host "Press [ENTER] to continue ..."
 
 不再需要 Azure 资源时，请通过删除资源组来清理部署的资源。 如果 PowerShell 仍处于打开状态，则无需复制/运行以下脚本的第一行和第二行。
 
-```
+```powershell
 $serviceBusNamespaceName = Read-Host -Prompt "Enter the same service bus namespace name used earlier"
 $resourceGroupName = "${serviceBusNamespaceName}rg"
 
@@ -164,3 +159,5 @@ Write-Host "Press [ENTER] to continue ..."
 
 * [服务总线队列入门](service-bus-dotnet-get-started-with-queues.md)
 * [服务总线主题入门](service-bus-dotnet-how-to-use-topics-subscriptions.md)
+
+<!-- Update_Description: update meta properties, wording update, update link -->

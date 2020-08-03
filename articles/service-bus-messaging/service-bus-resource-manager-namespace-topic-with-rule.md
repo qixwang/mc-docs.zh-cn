@@ -1,32 +1,28 @@
 ---
 title: 使用 Azure 模板创建服务总线主题订阅和规则
 description: 使用 Azure 资源管理器模板创建包含主题、订阅和规则的服务总线命名空间
-services: service-bus-messaging
-documentationcenter: .net
-author: lingliw
-manager: digimobile
-editor: ''
-ms.assetid: 9e0aaf58-0214-4bca-bd00-d29c08f9b1bc
-ms.service: service-bus-messaging
-ms.devlang: tbd
+author: rockboyfor
 ms.topic: article
 ms.tgt_pltfrm: dotnet
-ms.workload: na
-origin.date: 11/27/2019
-ms.date: 1/2/2020
-ms.author: v-lingwu
-ms.openlocfilehash: 276b762f6c2545d1b55a0479f88c2242c44b53bd
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: ''
+ms.author: v-yeche
+ms.openlocfilehash: b1b4db393a8f2247fe08b2de9c7d5b099e34ec66
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75853831"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162349"
 ---
 # <a name="create-a-service-bus-namespace-with-topic-subscription-and-rule-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建包含主题、订阅和规则的服务总线命名空间
 
 本文介绍如何使用 Azure 资源管理器模板，创建包含主题、订阅和规则（筛选器）的服务总线命名空间。 本文介绍如何指定要部署的资源以及如何定义执行部署时指定的参数。 可将此模板用于自己的部署，或自定义此模板以满足要求
 
 有关创建模板的详细信息，请参阅[创作 Azure 资源管理器模板][Authoring Azure Resource Manager templates]。
+
+有关 Azure 资源命名约定的实践和模式的详细信息，请参阅 [Azure 资源的建议命名约定][Recommended naming conventions for Azure resources]。
 
 有关完整模板，请参阅[包含主题、订阅和规则的服务总线命名空间][Service Bus namespace with topic, subscription, and rule]模板。
 
@@ -38,15 +34,13 @@ ms.locfileid: "75853831"
 > * [创建服务总线命名空间](service-bus-resource-manager-namespace.md)
 > * [创建包含主题和订阅的服务总线命名空间](service-bus-resource-manager-namespace-topic.md)
 > 
-> 若要检查最新模板，请访问 [Azure 快速启动模板][Azure Quickstart Templates]库并搜索服务总线。
-> 
-> 
+> 若要检查最新模板，请访问 [Azure 快速启动模板][Azure Quickstart Templates] 库并搜索服务总线。
 
 ## <a name="what-do-you-deploy"></a>要部署什么？
 
-使用此模板，将部署包含主题、订阅和规则（筛选器）的服务总线命名空间。
+使用此模板，你将部署包含主题、订阅和规则（筛选器）的服务总线命名空间。
 
-[服务总线主题和订阅](service-bus-queues-topics-subscriptions.md#topics-and-subscriptions)以“发布/订阅”  模式提供一对多的通信形式。 使用主题和订阅时，分布式应用程序的组件之间不会直接通信，它们会通过用作中介的主题来交换消息。主题订阅类似于虚拟队列，接收发送至该主题的消息副本。 通过订阅中的筛选器，可以指定发送到主题的哪些消息应该在特定主题订阅中显示。
+[服务总线主题和订阅](service-bus-queues-topics-subscriptions.md#topics-and-subscriptions)以“发布/订阅”模式提供一对多的通信形式。 使用主题和订阅时，分布式应用程序的组件之间不会直接通信，它们会通过用作中介的主题来交换消息。主题订阅类似于虚拟队列，接收发送至该主题的消息副本。 通过订阅中的筛选器，可以指定发送到主题的哪些消息应该在特定主题订阅中显示。
 
 ## <a name="what-are-rules-filters"></a>什么是规则（筛选器）？
 
@@ -58,11 +52,12 @@ ms.locfileid: "75853831"
 
 ## <a name="parameters"></a>parameters
 
-使用 Azure 资源管理器，可以定义在部署模板时想要指定的值的参数。 模板包含名为 `Parameters` 的部分，其中包含所有参数值。 请根据要部署的项目或要部署到的环境的不同，为那些值定义参数。 不要为始终保持不变的值定义参数。 每个参数值可在模板中用来定义所部署的资源。
+使用 Azure 资源管理器，可以定义在部署模板时想要指定的值的参数。 该模板具有一个名为 `Parameters` 的部分，其中包含所有参数值。 请根据要部署的项目或要部署到的环境的不同，为那些值定义参数。 不要为永远保持不变的值定义参数。 每个参数值可在模板中用来定义所部署的资源。
 
 模板定义以下参数：
 
 ### <a name="servicebusnamespacename"></a>serviceBusNamespaceName
+
 要创建的服务总线命名空间的名称。
 
 ```json
@@ -72,6 +67,7 @@ ms.locfileid: "75853831"
 ```
 
 ### <a name="servicebustopicname"></a>serviceBusTopicName
+
 在服务总线命名空间中创建的主题的名称。
 
 ```json
@@ -81,6 +77,7 @@ ms.locfileid: "75853831"
 ```
 
 ### <a name="servicebussubscriptionname"></a>serviceBusSubscriptionName
+
 在服务总线命名空间中创建的订阅的名称。
 
 ```json
@@ -88,7 +85,9 @@ ms.locfileid: "75853831"
 "type": "string"
 }
 ```
+
 ### <a name="servicebusrulename"></a>serviceBusRuleName
+
 在服务总线命名空间中创建的规则（筛选器）的名称。
 
 ```json
@@ -96,7 +95,9 @@ ms.locfileid: "75853831"
    "type": "string",
   }
 ```
+
 ### <a name="servicebusapiversion"></a>serviceBusApiVersion
+
 模板的服务总线 API 版本。
 
 ```json
@@ -107,8 +108,10 @@ ms.locfileid: "75853831"
            "description": "Service Bus ApiVersion used by the template" 
        }
 ```
+
 ## <a name="resources-to-deploy"></a>要部署的资源
-创建类型为 **Messaging** 的包含主题、订阅和规则的标准服务总线命名空间。
+
+创建类型为 **Messaging**的包含主题、订阅和规则的标准服务总线命名空间。
 
 ```json
  "resources": [{
@@ -160,15 +163,20 @@ ms.locfileid: "75853831"
     }]
 ```
 
+<!--Not Available on Templates-->
+
 ## <a name="commands-to-run-deployment"></a>运行部署的命令
+
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ## <a name="powershell"></a>PowerShell
+
 ```powershell
 New-AzureResourceGroupDeployment -Name \<deployment-name\> -ResourceGroupName \<resource-group-name\> -TemplateUri <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-servicebus-create-topic-subscription-rule/azuredeploy.json>
 ```
 
 ## <a name="azure-cli"></a>Azure CLI
+
 ```azurecli
 azure config mode arm
 
@@ -176,16 +184,22 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 ```
 
 ## <a name="next-steps"></a>后续步骤
-查看以下文章了解如何管理这些资源：
+
+通过查看以下文章了解如何管理这些资源：
 
 * [管理 Azure 服务总线](service-bus-management-libraries.md)
 * [使用 PowerShell 管理服务总线](service-bus-manage-with-ps.md)
 * [使用服务总线 Explorer 管理服务总线资源](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
 
-[Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md
-[Azure Quickstart Templates]: https://github.com/Azure/azure-quickstart-templates/?term=service+bus
+[Authoring Azure Resource Manager templates]: ../azure-resource-manager/templates/template-syntax.md
+[Azure Quickstart Templates]: https://azure.microsoft.com/documentation/templates/?term=service+bus
 [Learn more about Service Bus topics and subscriptions]: service-bus-queues-topics-subscriptions.md
 [Using Azure PowerShell with Azure Resource Manager]: ../azure-resource-manager/powershell-azure-resource-manager.md
 [Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../azure-resource-manager/xplat-cli-azure-resource-manager.md
+
+<!--Not Available on [Recommended naming conventions for Azure resources]: /azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging-->
+
 [Service Bus namespace with topic, subscription, and rule]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-topic-subscription-rule/
-[Service Bus queues, topics, and subscriptions]: ./service-bus-queues-topics-subscriptions.md
+[Service Bus queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
+
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -4,14 +4,14 @@ description: 本文提供故障排除步骤和信息，帮助开发人员解决�
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 05/25/2020
+ms.date: 07/17/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 2f0f0e3ed9558f912e338fce60dc3357765ea2a9
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: a8e58de35835d33be13bbea59e02a5fcab649101
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84200174"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244600"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>排查启用或查看 Application Insights Profiler 时遇到的问题
 
@@ -128,7 +128,7 @@ Profiler 将跟踪消息和自定义事件写入到 Application Insights 资源�
 
 Profiler 在 Web 应用中以连续 Web 作业的形式运行。 可以在 [Azure 门户](https://portal.azure.cn)中打开 Web 应用资源。 在“WebJobs”窗格中，查看 ApplicationInsightsProfiler 的状态 。 如果探查器未运行，请打开“日志”获取详细信息。
 
-## <a name="troubleshoot-problems-with-profiler-and-azure-diagnostics"></a>排查 Profiler 和 Azure 诊断的问题
+## <a name="troubleshoot-vms-and-cloud-services"></a>对 VM 和云服务进行故障排除
 
 >**云服务 WAD 中附带的探查器中的 bug 已修复。** 用于云服务的最新版本的 WAD (1.12.2.0) 适用于所有最新版本的 App Insights SDK。 云服务主机将自动升级 WAD，但不会立即升级。 若要强制升级，可以重新部署服务或重新启动节点。
 
@@ -141,27 +141,45 @@ Profiler 在 Web 应用中以连续 Web 作业的形式运行。 可以在 [Azur
 
 若要检查用于配置 Azure 诊断的设置：
 
-1. 登录到虚拟机 (VM)，然后打开位于此位置的日志文件。 （驱动器可能是 c: 或 d:，插件版本可能不同。）
-
-    ```
-    c:\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log  
-    ```
-    或
+1. 登录到虚拟机 (VM)，然后打开位于此位置的日志文件。 此插件版本在你的计算机上可能会更高。
+    
+    对于 VM：
     ```
     c:\WindowsAzure\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log
+    ```
+    
+    对于云服务：
+    ```
+    c:\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log  
     ```
 
 1. 在该文件中，可以搜索字符串“WadCfg”，找到传递给 VM 用于配置 Azure 诊断的设置。 可以检查 Profiler 接收器使用的 iKey 是否正确。
 
-1. 检查用于启动 Profiler 的命令行。 用于启动 Profiler 的参数位于以下文件中。 （驱动器可以是 c: 或 d:）
+1. 检查用于启动 Profiler 的命令行。 用于启动 Profiler 的参数位于以下文件中。 （驱动器可能是 C: 或 D: 并且可能会隐藏目录。）
 
+    对于 VM：
+    ```
+    C:\ProgramData\ApplicationInsightsProfiler\config.json
+    ```
+    
+    对于云服务：
     ```
     D:\ProgramData\ApplicationInsightsProfiler\config.json
     ```
 
 1. 确保 Profiler 命令行中的 iKey 是正确的。 
 
-1. 使用上述 config.json 文件中的路径检查 Profiler 日志文件。 它将显示表示 Profiler 正在使用的设置的调试信息。 此外，还将显示来自 Profiler 的状态和错误消息。  
+1. 使用上述 config.json 文件中的路径检查 Profiler 日志文件 BootstrapN.log。 它将显示表示 Profiler 正在使用的设置的调试信息。 此外，还将显示来自 Profiler 的状态和错误消息。  
+
+    对于 VM，该文件通常位于此处：
+    ```
+    C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.17.0.6\ApplicationInsightsProfiler
+    ```
+
+    对于云服务：
+    ```
+    C:\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.17.0.6\ApplicationInsightsProfiler
+    ```
 
     如果当应用程序接收请求时 Profiler 正在运行，则会显示以下消息：“检测到来自 iKey 的活动”。 
 

@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 05/20/2020
+ms.date: 07/22/2020
 ms.custom: seodec18
-ms.openlocfilehash: ea60b3e2f274ded594a43d06e7c4fe4474d7e0d3
-ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
+ms.openlocfilehash: 3f71dd474509ea458b9a0bca0a5f12d9f9e93382
+ms.sourcegitcommit: d32699135151e98471daebe6d3f5b650f64f826e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83748144"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87160383"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-preview"></a>Azure 时序见解预览版中的时序模型
 
@@ -61,7 +61,7 @@ ms.locfileid: "83748144"
 
 * 利用标量函数、聚合操作等创作和管理计算或公式。
 * 定义父子关系以实现导航、搜索和引用。
-* 定义与实例（定义为实例字段）关联的属性，并使用这些属性来创建层次结构。 
+* 定义与实例（定义为实例字段）关联的属性，并使用这些属性来创建层次结构。
 
 ### <a name="components"></a>组件
 
@@ -79,13 +79,13 @@ ms.locfileid: "83748144"
 
 ## <a name="time-series-model-instances"></a>时序模型实例
 
-时序模型实例是时序本身的虚拟表示形式。 
+时序模型实例是时序本身的虚拟表示形式。
 
 在大多数情况下，实例由保存为时序 ID 的 **deviceId** 或 **assetId** 唯一标识。
 
-实例具有与自身关联的、称作“实例属性”的描述性信息，例如时序 ID、类型、名称、说明、层次结构和实例字段。  实例属性最起码包括层次结构信息。
+实例具有与自身关联的、称作“实例属性”的描述性信息，例如时序 ID、类型、名称、说明、层次结构和实例字段。 实例属性最起码包括层次结构信息。
 
-实例字段是描述性信息的集合，可包含层次结构级别的值，以及制造商、运营商等信息。 
+实例字段是描述性信息的集合，可包含层次结构级别的值，以及制造商、运营商等信息。
 
 为时序见解环境配置事件源后，可在时序模型中自动发现和创建实例。 可以使用时序模型查询通过时序见解资源管理器来创建或更新实例。
 
@@ -95,12 +95,12 @@ ms.locfileid: "83748144"
 
 ### <a name="instance-properties"></a>实例属性
 
-实例由 **timeSeriesId**、**typeId**、**name**、**description**、**hierarchyIds** 和 **instanceFields** 定义。 每个实例只映射到一个类型以及一个或多个层次结构。  
+实例由 **timeSeriesId**、**typeId**、**name**、**description**、**hierarchyIds** 和 **instanceFields** 定义。 每个实例只映射到一个类型以及一个或多个层次结构。
 
 | 属性 | 说明 |
 | --- | ---|
-| timeSeriesId | 与实例关联的时序的 UUID。 |
-| typeId | 与实例关联的时序模型类型的 UUID。 默认情况下，所有已发现的新实例都会关联到默认类型。
+| timeSeriesId | 与实例关联的时序的唯一 ID。 在大多数情况下，实例由诸如 deviceId 或 assetId 等属性唯一标识。 在某些情况下，可以使用组合了最多 3 个属性的更具体的复合 ID。 |
+| typeId | 与实例关联的时序模型类型的区分大小写的唯一字符串 ID。 默认情况下，所有已发现的新实例都会关联到默认类型。
 | name | **name** 属性可选，区分大小写。 如果未提供 **name**，则默认值为 **timeSeriesId**。 如果提供了名称，仍然可以在 well 中使用 **timeSeriesId**。 |
 | description | 实例的文本说明。 |
 | hierarchyIds | 定义实例所属的层次结构。 |
@@ -133,7 +133,7 @@ ms.locfileid: "83748144"
 
 ## <a name="time-series-model-hierarchies"></a>时序模型层次结构
 
-时序模型层次结构通过指定属性名称及其关系来组织实例。 
+时序模型层次结构通过指定属性名称及其关系来组织实例。
 
 可以在给定的时序见解环境中配置多个层次结构。 一个时序模型实例可以映射到一个或多个层次结构（多对多的关系）。
 
@@ -216,15 +216,15 @@ ms.locfileid: "83748144"
 | ID4 | "building" = "1000", "floor" = "10"  |
 | ID5 | “building”、“floor”和“room”均未设置。 |
 
-时序 ID1  和 ID4  在 Azure 时序见解资源管理器中显示为层次结构 H1  的一部分，因为它们包含已完全定义且正确排序的 building  、floor  和 room  参数。
+时序 **ID1** 和 **ID4** 在 Azure 时序见解资源管理器中显示为层次结构 **H1** 的一部分，因为它们包含已完全定义且正确排序的 *building*、*floor* 和 *room* 参数。
 
-其他 ID 分类到“无父实例”下，因为它们不符合指定的数据层次结构。 
+其他 ID 分类到“无父实例”下，因为它们不符合指定的数据层次结构。
 
 ## <a name="time-series-model-types"></a>时序模型类型
 
-时序模型类型可帮助你定义用于执行计算的变量或公式。  类型与特定的时序见解实例相关联。
+时序模型类型可帮助你定义用于执行计算的变量或公式。 类型与特定的时序见解实例相关联。
 
-一个类型可以包含一个或多个变量。 例如，某个时序模型实例的类型为“温度传感器”，其中包括变量“平均温度”、“最小温度”和“最大温度”。    
+一个类型可以包含一个或多个变量。 例如，某个时序模型实例的类型为“温度传感器”，其中包括变量“平均温度”、“最小温度”和“最大温度”。   
 
 [Contoso 风力发电厂演示](https://insights.timeseries.azure.com/preview/samples)可视化了与相应实例关联的多个时序模型类型。
 
@@ -239,7 +239,7 @@ ms.locfileid: "83748144"
 
 | 属性 | 说明 |
 | ---| ---|
-| id | 类型的 UUID。 |
+| id | 类型的区分大小写的唯一字符串 ID。 |
 | name | 用于提供类型名称的字符串。 |
 | description | 类型的字符串说明。 |
 | variables | 指定与类型关联的变量。 |
@@ -288,11 +288,11 @@ ms.locfileid: "83748144"
 
 时序见解类型可能有多个变量，这些变量指定事件的公式和计算规则。
 
-每个变量可以是以下三个种类之一：数字、分类和聚合。    
+每个变量可以是以下三个种类之一：数字、分类和聚合。   
 
-* “数字”种类适用于连续值。 
-* “分类”种类适用于一组定义的离散值。 
-* “聚合”值组合单个种类（要么全为数字，要么全为分类）的多个变量。 
+* “数字”种类适用于连续值。
+* “分类”种类适用于一组定义的离散值。
+* “聚合”值组合单个种类（要么全为数字，要么全为分类）的多个变量。
 
 下表显示了每个变量种类的相关属性。
 

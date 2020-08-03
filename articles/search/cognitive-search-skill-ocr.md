@@ -7,14 +7,14 @@ author: luiscabrer
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 11/04/2019
-ms.date: 03/16/2020
-ms.openlocfilehash: fc10de7e69f4dc7cc7d129f37be50b91a167771b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 06/17/2020
+ms.date: 07/17/2020
+ms.openlocfilehash: 919c67af2bfb2bcbad5b78b6eda7034c17606d6a
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78934847"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86472006"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR 认知技能
 
@@ -44,9 +44,9 @@ OCR  技能可以从图像文件中提取文本。 支持的文件格式包括�
 
 | 参数名称     | 说明 |
 |--------------------|-------------|
-| detectOrientation | 启用图像方向自动检测。 <br/> 有效值：true / false。|
-|defaultLanguageCode | <p>  输入文本的语言代码。 支持的语言包括： <br/> zh-Hans（中文简体） <br/> zh-Hant（中文繁体） <br/>cs（捷克语） <br/>da（丹麦语） <br/>nl（荷兰语） <br/>en（英语） <br/>fi（芬兰语）  <br/>fr（法语） <br/>  de（德语） <br/>el（希腊语） <br/> hu（匈牙利） <br/> it（意大利语） <br/>  ja（日语） <br/> ko（韩语） <br/> nb（挪威语） <br/>   pl（波兰语） <br/> pt（葡萄牙语） <br/>  ru（俄语） <br/>  es（西班牙语） <br/>  sv（瑞典语） <br/>  tr（土耳其语） <br/> ar（阿拉伯语） <br/> ro（罗马尼亚语） <br/> sr-Cyrl（塞尔维亚语西里尔文） <br/> sr-Latn（塞尔维亚语拉丁语） <br/>  sk（斯洛伐克语） <br/>  unk（未知） <br/><br/> 如果语言代码未指定或为 null，则语言将设置为英语。 如果语言显式设置为“unk”，则将自动检测语言。 </p> |
-|lineEnding | 要在各个检测到的行之间使用的值。 可能的值：“Space”、“CarriageReturn”、“LineFeed”。  默认值为“Space” |
+| `detectOrientation`   | 启用图像方向自动检测。 <br/> 有效值：true / false。|
+| `defaultLanguageCode` | <p>   输入文本的语言代码。 支持的语言包括： <br/> zh-Hans（中文简体） <br/> zh-Hant（中文繁体） <br/>cs（捷克语） <br/>da（丹麦语） <br/>nl（荷兰语） <br/>en（英语） <br/>fi（芬兰语）  <br/>fr（法语） <br/>  de（德语） <br/>el（希腊语） <br/> hu（匈牙利） <br/> it（意大利语） <br/>  ja（日语） <br/> ko（韩语） <br/> nb（挪威语） <br/>   pl（波兰语） <br/> pt（葡萄牙语） <br/>  ru（俄语） <br/>  es（西班牙语） <br/>  sv（瑞典语） <br/>  tr（土耳其语） <br/> ar（阿拉伯语） <br/> ro（罗马尼亚语） <br/> sr-Cyrl（塞尔维亚语西里尔文） <br/> sr-Latn（塞尔维亚语拉丁语） <br/>  sk（斯洛伐克语） <br/>  unk（未知） <br/><br/> 如果语言代码未指定或为 null，则语言将设置为英语。 如果语言显式设置为“unk”，则将自动检测语言。 </p> |
+| `lineEnding` | 要在各个检测到的行之间使用的值。 可能的值：“Space”、“CarriageReturn”、“LineFeed”。  默认值为“Space”。 |
 
 以前，有一个名为“textExtractionAlgorithm”的参数，用于指定技能是提取“印刷”文本还是“手写”文本。  此参数已弃用，不再需要，因为最新的 Read API 算法能够同时提取这两种类型的文本。  如果技能定义已经包含此参数，则无需删除它，但是将不再使用它，并且无论将它设置为什么内容，将来都会提取这两种类型的文本。
 
@@ -54,14 +54,14 @@ OCR  技能可以从图像文件中提取文本。 支持的文件格式包括�
 
 | 输入名称      | 说明                                          |
 |---------------|------------------------------------------------------|
-| 图像         | 复杂类型。 当前仅适用于“/document/normalized_images”字段，当 ```imageAction``` 设置为非 ```none``` 值时由 Azure Blob 索引器生成。 请参阅[此示例](#sample-output)获取详细信息。|
+| `image`         | 复杂类型。 当前仅适用于“/document/normalized_images”字段，当 ```imageAction``` 设置为非 ```none``` 值时由 Azure Blob 索引器生成。 请参阅[此示例](#sample-output)获取详细信息。|
 
 
 ## <a name="skill-outputs"></a>技能输出
 | 输出名称     | 说明                   |
 |---------------|-------------------------------|
-| text          | 从映像中提取的纯文本。   |
-| layoutText    | 描述提取的文本以及找到文本的位置的复杂类型。|
+| `text`            | 从映像中提取的纯文本。   |
+| `layoutText`    | 描述提取的文本以及找到文本的位置的复杂类型。|
 
 
 ## <a name="sample-definition"></a>示例定义
@@ -173,25 +173,29 @@ OCR  技能可以从图像文件中提取文本。 支持的文件格式包括�
       "insertPostTag": " ",
       "inputs": [
         {
-          "name":"text", "source": "/document/content"
+          "name":"text",
+          "source": "/document/content"
         },
         {
-          "name": "itemsToInsert", "source": "/document/normalized_images/*/text"
+          "name": "itemsToInsert", 
+          "source": "/document/normalized_images/*/text"
         },
         {
-          "name":"offsets", "source": "/document/normalized_images/*/contentOffset"
+          "name":"offsets", 
+          "source": "/document/normalized_images/*/contentOffset"
         }
       ],
       "outputs": [
         {
-          "name": "mergedText", "targetName" : "merged_text"
+          "name": "mergedText", 
+          "targetName" : "merged_text"
         }
       ]
     }
   ]
 }
 ```
-以上技能集示例假设存在标准化的图像字段。 要生成此字段，请将索引器定义中的 imageAction  配置设置为 generateNormalizedImages  ，如下所示：
+以上技能集示例假设存在标准化的图像字段。 要生成此字段，请将索引器定义中的 imageAction 配置设置为 generateNormalizedImages，如下所示：
 
 ```json
 {

@@ -6,14 +6,14 @@ documentationcenter: ''
 author: tgore03
 ms.service: cloud-services
 ms.topic: article
-ms.date: 06/16/2020
+ms.date: 07/20/2020
 ms.author: v-junlch
-ms.openlocfilehash: 8938c0e49221e0d954acc11ee10c482ca83b0009
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: d2b1cbbe206bf5d5e11e88c063a6fb4d12e983ce
+ms.sourcegitcommit: d32699135151e98471daebe6d3f5b650f64f826e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097554"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87160365"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>常见的云服务启动任务
 本文提供了一些可能需要在云服务中执行的常见启动任务示例。 角色启动之前，可以使用启动任务执行操作。 可能需要执行的操作包括安装组件、注册 COM 组件、设置注册表项或启动长时间运行的进程。 
@@ -178,7 +178,7 @@ powershell -ExecutionPolicy Unrestricted -command "Install-WindowsFeature Web-IP
 %windir%\system32\inetsrv\AppCmd.exe unlock config -section:system.webServer/security/ipSecurity
 ```
 
-此任务将导致每次初始化 Web 角色时都运行 startup.cmd 批处理文件，确保所需的 ipSecurity 部分处于解锁状态。 
+此任务将导致每次初始化 Web 角色时都运行 startup.cmd 批处理文件，确保所需的 ipSecurity 部分处于解锁状态。
 
 最后，修改 web 角色的 [web.config](https://www.iis.net/configreference/system.webserver/security/ipsecurity#005) 文件的 **system.webServer 节** 以添加被授予访问权限的 IP 地址列表，如下面的示例所示：
 
@@ -377,9 +377,7 @@ EXIT /B 0
 以下是在配置 web 角色或辅助角色的任务时应遵循的一些最佳做法。
 
 ### <a name="always-log-startup-activities"></a>始终记录启动活动
-Visual Studio 未提供用于单步调试批处理文件的调试器，因此最好在批处理文件操作中尽可能多地获取数据。 记录批处理文件的输出（stdout 和 stderr），以便在尝试调试和修复批处理文件时使用该信息 。 若要记录 %TEMP% 环境变量指向的目录中 StartupLog.txt 文件的 stdout 和 stderr，请将文本 `>>  "%TEMP%\\StartupLog.txt" 2>&1` 添加到要记录的特定行的末尾。 例如，若要在 **%PathToApp1Install%** 目录中执行 setup.exe，请执行以下操作：
-
-    "%PathToApp1Install%\setup.exe" >> "%TEMP%\StartupLog.txt" 2>&1
+Visual Studio 未提供用于单步调试批处理文件的调试器，因此最好在批处理文件操作中尽可能多地获取数据。 记录批处理文件的输出（stdout 和 stderr），以便在尝试调试和修复批处理文件时使用该信息 。 若要记录 %TEMP% 环境变量指向的目录中 StartupLog.txt 文件的 stdout 和 stderr，请将文本 `>>  "%TEMP%\\StartupLog.txt" 2>&1` 添加到要记录的特定行的末尾。 例如，要在 %PathToApp1Install% 目录中执行 setup.exe，请运行以下命令：`"%PathToApp1Install%\setup.exe" >> "%TEMP%\StartupLog.txt" 2>&1`
 
 要简化 xml，可以创建一个包装器 *cmd* 文件，使该文件调用所有启动任务以及日志记录并确保每个子任务共享相同的环境变量。
 

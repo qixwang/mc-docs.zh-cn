@@ -8,14 +8,16 @@ ms.service: virtual-machines-linux
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 origin.date: 12/13/2018
-ms.date: 07/06/2020
+ms.date: 07/27/2020
+ms.testscope: yes
+ms.testdate: 07/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: c8ec9442fd8f57fd70c2b653740e9f24d117062f
-ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
+ms.openlocfilehash: b95514f713d9c24540b02c439a19a3932316cc6d
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85945658"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244768"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>使用 Linux 诊断扩展监视指标和日志
 
@@ -75,11 +77,15 @@ Linux 诊断扩展支持以下分发和版本。 分发和版本的列表仅适�
 * **Azure CLI**。 在计算机上[设置 Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest) 环境。
 * wget 命令（如果尚无此命令，请运行 `sudo apt-get install wget`。
 * 现有 Azure 订阅以及其中用于存储数据的现有存储帐户。
-* 支持的 Linux 发行版列表位于 https://github.com/Azure/azure-linux-extensions/tree/master/Diagnostic#supported-linux-distributions
 
 ### <a name="sample-installation"></a>示例安装
 
-在运行前，为第一部分中的变量填写正确的值：
+> [!NOTE]
+> 对于其中一个示例，在运行前，为第一部分中的变量填写正确的值。 
+
+在这些示例中下载的示例配置将收集一组标准数据，并将其发送到表存储。 示例配置的 URL 及其内容可能会有所更改。 在大多数情况下，你应该下载门户设置 JSON 文件的副本并根据需要对其进行自定义，然后让你构造的任何模板或自动化都使用你自己版本的配置文件，而不是每次都下载该 URL。
+
+#### <a name="azure-cli-sample"></a>Azure CLI 示例
 
 <!--MOONCAKE: CORRECT TO ADD my_diagnostic_storage_endpoint=https://core.chinacloudapi.cn/-->
 
@@ -114,8 +120,6 @@ az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnost
 ```
 
 <!--MOONCAKE: CORRECT ON 'storageAccountEndPoint': '$my_diagnostic_storage_endpoint',-->
-
-在这些示例中下载的示例配置将收集一组标准数据，并将其发送到表存储。 示例配置的 URL 及其内容可能会有所更改。 在大多数情况下，你应该下载门户设置 JSON 文件的副本并根据需要对其进行自定义，然后让你构造的任何模板或自动化都使用你自己版本的配置文件，而不是每次都下载该 URL。
 
 #### <a name="powershell-sample"></a>PowerShell 示例
 
@@ -458,6 +462,9 @@ sinks | （可选）一个逗号分隔列表，包含应将原始样本指标结
 
 控制日志文件的捕获。 LAD 在文件中写入新的文本行时捕获这些行，并将其写入表行和/或任何指定的接收器（JsonBlob 或 EventHub）。
 
+> [!NOTE]
+> fileLogs 是由名为 `omsagent` 的 LAD 的子组件捕获的。 若要收集 fileLogs，必须确保 `omsagent` 用户对指定的文件具有读取权限，并对该文件的路径中的所有目录具有执行权限。 可以通过在安装 LAD 后运行 `sudo su omsagent -c 'cat /path/to/file'` 来检查此情况。
+
 ```json
 "fileLogs": [
     {
@@ -470,7 +477,7 @@ sinks | （可选）一个逗号分隔列表，包含应将原始样本指标结
 
 元素 | Value
 ------- | -----
-file | 要监视和捕获的日志文件的完整路径名。 路径名必须命名单个文件；它不能命名目录，也不能包含通配符。 “Omsagent”用户帐户必须具有文件路径的读取访问权限。
+文件 | 要监视和捕获的日志文件的完整路径名。 路径名必须命名单个文件；它不能命名目录，也不能包含通配符。 “Omsagent”用户帐户必须具有文件路径的读取访问权限。
 表 | （可选）指定的存储帐户（在受保护的配置中指定）中的 Azure 存储表，文件“结尾”处的新行将写入此表。
 sinks | （可选）日志行发送到的附加接收器的名称的逗号分隔列表。
 
@@ -584,23 +591,36 @@ WriteBytesPerSecond | 每秒写入的字节数
 
 可通过设置 `"condition": "IsAggregate=True"`，获取跨所有磁盘的聚合值。 若要获取特定设备（例如 /dev/sdf1）的信息，请设置 `"condition": "Name=\\"/dev/sdf1\\""`。
 
-## <a name="installing-and-configuring-lad-30-via-cli"></a>通过 CLI 安装并配置 LAD 3.0
+## <a name="installing-and-configuring-lad-30"></a>安装和配置 LAD 3.0
 
-假设受保护的设置位于 PrivateConfig 文件中，而公用配置信息位于 PublicConfig. json 中，请运行以下命令：
+### <a name="azure-cli"></a>Azure CLI
+
+假设受保护的设置位于 ProtectedSettings.json 文件中，而公用配置信息位于 PublicSettings.json 中，请运行以下命令：
 
 ```azurecli
-az vm extension set *resource_group_name* *vm_name* LinuxDiagnostic Microsoft.Azure.Diagnostics '3.*' --private-config-path PrivateConfig.json --public-config-path PublicConfig.json
+az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group <resource_group_name> --vm-name <vm_name> --protected-settings ProtectedSettings.json --settings PublicSettings.json
 ```
 
-该命令假定你使用 Azure CLI 的 Azure 资源管理模式 (arm)。 若要为经典部署模型 (ASM) VM 配置 LAD，请切换到“asm”模式 (`azure config mode asm`)，并在命令中省略资源组名称。 有关详细信息，请参阅[跨平台 CLI 文档](/xplat-cli-connect)。
+该命令假定你使用 Azure CLI 的 Azure 资源管理 (ARM) 模式。 若要为经典部署模型 (ASM) VM 配置 LAD，请切换到“asm”模式 (`azure config mode asm`)，并在命令中省略资源组名称。 有关详细信息，请参阅[跨平台 CLI 文档](/xplat-cli-connect)。
+
+### <a name="powershell"></a>PowerShell
+
+假设受保护的设置位于 `$protectedSettings` 变量中，而公共配置信息位于 `$publicSettings` 变量中，请运行以下命令：
+
+```powershell
+Set-AzVMExtension -ResourceGroupName <resource_group_name> -VMName <vm_name> -Location <vm_location> -ExtensionType LinuxDiagnostic -Publisher Microsoft.Azure.Diagnostics -Name LinuxDiagnostic -SettingString $publicSettings -ProtectedSettingString $protectedSettings -TypeHandlerVersion 3.0
+```
 
 ## <a name="an-example-lad-30-configuration"></a>LAD 3.0 配置示例
 
 基于前述定义，下面提供一个包含解释的 LAD 3.0 扩展配置示例。 要将此示例应用于具体情况，应使用自己的存储帐户名称、帐户 SAS 令牌和 EventHubs SAS 令牌。
 
-### <a name="privateconfigjson"></a>PrivateConfig.json
+> [!NOTE]
+> 提供公共和受保护设置的方法将有所不同，具体取决于是否使用 Azure CLI 或 PowerShell 安装 LAD。 如果使用 Azure CLI，请将以下设置保存到 ProtectedSettings.json 和 PublicSettings.json，以与上面的示例命令配合使用。 如果使用 PowerShell，请通过运行 `$protectedSettings = '{ ... }'` 将设置保存到 `$protectedSettings` 和 `$publicSettings`。
 
-这些专用设置将配置以下几项内容：
+### <a name="protected-settings"></a>受保护的设置
+
+这些受保护的设置配置：
 
 * 存储帐户
 * 匹配的帐户 SAS 令牌
@@ -653,7 +673,7 @@ az vm extension set *resource_group_name* *vm_name* LinuxDiagnostic Microsoft.Az
 
 <!--MOONCAKE: CORRECT ON ADD "storageAccountEndPoint": "https://core.chinacloudapi.cn/"-->
 
-### <a name="publicconfigjson"></a>PublicConfig.json
+### <a name="public-settings"></a>公共设置
 
 这些公用设置将使 LAD 执行以下操作：
 

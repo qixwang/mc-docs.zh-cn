@@ -1,27 +1,19 @@
 ---
 title: Azure 服务总线诊断日志 | Azure
 description: 本文概述了可用于 Azure 服务总线的所有操作和诊断日志。
-keywords: ''
-documentationcenter: .net
-services: service-bus-messaging
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-origin.date: 01/24/2020
-ms.date: 2/6/2020
-ms.author: v-lingwu
-ms.openlocfilehash: 4ecb82d617ee7fd7c6f752f42a4289d1f51ac6d5
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: ''
+ms.author: v-yeche
+author: rockboyfor
+ms.openlocfilehash: 096dbb79a540598a5fc023f87cb336e78ffaaf0a
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796830"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162394"
 ---
 # <a name="enable-diagnostics-logs-for-service-bus"></a>为服务总线启用诊断日志
 
@@ -89,26 +81,26 @@ Azure 服务总线目前支持活动日志和操作日志，这些日志捕获�
 
 操作日志默认已禁用。 若要启用诊断日志，请执行以下操作：
 
-1. 在 [Azure 门户](https://portal.azure.cn)中，转到你的 Azure 服务总线命名空间，然后在“监视”下选择“诊断设置”。 
+1. 在 [Azure 门户](https://portal.azure.cn)中，转到你的 Azure 服务总线命名空间，然后在“监视”下选择“诊断设置”。
 
-   ![“诊断设置”链接](./media/service-bus-diagnostic-logs/image1.png)
+    ![“诊断设置”链接](./media/service-bus-diagnostic-logs/image1.png)
 
-1. 在“诊断设置”窗格中，选择“添加诊断设置”。   
+1. 在“诊断设置”窗格中，选择“添加诊断设置”。  
 
-   ![“添加诊断设置”链接](./media/service-bus-diagnostic-logs/image2.png)
+    ![“添加诊断设置”链接](./media/service-bus-diagnostic-logs/image2.png)
 
 1. 执行以下操作来配置诊断设置：
 
-   a. 在“名称”框中，输入诊断设置的名称。  
+    a. 在“名称”框中，输入诊断设置的名称。  
 
-   b. 为诊断日志选择以下三个目标之一：  
-   - 如果选择“存档到存储帐户”，则需要配置用于存储诊断日志的存储帐户。  
-   - 如果选择“流式传输到事件中心”，则需要配置要将诊断日志流式传输到的事件中心。
+    b. 为诊断日志选择以下三个目标之一：  
+        - 如果选择“存档到存储帐户”，则需要配置用于存储诊断日志的存储帐户。  
+        - 如果选择“流式传输到事件中心”，则需要配置要将诊断日志流式传输到的事件中心。
    - 如果选择“发送到 Log Analytics”，则需要指定要将诊断发送到的 Log Analytics 实例。  
 
-   c. 选中“OperationalLogs”复选框。
+    c. 选中“OperationalLogs”复选框。
 
-    ![“诊断设置”窗格](./media/service-bus-diagnostic-logs/image3.png)
+        ![The "Diagnostics settings" pane](./media/service-bus-diagnostic-logs/image3.png)
 
 1. 选择“保存” 。
 
@@ -122,3 +114,5 @@ Azure 服务总线目前支持活动日志和操作日志，这些日志捕获�
 
 * [服务总线简介](service-bus-messaging-overview.md)
 * [服务总线入门](service-bus-dotnet-get-started-with-queues.md)
+
+<!-- Update_Description: update meta properties, wording update, update link -->

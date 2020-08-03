@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 origin.date: 06/28/2019
 ms.author: v-yiso
 ms.date: 12/02/2019
-ms.openlocfilehash: cab3bdad374af0f279da6d2a525e50211c6c6eef
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e0712d7ac2da86605cf7036be64cf974d9c85c1a
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291913"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162434"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>创建和修改 ExpressRoute 线路的对等互连
 
@@ -31,6 +31,7 @@ ms.locfileid: "79291913"
 > * [Azure 门户](expressroute-howto-routing-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-routing-arm.md)
 > * [Azure CLI](howto-routing-cli.md)
+> * [公共对等互连](about-public-peering.md)
 > * [PowerShell（经典）](expressroute-howto-routing-classic.md)
 > 
 
@@ -78,7 +79,7 @@ ms.locfileid: "79291913"
    * 用于建立此对等互连的有效 VLAN ID。 请确保线路中没有其他对等互连使用同一个 VLAN ID。 主要链接和次要链接必须使用相同的 VLAN ID。
    * 对等互连的 AS 编号。 可以使用 2 字节和 4 字节 AS 编号。
    * 播发的前缀：必须提供要通过 BGP 会话播发的所有前缀列表。 只接受公共 IP 地址前缀。 如果打算发送一组前缀，可以发送逗号分隔列表。 这些前缀必须已在 RIR/IRR 中注册。
-   * “可选”- 客户 ASN  ：如果要播发的前缀未注册到对等互连 AS 编号，可以指定它们要注册到的 AS 编号。
+   * “可选”- 客户 ASN：如果要播发的前缀未注册到对等互连 AS 编号，可以指定它们要注册到的 AS 编号。
    * 路由注册表名称：可以指定 AS 编号和前缀要注册到的 RIR/IRR。
    * **可选** - MD5 哈希（如果选择使用）。
 3. 可以选择想要配置的对等互连，如以下示例中所示。 选择 Microsoft 对等互连行。
@@ -89,9 +90,9 @@ ms.locfileid: "79291913"
    ![配置 Microsoft 对等互连](./media/expressroute-howto-routing-portal-resource-manager/configuration-m.png)
 
 > [!IMPORTANT]
-> Microsoft 会验证是否在 Internet 路由注册表中为你分配了指定的“播发公共前缀”和“对等 ASN”（或“客户 ASN”）。 如果要从另一个实体获取公共前缀，并且该分配没有记录在路由注册表中，则自动验证将不会完成，并且将需要手动验证。 如果自动验证失败，你将看到消息“需要验证”。 
+> Microsoft 会验证指定的“播发的公用前缀”和“对等 ASN”（或“客户 ASN”）是否已在 Internet 路由注册表中分配给你。 如果要从其他实体获取公用前缀，并且没有在路由注册表中记录分配，则自动验证不会完成，需要手动验证。 如果自动验证失败，则你会看到消息“需要验证”。 
 >
-> 如果看到消息“需要验证”，请收集显示公共前缀将由路由注册表中作为前缀所有者列出的实体分配给你组织的文档，并通过开具支持票证提交这些文档进行手动验证，如下所示。 
+> 如果看到消息“需要验证”，请收集相关文档，它们显示公用前缀已由在路由注册表中作为前缀所有者列出的实体分配给你的组织，然后通过开具支持票证来提交这些文档以进行手动验证，如下所示。 
 >
 
    如果线路达到“需要验证”状态，则必须打开支持票证以向我们的支持团队显示前缀所有权的证明。 可以直接从门户中打开支持票证，如以下示例中所示：

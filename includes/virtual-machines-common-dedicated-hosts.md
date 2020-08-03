@@ -6,15 +6,15 @@ author: rockboyfor
 ms.service: virtual-machines
 ms.topic: include
 origin.date: 03/10/2020
-ms.date: 05/18/2020
+ms.date: 07/27/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 16ce878467ed6fa385b89adb56d28a8138742046
-ms.sourcegitcommit: 8d56bc6baeb42d675695ecef1909d76f5c4a6ae3
+ms.openlocfilehash: b748048187c212e72efeeb5eba9cc31185eef761
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83406216"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87260213"
 ---
 <!--Verified successfully-->
 ## <a name="limitations"></a>限制
@@ -67,8 +67,7 @@ ms.locfileid: "83406216"
 
 维护控制  为客户提供了一个选项，以用于跳过在其专用主机上计划的定期平台更新，然后在 35 天滚动时段内他们所选的时间应用更新。
 
-> [!NOTE]
->  维护控制目前以公共预览版提供。 有关详细信息，请参阅“使用 [CLI](/virtual-machines/maintenance-control-cli?toc=/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) 或 [PowerShell](/virtual-machines/maintenance-control-powershell?toc=/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) 通过维护控制来控制更新”  。
+有关详细信息，请参阅[通过维护控制管理平台更新](/virtual-machines/maintenance-control)。
 
 ## <a name="capacity-considerations"></a>容量注意事项
 
@@ -117,5 +116,4 @@ Azure 将会监视和管理主机的运行状况状态。 查询主机时，将�
 | 主机正在等待解除分配   | Azure 无法将主机还原到正常状态，并要求你将虚拟机重新部署到此主机外部。 如果已启用 `autoReplaceOnFailure`，则虚拟机会将服务修复  到正常的硬件上。 否则，虚拟机可能在即将发生故障的主机上运行。|
 | 主机已解除分配  | 所有虚拟机都已从主机中删除。 由于硬件已退出轮换，因此不再向你收取此主机的费用。   |
 
-<!-- Update_Description: new article about virtual machines common dedicated hosts -->
-<!--NEW.date: 04/27/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

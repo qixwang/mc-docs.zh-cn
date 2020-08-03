@@ -4,13 +4,13 @@ description: 对在任何环境中运行的 Java 应用程序进行应用程序�
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 05/25/2020
-ms.openlocfilehash: a936a12b90660affe6f782e35d3810ba8b9681fd
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.date: 07/17/2020
+ms.openlocfilehash: 65ebbe7d21190825456b2ebaba90bdac43fdf3f5
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84200073"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244880"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Java 无代码应用程序监视 Azure Monitor Application Insights - 公共预览版
 
@@ -26,11 +26,11 @@ Java 无代码应用程序监视只是为了简化操作 - 无需更改代码，
 
 **1.下载代理**
 
-下载 [applicationinsights-agent-3.0.0-PREVIEW.4.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.4/applicationinsights-agent-3.0.0-PREVIEW.4.jar)
+下载 [applicationinsights-agent-3.0.0-PREVIEW.5.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.5/applicationinsights-agent-3.0.0-PREVIEW.5.jar)
 
 **2.将 JVM 指向该代理**
 
-将 `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.4.jar` 添加到应用程序的 JVM 参数
+将 `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.5.jar` 添加到应用程序的 JVM 参数
 
 典型的 JVM 参数包括 `-Xmx512m` 和 `-XX:+UseG1GC`。 如果你知道在何处添加这些参数，则你已知道要将此项添加到何处。
 
@@ -46,7 +46,7 @@ Java 无代码应用程序监视只是为了简化操作 - 无需更改代码，
 APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000-000000000000
 ```
 
-另一种方法是创建一个名为 `ApplicationInsights.json` 的配置文件，并将其置于 `applicationinsights-agent-3.0.0-PREVIEW.4.jar` 所在的目录中，该文件包含以下内容：
+另一种方法是创建一个名为 `ApplicationInsights.json` 的配置文件，并将其置于 `applicationinsights-agent-3.0.0-PREVIEW.5.jar` 所在的目录中，该文件包含以下内容：
 
 ```json
 {

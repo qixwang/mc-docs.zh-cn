@@ -12,18 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 origin.date: 09/18/2019
-ms.date: 11/11/2019
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 5b24d1d31b155c8d694b175963e277acef7391fc
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 813375fe0229c3075ed2fd49caa817e0f2dcc575
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74116941"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244857"
 ---
 # <a name="support-for-32-bit-operating-systems-in-azure-virtual-machines"></a>Azure 虚拟机对 32 位操作系统的支持
 
-Azure 现在允许用户将其 32 位 Windows 操作系统引入 Azure。 由于其中一些操作系统的生命周期可支持协议已结束，因此 Azure 可能不会为它们提供额外的支持。 也不提供对在 Azure 虚拟机 (VM) 上运行的基于 Linux 或基于 Berkeley Software Distribution (BSD) 的操作系统的支持。
+Azure 现在允许用户将其 32 位 Windows 操作系统引入 Azure。 仅支持专用 VHD，通用化映像在 Azure 中无效。 由于其中一些操作系统的生命周期可支持协议已结束，因此 Azure 可能不会为它们提供额外的支持。 也不提供对在 Azure 虚拟机 (VM) 上运行的基于 Linux 或基于 Berkeley Software Distribution (BSD) 的操作系统的支持。
 
 ## <a name="more-information"></a>详细信息
 

@@ -2,20 +2,23 @@
 title: 将 VHD 上传到 Azure 或跨区域复制磁盘 - Azure PowerShell
 description: 了解如何通过直接上传将 VHD 上传到 Azure 托管磁盘，以及如何使用 Azure PowerShell 跨区域复制托管磁盘。
 author: rockboyfor
-origin.date: 03/27/2020
-ms.date: 07/06/2020
+origin.date: 06/15/2020
+ms.date: 07/27/2020
+ms.testscope: yes
+ms.testdate: 07/27/2020
 ms.author: v-yeche
 ms.topic: how-to
 ms.service: virtual-machines
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 81a9706f8a870e636a1921fb12889d1f29f93c88
-ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
+ms.openlocfilehash: 853c31038b484aa26433fe7df7cf19bee016467e
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85945641"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244637"
 ---
+<!--Pending for test(Hyper V needed)-->
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-powershell"></a>将 VHD 上传到 Azure，或将托管磁盘复制到其他区域 - Azure PowerShell
 
 [!INCLUDE [disks-upload-vhd-to-disk-intro](../../../includes/disks-upload-vhd-to-disk-intro.md)]
@@ -49,6 +52,9 @@ ms.locfileid: "85945641"
 
 替换 `<yourdiskname>`、`<yourresourcegroupname>` 和 `<yourregion>`，然后运行以下命令：
 
+> [!TIP]
+> 如果要创建 OS 磁盘，请将 -HyperVGeneration <yourGeneration> 添加到 `New-AzDiskConfig`。
+
 ```powershell
 $vhdSizeBytes = (Get-Item "<fullFilePathHere>").length
 
@@ -59,7 +65,7 @@ New-AzDisk -ResourceGroupName '<yourresourcegroupname' -DiskName '<yourdiskname>
 
 若要上传高级 SSD 或标准 SSD，请将 **Standard_LRS** 替换为 **Premium_LRS** 或 **StandardSSD_LRS**。
 
-<!--Not Available on  Ultra disks are not yet supported.-->
+<!--Correct on Not Available on  Ultra disks are not yet supported.-->
 
 现在，你已创建了一个针对上传过程配置的空托管磁盘，可以将 VHD 上传到其中了。 若要将 VHD 上传到磁盘，需要一个可写的 SAS，以便将此磁盘作为上传目标引用。
 
@@ -101,6 +107,9 @@ Revoke-AzDiskAccess -ResourceGroupName '<yourresourcegroupname>' -DiskName '<you
 > 提供 Azure 中托管磁盘的磁盘大小（以字节为单位）时，需要添加 512 偏移量。 这是因为，Azure 在返回磁盘大小时会省略脚注。 如果不添加此偏移量，复制将会失败。 以下脚本中已添加此偏移量。
 
 请将 `<sourceResourceGroupHere>`、`<sourceDiskNameHere>`、`<targetDiskNameHere>`、`<targetResourceGroupHere>`、`<yourOSTypeHere>` 和 `<yourTargetLocationHere>`（例如，位置值为 chinanorth2）替换为自己的值，然后运行以下脚本来复制托管磁盘。
+
+> [!TIP]
+> 如果要创建 OS 磁盘，请将 -HyperVGeneration <yourGeneration> 添加到 `New-AzDiskConfig`。
 
 ```powershell
 

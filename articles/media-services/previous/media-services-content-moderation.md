@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 媒体内容审查器检测可能的成人和猥亵内容 | Microsoft Docs
-description: 视频审查可以帮助检测视频中可能存在的成人和猥亵内容。
+description: Azure 媒体内容审查器媒体处理器可以帮助检测视频中可能存在的成人和猥亵内容。
 services: media-services
 documentationcenter: ''
 author: WenJason
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 origin.date: 03/14/2019
-ms.date: 04/06/2020
+ms.date: 07/27/2020
 ms.author: v-jay
-ms.openlocfilehash: 45a4f3b127d8f28383584ac0302ba4b59286f462
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 53256a9a3a8d95930b3cd2a0bd1c8f3dd6fb8730
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80625747"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162170"
 ---
 # <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>使用 Azure 媒体内容审查器检测可能的成人和猥亵内容 
 
@@ -85,9 +85,11 @@ ms.locfileid: "80625747"
 ### <a name="task-configuration-preset"></a>任务配置（预设）
 在使用 **Azure 媒体内容审查器**创建任务时，必须指定配置预设。 以下配置预设仅适用于内容审查。
 
-    {
-      "version":"2.0"
-    }
+```json
+{
+    "version":"2.0"
+}
+```
 
 ### <a name="net-code-sample"></a>.NET 代码示例
 
@@ -96,71 +98,72 @@ ms.locfileid: "80625747"
 
 
 ```csharp
-    /// <summary>
-    /// Run the Content Moderator job on the designated Asset from local file or blob storage
-    /// </summary>
-    /// <param name="asset"></param>
-    static void RunContentModeratorJob(IAsset asset)
+/// <summary>
+/// Run the Content Moderator job on the designated Asset from local file or blob storage
+/// </summary>
+/// <param name="asset"></param>
+static void RunContentModeratorJob(IAsset asset)
+{
+    // Grab the presets
+    string configuration = File.ReadAllText(CONTENT_MODERATOR_PRESET_FILE);
+
+    // grab instance of Azure Media Content Moderator MP
+    IMediaProcessor mp = _context.MediaProcessors.GetLatestMediaProcessorByName(MEDIA_PROCESSOR);
+
+    // create Job with Content Moderator task
+    IJob job = _context.Jobs.Create(String.Format("Content Moderator {0}",
+               asset.AssetFiles.First() + "_" + Guid.NewGuid()));
+
+    ITask contentModeratorTask = job.Tasks.AddNew("Adult and racy classifier task",
+                                                  mp, configuration,
+                                                  TaskOptions.None);
+    contentModeratorTask.InputAssets.Add(asset);
+    contentModeratorTask.OutputAssets.AddNew("Adult and racy classifier output",
+                                             AssetCreationOptions.None);
+
+    job.Submit();
+
+
+    // Create progress printing and querying tasks
+    Task progressPrintTask = new Task(() =>
     {
-        // Grab the presets
-        string configuration = File.ReadAllText(CONTENT_MODERATOR_PRESET_FILE);
-
-        // grab instance of Azure Media Content Moderator MP
-        IMediaProcessor mp = _context.MediaProcessors.GetLatestMediaProcessorByName(MEDIA_PROCESSOR);
-
-        // create Job with Content Moderator task
-        IJob job = _context.Jobs.Create(String.Format("Content Moderator {0}",
-                asset.AssetFiles.First() + "_" + Guid.NewGuid()));
-
-        ITask contentModeratorTask = job.Tasks.AddNew("Adult and racy classifier task",
-                mp, configuration,
-                TaskOptions.None);
-        contentModeratorTask.InputAssets.Add(asset);
-        contentModeratorTask.OutputAssets.AddNew("Adult and racy classifier output",
-            AssetCreationOptions.None);
-
-        job.Submit();
-
-
-        // Create progress printing and querying tasks
-        Task progressPrintTask = new Task(() =>
+        IJob jobQuery = null;
+        do
         {
-            IJob jobQuery = null;
-            do
-            {
-                var progressContext = _context;
-                jobQuery = progressContext.Jobs
+            var progressContext = _context;
+            jobQuery = progressContext.Jobs
                 .Where(j => j.Id == job.Id)
-                    .First();
-                    Console.WriteLine(string.Format("{0}\t{1}",
-                    DateTime.Now,
-                    jobQuery.State));
-                    Thread.Sleep(10000);
-             }
-             while (jobQuery.State != JobState.Finished &&
-             jobQuery.State != JobState.Error &&
-             jobQuery.State != JobState.Canceled);
-        });
-        progressPrintTask.Start();
-
-        Task progressJobTask = job.GetExecutionProgressTask(
-        CancellationToken.None);
-        progressJobTask.Wait();
-
-        // If job state is Error, the event handling 
-        // method for job progress should log errors.  Here we check 
-        // for error state and exit if needed.
-        if (job.State == JobState.Error)
-        {
-            ErrorDetail error = job.Tasks.First().ErrorDetails.First();
-            Console.WriteLine(string.Format("Error: {0}. {1}",
-            error.Code,
-            error.Message));
+                .First();
+            Console.WriteLine(string.Format("{0}\t{1}",
+                                            DateTime.Now,
+                                            jobQuery.State));
+            Thread.Sleep(10000);
         }
+        while (jobQuery.State != JobState.Finished &&
+               jobQuery.State != JobState.Error &&
+               jobQuery.State != JobState.Canceled);
+    });
+    progressPrintTask.Start();
 
-        DownloadAsset(job.OutputMediaAssets.First(), OUTPUT_FOLDER);
+    Task progressJobTask = job.GetExecutionProgressTask(
+                           CancellationToken.None);
+    progressJobTask.Wait();
+
+    // If job state is Error, the event handling 
+    // method for job progress should log errors.  Here we check 
+    // for error state and exit if needed.
+    if (job.State == JobState.Error)
+    {
+        ErrorDetail error = job.Tasks.First().ErrorDetails.First();
+        Console.WriteLine(string.Format("Error: {0}. {1}",
+                          error.Code,
+                          error.Message));
     }
+
+    DownloadAsset(job.OutputMediaAssets.First(), OUTPUT_FOLDER);
+}
 ```
+
 有关完整的源代码和 Visual Studio 项目，请查看[内容审查器视频快速入门](../../cognitive-services/Content-Moderator/video-moderation-api.md)。
 
 ### <a name="json-output"></a>JSON 输出
@@ -169,8 +172,9 @@ ms.locfileid: "80625747"
 
 > [!NOTE]
 > 以秒数表示的关键帧位置 = 时间戳/时间刻度
-```
-    {
+
+```json
+{
     "version": 2,
     "timescale": 90000,
     "offset": 0,
@@ -179,46 +183,46 @@ ms.locfileid: "80625747"
     "height": 720,
     "totalDuration": 18696321,
     "fragments": [
-    {
-      "start": 0,
-      "duration": 18000
-    },
-    {
-      "start": 18000,
-      "duration": 3600,
-      "interval": 3600,
-      "events": [
-        [
-          {
-            "reviewRecommended": false,
-            "adultScore": 0.00001,
-            "racyScore": 0.03077,
-            "index": 5,
-            "timestamp": 18000,
-            "shotIndex": 0
-          }
-        ]
-      ]
-    },
-    {
-      "start": 18386372,
-      "duration": 119149,
-      "interval": 119149,
-      "events": [
-        [
-          {
-            "reviewRecommended": true,
-            "adultScore": 0.00000,
-            "racyScore": 0.91902,
-            "index": 5085,
-            "timestamp": 18386372,
-            "shotIndex": 62
-          }
-        ]
-      ]
-    }
+        {
+            "start": 0,
+            "duration": 18000
+        },
+        {
+            "start": 18000,
+            "duration": 3600,
+            "interval": 3600,
+            "events": [
+                [
+                    {
+                        "reviewRecommended": false,
+                        "adultScore": 0.00001,
+                        "racyScore": 0.03077,
+                        "index": 5,
+                        "timestamp": 18000,
+                        "shotIndex": 0
+                    }
+                ]
+            ]
+        },
+        {
+            "start": 18386372,
+            "duration": 119149,
+            "interval": 119149,
+            "events": [
+                [
+                    {
+                        "reviewRecommended": true,
+                        "adultScore": 0.00000,
+                        "racyScore": 0.91902,
+                        "index": 5085,
+                        "timestamp": 18386372,
+                        "shotIndex": 62
+                    }
+                ]
+            ]
+        }
     ]
-    }
+}
 ```
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
@@ -229,5 +233,10 @@ ms.locfileid: "80625747"
 
 ## <a name="next-steps"></a>后续步骤
 
+详细了解内容审查器的[视频审查和复查解决方案](../../cognitive-services/Content-Moderator/video-moderation-human-review.md)。
+
 从[视频审查快速入门](../../cognitive-services/Content-Moderator/video-moderation-api.md)获取完整的源代码和 Visual Studio 项目。 
 
+了解如何采用 .NET 基于审查输出和[审查脚本](../../cognitive-services/Content-Moderator/video-transcript-reviews-quickstart-dotnet.md)生成[视频复查](../../cognitive-services/Content-Moderator/video-reviews-quickstart-dotnet.md)。
+
+查看详细的 .NET [视频审查和复查教程](../../cognitive-services/Content-Moderator/video-transcript-moderation-review-tutorial-dotnet.md)。 

@@ -2,24 +2,20 @@
 title: 使用 Azure 门户列出 Azure 角色分配 - Azure RBAC
 description: 了解如何使用 Azure 门户和 Azure 基于角色的访问控制 (Azure RBAC) 来确定用户、组、服务主体和托管标识有权访问的资源。
 services: active-directory
-documentationcenter: ''
 author: rolyon
 manager: mtillman
-ms.assetid: 8078f366-a2c4-4fbb-a44b-fc39fd89df81
 ms.service: role-based-access-control
-ms.devlang: na
-ms.topic: conceptual
-ms.tgt_pltfrm: na
+ms.topic: how-to
 ms.workload: identity
-ms.date: 05/25/2020
+ms.date: 07/21/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
-ms.openlocfilehash: c5960adeeaf1f45e174c7eaac1863fa6bca8d55f
-ms.sourcegitcommit: 7429daf26cff014b040f69cdae75bdeaea4f4e93
+ms.openlocfilehash: a52c078b0264286e8c954062e51d47f40beb1d96
+ms.sourcegitcommit: d32699135151e98471daebe6d3f5b650f64f826e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83991664"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87160384"
 ---
 # <a name="list-azure-role-assignments-using-the-azure-portal"></a>使用 Azure 门户列出 Azure 角色分配
 
@@ -27,7 +23,7 @@ ms.locfileid: "83991664"
 
 ## <a name="list-role-assignments-for-a-user-or-group"></a>列出用户或组的角色分配
 
-要查看分配给订阅中的用户或组的角色，最简单的方法是使用“Azure 资源”窗格。
+要查看分配给订阅中的用户或组的角色，最简单的方法是使用“Azure 角色分配”窗格。
 
 1. 在 Azure 门户的“Azure 门户”菜单中，选择“所有服务”。
 
@@ -35,11 +31,11 @@ ms.locfileid: "83991664"
 
 1. 单击要列出其角色分配的用户或组。
 
-1. 单击“Azure 资源”。
+1. 单击“Azure 角色分配”。
 
     随即将显示各种范围中分配给所选用户或组的角色列表，如管理组、订阅、资源组或资源。 此列表包括你有权读取的所有角色分配。
 
-    ![用户的角色分配](./media/role-assignments-list-portal/azure-resources-user.png)    
+    ![用户的角色分配](./media/role-assignments-list-portal/azure-role-assignments-user.png)    
 
 1. 要更改订阅，请单击“订阅”列表。
 
@@ -99,31 +95,37 @@ ms.locfileid: "83991664"
 
     在此窗格中，可以看到分配给所选安全主体和范围的角色。 如果此范围内有任何拒绝分配或继承到此范围的角色，则会将其列出。
 
-## <a name="list-role-assignments-for-a-system-assigned-managed-identity"></a>列出系统分配的托管标识的角色分配
+## <a name="list-role-assignments-for-a-managed-identity"></a>列出托管标识的角色分配
+
+如之前所述，可以通过使用“访问控制(IAM)”边栏选项卡来列出特定范围内系统分配的托管标识和用户分配的托管标识的角色分配。 本部分介绍如何列出仅托管标识的角色分配。
+
+### <a name="system-assigned-managed-identity"></a>系统分配的托管标识
 
 1. 在 Azure 门户中，打开系统分配的托管标识。
 
 1. 在左侧菜单中，单击“标识”。
 
-    ![系统分配的托管标识](./media/role-assignments-list-portal/identity-system-assigned.png)
+    ![系统分配的托管标识](./media/shared/identity-system-assigned.png)
 
-1. 在“角色分配”下，单击“显示分配给此托管标识的 Azure RBAC 角色” 。
+1. 在“权限”下，单击“Azure 角色分配” 。
 
     随即将显示各种范围中分配给所选系统分配的托管标识的角色列表，如管理组、订阅、资源组或资源。 此列表包括你有权读取的所有角色分配。
 
-    ![系统分配的托管标识的角色分配](./media/role-assignments-list-portal/azure-resources-system-assigned.png)
+    ![系统分配的托管标识的角色分配](./media/shared/role-assignments-system-assigned.png)
 
-## <a name="list-role-assignments-for-a-user-assigned-managed-identity"></a>列出用户分配的托管标识的角色分配
+1. 若要更改订阅，请单击“订阅”列表。
+
+### <a name="user-assigned-managed-identity"></a>用户分配的托管标识
 
 1. 在 Azure 门户中，打开用户分配的托管标识。
 
-1. 单击“Azure 资源”。
+1. 单击“Azure 角色分配”。
 
     随即将显示各种范围中分配给所选角色分配的托管标识的角色列表，如管理组、订阅、资源组或资源。 此列表包括你有权读取的所有角色分配。
 
-    ![系统分配的托管标识的角色分配](./media/role-assignments-list-portal/azure-resources-user-assigned.png)
+    ![系统分配的托管标识的角色分配](./media/shared/role-assignments-user-assigned.png)
 
-1. 要更改订阅，请单击“订阅”列表。
+1. 若要更改订阅，请单击“订阅”列表。
 
 ## <a name="list-number-of-role-assignments"></a>列出角色分配数
 
@@ -134,6 +136,51 @@ ms.locfileid: "83991664"
 如果在快要到达最大数量时尝试添加更多角色分配，则会在“添加角色分配”窗格中看到一条警告。 有关可减少角色分配数的方法，请参阅 [Azure RBAC 故障排除](troubleshooting.md#azure-role-assignments-limit)。
 
 ![访问控制 - 添加角色分配警告](./media/role-assignments-list-portal/add-role-assignment-warning.png)
+
+## <a name="download-role-assignments-preview"></a>下载角色分配（预览版）
+
+可以使用 CSV 或 JSON 格式下载某一范围内的角色分配。 如果你在迁移订阅时需要检查电子表格中的列表或进行清点，这会很有帮助。
+
+> [!IMPORTANT]
+> 下载目前以公共预览版提供的角色分配。
+> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
+> 有关详细信息，请参阅[适用于 Azure 预览版的补充使用条款](https://www.azure.cn/support/legal/)。
+
+下载角色分配时，应记住以下条件：
+
+- 如果你没有读取目录的权限，Directory Readers 角色、DisplayName、SignInName 和 ObjectType 等列将为空。
+- 未包含已删除了安全主体的角色分配。
+- 未包含已授予给经典管理员的访问权限。
+
+按照以下步骤下载某一范围内的角色分配。
+
+1. 在 Azure 门户中，单击“所有服务”，然后选择要下载角色分配的范围。 例如，可以选择“管理组”、“订阅”、“资源组”或某个资源  。
+
+1. 单击特定的资源。
+
+1. 单击“访问控制(IAM)”。
+
+1. 单击“下载角色分配(预览版)”以打开“下载角色分配”窗格。
+
+    ![访问控制 - 下载角色分配](./media/role-assignments-list-portal/download-role-assignments.png)
+
+1. 使用这些复选框来选择要包含在下载文件中的角色分配。
+
+    - **继承** - 包含当前范围的继承角色分配。
+    - **当前范围** - 包含当前范围的角色分配。
+    - **子级** - 包含当前范围下各级别的角色分配。 对于管理组范围，此复选框处于禁用状态。
+
+1. 选择文件格式，可以是逗号分隔值 (CSV) 或 JavaScript 对象表示法 (JSON)。
+
+1. 指定文件名称。
+
+1. 单击“开始”以开始下载。
+
+    下面展示了每个文件格式的输出示例。
+
+    ![按 CSV 格式下载角色分配](./media/role-assignments-list-portal/download-role-assignments-csv.png)
+
+    ![按 CSV 格式下载角色分配](./media/role-assignments-list-portal/download-role-assignments-json.png)
 
 ## <a name="next-steps"></a>后续步骤
 

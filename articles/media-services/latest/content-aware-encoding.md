@@ -9,16 +9,16 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-origin.date: 01/24/2020
-ms.date: 02/24/2020
+origin.date: 04/29/2020
+ms.date: 07/27/2020
 ms.author: v-jay
 ms.custom: ''
-ms.openlocfilehash: 2ef2e1f02a986c0b2bc37dd8d8b97371904ab9ad
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 1862bca03b0560baec188a94a4778b395c74f681
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77494497"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162350"
 ---
 # <a name="use-the-content-aware-encoding-preset-to-find-the-optimal-bitrate-value-for-a-given-resolution"></a>使用内容感知编码预设来查找给定分辨率的最佳比特率值
 
@@ -56,9 +56,10 @@ Azure 的[自适应流式处理](autogen-bitrate-ladder.md)预设可以部分解
 
 可按如下所示创建使用此预设的转换。 
 
-> [!TIP]
-> 有关使用转换输出的教程，请参阅[后续步骤](#next-steps)部分。 可以在 MPEG-DASH 和 HLS 等协议中通过媒体服务流式处理终结点传送输出资产（如教程中所述）。
+有关使用转换输出的教程，请参阅[后续步骤](#next-steps)部分。 可以在 MPEG-DASH 和 HLS 等协议中通过媒体服务流式处理终结点传送输出资产（如教程中所述）。
 
+> [!NOTE]
+> 请确保使用预设的 ContentAwareEncoding 而不使用 ContentAwareEncodingExperimental。
 
 ```csharp
 TransformOutput[] output = new TransformOutput[]
@@ -78,7 +79,7 @@ TransformOutput[] output = new TransformOutput[]
 
 > [!NOTE]
 > 使用 `ContentAwareEncoding` 预设的编码作业按输出分钟数计费。 
-
+  
 ## <a name="next-steps"></a>后续步骤
 
 * [教程：使用媒体服务 v3 上传、编码和流式传输视频](stream-files-tutorial-with-api.md)

@@ -1,26 +1,20 @@
 ---
 title: Azure 服务总线主题和订阅入门 | Azure
 description: 编写一个 C# .NET Core 控制台应用程序，以便使用服务总线消息传递主题和订阅。
-services: service-bus-messaging
-documentationcenter: .net
-author: lingliw
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.devlang: tbd
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
-ms.workload: na
-origin.date: 11/27/2019
-ms.date: 02/26/2020
-ms.author: v-lingwu
-ms.openlocfilehash: e4e39732a6dc8c9fe000d78d4ca5dec5538bcaa8
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: yes
+ms.testdate: 07/20/2020
+ms.author: v-yeche
+author: rockboyfor
+ms.openlocfilehash: be9152d804050f330281bcb61d46cbbf7863aa06
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796829"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162126"
 ---
 # <a name="get-started-with-service-bus-topics"></a>服务总线主题入门
 
@@ -33,7 +27,7 @@ ms.locfileid: "83796829"
 
 ## <a name="prerequisites"></a>先决条件
 
-1. Azure 订阅。 若要完成本教程，需要一个 Azure 帐户。 你可以注册[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)或购买[预付费订阅](https://wd.azure.cn/pricing/pia-waiting-list/?form-type=identityauth)。
+1. Azure 订阅。 若要完成本教程，需要一个 Azure 帐户。 可以激活你的 [Visual Studio 或 MSDN 订阅者权益](https://www.azure.cn/offers/ms-mc-arz-msdn/)或者注册[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 2. 按照[快速入门：使用 Azure 门户创建服务总线主题和主题的订阅](service-bus-quickstart-topics-subscriptions-portal.md)来执行以下任务：
     1. 创建一个服务总线**命名空间**。
     2. 获取**连接字符串**。
@@ -41,7 +35,7 @@ ms.locfileid: "83796829"
     4. 在此命名空间中创建对此主题的**一个订阅**。
 3. [Visual Studio 2017 Update 3（版本 15.3 (26730.01)）](https://www.visualstudio.com/vs)或更高版本。
 4. [NET Core SDK](https://www.microsoft.com/net/download/windows) 2.0 或更高版本。
- 
+
 ## <a name="send-messages-to-the-topic"></a>将消息发送到主题
 
 为了将消息发送到主题中，请使用 Visual Studio 编写一个 C# 控制台应用程序。
@@ -54,13 +48,13 @@ ms.locfileid: "83796829"
 
 1. 右键单击新创建的项目，并选择“管理 NuGet 包” 。
 2. 单击“浏览”选项卡，搜索 [Microsoft.Azure.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/)，然后选择“Microsoft.Azure.ServiceBus” 项。 单击“安装”以完成安装，并关闭此对话框。
-   
+
     ![选择 NuGet 包][nuget-pkg]
 
 ### <a name="write-code-to-send-messages-to-the-topic"></a>编写将消息发送到主题的代码
 
 1. 在 Program.cs 中将以下 `using` 语句添加到命名空间定义顶部，位于类声明之前：
-   
+
     ```csharp
     using System.Text;
     using System.Threading;
@@ -69,7 +63,7 @@ ms.locfileid: "83796829"
     ```
 
 2. 在 `Program` 类中声明以下变量。 将 `ServiceBusConnectionString` 变量设置为在创建命名空间时获得的连接字符串，并将 `TopicName` 设置为在创建主题时使用的名称：
-   
+
     ```csharp
     const string ServiceBusConnectionString = "<your_connection_string>";
     const string TopicName = "<your_topic_name>";
@@ -122,9 +116,9 @@ ms.locfileid: "83796829"
         }
     }
     ```
-  
+
 6. 发件人 Program.cs 文件的内容应如下所示。
-   
+
     ```csharp
     namespace CoreSenderApp
     {
@@ -144,16 +138,16 @@ ms.locfileid: "83796829"
             {
                 const int numberOfMessages = 10;
                 topicClient = new TopicClient(ServiceBusConnectionString, TopicName);
-    
+
                 Console.WriteLine("======================================================");
                 Console.WriteLine("Press ENTER key to exit after sending all the messages.");
                 Console.WriteLine("======================================================");
-    
+
                 // Send messages.
                 await SendMessagesAsync(numberOfMessages);
-    
+
                 Console.ReadKey();
-    
+
                 await topicClient.CloseAsync();
             }
 
@@ -183,8 +177,8 @@ ms.locfileid: "83796829"
     }
     ```
 
-3. 运行该程序并检查 Azure 门户：在命名空间“概览”窗口中单击主题的名称。 此时会显示主题的“基本信息”屏幕。 请注意，在列在窗口底部附近的订阅中，订阅的“消息计数”值现在应该为 **10**。 每次运行发件人应用程序而没有检索消息（如下一部分所述）时，该值会增加 10。 另请注意，每次该应用将消息添加到主题，主题的当前大小就会递增，增量为“基本信息”窗口中的“当前”值。 
-   
+3. 运行该程序并检查 Azure 门户：在命名空间“概览”窗口中单击主题的名称。 此时会显示主题的“基本信息”屏幕。 请注意，在列在窗口底部附近的订阅中，订阅的“消息计数”值现在应该为 **10**。 每次运行发件人应用程序而没有检索消息（如下一部分所述）时，该值会增加 10。 另请注意，每次该应用将消息添加到主题，主题的当前大小就会递增，增量为“基本信息”窗口中的“当前”值。
+
       ![消息大小][topic-message]
 
 ## <a name="receive-messages-from-the-subscription"></a>从订阅接收消息
@@ -194,7 +188,7 @@ ms.locfileid: "83796829"
 ### <a name="write-code-to-receive-messages-from-the-subscription"></a>编写从订阅接收消息的代码
 
 1. 在 Program.cs 中将以下 `using` 语句添加到命名空间定义顶部，位于类声明之前：
-   
+
     ```csharp
     using System.Text;
     using System.Threading;
@@ -203,7 +197,7 @@ ms.locfileid: "83796829"
     ```
 
 2. 在 `Program` 类中声明以下变量。 将 `ServiceBusConnectionString` 变量设置为在创建命名空间时获得的连接字符串，将 `TopicName` 设置为在创建主题时使用的名称，将 `SubscriptionName` 设置为在创建主题的订阅时使用的名称：
-   
+
     ```csharp
     const string ServiceBusConnectionString = "<your_connection_string>";
     const string TopicName = "<your_topic_name>";
@@ -253,7 +247,7 @@ ms.locfileid: "83796829"
     ```    
 
 6. 直接在前面的方法后添加以下 `ProcessMessagesAsync()` 方法，以便处理接收的消息：
- 
+
     ```csharp
     static async Task ProcessMessagesAsync(Message message, CancellationToken token)
     {
@@ -271,7 +265,7 @@ ms.locfileid: "83796829"
     ```
 
 7. 最后，添加以下方法，用于处理可能发生的任何异常：
- 
+
     ```csharp
     // Use this handler to examine the exceptions received on the message pump.
     static Task ExceptionReceivedHandler(ExceptionReceivedEventArgs exceptionReceivedEventArgs)
@@ -287,7 +281,7 @@ ms.locfileid: "83796829"
     ```    
 
 8. 收件人 Program.cs 文件的内容应如下所示：
-   
+
     ```csharp
     namespace CoreReceiverApp
     {
@@ -307,16 +301,16 @@ ms.locfileid: "83796829"
             public static async Task Main(string[] args)
             {    
                 subscriptionClient = new SubscriptionClient(ServiceBusConnectionString, TopicName, SubscriptionName);
-        
+
                 Console.WriteLine("======================================================");
                 Console.WriteLine("Press ENTER key to exit after receiving all the messages.");
                 Console.WriteLine("======================================================");
-        
+
                 // Register subscription message handler and receive messages in a loop
                 RegisterOnMessageHandlerAndReceiveMessages();
-        
+
                 Console.ReadKey();
-        
+
                 await subscriptionClient.CloseAsync();    
             }
 
@@ -365,8 +359,8 @@ ms.locfileid: "83796829"
         }
     }
     ```
-9. 运行该程序，并再次检查门户。 请注意，“消息计数”和“当前”值现在为 **0**。 
-   
+9. 运行该程序，并再次检查门户。 请注意，“消息计数”和“当前”值现在为 **0**。
+
     ![主题长度][topic-message-receive]
 
 祝贺！ 现已使用 .NET Standard 库创建主题和订阅，发送了 10 条消息，并接收到了这些消息。
@@ -389,3 +383,5 @@ ms.locfileid: "83796829"
 [createtopic4]: ./media/service-bus-dotnet-how-to-use-topics-subscriptions/create-topic4.png
 [github-samples]: https://github.com/Azure-Samples/azure-servicebus-messaging-samples
 [azure-portal]: https://portal.azure.cn
+
+<!-- Update_Description: update meta properties, wording update, update link -->

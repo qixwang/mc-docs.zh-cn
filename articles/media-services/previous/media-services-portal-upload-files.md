@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 origin.date: 04/01/2019
-ms.date: 09/23/2019
+ms.date: 07/27/2020
 ms.author: v-jay
-ms.openlocfilehash: e6aac12a5aadc4491fced2eae480b8dfed099a16
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2f5bc1121912de0d110f94d8ddf9e6f60105a460
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "71124612"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162384"
 ---
 # <a name="upload-files-to-a-media-services-account-in-the-azure-portal"></a>在 Azure 门户中将文件上传到媒体服务帐户 
 
@@ -31,30 +31,30 @@ ms.locfileid: "71124612"
 > 
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 有关通过门户最新上传的文件，请参阅[使用门户上传、编码和流式传输内容](../latest/manage-assets-quickstart.md)。<br/>另请参阅：[媒体服务 v3](/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 在 Azure 媒体服务中，可以将数字文件上传到资产。 资产可包含视频、音频、图像、缩略图集合、文本轨道和隐藏式字幕文件（以及这些文件的相关元数据）。 上传文件完成后，相关内容即安全地存储在云中供后续处理和流式处理。
 
 媒体服务针对文件处理设置了一个最大文件大小。 若要详细了解文件大小限制，请参阅[媒体服务配额和限制](media-services-quotas-and-limitations.md)。
 
-要完成本教程，需要一个 Azure 帐户。 有关详细信息，请参阅 [Azure 试用版](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。 
+若要完成本教程，需要一个 Azure 帐户。 有关详细信息，请参阅 [Azure 试用版](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。 
 
 ## <a name="upload-files"></a>上传文件
 1. 在 [Azure 门户](https://portal.azure.cn/)中，选择 Azure 媒体服务帐户。
-2. 选择“设置”   > “资产”  。 然后选择“上传”按钮  。
+2. 选择“设置” > “资产”。 然后选择“上传”按钮。
    
     ![上传文件](./media/media-services-portal-vod-get-started/media-services-upload.png)
    
-    此时会显示“上传视频资产”窗口  。
+    此时会显示“上传视频资产”窗口。
    
    > [!NOTE]
    > 媒体服务不会限制上传视频的文件大小。
  
-3. 在计算机上，转到要上传的视频。 选择视频，然后选择“确定”  。  
+3. 在计算机上，转到要上传的视频。 选择视频，然后选择“确定”。  
    
     上传开始。 可以在文件名下看到进度。  
 
-上传完成后，新资产列在“资产”  窗格中。 
+上传完成后，新资产列在“资产”窗格中。 
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

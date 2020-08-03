@@ -2,24 +2,20 @@
 title: 使用 Azure 门户添加或删除 Azure 角色分配 - Azure RBAC
 description: 了解如何使用 Azure 门户和 Azure 基于角色的访问控制 (Azure RBAC) 向用户、组、服务主体或托管标识授予对 Azure 资源的访问权限。
 services: active-directory
-documentationcenter: ''
 author: rolyon
 manager: mtillman
-ms.assetid: 8078f366-a2c4-4fbb-a44b-fc39fd89df81
 ms.service: role-based-access-control
-ms.devlang: na
-ms.topic: conceptual
-ms.tgt_pltfrm: na
+ms.topic: how-to
 ms.workload: identity
-ms.date: 05/25/2020
+ms.date: 07/21/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
-ms.openlocfilehash: 43b3868bbe0477fbc26bc5bf7b1e91204d1f76c6
-ms.sourcegitcommit: 7429daf26cff014b040f69cdae75bdeaea4f4e93
+ms.openlocfilehash: 79ee5a80fdef8bf8cbd100a72d100cbe24b083dd
+ms.sourcegitcommit: d32699135151e98471daebe6d3f5b650f64f826e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83991661"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87160372"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-the-azure-portal"></a>使用 Azure 门户添加或删除 Azure 角色分配
 
@@ -35,11 +31,11 @@ ms.locfileid: "83991661"
 
 ## <a name="access-control-iam"></a>访问控制 (IAM)
 
-使用“访问控制(IAM)”边栏选项卡可以分配角色，以授予对 Azure 资源的访问权限。 该功能也称为标识和访问管理，会显示在 Azure 门户中的多个位置。 下面显示了订阅的“访问控制(IAM)”边栏选项卡的示例。
+“访问控制(IAM)”是一个页面，通常用于分配角色以授予对 Azure 资源的访问权限。 该功能也称为标识和访问管理，会显示在 Azure 门户中的多个位置。 下面显示了订阅的“访问控制(IAM)”页面的示例。
 
-![订阅的“访问控制(IAM)”边栏选项卡](./media/role-assignments-portal/access-control-subscription.png)
+![订阅的“访问控制(IAM)”页](./media/role-assignments-portal/access-control-subscription.png)
 
-如果在尝试分配角色时能够回答以下三个问题，则可以最有效地利用“访问控制(标识和访问管理)”边栏选项卡：
+如果在尝试分配角色时能够回答以下三个问题，则可以最有效地利用“访问控制(IAM)”页面：
 
 1. **谁需要访问权限？**
 
@@ -67,17 +63,17 @@ ms.locfileid: "83991661"
 
     ![“访问控制(IAM)”和“角色分配”选项卡](./media/role-assignments-portal/role-assignments.png)
 
-1. 单击“添加” > “角色分配”。 
+1. 单击“添加” > “角色分配”。
 
    如果没有分配角色的权限，则将禁用“添加角色分配”选项。
 
-   ![添加菜单](./media/role-assignments-portal/add-menu.png)
+   ![“添加角色分配”菜单](./media/shared/add-role-assignment-menu.png)
 
     此时会打开“添加角色分配”窗格。
 
    ![“添加角色分配”窗格](./media/role-assignments-portal/add-role-assignment.png)
 
-1. 在“角色”下拉列表中选择一个角色，例如“虚拟机参与者”。 
+1. 在“角色”下拉列表中选择一个角色，例如“虚拟机参与者”。
 
 1. 在“选择”列表中，选择用户、组、服务主体或托管标识。 如果没有在列表中看到安全主体，则可在“选择”框中键入相应内容，以便在目录中搜索显示名称、电子邮件地址和对象标识符。
 
@@ -101,11 +97,11 @@ ms.locfileid: "83991661"
 
     ![“访问控制(IAM)”和“角色分配”选项卡](./media/role-assignments-portal/role-assignments.png)
 
-1. 单击“添加” > “角色分配”。 
+1. 单击“添加” > “角色分配”。
 
    如果没有分配角色的权限，则将禁用“添加角色分配”选项。
 
-   ![添加菜单](./media/role-assignments-portal/add-menu.png)
+   ![“添加角色分配”菜单](./media/shared/add-role-assignment-menu.png)
 
     此时会打开“添加角色分配”窗格。
 
@@ -137,7 +133,7 @@ ms.locfileid: "83991661"
 
 1. 在显示的“删除角色分配”消息中，单击“是”。
 
-    此时会显示一条消息，指出无法删除继承的角色分配，而你正在尝试删除子范围的角色分配。 应在角色的分配范围打开“访问控制(IAM)”，然后重试。 在正确的范围打开“访问控制(IAM)”的快捷方法是查看“范围”列，然后单击“(继承)”旁边的链接。 
+    此时会显示一条消息，指出无法删除继承的角色分配，而你正在尝试删除子范围的角色分配。 应在角色的分配范围打开“访问控制(IAM)”，然后重试。 在正确的范围打开“访问控制(IAM)”的快捷方法是查看“范围”列，然后单击“(继承)”旁边的链接。
 
    ![“删除角色分配”消息](./media/role-assignments-portal/remove-role-assignment-inherited.png)
 

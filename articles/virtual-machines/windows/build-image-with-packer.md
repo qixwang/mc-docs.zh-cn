@@ -7,19 +7,21 @@ ms.subservice: imaging
 ms.topic: article
 ms.workload: infrastructure
 origin.date: 02/22/2019
-ms.date: 07/06/2020
+ms.date: 07/27/2020
+ms.testscope: yes
+ms.testdate: 07/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 4246dce3e800e155aec260a1bd9660a10d4b38d2
-ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
+ms.openlocfilehash: f4d1d44a9113914b379b6e348039918f6de69ca0
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85946084"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244267"
 ---
 # <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>如何使用 Packer 在 Azure 中创建 Windows 虚拟机映像
 Azure 中的每个虚拟机 (VM) 都是基于定义 Windows 分发和操作系统版本的映像创建的。 映像可以包括预安装的应用程序和配置。 Azure 市场为最常见的操作系统和应用程序环境提供许多第一和第三方映像，或者也可创建满足自身需求的自定义映像。 本文详细介绍了如何使用开源工具 [Packer](https://www.packer.io/) 在 Azure 中定义和生成自定义映像。
 
-本文最后一次使用 [Az PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)版本 1.3.0 和 [Packer](https://www.packer.io/docs/install/index.html) 版本 1.3.4 在 2019 年 2 月 21 日进行了测试。
+本文最后一次使用 [Az PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)版本 1.3.0 和 [Packer](https://www.packer.io/docs/install) 版本 1.3.4 在 2019 年 2 月 21 日进行了测试。
 
 <!--Not Available on [Create a Windows VM with Azure Image Builder](image-builder.md)-->
 
@@ -64,6 +66,8 @@ Get-AzSubscription
 
 创建名为 windows.json 的文件并粘贴以下内容。 为以下内容输入自己的值：
 
+<!--CORRECT ON ADD `cloud_environment_name`-->
+
 | 参数                           | 获取位置 |
 |-------------------------------------|----------------------------------------------------|
 | client_id | 通过 `$sp.applicationId` 查看服务主体 ID |
@@ -72,6 +76,7 @@ Get-AzSubscription
 | subscription_id | `$sub.SubscriptionId` 命令的输出 |
 | *managed_image_resource_group_name* | 在第一步中创建的资源组的名称 |
 | *managed_image_name* | 创建的托管磁盘映像的名称 |
+| cloud_environment_name | 部署目标 Azure 云的名称。 有效选项在 `Public, China, Germany, or USGovernment` 列表中  |
 
 <!-- Parameter is correct to add "cloud_environment_name": "Public, China, Germany, or USGovernment" -->
 
@@ -124,7 +129,7 @@ Get-AzSubscription
 此模板生成 Windows Server 2016 Datacenter 并安装 IIS，然后使用 Sysprep 来通用化该 VM。 IIS 安装展示了如何使用 PowerShell 预配程序来运行其他命令。 最终的 Packer 映像包括必需的软件安装和配置。
 
 ## <a name="build-packer-image"></a>生成 Packer 映像
-如果本地计算机上尚未安装 Packer，请[按照 Packer 安装说明](https://www.packer.io/docs/install/index.html)进行安装。
+如果本地计算机上尚未安装 Packer，请[按照 Packer 安装说明](https://learn.hashicorp.com/packer/getting-started/install)进行安装。
 
 按如下所述打开 cmd 提示并指定 Packer 模板文件，以便生成映像：
 
@@ -229,7 +234,7 @@ New-AzVm `
 基于 Packer 映像创建 VM 需要几分钟时间。
 
 ## <a name="test-vm-and-webserver"></a>测试 VM 和 Web 服务器
-使用 [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) 获取 VM 的公共 IP 地址。 以下示例获取前面创建的“myPublicIP”的 IP 地址：
+使用 [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) 获取 VM 的公共 IP 地址。 以下示例获取前面创建的“myPublicIP”  的 IP 地址：
 
 ```powershell
 Get-AzPublicIPAddress `
@@ -244,4 +249,4 @@ Get-AzPublicIPAddress `
 <!--Not Available on ## Next steps-->
 <!--Not Available on [Azure Image Builder](image-builder.md)-->
 
-<!--Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

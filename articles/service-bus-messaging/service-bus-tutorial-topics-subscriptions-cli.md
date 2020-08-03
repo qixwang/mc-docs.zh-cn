@@ -1,27 +1,25 @@
 ---
-title: 教程：通过 Azure CLI 使用发布/订阅频道和主题筛选器更新零售库存分类
-description: 教程：在本教程中，你将了解如何从主题和订阅发送和接收消息，以及如何使用 Azure CLI 添加和使用筛选器规则
-services: service-bus-messaging
-author: lingliw
-manager: digimobile
-ms.author: v-lingwu
-origin.date: 09/22/2018
-ms.date: 09/26/2019
+title: 教程 - 通过 Azure CLI 使用发布/订阅渠道和主题筛选器更新零售库存分类
+description: 教程 - 在本教程中，你将了解如何从主题和订阅发送和接收消息，以及如何使用 Azure CLI 添加和使用筛选规则
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: ''
 ms.topic: tutorial
-ms.service: service-bus-messaging
-ms.custom: mvc
-ms.openlocfilehash: 10f6c0c0389f1a8dffba689f07b2e92bdec29e27
-ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
+author: rockboyfor
+ms.author: v-yeche
+ms.openlocfilehash: 07aade8dbcf63f916730ce5e2b52ebbe047ff751
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82886924"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162437"
 ---
 # <a name="tutorial-update-inventory-using-cli-and-topicssubscriptions"></a>教程：使用 CLI 和主题/订阅更新库存
 
 世纪互联 Azure 服务总线是一种多租户云消息传送服务，可以在应用程序和服务之间发送信息。 异步操作可实现灵活的中转消息传送、结构化的先进先出 (FIFO) 消息传送以及发布/订阅功能。 本教程展示了如何使用 Azure CLI 和 Java 在零售库存方案中将服务总线主题和订阅与发布/订阅频道配合使用。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]
 > * 使用 Azure CLI 创建一个服务总线主题和一个或多个对该主题的订阅
 > * 使用 Azure CLI 添加主题筛选器
@@ -39,7 +37,7 @@ ms.locfileid: "82886924"
 
 若要使用 Java 开发服务总线应用，必须安装以下项：
 
-- [Java 开发工具包](https://aka.ms/azure-jdks)最新版本。
+- [Java 开发工具包](https://docs.azure.cn/java/java-supported-jdk-runtime?view=azure-java-stable)最新版本。
 - [Azure CLI](https://docs.azure.cn/cli/index?view=azure-cli-latest)
 - [Apache Maven](https://maven.apache.org) 3.0 或更高版本。
 
@@ -53,10 +51,11 @@ ms.locfileid: "82886924"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-安装 CLI 后，打开一个命令提示符并发出以下命令来登录到 Azure。 如果使用的是 PowerShell，则这些步骤不是必需的：
+安装 CLI 后，打开一个命令提示符并发出以下命令来登录到 Azure。 
 
-1. 如果在本地使用 Azure CLI，请运行以下命令来登录到 Azure。 如果在 PowerShell 中运行这些命令，则此登录步骤不是必需的：
+<!--Not Available on Cloud Shell-->
 
+1. 运行以下命令以登录到 Azure。 
    ```azurecli
    az cloud set -n AzureChinaCloud
    az login
@@ -132,7 +131,9 @@ connectionString=$(az servicebus namespace authorization-rule keys list \
 
 ## <a name="send-and-receive-messages"></a>发送和接收消息
 
-1. 请确保 PowerShell 已打开并显示了 Bash 提示符。
+1. 请确保 Shell 已打开并显示 Bash 提示符。
+
+    <!--CORRECT ON SHELL-->
 
 2. 通过发出以下命令克隆[服务总线 GitHub 存储库](https://github.com/Azure/azure-service-bus/)：
 
@@ -143,7 +144,7 @@ connectionString=$(az servicebus namespace authorization-rule keys list \
 3. 导航到示例文件夹 `azure-service-bus/samples/Java/quickstarts-and-tutorials/quickstart-java/tutorial-topics-subscriptions-filters-java`。 请注意，在 Bash shell 中，命令区分大小写，并且路径分隔符必须为正斜杠。
 
 4. 发出以下命令来生成应用程序：
-   
+
    ```shell
    mvn clean package -DskipTests
    ```
@@ -301,16 +302,16 @@ public CompletableFuture<Void> receiveAllMessageFromSubscription(String subscrip
         {
             if ( receivedMessage.getProperties() != null ) {
                 System.out.printf("StoreId=%s\n", receivedMessage.getProperties().get("StoreId"));
-                
+
                 // Show the label modified by the rule action
                 if(receivedMessage.getLabel() != null)
                     System.out.printf("Label=%s\n", receivedMessage.getLabel());
             }
-            
+
             byte[] body = receivedMessage.getBody();
             Item theItem = GSON.fromJson(new String(body, UTF_8), Item.class);
             System.out.printf("Item data. Price=%f, Color=%s, Category=%s\n", theItem.getPrice(), theItem.getColor(), theItem.getItemCategory());
-            
+
             subscriptionClient.complete(receivedMessage.getLockToken());
             receivedMessages++;
         }
@@ -322,14 +323,17 @@ public CompletableFuture<Void> receiveAllMessageFromSubscription(String subscrip
         }
     }
     System.out.printf("\nReceived %s messages from subscription %s.\n", receivedMessages, subscription);
-    
+
     return new CompletableFuture().completedFuture(null);
 }
 ```
 
+> [!NOTE]
+> 可以使用[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer/)管理服务总线资源。 服务总线资源管理器允许用户连接到服务总线命名空间并以一种简单的方式管理消息传送实体。 该工具提供高级功能，如导入/导出功能或用于对主题、队列、订阅、中继服务、通知中心和事件中心进行测试的功能。 
+
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已使用 Azure CLI 预配了资源，然后从服务总线主题及其订阅发送并接收了消息。 你已了解如何：
+在本教程中，你已使用 Azure CLI 预配了资源，然后从服务总线主题及其订阅发送并接收了消息。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 使用 Azure 门户创建一个服务总线主题和一个或多个对该主题的订阅
@@ -345,7 +349,9 @@ public CompletableFuture<Void> receiveAllMessageFromSubscription(String subscrip
 > [!div class="nextstepaction"]
 > [使用 PowerShell 和主题/订阅更新库存](service-bus-tutorial-topics-subscriptions-portal.md)
 
-[试用帐户]: https://www.azure.cn/pricing/1rmb-trial
+[试用帐户]: https://www.azure.cn/pricing/1rmb-trial/
 [fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name
 [Install the Azure CLI]: https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest
 [az group create]: https://docs.azure.cn/cli/group?view=azure-cli-latest#az_group_create
+
+<!-- Update_Description: update meta properties, wording update, update link -->

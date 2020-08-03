@@ -1,17 +1,19 @@
 ---
 title: 异地复制注册表
-description: 开始创建和管理异地复制的 Azure 容器注册表，这使注册表能够通过多主区域副本为多个区域提供服务。
+description: 开始创建和管理异地复制的 Azure 容器注册表，使注册表能够为多个区域提供多主区域副本。 异地复制是高级服务层级的一项功能。
 author: rockboyfor
 ms.topic: article
-origin.date: 08/16/2019
+origin.date: 05/11/2020
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: 07/27/2020
 ms.author: v-yeche
-ms.date: 12/09/2019
-ms.openlocfilehash: 6cf8ab5d1f0514773af53a99abfadb74dbcc6697
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a3e6c49929914daa66e5603c455e87abda36b4cf
+ms.sourcegitcommit: 5726d3b2e694f1f94f9f7d965676c67beb6ed07c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74885028"
+ms.lasthandoff: 07/21/2020
+ms.locfileid: "86863153"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure 容器注册表中的异地复制
 
@@ -25,13 +27,11 @@ ms.locfileid: "74885028"
 * 跨多个区域对注册表进行单一管理
 
 > [!NOTE]
-> 如果需要在多个 Azure 容器注册表中维护容器映像的副本，则 Azure 容器注册表还支持[映像导入](container-registry-import-images.md)。 
+> 如果需要在多个 Azure 容器注册表中维护容器映像的副本，则 Azure 容器注册表还支持[映像导入](container-registry-import-images.md)。 例如，在 DevOps 工作流中，可以将映像从开发注册表导入到生产注册表中，不需要使用 Docker 命令。
 >
 
-<!--Not Avaialble on For example, in a DevOps workflow, you can import an image from a development registry to a production registry, without needing to use Docker commands.-->
-
 ## <a name="example-use-case"></a>示例用例
-Contoso 在中国各地运行着一个公开展示网站。 为了向这些市场提供本地近网内容，Contoso 在中国北部、中国东部运行 [Azure Kubernetes 服务](/aks/) (AKS) 群集。 部署为 Docker 映像的网站应用程序在所有区域中均使用相同的代码和映像。 从在每个区域独特部署的数据库检索该区域的本地内容。 对于本地数据库这样的资源，每个区域部署均有其唯一配置。
+Contoso 在中国各地运行着一个公开展示网站。 为了向这些市场提供本地近网内容，Contoso 在中国北部和中国东部运行 [Azure Kubernetes 服务](/aks/) (AKS) 群集。 部署为 Docker 映像的网站应用程序在所有区域中均使用相同的代码和映像。 从在每个区域独特部署的数据库检索该区域的本地内容。 对于本地数据库这样的资源，每个区域部署均有其唯一配置。
 
 开发团队位于北京，使用中国北部数据中心。
 
@@ -64,21 +64,21 @@ docker push contosochinaeast.azurecr.cn/public/products/web:1.2
 
 ## <a name="configure-geo-replication"></a>配置异地复制
 
-配置异地复制就如在地图上单击区域一样简单。 还可以使用工具（包括 Azure CLI 中的 [az acr replication](https://docs.azure.cn/cli/acr/replication?view=azure-cli-latest#az-acr-replication) 命令）来管理异地复制，或者使用 [Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry-geo-replication)部署为异地复制启用的注册表。
+配置异地复制就如在地图上单击区域一样简单。 还可以使用工具（包括 Azure CLI 中的 [az acr replication](https://docs.azure.cn/cli/acr/replication?view=azure-cli-latest#az-acr-replication) 命令）管理异地复制，或使用 [Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry-geo-replication)部署为异地复制启用的注册表。
 
 <!--MOONCAKE: CORRECT THE DEPLOYMENT-->
 
-[![部署到 Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-container-registry-geo-replication%2Fazuredeploy.json)
+[![“部署到 Azure”](http://azuredeploy.net/deploybutton.png)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-container-registry-geo-replication%2Fazuredeploy.json)
 
 <!--MOONCAKE: CORRECT THE DEPLOYMENT-->
 
-异地复制是[高级注册表](container-registry-skus.md)特有的功能。 如果尚未使用高级注册表，可在 [Azure 门户](https://portal.azure.cn)中将基本和标准更改为高级：
+异地复制是[高级注册表](container-registry-skus.md)的一项功能。 如果尚未使用高级注册表，可在 [Azure 门户](https://portal.azure.cn)中将基本和标准更改为高级：
 
-![在 Azure 门户中切换 SKU](media/container-registry-skus/update-registry-sku.png)
+![在 Azure 门户中切换服务层级](media/container-registry-skus/update-registry-sku.png)
 
 若要为高级注册表配置异地复制，可通过 https://portal.azure.cn 登录到 Azure 门户。
 
-导航到 Azure 容器注册表，然后选择“复制”  ：
+导航到 Azure 容器注册表，然后选择“复制”：
 
 ![Azure 门户容器注册表 UI 中的副本](media/container-registry-geo-replication/registry-services.png)
 
@@ -90,36 +90,41 @@ docker push contosochinaeast.azurecr.cn/public/products/web:1.2
 * 绿色六边形表示可能的复制区域
 * 灰色六边形表示尚不可复制的 Azure 区域
 
-若要配置副本，请选择一个绿色六边形，然后选择“创建”  ：
+若要配置副本，请选择一个绿色六边形，然后选择“创建”：
 
 ![Azure 门户中的“创建副本”UI](media/container-registry-geo-replication/create-replication.png)
 
-若要创建其他副本，请选择表示其他区域的绿色六边形，然后单击“创建”  。
+若要创建其他副本，请选择表示其他区域的绿色六边形，然后单击“创建”。
 
-ACR 将开始在配置的副本间同步映像。 完成后，门户将显示“就绪”  。 门户中的副本状态不会自动更新。 使用刷新按钮查看更新状态。
+ACR 将开始在配置的副本间同步映像。 完成后，门户将显示“就绪”。 门户中的副本状态不会自动更新。 使用刷新按钮查看更新状态。
 
 ## <a name="considerations-for-using-a-geo-replicated-registry"></a>使用异地复制注册表的注意事项
 
 * 异地复制注册表中的每个区域在设置后都是独立的。 Azure 容器注册表 SLA 适用于每个异地复制区域。
-* 当你从异地复制注册表中推送或拉取映像时，后台的 Azure 流量管理器会将请求发送到位于离你最近的区域中的注册表。
+* 当你从异地复制注册表中推送或拉取映像时，后台的 Azure 流量管理器会将请求发送到位于离你最近（就网络延迟而言）的区域中的注册表。
 * 将映像或标记更新推送到最近的区域后，Azure 容器注册表需要一些时间将清单和层复制到你选择加入的其余区域。 较大的映像比较小的映像复制所需的时间更长。 映像和标记通过最终一致性模型在复制区域之间进行同步。
-* 若要管理依赖于对异地复制进行推送更新的工作流，建议你配置 [Webhook](container-registry-webhook.md) 以响应推送事件。 你可以在异地复制注册表中设置区域性 Webhook，以跟踪在异地复制区域内完成的推送事件。
+* 若要管理依赖于异地复制注册表的推送更新的工作流，建议你配置 [Webhook](container-registry-webhook.md) 以响应推送事件。 你可以在异地复制注册表中设置区域性 Webhook，以跟踪在异地复制区域内完成的推送事件。
+* 为了向表示内容层的 blob 提供服务，Azure 容器注册表使用了数据终结点。 可以在注册表的每个异地复制区域中为注册表启用[专用数据终结点](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints)。 这些终结点允许配置严格限定范围的防火墙访问规则。
+* 如果使用虚拟网络中的专用终结点为注册表配置[专用链接](container-registry-private-link.md)，则默认情况下会启用每个异地复制区域中的专用数据终结点。 
 
 ## <a name="delete-a-replica"></a>删除副本
 
-为注册表配置副本后，如果不再需要它，可以随时将其删除。 使用 Azure 门户或其他工具（例如 Azure CLI 中的 [az acr replication delete](https://docs.azure.cn/cli/acr/replication?view=azure-cli-latest#az-acr-replication-delete) 命令）删除副本。
+为注册表配置副本后，如果不再需要该副本，则可以随时将其删除。 使用 Azure 门户或其他工具（例如 Azure CLI 中的 [az acr replication delete](https://docs.azure.cn/cli/acr/replication?view=azure-cli-latest#az-acr-replication-delete) 命令）删除副本。
 
-若要在 Azure 门户中删除副本，请执行以下操作：
+若要在 Azure 门户中删除副本：
 
-1. 导航到 Azure 容器注册表，然后选择“复制”  。
-1. 选择副本的名称，然后选择“删除”  。 确认要删除该副本。
+1. 导航到 Azure 容器注册表，然后选择“复制”。
+1. 选择副本的名称，然后选择“删除”。 确认要删除该副本。
 
-> [!NOTE]
-> 无法删除注册表的*主区域*（即创建注册表的位置）中的注册表副本。 只能通过删除注册表本身来删除主副本。
+若要使用 Azure CLI 删除中国东部区域中 myregistry 的副本：
+
+```azurecli
+az acr replication delete --name chinanorth --registry myregistry
+```
 
 ## <a name="geo-replication-pricing"></a>异地复制定价
 
-异地复制是 Azure 容器注册表[高级 SKU](container-registry-skus.md) 的一项功能。 将注册表复制到所需区域时，每个区域都会产生高级注册表费用。
+异地复制是 Azure 容器注册表[高级服务层级](container-registry-skus.md)的一项功能。 将注册表复制到所需区域时，每个区域都会产生高级注册表费用。
 
 在前面的示例中，Contoso 将两个注册表合并到一起，并向中国东部和中国北部添加副本。 Contoso 每月将支付两次高级费用，且无额外配置或管理。 现在每个区域就从本地拉取映像，既提升了性能和可靠性，又节省了从中国北部到中国东部的网络传输费用。
 

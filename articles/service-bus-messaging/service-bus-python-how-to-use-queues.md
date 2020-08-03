@@ -1,25 +1,22 @@
 ---
-title: 快速入门：通过 Python 使用 Azure 服务总线队列
+title: 快速入门 - 通过 Python 使用 Azure 服务总线队列
 description: 本文介绍如何使用 Python 创建 Azure 服务总线队列，并向其发送消息和从中接收消息。
-services: service-bus-messaging
+author: rockboyfor
 documentationcenter: python
-author: axisc
-editor: spelluru
-ms.assetid: b95ee5cd-3b31-459c-a7f3-cf8bcf77858b
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: quickstart
-origin.date: 01/27/2020
-ms.date: 2/6/2020
-ms.author: v-lingwu
-ms.openlocfilehash: add87345a13d86097a15d54b36b5ee5ebd38025c
-ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: yes
+ms.testdate: 07/20/2020
+ms.author: v-yeche
+ms.custom: seo-python-october2019, tracking-python
+ms.openlocfilehash: 130c16ee419f09a0b7ab7762ad4c477f811930ab
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85796217"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162441"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-python"></a>快速入门：通过 Python 使用 Azure 服务总线队列
 
@@ -27,12 +24,14 @@ ms.locfileid: "85796217"
 
 本文介绍如何使用 Python 创建 Azure 服务总线队列，并向其发送消息和从中接收消息。 
 
-有关 Python Azure 服务总线库的详细信息，请参阅[适用于 Python 的服务总线库](/python/api/overview/azure/servicebus?view=azure-python)。
+有关 Python Azure 服务总线库的详细信息，请参阅[适用于 Python 的服务总线库](https://docs.microsoft.com/python/api/overview/azure/servicebus?view=azure-python)。
 
 ## <a name="prerequisites"></a>先决条件
-- Azure 订阅。 你可以注册[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)或购买[预付费订阅](https://wd.azure.cn/pricing/pia-waiting-list/?form-type=identityauth)。
+- Azure 订阅。 可以激活 [Visual Studio 或 MSDN 订阅者权益](https://www.azure.cn/offers/ms-mc-arz-msdn/)或者注册[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 - 遵循以下文章中的步骤创建的服务总线命名空间：[快速入门：使用 Azure 门户创建服务总线主题和订阅](service-bus-quickstart-topics-subscriptions-portal.md)。 复制“共享访问策略”屏幕中的主连接字符串，以便稍后在本文中使用。 
-- 装有 [Python Azure 服务总线][Python Azure Service Bus package]包的 Python 3.4x 或更高版本。<!--delete invalid link-->
+- 装有 [Python Azure 服务总线][Python Azure Service Bus package]包的 Python 3.4x 或更高版本。 有关详细信息，请参阅 [Python 安装指南](https://docs.microsoft.com/azure/developer/python/azure-sdk-install)。 
+
+    <!--Mooncake Correct on Link [Python Installation Guide](https://docs.microsoft.com/azure/developer/python/azure-sdk-install).-->
 
 ## <a name="create-a-queue"></a>创建队列
 
@@ -80,7 +79,7 @@ queue_client.send(msg)
 
 服务总线队列在[标准层](service-bus-premium-messaging.md)中支持的最大消息大小为 256 KB，在[高级层](service-bus-premium-messaging.md)中则为 1 MB。 标头最大大小为 64 KB，其中包括标准和自定义应用程序属性。 队列中可以包含的消息数量不受限制，但队列包含的消息总大小有上限。 可以在创建时定义队列大小，上限为 5 GB。 
 
-有关配额的详细信息，请参阅 [服务总线配额][Service Bus quotas]。
+有关配额的详细信息，请参阅[服务总线配额][Service Bus quotas]。
 
 ## <a name="receive-messages-from-a-queue"></a>从队列接收消息
 
@@ -110,7 +109,7 @@ with queue_client.get_receiver() as queue_receiver:
 
 ## <a name="handle-application-crashes-and-unreadable-messages"></a>处理应用程序崩溃和不可读消息
 
-Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或消息处理问题中恢复。 如果接收方应用程序因某种原因无法处理消息，则可对 **Message** 对象调用 `unlock` 方法。 服务总线解锁队列中的消息，并使其能够重新被同一个或另一个使用方应用程序接收。
+服务总线提供了相关功能，帮助你轻松地从应用程序错误或消息处理问题中恢复。 如果接收方应用程序因某种原因无法处理消息，则可对 **Message** 对象调用 `unlock` 方法。 服务总线解锁队列中的消息，并使其能够重新被同一个或另一个使用方应用程序接收。
 
 队列中锁定的消息还存在超时。 如果应用程序无法在锁定超时期满前处理消息（例如，如果应用程序崩溃），服务总线会自动解锁消息，让它再次可供接收。
 
@@ -126,4 +125,6 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
 [Azure portal]: https://portal.azure.cn
 [Python Azure Service Bus package]: https://pypi.python.org/pypi/azure-servicebus  
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
-[Service Bus quotas]: ./service-bus-quotas.md
+[Service Bus quotas]: service-bus-quotas.md
+
+<!-- Update_Description: update meta properties, wording update, update link -->

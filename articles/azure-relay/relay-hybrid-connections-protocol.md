@@ -1,26 +1,19 @@
 ---
 title: Azure 中继混合连接协议指南
 description: 本文介绍如何与混合连接中继的客户端交互，以连接侦听器和发送方角色中的客户端。
-services: service-bus-relay
-documentationcenter: na
-author: clemensv
-manager: timlt
-editor: ''
-ms.assetid: 149f980c-3702-4805-8069-5321275bc3e8
-ms.service: service-bus-relay
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-origin.date: 01/21/2020
-ms.date: 2/6/2020
-ms.author: v-lingwu
-ms.openlocfilehash: 0abe93203e6927a38b414dce677e8174c07205df
-ms.sourcegitcommit: cada23b6400453ff9c08cfb08393e635e2fddac1
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: ''
+ms.author: v-yeche
+author: rockboyfor
+ms.openlocfilehash: d1ee1525afffa20e39245bb7321ec21e3192e054
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83734647"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162419"
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Azure 中继混合连接协议
 
@@ -32,7 +25,7 @@ Azure 中继是 Azure 服务总线平台最重要的功能支柱之一。 中继
 
 ## <a name="interaction-model"></a>交互模型
 
-混合连接中继将通过提供双方都可在自身网络发现并连接到的 Azure 云中的集合点来连接两方。 该集合点就是在本文和其他文档、API 及 Azure 门户中提及的“混合连接”。 混合连接服务终结点在本文其余部分被称为“服务”。
+混合连接中继将通过在 Azure 云中提供双方都可在自身网络中发现并连接到的集合点来连接双方。 该集合点就是在本文和其他文档、API 及 Azure 门户中提及的“混合连接”。 混合连接服务终结点在本文其余部分被称为“服务”。
 
 该服务允许中继 Web 套接字连接和 HTTP(S) 请求与响应。
 
@@ -118,6 +111,7 @@ HTTP 帧标头元数据将转换为 JSON，以方便由侦听器框架处理；�
 如果没有活动的侦听器，服务会返回“错误的网关”502 错误代码。 如果服务似乎未处理请求，则在 60 秒后会返回“网关超时”504 错误代码。
 
 ### <a name="interaction-summary"></a>交互摘要
+
 此交互模型的结果是，发送方客户端使用“干净”的 WebSocket（已连接侦听器且无需进一步的“报头”或准备）离开握手。 凭借此模型，几乎任何现有 Web 套接字客户端实现通过将正确构造的 URL 提供到其 Web 套接字客户端层，即可立即使用混合连接服务。
 
 侦听器通过接受交互获取的集合连接 WebSocket 同样也是干净的，并且可被传递到任何现有 WebSocket 服务器实现，使用一些最小限度的额外抽象层，区分其框架的本地网络侦听器上的“接受”操作和混合连接远程“接受”操作。
@@ -174,12 +168,12 @@ HTTP 请求/响应模型为发送方提供受限程度极低的 HTTP 协议外�
 
 该消息包含名为“accept”的 JSON 对象，此时该对象定义以下属性：
 
-* **address** – 用于创建服务的 WebSocket URL 字符串，以接受传入连接。
-* **id** – 该连接的唯一标识符。 如果该 ID 由发送方客户端提供，则是发送方提供的值，否则为系统生成的值。
-* **connectHeaders** – 发送方向中继终结点提供的所有 HTTP 头，其中也包括 Sec-WebSocket-Protocol 和 Sec-WebSocket-Extensions 头。
+* **address** - 用于创建服务的 WebSocket 以接受传入连接的 URL 字符串。
+* **id** - 该连接的唯一标识符。 如果该 ID 由发送方客户端提供，则是发送方提供的值，否则为系统生成的值。
+* **connectHeaders** - 发送方向中继终结点提供的所有 HTTP 标头，其中也包括 Sec-WebSocket-Protocol 和 Sec-WebSocket-Extensions 标头。
 
 ```json
-{                                                           
+{
     "accept" : {
         "address" : "wss://dc-node.servicebus.chinacloudapi.cn:443/$hc/{path}?..."
         "id" : "4cb542c3-047a-4d40-a19f-bdc66441e736",
@@ -302,8 +296,8 @@ FEFEFEFEFEFEFEFEFEFEF...
 `request` 的 JSON 内容如下：
 
 * **address** - URI 字符串。 这是用于此请求的会合地址。 如果传入的请求大于 64 kB，则此消息的余下部分将会留空，并且客户端必须启动等同于如下所述 `accept` 操作的会合握手。 然后，服务将在建立的 Web 套接字放置完整的 `request`。 如果响应预期可能超过 64 kB，则侦听器也必须启动会合握手，然后通过建立的 Web 套接字传输响应。
-* **id** – 字符串。 此请求的唯一标识符。
-* **requestHeaders** – 此对象包含由发送方提供给终结点的所有 HTTP 标头（[上面](#request-operation)所述的授权信息除外），以及与网关连接严格相关的标头。 具体而言，在 [RFC7230](https://tools.ietf.org/html/rfc7230) 中定义或保留的所有标头（`Via` 除外）都会被剥离，而不会转发：
+* **id** - 字符串。 此请求的唯一标识符。
+* **requestHeaders** - 此对象包含由发送方提供给终结点的所有 HTTP 标头（[上面](#request-operation)所述的授权信息除外），以及与网关连接严格相关的标头。 具体而言，在 [RFC7230](https://tools.ietf.org/html/rfc7230) 中定义或保留的所有标头（`Via` 除外）都会被剥离，而不会转发：
 
   * `Connection`（RFC7230 第 6.1 部分）
   * `Content-Length`（RFC7230 第 3.3.2 部分）
@@ -314,9 +308,9 @@ FEFEFEFEFEFEFEFEFEFEF...
   * `Upgrade`（RFC7230 第 6.7 部分）
   * `Close`（RFC7230 第 8.1 部分）
 
-* **requestTarget** – 字符串。 此属性保存请求的[“请求目标”（RFC7230 第 5.3 部分）](https://tools.ietf.org/html/rfc7230#section-5.3)。 这包括查询字符串部分，其所有 `sb-hc-` 前缀参数已剥离。
+* **requestTarget** - 字符串。 此属性保存请求的[“请求目标”（RFC7230 第 5.3 部分）](https://tools.ietf.org/html/rfc7230#section-5.3)。 这包括查询字符串部分，其所有 `sb-hc-` 前缀参数已剥离。
 * **method** - 字符串。 这是 [RFC7231 第 4 部分](https://tools.ietf.org/html/rfc7231#section-4)所述的请求方法。 不得使用 `CONNECT` 方法。
-* **bool** – 布尔值。 指示是否后接一个或多个二进制正文帧。
+* **body** - 布尔值。 指示是否后接一个或多个二进制正文帧。
 
 ``` JSON
 {
@@ -345,12 +339,12 @@ FEFEFEFEFEFEFEFEFEFEF...
 
 响应是名为“response”的 JSON 对象。 正文内容的处理规则与 `request` 消息的处理方式相同，并基于 `body` 属性。
 
-* **requestId** – 字符串。 必需。 正在响应的 `request` 消息的 `id` 属性值。
-* **statusCode** – 数字。 必需。 指示通知结果的数字 HTTP 状态代码。 允许 [RFC7231 第 6 部分](https://tools.ietf.org/html/rfc7231#section-6)所述的所有状态代码，但 [502“错误的网关”](https://tools.ietf.org/html/rfc7231#section-6.6.3)和 [504“网关超时”](https://tools.ietf.org/html/rfc7231#section-6.6.5)除外。
+* **requestId** - 字符串。 必需。 正在响应的 `request` 消息的 `id` 属性值。
+* **statusCode** - 数字。 必需。 指示通知结果的数字 HTTP 状态代码。 允许 [RFC7231 第 6 部分](https://tools.ietf.org/html/rfc7231#section-6)所述的所有状态代码，但 [502“错误的网关”](https://tools.ietf.org/html/rfc7231#section-6.6.3)和 [504“网关超时”](https://tools.ietf.org/html/rfc7231#section-6.6.5)除外。
 * **statusDescription** - 字符串。 可选。 [RFC7230 第 3.1.2 部分](https://tools.ietf.org/html/rfc7230#section-3.1.2)所述的 HTTP 状态代码原因短语
-* **responseHeaders** – 要在外部 HTTP 回复中设置的 HTTP 标头。
+* **responseHeaders** - 要在外部 HTTP 回复中设置的 HTTP 标头。
   与 `request` 一样，不得使用 RFC7230 定义的标头。
-* **bool** – 布尔值。 指示是否后接二进制正文帧。
+* **body** - 布尔值。 指示是否后接二进制正文帧。
 
 ``` text
 ----- Web Socket text frame ----
@@ -397,12 +391,11 @@ FEFEFEFEFEFEFEFEFEFEF...
 | 1008      | 安全令牌已到期，因此违背了授权策略。 |
 | 1011      | 服务内部出错。                                            |
 
-
 #### <a name="listener-token-renewal"></a>侦听器令牌续订
 
 侦听器令牌即将到期时，可以通过已创建的控制通道向服务发送文本框消息来替换令牌。 消息包含名为 `renewToken` 的 JSON 对象，此时该对象定义以下属性：
 
-* token – 命名空间或混合连接的有效 URL 编码的服务总线共享访问令牌，可授予“侦听”权限 。
+* **token** - 命名空间或混合连接的有效 URL 编码服务总线共享访问令牌，可授予“侦听”权限。
 
 ```json
 {
@@ -514,5 +507,4 @@ _namespace-address_ 是托管混合连接的 Azure 中继命名空间的完全�
 * [.NET 入门](relay-hybrid-connections-dotnet-get-started.md)
 * [节点入门](relay-hybrid-connections-node-get-started.md)
 
-
-<!--Update_Description:update meta properties and wording-->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -1,19 +1,19 @@
 ---
 title: Azure 中继的安全控制
 description: 本文提供了用于评估 Azure 中继的内置安全控制清单。
-services: service-bus-relay
-ms.service: service-bus-relay
-author: spelluru
 ms.topic: conceptual
-origin.date: 01/21/2020
-ms.date: 2/6/2020
-ms.author: v-lingwu
-ms.openlocfilehash: 55e1a7667541b8701c3848f03b9b4ade09cc2833
-ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: ''
+ms.author: v-yeche
+author: rockboyfor
+ms.openlocfilehash: 7b05b0838292a7ed64048ce66984acbd2be25957
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85796243"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162408"
 ---
 # <a name="security-controls-for-azure-relay"></a>Azure 中继的安全控制
 
@@ -48,12 +48,11 @@ ms.locfileid: "85796243"
 
 | 安全控制 | Yes/No | 注释 | 文档 |
 |---|---|--|--|
-| 服务器端静态加密：Microsoft 管理的密钥 |  空值 | 中继是一个 Web 套接字，不保存数据。 |   |
-| 服务器端静态加密：客户管理的密钥 (BYOK) | 否 | 仅使用 Microsoft TLS 证书。  |   |
+| 服务器端静态加密：Azure 托管的密钥 |  空值 | 中继是一个 Web 套接字，不保存数据。 |   |
+| 服务器端静态加密：客户管理的密钥 (BYOK) | 否 | 仅使用 Azure TLS 证书。  |   |
 | 列级加密（Azure 数据服务）| 空值 | |   |
 | 传输中加密（例如 ExpressRoute 加密、VNet 中加密，以及 VNet-VNet 加密）| 是 | 服务需要 TLS。 |   |
 | 加密的 API 调用| 是 | HTTPS。 |
-
 
 ## <a name="configuration-management"></a>配置管理
 
@@ -64,3 +63,5 @@ ms.locfileid: "85796243"
 ## <a name="next-steps"></a>后续步骤
 
 - 详细了解[跨 Azure 服务的内置安全控制](../security/fundamentals/security-controls.md)。
+
+<!-- Update_Description: update meta properties, wording update, update link -->

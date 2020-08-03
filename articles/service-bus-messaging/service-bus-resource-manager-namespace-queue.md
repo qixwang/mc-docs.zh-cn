@@ -1,153 +1,178 @@
 ---
 title: 使用 Azure 模板创建 Azure 服务总线命名空间和队列
-description: 快速入门：使用 Azure Resource Manager 模板创建服务总线命名空间和队列
-services: service-bus-messaging
+description: 快速入门 - 使用 Azure 资源管理器模板创建服务总线命名空间和队列
 documentationcenter: .net
-author: lingliw
-manager: digimobile
-editor: ''
-ms.assetid: a6bfb5fd-7b98-4588-8aa1-9d5f91b599b6
-ms.service: service-bus-messaging
-ms.devlang: tbd
+author: rockboyfor
 ms.topic: quickstart
+ms.custom: subject-armqs
 ms.tgt_pltfrm: dotnet
-ms.workload: na
-origin.date: 01/23/2019
-ms.date: 09/23/2019
-ms.author: v-lingwu
-ms.openlocfilehash: 663944411122d0631dd0ccc82f5d9cbb74bc5340
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: yes
+ms.testdate: 07/20/2020
+ms.author: v-yeche
+ms.openlocfilehash: e3e08a501d62c13e2449d31d8a6aa58a321387a4
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75853835"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162235"
 ---
-# <a name="quickstart-create-a-service-bus-namespace-and-a-queue-using-an-azure-resource-manager-template"></a>快速入门：使用 Azure Resource Manager 模板创建服务总线命名空间和队列
+# <a name="quickstart-create-a-service-bus-namespace-and-a-queue-using-an-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板创建服务总线命名空间和队列
 
-本文介绍如何使用创建服务总线命名空间和命名空间中队列的 Azure Resource Manager 模板。 本文介绍如何指定要部署的资源以及如何定义执行部署时指定的参数。 可将此模板用于自己的部署，或自定义此模板以满足要求。
+本文介绍如何使用创建服务总线命名空间和命名空间中队列的 Azure 资源管理器模板。 本文介绍如何指定要部署的资源以及如何定义执行部署时指定的参数。 可将此模板用于自己的部署，或自定义此模板以满足要求。
 
-有关创建模板的详细信息，请参阅 [创作 Azure Resource Manager 模板][Authoring Azure Resource Manager templates]。
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-有关完整的模板，请参阅 GitHub 上的 [服务总线命名空间和队列模板][Service Bus namespace and queue template] 。
+如果没有 Azure 订阅，请在开始前[创建一个试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
+
+## <a name="prerequisites"></a>先决条件
+
+无
+
+## <a name="create-a-service-bus-namespace-and-a-queue"></a>创建服务总线命名空间和队列
+
+### <a name="review-the-template"></a>查看模板
+
+本快速入门中使用的模板来自 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-servicebus-create-queue)。
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "serviceBusNamespaceName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the Service Bus namespace"
+      }
+    },
+    "serviceBusQueueName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the Queue"
+      }
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "Location for all resources."
+      }
+    }
+  },
+  "variables": {
+    "defaultSASKeyName": "RootManageSharedAccessKey",
+    "authRuleResourceId": "[resourceId('Microsoft.ServiceBus/namespaces/authorizationRules', parameters('serviceBusNamespaceName'), variables('defaultSASKeyName'))]",
+    "sbVersion": "2017-04-01"
+  },
+  "resources": [
+    {
+      "apiVersion": "2017-04-01",
+      "name": "[parameters('serviceBusNamespaceName')]",
+      "type": "Microsoft.ServiceBus/namespaces",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Standard"
+      },
+      "properties": {},
+      "resources": [
+        {
+          "apiVersion": "2017-04-01",
+          "name": "[parameters('serviceBusQueueName')]",
+          "type": "Queues",
+          "dependsOn": [
+            "[concat('Microsoft.ServiceBus/namespaces/', parameters('serviceBusNamespaceName'))]"
+          ],
+          "properties": {
+            "lockDuration": "PT5M",
+            "maxSizeInMegabytes": "1024",
+            "requiresDuplicateDetection": "false",
+            "requiresSession": "false",
+            "defaultMessageTimeToLive": "P10675199DT2H48M5.4775807S",
+            "deadLetteringOnMessageExpiration": "false",
+            "duplicateDetectionHistoryTimeWindow": "PT10M",
+            "maxDeliveryCount": "10",
+            "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S",
+            "enablePartitioning": "false",
+            "enableExpress": "false"
+          }
+        }
+      ]
+    }
+  ],
+  "outputs": {
+    "NamespaceConnectionString": {
+      "type": "string",
+      "value": "[listkeys(variables('authRuleResourceId'), variables('sbVersion')).primaryConnectionString]"
+    },
+    "SharedAccessPolicyPrimaryKey": {
+      "type": "string",
+      "value": "[listkeys(variables('authRuleResourceId'), variables('sbVersion')).primaryKey]"
+    }
+  }
+}
+```
+
+该模板中定义的资源包括：
+
+- [**Microsoft.ServiceBus/namespaces**](https://docs.microsoft.com/azure/templates/microsoft.servicebus/namespaces)
+- [**Microsoft.ServiceBus/namespaces/queues**](https://docs.microsoft.com/azure/templates/microsoft.servicebus/namespaces/queues)
 
 > [!NOTE]
-> 以下 Azure Resource Manager 模板可供下载和部署。
-> 
+> 以下 Azure 资源管理器模板可供下载和部署。
+>
 > * [创建包含队列和授权规则的服务总线命名空间](service-bus-resource-manager-namespace-auth-rule.md)
 > * [创建包含主题和订阅的服务总线命名空间](service-bus-resource-manager-namespace-topic.md)
 > * [创建服务总线命名空间](service-bus-resource-manager-namespace.md)
 > * [创建包含主题、订阅和规则的服务总线命名空间](service-bus-resource-manager-namespace-topic-with-rule.md)
-> 
-> 若要检查最新模板，请访问 [Azure 快速启动模板][Azure Quickstart Templates]库并搜索“服务总线”  。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+可以从 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/find/master)中找到更多模板
 
-## <a name="what-will-you-deploy"></a>将部署什么内容？
+### <a name="deploy-the-template"></a>部署模板
 
 使用此模板，将部署包含队列的服务总线命名空间。
 
 [服务总线队列](service-bus-queues-topics-subscriptions.md#queues)为一个或多个竞争使用方提供先入先出 (FIFO) 消息传送方式。
 
-若要自动运行部署，请单击以下按钮：
+若要自动运行部署，请单击以下按钮：为部署创建新的资源组，以便稍后可以轻松进行清理。
 
 [![部署到 Azure](./media/service-bus-resource-manager-namespace-queue/deploybutton.png)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-servicebus-create-queue%2Fazuredeploy.json)
 
-## <a name="parameters"></a>parameters
+## <a name="verify-the-deployment"></a>验证部署
 
-使用 Azure Resource Manager，可以定义在部署模板时想要指定的值的参数。 该模板具有一个名为 `Parameters` 的部分，其中包含所有参数值。 应该为随着要部署的项目或要部署到的环境而变化的值定义参数。 不要为永远保持不变的值定义参数。 每个参数值可在模板中用来定义所部署的资源。
+1. 选择顶部的“通知”，查看部署状态。 等待部署成功。 然后，在通知消息中选择“转到资源组”，导航到包含服务总线命名空间的资源组的页面。 
 
-模板定义以下参数。
+    ![来自部署的通知](./media/service-bus-resource-manager-namespace-queue/notification.png)
+2. 确认在资源列表中看到了服务总线命名空间。 
 
-### <a name="servicebusnamespacename"></a>serviceBusNamespaceName
-要创建的服务总线命名空间的名称。
+    ![资源组 - 命名空间](./media/service-bus-resource-manager-namespace-queue/resource-group-namespace.png)
+3. 从列表中选择命名空间以查看“服务总线命名空间”页。 
 
-```json
-"serviceBusNamespaceName": {
-"type": "string",
-"metadata": { 
-    "description": "Name of the Service Bus namespace" 
-    }
-}
-```
+## <a name="cleanup-resources"></a>清理资源
 
-### <a name="servicebusqueuename"></a>serviceBusQueueName
-在服务总线命名空间中创建的队列的名称。
+1. 在 Azure 门户中，导航到资源组的“资源组”页。
+2. 从工具栏选择**删除资源组**。 
+3. 键入资源组的名称，然后选择“删除”。 
 
-```json
-"serviceBusQueueName": {
-"type": "string"
-}
-```
-
-### <a name="servicebusapiversion"></a>serviceBusApiVersion
-模板的服务总线 API 版本。
-
-```json
-"serviceBusApiVersion": { 
-       "type": "string", 
-       "defaultValue": "2017-04-01", 
-       "metadata": { 
-           "description": "Service Bus ApiVersion used by the template" 
-       }
-```
-
-## <a name="resources-to-deploy"></a>要部署的资源
-创建“Messaging”  类型的标准服务总线命名空间和队列。
-
-```json
-{
-    "resources": [{
-        "apiVersion": "2017-04-01",
-        "name": "[parameters('serviceBusNamespaceName')]",
-        "type": "Microsoft.ServiceBus/namespaces",
-        "location": "[parameters('location')]",
-        "sku": {
-            "name": "Standard"
-        },
-        "properties": {},
-        "resources": [{
-            "apiVersion": "[variables('sbVersion')]",
-            "name": "[parameters('serviceBusQueueName')]",
-            "type": "Queues",
-            "dependsOn": [
-                "[concat('Microsoft.ServiceBus/namespaces/', parameters('serviceBusNamespaceName'))]"
-            ],
-            "properties": {
-                "path": "[parameters('serviceBusQueueName')]"
-            }
-        }]
-    }]
-}
-```
-
-## <a name="commands-to-run-deployment"></a>运行部署的命令
-[!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
-
-## <a name="powershell"></a>PowerShell
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName \<resource-group-name\> -TemplateFile <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-servicebus-create-queue/azuredeploy.json>
-```
-
-## <a name="azure-cli"></a>Azure CLI
-
-```azurecli
-azure config mode arm
-
-azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-servicebus-create-queue/azuredeploy.json>
-```
+    ![资源组 - 删除](./media/service-bus-resource-manager-namespace-queue/resource-group-delete.png)
 
 ## <a name="next-steps"></a>后续步骤
-请参阅以下主题，其中演示了如何为命名空间/队列创建授权规则：[使用 Azure 资源管理器模板为命名空间和队列创建服务总线授权规则](service-bus-resource-manager-namespace-auth-rule.md)
 
-通过查看以下文章了解如何管理这些资源：
+请参阅以下主题，其中介绍了如何创建命名空间/队列的授权规则：
+
+[使用 Azure 资源管理器模板为命名空间和队列创建服务总线授权规则](service-bus-resource-manager-namespace-auth-rule.md)
+
+查看以下文章了解如何管理这些资源：
 
 * [使用 PowerShell 管理服务总线](service-bus-manage-with-ps.md)
-* [使用服务总线资源管理器管理服务总线资源](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
+* [使用服务总线 Explorer 管理服务总线资源](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
 
-  [Authoring Azure Resource Manager Templates]: ../azure-resource-manager/resource-group-authoring-templates.md
-  [Service Bus namespace and queue template]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/
-[Azure Quickstart Templates]: https://github.com/Azure/azure-quickstart-templates/?term=service+bus
-  [Learn more about Service Bus queues]: ./service-bus-queues-topics-subscriptions.md
-  [Using Azure PowerShell with Azure Resource Manager]: ../azure-resource-manager/powershell-azure-resource-manager.md
-  [Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../azure-resource-manager/xplat-cli-azure-resource-manager.md
+[Authoring Azure Resource Manager templates]: ../azure-resource-manager/templates/template-syntax.md
+[Service Bus namespace and queue template]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/
+[Azure Quickstart Templates]: https://azure.microsoft.com/documentation/templates/?term=service+bus
+[Learn more about Service Bus queues]: service-bus-queues-topics-subscriptions.md
+[Using Azure PowerShell with Azure Resource Manager]: ../azure-resource-manager/powershell-azure-resource-manager.md
+[Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../azure-resource-manager/xplat-cli-azure-resource-manager.md
+
+<!-- Update_Description: update meta properties, wording update, update link -->

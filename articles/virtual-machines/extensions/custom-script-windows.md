@@ -9,14 +9,16 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 origin.date: 05/02/2019
-ms.date: 07/06/2020
+ms.date: 07/27/2020
+ms.testscope: yes
+ms.testdate: 07/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: dcf67f8b6d08da5908f3dd4daab0c4d91f4b69e8
-ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
+ms.openlocfilehash: 585ffad11d9f2bb9dcd3e4c676270679ce60b0a4
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85945660"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244781"
 ---
 # <a name="custom-script-extension-for-windows"></a>适用于 Windows 的自定义脚本扩展
 
@@ -67,6 +69,7 @@ ms.locfileid: "85945660"
 * 自定义脚本扩展本身不支持代理服务器，但可以在脚本中使用支持代理服务器的文件传输工具，如 Curl
 * 请注意脚本或命令可能依赖的非默认目录位置，按逻辑对这种情况进行处理。
 * 自定义脚本扩展将在 LocalSystem 帐户下运行
+* 如果你计划使用 storageAccountName 和 storageAccountKey 属性，这些属性必须并置在 protectedSettings 中  。
 
 ## <a name="extension-schema"></a>扩展架构
 
@@ -74,7 +77,7 @@ ms.locfileid: "85945660"
 
 可将敏感数据存储在受保护的配置中，此配置经过加密，只能在虚拟机内部解密。 当执行命令包含机密（例如密码）时，受保护的配置相当有用。
 
-这些项应视为敏感数据，并且应在扩展保护的设置配置中指定。 Azure VM 扩展保护的设置数据已加密，并且只能在目标虚拟机上解密。
+这些项目应视为敏感数据，并在扩展的受保护设置配置中指定。 Azure VM 扩展的受保护设置数据已加密，并且只能在目标虚拟机上解密。
 
 ```json
 {
@@ -112,7 +115,7 @@ ms.locfileid: "85945660"
 ```
 
 > [!NOTE]
-> managedIdentity 属性不得与 storageAccountName 或 storageAccountKey 属性一起使用
+> managedIdentity 属性**不能**与 storageAccountName 或 storageAccountKey 属性结合使用
 
 > [!NOTE]
 > 在某个时间点，一个 VM 上只能安装一个扩展版本，在同一资源管理器模板中为同一 VM 指定两次自定义脚本将会失败。
@@ -125,15 +128,15 @@ ms.locfileid: "85945660"
 | 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| 发布者 | Microsoft.Compute | 字符串 |
-| type | CustomScriptExtension | 字符串 |
+| publisher | Microsoft.Compute | string |
+| type | CustomScriptExtension | string |
 | typeHandlerVersion | 1.10 | int |
 | fileUris（例如） | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | array |
 | timestamp（示例） | 123456789 | 32-bit integer |
-| commandToExecute（例如） | powershell -ExecutionPolicy Unrestricted -File configure-music-app.ps1 | 字符串 |
-| storageAccountName（例如） | examplestorageacct | 字符串 |
-| storageAccountKey（例如） | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | 字符串 |
-| managedIdentity（例如） | { } 或 { "clientId":"31b403aa-c364-4240-a7ff-d85fb6cd7232" } 或 { "objectId":"12dd289c-0583-46e5-b9b4-115d5c19ef4b" } | JSON 对象 |
+| commandToExecute（例如） | powershell -ExecutionPolicy Unrestricted -File configure-music-app.ps1 | string |
+| storageAccountName（例如） | examplestorageacct | string |
+| storageAccountKey（例如） | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
+| managedIdentity（例如） | { } 或 { "clientId":"31b403aa-c364-4240-a7ff-d85fb6cd7232" } 或 { "objectId":"12dd289c-0583-46e5-b9b4-115d5c19ef4b" } | json 对象 |
 
 >[!NOTE]
 >这些属性名称区分大小写。 要避免部署问题，请使用如下所示的名称。
@@ -145,7 +148,7 @@ ms.locfileid: "85945660"
 * `timestamp`（可选，32 位整数）仅当需要更改此字段的值来触发脚本的重新运行时，才使用此字段。  任何整数值都是可以接受的，前提是必须不同于以前的值。
 * `storageAccountName`：（可选，字符串）存储帐户的名称。 如果指定存储凭据，所有 `fileUris` 都必须是 Azure Blob 的 URL。
 * `storageAccountKey`：（可选，字符串）存储帐户的访问密钥
-* `managedIdentity`：（可选，JSON 对象）用于下载文件的[托管标识](/active-directory/managed-identities-azure-resources/overview)
+* `managedIdentity`：（可选，json 对象）用于下载文件的[托管标识](/active-directory/managed-identities-azure-resources/overview)
     * `clientId`：（可选，字符串）托管标识的客户端 ID
     * `objectId`：（可选，字符串）托管标识的对象 ID
 
@@ -161,11 +164,11 @@ ms.locfileid: "85945660"
 > [!NOTE]
 > 此属性只能在受保护的设置中指定。
 
-CustomScript（版本 1.10 及更高版本）支持用于通过“fileUris”设置中提供的 URL 下载文件的[托管标识](/active-directory/managed-identities-azure-resources/overview)。 它允许 CustomScript 访问 Azure 存储专用 blob 或容器，用户不必传递机密（例如 SAS 令牌或存储帐户密钥）。
+CustomScript（版本 1.10 及更高版本）支持用于通过“fileUris”设置中提供的 URL 下载文件的[托管标识](/active-directory/managed-identities-azure-resources/overview)。 它允许 CustomScript 访问 Azure 存储专用 Blob 或容器，而无需用户传递 SAS 令牌或存储帐户密钥等机密。
 
-要使用此功能，用户必须向要运行 CustomScript 的 VM 或 VMSS 添加[系统分配的](/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity)标识或[用户分配的](/app-service/overview-managed-identity?tabs=dotnet#add-a-user-assigned-identity)标识，并[向 Azure 存储容器或 bob 授予托管标识访问权限](/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access)。
+若要使用此功能，用户必须将[系统分配的](/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity)或[用户分配的](/app-service/overview-managed-identity?tabs=dotnet#add-a-user-assigned-identity)标识添加到需要运行 CustomScript 的 VM 或 VMSS，并[授予托管标识访问 Azure 存储容器或 Blob 的权限](/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access)。
 
-要在目标 VM/VMSS 上使用系统分配的标识，请将“managedidentity”字段设置为空的 JSON 对象。 
+若要在目标 VM/VMSS 上使用系统分配的标识，请将“managedidentity”字段设置为空的 json 对象。 
 
 > 示例：
 >
@@ -177,7 +180,7 @@ CustomScript（版本 1.10 及更高版本）支持用于通过“fileUris”设
 > }
 > ```
 
-要在目标 VM/VMSS 上使用用户分配的标识，请使用托管标识的客户端 ID 或对象 ID 配置“managedidentity”字段。
+若要在目标 VM/VMSS 上使用用户分配的标识，请将“managedidentity”字段配置为托管标识的客户端 ID 或对象 ID。
 
 > 示例：
 >
@@ -197,11 +200,11 @@ CustomScript（版本 1.10 及更高版本）支持用于通过“fileUris”设
 > ```
 
 > [!NOTE]
-> managedIdentity 属性不得与 storageAccountName 或 storageAccountKey 属性一起使用
+> managedIdentity 属性**不能**与 storageAccountName 或 storageAccountKey 属性结合使用
 
 ## <a name="template-deployment"></a>模板部署
 
-可使用 Azure 资源管理器模板部署 Azure VM 扩展。 可以在 Azure 资源管理器模板中使用上一部分中详细介绍的 JSON 架构，以便在部署过程中运行自定义脚本扩展。 以下示例显示如何使用自定义脚本扩展：
+可使用 Azure Resource Manager 模板部署 Azure VM 扩展。 可以在 Azure 资源管理器模板中使用上一部分中详细介绍的 JSON 架构，以便在部署过程中运行自定义脚本扩展。 以下示例显示如何使用自定义脚本扩展：
 
 * [教程：使用 Azure 资源管理器模板部署虚拟机扩展](../../azure-resource-manager/templates/template-tutorial-deploy-vm-extensions.md)
 * [在 Windows 和 Azure SQL DB 上部署双层应用程序](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows)
@@ -320,7 +323,7 @@ $vm | Update-AzureVM
 
 ## <a name="troubleshoot-and-support"></a>故障排除和支持
 
-### <a name="troubleshoot"></a>疑难解答
+### <a name="troubleshoot"></a>故障排除
 
 有关扩展部署状态的数据可以从 Azure 门户和使用 Azure PowerShell 模块进行检索。 若要查看给定 VM 的扩展部署状态，请运行以下命令：
 

@@ -5,13 +5,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 05/22/2020
-ms.openlocfilehash: e8299afdde68bebd0a5cb2fc07f01694263a35d5
-ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
+ms.date: 07/17/2020
+ms.openlocfilehash: 94ab03fe3ce79e651376112cd11bc153fec81ccb
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84440727"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244497"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db"></a>探究适用于 Azure Cosmos DB 的 Azure Monitor
 
@@ -96,14 +96,19 @@ ms.locfileid: "84440727"
 
 ![操作工作簿](./media/cosmosdb-insights-overview/operation.png) 
 
-<!-- Not available in MC now: export and expand by selecting the icon at the top right of the section. -->
-## <a name="pin"></a>引脚
+## <a name="pin-export-and-expand"></a>固定、导出和展开
 
 可以将任一指标部分固定到 [Azure 仪表板](https://docs.azure.cn/azure-portal/azure-portal-dashboards)，方法是选择该部分右上角的图钉图标。
 
 ![仪表板指标部分的图钉示例](./media/cosmosdb-insights-overview/pin.png)
 
-<!-- Not available in MC now: export and expand by selecting the icon at the top right of the section. -->
+若要将数据导出为 Excel 格式，请选择图钉图标左侧的向下箭头图标。
+
+![工作簿的导出图标](./media/cosmosdb-insights-overview/export.png)
+
+若要展开或折叠工作簿中的所有下拉视图，请选择导出图标左侧的展开图标：
+
+![工作簿的展开图标](./media/cosmosdb-insights-overview/expand.png)
 
 ## <a name="customize-azure-monitor-for-azure-cosmos-db"></a>自定义适用于 Azure Cosmos DB 的 Azure Monitor
 
@@ -115,9 +120,11 @@ ms.locfileid: "84440727"
 
 ![从命令栏启动工作簿库](./media/cosmosdb-insights-overview/gallery.png)
 
+## <a name="troubleshooting"></a>故障排除
+
+如需故障排查指南，请参阅[故障排除文章](troubleshoot-workbooks.md)中提供的基于工作簿的专用见解。
+
 ## <a name="next-steps"></a>后续步骤
 
-* 配置[指标警报](../platform/alerts-metric.md)和[服务运行状况通知](../../service-health/alerts-activity-log-service-notifications.md)来设置自动警报，以帮助检测问题。
-
-* 查看[使用 Azure Monitor 工作簿创建交互式报表](../app/usage-workbooks.md)，了解工作簿旨在支持的方案、创作新报表和自定义现有报表的方式，以及更多信息。
+* 查看[使用 Azure Monitor 工作簿创建交互式报表](../platform/workbooks-overview.md)，了解工作簿旨在支持的方案、创作新报表和自定义现有报表的方式，以及更多信息。
 

@@ -2,16 +2,16 @@
 title: 监视已部署的 Azure Kubernetes 服务 (AKS) 群集 | Microsoft Docs
 description: 了解如何使用用于容器的 Azure Monitor 启用对订阅中已部署的 Azure Kubernetes 服务 (AKS) 群集的监视。
 ms.topic: conceptual
-author: lingliw
-ms.author: v-lingwu
+author: Johnnytechn
+ms.author: v-johya
 origin.date: 09/12/2019
-ms.date: 11/30/2019
-ms.openlocfilehash: 9365189809764e9a1dec75eb8a0ef4959848c6a2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 07/17/2020
+ms.openlocfilehash: 2e493a58d919fa03d945abc09fb9c07b7f5f667f
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290893"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244536"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>启用对已部署的 Azure Kubernetes 服务 (AKS) 群集的监视
 
@@ -26,14 +26,14 @@ ms.locfileid: "79290893"
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-登录到 [Azure 门户](https://portal.azure.cn)。 
+登录到 [Azure 门户](https://portal.azure.cn)。
 
 ## <a name="enable-using-azure-cli"></a>启用 Azure CLI
 
-以下步骤使用 Azure CLI 对 AKS 群集启用监视。 在此示例中，不需要预先创建或指定现有的工作区。 如果区域中尚不存在默认的工作区，此命令可以简化在 AKS 群集订阅的默认资源组中创建默认工作区的过程。  创建的默认工作区的格式类似于 *DefaultWorkspace-\<GUID>-\<Region>* 。  
+以下步骤使用 Azure CLI 对 AKS 群集启用监视。 在此示例中，不需要预先创建或指定现有的工作区。 如果区域中尚不存在默认的工作区，此命令可以简化在 AKS 群集订阅的默认资源组中创建默认工作区的过程。  创建的默认工作区类似于 *DefaultWorkspace-\<GUID>-\<Region>* 格式。
 
 ```azurecli
-az aks enable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG  
+az aks enable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG
 ```
 
 输出如下所示：
@@ -44,7 +44,7 @@ provisioningState       : Succeeded
 
 ### <a name="integrate-with-an-existing-workspace"></a>与现有工作区集成
 
-如果要与现有工作区集成，请执行以下步骤，首先确定 `--workspace-resource-id` 参数所需的 Log Analytics 工作区的完整资源 ID，然后运行命令以针对指定的工作区启用监视加载项。  
+如果要与现有工作区集成，请执行以下步骤，首先确定 `--workspace-resource-id` 参数所需的 Log Analytics 工作区的完整资源 ID，然后运行命令以针对指定的工作区启用监视加载项。
 
 1. 使用以下命令列出你有权访问的所有订阅：
 
@@ -57,7 +57,7 @@ provisioningState       : Succeeded
     ```output
     Name                                  CloudName    SubscriptionId                        State    IsDefault
     ------------------------------------  -----------  ------------------------------------  -------  -----------
-    Microsoft Azure                       AzureCloud   68627f8c-91fO-4905-z48q-b032a81f8vy0  Enabled  True
+    Microsoft Azure                       AzureChinaCloud   68627f8c-91fO-4905-z48q-b032a81f8vy0  Enabled  True
     ```
 
     复制 **SubscriptionId** 的值。
@@ -107,15 +107,15 @@ provisioningState       : Succeeded
 
 要启用 Azure Monitor 对 Azure 门户中的 AKS 群集的监视，请执行以下操作：
 
-1. 在 Azure 门户中选择“监视”。 
+1. 在 Azure 门户中选择“监视”。
 
 2. 从列表中选择容器  。
 
-3. 在“监视 - 容器”页上，选择“非监视群集”   。
+3. 在“监视 - 容器”页上，选择“未监视的群集” 。
 
-4. 从非监视群集的列表中找到容器，然后单击“启用”  。   
+4. 从未监视的群集列表中找到容器，然后单击“启用”。
 
-5. 在“载入到用于容器的 Azure Monitor”页上，如果现有 Log Analytics 工作区与群集在同一订阅中，请从下拉列表中选择该工作区  。  
+5. 在“载入到用于容器的 Azure Monitor”页上，如果现有 Log Analytics 工作区与群集在同一订阅中，请从下拉列表中选择该工作区  。
     列表预先选择了 AKS 容器在订阅中部署到的默认工作区和位置。
 
     ![启用 AKS 容器见解监视](./media/container-insights-onboard/kubernetes-onboard-brownfield-01.png)
@@ -129,19 +129,19 @@ provisioningState       : Succeeded
 
 若要在 Azure 门户中直接使用某个 AKS 群集来启用监视，请执行以下操作：
 
-1. 在 Azure 门户中，选择“所有服务”。 
+1. 在 Azure 门户中，选择“所有服务”。
 
 2. 在资源列表中，开始键入“Containers”  。  列表会根据输入的内容进行筛选。
 
-3. 选择“Kubernetes 服务”  。  
+3. 选择“Kubernetes 服务”  。
 
     ![Kubernetes 服务链接](./media/container-insights-onboard/portal-search-containers-01.png)
 
 4. 在容器列表中，选择一个容器。
 
-5. 在容器概述页面中，选择“监视容器”  。  
+5. 在容器概述页面中，选择“监视容器”  。
 
-6. 在“载入到用于容器的 Azure Monitor”页上，如果现有 Log Analytics 工作区与群集在同一订阅中，请从下拉列表中选择该工作区  。  
+6. 在“载入到用于容器的 Azure Monitor”页上，如果现有 Log Analytics 工作区与群集在同一订阅中，请从下拉列表中选择该工作区  。
     列表预先选择了 AKS 容器在订阅中部署到的默认工作区和位置。
 
     ![启用 AKS 容器运行状况监视](./media/container-insights-onboard/kubernetes-onboard-brownfield-02.png)
@@ -170,7 +170,7 @@ provisioningState       : Succeeded
 
 * [使用资源管理器模板和 Azure CLI 部署资源](../../azure-resource-manager/templates/deploy-cli.md)
 
-如果选择使用 Azure CLI，首先需要在本地安装和使用 CLI。 必须运行 Azure CLI 2.0.59 或更高版本。 若要确定版本，请运行 `az --version`。 如果需要安装或升级 Azure CLI，请参阅[安装 Azure CLI](/cli/install-azure-cli)。 
+如果选择使用 Azure CLI，首先需要在本地安装和使用 CLI。 必须运行 Azure CLI 2.0.59 或更高版本。 若要确定版本，请运行 `az --version`。 如果需要安装或升级 Azure CLI，请参阅[安装 Azure CLI](/cli/install-azure-cli)。
 
 ### <a name="create-and-execute-a-template"></a>创建和执行模板
 
@@ -314,7 +314,21 @@ kubectl get ds omsagent --namespace=kube-system
 User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system
 NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR                 AGE
 omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
-```  
+```
+
+如果群集上有 Windows Server 节点，则可运行以下命令，验证代理是否已成功部署。
+
+```
+kubectl get ds omsagent-win --namespace=kube-system
+```
+
+输出应如下所示，指明其已正确部署：
+
+```output
+User@aksuser:~$ kubectl get ds omsagent-win --namespace=kube-system
+NAME                   DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR                   AGE
+omsagent-win           2         2         2         2            2           beta.kubernetes.io/os=windows   1d
+```
 
 若要验证解决方案的部署，请运行以下命令：
 
@@ -332,23 +346,23 @@ omsagent   1         1         1            1            3h
 
 ### <a name="agent-version-earlier-than-06072018"></a>代理版本低于 06072018
 
-若要验证 06072018  之前发布的 Log Analytics 代理版本是否已正确部署，请运行以下命令：  
+若要验证 06072018 之前发布的 Log Analytics 代理版本是否已正确部署，请运行以下命令：
 
 ```
 kubectl get ds omsagent --namespace=kube-system
 ```
 
-输出应如下所示，指明其已正确部署：  
+输出应如下所示，指明其已正确部署：
 
 ```output
 User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system
 NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR                 AGE
 omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
-```  
+```
 
 ## <a name="view-configuration-with-cli"></a>使用 CLI 查看配置
 
-使用 `aks show` 命令获取详细信息，例如，解决方案是否已启用、Log Analytics 工作区 resourceID 是什么，以及有关群集的摘要详细信息。  
+使用 `aks show` 命令获取详细信息，例如，解决方案是否已启用、Log Analytics 工作区 resourceID 是什么，以及有关群集的摘要详细信息。
 
 ```azurecli
 az aks show -g <resourceGroupofAKSCluster> -n <nameofAksCluster>
@@ -372,5 +386,4 @@ az aks show -g <resourceGroupofAKSCluster> -n <nameofAksCluster>
 * 如果在尝试载入解决方案时遇到问题，请查看[故障排除指南](container-insights-troubleshoot.md)
 
 * 启用监视以收集 AKS 群集及其上运行的工作负荷的运行状况和资源利用率，了解[如何使用](container-insights-analyze.md)用于容器的 Azure Monitor。
-
 

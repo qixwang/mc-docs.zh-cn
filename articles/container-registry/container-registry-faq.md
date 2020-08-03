@@ -4,14 +4,16 @@ description: 有关 Azure 容器注册表服务的常见问题的解答
 author: rockboyfor
 ms.topic: article
 origin.date: 03/18/2020
-ms.date: 06/08/2020
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: 105e91b66dda5c1aa457485a7ccf976d42f158f8
-ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
+ms.openlocfilehash: 655abbe08ef310c588b8bf1aaf080850826af5a9
+ms.sourcegitcommit: 5726d3b2e694f1f94f9f7d965676c67beb6ed07c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84564280"
+ms.lasthandoff: 07/21/2020
+ms.locfileid: "86863159"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>有关 Azure 容器注册表的常见问题解答
 
@@ -20,9 +22,7 @@ ms.locfileid: "84564280"
 ## <a name="resource-management"></a>资源管理
 
 - [是否可以使用资源管理器模板创建 Azure 容器注册表？](#can-i-create-an-azure-container-registry-using-a-resource-manager-template)
-    
-    <!--Not Available on - [Is there security vulnerability scanning for images in ACR?](#is-there-security-vulnerability-scanning-for-images-in-acr)-->
-    
+- [ACR 中是否提供对映像的安全漏洞扫描？](#is-there-security-vulnerability-scanning-for-images-in-acr)
 - [如何使用 Azure 容器注册表配置 Kubernetes？](#how-do-i-configure-kubernetes-with-azure-container-registry)
 - [如何获取容器注册表的管理员凭据？](#how-do-i-get-admin-credentials-for-a-container-registry)
 - [如何获取资源管理器模板中的管理员凭据？](#how-do-i-get-admin-credentials-in-a-resource-manager-template)
@@ -71,7 +71,7 @@ az acr credential show -n myRegistry
 Invoke-AzureRmResourceAction -Action listCredentials -ResourceType Microsoft.ContainerRegistry/registries -ResourceGroupName myResourceGroup -ResourceName myRegistry
 ```
 
-### <a name="how-do-i-get-admin-credentials-in-a-resource-manager-template"></a>如何获取资源管理器模板中的管理员凭据？
+### <a name="how-do-i-get-admin-credentials-in-a-resource-manager-template"></a>如何在资源管理器模板中获取管理员凭据？
 
 > [!IMPORTANT]
 > 管理员用户帐户专门用于单个用户访问注册表，主要用于测试目的。 建议不要与多个用户共享管理员帐户凭据。 建议用户和服务主体在无外设方案中使用单个标识。 请参阅[身份验证概述](container-registry-authentication.md)。
@@ -125,19 +125,19 @@ ACR 支持 Docker 注册表 HTTP API V2。 可通过 `https://<your registry log
 
 ### <a name="how-do-i-delete-all-manifests-that-are-not-referenced-by-any-tag-in-a-repository"></a>如何删除不由存储库中的任何标记引用的所有清单？
 
-在 bash 中：
+如果你使用的是 bash：
 
 ```azurecli
 az acr repository show-manifests -n myRegistry --repository myRepository --query "[?tags[0]==null].digest" -o tsv  | xargs -I% az acr repository delete -n myRegistry -t myRepository@%
 ```
 
-在 PowerShell 中：
+对于 PowerShell：
 
 ```azurecli
 az acr repository show-manifests -n myRegistry --repository myRepository --query "[?tags[0]==null].digest" -o tsv | %{ az acr repository delete -n myRegistry -t myRepository@$_ }
 ```
 
-注意：在 delete 命令中添加 `-y` 可跳过确认。
+注意：可以在删除命令中添加 `-y` 以跳过确认。
 
 有关详细信息，请参阅[删除 Azure 容器注册表中的容器映像](container-registry-delete.md)。
 
@@ -282,6 +282,7 @@ ACR 支持提供不同权限级别的[自定义角色](container-registry-roles.
 - [为何 Azure 门户不列出我的所有存储库或标记？](#why-does-the-azure-portal-not-list-all-my-repositories-or-tags)
 - [为何 Azure 门户无法提取存储库或标记？](#why-does-the-azure-portal-fail-to-fetch-repositories-or-tags)
 - [为什么我的拉取或推送请求失败，出现操作不被允许的情况？](#why-does-my-pull-or-push-request-fail-with-disallowed-operation)
+- [存储库格式无效或不受支持](#repository-format-is-invalid-or-unsupported)
 - [如何在 Windows 上收集 HTTP 跟踪？](#how-do-i-collect-http-traces-on-windows)
 
 ### <a name="check-health-with-az-acr-check-health"></a>使用 `az acr check-health` 检查运行状况
@@ -447,9 +448,16 @@ curl $redirect_url
 ### <a name="why-does-my-pull-or-push-request-fail-with-disallowed-operation"></a>为什么我的拉取或推送请求失败，出现操作不被允许的情况？
 
 下面是操作可能不被允许的一些情况：
-* 不再支持经典注册表。 请使用 [az acr update](https://docs.azure.cn/cli/acr?view=azure-cli-latest#az-acr-update) 或 Azure 门户升级到受支持的 [SKU](https://aka.ms/acr/skus)。
-* 映像或存储库可能会处于锁定状态，导致无法删除或更新。 可以使用 [az acr show repository](/container-registry/container-registry-image-lock) 命令来查看当前属性。
+* 不再支持经典注册表。 请使用 [az acr update](https://docs.azure.cn/cli/acr?view=azure-cli-latest#az-acr-update)或 Azure 门户升级到受支持的[服务层](https://docs.azure.cn//container-registry/container-registry-skus)。
+* 映像或存储库可能已锁定，因此无法进行删除或更新。 可以使用 [az acr show repository](/container-registry/container-registry-image-lock) 命令来查看当前属性。
 * 如果映像处于隔离状态，则会禁用某些操作。 详细了解[隔离](https://github.com/Azure/acr/tree/master/docs/preview/quarantine)。
+* 注册表可能已达到其[存储限制](container-registry-skus.md#service-tier-features-and-limits)。
+
+### <a name="repository-format-is-invalid-or-unsupported"></a>存储库格式无效或不受支持
+
+如果在存储库操作中指定存储库名称时出现“存储库格式不受支持”、“无效格式”或“请求的数据不存在”等错误，请检查名称的拼写和大小写。 有效的存储库名称只能包含小写字母数字字符、句点、短划线、下划线和正斜杠。 
+
+有关完整的存储库命名规则，请参阅[打开容器计划分发规范](https://github.com/docker/distribution/blob/master/docs/spec/api.md#overview)。
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>如何在 Windows 上收集 HTTP 跟踪？
 
@@ -505,8 +513,8 @@ az acr task list-runs -r $myregistry --run-status Running --query '[].runId' -o 
 
 | Git 服务 | 源上下文 | 手动生成 | 通过“提交”触发器自动生成 |
 |---|---|---|---|
-| GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | 是 | 是 |
-| Azure Repos | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` | 是 | 是 |
+| GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | “是” | “是” |
+| Azure Repos | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` | “是” | 是 |
 | GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | 是 | 否 |
 | BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | 是 | 否 |
 
@@ -519,7 +527,7 @@ az acr task list-runs -r $myregistry --run-status Running --query '[].runId' -o 
 ## <a name="cicd-integration"></a>CI/CD 集成
 
 - [CircleCI](https://github.com/Azure/acr/blob/master/docs/integration/CircleCI.md)
-- [GitHub 操作](https://github.com/Azure/acr/blob/master/docs/integration/github-actions/github-actions.md)
+- [GitHub Actions](https://github.com/Azure/acr/blob/master/docs/integration/github-actions/github-actions.md)
 
 ## <a name="next-steps"></a>后续步骤
 

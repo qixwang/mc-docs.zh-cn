@@ -7,18 +7,18 @@ author: rolyon
 manager: mtillman
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/18/2020
+ms.date: 07/21/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
-ms.openlocfilehash: b62585fc0d760cab1af95d80c27521145f439552
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: c80d71fd14a4c8fae944da32bafd84ac0040aaa6
+ms.sourcegitcommit: d32699135151e98471daebe6d3f5b650f64f826e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097155"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87160338"
 ---
 # <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板添加 Azure 角色分配
 
@@ -68,7 +68,7 @@ objectid=$(az ad sp list --display-name "{name}" --query [].objectId --output ts
 
 在 Azure RBAC 中，若要授予访问权限，请添加角色分配。
 
-### <a name="resource-group-without-parameters"></a>资源组（不包含参数）
+### <a name="resource-group-scope-without-parameters"></a>资源组范围（不包含参数）
 
 以下模板演示了添加角色分配的基本方法。 某些值在模板中指定。 以下模板演示：
 
@@ -111,7 +111,7 @@ az group deployment create --resource-group ExampleGroup --template-file rbac-te
 
 ![资源组范围内的角色分配](./media/role-assignments-template/role-assignment-template.png)
 
-### <a name="resource-group-or-subscription"></a>资源组或订阅
+### <a name="resource-group-or-subscription-scope"></a>资源组或订阅范围
 
 上一个模板不太灵活。 以下模板使用参数，并且可以在不同的范围内使用。 以下模板演示：
 
@@ -195,7 +195,7 @@ New-AzDeployment -Location chinanorth -TemplateFile rbac-test.json -principalId 
 az deployment create --location chinanorth --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
 ```
 
-### <a name="resource"></a>资源
+### <a name="resource-scope"></a>资源范围
 
 如果需要在资源级别添加角色分配，则角色分配的格式是不同的。 提供要为其分配角色的资源的资源提供程序命名空间和资源类型。 还在角色分配的名称中包含资源的名称。
 

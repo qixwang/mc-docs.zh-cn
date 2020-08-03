@@ -2,18 +2,17 @@
 title: 在 Azure 应用服务中为 .NET 应用启用 Snapshot Debugger | Microsoft Docs
 description: 在 Azure 应用服务中为 .NET 应用启用快照调试器
 ms.topic: conceptual
-ms.reviewer: mbullwin
-author: lingliw
-manager: digimobile
+author: Johnnytechn
+ms.author: v-johya
+ms.date: 07/17/2020
 origin.date: 03/07/2019
-ms.date: 6/4/2019
-ms.author: v-lingwu
-ms.openlocfilehash: 5598d7af79a79c0a3a58f0ec898fb8cbe9b2e47f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.reviewer: mbullwin
+ms.openlocfilehash: c8ce2466a5de6ac03aac8df4d674c50b838b736b
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850374"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244432"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-app-service"></a>在 Azure 应用服务中为 .NET 应用启用快照调试器
 
@@ -31,12 +30,12 @@ ms.locfileid: "78850374"
 
 预安装 Application Insights 快照调试器作为应用程序服务运行时的一部分，但需启用它才能获得适用于应用服务应用的快照。 部署应用后，即使在源代码中包括了 Application Insights SDK，也要执行以下步骤来启用快照调试器。
 
-1.  转到 Azure 门户中的“应用服务”窗格。
-2. 导航到“设置”>“Application Insights”窗格  。
+1. 导航到应用服务的 Azure 控制面板。
+2. 转到“设置”>“Application Insights”页面。
 
    ![在应用服务门户上启用 App Insights](./media/snapshot-debugger/applicationinsights-appservices.png)
 
-3. 按窗格中的说明创建新资源，或者选择现有的 App Insights 资源，以便监视应用。 另外，请确保快照调试器的两个开关都为“开”  。
+3. 按页面中的说明创建新资源，或者选择现有 App Insights 资源，以便监视应用。 另外，请确保快照调试器的两个开关都为“开”  。
 
    ![添加 App Insights 站点扩展][Enablement UI]
 
@@ -49,16 +48,53 @@ ms.locfileid: "78850374"
 执行与**启用快照调试器**相同的步骤，但将快照调试器的两个开关都切换到“关”  。
 我们建议在所有应用上启用快照调试器，以简化对应用程序异常的诊断。
 
+## <a name="azure-resource-manager-template"></a>Azure Resource Manager 模板
+
+对于 Azure 应用服务，可在 Azure 资源管理器模板中设置应用设置，以启用 Snapshot Debugger 和 Profiler。 将包含应用设置的配置资源添加为网站的子资源：
+
+```json
+{
+  "apiVersion": "2015-08-01",
+  "name": "[parameters('webSiteName')]",
+  "type": "Microsoft.Web/sites",
+  "location": "[resourceGroup().location]",
+  "dependsOn": [
+    "[variables('hostingPlanName')]"
+  ],
+  "tags": { 
+    "[concat('hidden-related:', resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName')))]": "empty",
+    "displayName": "Website"
+  },
+  "properties": {
+    "name": "[parameters('webSiteName')]",
+    "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"
+  },
+  "resources": [
+    {
+      "apiVersion": "2015-08-01",
+      "name": "appsettings",
+      "type": "config",
+      "dependsOn": [
+        "[parameters('webSiteName')]",
+        "[concat('AppInsights', parameters('webSiteName'))]"
+      ],
+      "properties": {
+        "APPINSIGHTS_INSTRUMENTATIONKEY": "[reference(resourceId('Microsoft.Insights/components', concat('AppInsights', parameters('webSiteName'))), '2014-04-01').InstrumentationKey]",
+        "APPINSIGHTS_PROFILERFEATURE_VERSION": "1.0.0",
+        "APPINSIGHTS_SNAPSHOTFEATURE_VERSION": "1.0.0",
+        "DiagnosticServices_EXTENSION_VERSION": "~3",
+        "ApplicationInsightsAgent_EXTENSION_VERSION": "~2"
+      }
+    }
+  ]
+},
+```
+
 ## <a name="next-steps"></a>后续步骤
 
 - 为应用程序生成可触发异常的流量。 然后等待 10 到 15 分钟，这样快照就会发送到 Application Insights 实例。
-- 请参见 Azure 门户中的[快照](snapshot-debugger.md?toc=/azure/azure-monitor/toc.json#view-snapshots-in-the-portal)。
-- 排查 Snapshot Debugger 问题时如需帮助，请参阅 [ Snapshot Debugger 故障排除](snapshot-debugger-troubleshoot.md?toc=/azure/azure-monitor/toc.json)。
 
 [Enablement UI]: ./media/snapshot-debugger/enablement-ui.png
 [snapshot-debugger-app-setting]:./media/snapshot-debugger/snapshot-debugger-app-setting.png
-
-
-
 
 

@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 10/21/2019
-ms.date: 06/08/2020
+ms.date: 07/27/2020
 ms.author: v-jay
-ms.openlocfilehash: 603529ce79336dd0226580c91efbed099c96a17d
-ms.sourcegitcommit: 79c99a9ea013b3c74706a1038a505f4eea2aaac4
+ms.openlocfilehash: 5e8522f1dbf0af798ca4a9041437a4a622c54b28
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84439528"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162148"
 ---
 # <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>授权 Microsoft&reg; 平滑流式处理客户端移植工具包 
 ## <a name="overview"></a>概述
@@ -114,51 +114,41 @@ Microsoft 根据此许可证提供全部所需的知识产权，以便从其他�
 ## <a name="microsoft-smooth-streaming-client-final-product-agreement-licensees"></a>Microsoft 平滑流式处理客户端最终产品协议受证人
 * Advanced Digital Broadcast SA
 * AirTies Kablosuz Iletism Sanayive Dis Ticaret A.S.
-* Albis Technologies Ltd.
-* Amazon Digital Services, Inc.
-* AmTRAN Technology Co., Ltd.
 * Arcadyan Technology Corporation
-* Arion Technology, Inc.
-* ATMACA ELEKTRONİK SAN. VE TİC. A.Ş
-* British Sky Broadcasting Limited
-* CastPal Technology Inc., Shenzhen
+* Arcelik A.S
 * Compal Electronics, Inc.
-* Dongguan Digital AV Technology Corp., Ltd.
-* EchoStar Purchasing Corporation
-* Enseo, Inc.
-* FilmFlex Movies Limited
+* EXPRESS LUCK TECHNOLOGY LIMITED
 * Fluendo S.A.
 * FUNAI ELECTRIC CO., LTD
-* Gibson Innovations Limited
-* Haier Information Applicantion S.R.L
-* HANDAN BroadInfoCom Co., Ltd.
 * Hisense International Co., Ltd. 
-* Homecast Co., Ltd
-* Hon Hai Precision Industry Co., Ltd.
-* Infomir GMBH
+* HKC Corporation Limited
+* Hong Kong Konka Ltd
+* Innolux Corporation
+* Innopia Technologies, Inc
 * Kaonmedia Co., Ltd.
 * KDDI Corporation
+* Mega Fame Electronics Co. Limited
+* MIRC Electronics Limited
 * Nintendo Co., Ltd.
-* Orange SA
-* Saffron Digital Limited
-* Sagemcom Broadband SAS
+* ONEPLUS ELECTRONICS (SHENZHEN) CO., LTD.
+* Panasonic Corporation
+* Qingdao Haier Optronics Co., Ltd.
+* Shenzhen ATEKO PHOTO Electricity Co.,Ltd.
 * Shenzhen Chuangwei-RGB Electronics Co.,Ltd.
-* Shenzhen Coship Electronics CO., LTD
 * Shenzhen Jiuzhou Electric Co., Ltd
+* Shenzhen KTC Technology Co., Ltd. 
+* Shenzhen Maxmade Technology Co., Ltd
+* Shenzhen MTC Co., Ltd
 * Shenzhen Skyworth Digital Technology Co., Ltd
 * Sichuan Changhong Electric Co., Ltd.
 * Skardin Industrial Corp.
 * Sky Deutschland Fernsehen GmbH & Co. KG
-* SmarDTV S.A.
+* SMARDTV GLOBAL SAS
 * SoftAtHome
 * Sony Corporation
 * Technicolor Delivery Technologies, SAS
-* Tongfang Global Ltd.
 * Top Victory Investments, Ltd.
-* Toshiba Lifestyle Products & Services Corporation
-* Universal Media Corporation /Slovakia/ s.r.o.
-* VIZIO, Inc.
-* Wistron Corporation
+* UMC Poland sp. z .o.o.
 * ZTE Corporation
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径

@@ -11,14 +11,14 @@ ms.workload: ''
 ms.topic: article
 ms.custom: ''
 origin.date: 09/25/2019
-ms.date: 11/04/2019
+ms.date: 07/27/2020
 ms.author: v-jay
-ms.openlocfilehash: 7560283d70d5b8546286abde656d34a76f4af85b
-ms.sourcegitcommit: 1f890a4085e184cc678485d05f08dd6de8dc973f
+ms.openlocfilehash: da81ab3a5e465876e3c2caa3a55ee09c2963c3f5
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84438927"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162222"
 ---
 # <a name="signal-descriptive-audio-tracks"></a>指示描述性音频轨道
 
@@ -212,6 +212,8 @@ private static async Task<Job> SubmitJobAsync(IAzureMediaServicesClient client,
 
 作业通常会经历以下状态：**已计划**、**已排队**、**正在处理**、**已完成**（最终状态）。 如果作业出错，则显示“错误”状态  。 如果作业正处于取消过程中，则显示“正在取消”，完成时则显示“已取消”   。
 
+有关详细信息，请参阅[处理事件网格事件](reacting-to-media-services-events.md)。
+
 ## <a name="upload-the-audio-only-mp4-file"></a>上传仅含音频的 MP4 文件
 
 将包含描述性音频的其他仅限音频的 MP4 文件（AAC 编解码器）上传到输出资产中。  
@@ -271,8 +273,8 @@ await UpoadAudioIntoOutputAsset(client, config.ResourceGroup, config.AccountName
 
 1. 在 Azure 门户中，导航到与媒体服务帐户关联的存储帐户。 
 1. 找到其名称为你的输出资产的容器。 
-1. 在容器中找到 .ism 文件，然后单击“编辑 Blob”（在右窗口中）。  
-1. 通过添加已上传的包含描述性音频的仅限音频的 MP4 文件（AAC 编解码器）的相关信息，对 .ism 文件进行编辑，在完成后按“保存”。 
+1. 在容器中找到 .ism 文件，然后单击“编辑 Blob”（在右窗口中）。 
+1. 通过添加已上传的包含描述性音频的仅限音频的 MP4 文件（AAC 编解码器）的相关信息，对 .ism 文件进行编辑，在完成后按“保存”。
 
     若要指示描述性音频轨道，需将“accessibility”和“role”参数添加到 .ism 文件。 你有责任正确设置这些参数，以将音频轨道作为音频描述发信号。 例如，将 `<param name="accessibility" value="description" />` 和 `<param name="role" value="alternate" />` 添加到特定音频轨道的 .ism 文件中，如以下示例所示。
  
@@ -338,7 +340,7 @@ await UpoadAudioIntoOutputAsset(client, config.ResourceGroup, config.AccountName
 
 创建**流定位符**的过程称为发布。 默认情况下，除非配置可选的开始和结束时间，否则调用 API 后，**流定位符**立即生效，并持续到被删除为止。 
 
-创建 [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) 时，需要指定所需的 StreamingPolicyName  。 在此示例中将流式传输明文（或未加密的内容），因此使用预定义的明文流式传输策略 (**PredefinedStreamingPolicy.ClearStreamingOnly**)。
+创建 [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) 时，需要指定所需的 StreamingPolicyName。 在此示例中将流式传输明文（或未加密的内容），因此使用预定义的明文流式传输策略 (**PredefinedStreamingPolicy.ClearStreamingOnly**)。
 
 > [!IMPORTANT]
 > 使用自定义的[流策略](https://docs.microsoft.com/rest/api/media/streamingpolicies)时，应为媒体服务帐户设计有限的一组此类策略，并在需要同样的加密选项和协议时重新将这些策略用于 StreamingLocators。 媒体服务帐户具有对应于流式处理策略条目数的配额。 不应为每个流式处理定位符创建新的流式处理策略。
@@ -371,7 +373,7 @@ private static async Task<StreamingLocator> CreateStreamingLocatorAsync(
 
 ### <a name="get-streaming-urls"></a>获取流式 URL
 
-创建[流定位符](https://docs.microsoft.com/rest/api/media/streaminglocators)后，可以获取流 URL，如 **GetStreamingURLs** 中所示。 若要生成 URL，需要连接[流式处理终结点](https://docs.microsoft.com/rest/api/media/streamingendpoints)的主机名和**流定位符**路径。 此示例使用默认的**流式处理终结点**  。 首次创建媒体服务帐户时，此默认的**流式处理终结点**处于停止状态，因此需要调用 **Start**  。
+创建[流定位符](https://docs.microsoft.com/rest/api/media/streaminglocators)后，可以获取流 URL，如 **GetStreamingURLs** 中所示。 若要生成 URL，需要连接[流式处理终结点](https://docs.microsoft.com/rest/api/media/streamingendpoints)的主机名和**流定位符**路径。 此示例使用默认的**流式处理终结点**。 首次创建媒体服务帐户时，此默认的**流式处理终结点**处于停止状态，因此需要调用 **Start**。
 
 > [!NOTE]
 > 在此方法中，需要指定在创建输出资产的**流定位符**时所用的 locatorName。
@@ -421,10 +423,10 @@ private static async Task<IList<string>> GetStreamingUrlsAsync(
 > 如果播放器在 Https 站点上进行托管，请确保将 URL 更新为“https”。
 
 1. 打开 Web 浏览器并导航到 [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/)。
-2. 在“URL:”框中，粘贴从应用程序获取的某个流式处理 URL 值  。 
+2. 在“URL:”框中，粘贴从应用程序获取的某个流式处理 URL 值。 
  
      可以粘贴 HLS、Dash 或 Smooth 格式的 URL，Azure Media Player将切换到适当的流协议，以便在你的设备上自动播放。
-3. 按“更新播放器”  。
+3. 按“更新播放器”。
 
 Azure Media Player 可用于测试，但不可在生产环境中使用。 
 

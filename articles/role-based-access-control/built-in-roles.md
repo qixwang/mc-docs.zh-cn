@@ -7,13 +7,13 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: v-junlch
-ms.date: 06/18/2020
-ms.openlocfilehash: da2a497d2b62e7fcc7eb6318ed65112932f788c1
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.date: 07/21/2020
+ms.openlocfilehash: c4747ed08dfd32d7b5ffee356179faa10ce2a999
+ms.sourcegitcommit: d32699135151e98471daebe6d3f5b650f64f826e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097212"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87160386"
 ---
 # <a name="azure-built-in-roles"></a>Azure 内置角色
 
@@ -87,9 +87,10 @@ ms.locfileid: "85097212"
 > | [AcrQuarantineWriter](#acrquarantinewriter) | ACR 隔离数据编写器 | c8d4ff99-41c3-41a8-9f60-21dfdad59608 |
 > | [Azure Kubernetes 服务群集管理员角色](#azure-kubernetes-service-cluster-admin-role) | 列出群集管理员凭据操作。 | 0ab0b1a8-8aac-4efd-b8c2-3ee1fb270be8 |
 > | [Azure Kubernetes 服务群集用户角色](#azure-kubernetes-service-cluster-user-role) | 列出群集用户凭据操作。 | 4abbcc35-e782-43d8-92c5-2d3f1bd2253f |
+> | [Azure Kubernetes 服务参与者角色](#azure-kubernetes-service-contributor-role) | 授予对 Azure Kubernetes 服务群集的读写访问权限 | ed7f3fbd-7b88-4dd4-9017-9adb7ce333f8 |
 > | **数据库** |  |  |
 > | [Cosmos DB 帐户读者角色](#cosmos-db-account-reader-role) | 可以读取 Azure Cosmos DB 帐户数据。 请参阅 [Cosmos DB 帐户参与者](#documentdb-account-contributor)，了解如何管理 Azure Cosmos DB 帐户。 | fbdf93bf-df7d-467e-a4d2-9458aa1360c8 |
-> | [Cosmos DB 操作员](#cosmos-db-operator) | 可以管理 Azure Cosmos DB 帐户，但不能访问其中的数据。 阻止访问帐户密钥和连接字符串。 | 230815da-be43-4aae-9cb4-875f7bd000aa |
+> | [Cosmos DB 操作员](#cosmos-db-operator) | 允许管理 Azure Cosmos DB 帐户，但不能访问其中的数据。 阻止访问帐户密钥和连接字符串。 | 230815da-be43-4aae-9cb4-875f7bd000aa |
 > | [CosmosBackupOperator](#cosmosbackupoperator) | 可以为帐户提交 Cosmos DB 数据库或容器的还原请求 | db7b14f2-5adf-42da-9f96-f2ee17bab5cb |
 > | [DocumentDB 帐户参与者](#documentdb-account-contributor) | 可管理 Azure Cosmos DB 帐户。 Azure Cosmos DB 以前称为 DocumentDB。 | 5bd9cd88-fe45-4216-938b-f97437e15450 |
 > | [Redis 缓存参与者](#redis-cache-contributor) | 允许管理 Redis 缓存，但不允许访问这些缓存。 | e0f68234-74aa-48ed-b826-c38b57376e17 |
@@ -98,16 +99,16 @@ ms.locfileid: "85097212"
 > | [SQL 安全管理器](#sql-security-manager) | 允许管理 SQL 服务器和数据库的安全相关策略，但不允许访问它们。 | 056cd41c-7e88-42e1-933e-88ba6a50c9c3 |
 > | [SQL Server 参与者](#sql-server-contributor) | 允许管理 SQL Server 和数据库，但不允许访问它们及其安全相关策略。 | 6d8ee4ec-f05a-4a1d-8b00-a9b17e38b437 |
 > | **分析** |  |  |
-> | [Azure 事件中心数据所有者](#azure-event-hubs-data-owner) | 允许对 Azure 事件中心资源的完全访问权限。 | f526a384-b230-433a-b45c-95f59c4a2dec |
+> | [Azure 事件中心数据所有者](#azure-event-hubs-data-owner) | 允许完全访问 Azure 事件中心资源。 | f526a384-b230-433a-b45c-95f59c4a2dec |
 > | [Azure 事件中心数据接收方](#azure-event-hubs-data-receiver) | 允许接收对 Azure 事件中心资源的访问权限。 | a638d3c7-ab3a-418d-83e6-5f17a39d4fde |
-> | [Azure 事件中心数据发送方](#azure-event-hubs-data-sender) | 允许发送对 Azure 事件中心资源的访问权限。 | 2b629674-e913-4c01-ae53-ef4638d8f975 |
+> | [Azure 事件中心数据发送方](#azure-event-hubs-data-sender) | 允许以发送方式访问 Azure 事件中心资源。 | 2b629674-e913-4c01-ae53-ef4638d8f975 |
 > | [数据工厂参与者](#data-factory-contributor) | 创建和管理数据工厂，以及其中的子资源。 | 673868aa-7521-48a0-acc6-0f60742d39f5 |
 > | [数据清除程序](#data-purger) | 可清除分析数据 | 150f5e0c-0603-4f03-8c7f-cf70034c4e90 |
 > | [HDInsight 群集操作员](#hdinsight-cluster-operator) | 允许你读取和修改 HDInsight 群集配置。 | 61ed4efc-fab3-44fd-b111-e24485cc132a |
 > | [HDInsight 域服务参与者](#hdinsight-domain-services-contributor) | 可以读取、创建、修改和删除 HDInsight 企业安全性套餐所需的域服务相关操作 | 8d8d5a11-05d3-4bda-a417-a08778121c7c |
 > | [Log Analytics 参与者](#log-analytics-contributor) | Log Analytics 参与者可以读取所有监视数据并编辑监视设置。 编辑监视设置包括向 VM 添加 VM 扩展、读取存储帐户密钥以便能够从 Azure 存储配置日志收集、创建和配置自动化帐户、添加解决方案以及配置所有 Azure 资源上的 Azure 诊断。 | 92aaf0da-9dab-42b6-94a3-d43ce8d16293 |
 > | [Log Analytics 读者](#log-analytics-reader) | Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置，其中包括查看所有 Azure 资源上的 Azure 诊断的配置。 | 73c42c96-874c-492b-b04d-ab87d138a893 |
-> | 区块链 |  |  |
+> | **区块链** |  |  |
 > | [区块链成员节点访问（预览版）](#blockchain-member-node-access-preview) | 允许对区块链成员节点的访问 | 31a002a1-acaf-453e-8a5b-297c9ca1ea24 |
 > | AI + 机器学习 |  |  |
 > | [认知服务参与者](#cognitive-services-contributor) | 允许创建、读取、更新、删除和管理认知服务的密钥。 | 25fbc0a9-bd7c-42a3-aa1a-3b75d497ee68 |
@@ -125,9 +126,9 @@ ms.locfileid: "85097212"
 > | [API 管理服务读者角色](#api-management-service-reader-role) | 对服务和 API 的只读访问权限 | 71522526-b88f-4d52-b57f-d31fc3546d0d |
 > | [应用程序配置数据所有者](#app-configuration-data-owner) | 允许对应用程序配置数据进行完全访问。 | 5ae67dd6-50cb-40e7-96ff-dc2bfa4b606b |
 > | [应用程序配置数据读取者](#app-configuration-data-reader) | 允许对应用程序配置数据进行读取访问。 | 516239f1-63e1-4d78-a4de-a74fb236a071 |
-> | [Azure 服务总线数据所有者](#azure-service-bus-data-owner) | 允许对 Azure 服务总线资源的完全访问权限。 | 090c5cfd-751d-490a-894a-3ce6f1109419 |
-> | [Azure 服务总线数据接收方](#azure-service-bus-data-receiver) | 允许对 Azure 服务总线资源的完全访问权限。 | 4f6d3b9b-027b-4f4c-9142-0e5a2a2247e0 |
-> | [Azure 服务总线数据发送方](#azure-service-bus-data-sender) | 允许对 Azure 服务总线资源的完全访问权限。 | 69a216fc-b8fb-44d8-bc22-1f3c2cd27a39 |
+> | [Azure 服务总线数据所有者](#azure-service-bus-data-owner) | 允许完全访问 Azure 服务总线资源。 | 090c5cfd-751d-490a-894a-3ce6f1109419 |
+> | [Azure 服务总线数据接收方](#azure-service-bus-data-receiver) | 允许对 Azure 服务总线资源进行接收访问。 | 4f6d3b9b-027b-4f4c-9142-0e5a2a2247e0 |
+> | [Azure 服务总线数据发送方](#azure-service-bus-data-sender) | 允许对 Azure 服务总线资源进行发送访问。 | 69a216fc-b8fb-44d8-bc22-1f3c2cd27a39 |
 > | [Azure Stack 注册所有者](#azure-stack-registration-owner) | 允许管理 Azure Stack 注册。 | 6f12a6df-dd06-4f3e-bcb1-ce8be600526a |
 > | [EventGrid EventSubscription 参与者](#eventgrid-eventsubscription-contributor) | 可以管理 EventGrid 事件订阅操作。 | 428e0ff0-5e57-4d9c-a221-2c70d0e0a443 |
 > | [EventGrid EventSubscription 读者](#eventgrid-eventsubscription-reader) | 可以读取 EventGrid 事件订阅。 | 2414bbcf-6497-4faf-8c65-045460748405 |
@@ -138,8 +139,8 @@ ms.locfileid: "85097212"
 > | [集成服务环境参与者](#integration-service-environment-contributor) | 允许管理集成服务环境，但不允许访问这些环境。 | a41e2c5b-bd99-4a07-88f4-9bf657a760b8 |
 > | [集成服务环境开发人员](#integration-service-environment-developer) | 允许开发人员在集成服务环境中创建和更新工作流、集成帐户与 API 连接。 | c7aa55d3-1abb-444a-a5ca-5e51e485d6ec |
 > | [Intelligent Systems 帐户参与者](#intelligent-systems-account-contributor) | 允许管理智能系统帐户，但不允许访问这些帐户。 | 03a6d094-3444-4b3d-88af-7477090a9e5e |
-> | [逻辑应用参与者](#logic-app-contributor) | 允许你管理逻辑应用，但不允许更改对它们的访问权限。 | 87a39d53-fc1b-424a-814c-f7e04687dc9e |
-> | [逻辑应用操作员](#logic-app-operator) | 允许你读取、启用和禁用逻辑应用，但不允许对其进行编辑或更新。 | 515c2055-d9d4-4321-b1b9-bd0c9a0f79fe |
+> | [逻辑应用参与者](#logic-app-contributor) | 允许管理逻辑应用，但不允许更改其访问权限。 | 87a39d53-fc1b-424a-814c-f7e04687dc9e |
+> | [逻辑应用操作员](#logic-app-operator) | 允许读取、启用和禁用逻辑应用，但不允许编辑或更新它们。 | 515c2055-d9d4-4321-b1b9-bd0c9a0f79fe |
 > | **标识** |  |  |
 > | [托管的标识参与者](#managed-identity-contributor) | 创建、读取、更新和删除用户分配的标识 | e40ec5ca-96e0-45a2-b4ff-59039f2c2b59 |
 > | [托管的标识操作员](#managed-identity-operator) | 读取和分配用户分配的标识 | f1a07417-d97a-45cb-824c-7a7467783830 |
@@ -1167,6 +1168,7 @@ ms.locfileid: "85097212"
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/*/read |  |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/availabilitySets/* |  |
+> | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/proximityPlacementGroups/* |  |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/* |  |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/disks/* |  |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/*/read |  |
@@ -1206,6 +1208,7 @@ ms.locfileid: "85097212"
         "Microsoft.Authorization/*/read",
         "Microsoft.Compute/*/read",
         "Microsoft.Compute/availabilitySets/*",
+        "Microsoft.Compute/proximityPlacementGroups/*",
         "Microsoft.Compute/virtualMachines/*",
         "Microsoft.Compute/disks/*",
         "Microsoft.Network/*/read",
@@ -1784,7 +1787,7 @@ ms.locfileid: "85097212"
 
 ### <a name="data-box-contributor"></a>Data Box 参与者
 
-可让你管理 Data Box 服务下的所有内容，但不能向其他人授予访问权限。
+可让你管理 Data Box 服务下的所有内容，但不能向其他人授予访问权限。  
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -1834,7 +1837,7 @@ ms.locfileid: "85097212"
 
 ### <a name="data-box-reader"></a>Data Box 读者
 
-可让你管理 Data Box 服务，但不能创建订单或编辑订单详细信息，以及向其他人授予访问权限。
+可让你管理 Data Box 服务，但不能创建订单或编辑订单详细信息，以及向其他人授予访问权限。 
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -2766,7 +2769,7 @@ ms.locfileid: "85097212"
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | 创建和更新支持票证 |
 > | [Microsoft.Web](resource-provider-operations.md#microsoftweb)/certificates/* | 创建和管理网站证书 |
 > | [Microsoft.Web](resource-provider-operations.md#microsoftweb)/listSitesAssignedToHostName/read | 获取分配给主机名的站点名称。 |
-> | [Microsoft.Web](resource-provider-operations.md#microsoftweb)/serverFarms/join/action |  |
+> | [Microsoft.Web](resource-provider-operations.md#microsoftweb)/serverFarms/join/action | 加入应用服务计划 |
 > | [Microsoft.Web](resource-provider-operations.md#microsoftweb)/serverFarms/read | 获取应用服务计划的属性 |
 > | [Microsoft.Web](resource-provider-operations.md#microsoftweb)/sites/* | 创建和管理网站（站点创建还需要对关联的应用服务计划有写入权限） |
 > | **不操作** |  |
@@ -3135,6 +3138,50 @@ ACR 隔离数据编写器
     }
   ],
   "roleName": "Azure Kubernetes Service Cluster User Role",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="azure-kubernetes-service-contributor-role"></a>Azure Kubernetes 服务参与者角色
+
+授予对 Azure Kubernetes 服务群集的读写访问权限
+
+> [!div class="mx-tableFixed"]
+> |  |  |
+> | --- | --- |
+> | **操作** |  |
+> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/read | 获取托管的群集 |
+> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/write | 创建新的或更新现有的托管的群集 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | 创建和管理部署 |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | *无* |  |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Grants access to read and write Azure Kubernetes Service clusters",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/ed7f3fbd-7b88-4dd4-9017-9adb7ce333f8",
+  "name": "ed7f3fbd-7b88-4dd4-9017-9adb7ce333f8",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.ContainerService/managedClusters/read",
+        "Microsoft.ContainerService/managedClusters/write",
+        "Microsoft.Resources/deployments/*"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Azure Kubernetes Service Contributor Role",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -4424,7 +4471,7 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 
 ### <a name="cognitive-services-user"></a>认知服务用户
 
-允许读取和列出认知服务的密钥。
+允许读取和列出认知服务的密钥。 [了解详细信息](../cognitive-services/authentication.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -5186,7 +5233,7 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 
 ### <a name="eventgrid-eventsubscription-contributor"></a>EventGrid EventSubscription 参与者
 
-可以管理 EventGrid 事件订阅操作。
+可以管理 EventGrid 事件订阅操作。 [了解详细信息](../event-grid/security-authorization.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -5242,7 +5289,7 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 
 ### <a name="eventgrid-eventsubscription-reader"></a>EventGrid EventSubscription 读者
 
-可以读取 EventGrid 事件订阅。
+可以读取 EventGrid 事件订阅。 [了解详细信息](../event-grid/security-authorization.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -5622,7 +5669,7 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 > | [Microsoft.Web](resource-provider-operations.md#microsoftweb)/connectionGateways/* | 创建和管理连接网关。 |
 > | [Microsoft.Web](resource-provider-operations.md#microsoftweb)/connections/* | 创建和管理连接。 |
 > | [Microsoft.Web](resource-provider-operations.md#microsoftweb)/customApis/* | 创建和管理自定义 API。 |
-> | [Microsoft.Web](resource-provider-operations.md#microsoftweb)/serverFarms/join/action |  |
+> | [Microsoft.Web](resource-provider-operations.md#microsoftweb)/serverFarms/join/action | 加入应用服务计划 |
 > | [Microsoft.Web](resource-provider-operations.md#microsoftweb)/serverFarms/read | 获取应用服务计划的属性 |
 > | [Microsoft.Web](resource-provider-operations.md#microsoftweb)/sites/functions/listSecrets/action | 列出函数机密。 |
 > | **不操作** |  |
@@ -6558,7 +6605,7 @@ Azure Sentinel 响应方
 
 ### <a name="application-insights-snapshot-debugger"></a>Application Insights 快照调试器
 
-授予用户查看和下载使用 Application Insights Snapshot Debugger 收集的调试快照的权限。 请注意，[所有者](#owner)或[参与者](#contributor)角色不包括这些权限。 在向用户授予 Application Insights Snapshot Debugger 角色时，必须将该角色直接授予用户。 将角色添加到自定义角色时，无法识别该角色。
+授予用户查看和下载使用 Application Insights Snapshot Debugger 收集的调试快照的权限。 请注意，[所有者](#owner)或[参与者](#contributor)角色不包括这些权限。 在向用户授予 Application Insights Snapshot Debugger 角色时，必须将该角色直接授予用户。 将角色添加到自定义角色时，无法识别该角色。 [了解详细信息](../azure-monitor/app/snapshot-debugger.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |

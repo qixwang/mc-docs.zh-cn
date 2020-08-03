@@ -8,16 +8,16 @@ origin.date: 04/22/2019
 ms.date: 6/4/2019
 ms.reviewer: sdash
 ms.author: v-lingwu
-ms.openlocfilehash: dfcaad13f997ebf0a95eed9694dec1c476bab7c7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: dcd4496d83daab7a00a3273cf6fc7ac22417e143
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850408"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244927"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>实时指标流：以 1 秒的延迟进行监视和诊断
 
-通过使用 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 中的实时指标流探测实时和生产时的 Web 应用程序的信号。 选择并筛选指标和性能计数器进行实时监视，且服务不会受到任何干扰。 从失败请求和异常的样本中检查堆栈跟踪。
+通过使用 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 中的实时指标流来监视生产环境中的实时 Web 应用程序。 选择并筛选指标和性能计数器进行实时监视，且服务不会受到任何干扰。 从失败请求和异常的样本中检查堆栈跟踪。 实时指标流与[探查器](../../azure-monitor/app/profiler.md)和快照调试器一同为实时网站提供了功能强大的入侵式诊断工具。
 
 使用实时指标流可实现以下操作：
 
@@ -29,13 +29,15 @@ ms.locfileid: "78850408"
 * 实时监视任何 Windows 性能计数器。
 * 轻松识别有问题的服务器，并筛选出只与该服务器相关的所有 KPI/实时源。
 
+![“实时指标”选项卡](./media/live-stream/live-metric.png)
+
 目前 ASP.NET、ASP.NET Core、Azure Functions、Java 和 Node.js 应用支持实时指标。
 
 ## <a name="get-started"></a>入门
 
-1. 如果尚未在 Web 应用中[安装 Application Insights](../../azure-monitor/azure-monitor-app-hub.md)，现在请进行安装。
+1. 在应用程序中[安装 Application Insights](../../azure-monitor/azure-monitor-app-hub.yml)。
 2. 若要启用实时指标流，除了标准 Application Insights 包之外，还需要 [Microsoft.ApplicationInsights.PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/)。
-3. 更新到最新版本的 Application Insights 包。  在 Visual Studio 中右键单击项目，然后选择“管理 NuGet 包”。  打开“更新”  选项卡，并选择所有的 Microsoft.ApplicationInsights.* 包。
+3. 更新到最新版本的 Application Insights 包。 在 Visual Studio 中右键单击项目，然后选择“管理 NuGet 包”。 打开“更新”选项卡，并选择所有的 Microsoft.ApplicationInsights.* 包。
 
     重新部署应用。
 
@@ -45,7 +47,7 @@ ms.locfileid: "78850408"
 
 ### <a name="no-data-check-your-server-firewall"></a>没有数据？ 请检查服务器的防火墙
 
-请检查[实时指标流的传出端口](../../azure-monitor/app/ip-addresses.md#outgoing-ports)是否在服务器的防火墙中为打开状态。 
+请检查[实时指标流的传出端口](../../azure-monitor/app/ip-addresses.md#outgoing-ports)是否在服务器的防火墙中为打开状态。
 
 ## <a name="how-does-live-metrics-stream-differ-from-metrics-explorer-and-analytics"></a>实时指标流与指标资源管理器、Analytics 有何差异？
 
@@ -53,7 +55,7 @@ ms.locfileid: "78850408"
 |---|---|---|
 |延迟|在一秒内显示数据|在几分钟聚合|
 |无保留期|当数据在图表上显示时会得到保留，不显示时将被丢弃。|[数据会保留 90 天](../../azure-monitor/app/data-retention-privacy.md#how-long-is-the-data-kept)|
-|按需|打开实时指标时会流式处理数据|每当安装并启用 SDK 时会发送数据|
+|按需|仅“实时指标”窗格处于打开状态时才会流式处理数据 |每当安装并启用 SDK 时会发送数据|
 |免费|实时流数据不收取费用|遵从[定价](../../azure-monitor/app/pricing.md)中的标准
 |采样|传输所有选择的指标和计数器。 对失败和堆栈跟踪进行采样。 不应用 TelemetryProcessors。|可能会对事件进行[采样](../../azure-monitor/app/api-filtering-sampling.md)|
 |控制通道|筛选器的控制信号会发送到 SDK。 建议确保此通道的安全。|通信为单向通信，即通向门户|
@@ -62,44 +64,50 @@ ms.locfileid: "78850408"
 
 （适用于 ASP.NET、ASP.NET Core 和 Azure Functions (v2)。）
 
-可以通过在门户中针对任何 Application Insights 遥测数据应用任意筛选器来实时监视自定义 KPI。 单击筛选器控件（将鼠标悬停在任何图表上时会显示）。 下图绘制了一个自定义请求计数 KPI，其中的数据已按“URL”和“持续时间”属性进行筛选。 使用“流预览”部分（显示与在任意时间点指定的条件匹配的实时遥测源）验证筛选器。 
+可以通过在门户中针对任何 Application Insights 遥测数据应用任意筛选器来实时监视自定义 KPI。 单击筛选器控件（将鼠标悬停在任何图表上时会显示）。 下图绘制了一个自定义请求计数 KPI，其中的数据已按“URL”和“持续时间”属性进行筛选。 使用“流预览”部分（显示与在任意时间点指定的条件匹配的实时遥测源）验证筛选器。
 
-![自定义请求 KPI](./media/live-stream/live-stream-filteredMetric.png)
+![筛选请求速率](./media/live-stream/filter-request.png)
 
 可以监视与“计数”不同的值。 可用的选项取决于流的类型，这可能是任何 Application Insights 遥测数据：请求、依赖项、异常、跟踪、事件或指标。 它也可能是自己的[自定义度量值](../../azure-monitor/app/api-custom-events-metrics.md#properties)：
 
-![值选项](./media/live-stream/live-stream-valueoptions.png)
+![针对请求速率的查询生成器（使用自定义指标）](./media/live-stream/query-builder-request.png)
 
 除了 Application Insights 遥测数据以外，还可以监视任何 Windows 性能计数器：从流选项中选择该类型，并提供性能计数器的名称。
 
 实时指标分别在以下两个点上聚合：在每个服务器本地，并在所有服务器上。 可以通过在相应的下拉列表中选择其他选项来更改默认选项。
 
 ## <a name="sample-telemetry-custom-live-diagnostic-events"></a>样本遥测数据：自定义实时诊断事件
-默认情况下，事件实时源显示已失败的请求和依赖项调用、异常、事件与跟踪的样本。 单击筛选器图标可以查看在任意时间点应用的条件。 
+默认情况下，事件实时源显示已失败的请求和依赖项调用、异常、事件与跟踪的样本。 单击筛选器图标可以查看在任意时间点应用的条件。
 
-![默认的实时源](./media/live-stream/live-stream-eventsdefault.png)
+![“筛选器”按钮](./media/live-stream/filter.png)
 
-与使用指标时一样，可以将任意条件指定为任何 Application Insights 遥测类型。 在本示例中，我们将选择特定的请求失败、跟踪和事件。 另外，我们还将选择所有异常和依赖项失败。
+与使用指标时一样，可以将任意条件指定为任何 Application Insights 遥测类型。 在本示例中，我们将选择特定的请求失败和事件。
 
-![自定义实时源](./media/live-stream/live-stream-events.png)
+![查询生成器](./media/live-stream/query-builder.png)
 
-注意：目前，对于基于异常消息的条件，请使用外部异常消息。 在前面的示例中，若要筛选出具有内部异常消息“客户端已断开连接”（追随“<--”分隔符查找）的良性异常， 请使用不包含“读取请求内容时出错”条件的消息。
+> [!NOTE]
+> 目前，对于基于异常消息的条件，请使用外部异常消息。 在前面的示例中，若要筛选出具有内部异常消息“客户端已断开连接”（追随“<--”分隔符查找）的良性异常， 请使用不包含“读取请求内容时出错”条件的消息。
 
-单击实时源中的某个项可查看其详细信息。 可以通过单击“暂停”、向下滚动或单击某个项来暂停源。  在实时源处于暂停状态时，滚回到顶部后，或者单击收集的项的计数器时，该实时源会恢复。
+单击实时源中的某个项可查看其详细信息。 可以通过单击“暂停”、向下滚动或单击某个项来暂停源。 在实时源处于暂停状态时，滚回到顶部后，或者单击收集的项的计数器时，该实时源会恢复。
 
-![采样的实时失败](./media/live-stream/live-metrics-eventdetail.png)
+![采样的实时失败](./media/live-stream/sample-telemetry.png)
 
 ## <a name="filter-by-server-instance"></a>按服务器实例筛选
 
-如果要监视特定服务器角色实例，则可以按服务器进行筛选。
+如果要监视特定服务器角色实例，则可以按服务器进行筛选。 要进行筛选，请在“服务器”下选择服务器名称。
 
-![采样的实时失败](./media/live-stream/live-stream-filter.png)
+![采样的实时失败](./media/live-stream/filter-by-server.png)
 
 ## <a name="secure-the-control-channel"></a>确保控制通道的安全
+
+> [!NOTE]
+> 目前，只能使用代码库监视设置经过身份验证的通道，而不能使用无代码附加对服务器进行身份验证。
+
 指定的自定义筛选器条件将发回到 Application Insights SDK 中的“实时指标”组件。 筛选器可能包含 customerID 等敏感信息。 可以使用机密 API 密钥以及检测密钥来保护通道的安全。
 ### <a name="create-an-api-key"></a>创建 API 密钥
 
-![创建 API 密钥](./media/live-stream/live-metrics-apikeycreate.png)
+![“API 密钥”>“创建 API 密钥”](./media/live-stream/api-key.png)
+![“创建 API 密钥”选项卡。依次选择“对 SDK 控制通道进行身份验证”、“生产密钥”](./media/live-stream/create-api-key.png)
 
 ### <a name="add-api-key-to-configuration"></a>将 API 密钥添加到配置中
 
@@ -153,7 +161,7 @@ using Microsoft.ApplicationInsights.Extensibility;
 
 对于使用 API 密钥保护通道的 Azure 函数应用 (v2)，可以通过一个环境变量来实现。
 
-从 Application Insights 资源中创建一个 API 密钥，并转到你的 Function App 的**应用程序设置**。 选择“添加新设置”  并输入名称 `APPINSIGHTS_QUICKPULSEAUTHAPIKEY` 和与你的 API 密钥对应的值。
+从 Application Insights 资源中创建一个 API 密钥，并转到你的 Function App 的**应用程序设置**。 选择“添加新设置”并输入名称 `APPINSIGHTS_QUICKPULSEAUTHAPIKEY` 和与你的 API 密钥对应的值。
 
 ### <a name="aspnet-core-requires-application-insights-aspnet-core-sdk-230-or-greater"></a>ASP.NET Core（需要 Application Insights ASP.NET Core SDK 2.3.0 或更高版本）
 
@@ -207,8 +215,5 @@ services.ConfigureTelemetryModule<QuickPulseTelemetryModule> ((module, o) => mod
 ## <a name="next-steps"></a>后续步骤
 * [使用 Application Insights 监视使用情况](../../azure-monitor/app/usage-overview.md)
 * [使用诊断搜索](../../azure-monitor/app/diagnostic-search.md)
-* [快照调试器](../../azure-monitor/app/snapshot-debugger.md)
-
-
-
+* [探查器](../../azure-monitor/app/profiler.md)
 

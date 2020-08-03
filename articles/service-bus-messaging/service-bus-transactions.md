@@ -1,30 +1,23 @@
 ---
 title: Azure 服务总线中事务处理概述
 description: 本文概要介绍了 Azure 服务总线中的事务处理和“发送方式”功能。
-services: service-bus-messaging
-documentationcenter: .net
-author: lingliw
-manager: digimobile
-editor: ''
-ms.assetid: 64449247-1026-44ba-b15a-9610f9385ed8
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-origin.date: 01/27/2020
-ms.date: 2/6/2020
-ms.author: v-lingwu
-ms.openlocfilehash: de05e7e767fca3b2ff123b7ce5a61dffd32c91ad
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: ''
+ms.author: v-yeche
+author: rockboyfor
+ms.openlocfilehash: 3bf1f71c2b02ab55936d03d4a1f613df94a9ab06
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796689"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162262"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>服务总线事务处理概述
 
-本文将讨论 Microsoft Azure 服务总线的事务功能。 很多讨论已在[服务总线中的 AMQP 事务示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TransactionsAndSendVia/TransactionsAndSendVia/AMQPTransactionsSendVia)中进行了说明。 本文仅限于概述服务总线中的事务处理和发送方式  功能，虽然原子事务示例在作用域内更广泛且更复杂。
+本文将讨论 Azure 服务总线的事务功能。 很多讨论已在[服务总线中的 AMQP 事务示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TransactionsAndSendVia/TransactionsAndSendVia/AMQPTransactionsSendVia)中进行了说明。 本文仅限于概述服务总线中的事务处理和发送方式  功能，虽然原子事务示例在作用域内更广泛且更复杂。
 
 ## <a name="transactions-in-service-bus"></a>服务总线中的事务
 
@@ -38,16 +31,16 @@ ms.locfileid: "83796689"
 
 可以在事务作用域内执行的操作如下所示：
 
-* **[QueueClient](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.queueclient)、[MessageSender](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.core.messagesender)、[TopicClient](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.topicclient)** ：Send、SendAsync、SendBatch、SendBatchAsync 
-* **[BrokeredMessage](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)** ：Complete、CompleteAsync、Abandon、AbandonAsync、Deadletter、DeadletterAsync、Defer、DeferAsync、RenewLock、RenewLockAsync 
+* **[QueueClient](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.queueclient?view=azure-dotnet)、[MessageSender](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.core.messagesender?view=azure-dotnet)、[TopicClient](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.topicclient?view=azure-dotnet)** ：`Send`、`SendAsync`、`SendBatch` 和 `SendBatchAsync`
+* **[BrokeredMessage](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet)** ：`Complete`、`CompleteAsync`、`Abandon`、`AbandonAsync`、`Deadletter`、`DeadletterAsync`、`Defer``DeferAsync`、`RenewLock` 和 `RenewLockAsync` 
 
-不包括接收操作，因为假定应用程序在某个接收循环内使用 [ReceiveMode.PeekLock](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.receivemode) 模式或通过 [OnMessage](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage) 回调获取消息，而且只有那时才打开用于处理消息的事务作用域。
+不包括接收操作，因为假定应用程序在某个接收循环内使用 [ReceiveMode.PeekLock](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.receivemode?view=azure-dotnet) 模式或通过 [OnMessage](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage?view=azure-dotnet) 回调获取消息，而且只有那时才打开用于处理消息的事务作用域。
 
 然后，消息的处置（完成、放弃、死信、延迟）会在事务作用域内进行，并依赖于在事务处理的整体结果。
 
 ## <a name="transfers-and-send-via"></a>传输和“发送方式”
 
-要启用将数据从队列到处理器，然后到另一个队列的事务性移交，服务总线支持传输  。 在传输操作中，发送程序先将消息发送到“传输队列”  ，然后传输队列立即使用自动转发功能依赖的同一可靠传输实现代码，将消息移到预期的目标队列。 消息永远不会以对传输队列的使用者可见的方式提交到传输队列的日志中。
+要启用将数据从队列到处理器，然后到另一个队列的事务性移交，服务总线支持传输  。 在传输操作中，发送方先将消息发送到“传输队列”，然后传输队列立即使用自动转发功能所依赖的同一强大传输实现将消息移到预期的目标队列。 消息永远不会以对传输队列的使用者可见的方式提交到传输队列的日志中。
 
 当传输队列本身是发送方的输入消息的源时，此事务功能的优势越明显。 换而言之，服务总线可以“通过”传输队列将消息传输到目标队列中，同时对输入消息执行完成（或延迟/死信）操作，所有这一切都通过一个原子操作完成。 
 
@@ -99,12 +92,17 @@ using (var ts = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
 }
 ```
 
+## <a name="timeout"></a>超时
+事务在 2 分钟后超时。 事务计时器在事务中的第一个操作启动时启动。 
+
 ## <a name="next-steps"></a>后续步骤
 
 有关服务总线队列的详细信息，请参阅以下文章：
 
-- [如何使用 Service Bus 队列](./service-bus-dotnet-get-started-with-queues.md)
-- [使用自动转发链接服务总线实体](./service-bus-auto-forwarding.md)
-- [自动转发示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AutoForward)
-- [Atomic Transactions with Service Bus sample](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AtomicTransactions)（服务总线中的原子事务示例）
-- [Azure 队列和服务总线队列比较](./service-bus-azure-and-service-bus-queues-compared-contrasted.md)
+* [如何使用服务总线队列](service-bus-dotnet-get-started-with-queues.md)
+* [使用自动转发链接服务总线实体](service-bus-auto-forwarding.md)
+* [自动转发示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AutoForward)
+* [服务总线中的原子事务示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AtomicTransactions)
+* [Azure 队列和服务总线队列比较](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
+
+<!-- Update_Description: update meta properties, wording update, update link -->

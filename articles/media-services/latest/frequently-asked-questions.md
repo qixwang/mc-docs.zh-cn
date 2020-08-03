@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: article
 origin.date: 04/07/2020
-ms.date: 05/11/2020
+ms.date: 07/27/2020
 ms.author: v-jay
-ms.openlocfilehash: 2e95410cc1570b13a493867fdb804e98c356ade6
-ms.sourcegitcommit: 1f890a4085e184cc678485d05f08dd6de8dc973f
+ms.openlocfilehash: 0c210629b65cc5b37ada0b00c04c6c73d479757a
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84438967"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162215"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>媒体服务 v3 常见问题解答
 
@@ -27,6 +27,12 @@ ms.locfileid: "84438967"
 本文解答有关 Azure 媒体服务 v3 的常见问题。
 
 ## <a name="general"></a>常规
+
+### <a name="what-are-the-azure-portal-limitations-for-media-services-v3"></a>Azure 门户针对媒体服务 v3 有哪些限制？
+
+可以使用 [Azure 门户](https://portal.azure.com/)执行以下操作：管理 v3 实时事件、查看 v3 资产和作业、获取有关访问 API 的信息以及加密内容。 <br/>对于其他所有管理任务（例如，管理转换和作业），请使用 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref) 或某个受支持的 [SDK](media-services-apis-overview.md#sdks)。
+
+如果视频以前是使用媒体服务 v3 API 上传到媒体服务帐户的，或者内容是基于实时输出生成的，则 Azure 门户中不会显示“编码”或“加密”按钮 。 使用媒体服务 v3 API 来执行这些任务。  
 
 ### <a name="what-azure-roles-can-perform-actions-on-azure-media-services-resources"></a>Azure 角色可对 Azure 媒体服务资源执行哪些操作？ 
 

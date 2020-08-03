@@ -7,20 +7,22 @@ ms.subservice: imaging
 ms.workload: infrastructure-services
 ms.topic: how-to
 origin.date: 05/04/2020
-ms.date: 07/06/2020
+ms.date: 07/27/2020
+ms.testscope: yes
+ms.testdate: 07/27/2020
 ms.author: v-yeche
 ms.reviewer: akjosh
-ms.openlocfilehash: 274a28df9811f6ad88473fe0ff6a7cc4cce99fda
-ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
+ms.openlocfilehash: aa849f3b3279b3c900b0fdbf9fa3eb66f00bf9fe
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85945937"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244733"
 ---
 <!--Verified successfully-->
 # <a name="create-a-vm-using-a-specialized-image"></a>使用专用化映像创建 VM 
 
-从共享映像库中存储的专用化映像版本创建 VM。 若要使用通用化映像版本创建 VM，请参阅[从专用化映像版本创建 VM](vm-generalized-image-version-powershell.md)。
+从共享映像库中存储的专用化映像版本创建 VM。 要使用通用化映像版本创建 VM，请参阅[使用通用化映像创建 VM](vm-generalized-image-version-powershell.md)。
 
 获得专用化映像版本后，可以创建一个或多个新 VM。 使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) cmdlet。 
 

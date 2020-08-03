@@ -11,14 +11,16 @@ ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 10/31/2018
-ms.date: 11/11/2019
+ms.date: 07/27/2020
+ms.testscope: yes
+ms.testdate: 07/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 124b15e22d015b1675e4034eb4431af673287d7c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: bedb59bd4b843d90eac4c0900e24b3bea82c62cf
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74594045"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244465"
 ---
 # <a name="troubleshoot-an-rdp-general-error-in-azure-vm"></a>排查 Azure VM 的常规 RDP 错误
 
@@ -61,8 +63,9 @@ RDP 侦听器配置不当。
 
 ## <a name="solution"></a>解决方案
 
-若要解决此问题，请[备份操作系统磁盘](../windows/snapshot-copy-managed-disk.md)，[将操作系统磁盘附加到救援 VM](troubleshoot-recovery-disks-portal-windows.md)，然后按步骤操作。
+在执行这些步骤之前，请创建受影响 VM 的 OS 磁盘的快照作为备份。 要解决此问题，请脱机修复 VM。
 
+<!--Not Available on use Serial control or-->
 <!-- Not Available on ### Serial Console-->
 
 ### <a name="offline-repair"></a>脱机修复
@@ -71,9 +74,9 @@ RDP 侦听器配置不当。
 
 1. [将 OS 磁盘附加到恢复 VM](../windows/troubleshoot-recovery-disks-portal.md)。
 2. 开始与恢复 VM 建立远程桌面连接。
-3. 确保磁盘在磁盘管理控制台中标记为“联机”。  请注意分配给附加的 OS 磁盘的驱动器号。
+3. 确保磁盘在磁盘管理控制台中标记为“联机”。 请注意分配给附加的 OS 磁盘的驱动器号。
 4. 开始与恢复 VM 建立远程桌面连接。
-5. 打开权限提升的命令提示符会话（“以管理员身份运行”）。  运行以下脚本。 对于此脚本，我们假设分配给附加 OS 磁盘的驱动器号为 F。请将此驱动器号替换为 VM 中的相应值。
+5. 打开权限提升的命令提示符会话（“以管理员身份运行”）。 运行以下脚本。 对于此脚本，我们假设分配给附加 OS 磁盘的驱动器号为 F。请将此驱动器号替换为 VM 中的相应值。
 
     ```
     reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv 
@@ -136,6 +139,6 @@ RDP 侦听器配置不当。
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
 
-如果仍需帮助，请[联系支持人员](https://support.azure.cn/support/support-azure/)以快速解决问题。
+如果仍需要帮助，可 [联系支持人员](https://support.azure.cn/support/support-azure/) 来快速解决问题。
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

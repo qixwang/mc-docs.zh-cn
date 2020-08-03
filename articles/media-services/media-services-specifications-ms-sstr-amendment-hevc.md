@@ -1,5 +1,5 @@
 ---
-title: Azure 媒体服务 - HEVC 的平滑流式处理协议 (MS-SSTR) 修正 | Microsoft Docs
+title: HEVC 的平滑流式处理协议 (MS-SSTR) 修正 - Azure
 description: 本规范描述 Azure 媒体服务中基于 HEVC 分片 MP4 的实时传送视频流的协议和格式。 本文中仅指定了传送 HEVC 所要进行的更改，“（未更改）”表示文本是复制的，仅用于澄清目的。
 services: media-services
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 08/19/2019
-ms.date: 01/20/2020
+ms.date: 07/27/2020
 ms.author: v-jay
-ms.openlocfilehash: a22f25c12a068c62a01a625bb9c776ffac76f7f1
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a2d1882093815321f2a49f1b2b1fce7f5a344ce6
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75939782"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162439"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>HEVC 的平滑流式处理协议 (MS-SSTR) 修正 
 
@@ -243,10 +243,12 @@ ms.locfileid: "75939782"
 > 
 >   本节中定义的字段语法（符合 ABNF [[RFC5234]](https://go.microsoft.com/fwlink/?LinkId=123096) 中的指定）如下：
 
-    FileType = MajorBrand MinorVersion CompatibleBrands
-    MajorBrand = STRING_UINT32
-    MinorVersion = STRING_UINT32
-    CompatibleBrands = "ccff" "iso8" 0\*(STRING_UINT32)
+```properties
+FileType = MajorBrand MinorVersion CompatibleBrands
+MajorBrand = STRING_UINT32
+MinorVersion = STRING_UINT32
+CompatibleBrands = "ccff" "iso8" 0\*(STRING_UINT32)
+```
 
 **注意**：兼容性品牌“ccff”和“iso8”指示片段符合“通用容器文件格式”、通用加密 [ISO/IEC 23001-7] 和 ISO 基本媒体文件格式版本 4 [ISO/IEC 14496-12]。
 
@@ -289,14 +291,18 @@ ms.locfileid: "75939782"
 > 
 >   包含 HEVC 流的呈现内容应该设置：
 
-    MajorVersion = 2
-    MinorVersion = 2
+```properties
+MajorVersion = 2
+MinorVersion = 2
+```
 
 >   LookaheadCount = 0（注意：框已弃用）
 > 
 >   呈现内容还应设置：
 
-    TimeScale = 90000
+```properties
+TimeScale = 90000
+```
 
 >   流集合：根据第 *3.1.1.1.2* 节指定的“流说明”数据元素集合。
 > 

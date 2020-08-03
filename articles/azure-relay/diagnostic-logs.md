@@ -1,24 +1,21 @@
 ---
 title: 混合连接的诊断日志
 description: 本文概述了可用于 Azure 中继的所有活动和诊断日志。
-services: service-bus-messaging
-author: spelluru
-editor: ''
-ms.assetid: ''
-ms.service: service-bus-relay
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.date: 05/18/2020
-ms.author: v-tawe
-origin.date: 04/27/2020
-ms.openlocfilehash: 55c0102993e7874806067f6e75f7ca0ae56ffe6a
-ms.sourcegitcommit: cada23b6400453ff9c08cfb08393e635e2fddac1
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: yes
+ms.testdate: 07/20/2020
+ms.author: v-yeche
+author: rockboyfor
+ms.openlocfilehash: 06fac01bd09ec99a7581c5a4cdab4997265d72a6
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83734671"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162204"
 ---
+<!--Verified successfully-->
 # <a name="enable-diagnostics-logs-for-azure-relay-hybrid-connections"></a>为 Azure 中继混合连接启用诊断日志
 开始使用 Azure 中继混合连接时，你可能希望监视你的侦听器和发送方是如何以及何时打开和关闭的，以及你的混合连接是如何创建的，消息是如何发送的。 本文概述了 Azure 中继服务提供的活动和诊断日志。 
 
@@ -42,7 +39,7 @@ ms.locfileid: "83734671"
 1. 在 [Azure 门户](https://portal.azure.cn)中，转到 Azure 中继命名空间，然后在“监视”下选择“诊断设置” 。
 1. 在“诊断设置”页中，选择“添加诊断设置” 。  
 
-   ![“添加诊断设置”链接](./media/diagnostic-logs/add-diagnostic-setting.png)
+    ![“添加诊断设置”链接](./media/diagnostic-logs/add-diagnostic-setting.png)
 
 1. 通过以下步骤配置诊断设置：
     1. 在“名称”框中，输入诊断设置的名称。  
@@ -53,24 +50,22 @@ ms.locfileid: "83734671"
         3. 如果选择“发送到 Log Analytics”，请指定要将诊断发送到其中的 Log Analytics 实例。  
 
         ![示例诊断设置](./media/diagnostic-logs/sample-diagnostic-settings.png)
-1. 在工具栏上选择“保存”，保存这些设置。
+1. 选择工具栏上的“保存”以保存设置。
 
 新设置将在大约 10 分钟后生效。 日志将显示在“诊断日志”窗格中配置的存档目标中。 有关配置诊断设置的详细信息，请参阅 [Azure 诊断日志概述](../azure-monitor/platform/diagnostic-logs-overview.md)。
-
 
 ## <a name="schema-for-hybrid-connections-events"></a>混合连接事件的架构
 混合连接事件日志 JSON 字符串包括下表中列出的元素：
 
-| 名称 | 说明 |
+| 名称 | 描述 |
 | ------- | ------- |
-| ResourceId | Azure Resource Manager 资源 ID |
+| ResourceId | Azure 资源管理器资源 ID |
 | ActivityId | 内部 ID，用于标识指定的操作。 也称为“TrackingId” |
-| 终结点 | 中继资源的地址 |
+| 端点 | 中继资源的地址 |
 | OperationName | 所记录的混合连接操作的类型 |
 | EventTimeString | 日志记录的 UTC 时间戳 |
-| Message | 事件的详细消息 |
-| Category | 事件的类别。 目前只有 `HybridConnectionsEvents`。 
-
+| 消息 | 事件的详细消息 |
+| 类别 | 事件的类别。 目前只有 `HybridConnectionsEvents`。 
 
 ## <a name="sample-hybrid-connections-event"></a>混合连接事件示例
 下面是 JSON 格式的混合连接事件示例。 
@@ -89,7 +84,7 @@ ms.locfileid: "83734671"
 
 ## <a name="events-and-operations-captured-in-diagnostic-logs"></a>诊断日志中捕获的事件和操作
 
-| 操作 | 说明 | 
+| Operation | 说明 | 
 | --------- | ----------- | 
 | AuthorizationFailed | 授权失败。|
 | InvalidSasToken | 无效 SAS 令牌。 | 
@@ -101,7 +96,7 @@ ms.locfileid: "83734671"
 | ListenerRejectedConnection | 侦听器已拒绝了连接。 |
 | ListenerReturningHttpResponse | 侦听器正在返回 HTTP 响应。 |  
 | ListenerReturningHttpResponseFailed | 侦听器正在返回带有失败代码的 HTTP 响应。 | 
- ListenerSentHttpResponse | 中继服务已收到来自侦听器的 HTTP 响应。 | 
+| ListenerSentHttpResponse | 中继服务已收到来自侦听器的 HTTP 响应。 | 
 | ListenerUnregistered | 侦听器被注销。 | 
 | ListenerUnresponsive | 侦听器在返回响应时无响应。 | 
 | MessageSendingToListener | 正在向侦听器发送消息。 |
@@ -113,10 +108,11 @@ ms.locfileid: "83734671"
 | SenderListenerConnectionEstablished | 发送方和侦听器已成功建立连接。 |
 | SenderSentHttpRequest | 发送方发送了一个 HTTP 请求。 | 
 
-
 ## <a name="next-steps"></a>后续步骤
 
 若要详细了解 Azure 中继，请参阅：
 
 * [Azure 中继简介](relay-what-is-it.md)
 * [中继混合连接入门](relay-hybrid-connections-dotnet-get-started.md)
+
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -13,21 +13,28 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 origin.date: 09/10/2019
-ms.date: 07/06/2020
+ms.date: 07/27/2020
+ms.testscope: yes
+ms.testdate: 07/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 0b17cbc2408fa4922ee1b559e777935411ff8bf5
-ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
+ms.openlocfilehash: 7a25977cc6f043c0c93988d90b2734b4889a1120
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85946048"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244472"
 ---
 # <a name="repair-a-linux-vm-by-using-the-azure-virtual-machine-repair-commands"></a>使用 Azure 虚拟机修复命令修复 Linux VM
 
 如果 Linux 虚拟机 (VM) 在 Azure 中遇到启动或磁盘错误，可能需要对磁盘本身执行缓解操作。 一个常见示例是应用程序更新失败，使 VM 无法成功启动。 本文详细介绍如何使用 Azure 虚拟机修复命令将磁盘连接到另一个 Linux VM 来修复所有错误，然后重新生成原始 VM。
 
 > [!IMPORTANT]
-> 本文中的脚本仅适用于使用 [Azure 资源管理器](/azure-resource-manager/resource-group-overview)的 VM。
+> * 本文中的脚本仅适用于使用 [Azure 资源管理器](/azure-resource-manager/resource-group-overview)的 VM。
+> * 运行脚本需要 VM 的出站连接（端口 443）。
+> * 一次只能运行一个脚本。
+> * 无法取消正在运行的脚本。
+> * 脚本最多可以运行 90 分钟，之后它将超时。
+> * 对于使用 Azure 磁盘加密的 VM，仅支持通过单次传递加密（带有或不带 KEK）加密的托管磁盘。
 
 ## <a name="repair-process-overview"></a>修复过程概述
 
@@ -41,7 +48,7 @@ ms.locfileid: "85946048"
 4. 执行缓解步骤
 5. 运行 az vm repair restore
 
-有关其他文档和说明，请参阅 [az vm repair](https://docs.microsoft.com/cli/azure/ext/vm-repair/vm/repair?view=azure-cli-latest#az-vm-repair)。
+有关其他文档和说明，请参阅 [az vm repair](https://docs.microsoft.com/cli/azure/ext?view=azure-cli-latest#az-vm-repair)。
 
 ## <a name="repair-process-example"></a>修复过程示例
 
@@ -52,6 +59,10 @@ ms.locfileid: "85946048"
     <!--Not Available on Select **Copy** to copy the blocks of code, then paste the code into the local Shell, and select **Enter** to run it.-->
 
     如果希望在本地安装并使用 CLI，则本快速入门需要 Azure CLI version 2.0.30 或更高版本。 运行 ``az --version`` 即可查找版本。 如果需要安装或升级 Azure CLI，请参阅[安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)。
+
+    如果需要使用与当前登录 Azure 门户不同的帐户进行登录，可使用 ``az login`` [az login reference](https://docs.azure.cn/cli/reference-index?view=azure-cli-latest#az-login)。  若要在与你的帐户关联的订阅之间切换，可使用 ``az account set --subscription`` [az account set reference](https://docs.azure.cn/cli/account?view=azure-cli-latest#az-account-set)。
+
+    <--Mooncake 自定义句子逻辑-->
 
 2. 如果是首次使用 `az vm repair` 命令，请添加 vm-repair CLI 扩展。
 
@@ -65,7 +76,7 @@ ms.locfileid: "85946048"
     az extension update -n vm-repair
     ```
 
-3. 运行 `az vm repair create`。 此命令将为非功能性 VM 创建 OS 磁盘的副本，在新资源组中创建修复 VM，并附加 OS 磁盘副本。  修复 VM 的大小和区域将与指定的非功能性 VM 相同。 所有步骤中使用的资源组和 VM 名称都将用于非功能性 VM。
+3. 运行 `az vm repair create`。 此命令将为非功能性 VM 创建 OS 磁盘的副本，在新资源组中创建修复 VM，并附加 OS 磁盘副本。  修复 VM 的大小和区域将与指定的非功能性 VM 相同。 所有步骤中使用的资源组和 VM 名称都将用于非功能性 VM。 如果 VM 使用的是 Azure 磁盘加密，该命令将尝试解锁已加密的磁盘，以便在附加到修复 VM 时可对其进行访问。
 
     ```azurecli
     az vm repair create -g MyResourceGroup -n myVM --repair-username username --repair-password password!234 --verbose
@@ -95,5 +106,4 @@ az vm boot-diagnostics enable --name myVMDeployed --resource-group myResourceGro
 * 如果在访问 VM 上运行的应用程序时遇到问题，请参阅[排查 Azure 中虚拟机上的应用程序连接问题](/virtual-machines/troubleshooting/troubleshoot-app-connection)。
 * 有关使用 Resource Manager 的详细信息，请参阅 [Azure Resource Manager 概述](/azure-resource-manager/resource-group-overview)。
 
-<!--Update_Description: new articles on repair linux vm using repair commands -->
-<!--New.date: 11/11/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

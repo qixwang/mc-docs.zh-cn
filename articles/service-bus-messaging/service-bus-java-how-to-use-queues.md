@@ -1,27 +1,21 @@
 ---
 title: 通过 Java 使用 Azure 服务总线队列
 description: 本教程介绍如何创建 Java 应用程序来向 Azure 服务总线队列发送消息以及从中接收消息。
-services: service-bus-messaging
-documentationcenter: java
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: f701439c-553e-402c-94a7-64400f997d59
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: quickstart
-origin.date: 01/24/2020
-ms.date: 2/6/2020
-ms.author: v-lingwu
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: yes
+ms.testdate: 07/20/2020
+ms.author: v-yeche
+author: rockboyfor
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 5e74e397b754ac706dc0048774615d32ff651aaf
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+ms.openlocfilehash: ba40a2d1c26f8fd3007dbe7ef078860eff6e8520
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796813"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162117"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>快速入门：通过 Java 使用 Azure 服务总线队列发送和接收消息
 
@@ -32,7 +26,7 @@ ms.locfileid: "83796813"
 > 可以在 GitHub 上的 [azure-service-bus 存储库](https://github.com/Azure/azure-service-bus/tree/master/samples/Java)中找到 Java 示例。
 
 ## <a name="prerequisites"></a>先决条件
-1. Azure 订阅。 若要完成本教程，需要一个 Azure 帐户。 你可以注册[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)或[预付费](https://wd.azure.cn/pricing/pia-waiting-list/?form-type=identityauth)。
+1. Azure 订阅。 若要完成本教程，需要一个 Azure 帐户。 你可以激活 [MSDN 订阅者权益](https://www.azure.cn/offers/ms-mc-arz-msdn/)或注册[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 2. 如果没有可使用的队列，请遵循[使用 Azure 门户创建服务总线队列](service-bus-quickstart-portal.md)一文来创建队列。
     1. 阅读服务总线**队列**的快速**概述**。 
     2. 创建一个服务总线**命名空间**。 
@@ -40,11 +34,14 @@ ms.locfileid: "83796813"
     4. 创建一个服务总线**队列**。
 3. 安装 [Azure SDK for Java][Azure SDK for Java]。 
 
-
 ## <a name="configure-your-application-to-use-service-bus"></a>配置应用程序以使用服务总线
-在生成本示例之前，请确保已安装 [Azure SDK for Java][Azure SDK for Java] 。 如果使用了 Eclipse，则可以安装包含 Azure SDK for Java 的 [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] 。 然后，用户可以将**21Vianet Azure Libraries for Java** 添加到项目：
+在生成本示例之前，请确保已安装 [Azure SDK for Java][Azure SDK for Java] 。 
 
-![将适用于 Java 的 Microsoft Azure 库添加到 Eclipse 项目](./media/service-bus-java-how-to-use-queues/eclipse-azure-libraries-java.png)
+如果使用了 Eclipse，则可以安装包含 Azure SDK for Java 的 [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] 。 然后，可将“适用于 Java 的 Microsoft Azure 库”添加到项目  。 有关详细信息，请参阅[安装 Azure Toolkit for IntelliJ](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/installation)。 
+
+<!--CORRECT ON **Microsoft Azure Libraries for Java**-->
+
+![将适用于 Java 的 Azure 库添加到 Eclipse 项目](./media/service-bus-java-how-to-use-queues/eclipse-azure-libraries-java.png)
 
 将以下 `import` 语句添加到 Java 文件顶部：
 
@@ -116,14 +113,13 @@ public void run() throws Exception {
 
 发送到服务总线队列以及从服务总线队列收到的消息是 [Message](https://docs.azure.cn/java/api/com.microsoft.azure.servicebus.message?view=azure-java-stable) 类的实例。 Message 对象包含一组标准属性（如 Label 和 TimeToLive）、一个用来保存自定义应用程序特定属性的字典以及大量任意应用程序数据。 应用程序可通过将任何可序列化对象传入到 Message 的构造函数中来设置消息的正文，并将使用适当的序列化程序来序列化对象。 或者，可以提供 **java.IO.InputStream** 对象。
 
-
 服务总线队列在[标准层](service-bus-premium-messaging.md)中支持的最大消息大小为 256 KB，在[高级层](service-bus-premium-messaging.md)中则为 1 MB。 标头最大大小为 64 KB，其中包括标准和自定义应用程序属性。 一个队列中包含的消息数量不受限制，但消息的总大小受限制。 此队列大小是在创建时定义的，上限为 5 GB。
 
 ## <a name="receive-messages-from-a-queue"></a>从队列接收消息
 从队列接收消息的主要方法是使用 **ServiceBusContract** 对象。 收到的消息可在两种不同模式下工作：**ReceiveAndDelete** 和 **PeekLock**。
 
 当使用 **ReceiveAndDelete** 模式时，接收是一项单次操作，即，服务总线接收到队列中某条消息的读取请求时，会将该消息标记为“已使用”并将其返回给应用程序。 **ReceiveAndDelete** 模式（默认模式）是最简单的模式，最适合应用程序可容忍出现故障时不处理消息的情景。 为了理解这一点，可以考虑这样一种情形：使用方发出接收请求，但在处理该请求前发生了崩溃。
-由于服务总线已将消息标记为“已使用”，因此当应用程序重新启动并重新开始使用消息时，它会漏掉在发生崩溃前使用的消息。
+由于服务总线已将消息标记为“已使用”，因此当应用程序重启并重新开始使用消息时，它就漏掉了在发生故障前使用的消息。
 
 在 **PeekLock** 模式下，接收变成了一个两阶段操作，从而有可能支持无法允许遗漏消息的应用程序。 当 Service Bus 收到请求时，它会查找下一条要使用的消息，锁定该消息以防其他使用者接收，并将该消息返回到应用程序。 应用程序完成消息处理（或可靠地存储消息以供将来处理）后，它将通过对收到的消息调用 **complete()** 完成接收过程的第二个阶段。 看到 **complete()** 调用时，服务总线会将消息标记为“已使用”，并将消息从队列中删除。 
 
@@ -180,7 +176,7 @@ public void run() throws Exception {
 ```
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>如何处理应用程序崩溃和不可读消息
-Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或消息处理问题中恢复。 如果接收方应用程序出于某种原因无法处理消息，它可以在客户端对象上调用 **abandon()** 方法并使用通过 **getLockToken()** 获取的已收到消息的锁定令牌。 这会导致服务总线解锁队列中的消息并使其能够重新被同一个正在使用的应用程序或其他正在使用的应用程序接收。
+服务总线提供了相关功能，帮助你轻松地从应用程序错误或消息处理问题中恢复。 如果接收方应用程序出于某种原因无法处理消息，它可以在客户端对象上调用 **abandon()** 方法并使用通过 **getLockToken()** 获取的已收到消息的锁定令牌。 这会导致服务总线解锁队列中的消息并使其能够重新被同一个正在使用的应用程序或其他正在使用的应用程序接收。
 
 还存在与队列中已锁定消息关联的超时，并且如果应用程序无法在锁定超时到期之前处理消息（例如，如果应用程序崩溃），则服务总线将自动解锁该消息并使它可再次被接收。
 
@@ -192,10 +188,11 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
 ## <a name="next-steps"></a>后续步骤
 现在，已了解服务总线队列的基础知识，请参阅[队列、主题和订阅][Queues, topics, and subscriptions] 以获取更多信息。
 
-有关详细信息，请参阅 [Java 开发人员中心](https://docs.azure.cn/java/)。
+有关详细信息，请参阅 [Java 开发人员中心](https://docs.azure.cn/develop/java/)。
 
-[Azure SDK for Java]: https://docs.azure.cn/java/?view=azure-java-stable
+[Azure SDK for Java]: https://docs.microsoft.com/azure/developer/java/sdk/java-sdk-azure-get-started?view=azure-java-stable
 [Azure Toolkit for Eclipse]: https://docs.azure.cn/java/eclipse/azure-toolkit-for-eclipse?view=azure-java-stable
-
-[Queues, topics, and subscriptions]: ./service-bus-queues-topics-subscriptions.md
+[Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [BrokeredMessage]: https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.brokeredmessage
+
+<!-- Update_Description: update meta properties, wording update, update link-->

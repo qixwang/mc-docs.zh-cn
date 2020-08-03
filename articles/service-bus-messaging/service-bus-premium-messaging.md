@@ -1,26 +1,19 @@
 ---
 title: Azure 服务总线高级层和标准层
 description: 本文介绍 Azure 服务总线的标准层和高级层。 比较这些层并提供技术差异。
-services: service-bus-messaging
-documentationcenter: .net
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: e211774d-821c-4d79-8563-57472d746c58
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-origin.date: 01/27/2020
-ms.date: 06/30/2020
-ms.author: v-tawe
-ms.openlocfilehash: 61a3b308b269a8ec15ee45ac51ca221e6488afa9
-ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: ''
+ms.author: v-yeche
+author: rockboyfor
+ms.openlocfilehash: 0de1b25ad036d2e563461a27e87002e0b2a9752c
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85796218"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162440"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>服务总线高级和标准消息传送层
 
@@ -34,7 +27,7 @@ ms.locfileid: "85796218"
 | --- | --- |
 | 高吞吐量 |可变吞吐量 |
 | 可预测性能 |可变滞后时间 |
-| 固定定价 |即用即付可变定价 |
+| 固定定价 |标准预付费套餐可变定价 |
 | 增加和减少工作负荷的能力 |空值 |
 | 消息大小最大为 1 MB |消息大小最大为 256 KB |
 
@@ -52,9 +45,9 @@ ms.locfileid: "85796218"
 
 ### <a name="express-entities"></a>快速实体
 
-由于高级消息传送在一个完全隔离的运行时环境中运行，因此高级命名空间中不支持快速实体。 有关快速功能的详细信息，请参阅 [QueueDescription.EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) 属性。
+由于高级消息传送在一个完全隔离的运行时环境中运行，因此高级命名空间中不支持快速实体。 有关快速功能的详细信息，请参阅 [QueueDescription.EnableExpress](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress?view=azure-dotnet#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) 属性。
 
-如果有在标准传送下运行的代码并且希望将其移植到高级层，请确保将 [EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) 属性设置为 **false**（默认值）。
+如果有在标准传送下运行的代码并且希望将其移植到高级层，请确保将 [EnableExpress](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress?view=azure-dotnet#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) 属性设置为 **false**（默认值）。
 
 ## <a name="premium-messaging-resource-usage"></a>高级消息传送资源使用情况
 通常，对实体进行的任何操作都可能导致 CPU 和内存使用率增高。 下面是一些这样的操作： 
@@ -98,7 +91,7 @@ ms.locfileid: "85796218"
 
 ## <a name="get-started-with-premium-messaging"></a>高级消息传送入门
 
-高级消息传送很容易入门，其操作过程类似于标准消息传送。 一开始时，请在 [Azure 门户](https://portal.azure.cn)中[创建命名空间](service-bus-create-namespace-portal.md)。 确保在“定价层”下选择“高级”。  单击“查看完整的定价详细信息”以查看有关每个层级的详细信息。
+高级消息传送很容易入门，其操作过程类似于标准消息传送。 一开始时，请在 [Azure 门户](https://portal.azure.cn)中[创建命名空间](service-bus-create-namespace-portal.md)。 确保在“定价层”下选择“高级”。 单击“查看完整的定价详细信息”以查看有关每个层级的详细信息。
 
 ![create-premium-namespace][create-premium-namespace]
 
@@ -109,10 +102,12 @@ ms.locfileid: "85796218"
 若要了解有关服务总线消息传送的详细信息，请参阅以下链接：
 
 * [Azure 服务总线高级消息传送简介（博客文章）](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
-
+* [Azure 服务总线高级消息传送简介 (Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
 * [服务总线消息传送概述](service-bus-messaging-overview.md)
 * [服务总线队列入门](service-bus-dotnet-get-started-with-queues.md)
 
 <!--Image references-->
 
 [create-premium-namespace]: ./media/service-bus-premium-messaging/select-premium-tier.png
+
+<!-- Update_Description: update meta properties, wording update, update link -->

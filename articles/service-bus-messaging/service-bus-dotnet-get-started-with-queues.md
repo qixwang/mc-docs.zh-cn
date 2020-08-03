@@ -1,26 +1,20 @@
 ---
 title: Azure 服务总线队列入门 | Azure
 description: 在本教程中，你将创建 .NET Core 控制台应用程序来向服务总线队列发送消息以及从中接收消息。
-services: service-bus-messaging
-documentationcenter: .net
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: 68a34c00-5600-43f6-bbcc-fea599d500da
-ms.service: service-bus-messaging
-ms.devlang: tbd
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
-ms.workload: na
-origin.date: 01/24/2020
-ms.date: 2/26/2020
-ms.author: v-lingwu
-ms.openlocfilehash: 9730c3c41ba390b9d105260d5d96c3b5cc57afe9
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: yes
+ms.testdate: 07/20/2020
+ms.author: v-yeche
+author: rockboyfor
+ms.openlocfilehash: c82de1c6382c00fb3976561a87e5cec8d4bed06f
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796831"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162393"
 ---
 # <a name="get-started-with-service-bus-queues"></a>服务总线队列入门
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
@@ -30,7 +24,7 @@ ms.locfileid: "83796831"
 
 - [Visual Studio 2019](https://www.visualstudio.com/vs)。
 - [NET Core SDK](https://www.microsoft.com/net/download/windows) 2.0 或更高版本。
-- Azure 订阅。 若要完成本教程，需要一个 Azure 帐户。 你可以注册[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)或[预付费](https://wd.azure.cn/pricing/pia-waiting-list/?form-type=identityauth)。
+- Azure 订阅。 若要完成本教程，需要一个 Azure 帐户。 你可以激活 [MSDN 订阅者权益](https://www.azure.cn/offers/ms-mc-arz-msdn)或注册[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 - 如果没有可使用的队列，请遵循[使用 Azure 门户创建服务总线队列](service-bus-quickstart-portal.md)一文来创建队列。
 
   - 阅读服务总线队列的快速概述。
@@ -145,16 +139,16 @@ namespace CoreSenderApp
         {    
             const int numberOfMessages = 10;
             queueClient = new QueueClient(ServiceBusConnectionString, QueueName);
-    
+
             Console.WriteLine("======================================================");
             Console.WriteLine("Press ENTER key to exit after sending all the messages.");
             Console.WriteLine("======================================================");
-    
+
             // Send messages.
             await SendMessagesAsync(numberOfMessages);
-    
+
             Console.ReadKey();
-    
+
             await queueClient.CloseAsync();
         }
 
@@ -192,7 +186,7 @@ namespace CoreSenderApp
 
 队列的“活动消息计数”值现在为 **10**。 每次运行此发件人应用而没有检索消息时，该值会增加 10。
 
-每次该应用将消息添加到队列，队列的当前大小就会递增，增量为“基本信息”中的“当前”值。 
+每次该应用将消息添加到队列，队列的当前大小就会递增，增量为“基本信息”中的“当前”值 。
 
 下一部分介绍如何检索这些消息。
 
@@ -337,7 +331,7 @@ namespace CoreReceiverApp
 
             // Register QueueClient's MessageHandler and receive messages in a loop
             RegisterOnMessageHandlerAndReceiveMessages();
- 
+
             Console.ReadKey();
 
             await queueClient.CloseAsync();
@@ -389,7 +383,7 @@ namespace CoreReceiverApp
 }
 ```
 
-运行该程序，并再次检查门户。 “活动消息计数”和“当前”值现在为 **0**。 
+运行该程序，并再次检查门户。 “活动消息计数”和“当前”值现在为 **0**。
 
 ![收到消息后的队列][queue-message-receive]
 
@@ -408,6 +402,4 @@ namespace CoreReceiverApp
 [queue-message]: ./media/service-bus-dotnet-get-started-with-queues/messages-sent-to-essentials.png
 [queue-message-receive]: ./media/service-bus-dotnet-get-started-with-queues/queue-message-receive-in-essentials.png
 
-
-
-<!--Update_Description:update wording and code-->
+<!-- Update_Description: update meta properties, wording update, update link -->

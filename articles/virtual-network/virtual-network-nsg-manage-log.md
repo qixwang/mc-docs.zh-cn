@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 origin.date: 06/04/2018
 ms.date: 06/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: 140a7fe2148eddcf94abf05f4495b384e0a75d71
-ms.sourcegitcommit: ff67734e01c004be575782b4812cfe857e435f4d
+ms.openlocfilehash: a3c6604756bd5a15fd91645a8e198b937cebe64c
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84487045"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244271"
 ---
 <!--NOT SUITABLE TO AZURE CHINA CLOUD-->
 <!--UPDATE CAREFULLY-->
@@ -203,8 +203,7 @@ az monitor diagnostic-settings create \
 
 若要了解如何查看诊断日志数据，请参阅 [Azure 诊断日志概述](../azure-monitor/platform/resource-logs-overview.md?toc=%2fvirtual-network%2ftoc.json)。 如果将诊断数据发送到：
 
-- **Azure Monitor 日志**：则可使用[网络安全组分析](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fvirtual-network%2ftoc.json#azure-network-security-group-analytics-solution-in-azure-monitor
-)解决方案来获取增强的见解。 此解决方案提供 NSG 规则的可视化效果，此类规则可以根据 MAC 地址允许或拒绝虚拟机中网络接口的流量。
+- **Azure Monitor 日志**：则可使用网络安全组分析解决方案来获取增强的见解。 此解决方案提供 NSG 规则的可视化效果，此类规则可以根据 MAC 地址允许或拒绝虚拟机中网络接口的流量。
 - **Azure 存储帐户**，则将数据写入 PT1H.json 文件。 可以找到：
     - 事件日志，位于以下路径：`insights-logs-networksecuritygroupevent/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
     - 规则计数器日志，位于以下路径：`insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`

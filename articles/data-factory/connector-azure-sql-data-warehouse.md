@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 origin.date: 05/26/2020
-ms.date: 06/29/2020
-ms.openlocfilehash: b62ed79d9627289cca8321a9c1f35a916b9fe6d5
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+ms.date: 07/27/2020
+ms.openlocfilehash: 6f7073f2c4a5d539ee8bbf40480b307931eb2cc9
+ms.sourcegitcommit: 0eaa82cf74477d26d06bdd8fb6e715e6ed1339c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85321189"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86974233"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-azure-sql-data-warehouse-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure Synapse Analytics（前称为 Azure SQL 数据仓库）中复制和转换数据
 
@@ -41,7 +41,7 @@ ms.locfileid: "85321189"
 - 作为接收器，使用 [PolyBase](#use-polybase-to-load-data-into-azure-sql-data-warehouse)、[COPY 语句](#use-copy-statement)（预览版）或批量插入来加载数据。 为提高复制性能，我们建议使用 PolyBase 或 COPY 语句（预览版）。 连接器还支持基于源架构自动创建目标表（如果不存在）。
 
 > [!IMPORTANT]
-> 如果使用 Azure 数据工厂 Integration Runtime 复制数据，请配置[服务器级防火墙规则](/sql-database/sql-database-firewall-configure)，以便 Azure 服务可以访问服务器。
+> 如果使用 Azure 数据工厂 Integration Runtime 复制数据，请配置[服务器级防火墙规则](../azure-sql/database/firewall-configure.md)，以便 Azure 服务可以访问[逻辑 SQL 服务器](../azure-sql/database/logical-servers.md)。
 > 如果使用自承载集成运行时复制数据，请将防火墙配置为允许合适的 IP 范围。 此范围包括用于连接 Azure Synapse Analytics 的计算机的 IP。
 
 ## <a name="get-started"></a>入门
@@ -125,15 +125,15 @@ Azure Synapse Analytics 链接服务支持以下属性：
 
 若要使用基于服务主体的 Azure AD 应用程序令牌身份验证，请执行以下步骤：
 
-1. 从 Azure 门户 **[创建 Azure Active Directory 应用程序](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)** 。 记下应用程序名称，以及以下定义链接服务的值：
+1. 从 Azure 门户 **[创建 Azure Active Directory 应用程序](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)** 。 记下应用程序名称，以及以下定义链接服务的值：
 
    - 应用程序 ID
    - 应用程序密钥
    - 租户 ID
 
-2. 为 Azure 门户中的服务器[预配 Azure Active Directory 管理员](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)（如果尚未这样做）。 Azure AD 管理员可以是 Azure AD 用户或 Azure AD 组。 如果授予包含托管标识的组管理员角色，则可跳过步骤 3 和步骤 4。 管理员将拥有对数据库的完全访问权限。
+2. 为 Azure 门户中的服务器[预配 Azure Active Directory 管理员](../azure-sql/database/authentication-aad-configure.md#provision-azure-ad-admin-sql-database)（如果尚未这样做）。 Azure AD 管理员可以是 Azure AD 用户或 Azure AD 组。 如果授予包含托管标识的组管理员角色，则可跳过步骤 3 和步骤 4。 管理员将拥有对数据库的完全访问权限。
 
-3. 为服务主体 **[创建包含的数据库用户](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)** 。 使用 SSMS 等工具连接到要从中复制数据或要将数据复制到其中的数据仓库，其 Azure AD 标识至少具有 ALTER ANY USER 权限。 运行以下 T-SQL：
+3. 为服务主体 **[创建包含的数据库用户](../azure-sql/database/authentication-aad-configure.md#create-contained-users-mapped-to-azure-ad-identities)** 。 使用 SSMS 等工具连接到要从中复制数据或要将数据复制到其中的数据仓库，其 Azure AD 标识至少具有 ALTER ANY USER 权限。 运行以下 T-SQL：
   
     ```sql
     CREATE USER [your application name] FROM EXTERNAL PROVIDER;
@@ -177,9 +177,9 @@ Azure Synapse Analytics 链接服务支持以下属性：
 
 若要使用托管标识身份验证，请执行以下步骤：
 
-1. 为 Azure 门户上的服务器[预配 Azure Active Directory 管理员](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)（如果尚未这样做）。 Azure AD 管理员可以是 Azure AD 用户或 Azure AD 组。 如果授予包含托管标识的组管理员角色，则可跳过步骤 3 和步骤 4。 管理员将拥有对数据库的完全访问权限。
+1. 为 Azure 门户上的服务器[预配 Azure Active Directory 管理员](../azure-sql/database/authentication-aad-configure.md#provision-azure-ad-admin-sql-database)（如果尚未这样做）。 Azure AD 管理员可以是 Azure AD 用户或 Azure AD 组。 如果授予包含托管标识的组管理员角色，则可跳过步骤 3 和步骤 4。 管理员将拥有对数据库的完全访问权限。
 
-2. 为数据工厂托管标识 **[创建包含的数据库用户](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)** 。 使用 SSMS 等工具连接到要从中复制数据或要将数据复制到其中的数据仓库，其 Azure AD 标识至少具有 ALTER ANY USER 权限。 运行以下 T-SQL。
+2. 为数据工厂托管标识 **[创建包含的数据库用户](../azure-sql/database/authentication-aad-configure.md#create-contained-users-mapped-to-azure-ad-identities)** 。 使用 SSMS 等工具连接到要从中复制数据或要将数据复制到其中的数据仓库，其 Azure AD 标识至少具有 ALTER ANY USER 权限。 运行以下 T-SQL。
   
     ```sql
     CREATE USER [your Data Factory name] FROM EXTERNAL PROVIDER;
@@ -424,7 +424,7 @@ SQL 数据仓库 PolyBase 直接支持 Azure Blob 和 Azure Data Lake Storage Ge
     | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | 帐户密钥身份验证、托管标识身份验证 |
 
     >[!IMPORTANT]
-    >如果 Azure 存储配置了 VNet 服务终结点，则必须使用托管标识身份验证 - 请参阅[将 VNet 服务终结点与 Azure 存储配合使用的影响](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)。 分别从 [Azure Blob - 托管标识身份验证](connector-azure-blob-storage.md#managed-identity)和 [Azure Data Lake Storage Gen2 - 托管标识身份验证](connector-azure-data-lake-storage.md#managed-identity)部分了解数据工厂中所需的配置。
+    >如果 Azure 存储配置了 VNet 服务终结点，则必须使用托管标识身份验证 - 请参阅[将 VNet 服务终结点与 Azure 存储配合使用的影响](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)。 分别从 [Azure Blob - 托管标识身份验证](connector-azure-blob-storage.md#managed-identity)和 [Azure Data Lake Storage Gen2 - 托管标识身份验证](connector-azure-data-lake-storage.md#managed-identity)部分了解数据工厂中所需的配置。
 
 2. 源数据格式为 Parquet、ORC 或带分隔符的文本，具有以下配置   ：
 
@@ -484,7 +484,7 @@ SQL 数据仓库 PolyBase 直接支持 Azure Blob 和 Azure Data Lake Storage Ge
 若要使用此功能，请创建 [Azure Blob 存储链接服务](connector-azure-blob-storage.md#linked-service-properties)，该服务引用使用临时 blob 存储的 Azure 存储帐户。 然后为复制活动指定 `enableStaging` 和 `stagingSettings` 属性，如以下代码所示。
 
 >[!IMPORTANT]
->如果临时 Azure 存储配置了 VNet 服务终结点，则必须使用托管标识身份验证 - 请参阅[将 VNet 服务终结点与 Azure 存储配合使用的影响](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)。 从 [Azure Blob - 托管标识身份验证](connector-azure-blob-storage.md#managed-identity)了解数据工厂中所需的配置。
+>如果临时 Azure 存储配置了 VNet 服务终结点，则必须使用托管标识身份验证 - 请参阅[将 VNet 服务终结点与 Azure 存储配合使用的影响](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)。 从 [Azure Blob - 托管标识身份验证](connector-azure-blob-storage.md#managed-identity)了解数据工厂中所需的配置。
 
 ```json
 "activities":[
@@ -602,12 +602,12 @@ SQL 数据仓库 [COPY 语句](https://docs.microsoft.com/sql/t-sql/statements/c
     | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | [带分隔符的文本](format-delimited-text.md)<br/>[Parquet](format-parquet.md)<br/>[ORC](format-orc.md) | 帐户密钥身份验证、服务主体身份验证、托管标识身份验证 |
 
     >[!IMPORTANT]
-    >如果 Azure 存储配置了 VNet 服务终结点，则必须使用托管标识身份验证 - 请参阅[将 VNet 服务终结点用于 Azure 存储的影响](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)。 请分别从 [Azure Blob - 托管标识身份验证](connector-azure-blob-storage.md#managed-identity)和 [Azure Data Lake Storage Gen2 - 托管标识身份验证](connector-azure-data-lake-storage.md#managed-identity)部分中了解数据工厂中所需的配置。
+    >如果 Azure 存储配置了 VNet 服务终结点，则必须使用托管标识身份验证 - 请参阅[将 VNet 服务终结点用于 Azure 存储的影响](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)。 请分别从 [Azure Blob - 托管标识身份验证](connector-azure-blob-storage.md#managed-identity)和 [Azure Data Lake Storage Gen2 - 托管标识身份验证](connector-azure-data-lake-storage.md#managed-identity)部分中了解数据工厂中所需的配置。
 
 2. 格式设置如下：
 
    1. 对于 Parquet：`compression` 可以为无压缩、Snappy或 GZip   。
-   2. 对于“ORC”：`compression` 可以是“无压缩”、“```zlib```”或“Snappy”。   
+   2. 对于“ORC”：`compression` 可以是“无压缩”、“```zlib```”或“Snappy”。
    3. 对于带分隔符的文本：
       1. `rowDelimiter` 显式设置为**单字符**或“\r\n”，不支持默认值。
       2. `nullValue` 保留默认值或设置为**空字符串** ("")。

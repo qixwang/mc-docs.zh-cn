@@ -4,39 +4,41 @@ description: 本文介绍在用于容器的 Azure Monitor 中如何在不使用 
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 05/22/2020
-ms.openlocfilehash: d681ad10a0fbc5141d5f58d93bea64d8e292776f
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.date: 07/17/2020
+ms.custom: references_regions
+ms.openlocfilehash: 553447a99c36848a24a0649a60e3a3ef604dcad9
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84200205"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244723"
 ---
 # <a name="how-to-view-metrics-in-real-time"></a>如何实时查看指标
 
-借助用于容器的 Azure Monitor 实时数据（预览版）功能，你可以实时可视化群集中有关节点和 pod 状态的指标。 它模拟对 `kubectl top nodes`、`kubectl get pods -all-namespaces` 和 `kubectl get nodes` 命令的直接访问，以调用、分析和可视化此见解中包含的性能图表中的数据。 
+借助用于容器的 Azure Monitor 实时数据（预览版）功能，你可以实时可视化群集中有关节点和 pod 状态的指标。 它模拟对 `kubectl top nodes`、`kubectl get pods -all-namespaces` 和 `kubectl get nodes` 命令的直接访问，以调用、分析和可视化此见解中包含的性能图表中的数据。
 
-本文详细介绍了此功能，并帮助你了解如何使用此功能。  
+本文详细介绍了此功能，并帮助你了解如何使用此功能。
 
 >[!NOTE]
->此功能不支持以[专用群集](https://azure.microsoft.com/updates/aks-private-cluster/)形式启用的 AKS 群集。 此功能依赖于从浏览器通过代理服务器直接访问 Kubernetes API。 启用网络安全以阻止来自此代理的 Kubernetes API 阻止此流量。 
+>此功能不支持以[专用群集](https://azure.microsoft.com/updates/aks-private-cluster/)形式启用的 AKS 群集。 此功能依赖于从浏览器通过代理服务器直接访问 Kubernetes API。 启用网络安全以阻止来自此代理的 Kubernetes API 阻止此流量。
 
 有关设置实时数据（预览版）功能或对其进行故障排除的帮助，请参阅[安装指南](container-insights-livedata-setup.md)。
 
-## <a name="how-it-works"></a>工作方式 
+## <a name="how-it-works"></a>工作方式
 
-实时数据（预览版）功能可直接访问 Kubernetes API；有关身份验证模型的其他信息，请参阅[此处](https://kubernetes.io/docs/concepts/overview/kubernetes-api/)。 
+实时数据（预览版）功能可直接访问 Kubernetes API；有关身份验证模型的其他信息，请参阅[此处](https://kubernetes.io/docs/concepts/overview/kubernetes-api/)。
 
-该功能对指标终结点（包括 `/api/v1/nodes`、`/apis/metrics.k8s.io/v1beta1/nodes` 和 `/api/v1/pods`）执行轮询操作，默认每 5 秒轮询一次。 这些数据缓存在浏览器中，你可以在用于容器的 Azure Monitor 中将它们绘制成四个性能图表，操作方法是在“群集”选项卡上选择“上线(预览)” 。 每个后续轮询都将绘制到一个滚动显示五分钟的可视化窗口中。 
+该功能对指标终结点（包括 `/api/v1/nodes`、`/apis/metrics.k8s.io/v1beta1/nodes` 和 `/api/v1/pods`）执行轮询操作，默认每 5 秒轮询一次。 这些数据缓存在浏览器中，你可以在用于容器的 Azure Monitor 中将它们绘制成四个性能图表，操作方法是在“群集”选项卡上为“实时”复选框选择“打开”  。 每个后续轮询都将绘制到一个滚动显示五分钟的可视化窗口中。 
+<!--Correct in MC: by selecting **On** for the **Live** checkbox-->
 
 ![“群集”视图中的“上线”选项](./media/container-insights-livedata-metrics/cluster-view-go-live-example-01.png)
 
-轮询间隔在“设置间隔”下拉列表中配置，允许你每 1、5、15 和 30 秒为新数据设置一次轮询。 
+轮询间隔在“设置间隔”下拉列表中配置，允许你每 1、5、15 和 30 秒为新数据设置一次轮询。
 
 ![“上线”下拉轮询间隔](./media/container-insights-livedata-metrics/cluster-view-polling-interval-dropdown.png)
 
 >[!IMPORTANT]
->建议将轮询间隔设置为 1 秒，并在较短的时间内排除问题。 这些请求可能会影响群集上 Kubernetes API 的可用性和限制。 然后，重新配置为更长的轮询间隔。 
+>建议将轮询间隔设置为 1 秒，并在较短的时间内排除问题。 这些请求可能会影响群集上 Kubernetes API 的可用性和限制。 然后，重新配置为更长的轮询间隔。
 
 >[!IMPORTANT]
 >此功能运行期间不会永久存储任何数据。 当你关闭浏览器或退出此功能时，在此会话期间捕获的所有信息将立即删除。 数据只在一个显示五分钟的窗口内以可视化效果呈现；任何超过五分钟的指标也将永久删除。
@@ -45,9 +47,9 @@ ms.locfileid: "84200205"
 
 ## <a name="metrics-captured"></a>指标捕获
 
-### <a name="node-cpu-utilization---node-memory-utilization-"></a>节点 CPU 利用率/节点内存利用率 
+### <a name="node-cpu-utilization---node-memory-utilization-"></a>节点 CPU 利用率/节点内存利用率
 
-这两个性能图表分别对应于调用 `kubectl top nodes` 并将 CPU% 和 MEMORY% 列的结果捕获到相应的图表 。 
+这两个性能图表分别对应于调用 `kubectl top nodes` 并将 CPU% 和 MEMORY% 列的结果捕获到相应的图表 。
 
 ![Kubectl top nodes 示例结果](./media/container-insights-livedata-metrics/kubectl-top-nodes-example.png)
 
@@ -79,7 +81,7 @@ ms.locfileid: "84200205"
 ![节点 pod 计数图表](./media/container-insights-livedata-metrics/cluster-view-node-pod-count.png)
 
 >[!NOTE]
->`kubectl` 解释的状态名称可能与图表中不完全一致。 
+>`kubectl` 解释的状态名称可能与图表中不完全一致。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -9,19 +9,19 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 03/02/2020
-ms.openlocfilehash: 908a8c004120cb55b0279589789557abc7e7dba8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 07/17/2020
+ms.openlocfilehash: fe00fbf84d42c1913adb8f8d05dc06bc8b89510f
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77501409"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471955"
 ---
 # <a name="indexing-documents-in-azure-data-lake-storage-gen2"></a>为 Azure Data Lake Storage Gen2 中的文档编制索引
 
 > [!IMPORTANT] 
 > Azure Data Lake Storage Gen2 支持目前以公共预览版提供。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。
-> 可以填写[此表单](https://aka.ms/azure-cognitive-search/indexer-preview)来请求访问预览版。 [REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供了此功能。 目前不支持门户或 .NET SDK。
+> 可以填写[此表单](https://aka.ms/azure-cognitive-search/indexer-preview)来请求访问预览版。 [REST API 版本 2020-06-30-Preview](search-api-preview.md) 提供此功能。 目前不支持门户或 .NET SDK。
 
 
 设置 Azure 存储帐户时，可以选择启用[分层命名空间](https://docs.azure.cn/storage/blobs/data-lake-storage-namespace)。 这样，就可以将帐户中的内容集合组织成目录和嵌套子目录的层次结构。 启用分层命名空间即可启用 [Azure Data Lake Storage Gen2](https://docs.azure.cn/storage/blobs/data-lake-storage-introduction)。
@@ -40,7 +40,7 @@ ms.locfileid: "77501409"
 
 收到预览版注册成功的确认消息后，便可以创建索引管道。
 
-可以使用 [REST API 版本 2019-05-06-Preview](search-api-preview.md) 来为 Data Lake Storage Gen2 中的内容和元数据编制索引。 目前不支持门户或 .NET SDK。
+可以使用 [REST API 版本 2020-06-30-Preview](search-api-preview.md) 来为 Data Lake Storage Gen2 中的内容和元数据编制索引。 目前不支持门户或 .NET SDK。
 
 为 Data Lake Storage Gen2 中的内容编制索引，与为 Azure Blob 存储中的内容编制索引相同。 若要了解如何设置 Data Lake Storage Gen2 数据源、索引和索引器，请参阅[如何使用 Azure 认知搜索为 Azure Blob 存储中的文档编制索引](search-howto-indexing-azure-blob-storage.md)。 “Blob 存储”一文还提供了支持的文档格式、提取的 Blob 元数据属性、增量索引等相关信息。 此信息同样适用于 Data Lake Storage Gen2。
 

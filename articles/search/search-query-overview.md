@@ -7,20 +7,20 @@ author: HeidiSteen
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 11/04/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: f7621f0c25fb42c117dc38ed8fd6665592610f10
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+origin.date: 06/22/2020
+ms.date: 07/20/2020
+ms.openlocfilehash: bef4f61daba7492d90daf8fed3c4c2d98e1acd11
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588550"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471843"
 ---
 # <a name="query-types-and-composition-in-azure-cognitive-search"></a>Azure 认知搜索中的查询类型和组成部分
 
-在 Azure 认知搜索中，查询是往返操作的完整规范。 请求中的参数提供匹配条件用于查找索引中的文档、要包含或排除的字段、传递给引擎的执行指令，以及用于调整响应的指令。 如果未指定这些内容 (`search=*`)，查询会作为全文搜索操作针对所有可搜索字段运行，返回一个任意排序的未评分结果集。
+在 Azure 认知搜索中，查询是往返操作的完整规范。 在请求中，有参数可为引擎提供执行指令，还有参数来形成要返回的响应。 如果未指定这些内容 (`search=*`)、不使用匹配条件以及使用 null 或默认参数，查询会作为全文搜索操作针对所有可搜索字段执行，返回一个任意排序的未评分结果集。
 
-以下示例是在 [REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 中构造的代表性查询。 此示例针对[酒店演示索引](search-get-started-portal.md)并包含通用参数。
+以下示例是在 [REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 中构造的代表性查询。 该示例针对的是[酒店演示索引](search-get-started-portal.md)，它包含常见参数，让你能够了解到查询是什么样子的。
 
 ```
 {
@@ -36,25 +36,33 @@ ms.locfileid: "82588550"
 
 + **`queryType`** 设置分析器，该分析器可以是[默认的简单查询分析器](search-query-simple-examples.md)（最适合用于全文搜索），也可以是[完整的 Lucene 查询分析器](search-query-lucene-examples.md)（用于正则表达式、邻近搜索、模糊和通配符搜索等高级查询构造）。
 
-+ **`search`** 提供匹配条件（通常是文本，但往往附带布尔运算符）。 包含单个独立字词的查询称为字词查询。  由括在引号中的多个部分组成的查询称为关键短语查询。  搜索可以是未定义的（例如 **`search=*`** ），但搜索更有可能包含字词、短语和运算符，如以下示例中所示。
++ `search` 提供匹配条件（通常是整个搜索词或短语，但往往带有布尔运算符）。 包含单个独立字词的查询称为字词查询。 由括在引号中的多个部分组成的查询称为短语查询。 搜索可以不用定义（如 `search=*` 中所示），但如果没有要匹配的条件，则结果集由任意选定的文档组成。
 
 + **`searchFields`** 将查询执行约束为特定的字段。 在索引架构中设置了 *searchable* 属性的任何字段都适合指定此参数。
 
-还可以通过查询中包含的参数来调整响应。 在本示例中，结果集包含 **`select`** 语句中列出的字段。 只有标记为 *retrievable* 的字段才能在 $select 语句中使用。 此外，只会在此查询中返回 **`top`** 10 个命中项，而 **`count`** 告知总共有多少个匹配的文档，该数目可能超过返回的结果数。 在此查询中，行已按“评级”的降序排序。
+还可通过查询中包含的参数来调整响应：
+
++ `select` 指定要在响应中返回哪些字段。 仅可在 select 语句中使用索引内标记为“可检索”的字段。
+
++ `top` 返回指定数目的最匹配的文档。 在本例中，仅返回 10 个命中项。 你可使用 top 和 skip（未显示）分页显示结果。
+
++ `count` 指出整体上整个索引中多少文档匹配，该数目可能比返回的数目多。 
+
++ 如果你想要按值（例如排名或位置）对结果分类，则使用 `orderby`。 否则，默认使用相关性分数对结果进行排名。
 
 在 Azure 认知搜索中，查询执行始终针对一个使用请求中提供的 API 密钥进行身份验证的索引。 在 REST 中，两者均在请求标头中提供。
 
 ### <a name="how-to-run-this-query"></a>如何运行此查询
 
-若要执行此查询，请使用[搜索浏览器和酒店演示索引](search-get-started-portal.md)。 
+在编写任何代码之前，你都可使用查询工具来学习语法并用不同的参数进行试验。 最快捷的方法是使用内置门户工具 - [搜索浏览器](search-explorer.md)。
 
-可将此查询字符串粘贴到浏览器的搜索栏中：`search=+"New York" +restaurant&searchFields=Description, Address/City, Tags&$select=HotelId, HotelName, Description, Rating, Address/City, Tags&$top=10&$orderby=Rating desc&$count=true`
+如果按照这份[关于创建酒店演示索引的快速入门](search-get-started-portal.md)操作，则可将此查询字符串粘贴到浏览器的搜索栏中来运行你的第一个查询：`search=+"New York" +restaurant&searchFields=Description, Address/City, Tags&$select=HotelId, HotelName, Description, Rating, Address/City, Tags&$top=10&$orderby=Rating desc&$count=true`
 
 ## <a name="how-query-operations-are-enabled-by-the-index"></a>索引如何启用查询操作
 
-索引设计和查询设计在 Azure 认知搜索中紧密耦合。 需要提前知道的一个重要事实是，包含每个字段中属性的索引架构确定了可以生成的查询类型。  
+索引设计和查询设计在 Azure 认知搜索中紧密耦合。 需要提前知道的一个重要事实是，包含每个字段中属性的索引架构确定了可以生成的查询类型。 
 
-字段中的索引属性设置允许的操作 - 字段在索引中是否可搜索、在结果中是否可检索、是否可排序、是否可筛选，等等。     在示例查询字符串中，只有 `"$orderby": "Rating"` 可以正常工作，因为 Rating 字段在索引架构中标记为 *sortable*。 
+字段中的索引属性设置允许的操作 - 字段在索引中是否可搜索、在结果中是否可检索、是否可排序、是否可筛选，等等。 在示例查询字符串中，只有 `"$orderby": "Rating"` 可以正常工作，因为 Rating 字段在索引架构中标记为 *sortable*。 
 
 ![酒店示例的索引定义](./media/search-query-overview/hotel-sample-index-definition.png "酒店示例的索引定义")
 
@@ -142,7 +150,7 @@ Azure 认知搜索支持广泛的查询类型。
 
 + 将 **`searchMode=any`** （默认）更改为 **`searchMode=all`** 可获取符合所有条件而不是某个条件的匹配项。 在查询包含布尔运算符时更应如此。
 
-+ 如果需要进行文本或词法分析但查询类型排除了语言处理环节，请更改查询方法。 在全文搜索中，文本或词法分析会自动更正拼写错误、单复数形式以及不合规范的谓词或名词。 对于模糊搜索和通配符搜索等查询，其查询分析管道中不包含文本分析。 在某些情况下会采用正则表达式作为解决方法。 
++ 如果需要进行文本或词法分析但查询类型排除了语言处理环节，请更改查询方法。 在全文搜索中，文本或词法分析会自动更正拼写错误、单复数形式以及不合规范的谓词或名词。 对于模糊搜索和通配符搜索等一些查询，其查询分析管道中不包含词法分析。 在某些情况下会采用正则表达式作为解决方法。 
 
 ### <a name="paging-results"></a>分页结果
 Azure 认知搜索可轻松对搜索结果进行分页。 使用 **`top`** 和 **`skip`** 参数可顺利地发出搜索请求，接收搜索结果总集，并通过其中易于管理的有序子集轻松完成效果良好的搜索 UI 操作。 接收较小的结果子集时，还可以在搜索结果总集中获得文档计数。

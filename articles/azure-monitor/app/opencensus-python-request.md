@@ -4,13 +4,14 @@ description: 使用 OpenCensus Python 监视 Python 应用的请求调用。
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 05/25/2020
-ms.openlocfilehash: 38f906950473237dac3ba7856d48b73c9d241056
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.date: 07/17/2020
+ms.custom: tracking-python
+ms.openlocfilehash: 7cfc289adf2b0dadbd6135566a495881ee53fc4e
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84200262"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244569"
 ---
 # <a name="track-incoming-requests-with-opencensus-python"></a>使用 OpenCensus Python 跟踪传入请求
 
@@ -32,7 +33,7 @@ ms.locfileid: "84200262"
     )
     ```
 
-3. 确保 AzureExporter 已在 `settings.py` 中的 `OPENCENSUS` 下正确配置。
+3. 确保 AzureExporter 已在 `settings.py` 中的 `OPENCENSUS` 下正确配置。 对于来自不想跟踪的 URL 的请求，请将其添加到 `BLACKLIST_PATHS` 中。
 
     ```python
     OPENCENSUS = {
@@ -41,20 +42,7 @@ ms.locfileid: "84200262"
             'EXPORTER': '''opencensus.ext.azure.trace_exporter.AzureExporter(
                 connection_string="InstrumentationKey=<your-ikey-here>"
             )''',
-        }
-    }
-    ```
-
-4. 也可以将不想跟踪的请求的 URL 添加到 `settings.py` 的 `BLACKLIST_PATHS` 下。
-
-    ```python
-    OPENCENSUS = {
-        'TRACE': {
-            'SAMPLER': 'opencensus.trace.samplers.ProbabilitySampler(rate=0.5)',
-            'EXPORTER': '''opencensus.ext.azure.trace_exporter.AzureExporter(
-                connection_string="InstrumentationKey=<your-ikey-here>",
-            )''',
-            'BLACKLIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent from it.
+            'BLACKLIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent to it.
         }
     }
     ```
@@ -86,7 +74,7 @@ ms.locfileid: "84200262"
     
     ```
 
-2. 可以直接在代码中配置 `flask` 中间件。 对于来自不想跟踪的 URL 的请求，请将其添加到 `BLACKLIST_PATHS` 中。
+2. 你也可通过 `app.config` 配置 `flask` 应用程序。 对于来自不想跟踪的 URL 的请求，请将其添加到 `BLACKLIST_PATHS` 中。
 
     ```python
     app.config['OPENCENSUS'] = {

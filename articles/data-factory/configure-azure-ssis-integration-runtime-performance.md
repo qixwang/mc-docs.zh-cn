@@ -3,7 +3,7 @@ title: 配置 Azure-SSIS 集成运行时的性能
 description: 了解如何配置高性能 Azure-SSIS Integration Runtime 的属性
 services: data-factory
 origin.date: 01/10/2018
-ms.date: 06/29/2020
+ms.date: 07/27/2020
 ms.topic: conceptual
 ms.service: data-factory
 ms.workload: data-services
@@ -11,12 +11,12 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: ''
 manager: digimobile
-ms.openlocfilehash: 489df1bf6c14f4d60b5bfc650df179d65b9b598a
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+ms.openlocfilehash: 27855b3965d5be49ee23c0990edf301239eed434
+ms.sourcegitcommit: 0eaa82cf74477d26d06bdd8fb6e715e6ed1339c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85321226"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86974312"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>配置高性能 Azure-SSIS Integration Runtime
 
@@ -70,7 +70,7 @@ $SSISDBPricingTier = "[Basic|S0|S1|S2|S3|S4|S6|S7|S9|S12|P1|P2|P4|P6|P11|P15|…
 ```
 
 ## <a name="azuressislocation"></a>AzureSSISLocation
-AzureSSISLocation 是 Integration Runtime 辅助角色节点的位置。 该工作器节点始终连接到 Azure SQL 数据库中的 SSIS 目录数据库 (SSISDB)。 将 AzureSSISLocation 位置设置为与托管 SSISDB 的 SQL 数据库服务器相同，确保集成运行时尽可能有效运行。
+AzureSSISLocation 是 Integration Runtime 辅助角色节点的位置。 该工作器节点始终连接到 Azure SQL 数据库中的 SSIS 目录数据库 (SSISDB)。 将“AzureSSISLocation”设置为与托管 SSISDB 的[逻辑 SQL Server ](../azure-sql/database/logical-servers.md)相同的位置，这可以使集成运行时尽可能高效运行。
 
 ## <a name="azuressisnodesize"></a>AzureSSISNodeSize
 数据工厂（包括 Azure-SSIS IR）支持以下选项：
@@ -151,7 +151,7 @@ AzureSSISNodeNumber 调整 Integration Runtime 的可伸缩性。 Integration Ru
 
 ## <a name="ssisdbpricingtier"></a>SSISDBPricingTier
 
-SSISDBPricingTier 是 Azure SQL 数据库上 SSIS 目录数据库 (SSISDB) 的定价层。 此设置影响 IR 实例中的最大辅助角色节点数、包执行排队速度以及执行日志加载速度。
+“SSISDBPricingTier”是 Azure SQL 数据库中 SSIS 目录数据库 (SSISDB) 的定价层。 此设置影响 IR 实例中的最大辅助角色节点数、包执行排队速度以及执行日志加载速度。
 
 -   如果不关注包执行排队和执行日志加载速度，可以选择最低的数据库定价层。 使用基本定价的 Azure SQL 数据库在 Integration Runtime 实例中支持 8 个辅助角色节点。
 

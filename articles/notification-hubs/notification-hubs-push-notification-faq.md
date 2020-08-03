@@ -5,25 +5,23 @@ services: notification-hubs
 documentationcenter: mobile
 author: sethmanheim
 manager: femila
-editor: jwargo
 keywords: 推送通知, 推送通知, iOS 推送通知, android 推送通知, ios 推送, android 推送
-ms.assetid: 7b385713-ef3b-4f01-8b1f-ffe3690bbd40
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
 origin.date: 11/13/2019
-ms.date: 07/01/2020
+ms.date: 07/21/2020
 ms.author: v-tawe
 ms.reviewer: jowargo
 ms.lastreviewed: 11/13/2019
-ms.openlocfilehash: d4ca872f695b90b102fdd5f403360d6379daa9d4
-ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
+ms.openlocfilehash: 27563b73aa1bae5f77b8cdb1baa2cc31092f545c
+ms.sourcegitcommit: 5656c18d7d2faa09329b1a15e352d1622e252d5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85796252"
+ms.lasthandoff: 07/21/2020
+ms.locfileid: "86862826"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>使用 Azure 通知中心推送通知：常见问题
 
@@ -70,7 +68,7 @@ Azure 通知中心有两个资源级别：中心和命名空间。 中心是单�
 
 ### <a name="which-client-platforms-do-you-support"></a>支持哪些客户端平台？
 
-[iOS](notification-hubs-ios-apple-push-notification-apns-get-started.md)、[Windows Universal](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)、[Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md)、[Android China（通过百度）](notification-hubs-baidu-china-android-notifications-get-started.md)、Xamarin ([iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md)) 和 [Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari) 支持推送通知。 有关详细信息，请转到[通知中心入门教程]页。
+[iOS](ios-sdk-get-started.md)、[Windows Universal](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)、[Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md)、[Android China（通过百度）](notification-hubs-baidu-china-android-notifications-get-started.md)、Xamarin [iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md) 和 [Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari) 支持推送通知。 有关详细信息，请参阅[通知中心入门教程](ios-sdk-get-started.md)页。
 
 ### <a name="do-you-support-text-message-email-or-web-notifications"></a>是否支持短信、电子邮件或 Web 通知？
 
@@ -128,7 +126,7 @@ PNS 对于传递通知不提供任何 SLA 保证。 但是，大多数推送通�
 
 #### <a name="geo-distribution"></a>地理分布
 
-在推送通知方案中，地理分布并非总是关键所在。 用于向设备传递推送通知的各个 PNS（例如 APNS）不是均匀分布的。
+在推送通知方案中，地理分布并非总是关键所在。 用于向设备传递推送通知的各个 PNS（例如 APNs 或百度）不会均匀分布。
 
 如果有一个在全球范围内使用的应用程序，可以在全球不同的 Azure 区域使用通知中心服务在命名空间中创建中心。
 
@@ -207,7 +205,6 @@ Azure 通知中心允许在 [Azure 门户]中查看遥测数据。 可以在[通
 [通知中心定价]: https://www.azure.cn/pricing/details/notification-hubs/
 [Notification Hubs SLA]: https://www.azure.cn/support/legal/sla/
 [通知中心 REST API]: https://msdn.microsoft.com/library/azure/dn530746.aspx
-[通知中心入门教程]: ./notification-hubs-ios-apple-push-notification-apns-get-started.md
 [Mobile Services Pricing]: https://www.azure.cn/pricing/details/mobile-services/
 [后端注册指南]: https://msdn.microsoft.com/library/azure/dn743807.aspx
 [后端注册指南 2]: https://msdn.microsoft.com/library/azure/dn530747.aspx

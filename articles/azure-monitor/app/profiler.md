@@ -4,34 +4,35 @@ description: 使用 Application Insights Profiler 探查 Azure 应用服务上�
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 05/28/2020
+ms.date: 07/17/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 5cb26e4041da86d7a0f13569202cd2761e1d7a47
-ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
+ms.openlocfilehash: 84e9c706eff174f69c9b2bf0f5f398b7fbe2aee4
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84440733"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244576"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>使用 Application Insights 探查实时 Azure 应用服务应用
 
-你可以在使用基本服务层级或更高层级的 Azure 应用服务上运行的 ASP.NET 和 ASP.NET Core 应用上运行 Profiler。
+可以在使用基本服务层级或更高层级的 Azure 应用服务上运行的 ASP.NET 和 ASP.NET Core 应用中运行 Profiler。
+<!--Not available in MC: profiler-aspnetcore-linux.md-->
 
 ## <a name="enable-profiler-for-your-app"></a><a id="installation"></a> 为应用启用 Profiler
 若要为应用启用 Profiler，请遵循下面的说明。 如果你在运行另一种类型的 Azure 服务，则下面提供了用于在其他受支持平台上启用 Profiler 的说明：
-* [云服务](../../azure-monitor/app/profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
-* [Service Fabric 应用程序](../../azure-monitor/app/profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
-* [虚拟机](../../azure-monitor/app/profiler-vm.md?toc=/azure/azure-monitor/toc.json)
+* [云服务](../../azure-monitor/app/profiler-cloudservice.md?toc=/azure-monitor/toc.json)
+* [Service Fabric 应用程序](../../azure-monitor/app/profiler-servicefabric.md?toc=/azure-monitor/toc.json)
+* [虚拟机](../../azure-monitor/app/profiler-vm.md?toc=/azure-monitor/toc.json)
 
-Application Insights Profiler 是作为应用服务运行时的一部分预先安装的。 下面的步骤将展示如何为应用服务启用它。 请遵循这些步骤，即使你在构建时已在你的应用中包括了 App Insights SDK。
+Application Insights Profiler 是作为应用服务运行时的一部分预先安装的。 下面的步骤将说明如何为应用服务启用它。 即使在生成时已在应用程序中包含了 App Insights SDK，也应该执行这些步骤。
 
-1. 为你的应用服务启用“Always On”设置。 你可以在应用服务的“配置”页面中在“常规设置”下更新设置。
-1. 转到 Azure 门户中的“应用服务”窗格。
-1. 导航到“设置”>“Application Insights”窗格。
+1. 导航到应用服务的 Azure 控制面板。
+1. 为应用服务启用“Always On”设置。 可以在“设置”>“配置”页面下找到该设置（参阅下一步中的屏幕截图），然后单击“常规设置”选项卡  。
+1. 导航到“设置”>“Application Insights”页面。
 
    ![在应用服务门户上启用 App Insights](./media/profiler/AppInsights-AppServices.png)
 
-1. 按窗格中的说明创建新资源，或者选择现有的 App Insights 资源，以便监视应用。 此外，请确保 Profiler 已启用。 如果你的 Application Insights 资源位于与应用服务不同的订阅中，则无法使用此页面来配置 Application Insights。 你仍然可以通过手动创建所需的应用设置来手动执行此操作。 [下一部分包含有关手动启用 Profiler 的说明。](#enable-profiler-manually-or-with-azure-resource-manager) 
+1. 按窗格中的说明创建新资源，或者选择现有的 App Insights 资源，以便监视应用。 此外，请确保 Profiler 已启用。 如果 Application Insights 资源位于与应用服务不同的订阅中，则无法使用此页来配置 Application Insights。 你仍然可以通过手动创建所需的应用设置来手动执行此操作。 [下一部分包含有关手动启用 Profiler 的说明。](#enable-profiler-manually-or-with-azure-resource-manager) 
 
    ![添加 App Insights 站点扩展][Enablement UI]
 
@@ -40,8 +41,8 @@ Application Insights Profiler 是作为应用服务运行时的一部分预先�
     ![Profiler 的应用设置][profiler-app-setting]
 
 ## <a name="enable-profiler-manually-or-with-azure-resource-manager"></a>手动或使用 Azure 资源管理器启用 Profiler
-可以通过为你的 Azure 应用服务创建应用设置来启用 Application Insights Profiler。 包含如上所示选项的页面为你创建这些应用设置。 但是，你可以使用模板或其他方式自动创建这些设置。 如果你的 Application Insights 资源与 Azure 应用服务处于不同的订阅中，这些设置也将起作用。
-下面是启用 Profiler 时需要执行的配置：
+可以通过为 Azure 应用服务创建应用设置来启用 Application Insights Profiler。 包含如上所示选项的页面将为你创建这些应用设置。 但是，也可以使用模板或其他方式自动创建这些设置。 如果 Application Insights 资源与 Azure 应用服务位于不同的订阅中，这些设置也将起作用。
+下面是启用 Profiler 所需的设置：
 
 |应用设置    | Value    |
 |---------------|----------|
@@ -50,26 +51,26 @@ Application Insights Profiler 是作为应用服务运行时的一部分预先�
 |DiagnosticServices_EXTENSION_VERSION | ~3 |
 
 
-可以使用 [Azure 资源管理器模板](../../azure-monitor/app/azure-web-apps.md#app-service-application-settings-with-azure-resource-manager)、[Azure Powershell](https://docs.microsoft.com/powershell/module/az.websites/set-azwebapp)、[Azure CLI](/cli/webapp/config/appsettings?view=azure-cli-latest) 设置这些值。
+可以使用 [Azure 资源管理器模板](../../azure-monitor/app/azure-web-apps.md#app-service-application-settings-with-azure-resource-manager)、[Azure PowerShell](https://docs.microsoft.com/powershell/module/az.websites/set-azwebapp)、[Azure CLI](/cli/webapp/config/appsettings?view=azure-cli-latest) 设置这些值。
 
 ### <a name="enabling-profiler-for-other-clouds-manually"></a>手动为其他云启用 Profiler
 
 如果要为其他云启用 Profiler，可以使用以下应用设置。
 
-|应用设置    | 美国政府值| 中国云 |   
+|应用设置    | 美国政府云的值| 中国云 |   
 |---------------|---------------------|-------------|
 |ApplicationInsightsProfilerEndpoint         | `https://agent.serviceprofiler.azure.us`    | `https://profiler.applicationinsights.azure.cn` |
 |ApplicationInsightsEndpoint | `https://dc.applicationinsights.us` | `https://dc.applicationinsights.azure.cn` |
 
 ## <a name="disable-profiler"></a>禁用 Profiler
 
-若要为单个应用实例停止或重启 Profiler，请在“Web 作业”下转到“应用资源”。 若要删除 Profiler，请转到“扩展”。
+若要为单个应用实例停止或重启 Profiler，请转到“Web 作业”并停止名为 ApplicationInsightsProfiler3 的 Web 作业。 即使已根据前面所述使用 Application Insights 页上的开关禁用了 Profiler，Profiler 进程也仍会运行。 Profiler 将检查它是否已启用。 如果已禁用，它会休眠一段时间，然后再次检查。 已禁用的 Profiler 不会执行任何探查。 如果禁用此 Web 作业，则 Profiler 进程根本不会运行，甚至不会检查它是否已启用。
 
-![禁用针对 Web 作业的 Profiler][disable-profiler-webjob]
+  ![禁用针对 Web 作业的 Profiler][disable-profiler-webjob]
 
 建议在所有应用上都启用 Profiler，以便尽早发现任何性能问题。
 
-使用 WebDeploy 将更改部署到 Web 应用程序时可能会删除 Profiler 的文件。 可以通过从部署期间的删除中排除 App_Data 文件夹来防止此删除。 
+使用 WebDeploy 将更改部署到 Web 应用程序时可能会删除 Profiler 的文件。 可以通过在部署期间排除 App_Data 文件夹的删除来防止发生这种删除。 
 
 
 ## <a name="next-steps"></a>后续步骤

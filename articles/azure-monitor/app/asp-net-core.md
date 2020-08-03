@@ -1,17 +1,17 @@
 ---
-title: 适用于 ASP.NET Core 的 Azure Application Insights | Azure Docs
+title: 适用于 ASP.NET Core 应用程序的 Azure Application Insights | Azure Docs
 description: 监视 ASP.NET Core Web 应用程序的可用性、性能和使用情况。
 ms.topic: conceptual
 origin.date: 05/22/2019
 author: Johnnytechn
-ms.date: 05/28/2020
-ms.author: v-vss
-ms.openlocfilehash: 06f71607cd59ec392cec9c5e1d4e432bfdcd8ee3
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.date: 07/17/2020
+ms.author: v-johya
+ms.openlocfilehash: 9ef6357fc41ddd62b9f136d22fe7cc7eed062f53
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199628"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244846"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>适用于 ASP.NET Core 应用程序的 Application Insights
 
@@ -24,8 +24,8 @@ ms.locfileid: "84199628"
 无论在何处以何种方式运行你的应用程序，[适用于 ASP.NET Core 的 Application Insights SDK](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) 都可对其进行监视。 如果应用程序正在运行并与 Azure 建立了网络连接，则可以收集遥测数据。 只要支持 .NET Core，就能支持 Application Insights 监视。 支持范围包括：
 * **操作系统**：Windows、Linux 或 Mac。
 * **托管方法**：进程内或进程外。
-* **部署方法**：框架相关或独立。
-* **Web 服务器**：IIS (Internet Information Server) 或 Kestrel。
+* 部署方法：框架依赖或自包含。
+* Web 服务器：IIS（Internet 信息服务器）或 Kestrel。
 * **托管平台**：Azure 应用服务的 Web 应用功能、Azure VM、Docker、Azure Kubernetes 服务 (AKS) 等。
 * **.NET Core 运行时版本**：1.XX、2.XX 或 3.XX
 * **IDE**：Visual Studio、VS Code 或命令行。
@@ -43,23 +43,23 @@ ms.locfileid: "84199628"
 1. 在 Visual Studio 中打开项目。
 
     > [!TIP]
-    > 如果需要，可为项目设置源代码管理，以便可以跟踪 Application Insights 做出的所有更改。 若要启用源代码管理，请选择“文件” > “添加到源代码管理”。 
+    > 如果需要，可为项目设置源代码管理，以便可以跟踪 Application Insights 做出的所有更改。 若要启用源代码管理，请选择“文件” > “添加到源代码管理”。
 
 2. 选择“项目” > “添加 Application Insights 遥测” 。
 
 3. 选择“入门”。 选项文本根据 Visual Studio 版本的不同而异。 在某些早期版本中，使用的是“免费开始”按钮。
 
-4. 选择订阅。 然后选择“资源” > “注册”。 
+4. 选择订阅。 然后选择“资源” > “注册”。
 
-5. 将 Application Insights 添加到项目后，确认使用的是最新稳定版本的 SDK。 转到“项目” > “管理 NuGet 包” > “Microsoft.ApplicationInsights.AspNetCore”。   根据需要选择“更新”。
+5. 将 Application Insights 添加到项目后，确认使用的是最新稳定版本的 SDK。 转到“项目” > “管理 NuGet 包” > “Microsoft.ApplicationInsights.AspNetCore”。 根据需要选择“更新”。
 
      ![显示在何处选择要更新的 Application Insights 包的屏幕截图](./media/asp-net-core/update-nuget-package.png)
 
-6. 如果你已遵循可选的提示操作并已将项目添加到源代码管理，请转到“视图” > “团队资源管理器” > “更改”。   然后选择每个文件，以查看 Application Insights 遥测功能所做的更改的差异视图。
+6. 如果你已遵循可选的提示操作并已将项目添加到源代码管理，请转到“视图” > “团队资源管理器” > “更改”。 然后选择每个文件，以查看 Application Insights 遥测功能所做的更改的差异视图。
 
 ## <a name="enable-application-insights-server-side-telemetry-no-visual-studio"></a>启用 Application Insights 服务器端遥测（不使用 Visual Studio）
 
-1. 安装[适用于 ASP.NET Core 的 Application Insights SDK NuGet 包](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore)。 我们建议始终使用最新稳定版本。 在[开源 GitHub 存储库](https://github.com/Microsoft/ApplicationInsights-aspnetcore/releases)中可以找到 SDK 的完整发行说明。
+1. 安装[适用于 ASP.NET Core 的 Application Insights SDK NuGet 包](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore)。 我们建议始终使用最新稳定版本。 在[开源 GitHub 存储库](https://github.com/Microsoft/ApplicationInsights-dotnet/releases)中可以找到 SDK 的完整发行说明。
 
     以下代码示例演示了要添加到项目的 `.csproj` 文件中的更改。
 
@@ -144,7 +144,7 @@ ms.locfileid: "84199628"
 * 如果应用程序在 Azure Web 应用 (Windows) 中运行，则 SDK 2.4.1 和更高版本将收集性能计数器。
 * 如果应用程序在 Windows 中运行，并且面向 `NETSTANDARD2.0` 或更高版本，则 SDK 2.7.1 和更高版本将收集性能计数器。
 * 对于面向 .NET Framework 的应用程序，所有版本的 SDK 都支持性能计数器。
-* SDK 2.8.0 版和更高版本支持 Linux 中的 cpu/内存计数器。 Linux 不支持其他计数器。 在 Linux（和其他非 Windows 环境）中，获取系统计数器的建议方法是使用 [EventCounter](#eventcounter)
+* SDK 2.8.0 及更高版本在 Linux 中支持 cpu/memory 计数器， 但不在 Linux 中支持其他计数器。 在 Linux（和其他非 Windows 环境）中，获取系统计数器的建议方法是使用 [EventCounter](#eventcounter)
 
 ### <a name="eventcounter"></a>EventCounter
 

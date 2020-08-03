@@ -10,16 +10,16 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-origin.date: 09/10/2019
-ms.date: 04/06/2020
+origin.date: 04/29/2020
+ms.date: 07/27/2020
 ms.author: v-jay
 ms.custom: seodec18
-ms.openlocfilehash: e8ed4df510b70071854f2210f3be88d75d0eaaba
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 9181da01007f7e18fc9d0f5c1ca17fb1a5c9bb3a
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80625794"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162140"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>使用媒体服务编码视频和音频
 
@@ -99,7 +99,10 @@ ms.locfileid: "80625794"
 
 - **EncoderNamedPreset.AACGoodQualityAudio**：生成一个 MP4 文件，其中仅包含以 192 kbps 编码的立体声音频。
 - **EncoderNamedPreset.AdaptiveStreaming**（推荐）：有关详细信息，请参阅[自动生成比特率梯形图](autogen-bitrate-ladder.md)。
-- **EncoderNamedPreset.ContentAwareEncodingExperimental**：公开内容感知编码的试验性预设。 在提供任何输入内容的情况下，服务将尝试自动确定最佳层数，以及自适应流式处理适合使用的比特率和分辨率设置。 底层算法将不断演进。 输出将包含带有交错式视频和音频的 MP4 文件。 有关详细信息，请参阅[内容感知编码的试验性预设](content-aware-encoding.md)。
+- **EncoderNamedPreset.ContentAwareEncoding**：公开内容感知编码的预设。 在提供任何输入内容的情况下，服务将尝试自动确定最佳层数，以及自适应流式处理适合使用的比特率和分辨率设置。 底层算法将不断演进。 输出将包含带有交错式视频和音频的 MP4 文件。 有关详细信息，请参阅[内容感知编码](content-aware-encoding.md)。
+
+  > [!NOTE]
+  > 请确保使用 ContentAwareEncoding 而不使用 ContentAwareEncodingExperimental。
 - **EncoderNamedPreset.H264MultipleBitrate1080p**：生成一组 8 GOP 对齐的 MP4 文件（范围从 6000 kbps 到 400 kbps）和立体声 AAC 音频。 起始分辨率为 1080p，之后下降到 360p。
 - **EncoderNamedPreset.H264MultipleBitrate720p**：生成一组 6 GOP 对齐的 MP4 文件（范围从 3400 kbps 到 400 kbps）和立体声 AAC 音频。 起始分辨率为 720p，之后下降到 360p。
 - **EncoderNamedPreset.H264MultipleBitrateSD**：生成一组 5 GOP 对齐的 MP4 文件（范围从 1600 kbps 到 400 kbps）和立体声 AAC 音频。 起始分辨率为 480p，之后下降到 360p。

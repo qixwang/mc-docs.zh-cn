@@ -6,15 +6,17 @@ author: rockboyfor
 ms.service: virtual-machines
 ms.topic: include
 origin.date: 03/31/2019
-ms.date: 07/06/2020
+ms.date: 07/27/2020
+ms.testscope: yes
+ms.testdate: 07/13/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 18b35f1a62f10bd2c251fb422136f6efe892ec6d
-ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
+ms.openlocfilehash: a0685504b7b6ff21f0f6a3ae7b22dbdc9dc0391e
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85945631"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87260207"
 ---
 本文将对有关 Azure 托管磁盘和 Azure 高级 SSD 盘的一些常见问题进行解答。
 
@@ -121,7 +123,7 @@ Azure 托管磁盘当前仅支持本地冗余存储托管磁盘。
 否。 无法更新计算机名称属性。 新 VM 从创建操作系统磁盘时所用的父 VM 继承该属性。 
 
 在哪里可找到用于使用托管磁盘创建 VM 的示例 Azure 资源管理器模板？
-* [List of templates using Managed Disks](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md)（使用托管磁盘的模板列表）
+* [List of templates using Managed Disks](https://github.com/Azure/azure-quickstart-templates/)（使用托管磁盘的模板列表）
 * https://github.com/chagarw/MDPP
 
 **基于 blob 创建磁盘时，与该源 blob 之间是否会一直保持任何现有关系？**
@@ -143,10 +145,10 @@ Azure 托管磁盘当前仅支持本地冗余存储托管磁盘。
 高级 SSD、标准 SSD 和标准 HDD 支持快照。 对于这三种磁盘类型，所有磁盘大小（包括最大为 32 TiB 的磁盘）都支持快照。
 
 <!--Not Available on Ultra SSDs do not support snapshots.-->
-<!--Not Available on ### Disk reservation-->
-
+<!--Not Available on disk reservations-->
 <!--Not Available on ### Azure shared disks-->
 <!--Not Available on ## Ultra disks-->
+
 ## <a name="uploading-to-a-managed-disk"></a>上传到托管磁盘
 
 **是否可将数据上传到现有的托管磁盘？**
@@ -306,8 +308,13 @@ DS 系列的缓存和本地 SSD 合并限制是每个核心 4,000 IOPS，以及�
 
 ## <a name="new-disk-sizes-managed-and-unmanaged"></a>新磁盘大小：托管和非托管
 
-<!--Not Avaialble on **What regions support bursting capability for applicable premium SSD disk size?**-->
-<!--Not Avaialble on **What regions are 4/8/16 GiB Managed Disk sizes (P1/P2/P3, E1/E2/E3) supported in?**-->
+哪些区域对于适用的高级 SSD 磁盘大小支持突发功能？
+
+目前，Azure 中国云中的所有区域都支持突发功能。 
+
+哪些区域支持 4/8/16 GiB 托管磁盘大小（P1/P2/P3、E1/E2/E3）？
+
+目前，Azure 中国云中的所有区域都支持这些新磁盘大小。 
 
 **非托管磁盘或页 blob 是否支持 P1/P2/P3 磁盘大小？**
 
@@ -320,8 +327,6 @@ DS 系列的缓存和本地 SSD 合并限制是每个核心 4,000 IOPS，以及�
 **操作系统和数据磁盘支持的最大托管磁盘大小是多少？**
 
 Azure 支持的操作系统磁盘的分区类型是主启动记录 (MBR)。 MBR 格式支持的磁盘最大大小为 2 TiB。 Azure 支持的操作系统磁盘的最大大小为 2 TiB。 Azure 支持的托管数据磁盘最大大小为 32 TiB。
-
-<!--Correct Disk size up to 32 TiB-->
 
 **操作系统和数据磁盘支持的最大非托管磁盘大小是多少？**
 
@@ -380,7 +385,7 @@ Azure 全球、 Microsoft Azure 政府和 Azure 中国世纪互联涵盖的所�
 
 **是否支持在所有磁盘大小上启用主机缓存？**
 
-我们支持在小于 4 TiB 的磁盘大小上启用只读和读/写主机缓存。 对于超过 4 TiB 的磁盘大小，除提供“无”选项外，我们并不支持设置缓存选项。 建议利用较小磁盘大小的缓存，以便通过缓存到 VM 的数据观察到明显的性能提升。
+4 TiB 以下的磁盘大小支持主机缓存（只读和读/写）。 这意味着，预配到最高 4095 GiB 的任何磁盘都可以利用主机缓存。 大于或等于 4096 GiB 的磁盘大小不支持主机缓存。 例如，预配到 4095 GiB 的 P50 高级磁盘可以利用主机缓存，而预配到 4096 GiB 的 P50 磁盘不能利用主机缓存。 建议利用较小磁盘大小的缓存，以便通过缓存到 VM 的数据观察到明显的性能提升。
 
 ## <a name="what-if-my-question-isnt-answered-here"></a>如果未在此处找到相关问题怎么办？
 
@@ -392,4 +397,4 @@ Azure 全球、 Microsoft Azure 政府和 Azure 中国世纪互联涵盖的所�
 
 <!--CORRECT ON [Azure support site](https://support.azure.cn/support/support-azure/)-->
 
-<!--Update_Description: wording update, update link -->
+<!-- Update_Description: update meta properties, wording update, update link -->

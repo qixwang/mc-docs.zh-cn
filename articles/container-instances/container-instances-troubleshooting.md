@@ -2,16 +2,18 @@
 title: 排查常见问题
 description: 了解如何排查部署、运行或管理 Azure 容器实例时的常见问题
 ms.topic: article
-origin.date: 09/25/2019
-ms.date: 01/15/2020
+origin.date: 06/25/2020
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: 01/15/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 360a5f79924f97fab8cd72f38fec87c2b55b47d5
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 9b73a6cf61a530e313e23ca337945be5fa75d51f
+ms.sourcegitcommit: 5726d3b2e694f1f94f9f7d965676c67beb6ed07c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78213743"
+ms.lasthandoff: 07/21/2020
+ms.locfileid: "86863178"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>排查 Azure 容器实例中的常见问题
 
@@ -24,18 +26,19 @@ ms.locfileid: "78213743"
 ## <a name="issues-during-container-group-deployment"></a>容器组部署过程中的问题
 ### <a name="naming-conventions"></a>命名约定
 
-定义容器规格时，某些参数需要遵循命名限制。 下表包含容器组属性的特定要求。
+定义容器规格时，某些参数需要遵循命名限制。 下表包含容器组属性的特定要求。 有关详细信息，请参阅 [Azure 资源的命名规则和限制][naming-rules]。
 
 <!--Not Available on  [Naming conventions][azure-name-restrictions]-->
 
-| 作用域 | Length | 大小写 | 有效的字符 | 建议的模式 | 示例 |
+| 作用域 | 长度 | 大小写 | 有效的字符 | 建议的模式 | 示例 |
 | --- | --- | --- | --- | --- | --- |
-| 容器组名称 | 1-64 |不区分大小写 |第一个或最后一个字符不能为字母数字和连字符 |`<name>-<role>-CG<number>` |`web-batch-CG1` |
-| 容器名称 | 1-64 |不区分大小写 |第一个或最后一个字符不能为字母数字和连字符 |`<name>-<role>-CG<number>` |`web-batch-CG1` |
+| 容器名称<sup>1</sup> | 1-63 |小写 | 第一个或最后一个字符不能为字母数字和连字符 |`<name>-<role>-container<number>` |`web-batch-container1` |
 | 容器端口 | 介于 1 和 65535 之间 |Integer |一个介于 1 和 65535 之间的整数 |`<port-number>` |`443` |
 | DNS 名称标签 | 5-63 |不区分大小写 |第一个或最后一个字符不能为字母数字和连字符 |`<name>` |`frontend-site1` |
 | 环境变量 | 1-63 |不区分大小写 |第一个或最后一个字符不能为字母数字和下划线 (_) |`<name>` |`MY_VARIABLE` |
-| 卷名 | 5-63 |不区分大小写 |第一个或最后一个字符不能为小写字母、数字和连字符。 不能包含两个连续的连字符。 |`<name>` |`batch-output-volume` |
+| 卷名 | 5-63 |小写 |第一个或最后一个字符不能为字母数字和连字符。 不能包含两个连续的连字符。 |`<name>` |`batch-output-volume` |
+
+<sup>1</sup>如果没有单独指定容器实例（如通过 `az container create` 命令部署），那么还会对容器组名称进行限制。
 
 ### <a name="os-version-of-image-not-supported"></a>不受支持的映像的操作系统版本
 
@@ -50,7 +53,7 @@ ms.locfileid: "78213743"
 }
 ```
 
-<!--Not Avaialble on This error is most often encountered when deploying Windows images that are based on Semi-Annual Channel release 1709 or 1803, which are not supported. For supported Windows images in Azure Container Instances, see [Frequently asked questions](container-instances-faq.md#what-windows-base-os-images-are-supported)-->
+在部署基于半年频道版本 1709 或 1803（不支持这些版本）的 Windows 映像时，通常会遇到此错误。 有关 Azure 容器实例中支持的 Windows 映像，请参阅[常见问题解答](container-instances-faq.md#what-windows-base-os-images-are-supported)。
 
 ### <a name="unable-to-pull-image"></a>无法请求映像
 
@@ -113,8 +116,11 @@ ms.locfileid: "78213743"
 az container create -g MyResourceGroup --name myapp --image ubuntu --command-line "tail -f /dev/null"
 ```
 
-
-<!--Not Available on ## Deploying a Windows container-->
+```azurecli 
+## Deploying a Windows container
+az container create -g myResourceGroup --name mywindowsapp --os-type Windows --image mcr.microsoft.com/windows/servercore:ltsc2019
+ --command-line "ping -t localhost"
+```
 
 容器实例 API 和 Azure 门户包含 `restartCount` 属性。 若要检查容器的重启次数，可在 Azure CLI 中使用 [az container show][az-container-show] 命令。 在以下示例输出中（为简洁起见已将其截断），可以在输出末尾看到 `restartCount` 属性。
 
@@ -167,7 +173,7 @@ az container create -g MyResourceGroup --name myapp --image ubuntu --command-lin
 * [映像位置](#image-location)
 * [缓存的映像](#cached-images)
 
-<!--Not Available on Windows images have [additional considerations](#cached-images)-->
+Windows 映像具有[其他注意事项](#cached-images)。
 
 #### <a name="image-size"></a>映像大小
 
@@ -189,12 +195,14 @@ mcr.microsoft.com/azuredocs/aci-helloworld    latest    7367f3256b41    15 month
 
 #### <a name="cached-images"></a>缓存的映像
 
-Azure 容器实例使用缓存机制来帮助加快映像容器的启动时间。 常用的 Linux 映像（例如 `ubuntu:1604` 和 `alpine:3.6`）会缓存。 若要获取缓存的映像和标记的最新列表，请使用[列出缓存的映像][list-cached-images] API。
+对于基于常用 [Windows 基本映像](container-instances-faq.md#what-windows-base-os-images-are-supported)（包括 `nanoserver:1809`、`servercore:ltsc2019` 和 `servercore:1809`）的映像，Azure 容器实例使用一种缓存机制来帮助加快容器启动时间。 常用的 Linux 映像（例如 `ubuntu:1604` 和 `alpine:3.6`）也会缓存。 若要获取缓存的映像和标记的最新列表，请使用[列出缓存的映像][list-cached-images] API。
 
-<!--Not Available on  built on common [Windows base images](container-instances-faq.md#what-windows-base-os-images-are-supported)-->
-<!--Not Available on  including `nanoserver:1809`, `servercore:ltsc2019`, and `servercore:1809`-->
-<!--Not Available on > Use of Windows Server 2019-based images in Azure Container Instances is in preview.-->
-<!--Not Available on #### Windows containers slow network readiness-->
+> [!NOTE]
+> 在 Azure 容器实例中使用基于 Windows Server 2019 的映像处于预览状态。
+
+#### <a name="windows-containers-slow-network-readiness"></a>Windows 容器慢速网络准备情况
+
+在初始创建时，Windows 容器在最多 30 秒内（在极少数情况下，会更长时间）可能没有入站或出站连接。 如果容器应用程序需要 Internet 连接，请添加延迟和重试逻辑以允许 30 秒建立 Internet 连接。 初始设置后，容器网络应适当恢复。
 
 ### <a name="cannot-connect-to-underlying-docker-api-or-run-privileged-containers"></a>无法连接到基础 Docker API 或运行特权容器
 
@@ -207,6 +215,7 @@ Azure 容器实例尚不支持具有常规 docker 配置的端口映射。 如�
 如果要确认 Azure 容器实例可以在容器映像中配置的端口上侦听，请测试公开了该端口的 `aci-helloworld` 映像的部署。 另外，请运行 `aci-helloworld` 应用，使其在该端口上侦听。 `aci-helloworld` 接受一个可选的环境变量 `PORT` 来替代它用于侦听的默认端口 80。 例如，若要测试端口 9000，请在创建容器组时设置该[环境变量](container-instances-environment-variables.md)：
 
 1. 设置容器组来公开端口 9000，并将端口号传递为环境变量的值。 此示例已针对 Bash shell 格式化。 若要使用其他 shell（例如 PowerShell 或命令提示符），需要相应地调整变量赋值。
+    
     ```azurecli
     az container create --resource-group myResourceGroup \
     --name mycontainer --image mcr.microsoft.com/azuredocs/aci-helloworld \
@@ -231,6 +240,7 @@ Azure 容器实例尚不支持具有常规 docker 配置的端口映射。 如�
 
 <!--Not Available on [azure-name-restrictions]: /cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources-->
 
+[naming-rules]: ../azure-resource-manager/management/resource-name-rules.md
 [windows-sac-overview]: https://docs.microsoft.com/windows-server/get-started/semi-annual-channel-overview
 [docker-multi-stage-builds]: https://docs.docker.com/engine/userguide/eng-image/multistage-build/
 [docker-hub-windows-core]: https://hub.docker.com/_/microsoft-windows-servercore
@@ -239,7 +249,6 @@ Azure 容器实例尚不支持具有常规 docker 配置的端口映射。 如�
 <!-- LINKS - Internal -->
 
 [az-container-show]: https://docs.microsoft.com/cli/azure/container?view=azure-cli-latest#az-container-show
-[list-cached-images]: https://docs.microsoft.com/rest/api/container-instances/listcachedimages
+[list-cached-images]: https://docs.microsoft.com/rest/api/container-instances/location/listcachedimages
 
-<!-- Update_Description: new article about container instances troubleshooting -->
-<!--NEW.date: 01/15/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

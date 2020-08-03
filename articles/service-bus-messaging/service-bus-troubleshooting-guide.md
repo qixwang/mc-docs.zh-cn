@@ -1,26 +1,19 @@
 ---
 title: Azure 服务总线故障排除指南
 description: 本文提供了 Azure 服务总线消息传送异常以及发生异常时建议采取的措施的列表。
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: 3d8526fe-6e47-4119-9f3e-c56d916a98f9
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 04/07/2020
-origin.date: 04/07/2020
-ms.author: v-tawe
-ms.openlocfilehash: 8f184487bdefa09593ecf12fe418332f11030fa0
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: ''
+ms.author: v-yeche
+author: rockboyfor
+ms.openlocfilehash: 60cafa3dc8a5678a7da2a027bcfb8fae9160a049
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796892"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162261"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>Azure 服务总线故障排除指南
 本文提供的故障排除技巧和建议适用于你在使用 Azure 服务总线时可能会遇到的一些问题。 
@@ -31,11 +24,11 @@ ms.locfileid: "83796892"
 - 浏览至 `https://<yournamespace>.servicebus.chinacloudapi.cn/` 或使用 [wget](https://www.gnu.org/software/wget/)。 它可用于检查你是否有 IP 筛选、虚拟网络或证书链问题（在使用 Java SDK 时最常见）。
 
     成功消息的示例：
-    
+
     ```xml
     <feed xmlns="http://www.w3.org/2005/Atom"><title type="text">Publicly Listed Services</title><subtitle type="text">This is the list of publicly-listed services currently available.</subtitle><id>uuid:27fcd1e2-3a99-44b1-8f1e-3e92b52f0171;id=30</id><updated>2019-12-27T13:11:47Z</updated><generator>Service Bus 1.1</generator></feed>
     ```
-    
+
     失败错误消息的示例：
 
     ```json
@@ -63,7 +56,7 @@ ms.locfileid: "83796892"
     .\psping.exe -n 25 -i 1 -q <yournamespace>.servicebus.chinacloudapi.cn:5671 -nobanner     
     ```
     如果使用的是其他工具（如 `tnc`、`ping` 等），则可以使用等效的命令。 
-- 如果上述步骤没有帮助，请获取网络跟踪，并使用 [Wireshark](https://www.wireshark.org/) 之类的工具对其进行分析。 如果需要，请联系 [Microsoft 支持部门](https://support.microsoft.com/)。 
+- 如果上述步骤没有帮助，请获取网络跟踪，并使用 [Wireshark](https://www.wireshark.org/) 之类的工具对其进行分析。 如果需要，请联系 [Azure 支持部门](https://support.microsoft.com/)。 
 
 ## <a name="issues-that-may-occur-with-service-upgradesrestarts"></a>服务升级/重启时可能出现的问题
 后端服务升级和重启可能会对应用程序造成以下影响：
@@ -90,5 +83,6 @@ Service Bus Error: Unauthorized access. 'Send' claim\(s\) are required to perfor
 请参阅以下文章： 
 
 - [Azure 资源管理器异常](service-bus-resource-manager-exceptions.md)。 这篇文章列出了使用 Azure 资源管理器（通过模板或直接调用）与 Azure 服务总线进行交互时生成的异常。
-- [消息传送异常](service-bus-messaging-exceptions.md)。 这篇文章列出了 Azure 服务总线的 .NET Framework 生成的异常。 
+- [消息传送异常](service-bus-messaging-exceptions.md)。 这篇文章列出了 Azure 服务总线的 .NET Framework 生成的异常。
 
+<!-- Update_Description: update meta properties, wording update, update link -->

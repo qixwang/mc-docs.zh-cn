@@ -8,12 +8,12 @@ ms.topic: conceptual
 origin.date: 02/14/2020
 ms.date: 3/13/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 3cc5072330ed5dbb617c7093af5d66c067731b8a
-ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
+ms.openlocfilehash: 433b32089af2e36a1332595b28321985159bb17b
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851985"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244859"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Monitor 代理概述
 
@@ -99,7 +99,7 @@ InfluxData Telegraf 代理用于将性能数据从 Linux 计算机收集到 Azur
 
 如果需要执行以下操作，请使用 Dependency Agent：
 
-* 使用[服务映射](../insights/service-map.md)解决方案的“映射”功能。
+* 使用服务映射解决方案的“映射”功能。
 
 使用 Dependency Agent 时，请注意以下事项：
 

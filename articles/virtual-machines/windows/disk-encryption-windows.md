@@ -6,15 +6,17 @@ ms.service: virtual-machines-windows
 ms.subservice: security
 ms.topic: article
 origin.date: 08/06/2019
-ms.date: 07/06/2020
+ms.date: 07/27/2020
+ms.testscope: yes
+ms.testdate: 07/27/2020
 ms.author: v-yeche
 ms.custom: seodec18
-ms.openlocfilehash: 936b442f06930d9fd43a8054a10b783421bde83e
-ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
+ms.openlocfilehash: d3c25e64400c50002e0af186a5853b62c0f0a7d7
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85946002"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244643"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Windows VM 上的 Azure 磁盘加密方案
 
@@ -219,22 +221,7 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
     ```
 
 ## <a name="disable-encryption"></a>禁用加密功能
-可以使用 Azure PowerShell、Azure CLI 或资源管理器模板禁用加密。 当 OS 和数据磁盘都已加密时，无法按预期在 Windows VM 上禁用数据磁盘加密。 请改为在所有磁盘上禁用加密。
-
-- **使用 Azure PowerShell 禁用磁盘加密：** 若要禁用加密，请使用 [Disable-AzVMDiskEncryption](https://docs.microsoft.com/powershell/module/az.compute/disable-azvmdiskencryption) cmdlet。 
-    ```powershell
-    Disable-AzVMDiskEncryption -ResourceGroupName 'MyVirtualMachineResourceGroup' -VMName 'MySecureVM' -VolumeType "all"
-    ```
-
-- **使用 Azure CLI 禁用加密：** 若要禁用加密，请使用 [az vm encryption disable](https://docs.azure.cn/cli/vm/encryption?view=azure-cli-latest#az-vm-encryption-disable) 命令。 
-    ```azurecli
-    az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type "all"
-    ```
-- **使用资源管理器模板禁用加密：** 
-
-    1. 单击[在正在运行的 Windows VM 上禁用磁盘加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-windows-vm-without-aad)模板中的“部署到 Azure”。
-    2. 选择订阅、资源组、位置、VM、卷类型、法律条款和协议。
-    3. 单击“购买”，在正在运行的 Windows VM 上禁用磁盘加密。 
+[!INCLUDE [disk-encryption-disable-encryption-powershell](../../../includes/disk-encryption-disable-powershell.md)]
 
 ## <a name="unsupported-scenarios"></a>不支持的方案
 
@@ -250,10 +237,13 @@ Azure 磁盘加密不支持以下方案、功能和技术：
 - Windows Server 容器，为每个容器创建动态卷。
 - 临时 OS 磁盘。
 - 加密共享/分布式文件系统，包括但不限于 DFS、GFS、DRDB 和 CephFS。
-- 将加密的 VM 移到其他订阅。
+- 将加密的 VM 移到其他订阅或区域。
+- 创建已加密 VM 的映像或快照，并使用它来部署其他 VM。
 - Gen2 VM（请参阅：[Azure 对第 2 代 VM 的支持](generation-2.md#generation-1-vs-generation-2-capabilities)）
 
 <!--Not Available on - Lsv2 series VMs (see: [Lsv2-series](../lsv2-series.md))-->
+
+- 具有写入加速器磁盘的 M 系列 VM。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -2,17 +2,17 @@
 title: ApplicationInsights.config 参考 - Azure | Azure Docs
 description: 启用或禁用数据收集模块，并添加性能计数器和其他参数。
 ms.topic: conceptual
+ms.date: 07/17/2020
 origin.date: 05/22/2019
 author: Johnnytechn
-ms.date: 05/28/2020
 ms.reviewer: olegan
 ms.author: v-johya
-ms.openlocfilehash: b0bc6db86696714e82edf62213748300562104c6
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: 3c0c8ebf2c73ac023b69a947ab8fe2a637c49788
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199498"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244830"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>使用 ApplicationInsights.config 或 .xml 配置 Application Insights SDK
 Application Insights .NET SDK 由多个 NuGet 包组成。 [核心包](https://www.nuget.org/packages/Microsoft.ApplicationInsights)提供 API，用于将遥测数据发送到 Application Insights。 [其他包](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights)提供遥测*模块*和*初始值设定项*，用于自动从应用程序及其上下文跟踪遥测。 可以通过调整配置文件来启用或禁用遥测模块和初始值设定项并为其设置参数。
@@ -72,7 +72,7 @@ Application Insights .NET SDK 由多个 NuGet 包组成。 [核心包](https://w
 
 * `Microsoft.ApplicationInsights.Web.ExceptionTrackingTelemetryModule`
 * [Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) NuGet 包
-* `Microsoft.ApplicationInsights.WindowsServer.UnobservedExceptionTelemetryModule` - 跟踪[未观察到的任务异常](https://blogs.msdn.com/b/pfxteam/archive/2011/09/28/task-exception-handling-in-net-4-5.aspx)。
+* `Microsoft.ApplicationInsights.WindowsServer.UnobservedExceptionTelemetryModule` - 跟踪未观察到的任务异常
 * `Microsoft.ApplicationInsights.WindowsServer.UnhandledExceptionTelemetryModule` - 跟踪辅助角色、Windows 服务和控制台应用程序的未经处理的异常。
 * [Application Insights Windows Server](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) NuGet 包。
 

@@ -1,20 +1,20 @@
 ---
 title: 向字符串字段添加语言分析器
 titleSuffix: Azure Cognitive Search
-description: Azure 认知搜索中适用于非英语查询和索引的多语言词法文本分析。
+description: Azure 认知搜索中适用于非英语查询和索引的多语言词法分析。
 author: HeidiSteen
 manager: nitinme
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 06/05/2020
-ms.date: 07/02/2020
-ms.openlocfilehash: 8cee038461bd98cc59488eb9ed1a68f7af93773b
-ms.sourcegitcommit: 5afd7c4c3be9b80c4c67ec55f66fcf347aad74c6
+ms.date: 07/17/2020
+ms.openlocfilehash: fe49e5f1eb88b7d447b517a35a83ebd3bcea1a43
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85942574"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471992"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>向 Azure 认知搜索索引中的字符串字段添加语言分析器
 

@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 05/19/2020
 ms.author: v-junlch
-ms.openlocfilehash: 8000df07c819bd68cd2eb42706422016bbea0d17
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+ms.openlocfilehash: 33d9b83f1fbff5989c5d812ac17e6521193f7f9a
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796853"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244697"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>应用程序网关的后端运行状况和诊断日志
 
@@ -41,7 +41,7 @@ ms.locfileid: "83796853"
 
 在门户中，后端运行状况是自动提供的。 在现有的应用程序网关中，选择“监视” > “后端运行状况”。
 
-后端池中的每个成员都列在此页上（不管其是 NIC、IP 还是 FQDN）。 会显示后端池名称、端口、后端 HTTP 设置名称以及运行状况。 运行状况的有效值为“正常”、“不正常”、“未知”。  
+后端池中的每个成员都列在此页上（不管其是 NIC、IP 还是 FQDN）。 会显示后端池名称、端口、后端 HTTP 设置名称以及运行状况。 运行状况的有效值为“正常”、“不正常”、“未知”。
 
 > [!NOTE]
 > 如果后端运行状况显示为“未知”，请确保未通过虚拟网络中的 NSG 规则、用户定义路由 (UDR) 或自定义 DNS 阻止对后端的访问。
@@ -93,7 +93,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
 ## <a name="diagnostic-logs"></a><a name="diagnostic-logging"></a>诊断日志
 
-可在 Azure 中使用不同类型的日志来对应用程序网关进行管理和故障排除。 可通过门户访问其中部分日志。 可从 Azure Blob 存储提取所有日志并在 [Azure Monitor 日志](../azure-monitor/insights/azure-networking-analytics.md)、Excel 和 Power BI 等各种工具中查看。 可从以下列表了解有关不同类型日志的详细信息：
+可在 Azure 中使用不同类型的日志来对应用程序网关进行管理和故障排除。 可通过门户访问其中部分日志。 可从 Azure Blob 存储提取所有日志并在 Azure Monitor 日志、Excel 和 Power BI 等各种工具中查看。 可从以下列表了解有关不同类型日志的详细信息：
 
 * **活动日志**：可使用 [Azure 活动日志](../azure-resource-manager/resource-group-audit.md)（以前称为操作日志和审核日志）查看提交到 Azure 订阅的所有操作及其状态。 默认情况下会收集活动日志条目，可在 Azure 门户中查看这些条目。
 * **访问日志**：可以使用此日志查看应用程序网关访问模式并分析重要信息。 此日志包括调用方的 IP、请求的 URL、响应延迟、返回代码，以及传入和传出的字节数。访问日志每 60 秒收集一次。 此日志包含每个应用程序网关实例的一条记录。 应用程序网关实例由 instanceId 属性标识。
@@ -113,11 +113,11 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
 每个 Resource Manager 资源都会自动启用活动日志记录。 必须启用访问和性能日志记录才能开始收集通过这些日志提供的数据。 若要启用日志记录，请执行以下步骤：
 
-1. 记下存储帐户的资源 ID，其中存储日志数据。 此值的形式为：/subscriptions/\<subscriptionId\>/resourceGroups/\<资源组名称\>/providers/Microsoft.Storage/storageAccounts/\<存储帐户名称\>。 可以使用订阅中的任何存储帐户。 可以使用 Azure 门户查找以下信息。
+1. 记下存储帐户的资源 ID，其中存储日志数据。 此值采用以下格式：/subscriptions/\<subscriptionId\>/resourceGroups/\<resource group name\>/providers/Microsoft.Storage/storageAccounts/\<storage account name\>。 可以使用订阅中的任何存储帐户。 可以使用 Azure 门户查找以下信息。
 
     ![存储帐户的门户：资源 ID](./media/application-gateway-diagnostics/diagnostics1.png)
 
-2. 记下为其启用日志记录的应用程序网关的资源 ID。 此值的形式为：/subscriptions/\<subscriptionId\>/resourceGroups/\<资源组名称\>/providers/Microsoft.Network/applicationGateways/\<应用程序网关名称\>。 可以使用门户查找以下信息。
+2. 记下为其启用日志记录的应用程序网关的资源 ID。 此值采用以下格式：/subscriptions/\<subscriptionId\>/resourceGroups/\<resource group name\>/providers/Microsoft.Network/applicationGateways/\<application gateway name\>。 可以使用门户查找以下信息。
 
     ![应用程序网关的门户：资源 ID](./media/application-gateway-diagnostics/diagnostics2.png)
 
@@ -352,7 +352,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
 ### <a name="view-and-analyze-the-access-performance-and-firewall-logs"></a>查看并分析访问、性能和防火墙日志
 
-[Azure Monitor 日志](../azure-monitor/insights/azure-networking-analytics.md)可从 Blob 存储帐户收集计数器和事件日志文件。 它含有可视化和强大的搜索功能，可用于分析日志。
+Azure Monitor 日志可从 Blob 存储帐户收集计数器和事件日志文件。 它含有可视化和强大的搜索功能，可用于分析日志。
 
 还可以连接到存储帐户并检索访问和性能日志的 JSON 日志条目。 下载 JSON 文件后，可以将其转换为 CSV 并在 Excel、Power BI 或任何其他数据可视化工具中查看。
 
@@ -367,7 +367,6 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
 ## <a name="next-steps"></a>后续步骤
 
-* 使用 [Azure Monitor 日志](../azure-monitor/insights/azure-networking-analytics.md)可视化计数器和事件日志。
 * [Visualize your Azure Activity Log with Power BI](https://powerbi.microsoft.com/blog/monitor-azure-audit-logs-with-power-bi/)（使用 Power BI 直观显示 Azure 活动日志）博客文章。
 * [View and analyze Azure activity logs in Power BI and more](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/)（在 Power BI 和其他组件中查看和分析 Azure 活动日志）博客文章。
 

@@ -7,8 +7,8 @@ author: brjohnstmsft
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 02/10/2020
-ms.date: 04/20/2020
+origin.date: 06/23/2020
+ms.date: 07/17/2020
 translation.priority.mt:
 - de-de
 - es-es
@@ -20,12 +20,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: c09def2c65c6eca0a37693f6861051f40698a2f6
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.openlocfilehash: 4f40b48c869bf3e60bdae7727c73d09d6963b628
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588736"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471985"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Azure 认知搜索中的 Lucene 查询语法
 
@@ -47,13 +47,13 @@ ms.locfileid: "82588736"
 `searchMode=all` 参数是在此示例中是相关的。 无论运算符何时出现在查询上，通常都应该设置 `searchMode=all` 以确保匹配所有条件  。
 
 ```
-GET /indexes/hotels/docs?search=category:budget AND \"recently renovated\"^3&searchMode=all&api-version=2019-05-06&querytype=full
+GET /indexes/hotels/docs?search=category:budget AND \"recently renovated\"^3&searchMode=all&api-version=2020-06-30&querytype=full
 ```
 
  或者使用 POST：  
 
 ```
-POST /indexes/hotels/docs/search?api-version=2019-05-06
+POST /indexes/hotels/docs/search?api-version=2020-06-30
 {
   "search": "category:budget AND \"recently renovated\"^3",
   "queryType": "full",
@@ -167,21 +167,23 @@ NOT 运算符是一个减号。 例如：`wifi –luxury` 将搜索包含 `wifi`
  若要提升术语，请使用插入符号“^”，并且所搜索术语末尾还要附加提升系数（数字）。 还可以提升短语。 提升系数越高，术语相对于其他搜索词的相关性也越大。 默认情况下，提升系数是 1。 虽然提升系数必须是正数，但可以小于 1（例如 0.20）。  
 
 ##  <a name="regular-expression-search"></a><a name="bkmk_regex"></a> 正则表达式搜索  
- 正则表达式搜索基于正斜杠“/”之间的内容查找匹配项，如在 [RegExp 类](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/util/automaton/RegExp.html)中所记录的那样。  
+ 正则表达式搜索根据在 Apache Lucene 下有效的模式找到匹配项，如 [RegExp 类](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/util/automaton/RegExp.html)中所述。 在 Azure 认知搜索中，正则表达式包含在正斜杠 `/` 之间。
 
  例如，若要查找包含“汽车旅馆”或“酒店”的文档，请指定 `/[mh]otel/`。 正则表达式搜索与单个词匹配。
 
 某些工具和语言施加了额外的转义字符要求。 对于 JSON，包含正斜杠的字符串将使用反斜杠进行转义：“microsoft.com/azure/”变成 `search=/.*microsoft.com\/azure\/.*/`，其中 `search=/.* <string-placeholder>.*/` 设置正则表达式，`microsoft.com\/azure\/` 是包含转义后的正斜杠的字符串。
 
-##  <a name="wildcard-search"></a><a name="bkmk_wildcard"></a> 通配符搜索  
+##  <a name="wildcard-search"></a><a name="bkmk_wildcard"></a> 通配符搜索
 
-可将通常可识别的语法用于多个 (*) 或单个 (?) 字符通配符搜索。 请注意，Lucene 查询分析器支持将这些符号与单个术语一起使用，但不能与短语一起使用。
+可将通常可识别的语法用于多个 (`*`) 或单个 (`?`) 字符通配符搜索。 例如，`search=alpha*` 的查询表达式返回“alphanumeric”或“alphabetical”。 请注意，Lucene 查询分析器支持将这些符号与单个术语一起使用，但不能与短语一起使用。
 
-前缀搜索还使用星号 (`*`) 字符。 例如，`search=note*` 查询表达式返回“notebook”或“notepad”。 前缀搜索不需要完整 Lucene 语法。 简单语法支持此方案。
+完整的 Lucene 语法支持前缀、中缀和后缀匹配。 但是，如果只需要前缀匹配，则可以使用简单的语法（两者都支持前缀匹配）。
 
-后缀搜索（字符串前面有 `*` 或 `?`）需要完整 Lucene 语法和正则表达式（不能使用 * 或 ? 符号作为搜索的第一个字符）。 在给定字词“alphanumeric”的情况下，查询表达式 (`search=/.*numeric.*/`) 将查找匹配项。
+后缀匹配，其中 `*` 或 `?` 在字符串之前（如 `search=/.*numeric./`）或中缀匹配需要完整的 Lucene 语法以及正则表达式正斜杠 `/` 分隔符。 不得将 * 或 ? 符号作为搜索词的第一个字符，或在不含 `/` 的搜索词中。 
 
 > [!NOTE]  
+> 通常，模式匹配很慢，因此你可能需要使用其他方法，例如边缘 n 元标记化，为搜索词中的字符序列创建标记。 索引将更大，但是查询的执行速度可能更快，具体取决于模式构造和要编制索引的字符串的长度。
+>
 > 在查询分析期间，以前缀、后缀、通配符或正则表达式形式构建的查询将绕过[词法分析](search-lucene-query-architecture.md#stage-2-lexical-analysis)，按原样传递到查询树。 仅当索引包含查询所指定的格式的字符串时，才会查找匹配项。 在大多数情况下，在编制索引期间需要使用一个可以保留字符串完整性的替代分析器，使部分字词和模式匹配能够成功。 有关详细信息，请参阅 [Azure 认知搜索查询中的部分字词搜索](search-query-partial-matching.md)。
 
 ##  <a name="scoring-wildcard-and-regex-queries"></a><a name="bkmk_searchscoreforwildcardandregexqueries"></a> 对通配符和正则表达式查询评分

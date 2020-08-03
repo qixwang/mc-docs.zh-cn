@@ -8,21 +8,25 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 04/20/2020
-ms.openlocfilehash: fd92ff6218e255687d0fde2d05e347729462ce02
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.date: 07/20/2020
+ms.openlocfilehash: 73b2810be67036139e1dc9f78502d31012f3f7d0
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588694"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471949"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>多租户 SaaS 应用程序与 Azure 认知搜索的设计模式
+
 多租户应用程序可以为无法看到或共享任何其他租户数据的任意数量的租户，提供相同服务和功能。 本文档讨论的租户隔离策略适用于使用 Azure 认知搜索生成的多租户应用程序。
 
 ## <a name="azure-cognitive-search-concepts"></a>Azure 认知搜索的概念
-作为一种搜索即服务解决方案，Azure 认知搜索允许开发人员将丰富的搜索体验添加到应用程序中，而无需管理任何基础结构，或者成为信息检索方面的专家。 数据上载到服务，并存储在云中。 通过对 Azure 认知搜索 API 发出简单请求，即可修改和搜索数据。 [此文](https://aka.ms/whatisazsearch)提供了服务概述。 在讨论设计模式之前，应务必了解 Azure 认知搜索中的某些概念。
+作为一种搜索即服务解决方案，[Azure 认知搜索](search-what-is-azure-search.md)允许开发人员将丰富的搜索体验添加到应用程序中，而无需管理任何基础结构，或者成为信息检索方面的专家。 数据上载到服务，并存储在云中。 通过对 Azure 认知搜索 API 发出简单请求，即可修改和搜索数据。 
 
 ### <a name="search-services-indexes-fields-and-documents"></a>搜索服务、索引、字段和文档
+
+在讨论设计模式之前，应务必了解一些基本概念。
+
 使用 Azure 认知搜索时，即已订阅一种*搜索服务*。 当数据上传到 Azure 认知搜索后，将存储在搜索服务内的一个*索引*中。 单个服务中可能有大量索引。 若要利用熟悉的数据库概念，搜索服务可以比作一个数据库，而服务中的索引可以比作数据库中的表。
 
 搜索服务中的每个索引具有自己的架构，由大量的可自定义*字段*定义。 数据以各*文档*的形式添加到 Azure 认知搜索索引中。 每个文档都必须上传到一个特定索引，并且必须适合该索引的架构。 使用 Azure 认知搜索进行数据搜索时，将针对某个特定索引发出全文搜索查询。  若要与数据库中的概念进行比较，字段可以比作表中的列，文档可以比作行。

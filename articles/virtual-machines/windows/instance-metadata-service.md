@@ -9,23 +9,27 @@ ms.subservice: monitoring
 ms.topic: how-to
 ms.workload: infrastructure-services
 origin.date: 03/30/2020
-ms.date: 07/06/2020
+ms.date: 07/27/2020
+ms.testscope: yes
+ms.testdate: 07/27/2020
 ms.author: v-yeche
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: 8c0364139989835f9d05338bbd87f5166307658b
-ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
+ms.openlocfilehash: 8ed680e8ac98bb03995845442131ddb40d645d52
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85945780"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244955"
 ---
+<!--Verified Successfully-->
 # <a name="azure-instance-metadata-service"></a>Azure 实例元数据服务
 
 Azure 实例元数据服务 (IMDS) 提供有关当前正在运行的虚拟机实例的信息，可用于管理和配置虚拟机。
 这些信息包括 SKU、存储、网络配置和即将发生的维护事件。 有关提供的数据的完整列表，请参阅[元数据 API](#metadata-apis)。
 实例元数据服务适用于 VM 和虚拟机规模集实例。 它仅可用于运行使用 [Azure 资源管理器](https://docs.microsoft.com/rest/api/resources/)创建/管理的 VM。
 
-Azure 的实例元数据服务是 REST 终结点，该终结点位于已知不可路由的 IP 地址 (`169.254.169.254`)，只能从 VM 中访问。
+Azure 的 IMDS 是一个 REST 终结点，位于已知不可路由的 IP 地址 (`169.254.169.254`)，只能从 VM 中访问。 VM 与 IMDS 之间的通信绝不会离开主机。
+最佳做法是让 HTTP 客户端在查询 IMDS 时绕过 VM 中的 web 代理并同等对待 `169.254.169.254` 和 [`168.63.129.16`](/virtual-network/what-is-ip-address-168-63-129-16)。
 
 ## <a name="security"></a>安全性
 
@@ -47,8 +51,16 @@ Azure 的实例元数据服务是 REST 终结点，该终结点位于已知不�
 **请求**
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri http://169.254.169.254/metadata/instance?api-version=2019-06-01
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http://169.254.169.254/metadata/instance?api-version=2019-06-01
 ```
+
+<!--MOONCKE: CUSTOMIZATION-->
+
+> [!NOTE]
+> `-NoProxy` 参数是在 PowerShell 6.0 或更高版本中引入的，可通过以下链接检查并安装最新 PowerShell 版本：[Github.com 上的 PowerShell 安装版本](https://github.com/PowerShell/PowerShell/releases)。
+>
+
+<!--MOONCKE: CUSTOMIZATION-->
 
 **响应**
 
@@ -178,12 +190,12 @@ API | 默认数据格式 | 其他格式
 /attested | json | 无
 /identity | json | 无
 /instance | json | text
-/scheduledevents | json | 无
+/scheduledevents | json | none
 
 若要访问非默认响应格式，请在请求中将所请求的格式指定为查询字符串参数。 例如：
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
 ```
 
 > [!NOTE]
@@ -202,12 +214,12 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http://169.254
 如果未指定版本，则会返回错误并列出受支持的最新版本。
 
 > [!NOTE]
-> 此响应是 JSON 字符串。 下例说明了未指定版本时出现的错误情况，为了便于阅读，响应显示非常清晰。
+> 响应为 JSON 字符串。 下例说明了未指定版本时出现的错误情况，为了便于阅读，响应显示非常清晰。
 
 **请求**
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri http://169.254.169.254/metadata/instance
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http://169.254.169.254/metadata/instance
 ```
 
 **响应**
@@ -274,7 +286,7 @@ vmSize | [VM 大小](sizes.md) | 2017-04-02
 **请求**
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http://169.254.169.254/metadata/instance/compute/vmId?api-version=2017-08-01&format=text"
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute/vmId?api-version=2017-08-01&format=text"
 ```
 
 **响应**
@@ -294,7 +306,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http://169.254
 **请求**
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http://169.254.169.254/metadata/instance/compute/platformFaultDomain?api-version=2017-08-01&format=text"
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute/platformFaultDomain?api-version=2017-08-01&format=text"
 ```
 
 **响应**
@@ -310,7 +322,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http://169.254
 **请求**
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri http://169.254.169.254/metadata/instance/compute?api-version=2019-06-01
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http://169.254.169.254/metadata/instance/compute?api-version=2019-06-01
 ```
 
 **响应**
@@ -414,7 +426,7 @@ Azure 具有各种主权云，如 [Azure 中国云](https://azure.microsoft.com/
 **请求**
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http://169.254.169.254/metadata/instance/compute/azEnvironment?api-version=2018-10-01&format=text"
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute/azEnvironment?api-version=2018-10-01&format=text"
 ```
 
 **响应**
@@ -457,7 +469,7 @@ macAddress | VM mac 地址 | 2017-04-02
 **请求**
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri http://169.254.169.254/metadata/instance/network?api-version=2017-08-01
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http://169.254.169.254/metadata/instance/network?api-version=2017-08-01
 ```
 
 **响应**
@@ -496,7 +508,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri http://169.254.
 #### <a name="sample-2-retrieving-public-ip-address"></a>示例 2：检索公共 IP 地址
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2017-08-01&format=text"
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2017-08-01&format=text"
 ```
 
 ## <a name="storage-metadata"></a>存储元数据
@@ -529,7 +541,7 @@ lun     | 磁盘的逻辑单元号
 managedDisk | 托管磁盘参数
 name    | 磁盘名称
 vhd     | 虚拟硬盘
-writeAcceleratorEnabled | 磁盘上是否启用了 writeAccelerator
+writeAcceleratorEnabled | 磁盘是否启用了 writeAccelerator
 
 数据磁盘阵列包含附加到 VM 的数据磁盘列表。 每个数据磁盘对象包含以下信息：
 
@@ -552,7 +564,7 @@ writeAcceleratorEnabled | 磁盘上是否启用了 writeAccelerator
 **请求**
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri http://169.254.169.254/metadata/instance/compute/storageProfile?api-version=2019-06-01
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http://169.254.169.254/metadata/instance/compute/storageProfile?api-version=2019-06-01
 ```
 
 **响应**
@@ -624,7 +636,7 @@ VM 标记包含在实例/计算/标记终结点下的实例 API。
 **请求**
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http://169.254.169.254/metadata/instance/compute/tags?api-version=2018-10-01&format=text"
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute/tags?api-version=2018-10-01&format=text"
 ```
 
 **响应**
@@ -638,7 +650,7 @@ Department:IT;Environment:Test;Role:WebRole
 **请求**
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04
 ```
 
 **响应**
@@ -672,7 +684,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri http://169.254.
 **请求**
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http://169.254.169.254/metadata/attested/document?api-version=2018-10-01&nonce=1234567890"
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/attested/document?api-version=2018-10-01&nonce=1234567890"
 ```
 
 > [!NOTE]
@@ -711,12 +723,14 @@ sku | `2019-11-01` 中介绍了 VM 映像的特定 SKU
 
 ```powershell
 # Get the signature
-$attestedDoc = Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri http://169.254.169.254/metadata/attested/document?api-version=2019-04-30
+$attestedDoc = Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http://169.254.169.254/metadata/attested/document?api-version=2019-04-30
 # Decode the signature
 $signature = [System.Convert]::FromBase64String($attestedDoc.signature)
 ```
 
-验证签名是否来自 Microsoft Azure 并检查证书链中是否存在错误。
+验证签名是否来自 Azure 并检查证书链中是否存在错误。
+
+<!--Correct : Microsoft Azure to Azure-->
 
 ```powershell
 # Get certificate chain
@@ -847,7 +861,7 @@ Visual Basic  | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.vb
 
 如果找不到某个数据元素，或者请求的格式不正确，则实例元数据服务返回标准 HTTP 错误。 例如：
 
-HTTP 状态代码 | Reason
+HTTP 状态代码 | 原因
 -----------------|-------
 200 正常 |
 400 错误的请求 | 查询叶节点时缺少 `Metadata: true` 标头或缺少参数 `format=json`
@@ -875,6 +889,57 @@ HTTP 状态代码 | Reason
    * 目前，规模集的标记仅在重启、重置映像或更改实例的磁盘时向 VM 显示。
 1. 调用服务时请求超时？
    * 必须从分配给 VM 的主要网卡的主 IP 地址进行元数据调用。 此外，如果你更改了路由，则 VM 的本地路由表中必须存在 169.254.169.254/32 地址的路由。
+   * <details>
+        <summary>验证路由表</summary>
+        1. 转储本地路由表并查找 IMDS 条目（例如）：
+        
+            ```console
+            > route print
+            IPv4 Route Table
+            ===========================================================================
+            Active Routes:
+            Network Destination        Netmask          Gateway       Interface  Metric
+                      0.0.0.0          0.0.0.0      172.16.69.1      172.16.69.7     10
+                    127.0.0.0        255.0.0.0         On-link         127.0.0.1    331
+                    127.0.0.1  255.255.255.255         On-link         127.0.0.1    331
+              127.255.255.255  255.255.255.255         On-link         127.0.0.1    331
+                168.63.129.16  255.255.255.255      172.16.69.1      172.16.69.7     11
+              169.254.169.254  255.255.255.255      172.16.69.1      172.16.69.7     11
+            ... (continues) ...
+            ```
+            
+        1. 验证是否存在 `169.254.169.254` 的路由，并记下相应的网络接口（例如 `172.16.69.7`）。
+        1. 转储接口配置并查找与路由表中引用的接口相对应的接口，注明 MAC（物理）地址。
+            
+            ```console
+            > ipconfig /all
+            ... (continues) ...
+            Ethernet adapter Ethernet:
+            Connection-specific DNS Suffix  . : xic3mnxjiefupcwr1mcs1rjiqa.cx.internal.chinacloudapp.cn
+            Description . . . . . . . . . . . : Microsoft Hyper-V Network Adapter
+            Physical Address. . . . . . . . . : 00-0D-3A-E5-1C-C0
+            DHCP Enabled. . . . . . . . . . . : Yes
+            Autoconfiguration Enabled . . . . : Yes
+            Link-local IPv6 Address . . . . . : fe80::3166:ce5a:2bd5:a6d1%3(Preferred)
+            IPv4 Address. . . . . . . . . . . : 172.16.69.7(Preferred)
+            Subnet Mask . . . . . . . . . . . : 255.255.255.0
+            ... (continues) ...
+            ```
+            
+        1. 确认该接口对应于 VM 的主 NIC 和主 IP。 可以通过在 Azure 门户中查看网络配置，或[通过 Azure CLI](https://docs.azure.cn/cli/vm/nic?view=azure-cli-latest#az-vm-nic-show) 查找来找到主 NIC/IP。 记下公共和专用 IP（如果使用 cli，还要记下 MAC 地址）。 PowerShell CLI 示例：
+            ```powershell
+            $ResourceGroup = '<Resource_Group>'
+            $VmName = '<VM_Name>'
+            $NicNames = az vm nic list --resource-group $ResourceGroup --vm-name $VmName | ConvertFrom-Json | Foreach-Object { $_.id.Split('/')[-1] }
+            foreach($NicName in $NicNames)
+            {
+                $Nic = az vm nic show --resource-group $ResourceGroup --vm-name $VmName --nic $NicName | ConvertFrom-Json
+                Write-Host $NicName, $Nic.primary, $Nic.macAddress
+            }
+            # Output: wintest767 True 00-0D-3A-E5-1C-C0
+            ```
+        1. 如果它们不匹配，请更新路由表，以使主 NIC/IP 成为目标。
+    </details>
 
 ## <a name="support-and-feedback"></a>支持和反馈
 

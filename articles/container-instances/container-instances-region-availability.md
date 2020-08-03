@@ -5,12 +5,12 @@ ms.topic: article
 origin.date: 04/27/2020
 ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: fd02b4f13fc82b490f9548fe1a7cdff69b7d28f0
-ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
+ms.openlocfilehash: 17b71756b9397cc433d85576874562a5bd05d2f2
+ms.sourcegitcommit: 5726d3b2e694f1f94f9f7d965676c67beb6ed07c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84564360"
+ms.lasthandoff: 07/21/2020
+ms.locfileid: "86863179"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Azure 容器实例在 Azure 区域的资源可用性
 
@@ -25,28 +25,29 @@ ms.locfileid: "84564360"
 
 ## <a name="availability---general"></a>可用性 - 常规
 
-以下区域和最大资源可供包含 Linux 容器的容器组使用。
+以下区域和最大资源可供包含 Linux 和[受支持的](container-instances-faq.md#what-windows-base-os-images-are-supported)基于 Windows Server 2016 的容器的容器组使用。
 
-<!--Not Available on [supported](container-instances-faq.md#what-windows-base-os-images-are-supported) Windows Server 2016-based-->
-<!--CUSTOMIZE ON MOONCAKE CPU/2 AND MEMORY/8GB based on 06/08/2020-->
+<!--AVAILABLE ON CHINAEAST2 SITE till on 07/21/2020-->
 
 | 区域 | 操作系统 | 最大 CPU | 最大内存 (GB) | 存储器 (GB) |
 | -------- | -- | :---: | :-----------: | :---: |
 | 中国东部 2 | Linux | 2 | 8 | 50 |
-| 中国北部 2 | Linux | 2 | 8 | 50 |
+| 中国东部 2 | Windows | 2 | 8 | 50 |
 
-<!--CORRECT ON China East/North 2 for Linux container-->
-<!--Not Available on | China East 2, China North 2 | Windows | 2 | 3.5 |-->
+## <a name="availability---windows-server-2019-ltsc-1809-deployments-preview"></a>可用性 - Windows Server 2019 LTSC，1809 部署（预览版）
 
-<!--Need to verified from PG-->
-<!--Not Available on ## Availability - Windows Server 2019 LTSC, 1809 deployments (preview)-->
-<!--Need to verified from PG-->
+以下区域和最大资源可供包含基于 Windows Server 2019 的容器（预览版）的容器组使用。
 
-<!--Not Available on ## Availability - Virtual network deployment-->
-<!--Not Available on [Azure 虚拟网络](container-instances-vnet.md)-->
-<!--Not Available on [!INCLUDE [container-instances-vnet-limits](../../includes/container-instances-vnet-limits.md)]-->
+| 区域 | 操作系统 | 最大 CPU | 最大内存 (GB) | 存储器 (GB) |
+| -------- | -- | :---: | :-----------: | :---: |
+| 中国东部 2 | Windows | 2 | 3.5 | 20 个 |
 
-<!--CUSTOMIZE: NEED TO REQUEST BEFORE USE GPU-->
+<a name="availability---virtual-network-deployment"></a>
+## <a name="availability---virtual-network-deployment"></a>可用性 - 虚拟网络部署
+
+以下区域和最大资源可供部署在 [Azure 虚拟网络](container-instances-vnet.md)中的容器组使用。
+
+[!INCLUDE [container-instances-vnet-limits](../../includes/container-instances-vnet-limits.md)]
 
 ## <a name="availability---gpu-resources-preview"></a>可用性 - GPU 资源（预览版）
 

@@ -7,14 +7,16 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.topic: troubleshooting
 origin.date: 04/28/2020
-ms.date: 07/06/2020
+ms.date: 07/27/2020
+ms.testscope: yes
+ms.testdate: 07/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 7fd91e604719a9e0390f65e1d5323d38c72725eb
-ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
+ms.openlocfilehash: cd16bbde7268de41513ae1e6a020db221f8bd23a
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85945987"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244268"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>准备好要上传到 Azure 的 Windows VHD 或 VHDX
 
@@ -53,9 +55,9 @@ ms.locfileid: "85945987"
 
 ### <a name="use-hyper-v-manager-to-convert-the-disk"></a>使用 Hyper-V 管理器转换磁盘
 
-1. 打开 Hyper-V 管理器，在左侧选择本地计算机。 在计算机列表上方的菜单中，选择“操作” > “编辑磁盘”。 
+1. 打开 Hyper-V 管理器，在左侧选择本地计算机。 在计算机列表上方的菜单中，选择“操作” > “编辑磁盘”。
 1. 在“查找虚拟硬盘”页上，选择你的虚拟磁盘。
-1. 在“选择操作”页上选择“转换” > “下一步”。  
+1. 在“选择操作”页上选择“转换” > “下一步”。
 1. 若要从 VHDX 进行转换，请选择“VHD” > “下一步” 。
 1. 若要从动态扩展磁盘进行转换，请选择“固定大小” > “下一步” 。
 1. 找到并选择新 VHD 文件的保存路径。
@@ -79,7 +81,7 @@ Convert-VHD -Path C:\test\MyVM.vhdx -DestinationPath C:\test\MyNewVM.vhd -VHDTyp
 
 ### <a name="use-hyper-v-manager-to-resize-the-disk"></a>使用 Hyper-V 管理器调整磁盘大小
 
-1. 打开 Hyper-V 管理器，在左侧选择本地计算机。 在计算机列表上方的菜单中，选择“操作” > “编辑磁盘”。 
+1. 打开 Hyper-V 管理器，在左侧选择本地计算机。 在计算机列表上方的菜单中，选择“操作” > “编辑磁盘”。
 1. 在“查找虚拟硬盘”页上，选择你的虚拟磁盘。
 1. 在“选择操作”页上选择“展开” > “下一步”  。
 1. 在“查找虚拟硬盘”页上，以 GiB 为单位输入新的大小，然后选择“下一步” 。
@@ -478,6 +480,8 @@ Sysprep 会删除所有个人数据并重置多个组件，从而为你提供“
 
 并非每个安装在基于 Windows 的计算机上的角色或应用程序都支持通用化映像。 因此，在使用此过程之前，请确保 Sysprep 支持该计算机的角色。 有关详细信息，请参阅 [Sysprep 对服务器角色的支持](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles)。
 
+特别是，Sysprep 要求在执行之前完全解密驱动器。 如果在 VM 上启用了加密，请在运行 Sysprep 之前将其禁用。
+
 ### <a name="generalize-a-vhd"></a>通用化 VHD
 
 >[!NOTE]
@@ -489,7 +493,7 @@ Sysprep 会删除所有个人数据并重置多个组件，从而为你提供“
 1. 在“系统准备工具”对话框中，选择“进入系统全新体验 (OOBE)”，确保已选中“通用化”复选框  。
 
     ![系统准备工具](media/prepare-for-upload-vhd-image/syspre.png)
-1. 在“关机选项”中选择“关机”。 
+1. 在“关机选项”中选择“关机”。
 1. 选择“确定” 。
 1. 当 Sysprep 完成后，关闭 VM。 请勿使用“重启”来关闭 VM。
 

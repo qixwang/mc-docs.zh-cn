@@ -1,24 +1,19 @@
 ---
 title: Azure 服务总线主题筛选器 | Azure
 description: 本文介绍订阅者如何通过指定筛选器来定义希望从主题接收的消息。
-services: service-bus-messaging
-documentationcenter: ''
-author: spelluru
-editor: ''
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/21/2020
-ms.author: v-tawe
-origin.date: 04/16/2020
-ms.openlocfilehash: d9d3290dda90ba1a425f3abfdb0f47c933489d41
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: ''
+ms.author: v-yeche
+author: rockboyfor
+ms.openlocfilehash: d246c0eb20d821e30ad5cbdea4def80eaf384ee2
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796688"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162153"
 ---
 # <a name="topic-filters-and-actions"></a>主题筛选器和操作
 
@@ -28,22 +23,22 @@ ms.locfileid: "83796688"
 
 服务总线支持三个筛选条件：
 
--   *布尔筛选器* - 通过 **TrueFilter** 和 **FalseFilter** 可以为订阅选择所有到达消息 (**true**) 或不选择任何到达消息 (**false**)。
+- *布尔筛选器* - 通过 **TrueFilter** 和 **FalseFilter** 可以为订阅选择所有到达消息 (**true**) 或不选择任何到达消息 (**false**)。
 
--   *SQL 筛选器* - **SqlFilter** 包含类似 SQL 的条件表达式，它会在代理中针对到达的消息的用户定义属性和系统属性进行计算。 所有系统属性在条件表达式中必须带有前缀 `sys.`。 [筛选条件的 SQL 语言子集](service-bus-messaging-sql-filter.md)可测试属性是否存在 (`EXISTS`)，以及是否为 null 值 (`IS NULL`)、逻辑“非”/“与”/“或”、关系运算符、简单数值算术和简单文本模式匹配（使用 `LIKE`）。
+- *SQL 筛选器* - **SqlFilter** 包含类似 SQL 的条件表达式，它会在代理中针对到达的消息的用户定义属性和系统属性进行计算。 所有系统属性在条件表达式中必须带有前缀 `sys.`。 [筛选条件的 SQL 语言子集](service-bus-messaging-sql-filter.md)可测试属性是否存在 (`EXISTS`)，以及是否为 null 值 (`IS NULL`)、逻辑“非”/“与”/“或”、关系运算符、简单数值算术和简单文本模式匹配（使用 `LIKE`）。
 
--   *相关筛选器* - **CorrelationFilter** 包含一组条件，这些条件按照到达消息的一个或多个用户和系统属性进行匹配。 常见的用法是根据 CorrelationId 属性进行匹配，但应用程序也可以选择根据以下属性进行匹配：
+- *相关筛选器* - **CorrelationFilter** 包含一组条件，这些条件按照到达消息的一个或多个用户和系统属性进行匹配。 常见的用法是根据 CorrelationId 属性进行匹配，但应用程序也可以选择根据以下属性进行匹配：
 
     - **ContentType**
-     - **Label**
-     - **MessageId**
-     - **ReplyTo**
-     - **ReplyToSessionId**
-     - **SessionId** 
-     - **To**
-     - 任何用户定义的属性。 
-     
-     当到达消息的某个属性值等于相关筛选器中指定的值时，便存在匹配。 对于字符串表达式，比较会区分大小写。 指定多个匹配属性时，筛选器会将它们合并为逻辑“与”条件，这意味着若要使筛选器匹配，所有条件都必须匹配。
+    - **Label**
+    - **MessageId**
+    - **ReplyTo**
+    - **ReplyToSessionId**
+    - **SessionId** 
+    - **To**
+    - 任何用户定义的属性。 
+
+    当到达消息的某个属性值等于相关筛选器中指定的值时，便存在匹配。 对于字符串表达式，比较会区分大小写。 指定多个匹配属性时，筛选器会将它们合并为逻辑“与”条件，这意味着若要使筛选器匹配，所有条件都必须匹配。
 
 所有筛选器都会计算消息属性。 筛选器无法评估消息正文。
 
@@ -63,9 +58,8 @@ ms.locfileid: "83796688"
 
 路由使用筛选器以可预测、但不一定独占的方式在主题订阅间分发消息。 通过与[自动转发](service-bus-auto-forwarding.md)功能相结合，主题筛选器可以用于在服务总线命名空间中创建复杂路由图，以便在 Azure 区域中进行消息分发。 通过使 Azure Functions 或 Azure 逻辑应用充当 Azure 服务总线命名空间之间的桥梁，可以创建直接集成到业务线应用程序中的复杂全局拓扑。
 
-
 > [!NOTE]
-> 目前 Azure 门户不允许为订阅指定筛选规则。 可使用任何受支持的 SDK 或 Azure 资源管理器模板来定义订阅规则。 
+> 由于 Azure 门户现在支持 Service Bus Explorer 功能，因此可以从门户创建或编辑订阅筛选器。 
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下示例： 
@@ -74,4 +68,4 @@ ms.locfileid: "83796688"
 - [.NET - 主题筛选器](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TopicFilters)
 - [Azure Resource Manager 模板](https://docs.microsoft.com/azure/templates/microsoft.servicebus/2017-04-01/namespaces/topics/subscriptions/rules)
 
-
+<!-- Update_Description: update meta properties, wording update, update link -->

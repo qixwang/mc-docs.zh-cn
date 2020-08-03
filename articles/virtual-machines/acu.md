@@ -1,5 +1,5 @@
 ---
-title: Azure 计算单元概述 | Azure
+title: Azure 计算单位概述
 description: Azure 计算单位的概念概述。 ACU 提供了一种在 Azure SKU 中比较 CPU 性能的方法。
 author: rockboyfor
 ms.service: virtual-machines
@@ -7,15 +7,17 @@ ms.subservice: sizes
 ms.topic: article
 ms.workload: infrastructure-services
 origin.date: 02/03/2020
-ms.date: 07/06/2020
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
 ms.reviewer: davberg
-ms.openlocfilehash: cf53f52e499fc3d0a001d26d0dea9dc9d48975b3
-ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
+ms.openlocfilehash: b82270824682e1f9b584ade21f1fa69ff3a07561
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85946077"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244354"
 ---
 <!--Verified successfully-->
 <!--Partical Content from verified-->
@@ -53,8 +55,11 @@ Azure 计算单位 (ACU) 这一概念提供一种比较 Azure SKU 的计算 (CPU
 | [F1s - F16s](sizes-previous-gen.md) |210 - 250* | 1:1 |
 | [M](m-series.md) | 160 - 180 | 2:1\*\*\* |
 
-
 <!-- Not Available  [A8-A11]  -->
+<!-- Not Available  [D*v4]  -->
+<!-- ... -->
+<!-- Not Available  [E*v4]  -->
+<!-- ... -->
 <!-- Not Available  [G1-G5]  -->
 <!-- Not Available  [GS1-GS5]  -->
 <!-- Not Available  [H] -->

@@ -3,17 +3,16 @@ title: Azure Application Insights 中的遥测采样 | Azure Docs
 description: 如何使受控制的遥测数据的卷。
 ms.topic: conceptual
 author: Johnnytechn
-manager: digimobile
 origin.date: 01/17/2020
-ms.date: 05/28/2020
+ms.date: 07/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 87d1f345cae71ddc7afabb5d335cd82eb2e17f55
-ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
+ms.openlocfilehash: bd2098bca12000c8d85f1555ff9cc4d5c18d971e
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84440731"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244858"
 ---
 # <a name="sampling-in-application-insights"></a>在 Application Insights 中采样
 
@@ -311,7 +310,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
 
 #### <a name="configuring-java-agent"></a>配置 Java 代理
 
-1. 下载 [applicationinsights-agent-3.0.0-PREVIEW.4.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.4/applicationinsights-agent-3.0.0-PREVIEW.4.jar)
+1. 下载 [applicationinsights-agent-3.0.0-PREVIEW.5.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.5/applicationinsights-agent-3.0.0-PREVIEW.5.jar)
 
 1. 若要启用采样，请将以下内容添加到 `ApplicationInsights.json` 文件：
 

@@ -2,17 +2,18 @@
 title: Azure 监视 REST API 演练
 description: 如何对请求进行身份验证，以及如何使用 Azure Monitor REST API 检索可用的指标定义和指标值。
 author: Johnnytechn
+ms.author: v-johya
 ms.subservice: metrics
 ms.topic: conceptual
 origin.date: 03/19/2018
-ms.date: 05/28/2020
-ms.author: v-johya
-ms.openlocfilehash: 339021569dcc80b091e5c2730c0403724147c078
-ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
+ms.date: 07/17/2020
+ms.custom: has-adal-ref
+ms.openlocfilehash: 576c5b29a82a86be9dffba295748bff3a27fd520
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84440681"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244975"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure 监视 REST API 演练
 
@@ -20,7 +21,7 @@ ms.locfileid: "84440681"
 
 本文说明如何执行身份验证，使代码能够遵循 [Azure Monitor REST API 参考](https://docs.microsoft.com/rest/api/monitor/)。
 
-使用 Azure Monitor API 能够以编程方式检索可用的默认指标定义、粒度和指标值。 可将数据保存在独立的数据存储（例如 Azure SQL 数据库、Azure Cosmos DB 或 Azure Data Lake）中。 然后，可以根据需要从该处执行其他分析。
+使用 Azure Monitor API 能够以编程方式检索可用的默认指标定义、粒度和指标值。 可将数据保存在独立的数据存储（例如 Azure SQL 数据库或 Azure Cosmos DB）中。 然后，可以根据需要从该处执行其他分析。
 
 除了处理各种指标数据点以外，使用监视 API 还可以列出警报规则、查看活动日志以及执行其他许多操作。 有关可用操作的完整列表，请参阅 [Azure Monitor REST API 参考](https://docs.microsoft.com/rest/api/monitor/)。
 
@@ -617,6 +618,7 @@ armclient GET /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups
 ### <a name="azure-resource-explorer"></a>Azure 资源浏览器
 
 若要查找所需资源的资源 ID，一种有效的方法是使用 [Azure 资源浏览器](https://portal.azure.cn/#blade/HubsExtension/ArmExplorerBlade)工具。 导航到所需的资源，并查看如以下屏幕截图中所示的 ID：
+<!--Correct in MC: https://portal.azure.cn/#blade/HubsExtension/ArmExplorerBlade-->
 
 ![Alt "Azure 资源浏览器"](./media/rest-api-walkthrough/azure_resource_explorer.png)
 
@@ -640,7 +642,7 @@ Get-AzLogicApp -ResourceGroupName azmon-rest-api-walkthrough -Name contosotweets
 Id             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Logic/workflows/ContosoTweets
 Name           : ContosoTweets
 Type           : Microsoft.Logic/workflows
-Location       : centralus
+Location       : chinanorth
 ChangedTime    : 8/21/2017 6:58:57 PM
 CreatedTime    : 8/18/2017 7:54:21 PM
 AccessEndpoint : https://prod-08.chinanorth.logic.chinacloudapi.cn:443/workflows/f3a91b352fcc47e6bff989b85446c5db
@@ -707,16 +709,30 @@ az storage account show -g azmon-rest-api-walkthrough -n contosotweets2017
 
 ## <a name="retrieve-activity-log-data"></a>检索活动日志数据
 
-除了指标定义和相关值以外，还可以使用 Azure Monitor REST API 检索有关 Azure 资源的其他需关注的深入信息。 例如，可查询[活动日志](https://msdn.microsoft.com/library/azure/dn931934.aspx)数据。 以下示例演示如何使用 Azure 监视器 REST API 查询 Azure 订阅在特定日期范围内的活动日志数据：
+除了指标定义和相关值以外，还可以使用 Azure Monitor REST API 检索有关 Azure 资源的其他需关注的深入信息。 例如，可查询[活动日志](https://msdn.microsoft.com/library/azure/dn931934.aspx)数据。 以下示例请求使用 Azure Monitor REST API 查询活动日志。
 
-```powershell
-$apiVersion = "2015-04-01"
-$filter = "eventTimestamp ge '2017-08-18' and eventTimestamp le '2017-08-19'and eventChannels eq 'Admin, Operation'"
-$request = "https://management.chinacloudapi.cn/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/microsoft.insights/eventtypes/management/values?api-version=${apiVersion}&`$filter=${filter}"
-Invoke-RestMethod -Uri $request `
-    -Headers $authHeader `
-    -Method Get `
-    -Verbose
+在有过滤器的情况下获取活动日志：
+
+``` HTTP
+GET https://management.chinacloudapi.cn/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '2018-01-21T20:00:00Z' and eventTimestamp le '2018-01-23T20:00:00Z' and resourceGroupName eq 'MSSupportGroup'
+```
+
+在有过滤器的情况下获取活动日志，然后选择：
+
+```HTTP
+GET https://management.chinacloudapi.cn/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '2015-01-21T20:00:00Z' and eventTimestamp le '2015-01-23T20:00:00Z' and resourceGroupName eq 'MSSupportGroup'&$select=eventName,id,resourceGroupName,resourceProviderName,operationName,status,eventTimestamp,correlationId,submissionTimestamp,level
+```
+
+获取活动日志且选择：
+
+```HTTP
+GET https://management.chinacloudapi.cn/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01&$select=eventName,id,resourceGroupName,resourceProviderName,operationName,status,eventTimestamp,correlationId,submissionTimestamp,level
+```
+
+在没有过滤器的情况下获取活动日志，或选择：
+
+```HTTP
+GET https://management.chinacloudapi.cn/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01
 ```
 
 ## <a name="next-steps"></a>后续步骤

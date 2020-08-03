@@ -2,17 +2,16 @@
 title: 在 Java Web 项目中排查 Application Insights 问题
 description: 故障排除指南 - 使用 Application Insights 监视实时 Java 应用。
 ms.topic: conceptual
-author: lingliw
-manager: digimobile
+author: Johnnytechn
 origin.date: 03/14/2019
-ms.date: 6/4/2019
-ms.author: v-lingwu
-ms.openlocfilehash: 54f3a02a47b6dcfdf126b65f7a3c788fbb579d64
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 07/17/2020
+ms.author: v-johya
+ms.openlocfilehash: 96d6ea66c4cbdbddbb5b72913b65cc6a900de435
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850410"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244861"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>用于 Java 的 Application Insights 的故障排除与常见问题解答
 使用 [Java 中的 Azure Application Insights][java] 时有疑问或遇到问题？ 请参考下面的提示。
@@ -29,15 +28,14 @@ ms.locfileid: "78850410"
 * 检查是否已在 ApplicationInsights.xml 文件（位于项目的 resources 文件夹）中定义检测密钥或将检测密钥配置为环境变量。
 * 确认 xml 文件中没有 `<DisableTelemetry>true</DisableTelemetry>` 节点。
 * 在防火墙中，可能需要打开 TCP 端口 80 和 443 才能将传出流量发送到 dc.services.visualstudio.com。 请参阅 [full list of firewall exceptions](../../azure-monitor/app/ip-addresses.md)（防火墙例外的完整列表）
-* 在世纪互联 Azure 开始面板中查看服务状态映射。 如果看到警报指示，请等待它们恢复“正常”，关闭再重新打开 Application Insights 应用程序边栏选项卡。
-* 在 ApplicationInsights.xml 文件（位于项目的 resources 文件夹）中的根节点下添加 `<SDKLogger />` 元素，打开 IDE 控制台窗口日志记录功能，并检查条目的前面是否带有 AI：INFO/WARN/ERROR 以发现任何可疑日志。
+* 在 Azure 开始面板中查看服务状态映射。 如果看到警报指示，请等待它们恢复“正常”，关闭再重新打开 Application Insights 应用程序边栏选项卡。
+* 在 ApplicationInsights.xml 文件（位于项目的 resources 文件夹）中的根节点下添加 `<SDKLogger />` 元素，[打开记录功能](#debug-data-from-the-sdk)，并检查条目的前面是否带有 AI：INFO/WARN/ERROR 以发现任何可疑日志。 
 * 查看控制台输出消息中是否包含“已成功找到配置文件”语句，确保 Java SDK 成功加载正确的 ApplicationInsights.xml 文件。
 * 如果找不到配置文件，请检查输出消息来确定在何处搜索配置文件，并确保 ApplicationInsights.xml 位在这些搜索位置之一。 根据经验法则，可以将配置文件放置在 Application Insights SDK JAR 的附近。 例如：在 Tomcat 中，这可能是 WEB-INF/classes 文件夹。 在开发期间，可以将 ApplicationInsights.xml 放在 Web 项目的 resources 文件夹中。
 * 另请查看 [GitHub 问题页](https://github.com/Microsoft/ApplicationInsights-Java/issues)，了解 SDK 的已知问题。
 * 请确保使用相同版本的 Application Insights Core、Web、代理和日志记录追加器以避免任何版本冲突问题。
 
 #### <a name="i-used-to-see-data-but-it-has-stopped"></a>我以前看到了数据，但现在看不到
-* 请查看[状态博客](https://blogs.msdn.com/b/applicationinsights-status/)。
 * 是否达到了数据点的每月配额？ 打开“设置/配额和定价”即可检查。如果达到了配额，可以升级计划，或付费购买更多的容量。 请参阅[定价方案](https://www.azure.cn/pricing/details/monitor/)。
 * 最近是否升级了 SDK？ 请确保项目目录内仅存在唯一 SDK jar。 不应存在两个不同版本的 SDK。
 * 是否正在查看正确的 AI 资源？ 请将应用程序的 iKey 与预期遥测的资源的 iKey 相匹配。 它们应相同。
@@ -89,7 +87,7 @@ ms.locfileid: "78850410"
 **如何更改项目要将数据发送到的 Azure 资源？**
 
 * [获取新资源的检测密钥。][java]
-* 如果使用用于 Eclipse 的 Azure 工具包将 Application Insights 添加到项目，请右键单击 Web 项目，选择“Azure”、“配置 Application Insights”，然后更改密钥。  
+* 如果使用用于 Eclipse 的 Azure 工具包将 Application Insights 添加到项目，请右键单击 Web 项目，选择“Azure”、“配置 Application Insights”，然后更改密钥。 
 * 如果已将检测密钥配置为环境变量，请使用新 iKey 更新环境变量的值。
 * 否则，请更新项目的 resources 文件夹中 ApplicationInsights.xml 内的密钥。
 
@@ -205,8 +203,5 @@ Application Insights 使用 `org.apache.http`。 这将在命名空间 `com.micr
 [platforms]: ../../azure-monitor/app/platforms.md
 [track]: ../../azure-monitor/app/api-custom-events-metrics.md
 [usage]: javascript.md
-
-
-
 
 

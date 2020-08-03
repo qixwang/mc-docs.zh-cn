@@ -2,30 +2,31 @@
 title: 适用于控制台应用程序的 Azure Application Insights | Azure Docs
 description: 监视 Web 应用程序的可用性、性能和使用情况。
 ms.topic: conceptual
-author: lingliw
 origin.date: 11/19/2019
-ms.date: 12/4/2019
+ms.date: 07/17/2020
+author: Johnnytechn
 ms.reviewer: lmolkova
-ms.author: v-lingwu
-ms.openlocfilehash: ec70d6f1fa5d2a6c4a1d7ea106ed39bfbe0f21d8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.author: v-johya
+ms.openlocfilehash: 297d112f322de598352afbc5b0e4760966cb5ce5
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850444"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244829"
 ---
 # <a name="application-insights-for-net-console-applications"></a>适用于 .NET 控制台应用程序的 Application Insights
+
 使用 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 可以监视 Web 应用程序的可用性、性能和使用情况。
 
-首先需要订阅[世纪互联 Azure](https://www.azure.cn)。 使用 Azure 帐户登录，该帐户可能适用于 Windows、XBox Live 或其他 Azure 云服务。 团队可能拥有 Azure 组织订阅：要求所有者使用 Azure 帐户将你加入其中。
+需要订阅 [Azure](https://azure.com)。 使用 Microsoft 帐户登录，该帐户可能适用于 Windows、Xbox Live 或其他 Azure 云服务。 团队可能拥有 Azure 组织订阅：要求所有者使用 Microsoft 帐户你将加入其中。
 
 > [!NOTE]
-> 有一个名为 [Microsoft.ApplicationInsights.WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) 的新 Application Insights SDK，可用于为任何控制台应用程序启用 Application Insights。 建议在[此处](../../azure-monitor/app/worker-service.md)使用此包和相关说明。 此包针对 [`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard)，因此可在 .NET Core 2.0 或更高版本，以及 .NET Framework 4.7.2 或更高版本中使用。
+> 有一个名为 [Microsoft.ApplicationInsights.WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) 的新 Application Insights SDK，可用于为任何控制台应用程序启用 Application Insights。 建议通过[此处](../../azure-monitor/app/worker-service.md)使用此包并查看相关说明。 此包面向 [`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard)，因此可在 .NET Core 2.0 或更高版本以及 .NET Framework 4.7.2 或更高版本中使用。
 
 ## <a name="getting-started"></a>入门
 
-* 在 [Azure 门户](https://portal.azure.cn)中，[创建 Application Insights 资源](../../azure-monitor/app/create-new-resource.md )。 对于应用程序类型，选择“常规”。 
-* 获取检测密钥的副本。 在创建的新资源的“概要”下拉列表中找到该密钥。  
+* 在 [Azure 门户](https://portal.azure.cn)中，[创建 Application Insights 资源](../../azure-monitor/app/create-new-resource.md)。 对于应用程序类型，选择“常规”。
+* 获取检测密钥的副本。 在创建的新资源的“概要”下拉列表中找到该密钥。
 * 安装最新的 [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) 包。
 * 在跟踪任何遥测之前，请先在代码中设置检测密钥（或设置 APPINSIGHTS_INSTRUMENTATIONKEY 环境变量）。 设置后，应能手动跟踪遥测并在 Azure 门户中查看
 
@@ -38,7 +39,7 @@ telemetryClient.TrackTrace("Hello World!");
 ```
 
 > [!NOTE]
-> 遥测不会立即发送。 遥测项将由 ApplicationInsights SDK 进行批处理和发送。 在控制台应用（调用 `Track()` 方法后立即退出）中，除非在应用退出之前完成 `Flush()` 和 `Sleep`，否则无法发送遥测，如本文后面的[完整示例](#full-example)所示。
+> 遥测不会立即发送。 遥测项由 ApplicationInsights SDK 以批处理方式发送。 在控制台应用中（该应用在调用 `Track()` 方法后立即退出），可能不会发送遥测，除非在应用程序退出之前完成 `Flush()` 和 `Sleep`/`Delay`，如后文中的[完整示例](#full-example)所示。 如果使用 `InMemoryChannel`，则 `Sleep` 不是必需的。 此处存在一个待解决的问题，涉及对 `Sleep` 的需求，可在此处跟踪该问题：[ApplicationInsights-dotnet/issues/407](https://github.com/microsoft/ApplicationInsights-dotnet/issues/407)
 
 
 * 安装最新版本的 [Microsoft.ApplicationInsights.DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) 包 - 它可自动跟踪 HTTP、SQL 或一些其他外部依赖项调用。
@@ -49,6 +50,7 @@ telemetryClient.TrackTrace("Hello World!");
 > 提到了 **ApplicationInsights.config** 的说明仅适用于以 .NET Framework 为目标的应用，不适用于 .NET Core 应用程序。
 
 ### <a name="using-config-file"></a>使用配置文件
+
 默认情况下，创建 `TelemetryConfiguration` 时，Application Insights SDK 在工作目录中查找 `ApplicationInsights.config` 文件
 
 ```csharp
@@ -65,7 +67,7 @@ var telemetryClient = new TelemetryClient(configuration);
 
 有关详细信息，请参阅[配置文件参考](configuration-with-applicationinsights-config.md)。
 
-通过安装最新版本的 [Microsoft.ApplicationInsights.WindowsServer](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer) 包，可以获取配置文件的完整示例。 此处是依赖项集合的“最小”配置，等效于代码示例  。
+通过安装最新版本的 [Microsoft.ApplicationInsights.WindowsServer](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer) 包，可以获取配置文件的完整示例。 此处是依赖项集合的“最小”配置，等效于代码示例。
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -94,10 +96,11 @@ var telemetryClient = new TelemetryClient(configuration);
 </ApplicationInsights>
 
 ```
+<!--Correct above settings-->
 
 ### <a name="configuring-telemetry-collection-from-code"></a>通过代码配置遥测集合
 > [!NOTE]
-> .NET Core 不支持读取配置文件。 可以考虑使用[适用于 ASP.NET Core 的 Application Insights SDK](../../azure-monitor/app/asp-net-core.md)
+> .NET Core 不支持读取配置文件。 可以考虑使用 [Application Insights SDK for ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
 
 * 在应用程序启动期间创建并配置 `DependencyTrackingTelemetryModule` 实例 - 该实例必须是单一实例，并在应用程序生存期中保留。
 
@@ -126,13 +129,13 @@ module.Initialize(configuration);
 configuration.TelemetryInitializers.Add(new HttpDependenciesParsingTelemetryInitializer());
 ```
 
-如果使用普通 `TelemetryConfiguration()` 构造函数创建了配置，则还需要另外启用相关支持。 如果从文件读取配置，则**不需要它**，使用了 `TelemetryConfiguration.CreateDefault()` 或 `TelemetryConfiguration.Active`。
+如果使用纯 `TelemetryConfiguration()` 构造函数创建了配置，还需要启用关联支持。 如果从文件中读取配置（使用 `TelemetryConfiguration.CreateDefault()` 或 `TelemetryConfiguration.Active`），则不需要。
 
 ```csharp
 configuration.TelemetryInitializers.Add(new OperationCorrelationTelemetryInitializer());
 ```
 
-* 还可能需要安装并初始化性能计数器收集器模块，如[此处](https://apmtips.com/blog/2017/02/13/enable-application-insights-live-metrics-from-code/)所述
+* 你可能还希望安装和初始化性能计数器收集器模块，如[此处](https://apmtips.com/posts/2017-02-13-enable-application-insights-live-metrics-from-code/)所述
 
 
 #### <a name="full-example"></a>完整示例
@@ -173,7 +176,8 @@ namespace ConsoleApp
             // before exit, flush the remaining data
             telemetryClient.Flush();
 
-            // flush is not blocking so wait a bit
+            // flush is not blocking when not using InMemoryChannel so wait a bit. There is an active issue regarding the need for `Sleep`/`Delay`
+            // which is tracked here: https://github.com/microsoft/ApplicationInsights-dotnet/issues/407
             Task.Delay(5000).Wait();
 
         }
@@ -183,6 +187,7 @@ namespace ConsoleApp
             var module = new DependencyTrackingTelemetryModule();
 
             // prevent Correlation Id to be sent to certain endpoints. You may add other domains as needed.
+            module.ExcludeComponentCorrelationHttpHeadersOnDomains.Add("core.windows.net");
             module.ExcludeComponentCorrelationHttpHeadersOnDomains.Add("core.chinacloudapi.cn");
             module.ExcludeComponentCorrelationHttpHeadersOnDomains.Add("core.cloudapi.de");
             module.ExcludeComponentCorrelationHttpHeadersOnDomains.Add("core.usgovcloudapi.net");
@@ -204,11 +209,9 @@ namespace ConsoleApp
 }
 
 ```
+<!--Correct above settings-->
 
 ## <a name="next-steps"></a>后续步骤
 * [监视依赖项](../../azure-monitor/app/asp-net-dependencies.md)，查看 REST、SQL 或其他外部资源是否会降低性能。
 * [使用 API](../../azure-monitor/app/api-custom-events-metrics.md)，发送自己的事件和指标以获取应用的性能和使用情况的更详细视图。
-
-
-
 

@@ -7,35 +7,37 @@ manager: nitinme
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 06/05/2020
-ms.date: 07/02/2020
-ms.openlocfilehash: de066abce9dc08ece2e9fe42ea82255c2b819411
-ms.sourcegitcommit: 5afd7c4c3be9b80c4c67ec55f66fcf347aad74c6
+origin.date: 06/20/2020
+ms.date: 07/17/2020
+ms.openlocfilehash: 82ba0bd614a22b869ea967752f16edfc9d41bcca
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85942588"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471983"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>用于 Azure 认知搜索中文本处理的分析器
 
-分析器是[全文搜索引擎](search-lucene-query-architecture.md)的组成部分，负责在查询字符串和带索引文档中进行文本处理。 进程具有转换性，可通过以下操作修改字符串：
+分析器是[全文搜索引擎](search-lucene-query-architecture.md)的组成部分，负责在查询字符串和带索引文档中进行文本处理。 文本处理（也称为词法分析）具有转换性，可通过以下等操作修改字符串：
 
 + 删除非必需字（非索引字）和标点
 + 将短语和用连字符连接的词语拆分为组成部分
 + 将大写单词转换为小写单词
 + 将单词分解为原根形式以提高存储效率，以便无论是哪种时态都可以找到匹配项。
 
-在生成索引以编制索引时进行分析，在读取索引以执行查询时再次进行转换。 如果将同一个分析器用于这两种操作，则更有可能获得所需的搜索结果。
+“分析”适用于标记为“可搜索”的 `Edm.String` 字段，这表示全文搜索。 对于具有此配置的字段，在创建令牌后会在索引编制期间进行分析，然后在查询执行期间，在分析查询和引擎扫描匹配的令牌时会再次进行分析。 当为索引编制和查询使用同一分析器时，匹配概率会更高，但也可以根据需要为每个工作负载分别设置分析器。
+
+非全文搜索的查询类型（如正则表达式或模糊搜索）不会在查询端经历分析阶段。 相反，分析程序会使用所提供的作为匹配基础的模式，将这些字符串直接发送到搜索引擎。 通常，这些查询窗体需要使用完整的字符串形式的标记来使模式匹配生效。 若要在编制索引期间获取内容完整的标记，可能需要使用[自定义分析器](index-add-custom-analyzers.md)。 有关何时及为何会分析查询词语的详细信息，请参阅 [Azure 认知搜索中的全文搜索](search-lucene-query-architecture.md)。
 
 <!--
-If you are unfamiliar with text analysis, listen to the following video clip for a brief explanation of how text processing works in Azure Cognitive Search.
+For more background on lexical analysis, listen to the following video clip for a brief explanation.
 
 > [!VIDEO https://www.youtube.com/embed/Y_X6USgvB1g?version=3&start=132&end=189]
 -->
 
 ## <a name="default-analyzer"></a>默认分析器  
 
-在 Azure 认知搜索查询中，文本分析器会自动调用标记为“可搜索”的所有字符串字段。 
+在 Azure 认知搜索查询中，分析器会自动调用标记为“可搜索”的所有字符串字段。 
 
 Azure 认知搜索默认使用 [Apache Lucene 标准分析器 (standard lucene)](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html)，该分析器按照[“Unicode 文本分段”](https://unicode.org/reports/tr29/)规则将文本分解成多个元素。 此外，标准分析器将所有字符转换为其小写形式。 已编入索引的文档和搜索词在索引和查询处理期间完成分析。  
 
@@ -55,33 +57,55 @@ Azure 认知搜索默认使用 [Apache Lucene 标准分析器 (standard lucene)]
 
 ## <a name="how-to-specify-analyzers"></a>如何指定分析器
 
-1. （仅限自定义分析器）在索引定义中创建名为 **analyzer** 的节。 有关详细信息，请参阅[创建索引](https://docs.microsoft.com/rest/api/searchservice/create-index)和[添加自定义分析器](index-add-custom-analyzers.md)。
+“设置分析器”是可选的。 作为一般规则，请首先尝试使用默认的标准 Lucene 分析器来查看其执行情况。 如果查询未能返回预期的结果，通常正确的解决方案是使用其他分析器。
 
-2. 在索引中的[字段定义](https://docs.microsoft.com/rest/api/searchservice/create-index)中，将字段的 **analyzer** 属性设置为某个目标分析器的名称（例如 `"analyzer" = "keyword"`。 有效值包括预定义分析器、语言分析器或在索引架构中定义的自定义分析器的名称。 在服务中创建索引之前，请在索引定义阶段规划好分析器的分配。
-
-3. 或者，可以不使用单个 **analyzer** 属性，而使用 **indexAnalyzer** 和 **searchAnalyzer** 字段参数分别设置用于索引和查询的不同分析器。 如果其中的某个活动需要特定的转换，而其他活动不需要该转换，则你可以使用不同的分析器来准备和检索数据。
-
-> [!NOTE]
-> 不能在为字段编制索引时和查询时使用不同的[语言分析器](index-add-language-analyzers.md)。 该功能是为[自定义分析器](index-add-custom-analyzers.md)保留的。 因此，如果尝试将 **searchAnalyzer** 或 **indexAnalyzer** 属性设为语言分析器的名称，REST API 将返回错误响应。 必须改用 **analyzer** 属性。
-
-不允许将 **analyzer** 或 **indexAnalyzer** 分配到实际已创建的字段。 如有任何疑问，请查看下表，其中列出了需要重新生成的操作详情以及原因。
+1. 在[索引](https://docs.microsoft.com/rest/api/searchservice/create-index)中创建字段定义时，将分析器属性设置为以下之一：[预定义分析器](index-add-custom-analyzers.md#AnalyzerTable)（例如 `keyword`）、[语言分析器](index-add-language-analyzers.md)（例如 `en.microsoft`）或自定义分析器（在同一索引架构中定义）。  
  
- | 方案 | 影响 | 步骤 |
- |----------|--------|-------|
- | 添加新字段 | 轻微 | 如果字段尚不存在于架构中，则不需要进行任何字段修订，因为索引中尚不存在字段的物理形式。 可以使用 [Update Index](https://docs.microsoft.com/rest/api/searchservice/update-index) 将新字段添加到现有索引，使用 [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) 来填充字段。|
- | 将 **analyzer** 或 **indexAnalyzer** 添加到现有的已编制索引的字段。 | [rebuild](search-howto-reindex.md) | 该字段的倒排索引必须从头开始重新创建，并且必须对这些字段的内容重新编制索引。 <br/> <br/>对于正在开发中的索引，[删除](https://docs.microsoft.com/rest/api/searchservice/delete-index)并[创建](https://docs.microsoft.com/rest/api/searchservice/create-index)索引，以获得新的字段定义。 <br/> <br/>对于生产环境中的索引，可以创建一个新字段来提供修改后的定义并开始使用该字段取代旧字段，以推迟重新生成。 使用 [Update Index](https://docs.microsoft.com/rest/api/searchservice/update-index) 合并新字段，使用 [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) 填充该字段。 之后在计划索引服务中，可清除索引以删除过时字段。 |
+   ```json
+     "fields": [
+    {
+      "name": "Description",
+      "type": "Edm.String",
+      "retrievable": true,
+      "searchable": true,
+      "analyzer": "en.microsoft",
+      "indexAnalyzer": null,
+      "searchAnalyzer": null
+    },
+   ```
+
+   如果使用的是[语言分析器](index-add-language-analyzers.md)，则必须使用分析器属性进行指定。 searchAnalyzer 和 indexAnalyzer 属性不支持语言分析器 。
+
+1. 或者，设置 indexAnalyzer 和 searchAnalyzer，根据每个工作负载的需要使用不同且合适的分析器 。 一并设置这些属性并替换 analyzer 属性，该属性必须为 null。 如果其中的某个活动需要特定的转换，而其他活动不需要该转换，则你可以使用不同的分析器来准备和检索数据。
+
+   ```json
+     "fields": [
+    {
+      "name": "Description",
+      "type": "Edm.String",
+      "retrievable": true,
+      "searchable": true,
+      "analyzer": null,
+      "indexAnalyzer": "keyword",
+      "searchAnalyzer": "whitespace"
+    },
+   ```
+
+1. 为且仅为自定义分析器执行操作：在索引的“[分析器]”部分创建一个条目，然后按照前两个步骤之一将自定义分析器分配给字段定义。 有关详细信息，请参阅[创建索引](https://docs.microsoft.com/rest/api/searchservice/create-index)和[添加自定义分析器](index-add-custom-analyzers.md)。
 
 ## <a name="when-to-add-analyzers"></a>何时添加分析器
 
 添加和分配分析器的最佳时机是在开发高潮期，此时，删除和重新创建索引是经常性的操作。
 
-随着索引定义的固化，可将新的分析结构追加到某个索引，但是，若要避免以下错误，需将 **allowIndexDowntime** 标志传递给 [Update Index](https://docs.microsoft.com/rest/api/searchservice/update-index)：
+由于分析器用于标记术语，因此在创建字段时应分配一个分析器。 实际上，不允许将分析器或 indexAnalyzer 分配到已实际创建的字段（但可以随时更改 searchAnalyzer 属性，而不会对索引造成影响）  。
+
+若要更改现有字段的分析器，必须[重新生成整个索引](search-howto-reindex.md)（不能重新生成单个字段）。 对于生产环境中的索引，可以通过分配新分析器创建一个新字段并开始使用该字段取代旧字段，以推迟重新生成。 使用 [Update Index](https://docs.microsoft.com/rest/api/searchservice/update-index) 合并新字段，使用 [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) 填充该字段。 之后在计划索引服务中，可清除索引以删除过时字段。
+
+若要将新字段添加到现有索引，请调用 [Update Index](https://docs.microsoft.com/rest/api/searchservice/update-index) 添加该字段，并使用 [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) 填充字段。
+
+若要将自定义分析器添加到现有索引，且想要避免以下错误，请在 [Update Index](https://docs.microsoft.com/rest/api/searchservice/update-index) 中传递 allowIndexDowntime 标志：
 
 *“不允许索引更新，因为这会导致停机。若要将新的分析器、tokenizer、标记筛选器或字符筛选器添加到现有索引，请将索引更新请求中的 'allowIndexDowntime' 查询参数设置为 'true'。请注意，此操作将使索引离线至少几秒钟，从而导致索引和查询请求失败。索引的性能和写入可用性可在更新索引后的几分钟内处于受损状态，对于非常大的索引，持续时间更长。”*
-
-将分析器分配到某个字段时也是如此。 分析器是字段定义的不可或缺部分，因此，请只在创建字段时才添加分析器。 若要将分析器添加到现有字段，必须[删除并重新生成](search-howto-reindex.md)索引，或者添加包含所需分析器的新字段。
-
-如前所述，一种例外情况是 **searchAnalyzer** 变体。 在指定分析器的三种方法（**analyzer**、**indexAnalyzer**、**searchAnalyzer**）中，只有 **searchAnalyzer** 属性能够在现有字段中更改。
 
 ## <a name="recommendations-for-working-with-analyzers"></a>有关使用分析器的建议
 
@@ -89,7 +113,7 @@ Azure 认知搜索默认使用 [Apache Lucene 标准分析器 (standard lucene)]
 
 ### <a name="one-analyzer-for-read-write-unless-you-have-specific-requirements"></a>除非特别要求，否则读写操作使用一个分析器
 
-Azure 认知搜索允许通过附加的 **indexAnalyzer** 和 **searchAnalyzer** 字段参数来指定使用不同的分析器执行索引和搜索。 如果未指定，则使用 **analyzer** 属性设置的分析器将用于索引编制和搜索。 如果未指定 `analyzer`，将使用默认标准 Lucene 分析器。
+Azure 认知搜索允许通过附加的 indexAnalyzer 和 searchAnalyzer 字段属性来指定使用不同的分析器执行索引和搜索 。 如果未指定，则使用 **analyzer** 属性设置的分析器将用于索引编制和搜索。 如果未指定分析器，将使用默认标准 Lucene 分析器。
 
 除非特别要求，否则索引和查询一般使用同一个分析器。 请务必全面测试。 如果搜索和索引时的文本处理不同，则当搜索和索引分析器配置不一致时，查询词和索引词可能会不匹配。
 
@@ -291,7 +315,7 @@ API 包括为索引和搜索指定不同分析器的其他索引属性。 必须
 
 ### <a name="assign-a-language-analyzer"></a>分配语言分析器
 
-任何按原样使用且没有任何配置的分析器都是在字段定义中指定的。 没有创建分析器构造的要求。 
+任何按原样使用且没有任何配置的分析器都是在字段定义中指定的。 不需要在索引的“[分析器]”部分中创建条目。 
 
 此示例将 Microsoft 英语和法语分析器分配给说明字段。 它是从更大的酒店索引定义中提取的代码片段，使用 [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) 示例的 hotels.cs 文件中的酒店类进行创建。
 

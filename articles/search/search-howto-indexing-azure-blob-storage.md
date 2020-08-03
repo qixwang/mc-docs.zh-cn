@@ -9,14 +9,14 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 04/20/2020
+ms.date: 07/17/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e1c81ceca1843f4b361e74afd0c4b6e4829990d6
-ms.sourcegitcommit: b80d236ce3c706abc25bbaa41b0ccddd896e48fc
+ms.openlocfilehash: 5fc9c4d57a162f569ad456a0fd5993d0633b056f
+ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81873125"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86471971"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>如何使用 Azure 认知搜索为 Azure Blob 存储中的文档编制索引
 
@@ -34,7 +34,7 @@ Blob 索引器可从以下文档格式提取文本：
 
 * [Azure 门户](https://portal.azure.cn)
 * Azure 认知搜索 [REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
-* Azure 认知搜索 [.NET SDK](https://aka.ms/search-sdk)
+* Azure 认知搜索 [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)
 
 > [!NOTE]
 > 某些功能（例如字段映射）在门户中尚不可用，必须以编程方式使用。
@@ -54,7 +54,7 @@ Blob 索引器可从以下文档格式提取文本：
 
 创建数据源：
 
-    POST https://[service name].search.azure.cn/datasources?api-version=2019-05-06
+    POST https://[service name].search.azure.cn/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -86,7 +86,7 @@ Blob 索引器可从以下文档格式提取文本：
 
 下面介绍了如何使用可搜索 `content` 字段创建索引，以存储从 Blob 中提取的文本：   
 
-    POST https://[service name].search.azure.cn/indexes?api-version=2019-05-06
+    POST https://[service name].search.azure.cn/indexes?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -105,7 +105,7 @@ Blob 索引器可从以下文档格式提取文本：
 
 创建索引和数据源后，就可以准备创建索引器了：
 
-    POST https://[service name].search.azure.cn/indexers?api-version=2019-05-06
+    POST https://[service name].search.azure.cn/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -131,7 +131,7 @@ Blob 索引器可从以下文档格式提取文本：
 > [!NOTE]
 > 默认情况下，包含结构化内容（例如 JSON 或 CSV）的 lob 以单一文本区块的形式编制索引。 如果想要以结构化方法为 JSON 和 CSV Blob 编制索引，请参阅[为 JSON Blob 编制索引](search-howto-index-json-blobs.md)和[为 CSV Blob 编制索引](search-howto-index-csv-blobs.md)来了解详细信息。
 >
-> 复合或嵌入式文档（例如 ZIP 存档，或者嵌入了带附件 Outlook 电子邮件的 Word 文档）也以单一文档的形式编制索引。
+> 复合或嵌入式文档（例如 ZIP 存档、嵌入了带附件 Outlook 电子邮件的 Word 文档或带附件的 .MSG 文件）也以单一文档的形式编制索引。 例如，从 .MSG 文件的附件中提取的所有图像将在 normalized_images 字段中返回。
 
 * 文档的文本内容将提取到名为 `content` 的字符串字段中。
 
@@ -182,7 +182,7 @@ Blob 索引器可从以下文档格式提取文本：
 
 要将所有元素合并在一起，可按如下所示添加字段映射，并为现有索引器的键启用 base-64 编码：
 
-    PUT https://[service name].search.azure.cn/indexers/blob-indexer?api-version=2019-05-06
+    PUT https://[service name].search.azure.cn/indexers/blob-indexer?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -208,7 +208,7 @@ Blob 索引器可从以下文档格式提取文本：
 ### <a name="index-only-the-blobs-with-specific-file-extensions"></a>只为具有特定文件扩展名的 Blob 编制索引
 使用 `indexedFileNameExtensions` 索引器配置参数可以做到只为具有指定扩展名的 Blob 编制索引。 值是包含文件扩展名（包括前置句点）逗号分隔列表的字符串。 例如，如果只要为 .PDF 和 .DOCX Blob 编制索引，请执行以下操作：
 
-    PUT https://[service name].search.azure.cn/indexers/[indexer name]?api-version=2019-05-06
+    PUT https://[service name].search.azure.cn/indexers/[indexer name]?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -220,7 +220,7 @@ Blob 索引器可从以下文档格式提取文本：
 ### <a name="exclude-blobs-with-specific-file-extensions"></a>排除具有特定文件扩展名的 Blob
 使用 `excludedFileNameExtensions` 配置参数可在编制索引时排除具有特定文件扩展名的 Blob。 值是包含文件扩展名（包括前置句点）逗号分隔列表的字符串。 例如，若要为所有 Blob 编制索引，但要排除具有 .PNG 和 .JPEG 扩展名的 Blob，请执行以下操作：
 
-    PUT https://[service name].search.azure.cn/indexers/[indexer name]?api-version=2019-05-06
+    PUT https://[service name].search.azure.cn/indexers/[indexer name]?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -242,7 +242,7 @@ Blob 索引器可从以下文档格式提取文本：
 
 例如，如果只要为存储元数据编制索引，请使用：
 
-    PUT https://[service name].search.azure.cn/indexers/[indexer name]?api-version=2019-05-06
+    PUT https://[service name].search.azure.cn/indexers/[indexer name]?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -265,7 +265,7 @@ Blob 索引器可从以下文档格式提取文本：
 
 默认情况下，Blob 索引器一旦遇到包含不受支持内容类型（例如图像）的 Blob 时，就会立即停止。 当然，可以使用 `excludedFileNameExtensions` 参数跳过某些内容类型。 但是，可能需要在未事先了解所有可能的内容类型的情况下，为 Blob 编制索引。 要在遇到了不受支持的内容类型时继续编制索引，可将 `failOnUnsupportedContentType` 配置参数设置为 `false`：
 
-    PUT https://[service name].search.azure.cn/indexers/[indexer name]?api-version=2019-05-06
+    PUT https://[service name].search.azure.cn/indexers/[indexer name]?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -303,7 +303,7 @@ Azure 认知搜索会限制进行了索引编制的 blob 的大小。 这些限�
 ### <a name="native-blob-soft-delete-preview"></a>本机 Blob 软删除（预览版）
 
 > [!IMPORTANT]
-> 对本机 Blob 软删除的支持目前为预览版。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。 [REST API 版本 2019-05-06-Preview](https://docs.azure.cn/search/search-api-preview) 提供了此功能。 目前不支持门户或 .NET SDK。
+> 对本机 Blob 软删除的支持目前为预览版。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。 [REST API 版本 2020-06-30-Preview](https://docs.azure.cn/search/search-api-preview) 提供此功能。 目前不支持门户或 .NET SDK。
 
 > [!NOTE]
 > 使用本机 Blob 软删除策略时，索引中文档的文档键必须是 Blob 属性或 Blob 元数据。
@@ -316,7 +316,7 @@ Azure 认知搜索会限制进行了索引编制的 blob 的大小。 这些限�
 1. 运行索引器，或者将索引器设置为按计划运行。 当索引器运行并处理 Blob 时，将从索引中删除文档。
 
     ```
-    PUT https://[service name].search.azure.cn/datasources/blob-datasource?api-version=2019-05-06-Preview
+    PUT https://[service name].search.azure.cn/datasources/blob-datasource?api-version=2020-06-30-Preview
     Content-Type: application/json
     api-key: [admin key]
     {
@@ -346,7 +346,7 @@ Azure 认知搜索会限制进行了索引编制的 blob 的大小。 这些限�
 
 例如，如果某个 Blob 具有值为 `true` 的元数据属性 `IsDeleted`，以下策略会将该 Blob 视为已删除：
 
-    PUT https://[service name].search.azure.cn/datasources/blob-datasource?api-version=2019-05-06
+    PUT https://[service name].search.azure.cn/datasources/blob-datasource?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -397,7 +397,7 @@ Blob 编制索引可能是一个耗时的过程。 如果有几百万个 Blob �
 
 如果所有 blob 都包含采用同一编码的纯文本，则可以通过使用**文本分析模式**显著提高索引编制性能。 若要使用文本分析模式，请将 `parsingMode` 配置属性设置为 `text`：
 
-    PUT https://[service name].search.azure.cn/indexers/[indexer name]?api-version=2019-05-06
+    PUT https://[service name].search.azure.cn/indexers/[indexer name]?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -433,7 +433,7 @@ Blob 编制索引可能是一个耗时的过程。 如果有几百万个 Blob �
 | PPTX (application/vnd.openxmlformats-officedocument.presentationml.presentation) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_slide_count`<br/>`metadata_title` |提取文本，包括嵌入的文档 |
 | PPT (application/vnd.ms-powerpoint) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_slide_count`<br/>`metadata_title` |提取文本，包括嵌入的文档 |
 | PPTM（应用程序/vnd.ms-powerpoint.presentation.macroenabled.12） |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_slide_count`<br/>`metadata_title` |提取文本，包括嵌入的文档 |
-| MSG (application/vnd.ms-outlook) |`metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_from_email`<br/>`metadata_message_to`<br/>`metadata_message_to_email`<br/>`metadata_message_cc`<br/>`metadata_message_cc_email`<br/>`metadata_message_bcc`<br/>`metadata_message_bcc_email`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_subject` |提取文本，包括附件。 `metadata_message_to_email`、`metadata_message_cc_email` 和 `metadata_message_bcc_email` 是字符串集合，其余字段是字符串。|
+| MSG (application/vnd.ms-outlook) |`metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_from_email`<br/>`metadata_message_to`<br/>`metadata_message_to_email`<br/>`metadata_message_cc`<br/>`metadata_message_cc_email`<br/>`metadata_message_bcc`<br/>`metadata_message_bcc_email`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_subject` |提取文本，包括从附件中提取的文本。 `metadata_message_to_email`、`metadata_message_cc_email` 和 `metadata_message_bcc_email` 是字符串集合，其余字段是字符串。|
 | ODT（应用程序/vnd.oasis.opendocument.text） |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` |提取文本，包括嵌入的文档 |
 | ODS（应用程序/vnd.oasis.opendocument.spreadsheet） |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified` |提取文本，包括嵌入的文档 |
 | ODP（应用程序/vnd.oasis.opendocument.presentation） |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`title` |提取文本，包括嵌入的文档 |

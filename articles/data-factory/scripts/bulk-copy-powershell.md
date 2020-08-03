@@ -1,23 +1,22 @@
 ---
-title: PowerShell 脚本：使用 Azure 数据工厂批量复制数据 | Microsoft Docs
+title: 使用 PowerShell 批量复制数据
 description: 此 PowerShell 脚本演示如何使用 Azure 数据工厂将源数据存储中的数据批量复制到目标数据存储。
 services: data-factory
+ms.author: v-jay
 author: WenJason
 manager: digimobile
-editor: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: article
+ms.custom: seo-lt-2019
 origin.date: 10/31/2017
-ms.date: 07/08/2019
-ms.author: v-jay
-ms.openlocfilehash: 23ce6616d4b7048187d0ed906a59479bff6dceea
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 07/27/2020
+ms.openlocfilehash: 4533dc1dcdb53bb3bfeea7362a04b71e731ad9ff
+ms.sourcegitcommit: 0eaa82cf74477d26d06bdd8fb6e715e6ed1339c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "67569914"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86974332"
 ---
 # <a name="powershell-script---copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>PowerShell 脚本 - 使用 Azure 数据工厂批量复制多个表
 

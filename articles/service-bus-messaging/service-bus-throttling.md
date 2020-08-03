@@ -1,20 +1,19 @@
 ---
 title: Azure 服务总线限制概述 | Azure
 description: 概述了服务总线限制 - 标准层和高级层。
-services: service-bus-messaging
-author: axisc
-editor: spelluru
-ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 04/30/2020
-ms.author: v-tawe
-origin.date: 10/01/2019
-ms.openlocfilehash: bd32f1601f7870d6e6ef020e4fc9f889db81919b
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: ''
+ms.author: v-yeche
+author: rockboyfor
+ms.openlocfilehash: 4496bc15b5fade1ee6b51cdfe166ffbb9e577cc4
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796716"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162330"
 ---
 # <a name="throttling-operations-on-azure-service-bus"></a>Azure 服务总线中的限制操作
 
@@ -24,7 +23,7 @@ ms.locfileid: "83796716"
 
 ## <a name="throttling-in-azure-service-bus-standard-tier"></a>Azure 服务总线标准层中的限制
 
-Azure 服务总线标准层以多租户设置形式运行，采用预付定价模型。 此处，同一群集中的多个命名空间共享已分配的资源。 标准层是建议用于开发人员、测试和 QA 环境以及低吞吐量生产系统的选项。
+Azure 服务总线标准层以多租户设置形式运行，采用标准预付费套餐定价模型。 此处，同一群集中的多个命名空间共享已分配的资源。 标准层是建议用于开发人员、测试和 QA 环境以及低吞吐量生产系统的选项。
 
 过去，Azure 服务总线根据资源利用率严格实施粗略限制。 但是，仍有机会优化限制逻辑，并为共享这些资源的所有命名空间提供可预测的限制行为。
 
@@ -131,3 +130,4 @@ Azure 服务总线已针对持久性进行优化，我们会确保在服务确�
 * [快速入门：使用 Azure 门户和 .NET 发送和接收消息](service-bus-quickstart-portal.md)
 * [教程：使用 Azure 门户和主题/订阅更新清单](service-bus-tutorial-topics-subscriptions-portal.md)
 
+<!-- Update_Description: update meta properties, wording update, update link -->

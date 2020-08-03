@@ -4,19 +4,19 @@ description: 在不重新部署网站的情况下监视网站性能。 使用托
 ms.topic: conceptual
 author: Johnnytechn
 origin.date: 08/26/2019
-ms.date: 05/28/2020
+ms.date: 07/17/2020
 ms.author: v-johya
-ms.openlocfilehash: 78d6958073a89d43e22a769db507bc469e8e06da
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: 152c5107335d93f49fda35e48fc8a5f2cb8db901
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199701"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244921"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>在运行时使用 Application Insights 无代码附加检测 Web 应用
 
 > [!IMPORTANT]
-> 不再建议使用状态监视器。 它已被 Azure Monitor Application Insights 代理（以前称为状态监视器 v2）取代。 若要了解[本地服务器部署](/azure-monitor/app/status-monitor-v2-overview)或 [Azure 虚拟机和虚拟机规模集部署](/azure-monitor/app/azure-vm-vmss-apps)，请参阅我们的文档。
+> 不再建议使用状态监视器，并且从 2021 年 6 月 1 日起将不再支持这个版本的状态监视器。 它已被 Azure Monitor Application Insights 代理（以前称为状态监视器 v2）取代。 若要了解[本地服务器部署](/azure-monitor/app/status-monitor-v2-overview)或 [Azure 虚拟机和虚拟机规模集部署](/azure-monitor/app/azure-vm-vmss-apps)，请参阅我们的文档。
 
 无需修改或重新部署代码，即可使用 Azure Application Insights 检测实时 Web 应用。 需要一个 [Azure](https://azure.com) 订阅。
 
@@ -96,7 +96,7 @@ ms.locfileid: "84199701"
 
 - 确认 applicationInsights.config 文件在目标应用目录中并且包含 ikey。
 
-- 如果怀疑缺失数据，可在 [Analytics](../log-query/get-started-portal.md) 中运行简单的查询，列出目前正在发送遥测数据的所有云角色。
+- 如果怀疑缺失数据，可在 [Analytics](../log-query/get-started-portal.md) 中运行查询，列出目前正在发送遥测数据的所有云角色。
   ```Kusto
   union * | summarize count() by cloud_RoleName, cloud_RoleInstance
   ```
@@ -303,7 +303,7 @@ Application Insights SDK 版本 2.4 是[支持 .NET 4.0 的最新版本](https:/
  * 依赖项调用 (.NET 4.5)；返回依赖项调用中的值 (.NET 4.6)。
  * 异常堆栈跟踪值。
 
-[了解详细信息](https://apmtips.com/blog/2016/11/18/how-application-insights-status-monitor-not-monitors-dependencies/)
+[了解详细信息](https://apmtips.com/posts/2016-11-18-how-application-insights-status-monitor-not-monitors-dependencies/)
 
 <a name="download"></a>
 ## <a name="download-status-monitor"></a>下载状态监视器

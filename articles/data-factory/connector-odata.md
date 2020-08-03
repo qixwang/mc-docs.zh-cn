@@ -9,15 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-origin.date: 09/04/2019
-ms.date: 05/11/2020
+origin.date: 06/12/2020
+ms.date: 07/27/2020
 ms.author: v-jay
-ms.openlocfilehash: 42317c263b0bec17eaa2d2c370e6838c892004a2
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.openlocfilehash: 569f927f5600a7ed7bd60b6e80d48a53d33e6d53
+ms.sourcegitcommit: 0eaa82cf74477d26d06bdd8fb6e715e6ed1339c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198291"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86974304"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 OData 源复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -241,6 +241,7 @@ OData 链接的服务支持以下属性：
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为 ODataSource   。 | 是 |
 | 查询 | 用于筛选数据的 OData 查询选项。 示例：`"$select=Name,Description&$top=5"`。<br/><br/>**注意**：OData 连接器会从以下组合 URL 复制数据：`[URL specified in linked service]/[path specified in dataset]?[query specified in copy activity source]`。 有关详细信息，请参阅 [OData URL 组件](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)。 | 否 |
+| httpRequestTimeout | 用于获取响应的 HTTP 请求的超时 （TimeSpan 值）  。 该值是获取响应而不是读取响应数据的超时。 如果未指定，默认值为 00:30:00（30 分钟）。 | 否 |
 
 **示例**
 
@@ -294,12 +295,12 @@ OData 链接的服务支持以下属性：
 | Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |
 | Edm.SByte | Int16 |
-| Edm.String | String |
+| Edm.String | 字符串 |
 | Edm.Time | TimeSpan |
 | Edm.DateTimeOffset | DateTimeOffset |
 
 > [!NOTE]
-> 不支持 OData 复杂数据类型，例如对象  。
+> 不支持 OData 复杂数据类型，例如对象。
 
 
 ## <a name="lookup-activity-properties"></a>Lookup 活动属性

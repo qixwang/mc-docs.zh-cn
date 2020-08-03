@@ -1,29 +1,25 @@
 ---
-title: 快速入门：如何使用服务总线主题 (Ruby)
-description: 快速入门：了解如何在 Azure 中使用服务总线主题和订阅。 相关代码示例是针对 Ruby 应用程序编写的。
+title: 快速入门 - 如何使用服务总线主题 (Ruby)
+description: 快速入门 - 了解如何在 Azure 中使用服务总线主题和订阅。 相关代码示例是针对 Ruby 应用程序编写的。
 services: service-bus-messaging
 documentationcenter: ruby
-author: axisc
-manager: timlt
-editor: ''
-ms.assetid: 3ef2295e-7c5f-4c54-a13b-a69c8045d4b6
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: quickstart
-origin.date: 11/05/2019
-ms.date: 2/6/2020
-ms.author: v-lingwu
-ms.openlocfilehash: bc5199ec004953f7598955c1965d766d745ff027
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: ''
+ms.author: v-yeche
+author: rockboyfor
+ms.openlocfilehash: 75d25044e36dde60d6b1ae2ac9104a32c7e52673
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796854"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162345"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-ruby"></a>快速入门：如何通过 Ruby 使用服务总线主题和订阅
- 
+
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
 本文介绍如何从 Ruby 应用程序使用服务总线主题和订阅。 涉及的方案包括：
@@ -34,9 +30,8 @@ ms.locfileid: "83796854"
 - 从订阅接收消息
 - 删除主题和订阅
 
-
 ## <a name="prerequisites"></a>先决条件
-1. Azure 订阅。 若要完成本教程，需要一个 Azure 帐户。 你可以注册[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)或[预付费](https://wd.azure.cn/pricing/pia-waiting-list/?form-type=identityauth)。
+1. Azure 订阅。 若要完成本教程，需要一个 Azure 帐户。 可以激活你的 [Visual Studio 或 MSDN 订阅者权益](https://www.azure.cn/offers/ms-mc-arz-msdn/)或者注册[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 2. 按照[快速入门：使用 Azure 门户创建一个服务总线主题和对此主题的订阅](service-bus-quickstart-topics-subscriptions-portal.md)来创建服务总线**命名空间**并获取**连接字符串**。 
 
     > [!NOTE]
@@ -71,7 +66,7 @@ topic = azure_service_bus_service.create_topic(topic)
 
 默认情况下，订阅是永久性的。 除非删除它或与之相关的主题，否则订阅将继续存在。 如果应用程序包含创建订阅的逻辑，则它应首先使用 getSubscription 方法检查该订阅是否已经存在。
 
-可以通过设置 [AutoDeleteOnIdle 属性](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.autodeleteonidle)来自动删除订阅。
+可以通过设置 [AutoDeleteOnIdle 属性](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.autodeleteonidle?view=azure-dotnet)来自动删除订阅。
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>创建具有默认 (MatchAll) 筛选器的订阅
 如果在创建新订阅时未指定任何筛选器，则将使用默认的 MatchAll 筛选器。 使用 **MatchAll** 筛选器时，发布到主题的所有消息都会置于订阅的虚拟队列中。 以下示例创建了名为“all-messages”的订阅并使用了默认的 **MatchAll** 筛选器。
@@ -159,7 +154,7 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
 如果应用程序在处理消息之后，但在调用 `delete_subscription_message()` 方法之前崩溃，则在应用程序重启时会将该消息重新传送给它。 此情况通常称作“至少处理一次”，即每条消息将至少被处理一次，但在某些情况下，同一消息可能会被重新传送。 如果方案无法容忍重复处理，则应用程序开发人员应向其应用程序添加更多逻辑以处理重复消息传送。 此逻辑通常可通过使用消息的 `message_id` 属性实现，该属性在多次传送尝试中保持不变。
 
 ## <a name="delete-topics-and-subscriptions"></a>删除主题和订阅
-除非设置 [AutoDeleteOnIdle 属性](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.autodeleteonidle)，否则主题和订阅是永久性的。 可以通过 [Azure 门户][Azure portal]或以编程方式删除这些主题和订阅。 下面的示例演示如何删除名为 `test-topic` 的主题。
+除非设置 [AutoDeleteOnIdle 属性](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.autodeleteonidle?view=azure-dotnet)，否则主题和订阅是永久性的。 可以通过 [Azure 门户][Azure portal]或以编程方式删除这些主题和订阅。 下面的示例演示如何删除名为 `test-topic` 的主题。
 
 ```ruby
 azure_service_bus_service.delete_topic("test-topic")
@@ -177,8 +172,10 @@ azure_service_bus_service.delete_subscription("test-topic", "high-messages")
 ## <a name="next-steps"></a>后续步骤
 现在，已了解有关 Service Bus 主题的基础知识，单击下面的链接可了解更多信息。
 
-- 请参阅[队列、主题和订阅](./service-bus-queues-topics-subscriptions.md)。
-- [SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter#microsoft_servicebus_messaging_sqlfilter)的 API 参考。
-- 访问 GitHub 上的 [Azure SDK for Ruby](https://github.com/Azure/azure-sdk-for-ruby) 存储库。
+* 请参阅[队列、主题和订阅](service-bus-queues-topics-subscriptions.md)。
+* [SqlFilter](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.sqlfilter?view=azure-dotnet)的 API 参考。
+* 访问 GitHub 上的 [Azure SDK for Ruby](https://github.com/Azure/azure-sdk-for-ruby) 存储库。
 
 [Azure portal]: https://portal.azure.cn
+
+<!-- Update_Description: update meta properties, wording update, update link -->

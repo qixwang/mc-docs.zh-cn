@@ -7,15 +7,17 @@ ms.subservice: imaging
 ms.workload: infrastructure-services
 ms.topic: article
 origin.date: 09/27/2018
-ms.date: 07/06/2020
+ms.date: 07/27/2020
+ms.testscope: yes
+ms.testdate: 07/27/2020
 ms.author: v-yeche
 ms.custom: legacy
-ms.openlocfilehash: 4e7c87ec2aa15ad77723275f97477844ca0e58c3
-ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
+ms.openlocfilehash: ed6335465c79a57008d3fdd2e31bd84fc0ffef10
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85945972"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244899"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>在 Azure 中创建通用 VM 的托管映像
 
@@ -27,7 +29,7 @@ ms.locfileid: "85945972"
 
 Sysprep 将删除所有个人帐户和安全信息，并准备好要用作映像的计算机。 有关 Sysprep 的信息，请参阅 [Sysprep 概述](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)。
 
-确保 Sysprep 支持计算机上运行的服务器角色。 有关详细信息，请参阅 [Sysprep 对服务器角色的支持](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles)和[不支持的方案](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview#unsupported-scenarios)。
+确保 Sysprep 支持计算机上运行的服务器角色。 有关详细信息，请参阅 [Sysprep 对服务器角色的支持](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles)和[不支持的方案](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview#unsupported-scenarios)。 Sysprep 要求在执行之前完全解密驱动器。 如果在 VM 上启用了加密，请在运行 Sysprep 之前将其禁用。
 
 > [!IMPORTANT]
 > 在 VM 上运行 Sysprep 后，该 VM 将被视为已通用化而无法重启。 通用化 VM 的过程是不可逆的。 如果需要保持原始 VM 正常运行，请创建 [VM 的副本](create-vm-specialized.md#option-3-copy-an-existing-azure-vm)并将其副本通用化。 
@@ -46,7 +48,7 @@ Sysprep 将删除所有个人帐户和安全信息，并准备好要用作映像
 
 4. 在“关机选项”中选择“关机”。
 
-5. 选择“确定” 。
+5. 选择“确定”。
 
     ![启动 Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
 
@@ -131,7 +133,7 @@ Sysprep 将删除所有个人帐户和安全信息，并准备好要用作映像
 
     ```powershell
     New-AzImage -Image $image -ImageName $imageName -ResourceGroupName $rgName
-    ```
+    ``` 
 
 ## <a name="create-an-image-from-a-managed-disk-using-powershell"></a>使用 PowerShell 从托管磁盘创建映像
 
@@ -169,7 +171,7 @@ Sysprep 将删除所有个人帐户和安全信息，并准备好要用作映像
 
     ```powershell
     New-AzImage -ImageName $imageName -ResourceGroupName $rgName -Image $imageConfig
-    ```
+    ``` 
 
 ## <a name="create-an-image-from-a-snapshot-using-powershell"></a>使用 PowerShell 从快照创建映像
 
@@ -200,7 +202,7 @@ Sysprep 将删除所有个人帐户和安全信息，并准备好要用作映像
 
     ```powershell
     New-AzImage -ImageName $imageName -ResourceGroupName $rgName -Image $imageConfig
-    ```
+    ``` 
 
 ## <a name="create-an-image-from-a-vm-that-uses-a-storage-account"></a>从使用存储帐户的 VM 创建映像
 

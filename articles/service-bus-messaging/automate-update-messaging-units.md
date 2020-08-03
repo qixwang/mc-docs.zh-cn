@@ -1,21 +1,23 @@
 ---
 title: Azure 服务总线 - 自动更新消息传送单元
 description: 本文介绍如何使用 Azure 自动化 runbook 自动更新服务总线命名空间的消息传送单元。
-services: service-bus-messaging
-ms.service: service-bus-messaging
-documentationcenter: ''
-author: spelluru
 ms.topic: how-to
-ms.date: 06/30/2020
-origin.date: 05/14/2020
-ms.author: v-tawe
-ms.openlocfilehash: 6c77d5564cfe4c40713f4b763c651fe02c476602
-ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: yes
+ms.testdate: 07/20/2020
+ms.author: v-yeche
+author: rockboyfor
+ms.openlocfilehash: fde96069464b7c7891bbfa7727d2e3363b24262a
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85802799"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162376"
 ---
+<!--Not Available on MOONCAKE-->
+<!--RELEASE BEFORE CONFIRMATION-->
+<!--automation Browser Gallery unable so that we can connect Az.Account and Az.ServiceBus provider-->
 # <a name="automatically-update-messaging-units-of-an-azure-service-bus-namespace"></a>自动更新 Azure 服务总线命名空间的消息传送单元。 
 本文介绍如何根据资源（CPU 或内存）使用情况自动更新服务总线命名空间的[消息传送单元](service-bus-premium-messaging.md)。 
 
@@ -27,9 +29,8 @@ ms.locfileid: "85802799"
 > [!IMPORTANT]
 > 本文仅适用于 Azure 服务总线的高级层。 
 
-
 ## <a name="create-a-service-bus-namespace"></a>创建服务总线命名空间
-创建高级层服务总线命名空间。 按照[在 Azure 门户中创建命名空间](/service-bus-messaging/service-bus-quickstart-portal#create-a-namespace-in-the-azure-portal)一文中的步骤创建命名空间。 
+创建高级层服务总线命名空间。 按照[在 Azure 门户中创建命名空间](service-bus-quickstart-portal.md#create-a-namespace-in-the-azure-portal)一文中的步骤创建命名空间。 
 
 ## <a name="create-an-azure-automation-account"></a>创建 Azure 自动化帐户
 按照[创建 Azure 自动化帐户](../automation/automation-quickstart-create-account.md)一文中的说明创建 Azure 自动化帐户。 
@@ -37,6 +38,7 @@ ms.locfileid: "85802799"
 ## <a name="import-azservice-module-from-gallery"></a>从库中导入 Az.Service 模块
 将 `Az.Accounts` 和 `Az.ServiceBus` 模块从库导入到自动化帐户。 `Az.ServiceBus` 模块依赖于 `Az.Accounts` 模块，因此必须先安装它。 
 
+<!--Not Available on For step-by-step instructions, see [Import a module from the module gallery](../automation/automation-runbook-gallery.md#import-a-module-from-the-module-gallery-with-the-azure-portal).-->
 
 ## <a name="create-and-publish-a-powershell-runbook"></a>创建并发布 PowerShell runbook
 
@@ -45,7 +47,7 @@ ms.locfileid: "85802799"
     下面是一个示例 PowerShell 脚本，可用于为服务总线命名空间增加消息传送单元。 自动化 runbook 中的此 PowerShell 脚本将 MU 从 1 增至 2、从 2 增至 4 或从 4 增至 8。 此属性的允许值为：1、2、4 和 8. 你可以创建另一个 runbook 来减少消息传送单元。
 
     namespaceName 和 resourceGroupName 参数用于独立于警报场景测试脚本 。 
-    
+
     WebHookData 参数用于警报在运行时传递资源组名称、资源名称等信息。 
 
     ```powershell
@@ -54,20 +56,19 @@ ms.locfileid: "85802799"
     (
         [Parameter (Mandatory=$false)]
         [object] $WebhookData,
-    
+
         [Parameter (Mandatory = $false)]
         [String] $namespaceName,
-    
+
         [Parameter (Mandatory = $false)]
         [String] $resourceGroupName
     )
-    
-    
+
     if ($WebhookData)
     {
         # Get the data object from WebhookData
         $WebhookBody = (ConvertFrom-Json -InputObject $WebhookData.RequestBody)
-    
+
         # Get the alert schema ID
         $schemaId = $WebhookBody.schemaId
 
@@ -76,35 +77,35 @@ ms.locfileid: "85802799"
 
             # Get the resource group name from the alert context
             $resourceGroupName = $WebhookBody.resourceGroupName
-            
+
             # Get the namespace name from the alert context
             $namespaceName = $WebhookBody.resourceName
         }
     }
-    
+
     # Connect to Azure account
     $connection = Get-AutomationConnection -Name AzureRunAsConnection
-    
+
     while(!($connectionResult) -And ($logonAttempt -le 10))
     {
         $LogonAttempt++
         # Logging in to Azure...
-        $connectionResult =    Connect-AzAccount `
+        $connectionResult =    Connect-AzAccount -Environment AzureChinaCloud `
                                     -ServicePrincipal `
                                     -Tenant $connection.TenantID `
                                     -ApplicationId $connection.ApplicationID `
                                     -CertificateThumbprint $connection.CertificateThumbprint
-    
+
         Start-Sleep -Seconds 30
     }
-    
+
     # Get the current capacity (number of messaging units) of the namespace
     $sbusns=Get-AzServiceBusNamespace `
         -Name $namespaceName `
         -ResourceGroupName $resourceGroupName
-    
+
     $currentCapacity = $sbusns.Sku.Capacity
-    
+
     # Increase the capacity
     # Capacity can be one of these values: 1, 2, 4, 8
     if ($currentCapacity -eq 1) {
@@ -117,12 +118,12 @@ ms.locfileid: "85802799"
         $newMU = 8    
     }
     else {
-    
+
     }
-    
+
     # Update the capacity of the namespace
     Set-AzServiceBusNamespace `
-            -Location chinaeast2 `
+            -Location chinaeast `
             -SkuName Premium `
             -Name $namespaceName `
             -SkuCapacity $newMU `
@@ -138,7 +139,7 @@ ms.locfileid: "85802799"
 以下过程显示了如何创建警报，该警报将在命名空间 CPU 使用率超过 75% 时触发自动化 runbook 。
 
 1. 在命名空间的“服务总线命名空间”页上，在左侧菜单上选择“警报”，然后在工具栏上选择“+新建警报规则”  。 
-    
+
     ![“警报”页 -“新建警报规则”按钮](./media/automate-update-messaging-units/alerts-page.png)
 2. 在“创建警报规则”页上，单击“选择条件” 。 
 
@@ -150,7 +151,7 @@ ms.locfileid: "85802799"
 
     ![配置 CPU 信号](./media/automate-update-messaging-units/cpu-signal-configuration.png)
 5. 现在，在“创建警报”页上，单击“选择操作组” 。
-    
+
     ![选择操作组](./media/automate-update-messaging-units/select-action-group-button.png)
 6. 在工具栏上选择“创建操作组”按钮。 
 
@@ -158,7 +159,7 @@ ms.locfileid: "85802799"
 7. 在“添加操作组”页上执行以下步骤：
     1. 为操作组输入“名称”。 
     2. 为操作组输入“短名称”。
-    3. 选择要在其中创建此操作组的“订阅”。
+    3. 选择要在其中创建此操作组的订阅。
     4. 选择“资源组”。 
     5. 在“操作”部分，输入“操作的名称”，并为“操作类型”选择“自动化 Runbook”   。 
 
@@ -179,3 +180,5 @@ ms.locfileid: "85802799"
 
 ## <a name="next-steps"></a>后续步骤
 若要了解消息传送单元，请参阅[高级消息传送](service-bus-premium-messaging.md)
+
+<!-- Update_Description: update meta properties, wording update, update link -->

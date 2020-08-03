@@ -3,31 +3,28 @@ title: 将容器组部署到 Azure 虚拟网络
 description: 了解如何使用 Azure 命令行接口将容器组部署到新的或现有的 Azure 虚拟网络。
 ms.topic: article
 origin.date: 04/29/2020
-ms.date: 06/08/2020
+ms.date: 07/27/2020
+ms.testscope: yes
+ms.testdate: 07/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 06ca9c47b5ca2cd130d333f34c0dc532bb1c8685
-ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
+ms.openlocfilehash: a1b01eaff9567b077059600e0c49f3ee3bbb2337
+ms.sourcegitcommit: 5726d3b2e694f1f94f9f7d965676c67beb6ed07c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84564356"
+ms.lasthandoff: 07/21/2020
+ms.locfileid: "86863174"
 ---
-<!--NOT AVAILABLE ON MOONCAKE-->
-<!--ERROR DESCRIPTION BELOW ON LINE 120-->
-<!--The service name Microsoft.ContainerInstance/containerGroups specified on delegation /subscriptions/6b479dfe-e71e-4e56-8619-f8a682fd11e8/resourceGroups/chenyerg/providers/Microsoft.Network/virtualNetworks/aci-vnet/subnets/aci-subnet/delegations/Microsoft.ContainerInstance/containerGroups is not valid.-->
-<!--There are GA in China East 2 currently-->
+<!--Verified successfully-->
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>将容器实例部署到 Azure 虚拟网络
 
 [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)为 Azure 资源和本地资源提供安全的专用网络。 将容器组部署到 Azure 虚拟网络后，容器可与该虚拟网络中的其他资源安全通信。
 
 本文演示如何在 Azure CLI 中使用 [az container create][az-container-create] 命令将容器组部署到新的虚拟网络或现有虚拟网络。 
 
-<!--Not Available on [Virtual network scenarios and resources for Azure Container Instances](container-instances-virtual-network-concepts.md)-->
+有关网络方案和限制，请参阅 [Azure 容器实例的虚拟网络方案和资源](container-instances-virtual-network-concepts.md)。
 
 > [!IMPORTANT]
-> 虚拟网络中的容器组部署通常适用于大多数同时可使用 Azure 容器实例的区域中的 Linux 容器。
-
-<!--Not Available on  For details, see [Regions and resource availability](container-instances-virtual-network-concepts.md#where-to-deploy)-->
+> 虚拟网络中的容器组部署通常适用于大多数同时可使用 Azure 容器实例的区域中的 Linux 容器。 有关详细信息，请参阅[区域和资源可用性](container-instances-virtual-network-concepts.md#where-to-deploy)。 
 
 本文中的示例已针对 Bash shell 设置了格式。 若要使用其他 shell（例如 PowerShell 或命令提示符），请相应地调整续行符。
 
@@ -42,13 +39,13 @@ ms.locfileid: "84564356"
 
 虚拟网络和子网地址前缀分别指定虚拟网络和子网的地址空间。 这些值以无类域间路由 (CIDR) 表示法表示，例如 `10.0.0.0/16`。 有关使用子网的详细信息，请参阅[添加、更改或删除虚拟网络子网](../virtual-network/virtual-network-manage-subnet.md)。
 
-使用此方法部署第一个容器组后，可以通过指定虚拟网络和子网名称或者 Azure 自动创建的网络配置文件，来部署到同一子网。 由于 Azure 将该子网委托给了 Azure 容器实例，因此只能将容器组部署到该子网。**
+使用此方法部署第一个容器组后，可以通过指定虚拟网络和子网名称或者 Azure 自动创建的网络配置文件，来部署到同一子网。 由于 Azure 将该子网委托给了 Azure 容器实例，因此只能将容器组部署到该子网。
 
 ### <a name="example"></a>示例
 
-以下 [az container create][az-container-create] 命令指定新虚拟网络和子网的设置。 提供[支持](container-instances-region-availability.md)在虚拟网络中部署容器组的区域中创建的资源组的名称。 此命令将部署公共Azure [aci-helloworld][aci-helloworld] 容器，该容器运行一个提供静态网页的小型 Node.js Web 服务器。 在下一部分，我们要将另一个容器组部署到同一子网，并测试这两个容器实例之间的通信。
+以下 [az container create][az-container-create] 命令指定新虚拟网络和子网的设置。 提供[支持](container-instances-region-availability.md#availability---virtual-network-deployment)在虚拟网络中部署容器组的区域中创建的资源组的名称。 此命令将部署公共 Microsoft [aci-helloworld][aci-helloworld] 容器，该容器运行一个提供静态网页的小型 Node.js Web 服务器。 在下一部分，我们要将另一个容器组部署到同一子网，并测试这两个容器实例之间的通信。
 
-<!--Pending the VNet feature release on #availability---virtual-network-deployment-->
+<!--CORRECT ON Microsoft aci-helloworld IMAGE-->
 
 ```azurecli
 az container create \
@@ -67,11 +64,11 @@ az container create \
 
 将容器组部署到现有虚拟网络：
 
-1. 在现有虚拟网络中创建一个子网，使用已在其中部署了容器组的现有子网，或使用已腾空了所有** 其他资源的现有子网
+1. 在现有虚拟网络中创建一个子网，使用已在其中部署了容器组的现有子网，或使用已腾空了所有其他资源的现有子网
 1. 使用 [az container create][az-container-create] 部署容器组并指定以下信息之一：
-   * 虚拟网络名称和子网名称
-   * 虚拟网络资源 ID 和子网资源 ID，它允许使用其他资源组中的虚拟网络
-   * 网络配置文件名称或 ID，可以使用 [az network profile list][az-network-profile-list] 获取
+    * 虚拟网络名称和子网名称
+    * 虚拟网络资源 ID 和子网资源 ID，它允许使用其他资源组中的虚拟网络
+    * 网络配置文件名称或 ID，可以使用 [az network profile list][az-network-profile-list] 获取
 
 ### <a name="example"></a>示例
 
@@ -123,7 +120,8 @@ index.html           100% |*******************************|  1663   0:00:00 ETA
 
 ### <a name="example---yaml"></a>示例 - YAML
 
-还可以通过使用 YAML 文件、[资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet)或其他编程方法（例如使用 Python SDK）将容器组部署到现有虚拟网络。 
+还可以通过使用 YAML 文件、[资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet
+)或其他编程方法（例如使用 Python SDK）将容器组部署到现有虚拟网络。 
 
 例如，使用 YAML 文件时，可以部署到具有委派给了 Azure 容器实例的子网的虚拟网络。 指定以下属性：
 
@@ -189,7 +187,7 @@ az container create --resource-group myResourceGroup \
 ```console
 Name              ResourceGroup    Status    Image                                       IP:ports     Network    CPU/Memory       OsType    Location
 ---------------- ---------------  -------- ------------------------------------------  ----------- ---------  --------------- --------  ----------
-appcontaineryaml  myResourceGroup  Running   mcr.microsoft.com/azuredocs/aci-helloworld  10.0.0.5:80  Private    1.0 core/1.5 gb  Linux     chinanorth2
+appcontaineryaml  myResourceGroup  Running   mcr.microsoft.com/azuredocs/aci-helloworld  10.0.0.5:80  Private    1.0 core/1.5 gb  Linux     chinaeast2
 ```
 
 ## <a name="clean-up-resources"></a>清理资源
@@ -211,7 +209,7 @@ az container delete --resource-group myResourceGroup --name appcontaineryaml -y
 执行该脚本之前，请将 `RES_GROUP` 变量设置为包含所要删除的虚拟网络和子网的资源组的名称。 如果未使用之前建议的 `aci-vnet` 名称，请更新虚拟网络的名称。 此脚本已针对 Bash Shell 格式化。 若要使用其他 shell（例如 PowerShell 或命令提示符），需要相应地调整变量赋值和访问器。
 
 > [!WARNING]
-> 此脚本会删除资源！ 它会删除虚拟网络及其包含的所有子网。 运行此脚本之前，请确认你不再需要该虚拟网络中的任何资源，包括其中的任何子网。** 一旦删除，**这些资源就不可恢复**。
+> 此脚本会删除资源！ 它会删除虚拟网络及其包含的所有子网。 运行此脚本之前，请确认你不再需要该虚拟网络中的任何资源，包括其中的任何子网。 一旦删除，**这些资源就不可恢复**。
 
 ```azurecli
 # Replace <my-resource-group> with the name of your resource group
@@ -249,5 +247,4 @@ az network vnet delete --resource-group $RES_GROUP --name aci-vnet
 [az-network-vnet-create]: https://docs.azure.cn/cli/network/vnet?view=azure-cli-latest#az-network-vnet-create
 [az-network-profile-list]: https://docs.azure.cn/cli/network/profile?view=azure-cli-latest#az-network-profile-list
 
-<!-- Update_Description: new article about container instances vnet -->
-<!--NEW.date: 01/15/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

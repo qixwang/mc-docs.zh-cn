@@ -1,26 +1,19 @@
 ---
 title: Azure 服务总线与 .NET 和 AMQP 1.0 | Azure
 description: 本文介绍如何使用 AMQP（高级消息队列协议）通过 .NET 应用程序使用 Azure 服务总线。
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: 332bcb13-e287-4715-99ee-3d7d97396487
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-origin.date: 06/10/2020
-ms.date: 06/30/2020
-ms.author: v-tawe
-ms.openlocfilehash: 994dc31917298e15434b082ea4f45066abb589c6
-ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: ''
+ms.author: v-yeche
+author: rockboyfor
+ms.openlocfilehash: 35d90732c19d8e5c256f2974592de76e3aa4e9ec
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85796314"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162405"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>使用 AMQP 1.0 通过 .NET 使用服务总线
 
@@ -106,12 +99,12 @@ AMQP 1.0 支持在服务总线包 2.1 版或更高版本中提供。 为确保�
 
 ## <a name="control-amqp-protocol-settings"></a>控制 AMQP 协议设置
 
-[.NET API](https://docs.microsoft.com/dotnet/api/) 公开了几项设置以控制 AMQP 协议的行为：
+[.NET API](https://docs.azure.cn/dotnet/api/overview?view=azure-dotnet) 公开了几项设置以控制 AMQP 协议的行为：
 
 * [MessageReceiver.PrefetchCount](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.messagereceiver.prefetchcount?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessageReceiver_PrefetchCount)：控制应用于链接的初始额度。 默认值为 0。
 * [MessagingFactorySettings.AmqpTransportSettings.MaxFrameSize](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.maxframesize?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_MaxFrameSize)：控制在打开连接时协商期间提供的最大 AMQP 帧大小。 默认值为 65,536 字节。
 * [MessagingFactorySettings.AmqpTransportSettings.BatchFlushInterval](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.batchflushinterval?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_BatchFlushInterval)：如果可批量传输，则此值确定发送处置的最大延迟。 默认情况下由发送方/接收方继承。 单个发送方/接收方可以覆盖默认值（即 20 毫秒）。
-* [MessagingFactorySettings.AmqpTransportSettings.UseSslStreamSecurity](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.usesslstreamsecurity?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_UseSslStreamSecurity)：控制 AMQP 连接是否通过安全连接建立。 默认值为 **true**。
+* [MessagingFactorySettings.AmqpTransportSettings.UseSslStreamSecurity](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.usesslstreamsecurity?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_UseSslStreamSecurity)：控制是否通过 TLS 连接建立 AMQP 连接。 默认值为 **true**。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -122,11 +115,12 @@ AMQP 1.0 支持在服务总线包 2.1 版或更高版本中提供。 为确保�
 
 [Create a Service Bus namespace using the Azure portal]: service-bus-create-namespace-portal.md
 [DataContractSerializer]: https://msdn.microsoft.com/library/system.runtime.serialization.datacontractserializer.aspx
-[BrokeredMessage]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azureservicebus-4.0.0
+[BrokeredMessage]: https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet?view=azureservicebus-4.0.0
 [Microsoft.ServiceBus.Messaging.MessagingFactory.AcceptMessageSession]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.messagingfactory.acceptmessagesession?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessagingFactory_AcceptMessageSession
 [OperationTimeout]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessagingFactorySettings_OperationTimeout
 [NuGet]: https://nuget.org/packages/WindowsAzure.ServiceBus/
 [Azure portal]: https://portal.azure.cn
-[服务总线 AMQP 概述]: ./service-bus-amqp-overview.md
-[AMQP 1.0 协议指南]: ./service-bus-amqp-protocol-guide.md
+[服务总线 AMQP 概述]: service-bus-amqp-overview.md
+[AMQP 1.0 协议指南]: service-bus-amqp-protocol-guide.md
 
+<!-- Update_Description: update meta properties, wording update, update link -->

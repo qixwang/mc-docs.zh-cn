@@ -1,20 +1,19 @@
 ---
 title: 使用 Azure 门户创建服务总线主题和订阅
-description: 快速入门：本快速入门将介绍如何使用 Azure 门户创建服务总线主题和订阅。
-services: service-bus-messaging
-author: lingliw
-manager: timlt
-ms.service: service-bus-messaging
+description: 快速入门 - 本快速入门将介绍如何使用 Azure 门户创建服务总线主题以及针对该主题的订阅。
+author: rockboyfor
 ms.topic: quickstart
-origin.date: 01/16/2020
-ms.date: 2/6/2020
-ms.author: spelluru
-ms.openlocfilehash: bc2446388128d654f05aa8cb6eaa2ea5d5cd4073
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: no
+ms.testdate: ''
+ms.author: v-yeche
+ms.openlocfilehash: 02651a055e469d9adbb0238d9ec767e20979cec4
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77068289"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162268"
 ---
 # <a name="quickstart-use-the-azure-portal-to-create-a-service-bus-topic-and-subscriptions-to-the-topic"></a>快速入门：使用 Azure 门户创建一个服务总线主题和多个对该主题的订阅
 在本快速入门中，将使用 Azure 门户创建服务总线主题，然后创建对该主题的订阅。 
@@ -40,3 +39,5 @@ ms.locfileid: "77068289"
 
 > [!div class="nextstepaction"]
 > [发布和订阅消息](service-bus-dotnet-how-to-use-topics-subscriptions.md)
+
+<!-- Update_Description: update meta properties, wording update, update link -->

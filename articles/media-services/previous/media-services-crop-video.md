@@ -1,6 +1,6 @@
 ---
 title: 如何使用 Media Encoder Standard 裁剪视频 - Azure | Microsoft Docs
-description: 本文说明如何使用 Media Encoder Standard 裁剪视频。
+description: 裁剪是指在视频帧内选择一个矩形窗口并且只编码该窗口内的像素的过程。 本文演示如何使用 Media Encoder Standard 裁剪视频。
 services: media-services
 documentationcenter: ''
 author: WenJason
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 origin.date: 03/18/2019
-ms.date: 09/23/2019
+ms.date: 07/27/2020
 ms.author: v-jay
 ms.reviewer: juliako
-ms.openlocfilehash: 0207958955a5629eb5f4224707e7a897b40ae6ab
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: dad5e89e670671bc59fca9ba0e3bb1829c5dc8e3
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "71124551"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162171"
 ---
 # <a name="crop-videos-with-media-encoder-standard"></a>使用 Media Encoder Standard 裁剪视频  
 
@@ -28,7 +28,7 @@ ms.locfileid: "71124551"
 
 ![裁剪视频](./media/media-services-crop-video/media-services-crop-video01.png)
 
-假设输入视频的分辨率为 1920x1080 像素（16:9 纵横比），不过因为左侧和右侧有黑色长条（圆柱框），导致包含活动视频的区域只有 4:3 窗口或 1440x1080 像素。 用户可以使用 MES 裁剪或去掉黑色长条，并编码 1440x1080 区域。
+假设作为输入的视频的分辨率为 1920x1080 像素（16:9 纵横比），不过因为左侧和右侧有黑色长条（圆柱框），导致包含活动视频的区域只有 4:3 窗口或 1440x1080 像素。 用户可以使用 MES 裁剪或去掉黑色长条，并编码 1440x1080 区域。
 
 MES 中的裁剪是预处理阶段，因此，编码预设​​值中的裁剪参数适用于原始输入视频。 编码是后续阶段，因此，宽度/高度设置适用于 *经过预先处理* 的视频，而非原始视频。 在设计预设值时，需要执行以下操作：(a) 根据原始输入视频选择裁剪参数；(b) 根据裁剪后的视频选择编码设置。 如果编码设置与裁剪后的视频不匹配，输出会不如预期。
 
@@ -44,89 +44,91 @@ MES 中的裁剪是预处理阶段，因此，编码预设​​值中的裁剪�
 5. 在编码阶段，我们的任务是生成三层，分别为 1440x1080、960x720 和 480x360 的分辨率
 
 ### <a name="json-preset"></a>JSON 预设
+
+```json
+{
+  "Version": 1.0,
+  "Sources": [
     {
-      "Version": 1.0,
-      "Sources": [
-        {
-          "Streams": [],
-          "Filters": {
-            "Crop": {
-                "X": 240,
-                "Y": 0,
-                "Width": 1440,
-                "Height": 1080
-            }
-          },
-          "Pad": true
+      "Streams": [],
+      "Filters": {
+        "Crop": {
+          "X": 240,
+          "Y": 0,
+          "Width": 1440,
+          "Height": 1080
         }
-      ],
-      "Codecs": [
+      },
+      "Pad": true
+    }
+  ],
+  "Codecs": [
+    {
+      "KeyFrameInterval": "00:00:02",
+      "H264Layers": [
         {
-          "KeyFrameInterval": "00:00:02",
-          "H264Layers": [
-            {
-              "Profile": "Auto",
-              "Level": "auto",
-              "Bitrate": 3400,
-              "MaxBitrate": 3400,
-              "BufferWindow": "00:00:05",
-              "Width": 1440,
-              "Height": 1080,
-              "BFrames": 3,
-              "ReferenceFrames": 3,
-              "AdaptiveBFrame": true,
-              "Type": "H264Layer",
-              "FrameRate": "0/1"
-            },
-            {
-              "Profile": "Auto",
-              "Level": "auto",
-              "Bitrate": 2250,
-              "MaxBitrate": 2250,
-              "BufferWindow": "00:00:05",
-              "Width": 960,
-              "Height": 720,
-              "BFrames": 3,
-              "ReferenceFrames": 3,
-              "AdaptiveBFrame": true,
-              "Type": "H264Layer",
-              "FrameRate": "0/1"
-            },
-            {
-              "Profile": "Auto",
-              "Level": "auto",
-              "Bitrate": 1250,
-              "MaxBitrate": 1250,
-              "BufferWindow": "00:00:05",
-              "Width": 480,
-              "Height": 360,
-              "BFrames": 3,
-              "ReferenceFrames": 3,
-              "AdaptiveBFrame": true,
-              "Type": "H264Layer",
-              "FrameRate": "0/1"
-            }
-          ],
-          "Type": "H264Video"
+          "Profile": "Auto",
+          "Level": "auto",
+          "Bitrate": 3400,
+          "MaxBitrate": 3400,
+          "BufferWindow": "00:00:05",
+          "Width": 1440,
+          "Height": 1080,
+          "BFrames": 3,
+          "ReferenceFrames": 3,
+          "AdaptiveBFrame": true,
+          "Type": "H264Layer",
+          "FrameRate": "0/1"
         },
         {
-          "Profile": "AACLC",
-          "Channels": 2,
-          "SamplingRate": 48000,
-          "Bitrate": 128,
-          "Type": "AACAudio"
+          "Profile": "Auto",
+          "Level": "auto",
+          "Bitrate": 2250,
+          "MaxBitrate": 2250,
+          "BufferWindow": "00:00:05",
+          "Width": 960,
+          "Height": 720,
+          "BFrames": 3,
+          "ReferenceFrames": 3,
+          "AdaptiveBFrame": true,
+          "Type": "H264Layer",
+          "FrameRate": "0/1"
+        },
+        {
+          "Profile": "Auto",
+          "Level": "auto",
+          "Bitrate": 1250,
+          "MaxBitrate": 1250,
+          "BufferWindow": "00:00:05",
+          "Width": 480,
+          "Height": 360,
+          "BFrames": 3,
+          "ReferenceFrames": 3,
+          "AdaptiveBFrame": true,
+          "Type": "H264Layer",
+          "FrameRate": "0/1"
         }
       ],
-      "Outputs": [
-        {
-          "FileName": "{Basename}_{Width}x{Height}_{VideoBitrate}.mp4",
-          "Format": {
-            "Type": "MP4Format"
-          }
-        }
-      ]
+      "Type": "H264Video"
+    },
+    {
+      "Profile": "AACLC",
+      "Channels": 2,
+      "SamplingRate": 48000,
+      "Bitrate": 128,
+      "Type": "AACAudio"
     }
-
+  ],
+  "Outputs": [
+    {
+      "FileName": "{Basename}_{Width}x{Height}_{VideoBitrate}.mp4",
+      "Format": {
+        "Type": "MP4Format"
+      }
+    }
+  ]
+}
+```
 
 ## <a name="restrictions-on-cropping"></a>裁剪的限制
 裁剪功能仅供手动操作。 需要将输入视频加载到合适的编辑工具中，以便选择感兴趣的帧、定位光标以确定裁剪矩形的偏移量，以此确定针对该特定视频调整的编码预设值等。此功能并非是用来实现诸如自动检测及删除输入视频黑边之类的操作的。

@@ -11,15 +11,15 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: article
 origin.date: 03/26/2020
-ms.date: 04/06/2020
+ms.date: 07/27/2020
 ms.author: v-jay
 ms.custom: seodec18
-ms.openlocfilehash: cfaf47c9c927e219152b07a4fd0748b9dacfee21
-ms.sourcegitcommit: 1f890a4085e184cc678485d05f08dd6de8dc973f
+ms.openlocfilehash: c076bec63843e7ecbaad4eaac4d6b69694536b20
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84438951"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162212"
 ---
 # <a name="manage-assets"></a>管理资产
 
@@ -61,7 +61,7 @@ ms.locfileid: "84438951"
 
     AssetContainerSas.listContainerSas 采用 [ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) 参数，在此参数中可以设置 `expiryTime`。 时间应设置为小于 24 小时。
 
-    [ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) 返回多个 SAS URL，因为每个存储帐户有两个存储帐户密钥。 存储帐户有两个密钥，因为它支持存储帐户密钥无缝轮换（例如，使用一个密钥时更改另一个，然后开始使用新密钥并轮换其他密钥）。 第一个 SAS URL 表示存储 key1，第二个表示存储 key2。
+    [ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) 返回多个 SAS URL，因为每个存储帐户有两个存储帐户密钥。 存储帐户具有两个密钥，因为这样有助于进行故障转移和无缝轮换存储帐户密钥。 第一个 SAS URL 表示第一个存储帐户密钥，第二个 SAS URL 表示第二个密钥。
 3. 使用 Azure 存储 API 或 SDK（例如，[存储 REST API](../../storage/common/storage-rest-api-auth.md) 或 [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)）将文件上传到资产容器。
 4. 使用媒体服务 v3 API 创建用于处理“输入”资产的转换和作业。 有关详细信息，请参阅[转换和作业](transform-concept.md)。
 5. 从“输出”资产流式传输内容。

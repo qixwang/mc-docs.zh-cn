@@ -1,21 +1,20 @@
 ---
 title: 快速入门 - 使用 Azure CLI 创建服务总线队列 | Azure
 description: 在本快速入门中，你将了解如何使用 Azure CLI 创建服务总线队列。 然后，你将使用示例 Java 应用程序向队列发送消息以及从中接收消息。
-services: service-bus-messaging
-author: lingliw
-manager: digimobile
-ms.service: service-bus-messaging
+author: rockboyfor
 ms.devlang: java
 ms.topic: quickstart
-origin.date: 04/10/2019
-ms.date: 2/6/2020
-ms.author: v-lingwu
-ms.openlocfilehash: 01073c82b2ab7df557690445c9cfae6e8d899cb0
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+origin.date: 06/23/2020
+ms.date: 07/27/2020
+ms.testscope: yes
+ms.testdate: 07/20/2020
+ms.author: v-yeche
+ms.openlocfilehash: 67b9ae4d6fc90bf57c6c23f4f22af5df75f44aaa
+ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796780"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87162271"
 ---
 # <a name="quickstart-use-the-azure-cli-to-create-a-service-bus-queue"></a>快速入门：使用 Azure CLI 创建服务总线队列
 本快速入门介绍了如何使用 Azure CLI 和服务总线 Java 库通过服务总线来发送和接收消息。 最后，如果对更多的技术细节感兴趣，可以[阅读说明](#understand-the-sample-code)，了解示例代码的重要元素。
@@ -25,17 +24,19 @@ ms.locfileid: "83796780"
 ## <a name="prerequisites"></a>先决条件
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户][trial account]。
 
-
+[!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
-如果使用“试用”按钮启动 PowerShell，请使用凭据登录到 Azure。 
 
-如果在 Web 浏览器中启动了 PowerShell（不管是直接操作还是通过 Azure 门户），请在 PowerShell 左上角看到 **PowerShell** 时切换到 **Bash**。 
+<!--Not Available on Cloud Shell-->
+
+使用你的凭据登录到 Azure。 
 
 ## <a name="use-the-azure-cli-to-create-resources"></a>使用 Azure CLI 创建资源
-在 PowerShell 中的 Bash 提示符下，发出以下命令以预配服务总线资源。 请务必将所有占位符替换为适当的值：Java 示例程序要求队列名称为 BasicQueue，因此请不要更改它。 可能需要逐一复制/粘贴命令，这样就可以先替换值，然后再运行它们。 
+在 Azure CLI 中的 Bash 提示符下，发出以下命令以预配服务总线资源。 请务必将所有占位符替换为适当的值：Java 示例程序要求队列名称为 BasicQueue，因此请不要更改它。 可能需要逐一复制/粘贴命令，这样就可以先替换值，然后再运行它们。 
 
 ```azurecli
+az cloud set -n AzureChinaCloud
 # Create a resource group
 resourceGroupName="myResourceGroup"
 
@@ -43,7 +44,7 @@ az group create --name $resourceGroupName --location chinaeast
 
 # Create a Service Bus messaging namespace with a unique name
 namespaceName=myNameSpace$RANDOM
-az servicebus namespace create --resource-group $resourceGroupName --name $namespaceName --location 'China East'
+az servicebus namespace create --resource-group $resourceGroupName --name $namespaceName --location chinaeast
 
 # Create a Service Bus queue
 az servicebus queue create --resource-group $resourceGroupName --namespace-name $namespaceName --name BasicQueue
@@ -60,29 +61,29 @@ connectionString=$(az servicebus namespace authorization-rule keys list --resour
 
 1. 通过发出以下命令，在计算机上克隆[服务总线 GitHub 存储库](https://github.com/Azure/azure-service-bus/)：
 
-   ```bash
-   git clone https://github.com/Azure/azure-service-bus.git
-   ```
+    ```bash
+    git clone https://github.com/Azure/azure-service-bus.git
+    ```
 
-2. 将当前目录更改为示例文件夹，使用正斜杠作为分隔符：
+1. 将当前目录更改为示例文件夹，使用正斜杠作为分隔符：
 
-   ```bash
-   cd azure-service-bus/samples/Java/azure-servicebus/QueuesGettingStarted
-   ```
+    ```bash
+    cd azure-service-bus/samples/Java/azure-servicebus/QueuesGettingStarted
+    ```
 
-3. 发出以下命令来生成应用程序：
-   
-   ```bash
-   mvn clean package -DskipTests
-   ```
+1. 发出以下命令来生成应用程序：
 
-4. 要运行该程序，请在将连接字符串替换为前面复制的值后发出以下命令：
+    ```bash
+    mvn clean package -DskipTests
+    ```
 
-   ```bash
-   java -jar ./target/queuesgettingstarted-1.0.0-jar-with-dependencies.jar -c "<SERVICE BUS NAMESPACE CONNECTION STRING>" 
-   ```
+1. 要运行该程序，请在将连接字符串替换为前面复制的值后发出以下命令：
 
-6. 观察 10 条消息发送到队列。 消息的顺序是不确定的，但可以看到消息发送，然后可以看到确认和被接收，此外还可以看到有效负载数据：
+    ```bash
+    java -jar ./target/queuesgettingstarted-1.0.0-jar-with-dependencies.jar -c "<SERVICE BUS NAMESPACE CONNECTION STRING>" 
+    ```
+
+1. 观察 10 条消息发送到队列。 消息的顺序是不确定的，但可以看到消息发送，然后可以看到确认和被接收，此外还可以看到有效负载数据：
 
     ```
     Message sending: Id = 0
@@ -104,7 +105,7 @@ connectionString=$(az servicebus namespace authorization-rule keys list --resour
                                                     ExpiresAtUtc = 2019-02-25T18:17:20.972Z,
                                                     ContentType = "application/json",
                                                     Content: [ firstName = Nikolaus, name = Kopernikus ]
-    
+
             Message acknowledged: Id = 2
             Message acknowledged: Id = 5
             Message acknowledged: Id = 1
@@ -120,7 +121,7 @@ connectionString=$(az servicebus namespace authorization-rule keys list --resour
                                                     ExpiresAtUtc = 2019-02-25T18:17:20.972Z,
                                                     ContentType = "application/json",
                                                     Content: [ firstName = Steven, name = Hawking ]
-    
+
                                     Message received:
                                                     MessageId = 2,
                                                     SequenceNumber = 9288674231451649,
@@ -128,7 +129,7 @@ connectionString=$(az servicebus namespace authorization-rule keys list --resour
                                                     ExpiresAtUtc = 2019-02-25T18:17:21.012Z,
                                                     ContentType = "application/json",
                                                     Content: [ firstName = Marie, name = Curie ]
-    
+
                                     Message received:
                                                     MessageId = 1,
                                                     SequenceNumber = 22799473113563137,
@@ -136,7 +137,7 @@ connectionString=$(az servicebus namespace authorization-rule keys list --resour
                                                     ExpiresAtUtc = 2019-02-25T18:17:21.025Z,
                                                     ContentType = "application/json",
                                                     Content: [ firstName = Werner, name = Heisenberg ]
-    
+
                                     Message received:
                                                     MessageId = 8,
                                                     SequenceNumber = 67835469387268097,
@@ -144,7 +145,7 @@ connectionString=$(az servicebus namespace authorization-rule keys list --resour
                                                     ExpiresAtUtc = 2019-02-25T18:17:21.028Z,
                                                     ContentType = "application/json",
                                                     Content: [ firstName = Johannes, name = Kepler ]
-    
+
                                     Message received:
                                                     MessageId = 7,
                                                     SequenceNumber = 4785074604081153,
@@ -152,7 +153,7 @@ connectionString=$(az servicebus namespace authorization-rule keys list --resour
                                                     ExpiresAtUtc = 2019-02-25T18:17:21.020Z,
                                                     ContentType = "application/json",
                                                     Content: [ firstName = Galileo, name = Galilei ]
-    
+
                                     Message received:
                                                     MessageId = 5,
                                                     SequenceNumber = 13792273858822145,
@@ -160,7 +161,7 @@ connectionString=$(az servicebus namespace authorization-rule keys list --resour
                                                     ExpiresAtUtc = 2019-02-25T18:17:21.027Z,
                                                     ContentType = "application/json",
                                                     Content: [ firstName = Niels, name = Bohr ]
-    
+
                                     Message received:
                                                     MessageId = 0,
                                                     SequenceNumber = 18295873486192641,
@@ -168,7 +169,7 @@ connectionString=$(az servicebus namespace authorization-rule keys list --resour
                                                     ExpiresAtUtc = 2019-02-25T18:17:21.021Z,
                                                     ContentType = "application/json",
                                                     Content: [ firstName = Albert, name = Einstein ]
-    
+
                                     Message received:
                                                     MessageId = 6,
                                                     SequenceNumber = 281474976710657,
@@ -176,7 +177,7 @@ connectionString=$(az servicebus namespace authorization-rule keys list --resour
                                                     ExpiresAtUtc = 2019-02-25T18:17:21.019Z,
                                                     ContentType = "application/json",
                                                     Content: [ firstName = Michael, name = Faraday ]
-    
+
                                     Message received:
                                                     MessageId = 4,
                                                     SequenceNumber = 63331869759897601,
@@ -188,7 +189,7 @@ connectionString=$(az servicebus namespace authorization-rule keys list --resour
 
 ## <a name="clean-up-resources"></a>清理资源
 
-在 Azure PowerShell 中，运行以下命令来删除资源组、命名空间和所有相关资源：
+在 Azure CLI 中，运行以下命令来删除资源组、命名空间和所有相关资源：
 
 ```azurecli
 az group delete --resource-group myResourceGroup
@@ -328,7 +329,6 @@ CompletableFuture<Void> sendMessagesAsync(QueueClient sendClient) {
 ```java
 void registerReceiver(QueueClient queueClient, ExecutorService executorService) throws Exception {
 
-    
     // register the RegisterMessageHandler callback with executor service
     queueClient.registerMessageHandler(new IMessageHandler() {
                                             // callback invoked when the message handler loop has obtained a message
@@ -380,5 +380,7 @@ void registerReceiver(QueueClient queueClient, ExecutorService executorService) 
 
 [trial account]: https://www.azure.cn/pricing/1rmb-trial/
 [fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name
-[Install the Azure CLI]: https://docs.azure.cn/cli/install-azure-cli
-[az group create]: /cli/group#az_group_create
+[Install the Azure CLI]: https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest
+[az group create]: https://docs.azure.cn/cli/group?view=azure-cli-latest#az_group_create
+
+<!-- Update_Description: update meta properties, wording update, update link -->

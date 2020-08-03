@@ -1,23 +1,22 @@
 ---
-title: 使用 Azure Application Insights 中的用户流分析用户导航模式 | Azure Docs
+title: Azure Application Insights 用户流分析导航流
 description: 分析用户在 Web 应用的页面和功能之间导航的方式。
 ms.topic: conceptual
-author: lingliw
-manager: digimobile
+author: Johnnytechn
+ms.author: v-johya
+ms.date: 07/17/2020
 origin.date: 01/24/2018
-ms.date: 6/4/2019
 ms.reviewer: mbullwin
-ms.author: v-lingwu
-ms.openlocfilehash: a348c27ab669f995546cc7c169641db464f70d9d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4ad751a9eb7ff4e19fc4679168bca697f6f3c0fa
+ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850352"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87244553"
 ---
 # <a name="analyze-user-navigation-patterns-with-user-flows-in-application-insights"></a>使用 Application Insights 中的用户流分析用户导航模式
 
-![Application Insights 用户流工具](./media/usage-flows/00001-flows.png)
+![Application Insights 用户流工具](./media/usage-flows/flows.png)
 
 用户流工具可视化显示用户在网站的页面和功能之间导航的方式。 它非常适合解释以下问题，例如：
 
@@ -35,7 +34,7 @@ ms.locfileid: "78850352"
 
 ## <a name="start-by-choosing-an-initial-event"></a>首先，选择初始事件
 
-![为用户流选择初始事件](./media/usage-flows/00002-flows-initial-event.png)
+![为用户流选择初始事件](./media/usage-flows/initial-event.png)
 
 若要使用用户流工具开始回答问题，请选择初始页面视图、自定义事件或异常作为可视化的起点：
 
@@ -60,7 +59,7 @@ ms.locfileid: "78850352"
 
 ## <a name="after-visiting-a-page-or-feature-where-do-users-go-and-what-do-they-click"></a>用户访问页面或功能后去了哪里，又单击了什么？
 
-![使用用户流，了解用户单击的位置](./media/usage-flows/00003-flows-one-step.png)
+![使用用户流，了解用户单击的位置](./media/usage-flows/one-step.png)
 
 如果初始事件是页面视图，则可以通过可视化的第一列（“步骤 1”）快速了解用户在访问页面后紧接着执行了哪些操作。 尝试在用户流可视化旁的窗口中打开你的网站。 将你对用户如何与页面进行交互的期望与“步骤 1”列中的事件列表进行比较。 通常，页面上对你的团队来说看似无关紧要的 UI 元素可能会是页面中最常用的。 这对于对网站进行设计改进而言可能是一个很好的起点。
 
@@ -95,6 +94,4 @@ ms.locfileid: "78850352"
 * [用户、会话和事件](usage-segmentation.md)
 * [保留](usage-retention.md)
 * [向应用添加自定义事件](../../azure-monitor/app/api-custom-events-metrics.md)
-
-
 
