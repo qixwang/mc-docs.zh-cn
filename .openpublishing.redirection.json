@@ -26555,11 +26555,6 @@
       "redirect_document_id": false
     },
     {
-      "source_path": "articles/azure-monitor/app/analytics.md",
-      "redirect_url": "/azure-monitor/log-query/portals",
-      "redirect_document_id": false
-    },
-    {
       "source_path": "articles/azure-monitor/log-query/portals.md",
       "redirect_url": "/azure-monitor/log-query/log-query-overview",
       "redirect_document_id": false
@@ -26568,6 +26563,17 @@
       "source_path": "articles/security-center/security-center-apply-disk-encryption.md",
       "redirect_url": "/security-center/security-center-virtual-machine-protection",
       "redirect_document_id": false
+    },
+	{
+      "source_path": "articles/azure-monitor/app/analytics.md",
+      "redirect_url": "/azure-monitor/log-query/log-query-overview",
+      "redirect_document_id": false
+    },
+	{
+      "source_path": "articles/virtual-machines/linux/tutorial-mean-stack.md",
+      "redirect_url": "/virtual-machines/linux/tutorial-lamp-stack",
+      "redirect_document_id": false
     }
+
   ]
 }
