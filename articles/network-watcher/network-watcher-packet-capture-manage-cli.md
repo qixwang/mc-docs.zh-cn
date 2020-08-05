@@ -3,23 +3,24 @@ title: 使用 Azure 网络观察程序管理数据包捕获 - Azure CLI | Azure
 description: 此页说明如何使用 Azure CLI 管理网络观察程序的数据包捕获功能
 services: network-watcher
 documentationcenter: na
-author: lingliw
-manager: digimobile
+author: rockboyfor
 ms.assetid: cb0c1d10-f7f2-4c34-b08c-f73452430be8
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 02/22/2017
-ms.date: 10/22/2018
-ms.author: v-lingwu
-ms.openlocfilehash: 07b182dab32689d34ab2753ca5782f19f7d586fd
-ms.sourcegitcommit: b81ea2ab9eafa986986fa3eb1e784cfe9bbf9ec1
+ms.date: 08/10/2020
+ms.testscope: yes
+ms.testdate: 08/03/2020
+ms.author: v-yeche
+ms.openlocfilehash: 9108160325a108dab38e31b51e31cb847fda419b
+ms.sourcegitcommit: 3eadca6821ef679d8ac6ca2dc46d6a13aac211cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83367874"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87548049"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-azure-cli"></a>通过 Azure CLI 使用 Azure 网络观察程序管理数据包捕获
 
@@ -31,7 +32,7 @@ ms.locfileid: "83367874"
 
 使用网络观察程序数据包捕获，可以创建捕获会话以跟踪进出虚拟机的流量。 为捕获会话提供了筛选器以确保仅捕获所需的流量。 数据包捕获有助于以主动和被动方式诊断网络异常。 其他用途包括收集网络统计信息，获得网络入侵信息，调试客户端与服务器之间的通信，等等。 由于能够远程触发数据包捕获，此功能可减轻手动运行数据包捕获的负担，并可在所需计算机上运行，从而可节省宝贵的时间。
 
-若要执行本文中的步骤，需要[安装适用于 Mac、Linux 和 Windows 的 Azure 命令行接口 (Azure CLI)](/cli/install-azure-cli?view=azure-cli-latest)。
+若要执行本文中的步骤，需要[安装适用于 Mac、Linux 和 Windows 的 Azure 命令行接口 (Azure CLI)](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)。
 
 本文将引导完成当前可用于数据包捕获的不同管理任务。
 
@@ -65,7 +66,7 @@ az vm extension set --resource-group resourceGroupName --vm-name virtualMachineN
 对于 Linux 虚拟机：
 
 ```azurecli
-az vm extension set --resource-group resourceGroupName --vm-name virtualMachineName --publisher Microsoft.Azure.NetworkWatcher --name NetworkWatcherAgentLinux--version 1.4
+az vm extension set --resource-group resourceGroupName --vm-name virtualMachineName --publisher Microsoft.Azure.NetworkWatcher --name NetworkWatcherAgentLinux --version 1.4
 ```
 
 ### <a name="step-2"></a>步骤 2
@@ -73,11 +74,13 @@ az vm extension set --resource-group resourceGroupName --vm-name virtualMachineN
 若要确保已安装代理，请运行 `vm extension show` 命令并向其传递资源组和虚拟机的名称。 检查结果列表，以确保已安装代理。
 
 对于 Windows 虚拟机：
+
 ```azurecli
 az vm extension show --resource-group resourceGroupName --vm-name virtualMachineName --name NetworkWatcherAgentWindows
 ```
 
 对于 Linux 虚拟机：
+
 ```azurecli
 az vm extension show --resource-group resourceGroupName --vm-name virtualMachineName --name AzureNetworkWatcherExtension
 ```
@@ -118,7 +121,7 @@ az storage account list
 
 ### <a name="step-2"></a>步骤 2
 
-此时，你已准备好创建数据包捕获。  首先，让我们检查你可能想要配置的参数。 筛选器就是这样的参数，可用来限制数据包捕获所存储的数据。 以下示例为数据包捕获设置了多个筛选器。  前三个筛选器仅收集从本地 IP 10.0.0.3 发往目标端口 20、80 和 443 的传出 TCP 流量。  最后一个筛选器仅收集 UDP 流量。
+此时，你已准备好创建数据包捕获。  首先，让我们检查你可能想要配置的参数。 筛选器就是这样的参数，可用来限制数据包捕获所存储的数据。 以下示例为数据包捕获设置了多个筛选器。  前三个筛选器仅收集从本地 IP 10.0.0.3 发往目标端口 20、80 和 443 的传出 TCP 流量。 最后一个筛选器仅收集 UDP 流量。
 
 ```azurecli
 az network watcher packet-capture create --resource-group {resourceGroupName} --vm {vmName} --name packetCaptureName --storage-account {storageAccountName} --filters "[{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"20\"},{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"80\"},{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"443\"},{\"protocol\":\"UDP\"}]"
@@ -185,7 +188,7 @@ roviders/microsoft.compute/virtualmachines/{vmName}/2017/05/25/packetcapture_16_
 az network watcher packet-capture show-status --name packetCaptureName --location {networkWatcherLocation}
 ```
 
-以下示例是 `az network watcher packet-capture show-status` 命令的输出。 以下是捕获停止的示例，其中 StopReason 为 TimeExceeded。 
+以下示例是 `az network watcher packet-capture show-status` 命令的输出。 以下是捕获停止的示例，其中 StopReason 为 TimeExceeded。
 
 ```
 {
@@ -240,4 +243,4 @@ https://{storageAccountName}.blob.core.chinacloudapi.cn/network-watcher-logs/sub
 
 <!-- Image references -->
 
-<!--Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

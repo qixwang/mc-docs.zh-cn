@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: overview
-ms.date: 06/24/2020
+ms.date: 08/03/2020
 ms.author: v-junlch
-ms.openlocfilehash: cbe303b6e18fc433668994ed081ece092065959f
-ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
+ms.openlocfilehash: 647c36ceaed7097e778523862258af7d9e47c490
+ms.sourcegitcommit: 36e7f37481969f92138bfe70192b1f4a2414caf7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85516543"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87796329"
 ---
 # <a name="whats-new-in-azure-application-gateway"></a>Azure 应用程序网关有哪些新增功能？
 
@@ -27,10 +27,13 @@ Azure 应用程序网关会不断更新。 为了让大家随时了解最新的�
 
 |功能  |说明  |添加日期  |
 |---------|---------|---------|
+| 侦听器中的通配符主机名（预览） | 现在可以在多站点侦听器中定义通配符主机名，每个侦听器最多可以定义 5 个主机名。 若要了解详细信息，请参阅[侦听器中的通配符主机名（预览）](multiple-site-overview.md#wildcard-host-names-in-listener-preview) | 2020 年 7 月 |
+| URL 重写（预览） | 现在可以使用 URL 重写功能来重写 URL 路径和查询字符串参数。 请参阅[重写 HTTP 标头和 URL](rewrite-http-headers-url.md) 以了解更多信息，并参阅[使用 Azure 门户在应用程序网关中重写 URL](rewrite-url-portal.md)以获取分步指南。 | 2020 年 7 月 |
+| 运行状况探测的自定义端口 | 现可通过应用程序网关 v2 SKU 在运行状况探测配置中提供自定义端口。 有关详细信息，请参阅[运行状况探测概述](application-gateway-probe-overview.md) | 2020 年 7 月 |
 | 应用程序网关入口控制器 (AGIC) AKS 附加产品（预览版） |现可通过 Azure CLI 将应用程序网关入口控制器单行部署为本机 AKS 附加产品。 作为 AKS 附加产品，AGIC 可成为一项完全托管服务，同时仍在客户的 AKS 群集中运行。 有关详细信息，请参阅 [AGIC 附加产品差异](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on)。 |2020 年 6 月 |
 | v2（预览版）上的用户定义路由 (UDR) |在某些情况下，应用程序网关 v2 SKU 现在支持用户定义的路由。 有关详细信息，请参阅[应用程序网关配置概述](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet)。 |2020 年 3 月 |
 |关联 cookie 更改 |启用基于 Cookie 的关联时，除了现有的 ApplicationGatewayAffinity Cookie 外，应用程序网关还会注入另一个名为“ApplicationGatewayAffinityCORS”的相同 Cookie。 ApplicationGatewayAffinityCORS 又添加了两个属性 (SameSite=None; Secure)，这样即使对于跨域请求也可以保持粘性会话。 有关详细信息，请参阅[基于应用程序网关 Cookie 的关联](configuration-overview.md#cookie-based-affinity)。 |2020 年 2 月 |
-|探测增强功能 |利用应用程序网关 v2 SKU 中的自定义探测增强功能，我们简化了[探测配置](/application-gateway/application-gateway-create-probe-portal#create-probe-for-application-gateway-v2-sku)，加速了[按需后端运行状况测试](/application-gateway/application-gateway-create-probe-portal#test-backend-health-with-the-probe)，并添加了[更多诊断信息](/application-gateway/application-gateway-backend-health-troubleshooting#error-messages)，以帮助你解决后端运行状况问题。  |2019 年 10 月 |
+|探测增强功能 |借助应用程序网关 v2 SKU 中的自定义探测增强功能，我们简化了[探测配置](/application-gateway/application-gateway-create-probe-portal#create-probe-for-application-gateway-v2-sku)，加速了[按需后端运行状况测试](/application-gateway/application-gateway-create-probe-portal#test-backend-health-with-the-probe)，并添加了[更多诊断信息](/application-gateway/application-gateway-backend-health-troubleshooting#error-messages)，以帮助你解决后端运行状况问题。  |2019 年 10 月 |
 |更多指标 |我们添加了以下新指标以帮助你监视应用程序网关 v2 SKU：[与计时相关的指标](/application-gateway/application-gateway-metrics#timing-metrics)、后端响应状态、接收的字节数、发送的字节数、客户端 TLS 协议和当前计算单元。 请参阅[应用程序网关 V2 SKU 支持的指标](/application-gateway/application-gateway-metrics#metrics-supported-by-application-gateway-v2-sku)。 |2019 年 8 月 |
 |WAF 自定义规则 |应用程序网关 WAF_v2 现在支持创建自定义规则。 请参阅[应用程序网关自定义规则](custom-waf-rules-overview.md)。 |2019 年 6 月 |
 |自动缩放、区域冗余、静态 VIP 支持 GA |v2 SKU 正式版，支持自动缩放、区域冗余、增强性能、静态 VIP、Key Vault、标头重写。 请参阅[应用程序网关自动缩放文档](application-gateway-autoscaling-zone-redundant.md)。 |2019 年 4 月 |

@@ -9,14 +9,14 @@ metadata:
   ms.service: automation
   ms.topic: landing-page
   origin.date: 09/06/2019
-  ms.date: 05/25/2020
+  ms.date: 08/10/2020
   ms.author: v-jay
-  ms.openlocfilehash: b7ba9bd24c7d39d2fdbd12b71ec77df4489a8d9e
-  ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
+  ms.openlocfilehash: e29d83c93b8ed8f4d768322b836cd911a5a4b915
+  ms.sourcegitcommit: e6b216b180734783219378410e13192e314a4497
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/22/2020
-  ms.locfileid: "83801240"
+  ms.lasthandoff: 08/05/2020
+  ms.locfileid: "87790053"
 landingContent:
 - title: Azure 自动化入门
   linkLists:
@@ -37,15 +37,11 @@ landingContent:
   - linkListType: overview
     links:
     - text: 更新管理概述
-      url: automation-update-management.md
+      url: update-management/update-mgmt-overview.md
   - linkListType: get-started
     links:
     - text: 管理多个 VM 的更新
-      url: manage-update-multi.md
-  - linkListType: deploy
-    links:
-    - text: 关于 Azure VM 的更新
-      url: automation-onboard-solutions-from-automation-account.md
+      url: update-management/update-mgmt-manage-updates-for-vm.md
 - title: 使用 Desired State Configuration 配置 VM
   linkLists:
   - linkListType: overview

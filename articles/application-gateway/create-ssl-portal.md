@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 05/19/2020
+ms.date: 08/03/2020
 ms.author: v-junlch
-ms.openlocfilehash: 67dd35fcd4d44d9780f976fd3a67629e4db698fe
-ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
+ms.openlocfilehash: 569e8502214451eb09020f4de765a78f89700852
+ms.sourcegitcommit: 36e7f37481969f92138bfe70192b1f4a2414caf7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83748154"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87796249"
 ---
 # <a name="tutorial-configure-an-application-gateway-with-tls-termination-using-the-azure-portal"></a>教程：使用 Azure 门户配置带有 TLS 终止的应用程序网关
 
@@ -158,7 +158,7 @@ Export-PfxCertificate `
 
 5. 对于“HTTP 设置”，选择“新建”以创建新的 HTTP 设置 。 HTTP 设置将决定传递规则的行为。 在打开的“添加 HTTP 设置”窗口中，为“HTTP 设置名称”输入“myHTTPSetting”。 接受“添加 HTTP 设置”窗口中其他设置的默认值，然后选择“添加”以返回到“添加传递规则”窗口  。 
 
-   ![新建应用程序网关：HTTP 设置](./media/create-ssl-portal/application-gateway-create-httpsetting.png)
+   :::image type="content" source="./media/create-ssl-portal/application-gateway-create-httpsetting.png" alt-text="新建应用程序网关：HTTP 设置":::
 
 6. 在“添加传递规则”窗口上，选择“添加”以保存传递规则并返回到“配置”选项卡  。
 
@@ -199,7 +199,7 @@ Export-PfxCertificate `
 
    应用程序网关可与其所在的虚拟网络外部的实例进行通信，但需要确保已建立 IP 连接。
 1. 在“管理”选项卡上，将“启动诊断”设置为“关闭”。 接受其他默认值，然后选择“复查 + 创建”。
-2. 在“复查 + 创建”选项卡上复查设置，更正任何验证错误，然后选择“创建”。 
+2. 在“复查 + 创建”选项卡上复查设置，更正任何验证错误，然后选择“创建”。
 3. 等待部署完成，然后再继续。
 
 ### <a name="install-iis-for-testing"></a>安装 IIS 用于测试
@@ -230,7 +230,7 @@ Export-PfxCertificate `
 
 ### <a name="add-backend-servers-to-backend-pool"></a>将后端服务器添加到后端池
 
-1. 选择“所有资源”，然后选择“myAppGateway”。 
+1. 选择“所有资源”，然后选择“myAppGateway”。
 
 2. 从左侧菜单中选择“后端池”。
 
@@ -242,17 +242,17 @@ Export-PfxCertificate `
 
     ![添加后端服务器](./media/application-gateway-create-gateway-portal/application-gateway-backend.png)
 
-6. 选择“保存” 。
+6. 选择“保存”。
 
 7. 等待部署完成之后再继续下一步。
 
 ## <a name="test-the-application-gateway"></a>测试应用程序网关
 
-1. 依次选择“所有资源”、“myAGPublicIPAddress”。 
+1. 依次选择“所有资源”、“myAGPublicIPAddress”。
 
     ![记下应用程序网关的公共 IP 地址](./media/create-ssl-portal/application-gateway-ag-address.png)
 
-2. 在浏览器的地址栏中，键入“https://\<应用程序网关 IP 地址\>”。
+2. 在浏览器的地址栏中，键入 https://\<your application gateway ip address\>。
 
    若要在使用自签名证书时接受安全警告，请选择“详细信息”（或 Chrome上的“高级”），然后转到相应网页：
 

@@ -1,5 +1,5 @@
 ---
-title: 快速入门：合成语音，Swift - 语音服务
+title: 快速入门：在 macOS 上通过 Swift 合成语音 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 了解如何在 macOS 上使用语音 SDK 通过 Swift 合成语音
 services: cognitive-services
@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-origin.date: 12/09/2019
-ms.date: 01/27/2020
+origin.date: 06/25/2020
+ms.date: 08/03/2020
 ms.author: v-tawe
-ms.openlocfilehash: bb10f0cfd34965a6ee89a0e1ffa38904bcce9814
-ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
+ms.openlocfilehash: 5db96d116d02a4ab0d150a39a70f7e400dd3e706
+ms.sourcegitcommit: 3821704fee67315badba49cf628af2aa68d98f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85613351"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87516126"
 ---
 # <a name="quickstart-synthesize-speech-in-swift-on-macos-using-the-speech-sdk"></a>快速入门：在 macOS 上使用语音 SDK 通过 Swift 合成语音
 
@@ -40,7 +40,7 @@ ms.locfileid: "85613351"
 
 ## <a name="create-an-xcode-project"></a>创建 Xcode 项目
 
-启动 Xcode，然后通过单击“文件” > “新建” > “项目”来启动新项目。  
+启动 Xcode，然后通过单击“文件” > “新建” > “项目”来启动新项目。
 在模板选择对话框中，选择“Cocoa 应用”模板。
 
 在随后的对话框中，进行以下选择：
@@ -165,11 +165,11 @@ ms.locfileid: "85613351"
 
 1. 在 Xcode 中打开 `helloworld.xcworkspace` 工作区。
 1. 使调试输出可见（“视图” > “调试区域” > “激活控制台”）。
-1. 在菜单中选择“产品” > “运行”，或者单击“播放”按钮，以生成并运行示例代码。  
+1. 在菜单中选择“产品” > “运行”，或者单击“播放”按钮，以生成并运行示例代码。
 1. 在输入一些文本并单击应用中的按钮后，你应该会听到播放的合成音频。
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [浏览 GitHub 上的示例](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
+> [浏览 GitHub 上的示例](https://aka.ms/csspeech/samples)
 

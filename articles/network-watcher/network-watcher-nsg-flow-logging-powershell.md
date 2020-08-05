@@ -4,22 +4,23 @@ titleSuffix: Azure Network Watcher
 description: 此页说明如何在 Azure 网络观察程序中使用 PowerShell 管理网络安全组流日志
 services: network-watcher
 documentationcenter: na
-author: lingliw
-manager: digimobile
+author: rockboyfor
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 02/22/2017
-ms.date: 01/21/2019
-ms.author: v-lingwu
-ms.openlocfilehash: 54ba7f7176249c65ef6293780e5c3820b163d20e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 08/10/2020
+ms.testscope: yes
+ms.testdate: 08/03/2020
+ms.author: v-yeche
+ms.openlocfilehash: ac4250576aa673d98cc6dd2f55edda10288b61dd
+ms.sourcegitcommit: 3eadca6821ef679d8ac6ca2dc46d6a13aac211cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78154928"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87548043"
 ---
 # <a name="configuring-network-security-group-flow-logs-with-powershell"></a>使用 PowerShell 配置网络安全组流日志
 
@@ -44,7 +45,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Insights
 以下示例显示了用于启用流日志的命令：
 
 ```powershell
-$NW = Get-AzNetworkWatcher -ResourceGroupName NetworkWatcherRg -Name NetworkWatcher_westcentralus
+$NW = Get-AzNetworkWatcher -ResourceGroupName NetworkWatcherRg -Name NetworkWatcher_chinaeast
 $nsg = Get-AzNetworkSecurityGroup -ResourceGroupName nsgRG -Name nsgName
 $storageAccount = Get-AzStorageAccount -ResourceGroupName StorageRG -Name contosostorage123
 Get-AzNetworkWatcherFlowLogStatus -NetworkWatcher $NW -TargetResourceId $nsg.Id
@@ -52,7 +53,7 @@ Get-AzNetworkWatcherFlowLogStatus -NetworkWatcher $NW -TargetResourceId $nsg.Id
 #Traffic Analytics Parameters
 $workspaceResourceId = "/subscriptions/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/resourcegroups/trafficanalyticsrg/providers/microsoft.operationalinsights/workspaces/taworkspace"
 $workspaceGUID = "cccccccc-cccc-cccc-cccc-cccccccccccc"
-$workspaceLocation = "China East 2"
+$workspaceLocation = "chinanorth"
 
 #Configure Version 1 Flow Logs
 Set-AzNetworkWatcherConfigFlowLog -NetworkWatcher $NW -TargetResourceId $nsg.Id -StorageAccountId $storageAccount.Id -EnableFlowLog $true -FormatType Json -FormatVersion 1
@@ -83,7 +84,9 @@ Set-AzNetworkWatcherConfigFlowLog -NetworkWatcher $NW -TargetResourceId $nsg.Id 
 
 ## <a name="download-a-flow-log"></a>下载流日志
 
-流日志的存储位置是在创建时定义的。 用于访问这些保存到存储帐户的流日志的便利工具是世纪互联 Azure 存储资源管理器，下载地址为： http://storageexplorer.com/
+流日志的存储位置是在创建时定义的。 用于访问这些保存到存储帐户的流日志的便利工具是 Microsoft Azure 存储资源管理器，下载地址为：https://storageexplorer.com/
+
+<!--CORRECT on Microsoft Azure Storage Explorer-->
 
 如果指定了存储帐户，则会将流日志文件保存到以下位置的存储帐户：
 
@@ -99,4 +102,4 @@ https://{storageAccountName}.blob.core.chinacloudapi.cn/insights-logs-networksec
 
 了解如何[使用开源工具直观地显示 NSG 流日志](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
 
-<!--Update_Description: update link, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

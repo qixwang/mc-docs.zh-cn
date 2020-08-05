@@ -3,22 +3,23 @@ title: Azure 网络观察程序中的“IP 流验证”简介 | Azure
 description: 此页概述了网络观察程序“IP 流验证”功能
 services: network-watcher
 documentationcenter: na
-author: lingliw
-manager: digimobile
+author: rockboyfor
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 11/30/2017
-ms.date: 12/24/2018
-ms.author: v-lingwu
-ms.openlocfilehash: b82b7c8c1e0b08b29f39e1b3c12fc1e6292a69a7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 08/10/2020
+ms.testscope: no
+ms.testdate: ''
+ms.author: v-yeche
+ms.openlocfilehash: 0114ead8c1175b2901c7267f080adebbd4bcbc31
+ms.sourcegitcommit: 3eadca6821ef679d8ac6ca2dc46d6a13aac211cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77028483"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87547976"
 ---
 # <a name="introduction-to-ip-flow-verify-in-azure-network-watcher"></a>Azure 网络观察程序中的“IP 流验证”简介
 
@@ -36,4 +37,4 @@ IP 流验证查看应用于网络接口的所有网络安全组 (NSG) 的规则�
 
 [1]: ./media/network-watcher-ip-flow-verify-overview/figure1.png
 
-<!--Update_Description: new articles on network watcher ip flow verify overview -->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -4,17 +4,16 @@ description: Azure PowerShell 脚本示例 - 创建 Web 应用程序防火墙自
 author: vhorne
 ms.service: application-gateway
 ms.topic: sample
-origin.date: 06/07/2019
-ms.date: 09/10/2019
+ms.date: 08/03/2020
 ms.author: v-junlch
-ms.openlocfilehash: 6edc5fe9b9e4fd44dd2ec47ae12c6dd0a9d55d3b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 1432a6a0b33cfdfe1d7ce0fc9f2043e9de7f55c8
+ms.sourcegitcommit: 36e7f37481969f92138bfe70192b1f4a2414caf7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "70857386"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87796331"
 ---
-# <a name="create-waf-custom-rules-with-azure-powershell"></a>使用 Azure PowerShell 创建 WAF 自定义规则
+# <a name="create-web-application-firewall-waf-custom-rules-with-azure-powershell"></a>使用 Azure PowerShell 创建 Web 应用程序防火墙 (WAF) 自定义规则
 
 此脚本将创建使用自定义规则的应用程序网关 Web 应用程序防火墙。 如果请求标头包含用户代理 *evilbot*，该自定义规则会阻止流量。
 
@@ -27,14 +26,14 @@ ms.locfileid: "70857386"
 1. 要查找版本，请运行 `Get-Module -ListAvailable Az`。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。
 2. 若要创建与 Azure 的连接，请运行 `Connect-AzAccount -Environment AzureChinaCloud`。
 
-如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.azure.cn/pricing/1rmb-trial) 。
+如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
 ## <a name="sample-script"></a>示例脚本
 
 ```powershell
 #Set up variables
 $rgname = "CustomRulesTest"
-$location = "China North"
+$location = "China North 2"
 $appgwName = "WAFCustomRules"
 
 #Create a Resource Group
@@ -56,7 +55,7 @@ $gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name "appgwSubnet" -VirtualNetwork
 $gipconfig = New-AzApplicationGatewayIPConfiguration -Name "AppGwIpConfig" -Subnet $gwSubnet
 $fipconfig01 = New-AzApplicationGatewayFrontendIPConfig -Name "fipconfig" -PublicIPAddress $publicip
 $pool = New-AzApplicationGatewayBackendAddressPool -Name "pool1" `
-  -BackendIPAddresses testbackend1.chinanorth.chinacloudapp.cn, testbackend2.chinanorth.chinacloudapp.cn
+  -BackendIPAddresses testbackend1.chinanorth2.chinacloudapp.cn, testbackend2.chinanorth2.chinacloudapp.cn
 $fp01 = New-AzApplicationGatewayFrontendPort -Name "port1" -Port 80
 
 #Create a listener, http setting, rule, and autoscale
@@ -73,11 +72,11 @@ $sku = New-AzApplicationGatewaySku -Name WAF_v2 -Tier WAF_v2
 $variable = New-AzApplicationGatewayFirewallMatchVariable -VariableName RequestHeaders -Selector User-Agent
 $condition = New-AzApplicationGatewayFirewallCondition -MatchVariable $variable -Operator Contains -MatchValue "evilbot" -Transform Lowercase -NegationCondition $False  
 $rule = New-AzApplicationGatewayFirewallCustomRule -Name blockEvilBot -Priority 2 -RuleType MatchRule -MatchCondition $condition -Action Block
-$wafPolicy = New-AzApplicationGatewayFirewallPolicy -Name wafPolicy -ResourceGroup $rgname -Location $location -CustomRule $rule
-$wafConfig = New-AzApplicationGatewayWebApplicationFirewallConfiguration -Enabled $true -FirewallMode "Prevention"
+$policy = New-AzApplicationGatewayFirewallPolicySetting -Mode "Prevention"
+$wafPolicy = New-AzApplicationGatewayFirewallPolicy -Name wafPolicy -ResourceGroup $rgname -Location $location -CustomRule $rule -PolicySetting $policy
 
 #Create the Application Gateway
-$appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -GatewayIpConfigurations $gipconfig -FrontendIpConfigurations $fipconfig01 -FrontendPorts $fp01 -HttpListeners $listener01 -RequestRoutingRules $rule01 -Sku $sku -AutoscaleConfiguration $autoscaleConfig -WebApplicationFirewallConfig $wafConfig -FirewallPolicy $wafPolicy
+$appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -GatewayIpConfigurations $gipconfig -FrontendIpConfigurations $fipconfig01 -FrontendPorts $fp01 -HttpListeners $listener01 -RequestRoutingRules $rule01 -Sku $sku -AutoscaleConfiguration $autoscaleConfig -FirewallPolicy $wafPolicy
 ```
 
 ## <a name="clean-up-deployment"></a>清理部署

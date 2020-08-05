@@ -6,19 +6,19 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 06/24/2020
+ms.date: 08/03/2020
 ms.author: v-junlch
 ms.custom: mvc
-ms.openlocfilehash: 96f95d3374a2052aa1b40bd4d336871dde71475c
-ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
+ms.openlocfilehash: f011a0f7fd834f87b00791480ca59886a78397cc
+ms.sourcegitcommit: 36e7f37481969f92138bfe70192b1f4a2414caf7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85516708"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87796308"
 ---
-# <a name="quickstart-direct-web-traffic-with-azure-application-gateway---resource-manager-template"></a>快速入门：使用 Azure 应用程序网关定向 Web 流量 - 资源管理器模板
+# <a name="quickstart-direct-web-traffic-with-azure-application-gateway---arm-template"></a>快速入门：使用 Azure 应用程序网关定向 Web 流量 - ARM 模板
 
-在本快速入门中，我们使用资源管理器模板创建 Azure 应用程序网关。 然后，我们对应用程序网关进行测试，确保其正常运行。
+在本快速入门中，使用 Azure 资源管理器模板（ARM 模板）创建 Azure 应用程序网关。 然后，我们对应用程序网关进行测试，确保其正常运行。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -26,17 +26,19 @@ ms.locfileid: "85516708"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
+如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
+
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fag-docs-qs%2Fazuredeploy.json)
+
 ## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [创建帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
-## <a name="create-an-application-gateway"></a>创建应用程序网关
+## <a name="review-the-template"></a>查看模板
 
 为简单起见，此模板创建了一项简单设置，其中包含一个公共的前端 IP、一个在应用程序网关上托管单个站点的基本侦听器、一项基本的请求路由规则，以及两个位于后端池的虚拟机。
 
-### <a name="review-the-template"></a>查看模板
-
-本快速入门中使用的模板来自 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/blob/master/ag-docs-qs/azuredeploy.json)
+本快速入门中使用的模板来自 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/ag-docs-qs/)
 
 ```json
 {
@@ -394,10 +396,9 @@ ms.locfileid: "85516708"
 - [**Microsoft.Network/networkInterfaces**](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)：两个用于虚拟机
 - [**Microsoft.Compute/virtualMachine/extensions**](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines/extensions)：用于配置 IIS 和网页
 
+## <a name="deploy-the-template"></a>部署模板
 
-### <a name="deploy-the-template"></a>部署模板
-
-将资源管理器模板部署到 Azure：
+将 ARM 模板部署到 Azure：
 
 1. 选择“部署到 Azure”，登录到 Azure 并打开模板。 该模板在运行 IIS 的后端池中创建应用程序网关、网络基础结构和两个虚拟机。
 

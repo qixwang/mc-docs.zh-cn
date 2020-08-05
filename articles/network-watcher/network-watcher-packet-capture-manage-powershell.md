@@ -4,22 +4,23 @@ titleSuffix: Azure Network Watcher
 description: 本页说明如何使用 PowerShell 管理网络观察程序的数据包捕获功能
 services: network-watcher
 documentationcenter: na
-author: lingliw
-manager: digimobile
+author: rockboyfor
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 02/22/2017
-ms.date: 09/10/2018
-ms.author: v-lingwu
-ms.openlocfilehash: 02bb24604f48d5865710e7fa6fa09244d40110fc
-ms.sourcegitcommit: b81ea2ab9eafa986986fa3eb1e784cfe9bbf9ec1
+ms.date: 08/10/2020
+ms.testscope: yes
+ms.testdate: 08/03/2020
+ms.author: v-yeche
+ms.openlocfilehash: 2893f84ed6cde066163b8fdc950cfcb6bc6a2a1a
+ms.sourcegitcommit: 3eadca6821ef679d8ac6ca2dc46d6a13aac211cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83367826"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87548041"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-powershell"></a>在 PowerShell 中使用 Azure 网络观察程序管理数据包捕获
 
@@ -37,7 +38,6 @@ ms.locfileid: "83367826"
 - [**停止数据包捕获**](#stop-a-packet-capture)
 - [**删除数据包捕获**](#delete-a-packet-capture)
 - [**下载数据包捕获**](#download-a-packet-capture)
-
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -130,8 +130,7 @@ ForceUpdateTag          :
 下一步是检索网络观察程序实例。 将此变量传递给步骤 4 中的 `New-AzNetworkWatcherPacketCapture` cmdlet。
 
 ```powershell
-$nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "chinanorth" }
-$networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName  
+$networkWatcher = Get-AzResource -ResourceType "Microsoft.Network/networkWatchers" | Where {$_.Location -eq "chinanorth" }
 ```
 
 ### <a name="step-2"></a>步骤 2
@@ -144,7 +143,7 @@ $storageAccount = Get-AzStorageAccount -ResourceGroupName testrg -Name testrgsa1
 
 ### <a name="step-3"></a>步骤 3
 
-可以使用筛选器来限制数据包捕获存储的数据。 以下示例设置两个筛选器。  第一个筛选器仅收集从本地 IP 10.0.0.3 发往目标端口 20、80 和 443 的传出 TCP 流量。  第二个筛选器仅收集 UDP 流量。
+可以使用筛选器来限制数据包捕获存储的数据。 以下示例设置两个筛选器。  第一个筛选器仅收集从本地 IP 10.0.0.3 发往目标端口 20、80 和 443 的传出 TCP 流量。 第二个筛选器仅收集 UDP 流量。
 
 ```powershell
 $filter1 = New-AzPacketCaptureFilterConfig -Protocol TCP -RemoteIPAddress "1.1.1.1-255.255.255.255" -LocalIPAddress "10.0.0.3" -LocalPort "1-65535" -RemotePort "20;80;443"
@@ -280,8 +279,8 @@ https://{storageAccountName}.blob.core.chinacloudapi.cn/network-watcher-logs/sub
 
 查看[创建警报触发的数据包捕获](network-watcher-alert-triggered-packet-capture.md)，了解如何利用虚拟机警报自动执行数据包捕获
 
-访问[查看“IP 流验证”](diagnose-vm-network-traffic-filtering-problem.md)，了解是否允许某些流量进出 VM
+访问[查看“IP 流验证”](diagnose-vm-network-traffic-filtering-problem.md)，了解是否允许某些流量传入和传出 VM
 
 <!-- Image references -->
 
-<!--Update_Description: wording update, update link -->
+<!-- Update_Description: update meta properties, wording update, update link -->

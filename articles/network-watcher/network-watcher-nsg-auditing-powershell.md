@@ -4,29 +4,29 @@ titleSuffix: Azure Network Watcher
 description: 本页说明如何配置网络安全组的审核
 services: network-watcher
 documentationcenter: na
-author: lingliw
-manager: digimobile
+author: rockboyfor
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 02/22/2017
-ms.date: 04/12/2019
-ms.author: v-lingwu
-ms.openlocfilehash: ccb06b61fa2c107b0597d4b81f1d680500f015de
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 08/10/2020
+ms.testscope: yes
+ms.testdate: 08/03/2020
+ms.author: v-yeche
+ms.openlocfilehash: 44a4cf55fd3acccf8dd07b4f3c0eadbc09625e86
+ms.sourcegitcommit: 3eadca6821ef679d8ac6ca2dc46d6a13aac211cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77028485"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87547975"
 ---
 # <a name="automate-nsg-auditing-with-azure-network-watcher-security-group-view"></a>使用 Azure 网络观察程序安全组视图自动进行 NSG 审核
 
 客户经常会遇到验证基础结构安全局势的难题。 对于 Azure 中的 VM，也存在类似的难题。 必须应用一个基于网络安全组 (NSG) 规则的类似安全配置文件。 现在，使用安全组视图可以获取应用到 NSG 中 VM 的规则列表。 可以定义一个黄金 NSG 安全配置文件，然后每周启动安全组视图，将输出与该黄金配置文件进行比较并创建报告。 这样，便可以轻松识别不符合指定的安全配置文件的所有 VM。
 
 如果不熟悉网络安全组，请参阅[网络安全概述](../virtual-network/security-overview.md)。
-
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -129,8 +129,7 @@ $nsgbaserules = Get-Content -Path C:\temp\testvm1-nsg.json | ConvertFrom-Json
 下一步是检索网络观察程序实例。 将 `$networkWatcher` 变量传递给 `AzNetworkWatcherSecurityGroupView` cmdlet。
 
 ```powershell
-$nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "chinanorth" } 
-$networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName 
+$networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "chinanorth" } 
 ```
 
 ## <a name="get-a-vm"></a>获取 VM
@@ -193,4 +192,4 @@ SideIndicator            : <=
 
 如果更改了设置，请参阅[管理网络安全组](../virtual-network/manage-network-security-group.md)来跟踪有问题的网络安全组和安全规则。
 
-<!--Update_Description: update link, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

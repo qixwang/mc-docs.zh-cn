@@ -1,25 +1,25 @@
 ---
-title: 使用 Azure 自动化图形 Runbook SDK
-description: 本文介绍如何使用 Azure 自动化图形 Runbook SDK。
+title: 使用 Azure 自动化图形 Runbook SDK（预览版）
+description: 本文介绍如何使用 Azure 自动化图形 runbook SDK（预览版）
 services: automation
 ms.subservice: process-automation
 origin.date: 07/20/2018
-ms.date: 05/25/2020
+ms.date: 08/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3e4a5536dea5d08817185bd58bd2688f9de4b804
-ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
+ms.openlocfilehash: 19ba4858d36313f71da05bb0eb9cf9fd4ce6cb51
+ms.sourcegitcommit: e6b216b180734783219378410e13192e314a4497
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83801861"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87790052"
 ---
-# <a name="use-the-azure-automation-graphical-runbook-sdk"></a>使用 Azure 自动化图形 Runbook SDK
+# <a name="use-the-azure-automation-graphical-runbook-sdk-preview"></a>使用 Azure 自动化图形 Runbook SDK（预览版）
 
-[图形 Runbook](automation-graphical-authoring-intro.md) 可帮助管理基础 Windows PowerShell 或 PowerShell 工作流代码的复杂性。 Microsoft Azure 自动化图形创作 SDK 可让开发人员创建和编辑用于 Azure 自动化的图形 Runbook。 本文介绍了通过代码创建图形 runbook 的基本步骤。
+[图形 runbook](automation-graphical-authoring-intro.md) 有助于管理基础 Windows PowerShell 或 PowerShell 工作流代码复杂性。 Microsoft Azure 自动化图形创作 SDK 可让开发人员创建和编辑用于 Azure 自动化的图形 runbook。 本文介绍了通过代码创建图形 runbook 的基本步骤。
 
 ## <a name="prerequisites"></a>先决条件
 
-将 `Orchestrator.GraphRunbook.Model.dll` 包导入到项目中。
+通过下载 [SDK](https://www.microsoft.com/download/details.aspx?id=50734) 导入 `Orchestrator.GraphRunbook.Model.dll` 包。
 
 ## <a name="create-a-runbook-object-instance"></a>创建 Runbook 对象实例
 
@@ -100,9 +100,9 @@ var initializeRunbookVariable = runbook.AddActivity(
 |WorkflowScriptActivity     | 在 Runbook 的上下文中执行 PowerShell 或 PowerShell 工作流代码的块（具体取决于 Runbook 类型）。 这是一个强大的工具，但不要滥用：UI 将以文本形式显示此脚本块；执行引擎会将提供的块视为黑盒，并且不会尝试分析其内容，但基本语法检查除外。 如果只需调用单个 PowerShell 命令，请优先使用 CommandActivity。        |
 
 > [!NOTE]
-> 请勿从提供的类派生自己的活动。 Azure 自动化无法使用具有自定义活动类型的 runbook。
+> 请勿从提供的类派生自己的活动。 Azure 自动化不能使用具有自定义活动类型的 runbook。
 
-必须提供 `CommandActivity` 和 `InvokeRunbookActivity` 参数作为值描述符，而不是直接提供值。 值描述符指定如何生成实际参数值。 目前提供以下值描述符：
+必须提供 `CommandActivity` 和 `InvokeRunbookActivity` 参数作为值描述符，而不是直接值。 值描述符指定如何生成实际的参数值。 目前提供以下值描述符：
 
 
 |描述符  |定义  |
@@ -116,7 +116,7 @@ var initializeRunbookVariable = runbook.AddActivity(
 |PowerShellExpressionValueDescriptor     | 指定自由格式的 PowerShell 表达式，调用活动之后，会紧接着计算该表达式。  <br/>这是一个强大的工具，但不要滥用：UI 将以文本形式显示此表达式；执行引擎会将提供的块视为黑盒，并且不会尝试分析其内容，但基本语法检查除外。 如果可能，请优先使用更具体的值描述符。      |
 
 > [!NOTE]
-> 请勿从提供的类派生自己的值描述符。 Azure 自动化无法使用具有自定义值描述符类型的 runbook。
+> 请勿从提供的类派生自己的值描述符。 Azure 自动化不能使用具有自定义值描述符类型的 runbook。
 
 实例化连接活动的链接，并将其添加到 Runbook：
 
@@ -137,9 +137,9 @@ runbook.AddLink(
 var serialized = RunbookSerializer.Serialize(runbook);
 ```
 
-可以将此字符串保存到扩展名为 .graphrunbook 的文件中。 相应的 runbook 可导入到 Azure 自动化中。
-序列化格式在 `Orchestrator.GraphRunbook.Model.dll` 的将来版本中可能会更改。 我们保证后向兼容性：使用旧版 `Orchestrator.GraphRunbook.Model.dll` 序列化的 Runbook 可由新版反序列化。 不保证前向兼容性：使用新版序列化的 Runbook 不一定能够由旧版反序列化。
+可以将此字符串保存到扩展名为“.graphrunbook”的文件中。 相应的 runbook 可以导入到 Azure 自动化中。
+可在将来的 `Orchestrator.GraphRunbook.Model.dll` 版本中更改序列化格式。 我们保证后向兼容性：使用旧版 `Orchestrator.GraphRunbook.Model.dll` 序列化的 Runbook 可由新版反序列化。 不保证前向兼容性：使用新版序列化的 Runbook 不一定能够由旧版反序列化。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解 Azure 自动化中的图形 Runbook，请参阅[图形创作简介](automation-graphical-authoring-intro.md)。
+有关详细信息，请参阅[在 Azure 自动化中创作图形 runbook](automation-graphical-authoring-intro.md)。

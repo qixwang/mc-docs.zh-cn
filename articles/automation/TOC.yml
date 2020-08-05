@@ -4,7 +4,7 @@
   items:
     - name: 什么是自动化？
       href: automation-intro.md
-    - name: 常见问题
+    - name: 常见问题解答
       href: automation-faq.md
 - name: 快速入门
   items:
@@ -12,6 +12,11 @@
       href: automation-quickstart-create-account.md
     - name: 创建 PowerShell Runbook
       href: automation-quickstart-create-runbook.md
+    - name: 为计算机启用 Desired State Configuration
+      href: automation-quickstart-dsc-configuration.md
+    - name: 创建自动化帐户 - ARM 模板
+      displayName: Resource Manager
+      href: quickstart-create-automation-account-template.md
 - name: 教程
   items:
     - name: 创建图形 Runbook
@@ -39,7 +44,7 @@
       href: automation-runbook-types.md
     - name: PowerShell DSC
       href: 'https://docs.microsoft.com/powershell/scripting/dsc/overview/overview'
-    - name: 数据安全性
+    - name: 数据安全
       items:
         - name: 安全资产的加密
           href: automation-secure-asset-encryption.md
@@ -52,7 +57,7 @@
         - name: 使用 Azure 门户创建自动化帐户
           href: automation-create-standalone-account.md
         - name: 使用资源管理器模板创建自动化帐户
-          href: automation-create-account-template.md
+          href: quickstart-create-automation-account-template.md
         - name: 管理自动化运行方式帐户
           href: manage-runas-account.md
         - name: 管理角色权限和安全性
@@ -65,12 +70,20 @@
           href: automation-connections.md
         - name: 管理凭据
           href: shared-resources/credentials.md
+        - name: 管理 PowerShell 模块
+          items:
+            - name: 管理 Azure 自动化中的模块
+              href: shared-resources/modules.md
+            - name: 更新 Azure PowerShell 模块
+              href: automation-update-azure-modules.md
         - name: 管理计划
           href: shared-resources/schedules.md
         - name: 管理变量
           href: shared-resources/variables.md
         - name: 管理 Python 2 程序包
           href: python-packages.md
+        - name: 排查共享资源问题
+          href: troubleshoot/shared-resources.md
     - name: 流程自动化
       items:
         - name: 了解 PowerShell 工作流
@@ -103,7 +116,7 @@
               href: automation-runbook-graphical-error-handling.md
             - name: 将作业数据转发到 Azure Monitor 日志
               href: automation-manage-send-joblogs-log-analytics.md
-        - name: 故障排除
+        - name: 排查 Runbook 问题
           items:
             - name: 排查 Runbook 问题
               href: troubleshoot/runbooks.md
@@ -115,73 +128,95 @@
               href: automation-linux-hrw-install.md
             - name: 在混合 Runbook 辅助角色中运行 Runbook
               href: automation-hrw-run-runbooks.md
-            - name: 对混合 Runbook 辅助角色进行故障排除
+            - name: 排查混合 Runbook 辅助角色问题
               href: troubleshoot/hybrid-runbook-worker.md
         - name: 使用源代码管理集成
           href: source-control-integration.md
     - name: 配置管理
       items:
-        - name: 状态配置 (DSC)
+        - name: Azure 自动化状态配置
           items:
             - name: 概述
               href: automation-dsc-overview.md
-            - name: 开始使用 State Configuration
+            - name: 状态配置入门
               href: automation-dsc-getting-started.md
-            - name: 载入要管理的计算机
+            - name: 启用状态配置
               href: automation-dsc-onboarding.md
-            - name: 将计算机配置为所需状态
+            - name: 将服务器配置到所需状态并管理偏移
               href: tutorial-configure-servers-desired-state.md
-            - name: 编译 DSC 配置
-              href: automation-dsc-compile.md
-            - name: 修正配置偏差
-              href: automation-dsc-remediate.md
             - name: 编写 DSC 配置
               href: compose-configurationwithcompositeresources.md
-            - name: 设置使用 Chocolatey 的持续部署
+            - name: 编译 DSC 配置
+              href: automation-dsc-compile.md
+            - name: 修正不符合的状态配置服务器
+              href: automation-dsc-remediate.md
+            - name: 使用 Chocolatey 设置持续部署
               href: automation-dsc-cd-chocolatey.md
             - name: 与 Azure Monitor 日志集成
               href: automation-dsc-diagnostics.md
-            - name: 排查 DSC 的问题
-              href: troubleshoot/desired-state-configuration.md
-            - name: Azure DSC 扩展版本历史记录
+            - name: 使用状态配置扩展版本历史记录
               href: automation-dsc-extension-history.md
-            - name: 故障排除
+            - name: 排查状态配置问题
+              href: troubleshoot/desired-state-configuration.md
+            - name: 方案
               items:
-                - name: 登记
-                  href: troubleshoot/onboarding.md
+                - name: 基于 STIG 配置数据
+                  href: automation-dsc-configuration-based-on-stig.md
+                - name: 大规模配置数据
+                  href: automation-dsc-config-data-at-scale.md
+                - name: 从现有服务器创建配置
+                  href: automation-dsc-config-from-server.md
+                - name: 将配置转换为复合资源
+                  href: automation-dsc-create-composite.md
+                - name: 修正不合规的服务器
+                  href: automation-dsc-remediate.md
     - name: 更新管理
       items:
         - name: 概述
-          href: automation-update-management.md
+          href: update-management/update-mgmt-overview.md
+        - name: 链接的 Log Analytics 工作区支持的区域
+          href: how-to/region-mappings.md
         - name: 启用
           items:
-            - name: 使用 Resource Manager 模板
-              href: automation-update-management-deploy-template.md
-            - name: 从 Azure VM
-              href: automation-onboard-solutions-from-vm.md
-            - name: 从自动化帐户
-              href: automation-onboard-solutions-from-automation-account.md
-        - name: 管理 Azure VM 的更新
-          href: automation-tutorial-update-management.md
-        - name: 管理多个 VM 的更新
-          href: manage-update-multi.md
-        - name: 查看更新评估
-          href: automation-view-update-assessments.md
-        - name: 管理前脚本和后脚本
-          href: pre-post-scripts.md
-        - name: 与 Configuration Manager 集成
-          href: updatemgmt-mecmintegration.md
-        - name: 配置 Windows 更新客户端
-          href: automation-configure-windows-update.md
-        - name: 使用动态组
-          href: automation-update-management-groups.md
-        - name: 查询更新管理日志
-          href: automation-update-management-query-logs.md
-        - name: 故障排除
+            - name: 使用 Azure 资源管理器模板启用“更新管理”
+              href: update-management/update-mgmt-enable-template.md
+            - name: 从 Azure VM 启用“更新管理”
+              href: update-management/update-mgmt-enable-vm.md
+            - name: 从自动化帐户启用更新管理
+              href: update-management/update-mgmt-enable-automation-account.md
+        - name: 管理 VM 的更新
           items:
-            - name: 登记
+            - name: 入门
+              href: update-management/update-mgmt-manage-updates-for-vm.md
+            - name: 评估符合性
+              href: update-management/update-mgmt-view-update-assessments.md
+            - name: 部署更新并检查状态
+              href: update-management/update-mgmt-deploy-updates.md
+            - name: 使用前脚本和后脚本
+              href: update-management/update-mgmt-pre-post-scripts.md
+            - name: 配置警报
+              href: update-management/update-mgmt-configure-alerts.md
+        - name: 与 Configuration Manager 集成
+          href: update-management/update-mgmt-mecmintegration.md
+        - name: 配置 Windows 更新客户端
+          href: update-management/update-mgmt-configure-wuagent.md
+        - name: 使用动态组
+          href: update-management/update-mgmt-groups.md
+        - name: 查询更新管理日志
+          href: update-management/update-mgmt-query-logs.md
+        - name: 使用作用域配置
+          href: update-management/update-mgmt-scope-configuration.md
+        - name: 禁用
+          items:
+            - name: 删除更新管理
+              href: update-management/update-mgmt-remove-feature.md
+            - name: 从“更新管理”中删除 VM
+              href: update-management/update-mgmt-remove-vms.md
+        - name: 疑难解答
+          items:
+            - name: 排查功能部署问题
               href: troubleshoot/onboarding.md
-            - name: 使用更新管理
+            - name: 排查“更新管理”问题
               href: troubleshoot/update-management.md
             - name: 排查 Windows 更新代理问题
               href: troubleshoot/update-agent-issues.md
@@ -197,7 +232,9 @@
           href: automation-deploy-template-runbook.md
 - name: 参考
   items:
-    - name: Azure PowerShell
+    - name: Azure PowerShell Az
+      href: 'https://docs.microsoft.com/powershell/module/az.automation'
+    - name: Azure PowerShell AzureRM
       href: 'https://docs.microsoft.com/powershell/module/azurerm.automation'
     - name: .NET
       href: 'https://docs.azure.cn/zh-cn/dotnet/api/microsoft.azure.management.automation'
@@ -205,8 +242,6 @@
       href: 'https://docs.microsoft.com/rest/api/automation'
 - name: 资源
   items:
-    - name: MSDN 论坛
-      href: 'https://social.msdn.microsoft.com/Forums/azure/zh-CN/home'
     - name: 定价
       href: 'https://www.azure.cn/zh-cn/pricing/details/automation/'
     - name: 定价计算器

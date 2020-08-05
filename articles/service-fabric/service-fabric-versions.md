@@ -2,15 +2,17 @@
 title: Azure Service Fabric 中支持的群集版本
 description: 了解 Azure Service Fabric 中的群集版本，包括指向 Service Fabric 团队博客中最新版本的链接。
 ms.topic: troubleshooting
-origin.date: 05/06/2020
-ms.date: 06/08/2020
+origin.date: 06/15/2020
+ms.date: 08/03/2020
+ms.testscope: no
+ms.testdate: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: 38866e91ac812b26986b52c0378258fe1d7cf8af
-ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
+ms.openlocfilehash: c85e9a7f07ca1dd53755dec96c431b2b9515cf3f
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84356260"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426463"
 ---
 # <a name="supported-service-fabric-versions"></a>支持的 Service Fabric 版本
 
@@ -46,6 +48,7 @@ ms.locfileid: "84356260"
 | 7.0.470.* | 7.0.466.* |低于或等于版本 4.0 |2020 年 8 月 1 日  |
 | 7.0.472.* | 7.0.466.* |低于或等于版本 4.0 |2020 年 8 月 1 日  |
 | 7.1.409.* | 7.0.466.* |低于或等于版本 4.0 |当前版本，因此无结束日期 |
+| 7.1.417.* | 7.0.466.* |低于或等于版本 4.0 |当前版本，因此无结束日期 |
 
 ## <a name="supported-operating-systems"></a>支持的操作系统
 
@@ -115,5 +118,6 @@ ms.locfileid: "84356260"
 | 7.0 CU4 | 7.0.470.9590 | 7.0.469.1 |
 | 7.0 CU6 | 7.0.472.9590 | 7.0.471.1 |
 | 7.1 RTO | 7.1.409.9590 | 7.1.410.1 |
+| 7.1 CU1 | 7.1.417.9590 | 7.1.418.1 |
 
 <!-- Update_Description: update meta properties, wording update, update link -->

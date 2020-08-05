@@ -5,15 +5,15 @@ description: 了解如何将 Azure 应用程序网关与 Key Vault 集成，以�
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
-ms.date: 06/24/2020
+ms.topic: how-to
+ms.date: 08/03/2020
 ms.author: v-junlch
-ms.openlocfilehash: b5c380a527a2c45465ef2d95a967d9c79272211c
-ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
+ms.openlocfilehash: debb70cbe54ff3dabd8c81114fca514a958d5b93
+ms.sourcegitcommit: 36e7f37481969f92138bfe70192b1f4a2414caf7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85516679"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87796253"
 ---
 # <a name="configure-tls-termination-with-key-vault-certificates-using-azure-powershell"></a>使用 Azure PowerShell 和 Key Vault 证书配置 TLS 终止
 

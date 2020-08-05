@@ -5,15 +5,15 @@ description: 本文概述了应用程序网关上的 Web 应用程序防火墙 (
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 07/10/2020
+ms.date: 08/03/2020
 ms.author: v-junlch
 ms.topic: overview
-ms.openlocfilehash: 494dc2800fb5786be83e2e41a17a2dab3de79000
-ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
+ms.openlocfilehash: 910e75ab63d2438854eb438ede74f48634b20b05
+ms.sourcegitcommit: 36e7f37481969f92138bfe70192b1f4a2414caf7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87244280"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87796313"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Azure 应用程序网关上的 Azure Web 应用程序防火墙
 
@@ -24,7 +24,7 @@ Azure 应用程序网关提供的 Azure Web 应用程序防火墙 (WAF) 可以�
 下面列出了 WAF 策略中存在的所有 WAF 功能。 可以创建多个策略，并可将它们与应用程序网关或应用程序网关上的单个侦听器或基于路径的路由规则相关联。 这样，如果需要，你可以为应用程序网关后面的每个站点提供单独的策略。
 
    > [!NOTE]
-   > 每个站点和每个 URI 的 WAF 策略均为公共预览版。 这意味着此功能受 Microsoft 补充使用条款的约束。 有关详细信息，请参阅[适用于 Azure 预览版的补充使用条款](https://www.azure.cn/support/legal/)。
+   > 每个 URI 的 WAF 策略均为公共预览版。 这意味着此功能受 Microsoft 补充使用条款的约束。 有关详细信息，请参阅[适用于 Azure 预览版的补充使用条款](https://www.azure.cn/support/legal/)。
 
 ![应用程序网关 WAF 示意图](../media/ag-overview/waf1.png)
 

@@ -4,22 +4,23 @@ titleSuffix: Azure Network Watcher
 description: 此页说明如何在 Azure 网络观察程序中使用 REST API 管理网络安全组流日志
 services: network-watcher
 documentationcenter: na
-author: lingliw
-manager: digimobile
+author: rockboyfor
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 02/22/2017
-ms.date: 02/27/2020
-ms.author: v-lingwu
-ms.openlocfilehash: 3e94b9905b9239606848c2e46cad097983c811af
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 08/10/2020
+ms.testscope: yes
+ms.testdate: 08/03/2020
+ms.author: v-yeche
+ms.openlocfilehash: 3ee512df87f3581b0b61c6346d5c32d85fd7f816
+ms.sourcegitcommit: 3eadca6821ef679d8ac6ca2dc46d6a13aac211cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78154922"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87548051"
 ---
 # <a name="configuring-network-security-group-flow-logs-using-rest-api"></a>使用 REST API 配置网络安全组流日志
 
@@ -54,8 +55,9 @@ ms.locfileid: "78154922"
 
 使用 Azure 凭据登录到 armclient。
 
-```PowerShell
-armclient login "MOONCAKE"
+```powershell
+$env:ARMCLIENT_ENV="MOONCAKE"
+armclient login
 ```
 
 ## <a name="register-insights-provider"></a>注册 Insights 提供程序
@@ -209,7 +211,7 @@ armclient post "https://management.chinacloudapi.cn/subscriptions/${subscription
 
 ## <a name="download-a-flow-log"></a>下载流日志
 
-流日志的存储位置是在创建时定义的。 用于访问这些保存到存储帐户的流日志的便利工具是 Azure 存储资源管理器，下载地址为： http://storageexplorer.com/
+流日志的存储位置是在创建时定义的。 用于访问这些保存到存储帐户的流日志的便利工具是 Azure 存储资源管理器，下载地址为： https://storageexplorer.com/
 
 如果指定了存储帐户，则数据包捕获文件将保存到以下位置的存储帐户：
 
@@ -222,4 +224,5 @@ https://{storageAccountName}.blob.core.chinacloudapi.cn/insights-logs-networksec
 了解如何[使用 PowerBI 直观地显示 NSG 流日志](network-watcher-visualize-nsg-flow-logs-power-bi.md)
 
 了解如何[使用开源工具直观地显示 NSG 流日志](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
-<!-- Update_Description: cmdlet update, update link -->
+
+<!-- Update_Description: update meta properties, wording update, update link -->

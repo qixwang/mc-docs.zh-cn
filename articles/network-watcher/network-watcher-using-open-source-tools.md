@@ -4,21 +4,23 @@ titleSuffix: Azure Network Watcher
 description: 本页介绍如何使用网络观察程序数据包捕获与 Capanalysis 来可视化传入和传出 VM 的流量模式。
 services: network-watcher
 documentationcenter: na
-author: damendo
+author: rockboyfor
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 02/22/2017
-ms.date: 08/13/2018
+ms.date: 08/10/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: db8d0200e0c0318f3d61f2a06475352b76c93281
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+ms.openlocfilehash: cabbf61d284ed23bfc465aba0250a9a2524eea0f
+ms.sourcegitcommit: 3eadca6821ef679d8ac6ca2dc46d6a13aac211cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796686"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87548070"
 ---
 # <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>使用开源工具将传入和传出 VM 的网络流量模式可视化
 
@@ -48,7 +50,7 @@ Azure 网络观察程序允许在网络中执行数据包捕获，以提供捕�
 
 向 CapAnalysis 提供链接时，请务必在存储 Blob URL 的后面追加 SAS 令牌。  为此，请从存储帐户导航到“共享访问签名”，指定允许的权限，按“生成 SAS”按钮创建令牌。 然后，可将此 SAS 令牌追加到数据包捕获存储 Blob URL 的后面。
 
-生成的 URL 应如以下 URL 所示： http://storageaccount.blob.core.chinacloudapi.cn/container/location?addSASkeyhere
+生成的 URL 应如以下 URL 所示： `http:\//storageaccount.blob.core.chinacloudapi.cn/container/location?addSASkeyhere`
 
 ### <a name="analyzing-packet-captures"></a>分析数据包捕获
 
@@ -68,7 +70,7 @@ CapAnalysis 提供多种选项来可视化数据包捕获，每种选项从不�
 
 1. 统计信息
 
-    在此窗格中可以查看网络流量统计信息 � 从源 IP 接收及向目标 IP 发送的字节数、每个源 IP 和目标 IP 的流、用于各种流的协议以及流的持续时间。
+    在此窗格中可以查看网络流量统计信息 - 源与目标 IP 发送和接收的字节数、每个源与目标 IP 的流、各个流使用的协议，以及流的持续时间。
 
     ![CapAnalysis 统计信息][7]
 
@@ -95,6 +97,7 @@ CapAnalysis 提供多种选项来可视化数据包捕获，每种选项从不�
 若要详细了解 NSG 流日志，请访问 [NSG 流日志](network-watcher-nsg-flow-logging-overview.md)
 
 访问 [Visualize NSG flows logs with Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)（使用 Power BI 可视化 NSG 流日志），了解如何使用 Power BI 可视化 NSG 流日志
+
 <!--Image references-->
 
 [1]: ./media/network-watcher-using-open-source-tools/figure1.png
@@ -109,4 +112,4 @@ CapAnalysis 提供多种选项来可视化数据包捕获，每种选项从不�
 [10]: ./media/network-watcher-using-open-source-tools/figure10.png
 [11]: ./media/network-watcher-using-open-source-tools/figure11.png
 
-<!--Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

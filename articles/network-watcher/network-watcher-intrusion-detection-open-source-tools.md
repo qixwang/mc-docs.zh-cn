@@ -4,22 +4,24 @@ titleSuffix: Azure Network Watcher
 description: 本文介绍如何使用 Azure 网络观察程序和开源工具执行网络入侵检测
 services: network-watcher
 documentationcenter: na
-author: damendo
+author: rockboyfor
 ms.assetid: 0f043f08-19e1-4125-98b0-3e335ba69681
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 02/22/2017
-ms.date: 11/26/2018
-ms.author: v-lingwu
-ms.openlocfilehash: 921a173565d0c388981efecfe392c45205569ad1
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+ms.date: 08/10/2020
+ms.testscope: yes
+ms.testdate: 08/03/2020
+ms.author: v-yeche
+ms.openlocfilehash: 43d16e7b3f3f9fa4ae246e149755d9279d90aa38
+ms.sourcegitcommit: 3eadca6821ef679d8ac6ca2dc46d6a13aac211cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796766"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87547984"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>使用网络观察程序和开源工具执行网络入侵检测
 
@@ -39,7 +41,7 @@ Suricata 就是这样的一种开源工具，它是一个 IDS 引擎，可使用
 
 ### <a name="install-suricata"></a>安装 Suricata
 
-有关所有其他安装方法，请访问 https://suricata.readthedocs.io/en/latest/install.html
+有关所有其他安装方法，请访问 https://suricata.readthedocs.io/en/suricata-5.0.2/quickstart.html#installation
 
 1. 在 VM 的命令行终端中运行以下命令：
 
@@ -81,7 +83,7 @@ tail -f /var/log/suricata/fast.log
 
 #### <a name="install-elasticsearch"></a>安装 Elasticsearch
 
-1. Elastic Stack 5.0 及更高版本需要 Java 8。 运行命令 `java -version` 可以检查版本。 如果尚未安装 java，请参阅 [Azure 支持的 JDK](https://aka.ms/azure-jdks) 上的文档。
+1. Elastic Stack 5.0 及更高版本需要 Java 8。 运行命令 `java -version` 可以检查版本。 如果尚未安装 java，请参阅 [Azure 支持的 JDK](https://docs.azure.cn/java/java-supported-jdk-runtime?view=azure-java-stable) 上的文档。
 
 1. 下载适用于系统的正确二进制程序包：
 
@@ -205,7 +207,7 @@ tail -f /var/log/suricata/fast.log
     ```
 
 1. 确保提供对 eve.json 文件的适当权限，使 Logstash 能够引入该文件。
-    
+
     ```
     sudo chmod 775 /var/log/suricata/eve.json
     ```
@@ -282,11 +284,13 @@ tail -f /var/log/suricata/fast.log
 通过将网络观察程序提供的数据包捕获与 Suricata 等开源 IDS 工具相结合，可以针对各种威胁执行网络入侵检测。 使用这些仪表板可以快速探查网络中的趋势和异常，以及挖掘数据来发现恶意用户代理或有漏洞的端口触发警报的根本原因。 使用这些提取的数据，可以在如何抵御网络中的任何有害入侵企图方面做出明智的决策，并创建规则来防范网络中将来发生入侵。
 
 ## <a name="next-steps"></a>后续步骤
+
 访问 [Use packet capture to do proactive network monitoring with Azure Functions](network-watcher-alert-triggered-packet-capture.md)（在 Azure Functions 中使用数据包捕获执行主动网络监视），了解如何根据警报触发数据包捕获
 
 访问 [Visualize NSG flows logs with Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)（使用 Power BI 可视化 NSG 流日志），了解如何使用 Power BI 可视化 NSG 流日志
 
 <!-- images -->
+
 [1]: ./media/network-watcher-intrusion-detection-open-source-tools/figure1.png
 [2]: ./media/network-watcher-intrusion-detection-open-source-tools/figure2.png
 [3]: ./media/network-watcher-intrusion-detection-open-source-tools/figure3.png
@@ -295,4 +299,4 @@ tail -f /var/log/suricata/fast.log
 [6]: ./media/network-watcher-intrusion-detection-open-source-tools/figure6.png
 [7]: ./media/network-watcher-intrusion-detection-open-source-tools/figure7.png
 
-<!--Update_Description: new articles on network watcher instrusion detection open source tools-->
+<!-- Update_Description: update meta properties, wording update, update link -->
