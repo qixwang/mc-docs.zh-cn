@@ -3,22 +3,23 @@ title: 使用 Azure 网络观察程序管理数据包捕获 - REST API | Azure
 description: 此页说明如何使用 Azure REST API 管理网络观察程序的数据包捕获功能
 services: network-watcher
 documentationcenter: na
-author: lingliw
-manager: digimobile
+author: rockboyfor
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 02/22/2017
-ms.date: 09/10/2018
-ms.author: v-lingwu
-ms.openlocfilehash: c1fe94bd0c6769dacc67ac9c39e16fa9290fd88c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 08/10/2020
+ms.testscope: yes
+ms.testdate: 08/03/2020
+ms.author: v-yeche
+ms.openlocfilehash: 8af5beda42f17cbef0a02df03475cc99a2afc788
+ms.sourcegitcommit: 3eadca6821ef679d8ac6ca2dc46d6a13aac211cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78154838"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87548040"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-azure-rest-api"></a>通过 Azure REST API 使用 Azure 网络观察程序管理数据包捕获
 
@@ -39,7 +40,6 @@ ms.locfileid: "78154838"
 - [**停止数据包捕获**](#stop-packet-capture)
 - [**删除数据包捕获**](#delete-packet-capture)
 
-
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="before-you-begin"></a>开始之前
@@ -54,7 +54,7 @@ ms.locfileid: "78154838"
 
 ```powershell
 $env:ARMCLIENT_ENV="MOONCAKE"
- armclient login
+armclient login
 ```
 
 ## <a name="retrieve-a-virtual-machine"></a>检索虚拟机
@@ -303,8 +303,8 @@ armclient delete "https://management.chinacloudapi.cn/subscriptions/${subscripti
 
 ## <a name="next-steps"></a>后续步骤
 
-有关从 Azure 存储帐户下载文件的说明，请参阅[通过 .NET 开始使用 Azure Blob 存储](../storage/blobs/storage-dotnet-how-to-use-blobs.md)。 可以使用的另一个工具是存储资源管理器。 有关存储资源管理器的详细信息可以在此链接中找到：[存储资源管理器](http://storageexplorer.com/)
+有关从 Azure 存储帐户下载文件的说明，请参阅[通过 .NET 开始使用 Azure Blob 存储](../storage/blobs/storage-dotnet-how-to-use-blobs.md)。 可以使用的另一个工具是存储资源管理器。 有关存储资源管理器的详细信息可以在此链接中找到：[存储资源管理器](https://storageexplorer.com/)
 
-<!--Not Available on [Create an alert triggered packet capture](network-watcher-alert-triggered-packet-capture.md) -->
+查看[创建警报触发的数据包捕获](network-watcher-alert-triggered-packet-capture.md)，了解如何利用虚拟机警报自动执行数据包捕获
 
-<!--Update_Description: update link, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

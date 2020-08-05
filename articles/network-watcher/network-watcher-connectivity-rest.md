@@ -4,22 +4,23 @@ titleSuffix: Azure Network Watcher
 description: 了解如何通过 Azure REST API 使用 Azure 网络观察程序的排查连接问题功能。
 services: network-watcher
 documentationcenter: na
-author: lingliw
-manager: digimobile
+author: rockboyfor
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 08/02/2017
-ms.date: 10/22/2018
-ms.author: v-lingwu
-ms.openlocfilehash: a5bfe70716e751bdc35813e01b2bb7a81143bc89
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 08/10/2020
+ms.testscope: yes
+ms.testdate: 08/03/2020
+ms.author: v-yeche
+ms.openlocfilehash: 6b7cf3640cf04165e1e214156c67d2c40e589f4c
+ms.sourcegitcommit: 3eadca6821ef679d8ac6ca2dc46d6a13aac211cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78154532"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87548032"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-rest-api"></a>通过 Azure REST API 使用 Azure 网络观察程序排查连接问题
 
@@ -39,19 +40,20 @@ ms.locfileid: "78154532"
 * 用以排查连接问题的虚拟机。
 
 > [!IMPORTANT]
-> 连接故障排除需要从中进行故障排除的 VM 安装了 `AzureNetworkWatcherExtension` VM 扩展。 有关在 Windows VM 上安装扩展的信息，请访问[适用于 Windows 的 Azure 网络观察程序代理虚拟机扩展](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)；有关 Linux VM 的信息，请访问[适用于 Linux 的 Azure 网络观察程序代理虚拟机扩展](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。 在目标终结点上不需要该扩展。
+> 连接故障排除需要从中进行故障排除的 VM 安装了 `AzureNetworkWatcherExtension` VM 扩展。 有关在 Windows VM 上安装扩展的信息，请访问[适用于 Windows 的 Azure 网络观察程序代理虚拟机扩展](../virtual-machines/windows/extensions-nwa.md?toc=%2fnetwork-watcher%2ftoc.json)；有关 Linux VM 的信息，请访问[适用于 Linux 的 Azure 网络观察程序代理虚拟机扩展](../virtual-machines/linux/extensions-nwa.md?toc=%2fnetwork-watcher%2ftoc.json)。 在目标终结点上不需要该扩展。
 
 ## <a name="log-in-with-armclient"></a>使用 ARMClient 登录
 
 使用 Azure 凭据登录到 armclient。
 
-```PowerShell
-armclient login "MOONCAKE"
+```powershell
+$env:ARMCLIENT_ENV="MOONCAKE"
+armclient login
 ```
 
 ## <a name="retrieve-a-virtual-machine"></a>检索虚拟机
 
-运行以下脚本返回虚拟机。 运行连接时需要此信息。 
+运行以下脚本返回虚拟机。 运行连接时需要此信息。
 
 以下代码需要以下变量的值：
 
@@ -126,7 +128,7 @@ Location: https://management.chinacloudapi.cn/subscriptions/00000000-0000-0000-0
 Server: Microsoft-HTTPAPI/2.0; Microsoft-HTTPAPI/2.0
 x-ms-ratelimit-remaining-subscription-writes: 1199
 x-ms-correlation-request-id: 367a91aa-7142-436a-867d-d3a36f80bc54
-x-ms-routing-request-id: WESTUS2:20170602T202117Z:367a91aa-7142-436a-867d-d3a36f80bc54
+x-ms-routing-request-id: chinanorth2:20170602T202117Z:367a91aa-7142-436a-867d-d3a36f80bc54
 Date: Fri, 02 Jun 2017 20:21:16 GMT
 
 null
@@ -242,7 +244,7 @@ Location: https://management.chinacloudapi.cn/subscriptions/00000000-0000-0000-0
 Server: Microsoft-HTTPAPI/2.0; Microsoft-HTTPAPI/2.0
 x-ms-ratelimit-remaining-subscription-writes: 1199
 x-ms-correlation-request-id: 4370b798-cd8b-4d3e-ba28-22232bc81dc5
-x-ms-routing-request-id: WESTUS:20170602T202606Z:4370b798-cd8b-4d3e-ba28-22232bc81dc5
+x-ms-routing-request-id: chinanorth:20170602T202606Z:4370b798-cd8b-4d3e-ba28-22232bc81dc5
 Date: Fri, 02 Jun 2017 20:26:05 GMT
 
 null
@@ -338,7 +340,7 @@ Location: https://management.chinacloudapi.cn/subscriptions/00000000-0000-0000-0
 Server: Microsoft-HTTPAPI/2.0; Microsoft-HTTPAPI/2.0
 x-ms-ratelimit-remaining-subscription-writes: 1199
 x-ms-correlation-request-id: c3d9744f-5683-427d-bdd1-636b68ab01b6
-x-ms-routing-request-id: WESTUS:20170602T203101Z:c3d9744f-5683-427d-bdd1-636b68ab01b6
+x-ms-routing-request-id: chinanorth:20170602T203101Z:c3d9744f-5683-427d-bdd1-636b68ab01b6
 Date: Fri, 02 Jun 2017 20:31:00 GMT
 
 null
@@ -425,7 +427,7 @@ Location: https://management.chinacloudapi.cn/subscriptions/00000000-0000-0000-0
 Server: Microsoft-HTTPAPI/2.0; Microsoft-HTTPAPI/2.0
 x-ms-ratelimit-remaining-subscription-writes: 1199
 x-ms-correlation-request-id: 93bf5af0-fef5-4b7a-bb9e-9976ba5cdb95
-x-ms-routing-request-id: WESTUS2:20170602T200504Z:93bf5af0-fef5-4b7a-bb9e-9976ba5cdb95
+x-ms-routing-request-id: chinanorth2:20170602T200504Z:93bf5af0-fef5-4b7a-bb9e-9976ba5cdb95
 Date: Fri, 02 Jun 2017 20:05:03 GMT
 
 null
@@ -468,7 +470,8 @@ null
 
 ## <a name="next-steps"></a>后续步骤
 
-<!--Not Available [Create an alert triggered packet capture](network-watcher-alert-triggered-packet-capture.md) -->
-访问[查看“IP 流验证”](network-watcher-check-ip-flow-verify-portal.md)，了解是否允许某些流量传入和传出 VM。
+查看[创建警报触发的数据包捕获](network-watcher-alert-triggered-packet-capture.md)，了解如何利用虚拟机警报自动执行数据包捕获。
 
-<!--Update_Description: update link, wording update -->
+访问[查看“IP 流验证”](diagnose-vm-network-traffic-filtering-problem.md)，了解是否允许某些流量传入和传出 VM。
+
+<!-- Update_Description: update meta properties, wording update, update link -->

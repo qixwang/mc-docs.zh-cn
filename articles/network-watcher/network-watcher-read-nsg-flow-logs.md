@@ -1,31 +1,31 @@
 ---
-title: 读取 NSG 流日志 | Azure Docs
+title: 读取 NSG 流日志 | Azure
 description: 本文介绍如何分析 NSG 流日志
 services: network-watcher
 documentationcenter: na
-author: lingliw
-manager: digimobile
+author: rockboyfor
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-origin.date: 09/10/2018
-ms.date: 05/08/2020
-ms.author: v-tawe
-ms.openlocfilehash: c478f892e4623665e4b2519bd9198f98d46f01dc
-ms.sourcegitcommit: b81ea2ab9eafa986986fa3eb1e784cfe9bbf9ec1
+origin.date: 12/13/2017
+ms.date: 08/10/2020
+ms.testscope: yes
+ms.testdate: 08/03/2020
+ms.author: v-yeche
+ms.openlocfilehash: 78eb250abb3644092004f17aa4e43540e31c4dcf
+ms.sourcegitcommit: 3eadca6821ef679d8ac6ca2dc46d6a13aac211cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83367838"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87548038"
 ---
 # <a name="read-nsg-flow-logs"></a>读取 NSG 流日志
 
 了解如何使用 PowerShell 读取 NSG 流日志条目。
 
 NSG 流日志存储于[块 blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) 中的存储帐户中。 块 blob 由一些更小的块组成。 每个日志是每个一小时生成的单独块 blob。 每隔一小时会生成新的日志，每隔几分钟会以包含最新数据的新条目来更新日志。 本文介绍如何读取部分流日志。
-
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -39,7 +39,9 @@ NSG 流日志存储于[块 blob](https://docs.microsoft.com/rest/api/storageserv
 
 ## <a name="retrieve-the-block-list"></a>检索块列表
 
-下方 PowerShell 设置查询 NSG 流日志 blob 和列出 [CloudBlockBlob](https://docs.azure.cn/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob?view=azure-dotnet?view=azurestorage-8.1.3) 块 blob 中的块所需的变量。 更新脚本以包含适合你环境的有效值。
+下方 PowerShell 设置查询 NSG 流日志 blob 和列出 [CloudBlockBlob](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblockblob?view=azure-dotnet) 块 blob 中的块所需的变量。 更新脚本以包含适合你环境的有效值。
+
+<!--Mooncake Correct on the link[CloudBlockBlob](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblockblob?view=azure-dotnet)-->
 
 ```powershell
 function Get-NSGFlowLogCloudBlockBlob {
@@ -92,7 +94,6 @@ function Get-NSGFlowLogBlockList  {
     }
 }
 
-
 $CloudBlockBlob = Get-NSGFlowLogCloudBlockBlob -subscriptionId "yourSubscriptionId" -NSGResourceGroupName "FLOWLOGSVALIDATIONWESTCENTRALUS" -NSGName "V2VALIDATIONVM-NSG" -storageAccountName "yourStorageAccountName" -storageAccountResourceGroup "ml-rg" -macAddress "000D3AF87856" -logTime "11/11/2018 03:00" 
 
 $blockList = Get-NSGFlowLogBlockList -CloudBlockBlob $CloudBlockBlob
@@ -117,6 +118,8 @@ ZjAyZTliYWE3OTI1YWZmYjFmMWI0MjJhNzMxZTI4MDM=      2      True
 ## <a name="read-the-block-blob"></a>读取块 blob
 
 接下来需要读取 `$blocklist` 变量以检索数据。 在此示例中我们循环访问阻止列表，从每个块读取字节并将它们存储在数组中。 使用 [DownloadRangeToByteArray](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadrangetobytearray) 方法来检索数据。
+
+<!--Mooncake Correct on [DownloadRangeToByteArray](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadrangetobytearray)-->
 
 ```powershell
 function Get-NSGFlowLogReadBlock  {
@@ -190,9 +193,8 @@ A","1497646742,10.0.0.4,168.62.32.14,44942,443,T,O,A","1497646742,10.0.0.4,52.24
 
 请访问[使用弹性堆栈](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)、[使用 Grafana](network-watcher-nsg-grafana.md) 和[使用 Graylog](network-watcher-analyze-nsg-flow-logs-graylog.md) 详细了解查看 NSG 流日志的方法。 可以在此处找到直接使用 Blob 并发送给各种日志分析使用者的开源 Azure 函数方法：[Azure 网络观察程序 NSG 流日志连接器](https://github.com/Microsoft/AzureNetworkWatcherNSGFlowLogsConnector)。
 
-可使用 [Azure 流量分析](https://docs.azure.cn/network-watcher/traffic-analytics)获取有关流量流的见解。 流量分析使用 [Log Analytics](https://docs.azure.cn/azure-monitor/log-query/get-started-portal) 来使流量流可查询。
+可使用 [Azure 流量分析](/network-watcher/traffic-analytics)获取有关流量流的见解。 流量分析使用 [Log Analytics](/azure-monitor/log-query/get-started-portal) 来使流量流可查询。
 
 若要详细了解存储 blob，请访问：[Azure Functions Blob 存储绑定](../azure-functions/functions-bindings-storage-blob.md)
 
-<!--Update_Description: update meta properties, wording update -->
-
+<!-- Update_Description: update meta properties, wording update, update link -->

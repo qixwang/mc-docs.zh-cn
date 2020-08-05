@@ -9,60 +9,63 @@ metadata:
   ms.subservice: time-series-insights
   ms.topic: landing-page
   ms.collection: collection
-  author: KingdomOfEnds
-  ms.author: v-yiso
-  origin.date: 12/17/2019
-  ms.date: 02/17/2020
-  ms.openlocfilehash: 1e5ce4e0fb7b241f2df5bccb49428f4d605fdacd
-  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+  author: shreyasharmamsft
+  ms.author: v-junlch
+  ms.date: 08/05/2020
+  ms.openlocfilehash: 3256b9f5759e9f146efefc716890563a33eadc10
+  ms.sourcegitcommit: 36e7f37481969f92138bfe70192b1f4a2414caf7
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/17/2020
-  ms.locfileid: "77067870"
+  ms.lasthandoff: 08/05/2020
+  ms.locfileid: "87796302"
 landingContent:
 - title: 关于 Azure 时序见解
   linkLists:
   - linkListType: overview
     links:
-    - text: 什么是 Azure 时序见解预览版？
-      url: time-series-insights-update-overview.md
-    - text: 关于 Azure 时序见解正式发布版
-      url: time-series-insights-overview.md
+    - text: Azure 时序见解第 2 代是什么？
+      url: overview-what-is-tsi.md
+    - text: 用例
+      url: overview-use-cases.md
     - text: 客户端 SDK 示例可视化
       url: https://tsiclientsample.azurewebsites.net/
   - linkListType: concept
     links:
     - text: 时序模型
-      url: time-series-insights-update-tsm.md
-- title: 预览版入门
+      url: concepts-model-overview.md
+- title: 入门
   linkLists:
-  - linkListType: quickstart
+  - linkListType: tutorial
     links:
-    - text: 探索 Azure 时序见解预览版
-      url: time-series-insights-update-quickstart.md
+    - text: Azure 时序见解第 2 代教程
+      url: tutorials-set-up-tsi-environment.md
   - linkListType: deploy
     links:
+    - text: 连接到事件中心
+      url: how-to-ingest-data-event-hub.md
+    - text: 连接到 IoT 中心
+      url: how-to-ingest-data-iot-hub.md
     - text: 规划环境
-      url: time-series-insights-update-plan.md
-    - text: 数据存储和入口
-      url: time-series-insights-update-storage-ingress.md
+      url: how-to-plan-your-environment.md
+    - text: 数据引入概述
+      url: concepts-ingestion-overview.md
   - linkListType: how-to-guide
     links:
     - text: 预配和管理
       url: time-series-insights-update-how-to-manage.md
     - text: 授予数据访问权限
       url: time-series-insights-data-access.md
-    - text: 针对传入和查询调整 JSON
-      url: time-series-insights-update-how-to-shape-events.md
+    - text: 创建时序模型
+      url: how-to-edit-your-model.md
+    - text: 查询数据
+      url: concepts-query-overview.md
 - title: API 参考
   linkLists:
   - linkListType: reference
     links:
-    - text: Azure Time Series Insights
-      url: https://docs.microsoft.com/en-us/rest/api/time-series-insights/
-    - text: 数据访问概念预览版
-      url: https://docs.microsoft.com/en-us/rest/api/time-series-insights/preview
-    - text: 数据访问正式发行版
-      url: https://docs.microsoft.com/en-us/rest/api/time-series-insights/ga
+    - text: Rest API 概述
+      url: https://docs.microsoft.com/rest/api/time-series-insights/
+    - text: 数据访问概念第 2 代
+      url: https://docs.microsoft.com/rest/api/time-series-insights/preview
     - text: JavaScript 客户端 SDK
       url: https://github.com/microsoft/tsiclient/blob/master/docs/API.md
