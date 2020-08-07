@@ -26658,7 +26658,13 @@
       "source-path": "articles/automation/automation-remove-vms-from-update-management.md",
       "redirect_url": "/automation/update-management/update-mgmt-remove-vms",
       "redirect_document": false
+    },
+    {
+      "source_path": "articles/synapse-analytics/sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md",
+      "redirect_url": "/synapse-analytics/sql-data-warehouse/load-data-from-azure-blob-storage-using-copy",
+      "redirect_document_id": true
     }
+
 
 
   ]
