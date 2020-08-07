@@ -4,22 +4,23 @@ titleSuffix: Azure Network Watcher
 description: 此页概述了网络观察程序资源故障排除功能
 services: network-watcher
 documentationcenter: na
-author: lingliw
-manager: digimobile
+author: rockboyfor
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 06/19/2017
-ms.date: 04/30/2018
-ms.author: v-lingwu
-ms.openlocfilehash: 80801b14cb84475fb9cd3644280822ef0bd37a37
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 08/10/2020
+ms.testscope: no
+ms.testdate: ''
+ms.author: v-yeche
+ms.openlocfilehash: 82ec30df919189fbe158d910e0e1db7e8b573756
+ms.sourcegitcommit: 3eadca6821ef679d8ac6ca2dc46d6a13aac211cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78154567"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87548071"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>在 Azure 网络观察程序中进行资源故障排除简介
 
@@ -41,9 +42,9 @@ ms.locfileid: "78154567"
     * **summary** - 此值为错误的摘要。
     * **detailed** - 此值提供对错误的详细说明。
     * **recommendedActions** - 此属性是要采取的建议操作的集合。
-      * **actionText** - 此值包含的文本描述了要采取的具体操作。
-      * **actionUri** - 此值提供操作说明文档的 URI。
-      * **actionUriText** - 此值对操作文本进行了简短的说明。
+        * **actionText** - 此值包含的文本描述了要采取的具体操作。
+        * **actionUri** - 此值提供操作说明文档的 URI。
+        * **actionUriText** - 此值对操作文本进行了简短的说明。
 
 下表显示了提供的不同错误类型（即前面的列表中结果下的 id）以及该错误是否创建日志。
 
@@ -84,15 +85,15 @@ ms.locfileid: "78154567"
 
 下表列出了网络观察程序故障排除支持的网关和连接：
 
-|  |  |
+| 网关或连接 | 支持  |
 |---------|---------|
-|网关类型    |         |
+|网关类型 |         |
 |VPN      | 支持        |
 |ExpressRoute | 不支持 |
-|VPN 类型  | |
+|VPN 类型 | |
 |基于路由 | 支持|
 |基于策略 | 不支持|
-|连接类型 ||
+|连接类型||
 |IPSec| 支持|
 |VNet2Vnet| 支持|
 |ExpressRoute| 不支持|
@@ -210,9 +211,13 @@ Elapsed Time            330 sec
 |        12    ikeext               ike_sa_management_c3307  7857a320-42ee-6e90-d5d9-3f414e3ea2d3|
 ```
 
+## <a name="next-steps"></a>后续步骤
+
+若要了解如何诊断网关或网关连接问题，请参阅[诊断网络间的通信问题](diagnose-communication-problem-between-networks.md)。
+
 <!--Image references-->
 
 [1]: ./media/network-watcher-troubleshoot-overview/GatewayTenantWorkerLogs.png
 [2]: ./media/network-watcher-troubleshoot-overview/portal.png
 
-<!--Update_Description: update link, wording update  -->
+<!-- Update_Description: update meta properties, wording update, update link -->

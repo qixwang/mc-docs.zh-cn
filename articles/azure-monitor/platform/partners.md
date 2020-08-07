@@ -5,14 +5,14 @@ author: Johnnytechn
 ms.subservice: ''
 ms.topic: conceptual
 origin.date: 03/14/2019
-ms.date: 05/28/2020
+ms.date: 07/17/2020
 ms.author: v-johya
-ms.openlocfilehash: 6da082d6e9ae7b498baa4f5da74bc02a763f4546
-ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
+ms.openlocfilehash: f4dd1559a6375579804fabf78b8639d5596731ef
+ms.sourcegitcommit: b5794af488a336d84ee586965dabd6f45fd5ec6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851945"
+ms.lasthandoff: 08/01/2020
+ms.locfileid: "87508348"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure 监视器合作伙伴集成
 
@@ -101,7 +101,8 @@ Elastic 是一家搜索公司。 作为 Elastic Stack（Elasticsearch、Kibana�
 
 ![InfluxData 徽标](./media/partners/Influxdata.png)
 
-InfluxDB 是 InfluxDB 的创建者，它提供了一个从头开始构建的新式开源平台，用于分析 DevOps 和 IoT 应用程序的指标和事件（时间序列数据）。 无论数据来自人类、传感器还是机器，InfluxData 都使开发人员能够更快、更轻松地构建下一代监视应用程序、分析应用程序和 IoT 应用程序，并能够快速地按比例交付实际业务价值。 InfluxData 总部位于旧金山，拥有 420 多家客户，包括 Cisco、eBay、IBM 和 Siemens。
+InfluxData 是开放源代码时序数据库 InfluxDB 的创建者。 我们的技术专为处理 IoT 设备、应用程序、网络、容器和计算机产生的大量带时间戳的数据而设计。 我们的使命是帮助开发者和组织（如 IBM、Visa、Siemens、Tesla 和 NASA）存储和分析实时数据，使他们能够更快地构建变革性的监视、分析和 IoT 应用程序并进行缩放。 可以使用 InfluxData 的 Telegraf 代理扩展 Azure Monitor 的指标和事件收集功能，使 Microsoft 用户可以从领先的时序数据库解决方案中获益，并利用 Telegraf 不断增长的开源贡献。
+
 
 [查看相关文档。][influxdata-doc]
 
@@ -274,7 +275,6 @@ Turbonomic 为混合云提供工作负荷自动化解决方案，同时实时优
 [atlassian-doc]: https://azure.microsoft.com/blog/automated-notifications-from-azure-monitor-for-atlassian-jira/
 [botmetric-doc]: https://www.botmetric.com/blog/announcing-botmetric-cost-governance-beta-microsoft-azure/ "Botmetric 简介。"
 [circonus-doc]: https://docs.circonus.com/circonus/agents/cloud-agent/azure/ 
-[cloudhealth-doc]: https://www.cloudhealthtech.com/azure
 [cloudmonix-doc]: https://cloudmonix.com/features/azure-management/ "CloudMonix 简介。"
 [datadog-doc]: https://docs.datadoghq.com/integrations/azure/ "Datadog 文档。"
 [dynatrace-doc]: https://help.dynatrace.com/infrastructure-monitoring/paas/how-do-i-monitor-microsoft-azure-web-apps/ "Dynatrace 文档。"

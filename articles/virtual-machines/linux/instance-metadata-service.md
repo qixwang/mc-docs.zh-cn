@@ -8,15 +8,15 @@ ms.service: virtual-machines
 ms.subservice: monitoring
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 06/17/2020
+ms.date: 07/29/2020
 ms.author: v-johya
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: 1f41e19673103e42360de61446fe49cc1f228a9e
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: e59d787529ed39c0aa8c54f5bf0198fbe2831baf
+ms.sourcegitcommit: b5794af488a336d84ee586965dabd6f45fd5ec6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097152"
+ms.lasthandoff: 08/01/2020
+ms.locfileid: "87508335"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure 实例元数据服务
 
@@ -24,7 +24,8 @@ Azure 实例元数据服务 (IMDS) 提供有关当前正在运行的虚拟机实
 这些信息包括 SKU、存储、网络配置和即将发生的维护事件。 有关提供的数据的完整列表，请参阅[元数据 API](#metadata-apis)。
 实例元数据服务适用于 VM 和虚拟机规模集实例。 它仅可用于运行使用 [Azure 资源管理器](https://docs.microsoft.com/rest/api/resources/)创建/管理的 VM。
 
-Azure 的实例元数据服务是 REST 终结点，该终结点位于已知不可路由的 IP 地址 (`169.254.169.254`)，只能从 VM 中访问。
+Azure 的 IMDS 是一个 REST 终结点，位于已知不可路由的 IP 地址 (`169.254.169.254`)，只能从 VM 中访问。 VM 与 IMDS 之间的通信绝不会离开主机。
+最佳做法是让 HTTP 客户端在查询 IMDS 时绕过 VM 中的 web 代理并同等对待 `169.254.169.254` 和 [`168.63.129.16`](/virtual-network/what-is-ip-address-168-63-129-16)。
 
 ## <a name="security"></a>安全性
 
@@ -46,7 +47,7 @@ Azure 的实例元数据服务是 REST 终结点，该终结点位于已知不�
 **请求**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2019-06-01"
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?api-version=2019-06-01"
 ```
 
 **响应**
@@ -59,7 +60,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2019
   "compute": {
     "azEnvironment": "AzureChinaCloud",
     "customData": "",
-    "location": "chinaeast",
+    "location": "ChinaEast",
     "name": "negasonic",
     "offer": "lampstack",
     "osType": "Linux",
@@ -164,7 +165,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2019
   }
 }
 ```
-<!-- Notice: Zone is not Available on Moocake, so the valud is "" -->
+<!-- Notice: Zone is not Available on Moocake, so the value is "" -->
 
 ### <a name="data-output"></a>数据输出
 
@@ -176,12 +177,12 @@ API | 默认数据格式 | 其他格式
 /attested | json | 无
 /identity | json | 无
 /instance | json | text
-/scheduledevents | json | 无
+/scheduledevents | json | none
 
 若要访问非默认响应格式，请在请求中将所请求的格式指定为查询字符串参数。 例如：
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
 ```
 
 > [!NOTE]
@@ -200,12 +201,12 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
 如果未指定版本，则会返回错误并列出受支持的最新版本。
 
 > [!NOTE]
-> 此响应是 JSON 字符串。 下例说明了未指定版本时出现的错误情况，为了便于阅读，响应显示非常清晰。
+> 响应为 JSON 字符串。 下例说明了未指定版本时出现的错误情况，为了便于阅读，响应显示非常清晰。
 
 **请求**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance"
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance"
 ```
 
 **响应**
@@ -271,7 +272,7 @@ vmSize | [VM 大小](sizes.md) | 2017-04-02
 **请求**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/vmId?api-version=2017-08-01&format=text"
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/vmId?api-version=2017-08-01&format=text"
 ```
 
 **响应**
@@ -290,7 +291,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/vmId?api
 **请求**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/platformFaultDomain?api-version=2017-08-01&format=text"
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/platformFaultDomain?api-version=2017-08-01&format=text"
 ```
 
 **响应**
@@ -306,7 +307,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/platform
 **请求**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-version=2019-06-01"
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute?api-version=2019-06-01"
 ```
 
 **响应**
@@ -318,7 +319,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-vers
 {
     "azEnvironment": "AzureChinaCloud",
     "customData": "",
-    "location": "chinaeast",
+    "location": "ChinaEast",
     "name": "negasonic",
     "offer": "lampstack",
     "osType": "Linux",
@@ -407,7 +408,7 @@ Azure 具有各种主权云，如 Azure 中国云。 有时你需要使用 Azure
 **请求**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/azEnvironment?api-version=2018-10-01&format=text"
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/azEnvironment?api-version=2018-10-01&format=text"
 ```
 
 **响应**
@@ -424,6 +425,7 @@ Azure 环境的云和值列在下面。
 [Azure 美国政府版](https://azure.microsoft.com/overview/clouds/government/)              | AzureUSGovernmentCloud
 [Azure 中国世纪互联](https://www.azure.cn/)         | AzureChinaCloud
 [Azure 德国](https://azure.microsoft.com/overview/clouds/germany/)                    | AzureGermanCloud
+<!--Correct in MC: Azure US Government, Azure China 21Vianet-->
 
 ## <a name="network-metadata"></a>网络元数据 
 
@@ -446,7 +448,7 @@ macAddress | VM mac 地址 | 2017-04-02
 **请求**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/network?api-version=2017-08-01"
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/network?api-version=2017-08-01"
 ```
 
 **响应**
@@ -485,7 +487,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/network?api-vers
 #### <a name="sample-2-retrieving-public-ip-address"></a>示例 2：检索公共 IP 地址
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2017-08-01&format=text"
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2017-08-01&format=text"
 ```
 
 ## <a name="storage-metadata"></a>存储元数据
@@ -518,7 +520,7 @@ lun     | 磁盘的逻辑单元号
 managedDisk | 托管磁盘参数
 name    | 磁盘名称
 vhd     | 虚拟硬盘
-writeAcceleratorEnabled | 磁盘上是否启用了 writeAccelerator
+writeAcceleratorEnabled | 磁盘是否启用了 writeAccelerator
 
 数据磁盘阵列包含附加到 VM 的数据磁盘列表。 每个数据磁盘对象包含以下信息：
 
@@ -541,7 +543,7 @@ writeAcceleratorEnabled | 磁盘上是否启用了 writeAccelerator
 **请求**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/storageProfile?api-version=2019-06-01"
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/storageProfile?api-version=2019-06-01"
 ```
 
 **响应**
@@ -613,7 +615,7 @@ VM 标记包含在实例/计算/标记终结点下的实例 API。
 **请求**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tags?api-version=2018-10-01&format=text"
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/tags?api-version=2018-10-01&format=text"
 ```
 
 **响应**
@@ -627,7 +629,7 @@ Department:IT;Environment:Test;Role:WebRole
 **请求**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04"
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04"
 ```
 
 **响应**
@@ -661,10 +663,10 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tagsList
 **请求**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/attested/document?api-version=2018-10-01&nonce=1234567890"
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/attested/document?api-version=2018-10-01&nonce=1234567890"
 ```
 
-API 版本是必填字段。 有关支持的 API 版本的信息，请参阅[使用部分](#usage)。
+Api-version 是必填字段。 有关支持的 API 版本的信息，请参阅[使用部分](#usage)。
 Nonce 是一个可选的 10 位字符串。 如果未提供，IMDS 将在其所在位置返回当前 UTC 时间戳。
 
 > [!NOTE]
@@ -705,7 +707,7 @@ sku | `2019-11-01` 中介绍了 VM 映像的特定 SKU
 
 ```bash
 # Get the signature
-curl --silent -H Metadata:True http://169.254.169.254/metadata/attested/document?api-version=2019-04-30 | jq -r '.["signature"]' > signature
+curl --silent -H Metadata:True --noproxy "*" "http://169.254.169.254/metadata/attested/document?api-version=2019-04-30" | jq -r '.["signature"]' > signature
 # Decode the signature
 base64 -d signature > decodedsignature
 # Get PKCS7 format
@@ -844,7 +846,50 @@ HTTP 状态代码 | Reason
    * 目前，规模集的标记仅在重启、重置映像或更改实例的磁盘时向 VM 显示。
 1. 调用服务时请求超时？
    * 必须从分配给 VM 的主要网卡的主 IP 地址进行元数据调用。 此外，如果你更改了路由，则 VM 的本地路由表中必须存在 169.254.169.254/32 地址的路由。
+   * <details>
+        <summary>验证路由表</summary>
 
+        1. 使用诸如 `netstat -r` 等命令转储本地路由表，并查找 IMDS 条目（例如）：
+            ```console
+            ~$ netstat -r
+            Kernel IP routing table
+            Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
+            default         _gateway        0.0.0.0         UG        0 0          0 eth0
+            168.63.129.16   _gateway        255.255.255.255 UGH       0 0          0 eth0
+            169.254.169.254 _gateway        255.255.255.255 UGH       0 0          0 eth0
+            172.16.69.0     0.0.0.0         255.255.255.0   U         0 0          0 eth0
+            ```
+        1. 验证是否存在 `169.254.169.254` 的路由，并记下相应的网络接口（例如 `eth0`）。
+        1. 转储路由表中相应接口的接口配置（请注意，配置文件的确切名称可能有所不同）
+            ```console
+            ~$ cat /etc/netplan/50-cloud-init.yaml
+            network:
+            ethernets:
+                eth0:
+                    dhcp4: true
+                    dhcp4-overrides:
+                        route-metric: 100
+                    dhcp6: false
+                    match:
+                        macaddress: 00:0d:3a:e4:c7:2e
+                    set-name: eth0
+            version: 2
+            ```
+        1. 如果使用的是动态 IP，请记下 MAC 地址。 如果使用的是静态 IP，可以记下列出的 IP 和/或 MAC 地址。
+        1. 确认该接口对应于 VM 的主 NIC 和主 IP。 可以通过在 Azure 门户中查看网络配置，或[通过 Azure CLI](/cli/vm/nic?view=azure-cli-latest#az-vm-nic-show) 查找来找到主 NIC/IP。 记下公共和专用 IP（如果使用 cli，还要记下 MAC 地址）。 PowerShell CLI 示例：
+            ```powershell
+            $ResourceGroup = '<Resource_Group>'
+            $VmName = '<VM_Name>'
+            $NicNames = az vm nic list --resource-group $ResourceGroup --vm-name $VmName | ConvertFrom-Json | Foreach-Object { $_.id.Split('/')[-1] }
+            foreach($NicName in $NicNames)
+            {
+                $Nic = az vm nic show --resource-group $ResourceGroup --vm-name $VmName --nic $NicName | ConvertFrom-Json
+                Write-Host $NicName, $Nic.primary, $Nic.macAddress
+            }
+            # Output: ipexample606 True 00-0D-3A-E4-C7-2E
+            ```
+        1. 如果它们不匹配，请更新路由表，以使主 NIC/IP 成为目标。
+    </details>
     <!-- Not Available on New Support Request on Mooncake ![Instance Metadata Support](./media/instance-metadata-service/InstanceMetadata-support.png)-->
 
 ## <a name="next-steps"></a>后续步骤

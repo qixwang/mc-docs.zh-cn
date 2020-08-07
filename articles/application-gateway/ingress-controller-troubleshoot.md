@@ -5,14 +5,14 @@ services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: troubleshooting
-ms.date: 07/10/2020
+ms.date: 08/03/2020
 ms.author: v-junlch
-ms.openlocfilehash: 99fe94ea5e9e17889f50b5099b10eae47280686f
-ms.sourcegitcommit: 65a7360bb14b0373e18ec8eaa288ed3ac7b24ef4
+ms.openlocfilehash: a8b21c34f672d7d5378941ab38308e893a35f8e2
+ms.sourcegitcommit: 36e7f37481969f92138bfe70192b1f4a2414caf7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86219713"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87796272"
 ---
 # <a name="troubleshoot-common-questions-or-issues-with-ingress-controller"></a>排查入口控制器的常见问题
 

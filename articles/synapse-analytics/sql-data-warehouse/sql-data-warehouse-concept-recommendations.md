@@ -12,12 +12,12 @@ ms.date: 07/06/2020
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 1ff9e49ada773fba6c94c955eeb71a4c2bb6c155
-ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
+ms.openlocfilehash: ab712579656d55a2a5fa0bcc4524a1bb1f024e76
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85845734"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426462"
 ---
 # <a name="synapse-sql-recommendations"></a>Synapse SQL 建议
 
@@ -71,3 +71,7 @@ Synapse SQL 提供建议，确保以一致的方式优化数据仓库工作负�
 ## <a name="tempdb-contention"></a>tempdb 争用
 
 当存在高 tempdb 争用时，查询性能可能会降低。  tempdb 争用可以通过用户定义的临时表或在发生大量数据移动时发生。 对于这种情况，可以进行扩展以分配更多的 tempdb，并[配置资源类和工作负荷管理](/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-management)以便为查询提供更多内存。 
+
+## <a name="data-loading-misconfiguration"></a>数据加载配置错误
+
+应始终从与 SQL 池位于相同区域的存储帐户加载数据，以最大程度地减少延迟。 使用 [COPY 语句进行高吞吐量数据引入](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)，并在存储帐户中拆分暂存文件以最大限度地提高吞吐量。 如果无法使用 COPY 语句，可以使用 SqlBulkCopy API 或批处理容量较高的 bcp 来提高吞吐量。 有关其他数据加载指南，请访问以下[文档](/synapse-analytics/sql-data-warehouse/guidance-for-loading-data)。 

@@ -4,23 +4,25 @@ titleSuffix: Azure Network Watcher
 description: 本文介绍如何使用 Azure 自动化和网络观察程序诊断本地连接
 services: network-watcher
 documentationcenter: na
-author: lingliw
-manager: digimobile
+author: rockboyfor
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 02/22/2017
-ms.date: 02/27/2020
-ms.author: v-lingwu
-ms.openlocfilehash: 0c9f411838596a44ce80252339bc4f345ac52d7e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 08/10/2020
+ms.testscope: yes
+ms.testdate: 08/03/2020
+ms.author: v-yeche
+ms.openlocfilehash: 91fb9148991dbd9f090be11407d6415d99d117ea
+ms.sourcegitcommit: 3eadca6821ef679d8ac6ca2dc46d6a13aac211cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78154500"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87547985"
 ---
+<!--Verify Successfully-->
 # <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>使用网络观察程序故障排除功能监视 VPN 网关
 
 若要向客户提供可靠的服务，获取网络性能的深入见解至关重要。 因此，必须能够快速检测网络中断状态，并采取纠正措施来缓解中断状态。 在 Azure 自动化中，可以通过 Runbook 以编程方式实施和运行任务。 使用 Azure 自动化可以创建完美的脚本来执行连续、主动的网络监视和警报。
@@ -53,31 +55,29 @@ ms.locfileid: "78154500"
 
 ### <a name="create-the-runbook"></a>创建 Runbook
 
-配置示例的第一个步骤是创建 Runbook。 本示例使用运行方式帐户。
-<!-- Not Available [Authenticate Runbooks with Azure Run As account](../automation/automation-sec-configure-azure-runas-account.md) -->
-<!-- Redirect /automation/automation-sec-configure-azure-runas-account.md TO /automation -->
+配置示例的第一个步骤是创建 Runbook。 本示例使用运行方式帐户。 若要了解运行方式帐户，请访问[使用 Azure 运行方式帐户进行 Runbook 身份验证](../automation/automation-create-runas-account.md)
 
 ### <a name="step-1"></a>步骤 1
 
-在 [Azure 门户](https://portal.azure.cn)中导航到“Azure 自动化”，并单击“Runbook” 
+在 [Azure 门户](https://portal.azure.cn)中导航到“Azure 自动化”，并单击“Runbook”
 
 ![自动化帐户概述][1]
 
 ### <a name="step-2"></a>步骤 2
 
-单击“添加 Runbook”启动 Runbook 创建过程。 
+单击“添加 Runbook”启动 Runbook 创建过程。
 
 ![Runbook 边栏选项卡][2]
 
 ### <a name="step-3"></a>步骤 3
 
-在“快速创建”下面，单击“创建新的 Runbook”创建 Runbook。  
+在“快速创建”下面，单击“创建新的 Runbook”创建 Runbook。 
 
 ![添加 Runbook 边栏选项卡][3]
 
 ### <a name="step-4"></a>步骤 4
 
-在此步骤中，我们将为 Runbook 命名，在本示例中命名为 **Get-VPNGatewayStatus**。 必须为 Runbook 指定一个描述性的名称，我们建议遵循正式的 PowerShell 命名标准来命名。 本示例中的 Runbook 类型为“PowerShell”，其他选项包括“图形”、“PowerShell 工作流”和“图形 PowerShell 工作流”。 
+在此步骤中，我们将为 Runbook 命名，在本示例中命名为 **Get-VPNGatewayStatus**。 必须为 Runbook 指定一个描述性的名称，我们建议遵循正式的 PowerShell 命名标准来命名。 本示例中的 Runbook 类型为“PowerShell”，其他选项包括“图形”、“PowerShell 工作流”和“图形 PowerShell 工作流”。
 
 ![Runbook 边栏选项卡][4]
 
@@ -85,9 +85,9 @@ ms.locfileid: "78154500"
 
 在此步骤中创建 Runbook。以下代码示例提供了本示例所需的所有代码。 需要将代码中包含 \<value\> 的项替换为订阅中的值。
 
-使用以下代码，并单击“保存” 
+使用以下代码，并单击“保存”
 
-```PowerShell
+```powershell
 # Set these variables to the proper values for your environment
 $o365AutomationCredential = "<Office 365 account>"
 $fromEmail = "<from email address>"
@@ -110,7 +110,7 @@ $cred = Get-AutomationPSCredential -Name $o365AutomationCredential
 $servicePrincipalConnection=Get-AutomationConnection -Name $runAsConnectionName
 
 "Logging in to Azure..."
-Connect-AzureRmAccount -EnvironmentName AzureChinaCloud `
+Connect-AzureRmAccount -Environment AzureChinaCloud `
     -ServicePrincipal `
     -TenantId $servicePrincipalConnection.TenantId `
     -ApplicationId $servicePrincipalConnection.ApplicationId `
@@ -149,32 +149,32 @@ else
 
 ### <a name="step-6"></a>步骤 6
 
-保存 Runbook 后，必须向它链接一个计划才能自动启动它。 若要启动链接过程，请单击“计划”。 
+保存 Runbook 后，必须向它链接一个计划才能自动启动它。 若要启动链接过程，请单击“计划”。
 
 ![步骤 6][6]
 
 ## <a name="link-a-schedule-to-the-runbook"></a>将计划链接到 Runbook
 
-必须创建一个新计划。 单击“将计划链接到 Runbook”。 
+必须创建一个新计划。 单击“将计划链接到 Runbook”。
 
 ![步骤 7][7]
 
 ### <a name="step-1"></a>步骤 1
 
-在“计划”边栏选项卡中，单击“创建新计划”  
+在“计划”边栏选项卡中，单击“创建新计划” 
 
 ![步骤 8][8]
 
 ### <a name="step-2"></a>步骤 2
 
-在“新建计划”边栏选项卡中填写计划信息。  以下列表提供了可设置的值：
+在“新建计划”边栏选项卡中填写计划信息。 以下列表提供了可设置的值：
 
 - **名称** - 计划的友好名称。
 - **说明** - 计划的说明。
 - **开始时间** - 此值是日期、时间和时区的组合，构成计划触发时间。
-- **重复周期** - 此值确定计划的重复方式。  有效值为“一次”或“定期”。  
+- **重复周期** - 此值确定计划的重复方式。  有效值为“一次”或“定期”。 
 - **重复间隔** - 以小时、天、周或月为单位的计划重复间隔。
-- **设置过期时间** - 该值确定计划是否会过期。 可设置为“是”或“否”。   如果选择“是”，则要提供有效的日期和时间。
+- **设置过期时间** - 该值确定计划是否会过期。 可设置为“是”或“否”。  如果选择“是”，则要提供有效的日期和时间。
 
 > [!NOTE]
 > 如果需要以高于每隔一小时的频率运行某个 Runbook，必须以不同的间隔创建多个计划（即，在小时后面指定 15、30 或 45 分钟）
@@ -189,9 +189,10 @@ else
 
 ## <a name="next-steps"></a>后续步骤
 
-<!--Not Available on [Create an alert triggered packet capture with Azure Network Watcher](network-watcher-alert-triggered-packet-capture.md) -->
+了解如何将网络观察程序故障排除功能与 Azure 自动化集成后，接下来请访问 [Create an alert triggered packet capture with Azure Network Watcher](network-watcher-alert-triggered-packet-capture.md)（使用 Azure 网络观察程序创建警报触发的数据包捕获），了解如何根据 VM 警报触发数据包捕获。
 
 <!-- images -->
+
 [scenario]: ./media/network-watcher-monitor-with-azure-automation/scenario.png
 [1]: ./media/network-watcher-monitor-with-azure-automation/figure1.png
 [2]: ./media/network-watcher-monitor-with-azure-automation/figure2.png
@@ -204,4 +205,4 @@ else
 [9]: ./media/network-watcher-monitor-with-azure-automation/figure9.png
 [10]: ./media/network-watcher-monitor-with-azure-automation/figure10.png
 
-<!--Update_Description: new articles on network watcher monitor with azure automation -->
+<!-- Update_Description: update meta properties, wording update, update link -->

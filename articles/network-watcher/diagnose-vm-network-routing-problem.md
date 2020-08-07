@@ -1,11 +1,10 @@
 ---
-title: 教程：诊断 VM 网络路由问题 - Azure 门户
+title: 教程 - 诊断 VM 网络路由问题 - Azure 门户
 titleSuffix: Azure Network Watcher
 description: 本教程介绍如何使用 Azure 网络观察程序的“下一跃点”功能来诊断虚拟机网络路由问题。
 services: network-watcher
 documentationcenter: network-watcher
 author: rockboyfor
-manager: digimobile
 editor: ''
 tags: azure-resource-manager
 Customer intent: I need to diagnose virtual machine (VM) network routing problem that prevents communication to different destinations.
@@ -16,19 +15,22 @@ ms.topic: tutorial
 ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
 origin.date: 04/20/2018
-ms.date: 07/02/2018
+ms.date: 08/10/2020
+ms.testscope: yes
+ms.testdate: 08/03/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: afec2eada56d0764a6650ea5252f5343ffc2b771
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 1b4204d59ae421e10ca8d1039e78469f3cc19d4c
+ms.sourcegitcommit: 3eadca6821ef679d8ac6ca2dc46d6a13aac211cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77028969"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87548062"
 ---
+<!--Verify Successfully-->
 # <a name="tutorial-diagnose-a-virtual-machine-network-routing-problem-using-the-azure-portal"></a>教程：使用 Azure 门户诊断虚拟机网络路由问题
 
-部署虚拟机 (VM) 时，Azure 会为其创建多个默认路由。 可以创建自定义路由来覆盖 Azure 的默认路由。 有时候，自定义路由可能导致 VM 无法与其他资源通信。 本教程介绍如何执行下列操作：
+部署虚拟机 (VM) 时，Azure 会为其创建多个默认路由。 可以创建自定义路由来覆盖 Azure 的默认路由。 有时候，自定义路由可能导致 VM 无法与其他资源通信。 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建 VM
@@ -42,7 +44,7 @@ ms.locfileid: "77028969"
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 
-在 https://portal.azure.cn 登录 Azure 门户。
+通过 https://portal.azure.cn 登录到 Azure 门户。
 
 ## <a name="create-a-vm"></a>创建 VM
 
@@ -50,14 +52,14 @@ ms.locfileid: "77028969"
 2. 选择“计算”，然后选择“Windows Server 2016 Datacenter”或“Ubuntu Server 17.10 VM”。   
 3. 输入或选择以下信息，保留剩下的默认设置，然后选择“确定”  ：
 
-    |设置|Value|
+    |设置|值|
     |---|---|
     |名称|myVm|
     |用户名| 输入所选用户名。|
-    |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
+    |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
     |订阅| 选择订阅。|
     |资源组| 选择“新建”，并输入 myResourceGroup  |
-    |位置| 选择“中国东部” |
+    |位置| 选择“中国东部”|
 
 4. 选择 VM 的大小，然后选择“选择”  。
 5. 保留“设置”下的所有默认设置，然后选择“确定”。  
@@ -72,9 +74,9 @@ ms.locfileid: "77028969"
 如果已至少在一个区域中启用网络观察程序，请跳到[使用下一跃点](#use-next-hop)。
 
 1. 在门户中，选择“所有服务”。  在“筛选器”框中，输入“网络观察程序”   。 结果中出现“网络观察程序”后，将其选中  。
-2. 选择“区域”，以便将其展开，然后选择“中国东部”右侧的“...”，如下图所示：   
+2. 选择“区域”，以便将其展开，然后选择“中国东部”右侧的“...”，如下图所示：  
 
-    ![启用网络观察程序](./media/diagnose-vm-network-traffic-filtering-problem/enable-network-watcher.png)
+    :::image type="content" source="./media/diagnose-vm-network-traffic-filtering-problem/enable-network-watcher.png" alt-text="启用网络观察程序":::
 
 3. 选择“启用网络观察程序”。 
 
@@ -85,15 +87,15 @@ Azure 自动创建到默认目标的路由。 可以创建自定义路由来覆�
 1. 在 Azure 门户的“网络观察程序”下选择“下一跃点”。  
 2. 选择订阅，输入或选择以下值，然后选择“下一跃点”，如下图所示： 
 
-    |设置                  |Value                                                   |
+    |设置                  |值                                                   |
     |---------                |---------                                               |
     | 资源组          | 选择 myResourceGroup                                 |
     | 虚拟机         | 选择 myVm                                            |
-    | Linux       | myvm - 你的网络接口名称可能有所不同。   |
+    | 网络接口       | myvm - 你的网络接口名称可能有所不同。   |
     | 源 IP 地址       | 10.0.0.4                                               |
     | 目标 IP 地址  | 13.107.21.200 - <www.bing.com> 的一个地址。 |
 
-    ![下一跃点](./media/diagnose-vm-network-routing-problem/next-hop.png)
+    :::image type="content" source="./media/diagnose-vm-network-routing-problem/next-hop.png" alt-text="下一跃点":::
 
     数秒钟后，结果指示下一跃点类型为“Internet”  ，“路由表 ID”为“系统路由”。   此结果指示存在有效的通往目标的系统路由。
 
@@ -104,7 +106,7 @@ Azure 自动创建到默认目标的路由。 可以创建自定义路由来覆�
 1. 若要进一步分析路由情况，请查看网络接口的有效路由。 在门户顶部的搜索框中，输入“myvm”  （或勾选的网络接口的任何其他名称）。 当“myvm”出现在搜索结果中时，将其选中。 
 2. 在“支持 + 故障排除”下选择“有效路由”，如下图所示：  
 
-    ![有效路由](./media/diagnose-vm-network-routing-problem/effective-routes.png)
+    :::image type="content" source="./media/diagnose-vm-network-routing-problem/effective-routes.png" alt-text="有效路由":::
 
     使用[使用下一跃点](#use-next-hop)中的 13.107.21.200 运行测试时，地址前缀为 0.0.0.0/0 的路由用于将流量路由到该地址，因为没有其他路由包含该地址。 默认情况下，未在另一路由的地址前缀中指定的所有地址都会路由到 Internet。
 
@@ -120,12 +122,11 @@ Azure 自动创建到默认目标的路由。 可以创建自定义路由来覆�
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何创建 VM 并根据该 VM 诊断网络路由问题， 同时说明了 Azure 可以创建多个默认路由，并且还测试了到两个不同目标的路由。 详细了解 [Azure 中的路由](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)，以及如何[创建自定义路由](../virtual-network/manage-route-table.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-route)。
+本教程介绍了如何创建 VM 并根据该 VM 诊断网络路由问题， 同时说明了 Azure 可以创建多个默认路由，并且还测试了到两个不同目标的路由。 详细了解 [Azure 中的路由](../virtual-network/virtual-networks-udr-overview.md?toc=%2fnetwork-watcher%2ftoc.json)，以及如何[创建自定义路由](../virtual-network/manage-route-table.md?toc=%2fnetwork-watcher%2ftoc.json#create-a-route)。
 
 对于出站 VM 连接，还可以使用网络观察程序的[连接故障排除](network-watcher-connectivity-portal.md)功能来确定延迟、VM 和终结点之间获得允许的和被拒绝的网络流量，以及所使用的通往某个终结点的路由。 了解如何使用网络观察程序的连接监视器功能监视 VM 和终结点（例如 IP 地址或 URL）之间在某段时间的通信情况。
 
 > [!div class="nextstepaction"]
 > [监视网络连接](connection-monitor.md)
 
-<!-- Update_Description: new articles on diagnose vm network routing problem -->
-<!--ms.date: 07/02/2018-->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -6,12 +6,12 @@ origin.date: 04/10/2020
 ms.date: 06/08/2020
 ms.author: v-yeche
 ms.custom: sfrev
-ms.openlocfilehash: 4122da010679c456e2f43f676f97998ae9cc749a
-ms.sourcegitcommit: 8a2fbc0eae8d8f7297f5334f508ff868b4077f32
+ms.openlocfilehash: 9e924697c4de9ce295fb766558c3f4aa5c04793f
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84326266"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426373"
 ---
 <!--Verified successfully, ONLY CHARACTERS CONTENT-->
 # <a name="certificate-management-in-service-fabric-clusters"></a>Service Fabric 群集中的证书管理
@@ -26,7 +26,10 @@ ms.locfileid: "84326266"
 * 深入探讨一个示例
 * 故障排除和常见问题解答
 
-不过，首先是一个免责声明：本文尝试将理论与实践相结合，这就要求受众了解服务、技术等方面的细节。 由于受众中有很大一部分是 Microsoft 内部员工，因此我们将提到的服务、技术和产品是特定于 Azure 的。 如果特定于 Microsoft 的细节不适用于你的情况，请在评论部分提问，以获得详细说明或相关指导。
+不过，首先是一个免责声明：本文尝试将理论与实践相结合，这就要求受众了解服务、技术等方面的细节。 由于受众中有很大一部分是 Microsoft 内部员工，因此我们将提到的服务、技术和产品是特定于 Azure 的。 如果特定于 Microsoft 的细节不适用于你的情况，请在 [Azure 支持](https://support.azure.cn/support/contact/)中提问，以获得详细说明或相关指导。
+
+<!--CORRECT ON [Azure support](https://support.azure.cn/support/contact/)-->
+<!--Not Available on comments section in the page-->
 
 ## <a name="defining-certificate-management"></a>定义证书管理
 正如我们在[配套文章](cluster-security-certificates.md)中看到的那样，证书是一个加密对象，它本质上是将某个非对称密钥对与描述它所表示的实体的属性绑定在一起。 但它也是一个“易变质”对象，原因在于它的生存期有限，并且容易泄漏 - 不管是意外泄露还是被攻击者成功利用，都可能会使证书变得毫无用处（从安全角度来看）。 这意味着需要更改证书 - 定期更改或为了响应安全事件而更改。 管理的另一方面（其本身就是一整个主题）是保护证书私钥，或者保护相关机密，这些机密保护那些涉及证书获得和预配过程的实体的标识。 我们将用于获取证书并将其安全地传输到需要证书的位置的流程和过程称为“证书管理”。 某些管理操作（例如注册、策略设置和授权控制）超出了本文的范围。 还有其他一些功能（如预配、续订、重新生成密钥或吊销）只是偶尔与 Service Fabric 相关。尽管如此，我们仍会在此对其进行某种程度的阐述，因为了解这些操作有助于用户正确保护其群集。 
@@ -498,5 +501,4 @@ A 的 SAN 列表已完全包含在 C 的该列表中，因此 A.renewal = C.thum
 [Image1]:./media/security-cluster-certificate-mgmt/certificate-journey-thumbprint.png
 [Image2]:./media/security-cluster-certificate-mgmt/certificate-journey-common-name.png
 
-<!-- Update_Description: new article about cluster security certificate management -->
-<!--NEW.date: 05/25/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

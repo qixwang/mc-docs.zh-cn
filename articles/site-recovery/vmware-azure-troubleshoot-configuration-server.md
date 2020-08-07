@@ -6,14 +6,16 @@ manager: digimobile
 ms.service: site-recovery
 ms.topic: article
 origin.date: 02/13/2019
-ms.date: 06/08/2020
+ms.date: 08/03/2020
+ms.testscope: no
+ms.testdate: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: cd138b400474666247b2bbdcea93e242c73f422b
-ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
+ms.openlocfilehash: dfe7579ccd8dcd6f3079266e02328740f9090589
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84440707"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426499"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>排查配置服务器问题
 
@@ -53,6 +55,8 @@ ms.locfileid: "84440707"
     b. 打开 Installation_Directory/Vx/bin/uninstall.sh 文件，并注释掉对 **stop_services** 函数的调用。
     c. 打开 Installation_Directory/Fx/uninstall.sh 文件，并注释掉尝试停止 Fx 服务的整个节。
     d. [卸载](vmware-physical-manage-mobility-service.md#uninstall-mobility-service)移动服务。 成功卸载后，重新启动系统，然后尝试安装移动代理。
+
+8. 确保没有为用户帐户启用多重身份验证。 目前，Azure Site Recovery 不支持对用户帐户进行多重身份验证。 注册没有启用多重身份验证的用户帐户的配置服务器。  
 
 ## <a name="installation-failure-failed-to-load-accounts"></a>安装失败：无法加载帐户
 
@@ -149,7 +153,7 @@ UnifiedAgentConfigurator.exe  /CSEndPoint <configuration server IP address> /Pas
         这将返回已注册计算机的列表及其 IP 地址和上次检测信号。 查找具有过时复制对的主机。
 
 2. 打开提升的命令提示符并导航到 C:\ProgramData\ASR\home\svsystems\bin。 
-3. 若要从配置服务器删除已注册主机详细信息和过时条目信息，请使用过时条目的源计算机和 IP 地址运行以下命令。 
+4. 若要从配置服务器删除已注册主机详细信息和过时条目信息，请使用过时条目的源计算机和 IP 地址运行以下命令。 
 
     `Syntax: Unregister-ASRComponent.pl -IPAddress <IP_ADDRESS_OF_MACHINE_TO_UNREGISTER> -Component <Source/ PS / MT>`
 
@@ -157,7 +161,7 @@ UnifiedAgentConfigurator.exe  /CSEndPoint <configuration server IP address> /Pas
 
     `perl Unregister-ASRComponent.pl -IPAddress 10.0.0.4 -Component Source`
 
-4. 在源计算机上重启以下服务，向配置服务器重新注册。 
+5. 在源计算机上重启以下服务，向配置服务器重新注册。 
 
     - InMage Scout 应用程序服务
     - InMage Scout VX Agent - Sentinel/Outpost
@@ -168,16 +172,18 @@ UnifiedAgentConfigurator.exe  /CSEndPoint <configuration server IP address> /Pas
 
 若要确定问题，请导航到配置服务器上的 C:\ProgramData\ASRSetupLogs\CX_TP_InstallLogFile。 如果发现以下错误，请使用以下步骤解决问题： 
 
-    2018-06-28 14:28:12.943   Successfully copied php.ini to C:\Temp from C:\thirdparty\php5nts
-    2018-06-28 14:28:12.943   svagents service status - SERVICE_RUNNING
-    2018-06-28 14:28:12.944   Stopping svagents service.
-    2018-06-28 14:31:32.949   Unable to stop svagents service.
-    2018-06-28 14:31:32.949   Stopping svagents service.
-    2018-06-28 14:34:52.960   Unable to stop svagents service.
-    2018-06-28 14:34:52.960   Stopping svagents service.
-    2018-06-28 14:38:12.971   Unable to stop svagents service.
-    2018-06-28 14:38:12.971   Rolling back the install changes.
-    2018-06-28 14:38:12.971   Upgrade has failed.
+```
+2018-06-28 14:28:12.943   Successfully copied php.ini to C:\Temp from C:\thirdparty\php5nts
+2018-06-28 14:28:12.943   svagents service status - SERVICE_RUNNING
+2018-06-28 14:28:12.944   Stopping svagents service.
+2018-06-28 14:31:32.949   Unable to stop svagents service.
+2018-06-28 14:31:32.949   Stopping svagents service.
+2018-06-28 14:34:52.960   Unable to stop svagents service.
+2018-06-28 14:34:52.960   Stopping svagents service.
+2018-06-28 14:38:12.971   Unable to stop svagents service.
+2018-06-28 14:38:12.971   Rolling back the install changes.
+2018-06-28 14:38:12.971   Upgrade has failed.
+```
 
 若要解决问题，请执行以下操作：
 
@@ -198,7 +204,7 @@ UnifiedAgentConfigurator.exe  /CSEndPoint <configuration server IP address> /Pas
 若要解决问题，请登录 Azure 门户并执行以下操作之一：
 
 - 在 AAD 中请求应用程序开发人员角色。 有关应用程序开发人员角色的详细信息，请参阅 [Azure Active Directory 中的管理员角色权限](../active-directory/users-groups-roles/directory-assign-admin-roles.md)。
-- 验证并确保 AAD 中的“用户可以创建应用程序”标志设置为“true”。 有关更多信息，请参阅[如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)。
+- 验证并确保 AAD 中的“用户可以创建应用程序”标志设置为“true”。 有关更多信息，请参阅[如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)。
 
 ## <a name="process-servermaster-target-are-unable-to-communicate-with-the-configuration-server"></a>进程服务器/主目标无法与配置服务器通信 
 
@@ -216,8 +222,10 @@ TCP    192.168.1.40:52739     192.168.1.40:443      SYN_SENT  // 此处将 IP �
 
 如果在 MT 代理日志中发现类似于以下内容的跟踪，则 MT 代理将报告端口 443 出错：
 
-    #~> (11-20-2018 20:31:51):   ERROR  2508 8408 313 FAILED : PostToSVServer with error [at curlwrapper.cpp:CurlWrapper::processCurlResponse:212]   failed to post request: (7) - Couldn't connect to server
-    #~> (11-20-2018 20:31:54):   ERROR  2508 8408 314 FAILED : PostToSVServer with error [at curlwrapper.cpp:CurlWrapper::processCurlResponse:212]   failed to post request: (7) - Couldn't connect to server
+```
+#~> (11-20-2018 20:31:51):   ERROR  2508 8408 313 FAILED : PostToSVServer with error [at curlwrapper.cpp:CurlWrapper::processCurlResponse:212]   failed to post request: (7) - Couldn't connect to server
+#~> (11-20-2018 20:31:54):   ERROR  2508 8408 314 FAILED : PostToSVServer with error [at curlwrapper.cpp:CurlWrapper::processCurlResponse:212]   failed to post request: (7) - Couldn't connect to server
+```
 
 如果其他应用程序也在使用端口 443，或由于阻止端口的防火墙设置，可能会遇到此错误。
 

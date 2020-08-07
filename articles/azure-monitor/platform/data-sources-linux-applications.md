@@ -1,19 +1,18 @@
 ---
 title: 在 Azure Monitor 中收集 Linux 应用程序性能数据 | Azure Docs
 description: 本文提供了有关对 Log Analytics Linux 代理进行配置以收集 MySQL 和 Apache HTTP Server 的性能计数器的详细信息。
-author: lingliw
-manager: digimobile
 ms.subservice: logs
 ms.topic: conceptual
+author: Johnnytechn
+ms.author: v-johya
+ms.date: 07/17/2020
 origin.date: 05/04/2017
-ms.date: 04/12/2019
-ms.author: v-lingwu
-ms.openlocfilehash: cd822ab9da159c4efea1bc5f9d74c4a26324c154
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5c81d3709e146436df8816b49c56370f6b9fbc23
+ms.sourcegitcommit: b5794af488a336d84ee586965dabd6f45fd5ec6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79452531"
+ms.lasthandoff: 08/01/2020
+ms.locfileid: "87508472"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>在 Azure Monitor 中收集 Linux 应用程序的性能计数器 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
@@ -36,14 +35,14 @@ MySQL 身份验证文件存储在 `/var/opt/microsoft/mysql-cimprov/auth/omsagen
 ### <a name="authentication-file-format"></a>身份验证文件格式
 下面是 MySQL OMI 身份验证文件的格式
 
-    [Port]=[Bind-Address], [username], [Base64 encoded Password]
-    (Port)=(Bind-Address), (username), (Base64 encoded Password)
-    (Port)=(Bind-Address), (username), (Base64 encoded Password)
-    AutoUpdate=[true|false]
+> [端口]=[绑定地址], [用户名], [Base64 编码的密码]  
+> (端口)=(绑定地址), (用户名), (Base64 编码的密码)  
+> (端口)=(绑定地址), (用户名), (Base64 编码的密码)  
+> AutoUpdate=[true|false]  
 
 下表描述了身份验证文件中的条目。
 
-| properties | 说明 |
+| 属性 | 描述 |
 |:--|:--|
 | 端口 | 表示 MySQL 实例正在侦听的当前端口。 端口 0 指定后面的属性用于默认实例。 |
 | 绑定地址| 当前 MySQL 绑定地址。 |
@@ -65,14 +64,14 @@ MySQL OMI 身份验证文件可以定义一个默认的实例和端口号，以�
 ### <a name="mysql-omi-authentication-file-program"></a>MySQL OMI 身份验证文件程序
 随 MySQL OMI 提供程序安装了一个 MySQL OMI 身份验证文件程序，可以使用该程序来编辑 MySQL OMI 身份验证文件。 可以在以下位置找到该身份验证文件程序。
 
-    /opt/microsoft/mysql-cimprov/bin/mycimprovauth
+`/opt/microsoft/mysql-cimprov/bin/mycimprovauth`
 
 > [!NOTE]
 > 凭据文件必须可供 omsagent 帐户读取。 建议以 omsgent 身份运行 mycimprovauth 命令。
 
 下表提供了有关 mycimprovauth 的使用语法的详细信息。
 
-| Operation | 示例 | 说明
+| 操作 | 示例 | 说明
 |:--|:--|:--|
 | autoupdate *false or true* | mycimprovauth autoupdate false | 设置在重新启动或更新时是否会自动更新身份验证文件。 |
 | default *bind-address username password* | mycimprovauth default 127.0.0.1 root pwd | 在 MySQL OMI 身份验证文件中设置默认实例。<br>应当以纯文本输入密码字段 - MySQL OMI 身份验证文件中的密码将是 Base 64 编码的。 |
@@ -83,15 +82,18 @@ MySQL OMI 身份验证文件可以定义一个默认的实例和端口号，以�
 
 以下示例命令为 localhost 上的 MySQL 服务器定义了一个默认用户帐户。  应当以纯文本输入密码字段 - MySQL OMI 身份验证文件中的密码将是 Base 64 编码的
 
-    sudo su omsagent -c '/opt/microsoft/mysql-cimprov/bin/mycimprovauth default 127.0.0.1 <username> <password>'
-    sudo /opt/omi/bin/service_control restart
+```console
+sudo su omsagent -c '/opt/microsoft/mysql-cimprov/bin/mycimprovauth default 127.0.0.1 <username> <password>'
+sudo /opt/omi/bin/service_control restart
+```
 
 ### <a name="database-permissions-required-for-mysql-performance-counters"></a>MySQL 性能计数器所需的数据库权限
 MySQL 用户需要访问以下查询来收集 MySQL 服务器性能数据。 
 
-    SHOW GLOBAL STATUS;
-    SHOW GLOBAL VARIABLES:
-
+```sql
+SHOW GLOBAL STATUS;
+SHOW GLOBAL VARIABLES:
+```
 
 MySQL 用户还需要对以下默认表具有 SELECT 访问权限。
 
@@ -100,9 +102,10 @@ MySQL 用户还需要对以下默认表具有 SELECT 访问权限。
 
 可以通过运行以下授予命令来授予这些特权。
 
-    GRANT SELECT ON information_schema.* TO ‘monuser’@’localhost’;
-    GRANT SELECT ON mysql.* TO ‘monuser’@’localhost’;
-
+```sql
+GRANT SELECT ON information_schema.* TO ‘monuser’@’localhost’;
+GRANT SELECT ON mysql.* TO ‘monuser’@’localhost’;
+```
 
 > [!NOTE]
 > 要向 MySQL 监视用户授予权限，执行授权的用户必须具有 'GRANT option' 特权以及要授予的特权。
@@ -134,12 +137,14 @@ MySQL 用户还需要对以下默认表具有 SELECT 访问权限。
 
 ## <a name="apache-http-server"></a>Apache HTTP Server 
 如果安装 omsagent 捆绑包时在计算机上检测到 Apache HTTP Server，则会自动安装 Apache HTTP Server 的性能监视提供程序。 此提供程序依赖于必须加载到 Apache HTTP Server 才能访问性能数据的一个 Apache 模块。 可以使用以下命令加载该模块：
-```
+
+```console
 sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -c
 ```
 
 要卸载 Apache 监视模块，请运行以下命令︰
-```
+
+```console
 sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -u
 ```
 
@@ -164,3 +169,4 @@ sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -u
 ## <a name="next-steps"></a>后续步骤
 * 从 Linux 代理[收集性能计数器](data-sources-performance-counters.md)。
 * 了解[日志查询](../log-query/log-query-overview.md)以便分析从数据源和解决方案中收集的数据。 
+

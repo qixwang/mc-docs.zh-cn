@@ -4,20 +4,27 @@ description: Azure Monitor 警报的常见问题和可能的解决方法。
 author: Johnnytechn
 ms.author: v-johya
 ms.topic: reference
-ms.date: 05/20/2020
+ms.date: 07/17/2020
 ms.subservice: alerts
-ms.openlocfilehash: a02004ee150d869f8a640dfd12da3f7abfbde7e9
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+ms.openlocfilehash: ebcc38cac529c25cd6d9998279e8cb5fab717861
+ms.sourcegitcommit: b5794af488a336d84ee586965dabd6f45fd5ec6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796957"
+ms.lasthandoff: 08/01/2020
+ms.locfileid: "87508476"
 ---
-# <a name="troubleshooting-problems-in-azure-monitor-alerts"></a>排查 Azure Monitor 警报的问题 
+# <a name="troubleshooting-problems-in-azure-monitor-alerts"></a>排查 Azure Monitor 警报的问题
 
-本文讨论 Azure Monitor 警报的常见问题。
+本文讨论 Azure Monitor 警报和通知的常见问题。
 
 在监视数据中发现重要情况时，Azure Monitor 警报会主动通知你。 有了警报，你就可以在系统的用户注意到问题之前确定和解决这些问题。 有关警报的详细信息，请参阅 [Azure 中的警报概述](alerts-overview.md)。
+
+如果你遇到警报触发问题或警报未按预期触发问题，请参阅下面的文章。 可以在 Azure 门户中查看已触发的警报。
+
+- [排查 Azure 中的 Azure Monitor 指标警报问题](alerts-troubleshoot-metric.md)  
+- [排查 Azure 中的 Azure Monitor 日志警报问题](alerts-troubleshoot-metric.md)
+
+如果警报根据 Azure 门户按预期触发，但未出现正确的通知，请使用本文其余部分中的信息来解决该问题。
 
 ## <a name="action-or-notification-on-my-alert-did-not-work-as-expected"></a>针对警报的操作或通知未按预期方式进行
 
@@ -25,11 +32,11 @@ ms.locfileid: "83796957"
 
 ## <a name="did-not-receive-expected-email"></a>未收到预期的电子邮件
 
-如果你可以在 Azure 门户中看到触发的警报，但未收到你已为其配置的相关电子邮件，请遵循以下步骤： 
+如果你可以在 Azure 门户中看到触发的警报，但未收到你已为其配置的相关电子邮件，请遵循以下步骤：
 
-1. **是否某个[操作规则](alerts-action-rules.md)阻止了该电子邮件**？ 
+1. **是否某个[操作规则](alerts-action-rules.md)阻止了该电子邮件**？
 
-    在门户中单击触发的警报进行检查，查看“历史记录”选项卡中是否有已阻止的[操作组](action-groups.md)： 
+    在门户中单击触发的警报进行检查，查看“历史记录”选项卡中是否有已阻止的[操作组](action-groups.md)：
 
     ![警报操作规则 -“阻止”历史记录](./media/alerts-troubleshoot/history-action-rule.png)
 
@@ -44,20 +51,20 @@ ms.locfileid: "83796957"
       - azureemail-noreply@microsoft.com
       - alerts-noreply@mail.windowsazure.cn
 
-    内部邮件列表或通讯组列表阻止来自外部电子邮件地址的电子邮件的情况很常见。 需要将上述电子邮件地址加入允许列表。  
-    若要进行测试，请将一个常规工作电子邮件地址（不是邮件列表）添加到操作组，并查看警报是否到达该电子邮件地址。 
+    内部邮件列表或通讯组列表阻止来自外部电子邮件地址的电子邮件的情况很常见。 必须允许来自上述电子邮件地址的邮件。  
+    若要进行测试，请将一个常规工作电子邮件地址（不是邮件列表）添加到操作组，并查看警报是否到达该电子邮件地址。
 
-1. **相关电子邮件是否被收件箱规则或垃圾邮件筛选器处理了？** 
+1. **相关电子邮件是否被收件箱规则或垃圾邮件筛选器处理了？**
 
     请确保没有任何收件箱规则会删除这些电子邮件或将其移动到副文件夹。 例如，收件箱规则可能会捕捉特定发件人或主题中的特定字词。
 
     另请检查：
-    
-      - 电子邮件客户端（如 Outlook、Gmail）的垃圾邮件设置
-      - 电子邮件服务器（如 Exchange、Office 365、G-suite）的发件人限制/垃圾邮件设置/隔离设置
-      - 若使用了电子邮件安全设备（如 Barracuda、Cisco），请检查其设置。 
 
-1. **是否意外取消了对操作组的订阅？** 
+   - 电子邮件客户端（如 Outlook、Gmail）的垃圾邮件设置
+      - 电子邮件服务器（如 Exchange、Office 365、G-suite）的发件人限制/垃圾邮件设置/隔离设置
+      - 若使用了电子邮件安全设备（如 Barracuda、Cisco），请检查其设置。
+
+1. **是否意外取消了对操作组的订阅？**
 
     警报电子邮件提供从操作组取消订阅的链接。 若要检查是否已意外地从此操作组取消订阅，请执行以下操作之一：
 
@@ -71,11 +78,11 @@ ms.locfileid: "83796957"
 
     若要再次订阅，请使用收到的取消订阅确认电子邮件中的链接，或从操作组中删除电子邮件地址，然后再重新添加。 
  
-1. **是否由于很多电子邮件都发送到一个电子邮件地址而受到速率限制？** 
+1. **是否由于很多电子邮件都发送到一个电子邮件地址而受到速率限制？**
 
-    电子邮件有[速率限制](alerts-rate-limiting.md)，发送给每个电子邮件地址的电子邮件不得超过每小时 100 封。 如果超过此阈值，则会丢弃后来的电子邮件通知。  请检查是否已收到一封表明电子邮件地址暂时存在速率限制的邮件： 
+    电子邮件有[速率限制](alerts-rate-limiting.md)，发送给每个电子邮件地址的电子邮件不得超过每小时 100 封。 如果超过此阈值，则会删除其他电子邮件通知。  请检查是否已收到一封表明电子邮件地址暂时存在速率限制的邮件： 
  
-   ![电子邮件速率受到限制](./media/alerts-troubleshoot/email-paused.png)
+   ![电子邮件速率限制](./media/alerts-troubleshoot/email-paused.png)
 
    如果你想要在没有速率限制的情况下接收大量通知，请考虑使用不同的操作，如 webhook、逻辑应用、Azure 函数或自动化 runbook，这些都没有速率限制。 
 
@@ -83,7 +90,7 @@ ms.locfileid: "83796957"
 
 如果你可以在门户中看到触发的警报，但未收到你已为其配置的相关短信、语音呼叫或推送通知，请遵循以下步骤： 
 
-1. **是否某个[操作规则](alerts-action-rules.md)阻止了该操作？** 
+1. **是否某个[操作规则](alerts-action-rules.md)阻止了该操作？**
 
     在门户中单击触发的警报进行检查，查看“历史记录”选项卡中是否有已阻止的[操作组](action-groups.md)： 
 
@@ -93,14 +100,14 @@ ms.locfileid: "83796957"
  
 1. **短信/语音：你的电话号码是否正确？**
 
-   检查短信操作，以查明国家/地区代码或电话号码中是否有拼写错误。 
+   检查短信操作，以查明国家/地区代码或电话号码中是否有拼写错误。
  
-1. **短信/语音：你是否受到了速率限制？** 
+1. **短信/语音：你是否受到了速率限制？**
 
-    对于每个电话号码，短信和语音呼叫的速率限制是每 5 分钟不超过 1 个通知。 如果超过此阈值，则将丢弃通知。 
+    对于每个电话号码，短信和语音呼叫的速率限制是每 5 分钟不超过 1 个通知。 如果超过此阈值，则将丢弃通知。
 
-      - 语音呼叫 – 查看呼叫历史记录，了解你在过去 5 分钟内是否有来自 Azure 的不同呼叫。 
-      - 短信 - 查看短信历史记录，了解其中是否有一条短信表明你的电话号码已受到速率限制。 
+      - 语音呼叫 – 查看呼叫历史记录，了解你在过去 5 分钟内是否有来自 Azure 的不同呼叫。
+      - 短信 - 查看短信历史记录，了解其中是否有一条短信表明你的电话号码已受到速率限制。
 
     如果你想要在没有速率限制的情况下接收大量通知，请考虑使用不同的操作，如 webhook、逻辑应用、Azure 函数或自动化 runbook，这些都没有速率限制。 
  
@@ -110,29 +117,29 @@ ms.locfileid: "83796957"
 
 1. **你的手机上是否意外阻止了通知？**
 
-   大多数移动电话允许阻止来自特定电话号码或短代码的呼叫或短信，或阻止来自特定应用（如 Azure 移动应用）的推送通知。 若要检查你的手机上是否意外阻止了通知，请搜索特定于你的手机操作系统和型号的文档，或使用其他手机和电话号码进行测试。 
+   大多数移动电话允许阻止来自特定电话号码或短代码的呼叫或短信，或阻止来自特定应用（如 Azure 移动应用）的推送通知。 若要检查你的手机上是否意外阻止了通知，请搜索特定于你的手机操作系统和型号的文档，或使用其他手机和电话号码进行测试。
 
 ## <a name="expected-another-type-of-action-to-trigger-but-it-did-not"></a>预期另一类型的操作会触发，但它未触发 
+   
+如果可以在门户中看到触发的警报，但其配置的操作未触发，请遵循以下步骤：
 
-如果可以在门户中看到触发的警报，但其配置的操作未触发，请遵循以下步骤： 
+1. **是否某个操作规则阻止了该操作？**
 
-1. **是否某个操作规则阻止了该操作？** 
-
-    在门户中单击触发的警报进行检查，查看“历史记录”选项卡中是否有已阻止的[操作组](action-groups.md)： 
+    在门户中单击触发的警报进行检查，查看“历史记录”选项卡中是否有已阻止的[操作组](action-groups.md)：
 
     ![警报操作规则 -“阻止”历史记录](./media/alerts-troubleshoot/history-action-rule.png)
  
-    如果是无意中阻止了操作组，可以修改、禁用或删除操作规则。 
+    如果是无意中阻止了操作组，可以修改、禁用或删除操作规则。
 
 1. **Webhook 是否未触发？**
 
     1. **是否已阻止源 IP 地址？**
     
-       将需要从其调用 Webhook 的 [IP 地址](action-groups.md#action-specific-information)加入允许列表。
+       将需从其调用 Webhook 的 [IP 地址](action-groups.md#action-specific-information)加入允许列表。
 
     1. **你的 Webhook 终结点是否正常工作？**
 
-       验证已配置的 Webhook 终结点是否正确，以及该终结点是否在正常运行。 检查 Webhook 日志或检测其代码，以便进行调查（例如，记录传入的有效负载）。 
+       验证已配置的 Webhook 终结点是否正确，以及该终结点是否在正常运行。 检查 Webhook 日志或检测其代码，以便进行调查（例如，记录传入的有效负载）。
 
     1. **Webhook 是否已停止响应或返回错误？** 
 

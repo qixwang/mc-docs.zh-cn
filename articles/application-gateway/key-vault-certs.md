@@ -4,15 +4,15 @@ description: 了解如何将 Azure 应用程序网关与 Key Vault 集成，以�
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
-ms.date: 05/19/2020
+ms.topic: conceptual
+ms.date: 08/03/2020
 ms.author: v-junlch
-ms.openlocfilehash: 4baf86efadaa09007d38f628acbcdf5b54981752
-ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
+ms.openlocfilehash: dd66c0f6f64c8d6824ec5a7b752ed266a0f065fd
+ms.sourcegitcommit: 36e7f37481969f92138bfe70192b1f4a2414caf7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83748146"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87796273"
 ---
 # <a name="tls-termination-with-key-vault-certificates"></a>使用 Key Vault 证书进行 TLS 终止
 
@@ -43,7 +43,7 @@ Key Vault 集成提供了两种用于 TLS 终止的模型：
 
 1. **创建用户分配的托管标识**
 
-   你创建或重用现有的用户分配的托管标识，供应用程序网关用来代表你从 Key Vault 检索证书。 有关详细信息，请参阅[什么是 Azure 资源的托管标识？](../active-directory/managed-identities-azure-resources/overview.md)。 这一步在 Azure Active Directory 租户中创建新标识。 此标识受那个用来创建标识的订阅的信任。
+   你创建或重用现有的用户分配的托管标识，供应用程序网关用来代表你从 Key Vault 检索证书。 有关详细信息，请参阅[使用 Azure 门户创建、列出、删除用户分配的托管标识或为其分配角色](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)。 这一步在 Azure Active Directory 租户中创建新标识。 此标识受那个用来创建标识的订阅的信任。
 
 1. **配置密钥保管库**
 

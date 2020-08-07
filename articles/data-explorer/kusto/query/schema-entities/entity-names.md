@@ -1,0 +1,74 @@
+---
+title: 实体名称 - Azure 数据资源管理器 | Microsoft Docs
+description: 本文介绍 Azure 数据资源管理器中的实体名称。
+services: data-explorer
+author: orspod
+ms.author: v-tawe
+ms.reviewer: rkarlin
+ms.service: data-explorer
+ms.topic: reference
+origin.date: 02/24/2019
+ms.date: 07/31/2020
+ms.openlocfilehash: 47cb8fdcc05cc227e2b0f6b9312562de27cbbe02
+ms.sourcegitcommit: 4e1bc2e9b2a12dbcc05c52db5dbd1ae290aeb18d
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/01/2020
+ms.locfileid: "87509239"
+---
+# <a name="entity-names"></a>实体名称
+
+Kusto 实体（数据库、表、列和存储函数；群集是例外）具有名称。 实体的名称标识实体，并且（在给定其类型的情况下）在其容器作用域内必定是唯一的。
+（例如，同一数据库中的两个表不能同名，但表和数据库可以同名，因为它们不在同一作用域内；表和存储函数的名称也可以相同，因为它们不是同一实体类型。）
+
+出于解析目的，实体名称区分大小写（因此不能将名为 `ThisTable` 的表称为 `thisTABLE`）。
+
+实体名称是标识符的一个示例。 其他标识符包括函数参数的名称，以及通过 [let 语句](../letstatement.md)绑定名称。
+
+## <a name="entity-pretty-names"></a>实体友好名称
+
+除实体名称外，某些实体（如数据库）还可能具有友好名称。 可以在查询中使用友好名称来指代实体（类似实体名称），但与实体名称不同的是，在其容器的上下文中，友好名称不一定是唯一的。 如果容器包含多个具有相同友好名称的实体，则不能使用该友好名称来指代实体。
+
+友好名称允许中间层应用程序将自动创建的实体名称（如 UUID）映射到易于理解的名称，以便显示和引用。
+
+## <a name="identifier-naming-rules"></a>标识符命名规则
+
+<!-- TODO: This section should be reviewed and moved to its own page -->
+
+标识符用于命名各种实体（实体或其他项）。
+有效的标识符名称遵循以下规则：
+* 长度必须介于 1 到 1024 个字符之间。
+* 可以包含字母、数字、下划线 (`_`)、空格、点 (`.`) 和短划线 (`-`)。
+  * 引用标识符时，仅由字母、数字和下划线组成的标识符不需要加引号。
+  * 包含空格、点或短划线中至少一种符号的标识符需要加引号（见下文）。
+* 它们区分大小写。
+
+## <a name="identifier-quoting"></a>标识符引用
+
+如果标识符与某些查询语言关键字相同，或者包含上述某个特殊字符，则由查询直接引用这些标识符时需要加引号：
+
+|查询文本         |注释                          |
+|-------------------|----------------------------------|
+| `entity`          |不包含特殊字符或映射到某些语言关键字的实体名称 (`entity`) 不需要加引号|
+|`['entity-name']`  |包含特殊字符（此处为：`-`）的实体名称必须使用 `['` 和 `']` 或者 `["` 和 `"]` 括起来|
+|`["where"]`        |作为语言关键字的实体名称必须用 `['` 和 `']` 或者 `["` 和 `"]` 括起来|
+
+## <a name="naming-your-entities-to-avoid-collisions-with-kusto-language-keywords"></a>命名实体以避免与 Kusto 语言关键字冲突
+
+由于 Kusto 查询语言包含多个关键字，而这些关键字具有与标识符相同的命名规则，因此，可能出现与关键字重合的实体名称，但引用这些名称会很困难（必须加引号）。
+
+或者，最好选择绝对不会与 Kusto 关键字“冲突”的实体名称。 该语言有以下保证：
+
+1. Kusto 查询语言不会定义以大写字母（`A` 到 `Z`）开头的关键字。
+2. Kusto 查询语言不会定义以单下划线 (`_`) 开头的关键字。
+3. Kusto 查询语言不会定义以单下划线 (`_`) 结尾的关键字。
+
+Kusto 查询语言保留以双下划线字符序列 (`__`) 开头或结尾的所有标识符；用户不能定义这样的名称供自己使用。
+
+
+
+
+
+
+
+

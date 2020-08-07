@@ -5,27 +5,29 @@ description: 本文介绍如何使用 Azure 网络观察程序的“下一个跃
 services: network-watcher
 documentationcenter: network-watcher
 author: rockboyfor
-manager: digimobile
 editor: ''
 tags: azure-resource-manager
 Customer intent: I need to diagnose virtual machine (VM) network routing problem that prevents communication to different destinations.
 ms.assetid: ''
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
 origin.date: 04/20/2018
-ms.date: 07/02/2018
+ms.date: 08/10/2020
+ms.testscope: yes
+ms.testdate: 08/03/2020
 ms.author: v-yeche
 ms.custom: ''
-ms.openlocfilehash: 3a925a60d3ccbdf7c8dcf1ed6fd2317fd5d67a06
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b9dbdf93c27503d1ec34c8ab2bd92f69016e3aab
+ms.sourcegitcommit: 3eadca6821ef679d8ac6ca2dc46d6a13aac211cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77028880"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87548063"
 ---
+<!--Verify Successfully with some Customization-->
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-powershell"></a>诊断虚拟机网络路由问题 - Azure PowerShell
 
 本文首先部署虚拟机 (VM)，然后检查其与 IP 地址和 URL 的通信。 确定通信失败的原因以及解决方法。
@@ -34,22 +36,21 @@ ms.locfileid: "77028880"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
+<!--Not Available on Cloud Shell-->
 
-如果选择在本地安装和使用 PowerShell，则本文需要 Azure PowerShell `Az` 模块。 要查找已安装的版本，请运行 `Get-Module -ListAvailable Az`。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-Az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount -EnvironmentName AzureChinaCloud` 来创建与 Azure 的连接。
-
-
+如果选择在本地安装和使用 PowerShell，则本文需要 Azure PowerShell `Az` 模块。 要查找已安装的版本，请运行 `Get-Module -ListAvailable Az`。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-Az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount -Environment AzureChinaCloud` 来创建与 Azure 的连接。
 
 ## <a name="create-a-vm"></a>创建 VM
 
-在创建 VM 之前，必须创建该 VM 所属的资源组。 使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.Resources/New-azResourceGroup) 创建资源组。 以下示例在“中国东部 2”位置创建名为 *myResourceGroup* 的资源组。 
+在创建 VM 之前，必须创建该 VM 所属的资源组。 使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.Resources/New-azResourceGroup) 创建资源组。 以下示例在“chinaeast”位置创建名为“myResourceGroup”的资源组。
 
-```PowerShell
-New-AzResourceGroup -Name myResourceGroup -Location 'China East 2'
+```powershell
+New-AzResourceGroup -Name myResourceGroup -Location ChinaEast
 ```
 
 使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 创建 VM。 运行此步骤时，会提示输入凭据。 输入的值将配置为用于 VM 的用户名和密码。
 
-```PowerShell
+```powershell
 $vM = New-AzVm `
     -ResourceGroupName "myResourceGroup" `
     -Name "myVm" `
@@ -64,7 +65,7 @@ $vM = New-AzVm `
 
 ## <a name="enable-network-watcher"></a>启用网络观察程序
 
-如果已在“中国东部 2”区域启用了网络观察程序，请使用 [Get-AzureRmNetworkWatcher](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermnetworkwatcher) 来检索网络观察程序。 以下示例检索 NetworkWatcherRG 资源组中名为 NetworkWatcher_chinaeast 的现有网络观察程序：
+如果已在中国东部区域启用了网络观察程序，请使用 [Get-AzNetworkWatcher](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkwatcher) 来检索网络观察程序。 以下示例检索 NetworkWatcherRG 资源组中名为 NetworkWatcher_chinaeast 的现有网络观察程序：
 
 ```powershell
 $networkWatcher = Get-AzNetworkWatcher `
@@ -72,22 +73,22 @@ $networkWatcher = Get-AzNetworkWatcher `
   -ResourceGroupName NetworkWatcherRG
 ```
 
-如果还没有在“中国东部 2”区域启用网络观察程序，请使用 [New-AzNetworkWatcher](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermnetworkwatcher) 在“中国东部 2”区域创建网络观察程序：
+如果还没有在中国东部区域启用网络观察程序，请使用 [New-AzNetworkWatcher](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkwatcher) 在中国东部区域创建网络观察程序：
 
 ```powershell
 $networkWatcher = New-AzNetworkWatcher `
   -Name "NetworkWatcher_chinaeast" `
   -ResourceGroupName "NetworkWatcherRG" `
-  -Location "China East 2"
+  -Location "China East"
 ```
 
 ### <a name="use-next-hop"></a>使用下一个跃点
 
-Azure 自动创建到默认目标的路由。 可以创建自定义路由来覆盖默认路由。 有时，自定义路由可能会导致通信故障。 要测试来自 VM 的路由，请使用 [Get-AzureRmNetworkWatcherNextHop](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermnetworkwatchernexthop) 命令确定流量发送到特定地址时的下一个路由跃点。
+Azure 自动创建到默认目标的路由。 可以创建自定义路由来覆盖默认路由。 有时，自定义路由可能会导致通信故障。 要测试来自 VM 的路由，请使用 [Get-AzNetworkWatcherNextHop](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkwatchernexthop) 命令确定流量发送到特定地址时的下一个路由跃点。
 
 测试从 VM 发往 www.bing.com 的某个 IP 地址的出站通信：
 
-```PowerShell
+```powershell
 Get-AzNetworkWatcherNextHop `
   -NetworkWatcher $networkWatcher `
   -TargetVirtualMachineId $VM.Id `
@@ -99,7 +100,7 @@ Get-AzNetworkWatcherNextHop `
 
 测试从 VM 发往 172.31.0.100 的出站通信：
 
-```PowerShell
+```powershell
 Get-AzNetworkWatcherNextHop `
   -NetworkWatcher $networkWatcher `
   -TargetVirtualMachineId $VM.Id `
@@ -113,7 +114,7 @@ Get-AzNetworkWatcherNextHop `
 
 若要进一步分析路由情况，请使用 [Get-AzEffectiveRouteTable](https://docs.microsoft.com/powershell/module/az.network/get-azeffectiveroutetable) 命令查看网络接口的有效路由：
 
-```PowerShell
+```powershell
 Get-AzEffectiveRouteTable `
   -NetworkInterfaceName myVm `
   -ResourceGroupName myResourceGroup |
@@ -138,7 +139,7 @@ Name State  Source  AddressPrefix           NextHopType NextHopIpAddress
 
 如果不再需要资源组及其包含的所有资源，请使用 [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) 将其删除：
 
-```PowerShell
+```powershell
 Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
@@ -147,5 +148,5 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 本文介绍了如何创建 VM 并根据该 VM 诊断网络路由问题。 同时说明了 Azure 可以创建多个默认路由，并且还测试了到两个不同目标的路由。 详细了解 [Azure 中的路由](../virtual-network/virtual-networks-udr-overview.md?toc=%2fnetwork-watcher%2ftoc.json)，以及如何[创建自定义路由](../virtual-network/manage-route-table.md?toc=%2fnetwork-watcher%2ftoc.json#create-a-route)。
 
 对于出站 VM 连接，还可以使用网络观察程序的[连接故障排除](network-watcher-connectivity-powershell.md)功能来确定延迟、VM 和终结点之间获得允许的和被拒绝的网络流量。 可以使用网络观察程序的连接监视器功能监视 VM 和终结点（例如 IP 地址或 URL）之间在某段时间的通信情况。 如需了解如何操作，请参阅[监视网络连接](connection-monitor.md)。
-<!-- Update_Description: new articles on network watcher diagnose vm network routing problem powershell -->
-<!--ms.date: 07/02/2018-->
+
+<!-- Update_Description: update meta properties, wording update, update link -->

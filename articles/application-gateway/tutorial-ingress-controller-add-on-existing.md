@@ -5,14 +5,14 @@ services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 07/10/2020
+ms.date: 08/03/2020
 ms.author: v-junlch
-ms.openlocfilehash: d21d42068e0c5cc4776e7a86688f995804a32fb8
-ms.sourcegitcommit: 65a7360bb14b0373e18ec8eaa288ed3ac7b24ef4
+ms.openlocfilehash: 644778f96b1c55f414bc54d81fb808cb67bfe122
+ms.sourcegitcommit: 36e7f37481969f92138bfe70192b1f4a2414caf7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86219691"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87796333"
 ---
 # <a name="tutorial-enable-application-gateway-ingress-controller-add-on-for-an-existing-aks-cluster-with-an-existing-application-gateway-through-azure-cli-preview"></a>教程：通过 Azure CLI 使用现有的应用程序网关为现有 AKS 群集启用应用程序网关入口控制器加载项（预览版）
 
@@ -40,7 +40,7 @@ az feature register --name AKS-IngressApplicationGatewayAddon --namespace micros
 
 可能需要花费几分钟时间，状态才会显示为“已注册”。 可以使用 [az feature list](/cli/feature#az-feature-register) 命令检查注册状态：
 ```azurecli
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-IngressApplicationGatewayAddon')].{Name:name,State:properties.state}"
+az feature list -o table --query "[?contains(name, 'microsoft.containerservice/AKS-IngressApplicationGatewayAddon')].{Name:name,State:properties.state}"
 ```
 
 准备就绪后，使用 [az provider register](/cli/provider#az-provider-register) 命令刷新 Microsoft.ContainerService 资源提供程序的注册状态：
@@ -70,7 +70,7 @@ az group create --name myResourceGroup --location canadacentral
 
 现在，你将部署新的 AKS 群集，以模拟你有一个现有 AKS 群集且需要为其启用 AGIC 加载项的情况。  
 
-在下面的示例中，你将在所创建的资源组 *myResourceGroup* 中使用 [Azure CNI](/aks/concepts-network#azure-cni-advanced-networking) 部署名为 *myCluster* 的新 AKS 群集。    
+在下面的示例中，你将在所创建的资源组 myResourceGroup 中使用 [Azure CNI](/aks/concepts-network#azure-cni-advanced-networking) 和[托管实例](/aks/use-managed-identity)部署名为 myCluster 的新 AKS 群集 。    
 
 ```azurecli
 az aks create -n myCluster -g myResourceGroup --network-plugin azure --enable-managed-identity 

@@ -6,18 +6,27 @@ ms.subservice: logs
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 05/20/2020
-ms.openlocfilehash: 52d9087de92078275bc457fc5aa11db00493374c
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+ms.date: 07/17/2020
+ms.openlocfilehash: 5096bfd3a083c3c42120ca3dbc6c3c824dc77fa3
+ms.sourcegitcommit: b5794af488a336d84ee586965dabd6f45fd5ec6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796951"
+ms.lasthandoff: 08/01/2020
+ms.locfileid: "87508404"
 ---
 # <a name="azure-monitor-logs-connector-for-logic-apps-and-flow"></a>适用于逻辑应用和流的 Azure Monitor 日志连接器
 借助 [Azure 逻辑应用](/logic-apps/) 和 [Power Automate](https://ms.flow.microsoft.com)，可以使用数百个操作为多种服务创建自动化工作流。 使用 Azure Monitor 日志连接器，可以在 Azure Monitor 中生成可从 Log Analytics 工作区或 Application Insights 应用程序检索数据的工作流。 本文介绍该连接器附带的操作，并演练如何使用这些数据生成工作流。
 
 例如，可以创建一个逻辑应用，以在 Office 365 的电子邮件通知中使用 Azure Monitor 日志数据，在 Azure DevOps 中创建 Bug，或者发布 Slack 消息。  可通过简单计划或从连接的服务中的某些操作（例如收到电子邮件或推文时）触发工作流。 
+
+## <a name="connector-limits"></a>连接器限制
+Azure Monitor 日志连接器具有以下限制：
+* 最大数据大小：16 MB
+* 最大查询响应大小 100 MB
+* 最大记录数：500,000
+* 最大查询超时 110 秒。
+
+根据数据大小和所用的查询，连接器可能会达到其限制而失败。 调整触发器重复周期，增加运行频率、减少每次查询的数据量，即可解决这种情况。 你可以使用能聚合数据的查询来返回更少的记录和列。
 
 ## <a name="actions"></a>操作
 下表描述了 Azure Monitor 日志连接器附带的操作。 可通过这两个操作对 Log Analytics 工作区或 Application Insights 应用程序运行日志查询。 两者的差异在于返回数据的方式。
@@ -37,7 +46,7 @@ ms.locfileid: "83796951"
 
 ### <a name="create-a-logic-app"></a>创建逻辑应用
 
-在 Azure 门户中转到“逻辑应用”，然后单击“添加”。  选择用于存储新逻辑应用的“订阅”、“资源组”和“区域”，并为逻辑应用指定唯一的名称。  
+在 Azure 门户中转到“逻辑应用”，然后单击“添加”。  选择用于存储新逻辑应用的“订阅”、“资源组”和“区域”，并为逻辑应用指定唯一的名称。   你可以打开 Log Analytics 设置，以收集有关运行时数据和事件的信息。 使用 Azure Monitor 日志连接器不需要此设置。
 
 ![创建逻辑应用](./media/logicapp-flow-connector/create-logic-app.png)
 

@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 07/10/2020
+ms.date: 08/03/2020
 ms.author: v-junlch
-ms.openlocfilehash: 9f9aba60f5b793a9069dcb97a3c0f1b45b669b23
-ms.sourcegitcommit: 65a7360bb14b0373e18ec8eaa288ed3ac7b24ef4
+ms.openlocfilehash: eddd34362b1c5583e4a659c9632f63d1716154dc
+ms.sourcegitcommit: 36e7f37481969f92138bfe70192b1f4a2414caf7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86219711"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87796252"
 ---
 # <a name="application-gateway-configuration-overview"></a>应用程序网关配置概述
 
@@ -55,7 +55,7 @@ Azure 应用程序网关由多个组件构成，可根据不同的方案以不�
   - 不要删除默认出站规则。
   - 不要创建拒绝任何出站连接的其他出站规则。
 
-- 必须允许来自 **AzureLoadBalancer** 标记的流量。
+- 必须允许目标子网为“任意”的 AzureLoadBalancer 标记的流量 。
 
 #### <a name="allow-application-gateway-access-to-a-few-source-ips"></a>允许应用程序网关访问一些源 IP
 
@@ -65,7 +65,7 @@ Azure 应用程序网关由多个组件构成，可根据不同的方案以不�
 2. 允许特定的传入请求，这些请求来自采用 **GatewayManager** 服务标记的源，其目标为“任意”，目标端口为 65503-65534（适用于应用程序网关 v1 SKU）或 65200-65535（适用于 v2 SKU），可以进行[后端运行状况通信](/application-gateway/application-gateway-diagnostics)。 此端口范围是进行 Azure 基础结构通信所必需的。 这些端口受 Azure 证书的保护（处于锁定状态）。 如果没有适当的证书，外部实体将无法对这些终结点做出任何更改。
 3. 允许[网络安全组](/virtual-network/security-overview)中的传入 Azure 负载均衡器探测（*AzureLoadBalancer* 标记）和入站虚拟网络流量（*VirtualNetwork* 标记）。
 4. 使用“全部拒绝”规则阻止其他所有传入流量。
-5. 允许发往 Internet 的所有目标的出站流量。
+5. 允许所有目的地的 Internet 出站流量。
 
 #### <a name="user-defined-routes-supported-on-the-application-gateway-subnet"></a>应用程序网关子网支持用户定义的路由
 
@@ -74,7 +74,7 @@ Azure 应用程序网关由多个组件构成，可根据不同的方案以不�
 
 - **v1**
 
-   使用 v1 SKU 时，只要用户定义的路由 (UDR) 未更改端到端请求/响应通信，则应用程序网关子网就会支持这些 UDR。 例如，可以在应用程序网关子网中设置一个指向防火墙设备的、用于检查数据包的 UDR。 但是，必须确保数据包在检查后可以访问其预期目标。 否则，可能会导致不正确的运行状况探测或流量路由行为。 这包括已探测到的路由，或者通过 Azure ExpressRoute 或 VPN 网关在虚拟网络中传播的默认 0.0.0.0/0 路由。
+   使用 v1 SKU 时，只要用户定义的路由 (UDR) 未更改端到端请求/响应通信，则应用程序网关子网就会支持这些 UDR。 例如，可以在应用程序网关子网中设置一个指向防火墙设备的、用于检查数据包的 UDR。 但是，必须确保数据包在检查后可以访问其预期目标。 否则，可能会导致不正确的运行状况探测或流量路由行为。 这包括已探测到的路由，或者通过 Azure ExpressRoute 或 VPN 网关在虚拟网络中传播的默认 0.0.0.0/0 路由。 V1 不支持需要在本地（强制隧道）重定向 0.0.0.0/0 的任何情况。
 
 - **v2**
 
@@ -122,11 +122,19 @@ Azure 应用程序网关由多个组件构成，可根据不同的方案以不�
 
 ## <a name="front-end-ip"></a>前端 IP
 
-可将应用程序网关配置为使用公共 IP 地址和/或专用 IP 地址。 托管需要由客户端在 Internet 中通过面向 Internet 的虚拟 IP (VIP) 访问的后端时，必须使用公共 IP。 
+可将应用程序网关配置为使用公共 IP 地址和/或专用 IP 地址。 托管需要由客户端在 Internet 中通过面向 Internet 的虚拟 IP (VIP) 访问的后端时，必须使用公共 IP。
+
+> [!NOTE]
+> 应用程序网关 V2 目前不支持专用 IP 模式。 它支持以下组合：
+>* 专用 IP 和公共 IP
+>* 仅公共 IP
+>
+> 有关详细信息，请参阅[有关应用程序网关的常见问题解答](application-gateway-faq.md#how-do-i-use-application-gateway-v2-with-only-private-frontend-ip-address)。
+
 
 不向 Internet 公开的内部终结点不需要公共 IP。 该终结点称为内部负载均衡器 (ILB) 终结点或专用前端 IP。 应用程序网关 ILB 适合用于不向 Internet 公开的内部业务线应用程序。 对于位于不向 Internet 公开的安全边界内的多层级应用程序中的服务和层级，ILB 也很有用，但需要启用轮循机制负载分配、会话粘性或 TLS 终止。
 
-仅支持 1 个公共 IP 地址或 1 个专用 IP 地址。 在创建应用程序网关时选择前端 IP。
+仅支持一个公共 IP 地址或一个专用 IP 地址。 在创建应用程序网关时选择前端 IP。
 
 - 对于公共 IP，可以在应用程序网关所在的同一位置创建新的公共 IP 地址或使用现有的公共 IP。 有关详细信息，请参阅[静态与动态公共 IP 地址](/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address)。
 
@@ -146,7 +154,7 @@ Azure 应用程序网关由多个组件构成，可根据不同的方案以不�
 
 - 如果你希望自己的所有请求（针对任何域）都能够被接受并转发到后端池，请选择“基本”。 了解[如何创建包含基本侦听器的应用程序网关](/application-gateway/quick-create-portal)。
 
-- 如果希望根据 *host* 标头或主机名将请求转发到不同的后端池，请选择多站点侦听器，并且必须在其中指定与传入请求匹配的主机名。 这是因为，应用程序网关需要使用 HTTP 1.1 主机标头才能在相同的公共 IP 地址和端口上托管多个网站。
+- 如果希望根据主机头或主机名将请求转发到不同的后端池，请选择多站点侦听器，并且还必须在其中指定与传入请求匹配的主机名。 这是因为，应用程序网关需要使用 HTTP 1.1 主机标头才能在相同的公共 IP 地址和端口上托管多个网站。 如需了解详细信息，请参阅[使用应用程序网关托管多个站点](multiple-site-overview.md)。
 
 #### <a name="order-of-processing-listeners"></a>侦听器的处理顺序
 
@@ -279,12 +287,16 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 - [使用 PowerShell 将流量重定向到外部站点](redirect-external-site-powershell.md)
 - [使用 CLI 将流量重定向到外部站点](redirect-external-site-cli.md)
 
-#### <a name="rewrite-the-http-header-setting"></a>重写 HTTP 标头设置
+### <a name="rewrite-http-headers-and-url"></a>重写 HTTP 标头和 URL
 
-当请求和响应数据包在客户端和后端池之间移动时，此设置将添加、删除或更新 HTTP 请求和响应标头。 有关详细信息，请参阅：
+通过使用重写规则，当请求和响应数据包通过应用程序网关在客户端和后端池之间移动时，你可以添加、删除或更新 HTTP(S) 请求和响应标头以及 URL 路径和查询字符串参数。
 
- - [重写 HTTP 标头概述](rewrite-http-headers.md)
+这些标头和 URL 参数可以设置为静态值，也可以设置为其他标头和服务器变量。 这有助于处理重要的用例，例如提取客户端 IP 地址、删除有关后端的敏感信息、添加更多安全性等。
+有关详细信息，请参阅：
+
+ - [重写 HTTP 标头和 URL 概述](rewrite-http-headers-url.md)
  - [配置 HTTP 标头重写](rewrite-http-headers-portal.md)
+ - [配置 URL 重写](rewrite-url-portal.md)
 
 ## <a name="http-settings"></a>HTTP 设置
 
@@ -357,7 +369,7 @@ Azure 应用程序网关使用网关托管 Cookie 来维护用户会话。 当�
 > [!NOTE]
 > 只有在将相应的 HTTP 设置显式关联到某个侦听器之后，自定义探测才会监视后端池的运行状况。
 
-### <a name="pick-host-name-from-back-end-address"></a><a id="pick"/></a>从后端地址中选取主机名
+### <a name="pick-host-name-from-back-end-address"></a><a name="pick"></a>从后端地址中选取主机名
 
 此功能将请求中的 *host* 标头动态设置为后端池的主机名。 主机名使用 IP 地址或 FQDN。
 

@@ -1,81 +1,106 @@
 ---
-title: 管理 Azure 自动化数据
-description: 本文包含有关管理 Azure 自动化环境的多个主题。  Azure 自动化目前包括数据保留和备份 Azure 自动化灾难恢复。
+title: Azure 自动化数据安全性
+description: 本文介绍 Azure 自动化如何保护你的隐私并保护数据。
 services: automation
 ms.subservice: shared-capabilities
-origin.date: 03/23/2020
-ms.date: 05/11/2020
+origin.date: 07/20/2020
+ms.date: 08/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 981c97d30b0ad166bbe7bcb2af8e41203977c531
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: d4c1f3287cac394e3c5434c29a7ec9d09b383872
+ms.sourcegitcommit: e6b216b180734783219378410e13192e314a4497
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199351"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87788314"
 ---
-# <a name="managing-azure-automation-data"></a>管理 Azure 自动化数据
+# <a name="management-of-azure-automation-data"></a>管理 Azure 自动化数据
 
-本文包含多个主题，介绍如何管理 Azure 自动化环境中的数据。
+本文包含多个主题，介绍如何在 Azure 自动化环境中保护数据。
+
+## <a name="tls-12-enforcement-for-azure-automation"></a>强制 Azure 自动化执行 TLS 1.2
+
+为了确保传输到 Azure 自动化的数据的安全性，我们强烈建议你配置为使用传输层安全性 (TLS) 1.2。 下面列出了通过 HTTPS 与自动化服务进行通信的方法或客户端：
+
+* Webhook 调用
+
+* 混合 Runbook 辅助角色，包括由“更新管理”管理的计算机。
+
+* DSC 节点
+
+我们发现旧版 TLS/安全套接字层 (SSL) 容易受到攻击，尽管目前出于向后兼容，这些协议仍可正常工作，但我们**不建议使用**。 自 2020 年 9 月起，我们将开始强制执行 TLS 1.2 和更高版本的加密协议。
+
+除非绝对必要，否则我们不建议将代理显式设置为仅使用 TLS 1.2，因为这可能会破坏平台级安全功能，导致无法自动检测并利用推出的更新且更安全的协议，例如 TLS 1.3。
+
+有关适用于 Windows 和 Linux 的 Log Analytics 代理（混合 Runbook 辅助角色的依赖项）的 TLS 1.2 支持的信息，请参阅 [Log Analytics 代理概述 - TLS 1.2](../azure-monitor/platform/log-analytics-agent.md#tls-12-protocol)。 
+
+### <a name="platform-specific-guidance"></a>特定于平台的指南
+
+|平台/语言 | 支持 | 更多信息 |
+| --- | --- | --- |
+|Linux | Linux 分发版往往依赖于 [OpenSSL](https://www.openssl.org) 来提供 TLS 1.2 支持。  | 请检查 [OpenSSL 变更日志](https://www.openssl.org/news/changelog.html)，确认你的 OpenSSL 版本是否受支持。|
+| Windows 8.0 - 10 | 受支持，并且默认已启用。 | 确认是否仍在使用[默认设置](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)。  |
+| Windows Server 2012 - 2016 | 受支持，并且默认已启用。 | 确认是否仍在使用[默认设置](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) |
+| Windows 7 SP1 和 Windows Server 2008 R2 SP1 | 受支持，但默认未启用。 | 有关启用方法的详细信息，请参阅[传输层安全性 (TLS) 注册表设置](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)页。  |
 
 ## <a name="data-retention"></a>数据保留
 
-在删除 Azure 自动化中的某个资源时，该资源在被永久移除之前会保留多日以供审核。 在此期间，无法查看或使用该资源。 此策略也适用于属于已删除的自动化帐户的资源。
+在删除 Azure 自动化中的某个资源时，该资源在被永久删除之前将保留若干天以供审核。 在此期间，无法查看或使用该资源。 此策略也适用于属于已删除的自动化帐户的资源。
 
 下表汇总了各种资源的保留策略。
 
 | 数据 | 策略 |
 |:--- |:--- |
-| 帐户 |在用户删除某个帐户 30 天后，系统会永久移除该帐户。 |
-| 资产 |在用户删除某个资产 30 天后，或者在用户删除包含该资产的帐户 30 天后，系统会永久移除该资产。 |
-| DSC 节点 |在使用 Azure 门户或 Windows PowerShell 中的 [Unregister-AzureRMAutomationDscNode](https://docs.microsoft.com/powershell/module/azurerm.automation/unregister-azurermautomationdscnode) cmdlet 从自动化帐户中取消注册某个 DSC 节点 30 天后，系统会永久移除该节点。 在用户删除包含某个节点的帐户 30 天后，系统也会永久移除该节点。 |
-| 作业 |在修改某个作业（例如，完成、停止或暂停该作业）30 天后，系统会删除并永久移除该作业。 |
-| 模块 |在用户删除某个模块 30 天后，或者在用户删除包含该模块的帐户 30 天后，系统会永久移除该模块。 |
-| 节点配置/MOF 文件 |生成新节点配置 30 天后，系统会永久移除旧节点配置。 |
-| 节点报告 |在生成某个节点的新报告 90 天后，系统会永久移除该节点的报告。 |
-| Runbook |在用户删除 Runbook 30 天后，或者在用户删除包含该资源的帐户 30 天后，系统会永久移除该资源。 |
+| 帐户 |在帐户被用户删除 30 天后将其永久删除。 |
+| 资产 |在资产被用户删除 30 天后或者在包含该资产的帐户被用户删除 30 天后将其永久删除。 资产包括变量、计划、凭据、证书、Python 2 包和连接。 |
+| DSC 节点 |在使用 Azure 门户或 Windows PowerShell 中的 [Unregister-AzAutomationDscNode](https://docs.microsoft.com/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-3.7.0) cmdlet 从自动化帐户中取消注册 DSC 节点 30 天后，将永久删除该节点。 在用户删除保存节点的帐户 30 天后，也会永久删除该节点。 |
+| 作业 |作业在修改之后（例如在作业完成、停止或暂停之后）删除，并在 30 天后永久删除。 |
+| 模块 |在模块被用户删除 30 天后或者在包含该模块的帐户被用户删除 30 天后将其永久删除。 |
+| 节点配置/MOF 文件 |生成新节点配置 30 天后，将永久删除旧节点配置。 |
+| 节点报告 |在生成该节点的新报告 90 天后永久删除节点报告。 |
+| Runbook |在 runbook 被用户删除资源 30 天后或者在包含该资源的帐户被用户删除 30 天后将其永久删除。 |
 
-保留策略应用于所有用户，且当前无法自定义。 但是，如果需要将数据保留更长一段时间，可以[将 Azure 自动化作业数据转发到 Azure Monitor 日志](automation-manage-send-joblogs-log-analytics.md)。
+保留策略应用于所有用户并且当前无法自定义。 但是，如果需要将数据保留更长时间，则可以[将 Azure 自动化作业数据转发到 Azure Monitor 日志](automation-manage-send-joblogs-log-analytics.md)。
 
 ## <a name="data-backup"></a>数据备份
 
-删除 Azure 中的某个自动化帐户时，会删除该帐户中的所有对象。 这些对象包括 Runbook、模块、配置、设置、作业和资产。 删除帐户后无法将其恢复。 在删除自动化帐户之前，可以参考以下信息来备份该帐户的内容。
+删除 Azure 中的某个自动化帐户时，该帐户中的所有对象都会删除。 对象包括 runbook、模块、配置、设置、作业和资产。 在删除帐户后，这些对象不可恢复。 在删除自动化帐户之前，可以参考以下信息来备份该帐户的内容。
 
 ### <a name="runbooks"></a>Runbook
 
-可以使用 Azure 门户或 Windows PowerShell 中的 [Get-AzureAutomationRunbookDefinition](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationrunbookdefinition) cmdlet 将 Runbook 导出到脚本文件。 可以根据[在 Azure 自动化中管理 Runbook](manage-runbooks.md) 中所述，将这些脚本文件导入另一个自动化帐户。
+可以使用 Azure 门户或 Windows PowerShell 中的 [Get-AzureAutomationRunbookDefinition](https://docs.microsoft.com/powershell/module/servicemanagement/azure.service/get-azureautomationrunbookdefinition) cmdlet 将 Runbook 导出到脚本文件。 可以将这些脚本文件导入到另一个自动化帐户中，如 [在 Azure 自动化中管理 runbook](manage-runbooks.md) 中所述。
 
 ### <a name="integration-modules"></a>集成模块
 
-无法从 Azure 自动化导出集成模块。 必须使这些模块可在自动化帐户外部使用。
+无法从 Azure 自动化导出集成模块。 必须使它们在自动化帐户外部可用。
 
 ### <a name="assets"></a>资产
 
-无法导出 Azure 自动化资产：证书、连接、凭据、计划和变量。 可以改用 Azure 门户和 Azure cmdlet 来记下这些资产的详细信息。 然后，使用这些详细信息来创建可供导入到另一自动化帐户的 Runbook 使用的任何资产。
+无法导出 Azure 自动化资产：证书、连接、凭据、计划和变量。 可以改为使用 Azure 门户和 Azure cmdlet 来记录这些资产的详细信息。 然后使用这些详细信息创建导入到另一个自动化帐户中的 Runbook 使用的任何资产。
 
-无法使用 cmdlet 检索已加密变量或凭据密码字段的值。 如果不知道这些值，可以在 Runbook 中检索它们。 若要检索变量值，请参阅 [Azure 自动化中的变量资产](shared-resources/variables.md)。 若要详细了解如何检索凭据值，请参阅 [Azure 自动化中的凭据资产](shared-resources/credentials.md)。
+无法使用 cmdlet 检索已加密变量或凭据密码字段的值。 如果不知道这些值，可以在 runbook 中检索它们。 若要检索变量值，请参阅 [Azure 自动化中的变量资产](shared-resources/variables.md)。 若要了解有关检索凭据值的详细信息，请参阅 [Azure 自动化中的凭据资产](shared-resources/credentials.md)。
 
- ### <a name="dsc-configurations"></a>DSC 配置
+### <a name="dsc-configurations"></a>DSC 配置
 
-可以使用 Azure 门户或 Windows PowerShell 中的 [Export-AzureRmAutomationDscConfiguration](https://docs.microsoft.com/powershell/module/azurerm.automation/export-azurermautomationdscconfiguration) cmdlet 将 DSC 配置导出到脚本文件。 可以在另一个自动化帐户中导入并使用这些配置。
+可以使用 Azure 门户或 Windows PowerShell 中的 [Export-AzAutomationDscConfiguration](https://docs.microsoft.com/powershell/module/az.automation/export-azautomationdscconfiguration?view=azps-3.7.0) cmdlet 将 DSC 配置导出到脚本文件。 可以在另一个自动化帐户中导入并使用这些配置。
 
 ## <a name="geo-replication-in-azure-automation"></a>Azure 自动化中的异地复制
 
-Azure 自动化帐户中标配了异地复制。 在设置帐户时选择主要区域。 内部自动化异地复制服务会自动将一个次要区域分配到帐户。 然后，该服务会将主要区域中的帐户数据持续备份到次要区域。 在以下文章中可以找到主要区域和次要区域的完整列表：[业务连续性和灾难恢复 (BCDR)：Azure 配对区域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。 
+异地复制在 Azure 自动化帐户中是标准的。 设置帐户时需选择主要区域。 内部自动化异地复制服务会自动将次要区域分配给帐户。 该服务随后会将帐户数据从主要区域连续备份到次要区域。 主要区域和次要区域的完整列表位于[业务连续性和灾难恢复 (BCDR)：Azure 配对区域](../best-practices-availability-paired-regions.md)。
 
-自动化异地复制服务创建的备份是自动化资产、配置等的完整副本。 如果主要区域发生故障并丢失数据，则可使用此备份。 如果主要区域发生数据丢失（这种情况很少见），Azure 会尝试恢复数据。 公司在无法恢复主要数据的情况下，会使用自动故障转移并通过 Azure 订阅将相关情况告知你。 
+自动化异地复制服务创建的备份是自动化资产、配置等的完整副本。 如果主要区域发生故障并丢失数据，则可使用此备份。 如果主要区域发生数据丢失（这种情况很少见），Azure 会尝试恢复数据。 公司在无法恢复主要数据的情况下，会使用自动故障转移并通过 Azure 订阅将相关情况告知你。
 
-如果发生区域性故障，外部客户将无法直接访问自动化异地复制服务。 若要在发生区域性故障期间保留自动化配置和 Runbook，请执行以下操作：
+如果出现区域故障，外部客户无法直接访问自动异地复制服务。 如果要在区域故障期间维护自动化配置和 runbook：
 
 1. 选择要与主要自动化帐户的地理区域配对的次要区域。
 
 2. 在次要区域中创建自动化帐户。
 
-3. 在主要帐户中，将 Runbook 作为脚本文件导出。
+3. 在主要帐户中，将 runbook 导出为脚本文件。
 
-4. 将 Runbook 导入到次要区域中的自动化帐户。
+4. 将 runbook 导入到次要区域中的自动化帐户。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要详细了解 Azure 自动化中的安全资产，请参阅[加密 Azure 自动化中的安全资产](automation-secure-asset-encryption.md)。
+* 若要了解有关 Azure 自动化中的安全资产的详细信息，请参阅[加密 Azure 自动化中的安全资产](automation-secure-asset-encryption.md)。
 
-* 若要详细了解异地复制，请参阅[创建和使用活动异地复制](/sql-database/sql-database-active-geo-replication)。
+* 若要了解有关地域复制的详细信息，请参阅[创建和使用活动异地复制](../azure-sql/database/active-geo-replication-overview.md)。

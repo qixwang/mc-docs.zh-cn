@@ -3,16 +3,18 @@ title: 设置 Windows 开发环境
 description: 安装运行时、SDK 和工具并创建本地开发群集。 完成此设置后，就可以在 Windows 上开始生成应用程序。
 author: rockboyfor
 ms.topic: conceptual
-origin.date: 04/20/2020
-ms.date: 06/08/2020
+origin.date: 06/16/2020
+ms.date: 08/03/2020
+ms.testscope: no
+ms.testdate: 06/08/2020
 ms.author: v-yeche
 ms.custom: sfrev
-ms.openlocfilehash: 0e671b5b223bff923b604315a7017eaca46744b6
-ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
+ms.openlocfilehash: ec6ac257bdc4ab317995be2d0f8f0c9aced1a5a3
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84356218"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426498"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>在 Windows 上准备开发环境
 
@@ -72,8 +74,8 @@ Service Fabric 工具是 Visual Studio 2017 和 2019 中 Azure 开发工作负�
 
 当前版本包括：
 
-* Service Fabric SDK and Tools 4.1.409
-* Service Fabric 运行时 7.1.409
+* Service Fabric SDK and Tools 4.1.416
+* Service Fabric 运行时 7.1.417
 
 有关支持版本的列表，请参阅 [Service Fabric 版本](service-fabric-versions.md)
 

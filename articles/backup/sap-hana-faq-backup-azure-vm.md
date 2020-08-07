@@ -4,14 +4,14 @@ description: 本文解答有关使用 Azure 备份服务备份 SAP HANA 数据�
 author: Johnnytechn
 ms.topic: conceptual
 origin.date: 11/7/2019
-ms.date: 06/22/2020
+ms.date: 07/31/2020
 ms.author: v-johya
-ms.openlocfilehash: cd4da40a8478e6a3e0f0190b36af1f49f99c5a9e
-ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
+ms.openlocfilehash: a4ab384207ec504a0a181d9c685af9e2dedb48b7
+ms.sourcegitcommit: b5794af488a336d84ee586965dabd6f45fd5ec6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85852093"
+ms.lasthandoff: 08/01/2020
+ms.locfileid: "87508395"
 ---
 # <a name="frequently-asked-questions---back-up-sap-hana-databases-on-azure-vms"></a>常见问题 - 备份 Azure VM 上的 SAP HANA 数据库
 
@@ -48,7 +48,7 @@ ms.locfileid: "85852093"
 
 请参阅[先决条件](tutorial-backup-sap-hana-db.md#prerequisites)和[预注册脚本的功能](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does)部分。
 
-### <a name="what-permissions-should-be-set-for-azure-to-be-able-to-back-up-sap-hana-databases"></a>应为 Azure 设置哪些权限才能备份 SAP HANA 数据库？
+### <a name="what-permissions-should-be-set-so-azure-can-back-up-sap-hana-databases"></a>应设置哪些权限以便 Azure 可以备份 SAP HANA 数据库？
 
 运行预注册脚本即可设置所需的权限，这样 Azure 就可以备份 SAP HANA 数据库。 可在[此处](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does)找到预注册脚本的更多功能。
 
@@ -80,11 +80,31 @@ ms.locfileid: "85852093"
 
 若要执行此切换保护操作，请完成以下步骤：
 
-- 在主节点上[停止保护](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database)
+- 在主节点上[停止保护](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database)（使用保留数据）
 - 在辅助节点上运行[预注册脚本](https://aka.ms/scriptforpermsonhana)
 - 在辅助节点上[发现数据库](tutorial-backup-sap-hana-db.md#discover-the-databases)并在其上[配置备份](tutorial-backup-sap-hana-db.md#configure-backup)
 
 每次故障转移后都需要手动执行这些步骤。 除了 Azure 门户之外，还可以通过命令行/HTTP REST 执行这些步骤。 若要自动执行这些步骤，可以使用 Azure runbook。
+
+以下详细示例介绍切换保护必须如何进行执行：
+
+在本例中，HSR 设置中有两个节点 - 节点 1（主节点）和节点 2（辅助节点）。  对节点 1 配置备份。 如上所述，请不要尝试对节点 2 配置备份。
+
+发生首次故障转移时，节点 2 将变为主节点。 那么：
+
+1. 使用“保留数据”选项停止对节点 1（以前的主节点）的保护。
+1. 在节点 2（现在是主节点）上运行预注册脚本。
+1. 在节点 2 上发现数据库，分配备份策略并配置备份。
+
+然后，在节点 2 上触发第一次完整备份，并在该备份完成后启动日志备份。
+
+发生下一次故障转移时，节点 1 再次成为主节点，节点 2 变为辅助节点。 现在，重复此过程：
+
+1. 使用“保留数据”选项停止对节点 2 的保护。
+1. 在节点 1（已再次成为主节点）上运行预注册脚本
+1. 然后使用所需的策略在节点 1 上[恢复备份](sap-hana-db-manage.md#resume-protection-for-an-sap-hana-database)（因为备份之前已在节点 1 上停止）。
+
+然后，在节点 1 上再次触发完整备份，并在该备份完成后启动日志备份。
 
 ## <a name="restore"></a>还原
 

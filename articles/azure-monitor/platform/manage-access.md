@@ -6,13 +6,13 @@ ms.subservice: logs
 ms.topic: conceptual
 origin.date: 10/22/2019
 ms.author: v-johya
-ms.date: 05/28/2020
-ms.openlocfilehash: d3b0bff8c96f780a946f92b3ad8dee57a5d540aa
-ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
+ms.date: 07/17/2020
+ms.openlocfilehash: 67957b20f4345aa04a1953309492b759c08f811b
+ms.sourcegitcommit: b5794af488a336d84ee586965dabd6f45fd5ec6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84440693"
+ms.lasthandoff: 08/01/2020
+ms.locfileid: "87508401"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>管理对 Azure Monitor 中的日志数据和工作区的访问
 
@@ -21,8 +21,10 @@ Azure Monitor 将[日志](data-platform-logs.md)数据存储在 Log Analytics �
 本文介绍如何管理对日志的访问，以及如何管理包含日志的工作区，包括如何执行以下操作： 
 
 * 使用工作区权限授予对工作区的访问权限。
-* 使用 Azure 基于角色的访问控制 (RBAC) 对需要访问特定资源中的日志数据的用户授予访问权限。
+* 需要使用 Azure 基于角色的访问控制 (RBAC)（也称为[资源上下文](design-logs-deployment.md#access-mode)）访问特定资源中的日志数据的用户
 * 使用 Azure RBAC 对需要访问工作区中特定表中的日志数据的用户授予访问权限。
+
+要了解有关 RBAC 和访问策略的日志概念，请阅读[设计 Azure Monitor 日志部署](design-logs-deployment.md)
 
 ## <a name="configure-access-control-mode"></a>配置访问控制模式
 
@@ -269,6 +271,18 @@ Log Analytics 参与者角色包括以下 Azure 操作：
     "Microsoft.OperationalInsights/workspaces/query/SecurityBaseline/read"
 ],
 ```
+以上示例定义了允许的表的允许列表。 此示例显示了当用户可以访问除 SecurityAlert 表之外的所有表时的阻止列表定义：
+
+```
+"Actions":  [
+    "Microsoft.OperationalInsights/workspaces/read",
+    "Microsoft.OperationalInsights/workspaces/query/read",
+    "Microsoft.OperationalInsights/workspaces/query/*/read"
+],
+"notActions":  [
+    "Microsoft.OperationalInsights/workspaces/query/SecurityAlert/read"
+],
+```
 
 ### <a name="custom-logs"></a>自定义日志
 
@@ -291,7 +305,7 @@ Log Analytics 参与者角色包括以下 Azure 操作：
 
 * 如果为某个用户授予全局读取权限以及含有 _\*/read_ 操作的标准“读取者”或“参与者”角色，则会替代按表进行的访问控制，并向该用户授予所有日志数据的访问权限。
 * 如果为某个用户授予按表访问权限但未授予其他任何权限，则该用户可以通过 API 访问日志数据，但不能通过 Azure 门户进行访问。 若要从 Azure 门户提供访问权限，请使用“Log Analytics 读取者”作为用户的基本角色。
-* 无论其他任何权限设置如何，订阅管理员都有权访问所有数据类型。
+* 无论任何其他权限设置如何，订阅管理员和所有者都有权访问所有数据类型。
 * 应用按表进行的访问控制时，工作区所有者被视为类似于其他任何用户。
 * 我们建议将角色分配到安全组而不是个人用户，以减少分配数目。 这还有助于使用现有的组管理工具来配置和验证访问权限。
 

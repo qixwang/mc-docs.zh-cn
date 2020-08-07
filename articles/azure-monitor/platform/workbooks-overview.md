@@ -6,14 +6,14 @@ manager: carmonm
 services: azure-monitor
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 05/20/2020
+ms.date: 07/17/2020
 ms.author: v-johya
-ms.openlocfilehash: 92dec83d430252af4f70b98b11ee232d2087e48f
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+ms.openlocfilehash: ffd212ae8e38a88d28f4493a149822c8439ba61b
+ms.sourcegitcommit: b5794af488a336d84ee586965dabd6f45fd5ec6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796924"
+ms.lasthandoff: 08/01/2020
+ms.locfileid: "87508435"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure Monitor 工作簿
 
@@ -31,9 +31,9 @@ ms.locfileid: "83796924"
 * [度量值](workbooks-data-sources.md#metrics)
 * [Azure Resource Graph](workbooks-data-sources.md#azure-resource-graph)
 * [警报（预览版）](workbooks-data-sources.md#alerts-preview)
-* [工作负荷运行状况（预览版）](workbooks-data-sources.md#workload-health-preview)
-* [Azure 资源运行状况（预览版）](workbooks-data-sources.md#azure-resource-health)
-* [Azure 数据资源管理器（预览版）](workbooks-data-sources.md#azure-data-explorer-preview)
+* [工作负载运行状况](workbooks-data-sources.md#workload-health)
+* [Azure 资源运行状况](workbooks-data-sources.md#azure-resource-health)
+* [Azure 数据资源管理器](workbooks-data-sources.md#azure-data-explorer)
 
 ## <a name="visualizations"></a>可视化效果
 

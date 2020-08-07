@@ -4,7 +4,7 @@ titleSuffix: Azure Network Watcher
 description: 本教程介绍如何使用网络观察程序的 VPN 诊断功能，诊断通过 Azure 虚拟网关连接到本地虚拟网络或其他虚拟网络的 Azure 虚拟网络之间的通信问题。
 services: network-watcher
 documentationcenter: na
-author: damendo
+author: rockboyfor
 Customer intent: I need to determine why resources in a virtual network can't communicate with resources in a different network.
 ms.service: network-watcher
 ms.devlang: na
@@ -12,15 +12,17 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 04/27/2018
-ms.date: 04/27/2019
-ms.author: v-lingwu
+ms.date: 08/10/2020
+ms.testscope: yes
+ms.testdate: 08/03/2020
+ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 5b292c570e35b6cb32993468f038388fb842c08b
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+ms.openlocfilehash: add69d2585c121175d8865faf23e6af2f310deaf
+ms.sourcegitcommit: 3eadca6821ef679d8ac6ca2dc46d6a13aac211cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796855"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87548066"
 ---
 # <a name="tutorial-diagnose-a-communication-problem-between-networks-using-the-azure-portal"></a>教程：使用 Azure 门户诊断网络之间的通信问题
 
@@ -33,13 +35,14 @@ ms.locfileid: "83796855"
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
-
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
-若要使用 VPN 诊断，必须有一个现成的正在运行的 VPN 网关。 如果没有现成的需要诊断的 VPN 网关，可以使用 [PowerShell 脚本](../vpn-gateway/scripts/vpn-gateway-sample-site-to-site-powershell.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)部署一个。 可通过以下程序运行 PowerShell 脚本：
-- **本地安装的 PowerShell**：此脚本需要 Azure PowerShell `Az` 模块。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount -EnvironmentName AzureChinaCloud` 来创建与 Azure 的连接。
+若要使用 VPN 诊断，必须有一个现成的正在运行的 VPN 网关。 如果没有现成的需要诊断的 VPN 网关，可以使用 [PowerShell 脚本](../vpn-gateway/scripts/vpn-gateway-sample-site-to-site-powershell.md?toc=%2fnetwork-watcher%2ftoc.json)部署一个。 可通过以下程序运行 PowerShell 脚本：
+- **本地安装的 PowerShell**：此脚本需要 Azure PowerShell `Az` 模块。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount -Environment AzureChinaCloud` 来创建与 Azure 的连接。
+
+<!--Not Available on Azure Cloud Shell-->
 
 脚本需要大约一小时来创建 VPN 网关。 剩余步骤假定要诊断的网关是通过此脚本部署的。 如果改为诊断你自己的现有网关，结果会有所不同。
 
@@ -54,7 +57,7 @@ ms.locfileid: "83796855"
 1. 在门户中，选择“所有服务”。 在“筛选器”框中，输入“网络观察程序”。 结果中出现“网络观察程序”后，将其选中。
 2. 选择“区域”，以便将其展开，然后选择“中国东部”右侧的“...”，如下图所示：  
 
-    ![启用网络观察程序](./media/diagnose-communication-problem-between-networks/enable-network-watcher.png)
+    :::image type="content" source="./media/diagnose-communication-problem-between-networks/enable-network-watcher.png" alt-text="启用网络观察程序":::
 
 3. 选择“启用网络观察程序”。
 
@@ -68,17 +71,17 @@ ms.locfileid: "83796855"
 6. 从“容器”列表中选择要使用的容器，然后选择“选择”。 如果没有任何容器，请选择“+ 容器”，输入容器的名称，然后选择“确定”。
 7. 选择一个网关，然后选择“开始故障排除”。 如下图所示，测试是针对名为 **Vnet1GW** 的网关运行的：
 
-    ![VPN 诊断](./media/diagnose-communication-problem-between-networks/vpn-diagnostics.png)
+    :::image type="content" source="./media/diagnose-communication-problem-between-networks/vpn-diagnostics.png" alt-text="VPN 诊断":::
 
 8. 当测试正在运行时，“故障排除状态”列中会显示“正在运行”，而在上图中，该列显示“未启动”。   测试可能需要数分钟的运行时间。
 9. 查看已完成测试的状态。 下图显示已完成的诊断测试的状态结果：
 
-    ![状态](./media/diagnose-communication-problem-between-networks/status.png)
+    :::image type="content" source="./media/diagnose-communication-problem-between-networks/status.png" alt-text="状态":::
 
     可以看到“故障排除状态”为“不正常”，还可以在“状态”选项卡上看到问题的“摘要”和“详细信息”。    
 10. 选择“操作”选项卡时，VPN 诊断会提供其他信息。 在下图所示的示例中，VPN 诊断指示应检查每个连接的运行状况：
 
-    ![操作](./media/diagnose-communication-problem-between-networks/action.png)
+    :::image type="content" source="./media/diagnose-communication-problem-between-networks/action.png" alt-text="操作":::
 
 ## <a name="diagnose-a-gateway-connection"></a>诊断网关连接
 
@@ -86,20 +89,20 @@ ms.locfileid: "83796855"
 
 1. 再次完成[诊断网关](#diagnose-a-gateway)的步骤 7，这次选择一个连接。 在以下示例中，对名为 **VNet1toSite1** 的连接进行了测试：
 
-    ![连接](./media/diagnose-communication-problem-between-networks/connection.png)
+    :::image type="content" source="./media/diagnose-communication-problem-between-networks/connection.png" alt-text="Connection":::
 
     测试运行时间为数分钟。
 2. 完成对连接的测试以后，收到的结果类似于下图中显示在“状态”和“操作”选项卡上的结果： 
 
-    ![连接状态](./media/diagnose-communication-problem-between-networks/connection-status.png)
+    :::image type="content" source="./media/diagnose-communication-problem-between-networks/connection-status.png" alt-text="连接状态":::
 
-    ![连接操作](./media/diagnose-communication-problem-between-networks/connection-action.png)
+    :::image type="content" source="./media/diagnose-communication-problem-between-networks/connection-action.png" alt-text="连接操作":::
 
     VPN 诊断会在“状态”选项卡上指示具体错误，并会在“操作”选项卡上根据问题原因提供多项建议。
 
-    如果测试的网关是通过[先决条件](#prerequisites)中的[脚本](../vpn-gateway/scripts/vpn-gateway-sample-site-to-site-powershell.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)部署的，则“状态”选项卡上的问题和“操作”选项卡上的头两个项就是要找的问题。  脚本为本地 VPN 网关设备配置了占位符形式的 IP 地址 23.99.221.164。
+    如果测试的网关是通过[先决条件](#prerequisites)中的[脚本](../vpn-gateway/scripts/vpn-gateway-sample-site-to-site-powershell.md?toc=%2fnetwork-watcher%2ftoc.json)部署的，则“状态”选项卡上的问题和“操作”选项卡上的头两个项就是要找的问题。  脚本为本地 VPN 网关设备配置了占位符形式的 IP 地址 23.99.221.164。
 
-    若要解决此问题，需确保本地 VPN 网关已[正确配置](../vpn-gateway/vpn-gateway-about-vpn-devices.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)，并将脚本为本地网关配置的 IP 地址更改为本地 VPN 网关的实际公共地址。
+    若要解决此问题，需确保本地 VPN 网关已[正确配置](../vpn-gateway/vpn-gateway-about-vpn-devices.md?toc=%2fnetwork-watcher%2ftoc.json)，并将脚本为本地网关配置的 IP 地址更改为本地 VPN 网关的实际公共地址。
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -116,5 +119,4 @@ ms.locfileid: "83796855"
 > [!div class="nextstepaction"]
 > [记录传入和传出 VM 的网络流量](network-watcher-nsg-flow-logging-portal.md)
 
-<!-- Update_Description: new articles on network watcher diagnose communication problem between networks -->
-<!--ms.date: 07/02/2018-->
+<!-- Update_Description: update meta properties, wording update, update link -->

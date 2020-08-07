@@ -4,15 +4,15 @@ description: 使用 Azure 备份与 PowerShell 备份和还原 Azure VM 中的 S
 ms.topic: conceptual
 author: Johnnytechn
 origin.date: 12/04/2019
-ms.date: 06/22/2020
+ms.date: 07/31/2020
 ms.author: v-johya
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 75b412653d8aa85fd9b797da28e85131e182ade6
-ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
+ms.openlocfilehash: f70df4873815684dcbb72dac717a472929ad40ba
+ms.sourcegitcommit: b5794af488a336d84ee586965dabd6f45fd5ec6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85852121"
+ms.lasthandoff: 08/01/2020
+ms.locfileid: "87508434"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>使用 PowerShell 备份和还原 Azure VM 中的 SQL 数据库
 
@@ -613,5 +613,5 @@ Get-AzRecoveryServicesBackupJob -Status InProgress -BackupManagementType AzureWo
 
 [列出备份容器](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupContainer?view=azps-1.5.0)时，sql-server-0、sql-server-1 也作为“AzureVMAppContainer”列出。
 
-只需提取相关的 SQL 数据库即可[启用备份](#configuring-backup)，[按需备份](#on-demand-backup)和[还原 PS cmdlet](#restore-sql-dbs) 是相同的。
+只需提取相关的数据库即可[启用备份](#configuring-backup)，[按需备份](#on-demand-backup)和[ restore PS cmdlet](#restore-sql-dbs) 是相同的。
 

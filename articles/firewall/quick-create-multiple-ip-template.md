@@ -5,23 +5,24 @@ services: firewall
 author: rockboyfor
 ms.service: firewall
 ms.topic: quickstart
-origin.date: 05/06/2020
-ms.date: 05/06/2020
+ms.custom: subject-armqs
+origin.date: 04/14/2020
+ms.date: 08/03/2020
+ms.testscope: yes|no
+ms.testdate: 08/03/2020Null
 ms.author: v-yeche
-ms.openlocfilehash: 10630924a4021ac19eb36b42223c96456afe5718
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: 5ebfc8b3d9dbbcd4afde1d7f62ef50fdd7b3952e
+ms.sourcegitcommit: 362814dc7ac5b56cf0237b9016a67c35d8d72c32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199583"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87455589"
 ---
 <!--Verified successfully on 05/25/2020-->
 <!--Successfully on Mooncake portal-->
 # <a name="quickstart-create-an-azure-firewall-with-multiple-public-ip-addresses---resource-manager-template"></a>快速入门：创建具有多个公共 IP 地址的 Azure 防火墙 - 资源管理器模板
 
-在本快速入门中，我们使用资源管理器模板部署具有多个公共 IP 地址的 Azure 防火墙。
-
-部署的防火墙具有 NAT 规则收集规则，这些规则允许通过 RDP 连接与两个 Windows Server 2019 虚拟机进行连接。
+在本快速入门中，我们使用资源管理器模板部署具有多个公共 IP 地址的 Azure 防火墙。 部署的防火墙具有 NAT 规则收集规则，这些规则允许通过 RDP 连接与两个 Windows Server 2019 虚拟机进行连接。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -37,7 +38,7 @@ ms.locfileid: "84199583"
 
 ### <a name="review-the-template"></a>查看模板
 
-本快速入门中使用的模板来自 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/blob/master/fw-docs-qs/azuredeploy.json)
+本快速入门中使用的模板来自 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/fw-docs-qs)。
 
 ```json
 {
@@ -444,46 +445,44 @@ ms.locfileid: "84199583"
 - **Microsoft.Network/azureFirewalls**
 - **Microsoft.Network/routeTables**
 
-<!--Not Available on Microsoft Template content-->
+<!--Not Available on Microsoft Template Link->
 
-### <a name="deploy-the-template"></a>部署模板
+### Deploy the template
 
-将资源管理器模板部署到 Azure：
+Deploy Resource Manager template to Azure:
 
-1. 选择“部署到 Azure”，登录到 Azure 并打开模板。 该模板将创建 Azure 防火墙、网络基础结构和两个虚拟机。
+1. Select **Deploy to Azure** to sign in to Azure and open the template. The template creates an Azure Firewall, the network infrastructure, and two virtual machines.
 
-    [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Ffw-docs-qs%2Fazuredeploy.json)
+    [![Deploy to Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Ffw-docs-qs%2Fazuredeploy.json)
 
-2. 在门户中的“创建具有多个公共 IP 地址的 Azure 防火墙”页上，键入或选择以下值：
-    - 订阅：从现有订阅中选择 
-    - 资源组：从现有资源组中选择，或者选择“新建”，然后选择“确定”。 
-    - 位置：选择一个位置
-    - 管理员用户名：键入管理员用户帐户的用户名 
-    - 管理员密码：键入管理员密码或密钥
+2. In the portal, on the **Create an Azure Firewall with multiple IP public addresses** page, type or select the following values:
+    - Subscription: Select from existing subscriptions 
+    - Resource group:  Select from existing resource groups or select **Create new**, and select **OK**.
+    - Location: Select a location
+    - Admin Username: Type username for the administrator user account 
+    - Admin Password: Type an administrator password or key
 
-3. 选择“我同意上述条款和条件”，然后选择“购买” 。 部署可能需要 10 分钟或更长时间才能完成。
+3. Select **I agree to the terms and conditions stated above** and then select **Purchase**. The deployment can take 10 minutes or longer to complete.
 
-## <a name="validate-the-deployment"></a>验证部署
+## Validate the deployment
 
-在 Azure 门户中，查看已部署的资源。 记下防火墙公共 IP 地址。  
+In the Azure portal, review the deployed resources. Note the firewall public IP addresses.  
 
-使用“远程桌面连接”连接到防火墙公共 IP 地址。 成功的连接演示了允许连接到后端服务器的防火墙 NAT 规则。
+Use Remote Desktop Connection to connect to the firewall public IP addresses. Successful connections demonstrates firewall NAT rules that allow the connection to the backend servers.
 
-## <a name="clean-up-resources"></a>清理资源
+## Clean up resources
 
-如果不再需要为防火墙创建的资源，请删除资源组。 这会删除该防火墙和所有相关资源。
+When you no longer need the resources that you created with the firewall, delete the resource group. This removes the firewall and all the related resources.
 
-若要删除资源组，请调用 `Remove-AzResourceGroup` cmdlet：
+To delete the resource group, call the `Remove-AzResourceGroup` cmdlet:
 
 ```powershell
 Remove-AzResourceGroup -Name "<your resource group name>"
 ```
 
-## <a name="next-steps"></a>后续步骤
+## Next steps
 
 > [!div class="nextstepaction"]
-> [教程：使用 Azure 门户在混合网络中部署和配置 Azure 防火墙](tutorial-hybrid-portal.md)
+> [Tutorial: Deploy and configure Azure Firewall in a hybrid network using the Azure portal](tutorial-hybrid-portal.md)
 
-
-<!-- Update_Description: new article about quick create multiple ip template -->
-<!--NEW.date: 05/06/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -5,17 +5,17 @@ description: 本文介绍如何使用 Azure Log Analytics 来检查应用程序�
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
-ms.date: 06/23/2020
+ms.topic: troubleshooting
+ms.date: 08/03/2020
 ms.author: v-junlch
-ms.openlocfilehash: a44e8992af554064236ed46a6cfed33bc0f602ed
-ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
+ms.openlocfilehash: 91fa88006fde40070c53f5a0d2d5c0953f35e25b
+ms.sourcegitcommit: 36e7f37481969f92138bfe70192b1f4a2414caf7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85516801"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87796312"
 ---
-# <a name="use-log-analytics-to-examine-application-gateway-web-application-firewall-logs"></a>使用 Log Analytics 来检查应用程序网关 Web 应用程序防火墙日志
+# <a name="use-log-analytics-to-examine-application-gateway-web-application-firewall-waf-logs"></a>使用 Log Analytics 来检查应用程序网关 Web 应用程序防火墙 (WAF) 日志
 
 应用程序网关 WAF 正常运行之后，你可以启用日志来检查每一个请求所发生的情况。 通过防火墙日志可深入了解 WAF 所评估、匹配和阻止的内容。 通过 Log Analytics，可以检查防火墙日志内的数据，从而获得更多见解。 若要详细了解如何创建 Log Analytics 工作区，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)。 有关日志查询的详细信息，请参阅 [Azure Monitor 中的日志查询概述](../azure-monitor/log-query/log-query-overview.md)。
 

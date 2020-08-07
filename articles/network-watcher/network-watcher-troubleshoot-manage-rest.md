@@ -1,25 +1,26 @@
 ---
-title: 对 VNET 网关和连接进行故障排除 | Azure REST API
+title: 对 VPN 网关和连接进行故障排除 | Azure REST API
 titleSuffix: Azure Network Watcher
 description: 本页说明如何在 REST 中使用 Azure 网络观察程序排查虚拟网络网关和连接问题
 services: network-watcher
 documentationcenter: na
-author: lingliw
-manager: digimobile
+author: rockboyfor
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 06/19/2017
-ms.date: 08/13/2018
-ms.author: v-lingwu
-ms.openlocfilehash: c8ca8a2bf9a8598a45d90a8b6ee66bd6f6c04792
-ms.sourcegitcommit: b81ea2ab9eafa986986fa3eb1e784cfe9bbf9ec1
+ms.date: 08/10/2020
+ms.testscope: yes
+ms.testdate: 08/03/2020
+ms.author: v-yeche
+ms.openlocfilehash: 53ed3332c15e279ec42decf30ff91b58fd42f7f7
+ms.sourcegitcommit: 3eadca6821ef679d8ac6ca2dc46d6a13aac211cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83367836"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87548072"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher"></a>使用 Azure 网络观察程序排查虚拟网络网关和连接问题
 
@@ -50,8 +51,9 @@ ms.locfileid: "83367836"
 
 ## <a name="log-in-with-armclient"></a>使用 ARMClient 登录
 
-```PowerShell
-armclient login "MOONCAKE"
+```powershell
+$env:ARMCLIENT_ENV="MOONCAKE"
+armclient login
 ```
 
 ## <a name="troubleshoot-a-virtual-network-gateway"></a>排查虚拟网络网关问题
@@ -141,6 +143,9 @@ armclient get "https://management.chinacloudapi.cn/subscriptions/00000000-0000-0
 
 以下响应是查询网关故障排除结果时返回的典型降级响应的示例。 请参阅[了解结果](#understanding-the-results)，获取响应中属性的含义说明。
 
+<!--CORRECT ON https://docs.azure.cn/vpn-gateway/vpn-gateway-resetgw-classic-->
+<!--CORRECT ON https://support.azure.cn/support/contact/-->
+
 ```json
 {
   "startTime": "2017-01-12T10:31:41.562646-08:00",
@@ -154,7 +159,7 @@ armclient get "https://management.chinacloudapi.cn/subscriptions/00000000-0000-0
       "recommendedActions": [
         {
           "actionText": "If the condition persists, please try resetting your Azure VPN gateway",
-          "actionUri": "https://www.azure.cn/documentation/articles/vpn-gateway-resetgw-classic/",
+          "actionUri": "https://docs.azure.cn/vpn-gateway/vpn-gateway-resetgw-classic",
           "actionUriText": "resetting the VPN Gateway"
         },
         {
@@ -171,7 +176,7 @@ armclient get "https://management.chinacloudapi.cn/subscriptions/00000000-0000-0
       "recommendedActions": [
         {
           "actionText": "If you are still experience problems with the VPN gateway, please try resetting the VPN gateway.",
-          "actionUri": "https://www.azure.cn/documentation/articles/vpn-gateway-resetgw-classic/",
+          "actionUri": "https://docs.azure.cn/vpn-gateway/vpn-gateway-resetgw-classic",
           "actionUriText": "resetting VPN gateway"
         },
         {
@@ -184,6 +189,9 @@ armclient get "https://management.chinacloudapi.cn/subscriptions/00000000-0000-0
   ]
 }
 ```
+
+<!--CORRECT ON https://docs.azure.cn/vpn-gateway/vpn-gateway-resetgw-classic-->
+<!--CORRECT ON https://support.azure.cn/support/contact/-->
 
 ## <a name="troubleshoot-connections"></a>排查连接问题
 
@@ -273,6 +281,9 @@ armclient get "https://management.chinacloudapi.cn/subscriptions/00000000-0000-0
 
 以下响应是查询连接故障排除结果时返回的典型响应的示例。
 
+<!--CORRECT ON https://docs.azure.cn/vpn-gateway/vpn-gateway-resetgw-classic-->
+<!--CORRECT ON https://support.azure.cn/support/contact/-->
+
 ```json
 {
   "startTime": "2017-01-12T14:09:19.1215346-08:00",
@@ -287,7 +298,7 @@ is a transient state while the Azure platform is being updated.",
       "recommendedActions": [
         {
           "actionText": "If the condition persists, please try resetting your Azure VPN gateway",
-          "actionUri": "https://www.azure.cn/documentation/articles/vpn-gateway-resetgw-classic/",
+          "actionUri": "https://docs.azure.cn/vpn-gateway/vpn-gateway-resetgw-classic",
           "actionUriText": "resetting the VPN gateway"
         },
         {
@@ -304,7 +315,7 @@ is a transient state while the Azure platform is being updated.",
       "recommendedActions": [
         {
           "actionText": "If you are still experience problems with the VPN gateway, please try resetting the VPN gateway.",
-          "actionUri": "https://www.azure.cn/documentation/articles/vpn-gateway-resetgw-classic/",
+          "actionUri": "https://docs.azure.cn/vpn-gateway/vpn-gateway-resetgw-classic",
           "actionUriText": "resetting VPN gateway"
         },
         {
@@ -318,6 +329,9 @@ is a transient state while the Azure platform is being updated.",
 }
 ```
 
+<!--CORRECT ON https://docs.azure.cn/vpn-gateway/vpn-gateway-resetgw-classic-->
+<!--CORRECT ON https://support.azure.cn/support/contact/-->
+
 ## <a name="understanding-the-results"></a>了解结果
 
 操作文本提供有关如何解决问题的常规指导。 如果可以对问题采取措施，将提供一个包含更多指导的链接。 如果没有更多指导，响应将提供一个用于建立支持案例的 URL。  有关响应的属性及其包含的内容的详细信息，请访问[网络观察程序故障排除概述](network-watcher-troubleshoot-overview.md)
@@ -328,4 +342,4 @@ is a transient state while the Azure platform is being updated.",
 
 如果停止 VPN 连接的设置已更改，请参阅[管理网络安全组](../virtual-network/manage-network-security-group.md)找到可能有问题的网络安全组和安全规则。
 
-<!--Update_Description: update link, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

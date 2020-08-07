@@ -1,18 +1,20 @@
 ---
-title: 快速入门：在 Azure Service Fabric 上创建 Spring Boot 应用
+title: 快速入门 - 在 Azure Service Fabric 上创建 Spring Boot 应用
 description: 在本快速入门中，请使用 Spring Boot 示例应用程序为 Azure Service Fabric 部署 Spring Boot 应用程序。
 author: rockboyfor
 ms.topic: quickstart
 origin.date: 01/29/2019
-ms.date: 02/24/2020
+ms.date: 08/03/2020
+ms.testscope: no
+ms.testdate: 02/24/2020
 ms.author: v-yeche
 ms.custom: mvc, devcenter, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 902571220c3875bf71becba65819e983cc3cd1c8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4312dc2c1c838a4f2cf1c981af1135b4513df835
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540166"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426483"
 ---
 # <a name="quickstart-deploy-a-java-spring-boot-app-on-azure-service-fabric"></a>快速入门：在 Azure Service Fabric 上部署 Java Spring Boot 应用
 
@@ -62,7 +64,7 @@ git clone https://github.com/spring-guides/gs-spring-boot.git
     #!/bin/bash
     BASEDIR=$(dirname $0)
     cd $BASEDIR
-    java -jar gs-spring-boot-0.1.0.jar
+    java -jar *spring-boot*.jar
     ```
 
 1. 在 gs-spring-boot/SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/ServiceManifest.xml  文件中添加**终结点**资源

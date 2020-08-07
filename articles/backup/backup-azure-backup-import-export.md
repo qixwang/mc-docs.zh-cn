@@ -5,14 +5,14 @@ ms.reviewer: saurse
 author: Johnnytechn
 ms.topic: conceptual
 origin.date: 05/17/2018
-ms.date: 06/22/2020
+ms.date: 07/31/2020
 ms.author: v-johya
-ms.openlocfilehash: 0b6cc57befbbb7a2b6ca8e660c60c397314c7560
-ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
+ms.openlocfilehash: 0c4c5c49271c2bd88d5f8ea71e5433439fd571be
+ms.sourcegitcommit: b5794af488a336d84ee586965dabd6f45fd5ec6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85852087"
+ms.lasthandoff: 08/01/2020
+ms.locfileid: "87508455"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Azure 备份中的脱机备份工作流
 
@@ -48,7 +48,7 @@ Azure 备份的脱机种子设定过程与 [Azure 导入/导出服务](../storag
 ## <a name="prerequisites"></a>先决条件
 
   > [!NOTE]
-  > 以下先决条件和工作流仅适用于使用[最新的 Azure 恢复服务代理](https://aka.ms/azurebackup_agent)脱机备份文件和文件夹。 
+  > 以下先决条件和工作流仅适用于使用[最新的 Azure 恢复服务代理](https://aka.ms/azurebackup_agent)脱机备份文件和文件夹。 若要使用 System Center DPM 或 Azure 备份服务器执行工作负荷脱机备份，请参阅 [DPM 和 Azure 备份服务器的脱机备份工作流](backup-azure-backup-server-import-export.md)。
 
 在启动脱机备份工作流之前，需满足以下先决条件：
 
@@ -93,7 +93,7 @@ Azure 备份的脱机种子设定过程与 [Azure 导入/导出服务](../storag
 
     * **暂存位置**：初始备份副本写入到的临时存储位置。 暂存位置可以是网络共享或本地计算机。 如果副本计算机与源计算机不同，请指定暂存位置的完整网络路径。
     * **Azure 资源管理器存储帐户**：任一 Azure 订阅中的资源管理器类型存储帐户（常规用途 v1 或常规用途 v2）的名称。
-    * **Azure 存储容器**：Azure 存储帐户中目标存储 Blob 的名称，在备份数据复制到恢复服务保管库之前将其导入该帐户。
+    * **Azure 存储容器**：Azure 存储帐户中目标 Blob 存储容器的名称，在备份数据复制到恢复服务保管库之前将其导入该帐户。
     * **Azure 订阅 ID**：在其中创建了 Azure 存储帐户的 Azure 订阅的 ID。
     * **Azure 导入作业名称**：Azure 导入/导出服务和 Azure 备份在跟踪磁盘上发送到 Azure 的数据的传输活动时使用的唯一名称。
   
@@ -127,7 +127,7 @@ Azure 备份的脱机种子设定过程与 [Azure 导入/导出服务](../storag
    * 已在副本计算机上启用 BitLocker。
    * Azure PowerShell 3.7.0 已安装。
    * 已安装最新的兼容浏览器（Microsoft Edge 或 Internet Explorer 11），并已启用 JavaScript。
-   * 副本计算机可以访问 Azure 门户。 必要时，副本计算机可与源计算机相同。
+   * 副本计算机可以访问 Azure 门户。 如有必要，复制计算机可以与源计算机相同。
 
      > [!IMPORTANT]
      > 如果源计算机是虚拟机，则复制计算机必须是与源计算机不同的物理服务器或客户端计算机。
@@ -221,7 +221,7 @@ Azure 备份的脱机种子设定过程与 [Azure 导入/导出服务](../storag
 
 ## <a name="next-steps"></a>后续步骤
 
-* 如果遇到任何有关 Azure 导入/导出服务工作流的问题，请参阅[使用 Microsoft Azure 导入/导出服务将数据传输到 Blob 存储](../storage/common/storage-import-export-service.md)。
+* 如果遇到任何有关 Azure 导入/导出服务工作流的问题，请参阅[使用 Azure 导入/导出服务将数据传输到 Blob 存储](../storage/common/storage-import-export-service.md)。
 
 
 <!-- Update_Description: wording update -->

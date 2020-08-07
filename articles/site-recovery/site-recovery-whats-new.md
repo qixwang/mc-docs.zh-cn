@@ -2,15 +2,17 @@
 title: Azure Site Recovery 中的新增功能
 description: 提供 Azure Site Recovery 服务中的新功能和最新更新的摘要。
 ms.topic: conceptual
-origin.date: 03/03/2020
-ms.date: 04/13/2020
+origin.date: 06/01/2020
+ms.date: 08/03/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 03066a4022002d76596129a7f6a019e588033bb7
-ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
+ms.openlocfilehash: 8ad7aeabf3c4fe342e5805e50276f111c27d9d2f
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82093428"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426486"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery 中的新增功能
 
@@ -26,16 +28,27 @@ ms.locfileid: "82093428"
 
 **更新** |  **统一安装程序** | **配置服务器 ova** | **移动服务代理** | **Site Recovery 提供程序** | **恢复服务代理**
 --- | --- | --- | --- | --- | ---
+[汇总 46](https://support.microsoft.com/help/4564347/) | 9.33.5598.1 | 5.1.5900.0 | 9.33.5598.1 | 5.1.5900.0 | 2.0.9175.0
 [汇总 45](https://support.microsoft.com/help/4550047/) | 9.32.5487.1 | 5.1.5400.0 | 9.32.5487.1 | 5.1.5400.0 | 2.0.9165.0
 [汇总 43](https://support.microsoft.com/help/4537047/) | 9.31.5449.1 | 5.1.5300.0 | 9.31.5449.1 | 5.1.5300.0 | 2.0.9165.0
 [汇总 42](https://support.microsoft.com/help/4531426/) | 9.30.5407.1 | 5.1.5200.0 | 9.30.5407.1 | 5.1.5200.0 | 2.0.9165.0
 [汇总 41](https://support.microsoft.com/help/4528026/) | 9.29.5367.1 | 5.1.5000.0 | 9.29.5367.1 | 5.1.5000.0 | 2.0.9165.0
-[汇总 40](https://support.microsoft.com/help/4521530/) | 9.28.5345.1 | 5.1.4800.0 | 9.28.5345.1 | 5.1.4800.0 | 2.0.9165.0
 
 [详细了解](service-updates-how-to.md)更新安装和支持。
 
 > [!NOTE]
 > 该表中未显示更新汇总 44，因为它不包括对 Site Recovery 提供程序和代理的更新。
+
+## <a name="updates-june-2020"></a>更新（2020 年 6 月）
+
+### <a name="update-rollup-46"></a>更新汇总 46
+
+[更新汇总 46](https://support.microsoft.com/help/4564347/update-rollup-46-for-azure-site-recovery) 提供以下更新：
+
+**更新** | **详细信息**
+--- | ---
+**提供程序和代理** | 对 Site Recovery 代理和提供程序的更新（请参阅汇总中的详述）。
+**问题修复/改进** | 汇总中详细说明的一些修复和改进。
 
 ## <a name="updates-march-2020"></a>更新（2020 年 3 月）
 
@@ -151,8 +164,6 @@ Azure 虚拟机现在支持使用客户管理的密钥进行静态加密。
 ### <a name="update-rollup-40"></a>更新汇总 40
 
 [更新汇总 40](https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) 提供以下更新。
-
-<!--MOONCAKE: CORRECT ON https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery)-->
 
 **更新** | **详细信息**
 --- | ---

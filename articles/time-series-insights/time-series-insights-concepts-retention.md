@@ -5,20 +5,20 @@ ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: v-junlch
-manager: cshankar
+manager: diviso
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 04/28/2020
+ms.date: 08/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: b38ad93ead2ec16df6e25c48ae5b06ad210302da
-ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
+ms.openlocfilehash: 789bcf87592040951a6c94354ad107af4842e01a
+ms.sourcegitcommit: 36e7f37481969f92138bfe70192b1f4a2414caf7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82267699"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87796246"
 ---
-# <a name="understand-data-retention-in-azure-time-series-insights"></a>了解 Azure 时序见解中的数据保留
+# <a name="understand-data-retention-in-azure-time-series-insights-gen1"></a>了解 Azure 时序见解 Gen1 中的数据保留
 
 本文介绍影响 Azure 时序见解环境中的数据保留的两项主要设置。
 
@@ -31,15 +31,15 @@ ms.locfileid: "82267699"
 - 暂停传入 
 
 > [!NOTE]
-> 创建新环境时，保留规则默认配置为“清除旧数据”。  在创建后，可以根据需要使用 Azure 门户或者在时序见解环境的“配置”页上切换此设置。 
-> * 有关如何配置保留策略的信息，请参阅[在时序见解中配置保留](time-series-insights-how-to-configure-retention.md)。
+> 创建新环境时，保留规则默认配置为“清除旧数据”。  在创建后，可以根据需要使用 Azure 门户或者在 Azure 时序见解环境的“配置”页上切换此设置。
+> * 有关如何配置保留策略的信息，请参阅[在 Azure 时序见解中配置保留](time-series-insights-how-to-configure-retention.md)。
 
 下面将更详细地介绍这两种数据保留策略。
 
 ## <a name="purge-old-data"></a>清除旧数据
 
 - **清除旧数据**是 Azure 时序见解环境的默认设置。  
-- 如果用户希望在其时序见解环境中始终显示其最近数据  ，则“清除旧数据”  是首选项。
+- 如果用户希望在其 Azure 时序见解环境中始终显示其最近数据，则“清除旧数据”是首选项。
 - 达到环境的限制（保留时间、大小或计数，以先达到的为准）时，“清除旧数据”  设置会立即清除  数据。 默认情况下，保留时间设置为 30 天。
 - 最旧的引入数据最先清除（“先入先出”方法）。
 
@@ -64,7 +64,7 @@ ms.locfileid: "82267699"
 - 此行为有助于防止数据丢失，但如果暂停数据流入的持续时间超过事件源的保留期，则有可能会丢失最近的数据。
 - 但是，达到环境的最大容量后，环境将会暂停数据流入，直到以下附加操作发生：
 
-   - 你增加环境的最大容量以添加更多缩放单元，如[如何缩放时序见解环境](time-series-insights-how-to-scale-your-environment.md)中所述。
+   - 你增加环境的最大容量以添加更多缩放单元，如[如何缩放 Azure 时序见解环境](time-series-insights-how-to-scale-your-environment.md)中所述。
    - 达到了数据保留期并清除了数据，使环境低于其最大容量。
 
 ### <a name="example-three"></a>示例三
@@ -81,17 +81,17 @@ ms.locfileid: "82267699"
 > [!IMPORTANT]
 > 应设置警报，以提供通知来帮助避免传入暂停。 由于 Azure 事件源的默认保留期为 1 天，因此可能丢失数据。 一旦传入暂停，除非采取其他措施，否则可能丢失最近的数据。 必须增大容量，或者将行为切换到“清除旧数据”才能避免潜在的数据丢失。 
 
-在受影响的事件中心，请考虑调整“消息保留”属性，以最大程度地减少在时序见解中发生传入暂停时丢失数据的情况。 
+在受影响的事件中心，请考虑调整“消息保留”属性，以最大程度地减少在 Azure 时序见解中发生传入暂停时丢失数据的情况。
 
 [![事件中心消息保留。](./media/time-series-insights-concepts-retention/event-hub-retention.png)](./media/time-series-insights-concepts-retention/event-hub-retention.png#lightbox)
 
-如果未在事件源中配置任何属性 (`timeStampPropertyName`)，时序见解默认为事件中心的抵达时间戳（X 轴）。 如果 `timeStampPropertyName` 配置为其他值，则在分析事件时，环境将在数据包中查找配置的 `timeStampPropertyName`。
+如果未在事件源中配置任何属性 (`timeStampPropertyName`)，Azure 时序见解默认为事件中心的抵达时间戳（X 轴）。 如果 `timeStampPropertyName` 配置为其他值，则在分析事件时，环境将在数据包中查找配置的 `timeStampPropertyName`。
 
-若要扩展环境以包含更多容量或延长保留持续时间，请参阅[如何缩放时序见解环境](time-series-insights-how-to-scale-your-environment.md)。
+若要扩展环境以包含更多容量或延长保留持续时间，请参阅[如何缩放 Azure 时序见解环境](time-series-insights-how-to-scale-your-environment.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关配置或更改数据保留设置的信息，请查看[在时序见解中配置保留](time-series-insights-how-to-configure-retention.md)。
+- 有关配置或更改数据保留设置的信息，请查看[在 Azure 时序见解中配置保留](time-series-insights-how-to-configure-retention.md)。
 
 - 了解[在 Azure 时序见解中减少延迟](time-series-insights-environment-mitigate-latency.md)。
 

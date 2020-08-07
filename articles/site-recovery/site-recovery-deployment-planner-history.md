@@ -6,19 +6,41 @@ author: rockboyfor
 manager: digimobile
 ms.topic: article
 ms.service: site-recovery
-origin.date: 07/29/2019
-ms.date: 08/26/2019
+origin.date: 06/04/2020
+ms.date: 08/03/2020
+ms.testscope: no
+ms.testdate: 08/26/2019
 ms.author: v-yeche
-ms.openlocfilehash: 6286be5705e3c05d2350d41e7419b5278fd77ea1
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 9c36f7ee01a972a1f9faca864099253d9dccf070
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "71083153"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426514"
 ---
 # <a name="azure-site-recovery-deployment-planner-version-history"></a>Azure Site Recovery 部署规划器版本历史记录
 
 本文提供 Azure Site Recovery 部署规划器的所有版本历史记录和修复，以及每个版本的已知限制和发布日期。
+
+## <a name="version-252"></a>版本 2.52
+
+**发布日期：2020 年 6 月 4 日**
+
+**修复：**
+
+- 添加了对 vCenter 7.0 的支持
+- 添加了对以下操作系统的支持：
+
+    - SUSE Linux Enterprise 15（包括所有次要版本）
+    - Red Hat Enterprise Linux 8（包括所有次要版本）
+
+## <a name="version-251"></a>版本 2.51
+
+**发布日期：2019 年 8 月 22 日**
+
+**修复：**
+
+- 修复了部署规划器版本 2.5 中的成本建议问题
 
 ## <a name="version-25"></a>版本 2.5
 
@@ -77,7 +99,7 @@ ms.locfileid: "71083153"
 - 修复了 GetThroughput 操作的 bug。
 - 添加了相应的选项用于限制要分析或要生成报告的 VM 数。 默认限制为 1,000 个 VM。
 - VMware 到 Azure 的灾难恢复：
-    - 修复了将 Windows Server 2016 VM 加入不兼容表的问题。 
+    - 修复了将 Windows Server 2016 Datacenter 加入不兼容表的问题。 
     - 更新了可扩展固件接口 (EFI) Windows VM 的兼容性消息。
 - 更新了从 VMware 灾难恢复到 Azure 以及从 Hyper-V 灾难恢复到 Azure 时，每个 VM 的 VM 数据变动率限制。 
 - 改进了 VM 列表文件分析的可靠性。

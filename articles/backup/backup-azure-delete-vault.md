@@ -4,14 +4,14 @@ description: 本文介绍了如何先删除依赖项，然后删除 Azure 备份
 author: Johnnytechn
 ms.topic: conceptual
 origin.date: 09/20/2019
-ms.date: 06/22/2020
+ms.date: 07/31/2020
 ms.author: v-johya
-ms.openlocfilehash: b6d97b103499e1c9b91d18090b44cdd74c3ee1de
-ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
+ms.openlocfilehash: 7ea62e5d8ee51e524cc6b7ea861cad73ec8f29d9
+ms.sourcegitcommit: b5794af488a336d84ee586965dabd6f45fd5ec6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85852000"
+ms.lasthandoff: 08/01/2020
+ms.locfileid: "87508440"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>删除 Azure 备份恢复服务保管库
 
@@ -93,7 +93,7 @@ ms.locfileid: "85852000"
 
       - 对于 MABS 或 DPM，请选择“备份管理服务器”。 然后选择要删除的服务器。
 
-          ![对于 MABS，请选择保管库打开其仪表板。](./media/backup-azure-delete-vault/delete-backup-management-servers.png)
+          ![对于 MABS 或 DPM，请选择保管库以打开其仪表板。](./media/backup-azure-delete-vault/delete-backup-management-servers.png)
 
 3. 此时会显示包含警告消息的“删除”窗格。
 
@@ -117,9 +117,12 @@ ms.locfileid: "85852000"
 此过程完成后，可以继续从管理控制台删除备份项：
 
 - [从 MARS 管理控制台删除备份项](#delete-backup-items-from-the-mars-management-console)
-- [从 MABS 管理控制台删除备份项](#delete-backup-items-from-the-mabs-management-console)
+- [从 MABS 或 DPM 管理控制台删除备份项](#delete-backup-items-from-the-mabs-or-dpm-management-console)
 
 ### <a name="delete-backup-items-from-the-mars-management-console"></a>从 MARS 管理控制台删除备份项
+
+>[!NOTE]
+>如果在不停止备份的情况下删除或丢失了源计算机，则下一个计划的备份将失败。 旧恢复点将根据策略过期，但始终会保留最后一个恢复点，直至你停止备份并删除数据。 为此，可以按照[本部分](#delete-protected-items-on-premises)的这些步骤操作。
 
 1. 打开 MARS 管理控制台，转到“操作”窗格并选择“计划备份”。 
 2. 在“修改或停止计划的备份”页中选择“停止使用此备份计划并删除所有存储的备份”选项。  然后，选择“下一步”。
@@ -142,9 +145,12 @@ ms.locfileid: "85852000"
 
 删除本地备份项后，遵循门户中的后续步骤。
 
-### <a name="delete-backup-items-from-the-mabs-management-console"></a>从 MABS 管理控制台删除备份项
+### <a name="delete-backup-items-from-the-mabs-or-dpm-management-console"></a>从 MABS 或 DPM 管理控制台删除备份项
 
-可以使用两种方法从 MABS 管理控制台删除备份项。
+>[!NOTE]
+>如果在不停止备份的情况下删除或丢失了源计算机，则下一个计划的备份将失败。 旧恢复点将根据策略过期，但始终会保留最后一个恢复点，直至你停止备份并删除数据。 为此，可以按照[本部分](#delete-protected-items-on-premises)的这些步骤操作。
+
+可以使用两种方法从 MABS 或 DPM 管理控制台删除备份项。
 
 #### <a name="method-1"></a>方法 1
 
@@ -168,7 +174,7 @@ ms.locfileid: "85852000"
 
 #### <a name="method-2"></a>方法 2
 
-打开 **MABS 管理**控制台。 在“选择数据保护方法”下，清除“我需要在线保护”复选框。 
+打开“MABS 管理”或“DPM 管理”控制台 。 在“选择数据保护方法”下，清除“我需要在线保护”复选框。 
 
   ![选择数据保护方法。](./media/backup-azure-delete-vault/data-protection-method.png)
 

@@ -3,18 +3,20 @@ title: 设计可缩放的高性能 Azure Cosmos DB 表
 description: Azure 表存储设计指南 - Azure Cosmos DB 和 Azure 表存储中可缩放的高性能表
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
-ms.topic: conceptual
-origin.date: 05/21/2019
-ms.date: 07/06/2020
+ms.topic: how-to
+origin.date: 06/19/2020
+ms.date: 08/03/2020
+ms.testscope: no
+ms.testdate: ''
 author: rockboyfor
 ms.author: v-yeche
 ms.custom: seodec18
-ms.openlocfilehash: 817f032525cf75f07b2a38fbf6ef8d8ea92cfbcf
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+ms.openlocfilehash: aba0490534887dfb96b1c1121e3933cb3efcbf4b
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323396"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426524"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Azure 表存储表设计指南：可缩放的高性能表
 
@@ -631,7 +633,7 @@ EGT 在多个共享同一分区键的实体之间启用原子事务。 由于性
 
 ![显示带有包含相同姓氏的员工 ID 列表的字符串的员工实体的插图][15]
 
-`EmployeeIDs` 属性包含一个员工 ID 列表，其中员工的姓氏存储在 `RowKey` 中。  
+`EmployeeIDs` 属性包含一个员工 ID 列表，其中员工的姓氏存储在 `RowKey` 和 `PartitionKey` 中。  
 
 不能使用 EGT 来保持一致性，因为索引实体位于与员工实体不同的分区中。 确保索引实体与员工实体是最终一致的。  
 

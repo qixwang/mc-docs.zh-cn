@@ -3,28 +3,34 @@ title: 使用 Azure 网络观察程序执行数据包检查 | Azure
 description: 本文介绍如何在 VM 中使用网络观察程序执行深度数据包检查
 services: network-watcher
 documentationcenter: na
-author: lingliw
-manager: digimobile
+author: rockboyfor
 ms.assetid: 7b907d00-9c35-40f5-a61e-beb7b782276f
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 02/22/2017
-ms.date: 11/26/2018
-ms.author: v-lingwu
-ms.openlocfilehash: de405fa989dc8fd312d5341eeecbd5dfdfe86547
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 08/10/2020
+ms.testscope: yes
+ms.testdate: 08/03/2020
+ms.author: v-yeche
+ms.openlocfilehash: b142442defb29e78ff8641d537e71415561dcb15
+ms.sourcegitcommit: 3eadca6821ef679d8ac6ca2dc46d6a13aac211cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78155106"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87548030"
 ---
 # <a name="packet-inspection-with-azure-network-watcher"></a>使用 Azure 网络观察程序执行数据包检查
 
-使用网络观察程序的数据包捕获功能，可在门户、PowerShell、CLI 中以及通过 SDK 和 REST API 以编程方式在 Azure VM 上启动和管理捕获会话。 借助数据包捕获，可通过以随时可用的格式提供信息，来解决需要数据包级数据的方案。 利用免费工具检查数据，可以检测传入和传出 VM 的通信并洞察网络流量。 数据包捕获数据的一些示例用途包括：调查网络或应用程序问题、检测网络滥用和入侵企图，或保持合规性。 本文介绍如何使用流行的开源工具打开网络观察程序提供的数据包捕获文件。 此外，还举例说明了如何计算连接延迟、识别异常流量，以及检查网络统计信息。
+<!--MOONCAKE CUSTOMIZE ON replace open source with open-source-->
+<!--Acrolinux scorecard issue-->
 
+使用网络观察程序的数据包捕获功能，可在门户、PowerShell、CLI 中以及通过 SDK 和 REST API 以编程方式在 Azure VM 上启动和管理捕获会话。 借助数据包捕获，可通过以随时可用的格式提供信息，来解决需要数据包级数据的方案。 利用免费工具检查数据，可以检测传入和传出 VM 的通信并洞察网络流量。 数据包捕获数据的一些示例用途包括：调查网络或应用程序问题、检测网络滥用和入侵企图，或保持合规性。 本文介绍如何使用流行的开放源代码工具打开网络观察程序提供的数据包捕获文件。 此外，还举例说明了如何计算连接延迟、识别异常流量，以及检查网络统计信息。
+
+<!--MOONCAKE CUSTOMIZE ON replace open source with open-source-->
+<!--Acrolinux scorecard issue-->
 ## <a name="before-you-begin"></a>准备阶段
 
 本文会回顾以前运行的有关数据包捕获的一些预配置方案。 这些方案演示了可以通过查看数据包捕获访问的功能。 本方案使用 [WireShark](https://www.wireshark.org/) 来检查数据包捕获。
@@ -41,7 +47,7 @@ ms.locfileid: "78155106"
 
 本方案说明如何查看两个终结点之间发生的传输控制协议 (TCP) 对话的初始往返时间 (RTT)。
 
-建立 TCP 连接后，在连接中发送的前三个数据包遵循一种通常称作“三次握手”的模式。 通过检查此握手中发送的前两个数据包、客户端发出的初始请求以及服务器发出的响应，我们可以计算建立此连接时的延迟。 此延迟称为“往返时间”(RTT)。 有关 TCP 协议和三次握手的详细信息，请参阅以下资源。 [https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip](https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip)
+建立 TCP 连接后，在连接中发送的前三个数据包遵循一种通常称作“三次握手”的模式。 通过检查此握手中发送的前两个数据包、客户端发出的初始请求以及服务器发出的响应，我们可以计算建立此连接时的延迟。 此延迟称为“往返时间”(RTT)。 有关 TCP 协议和三次握手的详细信息，请参阅以下资源。 [https://support.microsoft.com/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip](https://support.microsoft.com/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip)
 
 ### <a name="step-1"></a>步骤 1
 
@@ -49,11 +55,17 @@ ms.locfileid: "78155106"
 
 ### <a name="step-2"></a>步骤 2
 
-从数据包捕获加载 **.cap** 文件。 根据具体的配置，此文件保存在 Blob 中或者虚拟机本地。
+<!--MOONCAKE CUSTOMIZE ON `.cap`-->
+<!--Acrolinux scorecard issue-->
+
+从数据包捕获加载 `.cap` 文件。 根据具体的配置，此文件保存在 Blob 中或者虚拟机本地。
+
+<!--MOONCAKE CUSTOMIZE ON `.cap`-->
+<!--Acrolinux scorecard issue-->
 
 ### <a name="step-3"></a>步骤 3
 
-若要查看 TCP 对话中的初始往返时间 (RTT)，只需检查 TCP 握手中涉及的前两个数据包。 我们将使用三次握手中的前两个数据包，即 [SYN]、和 [SYN, ACK] 数据包。 这两个数据包是根据 TCP 标头中的标志命名的。 本方案不使用握手中的最后一个数据包，即 [ACK] 数据包。 [SYN] 数据包由客户端发送。 收到该数据包后，服务器将发送 [ACK] 数据包，表示确认收到客户端发来的 SYN。 利用服务器响应所需的开销极少这一事实，可通过从客户端收到 [SYN, ACK] 数据包的时间减法客户端发送 [SYN] 数据包的时间来计算 RTT。
+若要查看 TCP 对话中的初始往返时间 (RTT)，只需检查 TCP 握手中涉及的前两个数据包。 我们将使用三次握手中的前两个数据包，即 [SYN]、和 [SYN, ACK] 数据包。 这两个数据包是根据 TCP 标头中的标志命名的。 本方案不使用握手中的最后一个数据包，即 [ACK] 数据包。 [SYN] 数据包由客户端发送。 收到该数据包后，服务器将发送 [ACK] 数据包，表示确认收到客户端发来的 SYN。 利用服务器响应所需的开销极少这一事实，可通过对客户端收到 [SYN, ACK] 数据包的时间与客户端发送 [SYN] 数据包的时间进行减法运算，来计算 RTT。
 
 使用 WireShark 可以计算此值。
 
@@ -61,25 +73,37 @@ ms.locfileid: "78155106"
 
 若要应用 WireShark 中的筛选器，请展开捕获中 [SYN] 数据包的“Transmission Control Protocol”段，检查 TCP 标头中设置的标志。
 
-由于我们想要针对所有 [SYN] 和 [SYN, ACK] 数据包执行筛选，因此应该在标志下面确认 Syn 位设置为 1，并右键单击 Syn 位 ->“应用为筛选器”->“选定”。
+<!--MOONCAKE CUSTOMIZE ON replace `click` with `select`-->
+<!--Acrolinux scorecard issue-->
+
+由于我们想要针对所有 [SYN] 和 [SYN, ACK] 数据包执行筛选，因此应在标志下面确认 Syn 位设置为 1，并右键单击 Syn 位 ->“应用为筛选器”->“选定项”。
 
 ![图 7][7]
 
 ### <a name="step-4"></a>步骤 4
 
-筛选窗口内容以便仅显示设置了 [SYN] 位的数据包后，可以轻松选择所需的对话来查看初始 RTT。 在 WireShark 中查看 RTT 的一种简单方法是单击带有“SEQ/ACK”分析标记的下拉框。 然后便会显示 RTT。 在本例中RTT 为 0.0022114 秒，即 2.211 毫秒。
+筛选窗口内容以便仅显示设置了 [SYN] 位的数据包后，可以轻松选择所需的对话来查看初始 RTT。 在 WireShark 中查看 RTT 的一种简单方法是选择带有“SEQ/ACK”分析标记的下拉框。 然后便会显示 RTT。 在本例中RTT 为 0.0022114 秒，即 2.211 毫秒。
 
 ![图 8][8]
 
 ## <a name="unwanted-protocols"></a>不需要的协议
 
+<!--Acrolinux scorecard issue-->
+<!--MOONCAKE CUSTOMIZE ON APPLICATION IS-->
+
 在 Azure 中部署的虚拟机实例上可能运行了大量的应用程序。 其中的许多应用程序可能在未得到明确许可的情况下通过网络通信。 使用数据包捕获存储网络通信，可以调查应用程序如何在网络上通信，以及检查是否出现了任何问题。
+
+<!--Acrolinux scorecard issue-->
+<!--MOONCAKE CUSTOMIZE ON APPLICATION IS-->
 
 在本示例中，我们会检查以前运行的数据包捕获是否存在不需要的协议，这可能表示计算机上运行的应用程序正在进行未经授权的通信。
 
 ### <a name="step-1"></a>步骤 1
 
-使用前一方案中的同一个捕获。单击“统计信息” > “协议层次结构” 
+在前一方案中的同一个捕获中，选择“统计信息” > “协议层次结构” 
+
+<!--Acrolinux scorecard issue-->
+<!--MOONCAKE CUSTOMIZE ON replace `click` with `select`-->
 
 ![协议层次结构菜单][2]
 
@@ -87,7 +111,13 @@ ms.locfileid: "78155106"
 
 ![打开的协议层次结构][3]
 
-如以下屏幕截图中所示，有的流量使用了 BitTorrent 协议来建立对等文件共享。 管理员不希望此特定虚拟机上出现 BitTorrent 流量。 现在我们发现了这种流量，可以删除此虚拟机上安装的对等软件，或者使用网络安全组或防火墙来阻止该流量。 此外，可以选择按计划运行数据包捕获，以便定期检查虚拟机上使用的协议。 有关如何在 Azure 中自动执行任务的示例，请访问 [Monitor network resources with azure automation](network-watcher-monitor-with-azure-automation.md)（使用 Azure 自动化监视网络资源）
+<!--CORRECT ON Azure to replace azure, this particular virtual machine-->
+<!--Acrolinux scorecard issue-->
+
+如以下屏幕截图中所示，有的流量使用了 BitTorrent 协议来建立对等文件共享。 管理员不希望此特定虚拟机上出现 BitTorrent 流量。 现在我们发现了这种流量，可以删除此虚拟机上安装的对等软件，或者使用网络安全组或防火墙来阻止该流量。 此外，可以选择按计划运行数据包捕获，以便定期检查虚拟机上使用的协议。 有关如何在 Azure 中自动执行任务的示例，请参阅[使用 Azure 自动化监视网络资源](network-watcher-monitor-with-azure-automation.md)
+
+<!--CORRECT ON Azure to replace azure, this particular virtual machine-->
+<!--Acrolinux scorecard issue-->
 
 ## <a name="finding-top-destinations-and-ports"></a>查找最常使用的目标和端口
 
@@ -95,7 +125,13 @@ ms.locfileid: "78155106"
 
 ### <a name="step-1"></a>步骤 1
 
-使用前一方案中的同一个捕获。单击“统计信息” > “IPv4 统计信息” > “目标和端口”  
+<!--Acrolinux scorecard issue-->
+<!--MOONCAKE CUSTOMIZE ON replace `click` with `select`-->
+
+在前一方案中的同一个捕获中，选择“统计信息” > “IPv4 统计信息” > “目标和端口”  
+
+<!--Acrolinux scorecard issue-->
+<!--MOONCAKE CUSTOMIZE ON replace `click` with `select`-->
 
 ![数据包捕获窗口][4]
 
@@ -121,7 +157,7 @@ tcp.port == 111
 
 ![图 6][6]
 
-从结果可以看出，所有流量来自同一子网中的某个本地虚拟机。 如果仍不了解发生此流量的原因，可以进一步检查数据包，以确定它为什么在端口 111 上进行这些调用。 使用这些信息可以采取相应的措施。
+从结果可以看出，所有流量来自同一子网中的某个本地虚拟机。 如果仍不了解出现此流量的原因，可以进一步检查数据包，确定该流量为何在端口 111 上发出这些调用。 使用这些信息可以采取相应的措施。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -136,4 +172,4 @@ tcp.port == 111
 [7]: ./media/network-watcher-deep-packet-inspection/figure7.png
 [8]: ./media/network-watcher-deep-packet-inspection/figure8.png
 
-<!--Update_Description: new articles on network watcher deep packet inspection -->
+<!-- Update_Description: update meta properties, wording update, update link -->

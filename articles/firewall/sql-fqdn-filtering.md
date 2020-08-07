@@ -4,16 +4,18 @@ description: 本文介绍如何在 Azure 防火墙应用程序规则中配置 SQ
 services: firewall
 author: rockboyfor
 ms.service: firewall
-ms.topic: article
-origin.date: 05/11/2020
-ms.date: 06/15/2020
+ms.topic: how-to
+origin.date: 06/18/2020
+ms.date: 08/03/2020
+ms.testscope: yes
+ms.testdate: 08/03/2020
 ms.author: v-yeche
-ms.openlocfilehash: 2f43dfec72f7eb548233dab2c6576e3956d5ba53
-ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
+ms.openlocfilehash: 3b50502088e3c934c90688c2149ba7a2b79696ba
+ms.sourcegitcommit: 362814dc7ac5b56cf0237b9016a67c35d8d72c32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84683922"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87455584"
 ---
 # <a name="configure-azure-firewall-application-rules-with-sql-fqdns"></a>使用 SQL FQDN 配置 Azure 防火墙应用程序规则
 
@@ -25,10 +27,8 @@ ms.locfileid: "84683922"
 - 从本地发往 VNet 中运行的 Azure SQL 托管实例或 SQL IaaS 的流量。
 - 从“分支到分支”到 VNet 中运行的 Azure SQL 托管实例或 SQL IaaS。
 
-仅在[代理模式](/sql-database/sql-database-connectivity-architecture#connection-policy)下支持 SQL FQDN 筛选（端口 1433）。 如果在默认重定向模式下使用 SQL，则可以使用 SQL 服务标记作为[网络规则](overview.md#network-traffic-filtering-rules)的一部分来筛选访问。
+仅在[代理模式](/sql-database/sql-database-connectivity-architecture#connection-policy)下支持 SQL FQDN 筛选（端口 1433）。 如果在默认重定向模式下使用 SQL，则可以使用 SQL 服务标记作为[网络规则](features.md#network-traffic-filtering-rules)的一部分来筛选访问。
 如果对 SQL IaaS 通信使用非默认端口，则可以在防火墙应用程序规则中配置这些端口。
-
-目前，可以通过 Azure 门户、Azure CLI、REST 和模板在所有区域中使用包含 SQL FQDN 的应用程序规则。
 
 ## <a name="configure-using-azure-cli"></a>使用 Azure CLI 进行配置
 
@@ -67,6 +67,6 @@ ms.locfileid: "84683922"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解 SQL 代理和重定向模式，请参阅 [Azure SQL 数据库连接体系结构](../sql-database/sql-database-connectivity-architecture.md)。
+要了解 SQL 代理和重定向模式，请参阅 [Azure SQL 数据库连接体系结构](../azure-sql/database/connectivity-architecture.md)。
 
 <!-- Update_Description: update meta properties, wording update, update link -->

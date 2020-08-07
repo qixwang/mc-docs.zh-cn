@@ -7,18 +7,18 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 origin.date: 11/26/2018
-ms.date: 06/05/2020
+ms.date: 07/29/2020
 ms.author: v-johya
-ms.openlocfilehash: 525bfe1ea22d018d1e5bdf99aa03bed1b67ccd3e
-ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
+ms.openlocfilehash: 074c8950f209760374cc27b2542a47264fe50de2
+ms.sourcegitcommit: b5794af488a336d84ee586965dabd6f45fd5ec6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84684038"
+ms.lasthandoff: 08/01/2020
+ms.locfileid: "87508347"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>如何在 Azure 上将 SSH 密钥与 Windows 配合使用
 
-本文介绍了如何在 Windows 计算机上生成和使用安全外壳** (SSH) 密钥以在 Azure 中创建并连接到 Linux 虚拟机 (VM)。 若要使用来自 Linux 或 macOS 客户端的 SSH 密钥，请参阅[快速](mac-create-ssh-keys.md)或[详细](create-ssh-keys-detailed.md)指南。
+本文介绍了如何在 Windows 计算机上生成和使用安全外壳 (SSH) 密钥以在 Azure 中创建并连接到 Linux 虚拟机 (VM)。 若要使用来自 Linux 或 macOS 客户端的 SSH 密钥，请参阅[快速](mac-create-ssh-keys.md)或[详细](create-ssh-keys-detailed.md)指南。
 
 [!INCLUDE [virtual-machines-common-ssh-overview](../../../includes/virtual-machines-common-ssh-overview.md)]
 
@@ -61,21 +61,21 @@ ssh-keygen -t rsa -b 2048
 
 1. 启动 PuTTYgen。
 
-2. 单击“生成”****。 默认情况下，PuTTYgen 生成一个 2048 位的 SSH-2 RSA 密钥。
+2. 单击“生成”。 默认情况下，PuTTYgen 生成一个 2048 位的 SSH-2 RSA 密钥。
 
-4. 在空白区域中四处移动鼠标指针来为密钥提供随机性。
+3. 在空白区域中四处移动鼠标指针来为密钥提供随机性。
 
-5. 生成公钥后，可选择输入并确认通行短语。 使用 SSH 私钥面向 VM 进行身份验证时，系统会提示输入通行短语。 没有通行短语，如果有人获取了私钥，他们可以登录到使用该密钥的任何 VM 或服务。 我们建议创建一个通行短语。 但是，如果你忘记了通行短语，将没有办法恢复它。
+4. 生成公钥后，可选择输入并确认通行短语。 使用 SSH 私钥面向 VM 进行身份验证时，系统会提示输入通行短语。 没有通行短语，如果有人获取了私钥，他们可以登录到使用该密钥的任何 VM 或服务。 我们建议创建一个通行短语。 但是，如果你忘记了通行短语，将没有办法恢复它。
 
-6. 公钥会显示在窗口的顶部。 创建 Linux VM 时，可以复制此完整公钥并将其粘贴到 Azure 门户或 Azure 资源管理器模板中。 也可以选择“保存公钥”**** 将副本保存到计算机中：
+5. 公钥会显示在窗口的顶部。 创建 Linux VM 时，你可以复制这个完整公钥并将其粘贴到 Azure 门户或 Azure 资源管理器模板中。 也可以选择“保存公钥”，将副本保存到计算机中。 注意，在保存到文件中时，PuTTY 会将公钥转换为另外一种格式，即 [RFC4716](https://tools.ietf.org/html/rfc4716)。 RFC4716 格式可能与有的 API 不兼容。 因此，若要在 Azure 门户中使用，建议复制 PuTTY 窗口中显示的公钥。
 
     ![保存 PuTTY 公钥文件](./media/ssh-from-windows/save-public-key.png)
 
-7. （可选）若要将私钥以 PuTTy 私钥格式（.ppk 文件）保存，请选择“保存私钥”****。 稍后在使用 PuTTY 通过 SSH 连接到 VM 时将需要该 .ppk 文件。
+6. （可选）若要将私钥以 PuTTy 私钥格式（.ppk 文件）保存，请选择“保存私钥”。 稍后在使用 PuTTY 通过 SSH 连接到 VM 时将需要该 .ppk 文件。
 
     ![保存 PuTTY 私钥文件](./media/ssh-from-windows/save-ppk-file.png)
 
-    如果要将私钥以 OpenSSH 格式（许多 SSH 客户端使用的私钥格式）保存，请选择“转换” > “导出 OpenSSH 密钥”**** ****。
+    如果要将私钥以 OpenSSH 格式（许多 SSH 客户端使用的私钥格式）保存，请选择“转换” > “导出 OpenSSH 密钥” 。
 
 ## <a name="provide-an-ssh-public-key-when-deploying-a-vm"></a>部署 VM 时提供 SSH 公钥
 
@@ -93,7 +93,7 @@ ssh-keygen -t rsa -b 2048
 <!-- Not Available on or you use SSH tools in Bash in Azure Cloud Shell-->
 
 ### <a name="use-an-ssh-client"></a>使用 SSH 客户端
-凭借部署在 Azure VM 上的公钥和本地系统上的私钥，使用 VM 的 IP 地址或 DNS 名称通过 SSH 连接到 VM。 将以下命令中的 azureuser** 和 myvm.chinanorth.chinacloudapp.cn** 替换为管理员用户名和完全限定的域名（或 IP 地址）：
+凭借部署在 Azure VM 上的公钥和本地系统上的私钥，使用 VM 的 IP 地址或 DNS 名称通过 SSH 连接到 VM。 将以下命令中的 azureuser 和 myvm.chinanorth.chinacloudapp.cn 替换为管理员用户名和完全限定的域名（或 IP 地址）：
 
 ```bash
 ssh azureuser@myvm.chinanorth.chinacloudapp.cn
@@ -102,8 +102,6 @@ ssh azureuser@myvm.chinanorth.chinacloudapp.cn
 如果创建密钥对时配置了通行短语，则在登录过程中遇到提示时，请输入该通行短语。
 
 如果 VM 使用的是实时访问策略，则需要先请求访问权限，然后才能连接到 VM。 有关实时策略的详细信息，请参阅[使用实时策略管理虚拟机访问](../../security-center/security-center-just-in-time.md)。
-
-<!--MOONCAKE: Enable correct on Security Center-->
 
 ### <a name="connect-with-putty"></a>通过 PuTTY 连接
 
@@ -115,11 +113,11 @@ ssh azureuser@myvm.chinanorth.chinacloudapp.cn
 
     ![打开新的 PuTTY 连接](./media/ssh-from-windows/putty-new-connection.png)
 
-3. 选择“连接” > “SSH” > “身份验证”类别。**** **** **** 浏览并选择 PuTTY 私钥（.ppk 文件）：
+3. 选择“连接” > “SSH” > “身份验证”类别。   浏览并选择 PuTTY 私钥（.ppk 文件）：
 
     ![选择用于身份验证的 PuTTY 私钥](./media/ssh-from-windows/putty-auth-dialog.png)
 
-4. 单击“打开”以连接到 VM****。
+4. 单击“打开”以连接到 VM。
 
 ## <a name="next-steps"></a>后续步骤
 

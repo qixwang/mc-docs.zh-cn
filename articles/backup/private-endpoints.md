@@ -4,13 +4,13 @@ description: 了解创建 Azure 备份的专用终结点的过程以及使用专
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 06/22/2020
-ms.openlocfilehash: 052fc089ba55a7a503ca844d191e65b0927f65c6
-ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
+ms.date: 07/31/2020
+ms.openlocfilehash: 1da80fc4dcd0fbdda808c1490eb3ddd5a208bf07
+ms.sourcegitcommit: b5794af488a336d84ee586965dabd6f45fd5ec6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85852122"
+ms.lasthandoff: 08/01/2020
+ms.locfileid: "87508465"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure 备份的专用终结点
 
@@ -23,6 +23,7 @@ ms.locfileid: "85852122"
 - 仅可为新的恢复服务保管库创建专用终结点（没有任何项已注册到保管库）。 因此必须先创建专用终结点，然后才能尝试保护保管库中的任何项。
 - 一个虚拟网络可以包含用于多个恢复服务保管库的专用终结点。 此外，一个恢复服务保管库可以在多个虚拟网络中包含要使用的专用终结点。 但是，最多只能为保管库创建 12 个专用终结点。
 - 为保管库创建专用终结点后，保管库将被锁定。 除包含该保管库的专用终结点的网络之外，无法从其他网络访问它（用于备份和还原）。 如果删除该保管库的所有专用终结点，则可以从所有网络访问该保管库。
+- 用于备份的专用终结点连接在子网中总共使用 11 个专用 IP。 对于某些 Azure 区域，此数字可能更高（最多 15 个）。 因此，我们建议你在尝试创建用于备份的专用终结点时，拥有足够的可用专用 IP。
 - 尽管恢复服务保管库可用于 Azure 备份和 Azure Site Recovery 这两种服务，但本文仅介绍将专用终结点用于 Azure 备份的情况。
 - Azure Active Directory 当前不支持专用终结点。 因此在 Azure VM 中执行数据库备份和使用 MARS 代理进行备份时，需要允许 Azure Active Directory 在区域中操作所需的 IP 和 FQDN 从受保护的网络进行出站访问。 如果适用，还可以使用 NSG 标记和 Azure 防火墙标记来允许访问 Azure AD。
 - 具有网络策略的虚拟网络不支持专用终结点。 在继续之前，需要禁用网络策略。
@@ -43,9 +44,6 @@ ms.locfileid: "85852122"
 
 >[!IMPORTANT]
 > 强烈建议按照本文档中所述的顺序执行步骤。 如果未按照顺序操作，可能导致保管库呈现为不兼容，无法使用专用终结点，并要求你使用新保管库重启此进程。
-
->[!NOTE]
-> 目前 Azure 门户体验的某些元素可能不可用。 请参阅此类方案中的替代体验，直到你所在的区域完全可用。
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 

@@ -4,14 +4,16 @@ description: 如何使用 Azure Site Recovery 将 VM/物理服务器故障转移
 ms.service: site-recovery
 ms.topic: article
 origin.date: 12/10/2019
-ms.date: 02/24/2020
+ms.date: 08/03/2020
+ms.testscope: no
+ms.testdate: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 9c1e0077780260478b98c567882f3894a6e371c8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3e9522fc4e61e9f13397cd7fd4846288617750bd
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291583"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426533"
 ---
 # <a name="run-a-failover-from-on-premises-to-azure"></a>运行从本地到 Azure 的故障转移
 
@@ -51,21 +53,22 @@ ms.locfileid: "79291583"
 4. 在“故障转移”中，选择要故障转移到的恢复点   。
 
     - **最新**：使用最新的点。 此时会处理发送到 Site Recovery 服务的所有数据，并为每台计算机创建一个恢复点。 此选项提供最低 RPO（恢复点目标），因为故障转移后创建的 VM 具有触发故障转移时复制到 Site Recovery 的所有数据。
-    - **最新处理**：使用此选项可将 VM 故障转移到已由 Site Recovery 处理的最新恢复点。 你可在 VM 的“最新恢复点”中查看最新处理的恢复点  。 此选项提供较低的 RTO，因为无需费时处理未经处理的数据
+        请注意，当源区域出现故障时，将无法再进行日志处理。 因此，必须故障转移到“最新的已处理”恢复点。 请参阅下一个要点了解详细信息。
+    - **最新处理**：使用此选项可将 VM 故障转移到已由 Site Recovery 处理的最新恢复点。 你可在 VM 的“最新恢复点”中查看最新处理的恢复点。 此选项提供较低的 RTO，因为无需费时处理未经处理的数据
     - **最新应用一致**：使用此选项可将 VM 故障转移到已由 Site Recovery 处理的最新应用程序一致恢复点。
     - **最新处理的多 VM**：借助此选项，属于复制组的 VM 会故障转移到最新通用多 VM 一致恢复点。 其他虚拟机会故障转移到其最新处理的恢复点。 此选项仅可用于至少有一个 VM 已启用多 VM 一致性的恢复计划。
     - **最新的多 VM 应用一致**：借助此选项，属于复制组的 VM 会故障转移到最新的常用多 VM 应用程序一致恢复点。 其他虚拟机将故障转移到其最新的应用程序一致恢复点。 仅可用于至少有一个 VM 已启用多 VM 一致性的恢复计划。
     - **自定义**：不可用于恢复计划。 此选项仅可用于单个 VM 的故障转移。
 
-5. 如果希望 Site Recovery 在启动故障转移前关闭源 VM，请选择“在开始故障转移前关闭计算机”  。 即使关机失败，故障转移也仍会继续。  
+5. 如果希望 Site Recovery 在启动故障转移前关闭源 VM，请选择“在开始故障转移前关闭计算机”。 即使关机失败，故障转移也仍会继续。  
 
     > [!NOTE]
     > 如果对 Hyper-V VM 进行故障转移，则在触发故障转移前，关机操作会尝试同步和复制尚未发送到服务的本地数据。 
 
-6. 在“作业”页上跟踪故障转移进度  。 即使发生错误，恢复计划也会运行到完成为止。
+6. 在“作业”页上跟踪故障转移进度。 即使发生错误，恢复计划也会运行到完成为止。
 7. 故障转移后，登录到 VM 进行验证。 
-8. 如果要切换到用于故障转移的其他恢复点，请使用“更改恢复点”  。
-9. 准备就绪后，就可以提交故障转移。**提交**操作将删除该服务可用的所有恢复点。 “更改恢复点”选项将不再可用  。
+8. 如果要切换到用于故障转移的其他恢复点，请使用“更改恢复点”。
+9. 准备就绪后，就可以提交故障转移。**提交**操作将删除该服务可用的所有恢复点。 “更改恢复点”选项将不再可用。
 
 ## <a name="run-a-planned-failover-hyper-v"></a>运行计划故障转移 (Hyper-V)
 
@@ -73,7 +76,7 @@ ms.locfileid: "79291583"
 
 - 计划故障转移是不会丢失任何数据的故障转移选项。
 - 触发计划内故障转移时，首先会关闭源虚拟机，同步最新数据，然后再触发故障转移。
-- 可使用“计划故障转移”选项运行计划的故障转移  。 它以与常规故障转移类似的方式运行。
+- 可使用“计划故障转移”选项运行计划的故障转移。 它以与常规故障转移类似的方式运行。
 
 ## <a name="track-failovers"></a>跟踪故障转移
 
@@ -108,7 +111,7 @@ ms.locfileid: "79291583"
 你可能希望在故障转移过程中自动执行操作。 为此，可以在恢复计划中使用脚本或 Azure 自动化 runbook。
 
 - [了解](site-recovery-create-recovery-plans.md)如何创建和自定义恢复计划，包括添加脚本。
-- [了解](site-recovery-runbook-automation.md)如何将 Azure 自动化 runbook 添加到恢复计划中。
+- [了解](site-recovery-runbook-automation.md)如何将 Azure 自动化 Runbook 添加到恢复计划中。
 
 ## <a name="configure-settings-after-failover"></a>故障转移后配置设置
 
@@ -122,7 +125,7 @@ Site Recovery 会处理驱动器号的保留。 如果要在 VM 复制期间排�
 
 **故障转移** | **位置** | **操作**
 --- | --- | ---
-**运行 Windows 的 Azure VM** | 故障转移之后在 Azure VM 上 |  为 VM [添加公共 IP 地址](https://aka.ms/addpublicip)。<br/><br/> 已故障转移的 VM（及其连接到的 Azure 子网）上的网络安全组规则需要允许与 RDP 端口建立传入连接。<br/><br/> 选中“启动诊断”可查看 VM 的屏幕截图  。<br/><br/> 如果无法连接，请检查 VM 是否正在运行，并查看这些[故障排除提示](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)。
+**运行 Windows 的 Azure VM** | 故障转移之后在 Azure VM 上 |  为 VM [添加公共 IP 地址](https://aka.ms/addpublicip)。<br/><br/> 已故障转移的 VM（及其连接到的 Azure 子网）上的网络安全组规则需要允许与 RDP 端口建立传入连接。<br/><br/> 选中“启动诊断”可查看 VM 的屏幕截图。<br/><br/> 如果无法连接，请检查 VM 是否正在运行，并查看这些[故障排除提示](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)。
 **运行 Linux 的 Azure VM** | 故障转移之后在 Azure VM 上 | 已故障转移的 VM（及其连接到的 Azure 子网）上的网络安全组规则需要允许与 SSH 端口建立传入连接。<br/><br/> 为 VM [添加公共 IP 地址](https://aka.ms/addpublicip)。<br/><br/> 选中“启动诊断”可查看 VM 的屏幕截图  。<br/><br/>
 
 请按照[此处](site-recovery-failover-to-azure-troubleshoot.md)所述的步骤对故障转移后的任何连接问题进行故障排除。

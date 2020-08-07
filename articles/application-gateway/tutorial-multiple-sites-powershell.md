@@ -5,16 +5,16 @@ description: 了解如何使用 Azure Powershell 创建托管多个网站的应�
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
-ms.date: 03/30/2020
+ms.topic: how-to
+ms.date: 08/03/2020
 ms.author: v-junlch
 ms.custom: mvc
-ms.openlocfilehash: eecbe10789323afcfdc64eabc1dbf5011c3972c9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: da7a768a46ddc77d023abe550f70c47b59139bca
+ms.sourcegitcommit: 36e7f37481969f92138bfe70192b1f4a2414caf7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80581830"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87796341"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-azure-powershell"></a>使用 Azure PowerShell 创建托管多个网站的应用程序网关
 
@@ -30,7 +30,7 @@ ms.locfileid: "80581830"
 > * 使用后端池创建虚拟机规模集
 > * 在域中创建 CNAME 记录
 
-![多站点路由示例](./media/tutorial-multiple-sites-powershell/scenario.png)
+:::image type="content" source="./media/tutorial-multiple-sites-powershell/scenario.png" alt-text="多站点应用程序网关":::
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
@@ -43,7 +43,7 @@ ms.locfileid: "80581830"
 资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 创建 Azure 资源组。  
 
 ```azurepowershell
-New-AzResourceGroup -Name myResourceGroupAG -Location chinanorth
+New-AzResourceGroup -Name myResourceGroupAG -Location chinanorth2
 ```
 
 ## <a name="create-network-resources"></a>创建网络资源
@@ -61,14 +61,14 @@ $agSubnetConfig = New-AzVirtualNetworkSubnetConfig `
 
 $vnet = New-AzVirtualNetwork `
   -ResourceGroupName myResourceGroupAG `
-  -Location chinanorth `
+  -Location chinanorth2 `
   -Name myVNet `
   -AddressPrefix 10.0.0.0/16 `
   -Subnet $backendSubnetConfig, $agSubnetConfig
 
 $pip = New-AzPublicIpAddress `
   -ResourceGroupName myResourceGroupAG `
-  -Location chinanorth `
+  -Location chinanorth2 `
   -Name myAGPublicIPAddress `
   -AllocationMethod Dynamic
 ```
@@ -124,6 +124,10 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 
 使用 [New-AzApplicationGatewayHttpListener](https://docs.microsoft.com/powershell/module/az.network/new-azapplicationgatewayhttplistener) 以及前面创建的前端配置和前端端口创建第一个侦听器。 侦听器需要使用规则来了解哪个后端池使用传入流量。 使用 [New-AzApplicationGatewayRequestRoutingRule](https://docs.microsoft.com/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule) 创建一个名为 *contosoRule* 的基本规则。
 
+>[!NOTE]
+> 通过应用程序网关或 WAF v2 SKU，你还可为每个侦听器配置最多 5 个主机名，并且可在主机名中使用通配符。 要了解详细信息，请参阅[侦听器中的通配符主机名](multiple-site-overview.md#wildcard-host-names-in-listener-preview)。
+>若要通过 Azure PowerShell 在侦听器中使用多个主机名和通配符，则必须使用 `-HostNames` 而不是 `-HostName`。 使用 HostNames 时，可通过逗号分隔值的形式提及最多 5 个主机名。 例如： `-HostNames "*.contoso.com,*.fabrikam.com"`
+
 ```azurepowershell
 $contosolistener = New-AzApplicationGatewayHttpListener `
   -Name contosoListener `
@@ -167,7 +171,7 @@ $sku = New-AzApplicationGatewaySku `
 $appgw = New-AzApplicationGateway `
   -Name myAppGateway `
   -ResourceGroupName myResourceGroupAG `
-  -Location chinanorth `
+  -Location chinanorth2 `
   -BackendAddressPools $contosoPool, $fabrikamPool `
   -BackendHttpSettingsCollection $poolSettings `
   -FrontendIpConfigurations $fipconfig `
@@ -216,7 +220,7 @@ for ($i=1; $i -le 2; $i++)
     -ApplicationGatewayBackendAddressPoolsId $poolId
 
   $vmssConfig = New-AzVmssConfig `
-    -Location chinanorth `
+    -Location chinanorth2 `
     -SkuCapacity 2 `
     -SkuName Standard_DS2 `
     -UpgradePolicyMode Automatic
@@ -302,4 +306,3 @@ Remove-AzResourceGroup -Name myResourceGroupAG
 
 [使用基于 URL 路径的路由规则创建应用程序网关](./tutorial-url-route-powershell.md)
 
-<!-- Update_Description: wording update -->

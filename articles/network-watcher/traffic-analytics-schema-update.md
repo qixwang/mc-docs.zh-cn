@@ -1,9 +1,9 @@
 ---
-title: Azure 流量分析架构更新 - 2020 年 3 月 | Azure Docs
+title: Azure 流量分析架构更新 - 2020 年 3 月 | Azure
 description: 在流量分析架构中包含新字段的示例查询。
 services: network-watcher
 documentationcenter: na
-author: vinigam
+author: rockboyfor
 manager: agummadi
 editor: ''
 ms.service: network-watcher
@@ -11,26 +11,29 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/30/2020
-ms.author: v-tawe
 origin.date: 03/06/2020
-ms.openlocfilehash: f9e29e8036c70e1a769bb5e4b5f7e1005bf51e1a
-ms.sourcegitcommit: b81ea2ab9eafa986986fa3eb1e784cfe9bbf9ec1
+ms.date: 08/10/2020
+ms.testscope: no
+ms.testdate: ''
+ms.author: v-yeche
+ms.openlocfilehash: aaafaf450e5a4e3b9cfcf96155447e782c16ec5f
+ms.sourcegitcommit: 3eadca6821ef679d8ac6ca2dc46d6a13aac211cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83367820"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87548057"
 ---
-# <a name="sample-queries-with-new-fields-in-traffic-analytics-schema-august-2019-schema-update"></a>流量分析架构中包含新字段的示例查询（2019 年 8 月版架构更新）
+# <a name="sample-queries-with-new-fields-in-the-traffic-analytics-schema-august-2019-schema-update"></a>流量分析架构中包含新字段的示例查询（2019 年 8 月版架构更新）
 
-[流量分析日志架构](https://docs.azure.cn/network-watcher/traffic-analytics-schema)已更新，包含以下新字段：SrcPublicIPs_s、DestPublicIPs_s、NSGRule_s  。 在接下来的几个月内，以下较旧的字段将弃用：VMIP_s、Subscription_g、Region_s、NSGRules_s、Subnet_s、VM_s、NIC_s、PublicIPs_s、FlowCount_d        。
-新字段提供有关源和目标 IP 的信息并简化查询。
+[流量分析日志架构](/network-watcher/traffic-analytics-schema)包含以下新字段：SrcPublicIPs_s、DestPublicIPs_s、NSGRule_s  。 新字段提供有关源和目标 IP 的信息并且可以简化查询。
+
+在接下来的几个月内，以下较旧的字段将弃用：VMIP_s、Subscription_g、Region_s、NSGRules_s、Subnet_s、VM_s、NIC_s、PublicIPs_s、FlowCount_d        。
 
 以下三个示例演示如何将旧字段替换为新字段。
 
-## <a name="example-1---vmip_s-subscription_g-region_s-subnet_s-vm_s-nic_s-publicips_s"></a>示例 1 - VMIP_s、Subscription_g、Region_s、Subnet_s、VM_s、NIC_s、PublicIPs_s
+## <a name="example-1-vmip_s-subscription_g-region_s-subnet_s-vm_s-nic_s-and-publicips_s-fields"></a>示例 1：VMIP_s、Subscription_g、Region_s、Subnet_s、VM_s、NIC_s 和 PublicIPs_s 字段
 
-我们不必专门从 AzurePublic 和 ExternalPublic 流的 FlowDirection_s 字段中推断 Azure 和外部公共流的源和目标情况。 对于 NVA（网络虚拟设备），FlowDirection_s 字段也可能不适合使用。
+我们不必从 AzurePublic 和 ExternalPublic 流的 FlowDirection_s 字段中推断源和目标情况。 对于网络虚拟设备，FlowDirection_s 字段也可能不适合使用。
 
 ```Old Kusto query
 AzureNetworkAnalytics_CL
@@ -52,7 +55,6 @@ SourcePublicIPsAggregated = iif(isAzureOrExternalPublicFlows and FlowDirection_s
 DestPublicIPsAggregated = iif(isAzureOrExternalPublicFlows and FlowDirection_s == 'O', PublicIPs_s, "N/A")
 ```
 
-
 ```New Kusto query
 AzureNetworkAnalytics_CL
 | where SubType_s == "FlowLog" and FASchemaVersion_s == "2"
@@ -72,12 +74,13 @@ SourcePublicIPsAggregated = iif(isnotempty(SrcPublicIPs_s), SrcPublicIPs_s, "N/A
 DestPublicIPsAggregated = iif(isnotempty(DestPublicIPs_s), DestPublicIPs_s, "N/A")
 ```
 
+## <a name="example-2-nsgrules_s-field"></a>示例 2：NSGRules_s 字段
 
-## <a name="example-2---nsgrules_s"></a>示例 2 - NSGRules_s
+旧字段使用以下格式：
 
-早期字段的格式为：<Index value 0)>|<NSG_RULENAME>|<Flow Direction>|<Flow Status>|<FlowCount ProcessedByRule>
+`<Index value 0)>|<NSG_ RuleName>|<Flow Direction>|<Flow Status>|<FlowCount ProcessedByRule>`
 
-我们以前在 NSG 和 NSGRules 之间聚合数据。 现在我们不进行聚合。 因此，NSGList_s 仅包含一个 NSG，NSGRules_s 之前也仅包含一个规则。 我们在此处删除了复杂的格式，同样的情况也存在于下方所述的其他字段中：
+我们不再跨网络安全组 (NSG) 聚合数据。 在更新后的架构中，NSGList_s 只包含一个 NSG。 此外，NSGRules 也只包含一条规则。 如示例中所示，我们删除了此处和其他字段中的复杂格式。
 
 ```Old Kusto query
 AzureNetworkAnalytics_CL
@@ -102,16 +105,26 @@ FlowStatus = FlowStatus_s,
 FlowCountProcessedByRule = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d
 ```
 
-## <a name="example-3---flowcount_d"></a>示例 3 - FlowCount_d
+## <a name="example-3-flowcount_d-field"></a>示例 3：FlowCount_d 字段
 
-由于我们不会跨 NSG 合并数据，因此 FlowCount_d 即为 AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d。
-上面 4 个中只有 1 个不为零，剩余的三个为 0。 该字段指示捕获流的 NIC 中的状态和计数。
+因为我们不跨 NSG 聚合数据，所以 FlowCount_d 非常简单：
 
-如果允许该流，则填充一个前缀为“Allowed”的字段。 否则，填充一个前缀为“Denied”的字段。
-如果流是入站流，则填充一个后缀为“\_d”（如“InFlows_d”）的字段。 否则，填充“OutFlows_d”。
+AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d   
 
-根据上述 2 个条件，我们知道将填充 4 个中的哪一个。
+这四个字段中只有一个是非零的。 其他三个字段将为零。 将填充这些字段以指示捕获流的 NIC 中的状态和计数。
 
+为了说明这些条件：
+
+- 如果允许该流，则填充一个前缀为“Allowed”的字段。
+- 如果拒绝该流，则填充一个前缀为“Denied”的字段。
+- 如果流是入站流，则填充一个后缀为“InFlows_d”的字段。
+- 如果流是出站流，则填充一个后缀为“OutFlows_d”的字段。
+
+根据上述条件，我们知道需要填充四个字段中的哪一个。
 
 ## <a name="next-steps"></a>后续步骤
-若要获取常见问题的解答，请参阅[流量分析常见问题解答](traffic-analytics-faq.md)。若要查看有关功能的详细信息，请参阅[流量分析文档](traffic-analytics.md)
+
+- 若要获取常见问题的解答，请参阅[流量分析常见问题解答](traffic-analytics-faq.md)。
+- 若要查看有关功能的详细信息，请参阅[流量分析文档](traffic-analytics.md)。
+
+<!-- Update_Description: update meta properties, wording update, update link -->

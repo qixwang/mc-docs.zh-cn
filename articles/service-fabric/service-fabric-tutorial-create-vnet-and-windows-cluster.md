@@ -3,15 +3,17 @@ title: 在 Azure 中创建运行 Windows 的 Service Fabric 群集
 description: 本教程介绍如何通过使用 PowerShell 将 Windows Service Fabric 群集部署到 Azure 虚拟网络和网络安全组。
 ms.topic: tutorial
 origin.date: 07/22/2019
-ms.date: 06/08/2020
+ms.date: 08/03/2020
+ms.testscope: no
+ms.testdate: 06/08/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 2c4c6dd741a4b49846e39503d7e8c3f8d88a926b
-ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
+ms.openlocfilehash: e069c4b3d15089f2dfaa4a3ed95254beecee7ca7
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84356145"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426421"
 ---
 <!--Verify successfully-->
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>教程：将运行 Windows 的 Service Fabric 群集部署到 Azure 虚拟网络
@@ -20,7 +22,7 @@ ms.locfileid: "84356145"
 
 本教程介绍一个生产方案。 要创建小型群集以供测试，请参阅[创建测试群集](./scripts/service-fabric-powershell-create-secure-cluster-cert.md)。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 使用 PowerShell 在 Azure 中创建 VNET
@@ -34,7 +36,7 @@ ms.locfileid: "84356145"
 > * 使用 PowerShell 连接到群集
 > * 删除群集
 
-在此系列教程中，你将学习如何：
+在此系列教程中，你会学习如何：
 > [!div class="checklist"]
 > * 在 Azure 上创建安全群集
 > * [监视群集](service-fabric-tutorial-monitor-cluster.md)
@@ -50,7 +52,7 @@ ms.locfileid: "84356145"
 
 * 如果没有 Azure 订阅，请创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 * 安装 [Service Fabric SDK 和 PowerShell 模块](service-fabric-get-started.md)。
-* 安装 [Azure Powershell](https://docs.microsoft.com/powershell/azure/install-Az-ps)。
+* 安装 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)。
 * 回顾 [Azure 群集](service-fabric-azure-clusters-overview.md)的关键概念。
 * 为生产群集部署[计划并准备](service-fabric-cluster-azure-deployment-preparation.md)。
 
@@ -93,8 +95,8 @@ ms.locfileid: "84356145"
 * 证书保护（可在模板参数中配置）。
 * 已启用[反向代理](service-fabric-reverseproxy.md)。
 * 已启用 [DNS 服务](service-fabric-dnsservice.md)。
-* 铜级[持久性级别](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster)（可在模板参数中配置）。
-* 银级[可靠性级别](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster)（可在模板参数中配置）。
+* 铜级[持久性级别](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)（可在模板参数中配置）。
+* 银级[可靠性级别](service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster)（可在模板参数中配置）。
 * 客户端连接终结点：19000（可在模板参数中配置）。
 * HTTP 网关终结点：19080（可在模板参数中配置）。
 
@@ -163,7 +165,7 @@ ms.locfileid: "84356145"
 
 [azuredeploy.parameters.json][parameters] 参数文件声明用于部署群集和关联资源的多个值。 下面是要为部署修改的参数：
 
-**参数** | **示例值** | **说明** 
+**Parameter** | **示例值** | **说明** 
 |---|---|---|
 |adminUserName|vmadmin| 群集 VM 的管理员用户名。 [VM 的用户名要求](/virtual-machines/windows/faq#what-are-the-username-requirements-when-creating-a-vm)。 |
 |adminPassword|Password#1234| 群集 VM 的管理员密码。 [VM 的密码要求](/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm)。|
@@ -217,8 +219,8 @@ https://&lt;cluster_domain&gt;:19080/Explorer
 
 系统会提示登录到具有 Azure AD 租户管理权限的帐户。 完成此操作后，脚本会创建 Web 和本机应用程序来代表 Service Fabric 群集。 在 [Azure 门户](https://portal.azure.cn)中的租户的应用程序中，应会看到两个新条目：
 
-   * *ClusterName*\_Cluster
-   * *ClusterName*\_Client
+* *ClusterName*\_Cluster
+* *ClusterName*\_Client
 
 创建群集时该脚本显示资源管理器模板所需的 JSON，因此最好不要关闭 PowerShell 窗口。
 

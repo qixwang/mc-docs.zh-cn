@@ -6,18 +6,18 @@ author: WenJason
 manager: digimobile
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 origin.date: 08/29/2018
-ms.date: 07/06/2020
+ms.date: 08/03/2020
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e7280907955a36445b66c78fa9ba16978bc44e72
-ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
+ms.openlocfilehash: 8c1e1cb870f4531e787a2b3f619ff766c4bc0028
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85845829"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426466"
 ---
 # <a name="restore-an-existing-sql-pool"></a>还原现有的 SQL 池
 
@@ -25,7 +25,7 @@ ms.locfileid: "85845829"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-**验证 DTU 容量。** 每个池都由一个具有默认 DTU 配额的逻辑 SQL Server（例如 myserver.database.chinacloudapi.cn）托管。 验证该服务器的剩余 DTU 配额是否足够进行数据库还原。
+**验证 DTU 容量。** 每个池都由一个具有默认 DTU 配额的[逻辑 SQL server](../../azure-sql/database/logical-servers.md)（例如 myserver.database.chinacloudapi.cn）托管。 验证该服务器的剩余 DTU 配额是否足够进行数据库还原。
 
 ## <a name="before-you-begin"></a>准备阶段
 
@@ -52,7 +52,7 @@ ms.locfileid: "85845829"
 
 7. 验证已还原的 SQL 池是否处于联机状态。
 
-8. 完成还原后，即可按[在恢复后配置数据库](../../sql-database/sql-database-disaster-recovery.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery)中的说明配置恢复的 SQL 池。
+8. 完成还原后，即可按[在恢复后配置数据库](../../azure-sql/database/disaster-recovery-guidance.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery)中的说明配置恢复的 SQL 池。
 
 ```Powershell
 

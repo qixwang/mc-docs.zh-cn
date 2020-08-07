@@ -7,14 +7,14 @@ manager: carmonm
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 05/20/2020
+ms.date: 07/17/2020
 ms.author: v-johya
-ms.openlocfilehash: 88acbddcc358959b4079ee0a36fe303bce503e2a
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+ms.openlocfilehash: 2e29c1182b47015b639bf3efab01adbe05fe184a
+ms.sourcegitcommit: b5794af488a336d84ee586965dabd6f45fd5ec6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83797029"
+ms.lasthandoff: 08/01/2020
+ms.locfileid: "87508436"
 ---
 # <a name="workbook-drop-down-parameters"></a>工作簿下拉列表参数
 
@@ -48,7 +48,9 @@ ms.locfileid: "83797029"
     ![显示如何创建静态下拉列表参数的插图](./media/workbook-dropdowns/dropdown-create.png)
 
 ## <a name="creating-a-static-dropdown-with-groups-of-items"></a>创建包含项组的静态下拉列表
+
 如果查询结果/JSON 包含“group”字段，则下拉列表将显示值组。 请遵循上面的示例，但改用以下 JSON：
+
 ```json
 [
     { "value":"dev", "label":"Development", "group":"Development" },
@@ -59,7 +61,8 @@ ms.locfileid: "83797029"
     { "value":"prod2", "label":"Prod 2", "group":"Production" }
 ]
 ```
-    ![Image showing an example of a grouped dropdown](./media/workbook-dropdowns/grouped-dropDown.png)
+
+![显示分组下拉列表示例的图像](./media/workbook-dropdowns/grouped-dropDown.png)
 
 
 ## <a name="creating-a-dynamic-drop-down-parameter"></a>创建动态下拉列表参数
@@ -86,6 +89,7 @@ ms.locfileid: "83797029"
     ![显示如何创建动态下拉列表的插图](./media/workbook-dropdowns/dropdown-dynamic.png)
 
 ## <a name="referencing-drop-down-parameter"></a>引用下拉列表参数
+
 ### <a name="in-kql"></a>在 KQL 中
 1. 在工作簿中添加查询控件，然后选择 Application Insights 资源。
 2. 在 KQL 编辑器中输入此片段
@@ -122,7 +126,8 @@ dependencies
 | serialize Rank = row_number()
 | project value = name, label = strcat('🌐 ', name), selected = iff(Rank == 1, true, false), group = operation_Name
 ```
-    ![Image showing a drop-down parameter using value, label, selection and group options](./media/workbook-dropdowns/dropdown-more-options.png)
+
+![显示使用值、标签、选项和组选项的下拉列表参数的图像](./media/workbook-dropdowns/dropdown-more-options.png)
 
 
 ## <a name="drop-down-parameter-options"></a>下拉列表参数选项

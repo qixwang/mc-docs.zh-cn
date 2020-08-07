@@ -1,25 +1,26 @@
 ---
-title: 删除 Azure 网络观察程序中网络安全组流日志的存储 Blob | Azure Docs
+title: 删除 Azure 网络观察程序中网络安全组流日志的存储 Blob | Azure
 description: 本文介绍了如何在 Azure 网络观察程序中删除超过了其保留策略期限的网络安全组流日志存储 blob。
 services: network-watcher
 documentationcenter: na
-author: damendo
-manager: ''
-editor: ''
+author: rockboyfor
+manager: digimobile
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 08/16/2019
-ms.date: 2/27/2020
-ms.author: v-lingwu
-ms.openlocfilehash: 0fd62a48ac99c17f58bbe0eabbad5baf146d31bc
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+ms.date: 08/10/2020
+ms.testscope: yes
+ms.testdate: 08/03/2020
+ms.author: v-yeche
+ms.openlocfilehash: df0f75dcb0ff56058bd9da1560e47f40985e3df1
+ms.sourcegitcommit: 3eadca6821ef679d8ac6ca2dc46d6a13aac211cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796756"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87548029"
 ---
 # <a name="delete-network-security-group-flow-log-storage-blobs-in-network-watcher"></a>在网络观察程序中删除网络安全组流日志存储 blob
 
@@ -27,7 +28,7 @@ ms.locfileid: "83796756"
 此脚本仅删除比用户指定的现有保留策略旧的存储 blob。
 
 ## <a name="run-powershell-script-to-delete-nsg-flow-logs"></a>运行 PowerShell 脚本来删除 NSG 流日志
- 
+
 将以下脚本复制并保存到某个位置，例如当前工作目录。 
 
 ```powershell
@@ -45,7 +46,7 @@ param (
         [switch] [Parameter(Mandatory=$false)] $Confirm
     )
 
-Login-AzAccount
+Connect-AzAccount -Environment AzureChinaCloud
 
 $SubId = Get-AzSubscription| Where-Object {$_.Id.contains($SubscriptionId.ToLower())}
 
@@ -127,15 +128,17 @@ Write-Output ('Retention policy for all NSGs evaluated and completed successfull
 ```
 
 1. 根据需要在脚本中输入以下参数：
-   - **SubscriptionId** [必需]：要从中删除 NSG 流日志 blob 的订阅 ID。
-   - **Location** [必需]：要为其删除 NSG 流日志 blob 的 NSG 的区域_位置字符串_。 可以在 Azure 门户上或 [GitHub](https://github.com/Azure/azure-extensions-cli/blob/beb3d3fe984cfa9c7798cb11a274c5337968cbc5/regions.go#L23) 上查看此信息。
-   - **Confirm** [可选]：如果要手动确认每个存储 blob 的删除，请传递 confirm 标志。
+    - **SubscriptionId** [必需]：要从中删除 NSG 流日志 blob 的订阅 ID。
+    - **Location** [必需]：要为其删除 NSG 流日志 blob 的 NSG 的区域_位置字符串_。 可以在 Azure 门户上或 [GitHub](https://github.com/Azure/azure-extensions-cli/blob/beb3d3fe984cfa9c7798cb11a274c5337968cbc5/regions.go#L23) 上查看此信息。
+    - **Confirm** [可选]：如果要手动确认每个存储 blob 的删除，请传递 confirm 标志。
 
 1. 运行保存的脚本，如以下示例中所示，其中脚本文件保存为 **Delete-NsgFlowLogsBlobs.ps1**：
-   ```
-   .\Delete-NsgFlowLogsBlobs.ps1 -SubscriptionId <subscriptionId> -Location  <location> -Confirm
-   ```
+    ```
+    .\Delete-NsgFlowLogsBlobs.ps1 -SubscriptionId <subscriptionId> -Location  <location> -Confirm
+    ```
     
 ## <a name="next-steps"></a>后续步骤
-- 客户可以使用 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)或 [Azure 自动化](https://docs.azure.cn/automation/)自动运行脚本
+- 客户可以使用 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)或 [Azure 自动化](https://www.azure.cn/home/features/automation/)自动运行脚本
+- 如需详细了解 NSG 日志记录，请参阅[网络安全组 (NSG) 的 Azure Monitor 日志](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fnetwork-watcher%2ftoc.json)。
 
+<!-- Update_Description: update meta properties, wording update, update link -->

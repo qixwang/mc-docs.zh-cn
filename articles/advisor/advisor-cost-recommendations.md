@@ -3,14 +3,14 @@ title: 使用 Azure 顾问降低服务成本
 description: 使用 Azure 顾问优化 Azure 部署的成本。
 ms.topic: article
 origin.date: 01/29/2019
-ms.date: 12/04/2019
+ms.date: 07/29/2020
 ms.author: lingliw
-ms.openlocfilehash: 83c9ee2b99189ce8fea66d6cf6deca57d5af2fab
-ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
+ms.openlocfilehash: a78f695ee505d4e574ad3556908eb868fe8b487b
+ms.sourcegitcommit: b5794af488a336d84ee586965dabd6f45fd5ec6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85516537"
+ms.lasthandoff: 08/01/2020
+ms.locfileid: "87508331"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>使用 Azure 顾问降低服务成本
 
@@ -54,7 +54,7 @@ ms.locfileid: "85516537"
 我们会分析你在过去 30 天内的应用服务独立环境印花费使用模式，建议你购买可最大限度地节省成本的预留容量。 通过预留容量，可以为独立环境印花费预购买按小时计的使用量，比预付费方式节省更多成本。 请注意，预留容量仅适用于印花费，不适用于应用服务实例。 预留容量是一项计费权益，它将自动应用于新部署或现有部署。 基于 3 年期预留定价并根据过去 30 天内的使用模式，计算各订阅成本节省的预估值。
 
 ### <a name="blob-storage-reserved-capacity"></a>Blob 存储预留容量
-我们分析了你在过去 30 天内的 Azure Blob 和 Datalake 存储使用情况，并计算出了可最大限度节省成本的预留容量购买量。 通过预留容量，可以预购买按小时计的使用量，比当前的按需方式节省更多成本。 Blob 存储预留容量仅适用于存储在 Azure Blob (GPv2)和 Azure Data Lake Storage (Gen 2) 上的数据。 预留容量是一项计费权益，它将自动应用于新部署或现有部署。 基于 3 年期预留定价并根据过去 30 天内观察到的使用模式，计算各订阅成本节省的预估值。 通过购买预留可以获得共享范围建议，并且可以进一步提高成本节省。
+我们分析了你在过去 30 天内的 Azure Blob 存储使用情况，并计算出了可最大限度节省成本的预留容量购买。 通过预留容量，可以预购买按小时计的使用量，比当前的按需方式节省更多成本。 Blob 存储预留容量仅适用于存储在 Azure Blob (GPv2)和 Azure Data Lake Storage (Gen 2) 上的数据。 预留容量是一项计费权益，它将自动应用于新部署或现有部署。 基于 3 年期预留定价并根据过去 30 天内观察到的使用模式，计算各订阅成本节省的预估值。 通过购买预留可以获得共享范围建议，并且可以进一步提高成本节省。
 
 ### <a name="mariadb-mysql-and-postgresql-reserved-capacity"></a>MariaDB、MySQL 和 PostgreSQL 预留容量
 我们会分析你在过去 30 天内的 Azure Database for MariaDB、Azure Database for MySQL 和 Azure Database for PostgreSQL 使用模式，建议你购买可最大限度地节省成本的预留容量。 通过预留容量，可以预购买按小时计的 MariaDB、MySQL 和 PostgreSQL 使用量，节省更多成本。 预留容量是一项计费权益，它将自动应用于新部署或现有部署。 基于 3 年期预留定价并根据过去 30 天内的使用模式，计算各订阅成本节省的预估值。 通过购买预留可以获得共享范围建议，并且可以进一步提高成本节省。
@@ -70,16 +70,13 @@ ms.locfileid: "85516537"
 
 Azure 顾问会检测到反复发生故障的 Azure 数据工厂管道，并建议你解决问题，或者在不需要这些故障管道的情况下将其删除。 即使这些管道在发生故障时未为你提供服务，我们也会向你收取相关费用。 
 
-## <a name="use-standard-snapshots-for-managed-disks"></a>使用托管磁盘的标准快照
-为了节省 60% 的成本，我们建议将快照存储在标准存储中，无论父磁盘的存储类型是什么，都是如此。 这是托管磁盘快照的默认选项。 Azure 顾问会标识存储在高级存储中的快照，并建议你将快照从高级存储迁移到标准存储。 [详细了解托管磁盘的定价](https://aka.ms/aa_manageddisksnapshot_learnmore)
-
 ## <a name="create-an-ephemeral-os-disk-recommendation"></a>创建临时 OS 磁盘的建议
 使用[临时 OS 磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/ephemeral-os-disks)，客户可获得以下好处：节省 OS 磁盘的存储成本。 降低 OS 磁盘的读取/写入延迟。 通过将 OS（和临时磁盘）重置为其原始状态，加速 VM 重置映像操作。 对于生存期较短的 IaaS VM 或具有无状态工作负载的 VM，最好使用临时 OS 磁盘。 顾问对可利用临时 OS 磁盘的资源提出了建议。 
 
 
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>如何访问 Azure 顾问中的成本建议
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.cn)。
 
 1. 在任意页面中搜索并选择[顾问](https://portal.azure.cn/#blade/Microsoft_Azure_Expert/AdvisorBlade)。
 

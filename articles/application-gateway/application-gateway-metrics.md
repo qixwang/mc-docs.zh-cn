@@ -5,14 +5,14 @@ services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-ms.date: 06/23/2020
+ms.date: 08/03/2020
 ms.author: v-junlch
-ms.openlocfilehash: e9fcc7015a9661c11f71792b15da39ece83be87d
-ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
+ms.openlocfilehash: 7d44fd02ea97304f13b6912c2d86077ff5ba9e9f
+ms.sourcegitcommit: 36e7f37481969f92138bfe70192b1f4a2414caf7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87244946"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87796261"
 ---
 # <a name="metrics-for-application-gateway"></a>应用程序网关的指标
 
@@ -60,7 +60,7 @@ ms.locfileid: "87244946"
 
 
 
-这些指标可用于确定速度减慢的原因是与客户端网络、应用程序网关性能、后端网络和后端服务器 TCP 堆栈饱和、后端应用程序性能还是文件大小较大有关。
+这些指标可用于确定速度减慢的原因是与客户端网络、应用程序网关性能、后端网络和后端服务器 TCP 堆栈饱和、后端应用程序性能相关，还是与文件大小较大有关。
 
 例如，如果“后端第一个字节响应时间”趋势存在高峰，但“后端连接时间”趋势稳定，则可以推断应用程序网关与后端之间存在网络延迟，但建立连接所用的时间是稳定的，而出现高峰的原因是后端应用程序的响应时间增大。  另一方面，如果“后端第一个字节响应时间”中的高峰与“后端连接时间”中的相应高峰相关联，则可以推断应用程序网关与后端服务器或后端服务器 TCP 堆栈之间的网络已饱和。  
 
@@ -198,7 +198,7 @@ ms.locfileid: "87244946"
 
 在下图中可以看到过去 30 分钟显示的三个指标的示例：
 
-[![](./media/application-gateway-diagnostics/figure5.png "Metric view")](./media/application-gateway-diagnostics/figure5-lb.png#lightbox)
+:::image type="content" source="media/application-gateway-diagnostics/figure5.png" alt-text="指标视图。" lightbox="media/application-gateway-diagnostics/figure5-lb.png":::
 
 若要查看当前的指标列表，请参阅 [Azure Monitor 支持的指标](../azure-monitor/platform/metrics-supported.md)。
 

@@ -3,14 +3,16 @@ title: 指定 Service Fabric 服务终结点
 description: 如何在服务清单中描述终结点资源，包括如何设置 HTTPS 终结点
 ms.topic: conceptual
 origin.date: 02/23/2018
-ms.date: 06/08/2020
+ms.date: 08/03/2020
+ms.testscope: yes|no
+ms.testdate: 08/03/2020Null
 ms.author: v-yeche
-ms.openlocfilehash: df1b4b68e1b518cb88707a576ebeab5113b5a885
-ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
+ms.openlocfilehash: a2a56be353bb84a772d9c2cb467fff2fc88adb63
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84356139"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426475"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>在服务清单中指定资源
 ## <a name="overview"></a>概述
@@ -54,8 +56,6 @@ ms.locfileid: "84356139"
 
 ## <a name="example-specifying-an-http-endpoint-for-your-service"></a>示例：为服务指定 HTTP 终结点
 以下服务清单在 &lt;Resources&gt; 元素中定义了 1 个 TCP 终结点资源和 2 个 HTTP 终结点资源。
-
-HTTP 终结点由 Service Fabric 自动建立 ACL。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -159,6 +159,9 @@ HTTPS 协议提供服务器身份验证，用于对客户端-服务器通信进�
 
 对于 Linux 群集，**MY** 存储默认为文件夹 **/var/lib/sfcerts**。
 
+## <a name="port-acling-for-http-endpoints"></a>HTTP 终结点的端口 ACL 操作
+Service Fabric 将对默认指定的 HTTP(S) 终结点自动执行 ACL。 如果某个终结点没有关联的 [SecurityAccessPolicy](service-fabric-assign-policy-to-endpoint.md)，并且 Service Fabric 配置为使用具有管理员权限的帐户运行，则它将不会执行自动 ACL。
+
 ## <a name="overriding-endpoints-in-servicemanifestxml"></a>重写 ServiceManifest.xml 中的终结点
 
 在 ApplicationManifest 中，添加一个 ResourceOverrides 部分，作为 ConfigOverrides 部分的同级。 在本部分中，可以为服务清单中指定的资源部分中的终结点部分指定替代。 运行时 5.7.217/SDK 2.7.217 及更高版本支持替代终结点。
@@ -219,4 +222,4 @@ PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -Application
 
 假设指定了错误值。 例如，对于“端口”，指定了字符串值“Foo”而不是 int。New-ServiceFabricApplication 命令将失败并返回错误：“ResourceOverrides”节中名为“ServiceEndpoint1”的替代参数的属性“Port1”无效。 指定的值为“Foo”，而要求的值为“int”。
 
-<!--Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -4,23 +4,25 @@ titleSuffix: Azure Network Watcher
 description: 在 Azure 中使用网络观察程序和 Grafana 管理和分析网络安全组流日志。
 services: network-watcher
 documentationcenter: na
-author: damendo
+author: rockboyfor
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 09/15/2017
-ms.date: 11/26/2018
-ms.author: v-lingwu
-ms.openlocfilehash: 4dfc7ed5cae9f3c9c4e5f5a39c5b8481a335d27d
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+ms.date: 08/10/2020
+ms.testscope: yes
+ms.testdate: 08/03/2020
+ms.author: v-yeche
+ms.openlocfilehash: b546032e9a9c6fb74711a4c3816fe33fd0af67d3
+ms.sourcegitcommit: 3eadca6821ef679d8ac6ca2dc46d6a13aac211cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796844"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87548050"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-using-network-watcher-and-grafana"></a>使用网络观察程序和 Grafana 管理和分析网络安全组流日志
 
@@ -32,7 +34,7 @@ ms.locfileid: "83796844"
 
 NSG 流日志是使用网络观察程序启用的，并且存储在 Azure Blob 存储中。 Logstash 插件用于连接和处理 Blob 存储中的流日志并将其发送到 ElasticSearch。  将流日志存储到 ElasticSearch 中之后，可在 Grafana 中对其进行分析，并在自定义的仪表板中将其可视化。
 
-![NSG 网络观察程序 Grafana](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig1.png)
+:::image type="content" source="./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig1.png" alt-text="NSG 网络观察程序 Grafana":::
 
 ## <a name="installation-steps"></a>安装步骤
 
@@ -42,7 +44,7 @@ NSG 流日志是使用网络观察程序启用的，并且存储在 Azure Blob �
 
 ### <a name="setup-considerations"></a>安装注意事项
 
-在此示例中，Azure 中部署的 Ubuntu 16.04 LTS 服务器上配置了 Grafana、ElasticSearch 和 Logstash。 此最小安装用于运行所有三个组件 - 它们均在同一 VM 上运行。 此安装应当仅用于测试和非关键工作负荷。 Logstash、Elasticsearch 和 Grafana 都可以构建为跨多个实例独立缩放。 有关详细信息，请参阅这些组件中每一个的文档。
+在此示例中，Azure 中部署的 Ubuntu 16.04 LTS 服务器上配置了 Grafana、ElasticSearch 和 Logstash。 此最小安装用于运行所有三个组件 - 均在同一 VM 上运行。 此安装应当仅用于测试和非关键工作负荷。 Logstash、Elasticsearch 和 Grafana 都可以构建为跨多个实例独立缩放。 有关详细信息，请参阅这些组件中每一个的文档。
 
 ### <a name="install-logstash"></a>安装 Logstash
 
@@ -126,7 +128,7 @@ NSG 流日志是使用网络观察程序启用的，并且存储在 Azure Blob �
         convert => {"destPort" => "integer"}
         add_field => { "message" => "%{Message}" }        
       }
- 
+
       date {
         match => ["unixtimestamp" , "UNIX"]
       }
@@ -184,23 +186,23 @@ sudo dpkg -i grafana_4.5.1_amd64.deb
 sudo service grafana-server start
 ```
 
-有关更多的安装信息，请参阅 [Installing on Debian / Ubuntu](http://docs.grafana.org/installation/debian/)（在 Debian / Ubuntu 上进行安装）。
+有关更多的安装信息，请参阅 [Installing on Debian / Ubuntu](https://docs.grafana.org/installation/debian/)（在 Debian / Ubuntu 上进行安装）。
 
 #### <a name="add-the-elasticsearch-server-as-a-data-source"></a>将 ElasticSearch 服务器添加为数据源
 
 接下来，需要将包含流日志的 ElasticSearch 索引添加为数据源。 可以通过选择“添加数据源”并使用相关信息完成表单来添加数据源。 可以在下面的屏幕截图中找到此配置的示例：
 
-![添加数据源](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig2.png)
+:::image type="content" source="./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig2.png" alt-text="添加数据源":::
 
 #### <a name="create-a-dashboard"></a>创建仪表板
 
 现在，你已成功配置了 Grafana 来从包含 NSG 流日志的 ElasticSearch 索引读取数据，可以创建并个性化仪表板了。 若要创建新仪表板，请选择“创建第一个仪表板”。 以下示例图形配置显示了按 NSG 规则分段的流：
 
-![仪表板图形](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig3.png)
+:::image type="content" source="./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig3.png" alt-text="仪表板图形":::
 
 以下屏幕截图描绘了一个图形和图表，其中显示了出现最多的流及其频率。 流还可以按 NSG 规则以及按决策显示。 Grafana 是可以高度自定义的，因此，建议创建仪表板来适应你的特定监视需求。 下面的示例显示了一个典型的仪表板：
 
-![仪表板图形](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig4.png)
+:::image type="content" source="./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig4.png" alt-text="仪表板图形":::
 
 ## <a name="conclusion"></a>结论
 
@@ -210,4 +212,4 @@ sudo service grafana-server start
 
 - 了解有关使用[网络观察程序](network-watcher-monitoring-overview.md)的详细信息。
 
-<!--Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

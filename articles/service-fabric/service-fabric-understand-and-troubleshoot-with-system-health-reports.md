@@ -4,14 +4,16 @@ description: 介绍了 Azure Service Fabric 组件发送的运行状况报告，
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 02/28/2018
-ms.date: 01/13/2020
+ms.date: 08/03/2020
+ms.testscope: no
+ms.testdate: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 9d23c48b858cb8c10facc4dc1a97a1796477323c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 31e29bb17d1205ccee4b34b24481d192f3629fa2
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75741966"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426459"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>使用系统运行状况报告进行故障排除
 Azure Service Fabric 组件提供有关现成群集中所有实体的系统运行状况报告。 [运行状况存储](service-fabric-health-introduction.md#health-store)根据系统报告来创建和删除实体。 它还会将这些实体组织为层次结构以捕获实体交互。
@@ -874,4 +876,4 @@ HealthEvents               :
 
 * [Service Fabric 应用程序升级](service-fabric-application-upgrade.md)
 
-<!--Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

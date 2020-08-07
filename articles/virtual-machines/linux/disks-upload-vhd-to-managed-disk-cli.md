@@ -4,22 +4,20 @@ description: 了解如何使用 Azure CLI 通过直接上传将 VHD 上传到 Az
 services: virtual-machines,storage
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 06/17/2020
+ms.date: 07/29/2020
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 44416ad7c1dc51afced5cbdd36e21d38652a571a
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: 7bdd860c37526a952e03ebb028c6b82fd46f7b67
+ms.sourcegitcommit: b5794af488a336d84ee586965dabd6f45fd5ec6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097216"
+ms.lasthandoff: 08/01/2020
+ms.locfileid: "87508337"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-cli"></a>将 VHD 上传到 Azure，或将托管磁盘复制到其他区域 - Azure CLI
 
 [!INCLUDE [disks-upload-vhd-to-disk-intro](../../../includes/disks-upload-vhd-to-disk-intro.md)]
-
-<!--Not Available on  It is not yet supported for ultra SSDs-->
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -42,8 +40,6 @@ ms.locfileid: "85097216"
 > [!NOTE]
 > 在任一状态下，无论实际磁盘类型是什么，都会按[标准 HDD 定价](https://www.azure.cn/pricing/details/storage/managed-disks/)对托管磁盘计费。 例如，P10 将按 S10 计费。 在对托管磁盘调用 `revoke-access` 之前（将磁盘附加到 VM 需要执行此调用），都是如此。
 
-<!-- Correct on https://www.azure.cn/pricing/details/storage/managed-disks/ in China -->
-
 ## <a name="create-an-empty-managed-disk"></a>创建空托管磁盘
 
 在创建要上传的空标准 HDD 之前，需要获取要上传的 VHD 的文件大小（以字节为单位）。 为此，可以使用 `wc -c <yourFileName>.vhd` 或 `ls -al <yourFileName>.vhd`。 指定 **--upload-size-bytes** 参数时将使用此值。
@@ -52,13 +48,14 @@ ms.locfileid: "85097216"
 
 将 `<yourdiskname>`、`<yourresourcegroupname>`、`<yourregion>` 替换为所选值。 `--upload-size-bytes` 参数包含示例值 `34359738880`，请将其替换为适合你的值。
 
+> [!TIP]
+> 如果要创建 OS 磁盘，请将--hyper-v-generation <yourGeneration> 添加到 `az disk create`。
+
 ```azurecli
 az disk create -n <yourdiskname> -g <yourresourcegroupname> -l <yourregion> --for-upload --upload-size-bytes 34359738880 --sku standard_lrs
 ```
 
 若要上传高级 SSD 或标准 SSD，请将 **standard_lrs** 替换为 **premium_LRS** 或 **standardssd_lrs**。 目前不支持超级磁盘。
-
-<!--Not Available on Ultra SSD is not yet supported-->
 
 现在，你已创建了一个针对上传过程配置的空托管磁盘，可以将 VHD 上传到其中了。 若要将 VHD 上传到磁盘，需要一个可写的 SAS，以便将此磁盘作为上传目标引用。
 
@@ -106,6 +103,9 @@ az disk revoke-access -n <yourdiskname> -g <yourresourcegroupname>
 > 提供 Azure 中托管磁盘的磁盘大小（以字节为单位）时，需要添加 512 偏移量。 这是因为，Azure 在返回磁盘大小时会省略脚注。 如果不添加此偏移量，复制将会失败。 以下脚本中已添加此偏移量。
 
 请将 `<sourceResourceGroupHere>`、`<sourceDiskNameHere>`、`<targetDiskNameHere>`、`<targetResourceGroupHere>` 和 `<yourTargetLocationHere>`（例如，位置值为 chinanorth2）替换为自己的值，然后运行以下脚本来复制托管磁盘。
+
+> [!TIP]
+> 如果要创建 OS 磁盘，请将--hyper-v-generation <yourGeneration> 添加到 `az disk create`。
 
 ```azurecli
 sourceDiskName = <sourceDiskNameHere>

@@ -1,27 +1,24 @@
 ---
-title: 使用诊断设置在 Azure 中收集平台指标和日志
+title: 创建诊断设置以将平台日志和指标发送到不同的目标
 description: 通过使用某个诊断设置，将 Azure Monitor 平台指标和日志发送到 Azure Monitor 日志、Azure 存储或 Azure 事件中心。
 author: Johnnytechn
 ms.author: v-johya
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 05/28/2020
+ms.date: 07/17/2020
 ms.subservice: logs
-ms.openlocfilehash: fff586c2c1b2e22b71ec3ef86c8fe6cfd22dce02
-ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
+ms.openlocfilehash: cfafef7f43aea2113f04eaa785889a28eda26cca
+ms.sourcegitcommit: b5794af488a336d84ee586965dabd6f45fd5ec6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84440589"
+ms.lasthandoff: 08/01/2020
+ms.locfileid: "87508448"
 ---
-# <a name="create-diagnostic-setting-to-collect-resource-logs-and-metrics-in-azure"></a>创建诊断设置以在 Azure 中收集资源日志和指标
-
-Azure 中的[平台日志](platform-logs-overview.md)（包括 Azure 活动日志和资源日志）提供 Azure 资源及其所依赖的 Azure 平台的详细诊断和审核信息。 默认情况下会收集[平台指标](data-platform-metrics.md)，它们通常存储在 Azure Monitor 指标数据库中。
-
-本文详细介绍如何创建和配置诊断设置，以将平台指标和平台日志发送到不同的目标。
+# <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>创建诊断设置以将平台日志和指标发送到不同的目标
+Azure 中的[平台日志](platform-logs-overview.md)（包括 Azure 活动日志和资源日志）提供 Azure 资源及其所依赖的 Azure 平台的详细诊断和审核信息。 默认情况下会收集[平台指标](data-platform-metrics.md)，它们通常存储在 Azure Monitor 指标数据库中。 本文详细介绍如何创建和配置诊断设置，以将平台指标和平台日志发送到不同的目标。
 
 > [!IMPORTANT]
-> 应先禁用任何旧的配置，然后再创建用于收集活动日志的诊断设置。 有关详细信息，请参阅[通过旧版设置收集 Azure 活动日志](diagnostic-settings-legacy.md)。
+> 应先禁用任何旧的配置，然后再为活动日志创建诊断设置。 有关详细信息，请参阅[旧式收集方法](activity-log.md#legacy-collection-methods)。
 
 每个 Azure 资源都需有自身的诊断设置，其设置定义了以下条件：
 
@@ -31,7 +28,7 @@ Azure 中的[平台日志](platform-logs-overview.md)（包括 Azure 活动日�
 一个诊断设置只能为每个目标定义一种类型。 若要将数据发送到多个特定的目标类型（例如，两个不同的 Log Analytics 工作区），请创建多个设置。 每个资源最多可以有 5 个诊断设置。
 
 > [!NOTE]
-> [平台指标](metrics-supported.md)自动收集到 [Azure Monitor 指标](data-platform-metrics.md)中。 使用诊断设置可将特定 Azure 服务的指标收集到 Azure Monitor 日志中，以使用具有特定限制的[日志查询](../log-query/log-query-overview.md)结合其他监视数据进行分析。 
+> [平台指标](metrics-supported.md)自动发送到 [Azure Monitor 指标](data-platform-metrics.md)中。 使用诊断设置可将特定 Azure 服务的指标发送到 Azure Monitor 日志中，以使用具有特定限制的[日志查询](../log-query/log-query-overview.md)结合其他监视数据进行分析。 
 >  
 >  
 > 当前不支持通过诊断设置发送多维指标。 多维指标将按平展后的单维指标导出，并跨维值聚合。 例如：可以在每个节点级别浏览区块链上的“IOReadBytes”指标并为其绘制图表。 但是，当通过诊断设置导出时，导出的指标将表示为所有节点的所有读取字节数。 此外，由于内部限制，并非所有指标都可以导出到 Azure Monitor 日志/Log Analytics。 有关详细信息，请参阅[可导出指标的列表](metrics-supported-export-diagnostic-settings.md)。 
@@ -39,17 +36,41 @@ Azure 中的[平台日志](platform-logs-overview.md)（包括 Azure 活动日�
 >  
 > 若要解决特定指标的这些限制，建议你使用[指标 REST API](https://docs.microsoft.com/rest/api/monitor/metrics/list) 手动提取它们并使用 [Azure Monitor 数据收集器 API](data-collector-api.md) 将其导入到 Azure Monitor 日志中。  
 
+
 ## <a name="destinations"></a>Destinations
 
 平台日志和指标可以发送到下表中列出的目标。 有关将数据发送到该目标的详细信息，请参阅下表中的每个链接。
 
 | 目标 | 说明 |
 |:---|:---|
-| [Log Analytics 工作区](resource-logs-collect-workspace.md) | 将日志和指标收集到 Log Analytics 工作区可以使用强大的日志查询结合 Azure Monitor 收集的其他监视数据对其进行分析，并利用其他 Azure Monitor 功能，例如警报和可视化。 |
-| [事件中心](resource-logs-stream-event-hubs.md) | 向事件中心发送日志和指标可将数据流式传输到外部系统，例如第三方 SIEM 和其他日志分析解决方案。 |
-| [Azure 存储帐户](resource-logs-collect-storage.md) | 将日志和指标存档到 Azure 存储帐户有助于审核、静态分析或备份。 与 Azure Monitor 日志和 Log Analytics 工作区相比，Azure 存储成本较低，并且日志可以无限期保留。 |
+| [Log Analytics 工作区](#log-analytics-workspace) | 将日志和指标发送到 Log Analytics 工作区可以使用强大的日志查询结合 Azure Monitor 收集的其他监视数据对其进行分析，并利用其他 Azure Monitor 功能，例如警报和可视化。 |
+| [事件中心](#event-hub) | 向事件中心发送日志和指标可将数据流式传输到外部系统，例如第三方 SIEM 和其他日志分析解决方案。 |
+| [Azure 存储帐户](#azure-storage) | 将日志和指标存档到 Azure 存储帐户有助于审核、静态分析或备份。 与 Azure Monitor 日志和 Log Analytics 工作区相比，Azure 存储成本较低，并且日志可以无限期保留。 |
 
-## <a name="create-diagnostic-settings-in-azure-portal"></a>在 Azure 门户中创建诊断设置
+
+## <a name="prerequisites"></a>先决条件
+必须使用所需的权限来创建诊断设置的任何目标。 请参阅以下部分，了解每个目标的先决条件要求。
+
+### <a name="log-analytics-workspace"></a>Log Analytics 工作区
+请[创建新的工作区](../learn/quick-create-workspace.md)（如果还没有）。 只要配置设置的用户同时拥有两个订阅的相应 RBAC 访问权限，工作区就不必位于发送日志的资源所在的订阅中。
+
+### <a name="event-hub"></a>事件中心
+请[创建事件中心](../../event-hubs/event-hubs-create.md)（如果还没有）。 只要配置设置的用户同时拥有两个订阅的相应 RBAC 访问权限并且这两个订阅都在同一个 AAD 租户中，事件中心命名空间就不必与发出日志的订阅位于同一订阅中。
+
+命名空间的共享访问策略定义流式处理机制具有的权限。 流式传输到事件中心需要“管理”、“发送”和“侦听”权限。 在 Azure 门户中事件中心命名空间的“配置”选项卡下，可以创建或修改共享访问策略。 若要更新诊断设置，使之包括流式传输，则必须在事件中心授权规则中拥有 ListKey 权限。 
+
+
+### <a name="azure-storage"></a>Azure 存储
+请[创建 Azure 存储帐户](../../storage/common/storage-account-create.md)（如果还没有）。 只要配置设置的用户同时拥有两个订阅的相应 RBAC 访问权限，存储帐户就不必位于发送日志的资源所在的订阅中。
+
+不应使用其中存储了其他非监视数据的现有存储帐户，以便更好地控制数据所需的访问权限。 不过，如果要将活动日志和资源日志一同存档，则可以选择使用该存储帐户在一个中心位置保留所有监视数据。
+
+若要将数据发送到不可变存储，请按照[为 Blob 存储设置和管理不可变策略](../../storage/blobs/storage-blob-immutability-policies-manage.md)中所述为存储帐户设置不可变策略。 必须按照本文中的所有步骤操作，包括启用受保护的追加 blob 写入操作。
+
+<!--Not available in MC: Azure Data Lake Storage Gen2 accounts-->
+
+
+## <a name="create-in-azure-portal"></a>在 Azure 门户中创建
 
 可以在 Azure 门户中通过“Azure Monitor”菜单或资源菜单配置诊断设置。
 
@@ -116,7 +137,7 @@ Azure 中的[平台日志](platform-logs-overview.md)（包括 Azure 活动日�
 
 片刻之后，新设置会显示在此资源的设置列表中，生成新的事件数据后，日志会立即流式传输到指定的目标。 发出事件后可能需要长达 15 分钟的时间该事件才会[出现在 Log Analytics 工作区中](data-ingestion-time.md)。
 
-## <a name="create-diagnostic-settings-using-powershell"></a>使用 PowerShell 创建诊断设置
+## <a name="create-using-powershell"></a>使用 PowerShell 创建
 
 在 [Azure PowerShell](powershell-quickstart-samples.md) 中使用 [Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) cmdlet 创建诊断设置。 有关参数说明，请参阅此 cmdlet 的文档。
 
@@ -129,7 +150,7 @@ Azure 中的[平台日志](platform-logs-overview.md)（包括 Azure 活动日�
 Set-AzDiagnosticSetting -Name KeyVault-Diagnostics -ResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault -Category AuditEvent -MetricCategory AllMetrics -Enabled $true -StorageAccountId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount -WorkspaceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/myworkspace  -EventHubAuthorizationRuleId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhub/authorizationrules/RootManageSharedAccessKey
 ```
 
-## <a name="create-diagnostic-settings-using-azure-cli"></a>使用 Azure CLI 创建诊断设置
+## <a name="create-using-azure-cli"></a>使用 Azure CLI 创建
 
 在 [Azure CLI](/cli/monitor?view=azure-cli-latest) 中使用 [az monitor diagnostic-settings create](/cli/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create) 命令创建诊断设置。 有关参数说明，请参阅此命令的文档。
 
@@ -149,13 +170,15 @@ az monitor diagnostic-settings create  \
 --event-hub-rule /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhub/authorizationrules/RootManageSharedAccessKey
 ```
 
-### <a name="configure-diagnostic-settings-using-rest-api"></a>使用 REST API 配置诊断设置
+## <a name="create-using-resource-manager-template"></a>使用资源管理器模板创建
+若要使用资源管理器模板创建或更新诊断设置，请参阅 [Azure Monitor 中的诊断设置的资源管理器模板示例](../samples/resource-manager-diagnostic-settings.md)。
 
+## <a name="create-using-rest-api"></a>使用 REST API 创建
 若要使用 [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/) 创建或更新诊断设置，请参阅[诊断设置](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)。
 
-### <a name="configure-diagnostic-settings-using-resource-manager-template"></a>使用资源管理器模板配置诊断设置
+## <a name="create-using-azure-policy"></a>使用 Azure Policy 创建
+由于需要为每个 Azure 资源创建诊断设置，因此在创建每个资源时，可以使用 Azure Policy 来自动创建诊断设置。 有关详细信息，请参阅[使用 Azure Policy 大规模部署 Azure Monitor](deploy-scale.md)。
 
-若要使用资源管理器模板创建或更新诊断设置，请参阅[使用资源管理器模板在 Azure Monitor 中创建诊断设置](diagnostic-settings-template.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

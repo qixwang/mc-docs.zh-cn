@@ -4,20 +4,20 @@ description: 本文介绍 Azure 应用程序 Standard_v2 和 WAF_v2 SKU，其中
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
-ms.date: 06/23/2020
+ms.topic: conceptual
+ms.date: 08/03/2020
 ms.author: v-junlch
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: c9b479f9ad6910c5b51c39ba0f769e12a49d0553
-ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
+ms.openlocfilehash: ef878fabb4c05c4100216f4a32d43057a7d991d8
+ms.sourcegitcommit: 36e7f37481969f92138bfe70192b1f4a2414caf7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85516441"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87796259"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>自动缩放和区域冗余应用程序网关 v2 
 
-应用程序网关和 Web 应用程序防火墙 (WAF) 在 Standard_v2 和 WAF_v2 SKU 中也可用。 v2 SKU 提供性能增强，并添加了对自动缩放、区域冗余等关键新功能以及静态 VIP 的支持。 Standard 和 WAF SKU 中的现有功能在新的 v2 SKU 中仍受支持，不过存在几种例外情况，具体请参阅[比较](#differences-from-v1-sku)部分。
+应用程序网关在 Standard_v2 SKU 下提供。 Web 应用程序防火墙 (WAF) 在 WAF_v2 SKU 下提供。 v2 SKU 提供性能增强，并添加了对自动缩放、区域冗余等关键新功能以及静态 VIP 的支持。 Standard 和 WAF SKU 中的现有功能在新的 v2 SKU 中仍受支持，不过存在几种例外情况，具体请参阅[比较](#differences-from-v1-sku)部分。
 
 新的 v2 SKU 包括以下增强：
 
@@ -74,13 +74,13 @@ Azure 应用程序网关始终以高度可用的方式部署。 服务由多个�
 
 下表比较了每个 SKU 提供的功能。
 
-|                                                   | v1 SKU   | v2 SKU   |
+| 功能                                           | v1 SKU   | v2 SKU   |
 | ------------------------------------------------- | -------- | -------- |
 | 自动缩放                                       |          | &#x2713; |
 | 区域冗余                                   |          | &#x2713; |
 | 静态 VIP                                        |          | &#x2713; |
 | Azure Kubernetes 服务 (AKS) 入口控制器 |          | &#x2713; |
-| Azure Key Vault 集成                       |          | &#x2713; |
+| Azure 密钥保管库集成                       |          | &#x2713; |
 | 重写 HTTP(S) 标头                           |          | &#x2713; |
 | 基于 URL 的路由                                 | &#x2713; | &#x2713; |
 | 多站点托管                             | &#x2713; | &#x2713; |

@@ -1,29 +1,29 @@
 ---
-title: 使用 C# 代码查询正式版环境中的数据 - Azure 时序见解 | Microsoft Docs
-description: 了解如何使用以 C# 编写的自定义应用从 Azure 时序见解环境查询数据。
+title: 使用 C# 代码查询 Gen1 环境中的数据 - Azure 时序见解 Gen1 | Microsoft Docs
+description: 了解如何使用以 C# 编写的自定义应用查询 Azure 时序见解 Gen1 环境中的数据。
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: v-junlch
-manager: cshankar
+manager: diviso
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 02/19/2020
+ms.date: 08/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: f32b94e5206debeba06739037e64119088acb664
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 809a32dd898dd9250f488dae7da937b6fee9b42b
+ms.sourcegitcommit: 36e7f37481969f92138bfe70192b1f4a2414caf7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77494545"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87796268"
 ---
-# <a name="query-data-from-the-azure-time-series-insights-ga-environment-using-c"></a>使用 C# 查询 Azure 时序见解正式版环境中的数据
+# <a name="query-data-from-the-azure-time-series-insights-gen1-environment-using-c"></a>使用 C# 查询 Azure 时序见解 Gen1 环境中的数据
 
-本 C# 示例演示如何使用[正式版 Query API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query) 查询 Azure 时序见解正式版环境中的数据。
+本 C# 示例演示如何使用[Gen1 查询 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query) 查询 Azure 时序见解 Gen1 环境中的数据。
 
 > [!TIP]
-> 查看 [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample) 上的正式版 C# 代码示例。
+> 可以访问 [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample) 查看 Gen1 C# 代码示例。
 
 ## <a name="summary"></a>总结
 
@@ -33,14 +33,14 @@ ms.locfileid: "77494545"
 
 * 如何在后续查询 API 请求的 `Authorization` 标头中传递该获得的访问令牌。 
 
-* 此示例调用每个正式版查询 API，演示如何向以下目标发出 HTTP 请求：
+* 示例调用每个 Gen1 查询 API，展示如何对以下项发出 HTTP 请求：
     * [获取环境 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environments-api)，用于返回用户有权访问的环境
     * [获取环境可用性 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-availability-api)
     * [获取环境元数据 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-metadata-api)，用于检索环境元数据
     * [获取环境事件 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api)
     * [获取环境聚合 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-api)
     
-* 如何使用 WSS 与正式版查询 API 交互以通知：
+* 如何使用 WSS 与 Gen1 查询 API 交互以向以下项发送消息：
 
    * [获取流式处理的环境事件 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-streamed-api)
    * [获取流式处理的环境聚合 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-streamed-api)
@@ -49,7 +49,7 @@ ms.locfileid: "77494545"
 
 在编译和运行示例代码之前，请完成以下步骤：
 
-1. [预配正式版 Azure 时序见解](/time-series-insights/time-series-insights-get-started)环境。
+1. [预配 Gen1 Azure 时序见解](/time-series-insights/time-series-insights-get-started)环境。
 1. 为 Azure Active Directory 配置 Azure 时序见解环境，如[身份验证和授权](time-series-insights-authentication-and-authorization.md)中所述。 
 1. 安装必需的项目依赖项。
 1. 编辑下面的示例代码，将每个 **#DUMMY#** 替换为相应的环境标识符。
@@ -75,7 +75,7 @@ ms.locfileid: "77494545"
 
 ## <a name="c-sample-code"></a>C# 示例代码
 
-```Csharp
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -97,7 +97,7 @@ namespace TimeSeriesInsightsQuerySample
         // For automated execution under application identity,
         // use application created in Active Directory.
         // To create the application in AAD, follow the steps provided here:
-        // https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-authentication-and-authorization
+        // https://docs.azure.cn/time-series-insights/time-series-insights-authentication-and-authorization
 
         // SET the application ID of application registered in your Azure Active Directory
         private static string ApplicationClientId = "#DUMMY#";
@@ -106,7 +106,7 @@ namespace TimeSeriesInsightsQuerySample
         private static string ApplicationClientSecret = "#DUMMY#";
 
         // SET the Azure Active Directory tenant.
-        private static string Tenant = "#DUMMY#.onmicrosoft.com";
+        private static string Tenant = "#DUMMY#.partner.onmschina.cn";
 
         public static async Task SampleAsync()
         {
@@ -116,7 +116,7 @@ namespace TimeSeriesInsightsQuerySample
             // Obtain list of environments and get environment FQDN for the environment of interest.
             string environmentFqdn;
             {
-                HttpWebRequest request = CreateHttpsWebRequest("api.timeseries.azure.com", "GET", "environments", accessToken);
+                HttpWebRequest request = CreateHttpsWebRequest("api.timeseries.azure.cn", "GET", "environments", accessToken);
                 JToken responseContent = await GetResponseAsync(request);
 
                 JArray environmentsList = (JArray)responseContent["environments"];
@@ -247,33 +247,32 @@ namespace TimeSeriesInsightsQuerySample
 
         private static async Task<string> AcquireAccessTokenAsync()
         {
-            if (ApplicationClientId == "#DUMMY#" || ApplicationClientSecret == "#DUMMY#" || Tenant.StartsWith("#DUMMY#"))
+            if (AadClientApplicationId == "#PLACEHOLDER#" || AadScopes.Length == 0 || AadRedirectUri == "#PLACEHOLDER#" || AadTenantName.StartsWith("#PLACEHOLDER#"))
             {
-                throw new Exception(
-                    $"Use the link {"https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-authentication-and-authorization"} to update the values of 'ApplicationClientId', 'ApplicationClientSecret' and 'Tenant'.");
+                throw new Exception($"Use the link {"/time-series-insights/time-series-insights-get-started"} to update the values of 'AadClientApplicationId', 'AadScopes', 'AadRedirectUri', and 'AadAuthenticationAuthority'.");
             }
 
-            var authenticationContext = new AuthenticationContext(
-                $"https://login.windows.net/{Tenant}",
-                TokenCache.DefaultShared);
+            IPublicClientApplication app = PublicClientApplicationBuilder
+                        .Create(AadClientApplicationId)
+                        .WithRedirectUri(AadRedirectUri)
+                        .WithAuthority(AadAuthenticationAuthority)
+                        .Build();
 
-            AuthenticationResult token = await authenticationContext.AcquireTokenAsync(
-                resource: "https://api.timeseries.azure.com/",
-                clientCredential: new ClientCredential(
-                    clientId: ApplicationClientId,
-                    clientSecret: ApplicationClientSecret));
+            AuthenticationResult result = await app
+                        .AcquireTokenInteractive(AadScopes)
+                        .ExecuteAsync();
 
             // Show interactive logon dialog to acquire token on behalf of the user.
             // Suitable for native apps, and not on server-side of a web application.
-            //AuthenticationResult token = await authenticationContext.AcquireTokenAsync(
-            //    resource: "https://api.timeseries.azure.com/",
-            //    // Set well-known client ID for Azure PowerShell
-            //    clientId: "1950a258-227b-4e31-a9cf-717495945fc2",
+            // AuthenticationResult result = await app
+            //          .AcquireTokenInteractive(AadScopes)
+            //          .ExecuteAsync();
+            //    
             //    // Set redirect URI for Azure PowerShell
             //    redirectUri: new Uri("urn:ietf:wg:oauth:2.0:oob"),
             //    parameters: new PlatformParameters(PromptBehavior.Auto));
 
-            return token.AccessToken;
+            return result.AccessToken;
         }
 
         private static HttpWebRequest CreateHttpsWebRequest(string host, string method, string path, string accessToken, string[] queryArgs = null)
@@ -489,6 +488,7 @@ namespace TimeSeriesInsightsQuerySample
 
         static void Main(string[] args)
         {
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             Task.Run(async () => await SampleAsync()).Wait();
         }
     }

@@ -3,8 +3,7 @@ title: 教程：使用 Azure 门户监视网络通信
 description: 此教程介绍如何使用 Azure 网络观察程序的连接监视器功能监视两个虚拟机之间的网络通信。
 services: network-watcher
 documentationcenter: na
-author: lingliw
-manager: digimobile
+author: rockboyfor
 editor: ''
 tags: azure-resource-manager
 Customer intent: I need to monitor communication between a VM and another VM. If the communication fails, I need to know why, so that I can resolve the problem.
@@ -14,15 +13,17 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 10/25/2018
-ms.date: 11/26/2018
-ms.author: v-lingwu
+ms.date: 08/10/2020
+ms.testscope: yes
+ms.testdate: 08/03/2020
+ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 1e530c2db6b60308bbc8f84e977fd89c36449ff0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 621b392bf7bb8f3ab01db08d0894ed56791851e4
+ms.sourcegitcommit: 3eadca6821ef679d8ac6ca2dc46d6a13aac211cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290799"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87547958"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>教程：使用 Azure 门户监视两个虚拟机之间的网络通信
 
@@ -34,7 +35,7 @@ ms.locfileid: "79290799"
 > * 根据连接监视器指标生成警报
 > * 诊断两个 VM 之间的通信问题，并了解如何解决该问题
 
-如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.azure.cn/pricing/1rmb-trial) 。
+如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -54,15 +55,15 @@ ms.locfileid: "79290799"
     |---|---|
     |名称|myVM1|
     |用户名| 输入所选用户名。|
-    |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
+    |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
     |订阅| 选择订阅。|
     |资源组| 选择“新建”，并输入 myResourceGroup  |
-    |位置| 选择“中国东部” |
+    |位置| 选择“中国东部”|
 
 4. 选择 VM 的大小，然后选择“选择”  。
 5. 在“设置”  下选择“扩展”  。 选择“添加扩展”，然后选择“用于 Windows 的网络观察程序代理”，如下图所示：  
 
-    ![网络观察程序代理扩展](./media/connection-monitor/nw-agent-extension.png)
+    :::image type="content" source="./media/connection-monitor/nw-agent-extension.png" alt-text="网络观察程序代理扩展":::
 
 6. 在“用于 Windows 的网络观察程序代理”下选择“创建”   ，在“安装扩展”下选择“确定”，   ，然后在“扩展”下选择“确定”。  
 7. 接受其余“设置”的默认值，然后选择“确定”   。
@@ -78,7 +79,7 @@ ms.locfileid: "79290799"
 | 3 | 名称                                  | myVm2                                                                   |
 | 3 | 身份验证类型                   | 粘贴 SSH 公钥，或者在选择“密码”后输入密码。  |
 | 3 | 资源组                        | 选择“使用现有资源组”，再选择“myResourceGroup”   。                 |
-| 6 | 扩展                            | **适用于 Linux 的网络观察程序代理**                                             |
+| 6 | 扩展                            | **适用于 Linux 的网络观察程序代理** |
 
 部署 VM 需要几分钟时间。 在继续余下的步骤之前，请等待 VM 完成部署。
 
@@ -102,17 +103,17 @@ ms.locfileid: "79290799"
     | 虚拟机          | myVm2               |
     | 端口                     | 22                  |
 
-    ![添加连接监视器](./media/connection-monitor/add-connection-monitor.png)
+    :::image type="content" source="./media/connection-monitor/add-connection-monitor.png" alt-text="添加连接监视器":::
 
 ## <a name="view-a-connection-monitor"></a>查看连接监视器
 
 1. 完成[创建连接监视器](#create-a-connection-monitor)中的步骤 1-3 以查看连接监视。 可以看到现有连接监视器的列表，如下图所示：
 
-    ![连接监视器](./media/connection-monitor/connection-monitors.png)
+    :::image type="content" source="./media/connection-monitor/connection-monitors.png" alt-text="连接监视器":::
 
 2. 选择名为 **myVm1-myVm2(22)** 的监视器（如上图所示），以便查看监视器的详细信息（如下图所示）：
 
-    ![监视器详细信息](./media/connection-monitor/vm-monitor.png)
+    :::image type="content" source="./media/connection-monitor/vm-monitor.png" alt-text="监视器详细信息":::
 
     请注意以下信息：
 
@@ -130,10 +131,10 @@ ms.locfileid: "79290799"
 1. 在 Azure 门户中选择“监视器”  服务，然后选择“警报   >   “新建警报规则”。
 2. 单击“选择目标”  ，然后选择要作为目标的资源。 选择“订阅”，然后设置“资源类型”   ，以便筛选出要使用的连接监视器。
 
-    ![目标为选中状态的警报屏幕](./media/connection-monitor/set-alert-rule.png)
+    :::image type="content" source="./media/connection-monitor/set-alert-rule.png" alt-text="目标为选中状态的警报屏幕":::
 1. 选中目标资源以后，请选择“添加条件”。  网络观察程序有[创建警报时基于的指标](/monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts#metrics-and-dimensions-supported)。 将“可用信号”  设置为指标 ProbesFailedPercent 和 AverageRoundtripMs：
 
-    ![信号处于选中状态的警报页](./media/connection-monitor/set-alert-signals.png)
+    :::image type="content" source="./media/connection-monitor/set-alert-signals.png" alt-text="信号处于选中状态的警报页":::
 1. 填写警报详细信息，例如警报规则名称、说明和严重性。 也可向警报添加操作组，以便自动完成和自定义警报响应。
 
 ## <a name="view-a-problem"></a>查看问题
@@ -144,7 +145,7 @@ ms.locfileid: "79290799"
 2. 选择 **myVm2-nsg** 网络安全组。
 3. 选择“入站安全规则”，然后选择“添加”，如下图所示：  
 
-    ![入站安全规则](./media/connection-monitor/inbound-security-rules.png)
+    :::image type="content" source="./media/connection-monitor/inbound-security-rules.png" alt-text="入站安全规则":::
 
 4. 允许在一个虚拟网络的所有 VM 之间通信的默认规则是名为 **AllowVnetInBound** 的规则。 创建一项优先级高于（数字较小）**AllowVnetInBound** 规则（拒绝通过端口 22 进行的入站通信）的规则。 选择或输入以下信息，接受剩下的默认设置，然后选择“添加”  ：
 
@@ -157,7 +158,7 @@ ms.locfileid: "79290799"
 
 5. 由于连接监视器按 60 秒的时间间隔进行探测，因此请等待数分钟，然后在门户左侧选择“网络观察程序”、“连接监视器”，并再次选择“myVm1-myVm2(22)”监视器。    如下图所示，现在的结果有所不同：
 
-    ![监视器详细信息错误](./media/connection-monitor/vm-monitor-fault.png)
+    :::image type="content" source="./media/connection-monitor/vm-monitor-fault.png" alt-text="监视器详细信息错误":::
 
     可以看到在 **myvm2529** 网络接口的状态列中有一个红色感叹号。
 
@@ -182,4 +183,4 @@ ms.locfileid: "79290799"
 > [!div class="nextstepaction"]
 > [诊断网络之间的通信问题](diagnose-communication-problem-between-networks.md)
 
-<!-- Update_Description: update meta properties -->
+<!-- Update_Description: update meta properties, wording update, update link -->

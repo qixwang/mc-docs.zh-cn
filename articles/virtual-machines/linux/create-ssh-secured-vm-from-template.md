@@ -1,28 +1,18 @@
 ---
-title: 如何使用 Azure Resource Manager 模板创建 Linux 虚拟机
+title: 使用模板在 Azure 中创建 Linux VM
 description: 如何使用 Azure CLI 基于资源管理器模板创建 Linux VM
-services: virtual-machines-linux
-documentationcenter: ''
 author: Johnnytechn
-manager: digimobile
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 721b8378-9e47-411e-842c-ec3276d3256a
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
 ms.topic: article
-origin.date: 03/22/2019
-ms.date: 04/13/2020
+ms.date: 07/29/2020
 ms.author: v-johya
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 90df28664e80b719222989b087b19db7de4627e0
-ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
+origin.date: 03/22/2019
+ms.openlocfilehash: b1b0384b12cd929e2470f1dea2c50c772396f573
+ms.sourcegitcommit: b5794af488a336d84ee586965dabd6f45fd5ec6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159101"
+ms.lasthandoff: 08/01/2020
+ms.locfileid: "87508373"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-with-azure-resource-manager-templates"></a>如何使用 Azure Resource Manager 模板创建 Linux 虚拟机
 
@@ -30,9 +20,7 @@ ms.locfileid: "82159101"
 
 ## <a name="templates-overview"></a>模板概述
 
-Azure Resource Manager 模板是 JSON 文件，其中定义了 Azure 解决方案的基础结构和配置。 使用模板可以在解决方案的整个生命周期内重复部署该解决方案，确保以一致的状态部署资源。 若要详细了解模板的格式以及如何构造模板，请参阅[快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)。
-
-<!--MOONCAKE: Gloabl URL on [Define resources in Azure Resource Manager templates](https://docs.microsoft.com/azure/templates/microsoft.compute/allversions)-->
+Azure Resource Manager 模板是 JSON 文件，其中定义了 Azure 解决方案的基础结构和配置。 使用模板可以在解决方案的整个生命周期内重复部署该解决方案，确保以一致的状态部署资源。 若要详细了解模板的格式以及如何构造模板，请参阅[快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)。 若要查看资源类型的 JSON 语法，请参阅[定义 Azure Resource Manager 模板中的资源](https://docs.microsoft.com/azure/templates/microsoft.compute/allversions)。
 
 ## <a name="create-a-virtual-machine"></a>创建虚拟机
 
@@ -275,7 +263,7 @@ read username &&
 echo "Enter the SSH public key:" &&
 read key &&
 az group create --name $resourceGroupName --location "$location" &&
-az group deployment create --resource-group $resourceGroupName --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json --parameters projectName=$projectName adminUsername=$username adminPublicKey="$key" &&
+az deployment group create --resource-group $resourceGroupName --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json --parameters projectName=$projectName adminUsername=$username adminPublicKey="$key" &&
 az vm show --resource-group $resourceGroupName --name "$projectName-vm" --show-details --query publicIps --output tsv
 ```
 
@@ -287,7 +275,7 @@ az vm show --resource-group $resourceGroupName --name "$projectName-vm" --show-d
 
 - 若要了解如何开发资源管理器模板，请参阅 [Azure 资源管理器文档](/azure-resource-manager/)。
     
-    <!--Not Available on [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.compute/allversions)-->
+- 若要查看 Azure 虚拟机架构，请参阅 [Azure 模板引用](https://docs.microsoft.com/azure/templates/microsoft.compute/allversions)。
 
 - 若要查看更多的虚拟机模板示例，请参阅 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular)。
 
@@ -302,7 +290,7 @@ ssh <adminUsername>@<ipAddress>
 ## <a name="next-steps"></a>后续步骤
 
 在此示例中，创建了一个基本的 Linux VM。 如需更多包含应用程序框架（或者可以用来创建更复杂环境）的资源管理器模板，请浏览 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular)。
-
+<!--Correct in MC: https://github.com/Azure/azure-quickstart-templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular-->
 
 <!--Not Available on - [Microsoft.Network/networkSecurityGroups](https://docs.microsoft.com/azure/templates/microsoft.network/networksecuritygroups)-->
 <!--Not Available on - - [Microsoft.Network/publicIPAddresses](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)-->

@@ -3,27 +3,30 @@ title: 创建 Azure 网络观察程序实例 | Azure
 description: 了解如何在 Azure 区域中启用网络观察程序。
 services: network-watcher
 documentationcenter: na
-author: damendo
+author: rockboyfor
 ms.assetid: b1314119-0b87-4f4d-b44c-2c4d0547fb76
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 02/22/2017
-ms.date: 11/26/2018
-ms.author: v-lingwu
-ms.openlocfilehash: aea39040f48f4eb02e0a751f96ff8e47d027ddda
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+ms.date: 08/10/2020
+ms.testscope: yes
+ms.testdate: 08/03/2020
+ms.author: v-yeche
+ms.openlocfilehash: 237da51a5304308d74511e517e5d527039afba25
+ms.sourcegitcommit: 3eadca6821ef679d8ac6ca2dc46d6a13aac211cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796764"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87548031"
 ---
+<!--Verify Successfully-->
+<!--Only Valid on China East 2-->
 # <a name="create-an-azure-network-watcher-instance"></a>创建 Azure 网络观察程序实例
 
 网络观察程序是一个区域性服务，可用于在网络方案级别监视和诊断 Azure 内部以及传入和传出 Azure 的流量的状态。 使用方案级别监视可以诊断端到端网络级别视图的问题。 借助网络观察程序随附的网络诊断和可视化工具，可以了解、诊断和洞察 Azure 中的网络。 通过创建网络观察程序资源启用网络观察程序。 使用此资源，可利用网络观察程序功能。
-
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -34,9 +37,9 @@ ms.locfileid: "83796764"
 如果想要退出网络观察程序自动启用，可以通过运行以下命令来执行此操作：
 
 > [!WARNING]
-> 选择退出网络观察程序自动启用是一项永久性更改。 你选择退出后，就不能在没有[联系支持人员](https://www.azure.cn/support/contact/)的情况下选择加入
+> 选择退出网络观察程序自动启用是一项永久性更改。 你选择退出后，就不能在没有[联系支持人员](https://support.azure.cn/support/contact/)的情况下选择加入
 
-```PowerShell
+```powershell
 Register-AzProviderFeature -FeatureName DisableNetworkWatcherAutocreation -ProviderNamespace Microsoft.Network
 Register-AzResourceProvider -ProviderNamespace Microsoft.Network
 ```
@@ -50,7 +53,7 @@ az provider register -n Microsoft.Network
 
 导航到“所有服务” > “网络” > “网络观察程序”。 可以选择要为其启用网络观察程序的所有订阅。 此操作在每个可用的区域中创建网络观察程序。
 
-![创建网络观察程序](./media/network-watcher-create/figure1.png)
+:::image type="content" source="./media/network-watcher-create/figure1.png" alt-text="创建网络观察程序":::
 
 使用门户启用网络观察程序时，网络观察程序实例的名称会自动设置为 *NetworkWatcher_region_name*，其中，*region_name* 对应于启用了该实例的 Azure 区域。 例如，在“中国东部 2”区域启用的网络观察程序名为“NetworkWatcher_chinaeast2”。
 
@@ -66,7 +69,7 @@ az provider register -n Microsoft.Network
 New-AzNetworkWatcher -Name "NetworkWatcher_chinaeast2" -ResourceGroupName "NetworkWatcherRG" -Location "China East 2"
 ```
 
-## <a name="create-a-network-watcher-with-the-cli"></a>使用 CLI 创建网络观察程序
+## <a name="create-a-network-watcher-with-the-azure-cli"></a>使用 Azure CLI 创建网络观察程序
 
 若要创建网络观察程序的实例，请运行以下示例：
 
@@ -81,6 +84,7 @@ az network watcher configure --resource-group NetworkWatcherRG --locations 'Chin
 ### <a name="log-in-with-armclient"></a>使用 ARMClient 登录
 
 ```powerShell
+$env:ARMCLIENT_ENV="MOONCAKE"
 armclient login
 ```
 
@@ -109,7 +113,6 @@ armclient put "https://management.chinacloudapi.cn/subscriptions/${subscriptionI
 单击“禁用网络观察程序”以开始禁用。 系统会要求你确认此步骤。 单击“是”以继续。
 在门户上，你必须对每个订阅中的每个区域分别执行此操作。
 
-
 ## <a name="delete-a-network-watcher-with-powershell"></a>使用 PowerShell 删除网络观察程序
 
 若要删除网络观察程序的实例，请运行以下示例：
@@ -117,7 +120,7 @@ armclient put "https://management.chinacloudapi.cn/subscriptions/${subscriptionI
 ```powershell
 New-AzResourceGroup -Name NetworkWatcherRG -Location "China East 2"
 New-AzNetworkWatcher -Name NetworkWatcher_chinaeast2 -ResourceGroup NetworkWatcherRG -Location "China East 2"
-Remove-AzNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroup NetworkWatcherRG
+Remove-AzNetworkWatcher -Name NetworkWatcher_chinaeast2 -ResourceGroup NetworkWatcherRG
 ```
 
 ## <a name="next-steps"></a>后续步骤
@@ -132,5 +135,4 @@ Remove-AzNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroup Networ
 * [NSG 流日志记录](network-watcher-nsg-flow-logging-overview.md)
 * [虚拟网络网关故障排除](network-watcher-troubleshoot-overview.md)
 
-<!--Not Available [Create an alert triggered packet capture](network-watcher-alert-triggered-packet-capture.md) -->
-<!--Update_Description: update link, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -1,25 +1,26 @@
 ---
-title: 对 Azure VNET 网关和连接进行故障排除 | Azure CLI
+title: 对 Azure VPN 网关和连接进行故障排除 | Azure CLI
 titleSuffix: Azure Network Watcher
 description: 此页说明如何使用 Azure 网络观察程序对 Azure CLI 进行故障排除
 services: network-watcher
 documentationcenter: na
-author: lingliw
-manager: digimobile
+author: rockboyfor
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 06/19/2017
-ms.date: 10/22/2018
-ms.author: v-lingwu
-ms.openlocfilehash: 0cde5e50169ea69d652b29e81b3d41145dcaab2d
-ms.sourcegitcommit: b81ea2ab9eafa986986fa3eb1e784cfe9bbf9ec1
+ms.date: 08/10/2020
+ms.testscope: yes
+ms.testdate: 08/03/2020
+ms.author: v-yeche
+ms.openlocfilehash: 21bd129fa4e60a32362fb4e874a4c3b082dcbb6e
+ms.sourcegitcommit: 3eadca6821ef679d8ac6ca2dc46d6a13aac211cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83367834"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87548074"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-azure-cli"></a>使用 Azure 网络观察程序 Azure CLI 对虚拟网络网关和连接进行故障排除
 
@@ -31,8 +32,7 @@ ms.locfileid: "83367834"
 
 网络观察程序提供了许多功能，因为它关系到了解 Azure 中的网络资源。 其中一项功能就是资源故障排除。 可以通过门户、PowerShell、CLI 或 REST API 调用资源故障排除。 调用后，网络观察程序会检查虚拟网络网关或连接的运行状况，并返回调查结果。
 
-
-若要执行本文中的步骤，需要[安装适用于 Mac、Linux 和 Windows 的 Azure 命令行接口 (CLI)](https://docs.azure.cn/cli/install-az-cli2?view=azure-cli-latest)。
+若要执行本文中的步骤，需要[安装适用于 Mac、Linux 和 Windows 的 Azure 命令行接口 (CLI)](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)。
 
 ## <a name="before-you-begin"></a>准备阶段
 
@@ -65,7 +65,7 @@ az network vpn-connection show --resource-group resourceGroupName --ids vpnConne
 1. 创建存储帐户
 
     ```azurecli
-    az storage account create --name storageAccountName --location 'China East 2' --resource-group resourceGroupName --sku Standard_LRS
+    az storage account create --name storageAccountName --location chinaeast --resource-group resourceGroupName --sku Standard_LRS
     ```
 
 1. 获取存储帐户密钥
@@ -100,4 +100,4 @@ az network watcher troubleshooting start --resource-group resourceGroupName --re
 
 如果停止 VPN 连接的设置已更改，请参阅[管理网络安全组](../virtual-network/manage-network-security-group.md)找到可能有问题的网络安全组和安全规则。
 
-<!--Update_Description: update meta properties, update link, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -6,14 +6,16 @@ manager: digimobile
 ms.service: site-recovery
 ms.topic: conceptual
 origin.date: 11/27/2018
-ms.date: 01/13/2020
+ms.date: 08/03/2020
+ms.testscope: no
+ms.testdate: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: ac49bd1ce609590577d113c87cf7c043bd89426c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 0a79161530bd1ee05937102a19a1a4e65f2c7eef
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75776724"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426497"
 ---
 # <a name="troubleshoot-failback-to-on-premises-from-azure"></a>排查从 Azure 到本地的故障回复问题
 
@@ -68,7 +70,7 @@ ms.locfileid: "75776724"
 
 ### <a name="error-code-78093"></a>错误代码 78093
 
-VM 未运行，它处于挂起状态或无法访问  。
+VM 未运行、未响应或无法访问。
 
 若要解决此问题，请执行下列操作：
 

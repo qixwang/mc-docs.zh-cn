@@ -5,14 +5,16 @@ author: rockboyfor
 manager: digimobile
 ms.topic: how-to
 origin.date: 04/29/2018
-ms.date: 02/24/2020
+ms.date: 08/03/2020
+ms.testscope: no
+ms.testdate: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 92b27ae70d990990682199ae4550253876cd8cbd
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 38455d4f6b6ef06ec7ec3747cbd7b401fa4e1284
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77611231"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426465"
 ---
 # <a name="replicate-azure-vms-to-another-azure-region"></a>将 Azure VM 复制到另一个 Azure 区域
 
@@ -60,7 +62,9 @@ ms.locfileid: "77611231"
     - **目标可用性集**：默认情况下，Site Recovery 会在目标区域中创建一个名称带“asr”后缀（针对源区域中属于可用性集的 VM）的新可用性集。 如果 Site recovery 创建的可用性集已存在，则重复使用它。
     
         <!--Not Available on - **Target availability zones**: By default, Site Recovery assigns the same zone number as the source region in target region if the target region supports availability zones-->
-
+        
+        默认将目标 VM 配置为单一实例。 如果需要，可以单击“自定义”，以便在目标区域中将此类 VM 配置为可用性集的一部分。
+        
         >[!NOTE]
         >在启用复制以后，不能更改可用性类型 - 单一实例、可用性集。 若要更改可用性类型，需要先禁用复制，然后再启用复制。
         >
@@ -82,9 +86,9 @@ ms.locfileid: "77611231"
 
 若要为添加的磁盘启用复制，请执行以下操作：
 
-1. 在保管库 >“复制的项”  中，单击已向其添加磁盘的 VM。
-2. 单击“磁盘”  ，然后选择要为其启用复制的数据磁盘（这些磁盘具有“未受保护”  状态）。
-3. 在“磁盘详细信息”  中，单击“启用复制”  。
+1. 在保管库 >“复制的项”中，单击已向其添加磁盘的 VM。
+2. 单击“磁盘”，然后选择要为其启用复制的数据磁盘（这些磁盘具有“未受保护”状态）。
+3. 在“磁盘详细信息”中，单击“启用复制”。
 
     ![为添加的磁盘启用复制](./media/azure-to-azure-how-to-enable-replication/enabled-added.png)
 
@@ -94,17 +98,17 @@ ms.locfileid: "77611231"
 
 可以修改 Site Recovery 使用的默认目标设置。
 
-1. 单击“目标订阅”旁边的“自定义：”，修改默认目标订阅  。 从同一 Azure Active Directory (AAD) 租户中可用的所有订阅列表中选择订阅。
+1. 单击“目标订阅”旁边的“自定义：”，修改默认目标订阅。 从同一 Azure Active Directory (AAD) 租户中可用的所有订阅列表中选择订阅。
 
-2. 单击“自定义:”修改默认设置： 
-    - 在“目标资源组”中，从订阅内目标位置中的所有资源组列表中选择资源组。 
-    - 在“目标虚拟网络”中，从目标位置中所有虚拟网络列表中选择网络。 
-    - 在“可用性集”中，可将可用性集设置添加到 VM（如果它们是源区域中可用性集的一部分）。 
-    - 在“目标存储帐户”中，选择要使用的帐户。 
+2. 单击“自定义:”修改默认设置：
+    - 在“目标资源组”中，从订阅内目标位置中的所有资源组列表中选择资源组。
+    - 在“目标虚拟网络”中，从目标位置中所有虚拟网络列表中选择网络。
+    - 在“可用性集”中，可将可用性集设置添加到 VM（如果它们是源区域中可用性集的一部分）。
+    - 在“目标存储帐户”中，选择要使用的帐户。
 
         ![启用复制](./media/site-recovery-replicate-azure-to-azure/customize.PNG)
-3. 单击“自定义:”以修改默认设置。 
-4. 在“多 VM 一致性”  中，选择要一起复制的 VM。
+3. 单击“自定义:”以修改默认设置。
+4. 在“多 VM 一致性”中，选择要一起复制的 VM。
     - 故障转移时，复制组中的所有计算机将具有共享的崩溃一致性恢复点和应用程序一致性恢复点。
     - 启用多 VM 一致性会影响工作负荷的性能（因为它是 CPU 密集型的）。 仅当计算机运行相同的工作负荷并且你需要在多个计算机之间保持一致时，才应启用此功能。
     - 例如，如果应用程序有 2 个 SQL Server 虚拟机和 2 个 Web 服务器，则只应将 SQL Server VM 添加到复制组。
@@ -115,12 +119,13 @@ ms.locfileid: "77611231"
 
         ![启用复制](./media/site-recovery-replicate-azure-to-azure/multivmsettings.PNG)
 
-5. 单击“创建目标资源” > “启用复制”。  
-6. 为 VM 启用复制后，可以在“复制的项”下检查 VM 的运行状况 
+5. 单击“创建目标资源” > “启用复制”。 
+6. 为 VM 启用复制后，可以在“复制的项”下检查 VM 的运行状况
 
 >[!NOTE]
->在初始复制期间，VM 状态刷新可能需要一段时间，但不显示进度。 单击“刷新”按钮可获取最新状态。 
 >
+> - 在初始复制期间，VM 状态刷新可能需要一段时间，但不显示进度。 单击“刷新”按钮可获取最新状态。
+> - 如果过去 60 分钟内未生成恢复点，则虚拟机的复制运行状况将变为“严重”。
 
 ## <a name="next-steps"></a>后续步骤
 

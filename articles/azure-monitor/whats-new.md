@@ -1,22 +1,100 @@
 ---
 title: Azure Monitor 文档中的新增内容
 description: Azure Monitor 文档每月都有重大更新。
-author: lingliw
-manager: digimobile
 ms.subservice: ''
 ms.topic: overview
 origin.date: 03/05/2020
-ms.date: 03/16/2020
-ms.author: v-lingwu
-ms.openlocfilehash: 691e782fca8ed4f400c280651ab1f81a1b4297f1
-ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
+author: Johnnytechn
+ms.author: v-johya
+ms.date: 07/17/2020
+ms.openlocfilehash: 607ea44b2a9cff4c6d43a8d32e03be0a6e04b9ca
+ms.sourcegitcommit: b5794af488a336d84ee586965dabd6f45fd5ec6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87244952"
+ms.lasthandoff: 08/01/2020
+ms.locfileid: "87508461"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Monitor 文档中有哪些新增内容？
+
 本文提供新的或已经过重大更新的 Azure Monitor 文章列表。 在每个月的第一周，本文将会刷新，以包含上个月的文章更新。
+
+## <a name="may-2020"></a>2020 年 5 月
+
+### <a name="general"></a>常规
+
+- [Azure Monitor常见问题解答](faq.md) - 添加了指标部分。
+- [Azure Monitor 的内置策略定义](samples/policy-samples.md) - 新文章。
+- [管理 Azure Monitor 日志的使用情况和成本](platform/manage-cost-storage.md) - 添加了群集按比例计费。
+
+
+#### <a name="new-resource-manager-template-samples"></a>新的资源管理器模板示例 
+- [用于 Azure Monitor 的资源管理器模板示例](samples/resource-manager-samples.md)
+- [用于操作组的资源管理器模板示例](samples/resource-manager-action-groups.md)
+- [用于代理的资源管理器模板示例](samples/resource-manager-agent.md)
+- [用于容器的 Azure Monitor 的资源管理器模板示例](samples/resource-manager-container-insights.md)
+- [用于 VM 的 Azure Monitor 的资源管理器模板示例](samples/resource-manager-vminsights.md)
+- [用于诊断设置的资源管理器模板示例](samples/resource-manager-diagnostic-settings.md)
+- [用于 Log Analytics 工作区的资源管理器模板示例](samples/resource-manager-workspace.md)
+- [用于日志查询的资源管理器模板示例](samples/resource-manager-log-queries.md)
+- [用于日志查询警报规则的资源管理器模板示例](samples/resource-manager-alerts-log.md)
+- [用于指标警报规则的资源管理器模板示例](samples/resource-manager-alerts-metric.md)
+- [用于工作簿的资源管理器模板示例](samples/resource-manager-workbooks.md)
+
+### <a name="agents"></a>代理
+- [安装并配置 Azure 诊断扩展 (WAD)](platform/diagnostics-extension-windows-install.md) - 添加了有关配置诊断的详细信息。
+- [Log Analytics 代理概述](platform/log-analytics-agent.md) - 添加了受支持的 Linux 版本。
+
+### <a name="application-insights"></a>Application Insights
+
+- [使用 Application Insights 监视 Azure Functions 上运行的应用程序 - Azure Monitor](app/monitor-functions.md) - 新文章。
+- [使用 Azure Application Insights 监视 Node.js 服务](app/nodejs.md) - 常规更新，包括有关从以前版本迁移的新部分。
+- [Application Insights 和 Log Analytics 使用的 IP 地址](app/ip-addresses.md) - 添加了 Webhook 和美国政府的 IP 地址。
+- [使用 Application Insights 监视 Azure Kubernetes 服务 (AKS) 上的应用程序 - Azure Monitor](app/kubernetes-codeless.md) - 新文章。
+- [排除无数据问题 - 用于 .NET 的 Application Insights](app/asp-net-troubleshoot-no-data.md) - 添加了有关使用 dotnet-trace 收集日志的部分。
+
+#### <a name="new-and-updated-articles-for-preview-of-workspace-based-applications"></a>基于工作区的应用程序预览版的新的和更新的文章
+- [Azure Monitor 日志查询中的 app() 表达式](log-query/app-expression.md)
+- [Azure Monitor Log Analytics 中的日志查询范围](log-query/scope.md)
+- [使用 Azure Monitor 跨资源进行查询](log-query/cross-workspace-query.md)
+- [Azure Monitor 日志记录中的标准属性](platform/log-standard-properties.md)
+- [Azure Monitor 日志的结构](log-query/logs-structure.md)
+
+
+
+
+
+### <a name="containers"></a>容器
+- [如何启用用于容器的 Azure Monitor](insights/container-insights-onboard.md) - 更新了防火墙配置表。
+- [设置用于容器实时数据（预览版）的 Azure Monitor](insights/container-insights-livedata-setup.md) - 支持新的群集角色绑定。
+
+### <a name="insights"></a>洞察力
+- [适用于 Azure Cache for Redis（预览版）的 Azure Monitor](insights/redis-cache-insights-overview.md) - 新文章。
+- [使用 Azure Monitor for Key Vault（预览版）监视 Key Vault](insights/key-vaults-insights-overview.md) - 新文章。
+
+### <a name="logs"></a>日志
+- [使用 PowerShell 创建和配置 Log Analytics](platform/powershell-workspace-configuration.md) - 添加了故障排除部分。
+- [在 Azure 门户中创建 Log Analytics 工作区](learn/quick-create-workspace.md) - 添加了故障排除部分。
+- [使用 Azure CLI 创建 Log Analytics 工作区](learn/quick-create-workspace-cli.md) - 添加了故障排除部分。
+- [删除和恢复 Azure Log Analytics 工作区](platform/delete-workspace.md) - 更新了有关恢复已删除工作区的信息。
+- [Azure Monitor 日志查询中的函数](log-query/functions.md) - 删除了有关不包含其他函数的函数的注释。
+- [Azure Monitor 日志的结构](log-query/logs-structure.md) - 阐明了 Application Insights 表的属性说明。
+- [将 Azure Monitor 日志与 Azure 逻辑应用和 Power Automate 配合使用](platform/logicapp-flow-connector.md) - 添加了限制部分。
+- [使用 PowerShell 创建和配置 Log Analytics 工作区](platform/powershell-workspace-configuration.md) - 添加了故障排除部分。
+
+
+### <a name="metrics"></a>指标
+- [Azure Monitor 按资源类型支持的指标](platform/metrics-supported.md) - 阐明了来宾指标和指标路由。 
+
+### <a name="solutions"></a>解决方案
+- [使用 Azure Monitor 优化 SQL Server 环境](insights/sql-assessment.md) - 添加到了支持的 SQL Server 版本。
+
+
+
+### <a name="visualizations"></a>可视化效果
+- [Azure Monitor 工作簿和 Azure 资源管理器模板](platform/workbooks-automate.md) - 添加了用于部署工作簿模板的资源管理器更新。
+- [Azure Monitor 工作簿组](platform/workbooks-groups.md) - 新文章。
+- [Azure Monitor 工作簿 - 使用 JSONPath 转换 JSON 数据](platform/workbooks-jsonpath.md) - 新文章。
+
 
 ## <a name="february-2020"></a>2020 年 2 月
 

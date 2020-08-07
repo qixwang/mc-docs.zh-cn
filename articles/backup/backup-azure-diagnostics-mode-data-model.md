@@ -5,13 +5,13 @@ author: Johnnytechn
 origin.date: 09/24/2018
 ms.author: v-johya
 ms.topic: conceptual
-ms.date: 06/29/2020
-ms.openlocfilehash: c8c15ccf6d972d224732c04bd2fb739ae899120a
-ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
+ms.date: 07/31/2020
+ms.openlocfilehash: f795e6bf184940d78c69786f5451f72a25161899
+ms.sourcegitcommit: b5794af488a336d84ee586965dabd6f45fd5ec6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85852098"
+ms.lasthandoff: 08/01/2020
+ms.locfileid: "87508438"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Azure 备份数据的 Log Analytics 数据模型
 
@@ -469,6 +469,30 @@ ms.locfileid: "85852098"
 出于向后兼容的原因，Azure 备份代理和 Azure VM 备份的诊断数据当前发送到 V1 和 V2 架构中的 Azure 诊断表（V1 架构现在位于弃用路径上）。 可以通过在日志查询中筛选 SchemaVersion_s=="V1" 的记录来确定 Log Analytics 中的哪些记录属于 V1 架构。 
 
 请参阅上面所述的[数据模型](/backup/backup-azure-diagnostics-mode-data-model#using-azure-backup-data-model)中的第三列“说明”，以确定哪些列仅属于 V1 架构。
+
+### <a name="modifying-your-queries-to-use-the-v2-schema"></a>修改查询以使用 V2 架构
+由于 V1 架构位于弃用路径上，因此建议在 Azure 备份诊断数据的所有自定义查询中仅使用 V2 架构。 下面的示例演示如何更新查询以删除 V1 架构的依赖项：
+
+1. 确定查询是否正使用仅适用于 V1 架构的任何字段。 假设你有一个用于列出所有备份项及其关联的受保护服务器的查询，如下所示：
+
+````Kusto
+AzureDiagnostics
+| where Category=="AzureBackupReport"
+| where OperationName=="BackupItemAssociation"
+| distinct BackupItemUniqueId_s, ProtectedServerUniqueId_s
+````
+
+以上查询使用字段 ProtectedServerUniqueId_s，该字段仅适用于 V1 架构。 此字段的 V2 架构等效项是 ProtectedContainerUniqueId_s（请参阅上表）。 字段 BackupItemUniqueId_s 甚至适用于 V2 架构，并且可以在此查询中使用相同的字段。
+
+2. 更新查询以使用 V2 架构字段名称。 建议在所有查询中使用筛选器 'where SchemaVersion_s=="V2"'，以便查询仅解析与 V2 架构对应的记录：
+
+````Kusto
+AzureDiagnostics
+| where Category=="AzureBackupReport"
+| where OperationName=="BackupItemAssociation"
+| where SchemaVersion_s=="V2"
+| distinct BackupItemUniqueId_s, ProtectedContainerUniqueId_s 
+````
 
 ## <a name="next-steps"></a>后续步骤
 

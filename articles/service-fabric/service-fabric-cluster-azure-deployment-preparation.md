@@ -3,14 +3,16 @@ title: 规划 Azure Service Fabric 群集部署
 description: 了解如何规划和准备 Azure 中的生产 Service Fabric 群集部署。
 ms.topic: conceptual
 origin.date: 03/20/2019
-ms.date: 06/08/2020
+ms.date: 08/03/2020
+ms.testscope: no
+ms.testdate: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: 670d6e4aaf0877dddadb855029bbc684dfd3e01e
-ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
+ms.openlocfilehash: 8bb0a855b926244ff32bc55af388ca676258259f
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84356290"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426537"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>规划和准备群集部署
 
@@ -30,7 +32,7 @@ ms.locfileid: "84356290"
 * 群集的可靠性和持久性特征
 
 ### <a name="select-the-initial-number-of-node-types"></a>选择初始节点类型数目
-首先，需要确定要创建的群集用于什么目的， 以及打算要将哪些类型的应用程序部署到此群集中。 应用程序是否有多个服务，其中是否有任何服务需面向公众或面向 Internet？ （构成应用程序的）服务是否有不同的基础结构要求，例如，更多的 RAM 或更高的 CPU 周期？ Service Fabric 群集可以包括多个节点类型：主节点类型，以及一个或多个非主节点类型。 每个节点类型将映射到虚拟机规模集。 然后，每个节点类型可以独立扩展或缩减、打开不同的端口集，并可以有不同的容量指标。 可以设置[节点属性和放置约束][placementconstraints]，以将特定服务限制为特定节点类型。  有关详细信息，请参阅[群集一开始需要的节点类型数目](service-fabric-cluster-capacity.md#the-number-of-node-types-your-cluster-needs-to-start-out-with)。
+首先，需要确定要创建的群集用于什么目的， 以及打算要将哪些类型的应用程序部署到此群集中。 应用程序是否有多个服务，其中是否有任何服务需面向公众或面向 Internet？ （构成应用程序的）服务是否有不同的基础结构要求，例如，更多的 RAM 或更高的 CPU 周期？ Service Fabric 群集可以包括多个节点类型：主节点类型，以及一个或多个非主节点类型。 每个节点类型将映射到虚拟机规模集。 然后，每个节点类型可以独立扩展或缩减、打开不同的端口集，并可以有不同的容量指标。 可以设置[节点属性和放置约束][placementconstraints]，以将特定服务限制为特定节点类型。  有关详细信息，请参阅 [Service Fabric 群集容量计划](service-fabric-cluster-capacity.md)。
 
 ### <a name="select-node-properties-for-each-node-type"></a>选择每个节点类型的节点属性
 节点类型定义关联规模集中 VM 的 VM SKU、数目和属性。
@@ -39,7 +41,7 @@ ms.locfileid: "84356290"
 
 主节点类型的 VM 数目下限取决于选择的[可靠性层][reliability]。
 
-请参阅[主节点类型](service-fabric-cluster-capacity.md#primary-node-type---capacity-guidance)、[非主节点类型上的有状态工作负荷](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateful-workloads)和[非主节点类型上的无状态工作负荷](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateless-workloads)的最低建议要求。
+请参阅[主节点类型](service-fabric-cluster-capacity.md#primary-node-type)、[非主节点类型上的有状态工作负荷](service-fabric-cluster-capacity.md#stateful-workloads)和[非主节点类型上的无状态工作负荷](service-fabric-cluster-capacity.md#stateless-workloads)的最低建议要求。
 
 如果节点数目超过最小数目，应根据想要在此节点类型中运行的应用程序/服务的副本数目确定数目。  [Service Fabric 应用程序的容量规划](service-fabric-capacity-planning.md)可帮助你估算运行应用程序所需的资源。 以后始终可以纵向扩展或缩减群集，以根据不断变化的应用程序工作负荷做出调整。 
 
@@ -124,7 +126,7 @@ ms.locfileid: "84356290"
 * [创建运行 Linux 的 Service Fabric 群集](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
 
 [placementconstraints]: service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints
-[durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
-[reliability]: service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster
+[durability]: service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster
+[reliability]: service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster
 
 <!-- Update_Description: update meta properties, wording update, update link -->

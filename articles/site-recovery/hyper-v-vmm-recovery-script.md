@@ -1,27 +1,31 @@
 ---
-title: 使用 Azure Site Recovery 将脚本添加到灾难恢复的恢复计划中 | Azure
+title: 在 Azure Site Recovery 中将脚本添加到恢复计划
 description: 了解如何将 VMM 脚本添加到恢复计划中，以便在 VMM 云中对 Hyper-V VM 进行灾难恢复。
 author: rockboyfor
 manager: digimobile
 ms.service: site-recovery
 ms.topic: conceptual
 origin.date: 11/27/2018
-ms.date: 01/21/2019
+ms.date: 08/03/2020
+ms.testscope: no
+ms.testdate: 01/21/2019
 ms.author: v-yeche
-ms.openlocfilehash: ce20e3a9ab3028944dfeba49291e925f708fc2f3
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 19945521bae64aa7c750131f69cc620247e43b18
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "63829294"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426494"
 ---
 # <a name="add-a-vmm-script-to-a-recovery-plan"></a>将 VMM 脚本添加到还原计划
 
 本文介绍了如何创建 System Center Virtual Machine Manager (VMM) 脚本且如何在 [Azure Site Recovery](site-recovery-overview.md) 中将其添加到还原计划中。
 
-<!-- Not Available on Post any comments or questions at the bottom of this article, or on the [Azure Recovery Services forum](https://www.azure.cn/support/contact/).-->
+请将任何评论或问题发布到 [Azure 恢复服务 Microsoft Q&A 问题页](https://docs.microsoft.com/answers/topics/azure-site-recovery.html)。
 
-## <a name="prerequisites"></a>必备条件
+<!-- Not Available on Post any comments or questions at the bottom of this article.-->
+
+## <a name="prerequisites"></a>先决条件
 
 可在恢复计划中使用 PowerShell 脚本。 必须编写脚本并将脚本置于 VMM 库中，才可从还原计划中进行访问。 编写脚本时，请记住以下注意事项：
 
@@ -42,26 +46,26 @@ ms.locfileid: "63829294"
     有关详细信息，请参阅 [Windows PowerShell 和 VMM 入门](https://technet.microsoft.com/library/hh875013.aspx)。
 * 确保 VMM 部署中至少有一个库服务器。 VMM 服务器的库共享路径默认位于本地的 VMM 服务器。 其文件夹名称为 MSCVMMLibrary。
 
-  如果库共享路径在远程位置（或在本地但不与 MSCVMMLibrary 共享），请按如下所示配置共享（例如使用 \\libserver2.contoso.com\share\）：
+    如果库共享路径在远程位置（或在本地但不与 MSCVMMLibrary 共享），请按如下所示配置共享（例如使用 \\libserver2.contoso.com\share\）：
 
-  1. 打开注册表编辑器，然后转到HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\Azure Site Recovery\Registration  。
+    1. 打开注册表编辑器，然后转到HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\Azure Site Recovery\Registration。
 
-  1. 将 ScriptLibraryPath 的值更改为 \\\libserver2.contoso.com\share\\。 指定完整的 FQDN。 提供对共享位置的权限。 指共享的根节点。 要在 VMM 中查看根节点，请转到库中的根节点。 打开的路径就是路径的根。 必须在变量中使用此路径。
+    1. 将 ScriptLibraryPath 的值更改为 \\\libserver2.contoso.com\share\\ 。 指定完整的 FQDN。 提供对共享位置的权限。 指共享的根节点。 要在 VMM 中查看根节点，请转到库中的根节点。 打开的路径就是路径的根。 必须在变量中使用此路径。
 
-  1. 使用与 VMM 服务帐户处于同一用户权限级别的用户帐户测试脚本。 使用这些用户权限验证经过测试的独立脚本按在还原计划中运行的方式运行。 在 VMM 服务器上，将执行策略设置为绕过，如下所示：
+    1. 使用与 VMM 服务帐户处于同一用户权限级别的用户帐户测试脚本。 使用这些用户权限验证经过测试的独立脚本按在还原计划中运行的方式运行。 在 VMM 服务器上，将执行策略设置为绕过，如下所示：
 
-     a. 以管理员身份打开 64 位 Windows PowerShell 控制台  。
+        a. 以管理员身份打开 64 位 Windows PowerShell 控制台。
 
-     b. 输入 Set-executionpolicy bypass  。 有关详细信息，请参阅[使用 Set-ExecutionPolicy cmdlet](https://technet.microsoft.com/library/ee176961.aspx)。
+        b. 输入 Set-executionpolicy bypass。 有关详细信息，请参阅[使用 Set-ExecutionPolicy cmdlet](https://technet.microsoft.com/library/ee176961.aspx)。
 
-     > [!IMPORTANT]
-     > 仅在 64 位 PowerShell 控制台中设置 Set-executionpolicy bypass  。 若为 32 位 PowerShell 控制台设置此项，脚本不会运行。
+        > [!IMPORTANT]
+        > 仅在 64 位 PowerShell 控制台中设置 Set-executionpolicy bypass。 若为 32 位 PowerShell 控制台设置此项，脚本不会运行。
 
 ## <a name="add-the-script-to-the-vmm-library"></a>将脚本添加到 VMM 库
 
 如果具备 VMM 源站点，即可在 VMM 服务器上创建脚本。 然后，将脚本置于还原计划中。
 
-1. 在库共享中新建文件夹。 例如 \<VMM server name>\MSSCVMMLibrary\RPScripts。 将文件夹放到源和目标 VMM 服务器上。
+1. 在库共享中新建文件夹。 例如，\<VMM server name>\MSSCVMMLibrary\RPScripts。 将文件夹放到源和目标 VMM 服务器上。
 1. 创建脚本。 例如，将脚本命名为 RPScript。 验证脚本是否按预期运行。
 1. 将脚本放到源和目标 VMM 服务器的 \<VMM server name>\MSSCVMMLibrary 文件夹中。
 
@@ -70,13 +74,13 @@ ms.locfileid: "63829294"
 将 VM 或复制组添加到还原计划中并创建好计划后，可将脚本添加到该组。
 
 1. 打开恢复计划。
-1. 在“步骤”列表中，选择一个项  。 然后，选择“脚本”或“手动操作”   。
-1. 指定将脚本或操作添加到的位置（所选项的前面或后面）。 要将脚本上移或下移，请选择“上移”或“下移”按钮   。
-1. 如果添加 VMM 脚本，请选择“故障转移到 VMM 脚本”  。 在“脚本路径”中，输入共享的相对路径  。 例如，输入 \RPScripts\RPScript.PS1  。
+1. 在“步骤”列表中，选择一个项。 然后，选择“脚本”或“手动操作” 。
+1. 指定将脚本或操作添加到的位置（所选项的前面或后面）。 要将脚本上移或下移，请选择“上移”或“下移”按钮 。
+1. 如果添加 VMM 脚本，请选择“故障转移到 VMM 脚本”。 在“脚本路径”中，输入共享的相对路径。 例如，输入 \RPScripts\RPScript.PS1。
 1. 如果添加 Azure 自动化 Runbook，请指定包含 Runbook 的自动化帐户。 然后，选择想要使用的 Azure Runbook 脚本。
 1. 请执行还原计划的测试故障转移，确保脚本按预期运行。
 
 ## <a name="next-steps"></a>后续步骤
 * 详细了解如何[运行故障转移](site-recovery-failover.md)。
 
-<!-- Update_Description: update meta properties -->
+<!-- Update_Description: update meta properties, wording update, update link -->

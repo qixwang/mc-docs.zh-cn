@@ -4,14 +4,14 @@ description: '针对以下常见问题的解答：包括恢复服务保管库在
 author: Johnnytechn
 ms.topic: conceptual
 origin.date: 07/07/2019
-ms.date: 06/22/2020
+ms.date: 07/31/2020
 ms.author: v-johya
-ms.openlocfilehash: f84863468d6ffb68829f901a268fff21091d8bef
-ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
+ms.openlocfilehash: 5dcd7bd843747e490328f63fb80827fa784117fc
+ms.sourcegitcommit: b5794af488a336d84ee586965dabd6f45fd5ec6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85852044"
+ms.lasthandoff: 08/01/2020
+ms.locfileid: "87508441"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure 备份 - 常见问题
 
@@ -30,7 +30,7 @@ ms.locfileid: "85852044"
 ### <a name="how-many-datasourcesitems-can-be-protected-in-a-vault"></a>在保管库中可以保护多少个数据源/项？
 
 在一个保管库中，可以跨所有工作负荷（IaaS VM、SQL、AFS 等）保护多达 2000 个数据源/项。
-例如，如果已在保管库中保护了 500 个VM 和 400 个 Azure 文件共享，则最多只能保护其中的 1100 个 SQL 数据库。
+例如，如果已在保管库中保护了 500 个 VM 和 400 个 Azure 文件存储共享，则最多只能保护其中的 1100 个 SQL 数据库。
 
 ### <a name="how-many-policies-can-i-create-per-vault"></a>每个保管库可以创建多少个策略？
 
@@ -47,7 +47,51 @@ ms.locfileid: "85852044"
 
 ### <a name="can-i-change-from-grs-to-lrs-after-a-backup"></a>备份后是否可以从 GRS 更改为 LRS？
 
-否。 恢复服务保管库只能在存储任何备份之前更改存储选项。
+存储复制类型默认设置为异地冗余存储 (GRS)。 配置备份后，将禁用修改选项且不可更改。
+
+![存储复制类型](./media/backup-azure-backup-faq/storage-replication-type.png)
+
+在决定从 GRS 改为本地冗余存储 (LRS) 之前，请先根据你的应用场景在较低成本和较高数据持续性之间权衡。 如果必须从 GRS 改用 LRS，你有两种选择。 它们取决于保留备份数据的业务要求：
+
+- [无需保留以前备份的数据](#dont-need-to-preserve-previous-backed-up-data)
+- [必须保留以前备份的数据](#must-preserve-previous-backed-up-data)
+
+### <a name="dont-need-to-preserve-previous-backed-up-data"></a>无需保留以前备份的数据
+
+若要在新的 LRS 保管库中保护工作负载，需在 GRS 保管库中删除当前保护和数据，并重新配置备份。
+
+>[!WARNING]
+>以下操作是破坏性的，无法撤消。 与受保护服务器关联的所有备份数据和备份项将被永久删除。 请谨慎操作。
+
+停止并删除对 GRS 保管库的当前保护：
+
+1. 在 GRS 保管库属性中禁用软删除。 按照[这些步骤](backup-azure-security-feature-cloud.md#disabling-soft-delete-using-azure-portal)禁用软删除。
+
+1. 停止保护并删除现有 GRS 保管库中的备份。 在保管库仪表板菜单中，选择“备份项”。 此处列出的需要移动到 LRS 保管库的项必须连同其备份数据一起删除。 请参阅如何[删除云中受保护的项](backup-azure-delete-vault.md#delete-protected-items-in-the-cloud)以及[删除本地受保护的项](backup-azure-delete-vault.md#delete-protected-items-on-premises)。
+
+1. 如果计划迁移 SQL 服务器或 SAP HANA 服务器，则还需要取消注册它们。 在保管库仪表板菜单中，选择“备份基础结构”。 请参阅如何[取消注册 SQL 服务器](manage-monitor-sql-database-backup.md#unregister-a-sql-server-instance)以及[取消注册 SAP HANA 实例](sap-hana-db-manage.md#unregister-an-sap-hana-instance)。
+
+1. 将其从 GRS 保管库中删除后，请继续在新的 LRS 保管库中配置工作负载的备份。
+
+### <a name="must-preserve-previous-backed-up-data"></a>必须保留以前备份的数据
+
+如果需要将当前受保护的数据保留在 GRS 保管库中，并在新的 LRS 保管库中继续保护，则某些工作负载的选项受到限制：
+
+- 对于 MARS，可以[停止保护并保留数据](backup-azure-manage-mars.md#stop-protecting-files-and-folder-backup)并在新的 LRS 保管库中注册代理。
+
+  - Azure 备份服务将继续保留 GRS 保管库的所有现有恢复点。
+  - 需要付费才能将恢复点保留在 GRS 保管库中。
+  - 只能还原 GRS 保管库中尚未过期的恢复点的备份数据。
+  - 需要在 LRS 保管库中创建数据的新初始副本。
+
+- 对于 Azure VM，可以对 GRS 保管库中的 VM [停止保护并保留数据](backup-azure-manage-vms.md#stop-protecting-a-vm)，将该 VM 移到其他资源组，然后在 LRS 保管库中保护该 VM。 请参阅将 VM 移到其他资源组的[指南和限制](/azure-resource-manager/management/move-limitations/virtual-machines-move-limitations)。
+
+  同一时间只能在一个保管库中保护 VM。 但是，可以在 LRS 保管库中保护新资源组中的 VM，因为它被视为不同的 VM。
+
+  - Azure 备份服务将在 GRS 保管库中保留已备份的恢复点。
+  - 你需要付费才能将恢复点保留在 GRS 保管库中（有关详细信息，请参阅 [Azure 备份定价](azure-backup-pricing.md)）。
+  - 如果需要，你将能够从 GRS 保管库还原 VM。
+  - LRS 保管库中对新资源组中 VM 的第一个备份将是初始副本。
 
 ### <a name="can-i-do-an-item-level-restore-ilr-for-vms-backed-up-to-a-recovery-services-vault"></a>是否可以对备份到恢复服务保管库的 VM 执行项级别还原 (ILR)？
 
@@ -116,7 +160,7 @@ Azure VM | 请参阅 [Azure VM 备份的支持矩阵](/backup/backup-support-mat
 **数据源** | **详细信息**
 --- | ---
 数据量(Volume) |从正在备份的单个卷 VM 备份的数据量。
-SQL Server 数据库 |正在备份的单个 SQL 数据库的大小。
+SQL Server 数据库 |所备份的单个数据库的大小。
 SharePoint | 正在备份的 SharePoint 场中内容和配置数据库的总和。
 Exchange |正在备份 Exchange 服务器中所有 Exchange 数据库的总和。
 BMR/系统状态 |正在备份计算机的 BMR 或系统状态的每个副本。

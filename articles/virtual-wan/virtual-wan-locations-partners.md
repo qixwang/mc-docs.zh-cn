@@ -6,15 +6,17 @@ author: rockboyfor
 ms.service: virtual-wan
 ms.topic: conceptual
 origin.date: 02/12/2020
-ms.date: 06/08/2020
+ms.date: 08/03/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
 Customer intent: As someone with a networking background, I want to find a Virtual WAN partner
-ms.openlocfilehash: e7bb2f1b9ad702edcdacac333d4c152caaed1ae8
-ms.sourcegitcommit: 6c1e5be9f310adf5b6740ad3284b7582fca9de86
+ms.openlocfilehash: b161ad259f22e8489aeb715c04352d7906f6d543
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84683576"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426370"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>虚拟 WAN 合作伙伴和虚拟中心位置
 
@@ -45,9 +47,7 @@ Azure Virtual WAN 是一种网络服务，它通过 Azure 提供经优化、自�
 
 [!INCLUDE [partners](../../includes/virtual-wan-partners-include.md)]
 
-在不久的将来，我们的路线图中将列出以下合作伙伴：128 Technologies、Arista、Aruba HPE、Cisco Systems、F5 Networks、Open Systems、Oracle SD-WAN 和 SharpLink。
-
-<!--Correct on , and -->
+在不久的将来，我们的路线图中将列出以下合作伙伴：128 Technologies、Arista、Aruba HPE、Cisco Systems (Viptela)、F5 Networks、Open Systems、Oracle SD-WAN 和 SharpLink。
 
 <a name="locations"></a>
 ## <a name="locations"></a>位置

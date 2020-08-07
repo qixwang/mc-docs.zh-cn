@@ -4,14 +4,14 @@ description: 本文介绍如何使用 Azure 备份来备份 Azure 虚拟机上�
 author: Johnnytechn
 ms.topic: conceptual
 origin.date: 09/11/2019
-ms.date: 06/22/2020
+ms.date: 07/31/2020
 ms.author: v-johya
-ms.openlocfilehash: abc3c1d394a137a16ad13bf971a340fadbdae224
-ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
+ms.openlocfilehash: c653e95a395c9bcbf368e70aaabb679636aa8714
+ms.sourcegitcommit: b5794af488a336d84ee586965dabd6f45fd5ec6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85852037"
+ms.lasthandoff: 08/01/2020
+ms.locfileid: "87508470"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>备份 Azure VM 中的 SQL Server 数据库
 
@@ -266,7 +266,7 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 
 可以启用自动保护，以便自动将所有现有数据库和将来的数据库备份到独立 SQL Server 实例或 Always On 可用性组。
 
-* 可以一次性选择进行自动保护的数据库数目没有限制。
+* 可以一次性选择进行自动保护的数据库数目没有限制。 发现通常每 8 小时运行一次。 但是，如果通过选择“重新发现数据库”选项来手动运行发现，则可以立即发现并保护新的数据库。
 * 启用自动保护时，无法选择在实例中保护数据库，或者在实例中排除对其的保护。
 * 如果实例已包含某些受保护的数据库，即使在启用自动保护后，它们也仍会根据相应的策略受到保护。 以后添加的所有不受保护的数据库只会应用在启用自动保护时定义的、在“配置备份”下列出的单个策略。 但是，以后可以更改与自动保护的数据库关联的策略。  
 

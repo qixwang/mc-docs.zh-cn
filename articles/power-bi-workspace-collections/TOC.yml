@@ -22,6 +22,8 @@
       items:
         - name: 连接到数据源
           href: connect-datasource.md
+        - name: 在 Power BI Desktop 中使用增强的数据集元数据（预览）
+          href: desktop-enhanced-dataset-metadata.md
         - name: 嵌入 Power BI 报表
           href: embed-report.md
         - name: 与报表交互
@@ -48,7 +50,7 @@
       href: /dotnet/api/microsoft.azure.management.powerbiembedded
     - name: .NET SDK 下载
       href: 'https://www.nuget.org/profiles/powerbi'
-    - name: JavaScript
+    - name: Javascript
       href: 'https://github.com/Microsoft/PowerBI-JavaScript/wiki'
     - name: 管理 REST API
       href: 'https://docs.microsoft.com/rest/api/power-bi-workspace-collections/'
@@ -62,11 +64,11 @@
       href: 'https://microsoft.github.io/PowerBI-JavaScript/demo/'
     - name: JavaScript Git 存储库
       href: 'https://github.com/Microsoft/PowerBI-JavaScript'
-    - name: 'Power BI C# Git 存储库'
+    - name: Power BI C# Git 存储库
       href: 'https://github.com/Microsoft/PowerBI-CSharp'
     - name: Power BI 社区
       href: 'https://community.powerbi.com/t5/Developer/bd-p/Developer'
     - name: 定价计算器
       href: 'https://www.azure.cn/pricing/calculator/'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/powerbi'

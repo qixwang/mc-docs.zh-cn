@@ -1,19 +1,18 @@
 ---
 title: 在 Azure Monitor 中创建日志的指标警报
 description: 有关针对常用 Log Analytics 数据创建近实时指标警报的教程。
-author: lingliw
-ms.service: azure-monitor
+author: Johnnytechn
+ms.author: v-johya
 ms.topic: conceptual
 origin.date: 09/17/2018
-ms.date: 06/21/2019
-ms.author: v-lingwu
+ms.date: 07/17/2020
 ms.subservice: alerts
-ms.openlocfilehash: e6690ce9d34937dc6d79017a92dd76af5555f4ed
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: acc8f51a4e8cb7905e7df916683654ba8fc30d36
+ms.sourcegitcommit: b5794af488a336d84ee586965dabd6f45fd5ec6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79452393"
+ms.lasthandoff: 08/01/2020
+ms.locfileid: "87508477"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>在 Azure Monitor 中创建日志的指标警报
 
@@ -27,6 +26,7 @@ Azure Monitor 支持比[经典警报](../../azure-monitor/platform/alerts-classi
 
 - 适用于 Windows 和 Linux 计算机的[性能计数器](../../azure-monitor/platform/data-sources-performance-counters.md)
 - [代理运行状况的检测信号记录](../../azure-monitor/insights/solution-agenthealth.md)
+- [更新管理](../../automation/automation-update-management.md)记录
 - [事件数据](../../azure-monitor/platform/data-sources-windows-events.md)日志
 
 与 Azure 中基于查询的[日志警报](../../azure-monitor/platform/alerts-log.md)相比，使用**日志的指标警报**可带来多种优势；下面列出了其中的某些优势：
@@ -43,7 +43,7 @@ Azure Monitor 支持比[经典警报](../../azure-monitor/platform/alerts-classi
  指标警报支持针对使用维度的指标发出警报。 可以使用维度将指标筛选到适当级别。 受支持的解决方案将提供 [Log Analytics 工作区](../../azure-monitor/platform/metrics-supported.md#microsoftoperationalinsightsworkspaces)中受日志支持的指标的完整列表。
 
 > [!NOTE]
-> 若要通过 [Azure Monitor - 指标](../../azure-monitor/platform/metrics-charts.md)查看从 Log Analytics 工作区中提取的受支持指标，必须为所述指标创建日志的指标警报。 只能通过“Azure Monitor - 指标”浏览在“日志的指标警报”中选择的维度。
+> 要通过 [Azure Monitor - 指标](../../azure-monitor/platform/metrics-charts.md)查看从 Log Analytics 工作区中提取的受支持指标，必须针对该特定指标创建日志的指标警报。 只能通过“Azure Monitor - 指标”浏览在“日志的指标警报”中选择的维度。
 
 ## <a name="creating-metric-alert-for-log-analytics"></a>为 Log Analytics 创建指标警报
 
@@ -56,8 +56,8 @@ Azure Monitor 支持比[经典警报](../../azure-monitor/platform/alerts-classi
 
 1. **活动的 Log Analytics 工作区**：必须存在一个有效且活动的 Log Analytics 工作区。 有关详细信息，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../../azure-monitor/learn/quick-create-workspace.md)。
 2. **为 Log Analytics 工作区配置了代理**：需要为 Azure VM 和/或本地 VM 配置代理，以便将数据发送到前一步骤中使用的 Log Analytics 工作区。 有关详细信息，请参阅 [Log Analytics - 代理概述](../../azure-monitor/platform/agents-overview.md)。
-3. **安装了受支持的 Log Analytics 解决方案**：Log Analytics 解决方案应已进行配置并可将数据发送到 Log Analytics 工作区 - 支持的解决方案包括[适用于 Windows 和 Linux 的性能计数器](../../azure-monitor/platform/data-sources-performance-counters.md)、[代理运行状况的检测信号记录](../../azure-monitor/insights/solution-agenthealth.md)和[事件数据](../../azure-monitor/platform/data-sources-windows-events.md)。
-4. **配置为发送日志的 Log Analytics 解决方案**：Log Analytics 解决方案应已启用与 [Log Analytics 工作区支持的指标](../../azure-monitor/platform/metrics-supported.md#microsoftoperationalinsightsworkspaces)对应的所需日志/数据。 例如，必须先在[性能计数器](../../azure-monitor/platform/data-sources-performance-counters.md)解决方案中配置它的“可用内存百分比”计数器。 
+3. **安装了受支持的 Log Analytics 解决方案**：Log Analytics 解决方案应已进行配置并可将数据发送到 Log Analytics 工作区 - 支持的解决方案为[适用于 Windows 和 Linux 的性能计数器](../../azure-monitor/platform/data-sources-performance-counters.md)、[代理运行状况的检测信号记录](../../azure-monitor/insights/solution-agenthealth.md)、[更新管理](../../automation/automation-update-management.md)和[事件数据](../../azure-monitor/platform/data-sources-windows-events.md)。
+4. **配置为发送日志的 Log Analytics 解决方案**：Log Analytics 解决方案应已启用与 [Log Analytics 工作区支持的指标](../../azure-monitor/platform/metrics-supported.md#microsoftoperationalinsightsworkspaces)对应的所需日志/数据。 例如，必须先在[性能计数器](../../azure-monitor/platform/data-sources-performance-counters.md)解决方案中配置它的“可用内存百分比”计数器。
 
 ## <a name="configuring-metric-alert-for-logs"></a>配置日志的指标警报
 
@@ -65,14 +65,14 @@ Azure Monitor 支持比[经典警报](../../azure-monitor/platform/alerts-classi
 
 有关详细分步说明和示例，请参阅[创建和管理指标警报](https://aka.ms/createmetricalert)。 具体而言，对于日志的指标警报，请遵照说明管理指标警报，并确保：
 
-- 指标警报的目标是有效的 Log Analytics 工作区 
-- 为选定 Log Analytics 工作区的指标警报选择的信号类型为“指标”  
+- 指标警报的目标是有效的 Log Analytics 工作区
+- 为选定 Log Analytics 工作区的指标警报选择的信号类型为“指标”
 - 使用维度筛选器根据特定的条件或资源进行筛选；日志的指标是多维的
-- 配置信号逻辑时，可以创建单个警报来跨越多个维度值（例如“计算机”） 
+- 配置信号逻辑时，可以创建单个警报来跨越多个维度值（例如“计算机”）
 - 如果**不**使用 Azure 门户为选定的 *Log Analytics 工作区*创建指标警报，则用户必须先手动创建一个显式规则，以便使用 [Azure Monitor - 计划的查询规则](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)将日志数据转换为指标。
 
 > [!NOTE]
-> 通过 Azure 门户为 Log Analytics 工作区创建指标警报时，会自动在后台创建相应的规则用于通过 [Azure Monitor - 计划的查询规则](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)将日志数据转换为指标，无需任何用户干预或操作。  如果不使用 Azure 门户创建日志的指标警报，请参阅[日志的指标警报的资源模板](#resource-template-for-metric-alerts-for-logs)部分，了解在创建指标警报之前，创建基于 ScheduledQueryRule 的“日志到指标”转换规则的示例方法 - 否则没有任何数据可用于创建日志的指标警报。
+> 通过 Azure 门户为 Log Analytics 工作区创建指标警报时，会自动在后台创建相应的规则用于通过 [Azure Monitor - 计划的查询规则](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)将日志数据转换为指标，无需任何用户干预或操作。 如果不使用 Azure 门户创建日志的指标警报，请参阅[日志的指标警报的资源模板](#resource-template-for-metric-alerts-for-logs)部分，了解在创建指标警报之前，创建基于 ScheduledQueryRule 的“日志到指标”转换规则的示例方法 - 否则没有任何数据可用于创建日志的指标警报。
 
 ## <a name="resource-template-for-metric-alerts-for-logs"></a>日志的指标警报的资源模板
 
@@ -164,7 +164,7 @@ Azure Monitor 支持比[经典警报](../../azure-monitor/platform/alerts-classi
             "type": "string",
             "minLength": 1,
             "metadata": {
-                "description": "Full Resource ID of the resource emitting the metric that will be used for the comparison. For example /subscriptions/00000000-0000-0000-0000-0000-00000000/resourceGroups/ResourceGroupName/providers/Microsoft.compute/virtualMachines/VM_xyz"
+                "description": "Full Resource ID of the resource emitting the metric that will be used for the comparison. For example: /subscriptions/00000000-0000-0000-0000-0000-00000000/resourceGroups/ResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/workspaceName"
             }
         },
         "metricName": {
@@ -453,7 +453,7 @@ az group deployment create --resource-group myRG --template-file metricfromLogsA
             "type": "string",
             "minLength": 1,
             "metadata": {
-                "description": "Full Resource ID of the resource emitting the metric that will be used for the comparison. For example /subscriptions/00000000-0000-0000-0000-0000-00000000/resourceGroups/ResourceGroupName/providers/Microsoft.compute/virtualMachines/VM_xyz"
+                "description": "Full Resource ID of the resource emitting the metric that will be used for the comparison. For example: /subscriptions/00000000-0000-0000-0000-0000-00000000/resourceGroups/ResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/workspaceName"
             }
         },
         "metricName": {
@@ -691,3 +691,4 @@ az group deployment create --resource-group myRG --template-file metricfromLogsA
 - 详细了解[指标警报](alerts-metric.md)。
 - 了解 [Azure 中的日志警报](../../azure-monitor/platform/alerts-unified-log.md)。
 - 了解 [Azure 中的警报](alerts-overview.md)。
+

@@ -5,12 +5,12 @@ ms.topic: conceptual
 origin.date: 02/23/2018
 ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: 4bc4cc6a2fdf077683b586f43eccb690434c7bd2
-ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
+ms.openlocfilehash: 07fa49efa24c1c13df9b36155a4d0a4d6c2162ad
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84356228"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426397"
 ---
 <!--RHEL SUPPORTED DEVELOPMENT ENVIRONMENT, NOT SERVICE FABRIC NODE OS CATEGORY -->
 # <a name="prepare-your-development-environment-on-linux"></a>在 Linux 上准备开发环境
@@ -31,7 +31,7 @@ ms.locfileid: "84356228"
 
 支持使用以下操作系统版本进行开发。
 
-* Ubuntu 16.04 (`Xenial Xerus`)
+* Ubuntu 16.04 (`Xenial Xerus`)、18.04 (`Bionic Beaver`)
 
     确保已安装 `apt-transport-https` 包。
 
@@ -61,46 +61,40 @@ sudo curl -s https://raw.githubusercontent.com/Azure/service-fabric-scripts-and-
 ### <a name="ubuntu"></a>Ubuntu
 
 1. 打开终端。
-2. 将 Service Fabric 存储库添加到源列表。
+
+2. 将 `dotnet` 存储库添加到与发行版相对应的源列表。
 
     ```bash
-    sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/servicefabric/ xenial main" > /etc/apt/sources.list.d/servicefabric.list'
-    ```
-
-3. 将 `dotnet` 存储库添加到源列表。
-
-    ```bash
-    wget -q https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb
+    wget -q https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb
     sudo dpkg -i packages-microsoft-prod.deb
     ```
 
-4. 向 APT Keyring 添加新的 Gnu 隐私防护（GnuPG 或 GPG）密钥。
+3. 向 APT Keyring 添加新的 MS Open Tech Gnu 隐私防护（GnuPG 或 GPG）密钥。
 
     ```bash
-    curl -fsSL https://packages.microsoft.com/keys/msopentech.asc | sudo apt-key add -
+    sudo curl -fsSL https://packages.microsoft.com/keys/msopentech.asc | sudo apt-key add -
     ```
 
-5. 向 APT Keyring 添加官方的 Docker GPG 密钥。
+4. 向 APT Keyring 添加官方的 Docker GPG 密钥。
 
     ```bash
-    sudo apt-get install curl
     sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
     ```
 
-6. 设置 Docker 存储库。
+5. 设置 Docker 存储库。
 
     ```bash
     sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
     ```
 
-7. 将 Azul JDK 密钥添加到 APT Keyring 并设置其存储库。
+6. 将 Azul JDK 密钥添加到 APT Keyring 并设置其存储库。
 
     ```bash
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0xB1998361219BD9C9
     sudo apt-add-repository "deb http://repos.azul.com/azure-only/zulu/apt stable main"
     ```
 
-8. 根据新添加的存储库刷新包列表。
+7. 根据新添加的存储库刷新包列表。
 
     ```bash
     sudo apt-get update

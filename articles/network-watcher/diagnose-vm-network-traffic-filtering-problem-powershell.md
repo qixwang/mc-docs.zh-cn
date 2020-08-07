@@ -1,11 +1,10 @@
 ---
-title: 快速入门：诊断 VM 网络流量筛选器问题 - Azure PowerShell
+title: 快速入门 - 诊断 VM 网络流量筛选器问题 - Azure PowerShell
 titleSuffix: Azure Network Watcher
 description: 本快速入门介绍了如何使用 Azure 网络观察程序的 IP 流验证功能来诊断虚拟机网络流量筛选器问题。
 services: network-watcher
 documentationcenter: network-watcher
-author: lingliw
-manager: digimobile
+author: rockboyfor
 editor: ''
 tags: azure-resource-manager
 Customer intent: I need to diagnose a virtual machine (VM) network traffic filter problem that prevents communication to and from a VM.
@@ -16,30 +15,34 @@ ms.topic: quickstart
 ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
 origin.date: 04/20/2018
-ms.date: 04/20/2019
-ms.author: v-lingwu
+ms.date: 08/10/2020
+ms.testscope: yes
+ms.testdate: 08/03/2020
+ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: a89a87e4f7736e4314860e814a1266c414368337
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 48113dd930d5bd3d602bd6a5c7bf560b43f50ede
+ms.sourcegitcommit: 3eadca6821ef679d8ac6ca2dc46d6a13aac211cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77028991"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87548037"
 ---
+<!--Verify Successfully with some Customization-->
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-powershell"></a>快速入门：诊断虚拟机网络流量筛选器问题 - Azure PowerShell
 
 在本快速入门中，将部署虚拟机 (VM)，然后检查到某个 IP 地址和 URL 的通信以及来自某个 IP 地址的通信。 确定通信失败的原因以及解决方法。
 
-如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
+如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-<!--[!INCLUDE [cloud-shell-try-it](../../../includes/cloud-shell-powershell.md)]-->
 
-如果选择在本地安装并使用 PowerShell，则本快速入门需要 Azure PowerShell `Az` 模块。 要查找已安装的版本，请运行 `Get-Module -ListAvailable Az`。 如果需要进行升级，请参阅 [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-Az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount -EnvironmentName AzureChinaCloud` 来创建与 Azure 的连接。
+<!--Not Available on Cloud Shell-->
+
+如果选择在本地安装并使用 PowerShell，则本快速入门需要 Azure PowerShell `Az` 模块。 要查找已安装的版本，请运行 `Get-Module -ListAvailable Az`。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-Az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount -Environment AzureChinaCloud` 来创建与 Azure 的连接。
 
 ## <a name="create-a-vm"></a>创建 VM
 
-在创建 VM 之前，必须创建该 VM 所属的资源组。 使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.Resources/New-azResourceGroup) 创建资源组。 以下示例在“chinaeast”  位置创建名为“myResourceGroup”  的资源组。
+在创建 VM 之前，必须创建该 VM 所属的资源组。 使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.Resources/New-azResourceGroup) 创建资源组。 以下示例在“chinaeast”位置创建名为“myResourceGroup”的资源组。
 
 ```powershell
 New-AzResourceGroup -Name myResourceGroup -Location ChinaEast
@@ -47,11 +50,11 @@ New-AzResourceGroup -Name myResourceGroup -Location ChinaEast
 
 使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 创建 VM。 运行此步骤时，会提示输入凭据。 输入的值将配置为用于 VM 的用户名和密码。
 
-```PowerShell
+```powershell
 $vM = New-AzVm `
     -ResourceGroupName "myResourceGroup" `
     -Name "myVm" `
-    -Location "China East 2"
+    -Location "China East"
 ```
 
 创建 VM 需要几分钟时间。 在创建好 VM 且 PowerShell 返回输出之前，请勿继续执行剩余的步骤。
@@ -62,21 +65,21 @@ $vM = New-AzVm `
 
 ### <a name="enable-network-watcher"></a>启用网络观察程序
 
-如果已在“中国东部 2”区域启用了网络观察程序，请使用 [Get-AzNetworkWatcher](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermnetworkwatcher) 来检索网络观察程序。 以下示例检索 NetworkWatcherRG  资源组中名为 NetworkWatcher_chinaeast  的现有网络观察程序：
+如果已在中国东部区域启用了网络观察程序，请使用 [Get-AzNetworkWatcher](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkwatcher) 来检索网络观察程序。 以下示例检索 NetworkWatcherRG 资源组中名为 NetworkWatcher_chinaeast 的现有网络观察程序：
 
-```PowerShell
+```powershell
 $networkWatcher = Get-AzNetworkWatcher `
   -Name NetworkWatcher_chinaeast `
   -ResourceGroupName NetworkWatcherRG
 ```
 
-如果还没有在“中国东部 2”区域启用网络观察程序，请使用 [New-AzNetworkWatcher](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermnetworkwatcher) 在“中国东部 2”区域创建网络观察程序：
+如果还没有在中国东部区域启用网络观察程序，请使用 [New-AzNetworkWatcher](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkwatcher) 在中国东部区域创建网络观察程序：
 
-```PowerShell
+```powershell
 $networkWatcher = New-AzNetworkWatcher `
   -Name "NetworkWatcher_chinaeast" `
   -ResourceGroupName "NetworkWatcherRG" `
-  -Location "China East 2"
+  -Location "China East"
 ```
 
 ### <a name="use-ip-flow-verify"></a>使用 IP 流验证
@@ -85,7 +88,7 @@ $networkWatcher = New-AzNetworkWatcher `
 
 测试从 VM 发往 www.bing.com 的某个 IP 地址的出站通信：
 
-```PowerShell
+```powershell
 Test-AzNetworkWatcherIPFlow `
   -NetworkWatcher $networkWatcher `
   -TargetVirtualMachineId $vM.Id `
@@ -101,7 +104,7 @@ Test-AzNetworkWatcherIPFlow `
 
 测试从 VM 发往 172.31.0.100 的出站通信：
 
-```PowerShell
+```powershell
 Test-AzNetworkWatcherIPFlow `
   -NetworkWatcher $networkWatcher `
   -TargetVirtualMachineId $vM.Id `
@@ -117,7 +120,7 @@ Test-AzNetworkWatcherIPFlow `
 
 测试从 172.31.0.100 发往 VM 的入站通信：
 
-```PowerShell
+```powershell
 Test-AzNetworkWatcherIPFlow `
   -NetworkWatcher $networkWatcher `
   -TargetVirtualMachineId $vM.Id `
@@ -135,7 +138,7 @@ Test-AzNetworkWatcherIPFlow `
 
 若要确定[测试网络通信](#test-network-communication)中的规则为何允许或阻止通信，请使用 [Get-AzEffectiveNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/get-azeffectivenetworksecuritygroup) 查看网络接口的有效安全规则：
 
-```PowerShell
+```powershell
 Get-AzEffectiveNetworkSecurityGroup `
   -NetworkInterfaceName myVm `
   -ResourceGroupName myResourceGroup
@@ -240,15 +243,14 @@ Get-AzEffectiveNetworkSecurityGroup `
 
 如果不再需要资源组及其包含的所有资源，请使用 [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) 将其删除：
 
-```PowerShell
+```powershell
 Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你已创建 VM 并对入站和出站网络流量筛选器进行诊断。 你已了解了如何通过网络安全组规则来允许或拒绝出入 VM 的流量。 请详细了解[安全规则](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)以及如何[创建安全规则](../virtual-network/manage-network-security-group.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-security-rule)。
+在本快速入门中，你已创建 VM 并对入站和出站网络流量筛选器进行诊断。 你已了解了如何通过网络安全组规则来允许或拒绝出入 VM 的流量。 请详细了解[安全规则](../virtual-network/security-overview.md?toc=%2fnetwork-watcher%2ftoc.json)以及如何[创建安全规则](../virtual-network/manage-network-security-group.md?toc=%2fnetwork-watcher%2ftoc.json#create-a-security-rule)。
 
 即使相应的网络流量筛选器已就位，与 VM 的通信仍可能因路由配置问题而失败。 若要了解如何诊断 VM 网络路由问题，请参阅[诊断 VM 路由问题](diagnose-vm-network-routing-problem-powershell.md)；若要使用某个工具诊断出站路由、延迟和流量筛选问题，请参阅[排查连接问题](network-watcher-connectivity-powershell.md)。
 
-<!-- Update_Description: new articles on network watcher diagnose vm network traffic filtering problem powershell -->
-<!--ms.date: 07/02/2018-->
+<!-- Update_Description: update meta properties, wording update, update link -->

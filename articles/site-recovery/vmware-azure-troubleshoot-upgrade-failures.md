@@ -6,14 +6,16 @@ manager: digimobile
 ms.service: site-recovery
 ms.topic: troubleshooting
 origin.date: 11/10/2019
-ms.date: 02/24/2020
+ms.date: 08/03/2020
+ms.testscope: no
+ms.testdate: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 30ec78d775ea6e730da88b4a902c4fa23955958a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d9114dfe7642a4fff7dbc3eb5d5d21f2c0ee5594
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77611279"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426495"
 ---
 # <a name="troubleshoot-azure-site-recovery-provider-upgrade-failures"></a>排查 Azure Site Recovery 提供程序升级故障
 
@@ -41,7 +43,7 @@ ms.locfileid: "77611279"
 
     CX_THIRDPARTY_SETUP.EXE /VERYSILENT /SUPPRESSMSGBOXES /NORESTART  UCX_SERVER_SETUP.EXE /VERYSILENT /SUPPRESSMSGBOXES /NORESTART /UPGRADE
 
-4. 返回到下载的统一安装程序所在的文件夹，并运行 MicrosoftAzureSiteRecoveryUnifiedSetup.exe 以完成升级。 
+1. 返回到下载的统一安装程序所在的文件夹，并运行 MicrosoftAzureSiteRecoveryUnifiedSetup.exe 以完成升级。 
 
 ## <a name="upgrade-failure-due-to-the-3rd-party-folder-being-renamed"></a>由于重命名第三方文件夹而导致升级失败
 
@@ -67,5 +69,17 @@ ms.locfileid: "77611279"
 1. 使用任务管理器监视安装进度。 当 CX_THIRDPARTY_SETUP.EXE 的进程不再显示在任务管理器中时，请转到下一步。
 1. 验证 C:\thirdparty 是否存在，以及该文件夹是否包含 RRD 库。
 1. 返回到下载的统一安装程序所在的文件夹，并运行 MicrosoftAzureSiteRecoveryUnifiedSetup.exe 以完成升级。
+
+## <a name="upgrade-failure-due-to-master-target-installation-failure"></a>主目标安装失败导致升级失败
+
+升级 Azure Site Recovery 提供程序 (DRA) 时，主目标安装失败，并出现错误“安装位置不存在且/或其上可用空间不足 1 GB 且/或它不存在于固定驱动器上。”。
+
+这可能是由于注册表项中某个参数的值为 null 导致的。 若要解决问题，请执行以下操作 -
+
+1. 启动注册表编辑器 (regedit.exe) 并打开 HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\InMage Systems\Installed Products\4 分支。
+1. 检查“InstallDirectory”键值。 如果它为 null，则添加当前安装目录值。
+1. 类似地，在注册表编辑器中打开 HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\InMage Systems\Installed Products\5 分支。
+1. 检查“InstallDirectory”键值并添加当前安装目录值。
+1. 再次运行“统一安装程序”安装程序。
 
 <!-- Update_Description: update meta properties, wording update, update link -->

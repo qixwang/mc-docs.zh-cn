@@ -4,15 +4,15 @@ description: 介绍如何排查 Azure 应用程序网关的后端运行状况问
 services: application-gateway
 author: surajmb
 ms.service: application-gateway
-ms.topic: article
-ms.date: 06/23/2020
+ms.topic: troubleshooting
+ms.date: 08/03/2020
 ms.author: v-junlch
-ms.openlocfilehash: dfd96253beea271bd5caaa66aef349ffa56c9d6c
-ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
+ms.openlocfilehash: deeb1880d1a7a7e6b0b0c1676b37b41c5b113828
+ms.sourcegitcommit: 36e7f37481969f92138bfe70192b1f4a2414caf7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85516743"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87796325"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>排查应用程序网关中的后端运行状况问题
 ==================================================
@@ -176,7 +176,7 @@ BackendAddressPoolsText : [
 
 | **错误** | **操作** |
 | --- | --- |
-| 探测状态代码不匹配：收到 401 | 检查后端服务器是否要求身份验证。 应用程序网关探测此时无法传递用于身份验证的凭据。 允许探测状态代码匹配中出现 \"HTTP 401\"，或探测其中的服务器不需要身份验证的路径。 | |
+| 探测状态代码不匹配：收到 401 | 检查后端服务器是否要求身份验证。 应用程序网关探测无法传递用于身份验证的凭据。 允许探测状态代码匹配中出现 \"HTTP 401\"，或探测其中的服务器不需要身份验证的路径。 | |
 | 探测状态代码不匹配：收到 403 | 访问被禁止。 检查后端服务器上是否允许访问该路径。 | |
 | 探测状态代码不匹配：收到 404 | 找不到页面。 检查是否可在后端服务器上访问主机名路径。 将主机名或路径参数更改为可访问的值。 | |
 | 探测状态代码不匹配：收到 405 | 应用程序网关的探测请求使用 HTTP GET 方法。 检查服务器是否允许此方法。 | |

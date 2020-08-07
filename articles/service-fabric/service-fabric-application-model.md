@@ -3,14 +3,16 @@ title: Azure Service Fabric 应用程序模型
 description: 如何使用应用程序和服务清单文件在 Azure Service Fabric 中对应用程序和服务进行建模和说明。
 ms.topic: conceptual
 origin.date: 02/23/2018
-ms.date: 02/24/2020
+ms.date: 08/03/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: c2d28c289a49f03bb7e3c452e9ba389dc119f451
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3d417459df5e4b04c2089b429e3a8d37813006e4
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540704"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426403"
 ---
 # <a name="model-an-application-in-service-fabric"></a>在 Service Fabric 中对应用程序建模
 本文概述 Azure Service Fabric 应用程序模型以及如何通过清单文件定义应用程序和服务。
@@ -24,7 +26,7 @@ ms.locfileid: "77540704"
 
 通过 XML 文件（应用程序清单和服务清单）描述应用程序和服务的类（或“类型”）。  清单描述应用程序和服务，可对照这样的模板从群集的映像存储区中对应用程序进行实例化。  清单将在[应用程序和服务清单](service-fabric-application-and-service-manifests.md)中详细介绍。 ServiceManifest.xml 和 ApplicationManifest.xml 文件的架构定义随 Service Fabric SDK 和工具一起安装到 *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*。 XML 架构记录在 [ServiceFabricServiceModel.xsd 架构文档](service-fabric-service-model-schema.md)中。
 
-即使在由同一 Service Fabric 节点托管时，不同应用程序实例的代码也将作为单独的进程运行。 此外，可以独立管理每个应用程序实例的生命周期（如升级）。 下图显示了应用程序类型如何由服务类型组成，而服务类型又如何由代码、配置和数据包组成。 为了简化示意图，这里只显示了 `ServiceType4` 的代码/配置/数据包，不过每个服务类型包括其中的部分或全部包类型。
+即使由同一 Service Fabric 节点托管时，不同应用程序实例的代码也将作为单独的进程运行。 此外，可以独立管理每个应用程序实例的生命周期（如升级）。 下图显示了应用程序类型如何由服务类型组成，而服务类型又如何由代码、配置和数据包组成。 为了简化示意图，这里只显示了 `ServiceType4` 的代码/配置/数据包，不过每个服务类型包括其中的部分或全部包类型。
 
 ![Service Fabric 应用程序类型和服务类型][cluster-imagestore-apptypes]
 

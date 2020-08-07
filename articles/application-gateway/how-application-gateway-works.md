@@ -4,15 +4,15 @@ description: 本文介绍应用程序网关如何接受传入请求并将其路�
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
-ms.topic: article
-ms.date: 03/30/2020
+ms.topic: conceptual
+ms.date: 08/03/2020
 ms.author: v-junlch
-ms.openlocfilehash: f59c799e8f1f83542e6b5aa0ff2083386ba87bd7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: cca66cbf133c334bc0ddf06fdc7bbbe7096f2c2a
+ms.sourcegitcommit: 36e7f37481969f92138bfe70192b1f4a2414caf7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80581717"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87796342"
 ---
 # <a name="how-an-application-gateway-works"></a>应用程序网关的工作原理
 
@@ -62,7 +62,7 @@ HTTP 设置中使用的端口和协议确定应用程序网关与后端服务器
 
 x-forwarded-proto 的有效值为 HTTP 或 HTTPS。 x-forwarded-port 指定请求抵达应用程序网关时所在的端口。 x-original-host 标头包含随请求一起抵达的原始主机标头。 此标头在 Azure 网站集成中非常有用，其中，传入的主机标头在流量路由到后端之前会修改。 如果已启用会话相关性作为一个选项，则会添加网关管理的相关性 Cookie。
 
-可以将应用程序网关配置为使用[重写 HTTP 标头](/application-gateway/rewrite-http-headers)修改标头，或使用路径替代设置修改 URI 路径。 但是，除非配置为这样做，否则所有传入的请求都会代理到后端。
+可配置应用程序网关，让它使用[重写 HTTP 标头和 URL](rewrite-http-headers-url.md) 修改标头，或使用路径替代设置修改 URI 路径。 但是，除非配置为这样做，否则所有传入的请求都会代理到后端。
 
 ## <a name="next-steps"></a>后续步骤
 

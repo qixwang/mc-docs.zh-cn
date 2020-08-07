@@ -3,22 +3,30 @@ title: Azure 诊断扩展概述
 description: 使用 Azure 诊断在云服务、虚拟机和 Service Fabric 中进行调试、性能度量、监视和流量分析
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
-author: lingliw
+author: Johnnytechn
+ms.author: v-johya
+ms.date: 07/17/2020
 origin.date: 02/13/2019
-ms.date: 6/4/2019
-ms.author: v-lingwu
-ms.openlocfilehash: 7b800aa5d4aa60b2093c23e82c8073f43e589e6e
-ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
+ms.openlocfilehash: ad1c279306fbafbbe1b69ddf5bb01d9803f92c74
+ms.sourcegitcommit: b5794af488a336d84ee586965dabd6f45fd5ec6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85852024"
+ms.lasthandoff: 08/01/2020
+ms.locfileid: "87508372"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Azure 诊断扩展概述
 Azure 诊断扩展是 [Azure Monitor 中的代理](agents-overview.md)，可从 Azure 计算资源（包括虚拟机）的来宾操作系统中收集监视数据。 本文概述了 Azure 诊断扩展，其中包括它支持的具体功能以及用于安装和配置的选项。 
 
 > [!NOTE]
 > Azure 诊断扩展是一个代理，适用于从计算资源的来宾操作系统中收集监视数据。 请参阅 [Azure Monitor 代理概述](agents-overview.md)，了解不同代理的说明，以及如何按要求选择适当的代理。
+
+## <a name="primary-scenarios"></a>主要方案
+诊断扩展解决的主要方案是：
+
+- 将来宾指标收集到 Azure Monitor 指标中。
+- 将来宾日志和指标发送到 Azure 存储以进行存档。
+- 将来宾日志和指标发送到 Azure 事件中心，以在 Azure 外部发送。
+
 
 ## <a name="comparison-to-log-analytics-agent"></a>与 Log Analytics 代理比较
 Azure Monitor 中的 Log Analytics 代理还可以用来从虚拟机的来宾操作系统收集监视数据。 可以根据要求选择使用任一项，或者二者都使用。 请参阅 [Azure Monitor 代理概述](agents-overview.md)，详细比较 Azure Monitor 代理。 
@@ -27,10 +35,10 @@ Azure Monitor 中的 Log Analytics 代理还可以用来从虚拟机的来宾操
 
 - Azure 诊断扩展只能与 Azure 虚拟机配合使用。 Log Analytics 代理可以与 Azure 中的、其他云中的和本地的虚拟机配合使用。
 - Azure 诊断扩展将数据发送到 Azure 存储、[Azure Monitor 指标](data-platform-metrics.md)（仅限 Windows）和事件中心。 Log Analytics 代理将数据收集到 [Azure Monitor 日志](data-platform-logs.md)中。
-- [Azure 安全中心](/azure/security-center/)等其他服务需要 Log Analytics 代理。
+- [解决方案](../monitor-reference.md#insights-and-core-solutions)和其他服务（如 [Azure 安全中心](/security-center/)）需要 Log Analytics 代理。
 
 ## <a name="costs"></a>成本
-Azure 诊断扩展不会产生费用，但可能会产生数据引入费用。 检查与要将数据收集到其中的目标相对应的 [Azure Monitor 定价](https://azure.microsoft.com/pricing/details/monitor/)。
+Azure 诊断扩展不会产生费用，但可能会产生数据引入费用。 检查与要将数据收集到其中的目标相对应的 [Azure Monitor 定价](https://www.azure.cn/pricing/details/monitor/)。
 
 ## <a name="data-collected"></a>收集的数据
 下表列出了 Windows 和 Linux 诊断扩展可以收集的数据。
@@ -68,7 +76,7 @@ Windows 和 Linux 的 Azure 诊断扩展始终将数据收集到 Azure 存储帐
 | 目标 | 说明 |
 |:---|:---|
 | 事件中心 | 使用 Azure 事件中心在 Azure 外部发送数据。 请参阅[将 Azure 诊断数据流式传输到事件中心](diagnostics-extension-stream-event-hubs.md) |
-| Azure 存储 Blob | 除了表以外，还会将数据写入 Azure 存储中的 blob。 |
+| Azure 存储 Blob | 除表外，还将数据写入 Azure 存储中的 Blob。 |
 | Application Insights | 将数据从 VM 中运行的应用程序收集到可以与其他应用程序监视功能集成的 Application Insights。 请参阅[将诊断数据发送到 Application Insights](diagnostics-extension-to-application-insights.md)。 |
 
 还可以将存储中的 WAD 数据收集到 Log Analytics 工作区，以便使用 Azure Monitor 日志对其进行分析，尽管通常使用 Log Analytics 代理来执行此功能。 它可以将数据直接发送到 Log Analytics 工作区，并支持那些提供附加功能的解决方案和见解。  请参阅[从 Azure 存储收集 Azure 诊断日志](diagnostics-extension-logs.md)。 
@@ -81,6 +89,7 @@ LAD 将数据写入 Azure 存储中的表。 它支持下表中的接收器。
 |:---|:---|
 | 事件中心 | 使用 Azure 事件中心在 Azure 外部发送数据。 |
 | Azure 存储 Blob | 除了表以外，还会将数据写入 Azure 存储中的 blob。 |
+
 
 ## <a name="installation-and-configuration"></a>安装和配置
 诊断扩展作为 Azure 中的[虚拟机扩展](../../virtual-machines/extensions/overview.md)实现，因此，它支持相同的、使用资源管理器模板、PowerShell 和 CLI 的安装选项。 有关安装和维护虚拟机扩展的常规详细信息，请参阅[适用于 Windows 的虚拟机扩展和功能](../../virtual-machines/extensions/features-windows.md)和[适用于 Linux 的虚拟机扩展和功能](../../virtual-machines/extensions/features-linux.md)。
@@ -107,3 +116,5 @@ LAD 将数据写入 Azure 存储中的表。 它支持下表中的接收器。
 
 * 了解如何[在 Azure 诊断中使用性能计数器](../../cloud-services/diagnostics-performance-counters.md)。
 * 如果在开始诊断时或者在 Azure 存储表中查找数据时遇到问题，请参阅 [Azure 诊断故障排除](diagnostics-extension-troubleshooting.md)
+
+

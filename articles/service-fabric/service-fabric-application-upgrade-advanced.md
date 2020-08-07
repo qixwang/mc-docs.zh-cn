@@ -3,14 +3,16 @@ title: 高级应用程序升级主题
 description: 本文介绍有关升级 Service Fabric 应用程序的一些高级主题。
 ms.topic: conceptual
 origin.date: 03/11/2020
-ms.date: 06/08/2020
+ms.date: 08/03/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: e2a9578aaae1e228e7e815d56fd327ab9711713a
-ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
+ms.openlocfilehash: 42748064b3a44e61c1235df0649a82a02ccae2a8
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84356294"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426445"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Service Fabric 应用程序升级：高级主题
 
@@ -24,7 +26,7 @@ ms.locfileid: "84356294"
 
 对于计划内无状态实例停机（例如，应用程序/群集升级或节点停用），由于实例关闭后公开的终结点被删除，因此连接可能会断开，从而导致强制关闭连接。
 
-若要避免此问题，请通过在服务配置中添加“实例关闭延迟持续时间”来配置 RequestDrain（预览）功能，以便在接收来自群集中其他服务的请求时允许排出，并使用反向代理或使用带有通知模型的解析 API 来更新终结点。 这可确保在延迟开始之前删除无状态实例播发的终结点，然后再关闭实例。 此延迟可使现有请求在实例实际关闭之前正常排空。 在开始延迟时，客户端通过回调函数获取有关终结点发生更改的通知，因此它们可以重新解析终结点，并避免向正在停止的实例发送新请求。
+为了避免这种情况，请通过在服务配置中添加“实例关闭延迟持续时间”来配置 RequestDrain 功能，以允许来自群集内部的现有请求在公开的终结点上排出 。 这是通过在延迟开始之前删除无状态实例播发的终结点，然后再关闭实例实现的。 此延迟可使现有请求在实例实际关闭之前正常排空。 在开始延迟时，客户端通过回调函数获取有关终结点发生更改的通知，因此它们可以重新解析终结点，并避免向正在停止的实例发送新请求。 这些请求可能源自使用[反向代理](/service-fabric/service-fabric-reverseproxy)的客户端，或使用服务终结点解析 API 和通知模型 ([ServiceNotificationFilterDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicenotificationfilterdescription?view=azure-dotnet)) 来更新终结点的客户端。
 
 ### <a name="service-configuration"></a>服务配置
 
@@ -33,7 +35,7 @@ ms.locfileid: "84356294"
  * **创建新服务时**指定 `-InstanceCloseDelayDuration`：
 
     ```powershell
-    New-ServiceFabricService -Stateless [-ServiceName] <Uri> -InstanceCloseDelayDuration <TimeSpan>`
+    New-ServiceFabricService -Stateless [-ServiceName] <Uri> -InstanceCloseDelayDuration <TimeSpan>
     ```
 
  * **在应用程序清单的 defaults 节中定义服务**时分配 `InstanceCloseDelayDurationSeconds` 属性：
@@ -48,6 +50,33 @@ ms.locfileid: "84356294"
 
     ```powershell
     Update-ServiceFabricService [-Stateless] [-ServiceName] <Uri> [-InstanceCloseDelayDuration <TimeSpan>]`
+    ```
+
+ * 通过 ARM 模板创建或更新现有服务时，请指定 `InstanceCloseDelayDuration` 值（支持的最低 API 版本：2019-11-01-preview）：
+
+    ```ARM template to define InstanceCloseDelayDuration of 30seconds
+    {
+      "apiVersion": "2019-11-01-preview",
+      "type": "Microsoft.ServiceFabric/clusters/applications/services",
+      "name": "[concat(parameters('clusterName'), '/', parameters('applicationName'), '/', parameters('serviceName'))]",
+      "location": "[variables('clusterLocation')]",
+      "dependsOn": [
+        "[concat('Microsoft.ServiceFabric/clusters/', parameters('clusterName'), '/applications/', parameters('applicationName'))]"
+      ],
+      "properties": {
+        "provisioningState": "Default",
+        "serviceKind": "Stateless",
+        "serviceTypeName": "[parameters('serviceTypeName')]",
+        "instanceCount": "-1",
+        "partitionDescription": {
+          "partitionScheme": "Singleton"
+        },
+        "serviceLoadMetrics": [],
+        "servicePlacementPolicies": [],
+        "defaultMoveCost": "",
+        "instanceCloseDelayDuration": "00:00:30.0"
+      }
+    }
     ```
 
 ### <a name="client-configuration"></a>客户端配置
@@ -65,15 +94,17 @@ Start-ServiceFabricApplicationUpgrade [-ApplicationName] <Uri> [-ApplicationType
 Start-ServiceFabricClusterUpgrade [-CodePackageVersion] <String> [-ClusterManifestVersion] <String> [-InstanceCloseDelayDurationSec <UInt32>]
 ```
 
-延迟持续时间仅应用于调用的升级实例，而不会更改单个服务延迟配置。 例如，可以使用此方法指定 `0` 延迟，以跳过任何预配置的升级延迟。
+重写的延迟持续时间仅应用于调用的升级实例，而不会更改单个服务延迟配置。 例如，可以使用此方法指定 `0` 延迟，以跳过任何预配置的升级延迟。
 
 > [!NOTE]
-> 用于排出请求的设置不适用于来自 Azure 负载均衡器的请求。 如果调用服务使用基于投诉的解析，则此设置不起作用。
+> * 用于排出请求的设置将无法阻止 Azure 负载均衡器将新请求发送到正在进行排出操作的终结点。
+> * 基于投诉的解决机制不会导致请求的正常排出，因为它会在发生故障后触发服务解析。 如前所述，应该对其进行增强，以使用 [ServiceNotificationFilterDescription](https://docs.azure.cn/dotnet/api/system.fabric.description.servicenotificationfilterdescription?view=azure-dotnet) 订阅终结点更改通知。
+> * 当升级是无影响的升级时（例如 在升级期间不会关闭副本时），则不遵循这些设置。
 >
 >
 
 > [!NOTE]
-> 当群集代码版本为 7.1.XXX 或更高版本时，可以如上所述使用 Update-ServiceFabricService cmdlet 在现有服务中配置此功能。
+> 当群集代码版本为 7.1.XXX 或更高版本时，可以如上所述使用 Update-ServiceFabricService cmdlet 或 ARM 模板在现有服务中配置此功能。
 >
 >
 

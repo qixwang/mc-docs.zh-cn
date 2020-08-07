@@ -5,20 +5,20 @@ author: Johnnytechn
 services: azure-monitor
 ms.topic: reference
 origin.date: 12/18/2019
-ms.date: 05/28/2020
+ms.date: 07/17/2020
 ms.author: v-johya
 ms.subservice: metrics
-ms.openlocfilehash: 5718dd977c45f882c40cca0e008f9ca5017e3579
-ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
+ms.openlocfilehash: 312778d77a8c1d9032ac410e6761d6293685f6e9
+ms.sourcegitcommit: b5794af488a336d84ee586965dabd6f45fd5ec6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851977"
+ms.lasthandoff: 08/01/2020
+ms.locfileid: "87508346"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure 监视器支持的指标
 
 > [!NOTE]
-> 此列表主要通过 Azure Monitor Metrics REST API 自动生成。 通过 Github 对此列表所做的任何修改都可能在不发出警告的情况下写入存储。 请与本文的作者联系，以获取有关如何进行永久更新的详细信息。
+> 此列表主要通过 Azure Monitor Metrics REST API 自动生成。 通过 GitHub 对此列表所做的任何修改都可能在不发出警告的情况下进行改写。 请与本文的作者联系，以获取有关如何进行永久更新的详细信息。
 
 Azure 监视器提供多种方式来与指标交互，包括在门户中制作指标图表、通过 REST API 访问指标，或者使用 PowerShell 或 CLI 查询指标。 
 
@@ -2090,22 +2090,11 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 
 <sup>2</sup> 此指标可用于这样的数据库：使用具有 2 vCore 或更多 vCore 的 vCore 购买模型，或使用具有 200 DTU 或更多 DTU 的基于 DTU 的购买模型。 此指标当前不适用于超大规模数据库。
 
-
-## <a name="microsoftsqlservers"></a>Microsoft.Sql/servers
-
-|指标|指标显示名称|计价单位|聚合类型|说明|维度|
-|---|---|---|---|---|---|
-|dtu_consumption_percent|DTU 百分比|百分比|平均值|DTU 百分比|ElasticPoolResourceId|
-|database_dtu_consumption_percent|DTU 百分比|百分比|平均值|DTU 百分比|DatabaseResourceId,ElasticPoolResourceId|
-|storage_used|已用数据空间|字节|平均值|已用数据空间|ElasticPoolResourceId|
-|database_storage_used|已用数据空间|字节|平均值|已用数据空间|DatabaseResourceId,ElasticPoolResourceId|
-|dtu_used|已用的 DTU|计数|平均值|已用的 DTU|DatabaseResourceId|
-
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft.Sql/managedInstances
 
 |指标|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|virtual_core_count|虚拟核心计数|计数|平均值|虚拟核心计数|无|
+|virtual_core_count|虚拟核心计数|Count|平均值|虚拟核心计数|无|
 |avg_cpu_percent|CPU 平均百分比|百分比|平均值|CPU 平均百分比|无|
 |reserved_storage_mb|预留的存储空间|计数|平均值|预留的存储空间|无|
 |storage_space_used_mb|已使用的存储空间|计数|平均值|已使用的存储空间|无|
@@ -2224,8 +2213,8 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |指标|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
 |ServerSyncSessionResult|同步会话结果|计数|平均值|每当服务器终结点在云终结点中成功完成同步会话时，记录值 1 的指标|SyncGroupName,ServerEndpointName,SyncDirection|
-|StorageSyncSyncSessionAppliedFilesCount|已同步的文件数|计数|总计|已同步的文件计数|SyncGroupName,ServerEndpointName,SyncDirection|
-|StorageSyncSyncSessionPerItemErrorsCount|未同步的文件|计数|总计|无法同步的文件计数|SyncGroupName,ServerEndpointName,SyncDirection|
+|StorageSyncSyncSessionAppliedFilesCount|同步的文件|计数|总计|已同步的文件计数|SyncGroupName,ServerEndpointName,SyncDirection|
+|StorageSyncSyncSessionPerItemErrorsCount|未同步的文件|Count|总计|无法同步的文件计数|SyncGroupName,ServerEndpointName,SyncDirection|
 |StorageSyncBatchTransferredFileBytes|同步的字节数|字节|总计|为同步会话传输的总文件大小|SyncGroupName,ServerEndpointName,SyncDirection|
 |StorageSyncServerHeartbeat|服务器联机状态|计数|最大值|每当已注册的服务器在云终结点中成功记录检测信号时，记录值 1 的指标|ServerName|
 |StorageSyncRecallIOTotalSizeBytes|云分层回调|字节|总计|服务器重新调用的数据总大小|ServerName|
@@ -2266,7 +2255,7 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |InputEvents|输入事件数|计数|总计|输入事件数|LogicalName,PartitionId|
 |InputEventBytes|输入事件字节数|字节|总计|输入事件字节数|LogicalName,PartitionId|
 |LateInputEvents|延迟输入事件数|计数|总计|延迟输入事件数|LogicalName,PartitionId|
-|OutputEvents|输出事件数|计数|总计|输出事件数|LogicalName,PartitionId|
+|OutputEvents|输出事件数|Count|总计|输出事件数|LogicalName,PartitionId|
 |ConversionErrors|数据转换错误数|计数|总计|数据转换错误数|LogicalName,PartitionId|
 |错误|运行时错误|计数|总计|运行时错误|LogicalName,PartitionId|
 |DroppedOrAdjustedEvents|失序事件数|计数|总计|失序事件数|LogicalName,PartitionId|
@@ -2277,7 +2266,7 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |EarlyInputEvents|早期输入事件数|计数|总计|早期输入事件数|LogicalName,PartitionId|
 |OutputWatermarkDelaySeconds|水印延迟|秒|最大值|水印延迟|LogicalName,PartitionId|
 |InputEventsSourcesBacklogged|积压的输入事件数|计数|最大值|积压的输入事件数|LogicalName,PartitionId|
-|InputEventsSourcesPerSecond|收到的输入源数|计数|总计|收到的输入源数|LogicalName,PartitionId|
+|InputEventsSourcesPerSecond|收到的输入源数|Count|总计|收到的输入源数|LogicalName,PartitionId|
 
 ## <a name="microsoftsynapseworkspaces"></a>Microsoft.Synapse/workspaces
 
@@ -2310,7 +2299,7 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |AdaptiveCacheUsedPercent|自适应缓存使用百分比|百分比|最大值|度量工作负荷使用自适应缓存的效果。 将此指标与缓存已用百分比指标一起使用，以确定是要扩展以增加容量还是重新运行工作负荷以生成缓存|无|
 |LocalTempDBUsedPercent|本地 tempdb 已用百分比|百分比|最大值|所有计算节点上的本地 tempdb 利用率 - 每五分钟发出一次值|无|
 |MemoryUsedPercent|已用内存百分比|百分比|最大值|SQL 池中所有节点的内存使用率|无|
-|连接|连接|计数|总计|SQL 池的总登录数|结果|
+|连接|连接|Count|总计|SQL 池的总登录数|结果|
 |WLGActiveQueries|工作负荷组活动查询|计数|总计|工作负荷组中的活动查询。 如果使用此指标时不进行筛选和拆分，会显示系统上运行的所有活动查询|IsUserDefined,WorkloadGroup|
 |WLGActiveQueriesTimeouts|工作负荷组查询超时|计数|总计|已超时的工作负荷组查询。只有在查询开始执行查询后，此指标才报告查询超时（不包括由于锁定或资源等待而导致的等待时间）|IsUserDefined,WorkloadGroup|
 |WLGAllocationBySystemPercent|按系统百分比列出的工作负荷组分配|百分比|最大值|相对于整个系统的资源分配百分比|IsUserDefined,WorkloadGroup|
@@ -2383,15 +2372,15 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |HttpQueueLength|Http 队列长度|计数|平均值|Http 队列长度|实例|
 |BytesReceived|数据输入|字节|总计|数据输入|实例|
 |BytesSent|数据输出|字节|总计|数据输出|实例|
-|TcpSynSent|发送的 TCP Syn|计数|平均值|发送的 TCP Syn|实例|
+|TcpSynSent|已发送的 TCP Syn|计数|平均值|发送的 TCP Syn|实例|
 |TcpSynReceived|收到的 TCP Syn|计数|平均值|收到的 TCP Syn|实例|
 |TcpEstablished|已建立的 TCP|计数|平均值|已建立的 TCP|实例|
 |TcpFinWait1|TCP Fin 等待 1|计数|平均值|TCP Fin 等待 1|实例|
 |TcpFinWait2|TCP Fin 等待 2|计数|平均值|TCP Fin 等待 2|实例|
-|TcpClosing|TCP 正在关闭|计数|平均值|TCP 正在关闭|实例|
+|TcpClosing|正在关闭的 TCP|计数|平均值|TCP 正在关闭|实例|
 |TcpCloseWait|TCP 关闭等待|计数|平均值|TCP 关闭等待|实例|
 |TcpLastAck|TCP 上一次的 Ack|计数|平均值|TCP 上一次的 Ack|实例|
-|TcpTimeWait|TCP 时间等待|计数|平均值|TCP 时间等待|实例|
+|TcpTimeWait|TCP 时间等待|Count|平均值|TCP 时间等待|实例|
 
 ## <a name="microsoftwebsites-excluding-functions"></a>Microsoft.Web/sites（不包括 Functions） 
 
@@ -2404,7 +2393,7 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |指标|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
 |CpuTime|CPU 时间|秒|总计|CPU 时间|实例|
-|请求|请求|计数|总计|请求|实例|
+|请求|Requests|计数|总计|请求|实例|
 |BytesReceived|数据输入|字节|总计|数据输入|实例|
 |BytesSent|数据输出|字节|总计|数据输出|实例|
 |Http101|Http 101|计数|总计|Http 101|实例|
@@ -2423,7 +2412,7 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |AppConnections|连接|计数|平均值|连接|实例|
 |句柄数|句柄计数|计数|平均值|句柄计数|实例|
 |线程数|线程计数|计数|平均值|线程计数|实例|
-|PrivateBytes|专用字节数|字节|平均值|专用字节数|实例|
+|PrivateBytes|专用字节|字节|平均值|专用字节数|实例|
 |IoReadBytesPerSecond|IO 每秒读取字节数|每秒字节数|总计|IO 每秒读取字节数|实例|
 |IoWriteBytesPerSecond|IO 每秒写入字节数|每秒字节数|总计|IO 每秒写入字节数|实例|
 |IoOtherBytesPerSecond|IO 每秒其他字节数|每秒字节数|总计|IO 每秒其他字节数|实例|
@@ -2433,7 +2422,7 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |RequestsInApplicationQueue|应用程序队列中的请求数|计数|平均值|应用程序队列中的请求数|实例|
 |CurrentAssemblies|当前程序集|计数|平均值|当前程序集|实例|
 |TotalAppDomains|应用程序域总数|计数|平均值|应用程序域总数|实例|
-|TotalAppDomainsUnloaded|卸载的应用程序域总数|计数|平均值|卸载的应用程序域总数|实例|
+|TotalAppDomainsUnloaded|卸载的应用程序域总数|Count|平均值|卸载的应用程序域总数|实例|
 |Gen0Collections|第 0 代垃圾回收|计数|总计|第 0 代垃圾回收|实例|
 |Gen1Collections|第 1 代垃圾回收|计数|总计|第 1 代垃圾回收|实例|
 |Gen2Collections|第 2 代垃圾回收|计数|总计|第 2 代垃圾回收|实例|
@@ -2454,7 +2443,7 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |AverageMemoryWorkingSet|平均内存工作集|字节|平均值|平均内存工作集|实例|
 |FunctionExecutionUnits|函数执行单位数|MB/毫秒|总计|[函数执行单位数](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ#how-can-i-view-graphs-of-execution-count-and-gb-seconds)|实例|
 |FunctionExecutionCount|函数执行计数|计数|总计|函数执行计数|实例|
-|PrivateBytes|专用字节数|字节|平均值|专用字节数|实例|
+|PrivateBytes|专用字节|字节|平均值|专用字节数|实例|
 |IoReadBytesPerSecond|IO 每秒读取字节数|每秒字节数|总计|IO 每秒读取字节数|实例|
 |IoWriteBytesPerSecond|IO 每秒写入字节数|每秒字节数|总计|IO 每秒写入字节数|实例|
 |IoOtherBytesPerSecond|IO 每秒其他字节数|每秒字节数|总计|IO 每秒其他字节数|实例|
@@ -2464,7 +2453,7 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |RequestsInApplicationQueue|应用程序队列中的请求数|计数|平均值|应用程序队列中的请求数|实例|
 |CurrentAssemblies|当前程序集|计数|平均值|当前程序集|实例|
 |TotalAppDomains|应用程序域总数|计数|平均值|应用程序域总数|实例|
-|TotalAppDomainsUnloaded|卸载的应用程序域总数|计数|平均值|卸载的应用程序域总数|实例|
+|TotalAppDomainsUnloaded|卸载的应用程序域总数|Count|平均值|卸载的应用程序域总数|实例|
 |Gen0Collections|第 0 代垃圾回收|计数|总计|第 0 代垃圾回收|实例|
 |Gen1Collections|第 1 代垃圾回收|计数|总计|第 1 代垃圾回收|实例|
 |Gen2Collections|第 2 代垃圾回收|计数|总计|第 2 代垃圾回收|实例|
@@ -2476,7 +2465,7 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |指标|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
 |CpuTime|CPU 时间|秒|总计|CPU 时间|实例|
-|请求|请求|计数|总计|请求|实例|
+|请求|Requests|计数|总计|请求|实例|
 |BytesReceived|数据输入|字节|总计|数据输入|实例|
 |BytesSent|数据输出|字节|总计|数据输出|实例|
 |Http101|Http 101|计数|总计|Http 101|实例|
@@ -2496,8 +2485,8 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |FunctionExecutionCount|函数执行计数|计数|总计|函数执行计数|实例|
 |AppConnections|连接|计数|平均值|连接|实例|
 |句柄数|句柄计数|计数|平均值|句柄计数|实例|
-|线程数|线程计数|计数|平均值|线程计数|实例|
-|PrivateBytes|专用字节数|字节|平均值|专用字节数|实例|
+|线程数|线程计数|Count|平均值|线程计数|实例|
+|PrivateBytes|专用字节|字节|平均值|专用字节数|实例|
 |IoReadBytesPerSecond|IO 每秒读取字节数|每秒字节数|总计|IO 每秒读取字节数|实例|
 |IoWriteBytesPerSecond|IO 每秒写入字节数|每秒字节数|总计|IO 每秒写入字节数|实例|
 |IoOtherBytesPerSecond|IO 每秒其他字节数|每秒字节数|总计|IO 每秒其他字节数|实例|
@@ -2507,7 +2496,7 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |RequestsInApplicationQueue|应用程序队列中的请求数|计数|平均值|应用程序队列中的请求数|实例|
 |CurrentAssemblies|当前程序集|计数|平均值|当前程序集|实例|
 |TotalAppDomains|应用程序域总数|计数|平均值|应用程序域总数|实例|
-|TotalAppDomainsUnloaded|卸载的应用程序域总数|计数|平均值|卸载的应用程序域总数|实例|
+|TotalAppDomainsUnloaded|卸载的应用程序域总数|Count|平均值|卸载的应用程序域总数|实例|
 |Gen0Collections|第 0 代垃圾回收|计数|总计|第 0 代垃圾回收|实例|
 |Gen1Collections|第 1 代垃圾回收|计数|总计|第 1 代垃圾回收|实例|
 |Gen2Collections|第 2 代垃圾回收|计数|总计|第 2 代垃圾回收|实例|
@@ -2518,7 +2507,7 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 
 |指标|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|请求|请求|计数|总计|请求|实例|
+|请求|Requests|计数|总计|请求|实例|
 |BytesReceived|数据输入|字节|总计|数据输入|实例|
 |BytesSent|数据输出|字节|总计|数据输出|实例|
 |Http101|Http 101|计数|总计|Http 101|实例|
@@ -2536,7 +2525,7 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |DiskQueueLength|磁盘队列长度|计数|平均值|磁盘队列长度|实例|
 |HttpQueueLength|Http 队列长度|计数|平均值|Http 队列长度|实例|
 |ActiveRequests|活动请求数|计数|总计|活动请求数|实例|
-|TotalFrontEnds|前端总数|计数|平均值|前端总数|无|
+|TotalFrontEnds|前端总数|Count|平均值|前端总数|无|
 |SmallAppServicePlanInstances|小型应用服务计划工作线程数|计数|平均值|小型应用服务计划工作线程数|无|
 |MediumAppServicePlanInstances|中型应用服务计划工作线程数|计数|平均值|中型应用服务计划工作线程数|无|
 |LargeAppServicePlanInstances|大型应用服务计划工作线程数|计数|平均值|大型应用服务计划工作线程数|无|

@@ -6,18 +6,18 @@ author: WenJason
 manager: digimobile
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 origin.date: 03/19/2019
-ms.date: 07/06/2020
+ms.date: 08/03/2020
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 97f6994bf94d04bc1d512563640030e4dd88d7d6
-ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
+ms.openlocfilehash: f3cd4d6b4f68fb986e3fcc0a3433f8c8525b0c8f
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85845827"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426443"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-synapse-sql-pool"></a>有关在 Synapse SQL 池中使用复制表的设计指南
 
@@ -125,7 +125,7 @@ WHERE d.FiscalYear = 2004
 
 SQL 池通过维护表的主版本来实现复制表。 它将主版本复制到每个计算节点上的第一个分发数据库。 发生更改时，会先更新主版本，然后重新生成每个计算节点上的表。 重新生成复制表包括将表复制到每个计算节点，然后生成索引。  例如，DW2000c 上的复制表有 5 个数据副本。  每个计算节点上均存在主控副本和完整副本。  所有数据均存储在分发数据库中。 SQL 池使用此模型来支持更快的数据修改语句和灵活的缩放操作。
 
-发生下列情况后，需要重新生成：
+在发生以下情况后，异步重新生成由对复制表的第一次查询触发：
 
 - 加载或修改了数据
 - Synapse SQL 实例缩放到了其他级别

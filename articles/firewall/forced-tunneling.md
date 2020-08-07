@@ -5,20 +5,22 @@ services: firewall
 author: rockboyfor
 ms.service: firewall
 ms.topic: article
-origin.date: 05/11/2020
-ms.date: 06/15/2020
+origin.date: 06/01/2020
+ms.date: 08/03/2020
+ms.testscope: yes
+ms.testdate: 08/03/2020
 ms.author: v-yeche
-ms.openlocfilehash: c24fbb6eb3c534b8844c39f745b14b3cf1d17e2f
-ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
+ms.openlocfilehash: 7c242566002b6a277452612d3d50e73417250800
+ms.sourcegitcommit: 362814dc7ac5b56cf0237b9016a67c35d8d72c32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84684051"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87455593"
 ---
 <!--Verified successfully-->
 # <a name="azure-firewall-forced-tunneling"></a>Azure 防火墙强制隧道
 
-可以对 Azure 防火墙进行配置，将所有发往 Internet 的流量路由到指定的下一个跃点，而不是直接转到 Internet。 例如，你可能有一个本地边缘防火墙或其他网络虚拟设备 (NVA)，用于对网络流量进行处理，然后再将其传递到 Internet。
+当配置新的 Azure 防火墙时，将所有 Internet 绑定的流量路由到指定的下一个跃点，而不是直接转到 Internet。 例如，你可能有一个本地边缘防火墙或其他网络虚拟设备 (NVA)，用于对网络流量进行处理，然后再将其传递到 Internet。 但不能配置现有的防火墙来实现强制隧道的目的。
 
 默认情况下，Azure 防火墙不允许强制隧道，以确保满足所有的出站 Azure 依赖关系。 AzureFirewallSubnet 上的其默认路由不直接指向 Internet 的用户定义路由 (UDR) 配置处于禁用状态。
 
@@ -28,11 +30,15 @@ ms.locfileid: "84684051"
 
 如果你的默认路由通过 BGP 进行播发以强制将流量传输到本地，则必须在部署防火墙之前创建 AzureFirewallSubnet 和 AzureFirewallManagementSubnet，并设置一个默认路由到 Internet 且“虚拟网关路由传播”已禁用的 UDR。
 
-在此配置中，AzureFirewallSubnet 现在可以包含到任何本地防火墙或 NVA 的路由。这样是为了处理流量，然后再将其传递到 Internet。 如果在此子网上启用了“虚拟网关路由传播”，还可以通过 BGP 将这些路由发布到 AzureFirewallSubnet。
+在此配置中，AzureFirewallSubnet 现在可以包括到任何本地防火墙或 NVA 的路由，以便在将流量传递到 Internet 之前对其进行处理。 如果在此子网上启用了“虚拟网关路由传播”，还可以通过 BGP 将这些路由发布到 AzureFirewallSubnet。
 
-例如，可以使用 VPN 网关作为下一跃点来创建 AzureFirewallSubnet 的默认路由，以转到本地设备。 也可启用“虚拟网关路由传播”以获取到本地网络的相应路由。
+例如，你可以在 AzureFirewallSubnet 上创建一个默认路由并使用你的 VPN 网关作为下一跃点，以到达你的本地设备。 还可以启用“虚拟网络网关路由传播”以获得通向本地网络的合适路由。
 
 ![虚拟网络网关路由传播](media/forced-tunneling/route-propagation.png)
+
+如果启用强制隧道，则会将 Internet 绑定的流量由 SNAT 转换为 AzureFirewallSubnet 中的某个防火墙专用 IP 地址，从而向本地防火墙隐藏源。
+
+如果组织对专用网络使用公共 IP 地址范围，Azure 防火墙会通过 SNAT 将流量发送到 AzureFirewallSubnet 中的某个防火墙专用 IP 地址。 但是，可以将 Azure 防火墙配置为不 SNAT 公共 IP 地址范围。 有关详细信息，请参阅 [Azure 防火墙 SNAT 专用 IP 地址范围](snat-private-range.md)。
 
 将 Azure 防火墙配置为支持强制隧道后，便无法撤消配置。 如果删除防火墙上的所有其他 IP 配置，管理 IP 配置也会被删除，防火墙会被解除分配。 无法删除分配给管理 IP 配置的公共 IP 地址，但可以分配不同的公共 IP 地址。
 

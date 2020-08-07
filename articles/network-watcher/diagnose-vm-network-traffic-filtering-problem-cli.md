@@ -1,11 +1,11 @@
 ---
-title: 快速入门：诊断 VM 网络流量筛选器问题 - Azure CLI
+title: 快速入门 - 诊断 VM 网络流量筛选器问题 - Azure CLI
 titleSuffix: Azure Network Watcher
 description: 本快速入门介绍了如何使用 Azure 网络观察程序的 IP 流验证功能来诊断虚拟机网络流量筛选器问题。
 services: network-watcher
 documentationcenter: network-watcher
-author: lingliw
-manager: digimobile
+author: rockboyfor
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 Customer intent: I need to diagnose a virtual machine (VM) network traffic filter problem that prevents communication to and from a VM.
@@ -16,24 +16,28 @@ ms.topic: quickstart
 ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
 origin.date: 04/20/2018
-ms.date: 10/19/2018
-ms.author: v-lingli
-ms.custom: mvc
-ms.openlocfilehash: 53e23e011c84ce2e6d8becda534e6e5ca2a1da31
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+ms.date: 08/10/2020
+ms.testscope: yes
+ms.testdate: 08/03/2020
+ms.author: v-yeche
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: fc57d8ee65f5640af8b766a0bbad30a790eb1166
+ms.sourcegitcommit: 3eadca6821ef679d8ac6ca2dc46d6a13aac211cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796838"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87548061"
 ---
+<!--Verify Successfully-->
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-cli"></a>快速入门：诊断虚拟机网络流量筛选器问题 - Azure CLI
 
 在本快速入门中，请先部署虚拟机 (VM)，然后检查到某个 IP 地址和 URL 的通信以及来自某个 IP 地址的通信。 确定通信失败的原因以及解决方法。
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
+[!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
 
-如果选择在本地安装并使用 CLI，本快速入门要求运行 Azure CLI 2.0.28 或更高版本。 要查找已安装的版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)。 验证 CLI 版本以后，请运行 `az login`，以便创建与 Azure 的连接。 本快速入门中的 CLI 命令已格式化，适合在 Bash Shell 中运行。
+如果选择在本地安装并使用 Azure CLI，本快速入门要求运行 Azure CLI 2.0.28 或更高版本。 要查找已安装的版本，请运行 `az --version`。 如需进行安装或升级，请参阅[安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)。 验证 Azure CLI 版本以后，请运行 `az login`，以便创建与 Azure 的连接。 本快速入门中的 Azure CLI 命令已设置了格式，以便在 Bash Shell 中运行。
 
 ## <a name="create-a-vm"></a>创建 VM
 
@@ -53,7 +57,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-创建 VM 需要几分钟时间。 在创建好 VM 且 CLI 返回输出之前，请勿继续执行剩余的步骤。
+创建 VM 需要几分钟时间。 在创建好 VM 且 Azure CLI 返回输出之前，请勿继续执行剩余的步骤。
 
 ## <a name="test-network-communication"></a>测试网络通信
 
@@ -61,12 +65,12 @@ az vm create \
 
 ### <a name="enable-network-watcher"></a>启用网络观察程序
 
-如果已在“中国东部 2”区域启用网络观察程序，请跳到[使用 IP 流验证](#use-ip-flow-verify)。 使用 [az network watcher configure](https://docs.azure.cn/cli/network/watcher?view=azure-cli-latest#az-network-watcher-configure) 命令在“中国东部 2”区域中创建网络观察程序：
+如果已在“中国东部”区域启用网络观察程序，请跳到[使用 IP 流验证](#use-ip-flow-verify)。 使用 [az network watcher configure](https://docs.azure.cn/cli/network/watcher?view=azure-cli-latest#az-network-watcher-configure) 命令在“中国东部”区域中创建网络观察程序：
 
 ```azurecli
 az network watcher configure \
   --resource-group NetworkWatcherRG \
-  --locations 'China East 2' \
+  --locations chinaeast \
   --enabled
 ```
 
@@ -134,7 +138,7 @@ az network nic list-effective-nsg \
 
 返回的输出包含 **AllowInternetOutbound** 规则的以下文本，该规则在[使用 IP 流验证](#use-ip-flow-verify)下的前述步骤中允许对 www.bing.com 进行出站访问：
 
-```azurecli
+```
 {
  "access": "Allow",
  "additionalProperties": {},
@@ -175,7 +179,7 @@ az network nic list-effective-nsg \
 
 在[使用 IP 流验证](#use-ip-flow-verify)中运行 `az network watcher test-ip-flow` 命令以测试发往 172.131.0.100 的出站通信时，输出指示 **DefaultOutboundDenyAll** 规则拒绝了该通信。 **DefaultOutboundDenyAll** 规则相当于在 `az network nic list-effective-nsg` 命令的以下输出中列出的 **DenyAllOutBound** 规则：
 
-```azurecli
+```
 {
  "access": "Deny",
  "additionalProperties": {},
@@ -208,7 +212,7 @@ az network nic list-effective-nsg \
 
 在[使用 IP 流验证](#use-ip-flow-verify)中运行 `az network watcher test-ip-flow` 命令以测试来自 172.131.0.100 的入站通信时，输出指示 **DefaultInboundDenyAll** 规则拒绝了该通信。 **DefaultInboundDenyAll** 规则相当于在 `az network nic list-effective-nsg` 命令的以下输出中列出的 **DenyAllInBound** 规则：
 
-```azurecli
+```
 {
  "access": "Deny",
  "additionalProperties": {},
@@ -251,9 +255,8 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你已创建 VM 并对入站和出站网络流量筛选器进行诊断。 你已了解了如何通过网络安全组规则来允许或拒绝出入 VM 的流量。 请详细了解[安全规则](https://docs.azure.cn/virtual-network/security-overview?toc=/network-watcher/toc.json)以及如何[创建安全规则](https://docs.azure.cn/virtual-network/manage-network-security-group?toc=/network-watcher/toc.json#create-a-security-rule)。
+在本快速入门中，你已创建 VM 并对入站和出站网络流量筛选器进行诊断。 你已了解了如何通过网络安全组规则来允许或拒绝出入 VM 的流量。 请详细了解[安全规则](../virtual-network/security-overview.md?toc=%2fnetwork-watcher%2ftoc.json)以及如何[创建安全规则](../virtual-network/manage-network-security-group.md?toc=%2fnetwork-watcher%2ftoc.json#create-a-security-rule)。
 
 即使相应的网络流量筛选器已就位，与 VM 的通信仍可能因路由配置问题而失败。 若要了解如何诊断 VM 网络路由问题，请参阅[诊断 VM 路由问题](diagnose-vm-network-routing-problem-cli.md)；若要使用某个工具诊断出站路由、延迟和流量筛选问题，请参阅[排查连接问题](network-watcher-connectivity-cli.md)。
 
-<!-- Update_Description: new articles on network watcher diagnose vm network traffic filtering problem cli -->
-<!--ms.date: 07/02/2018-->
+<!-- Update_Description: update meta properties, wording update, update link -->

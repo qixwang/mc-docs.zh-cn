@@ -6,14 +6,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 05/19/2020
+ms.date: 08/03/2020
 ms.author: v-junlch
-ms.openlocfilehash: 33d9b83f1fbff5989c5d812ac17e6521193f7f9a
-ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
+ms.openlocfilehash: 51807ecf039db40ed7f58262bbd3b4168735ba8c
+ms.sourcegitcommit: 36e7f37481969f92138bfe70192b1f4a2414caf7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87244697"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87796339"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>应用程序网关的后端运行状况和诊断日志
 
@@ -156,9 +156,11 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
 ### <a name="access-log"></a>访问日志
 
-只有按照上述步骤在每个应用程序网关实例上启用了访问日志，才会生成该日志。 数据存储在启用日志记录时指定的存储帐户中。 应用程序网关的每次访问均以 JSON 格式记录下来，如下面 v1 示例所示：
+只有按照上述步骤在每个应用程序网关实例上启用了访问日志，才会生成该日志。 数据存储在启用日志记录时指定的存储帐户中。 应用程序网关的每次访问均以 JSON 格式记录下来，如下所示。 
 
-|Value  |说明  |
+#### <a name="for-application-gateway-standard-and-waf-sku-v1"></a>对于应用程序网关 Standard 和 WAF SKU (v1)
+
+|值  |说明  |
 |---------|---------|
 |instanceId     | 处理请求的应用程序网关实例。        |
 |clientIP     | 请求的起始 IP。        |
@@ -200,9 +202,9 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
     }
 }
 ```
-对于应用程序网关和 WAF v2，日志显示了一些详细信息：
+#### <a name="for-application-gateway-and-waf-v2-sku"></a>对于应用程序网关和 WAF v2 SKU
 
-|Value  |说明  |
+|值  |说明  |
 |---------|---------|
 |instanceId     | 处理请求的应用程序网关实例。        |
 |clientIP     | 请求的起始 IP。        |
@@ -221,7 +223,10 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 |serverRouted| 应用程序网关将请求路由到的后端服务器。|
 |serverStatus| 后端服务器的 HTTP 状态代码。|
 |serverResponseLatency| 后端服务器的响应延迟。|
-|host| 请求的主机标头中列出的地址。|
+|host| 请求的主机标头中列出的地址。 如果重写，此字段将包含更新的主机名|
+|originalRequestUriWithArgs| 此字段包含原始请求 URL |
+|requestUri| 在应用程序网关上执行重写操作后，此字段将包含 URL |
+|originalHost| 此字段包含原始请求主机名
 ```json
 {
     "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/PEERINGTEST/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",
@@ -256,7 +261,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 只有在每个应用程序网关实例上启用了性能日志，才会生成此日志，如上述步骤所示。 数据存储在启用日志记录时指定的存储帐户中。 每隔 1 分钟生成性能日志数据。 性能日志数据仅适用于 v1 SKU。 对于 v2 SKU，请对性能数据使用[指标](application-gateway-metrics.md)。 将记录以下数据：
 
 
-|Value  |说明  |
+|值  |说明  |
 |---------|---------|
 |instanceId     |  正在为其生成性能数据的应用程序网关实例。 对于多实例应用程序网关，一个实例对应于一行。        |
 |healthyHostCount     | 后端池中运行正常的主机数。        |
@@ -293,7 +298,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 只有按照上述步骤为每个应用程序网关启用了防火墙日志，才会生成该日志。 此日志还需要在应用程序网关上配置 Web 应用程序防火墙。 数据存储在启用日志记录时指定的存储帐户中。 将记录以下数据：
 
 
-|Value  |说明  |
+|值  |说明  |
 |---------|---------|
 |instanceId     | 为其生成了防火墙数据的应用程序网关实例。 对于多实例应用程序网关，一个实例对应于一行。         |
 |clientIp     |   请求的起始 IP。      |

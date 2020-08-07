@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 7ef058fb54fa099fbe352950fd707b09a02e7cfe
-ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
+ms.openlocfilehash: 2917a880cf43d80ce8f8bd35c562342bc6036565
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2020
-ms.locfileid: "86414635"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426407"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob 存储：热、冷、存档访问层
 
@@ -62,7 +62,7 @@ Blob 存储和 GPv2 帐户在帐户级别公开“访问层”属性。 使用�
 
 存档访问层的存储成本最低。 但与热层和冷层相比，数据检索成本更高。 存档层中的数据必须至少保留 180 天，否则需要支付提前删除费。 存档层中的数据可能需要几个小时才能检索，具体取决于解除冻结的优先级。 对于小型对象，优先级高的解除冻结可能会在 1 小时内从存档中检索到对象。 若要了解详细信息，请参阅[从存档层解冻 Blob 数据](storage-blob-rehydration.md)。
 
-如果 Blob 位于存档存储中，则 Blob 数据处于脱机状态，不能读取、覆盖或修改。 若要在存档中读取或下载 Blob，必须首先将其解除冻结到联机层。 不能创建存档存储中 Blob 的快照。 但是，Blob 元数据会保持联机和可用状态，因而可列出 Blob 及其属性、元数据和 blob 索引标记。 在存档中时，不允许设置或修改 Blob 元数据；但是，可以设置和修改 Blob 索引标记。 对于存档中的 Blob，仅以下操作有效：GetBlobProperties、GetBlobMetadata、SetBlobTags、GetBlobTags、FindBlobsByTags、ListBlobs、SetBlobTier、CopyBlob 和 DeleteBlob。
+如果 Blob 位于存档存储中，则 Blob 数据处于脱机状态，不能读取、覆盖或修改。 若要在存档中读取或下载 Blob，必须首先将其解除冻结到联机层。 不能创建存档存储中 Blob 的快照。 但是，Blob 元数据会保持联机和可用状态，因而可列出 Blob、其属性以及元数据。 不允许设置或修改存档中的 Blob 元数据；对于存档中的 Blob，仅以下操作有效：GetBlobProperties、GetBlobMetadata、ListBlobs、SetBlobTier、CopyBlob 和 DeleteBlob。
 
 存档访问层的示例使用方案包括：
 
@@ -121,7 +121,7 @@ Blob 存储生命周期管理提供丰富的基于规则的策略，用于将数
 | **可用性**                          | 99.9%                     | 99.9%        | 99%                 | Offline           |
 | **可用性** <br> （RA-GRS 读取）  | 空值                       | 99.99%       | 99.9%               | Offline           |
 | 使用费                         | 存储费用较高，访问和事务费用较低 | 存储费用较高，访问和事务费用较低 | 存储费用较低，访问和事务费用较高 | 存储费用最低，访问和事务费用最高 |
-| 最小对象大小                   | 空值                       | 空值          | 空值                 | 空值               |
+| 最小对象大小                   | 不适用                       | 空值          | 空值                 | 空值               |
 | 最短存储持续时间              | 空值                       | 空值          | 30 天<sup>1</sup> | 180 天
 | **延迟** <br> （距第一字节时间） | 一位数的毫秒数 | 毫秒 | 毫秒        | 小时<sup>2</sup> |
 
@@ -142,7 +142,7 @@ Blob 存储生命周期管理提供丰富的基于规则的策略，用于将数
 ### <a name="change-the-default-account-access-tier-of-a-gpv2-or-blob-storage-account"></a>更改 GPv2 或 Blob 存储帐户的默认帐户访问层
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-1. 登录到 [Azure 门户](https://portal.azure.cn)。
+1. 登录 [Azure 门户](https://portal.azure.cn)。
 
 1. 在 Azure 门户中，搜索并选择“所有资源”。
 
@@ -170,7 +170,7 @@ Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier H
 
 ### <a name="change-the-tier-of-a-blob-in-a-gpv2-or-blob-storage-account"></a>更改 GPv2 或 Blob 存储帐户中 Blob 的层
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-1. 登录到 [Azure 门户](https://portal.azure.cn)。
+1. 登录 [Azure 门户](https://portal.azure.cn)。
 
 1. 在 Azure 门户中，搜索并选择“所有资源”。
 

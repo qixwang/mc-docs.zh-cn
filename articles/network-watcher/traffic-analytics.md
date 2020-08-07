@@ -1,26 +1,29 @@
 ---
-title: Azure 流量分析 | Azure Docs
+title: Azure 流量分析 | Azure
 description: 了解如何使用流量分析来分析 Azure 网络安全组流日志。
 services: network-watcher
 documentationcenter: na
-author: lingliw
-manager: digimobile
+author: rockboyfor
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 06/15/2018
-ms.date: 9/29/2019
-ms.author: v-lingwu
+ms.date: 08/10/2020
+ms.testscope: yes
+ms.testdate: 08/03/2020
+ms.author: v-yeche
 ms.reviewer: vinigam
-ms.openlocfilehash: 8c47c4389966951c00b8918788b0428abc38b955
-ms.sourcegitcommit: b81ea2ab9eafa986986fa3eb1e784cfe9bbf9ec1
+ms.openlocfilehash: 0e0de71237d5da7bb11eb281d535f6be3f156739
+ms.sourcegitcommit: 3eadca6821ef679d8ac6ca2dc46d6a13aac211cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83367832"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87548055"
 ---
+<!--Verify Successfully-->
+<!--TRAFFIC ANALYTICS ONLY AVAILABLE ON "CHINA EAST 2" SITE -->
 # <a name="traffic-analytics"></a>流量分析
 
 流量分析是一种基于云的解决方案，可用于洞察云网络中的用户和应用程序活动。 流量分析可以分析网络观察程序网络安全组 (NSG) 流日志，帮助洞察 Azure 云中的流量流。 使用流量分析可以：
@@ -31,7 +34,7 @@ ms.locfileid: "83367832"
 - 查明导致网络连接失败的不当网络配置。
 
 > [!NOTE]
-> 流量分析现在支持以 10 分钟的更高频率收集 NSG 流量日志数据
+> 流量分析现在支持以高于 10 分钟每次的频率收集 NSG 流日志数据
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -45,17 +48,17 @@ Azure 虚拟网络提供 NSG 流日志，其中提供了传入和传出与单个
 
 ## <a name="key-components"></a>关键组件
 
-- **网络安全组 (NSG)** ：包含一系列安全规则，这些规则可以允许或拒绝流向连接到 Azure 虚拟网络的资源的网络流量。 可以将 NSG 关联到子网、单个 VM（经典）或附加到 VM 的单个网络接口 (NIC) (Resource Manager)。 有关详细信息，请参阅[网络安全组概述](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。
+- **网络安全组 (NSG)** ：包含一系列安全规则，这些规则可以允许或拒绝流向连接到 Azure 虚拟网络的资源的网络流量。 可以将 NSG 关联到子网、单个 VM（经典）或附加到 VM 的单个网络接口 (NIC) (Resource Manager)。 有关详细信息，请参阅[网络安全组概述](../virtual-network/security-overview.md?toc=%2fnetwork-watcher%2ftoc.json)。
 - **网络安全组 (NSG) 流日志**：用于查看有关通过网络安全组的传入和传出 IP 流量的信息。 NSG 流日志以 JSON 格式编写，并基于每个规则显示出站和入站流、流所适用的 NIC、有关流的五元组信息（源/目标 IP 地址、源/目标端口和协议），以及是允许还是拒绝流量。 有关 NSG 流日志的详细信息，请参阅 [NSG 流日志](network-watcher-nsg-flow-logging-overview.md)。
-- **Log Analytics**：一个 Azure 服务，可以收集监视数据并将数据存储在中心存储库中。 这些数据可能包括事件、性能数据或通过 Azure API 提供的自定义数据。 收集后，可以分析、导出数据或针对它们发出警报。 网络性能监视器和流量分析等监视应用程序是在 Azure Monitor 日志的基础上构建的。
-- **Log Analytics 工作区**：Azure Monitor 日志的一个实例，用于存储与 Azure 帐户相关的数据。 有关 Log Analytics 工作区的详细信息，请参阅[创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。
+- **Log Analytics**：一个 Azure 服务，可以收集监视数据并将数据存储在中心存储库中。 这些数据可能包括事件、性能数据或通过 Azure API 提供的自定义数据。 收集后，可以分析、导出数据或针对它们发出警报。 网络性能监视器和流量分析等监视应用程序是在 Azure Monitor 日志的基础上构建的。 有关详细信息，请参阅 [Azure Monitor 日志](../log-analytics/log-analytics-overview.md?toc=%2fnetwork-watcher%2ftoc.json)。
+- **Log Analytics 工作区**：Azure Monitor 日志的一个实例，用于存储与 Azure 帐户相关的数据。 有关 Log Analytics 工作区的详细信息，请参阅[创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md?toc=%2fnetwork-watcher%2ftoc.json)。
 - **网络观察程序**：一个区域性服务，用于在 Azure 中监视和诊断网络方案级别的状态。 可以使用网络观察程序启用和禁用 NSG 流日志。 有关详细信息，请参阅[网络观察程序](network-watcher-monitoring-overview.md)。
 
 ## <a name="how-traffic-analytics-works"></a>流量分析的工作原理
 
 流量分析检查原始 NSG 流日志，并通过聚合相同源 IP 地址、目标 IP 地址、目标端口和协议之间的通用流来捕获精简的日志。 例如，主机 1（IP 地址：10.10.10.10) 与主机 2（IP 地址：10.10.20.10）之间在 1 小时内通过端口（例如 80）和协议（例如 http）进行了 100 次通信。 精简的日志只包含条目，指出主机 1 与主机 2 在 1 小时内使用端口 *80* 和协议 *HTTP* 通信 100 次；而不是包含 100 个条目。 系统会使用地理、安全和拓扑信息增强精简的日志，然后将其存储在 Log Analytics 工作区中。 下图显示了数据流：
 
-![NSG 流日志处理的数据流](./media/traffic-analytics/data-flow-for-nsg-flow-log-processing.png)
+:::image type="content" source="./media/traffic-analytics/data-flow-for-nsg-flow-log-processing.png" alt-text="NSG 流日志处理的数据流":::
 
 ## <a name="supported-regions-nsg"></a>支持的区域：NSG 
 
@@ -66,14 +69,13 @@ Azure 虚拟网络提供 NSG 流日志，其中提供了传入和传出与单个
 ## <a name="supported-regions-log-analytics-workspaces"></a>支持的区域：Log Analytics 工作区
 
 Log Analytics 工作区必须存在于以下区域中：
-
 * 中国东部 2
 
 ## <a name="prerequisites"></a>先决条件
 
 ### <a name="user-access-requirements"></a>用户访问要求
 
-帐户必须是以下 Azure [内置角色](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)之一的成员：
+帐户必须是以下 Azure [内置角色](../role-based-access-control/built-in-roles.md?toc=%2fnetwork-watcher%2ftoc.json)之一的成员：
 
 |部署模型   | 角色                   |
 |---------          |---------               |
@@ -82,7 +84,7 @@ Log Analytics 工作区必须存在于以下区域中：
 |                   | 读取器                 |
 |                   | 网络参与者    |
 
-如果未将帐户分配给内置角色之一，则必须在订阅级别将其分配给分配有以下操作的[自定义角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)：
+如果未将帐户分配给内置角色之一，则必须在订阅级别将其分配给分配有以下操作的[自定义角色](../role-based-access-control/custom-roles.md?toc=%2fnetwork-watcher%2ftoc.json)：
 
 - "Microsoft.Network/applicationGateways/read"
 - "Microsoft.Network/connections/read"
@@ -94,6 +96,7 @@ Log Analytics 工作区必须存在于以下区域中：
 - "Microsoft.Network/routeTables/read"
 - "Microsoft.Network/virtualNetworkGateways/read"
 - "Microsoft.Network/virtualNetworks/read"
+- "Microsoft.Network/expressRouteCircuits/read"
 
 有关如何检查用户访问权限的信息，请参阅[流量分析常见问题解答](traffic-analytics-faq.md)。
 
@@ -105,9 +108,9 @@ Log Analytics 工作区必须存在于以下区域中：
 
 在启用 NSG 流日志记录之前，必须提供要记录其流的网络安全组。 如果没有网络安全组，请参阅[创建网络安全组](../virtual-network/manage-network-security-group.md#create-a-network-security-group)来创建一个。
 
-在 Azure 门户中，转到**网络观察程序**，然后选择“NSG 流日志”。 选择要为其启用 NSG 流日志的网络安全组，如下图所示：
+在 Azure 门户中，转到“网络观察程序”，然后选择“NSG 流日志” 。 选择要为其启用 NSG 流日志的网络安全组，如下图所示：
 
-![选择需要启用 NSG 流日志的 NSG](./media/traffic-analytics/selection-of-nsgs-that-require-enablement-of-nsg-flow-logging.png)
+:::image type="content" source="./media/traffic-analytics/selection-of-nsgs-that-require-enablement-of-nsg-flow-logging.png" alt-text="选择需要启用 NSG 流日志的 NSG":::
 
 尝试为[受支持区域](#supported-regions-nsg)以外的任何区域中托管的 NSG 启用流量分析时，会收到“未找到”错误。
 
@@ -117,15 +120,15 @@ Log Analytics 工作区必须存在于以下区域中：
 
 如果尚未为订阅注册 Azure Insights 提供程序，请注册该提供程序：
 
-```
+```powershell
 Register-AzResourceProvider -ProviderNamespace Microsoft.Insights
 ```
 
 如果尚未创建一个用于存储 NSG 流日志的 Azure 存储帐户，则必须创建一个存储帐户。 可以使用以下命令创建存储帐户。 运行该命令之前，请将 `<replace-with-your-unique-storage-account-name>` 替换为在所有 Azure 位置中唯一的、长度为 3-24 个字符且仅使用数字和小写字母的名称。 还可以根据需要更改资源组名称。
 
-```
+```powershell
 New-AzStorageAccount `
-  -Location 'China East 2' `
+  -Location chinaeast `
   -Name <replace-with-your-unique-storage-account-name> `
   -ResourceGroupName myResourceGroup `
   -SkuName Standard_LRS `
@@ -135,27 +138,32 @@ New-AzStorageAccount `
 如图所示选择以下选项：
 
 1. 为“状态”选择“打开”
-2. 为**流日志版本**选择“版本 2”。 版本 2 包含流会话统计信息（字节和数据包）
-3. 选择用于存储流日志的现有存储帐户。 若要永久存储数据，请将值设置为 *0*。 存储帐户会产生 Azure 存储费用。 确保存储没有将“Data Lake Storage Gen2 分层命名空间已启用”设置为 true。
-4. 将“保留期”设置为存储数据的天数。
+2. 对于“流日志版本”，选择“版本2”。 版本 2 包含流会话统计信息（字节和数据包）
+3. 选择用于存储流日志的现有存储帐户。 确保存储未将“已启用 Data Lake Storage Gen2 分层命名空间”设置为 true。
+4. 将“保留期”设置为存储数据的天数。 若要永久存储数据，请将值设置为 *0*。 存储帐户会产生 Azure 存储费用。 
 5. 为“流量分析状态”选择“打开”。
-6. 选择处理时间间隔。 根据你的选择，流日志将从存储帐户收集并由流量分析进行处理。 可以选择每 1 小时或每 10 分钟的处理时间间隔。 
-7. 选择现有的 Log Analytics (OMS) 工作区，或选择“创建新工作区”来创建一个新工作区。 流量分析使用 Log Analytics 工作区来存储聚合数据和索引数据，然后，这些数据用于生成分析。 如果选择现有的工作区，该工作区必须位于某个[受支持区域](#supported-regions-log-analytics-workspaces)，并且已升级为新查询语言。 如果不希望升级现有工作区，或者受支持区域中没有工作区，请创建一个新工作区。 
-> [!NOTE]
->托管流量分析解决方案和 NSG 的 Log Analytics 工作区不一定要位于同一个区域。 例如，可将流量分析部署在西欧区域的某个工作区中，同时将 NSG 部署在美国东部和美国西部。 可在同一工作区中配置多个 NSG。
-8. 选择“保存” 。
+6. 选择处理时间间隔。 根据你的选择，流量分析将从存储帐户收集流日志并进行处理。 你可以选择每 1 个小时或每 10 分钟的处理间隔。 
+7. 选择现有的 Log Analytics (OMS) 工作区，或选择“创建新工作区”来创建一个新工作区。 流量分析使用 Log Analytics 工作区来存储聚合数据和索引数据，然后，这些数据用于生成分析。 如果选择现有的工作区，该工作区必须位于某个[受支持区域](#supported-regions-log-analytics-workspaces)，并且已升级为新查询语言。 如果不希望升级现有工作区，或者受支持区域中没有工作区，请创建一个新工作区。
 
-    ![选择存储帐户和 Log Analytics 工作区并启用流量分析](./media/traffic-analytics/ta-customprocessinginterval.png)
+    <!--Not Available on [Azure Log Analytics upgrade to new log search](../azure-monitor/log-query/log-query-overview-upgrade.md?toc=%2fnetwork-watcher%2ftoc.json)-->
+    <!--CORRECT ON China East 2 region-->
+    
+    > [!NOTE]
+    >托管流量分析解决方案和 NSG 的 Log Analytics 工作区不一定要位于同一个区域。 例如，可将流量分析部署在 `China East 2` 区域的某个工作区中，同时将 NSG 部署在中国东部和中国北部。 可在同一工作区中配置多个 NSG。
 
-针对想要为其启用流量分析的其他任何 NSG 重复前面的步骤。 流日志中的数据将发送到工作区，因此，请确保所在国家/地区的当地法律和法规允许将数据存储在工作区所在的区域。 如果为不同的 NSG 设置了不同的处理时间间隔，则将以不同的时间间隔收集数据。 例如：可以选择为关键 VNET 启用 10 分钟的处理时间间隔，为非关键 VNET 启用 1 小时的处理时间间隔。
+8. 选择“保存”。
 
-还可以使用 Azure PowerShell 中的 [Set-AzNetworkWatcherConfigFlowLog](https://docs.microsoft.com/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) PowerShell cmdlet 配置流量分析。 运行 `Get-Module -ListAvailable Az` 来查找已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-Az-ps)（安装 Azure PowerShell 模块）。
+    :::image type="content" source="./media/traffic-analytics/ta-customprocessinginterval.png" alt-text="选择存储帐户和 Log Analytics 工作区并启用流量分析":::
+
+针对想要为其启用流量分析的其他任何 NSG 重复前面的步骤。 流日志中的数据将发送到工作区，因此，请确保所在国家/地区的当地法律和法规允许将数据存储在工作区所在的区域。 如果为不同的 NSG 设置了不同的处理间隔，系统会以不同的时间间隔收集数据。 例如：对于关键 VNET，可以选择启用 10 分钟的处理间隔，对于非关键 VNET，则是 1 小时。
+
+还可以使用 Azure PowerShell 中的 [Set-AzNetworkWatcherConfigFlowLog](https://docs.microsoft.com/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) PowerShell cmdlet 来配置流量分析。 运行 `Get-Module -ListAvailable Az` 来查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-Az-ps)。
 
 ## <a name="view-traffic-analytics"></a>查看流量分析
 
-若要查看流量分析，请在门户搜索栏中搜索“网络观察程序”。 进入网络观察程序后，若要探索流量分析及其功能，请从左侧菜单中选择“流量分析”。 
+若要查看流量分析，请在门户搜索栏中搜索“网络观察程序”。 在网络观察程序中，若要浏览流量分析及其功能，请从左侧菜单中选择“流量分析”。 
 
-![访问流量分析仪表板](./media/traffic-analytics/accessing-the-traffic-analytics-dashboard.png)
+:::image type="content" source="./media/traffic-analytics/accessing-the-traffic-analytics-dashboard.png" alt-text="访问流量分析仪表板":::
 
 首次显示仪表板最长可能需要花费 30 分钟时间，因为流量分析必须先聚合足够的数据来派生有意义的见解，然后才能生成任何报告。
 
@@ -171,19 +179,19 @@ New-AzStorageAccount `
     - 检查主机、子网和虚拟网络的比较图表。 了解哪些主机、子网和虚拟网络正在发送或接收大部分流量有助于识别正在处理大部分流量的主机，以及是否正确进行了流量分发。
     - 然后，可以评估流量大小是否适合让某台主机来处理。 流量行为是否正常，或者是否需要进一步的调查？
 - 有多少入站/出站流量？
-    -   主机预期收到的入站流量是否多过出站流量，或反之？
+    - 主机预期收到的入站流量是否多过出站流量，或反之？
 - 阻止的流量统计信息。
     - 主机为何阻止大量良性流量？ 对于此行为，需要进一步进行调查，并且可能需要对配置进行优化。
 - 允许/阻止的恶意流量统计信息
-  - 主机为何在接收恶意流量以及为何允许来自恶意源的流？ 对于此行为，需要进一步进行调查，并且可能需要对配置进行优化。
+    - 主机为何在接收恶意流量以及为何允许来自恶意源的流？ 对于此行为，需要进一步进行调查，并且可能需要对配置进行优化。
 
-    在“主机”下选择“查看全部”，如下图所示 ：
+        在“主机”下选择“查看全部”，如下图所示 ：
 
-    ![展示处理大部分流量的主机详细信息的仪表板](media/traffic-analytics/dashboard-showcasing-host-with-most-traffic-details.png)
+        :::image type="content" source="media/traffic-analytics/dashboard-showcasing-host-with-most-traffic-details.png" alt-text="展示处理大部分流量的主机详细信息的仪表板":::
 
 - 下图显示了对话最活跃的五台主机的时间趋势，以及主机的流相关详细信息（允许 - 入站/出站流，拒绝 - 入站/出站流）：
 
-    ![对话最活跃的五台主机的趋势](media/traffic-analytics/top-five-most-talking-host-trend.png)
+    :::image type="content" source="media/traffic-analytics/top-five-most-talking-host-trend.png" alt-text="对话最活跃的五台主机的趋势":::
 
 **查找**
 
@@ -195,11 +203,11 @@ New-AzStorageAccount `
     - 此网络中是否允许这些应用程序？
     - 应用程序的配置是否正确？ 它们是否使用适当的协议进行通信？ 在“频繁的对话” 下选择“查看全部”，如下图所示：
 
-        ![展示最频繁对话的仪表板](./media/traffic-analytics/dashboard-showcasing-most-frequent-conversation.png)
+        :::image type="content" source="./media/traffic-analytics/dashboard-showcasing-most-frequent-conversation.png" alt-text="展示最频繁对话的仪表板":::
 
 - 下图显示了最频繁的五个对话的时间趋势，以及流相关的详细信息，例如，某个对话对允许和拒绝的入站与出站流：
 
-    ![最频繁的五个对话的详细信息和趋势](./media/traffic-analytics/top-five-chatty-conversation-details-and-trend.png)
+    :::image type="content" source="./media/traffic-analytics/top-five-chatty-conversation-details-and-trend.png" alt-text="最频繁的五个对话的详细信息和趋势":::
 
 **查找**
 
@@ -207,13 +215,13 @@ New-AzStorageAccount `
     - 此网络中是否允许这些应用程序？
     - 应用程序的配置是否正确？ 它们是否使用适当的协议进行通信？ 预期行为是使用常用端口，例如 80 和 443。 如果为标准通信显示了任何非寻常端口，可能需要对端口进行配置更改。 在“应用程序端口” 下选择“查看全部”，如下图所示：
 
-        ![展示最常使用的应用程序协议的仪表板](./media/traffic-analytics/dashboard-showcasing-top-application-protocols.png)
+        :::image type="content" source="./media/traffic-analytics/dashboard-showcasing-top-application-protocols.png" alt-text="展示最常使用的应用程序协议的仪表板":::
 
 - 下图显示了最常使用的五个 L7 协议的时间趋势，以及某个 L7 协议的流相关详细信息（例如，允许和拒绝的流）：
 
-    ![最常使用的五个第 7 层协议的详细信息和趋势](./media/traffic-analytics/top-five-layer-seven-protocols-details-and-trend.png)
+    :::image type="content" source="./media/traffic-analytics/top-five-layer-seven-protocols-details-and-trend.png" alt-text="最常使用的五个第 7 层协议的详细信息和趋势":::
 
-    ![日志搜索中应用程序协议的流详细信息](./media/traffic-analytics/flow-details-for-application-protocol-in-log-search.png)
+    :::image type="content" source="./media/traffic-analytics/flow-details-for-application-protocol-in-log-search.png" alt-text="日志搜索中应用程序协议的流详细信息":::
 
 **查找**
 
@@ -223,55 +231,55 @@ New-AzStorageAccount `
 - 哪些主机的对话最活跃，它们通过哪个 VPN 网关和端口对话？
     - 此模式是否正常？ 在“VPN 网关”下选择“查看全部”，如下图所示 ：
 
-        ![展示最活跃的 VPN 连接的仪表板](./media/traffic-analytics/dashboard-showcasing-top-active-vpn-connections.png)
+        :::image type="content" source="./media/traffic-analytics/dashboard-showcasing-top-active-vpn-connections.png" alt-text="展示最活跃的 VPN 连接的仪表板":::
 
 - 下图显示了某个 Azure VPN 网关的容量利用率时间趋势，以及流相关的详细信息（例如允许的流和端口）：
 
-    ![VPN 网关利用率趋势和流详细信息](./media/traffic-analytics/vpn-gateway-utilization-trend-and-flow-details.png)
+    :::image type="content" source="./media/traffic-analytics/vpn-gateway-utilization-trend-and-flow-details.png" alt-text="VPN 网关利用率趋势和流详细信息":::
 
 ### <a name="visualize-traffic-distribution-by-geography"></a>按地理位置可视化流量分布
 
 **查找**
 
 - 每个数据中心的流量分布，例如，向数据中心传送流量的最主要来源、与数据中心对话的最主要恶意网络，以及对话最活跃的应用程序协议。
-  - 如果发现数据中心的负载增加，可以规划高效的流量分布。
-  - 如果恶意网络在数据中心对话，请更正 NSG 规则以阻止这些网络。
+    - 如果发现数据中心的负载增加，可以规划高效的流量分布。
+    - 如果恶意网络在数据中心对话，请更正 NSG 规则以阻止这些网络。
 
-    在“你的环境”下选择“查看地图”，如下图所示 ：
+        在“你的环境”下选择“查看地图”，如下图所示 ：
 
-    ![展示流量分布的仪表板](./media/traffic-analytics/dashboard-showcasing-traffic-distribution.png)
+        :::image type="content" source="./media/traffic-analytics/dashboard-showcasing-traffic-distribution.png" alt-text="展示流量分布的仪表板":::
 
 - 使用地图顶部的功能区可以选择参数，例如数据中心（已部署/未部署/活动/非活动/已启用流量分析/未启用流量分析），以及向活动部署分配良性/恶意流量的国家/地区：
 
-    ![展示活动部署的地图视图](./media/traffic-analytics/geo-map-view-showcasing-active-deployment.png)
+    :::image type="content" source="./media/traffic-analytics/geo-map-view-showcasing-active-deployment.png" alt-text="展示活动部署的地图视图":::
 
-- 地图以蓝色（良性流量）和红色（恶意流量）彩色线显示了从与数据中心通信的国家/地区和大洲到数据中心的流量分布：
+- 地图中显示了不同国家/地区和大洲在与数据中心通信时分配的流量情况，蓝线表示良性流量，红线表示恶意流量：
 
-    ![展示不同国家/地区和大洲流量分布的地图视图](./media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png)
+    :::image type="content" source="./media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png" alt-text="展示不同国家/地区和大洲流量分布的地图视图":::
 
-    ![日志搜索中流量分布的流详细信息](./media/traffic-analytics/flow-details-for-traffic-distribution-in-log-search.png)
+    :::image type="content" source="./media/traffic-analytics/flow-details-for-traffic-distribution-in-log-search.png" alt-text="日志搜索中流量分布的流详细信息":::
 
 ### <a name="visualize-traffic-distribution-by-virtual-networks"></a>按虚拟网络可视化流量分布
 
 **查找**
 
 - 每个虚拟网络的流量分布、拓扑、向虚拟网络传送流量的最主要来源、与虚拟网络对话的最主要恶意网络，以及对话最活跃的应用程序协议。
-  - 了解哪两个虚拟网络正在对话。 如果对话不符合预期，可将其更正。
-  - 如果恶意网络正在与虚拟网络对话，可以更正 NSG 规则以阻止恶意网络。
+    - 了解哪两个虚拟网络正在对话。 如果对话不符合预期，可将其更正。
+    - 如果恶意网络正在与虚拟网络对话，可以更正 NSG 规则以阻止恶意网络。
  
-    在“你的环境”下选择“查看 VNet”，如下图所示 ：
+        在“你的环境”下选择“查看 VNet”，如下图所示 ：
 
-    ![展示虚拟网络分布的仪表板](./media/traffic-analytics/dashboard-showcasing-virtual-network-distribution.png)
+        :::image type="content" source="./media/traffic-analytics/dashboard-showcasing-virtual-network-distribution.png" alt-text="展示虚拟网络分布的仪表板":::
 
-- 使用虚拟网络拓扑顶部的功能区可以选择参数，例如虚拟网络（虚拟网络连接之间/活动/非活动）、外部连接、活动流和虚拟网络的恶意流。
-- 可以根据订阅、工作区、资源组和时间间隔筛选虚拟网络拓扑。 可以帮助你了解流的其他筛选器包括：流类型（InterVNet、IntraVNET，等等），流方向（入站、出站），流状态（已允许、被阻止）、VNET（目标和已连接）、连接类型（对等互连或网关 - P2S 和 S2S）以及 NSG。 使用这些筛选器可以专注于你要详细观察的 VNet。
+- 使用虚拟网络拓扑顶部的功能区可以选择参数，例如虚拟网络的（虚拟网络连接之间/活动/非活动）、外部连接、活动流和虚拟网络的恶意流。
+- 可以根据订阅、工作区、资源组和时间间隔筛选虚拟网络拓扑。 可以帮助你了解流的其他筛选器包括：流类型（InterVNet、IntraVNET，等等），流方向（入站、出站），流状态（已允许、已阻止）、VNET（已定向和已连接）、连接类型（对等互连或网关 - P2S 和 S2S）以及 NSG。 使用这些筛选器可以专注于你要详细观察的 VNet。
 - 虚拟网络拓扑显示虚拟网络的流相关流量分布（允许/阻止/入站/出站/良性/恶意）、应用程序协议和网络安全组，例如：
 
-    ![展示流量分布和流详细信息的虚拟网络拓扑](./media/traffic-analytics/virtual-network-topology-showcasing-traffic-distribution-and-flow-details.png)
-    
-    ![展示了最高级别和更多筛选器的虚拟网络拓扑](./media/traffic-analytics/virtual-network-filters.png)
+    :::image type="content" source="./media/traffic-analytics/virtual-network-topology-showcasing-traffic-distribution-and-flow-details.png" alt-text="展示流量分布和流详细信息的虚拟网络拓扑":::
 
-    ![日志搜索中虚拟网络流量分布的流详细信息](./media/traffic-analytics/flow-details-for-virtual-network-traffic-distribution-in-log-search.png)
+    :::image type="content" source="./media/traffic-analytics/virtual-network-filters.png" alt-text="展示最高级别和更多筛选器的虚拟网络拓扑":::
+
+    :::image type="content" source="./media/traffic-analytics/flow-details-for-virtual-network-traffic-distribution-in-log-search.png" alt-text="日志搜索中虚拟网络流量分布的流详细信息":::
 
 **查找**
 
@@ -281,34 +289,33 @@ New-AzStorageAccount `
 - 使用子网拓扑顶部的功能区可以选择参数，例如活动/非活动的子网、外部连接、活动流和子网的恶意流。
 - 子网拓扑显示虚拟网络的流相关流量分布（允许/阻止/入站/出站/良性/恶意）、应用程序协议和 NSG，例如：
 
-    ![展示虚拟网络子网的流相关流量分布的子网拓扑](./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-virtual-subnet-with-regards-to-flows.png)
+    :::image type="content" source="./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-virtual-subnet-with-regards-to-flows.png" alt-text="展示虚拟网络子网的流相关流量分布的子网拓扑":::
 
 **查找**
 
 每个应用程序网关和负载均衡器的流量分布、拓扑、最主要的流量来源、与应用程序网关和负载均衡器对话的最主要未授权网络，以及对话最活跃的应用程序协议。 
-    
- - 了解哪个子网正在与哪个应用程序网关或负载均衡器对话。 如果观察到意外的对话，可以更正配置。
- - 如果未授权网络正在与应用程序网关或负载均衡器对话，可以配置 NSG 规则来阻止未授权网络，从而更正此行为。 
 
-    ![subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows](./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows.png)
+- 了解哪个子网正在与哪个应用程序网关或负载均衡器对话。 如果观察到意外的对话，可以更正配置。
+- 如果未授权网络正在与应用程序网关或负载均衡器对话，可以配置 NSG 规则来阻止未授权网络，从而更正此行为。 
+
+    :::image type="content" source="./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows.png" alt-text="展示应用程序网关子网的流相关流量分布的子网拓扑":::
 
 ### <a name="view-ports-and-virtual-machines-receiving-traffic-from-the-internet"></a>查看从 Internet 接收流量的端口和虚拟机
 
 **查找**
 
 - 哪些开放的端口正在通过 Internet 对话？
-  - 如果发现打开了意外的端口，可以更正配置：
+    - 如果发现打开了意外的端口，可以更正配置：
 
-    ![展示与 Internet 相互接收和发送流量的端口的仪表板](./media/traffic-analytics/dashboard-showcasing-ports-receiving-and-sending-traffic-to-the-internet.png)
+        :::image type="content" source="./media/traffic-analytics/dashboard-showcasing-ports-receiving-and-sending-traffic-to-the-internet.png" alt-text="展示与 Internet 相互接收和发送流量的端口的仪表板":::
 
-    ![Azure 目标端口和主机的详细信息](./media/traffic-analytics/details-of-azure-destination-ports-and-hosts.png)
+        :::image type="content" source="./media/traffic-analytics/details-of-azure-destination-ports-and-hosts.png" alt-text="Azure 目标端口和主机的详细信息":::
 
 **查找**
 
 环境中是否存在恶意流量？ 该流量源于何处？ 该流量传往何处？
 
-![日志搜索中的恶意流量流详细信息](./media/traffic-analytics/malicious-traffic-flows-detail-in-log-search.png)
-
+:::image type="content" source="./media/traffic-analytics/malicious-traffic-flows-detail-in-log-search.png" alt-text="日志搜索中的恶意流量流详细信息":::
 
 ### <a name="visualize-the-trends-in-nsgnsg-rules-hits"></a>可视化 NSG/NSG 规则的触发趋势
 
@@ -317,17 +324,17 @@ New-AzStorageAccount `
 - 哪些 NSG/NSG 规则在比较图表中具有与流分布最多的命中数？
 - 每个 NSG/NSG 规则的最常见源和目标对话对是什么？
 
-    ![展示 NSG 触发统计信息的仪表板](./media/traffic-analytics/dashboard-showcasing-nsg-hits-statistics.png)
+    :::image type="content" source="./media/traffic-analytics/dashboard-showcasing-nsg-hits-statistics.png" alt-text="展示 NSG 触发统计信息的仪表板":::
 
 - 下图显示了 NSG 规则的触发时间趋势，以及网络安全组的源-目标流详细信息：
 
-  - 快速检测哪些 NSG 和 NSG 规则在遍历恶意流，以及哪些是访问你的云环境的主要恶意 IP 地址。
-  - 查明哪些 NSG/NSG 规则在允许/阻止大量的网络流量
-  - 选择顶部的用于对 NSG 或 NSG 规则进行精细检查的筛选器
+    - 快速检测哪些 NSG 和 NSG 规则在遍历恶意流，以及哪些是访问你的云环境的主要恶意 IP 地址。
+    - 查明哪些 NSG/NSG 规则在允许/阻止大量的网络流量
+    - 选择顶部的用于对 NSG 或 NSG 规则进行精细检查的筛选器
 
-    ![展示 NSG 规则的触发时间趋势，以及触发次数最多的 NSG 规则](./media/traffic-analytics/showcasing-time-trending-for-nsg-rule-hits-and-top-nsg-rules.png)
+        :::image type="content" source="./media/traffic-analytics/showcasing-time-trending-for-nsg-rule-hits-and-top-nsg-rules.png" alt-text="展示 NSG 规则的触发时间趋势，以及触发次数最多的 NSG 规则":::
 
-    ![日志搜索中触发次数最多的 NSG 规则详细统计信息](./media/traffic-analytics/top-nsg-rules-statistics-details-in-log-search.png)
+        :::image type="content" source="./media/traffic-analytics/top-nsg-rules-statistics-details-in-log-search.png" alt-text="日志搜索中触发次数最多的 NSG 规则详细统计信息":::
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
@@ -336,4 +343,6 @@ New-AzStorageAccount `
 ## <a name="next-steps"></a>后续步骤
 
 - 要了解如何启用流日志，请参阅[启用 NSG 流日志记录](network-watcher-nsg-flow-logging-portal.md)。
-- 若要了解流量分析的架构和处理详细信息，请参阅[流量分析架构](traffic-analytics-schema.md)。
+- 要了解流量分析的架构和处理详细信息，请参阅[流量分析架构](traffic-analytics-schema.md)。
+
+<!-- Update_Description: update meta properties, wording update, update link -->

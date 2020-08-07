@@ -6,14 +6,14 @@ ms.service: virtual-machines-linux
 ms.subservice: security
 ms.topic: article
 ms.author: v-johya
-ms.date: 06/17/2020
+ms.date: 07/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 57d265bd39238eb3b2b9fdff6996b2db04209963
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: 8985ea4747a446f9c89c015866e7f6a13e2f468a
+ms.sourcegitcommit: b5794af488a336d84ee586965dabd6f45fd5ec6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097017"
+ms.lasthandoff: 08/01/2020
+ms.locfileid: "87508340"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM 上的 Azure 磁盘加密方案
 
@@ -193,9 +193,9 @@ key-encryption-key 参数值的语法是 KEK 的完整 URI，其格式为： htt
 
 可通过[资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm-without-aad)在 Azure 中为现有或正在运行的 Linux VM 启用磁盘加密。
 
-1. 在 Azure 快速入门模板中，单击“部署到 Azure”。****
+1. 在 Azure 快速入门模板中，单击“部署到 Azure”。
 
-2. 选择订阅、资源组、资源组位置、参数、法律条款和协议。 单击“创建”，在现有或正在运行的 VM 上启用加密。****
+2. 选择订阅、资源组、资源组位置、参数、法律条款和协议。 单击“创建”，在现有或正在运行的 VM 上启用加密。
 
 下表列出了现有的或正在运行的 VM 的资源管理器模板参数：
 
@@ -204,8 +204,8 @@ key-encryption-key 参数值的语法是 KEK 的完整 URI，其格式为： htt
 | vmName | 运行加密操作的 VM 的名称。 |
 | KeyVaultName | 加密密钥应上传到的 Key Vault 的名称。 可使用 cmdlet `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` 或 Azure CLI 命令 `az keyvault list --resource-group "MyKeyVaultResourceGroupName"` 获取该名称。|
 | keyVaultResourceGroup | 包含 Key Vault 的资源组的名称。 |
-|  keyEncryptionKeyURL | 用于对加密密钥进行加密的密钥加密密钥的 URL。 如果在 UseExistingKek 下拉列表中选择“nokek”****，则此参数为可选参数。 如果在 UseExistingKek 下拉列表中选择“kek”****，则必须输入 _keyEncryptionKeyURL_ 值。 |
-| volumeType | 要对其执行加密操作的卷的类型。 有效值为“OS”__、“Data”__ 和“All”__。 
+|  keyEncryptionKeyURL | 用于对加密密钥进行加密的密钥加密密钥的 URL。 如果在 UseExistingKek 下拉列表中选择“nokek”，则此参数为可选参数。 如果在 UseExistingKek 下拉列表中选择“kek”，则必须输入 _keyEncryptionKeyURL_ 值。 |
+| volumeType | 要对其执行加密操作的卷的类型。 有效值为“OS”、“Data”和“All”。 
 | forceUpdateTag | 每次操作需要强制运行时，传入一个像 GUID 这样的唯一值。 |
 | location | 所有资源的位置。 |
 
@@ -222,7 +222,7 @@ key-encryption-key 参数值的语法是 KEK 的完整 URI，其格式为： htt
  >如果在更新加密设置时设置此参数，可能会导致在实际加密之前重新启动。 在这种情况下，还需要从 fstab 文件中删除不想要格式化的磁盘。 同样，在启动加密操作之前，应将想要加密并格式化的分区添加到 fstab 文件。 
 
 ### <a name="encryptformatall-criteria"></a>EncryptFormatAll 条件
-该参数会遍历并加密满足以下**所有**条件的所有分区： 
+该参数会遍历并加密满足以下**所有**条件的所有分区：
 - 不是根/OS/启动分区
 - 尚未加密
 - 不是 BEK 卷
@@ -392,31 +392,15 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
 
 
 ## <a name="disable-encryption-for-linux-vms"></a>为 Linux VM 禁用加密
-可以使用 Azure PowerShell、Azure CLI 或资源管理器模板禁用加密。 
-
->[!IMPORTANT]
->在 Linux VM 上，仅支持对数据卷禁用 Azure 磁盘加密。 如果 OS 卷已加密，则不支持对数据卷或 OS 卷禁用加密。  
-
-- **使用 Azure PowerShell 禁用磁盘加密：** 若要禁用加密，请使用 [Disable-AzVMDiskEncryption](https://docs.microsoft.com/powershell/module/az.compute/disable-azvmdiskencryption) cmdlet。 
-     ```azurepowershell
-     Disable-AzVMDiskEncryption -ResourceGroupName 'MyVirtualMachineResourceGroup' -VMName 'MySecureVM' [-VolumeType DATA]
-     ```
-
-- **使用 Azure CLI 禁用加密：** 若要禁用加密，请使用 [az vm encryption disable](/cli/vm/encryption#az-vm-encryption-disable) 命令。 
-     ```azurecli
-     az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type DATA
-     ```
-- **使用资源管理器模板禁用加密：** 使用[在正在运行的 Linux VM 上禁用加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad)模板禁用加密。
-     1. 单击 **“部署到 Azure”** 。
-     2. 选择订阅、资源组、位置、VM、法律条款和协议。
+[!INCLUDE [disk-encryption-disable-encryption-cli](../../../includes/disk-encryption-disable-cli.md)]
 
 ## <a name="unsupported-scenarios"></a>不支持的方案
 
 Azure 磁盘加密不支持以下 Linux 方案、功能和技术：
 
-- 对基本层 VM 或通过经典 VM 创建方法创建的 VM 进行加密。
+- 加密通过经典 VM 创建方法创建的基本层 VM。
 - 在已加密 OS 驱动器的情况下，在 Linux VM 的 OS 驱动器或数据驱动器上禁用加密。
-- 加密 Linux 虚拟机规模集的 OS 驱动器。
+- 为 Linux 虚拟机规模集加密 OS 驱动器。
 - 加密 Linux VM 上的自定义映像。
 - 与本地密钥管理系统集成。
 - Azure 文件（共享文件系统）。
@@ -424,12 +408,15 @@ Azure 磁盘加密不支持以下 Linux 方案、功能和技术：
 - 动态卷。
 - 临时 OS 磁盘。
 - 加密共享/分布式文件系统，包括但不限于：DFS、GFS、DRDB 和 CephFS。
-- 将加密的 VM 移到其他订阅。
+- 将加密的 VM 移到其他订阅或区域。
+- 创建已加密 VM 的映像或快照，并使用它来部署其他 VM。
 - 内核故障转储 (kdump)。
 - Oracle ACFS（ASM 群集文件系统）。
 - Gen2 VM（请参阅：[Azure 对第 2 代 VM 的支持](generation-2.md#generation-1-vs-generation-2-capabilities)）。
 <!--Not Available on Lsv2-series VM in china -->
 - 具有“嵌套装入点”的 VM，即一个路径中有多个装入点（例如“/1stmountpoint/data/2stmountpoint”）。
+- 包含数据驱动器的 VM 装载在 OS 文件夹之上。
+- 具有写入加速器磁盘的 M 系列 VM。
 
 ## <a name="next-steps"></a>后续步骤
 
