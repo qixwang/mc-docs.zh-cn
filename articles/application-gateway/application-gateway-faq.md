@@ -5,15 +5,15 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 07/10/2020
+ms.date: 08/03/2020
 ms.author: v-junlch
 ms.custom: references_regions
-ms.openlocfilehash: 61179b2c2e6300454a93d238462be2fef08f49c1
-ms.sourcegitcommit: 65a7360bb14b0373e18ec8eaa288ed3ac7b24ef4
+ms.openlocfilehash: 7f99e041006266ce1e2c386f28a11290598fd9fa
+ms.sourcegitcommit: 36e7f37481969f92138bfe70192b1f4a2414caf7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86219715"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87796327"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>应用程序网关常见问题
 
@@ -336,6 +336,58 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 ### <a name="can-i-use-special-characters-in-my-pfx-file-password"></a>能否在 .pfx 文件密码中使用特殊字符？
 
 不可以，只能在 .pfx 文件密码中使用字母数字字符。
+
+### <a name="my-ev-certificate-is-issued-by-digicert-and-my-intermediate-certificate-has-been-revoked-how-do-i-renew-my-certificate-on-application-gateway"></a>我的 EV 证书由 DigiCert 颁发，而我的中间证书已被吊销。 如何在应用程序网关上续订我的证书？
+
+证书颁发机构 (CA) 浏览器成员最近发布的报告详细介绍了由 CA 供应商颁发的多个证书，而这些证书已被我们的客户、Microsoft 以及大型技术社区使用，且不符合公开受信任的 CA 行业标准。 有关非合规 CA 的报告，请参阅以下内容：  
+
+* [Bug 1649951](https://bugzilla.mozilla.org/show_bug.cgi?id=1649951)
+* [Bug 1650910](https://bugzilla.mozilla.org/show_bug.cgi?id=1650910)
+
+根据行业的合规性要求，CA 供应商已开始吊销非合规 CA 并颁发合规 CA，这要求客户重新颁发其证书。 Microsoft 正在与这些供应商密切合作，以最大程度地降低对 Azure 服务的潜在影响，但在“自带证书”(BYOC)  方案中使用的自颁发证书或证书仍存在意外被吊销的风险。
+
+若要检查应用程序使用的证书是否已被吊销，请参阅 [DigiCert 的公告](https://knowledge.digicert.com/alerts/DigiCert-ICA-Replacement)和[证书吊销跟踪程序](https://misissued.com/#revoked)。 如果你的证书已被吊销或将被吊销，你将需要从你的应用程序中使用的 CA 供应商请求新证书。 若要避免应用程序的可用性由于证书被意外吊销而被中断，或要更新已吊销的证书，请参阅我们的 Azure 更新贴文，获取支持 BYOC 的各种 Azure 服务的修正链接： https://azure.microsoft.com/updates/certificateauthorityrevocation/
+
+有关应用程序网关的特定信息，请参阅下内容：
+
+如果使用由某个已吊销的 ICA 颁发的证书，则可能会中断应用程序的可用性，并且你可能会收到各种错误消息（具体取决于应用程序），其中包括但不限于： 
+
+1.  证书/已吊销的证书无效
+2.  连接超时
+3.  HTTP 502
+
+若要避免应用程序由于此问题而出现任何中断，或者要重新颁发已吊销的 CA，你需要执行以下操作： 
+
+1.  有关如何重新颁发证书的信息，请与证书提供商联系
+2.  重新颁发后，请将 Azure 应用程序网关/WAF 上的证书更新为完全[信任链](https://docs.microsoft.com/windows/win32/seccrypto/certificate-chains)（叶证书、中间证书、根证书）。 根据证书的使用位置，在应用程序网关的侦听器或 HTTP 设置上，按照以下步骤更新证书，并查看所述的文档链接以获取详细信息。
+3.  更新后端应用程序服务器，以使用重新颁发的证书。 根据所使用的后端服务器，证书更新步骤可能会有所不同。 请查看供应商提供的文档。
+
+更新侦听器中的证书：
+
+1.  在 [Azure 门户](https://portal.azure.cn/)中，打开应用程序网关资源
+2.  打开与证书关联的侦听器设置
+3.  单击“续订或编辑所选证书”
+4.  上传新的 PFX 证书，并加密，然后单击“保存”。
+5.  访问网站并验证站点是否按预期方式工作。有关详细信息，请查看 [此处](/application-gateway/renew-certificates) 的文档。
+
+如果要在应用程序网关侦听器中从 Azure KeyVault 引用证书，建议执行以下步骤来进行快速更改：
+
+1.  在 [Azure 门户](https://portal.azure.cn/)中，导航到已与应用程序网关关联的 Azure Key Vault 设置
+2.  在存储区中添加/导入重新颁发的证书。 有关操作方法的详细信息，请参阅[此处](/key-vault/certificates/quick-create-portal)的文档。
+3.  导入证书后，导航到应用程序网关侦听器设置，然后在“从 Key Vault 选择证书”下，单击“证书”下拉箭头，然后选择最近添加的证书
+4.  单击“保存”。如需详细了解 TLS 终止和 Key Vault 证书的信息，请查看 [此处](/application-gateway/key-vault-certs) 的文档。
+
+
+更新 HTTP 设置中的证书：
+
+如果使用的是应用程序网关/WAF 服务的 V1 SKU，则必须将新证书上传为后端身份验证证书。
+1.  在 [Azure 门户](https://portal.azure.cn/)中，打开应用程序网关资源
+2.  打开与证书关联的 HTTP设置
+3.  单击“添加证书”，上传重新颁发的证书，然后单击“保存”
+4.  可以稍后通过单击旧证书旁的“...” 选项按钮删除旧证书，再选择“删除”，然后单击“保存”。
+有关详细信息，请参阅[此处](/application-gateway/end-to-end-ssl-portal#add-authenticationtrusted-root-certificates-of-back-end-servers)的文档。
+
+如果使用的是应用程序网关/WAF 服务的 V2 SKU，则无需在 HTTP 设置中上传新证书，因为 V2 SKU 使用“受信任的根证书”，无需在此执行任何操作。
 
 ## <a name="configuration---ingress-controller-for-aks"></a>配置 - AKS 的入口控制器
 
