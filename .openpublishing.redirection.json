@@ -26663,7 +26663,17 @@
       "source_path": "articles/synapse-analytics/sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md",
       "redirect_url": "/synapse-analytics/sql-data-warehouse/load-data-from-azure-blob-storage-using-copy",
       "redirect_document_id": true
-    }
+    },
+	{
+      "source_path": "articles/cognitive-services/LUIS/luis-tutorial-prebuilt-intents-entities.md",
+      "redirect_url": "/cognitive-services/LUIS/tutorial-machine-learned-entity",
+      "redirect_document_id": false
+    },
+	{
+      "source_path": "articles/cognitive-services/labs/conversation-learner/overview.md",
+      "redirect_url": "https://github.com/microsoft/cognitive-research-technologies-docs/tree/master/Conversation-Learner",
+      "redirect_document_id": false
+	}
 
 
 
