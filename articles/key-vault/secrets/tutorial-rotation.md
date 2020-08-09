@@ -1,22 +1,18 @@
 ---
-title: 单用户/单密码轮换教程
-description: 通过本教程了解如何自动轮换使用单用户/单密码身份验证的资源的机密。
-services: key-vault
-author: msmbaldwin
-manager: rkarlin
-tags: rotation
-ms.service: key-vault
-ms.subservice: general
-ms.topic: tutorial
-origin.date: 01/26/2020
-ms.date: 06/02/2020
-ms.author: v-tawe
-ms.openlocfilehash: 31a882223e1b98df61b9af48b425ea026eb7a277
-ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
+ms.openlocfilehash: 1445fc3aaebdbee66fb2dd959a82e3676a07de30
+ms.sourcegitcommit: 0e778acf5aa5eb63ab233e07e7aecce3a9a5e6d4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84275482"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87296455"
+---
+<a name="title-single-usersingle-password-rotation-tutorial"></a>title:单用户/单密码轮换教程
+---
+description:通过本教程了解如何自动轮换使用单用户/单密码身份验证的资源的机密。
+services: key-vault author: msmbaldwin manager: rkarlin tags: 'rotation'
+
+ms.service: key-vault ms.subservice: general ms.topic: tutorial origin.date:01/26/2020 ms.date:06/02/2020 ms.author: v-tawe
+
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-use-single-usersingle-password-authentication"></a>自动轮换使用单用户/单密码身份验证的资源的机密
 
@@ -42,8 +38,8 @@ ms.locfileid: "84275482"
 
 1. 选择 Azure 模板部署链接：
 <br><a href="https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2Fazure-keyvault-basicrotation-tutorial%2Fmaster%2Farm-templates%2Finitial-setup%2Fazuredeploy.json" target="_blank"> <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/></a>
-1. 在“资源组”下  ，选择“新建”  。 将组命名为 simplerotation。 
-1. 选择“购买”。 
+1. 在“资源组”下，选择“新建”。 将组命名为 simplerotation。
+1. 选择“购买”。
 
     ![创建资源组](../media/rotate2.png)
 
@@ -74,8 +70,8 @@ simplerotation-sql/master  simplerotation      chinaeast      Microsoft.Sql/serv
 
 1. 选择 Azure 模板部署链接：
 <br><a href="https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2Fazure-keyvault-basicrotation-tutorial%2Fmaster%2Farm-templates%2Ffunction-app%2Fazuredeploy.json" target="_blank"><img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/></a>
-1. 在“资源组”列表中选择“simplerotation”。  
-1. 选择“购买”。 
+1. 在“资源组”列表中选择“simplerotation”。 
+1. 选择“购买”。
 
    ![选择“购买”](../media/rotate3.png)
 
@@ -205,7 +201,7 @@ az eventgrid event-subscription create --name simplerotation-eventsubscription -
 ```
 
 ## <a name="add-the-secret-to-key-vault"></a>将机密添加到 Key Vault
-设置访问策略，以向用户授予“管理机密”权限： 
+设置访问策略，以向用户授予“管理机密”权限：
 
 ```azurecli
 az keyvault set-policy --upn <email-address-of-user> --name simplerotation-kv --secret-permissions set delete get list
@@ -223,11 +219,11 @@ az keyvault secret set --name sqluser --vault-name simplerotation-kv --value "Si
 ## <a name="test-and-verify"></a>测试和验证
 几分钟后，`sqluser` 机密应会自动轮换。
 
-若要验证该机密是否已轮换，请转到“Key Vault” > “机密”：  
+若要验证该机密是否已轮换，请转到“Key Vault” > “机密”： 
 
 ![转到“机密”](../media/rotate8.png)
 
-打开“sqluser”机密并查看原始版本和轮换后的版本： 
+打开“sqluser”机密并查看原始版本和轮换后的版本：
 
 ![打开 sqluser 机密](../media/rotate9.png)
 
@@ -241,8 +237,8 @@ az keyvault secret set --name sqluser --vault-name simplerotation-kv --value "Si
 
 1. 选择 Azure 模板部署链接：
 <br><a href="https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2Fazure-keyvault-basicrotation-tutorial%2Fmaster%2Farm-templates%2Fweb-app%2Fazuredeploy.json" target="_blank"> <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/></a>
-1. 选择“simplerotation”资源组。 
-1. 选择“购买”。 
+1. 选择“simplerotation”资源组。
+1. 选择“购买”。
 
 ### <a name="deploy-the-web-app"></a>部署 Web 应用
 
@@ -264,7 +260,7 @@ az keyvault secret set --name sqluser --vault-name simplerotation-kv --value "Si
  
 ![选择 URL](../media/rotate10.png)
 
-当应用程序在浏览器中打开时，你会看到“生成的机密值”  ，并会看到“数据库已连接”  的值为“true”  。
+当应用程序在浏览器中打开时，你会看到“生成的机密值”，并会看到“数据库已连接”的值为“true”。
 
 <!-- ## Learn more -->
 

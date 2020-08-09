@@ -9,14 +9,14 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
 origin.date: 05/11/2020
-ms.date: 07/01/2020
+ms.date: 07/28/2020
 ms.author: v-tawe
-ms.openlocfilehash: c0aa93956bc2ce77555c97cd6979ec0adeb9bf63
-ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
+ms.openlocfilehash: ce2f9dab2b52dab3cbf6d53ac3a6741dc8552485
+ms.sourcegitcommit: 0e778acf5aa5eb63ab233e07e7aecce3a9a5e6d4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85796273"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87296520"
 ---
 # <a name="secure-access-to-a-key-vault"></a>保护对密钥保管库的访问
 
@@ -39,7 +39,7 @@ Azure 密钥保管库是一种云服务，用于保护加密密钥和机密（�
 - **用户加应用程序访问**：应用程序代表已登录的用户访问密钥保管库。 此类访问的示例包括 Azure PowerShell 和 Azure 门户。 用户访问权限通过两种方式授予。 用户可以从任何应用程序访问密钥保管库，或者用户必须使用特定的应用程序（称为_复合标识_）。
 - **仅限应用程序的访问**：应用程序作为守护程序服务或后台作业运行。 向应用程序标识授予访问密钥保管库的权限。
 
-对于这两种类型的访问，应用程序都使用 Azure AD 进行身份验证。 应用程序根据应用程序类型使用任何[支持的身份验证方法](../../active-directory/develop/authentication-vs-authorization.md)。 应用程序通过获取平面中资源的令牌来授予访问权限。 资源是管理平面或数据平面中基于 Azure 环境的终结点。 应用程序使用令牌并向密钥保管库发送 REST API 请求。 若要了解详细信息，请查看[整个身份验证流](../../active-directory/develop/v2-oauth2-auth-code-flow.md)。
+对于这两种类型的访问，应用程序都使用 Azure AD 进行身份验证。 应用程序根据应用程序类型使用任何[支持的身份验证方法](../../active-directory/develop/authentication-scenarios.md)。 应用程序通过获取平面中资源的令牌来授予访问权限。 资源是管理平面或数据平面中基于 Azure 环境的终结点。 应用程序使用令牌并向密钥保管库发送 REST API 请求。 若要了解详细信息，请查看[整个身份验证流](../../active-directory/develop/v2-oauth2-auth-code-flow.md)。
 
 对这两种平面使用单一身份验证机制模型具有多个优点：
 
@@ -55,8 +55,8 @@ Azure 密钥保管库是一种云服务，用于保护加密密钥和机密（�
 
 | 访问&nbsp;平面 | 访问终结点 | 操作 | 访问&nbsp;控制机制 |
 | --- | --- | --- | --- |
-| 管理平面 | **全球：**<br> management.azure.com:443<br><br> **Azure 中国世纪互联：**<br> management.chinacloudapi.cn:443<br><br> **Azure US Government：**<br> management.usgovcloudapi.net:443<br><br> **Azure Germany：**<br> management.microsoftazure.de:443 | 创建、读取、更新和删除密钥保管库<br><br>设置密钥保管库访问策略<br><br>设置密钥保管库标记 | Azure 资源管理器 RBAC |
-| 数据平面 | **全球：**<br> &lt;vault-name&gt;.vault.azure.cn:443<br><br> **Azure 中国世纪互联：**<br> &lt;vault-name&gt;.vault.azure.cn:443<br><br> **Azure US Government：**<br> &lt;vault-name&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Germany：**<br> &lt;vault-name&gt;.vault.microsoftazure.de:443 | 密钥：解密、加密，<br> 解包、包装、验证、签名，<br> 获取、列出、更新、创建，<br> 导入、删除、备份、还原<br><br> 机密：获取、列出、设置、删除 | Key Vault 访问策略 |
+| 管理平面 | management.chinacloudapi.cn:443<br><br>  | 创建、读取、更新和删除密钥保管库<br><br>设置密钥保管库访问策略<br><br>设置密钥保管库标记 | Azure RBAC |
+| 数据平面 | lt;vault-name&gt;.vault.azure.cn:443 | 密钥：解密、加密，<br> 解包、包装、验证、签名，<br> 获取、列出、更新、创建，<br> 导入、删除、备份、还原<br><br> 机密：获取、列出、设置、删除 | Key Vault 访问策略 |
 
 ## <a name="management-plane-and-rbac"></a>管理平面和 RBAC
 
@@ -80,6 +80,8 @@ Azure 密钥保管库是一种云服务，用于保护加密密钥和机密（�
 通过为密钥保管库设置密钥保管库访问策略授予数据平面访问权限。 若要设置这些访问策略，用户、组或应用程序必须具有该密钥保管库管理平面的 `Contributor` 权限。
 
 可以向用户、组或应用程序授予对密钥保管库中的密钥或机密执行特定操作的访问权限。 密钥保管库最多支持 1024 个密钥保管库访问策略条目。 若要向多个用户授予对数据平面的访问权限，创建一个 Azure AD 安全组，并将用户添加到该组。
+
+通过查看以下参考，可以看到保管库和机密操作的完整列表，并了解配置密钥保管库访问策略时允许的操作。 [Key Vault 操作参考](https://docs.microsoft.com/rest/api/keyvault/#vault-operations)
 
 <a id="key-vault-access-policies"></a> 密钥保管库访问策略单独授予对密钥、机密和证书的权限。 可以仅授予用户对密钥的访问权限，而不授予对机密的访问权限。 密钥、机密或证书的访问权限是保管库级别的。 密钥保管库访问策略不支持粒度、对象级别权限，例如特定的密钥、机密或证书。 若要为密钥保管库设置访问策略，可以使用 [Azure 门户](https://portal.azure.cn/)、[Azure CLI 工具](/cli/install-azure-cli?view=azure-cli-latest)、[PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs) 或[密钥保管库管理 REST API](https://docs.microsoft.com/rest/api/keyvault/vaults?redirectedfrom=MSDN)。
 

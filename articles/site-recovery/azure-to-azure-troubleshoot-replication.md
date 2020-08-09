@@ -5,14 +5,16 @@ author: rockboyfor
 manager: digimobile
 ms.topic: troubleshooting
 origin.date: 04/03/2020
-ms.date: 06/08/2020
+ms.date: 08/03/2020
+ms.testscope: no
+ms.testdate: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: 7b95a547cf721af099d36d319ef62c0830aa092f
-ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
+ms.openlocfilehash: c70865add312f8f294425992ddfe9088efe05cd5
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84440418"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426337"
 ---
 # <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>排查 Azure VM 灾难恢复中的复制问题
 
@@ -110,6 +112,10 @@ Site Recovery 会将已复制数据发送到缓存存储帐户。 如果将数�
 
 **如何解决**：Azure Site Recovery 无法针对存储空间直通配置创建应用程序一致性恢复点。 [配置复制策略](azure-to-azure-how-to-enable-replication-s2d-vms.md)。
 
+### <a name="app-consistency-not-enabled-on-linux-servers"></a>Linux 服务器上未启用应用一致性
+
+**如何解决**：适用于 Linux 操作系统的 Azure Site Recovery 支持通过应用程序自定义脚本实现应用一致性。 为保障应用一致性，Azure Site Recovery 移动代理将使用带有 pre 和 post 选项的自定义脚本。 [这里](/site-recovery/site-recovery-faq#replication)是启用此功能的步骤。
+
 ### <a name="more-causes-because-of-vss-related-issues"></a>更多的原因在于 VSS 相关的问题：
 
 若要进一步排查问题，请查看源计算机上的文件，获取故障的具体错误代码：
@@ -134,7 +140,7 @@ Ex: vacpError:220#Following disks are in FilteringStopped state [\\.\PHYSICALDRI
 
 如果已禁用 VSS：
 
-- 确认 VSS 提供程序服务的启动类型是否设置为“自动”。
+- 验证 VSS 提供程序服务的启动类型是否设置为“自动”。
 - 重启以下服务：
     - VSS 服务。
     - Azure Site Recovery VSS 提供程序。

@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 06/12/2020
-ms.date: 06/22/2020
+ms.date: 08/03/2020
 ms.author: v-tawe
-ms.openlocfilehash: 26b30cdd9489b64b55eb312fce5ca730f3760d77
-ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
+ms.openlocfilehash: 21fbf0e09ad8140aeb6bed26b3a78de056812650
+ms.sourcegitcommit: 3821704fee67315badba49cf628af2aa68d98f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85706596"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87516099"
 ---
 # <a name="speech-service-whats-new-in-docs"></a>语音服务：Docs 中的新增内容
 
@@ -41,9 +41,11 @@ ms.locfileid: "85706596"
 * [选择语音识别模式](how-to-choose-recognition-mode.md) - 向文档添加了 JavaScript 说明。
 * [为语音 SDK 配置 RHEL/CentOS 7](how-to-configure-rhel-centos-7.md) - 改进了安装说明。
 * [语音转文本的短语列表](how-to-phrase-lists.md) - 向文档添加了 JavaScript 说明。
+* [快速入门：Python 中用于长格式音频的异步合成（预览版）](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)- 更新为支持公共神经语音和相关参数。
 * [快速入门：识别音频文件中的语音](quickstarts/speech-to-text-from-file.md) - 向文档添加了 JavaScript 说明。
 * [快速入门：识别来自麦克风的语音](quickstarts/speech-to-text-from-microphone.md ) - 向文档添加了 Go 和 JavaScript 说明。
 * [快速入门：识别存储在 Blob 存储中的语音](quickstarts/from-blob.md) - 向文档添加了 JavaScript 说明。
+* [快速入门：使用语言理解 (LUIS) 识别语音、意向和实体](quickstarts/intent-recognition.md)
 * [快速入门：安装开发环境](quickstarts/setup-platform.md) - 向文档添加了 JavaScript 说明。
 * [快速入门：将语音合成到音频文件](quickstarts/text-to-speech-audio-file.md) - 向文档添加了 JavaScript 说明。
 * [快速入门：将语音合成到扬声器](quickstarts/text-to-speech.md) - 向文档添加了 JavaScript 说明。
@@ -51,7 +53,4 @@ ms.locfileid: "85706596"
 * [快速入门：将语音翻译成多种语言](quickstarts/translate-speech-to-text-multiple-languages.md) - 向文档添加了 JavaScript 说明。
 * [快速入门：将语音翻译为文本](quickstarts/translate-speech-to-text.md) - 向文档添加了 JavaScript 说明。
 * [指定语音转文本的源语言](how-to-specify-source-language.md) - 向文档添加了 JavaScript 和 Objective-C 说明。
-
-<!-- * [Quickstart: Asynchronous synthesis for long-form audio in Python (Preview)](quickstarts/text-to-speech/async-synthesis-long-form-audio.md) - Updated with support for public neural voices, and associated parameters. -->
-<!-- * [Quickstart: Recognize speech, intents, and entities with Language Understanding (LUIS)](quickstarts/intent-recognition.md) -->
 <!-- * [What is a keyword?](custom-keyword-overview.md) - Updated get started content and links. -->

@@ -3,14 +3,14 @@ author: msmimart
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
-ms.date: 06/28/2020
+ms.date: 07/28/2020
 ms.author: v-junlch
-ms.openlocfilehash: 0a799812ef2a55f71843facee71beeadf28abe66
-ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
+ms.openlocfilehash: 28ae12732d99261bab4b9fc85503360fa48950ae
+ms.sourcegitcommit: dd2bc914f6fc2309f122b1c7109e258ceaa7c868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85516496"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87298751"
 ---
 #### <a name="app-registrations"></a>[应用注册](#tab/app-reg-ga/) 
 
@@ -24,8 +24,7 @@ ms.locfileid: "85516496"
     * **Policy** > **Policy.ReadWrite.TrustFramework**：适用于持续集成/持续交付 (CI/CD) 方案。 例如，使用 Azure Pipelines 进行的自定义策略部署。
 1. 选择“添加权限”。 按照指示等待几分钟，然后继续下一步。
 1. 选择“向(租户名称)授予管理员许可”。
-1. 选择当前登录的管理员帐户，或者使用至少分配了“云应用程序管理员”角色的 Azure AD B2C 租户中的帐户登录。
-1. 选择“接受”。
+1. 如果当前没有使用全局管理员帐户登录，请使用至少分配了“云应用程序管理员”角色的 Azure AD B2C 租户中的帐户登录，然后选择“代表(你的租户名称)授予管理员许可”。
 1. 选择“刷新”，然后验证“状态”下是否显示“已授予...”。  传播权限可能需要几分钟时间。
 
 #### <a name="applications-legacy"></a>[应用程序(旧版)](#tab/applications-legacy/)

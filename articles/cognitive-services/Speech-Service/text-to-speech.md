@@ -11,12 +11,12 @@ ms.topic: conceptual
 origin.date: 03/23/2020
 ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: d2834cc9d52b7f66cf3d8a07dd4ac678efc8f5ae
-ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
+ms.openlocfilehash: 3e31a867d136cfab63b943fdc02c3f2cbde6e5f2
+ms.sourcegitcommit: 5d167ad5411b018522a0fac9f5435a48f4ceb3a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85613379"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87378164"
 ---
 # <a name="what-is-text-to-speech"></a>什么是文本转语音？
 
@@ -32,7 +32,7 @@ ms.locfileid: "85613379"
 
 * 语音合成 - 使用[语音 SDK](quickstarts/text-to-speech-audio-file.md) 或 [REST API](rest-text-to-speech.md) 通过标准语音和神经语音将文本转换为语音。
 
-<!-- * Asynchronous synthesis of long audio - Use the [Long Audio API](long-audio-api.md) to asynchronously synthesize text-to-speech files longer than 10 minutes (for example audio books or lectures). Unlike synthesis performed using the Speech SDK or speech-to-text REST API, responses aren't returned in real time. The expectation is that requests are sent asynchronously, responses are polled for, and that the synthesized audio is downloaded when made available from the service. Only neural voices are supported. -->
+* 长音频的异步合成 - 使用[长音频 API](long-audio-api.md) 异步合成 10 分钟以上的文本转语音文件（例如有声书籍或讲座）。 不同于使用语音 SDK 或语音转文本 REST API 执行的合成，响应不会实时返回。 预期会异步发送请求，以轮询的方式获取响应，并会下载合成音频（在服务提供该音频的情况下）。 仅支持神经语音。
 
 * 标准语音 - 使用统计参数合成和/或串联合成技术创建。 这些语音的辨识度很高，且听起来非常自然。 你可以轻松地让应用程序使用多种语音选项以 10 种以上的语言讲述。 这些声音提供较高的发音准确度，支持缩写、缩略词扩展、日期/时间解释、多音字等。 有关标准语音的完整列表，请参阅[支持的语言](language-support.md#text-to-speech)。
 
@@ -46,8 +46,7 @@ ms.locfileid: "85613379"
 
 * [将语音合成为音频文件](quickstarts/text-to-speech-audio-file.md)
 * [将语音合成到扬声器](quickstarts/text-to-speech.md)
-
-<!-- * [Asynchronously synthesize long-form audio](quickstarts/text-to-speech/async-synthesis-long-form-audio.md) -->
+* [异步合成长格式音频](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
 
 如果你愿意，可以通过 [REST](rest-text-to-speech.md) 来访问文本转语音服务。
 

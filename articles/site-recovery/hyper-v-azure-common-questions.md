@@ -2,15 +2,17 @@
 title: 有关使用 Azure Site Recovery 实现 Hyper-V 灾难恢复的常见问题
 description: 本文汇总了有关使用 Azure Site Recovery 站点设置本地 Hyper-V VM 到 Azure 的灾难恢复的常见问题。
 origin.date: 11/12/2019
-ms.date: 01/13/2020
+ms.date: 08/03/2020
+ms.testscope: no
+ms.testdate: 01/13/2020
 ms.author: v-yeche
 ms.topic: conceptual
-ms.openlocfilehash: 98eada40a9d366ac6bba0e41bfa602215e49b5d5
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: efa957fcb43e851ee23e2390fc00b3e1077ca5ae
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75776731"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426387"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>常见问题 - Hyper-V 到 Azure 的灾难恢复
 
@@ -157,17 +159,22 @@ Site Recovery 通过公共终结点或使用 ExpressRoute Azure 对等互连将�
 
 ### <a name="how-often-can-i-replicate-to-azure"></a>可以多久复制到 Azure 一次？
 
-可以每隔 30 秒（高级存储除外）、5 分钟或 15 分钟复制一次 Hyper-V VM。
+可以每隔 30 秒（高级存储除外）或 5 分钟复制一次 Hyper-V VM。
+
+<!--MOONCAKE: CUSTOMIZATION-->
 
 ### <a name="can-i-extend-replication"></a>是否可以扩展复制？
-不支持扩展或链式复制。
+
+当前不支持扩展复制或链式复制。
 
 <!--Not Available on  Request this feature in [feedback forum](https://support.azure.cn/support/contact/)-->
 
 ### <a name="can-i-do-an-offline-initial-replication"></a>是否可以执行脱机初始复制？
+
 不支持此操作。
 
 <!--Not Available on  Request this feature in the [feedback forum](https://support.azure.cn/support/contact/)-->
+<!--MOONCAKE: CUSTOMIZATION-->
 
 ### <a name="can-i-exclude-disks"></a>是否可以排除磁盘？
 可以从复制中排除磁盘。 

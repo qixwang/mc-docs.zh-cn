@@ -3,20 +3,20 @@ title: 文本转语音 API 参考 (REST) - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 了解如何使用文本转语音 REST API。 本文介绍授权选项、查询选项，以及如何构建请求和接收响应。
 services: cognitive-services
-author: erhopf
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-origin.date: 12/09/2019
-ms.date: 03/01/2020
+origin.date: 03/23/2020
+ms.date: 08/03/2020
 ms.author: v-tawe
-ms.openlocfilehash: 075bd9ddea19449712f5bf79fb37401ba47f5ea2
-ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
+ms.openlocfilehash: c01b17ffbad7c31f3b2165ebb791ed3fb6c85710
+ms.sourcegitcommit: 3821704fee67315badba49cf628af2aa68d98f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85095922"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87516116"
 ---
 # <a name="text-to-speech-rest-api"></a>文本转语音 REST API
 
@@ -161,29 +161,29 @@ Authorization: Bearer [Base64 access_token]
 
 这是在每个请求中作为 `X-Microsoft-OutputFormat` 标头发送的受支持音频格式的列表。 每种格式合并了比特率和编码类型。 语音服务支持 24 kHz、16 kHz 和 8 kHz 音频输出。
 
-|||
-|-|-|
-| `raw-16khz-16bit-mono-pcm` | `raw-8khz-8bit-mono-mulaw` |
-| `riff-8khz-8bit-mono-alaw` | `riff-8khz-8bit-mono-mulaw` |
-| `riff-16khz-16bit-mono-pcm` | `audio-16khz-128kbitrate-mono-mp3` |
-| `audio-16khz-64kbitrate-mono-mp3` | `audio-16khz-32kbitrate-mono-mp3` |
-| `raw-24khz-16bit-mono-pcm` | `riff-24khz-16bit-mono-pcm` |
-| `audio-24khz-160kbitrate-mono-mp3` | `audio-24khz-96kbitrate-mono-mp3` |
-| `audio-24khz-48kbitrate-mono-mp3` | |
+```output
+raw-16khz-16bit-mono-pcm            raw-8khz-8bit-mono-mulaw
+riff-8khz-8bit-mono-alaw            riff-8khz-8bit-mono-mulaw
+riff-16khz-16bit-mono-pcm           audio-16khz-128kbitrate-mono-mp3
+audio-16khz-64kbitrate-mono-mp3     audio-16khz-32kbitrate-mono-mp3
+raw-24khz-16bit-mono-pcm            riff-24khz-16bit-mono-pcm
+audio-24khz-160kbitrate-mono-mp3    audio-24khz-96kbitrate-mono-mp3
+audio-24khz-48kbitrate-mono-mp3     ogg-24khz-16bit-mono-opus
+```
 
 > [!NOTE]
-> 如果所选语音和输出格式具有不同的比特率，则根据需要对音频重新采样。 但是，24 kHz 语音不支持 `audio-16khz-16kbps-mono-siren` 和 `riff-16khz-16kbps-mono-siren` 输出格式。
+> 如果所选语音和输出格式具有不同的比特率，则根据需要对音频重新采样。 ogg-24khz-16bit-mono-opus 可以使用 [opus 编解码器](https://opus-codec.org/downloads/)进行解码
 
 ### <a name="request-body"></a>请求正文
 
 每个 `POST` 请求的正文作为[语音合成标记语言 (SSML)](speech-synthesis-markup.md) 发送。 SSML 允许选择文本到语音转换服务返回的合成语音的语音和语言。 有关受支持的语音的完整列表，请参阅[语言支持](language-support.md#text-to-speech)。
 
-<!-- > [!NOTE] -->
-<!-- > If using a custom voice, the body of a request can be sent as plain text (ASCII or UTF-8). -->
+> [!NOTE]
+> 如果使用自定义语音，请求正文可以作为纯文本（ASCII 或 UTF-8）发送。
 
 ### <a name="sample-request"></a>示例请求
 
-此 HTTP 请求使用 SSML 指定语音和语言。 正文不能超过 1,000 个字符。
+此 HTTP 请求使用 SSML 指定语音和语言。 如果正文长度较长，并且生成的音频超过 10 分钟，则将其截断为 10 分钟。 换句话说，音频长度不能超过 10 分钟。
 
 ```http
 POST /cognitiveservices/v1 HTTP/1.1
@@ -225,3 +225,5 @@ Authorization: Bearer [Base64 access_token]
 ## <a name="next-steps"></a>后续步骤
 
 - [获取语音试用订阅](https://www.azure.cn/pricing/1rmb-trial/)
+- [用于长格式音频的异步合成](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
+- [自定义语音入门](how-to-custom-voice.md)

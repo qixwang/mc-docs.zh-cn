@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 09/06/2019
-ms.date: 06/19/2020
+ms.date: 07/29/2020
 ms.author: v-tawe
-ms.openlocfilehash: c7cdcd42fa3b7ec5c07ae83a141983888d4b44e3
-ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
+ms.openlocfilehash: 7508e733b5fcaf09f9c40d71484216618caef746
+ms.sourcegitcommit: 5d167ad5411b018522a0fac9f5435a48f4ceb3a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85613321"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87378208"
 ---
 # <a name="evaluate-custom-speech-accuracy"></a>评估自定义语音识别准确度
 
@@ -24,7 +24,7 @@ ms.locfileid: "85613321"
 
 ## <a name="what-is-word-error-rate-wer"></a>什么是误字率 (WER)？
 
-用于度量模型准确度的行业标准是误字率 (WER)。 计算 WER 时，先对识别过程中标识的错误单词计数，然后将其除以人为标记的听录中提供的单词的总数， 最后将该数字乘以 100%。
+用于度量模型准确度的行业标准是误字率 (WER)。 计算 WER 时，先对识别过程中标识的错误单词计数，然后将其除以人为标记的听录中提供的单词的总数（下面显示为 N）。 最后将该数字乘以 100%。
 
 ![WER 公式](./media/custom-speech/custom-speech-wer-formula.png)
 

@@ -5,19 +5,19 @@ author: WenJason
 manager: digimobile
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 origin.date: 04/17/2018
-ms.date: 07/06/2020
+ms.date: 08/03/2020
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: ba968309d0d53730b820f723aceae97f3666a909
-ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
+ms.openlocfilehash: ecbc8468635a4f676bdf5b3882bf45f23db50e9c
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85845809"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426346"
 ---
 # <a name="secure-a-database-in-azure-synapse"></a>保护 Azure Synapse 中的数据库
 
@@ -34,11 +34,11 @@ ms.locfileid: "85845809"
 
 连接安全性是指如何使用防火墙规则和连接加密来限制和保护数据库连接。
 
-逻辑 SQL Server 及其数据库使用防火墙规则来拒绝源自未明确列入允许列表的 IP 地址的连接企图。 若要从应用程序或客户端计算机的公共 IP 地址进行连接，必须先使用 Azure 门户、REST API 或 PowerShell 创建服务器级防火墙规则。
+[逻辑 SQL Server](../../azure-sql/database/logical-servers.md) 及其数据库使用防火墙规则来拒绝源自未明确加入允许列表的 IP 地址的连接企图。 若要从应用程序或客户端计算机的公共 IP 地址进行连接，必须先使用 Azure 门户、REST API 或 PowerShell 创建服务器级防火墙规则。
 
 最佳做法是尽量通过服务器级防火墙来限制允许的 IP 地址范围。  要从本地计算机访问 SQL 池，请确保网络和本地计算机上的防火墙允许在 TCP 端口 1433 上的传出通信。  
 
-Azure Synapse Analytics 使用服务器级 IP 防火墙规则。 不支持数据库级 IP 防火墙规则。 有关详细信息，请参阅 [Azure SQL 数据库防火墙规则](../../sql-database/sql-database-firewall-configure.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
+Azure Synapse Analytics 使用服务器级 IP 防火墙规则。 不支持数据库级 IP 防火墙规则。 有关详细信息，请参阅 [Azure SQL 数据库防火墙规则](../../azure-sql/database/firewall-configure.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 
 默认加密到 SQL 池的连接。  通过修改连接设置来禁用加密的操作会被忽略。
 
@@ -67,7 +67,7 @@ CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 
 要授予用户执行其他操作（例如创建登录名或新数据库）的权限，则还需在 master 数据库中为其分配 `Loginmanager` 和 `dbmanager` 角色。
 
-如需详细了解这些额外的角色，以及如何在 SQL 数据库上进行身份验证，请参阅[在 Azure SQL 数据库中管理数据库和登录名](../../sql-database/sql-database-manage-logins.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。  有关使用 Azure Active Directory 进行连接的详细信息，请参阅[使用 Azure Active Directory 身份验证进行连接](sql-data-warehouse-authentication.md)。
+如需详细了解这些额外的角色，以及如何在 SQL 数据库上进行身份验证，请参阅[在 Azure SQL 数据库中管理数据库和登录名](../../azure-sql/database/logins-create-manage.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。  有关使用 Azure Active Directory 进行连接的详细信息，请参阅[使用 Azure Active Directory 身份验证进行连接](sql-data-warehouse-authentication.md)。
 
 ## <a name="authorization"></a>授权
 

@@ -6,18 +6,18 @@ author: WenJason
 manager: digimobile
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 origin.date: 08/29/2018
-ms.date: 07/06/2020
+ms.date: 08/03/2020
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 047d9e2c4c93e150f21db904eedca11c3044dfba
-ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
+ms.openlocfilehash: 347001882399572775ada97db55ad28d36cb5da8
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85845819"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426326"
 ---
 # <a name="restore-a-deleted-sql-pool-using-azure-synapse-analytics"></a>使用 Azure Synapse Analytics 还原已删除的 SQL 池
 
@@ -27,7 +27,7 @@ ms.locfileid: "85845819"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-**验证 DTU 容量。** 每个 SQL 池都由一个具有默认 DTU 配额的逻辑 SQL Server（例如 myserver.database.chinacloudapi.cn）托管。  验证该服务器的剩余 DTU 配额是否足够进行数据库还原。
+**验证 DTU 容量。** 每个 SQL 池都由一个具有默认 DTU 配额的[逻辑 SQL Server](../../azure-sql/database/logical-servers.md)（例如 myserver.database.chinacloudapi.cn）托管。  验证该服务器的剩余 DTU 配额是否足够进行数据库还原。
 
 ## <a name="restore-a-deleted-data-warehouse-through-powershell"></a>通过 PowerShell 还原已删除的数据仓库
 
@@ -41,7 +41,7 @@ ms.locfileid: "85845819"
 6. 还原已删除的 SQL 池
     * 若要将已删除的 SQL 池还原到另一服务器，请确保指定其他服务器名称。  该服务器也可以位于另一资源组和区域中。
 7. 验证已还原的数据仓库是否处于联机状态。
-8. 完成还原后，可以按[在恢复后配置数据库](../../sql-database/sql-database-disaster-recovery.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery)中的说明配置恢复后的数据仓库。
+8. 完成还原后，可以按[在恢复后配置数据库](../../azure-sql/database/disaster-recovery-guidance.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery)中的说明配置恢复后的数据仓库。
 
 ```Powershell
 $SubscriptionName="<YourSubscriptionName>"

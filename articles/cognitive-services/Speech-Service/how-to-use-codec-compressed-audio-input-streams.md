@@ -9,21 +9,21 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 03/30/2019
-ms.date: 06/19/2020
+ms.date: 08/03/2020
 ms.author: v-tawe
-zone_pivot_groups: programming-languages-set-twelve
-ms.openlocfilehash: fd69d652d3af0cf5ed00e8b845b54c1ca31c97bb
-ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
+zone_pivot_groups: programming-languages-set-twenty-two
+ms.openlocfilehash: 9d6b1953243ed6879730c1783ac4351e04529624
+ms.sourcegitcommit: 3821704fee67315badba49cf628af2aa68d98f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85611863"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87516101"
 ---
 # <a name="use-codec-compressed-audio-input-with-the-speech-sdk"></a>在语音 SDK 中使用编解码器压缩的音频输入
 
 语音服务 SDK 压缩音频输入流 API 提供了一种使用 `PullStream` 或 `PushStream` 将压缩音频流式传输到语音服务的方法。
 
-目前，Windows（不支持 UWP 应用程序）和 Linux（Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 7/8、CentOS 7/8）上的 C#、C++ 和 Java 支持流式传输压缩输入音频。 Android 中的 Java 和 iOS 平台中的 Objective-C 也支持该功能。
+目前，Windows（不支持 UWP 应用程序）和 Linux（Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 7/8、CentOS 7/8）上的 C#、C++、Java 和 Python 支持流式传输压缩输入音频。 Android 中的 Java 也支持此功能。
 * RHEL 8 和 CentOS 8 需要语音 SDK 1.10.0 或更高版本
 * Windows 需要语音 SDK 版本 1.11.0 或更高版本。
 
@@ -43,8 +43,8 @@ ms.locfileid: "85611863"
 [!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/java/prerequisites.md)]
 ::: zone-end
 
-::: zone pivot="programming-language-objectivec"
-[!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/objectivec/prerequisites.md)]
+::: zone pivot="programming-language-python"
+[!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/python/prerequisites.md)]
 ::: zone-end
 
 ## <a name="example-code-using-codec-compressed-audio-input"></a>使用编解码器压缩的音频输入的示例代码
@@ -61,8 +61,8 @@ ms.locfileid: "85611863"
 [!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/java/examples.md)]
 ::: zone-end
 
-::: zone pivot="programming-language-objectivec"
-[!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/objectivec/examples.md)]
+::: zone pivot="programming-language-python"
+[!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/python/examples.md)]
 ::: zone-end
 
 ## <a name="next-steps"></a>后续步骤

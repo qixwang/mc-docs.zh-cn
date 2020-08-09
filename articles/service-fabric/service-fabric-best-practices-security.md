@@ -4,20 +4,20 @@ description: 确保 Azure Service Fabric 群集和应用程序安全的最佳做
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 01/23/2019
-ms.date: 06/08/2020
+ms.date: 08/03/2020
+ms.testscope: no
+ms.testdate: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: 6d5ef1be7d4439d7bc4712b20a33fbd315929f8a
-ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
+ms.openlocfilehash: 11e31ca89ee341c218f0a4a8a4c75d413c61ed97
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84356291"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426332"
 ---
 # <a name="azure-service-fabric-security"></a>Azure Service Fabric 安全 
 
-有关详细信息，请参阅 [Azure 安全最佳做法](/security/)。 
-
-<!--Not Available on [Azure Service Fabric security best practices](/security/azure-service-fabric-security-best-practices)-->
+有关 [Azure 安全性最佳做法](https://docs.microsoft.com/security/)的详细信息，请参阅 [Azure Service Fabric 安全性最佳做法](/security/fundamentals/service-fabric-best-practices)
 
 ## <a name="key-vault"></a>密钥保管库
 
@@ -161,7 +161,7 @@ user@linux:$ openssl smime -encrypt -in plaintext_UTF-16.txt -binary -outform de
 ```
 ## <a name="authenticate-service-fabric-applications-to-azure-resources-using-managed-service-identity-msi"></a>使用托管服务标识 (MSI) 向 Azure 资源验证 Service Fabric 应用程序
 
-若要了解 Azure 资源的托管标识，请参阅[什么是 Azure 资源的托管标识？](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work)。
+若要了解 Azure 资源的托管标识，请参阅[什么是 Azure 资源的托管标识？](../active-directory/managed-identities-azure-resources/overview.md)。
 Azure Service Fabric 群集托管在虚拟机规模集上，后者支持[托管服务标识](/active-directory/managed-identities-azure-resources/services-support-msi#azure-services-that-support-managed-identities-for-azure-resources)。
 若要获取可以使用 MSI 向其进行身份验证的服务的列表，请参阅[支持 Azure Active Directory 身份验证的 Azure 服务](/active-directory/managed-identities-azure-resources/services-support-msi#azure-services-that-support-azure-ad-authentication)。
 
@@ -224,7 +224,12 @@ cosmos_db_password=$(curl 'https://management.chinacloudapi.cn/subscriptions/<YO
 这些防火墙规则是对允许的出站网络安全组的补充，此类安全组将包括 ServiceFabric 和存储，作为来自虚拟网络的允许目标。
 
 ## <a name="tls-12"></a>TLS 1.2
-[TSG](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md)
+
+[Azure 建议](https://azure.microsoft.com/updates/azuretls12/)所有客户迁移到支持传输层安全性 (TLS) 1.2 的解决方案，并确保默认使用 TLS 1.2。
+
+Azure 服务（包括 [Service Fabric](https://techcommunity.microsoft.com/t5/azure-service-fabric/microsoft-azure-service-fabric-6-3-refresh-release-cu1-notes/ba-p/791493)）已完成工程工作，消除了对 TLS 1.0/1.1 协议的依赖，并为希望将其工作负载配置为仅接受和启动 TLS 1.2 连接的客户提供全面支持。
+
+客户应将其 Azure 托管工作负载以及与 Azure 服务交互的本地应用程序配置为默认使用 TLS 1.2。 下面介绍如何[配置 Service Fabric 群集节点和应用程序](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md)以使用特定 TLS 版本。
 
 ## <a name="windows-defender"></a>Windows Defender 
 

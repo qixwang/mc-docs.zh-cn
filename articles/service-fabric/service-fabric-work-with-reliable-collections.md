@@ -3,14 +3,16 @@ title: 使用可靠集合
 description: 了解有关在 Azure Service Fabric 应用程序中使用可靠集合的最佳做法。
 ms.topic: conceptual
 origin.date: 03/10/2020
-ms.date: 06/08/2020
+ms.date: 08/03/2020
+ms.testscope: no
+ms.testdate: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: f7f3f1905c546faf87bd8889d60c8a0326b83f4a
-ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
+ms.openlocfilehash: 627fb20aa0e8cf001e9adcc963201bd1c5aa08e0
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84356165"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426281"
 ---
 # <a name="working-with-reliable-collections"></a>使用可靠集合
 Service Fabric 通过可靠集合向 .NET 开发人员提供有状态的编程模型。 具体而言，Service Fabric 提供可靠字典和可靠队列类。 在使用这些类时，状态是分区的（实现伸缩性）、复制的（实现可用性），并在分区内进行事务处理（实现 ACID 语义）。 让我们看一下可靠字典对象的典型用法，并看一看它究竟在做些什么。
@@ -44,9 +46,14 @@ catch (TimeoutException)
 
 在上面的代码中，ITransaction 对象传递到可靠字典的 AddAsync 方法。 在内部，接受键的字典方法采用与键关联的读取器/写入器锁。 如果此方法修改键的值，则在键上使用写入锁；如果此方法只读取键的值，则在键上使用读取锁。 由于 AddAsync 将键值修改成新的传入值，因此使用键的写入锁。 因此，如果有 2（或更多个）线程尝试在同一时间添加相同的键值，则一个线程将获取写入锁，另一个线程会阻塞。 默认情况下，方法最多阻塞 4 秒以获取锁，4 秒后方法会引发 TimeoutException。 方法重载存在可让你根据需要传递显式超时值。
 
-通常，编写代码响应 TimeoutException 的方式是捕获它，然后重试整个操作（如以上代码中所示）。 在我的简单代码中，我只调用了每次传递 100 毫秒的 Task.Delay。 但实际上，最好改用某种形式的指数退让延迟。
+通常，编写代码响应 TimeoutException 的方式是捕获它，然后重试整个操作（如以上代码中所示）。 在此简单代码中，我们只调用每次超过 100 毫秒的 Task.Delay。 但实际上，最好改用某种形式的指数退让延迟。
 
-获取锁后，AddAsync 会在与 ITransaction 对象关联的内部临时字典中添加键和值对象引用。 这就完成了读取自己编写的语义。 也就是说，在调用 AddAsync 之后，稍后对 TryGetValueAsync 的调用（使用相同的 ITransaction 对象）将返回值，即使尚未提交事务。 接下来，AddAsync 将键和值对象序列化为字节数组，并将这些字节数组附加到本地节点的日志文件。 最后，AddAsync 将字节数组发送给所有辅助副本，使其具有相同的键/值信息。 即使键/值信息已写入日志文件，在提交其关联的事务之前，这些信息不被视为字典的一部分。
+获取锁后，AddAsync 会在与 ITransaction 对象关联的内部临时字典中添加键和值对象引用。 这就完成了读取自己编写的语义。 也就是说，在调用 AddAsync 之后，稍后对 TryGetValueAsync 的调用（使用相同的 ITransaction 对象）会返回值，即使尚未提交事务。
+
+> [!NOTE]
+> 使用新事务调用 TryGetValueAsync 会返回对上次提交的值的引用。 请勿直接修改该引用，因为这会绕过保存和复制所做更改的机制。 建议将值设置为只读，这样，更改键值的唯一方法就是使用可靠字典 API。
+
+接下来，AddAsync 将键和值对象序列化为字节数组，并将这些字节数组附加到本地节点的日志文件。 最后，AddAsync 将字节数组发送给所有辅助副本，使其具有相同的键/值信息。 即使键/值信息已写入日志文件，在提交其关联的事务之前，这些信息不被视为字典的一部分。
 
 在上述代码中，调用 CommitAsync 会提交所有事务操作。 具体而言，它将提交信息附加到本地节点的日志文件，同时将提交记录发送给所有辅助副本。 回复副本的仲裁（多数）后，所有数据更改将被视为永久性，并释放通过 ITransaction 对象操作的任何键关联锁，使其他线程/事务可以操作相同的键及其值。
 

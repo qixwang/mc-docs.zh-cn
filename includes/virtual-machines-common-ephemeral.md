@@ -6,15 +6,17 @@ author: rockboyfor
 ms.service: virtual-machines
 ms.topic: include
 origin.date: 07/08/2019
-ms.date: 05/18/2020
+ms.date: 08/03/2020
+ms.testscope: no
+ms.testdate: 05/18/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: ab8c5c1158f99feec62b9023dea8f7f4b13d2497
-ms.sourcegitcommit: 8d56bc6baeb42d675695ecef1909d76f5c4a6ae3
+ms.openlocfilehash: f6e5005b9e621d04c0e4bb33cd7404693730f0b6
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83406197"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87427544"
 ---
 <!--Verify successfully-->
 
@@ -51,6 +53,8 @@ ms.locfileid: "83406197"
 部署 VM 和实例的映像时，其大小上限取决于 VM 缓存的大小。 例如，市场中的标准 Windows Server 映像大约为 127 GiB，这意味着所需 VM 大小的缓存大于 127 GiB。 在此示例中，[Standard_DS2_v2](../articles/virtual-machines/dv2-dsv2-series.md) 的缓存大小为 86 GiB，不够大。 Standard_DS3_v2 的缓存大小为 172 GiB，足够大。 在此示例中，Standard_DS3_v2 是 DSv2 系列中能够用于此映像的最小大小。 市场中的基本 Linux 映像以及 `[smallsize]` 所表示的 Windows Server 映像通常为大约 30 GiB，可以使用大多数可用的 VM 大小。
 
 临时磁盘还要求 VM 大小支持高级存储。 大小通常（但并非总是）在名称中包含 `s`，例如 DSv2 和 EsV3。 有关详细信息，请参阅 [Azure VM 大小](../articles/virtual-machines/linux/sizes.md)，其中详述了哪些大小支持高级存储。
+<!--Not Available on ## Preview - Ephemeral OS Disks can now be stored on temp disks-->
+<!--REASON: Not Available on Dav3, Dav4, Eav4 and Eav3 series-->
 
 ## <a name="powershell"></a>PowerShell
 
@@ -182,7 +186,7 @@ az vm create \
 
 ```
 POST https://management.chinacloudapi.cn/subscriptions/{sub-
-id}/resourceGroups/{rgName}/providers/Microsoft.Compute/VirtualMachines/{vmName}/reimage?a pi-version=2018-06-01" 
+id}/resourceGroups/{rgName}/providers/Microsoft.Compute/VirtualMachines/{vmName}/reimage?api-version=2018-06-01" 
 ```
 
 ## <a name="frequently-asked-questions"></a>常见问题
@@ -201,25 +205,42 @@ A:是的，可以将托管数据磁盘附加到使用临时 OS 磁盘的 VM。
 
 **问：临时 OS 磁盘是否支持所有 VM 大小？**
 
-A:否。支持除 B 系列、N 系列和 H 系列大小之外的所有高级存储 VM 大小（DS、ES、FS 和 M）。  
+答：否，支持大多数高级存储 VM 大小（DS、ES、FS、M 等）。 若要了解特定 VM 大小是否支持临时 OS 磁盘，可以执行以下操作：
 
-<!--Not Available on GS-->
+调用 `Get-AzComputeResourceSku` PowerShell cmdlet
+
+
+```powershell
+
+$vmSizes = Get-AzComputeResourceSku | where {$_.ResourceType -eq 'virtualMachines' -and $_.Locations.contains('chinaeast')}
+
+foreach($vmSize in $vmSizes)
+{
+   foreach($capability in $vmSize.capabilities)
+   {
+       if($capability.Name -eq 'EphemeralOSDiskSupported' -and $capability.Value -eq 'true')
+       {
+           $vmSize
+       }
+   }
+}
+```
 
 **问：是否可以对现有的 VM 和规模集应用临时 OS 磁盘？**
 
-A:否。只能在 VM 和规模集创建期间使用临时 OS 磁盘。 
+答：否。只能在 VM 和规模集创建期间使用临时 OS 磁盘。 
 
 **问：是否可以在规模集中混合使用临时 OS 磁盘和常规 OS 磁盘？**
 
-A:否。不能在同一规模集中混合使用临时 OS 磁盘实例和持久 OS 磁盘实例。 
+答：否。不能在同一规模集中混合使用临时 OS 磁盘实例和持久 OS 磁盘实例。 
 
 **问：是否可以通过 Powershell 或 CLI 创建临时 OS 磁盘？**
 
-A:是的，可以通过 REST、模板、PowerShell 或 CLI 创建使用临时 OS 磁盘的 VM。
+答：是的，可以通过 REST、模板、PowerShell 或 CLI 创建使用临时 OS 磁盘的 VM。
 
 **问：临时 OS 磁盘不支持哪些功能？**
 
-A:临时磁盘不支持：
+答：临时磁盘不支持：
 - 捕获 VM 映像
 - 磁盘快照 
 - Azure 磁盘加密 

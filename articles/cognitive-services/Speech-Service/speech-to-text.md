@@ -11,12 +11,12 @@ ms.topic: conceptual
 origin.date: 03/12/2019
 ms.date: 06/19/2020
 ms.author: v-tawe
-ms.openlocfilehash: 8ac2f1d70c4805597999032e87c3343e59fe7aae
-ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
+ms.openlocfilehash: 6b0214cfa66f4e285ff99ef5082602398c59151b
+ms.sourcegitcommit: 3821704fee67315badba49cf628af2aa68d98f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85613385"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87516112"
 ---
 # <a name="what-is-speech-to-text"></a>什么是语音转文本？
 
@@ -26,7 +26,7 @@ ms.locfileid: "85613385"
 
 语音转文本服务默认使用通用语言模型。 此模型已使用 Microsoft 自有的数据训练，部署在云中。 它非常适合用于对话和听写方案。 使用语音转文本在独特的环境中进行识别和听录时，可以创建并训练自定义的声学、语言和发音模型。 自定义有助于解决环境干扰或特定于行业的词汇的问题。
 
-<!-- With additional reference text as input, speech-to-text service also enables [pronunciation assessment](rest-speech-to-text.md#pronunciation-assessment-parameters) capability to evaluate speech pronunciation and gives speakers feedback on the accuracy and fluency of spoken audio. With pronunciation assessment, language learners can practice, get instant feedback, and improve their pronunciation so that they can speak and present with confidence. Educators can use the capability to evaluate pronunciation of multiple speakers in real-time. The feature currently supports US English, and correlates highly with speech assessments conducted by experts. -->
+通过使用其他参考文本作为输入，语音转文本服务还支持[发音评估](rest-speech-to-text.md#pronunciation-assessment-parameters)功能（用于评估语音发音），并向说话人提供有关语音准确性和流畅度的反馈。 通过发音评估，语言学习者可以练习、获得即时反馈并改进其发音，因此能够自信地讲话和演示。 教师可以使用此功能来实时评估多个说话人的发音。 此功能目前支持美国英语，并与专家进行的语音评估高度相关。
 
 <!-- 
 > [!NOTE]
@@ -44,20 +44,20 @@ ms.locfileid: "85613385"
 
 如果你偏向于使用语音转文本 REST 服务，请参阅 [REST API](rest-speech-to-text.md)。
 
-<!-- - [Quickstart: Pronunciation assessment with reference input](rest-speech-to-text.md#pronunciation-assessment-parameters) -->
+- [快速入门：通过参考输入进行发音评估](rest-speech-to-text.md#pronunciation-assessment-parameters)
 
 ## <a name="tutorials-and-sample-code"></a>教程和示例代码
 
-<!-- After you've had a chance to use the Speech service, try our tutorial that teaches you how to recognize intents from speech using the Speech SDK and LUIS. -->
+有机会使用语音服务后，请尝试学习有关如何使用语音 SDK 和 LUIS 从语音中识别意向的教程。
 
-<!-- - [Tutorial: Recognize intents from speech with the Speech SDK and LUIS, using C#](how-to-recognize-intents-from-speech-csharp.md) -->
+- [教程：使用 C# 通过语音 SDK 和 LUIS 从语音中识别意向](how-to-recognize-intents-from-speech-csharp.md)
 
 GitHub 上提供了语音 SDK 的示例代码。 这些示例涵盖了常见方案，例如，从文件或流中读取音频、连续和单次识别，以及使用自定义模型。
 
 - [语音转文本示例 (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
 - [批量听录示例 (REST)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch)
 
-<!-- - [Pronunciation assessment samples (REST)](rest-speech-to-text.md#pronunciation-assessment-parameters) -->
+- [发音评估示例 (REST)](rest-speech-to-text.md#pronunciation-assessment-parameters)
 
 ## <a name="customization"></a>自定义
 

@@ -6,22 +6,22 @@ author: WenJason
 manager: digimobile
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 origin.date: 02/04/2020
-ms.date: 05/11/2020
+ms.date: 08/03/2020
 ms.author: v-jay
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 242bff8c8d55b36ad402b56c23a78eedf9bff452
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.openlocfilehash: 9ca8b8ac75edac23d1a5263997e230007667b8f5
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198537"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426347"
 ---
 # <a name="analyze-your-workload-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中分析工作负荷
 
-在 Azure Synapse Analytics 中分析 Synapse SQL 工作负荷的技巧。
+在 Azure Synapse Analytics 中分析 Synapse SQL 工作负荷的技巧。 
 
 ## <a name="resource-classes"></a>资源类
 
@@ -154,4 +154,4 @@ FROM    sys.dm_pdw_wait_stats w
 
 ## <a name="next-steps"></a>后续步骤
 
-有关如何管理数据库用户和安全性的详细信息，请参阅[在 Synapse SQL 中保护数据库](sql-data-warehouse-overview-manage-security.md)。 有关如何通过更大型资源类来改进聚集列存储索引质量的详细信息，请参阅[重建索引以提升段质量](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)。
+有关如何管理数据库用户和安全性的详细信息，请参阅[在 Synapse SQL 中保护数据库](sql-data-warehouse-overview-manage-security.md)。 若要进一步了解如何通过更大型资源类来改进聚集列存储索引质量，请参阅[重建索引以提升段质量](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)。

@@ -1,22 +1,22 @@
 ---
-title: Azure Active Directory B2C 标识体验框架架构的整数声明转换示例 | Microsoft Docs
-description: Azure Active Directory B2C 标识体验框架架构的整数声明转换示例。
+title: 自定义策略的整数声明转换示例
+titleSuffix: Azure AD B2C
+description: Azure Active Directory B2C 的 Identity Experience Framework (IEF) 架构的整数声明转换示例。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-origin.date: 09/10/2018
-ms.date: 10/24/2019
+ms.date: 07/27/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 39f402a2068f09bde10c458ceeacc0f7dcfecf2b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 6f08607f24713f6c0b9674bf3d9752e40f56caf2
+ms.sourcegitcommit: dd2bc914f6fc2309f122b1c7109e258ceaa7c868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72847106"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87297700"
 ---
 # <a name="integer-claims-transformations"></a>整数声明转换
 
@@ -35,7 +35,7 @@ ms.locfileid: "72847106"
 
 在此示例中，值类型为 long 的 `numericUserId` 声明将转换为值类型为字符串的 `UserId` 声明。
 
-```XML
+```xml
 <ClaimsTransformation Id="CreateUserId" TransformationMethod="ConvertNumberToStringClaim">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="numericUserId" TransformationClaimType="inputClaim" />

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 05/18/2020
+ms.date: 07/27/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: e5620755983f7c7d90bc1405612bef486234eb59
-ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
+ms.openlocfilehash: 1550573820b43aa0968abf435a4eb86aed5d4db7
+ms.sourcegitcommit: dd2bc914f6fc2309f122b1c7109e258ceaa7c868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83749524"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87297718"
 ---
 # <a name="define-a-saml-identity-provider-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 SAML 标识提供者技术配置文件
 
@@ -72,7 +72,7 @@ https://your-tenant-name.b2clogin.cn/your-tenant-name/your-policy/samlp/metadata
 
 以下示例显示元数据的 Azure AD B2C 技术配置文件加密部分：
 
-```XML
+```xml
 <KeyDescriptor use="encryption">
   <KeyInfo xmlns="https://www.w3.org/2000/09/xmldsig#">
     <X509Data>
@@ -97,7 +97,7 @@ https://your-tenant-name.b2clogin.cn/your-tenant-name/your-policy/samlp/metadata
 
 SAML 断言： 
 
-```XML
+```xml
 <saml:Subject>
   <saml:NameID SPNameQualifier="http://your-idp.com/unique-identifier" Format="urn:oasis:names:tc:SAML:2.0:nameid-format:transient">david@contoso.com</saml:NameID>
     <SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer">
@@ -109,7 +109,7 @@ SAML 断言：
 
 输出声明：
 
-```XML
+```xml
 <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="http://your-idp.com/unique-identifier" />
 ```
 
@@ -120,7 +120,7 @@ SAML 断言：
 - issuerUserId 声明映射到 assertionSubjectName 声明。
 - **first_name** 声明已映射到 **givenName** 声明。
 - **last_name** 声明已映射到 **surname** 声明。
-- 没有名称映射的 **displayName** 声明。
+- displayName 声明已映射到 name 声明。
 - 没有名称映射的 **email** 声明。
 
 技术配置文件还会返回标识提供者不返回的声明：

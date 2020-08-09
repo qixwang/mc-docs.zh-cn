@@ -12,12 +12,12 @@ ms.date: 05/11/2020
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5d9a764c4e90897b31b41439862a96b18abbe82c
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.openlocfilehash: 9b1fa2d81fab143ccbf5d7f953940961f14cf36a
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198790"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426328"
 ---
 # <a name="design-tables-in-synapse-sql-pool"></a>在 Synapse SQL 池中设计表
 

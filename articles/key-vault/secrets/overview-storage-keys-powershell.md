@@ -8,13 +8,13 @@ author: msmbaldwin
 ms.author: v-tawe
 manager: rkarlin
 origin.date: 09/10/2019
-ms.date: 07/01/2020
-ms.openlocfilehash: 327c43d89193a777f92a3fe3508a80faea3a8263
-ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
+ms.date: 07/28/2020
+ms.openlocfilehash: da002a8a23a378c16a60eaca5e2f68bcb1f7d2ea
+ms.sourcegitcommit: 0e778acf5aa5eb63ab233e07e7aecce3a9a5e6d4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85796176"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87296509"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>使用 Key Vault 和 Azure PowerShell 管理存储帐户密钥
 
@@ -83,13 +83,14 @@ $resourceGroupName = <YourResourceGroupName>
 $storageAccountName = <YourStorageAccountName>
 $keyVaultName = <YourKeyVaultName>
 $keyVaultSpAppId = "cfa8b339-82a2-471a-a3c9-0fc0be7a4093"
-$storageAccountKey = "key1"
+$storageAccountKey = "key1" #(key1 or key2 are allowed)
 
 # Get your User Id
 $userId = (Get-AzContext).Account.Id
 
 # Get a reference to your Azure storage account
 $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -StorageAccountName $storageAccountName
+
 ```
 >[!Note]
 > 对于经典存储帐户，请使用“primary”和“secondary”作为 $storageAccountKey <br>
@@ -115,7 +116,7 @@ DisplayName        : Azure Key Vault
 SignInName         :
 RoleDefinitionName : storage account Key Operator Service Role
 RoleDefinitionId   : 81a9662b-bebf-436f-a333-f67b29880f12
-ObjectId           : 2330fcd0-aceb-49c4-a58f-27980b31efc5
+ObjectId           : 93c27d83-f79b-4cb2-8dd4-4aa716542e74
 ObjectType         : ServicePrincipal
 CanDelegate        : False
 ```
@@ -162,7 +163,7 @@ Tags                :
 
 ### <a name="enable-key-regeneration"></a>启用密钥重新生成
 
-如果希望 Key Vault 定期重新生成存储帐户密钥，可以使用 Azure PowerShell [Add-AzKeyVaultManagedStorageAccount](https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0) cmdlet 设置重新生成周期。 此示例将重新生成周期设置为 3 天。 3 天后，Key Vault 将重新生成“key2”，并将活动密钥从“key2”交换为“key1”。
+如果希望 Key Vault 定期重新生成存储帐户密钥，可以使用 Azure PowerShell [Add-AzKeyVaultManagedStorageAccount](https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0) cmdlet 设置重新生成周期。 此示例将重新生成周期设置为 3 天。 三天后，Key Vault 将重新生成“key2”，并将活动密钥从“key2”切换为“key1”（对于经典存储帐户，则替换为“primary”和“secondary”）。
 
 ```powershell
 $regenPeriod = [System.Timespan]::FromDays(3)
@@ -207,7 +208,7 @@ Tags                :
 $storageAccountName = <YourStorageAccountName>
 $keyVaultName = <YourKeyVaultName>
 
-$storageContext = New-AzStorageContext -StorageAccountName $storageAccountName -Protocol Https -StorageAccountKey Key1
+$storageContext = New-AzStorageContext -StorageAccountName $storageAccountName -Protocol Https -StorageAccountKey Key1 #(or "Primary" for Classic Storage Account)
 ```
 
 ### <a name="create-a-shared-access-signature-token"></a>创建共享访问签名令牌

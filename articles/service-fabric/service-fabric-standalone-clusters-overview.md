@@ -4,14 +4,16 @@ description: Service Fabric 群集会在 Windows Server 或 Linux 上运行，�
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 02/01/2019
-ms.date: 01/13/2020
+ms.date: 08/03/2020
+ms.testscope: no
+ms.testdate: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 196c6173d6446ed61e0cf8a79c851f30134f66ae
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 062c2e24bcb5690b019bec421188d3722f99d099
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75742161"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426283"
 ---
 # <a name="overview-of-service-fabric-standalone-clusters"></a>Service Fabric 独立群集概述
 
@@ -22,9 +24,16 @@ Service Fabric 群集是一组通过网络连接在一起的虚拟机或物理�
 用于在本地创建 Service Fabric 群集的过程类似于在具有一组 VM 的任何所选云上创建群集的过程。 预配 VM 的初始步骤由所使用的云提供程序或本地环境进行控制。 具有一组在它们之间启用了网络连接的 VM 之后，随后用于设置 Service Fabric 包、编辑群集设置以及运行群集创建和管理脚本的步骤相同。 这可以在选择面向新宿主环境时，确保操作和管理 Service Fabric 群集的知识和经验可以转移。
 
 ## <a name="cluster-security"></a>群集安全性
+
 Service Fabric 群集是你拥有的资源。  你应保护群集，防止未经授权的用户与其连接。 当在群集上运行生产工作负荷时，安全的群集环境尤为重要。
 
+> [!NOTE]
+> Windows 身份验证基于 Kerberos。 不支持使用 NTLM 作为身份验证类型。
+>
+> 请尽可能对 Service Fabric 群集使用 X.509 证书身份验证。
+
 ### <a name="node-to-node-security"></a>节点到节点安全性
+
 节点到节点安全性可保护群集中 VM 或计算机之间的通信。 这种安全性方案确保只有已获授权加入群集的计算机可以参与到托管群集中的应用程序和服务。 Service Fabric 使用 X.509 证书保护群集，提供应用程序安全功能。  需要使用群集证书来保护群集流量并提供群集和服务器身份验证。  自签名证书可用于测试群集，但在保护生产群集时应使用来自受信任证书颁发机构的证书。
 
 也可为 Windows 独立群集启用 Windows 安全性。 如果有 Windows Server 2012 R2 和 Windows Active Directory，建议结合使用 Windows 安全性和组托管服务帐户。 否则，可以结合使用 Windows 安全性和 Windows 帐户。
@@ -32,6 +41,7 @@ Service Fabric 群集是你拥有的资源。  你应保护群集，防止未经
 有关详细信息，请阅读[节点到节点安全性](service-fabric-cluster-security.md#node-to-node-security)
 
 ### <a name="client-to-node-security"></a>客户端到节点安全性
+
 客户端到节点安全性对客户端进行身份验证，并保护客户端与群集中单个节点之间的通信。 这种类型的安全性确保只有已获授权的用户可以访问群集与群集上部署的应用程序。 客户端通过其 X.509 证书安全凭据进行唯一标识。 可以使用任意数量的可选客户端证书向群集验证管理员或用户客户端的身份。
 
 除客户端证书外，还可以将 Azure Active Directory 配置为向群集验证客户端身份。
@@ -56,6 +66,7 @@ Service Fabric 还支持使用访问控制限制对不同用户组的某些群�
 有关详细信息，请阅读[升级独立群集](service-fabric-cluster-upgrade-standalone.md)。
 
 ## <a name="supported-operating-systems"></a>支持的操作系统
+
 可以在运行以下操作系统的 VM 或计算机上创建群集（目前尚不支持 Linux）：
 
 * Windows Server 2012 R2
@@ -63,8 +74,9 @@ Service Fabric 还支持使用访问控制限制对不同用户组的某些群�
 * Windows Server 2019
 
 ## <a name="next-steps"></a>后续步骤
+
 详细了解如何[保护](service-fabric-cluster-security.md)、[缩放](service-fabric-cluster-scaling-standalone.md)和[升级](service-fabric-cluster-upgrade-standalone.md)独立群集。
 
 了解 [Service Fabric 支持选项](service-fabric-support.md)。
 
-<!--Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

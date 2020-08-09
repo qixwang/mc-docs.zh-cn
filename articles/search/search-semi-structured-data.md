@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 origin.date: 06/23/2020
 ms.date: 07/20/2020
-ms.openlocfilehash: 006b3852c9a7fa4599c85cb13d1ad018f01fa162
-ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
+ms.openlocfilehash: 371b6147230a01efbca9f5b872eb82c5d8930655
+ms.sourcegitcommit: 0e778acf5aa5eb63ab233e07e7aecce3a9a5e6d4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86471808"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87296504"
 ---
 # <a name="tutorial-index-json-blobs-from-azure-storage-using-rest"></a>教程：使用 REST 为 Azure 存储中的 JSON Blob 编制索引
 
@@ -61,7 +61,7 @@ Azure 认知搜索可使用一个知晓如何读取半结构化数据的[索引�
 
    + 资源组  。 选择现有的资源组或创建新资源组，但对于所有服务请使用相同的组，以便可以统一管理这些服务。
 
-   + **存储帐户名称**。 如果你认为将来可能会用到相同类型的多个资源，请使用名称来区分类型和区域，例如 *blobstoragewestus*。 
+   + **存储帐户名称**。 如果你认为将来可能会用到相同类型的多个资源，请使用名称来区分类型和区域，例如 blobstoragechinaeast2。 
 
    + **位置**。 如果可能，请选择 Azure 认知搜索和认知服务所用的相同位置。 使用一个位置可以避免带宽费用。
 

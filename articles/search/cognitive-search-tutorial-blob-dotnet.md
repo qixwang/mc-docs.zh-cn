@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 origin.date: 05/05/2020
 ms.date: 07/17/2020
-ms.openlocfilehash: 5dd242ef37e96ed1c4980bbd80d59eb4a5b32ae3
-ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
+ms.openlocfilehash: 5c58be2585c54b99ffa2397df7123ced0b4a53ac
+ms.sourcegitcommit: 0e778acf5aa5eb63ab233e07e7aecce3a9a5e6d4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86471999"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87296471"
 ---
 # <a name="tutorial-ai-generated-searchable-content-from-azure-blobs-using-the-net-sdk"></a>教程：AI 使用 .NET SDK 从 Azure Blob 生成可搜索内容
 
@@ -66,7 +66,7 @@ ms.locfileid: "86471999"
 
    + 资源组。 选择现有的资源组或创建新资源组，但对于所有服务请使用相同的组，以便可以统一管理这些服务。
 
-   + **存储帐户名称**。 如果你认为将来可能会用到相同类型的多个资源，请使用名称来区分类型和区域，例如 *blobstoragewestus*。 
+   + **存储帐户名称**。 如果你认为将来可能会用到相同类型的多个资源，请使用名称来区分类型和区域，例如 blobstoragechinaeast2。 
 
    + **位置**。 如果可能，请选择 Azure 认知搜索和认知服务所用的相同位置。 使用一个位置可以避免带宽费用。
 
@@ -86,7 +86,7 @@ ms.locfileid: "86471999"
 
 1. 在退出 Azure 存储之前获取一个连接字符串，以便可以在 Azure 认知搜索中构建连接。 
 
-   1. 向后浏览到存储帐户的“概览”页（我们使用了“blobstoragewestus”作为示例）。 
+   1. 向后浏览到存储帐户的“概览”页（我们使用了 blobstoragechinaeast2 作为示例）。 
    
    1. 在左侧导航窗格中，选择“访问密钥”并复制其中一个连接字符串。 
 

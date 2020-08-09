@@ -3,15 +3,17 @@ title: 保护 Azure Service Fabric 群集
 description: 了解有关 Azure Service Fabric 群集的安全性方案，以及用于实现它们的各种技术。
 ms.topic: conceptual
 origin.date: 08/14/2018
-ms.date: 06/08/2020
+ms.date: 08/03/2020
+ms.testscope: no
+ms.testdate: 06/08/2020
 ms.author: v-yeche
 ms.custom: sfrev
-ms.openlocfilehash: adabc08a4fd087467afdcf70e7ee864987927911
-ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
+ms.openlocfilehash: e5f9783e2bac6a1b649884189fcb6af00cf35221
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84356143"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426400"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric 群集安全方案
 
@@ -35,13 +37,18 @@ Azure Service Fabric 群集是你拥有的资源。 保护群集以阻止未经�
 
 创建群集时，Service Fabric 将使用指定为节点类型配置一部分的 X.509 服务器证书。 本文末尾概述了这些证书是什么，以及如何获取或创建这些证书。
 
-证书安全性是在通过 Azure 门户、Azure 资源管理器模板或独立的 JSON 模板创建群集时配置的。 Service Fabric SDK 的默认行为是部署并安装距未来过期证书最远的证书；经典行为允许定义主要证书和次要证书，允许手动发起的变换，故不推荐将其用于新功能之上。 将要使用的距离未来到期日期最远的主证书应与为[客户端到节点安全性](#client-to-node-security)设置的管理员客户端和只读客户端证书不同。
+证书安全性是在通过 Azure 门户、Azure 资源管理器模板或独立的 JSON 模板创建群集时配置的。 Service Fabric SDK 的默认行为是部署并安装距未来过期日期最远的证书；经典行为允许定义主要证书和次要证书，因此允许手动发起的变换，故不推荐将其用于新功能之上。 将要使用的距离未来到期日期最远的主证书应与为[客户端到节点安全性](#client-to-node-security)设置的管理员客户端和只读客户端证书不同。
 
 若要了解如何在群集中为 Azure 设置证书安全性，请参阅[使用 Azure 资源管理器模板设置群集](service-fabric-cluster-creation-via-arm.md)。
 
 若要了解如何在群集中为独立 Windows Server 群集设置证书安全性，请参阅[通过使用 X.509 证书在 Windows 上保护独立群集](service-fabric-windows-cluster-x509-security.md)。
 
 ### <a name="node-to-node-windows-security"></a>节点到节点的 Windows 安全性
+
+> [!NOTE]
+> Windows 身份验证基于 Kerberos。 不支持使用 NTLM 作为身份验证类型。
+>
+> 请尽可能对 Service Fabric 群集使用 X.509 证书身份验证。
 
 若要了解如何为独立 Windows Server 群集设置 Windows 安全性，请参阅[通过使用 Windows 安全性在 Windows 上保护独立群集](service-fabric-windows-cluster-windows-security.md)。
 
@@ -51,7 +58,7 @@ Azure Service Fabric 群集是你拥有的资源。 保护群集以阻止未经�
 
 ![客户端到节点通信示意图][Client-to-Node]
 
-在 Azure 上运行的群集和在 Windows 上运行的独立群集可以使用[证书安全性](https://msdn.microsoft.com/library/ff649801.aspx)或 [Windows 安全性](https://msdn.microsoft.com/library/ff649396.aspx)。
+在 Azure 上运行的群集和在 Windows 上运行的独立群集都可以使用[证书安全性](https://msdn.microsoft.com/library/ff649801.aspx)或 [Windows 安全性](https://msdn.microsoft.com/library/ff649396.aspx)，尽管我们建议你尽可能使用 X.509 证书身份验证。
 
 ### <a name="client-to-node-certificate-security"></a>客户端到节点的证书安全性
 

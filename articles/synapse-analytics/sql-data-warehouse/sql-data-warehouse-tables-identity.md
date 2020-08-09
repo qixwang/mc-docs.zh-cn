@@ -6,22 +6,22 @@ author: WenJason
 manager: digimobile
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 origin.date: 04/30/2019
-ms.date: 05/11/2020
+ms.date: 08/03/2020
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: adc041cc995f95aea6b6458429337415a7b13604
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.openlocfilehash: fd4dfd300565606393970e7df8442c1eb91e2e50
+ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198773"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87426329"
 ---
 # <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>使用 IDENTITY 在 Synapse SQL 池中创建代理键
 
-有关如何使用 IDENTITY 属性在 Synapse SQL 池中创建基于表的代理键的建议和示例。
+本文介绍如何使用 IDENTITY 属性在 Synapse SQL 池中创建基于表的代理键的建议和示例。
 
 ## <a name="what-is-a-surrogate-key"></a>什么是代理键
 

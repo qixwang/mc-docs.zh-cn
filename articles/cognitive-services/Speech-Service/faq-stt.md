@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 12/04/2019
-ms.date: 04/20/2020
+ms.date: 07/28/2020
 ms.author: v-tawe
-ms.openlocfilehash: 78bcb76cb1f3d7de052b080e1b4872743d4e54f3
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.openlocfilehash: 5ea6bf305aa01e78b2ea531b6ddd0265bdcfe63e
+ms.sourcegitcommit: 5d167ad5411b018522a0fac9f5435a48f4ceb3a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588533"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87378192"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>语音转文本常见问题解答
 
@@ -72,7 +72,7 @@ ms.locfileid: "82588533"
 
 **问：是否会记录我的请求？**
 
-**答**：在创建部署时你可以选择关闭跟踪。 此时，不会记录任何音频或听录。 否则，通常会将请求以安全存储方式记录在 Azure 中。
+**答**：默认情况下不记录请求（既不进行音频记录，也不进行听录）。 如果需要，可以在[创建自定义终结点](how-to-custom-speech-deploy-model.md)时选择“从此终结点记录内容”选项以启用跟踪。 然后，请求会记录在 Azure 的安全存储中。
 
 **问：我的请求是否受到限制？**
 
@@ -119,6 +119,15 @@ ms.locfileid: "82588533"
   - 从显示的服务中，选取需要增加其并发性的语音服务；
   - 显示此服务的 `Properties`；
   - 复制完整的 `Resource ID`。
+  
+**问：提高并发限制会提高成本吗？**
+
+**答**：不会，成本取决于使用情况。 提高并发性不会提高成本。 有关成本的详细信息，请参阅我们的[定价页面](https://www.azure.cn/pricing/details/cognitive-services/)。
+
+<!--
+>[!NOTE]
+>[Containers](https://docs.azure.cn/cognitive-services/speech-service/speech-container-howto) do not require increases to concurrency limits, as containers are constrained only by the CPUs of the hardware they are hosted on.
+-->
 
 ## <a name="importing-data"></a>导入数据
 

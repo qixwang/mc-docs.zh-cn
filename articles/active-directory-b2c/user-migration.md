@@ -1,35 +1,35 @@
 ---
 title: 用户迁移方法
 titleSuffix: Azure AD B2C
-description: 使用批量导入或无缝迁移方法将另一标识提供者中的用户帐户迁移到 Azure AD B2C。
+description: 使用预迁移或无缝迁移方法将另一标识提供者中的用户帐户迁移到 Azure AD B2C。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 04/01/2020
+ms.topic: how-to
+ms.date: 07/28/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 3fc279814eac6f326c05fe331be394febfd8fda5
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 9e195111670c263b7be30d1ffd5bfbf66f694011
+ms.sourcegitcommit: dd2bc914f6fc2309f122b1c7109e258ceaa7c868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80581677"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87297721"
 ---
 # <a name="migrate-users-to-azure-ad-b2c"></a>将用户迁移到 Azure AD B2C
 
-从另一标识提供者迁移到 Azure Active Directory B2C (Azure AD B2C) 可能还需要迁移现有的用户帐户。 本文将介绍两种迁移方法：批量导入和无缝迁移。   无论使用哪种方法，都需要编写一个应用程序或脚本，以使用 [Microsoft Graph API](manage-user-accounts-graph-api.md) 在 Azure AD B2C 中创建用户帐户。
+从另一标识提供者迁移到 Azure Active Directory B2C (Azure AD B2C) 可能还需要迁移现有的用户帐户。 本文介绍两种迁移方法：预迁移和无缝迁移。  无论使用哪种方法，都需要编写一个应用程序或脚本，以使用 [Microsoft Graph API](manage-user-accounts-graph-api.md) 在 Azure AD B2C 中创建用户帐户。
 
-## <a name="bulk-import"></a>批量导入
+## <a name="pre-migration"></a>预迁移
 
-在批量导入流中，迁移应用程序将对每个用户帐户执行以下步骤：
+在预迁移流中，迁移应用程序将对每个用户帐户执行以下步骤：
 
 1. 读取旧标识提供者中的用户帐户，包括其当前凭据（用户名和密码）。
 1. 使用当前凭据在 Azure AD B2C 目录中创建相应的帐户。
 
-对于以下两种情况，请使用批量导入流：
+对于以下两种情况，请使用预迁移流：
 
 - 你有权访问用户的纯文本凭据（用户名和密码）。
 - 凭据已加密，但可将其解密。
@@ -43,18 +43,18 @@ ms.locfileid: "80581677"
 - 密码是以单向加密格式存储的（例如，使用哈希函数）。
 - 旧式标识提供者以你无法访问的方式存储了密码。 例如，标识提供者通过调用 Web 服务来验证凭据。
 
-无缝迁移流仍需批量迁移用户帐户，但随后会使用自定义策略来查询某个 [REST API](custom-policy-rest-api-intro.md)（由你创建），以便在每个用户首次登录时设置其密码。
+无缝迁移流仍需将用户帐户预迁移，但随后需使用自定义策略来查询某个 [REST API](custom-policy-rest-api-intro.md)（由你创建），以便在每个用户首次登录时设置其密码。
 
-因此，无缝迁移流包括两个阶段：批量导入和设置凭据。  
+因此，无缝迁移流包括两个阶段：预迁移和设置凭据。 
 
-### <a name="phase-1-bulk-import"></a>阶段 1：批量导入
+### <a name="phase-1-pre-migration"></a>阶段 1：预迁移
 
 1. 迁移应用程序读取旧标识提供者中的用户帐户。
 1. 迁移应用程序在 Azure AD B2C 目录中创建相应的用户帐户，但不设置密码。 
 
 ### <a name="phase-2-set-credentials"></a>阶段 2：设置凭据
 
-批量迁移帐户完成后，自定义策略和 REST API 随后会在用户登录时执行以下操作：
+将帐户预迁移完以后，自定义策略和 REST API 随后会在用户登录时执行以下操作：
 
 1. 读取对应于所输入的电子邮件地址的 Azure AD B2C 用户帐户。
 1. 通过评估某个布尔扩展属性来检查是否已将该帐户标记为待迁移。

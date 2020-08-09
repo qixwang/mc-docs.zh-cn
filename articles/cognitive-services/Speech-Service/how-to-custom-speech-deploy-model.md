@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 09/06/2019
-ms.date: 04/20/2020
+ms.date: 07/29/2020
 ms.author: v-tawe
-ms.openlocfilehash: 7de1b9d1a5d78a00a79b0e319735e3eeb0daac23
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 547800776e2b9fa14eec26871f81e81f3e720303
+ms.sourcegitcommit: 5d167ad5411b018522a0fac9f5435a48f4ceb3a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82127056"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87378163"
 ---
 # <a name="deploy-a-custom-model"></a>部署自定义模型
 
@@ -40,6 +40,8 @@ ms.locfileid: "82127056"
 ## <a name="view-logging-data"></a>查看日志记录数据
 
 可以在“终结点”>“详细信息”下下载日志记录数据。 
+> [!NOTE]
+>日志记录数据在 Microsoft 拥有的存储上可以使用 30 天，之后会被删除。 如果客户拥有的存储帐户已关联到认知服务订阅，则不会自动删除日志记录数据。
 
 ## <a name="next-steps"></a>后续步骤
 

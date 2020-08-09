@@ -9,15 +9,16 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 03/10/2020
-ms.date: 04/20/2020
+ms.date: 08/03/2020
 ms.author: v-tawe
-zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 32cd1a821ad7ec194d450f87f7fef61251d95255
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+zone_pivot_groups: programming-languages-set-two-with-js
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 5e4dd420d035a0743ac2e75e0b42914f81b17ca9
+ms.sourcegitcommit: 3821704fee67315badba49cf628af2aa68d98f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134988"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87516134"
 ---
 # <a name="choose-a-speech-recognition-mode"></a>选择语音识别模式
 
@@ -65,6 +66,17 @@ result = speech_recognizer.recognize_once()
 ```
 
 ::: zone-end
+
+::: zone pivot="programming-language-javascript"
+
+若要详细了解如何使用 `recognizeOnceAsync` 函数，请参阅[适用于 JavaScript 的语音 SDK 文档](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest#recognizeonceasync--e--speechrecognitionresult-----void---e--string-----void-)。
+
+```JavaScript
+recognizer.recognizeOnceAsync((result)=>{}, (error)=>{}));
+```
+
+::: zone-end
+
 ::: zone pivot="programming-language-more"
 
 有关其他语言，请参阅[语音 SDK 参考文档](speech-to-text.md#speech-sdk-reference-docs)。
@@ -153,6 +165,26 @@ speech_recognizer.stop_continuous_recognition()
 ```
 
 ::: zone-end
+
+::: zone pivot="programming-language-javascript"
+
+```JavaScript
+recognizer.recognized = (s, e) => {
+    if (e.result.reason == ResultReason.RecognizedSpeech) {
+        // Do something with the recognized text
+        // e.getResult().getText()
+    }
+});
+
+// Start continuous speech recognition
+recognizer.startContinuousRecognitionAsync(()=>{}, (error)=>{});
+
+// Stop continuous speech recognition
+recognizer.stopContinuousRecognitionAsync(()=>{}, (error)=>{});
+```
+
+::: zone-end
+
 ::: zone pivot="programming-language-more"
 
 有关其他语言，请参阅[语音 SDK 参考文档](speech-to-text.md#speech-sdk-reference-docs)。
@@ -203,6 +235,18 @@ SpeechConfig.enable_dictation()
 ```
 
 ::: zone-end
+
+::: zone pivot="programming-language-javascript"
+
+若要详细了解如何使用 `enableDictation` 函数，请参阅[适用于 JavaScript 的语音 SDK 文档](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#enabledictation--)。
+
+```JavaScript
+// Enable diction
+speechConfig.enableDictation();
+```
+
+::: zone-end
+
 ::: zone pivot="programming-language-more"
 
 有关其他语言，请参阅[语音 SDK 参考文档](speech-to-text.md#speech-sdk-reference-docs)。
@@ -212,4 +256,4 @@ SpeechConfig.enable_dictation()
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [了解 GitHub 上的其他语音 SDK 示例](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
+> [了解 GitHub 上的其他语音 SDK 示例](https://aka.ms/csspeech/samples)

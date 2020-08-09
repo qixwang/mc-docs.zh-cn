@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 06/28/2020
+ms.date: 07/27/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 140bbfc67cda97424d254ed5884bec287ed869f8
-ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
+ms.openlocfilehash: 57bffef5a7e7d1fcabcf700f00bb703fed6bf516
+ms.sourcegitcommit: dd2bc914f6fc2309f122b1c7109e258ceaa7c868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85516508"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87297702"
 ---
 # <a name="localization-string-ids"></a>本地化字符串 ID
 
@@ -56,7 +56,7 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 
 标识提供者的 ID 在用户旅程 ClaimsExchange 元素中配置。 若要本地化标识提供者的标题，请将 ElementType 设置为 `ClaimsProvider`，同时将 StringId 设置为 `ClaimsExchange` 的 ID。
 
-```XML
+```xml
 <OrchestrationStep Order="2" Type="ClaimsExchange">
   <Preconditions>
     <Precondition Type="ClaimsExist" ExecuteActionsIf="true">
@@ -210,7 +210,7 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 
 ### <a name="example"></a>示例
 
-```XML
+```xml
 <LocalizedResources Id="api.localaccountsignup.en">
   <LocalizedStrings>
     <LocalizedString ElementType="UxElement" StringId="verification_control_but_change_claims">Change</LocalizedString>
@@ -238,7 +238,7 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 
 ### <a name="example"></a>示例
 
-```XML
+```xml
 <LocalizedResources Id="api.localaccountsignup.en">
   <LocalizedStrings>
     <LocalizedString ElementType="ErrorMessage" StringId="DefaultUserMessageIfRequestFailed">Failed to establish connection to restful service end point.</LocalizedString>
@@ -264,7 +264,7 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 
 ### <a name="example"></a>示例
 
-```XML
+```xml
 <LocalizedResources Id="api.localaccountsignup.en">
   <LocalizedStrings>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfCouldntSendSms">Cannot Send SMS to the phone, please try another phone number.</LocalizedString>
@@ -273,6 +273,33 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfServerError">Cannot use MFA service, please try again later.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfThrottled">Your request has been throttled, please try again later.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfWrongCodeEntered">Wrong code entered, please try again.</LocalizedString>
+  </LocalizedStrings>
+</LocalizedResources>
+```
+
+## <a name="azure-ad-sspr"></a>Azure AD SSPR
+
+以下是 [Azure AD SSPR 技术配置文件](aad-sspr-technical-profile.md)错误消息的 ID：
+
+| ID | 默认值 |
+| -- | ------------- |
+|UserMessageIfChallengeExpired | 代码已过期。|
+|UserMessageIfInternalError | 电子邮件服务遇到内部错误，请稍后重试。|
+|UserMessageIfThrottled | 你发送的请求过多，请稍后重试。|
+|UserMessageIfVerificationFailedNoRetry | 已超过最大的验证尝试次数。|
+|UserMessageIfVerificationFailedRetryAllowed | 验证失败，请重试。|
+
+
+### <a name="example"></a>示例
+
+```XML
+<LocalizedResources Id="api.localaccountsignup.en">
+  <LocalizedStrings>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInternalError">We are having trouble verifying your email address. Please try again later.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfThrottled">There have been too many requests to verify this email address. Please wait a while, then try again.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfChallengeExpired">That code is expired. Please request a new code.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfVerificationFailedNoRetry">You've made too many incorrect attempts. Please try again later.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfVerificationFailedRetryAllowed">That code is incorrect. Please try again.</LocalizedString>
   </LocalizedStrings>
 </LocalizedResources>
 ```
@@ -291,7 +318,7 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 
 ### <a name="example"></a>示例
 
-```XML
+```xml
 <LocalizedResources Id="api.localaccountsignup.en">
   <LocalizedStrings>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionDoesNotExist">You have exceed the maximum time allowed.</LocalizedString>
@@ -315,7 +342,7 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 
 ### <a name="example"></a>示例
 
-```XML
+```xml
 <LocalizedResources Id="api.localaccountsignup.en">
   <LocalizedStrings>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsTransformationBooleanValueIsNotEqual">Your email address hasn't been verified.</LocalizedString>

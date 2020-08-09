@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 05/18/2020
+ms.topic: how-to
+ms.date: 07/27/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: fdb4eb12dee9cf7c60a22c9b0c5f4409def6ff79
-ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
+ms.openlocfilehash: 6303b7f703b9354ef2888fd0c69355acbc018d70
+ms.sourcegitcommit: dd2bc914f6fc2309f122b1c7109e258ceaa7c868
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83748076"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87297707"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>使用 Microsoft Graph 管理 Azure AD B2C 用户帐户
 
@@ -55,7 +55,7 @@ Microsoft Graph 允许通过在 Microsoft Graph API 中提供创建、读取、�
 - **本地**标识 - 将用户名和密码存储在 Azure AD B2C 目录本地。 我们通常将此类标识称为“本地帐户”。
 - **联合标识** - 也称为社交或企业帐户，该用户标识由 Microsoft、ADFS 或 Salesforce 等联合标识提供者进行管理。 
 
-具有客户帐户的用户可以使用多个标识进行登录。 例如，使用用户名、电子邮件、员工 ID、政府 ID 等。 一个帐户可以有多个密码相同的本地和社交标识。
+具有客户帐户的用户可以使用多个标识进行登录。 例如，用户名、电子邮件、员工 ID 等。 一个帐户可以有多个密码相同的本地和社交标识。
 
 在 Microsoft Graph API 中，本地标识和联合标识都存储在 [objectIdentity][graph-objectIdentity] 类型的用户 `identities` 特性中。 `identities` 集合表示用于登录到用户帐户的一组标识。 此集合使用户能够使用其关联的任何标识登录到用户帐户。
 
@@ -67,7 +67,7 @@ Microsoft Graph 允许通过在 Microsoft Graph API 中提供创建、读取、�
 
 以下 Identities 属性包含一个本地帐户标识、一个电子邮件地址和一个社交标识，它们均可用作登录名。 
 
- ```JSON
+ ```json
  "identities": [
      {
        "signInType": "userName",
@@ -90,7 +90,7 @@ Microsoft Graph 允许通过在 Microsoft Graph API 中提供创建、读取、�
 
 对于联合（社交）标识，**passwordProfile** 属性不是必需的。
 
-```JSON
+```json
 "passwordProfile" : {
     "password": "password-value",
     "forceChangePasswordNextSignIn": false
@@ -103,7 +103,7 @@ Azure AD B2C 密码策略（对于本地帐户）基于 Azure Active Directory [
 
 在用户迁移方案中，如果与 Azure AD B2C 强制实施的[强密码强度](../active-directory/authentication/concept-sspr-policy.md)相比，要迁移的帐户的密码强度更弱，则你可以禁用强密码要求。 若要更改默认密码策略，请将 `passwordPolicies` 属性设置为 `DisableStrongPassword`。 例如，可按如下所示修改创建用户请求：
 
-```JSON
+```json
 "passwordPolicies": "DisablePasswordExpiration, DisableStrongPassword"
 ```
 
@@ -113,7 +113,7 @@ Azure AD B2C 密码策略（对于本地帐户）基于 Azure Active Directory [
 
 Microsoft Graph API 支持使用扩展特性创建和更新用户。 图形 API 中的扩展属性使用约定 `extension_ApplicationObjectID_attributename` 来命名。 例如：
 
-```JSON
+```json
 "extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyNumber": "212342"
 ```
 
