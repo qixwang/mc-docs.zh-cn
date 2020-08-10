@@ -5,22 +5,22 @@ services: data-factory
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-origin.date: 04/13/2018
-ms.date: 06/15/2020
+origin.date: 07/09/2018
+ms.date: 08/10/2020
 author: WenJason
 ms.author: v-jay
 ms.reviewer: douglasl
 manager: digimobile
-ms.openlocfilehash: e75756bdbdc56fa783568909cbb593f533163740
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.openlocfilehash: b47b52d2a5dded3e63ff98ff2b5bc950b7b89caf
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723469"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914321"
 ---
 # <a name="provision-enterprise-edition-for-the-azure-ssis-integration-runtime"></a>预配 Azure-SSIS 集成运行时企业版
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 在 Azure-SSIS 集成运行时企业版中可以使用以下高级功能：
 -   变更数据捕获 (CDC) 组件

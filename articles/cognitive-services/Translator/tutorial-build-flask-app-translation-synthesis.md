@@ -3,21 +3,21 @@ title: 教程：生成用于翻译、合成与分析文本的 Flask 应用 - 翻
 titleSuffix: Azure Cognitive Services
 description: 在本教程中，你将生成一个基于 Flask 的 Web 应用以翻译文本、分析情绪，并将翻译的文本合成为语音。
 services: cognitive-services
-author: swmachan
+author: Johnnytechn
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
 origin.date: 05/26/2020
-ms.date: 06/22/2020
-ms.author: v-tawe
-ms.custom: tracking-python
-ms.openlocfilehash: b32ec810b1e86a70aaa4d799a5da7e3c7e6c0547
-ms.sourcegitcommit: 08619b8fabb47a328c3ca43bf314ddc389328880
+ms.date: 08/07/2020
+ms.author: v-johya
+ms.custom: tracking-python, devx-track-javascript
+ms.openlocfilehash: 33de92f0b464a64e9ffbed4157e1f0f958bac440
+ms.sourcegitcommit: caa18677adb51b5321ad32ae62afcf92ac00b40b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86164525"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88023331"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>教程：生成使用 Azure 认知服务的 Flask 应用
 
@@ -53,7 +53,7 @@ Flask 是用于创建 Web 应用程序的微框架。 也就是说，Flask 提�
 * [Python 3.5.2 或更高版本](https://www.python.org/downloads/)
 * [Git 工具](https://git-scm.com/downloads)
 * IDE 或文本编辑器，例如 [Visual Studio Code](https://code.visualstudio.com/) 或 [Atom](https://atom.io/)  
-* Chrome 或 [Firefox](https://www.mozilla.org/firefox)
+* [Chrome](https://www.google.com/chrome/browser/) 或 [Firefox](https://www.mozilla.org/firefox)
 * “翻译”订阅密钥（请注意，不需要选择区域。）
 * **中国北部**区域的**文本分析**订阅密钥。
 * **中国北部**区域的**语音服务**订阅密钥。
@@ -241,7 +241,7 @@ def about():
    flask run
    ```
 
-4. 打开浏览器并导航到提供的 URL。 应会看到单页应用。 按 **Ctrl + C** 终止该应用。
+4. 打开浏览器并导航到提供的 URL。 应会看到单页应用。 请按 **Ctrl + C** 终止该应用。
 
 ## <a name="translate-text"></a>翻译文本
 
@@ -264,7 +264,7 @@ def about():
    # Don't forget to replace with your Cog Services subscription key!
    # If you prefer to use environment variables, see Extra Credit for more info.
    subscription_key = 'YOUR_TRANSLATOR_TEXT_SUBSCRIPTION_KEY'
-   region = 'YOUR_REGION'
+   
    # Don't forget to replace with your Cog Services location!
    # Our Flask route will supply two arguments: text_input and language_output.
    # When the translate text button is pressed in our Flask app, the Ajax request
@@ -278,7 +278,7 @@ def about():
 
        headers = {
            'Ocp-Apim-Subscription-Key': subscription_key,
-           'Ocp-Apim-Subscription-Region': region,
+           'Ocp-Apim-Subscription-Region': 'location',
            'Content-type': 'application/json',
            'X-ClientTraceId': str(uuid.uuid4())
        }
@@ -496,7 +496,6 @@ flask run
 
    # Don't forget to replace with your Cog Services subscription key!
    subscription_key = 'YOUR_TEXT_ANALYTICS_SUBSCRIPTION_KEY'
-   region = 'YOUR_REGION'
 
    # Our Flask route will supply four arguments: input_text, input_language,
    # output_text, output_language.
@@ -511,7 +510,6 @@ flask run
 
        headers = {
            'Ocp-Apim-Subscription-Key': subscription_key,
-           'Ocp-Apim-Subscription-Region': region,
            'Content-type': 'application/json',
            'X-ClientTraceId': str(uuid.uuid4())
        }
@@ -685,9 +683,7 @@ flask run
    class TextToSpeech(object):
        def __init__(self, input_text, voice_font):
            subscription_key = 'YOUR_SPEECH_SERVICES_SUBSCRIPTION_KEY'
-           region = 'YOUR_REGION'
            self.subscription_key = subscription_key
-           self.region = region
            self.input_text = input_text
            self.voice_font = voice_font
            self.timestr = time.strftime('%Y%m%d-%H%M')
@@ -697,8 +693,7 @@ flask run
        def get_token(self):
            fetch_token_url = 'https://api.cognitive.azure.cn/sts/v1.0/issueToken'
            headers = {
-               'Ocp-Apim-Subscription-Key': self.subscription_key,
-               'Ocp-Apim-Subscription-Region': self.region
+               'Ocp-Apim-Subscription-Key': self.subscription_key
            }
            response = requests.post(fetch_token_url, headers=headers)
            self.access_token = str(response.text)
@@ -784,7 +779,7 @@ flask run
        <option value="(zh-cn, Kangkang, Apollo)">Chinese (Mainland) | Male | Kangkang, Apollo</option>
        <option value="(zh-HK, Tracy, Apollo)">Chinese (Hong Kong)| Female | Tracy, Apollo</option>
        <option value="(zh-HK, Danny, Apollo)">Chinese (Hong Kong) | Male | Danny, Apollo</option>
-       <option value="(zh-TW, Yating, Apollo)">Chinese (Taiwan)| Female | Yaiting, Apollo</option>
+       <option value="(zh-TW, Yating, Apollo)">Chinese (Taiwan)| Female | Yating, Apollo</option>
        <option value="(zh-TW, Zhiwei, Apollo)">Chinese (Taiwan) | Male | Zhiwei, Apollo</option>
        <option value="(hr-HR, Matej)">Croatian | Male | Matej</option>
        <option value="(en-US, AriaRUS)">English (US) | Female | AriaRUS</option>
@@ -804,7 +799,7 @@ flask run
        <option value="(it-IT, Cosimo, Apollo)">Italian | Male | Cosimo, Apollo</option>
        <option value="(ja-JP, Ichiro, Apollo)">Japanese | Male | Ichiro</option>
        <option value="(ja-JP, HarukaRUS)">Japanese | Female | HarukaRUS</option>
-       <option value="(ko-KR, HeamiRUS)">Korean | Female | Haemi</option>
+       <option value="(ko-KR, HeamiRUS)">Korean | Female | Heami</option>
        <option value="(pt-BR, HeloisaRUS)">Portuguese (Brazil) | Female | HeloisaRUS</option>
        <option value="(pt-BR, Daniel, Apollo)">Portuguese (Brazil) | Male | Daniel, Apollo</option>
        <option value="(pt-PT, HeliaRUS)">Portuguese (Portugal) | Female | HeliaRUS</option>

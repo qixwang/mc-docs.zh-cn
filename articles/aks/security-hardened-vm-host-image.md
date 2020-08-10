@@ -5,19 +5,21 @@ services: container-service
 author: rockboyfor
 ms.topic: article
 origin.date: 09/11/2019
-ms.date: 05/25/2020
+ms.date: 08/10/2020
+ms.testscope: no
+ms.testdate: 05/25/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 6fd7ec2d52926dcc78c7d9ba681eea9aeb5aeed4
-ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
+ms.openlocfilehash: b1c0304c031a2655983d1936da8602beb344ece3
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735130"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842620"
 ---
 # <a name="security-hardening-for-aks-agent-node-host-os"></a>AKS 代理节点主机 OS 的安全强化
 
-Azure Kubernetes 服务 (AKS) 是符合 SOC、ISO、PCI DSS 和 HIPAA 标准的安全服务。 本文介绍适用于 AKS 虚拟主机的安全强化。 有关 AKS 安全性的详细信息，请参阅 [Azure Kubernetes 服务 (AKS) 中应用程序和群集的安全性概念](/aks/concepts-security)。
+Azure Kubernetes 服务 (AKS) 是符合 SOC、ISO、PCI DSS 和 HIPAA 标准的安全服务。 本文介绍适用于 AKS 虚拟主机的安全强化。 有关 AKS 安全性的详细信息，请参阅 [Azure Kubernetes 服务 (AKS) 中应用程序和群集的安全性概念](./concepts-security.md)。
 
 > [!Note]
 > 本文档仅适用于 AKS 中的 Linux 代理。
@@ -33,7 +35,7 @@ AKS 群集部署在运行安全优化 OS 的虚拟主机上，该 OS 用于在 A
 
 * 默认情况下，AKS 提供安全优化主机 OS。 没有用于选择备用操作系统的选项。
 
-* Azure 会将每日修补程序（包括安全修补程序）应用到 AKS 虚拟主机。 这些修补程序中，部分需要重启，部分不需要。 你负责根据需要计划 AKS VM 主机重启。 有关如何自动进行 AKS 修补的指南，请参阅[修补 AKS 节点](/aks/node-updates-kured)。
+* Azure 会将每日修补程序（包括安全修补程序）应用到 AKS 虚拟主机。 这些修补程序中，部分需要重启，部分不需要。 你负责根据需要计划 AKS VM 主机重启。 有关如何自动进行 AKS 修补的指南，请参阅[修补 AKS 节点](./node-updates-kured.md)。
 
 ## <a name="what-is-configured"></a>配置内容
 
@@ -86,10 +88,10 @@ AKS 群集部署在运行安全优化 OS 的虚拟主机上，该 OS 用于在 A
 
 有关 AKS 安全性的详细信息，请参阅以下文章： 
 
-[Azure Kubernetes 服务 (AKS)](/aks/intro-kubernetes)
+[Azure Kubernetes 服务 (AKS)](./intro-kubernetes.md)
 
-[AKS 安全注意事项](/aks/concepts-security)
+[AKS 安全注意事项](./concepts-security.md)
 
-[AKS 最佳做法](/aks/best-practices)
+[AKS 最佳做法](./best-practices.md)
 
 <!-- Update_Description: update meta properties, wording update, update link -->

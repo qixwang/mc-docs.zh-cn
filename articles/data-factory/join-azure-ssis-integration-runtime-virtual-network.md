@@ -6,22 +6,22 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-origin.date: 02/01/2020
-ms.date: 06/29/2020
+origin.date: 07/09/2020
+ms.date: 08/10/2020
 author: WenJason
 ms.author: v-jay
 ms.reviewer: douglasl
 manager: digimobile
-ms.openlocfilehash: 4c5bb49c80b7f44b7a88391681b93d73b5d1e67f
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+ms.openlocfilehash: f6631a919b0b8ea00edaadd02a008e3b2407798b
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323365"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914306"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>将 Azure-SSIS 集成运行时加入虚拟网络
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 在 Azure 数据工厂中使用 SQL Server Integration Services (SSIS) 时，对于以下情况，应将 Azure SSIS 集成运行时 (IR) 加入 Azure 虚拟网络：
 
@@ -170,7 +170,6 @@ ms.locfileid: "85323365"
 | 出站 | TCP | VirtualNetwork | * | AzureCloud | 443 | 虚拟网络中 Azure-SSIS IR 的节点使用此端口来访问 Azure 服务，例如 Azure 存储和 Azure 事件中心。 |
 | 出站 | TCP | VirtualNetwork | * | Internet | 80 | （可选）虚拟网络中的 Azure-SSIS IR 节点使用此端口从 Internet 下载证书吊销列表。 如果阻止此流量，在启动 IR 时可能会出现性能下降，并且无法在证书吊销列表中检查证书的使用情况。 若要进一步将目标范围缩小为特定的 FQDN，请参阅**使用 Azure ExpressRoute 或 UDR** 部分|
 | 出站 | TCP | VirtualNetwork | * | Sql | 1433、11000-11999 | （可选）仅当虚拟网络中 Azure-SSIS IR 的节点访问服务器托管的 SSISDB 时，才需要此规则。 如果服务器连接策略设置为“代理”而不是“重定向”，则只需使用端口 1433。  |
-| 出站 | TCP | VirtualNetwork | * | VirtualNetwork | 1433、11000-11999 | （可选）仅当虚拟网络中 Azure-SSIS IR 的节点访问 Azure 数据库服务器托管的 SSISDB 时，才需要此规则。 如果 SQL 数据库服务器连接策略设置为“中介”而不是“重定向”，则只需使用端口 1433。  |
 | 出站 | TCP | VirtualNetwork | * | 存储 | 445 | （可选）仅当你要执行 Azure 文件存储中存储的 SSIS 包时，才需要此规则。 |
 ||||||||
 

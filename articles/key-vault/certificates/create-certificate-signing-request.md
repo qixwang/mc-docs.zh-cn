@@ -11,12 +11,12 @@ ms.topic: tutorial
 origin.date: 06/17/2020
 ms.date: 07/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: 154fcb553a8129b83c0915395c2ab4d372ea65f5
-ms.sourcegitcommit: 0e778acf5aa5eb63ab233e07e7aecce3a9a5e6d4
+ms.openlocfilehash: 3f804df21d4b7b776f07df97ee249fd24d7e8a08
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87296535"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917307"
 ---
 # <a name="creating-and-merging-csr-in-key-vault"></a>在 Key Vault 中创建和合并 CSR
 
@@ -49,7 +49,7 @@ Azure Key Vault 支持将你选择的任何证书颁发机构颁发的数字证�
 
 4. 在 Key Vault 中合并已签名的请求。证书颁发者对证书请求进行签名后，可以带回已签名的证书，并将其与在 Azure Key Vault 中创建的初始私钥/公钥对合并
 
-    ```azurepowershell-interactive
+    ```azurepowershell
     Import-AzKeyVaultCertificate -VaultName ContosoKV -Name ContosoManualCSRCertificate -FilePath C:\test\OutputCertificateFile.cer
     ```
 

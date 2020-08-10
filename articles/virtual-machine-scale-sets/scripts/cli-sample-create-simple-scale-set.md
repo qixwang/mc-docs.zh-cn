@@ -6,15 +6,15 @@ ms.author: v-junlch
 ms.topic: sample
 ms.service: virtual-machine-scale-sets
 ms.subservice: cli
-ms.date: 06/22/2020
+ms.date: 08/07/2020
 ms.reviewer: jushiman
-ms.custom: mimckitt
-ms.openlocfilehash: 7e6b603f1353a17ee706f55d3e901df0130ec361
-ms.sourcegitcommit: 43db4001be01262959400663abf8219e27e5cb8b
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: 63279b35bde0193c37998570244dd0ef3a64ee7c
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85241488"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914237"
 ---
 # <a name="create-a-virtual-machine-scale-set-with-the-azure-cli"></a>使用 Azure CLI 创建虚拟机规模集
 此脚本使用 Ubuntu 操作系统和相关网络资源（包括负载均衡器）创建 Azure 虚拟机规模集。 运行脚本后，可通过 SSH 访问 VM 实例。
@@ -32,14 +32,13 @@ az group create --name myResourceGroup --location chinanorth
 
 # Create a scale set
 # Network resources such as an Azure load balancer are automatically created
-az vmss create `
-  --resource-group myResourceGroup `
-  --name myScaleSet `
-  --image UbuntuLTS `
-  --upgrade-policy-mode automatic `
-  --admin-username azureuser `
-  --generate-ssh-keys `
-  --vm-sku Standard_DS1
+az vmss create \
+  --resource-group myResourceGroup \
+  --name myScaleSet \
+  --image UbuntuLTS \
+  --upgrade-policy-mode automatic \
+  --admin-username azureuser \
+  --generate-ssh-keys
 ```
 
 ## <a name="clean-up-deployment"></a>清理部署

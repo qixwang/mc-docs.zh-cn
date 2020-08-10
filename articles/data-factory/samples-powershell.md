@@ -10,13 +10,13 @@ manager: digimobile
 ms.reviewer: maghan
 ms.topic: conceptual
 origin.date: 01/16/2018
-ms.date: 07/27/2020
-ms.openlocfilehash: 9b5c6e6e9d33713e38fe4ce2074d1eb85ac293dd
-ms.sourcegitcommit: 0eaa82cf74477d26d06bdd8fb6e715e6ed1339c4
+ms.date: 08/10/2020
+ms.openlocfilehash: efcd7da1e8ff817ca0928794dde30ce717d60909
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86974323"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914260"
 ---
 # <a name="azure-powershell-samples-for-azure-data-factory"></a>适用于 Azure 数据工厂的 Azure PowerShell 示例
 
@@ -24,7 +24,7 @@ ms.locfileid: "86974323"
 
 下表包括了适用于 Azure 数据工厂的示例 Azure PowerShell 脚本的链接。
 
-| |  |
+| Script | 说明  |
 |---|---|
 |**复制数据**||
 |[将 blob 从 Azure Blob 存储中的一个文件夹复制到另一个文件夹](scripts/copy-azure-blob-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 此 PowerShell 脚本将 blob 从 Azure Blob 存储中的一个文件夹复制到同一 Blob 存储中的另一个文件夹。 |

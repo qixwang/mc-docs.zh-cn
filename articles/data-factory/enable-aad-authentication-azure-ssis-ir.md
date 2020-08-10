@@ -10,18 +10,18 @@ author: WenJason
 ms.author: v-jay
 manager: digimobile
 ms.custom: seo-lt-2019
-origin.date: 5/14/2019
-ms.date: 06/29/2020
-ms.openlocfilehash: eb180af5e211effeb80e72fe070d27ca07e41915
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+origin.date: 07/09/2019
+ms.date: 08/10/2020
+ms.openlocfilehash: 92bada6c9c2d96105fc9dd40806d9ac188700613
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85319367"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914334"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>为 Azure-SSIS 集成运行时启用 Azure Active Directory 身份验证
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 本文介绍如何使用 Azure 数据工厂 (ADF) 的托管标识启用 Azure Active Directory (Azure AD) 身份验证，并使用它代替常规身份验证方法（如 SQL 身份验证）执行以下操作：
 

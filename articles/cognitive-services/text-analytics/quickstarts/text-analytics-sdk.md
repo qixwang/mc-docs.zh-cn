@@ -3,20 +3,21 @@ title: 快速入门：文本分析客户端库 v3 | Microsoft Docs
 titleSuffix: Azure Cognitive Services
 description: 参考本快速入门，将应用程序连接到 Azure 认知服务的文本分析 API。
 services: cognitive-services
-author: aahill
+author: Johnnytechn
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 01/23/2020
-ms.author: aahi
+ms.date: 08/03/2020
+ms.author: v-johya
+ms.custom: tracking-python, devx-track-javascript
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: d03f0314931c6e937d4d2c3dd196d8f00efc80ca
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b1d95521992c6f41e75942658ebba9b8f35753bd
+ms.sourcegitcommit: caa18677adb51b5321ad32ae62afcf92ac00b40b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78155346"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88023414"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library"></a>快速入门：使用文本分析客户端库
 
@@ -32,38 +33,44 @@ ms.locfileid: "78155346"
 ::: zone pivot="programming-language-csharp"
 
 > [!IMPORTANT]
-> * 文本分析 API 的最新预览版本为 `3.0-preview`，这包括改进的[情绪分析](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)和[命名实体识别 (NER)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) 的公共预览版。 最新稳定版本为 `2.1`。
+> * 文本分析 API 的最新稳定版本为 `3.0`。
 >    * 确保只按所用版本的说明操作。
 > * 为了简单起见，本文中的代码使用了同步方法和不受保护的凭据存储。 对于生产方案，我们建议使用批处理的异步方法来提高性能和可伸缩性。 请参阅下面的参考文档。
 
-::: zone-end
-
-::: zone pivot="programming-language-python"
-
-> [!IMPORTANT]
-> * 文本分析 API 的最新预览版本为 `3.0-preview`，这包括改进的[情绪分析](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)和[命名实体识别 (NER)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) 的公共预览版。 最新稳定版本为 `2.1`。
->    * 确保只按所用版本的说明操作。
-> * 为了简单起见，本文中的代码使用了同步方法和不受保护的凭据存储。 对于生产方案，我们建议使用批处理的异步方法来提高性能和可伸缩性。 请参阅下面的参考文档。 
+[!INCLUDE [C# quickstart](../includes/quickstarts/csharp-sdk.md)]
 
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
 
 > [!IMPORTANT]
-> * 本快速入门适用于文本分析客户端库的 `3.0-preview` 版本，这包括改进的[情绪分析](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)和[命名实体识别 (NER)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) 的公共预览版。
->    * 确保只按所用版本的说明操作。
+> * 文本分析 API 的最新稳定版本为 `3.0`。
 > * 为了简单起见，本文中的代码使用了同步方法和不受保护的凭据存储。 对于生产方案，我们建议使用批处理的异步方法来提高性能和可伸缩性。 请参阅下面的参考文档。
 
+[!INCLUDE [Java quickstart](../includes/quickstarts/java-sdk.md)]
 
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript"
 
 > [!IMPORTANT]
-> * 文本分析 API 的最新预览版本为 `3.0-preview`，这包括改进的[情绪分析](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)和[命名实体识别 (NER)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) 的公共预览版。 最新稳定版本为 `2.1`。
+> * 文本分析 API 的最新稳定版本为 `3.0`。
 >    * 确保只按所用版本的说明操作。
 > * 为了简单起见，本文中的代码使用了同步方法和不受保护的凭据存储。 对于生产方案，我们建议使用批处理的异步方法来提高性能和可伸缩性。 请参阅下面的参考文档。
+> * 还可[在浏览器中](https://github.com/Azure/azure-sdk-for-js/blob/master/documentation/Bundling.md)运行此版本的文本分析客户端库。
 
+[!INCLUDE [NodeJS quickstart](../includes/quickstarts/nodejs-sdk.md)]
+
+::: zone-end
+
+::: zone pivot="programming-language-python"
+
+> [!IMPORTANT]
+> * 文本分析 API 的最新稳定版本为 `3.0`。
+>    * 确保只按所用版本的说明操作。
+> * 为了简单起见，本文中的代码使用了同步方法和不受保护的凭据存储。 对于生产方案，我们建议使用批处理的异步方法来提高性能和可伸缩性。 请参阅下面的参考文档。 
+
+[!INCLUDE [Python quickstart](../includes/quickstarts/python-sdk.md)]
 
 ::: zone-end
 
@@ -75,8 +82,8 @@ ms.locfileid: "78155346"
 
 | 语言 | 可用版本 | 
 |----------|------------------------|
-| Ruby     | [版本 2.1](ruby-sdk.md)          | 
-| Go       | [版本 2.1](go-sdk.md)          | 
+| Ruby     | [版本 2.1](ruby-sdk.md) | 
+| Go       | [版本 2.1](go-sdk.md) | 
 
 ::: zone-end
 
@@ -84,7 +91,7 @@ ms.locfileid: "78155346"
 
 如果想要清理并删除认知服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。
 
-* [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [门户](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>后续步骤
@@ -97,3 +104,4 @@ ms.locfileid: "78155346"
 * [实体识别](../how-tos/text-analytics-how-to-entity-linking.md)
 * [检测语言](../how-tos/text-analytics-how-to-keyword-extraction.md)
 * [语言识别](../how-tos/text-analytics-how-to-language-detection.md)
+

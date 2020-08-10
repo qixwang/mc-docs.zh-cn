@@ -6,15 +6,15 @@ ms.subservice: cosmosdb-table
 ms.devlang: cpp
 ms.topic: sample
 origin.date: 10/07/2019
-ms.date: 04/27/2020
+ms.date: 08/10/2020
 author: rockboyfor
 ms.author: v-yeche
-ms.openlocfilehash: 7cea165b968fb29f2e345c6db31f473578be06aa
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: caf1157a0539deb07acfdc256c83eac99868a34c
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134897"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917192"
 ---
 # <a name="how-to-use-azure-table-storage-and-azure-cosmos-db-table-api-with-c"></a>如何通过 C++ 使用 Azure 表存储或 Azure Cosmos DB 表 API
 
@@ -51,7 +51,7 @@ ms.locfileid: "82134897"
 若要安装适用于 C++ 的 Azure 存储客户端库，请使用以下方法：
 
 * **Linux：** 按照[适用于 C++ 的 Azure 存储客户端库自述文件：在 Linux 上开始使用](https://github.com/Azure/azure-storage-cpp#getting-started-on-linux)页中提供的说明操作。
-* **Windows:** 在 Windows 中，使用 [vcpkg](https://github.com/microsoft/vcpkg) 作为依赖项管理员。 按照[快速入门](https://github.com/microsoft/vcpkg#quick-start)初始化 vcpkg。 然后使用以下命令安装库：
+* **Windows：** 在 Windows 中，使用 [vcpkg](https://github.com/microsoft/vcpkg) 作为依赖项管理员。 按照[快速入门](https://github.com/microsoft/vcpkg#quick-start)初始化 vcpkg。 然后使用以下命令安装库：
 
     ```powershell
     .\vcpkg.exe install azure-storage-cpp
@@ -103,7 +103,7 @@ const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=ht
 const utility::string_t storage_connection_string(U("UseDevelopmentStorage=true;"));  
 ```
 
-若要启动 Azure 存储模拟器，请从 Windows 桌面选择“开始”按钮或 Windows 键  。 输入并运行“Azure 存储模拟器”  。 有关详细信息，请参阅[使用 Azure 存储模拟器进行开发和测试](../storage/common/storage-use-emulator.md)。
+若要启动 Azure 存储模拟器，请从 Windows 桌面选择“开始”按钮或 Windows 键  。 输入并运行“Azure 存储模拟器”。 有关详细信息，请参阅[使用 Azure 存储模拟器进行开发和测试](../storage/common/storage-use-emulator.md)。
 
 ### <a name="retrieve-your-connection-string"></a>检索连接字符串
 
@@ -143,7 +143,7 @@ table.create_if_not_exists();
 
 ### <a name="add-an-entity-to-a-table"></a>将实体添加到表
 
-若要将实体添加到表，请创建新的 `table_entity` 对象并将其传递给 `table_operation::insert_entity`。 以下代码使用客户的名字作为行键，并使用姓氏作为分区键。 实体的分区键和行键共同唯一地标识表中的实体。 相比于查询分区键不同的实体，分区键相同的实体的查询速度更快。 使用不同的分区键可提升并行操作可伸缩性。 有关详细信息，请参阅 [Azure 存储性能和可伸缩性核对清单](../storage/common/storage-performance-checklist.md)。
+若要将实体添加到表，请创建新的 `table_entity` 对象并将其传递给 `table_operation::insert_entity`。 以下代码使用客户的名字作为行键，并使用姓氏作为分区键。 实体的分区键和行键共同唯一地标识表中的实体。 查询分区键相同的实体的速度可能快于查询分区键不同的实体的速度。 使用不同的分区键可提升并行操作可伸缩性。 有关详细信息，请参阅 [Azure 存储性能和可伸缩性核对清单](../storage/common/storage-performance-checklist.md)。
 
 下面的代码将创建 `table_entity` 的新实例，其中包含一些可存储的客户数据。 接下来，该代码调用 `table_operation::insert_entity` 来创建 `table_operation` 对象，以便将实体插入表中，并将新的表实体与之关联。 最后，该代码会在 `cloud_table` 对象上调用 `execute` 方法。 新的 `table_operation` 向表服务发送请求，以此将新的客户实体插入 `people` 表中。  
 
@@ -178,7 +178,7 @@ azure::storage::table_result insert_result = table.execute(insert_operation);
 
 ### <a name="insert-a-batch-of-entities"></a>插入一批实体
 
-可通过一个写入操作将一批条目插入到表服务。 以下代码创建 `table_batch_operation` 对象，并向其中添加三个插入操作。 每个插入操作的添加方法如下：创建一个新的实体对象，设置它的值，然后在 `table_batch_operation` 对象上调用 `insert` 方法以将实体与新插入操作相关联。 然后，该代码会调用 `cloud_table.execute` 来运行操作。  
+可以通过一次写入操作将一批实体插入到表服务。 以下代码创建 `table_batch_operation` 对象，并向其中添加三个插入操作。 每个插入操作的添加方法如下：创建一个新的实体对象，设置它的值，然后在 `table_batch_operation` 对象上调用 `insert` 方法以将实体与新插入操作相关联。 然后，该代码会调用 `cloud_table.execute` 来运行操作。  
 
 ```cpp
 // Retrieve the storage account from the connection string.
@@ -230,12 +230,12 @@ std::vector<azure::storage::table_result> results = table.execute_batch(batch_op
 
 * 在单次批处理中，可以执行最多 100 个任意组合的 `insert`、`delete`、`merge`、`replace`、`insert-or-merge` 和 `insert-or-replace` 操作。  
 * 批处理操作也可以包含检索操作，但前提是检索操作是批处理中仅有的操作。  
-* 单次批处理操作中的所有条目都必须具有相同的分区键。  
+* 单次批处理操作中的所有实体都必须具有相同的分区键。  
 * 批处理操作的数据负载限制为 4MB。  
 
 ## <a name="query-and-modify-entities"></a>查询和修改实体
 
-### <a name="retrieve-all-entities-in-a-partition"></a>检索分区中的所有条目
+### <a name="retrieve-all-entities-in-a-partition"></a>检索分区中的所有实体
 
 若要查询表以获取某个分区中的所有实体，请使用 `table_query` 对象。 以下代码示例指定了一个筛选器，以筛选分区键为 `Smith` 的实体。 此示例会将查询结果中每个实体的字段输出到控制台。  
 
@@ -272,9 +272,9 @@ for (; it != end_of_results; ++it)
 }  
 ```
 
-此示例中的查询会返回与筛选条件匹配的所有实体。 如果有大型表并需要经常下载表条目，建议改为将数据存储在 Azure 存储 Blob 中。
+此示例中的查询会返回与筛选条件匹配的所有实体。 如果有大型表并需要经常下载表实体，我们建议改为将数据存储在 Azure 存储 Blob 中。
 
-### <a name="retrieve-a-range-of-entities-in-a-partition"></a>检索分区中的一部分条目
+### <a name="retrieve-a-range-of-entities-in-a-partition"></a>检索分区中的一部分实体
 
 如果不想查询分区中的所有实体，则可以指定范围。 合并分区键筛选器和行键筛选器。 以下代码示例使用两个筛选器来获取 `Smith` 分区中的、行键（名字）以字母 `E` 前面的字母开头的所有实体，并打印查询结果。  
 
@@ -341,9 +341,9 @@ std::wcout << U("PartitionKey: ") << entity.partition_key() << U(", RowKey: ") <
     << U(", Property2: ") << properties.at(U("Phone")).string_value() << std::endl;
 ```
 
-### <a name="replace-an-entity"></a>替换条目
+### <a name="replace-an-entity"></a>替换实体
 
-要替换条目，请从表服务中检索它，修改条目对象，然后将更改保存回表服务。 以下代码更改现有客户的电话号码和电子邮件地址。 此代码并不调用 `table_operation::insert_entity`，而是使用 `table_operation::replace_entity`。 这一方法会导致在服务器上完全替换该实体，除非服务器上的该实体自检索到它以后就发生更改。 如果已更改，则操作失败。 操作失败可防止应用程序覆盖另一个组件在检索与更新之间所做的更改。 正确处理此失败问题的方法是再次检索实体，进行更改（如果仍有效），然后再次执行 `table_operation::replace_entity` 操作。  
+要替换实体，请从表服务中检索它，修改实体对象，然后将更改保存回表服务。 以下代码更改现有客户的电话号码和电子邮件地址。 此代码并不调用 `table_operation::insert_entity`，而是使用 `table_operation::replace_entity`。 这一方法会导致在服务器上完全替换该实体，除非服务器上的该实体自检索到它以后就发生更改。 如果已更改，则操作失败。 操作失败可防止应用程序覆盖另一个组件在检索与更新之间所做的更改。 正确处理此失败问题的方法是再次检索实体，进行更改（如果仍有效），然后再次执行 `table_operation::replace_entity` 操作。  
 
 ```cpp
 // Retrieve the storage account from the connection string.
@@ -406,9 +406,9 @@ azure::storage::table_operation insert_or_replace_operation = azure::storage::ta
 azure::storage::table_result insert_or_replace_result = table.execute(insert_or_replace_operation);
 ```
 
-### <a name="query-a-subset-of-entity-properties"></a>查询条目属性的子集
+### <a name="query-a-subset-of-entity-properties"></a>查询一部分实体属性
 
-对表的查询可以只检索条目的几个属性。 以下代码中的查询使用 `table_query::set_select_columns` 方法，仅返回表中实体的电子邮件地址。  
+对表的查询可以只检索实体中的少数几个属性。 以下代码中的查询使用 `table_query::set_select_columns` 方法，仅返回表中实体的电子邮件地址。  
 
 ```cpp
 // Retrieve the storage account from the connection string.
@@ -452,7 +452,7 @@ for (; it != end_of_results; ++it)
 
 ## <a name="delete-content"></a>删除内容
 
-### <a name="delete-an-entity"></a>删除条目
+### <a name="delete-an-entity"></a>删除实体
 
 检索到实体后可以将其删除。 检索到实体后，对要删除的实体调用 `table_operation::delete_entity`。 然后调用 `cloud_table.execute` 方法。 以下代码检索并删除分区键为 `Smith`、行键为 `Jeff` 的实体。
 
@@ -479,7 +479,7 @@ azure::storage::table_result delete_result = table.execute(delete_operation);
 
 ### <a name="delete-a-table"></a>删除表
 
-最后，以下代码示例从存储帐户中删除表。 在删除表之后的一段时间内无法重新创建表。  
+最后，以下代码示例将从存储帐户中删除表。 在删除表之后的一段时间内无法重新创建表。  
 
 ```cpp
 // Retrieve the storage account from the connection string.
@@ -502,7 +502,7 @@ else
 }
 ```
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 对于 Visual Studio Community 版本，如果项目因包含文件 storage_account.h 和 table.h 而显示生成错误，请删除 /permissive- 编译器开关    ：
 
@@ -512,7 +512,7 @@ else
 
 ## <a name="next-steps"></a>后续步骤
 
-[Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)是 Azure 免费提供的独立应用，用于在 Windows、macOS 和 Linux 上以可视方式处理 Azure 存储数据。
+[Microsoft Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)是 Microsoft 免费提供的独立应用，适用于在 Windows、macOS 和 Linux 上以可视方式处理 Azure 存储数据。
 
 请打开以下链接了解有关 Azure 存储和 Azure Cosmos DB 中的表 API 的详细信息：
 

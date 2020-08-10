@@ -1,16 +1,16 @@
 ---
 title: 模式：策略定义中的 value 运算符
 description: 此 Azure Policy 模式通过示例介绍了如何在策略定义中使用 value 运算符。
-origin.date: 01/31/2020
-ms.date: 03/09/2020
+origin.date: 06/29/2020
+ms.date: 08/06/2020
 ms.author: v-tawe
 ms.topic: sample
-ms.openlocfilehash: df77fa6a035168bfcbcd7caab71e566fb2200c7b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4a688f89ba92518b30337fc722631584348db726
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78048908"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917218"
 ---
 # <a name="azure-policy-pattern-the-value-operator"></a>Azure Policy 模式：value 运算符
 

@@ -3,14 +3,14 @@ author: rockboyfor
 ms.service: virtual-machines
 ms.topic: include
 origin.date: 10/26/2018
-ms.date: 07/06/2020
+ms.date: 08/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 674d790993c989ae22d3cd2744023b26c053be5b
-ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
+ms.openlocfilehash: f6325d475ab1a4e4ff4a78dac69574522d5f98b7
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85946045"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87919349"
 ---
 ## <a name="migrate-iaas-resources-from-the-classic-deployment-model-to-azure-resource-manager"></a>将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器
 首先，必须了解在基础结构即服务 (IaaS) 资源上进行的数据平面操作和管理平面操作的差异。
@@ -20,7 +20,7 @@ ms.locfileid: "85946045"
 
 经典部署模型和资源管理器堆栈之间的数据平面是相同的。 区别在于，在迁移过程中，Azure 会将资源的表示方式从经典部署模型转换为资源管理器堆栈中的相应模型。 因此，需在资源管理器堆栈中使用新的工具、API 和 SDK 来管理资源。
 
-![显示管理/控制平面和数据平面之间差异的图](../articles/virtual-machines/media/virtual-machines-windows-migration-classic-resource-manager/data-control-plane.png)
+:::image type="content" source="../articles/virtual-machines/media/virtual-machines-windows-migration-classic-resource-manager/data-control-plane.png" alt-text="显示管理/控制平面和数据平面之间差异的图":::
 
 > [!NOTE]
 > 在某些迁移方案中，Azure 平台会停止、释放和重新启动虚拟机。 这会导致短暂的数据平面停机。
@@ -38,7 +38,7 @@ ms.locfileid: "85946045"
 
 迁移工作流如下所示：
 
-![显示迁移工作流的图](../articles/virtual-machines/windows/media/migration-classic-resource-manager/migration-workflow.png)
+:::image type="content" source="../articles/virtual-machines/windows/media/migration-classic-resource-manager/migration-workflow.png" alt-text="显示迁移工作流的图":::
 
 > [!NOTE]
 > 以下部分描述的操作全都是幂等的。 如果遇到功能不受支持或配置错误以外的问题，请重试准备、中止或提交操作。 Azure 会再次尝试此操作。
@@ -83,13 +83,13 @@ ms.locfileid: "85946045"
 
 下面的两个屏幕截图显示了准备操作成功后的结果。 第一个屏幕截图显示包含原始云服务的资源组。 第二个屏幕截图显示包含 Azure 资源管理器等效资源的新“-Migrated”资源组。
 
-![显示原始云服务的屏幕截图](../articles/virtual-machines/windows/media/migration-classic-resource-manager/portal-classic.png)
+:::image type="content" source="../articles/virtual-machines/windows/media/migration-classic-resource-manager/portal-classic.png" alt-text="显示原始云服务的屏幕截图":::
 
-![显示准备操作中的 Azure 资源管理器资源的屏幕截图](../articles/virtual-machines/windows/media/migration-classic-resource-manager/portal-arm.png)
+:::image type="content" source="../articles/virtual-machines/windows/media/migration-classic-resource-manager/portal-arm.png" alt-text="显示准备操作中的 Azure 资源管理器资源的屏幕截图":::
 
 下面是在完成准备阶段以后，在幕后查看资源的情形。 请注意，数据平面中的资源是相同的。 它同时在管理平面（经典部署模型）和控制平面（资源管理器）中呈现。
 
-![准备阶段图](../articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-prepare.png)
+:::image type="content" source="../articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-prepare.png" alt-text="准备阶段图":::
 
 > [!NOTE]
 > 不属于经典部署模型中的虚拟网络的 VM 在此迁移阶段停止和解除分配。
@@ -109,7 +109,7 @@ ms.locfileid: "85946045"
 ### <a name="abort"></a>中止
 这是可选步骤，用于还原对经典部署模型所做的更改，并停止迁移。 对于资源，此操作会删除资源管理器元数据（在准备步骤中创建）。 
 
-![中止步骤图](../articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-abort.png)
+:::image type="content" source="../articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-abort.png" alt-text="中止步骤图":::
 
 > [!NOTE]
 > 触发提交操作后，就无法执行此操作。     
@@ -123,13 +123,13 @@ ms.locfileid: "85946045"
 >
 >
 
-![提交步骤图](../articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-commit.png)
+:::image type="content" source="../articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-commit.png" alt-text="提交步骤图":::
 
 ## <a name="migration-flowchart"></a>迁移流程图
 
 下面是一个流程图，说明了如何进行迁移：
 
-![Screenshot that shows the migration steps](../articles/virtual-machines/windows/media/migration-classic-resource-manager/migration-flow.png)
+:::image type="content" source="../articles/virtual-machines/windows/media/migration-classic-resource-manager/migration-flow.png" alt-text="Screenshot that shows the migration steps":::
 
 ## <a name="translation-of-the-classic-deployment-model-to-resource-manager-resources"></a>从经典部署模型资源转换为资源管理器资源
 可以在下表中找到资源的经典部署模型与资源管理器表示形式。 目前不支持其他功能和资源。
@@ -149,11 +149,11 @@ ms.locfileid: "85946045"
 | 入站 NAT 规则 |入站 NAT 规则 |在迁移期间，VM 上定义的输入终结点将转换成负载均衡器下的入站网络地址转换规则。 |
 | VIP 地址 |具有 DNS 名称的公共 IP 地址 |虚拟 IP 地址会变成公共 IP 地址并与负载均衡器关联。 虚拟机 IP 仅在已向其分配了输入终结点的情况下才能迁移。 |
 | 虚拟网络 |虚拟网络 |虚拟网络将连同其所有属性一起迁移到 Resource Manager 部署模型。 将创建名为 `-migrated` 的新资源组。 |
-| 保留 IP |具有静态分配方法的公共 IP 地址 |与负载均衡器关联的保留 IP 会在迁移云服务或虚拟机的过程中一起迁移。 可以使用 [Move-AzureReservedIP](https://docs.microsoft.com/powershell/module/servicemanagement/azure/move-azurereservedip?view=azuresmps-4.0.0) 迁移未关联的保留 IP。  |
+| 保留 IP |具有静态分配方法的公共 IP 地址 |与负载均衡器关联的保留 IP 会在迁移云服务或虚拟机的过程中一起迁移。 可以使用 [Move-AzureReservedIP](https://docs.microsoft.com/powershell/module/servicemanagement/azure.service/move-azurereservedip?view=azuresmps-4.0.0) 迁移未关联的保留 IP。  |
 | 每个 VM 的公共 IP 地址 |具有动态分配方法的公共 IP 地址 |与 VM 关联的公共 IP 地址将转换为公共 IP 地址资源，分配方法将设置为静态。 |
-| NSG |NSG |在迁移到 Resource Manager 部署模型的过程中，将克隆与子网关联的网络安全组。 在迁移期间不会删除经典部署模型中的 NSG。 但是，当迁移正在进行时，会阻止 NSG 的管理平面操作。 可以使用 [Move-AzureNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/servicemanagement/azure/move-azurenetworksecuritygroup?view=azuresmps-4.0.0) 迁移未关联的 NSG。|
+| NSG |NSG |在迁移到 Resource Manager 部署模型的过程中，将克隆与子网关联的网络安全组。 在迁移期间不会删除经典部署模型中的 NSG。 但是，当迁移正在进行时，会阻止 NSG 的管理平面操作。 可以使用 [Move-AzureNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/servicemanagement/azure.service/move-azurenetworksecuritygroup?view=azuresmps-4.0.0) 迁移未关联的 NSG。|
 | DNS 服务器 |DNS 服务器 |与虚拟网络或 VM 关联的 DNS 服务器会在迁移相应资源的过程中连同所有属性一起迁移。 |
-| UDR |UDR |在迁移到 Resource Manager 部署模型的过程中，将克隆与子网关联的用户定义路由。 在迁移期间不会删除经典部署模型中的 UDR。 但是，当迁移正在进行时，会阻止 UDR 的管理平面操作。 可以使用 [Move-AzureRouteTable](https://docs.microsoft.com/powershell/module/servicemanagement/azure/Move-AzureRouteTable?view=azuresmps-4.0.0) 迁移未关联的 UDR。 |
+| UDR |UDR |在迁移到 Resource Manager 部署模型的过程中，将克隆与子网关联的用户定义路由。 在迁移期间不会删除经典部署模型中的 UDR。 但是，当迁移正在进行时，会阻止 UDR 的管理平面操作。 可以使用 [Move-AzureRouteTable](https://docs.microsoft.com/powershell/module/servicemanagement/azure.service/Move-AzureRouteTable?view=azuresmps-4.0.0) 迁移未关联的 UDR。 |
 | VM 网络配置中的 IP 转发属性 |NIC 中的 IP 转发属性 |VM 上的 IP 转发属性在迁移期间将转换为网络接口上的属性。 |
 | 具有多个 IP 的负载均衡器 |具有多个公共 IP 资源的负载均衡器 |与负载均衡器关联的每个公共 IP 都会转换为公共 IP 资源，并在迁移后与负载均衡器关联。 |
 | VM 上的内部 DNS 名称 |NIC 上的内部 DNS 名称 |在迁移期间，VM 的内部 DNS 后缀将迁移到 NIC 上名为“InternalDomainNameSuffix”的只读属性。 在迁移后，该后缀会保持不变，并且 VM 解决方案会继续像以前一样正常工作。 |

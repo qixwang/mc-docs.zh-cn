@@ -7,15 +7,15 @@ metadata:
   ms.service: container-service
   ms.topic: landing-page
   author: rockboyfor
-  origin.date: 03/25/2020
-  ms.date: 07/13/2020
+  origin.date: 07/21/2020
+  ms.date: 08/10/2020
   ms.author: v-yeche
-  ms.openlocfilehash: 285989c18e842c93fffb4ce2fbae1f9023fc9b27
-  ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
+  ms.openlocfilehash: f891ea089e3d826d9deb49e33f5702f080586152
+  ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/10/2020
-  ms.locfileid: "86218740"
+  ms.lasthandoff: 08/06/2020
+  ms.locfileid: "87842662"
 landingContent:
 - title: 关于 Azure Kubernetes 服务 (AKS)
   linkLists:

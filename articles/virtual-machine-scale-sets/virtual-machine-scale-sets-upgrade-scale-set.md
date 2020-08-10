@@ -1,19 +1,20 @@
 ---
 title: 修改 Azure 虚拟机规模集
 description: 了解如何使用 REST API、Azure PowerShell 和 Azure CLI 修改和更新 Azure 虚拟机规模集
-author: mimckitt
-tags: azure-resource-manager
-ms.assetid: e229664e-ee4e-4f12-9d2e-a4f456989e5d
-ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
-ms.date: 04/28/2020
+author: ju-shim
 ms.author: v-junlch
-ms.openlocfilehash: eef0d89bf8c4fa11228cd52af1e5f9f1ab6491ef
-ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
+ms.topic: how-to
+ms.service: virtual-machine-scale-sets
+ms.subservice: management
+ms.date: 08/06/2020
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: e96ee08963281224db1912e1db7dc52646fb9beb
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82267569"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914271"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>修改虚拟机规模集
 
@@ -405,9 +406,9 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 - 通过 Azure CLI 使用 [az vmss update](/cli/vmss)：
 
     ```azurecli
-    az vmss update `
-        --resource-group myResourceGroup `
-        --name myScaleSet `
+    az vmss update \
+        --resource-group myResourceGroup \
+        --name myScaleSet \
         --set virtualMachineProfile.storageProfile.imageReference.id=/subscriptions/{subscriptionID}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/myNewImage
     ```
 

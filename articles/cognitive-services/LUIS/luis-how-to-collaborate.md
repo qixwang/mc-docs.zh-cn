@@ -3,25 +3,25 @@ title: 与他人协作 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 应用所有者可以向创作资源添加参与者。 这些参与者可以修改模型，训练并发布应用。
 services: cognitive-services
-author: lingliw
-manager: digimobile
+author: Johnnytechn
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 11/19/2019
-ms.date: 12/05/2019
-ms.author: v-lingwu
-ms.openlocfilehash: fe799922e2f207613394e8a74360b06498ea4556
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 08/04/2020
+ms.author: v-johya
+ms.openlocfilehash: d881a4acf715276d1571ec20983e55fb82f30754
+ms.sourcegitcommit: caa18677adb51b5321ad32ae62afcf92ac00b40b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292138"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88023383"
 ---
 # <a name="add-contributors-to-your-app"></a>向应用添加参与者
 
-应用所有者可以向应用添加参与者。 这些协作者可以修改模型，训练并发布应用。 
+应用所有者可以向应用添加参与者。 这些协作者可以修改模型，训练并发布应用。
 
 [!INCLUDE [Manage collaborators and contributors based on migrated or not-migrated apps](./includes/manage-contributor-collaborator-migration.md)]
 
@@ -40,9 +40,9 @@ ms.locfileid: "79292138"
 
     ![将用户的电子邮件添加到 Azure AD 的参与者角色](./media/luis-how-to-collaborate/add-role-assignment-for-contributor.png)
 
-    找到用户的电子邮件以后，请选择该帐户，然后选择“保存”  。 
+    找到用户的电子邮件以后，请选择该帐户，然后选择“保存”  。
 
-    如果无法进行此角色分配，请查看“[Azure 角色分配](../../role-based-access-control/role-assignments-portal.md)”和“[Azure 访问控制故障排除](../../role-based-access-control/troubleshooting.md#problems-with-rbac-role-assignments)”。
+    如果无法进行此角色分配，请查看“[Azure 角色分配](../../role-based-access-control/role-assignments-portal.md)”和“[Azure 访问控制故障排除](../../role-based-access-control/troubleshooting.md#problems-with-azure-role-assignments)”。
 
 ## <a name="add-collaborator-to-luis-app"></a>向 LUIS 应用添加协作者
 
@@ -61,7 +61,7 @@ ms.locfileid: "79292138"
     ![添加协作者的电子邮件地址](./media/luis-how-to-collaborate/add-collaborator-pop-up.png)
 
 
-### <a name="users-with-multiple-emails"></a>有多个电子邮件的用户 
+### <a name="users-with-multiple-emails"></a>有多个电子邮件的用户
 
 如果将参与者/协作者添加到 LUIS 应用，则要指定具体的电子邮件地址。 虽然 Azure Active Directory (Azure AD) 允许单名用户交替使用多个电子邮件帐户，但 LUIS 要求用户使用在添加参与者/协作者时指定的电子邮件地址登录。
 
@@ -69,7 +69,7 @@ ms.locfileid: "79292138"
 
 ### <a name="azure-active-directory-resources"></a>Azure Active Directory 资源
 
-如果你在组织中使用了 [Azure Active Directory](/active-directory/) (Azure AD)，则在用户希望使用语言理解 (LUIS) 时，LUIS 需要有权访问用户的访问权限相关信息。 LUIS 需要的资源是最少的。 
+如果你在组织中使用了 [Azure Active Directory](/active-directory/) (Azure AD)，则在用户希望使用语言理解 (LUIS) 时，LUIS 需要有权访问用户的访问权限相关信息。 LUIS 需要的资源是最少的。
 
 尝试使用已获得管理员同意或不需要管理员同意的帐户进行登录时，你将看到详细说明，例如管理员同意：
 
@@ -79,24 +79,25 @@ ms.locfileid: "79292138"
 
 ### <a name="azure-active-directory-tenant-user"></a>Azure Active Directory 租户用户
 
-LUIS 使用标准的 Azure Active Directory (Azure AD) 许可流程。 
+LUIS 使用标准的 Azure Active Directory (Azure AD) 许可流程。
 
-租户管理员直接处理需要访问权限才能在 Azure AD 中使用 LUIS 的用户。 
+租户管理员直接处理需要访问权限才能在 Azure AD 中使用 LUIS 的用户。
 
-* 用户首先要登录 LUIS，此时看到需要管理员批准的弹出对话框。 继续操作之前，用户需联系租户管理员。 
-* 然后，租户管理员登录 LUIS，并看到一个“同意流”弹出对话框。 管理员需在此对话框中向用户授予权限。 管理员接受权限后，用户才能够继续使用 LUIS。 如果租户管理员不登录 LUIS，还可访问 LUIS 的[同意](https://account.activedirectory.windowsazure.com/r#/applications)部分，如以下屏幕截图中所示。 请注意，列表已经过筛选，仅显示包括名称 `LUIS` 的项。
+* 用户首先要登录 LUIS，此时看到需要管理员批准的弹出对话框。 继续操作之前，用户需联系租户管理员。
+* 然后，租户管理员登录 LUIS，并看到一个“同意流”弹出对话框。 管理员需在此对话框中向用户授予权限。 管理员接受权限后，用户才能够继续使用 LUIS。 如果租户管理员不登录 LUIS，还可访问 LUIS 的[同意](https://account.activedirectory.azure.cn/r#/applications)部分，如以下屏幕截图中所示。 请注意，列表已经过筛选，仅显示包括名称 `LUIS` 的项。
 
 ![应用网站授予的 Azure Active Directory 权限](./media/luis-how-to-collaborate/tenant-permissions.png)
 
 如果租户管理员只希望某些用户使用 LUIS，则有几种可能的解决方案：
 * 给予“管理员同意”（同意 Azure AD 的所有用户），但随后在“企业应用程序属性”下将“需要进行用户分配”设置为“是”，最后仅将所需用户分配/添加到应用程序。 使用此方法，管理员仍然向应用提供“管理员同意”，但是，可以控制可以访问应用的用户。
-* 另一种解决方法是使用 [Microsoft Graph 中的 Azure AD 标识和访问管理 API](https://docs.microsoft.com/graph/azuread-identity-access-management-concept-overview) 向每个特定用户提供许可。 
+* 另一种解决方法是使用 [Microsoft Graph 中的 Azure AD 标识和访问管理 API](https://docs.microsoft.com/graph/azuread-identity-access-management-concept-overview) 向每个特定用户提供许可。
 
-详细了解 Azure Active Directory 用户和同意： 
+详细了解 Azure Active Directory 用户和同意：
 * [将应用限制为](../../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md)供一组用户使用
 
 ## <a name="next-steps"></a>后续步骤
 
 * 了解[如何使用版本](luis-how-to-manage-versions.md)来控制应用生命周期。
-* 了解概念，包括[创作资源](luis-concept-keys.md#authoring-key)和该资源上的[参与者](luis-concept-keys.md#contributions-from-other-authors)。
+* 了解概念，包括[创作资源](luis-how-to-azure-subscription.md#authoring-key)和该资源上的[参与者](luis-how-to-azure-subscription.md#contributions-from-other-authors)。
 * 了解[如何创建](luis-how-to-azure-subscription.md)创作和运行时资源
+<!--Not avaiable in MC: luis-migration-authoring.md-->

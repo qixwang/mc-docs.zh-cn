@@ -2,18 +2,19 @@
 title: 教程 - 通过 Azure CLI 创建和使用规模集的磁盘
 description: 了解如何通过 Azure CLI 对虚拟机规模集创建和使用托管磁盘，包括如何添加、准备、列出和分离磁盘。
 author: ju-shim
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
-ms.topic: tutorial
-ms.date: 04/28/2020
 ms.author: v-junlch
-ms.custom: mvc
-ms.openlocfilehash: 952ddd781cadb31ef24c66142fc55c50405573a1
-ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
+ms.topic: tutorial
+ms.service: virtual-machine-scale-sets
+ms.subservice: disks
+ms.date: 08/06/2020
+ms.reviewer: mimckitt
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: 7fc42e61a75c09a3dc0713d6d7e32c887f14c460
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82267611"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914391"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>教程：通过 Azure CLI 对虚拟机规模集创建和使用磁盘
 虚拟机规模集使用磁盘来存储 VM 实例的操作系统、应用程序和数据。 创建和管理规模集时，请务必选择适用于所需工作负荷的磁盘大小和配置。 本教程介绍如何创建和管理 VM 磁盘。 本教程介绍如何执行下列操作：
@@ -40,10 +41,10 @@ ms.locfileid: "82267611"
 ### <a name="temporary-disk-sizes"></a>临时磁盘大小
 | 类型 | 常见大小 | 临时磁盘大小上限 (GiB) |
 |----|----|----|
-| [常规用途](../virtual-machines/linux/sizes-general.md) | A、B、D 系列 | 1600 |
-| [计算优化](../virtual-machines/linux/sizes-compute.md) | F 系列 | 576 |
-| [内存优化](../virtual-machines/linux/sizes-memory.md) | D、E 和 M 系列 | 6144 |
-| [GPU](../virtual-machines/linux/sizes-gpu.md) | N 系列 | 1440 |
+| [常规用途](../virtual-machines/sizes-general.md) | A、B、D 系列 | 1600 |
+| [计算优化](../virtual-machines/sizes-compute.md) | F 系列 | 576 |
+| [内存优化](../virtual-machines/sizes-memory.md) | D、E 和 M 系列 | 6144 |
+| [GPU](../virtual-machines/sizes-gpu.md) | N 系列 | 1440 |
 
 
 ## <a name="azure-data-disks"></a>Azure 数据磁盘
@@ -81,15 +82,14 @@ az group create --name myResourceGroup --location chinanorth
 请使用 [az vmss create](/cli/vmss) 命令创建虚拟机规模集。 以下示例创建名为“myScaleSet”  的规模集，并生成 SSH 密钥（如果不存在）。 两个磁盘都是 `--data-disk-sizes-gb` 参数创建的。 第一个磁盘的大小为 *64* GB，第二个磁盘的大小为 *128* GB：
 
 ```azurecli
-az vmss create `
-  --resource-group myResourceGroup `
-  --name myScaleSet `
-  --image UbuntuLTS `
-  --upgrade-policy automatic `
-  --admin-username azureuser `
-  --generate-ssh-keys `
-  --data-disk-sizes-gb 64 128 `
-  --vm-sku Standard_DS1
+az vmss create \
+  --resource-group myResourceGroup \
+  --name myScaleSet \
+  --image UbuntuLTS \
+  --upgrade-policy automatic \
+  --admin-username azureuser \
+  --generate-ssh-keys \
+  --data-disk-sizes-gb 64 128
 ```
 
 创建和配置所有的规模集资源和 VM 实例需要几分钟时间。
@@ -98,9 +98,9 @@ az vmss create `
 还可以将磁盘附加到现有的规模集。 使用在上一步创建的规模集通过 [az vmss disk attach](/cli/vmss/disk) 添加另一磁盘。 以下示例附加另一个 *128* GB 的磁盘：
 
 ```azurecli
-az vmss disk attach `
-  --resource-group myResourceGroup `
-  --name myScaleSet `
+az vmss disk attach \
+  --resource-group myResourceGroup \
+  --name myScaleSet \
   --size-gb 128
 ```
 
@@ -108,25 +108,25 @@ az vmss disk attach `
 ## <a name="prepare-the-data-disks"></a>准备数据磁盘
 已创建并附加到规模集 VM 实例的磁盘是原始磁盘。 将磁盘用于数据和应用程序之前，必须准备磁盘。 若要准备磁盘，需要创建分区、创建文件系统，并将其装载。
 
-若要跨规模集中的多个 VM 实例自动完成此过程，可以使用 Azure 自定义脚本扩展。 此扩展可以在每个 VM 实例上以本地方式执行脚本，以便完成各种任务，例如准备附加的数据磁盘。 有关详细信息，请参阅[自定义脚本扩展概述](../virtual-machines/linux/extensions-customscript.md)。
+若要跨规模集中的多个 VM 实例自动完成此过程，可以使用 Azure 自定义脚本扩展。 此扩展可以在每个 VM 实例上以本地方式执行脚本，以便完成各种任务，例如准备附加的数据磁盘。 有关详细信息，请参阅[自定义脚本扩展概述](../virtual-machines/extensions/custom-script-linux.md)。
 
 以下示例在每个 VM 实例上执行来自 GitHub 示例存储库的脚本，使用的是 [az vmss extension set](/cli/vmss/extension) 命令，该命令用于准备所有原始的附加数据磁盘：
 
 ```azurecli
-az vmss extension set `
-  --publisher Microsoft.Azure.Extensions `
-  --version 2.0 `
-  --name CustomScript `
-  --resource-group myResourceGroup `
-  --vmss-name myScaleSet `
+az vmss extension set \
+  --publisher Microsoft.Azure.Extensions \
+  --version 2.0 \
+  --name CustomScript \
+  --resource-group myResourceGroup \
+  --vmss-name myScaleSet \
   --settings '{"fileUris":["https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/prepare_vm_disks.sh"],"commandToExecute":"./prepare_vm_disks.sh"}'
 ```
 
 若要确认磁盘是否已正确地准备好，请通过 SSH 连接到某个 VM 实例。 使用 [az vmss list-instance-connection-info](/cli/vmss) 列出规模集的连接信息：
 
 ```azurecli
-az vmss list-instance-connection-info `
-  --resource-group myResourceGroup `
+az vmss list-instance-connection-info \
+  --resource-group myResourceGroup \
   --name myScaleSet
 ```
 
@@ -206,9 +206,9 @@ exit
 若要查看附加到规模集的磁盘的相关信息，请使用 [az vmss show](/cli/vmss) 命令并对 *virtualMachineProfile.storageProfile.dataDisks* 进行查询：
 
 ```azurecli
-az vmss show `
-  --resource-group myResourceGroup `
-  --name myScaleSet `
+az vmss show \
+  --resource-group myResourceGroup \
+  --name myScaleSet \
   --query virtualMachineProfile.storageProfile.dataDisks
 ```
 
@@ -260,15 +260,15 @@ az vmss show `
 不再需要某个给定的磁盘时，可以将其从规模集中分离。 该磁盘会从规模集的所有 VM 实例中删除。 若要从规模集中分离某个磁盘，请使用 [az vmss disk detach](/cli/vmss/disk) 并指定磁盘的 LUN。 LUN 显示在上一部分的 [az vmss show](/cli/vmss) 命令的输出中。 以下示例从规模集分离 LUN *2*：
 
 ```azurecli
-az vmss disk detach `
-  --resource-group myResourceGroup `
-  --name myScaleSet `
+az vmss disk detach \
+  --resource-group myResourceGroup \
+  --name myScaleSet \
   --lun 2
 ```
 
 
 ## <a name="clean-up-resources"></a>清理资源
-若要删除规模集和磁盘，请使用 [az group delete](/cli/group) 删除资源组及其所有资源。 `--no-wait` 参数会使光标返回提示符处，无需等待操作完成。 `--yes` 参数将确认是否希望删除资源，而不会有额外提示。
+若要删除规模集和磁盘，请使用 [az group delete](/cli/group) 删除资源组及其所有资源。 `--no-wait` 参数会使光标返回提示符处，不会等待操作完成。 `--yes` 参数将确认是否希望删除资源，不会显示询问是否删除的额外提示。
 
 ```azurecli
 az group delete --name myResourceGroup --no-wait --yes

@@ -4,15 +4,17 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 群集中安装和使
 author: rockboyfor
 ms.topic: article
 origin.date: 02/19/2020
-ms.date: 05/25/2020
+ms.date: 08/10/2020
+ms.testscope: no
+ms.testdate: 05/25/2020
 ms.author: v-yeche
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: f4e2ce5a1ff1b8500c6e8b8802456586a63536fa
-ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
+ms.openlocfilehash: 489e2a919691992dadfbb9ed6852fb287119c8a9
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735164"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842634"
 ---
 <!--CORRECT ON client-operating-system-->
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中安装和使用 Istio
@@ -85,8 +87,11 @@ kubectl create namespace istio-system --save-config
 
 ::: zone-end
 
-<!--MOONCAKE: ONLY LINUX NODE ON AZURE CHINA CLOUD-->
-<!--Not Available on [!INCLUDE [PowerShell check for CRDs](includes/servicemesh/istio/install-create-secrets-powershell.md)]-->
+::: zone pivot="client-operating-system-windows"
+
+[!INCLUDE [PowerShell check for CRDs](includes/servicemesh/istio/install-create-secrets-powershell.md)]
+
+::: zone-end
 
 ### <a name="install-istio-components"></a>安装 Istio 组件
 
@@ -95,13 +100,10 @@ kubectl create namespace istio-system --save-config
 用于 Istio 的 [Helm][helm] 安装方法会在以后弃用。 新的 Istio 安装方法利用 `istioctl` 客户端二进制文件、[Istio 配置文件][istio-configuration-profiles]，以及新的 [Istio 控制平面规范和 API][istio-control-plane]。 这种新方法是我们将用于安装 Istio 的方法。
 
 > [!NOTE]
-> Istio 目前必须计划在 Linux 节点上运行。
-
-<!--MOONCAKE: ONLY LINUX NODE ON AZURE CHINA CLOUD-->
-<!--Not Available on  If you have Windows Server nodes in your cluster, you must ensure that the Istio pods are only scheduled to run on Linux nodes. We'll use [node selectors][kubernetes-node-selectors] to make sure pods are scheduled to the correct nodes.-->
+> Istio 目前必须计划在 Linux 节点上运行。 如果群集中有 Windows Server 节点，则必须确保 Istio Pod 仅计划在 Linux 节点上运行。 我们将使用[节点选择器][kubernetes-node-selectors]来确保将 Pod 安排到正确的节点。
 
 > [!CAUTION]
-> [SDS（机密发现服务）][istio-feature-sds]和 [Istio CNI][istio-feature-cni] Istio 功能目前为 [Alpha][istio-feature-stages] 版，因此在启用它们之前应谨慎。
+> [SDS（机密发现服务）][istio-feature-sds]和 [Istio CNI][istio-feature-cni] Istio 功能目前为 [Alpha][istio-feature-stages] 版，因此在启用它们之前应谨慎。 
 >
 > 请注意，对于 AKS 中的所有 Kubernetes 1.13 以及更高版本，现在已启用[服务帐户令牌卷投影][kubernetes-feature-sa-projected-volume] Kubernetes 功能（SDS 所必需的）。
 
@@ -387,8 +389,11 @@ kubectl delete -f istio-components-aks -R
 
 ::: zone-end
 
-<!--MOONCAKE: ONLY LINUX NODE ON AZURE CHINA CLOUD-->
-<!--Not Available on [!INCLUDE [PowerShell - remove Istio CRDs and secrets](includes/servicemesh/istio/uninstall-powershell.md)]-->
+::: zone pivot="client-operating-system-windows"
+
+[!INCLUDE [PowerShell - remove Istio secrets](includes/servicemesh/istio/uninstall-powershell.md)]
+
+::: zone-end
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -435,7 +440,7 @@ kubectl delete -f istio-components-aks -R
 [kubernetes-feature-sa-projected-volume]: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#service-account-token-volume-projection
 [kubernetes-crd]: https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/#customresourcedefinitions
 [kubernetes-secrets]: https://kubernetes.io/docs/concepts/configuration/secret/
-[kubernetes-node-selectors]: /aks/concepts-clusters-workloads#node-selectors
+[kubernetes-node-selectors]: ./concepts-clusters-workloads.md#node-selectors
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
 [kubectl-port-forward]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#port-forward
@@ -446,7 +451,7 @@ kubectl delete -f istio-components-aks -R
 [kiali]: https://www.kiali.io/
 [envoy]: https://www.envoyproxy.io/
 
-[app-insights]: /azure-monitor/app/kubernetes
+[app-insights]: ../azure-monitor/app/kubernetes.md
 
 <!-- LINKS - internal -->
 

@@ -6,17 +6,17 @@ author: rockboyfor
 ms.service: virtual-machines
 ms.topic: include
 origin.date: 11/13/2019
-ms.date: 08/03/2020
-ms.testscope: no
-ms.testdate: ''
+ms.date: 08/10/2020
+ms.testscope: yes|no
+ms.testdate: 08/03/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 08d436b4d5585207a8520e1dce2a7ce055d1ee7c
-ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
+ms.openlocfilehash: aafffe680736f9b9a25a094b0b4458d524e87f8a
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87427558"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87919342"
 ---
 <!--Verified successfully-->
 本文包含适用于 Azure 虚拟机的安全建议。 请遵循这些建议来履行我们责任分担模型中所述的安全义务。 这些建议还有助于改善 Web 应用解决方案的整体安全性。 若要详细了解 Azure 采取哪些措施来履行服务提供商责任，请参阅[云计算的分担责任](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91)。
@@ -30,10 +30,12 @@ ms.locfileid: "87427558"
 | 建议 | 注释 | 安全中心 |
 |-|----|--|
 | 生成自定义 VM 映像时，请应用最新的更新。 | 在创建映像之前，为操作系统以及要包含在映像中的所有应用程序安装最新更新。  | - |
-| 使 VM 保持最新。 | 可以使用 Azure 自动化中的[更新管理](../articles/automation/automation-update-management.md)解决方案来管理 Azure 中 Windows 和 Linux 计算机的操作系统更新。 | [是](../articles/security-center/security-center-virtual-machine-protection.md) |
+| 使 VM 保持最新。 | 可以使用 Azure 自动化中的更新管理解决方案来管理 Azure 中 Windows 和 Linux 计算机的操作系统更新。 | [是](../articles/security-center/security-center-virtual-machine-protection.md) |
 | 备份 VM。 | [Azure 备份](../articles/backup/backup-overview.md)可帮助保护应用程序数据，其运行开销极低。 应用程序错误可能会损坏数据，人为错误可能会将 bug 引入应用程序。 Azure 备份可以保护运行 Windows 和 Linux 的 VM。 | - |
 | 使用多个 VM 来提高复原能力和可用性。 | 如果 VM 运行的应用程序必须高度可用，请使用多个 VM 或[可用性集](../articles/virtual-machines/windows/manage-availability.md)。 | - |
 | 采用业务连续性和灾难恢复 (BCDR) 策略。 | 使用 Azure Site Recovery 可以从支持业务连续性的不同选项中进行选择。 它支持不同的复制和故障转移方案。 有关详细信息，请参阅[关于 Site Recovery](../articles/site-recovery/site-recovery-overview.md)。 | - |
+
+<!--Not Available on [Update Management](../articles/automation/update-management/update-mgmt-overview.md)-->
 
 ## <a name="data-security"></a>数据安全性
 

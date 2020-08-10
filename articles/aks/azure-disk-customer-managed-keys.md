@@ -3,27 +3,22 @@ title: 使用客户管理的密钥加密 Azure Kubernetes Service (AKS) 中的 A
 description: 自带密钥 (BYOK) 来加密 AKS OS 和数据磁盘。
 services: container-service
 ms.topic: article
-origin.date: 07/13/2020
-ms.date: 07/13/2020
-ms.testscope: yes
+origin.date: 07/17/2020
+ms.date: 08/10/2020
+ms.testscope: no
 ms.testdate: 07/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: c233652a2adf4c481ffacbce20628891bf96a670
-ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
+ms.openlocfilehash: 1d695dd6c8a69c9af87bde1ee8d1c55aa8497849
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86218768"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842653"
 ---
 <!--Verified successfully-->
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>对 Azure Kubernetes Service (AKS) 中的 Azure 磁盘使用自带密钥 (BYOK)
 
 Azure 存储对静态存储帐户中的所有数据进行加密。 默认情况下，数据使用 Azure 管理的密钥进行加密。 为了更进一步控制加密密钥，可以提供[客户托管密钥][customer-managed-keys]，将其用于对 AKS 群集的 OS 和数据磁盘进行静态加密。
-
-<!--CORRECT ON Azure-managed keys-->
-
-> [!NOTE]
-> 支持 Azure 托管磁盘服务器端加密的 [Azure 区域][supported-regions]中提供 BYOK 基于 Linux 和 Windows 的 AKS 群集。
 
 ## <a name="before-you-begin"></a>准备阶段
 
@@ -173,9 +168,7 @@ kubectl apply -f byok-azure-disk.yaml
 
 ## <a name="limitations"></a>限制
 
-* BYOK 目前仅在特定 [Azure 区域][supported-regions]的 GA 和预览版中可用
-* Kubernetes 版本 1.17 及更高版本支持数据磁盘加密   
-* 仅适用于支持 BYOK 的区域
+* Kubernetes 版本 1.17 及更高版本支持数据磁盘加密
 * 使用客户托管密钥进行加密的功能当前仅适用于新的 AKS 群集，无法升级现有群集
 
 ## <a name="next-steps"></a>后续步骤
@@ -188,10 +181,10 @@ kubectl apply -f byok-azure-disk.yaml
 
 [az-extension-add]: https://docs.azure.cn/cli/extension?view=azure-cli-latest#az-extension-add
 [az-extension-update]: https://docs.azure.cn/cli/extension?view=azure-cli-latest#az-extension-update
-[best-practices-security]: /aks/operator-best-practices-cluster-security
-[byok-azure-portal]: /storage/common/storage-encryption-keys-portal
-[customer-managed-keys]: /virtual-machines/windows/disk-encryption#customer-managed-keys
-[key-vault-generate]: /key-vault/key-vault-manage-with-cli2
-[supported-regions]: /virtual-machines/windows/disk-encryption#supported-regions
+[best-practices-security]: ./operator-best-practices-cluster-security.md
+[byok-azure-portal]: ../storage/common/storage-encryption-keys-portal.md
+[customer-managed-keys]: ../virtual-machines/windows/disk-encryption.md#customer-managed-keys
+[key-vault-generate]: ../key-vault/general/manage-with-cli2.md
+[supported-regions]: ../virtual-machines/windows/disk-encryption.md#supported-regions
 
 <!-- Update_Description: update meta properties, wording update, update link -->

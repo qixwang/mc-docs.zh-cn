@@ -5,28 +5,28 @@ services: data-factory
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-origin.date: 08/13/2018
-ms.date: 06/29/2020
+origin.date: 07/09/2020
+ms.date: 08/10/2020
 author: WenJason
 ms.author: v-jay
 manager: digimobile
 ms.reviewer: douglasl
-ms.openlocfilehash: d9b369bf7494208e3b4c4c6b58a4b2d5fefeae07
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+ms.openlocfilehash: a8bc63206f1b7dfe5270082ed2fd7c989e2591b1
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85319330"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914326"
 ---
 # <a name="clean-up-ssisdb-logs-with-azure-elastic-database-jobs"></a>使用 Azure 弹性数据库作业清理 SSISDB 日志
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 本文介绍如何使用 Azure 弹性数据库作业来触发存储过程，以便清理 SQL Server Integration Services 目录数据库 `SSISDB` 的日志。
 
 弹性数据库作业是一项 Azure 服务，便于针对一个或一组数据库自动执行和运行作业。 可以使用 Azure 门户、Transact-SQL、PowerShell 或 REST API 来计划、运行和监视这些作业。 使用弹性数据库作业来触发适用于一次性或计划性日志清理的存储过程。 可以根据 SSISDB 资源使用情况来选择计划时间间隔，避免数据库负载过重。
 
-有关详细信息，请参阅[通过弹性数据库作业管理数据库组](../sql-database/elastic-jobs-overview.md)。
+有关详细信息，请参阅[通过弹性数据库作业管理数据库组](../azure-sql/database/elastic-jobs-overview.md)。
 
 以下部分介绍如何触发存储过程 `[internal].[cleanup_server_retention_window_exclusive]`，以便删除不在管理员设置的保留期限内的 SSISDB 日志。
 
@@ -34,7 +34,7 @@ ms.locfileid: "85319330"
 
 [!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
-以下示例 PowerShell 脚本创建一个新的弹性作业，用于触发适用于 SSISDB 日志清理的存储过程。 有关详细信息，请参阅[使用 PowerShell 创建弹性作业代理](../sql-database/elastic-jobs-powershell.md)。
+以下示例 PowerShell 脚本创建一个新的弹性作业，用于触发适用于 SSISDB 日志清理的存储过程。 有关详细信息，请参阅[使用 PowerShell 创建弹性作业代理](../azure-sql/database/elastic-jobs-powershell-create.md)。
 
 ### <a name="create-parameters"></a>创建参数
 
@@ -192,7 +192,7 @@ $Job | Set-AzureRmSqlElasticJob -IntervalType $IntervalType -IntervalCount $Inte
     SELECT * FROM jobs.target_groups WHERE target_group_name = 'SSISDBTargetGroup';
     SELECT * FROM jobs.target_group_members WHERE target_group_name = 'SSISDBTargetGroup';
     ```
-4. 为 SSISDB 数据库授予适当的权限。 SSISDB 目录必须有适当的权限，否则存储过程无法成功运行 SSISDB 日志清理操作。 如需详细指导，请参阅[管理登录名](../sql-database/sql-database-manage-logins.md)。
+4. 为 SSISDB 数据库授予适当的权限。 SSISDB 目录必须有适当的权限，否则存储过程无法成功运行 SSISDB 日志清理操作。 如需详细指导，请参阅[管理登录名](../azure-sql/database/logins-create-manage.md)。
 
     ```sql
     -- Connect to the master database in the target server including SSISDB 

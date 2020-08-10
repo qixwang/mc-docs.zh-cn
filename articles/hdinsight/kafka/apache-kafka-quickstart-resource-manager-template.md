@@ -14,26 +14,30 @@ ms.workload: big-data
 origin.date: 06/12/2019
 ms.date: 10/28/2019
 ms.author: v-yiso
-ms.openlocfilehash: 6cca8e226a477cc6a10d39be98255bbc31aa892d
-ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
+ms.openlocfilehash: ec202ecd63fe15063c20d3df6105bc60e28b70e3
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85516749"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917160"
 ---
-# <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-resource-manager-template"></a>快速入门：使用资源管理器模板在 Azure HDInsight 中创建 Apache Kafka 群集
+# <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-arm-template"></a>快速入门：使用 ARM 模板在 Azure HDInsight 中创建 Apache Kafka 群集
 
-在本快速入门中，我们使用 Azure 资源管理器模板在 Azure HDInsight 中创建一个 [Apache Kafka](./apache-kafka-introduction.md) 群集。 Kafka 是开源分布式流式处理平台。 通常用作消息代理，因为它可提供类似于发布-订阅消息队列的功能。
+本快速入门将使用 Azure 资源管理器模板（ARM 模板）在 Azure HDInsight 中创建 [Apache Kafka](./apache-kafka-introduction.md) 群集。 Kafka 是开源分布式流式处理平台。 通常用作消息代理，因为它可提供类似于发布-订阅消息队列的功能。
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
 仅可通过相同虚拟网络内的资源访问 Kafka API。 本快速入门使用 SSH 直接访问群集。 若要将其他服务、网络或虚拟机连接到 Kafka，则必须首先创建虚拟机，然后才能在网络中创建资源。 有关详细信息，请参阅[使用虚拟网络连接到 Apache Kafka](apache-kafka-connect-vpn-gateway.md) 文档。
 
+如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
+
+[![部署到 Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-kafka%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>先决条件
+
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
-## <a name="create-an-apache-kafka-cluster"></a>创建 Apache Kafka 群集
-
-### <a name="review-the-template"></a>查看模板
+## <a name="review-the-template"></a>查看模板
 
 本快速入门中使用的模板来自 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-kafka)。
 
@@ -190,6 +194,7 @@ ms.locfileid: "85516749"
 }
 ```
 
+
 该模板中定义了两个 Azure 资源：
 
 * [Microsoft.Storage/storageAccounts](https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts)：创建 Azure 存储帐户。
@@ -199,11 +204,11 @@ ms.locfileid: "85516749"
 
 1. 选择下面的“部署到 Azure”按钮以登录到 Azure，并打开资源管理器模板。
 
-    <a href="https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fhdinsight-kafka-java-get-started%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="./media/apache-kafka-quickstart-resource-manager-template/hdi-deploy-to-azure1.png" alt="Deploy to Azure"></a>
+   [![部署到 Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-kafka%2Fazuredeploy.json)
 
 1. 输入或选择下列值：
 
-    |属性 |说明 |
+    |properties |说明 |
     |---|---|
     |订阅|从下拉列表中选择用于此群集的 Azure 订阅。|
     |资源组|从下拉列表中选择现有资源组，或选择“新建”。|
@@ -220,15 +225,15 @@ ms.locfileid: "85516749"
 
 ## <a name="review-deployed-resources"></a>查看已部署的资源
 
-创建群集后，你将收到“部署成功”通知，其中包含“转到资源”链接。 “资源组”页将列出新的 HDInsight 群集以及与此群集关联的默认存储。 每个群集都有一个 [Azure 存储](../hdinsight-hadoop-use-blob-storage.md)帐户依赖项。 该帐户称为默认存储帐户。 HDInsight 群集及其默认存储帐户必须共存于同一个 Azure 区域中。 删除群集不会删除存储帐户。
+创建群集后，你会收到“部署成功”通知，通知中附有“转到资源”链接 。 “资源组”页会列出新的 HDInsight 群集以及与该群集关联的默认存储。 每个群集都有一个 [Azure 存储](../hdinsight-hadoop-use-blob-storage.md)帐户依赖项。 该帐户称为默认存储帐户。 HDInsight 群集及其默认存储帐户必须共存于同一个 Azure 区域中。 删除群集不会删除存储帐户。
 
 ## <a name="get-the-apache-zookeeper-and-broker-host-information"></a>获取 Apache Zookeeper 主机和代理主机信息
 
-使用 Kafka 时，必须了解 Apache Zookeeper 和代理主机 。 Kafka API 以及 Kafka 随附的许多实用工具都使用这些主机。
+使用 Kafka 时，必须了解 Apache Zookeeper 和代理主机 。 这些主机配合 Kafka API 和 Kafka 随附的许多实用工具一起使用。
 
 在本部分中，可以从群集上的 Ambari REST API 获取主机信息。
 
-1. 使用 [ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)连接到群集。 编辑以下命令（将 CLUSTERNAME 替换为群集的名称），然后输入该命令：
+1. 使用 [ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)连接到群集。 编辑以下命令，将 CLUSTERNAME 替换为群集的名称，然后输入该命令：
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.cn
@@ -343,7 +348,7 @@ Kafka 在主题中存储数据流。 可以使用 `kafka-topics.sh` 实用工具
 
 ## <a name="produce-and-consume-records"></a>生成和使用记录
 
-Kafka 将*记录*存储在主题中。 记录由*生成者*生成，由*使用者*使用。 生产者与使用者通过 Kafka 代理服务通信。 HDInsight 群集中的每个工作节点都是 Kafka 代理主机。
+Kafka 将记录存储在主题中。 记录由生成者生成，由使用者使用。 生产者与使用者通过 Kafka 代理服务通信。 HDInsight 群集中的每个工作节点都是 Kafka 代理主机。
 
 若要将记录存储到之前创建的测试主题，并通过使用者对其进行读取，请使用以下步骤：
 
@@ -363,11 +368,11 @@ Kafka 将*记录*存储在主题中。 记录由*生成者*生成，由*使用�
     /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server $KAFKABROKERS --topic test --from-beginning
     ```
    
-    此命令从主题中检索并显示记录。 使用 `--from-beginning` 告知使用者要从流的开头开始读取，以便检索所有记录。
+    此命令从主题中检索并显示记录。 使用 `--from-beginning` 告知使用者从流的开头开始，以检索所有记录。
 
     如果使用的是较旧版本的 Kafka，请将 `--bootstrap-server $KAFKABROKERS` 替换为 `--zookeeper $KAFKAZKHOSTS`。
 
-4. 使用 __Ctrl + C__ 停止使用者。
+4. 使用 __Ctrl + C__ 阻止使用者。
 
 还可以以编程方式创建生产者和使用者。 有关如何使用此 API 的示例，请参阅[将 Apache Kafka 生产者和使用者 API 与 HDInsight 配合使用](apache-kafka-producer-consumer-api.md)文档。
 

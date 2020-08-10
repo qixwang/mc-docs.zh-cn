@@ -10,18 +10,18 @@ manager: digimobile
 ms.reviewer: douglasl
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-origin.date: 08/01/2019
-ms.date: 06/15/2020
-ms.openlocfilehash: 384fa9ef3c99b6101c3bc6415beee7aa5400b399
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+origin.date: 07/09/2020
+ms.date: 08/10/2020
+ms.openlocfilehash: 581309ee7e9c386be06e57b7e25cdcee6fbeef79
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723438"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914322"
 ---
 # <a name="install-paid-or-licensed-custom-components-for-the-azure-ssis-integration-runtime"></a>为 Azure-SSIS 集成运行时安装付费或许可的自定义组件
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 本文介绍 ISV 如何为 Azure-SSIS 集成运行时的 Azure 中运行的 SQL Server Integration Services (SSIS) 包开发和安装付费或许可的自定义组件。
 

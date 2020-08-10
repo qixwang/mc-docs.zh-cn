@@ -2,15 +2,15 @@
 title: 教程：构建策略以强制实施符合性
 description: 本教程中将使用策略来强制执行标准、控制成本、维护安全性并施加企业范围的设计原则。
 ms.author: v-tawe
-origin.date: 03/24/2020
-ms.date: 05/29/2020
+origin.date: 06/15/2020
+ms.date: 08/06/2020
 ms.topic: tutorial
-ms.openlocfilehash: 58d36d057072b69579b666899537b998a7a11a69
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: 3bfd56e91e86d8e04e82e69700822240f6093c8b
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199713"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917328"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>教程：创建和管理策略以强制实施符合性
 
@@ -80,7 +80,7 @@ ms.locfileid: "84199713"
 
 ## <a name="implement-a-new-custom-policy"></a>实施新的自定义策略
 
-分配内置的策略定义后，可以使用 Azure Policy 执行其他操作。 接下来创建一个新的自定义策略，确保在环境中创建的 VM 不能处于 G 系列，以便节省成本。 这样，当组织中的用户每次尝试创建 G 系列的 VM 时，请求将被拒绝。
+分配内置的策略定义后，可以使用 Azure Policy 执行其他操作。 接下来创建一个新的自定义策略，确保在环境中创建的虚拟机不能处于 G 系列，以便节省成本。 这样，当组织中的用户每次尝试创建 G 系列的虚拟机时，请求将被拒绝。
 
 1. 选择“Azure Policy”页左侧“创作”下的“定义” 。
 
@@ -95,8 +95,8 @@ ms.locfileid: "84199713"
      > [!NOTE]
      > 若要将此策略定义应用到多个订阅，则位置必须是策略要分配到的订阅所在的管理组。 对于计划定义，也需要确保这一点。
 
-   - 策略定义的名称 - _*需要 VM SKU 小于 G 系列
-   - 想通过策略定义实现的操作的说明 - 此策略定义强制此范围中创建的所有 VM 具有的 SKU 都小于 G 系列，以减少成本。
+   - 策略定义的名称 - 需要非 G 系列中的 VM SKU
+   - 想通过策略定义实现的操作的说明 - 此策略定义强制此范围中创建的所有虚拟机具有 G 系列以外的 SKU，以减少成本。
    - 从现有的选项（例如“计算”）中选择，或者为此策略定义创建新的类别。
    - 复制以下 JSON 代码并根据需要进行更新：
       - 策略参数。
@@ -130,17 +130,17 @@ ms.locfileid: "84199713"
 
    若要查看更多 Azure Policy 示例，请参阅 [Azure Policy 示例](../samples/index.md)。
 
-1. 选择“保存” 。
+1. 选择“保存”。
 
 ## <a name="create-a-policy-definition-with-rest-api"></a>使用 REST API 创建策略定义
 
-可通过适用于 Azure Policy 定义的 REST API 来创建策略。 REST API 可让你创建和删除策略定义，以及获取现有定义的信息。 若要创建策略定义，请使用以下示例：
+可通过适用于 Azure Policy 定义的 REST API 来创建策略。 借助 REST API，可创建和删除策略定义，以及获取现有定义的相关信息。 若要创建策略定义，请使用以下示例：
 
 ```http
-PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.authorization/policydefinitions/{policyDefinitionName}?api-version={api-version}
+PUT https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/providers/Microsoft.authorization/policydefinitions/{policyDefinitionName}?api-version={api-version}
 ```
 
-包括类似于以下示例的请求正文：
+包括类似于下方示例的请求正文：
 
 ```json
 {
@@ -176,7 +176,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Micros
 
 在继续完成 PowerShell 示例之前，请确保已安装最新版本的 Azure PowerShell Az 模块。
 
-可以使用 `New-AzPolicyDefinition` cmdlet 创建策略定义。
+可使用 `New-AzPolicyDefinition` cmdlet 创建策略定义。
 
 要在文件中创建策略定义，请将路径传递给该文件。 对于外部文件，请使用以下示例：
 
@@ -221,7 +221,7 @@ $definition = New-AzPolicyDefinition -Name 'denyCoolTiering' -Description 'Deny 
 }'
 ```
 
-输出存储在 `$definition` 对象中，会在策略分配过程中使用该对象。 以下示例创建包含参数的策略定义：
+输出存储在 `$definition` 对象中，这会在策略分配过程中使用。 以下示例创建包含参数的策略定义：
 
 ```powershell
 $policy = '{
@@ -364,7 +364,7 @@ az policy definition list
    - 监视 Azure 安全中心 Endpoint Protection 的缺失情况
    - 应该强化面向 Internet 的虚拟机的网络安全组规则
    - 应为虚拟机启用 Azure 备份
-   - 应在虚拟机上应用磁盘加密
+   - 应在虚拟机上启用磁盘加密
 
    从列表中选择策略定义后，会将其添加到“类别”下面。
 
@@ -379,13 +379,13 @@ az policy definition list
 
    将“允许的位置”参数设为“中国东部 2”，并将其他参数保留为默认值“AuditifNotExists”。
 
-1. 选择“保存” 。
+1. 选择“保存”。
 
 #### <a name="create-a-policy-initiative-definition-with-azure-cli"></a>使用 Azure CLI 创建策略计划定义
 
 可以将 Azure CLI 与 `az policy set-definition` 命令结合使用来创建策略计划定义。 若要使用现有的策略定义创建策略计划定义，请使用以下示例：
 
-```azurecli-interactive
+```azurecli
 az policy set-definition create -n readOnlyStorage --definitions '[
         {
             "policyDefinitionId": "/subscriptions/mySubId/providers/Microsoft.Authorization/policyDefinitions/storagePolicy",
@@ -418,7 +418,7 @@ az policy set-definition create -n readOnlyStorage --definitions '[
 ]
 ```
 
-```azurepowershell-interactive
+```azurepowershell
 New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"Virtual Machine"}' -PolicyDefinition C:\VMPolicySet.json
 ```
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 origin.date: 04/08/2019
 ms.date: 05/20/2019
 ms.author: v-yiso
-ms.openlocfilehash: d1def6f8dfe9c4d3fb5f5f74bf8a70a3d6a9675b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5bd7f84ffdd4002139ef03219836976db480d159
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "68878510"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917139"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 数据迁移最佳做法
 
@@ -34,9 +34,8 @@ ms.locfileid: "68878510"
 
 下表根据数据量和网络带宽列出了大致的数据传输持续时间。 如果数据迁移预计需要花费三周以上，请使用 Data Box。
 
-|**数据量**|**网络带宽**||||
-|---|---|---|---|---|
-|| **45 Mbps (T3)**|**100 Mbps**|**1 Gbps**|**10 Gbps**|
+|数据量 | 网络带宽<br>of<br>**45 Mbps (T3)**|网络带宽<br>of<br>**100 Mbps**|网络带宽<br>of<br>**1 Gbps**|网络带宽<br>of<br>**10 Gbps**|
+|---|:---:|:---:|:---:|:---:|
 |1 TB|2 天|1 天| 2 小时|14 分钟|
 |10 TB|22 天|10 天|1 天|2 小时|
 |35 TB|76 天|34 天|3 天|8 小时|

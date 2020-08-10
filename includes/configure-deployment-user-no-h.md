@@ -9,21 +9,21 @@ origin.date: 06/14/2019
 ms.date: 08/28/2019
 ms.author: v-biyu
 ms.custom: include file
-ms.openlocfilehash: 3fa1658732c765aa89f418b8e9193b1c2a236989
-ms.sourcegitcommit: b80d236ce3c706abc25bbaa41b0ccddd896e48fc
+ms.openlocfilehash: 51b2275f121ad7a2f97623e65927972e911a7499
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "82072647"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87919344"
 ---
-可以使用“deployment user”  将 FTP 和本地 Git 部署到 Azure Web 应用。 配置部署用户之后，可对所有 Azure 部署使用此用户。 帐户级部署用户名和密码不同于 Azure 订阅凭据。 
+可以使用“deployment user”将 FTP 和本地 Git 部署到 Azure Web 应用。 配置部署用户之后，可对所有 Azure 部署使用此用户。 帐户级部署用户名和密码不同于 Azure 订阅凭据。 
 
-若要配置部署用户，请在 Azure Cloud Shell 中运行 [az webapp deployment user set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) 命令。 将 \<username> 和 \<password> 替换为部署用户名和密码。 
+若要配置部署用户，请在 Azure Cloud Shell 中运行 [az webapp deployment user set](/cli/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) 命令。 将 \<username> 和 \<password> 替换为部署用户的用户名和密码。 
 
 - 用户名在 Azure 中必须唯一，并且为了本地Git推送，不能包含“@”符号。 
 - 密码必须至少为 8 个字符，且具有字母、数字和符号这三种元素中的两种。 
 
-```azurecli-interactive
+```azurecli
 az webapp deployment user set --user-name <username> --password <password>
 ```
 

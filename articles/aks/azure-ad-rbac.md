@@ -4,15 +4,17 @@ titleSuffix: Azure Kubernetes Service
 description: 了解如何使用 Azure Active Directory 组成员身份在 Azure Kubernetes 服务 (AKS) 中通过基于角色的访问控制 (RBAC) 来限制对群集资源的访问
 services: container-service
 ms.topic: article
-origin.date: 04/16/2019
-ms.date: 05/25/2020
+origin.date: 07/21/2020
+ms.date: 08/10/2020
+ms.testscope: no
+ms.testdate: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: 6b627c4f0e6732f5c3eb93d3f0fa0c372ad28ff0
-ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
+ms.openlocfilehash: 0ae40ecef58b9ed5e5c3f9ae06b7fc49ad27fd60
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735158"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842534"
 ---
 # <a name="control-access-to-cluster-resources-using-role-based-access-control-and-azure-active-directory-identities-in-azure-kubernetes-service"></a>在 Azure Kubernetes 服务中使用基于角色的访问控制和 Azure Active Directory 标识来控制对群集资源的访问
 
@@ -46,7 +48,7 @@ AKS_ID=$(az aks show \
     --query id -o tsv)
 ```
 
-使用 [az ad group create][az-ad-group-create] 命令在 Azure AD 中为应用程序开发人员创建第一个示例组。 以下示例创建一个名为“appdev”的组：
+使用 [az ad group create][az-ad-group-create] 命令在 Azure AD 中为应用程序开发人员创建第一个示例组。 以下示例创建名为 *appdev* 的组：
 
 ```azurecli
 APPDEV_ID=$(az ad group create --display-name appdev --mail-nickname appdev --query objectId -o tsv)
@@ -141,7 +143,7 @@ kubectl create namespace dev
 
 ```yaml
 kind: Role
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: dev-user-full-access
   namespace: dev
@@ -172,7 +174,7 @@ az ad group show --group appdev --query objectId -o tsv
 
 ```yaml
 kind: RoleBinding
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: dev-user-access
   namespace: dev
@@ -206,7 +208,7 @@ kubectl create namespace sre
 
 ```yaml
 kind: Role
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: sre-user-full-access
   namespace: sre
@@ -237,7 +239,7 @@ az ad group show --group opssre --query objectId -o tsv
 
 ```yaml
 kind: RoleBinding
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: sre-user-access
   namespace: sre
@@ -270,13 +272,13 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --ov
 在 dev 命名空间中使用 [kubectl run][kubectl-run] 命令计划一个基本的 NGINX Pod：
 
 ```console
-kubectl run --generator=run-pod/v1 nginx-dev --image=nginx --namespace dev
+kubectl run nginx-dev --image=nginx --namespace dev
 ```
 
 根据登录提示，输入在本文开头部分创建的 `appdev@contoso.com` 帐户的凭据。 成功登录后，帐户令牌将会缓存，供将来的 `kubectl` 命令使用。 如以下示例输出中所示，现已成功计划 NGINX：
 
 ```console
-$ kubectl run --generator=run-pod/v1 nginx-dev --image=nginx --namespace dev
+$ kubectl run nginx-dev --image=nginx --namespace dev
 
 To sign in, use a web browser to open the page https://aka.ms/deviceloginchina and enter the code B24ZD6FP8 to authenticate.
 
@@ -317,7 +319,7 @@ Error from server (Forbidden): pods is forbidden: User "aksdev@contoso.com" cann
 同样，尝试在不同的命名空间（例如 *sre* 命名空间）中计划 pod。 该用户的组成员身份与 Kubernetes 角色和角色绑定不相符，无法授予这些权限，如以下示例输出中所示：
 
 ```console
-$ kubectl run --generator=run-pod/v1 nginx-dev --image=nginx --namespace sre
+$ kubectl run nginx-dev --image=nginx --namespace sre
 
 Error from server (Forbidden): pods is forbidden: User "aksdev@contoso.com" cannot create resource "pods" in API group "" in the namespace "sre"
 ```
@@ -335,14 +337,14 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --ov
 尝试分配的 *sre* 命名空间中计划和查看 pod。 出现提示时，请使用在本文开头部分创建的 `opssre@contoso.com` 凭据登录：
 
 ```console
-kubectl run --generator=run-pod/v1 nginx-sre --image=nginx --namespace sre
+kubectl run nginx-sre --image=nginx --namespace sre
 kubectl get pods --namespace sre
 ```
 
 如以下示例输出中所示，可以成功创建和查看 pod:
 
 ```console
-$ kubectl run --generator=run-pod/v1 nginx-sre --image=nginx --namespace sre
+$ kubectl run nginx-sre --image=nginx --namespace sre
 
 To sign in, use a web browser to open the page https://aka.ms/deviceloginchina and enter the code BM4RHP3FD to authenticate.
 
@@ -358,7 +360,7 @@ nginx-sre   1/1     Running   0
 
 ```console
 kubectl get pods --all-namespaces
-kubectl run --generator=run-pod/v1 nginx-sre --image=nginx --namespace dev
+kubectl run nginx-sre --image=nginx --namespace dev
 ```
 
 如以下示例输出中所示，这些 `kubectl` 命令失败： 用户的组成员身份和 Kubernetes 角色与角色绑定无法授予在其他命名空间中创建或管理资源的权限：
@@ -367,7 +369,7 @@ kubectl run --generator=run-pod/v1 nginx-sre --image=nginx --namespace dev
 $ kubectl get pods --all-namespaces
 Error from server (Forbidden): pods is forbidden: User "akssre@contoso.com" cannot list pods at the cluster scope
 
-$ kubectl run --generator=run-pod/v1 nginx-sre --image=nginx --namespace dev
+$ kubectl run nginx-sre --image=nginx --namespace dev
 Error from server (Forbidden): pods is forbidden: User "akssre@contoso.com" cannot create pods in the namespace "dev"
 ```
 
@@ -416,7 +418,7 @@ az ad group delete --group opssre
 [az-ad-user-create]: https://docs.azure.cn/cli/ad/user?view=azure-cli-latest#az-ad-user-create
 [az-ad-group-member-add]: https://docs.azure.cn/cli/ad/group/member?view=azure-cli-latest#az-ad-group-member-add
 [az-ad-group-show]: https://docs.azure.cn/cli/ad/group?view=azure-cli-latest#az-ad-group-show
-[rbac-authorization]: concepts-identity.md#role-based-access-controls-rbac
+[rbac-authorization]: concepts-identity.md#kubernetes-role-based-access-controls-rbac
 [operator-best-practices-identity]: operator-best-practices-identity.md
 
 <!-- Update_Description: update meta properties, wording update, update link -->

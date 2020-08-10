@@ -1,19 +1,20 @@
 ---
 title: Azure 中虚拟机规模集的维护通知
 description: 查看 Azure 中虚拟机规模集的维护通知并开始自助式维护。
-author: shants123
-tags: azure-service-management,azure-resource-manager
-ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
-ms.topic: conceptual
-ms.date: 03/31/2020
+author: mimckitt
 ms.author: v-junlch
-ms.openlocfilehash: 462980ba7a6d634a1b6cf4dcaf2f8ccdce331430
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.topic: conceptual
+ms.service: virtual-machine-scale-sets
+ms.subservice: management
+ms.date: 08/06/2020
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: bf57cc010cef2cd30eea3b6862a20a2c1163a09b
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80581818"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914152"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>虚拟机规模集的计划内维护通知
 

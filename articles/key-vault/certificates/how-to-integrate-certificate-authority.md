@@ -11,12 +11,12 @@ ms.topic: tutorial
 origin.date: 06/02/2020
 ms.date: 07/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: 2930582ca9b15f6ab37ad8f060fc4a6ab87ea62b
-ms.sourcegitcommit: 0e778acf5aa5eb63ab233e07e7aecce3a9a5e6d4
+ms.openlocfilehash: ff01357b87b6bb455d87ebfaadae26da5564b6ea
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87296534"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917343"
 ---
 # <a name="integrating-key-vault-with-digicert-certificate-authority"></a>将 Key Vault 与 DigiCert 证书颁发机构集成
 
@@ -71,7 +71,7 @@ Azure PowerShell 用于通过命令或脚本创建和管理 Azure 资源。
 
 如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块 1.0.0 或更高版本。 键入 `$PSVersionTable.PSVersion` 即可查找版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Login-AzAccount` 来创建与 Azure 的连接。
 
-```azurepowershell-interactive
+```azurepowershell
 Login-AzAccount -EnvironmentName AzureChinaCloud
 ```
 
@@ -79,7 +79,7 @@ Login-AzAccount -EnvironmentName AzureChinaCloud
 
 使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 创建 Azure 资源组。 资源组是在其中部署和管理 Azure 资源的逻辑容器。 
 
-```azurepowershell-interactive
+```azurepowershell
 New-AzResourceGroup -Name ContosoResourceGroup -Location ChinaEast
 ```
 
@@ -91,7 +91,7 @@ New-AzResourceGroup -Name ContosoResourceGroup -Location ChinaEast
 - 资源组名称 **ContosoResourceGroup**。
 - **位置** ChinaEast。
 
-```azurepowershell-interactive
+```azurepowershell
 New-AzKeyVault -Name 'Contoso-Vaultname' -ResourceGroupName 'ContosoResourceGroup' -Location 'ChinaEast'
 ```
 
@@ -102,7 +102,7 @@ New-AzKeyVault -Name 'Contoso-Vaultname' -ResourceGroupName 'ContosoResourceGrou
 - 定义“API 密钥”变量
 - 定义“颁发者名称”变量
 
-```azurepowershell-interactive
+```azurepowershell
 $accountId = "myDigiCertCertCentralAccountID"
 $org = New-AzureKeyVaultCertificateOrganizationDetails -Id OrganizationIDfromDigiCertAccount
 $secureApiKey = ConvertTo-SecureString DigiCertCertCentralAPIKey -AsPlainText –Force
@@ -110,13 +110,13 @@ $issuerName = "DigiCertCA"
 ```
 
 4. 设置“颁发者”。 这将在密钥保管库中添加 Digicert 作为证书颁发机构。
-```azurepowershell-interactive
+```azurepowershell
 Set-AzureKeyVaultCertificateIssuer -VaultName $vaultName -IssuerName $issuerName -IssuerProvider DigiCert -AccountId $accountId -ApiKey $secureApiKey -OrganizationDetails $org
 ```
 
 5. 直接在 Key Vault 的 DigiCert 中设置证书的策略并颁发证书。
 
-```azurepowershell-interactive
+```azurepowershell
 $Policy = New-AzKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs12" -SubjectName "CN=contoso.com" -IssuerName DigiCertCA -ValidityInMonths 12 -RenewAtNumberOfDaysBeforeExpiry 60
 Add-AzKeyVaultCertificate -VaultName "Contoso-Vaultname" -Name "ExampleCertificate" -CertificatePolicy $Policy
 ```

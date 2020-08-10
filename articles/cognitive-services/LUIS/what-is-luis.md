@@ -2,15 +2,16 @@
 title: 什么是语言理解 (LUIS)？
 description: 语言理解 (LUIS) 是一种基于云的 API 服务，可在用户对话的自然语言文本中应用自定义机器学习智能，以便预测整体含义并提炼出相关的详细信息。
 ms.topic: overview
+author: Johnnytechn
 origin.date: 05/05/2020
-ms.date: 06/16/2020
-ms.author: v-tawe
-ms.openlocfilehash: 6d92a8609678af79d66c82b20ba34832bcf2ce9a
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.date: 08/04/2020
+ms.author: v-johya
+ms.openlocfilehash: e97a462b2c2fa5c11c870234d59ea3f1559b01b1
+ms.sourcegitcommit: caa18677adb51b5321ad32ae62afcf92ac00b40b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098632"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88023403"
 ---
 # <a name="what-is-language-understanding-luis"></a>什么是语言理解 (LUIS)？
 
@@ -46,12 +47,13 @@ LUIS 应用提供的智能有助于客户端应用程序进行智能选择。 LU
 
 LUIS 应用包含一个特定于域的自然语言模型。 可通过预构建的域模型启动 LUIS 应用、构建你自己的模型，还可将预构建的域的各个部分与自己的自定义信息进行混合。
 
-<!--Prebuilt model now not available -->
+* **预构建的模型** LUIS 具有多个预构建的域模型，它们自带意向、话语和预构建的实体。 即使不使用预构建的模型中的意向和话语，也能使用预构建的实体。 预生成域模型为你提供了整个设计，是快速开始使用 LUIS 的好方法。
 
-* **自定义模型** LUIS 提供多种方法用于生成自己的自定义模型，包括意向和实体。 实体包括机器习得实体、模式匹配实体，以及机器习得实体和模式匹配实体的组合。
+* “自定义模型”LUIS 提供多种方法来识别自己的自定义模型，包括意向和实体。 实体包括机器学习的实体、特定实体或文本实体，以及机器学习的实体和文本实体的组合。
 
-## <a name="build-the-luis-app"></a>生成 LUIS 应用
-使用[创作](https://dev.cognitive.azure.cn/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) API 或 [LUIS 门户](https://luis.azure.cn)生成应用。
+## <a name="build-the-luis-model"></a>构建 LUIS 模型
+使用[创作](https://dev.cognitive.azure.cn/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) API 或 [LUIS 门户](https://luis.azure.cn)生成模型。
+<!--Correct in MC: https://dev.cognitive.azure.cn/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f; https://luis.azure.cn-->
 
 LUIS 模型从称为 **[意向](luis-concept-intent.md)** 的用户意向的类别开始。 每个意向都需要用户 **[话语](luis-concept-utterance.md)** 的示例。 每个言语都可以提供需要提取的数据。
 
@@ -63,7 +65,8 @@ LUIS 模型从称为 **[意向](luis-concept-intent.md)** 的用户意向的类�
 
 ## <a name="query-prediction-endpoint"></a>查询预测终结点
 
-在训练应用并将其发布到终结点以后，客户端应用程序会将言语发送到预测[终结点](https://dev.cognitive.azure.cn/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78) API。 API 将应用程序应用到言语进行分析，并使用 JSON 格式的预测结果进行响应。
+在训练应用并将其发布到终结点以后，客户端应用程序会将言语发送到预测[终结点](https://dev.cognitive.azure.cn/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78) API。 API 将模型应用到言语进行分析，并使用 JSON 格式的预测结果进行响应。
+<!--Correct in MC: https://dev.cognitive.azure.cn/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78-->
 
 JSON 终结点响应至少包含查询话语和得分最高的意向。 它还可以提取数据，例如下面的“联系人类型”实体和整体情绪。
 
@@ -106,15 +109,17 @@ LUIS 提供工具、版本控制以及与其他 LUIS 创建者的协作，以便
 LUIS 的顶级客户端应用程序是：
 <!-- bot-service not available-->
 通过机器人快速轻松地使用 LUIS 的工具：
-* [LUIS CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS)：NPM 包以独立命令行工具或导入的形式提供创作和预测。 
+* [LUIS CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS) NPM 包以独立命令行工具或导入的形式提供创作和预测。
 * [LUISGen](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUISGen)：LUISGen 是一个用于从导出的 LUIS 模型生成强类型 C# 和 typescript 源代码的工具。
 * 启用[调度](https://aka.ms/dispatch-tool)时，可以使用调度程序模型通过父应用使用多个 LUIS 和 QnA Maker 应用。
-* [LUDown](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Ludown)：LUDown 是一个命令行工具，可帮助你管理机器人的语言模型。
+* [LUDown](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Ludown) LUDown 是一个命令行工具，可帮助你管理机器人的语言模型。
+* [Bot Framework - Composer](https://github.com/microsoft/BotFramework-Composer) - 一个集成开发工具，供开发人员和多学科团队通过 Microsoft Bot Framework 构建机器人和聊天体验
 
 与 LUIS 配合使用的其他认知服务：
 * [QnA Maker][qnamaker] 可将多种类型的文本组合到一个问题答案知识库中。
 * [语音服务](../Speech-Service/overview.md)可将口述语言请求转化成文本。
 * 可以使用[聊天学习器](https://github.com/microsoft/cognitive-research-technologies-docs/tree/master/Conversation-Learner)，通过 LUIS 更快速地生成机器人聊天内容。
+<!--Correct in MC: https://github.com/microsoft/cognitive-research-technologies-docs/tree/master/Conversation-Learner-->
 
 使用 LUIS 的示例：
 * [对话 AI](https://github.com/Microsoft/AI) GitHub 存储库。
@@ -132,3 +137,4 @@ LUIS 的顶级客户端应用程序是：
 [authoring-apis]: https://dev.cognitive.azure.cn/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f
 [endpoint-apis]: https://dev.cognitive.azure.cn/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78
 [qnamaker]: https://qnamaker.ai/
+

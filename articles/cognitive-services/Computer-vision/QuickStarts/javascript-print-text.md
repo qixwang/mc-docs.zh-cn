@@ -9,39 +9,37 @@ ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
 origin.date: 07/03/2019
-ms.date: 07/08/2019
-ms.author: v-junlch
-ms.custom: seodec18
-ms.openlocfilehash: 49379c1394483b374a7134dac6b53747b3c1c190
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 08/04/2020
+ms.author: v-johya
+ms.custom: seodec18, devx-track-javascript
+ms.openlocfilehash: fcf7ec677682c50974d63b0336f28efd0f14a589
+ms.sourcegitcommit: caa18677adb51b5321ad32ae62afcf92ac00b40b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "67844875"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88023370"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-javascript"></a>快速入门：使用计算机视觉 REST API 和 JavaScript 提取印刷体文本 (OCR)
 
-在本快速入门中，你将使用计算机视觉的 REST API，通过光学字符识别 (OCR) 从图像中提取印刷体文本。 借助 [OCR](https://dev.cognitive.azure.cn/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) 方法，可检测图像中的印刷体文本，并将识别的字符提取到计算机可用的字符流中。
-
-如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
+本快速入门将使用计算机视觉 REST API 通过光学字符识别 (OCR) 从图像中提取印刷体文本。 借助 [OCR](https://dev.cognitive.azure.cn/docs/services/56f91f2d778daf23d8ec6739/operations/56f91f2e778daf14a499e1fc) 方法，可检测图像中的印刷体文本，并将识别的字符提取到计算机可用的字符流中。
 
 ## <a name="prerequisites"></a>先决条件
 
-必须具有计算机视觉的订阅密钥。 你可以按照[创建认知服务帐户](/cognitive-services/cognitive-services-apis-create-account)中的说明订阅计算机视觉并获取密钥。
+* Azure 订阅 - [创建试用订阅](https://www.azure.cn/pricing/details/cognitive-services/)
+* 拥有 Azure 订阅后，在 Azure 门户中<a href="https://portal.azure.cn/#create/Microsoft.CognitiveServicesComputerVision"  title="创建计算机视觉资源"  target="_blank">创建计算机视觉资源 <span class="docon docon-navigate-external x-hidden-focus"></span></a>，获取密钥和终结点。 部署后，单击“转到资源”。
+    * 需要从创建的资源获取密钥和终结点，以便将应用程序连接到计算机视觉服务。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
+    * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
 
 ## <a name="create-and-run-the-sample"></a>创建并运行示例
 
 要创建和运行示例，请执行以下步骤：
 
-1. 将以下代码复制到文本编辑器中。
-1. 必要时在代码中进行如下更改：
-    1. 将 `subscriptionKey` 的值替换为你的订阅密钥。
-    1. 如有必要，请将 `uriBase` 的值替换为获取的订阅密钥所在的 Azure 区域中的 [OCR](https://dev.cognitive.azure.cn/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) 方法的终结点 URL。
-    1. （可选）将 `inputImage` 控件的 `value` 属性的值替换为要分析的其他图像的 URL。
-1. 将代码保存为以 `.html` 为扩展名的文件。 例如，`get-printed-text.html`。
+1. 创建一个名为 _get-printed-text.html_ 的文件，在文本编辑器中打开它，然后将以下代码复制到其中。
+1. （可选）将 `inputImage` 控件的 `value` 属性的值替换为要分析的其他图像的 URL。
 1. 打开一个浏览器窗口。
 1. 在浏览器中，将文件拖放到浏览器窗口。
-1. 在浏览器中显示网页时，选择“读取图像”按钮  。
+1. 当网页显示在浏览器中时，请将订阅密钥和终结点 URL 粘贴到相应的输入框中。
+1. 选择“读取图像”按钮。
 
 ```html
 <!DOCTYPE html>
@@ -58,11 +56,10 @@ ms.locfileid: "67844875"
         // *** Update or verify the following values. ***
         // **********************************************
 
-        // Replace <Subscription Key> with your valid subscription key.
-        var subscriptionKey = "<Subscription Key>";
-
-        var uriBase =
-            "https://api.cognitive.azure.cn/vision/v2.0/ocr";
+        var subscriptionKey = document.getElementById("subscriptionKey").value;
+        var endpoint = document.getElementById("endpointUrl").value;
+        
+        var uriBase = endpoint + "vision/v3.0/ocr";
 
         // Request parameters.
         var params = {
@@ -112,6 +109,13 @@ ms.locfileid: "67844875"
 Enter the URL to an image of printed text, then
 click the <strong>Read image</strong> button.
 <br><br>
+Subscription key: 
+<input type="text" name="subscriptionKey" id="subscriptionKey"
+    value="" /> 
+Endpoint URL:
+<input type="text" name="endpointUrl" id="endpointUrl"
+    value="" />
+<br><br>
 Image to read:
 <input type="text" name="inputImage" id="inputImage" 
     value="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Atomist_quote_from_Democritus.png/338px-Atomist_quote_from_Democritus.png" />
@@ -136,7 +140,7 @@ Image to read:
 
 ## <a name="examine-the-response"></a>检查响应
 
-成功响应将以 JSON 格式返回。 示例网页会在浏览器窗口中分析和显示成功响应，如下例所示：
+成功的响应以 JSON 格式返回。 示例网页会在浏览器窗口中分析和显示成功响应，如下例所示：
 
 ```json
 {
@@ -239,9 +243,10 @@ Image to read:
 
 ## <a name="next-steps"></a>后续步骤
 
-浏览一款 JavaScript 应用程序，该应用程序使用计算机视觉执行光学字符识别 (OCR)、创建智能裁剪缩略图，并对图像中的视觉特征（包括人脸）进行检测、分类、标记和描述。 要快速体验计算机视觉 API，请尝试使用 [Open API 测试控制台](https://dev.cognitive.azure.cn/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console)。
+接下来，了解一款使用计算机视觉执行光学字符识别 (OCR) 功能的 JavaScript 应用程序；创建智能裁剪缩略图；对图像中的视觉特征进行检测、分类、标记和说明。 
 
 > [!div class="nextstepaction"]
 > [计算机视觉 API JavaScript 教程](../Tutorials/javascript-tutorial.md)
 
-<!-- Update_Description: wording update -->
+* 要快速体验计算机视觉 API，请尝试使用 [Open API 测试控制台](https://dev.cognitive.azure.cn/docs/services/56f91f2d778daf23d8ec6739/operations/56f91f2e778daf14a499e1fa/console)。
+

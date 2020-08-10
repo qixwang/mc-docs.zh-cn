@@ -9,14 +9,14 @@ metadata:
   ms.collection: collection
   author: DCtheGeek
   ms.author: v-tawe
-  origin.date: 09/26/2019
-  ms.date: 12/02/2019
-  ms.openlocfilehash: 4eb342c9edd45708dd2b75b7d7d180665e64e99e
-  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+  origin.date: 06/29/2020
+  ms.date: 08/06/2020
+  ms.openlocfilehash: 7372abafbc87027d7a4acbf8cfaad624694c8f93
+  ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/17/2020
-  ms.locfileid: "74658182"
+  ms.lasthandoff: 08/07/2020
+  ms.locfileid: "87917127"
 landingContent:
 - title: 关于 Azure 治理
   linkLists:
@@ -38,3 +38,19 @@ landingContent:
       url: ./create.md
     - text: 管理资源
       url: ./manage.md
+- title: 参考
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure CLI
+      url: /cli/account/management-group
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.resources/#resources
+    - text: 用于 .NET 的 Azure SDK
+      url: https://docs.microsoft.com/dotnet/api/overview/azure/managementgroups
+    - text: 用于 JavaScript 的 Azure SDK
+      url: https://docs.microsoft.com/javascript/api/@azure/arm-managementgroups/managementgroups
+    - text: REST
+      url: https://docs.microsoft.com/rest/api/resources/managementgroups
+    - text: 资源管理器模板
+      url: https://docs.microsoft.com/azure/templates/microsoft.management/managementgroups

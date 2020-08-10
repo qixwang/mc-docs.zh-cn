@@ -1,19 +1,20 @@
 ---
 title: 教程 - 通过 Azure PowerShell 创建和使用规模集的磁盘
 description: 了解如何通过 Azure PowerShell 对虚拟机规模集创建和使用托管磁盘，包括如何添加、准备、列出和分离磁盘。
-author: cynthn
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
-ms.topic: tutorial
-ms.date: 02/10/2020
+author: ju-shim
 ms.author: v-junlch
-ms.custom: mvc
-ms.openlocfilehash: c6014711ba73f2ad05ff06c77c654e2f9cbaa700
-ms.sourcegitcommit: b80d236ce3c706abc25bbaa41b0ccddd896e48fc
+ms.topic: tutorial
+ms.service: virtual-machine-scale-sets
+ms.subservice: disks
+ms.date: 08/06/2020
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: a7702a2c4f6d05c0fc3488aaae78e9a118bf2264
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81873149"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914389"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>教程：通过 Azure PowerShell 对虚拟机规模集创建和使用磁盘
 
@@ -26,7 +27,7 @@ ms.locfileid: "81873149"
 > * 磁盘性能
 > * 附加和准备数据磁盘
 
-如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
@@ -41,10 +42,11 @@ ms.locfileid: "81873149"
 ### <a name="temporary-disk-sizes"></a>临时磁盘大小
 | 类型 | 常见大小 | 临时磁盘大小上限 (GiB) |
 |----|----|----|
-| [常规用途](../virtual-machines/windows/sizes-general.md) | A、B、D 系列 | 1600 |
-| [计算优化](../virtual-machines/windows/sizes-compute.md) | F 系列 | 576 |
-| [内存优化](../virtual-machines/windows/sizes-memory.md) | D、E、G、M 系列 | 6144 |
-| [GPU](../virtual-machines/windows/sizes-gpu.md) | N 系列 | 1440 |
+| [常规用途](../virtual-machines/sizes-general.md) | A、B、D 系列 | 1600 |
+| [计算优化](../virtual-machines/sizes-compute.md) | F 系列 | 576 |
+| [内存优化](../virtual-machines/sizes-memory.md) | D、E 和 M 系列 | 6144 |
+| [GPU](../virtual-machines/sizes-gpu.md) | N 系列 | 1440 |
+
 
 ## <a name="azure-data-disks"></a>Azure 数据磁盘
 可添加额外的数据磁盘，用于安装应用程序和存储数据。 在任何需要持久和灵敏数据存储的情况下，都应使用数据磁盘。 每个数据磁盘的最大容量为 4 TB。 VM 实例的大小决定可附加的数据磁盘数。 对于每个 VM vCPU，都可以附加两个数据磁盘。
@@ -52,10 +54,10 @@ ms.locfileid: "81873149"
 ### <a name="max-data-disks-per-vm"></a>每个 VM 的最大数据磁盘数
 | 类型 | 常见大小 | 每个 VM 的最大数据磁盘数 |
 |----|----|----|
-| [常规用途](../virtual-machines/windows/sizes-general.md) | A、B、D 系列 | 64 |
-| [计算优化](../virtual-machines/windows/sizes-compute.md) | F 系列 | 64 |
-| [内存优化](../virtual-machines/windows/sizes-memory.md) | D、E、G、M 系列 | 64 |
-| [GPU](../virtual-machines/windows/sizes-gpu.md) | N 系列 | 64 |
+| [常规用途](../virtual-machines/sizes-general.md) | A、B、D 系列 | 64 |
+| [计算优化](../virtual-machines/sizes-compute.md) | F 系列 | 64 |
+| [内存优化](../virtual-machines/sizes-memory.md) | D、E 和 M 系列 | 64 |
+| [GPU](../virtual-machines/sizes-gpu.md) | N 系列 | 64 |
 
 ## <a name="vm-disk-types"></a>VM 磁盘类型
 Azure 提供两种类型的磁盘。
@@ -126,7 +128,7 @@ Update-AzVmss `
 ## <a name="prepare-the-data-disks"></a>准备数据磁盘
 已创建并附加到规模集 VM 实例的磁盘是原始磁盘。 将磁盘用于数据和应用程序之前，必须准备磁盘。 若要准备磁盘，需要创建分区、创建文件系统，并将其装载。
 
-若要跨规模集中的多个 VM 实例自动完成此过程，可以使用 Azure 自定义脚本扩展。 此扩展可以在每个 VM 实例上以本地方式执行脚本，以便完成各种任务，例如准备附加的数据磁盘。 有关详细信息，请参阅[自定义脚本扩展概述](../virtual-machines/windows/extensions-customscript.md)。
+若要跨规模集中的多个 VM 实例自动完成此过程，可以使用 Azure 自定义脚本扩展。 此扩展可以在每个 VM 实例上以本地方式执行脚本，以便完成各种任务，例如准备附加的数据磁盘。 有关详细信息，请参阅[自定义脚本扩展概述](../virtual-machines/extensions/custom-script-windows.md)。
 
 
 以下示例在每个 VM 实例上执行来自 GitHub 示例存储库的脚本，使用的是 [Add-AzVmssExtension](https://docs.microsoft.com/powershell/module/az.compute/Add-AzVmssExtension) 命令，该命令用于准备所有原始的附加数据磁盘：
@@ -289,7 +291,7 @@ Update-AzVmss `
 
 
 ## <a name="clean-up-resources"></a>清理资源
-若要删除规模集和磁盘，请使用 [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) 删除资源组及其所有资源。 `-Force` 参数将确认是否希望删除资源，而不会有额外提示。 `-AsJob` 参数会使光标返回提示符处，无需等待操作完成。
+若要删除规模集和磁盘，请使用 [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) 删除资源组及其所有资源。 `-Force` 参数将确认是否希望删除资源，而不会有额外提示。 `-AsJob` 参数会使光标返回提示符处，不会等待操作完成。
 
 ```azurepowershell
 Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob
@@ -311,4 +313,3 @@ Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob
 > [!div class="nextstepaction"]
 > [对规模集 VM 实例使用自定义映像](tutorial-use-custom-image-powershell.md)
 
-<!-- Update_Description: update metedata properties -->

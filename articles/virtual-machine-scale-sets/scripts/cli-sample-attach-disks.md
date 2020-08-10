@@ -6,15 +6,15 @@ ms.author: v-junlch
 ms.topic: sample
 ms.service: virtual-machine-scale-sets
 ms.subservice: disks
-ms.date: 06/22/2020
+ms.date: 08/07/2020
 ms.reviewer: jushiman
-ms.custom: mimckitt
-ms.openlocfilehash: 2b638efe79419278560f1d0d19c4b1888c4d25a0
-ms.sourcegitcommit: 43db4001be01262959400663abf8219e27e5cb8b
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: 26d23f5c72a08e8e4e53e64e4fcb7bfdf9da813a
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85241587"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914238"
 ---
 # <a name="attach-and-use-data-disks-with-a-virtual-machine-scale-set-with-the-azure-cli"></a>使用 Azure CLI 为虚拟机规模集附加并使用数据磁盘
 此脚本创建虚拟机规模集并附加和准备数据磁盘。
@@ -33,29 +33,28 @@ az group create --name myResourceGroup --location chinanorth
 # Create a scale set
 # Network resources such as an Azure load balancer are automatically created
 # Two data disks are created and attach - a 64Gb disk and a 128Gb disk
-az vmss create `
-  --resource-group myResourceGroup `
-  --name myScaleSet `
-  --image UbuntuLTS `
-  --upgrade-policy-mode automatic `
-  --admin-username azureuser `
-  --generate-ssh-keys `
-  --vm-sku Standard_DS1 `
+az vmss create \
+  --resource-group myResourceGroup \
+  --name myScaleSet \
+  --image UbuntuLTS \
+  --upgrade-policy-mode automatic \
+  --admin-username azureuser \
+  --generate-ssh-keys \
   --data-disk-sizes-gb 64 128
 
 # Attach an additional 128Gb data disk
-az vmss disk attach `
-  --resource-group myResourceGroup `
-  --name myScaleSet `
+az vmss disk attach \
+  --resource-group myResourceGroup \
+  --name myScaleSet \
   --size-gb 128
 
 # Install the Azure Custom Script Extension to run a script that prepares the data disks
-az vmss extension set `
-  --publisher Microsoft.Azure.Extensions `
-  --version 2.0 `
-  --name CustomScript `
-  --resource-group myResourceGroup `
-  --vmss-name myScaleSet `
+az vmss extension set \
+  --publisher Microsoft.Azure.Extensions \
+  --version 2.0 \
+  --name CustomScript \
+  --resource-group myResourceGroup \
+  --vmss-name myScaleSet \
   --settings '{"fileUris":["https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/prepare_vm_disks.sh"],"commandToExecute":"./prepare_vm_disks.sh"}'
 ```
 

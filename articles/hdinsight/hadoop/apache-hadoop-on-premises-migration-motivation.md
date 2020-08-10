@@ -7,15 +7,15 @@ ms.reviewer: ashishth
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-origin.date: 10/25/2018
-ms.date: 11/11/2019
+origin.date: 11/15/2019
+ms.date: 08/17/2020
 ms.author: v-yiso
-ms.openlocfilehash: d1cbd8a98483c71fdff7665ef61754edccbaaacb
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f59e8562ed70e07d5ad6279fa2324347463317b2
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73426053"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917300"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 动机和权益
 
@@ -163,9 +163,9 @@ Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight
 
 ### <a name="azure-requirements-questionnaire"></a>Azure 需求问卷
 
-|**主题**：基础结构  |||
-|---|---|---|
 |**问题**|**示例**|**答案**|
+|---|---|---|
+|**主题**：基础结构 |||
 | 首选区域|美国东部||
 |首选 VNet？|是||
 |需要 HA/DR？|是||

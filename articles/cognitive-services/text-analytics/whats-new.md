@@ -11,12 +11,12 @@ ms.topic: conceptual
 origin.date: 06/03/2020
 ms.date: 06/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: 593ba15de0d19964c7355ac9b87985a79e820f55
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+ms.openlocfilehash: a30bfdb7209c59524aed0d2f2d4b55b8f6c77bf8
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323646"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917069"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>文本分析 API 中有哪些新功能？
 
@@ -57,7 +57,7 @@ JSON 响应中以下属性的名称已更改（如果适用）：
 [!INCLUDE [v3 region availability](includes/v3-region-availability.md)]
 
 > [!div class="nextstepaction"]
-> [详细了解文本分析 API v3](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages)
+> [详细了解文本分析 API v3](https://chinaeast2.dev.cognitive.azure.cn/docs/services/TextAnalytics-v3-0/operations/Languages)
 
 
 > [!div class="nextstepaction"]

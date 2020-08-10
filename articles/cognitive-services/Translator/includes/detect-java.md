@@ -1,15 +1,16 @@
 ---
-author: erhopf
+author: Johnnytechn
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 08/06/2019
-ms.author: erhopf
-ms.openlocfilehash: b397005ec6fac339bdbca29d7bac2510e010777d
-ms.sourcegitcommit: 43db4001be01262959400663abf8219e27e5cb8b
+ms.date: 08/07/2020
+ms.custom: devx-track-java
+ms.author: v-johya
+ms.openlocfilehash: bcb61777453e83c6fc6fee8ff0217fb7034d1735
+ms.sourcegitcommit: caa18677adb51b5321ad32ae62afcf92ac00b40b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85241523"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88024227"
 ---
 [!INCLUDE [Prerequisites](prerequisites-java.md)]
 
@@ -202,7 +203,8 @@ gradle run
 
 ## <a name="next-steps"></a>后续步骤
 
-查看 API 参考，了解使用文本翻译 API 可以执行的所有操作。
+查看 API 参考，了解使用“翻译”可以执行的所有操作。
 
 > [!div class="nextstepaction"]
 > [API 参考](/cognitive-services/translator/reference/v3-0-reference)
+

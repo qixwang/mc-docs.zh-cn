@@ -11,18 +11,18 @@ ms.author: v-jay
 ms.reviewer: douglasl
 manager: digimobile
 ms.custom: seo-lt-2019
-origin.date: 04/15/2020
-ms.date: 06/15/2020
-ms.openlocfilehash: d99a594caf0c4f296ba742e289f9d75c8fc83e4c
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+origin.date: 07/09/2020
+ms.date: 08/10/2020
+ms.openlocfilehash: 5fb9c09f2e54dbf835c14af43409bd24a98814b1
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723551"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914258"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>自承载 IR 配置为 Azure 数据工厂中 Azure-SSIS IR 的代理
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 本文介绍如何在将某个自承载集成运行时（自承载 IR）配置为代理的情况下，在 Azure 数据工厂中的 Azure-SSIS Integration Runtime (Azure-SSIS IR) 上运行 SQL Server Integration Services (SSIS) 包。 
 

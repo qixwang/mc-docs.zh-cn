@@ -1,18 +1,20 @@
 ---
 title: 使用 Azure 资源管理器模板创建并加密虚拟机规模集
 description: 本快速入门介绍如何使用 Azure 资源管理器模板来创建和加密虚拟机规模集
-author: msmbaldwin
+author: ju-shim
 ms.author: v-junlch
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: quickstart
-origin.date: 10/10/2019
-ms.date: 10/29/2019
-ms.openlocfilehash: cc9ce5a1eabf91f0fde26b28e8123afe1adc65a3
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.subservice: disks
+ms.date: 08/06/2020
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: fe3c4bec7e582954f45b05220a2674cc3b13931e
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73142201"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914160"
 ---
 # <a name="encrypt-virtual-machine-scale-sets-with-azure-resource-manager"></a>使用 Azure 资源管理器加密虚拟机规模集
 

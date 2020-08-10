@@ -8,18 +8,18 @@ manager: mtillman
 ms.assetid: ''
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/25/2020
+ms.date: 08/05/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
-ms.openlocfilehash: 8f18a13dc55ea87089d078f5df4a7611cc63dcae
-ms.sourcegitcommit: 7429daf26cff014b040f69cdae75bdeaea4f4e93
+ms.openlocfilehash: 0cd5e0d9e1c27eab23702d9940560b9f2699b0d6
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83991603"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914239"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Azure 经典订阅管理员
 
@@ -30,7 +30,7 @@ Microsoft 建议使用 Azure 基于角色的访问控制 (Azure RBAC) 来管理�
 ## <a name="add-a-co-administrator"></a>添加共同管理员
 
 > [!TIP]
-> 如果用户需要使用 [Azure 服务管理 PowerShell 模块](https://docs.microsoft.com/powershell/module/servicemanagement/azure)管理 Azure 经典部署，则你只需添加共同管理员。 如果用户只使用 Azure 门户管理经典资源，则无需为该用户添加经典管理员。
+> 如果用户需要使用 [Azure 服务管理 PowerShell 模块](https://docs.microsoft.com/powershell/module/servicemanagement/azure.service)管理 Azure 经典部署，则你只需添加共同管理员。 如果用户只使用 Azure 门户管理经典资源，则无需为该用户添加经典管理员。
 
 1. 以服务管理员或共同管理员的身份登录到 [Azure 门户](https://portal.azure.cn)。
 

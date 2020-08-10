@@ -16,18 +16,19 @@ ms.workload: big-data
 origin.date: 04/28/2020
 ms.date: 06/22/2020
 ms.author: v-yiso
-ms.openlocfilehash: 6768a13d67b430d44e8c0bcd0a47917b8b500938
-ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
+ms.openlocfilehash: fc6369aa79a186dfedbc35229dc9b70a76637177
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85516553"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917250"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>使用 Azure 存储共享访问签名来限制访问 HDInsight 中的数据
 
 HDInsight 对群集关联的 Azure 存储帐户中的数据拥有完全访问权限。 可以使用 Blob 容器中的共享访问签名来限制对数据的访问。 共享访问签名 (SAS) 是可用于限制数据访问权限的一项 Azure 存储帐户功能。 例如，它可以提供对数据的只读访问。
 
-
+> [!IMPORTANT]  
+> 对于使用 Apache Ranger 的解决方案，请考虑使用已加入域的 HDInsight。 有关详细信息，请参阅[配置已加入域的 HDInsight](./domain-joined/apache-domain-joined-configure.md) 文档。
 
 > [!WARNING]  
 > HDInsight 必须对群集的默认存储拥有完全访问权限。
@@ -216,9 +217,9 @@ Set-AzStorageblobcontent `
 
 1. 在 Visual Studio 中打开解决方案。
 
-2. 在解决方案资源管理器中，右键单击“SASExample”项目并选择“属性”。**** ****
+2. 在解决方案资源管理器中，右键单击“SASExample”项目并选择“属性”。 
 
-3. 选择“设置”****，并添加以下条目的值：
+3. 选择“设置”，并添加以下条目的值：
 
     |项目 |说明 |
     |---|---|
@@ -233,7 +234,7 @@ Set-AzStorageblobcontent `
 
 创建 HDInsight 群集时，必须指定主存储帐户。 还可以指定其他存储帐户。 这两种添加存储的方法都需要对所用存储帐户和容器拥有完全访问权限。
 
-使用共享访问签名来限制容器访问。 将自定义条目添加到群集的 core-site 配置****。 可以在创建群集期间使用 PowerShell 添加该条目，或者在创建群集之后使用 Ambari 添加该条目。
+使用共享访问签名来限制容器访问。 将自定义条目添加到群集的 core-site 配置。 可以在创建群集期间使用 PowerShell 添加该条目，或者在创建群集之后使用 Ambari 添加该条目。
 
 ### <a name="create-a-cluster-that-uses-the-sas"></a>创建使用 SAS 的群集
 
@@ -364,29 +365,29 @@ Remove-AzResourceGroup `
 
 1. 打开群集的 Ambari Web UI。 此页面的地址为 `https://YOURCLUSTERNAME.azurehdinsight.cn`。 出现提示时，使用创建群集时所用的管理员名称 (admin) 和密码向群集进行身份验证。
 
-1. 导航到“HDFS”**** > ****“配置” > ****“高级” > ****“自定义 core-site”。
+1. 导航到“HDFS” > “配置” > “高级” > “自定义 core-site”。
 
-1. 展开“自定义 core-site”**** 部分，并滚动到底部，然后选择“添加属性...”****。将以下值用于“键”和“值”：**** ****
+1. 展开“自定义 core-site”部分，并滚动到底部，然后选择“添加属性...”。将以下值用于“键”和“值”： 
 
    * **键**：`fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.chinacloudapi.cn`
    * **值**：前面执行的某个方法返回的 SAS。
 
      将 `CONTAINERNAME` 替换为用于 C# 或 SAS 应用程序的容器名称。 将 `STORAGEACCOUNTNAME` 替换为所用的存储帐户名称。
 
-    选择“添加”以保存此键和值****
+    选择“添加”以保存此键和值
 
-1. 选择“保存”按钮以保存配置更改。**** 出现提示时，请添加更改的说明（例如，“添加 SAS 存储访问”），并选择“保存”****。
+1. 选择“保存”按钮以保存配置更改。 出现提示时，请添加更改的说明（例如，“添加 SAS 存储访问”），并选择“保存”。
 
-    完成更改后，选择“确定”****。
+    完成更改后，选择“确定”。
 
    > [!IMPORTANT]  
    > 必须重启几个服务才能使更改生效。
 
-1. 会显示一个“重启”下拉列表。**** 从下拉列表中选择“重启所有受影响的项”，然后选择“确认全部重启”。****____
+1. 会显示一个“重启”下拉列表。 从下拉列表中选择“重启所有受影响的项”，然后选择“确认全部重启”。
 
     对 **MapReduce2** 和 **YARN** 重复此过程。
 
-1. 重新启动这些服务后，选择每个服务并从“服务操作” **** 下拉列表中选择“禁用维护模式”。
+1. 重新启动这些服务后，选择每个服务并从“服务操作”  下拉列表中选择“禁用维护模式”。
 
 ## <a name="test-restricted-access"></a>测试限制的访问
 

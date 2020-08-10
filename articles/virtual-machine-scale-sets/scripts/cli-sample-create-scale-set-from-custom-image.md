@@ -6,15 +6,15 @@ ms.author: v-junlch
 ms.topic: sample
 ms.service: virtual-machine-scale-sets
 ms.subservice: imaging
-ms.date: 06/22/2020
+ms.date: 08/07/2020
 ms.reviewer: cynthn
-ms.custom: akjosh
-ms.openlocfilehash: e7a20a98b7314f621afb387cdebb949b51176874
-ms.sourcegitcommit: 43db4001be01262959400663abf8219e27e5cb8b
+ms.custom: akjosh, devx-track-azurecli
+ms.openlocfilehash: d5427c8eb1f2fe3bdba9526eb85f218701d3268e
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85241480"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914205"
 ---
 # <a name="create-a-virtual-machine-scale-set-from-a-custom-vm-image-with-the-azure-cli"></a>使用 Azure CLI 基于自定义 VM 映像创建虚拟机规模集
 此脚本创建使用自定义 VM 映像作为 VM 实例源的虚拟机规模集。
@@ -33,17 +33,16 @@ az group create --name myResourceGroup --location chinanorth
 # Create a scale set
 
 # Custom VM image must already exist in your subscription
-# See https://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/tutorial-use-custom-image-cli
+# See http://docs.azure.cn/virtual-machine-scale-sets/tutorial-use-custom-image-cli
 
 # Network resources such as an Azure load balancer are automatically created
-az vmss create `
-  --resource-group myResourceGroup `
-  --name myScaleSet `
-  --image myImage `
-  --upgrade-policy-mode automatic `
-  --admin-username azureuser `
-  --generate-ssh-keys `
-  --vm-sku Standard_DS1
+az vmss create \
+  --resource-group myResourceGroup \
+  --name myScaleSet \
+  --image myImage \
+  --upgrade-policy-mode automatic \
+  --admin-username azureuser \
+  --generate-ssh-keys
 ```
 
 ## <a name="clean-up-deployment"></a>清理部署

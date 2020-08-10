@@ -6,18 +6,18 @@ author: WenJason
 manager: digimobile
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 origin.date: 04/09/2020
-ms.date: 07/06/2020
+ms.date: 08/10/2020
 ms.author: v-jay
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: ebc6e393a40ae4aca8abd56fe89bcf2bc97fd7fe
-ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
+ms.openlocfilehash: c3e41c145247b58e4e612437e0118b949bc75590
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85845735"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917292"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>监视 Azure Synapse Analytics 中的资源利用率和查询活动
 
@@ -43,9 +43,6 @@ Azure 门户中提供了以下可用于 Synapse SQL 的指标。 这些指标通
 | 缓存命中百分比    | (缓存命中数/缓存未命中数) * 100，其中，缓存命中数是在本地 SSD 缓存中所有列存储段的总命中数，缓存未命中数是所有节点上本地 SSD 缓存中列存储段的未命中数之和 | Avg、Min、Max    |
 | 缓存使用百分比   | (已用缓存/缓存容量) * 100，其中，已用缓存是所有节点上的本地 SSD 缓存中所有字节之和，缓存容量是所有节点上的本地 SSD 缓存存储容量之和 | Avg、Min、Max    |
 | 本地 tempdb 百分比 | 所有计算节点上的本地 tempdb 利用率 - 每五分钟发出一次值 | 平均值、最小值、最大值    |
-| 数据存储大小(GB) | 数据库总计大小。 这包括已使用的、保留的和未分配的空间。 将为数据库保留未分配的空间，以便优化查询和加载性能。 | Sum |
-| 灾难恢复大小(GB) | 每 24 小时创建的异地备份的总大小 | Sum |
-| 快照存储大小(GB) | 所创建的用于提供数据库还原点的快照的总大小。 这包括自动的和用户定义的快照。 | Sum |
 
 查看指标和设置警报时的注意事项：
 

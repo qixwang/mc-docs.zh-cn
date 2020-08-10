@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/20/2020
+ms.date: 08/07/2020
 ms.author: v-junlch
-ms.openlocfilehash: 194c93891466fcddd48412e292edce3d3d674b9e
-ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
+ms.openlocfilehash: c2d0cdd9fc59e75a5e9d225b752557c6539a8f0a
+ms.sourcegitcommit: a5eb9a47feefb053ddbaab4b15c395972c372339
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86472599"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88028545"
 ---
 # <a name="administer-group-policy-in-an-azure-active-directory-domain-services-managed-domain"></a>管理 Azure Active Directory 域服务托管域中的组策略
 
@@ -24,8 +24,6 @@ Azure Active Directory 域服务 (Azure AD DS) 中的用户和计算机对象的
 在混合环境中，本地 AD DS 环境中配置的组策略不会同步到 Azure AD DS。 若要为 Azure AD DS 中的用户或计算机定义配置设置，请编辑其中一个默认 GPO 或创建一个自定义 GPO。
 
 本文介绍如何安装组策略管理工具，然后编辑内置 GPO 并创建自定义 GPO。
-
-[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>准备阶段
 

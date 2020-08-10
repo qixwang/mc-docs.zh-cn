@@ -10,12 +10,12 @@ ms.topic: conceptual
 origin.date: 03/19/2020
 ms.date: 03/30/2020
 ms.author: v-tawe
-ms.openlocfilehash: cc1657f7e9834ea352c552fb6ff52880b20f2134
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 766c4680a5513f4266df53892dfb14dc8caba674
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80586689"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917302"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>在 Ubuntu 虚拟机上运行 Azure IoT Edge
 
@@ -76,7 +76,7 @@ ms.locfileid: "80586689"
 ## <a name="deploy-from-azure-cli"></a>从 Azure CLI 部署
 
 1. 使用以下命令来确保已安装 Azure CLI IoT 扩展：
-    ```azurecli-interactive
+    ```azurecli
     az extension add --name azure-iot
     ```
 

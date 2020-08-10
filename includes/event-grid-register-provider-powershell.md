@@ -8,24 +8,24 @@ ms.topic: include
 ms.date: 07/05/2018
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: e7269dabc492a79720ea3c333b18dd8d5a4b7c0b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 344804d126f2751bb974c97cd6a7e80307892572
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "66195253"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87919291"
 ---
 ## <a name="enable-event-grid-resource-provider"></a>启用事件网格资源提供程序
 
 如果以前未在 Azure 订阅中使用过事件网格，则可能需要注册事件网格资源提供程序。 运行以下命令：
 
-```azurepowershell-interactive
+```azurepowershell
 Register-AzResourceProvider -ProviderNamespace Microsoft.EventGrid
 ```
 
 完成注册可能需要一些时间。 若要检查状态，请运行：
 
-```azurepowershell-interactive
+```azurepowershell
 Get-AzResourceProvider -ProviderNamespace Microsoft.EventGrid
 ```
 

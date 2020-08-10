@@ -7,15 +7,15 @@ ms.service: virtual-machines
 ms.subservice: security
 ms.topic: conceptual
 origin.date: 11/13/2019
-ms.date: 08/03/2020
+ms.date: 08/10/2020
 ms.author: v-yeche
 ms.custom: security-recommendations
-ms.openlocfilehash: 017448e49a2201f21b5a975f38c0c302ce278785
-ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
+ms.openlocfilehash: 7324010a73ecd2b2d6c7f1c0ef2d30a792724a68
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87426366"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917261"
 ---
 # <a name="security-recommendations-for-windows-virtual-machines-in-azure"></a>针对 Azure 中 Windows 虚拟机的安全建议
 

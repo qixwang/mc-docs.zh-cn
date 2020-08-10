@@ -14,12 +14,12 @@ ms.date: 07/21/2020
 ms.author: v-tawe
 ms.reviewer: sethm
 ms.lastreviewed: 03/18/2020
-ms.openlocfilehash: 0196740a0e279a7faca754b2881584230118c830
-ms.sourcegitcommit: 0e778acf5aa5eb63ab233e07e7aecce3a9a5e6d4
+ms.openlocfilehash: e4c9b97c669a306b39c77d0033d73d1498cc4fe8
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87296512"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917332"
 ---
 # <a name="quickstart-create-an-azure-notification-hub-using-the-azure-cli"></a>快速入门：使用 Azure CLI 创建 Azure 通知中心
 
@@ -39,7 +39,7 @@ Azure 通知中心提供易于使用且横向扩展的推送引擎，可用于�
 
    如果使用的是 CLI 的本地安装，请使用 [az login](/cli/reference-index#az-login) 命令登录。
 
-    ```azurecli-interactive
+    ```azurecli
     az cloud set -n AzureChinaCloud
     az login
     ```
@@ -48,11 +48,11 @@ Azure 通知中心提供易于使用且横向扩展的推送引擎，可用于�
 
 2. 安装 Azure CLI 扩展。
 
-   使用 Azure CLI 的扩展引用时，必须先安装该扩展。  借助 Azure CLI 扩展，可访问尚未在核心 CLI 中提供的试验性和预发布的命令。  若要详细了解包含更新和卸载的扩展，请参阅[使用 Azure CLI 的扩展](/cli/azure-cli-extensions-overview)。
+   使用 Azure CLI 的扩展引用时，必须先安装该扩展。  借助 Azure CLI 扩展，可访问尚未在核心 CLI 中提供的试验性和预发布的命令。  若要详细了解包含更新和卸载的扩展，请参阅[使用 Azure CLI 的扩展](/cli-cli-extensions-overview)。
 
    运行以下命令安装[通知中心扩展](https://docs.microsoft.com/cli/ext/notification-hub/notification-hub)：
 
-    ```azurecli-interactive
+    ```azurecli
     az extension add --name notification-hub
    ```
 
@@ -62,7 +62,7 @@ Azure 通知中心提供易于使用且横向扩展的推送引擎，可用于�
 
    对于本快速入门，请使用以下 [az group create](/cli/group#az-group-create) 命令在 chinaeast 位置创建名为“spnhubrg”的资源组：
 
-   ```azurecli-interactive
+   ```azurecli
    az group create --name spnhubrg --location chinaeast
    ```
 

@@ -4,21 +4,21 @@ description: 使用 Azure Kubernetes 服务 (AKS) 创建并运行 Apache Spark �
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 10/18/2019
-ms.date: 07/13/2020
+ms.date: 08/10/2020
 ms.testscope: no
 ms.testdate: 05/25/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 947e5579206ec9a859542ea5029ff4db67bed25e
-ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
+ms.openlocfilehash: 475366a216f4c0c1e373959a08b0f86e864d9d77
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86218802"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842633"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>在 AKS 中运行 Apache Spark 作业
 
-[Apache Spark][apache-spark] 是用于大规模数据处理的高速引擎。 从 [Spark 2.3.0 版][spark-最新版] 开始，Apache Spark 支持与 Kubernetes 集群进行本机集成。 Azure Kubernetes 服务 (AKS) 是 Azure 中运行的托管 Kubernetes 环境。 本文档详细说明如何在 Azure Kubernetes 服务 (AKS) 群集上准备和运行 Apache Spark 作业。
+[Apache Spark][apache-spark] 是用于大规模数据处理的高速引擎。 从 [Spark 2.3.0 版][spark-kubernetes-earliest-version]开始，Apache Spark 原生支持与 Kubernetes 群集集成。 Azure Kubernetes 服务 (AKS) 是 Azure 中运行的托管 Kubernetes 环境。 本文档详细说明如何在 Azure Kubernetes 服务 (AKS) 群集上准备和运行 Apache Spark 作业。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -264,7 +264,7 @@ kubectl port-forward spark-pi-2232778d0f663768ab27edc35cb73040-driver 4040:4040
 
 若要访问 Spark UI，请在浏览器中打开地址 `127.0.0.1:4040`。
 
-![Spark UI](media/aks-spark-job/spark-ui.png)
+:::image type="content" source="media/aks-spark-job/spark-ui.png" alt-text="Spark UI":::
 
 ## <a name="get-job-results-and-logs"></a>获取作业结果和日志
 
@@ -354,9 +354,9 @@ ENTRYPOINT [ "/opt/entrypoint.sh" ]
 <!-- LINKS - internal -->
 
 [acr-aks]: cluster-container-registry-integration.md
-[acr-create]: /container-registry/container-registry-get-started-azure-cli
-[aks-quickstart]: /aks/
+[acr-create]: ../container-registry/container-registry-get-started-azure-cli.md
+[aks-quickstart]: ./index.yml
 [azure-cli]: https://docs.azure.cn/cli/?view=azure-cli-latest?view=azure-cli-latest
-[storage-account]: /storage/common/storage-azure-cli
+[storage-account]: ../storage/blobs/storage-quickstart-blobs-cli.md
 
 <!-- Update_Description: update meta properties, wording update, update link -->

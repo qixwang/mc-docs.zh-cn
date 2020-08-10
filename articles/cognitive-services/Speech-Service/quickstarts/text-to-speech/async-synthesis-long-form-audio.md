@@ -12,12 +12,12 @@ origin.date: 11/04/2019
 ms.date: 07/09/2020
 ms.author: v-tawe
 ms.custom: tracking-python
-ms.openlocfilehash: 19a8c1a07d383b73dceefc853a872a0d92816ad6
-ms.sourcegitcommit: 0e778acf5aa5eb63ab233e07e7aecce3a9a5e6d4
+ms.openlocfilehash: e38dc57049889efc596dd42c6516e354cdd68b05
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87296511"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917308"
 ---
 # <a name="quickstart-asynchronous-synthesis-for-long-form-audio-in-python-preview"></a>快速入门：Python 中用于长格式音频的异步合成（预览版）
 
@@ -63,7 +63,7 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 parser = argparse.ArgumentParser(description='Text-to-speech client tool to submit voice synthesis requests.')
 parser.add_argument('--voices', action="store_true", default=False, help='print voice list')
 parser.add_argument('-key', action="store", dest="key", required=True, help='the speech subscription key, like fg1f763i01d94768bda32u7a******** ')
-parser.add_argument('-region', action="store", dest="region", required=True, help='the region information, could be centralindia, canadacentral or uksouth')
+parser.add_argument('-region', action="store", dest="region", required=True, help='the region information, could be chinaeast2)
 args = parser.parse_args()
 baseAddress = 'https://%s.api.speech.azure.cn/api/texttospeech/v3.0-beta1/' % args.region
 

@@ -3,14 +3,14 @@ title: 策略分配结构的详细信息
 description: 介绍策略分配定义，Azure Policy 使用该定义将策略定义和参数关联到资源，以进行评估。
 ms.author: v-tawe
 origin.date: 04/15/2020
-ms.date: 05/29/2020
+ms.date: 08/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 24394562d40a3e26f0a58c362a64d19f68f180b2
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: f86b5af674b8384802b037222a163af49669e423
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199302"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917116"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy 分配结构
 
@@ -77,7 +77,7 @@ Azure Policy 使用策略分配来定义为哪些资源分配了哪些策略或�
 ## <a name="policy-definition-id"></a>策略定义 ID
 
 此字段必须是策略定义或计划定义的完整路径名称。
-`policyDefinitionId` 是字符串，而不是数组。 如果经常要一起分配多个策略，我们建议改用[计划](./definition-structure.md#initiatives)。
+`policyDefinitionId` 是字符串，而不是数组。 如果经常要一起分配多个策略，我们建议改用[计划](./initiative-definition-structure.md)。
 
 ## <a name="parameters"></a>parameters
 

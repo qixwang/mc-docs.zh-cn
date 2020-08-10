@@ -10,12 +10,12 @@ ms.workload: big-data
 origin.date: 04/29/2020
 ms.date: 06/22/2020
 ms.author: v-yiso
-ms.openlocfilehash: bf2290c058e5c107878d9d4f36b2d9146f188d76
-ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
+ms.openlocfilehash: 2f4483fe6d19ba47aea9f8622340ddc1b4410036
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85516753"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917321"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>快速入门：使用 Azure 门户在 Azure HDInsight 中创建 Apache Kafka 群集
 
@@ -80,9 +80,9 @@ SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (
 
     选择“安全性 + 网络”选项卡。
 
-1. 对于本快速入门，请保留默认的安全设置。 
+1. 对于本快速入门，请保留默认的安全设置。 若要详细了解企业安全性套餐，请访问[使用 Azure Active Directory 域服务配置具有企业安全性套餐的 HDInsight 群集](../domain-joined/apache-domain-joined-configure-using-azure-adds.md)。 若要了解如何使用自己的密钥进行 Apache Kafka 磁盘加密，请访问[客户管理的密钥磁盘加密](../disk-encryption.md)
 
-   若要将群集连接到虚拟网络，请从“虚拟网络”下拉列表中选择一个虚拟网络。
+   若要将群集连接到虚拟网络，请从“虚拟网络”下拉列表中选择一个虚拟网络。 
 
    ![将群集添加到虚拟网络](./media/apache-kafka-get-started/azure-portal-cluster-security-networking-kafka-vnet.png)
 
@@ -102,7 +102,7 @@ SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (
 
     创建群集可能需要 20 分钟。
 
-## <a name="connect-to-the-cluster"></a>连接至群集
+## <a name="connect-to-the-cluster"></a>连接到群集
 
 1. 使用 [ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)连接到群集。 编辑以下命令，将 CLUSTERNAME 替换为群集的名称，然后输入该命令：
 

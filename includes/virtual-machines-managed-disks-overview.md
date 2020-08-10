@@ -5,16 +5,18 @@ services: virtual-machines
 author: rockboyfor
 ms.service: virtual-machines
 ms.topic: include
-origin.date: 04/24/2020
-ms.date: 07/06/2020
+origin.date: 07/17/2020
+ms.date: 08/10/2020
+ms.testscope: no
+ms.testdate: 07/06/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: ff7c25710857273d12b2a106fe680ed2b87a87e4
-ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
+ms.openlocfilehash: c9eb23a3321dcdb1a691641480b11ef22950c029
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85945971"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87919297"
 ---
 ## <a name="benefits-of-managed-disks"></a>托管磁盘的好处
 
@@ -43,25 +45,27 @@ ms.locfileid: "85945971"
 
 ### <a name="granular-access-control"></a>粒度访问控制
 
-可以使用 [Azure 基于角色的访问控制 (RBAC)](../articles/role-based-access-control/overview.md) 将对托管磁盘的特定权限分配给一个或多个用户。 托管磁盘公开了各种操作，包括读取、写入（创建/更新）、删除，以及检索磁盘的[共享访问签名 (SAS) URI](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md)。 可以仅将某人员执行其工作所需的操作的访问权限授予该人员。 例如，如果不希望某人员将某个托管磁盘复制到存储帐户，则可以选择不授予对该托管磁盘的导出操作的访问权限。 类似地，如果不希望某人员使用 SAS URI 复制某个托管磁盘，则可以选择不授予对该托管磁盘的该权限。
+可以使用 [Azure 基于角色的访问控制 (Azure RBAC)](../articles/role-based-access-control/overview.md) 将托管磁盘的特定权限分配给一个或多个用户。 托管磁盘公开了各种操作，包括读取、写入（创建/更新）、删除，以及检索磁盘的[共享访问签名 (SAS) URI](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md)。 可以仅将某人员执行其工作所需的操作的访问权限授予该人员。 例如，如果不希望某人员将某个托管磁盘复制到存储帐户，则可以选择不授予对该托管磁盘的导出操作的访问权限。 类似地，如果不希望某人员使用 SAS URI 复制某个托管磁盘，则可以选择不授予对该托管磁盘的该权限。
 
 ### <a name="upload-your-vhd"></a>上传 vhd
 
- 通过直接上传，可以轻松地将 vhd 传输到 Azure 托管磁盘。 以前，必须遵循一个更复杂的过程，包括将数据暂存到存储帐户中。 现在，步骤更少了。 可以更方便地将本地 VM 上传到 Azure、上传到大型托管磁盘，并简化了备份和还原过程。 通过允许你直接将数据上传到托管磁盘而不将它们附加到 VM，还降低了成本。 可以使用直接上传来上传最大为 32 TiB 的 vhd。
+通过直接上传，可以轻松地将 vhd 传输到 Azure 托管磁盘。 以前，必须遵循一个更复杂的过程，包括将数据暂存到存储帐户中。 现在，步骤更少了。 可以更方便地将本地 VM 上传到 Azure、上传到大型托管磁盘，并简化了备份和还原过程。 通过允许你直接将数据上传到托管磁盘而不将它们附加到 VM，还降低了成本。 可以使用直接上传来上传最大为 32 TiB 的 vhd。
 
- 若要了解如何将 vhd 传输到 Azure，请参阅 [CLI](../articles/virtual-machines/linux/disks-upload-vhd-to-managed-disk-cli.md) 或 [PowerShell](../articles/virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell.md) 文章。
+若要了解如何将 vhd 传输到 Azure，请参阅 [CLI](../articles/virtual-machines/linux/disks-upload-vhd-to-managed-disk-cli.md) 或 [PowerShell](../articles/virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell.md) 文章。
 
-## <a name="encryption"></a>加密
+## <a name="security"></a>安全性
+
+### <a name="encryption"></a>加密
 
 托管磁盘提供两种不同的加密。 第一种是服务器端加密 (SSE)，由存储服务执行。 第二种是 Azure 磁盘加密 (ADE)，可以在 VM 的 OS 和数据磁盘上启用。
 
-### <a name="server-side-encryption"></a>服务器端加密
+#### <a name="server-side-encryption"></a>服务器端加密
 
-[Azure 服务器端加密](../articles/virtual-machines/windows/disk-encryption.md)可提供静态加密并保护数据，让你的组织能够信守安全性与合规性方面所做的承诺。 默认情况下，在所有托管磁盘可用的区域中，所有托管磁盘、快照和映像都启用了服务器端加密。 （另一方面，临时磁盘不通过存储服务加密进行加密；请参阅[磁盘角色：临时磁盘](#temporary-disk)）。
+服务器端加密可提供静态加密并保护数据，让你的组织能够信守安全性与合规性方面所做的承诺。 默认情况下，在所有托管磁盘可用的区域中，所有托管磁盘、快照和映像都启用了服务器端加密。 （另一方面，服务器端加密不会加密临时磁盘，除非你在主机上启用加密；请参阅[磁盘角色：临时磁盘](#temporary-disk)）。
 
-可以让 Azure 为你管理密钥（平台托管的密钥），也可以自行管理密钥（客户管理的密钥）。 有关详细信息请访问[托管磁盘常见问题解答页](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption)。
+可以让 Azure 为你管理密钥（平台托管的密钥），也可以自行管理密钥（客户管理的密钥）。 请访问 [Azure 磁盘存储的服务器端加密](../articles/virtual-machines/windows/disk-encryption.md)以了解详细信息。
 
-### <a name="azure-disk-encryption"></a>Azure 磁盘加密
+#### <a name="azure-disk-encryption"></a>Azure 磁盘加密
 
 Azure 磁盘加密允许加密 IaaS 虚拟机使用的 OS 磁盘和数据磁盘。 此加密包括托管磁盘。 对于 Windows，驱动器是使用行业标准 BitLocker 加密技术加密的。 对于 Linux，磁盘是使用 DM-Crypt 技术加密的。 加密过程与 Azure Key Vault 集成，可让你控制和管理磁盘加密密钥。 有关详细信息，请参阅[适用于 Linux VM 的 Azure 磁盘加密](../articles/virtual-machines/linux/disk-encryption-overview.md)或[适用于 Windows VM 的 Azure 磁盘加密](../articles/virtual-machines/windows/disk-encryption-overview.md)。
 
@@ -69,7 +73,7 @@ Azure 磁盘加密允许加密 IaaS 虚拟机使用的 OS 磁盘和数据磁盘�
 
 在 Azure 中有三个主要磁盘角色：数据磁盘、OS 磁盘和临时磁盘。 这些角色将映射到附加到虚拟机的磁盘。
 
-![操作中的磁盘角色](media/virtual-machines-managed-disks-overview/disk-types.png)
+:::image type="content" source="media/virtual-machines-managed-disks-overview/disk-types.png" alt-text="操作中的磁盘角色":::
 
 ### <a name="data-disk"></a>数据磁盘
 
@@ -83,7 +87,7 @@ Azure 磁盘加密允许加密 IaaS 虚拟机使用的 OS 磁盘和数据磁盘�
 
 ### <a name="temporary-disk"></a>临时磁盘
 
-每个 VM 包含一个不是托管磁盘的临时磁盘。 临时磁盘为应用程序和进程提供短期存储，仅用于存储页面或交换文件等数据。 在[维护事件](../articles/virtual-machines/windows/manage-availability.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime)期间或[重新部署 VM](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json) 时，临时磁盘上的数据可能会丢失。 在 VM 成功标准重启期间，临时磁盘上的数据将保留。  
+每个 VM 包含一个不是托管磁盘的临时磁盘。 临时磁盘为应用程序和进程提供短期存储，仅用于存储页面或交换文件等数据。 在[维护事件](../articles/virtual-machines/windows/manage-availability.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime)期间或[重新部署 VM](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fvirtual-machines%2Fwindows%2Ftoc.json) 时，临时磁盘上的数据可能会丢失。 在 VM 成功标准重启期间，临时磁盘上的数据将保留。  
 
 在 Azure Linux VM 上，临时磁盘通常为“/dev/sdb”；在 Windows VM 上，临时磁盘默认为 D:。 临时磁盘未通过服务器端加密进行加密（请参阅[加密](#encryption)）。
 
@@ -121,13 +125,13 @@ Azure 磁盘加密允许加密 IaaS 虚拟机使用的 OS 磁盘和数据磁盘�
 
 下图描绘了如何使用三级预配系统为磁盘实时分配带宽和 IOPS：
 
-![显示带宽和 IOPS 分配情况的三级预配系统](media/virtual-machines-managed-disks-overview/real-time-disk-allocation.png)
+:::image type="content" source="media/virtual-machines-managed-disks-overview/real-time-disk-allocation.png" alt-text="显示带宽和 IOPS 分配情况的三级预配系统":::
 
 第一级预配设置每个磁盘的 IOPS 和带宽分配。  在第二级，计算服务器主机实现 SSD 预配，将其仅应用到存储在服务器的 SSD 上的数据。该 SSD 包括具有缓存功能（ReadWrite 和 ReadOnly）的磁盘以及本地磁盘和临时磁盘。 最后，在第三级进行 VM 网络预配，这适用于计算主机发送给 Azure 存储后端的任何 I/O。 使用此方案时，VM 的性能取决于许多因素，例如 VM 如何使用本地 SSD、附加的磁盘数，以及所附加的磁盘的性能和缓存类型。
 
 下面是有关这些限制的一个示例：Standard_DS1v1 VM 无法达到 P30 磁盘可能达到的 5,000 IOPS，不管它是否进行缓存，因为在 SSD 和网络级别存在限制：
 
-![Standard_DS1v1 示例分配](media/virtual-machines-managed-disks-overview/example-vm-allocation.png)
+:::image type="content" source="media/virtual-machines-managed-disks-overview/example-vm-allocation.png" alt-text="Standard_DS1v1 示例分配":::
 
 Azure 使用优先的网络通道进行磁盘流量传输，优先于其他低优先级网络流量。 在出现网络争用时，这有助于磁盘保持预期的性能。 类似地，Azure 存储在后台使用自动负载均衡来处理资源争用和其他问题。 Azure 存储在你创建磁盘时分配所需资源，并应用主动和被动资源均衡来处理流量级别。 这进一步确保磁盘保持其预期的 IOPS 和吞吐量目标。 可以根据需要使用 VM 级别和磁盘级别的指标来跟踪性能和设置警报。
 

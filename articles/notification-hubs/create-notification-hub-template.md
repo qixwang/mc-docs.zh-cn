@@ -11,12 +11,12 @@ origin.date: 05/15/2020
 ms.date: 07/01/2020
 ms.reviewer: thsomasu
 ms.lastreviewed: 05/15/2020
-ms.openlocfilehash: 405339b992d92249e64690d84eaefee4fa990008
-ms.sourcegitcommit: 5afd7c4c3be9b80c4c67ec55f66fcf347aad74c6
+ms.openlocfilehash: 56a14381c99d0e7bd666d92ddb304534c1b4d0af
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85942557"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917323"
 ---
 # <a name="quickstart-create-a-notification-hub-using-an-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板创建通知中心
 
@@ -93,7 +93,7 @@ Azure 通知中心提供易于使用且横向扩展的推送引擎，允许你�
 
 选择下图登录到 Azure 并打开一个模板。 模板采用通知中心命名空间名称作为参数。 然后，该模板创建一个具有该名称的命名空间，并在该命名空间中创建名为“MyHub”的通知中心。
 
-[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-notification-hub%2Fazuredeploy.json)
+[![“部署到 Azure”](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-notification-hub%2Fazuredeploy.json)
 
 ## <a name="review-deployed-resources"></a>查看已部署的资源
 
@@ -122,7 +122,7 @@ The output looks similar to: null
 
 如果不再需要资源组，可以将其删除，这将删除资源组中的资源。
 
-```azurepowershell-interactive
+```azurepowershell
 $resourceGroupName = Read-Host -Prompt "Enter the resource group name"
 Remove-AzResourceGroup -Name $resourceGroupName
 Write-Host "Press [ENTER] to continue..."

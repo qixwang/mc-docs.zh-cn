@@ -6,15 +6,15 @@ ms.author: v-junlch
 ms.topic: sample
 ms.service: virtual-machine-scale-sets
 ms.subservice: disks
-ms.date: 06/22/2020
+ms.date: 08/07/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 3e7754072a53f27e99b3591a3b707f4c45bbc3fd
-ms.sourcegitcommit: 43db4001be01262959400663abf8219e27e5cb8b
+ms.openlocfilehash: 124a406e73b1bfee7567b8522f689e6e80e56f9f
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85241483"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914232"
 ---
 # <a name="attach-and-use-data-disks-with-a-virtual-machine-scale-set-with-powershell"></a>使用 PowerShell 为虚拟机规模集附加并使用数据磁盘
 此脚本创建虚拟机规模集并附加和准备数据磁盘。
@@ -89,5 +89,5 @@ Remove-AzResourceGroup -Name myResourceGroup
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组及其中包含的所有资源。 |
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](https://docs.microsoft.com/powershell/azure/overview)。
+有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](https://docs.microsoft.com/powershell/azure/)。
 

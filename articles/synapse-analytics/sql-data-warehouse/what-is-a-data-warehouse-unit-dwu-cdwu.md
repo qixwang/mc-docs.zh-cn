@@ -8,16 +8,16 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 origin.date: 11/22/2019
-ms.date: 08/03/2020
+ms.date: 08/10/2020
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 72da89b06abefb19f8a56846a31974e2065ee732
-ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
+ms.openlocfilehash: dde894a60392c3287fc0f57298e2916105209c58
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87426504"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917193"
 ---
 # <a name="data-warehouse-units-dwus"></a>数据仓库单位 (DWU)
 
@@ -101,7 +101,7 @@ SQL 池是一个横向扩展系统，可预配大量计算并查询大量数据�
 
 更改数据仓库单位需要 [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 中所述的权限。
 
-Azure 资源的内置角色（如 SQL DB 参与者和 SQL Server 参与者）可以更改 DWU 设置。
+Azure 内置角色（如 SQL DB 参与者和 SQL Server 参与者）可以更改 DWU 设置。
 
 ## <a name="view-current-dwu-settings"></a>查看当前的 DWU 设置
 
@@ -136,7 +136,7 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-若要更改 DWU，请使用 [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) PowerShell cmdlet。 以下示例将托管在服务器 MyServer 上的数据库 MySQLDW 的服务级别目标设置为 DW1000c。
+若要更改 DWU，请使用 [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) PowerShell cmdlet。 以下示例将托管在服务器 MyServer 上的数据库 MySQLDW 的服务级别目标设置为 DW1000。
 
 ```Powershell
 Set-AzSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServiceObjectiveName "DW1000c"

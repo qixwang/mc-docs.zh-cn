@@ -90,7 +90,7 @@
       href: ./policy-samples.md
 - name: 概念
   items:
-    - name: Azure Resource Manager
+    - name: Azure 资源管理器
       href: ../azure-resource-manager/management/overview.md
       maintainContext: true
     - name: 区域
@@ -107,31 +107,31 @@
       maintainContext: true
       items:
         - name: 常规用途
-          href: ../virtual-machines/windows/sizes-general.md
+          href: ../virtual-machines/sizes-general.md
           maintainContext: true
           items:
             - name: B 系列可突增
-              href: ../virtual-machines/windows/b-series-burstable.md
+              href: ../virtual-machines/sizes-b-series-burstable.md
               maintainContext: true
         - name: 计算优化
-          href: ../virtual-machines/windows/sizes-compute.md
+          href: ../virtual-machines/sizes-compute.md
           maintainContext: true
         - name: 内存优化
-          href: ../virtual-machines/windows/sizes-memory.md
+          href: ../virtual-machines/sizes-memory.md
           maintainContext: true
           items:
             - name: 约束的 vCPU
               href: ../virtual-machines/windows/constrained-vcpu.md
               maintainContext: true
         - name: GPU 优化
-          href: ../virtual-machines/windows/sizes-gpu.md
+          href: ../virtual-machines/sizes-gpu.md
           maintainContext: true
           items:
             - name: 安装 NVIDIA GPU 驱动程序
               href: ../virtual-machines/windows/n-series-driver-setup.md
               maintainContext: true
         - name: Azure 计算单元 (ACU)
-          href: ../virtual-machines/windows/acu.md
+          href: ../virtual-machines/acu.md
           maintainContext: true
         - name: 基准评分
           href: ../virtual-machines/windows/compute-benchmark-scores.md
@@ -140,7 +140,7 @@
       href: ../virtual-machines/linux/endorsed-distros.md
       maintainContext: true
     - name: 维护和更新
-      href: ../virtual-machines/windows/maintenance-and-updates.md
+      href: ../virtual-machines/maintenance-and-updates.md
       maintainContext: true
     - name: 业务流程模式
       href: orchestration-modes.md
@@ -178,6 +178,8 @@
           href: ../virtual-machines/windows/security-policy.md
         - name: Azure 磁盘加密
           href: disk-encryption-overview.md
+        - name: Azure 安全基线
+          href: security-baseline.md
         - name: 内置安全控件
           href: virtual-machine-scale-sets-security-controls.md
       maintainContext: true
@@ -332,8 +334,6 @@
   items:
     - name: Azure PowerShell
       href: 'https://docs.microsoft.com/powershell/azure/overview'
-    - name: Azure CLI
-      href: ../virtual-machines/azure-cli-arm-commands.md
     - name: REST
       href: 'https://docs.microsoft.com/rest/api/virtualmachinescalesets/'
     - name: Azure 模板

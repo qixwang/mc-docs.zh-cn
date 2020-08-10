@@ -4,44 +4,47 @@ description: 了解如何使用 Azure 资源管理器模板快速创建 Kubernet
 services: container-service
 ms.topic: quickstart
 origin.date: 04/19/2019
-ms.date: 05/25/2020
+ms.date: 08/10/2020
+ms.testscope: no
+ms.testdate: 05/25/2020
 ms.author: v-yeche
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 58eb8cd082ea1643899214b1e9429e1391ab02bf
-ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
+ms.openlocfilehash: 9e1ffbc5c7e8ef87e5b4f60f260e3d146d500787
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735062"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842682"
 ---
 <!--Verify successfully-->
-# <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板部署 Azure Kubernetes 服务 (AKS) 群集
+# <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-arm-template"></a>快速入门：使用 ARM 模板部署 Azure Kubernetes 服务 (AKS) 群集
 
-Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管式 Kubernetes 服务。 在本快速入门中，我们将使用 Azure 资源管理器模板部署一个 AKS 群集。 该群集中将运行一个包含 Web 前端和 Redis 实例的多容器应用程序。
+Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管式 Kubernetes 服务。 本快速入门将使用 Azure 资源管理器模板（ARM 模板）部署 AKS 群集。 该群集中将运行一个包含 Web 前端和 Redis 实例的多容器应用程序。
 
-![浏览到 Azure Vote 的图像](media/container-service-kubernetes-walkthrough/azure-voting-application.png)
+:::image type="content" source="media/container-service-kubernetes-walkthrough/azure-voting-application.png" alt-text="浏览到 Azure Vote 的图像":::
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 本快速入门假设读者基本了解 Kubernetes 的概念。 有关详细信息，请参阅 [Azure Kubernetes 服务 (AKS) 的 Kubernetes 核心概念][kubernetes-concepts]。
 
-如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
+如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
 
-<!--MOONCAKE : NOT available on Cloud Shell-->
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="部署到 Azure":::](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-aks%2Fazuredeploy.json)
 
-如果选择在本地安装并使用 CLI，此快速入门教程要求运行 Azure CLI 2.0.61 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
+
+如果选择在本地安装并使用 CLI，本快速入门要求运行 Azure CLI 2.0.61 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
 [!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
-若要使用资源管理器模板创建 AKS 群集，请提供 SSH 公钥和 Azure Active Directory 服务主体。 如果需要其中的任一资源，请参阅以下部分；否则请跳到[创建 AKS 群集](#create-an-aks-cluster)部分。
+如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
-<!--Not Available on [managed identity](use-managed-identity.md)-->
+若要使用资源管理器模板创建 AKS 群集，请提供 SSH 公钥和 Azure Active Directory 服务主体。 或者，可以使用[托管标识](use-managed-identity.md)而不是服务主体来获得权限。 如果需要其中的任一资源，请参阅以下部分；否则请跳到[查看模板](#review-the-template)部分。
 
 ### <a name="create-an-ssh-key-pair"></a>创建 SSH 密钥对
 
-若要访问 AKS 节点，请使用 SSH 密钥对进行连接。 使用 `ssh-keygen` 命令生成 SSH 公钥和私钥文件。 默认情况下，这些文件在 *~/.ssh* 目录中创建。 如果给定的位置存在同名的 SSH 密钥对，则会覆盖这些文件。
+若要访问 AKS 节点，请使用 SSH 密钥对进行连接。 使用 `ssh-keygen` 命令生成 SSH 公钥和私钥文件。 默认情况下，这些文件在 *~/.ssh* 目录中创建。 如果给定位置存在具有相同名称的 SSH 密钥对，则这些文件将被覆盖。
 
 <!--Not Available on [https://shell.azure.com](https://shell.azure.com)-->
 
@@ -77,9 +80,7 @@ az ad sp create-for-rbac --skip-assignment
 
 记下 *appId* 和 *password*。 后续步骤会用到这些值。
 
-## <a name="create-an-aks-cluster"></a>创建 AKS 群集
-
-### <a name="review-the-template"></a>查看模板
+## <a name="review-the-template"></a>查看模板
 
 本快速入门中使用的模板来自 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aks/)。
 
@@ -214,18 +215,18 @@ az ad sp create-for-rbac --skip-assignment
 
 有关更多 AKS 示例，请参阅 [AKS 快速入门模板][aks-quickstart-templates]站点。
 
-### <a name="deploy-the-template"></a>部署模板
+## <a name="deploy-the-template"></a>部署模板
 
 1. 选择下图登录到 Azure 并打开一个模板。
 
-    [![“部署到 Azure”](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-aks%2Fazuredeploy.json)
+    [:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="部署到 Azure":::](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-aks%2Fazuredeploy.json)
 
 2. 选择或输入以下值。
 
     对于本快速入门，请保留“OS 磁盘大小(GB)”、“代理计数”、“代理 VM 大小”、“OS 类型”和“Kubernetes 版本”的默认值。     为以下模板参数提供自己的值：
 
-    * **订阅**：选择 Azure 订阅。
-    * **资源组**：选择“新建”。 输入资源组的唯一名称（例如“myResourceGroup”），然后选择“确定”。
+    * 订阅：选择 Azure 订阅。
+    * 资源组：选择“新建”。 输入资源组的唯一名称（例如 *myResourceGroup*），然后选择“确定”。
     * **位置**：选择一个位置，例如“中国东部 2”。
     * **群集名称**：输入 AKS 群集的唯一名称，例如 *myAKSCluster*。
     * **DNS 前缀**：输入群集的唯一 DNS 前缀，例如 *myakscluster*。
@@ -235,7 +236,7 @@ az ad sp create-for-rbac --skip-assignment
     * **服务主体客户端机密**：复制并粘贴 `az ad sp create-for-rbac` 命令输出的、服务主体的 *password*。
     * **我同意上述条款和条件**：选中此框表示同意。
 
-    ![用于在门户中创建 Azure Kubernetes 服务群集的资源管理器模板](./media/kubernetes-walkthrough-rm-template/create-aks-cluster-using-template-portal.png)
+    :::image type="content" source="./media/kubernetes-walkthrough-rm-template/create-aks-cluster-using-template-portal.png" alt-text="用于在门户中创建 Azure Kubernetes 服务群集的资源管理器模板":::
 
 3. 选择“购买”。
 
@@ -243,7 +244,7 @@ az ad sp create-for-rbac --skip-assignment
 
 ## <a name="validate-the-deployment"></a>验证部署
 
-### <a name="connect-to-the-cluster"></a>连接至群集
+### <a name="connect-to-the-cluster"></a>连接到群集
 
 若要管理 Kubernetes 群集，请使用 Kubernetes 命令行客户端 [kubectl][kubectl]。 如果使用 Azure 本地 Shell，则 `kubectl` 已安装。 若要在本地安装 `kubectl`，请使用 [az aks install-cli][az-aks-install-cli] 命令：
 
@@ -263,7 +264,7 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 kubectl get nodes
 ```
 
-以下示例输出显示在上一步骤中创建的节点。 确保所有节点的状态为“Ready”：
+以下示例输出显示在上一步骤中创建的节点。 确保所有节点的状态为“就绪”：
 
 ```output
 NAME                       STATUS   ROLES   AGE     VERSION
@@ -409,7 +410,7 @@ azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 
 若要查看 Azure Vote 应用的实际效果，请打开 Web 浏览器并转到服务的外部 IP 地址。
 
-![浏览到 Azure Vote 的图像](media/container-service-kubernetes-walkthrough/azure-voting-application.png)
+:::image type="content" source="media/container-service-kubernetes-walkthrough/azure-voting-application.png" alt-text="浏览到 Azure Vote 的图像":::
 
 ## <a name="clean-up-resources"></a>清理资源
 

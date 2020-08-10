@@ -1,16 +1,16 @@
 ---
 title: 模式：策略定义的效果
 description: 此 Azure Policy 模式通过示例介绍了如何使用策略定义的不同效果。
-origin.date: 01/31/2020
-ms.date: 03/30/2020
+origin.date: 06/29/2020
+ms.date: 08/06/2020
 ms.author: v-tawe
 ms.topic: sample
-ms.openlocfilehash: 372c0b8b48ce3072fa696d12a38aa014503e7110
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 042dfa4b159b72d41588e989e7f2baf8aaa1322b
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80586811"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917186"
 ---
 # <a name="azure-policy-pattern-effects"></a>Azure Policy 模式：效果
 

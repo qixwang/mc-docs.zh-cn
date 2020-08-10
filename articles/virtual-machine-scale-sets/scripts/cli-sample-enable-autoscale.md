@@ -7,15 +7,15 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: autoscale
 ms.devlang: azurecli
 ms.topic: sample
-ms.date: 06/22/2020
+ms.date: 08/07/2020
 ms.author: v-junlch
-ms.custom: mvc
-ms.openlocfilehash: cb50a86cb15de08326d4aa3b0269cd384e85d251
-ms.sourcegitcommit: 43db4001be01262959400663abf8219e27e5cb8b
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: e35fe3215d8b4858efc4b055ebb7808892030e11
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85241589"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914236"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>使用 Azure CLI 自动缩放虚拟机规模集
 此脚本创建运行 Ubuntu 的虚拟机规模集，当 CPU 负载发生变化时，它会使用基于主机的指标自动缩放。
@@ -28,33 +28,32 @@ ms.locfileid: "85241589"
 ```azurecli
 #!/bin/bash
 
-$sub=az account show --query id -o tsv
-$resourcegroup_name="myResourceGroup"
-$scaleset_name="myScaleSet"
-$location_name="chinanorth"
+sub=$(az account show --query id -o tsv)
+resourcegroup_name="myResourceGroup"
+scaleset_name="myScaleSet"
+location_name="chinanorth"
 
 # Create a resource group
 az group create --name $resourcegroup_name --location $location_name
 
 # Create a scale set
 # Network resources such as an Azure load balancer are automatically created
-az vmss create `
-  --resource-group $resourcegroup_name `
-  --name $scaleset_name `
-  --image UbuntuLTS `
-  --upgrade-policy-mode automatic `
-  --instance-count 2 `
-  --admin-username azureuser `
-  --generate-ssh-keys `
-  --vm-sku Standard_DS1
+az vmss create \
+  --resource-group $resourcegroup_name \
+  --name $scaleset_name \
+  --image UbuntuLTS \
+  --upgrade-policy-mode automatic \
+  --instance-count 2 \
+  --admin-username azureuser \
+  --generate-ssh-keys
 
 # Define auto scale rules
 # These rules automatically scale up the number of VM instances by 3 instances when the average CPU load over a 5-minute
 # window exceeds 70%
 # The scale set then automatically scales in by 1 instance when the average CPU load over a 5-minute window drops below 30%
-az monitor autoscale-settings create `
-    --resource-group $resourcegroup_name `
-    --name autoscale `
+az monitor autoscale-settings create \
+    --resource-group $resourcegroup_name \
+    --name autoscale \
     --parameters '{"autoscale_setting_resource_name": "autoscale",
       "enabled": true,
       "location": "'$location_name'",

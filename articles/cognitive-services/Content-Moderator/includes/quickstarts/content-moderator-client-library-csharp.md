@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 06/10/2020
 origin.date: 01/27/2020
 ms.author: v-tawe
-ms.openlocfilehash: 09761a2296cb2c99df02cad2ab69f56212ccf900
-ms.sourcegitcommit: 5656c18d7d2faa09329b1a15e352d1622e252d5f
+ms.openlocfilehash: cc5834270d7f4dbce159c4065e60e593a34264ef
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/21/2020
-ms.locfileid: "86863527"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87919282"
 ---
 适用于 .NET 的内容审查器客户端库入门。 请按照以下步骤安装程序包并试用基本任务的示例代码。 内容审查器是一项认知服务，用于检查文本、图像和视频中是否存在可能的冒犯性内容、有风险内容或其他令人不适的内容。 找到此类内容时，此服务会将相应的标签（标记）应用到该内容。 然后，应用会处理标记的内容，使之符合法规的要求，或者为用户维持一个理想的环境。
 
@@ -88,7 +88,7 @@ using System.Threading;
 ```csharp
 // Your Content Moderator subscription key is found in your Azure portal resource on the 'Keys' page. Add to your environment variables.
 private static readonly string SubscriptionKey = Environment.GetEnvironmentVariable("CONTENT_MODERATOR_SUBSCRIPTION_KEY");
-// Base endpoint URL. Add this to your environment variables. Found on 'Overview' page in Azure resource. For example: https://westus.api.cognitive.microsoft.com
+// Base endpoint URL. Add this to your environment variables. Found on 'Overview' page in Azure resource. For example: https://chinaeast2.api.cognitive.azure.cn
 private static readonly string Endpoint = Environment.GetEnvironmentVariable("CONTENT_MODERATOR_ENDPOINT");
 ```
 
@@ -384,7 +384,7 @@ private static readonly string[] IMAGE_URLS_FOR_REVIEW = new string[] { "https:/
 // Select the gear symbol (settings)-->Credentials to retrieve it. Your team name is the Id associated with your subscription.
 private static readonly string TEAM_NAME = Environment.GetEnvironmentVariable("CONTENT_MODERATOR_TEAM_NAME");
 // The callback endpoint for completed human reviews. Add to your environment variables. 
-// For example: https://westus.api.cognitive.microsoft.com/contentmoderator/review/v1.0
+// For example: https://chinaeast2.api.cognitive.azure.cn/contentmoderator/review/v1.0
 // As reviewers complete reviews, results are sent using an HTTP POST request.
 private static readonly string ReviewsEndpoint = Environment.GetEnvironmentVariable("CONTENT_MODERATOR_REVIEWS_ENDPOINT");
 ```

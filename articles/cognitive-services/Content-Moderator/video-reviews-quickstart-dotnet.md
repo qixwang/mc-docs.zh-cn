@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/10/2020
 ms.author: v-tawe
 origin.date: 10/24/2019
-ms.openlocfilehash: 2ab2615c073a405e966ad331429dcd87ba0e3c6f
-ms.sourcegitcommit: 8dae792aefbe44e8388f961b813e3da6564423ec
+ms.openlocfilehash: 0d1c9695171da572fbc6988820dfddf95b823352
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84654941"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917172"
 ---
 # <a name="create-video-reviews-using-net"></a>使用 .NET 创建视频审查
 
@@ -273,7 +273,7 @@ private static VideoFrameBodyItem CreateFrameToAddToReview(string url, string ti
 ```csharp
 /// <summary>
 /// Add a video frame to the indicated video review. For more information, see the API reference:
-/// https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/59e7b76ae7151f0b10d451fd
+/// https://chinaeast2.dev.cognitive.azure.cn/docs/services/580519463f9b070e5c591178/operations/59e7b76ae7151f0b10d451fd
 /// </summary>
 /// <param name="client">The Content Moderator client.</param>
 /// <param name="review_id">The video review ID.</param>

@@ -5,17 +5,17 @@ services: bastion
 author: rockboyfor
 ms.service: bastion
 ms.topic: conceptual
-origin.date: 05/04/2020
-ms.date: 07/27/2020
+origin.date: 07/10/2020
+ms.date: 08/10/2020
 ms.testscope: yes
 ms.testdate: 07/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: ea5e553dc0bfed6010dfd59fed71486db2d341b4
-ms.sourcegitcommit: 4d9846bb03ac24bd98b0c9a781bb8912ff6d2f61
+ms.openlocfilehash: 4eda42b22ffefd057da50459c236ad727a941441
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2020
-ms.locfileid: "86926988"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917064"
 ---
 <!--Verified successfully-->
 # <a name="azure-bastion-faq"></a>Azure Bastion 常见问题解答
@@ -24,5 +24,4 @@ ms.locfileid: "86926988"
 
 [!INCLUDE [Bastion FAQ](../../includes/bastion-faq-include.md)]
 
-<!-- Update_Description: new article about bastion faq -->
-<!--NEW.date: 07/27/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

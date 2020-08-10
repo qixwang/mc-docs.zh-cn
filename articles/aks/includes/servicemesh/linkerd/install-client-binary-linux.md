@@ -2,14 +2,14 @@
 author: rockboyfor
 ms.topic: include
 origin.date: 10/09/2019
-ms.date: 03/09/2020
+ms.date: 08/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 5b990bd2d57980e6e9c52450d736de4ce1d287ee
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 10cacc75585e6a6826303ba99d269d21b815d96f
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290698"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87910677"
 ---
 ## <a name="download-and-install-the-linkerd-linkerd-client-binary"></a>下载并安装 Linkerd linkerd 客户端二进制文件
 

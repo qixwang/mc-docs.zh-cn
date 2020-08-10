@@ -6,15 +6,15 @@ ms.author: v-junlch
 ms.topic: how-to
 ms.service: virtual-machine-scale-sets
 ms.subservice: networking
-ms.date: 07/10/2020
+ms.date: 08/06/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 6f9e68700c78ff628b018bb62446b0e958b9b770
-ms.sourcegitcommit: 65a7360bb14b0373e18ec8eaa288ed3ac7b24ef4
+ms.openlocfilehash: 4a1e88884220292fa59997fc9283ecef10817a7c
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86219739"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914207"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure 虚拟机规模集的网络
 
@@ -62,9 +62,9 @@ Azure 加速网络可以实现对虚拟机的单根 I/O 虚拟化 (SR-IOV)，从
 
 可以使用以下方法部署一个包含现有 Azure 负载均衡器的虚拟机规模集。
 
-* [使用 Azure 门户配置包含现有 Azure 负载均衡器的虚拟机规模集](/load-balancer/configure-vm-scale-set-portal)。
-* [使用 Azure PowerShell 配置包含现有 Azure 负载均衡器的虚拟机规模集](/load-balancer/configure-vm-scale-set-powershell)。
-* [使用 Azure CLI 配置包含现有 Azure 负载均衡器的虚拟机规模集](/load-balancer/configure-vm-scale-set-cli)。
+* [使用 Azure 门户配置包含现有 Azure 负载均衡器的虚拟机规模集](../load-balancer/configure-vm-scale-set-portal.md)。
+* [使用 Azure PowerShell 配置包含现有 Azure 负载均衡器的虚拟机规模集](../load-balancer/configure-vm-scale-set-powershell.md)。
+* [使用 Azure CLI 配置包含现有 Azure 负载均衡器的虚拟机规模集](../load-balancer/configure-vm-scale-set-cli.md)。
 
 ## <a name="create-a-scale-set-that-references-an-application-gateway"></a>创建引用应用程序网关的规模集
 若要创建使用应用程序网关的规模集，请在规模集的 ipConfigurations 节中引用应用程序网关的后端地址池，如此 ARM 模板配置所示：
@@ -359,9 +359,9 @@ Azure REST API 的示例输出：
 若要验证网络安全组是否与规模集相关联，请使用 `az vmss show` 命令。 下面的示例使用 `--query` 来筛选结果，只显示输出的相关部分。
 
 ```azurecli
-az vmss show `
-    -g myResourceGroup `
-    -n myScaleSet `
+az vmss show \
+    -g myResourceGroup \
+    -n myScaleSet \
     --query virtualMachineProfile.networkProfile.networkInterfaceConfigurations[].networkSecurityGroup
 
 [
@@ -375,9 +375,9 @@ az vmss show `
 若要验证应用程序安全组是否与规模集相关联，请使用 `az vmss show` 命令。 下面的示例使用 `--query` 来筛选结果，只显示输出的相关部分。
 
 ```azurecli
-az vmss show `
-    -g myResourceGroup `
-    -n myScaleSet `
+az vmss show \
+    -g myResourceGroup \
+    -n myScaleSet \
     --query virtualMachineProfile.networkProfile.networkInterfaceConfigurations[].ipConfigurations[].applicationSecurityGroups
 
 [

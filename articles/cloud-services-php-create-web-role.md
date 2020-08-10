@@ -14,12 +14,12 @@ ms.topic: article
 origin.date: 04/11/2018
 ms.date: 07/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 58dbad90d31acaeca386601b9487784b8bdd0a41
-ms.sourcegitcommit: c17e965d4ffd82fd7cd86b2648fcb0053a65df00
+ms.openlocfilehash: 0a72205e1fb1849a04920cafee3747c4f1d781d0
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86469978"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917149"
 ---
 # <a name="create-php-web-and-worker-roles"></a>创建 PHP Web 角色和辅助角色
 
@@ -33,7 +33,7 @@ Azure 提供了三种用于运行应用程序的计算模型：Azure 应用服�
 
 ## <a name="download-the-azure-sdk-for-php"></a>下载 Azure SDK for PHP
 
-[Azure SDK for PHP](https://github.com/Azure/azure-sdk-for-php) 由多个组件构成。 本文将使用其中的两个组件：Azure PowerShell 和 Azure 模拟器。 可以通过 Microsoft Web 平台安装程序安装这两个组件。 有关详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
+[Azure SDK for PHP](https://github.com/Azure/azure-sdk-for-php) 由多个组件构成。 本文将使用其中的两个组件：Azure PowerShell 和 Azure 模拟器。 可以通过 Microsoft Web 平台安装程序安装这两个组件。 有关详细信息，请参阅 [如何安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)。
 
 ## <a name="create-a-cloud-services-project"></a>创建云服务项目
 

@@ -1,5 +1,5 @@
 ---
-title: Microsoft Azure Data Box 磁盘系统要求 | Microsoft Docs
+title: Azure Data Box 磁盘系统要求 | Microsoft Docs
 description: 了解 Azure Data Box 磁盘的软件和网络要求
 services: databox
 author: WenJason
@@ -10,12 +10,12 @@ origin.date: 09/04/2019
 ms.date: 07/27/2020
 ms.author: v-jay
 ms.localizationpriority: high
-ms.openlocfilehash: 134d068b08e33d2a4cdd78f4463ec9cd745b47bf
-ms.sourcegitcommit: c3f15613c875bb52d5a105445efd0f36b9f24c9c
+ms.openlocfilehash: a567440389f4f7cd444e5b5a79c1fc10879a1fea
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86473476"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914398"
 ---
 ::: zone target="docs"
 

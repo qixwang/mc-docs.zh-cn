@@ -6,12 +6,12 @@ ms.topic: article
 origin.date: 02/02/2019
 ms.date: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: 07c00f0dfced1ec7c3305d2346e45c68e3966f23
-ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
+ms.openlocfilehash: 465e2ed8f3d8889b86fe9191a0e31f6ec49730d8
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735072"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842536"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>将 Azure Active Directory 与 Azure Kubernetes Service 集成
 
@@ -120,17 +120,17 @@ ms.locfileid: "83735072"
 
     c. 对于“重定向 URI”类型，请选择“Web”，然后输入任何 URI 格式的值，例如 *https://aksazureadclient* 。
 
-        <!--MOONCAKE CUSTOMIZED-->
+    <!--MOONCAKE CUSTOMIZED-->
     
-        >[!NOTE]
-        >If you are creating a new RBAC-enabled cluster to support Azure Monitor for containers, add the following two additional redirect URLs to this list as **Web** application types. The first base URL value should be `https://afd.hosting.azureportal.chinacloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` and the second base URL value should be `https://monitoring.hosting.azureportal.chinacloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`.
-        >
+    >[!NOTE]
+    >若要新建启用了 RBAC 的群集以支持用于容器的 Azure Monitor，请将以下两个附加重定向 URL 作为 **Web** 应用程序类型添加到此列表中。 第一个基 URL 值应为 `https://afd.hosting.azureportal.chinacloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`，第二个基 URL 值应为 `https://monitoring.hosting.azureportal.chinacloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`。
+    >
     
-        <!--CORRECT ON https://afd.hosting.azureportal.chinaloudapi.cn-->
-        <!--MOONCAKE CUSTOMIZED-->
-        <!--DUPLICATED ON REFERENCE https://afd.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html ON AZURE CHINA CLOUD-->
-        <!--Not Available on [How to setup the Live Data (preview) feature](../azure-monitor/insights/container-insights-livedata-setup.md)-->
-        <!--Not Available on [Configure AD integrated authentication](../azure-monitor/insights/container-insights-livedata-setup.md#configure-ad-integrated-authentication)-->
+    <!--CORRECT ON https://afd.hosting.azureportal.chinaloudapi.cn-->
+    <!--MOONCAKE CUSTOMIZED-->
+    <!--DUPLICATED ON REFERENCE https://afd.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html ON AZURE CHINA CLOUD-->
+    <!--Not Available on [How to setup the Live Data (preview) feature](../azure-monitor/insights/container-insights-livedata-setup.md)-->
+    <!--Not Available on [Configure AD integrated authentication](../azure-monitor/insights/container-insights-livedata-setup.md#configure-ad-integrated-authentication)-->
     
     d. 完成后，选择“注册”。
 
@@ -325,7 +325,7 @@ error: You must be logged in to the server (Unauthorized)
 [az-group-create]: https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-create
 [open-id-connect]: ../active-directory/develop/v2-protocols-oidc.md
 [az-ad-user-show]: https://docs.azure.cn/cli/ad/user?view=azure-cli-latest#az-ad-user-show
-[rbac-authorization]: concepts-identity.md#role-based-access-controls-rbac
+[rbac-authorization]: concepts-identity.md
 [operator-best-practices-identity]: operator-best-practices-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md
 [azure-ad-cli]: azure-ad-integration-cli.md

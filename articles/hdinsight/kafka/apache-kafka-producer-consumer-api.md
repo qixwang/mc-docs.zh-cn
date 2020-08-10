@@ -14,12 +14,12 @@ ms.topic: tutorial
 origin.date: 05/19/2020
 ms.author: v-yiso
 ms.date: 07/06/2020
-ms.openlocfilehash: c2539725e997023fc772d4901119aa8c17fad352
-ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
+ms.openlocfilehash: d84a3d498162f9753b2f78a572db39c1c4d1a846
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85516751"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917161"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>教程：使用 Apache Kafka 生成者和使用者 API
 
@@ -48,7 +48,7 @@ Kafka 生成者 API 允许应用程序将数据流发送到 Kafka 群集。 Kafk
 
 ## <a name="understand-the-code"></a>了解代码
 
-示例应用程序位于 `Producer-Consumer` 子目录的 [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) 中。 该应用程序主要包含四个文件：
+示例应用程序位于 `Producer-Consumer` 子目录的 [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) 中。 如果你使用启用了**企业安全性套餐 (ESP)** 的 Kafka 群集，则应当使用 `DomainJoined-Producer-Consumer` 子目录中的应用程序版本。
 
 该应用程序主要包含四个文件：
 * `pom.xml`：此文件定义项目依赖项、Java 版本和打包方法。
@@ -81,7 +81,7 @@ Kafka 生成者 API 允许应用程序将数据流发送到 Kafka 群集。 Kafk
 
 ### <a name="producerjava"></a>Producer.java
 
-生成者与 Kafka 中转站主机（辅助角色节点）进行通信，并将数据发送到 Kafka 主题。 以下代码片段摘自 [GitHub 存储库](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started)中的 [Producer.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Producer.java) 文件，演示了如何设置生成者属性：
+生成者与 Kafka 中转站主机（辅助角色节点）进行通信，并将数据发送到 Kafka 主题。 以下代码片段摘自 [GitHub 存储库](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started)中的 [Producer.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Producer.java) 文件，演示了如何设置生成者属性。 对于启用了企业安全性的群集，必须将其他属性添加到“properties.setProperty(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, "SASL_PLAINTEXT");”
 
 ```java
 Properties properties = new Properties();
@@ -95,7 +95,7 @@ KafkaProducer<String, String> producer = new KafkaProducer<>(properties);
 
 ### <a name="consumerjava"></a>Consumer.java
 
-使用者与 Kafka 代理主机（辅助角色节点）进行通信，并在循环中读取记录。 [Consumer.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Consumer.java) 文件中的以下代码片段设置了使用者属性：
+使用者与 Kafka 代理主机（辅助角色节点）进行通信，并在循环中读取记录。 [Consumer.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Consumer.java) 文件中的以下代码片段设置了使用者属性。 对于启用了企业安全性的群集，必须将其他属性添加到“properties.setProperty(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, "SASL_PLAINTEXT");”
 
 ```java
 KafkaConsumer<String, String> consumer;
@@ -137,13 +137,13 @@ scp kafka-producer-consumer*.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.cn:kafka
 
 1. 从 [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) 下载并提取示例。
 
-2. 将当前目录设置为 `hdinsight-kafka-java-get-started\Producer-Consumer` 目录的位置，然后执行以下命令：
+2. 将当前目录设置为 `hdinsight-kafka-java-get-started\Producer-Consumer` 目录的位置。 如果你使用启用了**企业安全性套餐 (ESP)** 的 Kafka 群集，则应当将位置设置为 `DomainJoined-Producer-Consumer` 子目录。 运行以下命令以生成应用程序：
 
     ```cmd
     mvn clean package
     ```
 
-    此命令创建名为 `target` 的目录，其中包含名为 `kafka-producer-consumer-1.0-SNAPSHOT.jar` 的文件。
+    此命令创建一个名为 `target` 的目录，其中包含名为 `kafka-producer-consumer-1.0-SNAPSHOT.jar` 的文件。 对于 ESP 群集，该文件将是 `kafka-producer-consumer-esp-1.0-SNAPSHOT.jar`
 
 3. 将 `sshuser` 替换为群集的 SSH 用户，并将 `CLUSTERNAME` 替换为群集的名称。 输入以下命令，将 `kafka-producer-consumer-1.0-SNAPSHOT.jar` 文件复制到 HDInsight 群集。 出现提示时，请输入 SSH 用户的密码。
 
@@ -220,7 +220,13 @@ tmux new-session 'java -jar kafka-producer-consumer.jar consumer myTest $KAFKABR
 > [!IMPORTANT]
 > 使用者组中的使用者实例数不能超过分区数。 此示例中，一个使用者组最多可包含八个使用者，因为这是本主题中的分区数。 也可拥有多个使用者组，每个组的使用者不能超过八个。
 
-Kafka 中存储的记录将按接收顺序存储在分区中。 若要 *在分区中*实现有序的记录传送，可以创建使用者实例数与分区数相匹配的使用者组。 若要 *在主题中*实现有序的记录传送，可以创建仅包含一个使用者实例的使用者组。
+存储在 Kafka 中的记录都按在分区中接收的顺序进行存储。 若要在分区内实现记录的有序交付，请创建一个使用者组，其中的使用者实例数与分区数匹配。 若要在主题内实现记录的有序交付，请创建仅含一个使用者实例的使用者组。
+
+## <a name="common-issues-faced"></a>面临的常见问题
+
+1. 主题创建失败 如果群集启用了企业安全性套餐，请使用[面向生成者和使用者的预建 JAR 文件](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Prebuilt-Jars/kafka-producer-consumer-esp.jar)。 可以从 [`DomainJoined-Producer-Consumer` 子目录](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer)中的代码生成 ESP jar。 请注意，生成者和使用者属性会为启用了 ESP 的群集保存附加属性 `CommonClientConfigs.SECURITY_PROTOCOL_CONFIG`。
+
+2. 启用了 ESP 的群集面临的问题 如果生产和使用操作失败，并且你使用的是启用了 ESP 的群集，请检查所有 Ranger 策略中是否存在用户 `kafka`。 如果该用户不存在，请将它添加到所有 Ranger 策略。
 
 ## <a name="clean-up-resources"></a>清理资源
 

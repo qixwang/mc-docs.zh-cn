@@ -6,15 +6,17 @@ author: rockboyfor
 ms.service: virtual-machines
 ms.topic: include
 origin.date: 03/27/2018
-ms.date: 07/06/2020
+ms.date: 08/10/2020
+ms.testscope: no
+ms.testdate: 07/06/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 3f2ec0acdb8dfd9ffad635c63bdd96f65af1cf0c
-ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
+ms.openlocfilehash: 321c32c4f92be4b0f3265ede0a2ada6a4188ad71
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85946055"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87919269"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>了解 VM 重启 - 维护和停机
 有三种情况可能会导致 Azure 中的虚拟机受影响：计划外硬件维护、意外停机、计划内维护。
@@ -33,13 +35,12 @@ ms.locfileid: "85946055"
 
 * [在可用性集中配置多个虚拟机以确保冗余]
 * [在可用性集中对 VM 使用托管磁盘]
-* [使用计划事件主动响应影响 VM 的事件](/virtual-machines/virtual-machines-scheduled-events)
+* [使用计划事件主动响应影响 VM 的事件](../articles/virtual-machines/linux/scheduled-events.md)
 * [将每个应用程序层配置到不同的可用性集中]
 * [将负载均衡器与可用性集组合在一起]
     
-    <!-- Not Available on * [Use availability zones to protect from datacenter level failures]-->
-    <!-- Not Available on Availability Zone -->
-    
+<!-- Not Available on * [Use availability zones to protect from datacenter level failures]-->
+<!-- Not Available on Availability Zone -->
 <!--Not Avaialble on ## Use availability zones to protect from datacenter level failures-->
     
 ## <a name="configure-multiple-virtual-machines-in-an-availability-set-for-redundancy"></a>在可用性集中配置多个虚拟机以确保冗余
@@ -56,21 +57,21 @@ ms.locfileid: "85946055"
 
 <!--Image reference-->
 
-![更新域和容错域配置的概念图](./media/virtual-machines-common-manage-availability/ud-fd-configuration.png)
+:::image type="content" source="./media/virtual-machines-common-manage-availability/ud-fd-configuration.png" alt-text="更新域和容错域配置的概念图":::
 
 <a name="use-managed-disks-for-vms-in-an-availability-set"></a>
-## <a name="use-managed-disks-for-vms-in-an-availability-set"></a>在可用性集中对 VM 使用托管磁盘
+## <a name="use-managed-disks-for-vms-in-an-availability-set"></a>为可用性集中的 VM 使用托管磁盘
 如果当前使用的 VM 没有托管磁盘，则强烈建议[在可用性集中转换 VM，以便使用托管磁盘](../articles/virtual-machines/windows/convert-unmanaged-to-managed-disks.md)。
 
 通过确保可用性集中的 VM 的磁盘彼此之间完全隔离以避免单点故障，[托管磁盘](../articles/virtual-machines/windows/managed-disks-overview.md)为可用性集提供了更佳的可靠性。 为此，会自动将磁盘放置在不同的存储容错域（存储群集）中，并使它们与 VM 容错域一致。 如果某个存储容错域因硬件或软件故障而失败，则只有其磁盘在该存储容错域上的 VM 实例会失败。
-![托管磁盘 FD](./media/virtual-machines-common-manage-availability/md-fd-updated.png)
+:::image type="content" source="./media/virtual-machines-common-manage-availability/md-fd-updated.png" alt-text="托管磁盘 FD":::
 
-<!--MOONCAKE: CORRECT ON keep fixed by region currently in China -->
+<!--MOONCAKE CUSTOMIZTION:  CORRECT ON keep fixed by region currently in China-->
 
 > [!IMPORTANT]
 > 托管可用性集的容错域数目前在中国按区域保持固定 - 每个区域两个。 您可以通过运行以下脚本来查看每个区域的容错域。
 
-<!--Not Available on or three per region-->
+<!--MOONCAKE CUSTOMIZTION:  CORRECT ON keep fixed by region currently in China-->
 
 ```powershell
 Get-AzComputeResourceSku | where{$_.ResourceType -eq 'availabilitySets' -and $_.Name -eq 'Aligned'}
@@ -92,11 +93,11 @@ az vm list-skus --resource-type availabilitySets --query '[?name==`Aligned`].{Lo
 
 1. 将与同一 VM 关联的所有磁盘（OS 和数据）放置在同一存储帐户中
 2. 在向存储帐户中添加更多 VHD 之前，请**查看 Azure 存储帐户中非托管磁盘的数量[限制](../articles/storage/blobs/scalability-targets-premium-page-blobs.md)**
-3. **为可用性集中的每个 VM 使用单独的存储帐户。** 同一可用性集中的多个 VM 不能共享存储帐户。 不同可用性集中的 VM 共享存储帐户是可以接受的，只要遵循上述最佳做法即可 ![托管磁盘 FD](./media/virtual-machines-common-manage-availability/umd-updated.png)
+3. **为可用性集中的每个 VM 使用单独的存储帐户。** 同一可用性集中的多个 VM 不能共享存储帐户。 不同可用性集中的 VM 共享存储帐户是可以接受的，只要遵循上述最佳做法即可 :::image type="content" source="./media/virtual-machines-common-manage-availability/umd-updated.png" alt-text="托管磁盘 FD":::
 
 ## <a name="use-scheduled-events-to-proactively-respond-to-vm-impacting-events"></a>使用计划事件主动响应影响事件的 VM
 
-如果订阅[计划事件](/virtual-machines/virtual-machines-scheduled-events)，则将通知 VM 即将发生会对 VM 造成影响的维护事件。 启用计划事件后，可在执行维护活动之前为虚拟机提供最少的时间。 例如，可能会影响 VM 的主机 OS 更新将作为事件排队等候，通知中将详述其影响，以及在未采取任何操作的情况下执行维护的时间。 当 Azure 检测到即将发生可能影响 VM 的硬件失败时，计划事件也会排队等候，以便决定执行修复的时间。 客户可以使用事件在维护前执行任务，例如，保存状态、故障转移到辅助 VM 等。 完成用于妥善处理维护事件的逻辑后，可批准未完成的计划事件，以允许平台继续进行维护。
+如果订阅[计划事件](../articles/virtual-machines/linux/scheduled-events.md)，则将通知 VM 即将发生会对 VM 造成影响的维护事件。 启用计划事件后，可在执行维护活动之前为虚拟机提供最少的时间。 例如，可能会影响 VM 的主机 OS 更新将作为事件排队等候，通知中将详述其影响，以及在未采取任何操作的情况下执行维护的时间。 当 Azure 检测到即将发生可能影响 VM 的硬件失败时，计划事件也会排队等候，以便决定执行修复的时间。 客户可以使用事件在维护前执行任务，例如，保存状态、故障转移到辅助 VM 等。 完成用于妥善处理维护事件的逻辑后，可批准未完成的计划事件，以允许平台继续进行维护。
 
 <!--Not Available on availability zones-->
 

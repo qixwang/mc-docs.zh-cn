@@ -6,16 +6,16 @@ services: container-service
 author: rockboyfor
 ms.topic: troubleshooting
 origin.date: 11/05/2018
-ms.date: 07/13/2020
+ms.date: 08/10/2020
 ms.testscope: no
 ms.testdate: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: 498c77a2f9624022883039fdb90c2e2322af69d6
-ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
+ms.openlocfilehash: b9cb8076781bf5a1a69a539187681da83fa20c3f
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86218816"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842677"
 ---
 # <a name="checking-for-kubernetes-best-practices-in-your-cluster"></a>检查 Kubernetes 群集中的最佳做法
 
@@ -32,7 +32,7 @@ Kube-advisor 工具可以报告 Windows 应用程序和 Linux 应用程序的 Po
 
 ## <a name="running-kube-advisor"></a>运行 kube-advisor
 
-若要在针对[基于角色的访问控制 (RBAC)](azure-ad-integration.md) 配置的群集上运行此工具，请使用以下命令。 第一个命令可创建 Kubernetes 服务帐户。 第二个命令使用该服务帐户在 pod 中运行该工具，并配置 pod 以在退出后删除。 
+若要在针对[基于角色的访问控制 (RBAC)](./azure-ad-integration-cli.md) 配置的群集上运行此工具，请使用以下命令。 第一个命令可创建 Kubernetes 服务帐户。 第二个命令使用该服务帐户在 pod 中运行该工具，并配置 pod 以在退出后删除。 
 
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.yaml
@@ -48,7 +48,7 @@ kubectl run --rm -i -t kubeadvisor --image=mcr.microsoft.com/aks/kubeadvisor --r
 
 在几秒内，应会看到介绍部署的潜在改进的表。
 
-![kube-advisor 输出](media/kube-advisor-tool/kube-advisor-output.png)
+:::image type="content" source="media/kube-advisor-tool/kube-advisor-output.png" alt-text="kube-advisor 输出":::
 
 ## <a name="checks-performed"></a>执行的检查
 

@@ -12,12 +12,12 @@ origin.date: 03/26/2019
 ms.date: 06/06/2019
 ms.author: v-junlch
 ms.custom: seodec18
-ms.openlocfilehash: c5a47993399d819fbaf029247d43fd6beab2130c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 1434d6145ad29922eba9df3548e3632fba50e9cc
+ms.sourcegitcommit: caa18677adb51b5321ad32ae62afcf92ac00b40b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "66830065"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88023386"
 ---
 # <a name="quickstart-extract-handwritten-text-using-the-computer-vision-c-sdk"></a>快速入门：使用计算机视觉 C# SDK 提取手写文本
 
@@ -184,8 +184,6 @@ dog
 The quick brown fox jumps over the lazy
 Pack my box with five dozen liquor jugs
 ```
-
-请参阅[快速入门：提取手写文本 - REST、C#](../QuickStarts/CSharp-hand-text.md#examine-the-response)，以获取 API 调用的原始 JSON 输出的示例。
 
 ## <a name="next-steps"></a>后续步骤
 

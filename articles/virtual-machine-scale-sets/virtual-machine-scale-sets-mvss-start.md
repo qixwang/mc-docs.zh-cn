@@ -1,22 +1,23 @@
 ---
 title: 了解虚拟机规模集模板
 description: 了解如何通过几个简单的步骤为 Azure 虚拟机规模集创建基本规模集模板。
-author: mayanknayar
-tags: azure-resource-manager
-ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
-ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
-ms.date: 02/10/2020
+author: mimckitt
 ms.author: v-junlch
-ms.openlocfilehash: 038239af6558209785769286643a32a193500d37
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.topic: conceptual
+ms.service: virtual-machine-scale-sets
+ms.subservice: template
+ms.date: 08/06/2020
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: d5a31c250dc6ed8ccae376df0511a1b1cc2b773d
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77128874"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914383"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>了解虚拟机规模集模板
-[Azure 资源管理器模板](/azure-resource-manager/template-deployment-overview#template-deployment-process)是部署成组的相关资源的好办法。 本系列教程演示如何创建基本规模集模板，以及如何修改此模板以满足各种场景。 所有示例都来自此 [GitHub 存储库](https://github.com/gatneil/mvss)。
+[Azure 资源管理器模板](../azure-resource-manager/templates/overview.md#template-deployment-process)是部署成组的相关资源的好办法。 本系列教程演示如何创建基本规模集模板，以及如何修改此模板以满足各种场景。 所有示例都来自此 [GitHub 存储库](https://github.com/gatneil/mvss)。
 
 此模板简单易用。 有关更完整的规模集模板的示例，请参阅 [Azure 快速入门模板 GitHub 存储库](https://github.com/Azure/azure-quickstart-templates)，并搜索包含字符串 `vmss` 的文件夹。
 
@@ -114,7 +115,7 @@ Resource Manager 模板还可用于定义以后要在模板中使用的变量。
 ## <a name="specify-scale-set-properties"></a>指定规模集属性
 规模集具有多个用于自定义规模集中 VM 的属性。 有关这些属性的完整列表，请参阅[模板参考](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachinescalesets)。 在本教程中，仅设置一些常用属性。
 ### <a name="supply-vm-size-and-capacity"></a>提供 VM 大小和容量
-规模集需要知道要创建的 VM 的大小（“sku name”） 和要创建的此类 VM的 数量（“sku capacity”）。 若要查看可用的 VM 大小，请参阅 [VM 大小文档](/virtual-machines/virtual-machines-windows-sizes)。
+规模集需要知道要创建的 VM 的大小（“sku name”） 和要创建的此类 VM的 数量（“sku capacity”）。 若要查看可用的 VM 大小，请参阅 [VM 大小文档](../virtual-machines/windows/sizes.md)。
 
 ```json
        "sku": {
@@ -201,4 +202,3 @@ Resource Manager 模板还可用于定义以后要在模板中使用的变量。
 
 [!INCLUDE [mvss-next-steps-include](../../includes/mvss-next-steps.md)]
 
-<!-- Update_Description: link update -->

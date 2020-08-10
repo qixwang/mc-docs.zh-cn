@@ -1,16 +1,16 @@
 ---
 title: 模式：策略定义中的 count 运算符
 description: 此 Azure Policy 模式提供了有关如何在策略定义中使用 count 运算符的示例。
-origin.date: 01/31/2020
-ms.date: 05/29/2020
+origin.date: 06/29/2020
+ms.date: 08/06/2020
 ms.author: v-tawe
 ms.topic: sample
-ms.openlocfilehash: 77774b89be39b9620b0129ef6c94aa1bd28825b4
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: faafb92efea1228a70f45757ad8dc04c9212323e
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199258"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917198"
 ---
 # <a name="azure-policy-pattern-the-count-operator"></a>Azure Policy 模式：count 运算符
 

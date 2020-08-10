@@ -6,17 +6,17 @@ ms.author: v-junlch
 ms.topic: overview
 ms.service: virtual-machine-scale-sets
 ms.subservice: imaging
-ms.date: 05/21/2020
+ms.date: 08/06/2020
 ms.reviewer: cynthn
 ms.custom: akjosh
-ms.openlocfilehash: be4cc3e6e554439e94fdad4cfd0f04a5f9871e0b
-ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
+ms.openlocfilehash: c0a10dc6dc7232966c76839d65d2c83f85e81476
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83749536"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914230"
 ---
-# <a name="shared-image-galleries-overview"></a>共享映像库概述
+# <a name="shared-image-galleries-for-vm-images"></a>VM 映像的共享映像库
 
 
 [!INCLUDE [virtual-machines-common-shared-image-galleries](../../includes/virtual-machines-common-shared-image-galleries.md)]

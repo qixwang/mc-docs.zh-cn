@@ -19,7 +19,8 @@
       href: quickstart-create-data-factory-python.md
     - name: 创建数据工厂 - REST
       href: quickstart-create-data-factory-rest-api.md
-    - name: 创建数据工厂 - 资源管理器模板
+    - name: 创建数据工厂 - ARM 模板
+      displayName: Resource Manager
       href: quickstart-create-data-factory-resource-manager-template.md
     - name: 安全性 - 启用客户管理的密钥加密
       href: enable-customer-managed-key.md
@@ -336,6 +337,8 @@
           href: connector-web-table.md
         - name: Xero
           href: connector-xero.md
+        - name: XML 格式
+          href: format-xml.md
         - name: Zoho
           href: connector-zoho.md
     - name: 移动数据
@@ -376,7 +379,7 @@
         - name: 自定义活动
           href: transform-data-using-dotnet-custom-activity.md
         - name: 数据资源管理器命令活动
-          href: /data-explorer/data-factory-command-activity?toc=/azure/data-factory/toc.json
+          href: /data-explorer/data-factory-command-activity?toc=/data-factory/toc.json
         - name: HDInsight Hive 活动
           href: transform-data-using-hadoop-hive.md
         - name: HDInsight MapReduce 活动
@@ -579,6 +582,8 @@
           href: ssis-integration-runtime-management-troubleshoot.md
         - name: 在 Azure-SSIS IR 中排查包执行问题
           href: ssis-integration-runtime-ssis-activity-faq.md
+        - name: 在 Azure-SSIS IR 中诊断连接性
+          href: ssis-integration-runtime-diagnose-connectivity-faq.md
 - name: 参考
   items:
     - name: .NET

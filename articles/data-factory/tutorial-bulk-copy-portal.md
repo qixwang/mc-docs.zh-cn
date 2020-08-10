@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 origin.date: 06/22/2020
-ms.date: 07/27/2020
-ms.openlocfilehash: ab43c13b2047daf31ef78b33f598fd9828c34bcf
-ms.sourcegitcommit: 0eaa82cf74477d26d06bdd8fb6e715e6ed1339c4
+ms.date: 08/10/2020
+ms.openlocfilehash: 2598b542116f828002f542e1af76555d6b4fc67a
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86974309"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914225"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>在 Azure 门户中使用 Azure 数据工厂批量复制多个表
 
@@ -82,7 +82,9 @@ ms.locfileid: "86974309"
  
    Azure 数据工厂的名称必须 **全局唯一**。 如果看到名称字段的以下错误，请更改数据工厂的名称（例如，改为 yournameADFTutorialBulkCopyDF）。 有关数据工厂项目命名规则，请参阅[数据工厂 - 命名规则](naming-rules.md)一文。
   
-       `Data factory name "ADFTutorialBulkCopyDF" is not available`
+    ```text
+    Data factory name "ADFTutorialBulkCopyDF" is not available
+    ```
 1. 选择要在其中创建数据工厂的 Azure **订阅**。 
 1. 对于**资源组**，请执行以下步骤之一：
      

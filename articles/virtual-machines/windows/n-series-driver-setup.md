@@ -2,21 +2,23 @@
 title: 在运行 Windows 的 N 系列 VM 上安装 NVIDIA GPU 驱动程序
 description: 如何为 Azure 中运行 Windows Server 或 Windows 的 N 系列 VM 安装 NVIDIA GPU 驱动程序
 author: rockboyfor
-manager: digimobile
+manager: jkabat
 ms.service: virtual-machines-windows
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 origin.date: 09/24/2018
-ms.date: 07/06/2020
+ms.date: 08/10/2020
+ms.testscope: no
+ms.testdate: 07/06/2020
 ms.author: v-yeche
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1f1414dbbabe0e882f5b7812dafbfb00a2ecc4d3
-ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
+ms.openlocfilehash: cb5f008c6a67167308ec7f19289e94bb58e3db88
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85946038"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917238"
 ---
 <!--Not Available on Mooncake-->
 <!--NVV4 series is not Available on MOONCAKE-->
@@ -28,7 +30,7 @@ ms.locfileid: "85946038"
 
 如果选择手动安装 NVIDIA GPU 驱动程序，请参阅本文，其中提供了受支持的操作系统、驱动程序以及安装和验证步骤。 针对 [Linux VM](../linux/n-series-driver-setup.md?toc=%2fvirtual-machines%2flinux%2ftoc.json) 也提供了驱动程序手动安装信息。
 
-有关基本规范、存储容量和磁盘详细信息，请参阅 [GPU Windows VM 大小](sizes-gpu.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)。 
+有关基本规范、存储容量和磁盘详细信息，请参阅 [GPU Windows VM 大小](../sizes-gpu.md?toc=/virtual-machines/windows/toc.json)。 
 
 [!INCLUDE [virtual-machines-n-series-windows-support](../../../includes/virtual-machines-n-series-windows-support.md)]
 
@@ -56,11 +58,11 @@ ms.locfileid: "85946038"
 
 2. 运行 `nvidia-smi`。 如果安装了驱动程序，将看到如下输出。 除非当前正在 VM 上运行 GPU 工作负荷，否则“GPU-Util”将显示“0%” 。 驱动程序版本和 GPU 详细信息可能与所示的内容不同。
 
-    ![NVIDIA 设备状态](./media/n-series-driver-setup/smi.png)  
+    :::image type="content" source="./media/n-series-driver-setup/smi.png" alt-text="NVIDIA 设备状态":::  
 
 ## <a name="rdma-network-connectivity"></a>RDMA 网络连接
 
-可以在同一可用性集或虚拟机规模集的单个放置组中部署的支持 RDMA 的 N 系列 VM（例如 NC24r）上启用 RDMA 网络连接。 必须添加 HpcVmDrivers 扩展才能安装用来启用 RDMA 连接的 Windows 网络设备驱动程序。 若要向支持 RDMA 的 N 系列 VM 添加 VM 扩展，请使用 Azure 资源管理器的 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) cmdlet。
+可以在同一可用性集或虚拟机规模集的单个放置组中部署的支持 RDMA 的 N 系列 VM（例如 NC24r）上启用 RDMA 网络连接。 必须添加 HpcVmDrivers 扩展才能安装用来启用 RDMA 连接的 Windows 网络设备驱动程序。 若要向支持 RDMA 的 N 系列 VM 添加 VM 扩展，请使用 Azure 资源管理器的 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/) cmdlet。
 
 <!--MOONCAKE: CORRECT NC24R/nc24r means Standard_NC24rs_v3 support RDMA-->
 <!--Notice: NCV3 is valid on chinaeast2 and chinanorth2-->
@@ -71,7 +73,7 @@ ms.locfileid: "85946038"
 Set-AzVMExtension -ResourceGroupName "myResourceGroup" -Location "chinanorth2" -VMName "myVM" -ExtensionName "HpcVmDrivers" -Publisher "Microsoft.HpcCompute" -Type "HpcVmDrivers" -TypeHandlerVersion "1.1"
 ```
 
-有关详细信息，请参阅[适用于 Windows 的虚拟机扩展和功能](extensions-features.md)。
+有关详细信息，请参阅[适用于 Windows 的虚拟机扩展和功能](../extensions/features-windows.md)。
 
 对于使用 [Microsoft MPI](https://docs.microsoft.com/message-passing-interface/microsoft-mpi) 或 Intel MPI 5.x 运行的应用程序，RDMA 网络支持消息传递接口 (MPI) 流量。 
 

@@ -8,16 +8,16 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 origin.date: 08/29/2018
-ms.date: 08/03/2020
+ms.date: 08/10/2020
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8c1e1cb870f4531e787a2b3f619ff766c4bc0028
-ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
+ms.openlocfilehash: 3339ebb89ba4af5d0349c357827f819c2959fc88
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87426466"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917267"
 ---
 # <a name="restore-an-existing-sql-pool"></a>还原现有的 SQL 池
 
@@ -29,7 +29,7 @@ ms.locfileid: "87426466"
 
 ## <a name="before-you-begin"></a>准备阶段
 
-1. 确保[安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
+1. 确保[安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
 2. 有一个现有的还原点，需要从该点进行还原。 若要创建新的还原，请参阅[教程：新建用户定义的还原点](sql-data-warehouse-restore-points.md)。
 
 ## <a name="restore-an-existing-sql-pool-through-powershell"></a>通过 PowerShell 还原现有的 SQL 池

@@ -12,12 +12,12 @@ metadata:
   ms.author: v-jay
   origin.date: 10/02/2019
   ms.date: 07/27/2020
-  ms.openlocfilehash: ea51853b185db96238ee86566a355517612a45cc
-  ms.sourcegitcommit: 0eaa82cf74477d26d06bdd8fb6e715e6ed1339c4
+  ms.openlocfilehash: 23e348a8ededbc771bf52cabdd69ff90438f23d3
+  ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/23/2020
-  ms.locfileid: "86974224"
+  ms.lasthandoff: 08/07/2020
+  ms.locfileid: "87914304"
 landingContent:
 - title: 关于 Azure 数据工厂
   linkLists:
@@ -70,9 +70,9 @@ landingContent:
     - text: 将本地数据复制到云中
       url: /data-factory/tutorial-hybrid-copy-data-tool
     - text: 批量复制数据
-      url: /azure/data-factory/tutorial-bulk-copy-portal
+      url: /data-factory/tutorial-bulk-copy-portal
     - text: 以增量方式复制数据
-      url: /azure/data-factory/tutorial-incremental-copy-overview
+      url: /data-factory/tutorial-incremental-copy-overview
     - text: 加载 ADLS Gen2
       url: /data-factory/load-azure-data-lake-storage-gen2
     - text: 加载 SQL DW

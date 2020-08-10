@@ -5,12 +5,12 @@ ms.topic: include
 origin.date: 11/28/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: a3c5ef31420bede251779b0b3eeffb2ac3ebabe6
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 0ca99f5508bc97cf309f4c325c9c9972acdfa586
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75631276"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87919351"
 ---
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -24,7 +24,7 @@ ms.locfileid: "75631276"
 
 如果 Cloud Shell 仍处于打开状态，则无需复制/运行第一行 (Read-Host)。
 
-```azurepowershell-interactive
+```azurepowershell
 $projectName = Read-Host -Prompt "Enter the same project name that you used in the last procedure"
 $resourceGroupName = "${projectName}rg"
 

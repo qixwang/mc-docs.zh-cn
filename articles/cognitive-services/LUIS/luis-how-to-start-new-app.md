@@ -3,21 +3,21 @@ title: 创建新应用 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 在语言理解 (LUIS) 网页上创建和管理应用程序。
 services: cognitive-services
-author: diberry
+author: Johnnytechn
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 06/17/2020
-ms.author: v-tawe
+ms.date: 08/04/2020
+ms.author: v-johya
 origin.date: 05/18/2020
-ms.openlocfilehash: 79b15f452b00d580e3b1ddf7f023c911df902274
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: 3da632a32fc0554d4d3dabb907255e1e880fa524
+ms.sourcegitcommit: caa18677adb51b5321ad32ae62afcf92ac00b40b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85101996"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88023363"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>在 LUIS 门户中创建新的 LUIS 应用
 可通过多种方法创建 LUIS 应用。 可以在 LUIS 门户中创建 LUIS 应用，也可以通过 LUIS 创作 [API](developer-reference-resource.md) 进行创建。
@@ -45,7 +45,7 @@ ms.locfileid: "85101996"
 
 ## <a name="create-new-app-in-luis"></a>在 LUIS 中创建新应用
 
-1. 在“我的应用”页上，依次选择“订阅”、“创作资源”和“+ 创建”。 如果使用的是免费试用密钥，请了解如何[创建创作资源](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal)。
+1. 在“我的应用”页上，依次选择“订阅”、“创作资源”和“+ 创建”。 
 
 > [!div class="mx-imgBorder"]
 > ![LUIS 应用列表](./media/create-app-in-portal.png)
@@ -62,7 +62,7 @@ ms.locfileid: "85101996"
     创建应用后，LUIS 门户会显示“意向”列表，其中包含已为你创建的 `None` 意向。 现在，你已有一个空应用。
 
     > [!div class="mx-imgBorder"]
-    > ![意向列表，其中包含在没有示例言语的情况下创建的 None 意向。](media/pizza-tutorial-new-app-empty-intent-list.png)
+    > ![意向列表，其中包含在没有示例言语的情况下创建的 None 意向。](./media/pizza-tutorial-new-app-empty-intent-list.png)
 
 ## <a name="other-actions-available-on-my-apps-page"></a>“我的应用”页上提供的其他操作
 
@@ -78,3 +78,4 @@ ms.locfileid: "85101996"
 ## <a name="next-steps"></a>后续步骤
 
 如果应用设计包含意向检测，请[创建新意向](luis-how-to-add-intents.md)并添加示例言语。 如果应用设计仅是数据提取，则将示例言语添加到“None”意向，然后[创建实体](luis-how-to-add-example-utterances.md)，并使用这些实体标记示例言语。
+

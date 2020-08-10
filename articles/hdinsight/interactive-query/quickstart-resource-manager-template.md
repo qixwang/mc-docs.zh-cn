@@ -8,28 +8,32 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/13/2020
-ms.openlocfilehash: 0fb0da1582dc556cb32fb561efa872c830d07794
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: bdb084fd38f1c17bc5ecbc5b29ec7f40d4ffc2f0
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80634671"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917135"
 ---
-# <a name="quickstart-create-interactive-query-cluster-in-azure-hdinsight-using-resource-manager-template"></a>快速入门：使用资源管理器模板在 Azure HDInsight 中创建 Interactive Query 群集
+# <a name="quickstart-create-interactive-query-cluster-in-azure-hdinsight-using-arm-template"></a>快速入门：使用 ARM 模板在 Azure HDInsight 中创建 Interactive Query 群集
 
-在本快速入门中，你将使用 Azure 资源管理器模板在 Azure HDInsight 中创建一个 [Interactive Query](./apache-interactive-query-get-started.md) 群集。 交互式查询（也称为 Apache Hive LLAP 或[低延迟分析处理](https://cwiki.apache.org/confluence/display/Hive/LLAP)）是一种 Azure HDInsight [群集类型](../hdinsight-hadoop-provision-linux-clusters.md#cluster-type)。
+本快速入门将使用 Azure 资源管理器模板（ARM 模板）在 Azure HDInsight 中创建一个 [Interactive Query](./apache-interactive-query-get-started.md) 群集。 交互式查询（也称为 Apache Hive LLAP 或[低延迟分析处理](https://cwiki.apache.org/confluence/display/Hive/LLAP)）是一种 Azure HDInsight [群集类型](../hdinsight-hadoop-provision-linux-clusters.md#cluster-type)。
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
+如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
+
+[![“部署到 Azure”](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-interactive-hive%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>先决条件
+
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
-## <a name="create-an-interactive-query-cluster"></a>创建交互式查询群集
+## <a name="review-the-template"></a>查看模板
 
-### <a name="review-the-template"></a>查看模板
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-hdinsight-interactive-hive/)。
 
-本快速入门中使用的模板来自 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-interactive-hive)。
-
-```Jsong
+```Json
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
@@ -190,7 +194,6 @@ ms.locfileid: "80634671"
 }
 ```
 
-
 该模板中定义了两个 Azure 资源：
 
 * [Microsoft.Storage/storageAccounts](https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts)：创建 Azure 存储帐户。
@@ -198,16 +201,16 @@ ms.locfileid: "80634671"
 
 ### <a name="deploy-the-template"></a>部署模板
 
-1. 选择下面的“部署到 Azure”按钮以登录到 Azure，并打开资源管理器模板  。
+1. 选择下面的“部署到 Azure”按钮以登录到 Azure，并打开资源管理器模板。
 
-    [![“部署到 Azure”](./media/quickstart-resource-manager-template/deploy-to-azure.png)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-interactive-hive%2Fazuredeploy.json)
+    [![“部署到 Azure”](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-interactive-hive%2Fazuredeploy.json)
 
 1. 输入或选择下列值：
 
     |属性 |说明 |
     |---|---|
     |订阅|从下拉列表中选择用于此群集的 Azure 订阅。|
-    |资源组|从下拉列表中选择现有资源组，或选择“新建”  。|
+    |资源组|从下拉列表中选择现有资源组，或选择“新建”。|
     |位置|将使用用于资源组的位置自动填充此值。|
     |群集名称|输入任何全局唯一的名称。 对于此模板，请只使用小写字母和数字。|
     |群集登录用户名|提供用户名，默认值为 **admin**。|
@@ -217,21 +220,21 @@ ms.locfileid: "80634671"
 
     ![资源管理器模板 HBase](./media/quickstart-resource-manager-template/resource-manager-template-hive.png)
 
-1. 查看“条款和条件”  。 接着选择“我同意上述条款和条件”，然后选择“购买”   。 你会收到一则通知，说明正在进行部署。 创建群集大约需要 20 分钟时间。
+1. 查看“条款和条件”。 接着选择“我同意上述条款和条件”，然后选择“购买” 。 你会收到一则通知，说明正在进行部署。 创建群集大约需要 20 分钟时间。
 
 ## <a name="review-deployed-resources"></a>查看已部署的资源
 
-创建群集后，你将收到“部署成功”  通知，其中包含“转到资源”  链接。 “资源组”页将列出新的 HDInsight 群集以及与此群集关联的默认存储。 每个群集都有一个 [Azure 存储](../hdinsight-hadoop-use-blob-storage.md)帐户依赖项。 该帐户称为默认存储帐户。 HDInsight 群集及其默认存储帐户必须共存于同一个 Azure 区域中。 删除群集不会删除存储帐户。
+创建群集后，你会收到“部署成功”通知，通知中附有“转到资源”链接 。 “资源组”页将列出新的 HDInsight 群集以及与此群集关联的默认存储。 每个群集都有一个 [Azure 存储](../hdinsight-hadoop-use-blob-storage.md)帐户依赖项。 该帐户称为默认存储帐户。 HDInsight 群集及其默认存储帐户必须共存于同一个 Azure 区域中。 删除群集不会删除存储帐户。
 
 ## <a name="clean-up-resources"></a>清理资源
 
 完成本快速入门后，可以删除群集。 有了 HDInsight，便可以将数据存储在 Azure 存储中，因此可以在群集不用时安全地删除群集。 此外，还需要为 HDInsight 群集付费，即使不用也是如此。 由于群集费用数倍于存储空间费用，因此在群集不用时删除群集可以节省费用。
 
-从 Azure 门户导航到群集，然后选择“删除”。 
+从 Azure 门户导航到群集，然后选择“删除”。
 
 ![资源管理器模板 HBase](./media/quickstart-resource-manager-template/azure-portal-delete-hive.png)
 
-还可以选择资源组名称来打开“资源组”页，然后选择“删除资源组”  。 通过删除资源组，可以删除 HDInsight 群集和默认存储帐户。
+还可以选择资源组名称来打开“资源组”页，然后选择“删除资源组”。 通过删除资源组，可以删除 HDInsight 群集和默认存储帐户。
 
 ## <a name="next-steps"></a>后续步骤
 

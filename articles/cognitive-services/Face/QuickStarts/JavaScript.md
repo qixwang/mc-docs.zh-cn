@@ -3,29 +3,33 @@ title: 快速入门：使用 REST API 和 JavaScript 检测图像中的人脸
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将使用认知服务中的人脸 API 和 JavaScript 检测图像中的人脸。
 services: cognitive-services
-author: PatrickFarley
+author: Johnnytechn
 manager: nitinme
+ms.custom: devx-track-javascript
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
 origin.date: 07/03/2019
-ms.date: 07/10/2019
-ms.author: v-junlch
-ms.openlocfilehash: e9326cc1e48c24430f1b9170a92ea68aa6a137f9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 08/04/2020
+ms.author: v-johya
+ms.openlocfilehash: 312e97056ca5ee851992e98c7be4156d077791bf
+ms.sourcegitcommit: caa18677adb51b5321ad32ae62afcf92ac00b40b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "71119550"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88023335"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-javascript"></a>快速入门：使用 REST API 和 JavaScript 检测图像中的人脸
 
-在本快速入门中，将使用 Azure 人脸 REST API 和 JavaScript 来检测图像中的人脸。
+本快速入门将通过 JavaScript 使用 Azure 人脸 REST API 来检测图像中的人脸。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-- 人脸 API 订阅密钥。 可以按照[创建认知服务帐户](/cognitive-services/cognitive-services-apis-create-account)中的说明订阅人脸 API 服务并获取密钥。
-- 代码编辑器，如 [Visual Studio Code](https://code.visualstudio.com/download)
+* Azure 订阅 - [创建试用订阅](https://www.azure.cn/pricing/details/cognitive-services/)
+* 拥有 Azure 订阅后，在 Azure 门户中<a href="https://portal.azure.cn/#create/Microsoft.CognitiveServicesFace"  title="创建人脸资源"  target="_blank">创建人脸资源 <span class="docon docon-navigate-external x-hidden-focus"></span></a>，获取密钥和终结点。 部署后，单击“转到资源”。
+    * 需要从创建的资源获取密钥和终结点，以便将应用程序连接到人脸 API。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
+    * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
+* 代码编辑器，如 [Visual Studio Code](https://code.visualstudio.com/download)
 
 ## <a name="initialize-the-html-file"></a>初始化 HTML 文件
 
@@ -42,7 +46,7 @@ ms.locfileid: "71119550"
 </html>
 ```
 
-然后在该文档的 `body` 元素中添加以下代码。 此代码将设置一个基本用户界面，其中包含 URL 字段、“分析人脸”  按钮、响应窗格和图像显示窗格。
+然后在该文档的 `body` 元素中添加以下代码。 此代码将设置一个基本用户界面，其中包含 URL 字段、“分析人脸”按钮、响应窗格和图像显示窗格。
 
 ```html
 <h1>Detect Faces:</h1>
@@ -73,9 +77,10 @@ Image to analyze: <input type="text" name="inputImage" id="inputImage"
     function processImage() {
         // Replace <Subscription Key> with your valid subscription key.
         var subscriptionKey = "<Subscription Key>";
-
-        var uriBase = "https://api.cognitive.azure.cn/face/v1.0/detect";
-
+    
+        var uriBase =
+            "https://<My Endpoint String>.cn/face/v1.0/detect";
+    
         // Request parameters.
         var params = {
             "returnFaceId": "true",
@@ -124,14 +129,13 @@ Image to analyze: <input type="text" name="inputImage" id="inputImage"
 </script>
 ```
 
-> [!NOTE]
-> 如果创建的人脸 API 的 `Location` 为 `China East 2`，则需要将 URL `https://api.cognitive.azure.cn/face/v1.0/detect` 替换为 `https://chinaeast2.api.cognitive.azure.cn/face/v1.0/detect`。
+需使用订阅密钥的值更新 `subscriptionKey` 字段，并且可能需要更改 `uriBase` 字符串，使之包含正确的终结点字符串。 `returnFaceAttributes` 字段指定要检索的人脸属性；你可能希望根据自己的预期用途更改此字符串。
 
-需使用订阅密钥的值更新 `subscriptionKey` 字段，并且可能需要更改 `uriBase` 字符串，使之包含正确的区域标识符（如需包含所有区域终结点的列表，请参阅[人脸 API 文档](https://dev.cognitive.azure.cn/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)）。 `returnFaceAttributes` 字段指定要检索的人脸属性；你可能希望根据自己的预期用途更改此字符串。
+[!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="run-the-script"></a>运行脚本
 
-在浏览器中打开 *detectFaces.html*。 单击“分析人脸”  按钮时，应用应显示给定 URL 中的图像并打印出人脸数据的 JSON 字符串。
+在浏览器中打开 *detectFaces.html*。 单击“分析人脸”按钮时，应用应显示给定 URL 中的图像并打印出人脸数据的 JSON 字符串。
 
 ![GettingStartCSharpScreenshot](../Images/face-detect-javascript.png)
 
@@ -231,9 +235,8 @@ Image to analyze: <input type="text" name="inputImage" id="inputImage"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你编写了一个 JavaScript 脚本，该脚本调用 Azure 人脸 API，以便检测图像中的人脸并返回其属性。 接下来，请浏览人脸 API 参考文档，以便进行详细的了解。
+在本快速入门中，你编写了一个 JavaScript 脚本，该脚本调用 Azure 人脸服务检测图像中的人脸并返回其属性。 接下来，请浏览人脸 API 参考文档，以便进行详细的了解。
 
 > [!div class="nextstepaction"]
 > [人脸 API](https://dev.cognitive.azure.cn/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)
 
-<!-- Update_Description: wording update -->

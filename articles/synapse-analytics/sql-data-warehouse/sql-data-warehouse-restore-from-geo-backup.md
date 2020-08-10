@@ -8,16 +8,16 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 origin.date: 07/12/2019
-ms.date: 08/03/2020
+ms.date: 08/10/2020
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 791b9584530242f87f33ab88c080ad5849a44716
-ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
+ms.openlocfilehash: 86481ab8b0d39bdd7af2300e3d78d4b40cce5b4a
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87426354"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917158"
 ---
 # <a name="geo-restore-for-sql-pool"></a>SQL 池的异地还原
 
@@ -37,7 +37,7 @@ ms.locfileid: "87426354"
 > 可以执行到第 2 代的异地还原！ 若要执行此操作，请将一个第 2 代 ServiceObjectiveName（例如 DW1000**c**）指定为可选参数。
 >
 
-1. 开始之前，请确保[安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
+1. 开始之前，请确保[安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
 2. 打开 PowerShell。
 3. 连接到 Azure 帐户，并列出与帐户关联的所有订阅。
 4. 选择包含要还原的数据仓库的订阅。

@@ -2,21 +2,21 @@
 title: include 文件
 description: include 文件
 services: cognitive-services
-author: diberry
+author: Johnnytechn
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 06/19/2020
+ms.date: 08/07/2020
 ms.topic: include
 ms.custom: include file
-ms.author: v-tawe
+ms.author: v-johya
 origin.date: 02/14/2020
-ms.openlocfilehash: a6e1449c0ef2ea90bb1d349079f56073e4ea9eef
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: 51007fc2fee2b3eb095e855376c4a8a99891ade4
+ms.sourcegitcommit: caa18677adb51b5321ad32ae62afcf92ac00b40b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85102036"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88024223"
 ---
 使用适用于 .NET 的语言理解 (LUIS) 预测客户端库可以：
 
@@ -27,51 +27,11 @@ ms.locfileid: "85102036"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 语言理解 (LUIS) 门户帐户 - [创建试用帐户](https://luis.azure.cn)
+* 语言理解 (LUIS) 门户帐户 - [免费创建](https://luis.azure.cn)
 * [.NET Core](https://dotnet.microsoft.com/download/dotnet-core) 的当前版本。
 * LUIS 应用 ID - 使用 `df67dcdb-c37d-46af-88e1-8b97951ca1c2` 的公共 IoT 应用 ID。 快速入门代码中使用的用户查询特定于该应用。
 
 ## <a name="setting-up"></a>设置
-
-### <a name="create-an-environment-variable"></a>创建环境变量
-
-使用密钥和资源名称，创建两个用于身份验证的环境变量：
-
-* `LUIS_PREDICTION_KEY` - 用于验证请求的资源密钥。
-* `LUIS_ENDPOINT_NAME` - 与密钥关联的资源名称。
-
-使用操作系统的说明。
-
-#### <a name="windows"></a>[Windows](#tab/windows)
-
-```console
-setx LUIS_PREDICTION_KEY <replace-with-your-resource-key>
-setx LUIS_ENDPOINT_NAME <replace-with-your-resource-name>
-```
-
-添加环境变量后，请重启控制台窗口。
-
-#### <a name="linux"></a>[Linux](#tab/linux)
-
-```bash
-export LUIS_PREDICTION_KEY=<replace-with-your-resource-key>
-export LUIS_ENDPOINT_NAME=<replace-with-your-resource-name>
-```
-
-添加环境变量后，请从控制台窗口运行 `source ~/.bashrc`，使更改生效。
-
-#### <a name="macos"></a>[macOS](#tab/unix)
-
-编辑 `.bash_profile`，然后添加环境变量：
-
-```bash
-export LUIS_PREDICTION_KEY=<replace-with-your-resource-key>
-export LUIS_ENDPOINT_NAME=<replace-with-your-resource-name>
-```
-
-添加环境变量后，请从控制台窗口运行 `source .bash_profile`，使更改生效。
-
----
 
 ### <a name="create-a-new-c-application"></a>新建 C# 应用程序
 
@@ -132,52 +92,321 @@ dotnet add package Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime --ver
 在首选的编辑器或 IDE 中，从项目目录打开 *Program.cs* 文件。 将现有 `using` 代码替换为以下 `using` 指令：
 
 ```csharp
+// <snippet_using>
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime;
 using Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime.Models;
+// </snippet_using>
+
+namespace UseRuntime
+{
+    class Program
+    {
+        // <snippet_variables>
+        // Use Language Understanding (LUIS) prediction endpoint key
+        // to create authentication credentials
+        // Prediction key must be assigned in LUIS portal
+        private static string predictionKey = "REPLACE-WITH-YOUR-ASSIGNED-PREDICTION-KEY";
+
+        // Endpoint URL example value = "https://YOUR-RESOURCE-NAME.cognitiveservices.azure.cn"
+        private static string predictionEndpoint = "https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.cn";
+
+        // App Id example value = "df67dcdb-c37d-46af-88e1-8b97951ca1c2"
+        private static string appId = "REPLACE-WITH-YOUR-LUIS_APP_ID";
+        // </snippet_variables>
+
+        // <snippet_main>
+        static void Main(string[] args)
+        {
+
+            // Get prediction
+            var predictionResult = GetPredictionAsync().Result;
+
+            var prediction = predictionResult.Prediction;
+
+            // Display query
+            Console.WriteLine("Query:'{0}'", predictionResult.Query);
+            Console.WriteLine("TopIntent :'{0}' ", prediction.TopIntent);
+
+            foreach (var i in prediction.Intents)
+            {
+                Console.WriteLine(string.Format("{0}:{1}", i.Key, i.Value.Score));
+            }
+
+            foreach (var e in prediction.Entities)
+            {
+                Console.WriteLine(string.Format("{0}:{1}", e.Key, e.Value));
+            }
+
+            Console.Write("done");
+
+        }
+        // </snippet_main>
+
+        // <snippet_create_client>
+        static LUISRuntimeClient CreateClient()
+        {
+            var credentials = new ApiKeyServiceClientCredentials(predictionKey);
+            var luisClient = new LUISRuntimeClient(credentials, new System.Net.Http.DelegatingHandler[] { })
+            {
+                Endpoint = predictionEndpoint
+            };
+
+            return luisClient;
+
+        }
+        // </snippet_create_client>
+
+        // <snippet_maintask>
+        static async Task<PredictionResponse> GetPredictionAsync()
+        {
+
+            // Get client 
+            using (var luisClient = CreateClient())
+            {
+
+                var requestOptions = new PredictionRequestOptions
+                {
+                    DatetimeReference = DateTime.Parse("2019-01-01"),
+                    PreferExternalEntities = true
+                };
+
+                var predictionRequest = new PredictionRequest
+                {
+                    Query = "turn on the bedroom light",
+                    Options = requestOptions
+                };
+
+                // get prediction
+                return await luisClient.Prediction.GetSlotPredictionAsync(
+                    Guid.Parse(appId),
+                    slotName: "production",
+                    predictionRequest,
+                    verbose: true,
+                    showAllIntents: true,
+                    log: true);
+            }
+        }
+        // </snippet_maintask>
+    }
+}
 ```
 
 ## <a name="authenticate-the-client"></a>验证客户端
 
-1. 创建密钥、名称和应用 ID 的变量：
-
-    一个变量，用于管理从环境变量提取的名为 `LUIS_PREDICTION_KEY` 的预测密钥。 如果在启动应用程序后创建了环境变量，则需要关闭并重新加载运行它的编辑器、IDE 或 shell 以访问该变量。 稍后会创建这些方法。
-
-    创建一个变量，用于保留资源名称 `LUIS_ENDPOINT_NAME`。
-
-    创建应用 ID 的变量，作为名为 `LUIS_APP_ID` 的环境变量。 将环境变量设置为公共 IoT 应用：
+1. 为密钥、资源名称、应用 ID 和发布槽创建变量。 将应用 ID 设置为公共 IoT 应用：
 
     **`df67dcdb-c37d-46af-88e1-8b97951ca1c2`**
 
-    ```csharp
-    // Use Language Understanding (LUIS) prediction endpoint key
-    // to create authentication credentials
-    private static string predictionKey = Environment.GetEnvironmentVariable("LUIS_PREDICTION_KEY");
+```csharp
+// <snippet_using>
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+using Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime;
+using Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime.Models;
+// </snippet_using>
 
-    // Endpoint URL example value = "https://YOUR-RESOURCE-NAME.api.cognitive.microsoft.com"
-    private static string predictionEndpoint = Environment.GetEnvironmentVariable("LUIS_ENDPOINT_NAME");
+namespace UseRuntime
+{
+    class Program
+    {
+        // <snippet_variables>
+        // Use Language Understanding (LUIS) prediction endpoint key
+        // to create authentication credentials
+        // Prediction key must be assigned in LUIS portal
+        private static string predictionKey = "REPLACE-WITH-YOUR-ASSIGNED-PREDICTION-KEY";
 
-    // App Id example value = "df67dcdb-c37d-46af-88e1-8b97951ca1c2"
-    private static string appId = Environment.GetEnvironmentVariable("LUIS_APP_ID");
-    ```
+        // Endpoint URL example value = "https://YOUR-RESOURCE-NAME.cognitiveservices.azure.cn"
+        private static string predictionEndpoint = "https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.cn";
+
+        // App Id example value = "df67dcdb-c37d-46af-88e1-8b97951ca1c2"
+        private static string appId = "REPLACE-WITH-YOUR-LUIS_APP_ID";
+        // </snippet_variables>
+
+        // <snippet_main>
+        static void Main(string[] args)
+        {
+
+            // Get prediction
+            var predictionResult = GetPredictionAsync().Result;
+
+            var prediction = predictionResult.Prediction;
+
+            // Display query
+            Console.WriteLine("Query:'{0}'", predictionResult.Query);
+            Console.WriteLine("TopIntent :'{0}' ", prediction.TopIntent);
+
+            foreach (var i in prediction.Intents)
+            {
+                Console.WriteLine(string.Format("{0}:{1}", i.Key, i.Value.Score));
+            }
+
+            foreach (var e in prediction.Entities)
+            {
+                Console.WriteLine(string.Format("{0}:{1}", e.Key, e.Value));
+            }
+
+            Console.Write("done");
+
+        }
+        // </snippet_main>
+
+        // <snippet_create_client>
+        static LUISRuntimeClient CreateClient()
+        {
+            var credentials = new ApiKeyServiceClientCredentials(predictionKey);
+            var luisClient = new LUISRuntimeClient(credentials, new System.Net.Http.DelegatingHandler[] { })
+            {
+                Endpoint = predictionEndpoint
+            };
+
+            return luisClient;
+
+        }
+        // </snippet_create_client>
+
+        // <snippet_maintask>
+        static async Task<PredictionResponse> GetPredictionAsync()
+        {
+
+            // Get client 
+            using (var luisClient = CreateClient())
+            {
+
+                var requestOptions = new PredictionRequestOptions
+                {
+                    DatetimeReference = DateTime.Parse("2019-01-01"),
+                    PreferExternalEntities = true
+                };
+
+                var predictionRequest = new PredictionRequest
+                {
+                    Query = "turn on the bedroom light",
+                    Options = requestOptions
+                };
+
+                // get prediction
+                return await luisClient.Prediction.GetSlotPredictionAsync(
+                    Guid.Parse(appId),
+                    slotName: "production",
+                    predictionRequest,
+                    verbose: true,
+                    showAllIntents: true,
+                    log: true);
+            }
+        }
+        // </snippet_maintask>
+    }
+}
+```
 
 1. 使用密钥创建 [ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime.apikeyserviceclientcredentials?view=azure-dotnet) 对象，并在终结点中使用该对象创建一个 [LUISRuntimeClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime.luisruntimeclient?view=azure-dotnet) 对象。
 
-    ```csharp
-    static LUISRuntimeClient CreateClient()
+```csharp
+// <snippet_using>
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+using Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime;
+using Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime.Models;
+// </snippet_using>
+
+namespace UseRuntime
+{
+    class Program
     {
-        var credentials = new ApiKeyServiceClientCredentials(predictionKey);
-        var luisClient = new LUISRuntimeClient(credentials, new System.Net.Http.DelegatingHandler[] { })
+        // <snippet_variables>
+        // Use Language Understanding (LUIS) prediction endpoint key
+        // to create authentication credentials
+        // Prediction key must be assigned in LUIS portal
+        private static string predictionKey = "REPLACE-WITH-YOUR-ASSIGNED-PREDICTION-KEY";
+
+        // Endpoint URL example value = "https://YOUR-RESOURCE-NAME.cognitiveservices.azure.cn"
+        private static string predictionEndpoint = "https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.cn";
+
+        // App Id example value = "df67dcdb-c37d-46af-88e1-8b97951ca1c2"
+        private static string appId = "REPLACE-WITH-YOUR-LUIS_APP_ID";
+        // </snippet_variables>
+
+        // <snippet_main>
+        static void Main(string[] args)
         {
-            Endpoint = predictionEndpoint
-        };
 
-        return luisClient;
+            // Get prediction
+            var predictionResult = GetPredictionAsync().Result;
 
+            var prediction = predictionResult.Prediction;
+
+            // Display query
+            Console.WriteLine("Query:'{0}'", predictionResult.Query);
+            Console.WriteLine("TopIntent :'{0}' ", prediction.TopIntent);
+
+            foreach (var i in prediction.Intents)
+            {
+                Console.WriteLine(string.Format("{0}:{1}", i.Key, i.Value.Score));
+            }
+
+            foreach (var e in prediction.Entities)
+            {
+                Console.WriteLine(string.Format("{0}:{1}", e.Key, e.Value));
+            }
+
+            Console.Write("done");
+
+        }
+        // </snippet_main>
+
+        // <snippet_create_client>
+        static LUISRuntimeClient CreateClient()
+        {
+            var credentials = new ApiKeyServiceClientCredentials(predictionKey);
+            var luisClient = new LUISRuntimeClient(credentials, new System.Net.Http.DelegatingHandler[] { })
+            {
+                Endpoint = predictionEndpoint
+            };
+
+            return luisClient;
+
+        }
+        // </snippet_create_client>
+
+        // <snippet_maintask>
+        static async Task<PredictionResponse> GetPredictionAsync()
+        {
+
+            // Get client 
+            using (var luisClient = CreateClient())
+            {
+
+                var requestOptions = new PredictionRequestOptions
+                {
+                    DatetimeReference = DateTime.Parse("2019-01-01"),
+                    PreferExternalEntities = true
+                };
+
+                var predictionRequest = new PredictionRequest
+                {
+                    Query = "turn on the bedroom light",
+                    Options = requestOptions
+                };
+
+                // get prediction
+                return await luisClient.Prediction.GetSlotPredictionAsync(
+                    Guid.Parse(appId),
+                    slotName: "production",
+                    predictionRequest,
+                    verbose: true,
+                    showAllIntents: true,
+                    log: true);
+            }
+        }
+        // </snippet_maintask>
     }
-    ```
+}
+```
 
 ## <a name="get-prediction-from-runtime"></a>从运行时获取预测
 
@@ -188,33 +417,104 @@ using Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime.Models;
 GetSlotPredictionAsync 方法需要多个参数，如应用 ID、槽名称、用于满足请求的预测请求对象。 其他选项（如详细、显示所有意向和日志）都是可选的。
 
 ```csharp
-static async Task<PredictionResponse> GetPredictionAsync()
+// <snippet_using>
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+using Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime;
+using Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime.Models;
+// </snippet_using>
+
+namespace UseRuntime
 {
-
-    // Get client 
-    using (var luisClient = CreateClient())
+    class Program
     {
+        // <snippet_variables>
+        // Use Language Understanding (LUIS) prediction endpoint key
+        // to create authentication credentials
+        // Prediction key must be assigned in LUIS portal
+        private static string predictionKey = "REPLACE-WITH-YOUR-ASSIGNED-PREDICTION-KEY";
 
-        var requestOptions = new PredictionRequestOptions
+        // Endpoint URL example value = "https://YOUR-RESOURCE-NAME.cognitiveservices.azure.cn"
+        private static string predictionEndpoint = "https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.cn";
+
+        // App Id example value = "df67dcdb-c37d-46af-88e1-8b97951ca1c2"
+        private static string appId = "REPLACE-WITH-YOUR-LUIS_APP_ID";
+        // </snippet_variables>
+
+        // <snippet_main>
+        static void Main(string[] args)
         {
-            DatetimeReference = DateTime.Parse("2019-01-01"),
-            PreferExternalEntities = true
-        };
 
-        var predictionRequest = new PredictionRequest
+            // Get prediction
+            var predictionResult = GetPredictionAsync().Result;
+
+            var prediction = predictionResult.Prediction;
+
+            // Display query
+            Console.WriteLine("Query:'{0}'", predictionResult.Query);
+            Console.WriteLine("TopIntent :'{0}' ", prediction.TopIntent);
+
+            foreach (var i in prediction.Intents)
+            {
+                Console.WriteLine(string.Format("{0}:{1}", i.Key, i.Value.Score));
+            }
+
+            foreach (var e in prediction.Entities)
+            {
+                Console.WriteLine(string.Format("{0}:{1}", e.Key, e.Value));
+            }
+
+            Console.Write("done");
+
+        }
+        // </snippet_main>
+
+        // <snippet_create_client>
+        static LUISRuntimeClient CreateClient()
         {
-            Query = "turn on the bedroom light",
-            Options = requestOptions
-        };
+            var credentials = new ApiKeyServiceClientCredentials(predictionKey);
+            var luisClient = new LUISRuntimeClient(credentials, new System.Net.Http.DelegatingHandler[] { })
+            {
+                Endpoint = predictionEndpoint
+            };
 
-        // get prediction
-        return await luisClient.Prediction.GetSlotPredictionAsync(
-            Guid.Parse(appId),
-            slotName: "production",
-            predictionRequest,
-            verbose: true,
-            showAllIntents: true,
-            log: true);
+            return luisClient;
+
+        }
+        // </snippet_create_client>
+
+        // <snippet_maintask>
+        static async Task<PredictionResponse> GetPredictionAsync()
+        {
+
+            // Get client 
+            using (var luisClient = CreateClient())
+            {
+
+                var requestOptions = new PredictionRequestOptions
+                {
+                    DatetimeReference = DateTime.Parse("2019-01-01"),
+                    PreferExternalEntities = true
+                };
+
+                var predictionRequest = new PredictionRequest
+                {
+                    Query = "turn on the bedroom light",
+                    Options = requestOptions
+                };
+
+                // get prediction
+                return await luisClient.Prediction.GetSlotPredictionAsync(
+                    Guid.Parse(appId),
+                    slotName: "production",
+                    predictionRequest,
+                    verbose: true,
+                    showAllIntents: true,
+                    log: true);
+            }
+        }
+        // </snippet_maintask>
     }
 }
 ```
@@ -224,30 +524,105 @@ static async Task<PredictionResponse> GetPredictionAsync()
 使用以下主方法将变量和方法结合在一起，以获取预测。
 
 ```csharp
-static void Main(string[] args)
+// <snippet_using>
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+using Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime;
+using Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime.Models;
+// </snippet_using>
+
+namespace UseRuntime
 {
-
-    // Get prediction
-    var predictionResult = GetPredictionAsync().Result;
-
-    var prediction = predictionResult.Prediction;
-
-    // Display query
-    Console.WriteLine("Query:'{0}'", predictionResult.Query);
-    Console.WriteLine("TopIntent :'{0}' ", prediction.TopIntent);
-
-    foreach (var i in prediction.Intents)
+    class Program
     {
-        Console.WriteLine(string.Format("{0}:{1}", i.Key, i.Value.Score));
+        // <snippet_variables>
+        // Use Language Understanding (LUIS) prediction endpoint key
+        // to create authentication credentials
+        // Prediction key must be assigned in LUIS portal
+        private static string predictionKey = "REPLACE-WITH-YOUR-ASSIGNED-PREDICTION-KEY";
+
+        // Endpoint URL example value = "https://YOUR-RESOURCE-NAME.cognitiveservices.azure.cn"
+        private static string predictionEndpoint = "https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.cn";
+
+        // App Id example value = "df67dcdb-c37d-46af-88e1-8b97951ca1c2"
+        private static string appId = "REPLACE-WITH-YOUR-LUIS_APP_ID";
+        // </snippet_variables>
+
+        // <snippet_main>
+        static void Main(string[] args)
+        {
+
+            // Get prediction
+            var predictionResult = GetPredictionAsync().Result;
+
+            var prediction = predictionResult.Prediction;
+
+            // Display query
+            Console.WriteLine("Query:'{0}'", predictionResult.Query);
+            Console.WriteLine("TopIntent :'{0}' ", prediction.TopIntent);
+
+            foreach (var i in prediction.Intents)
+            {
+                Console.WriteLine(string.Format("{0}:{1}", i.Key, i.Value.Score));
+            }
+
+            foreach (var e in prediction.Entities)
+            {
+                Console.WriteLine(string.Format("{0}:{1}", e.Key, e.Value));
+            }
+
+            Console.Write("done");
+
+        }
+        // </snippet_main>
+
+        // <snippet_create_client>
+        static LUISRuntimeClient CreateClient()
+        {
+            var credentials = new ApiKeyServiceClientCredentials(predictionKey);
+            var luisClient = new LUISRuntimeClient(credentials, new System.Net.Http.DelegatingHandler[] { })
+            {
+                Endpoint = predictionEndpoint
+            };
+
+            return luisClient;
+
+        }
+        // </snippet_create_client>
+
+        // <snippet_maintask>
+        static async Task<PredictionResponse> GetPredictionAsync()
+        {
+
+            // Get client 
+            using (var luisClient = CreateClient())
+            {
+
+                var requestOptions = new PredictionRequestOptions
+                {
+                    DatetimeReference = DateTime.Parse("2019-01-01"),
+                    PreferExternalEntities = true
+                };
+
+                var predictionRequest = new PredictionRequest
+                {
+                    Query = "turn on the bedroom light",
+                    Options = requestOptions
+                };
+
+                // get prediction
+                return await luisClient.Prediction.GetSlotPredictionAsync(
+                    Guid.Parse(appId),
+                    slotName: "production",
+                    predictionRequest,
+                    verbose: true,
+                    showAllIntents: true,
+                    log: true);
+            }
+        }
+        // </snippet_maintask>
     }
-
-    foreach (var e in prediction.Entities)
-    {
-        Console.WriteLine(string.Format("{0}:{1}", e.Key, e.Value));
-    }
-
-    Console.Write("done");
-
 }
 ```
 
@@ -262,3 +637,4 @@ dotnet run
 ## <a name="clean-up-resources"></a>清理资源
 
 完成预测后，通过删除 program.cs 文件及其子目录来清理此快速入门中的工作。
+

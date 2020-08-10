@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 06/10/2020
 origin.date: 01/27/2020
 ms.author: v-tawe
-ms.openlocfilehash: 5055c9d032d4abcd14d1216997ce164fa4df8df6
-ms.sourcegitcommit: 8dae792aefbe44e8388f961b813e3da6564423ec
+ms.openlocfilehash: 0b4211725fb793d1aa9cea11026b0222bcb29954
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84654946"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917133"
 ---
 # <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>教程：使用 Azure 内容审查器审查电子商务产品图像
 
@@ -70,8 +70,8 @@ public const string ComputerVisionKey = "XXXXXXXXXXXX";
 public const string CustomVisionKey = "XXXXXXXXXXX";
 
 // All your end points based on the new account and subscriptions
-public const string ImageUri = "https://westus.api.cognitive.microsoft.com/contentmoderator/moderate/v1.0/ProcessImage/Evaluate";
-public const string ReviewUri = "https://westus.api.cognitive.microsoft.com/contentmoderator/review/v1.0/teams/YOUR-TEAM-ID/reviews";
+public const string ImageUri = "https://chinaeast2.api.cognitive.azure.cn/contentmoderator/moderate/v1.0/ProcessImage/Evaluate";
+public const string ReviewUri = "https://chinaeast2.api.cognitive.azure.cn/contentmoderator/review/v1.0/teams/YOUR-TEAM-ID/reviews";
 public const string ComputerVisionUri = "https://westcentralus.api.cognitive.microsoft.com/vision/v1.0/analyze?details=celebrities";
 public const string CustomVisionUri = "https://southcentralus.api.cognitive.microsoft.com/customvision/v1.0/Prediction/XXXXXXXXXXXXXXXX/url";
 ```

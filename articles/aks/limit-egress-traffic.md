@@ -3,17 +3,17 @@ title: 限制 Azure Kubernetes 服务 (AKS) 中的出口流量
 description: 了解控制 Azure Kubernetes Service (AKS) 中的出口流量所需的端口和地址
 services: container-service
 ms.topic: article
-ms.date: 07/13/2020
-ms.testscope: yes
+ms.date: 08/10/2020
+ms.testscope: no
 ms.testdate: 05/25/2020
 ms.author: v-yeche
 author: rockboyfor
-ms.openlocfilehash: 69b011feb8ec14e45e22ef3a90708a923e642868
-ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
+ms.openlocfilehash: d29e9d5fe5531fd68ce927c88ecfd094e79a80df
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86218729"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842629"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>控制 Azure Kubernetes 服务 (AKS) 中群集节点的出口流量
 
@@ -243,7 +243,7 @@ Azure 防火墙提供 Azure Kubernetes 服务 (`AzureKubernetesService`) FQDN �
 
 下面是部署的示例体系结构：
 
-![锁定的拓扑](media/limit-egress-traffic/aks-azure-firewall-egress.png)
+:::image type="content" source="media/limit-egress-traffic/aks-azure-firewall-egress.png" alt-text="锁定的拓扑":::
 
 * 强制公共入口流量流经防火墙筛选器
     * AKS 代理节点隔离在专用子网中。
@@ -253,7 +253,7 @@ Azure 防火墙提供 Azure Kubernetes 服务 (`AzureKubernetesService`) FQDN �
     * 来自 AKS 代理节点的请求遵循 AKS 群集所部署到的子网中已放置的 UDR。
     * Azure 防火墙通过公共 IP 前端将流量传出虚拟网络
     * 对公共 Internet 或其他 Azure 服务的访问流量会流入和流出防火墙前端 IP 地址
-    * 根据需要，[API 服务器授权的 IP 范围](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges)（包括防火墙公共前端 IP 地址）保护对 AKS 控制平面的访问。
+    * 根据需要，[API 服务器授权的 IP 范围](./api-server-authorized-ip-ranges.md)（包括防火墙公共前端 IP 地址）保护对 AKS 控制平面的访问。
 * 内部流量
     * 根据需要，除了[公共负载均衡器](load-balancer-standard.md)外，可以（改为）将[内部负载均衡器](internal-lb.md)用于内部流量，也可以在自身的子网中隔离它。
 
@@ -289,7 +289,7 @@ FWROUTE_NAME_INTERNET="${PREFIX}-fwinternet"
 
 预配包含两个单独子网的虚拟网络，其中一个子网用于群集，一个子网用于防火墙。 还可以选择为内部服务入口创建一个。
 
-![空网络拓扑](media/limit-egress-traffic/empty-network.png)
+:::image type="content" source="media/limit-egress-traffic/empty-network.png" alt-text="空网络拓扑":::
 
 创建一个资源组来存放所有资源。
 
@@ -324,7 +324,7 @@ az network vnet subnet create \
 
 必须配置 Azure 防火墙入站和出站规则。 防火墙的主要用途是使组织能够针对传入和传出 AKS 群集的流量配置精细的规则。
 
-![防火墙和 UDR](media/limit-egress-traffic/firewall-udr.png)
+:::image type="content" source="media/limit-egress-traffic/firewall-udr.png" alt-text="防火墙和 UDR":::
 
 
 > [!IMPORTANT]
@@ -369,7 +369,7 @@ FWPRIVATE_IP=$(az network firewall show -g $RG -n $FWNAME --query "ipConfigurati
 ```
 
 > [!NOTE]
-> 如果通过[授权 IP 地址范围](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges)安全访问 AKS API 服务器，需要将防火墙公共 IP 添加到授权的 IP 范围。
+> 如果通过[授权 IP 地址范围](./api-server-authorized-ip-ranges.md)安全访问 AKS API 服务器，需要将防火墙公共 IP 添加到授权的 IP 范围。
 
 ### <a name="create-a-udr-with-a-hop-to-azure-firewall"></a>创建包含 Azure 防火墙跃点的 UDR
 
@@ -405,7 +405,7 @@ az network firewall network-rule create -g $RG -f $FWNAME --collection-name 'aks
 az network firewall application-rule create -g $RG -f $FWNAME --collection-name 'aksfwar' -n 'fqdn' --source-addresses '*' --protocols 'http=80' 'https=443' --fqdn-tags "AzureKubernetesService" --action allow --priority 100
 ```
 
-请参阅 [Azure 防火墙文档](https://docs.microsoft.com/azure/firewall/overview)来详细了解 Azure 防火墙服务。
+请参阅 [Azure 防火墙文档](../firewall/overview.md)来详细了解 Azure 防火墙服务。
 
 ### <a name="associate-the-route-table-to-aks"></a>将路由表关联到 AKS
 
@@ -421,7 +421,7 @@ az network vnet subnet update -g $RG --vnet-name $VNET_NAME --name $AKSSUBNET_NA
 
 现在，可将 AKS 群集部署到现有的虚拟网络。 还将使用[出站类型`userDefinedRouting`](egress-outboundtype.md)，此功能确保通过防火墙强制执行任何出站流量，并且不存在其他传出路径（默认情况下，可以使用负载均衡器出站类型）。
 
-![aks-deploy](media/limit-egress-traffic/aks-udr-fw.png)
+:::image type="content" source="media/limit-egress-traffic/aks-udr-fw.png" alt-text="aks-deploy":::
 
 ### <a name="create-a-service-principal-with-access-to-provision-inside-the-existing-virtual-network"></a>创建有权在现有虚拟网络中进行预配的服务主体
 
@@ -514,7 +514,7 @@ az aks update -g $RG -n $AKS_NAME --api-server-authorized-ip-ranges $CURRENT_IP/
 ### <a name="deploy-a-public-service"></a>部署公共服务
 现在可以开始公开服务并将应用程序部署到此群集。 此示例将公开公共服务，但也可以选择通过[内部负载均衡器](internal-lb.md)公开内部服务。
 
-![公共服务 DNAT](media/limit-egress-traffic/aks-create-svc.png)
+:::image type="content" source="media/limit-egress-traffic/aks-create-svc.png" alt-text="公共服务 DNAT":::
 
 通过将以下 yaml 复制为名为 `example.yaml` 的文件来部署 Azure 投票应用程序。
 
@@ -741,7 +741,7 @@ kubectl apply -f example.yaml
 ### <a name="add-a-dnat-rule-to-azure-firewall"></a>将 DNAT 规则添加到 Azure 防火墙
 
 > [!IMPORTANT]
-> 使用 Azure 防火墙限制出口流量并创建用户定义的路由 (UDR) 来强制所有出口流量时，请确保在防火墙中创建适当的 DNAT 规则，以正确允许入口流量。 结合使用 Azure 防火墙和 UDR 时，会因为路由不对称而中断入口设置。 （如果 AKS 子网具有指向防火墙专用 IP 地址的默认路由，但你使用的是公共负载均衡器 - 类型为 LoadBalancer 的入口或 Kubernetes 服务，则会出现此问题）。 在这种情况下，将通过负载均衡器的公共 IP 地址接收传入的负载均衡器流量，但返回路径将通过防火墙的专用 IP 地址。 由于防火墙是有状态的，并且无法识别已建立的会话，因此会丢弃返回的数据包。 若要了解如何将 Azure 防火墙与入口或服务负载均衡器集成，请参阅[将 Azure 防火墙与 Azure 标准负载均衡器集成](https://docs.microsoft.com/azure/firewall/integrate-lb)。
+> 使用 Azure 防火墙限制出口流量并创建用户定义的路由 (UDR) 来强制所有出口流量时，请确保在防火墙中创建适当的 DNAT 规则，以正确允许入口流量。 结合使用 Azure 防火墙和 UDR 时，会因为路由不对称而中断入口设置。 （如果 AKS 子网具有指向防火墙专用 IP 地址的默认路由，但你使用的是公共负载均衡器 - 类型为 LoadBalancer 的入口或 Kubernetes 服务，则会出现此问题）。 在这种情况下，将通过负载均衡器的公共 IP 地址接收传入的负载均衡器流量，但返回路径将通过防火墙的专用 IP 地址。 由于防火墙是有状态的，并且无法识别已建立的会话，因此会丢弃返回的数据包。 若要了解如何将 Azure 防火墙与入口或服务负载均衡器集成，请参阅[将 Azure 防火墙与 Azure 标准负载均衡器集成](../firewall/integrate-lb.md)。
 
 
 若要配置入站连接，必须将一个 DNAT 规则写入到 Azure 防火墙。 为了测试与群集的连接，为防火墙前端公共 IP 地址定义了规则，以便路由到内部服务公开的内部 IP。
@@ -781,7 +781,7 @@ az network firewall nat-rule create --collection-name exampleset --destination-a
 应看到 AKS 投票应用程序。 此示例中，防火墙公共 IP 是 `52.253.228.132`。
 
 
-![aks-vote](media/limit-egress-traffic/aks-vote.png)
+:::image type="content" source="media/limit-egress-traffic/aks-vote.png" alt-text="aks-vote":::
 
 
 ### <a name="clean-up-resources"></a>清理资源
@@ -813,6 +813,7 @@ az group delete -g $RG
 [aks-upgrade]: upgrade-cluster.md
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
+
 <!--Not Avaiable on [dev-spaces-service-tags]: ../dev-spaces/configure-networking.md#virtual-network-or-subnet-configurations-->
 
 <!-- Update_Description: update meta properties, wording update, update link -->

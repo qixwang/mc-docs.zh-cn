@@ -5,15 +5,17 @@ author: rockboyfor
 ms.service: virtual-machines-windows
 ms.topic: conceptual
 origin.date: 06/27/2017
-ms.date: 07/06/2020
+ms.date: 08/10/2020
+ms.testscope: no
+ms.testdate: 07/06/2020
 ms.author: v-yeche
 ms.subservice: disks
-ms.openlocfilehash: ee29eea2dedc697836a543c1f2de9f225266fbce
-ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
+ms.openlocfilehash: 7e06da0d9a2d3207d5468e39601c95c6f91ec7da
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85945991"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917184"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure 高级存储：高性能设计
 
@@ -36,7 +38,7 @@ ms.locfileid: "85945991"
 
 SQL Server 用户请阅读有关 SQL Server 性能最佳实践的文章：
 
-* [Azure 虚拟机中 SQL Server 的性能最佳做法](sql/virtual-machines-windows-sql-performance.md)
+* [Azure 虚拟机中 SQL Server 的性能最佳做法](../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md)
 * [Azure 高级存储为 Azure VM 中的 SQL Server 提供最高性能](https://cloudblogs.microsoft.com/sqlserver/2015/04/23/azure-premium-storage-provides-highest-performance-for-sql-server-in-azure-vm/)
 
 <!-- Update_Description: update meta properties, wording update, update link -->

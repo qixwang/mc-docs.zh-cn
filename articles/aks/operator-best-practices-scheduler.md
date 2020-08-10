@@ -4,14 +4,17 @@ description: 了解有关使用 Azure Kubernetes 服务 (AKS) 中的基本计划
 services: container-service
 ms.topic: conceptual
 origin.date: 11/26/2018
-ms.date: 03/09/2020
+ms.date: 08/10/2020
+ms.testscope: no
+ms.testdate: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: d0218eceaae7ca8b904ee0119922b9aab4fb74df
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+author: rockboyfor
+ms.openlocfilehash: 18a127b362882c9ac1fc4faae94974b8ad88de8e
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291327"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842630"
 ---
 # <a name="best-practices-for-basic-scheduler-features-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的基本计划程序功能的最佳做法
 
@@ -89,8 +92,8 @@ metadata:
 spec:
    minAvailable: 3
    selector:
-   matchLabels:
-      app: nginx-frontend
+     matchLabels:
+       app: nginx-frontend
 ```
 
 还可以定义一个百分比（例如 *60%* ），以便在扩展 pod 数目时可以自动补偿副本集。
@@ -105,8 +108,8 @@ metadata:
 spec:
    maxUnavailable: 2
    selector:
-   matchLabels:
-      app: nginx-frontend
+     matchLabels:
+       app: nginx-frontend
 ```
 
 定义 pod 中断预算后，可以像创建其他任何 Kubernetes 对象一样，在 AKS 群集中创建中断预算：

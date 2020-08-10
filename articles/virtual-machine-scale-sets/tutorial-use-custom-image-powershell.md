@@ -5,16 +5,16 @@ author: cynthn
 ms.service: virtual-machine-scale-sets
 ms.subservice: imaging
 ms.topic: tutorial
-ms.date: 06/22/2020
+ms.date: 08/06/2020
 ms.author: v-junlch
 ms.reviewer: akjosh
 ms.custom: akjosh
-ms.openlocfilehash: 686db2eea80622409e8e392579ecd5d6d0396a39
-ms.sourcegitcommit: 43db4001be01262959400663abf8219e27e5cb8b
+ms.openlocfilehash: 87981ad0880710b1765bfc6c0ce47b3bb92c64ba
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85241554"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914188"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-azure-powershell"></a>教程：通过 Azure PowerShell 创建和使用虚拟机规模集的自定义映像
 
@@ -73,7 +73,7 @@ $gallery = New-AzGallery `
 
 ## <a name="create-an-image-definition"></a>创建映像定义 
 
-映像定义为映像创建一个逻辑分组。 它们用于管理有关映像版本的信息，这些版本是在其中创建的。 映像定义名称可能包含大写或小写字母、数字、点、短划线和句点。 若要详细了解可以为映像定义指定的值，请参阅[映像定义](/virtual-machines/windows/shared-image-galleries#image-definitions)。
+映像定义为映像创建逻辑分组。 映像定义用于管理在其中创建的映像版本的相关信息。 映像定义名称可以由大写或小写字母、数字、点、短划线和句点构成。 有关可为映像定义指定的值的详细信息，请参阅[映像定义](../virtual-machines/windows/shared-image-galleries.md#image-definitions)。
 
 使用 [New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) 创建映像定义。 在此示例中，库映像名为 myGalleryImage，它是为专用化映像创建的。 
 
@@ -221,7 +221,7 @@ New-AzVmss `
 
 ## <a name="share-the-gallery"></a>共享库
 
-我们建议你在映像库级别共享访问权限。 使用电子邮件地址和 [Get-AzADUser](https://docs.microsoft.com/powershell/module/az.resources/get-azaduser) cmdlet 获取用户的对象 ID，然后使用 [New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/Az.Resources/New-AzRoleAssignment) 授予他们对该库的访问权限。 请将此示例中的示例电子邮件地址 alinne_montes@contoso.com 替换为你自己的信息。
+建议在映像库级别共享访问权限。 使用电子邮件地址和 [Get-AzADUser](https://docs.microsoft.com/powershell/module/az.resources/get-azaduser) cmdlet 获取用户的对象 ID，然后使用 [New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/Az.Resources/New-AzRoleAssignment) 为用户授予对库的访问权限。 请将此示例中的示例电子邮件地址 alinne_montes@contoso.com 替换为你自己的信息。
 
 ```azurepowershell
 # Get the object ID for the user

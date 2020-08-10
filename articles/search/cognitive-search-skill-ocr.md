@@ -9,18 +9,18 @@ ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 06/17/2020
 ms.date: 07/17/2020
-ms.openlocfilehash: 919c67af2bfb2bcbad5b78b6eda7034c17606d6a
-ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
+ms.openlocfilehash: e6d518c13e3cd36e68af68213349f252364c97e9
+ms.sourcegitcommit: caa18677adb51b5321ad32ae62afcf92ac00b40b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86472006"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88023396"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR 认知技能
 
 **光学字符识别 (OCR)** 技能可识别图像文件中的印刷体文本和手写文本。 此技能使用认知服务中的[计算机视觉](https://docs.azure.cn/cognitive-services/computer-vision/home)提供的机器学习模型。 **OCR** 技能将映射到以下功能：
 
-+ [“OCR”](../cognitive-services/computer-vision/concept-recognizing-text.md#ocr-optical-character-recognition-api)API 用于英语以外的其他语言。 
++ [“OCR”](../cognitive-services/computer-vision/concept-recognizing-text.md)API 用于英语以外的其他语言。 
 + 对于英语，使用新的[“Read”](../cognitive-services/computer-vision/concept-recognizing-text.md#read-api)API。
 
 OCR  技能可以从图像文件中提取文本。 支持的文件格式包括：

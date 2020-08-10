@@ -6,15 +6,15 @@ author: rockboyfor
 ms.service: virtual-machines
 ms.topic: include
 origin.date: 01/22/2019
-ms.date: 11/11/2019
+ms.date: 08/10/2019
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 0e589c2b0f2172fdb708f0067938b363cee896f8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 500cc76761d5279f87efb93b8869580bc022b019
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73831369"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87919332"
 ---
 **出站数据传输**：[出站数据传输](https://www.azure.cn/pricing/details/data-transfer/)（传出 Azure 数据中心的数据）会产生带宽使用费。
 
@@ -25,3 +25,4 @@ ms.locfileid: "73831369"
 <!--MOONCAKE: CORRECT ON https://www.azure.cn/zh-cn/pricing/details/storage/managed-disks/-->
 
 <!--Not Available on ### Ultra SSD VM reservation fee-->
+<!--Not Available on ### Azure disk reservation-->

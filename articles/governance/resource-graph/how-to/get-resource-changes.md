@@ -1,17 +1,17 @@
 ---
 title: 获取资源更改
-description: 了解如何查找资源更改时间、获取已更改属性的列表以及评估差异。
+description: 了解如何查找资源的更改时间，获取已更改属性的列表以及评估差异。
 author: DCtheGeek
 ms.author: v-tawe
 origin.date: 10/09/2019
 ms.date: 03/02/2020
 ms.topic: how-to
-ms.openlocfilehash: d47ae409692a2c7f4f0c3050c3e637861a2aef60
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b392eaa20a27d93b7632df0e88b1f993b0e0f8fd
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80243904"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917285"
 ---
 # <a name="get-resource-changes"></a>获取资源更改
 
@@ -22,11 +22,11 @@ ms.locfileid: "80243904"
 - 对于每个资源更改，请参阅属性更改详细信息
 - 查看检测到的更改之前和之后的资源的完整比较
 
-对于以下示例场景，更改检测和详细信息很有作用：
+对于以下示例场景，更改检测和详细信息很有用：
 
-- 在事件管理期间了解潜在相关的更改。  查询特定时段内的更改事件，以及评估更改详细信息。
-- 使配置管理数据库（简称为 CMDB）保持最新。 无需按计划的频率刷新所有资源及其完整的属性集，只获取更改的内容。
-- 了解当某个资源更改了合规状态时可能已更改的其他属性。 评估这些附加属性可以洞察可能需要通过 Azure Policy 定义进行管理的其他属性。
+- 在事件管理期间了解可能相关的更改。 查询特定时段内的更改事件，并评估更改详细信息。
+- 使配置管理数据库（称为 CMDB）保持最新。 无需按计划的频率刷新所有资源及其完整的属性集，只获取更改的内容。
+- 了解当某个资源更改了符合性状态时可能已更改的其他属性。 评估这些附加属性可以洞察可能需要通过 Azure Policy 定义进行管理的其他属性。
 
 本文介绍如何通过 Resource Graph 的 SDK 收集此信息。
 
@@ -38,15 +38,15 @@ ms.locfileid: "80243904"
 
 ## <a name="find-detected-change-events-and-view-change-details"></a>查找检测到的更改事件并查看更改详细信息
 
-查看资源发生的更改的第一步是查找某个时段内与该资源相关的更改事件。 每个更改事件还包含有关资源的哪些信息发生更改的详细信息。 此步骤是通过 **resourceChanges** REST 终结点完成的。
+查看资源发生的更改的第一步是查找某个时段内与该资源相关的更改事件。 每个更改事件还包含有关资源的哪些信息发生更改的详细信息。 此步骤通过 resourceChanges REST 终结点完成。
 
-**resourceChanges** 终结点接受请求正文中的以下参数：
+resourceChanges 终结点接受请求正文中的以下参数：
 
-- **resourceId** \[必需\]：要查看其更改的 Azure 资源。
-- **interval** \[必需\]：包含检查更改事件的开始日期和结束日期（采用**祖鲁时区 (Z)** ）的属性。  
-- **fetchPropertyChanges**（可选）：一个布尔值属性，它设置响应对象是否包括属性更改。
+- resourceId \[必需\]：要在其上查找更改的 Azure 资源。
+- interval \[必需\]：具有使用“祖鲁语时区 (Z)”检查更改事件的 start 和 end 日期的属性。
+- fetchPropertyChanges（可选）：一个布尔值属性，设置响应对象是否包括属性更改。
 
-请求正文示例：
+示例请求正文：
 
 ```json
 {
@@ -59,10 +59,10 @@ ms.locfileid: "80243904"
 }
 ```
 
-对于上述请求正文，**resourceChanges** 的 REST API URI 是：
+对于上述请求正文，resourceChanges 的 REST API URI 为：
 
 ```http
-POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChanges?api-version=2018-09-01-preview
+POST https://management.chinacloudapi.cn/providers/Microsoft.ResourceGraph/resourceChanges?api-version=2018-09-01-preview
 ```
 
 响应如以下示例所示：
@@ -142,30 +142,30 @@ POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChan
 }
 ```
 
-**resourceId** 的每个检测到的更改事件都具有以下属性：
+resourceId 的每个检测到的更改事件都具有以下属性：
 
-- **changeId** - 此值对于该资源是唯一的。 **changeId** 字符串有时可能包含其他属性，只能保证它是唯一的。
-- **beforeSnapshot** - 包含检测到更改之前创建的资源快照的 **snapshotId** 和 **timestamp**。
-- **afterSnapshot** - 包含检测到更改之后创建的资源快照的 **snapshotId** 和 **timestamp**。
-- **changeType** - 描述已针对 **beforeSnapshot** 和 **afterSnapshot** 之间的整个更改记录检测到的更改的类型。 值为：_Create_、_Update_ 和 _Delete_。 仅当 **changeType** 为 _Update_ 时，才包括 **propertyChanges** 属性数组。
-- **propertyChanges** - 此属性数组提供了 **beforeSnapshot** 和 **afterSnapshot** 之间已更新的所有资源属性的详细信息：
-  - **propertyName** - 已更改的资源属性的名称。
-  - **changeCategory** - 描述哪类更改者执行了更改。 值为：_System_ 和 _User_。
-  - **changeType** - 描述已为单个资源属性检测到的更改的类型。
-    值为：_Insert_、_Update_、_Remove_。
-  - **beforeValue** - **beforeSnapshot** 中资源属性的值。 当 **changeType** 为 _Insert_ 时不显示。
-  - **afterValue** - **afterSnapshot** 中的资源属性的值。 当 **changeType** 为 _Remove_ 时不显示。
+- changeId - 此值对于该资源是唯一的。 changeId 字符串有时可能包含其他属性，但只能保证它是唯一的。
+- beforeSnapshot - 包含检测到更改之前创建的资源快照的 snapshotId 和 timestamp。
+- afterSnapshot - 包含检测到更改之后创建的资源快照的 snapshotId 和 timestamp。
+- changeType - 描述已针对 beforeSnapshot 和 afterSnapshot 之间的完整更改记录检测到的更改的类型。 值为：Create、Update 和 Delete。   仅当 changeType 为 Update 时，才包括 propertyChanges 属性数组。
+- propertyChanges - 此属性数组提供了 beforeSnapshot 和 afterSnapshot 之间已更新的所有资源属性的详细信息：
+  - propertyName - 已更改的资源属性的名称。
+  - changeCategory - 描述更改者类别。 值为：System 和 User。
+  - changeType - 描述已为单个资源属性检测到的更改的类型。
+    值为：Insert、Update、Remove。  
+  - beforeValue - beforeSnapshot 中资源属性的值。 当 changeType 为 Insert 时，不会显示。
+  - afterValue - afterSnapshot 中资源属性的值。 当 changeType 为 Remove 时，不会显示。
 
 ## <a name="compare-resource-changes"></a>比较资源更改
 
-有了来自 **resourceChanges** 终结点的 **changeId** 后，可以使用 **resourceChangeDetails** REST 终结点获取更改资源之前和之后的资源快照。
+有了来自 resourceChanges 终结点的 changeId 后，就可以使用 resourceChangeDetails REST 终结点获取资源更改之前和之后的快照。  
 
-**resourceChangeDetails** 终结点要求在请求正文中使用两个参数：
+resourceChangeDetails 终结点要求在请求正文中使用两个参数：
 
-- **resourceId**：要比较其更改的 Azure 资源。
-- **changeId**：从 **resourceChanges** 中收集的 **resourceId** 的唯一更改事件。
+- resourceId：要比较其更改的 Azure 资源。
+- changeId：从 resourceChanges 收集的 resourceId 的唯一更改事件。 
 
-请求正文示例：
+示例请求正文：
 
 ```json
 {
@@ -174,10 +174,10 @@ POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChan
 }
 ```
 
-对于上述请求正文，**resourceChangeDetails** 的 REST API URI 是：
+对于上述请求正文，resourceChangeDetails 的 REST API URI 是：
 
 ```http
-POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChangeDetails?api-version=2018-09-01-preview
+POST https://management.chinacloudapi.cn/providers/Microsoft.ResourceGraph/resourceChangeDetails?api-version=2018-09-01-preview
 ```
 
 响应如以下示例所示：
@@ -282,12 +282,12 @@ POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChan
 }
 ```
 
-**beforeSnapshot** 和 **afterSnapshot** 分别提供快照创建时间以及当时的属性。 更改是在这些快照之间的某个时间点发生的。 在以上示例中我们可以看到，更改的属性是 **supportsHttpsTrafficOnly**。
+beforeSnapshot 和 afterSnapshot 分别提供快照创建时间以及当时的属性。 更改是在这些快照之间的某个时间点发生的。 在以上示例中我们可以看到，更改的属性是 supportsHttpsTrafficOnly。
 
-若要对结果进行比较，请使用 **resourceChanges** 中的 **changes** 属性，或评估 **resourceChangeDetails** 中每个快照的 **content** 部分，以确定差异。 如果对快照进行比较，**timestamp** 始终会显示为差异，不过这符合预期。
+若要对结果进行比较，请使用 resourceChanges 中的 changes 属性，或评估 resourceChangeDetails 中每个快照的 content 部分，以确定差异。    如果对快照进行比较，timestamp 始终会显示为差异，不过这符合预期。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 在[初学者查询](../samples/starter.md)中了解使用的语言。
-- 在[高级查询](../samples/advanced.md)中了解高级用法。
+- 请参阅[初学者查询](../samples/starter.md)中使用的语言。
+- 请参阅[高级查询](../samples/advanced.md)中的高级用法。
 - 详细了解如何[浏览资源](../concepts/explore-resources.md)。

@@ -15,3 +15,6 @@
         - name: 策略
           tocHref: /key-vault
           topicHref: /governance/policy
+        - name: 策略
+          tocHref: /aks
+          topicHref: /governance/policy

@@ -6,14 +6,14 @@ ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/10/2019
-ms.openlocfilehash: abec45242e0639c2d1506f756b91d6d48059e88f
-ms.sourcegitcommit: 362814dc7ac5b56cf0237b9016a67c35d8d72c32
+ms.openlocfilehash: 3e3f1f00867dbeb4c139633c49f17964671f3dbc
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87457510"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917052"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>在 Azure HDInsight 中创建和配置企业安全性套餐群集
 
@@ -227,7 +227,7 @@ ms.locfileid: "87457510"
 
 ### <a name="enable-azure-ad-ds"></a>启用 Azure AD DS
 
-按以下步骤启用 Azure AD DS。 有关详细信息，请参阅[通过 Azure 门户启用 Azure AD DS](/active-directory-domain-services/active-directory-ds-getting-started)。
+按以下步骤启用 Azure AD DS。 有关详细信息，请参阅[通过 Azure 门户启用 Azure AD DS](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started)。
 
 1. 创建虚拟网络以承载 Azure AD DS。 运行以下 PowerShell 代码。
 
@@ -302,7 +302,7 @@ ms.locfileid: "87457510"
 
 将使用轻型目录访问协议 (LDAP) 从 Azure Active Directory 读取数据或将数据写入到 Azure Active Directory。 可以通过使用安全套接字层 (SSL) 或传输层安全性 (TLS) 技术，确保 LDAP 流量的机密性和安全性。 可以通过安装正确格式的证书来启用基于 SSL 的 LDAP (LDAPS)。
 
-有关安全 LDAP 的详细信息，请参阅[为 Azure AD DS 托管域配置 LDAP](/active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap)。
+有关安全 LDAP 的详细信息，请参阅[为 Azure AD DS 托管域配置 LDAP](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap)。
 
 在本部分中，你将创建一个自签名证书，下载该证书，并为 Azure AD DS 托管域 **HDIFabrikam** 配置 LDAPS。
 
@@ -409,7 +409,7 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
 
     1. 完成其他的群集配置步骤，并验证“群集摘要”上的详细信息。 选择“创建” 。
 
-1. 从 `https://CLUSTERNAME.azurehdinsight.cn` 登录到新建群集的 Ambari UI。 使用管理员用户名 `hdiadmin@hdifabrikam.com` 及其密码。
+1. 从 `https://CLUSTERNAME.azurehdinsight.net` 登录到新建群集的 Ambari UI。 使用管理员用户名 `hdiadmin@hdifabrikam.com` 及其密码。
 
     ![Apache Ambari UI 登录窗口](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0135.jpg)
 

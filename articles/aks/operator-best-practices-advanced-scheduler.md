@@ -5,16 +5,16 @@ description: 了解有关使用 Azure Kubernetes 服务 (AKS) 中的高级计划
 services: container-service
 ms.topic: conceptual
 origin.date: 11/26/2018
-ms.date: 07/13/2020
+ms.date: 08/10/2020
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: fc86471cec22209e2e7939bd33ff9dabe0f87aa7
-ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
+ms.openlocfilehash: a86aa917568a5d0de547371e4958df048ec12c57
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86218709"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842567"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的高级计划程序功能的最佳做法
 
@@ -105,7 +105,7 @@ spec:
 让我们查看具有大量内存的节点示例。 这些节点可向请求大量内存的 pod 分配优先顺序。 为确保资源不会闲置，它们还允许运行其他 pod。
 
 ```console
-kubectl label node aks-nodepool1 hardware:highmem
+kubectl label node aks-nodepool1 hardware=highmem
 ```
 
 然后，pod 规范添加 `nodeSelector` 属性，以定义与节点上设置的标签匹配的节点选择器：

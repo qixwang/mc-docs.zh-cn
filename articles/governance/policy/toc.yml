@@ -160,7 +160,7 @@
           href: 'https://docs.microsoft.com/rest/api/policy-insights/remediations'
         - name: 来宾配置
           href: 'https://docs.microsoft.com/rest/api/guestconfiguration/'
-    - name: Resource Manager 模板
+    - name: 资源管理器模板
       items:
         - name: 分配
           href: /azure/templates/microsoft.authorization/policyassignments

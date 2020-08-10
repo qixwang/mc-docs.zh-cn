@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/13/2020
+ms.date: 08/07/2020
 ms.author: v-junlch
-ms.openlocfilehash: a28bb49ba7374b4ac20e6567a6a051fd8dc7415e
-ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
+ms.openlocfilehash: dd85378d340e0f403dfa60fabc7a50133e05b8b8
+ms.sourcegitcommit: a5eb9a47feefb053ddbaab4b15c395972c372339
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86472613"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88028593"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-active-directory-domain-services-managed-domain"></a>如何在 Azure Active Directory 域服务托管域中同步对象和凭据
 
@@ -79,6 +79,7 @@ ms.locfileid: "86472613"
 | physicalDeliveryOfficeName |physicalDeliveryOfficeName |
 | postalCode |postalCode |
 | preferredLanguage |preferredLanguage |
+| ProxyAddresses | ProxyAddresses |
 | state |st |
 | streetAddress |streetAddress |
 | surname |sn |
@@ -97,6 +98,7 @@ ms.locfileid: "86472613"
 | mailNickname |msDS-AzureADMailNickname |
 | objectid |msDS-AzureADObjectId |
 | onPremiseSecurityIdentifier |sidHistory |
+| ProxyAddresses | ProxyAddresses |
 | securityEnabled |groupType |
 
 ## <a name="synchronization-from-on-premises-ad-ds-to-azure-ad-and-azure-ad-ds"></a>从本地 AD DS 到 Azure AD 和 Azure AD DS 的同步

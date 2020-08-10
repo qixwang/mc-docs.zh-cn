@@ -2,15 +2,15 @@
 title: 教程：创建自定义策略定义
 description: 本教程介绍如何创建 Azure Policy 的自定义策略定义以在 Azure 资源上强制实施自定义业务规则。
 ms.author: v-tawe
-origin.date: 11/25/2019
-ms.date: 05/29/2020
+origin.date: 06/16/2020
+ms.date: 08/06/2020
 ms.topic: tutorial
-ms.openlocfilehash: 17a35f55b3ff807f2a8787e20df18d8152e21c9f
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: 5c4eea24e145adef743734d007e526c0325efe53
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199712"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917325"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>教程：创建自定义策略定义
 
@@ -55,7 +55,7 @@ ms.locfileid: "84199712"
 可通过多种方式确定 Azure 资源的属性。 本教程将介绍其中的每种方式：
 
 - 适用于 VS Code 的 Azure Policy 扩展
-- Resource Manager 模板
+- Azure 资源管理器模板（ARM 模板）
   - 导出现有资源
   - 创建体验
   - 快速入门模板 (GitHub)
@@ -66,9 +66,9 @@ ms.locfileid: "84199712"
 
 [VS Code 扩展](../how-to/extension-for-vscode.md#search-for-and-view-resources)可用于浏览环境中的资源和查看每个资源上的资源管理器属性。
 
-### <a name="resource-manager-templates"></a>Resource Manager 模板
+### <a name="arm-templates"></a>ARM 模板
 
-可通过多种方式查找包含所要管理的属性的[资源管理器模板](../../../azure-resource-manager/templates/template-tutorial-create-encrypted-storage-accounts.md)。
+可通过多种方式查找包含所要管理的属性的[资源管理器模板](../../../azure-resource-manager/templates/template-tutorial-use-template-reference.md)。
 
 #### <a name="existing-resource-in-the-portal"></a>门户中的现有资源
 
@@ -146,12 +146,11 @@ ms.locfileid: "84199712"
 
 #### <a name="quickstart-templates-on-github"></a>GitHub 上的快速入门模板
 
-GitHub 上的 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates)包含数百个针对不同资源生成的资源管理器模板。 使用这些模板能够十分方便地查找所需的资源属性。 某些属性似乎是我们所要查找的属性，但它们控制了其他某个对象。
+GitHub 上的 [Azure 快速启动模板](https://github.com/Azure/azure-quickstart-templates)包含数百个针对不同资源生成的 ARM 模板。 使用这些模板能够十分方便地查找所需的资源属性。 某些属性似乎是我们所要查找的属性，但它们控制了其他某个对象。
 
 #### <a name="resource-reference-docs"></a>资源参考文档
 
-若要验证 **supportsHttpsTrafficOnly** 是否为正确的属性，请在存储提供商网站上查看[存储帐户资源](https://docs.microsoft.com/azure/templates/microsoft.storage/2018-07-01/storageaccounts)的资源管理器模板参考。
-属性对象包含有效参数的列表。 选择 [StorageAccountPropertiesCreateParameters-object](https://docs.microsoft.com/azure/templates/microsoft.storage/2018-07-01/storageaccounts#storageaccountpropertiescreateparameters-object) 链接会显示可接受的属性表。 若要满足业务要求，**supportsHttpsTrafficOnly** 必须存在，并且说明必须与所要查找的内容相匹配。
+若要验证 supportsHttpsTrafficOnly 是否为正确的属性，请在存储提供商网站上查看[存储帐户资源](https://docs.microsoft.com/azure/templates/microsoft.storage/2018-07-01/storageaccounts)的 ARM 模板参考。 属性对象包含有效参数的列表。 选择 [StorageAccountPropertiesCreateParameters-object](https://docs.microsoft.com/azure/templates/microsoft.storage/2018-07-01/storageaccounts#storageaccountpropertiescreateparameters-object) 链接会显示可接受的属性表。 若要满足业务要求，**supportsHttpsTrafficOnly** 必须存在，并且说明必须与所要查找的内容相匹配。
 
 <!-- Azure Resource Explorer not availible -->
 
@@ -170,6 +169,9 @@ GitHub 上的 [Azure 快速入门模板](https://github.com/Azure/azure-quicksta
 ### <a name="get-aliases-in-vs-code-extension"></a>在 VS Code 扩展中获取别名
 
 利用适用于 VS Code 扩展的 Azure Policy 扩展，可轻松浏览资源并[发现别名](../how-to/extension-for-vscode.md#discover-aliases-for-resource-properties)。
+
+> [!NOTE]
+> VS Code 扩展只公开资源管理器模式属性，不会显示任何[资源提供程序模式](../concepts/definition-structure.md#mode)属性。
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -217,7 +219,7 @@ az graph query -q "Resources | where type=~'microsoft.storage/storageaccounts' |
 Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1"
 ```
 
-结果类似于在资源管理器模板中和通过 Azure 资源浏览器查找后获得的结果。 但是，Azure Resource Graph 结果还可通过_投影_ _别名_数组来包含[别名](../concepts/definition-structure.md#aliases)详细信息：
+结果类似于在 ARM 模板中和通过 Azure 资源浏览器查找后获得的结果。 但是，Azure Resource Graph 结果还可通过_投影_ _别名_数组来包含[别名](../concepts/definition-structure.md#aliases)详细信息：
 
 ```kusto
 Resources

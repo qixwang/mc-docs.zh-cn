@@ -3,25 +3,25 @@ title: 快速入门：计算机视觉客户端库 | Azure Docs
 titleSuffix: Azure Cognitive Services
 description: 参考本快速入门，将应用程序从 Azure 认知服务连接到计算机视觉 API。
 services: cognitive-services
-author: PatrickFarley
+author: Johnnytechn
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 06/08/2020
-ms.author: v-tawe
+ms.date: 08/04/2020
+ms.author: v-johya
 origin.date: 03/12/2020
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 2cedb725f715b38b4eb8630ba5f6ff0cdf25f952
-ms.sourcegitcommit: 8dae792aefbe44e8388f961b813e3da6564423ec
+ms.openlocfilehash: 3740919170b0284a3f93e07d6228712a478f3beb
+ms.sourcegitcommit: caa18677adb51b5321ad32ae62afcf92ac00b40b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84655007"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88023384"
 ---
 # <a name="quickstart-use-the-computer-vision-client-library"></a>快速入门：使用计算机视觉客户端库
 
-开始使用计算机视觉客户端库。 请按照以下步骤安装程序包并试用基本任务的示例代码。 使用计算机视觉可以访问用于处理图像并返回信息的高级算法
+开始使用计算机视觉客户端库。 请按照以下步骤安装程序包并试用基本任务的示例代码。 使用计算机视觉可以访问用于处理图像并返回信息的高级算法。
 
 使用计算机视觉客户端库可以：
 
@@ -57,3 +57,4 @@ ms.locfileid: "84655007"
 [!INCLUDE [Go SDK quickstart](../includes/quickstarts-sdk/go-sdk.md)]
 
 ::: zone-end
+

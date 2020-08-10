@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 06/12/2020
 ms.author: v-tawe
 origin.date: 04/14/2020
-ms.openlocfilehash: 8c62fea0db553bc851bf70db4a426d0674b0e39d
-ms.sourcegitcommit: 0e778acf5aa5eb63ab233e07e7aecce3a9a5e6d4
+ms.openlocfilehash: 45ac6498c772db1062d75fda41ae6cbe122612b3
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87298887"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87919372"
 ---
 适用于 .NET 的人脸客户端库入门。 请按照以下步骤安装程序包并试用基本任务的示例代码。 通过人脸服务，可以访问用于检测和识别图像中的人脸的高级算法。
 
@@ -539,7 +539,7 @@ IFaceClient clientTarget = Authenticate(TARGET_ENDPOINT, TARGET_SUBSCRIPTION_KEY
     ```csharp
         /*
      * SNAPSHOT OPERATIONS
-     * Copies a person group from one Azure region (or subscription) to another. For example: from the ChinaEast2 region to the WestUS.
+     * Copies a person group from one Azure region (or subscription) to another. For example: from the ChinaEast2 region to the China East.
      * The same process can be used for face lists. 
      * NOTE: the person group in the target region has a new person group ID, so it no longer associates with the source person group.
      */

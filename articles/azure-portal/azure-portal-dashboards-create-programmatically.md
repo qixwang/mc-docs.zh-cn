@@ -13,12 +13,12 @@ ms.workload: na
 origin.date: 03/23/2020
 ms.date: 06/22/2020
 ms.author: v-tawe
-ms.openlocfilehash: 8027a9cb16106866b4155ee69758d5e238e1fcca
-ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
+ms.openlocfilehash: df228f696b8e6fae523d340666de9f5549d4136a
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85613304"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917342"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>以编程方式创建 Azure 仪表板
 
@@ -378,7 +378,7 @@ id: "[resourceId(parameters('virtualMachineResourceGroup'), 'Microsoft.Compute/v
     "id": "/subscriptions/6531c8c8-df32-4254-d717-b6e983273e5d/resourceGroups/dashboards/providers/Microsoft.Portal/dashboards/aa9786ae-e159-483f-b05f-1f7f767741a9",
     "name": "aa9786ae-e159-483f-b05f-1f7f767741a9",
     "type": "Microsoft.Portal/dashboards",
-    "location": "eastasia",
+    "location": "chinaeast2",
     "tags": {
         "hidden-title": "Created via API"
     }

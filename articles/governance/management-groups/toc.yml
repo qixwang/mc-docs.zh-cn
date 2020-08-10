@@ -7,10 +7,32 @@
       href: ../azure-management.md
     - name: 管理组
       href: ./overview.md
-- name: 操作方法指南
+- name: 操作指南
   expanded: true
   items:
     - name: 创建管理组
       href: ./create.md
     - name: 管理资源
       href: ./manage.md
+    - name: 保护资源层次结构
+      href: ./how-to/protect-resource-hierarchy.md
+- name: 参考
+  items:
+    - name: Azure CLI
+      href: /cli/account/management-group
+    - name: Azure PowerShell
+      href: 'https://docs.microsoft.com/powershell/module/az.resources/#resources'
+    - name: 用于 .NET 的 Azure SDK
+      href: 'https://docs.microsoft.com/dotnet/api/overview/azure/managementgroups'
+    - name: 用于 JavaScript 的 Azure SDK
+      href: 'https://docs.microsoft.com/javascript/api/@azure/arm-managementgroups/managementgroups'
+    - name: REST
+      href: 'https://docs.microsoft.com/rest/api/resources/managementgroups'
+    - name: 资源管理器模板
+      href: 'https://docs.microsoft.com/azure/templates/microsoft.management/managementgroups'
+- name: 资源
+  items:
+    - name: 定价计算器
+      href: 'https://www.azure.cn/pricing/calculator/'
+    - name: UserVoice
+      href: 'https://feedback.azure.com/forums/915958-azure-governance?category_id=345064'

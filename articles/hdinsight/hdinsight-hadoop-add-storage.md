@@ -12,16 +12,16 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
-origin.date: 01/21/2020
-ms.date: 03/23/2020
+origin.date: 04/27/2020
+ms.date: 08/17/2020
 ms.author: v-yiso
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 232106ec05bae1a6eb20435168cc6747e0c1a54a
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.openlocfilehash: ad8e757c942cb6029c81c7d5e1ffb270c4bdf4ac
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723286"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917055"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>将其他存储帐户添加到 HDInsight
 
@@ -141,14 +141,6 @@ foreach ($name in $value ) { $name.Name.Split(".")[4]}
 
 > [!IMPORTANT]  
 > 对于附加到群集的主存储帐户，不支持轮换使用存储密钥。
-
-### <a name="poor-performance"></a>性能不佳
-
-如果存储帐户与 HDInsight 群集不在同一个区域中，可能会遇到性能不佳的情况。 访问不同区域中的数据会在区域 Azure 数据中心外部跨公共 Internet 发送网络流量，从而会导致延迟。
-
-### <a name="additional-charges"></a>额外费用
-
-如果存储帐户与 HDInsight 群集不在同一个区域中，可能会在 Azure 帐单上发现额外出口费用。 当数据离开区域数据中心时，将收取出口费用。 即使流量发往另一区域中的另一个 Azure 数据中心，也将收取此费用。
 
 ## <a name="next-steps"></a>后续步骤
 

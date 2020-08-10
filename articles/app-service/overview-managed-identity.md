@@ -8,12 +8,12 @@ ms.date: 06/22/2020
 ms.author: v-tawe
 ms.reviewer: yevbronsh
 ms.custom: tracking-python
-ms.openlocfilehash: 8e56f7dfe11eff7d7fd2f9c4044e6fddfc5c0e85
-ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
+ms.openlocfilehash: df878fe7584a8748222a87a432d8bd0867ebcda3
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85613342"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917301"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>如何使用应用服务和 Azure Functions 的托管标识
 
@@ -109,7 +109,7 @@ ms.locfileid: "85613342"
 
 #### <a name="using-azure-powershell-for-a-function-app"></a>对函数应用使用 Azure PowerShell
 
-1. 根据需要按照 [Azure PowerShell 指南](/powershell/azure/overview)中的说明安装 Azure PowerShell，然后运行 `Login-AzAccount` 以创建与 Azure 的连接。
+1. 根据需要按照 [Azure PowerShell 指南](https://docs.microsoft.com/powershell/azure/overview)中的说明安装 Azure PowerShell，然后运行 `Login-AzAccount` 以创建与 Azure 的连接。
 
 2. 使用 Azure PowerShell 创建函数应用。 有关如何对 Azure Functions 使用 Azure PowerShell 的更多示例，请参阅 [Az.Functions 参考](https://docs.microsoft.com/powershell/module/az.functions/?view=azps-4.1.0#functions)：
 

@@ -1,17 +1,16 @@
 ---
 title: 快速入门：通过 PowerShell 进行新策略分配
 description: 在本快速入门中，你将使用 Azure PowerShell 创建 Azure Policy 分配以确定不符合的资源。
-author: DCtheGeek
 ms.author: v-tawe
-origin.date: 11/25/2019
-ms.date: 02/17/2019
+origin.date: 05/20/2020
+ms.date: 08/06/2020
 ms.topic: quickstart
-ms.openlocfilehash: 4356222867b71586776482348f062974d12a0aee
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2a6039bb15b8eb9f5fe3c50a01e537edc99f0d36
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77112214"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917119"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建策略分配以识别不符合的资源
 
@@ -44,10 +43,10 @@ Azure PowerShell 模块用于从命令行或脚本管理 Azure 资源。
 运行以下命令创建新的策略分配：
 
 ```azurepowershell
-# Get a reference to the resource group that will be the scope of the assignment
+# Get a reference to the resource group that is the scope of the assignment
 $rg = Get-AzResourceGroup -Name '<resourceGroupName>'
 
-# Get a reference to the built-in policy definition that will be assigned
+# Get a reference to the built-in policy definition to assign
 $definition = Get-AzPolicyDefinition | Where-Object { $_.Properties.DisplayName -eq 'Audit VMs that do not use managed disks' }
 
 # Create the policy assignment with the built-in definition against your resource group

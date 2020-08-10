@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive
 ms.date: 03/24/2020
-ms.openlocfilehash: abd3501cd6536a7d5e12b079ab5c22d6f9561e8b
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.openlocfilehash: b1ebff352c3b5fa62e90919b6b691eba8a0b24ca
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723218"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917168"
 ---
 # <a name="tutorial-create-an-end-to-end-data-pipeline-to-derive-sales-insights-in-azure-hdinsight"></a>教程：在 Azure HDInsight 中创建端到端的数据管道以派生销售见解
 
@@ -87,11 +87,13 @@ ms.locfileid: "84723218"
     resourceGroup="RESOURCE_GROUP_NAME"
     ```
 
-1. 执行该脚本。 将 `LOCATION` 替换为所需值，然后输入以下命令：
+1. 执行脚本。 将 `LOCATION` 替换为所需值，然后输入以下命令：
 
     ```bash
     ./scripts/resources.sh $resourceGroup LOCATION
     ```
+
+    如果不确定要指定哪个区域，可以使用 [az account list-locations](/cli/account?view=azure-cli-latest#az-account-list-locations) 命令检索你的订阅支持的区域列表。
 
     该命令将部署以下资源：
 
@@ -252,12 +254,12 @@ cat resourcesoutputs_adf.json | jq -r '.properties.outputs.factoryName.value'
 
 1. 在菜单中，导航到“获取数据” > “更多...” > “Azure”“HDInsight Interactive Query” > 。
 
-1. 选择“连接” 。
+1. 选择“连接”。
 
 1. 在“HDInsight Interactive Query”对话框中执行以下操作：
     1. 在“服务器”文本框中，以 `https://LLAPCLUSTERNAME.azurehdinsight.cn` 格式输入 LLAP 群集的名称。
     1. 在“数据库”文本框中，输入 `default`。
-    1. 选择“确定” 。
+    1. 选择“确定”  。
 
 1. 在“AzureHive”对话框中执行以下操作：
     1. 在“用户名”文本框中，输入 `admin`。

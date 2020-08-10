@@ -11,14 +11,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-origin.date: 01/19/2018
-ms.date: 12/17/2018
-ms.openlocfilehash: 26234ba53cbea934b504f09f86799e843d7b2fa3
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 07/22/2019
+ms.date: 08/17/2020
+ms.openlocfilehash: 39d0f8e96c9526d0c4b0e024ff3ceb14a1ad88b1
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "63856754"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917310"
 ---
 # <a name="create-a-spark-machine-learning-pipeline"></a>创建 Spark 机器学习管道
 
@@ -133,3 +133,6 @@ only showing top 20 rows
 
 现在可以使用 `model` 对象来进行预测。 有关此机器学习应用程序的完整示例以及运行此应用程序的分步说明，请参阅[在 Azure HDInsight 上生成 Apache Spark 机器学习应用程序](apache-spark-ipython-notebook-machine-learning.md)。
 
+## <a name="see-also"></a>另请参阅
+
+* [在 Azure 上使用 Scala 和 Apache Spark 展开数据科研](../../machine-learning/team-data-science-process/scala-walkthrough.md)

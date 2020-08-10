@@ -3,18 +3,20 @@ title: 使用 Azure Site Recovery 设置配置服务器，以便将物理服务�
 description: 本文介绍如何设置本地配置服务器，以便将本地物理服务器灾难恢复到 Azure。
 services: site-recovery
 author: rockboyfor
-manager: digimobile
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 origin.date: 07/03/2019
-ms.date: 08/03/2020
+ms.date: 08/10/2020
+ms.testscope: no
+ms.testdate: 08/03/2020
 ms.author: v-yeche
-ms.openlocfilehash: 53b4c775ee69b7a95c46a5de64d3065b174b5bdc
-ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
+ms.openlocfilehash: b9714df8e7f92d457e38ab95d8404da4d0b9d311
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87426350"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917346"
 ---
 # <a name="set-up-the-configuration-server-for-disaster-recovery-of-physical-servers-to-azure"></a>设置配置服务器，以便将物理服务器灾难恢复到 Azure
 
@@ -39,27 +41,27 @@ ms.locfileid: "87426350"
 1. 在 Azure 门户中，转到“恢复服务保管库”  边栏选项卡，然后选择保管库。
 2. 在保管库的“资源”  菜单中，单击“开始使用”   > “Site Recovery”   > “步骤 1: 准备基础结构”   > “保护目标”  。
 
-    ![选择目标](./media/physical-azure-set-up-source/choose-goals.png)
+    :::image type="content" source="./media/physical-azure-set-up-source/choose-goals.png" alt-text="选择目标":::
 3. 在“保护目标”  中，依次选择“到 Azure”  和“未虚拟化/其他”  ，并单击“确定”  。
 
-    ![选择目标](./media/physical-azure-set-up-source/physical-protection-goal.png)
+    :::image type="content" source="./media/physical-azure-set-up-source/physical-protection-goal.png" alt-text="选择目标":::
 
 ## <a name="set-up-the-source-environment"></a>设置源环境
 
 1. 如果没有配置服务器，请在“准备源”中单击“+配置服务器”添加一个。  
 
-    ![设置源](./media/physical-azure-set-up-source/plus-config-srv.png)
+    :::image type="content" source="./media/physical-azure-set-up-source/plus-config-srv.png" alt-text="设置源":::
 2. 在“添加服务器”边栏选项卡中，检查“配置服务器”是否已出现在“服务器类型”中。   
 4. 下载站点恢复统一安装程序安装文件。
 5. 下载保管库注册密钥。 运行统一安装程序时，需要注册密钥。 生成的密钥有效期为 5 天。
 
-    ![设置源](./media/physical-azure-set-up-source/set-source2.png)
+    :::image type="content" source="./media/physical-azure-set-up-source/set-source2.png" alt-text="设置源":::
 6. 在用作配置服务器的计算机上，运行 **Azure Site Recovery 统一安装程序**安装配置服务器、进程服务器和主目标服务器。
 
 #### <a name="run-azure-site-recovery-unified-setup"></a>运行 Azure Site Recovery 统一安装程序
 
 > [!TIP]
-> 如果计算机上的系统时钟时间与本地时间相差 5 分钟以上，则配置服务器注册会失败。 开始安装前，请将系统时钟与[时间服务器](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service)同步。
+> 如果计算机上的系统时钟时间与本地时间相差 5 分钟以上，则配置服务器注册会失败。 开始安装前，请将系统时钟与[时间服务器](https://docs.microsoft.com/windows-server/networking/windows-time-service/windows-time-service-top)同步。
 
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
@@ -74,4 +76,4 @@ ms.locfileid: "87426350"
 
 下一步涉及在 Azure 中[设置目标环境](physical-azure-set-up-target.md)。
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -10,12 +10,12 @@ ms.topic: conceptual
 origin.date: 12/06/2019
 ms.date: 01/13/2020
 ms.author: v-yiso
-ms.openlocfilehash: 5dcad4f98e087b372a858a84a59518fce811f970
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 640a4719eb5967647cac819546349e62e2fd183b
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75631037"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917287"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>管理 Azure HDInsight 上 Apache Spark 群集的资源 
 
@@ -143,7 +143,7 @@ Spark Thrift 服务器驱动程序内存配置为头节点 RAM 大小的 25%，�
 * [Apache Spark 和机器学习：使用 HDInsight 中的 Spark 结合 HVAC 数据分析建筑物温度](apache-spark-ipython-notebook-machine-learning.md)
 * [Apache Spark 和机器学习：使用 HDInsight 中的 Spark 预测食品检查结果](apache-spark-machine-learning-mllib-ipython.md)
 * [使用 HDInsight 中的 Apache Spark 分析网站日志](apache-spark-custom-library-website-log-analysis.md)
-* [使用 Caffe on Azure HDInsight Spark 进行分布式深度学习](apache-spark-deep-learning-caffe.md)
+* [使用 HDInsight 中的 Apache Spark 执行 Application Insight 遥测数据分析](apache-spark-analyze-application-insight-logs.md)
 
 ### <a name="for-apache-spark-developers"></a>适用于 Apache Spark 开发人员
 

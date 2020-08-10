@@ -6,18 +6,18 @@ author: rockboyfor
 manager: carmonm
 ms.service: site-recovery
 ms.topic: include
-origin.date: 06/23/2020
-ms.date: 08/03/2020
+origin.date: 07/08/2020
+ms.date: 08/10/2020
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 6d47f60a152751936c2d185487cd14f99710a30c
-ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
+ms.openlocfilehash: 50131c58a7b1d2e442e51da5056658275cc71d38
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87427561"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87919374"
 ---
 **配置和进程服务器要求**
 
@@ -63,6 +63,7 @@ time.windows.com | 用于检查系统时间与全球时间之间的时间同步
 https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi  | 完成 MySQL 下载。 <br /> 在某些区域中，下载可能会被重定向到 CDN URL。 如果需要，请确保 CDN URL 也列入允许列表。
 |
 
+<!--Not Available on Private link-->
 ## <a name="required-software"></a>所需软件
 
 **组件** | **要求** 

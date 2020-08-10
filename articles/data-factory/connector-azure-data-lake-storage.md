@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-origin.date: 06/12/2020
-ms.date: 06/29/2020
-ms.openlocfilehash: fb4b3a994d42b11e092afb74e3b7f7c95d360dd7
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+origin.date: 07/09/2020
+ms.date: 08/10/2020
+ms.openlocfilehash: 071c77906b2ce3085b497e7253969f6432514540
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85322877"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914350"
 ---
 # <a name="copy-and-transform-data-in-azure-data-lake-storage-gen2-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure Data Lake Storage Gen2 中复制和转换数据
 
@@ -175,7 +175,7 @@ Azure Data Lake Storage Gen2 连接器支持以下身份验证类型。 请参�
 >如果使用数据工厂 UI 进行创作，并且托管标识未在 IAM 中设置为“存储 Blob 数据读取者/参与者”角色，则在执行测试连接或在文件夹中浏览/导航时，请选择“测试到文件路径的连接”或“从指定路径浏览”，然后指定具有“读取 + 执行”权限的路径以继续。
 
 >[!IMPORTANT]
->如果在使用 Data Lake Storage Gen2 托管标识身份验证时使用 PolyBase 将 Data Lake Storage Gen2 中的数据载入 SQL 数据仓库，请确保同时遵循[此指南](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)中的步骤 1 和 2，以便：1) 向 Azure Active Directory (Azure AD) 注册；2) 将存储 Blob 数据参与者角色分配到服务器。剩余的任务将由数据工厂处理。 如果源 Data Lake Storage Gen2 中已配置 Azure 虚拟网络终结点，若要使用 PolyBase 从中加载数据，必须使用 PolyBase 所需的托管标识身份验证。
+>如果在使用 Data Lake Storage Gen2 托管标识身份验证时使用 PolyBase 将 Data Lake Storage Gen2 中的数据载入 SQL 数据仓库，请确保同时遵循[此指南](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)中的步骤 1 和 2，以便：1) 向 Azure Active Directory (Azure AD) 注册；2) 将存储 Blob 数据参与者角色分配到服务器。剩余的任务将由数据工厂处理。 如果源 Data Lake Storage Gen2 中已配置 Azure 虚拟网络终结点，若要使用 PolyBase 从中加载数据，必须使用 PolyBase 所需的托管标识身份验证。
 
 链接服务支持以下属性：
 

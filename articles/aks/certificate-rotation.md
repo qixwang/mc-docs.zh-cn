@@ -4,16 +4,16 @@ description: 了解如何轮换 Azure Kubernetes 服务 (AKS) 群集中的证书
 services: container-service
 ms.topic: article
 origin.date: 11/15/2019
-ms.date: 07/13/2020
-ms.testscope: yes
+ms.date: 08/10/2020
+ms.testscope: no
 ms.testdate: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: 69c4f25c148fd2f28db11179417b17ba918eced5
-ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
+ms.openlocfilehash: aa23d06abb26d402d7da642c4cee93c8662895fa
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86218758"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842587"
 ---
 <!--CONFIRME WITH DONG LIU SUCCESSFULLY-->
 <!--NEW FEATURES HAS BEEN RELEASED ON AZURE CHINA CLOUD-->

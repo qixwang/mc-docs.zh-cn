@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: a41974e32022fab367963b4d89ce75e8256c71eb
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c294d2ceb772e91015510009a9899917fc985e0d
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80586670"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917337"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板设置 IoT 中心设备预配服务
 
@@ -58,7 +58,7 @@ ms.locfileid: "80586670"
     ```
 
     > [!TIP]
-    > 上一示例在“中国东部”位置创建资源组。 可运行 `az account list-locations -o table`命令，查看可用位置的列表。
+    > 上一示例在“中国东部”位置创建资源组。 可运行 `az account list-locations -o table` 命令，查看可用位置的列表。
     >
     >
 
@@ -93,10 +93,8 @@ ms.locfileid: "80586670"
             "allowedValues": [
                 "chinanorth",
                 "chinaeast",
-                "westeurope",
-                "northeurope",
-                "southeastasia",
-                "eastasia"
+                "chinaeast2",
+                "chinanorth2"
             ]
         }
     },
@@ -136,7 +134,7 @@ ms.locfileid: "80586670"
 
 5. 若要创建预配服务，请将以下行添加到 **resources** 集合中的 IoT 中心规格后面。 预配服务的名称和位置将作为参数传递   。 iotHubs 集合指定要链接到预配服务的 IoT 中心  。 至少必须指定每个链接的 IoT 中心的 **connectionString** 和 **location** 属性。 也可在每个 IoT 中心设置 **allocationWeight** 和 **applyAllocationPolicy** 之类的属性，以及在预配服务中设置 **allocationPolicy** 和 **authorizationPolicies** 之类的属性。 若要进行详细了解，请参阅 [Microsoft.Devices/provisioningServices template reference](https://docs.microsoft.com/azure/templates/microsoft.devices/provisioningservices)（Microsoft.Devices/provisioningServices 模板参考）。
 
-   使用 **dependsOn** 属性是为了确保资源管理器先创建 IoT 中心，然后再创建预配服务。 模板要求 IoT 中心的连接字符串指定其到预配服务的链接，因此必须先创建该中心及其密钥。 模板使用 concat 和 listKeys 之类的函数来通过参数化的变量创建连接字符串   。 若要进行详细了解，请参阅 [Azure 资源管理器模板函数](/azure-resource-manager/resource-group-template-functions)。
+   使用 **dependsOn** 属性是为了确保资源管理器先创建 IoT 中心，然后再创建预配服务。 模板要求 IoT 中心的连接字符串指定其到预配服务的链接，因此必须先创建该中心及其密钥。 模板使用 concat 和 listKeys 之类的函数来通过参数化的变量创建连接字符串。 若要进行详细了解，请参阅 [Azure 资源管理器模板函数](/azure-resource-manager/resource-group-template-functions)。
 
    ```json
         {
@@ -181,10 +179,8 @@ ms.locfileid: "80586670"
                "allowedValues": [
                    "chinanorth",
                    "chinaeast",
-                   "westeurope",
-                   "northeurope",
-                   "southeastasia",
-                   "eastasia"
+                   "chinaeast2",
+                   "chinanorth2"
                ]
            }
        },

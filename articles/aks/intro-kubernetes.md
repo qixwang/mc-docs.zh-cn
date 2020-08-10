@@ -4,27 +4,23 @@ description: 了解 Azure Kubernetes 服务的功能和优势，以便在 Azure 
 services: container-service
 ms.topic: overview
 origin.date: 05/06/2019
-ms.date: 05/25/2020
+ms.date: 08/10/2020
+ms.testscope: no
+ms.testdate: 05/25/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 60072cb8e272173c020bbd0e44ad17cb891240fc
-ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
+ms.openlocfilehash: 2397feb1900ad4cd2e75bed95b466d6167514eb2
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735064"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842679"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS)
 
 可以使用 Azure Kubernetes 服务 (AKS) 在 Azure 中轻松地部署托管的 Kubernetes 群集。 AKS 通过将大量管理工作量卸载到 Azure，来降低管理 Kubernetes 所产生的复杂性和操作开销。 作为一个托管 Kubernetes 服务，Azure 可以自动处理运行状况监视和维护等关键任务。 Kubernetes 主节点由 Azure 管理。 用户仅管理和维护代理节点。 作为托管型 Kubernetes 服务，AKS 是免费的 - 你只需支付群集中的代理节点费，不需支付主节点的费用。
 
-可以在 Azure 门户中使用 Azure CLI 或模板驱动型部署选项（例如资源管理器模板）来创建 AKS 群集。 当你部署 AKS 群集时，系统会为你部署和配置 Kubernetes 主节点和所有节点。 另外，也可在部署过程中配置其他功能，例如高级网络、Azure Active Directory 集成、监视。
-
-<!--Not Available on in the Azure portal-->
-<!--MOONCAKE: DUE TO IMPLEMENT THE CLOUD SHELL IN AZURE PORTAL-->
-
-<!--Not Available on and Terraform-->
-<!--Not Available on  Windows Server containers support is currently in preview in AKS.-->
+可以在 Azure 门户中使用 Azure CLI 或模板驱动型部署选项（例如资源管理器模板和 Terraform）来创建 AKS 群集。 当你部署 AKS 群集时，系统会为你部署和配置 Kubernetes 主节点和所有节点。 另外，也可在部署过程中配置其他功能，例如高级网络、Azure Active Directory 集成、监视。 AKS 支持 Windows Server 容器。
 
 有关 Kubernetes 基础知识的详细信息，请参阅 [AKS 的 Kubernetes 核心概念][concepts-clusters-workloads]。
 
@@ -52,9 +48,7 @@ ms.locfileid: "83735064"
 
 ## <a name="clusters-and-nodes"></a>群集和节点
 
-AKS 节点在 Azure 虚拟机上运行。 可以将存储连接到节点和 Pod、升级群集配置以及使用 GPU。 AKS 支持运行多个节点池的 Kubernetes 群集。
-
-<!--Not Available on to support mixed operating systems and Windows Server containers. Linux nodes run a customized Ubuntu OS image, and Windows Server nodes run a customized Windows Server 2019 OS image. -->
+AKS 节点在 Azure 虚拟机上运行。 可以将存储连接到节点和 Pod、升级群集配置以及使用 GPU。 AKS 支持运行多个节点池的 Kubernetes 群集，以支持混合操作系统和 Windows Server 容器。 Linux 节点运行自定义的 Ubuntu OS 映像，Windows Server 节点运行自定义的 Windows Server 2019 OS 映像。
 
 ### <a name="cluster-node-and-pod-scaling"></a>群集节点和 Pod 缩放
 
@@ -80,7 +74,7 @@ AKS 支持创建启用了 GPU 的节点池。 Azure 目前提供单个或多个�
 
 有关详细信息，请参阅 [AKS 中应用程序的存储选项][concepts-storage]。
 
-使用 [Azure 磁盘][azure-disk]或 [Azure 文件存储][azure-files]完成动态永久性卷入门。
+使用 [Azure 磁盘][azure-disk]或 [Azure 文件存储][azure-files]完成动态永久性卷的入门。
 
 ## <a name="virtual-networks-and-ingress"></a>虚拟网络和入口
 
@@ -137,7 +131,7 @@ Azure Kubernetes 服务 (AKS) 符合 SOC、ISO、PCI DSS 和 HIPAA 规范。 有
 <!-- LINKS - internal -->
 
 [acr-docs]: ../container-registry/container-registry-intro.md
-[aks-aad]: ./azure-ad-integration.md
+[aks-aad]: ./azure-ad-integration-cli.md
 [aks-cli]: ./kubernetes-walkthrough.md
 [aks-gpu]: ./gpu-cluster.md
 
@@ -148,8 +142,8 @@ Azure Kubernetes 服务 (AKS) 符合 SOC、ISO、PCI DSS 和 HIPAA 规范。 有
 [aks-scale]: ./tutorial-kubernetes-scale.md
 [aks-upgrade]: ./upgrade-cluster.md
 
-<!--Not Available on [azure-dev-spaces]: /dev-spaces/azure-dev-spaces-->
-<!--Not Available on [azure-devops]: /devops-project/overview-->
+<!--Not Available on [azure-dev-spaces]: ../dev-spaces/index.yml-->
+<!--Not Available on [azure-devops]: ../devops-project/overview.md-->
 
 [azure-disk]: ./azure-disks-dynamic-pv.md
 [azure-files]: ./azure-files-dynamic-pv.md
@@ -161,7 +155,7 @@ Azure Kubernetes 服务 (AKS) 符合 SOC、ISO、PCI DSS 和 HIPAA 规范。 有
 [aks-master-logs]: view-master-logs.md
 [aks-supported versions]: supported-kubernetes-versions.md
 [concepts-clusters-workloads]: concepts-clusters-workloads.md
-[kubernetes-rbac]: concepts-identity.md#role-based-access-controls-rbac
+[kubernetes-rbac]: concepts-identity.md#kubernetes-role-based-access-controls-rbac
 [concepts-identity]: concepts-identity.md
 [concepts-storage]: concepts-storage.md
 

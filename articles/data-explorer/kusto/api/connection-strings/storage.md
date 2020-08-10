@@ -9,12 +9,12 @@ ms.service: data-explorer
 ms.topic: reference
 origin.date: 03/23/2020
 ms.date: 07/01/2020
-ms.openlocfilehash: 5cb3fd95321cbb9340131497fd99a141a56a4342
-ms.sourcegitcommit: 9bc3e55f01e0999f05e7b4ebaea95f3ac91d32eb
+ms.openlocfilehash: 811fce796e327ae5cb36934af2306540dcb51aff
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86226368"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917272"
 ---
 # <a name="storage-connection-strings"></a>存储连接字符串
 
@@ -86,7 +86,7 @@ supported:
 * Append `;impersonate` to the URI. Kusto will use the requestor's principal
   identity and impersonate it to access the resource
 * Append `;token=`*AadToken* to the URI, with *AadToken* being a base-64
-  encoded AAD access token (make sure the token is for the resource `https://management.azure.com/`).
+  encoded AAD access token (make sure the token is for the resource `https://management.chinacloudapi.cn/`).
 * Append `;prompt` to the URI. Kusto will request user credentials
   when it needs to access the resource. (Prompting the user is disabled for
   cloud deployments and is only enabled in test environments.)

@@ -1,21 +1,20 @@
 ---
 title: 使用 Visual Studio 部署虚拟机规模集
 description: 使用 Visual Studio 和 Resource Manager 模板部署虚拟机规模集
-ms.custom: vs-azure, H1Hack27Feb2017
-ms.workload: azure-vs
-author: mayanknayar
-tags: azure-resource-manager
-ms.assetid: ed0786b8-34b2-49a8-85b5-2a628128ead6
-ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
-ms.date: 03/31/2020
+author: ju-shim
 ms.author: v-junlch
-ms.openlocfilehash: e92183dfb8fda87d622ce485ed8d7f14b37df830
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.topic: how-to
+ms.service: virtual-machine-scale-sets
+ms.subservice: visual-studio
+ms.date: 08/06/2020
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 4dc33a3ed8d5ee64b7a928f7f4dcca85016b3511
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80581820"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914272"
 ---
 # <a name="how-to-create-a-virtual-machine-scale-set-with-visual-studio"></a>如何使用 Visual Studio 创建虚拟机规模集
 
@@ -23,7 +22,7 @@ ms.locfileid: "80581820"
 
 [Azure 虚拟机规模集](https://azure.microsoft.com/blog/azure-vm-scale-sets-public-preview/)是一种 Azure 计算资源，可通过自动缩放和负载均衡部署和管理一组类似的虚拟机。 可使用 [Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates)预配和部署虚拟机规模集。 可以使用 Azure CLI、PowerShell、REST 来部署 Azure 资源管理器模板，也可直接从 Visual Studio 部署。 Visual Studio 提供了一组示例模板，这些模板可以作为 Azure 资源组部署项目的一部分进行部署。
 
-Azure 资源组部署是一种通过单个部署操作将相关的一组 Azure 资源组合并进行发布的方式。 有关详细信息，请参阅[通过 Visual Studio 创建和部署 Azure 资源组](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)。
+Azure 资源组部署是一种通过单个部署操作将相关的一组 Azure 资源组合并进行发布的方式。 有关详细信息，请参阅[通过 Visual Studio 创建和部署 Azure 资源组](../azure-resource-manager/templates/create-visual-studio-deployment-project.md)。
 
 ## <a name="prerequisites"></a>必备条件
 
@@ -97,4 +96,3 @@ Azure 资源组部署是一种通过单个部署操作将相关的一组 Azure �
 
 通过 Visual Studio 成功部署虚拟机规模集后，便可进一步自定义项目以满足应用程序需求。 例如，通过添加 **Insights** 资源来配置自动缩放。 可以将基础结构（例如独立虚拟机）添加到模板，或者使用自定义脚本扩展来部署应用程序。 可以在 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates) GitHub 存储库中找到很好的示例模板。 搜索 `vmss`。
 
-<!-- Update_Description: wording update -->

@@ -1,5 +1,5 @@
 ---
-title: Microsoft Azure Data Box 磁盘快速入门 | Microsoft Docs
+title: Azure Data Box 磁盘快速入门 | Microsoft Docs
 description: 使用本快速入门在 Azure 门户中快速部署 Azure Data Box 磁盘
 services: databox
 author: WenJason
@@ -10,12 +10,12 @@ origin.date: 09/03/2019
 ms.date: 07/27/2020
 ms.author: v-jay
 ms.localizationpriority: high
-ms.openlocfilehash: 0aa423f6124c06d2e11dd10fd9d5bdd74db334a8
-ms.sourcegitcommit: c3f15613c875bb52d5a105445efd0f36b9f24c9c
+ms.openlocfilehash: 1a99151a984fe038b605a2453a51a1d34a611684
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86473467"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914400"
 ---
 ::: zone target="docs"
 

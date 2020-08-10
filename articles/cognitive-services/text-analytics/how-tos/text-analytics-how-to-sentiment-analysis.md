@@ -11,12 +11,12 @@ ms.topic: sample
 origin.date: 03/09/2020
 ms.date: 03/26/2020
 ms.author: v-lingwu
-ms.openlocfilehash: c5582f3c64493630cf56ed623ede355424ee7fea
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 20886a10fd74f435d657af613341433f2b45614c
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80342376"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917223"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>如何：使用文本分析 API 检测情绪
 
@@ -29,9 +29,9 @@ ms.locfileid: "80342376"
 
 ## <a name="concepts"></a>概念
 
-文本分析 API 使用机器学习分类算法生成介于 0 到 1 之间的情绪分数。 接近 1 的评分表示积极情绪，接近 0 的评分表示消极情绪。 情绪分析针对整个文档进行，而不是针对文本中的各个实体进行。 这意味着将返回文档或句子级别的情绪分数。 
+文本分析 API 使用机器学习分类算法生成介于 0 到 1 之间的情绪分数。 接近 1 的评分表示正面情绪，接近 0 的评分表示负面情绪。 情绪分析针对整个文档进行，而不是针对文本中的各个实体进行。 这意味着将返回文档或句子级别的情绪分数。 
 
-使用的模型通过含有文本和情绪关联内容的大量语料库进行了预先训练。 它使用多种技术进行分析，包括文本处理、词性分析、词序和字词关联。 有关该算法的详细信息，请参阅[文本分析简介](https://blogs.technet.microsoft.com/machinelearning/2015/04/08/introducing-text-analytics-in-the-azure-ml-marketplace/)。 目前，不支持提供用户自己的训练数据。 
+使用的模型通过含有文本和情绪关联内容的大量语料库进行了预先训练。 它使用多种技术进行分析，包括文本处理、词性分析、词序和字词关联。 有关算法的详细信息，请参阅[文本分析简介](https://blogs.technet.microsoft.com/machinelearning/2015/04/08/introducing-text-analytics-in-the-azure-ml-marketplace/)。 目前，不支持提供用户自己的训练数据。 
 
 当文档只包含一些句子而不是大段文本时，评分准确性有提高的趋势。 在客观性评估阶段，模型会确定整个文档是客观内容还是包含情感。 客观内容占主导的文档将不会进入情绪检测阶段，将获得 0.50 分数，不会进行进一步处理。 对于继续处理的文档，下一阶段会得出高于或低于 0.50 的分数， 具体取决于文档中检测到的情绪程度。
 
@@ -94,11 +94,11 @@ ms.locfileid: "80342376"
 
 ## <a name="structure-the-request"></a>构造请求
 
-创建 POST 请求。 可[使用 Postman](text-analytics-how-to-call-api.md) 或以下参考链接中的“API 测试控制台”来快速构建并发送请求  。 
+创建 POST 请求。 可[使用 Postman](text-analytics-how-to-call-api.md) 或以下参考链接中的“API 测试控制台”来快速构建并发送请求。 
 
 #### <a name="version-30-preview"></a>[版本 3.0-preview](#tab/version-3)
 
-[情绪分析 v3 参考](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment)
+[情绪分析 v3 参考](https://chinaeast2.dev.cognitive.azure.cn/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment)
 
 #### <a name="version-21"></a>[版本 2.1](#tab/version-2)
 
@@ -109,7 +109,7 @@ ms.locfileid: "80342376"
 使用 Azure 上的文本分析资源或实例化的[文本分析容器](text-analytics-how-to-install-containers.md)设置 HTTPS 终结点，以便进行情绪分析。 必须包括要使用的版本的正确 URL。 例如：
 
 > [!NOTE]
-> 可以在 Azure 门户上找到文本分析资源的密钥和终结点。 它们将位于资源的“快速启动”  页上的“资源管理”  下。 
+> 可以在 Azure 门户上找到文本分析资源的密钥和终结点。 它们将位于资源的“快速启动”页上的“资源管理”下。 
 
 #### <a name="version-30-preview"></a>[版本 3.0-preview](#tab/version-3)
 
@@ -254,7 +254,7 @@ ms.locfileid: "80342376"
 
 ---
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 本文介绍了使用文本分析 API 进行情绪分析的概念和工作流。 综上所述：
 

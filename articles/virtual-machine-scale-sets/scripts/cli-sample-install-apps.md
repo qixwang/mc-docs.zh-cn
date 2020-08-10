@@ -6,15 +6,15 @@ ms.author: v-junlch
 ms.topic: sample
 ms.service: virtual-machine-scale-sets
 ms.subservice: cli
-ms.date: 06/22/2020
+ms.date: 08/07/2020
 ms.reviewer: jushiman
-ms.custom: mimckitt
-ms.openlocfilehash: 703181118b27738e6ffb571b86ffb6ded6a4cdf8
-ms.sourcegitcommit: 43db4001be01262959400663abf8219e27e5cb8b
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: 9f1b3209586064d243ad6cf116a57e173796e385
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85241588"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914235"
 ---
 # <a name="install-applications-into-a-virtual-machine-scale-set-with-the-azure-cli"></a>使用 Azure CLI 将应用程序安装到虚拟机规模集中
 此脚本创建运行 Ubuntu 的虚拟机规模集，并使用自定义脚本扩展安装一个基本 Web 应用程序。 运行脚本后，可以通过 Web 浏览器访问该 Web 应用。
@@ -32,40 +32,39 @@ az group create --name myResourceGroup --location chinanorth
 
 # Create a scale set
 # Network resources such as an Azure load balancer are automatically created
-az vmss create `
-  --resource-group myResourceGroup `
-  --name myScaleSet `
-  --image UbuntuLTS `
-  --upgrade-policy-mode automatic `
-  --admin-username azureuser `
-  --generate-ssh-keys `
-  --vm-sku Standard_DS1
+az vmss create \
+  --resource-group myResourceGroup \
+  --name myScaleSet \
+  --image UbuntuLTS \
+  --upgrade-policy-mode automatic \
+  --admin-username azureuser \
+  --generate-ssh-keys
 
 # Install the Azure Custom Script Extension to run an install script
-az vmss extension set `
-  --publisher Microsoft.Azure.Extensions `
-  --version 2.0 `
-  --name CustomScript `
-  --resource-group myResourceGroup `
-  --vmss-name myScaleSet `
+az vmss extension set \
+  --publisher Microsoft.Azure.Extensions \
+  --version 2.0 \
+  --name CustomScript \
+  --resource-group myResourceGroup \
+  --vmss-name myScaleSet \
   --settings '{"fileUris":["https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/automate_nginx.sh"],"commandToExecute":"./automate_nginx.sh"}'
 
 # Create a load balancer rule to allow web traffic to reach VM instances
-az network lb rule create `
-  --resource-group myResourceGroup `
-  --name myLoadBalancerRuleWeb `
-  --lb-name myScaleSetLB `
-  --backend-pool-name myScaleSetLBBEPool `
-  --backend-port 80 `
-  --frontend-ip-name loadBalancerFrontEnd `
-  --frontend-port 80 `
+az network lb rule create \
+  --resource-group myResourceGroup \
+  --name myLoadBalancerRuleWeb \
+  --lb-name myScaleSetLB \
+  --backend-pool-name myScaleSetLBBEPool \
+  --backend-port 80 \
+  --frontend-ip-name loadBalancerFrontEnd \
+  --frontend-port 80 \
   --protocol tcp
 
 # Show the public IP address of the load balancer and view your web servers
-az network public-ip show `
-  --resource-group myResourceGroup `
-  --name myScaleSetLBPublicIP `
-  --query [ipAddress] `
+az network public-ip show \
+  --resource-group myResourceGroup \
+  --name myScaleSetLBPublicIP \
+  --query [ipAddress] \
   --output tsv
 ```
 

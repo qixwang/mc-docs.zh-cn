@@ -37,6 +37,8 @@
       items:
         - name: HDInsight 上的 Apache 组件
           href: ./hdinsight-component-versioning.md
+        - name: 企业安全性套餐
+          href: ./enterprise-security-package.md
         - name: Hortonworks 发行说明
           href: ./hortonworks-release-notes.md
         - name: 高可用性组件
@@ -143,6 +145,8 @@
                   href: ./optimize-hive-ambari.md
                 - name: 优化 Apache Pig
                   href: ./optimize-pig-ambari.md
+            - name: 重启群集节点
+              href: ./cluster-reboot-vm.md
             - name: 使用 Apache Ambari REST API
               href: ./hdinsight-hadoop-manage-ambari-rest-api.md
             - name: 删除群集
@@ -191,10 +195,6 @@
               href: ./hadoop/apache-hadoop-visual-studio-tools-get-started.md
             - name: 用于 VSCode 的 Spark 和 Hive 工具
               href: ./hdinsight-for-vscode.md
-            - name: 将用于 IntelliJ 的 HDInsight 工具与 Hortonworks 沙盒配合使用
-              href: ./hadoop/hdinsight-tools-for-intellij-with-hortonworks-sandbox.md
-            - name: Data Lake 工具与 Hortonworks 沙盒
-              href: ./hdinsight-hadoop-emulator-visual-studio.md
         - name: 监视
           items:
             - name: 监视群集性能
@@ -203,7 +203,7 @@
               href: ./hdinsight-cluster-availability.md
             - name: 群集可用性 - Azure Monitor 日志
               href: ./cluster-availability-monitor-logs.md
-        - name: 故障排除
+        - name: 疑难解答
           items:
             - name: CPU 核心配额增加请求
               href: ./quota-increase-request.md
@@ -233,7 +233,7 @@
           href: 'https://docs.microsoft.com/rest/api/hdinsight/'
         - name: REST API (Apache Spark)
           href: 'https://docs.microsoft.com/rest/api/hdinsightspark/'
-        - name: Resource Manager 模板
+        - name: 资源管理器模板
           href: 'https://docs.microsoft.com/azure/templates/microsoft.hdinsight/allversions'
     - name: 资源
       items:
@@ -386,7 +386,7 @@
                   href: ../cosmos-db/lambda-architecture.md
                 - name: 使用 AutoML 运行 Azure ML 工作负荷
                   href: ./spark/apache-spark-run-machine-learning-automl.md
-        - name: 故障排除
+        - name: 疑难解答
           items:
             - name: 无法创建 Jupyter 笔记本
               href: ./spark/troubleshoot-jupyter-notebook-convert.md
@@ -396,8 +396,6 @@
               href: ./spark/apache-spark-troubleshoot-job-fails-noclassdeffounderror.md
             - name: Apache Spark 作业失败 - InvalidClassException
               href: ./spark/apache-spark-troubleshoot-job-fails-invalidclassexception.md
-            - name: 缓慢 Apache Spark 作业 - listStatus
-              href: ./spark/apache-spark-troubleshoot-job-slowness-liststatus.md
             - name: 缓慢 Apache Spark 作业 - 存储容器
               href: ./spark/apache-spark-troubleshoot-job-slowness-container.md
             - name: IllegalArgumentException 异常
@@ -497,7 +495,7 @@
           items:
             - name: 使用空边缘节点
               href: ./hdinsight-apps-use-edge-node.md
-        - name: 故障排除
+        - name: 疑难解答
           items:
             - name: 常见问题
               href: ./hdinsight-troubleshoot-guide.md
@@ -612,7 +610,7 @@
               href: ./kafka/apache-kafka-log-analytics-operations-management.md
             - name: SSL 加密和身份验证
               href: ./kafka/apache-kafka-ssl-encryption-authentication.md
-        - name: 故障排除
+        - name: 疑难解答
           items:
             - name: 容错域不足
               href: ./kafka/kafka-troubleshoot-insufficient-domains.md
@@ -665,7 +663,7 @@
               href: ./hbase/apache-hbase-phoenix-performance.md
             - name: 在 Azure VNet 中创建 Apache HBase 群集
               href: ./hbase/apache-hbase-provision-vnet.md
-        - name: 故障排除
+        - name: 疑难解答
           items:
             - name: 排查 Apache HBase 性能问题
               href: ./hbase/troubleshoot-hbase-performance-issues.md
@@ -689,8 +687,6 @@
               href: ./hbase/hbase-troubleshoot-pegged-cpu-region-server.md
             - name: “hbase hbck”命令超时
               href: ./hbase/hbase-troubleshoot-timeouts-hbase-hbck.md
-            - name: 排查 Apache HBase 故障
-              href: ./hbase/apache-troubleshoot-hbase.md
             - name: 用于查询 Apache HBase 的 REST API
               href: ./hbase/troubleshoot-rest-api.md
 - name: 交互式查询
@@ -760,7 +756,7 @@
               href: ./interactive-query/apache-hive-migrate-workloads.md
             - name: 优化 Apache Hive 查询
               href: ./hdinsight-hadoop-optimize-hive-query.md
-        - name: 故障排除
+        - name: 疑难解答
           items:
             - name: 通过 Apache Hive 设置解决内存不足错误
               href: ./hdinsight-hadoop-hive-out-of-memory-error-oom.md
@@ -832,7 +828,7 @@
           items:
             - name: 监视拓扑
               href: ./storm/apache-storm-deploy-monitor-topology-linux.md
-        - name: 故障排除
+        - name: 疑难解答
           items:
             - name: Apache STORM 故障排除
               href: ./storm/apache-troubleshoot-storm.md

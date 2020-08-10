@@ -5,16 +5,16 @@ description: 了解有关如何在 Azure Kubernetes 服务 (AKS) 中管理群集
 services: container-service
 ms.topic: conceptual
 origin.date: 12/06/2018
-ms.date: 07/13/2020
+ms.date: 08/10/2020
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: e0f9aa10fa3c816665e45401c12146d39f38f487
-ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
+ms.openlocfilehash: a783ce303632b474e93e5db308f117e0091d881b
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86218713"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842565"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的群集安全性和升级的最佳做法
 
@@ -40,7 +40,7 @@ Kubernetes API 服务器为在群集中执行操作的请求提供单一连接�
 
 Azure Active Directory (AD) 提供可与 AKS 群集集成的企业级标识管理解决方案。 由于 Kubernetes 不提供标识管理解决方案，因此，若不与 Azure AD 集成，可能很难以精细的方式限制对 API 服务器的访问。 借助 AKS 中与 Azure AD 集成的群集，可以使用现有用户和组帐户向 API 服务器验证用户身份。
 
-![用于 AKS 群集的 Azure Active Directory 集成](media/operator-best-practices-cluster-security/aad-integration.png)
+:::image type="content" source="media/operator-best-practices-cluster-security/aad-integration.png" alt-text="用于 AKS 群集的 Azure Active Directory 集成":::
 
 通过使用 Kubernetes RBAC 和 Azure AD 集成，可保护 API 服务器并提供限定范围的资源集（例如单个命名空间）所需的最少权限。 可以向 Azure AD 中不同的用户或组授予不同的 RBAC 角色。 借助这些细化的权限，可以限制对 API 服务器的访问，并提供已执行操作的清晰审核线索。
 
@@ -57,13 +57,13 @@ Azure Active Directory (AD) 提供可与 AKS 群集集成的企业级标识管�
 若要更精确地控制容器操作，还可以使用内置 Linux 安全功能，例如 *AppArmor* 和 *seccomp*。 这些功能在节点级别定义，然后通过 Pod 清单实现。 内置的 Linux 安全功能仅在 Linux 节点和 Pod 上提供。
 
 > [!NOTE]
-> AKS 或其他位置中的 Kubernetes 环境并不完全安全，因为可能存在恶意的多租户使用情况。 用于节点的其他安全功能（如 AppArmor、seccomp、Pod 安全策略或更细粒度的基于角色的访问控制 (RBAC)）可增加攻击的难度。 但是，为了在运行恶意多租户工作负荷时获得真正的安全性，虚拟机监控程序应是你唯一信任的安全级别。 Kubernetes 的安全域成为整个群集，而不是单个节点。 对于这些类型的恶意多租户工作负荷，应使用物理隔离的群集。
+> AKS 或其他位置中的 Kubernetes 环境并不完全安全，因为可能存在恶意的多租户使用情况。 用于节点的其他安全功能（如 *AppArmor*、*seccomp*、*Pod 安全策略*或更细粒度的基于角色的访问控制 (RBAC)）可增加攻击的难度。 但是，为了在运行恶意多租户工作负荷时获得真正的安全性，虚拟机监控程序应是你唯一信任的安全级别。 Kubernetes 的安全域成为整个群集，而不是单个节点。 对于这些类型的恶意多租户工作负荷，应使用物理隔离的群集。
 
 ### <a name="app-armor"></a>App Armor
 
 若要限制容器可以执行的操作，可以使用 [AppArmor][k8s-apparmor] Linux 内核安全模块。 AppArmor 作为基础 AKS 节点 OS 的一部分提供，默认情况下处于启用状态。 可以创建 AppArmor 配置文件来限制读取、写入或执行等操作或者装载文件系统等系统功能。 默认 AppArmor 配置文件限制对各种 `/proc` 和 `/sys` 位置的访问，并提供一种在逻辑上将容器与基础节点隔离的方法。 AppArmor 适用于 Linux 上运行的任何应用程序，而不仅仅是 Kubernetes Pod。
 
-![AKS 群集中用来限制容器操作的 AppArmor 配置文件](media/operator-best-practices-container-security/apparmor.png)
+:::image type="content" source="media/operator-best-practices-container-security/apparmor.png" alt-text="AKS 群集中用来限制容器操作的 AppArmor 配置文件":::
 
 为了通过实际操作了解 AppArmor，以下示例将创建一个阻止写入文件的配置文件。 通过 [SSH][aks-ssh] 连接到 AKS 节点，然后创建一个名为 *deny-write.profile* 的文件并粘贴以下内容：
 
@@ -205,7 +205,7 @@ az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes
 
 Weaveworks 的 [kured（KUbernetes 重启守护程序）][kured]开源项目可监视挂起的节点重启操作。 当 Linux 节点应用需要进行重启的更新时，系统会安全地封锁并排空该节点，以便将 Pod 移至群集中的其他节点上并在这些节点上计划 Pod。 重启节点后，会将其重新添加到群集中，Kubernetes 将继续在该节点上计划 Pod。 为了尽量减少中断，`kured` 一次只允许重启一个节点。
 
-![使用 kured 的 AKS 节点重启过程](media/operator-best-practices-cluster-security/node-reboot-process.png)
+:::image type="content" source="media/operator-best-practices-cluster-security/node-reboot-process.png" alt-text="使用 kured 的 AKS 节点重启过程":::
 
 如果希望以更精细的粒度控制何时进行重启，`kured` 可以与 Prometheus 集成，以防止在出现其他维护事件或群集问题时进行重启。 此集成可在你主动排查其他问题时，最大限度地减少因重启节点而导致的其他复杂情况。
 
@@ -236,11 +236,11 @@ Weaveworks 的 [kured（KUbernetes 重启守护程序）][kured]开源项目可�
 [aks-upgrade]: upgrade-cluster.md
 [aks-best-practices-identity]: concepts-identity.md
 [aks-kured]: node-updates-kured.md
-[aks-aad]: azure-ad-integration.md
+[aks-aad]: ./azure-ad-integration-cli.md
 [best-practices-container-image-management]: operator-best-practices-container-image-management.md
 [best-practices-pod-security]: developer-best-practices-pod-security.md
 [pod-security-contexts]: developer-best-practices-pod-security.md#secure-pod-access-to-resources
 [aks-ssh]: ssh.md
-[security-center-aks]: /security-center/azure-kubernetes-service-integration
+[security-center-aks]: ../security-center/azure-kubernetes-service-integration.md
 
-<!-- Update_Description: wording update, update link -->
+<!-- Update_Description: update meta properties, wording update, update link -->

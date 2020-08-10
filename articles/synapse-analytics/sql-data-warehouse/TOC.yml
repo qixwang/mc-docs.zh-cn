@@ -10,7 +10,7 @@
       href: what-is-a-data-warehouse-unit-dwu-cdwu.md
     - name: 备忘单
       href: cheat-sheet.md
-    - name: 最佳做法
+    - name: 最佳实践
       href: sql-data-warehouse-best-practices.md
     - name: 容量限制
       href: sql-data-warehouse-service-capacity-limits.md
@@ -84,7 +84,7 @@
               href: /sql-database/sql-database-threat-detection-overview?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
         - name: 审核
           href: /sql-database/sql-database-auditing?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
-        - name: 网络安全性
+        - name: 网络安全
           items:
             - name: 防火墙规则
               href: /sql-database/sql-database-firewall-configure?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
@@ -106,7 +106,7 @@
               href: /sql-database/sql-database-manage-logins?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
             - name: 行级别安全性
               href: column-level-security.md
-            - name: 行级安全性
+            - name: 行级别安全性
               href: 'https://docs.microsoft.com/sql/relational-databases/security/row-level-security?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json'
         - name: 数据保护
           items:
@@ -128,7 +128,7 @@
       items:
         - name: 概述
           href: sql-data-warehouse-overview-develop.md
-        - name: 最佳做法
+        - name: 最佳实践
           href: sql-data-warehouse-best-practices-development.md
         - name: JSON
           items:
@@ -226,7 +226,7 @@
           href: sql-data-warehouse-develop-group-by-options.md
         - name: 标签
           href: sql-data-warehouse-develop-label.md
-    - name: 工作负载管理
+    - name: 工作负荷管理
       items:
         - name: 概述
           href: sql-data-warehouse-workload-management.md
@@ -283,7 +283,7 @@
         - name: 示例
           items:
             - name: 纽约出租车
-              href: load-data-from-azure-blob-storage-using-polybase.md
+              href: load-data-from-azure-blob-storage-using-copy.md
             - name: Contoso
               href: sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md
             - name: Wide World Importers

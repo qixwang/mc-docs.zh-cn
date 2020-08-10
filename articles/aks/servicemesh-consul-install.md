@@ -4,17 +4,17 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 群集中安装和使
 author: rockboyfor
 ms.topic: article
 origin.date: 10/09/2019
-ms.date: 07/09/2020
+ms.date: 08/10/2020
 ms.testscope: no
 ms.testdate: 05/25/2020
 ms.author: v-yeche
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 9ba83d656e7382a090372071f3486d971c019993
-ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
+ms.openlocfilehash: 73e209ba25d88c5e2be339f9a07e262bfe622cf0
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86218805"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842612"
 ---
 <!--CORRECT ON client-operating-system-->
 
@@ -153,7 +153,7 @@ kubectl port-forward -n consul svc/consul-consul-ui 8080:80
 
 现在可以打开一个浏览器并指向 `http://localhost:8080/ui`，以打开 Consul UI。 打开 UI 时，应会看到以下内容：
 
-![Consul UI](./media/servicemesh/consul/consul-ui.png)
+:::image type="content" source="./media/servicemesh/consul/consul-ui.png" alt-text="Consul UI":::
 
 ## <a name="uninstall-consul-from-aks"></a>从 AKS 中卸载 Consul
 
@@ -203,7 +203,7 @@ kubectl delete namespace consul
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
 [kubectl-port-forward]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#port-forward
-[kubernetes-node-selectors]: /aks/concepts-clusters-workloads#node-selectors
+[kubernetes-node-selectors]: ./concepts-clusters-workloads.md#node-selectors
 
 <!-- LINKS - internal -->
 

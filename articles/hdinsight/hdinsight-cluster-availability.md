@@ -10,12 +10,12 @@ ms.custom: hdinsightactive
 origin.date: 05/01/2020
 ms.date: 06/22/2020
 ms.author: v-yiso
-ms.openlocfilehash: 5b769241cac125962002f2226da82c7f3f1ce020
-ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
+ms.openlocfilehash: 2307ebd7d3149298f853263b172d0cc9df59bef6
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85516576"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917252"
 ---
 # <a name="how-to-monitor-cluster-availability-with-apache-ambari-in-azure-hdinsight"></a>如何在 Azure HDInsight 中使用 Apache Ambari 监视群集可用性
 
@@ -76,7 +76,7 @@ Ambari 提供许多与可用性相关的预定义警报，其中包括：
 
 在此示例中，可以设置为存在 2 个不正常的 DataNode 时触发严重警报，存在 1 个不正常的 DataNode 时只触发警告。 完成编辑后，选择“保存”。****
 
-### <a name="email-notifications"></a>电子邮件通知
+## <a name="email-notifications"></a>电子邮件通知
 
 还可以选择为 Ambari 警报配置电子邮件通知。 为此，请单击“警报”选项卡左上角的“操作”按钮，然后单击“管理通知”。**** **** ****
 
@@ -91,4 +91,3 @@ Ambari 提供许多与可用性相关的预定义警报，其中包括：
 - [HDInsight 中的 Apache Hadoop 群集的可用性和可靠性](hdinsight-high-availability-linux.md)
 - [群集可用性 - Azure Monitor 日志](./cluster-availability-monitor-logs.md)
 - [使用 Azure Monitor 日志](hdinsight-hadoop-oms-log-analytics-tutorial.md)
-

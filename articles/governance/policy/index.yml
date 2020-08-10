@@ -9,14 +9,14 @@ metadata:
   ms.collection: collection
   author: DCtheGeek
   ms.author: v-tawe
-  origin.date: 11/04/2019
-  ms.date: 03/30/2020
-  ms.openlocfilehash: d93471462f45edf8d45ba1b62b417ff5a4dab7f2
-  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+  origin.date: 06/29/2020
+  ms.date: 08/06/2020
+  ms.openlocfilehash: 2955d8fe48abf7f84542cddbba198a41bba0a42d
+  ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/17/2020
-  ms.locfileid: "80586824"
+  ms.lasthandoff: 08/07/2020
+  ms.locfileid: "87917082"
 landingContent:
 - title: 关于 Azure Policy
   linkLists:
@@ -36,11 +36,11 @@ landingContent:
     links:
     - text: 分配策略（门户）
       url: ./assign-policy-portal.md
-    - text: 分配策略 (PowerShell)
-      url: ./assign-policy-powershell.md
     - text: 分配策略 (Azure CLI)
       url: ./assign-policy-azurecli.md
-    - text: 分配策略（模板）
+    - text: 分配策略 (Azure PowerShell)
+      url: ./assign-policy-powershell.md
+    - text: 分配策略（ARM 模板）
       url: ./assign-policy-template.md
   - linkListType: tutorial
     links:
@@ -91,7 +91,7 @@ landingContent:
     - text: Azure PowerShell（策略）
       url: https://docs.microsoft.com/powershell/module/az.resources/#policies
     - text: Azure PowerShell（策略见解）
-      url: /powershell/module/az.policyinsights#policy_insights
+      url: https://docs.microsoft.com/powershell/module/az.policyinsights#policy_insights
     - text: REST（策略见解）
       url: https://docs.microsoft.com/rest/api/policy-insights/
     - text: REST（分配）
@@ -110,9 +110,9 @@ landingContent:
       url: https://docs.microsoft.com/dotnet/api/microsoft.azure.management.resourcemanager.models.policyassignment
     - text: 用于 .NET 的 Azure SDK（策略定义）
       url: https://docs.microsoft.com/dotnet/api/microsoft.azure.management.resourcemanager.models.policydefinition
-    - text: 用于 Node 的 Azure SDK（策略）
+    - text: 用于 JavaScript 的 Azure SDK（策略）
       url: https://docs.microsoft.com/javascript/api/@azure/arm-policy
-    - text: 用于 Node 的 Azure SDK（策略见解）
+    - text: 用于 JavaScript 的 Azure SDK（策略见解）
       url: https://docs.microsoft.com/javascript/api/@azure/arm-policyinsights
     - text: 用于 Python 的 Azure SDK（策略）
       url: https://docs.microsoft.com/python/api/azure-mgmt-resource/azure.mgmt.resource.policy

@@ -12,18 +12,20 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 origin.date: 05/14/2020
 ms.date: 07/06/2020
-ms.openlocfilehash: c60ce1f0853997e7c1ba20580a51224ed0e4894c
-ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
+ms.openlocfilehash: 167adf659df9948fa984e4913a86d42666fd2047
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85516747"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917144"
 ---
 # <a name="generate-recommendations-using-apache-mahout-in-azure-hdinsight"></a>在 Azure HDInsight 中使用 Apache Mahout 生成推荐
 
 了解如何使用 [Apache Mahout](https://mahout.apache.org) 机器学习库通过 Azure HDInsight 生成电影推荐。
 
 Mahout 是适用于 Apache Hadoop 的[计算机学习](https://en.wikipedia.org/wiki/Machine_learning)库。 Mahout 包含用于处理数据的算法，例如筛选、分类和群集。 在本文中，用户使用推荐引擎根据好友看过的电影生成电影推荐。
+
+若要深入了解 HDInsight 中的 Mahout 版本，请参阅 [HDInsight 版本和 Apache Hadoop 组件](../hdinsight-component-versioning.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -49,15 +51,17 @@ HDInsight 中的 Apache Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入�
 
 user-ratings.txt 中包含的数据具有 `userID`、`movieID`、`userRating` 和 `timestamp` 结构，指示每个用户对电影评级的情况。 下面是数据的示例：
 
+```output
     196    242    3    881250949
     186    302    3    891717742
     22    377    1    878887116
     244    51    2    880606923
     166    346    1    886397596
+```
 
 ## <a name="run-the-analysis"></a>运行分析
 
-1. 使用 [ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)连接到群集。 编辑以下命令（将 CLUSTERNAME 替换为群集的名称），然后输入该命令：
+1. 使用 [ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)连接到群集。 编辑以下命令，将 CLUSTERNAME 替换为群集的名称，然后输入该命令：
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.cn

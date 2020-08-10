@@ -13,12 +13,12 @@ ms.workload: na
 origin.date: 12/20/2019
 ms.author: v-tawe
 ms.date: 04/20/2020
-ms.openlocfilehash: a02283904b35a8849dfa04b27380bf26cf3bf42a
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: ecab8f3893690ab92ebadf59309160e55880c1c6
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126706"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917312"
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Azure 仪表板结构
 本文档将使用以下仪表板作为示例，介绍 Azure 仪表板的结构：
@@ -281,7 +281,7 @@ ms.locfileid: "82126706"
     "id": "/subscriptions/6531c8c8-df32-4254-d717-b6e983273e5d/resourceGroups/dashboards/providers/Microsoft.Portal/dashboards/aa9786ae-e159-483f-b05f-1f7f767741a9",
     "name": "aa9786ae-e159-483f-b05f-1f7f767741a9",
     "type": "Microsoft.Portal/dashboards",
-    "location": "eastasia",
+    "location": "chinaeast2",
     "tags": {
         "hidden-title": "Created via API"
     }

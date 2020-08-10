@@ -12,13 +12,13 @@ metadata:
   author: iainfoulds
   ms.author: v-junlch
   manager: daveba
-  ms.date: 07/20/2020
-  ms.openlocfilehash: 5e56e72233f6616e342750c91ea96cabd7a33b89
-  ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
+  ms.date: 08/07/2020
+  ms.openlocfilehash: c6e6f199a93ca49951f8e5a5b091ca5e105ec876
+  ms.sourcegitcommit: a5eb9a47feefb053ddbaab4b15c395972c372339
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/20/2020
-  ms.locfileid: "86472527"
+  ms.lasthandoff: 08/10/2020
+  ms.locfileid: "88028566"
 landingContent:
 - title: 关于 Azure AD 域服务
   linkLists:
@@ -74,7 +74,7 @@ landingContent:
       url: check-health.md
     - text: 配置电子邮件通知
       url: notifications.md
-    - text: 启用安全审核（预览版）
+    - text: 启用安全审核
       url: security-audit-events.md
 - title: 将 VM 加入域
   linkLists:

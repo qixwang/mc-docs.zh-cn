@@ -6,15 +6,15 @@ ms.author: v-junlch
 ms.topic: sample
 ms.service: virtual-machine-scale-sets
 ms.subservice: imaging
-ms.date: 06/22/2020
+ms.date: 08/07/2020
 ms.reviewer: cynthn
 ms.custom: akjosh
-ms.openlocfilehash: d5fea614ddff080d85ad75cbc6b0cd4ee90e9814
-ms.sourcegitcommit: 43db4001be01262959400663abf8219e27e5cb8b
+ms.openlocfilehash: 4d255dc6c47b095e66eacd1eda07769723980024
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85241482"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914390"
 ---
 # <a name="create-a-virtual-machine-scale-set-from-a-custom-vm-image-with-powershell"></a>使用 Azure PowerShell 从自定义 VM 映像创建虚拟机规模集
 此脚本创建使用自定义 VM 映像作为 VM 实例源的虚拟机规模集。
@@ -27,7 +27,7 @@ ms.locfileid: "85241482"
 
 ```powershell
 # Custom VM image must already exist in your subscription
-# See https://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/tutorial-use-custom-image-powershell
+# See https://docs.azure.cn/virtual-machine-scale-sets/tutorial-use-custom-image-powershell
 
 # Provide your own secure password for use with the VM instances
 $cred = Get-Credential
@@ -64,5 +64,5 @@ Remove-AzResourceGroup -Name myResourceGroup
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组及其中包含的所有资源。 |
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](https://docs.microsoft.com/powershell/azure/overview)。
+有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](https://docs.microsoft.com/powershell/azure/)。
 

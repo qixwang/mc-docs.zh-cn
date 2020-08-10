@@ -9,12 +9,12 @@ ms.service: data-explorer
 ms.topic: reference
 origin.date: 02/05/2020
 ms.date: 07/01/2020
-ms.openlocfilehash: 09ee6af2e875801de6a461dd19bac0b6a3c527fa
-ms.sourcegitcommit: 9bc3e55f01e0999f05e7b4ebaea95f3ac91d32eb
+ms.openlocfilehash: 8a9b473a1e2b83b0725c9589161028cfb47567e3
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86226347"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917266"
 ---
 # <a name="data-ingestion-with-the-kustoingest-library"></a>使用 Kusto.Ingest 库进行数据引入
 
@@ -64,7 +64,7 @@ static void Main(string[] args)
     var db = "KustoIngestClientDemo";
     var table = "Table1";
     var mappingName = "Table1_mapping_1";
-    var serviceNameAndRegion = "clusterNameAndRegion"; // For example, "mycluster.westus"
+    var serviceNameAndRegion = "clusterNameAndRegion"; // For example, "mycluster.chinaeast2"
     var authority = "AAD Tenant or name"; // For example, "microsoft.com"
 
     // Set up table

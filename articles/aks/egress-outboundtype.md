@@ -4,17 +4,17 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 中自定义出口路
 services: container-service
 ms.topic: article
 origin.date: 06/29/2020
-ms.date: 07/13/2020
+ms.date: 08/10/2020
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
 author: rockboyfor
-ms.openlocfilehash: 9a51b88c8e7d690679ecf84c719808f1312a5400
-ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
+ms.openlocfilehash: a698281fb16d7f380e89f1cbc1c86301d378b260
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86218741"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842597"
 ---
 <!--Verified on Prerequisites successfully-->
 <!--Verified to dig function-->
@@ -55,7 +55,7 @@ ms.locfileid: "86218741"
 
 下面是默认情况下在 AKS 群集中部署的网络拓扑，该拓扑使用类型为 `loadBalancer` 的 `outboundType`。
 
-![outboundtype-lb](media/egress-outboundtype/outboundtype-lb.png)
+:::image type="content" source="media/egress-outboundtype/outboundtype-lb.png" alt-text="outboundtype-lb":::
 
 ### <a name="outbound-type-of-userdefinedrouting"></a>userDefinedRouting 的出站类型
 
@@ -78,9 +78,9 @@ AKS 资源提供程序将部署一个标准负载均衡器 (SLB)。 不会为负
 
 ## <a name="next-steps"></a>后续步骤
 
-参阅 [Azure 网络 UDR 概述](/virtual-network/virtual-networks-udr-overview)。
+参阅 [Azure 网络 UDR 概述](../virtual-network/virtual-networks-udr-overview.md)。
 
-参阅[如何创建、更改或删除路由表](/virtual-network/manage-route-table)。
+参阅[如何创建、更改或删除路由表](../virtual-network/manage-route-table.md)。
 
 <!-- LINKS - internal -->
 

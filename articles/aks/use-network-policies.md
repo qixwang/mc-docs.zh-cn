@@ -5,16 +5,16 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用 Kubernetes 
 services: container-service
 ms.topic: article
 origin.date: 05/06/2019
-ms.date: 07/13/2020
+ms.date: 08/10/2020
 ms.testscope: no
 ms.testdate: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: d162110af831cd8619c77bcc1a26d31f3c63337c
-ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
+ms.openlocfilehash: bef1636a5c252211ae47cde3fd8206fc3176a288
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86218785"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842577"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中使用网络策略保护 Pod 之间的流量
 
@@ -162,13 +162,13 @@ kubectl label namespace/development purpose=development
 创建运行 NGINX 的示例后端 Pod。 此后端 Pod 可用于模拟基于 Web 的示例后端应用程序。 在 development 命名空间中创建此 Pod，并且打开端口 80，以提供 Web 流量 。 将 Pod 贴上标签：app=webapp,role=backend，以便我们可在下一节中使用网络策略定向到它：
 
 ```console
-kubectl run backend --image=nginx --labels app=webapp,role=backend --namespace development --expose --port 80 --generator=run-pod/v1
+kubectl run backend --image=nginx --labels app=webapp,role=backend --namespace development --expose --port 80
 ```
 
 创建另一个 Pod 并附加终端会话，以测试是否可以成功访问默认的 NGINX 网页：
 
 ```console
-kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
+kubectl run --rm -it --image=alpine network-policy --namespace development
 ```
 
 在 shell 提示符下，使用 `wget` 确认是否可以访问默认的 NGINX 网页：
@@ -224,7 +224,7 @@ kubectl apply -f backend-policy.yaml
 让我们看看是否可以在后端 Pod 上再次使用 NGINX 网页。 创建另一个测试 Pod，并附加一个终端会话：
 
 ```console
-kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
+kubectl run --rm -it --image=alpine network-policy --namespace development
 ```
 
 在 shell 提示符下，使用 `wget` 确认是否可以访问默认的 NGINX 网页。 这一次，将超时值设为 2 秒。 网络策略现在会阻止所有入站流量，因此无法加载页面，如以下示例中所示：
@@ -281,7 +281,7 @@ kubectl apply -f backend-policy.yaml
 计划带有 *app=webapp,role=frontend* 标签的 Pod，并附加终端会话：
 
 ```console
-kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development --generator=run-pod/v1
+kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development
 ```
 
 在 shell 提示符下，使用 `wget` 确认是否可以访问默认的 NGINX 网页：
@@ -311,7 +311,7 @@ exit
 网络策略允许来自标记为 app: webapp,role: frontend 的 Pod 的流量，但应拒绝其他所有流量。 让我们看看不带这些标签的另一个 Pod 是否可以访问后端 NGINX Pod。 创建另一个测试 Pod，并附加一个终端会话：
 
 ```console
-kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
+kubectl run --rm -it --image=alpine network-policy --namespace development
 ```
 
 在 shell 提示符下，使用 `wget` 确认是否可以访问默认的 NGINX 网页。 网络策略将阻止入站流量，因此无法加载页面，如以下示例所示：
@@ -344,7 +344,7 @@ kubectl label namespace/production purpose=production
 在具有标签 app=webapp,role=frontend 的 production 命名空间中计划测试 Pod 。 附加终端会话：
 
 ```console
-kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production --generator=run-pod/v1
+kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production
 ```
 
 在 shell 提示符下，使用 `wget` 确认是否可以访问默认的 NGINX 网页：
@@ -408,7 +408,7 @@ kubectl apply -f backend-policy.yaml
 在 *production* 命名空间中计划另一个 Pod，并附加终端会话：
 
 ```console
-kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production --generator=run-pod/v1
+kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production
 ```
 
 在 shell 提示符下，使用 `wget` 查看目前拒绝流量的网络策略：
@@ -430,7 +430,7 @@ exit
 拒绝来自 *production* 命名空间的流量后，在 *development* 命名空间中计划一个测试 Pod，并附加终端会话：
 
 ```console
-kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development --generator=run-pod/v1
+kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development
 ```
 
 在 shell 提示符下，使用 `wget` 查看允许流量的网络策略：

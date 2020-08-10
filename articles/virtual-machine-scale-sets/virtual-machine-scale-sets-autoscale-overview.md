@@ -1,28 +1,20 @@
 ---
-title: Azure 虚拟机规模集自动缩放概述 | Microsoft Docs
+title: Azure 虚拟机规模集自动缩放概述
 description: 了解可以通过哪些不同的方法，根据性能或固定的计划自动缩放 Azure 虚拟机规模集
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: d29a3385-179e-4331-a315-daa7ea5701df
-ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-origin.date: 05/29/2018
-ms.date: 02/12/2019
+author: avirishuv
 ms.author: v-junlch
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f789d5ab7b163c0f21b2c700268a9d480322959c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.topic: overview
+ms.service: virtual-machine-scale-sets
+ms.subservice: autoscale
+ms.date: 08/06/2020
+ms.reviewer: jushiman
+ms.custom: avverma
+ms.openlocfilehash: 63531933c99a01f165266a504317772e1cd3da5b
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "63850667"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914228"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Azure 虚拟机规模集自动缩放概述
 Azure 虚拟机规模集可以自动增加或减少运行应用程序的 VM 实例数。 这种自动且弹性的行为可以减少监视和优化应用程序性能所需的管理开销。 创建规则，用于定义提供正面客户体验而可接受的性能。 如果满足定义的这些阈值，自动缩放规则会采取措施来调整规模集的容量。 还可以计划事件，以便在固定的时间自动增加或减少规模集的容量。 本文概述所提供的性能指标，以及自动缩放可以执行的操作。
@@ -46,9 +38,9 @@ Azure 虚拟机规模集可以自动增加或减少运行应用程序的 VM 实�
 - [Azure CLI](tutorial-autoscale-cli.md)
 - [Azure 模板](tutorial-autoscale-template.md)
 
-若要创建使用更详细性能指标的自动缩放规则，可在 VM 实例上[安装并配置 Azure 诊断扩展](#in-guest-vm-metrics-with-the-azure-diagnostics-extension)。
+若要创建使用更详细性能指标的自动缩放规则，可在 VM 实例上[安装并配置 Azure 诊断扩展](#in-guest-vm-metrics-with-the-azure-diagnostics-extension)，或者[将应用程序配置为使用 App Insights](#application-level-metrics-with-app-insights)。
 
-使用基于主机的指标和 Azure 诊断扩展中的来宾内 VM 指标的自动缩放规则可使用以下配置设置。
+使用基于主机的指标、Azure 诊断扩展中的来宾内 VM 指标和 App Insights 的自动缩放规则可使用以下配置设置。
 
 ### <a name="metric-sources"></a>指标源
 自动缩放规则可以使用来自以下源之一的指标：
@@ -58,10 +50,11 @@ Azure 虚拟机规模集可以自动增加或减少运行应用程序的 VM 实�
 | 当前规模集    | 适用于无需附加代理即可安装或配置的基于主机的指标。                                  |
 | 存储帐户      | Azure 诊断扩展会将性能指标写入 Azure 存储，然后，可使用 Azure 存储来触发自动缩放规则。 |
 | 服务总线队列    | 应用程序或其他组件可将 Azure 服务总线队列中的消息传输到触发器规则。                   |
+| Application Insights | 安装在应用程序中的检测包，可直接从应用流式传输指标。                         |
 
 
 ### <a name="autoscale-rule-criteria"></a>自动缩放规则条件
-创建自动缩放规则时，可使用以下基于主机的指标。 如果使用 Azure 诊断扩展，请定义要通过自动缩放规则监视和使用的指标。
+创建自动缩放规则时，可使用以下基于主机的指标。 如果使用 Azure 诊断扩展或 App Insights，可以定义要通过自动缩放规则监视和使用的指标。
 
 | 指标名称               |
 |---------------------------|
@@ -119,6 +112,11 @@ Azure 诊断扩展是在 VM 实例中运行的代理。 该代理可监视性能
 有关详细信息，请参阅有关如何在 [Linux VM](../virtual-machines/extensions/diagnostics-linux.md) 或 [Windows VM](../virtual-machines/extensions/diagnostics-windows.md) 上启用 Azure 诊断扩展的文章。
 
 
+## <a name="application-level-metrics-with-app-insights"></a>App Insights 中的应用程序级指标
+若要更深入地洞察应用程序的性能，可以使用 Application Insights。 在应用程序中安装一个小型检测包，用于监视应用并将遥测数据发送到 Azure。 可以监视应用程序响应时间、页面加载性能和会话计数等指标。 基于可能对客户体验造成影响的、可采取行动的见解触发规则时，可以使用这些应用程序指标创建粒度级的嵌入式自动缩放规则。
+
+有关 App Insights 的详细信息，请参阅[什么是 Application Insights](../azure-monitor/app/app-insights-overview.md)。
+
 
 ## <a name="scheduled-autoscale"></a>计划的自动缩放
 还可以根据计划创建自动缩放规则。 使用这些基于计划的规则可在固定的时间自动缩放 VM 实例的数目。 使用基于性能的规则时，在触发自动缩放规则和预配新的 VM 实例之前，应用程序的性能可能会受影响。 如果能够预见到这种需求，可以预配更多的 VM 实例，并使其随时可用于满足更多的客户用途和应用程序的需求。
@@ -137,6 +135,7 @@ Azure 诊断扩展是在 VM 实例中运行的代理。 该代理可监视性能
 - [Azure CLI](tutorial-autoscale-cli.md)
 - [Azure 模板](tutorial-autoscale-template.md)
 
-有关如何管理 VM 实例的信息，请参阅[使用 Azure PowerShell 管理虚拟机规模集](virtual-machine-scale-sets-windows-manage.md)。
+有关如何管理 VM 实例的信息，请参阅[使用 Azure PowerShell 管理虚拟机规模集](./virtual-machine-scale-sets-manage-powershell.md)。
 
-<!-- Update_Description: update metedata properties -->
+若要了解如何在触发自动缩放规则时生成警报，请参阅[在 Azure Monitor 中使用自动缩放操作发送电子邮件和 Webhook 警报通知](../azure-monitor/platform/autoscale-webhook-email.md)。 还可以[在 Azure Monitor 中使用审核日志发送电子邮件和 Webhook 警报通知](../azure-monitor/platform/alerts-log-webhook.md)。
+

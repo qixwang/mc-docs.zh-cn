@@ -4,25 +4,25 @@ description: include 文件
 services: cognitive-services
 author: diberry
 manager: nitinme
-ms.custom: include file
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 06/17/2020
+ms.date: 08/07/2020
 ms.topic: include
 origin.date: 05/05/2020
-ms.author: diberry
-ms.openlocfilehash: ea3a6a5dd0501e58c1cc726c7d2bc8797f78bdf5
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.author: v-johya
+ms.openlocfilehash: 229cea37905692ddbd43079139c3dca1be630443
+ms.sourcegitcommit: caa18677adb51b5321ad32ae62afcf92ac00b40b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098374"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88024216"
 ---
 ## <a name="sign-in-to-luis-portal"></a>登录到 LUIS 门户
 
 LUIS 的新用户需要执行此过程：
 
-1. 登录到 [LUIS 门户](https://luis.azure.cn)，选择你的国家/地区，并同意使用条款。 如果看到“我的应用”，则 LUIS 资源已存在，你应该跳过此过程，开始创建应用。 有关受支持的区域，请访问[创作和发布区域及关联的密钥](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions)。
+1. 登录到 [LUIS 门户](https://luis.azure.cn)，选择你的国家/地区，并同意使用条款。 如果看到“我的应用”，则 LUIS 资源已存在，你应该跳过此过程，开始创建应用。 有关受支持的区域，请访问[创作和发布区域及关联的密钥](/cognitive-services/luis/luis-reference-regions)。
 
 1. 选择“创建 Azure资源” ，然后选择“创建要将应用迁移到的创作资源”。
 
@@ -48,3 +48,4 @@ LUIS 的新用户需要执行此过程：
 1. 选择“继续”进行确认。
 
     ![创建创作资源](../media/sign-in/sign-in-confirm-continue.png)
+

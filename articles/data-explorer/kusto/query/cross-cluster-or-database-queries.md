@@ -11,12 +11,12 @@ origin.date: 02/13/2020
 ms.date: 07/31/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 678ac28c9607d3d9faa02906e836e417088864e9
-ms.sourcegitcommit: 4e1bc2e9b2a12dbcc05c52db5dbd1ae290aeb18d
+ms.openlocfilehash: 0db8c14bdf223762b3ad77b62355c1afd592c2c0
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2020
-ms.locfileid: "87509514"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917058"
 ---
 # <a name="cross-database-and-cross-cluster-queries"></a>跨数据库和跨群集查询
 
@@ -45,7 +45,7 @@ cluster("<cluster name>").database("<database name>").<table name>
 “集群名称”不区分大小写且可以是以下形式之一：
    * 格式标准的 URL，例如 `http://contoso.kusto.chinacloudapi.cn:1234/`。 仅支持 HTTP 和 HTTPS 方案。
    * 完全限定的域名 (FQDN)，例如 `contoso.kusto.chinacloudapi.cn`。 该字符串等效于 `https://`**`contoso.kusto.chinacloudapi.cn`** `:443/`。
-   * 短名称（不包含域部分的主机名 [和区域]），例如 `contoso` 或 `contoso.westus`。 这些字符串转译为 `https://`**`contoso`** `.kusto.chinacloudapi.cn:443/` 和 `https://`**`contoso.westus`** `.kusto.chinacloudapi.cn:443/`。
+   * 短名称（不包含域部分的主机名 [和区域]），例如 `contoso` 或 `contoso.chinaeast2`。 这些字符串转译为 `https://`**`contoso`** `.kusto.chinacloudapi.cn:443/` 和 `https://`**`contoso.chinaeast2`** `.kusto.chinacloudapi.cn:443/`。
 
 > [!NOTE]
 > 跨数据库访问需遵守常规权限检查。
