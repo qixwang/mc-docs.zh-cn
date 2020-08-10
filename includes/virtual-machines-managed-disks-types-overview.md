@@ -5,16 +5,18 @@ services: virtual-machines
 author: rockboyfor
 ms.service: virtual-machines
 ms.topic: include
-origin.date: 08/15/2019
-ms.date: 05/18/2020
+origin.date: 06/03/2020
+ms.date: 08/10/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: e144dc6768f7d0be805a0b65d2edf9c8750e8317
-ms.sourcegitcommit: 8d56bc6baeb42d675695ecef1909d76f5c4a6ae3
+ms.openlocfilehash: 10d064b412eb7fcfd6d6626df112580448832734
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83406220"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87919275"
 ---
 <!--MOONCAKE: CURRENT NO Ultra SSD-->
 
@@ -28,12 +30,12 @@ Azure 托管磁盘目前提供三种磁盘类型，每种类型都针对特定�
 
 <!--Not Available on ultra solid-state-drives (SSD) (preview)-->
 
-|    | 高级·SSD   | 标准 SSD   | 标准 HDD   |
-|---------|---------|---------|---------|
+| 详细信息 | 高级 SSD | 标准 SSD | 标准 HDD |
+| ------ | ----------- | ------------ | ------------ |
 |磁盘类型   |SSD   |SSD   |HDD   |
 |方案   |生产和性能敏感型工作负荷   |Web 服务器、不常使用的企业应用程序和开发/测试   |备份、非关键、不常访问   |
-|最大磁盘大小   | 32,767 GiB    |32,767 GiB   |32,767 GiB   |
-|最大吞吐量   |900 MiB/秒   |750 MiB/秒   |500 MiB/秒   |
+|最大磁盘大小   |32,767 GiB    |32,767 GiB   |32,767 GiB   |
+|最大吞吐量   |900 MB/秒   |750 MB/秒   |500 MB/秒   |
 |最大 IOPS   |20,000   |6,000   |2,000   |
 
 <!--MOONCAKE: Disk size is less than 32,767 GiB-->

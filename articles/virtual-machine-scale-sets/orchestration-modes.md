@@ -6,15 +6,15 @@ ms.author: v-junlch
 ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
 ms.subservice: management
-ms.date: 06/22/2020
+ms.date: 08/06/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 882852880d3cc06cb436a63ab8fcc9a8a2c628c9
-ms.sourcegitcommit: 43db4001be01262959400663abf8219e27e5cb8b
+ms.openlocfilehash: 752ece007c827f405c8fd289fdcaf95ef68bc9b2
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85241566"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914159"
 ---
 # <a name="orchestration-modes-preview"></a>业务流程模式（预览版）
 
@@ -42,7 +42,7 @@ ms.locfileid: "85241566"
 
 ## <a name="orchestration-modes"></a>业务流程模式
 
-|                             | “orchestrationMode”:“VM” (VirtualMachine) | “orchestrationMode”:“ScaleSetVM” (VirtualMachineScaleSetVM) |
+| 功能                     | "orchestrationMode”:“VM” (VirtualMachine) | “orchestrationMode”:“ScaleSetVM” (VirtualMachineScaleSetVM) |
 |-----------------------------|--------------------------------------------|--------------------------------------------------------------|
 | VM 配置模型      | 无                                       | 必须 |
 | 将新 VM 添加到规模集  | 创建 VM 时，会显式将 VM 添加到规模集。 | VM 是隐式创建的，将会根据 VM 配置模型、实例计数和自动缩放规则添加到规模集 | |
