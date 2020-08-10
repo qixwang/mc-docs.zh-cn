@@ -11,12 +11,12 @@ ms.topic: reference
 origin.date: 09/01/2019
 ms.date: 11/11/2019
 ms.reviewer: klam, LADocs
-ms.openlocfilehash: 6ff6cad64db4ea3f440f777e176ef1b01db7fe9c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2733a5734621f169b821cd83938b6ab8418d663a
+ms.sourcegitcommit: 3cf647177c22b24f76236c57cae19482ead6a283
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291524"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88029610"
 ---
 # <a name="data-operation-code-samples-for-azure-logic-apps"></a>Azure 逻辑应用的数据操作代码示例
 

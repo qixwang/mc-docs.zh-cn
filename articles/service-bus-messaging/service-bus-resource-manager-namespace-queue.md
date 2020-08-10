@@ -11,12 +11,12 @@ ms.date: 07/27/2020
 ms.testscope: yes
 ms.testdate: 07/20/2020
 ms.author: v-yeche
-ms.openlocfilehash: e3e08a501d62c13e2449d31d8a6aa58a321387a4
-ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
+ms.openlocfilehash: 46d15347ffe5c955d4a1c69e9cacdeacca6e70aa
+ms.sourcegitcommit: 3cf647177c22b24f76236c57cae19482ead6a283
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87162235"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88029605"
 ---
 # <a name="quickstart-create-a-service-bus-namespace-and-a-queue-using-an-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板创建服务总线命名空间和队列
 

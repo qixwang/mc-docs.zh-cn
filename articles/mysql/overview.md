@@ -1,19 +1,19 @@
 ---
-title: Azure Database for MySQL 关系数据库服务概述
+title: 概述 - Azure Database for MySQL
 description: 了解 Azure Database for MySQL 服务，这是 Microsoft 云中基于 MySQL 社区版的关系数据库服务。
 author: WenJason
 ms.service: mysql
 ms.author: v-jay
 ms.custom: mvc
 ms.topic: overview
-origin.date: 11/25/2019
-ms.date: 12/09/2019
-ms.openlocfilehash: 48055cfa52cd113e393e835fd8a894ba224ef015
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 3/18/2020
+ms.date: 08/17/2020
+ms.openlocfilehash: 73d7423a9a28efee0254558df66d3591c7d65860
+ms.sourcegitcommit: 3cf647177c22b24f76236c57cae19482ead6a283
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74839037"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88029681"
 ---
 # <a name="what-is-azure-database-for-mysql"></a>什么是用于 MySQL 的 Azure 数据库？
 
@@ -62,4 +62,11 @@ Azure 数据库沿袭了 Azure Database for MySQL 的若干数据安全性功能
 
 - 有关成本比较和计算器，请参阅定价页。 [定价](https://azure.cn/pricing/details/mysql/)
 - 从创建第一个服务器开始。 [使用 Azure 门户创建用于 MySQL 服务器的 Azure 数据库](quickstart-create-mysql-server-database-using-azure-portal.md)
-- 使用首选语言生成首个 应用：[Python](./connect-python.md) | [Node.JS](./connect-nodejs.md) | [Java](./connect-java.md) | [Ruby](./connect-ruby.md) | [PHP](./connect-php.md) | [.NET (C#)](./connect-csharp.md) | [Go](./connect-go.md)
+- 使用首选语言生成首个应用：
+  - [Python](./connect-python.md)
+  - [Node.JS](./connect-nodejs.md)
+  - [Java](./connect-java.md)
+  - [Ruby](./connect-ruby.md)
+  - [PHP](./connect-php.md)
+  - [.NET (C#)](./connect-csharp.md)
+  - [Go](./connect-go.md)

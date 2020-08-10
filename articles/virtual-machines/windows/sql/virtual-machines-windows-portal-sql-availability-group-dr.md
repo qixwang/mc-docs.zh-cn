@@ -9,19 +9,19 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 388c464e-a16e-4c9d-a0d5-bb7cf5974689
 ms.service: virtual-machines-sql
-ms.custom: seo-lt-2019
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 origin.date: 05/02/2017
 ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 75cbcd0a2ddb56192b594781262a7292665f3ffb
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.custom: seo-lt-2019
+ms.openlocfilehash: cd4714d3e37555269382644c1e5baa56d0dce96a
+ms.sourcegitcommit: 3cf647177c22b24f76236c57cae19482ead6a283
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77427948"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88029683"
 ---
 # <a name="configure-an-availability-group-on-azure-sql-server-virtual-machines-in-different-regions"></a>在位于不同区域的 Azure SQL Server 虚拟机上配置可用性组
 
@@ -134,7 +134,7 @@ ms.locfileid: "77427948"
 
 1. [在 PowerShell 中设置群集参数](virtual-machines-windows-portal-sql-availability-group-tutorial.md#setparam)。
 
-使用在新区域中的负载均衡器上配置的群集网络名称、IP 地址和探测端口运行 PowerShell 脚本。
+    使用在新区域中的负载均衡器上配置的群集网络名称、IP 地址和探测端口运行 PowerShell 脚本。
 
     ```powershell
     $ClusterNetworkName = "<MyClusterNetworkName>" # The cluster name for the network in the new region (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name).

@@ -1,5 +1,5 @@
 ---
-title: Azure CLI 脚本 - 下载 Azure Database for MySQL 中的服务器日志
+title: CLI 脚本 - 下载慢查询日志 - Azure Database for MySQL
 description: 此示例 Azure CLI 脚本演示如何启用和下载 Azure Database for MySQL 服务器的服务器日志。
 author: WenJason
 ms.author: v-jay
@@ -7,21 +7,23 @@ ms.service: mysql
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
-origin.date: 02/28/2018
-ms.date: 03/18/2019
-ms.openlocfilehash: ff923d8249079f98edb3e7d740940122a2c7501b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 12/02/2019
+ms.date: 08/10/2020
+ms.openlocfilehash: ac2d3585408d6a820f0dde807eb66e8ae94867ad
+ms.sourcegitcommit: 3cf647177c22b24f76236c57cae19482ead6a283
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "63860754"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88029693"
 ---
 # <a name="enable-and-download-server-slow-query-logs-of-an-azure-database-for-mysql-server-using-azure-cli"></a>使用 Azure CLI 启用和下载 Azure Database for MySQL 服务器的服务器慢查询日志
 
 > [!NOTE]
 > 将要查看的是 Azure Database for MySQL 的新服务。 若要查看经典 MySQL Database for Azure 的文档，请访问[此页](https://docs.azure.cn/zh-cn/mysql-database-on-azure/)。
 
-此示例 CLI 脚本可启用和下载单个 Azure Database for MySQL 服务器的慢查询日志。 本文需要 Azure CLI 2.0 或更高版本。 通过运行 `az --version` 来查看版本。 请参阅[安装 Azure CLI]( /cli/install-azure-cli)，了解如何安装或升级 Azure CLI 的版本。 
+此示例 CLI 脚本可启用和下载单个 Azure Database for MySQL 服务器的慢查询日志。 
+
+本文需要 Azure CLI 2.0 或更高版本。 通过运行 `az --version` 来查看版本。 请参阅[安装 Azure CLI](/cli/install-azure-cli)，了解如何安装或升级 Azure CLI 的版本。 
 
 ## <a name="sample-script"></a>示例脚本
 在此示例脚本中，编辑突出显示的行，将管理员用户名和密码更新为你自己的。 将 `az monitor` 命令中的 &lt;log_file_name&gt; 替换自己的服务器日志文件名。
@@ -102,4 +104,4 @@ az group delete --name myresource
 
 ## <a name="next-steps"></a>后续步骤
 - 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli)。
-- 尝试其他脚本：[Azure Database for MySQL 的 Azure CLI 示例](../sample-scripts-azure-cli.md)
+- 请尝试其他脚本：[用于 MySQL 的 Azure 数据库的 Azure CLI 示例](../sample-scripts-azure-cli.md)

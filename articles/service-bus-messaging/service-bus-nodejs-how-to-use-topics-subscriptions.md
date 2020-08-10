@@ -9,12 +9,12 @@ ms.date: 07/27/2020
 ms.testscope: yes
 ms.testdate: 07/20/2020
 ms.author: v-yeche
-ms.openlocfilehash: 39f05742bd362db698ba611281c5375b567f24bd
-ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
+ms.openlocfilehash: 741500fc29ee65f81167fa4d5d82da08db98d55f
+ms.sourcegitcommit: 3cf647177c22b24f76236c57cae19482ead6a283
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87162340"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88029674"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>快速入门：如何通过 Node.js 和 azure-sb 包使用服务总线主题与订阅
 本教程介绍如何使用 [azure-sb](https://www.npmjs.com/package/azure-sb) 包创建 Node.js 应用程序，用于将消息发送到服务总线主题，并从服务总线订阅接收消息。 示例以 JavaScript 编写并使用 Node.js [Azure 模块](https://www.npmjs.com/package/azure)，该模块在内部使用 `azure-sb` 包。
@@ -75,9 +75,11 @@ var azure = require('azure');
 ```
 
 ### <a name="set-up-a-service-bus-connection"></a>设置服务总线连接
-Azure 模块读取你在准备[前提条件](#prerequisites)时获得的连接字符串的环境变量 `AZURE_SERVICEBUS_CONNECTION_STRING`。 如果再次需要有关获取连接字符串的说明，请参阅[获取连接字符串](service-bus-quickstart-topics-subscriptions-portal.md#get-the-connection-string)。 如果未设置此环境变量，则在调用 `createServiceBusService` 时必须指定帐户信息。
+Azure 模块读取你在准备[前提条件](#prerequisites)时获得的连接字符串的环境变量 `AZURE_SERVICEBUS_CONNECTION_STRING`。 如果再次需要有关获取连接字符串的说明，请参阅[获取连接字符串](service-bus-quickstart-topics-subscriptions-portal.md)。 如果未设置此环境变量，则在调用 `createServiceBusService` 时必须指定帐户信息。
 
 有关设置 Azure 云服务环境变量的示例，请参阅[设置环境变量](../container-instances/container-instances-environment-variables.md#azure-cli-example)。
+
+<!--Not Available on #get-the-connection-string-->
 
 ## <a name="create-a-topic"></a>创建主题
 可以通过 **ServiceBusService** 对象处理主题。 以下代码创建 **ServiceBusService** 对象。 将它添加到靠近 **server.js** 文件顶部、用于导入 azure 模块的语句之后的位置：

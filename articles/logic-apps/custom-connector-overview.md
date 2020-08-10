@@ -12,14 +12,14 @@ ms.workload: logic-apps
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2018
 ms.author: v-yiso
-ms.openlocfilehash: 427ad00ac9b74f779a7c7d3f8a8d63a72a1c2dcb
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 03/19/2018
+ms.openlocfilehash: 0187e23932687a64e8e40b01ba578685a24f5ed0
+ms.sourcegitcommit: 3cf647177c22b24f76236c57cae19482ead6a283
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "63829734"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88029699"
 ---
 # <a name="custom-connectors-in-logic-apps"></a>逻辑应用中的自定义连接器
 

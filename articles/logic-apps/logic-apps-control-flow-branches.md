@@ -9,12 +9,12 @@ ms.author: v-yiso
 origin.date: 10/10/2018
 ms.reviewer: klam, LADocs
 ms.date: 02/04/2019
-ms.openlocfilehash: 6544fd856c470b32ef2192555993cd0aa27010b0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d9b81e2c0759ec343905441d0a5822c4988f912d
+ms.sourcegitcommit: 3cf647177c22b24f76236c57cae19482ead6a283
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "63829873"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88029700"
 ---
 # <a name="create-or-join-parallel-branches-for-workflow-actions-in-azure-logic-apps"></a>创建或联接 Azure 逻辑应用中的工作流的并行分支
 
@@ -23,7 +23,7 @@ ms.locfileid: "63829873"
 > [!TIP] 
 > 如果你有接收数组的触发器并且希望针对每个数组项运行工作流，则可以使用 [**SplitOn** 触发器属性](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)“分离”该数组。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果没有订阅，可以[注册 Azure 试用帐户](https://www.azure.cn/pricing/1rmb-trial)。 
 
@@ -45,7 +45,7 @@ ms.locfileid: "63829873"
 
 1. 在 <a href="https://portal.azure.cn" target="_blank">Azure 门户</a>的逻辑应用设计器中打开逻辑应用。
 
-1. 将指针悬停在要添加平行分支的步骤上方的箭头上。 选择出现的加号 (+)，然后选择“添加并行分支”。 
+1. 将指针悬停在要添加平行分支的步骤上方的箭头上。 选择出现的加号 (+)，然后选择“添加并行分支”  。 
 
    ![添加并行分支](media/logic-apps-control-flow-branches/add-parallel-branch.png)
 
@@ -57,7 +57,7 @@ ms.locfileid: "63829873"
 
    ![查找并选择所需的操作](media/logic-apps-control-flow-branches/added-parallel-branch.png)
 
-1. 现在，在每个并行分支中添加所需的步骤。 若要将其他操作添加到分支，请将指针移动到要添加顺序操作的操作下。 选择出现的加号 (+)，然后选择“添加操作”。
+1. 现在，在每个并行分支中添加所需的步骤。 若要将其他操作添加到分支，请将指针移动到要添加顺序操作的操作下。 选择出现的加号 (+)，然后选择“添加操作”。 
 
    ![将顺序操作添加到并行分支](media/logic-apps-control-flow-branches/add-sequential-action.png)
 

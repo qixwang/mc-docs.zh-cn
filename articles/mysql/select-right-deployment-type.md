@@ -6,13 +6,13 @@ ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
 origin.date: 12/02/2019
-ms.date: 03/02/2020
-ms.openlocfilehash: e5a88c2e56da3001ef49228fb8583e71210413a8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 08/17/2020
+ms.openlocfilehash: 0c540eee9a08ff0cbd37a57b9071e8afc48f1a01
+ms.sourcegitcommit: 3cf647177c22b24f76236c57cae19482ead6a283
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78154401"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88029602"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>在 Azure 中选择适当的 MySQL Server 选项
 
@@ -35,7 +35,7 @@ ms.locfileid: "78154401"
 
 下表列出了这些选项之间的主要差别：
 
-|            | Azure Database for MySQL | Azure VM 上的 MySQL    |
+| 属性          | Azure Database for MySQL | Azure VM 上的 MySQL    |
 |:-------------------|:-----------------------------|:--------------------|
 | 服务级别协议 (SLA)                | 提供 99.99% 可用性 SLA| 同一可用性集中的两个或更多个实例的可用性高达 99.95%。<br/><br/>使用高级存储的单一实例 VM 的可用性为 99.9%。<br/><br/>请参阅[虚拟机 SLA](https://www.azure.cn/zh-cn/support/sla/virtual-machines/)。 |
 | 操作系统修补        | 自动  | 由客户管理 |

@@ -1,20 +1,20 @@
 ---
-title: Azure CLI 脚本 - 缩放 Azure Database for MySQL 服务器
+title: CLI 脚本 - 缩放服务器 - Azure Database for MySQL
 description: 此示例 CLI 脚本在查询指标后用于 MySQL 服务器的 Azure 数据库缩放为不同的性能级别。
 author: WenJason
 ms.author: v-jay
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: sample
-ms.custom: mvc
-origin.date: 08/07/2019
-ms.date: 09/02/2019
-ms.openlocfilehash: 3fa41110c5b44186eff229c2813098f1d789ace0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.custom: mvc, devx-track-azurecli
+origin.date: 12/02/2019
+ms.date: 08/10/2020
+ms.openlocfilehash: 90338a36c599ef8bc1aeeae2effd8b7ff058e63e
+ms.sourcegitcommit: 3cf647177c22b24f76236c57cae19482ead6a283
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "70131870"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88029604"
 ---
 # <a name="monitor-and-scale-an-azure-database-for-mysql-server-using-azure-cli"></a>使用 Azure CLI 监视和缩放用于 MySQL 服务器的 Azure 数据库
 此示例 CLI 脚本在查询指标后为单个 Azure Database for MySQL 服务器缩放计算和存储。 计算可以增加或减少。 存储只能增加。
@@ -22,7 +22,7 @@ ms.locfileid: "70131870"
 > [!NOTE]
 > 将要查看的是 Azure Database for MySQL 的新服务。 若要查看经典 MySQL Database for Azure 的文档，请访问[此页](https://docs.azure.cn/zh-cn/mysql-database-on-azure/)。
 
-本文需要 Azure CLI 2.0 或更高版本。 通过运行 `az --version` 来查看版本。 请参阅[安装 Azure CLI]( /cli/install-azure-cli)，了解如何安装或升级 Azure CLI 的版本。 
+本文需要 Azure CLI 2.0 或更高版本。 通过运行 `az --version` 来查看版本。 请参阅[安装 Azure CLI](/cli/install-azure-cli)，了解如何安装或升级 Azure CLI 的版本。 
 
 ## <a name="sample-script"></a>示例脚本
 使用你的订阅 ID 更新脚本。
@@ -107,5 +107,5 @@ az group delete --name $RESOURCE_GROUP
 
 ## <a name="next-steps"></a>后续步骤
 - 详细了解 [Azure Database for MySQL 计算和存储](../concepts-pricing-tiers.md)
-- 尝试其他脚本：[Azure Database for MySQL 的 Azure CLI 示例](../sample-scripts-azure-cli.md)
+- 请尝试其他脚本：[用于 MySQL 的 Azure 数据库的 Azure CLI 示例](../sample-scripts-azure-cli.md)
 - 详细了解 [Azure CLI](/cli/)

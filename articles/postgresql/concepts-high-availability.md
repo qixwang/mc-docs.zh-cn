@@ -7,15 +7,15 @@ ms.service: postgresql
 ms.topic: conceptual
 origin.date: 6/15/2020
 ms.date: 07/20/2020
-ms.openlocfilehash: b4f4d0979bfe4248ea189c463f4f55f24141a064
-ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
+ms.openlocfilehash: 163e0a29d7c42d596d92c0273030313878467c93
+ms.sourcegitcommit: 3cf647177c22b24f76236c57cae19482ead6a283
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "86440396"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88029686"
 ---
 # <a name="high-availability-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL（单一服务器）中的高可用性
-Azure Database for PostgreSQL（单一服务器）服务提供有保证的高级别可用性，即，提供正常运行时间占比为 [99.99%](https://azure.microsoft.com/support/legal/sla/postgresql) 且具有财务支持的服务级别协议 (SLA)。 Azure Database for PostgreSQL 在发生计划内事件（例如用户发起的缩放计算操作）期间提供高可用性，并且还在发生基础硬件、软件或网络故障等计划外事件时提供高可用性。 Azure Database for PostgreSQL 在发生大多数严重状况时都可以快速恢复，确保用户在使用此服务时应用程序几乎不会停机。
+Azure Database for PostgreSQL（单一服务器）服务提供有保证的高级别可用性，即，提供正常运行时间占比为 [99.99%](https://www.azure.cn/support/sla/postgresql/index.html) 且具有财务支持的服务级别协议 (SLA)。 Azure Database for PostgreSQL 在发生计划内事件（例如用户发起的缩放计算操作）期间提供高可用性，并且还在发生基础硬件、软件或网络故障等计划外事件时提供高可用性。 Azure Database for PostgreSQL 在发生大多数严重状况时都可以快速恢复，确保用户在使用此服务时应用程序几乎不会停机。
 
 Azure Database for PostgreSQL 适合运行对正常运行时间要求很高的关键数据库。 该服务基于 Azure 体系结构构建，具有固有的高可用性、冗余性和复原能力，可以缓解计划内和计划外中断造成的数据库停机，不需要你配置任何其他组件。 
 

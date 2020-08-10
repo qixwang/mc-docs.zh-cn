@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/20/2020
 ms.author: v-tawe
 ms.custom: include file
-ms.openlocfilehash: 46c0097062b76a67e0b32e129bf1460438cb48bb
-ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
+ms.openlocfilehash: 09317150422361f5c1cf1ec96b43ec2d0b008f17
+ms.sourcegitcommit: 3cf647177c22b24f76236c57cae19482ead6a283
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84126627"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88038497"
 ---
 | **资源** | **默认限制** | **最大限制** |
 | --- | --- | --- |

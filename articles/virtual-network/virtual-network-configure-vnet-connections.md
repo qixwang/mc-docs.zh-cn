@@ -5,7 +5,6 @@ services: virtual-network
 documentationcenter: na
 author: rockboyfor
 manager: digimobile
-editor: ''
 ms.assetid: 0433a4f4-b5a0-476d-b398-1506c57eafa2
 ms.service: virtual-network
 ms.devlang: na
@@ -15,12 +14,12 @@ ms.workload: infrastructure-services
 origin.date: 11/25/2019
 ms.date: 11/25/2019
 ms.author: v-yeche
-ms.openlocfilehash: 2fa34a19c7fa476d17467e6c71845b17a3f5f81c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 758bb19ea806fae58d2612ad689d2b50625c6775
+ms.sourcegitcommit: 3cf647177c22b24f76236c57cae19482ead6a283
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74658055"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88029685"
 ---
 # <a name="configure-and-validate-virtual-network-or-vpn-connections"></a>配置和验证虚拟网络或 VPN 连接
 

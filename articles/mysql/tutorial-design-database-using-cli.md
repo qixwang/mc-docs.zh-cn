@@ -1,20 +1,20 @@
 ---
-title: 教程：使用 Azure CLI 设计 Azure Database for MySQL
+title: 教程：设计服务器 - Azure CLI - Azure Database for MySQL
 description: 本教程介绍如何使用 Azure CLI 从命令行创建和管理 Azure Database for MySQL 服务器和数据库。
 author: WenJason
 ms.author: v-jay
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: tutorial
-origin.date: 04/29/2018
-ms.date: 01/06/2020
-ms.custom: mvc
-ms.openlocfilehash: d352df4d9960f7695e739b76ccbb6bc1a85806b3
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 12/02/2019
+ms.date: 08/17/2020
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: e1f3f92abd8ef1c5f0bf1ffc1aea803c327d95d2
+ms.sourcegitcommit: 3cf647177c22b24f76236c57cae19482ead6a283
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75624356"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88029603"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-using-azure-cli"></a>教程：使用 Azure CLI 设计 Azure Database for MySQL
 
@@ -36,7 +36,7 @@ Azure Database for MySQL 是 Azure 中基于 MySQL 社区版数据库引擎的�
 
 可以在自己的计算机上[安装 Azure CLI]( /cli/install-azure-cli) 来运行本教程中的代码块。
 
-本文要求运行 Azure CLI 2.0 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/install-azure-cli)。 
+本文要求运行 Azure CLI 2.0 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/install-azure-cli)。 
 
 如果有多个订阅，请选择资源所在的相应订阅或对资源进行计费的订阅。 使用 [az account set](/cli/account#az-account-set) 命令选择帐户下的特定订阅 ID。
 ```cli
@@ -48,20 +48,20 @@ az account set --subscription 00000000-0000-0000-0000-000000000000
 
 以下示例在 `chinaeast` 位置创建名为 `myresourcegroup` 的资源组。
 
-```cli
+```azurecli
 az group create --name myresourcegroup --location chinaeast
 ```
 
 ## <a name="create-an-azure-database-for-mysql-server"></a>创建 Azure Database for MySQL 服务器
 使用 az mysql server create 命令创建 Azure Database for MySQL 服务器。 一个服务器可以管理多个数据库。 通常，每个项目或每个用户使用一个单独的数据库。
 
-以下示例在资源组 `myresourcegroup` 中的 `chinaeast` 处创建名为 `mydemoserver` 的 Azure Database for MySQL 服务器。 该服务器的管理员用户名为 `myadmin`。 它是第 4 代常规用途服务器，带有 2 个 2 vCore。 用自己的值替换 `<server_admin_password>`。
+以下示例在资源组 `myresourcegroup` 中的 `chinaeast2` 处创建名为 `mydemoserver` 的 Azure Database for MySQL 服务器。 该服务器的管理员用户名为 `myadmin`。 它是一台常规用途第 5 代服务器，具有 2 个 vCore。 用自己的值替换 `<server_admin_password>`。
 
-```cli
-az mysql server create --resource-group myresourcegroup --name mydemoserver --location chinaeast --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen4_2 --version 5.7
+```azurecli
+az mysql server create --resource-group myresourcegroup --name mydemoserver --location chinaeast2 --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 5.7
 ```
 sku-name 参数值遵循 {定价层}\_{计算层代}\_{vCore 数} 约定，如以下示例中所示：
-+ `--sku-name B_Gen4_4` 映射到基本、第 4 代和 4 个 vCore。
++ `--sku-name B_Gen5_2` 映射到基本、第 5 代和 2 个 vCore。
 + `--sku-name GP_Gen5_32` 映射到常规用途、第 5 层和 32 个 vCore。
 + `--sku-name MO_Gen5_2` 映射到内存优化、第 5 层和 2 个 vCore。
 
@@ -72,18 +72,18 @@ sku-name 参数值遵循 {定价层}\_{计算层代}\_{vCore 数} 约定，如�
 
 
 ## <a name="configure-firewall-rule"></a>配置防火墙规则
-使用 az mysql server firewall-rule create 命令创建 Azure Database for MySQL 服务器级防火墙规则。 服务器级防火墙规则允许外部应用程序（如 mysql  命令行工具或 MySQL Workbench）通过 Azure MySQL 服务防火墙连接到服务器。 
+使用 az mysql server firewall-rule create 命令创建 Azure Database for MySQL 服务器级防火墙规则。 服务器级防火墙规则允许外部应用程序（如 mysql 命令行工具或 MySQL Workbench）通过 Azure MySQL 服务防火墙连接到服务器。 
 
 以下示例创建名为 `AllowMyIP` 的防火墙规则，该规则允许从特定的 IP 地址 (192.168.0.1) 进行连接。 替代与要从其进行连接的地址相对应的 IP 地址或 IP 地址范围。 
 
-```cli
+```azurecli
 az mysql server firewall-rule create --resource-group myresourcegroup --server mydemoserver --name AllowMyIP --start-ip-address 192.168.0.1 --end-ip-address 192.168.0.1
 ```
 
 ## <a name="get-the-connection-information"></a>获取连接信息
 
 若要连接到服务器，需要提供主机信息和访问凭据。
-```cli
+```azurecli
 az mysql server show --resource-group myresourcegroup --name mydemoserver
 ```
 
@@ -94,13 +94,13 @@ az mysql server show --resource-group myresourcegroup --name mydemoserver
   "administratorLoginPassword": null,
   "fullyQualifiedDomainName": "mydemoserver.mysql.database.chinacloudapi.cn",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.DBforMySQL/servers/mydemoserver",
-  "location": "chinaeast",
+  "location": "chinaeast2",
   "name": "mydemoserver",
   "resourceGroup": "myresourcegroup",
  "sku": {
     "capacity": 2,
-    "family": "Gen4",
-    "name": "GP_Gen4_2",
+    "family": "Gen5",
+    "name": "GP_Gen5_2",
     "size": null,
     "tier": "GeneralPurpose"
   },
@@ -181,7 +181,7 @@ SELECT * FROM inventory;
 - 源服务器:提供想从中进行还原的服务器的名称
 - 位置：不能选择区域，此区域默认与源服务器相同
 
-```cli
+```azurecli
 az mysql server restore --resource-group myresourcegroup --name mydemoserver-restored --restore-point-in-time "2017-05-4 03:10" --source-server-name mydemoserver
 ```
 

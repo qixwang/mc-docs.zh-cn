@@ -97,8 +97,6 @@
           href: pool-file-shares.md
         - name: 使用 Linux 计算节点
           href: batch-linux-nodes.md
-        - name: 使用低优先级 VM
-          href: batch-low-pri-vms.md
         - name: 检查池和节点错误
           href: batch-pool-node-error-checking.md
     - name: 管理作业和任务

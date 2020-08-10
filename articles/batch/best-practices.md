@@ -1,16 +1,16 @@
 ---
-title: 最佳实践
+title: 最佳做法
 description: 了解开发 Azure Batch 解决方案的最佳做法和有用技巧。
 ms.author: v-tawe
 origin.date: 05/22/2020
 ms.date: 06/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: c19c836fba99d9ae6befb5b1c20fabfc3671f035
-ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
+ms.openlocfilehash: 837513dc6bdab750aed8962d009af3126fdc7f5c
+ms.sourcegitcommit: 3cf647177c22b24f76236c57cae19482ead6a283
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85613314"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88029644"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch 最佳做法
 
@@ -150,6 +150,7 @@ Batch 可以自动重试任务。 有两种类型的重试：用户控制的重�
 
 出于隔离目的，如果方案需要将作业相互隔离，请通过将这些作业放入不同的池中进行隔离。 池是 Batch 中的安全隔离边界，默认情况下，两个池之间互不可见，相互之间也无法通信。 请避免使用单独的 Batch 帐户作为隔离方式。
 
+<a name="move-batch-account-across-regions"></a>
 ## <a name="moving-batch-accounts-across-regions"></a>跨区域移动 Batch 帐户
 
 在某些情况下，将现有 Batch 帐户从一个区域移到另一个区域可能会很有帮助。 例如在灾难恢复计划中，你可能想将帐户移到另一个区域。

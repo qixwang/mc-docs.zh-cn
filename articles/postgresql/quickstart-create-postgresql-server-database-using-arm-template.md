@@ -7,23 +7,27 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: v-jay
 origin.date: 05/14/2020
-ms.date: 07/06/2020
-ms.openlocfilehash: d53c3ee9eead38a9100faf648dfe257b4d627893
-ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
+ms.date: 08/17/2020
+ms.openlocfilehash: 41cfb8de3b1ea69b9b1bddea9090d5fbff91c4eb
+ms.sourcegitcommit: 3cf647177c22b24f76236c57cae19482ead6a283
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85845969"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88029677"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-postgresql---single-server"></a>快速入门：使用 ARM 模板创建 Azure Database for PostgreSQL 单一服务器
 
-用于 PostgreSQL 的 Azure 数据库是一种托管服务，可用于在云中运行、管理和缩放具有高可用性的 PostgreSQL 数据库。 在本快速入门中，你将使用 ARM 模板在 Azure 门户、PowerShell 或 Azure CLI 中创建 Azure Database for PostgreSQL 单一服务器。
+用于 PostgreSQL 的 Azure 数据库是一种托管服务，可用于在云中运行、管理和缩放具有高可用性的 PostgreSQL 数据库。 在本快速入门中，使用 Azure 资源管理器模板（ARM 模板）在 Azure 门户、PowerShell 或 Azure CLI 中创建 Azure Database for PostgreSQL 单一服务器。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
+如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
+
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-postgresql-with-vnet%2fazuredeploy.json)
+
 ## <a name="prerequisites"></a>先决条件
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 具有活动订阅的 Azure 帐户。 [创建一个试用帐户](https://wd.azure.cn/pricing/1rmb-trial-full)。
 
@@ -39,11 +43,9 @@ ms.locfileid: "85845969"
 
 ---
 
-## <a name="create-an-azure-database-for-postgresql-server"></a>创建 Azure Database for PostgreSQL 服务器
+## <a name="review-the-template"></a>查看模板
 
 创建的 Azure Database for PostgreSQL 服务器中包含一组已配置的计算和存储资源。 若要了解详细信息，请参阅[Azure Database for PostgreSQL 中的定价层 - 单一服务器](concepts-pricing-tiers.md)。 请在 [Azure 资源组](../azure-resource-manager/management/overview.md)中创建该服务器。
-
-### <a name="review-the-template"></a>查看模板
 
 本快速入门中使用的模板来自 [Azure 快速启动模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-managed-postgresql-with-vnet/)。
 
@@ -293,13 +295,13 @@ ms.locfileid: "85845969"
 
 可以在 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbforpostgresql&pageNumber=1&sort=Popular)中找到更多 Azure Database for PostgreSQL 模板示例。
 
-### <a name="deploy-the-template"></a>部署模板
+## <a name="deploy-the-template"></a>部署模板
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 选择以下链接以在 Azure 门户中部署 Azure Database for PostgreSQL 服务器模板：
 
-[![“部署到 Azure”](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-postgresql-with-vnet%2fazuredeploy.json)
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-postgresql-with-vnet%2fazuredeploy.json)
 
 在“部署具有 VNet 的 Azure Database for PostgreSQL”页上：
 
@@ -373,7 +375,7 @@ read -p "Press [ENTER] to continue: "
 
 ## <a name="review-deployed-resources"></a>查看已部署的资源
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 按照以下步骤查看新 Azure Database for PostgreSQL 服务器的概览：
 
@@ -408,7 +410,7 @@ read -p "Press [ENTER] to continue: "
 
 如果不再需要该资源组，可以将其删除，这将删除资源组中的资源。
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 1. 在 [Azure 门户](https://portal.azure.cn)中，搜索并选择“资源组”。
 
@@ -441,4 +443,4 @@ read -p "Press [ENTER] to continue: "
 有关引导你完成模板创建过程的分步教程，请参阅：
 
 > [!div class="nextstepaction"]
-> [教程：创建和部署你的第一个 Azure 资源管理器模板](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
+> [教程：创建和部署你的第一个 ARM 模板](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
