@@ -4,22 +4,22 @@ description: 了解 Azure Kubernetes 服务 (AKS) 中的存储，其中包括卷
 services: container-service
 ms.topic: conceptual
 origin.date: 03/01/2019
-ms.date: 07/13/2020
+ms.date: 08/10/2020
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 84d67cd812bfc7fca189f6a8e994e1b189d0c280
-ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
+ms.openlocfilehash: 440eb6bba708799d4cc917c2567a5ae467e99b19
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86218754"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842560"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的应用程序存储选项
 
 在 Azure Kubernetes 服务 (AKS) 中运行的应用程序可能需要存储和检索数据。 对于某些应用程序工作负荷，此数据存储可使用节点上在 Pod 删除后即不再需要的本地快速存储。 其他应用程序工作负荷可能需要使用在 Azure 平台内更加普通的数据卷中持续保存的存储。 多个 Pod 可能需要共享相同的数据卷，或者，如果在其他节点上重新计划 Pod，则需要重新附加数据卷。 最后，你可能需要将敏感数据或应用程序配置信息注入 Pod。
 
-![Azure Kubernetes 服务 (AKS) 群集中的应用程序存储选项](media/concepts-storage/aks-storage-options.png)
+:::image type="content" source="media/concepts-storage/aks-storage-options.png" alt-text="Azure Kubernetes 服务 (AKS) 群集中的应用程序存储选项":::
 
 本文介绍为 AKS 中的应用程序提供存储的核心概念：
 
@@ -52,7 +52,7 @@ ms.locfileid: "86218754"
 
 Azure 磁盘或文件用于提供 PersistentVolume。 如上一部分中对卷所做的说明，选择磁盘还是文件通常取决于并发访问数据或性能层的需求。
 
-![Azure Kubernetes 服务 (AKS) 群集中的永久性卷](media/concepts-storage/persistent-volumes.png)
+:::image type="content" source="media/concepts-storage/persistent-volumes.png" alt-text="Azure Kubernetes 服务 (AKS) 群集中的永久性卷":::
 
 PersistentVolume 可以由群集管理员*静态*创建，或者由 Kubernetes API 服务器*动态*创建。 如果已计划 Pod 并请求当前不可用的存储，则 Kubernetes 可以创建基础 Azure 磁盘或文件存储并将其附加到 Pod。 动态预配使用 *StorageClass* 来标识需要创建的 Azure 存储类型。
 
@@ -81,11 +81,14 @@ parameters:
   kind: Managed
 ```
 
+> [!NOTE]
+> AKS 会协调默认存储类，并将覆盖你对这些存储类所做的任何更改。
+
 ## <a name="persistent-volume-claims"></a>永久性卷声明
 
 PersistentVolumeClaim 会请求特定 StorageClass、访问模式和大小的磁盘或文件存储。 如果根据定义的 StorageClass 没有现有资源可用于实现声明，Kubernetes API 服务器可在 Azure 中动态预配基础存储资源。 卷连接到 Pod 后，Pod 定义即会包含装载。
 
-![Azure Kubernetes 服务 (AKS) 群集中的永久性卷声明](media/concepts-storage/persistent-volume-claims.png)
+:::image type="content" source="media/concepts-storage/persistent-volume-claims.png" alt-text="Azure Kubernetes 服务 (AKS) 群集中的永久性卷声明":::
 
 可用存储资源分配给请求它的 Pod 后，PersistentVolume 就会*绑定*到 PersistentVolumeClaim。 永久性卷与声明之间存在 1:1 的映射。
 
