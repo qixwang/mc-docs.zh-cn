@@ -26673,7 +26673,332 @@
       "source_path": "articles/cognitive-services/labs/conversation-learner/overview.md",
       "redirect_url": "https://github.com/microsoft/cognitive-research-technologies-docs/tree/master/Conversation-Learner",
       "redirect_document_id": false
-	}
+	},
+    {
+        "source_path": "articles/analysis-services/analysis-services-data-providers.md",
+        "redirect_url": "https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current",
+        "redirect_document_id": "false"
+    },
+    {
+        "source_path": "articles/aks/autoscaler.md",
+        "redirect_url": "/aks/cluster-autoscaler",
+        "redirect_document_id": "false"
+    },
+    {
+        "source_path": "articles/aks/azure-ad-integration.md",
+        "redirect_url": "/aks/azure-ad-integration-cli",
+        "redirect_document_id": "false"
+    },
+    {
+        "source_path": "articles/aks/integrate-azure.md",
+        "redirect_url": "/aks/",
+        "redirect_document_id": "false"
+    },
+    {
+        "source_path": "articles/aks/kubernetes-draft.md",
+        "redirect_url": "/aks/quickstart-helm",
+        "redirect_document_id": "false"
+    },
+    {
+        "source_path": "articles/aks/use-cosmosdb-osba-mongo-app.md",
+        "redirect_url": "/aks/",
+        "redirect_document_id": "false"
+    },
+    {
+        "source_path": "articles/azure-resource-manager/template-deploy-what-if.md",
+        "redirect_url": "/azure-resource-manager/templates/template-deploy-what-if",
+        "redirect_document_id": "false"
+    },
+    {
+        "source_path": "articles/azure-resource-manager/managed-applications/publish-managed-app-definition-quickstart.md",
+        "redirect_url": "/azure-resource-manager/managed-applications/publish-service-catalog-app",
+        "redirect_document_id": "false"
+    },
+    {
+        "source_path": "articles/azure-resource-manager/templates/template-tutorial-create-encrypted-storage-accounts.md",
+        "redirect_url": "/azure-resource-manager/templates/template-tutorial-use-template-reference",
+        "redirect_document_id": "false"
+    },
+    {
+        "source_path": "articles/azure-resource-manager/templates/template-tutorial-create-linked-templates.md",
+        "redirect_url": "/azure-resource-manager/templates/deployment-tutorial-linked-template",
+        "redirect_document_id": "false"
+    },
+    {
+        "source_path": "articles/azure-resource-manager/templates/template-tutorial-secure-artifacts.md",
+        "redirect_url": "/azure-resource-manager/templates/secure-template-with-sas-token",
+        "redirect_document_id": "false"
+    },
+    {
+        "source_path": "articles/connectors/connectors-create-api-sharepointonline.md",
+        "redirect_url": "/connectors/connectors-create-api-sharepoint",
+        "redirect_document_id": "false"
+    },
+    {
+        "source_path": "articles/connectors/connectors-create-api-sharepointserver.md",
+        "redirect_url": "/connectors/connectors-create-api-sharepoint",
+        "redirect_document_id": "true"
+    },
+    {
+        "source_path": "articles/cosmos-db/analytics-solution-architectures.md",
+        "redirect_url": "/cosmos-db/synapse-link-use-cases",
+        "redirect_document_id": "false"
+    },
+    {
+        "source_path": "articles/cosmos-db/analytics-usecases.md",
+        "redirect_url": "/cosmos-db/synapse-link-use-cases",
+        "redirect_document_id": "true"
+    },
+    {
+        "source_path": "articles/cosmos-db/autopilot-faq.md",
+        "redirect_url": "/cosmos-db/autoscale-faq",
+        "redirect_document_id": "true"
+    },
+    {
+        "source_path": "articles/cosmos-db/cosmos-db-azure-monitor-metrics.md",
+        "redirect_url": "/cosmos-db/monitor-cosmos-db",
+        "redirect_document_id": "false"
+    },
+    {
+        "source_path": "articles/cosmos-db/cosmos-db-security-controls.md",
+        "redirect_url": "/cosmos-db/security-baseline",
+        "redirect_document_id": "false"
+    },
+    {
+        "source_path": "articles/cosmos-db/create-mongodb-golang.md",
+        "redirect_url": "/cosmos-db/create-mongodb-go",
+        "redirect_document_id": "true"
+    },
+    {
+        "source_path": "articles/cosmos-db/create-table-python.md",
+        "redirect_url": "/cosmos-db/table-storage-how-to-use-python",
+        "redirect_document_id": "false"
+    },
+    {
+        "source_path": "articles/cosmos-db/globally-distributed-transactional-analytical-storage.md",
+        "redirect_url": "/cosmos-db/analytical-store-introduction",
+        "redirect_document_id": "false"
+    },
+    {
+        "source_path": "articles/cosmos-db/lambda-architecture.md",
+        "redirect_url": "/cosmos-db/synapse-link",
+        "redirect_document_id": "false"
+    },
+    {
+        "source_path": "articles/cosmos-db/logging.md",
+        "redirect_url": "/cosmos-db/monitor-cosmos-db",
+        "redirect_document_id": "false"
+    },
+    {
+        "source_path": "articles/cosmos-db/monitor-accounts.md",
+        "redirect_url": "/cosmos-db/monitor-cosmos-db",
+        "redirect_document_id": "false"
+    },
+    {
+        "source_path": "articles/cosmos-db/multi-master-benefits.md",
+        "redirect_url": "/cosmos-db/conflict-resolution-policies",
+        "redirect_document_id": "false"
+    },
+    {
+        "source_path": "articles/cosmos-db/provision-throughput-autopilot.md",
+        "redirect_url": "/cosmos-db/provision-throughput-autoscale",
+        "redirect_document_id": "true"
+    },
+    {
+        "source_path": "articles/cosmos-db/spark-api-introduction.md",
+        "redirect_url": "/cosmos-db/analytics-usecases",
+        "redirect_document_id": "false"
+    },
+    {
+        "source_path": "articles/cosmos-db/sql-api-async-java-get-started.md",
+        "redirect_url": "/cosmos-db/create-sql-api-java",
+        "redirect_document_id": "false"
+    },
+    {
+        "source_path": "articles/cosmos-db/sql-api-async-java-samples.md",
+        "redirect_url": "/cosmos-db/sql-api-java-sdk-samples",
+        "redirect_document_id": "false"
+    },
+    {
+        "source_path": "articles/cosmos-db/sql-api-java-get-started.md",
+        "redirect_url": "/cosmos-db/create-sql-api-java",
+        "redirect_document_id": "false"
+    },
+    {
+        "source_path": "articles/cosmos-db/sql-api-java-samples.md",
+        "redirect_url": "/cosmos-db/sql-api-java-sdk-samples",
+        "redirect_document_id": "false"
+    },
+    {
+        "source_path": "articles/logic-apps/logic-apps-schema-2015-08-01.md",
+        "redirect_url": "/logic-apps/logic-apps-schema-2016-04-01",
+        "redirect_document_id": "true"
+    },
+    {
+        "source_path": "articles/virtual-machines/troubleshooting/troubleshoot-vm-unresponsive-group-policy-local-users.md",
+        "redirect_url": "/virtual-machines/troubleshooting/unresponsive-vm-apply-group-policy",
+        "redirect_document_id": "false"
+    },
+    {
+        "source_path": "articles/virtual-machines/windows/encrypt-disks.md",
+        "redirect_url": "//virtual-machines/windows/disk-encryption-overview",
+        "redirect_document_id": "false"
+    },
+    {
+        "source_path": "articles/virtual-machines/windows/shared-images.md",
+        "redirect_url": "/virtual-machines/shared-images-powershell",
+        "redirect_document_id": "false"
+    },
+    {
+        "source_path": "articles/virtual-machines/windows/sql/quickstart-sql-vm-create-portal.md",
+        "redirect_url": "/azure-sql/virtual-machines/windows/sql-vm-create-portal-quickstart",
+        "redirect_document_id": "true"
+    },
+    {
+        "source_path": "articles/virtual-machines/windows/sql/quickstart-sql-vm-create-powershell.md",
+        "redirect_url": "/azure-sql/virtual-machines/windows/sql-vm-create-powershell-quickstart",
+        "redirect_document_id": "true"
+    },
+    {
+        "source_path": "articles/virtual-machines/windows/sql/virtual-machines-windows-migrate-sql.md",
+        "redirect_url": "/azure-sql/virtual-machines/windows/migrate-to-vm-from-sql-server",
+        "redirect_document_id": "true"
+    },
+    {
+        "source_path": "articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-dr.md",
+        "redirect_url": "/azure-sql/virtual-machines/windows/availability-group-manually-configure-multiple-regions",
+        "redirect_document_id": "true"
+    },
+    {
+        "source_path": "articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview.md",
+        "redirect_url": "/azure-sql/virtual-machines/windows/availability-group-overview",
+        "redirect_document_id": "true"
+    },
+    {
+        "source_path": "articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-prereq.md",
+        "redirect_url": "/azure-sql/virtual-machines/windows/availability-group-manually-configure-prerequisites-tutorial",
+        "redirect_document_id": "true"
+    },
+    {
+        "source_path": "articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-tutorial.md",
+        "redirect_url": "/azure-sql/virtual-machines/windows/availability-group-manually-configure-tutorial",
+        "redirect_document_id": "true"
+    },
+    {
+        "source_path": "articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-create-failover-cluster.md",
+        "redirect_url": "/azure-sql/virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure",
+        "redirect_document_id": "true"
+    },
+    {
+        "source_path": "articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md",
+        "redirect_url": "/azure-sql/virtual-machines/windows/create-sql-vm-portal",
+        "redirect_document_id": "true"
+    },
+    {
+        "source_path": "articles/virtual-machines/windows/sql/virtual-machines-windows-ps-sql-create.md",
+        "redirect_url": "/azure-sql/virtual-machines/windows/create-sql-vm-powershell",
+        "redirect_document_id": "true"
+    },
+    {
+        "source_path": "articles/virtual-machines/windows/sql/virtual-machines-windows-ps-sql-keyvault.md",
+        "redirect_url": "/azure-sql/virtual-machines/windows/azure-key-vault-integration-configure",
+        "redirect_document_id": "true"
+    },
+    {
+        "source_path": "articles/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup-v2.md",
+        "redirect_url": "/azure-sql/virtual-machines/windows/automated-backup",
+        "redirect_document_id": "true"
+    },
+    {
+        "source_path": "articles/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup.md",
+        "redirect_url": "/azure-sql/virtual-machines/windows/automated-backup-sql-2014",
+        "redirect_document_id": "true"
+    },
+    {
+        "source_path": "articles/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-patching.md",
+        "redirect_url": "/azure-sql/virtual-machines/windows/automated-patching",
+        "redirect_document_id": "true"
+    },
+    {
+        "source_path": "articles/virtual-machines/windows/sql/virtual-machines-windows-sql-backup-recovery.md",
+        "redirect_url": "/azure-sql/virtual-machines/windows/backup-restore",
+        "redirect_document_id": "true"
+    },
+    {
+        "source_path": "articles/virtual-machines/windows/sql/virtual-machines-windows-sql-connect.md",
+        "redirect_url": "/azure-sql/virtual-machines/windows/ways-to-connect-to-sql",
+        "redirect_document_id": "true"
+    },
+    {
+        "source_path": "articles/virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md",
+        "redirect_url": "/azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview",
+        "redirect_document_id": "true"
+    },
+    {
+        "source_path": "articles/virtual-machines/windows/sql/virtual-machines-windows-sql-performance.md",
+        "redirect_url": "/azure-sql/virtual-machines/windows/performance-guidelines-best-practices",
+        "redirect_document_id": "true"
+    },
+    {
+        "source_path": "articles/virtual-machines/windows/sql/virtual-machines-windows-sql-security.md",
+        "redirect_url": "/azure-sql/virtual-machines/windows/security-considerations-best-practices",
+        "redirect_document_id": "true"
+    },
+    {
+        "source_path": "articles/virtual-machines/windows/sql/virtual-machines-windows-sql-server-2008-eos-extend-support.md",
+        "redirect_url": "/azure-sql/virtual-machines/windows/sql-server-2008-extend-end-of-support",
+        "redirect_document_id": "true"
+    },
+    {
+        "source_path": "articles/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension.md",
+        "redirect_url": "/azure-sql/virtual-machines/windows/sql-server-iaas-agent-extension-automate-management",
+        "redirect_document_id": "true"
+    },
+    {
+        "source_path": "articles/virtual-machines/windows/sql/virtual-machines-windows-sql-server-app-patterns-dev-strategies.md",
+        "redirect_url": "/azure-sql/virtual-machines/windows/application-patterns-development-strategies",
+        "redirect_document_id": "true"
+    },
+    {
+        "source_path": "articles/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-faq.md",
+        "redirect_url": "/azure-sql/virtual-machines/windows/frequently-asked-questions-faq",
+        "redirect_document_id": "true"
+    },
+    {
+        "source_path": "articles/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md",
+        "redirect_url": "/azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview",
+        "redirect_document_id": "true"
+    },
+    {
+        "source_path": "articles/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance.md",
+        "redirect_url": "/azure-sql/virtual-machines/windows/pricing-guidance",
+        "redirect_document_id": "true"
+    },
+    {
+        "source_path": "articles/virtual-machines/windows/sql/virtual-machines-windows-sql-server-storage-configuration.md",
+        "redirect_url": "/azure-sql/virtual-machines/windows/storage-configuration",
+        "redirect_document_id": "true"
+    },
+    {
+        "source_path": "articles/virtual-machines/windows/sql/virtual-machines-windows-use-storage-sql-server-backup-restore.md",
+        "redirect_url": "/azure-sql/virtual-machines/windows/azure-storage-sql-server-backup-restore-use",
+        "redirect_document_id": "true"
+    },
+    {
+        "source_path": "articles/virtual-network/virtual-network-ip-addresses-overview-arm.md",
+        "redirect_url": "/virtual-network/public-ip-addresses",
+        "redirect_document_id": "false"
+    },
+    {
+        "source_path": "articles/virtual-wan/global-peering-vnet.md",
+        "redirect_url": "/virtual-wan/virtual-wan-about",
+        "redirect_document_id": "false"
+    },
+    {
+        "source_path": "articles/virtual-wan/virtual-wan-office365-overview.md",
+        "redirect_url": "/virtual-wan/virtual-wan-about",
+        "redirect_document_id": "false"
+    }
 
 
 
