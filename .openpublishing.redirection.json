@@ -1,6 +1,56 @@
 {
   "redirections": [
     {
+      "source_path": "articles/app-service/app-service-web-tutorial-php-mysql.md",
+      "redirect_url": "/app-service/tutorial-php-mysql-app",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/app-service/app-service-web-get-started-dotnet.md",
+      "redirect_url": "/app-service/quickstart-dotnetcore",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/app-service/app-service-web-get-started-dotnet-framework.md",
+      "redirect_url": "/app-service/quickstart-dotnet-framework",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/app-service/app-service-web-get-started-nodejs.md",
+      "redirect_url": "/app-service/quickstart-nodejs",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/app-service/app-service-web-get-started-php.md",
+      "redirect_url": "/app-service/quickstart-php",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/app-service/app-service-web-get-started-java.md",
+      "redirect_url": "/app-service/quickstart-java",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/app-service/app-service-web-get-started-html.md",
+      "redirect_url": "/app-service/quickstart-html",
+      "redirect_document_id": false
+    },        
+    {
+      "source_path": "articles/app-service/app-service-web-get-started-windows-container.md",
+      "redirect_url": "/app-service/quickstart-custom-container",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/app-service/web-sites-python-configure.md",
+      "redirect_url": "/app-service/configure-language-python",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/app-service/web-sites-php-configure.md",
+      "redirect_url": "/app-service/configure-language-php",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "articles/key-vault/secrets/key-rotation-log-monitoring.md",
       "redirect_url": "/key-vault/secrets/tutorial-rotation-dual",
       "redirect_document_id": false
