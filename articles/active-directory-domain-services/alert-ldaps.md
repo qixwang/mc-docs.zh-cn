@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 07/13/2020
+ms.date: 08/07/2020
 ms.author: v-junlch
-ms.openlocfilehash: c05f73f3318860578d386bbe426dbfaf3971725e
-ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
+ms.openlocfilehash: 40f956d2b173efd4be3823aea17a7eb355a7a3e9
+ms.sourcegitcommit: a5eb9a47feefb053ddbaab4b15c395972c372339
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86472518"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88028591"
 ---
 # <a name="known-issues-secure-ldap-alerts-in-azure-active-directory-domain-services"></a>已知问题：Azure Active Directory 域服务中的安全 LDAP 警报
 
@@ -36,7 +36,7 @@ ms.locfileid: "86472518"
 
 1. 在 Azure 门户中，搜索并选择“网络安全组”。
 1. 选择与托管域相关联的网络安全组，例如 AADDS-contoso.com-NSG，然后选择“入站安全规则”
-1. “+ 添加”以为 TCP 端口 636 添加规则。 如果需要，请在窗口中选择“高级”以创建规则。
+1. 选择“+添加”，为 TCP 端口 636 创建规则。 如果需要，请在窗口中选择“高级”以创建规则。
 1. 对于“源”，请从下拉菜单中选择“IP 地址”。 输入要为安全 LDAP 流量授予访问权限的源 IP 地址。
 1. 选择“任意”作为目标，然后为目标端口范围输入“636”。
 1. 将协议设置为“TCP”，将操作设置为“允许”。

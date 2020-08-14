@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 05/28/2020
-ms.date: 06/29/2020
-ms.openlocfilehash: c7516e97d777c37c3159254a16a0e21a5d150a8a
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+ms.date: 08/10/2020
+ms.openlocfilehash: 877e9d6ad5e0128e0cbc12f99332d0ab853ae5df
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323556"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914339"
 ---
 # <a name="data-access-strategies"></a>数据访问策略
 
@@ -31,7 +31,7 @@ ms.locfileid: "85323556"
 > 通过[引入静态 IP 地址范围](/data-factory/azure-integration-runtime-ip-addresses)，现在可以允许列出特定 Azure Integration Runtime 区域的 IP 范围，以确保不必在云数据存储中允许所有 Azure IP 地址。 这样，就可以限制允许访问数据存储的 IP 地址。
 
 > [!NOTE] 
-> 阻止该 IP 地址范围访问 Azure Integration Runtime，当前仅用于数据移动、管道和外部活动。 
+> 阻止该 IP 地址范围访问 Azure Integration Runtime，该范围的地址当前仅用于数据移动、管道和外部活动。 
 
 这应该适用于许多场景，我们知道为每个集成运行时配置唯一的静态 IP 地址会很理想，但在目前使用无服务器 Azure Integration Runtime 的情况下，这是不可能的。 如有必要，你始终可以设置自承载集成运行时并对其使用静态 IP。 
 

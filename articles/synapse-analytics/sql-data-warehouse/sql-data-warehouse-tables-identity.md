@@ -7,17 +7,17 @@ manager: digimobile
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-origin.date: 04/30/2019
-ms.date: 08/03/2020
+origin.date: 07/20/2019
+ms.date: 08/10/2020
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: fd4dfd300565606393970e7df8442c1eb91e2e50
-ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
+ms.openlocfilehash: 9dcf12ad1be897f1861f78bc661b08bfe9bb4bd8
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87426329"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917151"
 ---
 # <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>使用 IDENTITY 在 Synapse SQL 池中创建代理键
 
@@ -25,7 +25,7 @@ ms.locfileid: "87426329"
 
 ## <a name="what-is-a-surrogate-key"></a>什么是代理键
 
-基于表的代理键是一个列，其中包含针对每个行的唯一标识符。 此键不是从表数据生成的。 数据建模者想要在设计数据仓库模型时在其表上创建代理键。 可以使用 IDENTITY 属性轻松高效地实现此目标，而不会影响负载性能。  
+基于表的代理键是一个列，其中包含针对每个行的唯一标识符。 此键不是从表数据生成的。 数据建模者想要在设计数据仓库模型时在其表上创建代理键。 可以使用 IDENTITY 属性轻松高效地实现此目标，而不会影响负载性能。 IDENTITY 属性有一些限制，详见 [CREATE TABLE (Transact-SQL) IDENTITY（属性）](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest)。 IDENTITY 的一个局限是不能保证它是唯一的。 触发 IDENTITY INSERT 且不对 IDENTITY 值重新设定种子会导致更唯一的值，但可能无法保证在所有情况下都是唯一的。 如果因为对 IDENTITY 的限制而不能使用标识值，则可以创建一个包含当前值的独立表，并使用您的应用程序管理对该表的访问和数字分配。 
 
 ## <a name="creating-a-table-with-an-identity-column"></a>创建包含 IDENTITY 列的表
 
@@ -51,7 +51,7 @@ WITH
 
 ### <a name="allocation-of-values"></a>值的分配
 
-IDENTITY 属性不保证分配代理值的顺序，这反映了 SQL Server 和 Azure SQL 数据库的行为。 但在 Synapse SQL 池中，无保证情况更加明显。
+由于数据仓库的分布式体系结构，IDENTITY 属性不能保证代理值的分配顺序。 IDENTITY 属性设计为能够在 Synapse SQL 池的所有分布区中横向扩展，不会影响加载性能。 
 
 以下示例对此做了演示：
 

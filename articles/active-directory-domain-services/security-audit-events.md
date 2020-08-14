@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/13/2020
+ms.date: 08/07/2020
 ms.author: v-junlch
-ms.openlocfilehash: b7c88fadae6689b63293779e25f4354febe49167
-ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
+ms.openlocfilehash: 77202b9c91485d430a93018ce2b00f1577adb597
+ms.sourcegitcommit: a5eb9a47feefb053ddbaab4b15c395972c372339
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86472617"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88028598"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>为 Azure Active Directory 域服务启用安全审核
 
@@ -29,7 +29,7 @@ Azure Active Directory 域服务 (Azure AD DS) 安全审核允许 Azure 将安�
 
 ## <a name="security-audit-destinations"></a>安全审核目标
 
-可以使用 Azure 存储、Azure 事件中心或 Azure Log Analytics 工作区作为 Azure AD DS 安全审核的目标资源。 这些目标可以组合在一起。 例如，你可以使用 Azure 存储来存档安全审核事件，而使用 Azure Log Analytics 工作区分析和报告短期内的信息。
+可以使用 Azure 存储、Azure 事件中心或 Azure Log Analytics 工作区作为 Azure AD DS 安全审核的目标资源。 这些目标可以组合在一起。 例如，可以使用 Azure 存储来存档安全审核事件，而使用 Azure Log Analytics 工作区来分析和报告短期内的信息。
 
 下表概述了每种目标资源类型的场景。
 
@@ -159,11 +159,11 @@ AADDomainServicesAccountManagement
 
 ### <a name="sample-query-2"></a>示例查询 2
 
-查看 2020 年 2 月 3 日上午 9 点到 2020 年 2 月 10 日午夜之间的所有帐户锁定事件 (4740)， 按日期和时间升序排序：
+查看 2020 年 6 月 3 日上午 9 点至 2020 年 6 月 10 日午夜 期间的所有帐户锁定事件 (4740)，按日期和时间升序排序：
 
 ```Kusto
 AADDomainServicesAccountManagement
-| where TimeGenerated >= datetime(2020-02-03 09:00) and TimeGenerated <= datetime(2020-02-10)
+| where TimeGenerated >= datetime(2020-06-03 09:00) and TimeGenerated <= datetime(2020-06-10)
 | where OperationName has "4740"
 | sort by TimeGenerated asc
 ```

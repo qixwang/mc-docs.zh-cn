@@ -7,18 +7,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/13/2020
+ms.date: 08/07/2020
 ms.author: v-junlch
-ms.openlocfilehash: ef335d7bf154c26698795a57882006fb1d6971ff
-ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
+ms.openlocfilehash: 987be87bf62d36d239ed5ea9f60bd4e1f36afe40
+ms.sourcegitcommit: a5eb9a47feefb053ddbaab4b15c395972c372339
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86472543"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88028628"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>教程：为 Azure Active Directory 域服务托管域配置安全 LDAP
 
-若要与 Azure Active Directory 域服务 (Azure AD DS) 托管域通信，需使用轻型目录访问协议 (LDAP)。 默认情况下，LDAP 流量未加密，这对于许多环境而言是一种安全隐患。 借助 Azure AD DS，可将托管域配置为使用安全的轻型目录访问协议 (LDAPS)。 使用安全 LDAP 时，流量将会加密。 安全 LDAP 也称为基于安全套接字层 (SSL)/传输层安全性 (TLS) 的 LDAP。
+若要与 Azure Active Directory 域服务 (Azure AD DS) 托管域通信，需使用轻型目录访问协议 (LDAP)。 默认情况下，LDAP 流量未加密，这对于许多环境而言是一种安全隐患。
+
+借助 Azure AD DS，可将托管域配置为使用安全的轻型目录访问协议 (LDAPS)。 使用安全 LDAP 时，流量将会加密。 安全 LDAP 也称为基于安全套接字层 (SSL)/传输层安全性 (TLS) 的 LDAP。
 
 本教程介绍如何为 Azure AD DS 托管域配置 LDAPS。
 
@@ -68,7 +70,11 @@ ms.locfileid: "86472543"
 * **密钥用途** - 必须将证书配置用于数字签名和密钥加密。
 * **证书目的** - 证书必须对 TLS 服务器身份验证有效。
 
-有几种工具可用于创建自签名证书，如 OpenSSL、Keytool、MakeCert、[New-SelfSignedCertificate][New-SelfSignedCertificate] cmdlet 等。在本教程中，让我们使用 [New-SelfSignedCertificate][New-SelfSignedCertificate] cmdlet 为安全 LDAP 创建自签名证书。 以**管理员**身份打开 PowerShell 窗口并运行以下命令。 将 *$dnsName* 变量替换为你自己的托管域使用的 DNS 名称，例如 *aaddscontoso.com*：
+有几种工具可用于创建自签名证书，如 OpenSSL、Keytool、MakeCert、[New-SelfSignedCertificate][New-SelfSignedCertificate] cmdlet 等。
+
+在本教程中，让我们使用 [New-SelfSignedCertificate][New-SelfSignedCertificate] cmdlet 为安全 LDAP 创建自签名证书。
+
+以**管理员**身份打开 PowerShell 窗口并运行以下命令。 将 *$dnsName* 变量替换为你自己的托管域使用的 DNS 名称，例如 *aaddscontoso.com*：
 
 ```powershell
 # Define your own DNS name used by your managed domain
@@ -104,11 +110,14 @@ Thumbprint                                Subject
 * 私钥将应用于托管域。
     * 此私钥用于解密安全 LDAP 通信。 只能将私钥应用到托管域，而不应将其广泛分发到客户端计算机。
     * 包含私钥的证书使用 *.PFX* 文件格式。
+    * 证书的加密算法必须是 TripleDES-SHA1。
 * **公钥**将应用到客户端计算机。
     * 此公钥用于加密安全 LDAP 通信。 公钥可分发到客户端计算机。
     * 不包含私钥的证书使用 *.CER* 文件格式。
 
-这两个密钥（私钥和公钥）确保只有适当的计算机才能成功地相互通信。 如果你使用公共 CA 或企业 CA，系统将为你颁发包含私钥的证书，该证书可应用到托管域。 客户端计算机应已知道并信任公钥。 在本教程中，你已创建一个包含私钥的自签名证书，因此，需要导出相应的私钥和公钥部分。
+这两个密钥（私钥和公钥）确保只有适当的计算机才能成功地相互通信。 如果你使用公共 CA 或企业 CA，系统将为你颁发包含私钥的证书，该证书可应用到托管域。 客户端计算机应已知道并信任公钥。
+
+在本教程中，你已创建一个包含私钥的自签名证书，因此，需要导出相应的私钥和公钥部分。
 
 ### <a name="export-a-certificate-for-azure-ad-ds"></a>导出 Azure AD DS 的证书
 
@@ -141,14 +150,16 @@ Thumbprint                                Subject
 
 1. 由于此证书用于解密数据，因此应小心控制访问权限。 可以通过一个密码来保护证书的使用。 如果未设置正确的密码，则该证书不可应用到服务。
 
-    在“安全性”页上，选择“密码”对应的选项来保护 *.PFX* 证书文件。 输入并确认密码，然后选择“下一步”。 下一部分将使用此密码来为托管域启用安全 LDAP。
+    在“安全性”页上，选择“密码”对应的选项来保护 *.PFX* 证书文件。 加密算法必须是 TripleDES-SHA1。 输入并确认密码，然后选择“下一步”。 下一部分将使用此密码来为托管域启用安全 LDAP。
 1. 在“要导出的文件”页上，指定要将证书导出到的文件名和位置，例如 *C:\Users\accountname\azure-ad-ds.pfx*。 请记下 .PFX 文件的密码和位置，因为在后续步骤中将需要此信息。
 1. 在复查页上，选择“完成”以将证书导出到 *.PFX* 证书文件。 成功导出证书后，会显示确认对话框。
 1. 请将 MMC 保持打开状态，以便在下一部分使用。
 
 ### <a name="export-a-certificate-for-client-computers"></a>为客户端计算机导出证书
 
-客户端计算机必须信任安全 LDAP 证书的颁发者，才能成功使用 LDAPS 连接到托管域。 客户端计算机需要使用一个证书才能成功加密 Azure AD DS 解密的数据。 如果你使用公共 CA，计算机应会自动信任这些证书颁发者，并获得相应的证书。 本教程使用自签名证书，并生成一个包含上一步骤中创建的私钥的证书。 现在，让我们导出该自签名证书，然后将其安装到客户端计算机上的受信任证书存储中。
+客户端计算机必须信任安全 LDAP 证书的颁发者，才能成功使用 LDAPS 连接到托管域。 客户端计算机需要使用一个证书才能成功加密 Azure AD DS 解密的数据。 如果你使用公共 CA，计算机应会自动信任这些证书颁发者，并获得相应的证书。
+
+本教程使用自签名证书，并生成一个包含上一步骤中创建的私钥的证书。 现在，让我们导出该自签名证书，然后将其安装到客户端计算机上的受信任证书存储中。
 
 1. 返回到“证书(本地计算机)”>“个人”>“证书”存储的 MMC。 此时会显示上一步骤中创建的自签名证书，例如 *aaddscontoso.com*。 右键单击此证书，然后选择“所有任务”>“导出...”。
 1. 在“证书导出向导”中，选择“下一步”。
@@ -186,7 +197,10 @@ Thumbprint                                Subject
 
 1. 选择“包含安全 LDAP 证书的 .PFX 文件”旁边的文件夹图标。 浏览到 *.PFX* 文件的路径，然后选择上一步骤中创建的包含私钥的证书。
 
-    如前面的证书要求部分中所述，不能在默认的“.partner.onmschina.cn”域中使用来自公共 CA 的证书。 Microsoft 拥有“.partner.onmschina.cn”域，因此，公共 CA 不会颁发证书。 请确保证书采用适当的格式。 否则，在启用安全 LDAP 时，Azure 平台会生成证书验证错误。
+    > [!IMPORTANT]
+    > 如前面的证书要求部分中所述，不能在默认的“.partner.onmschina.cn”域中使用来自公共 CA 的证书。 Microsoft 拥有“.partner.onmschina.cn”域，因此，公共 CA 不会颁发证书。
+    >
+    > 请确保证书采用适当的格式。 否则，在启用安全 LDAP 时，Azure 平台会生成证书验证错误。
 
 1. 输入在上一步骤中将证书导出到 *.PFX* 文件时设置的**用于解密 .PFX 文件的密码**。
 1. 选择“保存”以启用安全 LDAP。
@@ -195,7 +209,9 @@ Thumbprint                                Subject
 
 此时会显示一条通知，指出正在为托管域配置安全 LDAP。 在完成此操作之前，无法修改托管域的其他设置。
 
-为托管域启用安全 LDAP 需要花费几分钟时间。 如果提供的安全 LDAP 证书不符合所需的条件，为托管域启用安全 LDAP 的操作将会失败。 失败的一些常见原因包括域名不正确、证书即将过期或已过期。 可以使用有效的参数重新创建证书，然后使用此更新的证书启用安全 LDAP。
+为托管域启用安全 LDAP 需要花费几分钟时间。 如果提供的安全 LDAP 证书不符合所需的条件，为托管域启用安全 LDAP 的操作将会失败。
+
+失败的一些常见原因包括域名不正确、证书的加密算法不是 TripleDES-SHA1 或者证书即将过期或已过期。 可以使用有效的参数重新创建证书，然后使用此更新的证书启用安全 LDAP。
 
 ## <a name="lock-down-secure-ldap-access-over-the-internet"></a>锁定通过 Internet 进行的安全 LDAP 访问
 
@@ -204,7 +220,7 @@ Thumbprint                                Subject
 让我们创建一个规则，以允许从指定的一组 IP 地址通过 TCP 端口 636 进行入站安全 LDAP 访问。 低优先级的默认“全部拒绝”规则将应用到来自 Internet 的所有其他入站流量，因此只有指定的地址才能使用安全 LDAP 访问托管域。
 
 1. 在 Azure 门户上的左侧导航栏中选择“资源组”。
-1. 选择资源组（例如，myResourceGroup），然后选择网络安全组（例如，aaads-nsg） 。
+1. 选择资源组（例如 myResourceGroup），然后选择网络安全组（例如 aaads-nsg） 。
 1. 此时会显示现有的入站和出站安全规则列表。 在网络安全组窗口的左侧，选择“设置”>“入站安全规则”。
 1. 选择“添加”，然后创建一个允许 *TCP* 端口 *636* 的规则。 为提高安全性，请选择“IP 地址”作为源，然后为组织指定自己的有效 IP 地址或范围。
 
@@ -213,7 +229,7 @@ Thumbprint                                Subject
     | 源                            | IP 地址 |
     | 源 IP 地址/CIDR 范围 | 环境的有效 IP 地址或范围 |
     | 源端口范围                | *            |
-    | 目标                       | Any          |
+    | 目标                       | 任意          |
     | 目标端口范围           | 636          |
     | 协议                          | TCP          |
     | 操作                            | Allow        |
@@ -269,7 +285,7 @@ Thumbprint                                Subject
 如果你在本教程中将一个 DNS 条目添加到了计算机的本地 hosts 文件以测试连接，请删除此条目，并在 DNS 区域中添加一条正式的记录。 若要从本地 hosts 文件中删除该条目，请完成以下步骤：
 
 1. 在本地计算机上，以管理员身份打开“记事本”
-1. 浏览到并打开文件 *C:\Windows\System32\drivers\etc*
+1. 浏览到并打开文件 C:\Windows\System32\drivers\etc\hosts
 1. 删除所添加的记录对应的行，例如 `168.62.205.103    ldaps.aaddscontoso.com`
 
 ## <a name="next-steps"></a>后续步骤

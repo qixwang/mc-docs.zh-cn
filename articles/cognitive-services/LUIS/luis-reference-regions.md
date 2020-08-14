@@ -7,12 +7,12 @@ ms.topic: conceptual
 origin.date: 11/19/2019
 ms.date: 12/05/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 47b540dacd695e8afb32d0e47bc0ce422287f5a1
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5cf4649ab4666b512438b16c2f7f75db5a8a6ab9
+ms.sourcegitcommit: caa18677adb51b5321ad32ae62afcf92ac00b40b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291436"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88023404"
 ---
 # <a name="authoring-and-publishing-regions-and-the-associated-keys"></a>创作和发布区域及关联的密钥
 
@@ -25,14 +25,14 @@ ms.locfileid: "79291436"
 
 |LUIS|创作区域|Azure 区域名称|
 |--|--|--|
-|[luis.azure.cn][luis.azure.cn]|中国| `chinaeast`|
+|[luis.azure.cn][luis.azure.cn]|中国| `chinaeast2`|
 
 创作区域具有[配对故障转移区域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。 
 
 <a name="regions-and-azure-resources"></a>
 
 ## <a name="publishing-regions-and-azure-resources"></a>发布区域和 Azure 资源 <a name="publishing-regions"></a>
-该应用将发布到与 LUIS 门户中添加的 LUIS 资源关联的所有区域。 例如，对于在 [luis.azure.cn][luis.azure.cn] 上创建的应用，如果你在 **chinaeast** 中创建 LUIS 或认知服务资源并[将其作为资源添加到该应用](luis-how-to-azure-subscription.md)，则该应用将发布到此区域中。 
+该应用将发布到与 LUIS 门户中添加的 LUIS 资源关联的所有区域。 例如，对于在 [luis.azure.cn][luis.azure.cn] 上创建的应用，如果你在 chinaeast2 中创建 LUIS 或认知服务资源并[将其作为资源添加到该应用](luis-how-to-azure-subscription.md)，则该应用将发布到此区域中。 
 
 ## <a name="public-apps"></a>公共应用
 公共应用在所有区域中发布，以便有基于区域的 LUIS 资源密钥的用户可以在与其资源密钥关联的任何区域中访问该应用。
@@ -45,7 +45,7 @@ ms.locfileid: "79291436"
 
  全球区域 | 创作 API 区域和创作网站| 发布和查询区域<br>`API region name`   |  终结点 URL 格式   |
 |-----|------|------|------|
-| [中国](#publishing-to-china) | `chinaeast`<br>[luis.azure.cn][luis.azure.cn]| 中国东部<br>`chinaeast`     |  https://chinaeast2.api.cognitive.azure.cn/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
+| 中国 | `chinaeast2`<br>[luis.azure.cn][luis.azure.cn]| 中国东部 2<br>`chinaeast2`     |  https://chinaeast2.api.cognitive.azure.cn/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
 
 ## <a name="publishing-to-other-regions"></a>发布到其他区域
 
@@ -55,7 +55,7 @@ ms.locfileid: "79291436"
 
  全球区域 | 创作 API 区域和创作网站| 发布和查询区域<br>`API region name`   |  终结点 URL 格式   |
 |-----|------|------|------|
-| 亚洲 | `chinaeast`<br>[luis.azure.cn][luis.azure.cn]| 中国东部 2<br>`centralindia` |  https://centralindia.api.cognitive.azure.cn/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
+| 亚洲 | `chinaeast2`<br>[luis.azure.cn][luis.azure.cn]| 中国东部 2<br>`centralindia` |  https://chinaeast2.api.cognitive.azure.cn/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
 
 
 ## <a name="endpoints"></a>终结点

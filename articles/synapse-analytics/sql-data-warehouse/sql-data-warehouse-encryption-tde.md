@@ -6,20 +6,20 @@ author: WenJason
 manager: digimobile
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 origin.date: 04/30/2019
-ms.date: 05/11/2020
+ms.date: 08/10/2020
 ms.author: v-jay
 ms.reviewer: rortloff
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 9d0c280a64f108b0a358d74c7019bceaada52720
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.openlocfilehash: 4fdcfc6161354813e3770efc9663934cad55bd5b
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198426"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917220"
 ---
-# <a name="get-started-with-transparent-data-encryption-tde"></a>透明数据加密 (TDE) 入门
+# <a name="get-started-with-transparent-data-encryption-tde-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的透明数据加密 (TDE) 入门
 
 > [!div class="op_single_selector"]
 >

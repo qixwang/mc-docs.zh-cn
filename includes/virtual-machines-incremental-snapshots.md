@@ -6,19 +6,21 @@ author: rockboyfor
 ms.service: storage
 ms.topic: include
 origin.date: 09/15/2018
-ms.date: 06/15/2020
+ms.date: 08/10/2020
+ms.testscope: no
+ms.testdate: 06/15/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 878e907d617333d43104ba95f4e9620f09e73fd0
-ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
+ms.openlocfilehash: 4ec428e812069a606c10c75f44bd14b7501eab2f
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84564349"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87919373"
 ---
 <!--Verified successfully by PG team-->
 ## <a name="overview"></a>概述
-Azure 存储提供创建 Blob 快照的功能。 快照将捕获该时间点的 Blob 状态。 本文介绍有关如何使用快照维护虚拟机磁盘备份的方案。 如果选择不使用 Azure 备份和恢复服务，但想要为虚拟机磁盘创建自定义备份策略，则可以使用此方法。
+Azure 存储提供创建 Blob 快照的功能。 快照将捕获该时间点的 Blob 状态。 本文介绍有关如何使用快照维护虚拟机磁盘备份的方案。 如果选择不使用 Azure 备份和恢复服务，但想要为虚拟机磁盘创建自定义备份策略，则可以使用此方法。 对于运行业务或任务关键型工作负载的虚拟机，建议使用 [Azure 备份](/backup/backup-azure-vms-introduction)作为备份策略的一部分。  
 
 Azure 虚拟机磁盘在 Azure 存储中存储为页 Blob。 本文介绍的是虚拟机磁盘的备份策略，因此，我们指的是页 Blob 上下文中的快照。 若要详细了解快照，请参阅 [创建 Blob 的快照](https://docs.microsoft.com/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob)。
 
@@ -59,7 +61,8 @@ Blob 快照是在某个时间点捕获的 Blob 只读版本。 在创建快照�
 * Blob 是在 2016 年 1 月 1 日或之后创建。
 * 未在两个快照之间使用 [PutPage](https://docs.microsoft.com/rest/api/storageservices/Put-Page) 或[复制 Blob](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) 覆盖 Blob。
 
-**注意**：此功能适用于高级和标准 Azure 页 Blob。
+> [!NOTE]
+> 此功能适用于高级和标准 Azure 页 Blob。
 
 如果存在使用快照的自定义备份策略，则将快照从一个存储帐户复制到另一个存储帐户可能会慢，并且将消耗大量的存储空间。 可以将连续快照之间的差异写入备份页 Blob，而不是将整个快照复制到备份存储帐户。 这样，便可以大量减少复制的时间和存储备份的空间。
 
@@ -95,7 +98,7 @@ Blob 快照是在某个时间点捕获的 Blob 只读版本。 在创建快照�
 6. 为备份页 blob *mybackupstdpageblob* 创建名为 *mybackupstdpageblob_ss2* 的快照。 从高级存储帐户删除以前的快照 *mypremiumdisk_ss1*。
 7. 在每个备份时段内重复步骤 4-6。 这样，即可在标准存储帐户中维护 *mypremiumdisk* 的备份。
 
-![使用增量快照备份磁盘](../articles/virtual-machines/windows/media/incremental-snapshots/storage-incremental-snapshots-1.png)
+:::image type="content" source="../articles/virtual-machines/windows/media/incremental-snapshots/storage-incremental-snapshots-1.png" alt-text="使用增量快照备份磁盘":::
 
 ## <a name="steps-to-restore-a-disk-from-snapshots"></a>从快照还原磁盘的步骤
 下述步骤介绍如何将高级磁盘 mypremiumdisk  从备份存储帐户 mybackupstdaccount  还原到以前的快照。
@@ -108,7 +111,7 @@ Blob 快照是在某个时间点捕获的 Blob 只读版本。 在创建快照�
 6. 将 DS 系列 VM 指向已还原的磁盘 *mypremiumdiskrestored*，并从 VM 分离旧的 *mypremiumdisk*。
 7. 使用 *mybackupstdpageblobrestored* 作为备份页 Blob，根据前一部分中所述，开始针对已还原的磁盘 *mypremiumdiskrestored* 执行备份过程。
 
-![从快照还原磁盘](../articles/virtual-machines/windows/media/incremental-snapshots/storage-incremental-snapshots-2.png)
+:::image type="content" source="../articles/virtual-machines/windows/media/incremental-snapshots/storage-incremental-snapshots-2.png" alt-text="从快照还原磁盘":::
 
 ## <a name="next-steps"></a>后续步骤
 使用以下链接详细了解如何创建 Blob 的快照和规划 VM 备份基础结构。

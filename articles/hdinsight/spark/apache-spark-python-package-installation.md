@@ -10,12 +10,12 @@ ms.topic: conceptual
 origin.date: 11/19/2019
 ms.date: 04/06/2020
 ms.author: v-yiso
-ms.openlocfilehash: ebbcdfd227b8892ce097dea1c69919b037012e56
-ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
+ms.openlocfilehash: 1ab907528503fdead85ac6227c0689fb8f900bfc
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85516581"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917288"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>使用脚本操作在 Azure HDInsight 上安全管理 Python 环境
 
@@ -43,17 +43,17 @@ HDInsight 服务中有两种类型的开放源代码组件：
 > [!IMPORTANT]   
 > 完全支持通过 HDInsight 群集提供的组件。 Microsoft 支持部门可帮助找出并解决与这些组件相关的问题。
 >
-> 自定义组件可获得合理范围的支持，有助于进一步解决问题。 Microsoft 支持部门也许能够解决问题，也可能要求你参与可用的开放源代码技术渠道，获取该技术的深入专业知识。 有许多可以使用的社区站点，例如：[面向 HDInsight 的 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)、`https://stackoverflow.com`。 此外，Apache 项目在 `https://apache.org` 上有项目站点。
+> 自定义组件可获得合理范围的支持，有助于进一步解决问题。 Microsoft 支持部门也许能够解决问题，也可能要求你参与可用的开放源代码技术渠道，获取该技术的深入专业知识。 例如，有许多可以使用的社区站点，例如：[有关 HDInsight 的 Microsoft Q&A 问题页面](https://docs.microsoft.com/answers/topics/azure-hdinsight.html)、`https://stackoverflow.com`。 此外，Apache 项目在 `https://apache.org` 上有项目站点。
 
 ## <a name="understand-default-python-installation"></a>了解默认 Python 安装
 
 HDInsight Spark 群集是通过 Anaconda 安装创建的。 群集中有两个 Python 安装：Anaconda Python 2.7 和 Python 3.5。 下表显示了 Spark、Livy 和 Jupyter 的默认 Python 设置。
 
-| |Python 2.7|Python 3.5|
+|设置 |Python 2.7|Python 3.5|
 |----|----|----|
-|`Path`|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
-|Spark|默认设置为 2.7|空值|
-|Livy|默认设置为 2.7|空值|
+|路径|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
+|Spark 版本|默认设置为 2.7|空值|
+|Livy 版本|默认设置为 2.7|空值|
 |Jupyter|PySpark 内核|PySpark3 内核|
 
 ## <a name="safely-install-external-python-packages"></a>安全安装外部 Python 包
@@ -79,7 +79,7 @@ HDInsight 群集依赖于内置 Python 环境（Python 2.7 和 Python 3.5）。 
     - 使用 conda 通道：
 
         -   `seaborn` 是要安装的包名称。
-        -   `-n py35new` 指定刚刚创建的虚拟环境名称。 确保根据虚拟环境创建相应地更改名称。
+        -   `-n py35new` 指定刚创建的虚拟环境名称。 确保根据虚拟环境创建相应地更改名称。
 
         ```bash
         sudo /usr/bin/anaconda/bin/conda install seaborn -n py35new --yes

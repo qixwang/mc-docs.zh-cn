@@ -10,12 +10,12 @@ ms.workload: big-data
 origin.date: 04/07/2020
 ms.date: 06/22/2020
 ms.author: v-yiso
-ms.openlocfilehash: ccfd66838a1a4426700d1ecb6a6895814637e164
-ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
+ms.openlocfilehash: ecace0b13be7fca3439a0908f7dd3001842c0545
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85516756"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917279"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>使用适用于 Visual Studio Code 的 Spark 和 Hive 工具
 
@@ -74,7 +74,7 @@ ms.locfileid: "85516756"
 
 ## <a name="connect-to-an-azure-account"></a>连接到 Azure 帐户
 
-必须连接到 Azure 帐户或链接一个群集才能将脚本从 Visual Studio Code 提交到群集。 使用 Apache Ambari 用户名和密码凭据或加入域的帐户。 遵循以下步骤连接到 Azure：
+在你可以从 Visual Studio Code 将脚本提交到群集之前，用户可以登录 Azure 订阅，或[链接 HDInsight 群集](#link-a-cluster)。 使用 Ambari 用户名/密码或 ESP 群集的域加入凭据连接到 HDInsight 群集。 遵循以下步骤连接到 Azure：
 
 1. 在菜单栏中，导航到“视图” > “命令面板...”，然后输入“Azure:  登录”：
 
@@ -297,6 +297,21 @@ ms.locfileid: "85516756"
    ![提交 Python 作业结果](./media/hdinsight-for-vscode/submit-pythonjob-result.png) 
 
 提交 Python 作业后，提交日志将显示在 Visual Studio Code 的“输出”窗口中。 同时还会显示 Spark UI URL 和 Yarn UI URL。 你可以在 Web 浏览器中打开 URL 以跟踪作业状态。
+
+## <a name="integrate-with-hdinsight-identity-broker-hib"></a>与 HDInsight Identity Broker (HIB) 集成
+
+### <a name="connect-to-your-hdinsight-esp-cluster-with-id-broker-hib"></a>连接带有 ID 代理的 HDInsight ESP 群集 (HIB)
+
+可以按照常规步骤登录到 Azure 订阅，以连接带有 ID 代理的 HDInsight ESP 群集 (HIB)。 登录后，将在 Azure 资源管理器中看到群集列表。 有关详细信息，请参阅[连接到 HDInsight 群集](#connect-to-an-azure-account)。
+
+### <a name="run-a-hivepyspark-job-on-an-hdinsight-esp-cluster-with-id-broker-hib"></a>在带有 ID 代理的 HDInsight ESP 群集 (HIB) 上运行 Hive/PySpark 作业
+
+若要运行 hive 作业，可以按照常规步骤将作业提交到带有 ID 代理的 HDInsight ESP 群集 (HIB)。 有关更多说明，请参阅[提交交互式 Hive 查询和 Hive 批处理脚本](#submit-interactive-hive-queries-and-hive-batch-scripts)。
+
+若要运行交互式 PySpark 作业，可以按照常规步骤将作业提交到带有 ID 代理的 HDInsight ESP 群集 (HIB)。 有关更多说明，请参阅[提交交互式 PySpark 查询](#submit-interactive-pyspark-queries)。
+
+若要运行 PySpark 批处理作业，可以按照常规步骤将作业提交到带有 ID 代理的 HDInsight ESP 群集 (HIB)。 有关更多说明，请参阅[提交 PySpark 批处理作业](#submit-pyspark-batch-job)。
+
 
 ## <a name="apache-livy-configuration"></a>Apache Livy 配置
 

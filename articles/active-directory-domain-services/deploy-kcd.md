@@ -9,18 +9,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/20/2020
+ms.date: 08/07/2020
 ms.author: v-junlch
-ms.openlocfilehash: 0eb18ad074b37ab1adc5a8e8965e6d80603611fc
-ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
+ms.openlocfilehash: 55b45825e4166e1112302a5ae1006049ce22380f
+ms.sourcegitcommit: a5eb9a47feefb053ddbaab4b15c395972c372339
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86472553"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88028564"
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-in-azure-active-directory-domain-services"></a>配置 Azure Active Directory 域服务中的 Kerberos 约束委派 (KCD)
 
-当你运行应用程序时，这些应用程序可能需要在不同用户的上下文中访问资源。 Active Directory 域服务 (AD DS) 支持可实现此用例的称为“Kerberos 委派”的机制。 然后，Kerberos 约束委派 (KCD) 将基于此机制进行构建，以定义可以在此用户的上下文中访问的特定资源。 与传统的本地 AD DS 环境相比，Azure Active Directory 域服务 (Azure AD DS) 托管域可以更安全地进行锁定，因此，请使用更安全的基于资源的 KCD。
+当你运行应用程序时，这些应用程序可能需要在不同用户的上下文中访问资源。 Active Directory 域服务 (AD DS) 支持可实现此用例的称为“Kerberos 委派”的机制。 然后，Kerberos 约束委派 (KCD) 将基于此机制进行构建，以定义可以在此用户的上下文中访问的特定资源。
+
+与传统的本地 AD DS 环境相比，Azure Active Directory 域服务 (Azure AD DS) 托管域可以更安全地进行锁定，因此，请使用更安全的基于资源的 KCD。
 
 本文介绍了如何在 Azure AD DS 托管域上配置基于资源的 Kerberos 约束委派。
 
@@ -56,7 +58,11 @@ Kerberos 约束委派 (KCD) 限制指定的服务器或应用程序在模拟其�
 
 ## <a name="configure-resource-based-kcd-for-a-computer-account"></a>为计算机帐户配置基于资源的 KCD
 
-在此方案中，假设你有一个在名为 contoso-webapp.aaddscontoso.com 的计算机上运行的 Web 应用。 此 Web 应用需要在域用户的上下文中访问在名为 contoso-api.aaddscontoso.com 的计算机上运行的 Web API。 请完成以下步骤来配置此方案：
+在此方案中，假设你有一个在名为 contoso-webapp.aaddscontoso.com 的计算机上运行的 Web 应用。
+
+此 Web 应用需要在域用户的上下文中访问在名为 contoso-api.aaddscontoso.com 的计算机上运行的 Web API。
+
+请完成以下步骤来配置此方案：
 
 1. [创建自定义 OU](create-ou.md)。 可以将管理此自定义 OU 的权限委托给托管域中的用户。
 1. 将运行 Web 应用的虚拟机和运行 Web API 的虚拟机[加入到托管域][create-join-windows-vm]。 在上一步的自定义 OU 中创建这些计算机帐户。
@@ -64,7 +70,9 @@ Kerberos 约束委派 (KCD) 限制指定的服务器或应用程序在模拟其�
     > [!NOTE]
     > Web 应用和 Web API 的计算机帐户必须位于你有权配置基于资源的 KCD 的自定义 OU 中。 无法为内置“AAD DC 计算机”容器中的计算机帐户配置基于资源的 KCD。
 
-1. 最后，使用 [Set-ADComputer][Set-ADComputer] PowerShell cmdlet 配置基于资源的 KCD。 在已加入域的管理 VM 中，使用属于“Azure AD DC 管理员”组成员的用户帐户登录，运行以下 cmdlet。 根据需要提供你自己的计算机名称：
+1. 最后，使用 [Set-ADComputer][Set-ADComputer] PowerShell cmdlet 配置基于资源的 KCD。
+
+    在已加入域的管理 VM 中，使用属于“Azure AD DC 管理员”组成员的用户帐户登录，运行以下 cmdlet。 根据需要提供你自己的计算机名称：
     
     ```powershell
     $ImpersonatingAccount = Get-ADComputer -Identity contoso-webapp.aaddscontoso.com
@@ -77,12 +85,14 @@ Kerberos 约束委派 (KCD) 限制指定的服务器或应用程序在模拟其�
 
 1. [创建自定义 OU](create-ou.md)。 可以将管理此自定义 OU 的权限委托给托管域中的用户。
 1. 将运行后端 Web API/资源的虚拟机[加入到托管域][create-join-windows-vm]。 在自定义 OU 中创建计算机帐户。
-1. 在自定义 OU 中创建用于运行 Web 应用的服务帐户（例如，“appsvc”）。
+1. 在自定义 OU 中创建用于运行 Web 应用的服务帐户（如“appsvc”）。
 
     > [!NOTE]
     > 同样，Web API VM 的计算机帐户和 Web 应用的服务帐户都必须位于你有权配置基于资源的 KCD 的自定义 OU 中。 你无法为内置“AAD DC 计算机”容器或“AAD DC 用户”容器中的帐户配置基于资源的 KCD。  这也意味着你无法使用从 Azure AD 同步的用户帐户来设置基于资源的 KCD。 你必须创建并使用专门在 Azure AD DS 中创建的服务帐户。
 
-1. 最后，使用 [Set-ADUser][Set-ADUser] PowerShell cmdlet 配置基于资源的 KCD。 在已加入域的管理 VM 中，使用属于“Azure AD DC 管理员”组成员的用户帐户登录，运行以下 cmdlet。 根据需要提供你自己的服务名称：
+1. 最后，使用 [Set-ADUser][Set-ADUser] PowerShell cmdlet 配置基于资源的 KCD。
+
+    在已加入域的管理 VM 中，使用属于“Azure AD DC 管理员”组成员的用户帐户登录，运行以下 cmdlet。 根据需要提供你自己的服务名称：
 
     ```powershell
     $ImpersonatingAccount = Get-ADUser -Identity appsvc

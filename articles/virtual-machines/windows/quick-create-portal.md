@@ -6,15 +6,17 @@ ms.service: virtual-machines-windows
 ms.topic: quickstart
 ms.workload: infrastructure
 origin.date: 11/05/2019
-ms.date: 07/06/2020
+ms.date: 08/10/2020
+ms.testscope: yes|no
+ms.testdate: 07/06/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: b2b435497ed29e9bc87879fe6a2307ea104dbb82
-ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
+ms.openlocfilehash: 55fcf520de520bc2143fdf51ca2454d67a48427a
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85946075"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917233"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Windows 虚拟机
 
@@ -28,7 +30,8 @@ ms.locfileid: "85946075"
 
 ## <a name="create-virtual-machine"></a>创建虚拟机
 
-<!--MOONCAKE CUSTOMIZATION TILL ON 06/30/2020-->
+<!--MOONCAKE CUSTOMIZATION TILL ON 08/10/2020-->
+<!--NOTICE: THERE ARE NO `Windows Server 2019 Datacenter` OPTION WHEN FOLLOWING GLOBAL ROUTINE-->
 
 1. 在 Azure 门户的左上角选择“创建资源”。
 
@@ -38,34 +41,37 @@ ms.locfileid: "85946075"
 
 1. 在“基本信息”标签页中的“项目详细信息”下，确保选择了正确的订阅，然后选择“新建资源组”。 对于名称，请键入 *myResourceGroup*。 
 
-    ![为 VM 创建新的资源组](./media/quick-create-portal/project-details.png)
+   [!INCLUDE [virtual-machines-common-allow-english-character](../../../includes/virtual-machines-common-allow-english-character-chenye.md)]
+
+    :::image type="content" source="./media/quick-create-portal/project-details.png" alt-text="“项目详细信息”部分的屏幕截图，显示为虚拟机选择 Azure 订阅和资源组的位置":::
 
 1. 在“实例详细信息”下，对于“虚拟机名称”键入“myVM”，对于“区域”选择“中国东部”。 保留其他默认值。
 
     <!--Not Available on and then choose *Windows Server 2019 Datacenter* for the **Image**-->
     <!--MOONCAKE CUSTOMIZATION TILL ON 06/30/2020-->
+    <!--NOTICE: THERE ARE NO `Windows Server 2019 Datacenter` OPTION WHEN FOLLOWING GLOBAL ROUTINE-->
     
-    ![“实例详细信息”部分](./media/quick-create-portal/instance-details.png)
+    :::image type="content" source="./media/quick-create-portal/instance-details.png" alt-text="“实例详细信息”部分的屏幕截图，可在其中提供虚拟机的名称并选择其区域、映像和大小":::
 
 1. 在“管理员帐户”下，提供用户名（例如 *azureuser*）和密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](faq.md#what-are-the-password-requirements-when-creating-a-vm)。
 
-    ![输入用户名和密码](./media/quick-create-portal/administrator-account.png)
+    :::image type="content" source="./media/quick-create-portal/administrator-account.png" alt-text="“管理员帐户”部分的屏幕截图，可在其中提供管理员用户名和密码":::
 
 1. 在“入站端口规则”下，选择“允许所选端口”，然后从下拉列表中选择“RDP (3389)”和“HTTP (80)”   。
 
-    ![为 RDP 和 HTTP 打开端口](./media/quick-create-portal/inbound-port-rules.png)
+    :::image type="content" source="./media/quick-create-portal/inbound-port-rules.png" alt-text="“入站端口规则”部分的屏幕截图，可在其中选择允许建立入站连接的端口":::
 
-1. 保留剩余的默认值，然后选择页面底部的“查看 + 创建”按钮。
+1. 保留其余默认值，然后选择页面底部的“查看 + 创建”按钮。
 
-    ![查看并创建](./media/quick-create-portal/review-create.png)
+    :::image type="content" source="./media/quick-create-portal/review-create.png" alt-text="显示页面底部的“审阅并创建”按钮的屏幕截图":::
 
 ## <a name="connect-to-virtual-machine"></a>连接到虚拟机
 
 创建与虚拟机的远程桌面连接。 这些说明指明了如何从 Windows 计算机连接到 VM。 在 Mac 上，需要一个 RDP 客户端，例如 Mac 应用商店提供的这个[远程桌面客户端](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12)。
 
-1. 单击虚拟机概述页上的“连接”按钮。 
+1. 选择虚拟机概述页上的“连接”按钮。 
 
-    ![从门户连接到 Azure VM](./media/quick-create-portal/portal-quick-start-9.png)
+    :::image type="content" source="./media/quick-create-portal/portal-quick-start-9.png" alt-text="显示“连接”按钮位置的虚拟机概述页屏幕截图":::
 
 2. 在“连接到虚拟机”页面中，保留默认选项，以使用 IP 地址通过端口 3389 进行连接，然后单击“下载 RDP 文件” 。
 
@@ -89,7 +95,7 @@ Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
 在门户中选择 VM，在 VM 的概述中，使用 IP 地址右侧的“单击以复制”按钮复制该地址，并将其粘贴到浏览器选项卡中。此时会打开默认的 IIS 欢迎页，如下所示：
 
-![IIS 默认站点](./media/quick-create-powershell/default-iis-website.png)
+:::image type="content" source="./media/quick-create-powershell/default-iis-website.png" alt-text="浏览器中的 IIS 默认站点的屏幕截图":::
 
 ## <a name="clean-up-resources"></a>清理资源
 

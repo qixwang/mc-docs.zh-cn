@@ -5,17 +5,17 @@ services: data-factory
 author: WenJason
 ms.service: data-factory
 ms.topic: troubleshooting
-origin.date: 01/09/2020
-ms.date: 06/29/2020
+origin.date: 07/20/2020
+ms.date: 08/10/2020
 ms.author: v-jay
 ms.reviewer: craigg
 ms.custom: has-adal-ref
-ms.openlocfilehash: 5375218b01fd83a2f3886011fc8b8a3b37f42550
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+ms.openlocfilehash: 37b0b6c5fa1c6a61a524e56b2938c68c085dcf2b
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323322"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914254"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>排查 Azure 数据工厂连接器问题
 
@@ -158,7 +158,7 @@ ms.locfileid: "85323322"
 - 消息：`Error occurred when trying to upload a file. It's possible because you have multiple concurrent copy activities runs writing to the same file '%name;'. Check your ADF configuration.`
 
 
-### <a name="error-code--adlsgen2timeouterror"></a>错误代码：AdlsGen2TimeoutError
+### <a name="error-code-adlsgen2timeouterror"></a>错误代码：AdlsGen2TimeoutError
 
 - **消息**：`Request to ADLS Gen2 account '%account;' met timeout error. It is mostly caused by the poor network between the Self-hosted IR machine and the ADLS Gen2 account. Check the network to resolve such error.`
 
@@ -343,7 +343,7 @@ ms.locfileid: "85323322"
 
 - **解决方法**：在复制活动接收器中的 Polybase 设置下，将“use type default”选项设置为 false。
 
-### <a name="error-message-java-exception-messagehdfsbridgecreaterecordreader"></a>错误消息：Java 异常消息:HdfsBridge::CreateRecordReader
+### <a name="error-message-java-exception-message-hdfsbridgecreaterecordreader"></a>错误消息：Java 异常消息：HdfsBridge::CreateRecordReader
 
 - **症状**：使用 PolyBase 将数据复制到 Azure SQL 数据仓库时遇到以下错误：
 
@@ -395,7 +395,7 @@ ms.locfileid: "85323322"
 
 - 消息：`The name of column index %index; is empty. Make sure column name is properly specified in the header row.`
 
-- **原因：** 在活动中设置“firstRowAsHeader”时，第一行将用作列名。 此错误表示第一行包含空值。 例如：'ColumnA,,ColumnB'。
+- **原因：** 在活动中设置“firstRowAsHeader”时，第一行将用作列名。 此错误表示第一行包含空值。 例如：'ColumnA,, ColumnB'.
 
 - **建议**：检查第一行，如果存在空值，请修复值。
 

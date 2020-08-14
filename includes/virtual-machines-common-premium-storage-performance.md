@@ -6,15 +6,17 @@ author: rockboyfor
 ms.service: virtual-machines
 ms.topic: include
 origin.date: 07/08/2019
-ms.date: 07/06/2020
+ms.date: 08/10/2020
+ms.testscope: no
+ms.testdate: 07/06/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 4b2c4e5984688284b6bccf05aae01fef91cf5ce7
-ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
+ms.openlocfilehash: 7b52b6eb28ce7d7d5a78d51e7f29869cfa921b78
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85945992"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87919301"
 ---
 ## <a name="application-performance-indicators"></a>应用程序性能指标
 
@@ -40,7 +42,7 @@ IOPS，或每秒输入/输出操作，是指应用程序在一秒内发送到存
 
 吞吐量和 IOPS 之间存在一个关系，如以下公式所示。
 
-![IOPS 和吞吐量的关系](../articles/virtual-machines/linux/media/premium-storage-performance/image1.png)
+:::image type="content" source="../articles/virtual-machines/linux/media/premium-storage-performance/image1.png" alt-text="IOPS 和吞吐量的关系":::
 
 因此，必须确定应用程序所需的最佳吞吐量和 IOPS 值。 尝试优化其中一个值时，另一个值也会受影响。 在后面的“优化应用程序性能”部分，我们会更详细地讨论如何优化 IOPS 和吞吐量。
 
@@ -125,7 +127,7 @@ PerfMon 计数器适用于处理器、内存以及服务器的每个逻辑磁盘
 | &nbsp; | **IOPS** | **吞吐量** | **延迟** |
 | --- | --- | --- | --- |
 | **示例方案** |企业 OLTP 应用程序，需要很高的每秒事务数比率。 |企业数据仓库应用程序，处理大量数据。 |近实时应用程序，需要对用户请求进行即时响应，例如在线游戏。 |
-| 性能因素 | &nbsp; | &nbsp; | &nbsp; |
+| **性能因素** | &nbsp; | &nbsp; | &nbsp; |
 | **IO 大小** |IO 大小越小，产生的 IOPS 越高。 |IO 大小越大，产生的吞吐量越大。 | &nbsp;|
 | **VM 大小** |使用所提供的 IOPS 超出应用程序要求的 VM 大小。 |使用 VM 大小时，应确保吞吐量限制超出应用程序要求。 |使用所提供的规模限制超出应用程序要求的 VM 大小。 |
 | **磁盘大小** |使用所提供的 IOPS 超出应用程序要求的磁盘大小。 |使用磁盘大小时，应确保吞吐量限制超出应用程序要求。 |使用所提供的规模限制超出应用程序要求的磁盘大小。 |
@@ -141,7 +143,7 @@ PerfMon 计数器适用于处理器、内存以及服务器的每个逻辑磁盘
 IO 请求是应用程序要执行的输入/输出操作单元。 识别 IO 请求的性质（随机或有序、读取或写入、小型或大型）有助于确定应用程序的性能要求。 了解 IO 请求的性质很重要，这有助于在设计应用程序基础结构时进行正确的决策。 IO 必须均匀分布，以实现可能的最佳性能。
 
 IO 大小是较为重要的因素之一。 IO 大小是由应用程序生成的输入/输出操作请求的大小。 IO 大小对性能（尤其是应用程序能够实现的 IOPS 和带宽）有很大的影响。 下面的公式说明了 IOPS、IO 大小和带宽/吞吐量之间的关系。  
-    ![](media/premium-storage-performance/image1.png)
+:::image type="content" source="media/premium-storage-performance/image1.png" alt-text="显示公式 IOPS 乘以 IO 大小等于吞吐量的关系图。":::
 
 某些应用程序允许更改其 IO 大小，而某些应用程序则不允许。 例如，SQL Server 会自行确定最佳 IO 大小，不允许用户对其进行更改。 另一方面，Oracle 提供了名为 [DB\_BLOCK\_SIZE](https://docs.oracle.com/cd/B19306_01/server.102/b14211/iodesign.htm#i28815) 的参数，可用于配置数据库的 I/O 请求大小。
 
@@ -209,7 +211,7 @@ IO 大小是较为重要的因素之一。 IO 大小是由应用程序生成的�
 
 <!--IMPORTANT: NO UPDATE ON Price change to CNY-->
 
-| &nbsp; | **标准** | **高级** |
+| &nbsp; | **Standard** | **高级** |
 | --- | --- | --- |
 | **VM 每月的成本** |CNY10,171.48（标准\_D14） |CNY5,081.52（标准\_DS13） |
 | **磁盘每月的成本** |CNY8847.36（32 个 1 TB 磁盘） |CNY3625.16（4 个 P30 磁盘） |
@@ -351,7 +353,7 @@ sudo reboot
 
 例如，如果应用程序生成的 IO 请求大于磁盘条带大小，存储系统会将数据写在不止一个磁盘上，跨越条带单元的边界。 在需要访问该数据时，则必须跨多个条带单元进行搜索才能完成请求。 这种行为的累积效应就是性能大幅下降。 另一方面，如果 IO 请求大小小于条带大小，并且其性质是随机的，则 IO 请求可能会在同一磁盘上累积起来，导致瓶颈的出现，最终导致 IO 性能下降。
 
-请根据应用程序正在运行的工作负荷的类型，选择合适的条带大小。 对于随机的较小的 IO 请求，请使用较小的条带大小。 而对于大型的顺序性的 IO 请求，则请使用较大的条带大小。 对于要在高级存储上运行的应用程序，请找出相应的条带大小建议。 对于 SQL Server，如果工作负荷为 OLTP 工作负荷，请将条带大小配置为 64 KB；如果工作负荷为数据仓库型工作负荷，则请将条带大小配置为 256 KB。 请参阅 [Azure VM 上的 SQL Server 性能最佳做法](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-performance.md#disks-guidance)了解更多信息。
+请根据应用程序正在运行的工作负荷的类型，选择合适的条带大小。 对于随机的较小的 IO 请求，请使用较小的条带大小。 而对于大型的顺序性的 IO 请求，则请使用较大的条带大小。 对于要在高级存储上运行的应用程序，请找出相应的条带大小建议。 对于 SQL Server，如果工作负荷为 OLTP 工作负荷，请将条带大小配置为 64 KB；如果工作负荷为数据仓库型工作负荷，则请将条带大小配置为 256 KB。 请参阅 [Azure VM 上的 SQL Server 性能最佳做法](../articles/azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md#disks-guidance)了解更多信息。
 
 > [!NOTE]
 > 在 DS 系列的 VM 上最多可以将 32 个高级存储磁盘条带化。
@@ -392,14 +394,14 @@ Azure 将高级存储平台设计为可以进行大规模并行处理。 因此�
 *最佳队列深度*  
 队列深度值过高也有其缺点。 如果队列深度值过高，则应用程序会尝试实现非常高的 IOPS。 除非应用程序的永久性磁盘具有足够高的预配 IOPS，否则会对应用程序延迟造成负面影响。 以下公式显示了 IOPS、延迟和队列深度之间的关系。  
 
-![](media/premium-storage-performance/image6.png)
+:::image type="content" source="media/premium-storage-performance/image6.png" alt-text="显示公式 IOPS 乘以延迟等于队列深度的关系图。":::
 
 不应随意地将队列深度配置为某个很高的值，而应将其配置为最佳值，该值可以确保应用程序实现足够高的 IOPS，但又不会影响延迟。 例如，如果应用程序延迟需要设置为 1 毫秒，则要实现 5,000 IOPS，所需队列深度为：QD = 5000 x 0.001 = 5。
 
 *条带化卷的队列深度*  
 条带化卷应保持足够高的队列深度，使得每个磁盘都有各自的高峰队列深度。 例如，以某个应用程序为考虑对象，该应用程序所推送的队列深度为 2，条带中有四个磁盘。 两个 IO 请求会发送到两个磁盘中，剩下两个磁盘会处于空闲状态。 因此，请将队列深度配置为让所有磁盘都能够处于繁忙状态。 下面的公式说明了如何确定条带化卷的队列深度。  
 
-![](media/premium-storage-performance/image7.png)
+:::image type="content" source="media/premium-storage-performance/image7.png" alt-text="显示公式每个磁盘的 QD 乘以每个卷的列数等于条带化卷的 QD 的关系图。":::
 
 ## <a name="throttling"></a>限制
 

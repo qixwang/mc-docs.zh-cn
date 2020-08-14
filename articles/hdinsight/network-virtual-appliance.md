@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/06/2020
-ms.openlocfilehash: fade40093c967985e4ca34c1e57aabe85926489b
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.date: 06/30/2020
+ms.openlocfilehash: 5872911fe016c40cfb7172166cc6b427ad26ac52
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723839"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917236"
 ---
 # <a name="configure-network-virtual-appliance-in-azure-hdinsight"></a>在 Azure HDInsight 中配置网络虚拟设备
 
@@ -21,13 +21,14 @@ ms.locfileid: "84723839"
 
 对于许多常见的重要方案，Azure 防火墙已自动配置为允许流量。 使用另一个网络虚拟设备将需要配置一些其他功能。 配置网络虚拟设备时请注意以下因素：
 
-* 应在支持服务终结点的服务中配置服务终结点。
+* 可以使用服务终结点配置支持服务终结点的服务，这通常会出于成本或性能考虑因素而导致绕过 NVA。
 * IP 地址依赖项适用于非 HTTP/S 流量（TCP 和 UDP 流量）。
-* 可将 FQDN HTTP/HTTPS 终结点放在 NVA 设备中。
-* 通配符 HTTP/HTTPS 终结点是可以根据许多限定符变化的依赖项。
+* 可将 FQDN HTTP/HTTPS 终结点加入 NVA 设备的允许列表中。
 * 将创建的路由表分配到 HDInsight 子网。
 
 ## <a name="service-endpoint-capable-dependencies"></a>支持服务终结点的依赖项
+
+可以选择启用一个或多个以下服务终结点，这将导致绕过 NVA。 此选项可用于大量数据传输，以便节省成本和优化性能。 
 
 | **终结点** |
 |---|
@@ -39,33 +40,19 @@ ms.locfileid: "84723839"
 
 | **终结点** | **详细信息** |
 |---|---|
-| \*:123 | NTP 时钟检查。 在端口 123 上的多个终结点中检查流量 |
-| [此处](hdinsight-management-ip-addresses.md)发布的 IP | 这些 IP 是 HDInsight 服务 |
-| ESP 群集的 AAD-DS 专用 IP |
-| \*:16800，用于 KMS Windows 激活 |
-| \*12000，用于 Log Analytics |
+| [此处](hdinsight-management-ip-addresses.md)发布的 IP | 这些 IP 用于 HDInsight 控制位置，应包含在 UDR 中，以避免非对称路由 |
+| AAD-DS 专用 IP | 仅 ESP 群集需要|
+
 
 ### <a name="fqdn-httphttps-dependencies"></a>FQDN HTTP/HTTPS 依赖项
 
 > [!Important]
-> 以下列表仅提供了一些最重要的 FQDN。 可以获取其他 FQDN（主要是 Azure 存储和 Azure 服务总线）用于[在此文件中](https://github.com/Azure-Samples/hdinsight-fqdn-lists/blob/master/HDInsightFQDNTags.json)配置 NVA。
+> 以下列表仅提供了一些最重要的 FQDN。 可以获取 FQDN（主要是 Azure 存储和 Azure 服务总线）的完整列表，用于[在此文件中](https://github.com/Azure-Samples/hdinsight-fqdn-lists/blob/master/HDInsightFQDNTags.json)配置 NVA。 HDInsight 控制平面操作使用这些依赖项成功创建群集。
 
 | **终结点**                                                          |
 |---|
 | azure.archive.ubuntu.com:80                                           |
 | security.ubuntu.com:80                                                |
-| ocsp.msocsp.com:80                                                    |
-| ocsp.digicert.com:80                                                  |
-| wawsinfraprodbay063.blob.core.windows.net:443                         |
-| registry-1.docker.io:443                                              |
-| auth.docker.io:443                                                    |
-| production.cloudflare.docker.com:443                                  |
-| download.docker.com:443                                               |
-| us.archive.ubuntu.com:80                                              |
-| download.mono-project.com:80                                          |
-| packages.treasuredata.com:80                                          |
-| security.ubuntu.com:80                                                |
-| azure.archive.ubuntu.com:80                                           |
 | ocsp.msocsp.com:80                                                    |
 | ocsp.digicert.com:80                                                  |
 

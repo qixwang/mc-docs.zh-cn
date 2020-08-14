@@ -4,15 +4,16 @@ description: 介绍了如何正确配置 Azure Database for MySQL 和关联的�
 author: WenJason
 ms.author: v-jay
 ms.service: mysql
-ms.topic: conceptual
-origin.date: 5/7/2020
-ms.date: 06/29/2020
-ms.openlocfilehash: e0ed9148f8e21a5d345e01a916dca7f98094060a
-ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
+ms.topic: how-to
+origin.date: 07/08/2020
+ms.date: 08/17/2020
+ms.custom: tracking-python
+ms.openlocfilehash: 63e2aaf04ee86b41f639bec7d83268f38064ba16
+ms.sourcegitcommit: 3cf647177c22b24f76236c57cae19482ead6a283
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85516732"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88029592"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>配置应用程序的 SSL 连接性以安全连接到 Azure Database for MySQL
 
@@ -22,7 +23,7 @@ ms.locfileid: "85516732"
 Azure Database for MySQL 支持使用安全套接字层 (SSL) 将 Azure Database for MySQL 服务器连接到客户端应用程序。 通过在数据库服务器与客户端应用程序之间强制实施 SSL 连接，可以加密服务器与应用程序之间的数据流，有助于防止“中间人”攻击。
 
 ## <a name="step-1-obtain-ssl-certificate"></a>步骤 1：获取 SSL 证书
-从 [https://www.digicert.com/CACerts/DigiCertGlobalRootCA.crt](https://www.digicert.com/CACerts/DigiCertGlobalRootCA.crt) 下载通过 SSL 与 Azure Database for MySQL 服务器通信所需的证书，再将证书文件保存到本地驱动器（例如，本教程使用 c:\ssl）。
+从 [https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) 下载通过 SSL 与 Azure Database for MySQL 服务器通信所需的证书，再将证书文件保存到本地驱动器（例如，本教程使用 c:\ssl）。
 
 ## <a name="step-2-download-and-install-openssl"></a>步骤 2：下载并安装 OpenSSL
 从[下载页](http://slproweb.com/products/Win32OpenSSL.html)查找并下载最新版本的 OpenSSL。
@@ -38,9 +39,19 @@ OpenSSL>x509 -inform DEV -in DigiCertGlobalRootCA.crt -out DigiCertGlobalRootCA.
 ```
 
 ## <a name="step-5-bind-ssl"></a>步骤 5：绑定 SSL
-### <a name="connecting-to-server-using-the-mysql-workbench-over-ssl"></a>使用 MySQL Workbench 通过 SSL 连接到服务器
-配置 MySQL Workbench，以便安全地通过 SSL 连接。 从“设置新连接”对话框，导航到“SSL”选项卡。在“SSL CA 文件:”字段中输入 **DigiCertGlobalRootCA.pem** 的文件位置。 
-![保存 SSL 配置](./media/howto-configure-ssl/mysql-workbench-ssl.png)
+
+对于特定的编程语言连接字符串，请参考下面的[示例代码](howto-configure-ssl.md#sample-code)。
+
+### <a name="connecting-to-server-using-mysql-workbench-over-ssl"></a>使用 MySQL Workbench 通过 SSL 连接到服务器
+配置 MySQL Workbench，以便安全地通过 SSL 连接。 
+
+1. 从“设置新连接”对话框，导航到“SSL”选项卡  。 
+
+1. 将“使用 SSL”  字段更新为“必需”。
+
+1. 在“SSL CA 文件:”字段中输入 **DigiCertGlobalRootCA.pem** 的文件位置。**** 
+    
+    ![保存 SSL 配置](./media/howto-configure-ssl/mysql-workbench-ssl.png)
 
 对于现有连接，可以通过右键单击“连接”图标并选择“编辑”来绑定 SSL。 然后导航到“SSL”选项卡，并绑定证书文件。
 

@@ -10,17 +10,17 @@ ms.service: role-based-access-control
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 05/25/2020
+ms.topic: troubleshooting
+ms.date: 08/05/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 7047133f85af06ce60c59d2b69c2ea7ed9962691
-ms.sourcegitcommit: 7429daf26cff014b040f69cdae75bdeaea4f4e93
+ms.openlocfilehash: 5f3c8e3d3ac4aaa1665bcccb27251717f14a2fe3
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83991643"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914224"
 ---
 # <a name="troubleshoot-azure-rbac"></a>排查 Azure RBAC 的问题
 
@@ -52,6 +52,22 @@ $ras.Count
 ## <a name="problems-with-azure-role-assignments"></a>Azure 角色分配问题
 
 - 如果你因为“添加” > “添加角色分配”选项被禁用或者因为收到权限错误“具有此对象 id 的客户端无权执行操作”而无法在 Azure 门户中的“访问控制(IAM)”上添加角色分配，请检查你当前登录时使用的用户是否为在你尝试分配角色的范围中具有 `Microsoft.Authorization/roleAssignments/write` 权限的角色，例如[所有者](built-in-roles.md#owner)或[用户访问管理员](built-in-roles.md#user-access-administrator)。
+- 如果使用服务主体来分配角色，可能会收到错误信息：“权限不足，无法完成操作”。 例如，假设你有一个服务主体，并对其分配了“所有者”角色，并且你尝试使用 Azure CLI 创建以下角色分配作为服务主体：
+
+    ```azurecli
+    az login --service-principal --username "SPNid" --password "password" --tenant "tenantid"
+    az role assignment create --assignee "userupn" --role "Contributor"  --scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
+    ```
+
+    如果收到错误“权限不足，无法完成操作”，则很可能是因为 Azure CLI 尝试在 Azure AD 中查找被分派人标识，但服务主体在默认情况下无法读取 Azure AD。
+
+    可通过两种方式解决此错误。 第一种方法是将[目录读取器](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers)角色分配给服务主体，以便它能够读取目录中的数据。
+
+    第二种方法是使用 `--assignee-object-id` 参数而不是 `--assignee` 来创建角色分配。 通过使用 `--assignee-object-id`，Azure CLI 将跳过 Azure AD 查找。 你需要获取要为其分配角色的用户、组或应用程序的对象 ID。 有关详细信息，请参阅[使用 Azure CLI 添加或删除 Azure 角色分配](role-assignments-cli.md#new-service-principal)。
+
+    ```azurecli
+    az role assignment create --assignee-object-id 11111111-1111-1111-1111-111111111111  --role "Contributor" --scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
+    ```
 
 ## <a name="problems-with-custom-roles"></a>自定义角色出现问题
 
@@ -66,7 +82,7 @@ $ras.Count
 - 只能在自定义角色的 `AssignableScopes` 中定义一个管理组。 将管理组添加到 `AssignableScopes` 的功能目前为预览版。
 - 无法在管理组范围内分配具有 `DataActions` 的自定义角色。
 - Azure 资源管理器不验证管理组是否存在于角色定义的可分配范围中。
-- 若要详细了解自定义角色和管理组，请参阅[使用 Azure 管理组来组织资源](../governance/management-groups/overview.md#custom-rbac-role-definition-and-assignment)。
+- 若要详细了解自定义角色和管理组，请参阅[使用 Azure 管理组来组织资源](../governance/management-groups/overview.md#azure-custom-role-definition-and-assignment)。
 
 ## <a name="transferring-a-subscription-to-a-different-directory"></a>将订阅转移到另一目录
 

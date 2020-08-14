@@ -6,15 +6,15 @@ ms.author: v-junlch
 ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
 ms.subservice: management
-ms.date: 06/22/2020
+ms.date: 08/06/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: d6de989d7992c1460abdb0eec17b62d774d0ee39
-ms.sourcegitcommit: 43db4001be01262959400663abf8219e27e5cb8b
+ms.openlocfilehash: 849a287a1ee43f5f3b4fd0a369248f17f40b6d28
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85241594"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914153"
 ---
 # <a name="understand-instance-ids-for-azure-vm-scale-set-vms"></a>了解 Azure VM 规模集 VM 的实例 ID
 本文介绍规模集的实例 ID 和显示这些 ID 的各种方法。
@@ -66,7 +66,7 @@ az vmss show -g {resourceGroupName} -n {vmScaleSetName}
 
 在上面的示例输出中，也有 VM 的“名称”。 此名称采用“{scale-set-name}_{instance-id}”格式。 在 Azure 门户中列出规模集中的实例时会看到此名称：
 
-![](./media/virtual-machine-scale-sets-instance-ids/vmssInstances.png)
+![显示 Azure 门户中虚拟机规模集的实例列表的屏幕截图。](./media/virtual-machine-scale-sets-instance-ids/vmssInstances.png)
 
 名称的 {instance-id} 部分是与前面所述的“instanceId”属性相同的十进制数。
 

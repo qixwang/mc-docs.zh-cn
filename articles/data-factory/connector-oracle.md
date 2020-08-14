@@ -9,15 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-origin.date: 04/09/2020
-ms.date: 05/11/2020
+origin.date: 07/24/2020
+ms.date: 08/10/2020
 ms.author: v-jay
-ms.openlocfilehash: 95384a695b562270b839cbf821eac23925afad7c
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.openlocfilehash: 004b39df6aa6793cf384b87d45e8e62f58ae82f5
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198285"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914377"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Oracle 复制数据
 
@@ -74,6 +74,8 @@ Oracle 链接服务支持以下属性：
 
 >[!TIP]
 >如果遇到错误“ORA-01025:UPI 参数超出范围”，且 Oracle 版本为 8i，请将 `WireProtocolMode=1` 添加到连接字符串。 然后重试。
+
+如果有多个 Oracle 实例用于故障转移方案，则可以创建 Oracle 链接服务并填充主要主机、端口、用户名、密码等，并添加新的“其他连接属性”，其属性名称为 `AlternateServers`，值为 `(HostName=<secondary host>:PortNumber=<secondary port>:ServiceName=<secondary service name>)` - 不要遗漏括号，并注意作为分隔符的冒号 (`:`)。 例如，以下备用服务器值定义用于连接故障转移的两台备用数据库服务器：`(HostName=AccountingOracleServer:PortNumber=1521:SID=Accounting,HostName=255.201.11.24:PortNumber=1522:ServiceName=ABackup.NA.MyCompany)`。
 
 可以根据自己的情况在连接字符串中设置更多连接属性：
 
@@ -171,12 +173,12 @@ Oracle 链接服务支持以下属性：
 
 若要从/向 Oracle 复制数据，请将数据集的 type 属性设置为 `OracleTable`。 支持以下属性。
 
-| 属性 | 说明 | 必需 |
+| 属性 | 描述 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 `OracleTable`。 | 是 |
-| schema | 架构的名称。 |对于源为“否”，对于接收器为“是”  |
-| table | 表/视图的名称。 |对于源为“否”，对于接收器为“是”  |
-| tableName | 具有架构的表/视图的名称。 此属性支持后向兼容性。 对于新的工作负荷，请使用 `schema` 和 `table`。 | 对于源为“否”，对于接收器为“是” |
+| 架构 | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
+| 表 | 表/视图的名称。 |对于源为“No”，对于接收器为“Yes”  |
+| tableName | 具有架构的表/视图的名称。 此属性支持后向兼容性。 对于新的工作负荷，请使用 `schema` 和 `table`。 | 对于源为“No”，对于接收器为“Yes” |
 
 **示例：**
 
@@ -210,7 +212,7 @@ Oracle 链接服务支持以下属性：
 
 要从 Oracle 复制数据，请将复制活动中的源类型设置为 `OracleSource`。 复制活动的 **source** 节支持以下属性。
 
-| 属性 | 说明 | 必需 |
+| 属性 | 描述 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为 `OracleSource`。 | 是 |
 | oracleReaderQuery | 使用自定义 SQL 查询读取数据。 例如 `"SELECT * FROM MyTable"`。<br>启用分区加载时，需要在查询中挂接任何相应的内置分区参数。 有关示例，请参阅[从 Oracle 进行并行复制](#parallel-copy-from-oracle)部分。 | 否 |
@@ -257,7 +259,7 @@ Oracle 链接服务支持以下属性：
 
 若要向 Oracle 复制数据，请将复制活动中的接收器类型设置为 `OracleSink`。 复制活动 **sink** 节支持以下属性。
 
-| 属性 | 说明 | 必需 |
+| 属性 | 描述 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为 `OracleSink`。 | 是 |
 | writeBatchSize | 缓冲区大小达到 `writeBatchSize` 时将数据插入 SQL 表。<br/>允许的值为 Integer（行数）。 |否（默认值为 10,000） |

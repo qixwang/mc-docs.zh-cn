@@ -2,18 +2,19 @@
 title: 限制 - LUIS
 description: 本文介绍 Azure 认知服务语言理解 (LUIS) 的已知限制。 LUIS 有几个限制区。 模型限制可控制 LUIS 中的意向、实体和功能。 基于密钥类型的配额限制。 键盘组合可控制 LUIS 网站。
 ms.topic: reference
+author: Johnnytechn
 origin.date: 06/04/2020
-ms.date: 06/15/2020
-ms.author: v-tawe
-ms.openlocfilehash: 1ccf4f95121e54c370f2d71ba9ec527f6161f97c
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.date: 08/04/2020
+ms.author: v-johya
+ms.openlocfilehash: c07dac5262f8998adbadc1ac22c4db48ed8cddad
+ms.sourcegitcommit: caa18677adb51b5321ad32ae62afcf92ac00b40b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85101992"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88023397"
 ---
 # <a name="limits-for-your-luis-model-and-keys"></a>LUIS 模型和密钥的限制
-LUIS 有几个限制区。 第一个是[模型限制](#model-limits)，它可控制 LUIS 中的意向、实体和功能。 第二个是基于密钥类型的[配额限制](#key-limits)。 限制的第三个区域是用于控制 LUIS 网站的[键盘组合](#keyboard-controls)。 第四个是 LUIS 创作网站和 LUIS [终结点](luis-glossary.md#endpoint) API 之间的[世界区域映射](luis-reference-regions.md)。
+LUIS 有几个限制区。 第一个是[模型限制](#model-limits)，它可控制 LUIS 中的意向、实体和功能。 第二个是基于密钥类型的[配额限制](#key-limits)。 限制的第三个区域是用于控制 LUIS 网站的[键盘组合](#keyboard-controls)。 第四个是 LUIS 创作网站和 LUIS [终结点](luis-glossary.md#endpoint) API 之间的[区域映射](luis-reference-regions.md)。
 
 <a name="model-boundaries"></a>
 
@@ -36,8 +37,12 @@ LUIS 有几个限制区。 第一个是[模型限制](#model-limits)，它可控
 | [模式](luis-concept-patterns.md)|每个应用程序 500 个模式。<br>模式的最大长度为 400 个字符。<br>每个模式 3 个 Pattern.any 实体<br>模式中最多 2 个嵌套可选文本|
 | [Pattern.any](./luis-concept-entity-types.md)|每个应用程序 100 个，每个模式 3 个 pattern.any 实体 |
 | [短语列表][phrase-list]|500 个短语列表。 10 个全局短语列表（由于存在作为特征的模型的限制）。 不可互换的短语列表最多有 5,000 个短语。 可互换的短语列表最多有 50,000 个短语。 每个应用程序的最大短语总数为 500,000 个短语。|
-<!-- not support-->
-| [正则表达式实体](./luis-concept-entity-types.md)|20 个实体<br>每个正则表达式实体模式 最多 500 个字符| | [角色](luis-concept-roles.md)|每个应用程序 300 个角色。 每个实体 10 个角色| | [言语][utterances] | 500 个字符<br><br>如果文本长度超过此字符限制，则需要先将言语分段，然后再输入到 LUIS 并相应地合并响应。 可以使用明显的中断，例如标点符号和语音长时间停顿。| | [言语示例][utterances] | 每个应用程序 15,000 个言语示例 - 对每个意向的言语数量没有限制<br><br>如果需要使用更多示例来定型应用程序，请使用 [dispatch](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch) 模型方法。 可以使用一个或多个意向定型单个 LUIS 应用（称为父调度应用的子应用），然后定型调度应用，该应用从每个 LUIS 子应用的言语中采样，以将预测请求定向到正确的子应用。 | | [版本](luis-concept-version.md)| 每个应用程序 100 个版本 | | [版本名称][luis-how-to-manage-versions] | 128 个字符 |
+| [正则表达式实体](./luis-concept-entity-types.md)|20 个实体<br>每个正则表达式实体模式 最多 500 个字符|
+| [角色](luis-concept-roles.md)|每个应用程序 300 个角色。 每个实体 10 个角色|
+| [话语][utterances] | 500 个字符<br><br>如果文本长度超过此字符限制，则需要在输入 LUIS 之前对话语进行分段，并且每个分段都会收到单独的意向响应。 你可以处理一些明显的中断，比如标点符号和言语中的长停顿。|
+| [言语示例][utterances] | 每个应用程序 15,000 条 - 对每个意向的话语数量没有限制<br><br>如果需要使用更多示例来定型应用程序，请使用 [dispatch](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch) 模型方法。 可以使用一个或多个意向定型单个 LUIS 应用（称为父调度应用的子应用），然后定型调度应用，该应用从每个 LUIS 子应用的言语中采样，以将预测请求定向到正确的子应用。 |
+| [版本](luis-concept-version.md)| 每个应用程序 100 个版本 |
+| [版本名称][luis-how-to-manage-versions] | 128 个字符 |
 
 *默认最大字符长度为 50 个字符。
 
@@ -65,7 +70,7 @@ LUIS 有几个限制区。 第一个是[模型限制](#model-limits)，它可控
 
 ## <a name="resource-usage-and-limits"></a>资源使用情况和限制
 
-语言理解有单独的资源，一种用于创作，一种用于查询预测终结点。 若要详细了解密钥类型之间的差异，请参阅 [LUIS 中的创作密钥和查询预测终结点密钥](luis-concept-keys.md)。
+语言理解有单独的资源，一种用于创作，一种用于查询预测终结点。 若要详细了解密钥类型之间的差异，请参阅 [LUIS 中的创作密钥和查询预测终结点密钥](luis-how-to-azure-subscription.md)。
 
 <a name="key-limits"></a>
 
@@ -90,10 +95,14 @@ LUIS 有几个限制区。 第一个是[模型限制](#model-limits)，它可控
 |--|--|
 |F0 - 免费层 |1 万/月，5/秒|
 |S0 - 标准层|50/秒|
+
 ### <a name="sentiment-analysis"></a>情绪分析
 
 提供了[情绪分析集成](luis-how-to-publish-app.md#enable-sentiment-analysis)（其中提供情绪信息），无需其他 Azure 资源。
-<!-- not available-->
+
+### <a name="speech-integration"></a>语音集成
+
+[语音集成](../speech-service/how-to-recognize-intents-from-speech-csharp.md)每单位成本提供 1 千个终结点请求。
 
 [详细了解定价。][pricing]
 
@@ -107,16 +116,12 @@ LUIS 有几个限制区。 第一个是[模型限制](#model-limits)，它可控
 
 登录访问权限为 60 分钟。 在此时间段后，会出现此错误。 需重新登录。
 
-[luis-get-started-create-app]: https://docs.azure.cn/cognitive-services/LUIS/luis-get-started-create-app
-[batch-testing]: https://docs.azure.cn/cognitive-services/LUIS/luis-concept-test#batch-testing
-[intents]: https://docs.azure.cn/cognitive-services/LUIS/luis-concept-intent
-[phrase-list]: https://docs.azure.cn/cognitive-services/LUIS/luis-concept-feature<!-- 404 -->
-[utterances]: https://docs.azure.cn/cognitive-services/LUIS/luis-concept-utterance
-[luis-how-to-manage-versions]: https://docs.azure.cn/cognitive-services/LUIS/luis-how-to-manage-versions
+[luis-get-started-create-app]: /cognitive-services/luis/luis-get-started-create-app
+[batch-testing]: /cognitive-services/luis/luis-concept-test#batch-testing
+[intents]: /cognitive-services/luis/luis-concept-intent
+[phrase-list]: /cognitive-services/luis/luis-concept-feature
+[utterances]: /cognitive-services/luis/luis-concept-utterance
+[luis-how-to-manage-versions]: /cognitive-services/luis/luis-how-to-manage-versions
 [pricing]: https://www.azure.cn/pricing/details/cognitive-services/
 <!-- TBD: fix this link -->
-[speech-to-intent-pricing]: https://www.azure.cn/pricing/details/cognitive-services/
-
-
-
 

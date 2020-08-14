@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 07/20/2020
+ms.date: 08/07/2020
 ms.author: v-junlch
-ms.openlocfilehash: 2beca3c24f741f16a45fce177f6bf34b531b7312
-ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
+ms.openlocfilehash: 572beb7f5b3133cccc867ded30ee03389d0403ea
+ms.sourcegitcommit: a5eb9a47feefb053ddbaab4b15c395972c372339
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86472544"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88028630"
 ---
 # <a name="common-errors-and-troubleshooting-steps-for-azure-active-directory-domain-services"></a>Azure Active Directory 域服务的常见错误和故障排除步骤
 
@@ -33,7 +33,7 @@ ms.locfileid: "86472544"
 | *名称 aaddscontoso.com 已在此网络中使用。指定一个未使用的名称。* |[虚拟网络中的域名冲突](troubleshoot.md#domain-name-conflict) |
 | *无法在此 Azure AD 租户中启用域服务。该服务对名为“Azure AD 域服务同步”的应用程序没有足够的权限。请删除名为“Azure AD 域服务同步”的应用程序，并尝试为 Azure AD 租户启用域服务。* |[域服务对 Azure AD 域服务同步应用程序没有足够的权限](troubleshoot.md#inadequate-permissions) |
 | *无法在此 Azure AD 租户中启用域服务。Azure AD 租户中的域服务应用程序没有所需的权限来启用域服务。请删除标识符为 d87dcbc6-a371-462e-88e3-28ad15ec4e64 的应用程序，并尝试为 Azure AD 租户启用域服务。* |[未在 Azure AD 租户中正确配置域服务应用程序](troubleshoot.md#invalid-configuration) |
-| *无法在此 Azure AD 租户中启用域服务。Microsoft Azure AD 应用程序已在 Azure AD 租户中禁用。请启用标识符为 00000002-0000-0000-c000-000000000000 的应用程序，并尝试为 Azure AD 租户启用域服务。* |[Microsoft Graph 应用程序已在 Azure AD 租户中禁用](troubleshoot.md#microsoft-graph-disabled) |
+| *无法在此 Azure AD 租户中启用域服务。Azure AD 应用程序已在 Azure AD 租户中禁用。请启用标识符为 00000002-0000-0000-c000-000000000000 的应用程序，并尝试为 Azure AD 租户启用域服务。* |[Microsoft Graph 应用程序已在 Azure AD 租户中禁用](troubleshoot.md#microsoft-graph-disabled) |
 
 ### <a name="domain-name-conflict"></a>域名冲突
 
@@ -110,11 +110,11 @@ if ($sp -ne $null)
 
 **错误消息**
 
-*无法在此 Azure AD 租户中启用域服务。Microsoft Azure AD 应用程序已在 Azure AD 租户中禁用。请启用标识符为 00000002-0000-0000-c000-000000000000 的应用程序，并尝试为 Azure AD 租户启用域服务。*
+*无法在此 Azure AD 租户中启用域服务。Azure AD 应用程序已在 Azure AD 租户中禁用。请启用标识符为 00000002-0000-0000-c000-000000000000 的应用程序，并尝试为 Azure AD 租户启用域服务。*
 
 **解决方法**
 
-检查是否已禁用标识符为 00000002-0000-0000-c000-000000000000 的应用程序。 此应用程序是一个 Microsoft Azure AD 应用程序，为图形 API 提供对 Azure AD 租户的访问权限。 若要同步 Azure AD 租户，必须启用此应用程序。
+检查是否已禁用标识符为 00000002-0000-0000-c000-000000000000 的应用程序。 此应用程序是一个 Azure AD 应用程序，为图形 API 提供对 Azure AD 租户的访问权限。 若要同步 Azure AD 租户，必须启用此应用程序。
 
 若要检查此应用程序的状态并根据需要将其启用，请完成以下步骤：
 
@@ -137,7 +137,7 @@ if ($sp -ne $null)
     
       * 是否已部署或更新到[建议使用的最新版本的 Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)。
       * 是否已将 Azure AD Connect 配置为[执行完全同步][hybrid-phs]。
-      * 根据目录的大小，可能需要一段时间之后才可在 Azure AD 中使用用户帐户和凭据哈希。 在尝试向托管域进行身份验证之前，请确保等待足够长的时间。
+      * 根据目录的大小，可能需要一段时间之后才可在托管域中使用用户帐户和凭据哈希。 在尝试向托管域进行身份验证之前，请确保等待足够长的时间。
       * 如果在验证上述步骤后问题仍然出现，请尝试重启“Microsoft Azure AD 同步服务”。 从你的 Azure AD Connect 服务器中，打开一个命令提示符并运行以下命令：
     
         ```console
@@ -145,7 +145,7 @@ if ($sp -ne $null)
         net start 'Microsoft Azure AD Sync'
         ```
 
-    * **仅限云帐户**：如果受影响的用户帐户是纯云用户帐户，请确保[用户在你启用 Azure AD DS 后已更改其密码][cloud-only-passwords]。 此密码重置操作将生成 Azure AD 域服务所需的凭据哈希。
+    * **仅限云帐户**：如果受影响的用户帐户是纯云用户帐户，请确保[用户在你启用 Azure AD DS 后已更改其密码][cloud-only-passwords]。 此密码重置操作将生成托管域所需的凭据哈希。
 
 * **验证用户帐户是否处于活动状态**：默认情况下，在托管域上于 2 分钟内进行五次无效密码尝试会导致用户帐户被锁定 30 分钟。 当帐户被锁定时，用户无法登录。30 分钟后用户帐户将自动解锁。
   * 在托管域上尝试无效密码不会在 Azure AD 中锁定用户帐户， 只会在托管域中锁定用户帐户。 请使用[管理 VM][management-vm] 检查 Active Directory 管理控制台 (ADAC) 中的用户帐户状态，而不是在 Azure AD 中这样做。

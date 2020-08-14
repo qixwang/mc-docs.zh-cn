@@ -5,16 +5,16 @@ services: container-service
 author: rockboyfor
 ms.topic: article
 origin.date: 01/24/2020
-ms.date: 07/13/2020
+ms.date: 08/10/2020
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 79135eb03e7ab5a9560bbeda149acb963942f9b9
-ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
+ms.openlocfilehash: e2a73de926c312470124376dd5646ec9d596ddf6
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86218801"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842635"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Azure Kubernetes 服务的支持策略
 
@@ -57,7 +57,7 @@ AKS 不是完全托管型的群集解决方案。 某些组件（例如工作器
 Azure 提供以下方面的技术支持：
 
 > [!NOTE]
-> Azure 支持所采取的任何群集操作都是经用户同意并通过名称为 `aks-support-rolebinding` 的 Kubernetes[“编辑”](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles)角色进行的。 使用此角色，可以启用 AKS 支持来编辑群集配置和资源，以便对群集问题进行故障排除和诊断，但该角色不能修改权限，也不能创建角色或角色绑定。 仅在具有实时 (JIT) 访问权限的活动支持票证下启用角色访问。
+> Microsoft/AKS 所执行的任何群集操作都是经用户同意，在内置 Kubernetes 角色 `aks-service` 和内置角色绑定 `aks-service-rolebinding` 下执行的。 此角色允许 AKS 对群集问题进行故障排除和诊断，但不能修改权限，也不能创建角色或角色绑定或者其他高权限操作。 仅在具有实时 (JIT) 访问权限的活动支持票证下启用角色访问。
 
 * 连接到 Kubernetes 服务提供和支持的所有 Kubernetes 组件，例如 API 服务器。
 * Kubernetes 控制平面服务（例如 Kubernetes 主节点、API 服务器、etcd 和 kube-dns）的管理、运行时间、QoS 和操作。
@@ -80,7 +80,7 @@ Azure 不提供以下方面的技术支持：
     > Azure 可以尽最大努力为 Helm 和 Kured 等第三方开源项目提供支持。 如果需要将第三方开源工具与 Kubernetes Azure 云提供程序相集成，或者存在其他特定于 AKS 的 bug，则 Azure 可以通过 Azure 文档提供示例和应用程序方面的支持。
 * 第三方闭源软件。 此类软件可能包括安全扫描工具以及网络设备或软件。
 * 有关多云或多供应商扩建的问题。 例如，Azure 不会为运行联合多公共端云供应商解决方案的相关问题提供支持。
-* [AKS 文档](/aks/)中未列出的网络自定义。
+* [AKS 文档](./index.yml)中未列出的网络自定义。
     > [!NOTE]
     > Azure 不会为有关网络安全组 (NSG) 的问题和 bug 提供支持。 例如，Azure 支持可以解答有关 NSG 无法更新或出现意外的 NSG 或负载均衡器行为的问题。
 

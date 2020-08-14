@@ -1,23 +1,31 @@
 ---
 title: 内置策略定义列表
-description: 列出 Azure Policy 的内置策略定义。 类别包括“标记”、“合规性”、“Key Vault”、“Kubernetes”、“来宾配置”等。
-origin.date: 05/05/2020
-ms.date: 05/29/2020
+description: 列出 Azure Policy 的内置策略定义。 类别包括“标记”、“密钥保管库”、“来宾配置”等。
+origin.date: 07/10/2020
+ms.date: 08/06/2020
 ms.author: v-tawe
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 7d9b9c2ea01036996cae1bc2cc7c564b721c2c08
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: c2c7a27c3cff125de52f8b64a4f9adf4e29ec7c4
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199274"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917246"
 ---
 # <a name="azure-policy-built-in-policy-definitions"></a>Azure Policy 内置策略定义
 
 此页是 Azure Policy 内置策略定义的索引。
 
 每个内置链接（指向Azure 门户中的策略定义）的名称。 使用“源”列中的链接查看 [Azure Policy GitHub 存储库](https://github.com/Azure/azure-policy)上的源。 这些内置项按**元数据**中的 **category** 属性进行分组。 若要跳转到特定的**类别**，请使用页面右侧的菜单。 否则，请按 <kbd>Ctrl</kbd>-<kbd>F</kbd> 来使用浏览器的搜索功能。
+
+<!-- ## API for FHIR -->
+
+<!-- [!INCLUDE [azure-policy-samples-policies-api-for-fhir](../../../../includes/policy/samples/bycat/policies-api-for-fhir.md)] -->
+
+## <a name="api-management"></a>API 管理
+
+[!INCLUDE [azure-policy-samples-policies-api-management](../../../../includes/policy/samples/bycat/policies-api-management.md)]
 
 <!-- ## App Configuration
 
@@ -35,17 +43,21 @@ ms.locfileid: "84199274"
 
 [!INCLUDE [azure-policy-samples-policies-automation](../../../../includes/policy/samples/bycat/policies-automation.md)]
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>备份
 
 [!INCLUDE [azure-policy-samples-policies-backup](../../../../includes/policy/samples/bycat/policies-backup.md)]
 
-## <a name="batch"></a>批处理
+## <a name="batch"></a>Batch
 
 [!INCLUDE [azure-policy-samples-policies-batch](../../../../includes/policy/samples/bycat/policies-batch.md)]
 
 ## <a name="cache"></a>缓存
 
 [!INCLUDE [azure-policy-samples-policies-cache](../../../../includes/policy/samples/bycat/policies-cache.md)]
+
+## <a name="cognitive-services"></a>认知服务
+
+[!INCLUDE [azure-policy-samples-policies-cognitive-services](../../../../includes/policy/samples/bycat/policies-cognitive-services.md)]
 
 ## <a name="compute"></a>计算
 
@@ -66,6 +78,10 @@ ms.locfileid: "84199274"
 <!-- ## Data Lake
 
 [!INCLUDE [azure-policy-samples-policies-data-lake](../../../../includes/policy/samples/bycat/policies-data-lake.md)] -->
+
+<!-- ## Event Grid -->
+
+<!-- [!INCLUDE [azure-policy-samples-policies-event-grid](../../../../includes/policy/samples/bycat/policies-event-grid.md)] -->
 
 ## <a name="event-hub"></a>事件中心
 
@@ -91,10 +107,6 @@ ms.locfileid: "84199274"
 
 [!INCLUDE [azure-policy-samples-policies-kubernetes](../../../../includes/policy/samples/bycat/policies-kubernetes.md)] -->
 
-<!-- ## Kubernetes service
-
-[!INCLUDE [azure-policy-samples-policies-kubernetes-service](../../../../includes/policy/samples/bycat/policies-kubernetes-service.md)] -->
-
 <!-- ## Lighthouse
 
 [!INCLUDE [azure-policy-samples-policies-lighthouse](../../../../includes/policy/samples/bycat/policies-lighthouse.md)] -->
@@ -102,6 +114,10 @@ ms.locfileid: "84199274"
 ## <a name="logic-apps"></a>逻辑应用
 
 [!INCLUDE [azure-policy-samples-policies-logic-apps](../../../../includes/policy/samples/bycat/policies-logic-apps.md)]
+
+<!-- ## Machine Learning -->
+
+<!-- [!INCLUDE [azure-policy-samples-policies-machine-learning](../../../../includes/policy/samples/bycat/policies-machine-learning.md)] -->
 
 <!-- ## Managed Application
 
@@ -131,6 +147,10 @@ ms.locfileid: "84199274"
 
 [!INCLUDE [azure-policy-samples-policies-service-fabric](../../../../includes/policy/samples/bycat/policies-service-fabric.md)]
 
+<!-- ## SignalR -->
+
+<!-- [!INCLUDE [azure-policy-samples-policies-signalr](../../../../includes/policy/samples/bycat/policies-signalr.md)] -->
+
 ## <a name="sql"></a>SQL
 
 [!INCLUDE [azure-policy-samples-policies-sql](../../../../includes/policy/samples/bycat/policies-sql.md)]
@@ -146,6 +166,10 @@ ms.locfileid: "84199274"
 ## <a name="tags"></a>Tags
 
 [!INCLUDE [azure-policy-samples-policies-tags](../../../../includes/policy/samples/bycat/policies-tags.md)]
+
+<!-- ## VM Image Builder -->
+
+<!-- [!INCLUDE [azure-policy-samples-policies-vm-image-builder](../../../../includes/policy/samples/bycat/policies-vm-image-builder.md)] -->
 
 ## <a name="next-steps"></a>后续步骤
 

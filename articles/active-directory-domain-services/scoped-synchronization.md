@@ -1,6 +1,6 @@
 ---
 title: Azure AD 域服务的具有作用域的同步 | Microsoft Docs
-description: 了解如何配置从 Azure AD 到 Azure Active Directory 域服务托管域的具有作用域的同步
+description: 了解如何使用 Azure 门户来配置从 Azure AD 到 Azure Active Directory 域服务托管域的区分范围的同步
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -9,66 +9,62 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/13/2020
+ms.date: 08/07/2020
 ms.author: v-junlch
-ms.openlocfilehash: f066a26515d1a4a7aa66fbe3a0e8513d7ccd27e3
-ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
+ms.openlocfilehash: 067260510842c2e56882e713be5262219ccc30e0
+ms.sourcegitcommit: a5eb9a47feefb053ddbaab4b15c395972c372339
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86472547"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88028599"
 ---
-# <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services"></a>配置从 Azure AD 到 Azure Active Directory 域服务的具有作用域的同步
+# <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services-using-the-azure-portal"></a>使用 Azure 门户配置从 Azure AD 到 Azure Active Directory 域服务的区分范围的同步
 
-为了提供身份验证服务，Azure Active Directory 域服务 (Azure AD DS) 从 Azure AD 同步用户和组。 在混合环境中，本地 Active Directory 域服务 (AD DS) 环境中的用户和组可以先使用 Azure AD Connect 同步到 Azure AD，然后再同步到 Azure AD DS。
+为了提供身份验证服务，Azure Active Directory 域服务 (Azure AD DS) 从 Azure AD 同步用户和组。 在混合环境中，本地 Active Directory 域服务 (AD DS) 环境中的用户和组可以先使用 Azure AD Connect 同步到 Azure AD，然后再同步到 Azure AD DS 托管域。
 
-默认情况下，Azure AD 目录中的所有用户和组都同步到 Azure AD DS 托管域。 如果有特定需求，可以改为选择只同步所定义的一组用户。
+默认情况下，Azure AD 目录中的所有用户和组都同步到托管域。 如果有特定需求，可以改为选择只同步所定义的一组用户。
 
-本文展示了如何创建一个使用具有作用域的同步的托管域，然后更改或禁用作用域内用户的集合。
+本文展示了如何使用 Azure 门户配置区分范围的同步，然后更改或禁用区分范围的用户集合。 也可以[使用 PowerShell 完成这些步骤][scoped-sync-powershell]。
+
+## <a name="before-you-begin"></a>准备阶段
+
+需有以下资源和特权才能完成本文：
+
+* 一个有效的 Azure 订阅。
+    * 如果你没有 Azure 订阅，请[创建一个帐户](https://www.azure.cn/pricing/1rmb-trial)。
+* 与订阅关联的 Azure Active Directory 租户，可以与本地目录或仅限云的目录同步。
+    * 如果需要，请[创建一个 Azure Active Directory 租户][create-azure-ad-tenant]或[将 Azure 订阅关联到你的帐户][associate-azure-ad-tenant]。
+* 在 Azure AD 租户中启用并配置 Azure Active Directory 域服务托管域。
+    * 如果需要，请完成[创建并配置 Azure Active Directory 域服务托管域][tutorial-create-instance]的教程。
+* 需要在 Azure AD 租户中拥有“全局管理员”特权才能更改 Azure AD DS 同步作用域。
 
 ## <a name="scoped-synchronization-overview"></a>具有作用域的同步概述
 
-默认情况下，Azure AD 目录中的所有用户和组都同步到托管域。 如果只有几个用户需要访问托管域，则可以仅同步这些用户帐户。 此具有作用域的同步基于组。 配置基于组的具有作用域的同步时，只有属于指定组的用户帐户才会同步到托管域。
+默认情况下，Azure AD 目录中的所有用户和组都同步到托管域。 如果只有几个用户需要访问托管域，则可以仅同步这些用户帐户。 此具有作用域的同步基于组。 配置基于组的具有作用域的同步时，只有属于指定组的用户帐户才会同步到托管域。 不同步嵌套组，只同步所选的特定组。
 
-下表概述了如何使用具有作用域的同步：
+可以在创建托管域时或完成部署后更改同步范围。 现在还可以更改现有托管域上同步的范围，而无需进行重新创建。
 
-| 当前状态 | 所需状态 | 所需配置 |
-| --- | --- | --- |
-| 现有托管域配置为同步所有用户帐户和组。 | 你希望仅同步属于特定组的用户帐户。 | 不能从同步所有用户更改为使用具有作用域的同步。 请[删除现有的托管域](delete-aadds.md)，然后按照本文中的步骤操作，以重新创建一个配置了具有作用域的同步的托管域。 |
-| 无现有托管域。 | 希望新建托管域，并仅同步属于特定组的用户帐户。 | 按照本文中的步骤进行操作，以创建一个配置了具有作用域的同步的托管域。 |
-| 现有托管域配置为仅同步属于特定组的帐户。 | 你希望修改包含应同步到托管域的用户的组列表。 | 按照本文中的步骤进行操作，修改具有作用域的同步。 |
-
-可以使用 Azure 门户或 PowerShell 配置具有作用域的同步的设置：
-
-| 操作 | | |
-|--|--|--|
-| 创建托管域并配置具有作用域的同步 | [Azure 门户](#enable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#enable-scoped-synchronization-using-powershell) |
-| 修改具有作用域的同步 | [Azure 门户](#modify-scoped-synchronization-using-the-azure-portal) | [PowerShell](#modify-scoped-synchronization-using-powershell) |
-| 禁用具有作用域的同步 | [Azure 门户](#disable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#disable-scoped-synchronization-using-powershell) |
+若要详细了解同步过程，请参阅[了解 Azure AD 域服务中的同步][concepts-sync]。
 
 > [!WARNING]
 > 更改同步作用域会导致托管域重新同步所有数据。 请注意以下事项：
-> 
+>
 >  * 如果你更改托管域的同步范围，便会发生完全重新同步。
 >  * 托管域中不再需要的对象会被删除。 托管域中会新建对象。
->  * 重新同步可能需要较长时间才能完成。 同步时间取决于托管域和 Azure AD 目录中的对象（例如用户、组和组成员身份）的数量。 对于包含数十万个对象的大型目录，重新同步可能需要几天时间才能完成。
 
-## <a name="enable-scoped-synchronization-using-the-azure-portal"></a>使用 Azure 门户启用具有作用域的同步
+## <a name="enable-scoped-synchronization"></a>启用区分范围的同步
 
-若要在 Azure 门户中启用具有作用域的同步，请完成以下步骤：
+若要在 Azure 门户中启用区分范围的同步，请完成以下步骤：
 
-1. 按照[创建和配置托管域的教程](tutorial-create-instance-advanced.md)进行操作。 完成所有先决条件和部署步骤（适用于同步作用域的除外）。
-1. 在同步步骤中选择“具有作用域”，然后选择要同步到托管域的 Azure AD 组。
+1. 在 Azure 门户中，搜索并选择“Azure AD 域服务”。 选择你的托管域，例如 *aaddscontoso.com*。
+1. 在左侧菜单中选择“同步”。
+1. 对于“同步类型”，请选择“区分范围”。
+1. 选择“选择组”，搜索并选择要添加的组。
+1. 进行所有更改后，选择“保存同步作用域”。
 
-托管域最多可能需要一小时才能完成部署。 在 Azure 门户中，托管域的“概览”页会显示整个部署阶段的当前状态。
+更改同步作用域会导致托管域重新同步所有数据。 托管域中不再需要的对象会被删除，重新同步可能需要一些时间才能完成。
 
-当 Azure 门户显示托管域已完成预配时，需要完成以下任务：
-
-* 为虚拟网络更新 DNS 设置，以使虚拟机能够找到用于域加入或身份验证的托管域。
-    * 若要配置 DNS，请在门户中选择你的托管域。 在“概览”窗口中，系统会提示你自动配置这些 DNS 设置。
-* [启用 Azure AD 域服务的密码同步](tutorial-create-instance-advanced.md#enable-user-accounts-for-azure-ad-ds)，使最终用户能够使用其企业凭据登录到托管域。
-
-## <a name="modify-scoped-synchronization-using-the-azure-portal"></a>使用 Azure 门户修改具有作用域的同步
+## <a name="modify-scoped-synchronization"></a>修改具有作用域的同步
 
 若要修改包含应同步到托管域的用户的组列表，请完成以下步骤：
 
@@ -78,186 +74,26 @@ ms.locfileid: "86472547"
 1. 若要从同步作用域中删除某个组，请从当前同步的组列表中选择它，然后选择“删除组”。
 1. 进行所有更改后，选择“保存同步作用域”。
 
-更改同步作用域会导致托管域重新同步所有数据。 托管域中不再需要的对象会被删除，重新同步可能需要很长时间才能完成。
+更改同步作用域会导致托管域重新同步所有数据。 托管域中不再需要的对象会被删除，重新同步可能需要一些时间才能完成。
 
-## <a name="disable-scoped-synchronization-using-the-azure-portal"></a>使用 Azure 门户禁用具有作用域的同步
+## <a name="disable-scoped-synchronization"></a>禁用具有作用域的同步
 
 若要为托管域禁用基于组的具有作用域的同步，请完成以下步骤：
 
 1. 在 Azure 门户中，搜索并选择“Azure AD 域服务”。 选择你的托管域，例如 *aaddscontoso.com*。
 1. 在左侧菜单中选择“同步”。
-1. 将同步作用域从“具有作用域”设置为“全部”，然后选择“保存同步作用域”。
+1. 将“同步类型”从“区分范围”更改为“全部”，然后选择“保存同步范围”  。
 
-更改同步作用域会导致托管域重新同步所有数据。 托管域中不再需要的对象会被删除，重新同步可能需要很长时间才能完成。
-
-## <a name="powershell-script-for-scoped-synchronization"></a>用于具有作用域的同步的 PowerShell 脚本
-
-若要使用 PowerShell 配置具有作用域的同步，请首先将以下脚本保存到名为 `Select-GroupsToSync.ps1` 的文件中。 此脚本将 Azure AD DS 配置为从 Azure AD 同步所选组。 属于指定组的所有用户帐户都会同步到托管域。
-
-此脚本将用于本文中的其他步骤。
-
-```powershell
-param (
-    [Parameter(Position = 0)]
-    [String[]]$groupsToAdd
-)
-
-Connect-AzureAD -AzureEnvironmentName AzureChinaCloud
-
-$sp = Get-AzureADServicePrincipal -Filter "AppId eq '2565bd9d-da50-47d4-8b85-4c97f669dc36'"
-$role = $sp.AppRoles | where-object -FilterScript {$_.DisplayName -eq "User"}
-
-Write-Output "`n****************************************************************************"
-
-Write-Output "Total group-assignments need to be added: $($groupsToAdd.Count)"
-$newGroupIds = New-Object 'System.Collections.Generic.HashSet[string]'
-foreach ($groupName in $groupsToAdd)
-{
-    try
-    {
-        $group = Get-AzureADGroup -Filter "DisplayName eq '$groupName'"
-        $newGroupIds.Add($group.ObjectId)
-
-        Write-Output "Group-Name: $groupName, Id: $($group.ObjectId)"
-    }
-    catch
-    {
-        Write-Error "Failed to find group: $groupName. Exception: $($_.Exception)."
-    }
-}
-
-Write-Output "****************************************************************************`n"
-Write-Output "`n****************************************************************************"
-
-$currentAssignments = Get-AzureADServiceAppRoleAssignment -ObjectId $sp.ObjectId
-Write-Output "Total current group-assignments: $($currentAssignments.Count), SP-ObjectId: $($sp.ObjectId)"
-
-$currAssignedObjectIds = New-Object 'System.Collections.Generic.HashSet[string]'
-foreach ($assignment in $currentAssignments)
-{
-    Write-Output "Assignment-ObjectId: $($assignment.PrincipalId)"
-
-    if ($newGroupIds.Contains($assignment.PrincipalId) -eq $false)
-    {
-        Write-Output "This assignment is not needed anymore. Removing it! Assignment-ObjectId: $($assignment.PrincipalId)"
-        Remove-AzureADServiceAppRoleAssignment -ObjectId $sp.ObjectId -AppRoleAssignmentId $assignment.ObjectId
-    }
-    else
-    {
-        $currAssignedObjectIds.Add($assignment.PrincipalId)
-    }
-}
-
-Write-Output "****************************************************************************`n"
-Write-Output "`n****************************************************************************"
-
-foreach ($id in $newGroupIds)
-{
-    try
-    {
-        if ($currAssignedObjectIds.Contains($id) -eq $false)
-        {
-            Write-Output "Adding new group-assignment. Role-Id: $($role.Id), Group-Object-Id: $id, ResourceId: $($sp.ObjectId)"
-            New-AzureADGroupAppRoleAssignment -Id $role.Id -ObjectId $id -PrincipalId $id -ResourceId $sp.ObjectId
-        }
-        else
-        {
-            Write-Output "Group-ObjectId: $id is already assigned."
-        }
-    }
-    catch
-    {
-        Write-Error "Exception occurred assigning Object-ID: $id. Exception: $($_.Exception)."
-    }
-}
-
-Write-Output "****************************************************************************`n"
-```
-
-## <a name="enable-scoped-synchronization-using-powershell"></a>使用 PowerShell 启用具有作用域的同步
-
-使用 PowerShell 完成下面的一组步骤。 请参阅[使用 PowerShell 启用 Azure Active Directory 域服务](powershell-create-instance.md)中的说明。 为了配置范围内同步，我们对这篇文章中的几个步骤略作修改。
-
-1. 完成文章中的以下任务，以使用 PowerShell 来启用 Azure AD DS。 到达实际创建托管域的步骤时请停止。 可以在创建托管域时配置具有作用域的同步。
-
-   * [安装所需的 PowerShell 模块](powershell-create-instance.md#prerequisites)。
-   * [创建进行管理访问所需的服务主体和 Azure AD 组](powershell-create-instance.md#create-required-azure-ad-resources)。
-   * [创建提供支持的 Azure 资源，例如虚拟网络和子网](powershell-create-instance.md#create-supporting-azure-resources)。
-
-1. 确定你要从 Azure AD 同步的组及其包含的用户。 创建要同步到 Azure AD DS 的组的显示名称的列表。
-
-1. 运行[上一部分中的脚本](#powershell-script-for-scoped-synchronization)并使用 -groupsToAdd 参数来传递要同步的组的列表。
-
-   > [!WARNING]
-   > 必须在具有作用域的同步的组列表中包括“AAD DC 管理员”组。 如果未包括此组，将无法使用托管域。
-
-   ```powershell
-   .\Select-GroupsToSync.ps1 -groupsToAdd @("AAD DC Administrators", "GroupName1", "GroupName2")
-   ```
-
-1. 现在，创建托管域并启用基于组的具有作用域的同步。 在 -Properties 参数中包括 "filteredSync" = "Enabled"。
-
-    设置 Azure 订阅 ID，然后提供托管域的名称，例如 aaddscontoso.com。 可以使用 [Get-AzSubscription][Get-AzSubscription] cmdlet 获取订阅 ID。 将资源组名称、虚拟网络名称和区域设置为之前步骤中使用的值，以创建提供支持的 Azure 资源：
-
-   ```powershell
-   $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
-   $ManagedDomainName = "aaddscontoso.com"
-   $ResourceGroupName = "myResourceGroup"
-   $VnetName = "myVnet"
-   $AzureLocation = "chinanorth"
-
-   # Enable Azure AD Domain Services for the directory.
-   New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.AAD/DomainServices/$ManagedDomainName" `
-   -Location $AzureLocation `
-   -Properties @{"DomainName"=$ManagedDomainName; "filteredSync" = "Enabled"; `
-    "SubnetId"="/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/virtualNetworks/$VnetName/subnets/DomainServices"} `
-   -Force -Verbose
-   ```
-
-创建资源并将控制权返回给 PowerShell 提示符需要花费几分钟时间。 托管域将在后台继续预配，完成部署最长可能需要一小时。 在 Azure 门户中，托管域的“概览”页会显示整个部署阶段的当前状态。
-
-当 Azure 门户显示托管域已完成预配时，需要完成以下任务：
-
-* 为虚拟网络更新 DNS 设置，以使虚拟机能够找到用于域加入或身份验证的托管域。
-    * 若要配置 DNS，请在门户中选择你的托管域。 在“概览”窗口中，系统会提示你自动配置这些 DNS 设置。
-* 如果在支持可用性区域的区域中创建了托管域，请创建一个网络安全组，仅限该托管域在虚拟网络中传送流量。 创建一个要求实施这些规则的 Azure 标准负载均衡器。 此网络安全组会保护 Azure AD DS，是托管域正常运行所需的。
-    * 若要创建网络安全组和所需的规则，请在门户中选择你的托管域。 “概览”窗口中会提示你自动创建并配置网络安全组。
-* [启用 Azure AD 域服务的密码同步](tutorial-create-instance-advanced.md#enable-user-accounts-for-azure-ad-ds)，使最终用户能够使用其企业凭据登录到托管域。
-
-## <a name="modify-scoped-synchronization-using-powershell"></a>使用 PowerShell 修改具有作用域的同步
-
-若要修改包含应同步到托管域的用户的组列表，请重新运行 [PowerShell 脚本](#powershell-script-for-scoped-synchronization)，并指定新的组列表。 在下面的示例中，要同步的组不再包括 GroupName2，其现在包括 GroupName3。
-
-> [!WARNING]
-> 必须在具有作用域的同步的组列表中包括“AAD DC 管理员”组。 如果未包括此组，将无法使用托管域。
-
-```powershell
-.\Select-GroupsToSync.ps1 -groupsToAdd @("AAD DC Administrators", "GroupName1", "GroupName3")
-```
-
-更改同步作用域会导致托管域重新同步所有数据。 托管域中不再需要的对象会被删除，重新同步可能需要很长时间才能完成。
-
-## <a name="disable-scoped-synchronization-using-powershell"></a>使用 PowerShell 禁用具有作用域的同步
-
-若要为托管域禁用基于组的具有作用域的同步，请在 Azure AD DS 资源上设置 "filteredSync" = "Disabled"，然后更新托管域。 完成后，所有用户和组都设置为从 Azure AD 进行同步。
-
-```powershell
-// Retrieve the Azure AD DS resource.
-$DomainServicesResource = Get-AzResource -ResourceType "Microsoft.AAD/DomainServices"
-
-// Disable group-based scoped synchronization.
-$disableScopedSync = @{"filteredSync" = "Disabled"}
-
-// Update the Azure AD DS resource
-Set-AzResource -Id $DomainServicesResource.ResourceId -Properties $disableScopedSync
-```
-
-更改同步作用域会导致托管域重新同步所有数据。 托管域中不再需要的对象会被删除，重新同步可能需要很长时间才能完成。
+更改同步作用域会导致托管域重新同步所有数据。 托管域中不再需要的对象会被删除，重新同步可能需要一些时间才能完成。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解同步过程，请参阅[了解 Azure AD 域服务中的同步](synchronization.md)。
+若要详细了解同步过程，请参阅[了解 Azure AD 域服务中的同步][concepts-sync]。
 
-<!-- EXTERNAL LINKS -->
-[Get-AzSubscription]: https://docs.microsoft.com/powershell/module/Az.Accounts/Get-AzSubscription
+<!-- INTERNAL LINKS -->
+[scoped-sync-powershell]: powershell-scoped-synchronization.md
+[concepts-sync]: synchronization.md
+[tutorial-create-instance]: tutorial-create-instance.md
+[create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
+[associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 

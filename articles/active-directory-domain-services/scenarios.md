@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/13/2020
+ms.date: 08/07/2020
 ms.author: v-junlch
-ms.openlocfilehash: 790f5a8d98c184cf082b42aa5274080e84ff0f6c
-ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
+ms.openlocfilehash: 9973e860b7de49086e1c709691c1fc6023a930bc
+ms.sourcegitcommit: a5eb9a47feefb053ddbaab4b15c395972c372339
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86472625"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88028600"
 ---
 # <a name="common-use-cases-and-scenarios-for-azure-active-directory-domain-services"></a>Azure Active Directory 域服务的常见用例和场景
 
@@ -32,16 +32,18 @@ Azure Active Directory 域服务 (Azure AD DS) 提供托管域服务，例如域
 
 ![以简化的方式管理 Azure 虚拟机](./media/active-directory-domain-services-scenarios/streamlined-vm-administration.png)
 
-我们来看一下常见示例场景。 由于服务器和其他基础结构已达到生命周期，Contoso 想要将目前托管在本地的应用程序迁移到云中。 他们当前的 IT 标准强制要求托管企业应用程序的服务器必须加入域，并使用组策略进行管理。 Contoso 的 IT 管理员更希望将 Azure 中部署的 VM 加入域，这样用户随后便可使用其企业凭据登录，从而使管理更轻松。 加入域时，还可以根据所需的安全基准，使用组策略对象 (GPO) 配置 VM。 Contoso 不希望在 Azure 中部署、监视和管理自己的域控制器。
+我们来看一下常见示例场景。 由于服务器和其他基础结构已达到生命周期，Contoso 想要将目前托管在本地的应用程序迁移到云中。 他们当前的 IT 标准强制要求托管企业应用程序的服务器必须加入域，并使用组策略进行管理。
 
-Azure AD DS 非常适合这种情况。 通过托管域，你可以将 VM 加入域、使用一组凭据并应用组策略。 托管域无需配置和维护自己的域控制器。
+Contoso 的 IT 管理员更希望将 Azure 中部署的 VM 加入域，这样用户随后便可使用其企业凭据登录，从而使管理更轻松。 加入域时，还可以根据所需的安全基准，使用组策略对象 (GPO) 配置 VM。 Contoso 不希望在 Azure 中部署、监视和管理自己的域控制器。
+
+Azure AD DS 非常适合这种情况。 通过托管域，你可以将 VM 加入域、使用一组凭据并应用组策略。 因为它是托管域，因此无需配置和维护自己的域控制器。
 
 ### <a name="deployment-notes"></a>部署注意事项
 
 以下部署注意事项适用于此示例用例：
 
-* 默认情况下，托管域使用单个平面组织单位 (OU) 结构。 所有已加入域的 VM 均位于单个 OU 中。 如果需要，可以创建自定义 OU。
-* Azure AD DS 使用分别适用于用户和计算机容器的内置 GPO。 若要进行其他控制，可以创建自定义 GPO，并将其目标设为自定义 OU。
+* 默认情况下，托管域使用单个平面组织单位 (OU) 结构。 所有已加入域的 VM 均位于单个 OU 中。 如果需要，可以创建[自定义 OU][custom-ou]。
+* Azure AD DS 使用分别适用于用户和计算机容器的内置 GPO。 若要进行其他控制，可以[创建自定义 GPO][create-gpo]，并将其目标设为自定义 OU。
 * Azure AD DS 支持基本 AD 计算机对象架构。 无法扩展计算机对象的架构。
 
 ## <a name="lift-and-shift-on-premises-applications-that-use-ldap-bind-authentication"></a>直接迁移使用 LDAP 绑定身份验证的本地应用程序
@@ -59,7 +61,7 @@ Contoso 希望将此应用程序迁移到 Azure。 此应用程序应继续照�
 以下部署注意事项适用于此示例用例：
 
 * 确保应用程序无需在目录中修改/写入数据。 不支持对托管域进行 LDAP 写入访问。
-* 无法直接针对托管域更改密码。 最终用户可以使用 Azure AD 的自助密码更改机制或针对本地目录更改其密码。 随后这些更改会自动同步，并出现在托管域中。
+* 无法直接针对托管域更改密码。 最终用户可以使用 [Azure AD 的自助密码更改机制][sspr]或针对本地目录更改其密码。 随后这些更改会自动同步，并出现在托管域中。
 
 ## <a name="lift-and-shift-on-premises-applications-that-use-ldap-read-to-access-the-directory"></a>直接迁移使用 LDAP 读取访问目录的本地应用程序
 
@@ -91,18 +93,23 @@ Contoso 想要将此应用程序迁移到 Azure，并淘汰目前托管此应用
 以下部署注意事项适用于此示例用例：
 
 * 确保应用程序使用用户名和密码进行身份验证。 Azure AD DS 不支持基于证书或智能卡的身份验证。
-* 无法直接针对托管域更改密码。 最终用户可以使用 Azure AD 的自助密码更改机制或针对本地目录更改其密码。 随后这些更改会自动同步，并出现在托管域中。
+* 无法直接针对托管域更改密码。 最终用户可以使用 [Azure AD 的自助密码更改机制][sspr]或针对本地目录更改其密码。 随后这些更改会自动同步，并出现在托管域中。
 
 ## <a name="windows-server-remote-desktop-services-deployments-in-azure"></a>Azure 中的 Windows Server 远程桌面服务部署
 
-可以使用 Azure AD DS 向 Azure 中部署的远程桌面服务器提供托管域服务。 有关此部署场景的详细信息，请参阅[如何将 Azure AD 域服务与 RDS 部署集成][windows-rds]。
+可以使用 Azure AD DS 向 Azure 中部署的远程桌面服务器提供托管域服务。
+
+有关此部署场景的详细信息，请参阅[如何将 Azure AD 域服务与 RDS 部署集成][windows-rds]。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要开始使用，请[创建并配置 Azure Active Directory 域服务托管域][tutorial-create-instance]
+若要开始使用，请[创建并配置 Azure Active Directory 域服务托管域][tutorial-create-instance]。
 
 <!-- INTERNAL LINKS -->
 [tutorial-create-instance]: tutorial-create-instance.md
+[custom-ou]: create-ou.md
+[create-gpo]: manage-group-policy.md
+[sspr]: ../active-directory/authentication/overview-authentication.md#self-service-password-reset
 
 <!-- EXTERNAL LINKS -->
 [windows-rds]: https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-azure-adds

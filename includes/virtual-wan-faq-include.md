@@ -6,17 +6,17 @@ author: rockboyfor
 ms.service: virtual-wan
 ms.topic: include
 origin.date: 06/26/2020
-ms.date: 08/03/2020
+ms.date: 08/10/2020
 ms.testscope: no
-ms.testdate: ''
+ms.testdate: 08/03/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 2ffa7a8e37513843ac3e4f1e2ca08c0c2caafc98
-ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
+ms.openlocfilehash: 3169db4f1d85e4814c6eb509e4d09a3d811aec63
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87427560"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87919357"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>用户是否需要将中心辐射型拓扑与 SD-WAN/VPN 设备配合使用才能使用 Azure 虚拟 WAN？
 
@@ -233,9 +233,17 @@ ms.locfileid: "87427560"
 
 ER 到 ER 之间的传输始终通过 Global Reach 进行。 虚拟中心网关部署在 DC 或 Azure 区域中。 当两条 ExpressRoute 线路通过 Global Reach 连接时，不需要流量完全从边缘路由器传递到虚拟中心 DC。
 
-### <a name="is-there-a-concept-of-weight-in-azure-virtual-wan-circuits-or-vpn-connections"></a>Azure 虚拟 WAN 线路或 VPN 连接中是否存在权重的概念
+### <a name="is-there-a-concept-of-weight-in-azure-virtual-wan-expressroute-circuits-or-vpn-connections"></a>Azure 虚拟 WAN ExpressRoute 线路或 VPN 连接中是否存在权重的概念
 
 当多个 ExpressRoute 线路连接到一个虚拟中心时，该连接上的路由权重为虚拟中心的 ExpressRoute 提供了选择优先线路的机制。 没有用于在 VPN 连接上设置权重的机制。 与单个中心内，Azure 始终优先选择 ExpressRoute 连接而非 VPN 连接。
+
+### <a name="does-virtual-wan-prefer-expressroute-over-vpn-for-traffic-egressing-azure"></a>对于传出 Azure 的流量，虚拟 WAN 是否优先选择 ExpressRoute 而非 VPN
+
+是 
+
+### <a name="when-a-virtual-wan-hub-has-an-expressroute-circuit-and-a-vpn-site-connected-to-it-what-would-cause-a-vpn-connection-route-to-be-prefered-over-expressroute"></a>当虚拟 WAN 中心具有 ExpressRoute 线路和连接到该线路的 VPN 站点时，什么原因会导致优先选择 VPN 连接而非 ExpressRoute？
+
+当 ExpressRoute 线路连接到虚拟中心时，Azure 边缘路由器是在本地与 Azure 之间进行通信的第一个节点。 这些边缘路由器与虚拟 WAN ExpressRoute 网关通信，而这些网关从控制虚拟 WAN 中任何网关之间的所有路由的虚拟中心路由器获知路由。 Azure 边缘路由器优先处理虚拟中心 ExpressRoute 路由而非从本地获知的路由。 如果 VPN 连接因任何原因而成为虚拟中心获知路由的主要媒介（例如 ExpressRoute 和 VPN 之间的故障转移方案），那么除非 VPN 站点具有较长的 AS 路径长度，否则虚拟中心将继续与 ExpressRoute 网关分享获知的 VPN 路由，这将导致 Microsoft 边缘路由器优先处理 VPN 路由而非本地路由。 
 
 ### <a name="when-two-hubs-hub-1-and-2-are-connected-and-there-is-an-expressroute-circuit-connected-as-a-bow-tie-to-both-the-hubs-what-is-the-path-for-a-vnet-connected-to-hub-1-to-reach-a-vnet-connected-in-hub-2"></a>如果连接了两个中心（中心 1 和 2），并且有一条 ExpressRoute 线路以蝴蝶结的形式连接到这两个中心，那么连接到中心 1 的 VNet 通过什么路径到达中心 2 中连接的 VNet？
 
@@ -244,6 +252,10 @@ ER 到 ER 之间的传输始终通过 Global Reach 进行。 虚拟中心网关�
 ### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>虚拟 WAN 是否支持 IPv6？
 
 虚拟 WAN 中心及其网关不支持 IPv6。 如果你有一个支持 IPv6 的 VNet，并且要将 VNet 连接到虚拟 WAN，则当前不支持此方案。
+
+### <a name="what-is-the-recommended-api-version-to-be-used-by-scripts-automating-various-virtual-wan-functionality-"></a>对于自动完成多种虚拟 WAN 功能的脚本，建议其使用哪个 API 版本？
+
+所需的最低版本为 05-01-2020（2020 年 5 月 1 日）。 
 
 ### <a name="what-are-the-differences-between-the-virtual-wan-types-basic-and-standard"></a>虚拟 WAN 类型（基本和标准）之间的区别是什么？
 

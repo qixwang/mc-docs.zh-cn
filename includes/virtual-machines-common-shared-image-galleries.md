@@ -4,20 +4,22 @@ description: include 文件
 author: rockboyfor
 ms.service: virtual-machines
 ms.topic: include
-origin.date: 04/16/2020
-ms.date: 07/06/2020
+origin.date: 07/08/2020
+ms.date: 08/10/2020
+ms.testscope: no
+ms.testdate: 07/06/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 114462f121470d5ea222af681601dc0bc85bc912
-ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
+ms.openlocfilehash: f674af4990a7e3a843370ab4de36306da2171650
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85945591"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87919361"
 ---
-共享映像库是可以帮助你围绕托管映像生成结构和组织的服务。 共享映像库提供：
+共享映像库是一种可以帮助你围绕映像构建结构和组织的服务。 共享映像库提供：
 
-- 对映像进行托管式全局复制。
+- 支持映像全局复制。
 - 对映像进行版本控制和分组，以便于管理。
 
     <!--Not Available on - Highly available images with Zone Redundant Storage (ZRS) accounts in regions that support Availability Zones. ZRS offers better resilience against zonal failures.-->
@@ -37,14 +39,14 @@ ms.locfileid: "85945591"
 
 | 资源 | 说明|
 |----------|------------|
-| **映像源** | 这是可用于在映像库中创建“映像版本”的资源。 映像源可以是现有的 Azure VM（可以是[通用或专用](#generalized-and-specialized-images)的）、托管映像、快照或其他映像库中的映像版本。 |
+| **映像源** | 这是可用于在映像库中创建“映像版本”的资源。 映像源可以是现有的 Azure VM（可以是[通用或专用](#generalized-and-specialized-images)的）、托管映像、快照、VHD 或其他映像库中的映像版本。 |
 | **映像库** | 与 Azure 市场一样，**映像库**是用于管理和共享映像的存储库，但你可以控制谁有权访问这些映像。 |
 | **映像定义** | 映像定义在库中创建，携带有关该映像以及在内部使用该映像的要求的信息。 这包括了该映像是 Windows 还是 Linux 映像、发行说明以及最低和最高内存要求。 它是某种映像类型的定义。 |
 | **映像版本** | 使用库时，将使用**映像版本**来创建 VM。 可根据环境的需要创建多个映像版本。 与托管映像一样，在使用**映像版本**创建 VM 时，将使用映像版本来创建 VM 的新磁盘。 可以多次使用映像版本。 |
 
 <br />
 
-![演示如何在库中创建多个映像版本的示意图](./media/shared-image-galleries/shared-image-gallery.png)
+:::image type="content" source="./media/shared-image-galleries/shared-image-gallery.png" alt-text="演示如何在库中创建多个映像版本的示意图":::
 
 ## <a name="image-definitions"></a>映像定义
 
@@ -72,6 +74,9 @@ ms.locfileid: "85945591"
 * 最小和最大 vCPU 与内存建议量 - 如果映像附带 vCPU 和内存建议量，则你可以将该信息附加到映像定义。
 * 不允许的磁盘类型 - 可以提供有关 VM 所需存储的信息。 例如，如果映像不适合标准 HDD 磁盘，请将其添加到禁止列表。
 * Hyper-V 生成 - 可以指定是从第 1 代还是从第 2 代 Hyper-V VHD 创建映像。
+* 市场映像的购买计划信息 `-PurchasePlanPublisher `、`-PurchasePlanName` 和 `-PurchasePlanProduct`。 有关购买计划的详细信息，请参阅[在 Azure 市场中查找映像](/virtual-machines/windows/cli-ps-findimage)。
+
+    <!--Not Available on [Supply Azure Marketplace purchase plan information when creating images](../articles/virtual-machines/marketplace-images.md)-->
 
 ## <a name="generalized-and-specialized-images"></a><a name="generalized-and-specialized-images"></a>通用化和专用映像
 
@@ -99,7 +104,7 @@ ms.locfileid: "85945591"
 使用共享映像库部署资源时，每个订阅存在限制：
 - 每个区域的每个订阅限制为 100 个共享映像库
 - 每个区域的每个订阅限制为 1,000 个映像定义
-- 每个区域每个订阅限 10,000 个映像版本
+- 每个区域的每个订阅限制为 10,000 个映像版本
 - 每个区域的每个订阅限制为 10 个映像版本副本
 - 附加到映像的任何磁盘的大小必须小于或等于 1 TB
 
@@ -115,7 +120,7 @@ ms.locfileid: "85945591"
 
 鉴于映像大小、内容和 OS 类型等因素，我们始终建议保留的副本数应超出该副本数。
 
-![演示如何缩放映像的示意图](./media/shared-image-galleries/scaling.png)
+:::image type="content" source="./media/shared-image-galleries/scaling.png" alt-text="演示如何缩放映像的示意图":::
 
 <!--Not Available on ## Make your images highly available-->
 <!--Not Available on Azure Zone Redundant Storage (ZRS)-->
@@ -125,7 +130,7 @@ ms.locfileid: "85945591"
 
 创建共享映像版本后，可以更新该版本要复制到的区域。 复制到不同区域所需的时间取决于要复制的数据量，以及该版本要复制到的区域数。 在某些情况下，这可能需要几个小时。 在复制期间，可以查看每个区域的复制状态。 在一个区域中完成映像复制后，接着可以在该区域中使用该映像版本部署 VM 或规模集。
 
-<!--Not Available the image of ![Graphic showing how you can replicate images](./media/shared-image-galleries/replication.png)-->
+:::image type="content" source="./media/shared-image-galleries/replication.png" alt-text="演示如何复制映像的示意图":::
 
 ## <a name="access"></a>访问
 
@@ -193,7 +198,7 @@ ms.locfileid: "85945591"
 * [创建共享映像库资源后，是否可以将其移动到其他订阅中？](#can-i-move-the-shared-image-gallery-resource-to-a-different-subscription-after-it-has-been-created)
 * [是否可以跨云（例如，Azure 中国世纪互联、Azure 德国云或 Azure 政府云）复制映像版本？](#can-i-replicate-my-image-versions-across-clouds-such-as-azure-china-21vianet-or-azure-germany-or-azure-government-cloud)
 
-    <!--CORRECT ON  Azure China 21Vianet or Azure Germany or Azure Government Cloud-->
+    <!--MOONCAKE CUSTMOZIATON : CORRECT ON  Azure China 21Vianet or Azure Germany or Azure Government Cloud-->
     
 * [是否可以跨订阅复制映像版本？](#can-i-replicate-my-image-versions-across-subscriptions)
 * [是否可以跨 Azure AD 租户共享映像版本？](#can-i-share-image-versions-across-azure-ad-tenants)
@@ -239,20 +244,19 @@ ms.locfileid: "85945591"
 
 ### <a name="can-i-create-an-image-version-from-a-specialized-disk"></a>是否可以从专用化磁盘创建映像版本？
 
-是的，支持专用磁盘，因为映像为预览版。 只能使用门户、PowerShell 和 API 从专用映像创建 VM。 
-
-使用 [PowerShell 创建专用 VM 的映像](../articles/virtual-machines/image-version-vm-powershell.md)。
-
-使用门户创建 [Windows](../articles/virtual-machines/linux/shared-images-portal.md) 或 [Linux] (../articles/virtual-machines/linux/shared-images-portal.md) 映像。 
+是的，可以使用 [CLI](../articles/virtual-machines/vm-specialized-image-version-cli.md)、[PowerShell](../articles/virtual-machines/vm-specialized-image-version-powershell.md) 或 API 从专用映像创建 VM。 
 
 ### <a name="can-i-move-the-shared-image-gallery-resource-to-a-different-subscription-after-it-has-been-created"></a>创建共享映像库资源后，是否可以将其移动到其他订阅中？
 
 不可以，无法将共享映像库资源移到其他订阅。 可以将库中的映像版本复制到其他区域，也可以使用 [Azure CLI](../articles/virtual-machines/image-version-another-gallery-cli.md) 或 [PowerShell](../articles/virtual-machines/image-version-another-gallery-powershell.md) 从其他库复制映像。
 
 <a name="can-i-replicate-my-image-versions-across-clouds-such-as-azure-china-21vianet-or-azure-germany-or-azure-government-cloud"></a>
+
+<!--MOONCAKE CUSTOMIZATION: CORRECT ON  Azure China 21Vianet or Azure Germany or Azure Government Cloud-->
+
 ### <a name="can-i-replicate-my-image-versions-across-clouds-such-as-azure-china-21vianet-or-azure-germany-or-azure-government-cloud"></a>是否可以跨云（例如 Azure 中国世纪互联、Azure 德国或 Azure 政府云）复制映像版本？
 
-<!--CORRECT ON  Azure China 21Vianet or Azure Germany or Azure Government Cloud-->
+<!--MOONCAKE CUSTOMIZATION: CORRECT ON  Azure China 21Vianet or Azure Germany or Azure Government Cloud-->
 
 无法跨云复制映像版本。
 

@@ -7,15 +7,15 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-origin.date: 06/10/2020
-ms.date: 06/29/2020
+origin.date: 07/08/2020
+ms.date: 08/10/2020
 ms.author: v-jay
-ms.openlocfilehash: 9a11bf0ef649ac00b506fa5a08f0bbdf4991851b
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+ms.openlocfilehash: c85a4bab9fc461afbcc0fea0e350e681b8273959
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323558"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914333"
 ---
 # <a name="excel-format-in-azure-data-factory"></a>Azure 数据工厂中的 Excel 格式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -36,8 +36,9 @@ ms.locfileid: "85323558"
 | range            | 给定工作表中用于定位选定数据的单元格范围，例如 `A3:H5`（从 A3 到 H5 的表）、`A3`（从单元格 A3 开始的表）、`A3:A3`（单个单元格）。 如果未指定，则 ADF 以表的形式从整个工作表读取。 | 否       |
 | firstRowAsHeader | 指定是否要将给定工作表/范围内的第一行视为带有列名的标题行。<br>允许的值为 **true** 和 **true**（默认值）。 | 否       |
 | nullValue        | 指定 null 值的字符串表示形式。 <br>默认值为**空字符串**。 | 否       |
-| compressionCodec | 用来读取 Excel 文件的压缩编解码器。 <br>允许的值为 **bzip2**、**gzip**、**deflate**、**ZipDeflate**、**snappy** 或 **lz4**。 默认设置是不压缩。 <br>**注意**，复制活动目前不支持“snappy”和“lz4”，映射数据流不支持“ZipDeflate”。 <br>**注意**，使用复制活动来解压缩 ZipDeflate 文件并写入到基于文件的接收器数据存储时，会将文件提取到以下文件夹：`<path specified in dataset>/<folder named as source zip file>/`。 | 否       |
-| compressionLevel | 压缩率。 <br>允许的值为 **Optimal** 或 **Fastest**。<br>- **Fastest**：尽快完成压缩操作，不过，无法以最佳方式压缩生成的文件。<br>- **Optimal**：以最佳方式完成压缩操作，不过，需要耗费更长的时间。 有关详细信息，请参阅 [Compression Level](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx)（压缩级别）主题。 | 否       |
+| compression | 用来配置文件压缩的属性组。 如果需要在活动执行期间进行压缩/解压缩，请配置此部分。 | 否 |
+| type<br/>（在 `compression` 下） | 用来读取/写入 JSON 文件的压缩编解码器。 <br>允许的值为 **bzip2**、**gzip**、**deflate**、**ZipDeflate**、**snappy** 或 **lz4**。 保存文件时使用。 默认设置是不压缩。<br>请注意，复制活动当前不支持“snappy”和“lz4”。<br>**注意**，使用复制活动来解压缩 ZipDeflate 文件并写入到基于文件的接收器数据存储时，会将文件提取到以下文件夹：`<path specified in dataset>/<folder named as source zip file>/`。 | 否。  |
+| level<br/>（在 `compression` 下） | 压缩率。 <br>允许的值为 **Optimal** 或 **Fastest**。<br>- **Fastest**：尽快完成压缩操作，不过，无法以最佳方式压缩生成的文件。<br>- **Optimal**：以最佳方式完成压缩操作，不过，需要耗费更长的时间。 有关详细信息，请参阅 [Compression Level](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx)（压缩级别）主题。 | 否       |
 
 下面是 Azure Blob 存储上 Excel 数据集的示例：
 
@@ -73,7 +74,7 @@ ms.locfileid: "85323558"
 
 复制活动的 ***\*source\**** 节支持以下属性。
 
-| 属性      | 说明                                                  | 必须 |
+| 属性      | 描述                                                  | 必须 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | 复制活动源的 type 属性必须设置为“ExcelSource”。 | 是      |
 | storeSettings | 有关如何从数据存储读取数据的一组属性。 每个基于文件的连接器在 `storeSettings` 下都有其自己支持的读取设置。 | 否       |

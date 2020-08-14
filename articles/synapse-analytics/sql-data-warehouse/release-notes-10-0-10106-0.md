@@ -6,19 +6,19 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 origin.date: 4/30/2020
-ms.date: 08/03/2020
+ms.date: 08/10/2020
 author: WenJason
 ms.author: v-jay
 ms.reviewer: jrasnick
 manager: digimobile
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: b60f2e358a08e88eab0ab2b0b2079c2266ac8d91
-ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
+ms.openlocfilehash: 01d8d6bc7d5ba4f3d7861c26b4eb6a22308fa93e
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87426359"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917165"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Azure Synapse Analytics 发行说明
 
@@ -30,7 +30,6 @@ ms.locfileid: "87426359"
 
 对于工具改进，请确保安装了发行说明中指定的正确版本。 
 
-
 > [!NOTE]
 > 通过 SELECT @@VERSION 返回的产品名称会从“Azure SQL 数据仓库”改为“Azure Synapse Analytics”。 在做出更改之前，我们会提前发送通知。 对于在应用代码中分析 SELECT @@VERSION 返回的产品名称的客户来说，此更改是相关的。 若要避免由于产品品牌重塑而导致应用程序代码更改，请使用以下命令在 SERVERPROPERTY 中查询数据库产品名称和版本：若要返回版本号 XX.X.XXXXX.X（不含产品名称），请运行以下命令：
 >
@@ -41,6 +40,12 @@ ms.locfileid: "87426359"
 >
 > SELECT SERVERPROPERTY('EngineEdition')
 > ```
+
+## <a name="july-2020"></a>2020 年 7 月
+
+| 服务改进 | 详细信息 |
+| --- | --- |
+|DBCC SHRINKDATABASE (GA)|现在可以收缩指定数据库中的数据文件和日志文件的大小。 有关详细信息，请参阅[文档](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql?view=sql-server-ver15)。|
 
 ## <a name="may-2020"></a>2020 年 5 月
 
@@ -106,8 +111,8 @@ ms.locfileid: "87426359"
 | --- | --- |
 |**具体化视图（预览版）**|具体化视图会保留从视图定义查询返回的数据，并在基础表中的数据更改时自动更新。 它提高了复杂查询（通常是使用联接和聚合的查询）的性能，同时提供了简单的维护操作。 有关详细信息，请参阅： </br> - [CREATE MATERIALIZED VIEW AS SELECT &#40;Transact-SQL&#41;](https://docs.microsoft.com/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)</br> - [ALTER MATERIALIZED VIEW &#40;Transact-SQL&#41;](https://docs.microsoft.com/sql/t-sql/statements/alter-materialized-view-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) </br> - [Synapse SQL 中支持的 T-SQL 语句](sql-data-warehouse-reference-tsql-statements.md)|
 |**更多 T-SQL 支持**|Synapse SQL 的 T-SQL 语言外围应用已扩展，现在支持： </br> - [AT TIME ZONE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/at-time-zone-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)</br> - [STRING_AGG (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/string-agg-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)|
-|**结果集缓存（预览）**|添加了 DBCC 命令以管理之前公布的结果集缓存。 有关详细信息，请参阅： </br> - [DBCC DROPRESULTSETCACHE &#40;Transact-SQL&#41;](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)  </br> - [DBCC SHOWRESULTCACHESPACEUSED &#40;Transact-SQL&#41;](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) </br></br> 另请参阅 [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 中新的 result_set_cache 列，该列显示执行的查询何时使用结果集缓存。|
-|**有序聚集列存储索引（预览）**|新列 column_store_order_ordinal 已添加到 [sys.index_columns](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-index-columns-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)，以标识已排序聚集列存储索引中列的顺序。|
+|**结果集缓存（预览版）**|添加了 DBCC 命令以管理之前公布的结果集缓存。 有关详细信息，请参阅： </br> - [DBCC DROPRESULTSETCACHE &#40;Transact-SQL&#41;](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)  </br> - [DBCC SHOWRESULTCACHESPACEUSED &#40;Transact-SQL&#41;](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) </br></br> 另请参阅 [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 中新的 result_set_cache 列，该列显示执行的查询何时使用结果集缓存。|
+|**排序聚集列存储索引（预览版）**|新列 column_store_order_ordinal 已添加到 [sys.index_columns](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-index-columns-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)，以标识已排序聚集列存储索引中列的顺序。|
 
 ## <a name="may-2019"></a>2019 年 5 月
 

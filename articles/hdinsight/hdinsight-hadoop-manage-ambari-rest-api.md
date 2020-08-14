@@ -10,12 +10,12 @@ ms.topic: conceptual
 origin.date: 06/07/2019
 ms.date: 11/11/2019
 ms.author: v-yiso
-ms.openlocfilehash: 36d2a7432b193ba0ef73cb67a1674506d2e30f09
-ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
+ms.openlocfilehash: 58f4595f6574a96ff4a15dc6a4e8f5de93f0418c
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85516662"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917214"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>使用 Apache Ambari REST API 管理 HDInsight 群集
 
@@ -43,6 +43,7 @@ ms.locfileid: "85516662"
 
 连接到 HDInsight 上的 Ambari 需要 HTTPS。 使用在群集创建过程中提供的管理员帐户名称（默认值是 **admin**）和密码。
 
+对于企业安全性套餐群集，请使用完全限定的用户名（如 `username@domain.onmicrosoft.com`）而非 `admin`。
 ## <a name="examples"></a>示例
 
 ### <a name="setup-preserve-credentials"></a>设置（保留凭据）

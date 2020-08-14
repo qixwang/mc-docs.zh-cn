@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/20/2020
+ms.date: 08/07/2020
 ms.author: v-junlch
-ms.openlocfilehash: fb93491ffb1a8982cb4d4c4f4e6bb49da8955d86
-ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
+ms.openlocfilehash: b095e8e5ae743a4bc0d26baa07f8e17963ddbe7d
+ms.sourcegitcommit: a5eb9a47feefb053ddbaab4b15c395972c372339
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86472554"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88028560"
 ---
-# <a name="frequently-asked-questions-faqs"></a>常见问题 (FAQ)
+# <a name="frequently-asked-questions-faqs-about-azure-active-directory-ad-domain-services"></a>有关 Azure Active Directory (AD) 域服务的常见问题 (FAQ)
 
 本页面解答了有关 Azure Active Directory 域服务的常见问题。
 
@@ -134,6 +134,9 @@ Azure AD 域服务托管域上的默认密码生存期为 90 天。 此密码生
 * [是否可以从企业移动性套件 (EMS) 获取 Azure AD 域服务？是否需要 Azure AD Premium 才能使用 Azure AD 域服务？](#can-i-failover-azure-ad-domain-services-to-another-region-for-a-dr-event)
 * [哪些 Azure 区域提供此服务？](#can-i-get-azure-ad-domain-services-as-part-of-enterprise-mobility-suite-ems-do-i-need-azure-ad-premium-to-use-azure-ad-domain-services)
 
+### <a name="is-azure-ad-domain-services-a-paid-service"></a>Azure AD 域服务是付费服务吗？
+是的。 有关详细信息，请参阅[定价页](https://www.azure.cn/pricing/details/active-directory-ds/)。
+
 ### <a name="is-there-a-trial-for-the-service"></a>该服务是否有试用版？
 Azure 的试用版中包含 Azure AD 域服务。 你可以注册 [Azure 一元试用版](https://www.azure.cn/pricing/1rmb-trial/)。
 
@@ -146,6 +149,8 @@ Azure 的试用版中包含 Azure AD 域服务。 你可以注册 [Azure 一元�
 ### <a name="can-i-get-azure-ad-domain-services-as-part-of-enterprise-mobility-suite-ems-do-i-need-azure-ad-premium-to-use-azure-ad-domain-services"></a>是否可以从企业移动性套件 (EMS) 获取 Azure AD 域服务？ 是否需要 Azure AD Premium 才能使用 Azure AD 域服务？
 否。 Azure AD 域服务是即用即付的 Azure 服务，未包含在 EMS 中。 Azure AD 域服务可用于所有版本的 Azure AD（免费版和高级版）。 它按小时计费，具体取决于使用量。
 
+### <a name="what-azure-regions-is-the-service-available-in"></a>哪些 Azure 区域提供此服务？
+请参阅[按区域列出的 Azure 服务](https://azure.microsoft.com/regions/#services/)页，获取提供 Azure AD 域服务的 Azure 区域列表。
 
 ## <a name="troubleshooting"></a>故障排除
 

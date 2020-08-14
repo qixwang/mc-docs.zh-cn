@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: 724c71e39da3543b41695242d69e9304a75f31b9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 9971512329a64bc8f0e78445fd3c239847f1f60e
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80634624"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917280"
 ---
 # <a name="set-up-hdinsight-clusters-with-a-custom-ambari-db"></a>设置包含自定义 Ambari DB 的 HDInsight 群集
 
@@ -38,16 +38,17 @@ Apache Ambari 简化了 Apache Hadoop 群集的管理和监视。 Ambari 提供�
 
 自定义 Ambari DB 具有以下附加要求：
 
+- 数据库名称不能包含连字符或空格
 - 必须有现有的 Azure SQL DB 服务器和数据库。
 - 为 Ambari 设置提供的数据库必须是空的。 没有任何表采用默认的 dbo 架构。
 - 用于连接到数据库的用户应该对该数据库拥有 SELECT、CREATE TABLE 和 INSERT 权限。
-- 在托管 Ambari 的 Azure SQL 服务器上启用“[允许访问的 Azure 服务](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#azure-portal-steps)”选项。
-- 需要在 SQL 服务器中允许来自 HDInsight 服务的管理 IP 地址。 有关必须添加到 SQL 服务器防火墙的 IP 地址列表，请参阅 [HDInsight 管理 IP 地址](hdinsight-management-ip-addresses.md)。
+- 在托管 Ambari 的服务器上启用“[允许访问的 Azure 服务](../azure-sql/database/vnet-service-endpoint-rule-overview.md#azure-portal-steps)”选项。
+- 需要在防火墙规则中允许来自 HDInsight 服务的管理 IP 地址。 有关必须添加到服务器级别防火墙规则的 IP 地址列表，请参阅 [HDInsight 管理 IP 地址](hdinsight-management-ip-addresses.md)。
 
 在外部数据库中托管 Apache Ambari DB 时，请记住以下几点：
 
 - 你需要负责支付用于保存 Ambari 的 Azure SQL DB 的额外费用。
-- 定期备份自定义 Ambari DB。 Azure SQL 数据库会自动生成备份，但备份保留时间范围有所不同。 有关详细信息，请参阅[了解 SQL 数据库自动备份](../sql-database/sql-database-automated-backups.md)。
+- 定期备份自定义 Ambari DB。 Azure SQL 数据库会自动生成备份，但备份保留时间范围有所不同。 有关详细信息，请参阅[了解 SQL 数据库自动备份](../azure-sql/database/automated-backups-overview.md)。
 
 ## <a name="deploy-clusters-with-a-custom-ambari-db"></a>部署包含自定义 Ambari DB 的群集
 
@@ -66,4 +67,4 @@ az group deployment create --name HDInsightAmbariDBDeployment \
 
 ## <a name="next-steps"></a>后续步骤
 
-- [在 Azure HDInsight 中使用外部元数据存储](hdinsight-use-external-metadata-stores.md)
+- [使用外部元数据存储 - Azure HDInsight](hdinsight-use-external-metadata-stores.md)

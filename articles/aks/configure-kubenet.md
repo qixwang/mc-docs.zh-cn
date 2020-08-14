@@ -4,17 +4,17 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 中配置 kubenet（�
 services: container-service
 ms.topic: article
 origin.date: 06/02/2020
-ms.date: 07/13/2020
-ms.testscope: yes
+ms.date: 08/10/2020
+ms.testscope: no
 ms.testdate: 07/13/2020
 ms.author: v-yeche
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 358aa716c8c2847f46382b9c727dc1cdec658767
-ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
+ms.openlocfilehash: 33d788ddb5cc5ca2202e12240e1fc60e6e4645f8
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86218751"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842614"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中结合自己的 IP 地址范围使用 kubenet 网络
 
@@ -44,9 +44,9 @@ ms.locfileid: "86218751"
 
 在许多环境中，你已定义了具有分配的 IP 地址范围的虚拟网络和子网。 这些虚拟网络资源用于支持多个服务和应用程序。 若要提供网络连接，AKS 群集可以使用 *kubenet*（基本网络）或 Azure CNI（高级网络）。
 
-使用 *kubenet* 时，只有节点接收虚拟网络子网中的 IP 地址。 Pod 无法直接相互通信。 用户定义的路由 (UDR) 和 IP 转发用于不同节点中 Pod 之间的连接。 此外，可以在接收分配的 IP 地址的服务后面部署 Pod，并对应用程序的流量进行负载均衡。 下图显示了 AKS 节点（不是 Pod）如何接收虚拟网络子网中的 IP 地址：
+使用 *kubenet* 时，只有节点接收虚拟网络子网中的 IP 地址。 Pod 无法直接相互通信。 用户定义的路由 (UDR) 和 IP 转发用于不同节点中 Pod 之间的连接。 默认情况下，UDR 和 IP 转发配置由 AKS 服务进行创建和维护，但你可以选择[自带路由表以进行自定义路由管理][byo-subnet-route-table]。 此外，可以在接收分配的 IP 地址的服务后面部署 Pod，并对应用程序的流量进行负载均衡。 下图显示了 AKS 节点（不是 Pod）如何接收虚拟网络子网中的 IP 地址：
 
-![使用 AKS 群集的 Kubenet 网络模型](media/use-kubenet/kubenet-overview.png)
+:::image type="content" source="media/use-kubenet/kubenet-overview.png" alt-text="使用 AKS 群集的 Kubenet 网络模型":::
 
 Azure 在一个 UDR 中最多支持 400 个路由，因此，AKS 群集中的节点数不能超过 400 个。 kubenet 不支持 Azure 网络策略。 可以使用 [Calico 网络策略][calico-network-policies]，因为 kubenet 支持这些策略。
 
@@ -62,7 +62,7 @@ Azure 在一个 UDR 中最多支持 400 个路由，因此，AKS 群集中的节
 
 作为一种折衷方案，可以创建使用 *kubenet* 的 AKS 群集并连接到现有虚拟网络子网。 这种方法可让节点接收定义的 IP 地址，而无需提前为群集中可能运行的所有潜在 Pod 节点预留大量的 IP 地址。
 
-使用 *kubenet* 时，可以大幅减小要使用的 IP 地址范围，并且可以支持大型群集和应用程序的需求。 例如，即使使用 */27* IP 地址范围，也能运行包括 20-25 节点个的群集，并且可以提供足够的空间用于扩展或升级。 此群集大小最多支持 *2,200-2,750* 个 Pod（每个节点的最大 Pod 数默认为 110 个）。 可以在 AKS 中使用 *kubenet* 配置的每个节点的最大 Pod 数为 110。
+使用 *kubenet* 时，可以大幅减小要使用的 IP 地址范围，并且可以支持大型群集和应用程序的需求。 例如，即使在子网上使用 /27 IP 地址范围，也可运行包括 20-25 个节点的群集，空间足以进行缩放或升级。 此群集大小最多支持 *2,200-2,750* 个 Pod（每个节点的最大 Pod 数默认为 110 个）。 可以在 AKS 中使用 *kubenet* 配置的每个节点的最大 Pod 数为 110。
 
 以下基本计算方法对网络模型的差异做了比较：
 
@@ -92,7 +92,7 @@ Azure 在一个 UDR 中最多支持 400 个路由，因此，AKS 群集中的节
 
 - 有可用的 IP 地址空间。
 - 大部分 Pod 通信是与群集外部的资源进行的。
-- 你不想要管理 UDR。
+- 不想管理用户定义的 Pod 连接路由。
 - 需要虚拟节点或 Azure 网络策略等 AKS 高级功能。  使用 [Calico 网络策略][calico-network-policies]。
 
 有关帮助你决定使用哪个网络模型的详细信息，请参阅[比较网络模型及其支持范围][network-comparisons]。
@@ -205,6 +205,7 @@ az aks create \
 
 创建 AKS 群集时，将自动创建网络安全组和路由表。 这些网络资源可以通过 AKS 控制平面进行管理。 网络安全组自动与节点上的虚拟 NIC 相关联。 路由表自动与虚拟网络子网相关联。 在你创建和公开服务时，系统会自动更新网络安全组规则和路由表。
 
+<a name="bring-your-own-subnet-and-route-table-with-kubenet"></a>
 ## <a name="bring-your-own-subnet-and-route-table-with-kubenet"></a>在 kubenet 中自带子网和路由表
 
 使用 kubenet 时，群集子网上必须存在路由表。 AKS 支持自带现有的子网和路由表。
@@ -231,13 +232,14 @@ Kubenet 网络需要使用经过规划和组织的路由表规则才能成功路
 
 ```azurecli
 # Find your subnet ID
-az network vnet subnet list --resource-group <MyResourceGroup> \
-                            --vnet-name <MyVirtualNetworkName>
+az network vnet subnet list --resource-group
+                            --vnet-name
+                            [--subscription]
 ```
 
 ```azurecli
 # Create a kubernetes cluster with with a custom subnet preconfigured with a route table
-az aks create -g MyResourceGroup -n MyManagedCluster --vnet-subnet-id <MySubnetID>
+az aks create -g MyResourceGroup -n MyManagedCluster --vnet-subnet-id MySubnetID
 ```
 
 ## <a name="next-steps"></a>后续步骤
@@ -263,6 +265,7 @@ az aks create -g MyResourceGroup -n MyManagedCluster --vnet-subnet-id <MySubnetI
 [az-network-vnet-subnet-show]: https://docs.azure.cn/cli/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-show
 [az-role-assignment-create]: https://docs.azure.cn/cli/role/assignment?view=azure-cli-latest#az-role-assignment-create
 [az-aks-create]: https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-create
+[byo-subnet-route-table]: #bring-your-own-subnet-and-route-table-with-kubenet
 [develop-helm]: quickstart-helm.md
 [use-helm]: kubernetes-helm.md
 

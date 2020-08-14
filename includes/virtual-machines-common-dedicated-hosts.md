@@ -5,16 +5,17 @@ services: virtual-machines
 author: rockboyfor
 ms.service: virtual-machines
 ms.topic: include
-origin.date: 03/10/2020
-ms.date: 07/27/2020
+ms.date: 08/10/2020
+ms.testscope: no
+ms.testdate: 07/27/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: b748048187c212e72efeeb5eba9cc31185eef761
-ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
+ms.openlocfilehash: e644c2f8dfa90b52c9a43bdd6e1becdaa7a9fe22
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87260213"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87919293"
 ---
 <!--Verified successfully-->
 ## <a name="limitations"></a>限制
@@ -31,7 +32,7 @@ ms.locfileid: "87260213"
 
 ## <a name="groups-hosts-and-vms"></a>组、主机和 VM  
 
-![专用主机的新资源的视图。](./media/virtual-machines-common-dedicated-hosts/dedicated-hosts2.png)
+:::image type="content" source="./media/virtual-machines-common-dedicated-hosts/dedicated-hosts2.png" alt-text="专用主机的新资源的视图。":::
 
 主机组  是表示专用主机集合的资源。 你在某个区域中创建主机组，并向其中添加主机。
 
@@ -77,9 +78,17 @@ ms.locfileid: "87260213"
 
 ## <a name="quotas"></a>配额
 
-对于每个区域的专用主机，默认配额限制为 3000 个 vCPU。 但是，可以部署的主机数还受主机使用的 VM 大小系列的配额限制。 例如，在中国东部区域，标准预付费套餐  订阅仅为 Dsv3 大小系列提供 10 个 vCPU 的配额。 在这种情况下，需要请求将配额提高到至少 64 个 vCPU，才能部署专用主机。 如果需要，请选择右上角的“请求增加”按钮提出请求  。
+部署专用主机时会使用两种类型的配额。
 
-![门户中的用量和配额页的屏幕截图](./media/virtual-machines-common-dedicated-hosts/quotas.png)
+1. 专用主机 vCPU 配额。 默认配额限制为每个区域 3000 vCPU。
+1. VM 大小系列配额。 例如，在中国东部区域，标准预付费套餐  订阅仅为 Dsv3 大小系列提供 10 个 vCPU 的配额。 若要部署 Dsv3 专用主机，则需要请求将配额提高到至少 64 个 vCPU，然后才能部署专用主机。 
+
+若要请求提高配额，请在 [Azure 门户](https://portal.azure.cn/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)中创建支持请求。
+
+预配专用主机时将同时使用专用主机 vCPU 和 VM 系列 vCPU 配额，但不会使用区域 vCPU。
+
+
+:::image type="content" source="./media/virtual-machines-common-dedicated-hosts/quotas.png" alt-text="门户中的用量和配额页的屏幕截图":::
 
 有关详细信息，请参阅[虚拟机 vCPU 配额](/virtual-machines/windows/quotas)。
 

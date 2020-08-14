@@ -6,17 +6,17 @@ ms.author: v-junlch
 ms.topic: how-to
 ms.service: virtual-machine-scale-sets
 ms.subservice: imaging
-ms.date: 05/21/2020
+ms.date: 08/06/2020
 ms.reviewer: akjosh
-ms.custom: akjosh
-ms.openlocfilehash: f7224b2aed8d688046821f1adad1bcc7d4304362
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+ms.custom: akjosh, devx-track-azurecli
+ms.openlocfilehash: f38314383e96ce875ae6dddbc643acb5405d3400
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796755"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914208"
 ---
-# <a name="share-gallery-vm-images-across-azure-tenants"></a>跨 Azure 租户共享库 VM 映像
+# <a name="share-gallery-vm-images-across-tenants-in-azure"></a>在 Azure 的租户之间共享库 VM 映像
 
 [!INCLUDE [virtual-machines-share-images-across-tenants](../../includes/virtual-machines-share-images-across-tenants.md)]
 

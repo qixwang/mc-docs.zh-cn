@@ -1,10 +1,12 @@
 ---
-title: 快速入门 - 部署 Azure Kubernetes 服务群集
+title: 快速入门 - 使用 Azure CLI 部署 AKS 群集
 description: 了解如何使用 Azure CLI 快速创建 Kubernetes 群集、部署应用程序，以及监视 Azure Kubernetes 服务 (AKS) 中的性能。
 services: container-service
 ms.topic: quickstart
 origin.date: 04/28/2020
-ms.date: 05/25/2020
+ms.date: 08/10/2020
+ms.testscope: no
+ms.testdate: 05/25/2020
 ms.author: v-yeche
 ms.custom:
 - H1Hack27Feb2017
@@ -13,20 +15,21 @@ ms.custom:
 - seo-javascript-september2019
 - seo-javascript-october2019
 - seo-python-october2019
-ms.openlocfilehash: 83e763f990eb2763f713cfe90db577df1582b04f
-ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
+- devx-track-azurecli
+ms.openlocfilehash: daedd7c0c962e73f396a4514bcbc9db4844ece82
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735061"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842667"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-the-azure-cli"></a>快速入门：使用 Azure CLI 部署 Azure Kubernetes 服务群集
 
 在本快速入门中，将使用 Azure CLI 部署 Azure Kubernetes 服务 (AKS) 群集。 AKS 是可用于快速部署和管理群集的托管式 Kubernetes 服务。 该群集中将运行一个包含 Web 前端和 Redis 实例的多容器应用程序。 然后，你将了解如何监视群集的运行状况，以及监视运行该应用程序的 Pod。
 
-<!--Not Available on [Create an AKS cluster that supports Windows Server containers][windows-container-cli]-->
+若要详细了解如何创建 Windows Server 节点池，请参阅[创建支持 Windows Server 容器的 AKS 群集][windows-container-cli]。
 
-![Azure Kubernetes 服务中部署的投票应用](./media/container-service-kubernetes-walkthrough/voting-app-deployed-in-azure-kubernetes-service.png)
+:::image type="content" source="./media/container-service-kubernetes-walkthrough/voting-app-deployed-in-azure-kubernetes-service.png" alt-text="Azure Kubernetes 服务中部署的投票应用":::
 
 本快速入门假设读者基本了解 Kubernetes 的概念。 有关详细信息，请参阅 [Azure Kubernetes 服务 (AKS) 的 Kubernetes 核心概念][kubernetes-concepts]。
 
@@ -69,10 +72,22 @@ az group create --name myResourceGroup --location chinaeast2
 
 ## <a name="create-aks-cluster"></a>创建 AKS 群集
 
-使用 [az aks create][az-aks-create] 命令创建 AKS 群集。 以下示例创建一个具有一个节点的名为 myAKSCluster 的群集。 用于容器的 Azure Monitor也已通过 *--enable-addons monitoring* 参数启用。  此操作将需要几分钟才能完成。
+使用 [az aks create][az-aks-create] 命令创建 AKS 群集。 以下示例创建一个具有一个节点的名为 myAKSCluster 的群集。 此操作将需要几分钟才能完成。
 
 > [!NOTE]
-> 创建 AKS 群集时，会自动创建另一个资源组来存储 AKS 资源。 有关详细信息，请参阅[为什么使用 AKS 创建两个资源组？](/aks/faq#why-are-two-resource-groups-created-with-aks)
+> 使用 --enable-addons monitoring 参数启用适用于容器的 Azure Monitor，这需要在订阅上注册 Microsoft.OperationsManagement 和 Microsoft.OperationalInsights。 若要检查注册状态，请使用以下命令：
+> 
+> ```azurecli
+> az provider show -n Microsoft.OperationsManagement -o table
+> az provider show -n Microsoft.OperationalInsights -o table
+> ```
+> 
+> 如果未注册，请使用以下命令注册 Microsoft.OperationsManagement 和 Microsoft.OperationalInsights：
+> 
+> ```azurecli
+> az provider register --namespace Microsoft.OperationsManagement
+> az provider register --namespace Microsoft.OperationalInsights
+> ```
 
 ```azurecli
 az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 1 --enable-addons monitoring --generate-ssh-keys
@@ -80,7 +95,10 @@ az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 
 
 片刻之后，该命令将会完成，并返回有关群集的 JSON 格式信息。
 
-## <a name="connect-to-the-cluster"></a>连接至群集
+> [!NOTE]
+> 创建 AKS 群集时，会自动创建另一个资源组来存储 AKS 资源。 有关详细信息，请参阅[为什么使用 AKS 创建两个资源组？](./faq.md#why-are-two-resource-groups-created-with-aks)
+
+## <a name="connect-to-the-cluster"></a>连接到群集
 
 若要管理 Kubernetes 群集，请使用 Kubernetes 命令行客户端 [kubectl][kubectl]。 如果使用 Azure 本地 Shell，则 `kubectl` 已安装。 若要在本地安装 `kubectl`，请使用 [az aks install-cli][az-aks-install-cli] 命令：
 
@@ -94,13 +112,16 @@ az aks install-cli
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
+> [!NOTE]
+> 以上命令使用 Kubernetes 配置文件的默认位置，即 `~/.kube/config`。 可以使用 --file 为 Kubernetes 配置文件指定其他位置。
+
 若要验证到群集的连接，请使用 [kubectl get][kubectl-get] 命令返回群集节点列表。
 
 ```azurecli
 kubectl get nodes
 ```
 
-以下示例输出显示在上一步创建的单个节点。 请确保节点的状态为“就绪”：
+以下示例输出显示在上一步创建的单个节点。 请确保节点的状态为 *Ready*：
 
 ```output
 NAME                       STATUS   ROLES   AGE     VERSION
@@ -117,7 +138,7 @@ Kubernetes 清单文件定义群集的所需状态，例如，要运行哪些容
 <!--Not Available on [Azure Dev Spaces][azure-dev-spaces]-->
 <!--Not Available on  In more real-world scenarios, you can use Azure Dev Spaces to rapidly iterate and debug your code directly in the AKS cluster. You can use Dev Spaces across OS platforms and development environments, and work together with others on your team.-->
 
-创建名为 `azure-vote.yaml` 的文件，并将其复制到以下 YAML 定义中。 如果使用 Azure 本地 Shell，则可以使用 `vi` 或 `nano` 来创建此文件，就像在虚拟或物理系统中操作一样：
+创建名为 `azure-vote.yaml` 的文件，并将其复制到以下 YAML 定义中。 如果使用 Azure 本地 Shell，则可以使用 `code`、`vi` 或 `nano` 来创建此文件，就像在虚拟或物理系统中操作一样：
 
 ```yaml
 apiVersion: apps/v1
@@ -244,7 +265,7 @@ azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 
 若要查看 Azure Vote 应用的实际效果，请打开 Web 浏览器并转到服务的外部 IP 地址。
 
-![Azure Kubernetes 服务中部署的投票应用](./media/container-service-kubernetes-walkthrough/voting-app-deployed-in-azure-kubernetes-service.png)
+:::image type="content" source="./media/container-service-kubernetes-walkthrough/voting-app-deployed-in-azure-kubernetes-service.png" alt-text="Azure Kubernetes 服务中部署的投票应用":::
 
 创建 AKS 群集时，即已启用了[用于容器的 Azure Monitor](../azure-monitor/insights/container-insights-overview.md) 来捕获群集节点和 Pod 的运行状况指标。 Azure 门户提供这些运行状况指标。
 
@@ -302,6 +323,6 @@ az group delete --name myResourceGroup --yes --no-wait
 [kubernetes-deployment]: concepts-clusters-workloads.md#deployments-and-yaml-manifests
 [kubernetes-service]: concepts-network.md#services
 [kubernetes-dashboard]: kubernetes-dashboard.md
+[windows-container-cli]: windows-container-cli.md
 
-<!--Not Available on [windows-container-cli]: windows-container-cli.md-->
 <!-- Update_Description: update meta properties, wording update, update link -->

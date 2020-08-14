@@ -4,17 +4,18 @@ titleSuffix: Azure Kubernetes Service
 description: 了解有关为 Azure Kubernetes 服务 (AKS) 中的群集管理身份验证和授权的群集操作员最佳做法
 services: container-service
 ms.topic: conceptual
-origin.date: 04/24/2019
-ms.date: 07/13/2020
+origin.date: 07/07/2020
+ms.date: 08/10/2020
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: ab3f5c2eea27103b578951435fce10ee4d66ae76
-ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
+author: rockboyfor
+ms.openlocfilehash: 4fb90cbb64e547f72f363acf9284fcfd5e4266a1
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86218810"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842628"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的身份验证和授权的最佳做法
 
@@ -25,8 +26,9 @@ ms.locfileid: "86218810"
 > [!div class="checklist"]
 >
 > * 使用 Azure Active Directory 对 AKS 群集用户进行身份验证
-> * 使用基于角色的访问控制 (RBAC) 来控制对资源的访问
-> * 使用托管标识在其他服务中进行自我身份验证
+> * 使用 Kubernetes 基于角色的访问控制 (RBAC) 控制对资源的访问权限
+> * 使用 Azure RBAC 大规模精细控制对 AKS 资源和 Kubernetes API 的访问权限，以及对 kubeconfig 的访问权限。
+> * 使用托管标识在其他服务中对 Pod 本身进行身份验证
 
 ## <a name="use-azure-active-directory"></a>使用 Azure Active Directory
 
@@ -36,7 +38,7 @@ Kubernetes 群集的开发人员和应用程序所有者需要访问不同的资
 
 使用 AKS 中与 Azure AD 集成的群集，创建角色或群集角色用于定义对资源的访问权限。  然后，从 Azure AD 将角色绑定到用户或组。 下一部分将介绍这些 Kubernetes 基于角色的访问控制 (RBAC)。 下图显示了 Azure AD 集成，以及如何控制对资源的访问：
 
-![与 AKS 集成的 Azure Active Directory 的群集级身份验证](media/operator-best-practices-identity/cluster-level-authentication-flow.png)
+:::image type="content" source="media/operator-best-practices-identity/cluster-level-authentication-flow.png" alt-text="与 AKS 集成的 Azure Active Directory 的群集级身份验证":::
 
 1. 开发人员在 Azure AD 中进行验证身份。
 1. Azure AD 令牌颁发终结点颁发访问令牌。
@@ -47,11 +49,11 @@ Kubernetes 群集的开发人员和应用程序所有者需要访问不同的资
 
 若要创建使用 Azure AD 的 AKS 群集，请参阅[将 Azure Active Directory 与 AKS 集成][aks-aad]。
 
-## <a name="use-role-based-access-controls-rbac"></a>使用基于角色的访问控制 (RBAC)
+## <a name="use-kubernetes-role-based-access-controls-rbac"></a>使用 Kubernetes 基于角色的访问控制 (RBAC)
 
 **最佳做法指导** - 使用 Kubernetes RBAC 定义用户或组对群集中的资源拥有的权限。 创建角色和绑定，用于分配所需的最少量权限。 与 Azure AD 集成，使用户状态或组成员身份的任何更改可自动更新，并使群集资源访问权限保持最新状态。
 
-在 Kubernetes 中，可以针对群集中的资源提供精细访问控制。 可在群集级别或者针对特定的命名空间定义权限。 可以定义能够使用哪些权限管理哪些资源。 然后，将这些角色通过绑定应用于用户或组。 有关角色、群集角色和绑定的详细信息，请参阅 [Azure Kubernetes 服务 (AKS) 的访问和标识选项][aks-concepts-identity]。  
+在 Kubernetes 中，可以针对群集中的资源提供精细的访问控制。 在群集级别或者针对特定的命名空间定义权限。 可以定义能够使用哪些权限管理哪些资源。 然后，将这些角色通过绑定应用于用户或组。 有关角色、群集角色和绑定的详细信息，请参阅 [Azure Kubernetes 服务 (AKS) 的访问和标识选项][aks-concepts-identity]。  
 
 例如，可以创建一个角色，用于授予对名为 *finance-app* 的命名空间中的资源的完全访问权限，如以下示例 YAML 清单中所示：
 
@@ -89,6 +91,17 @@ roleRef:
 
 若要了解如何使用 Azure AD 组通过 RBAC 来控制对 Kubernetes 资源的访问，请参阅[在 AKS 中使用基于角色的访问控制和 Azure Active Directory 标识来控制对群集资源的访问][azure-ad-rbac]。
 
+## <a name="use-azure-rbac"></a>使用 Azure RBAC 
+**最佳做法指导** - 使用 Azure RBAC 来定义用户或组对一个或多个订阅中 AKS 资源拥有的所需最低权限。
+
+完全操作 AKS 群集需要两个级别的访问权限： 
+1. 访问 Azure 订阅上的 AKS 资源。 具有此访问级别，可以使用 AKS API 来控制群集的缩放或升级，还可以拉取 kubeconfig。
+要查看如何控制对 AKS 资源和 kubeconfig 的访问权限，请参阅[限制对群集配置文件的访问](control-kubeconfig-access.md)。
+
+2. 访问 Kubernetes API。 此访问级别可通过 [Kubernetes RBAC](#use-kubernetes-role-based-access-controls-rbac)（传统上）进行控制，或通过将 Azure RBAC 与 AKS 集成以实现 Kubernetes 授权来进行控制。
+
+    <!--Not Available on [Use Azure RBAC for Kubernetes authorization](manage-azure-rbac.md)-->
+
 ## <a name="use-pod-identities"></a>使用 pod 标识
 
 **最佳做法指导** - 不要在 pod 或容器映像中使用固定的凭据，因为它们存在泄漏或滥用的风险。 应该使用 pod 标识通过中心 Azure AD 标识解决方案来自动请求访问权限。 Pod 标识仅适用于 Linux Pod 和容器映像。
@@ -104,7 +117,7 @@ roleRef:
 
 在以下示例中，开发人员创建使用托管标识请求 Azure SQL 数据库访问权限的 Pod：
 
-![pod 标识可让 pod 自动请求对其他服务的访问权限](media/operator-best-practices-identity/pod-identities.png)
+:::image type="content" source="media/operator-best-practices-identity/pod-identities.png" alt-text="pod 标识可让 pod 自动请求对其他服务的访问权限":::
 
 1. 群集操作员首先创建一个服务帐户，当 pod 请求服务访问权限时，可以使用该帐户来映射标识。
 1. 部署 NMI 服务器和 MIC，以便将访问令牌的任何 pod 请求中继到 Azure AD。

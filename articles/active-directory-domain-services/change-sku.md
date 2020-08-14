@@ -8,18 +8,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/13/2020
+ms.date: 08/07/2020
 ms.author: v-junlch
-ms.openlocfilehash: a2758f7cf9314a062336dbaccc1702ff71d84ddc
-ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
+ms.openlocfilehash: fa91c9e7e8cd14f0a47f516d7db94d863ef61267
+ms.sourcegitcommit: a5eb9a47feefb053ddbaab4b15c395972c372339
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86472585"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88028583"
 ---
 # <a name="change-the-sku-for-an-existing-azure-active-directory-domain-services-managed-domain"></a>更改现有 Azure Active Directory 域服务托管域的 SKU
 
-在 Azure Active Directory 域服务 (Azure AD DS) 中，可用的性能和功能基于 SKU 类型。 这些功能差异包括备份频率或单向出站林信任（当前处于预览状态）的最大数量。 创建托管域时，你可以选择一个 SKU，并且可以在部署托管域后，根据业务需求的变化上下切换 SKU。 业务需求的变化可能包括需要更频繁地备份或创建其他林信任。 若要详细了解不同 SKU 的限制和定价，请参阅 [Azure AD DS SKU 概念][concepts-sku]页。
+在 Azure Active Directory 域服务 (Azure AD DS) 中，可用的性能和功能基于 SKU 类型。 这些功能差异包括备份频率或单向出站林信任的最大数量。
+
+创建托管域时，你可以选择一个 SKU，并且可以在部署托管域后，根据业务需求的变化上下切换 SKU。 业务需求的变化可能包括需要更频繁地备份或创建其他林信任。 若要详细了解不同 SKU 的限制和定价，请参阅 [Azure AD DS SKU 概念][concepts-sku]和 [Azure AD DS 定价][pricing]页。
 
 本文介绍如何使用 Azure 门户更改现有 Azure AD DS 托管域的 SKU。
 
@@ -36,7 +38,7 @@ ms.locfileid: "86472585"
 
 ## <a name="sku-change-limitations"></a>SKU 更改限制
 
-部署托管域后，可以向上或向下更改 SKU。 但是，如果使用资源林（当前处于预览状态）并且已创建从 Azure AD DS 到本地 AD DS 环境的单向出站林信任，则 SKU 更改操作会有一些限制。 高级和企业 SKU 定义可创建的信任数量限制 。 无法将其更改为最大限制低于当前配置的 SKU。
+部署托管域后，可以向上或向下更改 SKU。 但是，如果使用资源林并且已创建从 Azure AD DS 到本地 AD DS 环境的单向出站林信任，则 SKU 更改操作会有一些限制。 高级和企业 SKU 定义可创建的信任数量限制 。 无法将其更改为最大限制低于当前配置的 SKU。
 
 例如：
 
@@ -64,7 +66,7 @@ ms.locfileid: "86472585"
 
 ## <a name="next-steps"></a>后续步骤
 
-如果有资源林，并且想在 SKU 更改后创建其他信任，请参阅[在 Azure AD DS（预览版）中创建到本地域的出站林信任][create-trust]。
+如果有资源林，并且想在 SKU 更改后创建其他信任，请参阅[在 Azure AD DS 中创建到本地域的出站林信任][create-trust]。
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
@@ -73,4 +75,6 @@ ms.locfileid: "86472585"
 [concepts-sku]: administration-concepts.md#azure-ad-ds-skus
 [create-trust]: tutorial-create-forest-trust.md
 
+<!-- EXTERNAL LINKS -->
+[pricing]: https://www.azure.cn/pricing/details/active-directory-ds/
 

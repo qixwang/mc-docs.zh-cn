@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 07/13/2020
+ms.date: 08/07/2020
 ms.author: v-junlch
-ms.openlocfilehash: 722ad71dde479e1df318b2a301a809ca7561092f
-ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
+ms.openlocfilehash: 906116c7f2863e51339186726a208e0d43f2cbdf
+ms.sourcegitcommit: a5eb9a47feefb053ddbaab4b15c395972c372339
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86472610"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88028617"
 ---
 # <a name="known-issues-common-alerts-and-resolutions-in-azure-active-directory-domain-services"></a>已知问题：Azure Active Directory 域服务中的常见警报和解决方法
 
@@ -34,7 +34,7 @@ ms.locfileid: "86472610"
 
 出现此错误通常因为将 Azure 订阅移到新的 Azure AD 目录，并删除了与 Azure AD DS 关联的旧 Azure AD 目录。
 
-此错误无法恢复。 若要解除此警报，请[删除现有的 Azure AD DS 托管域](delete-aadds.md)并在新目录中重新创建它。 如果在删除托管域时遇到问题，请[发起 Azure 支持请求][azure-support]以获得额外的疑难解答帮助。
+此错误无法恢复。 若要解决此警报，请[删除现有托管域](delete-aadds.md)，并在新目录中重新创建。 如果在删除托管域时遇到问题，请[发起 Azure 支持请求][azure-support]以获得额外的疑难解答帮助。
 
 ## <a name="aadds101-azure-ad-b2c-is-running-in-this-directory"></a>AADDS101：Azure AD B2C 在此目录中运行
 
@@ -62,12 +62,12 @@ Azure AD DS 会自动与 Azure AD 目录同步。 如果已为 B2C 配置了 Azu
 
 ### <a name="resolution"></a>解决方法
 
-在开始之前，请确保已了解 `private IP v4 address spaces`。
+在开始前，请确保了解[专用 IP v4 地址空间](https://en.wikipedia.org/wiki/Private_network#Private_IPv4_address_spaces)。
 
 在虚拟网络内部，VM 可以向 Azure 资源发出请求，这些资源与为子网配置的资源属于同一个 IP 地址范围。 如果为子网配置了公共 IP 地址范围，则在虚拟网络内路由的请求可能无法到达预期的 Web 资源。 此配置可能导致 Azure AD DS 出现不可预知的错误。
 
 > [!NOTE]
-> 如果你在 Internet 中拥有为虚拟网络配置的 IP 地址范围，则可以忽略此警报。 但是，Azure AD 域服务无法通过此配置提交到 [SLA](https://www.azure.cn/support/legal/sla/)，因为它可能会导致不可预知的错误。
+> 如果你在 Internet 中拥有为虚拟网络配置的 IP 地址范围，则可以忽略此警报。 但是，Azure AD 域服务无法通过此配置提交到 [SLA](https://www.azure.cn/support/legal/sla/active-directory-ds/v1_0/)，因为它可能会导致不可预知的错误。
 
 若要解除此警报，请删除现有托管域，然后在具有专用 IP 地址范围的虚拟网络中重新创建它。 此过程具有破坏性，因为托管域不可用，且所创建的任何自定义资源（如 OU 或服务帐户）都将丢失。
 
@@ -148,7 +148,7 @@ Azure AD DS 会创建附加资源以供其正常运行，例如公共 IP 地址�
 
 ### <a name="resolution"></a>解决方法
 
-Azure AD DS 的虚拟网络子网需要足够的 IP 地址以供自动创建的资源使用。 此 IP 地址空间包括在出现维护事件时创建替换资源的需求。 为了最大程度地降低可用 IP 地址不足的风险，请不要将其他资源（如你自己的 VM）部署到与 Azure AD DS 相同的虚拟网络子网中。
+Azure AD DS 的虚拟网络子网需要足够的 IP 地址以供自动创建的资源使用。 此 IP 地址空间包括在出现维护事件时创建替换资源的需求。 为了最大程度地降低可用 IP 地址不足的风险，请不要将其他资源（如你自己的 VM）部署到与托管域相同的虚拟网络子网中。
 
 此错误无法恢复。 若要解除此警报，请[删除现有托管域](delete-aadds.md)并重新创建它。 如果在删除托管域时遇到问题，请[发起 Azure 支持请求][azure-support]以获得额外的疑难解答帮助。
 
@@ -173,14 +173,14 @@ Azure AD 域服务用来为域提供服务的服务主体无权管理 Azure 订�
 
 ### <a name="resolution"></a>解决方法
 
-Azure AD DS 的虚拟网络子网需要足够的 IP 地址以供自动创建的资源使用。 此 IP 地址空间包括在出现维护事件时创建替换资源的需求。 为了最大程度地降低可用 IP 地址不足的风险，请不要将其他资源（如你自己的 VM）部署到与 Azure AD DS 相同的虚拟网络子网中。
+Azure AD DS 的虚拟网络子网需要足够的 IP 地址以供自动创建的资源使用。 此 IP 地址空间包括在出现维护事件时创建替换资源的需求。 为了最大程度地降低可用 IP 地址不足的风险，请不要将其他资源（如你自己的 VM）部署到与托管域相同的虚拟网络子网中。
 
 若要解除此警报，请删除现有托管域，然后在具有足够大 IP 地址范围的虚拟网络中重新创建它。 此过程具有破坏性，因为托管域不可用，且所创建的任何自定义资源（如 OU 或服务帐户）都将丢失。
 
 1. 从目录中[删除托管域](delete-aadds.md)。
-1. 若要更新虚拟网络 IP 地址范围，请在 Azure 门户中搜索并选择“虚拟网络”。 为具有较小 IP 地址范围的 Azure AD DS 选择虚拟网络。
+1. 若要更新虚拟网络 IP 地址范围，请在 Azure 门户中搜索并选择“虚拟网络”。 为具有较小 IP 地址范围的托管域选择虚拟网络。
 1. 在“设置”下，选择“地址空间”。
-1. 选择并编辑现有地址范围，或添加其他地址范围，以更新地址范围。 请确保新的 IP 地址范围足够大，可满足 Azure AD DS 子网范围的需求。 准备就绪后，请保存更改。
+1. 选择并编辑现有地址范围，或添加其他地址范围，以更新地址范围。 请确保新的 IP 地址范围足够大，可满足托管域子网范围的需求。 准备就绪后，请保存更改。
 1. 在左侧导航栏中，选择“子网”。
 1. 选择要编辑的子网，或创建其他子网。
 1. 更新或指定足够大的 IP 地址范围，然后保存更改。
@@ -220,7 +220,7 @@ Azure AD DS 的虚拟网络子网需要足够的 IP 地址以供自动创建的�
 
 若要检查 Azure AD DS 组件上的资源锁并将其删除，请完成以下步骤：
 
-1. 对于资源组中的每个 Azure AD DS 网络组件，如虚拟网络、网络接口或公共 IP 地址，请检查 Azure 门户中的操作日志。 这些操作日志应指示操作失败的原因以及应用资源锁的位置。
+1. 对于资源组中的每个托管域网络组件，如虚拟网络、网络接口或公共 IP 地址，请检查 Azure 门户中的操作日志。 这些操作日志应指示操作失败的原因以及应用资源锁的位置。
 1. 选择应用有锁的资源，然后在“锁”下，选择并删除锁。
 
 ## <a name="aadds116-resources-are-unusable"></a>AADDS116：资源不可用
@@ -235,7 +235,7 @@ Azure AD DS 的虚拟网络子网需要足够的 IP 地址以供自动创建的�
 
 若要检查 Azure AD DS 组件上应用的策略并对其进行更新，请完成以下步骤：
 
-1. 对于资源组中的每个 Azure AD DS 网络组件，如虚拟网络、NIC 或公共 IP 地址，请检查 Azure 门户中的操作日志。 这些操作日志应指示操作失败的原因以及应用限制性策略的位置。
+1. 对于资源组中的每个托管域网络组件，如虚拟网络、NIC 或公共 IP 地址，请检查 Azure 门户中的操作日志。 这些操作日志应指示操作失败的原因以及应用限制性策略的位置。
 1. 选择应用了某个策略的资源，然后在“策略”下选择并编辑该策略，以降低其限制性。
 
 ## <a name="aadds500-synchronization-has-not-completed-in-a-while"></a>AADDS500：同步在一段时间内未完成
@@ -250,7 +250,7 @@ Azure AD DS 的虚拟网络子网需要足够的 IP 地址以供自动创建的�
 
 以下常见原因可导致同步在托管域中停止：
 
-* 所需的网络连接被阻止。 若要详细了解如何检查 Azure 虚拟网络是否存在问题以及相关要求，请参阅[对网络安全组进行故障排除](alert-nsg.md)以及 [Azure AD 域服务的网络要求](network-considerations.md)。
+* 所需的网络连接被阻止。 若要详细了解如何检查 Azure 虚拟网络是否存在问题以及相关要求，请参阅[对网络安全组进行故障排除](alert-nsg.md)以及 [Azure AD DS 服务的网络要求](network-considerations.md)。
 *  部署托管域时，密码同步未设置或未成功完成。 你可以为[仅限云的用户](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)或[本地的混合用户](tutorial-configure-password-hash-sync.md)设置密码同步。
 
 ## <a name="aadds501-a-backup-has-not-been-taken-in-a-while"></a>AADDS501：已在一段时间内未执行备份

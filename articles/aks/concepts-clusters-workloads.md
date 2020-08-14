@@ -4,14 +4,16 @@ description: 了解 Kubernetes 的基本群集和工作负荷组件以及它们�
 services: container-service
 ms.topic: conceptual
 origin.date: 06/03/2019
-ms.date: 05/25/2020
+ms.date: 08/10/2020
+ms.testscope: no
+ms.testdate: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: 26f9b35fb4c328dd3b5433d75b6580cbb5f57644
-ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
+ms.openlocfilehash: 89e65478d6325c09a2dbc9d983475c2f894f3832
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86218765"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842672"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 的 Kubernetes 核心概念
 
@@ -36,11 +38,11 @@ Kubernetes 群集分为两个组件：
 - 控制平面节点提供 Kubernetes 核心服务和应用程序工作负载的业务流程。
 - 节点运行应用程序工作负荷。
 
-![Kubernetes 控制平面和节点组件](media/concepts-clusters-workloads/control-plane-and-nodes.png)
+:::image type="content" source="media/concepts-clusters-workloads/control-plane-and-nodes.png" alt-text="Kubernetes 控制平面和节点组件":::
 
 ## <a name="control-plane"></a>控制面板
 
-创建 AKS 群集时，系统会自动创建和配置控制平面。 并将此控制平面作为提取自用户的 Azure 托管资源提供。 控制平面不产生费用，仅属于 AKS 群集的节点产生费用。
+创建 AKS 群集时，系统会自动创建和配置控制平面。 并将此控制平面作为提取自用户的 Azure 托管资源提供。 控制平面不产生费用，仅属于 AKS 群集的节点产生费用。 控制平面及其资源仅驻留在创建群集的区域。
 
 控制平面包括以下 Kubernetes 核心组件：
 
@@ -65,7 +67,7 @@ AKS 提供单租户控制平面、专用 API 服务器、计划程序等。你�
 - 虚拟网络由每个节点上的 kube-proxy 处理。 代理路由流量并管理服务和 Pod 的 IP 地址。
 - 容器运行时是允许容器化应用程序运行并与其他资源（如虚拟网络和存储）进行交互的组件。 在 AKS 中，Moby 用作容器运行时。
 
-![Azure 虚拟机和 Kubernetes 节点的支持资源](media/concepts-clusters-workloads/aks-node-resource-interactions.png)
+:::image type="content" source="media/concepts-clusters-workloads/aks-node-resource-interactions.png" alt-text="Azure 虚拟机和 Kubernetes 节点的支持资源":::
 
 节点的 Azure VM 大小定义了 CPU 数量、内存大小以及可用存储的大小和类型（如高性能 SSD 或常规 HDD）。 如果预计需要大量 CPU 和内存或高性能存储的应用程序，则相应地规划节点大小。 还可以根据需要横向扩展 AKS 群集中的节点数。
 
@@ -77,9 +79,9 @@ AKS 提供单租户控制平面、专用 API 服务器、计划程序等。你�
 
 ### <a name="resource-reservations"></a>资源预留
 
-AKS 利用节点资源，以使节点作为群集的一部分发挥作用。 这可能会造成节点的资源总数和在 AKS 中使用时可分配的资源数之间存在差异。 在为用户部署的 Pod 设置请求和限制时，必须注意这一点。
+AKS 利用节点资源，以使节点作为群集的一部分发挥作用。 这种用法可能会造成节点的资源总数和在 AKS 中使用时可分配的资源数之间存在差异。 在为用户部署的 Pod 设置请求和限制时，必须注意此信息。
 
-若要查找节点的可分配资源，请运行：
+若要查找节点的可分配资源，运行：
 ```kubectl
 kubectl describe node [NODE_NAME]
 
@@ -98,7 +100,7 @@ kubectl describe node [NODE_NAME]
 
 - **内存** - AKS 使用的内存包含两个值的和。
 
-1. Kubelet 守护程序安装在所有 Kubernetes 代理节点上，用于管理容器的创建和停止使用。 在 AKS 上，此守护程序默认具有逐出规则 *memory.available<750Mi*，也就是说一个节点必须始终具有至少 750 Mi 的可分配内存。  主机低于该可用内存阈值时，kubelet 将终止某个正在运行的 pod，以释放主机上的内存并对其进行保护。 当可用内存下降到 750Mi 阈值以下时，这是一种反应性操作。
+1. Kubelet 守护程序安装在所有 Kubernetes 代理节点上，用于管理容器的创建和停止使用。 在 AKS 上，此守护程序默认具有逐出规则 *memory.available<750Mi*，也就是说一个节点必须始终具有至少 750 Mi 的可分配内存。  主机低于该可用内存阈值时，kubelet 将终止某个正在运行的 pod，以释放主机上的内存并对其进行保护。 当可用内存下降到 750Mi 阈值以下时，会触发此操作。
 
 2. 第二个值是为 kubelet 守护程序正常运行而预留（kube 预留）的内存的递减速率。
     - 前 4 GB 内存的 25%
@@ -107,7 +109,7 @@ kubectl describe node [NODE_NAME]
     - 下一个 112 GB 内存的 6%（最多 128 GB）
     - 128 GB 以上任何内存的 2%
 
-上述内存和 CPU 分配规则用于保持代理节点正常运行，包括一些对群集运行状况至关重要的托管系统 Pod。 这些分配规则还会使节点报告的可分配内存和 CPU 少于它不是 Kubernetes 群集一部分的情况， 上述资源预留无法更改。
+上述内存和 CPU 分配规则用于保持代理节点正常运行，包括一些对群集运行状况至关重要的托管系统 Pod。 这些分配规则还会使节点报告的可分配内存和 CPU 少于它不属于 Kubernetes 群集时的正常分配量。 上述资源预留无法更改。
 
 例如，如果一个节点提供 7 GB 内存，它会报告 34% 的内存不可分配，包括 750Mi 硬逐出阈值。
 
@@ -157,7 +159,7 @@ Kubernetes 使用 Pod 来运行应用程序的实例。 Pod 表示应用程序�
 
 有关详细信息，请参阅 [Kubernetes Pod][kubernetes-pods] 和 [Kubernetes Pod 生命周期][kubernetes-pod-lifecycle]。
 
-Pod 是逻辑资源，但容器是应用程序工作负荷的运行位置。 Pod 通常是短暂的可支配资源，单独计划的 Pod 会错过 Kubernetes 提供的一些高可用性和冗余功能。 相反，Pod 通常由 Kubernetes 控制器（例如 Deployment 控制器）进行部署和管理。
+Pod 是逻辑资源，但容器是应用程序工作负荷的运行位置。 Pod 通常是短暂的可支配资源，单独计划的 Pod 会错过 Kubernetes 提供的一些高可用性和冗余功能。 相反，Pod 由 Kubernetes 控制器（例如 Deployment 控制器）进行部署和管理。
 
 ## <a name="deployments-and-yaml-manifests"></a>部署和 YAML 清单
 
@@ -167,9 +169,9 @@ Pod 是逻辑资源，但容器是应用程序工作负荷的运行位置。 Pod
 
 AKS 中的大多数无状态应用程序应使用部署模型，而不是计划单个 Pod。 Kubernetes 可以监视部署的运行状况和状态，以确保在群集中运行所需数量的副本。 只计划单个 Pod 时，如果 Pod 出现故障则不会重启；如果当前节点出现故障，则不会在正常节点上重新计划。
 
-如果应用程序需要一定数量的实例才能做出管理决策，你不希望更新进程来中断该功能。 Pod 中断预算可用于定义在更新或节点升级期间部署中可以删除的副本数。 例如，如果部署中有 5 个副本，则可以定义 4 个 Pod 中断，以便一次只允许删除/重新计划一个副本 。 与 Pod 资源限制一样，最佳做法是在需要始终存在最少数量副本的应用程序上定义 Pod 中断预算。
+如果应用程序需要一定数量的实例才能做出管理决策，你不希望更新进程来中断该功能。 Pod 中断预算可用于定义在更新或节点升级期间部署中可以删除的副本数。 例如，如果部署中有五 (5) 个副本，则可以定义 4 个 Pod 中断，以便一次只允许删除/重新计划一个副本 。 与 Pod 资源限制一样，最佳做法是在需要始终存在最少数量副本的应用程序上定义 Pod 中断预算。
 
-通常使用 `kubectl create` 或 `kubectl apply` 来创建和管理部署。 为创建部署，可使用 YAML（YAML 不标记语言）格式定义清单文件。 以下示例创建 NGINX Web 服务器的基本部署。 部署指定要创建的 3 个副本，并在容器上打开端口 80 。 还为 CPU 和内存定义了资源请求和限制。
+通常使用 `kubectl create` 或 `kubectl apply` 来创建和管理部署。 为创建部署，可使用 YAML（YAML 不标记语言）格式定义清单文件。 以下示例创建 NGINX Web 服务器的基本部署。 部署指定要创建的三 (3) 个副本，并要求在容器上打开端口 80 。 还为 CPU 和内存定义了资源请求和限制。
 
 ```yaml
 apiVersion: apps/v1
@@ -242,11 +244,12 @@ Deployment 控制器使用 Kubernetes 计划程序在具有可用资源的任何
 有关详细信息，请参阅 [Kubernetes DaemonSet][kubernetes-daemonset]。
 
 <!--Not Available on [Virtual Nodes add-on](virtual-nodes-cli.md#enable-virtual-nodes-addon)-->
+
 ## <a name="namespaces"></a>命名空间
 
 Kubernetes 资源（如 Pod 和部署）以逻辑方式分组到命名空间中。 这些分组提供了一种以逻辑方式划分 AKS 群集并限制创建、查看或管理资源访问权限的方法。 例如，可以创建命名空间以分隔业务组。 用户只能与分配的命名空间内的资源进行交互。
 
-![Kubernetes 命名空间以逻辑方式划分资源和应用程序](media/concepts-clusters-workloads/namespaces.png)
+:::image type="content" source="media/concepts-clusters-workloads/namespaces.png" alt-text="Kubernetes 命名空间以逻辑方式划分资源和应用程序":::
 
 创建 AKS 群集时，以下命名空间可用：
 

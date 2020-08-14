@@ -4,15 +4,15 @@ description: 了解如何通过 Azure 门户管理 Azure Database for PostgreSQL
 author: WenJason
 ms.author: v-jay
 ms.service: postgresql
-ms.topic: conceptual
-origin.date: 06/09/2020
-ms.date: 07/06/2020
-ms.openlocfilehash: 19119480a470818244e1f326ef23fa4b799cb836
-ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
+ms.topic: how-to
+origin.date: 07/10/2020
+ms.date: 08/17/2020
+ms.openlocfilehash: da4b46cd4636f3fb1336a8cb1e888d9f1c9689d0
+ms.sourcegitcommit: 3cf647177c22b24f76236c57cae19482ead6a283
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85845886"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88029586"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>通过 Azure 门户创建和管理 Azure Database for PostgreSQL（单一服务器）中的只读副本
 
@@ -79,15 +79,15 @@ ms.locfileid: "85845886"
 
 6. 选择“确定”以确认创建该副本。
 
-使用与主服务器相同的计算和存储设置创建副本。 创建副本后，可以独立于主服务器更改多项设置：计算代系、vCore 数、存储和备份保留期。 定价层也可以独立更改，但“基本”层除外。
-
-> [!IMPORTANT]
-> 将主服务器设置更新为新值之前，请将副本设置更新为一个相等或更大的值。 此操作可帮助副本与主服务器发生的任何更改保持同步。
-
 创建只读副本后，可以在“复制”窗口中查看它：
 
 ![在“复制”窗口中查看新副本](./media/howto-read-replicas-portal/list-replica.png)
  
+
+> [!IMPORTANT]
+> 查看[“只读副本”概述的注意事项部分](concepts-read-replicas.md#considerations)。
+>
+> 将主服务器设置更新为新值之前，请将副本设置更新为一个相等或更大的值。 此操作可帮助副本与主服务器发生的任何更改保持同步。
 
 ## <a name="stop-replication"></a>停止复制
 可以停止主服务器与只读副本之间的复制。

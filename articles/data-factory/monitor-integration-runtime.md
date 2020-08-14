@@ -7,26 +7,26 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 07/25/2018
-ms.date: 06/29/2020
+ms.date: 08/10/2020
 author: v-jay
 ms.author: daperlov
 manager: digimobile
-ms.openlocfilehash: 25a2b6cf4bccec76c646e4bb4c683f8fb42e013c
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+ms.openlocfilehash: c9d8453f02508a72bde2ec4d205640d806553769
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323304"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914288"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中监视集成运行时
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
   
-**集成运行时**是 Azure 数据工厂用于在不同的网络环境之间提供多种数据集成功能的计算基础结构。 数据工厂提供三种类型的集成运行时：
+集成运行时是 Azure 数据工厂 (ADF) 用于在不同的网络环境之间提供多种数据集成功能的计算基础结构。 数据工厂提供三种类型的集成运行时：
 
 - Azure 集成运行时
 - 自承载集成运行时
-- Azure-SSIS 集成运行时
+- Azure SQL Server Integration Services (SSIS) 集成运行时
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -39,9 +39,11 @@ Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName MyDataFactory -ResourceGr
 该 cmdlet 返回不同类型的集成运行时的不同信息。 本文解释每种类型的集成运行时的属性和状态。  
 
 ## <a name="azure-integration-runtime"></a>Azure 集成运行时
+
 Azure 集成运行时的计算资源在 Azure 中以弹性方式受到完全管理。 下表提供了 **Get-AzDataFactoryV2IntegrationRuntime** 命令返回的属性的说明：
 
 ### <a name="properties"></a>属性
+
 下表说明该 cmdlet 针对 Azure 集成运行时返回的属性：
 
 | 属性 | 说明 |
@@ -54,6 +56,7 @@ Azure 集成运行时的计算资源在 Azure 中以弹性方式受到完全管�
 | 说明 | Azure 集成运行时的说明。  |
 
 ### <a name="status"></a>状态
+
 下表提供了 Azure 集成运行时的可能状态：
 
 | 状态 | 注释/方案 | 
@@ -62,6 +65,7 @@ Azure 集成运行时的计算资源在 Azure 中以弹性方式受到完全管�
 | Offline | 由于内部错误，Azure 集成运行时处于脱机状态。 |
 
 ## <a name="self-hosted-integration-runtime"></a>自承载集成运行时
+
 以下部分提供了 Get-AzDataFactoryV2IntegrationRuntime cmdlet 返回的属性的说明。 
 
 > [!NOTE] 
@@ -93,6 +97,7 @@ Azure 集成运行时的计算资源在 Azure 中以弹性方式受到完全管�
 可以在 Azure 门户中覆盖计算得出的默认值。 选择“创建者”>“连接”>“集成运行时”>“编辑”>“节点”>“修改每个节点的并发作业值”。 也可以使用 PowerShell [update-Azdatafactoryv2integrationruntimenode](https://docs.microsoft.com/powershell/module/az.datafactory/update-Azdatafactoryv2integrationruntimenode#examples) 命令。
   
 ### <a name="status-per-node"></a>状态（每个节点）
+
 下表提供了自承载集成运行时节点的可能状态：
 
 | 状态 | 说明 |
@@ -106,6 +111,7 @@ Azure 集成运行时的计算资源在 Azure 中以弹性方式受到完全管�
 节点在无法与其他节点连接时可能处于非活动状态。
 
 ### <a name="status-overall-self-hosted-integration-runtime"></a>状态（整个自承载集成运行时）
+
 下表提供了自承载集成运行时的可能状态： 此状态取决于属于运行时的所有节点的状态。 
 
 | 状态 | 说明 |
@@ -154,71 +160,104 @@ Get-AzDataFactoryV2IntegrationRuntimeMetric -name $integrationRuntimeName -Resou
 } 
 ```
 
-
 ## <a name="azure-ssis-integration-runtime"></a>Azure-SSIS 集成运行时
-Azure-SSIS 集成运行时是完全托管的 Azure 虚拟机（或节点）群集，专用于运行 SSIS 包。 它不运行 Azure 数据工厂的其他任何活动。 预配后，可以查询其属性，并监视其总体/特定于节点的状态。
 
-### <a name="properties"></a>属性
+Azure-SSIS IR 是完全托管的 Azure 虚拟机（或节点）群集，专用于运行 SSIS 包。 你可以使用各种方法对 Azure-SSIS IR 调用 SSIS 包执行：例如通过启用了 Azure 的 SQL Server Data Tools (SSDT)、AzureDTExec 命令行实用工具、SQL Server Management Studio (SSMS)/SQL Server 代理上的 T-SQL，以及 ADF 管道中的执行 SSIS 包活动。 Azure-SSIS IR 不会运行任何其他 ADF 活动。 预配后，可以通过 Azure PowerShell、Azure 门户和 Azure Monitor 监视其总体/特定于节点的属性和状态。
 
-| 属性/状态 | 说明 |
-| --------------- | ----------- |
-| CreateTime | Azure-SSIS 集成运行时的创建时间（UTC 时间）。 |
-| Nodes | Azure-SSIS 集成运行时的已分配/可用节点、特定于节点的状态 (starting/available/recycling/unavailable) 和可采取措施的错误。 |
-| OtherErrors | Azure-SSIS 集成运行时中发生的非特定于节点且可采取措施的错误。 |
-| LastOperation | 上次对 Azure-SSIS 集成运行时执行的启动/停止操作的结果，以及可采取措施的错误（如果操作失败）。 |
-| 状态 | Azure-SSIS 集成运行时的总体状态 (initial/starting/started/stopping/stopped)。 |
-| 位置 | Azure-SSIS 集成运行时的位置。 |
-| NodeSize | Azure-SSIS 集成运行时的每个节点的大小。 |
-| NodeCount | Azure-SSIS 集成运行时中的节点数目。 |
-| MaxParallelExecutionsPerNode | Azure-SSIS 集成运行时中每个节点的并行执行数。 |
-| CatalogServerEndpoint | 用于托管 SSISDB 的现有 SQL 数据库/SQL 托管实例的终结点。 |
-| CatalogAdminUserName | 现有 SQL 数据库/SQL 托管实例的管理员用户名。 数据工厂服务使用此信息来代你准备和管理 SSISDB。 |
-| CatalogAdminPassword | 现有 SQL 数据库/SQL 托管实例的管理员密码。 |
-| CatalogPricingTier | 由 SQL 数据库托管的 SSISDB 的定价层。  不适用于托管 SSISDB 的 SQL 托管实例。 |
-| VNetId | Azure-SSIS 集成运行时要加入的虚拟网络资源 ID。 |
-| 子网 | Azure-SSIS 集成运行时要加入的子网名称。 |
-| ID | Azure-SSIS 集成运行时的资源 ID。 |
-| 类型 | Azure-SSIS 集成运行时的类型 (Managed/Self-Hosted)。 |
-| ResourceGroupName | 在其中创建了数据工厂和 Azure-SSIS 集成运行时的 Azure 资源组的名称。 |
-| DataFactoryName | Azure 数据工厂的名称。 |
-| 名称 | Azure-SSIS 集成运行时的名称。 |
-| 说明 | Azure-SSIS 集成运行时的说明。 |
+### <a name="monitor-the-azure-ssis-integration-runtime-with-azure-powershell"></a>使用 Azure PowerShell 监视 Azure-SSIS 集成运行时
 
-  
-### <a name="status-per-node"></a>状态（每个节点）
-
-| 状态 | 说明 |
-| ------ | ----------- | 
-| 正在启动 | 正在准备此节点。 |
-| 可用 | 此节点已准备就绪，可在其中部署/执行 SSIS 包。 |
-| Recycling | 正在修复/重启此节点。 |
-| 不可用 | 此节点未准备就绪，不能在其中部署/执行 SSIS 包，并出现了可采取措施解决的错误/问题。 |
-
-### <a name="status-overall-azure-ssis-integration-runtime"></a>状态（整个 Azure-SSIS 集成运行时）
-
-| 总体状态 | 说明 | 
-| -------------- | ----------- | 
-| 初始 | 尚未分配/准备 Azure-SSIS 集成运行时的节点。 | 
-| 正在启动 | 正在分配/准备 Azure-SSIS 集成运行时的节点，计费已开始。 |
-| Started | 已分配/准备 Azure-SSIS 集成运行时的节点，并可以在其中部署/执行 SSIS 包。 |
-| 正在停止  | 正在释放 Azure-SSIS 集成运行时的节点。 |
-| 已停止 | 已释放 Azure-SSIS 集成运行时的节点，计费已停止。 |
-
-### <a name="monitor-the-azure-ssis-integration-runtime-in-the-azure-portal"></a>在 Azure 门户中监视 Azure-SSIS 集成运行时
-
-以下屏幕截图显示了如何选择要监视的 Azure-SSIS IR，并提供显示的信息的示例。
-
-![选择要监视的 Azure-SSIS 集成运行时](media/monitor-integration-runtime/monitor-azure-ssis-ir-image1.png)
-
-![查看有关 Azure-SSIS 集成运行时的信息](media/monitor-integration-runtime/monitor-azure-ssis-ir-image2.png)
-
-### <a name="monitor-the-azure-ssis-integration-runtime-with-powershell"></a>使用 PowerShell 监视 Azure-SSIS 集成运行时
-
-使用类似以下示例的脚本来检查 Azure-SSIS IR 的状态。
+使用以下 Azure PowerShell cmdlet 监视 Azure-SSIS IR 的总体/特定于节点的属性和状态。
 
 ```powershell
 Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName -Status
 ```
+
+#### <a name="properties"></a>属性
+
+下表说明上述 cmdlet 针对 Azure-SSIS IR 返回的属性。
+
+| 属性/状态              | 说明                  |
+| ---------------------------- | ---------------------------- |
+| CreateTime                   | Azure-SSIS IR 的创建时间（UTC 时间）。 |
+| Nodes                        | Azure-SSIS IR 的已分配/可用节点，带有特定于节点的状态（正在启动/可用/正在回收/不可用）和可采取措施的错误。 |
+| OtherErrors                  | Azure-SSIS IR 上发生的非特定于节点且可采取措施的错误。 |
+| LastOperation                | 上次对 Azure-SSIS IR 执行的启动/停止操作的结果；如果失败，将出现可采取措施的错误。 |
+| 状态                        | Azure-SSIS IR 的总体状态（初始化/正在启动/已启动/正在停止/已停止）。 |
+| 位置                     | Azure-SSIS IR 的位置。 |
+| NodeSize                     | Azure-SSIS IR 中每个节点的大小。 |
+| NodeCount                    | Azure-SSIS IR 中的节点数目。 |
+| MaxParallelExecutionsPerNode | Azure-SSIS IR 中每个节点的最大并行执行数。 |
+| CatalogServerEndpoint        | 用于托管 SSIS 目录 (SSISDB) 的现有 Azure SQL Database 服务器或托管实例的终结点。 |
+| CatalogAdminUserName         | 现有 Azure SQL Database 服务器或托管实例的管理员用户名。 ADF 使用此信息来代你准备和管理 SSISDB。 |
+| CatalogAdminPassword         | 现有 Azure SQL Database 服务器或托管实例的管理员密码。 |
+| CatalogPricingTier           | Azure SQL Database 服务器托管的 SSISDB 的定价层。  不适用于 Azure SQL 托管实例承载 SSISDB。 |
+| VNetId                       | Azure-SSIS IR 要加入的虚拟网络资源 ID。 |
+| 子网                       | Azure-SSIS IR 要加入的子网名称。 |
+| ID                           | Azure-SSIS IR 的资源 ID。 |
+| 类型                         | Azure-SSIS IR 的 IR 类型（托管/自承载）。 |
+| ResourceGroupName            | 在其中创建了 ADF 和 Azure-SSIS IR 的 Azure 资源组的名称。 |
+| DataFactoryName              | ADF 的名称。 |
+| 名称                         | Azure-SSIS IR 的名称。 |
+| 说明                  | Azure-SSIS IR 的说明。 |
+  
+#### <a name="status-per-azure-ssis-ir-node"></a>状态（每个 Azure-SSIS IR 节点）
+
+下表提供了 Azure-SSIS IR 节点的可能状态：
+
+| 特定于节点的状态 | 说明 |
+| -------------------- | ----------- | 
+| 正在启动             | 正在准备此节点。 |
+| 可用            | 此节点已准备就绪，可在其中部署/执行 SSIS 包。 |
+| Recycling            | 正在修复/重启此节点。 |
+| 不可用          | 此节点未准备就绪，不能在其中部署/执行 SSIS 包，并出现了可采取措施解决的错误/问题。 |
+
+#### <a name="status-overall-azure-ssis-ir"></a>状态（整个 Azure-SSIS IR）
+
+下表提供了 Azure-SSIS IR 的可能整体状态。 整体状态又取决于属于 Azure-SSIS IR 的所有节点的组合状态。 
+
+| 总体状态 | 说明 | 
+| -------------- | ----------- | 
+| 初始        | 尚未分配/准备 Azure-SSIS IR 的节点。 | 
+| 正在启动       | 正在分配/准备 Azure-SSIS IR 的节点，计费已开始。 |
+| Started        | 已分配/准备 Azure-SSIS IR 的节点，并可以在其中部署/执行 SSIS 包。 |
+| 正在停止       | 正在释放 Azure-SSIS IR 的节点。 |
+| 已停止        | 已释放 Azure-SSIS IR 的节点，计费已停止。 |
+
+### <a name="monitor-the-azure-ssis-integration-runtime-in-azure-portal"></a>在 Azure 门户中监视 Azure-SSIS 集成运行时
+
+若要在 Azure 门户中监视 Azure-SSIS IR，请转到 ADF UI 上“监视”中心的“集成运行时”页，在其中可以看到所有集成运行时 。
+
+![监视所有集成运行时](media/monitor-integration-runtime/monitor-integration-runtimes.png)
+
+接下来，选择 Azure-SSIS IR 的名称以打开其监视页，可以在其中查看其整体/特定于节点的属性和状态。
+
+![监视 Azure-SSIS IR](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime.png)
+
+在 Azure-SSIS IR 监视页的“状态”磁贴上，可以查看其总体状态，例如“正在运行”或“已停止”  。 选择“正在运行”状态会弹出一个窗口，窗口中有实时“停止”按钮以停止 Azure-SSIS IR 。 选择“已停止”状态会弹出一个窗口，窗口中有实时“启动”按钮以启动 Azure-SSIS IR 。 该弹出窗口还具有一个“执行 SSIS 包”按钮，用于自动生成 ADF 管道，其中包含在 Azure-SSIS IR 上运行的执行 SSIS 包活动（请参阅[在 ADF 管道中将 SSIS 包作为执行 SSIS 程序包活动运行](/data-factory/how-to-invoke-ssis-package-ssis-activity)）和一个“资源 ID”文本框，你可以从中复制 Azure-SSIS IR 资源 ID (`/subscriptions/YourAzureSubscripton/resourcegroups/YourResourceGroup/providers/Microsoft.DataFactory/factories/YourADF/integrationruntimes/YourAzureSSISIR`)，该资源 ID 可用于从独立软件供应商 (ISV) 处购买其他高级/许可 SSIS 组件，并将它们绑定到 Azure-SSIS IR（请参阅[在 Azure-SSIS IR 上安装高级/许可组件](/data-factory/how-to-develop-azure-ssis-ir-licensed-components)） 。
+
+![监视 Azure-SSIS IR - 状态磁贴](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-status.png)
+
+如果你使用项目部署模型，其中包存储在由 Azure SQL Database 服务器或托管实例托管的 SSISDB 中，则可在 Azure-SSIS IR 监视页上看到“SSISDB 服务终结点”磁贴（请参阅[配置 Azure-SSIS IR 部署设置](/data-factory/tutorial-deploy-ssis-packages-azure#deployment-settings-page)）。 在此磁贴上，你可以选择一个指定 Azure SQL Database 服务器或托管实例的链接以弹出一个窗口，你可以在其中从一个文本框中复制服务器终结点，并在从 SSMS 连接时使用它来部署、配置、运行和管理包。 在该弹出窗口中，你还可以选择“查看 Azure SQL 数据库或托管实例设置”链接以在 Azure 门户中重新配置 SSISDB/重设 SSISDB 的大小。
+
+![监视 Azure-SSIS IR - SSISDB 磁贴](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-ssisdb.png)
+
+如果你将 Azure-SSIS IR 加入 VNet，可在 Azure-SSIS IR 监视页上看到“验证 VNET/子网”磁贴（请参阅[将 Azure-SSIS IR 加入 VNet](/data-factory/join-azure-ssis-integration-runtime-virtual-network)）。 在此磁贴上，你可以选择一个指定 VNet 和子网的链接以弹出一个窗口，你可以在其中从文本框中复制 VNet 资源 ID (`/subscriptions/YourAzureSubscripton/resourceGroups/YourResourceGroup/providers/Microsoft.Network/virtualNetworks/YourARMVNet`) 和子网名称，还可以验证 VNet 和子网配置，以确保所需的入站/出站网络流量和 Azure-SSIS IR 的管理不受阻碍。
+
+![监视 Azure-SSIS IR - 验证磁贴](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-validate.png)
+
+在 Azure-SSIS IR 监视页的“诊断连接”磁贴上，可以选择“测试连接”链接以弹出一个窗口，你可以在其中通过完全限定的域名 (FQDN)/IP 地址和指定端口检查 Azure-SSIS IR 和相关的包/配置/数据存储以及管理服务之间的连接（请参阅[测试来自 Azure-SSIS 的连接](/data-factory/ssis-integration-runtime-diagnose-connectivity-faq)） 。
+
+![监视 Azure-SSIS IR - 诊断磁贴](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-diagnose.png)
+
+如果你使用包部署模型，其中包存储在由 Azure SQL 托管实例托管并通过 Azure-SSIS IR 包存储进行管理的文件系统/Azure 文件/SQL Server 数据库 (MSDB) 中，则可在 Azure-SSIS IR 监视页上看到“包存储”磁贴（请参阅[配置 Azure-SSIS IR 部署设置](/data-factory/tutorial-deploy-ssis-packages-azure#deployment-settings-page)）。 在此磁贴上，可以选择一个指定附加到 Azure-SSIS IR 的包存储数的链接以弹出一个窗口，你可以在其中在由 Azure SQL 托管实例托管的文件系统/Azure 文件/MSDB 上为 Azure-SSIS IR 包存储重新配置相关的链接服务。
+
+![监视 Azure-SSIS IR - 包磁贴](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-package.png)
+
+如果 Azure-SSIS IR 的启动/停止/维护/升级存在问题，可在 Azure-SSIS IR 监视页上看到一个附加的“错误”磁贴。 在此磁贴上，你可以选择一个指定由 Azure-SSIS IR 生成的错误数的链接以弹出一个窗口，你可以在其中详细了解这些错误并进行复制，以在我们的疑难解答指南中找到推荐的解决方案（请参阅[对 Azure-SSIS IR 进行故障排除](/data-factory/ssis-integration-runtime-management-troubleshoot)）。
+
+### <a name="monitor-the-azure-ssis-integration-runtime-with-azure-monitor"></a>使用 Azure Monitor 监视 Azure-SSIS 集成运行时
+
+若要使用 Azure Monitor 监视 Azure-SSIS IR，请参阅[使用 Azure Monitor 监视 SSIS 操作](/data-factory/monitor-using-azure-monitor#monitor-ssis-operations-with-azure-monitor)。
 
 ### <a name="more-info-about-the-azure-ssis-integration-runtime"></a>有关 Azure-SSIS 集成运行时的详细信息
 

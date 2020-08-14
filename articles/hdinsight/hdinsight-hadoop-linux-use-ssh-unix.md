@@ -14,12 +14,12 @@ origin.date: 02/28/2020
 ms.date: 06/22/2020
 ms.author: v-yiso
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 8f9b4b5b5324e12851d62a714358c2898931a91f
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.openlocfilehash: bc3d3c4b3ad35ce577e18676ba93decc980aae4b
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723234"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917216"
 ---
 # <a name="connect-to-hdinsight-apache-hadoop-using-ssh"></a>使用 SSH 连接到 HDInsight (Apache Hadoop)
 
@@ -120,6 +120,26 @@ SSH 密钥使用[公钥加密](https://en.wikipedia.org/wiki/Public-key_cryptogr
 ### <a name="change-the-ssh-password"></a>更改 SSH 密码
 
 有关更改 SSH 用户帐户密码的信息，请参阅 [Manage HDInsight](hdinsight-administer-use-portal-linux.md#change-passwords)（管理 HDInsight）文档的 __Change passwords__（更改密码）部分。
+
+## <a name="authentication-domain-joined-hdinsight"></a>已加入域的 HDInsight 身份验证
+
+如果使用已加入域的 HDInsight 群集，必须在通过 SSH 本地用户建立连接后使用 `kinit` 命令。 此命令会提示输入域用户和密码，并在与群集关联的 Azure Active Directory 域中对会话进行身份验证。
+
+还可以在每个已加入域的节点（例如头节点、边缘节点）上启用 Kerberos 身份验证，以便通过域帐户使用 ssh。 为此，请编辑 sshd 配置文件：
+
+```bash
+sudo vi /etc/ssh/sshd_config
+```
+
+取消注释并将 `KerberosAuthentication` 更改为 `yes`
+
+```bash
+sudo service sshd restart
+```
+
+使用 `klist` 命令验证 Kerberos 身份验证是否成功。
+
+有关详细信息，请参阅 [Configure domain-joined HDInsight](./domain-joined/apache-domain-joined-configure.md)（配置已加入域的 HDInsight）。
 
 ## <a name="connect-to-nodes"></a>连接到节点
 

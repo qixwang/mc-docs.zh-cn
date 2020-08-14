@@ -3,160 +3,164 @@ title: 使用 Node.js 导入话语 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 了解如何使用 LUIS Authoring API 以编程方式从 CSV 格式的预先存在数据生成 LUIS 应用。
 services: cognitive-services
-author: lingliw
-manager: digimobile
-ms.custom: seodec18
+author: Johnnytechn
+manager: nitinme
+ms.custom: seodec18, devx-track-javascript
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 09/05/2019
-ms.date: 09/23/2019
-ms.author: v-lingwu
-ms.openlocfilehash: 1cf0756d2d70d5cf0809d53d8c7833aad64eb7e8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 08/04/2020
+ms.author: v-johya
+ms.openlocfilehash: 83455d7f17a17b063e6ed2f67e0a64beff13474d
+ms.sourcegitcommit: caa18677adb51b5321ad32ae62afcf92ac00b40b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74982150"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88023357"
 ---
 # <a name="build-a-luis-app-programmatically-using-nodejs"></a>使用 Node.js 以编程方式生成 LUIS 应用
 
-LUIS 提供与 [LUIS](luis-reference-regions.md) 网站功能相同的编程 API。 如果有预先存在的数据，这样可以节省时间，而且以编程方式创建 LUIS 应用比手动输入信息快。 
+LUIS 提供与 [LUIS](luis-reference-regions.md) 网站功能相同的编程 API。 如果有预先存在的数据，这样可以节省时间，而且以编程方式创建 LUIS 应用比手动输入信息快。
 
 [!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 ## <a name="prerequisites"></a>必备条件
 
-* 登录 [LUIS](luis-reference-regions.md) 网站，并在“帐户设置”中找到[创作密钥](luis-concept-keys.md#authoring-key)。 使用此密钥调用 Authoring API。
-* 如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth) 。
+* 登录 [LUIS](luis-reference-regions.md) 网站，并在“帐户设置”中找到[创作密钥](luis-how-to-azure-subscription.md#authoring-key)。 使用此密钥调用 Authoring API。
+* 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 * 本文从用户请求的一家虚拟公司的 CSV 格式日志文件开始。 可从[此处](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv)下载。
 * 使用 NPM 安装最新的 Node.js。 从[此处](https://nodejs.org/en/download/)下载它。
 * **[建议]** 用于 IntelliSense 和调试的 Visual Studio Code 可从[此处](https://code.visualstudio.com/)免费下载。
 
+本文中的所有代码都可在 [Azure-Samples 语言理解 GitHub 存储库](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/examples/build-app-programmatically-csv)中找到。
+
 ## <a name="map-preexisting-data-to-intents-and-entities"></a>将预先存在的数据映射到意向和实体
 即使系统在创建时未考虑使用 LUIS，如果它包含映射到用户不同操作的文本数据，也许能够从现有用户输入类别映射到 LUIS 中的意向。 如果可标识用户所说的重要单词或短语，这些单词可能会映射到实体。
 
-打开 `IoT.csv` 文件。 它包含对虚构家庭自动化服务的用户查询日志，包括分类方式、用户所说的内容以及一些包含有用信息的列。 
+打开 [`IoT.csv`](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv) 文件。 它包含对虚构家庭自动化服务的用户查询日志，包括分类方式、用户所说的内容以及一些包含有用信息的列。
 
-![预先存在数据的 CSV 文件](./media/luis-tutorial-node-import-utterances-csv/csv.png) 
+![预先存在数据的 CSV 文件](./media/luis-tutorial-node-import-utterances-csv/csv.png)
 
-可以看到“RequestType”列可能是意向，“Request”列显示了一个示例陈述   。 如果其他字段出现在陈述中，则可能是实体。 由于有意向、实体和示例陈述，因此需要一个简单的示例应用。
+可以看到“RequestType”列可能是意向，“Request”列显示了一个示例陈述********。 如果其他字段出现在陈述中，则可能是实体。 由于有意向、实体和示例陈述，因此需要一个简单的示例应用。
 
 ## <a name="steps-to-generate-a-luis-app-from-non-luis-data"></a>从非 LUIS 数据生成 LUIS 应用的步骤
 从 CSV 文件生成新的 LUIS 应用：
 
 * 分析 CSV 文件中的数据：
-    * 转换为可以使用创作 API 上传到 LUIS 的格式。 
-    * 从已分析的数据收集有关意向和实体的信息。 
+    * 转换为可以使用创作 API 上传到 LUIS 的格式。
+    * 从已分析的数据收集有关意向和实体的信息。
 * 调用创作 API 以执行以下操作：
     * 创建应用。
-    * 添加从已分析数据中收集的意向和实体。 
-    * 创建 LUIS 应用后，可以从已分析的数据中添加示例陈述。 
+    * 添加从已分析数据中收集的意向和实体。
+    * 创建 LUIS 应用后，可以从已分析的数据中添加示例陈述。
 
 可以在 `index.js` 文件的最后一部分中看到此程序流。 复制或[下载](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/index.js)此代码并将其保存在 `index.js`。
 
+```javascript
+var path = require('path');
+
+const parse = require('./_parse');
+const createApp = require('./_create');
+const addEntities = require('./_entities');
+const addIntents = require('./_intents');
+const upload = require('./_upload');
+
+// Change these values
+const LUIS_authoringKey = "YOUR_AUTHORING_KEY";
+const LUIS_appName = "Sample App - build from IoT csv file";
+const LUIS_appCulture = "en-us"; 
+const LUIS_versionId = "0.1";
+
+// NOTE: final output of add-utterances api named utterances.upload.json
+const downloadFile = "./IoT.csv";
+const uploadFile = "./utterances.json"
+
+// The app ID is returned from LUIS when your app is created
+var LUIS_appId = ""; // default app ID
+var intents = [];
+var entities = [];
+
+
+/* add utterances parameters */
+var configAddUtterances = {
+    LUIS_subscriptionKey: LUIS_authoringKey,
+    LUIS_appId: LUIS_appId,
+    LUIS_versionId: LUIS_versionId,
+    inFile: path.join(__dirname, uploadFile),
+    batchSize: 100,
+    uri: "https://api.cognitive.azure.cn/luis/api/v2.0/apps/{appId}/versions/{versionId}/examples"
+};
+
+/* create app parameters */
+var configCreateApp = {
+    LUIS_subscriptionKey: LUIS_authoringKey,
+    LUIS_versionId: LUIS_versionId,
+    appName: LUIS_appName,
+    culture: LUIS_appCulture,
+    uri: "https://api.cognitive.azure.cn/luis/api/v2.0/apps/"
+};
+
+/* add intents parameters */
+var configAddIntents = {
+    LUIS_subscriptionKey: LUIS_authoringKey,
+    LUIS_appId: LUIS_appId,
+    LUIS_versionId: LUIS_versionId,
+    intentList: intents,
+    uri: "https://api.cognitive.azure.cn/luis/api/v2.0/apps/{appId}/versions/{versionId}/intents"
+};
+
+/* add entities parameters */
+var configAddEntities = {
+    LUIS_subscriptionKey: LUIS_authoringKey,
+    LUIS_appId: LUIS_appId,
+    LUIS_versionId: LUIS_versionId,
+    entityList: entities,
+    uri: "https://api.cognitive.azure.cn/luis/api/v2.0/apps/{appId}/versions/{versionId}/entities"
+};
+
+/* input and output files for parsing CSV */
+var configParse = {
+    inFile: path.join(__dirname, downloadFile),
+    outFile: path.join(__dirname, uploadFile)
+};
+
+// Parse CSV
+parse(configParse)
+    .then((model) => {
+        // Save intent and entity names from parse
+        intents = model.intents;
+        entities = model.entities;
+        // Create the LUIS app
+        return createApp(configCreateApp);
+
+    }).then((appId) => {
+        // Add intents
+        LUIS_appId = appId;
+        configAddIntents.LUIS_appId = appId;
+        configAddIntents.intentList = intents;
+        return addIntents(configAddIntents);
+
+    }).then(() => {
+        // Add entities
+        configAddEntities.LUIS_appId = LUIS_appId;
+        configAddEntities.entityList = entities;
+        return addEntities(configAddEntities);
+
+    }).then(() => {
+        // Add example utterances to the intents in the app
+        configAddUtterances.LUIS_appId = LUIS_appId;
+        return upload(configAddUtterances);
+
+    }).catch(err => {
+        console.log(err.message);
+    });
 ```
-      var path = require('path');
-
-    const parse = require('./_parse');
-    const createApp = require('./_create');
-    const addEntities = require('./_entities');
-    const addIntents = require('./_intents');
-    const upload = require('./_upload');
-
-    // Change these values
-    const LUIS_authoringKey = "YOUR_AUTHORING_KEY";
-    const LUIS_appName = "Sample App - build from IoT csv file";
-    const LUIS_appCulture = "en-us"; 
-    const LUIS_versionId = "0.1";
-
-    // NOTE: final output of add-utterances api named utterances.upload.json
-    const downloadFile = "./IoT.csv";
-    const uploadFile = "./utterances.json"
-
-    // The app ID is returned from LUIS when your app is created
-    var LUIS_appId = ""; // default app ID
-    var intents = [];
-    var entities = [];
 
 
-    /* add utterances parameters */
-    var configAddUtterances = {
-        LUIS_subscriptionKey: LUIS_authoringKey,
-        LUIS_appId: LUIS_appId,
-        LUIS_versionId: LUIS_versionId,
-        inFile: path.join(__dirname, uploadFile),
-        batchSize: 100,
-        uri: "https://{region}.api.cognitive.azure.cn/luis/api/v2.0/apps/{appId}/versions/{versionId}/examples"
-    };
-
-    /* create app parameters */
-    var configCreateApp = {
-        LUIS_subscriptionKey: LUIS_authoringKey,
-        LUIS_versionId: LUIS_versionId,
-        appName: LUIS_appName,
-        culture: LUIS_appCulture,
-        uri: "https://{region}.api.cognitive.azure.cn/luis/api/v2.0/apps/"
-    };
-
-    /* add intents parameters */
-    var configAddIntents = {
-        LUIS_subscriptionKey: LUIS_authoringKey,
-        LUIS_appId: LUIS_appId,
-        LUIS_versionId: LUIS_versionId,
-        intentList: intents,
-        uri: "https://{region}.api.cognitive.azure.cn/luis/api/v2.0/apps/{appId}/versions/{versionId}/intents"
-    };
-
-    /* add entities parameters */
-    var configAddEntities = {
-        LUIS_subscriptionKey: LUIS_authoringKey,
-        LUIS_appId: LUIS_appId,
-        LUIS_versionId: LUIS_versionId,
-        entityList: entities,
-        uri: "https://{region}.api.cognitive.azure.cn/luis/api/v2.0/apps/{appId}/versions/{versionId}/entities"
-    };
-
-    /* input and output files for parsing CSV */
-    var configParse = {
-        inFile: path.join(__dirname, downloadFile),
-        outFile: path.join(__dirname, uploadFile)
-    };
-
-    // Parse CSV
-    parse(configParse)
-        .then((model) => {
-            // Save intent and entity names from parse
-            intents = model.intents;
-            entities = model.entities;
-            // Create the LUIS app
-            return createApp(configCreateApp);
-
-        }).then((appId) => {
-            // Add intents
-            LUIS_appId = appId;
-            configAddIntents.LUIS_appId = appId;
-            configAddIntents.intentList = intents;
-            return addIntents(configAddIntents);
-
-        }).then(() => {
-            // Add entities
-            configAddEntities.LUIS_appId = LUIS_appId;
-            configAddEntities.entityList = entities;
-            return addEntities(configAddEntities);
-
-        }).then(() => {
-            // Add example utterances to the intents in the app
-            configAddUtterances.LUIS_appId = LUIS_appId;
-            return upload(configAddUtterances);
-
-        }).catch(err => {
-            console.log(err.message);
-        });
-```
 ## <a name="parse-the-csv"></a>分析 CSV
 
-包含 CSV 中的陈述的列条目必须被分析为 LUIS 可以理解的 JSON 格式。 此 JSON 格式必须包含一个 `intentName` 字段，该字段标识陈述的意向。 它还必须包含一个 `entityLabels` 字段，如果陈述中没有实体，该字段可以是空的。 
+包含 CSV 中的陈述的列条目必须被分析为 LUIS 可以理解的 JSON 格式。 此 JSON 格式必须包含一个 `intentName` 字段，该字段标识陈述的意向。 它还必须包含一个 `entityLabels` 字段，如果陈述中没有实体，该字段可以是空的。
 
 例如，“打开灯”条目映射到此 JSON：
 
@@ -179,9 +183,9 @@ LUIS 提供与 [LUIS](luis-reference-regions.md) 网站功能相同的编程 API
         }
 ```
 
-在此示例中，`intentName` 来自 CSV 文件中“Request”列标题下的用户请求，`entityName` 来自具有密钥信息的其他列。 例如，如果有“操作”或“设备”条目，并且该字符串也出现在实际请求中，则可将其标记为实体   。 下面的代码演示此分析过程。 可以复制或[下载](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_parse.js)它并将其保存在 `_parse.js`。
+在此示例中，`intentName` 来自 CSV 文件中“Request”列标题下的用户请求，`entityName` 来自具有密钥信息的其他列****。 例如，如果有“操作”或“设备”条目，并且该字符串也出现在实际请求中，则可将其标记为实体********。 下面的代码演示此分析过程。 可以复制或[下载](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_parse.js)它并将其保存在 `_parse.js`。
 
-```
+```javascript
 // node 7.x
 // built with streams for larger files
 
@@ -320,7 +324,7 @@ module.exports = convert;
 ## <a name="create-the-luis-app"></a>创建 LUIS 应用
 将数据分析到 JSON 后，将其添加到 LUIS 应用。 下面的代码创建 LUIS 应用。 复制或[下载](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_create.js)它，并将其保存到 `_create.js`。
 
-```
+```javascript
 // node 7.x
 // uses async/await - promises
 
@@ -390,10 +394,12 @@ var callCreateApp = async (options) => {
 module.exports = createApp;
 ```
 
+
 ## <a name="add-intents"></a>添加意向
 创建应用后需要向其添加意向。 下面的代码创建 LUIS 应用。 复制或[下载](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_intents.js)它，并将其保存到 `_intents.js`。
 
-```
+```javascript
+
 var rp = require('request-promise');
 var fse = require('fs-extra');
 var path = require('path');
@@ -478,7 +484,7 @@ module.exports = addIntents;
 ## <a name="add-entities"></a>添加实体
 以下代码向 LUIS 应用添加实体。 复制或[下载](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_entities.js)它，并将其保存到 `_entities.js`。
 
-```
+```javascript
 // node 7.x
 // uses async/await - promises
 
@@ -560,13 +566,13 @@ var callAddEntity = async (options) => {
 
 module.exports = addEntities;
 ```
-   
+
 
 
 ## <a name="add-utterances"></a>添加表达
-LUIS 应用中定义了实体和意向后，可以添加陈述。 下面的代码使用 [Utterances_AddBatch](https://{region}.dev.cognitive.azure.cn/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09) API，它允许每次添加最多 100 个陈述。  复制或[下载](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_upload.js)它，并将其保存到 `_upload.js`。
+LUIS 应用中定义了实体和意向后，可以添加陈述。 下面的代码使用 [Utterances_AddBatch](https://dev.cognitive.azure.cn/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09) API，它允许每次添加最多 100 个陈述。  复制或[下载](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_upload.js)它，并将其保存到 `_upload.js`。
 
-```
+```javascript
 // node 7.x
 // uses async/await - promises
 
@@ -603,7 +609,7 @@ var upload = async (config) => {
 
         // load up promise array
         pages.forEach(page => {
-            config.uri = "https://chinaeast2.api.cognitive.azure.cn/luis/api/v2.0/apps/{appId}/versions/{versionId}/examples".replace("{appId}", config.LUIS_appId).replace("{versionId}", config.LUIS_versionId)
+            config.uri = "https://api.cognitive.azure.cn/luis/api/v2.0/apps/{appId}/versions/{versionId}/examples".replace("{appId}", config.LUIS_appId).replace("{versionId}", config.LUIS_versionId)
             var pagePromise = sendBatchToApi({
                 url: config.uri,
                 fullResponse: false,
@@ -701,7 +707,7 @@ module.exports = upload;
 // Change these values
 const LUIS_programmaticKey = "YOUR_AUTHORING_KEY";
 const LUIS_appName = "Sample App";
-const LUIS_appCulture = "en-us"; 
+const LUIS_appCulture = "en-us";
 const LUIS_versionId = "0.1";
 ```
 
@@ -747,18 +753,21 @@ upload done
 
 
 ## <a name="open-the-luis-app"></a>打开 LUIS 应用
-该脚本完成后，可以登录 [LUIS](luis-reference-regions.md)，查看“我的应用”下创建的 LUIS 应用  。 应该能够看到在 TurnOn、TurnOff 和 None 意向下添加的陈述    。
+该脚本完成后，可以登录 [LUIS](luis-reference-regions.md)，查看“我的应用”下创建的 LUIS 应用****。 应该能够看到在 TurnOn、TurnOff 和 None 意向下添加的陈述************。
 
 ![TurnOn 意向](./media/luis-tutorial-node-import-utterances-csv/imported-utterances-661.png)
+
+
+## <a name="next-steps"></a>后续步骤
+
+> [!div class="nextstepaction"]
+> [测试和训练 LUIS 网站中的应用](luis-interactive-test.md)
 
 ## <a name="additional-resources"></a>其他资源
 
 此示例应用程序使用以下 LUIS API：
-- [创建应用](https://{region}.dev.cognitive.azure.cn/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c36)
-- [添加意向](https://{region}.dev.cognitive.azure.cn/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0c)
-- [添加实体](https://{region}.dev.cognitive.azure.cn/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0e) 
-- [添加陈述](https://{region}.dev.cognitive.azure.cn/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09)
-
-
-
+- [创建应用](https://dev.cognitive.azure.cn/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c36)
+- [添加意向](https://dev.cognitive.azure.cn/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0c)
+- [添加实体](https://dev.cognitive.azure.cn/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0e)
+- [添加陈述](https://dev.cognitive.azure.cn/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09)
 

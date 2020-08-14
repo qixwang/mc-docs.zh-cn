@@ -1,22 +1,22 @@
 ---
-title: 从通用化映像创建规模集
+title: 使用 Azure CLI 从通用化映像创建规模集
 description: 使用共享映像库中的通用化映像创建规模集。
 author: cynthn
 ms.service: virtual-machine-scale-sets
 ms.subservice: imaging
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 05/21/2020
+ms.date: 08/06/2020
 ms.author: v-junlch
 ms.reviewer: akjosh
-ms.openlocfilehash: b30fd585d10fa799e82924e1d8a176e907a069fe
-ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
+ms.openlocfilehash: 2e3350ab0fc6fc7c4c4d068ea6f00c45a70a9394
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83749542"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914223"
 ---
-# <a name="create-a-scale-set-from-a-generalized-image"></a>从通用化映像创建规模集
+# <a name="create-a-scale-set-from-a-generalized-image-with-azure-cli"></a>使用 Azure CLI 从通用化映像创建规模集
 
 使用 Azure CLI 从[共享映像库](shared-image-galleries.md)中存储的通用化映像版本创建规模集。 若要使用专用化映像版本创建规模集，请参阅[从专用化映像创建规模集实例](instance-specialized-image-version-cli.md)。
 

@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 4/15/2020
-ms.date: 06/29/2020
-ms.openlocfilehash: 6289f6293c19658525f17aedb8cd00bb5fae25eb
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+ms.date: 08/10/2020
+ms.openlocfilehash: 0a81e9debd124a6d994d3488edd96b4252be7461
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323551"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914311"
 ---
 # <a name="use-azure-sql-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>在 Azure 数据工厂中结合使用 Azure SQL 托管实例和 SQL Server Integration Services (SSIS)
 
@@ -41,7 +41,7 @@ ms.locfileid: "85323551"
 
         - when Azure-SSIS IR not inside a virtual network (preferred)
 
-            **Inbound requirement of SQL managed instance**, to allow inbound traffic from Azure-SSIS IR.
+            **Inbound requirement of SQL Managed Instance**, to allow inbound traffic from Azure-SSIS IR.
 
             | 传输协议 | Source | 源端口范围 | 目标 | 目标端口范围 |
             |---|---|---|---|---|
@@ -51,15 +51,15 @@ ms.locfileid: "85323551"
 
         - when Azure-SSIS IR inside a virtual network
 
-            There is a special scenario when SQL managed instance is in a region that Azure-SSIS IR does not support, Azure-SSIS IR is inside a virtual network without VNet peering due to Global VNet peering limitation. In this scenario, **Azure-SSIS IR inside a virtual network** connects SQL managed instance **over public endpoint**. Use below Network Security Group(NSG) rules to allow traffic between SQL managed instance and Azure-SSIS IR:
+            There is a special scenario when SQL Managed Instance is in a region that Azure-SSIS IR does not support, Azure-SSIS IR is inside a virtual network without VNet peering due to Global VNet peering limitation. In this scenario, **Azure-SSIS IR inside a virtual network** connects SQL Managed Instance **over public endpoint**. Use below Network Security Group(NSG) rules to allow traffic between SQL Managed Instance and Azure-SSIS IR:
 
-            1. **Inbound requirement of SQL managed instance**, to allow inbound traffic from Azure-SSIS IR.
+            1. **Inbound requirement of SQL Managed Instance**, to allow inbound traffic from Azure-SSIS IR.
 
                 | 传输协议 | Source | 源端口范围 | 目标 |目标端口范围 |
                 |---|---|---|---|---|
                 |TCP|Azure-SSIS IR 的静态 IP 地址 <br> 有关详细信息，请参阅[为 Azure-SSIS IR 创建自己的公共 IP](join-azure-ssis-integration-runtime-virtual-network.md#publicIP)。|*|VirtualNetwork|3342|
 
-             1. **Outbound requirement of Azure-SSIS IR**, to allow outbound traffic to SQL managed instance.
+             1. **Outbound requirement of Azure-SSIS IR**, to allow outbound traffic to SQL Managed Instance.
 
                 | 传输协议 | Source | 源端口范围 | 目标 |目标端口范围 |
                 |---|---|---|---|---|

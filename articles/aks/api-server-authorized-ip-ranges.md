@@ -4,16 +4,16 @@ description: 了解如何使用用于访问 Azure Kubernetes 服务 (AKS) 中 AP
 services: container-service
 ms.topic: article
 origin.date: 11/05/2019
-ms.date: 07/13/2020
+ms.date: 08/10/2020
 ms.testscope: no
 ms.testdate: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: 7d6a7c4de33d200c224dbbce6613cbb55c5a179d
-ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
+ms.openlocfilehash: 7316c5f74e57a48d01b6c7e57b8bb264725296ae
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86218773"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842537"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes 服务 (AKS) 中的已授权 IP 地址范围保护对 API 服务器的访问
 
@@ -22,7 +22,9 @@ ms.locfileid: "86218773"
 本文介绍如何使用 API 服务器已授权 IP 地址范围来限制哪些 IP 地址和 CIDR 可以访问控制平面。
 
 > [!IMPORTANT]
-> 在新的群集上，仅支持在标准 SKU 负载均衡器中使用 API 服务器已授权 IP 地址范围。 配置了基本 SKU 负载均衡器和 API 服务器已授权 IP 地址范围的现有群集将继续按原有方式工作，但不能迁移到标准 SKU 负载均衡器 。 即使 Kubernetes 版本或控制平面升级后，这些现有群集也会继续工作。
+> 在将 API 服务器授权的 IP 地址范围移出 2019 年 10 月的预览后所创建的群集上，仅标准 SKU 负载均衡器支持 API 服务器授权的 IP 地址范围。 配置了基本 SKU 负载均衡器和 API 服务器已授权 IP 地址范围的现有群集将继续按原有方式工作，但不能迁移到标准 SKU 负载均衡器 。 即使 Kubernetes 版本或控制平面升级后，这些现有群集也会继续工作。
+
+<!--Not Available on  API server authorized IP address ranges are not supported for private clusters.-->
 
 ## <a name="before-you-begin"></a>准备阶段
 
@@ -40,7 +42,7 @@ Kubernetes API 服务器用于公开基础 Kubernetes API。 此组件为管理�
 
 ## <a name="create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled"></a>创建启用 API 服务器已授权 IP 范围的 AKS 群集
 
-API 服务器授权的 IP 范围仅适用于新的 AKS 群集，不支持专用 AKS 群集。 使用 [az aks create][az-aks-create] 创建群集，并指定 `--api-server-authorized-ip-ranges` 参数提供已授权 IP 地址范围的列表。 这些 IP 地址范围通常是本地网络或公共 IP 使用的地址范围。 指定 CIDR 范围时，请先指定该范围内的第一个 IP 地址。 例如，*137.117.106.90/29* 是有效范围，但请确保指定该范围内的第一个 IP 地址，如 *137.117.106.88/29*。
+使用 [az aks create][az-aks-create] 创建群集，并指定 `--api-server-authorized-ip-ranges` 参数提供已授权 IP 地址范围的列表。 这些 IP 地址范围通常是本地网络或公共 IP 使用的地址范围。 指定 CIDR 范围时，请先指定该范围内的第一个 IP 地址。 例如，*137.117.106.90/29* 是有效范围，但请确保指定该范围内的第一个 IP 地址，如 *137.117.106.88/29*。
 
 > [!IMPORTANT]
 > 群集默认使用可用于配置出站网关的[标准 SKU 负载均衡器][standard-sku-lb]。 在创建群集期间启用 API 服务器已授权 IP 范围时，除了允许指定的范围以外，默认还允许群集的公共 IP。 对于 `--api-server-authorized-ip-ranges`，如果指定 *""* 或不指定任何值，API 服务器授权的 IP 范围被禁用。 请注意，如果使用的是 PowerShell，请使用 `--api-server-authorized-ip-ranges=""`（带等于号）来避免任何解析问题。
@@ -63,9 +65,11 @@ az aks create \
 > - 防火墙公共 IP 地址
 > - 代表你要从中管理群集的网络的任何范围
 >
-> 可指定的 IP 范围数的上限为 3500。 
+> 可指定的 IP 范围数的上限为 200。
+>
+> 规则最多可能需要 2 分钟才生效。 在测试连接时，请等待相应时长的时间。
 
-<!--Not Available on Line 59+1 > - If you are using Azure Dev Spaces on your AKS cluster, you have to allow [additional ranges based on your region][dev-spaces-ranges]-->
+<!--Not Available on Line 63+1 > [additional ranges based on your region][dev-spaces-ranges]-->
 
 ### <a name="specify-the-outbound-ips-for-the-standard-sku-load-balancer"></a>指定标准 SKU 负载均衡器的出站 IP
 

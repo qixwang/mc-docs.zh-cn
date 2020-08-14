@@ -9,21 +9,24 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/13/2020
+ms.date: 08/07/2020
 ms.author: v-junlch
-ms.openlocfilehash: b240f5f0a1f690859dae76e9f29a03c7ec2d403d
-ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
+ms.openlocfilehash: 5ef4352dd04f619de71d36ceaa38533dd56bf4b1
+ms.sourcegitcommit: a5eb9a47feefb053ddbaab4b15c395972c372339
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86472569"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88028565"
 ---
 # <a name="delete-an-azure-active-directory-domain-services-managed-domain-using-the-azure-portal"></a>使用 Azure 门户删除 Azure Active Directory 域服务托管域
 
-如果不再需要托管域，则可以删除 Azure Active Directory 域服务 (Azure AD DS) 托管域。 没有关闭或暂时禁用 Azure AD DS 托管域的选项。 删除托管域不会删除 Azure AD 租户，否则会对 Azure AD 租户产生不利影响。 本文介绍了如何使用 Azure 门户删除托管域。
+如果不再需要 Azure Active Directory 域服务 (Azure AD DS) 托管域，则可以删除它。 没有关闭或暂时禁用 Azure AD DS 托管域的选项。 删除托管域不会删除 Azure AD 租户，否则会对 Azure AD 租户产生不利影响。
+
+本文介绍了如何使用 Azure 门户删除托管域。
 
 > [!WARNING]
 > 删除是永久性的，无法撤消。
+> 
 > 删除托管域时，将发生以下步骤：
 >   * 将取消设置托管域的域控制器，并将从虚拟网络中删除。
 >   * 托管域上的数据将被永久删除。 此数据包括创建的自定义 OU、GPO、自定义 DNS 记录、服务主体、GMSA 等。

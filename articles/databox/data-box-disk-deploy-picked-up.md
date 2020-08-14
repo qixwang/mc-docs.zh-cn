@@ -1,6 +1,6 @@
 ---
 title: 寄回 Azure Data Box Disk 的教程| Microsoft Docs
-description: 通过本教程了解如何将 Azure Data Box 磁盘寄送到 Microsoft
+description: 通过本教程了解如何将 Azure Data Box 磁盘寄送到世纪互联
 services: databox
 author: WenJason
 ms.service: databox
@@ -10,12 +10,12 @@ origin.date: 07/16/2020
 ms.date: 07/27/2020
 ms.author: v-jay
 ms.localizationpriority: high
-ms.openlocfilehash: a6546d5ad8a8a9d69d3f0c49bc147990452b64a8
-ms.sourcegitcommit: c3f15613c875bb52d5a105445efd0f36b9f24c9c
+ms.openlocfilehash: 23094ce77b41a495eb94ab4b3df5987c642392fc
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86473472"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917259"
 ---
 ::: zone target="docs"
 
@@ -27,7 +27,7 @@ ms.locfileid: "86473472"
 
 > [!div class="checklist"]
 >
-> * 将 Data Box 磁盘寄送到 Azure
+> * 将 Data Box 磁盘寄送到世纪互联
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -101,7 +101,7 @@ ms.locfileid: "86473472"
 
 > [!div class="checklist"]
 >
-> * 将 Data Box 磁盘寄送到 Azure
+> * 将 Data Box 磁盘寄送到世纪互联
 
 转到下一个操作指南，了解如何验证从 Data Box Disk 上传到 Azure 存储帐户的数据。
 

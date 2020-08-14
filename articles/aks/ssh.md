@@ -4,33 +4,30 @@ description: 了解如何与 Azure Kubernetes 服务 (AKS) 群集节点建立 SS
 services: container-service
 ms.topic: article
 origin.date: 07/31/2019
-ms.date: 05/25/2020
+ms.date: 08/10/2020
+ms.testscope: no
+ms.testdate: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: ad654346bef4a866f52ea615965fd5d5c337d027
-ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
+ms.openlocfilehash: a5ecfe49e48de8f2ddf936609e17c98f7fa25329
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735169"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842619"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>使用 SSH 连接到 Azure Kubernetes 服务 (AKS) 群集节点以进行维护或故障排除
 
-在 Azure Kubernetes 服务 (AKS) 群集的整个生命周期内，可能需要访问 AKS 节点。 进行这种访问的原因包括维护、日志收集或其他故障排除操作。 可以使用 SSH 访问 AKS 节点。 出于安全考虑，AKS 节点不会在 Internet 中公开。 若要通过 SSH 连接到 AKS 节点，需使用专用 IP 地址。
-
-<!--Not Available on including Windows Server nodes.-->
-<!--Not Available on [connect to Windows Server nodes using remote desktop protocol (RDP) connections][aks-windows-rdp]-->
+在 Azure Kubernetes 服务 (AKS) 群集的整个生命周期内，可能需要访问 AKS 节点。 进行这种访问的原因包括维护、日志收集或其他故障排除操作。 可以使用 SSH 访问 AKS 节点（包括 Windows Server 节点）。 还可以[使用远程桌面协议 (RDP) 连接功能连接到 Windows Server 节点][aks-windows-rdp]。 出于安全考虑，AKS 节点不会在 Internet 中公开。 若要通过 SSH 连接到 AKS 节点，需使用专用 IP 地址。
 
 本文介绍如何使用 AKS 节点的专用 IP 地址来与它们建立 SSH 连接。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
 默认情况下，在创建 AKS 群集时会获取或生成 SSH 密钥，然后将其添加到节点。 本文介绍如何指定与创建 AKS 群集时使用的 SSH 密钥不同的 SSH 密钥。 此外介绍如何确定节点的专用 IP 地址，并使用 SSH 连接到该节点。 如果不需要指定不同的 SSH 密钥，则可以跳过将 SSH 公钥添加到节点的步骤。
 
-本文假设你已有一个 SSH 密钥。 可以使用 [macOS 或 Linux][ssh-nix] 创建 SSH 密钥。 如果使用 PuTTY Gen 来创建密钥对，请在保存密钥对时使用 OpenSSH 格式而不是默认的 PuTTy 私钥格式（.ppk 文件）。
-
-<!--MOONCAKE: Windows not Available on MOONCAKE, so [Windows][ssh-windows] is invalid same time-->
+本文假设你已有一个 SSH 密钥。 可以使用 [macOS 或 Linux][ssh-nix] 或 [Windows][ssh-windows] 创建 SSH 密钥。 如果使用 PuTTY Gen 来创建密钥对，请在保存密钥对时使用 OpenSSH 格式而不是默认的 PuTTy 私钥格式（.ppk 文件）。
 
 还需安装并配置 Azure CLI 2.0.64 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
 
@@ -49,10 +46,8 @@ SCALE_SET_NAME=$(az vmss list --resource-group $CLUSTER_RESOURCE_GROUP --query [
 
 > [!IMPORTANT]
 > 此时，应该使用 Azure CLI 仅更新基于虚拟机规模集的 AKS 群集的 SSH 密钥。
->
-> 对于 Linux 节点，目前只能使用 Azure CLI 添加 SSH 密钥。
-
-<!--Not Available on Windows Server nodes-->
+> 
+> 对于 Linux 节点，目前只能使用 Azure CLI 添加 SSH 密钥。 如果要使用 SSH 连接到 Windows Server 节点，则在创建 AKS 群集时使用提供的 SSH 密钥，并跳过下一组添加 SSH 公钥的命令。 仍需要要排除故障的节点的 IP 地址，该地址将在此部分的最后一个命令中显示。 此外，可以[使用远程桌面协议 (RDP) 连接连接到 Windows Server 节点][aks-windows-rdp]，而不需使用 SSH。
 
 若要将 SSH 密钥添加到虚拟机规模集中的节点，请使用 [az vmss extension set][az-vmss-extension-set] 和 [az vmss update-instances][az-vmss-update-instances] 命令。
 
@@ -81,18 +76,15 @@ az vmss update-instances --instance-ids '*' \
 kubectl get nodes -o wide
 ```
 
-以下示例输出显示了群集中所有节点的内部 IP 地址。
-
-<!-- MOONCAKE: Not Available on  including a Windows Server node-->
+以下示例输出显示群集中所有节点（包括 Windows Server 节点）的内部 IP 地址。
 
 ```console
 $ kubectl get nodes -o wide
 
 NAME                                STATUS   ROLES   AGE   VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                    KERNEL-VERSION      CONTAINER-RUNTIME
 aks-nodepool1-42485177-vmss000000   Ready    agent   18h   v1.12.7   10.240.0.4    <none>        Ubuntu 16.04.6 LTS          4.15.0-1040-azure   docker://3.0.4
+aksnpwin000000                      Ready    agent   13h   v1.12.7   10.240.0.67   <none>        Windows Server Datacenter   10.0.17763.437
 ```
-
-<!--MOONCAKE: Not Available on aksnpwin000000                      Ready    agent   13h   v1.12.7   10.240.0.67   <none>        Windows Server Datacenter   10.0.17763.437-->
 
 记录要进行故障排除的节点的内部 IP 地址。
 
@@ -153,10 +145,15 @@ aks-nodepool1-79590246-0  10.240.0.4
 1. 运行 `debian` 容器映像，并在其上附加一个终端会话。 可以使用此容器来与 AKS 群集中的任何节点建立 SSH 会话：
 
     ```console
-    kubectl run --generator=run-pod/v1 -it --rm aks-ssh --image=debian
+    kubectl run -it --rm aks-ssh --image=debian
     ```
 
-    <!--Not Available on Windows Server nodes, add a node selector-->
+    > [!TIP]
+    > 如果使用 Windows Server 节点，则将节点选择器添加到命令，以便在 Linux 节点上计划 Debian 容器：
+    >
+    > ```console
+    > kubectl run -it --rm aks-ssh --image=debian --overrides='{"apiVersion":"v1","spec":{"nodeSelector":{"beta.kubernetes.io/os":"linux"}}}'
+    > ```
 
 1. 将终端会话连接到该容器后，使用 `apt-get` 安装 SSH 客户端：
 
@@ -224,13 +221,9 @@ aks-nodepool1-79590246-0  10.240.0.4
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest
-
-<!--Not Avaialble on [aks-windows-rdp]: rdp.md-->
-
+[aks-windows-rdp]: rdp.md
 [ssh-nix]: ../virtual-machines/linux/mac-create-ssh-keys.md
-
-<!--Not Available on [ssh-windows]: ../virtual-machines/linux/ssh-from-windows.md-->
-
+[ssh-windows]: ../virtual-machines/linux/ssh-from-windows.md
 [az-vmss-list]: https://docs.azure.cn/cli/vmss?view=azure-cli-latest#az-vmss-list
 [az-vmss-extension-set]: https://docs.azure.cn/cli/vmss/extension?view=azure-cli-latest#az-vmss-extension-set
 [az-vmss-update-instances]: https://docs.azure.cn/cli/vmss?view=azure-cli-latest#az-vmss-update-instances

@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/20/2020
+ms.date: 08/07/2020
 ms.author: v-junlch
-ms.openlocfilehash: 179828e7def4ed67d48bfbdac50e25652c31041e
-ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
+ms.openlocfilehash: 07daeed6908bc44ccd5ac38987c304b68237227d
+ms.sourcegitcommit: a5eb9a47feefb053ddbaab4b15c395972c372339
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86472514"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88028616"
 ---
 # <a name="migrate-azure-active-directory-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>将 Azure Active Directory 域服务从经典虚拟网络模型迁移到资源管理器
 
@@ -98,13 +98,15 @@ Azure Active Directory 域服务 (Azure AD DS) 支持当前使用经典虚拟网
 
 托管域的域控制器 IP 地址在迁移后会更改。 此更改包括安全 LDAP 终结点的公共 IP 地址。 新的 IP 地址位于资源管理器虚拟网络中的新子网的地址范围内。
 
-如果发生回退，则回退之后的 IP 地址可能会更改。
+如果需要回退，则回退之后的 IP 地址可能会更改。
 
 Azure AD DS 通常使用地址范围内的前两个可用 IP 地址，但不是一定使用。 目前无法指定在迁移后要使用的 IP 地址。
 
 ### <a name="downtime"></a>故障时间
 
-在迁移过程中，域控制器会有一段时间处于脱机状态。 将 Azure AD DS 迁移到资源管理器部署模型和虚拟网络时，无法访问域控制器。 平均而言，停机时间大约为 1 到 3 小时。 此时间段是指从域控制器脱机那一刻到第一个域控制器恢复联机那一刻之间的时间。 此平均值不包括复制第二个域控制器所需的时间，也不包括将其他资源迁移到资源管理器部署模型所需的时间。
+在迁移过程中，域控制器会有一段时间处于脱机状态。 将 Azure AD DS 迁移到资源管理器部署模型和虚拟网络时，无法访问域控制器。
+
+平均而言，停机时间大约为 1 到 3 小时。 此时间段是指从域控制器脱机那一刻到第一个域控制器恢复联机那一刻之间的时间。 此平均值不包括复制第二个域控制器所需的时间，也不包括将其他资源迁移到资源管理器部署模型所需的时间。
 
 ### <a name="account-lockout"></a>帐户锁定
 
@@ -207,7 +209,7 @@ Azure AD DS 通常使用地址范围内的前两个可用 IP 地址，但不是�
 
 ## <a name="migrate-the-managed-domain"></a>迁移托管域
 
-准备并备份托管域后，可以迁移该域。 此步骤使用资源管理器部署模型重新创建 Azure AD 域服务域控制器 VM。 此步骤可能需要 1 到 3 小时才能完成。
+准备并备份托管域后，可以迁移该域。 此步骤使用资源管理器部署模型重新创建 Azure AD DS 域控制器 VM。 此步骤可能需要 1 到 3 小时才能完成。
 
 使用 -Commit 参数运行 `Migrate-Aadds` cmdlet。 提供你在上一部分中准备的托管域的 -ManagedDomainFqdn，例如 aaddscontoso.com：
 
@@ -248,7 +250,9 @@ Migrate-Aadds `
 
 如果至少有一个域控制器可用，请完成以下配置步骤，以使用 VM 进行网络连接：
 
-* **更新 DNS 服务器设置** 为了让资源管理器虚拟网络上的其他资源能够解析并使用托管域，请使用新的域控制器的 IP 地址更新 DNS 设置。 Azure 门户可以自动为你配置这些设置。 若要详细了解如何配置资源管理器虚拟网络，请参阅[更新 Azure 虚拟网络的 DNS 设置][update-dns]。
+* **更新 DNS 服务器设置** 为了让资源管理器虚拟网络上的其他资源能够解析并使用托管域，请使用新的域控制器的 IP 地址更新 DNS 设置。 Azure 门户可以自动为你配置这些设置。
+
+    若要详细了解如何配置资源管理器虚拟网络，请参阅[更新 Azure 虚拟网络的 DNS 设置][update-dns]。
 * **重启已加入域的 VM** - 因为 Azure AD DS 域控制器的 DNS 服务器 IP 地址发生更改，请重启任何已加入域的 VM，以便它们使用新的 DNS 服务器设置。 如果应用程序或 VM 具有手动配置的 DNS 设置，请使用 Azure 门户中显示的域控制器的新 DNS 服务器 IP 地址手动更新它们。
 
 现在，请测试虚拟网络连接和名称解析。 在已连接到资源管理器虚拟网络或已对等互连到该虚拟网络的 VM 上，尝试以下网络通信测试：
@@ -270,7 +274,7 @@ Azure AD DS 公开了审核日志，方便用户排查和查看域控制器上�
 
 可以使用模板来监视日志中公开的重要信息。 例如，审核日志工作簿模板可以监视托管域上可能存在的帐户锁定。
 
-### <a name="configure-azure-ad-domain-services-email-notifications"></a>配置 Azure AD 域服务电子邮件通知
+### <a name="configure-email-notifications"></a>配置电子邮件通知
 
 如果希望在托管域上检测到问题时收到通知，请在 Azure 门户中更新电子邮件通知设置。 有关详细信息，请参阅[配置通知设置][notifications]。
 
@@ -297,7 +301,7 @@ Azure AD DS 需要使用网络安全组来保护托管域所需的端口，阻�
 
 ### <a name="roll-back"></a>回退
 
-如果在步骤 2 中运行 PowerShell cmdlet 以进行迁移准备时出现错误，或者在步骤 3 中迁移本身出现错误，则托管域可以回退到原始配置。 此回退需要原始的经典虚拟网络。 请注意，回退之后的 IP 地址仍然可能会更改。
+如果在步骤 2 中运行 PowerShell cmdlet 以进行迁移准备时出现错误，或者在步骤 3 中迁移本身出现错误，则托管域可以回退到原始配置。 此回退需要原始的经典虚拟网络。 回退之后的 IP 地址仍然可能会更改。
 
 使用 -Abort 参数运行 `Migrate-Aadds` cmdlet。 提供在上一部分中准备的托管域的 -ManagedDomainFqdn（如 aaddscontoso.com），并提供经典虚拟网络名称（如 myClassicVnet）：
 
@@ -331,7 +335,7 @@ Migrate-Aadds `
 <!-- INTERNAL LINKS -->
 [azure-bastion]: ../bastion/bastion-overview.md
 [network-considerations]: network-considerations.md
-[azure-powershell]: https://docs.microsoft.com/powershell/azure/overview
+[azure-powershell]: https://docs.microsoft.com/powershell/azure/
 [network-ports]: network-considerations.md#network-security-groups-and-required-ports
 [Connect-AzAccount]: https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount
 [Set-AzContext]: https://docs.microsoft.com/powershell/module/az.accounts/set-azcontext

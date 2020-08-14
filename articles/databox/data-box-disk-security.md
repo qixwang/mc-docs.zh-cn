@@ -1,5 +1,5 @@
 ---
-title: Microsoft Azure Data Box Disk 安全功能 | 关于数据的 Microsoft Docs
+title: Azure Data Box Disk 安全功能 | Microsoft Docs
 description: 介绍针对 Azure Data Box Disk 实现的安全功能，Azure Data Box Disk 是一种云解决方案，用于将大量数据传输到 Azure
 services: databox
 author: WenJason
@@ -9,12 +9,12 @@ ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 07/27/2020
 ms.author: v-jay
-ms.openlocfilehash: b4d55ce39ddaf12a511f85c3f4cd5d4d38d71a83
-ms.sourcegitcommit: c3f15613c875bb52d5a105445efd0f36b9f24c9c
+ms.openlocfilehash: 541be7200860ee039e2308e754f1d1adc427a04f
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86473471"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914396"
 ---
 # <a name="azure-data-box-disk-security-and-data-protection"></a>Azure Data Box Disk 安全性和数据保护
 

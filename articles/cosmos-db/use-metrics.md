@@ -1,19 +1,21 @@
 ---
 title: 使用 Azure Cosmos DB 中的指标进行监视和调试
 description: 使用 Azure Cosmos DB 中的指标调试常见问题和监视数据库。
-ms.service: cosmos-db
 author: rockboyfor
-ms.author: v-yeche
-ms.topic: conceptual
-origin.date: 06/18/2019
-ms.date: 07/29/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 283294d72e23c8de7e45da7343a441522dd9d71d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.service: cosmos-db
+ms.topic: how-to
+origin.date: 07/22/2020
+ms.date: 08/17/2020
+ms.testscope: yes
+ms.testdate: 08/10/2020
+ms.author: v-yeche
+ms.openlocfilehash: 696c8bf4568e9190196851262b859fa71cf8e09f
+ms.sourcegitcommit: 3cf647177c22b24f76236c57cae19482ead6a283
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292350"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88029701"
 ---
 <!--Verify sucessfully-->
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 中的指标进行监视和调试
@@ -30,7 +32,7 @@ Azure Cosmos DB 提供吞吐量、存储、一致性、可用性和延迟的指�
 
 1. 打开“指标”窗格。  默认情况下，指标窗格显示 Azure Cosmos 帐户中所有数据库的存储、索引、请求单位指标。 可以按数据库、容器或区域筛选这些指标。 也可按特定的时间粒度筛选这些指标。 在单独的选项卡上提供有关吞吐量、存储、可用性、延迟和一致性指标的更多详细信息。 
 
-   ![Azure 门户中的 Cosmos DB 性能指标](./media/use-metrics/performance-metrics.png)
+   :::image type="content" source="./media/use-metrics/performance-metrics.png" alt-text="Azure 门户中的 Cosmos DB 性能指标":::
 
 “指标”窗格提供以下指标：  
 
@@ -56,13 +58,13 @@ Azure Cosmos DB 提供吞吐量、存储、一致性、可用性和延迟的指�
 
 最常见的错误状态代码为 429（速率限制）。 此错误意味着对 Azure Cosmos DB 的请求超过预配的吞吐量。 此问题最常见的解决方案是为给定集合[纵向扩展 RU](./set-throughput.md)。
 
-![每分钟的请求数](media/use-metrics/metrics-12.png)
+:::image type="content" source="media/use-metrics/metrics-12.png" alt-text="每分钟的请求数":::
 
 ## <a name="determine-the-throughput-distribution-across-partitions"></a>确定跨分区的吞吐量分布
 
 对任何可伸缩应用程序而言，均必须具有良好的分区键基数。 若要确定任何由分区细分为分区容器的吞吐量分布，请导航到 [Azure 门户](https://portal.azure.cn)中的“指标”边栏选项卡。 在“吞吐量”选项卡中，存储细目显示在“各物理分区占用的最大 RU 数/秒”图表中   。 下图显示一个示例介绍因最左侧的倾斜分区而产生的不良数据分布。
 
-![单个分区在下午 3:05 的使用率很高](media/use-metrics/metrics-17.png)
+:::image type="content" source="media/use-metrics/metrics-17.png" alt-text="单个分区使用率高":::
 
 吞吐量分布不均可能导致热分区，进而造成请求受阻和需要重新分区  。 若要深入了解如何在 Azure Cosmos DB 中进行分区，请参阅[在 Azure Cosmos DB 中进行分区和缩放](./partition-data.md)。
 
@@ -70,11 +72,11 @@ Azure Cosmos DB 提供吞吐量、存储、一致性、可用性和延迟的指�
 
 对任何可伸缩应用程序而言，均必须具有良好的分区基数。 若要确定任何按分区细分为分区容器的存储分布，请前往 [Azure 门户](https://portal.azure.cn)中的“指标”边栏选项卡。 在“存储”选项卡中，存储细分显示在顶部分区键图表所占用的“数据 + 索引”存储中。 下图说明了数据存储的不良分布，如最左侧的倾斜分区所示。
 
-![不良数据分布示例](media/use-metrics/metrics-07.png)
+:::image type="content" source="media/use-metrics/metrics-07.png" alt-text="不良数据分布示例":::
 
 可单击图表上的分区，深入查看当前造成分布倾斜的分区键。
 
-![分区键使分布倾斜](media/use-metrics/metrics-05.png)
+:::image type="content" source="media/use-metrics/metrics-05.png" alt-text="分区键使分布倾斜":::
 
 确定导致分布倾斜的分区键之后，可能需使用进一步分布的分区键重新执行容器分区。 若要深入了解如何在 Azure Cosmos DB 中进行分区，请参阅[在 Azure Cosmos DB 中进行分区和缩放](./partition-data.md)。
 
@@ -121,5 +123,4 @@ QueryMetrics 提供执行各查询组件所用时长的详细信息  。 导致�
 * [执行 Azure Cosmos DB 缩放和性能测试](performance-testing.md)
 * [Azure Cosmos DB 性能提示](performance-tips.md)
 
-<!--Update_Description: new articles on use metrics -->
-<!--ms.date: 03/18/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

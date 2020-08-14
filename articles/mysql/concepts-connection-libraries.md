@@ -1,18 +1,18 @@
 ---
-title: Azure Database for MySQL 的连接库
+title: 连接库 - Azure Database for MySQL
 description: 本文列出了客户端程序连接到 Azure Database for MySQL 时可以使用的每个库或驱动程序。
 author: WenJason
 ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
-origin.date: 02/28/2018
-ms.date: 11/18/2019
-ms.openlocfilehash: ec0e19ecdaf245726a7a9cf1c1d51607110518b4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 03/18/2020
+ms.date: 08/10/2020
+ms.openlocfilehash: b7ea2a88287809eafb49fe26ac02b8a1a0badfd3
+ms.sourcegitcommit: 3cf647177c22b24f76236c57cae19482ead6a283
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74020876"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88029609"
 ---
 # <a name="connection-libraries-for-azure-database-for-mysql"></a>Azure Database for MySQL 的连接库
 
@@ -24,7 +24,7 @@ ms.locfileid: "74020876"
 ## <a name="client-interfaces"></a>客户端接口
 MySQL 提供标准数据库驱动程序连接，以将 MySQL 与符合行业标准 ODBC 和 JDBC 的应用程序和工具配合使用。 适用于 ODBC 或 JDBC 的任何系统都可以使用 MySQL。
 
-| **语言** | **平台** | 其他资源  | **下载** |
+| **语言** | **平台** | 其他资源**** | **下载** |
 | :----------- | :------------| :-----------------------| :------------|
 | PHP | Windows、Linux | [MySQL native driver for PHP - mysqlnd](https://dev.mysql.com/downloads/connector/php-mysqlnd/)（适用于 PHP 的 MySQL 本机驱动器 - mysqlnd） | [下载](https://secure.php.net/downloads.php) |
 | ODBC | Windows、Linux、Mac OS X 和 Unix 平台 | [MySQL Connector/ODBC Developer Guide](https://dev.mysql.com/doc/connector-odbc/en/)（MySQL 连接器/ODBC 开发人员指南） | [下载](https://dev.mysql.com/downloads/connector/odbc/) |
@@ -40,5 +40,11 @@ MySQL 提供标准数据库驱动程序连接，以将 MySQL 与符合行业标�
 ## <a name="next-steps"></a>后续步骤
 阅读这些快速入门，了解如何使用所选语言连接和查询 Azure Database for MySQL：
 
-[PHP](./connect-php.md) | [Java](./connect-java.md) |  [.NET (C#)](./connect-csharp.md) | [Python](./connect-python.md) | [Node.JS](./connect-nodejs.md) | [Ruby](./connect-ruby.md) | [C++](connect-cpp.md) | [Go](./connect-go.md)
-
+- [PHP](./connect-php.md)
+- [Java](./connect-java.md)
+- [.NET (C#)](./connect-csharp.md)
+- [Python](./connect-python.md)
+- [Node.JS](./connect-nodejs.md)
+- [Ruby](./connect-ruby.md)
+- [C++](connect-cpp.md)
+- [Go](./connect-go.md)

@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/20/2020
+ms.date: 08/07/2020
 ms.author: v-junlch
-ms.openlocfilehash: 4908cfaf9731ac4c4eddd25c361c7aa4c60c0b31
-ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
+ms.openlocfilehash: c82900c93a01e69e1f3987b2c65882e06f100c6a
+ms.sourcegitcommit: a5eb9a47feefb053ddbaab4b15c395972c372339
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86472600"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88028554"
 ---
 # <a name="administer-dns-and-create-conditional-forwarders-in-an-azure-active-directory-domain-services-managed-domain"></a>管理 DNS 并在 Azure Active Directory 域服务托管域中创建条件转发器
 
@@ -23,7 +23,7 @@ ms.locfileid: "86472600"
 
 运行你自己的应用程序和服务时，你可能需要为未加入域的计算机创建 DNS 记录、为负载均衡器配置虚拟 IP 地址，或者设置外部 DNS 转发器。 属于“AAD DC 管理员”组的用户将被授予对 Azure AD DS 托管域的 DNS 管理权限，并且可以创建和编辑自定义 DNS 记录。
 
-在混合环境中，在其他 DNS 命名空间（例如本地 AD DS 环境）中配置的 DNS 区域和记录不会同步到 Azure AD DS。 若要解析其他 DNS 命名空间中的命名资源，请创建并使用指向环境中的现有 DNS 服务器的条件转发器。
+在混合环境中，在其他 DNS 命名空间（如本地 AD DS 环境）中配置的 DNS 区域和记录不会同步到托管域。 若要解析其他 DNS 命名空间中的命名资源，请创建并使用指向环境中的现有 DNS 服务器的条件转发器。
 
 本文介绍了如何安装 DNS 服务器工具，然后使用 DNS 控制台来管理记录，并在 Azure AD DS 中创建条件转发器。
 
@@ -45,7 +45,7 @@ ms.locfileid: "86472600"
 
 ## <a name="install-dns-server-tools"></a>安装 DNS 服务器工具
 
-若要在 Azure AD DS 中创建和修改 DNS 记录，需要安装 DNS 服务器工具。 这些工具可以作为 Windows Server 中的一项功能进行安装。 有关如何在 Windows 客户端上安装管理工具的详细信息，请参阅[安装远程服务器管理工具 (RSAT)][install-rsat]。
+若要在托管域中创建和修改 DNS 记录，需要安装 DNS 服务器工具。 这些工具可以作为 Windows Server 中的一项功能进行安装。 有关如何在 Windows 客户端上安装管理工具的详细信息，请参阅[安装远程服务器管理工具 (RSAT)][install-rsat]。
 
 1. 登录到管理 VM。 有关如何使用 Azure 门户进行连接的步骤，请参阅[连接到 Windows Server VM][connect-windows-server-vm]。
 1. 如果在登录 VM 时服务器管理器默认情况下未打开，请选择“开始”菜单，然后选择“服务器管理器”。
@@ -58,7 +58,7 @@ ms.locfileid: "86472600"
 
     ![从可用的角色管理工具列表中选择安装 DNS 服务器工具](./media/manage-dns/install-dns-tools.png)
 
-1. 在“确认”页上选择“安装”。  安装 DNS 组策略管理工具可能需要一两分钟时间。
+1. 在“确认”页上选择“安装”。  安装 DNS 服务器工具可能需要一两分钟。
 1. 功能安装完成后，选择“关闭”退出“添加角色和功能”向导。 
 
 ## <a name="open-the-dns-management-console-to-administer-dns"></a>打开 DNS 管理控制台来管理 DNS
@@ -82,7 +82,7 @@ ms.locfileid: "86472600"
 
 ## <a name="create-conditional-forwarders"></a>创建条件转发器
 
-Azure AD DS DNS 区域应该只包含托管域本身的区域和记录。 请勿在 Azure AD DS 中创建其他区域来解析其他 DNS 命名空间中的命名资源， 而应使用托管域中的条件转发器告知 DNS 服务器要前往哪里来解析这些资源的地址。
+Azure AD DS DNS 区域应该只包含托管域本身的区域和记录。 请勿在托管域中创建其他区域来解析其他 DNS 命名空间中的命名资源。 而应使用托管域中的条件转发器告知 DNS 服务器要前往哪里来解析这些资源的地址。
 
 条件转发器是 DNS 服务器中的一个配置选项，允许你定义要将查询转发到的 DNS 域，例如 contoso.com。 系统会将 DNS 查询转发到为该域配置的 DNS，而不是由本地 DNS 服务器来尝试解析对该域中的记录进行的查询。 此配置可确保返回正确的 DNS 记录，因为你不会创建一个在托管域中包含重复记录的本地 DNS 区域来反映这些资源。
 

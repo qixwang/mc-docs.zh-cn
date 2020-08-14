@@ -11,13 +11,13 @@ ms.reviewer: sawinark
 manager: digimobile
 ms.custom: seo-lt-2019
 origin.date: 07/08/2019
-ms.date: 06/29/2020
-ms.openlocfilehash: 16a1d32edc334997cd8837fa0cbd674a0c623ed7
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+ms.date: 08/10/2020
+ms.openlocfilehash: 99c40d5a53d01637710f81b36773ede7a7dcf340
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85322062"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914401"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>在 Azure 数据工厂中排查 SSIS Integration Runtime 管理问题
 
@@ -116,7 +116,7 @@ ms.locfileid: "85322062"
 ## <a name="virtual-network-configuration"></a>虚拟网络配置
 
 将 SSIS IR 加入 Azure 虚拟网络时，SSIS IR 使用用户订阅下的虚拟网络。 有关详细信息，请参阅[将 Azure-SSIS Integration Runtime 加入虚拟网络](/data-factory/join-azure-ssis-integration-runtime-virtual-network)。
-
+成功启动 SSIS IR 后，如果遇到网络连接问题，可以尝试使用[诊断连接工具](ssis-integration-runtime-diagnose-connectivity-faq.md)自行诊断问题。
 出现与虚拟网络相关的问题时，将显示以下错误之一。
 
 ### <a name="invalidvnetconfiguration"></a>InvalidVnetConfiguration

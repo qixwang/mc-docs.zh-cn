@@ -3,18 +3,19 @@ title: 内部网络上的入口控制器
 titleSuffix: Azure Kubernetes Service
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 群集中安装和配置适用于内部专用网络的 NGINX 入口控制器。
 services: container-service
+author: rockboyfor
 ms.topic: article
-origin.date: 07/02/2020
-ms.date: 07/13/2020
+origin.date: 07/21/2020
+ms.date: 08/10/2020
 ms.testscope: no
 ms.testdate: 07/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 440e57db8503152f14c37636726a8b6694a6452f
-ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
+ms.openlocfilehash: 10dd20f76d0d411844840b0caae838c57bd4aa55
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86218718"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842659"
 ---
 # <a name="create-an-ingress-controller-to-an-internal-virtual-network-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中创建内部虚拟网络的入口控制器
 
@@ -41,7 +42,7 @@ ms.locfileid: "86218718"
 
 默认情况下，NGINX 入口控制器通过动态公共 IP 地址分配创建。 常见的配置要求是使用内部专用网络和 IP 地址。 此方法仅限内部用户访问你的服务，不允许外部访问。
 
-根据以下示例清单文件创建名为 *internal-ingress.yaml* 的文件。 此示例将 *10.240.0.42* 分配给 *loadBalancerIP* 资源。 提供自己的可以与入口控制器配合使用的内部 IP 地址。 请确保该 IP 地址尚未在虚拟网络中使用。
+根据以下示例清单文件创建名为 *internal-ingress.yaml* 的文件。 此示例将 *10.240.0.42* 分配给 *loadBalancerIP* 资源。 提供自己的可以与入口控制器配合使用的内部 IP 地址。 请确保该 IP 地址尚未在虚拟网络中使用。 此外，如果你使用的是现有虚拟网络和子网，则必须使用正确的权限配置 AKS 群集，以管理虚拟网络和子网。 有关详细信息，请参阅[在 Azure Kubernetes 服务 (AKS) 中结合自己的 IP 地址范围使用 kubenet 网络][aks-configure-kubenet-networking]或[在 Azure Kubernetes 服务 (AKS) 中配置 Azure CNI 网络][aks-configure-advanced-networking]。
 
 ```yaml
 controller:
@@ -66,6 +67,9 @@ service:
 ```console
 # Create a namespace for your ingress resources
 kubectl create namespace ingress-basic
+
+# Add the official stable repository
+helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 
 # Use Helm to deploy an NGINX ingress controller
 helm install nginx-ingress stable/nginx-ingress \
@@ -193,7 +197,7 @@ kubectl apply -f ingress-demo.yaml --namespace ingress-basic
 创建名为 `hello-world-ingress.yaml` 的文件，并将其复制到以下示例 YAML 中。
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: hello-world-ingress
@@ -357,7 +361,7 @@ kubectl delete namespace ingress-basic
 <!-- LINKS - external -->
 
 [helm]: https://helm.sh/
-[helm-cli]: /aks/kubernetes-helm
+[helm-cli]: ./kubernetes-helm.md
 [nginx-ingress]: https://github.com/kubernetes/ingress-nginx
 
 <!-- LINKS - internal -->
@@ -372,5 +376,7 @@ kubectl delete namespace ingress-basic
 
 [aks-ingress-own-tls]: ingress-own-tls.md
 [client-source-ip]: concepts-network.md#ingress-controllers
+[aks-configure-kubenet-networking]: configure-kubenet.md
+[aks-configure-advanced-networking]: configure-azure-cni.md
 
 <!-- Update_Description: update meta properties, wording update, update link -->

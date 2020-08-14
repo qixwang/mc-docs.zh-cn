@@ -5,14 +5,14 @@ author: WenJason
 ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
-origin.date: 12/05/2019
-ms.date: 03/30/2020
-ms.openlocfilehash: ed436730b434fe932f978d23258231aa6e2c56ba
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 3/18/2020
+ms.date: 08/10/2020
+ms.openlocfilehash: ede61a42eff74b94b7f274de3e59c2eaddc2219b
+ms.sourcegitcommit: 3cf647177c22b24f76236c57cae19482ead6a283
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80342420"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88029607"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>与 Azure Database for MySQL 兼容的 MySQL 驱动程序和管理工具
 > [!NOTE]
@@ -49,15 +49,15 @@ Azure Database for MySQL 使用世界上最常用的 MySQL 数据库社区版。
 
 |                                     | **MySQL Workbench 6.x 及以上版本** | **Navicat 12** | **PHPMyAdmin 4.x 及以上版本** |
 | :---------------------------------- | :----------------------------- | :------------- | :-------------------------|
-| 创建、更新、读取、写入、删除 | X | X | X |
-| SSL 连接 | X | X | X |
-| SQL 查询自动完成 | X | X |  |
-| 导入和导出数据 | X | X | X | 
-| 导出为多种格式 | X | X | X |
-| 备份和还原 |  | X |  |
-| 显示服务器参数 | X | X | X |
-| 显示客户端连接 | X | X | X |
+| **创建、更新、读取、写入、删除** | X | X | X |
+| **SSL 连接** | X | X | X |
+| **SQL 查询自动完成** | X | X |  |
+| **导入和导出数据** | X | X | X |
+| **导出为多种格式** | X | X | X |
+| **备份和还原** |  | X |  |
+| **显示服务器参数** | X | X | X |
+| **显示客户端连接** | X | X | X |
 
 ## <a name="next-steps"></a>后续步骤
 
-- [解决 Azure Databases for MySQL 的连接问题](howto-troubleshoot-common-connection-issues.md)
+- [排查 Azure Databases for MySQL 的连接问题](howto-troubleshoot-common-connection-issues.md)

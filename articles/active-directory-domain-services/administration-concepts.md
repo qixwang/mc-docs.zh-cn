@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/13/2020
+ms.date: 08/07/2020
 ms.author: v-junlch
-ms.openlocfilehash: f280da1e682341b7738ad4c667d9911eb354a62e
-ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
+ms.openlocfilehash: 46ffd77e59f0a3db5223e59f44c6ce93c444dfce
+ms.sourcegitcommit: a5eb9a47feefb053ddbaab4b15c395972c372339
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86472521"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88028592"
 ---
 # <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Azure Active Directory 域服务中有关用户帐户、密码和管理的管理概念
 
@@ -70,7 +70,7 @@ Azure AD DS 包括一个默认的密码策略，该策略定义了帐户锁定�
 
 默认情况下，托管域是作为用户林创建的。 此类林可同步 Azure AD 中的所有对象，包括在本地 AD DS 环境中创建的所有用户帐户。 用户帐户可以直接通过托管域进行身份验证，以便执行相关操作，例如登录到已加入域的 VM。 当可以同步密码哈希，并且用户不使用独占登录方法（如智能卡身份验证）时，用户林可发挥作用。
 
-在 Azure AD DS 资源林中，用户从本地 AD DS 通过单向林信任进行身份验证 。 采用此方法时，用户对象和密码哈希不会同步到 Azure AD DS。 用户对象和凭据仅存在于本地 AD DS 中。 此方法使企业可以在 Azure 中托管依赖于经典身份验证（如 LDAPS、Kerberos 或 NTLM）的资源和应用程序平台，不过可消除任何身份验证问题或疑虑。 Azure AD DS 资源林目前为预览版。
+在 Azure AD DS 资源林中，用户从本地 AD DS 通过单向林信任进行身份验证 。 采用此方法时，用户对象和密码哈希不会同步到 Azure AD DS。 用户对象和凭据仅存在于本地 AD DS 中。 此方法使企业可以在 Azure 中托管依赖于经典身份验证（如 LDAPS、Kerberos 或 NTLM）的资源和应用程序平台，不过可消除任何身份验证问题或疑虑。
 
 有关 Azure AD DS 中的林类型的详细信息，请参阅[什么是资源林？][concepts-forest]和[林信任在 Azure AD DS 中的工作原理是什么？][concepts-trust]
 
@@ -82,10 +82,11 @@ Azure AD DS 包括一个默认的密码策略，该策略定义了帐户锁定�
 |------------|----------------------|------------------|----|
 | 标准   | 无限制            | 每 7 天     | 0  |
 | Enterprise | 无限制            | 每 3 天     | 5  |
-| 高级    | 无限制            | 每日            | 10 个 |
+| 高级    | 无限制            | 每日            | 10 |
 
 在这些 Azure AD DS SKU 之前，使用的是基于托管域中的对象（用户和计算机帐户）数量的计费模型。 不再提供基于托管域中的对象数量的可变定价。
 
+有关详细信息，请参阅 [Azure AD DS 定价页][pricing]。
 
 ### <a name="managed-domain-performance"></a>托管域性能
 
@@ -101,7 +102,7 @@ Azure AD DS 包括一个默认的密码策略，该策略定义了帐户锁定�
 
 ### <a name="outbound-forest-trusts"></a>出站林信任
 
-上一部分详细介绍了从托管域到本地 AD DS 环境的单向出站林信任（当前为预览版）。 SKU 决定了可以为托管域创建的林信任的最大数量。 查看你的业务和应用程序需求，确定你实际需要的信任数量，并选取适当的 Azure AD DS SKU。 同样，如果你的业务需求发生了变化，并且你需要创建额外的林信任，则可以切换到其他 SKU。
+上一部分详细介绍了从托管域到本地 AD DS 环境的单向出站林信任。 SKU 决定了可以为托管域创建的林信任的最大数量。 查看你的业务和应用程序需求，确定你实际需要的信任数量，并选取适当的 Azure AD DS SKU。 同样，如果你的业务需求发生了变化，并且你需要创建额外的林信任，则可以切换到其他 SKU。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -116,4 +117,7 @@ Azure AD DS 包括一个默认的密码策略，该策略定义了帐户锁定�
 [tutorial-create-instance-advanced]: tutorial-create-instance-advanced.md
 [concepts-forest]: concepts-resource-forest.md
 [concepts-trust]: concepts-forest-trust.md
+
+<!-- EXTERNAL LINKS -->
+[pricing]: https://www.azure.cn/pricing/details/active-directory-ds/
 

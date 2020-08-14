@@ -1,41 +1,34 @@
 ---
-title: Azure 虚拟机规模集的设计注意事项 | Microsoft Docs
-description: 了解 Azure 虚拟机规模集的设计注意事项
+title: Azure 虚拟机规模集的设计注意事项
+description: 了解 Azure 虚拟机规模集的设计注意事项。 将规模集功能与 VM 功能进行比较。
 keywords: linux 虚拟机, 虚拟机规模集
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: mayanknayar
-manager: jeconnoc
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: c27c6a59-a0ab-4117-a01b-42b049464ca1
-ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: vm-linux
-ms.devlang: na
-ms.topic: article
-origin.date: 06/01/2017
-ms.date: 01/10/2019
+author: mimckitt
 ms.author: v-junlch
-ms.openlocfilehash: 4e220c8a9cff0876f5195ae52e318cb0bfd5708b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.topic: conceptual
+ms.service: virtual-machine-scale-sets
+ms.subservice: management
+ms.date: 08/06/2020
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: e8ea0d071895fef2054b395abb8b05956cd3ef4e
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293095"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914380"
 ---
 # <a name="design-considerations-for-scale-sets"></a>规模集的设计注意事项
-本文讨论虚拟机规模集的设计注意事项。 有关什么是虚拟机规模集的信息，请参阅[虚拟机规模集概述](virtual-machine-scale-sets-overview.md)。
+本文讨论虚拟机规模集的设计注意事项。 有关什么是虚拟机规模集的信息，请参阅[虚拟机规模集概述](./overview.md)。
 
 ## <a name="when-to-use-scale-sets-instead-of-virtual-machines"></a>何时使用规模集而不使用虚拟机？
 一般而言，规模集非常适合用于部署高可用性基础结构（其中的一组计算机采用类似配置）。 但是，有些功能只能在规模集中使用，还有些功能只能在 VM 中使用。 若要就何时使用每种技术做出明智的决策，我们首先应该大致了解可在规模集中使用，但不能在 VM 中使用的一些常用功能：
 
 ### <a name="scale-set-specific-features"></a>特定于规模集的功能
 
-- 指定规模集配置后，可以更新“容量”  属性以并行部署更多的 VM。 此过程比编写一个脚本来协调众多 VM 的同时部署要简单得多。
+- 指定规模集配置后，可以更新“容量”** 属性以并行部署更多的 VM。 此过程比编写一个脚本来协调众多 VM 的同时部署要简单得多。
 - 可以[使用 Azure 自动缩放来自动缩放规模集](./virtual-machine-scale-sets-autoscale-overview.md)，但不能使用它来自动缩放单个 VM。
 - 可以[重置规模集 VM 的映像](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/reimage)，但[不能重置单个 VM 的映像](https://docs.microsoft.com/rest/api/compute/virtualmachines)。
-- 可以[过度预配](/virtual-machine-scale-sets/virtual-machine-scale-sets-design-overview#overprovisioning)规模集 VM 以提高可靠性和加快部署速度。 除非编写自定义代码来执行此操作，否则不能过度配置单个 VM。
+- 可以[过度预配](#overprovisioning)规模集 VM 以提高可靠性和加快部署速度。 除非编写自定义代码来执行此操作，否则不能过度配置单个 VM。
 - 可以指定[升级策略](./virtual-machine-scale-sets-upgrade-scale-set.md)，方便在规模集中的各个 VM 上实施升级。 使用单个 VM 时，必须自行协调更新。
 
 ### <a name="vm-specific-features"></a>特定于 VM 的功能

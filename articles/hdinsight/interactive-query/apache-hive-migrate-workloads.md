@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.topic: howto
 origin.date: 11/13/2019
 ms.date: 04/06/2020
-ms.openlocfilehash: d97a80394e789debc9944b3f1caec94ae9674909
-ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
+ms.openlocfilehash: a7b9c1b5d3427a337b55d398d0051e3a70e4a7c0
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85516673"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917338"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>将 Azure HDInsight 3.6 Hive 工作负荷迁移到 HDInsight 4.0
 
@@ -126,6 +126,22 @@ HDInsight 3.6 和 4.0 群集必须使用同一存储帐户。
     chmod 755 exporthive_hdi_3_6.sh
     ```
 
+    * 对于没有 ESP 的常规 HDInsight 群集，只需执行 `exporthive_hdi_3_6.sh`。
+
+    * 对于使用 ESP 的群集，使用 kinit 并将参数修改为 beeline：运行以下命令，为具有完全 Hive 权限的 Azure AD 用户定义用户和域。
+
+        ```bash
+        USER="USER"  # replace USER
+        DOMAIN="DOMAIN"  # replace DOMAIN
+        DOMAIN_UPPER=$(printf "%s" "$DOMAIN" | awk '{ print toupper($0) }')
+        kinit "$USER@$DOMAIN_UPPER"
+        ```
+
+        ```bash
+        hn0=$(grep hn0- /etc/hosts | xargs | cut -d' ' -f4)
+        BEE_CMD="beeline -u 'jdbc:hive2://$hn0:10001/default;principal=hive/_HOST@$DOMAIN_UPPER;auth-kerberos;transportMode=http' -n "$USER@$DOMAIN" --showHeader=false --silent=true --outputformat=tsv2 -e"
+        ./exporthive_hdi_3_6.sh "$BEE_CMD"
+        ```
 
 1. 退出 SSH 会话。 然后输入一条 scp 命令，以在本地下载 alltables.hql。
 

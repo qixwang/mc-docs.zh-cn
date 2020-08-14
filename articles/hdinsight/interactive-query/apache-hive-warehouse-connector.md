@@ -8,12 +8,12 @@ ms.author: v-yiso
 ms.topic: conceptual
 origin.date: 05/28/2020
 ms.date: 07/06/2020
-ms.openlocfilehash: e26a8447410c3924bd546eff4914e32a7d1ad49e
-ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
+ms.openlocfilehash: 2aed14bacddaba34e6ba65794cd6bd45ef1c8b99
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85516595"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917349"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-hive-warehouse-connector-in-azure-hdinsight"></a>在 Azure HDInsight 中将 Apache Spark 和 Apache Hive 与 Hive Warehouse Connector 集成
 
@@ -38,6 +38,9 @@ Hive Warehouse Connector 支持的部分操作包括：
 * 使用 HiveStreaming 将数据帧或 Spark 流写入到 Hive
 
 ## <a name="hive-warehouse-connector-setup"></a>Hive Warehouse Connector 设置
+
+> [!IMPORTANT]
+> 不支持将 Spark 2.4 企业安全性套餐群集上安装的 HiveServer2 Interactive 实例与 Hive Warehouse Connector 一起使用。 相反，必须配置一个独立的 HiveServer2 Interactive 群集来承载 HiveServer2 Interactive 工作负载。 不支持使用单一 Spark 2.4 群集的 Hive Warehouse Connector 配置。
 
 Hive Warehouse Connector 对于 Spark 和 Interactive Query 工作负责需要单独的群集。 按照以下步骤在 Azure HDInsight 中设置这些群集。
 
@@ -71,9 +74,9 @@ Hive Warehouse Connector 对于 Spark 和 Interactive Query 工作负责需要�
 
 1. 选择“添加属性...”，以添加以下配置：
 
-    | 配置 | Value |
+    | 配置 | 值 |
     |----|----|
-    |`spark.datasource.hive.warehouse.load.staging.dir`|`wasbs://STORAGE_CONTAINER_NAME@STORAGE_ACCOUNT_NAME.blob.core.windows.net/tmp`。 <br> 设置为合适的 HDFS 兼容分段目录。 如果有两个不同的群集，则分段目录应该是 LLAP 群集存储帐户的分段目录中的文件夹，以便 HiveServer2 有权访问它。  将 `STORAGE_ACCOUNT_NAME` 替换为群集使用的存储帐户的名称，并将 `STORAGE_CONTAINER_NAME` 替换为存储容器的名称。 |
+    |`spark.datasource.hive.warehouse.load.staging.dir`|`wasbs://STORAGE_CONTAINER_NAME@STORAGE_ACCOUNT_NAME.blob.core.windows.net/tmp`. <br> 设置为合适的 HDFS 兼容分段目录。 如果有两个不同的群集，则分段目录应该是 LLAP 群集存储帐户的分段目录中的文件夹，以便 HiveServer2 有权访问它。  将 `STORAGE_ACCOUNT_NAME` 替换为群集使用的存储帐户的名称，并将 `STORAGE_CONTAINER_NAME` 替换为存储容器的名称。 |
     |`spark.sql.hive.hiveserver2.jdbc.url`| 之前从“HiveServer2 交互式 JDBC URL”获取的值 |
     |`spark.datasource.hive.warehouse.metastoreUri`| 之前从“hive.metastore.uris”获取的值。 |
     |`spark.security.credentials.hiveserver2.enabled`|对于 YARN 群集模式为 `true`，对于 YARN 客户端模式为 `false`。 |
@@ -82,6 +85,31 @@ Hive Warehouse Connector 对于 Spark 和 Interactive Query 工作负责需要�
 
 1. 保存更改并重启所有受影响的组件。
 
+### <a name="configure-hwc-for-enterprise-security-package-esp-clusters"></a>为企业安全性套餐 (ESP) 群集配置 HWC
+
+企业安全性套餐 (ESP) 为 Azure HDInsight 中的 Apache Hadoop 群集提供企业级功能，如基于 Active Directory 的身份验证、多用户支持以及基于角色的访问控制。 有关 ESP 的详细信息，请参阅[在 HDInsight 中使用企业安全性套餐](../domain-joined/apache-domain-joined-architecture.md)。
+
+除了上一部分中提到的配置之外，请添加以下配置以在 ESP 群集上使用 HWC。
+
+1. 从 Spark 群集的 Ambari Web UI 导航到“Spark2” > “配置” > “自定义 spark2-defaults”。
+
+1. 更新以下属性。
+
+    | 配置 | 值 |
+    |----|----|
+    | `spark.sql.hive.hiveserver2.jdbc.url.principal`    | `hive/<llap-headnode>@<AAD-Domain>` |
+    
+    * 在 Web 浏览器中，导航到 `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary`，其中 CLUSTERNAME 是 Interactive Query 群集的名称。 单击 HiveServer2 Interactive。 将看到运行 LLAP 的头节点的完全限定的域名 (FQDN)，如屏幕截图中所示。 将 `<llap-headnode>` 替换为此值。
+
+        ![Hive Warehouse Connector 头节点](./media/apache-hive-warehouse-connector/head-node-hive-server-interactive.png)
+
+    * 使用 [ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)连接到 Interactive Query 群集。 在 `/etc/krb5.conf` 文件中查找 `default_realm` 参数。 以大写字符串的形式使用此值替换 `<AAD-DOMAIN>`，否则会找不到凭据。
+
+        ![Hive Warehouse Connector AAD 域](./media/apache-hive-warehouse-connector/aad-domain.png)
+
+    * 例如：`hive/hn0-ng36ll.mjry42ikpruuxgs2qy2kpg4q5e.cx.internal.cloudapp.net@PKRSRVUQVMAE6J85.D2.INTERNAL.CLOUDAPP.NET`。
+    
+1. 保存更改并根据需要重启组件。
 
 ## <a name="hive-warehouse-connector-usage"></a>Hive Warehouse Connector 用法
 
@@ -96,7 +124,7 @@ Hive Warehouse Connector 对于 Spark 和 Interactive Query 工作负责需要�
 
 ### <a name="spark-shell"></a>Spark-shell
 
-1. 使用 [ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)连接到 Apache Spark 群集。 编辑以下命令（将 CLUSTERNAME 替换为群集的名称），然后输入该命令：
+1. 使用 [ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)连接到 Apache Spark 群集。 编辑以下命令，将 CLUSTERNAME 替换为群集的名称，然后输入该命令：
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.cn
@@ -191,7 +219,7 @@ kinit USERNAME
 
         ![hive warehouse connector ranger hive 策略列表](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png)
 
-    1. 提供所需的策略名称。 从“选择掩码选项”菜单中选择数据库“默认”、Hive 表“演示”、Hive 列“名称”、用户“rsadmin2”、访问类型“选择”和“部分掩码: 显示最后 4 个”。       单击“添加” 。
+    1. 提供所需的策略名称。 从“选择掩码选项”菜单中选择数据库“默认”、Hive 表“演示”、Hive 列“名称”、用户“rsadmin2”、访问类型“选择”和“部分掩码: 显示最后 4 个”。       单击“添加”。
                 ![创建策略](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png)
 1. 再次查看表的内容。 应用 Ranger 策略之后，我们只能看到该列的最后四个字符。
 

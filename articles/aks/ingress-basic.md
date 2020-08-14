@@ -4,17 +4,17 @@ titleSuffix: Azure Kubernetes Service
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 群集中安装和配置基本的 NGINX 入口控制器。
 services: container-service
 ms.topic: article
-origin.date: 04/27/2020
-ms.date: 07/13/2020
+origin.date: 07/20/2020
+ms.date: 08/10/2020
 ms.testscope: no
 ms.testdate: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: 8ec8d905eb60f6852ed4006907f7211cbeb2fc02
-ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
+ms.openlocfilehash: 6744ddf08d7c429149ae35a809059b0e8d8a197d
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86218735"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842661"
 ---
 # <a name="create-an-ingress-controller-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中创建入口控制器
 
@@ -174,13 +174,14 @@ kubectl apply -f aks-helloworld-two.yaml --namespace ingress-basic
 
 在以下示例中，发往 EXTERNAL_IP 的流量将路由到名为 `aks-helloworld-one` 的服务。 发往 EXTERNAL_IP/hello-world-two 的流量将路由到 `aks-helloworld-two` 服务。 发往 EXTERNAL_IP/static 的流量将路由到静态资产的名为 `aks-helloworld-one` 的服务。
 
-创建名为 `hello-world-ingress.yaml` 的文件，并将其复制到以下示例 YAML 中。
+在以下示例中，创建一个名为 hello-world-ingress.yaml 的文件，并将其复制到以下 YAML 中。
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: hello-world-ingress
+  namespace: ingress-basic
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
@@ -198,7 +199,7 @@ spec:
           servicePort: 80
         path: /hello-world-two(/|$)(.*)
 ---
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: hello-world-ingress-static
@@ -230,11 +231,11 @@ ingress.extensions/hello-world-ingress-static created
 
 若要测试入口控制器的路由，请浏览到这两个应用程序。 打开 Web 浏览器，访问 NGINX 入口控制器的 IP 地址，例如 EXTERNAL_IP。 首个演示应用程序显示在 Web 浏览器中，如以下示例所示：
 
-![在入口控制器后面运行的首个应用](media/ingress-basic/app-one.png)
+:::image type="content" source="media/ingress-basic/app-one.png" alt-text="在入口控制器后面运行的首个应用":::
 
 现在将“/hello-world-two”路径添加到 IP 地址，例如“EXTERNAL_IP/hello-world-two”。 下面显示了带自定义标题的第二个演示应用程序：
 
-![在入口控制器后面运行的第二个应用](media/ingress-basic/app-two.png)
+:::image type="content" source="media/ingress-basic/app-two.png" alt-text="在入口控制器后面运行的第二个应用":::
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -304,7 +305,7 @@ kubectl delete namespace ingress-basic
 <!-- LINKS - external -->
 
 [helm]: https://helm.sh/
-[helm-cli]: /aks/kubernetes-helm
+[helm-cli]: ./kubernetes-helm.md
 [nginx-ingress]: https://github.com/kubernetes/ingress-nginx
 
 <!-- LINKS - internal -->

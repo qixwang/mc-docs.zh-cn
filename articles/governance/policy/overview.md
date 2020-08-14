@@ -2,21 +2,21 @@
 title: Azure Policy 概述
 description: Azure Policy 是 Azure 中的一项服务，用于创建、分配和管理 Azure 环境中的策略定义。
 ms.author: v-tawe
-origin.date: 04/21/2020
-ms.date: 05/29/2020
+origin.date: 06/17/2020
+ms.date: 08/06/2020
 ms.topic: overview
-ms.openlocfilehash: b7f8166171ac8e5c0219ebb1d704efa3a4dca1fa
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: d01c6eb8610ccae563964bfa37b2e9c9ee132b87
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199260"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917344"
 ---
 # <a name="what-is-azure-policy"></a>什么是 Azure Policy？
 
 Azure Policy 可帮助实施组织标准并大规模评估合规性。 Azure Policy 通过其合规性仪表板提供一个聚合视图来评估环境的整体状态，并允许用户按资源、按策略粒度向下钻取。 它还通过对现有资源的批量修正以及对新资源的自动修正，帮助资源符合规范。
 
-Azure Policy 的常见用例包括实施监管来满足资源一致性、法规遵从性、安全性、成本和管理方面的要求。 Azure 环境中已经内置了这些常见用例的策略定义，帮助你入门。
+Azure Policy 的常见用例包括实施监管来满足资源一致性、安全性、成本和管理方面的要求。 Azure 环境中已经内置了这些常见用例的策略定义，帮助你入门。
 
 ## <a name="overview"></a>概述
 
@@ -88,7 +88,7 @@ Azure Policy 在两个资源提供程序中具有多个权限（称为操作）�
 
 ### <a name="resources-covered-by-azure-policy"></a>Azure Policy 涵盖的资源
 
-Azure Policy 评估 Azure 中的所有资源。 对于某些资源提供程序（例如 [Guest Configuration](./concepts/guest-configuration.md)、[Azure Kubernetes 服务](../../aks/intro-kubernetes.md)和 [Azure Key Vault](../../key-vault/key-vault-overview.md)），可以使用一个更深度的集成来管理设置和对象。 有关详细信息，请参阅[资源提供程序模式](./concepts/definition-structure.md)。
+Azure Policy 评估 Azure 中的所有资源。 对于某些资源提供程序（例如 [Guest Configuration](./concepts/guest-configuration.md)、[Azure Kubernetes 服务](../../aks/intro-kubernetes.md)和 [Azure Key Vault](../../key-vault/general/overview.md)），可以使用一个更深度的集成来管理设置和对象。 有关详细信息，请参阅[资源提供程序模式](./concepts/definition-structure.md)。
 
 ### <a name="recommendations-for-managing-policies"></a>管理策略的建议
 
@@ -110,7 +110,7 @@ Azure Policy 评估 Azure 中的所有资源。 对于某些资源提供程序�
 
 ### <a name="policy-definition"></a>策略定义
 
-若要在 Azure Policy 中创建和实施策略，首先请创建策略定义。 每种策略定义在其特定的条件下将被强制执行。 并且，在满足条件时将出现定义的效果。
+若要在 Azure Policy 中创建并实施策略，请先创建策略定义。 每种策略定义在其特定的条件下将被强制执行。 并且，在满足条件时将出现定义的效果。
 
 在 Azure Policy 中，我们将提供一些默认可供使用的内置策略。 例如：
 
@@ -136,7 +136,7 @@ Azure Policy 评估 Azure 中的所有资源。 对于某些资源提供程序�
 
 ### <a name="initiative-definition"></a>计划定义
 
-计划定义是策略定义的集合，是为实现单一的总体目标量身定制的。 计划定义可以简化管理和分配策略定义。 它们通过将一组策略组合为一个单独的项来实现简化。 例如，可以创建一个标题为“启用 Azure 安全中心中的监视”的计划，用于专门监视 Azure 安全中心中的所有可用的安全建议。
+计划定义是策略定义的集合，专为实现一个单一的总体目标而量身定制。 计划定义可以简化管理和分配策略定义。 它们通过将一组策略组合为一个单独的项来实现简化。 例如，可以创建一个标题为“启用 Azure 安全中心中的监视”的计划，用于专门监视 Azure 安全中心中的所有可用的安全建议。
 
 > [!NOTE]
 > Azure CLI 和 Azure PowerShell 等 SDK 使用名为 PolicySet 的属性和参数来引用计划。
@@ -149,7 +149,7 @@ Azure Policy 评估 Azure 中的所有资源。 对于某些资源提供程序�
 
 类似于策略参数，计划参数通过减少冗余来帮助简化计划管理。 计划参数是计划内的策略定义正在使用的参数。
 
-例如，在实施某个方案时，有一个计划定义 **initiativeC**，此外还有策略定义 **policyA** 和 **policyB**，每个都会使用不同类型的参数：
+例如，假设出现这样一种情况，有一个带有两个策略定义（**policyA** 和 **policyB**，每个都需要不同类型的参数）的计划定义 - initiativeC：
 
 | 策略 | 参数的名称 |参数的类型  |注意 |
 |---|---|---|---|
@@ -158,11 +158,13 @@ Azure Policy 评估 Azure 中的所有资源。 对于某些资源提供程序�
 
 在此情况下，定义 initiativeC 的计划参数时，有三个选项可供选择：
 
-- 使用此计划中的策略定义参数：在此示例中，_allowedLocations_ 和 _allowedSingleLocation_ 成为 **initiativeC** 的计划参数。
+- 使用此计划中的策略定义参数：在此示例中，allowedLocations 和 allowedSingleLocation 为 initiativeC 的计划参数 。
 - 向此计划定义中策略定义的参数提供值。 在此示例中，可以向 policyA 的参数 – allowedLocations 和 policyB 的参数 – allowedSingleLocation   提供位置列表。 此外，也可在分配此计划时提供值。
 - 分配此计划时，提供可供使用的值列表选项。 在分配此计划时，从计划内的策略定义继承的参数只能具有此提供列表中的值。
 
 在计划定义中创建值选项时，无法在计划分配期间输入其他值，因为它不属于列表。
+
+若要详细了解计划定义结构，请查看[计划定义结构](./concepts/initiative-definition-structure.md)。
 
 ### <a name="assignments"></a>分配
 
@@ -172,7 +174,7 @@ Azure Policy 评估 Azure 中的所有资源。 对于某些资源提供程序�
 
 另举一例：你可能想要在管理组级别分配资源类型允许列表定义， 然后为子管理组或者甚至直接为订阅分配更宽松的策略（以允许更多资源类型）。 但是，此示例无法实现，因为 Azure Policy 是显式拒绝系统。 你不需要那样做，只需要从管理组级别分配中排除子管理组或订阅， 然后为子管理组或订阅级别分配更宽松的定义。 如果任何分配导致资源被拒绝，则允许该资源的唯一方法是修改拒绝分配。
 
-有关通过门户设置分配的详细信息，请参阅[创建策略分配以识别 Azure 环境中的不合规资源](assign-policy-portal.md)。 还可以使用 [PowerShell](assign-policy-powershell.md) 和 [Azure CLI](assign-policy-azurecli.md) 的步骤。
+有关通过门户设置分配的详细信息，请参阅[创建策略分配以识别 Azure 环境中的不合规资源](./assign-policy-portal.md)。 还可以使用 [PowerShell](./assign-policy-powershell.md) 和 [Azure CLI](./assign-policy-azurecli.md) 的步骤。 有关分配结构的信息，请参阅[分配结构](./concepts/assignment-structure.md)。
 
 ## <a name="maximum-count-of-azure-policy-objects"></a>Azure Policy 对象的最大计数
 
@@ -180,7 +182,7 @@ Azure Policy 评估 Azure 中的所有资源。 对于某些资源提供程序�
 
 ## <a name="next-steps"></a>后续步骤
 
-大致了解 Azure Policy 和一些关键概念后，建议执行后续步骤：
+现在，你已大致了解 Azure Policy 以及一些关键概念，下面是建议的后续步骤：
 
 - [查看策略定义结构](./concepts/definition-structure.md)。
 - [使用门户分配策略定义](./assign-policy-portal.md)。

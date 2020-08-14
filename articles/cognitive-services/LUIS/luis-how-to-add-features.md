@@ -1,52 +1,74 @@
 ---
-title: 描述符 - LUIS
+title: 使用特征改进 LUIS 字词列表
 titleSuffix: Azure Cognitive Services
 description: 使用语言理解 (LUIS) 添加应用功能，可以改进对类别和模式的意向和实体的检测或预测
 services: cognitive-services
-author: lingliw
-manager: digimobile
+author: Johnnytechn
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 11/14/2019
-ms.date: 12/05/2019
-ms.author: v-lingwu
-ms.openlocfilehash: 3b405bf140bf4d6ceaed794cc20f179c157befc9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 08/04/2020
+ms.author: v-johya
+ms.openlocfilehash: c04751ba1f2fa7b5050621f89096e4264ef1f99c
+ms.sourcegitcommit: caa18677adb51b5321ad32ae62afcf92ac00b40b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74884617"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88023385"
 ---
-# <a name="use-descriptors-to-boost-signal-of-word-list"></a>使用描述符来增强字词列表的信号
+# <a name="use-features-to-boost-signal-of-word-list"></a>使用特征增强字词列表的信号
 
-可以将功能添加到 LUIS 应用以提高其准确性。 特征通过提供某些字词和短语是应用域词汇表的一部分的提示来帮助 LUIS。 
+可以将功能添加到 LUIS 应用以提高其准确性。 特征通过提供某些字词和短语是应用域词汇表的一部分的提示来帮助 LUIS。
 
-描述符（短语列表）包括一组值（词或短语），它们属于同一个类，并且必须以同样的方式处理它们（例如城市或产品名称）。 LUIS 对其中一个值的了解也自动应用到其他值。 此列表不同于包含匹配字词的[列表实体](reference-entity-list.md)（完全文本匹配）。
+查看[概念](luis-concept-feature.md)了解何时以及为何使用特征。
 
-描述符添加到应用域的词汇中，作为这些字词的第二个 LUIS 信号。
+## <a name="add-phrase-list-as-a-feature"></a>添加短语列表作为特征
 
-## <a name="add-descriptor"></a>添加描述符
+1. 登录到 [LUIS 门户](https://luis.azure.cn)，选择“订阅”和“创作资源”以查看分配给该创作资源的应用。
+1. 在“我的应用”页上选择应用名称以打开应用。
+1. 选择“生成”，然后在应用的左面板中选择“特征” 。
 
-1. 单击“我的应用”页上的名称打开应用，单击“构建”，然后单击应用左侧面板中的“描述符”    。 
+1. 在“特征”页上，选择“+ 创建” 。
 
-1. 在“描述符”页上，单击“+ 添加描述符”   。 
- 
-1. 在“创建新短语列表描述符”  对话框中，输入描述符的名称（例如 `Cities`）。 在“值”框中，键入描述符的值，例如 `Seattle`。 可以一次键入一个值或者用逗号分隔的一组值，然后按 Enter  。
+1. 在“新建短语列表特征”对话框中，输入名称（例如 `Cities`）。 在“值”框中，输入示例城市（例如 `Seattle`）。 可以一次键入一个值或者用逗号分隔的一组值，然后按 Enter****。
 
     > [!div class="mx-imgBorder"]
-    > ![添加描述符“Cities”](./media/luis-add-features/add-phrase-list-cities.png)
+    > ![屏幕截图显示添加特征（短语列表）城市的操作](./media/luis-add-features/add-phrase-list-cities.png)
 
-    为 LUIS 输入足够的值后，会显示建议。 对于建议的值，可以单击“+ 全部添加”，也可选择单个术语  。
+    为 LUIS 输入足够的值后，会显示建议。 对于建议的值，可以单击“+ 全部添加”，也可选择单个术语****。
 
-1. 如果添加的描述符值是可交换使用的替代值，则让“这些值可以交换”保持选中状态  。
+1. 如果短语可以交换使用，则让“这些值可以交换”保持选中状态。
 
-1. 选择“完成”  。 新描述符会添加到“描述符”页  。
+1. 可以使用“全局”设置将短语列表应用于整个应用，或应用于特定模型（意向或实体）。 如果创建短语列表，并作为意向或实体的特征，则切换后不会设置为全局。 在这种情况下，切换的意义在于该特征仅对该模型是本地的，因此对应用程序而言不是全局的。
+
+1. 选择“完成”  。 新特征已添加到“ML 特征”页面。
 
 <a name="edit-phrase-list"></a>
 <a name="delete-phrase-list"></a>
 <a name="deactivate-phrase-list"></a>
 
+
 > [!Note]
-> 可以在“描述符”  页上，删除或取消激活上下文工具栏中的描述符。
+> 可以在“ML 特征”页上，删除或停用上下文工具栏中的短语列表。
+
+## <a name="global-phrase-list-applies-to-entire-app"></a>全局短语列表会应用于整个应用
+
+应将短语列表应用于预期要帮助的意向或实体，但有时需要将短语列表应用于整个应用，充当全局特征。
+
+在 ML 特征页面上，选择短语列表，然后在顶部的上下文工具栏中选择“全局应用”。
+
+## <a name="model-as-a-feature"></a>作为特征的模型
+
+实体可以是[意向或实体的特征](luis-concept-feature.md)。
+
+若要将实体作为特征添加到意向，请从“意向”页面中选择意向，然后选择上下文工具栏上方的“+添加特征”。 该列表将包括所有可用作特征的短语列表和实体。
+
+若要将实体作为特征添加到另一个实体，可以使用 [Entity Palette](label-entity-example-utterance.md) 在“意向”详细信息页面上添加特征，也可以在“实体”详细信息页面上[添加特征](luis-how-to-add-entities.md)。
+
+## <a name="next-steps"></a>后续步骤
+
+添加、编辑、删除或停用特征后，再次[定型和测试应用](luis-interactive-test.md)，查看性能是否有所改善。
+

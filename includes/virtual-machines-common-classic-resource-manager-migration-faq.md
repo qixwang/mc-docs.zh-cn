@@ -6,16 +6,26 @@ author: rockboyfor
 ms.service: virtual-machines
 ms.topic: include
 origin.date: 02/06/2020
-ms.date: 05/18/2020
+ms.date: 08/10/2020
+ms.testscope: no
+ms.testdate: 05/18/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: e68dfd96f92f448fe16d676a452f488e69b345bf
-ms.sourcegitcommit: 8d56bc6baeb42d675695ecef1909d76f5c4a6ae3
+ms.openlocfilehash: e78ddbf4a9b04b5b773a29f5c440dac8da0ee595
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83406205"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87919287"
 ---
+## <a name="what-is-azure-service-manager-and-what-does-it-mean-by-classic"></a>什么是 Azure Service Manager，“经典”的含义是什么？
+
+IaaS VM（经典）中的“经典”一词是指由 Azure Service Manager (ASM) 托管的 VM。 Azure Service Manager (ASM) 是 Azure 的旧控制平面，负责创建、管理、删除 VM 和执行其他控制平面操作。 
+
+## <a name="what-is-azure-resource-manager"></a>什么是 Azure 资源管理器？
+
+[Azure 资源管理器](/azure-resource-manager/management/overview) 是 Azure 的最新控制平面，负责创建、管理、删除 VM 和执行其他控制平面操作。 
+
 ## <a name="what-is-the-time-required-for-migration"></a>迁移需要多长时间？
 
 计划迁移和执行迁移很大程度都取决于体系结构的复杂性，这可能需要几个月的时间。  
@@ -30,7 +40,7 @@ ms.locfileid: "83406205"
 
 ## <a name="why-am-i-getting-an-error-stating-newclassicvmcreationnotallowedforsubscription"></a>为什么会收到“NewClassicVMCreationNotAllowedForSubscription”这样的错误信息？
 
-停用过程开始后，IaaS VM（经典版）不再适用于新客户。 我们已将你识别为新客户，因此你无权执行该操作。 我们强烈推荐使用[使用 ARM 的 Azure 虚拟机](/virtual-machines/windows/quick-create-powershell)。 如果无法通过 ARM 使用 Azure VM，请联系订阅允许列表上的支持人员。
+停用过程开始后，IaaS VM（经典版）不再适用于新客户。 我们已将你识别为新客户，因此你无权执行该操作。 我们强烈推荐使用[使用 ARM 的 Azure 虚拟机](/virtual-machines/windows/quick-create-powershell)。 如果无法通过 ARM 使用 Azure VM，请联系支持人员，以将订阅加入允许列表。
 
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>此迁移计划是否影响 Azure 虚拟机上运行的任何现有服务或应用程序？ 
 
@@ -58,7 +68,7 @@ ms.locfileid: "83406205"
 
 ## <a name="do-i-have-to-buy-another-express-route-circuit-if-i-have-to-use-iaas-under-resource-manager"></a>如果我必须使用 Resource Manager 下的 IaaS，是否必须购买其他 ExpressRoute 线路？ 
 
-不会。 我们近期实现了 [将 ExpressRoute 线路从经典部署模型转移到 Resource Manager 部署模型](../articles/expressroute/expressroute-move.md)。 如果已有 ExpressRoute 线路，则不需要购买新的线路。
+不是。 我们近期实现了 [将 ExpressRoute 线路从经典部署模型转移到 Resource Manager 部署模型](../articles/expressroute/expressroute-move.md)。 如果已有 ExpressRoute 线路，则不需要购买新的线路。
 
 ## <a name="what-if-i-had-configured-role-based-access-control-policies-for-my-classic-iaas-resources"></a>如果我已经为经典 IaaS 资源配置基于角色的访问控制策略，该怎么办？ 
 
@@ -93,7 +103,7 @@ ms.locfileid: "83406205"
 
 ## <a name="how-do-i-report-an-issue"></a>如何报告问题？ 
 
-请在 [Azure 支持](https://support.azure.cn/support/contact/)上使用关键字 ClassicIaaSMigration 发布有关迁移的问题和疑惑。 建议将所有问题都发布在此论坛上。 如果有支持协定，也欢迎你记录支持票证。
+请使用关键字 ClassicIaaSMigration 将迁移相关的问题发布到[有关 VM 的 Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-virtual-machines.html)。 建议将所有问题都发布在此论坛上。 如果有支持协定，也欢迎你记录支持票证。
 
 ## <a name="what-if-i-dont-like-the-names-of-the-resources-that-the-platform-chose-during-migration"></a>如果我不喜欢平台在迁移期间选择的资源名称，该怎么做？ 
 

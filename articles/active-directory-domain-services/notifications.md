@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/13/2020
+ms.date: 08/07/2020
 ms.author: v-junlch
-ms.openlocfilehash: c7a3e6248ccd9869954db4a3e7f6ef4ebe689c18
-ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
+ms.openlocfilehash: ac36cb5ce6b537b03777c08f4452381fe002a4ad
+ms.sourcegitcommit: a5eb9a47feefb053ddbaab4b15c395972c372339
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86472591"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88028613"
 ---
 # <a name="configure-email-notifications-for-issues-in-azure-active-directory-domain-services"></a>为 Azure Active Directory 域服务中的问题配置电子邮件通知
 
@@ -74,7 +74,7 @@ Azure AD DS 的电子邮件收件人列表应由能够管理和更改托管域�
 
 ### <a name="why-can-i-not-edit-the-notification-settings"></a>为什么我无法编辑通知设置？
 
-如果无法访问 Azure 门户中的通知设置页，则无权编辑托管域。 你必须联系全局管理员以获取编辑 Azure AD DS 资源的权限，否则系统会将你从收件人列表中删除。
+如果无法访问 Azure 门户中的通知设置页，则无权编辑托管域。 请与全局管理员联系，以获取编辑 Azure AD DS 资源的权限，否则系统会将你从收件人列表中删除。
 
 ### <a name="i-dont-seem-to-be-receiving-email-notifications-even-though-i-provided-my-email-address-why"></a>我似乎没有收到电子邮件通知，即使已提供我的电子邮件地址也没有收到。 为什么？
 

@@ -1,5 +1,5 @@
 ---
-title: 创建和更新统计信息
+title: 使用 Azure Synapse SQL 创建和更新表的统计信息
 description: 本文提供的建议和示例适用于创建和更新 Synapse SQL 池中有关表的查询优化统计信息。
 services: synapse-analytics
 author: WenJason
@@ -8,16 +8,16 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 origin.date: 05/09/2018
-ms.date: 08/03/2020
+ms.date: 08/10/2020
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6226342c31937a6bac3923af327f9c95b1c367d0
-ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
+ms.openlocfilehash: 19b2ce62b144b10c6da6ec88f601de2d95fe5f6b
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87426355"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917276"
 ---
 # <a name="table-statistics-in-synapse-sql-pool"></a>Synapse SQL 池中的表统计信息
 

@@ -5,14 +5,14 @@ author: WenJason
 ms.author: v-jay
 ms.service: postgresql
 ms.topic: conceptual
-origin.date: 06/11/2020
-ms.date: 07/06/2020
-ms.openlocfilehash: 81ad0d6690fa044fa5ed922a2e50249832c31492
-ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
+origin.date: 07/10/2020
+ms.date: 08/17/2020
+ms.openlocfilehash: 53d4e88f9ee749755bde1ad3931476c73c35a787
+ms.sourcegitcommit: 3cf647177c22b24f76236c57cae19482ead6a283
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85845811"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88029691"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL（单一服务器）中的只读副本
 
@@ -135,22 +135,24 @@ AS total_log_delay_in_bytes from pg_stat_replication;
 
 若要配置正确的日志记录级别，请使用 Azure 复制支持参数。 Azure 复制支持有三个设置选项：
 
-* **关闭** - 在 WAL 中提供的信息最少。 在大多数 Azure Database for PostgreSQL 服务器上都不提供此设置。  
+* **关闭** - 在 WAL 中包含最少的信息。 大多数 Azure Database for PostgreSQL 服务器上都不提供此设置。  
 * **副本** - 比“关闭”详细。 这是运行[只读副本](concepts-read-replicas.md)所需的最低日志记录级别。 此设置是大多数服务器上的默认设置。
 * **逻辑** - 比“副本”详细。 这是运行逻辑解码所需的最低日志记录级别。 使用此设置时，只读副本也可以运行。
 
-更改此参数后，需要重新启动服务器。 在内部，此参数设置 Postgres 参数 `wal_level`、`max_replication_slots` 和 `max_wal_senders`。
+更改此参数后，需要重启服务器。 在内部，此参数设置 Postgres 参数 `wal_level`、`max_replication_slots` 和 `max_wal_senders`。
 
 ### <a name="new-replicas"></a>新副本
 只读副本创建为新的 Azure Database for PostgreSQL 服务器。 无法将现有的服务器设为副本。 无法创建另一个只读副本的副本。
 
 ### <a name="replica-configuration"></a>副本配置
-使用与主服务器相同的计算和存储设置创建副本。 创建副本后，可以独立于主服务器更改多项设置：计算代系、vCore 数、存储和备份保留期。 定价层也可以独立更改，但“基本”层除外。
+使用与主服务器相同的计算和存储设置创建副本。 创建副本后，可以更改多个设置，包括存储和备份保留期。
+
+在以下情况下，还可以在副本上更改 vCore 和定价层：
+* PostgreSQL 要求只读副本上的 `max_connections` 参数值大于或等于主服务器上的值，否则副本不会启动。 在 Azure Database for PostgreSQL 中，`max_connections` 参数值基于 SKU（vCore 和定价层）。 有关详细信息，请参阅 [Azure Database for PostgreSQL 中的限制](concepts-limits.md)。 
+* 不支持缩放到基本定价层或从基本定价层进行缩放
 
 > [!IMPORTANT]
 > 将主服务器设置更新为新值之前，请将副本配置更新为一个相等或更大的值。 此操作可确保副本与主服务器发生的任何更改保持同步。
-
-PostgreSQL 要求只读副本上的 `max_connections` 参数值大于或等于主服务器上的值，否则副本不会启动。 在 Azure Database for PostgreSQL 中，`max_connections` 参数值基于 SKU。 有关详细信息，请参阅 [Azure Database for PostgreSQL 中的限制](concepts-limits.md)。 
 
 在不遵守限制的情况下尝试更新上述服务器值会导致出错。
 

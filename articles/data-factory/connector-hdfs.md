@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 05/15/2020
-ms.date: 06/29/2020
+ms.date: 08/10/2020
 ms.author: v-jay
-ms.openlocfilehash: 7926bf8b23ea09b483717968325e9df20d160ede
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+ms.openlocfilehash: 180974bafe502fad16773b92c4f1bde4f25c51e3
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323368"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914386"
 ---
 # <a name="copy-data-from-the-hdfs-server-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 HDFS 服务器复制数据
 
@@ -280,21 +280,25 @@ HDFS 支持基于格式的复制源中 `storeSettings` 设置下的以下属性�
 
 **在自承载集成运行时计算机上：**
 
-1. 运行 Ksetup 实用工具来配置 Kerberos 密钥分发中心 (KDC) 服务器和领域。
+1.  运行 Ksetup 实用工具来配置 Kerberos 密钥分发中心 (KDC) 服务器和领域。
 
     由于 Kerberos 领域不同于 Windows 域，因此计算机必须配置为工作组的成员。 可运行以下命令来设置 Kerberos 领域和添加 KDC 服务器，以便实现此配置。 将 REALM.COM 替换为你自己的领域名。
 
-            C:> Ksetup /setdomain REALM.COM
-            C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
+    ```console
+    C:> Ksetup /setdomain REALM.COM
+    C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
+    ```
 
     运行上述命令后，重启计算机。
 
-2. 使用 `Ksetup` 命令验证配置。 输出应如下所示：
+2.  使用 `Ksetup` 命令验证配置。 输出应如下所示：
 
-            C:> Ksetup
-            default realm = REALM.COM (external)
-            REALM.com:
-                kdc = <your_kdc_server_address>
+    ```output
+    C:> Ksetup
+    default realm = REALM.COM (external)
+    REALM.com:
+        kdc = <your_kdc_server_address>
+    ```
 
 **在数据工厂中：**
 
@@ -304,8 +308,8 @@ HDFS 支持基于格式的复制源中 `storeSettings` 设置下的以下属性�
 
 #### <a name="requirements"></a>要求
 
-* 自承载集成运行时计算机必须加入 Windows 域。
-* 需要用于更新域控制器设置的权限。
+*   自承载集成运行时计算机必须加入 Windows 域。
+*   需要用于更新域控制器设置的权限。
 
 #### <a name="how-to-configure"></a>配置方式
 
@@ -316,60 +320,68 @@ HDFS 支持基于格式的复制源中 `storeSettings` 设置下的以下属性�
 
 1. 编辑 krb5.conf 文件中的 KDC 配置，通过引用以下配置模板，让 KDC 信任 Windows 域。 默认情况下，配置位于 /etc/krb5.conf。
 
-           [logging]
-            default = FILE:/var/log/krb5libs.log
-            kdc = FILE:/var/log/krb5kdc.log
-            admin_server = FILE:/var/log/kadmind.log
+   ```config
+   [logging]
+    default = FILE:/var/log/krb5libs.log
+    kdc = FILE:/var/log/krb5kdc.log
+    admin_server = FILE:/var/log/kadmind.log
             
-           [libdefaults]
-            default_realm = REALM.COM
-            dns_lookup_realm = false
-            dns_lookup_kdc = false
-            ticket_lifetime = 24h
-            renew_lifetime = 7d
-            forwardable = true
+   [libdefaults]
+    default_realm = REALM.COM
+    dns_lookup_realm = false
+    dns_lookup_kdc = false
+    ticket_lifetime = 24h
+    renew_lifetime = 7d
+    forwardable = true
             
-           [realms]
-            REALM.COM = {
-             kdc = node.REALM.COM
-             admin_server = node.REALM.COM
-            }
-           AD.COM = {
-            kdc = windc.ad.com
-            admin_server = windc.ad.com
-           }
+   [realms]
+    REALM.COM = {
+     kdc = node.REALM.COM
+     admin_server = node.REALM.COM
+    }
+   AD.COM = {
+    kdc = windc.ad.com
+    admin_server = windc.ad.com
+   }
             
-           [domain_realm]
-            .REALM.COM = REALM.COM
-            REALM.COM = REALM.COM
-            .ad.com = AD.COM
-            ad.com = AD.COM
+   [domain_realm]
+    .REALM.COM = REALM.COM
+    REALM.COM = REALM.COM
+    .ad.com = AD.COM
+    ad.com = AD.COM
             
-           [capaths]
-            AD.COM = {
-             REALM.COM = .
-            }
+   [capaths]
+    AD.COM = {
+     REALM.COM = .
+    }
+    ```
 
    在配置此文件后，重启 KDC 服务。
 
 2. 使用以下命令准备 KDC 服务器中名为 krbtgt/REALM.COM\@AD.COM 的主体：
 
-           Kadmin> addprinc krbtgt/REALM.COM@AD.COM
+    ```cmd
+    Kadmin> addprinc krbtgt/REALM.COM@AD.COM
+    ```
 
 3. 在 *hadoop.security.auth_to_local* HDFS 服务配置文件中，添加 `RULE:[1:$1@$0](.*\@AD.COM)s/\@.*//`。
 
 **在域控制器上：**
 
-1. 运行以下 `Ksetup` 命令以添加领域条目：
+1.  运行以下 `Ksetup` 命令以添加领域条目：
 
-        C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
-        C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
+    ```cmd
+    C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
+    C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
+    ```
 
-2. 建立从 Windows 域到 Kerberos 领域的信任。 [password] 是主体 *krbtgt/REALM.COM\@AD.COM* 的密码。
+2.  建立从 Windows 域到 Kerberos 领域的信任。 [password] 是主体 *krbtgt/REALM.COM\@AD.COM* 的密码。
 
-        C:> netdom trust REALM.COM /Domain: AD.COM /add /realm /password:[password]
+    ```cmd
+    C:> netdom trust REALM.COM /Domain: AD.COM /add /realm /password:[password]
+    ```
 
-3. 选择在 Kerberos 中使用的加密算法。
+3.  选择在 Kerberos 中使用的加密算法。
 
     a. 选择“服务器管理器” > “组策略管理” > “域” > “组策略对象” > “默认或活动的域策略”，然后选择“编辑”。     
 
@@ -381,9 +393,11 @@ HDFS 支持基于格式的复制源中 `storeSettings` 设置下的以下属性�
 
     d. 使用 `Ksetup` 命令可指定要在指定领域使用的加密算法。
 
-        C:> ksetup /SetEncTypeAttr REALM.COM DES-CBC-CRC DES-CBC-MD5 RC4-HMAC-MD5 AES128-CTS-HMAC-SHA1-96 AES256-CTS-HMAC-SHA1-96
+    ```cmd
+    C:> ksetup /SetEncTypeAttr REALM.COM DES-CBC-CRC DES-CBC-MD5 RC4-HMAC-MD5 AES128-CTS-HMAC-SHA1-96 AES256-CTS-HMAC-SHA1-96
+    ```
 
-4. 创建域帐户和 Kerberos 主体之间的映射，以便在 Windows 域中使用 Kerberos 主体。
+4.  创建域帐户和 Kerberos 主体之间的映射，以便在 Windows 域中使用 Kerberos 主体。
 
     a. 选择“管理工具” > “Active Directory 用户和计算机” 。
 
@@ -393,14 +407,16 @@ HDFS 支持基于格式的复制源中 `storeSettings` 设置下的以下属性�
 
     d. 从领域中添加主体。
 
-       ![The "Security Identity Mapping" pane](media/connector-hdfs/map-security-identity.png)
+       ![“安全标识映射”窗格](media/connector-hdfs/map-security-identity.png)
 
 **在自承载集成运行时计算机上：**
 
 * 运行以下 `Ksetup` 命令以添加领域条目。
 
-        C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
-        C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
+   ```cmd
+   C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
+   C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
+   ```
 
 **在数据工厂中：**
 
@@ -417,7 +433,7 @@ HDFS 支持基于格式的复制源中 `storeSettings` 设置下的以下属性�
 
 ### <a name="legacy-dataset-model"></a>旧数据集模型
 
-| 属性 | 说明 | 必须 |
+| 属性 | 描述 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 FileShare |是 |
 | folderPath | 文件夹的路径。 支持通配符筛选器。 允许的通配符为 `*`（匹配零个或零个以上的字符）和 `?`（匹配零个或单个字符）；如果实际文件名中包含通配符或此转义字符，请使用 `^` 进行转义。 <br/><br/>示例：“rootfolder/subfolder/”，请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)中的更多示例。 |是 |
@@ -462,7 +478,7 @@ HDFS 支持基于格式的复制源中 `storeSettings` 设置下的以下属性�
 
 ### <a name="legacy-copy-activity-source-model"></a>旧复制活动源模型
 
-| 属性 | 说明 | 必须 |
+| 属性 | 描述 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为 HdfsSource。 |是 |
 | recursive | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 当 recursive 设置为 true 且接收器是基于文件的存储时，将不会在接收器上复制或创建空的文件夹或子文件夹。<br/>允许的值为 *true*（默认值）和 *false*。 | 否 |

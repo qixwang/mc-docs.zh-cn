@@ -1,23 +1,23 @@
 ---
-title: Azure 数据工厂中支持的文件格式
-description: 本主题说明 Azure 数据工厂中基于文件的连接器支持的文件格式和压缩代码。
+title: Azure 数据工厂中复制活动支持的文件格式
+description: 本主题介绍 Azure 数据工厂中复制活动支持的文件格式和压缩代码。
 author: WenJason
 manager: digimobile
 ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-origin.date: 12/10/2019
-ms.date: 06/29/2020
+origin.date: 07/16/2020
+ms.date: 08/10/2020
 ms.author: v-jay
-ms.openlocfilehash: aab6ae09061c62d6497515b05c2537841d1af6f8
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+ms.openlocfilehash: c30672b1846edec02ff3986c6133054481a67ecb
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323168"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914399"
 ---
-# <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Azure 数据工厂中支持的文件格式和压缩编解码器
+# <a name="supported-file-formats-and-compression-codecs-by-copy-activity-in-azure-data-factory"></a>Azure 数据工厂中复制活动支持的文件格式和压缩编解码器
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文适用于以下连接器：[Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure 文件存储](connector-azure-file-storage.md)、[文件系统](connector-file-system.md)、[FTP](connector-ftp.md)、[Google 云存储](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md) 和 [SFTP](connector-sftp.md)。

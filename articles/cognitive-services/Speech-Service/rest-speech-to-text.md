@@ -11,12 +11,12 @@ ms.topic: conceptual
 origin.date: 05/13/2020
 ms.date: 08/03/2020
 ms.author: v-tawe
-ms.openlocfilehash: 4afdbe4a2ed97b2ad8e8f42654a7ebaefe06f6ff
-ms.sourcegitcommit: 3821704fee67315badba49cf628af2aa68d98f28
+ms.openlocfilehash: db17701a0abd4c1965948c5b8b142f4ecbe41f95
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87516117"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917348"
 ---
 # <a name="speech-to-text-rest-api"></a>语音转文本 REST API
 
@@ -118,7 +118,7 @@ var pronAssessmentHeader = Convert.ToBase64String(pronAssessmentParamsBytes);
 我们强烈建议在发布音频数据时进行流式（分块）上传，这可以显著减少延迟。 请参阅[不同编程语言的示例代码](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/PronunciationAssessment)以了解如何启用流式处理。
 
 >[!NOTE]
->发音评估功能目前只在 `westus`、`eastasia` 和 `centralindia` 区域可用。 此功能目前仅适用于 `en-US` 语言。
+>发音评估功能当前仅在 `chinaeast2` 区域可用。 此功能目前仅适用于 `en-US` 语言。
 
 ## <a name="sample-request"></a>示例请求
 

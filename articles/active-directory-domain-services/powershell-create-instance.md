@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: sample
-ms.date: 07/20/2020
+ms.date: 08/07/2020
 ms.author: v-junlch
-ms.openlocfilehash: ca8e69c9cabb7ecec39a8d3c53dd8fc8e9876cb2
-ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
+ms.openlocfilehash: bf711815995f0908600948c27b67b31c7363dbdf
+ms.sourcegitcommit: a5eb9a47feefb053ddbaab4b15c395972c372339
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86472626"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88028607"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>使用 PowerShell 启用 Azure Active Directory 域服务
 
@@ -64,7 +64,7 @@ New-AzureADGroup -DisplayName "AAD DC Administrators" `
 
 创建“AAD DC 管理员”组后，使用 [Add-AzureADGroupMember][Add-AzureADGroupMember] cmdlet 将一个用户添加到该组。 首先使用 [Get-AzureADGroup][Get-AzureADGroup] cmdlet 获取“AAD DC 管理员”组对象 ID，然后使用 [Get-AzureADUser][Get-AzureADUser] cmdlet 获取所需用户的对象 ID。
 
-以下示例显示了 UPN 为 `admin@aaddscontoso.partner.onmschina.cn` 的帐户的用户对象 ID。 请将此用户帐户替换为要添加到“AAD DC 管理员”组的用户的 UPN：
+以下示例显示了 UPN 为 `admin@contoso.partner.onmschina.cn` 的帐户的用户对象 ID。 请将此用户帐户替换为要添加到“AAD DC 管理员”组的用户的 UPN：
 
 ```powershell
 # First, retrieve the object ID of the newly created 'AAD DC Administrators' group.
@@ -74,7 +74,7 @@ $GroupObjectId = Get-AzureADGroup `
 
 # Now, retrieve the object ID of the user you'd like to add to the group.
 $UserObjectId = Get-AzureADUser `
-  -Filter "UserPrincipalName eq 'admin@aaddscontoso.partner.onmschina.cn'" | `
+  -Filter "UserPrincipalName eq 'admin@contoso.partner.onmschina.cn'" | `
   Select-Object ObjectId
 
 # Add the user to the 'AAD DC Administrators' group.
@@ -154,9 +154,9 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
 
 * 为虚拟网络更新 DNS 设置，以使虚拟机能够找到用于域加入或身份验证的托管域。
     * 若要配置 DNS，请在门户中选择你的托管域。 在“概览”窗口中，系统会提示你自动配置这些 DNS 设置。
-* 如果在支持可用性区域的区域中创建了托管域，请创建一个网络安全组，仅限该托管域在虚拟网络中传送流量。 创建一个要求实施这些规则的 Azure 标准负载均衡器。 此网络安全组会保护 Azure AD DS，是托管域正常运行所需的。
-    * 若要创建网络安全组和所需的规则，请在门户中选择你的托管域。 “概览”窗口中会提示你自动创建并配置网络安全组。
-* [启用 Azure AD 域服务的密码同步](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)，使最终用户能够使用其企业凭据登录到托管域。
+* 创建网络安全组，以针对托管域限制虚拟网络中的流量。 创建一个要求实施这些规则的 Azure 标准负载均衡器。 此网络安全组会保护 Azure AD DS，是托管域正常运行所需的。
+    * 若要创建网络安全组和所需规则，请首先使用 `Install-Script -Name New-AaddsNetworkSecurityGroup` 命令安装 `New-AzureAddsNetworkSecurityGroup` 脚本，然后运行 `New-AaddsNetworkSecurityGroup`。 系统会为你创建托管域所需的规则。
+* [启用 Azure AD DS 的密码同步](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)，使最终用户能够使用其企业凭据登录到托管域。
 
 ## <a name="complete-powershell-script"></a>完整的 PowerShell 脚本
 
@@ -167,7 +167,7 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
 
 ```powershell
 # Change the following values to match your deployment.
-$AaddsAdminUserUpn = "admin@aaddscontoso.partner.onmschina.cn"
+$AaddsAdminUserUpn = "admin@contoso.partner.onmschina.cn"
 $ResourceGroupName = "myResourceGroup"
 $VnetName = "myVnet"
 $AzureLocation = "chinanorth2"
@@ -241,9 +241,9 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
 
 * 为虚拟网络更新 DNS 设置，以使虚拟机能够找到用于域加入或身份验证的托管域。
     * 若要配置 DNS，请在门户中选择你的托管域。 在“概览”窗口中，系统会提示你自动配置这些 DNS 设置。
-* 如果在支持可用性区域的区域中创建了托管域，请创建一个网络安全组，仅限该托管域在虚拟网络中传送流量。 创建一个要求实施这些规则的 Azure 标准负载均衡器。 此网络安全组会保护 Azure AD DS，是托管域正常运行所需的。
-    * 若要创建网络安全组和所需的规则，请在门户中选择你的托管域。 “概览”窗口中会提示你自动创建并配置网络安全组。
-* [启用 Azure AD 域服务的密码同步](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)，使最终用户能够使用其企业凭据登录到托管域。
+* 创建网络安全组，以针对托管域限制虚拟网络中的流量。 创建一个要求实施这些规则的 Azure 标准负载均衡器。 此网络安全组会保护 Azure AD DS，是托管域正常运行所需的。
+    * 若要创建网络安全组和所需规则，请首先使用 `Install-Script -Name New-AaddsNetworkSecurityGroup` 命令安装 `New-AzureAddsNetworkSecurityGroup` 脚本，然后运行 `New-AaddsNetworkSecurityGroup`。 系统会为你创建托管域所需的规则。
+* [启用 Azure AD DS 的密码同步](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)，使最终用户能够使用其企业凭据登录到托管域。
 
 ## <a name="next-steps"></a>后续步骤
 

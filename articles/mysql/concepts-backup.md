@@ -6,13 +6,13 @@ ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
 origin.date: 3/27/2020
-ms.date: 06/01/2020
-ms.openlocfilehash: d2c743dfc05257dc5b959ecaf45fbaca8f9d4603
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.date: 08/10/2020
+ms.openlocfilehash: 16657876c027671308ad26b2295bf473e803bd6a
+ms.sourcegitcommit: 3cf647177c22b24f76236c57cae19482ead6a283
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199705"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88029628"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>在 Azure Database for MySQL 中进行备份和还原
 
@@ -40,9 +40,11 @@ Azure Database for MySQL 对数据文件和事务日志进行备份。 我们会
 
 ### <a name="backup-storage-cost"></a>备份存储成本
 
-Azure Database for MySQL 最高可以提供 100% 的已预配服务器存储作为备份存储，不收取任何额外费用。 通常情况下，这适合将备份保留七天。 超出的备份存储使用量按每月每 GB 标准收费。
+Azure Database for MySQL 最高可以提供 100% 的已预配服务器存储作为备份存储，不收取任何额外费用。 超出的备份存储使用量按每月每 GB 标准收费。 例如，如果为服务器配置了 250 GB 的存储空间，则可以为服务器备份提供 250 GB 的额外存储空间，而不另外收费。 备份所消耗的存储量超过 250GB 将按照[定价模型](https://azure.cn/pricing/details/mysql/)收费。 
 
-例如，如果为服务器预配了 250 GB，则有 250 GB 不额外收费的备份存储。 存储超出 250 GB 就会收费。
+可以通过使用 Azure 门户中提供的 Azure Monitor 中的[已使用的备份存储](concepts-monitoring.md)指标来监视服务器使用的备份存储。 使用的备份存储指标表示根据为服务器设置的备份保留期保留的所有完整数据库备份、差异备份和日志备份所消耗的存储的总和。 备份的频率由服务进行管控，已在前面进行了说明。 无论数据库的总大小如何，如果服务器上的事务性活动繁重，都会导致备份存储使用率增加。 对于异地冗余存储，备份存储使用率是本地冗余存储的两倍。 
+
+控制备份存储成本的主要方法是设置适当的备份保留期，并选择正确的备份冗余选项以满足所需的恢复目标。 可以选择 7 到 35 天的保留期。 常规用途和内存优化服务器可以选择使用异地冗余存储进行备份。
 
 ## <a name="restore"></a>还原
 

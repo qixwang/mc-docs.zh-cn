@@ -5,14 +5,16 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用 Azure 文�
 services: container-service
 ms.topic: article
 origin.date: 03/01/2019
-ms.date: 05/25/2020
+ms.date: 08/10/2020
+ms.testscope: no
+ms.testdate: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: cc422092b3766aad1f3c9e36751bbc29d8a261bd
-ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
+ms.openlocfilehash: 42861f30e14e282f882dd4cb7a1b2551a4d4e7ba
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735137"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842651"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中通过 Azure 文件共享手动创建并使用卷
 
@@ -71,9 +73,7 @@ kubectl create secret generic azure-secret --from-literal=azurestorageaccountnam
 
 ## <a name="mount-the-file-share-as-a-volume"></a>将文件共享装载为卷
 
-若要将 Azure 文件共享装载到 Pod 中，请在容器规范中配置卷。使用以下内容创建名为 `azure-files-pod.yaml` 的新文件。 如果更改了文件共享名称或机密名称，请更新 *shareName* 和 *secretName*。 如果需要，请更新 `mountPath`，这是文件共享在 Pod 中的装载路径。
-
-<!--Not Available on For Windows Server containers (currently in preview in AKS)-->
+若要将 Azure 文件共享装载到 Pod 中，请在容器规范中配置卷。使用以下内容创建名为 `azure-files-pod.yaml` 的新文件。 如果更改了文件共享名称或机密名称，请更新 *shareName* 和 *secretName*。 如果需要，请更新 `mountPath`，这是文件共享在 Pod 中的装载路径。 对于 Windows Server 容器，请使用 Windows 路径约定指定 mountPath，例如“D:”。
 
 ```yaml
 apiVersion: v1
@@ -238,6 +238,8 @@ azurefile   Bound    azurefile   5Gi        RWX            azurefile      5s
 如需相关的最佳做法，请参阅[在 AKS 中存储和备份的最佳做法][operator-best-practices-storage]。
 
 有关 AKS 群集与 Azure 文件存储进行交互的详细信息，请参阅 [Azure 文件存储的 Kubernetes 插件][kubernetes-files]。
+
+有关存储类参数，请参阅[静态预配（自带文件共享）](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/docs/driver-parameters.md#static-provisionbring-your-own-file-share)。
 
 <!-- LINKS - external -->
 

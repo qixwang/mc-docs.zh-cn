@@ -10,12 +10,12 @@ ms.topic: conceptual
 origin.date: 09/04/2019
 ms.date: 12/23/2019
 ms.author: v-yiso
-ms.openlocfilehash: c4010caca0b58d6ebca8e4ed54ffc850fb62e907
-ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
+ms.openlocfilehash: edc7ea302df799cf51e10f2533ef74847d6235bb
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84186458"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917295"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>使用 Azure Toolkit for IntelliJ 为 HDInsight 群集创建 Apache Spark 应用程序
 
@@ -369,6 +369,27 @@ ms.locfileid: "84186458"
 
    ![将选定内容发送到 Spark Console](./media/apache-spark-intellij-tool-plugin/send-selection-to-console.png)
 
+## <a name="integrate-with-hdinsight-identity-broker-hib"></a>与 HDInsight Identity Broker (HIB) 集成
+
+### <a name="connect-to-your-hdinsight-esp-cluster-with-id-broker-hib"></a>连接带有 ID 代理的 HDInsight ESP 群集 (HIB)
+
+可以按照常规步骤登录到 Azure 订阅，以连接带有 ID 代理的 HDInsight ESP 群集 (HIB)。 登录后，将在 Azure 资源管理器中看到群集列表。 有关详细信息，请参阅[连接到 HDInsight 群集](#connect-to-your-hdinsight-cluster)。
+
+### <a name="run-a-spark-scala-application-on-an-hdinsight-esp-cluster-with-id-broker-hib"></a>在带有 ID 代理的 HDInsight ESP 群集 (HIB) 上运行 Spark Scala 应用程序
+
+可以按照常规步骤将作业提交到带有 ID 代理的 HDInsight ESP 群集 (HIB)。 有关更多说明，请参阅[在 HDInsight Spark 群集中运行 Spark Scala 应用程序](#run-a-spark-scala-application-on-an-hdinsight-spark-cluster)。
+
+我们会将所需的文件上传到与你的登录帐户同名的文件夹，你还可以在配置文件中看到上传路径。
+
+   ![配置中的上传路径](./media/apache-spark-intellij-tool-plugin/upload-path-in-the-configuration.png)
+
+### <a name="spark-console-on-an-hdinsight-esp-cluster-with-id-broker-hib"></a>带有 ID 代理的 HDInsight ESP 群集 (HIB) 上的 Spark 控制台
+
+可以在带有 ID 代理的 HDInsight ESP 群集 (HIB) 上运行 Spark Local Console(Scala) 或运行 Spark Livy Interactive Session Console(Scala)。 如需查看更详尽的说明，请参阅 [Spark 控制台](#spark-console)。
+
+   > [!NOTE]  
+   > 带有 ID 代理的 HDInsight ESP 群集 (HIB) 目前尚不支持[链接群集](#link-a-cluster)以及[远程调试 Apache Spark 应用程序](#debug-apache-spark-applications-locally-or-remotely-on-an-hdinsight-cluster)。
+
 ## <a name="reader-only-role"></a>仅限读取者角色
 
 当用户使用仅限读取者的角色权限将作业提交到群集时，必须提供 Ambari 凭据。
@@ -445,7 +466,7 @@ ms.locfileid: "84186458"
 
 1. 登录到 [Azure 门户](https://portal.azure.cn/)。
 
-1. 在顶部的“搜索”框中，键入 **HDInsight**。
+1. 在顶部的“搜索”框中，键入 **HDInsight**。 
 
 1. 选择“服务”下的“HDInsight 群集” 。
 

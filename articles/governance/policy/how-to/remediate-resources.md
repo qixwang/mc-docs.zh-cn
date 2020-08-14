@@ -1,34 +1,34 @@
 ---
 title: 修正不符合资源
-description: 本指南将指导你完成修正 Azure Policy 中不符合策略的资源的过程。
+description: 本指南将指导你完成对 Azure Policy 中不符合策略的资源的修正。
 ms.author: v-tawe
-origin.date: 02/26/2020
-ms.date: 05/29/2020
+origin.date: 06/09/2020
+ms.date: 08/06/2020
 ms.topic: how-to
-ms.openlocfilehash: 1efdf65366a8962843568078050236552e8f2f3a
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: 3640ca20ba8d548765d78a16fb37c04de981f12c
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199716"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917097"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>修正 Azure Policy 中的不符合资源
 
-不符合 deployIfNotExists 或 **modify** 策略的资源可以通过修正置于符合状态。 修复是通过指示 Azure Policy 在现有资源上运行所分配策略的 **deployIfNotExists** 效果或标记**操作**来完成的，无论该策略是分配给管理组、订阅、资源组还是单个资源。 本文介绍了使用 Azure Policy 了解并完成修正需要执行的步骤。
+可以通过修正将不符合 deployIfNotExists 或 modify 策略的资源置于符合状态。 无论是向管理组、订阅、资源组还是单个资源分配该策略，都可以通过指示 Azure Policy 在现有资源上运行已分配策略的 deployIfNotExists 效果或标记 operations 来完成修正。 本文介绍了使用 Azure Policy 了解并完成修正所需执行的步骤。
 
 ## <a name="how-remediation-security-works"></a>修正安全的工作原理
 
 当 Azure Policy 在 deployIfNotExists 策略定义中运行模板时，它使用[托管标识](../../../active-directory/managed-identities-azure-resources/overview.md)来执行此操作。
-Azure Policy 为每个分配创建一个托管标识，但必须具有有关授予托管标识哪些角色的详细信息。 如果托管标识缺少角色，则在分配策略或计划期间会显示此错误。 使用门户时，分配开始后，Azure Policy 会自动向托管标识授予所列的角色。 托管标识的位置不会影响它对 Azure Policy 的操作。
+Azure Policy 会为每个分配创建一个托管标识，但必须具有要向托管标识授予哪些角色的相关详细信息。 如果托管标识缺少角色，则在分配策略或计划期间会显示此错误。 使用门户时，一旦启动分配，Azure Policy 将自动授予托管标识所列的角色。 托管标识的位置不会影响它对 Azure Policy 的操作。
 
 :::image type="content" source="../media/remediate-resources/missing-role.png" alt-text="托管标识 - 缺少角色" border="false":::
 
 > [!IMPORTANT]
-> 如果通过 deployIfNotExists 或 **modify** 修改的资源在策略分配范围之外，或者模板访问策略分配范围之外的资源上的属性，则分配的托管标识必须是[手动授予的访问权限](#manually-configure-the-managed-identity)，否则修正部署将失败。
+> 如果通过 deployIfNotExists 或 modify 修改的资源在策略分配范围之外，或者模板访问策略分配范围之外的资源上的属性，则必须为分配的托管标识[手动授予访问权限](#manually-configure-the-managed-identity)，否则修正部署将失败。
 
 ## <a name="configure-policy-definition"></a>配置策略定义
 
-第一步是定义 deployIfNotExists 和 **modify** 在策略定义中需要的角色，以成功部署所包含模板的内容。 在“details”属性下，添加“roleDefinitionIds”属性。 此属性是与环境中的角色相匹配的一组字符串。 有关完整示例，请参阅 [deployIfNotExists 示例](../concepts/effects.md#deployifnotexists-example)或 [modify 示例](../concepts/effects.md#modify-examples)。
+第一步是定义 deployIfNotExists 和 modify 在策略定义中需要的角色，以成功部署所包含模板的内容。 在“details”属性下，添加“roleDefinitionIds”属性。 此属性是与环境中的角色相匹配的一组字符串。 有关完整示例，请参阅 [deployIfNotExists 示例](../concepts/effects.md#deployifnotexists-example)或 [modify 示例](../concepts/effects.md#modify-examples)。
 
 ```json
 "details": {
@@ -53,9 +53,6 @@ az role definition list --name 'Contributor'
 - 在使用 SDK 时（如 Azure PowerShell）
 - 当模板修改分配范围以外的资源
 - 当模板读取分配范围以外的资源
-
-> [!NOTE]
-> Azure PowerShell 和 .NET 是当前支持此功能的唯一 SDK。
 
 ### <a name="create-managed-identity-with-powershell"></a>使用 PowerShell 创建托管标识
 
@@ -124,7 +121,7 @@ if ($roleDefinitionIds.Count -gt 0)
 
 ### <a name="create-a-remediation-task-through-portal"></a>通过门户创建修正任务
 
-在评估期间，带 deployIfNotExists 或 **modify** 效果的策略分配确定是否存在不符合资源。 当发现不符合资源时，将在“修正”页上提供详细信息。 具有不符合资源的策略列表也可以用来触发修正任务。 此选项用于基于 **deployIfNotExists** 模板或 **modify** 操作创建部署。
+在评估期间，带 deployIfNotExists 或 modify 效果的策略分配可确定是否存在不合规的资源。 当发现不符合资源时，将在“修正”页上提供详细信息。 具有不符合资源的策略列表也可以用来触发修正任务。 此选项用于基于 **deployIfNotExists** 模板或 modify 操作创建部署。
 
 若要创建修正任务，请执行以下步骤：
 
@@ -134,9 +131,9 @@ if ($roleDefinitionIds.Count -gt 0)
 
 1. 选择“Azure Policy”页左侧的“修正”。
 
-   :::image type="content" source="../media/remediate-resources/select-remediation.png" alt-text="在“策略”页上选择“修正”" border="false":::
+   :::image type="content" source="../media/remediate-resources/select-remediation.png" alt-text="在 Policy 页上选择“修正”" border="false":::
 
-1. 所有带不符合资源的 deployIfNotExists 和 **modify** 策略分配均包含在“要修正的策略”选项卡和一个数据表上。 单击其中一个具有不符合资源的策略。 “新修正任务”页随即打开。
+1. “要修正的策略”选项卡和数据表中包含所有具有不合规的资源的 deployIfNotExists 和 modify 策略分配。 单击其中一个具有不符合资源的策略。 “新修正任务”页随即打开。
 
    > [!NOTE]
    > 打开“修正任务”页的另一种方法是查找并单击“符合性”页上的策略，然后单击“创建修正任务”按钮。
@@ -159,7 +156,7 @@ if ($roleDefinitionIds.Count -gt 0)
 
 ### <a name="create-a-remediation-task-through-azure-cli"></a>通过 Azure CLI 创建修正任务
 
-若要使用 Azure CLI 创建**修正任务**，请使用 `az policy remediation` 命令。 将 `{subscriptionId}` 替换为订阅 ID，并将 `{myAssignmentId}` 替换为“deployIfNotExists”，或者**修改**策略分配 ID。
+若要使用 Azure CLI 创建修正任务，请使用 `az policy remediation` 命令。 将 `{subscriptionId}` 替换为你的订阅 ID，将 `{myAssignmentId}` 替换为你的 deployIfNotExists 或 modify 策略分配 ID。
 
 ```azurecli
 # Login first with below commands
@@ -174,7 +171,7 @@ az policy remediation create --name myRemediation --policy-assignment '/subscrip
 
 ### <a name="create-a-remediation-task-through-azure-powershell"></a>通过 Azure PowerShell 创建修正任务
 
-若要使用 Azure PowerShell 创建**修正任务**，请使用 `Start-AzPolicyRemediation` 命令。 将 `{subscriptionId}` 替换为订阅 ID，并将 `{myAssignmentId}` 替换为“deployIfNotExists”，或者**修改**策略分配 ID。
+若要使用 Azure PowerShell 创建修正任务，请使用 `Start-AzPolicyRemediation` 命令。 将 `{subscriptionId}` 替换为你的订阅 ID，将 `{myAssignmentId}` 替换为你的 deployIfNotExists 或 modify 策略分配 ID。
 
 ```powershell
 # Login first with Connect-AzAccount -Environmentname AzureChinaCloud command
@@ -184,6 +181,10 @@ Start-AzPolicyRemediation -Name 'myRemedation' -PolicyAssignmentId '/subscriptio
 ```
 
 有关其他修正 cmdlet 和示例，请参阅 [Az.PolicyInsights](https://docs.microsoft.com/powershell/module/az.policyinsights/#policy_insights) 模块。
+
+### <a name="create-a-remediation-task-during-policy-assignment-in-the-azure-portal"></a>在策略分配期间通过 Azure 门户创建修正任务
+
+创建修正任务的一种简化方法是在策略分配期间通过 Azure 门户执行此操作。 如果要分配的策略定义是 deployIfNotExists 或 Modify 效果 ，“修正”选项卡上的向导会提供“创建修正任务”选项。 如果选择此选项，则会在分配策略的同时创建修正任务。
 
 ## <a name="next-steps"></a>后续步骤
 

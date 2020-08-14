@@ -6,16 +6,16 @@ ms.author: v-jay
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
-origin.date: 3/20/2020
-ms.date: 04/27/2020
-ms.openlocfilehash: 04006685784874a95b55821bb6c91a21a4df2c90
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+origin.date: 7/15/2020
+ms.date: 08/17/2020
+ms.openlocfilehash: 043085bccbb9f2be353b34ca49ba4c5a6bbfa61b
+ms.sourcegitcommit: 3cf647177c22b24f76236c57cae19482ead6a283
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126794"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88029680"
 ---
-# <a name="create-an-azure-database-for-mysql-server-by-using-the-azure-portal"></a>使用 Azure 门户创建 Azure Database for MySQL 服务器
+# <a name="quickstart-create-an-azure-database-for-mysql-server-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure Database for MySQL 服务器
 
 > [!NOTE]
 > 将要查看的是 Azure Database for MySQL 的新服务。 若要查看经典 MySQL Database for Azure 的文档，请访问[此页](https://docs.azure.cn/zh-cn/mysql-database-on-azure/)。
@@ -36,192 +36,80 @@ Azure Database for MySQL 是一种托管服务，可用于在云中运行、管�
 
 2. 选择“数据库”   >   “Azure Database for MySQL”。 还可以在搜索框中输入“MySQL”  以查找该服务。
 
-   ![Azure Database for MySQL 选项](./media/quickstart-create-mysql-server-database-using-azure-portal/2_navigate-to-mysql.png)
+  
+>[!div class="mx-imgBorder"]
+> ![Azure Database for MySQL 选项](./media/quickstart-create-mysql-server-database-using-azure-portal/2_navigate-to-mysql.png)
 
 3. 使用以下信息填写“新服务器详细信息”窗体：
-   
-   ![“创建服务器”窗体](./media/quickstart-create-mysql-server-database-using-azure-portal/4-create-form.png)
+    
+>[!div class="mx-imgBorder"]
+> ![“创建服务器”窗体](./media/quickstart-create-mysql-server-database-using-azure-portal/4-create-form.png)
 
-    **设置** | **建议的值** | **字段说明** 
-    ---|---|---
-    服务器名称 | 唯一的服务器名称 | 输入用于标识 Azure Database for MySQL 服务器的唯一名称。 例如，mydemoserver。 域名 *.mysql.database.chinacloudapi.cn* 追加到所提供的服务器名称后面。 服务器名称只能包含小写字母、数字和连字符 (-) 字符。 必须包含 3 到 63 个字符。
-    订阅 | 你的订阅 | 选择要用于服务器的 Azure 订阅。 如果有多个订阅，请选择要计费的资源所在的订阅。
-    资源组 |  myresourcegroup | 提供新的或现有的资源组名称。
-    选择源 | *空白* | 选择“空白”  可从头开始创建新服务器。 （如果要从现有 Azure Database for MySQL 服务器的异地备份创建服务器，请选择“备份”  ）。
-    服务器管理员登录名 | myadmin | 连接到服务器时需使用的登录帐户。 管理员登录名不能是“azure_superuser”、“admin”、“administrator”、“root”、“guest”或“public”。      
-    密码 | *由用户决定* | 为服务器管理员帐户提供新密码。 必须包含 8 到 128 个字符。 密码必须包含以下三个类别的字符：英文大写字母、英文小写字母、数字 (0-9)和非字母数字字符（!, $, #, % 等）。
-    确认密码 | *由用户决定*| 确认管理员帐户密码。
-    位置 | *离用户最近的区域*| 选择最靠近用户或其他 Azure 应用程序的位置。
-    版本 | *最新主版本*| 最新主版本（除非你有需要其他版本的特定需求）。
-    定价层 | **常规用途**、**第 5 代**、**2 vCore**、**5 GB**、**7 天**、**异地冗余** | 新服务器的计算、存储和备份配置。 选择“定价层”。  接下来，选择“常规用途”  选项卡。“第 5 代”、“4 个 vCore”、“100 GB”和“7 天”分别是“计算代系”、“vCore”、“存储”和“备份保持期”的默认值         。 可以将这些滑块保留原样。 若要在异地冗余存储中启用服务器备份，请从**备份冗余选项**中选择“异地冗余”  。 若要保存此定价层选择，请选择“确定”  。 下一个屏幕截图捕获了这些选择。
-  
+**设置** | **建议的值** | **字段说明** 
+---|---|---
+订阅 | 订阅 | 选择要用于服务器的 Azure 订阅。 如果有多个订阅，请选择要计费的资源所在的订阅。
+资源组 | myresourcegroup | 提供新的或现有的资源组名称。 可以使用资源组来组织属于单个项目的依赖项。
+服务器名称 | 唯一的服务器名称 | 输入用于标识 Azure Database for MySQL 服务器的唯一名称。 例如，“mysqldbserver”。服务器名称只能包含小写字母、数字和连字符 (-) 字符。 必须包含 3 到 63 个字符。
+数据源 |*无* | 选择“无”，从头开始创建新的服务器。 （如果是从现有 Azure Database for MySQL 服务器的异地备份创建服务器，则会选择“备份”）。
+服务器管理员登录名 | myadmin | 输入服务器管理员的用户名。 不能将“azure_superuser”、“admin”、“administrator”、“root”、“guest”或“public”用作管理员用户名     。
+密码 | *由用户决定* | 为服务器管理员帐户提供新密码。 密码长度必须为 8 到 128 个字符，并包含大写字母或小写字母、数字和非字母数字字符（！、$、#、% 等）的组合。
+确认密码 | *由用户决定*| 确认管理员帐户密码。
+位置 | *离用户最近的区域*| 选择最靠近用户或其他 Azure 应用程序的位置。
+版本 | *最新主版本*| 最新主版本（除非你有需要其他版本的特定需求）。
+计算 + 存储 | **常规用途**、**第 5 代**、**2 vCore**、**5 GB**、**7 天**、**异地冗余** |新服务器的计算、存储和备份配置。 选择“配置服务器”。 接下来，选择适当的定价层，有关详细信息，请参阅[定价页面](https://azure.cn/pricing/details/mysql/)。 若要在异地冗余存储中启用服务器备份，请从**备份冗余选项**中选择“异地冗余”。 选择“确定”。
+
    > [!NOTE]
-   > 如果轻量级计算和 I/O 足以满足工作负荷要求，请考虑使用“基本”定价层。 请注意，在“基本”定价层中创建的服务器以后不能扩展到“常规用途”或“内存优化”定价层。 有关详细信息，请参阅[定价页](https://azure.cn/pricing/details/mysql/)。
-   > 
-
-   ![“创建服务器 - 定价层”窗口](./media/quickstart-create-mysql-server-database-using-azure-portal/3-pricing-tier.png)
+   > 如果轻量级计算和 I/O 足以满足工作负荷要求，请考虑使用“基本”定价层。 请注意，在“基本”定价层中创建的服务器以后不能扩展到“常规用途”或“内存优化”定价层。 
 
 4. 选择“查看 + 创建”  以预配服务器。 预配可能需要长达 20 分钟的时间。
    
-5. 在工具栏上选择“通知”（钟形图标）以监视部署过程。 
+5. 在工具栏上选择“通知”（钟形图标）以监视部署过程。
    
-   默认情况下，将在服务器下创建以下数据库：**information_schema**、**mysql**、**performance_schema** 和 **sys**。
+默认情况下，将在服务器下创建以下数据库：**information_schema**、**mysql**、**performance_schema** 和 **sys**。
 
 ## <a name="configure-a-server-level-firewall-rule"></a>配置服务器级防火墙规则
+默认情况下，创建的服务器使用防火墙进行保护，并且无法公开。 若要授予对 IP 的访问权限，请转到 Azure 门户中的服务器资源，然后从左侧菜单中为服务器资源选择“连接安全性”。 不知道如何找到资源时，请参阅[如何打开资源](/azure-resource-manager/management/manage-resources-portal#open-resources)。
 
-Azure Database for MySQL 服务在服务器级别创建防火墙。 除非创建了防火墙规则来为特定的 IP 地址打开防火墙，否则此防火墙会阻止外部应用程序和工具连接到服务器和服务器上的任何数据库。 
-
-1. 部署完成后，找到服务器。 可以根据需要进行搜索。 例如，从左侧菜单选择“所有资源”。  然后输入服务器名称（例如 **mydemoserver**），以搜索新创建的服务器。 从搜索结果列表中选择服务器名称。 服务器的“概述”  页面随即打开，其中提供了用于进一步配置的选项。
-
-2. 在服务器页中，选择“连接安全性”  。
-
-3. 在“防火墙规则”标题下，选择“规则名称”列中的空白文本框，开始创建防火墙规则。   输入将访问此服务器的客户端的准确 IP 范围。
+>[!div class="mx-imgBorder"]
+> ![连接安全性 - 防火墙规则](./media/quickstart-create-mysql-server-database-using-azure-portal/add-current-ip-firewall.png)
    
-   ![连接安全性 - 防火墙规则](./media/quickstart-create-mysql-server-database-using-azure-portal/5-firewall-2.png)
+现在选择“添加当前客户端 IP 地址”，然后选择“保存” 。 你可以添加其他 IP 或提供一个 IP 范围，从该范围中的 IP 连接到服务器。 有关详细信息，请参阅[如何在 Azure Database for MySQL 服务器上管理防火墙规则](./concepts-firewall-rules.md)
 
+> [!NOTE]
+> 检查网络是否允许通过端口 3306 送出出站流量，该端口由 Azure Database for MySQL 使用，旨在避免连接问题。  
 
+## <a name="connect-to-azure-database-for-mysql-server-using-mysql-command-line-client"></a>使用 mysql 命令行客户端连接到 Azure Database for MySQL 服务器
+可以选择 [mysql.exe](https://dev.mysql.com/doc/refman/8.0/en/mysql.html) 或 [MySQL Workbench](./connect-workbench.md)，以从本地环境连接到服务器。 
 
-4. 在“连接安全性”页的上部工具栏中，选择“保存”。   等到指示更新已成功完成的通知出现后，再继续操作。 
+1. 将值替换为实际的服务器名称和管理员用户登录名。 Azure Database for MySQL 的管理员用户名需要 @<servername>，如下所示  
 
-   > [!NOTE]
-   > 连接到 Azure Database for MySQL 时，经端口 3306 进行通信。 如果尝试从企业网络内部进行连接，则可能不允许经端口 3306 的出站流量。 如果是这样，则无法连接到服务器，除非 IT 部门打开了端口 3306。
-   > 
+  ```azurecli
+  mysql --host=mydemoserver.mysql.database.chinacloudapi.cn --user=myadmin@mydemoserver -p 
+  ```
 
-## <a name="get-the-connection-information"></a>获取连接信息
-若要连接到数据库服务器，需提供完整的服务器名称和管理员登录凭据。 此前可能已在本快速入门文章中记下这些值。 如果没有记下这些值，可以在 Azure 门户的服务器“概览”页或“属性”页中轻松地找到服务器名称和登录信息。  
-
-若要查找这些值，请执行以下步骤： 
-
-1. 打开服务器的“概览”  页。 记下“服务器名称”  和“服务器管理员登录名”  。 
-
-2. 将光标悬停在每个字段，然后复制图标就会显示在文本右侧。 根据需要选择复制图标即可复制这些值。
-
-在此示例中，服务器名称是 **mydemoserver.mysql.database.chinacloudapi.cn**，服务器管理员登录名是 **myadmin\@mydemoserver**。
-
-## <a name="connect-to-mysql-by-using-the-mysql-command-line-tool"></a>使用 mysql 命令行工具连接到 MySQL
-使用 mysql.exe  命令行工具连接到服务器。 可从[此处](https://dev.mysql.com/downloads/)下载 MySQL 并将其安装在计算机上。 
-
-1. 若要借助 mysql 实用程序连接到 Azure Database for MySQL 服务器，请使用以下格式：
-
-    ```bash
-    mysql --host <fully qualified server name> --user <server admin login name>@<server name> -p
-    ```
-
-    例如，以下命令连接到示例服务器：
-
-    ```bash
-    mysql --host mydemoserver.mysql.database.chinacloudapi.cn --user myadmin@mydemoserver -p
-    ```
-
-    mysql 参数 |建议的值|说明
-    ---|---|---
-    --host | *服务器名称* | 此前在创建 Azure Database for MySQL 服务器时使用过的服务器名称值。 示例服务器为 **mydemoserver.mysql.database.chinacloudapi.cn**。 请使用完全限定域名 ( **\*.mysql.database.chinacloudapi.cn**)，如示例中所示。 如果不记得服务器名称，请按上一部分的步骤操作，以便获取连接信息。 
-    --user | 服务器管理员登录名  |此前在创建 Azure Database for MySQL 服务器时提供的服务器管理员登录用户名。 如果不记得用户名，请按上一部分的步骤操作，以便获取连接信息。 格式为 username\@servername  。
-    -p |  等待系统提示 |如果系统提示，请提供在创建服务器时提供的密码。 注意，键入密码字符时，这些字符不会显示在 bash 提示符处。 输入密码后，选择 Enter  。
-
-   连接后，mysql 实用程序会显示 `mysql>` 提示符，提示你键入命令。 
-
-   下面是 mysql 输出示例：
-
-    ```bash
-    Welcome to the MySQL monitor.  Commands end with ; or \g.
-    Your MySQL connection id is 65505
-    Server version: 5.6.26.0 MySQL Community Server (GPL)
-    
-    Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
-    
-    Oracle is a registered trademark of Oracle Corporation and/or its
-    affiliates. Other names may be trademarks of their respective
-    owners.
-
-    Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
-    
-    mysql>
-    ```
-    > [!TIP]
-    > 如果未将防火墙配置为允许客户端的 IP 地址，则会出现以下错误：
-    >
-    > 错误 2003 (28000): 不允许 IP 地址为 123.456.789.0 的客户端访问服务器。
-    >
-    > 若要解决此错误，请确保服务器配置符合本文“配置服务器级防火墙规则”部分相关步骤的要求。
-
-2. 若要确保连接正常，请在 mysql> 提示符处键入 `status`，以便查看服务器状态。
-
-    ```sql
-    status
-    ```
-
-   > [!TIP]
-   > 有关其他命令，请参阅 [MySQL 5.7 参考手册--第 4.5.1 章](https://dev.mysql.com/doc/refman/5.7/en/mysql.html)。
-
-3. 在 mysql> 提示符处键入以下命令，创建空数据库： 
-    ```sql
-    CREATE DATABASE quickstartdb;
-    ```
-    该命令可能需要一定的时间才能完成。 
-
-    在 Azure Database for MySQL 数据库中，可创建一个或多个数据库。 可以选择为每个服务器创建单一数据库来使用所有资源，还可以创建多个数据库来共享资源。 可以创建的数据库数目没有限制，但多个数据库共享相同的服务器资源。 
-
-4. 通过在 mysql > 提示符处键入以下命令来列出数据库： 
-
-    ```sql
-    SHOW DATABASES;
-    ```
-
-5. 键入 `\q`，然后选择 Enter  键，退出 mysql 工具。
-
-现在，你已连接到 Azure Database for MySQL 服务器并创建空白用户数据库。 请转到下一部分进行类似的练习。 下一练习使用另一常用工具（即 MySQL Workbench）连接到同一服务器。
-
-## <a name="connect-to-the-server-by-using-the-mysql-workbench-gui-tool"></a>使用 MySQL Workbench GUI 工具连接到服务器
-若要使用 GUI 工具 MySQL Workbench 连接到服务器，请执行以下步骤：
-
-1. 打开客户端计算机上的 MySQL Workbench 应用程序。 可以从 [Download MySQL Workbench](https://dev.mysql.com/downloads/workbench/)（下载 MySQL Workbench）下载并安装 MySQL Workbench。
-
-2. 创建新连接。 选择“MySQL 连接”标题旁边的加号 (+) 图标。 
-
-3. 在“设置新连接”  对话框的“参数”  选项卡上，输入服务器连接信息。占位符值作为示例显示。 请将“主机名”、“用户名”和“密码”替换为自己的值。
-
-   ![设置新连接](./media/quickstart-create-mysql-server-database-using-azure-portal/setup-new-connection.png)
-
-    |设置 |建议的值|字段说明|
-    |---|---|---|
-     连接名称 | 演示连接 | 此连接的标签。 |
-    连接方法 | 标准 (TCP/IP) | 标准 (TCP/IP) 就足够了。 |
-    主机名 | *服务器名称* | 此前在创建 Azure Database for MySQL 服务器时使用过的服务器名称值。 示例服务器为 **mydemoserver.mysql.database.chinacloudapi.cn**。 请使用完全限定域名 ( **\*.mysql.database.chinacloudapi.cn**)，如示例中所示。 如果不记得服务器名称，请按上一部分的步骤操作，以便获取连接信息。|
-     端口 | 3306 | 连接到 Azure Database for MySQL 服务器时需要使用的端口。 |
-    用户名 |  服务器管理员登录名  | 此前在创建 Azure Database for MySQL 服务器时提供的服务器管理员登录信息。 示例用户名是 **myadmin\@mydemoserver**。 如果不记得用户名，请按上一部分的步骤操作，以便获取连接信息。 格式为 username\@servername  。
-    密码 | 你的密码  | 选择“存储在保管库中”  以保存密码。 |
-
-4. 选择“测试连接”  以测试是否所有参数均已正确配置。 然后选择“确定”  以保存连接。 
-
-    > [!NOTE]
-    > 默认情况下，SSL 是在服务器上强制实施的，需要额外配置才能成功进行连接。 有关详细信息，请参阅[配置应用程序中的 SSL 连接性以安全连接到 Azure Database for MySQL](./howto-configure-ssl.md)。 就本快速入门来说，若要禁用 SSL，请转到 Azure 门户。 然后选择“连接安全性”页，禁用“强制实施 SSL”连接切换按钮。 
+2. 创建数据库“guest” 
+  ```
+  mysql> CREATE DATABASE guest;
+  Query OK, 1 row affected (0.27 sec)
+  ```
+4. 更改为数据库“guest”
+  ```
+  mysql> USE guest;
+  Database changed 
+  ```
+5. 键入 ```quit```，然后选择 Enter 键退出 mysql。   
 
 ## <a name="clean-up-resources"></a>清理资源
-可以通过两种方式清理在快速入门中创建的资源。 可以删除 [Azure 资源组](../azure-resource-manager/management/overview.md)，其中包括资源组中的所有资源。 若要保持其他资源原封不动，请只删除单个服务器资源。
+现在已成功在资源组中创建了 Azure Database for MySQL 服务器。  如果将来不再需要这些资源，可以通过删除资源组或只删除 MySQL 服务器来删除它们。 若要删除资源组，请执行以下步骤：
+1. 在 Azure 门户中，搜索并选择“资源组”。 
+2. 在资源组列表中，选择你的资源组的名称。
+3. 在资源组的概述页面中，选择“删除资源组”。
+4. 在确认对话框中，键入资源组的名称，然后选择“删除”。
 
-> [!TIP]
-> 本教程系列中的其他快速入门教程是在本文的基础上制作的。 如果打算继续使用快速入门，请不要清除在本快速入门中创建的资源。 如果不打算继续，请执行以下步骤，删除通过本快速入门创建的所有资源。
->
-
-若要删除包括新建服务器在内的整个资源组，请执行以下步骤：
-
-1. 在 Azure 门户中查找资源组。 在左侧菜单中选择“资源组”  ，然后选择资源组的名称（例如 myresourcegroup 示例）。 
-
-2. 在资源组页上，选择“删除”  。 然后，在框中输入资源组的名称（例如，我们的示例 **myresourcegroup**）以确认删除，然后选择“删除”  。
-
-若只删除新创建的服务器，请执行以下步骤：
-
-1. 在 Azure 门户中找到服务器（如果尚未将其打开）。 在 Azure 门户左侧的菜单中，选择“所有资源”。  然后搜索所创建的服务器。
-
-2. 在“概览”  页上，选择“删除”  。 
-
-   ![Azure Database for MySQL--删除服务器](./media/quickstart-create-mysql-server-database-using-azure-portal/delete-server.png)
-
-3. 确认要删除的服务器的名称，并显示其下受影响的数据库。 在框中输入服务器名称（例如，我们的示例 **mydemoserver**）。 选择“删除”  。
+若要删除服务器，可以单击服务器的“概述”页面上的“删除”按钮，如下所示 ：
+> [!div class="mx-imgBorder"]
+> ![删除资源](media/quickstart-create-mysql-server-database-using-azure-portal/delete-server.png)
 
 ## <a name="next-steps"></a>后续步骤
-
 > [!div class="nextstepaction"]
-> [设计第一个 Azure Database for MySQL 数据库](./tutorial-design-database-using-portal.md)
-
+>[使用 MySQL 在 Windows 上生成 PHP 应用](../app-service/app-service-web-tutorial-php-mysql.md)

@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 origin.date: 06/12/2020
-ms.date: 07/27/2020
-ms.openlocfilehash: b3b1e39850c324901683602356907248b1b2cbfa
-ms.sourcegitcommit: 0eaa82cf74477d26d06bdd8fb6e715e6ed1339c4
+ms.date: 08/10/2020
+ms.openlocfilehash: f6afd46b5c721cc9ba385541a9890239b6f59261
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86974305"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914259"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>使用 Azure 数据工厂通过 Open Hub 从 SAP Business Warehouse 复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -39,10 +39,10 @@ ms.locfileid: "86974305"
 
 具体而言，此 SAP Business Warehouse Open Hub 连接器支持：
 
-- SAP Business Warehouse **7.01 或更高版本（位于最新的 SAP 支持包堆栈中，该堆栈是 2015 年以后发布的）** 。
+- SAP Business Warehouse **7.01 或更高版本（位于最新的 SAP 支持包堆栈中，该堆栈是 2015 年以后发布的）** 。 此连接器不支持 SAP BW4/HANA。
 - 通过 Open Hub Destination 本地表复制数据，该表下方可能是 DSO、InfoCube、MultiProvider、DataSource 等。
 - 使用基本身份验证复制数据。
-- 连接到应用程序服务器。
+- 连接到 SAP 应用程序服务器或 SAP 消息服务器。
 
 ## <a name="sap-bw-open-hub-integration"></a>SAP BW Open Hub 集成 
 
@@ -54,12 +54,12 @@ SAP BW Open Hub Destination (OHD) 定义 SAP 数据的中继目标。 可以使�
 
 ## <a name="delta-extraction-flow"></a>增量提取流
 
-ADF SAP BW Open Hub 连接器提供两种可选属性：`excludeLastRequest` 和 `baseRequestId`。这两种属性可以用于处理来自 Open Hub 的增量负荷。 
+ADF SAP BW Open Hub 连接器提供两种可选属性：`excludeLastRequest` 和 `baseRequestId`，可以用于处理来自 Open Hub 的增量负荷。 
 
 - **excludeLastRequestId**：是否排除最后一个请求的记录。 默认值为 true。 
 - **baseRequestId**：增量加载的请求的 ID。 设置以后，只会检索 requestId 大于此属性的值的数据。 
 
-总之，从 SAP InfoProviders 提取到 Azure 数据工厂 (ADF) 的操作包含两个步骤： 
+总之，从 SAP InfoProviders 提取到 Azure 数据工厂 (ADF) 的操作包含 2 个步骤： 
 
 1. **SAP BW 数据传输过程 (DTP)** ：此步骤将数据从 SAP BW InfoProvider 复制到 SAP BW Open Hub 表 
 
@@ -106,7 +106,7 @@ ADF SAP BW Open Hub 连接器提供两种可选属性：`excludeLastRequest` 和
 
 SAP Business Warehouse Open Hub 链接服务支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 描述 | 必须 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**SapOpenHub** | 是 |
 | server | SAP BW 实例所驻留的服务器的名称。 | 是 |
@@ -152,7 +152,7 @@ SAP Business Warehouse Open Hub 链接服务支持以下属性：
 
 若要从/向 SAP BW Open Hub 复制数据，请将数据集的 type 属性设置为 **SapOpenHubTable**。 支持以下属性。
 
-| 属性 | 说明 | 必需 |
+| 属性 | 描述 | 必须 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **SapOpenHubTable**。  | 是 |
 | openHubDestinationName | 要从其复制数据的 Open Hub Destination 的名称。 | 是 |
@@ -186,7 +186,7 @@ SAP Business Warehouse Open Hub 链接服务支持以下属性：
 
 若要从 SAP BW Open Hub 复制数据，复制活动的 **source** 节支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 描述 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 **type** 属性必须设置为 **SapOpenHubSource**。 | 是 |
 | excludeLastRequest | 是否排除最后一个请求的记录。 | 否（默认为 **true**） |

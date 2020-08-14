@@ -1,26 +1,26 @@
 ---
-title: 在 Azure Kubernetes 服务 (AKS) 群集上创建 Windows Server 容器
+title: 使用 Azure CLI 在 AKS 群集上创建 Windows Server 容器
 description: 了解如何使用 Azure CLI 在 Azure Kubernetes 服务 (AKS) 的 Windows Server 容器中快速创建 Kubernetes 群集并部署应用程序。
 services: container-service
 ms.topic: article
-origin.date: 05/06/2020
-ms.date: 07/13/2020
-ms.testscope: yes
+origin.date: 07/16/2020
+ms.date: 08/10/2020
+ms.testscope: no
 ms.testdate: 06/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: 8ead5778e71e9121a805fdde2ff87aa4b81f32e1
-ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
+ms.openlocfilehash: 6f9eb6706f399bc94165bb6019b602136a711da6
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86218787"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842644"
 ---
 <!--Verified successfully-->
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>使用 Azure CLI 在 Azure Kubernetes 服务 (AKS) 群集上创建 Windows Server 容器
 
 Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管式 Kubernetes 服务。 本文介绍如何使用 Azure CLI 部署 AKS 群集。 还可将 Windows Server 容器中的 ASP.NET 示例应用程序部署到群集。
 
-![浏览到 ASP.NET 示例应用程序的图像](media/windows-container/asp-net-sample-app.png)
+:::image type="content" source="media/windows-container/asp-net-sample-app.png" alt-text="浏览到 ASP.NET 示例应用程序的图像":::
 
 本文假定你对 Kubernetes 概念有基本的了解。 有关详细信息，请参阅 [Azure Kubernetes 服务 (AKS) 的 Kubernetes 核心概念][kubernetes-concepts]。
 
@@ -73,7 +73,7 @@ az group create --name myResourceGroup --location chinaeast2
 若要运行支持 Windows Server 容器的节点池的 AKS 群集，群集需要采用使用 [Azure CNI][azure-cni-about]（高级）网络插件的网络策略。 有关帮助计划所需子网范围和网络注意事项的更多详细信息，请参阅[配置 Azure CNI 网络][use-advanced-networking]。 使用 [az aks create][az-aks-create] 命令创建名为 *myAKSCluster* 的 AKS 群集。 此命令将创建必要的网络资源（如果这些资源不存在）。
 
 * 集群配置了两个节点
-* Windows-admin-password 和 windows-admin-username 参数为群集上创建的任何 Windows Server 容器设置管理员凭据 。
+* Windows-admin-password 和 windows-admin-username 参数为群集上创建的任何 Windows Server 容器设置管理员凭据，并且必须满足 [Windows Server 密码要求][windows-server-password] 。
 * 节点池使用 `VirtualMachineScaleSets`
 
 > [!NOTE]
@@ -97,8 +97,7 @@ az aks create \
 ```
 
 > [!NOTE]
-> 如果出现密码验证错误，请尝试在另一个区域中创建资源组。
-> 然后尝试创建包含新资源组的群集。
+> 如果出现密码验证错误，请验证 *windows-admin-password* 参数是否符合 [Windows Server 密码要求][windows-server-password]。 如果密码符合要求，请尝试在另一个区域中创建资源组。 然后尝试创建包含新资源组的群集。
 
 片刻之后，该命令将会完成，并返回有关群集的 JSON 格式信息。 有时，预配群集所需的时间可能不止几分钟。 在这种情况下，最多需要 10 分钟。
 
@@ -239,7 +238,7 @@ sample  LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 
 若要查看示例应用的实际效果，请打开 Web 浏览器并转到服务的外部 IP 地址。
 
-![浏览到 ASP.NET 示例应用程序的图像](media/windows-container/asp-net-sample-app.png)
+:::image type="content" source="media/windows-container/asp-net-sample-app.png" alt-text="浏览到 ASP.NET 示例应用程序的图像":::
 
 > [!Note]
 > 如果尝试加载页面时收到连接超时消息，则应使用以下命令 [kubectl get pods --watch] 验证示例应用是否已准备就绪。 有时，当你的外部 IP 地址可用时，Windows 容器将无法启动。
@@ -301,6 +300,6 @@ az group delete --name myResourceGroup --yes --no-wait
 [aks-faq]: faq.md
 [az-extension-add]: https://docs.azure.cn/cli/extension?view=azure-cli-latest#az-extension-add
 [az-extension-update]: https://docs.azure.cn/cli/extension?view=azure-cli-latest#az-extension-update
+[windows-server-password]: https://docs.microsoft.com/windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements#reference
 
-<!-- Update_Description: new article about windows container cli -->
-<!--NEW.date: 06/15/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

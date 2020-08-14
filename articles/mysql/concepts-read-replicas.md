@@ -5,14 +5,14 @@ author: WenJason
 ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
-origin.date: 6/10/2020
-ms.date: 06/29/2020
-ms.openlocfilehash: 08797a1fadc7ac265369fb68761b5d0e51163c4e
-ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
+origin.date: 7/7/2020
+ms.date: 08/17/2020
+ms.openlocfilehash: a58f24487eea637aad2ae500514ad96c1da9f54a
+ms.sourcegitcommit: 3cf647177c22b24f76236c57cae19482ead6a283
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85516779"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88029617"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的只读副本
 
@@ -36,14 +36,14 @@ ms.locfileid: "85516779"
 只读副本功能使用 MySQL 本机异步复制。 该功能不适用于同步复制方案。 主服务器与副本之间存在明显的延迟。 副本上的数据最终将与主服务器上的数据保持一致。 对于能够适应这种延迟的工作负荷，可以使用此功能。
 
 ## <a name="cross-region-replication"></a>跨区域复制
-可以在与主服务器不同的区域中创建只读副本。 对于灾难恢复计划或让数据更贴近用户等场景，跨区域复制很有帮助。
+可以在与主服务器不同的区域中创建只读副本。 跨区域复制对于灾难恢复规划或使数据更接近用户等方案非常有用。
 
 可以在任何 [Azure Database for MySQL 区域](https://azure.microsoft.com/global-infrastructure/services/?regions=china-non-regional,china-east,china-east-2,china-north,china-north-2&products=mysql)中设置主服务器。  主服务器可以在其配对区域中有一个副本。
 
 ### <a name="paired-regions"></a>配对区域
 可以在主服务器的 Azure 配对区域中创建只读副本。 如果你不知道所在区域的配对，可以从 [Azure 配对区域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)一文中了解更多信息。
 
-如果使用跨区域副本进行灾难恢复计划，则建议在配对区域中创建副本，而不是在另一个区域中创建。 配对区域可避免同时更新，并优先考虑物理隔离和数据驻留。  
+如果你使用跨区域副本进行灾难恢复规划，建议你在配对区域而不是其他某个区域中创建副本。 配对区域可避免同时更新，并优先考虑物理隔离和数据驻留。  
 
 ## <a name="create-a-replica"></a>创建副本
 
@@ -91,6 +91,25 @@ Azure Database for MySQL 在 Azure Monitor 中提供“复制滞后时间(秒)�
 > 在只读副本上停止复制之前，请确保副本包含所需的全部数据。
 
 了解如何[停止复制到副本](howto-read-replicas-portal.md)。
+
+## <a name="failover"></a>故障转移
+
+在主服务器与副本服务器之间无法自动进行故障转移。 
+
+由于复制是异步的，因此在主体和副本之间存在延迟。 延迟程度受许多因素影响，例如，在主服务器上运行的工作负荷有多大，以及数据中心之间的延迟有多严重。 大多数情况下，副本验证在几秒钟到几分钟之间。 可以使用“副本延迟”指标来跟踪实际的副本延迟，该指标适用于每个副本。 该指标显示的是自上次重播事务以来所经历的时间。 建议观察一段时间的副本延迟，以便确定平均延迟。 可以针对副本延迟设置警报，这样，当它超出预期范围时，你就可以采取行动。
+
+> [!Tip]
+> 如果故障转移到副本，则取消副本与主体之间的链接时遇到的延迟会指示丢失了多少数据。
+
+一旦决定要故障转移到某个副本， 
+
+1. 请停止将数据复制到副本<br/>
+   此步骤是使副本服务器能够接受写入所必需的。 在此过程中，副本服务器会取消与主体的链接。 启动停止复制的操作后，后端进程通常需要大约 2 分钟才能完成。 请参阅本文的[停止复制](#stop-replication)部分，了解此操作的潜在影响。
+    
+2. 将应用程序指向（以前的）副本<br/>
+   每个服务器都有唯一的连接字符串。 更新应用程序，使之指向（以前的）副本而不是主体。
+    
+如果应用程序成功处理了读取和写入操作，则表明故障转移已完成。 应用程序经历的停机时间取决于何时检测到问题并完成上面的步骤 1 和 2。
 
 ## <a name="considerations-and-limitations"></a>注意事项和限制
 

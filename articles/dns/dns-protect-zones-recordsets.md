@@ -4,16 +4,16 @@ description: 在此学习路径中，开始在 Microsoft Azure DNS 中保护 DNS
 services: dns
 author: WenJason
 ms.service: dns
-ms.topic: article
+ms.topic: how-to
 origin.date: 2/20/2020
-ms.date: 03/23/2020
+ms.date: 08/10/2020
 ms.author: v-jay
-ms.openlocfilehash: d1c7204660e632a2b2a994bdf07adc44df860ffd
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5307e875d06c1d1d15b60eb2b3b866867afe81c8
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80108516"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917145"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>如何保护 DNS 区域和记录
 
@@ -25,7 +25,7 @@ DNS 区域和记录是关键资源。 删除 DNS 区域或单个 DNS 记录可�
 
 ## <a name="role-based-access-control"></a>基于角色的访问控制
 
-Azure 基于角色的访问控制 (RBAC) 可用于对 Azure 用户、组和资源进行细致的访问管理。 使用 RBAC，可以授予用户所需的访问权限级别。 如需了解 RBAC 如何帮助你管理访问权限的详细信息，请参阅[什么是基于角色的访问控制](../role-based-access-control/overview.md)。
+Azure 基于角色的访问控制 (Azure RBAC) 可用于对 Azure 用户、组和资源进行精细的访问管理。 使用 RBAC，可以授予用户所需的访问权限级别。 如需了解 RBAC 如何帮助你管理访问权限的详细信息，请参阅[什么是 Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md)。
 
 ### <a name="the-dns-zone-contributor-role"></a>“DNS 区域参与者”角色
 
@@ -168,7 +168,7 @@ az role assignment create \
 其余操作从 [DNS 区域参与者内置角色](../role-based-access-control/built-in-roles.md#dns-zone-contributor)中复制。
 
 > [!NOTE]
-> 使用自定义 RBAC 角色防止删除记录集的同时仍允许它们更新，这不是一种有效的控制方式。 此方法仅可防止记录集被删除，但不会阻止它们被修改。  允许的修改包括添加和删除记录集中的记录，还包括删除所有记录，只留下空记录集。 这与从 DNS 解析视点中删除记录集具有相同的效果。
+> 使用 Azure 自定义角色防止删除记录集的同时仍允许它们更新，这不是一种有效的控制方式。 此方法仅可防止记录集被删除，但不会阻止它们被修改。  允许的修改包括添加和删除记录集中的记录，还包括删除所有记录，只留下空记录集。 这与从 DNS 解析视点中删除记录集具有相同的效果。
 
 当前无法通过 Azure 门户定义自定义角色定义。 可以使用 Azure PowerShell 创建基于此角色定义的自定义角色：
 

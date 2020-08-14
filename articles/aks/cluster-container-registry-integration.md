@@ -2,19 +2,19 @@
 title: 将将容器注册表与 Azure Kubernetes 服务集成
 description: 了解如何将 Azure Kubernetes 服务 (AKS) 与 Azure 容器注册表 (ACR) 集成
 services: container-service
-manager: digimobile
+manager: gwallace
 ms.topic: article
 origin.date: 02/25/2020
-ms.date: 07/13/2020
-ms.testscope: yes
+ms.date: 08/10/2020
+ms.testscope: no
 ms.testdate: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: 7b103af97ce80222ce43c4846de4edb8a1dfe683
-ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
+ms.openlocfilehash: e636b7002e019b481d37ae6f3ef551a64357d2c0
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86218772"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842589"
 ---
 <!--Verify successfully-->
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>使用 Azure 容器注册表从 Azure Kubernetes 服务进行身份验证
@@ -51,7 +51,10 @@ az aks create -n myAKSCluster -g myResourceGroup --generate-ssh-keys --attach-ac
 
 或者，可以使用 ACR 资源 ID 指定 ACR 名称，其格式如下：
 
-`/subscriptions/\<subscription-id\>/resourceGroups/\<resource-group-name\>/providers/Microsoft.ContainerRegistry/registries/\<name\>` 
+`/subscriptions/\<subscription-id\>/resourceGroups/\<resource-group-name\>/providers/Microsoft.ContainerRegistry/registries/\<name\>`
+
+> [!NOTE]
+> 如果所用 ACR 与 AKS 群集位于不同的订阅中，则在从 AKS 群集进行附加或分离时，请使用 ACR 资源 ID。
 
 ```azurecli
 az aks create -n myAKSCluster -g myResourceGroup --generate-ssh-keys --attach-acr /subscriptions/<subscription-id>/resourceGroups/myContainerRegistryResourceGroup/providers/Microsoft.ContainerRegistry/registries/myContainerRegistry
@@ -64,7 +67,7 @@ az aks create -n myAKSCluster -g myResourceGroup --generate-ssh-keys --attach-ac
 通过为 **acr-name** 或 **acr-resource-id** 提供有效值，将现有 ACR 与现有 AKS 群集集成，如下所示。
 
 ```azurecli
-az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acrName>
+az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acr-name>
 ```
 
 或者，
@@ -76,7 +79,7 @@ az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acr-resource-id>
 还可以使用以下命令删除 ACR 与 AKS 群集之间的集成
 
 ```azurecli
-az aks update -n myAKSCluster -g myResourceGroup --detach-acr <acrName>
+az aks update -n myAKSCluster -g myResourceGroup --detach-acr <acr-name>
 ```
 
 或
@@ -92,7 +95,7 @@ az aks update -n myAKSCluster -g myResourceGroup --detach-acr <acr-resource-id>
 通过运行以下命令，将映像从 Docker Hub 导入到 ACR：
 
 ```azurecli
-az acr import  -n <myContainerRegistry> --source dockerhub.azk8s.cn/library/nginx:latest --image nginx:v1
+az acr import  -n <acr-name> --source dockerhub.azk8s.cn/library/nginx:latest --image nginx:v1
 ```
 
 ### <a name="deploy-the-sample-image-from-acr-to-aks"></a>将示例映像从 ACR 部署到 AKS
@@ -103,7 +106,7 @@ az acr import  -n <myContainerRegistry> --source dockerhub.azk8s.cn/library/ngin
 az aks get-credentials -g myResourceGroup -n myAKSCluster
 ```
 
-创建名为 **acr-nginx.yaml** 的文件，其中包含以下内容：
+创建名为 acr-nginx.yaml 的文件，其中包含以下内容。 请将 acr-name 替换为注册表的资源名称。 示例：myContainerRegistry。
 
 ```yaml
 apiVersion: apps/v1
@@ -124,7 +127,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: <replace this image property with you acr login server, image and tag>
+        image: <acr-name>.azurecr.cn/nginx:v1
         ports:
         - containerPort: 80
 ```

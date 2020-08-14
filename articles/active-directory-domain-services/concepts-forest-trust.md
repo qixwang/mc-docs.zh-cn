@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/13/2020
+ms.date: 08/07/2020
 ms.author: v-junlch
-ms.openlocfilehash: 823f30f418ba5b8a6140f4972cc62065be8427e3
-ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
+ms.openlocfilehash: f0c23aecf6edc4224da93157222005c810e3ea3b
+ms.sourcegitcommit: a5eb9a47feefb053ddbaab4b15c395972c372339
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86472584"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88028581"
 ---
 # <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>信任关系如何作用于 Azure Active Directory 域服务中的资源林
 
@@ -26,6 +26,10 @@ Active Directory 域服务 (AD DS) 通过域和林信任关系提供跨多个域
 AD DS 和 Windows 分布式安全模型提供的访问控制机制为域和林信任的操作提供了环境。 要使这些信任能够正常发挥作用，每项资源或每台计算机都必须对其所在域中的 DC 具有直接信任路径。
 
 Net Logon 服务使用经过身份验证的远程过程调用 (RPC) 与受信任的域颁发机构的连接来实现此信任路径。 安全通道还通过域间信任关系扩展到其他 AD DS 域。 此安全通道用于获取和验证安全信息，包括用户和组的安全标识符 (SID)。
+
+有关信任如何应用于 Azure AD DS 的概述，请参阅[资源林概念和功能][create-forest-trust]。
+
+若要在 Azure AD DS 中开始使用信任，请[创建使用林信任的托管域][tutorial-create-advanced]。
 
 ## <a name="trust-relationship-flows"></a>信任关系流
 
@@ -152,7 +156,7 @@ NTLM 身份验证协议依赖于域控制器上的 Net Logon 服务来获取客�
 
 第一次建立林信任时，每个林都会收集其伙伴林中的所有受信任命名空间，并将信息存储在[受信任的域对象](#trusted-domain-object)中。 受信任的命名空间包括在另一个林中使用的域树名称、用户主体名称 (UPN) 后缀、服务主体名称 (SPN) 后缀和安全 ID (SID) 命名空间。 会将 TDO 对象复制到全局目录。
 
-必须先将资源计算机的服务主体名称 (SPN) 解析为另一个林中的位置，身份验证协议才能遵循林信任路径。 SPN 可以是下列选项之一：
+必须先将资源计算机的服务主体名称 (SPN) 解析为另一个林中的位置，身份验证协议才能遵循林信任路径。 SPN 可以是下列名称之一：
 
 * 主机的 DNS 名称。
 * 域的 DNS 名称。
@@ -164,7 +168,7 @@ NTLM 身份验证协议依赖于域控制器上的 Net Logon 服务来获取客�
 
 ![林信任中 Kerberos 过程的示意图](./media/concepts-forest-trust/kerberos-over-forest-trust-process-diagram.png)
 
-1. User1 使用来自 europe.tailspintoys.com 域的凭据登录到 Workstation1。   然后，该用户尝试访问 usa.wingtiptoys.com 林中 FileServer1 上的共享资源。 
+1. User1 使用来自 europe.tailspintoys.com 域的凭据登录到 Workstation1  。 然后，该用户尝试访问 usa.wingtiptoys.com 林中 FileServer1 上的共享资源。 
 
 2. Workstation1 联系其域 ChildDC1 中域控制器上的 Kerberos KDC，并为 FileServer1 SPN 请求服务票证。  
 
@@ -276,7 +280,7 @@ LSA 安全子系统在内核模式和用户模式下提供服务，用于验证�
 
 若要了解有关资源林的详细信息，请参阅[林信任如何在 Azure AD DS 中发挥作用？][concepts-trust]
 
-若要开始使用资源林创建托管域，请参阅[创建和配置 Azure AD DS 托管域][tutorial-create-advanced]。 随后可以[创建到本地域的出站林信任（预览）][create-forest-trust]。
+若要开始使用资源林创建托管域，请参阅[创建和配置 Azure AD DS 托管域][tutorial-create-advanced]。 随后可以[创建到本地域的出站林信任][create-forest-trust]。
 
 <!-- LINKS - INTERNAL -->
 [concepts-trust]: concepts-forest-trust.md

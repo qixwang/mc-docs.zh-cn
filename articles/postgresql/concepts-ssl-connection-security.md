@@ -5,14 +5,14 @@ author: WenJason
 ms.author: v-jay
 ms.service: postgresql
 ms.topic: conceptual
-origin.date: 06/02/2020
-ms.date: 07/06/2020
-ms.openlocfilehash: 2aca2180b86f72e2bfc49b95c3cb12ffbddf35b6
-ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
+origin.date: 07/08/2020
+ms.date: 08/17/2020
+ms.openlocfilehash: b1506ff3ccd2ada3d9b2cb856d78643647fdc1e6
+ms.sourcegitcommit: 3cf647177c22b24f76236c57cae19482ead6a283
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85845902"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88029630"
 ---
 # <a name="configure-tls-connectivity-in-azure-database-for-postgresql---single-server"></a>在 Azure Database for PostgreSQL（单一服务器）中配置 TLS 连接
 
@@ -51,21 +51,8 @@ az postgres server update --resource-group myresourcegroup --name mydemoserver -
 某些使用 PostgreSQL 作为其数据库服务的应用程序框架在安装期间默认不启用 TLS。 如果 PostgreSQL 服务器强制实施 TLS 连接，但应用程序未配置 TLS，则应用程序可能无法连接到数据库服务器。 请查阅应用程序文档，了解如何启用 TLS 连接。
 
 ## <a name="applications-that-require-certificate-verification-for-tls-connectivity"></a>需要证书验证才可启用 TLS 连接性的应用程序
-在某些情况下，应用程序需要具备从受信任的证书颁发机构 (CA) 证书文件 (.cer) 生成的本地证书文件才能实现安全连接。 请参阅以下步骤获取 .cer 文件，解码证书并将其绑定到应用程序。
 
-### <a name="download-the-certificate-file-from-the-certificate-authority-ca"></a>从证书颁发机构 (CA) 下载证书文件 
-可在[此处](https://www.digicert.com/CACerts/DigiCertGlobalRootCA.crt)找到通过 SSL 与 Azure Database for PostgreSQL 服务器通信所需的证书。 本地下载证书文件。
-
-### <a name="install-a-cert-decoder-on-your-machine"></a>在计算机上安装证书解码器 
-可以使用 [OpenSSL](https://github.com/openssl/openssl) 来解码应用程序安全连接到数据库服务器所需的证书文件。 若要了解如何安装 OpenSSL，请参阅 [OpenSSL 安装说明](https://github.com/openssl/openssl/blob/master/INSTALL)。 
-
-
-### <a name="decode-your-certificate-file"></a>解码证书文件
-下载的根 CA 文件采用加密格式。 使用 OpenSSL 解码证书文件。 要执行此操作，请运行此 OpenSSL 命令：
-
-```
-openssl x509 -inform DER -in DigiCertGlobalRootCA.crt -text -out root.crt
-```
+在某些情况下，应用程序需要具备从受信任的证书颁发机构 (CA) 证书文件生成的本地证书文件才能实现安全连接。 用于连接到 Azure Database for PostgreSQL 的证书位于 https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem 。 下载证书文件并将其保存到首选位置。 
 
 ### <a name="connect-using-psql"></a>使用 psql 进行连接
 
@@ -74,7 +61,7 @@ openssl x509 -inform DER -in DigiCertGlobalRootCA.crt -text -out root.crt
 以下命令是 psql 连接字符串的示例：
 
 ```shell
-psql "sslmode=verify-full sslrootcert=root.crt host=mydemoserver.postgres.database.chinacloudapi.cn dbname=postgres user=myusern@mydemoserver"
+psql "sslmode=verify-full sslrootcert=DigiCertGlobalRootCA.crt host=mydemoserver.postgres.database.chinacloudapi.cn dbname=postgres user=myusern@mydemoserver"
 ```
 
 > [!TIP]
@@ -99,9 +86,9 @@ Azure Database for PostgreSQL 单一服务器提供了为客户端连接强制�
 例如，将此最低 TLS 设置版本设置为 TLS 1.0 意味着服务器将允许使用 TLS 1.0、1.1 和 1.2 + 的客户端进行连接。 也可将此选项设置为 1.2，这意味着仅允许那些使用 TLS 1.2+ 的客户端进行连接，将拒绝使用 TLS 1.0 和 TLS 1.1 进行的所有连接。
 
 > [!Note] 
-> Azure Database for PostgreSQL 默认情况下为所有新服务器禁用 TLS。
+> 默认情况下，Azure Database for PostgreSQL 不强制执行最低 TLS 版本要求（设置为 `TLSEnforcementDisabled`）。
 >
-> 目前，Azure Database for PostgreSQL 支持的 TLS 版本为 TLS 1.0、1.1 和 1.2。 强制实施特定的最小 TLS 版本后，你不能将它更改为“禁用”。
+> 一旦强制实施最低 TLS 版本要求后，以后将无法禁用最低版本强制实施。
 
 若要了解如何为 Azure Database for PostgreSQL 单一服务器指定 TLS 设置，请参阅[如何配置 TLS 设置](howto-tls-configurations.md)。
 

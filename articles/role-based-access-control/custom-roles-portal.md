@@ -7,17 +7,17 @@ author: rolyon
 manager: mtillman
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/25/2020
+ms.date: 08/05/2020
 ms.author: v-junlch
-ms.openlocfilehash: f9fcb390659b3b99234d5b540d61c8bc623d9211
-ms.sourcegitcommit: 7429daf26cff014b040f69cdae75bdeaea4f4e93
+ms.openlocfilehash: b185a86754ba30d3ea91647715039c56d6144681
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83991649"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914378"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-azure-portal"></a>使用 Azure 门户创建 Azure 自定义角色
 
@@ -122,8 +122,7 @@ Azure 具有数千个权限，你可将这些权限包含在自定义角色中�
                         "Microsoft.Commerce/*/read",
                         "Microsoft.Consumption/*/read",
                         "Microsoft.Management/managementGroups/read",
-                        "Microsoft.CostManagement/*/read",
-                        "Microsoft.Support/*"
+                        "Microsoft.CostManagement/*/read"
                     ],
                     "notActions": [],
                     "dataActions": [],
@@ -204,17 +203,7 @@ Azure 具有数千个权限，你可将这些权限包含在自定义角色中�
 
 ### <a name="add-wildcard-permissions"></a>添加通配符权限
 
-根据所选的开始创建角色的方式，权限列表中可能存在包含通配符 (\*) 的权限。 通配符 (\*) 将权限扩展到与提供的字符串匹配的一切。 例如，假设你要添加与 Azure 成本管理和导出相关的所有权限。 可以添加所有这些权限：
-
-```
-Microsoft.CostManagement/exports/action
-Microsoft.CostManagement/exports/read
-Microsoft.CostManagement/exports/write
-Microsoft.CostManagement/exports/delete
-Microsoft.CostManagement/exports/run/action
-```
-
-也可以不添加所有这些权限，而只需添加一个通配符权限。 例如，以下通配符权限等效于上面的五个权限。 此通配符权限还包括将来可能要添加的任何导出权限。
+根据所选的开始创建角色的方式，权限列表中可能存在包含通配符 (`*`) 的权限。 通配符 (`*`) 将权限扩展到与所提供的操作字符串匹配的所有内容。 例如，以下通配符字符串添加了与 Azure 成本管理和导出相关的所有权限。 此通配符权限还包括将来可能要添加的任何导出权限。
 
 ```
 Microsoft.CostManagement/exports/*
@@ -224,7 +213,7 @@ Microsoft.CostManagement/exports/*
 
 ### <a name="exclude-permissions"></a>排除权限
 
-如果角色拥有通配符 (\*) 权限，而你想要从该通配符权限中排除或减去特定的权限，你可以排除权限。 例如，假设你有以下通配符权限：
+如果角色拥有通配符 (`*`) 权限，而你想要从该通配符权限中排除或减去特定的权限，你可以排除权限。 例如，假设你有以下通配符权限：
 
 ```
 Microsoft.CostManagement/exports/*
@@ -269,7 +258,7 @@ Microsoft.CostManagement/exports/delete
 
 ## <a name="step-6-json"></a>步骤 6：JSON
 
-在“JSON”选项卡上，可以看到 JSON 格式的自定义角色。 如果需要，可以直接编辑 JSON。 若要添加通配符 (\*) 权限，必须使用此选项卡。
+在“JSON”选项卡上，可以看到 JSON 格式的自定义角色。 如果需要，可以直接编辑 JSON。 若要添加通配符 (`*`) 权限，必须使用此选项卡。
 
 1. 若要编辑 JSON，请单击“编辑”。
 

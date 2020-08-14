@@ -1,20 +1,20 @@
 ---
-title: 教程 - 创建和管理 Azure 虚拟机规模集
+title: 教程：创建和管理 Azure VM 规模集 - Azure PowerShell
 description: 了解如何使用 Azure PowerShell 创建虚拟机规模集以及某些常见的管理任务，例如如何启动和停止实例，或者如何更改规模集容量。
 author: ju-shim
 ms.author: v-junlch
 ms.topic: tutorial
 ms.service: virtual-machine-scale-sets
 ms.subservice: management
-ms.date: 06/22/2020
+ms.date: 08/06/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: c0edf66be61f76b2e593d184e8b451953edf9027
-ms.sourcegitcommit: 43db4001be01262959400663abf8219e27e5cb8b
+ms.openlocfilehash: 605b40348d103cf745f2b7474e7793ce8e5bbb3c
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85241558"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914210"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>教程：使用 Azure PowerShell 创建和管理虚拟机规模集
 
@@ -43,7 +43,7 @@ New-AzResourceGroup -ResourceGroupName "myResourceGroup" -Location "ChinaNorth"
 
 
 ## <a name="create-a-scale-set"></a>创建规模集
-首先，使用 [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) 设置 VM 实例的管理员用户名和密码：
+首先，使用 [Get-Credential](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) 设置 VM 实例的管理员用户名和密码：
 
 ```azurepowershell
 $cred = Get-Credential
@@ -64,6 +64,9 @@ New-AzVmss `
 ```
 
 创建和配置所有的规模集资源和 VM 实例需要几分钟时间。
+
+> [!IMPORTANT]
+> 如果无法连接到规模集，则可能需要通过添加 [-SecurityGroupName "mySecurityGroup"](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) 参数来创建网络安全组。
 
 
 ## <a name="view-the-vm-instances-in-a-scale-set"></a>查看规模集中的 VM 实例
@@ -200,10 +203,10 @@ VM 实例大小或 *SKU* 决定了可供 VM 实例使用的计算资源（如 CP
 
 | 类型                     | 常见大小           |    说明       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| [常规用途](../virtual-machines/windows/sizes-general.md)         |Dsv3、Dv3、DSv2、Dv2、DS、D、Av2、A0-7| CPU 与内存之比均衡。 适用于开发/测试、小到中型应用程序和数据解决方案。  |
-| [计算优化](../virtual-machines/windows/sizes-compute.md)   | Fs, F             | 高 CPU 与内存之比。 适用于中等流量的应用程序、网络设备和批处理。        |
-| [内存优化](../virtual-machines/windows/sizes-memory.md)    | Esv3、Ev3、M、DSv2、DS、Dv2、D   | 较高的内存核心比。 适用于关系数据库、中到大型缓存和内存中分析。                 |
-| [GPU](../virtual-machines/windows/sizes-gpu.md)          | NV, NC            | 专门针对大量图形绘制和视频编辑的 VM。       |
+| [常规用途](../virtual-machines/sizes-general.md)         |Dsv3、Dv3、DSv2、Dv2、DS、D、Av2、A0-7| CPU 与内存之比均衡。 适用于开发/测试、小到中型应用程序和数据解决方案。  |
+| [计算优化](../virtual-machines/sizes-compute.md)   | Fs, F             | 高 CPU 与内存之比。 适用于中等流量的应用程序、网络设备和批处理。        |
+| [内存优化](../virtual-machines/sizes-memory.md)    | Esv3、Ev3、M、DSv2、DS、Dv2、D   | 较高的内存核心比。 适用于关系数据库、中到大型缓存和内存中分析。                 |
+| [GPU](../virtual-machines/sizes-gpu.md)          | NV, NC            | 专门针对大量图形绘制和视频编辑的 VM。       |
 
 ### <a name="find-available-vm-instance-sizes"></a>查找可用的 VM 实例大小
 若要查看在特定区域可用的 VM 实例大小的列表，请使用 [Get-AzVMSize](https://docs.microsoft.com/powershell/module/az.compute/get-azvmsize) 命令。 
@@ -305,7 +308,7 @@ Restart-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
 
 
 ## <a name="clean-up-resources"></a>清理资源
-删除资源组时，也会删除其中包含的所有资源，例如 VM 实例、虚拟网络和磁盘。 `-Force` 参数将确认是否希望删除资源，而不会有额外提示。 `-AsJob` 参数会使光标返回提示符处，无需等待操作完成。
+删除资源组时，也会删除其中包含的所有资源，例如 VM 实例、虚拟网络和磁盘。 `-Force` 参数将确认是否希望删除资源，不会显示询问是否删除的额外提示。 `-AsJob` 参数会使光标返回提示符处，不会等待操作完成。
 
 ```azurepowershell
 Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob

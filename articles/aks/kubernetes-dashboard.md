@@ -5,16 +5,16 @@ services: container-service
 author: rockboyfor
 ms.topic: article
 origin.date: 06/03/2020
-ms.date: 07/13/2020
-ms.testscope: yes
+ms.date: 08/10/2020
+ms.testscope: yes|no
 ms.testdate: 07/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 911b9ab1b9ff8e9fb7e512fd30c77258a2526513
-ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
+ms.openlocfilehash: 3b57226e9379f2d182f3c5f8ac7f6aad3c92ee81
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86218734"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842676"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>访问 Azure Kubernetes 服务 (AKS) 中的 Kubernetes Web 仪表板
 
@@ -31,7 +31,7 @@ Kubernetes 包含一个可用于基本管理操作的 Web 仪表板。 使用此
 
 ## <a name="before-you-begin"></a>准备阶段
 
-本文档详述的步骤假设你已创建 AKS 群集并已通过该群集建立 `kubectl` 连接。 如果需要创建 AKS 群集，请参阅 [AKS 快速入门][aks-quickstart]。
+本文档详述的步骤假设你已创建 AKS 群集并已通过该群集建立 `kubectl` 连接。 如果需要创建 AKS 群集，请参阅[快速入门：使用 Azure CLI 部署 Azure Kubernetes 服务群集][aks-quickstart]。
 
 还需要安装并配置 Azure CLI 2.6.0 或更高版本。 运行  `az --version`  即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
 
@@ -52,6 +52,7 @@ az aks disable-addons -g myRG -n myAKScluster -a kube-dashboard
 ```azurecli
 # Enable kube-dashboard addon before start the kubernetes dashboard
 az aks enable-addons --addons kube-dashboard --resource-group myResourceGroup --name myAKSCluster
+
 az aks browse --resource-group myResourceGroup --name myAKSCluster
 ```
 
@@ -62,6 +63,7 @@ az aks browse --resource-group myResourceGroup --name myAKSCluster
 > * K8s 1.16 或更高版本：`http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy`
 > * K8s 1.15 及更低版本：`http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard:/proxy`
 
+<!--MOONCAKE: GLOBAL AUTHOR HAS HIDED THE CONTENT-->
 
 ## <a name="sign-in-to-the-dashboard-kubernetes-116"></a>登录到仪表板 (kubernetes 1.16+)
 
@@ -75,7 +77,7 @@ az aks browse --resource-group myResourceGroup --name myAKSCluster
 
 显示的初始屏幕要求提供 kubeconfig 或令牌。 这两个选项都要求提供资源权限才会在仪表板中显示这些资源。
 
-![登录屏幕](./media/kubernetes-dashboard/login.png)
+:::image type="content" source="./media/kubernetes-dashboard/login.png" alt-text="登录屏幕":::
 
 **使用 kubeconfig**
 
@@ -102,7 +104,7 @@ kubectl config view -o jsonpath='{.users[?(@.name == "clusterUser_<RESOURCE GROU
 
 成功后，将显示类似如下的页面。
 
-![Kubernetes Web 仪表板的概述页](./media/kubernetes-dashboard/dashboard-overview.png)
+:::image type="content" source="./media/kubernetes-dashboard/dashboard-overview.png" alt-text="Kubernetes Web 仪表板的概述页":::
 
 ## <a name="create-an-application"></a>创建应用程序
 
@@ -119,15 +121,15 @@ kubectl config view -o jsonpath='{.users[?(@.name == "clusterUser_<RESOURCE GROU
 1. 若要为 Web 流量公开端口 80，请创建一个 Kubernetes 服务。 在“服务”下，选择“外部”，对于端口和目标端口，都输入 **80**。 
 1. 准备就绪后，选择“部署”来创建应用。
 
-![在 Kubernetes Web 仪表板中部署应用](./media/kubernetes-dashboard/create-app.png)
+:::image type="content" source="./media/kubernetes-dashboard/create-app.png" alt-text="在 Kubernetes Web 仪表板中部署应用":::
 
 为 Kubernetes 服务分配公共外部 IP 地址需要一到两分钟时间。 在左侧，在“发现和负载均衡”下，选择“服务”。 此时将列出应用的服务，包括“外部终结点”，如以下示例中所示：
 
-![查看服务和终结点的列表](./media/kubernetes-dashboard/view-services.png)
+:::image type="content" source="./media/kubernetes-dashboard/view-services.png" alt-text="查看服务和终结点的列表":::
 
 选择终结点地址以在 Web 浏览器窗口中打开默认的 NGINX 页面：
 
-![查看部署的应用程序的默认 NGINX 页面](./media/kubernetes-dashboard/default-nginx.png)
+:::image type="content" source="./media/kubernetes-dashboard/default-nginx.png" alt-text="查看部署的应用程序的默认 NGINX 页面":::
 
 ## <a name="view-pod-information"></a>查看 Pod 信息
 
@@ -135,7 +137,7 @@ Kubernetes 仪表板可以提供基本的监视指标和故障排除信息，例
 
 若要查看有关应用程序 Pod 的详细信息，请在左侧菜单中选择“Pod”。 此时会显示可用 Pod 的列表。 选择你的 *nginx* Pod 来查看信息，例如资源消耗：
 
-![查看 Pod 信息](./media/kubernetes-dashboard/view-pod-info.png)
+:::image type="content" source="./media/kubernetes-dashboard/view-pod-info.png" alt-text="查看 Pod 信息":::
 
 ## <a name="edit-the-application"></a>编辑应用程序
 
@@ -148,11 +150,11 @@ Kubernetes 仪表板可以提供基本的监视指标和故障排除信息，例
 1. 找到 `spec.replica` 值，大约在第 20 行。 若要增加应用程序的副本数，请将此值从 *1* 更改为 *3*。
 1. 在完成后，选择“更新”。
 
-![编辑部署以更新副本数](./media/kubernetes-dashboard/edit-deployment.png)
+:::image type="content" source="./media/kubernetes-dashboard/edit-deployment.png" alt-text="编辑部署以更新副本数":::
 
 在副本集内创建新 Pod 需要花费一些时间。 在左侧菜单上，选择“副本集”，然后选择你的 *nginx* 副本集。 Pod 列表现在反映了已更新的副本计数，如以下示例输出中所示：
 
-![查看副本集的信息](./media/kubernetes-dashboard/view-replica-set.png)
+:::image type="content" source="./media/kubernetes-dashboard/view-replica-set.png" alt-text="查看副本集的信息":::
 
 ## <a name="next-steps"></a>后续步骤
 

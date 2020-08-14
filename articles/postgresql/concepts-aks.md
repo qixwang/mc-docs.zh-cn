@@ -1,18 +1,18 @@
 ---
-title: 将 Azure Kubernetes 服务 (AKS) 与 Azure Database for PostgreSQL - 单一服务器连接
-description: 了解如何将 Azure Kubernetes 服务与 Azure Database for PostgreSQL - 单一服务器连接
+title: 连接到 Azure Kubernetes 服务 - Azure Database for PostgreSQL - Single Server
+description: 了解如何将 Azure Kubernetes 服务 (AKS) 与 Azure Database for PostgreSQL - 单一服务器连接
 author: WenJason
 ms.author: v-jay
 ms.service: postgresql
-origin.date: 05/06/2019
-ms.date: 05/20/2019
+origin.date: 07/14/2020
+ms.date: 08/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: b362297a255fcc86e7fb8fcf47712b223e4f2472
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: eed768a0fa09502d2ce6d4f3cf0d6ec7ef4e3e8f
+ms.sourcegitcommit: 3cf647177c22b24f76236c57cae19482ead6a283
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "65731947"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88029673"
 ---
 # <a name="connecting-azure-kubernetes-service-and-azure-database-for-postgresql---single-server"></a>将 Azure Kubernetes 服务与 Azure Database for PostgreSQL - 单一服务器连接
 
@@ -41,11 +41,6 @@ az aks show --resource-group myResourceGroup --name myAKSCluster --query "nodeRe
 ```azurecli
 az network nic list --resource-group nodeResourceGroup -o table
 ```
-
-## <a name="open-service-broker-for-azure"></a>打开 Service Broker for Azure 
-[Open Service Broker for Azure](https://github.com/Azure/open-service-broker-azure/blob/master/README.md) (OSBA) 允许你直接从 Kubernetes 或 Cloud Foundry 预配 Azure 服务。 它是适用于 Azure 的 [Open Service Broker API](https://www.openservicebrokerapi.org/) 实现。
-
-通过 OSBA，可以使用 Kubernetes 的本机语言创建 Azure Database for PostgreSQL 服务器并将其绑定到 AKS 群集。 在 [OSBA Github 页](https://github.com/Azure/open-service-broker-azure/blob/master/docs/modules/postgresql.md)上了解如何将 OSBA 和 Azure Database for PostgreSQL 一起使用。 
 
 
 ## <a name="connection-pooling"></a>连接池

@@ -5,14 +5,16 @@ services: container-service
 author: rockboyfor
 ms.topic: article
 origin.date: 11/04/2019
-ms.date: 05/06/2020
+ms.date: 08/10/2020
+ms.testscope: no
+ms.testdate: 05/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 439551ab227252722a7c40360029829e49f27e20
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: 80c8989f4e9d0808b0ce7a00fdaf0c3ee38d562b
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83001934"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842675"
 ---
 <!--CONFIRME WITH DONG LIU SUCCESSFULLY-->
 <!--NEW FEATURES HAS BEEN RELEASED ON AZURE CHINA CLOUD-->
@@ -34,7 +36,7 @@ ms.locfileid: "83001934"
 
 ## <a name="create-a-service-principal"></a>创建服务主体
 
-可以在 [Azure CLI](https://docs.azure.cn/cli/?view=azure-cli-latest) 中使用 [az ad sp create-for-rbac](https://docs.azure.cn/cli/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) 命令创建[服务主体](/active-directory/develop/app-objects-and-service-principals#service-principal-object)。
+可以在 [Azure CLI](https://docs.azure.cn/cli/?view=azure-cli-latest) 中使用 [az ad sp create-for-rbac](https://docs.azure.cn/cli/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) 命令创建[服务主体](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)。
 
 <!--Not Avaialble on [Azure Cloud Shell](https://shell.azure.com/)-->
 
@@ -61,7 +63,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 
 1. 在 [GitHub](https://github.com/) 中浏览到存储库，选择“设置”>“机密”>“添加新机密”。 
 
-    ![secrets](media/kubernetes-action/secrets.png)
+    :::image type="content" source="media/kubernetes-action/secrets.png" alt-text="机密":::
 
 2. 将上述 `az cli` 命令的内容作为机密变量的值粘贴。 例如，`AZURE_CREDENTIALS`。
 
@@ -72,7 +74,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 
 4. 在定义后，会看到如下所示的机密。
 
-    ![kubernetes-secrets](media/kubernetes-action/kubernetes-secrets.png)
+    :::image type="content" source="media/kubernetes-action/kubernetes-secrets.png" alt-text="kubernetes-secrets":::
 
 ## <a name="build-a-container-image-and-deploy-to-azure-kubernetes-service-cluster"></a>生成容器映像并将其部署到 Azure Kubernetes 服务群集
 

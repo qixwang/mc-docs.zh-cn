@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 origin.date: 11/28/2019
 ms.date: 02/24/2020
-ms.openlocfilehash: 334f622a6007e84d64255994420887cfc0cc0c0e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b909218b97c36ab4b2ed0f87e4279fae1228b062
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428707"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917222"
 ---
 # <a name="script-action-development-with-hdinsight"></a>使用 HDInsight 进行脚本操作开发
 
@@ -177,7 +177,7 @@ echo "Getting ready to install Foo"
 
 这会将写入 STDOUT 的信息改为重定向到 STDERR (2)。 有关 IO 重定向的详细信息，请参阅 [https://www.tldp.org/LDP/abs/html/io-redirection.html](https://www.tldp.org/LDP/abs/html/io-redirection.html)。
 
-若要详细了解如何查看脚本操作记录的信息，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting)
+有关查看脚本操作记录的信息的详细信息，请参阅[脚本操作故障排除](./troubleshoot-script-action.md)。
 
 ### <a name="save-files-as-ascii-with-lf-line-endings"></a><a name="bps8"></a> 将文件另存为包含 LF 行尾的 ASCII
 

@@ -4,30 +4,31 @@ description: 了解如何通过 Azure CLI 和 REST API 管理 Azure Database for
 author: WenJason
 ms.author: v-jay
 ms.service: postgresql
-ms.topic: conceptual
-origin.date: 06/09/2020
-ms.date: 07/06/2020
-ms.openlocfilehash: a8a3e73c2f5c4ba62cfd7187b8ac6bf67c0488ed
-ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
+ms.topic: how-to
+origin.date: 07/10/2020
+ms.date: 08/17/2020
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: e690aaab66e1a8ca1cbf9daddbcf3dc192189aac
+ms.sourcegitcommit: 3cf647177c22b24f76236c57cae19482ead6a283
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85845877"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88029585"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>通过 Azure CLI、REST API 创建和管理只读副本
 
 本文介绍如何使用 Azure CLI 和 REST API 在 Azure Database for PostgreSQL 中创建和管理只读副本。 若要详细了解只读副本，请参阅[概述](concepts-read-replicas.md)。
 
 ## <a name="azure-replication-support"></a>Azure 复制支持
-[只读副本](concepts-read-replicas.md)和[逻辑解码](concepts-logical.md)都依赖于 Postgres 预写日志 (WAL) 来获取信息。 这两个功能需要来自 Postgres 的不同级别的日志记录。 逻辑解码需要的日志记录的级别比只读副本需要的更高。
+[只读副本](concepts-read-replicas.md)和[逻辑解码](concepts-logical.md)都依赖 Postgres 预写日志 (WAL) 来获取信息。 这两个功能需要来自 Postgres 的不同级别的日志记录。 逻辑解码需要的日志记录的级别比只读副本需要的更高。
 
 若要配置正确的日志记录级别，请使用 Azure 复制支持参数。 Azure 复制支持有三个设置选项：
 
-* 关闭 - 记录到 WAL 中的信息最少。 大多数 Azure Database for PostgreSQL 服务器上都不提供此设置。  
-* 副本 - 详细程度高于“关闭” 。 这是[只读副本](concepts-read-replicas.md)正常工作所需的最低日志记录级别。 此设置是大多数服务器上的默认设置。
-* 逻辑 - 详细程度高于“副本” 。 这是逻辑解码正常工作所需的最低日志记录级别。 使用此设置时，只读副本也可以正常工作。
+* **关闭** - 在 WAL 中包含最少的信息。 大多数 Azure Database for PostgreSQL 服务器上都不提供此设置。  
+* **副本** - 比“关闭”详细。 这是运行[只读副本](concepts-read-replicas.md)所需的最低日志记录级别。 此设置是大多数服务器上的默认设置。
+* **逻辑** - 比“副本”详细。 这是运行逻辑解码所需的最低日志记录级别。 使用此设置时，只读副本也可以运行。
 
-更改此参数后，需要重新启动服务器。 在内部，此参数设置 Postgres 参数 `wal_level`、`max_replication_slots` 和 `max_wal_senders`。
+更改此参数后，需要重启服务器。 在内部，此参数设置 Postgres 参数 `wal_level`、`max_replication_slots` 和 `max_wal_senders`。
 
 ## <a name="azure-cli"></a>Azure CLI
 可以使用 Azure CLI 创建和管理只读副本。
@@ -85,9 +86,9 @@ az postgres server replica create --name mydemoserver-replica --source-server my
 
 如果尚未在“常规用途”或“内存优化”主服务器上将 `azure.replication_support` 参数设置为 **REPLICA** 并重启服务器，将会收到错误。 请在创建副本之前完成这两个步骤。
 
-使用与主服务器相同的计算和存储设置创建副本。 创建副本后，可以独立于主服务器更改多项设置：计算代系、vCore 数、存储和备份保留期。 定价层也可以独立更改，但“基本”层除外。
-
 > [!IMPORTANT]
+> 查看[“只读副本”概述的注意事项部分](concepts-read-replicas.md#considerations)。
+>
 > 将主服务器设置更新为新值之前，请将副本设置更新为一个相等或更大的值。 此操作可帮助副本与主服务器发生的任何更改保持同步。
 
 ### <a name="list-replicas"></a>列出副本

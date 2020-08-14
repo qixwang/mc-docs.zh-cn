@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/20/2020
+ms.date: 08/07/2020
 ms.author: v-junlch
-ms.openlocfilehash: 91282e39cd0c449bc9b6af6463a7ffd48a9a9d02
-ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
+ms.openlocfilehash: 0334fc481f5251eb3712324ade7e038d89d3a4b4
+ms.sourcegitcommit: a5eb9a47feefb053ddbaab4b15c395972c372339
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86472571"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88028578"
 ---
 # <a name="create-an-organizational-unit-ou-in-an-azure-active-directory-domain-services-managed-domain"></a>在 Azure Active Directory 域服务托管域中创建组织单位 (OU)
 
-Active Directory 域服务 (AD DS) 中的组织单位 (OU) 使你能够对用户帐户、服务帐户或计算机帐户等对象进行逻辑分组。 然后，你可以将管理员分配到特定的 OU，并应用组策略来强制实施目标配置设置。
+Active Directory 域服务 (AD DS) 托管的域中的组织单位 (OU) 使你能够对用户帐户、服务帐户或计算机帐户等对象进行逻辑分组。 然后，你可以将管理员分配到特定的 OU，并应用组策略来强制实施目标配置设置。
 
 Azure AD DS 托管域包括以下两个内置 OU：
 
@@ -29,7 +29,7 @@ Azure AD DS 托管域包括以下两个内置 OU：
 
 创建和运行使用 Azure AD DS 的工作负载时，可能需要为应用程序创建服务帐户，用于为其进行身份验证。 为了组织这些服务帐户，通常在托管域中创建一个自定义 OU，然后在该 OU 中创建服务帐户。
 
-在混合环境中，在本地 AD DS 环境中创建的 OU 不会与 Azure AD DS 同步。 托管域使用平面 OU 结构。 所有用户帐户和组都存储在“AADDC 用户”容器中，尽管它们是从不同的本地域或林进行同步，即使你在其中配置了分层 OU 结构。
+在混合环境中，在本地 AD DS 环境中创建的 OU 不会与托管域同步。 托管域使用平面 OU 结构。 所有用户帐户和组都存储在“AADDC 用户”容器中，尽管它们是从不同的本地域或林进行同步，即使你在其中配置了分层 OU 结构。
 
 本文说明如何在托管域中创建 OU。
 
@@ -49,7 +49,7 @@ Azure AD DS 托管域包括以下两个内置 OU：
 
 ## <a name="custom-ou-considerations-and-limitations"></a>自定义 OU 注意事项和限制
 
-在托管域中创建自定义 OU 时，在用户管理和组策略应用方面可以获得额外的管理上的灵活性。 与本地 AD DS 环境相比，在 Azure AD DS 中创建和管理自定义 OU 结构时存在一些限制和注意事项：
+在托管域中创建自定义 OU 时，在用户管理和组策略应用方面可以获得额外的管理上的灵活性。 与本地 AD DS 环境相比，在托管域中创建和管理自定义 OU 结构时存在一些限制和注意事项：
 
 * 若要创建自定义 OU，用户必须是“AAD DC 管理员”组的成员。
 * 创建自定义 OU 的用户会获得对该 OU 的管理权限（完全控制），并且是资源所有者。

@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 07/13/2020
+ms.date: 08/07/2020
 ms.author: v-junlch
-ms.openlocfilehash: 9ff4daaa5b6c7ad5dff11a835dbc79d203c7269d
-ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
+ms.openlocfilehash: be4b32b5f4079a81d11e69da07f98423e19c9ee0
+ms.sourcegitcommit: a5eb9a47feefb053ddbaab4b15c395972c372339
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86472533"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88028629"
 ---
 # <a name="troubleshoot-account-sign-in-problems-with-an-azure-active-directory-domain-services-managed-domain"></a>排查 Azure Active Directory 域服务托管域的帐户登录问题
 
@@ -30,11 +30,11 @@ ms.locfileid: "86472533"
 
 ## <a name="account-isnt-synchronized-into-azure-ad-ds-yet"></a>帐户尚未同步到 Azure AD DS 中
 
-根据目录的大小，可能会在一段时间之后才可在 Azure AD 中使用用户帐户和凭据哈希。 对于大型目录，从 Azure AD 进行这样一次初始单向同步可能需要几个小时，最多可能会需要一两天时间。 请确保重试身份验证之前等待足够长的时间。
+根据目录的大小，可能需要一段时间之后才可在托管域中使用用户帐户和凭据哈希。 对于大型目录，从 Azure AD 进行这样一次初始单向同步可能需要几个小时，最多可能会需要一两天时间。 请确保重试身份验证之前等待足够长的时间。
 
 对于使用 Azure AD Connect 将本地目录数据同步到 Azure AD 中的混合环境，请确保运行最新版本的 Azure AD Connect 并且已[将 Azure AD Connect 配置为在启用 Azure AD DS 之后执行完全同步][azure-ad-connect-phs]。 如果禁用 Azure AD DS 后再重新启用，则必须再次执行这些步骤。
 
-如果未通过 Azure AD Connect 同步的帐户仍然存在问题，请重启 Azure AD Sync 服务。 在安装了 Azure AD Connect 的计算机上，打开命令提示符窗口并运行以下命令：
+如果未通过 Azure AD Connect 同步的帐户仍然存在问题，请重启 Azure AD Sync 服务。 在安装了 Azure AD Connect 的计算机上，打开命令提示符窗口，然后运行以下命令：
 
 ```console
 net stop 'Microsoft Azure AD Sync'
@@ -47,7 +47,7 @@ net start 'Microsoft Azure AD Sync'
 
 ### <a name="hybrid-environments-with-on-premises-synchronization"></a>使用本地同步的混合环境
 
-对于使用 Azure AD Connect 从本地 AD DS 环境同步的混合环境，可以在本地生成所需 NTLM 或 Kerberos 密码哈希并将其同步到 Azure AD 中。 在创建托管域后，[针对 Azure Active Directory 域服务启用密码哈希同步][azure-ad-connect-phs]。 如果没有完成此密码哈希同步步骤，则无法使用 Azure AD DS 登录到帐户。 如果禁用 Azure AD DS 后再重新启用，必须再次执行那些步骤。
+对于使用 Azure AD Connect 从本地 AD DS 环境同步的混合环境，可以在本地生成所需 NTLM 或 Kerberos 密码哈希并将其同步到 Azure AD 中。 在创建托管域后，[针对 Azure Active Directory 域服务启用密码哈希同步][azure-ad-connect-phs]。 如果没有完成此密码哈希同步步骤，则无法使用托管域登录到帐户。 如果禁用 Azure AD DS 后再重新启用，必须再次执行那些步骤。
 
 有关详细信息，请参阅[如何针对 Azure AD DS 进行密码哈希同步][phs-process]。
 
@@ -64,7 +64,7 @@ net start 'Microsoft Azure AD Sync'
 
 ## <a name="the-account-is-locked-out"></a>该帐户已被锁定
 
-如果尝试登录未成功的次数已经达到规定阈值，Azure AD DS 中的用户帐户就会被锁定。 此帐户锁定行为的设计意图是为了防止反复尝试暴力登录，而反复尝试暴力登录可能表示存在自动化数字攻击。
+达到为登录尝试失败定义的阈值时，会锁定托管域中的用户帐户。 此帐户锁定行为的设计意图是为了防止反复尝试暴力登录，而反复尝试暴力登录可能表示存在自动化数字攻击。
 
 默认情况下，如果 2 分钟内有 5 次错误的密码尝试，该帐户就会被锁定 30 分钟。
 

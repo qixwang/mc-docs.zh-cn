@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 07/13/2020
+ms.date: 08/07/2020
 ms.author: v-junlch
-ms.openlocfilehash: 0adde1536f81f175abba3e957f6d4735bd88f770
-ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
+ms.openlocfilehash: abe541de0170f5e6ff1502dff54511f88cb84aef
+ms.sourcegitcommit: a5eb9a47feefb053ddbaab4b15c395972c372339
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86472517"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88028587"
 ---
 # <a name="known-issues-network-configuration-alerts-in-azure-active-directory-domain-services"></a>已知问题：Azure Active Directory 域服务中的网络配置警报
 
-若要使应用程序和服务能够与 Azure Active Directory 域服务 (Azure AD DS) 正确通信，必须打开特定的网络端口以允许流量流动。 在 Azure 中，你可使用网络安全组控制流量的流动。 如果所需的网络安全组规则未部署到位，则 Azure AD DS 托管域的运行状况将显示警报。
+若要使应用程序和服务能够与 Azure Active Directory 域服务 (Azure AD DS) 托管域正确通信，必须打开特定的网络端口以允许流量流动。 在 Azure 中，你可使用网络安全组控制流量的流动。 如果所需的网络安全组规则未部署到位，则 Azure AD DS 托管域的运行状况将显示警报。
 
 本文将帮助你了解和解决网络安全组配置问题的常见警报。
 
@@ -34,11 +34,11 @@ Microsoft 程序无法访问此托管域的域控制器。*如果虚拟网络上
 
 ## <a name="default-security-rules"></a>默认安全规则
 
-以下默认入站和出站安全规则适用于托管域的网络安全组。 这些规则保护 Azure AD DS 的安全，并允许 Azure 平台监视、管理和更新托管域。 如果[配置安全 LDAP][configure-ldaps]，还可使用其他规则来允许入站流量。
+以下默认入站和出站安全规则适用于托管域的网络安全组。 这些规则保护 Azure AD DS 的安全，并允许 Azure 平台监视、管理和更新托管域。
 
 ### <a name="inbound-security-rules"></a>入站安全规则
 
-| 优先级 | 名称 | 端口 | 协议 | 源 | 目标 | 操作 |
+| 优先级 | 名称 | 端口 | 协议 | Source | 目标 | 操作 |
 |----------|------|------|----------|--------|-------------|--------|
 | 101      | AllowSyncWithAzureAD | 443 | TCP | AzureActiveDirectoryDomainServices | 任意 | 允许 |
 | 201      | AllowRD | 3389 | TCP | CorpNetSaw | 任意 | 允许 |
@@ -47,9 +47,12 @@ Microsoft 程序无法访问此托管域的域控制器。*如果虚拟网络上
 | 65001    | AllowAzureLoadBalancerInBound | 任意 | 任意 | AzureLoadBalancer | 任意 | 允许 |
 | 65500    | DenyAllInBound | 任意 | 任意 | 任意 | 任意 | 拒绝 |
 
+> [!NOTE]
+> 如果[配置安全 LDAP][configure-ldaps]，还可使用其他规则来允许入站流量。 此附加规则是进行正确 LDAPS 通信的必需条件。
+
 ### <a name="outbound-security-rules"></a>入站安全规则
 
-| 优先级 | 名称 | 端口 | 协议 | 源 | 目标 | 操作 |
+| 优先级 | 名称 | 端口 | 协议 | Source | 目标 | 操作 |
 |----------|------|------|----------|--------|-------------|--------|
 | 65000    | AllVnetOutBound | 任意 | 任意 | VirtualNetwork | VirtualNetwork | 允许 |
 | 65001    | AllowAzureLoadBalancerOutBound | 任意 | 任意 |  任意 | Internet | 允许 |

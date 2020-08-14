@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-origin.date: 03/24/2020
-ms.date: 05/11/2020
-ms.openlocfilehash: 27f44da31d6e9931460707376408cf981077c7d0
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+origin.date: 07/13/2020
+ms.date: 08/10/2020
+ms.openlocfilehash: 7d005f6f9090e20c372c0abe8d009a6e39a68467
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82197883"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914345"
 ---
 # <a name="copy-data-from-and-to-salesforce-service-cloud-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Salesforce Service Cloud 复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -51,7 +51,7 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 请注意以�
 - 如果并发请求数超过限制，则将进行限制并且会看到随机失败。
 - 如果请求总数超过限制，会阻止 Salesforce 帐户 24 小时。
 
-在这两种情况下，还可能会收到“REQUEST_LIMIT_EXCEEDED”错误消息。 有关详细信息，请参阅 [Salesforce 开发人员限制](https://resources.docs.salesforce.com/200/20/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf)中的“API 请求限制”部分。
+在这两种情况下，还可能会收到“REQUEST_LIMIT_EXCEEDED”错误消息。 有关详细信息，请参阅 [Salesforce 开发人员限制](https://developer.salesforce.com/docs/atlas.en-us.218.0.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/salesforce_app_limits_platform_api.htm)中的“API 请求限制”部分。
 
 ## <a name="get-started"></a>入门
 
@@ -304,7 +304,7 @@ Salesforce 链接服务支持以下属性。
 * **SOQL 示例**：`SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= @{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-ddTHH:mm:ssZ')} AND LastModifiedDate < @{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-ddTHH:mm:ssZ')}`
 * **SQL 示例**：`SELECT * FROM Account WHERE LastModifiedDate >= {ts'@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}'} AND LastModifiedDate < {ts'@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'}`
 
-### <a name="error-of-malformed_querytruncated"></a>MALFORMED_QUERY:Truncated 错误
+### <a name="error-of-malformed_query-truncated"></a>MALFORMED_QUERY:Truncated 错误
 
 如果遇到“MALFORMED_QUERY:Truncated”错误，通常是因为在数据中存在 JunctionIdList 类型列，而 Salesforce 在支持此类具有大量行的数据方面存在限制。 若要缓解这种情况，请尝试排除 JunctionIdList 列或限制要复制的行数（可以将其划分为多个复制活动运行）。
 

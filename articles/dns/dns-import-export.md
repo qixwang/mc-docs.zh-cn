@@ -1,19 +1,20 @@
 ---
-title: 使用 Azure CLI 导入和导出 Azure DNS 的域区域文件 | Microsoft 文档
+title: 导入和导出域区域文件 - Azure CLI
+titleSuffix: Azure DNS
 description: 了解如何通过使用 Azure CLI 导入和导出 Azure DNS 的 DNS 区域文件
 services: dns
 author: WenJason
 ms.service: dns
-origin.date: 4/3/2019
-ms.date: 07/29/2019
+origin.date: 7/30/2020
+ms.date: 08/10/2020
 ms.author: v-jay
-ms.topic: conceptual
-ms.openlocfilehash: 416406ba6105821b66df44cc283712bbe2ca54ff
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.topic: how-to
+ms.openlocfilehash: 3e928b04e89d7557f2f65e7a5fb7f1a05092fea2
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80109805"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917182"
 ---
 # <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>使用 Azure CLI 导入和导出 DNS 区域文件
 
@@ -82,7 +83,7 @@ az network dns zone import -g <resource group> -n <zone name> -f <zone file name
 1. 如果还没有 Resource Manager 资源组，则需要创建一个。
 
     ```azurecli
-    az group create --group myresourcegroup -l chinaeast
+    az group create --resource-group myresourcegroup -l chinaeast
     ```
 
 2. 要将文件 **contoso.com.txt** 中的区域 **contoso.com** 导入到资源组 **myresourcegroup** 中的新 DNS 区域，请运行命令 `az network dns zone import`。<BR>此命令将加载并分析区域文件。 此命令在 Azure DNS 服务上执行一系列命令，以便创建区域和区域中的所有记录集。 此命令在控制台窗口中报告进度，以及任何错误或警告。 由于记录集是以序列方式创建的，导入大型区域文件可能需要几分钟。

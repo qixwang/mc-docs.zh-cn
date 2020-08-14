@@ -5,28 +5,34 @@ services: container-service
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 07/01/2020
-ms.date: 07/13/2020
+ms.date: 08/10/2020
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 73935f28bfbab957267ea675611f8d1d0beb9cc3
-ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
+ms.openlocfilehash: 227ff317d54b89f43d74406f56ab186a50c66297
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86218753"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842615"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中应用程序和群集的安全性相关概念
+<a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>
 
 在 Azure Kubernetes 服务 (AKS) 中运行应用程序工作负荷的过程中，若要保护客户数据，关键是要确保群集的安全性。 Kubernetes 包括安全组件，如网络策略和机密 。 Azure 会添加组件，例如网络安全组和协调群集升级。 这些安全组件共同确保 AKS 群集运行最新的 OS 安全更新和 Kubernetes 版本，并确保安全的 pod 流量和对敏感凭据的安全访问。
 
 本文介绍用于保护 AKS 中应用程序的核心概念：
 
-- [主组件安全性](#master-security)
-- [节点安全性](#node-security)
-- [群集升级](#cluster-upgrades)
-- [网络安全](#network-security)
-- [Kubernetes 机密](#kubernetes-secrets)
+- [Azure Kubernetes Service (AKS) 中的应用程序和群集的安全性概念](#security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks)
+    - [主组件安全](#master-security)
+    - [节点安全性](#node-security)
+        - [计算隔离](#compute-isolation)
+    - [群集升级](#cluster-upgrades)
+        - [隔离和排空](#cordon-and-drain)
+    - [网络安全](#network-security)
+        - [Azure 网络安全组](#azure-network-security-groups)
+    - [Kubernetes 机密](#kubernetes-secrets)
+    - [后续步骤](#next-steps)
 
 ## <a name="master-security"></a>主组件安全
 
@@ -52,7 +58,13 @@ Azure 平台会在夜间自动将 OS 安全修补程序应用于 Linux 节点。
 
 为提供存储，节点使用 Azure 托管磁盘。 这些是由高性能固态硬盘支持的高级磁盘，适用于大多数规模的 VM 节点。 托管磁盘上存储的数据在 Azure 平台内会自动静态加密。 为提高冗余，还会在 Azure 数据中心内安全复制这些磁盘。
 
-目前，在恶意的多租户使用情况下，AKS 或其他位置中的 Kubernetes 环境并不完全安全。 用于节点的其他安全功能（例如 *Pod 安全策略*或更细粒度的基于角色的访问控制 (RBAC)）可增加攻击的难度。 但是，为了在运行恶意多租户工作负荷时获得真正的安全性，虚拟机监控程序应是你唯一信任的安全级别。 Kubernetes 的安全域成为整个群集，而不是单个节点。 对于这些类型的恶意多租户工作负荷，应使用物理隔离的群集。 有关如何隔离工作负荷的详细信息，请参阅 [AKS 中的群集隔离最佳做法][cluster-isolation]。
+目前，在恶意的多租户使用情况下，AKS 或其他位置中的 Kubernetes 环境并不完全安全。 用于节点的其他安全功能（例如 Pod 安全策略或更细化的基于角色的访问控制 (RBAC)）可增加攻击的难度。 但是，为了在运行恶意多租户工作负荷时获得真正的安全性，虚拟机监控程序应是你唯一信任的安全级别。 Kubernetes 的安全域成为整个群集，而不是单个节点。 对于这些类型的恶意多租户工作负荷，应使用物理隔离的群集。 有关如何隔离工作负载的详细信息，请参阅 [AKS 中的群集隔离最佳做法][cluster-isolation]。
+
+### <a name="compute-isolation"></a>计算隔离
+
+ 由于符合性或法规要求，某些工作负载可能需要与其他客户工作负载高度隔离。 对于这些工作负载，Azure 提供[独立虚拟机](../virtual-machines/isolation.md)，这些虚拟机可用作 AKS 群集中的代理节点。 这些独立虚拟机独立于特定硬件类型，并专用于单个客户。 
+
+ 要配合使用这些独立虚拟机和 AKS 群集，请在创建 AKS 群集或添加节点池时，选择[此处](../virtual-machines/isolation.md)列出的某个独立虚拟机大小作为“节点大小”。
 
 ## <a name="cluster-upgrades"></a>群集升级
 
@@ -76,6 +88,8 @@ Azure 平台会在夜间自动将 OS 安全修补程序应用于 Linux 节点。
 ### <a name="azure-network-security-groups"></a>Azure 网络安全组
 
 为筛选虚拟网络中的通信流量，Azure 使用网络安全组规则。 这些规则定义要允许或拒绝哪些源和目标 IP 范围、端口和协议访问资源。 会创建默认规则以允许 TLS 流量流向 Kubernetes API 服务器。 在使用负载均衡器、端口映射或入口路由创建服务时，AKS 会自动修改网络安全组，以便流量流向正确的方向。
+
+如果为 AKS 群集提供了自己的子网，并且希望修改流量流，请不要修改 AKS 管理的子网级网络安全组。 可以创建其他子网级网络安全组来修改流量流，只要它们不干扰管理群集（例如负载均衡器访问、与控制平面的通信，以及[流出量][aks-limit-egress-traffic]）所需的流量。
 
 ### <a name="kubernetes-network-policy"></a>Kubernetes 网络策略
 
@@ -108,18 +122,19 @@ Kubernetes 机密存储在分布式密钥-值存储 etcd 中。 Etcd 存储由 A
 [kured]: https://github.com/weaveworks/kured
 [kubernetes-network-policies]: https://kubernetes.io/docs/concepts/services-networking/network-policies/
 [secret-risks]: https://kubernetes.io/docs/concepts/configuration/secret/#risks
-[encryption-atrest]: /security/fundamentals/encryption-atrest
+[encryption-atrest]: ../security/fundamentals/encryption-atrest.md
 
 <!-- LINKS - Internal -->
 
 [aks-daemonsets]: concepts-clusters-workloads.md#daemonsets
 [aks-upgrade-cluster]: upgrade-cluster.md
-[aks-aad]: azure-ad-integration.md
+[aks-aad]: ./azure-ad-integration-cli.md
 [aks-concepts-clusters-workloads]: concepts-clusters-workloads.md
 [aks-concepts-identity]: concepts-identity.md
 [aks-concepts-scale]: concepts-scale.md
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-network]: concepts-network.md
+[aks-limit-egress-traffic]: limit-egress-traffic.md
 [cluster-isolation]: operator-best-practices-cluster-isolation.md
 [operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
 [developer-best-practices-pod-security]: developer-best-practices-pod-security.md

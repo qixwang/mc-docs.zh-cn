@@ -6,19 +6,19 @@ ms.author: v-jay
 ms.service: postgresql
 ms.topic: conceptual
 origin.date: 02/25/2020
-ms.date: 04/27/2020
-ms.openlocfilehash: 15717ba992a493e1f2f737b4e090b75ac2a2956f
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.date: 08/17/2020
+ms.openlocfilehash: 7d97fffd69c1eeee1524de392ed60d5d2d9d9da6
+ms.sourcegitcommit: 3cf647177c22b24f76236c57cae19482ead6a283
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126910"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88029601"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - 单一服务器中的定价层
 
 可以在以下三个不同的定价层之一中创建 Azure Database for PostgreSQL 服务器：“基本”、“常规用途”和“内存优化”。 定价层的差异表现在可以预配的 vCore 中的计算量、每个 vCore 的内存，以及用于存储数据的存储技术。 所有资源都在 PostgreSQL 服务器级别预配。 一个服务器可以有一个或多个数据库。
 
-|    | **基本** | **常规用途** | **内存优化** |
+| 资源/层 | **基本** | **常规用途** | **内存优化** |
 |:---|:----------|:--------------------|:---------------------|
 | 计算的代 | 第 4 代、第 5 代 | 第 4 代、第 5 代 | 第 5 代 |
 | vCore 数 | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
@@ -44,14 +44,14 @@ ms.locfileid: "82126910"
 
 预配的存储是指可供 Azure Database for PostgreSQL 服务器使用的存储容量。 此存储用于数据库文件、临时文件、事务日志和 PostgreSQL 服务器日志。 预配的总存储量也定义了可供服务器使用的 I/O 容量。
 
-|    | **基本** | **常规用途** | **内存优化** |
+| 存储属性 | **基本** | **常规用途** | **内存优化** |
 |:---|:----------|:--------------------|:---------------------|
 | 存储类型 | 基本存储 | 常规用途存储 | 常规用途存储 |
 | 存储大小 | 5 GB 到 1 TB | 5GB 到 4TB | 5GB 到 4TB |
 | 存储增量大小 | 1 GB | 1 GB | 1 GB |
 | IOPS | 变量 |3 IOPS/GB<br/>至少 100 IOPS<br/>最大 6000 IOPS | 3 IOPS/GB<br/>至少 100 IOPS<br/>最大 6000 IOPS |
 
-在创建服务器的过程中和之后，可以添加更多的存储容量，这样系统就可以根据工作负荷的存储使用情况自动增加存储。 
+在创建服务器的过程中和之后，可以添加更多的存储容量，这样系统就可以根据工作负荷的存储使用情况自动增加存储。
 
 >[!NOTE]
 > 存储只能增加，不能减少。
@@ -80,15 +80,15 @@ ms.locfileid: "82126910"
 
 请记住，存储只能增加，不能减少。
 
-## <a name="backup"></a>Backup
+## <a name="backup-storage"></a>备份存储
 
-服务自动对服务器进行备份。 可以选择 7 到 35 天的保留期。 常规用途和内存优化服务器可以选择使用异地冗余存储进行备份。 若要详细了解备份，请参阅[概念文章](concepts-backup.md)。
+Azure Database for PostgreSQL 最高可以提供 100% 的已预配服务器存储作为备份存储，不收取任何额外费用。 使用的任何备份存储量超过此数量将按每月 GB 量收费。 例如，如果为服务器配置了 250 GB 的存储空间，则可以为服务器备份提供 250 GB 的额外存储空间，而不收取任何费用。 超过 250GB 的备份存储量按[定价模型](https://azure.cn/pricing/details/postgresql/)收费。 若要了解影响备份存储使用率的因素、监视和控制备份存储成本，可以参考[备份文档](concepts-backup.md)。
 
 ## <a name="scale-resources"></a>缩放资源
 
 创建服务器之后，可以独立地更改 vCore 数、硬件生成、定价层（基本层的操作除外）、存储量和备份保留期。 创建服务器之后，不能更改备份存储类型。 可以向上或向下调整 VCore 数。 备份保留期可以从 7 天到 35 天进行上下调整。 存储大小只能增加。 可以通过门户或 Azure CLI 缩放资源。 有关使用 Azure CLI 进行缩放的示例，请参阅[使用 Azure CLI 监视和缩放 Azure Database for PostgreSQL 服务器](scripts/sample-scale-server-up-or-down.md)。
 
-> [!NOTE] 
+> [!NOTE]
 > 存储大小只能增加。 增加后，将不能返回到更小的存储大小。
 
 更改 vCore 数、硬件生成或定价层时，将会使用新的计算分配创建原始服务器的副本。 启动并运行新服务器后，连接将切换到新服务器。 在系统切换到新服务器的短暂期间，无法建立新的连接，所有未提交的连接将会回退。 此时段不定，但大多数情况下短于一分钟。
@@ -97,10 +97,10 @@ ms.locfileid: "82126910"
 
 ## <a name="pricing"></a>定价
 
-有关最新定价信息，请参阅服务的[定价页](https://www.azure.cn/pricing/details/PostgreSQL/)。 若要查看所需配置的具体成本，可以单击 [Azure 门户](https://portal.azure.cn/#create/Microsoft.PostgreSQLServer)的“定价层”选项卡，系统就会根据选定的选项显示每月成本。  如果没有 Azure 订阅，可使用 Azure 定价计算器获取估计的价格。 在 [Azure 定价计算器](https://www.azure.cn/pricing/calculator/)网站上，选择“添加项”  ，展开“数据库”  类别，选择“Azure Database for PostgreSQL”  自定义选项。
+有关最新定价信息，请参阅服务的[定价页](https://www.azure.cn/pricing/details/PostgreSQL/)。 若要查看所需配置的具体成本，可以单击 [Azure 门户](https://portal.azure.cn/#create/Microsoft.PostgreSQLServer)的“定价层”选项卡，系统就会根据选定的选项显示每月成本。 如果没有 Azure 订阅，可使用 Azure 定价计算器获取估计的价格。 在 [Azure 定价计算器](https://www.azure.cn/pricing/calculator/)网站上，选择“添加项”  ，展开“数据库”  类别，选择“Azure Database for PostgreSQL”  自定义选项。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 了解如何[在门户中创建 PostgreSQL 服务器](tutorial-design-database-using-azure-portal.md)。
-- 了解[服务限制](concepts-limits.md)。 
+- 了解[服务限制](concepts-limits.md)。
 - 了解如何[使用只读副本进行横向扩展](howto-read-replicas-portal.md)。

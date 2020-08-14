@@ -6,13 +6,13 @@ ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
 origin.date: 2/27/2020
-ms.date: 07/20/2020
-ms.openlocfilehash: 088fb1c8c53274319251ccb172fc89fa2455b271
-ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
+ms.date: 08/17/2020
+ms.openlocfilehash: 149d572dd07b46657e82f0bfda675f82f907d63e
+ms.sourcegitcommit: 3cf647177c22b24f76236c57cae19482ead6a283
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "86440502"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88029629"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>使用转储和还原将 MySQL 数据库迁移到 Azure Database for MySQL
 
@@ -72,7 +72,11 @@ $ mysqldump --opt -u [uname] -p[pass] [dbname] > [backupfile.sql]
 - [backupfile.sql] 数据库备份的文件名 
 - [--opt] mysqldump 选项 
 
-例如，若要将 MySQL 服务器上名为“testdb”的数据库（用户名为“testuser”且无密码）备份到文件 testdb_backup.sql，请使用以下命令。 该命令将 `testdb` 数据库备份到名为 `testdb_backup.sql` 的文件中，该文件包含重新创建数据库所需的所有 SQL 语句。 
+例如，若要将 MySQL 服务器上名为“testdb”的数据库（用户名为“testuser”且无密码）备份到文件 testdb_backup.sql，请使用以下命令。 该命令将 `testdb` 数据库备份到名为 `testdb_backup.sql` 的文件中，该文件包含重新创建数据库所需的所有 SQL 语句。 确保用户名“testuser”至少对转储表具有 SELECT 特权，对转储视图具 有 SHOW VIEW 权限，对转储触发器至少具有 TRIGGER 权限，如果未使用 --single transaction 选项，则至少具有 LOCK TABLES 权限。
+
+```bash
+GRANT SELECT, LOCK TABLES, SHOW VIEW ON *.* TO 'testuser'@'hostname' IDENTIFIED BY 'password';
+```
 
 ```bash
 $ mysqldump -u root -p testdb > testdb_backup.sql

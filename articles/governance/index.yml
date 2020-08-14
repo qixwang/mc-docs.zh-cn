@@ -12,12 +12,12 @@ metadata:
   ms.author: v-tawe
   origin.date: 09/10/2019
   ms.date: 12/18/2019
-  ms.openlocfilehash: ba4f1e0eb1ad5e9d49c2ff2c8e2d0010ec0c48d0
-  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+  ms.openlocfilehash: f93510f3ce23e4b482572de22353086fb0a64d6e
+  ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/17/2020
-  ms.locfileid: "75336341"
+  ms.lasthandoff: 08/07/2020
+  ms.locfileid: "87917305"
 highlightedContent:
   items:
   - title: 治理概述
@@ -57,7 +57,7 @@ productDirectory:
       text: 查看更多 >
 tools:
   title: 示例
-  summary: 策略定义、符合性蓝图、资源查询等
+  summary: 策略定义、资源查询等
   items:
   - title: Azure Policy
     imageSrc: ./media/azure-policy.svg

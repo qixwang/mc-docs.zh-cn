@@ -9,12 +9,12 @@ ms.topic: conceptual
 origin.date: 04/27/2020
 ms.date: 06/22/2020
 ms.author: v-yiso
-ms.openlocfilehash: 6b81df92edb0155cd0ea3ca195712bf6e17fa57d
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.openlocfilehash: c0fdbf1762fcc8d4e331e3f925d66e253829e4e3
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723197"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917275"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>在基于 Linux 的 Azure HDInsight 中将 Apache Oozie 与 Apache Hadoop 配合使用以定义和运行工作流
 
@@ -26,6 +26,9 @@ ms.locfileid: "84723197"
 * Apache Sqoop
 
 还可以使用 Oozie 来计划特定于某系统的作业，例如 Java 程序或 shell 脚本
+
+> [!NOTE]  
+> 用于定义与 HDInsight 配合运行的工作流的另一个选项是 Azure 数据工厂。 若要详细了解数据工厂，请参阅[将 Apache Pig 和 Apache Hive 用于数据工厂](../data-factory/transform-data.md)。 若要在具有企业安全性套餐的群集上使用 Oozie，请参阅[在具有企业安全性套餐的 HDInsight Hadoop 群集中运行 Apache Oozie](domain-joined/hdinsight-use-oozie-domain-joined-clusters.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -232,7 +235,7 @@ Oozie 工作流定义以 Hadoop 过程定义语言（缩写为 hPDL，一种 XML
     sudo apt-get --assume-yes install freetds-dev freetds-bin
     ```
 
-2. 编辑以下代码，将 `<serverName>` 替换为 Azure SQL 服务器名称，将 `<sqlLogin>` 替换为 Azure SQL 服务器登录名。  输入相应的命令以连接到必备的 SQL 数据库。  在提示符下输入密码。
+2. 编辑以下代码，将 `<serverName>` 替换为[逻辑 SQL 服务器](../azure-sql/database/logical-servers.md)名称，将 `<sqlLogin>` 替换为服务器登录名。  输入相应的命令以连接到必备的 SQL 数据库。  在提示符下输入密码。
 
     ```bash
     TDSVER=8.0 tsql -H <serverName>.database.chinacloudapi.cn -U <sqlLogin> -p 1433 -D oozietest
@@ -240,11 +243,13 @@ Oozie 工作流定义以 Hadoop 过程定义语言（缩写为 hPDL，一种 XML
 
     会收到类似于以下文本的输出：
 
-        locale is "en_US.UTF-8"
-        locale charset is "UTF-8"
-        using default charset "UTF-8"
-        Default database being set to oozietest
-        1>
+    ```output
+    locale is "en_US.UTF-8"
+    locale charset is "UTF-8"
+    using default charset "UTF-8"
+    Default database being set to oozietest
+    1>
+    ```
 
 3. 在 `1>` 提示符下，输入以下行：
 

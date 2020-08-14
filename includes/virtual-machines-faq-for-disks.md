@@ -6,17 +6,17 @@ author: rockboyfor
 ms.service: virtual-machines
 ms.topic: include
 origin.date: 03/31/2019
-ms.date: 07/27/2020
+ms.date: 08/10/2020
 ms.testscope: yes
 ms.testdate: 07/13/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: a0685504b7b6ff21f0f6a3ae7b22dbdc9dc0391e
-ms.sourcegitcommit: 2b78a930265d5f0335a55f5d857643d265a0f3ba
+ms.openlocfilehash: 7669a51a190ea1c27971797aec5cbf20bfe4772c
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87260207"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87919360"
 ---
 本文将对有关 Azure 托管磁盘和 Azure 高级 SSD 盘的一些常见问题进行解答。
 
@@ -145,6 +145,16 @@ Azure 托管磁盘当前仅支持本地冗余存储托管磁盘。
 高级 SSD、标准 SSD 和标准 HDD 支持快照。 对于这三种磁盘类型，所有磁盘大小（包括最大为 32 TiB 的磁盘）都支持快照。
 
 <!--Not Available on Ultra SSDs do not support snapshots.-->
+
+<!--Not Available on **What are Azure disk reservations?**-->
+<!--Not Available on **What options does Azure disk reservation offer?**-->
+<!--Not Available on **How is Azure disk reservation applied?**-->
+<!--Not Available on **Can I use my data storage purchased through Azure disks reservation across multiple regions?** -->
+<!--Not Available on **What happens when my Azure disks reservation expires?**-->
+
+<!--Not Available on ### Azure shared disks-->
+<!--Not Available on ## Ultra disks-->
+
 <!--Not Available on disk reservations-->
 <!--Not Available on ### Azure shared disks-->
 <!--Not Available on ## Ultra disks-->
@@ -185,9 +195,6 @@ Azure 标准 SSD 盘是什么？
 是否可将标准 SSD 用作非托管磁盘？
 不可以，标准 SSD 盘仅可用作托管磁盘。
 
-标准 SSD 磁盘是否支持“单实例 VM SLA”？
-不是，标准 SSD 没有单实例 VM SLA。 将高级 SSD 磁盘用于单实例 VM SLA。
-
 ## <a name="migrate-to-managed-disks"></a>迁移到托管磁盘
 
 **迁移对托管磁盘性能是否有影响？**
@@ -208,7 +215,7 @@ Azure 标准 SSD 盘是什么？
 
 **是否支持将现有虚拟机规模集从非托管磁盘自动迁移到托管磁盘？**
 
-否。 可以使用包含非托管磁盘的旧规模集中的映像创建包含托管磁盘的新规模集。
+不是。 可以使用包含非托管磁盘的旧规模集中的映像创建包含托管磁盘的新规模集。
 
 是否可以通过迁移到托管磁盘之前创建的页 Blob 快照创建托管磁盘？
 
@@ -220,7 +227,7 @@ Azure 标准 SSD 盘是什么？
 
 迁移是否影响 Azure Site Recovery 通过 Azure 到 Azure 复制保护的 Azure VM？
 
-否。 对于包含托管磁盘的 VM，提供 Azure Site Recovery Azure 到 Azure 保护。
+不是。 对于包含托管磁盘的 VM，提供 Azure Site Recovery Azure 到 Azure 保护。
 
 是否可以迁移位于存储帐户中现在或以前已加密的 VM 的非托管磁盘迁移到托管磁盘？
 
@@ -240,15 +247,15 @@ Azure 标准 SSD 盘是什么？
 
 平台托管密钥由 21Vianet 管理。 你还可以使用和管理 Azure 密钥保管库中存储的你自己的密钥。 
 
-<!-- Notice: Change Microsoft to 21Vianet -->
+<!-- Notice: Change Microsoft to Azure OR 21Vianet -->
 
 是否可以为托管磁盘禁用服务器端加密？
 
-否。
+不是。
 
 服务器端加密是否仅适用于特定区域？
 
-否。 使用平台和客户托管密钥的服务器端加密适用于托管磁盘可用的所有区域。 
+不是。 使用平台和客户托管密钥的服务器端加密适用于托管磁盘可用的所有区域。 
 
 对于本地到 Azure 和 Azure 到 Azure 灾难恢复方案，Azure Site Recovery 是否支持使用客户托管密钥的服务器端加密？
 
@@ -268,7 +275,7 @@ Azure 标准 SSD 盘是什么？
 
 是否会同时加密从托管磁盘或快照导出的 VHD？
 
-否。 但如果将 VHD 从加密托管磁盘或快照导出到加密存储帐户，则会对其进行加密。 
+不是。 但如果将 VHD 从加密托管磁盘或快照导出到加密存储帐户，则会对其进行加密。 
 
 ## <a name="premium-disks-managed-and-unmanaged"></a>高级磁盘：托管和非托管
 
@@ -305,7 +312,6 @@ DS 系列的缓存和本地 SSD 合并限制是每个核心 4,000 IOPS，以及�
 在高级或标准磁盘的 Azure 磁盘上使用 TRIM 没有负面影响。
 
 <a name="new-disk-sizes-managed-and-unmanaged"></a>
-
 ## <a name="new-disk-sizes-managed-and-unmanaged"></a>新磁盘大小：托管和非托管
 
 哪些区域对于适用的高级 SSD 磁盘大小支持突发功能？
@@ -343,7 +349,7 @@ Azure 支持的最大页 blob 大小是 8 TiB (8,191 GiB)。 附加到 VM 作为
 |Azure 工具      | 支持的版本                                |
 |-----------------|---------------------------------------------------|
 |Azure PowerShell | 版本号 4.1.0：2017 年 6 月版本或更高版本|
-|Azure CLI v1     | 版本号 0.10.13：2017 年 5 月版本或更高版本|
+|Azure CLI v1     | 版本号 0.10.13：2017 年 5 月版本或更高版本|
 |Azure CLI v2     | 版本号 2.0.12：2017 年 7 月版本或更高版本|
 |AzCopy              | 版本号 6.1.0：2017 年 6 月版本或更高版本|
 
@@ -386,6 +392,8 @@ Azure 全球、 Microsoft Azure 政府和 Azure 中国世纪互联涵盖的所�
 **是否支持在所有磁盘大小上启用主机缓存？**
 
 4 TiB 以下的磁盘大小支持主机缓存（只读和读/写）。 这意味着，预配到最高 4095 GiB 的任何磁盘都可以利用主机缓存。 大于或等于 4096 GiB 的磁盘大小不支持主机缓存。 例如，预配到 4095 GiB 的 P50 高级磁盘可以利用主机缓存，而预配到 4096 GiB 的 P50 磁盘不能利用主机缓存。 建议利用较小磁盘大小的缓存，以便通过缓存到 VM 的数据观察到明显的性能提升。
+
+<!--Not Available on ## Private Links for securely exporting and importing Managed Disks-->
 
 ## <a name="what-if-my-question-isnt-answered-here"></a>如果未在此处找到相关问题怎么办？
 

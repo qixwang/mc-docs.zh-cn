@@ -7,15 +7,15 @@ ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
 origin.date: 09/03/2019
-ms.date: 07/27/2020
+ms.date: 08/10/2020
 ms.author: v-jay
 ms.localizationpriority: high
-ms.openlocfilehash: c6483578f4f5ec2341739828d4ebfa3901c592fb
-ms.sourcegitcommit: c3f15613c875bb52d5a105445efd0f36b9f24c9c
+ms.openlocfilehash: 96c1c7c63b3a6b7922d1f3cb2ac3fc5161de8302
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86473477"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917304"
 ---
 ::: zone target="docs"
 
@@ -57,14 +57,14 @@ ms.locfileid: "86473477"
 
 - 你需要负责确保将数据复制到与适当数据格式对应的文件夹中。 例如，将块 Blob 数据复制到块 Blob 的文件夹。 如果数据格式与相应的文件夹（存储类型）不匹配，则在后续步骤中，数据将无法上传到 Azure。
 - 复制数据时，请确保数据大小符合 [Azure 存储和 Data Box 磁盘限制](data-box-disk-limits.md)中所述的大小限制。
-- 如果 Data Box Disk 正在上传的数据同时由 Data Box Disk 外部的其他应用程序上传，则可能会导致上传作业失败和数据损坏。
+- 如果 Data Box 磁盘正在上传的数据同时已由 Data Box 磁盘外部的其他应用程序上传，则可能会导致上传作业失败和数据损坏。
 
    > [!IMPORTANT]
    >  如果已在创建订单的过程中将托管磁盘指定为存储目标之一，那么以下部分就是适用的。
 
 - 在所有预先创建的文件夹和所有 Data Box Disk 中，一个资源组只能包含一个具有给定名称的托管磁盘。 这意味着，上传到预先创建的文件夹的 VHD 应具有唯一的名称。 确保给定的名称与资源组中现有的托管磁盘不匹配。 如果 VHD 具有相同的名称，则只有一个 VHD 将转换为具有该名称的托管磁盘。 其他 VHD 作为页 blob 上传到临时存储帐户。
-- 始终将 VHD 复制到某个预先创建的文件夹。 如果将 VHD 复制到这些文件夹以外或者复制到你已创建的文件夹中，则 VHD 将作为页 Blob 而不是托管磁盘上传到 Azure 存储帐户中。
-- 只能上传固定的 VHD 来创建托管磁盘。 动态 VHD、差异 VHD 或 VHDX 文件不受支持。
+- 始终将 VHD 复制到某个预先创建的文件夹。 如果将 VHD 复制到这些文件夹以外或者复制到你自己创建的文件夹中，则 VHD 作为页 Blob 而不是托管磁盘上传到 Azure 存储帐户中。
+- 只能上传固定的 VHD 来创建托管磁盘。 不支持动态 VHD、差异 VHD 或 VHDX 文件。
 
 
 执行以下步骤，连接到计算机并将其上的数据复制到 Data Box 磁盘。
@@ -87,7 +87,7 @@ ms.locfileid: "86473477"
 
     在 Azure 存储帐户中，为 BlockBlob 和 PageBlob 文件夹下的每个子文件夹创建一个容器。 BlockBlob 和 PageBlob 文件夹下的所有文件将复制到 Azure 存储帐户下的默认容器 `$root` 中。 `$root` 容器中的所有文件始终作为块 Blob 上传。
 
-   将文件复制到“AzureFile”文件夹中的文件夹。 *AzureFile* 文件夹内的子文件夹会创建文件共享。 直接复制到 AzureFile 文件夹的文件都会失败，会作为块 Blob 上传。
+   将文件复制到“AzureFile”文件夹中的文件夹。 AzureFile 文件夹中的子文件夹创建文件共享。 直接复制到 AzureFile 文件夹的文件都会失败，会作为块 Blob 上传。
 
     如果根目录中存在文件和文件夹，则必须先将它们移到另一个文件夹，然后开始复制数据。
 
@@ -301,7 +301,7 @@ ms.locfileid: "86473477"
 请继续学习下一篇教程，了解如何退回 Data Box 磁盘和验证向 Azure 上传数据的结果。
 
 > [!div class="nextstepaction"]
-> [将 Azure Data Box 寄回到 Microsoft](./data-box-disk-deploy-picked-up.md)
+> [将 Azure Data Box 寄回到 21Vianet](./data-box-disk-deploy-picked-up.md)
 
 ::: zone-end
 

@@ -5,14 +5,14 @@ author: WenJason
 ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
-origin.date: 12/02/2019
-ms.date: 07/20/2020
-ms.openlocfilehash: 784537c8019cdaaca433b89a1b86d42f0e8f84b8
-ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
+origin.date: 06/25/2020
+ms.date: 08/17/2020
+ms.openlocfilehash: bdafe5d45414c79894d779eb9a664418f1bc6c25
+ms.sourcegitcommit: 3cf647177c22b24f76236c57cae19482ead6a283
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "86440503"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88029618"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>在 Azure Database for MySQL 中进行监视
 
@@ -43,7 +43,7 @@ ms.locfileid: "86440503"
 |seconds_behind_master|复制延迟（秒）|计数|副本服务器滞后于主服务器的秒数。|
 |network_bytes_egress|网络传出|字节|跨活动连接的网络传出。|
 |network_bytes_ingress|网络传入|字节|跨活动连接的网络传入。|
-|backup_storage_used|使用的备份存储|字节|已使用的备份存储量。|
+|backup_storage_used|使用的备份存储|字节|已使用的备份存储量。 此指标表示根据为服务器设置的备份保留期保留的所有完整数据库备份、差异备份和日志备份所消耗的存储的总和。 备份的频率由服务管理，并在[概念文章](concepts-backup.md)中进行了说明。 对于异地冗余存储，备份存储使用率是本地冗余存储的两倍。|
 
 ## <a name="server-logs"></a>服务器日志
 可以在服务器上启用慢查询和审核日志。 这些日志也可通过 Azure Monitor 日志、事件中心和存储帐户中的 Azure 诊断日志获得。 若要详细了解日志记录，请访问 [审核日志](concepts-audit-logs.md)和[慢查询日志](concepts-server-logs.md)文章。
@@ -74,8 +74,6 @@ ms.locfileid: "86440503"
 6. 在“操作组”中，定义接收警报的方式（获取电子邮件、触发逻辑应用等）。  
 7. 确保“创建后启用规则”设置为“是”。
 8. 选择“创建警报规则”以完成警报
-
-有关如何创建服务运行状况警报的详细步骤，请参阅 [创建有关服务通知的活动日志警报](../service-health/alerts-activity-log-service-notifications.md)。
 
 > [!IMPORTANT]
 > 计划内维护通知目前为预览版

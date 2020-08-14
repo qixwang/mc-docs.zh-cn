@@ -12,12 +12,12 @@ ms.workload: big-data
 origin.date: 12/25/2019
 ms.author: v-yiso
 ms.date: 02/24/2020
-ms.openlocfilehash: 3ae797b6c1f577f04851c9d8a7c58b1fe05762c2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2c703c62a90ccf9a2b5aaa6768d7984423a45065
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428729"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917347"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>使数据分析管道可操作化
 
@@ -55,11 +55,11 @@ Oozie 根据操作、工作流和协调器对管道进行描述    。 操作决
 
 ### <a name="provision-azure-sql-database"></a>预配置 Azure SQL 数据库
 
-1. 创建 Azure SQL 数据库。 请参阅[在 Azure 门户中创建 Azure SQL 数据库](../sql-database/sql-database-single-database-get-started.md)。
+1. 创建 Azure SQL 数据库。 请参阅[在 Azure 门户中创建 Azure SQL 数据库](../azure-sql/database/single-database-create-quickstart.md)。
 
-1. 若要确保 HDInsight 群集能够访问连接的 Azure SQL 数据库，请配置 Azure SQL 数据库防火墙规则，允许 Azure 服务和资源访问服务器。 可以在 Azure 门户中启用此选项，方法是选择“设置服务器防火墙”，然后在“允许 Azure 服务和资源访问此服务器”下选择“启用”（针对 Azure SQL 数据库服务器或数据库）。    有关详细信息，请参阅[创建和管理 IP 防火墙规则](../sql-database/sql-database-firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)。
+1. 若要确保 HDInsight 群集能够访问连接的 Azure SQL 数据库，请配置 Azure SQL 数据库防火墙规则，允许 Azure 服务和资源访问服务器。 可以在 Azure 门户中启用此选项，方法是选择“设置服务器防火墙”，然后在“允许 Azure 服务和资源访问此服务器”下选择“启用”（针对 Azure SQL 数据库）。   有关详细信息，请参阅[创建和管理 IP 防火墙规则](../azure-sql/database/firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)。
 
-1. 使用[查询编辑器](../sql-database/sql-database-single-database-get-started.md#query-the-database)执行以下 SQL 语句，以创建 `dailyflights` 表用于存储每次管道运行后的汇总数据。
+1. 使用[查询编辑器](../azure-sql/database/single-database-create-quickstart.md#query-the-database)执行以下 SQL 语句，以创建 `dailyflights` 表用于存储每次管道运行后的汇总数据。
 
     ```sql
     CREATE TABLE dailyflights

@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 07/13/2020
+ms.date: 08/07/2020
 ms.author: v-junlch
-ms.openlocfilehash: 04e31093d10a783a48356584a6db5c7f69f95490
-ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
+ms.openlocfilehash: 44722a1606406262ace0118e971e0769a09e28a7
+ms.sourcegitcommit: a5eb9a47feefb053ddbaab4b15c395972c372339
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86472609"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88028627"
 ---
 # <a name="troubleshoot-domain-join-problems-with-an-azure-active-directory-domain-services-managed-domain"></a>使用 Azure Active Directory 域服务托管域对域加入问题进行故障排除
 
@@ -30,16 +30,16 @@ ms.locfileid: "86472609"
 
 如果 VM 找不到托管域，则通常存在网络连接或配置问题。 查看以下故障排除步骤，找到并解决问题：
 
-1. 确保将 VM 连接到为 Azure AD DS 启用的同一虚拟网络或对等虚拟网络。 否则，VM 无法找到并连接到域，因此无法加入域。
+1. 确保将 VM 连接到托管域的同一虚拟网络或对等虚拟网络。 否则，VM 无法找到并连接到域，因此无法加入域。
     * 如果 VM 未连接到同一虚拟网络，请确认虚拟网络对等互连或 VPN 连接处于“活动”或“已连接”状态，以允许流正确流动 。
 1. 请尝试使用托管域的域名 ping 该域，例如 `ping aaddscontoso.com`。
     * 如果 ping 响应失败，请尝试 ping 托管域门户概述页中显示的域的 IP 地址，例如 `ping 10.0.0.4`。
-    * 如果能够 ping 通该 IP 地址，但无法 ping 通域，则表示 DNS 的配置可能不正确。 请确保配置了虚拟网络的托管域 DNS 服务器。
+    * 如果能够 ping 通该 IP 地址，但无法 ping 通域，则表示 DNS 的配置可能不正确。 请确保已[为虚拟网络配置托管域 DNS 服务器][configure-dns]。
 1. 请尝试刷新虚拟机上的 DNS 解析程序缓存，例如 `ipconfig /flushdns`。
 
 ### <a name="network-security-group-nsg-configuration"></a>网络安全组 (NSG) 配置
 
-创建托管域时，还会以相应的规则创建网络安全组以实现成功的域操作。 如果编辑或创建其他网络安全组规则，可能会无意间阻止 Azure AD DS 提供连接和身份验证服务所需的端口。 这些网络安全组规则可能导致出现问题，例如密码同步无法完成、用户无法登录或域加入问题。
+创建托管域时，还会以相应的规则创建网络安全组以实现成功的域操作。 如果编辑或创建其他网络安全组规则，则可能会无意间阻止 Azure AD DS 提供连接和身份验证服务所需的端口。 这些网络安全组规则可能导致出现问题，例如密码同步无法完成、用户无法登录或域加入问题。
 
 如果仍然遇到连接问题，请查看以下故障排除步骤：
 
@@ -53,7 +53,7 @@ ms.locfileid: "86472609"
 
 若要对与凭据相关的问题进行故障排除，请查看以下故障排除步骤：
 
-1. 请尝试使用 UPN 格式指定凭据。例如 `dee@aaddscontoso.partner.onmschina.cn`。 请确保在 Azure AD 中正确配置了此 UPN。
+1. 请尝试使用 UPN 格式指定凭据。例如 `dee@contoso.partner.onmschina.cn`。 请确保在 Azure AD 中正确配置了此 UPN。
     * 如果租户中有多个用户具有相同的 UPN 前缀，或者 UPN 前缀过长，系统可能会自动生成帐户的 SAMAccountName。 因此，帐户的 SAMAccountName 格式可能不同于所需的格式或者在本地域中使用的格式。
 1. 尝试使用属于托管域的用户帐户的凭据将 VM 加入托管域。
 1. 请确保[启用了密码同步][enable-password-sync]，并确保为完成初始密码同步等待了足够长的时间。
@@ -68,6 +68,7 @@ ms.locfileid: "86472609"
 [enable-password-sync]: tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds
 [network-ports]: network-considerations.md#network-security-groups-and-required-ports
 [azure-ad-support]: https://support.azure.cn/en-us/support/support-azure/
+[configure-dns]: tutorial-create-instance.md#update-dns-settings-for-the-azure-virtual-network
 
 <!-- EXTERNAL LINKS -->
 [join-authentication-issues]: https://docs.microsoft.com/previous-versions/windows/it-pro/windows-2000-server/cc961817(v=technet.10)

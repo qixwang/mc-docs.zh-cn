@@ -52,8 +52,12 @@
     - name: 访问和标识
       href: concepts-identity.md
     - name: 安全性
-      href: concepts-security.md
-      items: null
+      items:
+        - name: 应用程序和群集的安全性
+          href: concepts-security.md
+        - name: Azure Policy 的安全控件
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
     - name: 网络
       href: concepts-network.md
     - name: 存储
@@ -148,8 +152,6 @@
           href: internal-lb.md
         - name: 使用标准负载均衡器
           href: load-balancer-standard.md
-        - name: 将用户定义的路由用于入口
-          href: egress-outboundtype.md
         - name: 使用静态 IP 地址
           href: static-ip.md
         - name: 流入量
@@ -166,8 +168,14 @@
                   href: ingress-tls.md
                 - name: 使用静态公共 IP 地址
                   href: ingress-static-ip.md
-        - name: 出口流量
-          href: egress.md
+        - name: 流出量
+          items:
+            - name: 限制和控制群集出口流量
+              href: limit-egress-traffic.md
+            - name: 将用户定义的路由用于入口
+              href: egress-outboundtype.md
+            - name: 使用基本负载均衡器和静态 IP 地址
+              href: egress.md
         - name: 自定义 CoreDNS
           href: coredns-custom.md
     - name: 安全性和身份验证
@@ -180,15 +188,15 @@
           href: control-kubeconfig-access.md
         - name: 使用网络策略保护 Pod 流量
           href: use-network-policies.md
+        - name: 使用 pod 安全策略（预览版）
+          href: use-pod-security-policies.md
         - name: 定义 API 服务器授权 IP 范围
           href: api-server-authorized-ip-ranges.md
         - name: 更新群集凭据
           href: update-credentials.md
-        - name: 限制和控制群集出口流量
-          href: limit-egress-traffic.md
         - name: 实现 Azure Active Directory 集成
           items:
-            - name: 使用 Azure CLI
+            - name: AAD 集成
               href: azure-ad-integration-cli.md
         - name: 将 Kubernetes RBAC 用于 Azure AD 集成
           href: azure-ad-rbac.md
@@ -235,6 +243,9 @@
           href: spark-job.md
         - name: 使用 GPU
           href: gpu-cluster.md
+        - name: 使用 Azure Database for PostgreSQL
+          href: ../postgresql/concepts-aks.md
+          maintainContext: true
     - name: 选择并部署服务网格
       items:
         - name: 关于服务网格
@@ -297,8 +308,8 @@
       href: 'https://azure.microsoft.com/regions/services/'
     - name: 支持策略
       href: support-policies.md
-    - name: 提供产品反馈
-      href: 'https://support.azure.cn/support/contact/'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-container-service'
     - name: 视频
       href: 'https://www.azure.cn/video-center/'
     - name: 常见问题解答

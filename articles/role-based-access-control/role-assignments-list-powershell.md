@@ -8,18 +8,18 @@ manager: mtillman
 ms.assetid: 9e225dba-9044-4b13-b573-2f30d77925a9
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/25/2020
+ms.date: 08/05/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
-ms.openlocfilehash: 9c35432f6e6d2d882a0d219c1ded0f00b1331665
-ms.sourcegitcommit: 7429daf26cff014b040f69cdae75bdeaea4f4e93
+ms.openlocfilehash: 93c5f448cbd551774be960737fc0b2b57f55c6f7
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83991660"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914286"
 ---
 # <a name="list-azure-role-assignments-using-azure-powershell"></a>使用 Azure PowerShell 列出 Azure 角色分配
 
@@ -137,6 +137,26 @@ Get-AzRoleAssignment -Scope /providers/Microsoft.Management/managementGroups/<gr
 
 ```Example
 PS C:\> Get-AzRoleAssignment -Scope /providers/Microsoft.Management/managementGroups/marketing-group
+```
+
+## <a name="list-role-assignments-for-a-resource"></a>列出资源的角色分配
+
+若要列出特定资源的角色分配，请使用 [Get-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/get-azroleassignment) 和 `-Scope` 参数。 范围将因资源而异。 若要获取作用域，可以运行不带任何参数的 `Get-AzRoleAssignment` 来列出所有角色分配，然后查找要列出的作用域。
+
+```azurepowershell
+Get-AzRoleAssignment -Scope "/subscriptions/<subscription_id>/resourcegroups/<resource_group_name>/providers/<provider_name>/<resource_type>/<resource>
+```
+
+以下示例演示如何列出存储帐户的角色分配。 请注意，此命令还会列出应用于此存储帐户的更高作用域（如资源组和订阅）内的角色分配。
+
+```Example
+PS C:\> Get-AzRoleAssignment -Scope "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/storage-test-rg/providers/Microsoft.Storage/storageAccounts/storagetest0122"
+```
+
+如果只想列出直接分配到资源上的角色分配，可以使用 [Where-Object](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/where-object) 命令来筛选列表。
+
+```Example
+PS C:\> Get-AzRoleAssignment | Where-Object {$_.Scope -eq "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/storage-test-rg/providers/Microsoft.Storage/storageAccounts/storagetest0122"}
 ```
 
 ## <a name="list-role-assignments-for-classic-service-administrator-and-co-administrators"></a>列出经典服务管理员和共同管理员的角色分配

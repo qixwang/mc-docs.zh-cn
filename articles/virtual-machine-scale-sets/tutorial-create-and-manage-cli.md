@@ -1,20 +1,20 @@
 ---
-title: 教程 - 创建和管理 Azure 虚拟机规模集
+title: 教程：创建和管理 Azure VM 规模集 - Azure CLI
 description: 了解如何使用 Azure CLI 创建虚拟机规模集以及某些常见的管理任务，例如如何启动和停止实例，或者如何更改规模集容量。
 author: ju-shim
 ms.author: v-junlch
 ms.topic: tutorial
 ms.service: virtual-machine-scale-sets
 ms.subservice: management
-ms.date: 06/22/2020
+ms.date: 08/06/2020
 ms.reviewer: mimckitt
-ms.custom: mimckitt
-ms.openlocfilehash: 87ac59e6d1a722a9f6fbcb5977e9dfa3597c85a4
-ms.sourcegitcommit: 43db4001be01262959400663abf8219e27e5cb8b
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: 6efb6c8aae64c9f8800cf22f7feadbb9d5ce7be9
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85241561"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914206"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>教程：使用 Azure CLI 创建和管理虚拟机规模集
 利用虚拟机规模集，可以部署和管理一组相同的、自动缩放的虚拟机。 在虚拟机规模集的整个生命周期内，可能需要运行一个或多个管理任务。 本教程介绍如何执行下列操作：
@@ -26,7 +26,7 @@ ms.locfileid: "85241561"
 > * 手动缩放规模集
 > * 执行常见的规模集管理任务
 
-如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
 如果选择在本地安装和使用 CLI，本教程要求运行 Azure CLI 2.0.29 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/install-azure-cli)。 
 
@@ -45,13 +45,12 @@ az group create --name myResourceGroup --location chinanorth
 请使用 [az vmss create](/cli/vmss) 命令创建虚拟机规模集。 以下示例创建名为“myScaleSet”的规模集，并生成 SSH 密钥（如果不存在）：
 
 ```azurecli
-az vmss create `
-  --resource-group myResourceGroup `
-  --name myScaleSet `
-  --image UbuntuLTS `
-  --admin-username azureuser `
-  --generate-ssh-keys  `
-  --vm-sku Standard_DS1
+az vmss create \
+  --resource-group myResourceGroup \
+  --name myScaleSet \
+  --image UbuntuLTS \
+  --admin-username azureuser \
+  --generate-ssh-keys
 ```
 
 创建和配置所有的规模集资源和 VM 实例需要几分钟时间。 若要将流量分配到单独的 VM 实例，则还要创建负载均衡器。
@@ -172,13 +171,12 @@ CentOS   OpenLogic   7.3   OpenLogic:CentOS:7.3:7.3.20170925   7.3.20170925
 由于只需数分钟即可创建和配置所有的规模集资源和 VM 实例，因此不需部署以下规模集：
 
 ```azurecli
-az vmss create `
-  --resource-group myResourceGroup `
-  --name myScaleSetCentOS `
-  --image OpenLogic:CentOS:7.3:latest `
-  --admin-user azureuser `
-  --generate-ssh-keys `
-  --vm-sku Standard_DS1
+az vmss create \
+  --resource-group myResourceGroup \
+  --name myScaleSetCentOS \
+  --image OpenLogic:CentOS:7.3:latest \
+  --admin-user azureuser \
+  --generate-ssh-keys
 ```
 
 
@@ -190,10 +188,10 @@ VM 实例大小或 *SKU* 决定了可供 VM 实例使用的计算资源（如 CP
 
 | 类型                     | 常见大小           |    说明       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| [常规用途](../virtual-machines/linux/sizes-general.md)         |Dsv3、Dv3、DSv2、Dv2、DS、D、Av2、A0-7| CPU 与内存之比均衡。 适用于开发/测试、小到中型应用程序和数据解决方案。  |
-| [计算优化](../virtual-machines/linux/sizes-compute.md)   | Fs, F             | 高 CPU 与内存之比。 适用于中等流量的应用程序、网络设备和批处理。        |
-| [内存优化](../virtual-machines/linux/sizes-memory.md)    | Esv3、Ev3、M、GS、G、DSv2、DS、Dv2、D   | 较高的内存核心比。 适用于关系数据库、中到大型缓存和内存中分析。                 |
-| [GPU](../virtual-machines/linux/sizes-gpu.md)          | NV, NC            | 专门针对大量图形绘制和视频编辑的 VM。       |
+| [常规用途](../virtual-machines/sizes-general.md)         |Dsv3、Dv3、DSv2、Dv2、DS、D、Av2、A0-7| CPU 与内存之比均衡。 适用于开发/测试、小到中型应用程序和数据解决方案。  |
+| [计算优化](../virtual-machines/sizes-compute.md)   | Fs, F             | 高 CPU 与内存之比。 适用于中等流量的应用程序、网络设备和批处理。        |
+| [内存优化](../virtual-machines/sizes-memory.md)    | Esv3、Ev3、M、GS、G、DSv2、DS、Dv2、D   | 较高的内存核心比。 适用于关系数据库、中到大型缓存和内存中分析。                 |
+| [GPU](../virtual-machines/sizes-gpu.md)          | NV, NC            | 专门针对大量图形绘制和视频编辑的 VM。       |
 
 ### <a name="find-available-vm-instance-sizes"></a>查找可用的 VM 实例大小
 若要查看在特定区域可用的 VM 实例大小的列表，请使用 [az vm list-sizes](/cli/vm) 命令。
@@ -224,14 +222,13 @@ az vm list-sizes --location chinanorth --output table
 在教程开头创建规模集时，为 VM 实例提供了默认 VM SKU *Standard_D1_v2*。 可以根据 [az vm list-sizes](/cli/vm) 的输出指定其他 VM 实例大小。 以下示例会使用 `--vm-sku` 参数创建一个规模集，以便指定 VM 实例大小 *Standard_F1*。 由于只需数分钟即可创建和配置所有的规模集资源和 VM 实例，因此不需部署以下规模集：
 
 ```azurecli
-az vmss create `
-  --resource-group myResourceGroup `
-  --name myScaleSetF1Sku `
-  --image UbuntuLTS `
-  --vm-sku Standard_F1 `
-  --admin-user azureuser `
-  --generate-ssh-keys `
-  --vm-sku Standard_DS1
+az vmss create \
+  --resource-group myResourceGroup \
+  --name myScaleSetF1Sku \
+  --image UbuntuLTS \
+  --vm-sku Standard_F1 \
+  --admin-user azureuser \
+  --generate-ssh-keys
 ```
 
 
@@ -290,7 +287,7 @@ az vmss restart --resource-group myResourceGroup --name myScaleSet --instance-id
 
 
 ## <a name="clean-up-resources"></a>清理资源
-删除资源组时，也会删除其中包含的所有资源，例如 VM 实例、虚拟网络和磁盘。 `--no-wait` 参数会使光标返回提示符处，无需等待操作完成。 `--yes` 参数将确认是否希望删除资源，而不会有额外提示。
+删除资源组时，也会删除其中包含的所有资源，例如 VM 实例、虚拟网络和磁盘。 `--no-wait` 参数会使光标返回提示符处，不会等待操作完成。 `--yes` 参数将确认是否希望删除资源，不会显示询问是否删除的额外提示。
 
 ```azurecli
 az group delete --name myResourceGroup --no-wait --yes

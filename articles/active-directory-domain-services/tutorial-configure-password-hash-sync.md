@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/13/2020
+ms.date: 08/07/2020
 ms.author: v-junlch
-ms.openlocfilehash: a23d2452060311bb5300099269f6f012d992822b
-ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
+ms.openlocfilehash: 1d2cba2625805748baa49320dda5b1429495429a
+ms.sourcegitcommit: a5eb9a47feefb053ddbaab4b15c395972c372339
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86472537"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88028625"
 ---
 # <a name="tutorial-enable-password-synchronization-in-azure-active-directory-domain-services-for-hybrid-environments"></a>教程：在混合环境的 Azure Active Directory 域服务中启用密码同步
 
@@ -22,7 +22,7 @@ ms.locfileid: "86472537"
 
 若要将 Azure AD DS 与从本地 AD DS 环境同步的帐户配合使用，需要将 Azure AD Connect 配置为同步 NTLM 和 Kerberos 身份验证所需的密码哈希。 配置 Azure AD Connect 之后，本地帐户创建或密码更改事件也会将旧密码哈希同步到 Azure AD。
 
-如果使用仅限云的帐户且不使用本地 AD DS 环境，则无需执行这些步骤。
+如果使用仅限云的帐户且不使用本地 AD DS 环境，或是如果使用资源林，则无需执行这些步骤。 对于使用资源林的托管域，本地密码哈希从不会进行同步。 本地帐户的身份验证使用返回到你自己的 AD DS 域控制器的林信任。
 
 在本教程中，学习以下内容：
 
@@ -30,7 +30,7 @@ ms.locfileid: "86472537"
 > * 为何需要旧 NTLM 和 Kerberos 密码哈希
 > * 如何为 Azure AD Connect 配置旧密码哈希同步
 
-如果你没有 Azure 订阅，可以在开始之前[创建一个帐户](https://www.azure.cn/pricing/1rmb-trial)。
+如果还没有 Azure 订阅，可以在开始前[创建一个帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -62,7 +62,7 @@ ms.locfileid: "86472537"
 1. 在安装了 Azure AD Connect 的计算机上，通过“开始”菜单打开“Azure AD Connect”>“同步服务”。
 1. 选择“连接器”选项卡。此时会列出用于在本地 AD DS 环境与 Azure AD 之间建立同步的连接信息。
 
-    “类型”中会列出“Windows Azure Active Directory (Microsoft)”（适用于 Azure AD 连接器）或“Active Directory 域服务”（适用于本地 AD DS 连接器）。 请记下连接器名称，以便在下一步骤所述的 PowerShell 脚本中使用。
+    “类型”中会列出“Azure Active Directory (Microsoft)”（适用于 Azure AD 连接器）或“Active Directory 域服务”（适用于本地 AD DS 连接器） 。 请记下连接器名称，以便在下一步骤所述的 PowerShell 脚本中使用。
 
     ![在同步服务管理器中列出连接器名称](./media/tutorial-configure-password-hash-sync/service-sync-manager.png)
 
@@ -80,8 +80,8 @@ ms.locfileid: "86472537"
     $azureadConnector = "<CASE SENSITIVE AZURE AD CONNECTOR NAME>"
     $adConnector = "<CASE SENSITIVE AD DS CONNECTOR NAME>"
     
-    Import-Module "C:\Program Files\Microsoft Azure AD Sync\Bin\ADSync\ADSync.psd1"
-    Import-Module "C:\Program Files\Microsoft Azure Active Directory Connect\AdSyncConfig\AdSyncConfig.psm1"
+    Import-Module "C:\Program Files\Azure AD Sync\Bin\ADSync\ADSync.psd1"
+    Import-Module "C:\Program Files\Azure Active Directory Connect\AdSyncConfig\AdSyncConfig.psm1"
 
     # Create a new ForceFullPasswordSync configuration parameter object then
     # update the existing connector with this new configuration

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 origin.date: 05/22/2019
 ms.date: 05/11/2020
-ms.openlocfilehash: da99e55529c664518400026c22a03ffd266bc27a
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.openlocfilehash: 82719420d5fa1265141d7ee0ff674f7a1a4377f4
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82197961"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914305"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP Business Warehouse 复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -270,7 +270,7 @@ SAP Open Hub 目标不是受数据市场控制的数据目标（自 2015 年开�
 
 若要将增量 DTP 的状态设置为“已提取”，可以使用以下选项来手动运行增量 DTP： 
 
-    *No Data Transfer; Delta Status in Source: Fetched*
+没有数据传输；源中的增量状态：已提取
 
 ## <a name="next-steps"></a>后续步骤
 

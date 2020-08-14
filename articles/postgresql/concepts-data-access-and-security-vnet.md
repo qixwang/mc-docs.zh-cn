@@ -5,14 +5,14 @@ author: WenJason
 ms.author: v-jay
 ms.service: postgresql
 ms.topic: conceptual
-origin.date: 5/6/2019
-ms.date: 07/20/2020
-ms.openlocfilehash: fb701a88e458c63e10486eced9110f01a01f958a
-ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
+origin.date: 07/17/2020
+ms.date: 08/17/2020
+ms.openlocfilehash: 36a38bd031238681afd05e18177ae02d77440179
+ms.sourcegitcommit: 3cf647177c22b24f76236c57cae19482ead6a283
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "86440386"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88029692"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql---single-server"></a>对 Azure Database for PostgreSQL（单一数据库）使用虚拟网络服务终结点和规则
 
@@ -26,8 +26,7 @@ ms.locfileid: "86440386"
 > Azure 公有云中的所有区域均提供此功能，其中 Azure Database for PostgreSQL 部署用于常规用途和内存优化服务器。
 > 在 VNet 对等互连的情况下，如果流量通过具有服务终结点的公共 VPN 网关流动，并且应该流向对等机，请创建 ACL/VNet 规则，以便网关 VNet 中的 Azure 虚拟机能够访问 Azure Database for PostgreSQL 服务器。
 
-<a name="anch-terminology-and-description-82f" />
-
+<a name="anch-terminology-and-description-82f"></a>
 ## <a name="terminology-and-description"></a>术语和说明
 
 **虚拟网络：** 可以让虚拟网络与 Azure 订阅相关联。
@@ -39,12 +38,6 @@ ms.locfileid: "86440386"
 **虚拟网络规则：** 适用于 Azure Database for PostgreSQL 服务器的虚拟网络规则是一个子网，该子网列在 Azure Database for PostgreSQL 服务器的访问控制列表 (ACL) 中。 该子网必须包含“Microsoft.Sql”类型名称才会列在 Azure Database for PostgreSQL 服务器的 ACL 中。
 
 虚拟网络规则要求 Azure Database for PostgreSQL 服务器接受来自该子网上所有节点的通信。
-
-
-
-
-
-
 
 <a name="anch-details-about-vnet-rules-38q"></a>
 
@@ -64,11 +57,6 @@ ms.locfileid: "86440386"
 
 但是，静态 IP 方法可能会变得难以管理，在规模大时操作成本高。 虚拟网络规则更易于制定和管理。
 
-### <a name="c-cannot-yet-have-azure-database-for-postgresql-on-a-subnet-without-defining-a-service-endpoint"></a>C. 在没有定义服务终结点的情况下，子网上还不能有 Azure Database for PostgreSQL
-
-如果 **Microsoft.Sql** 服务器是虚拟网络子网上的一个节点，则该虚拟网络中的所有节点都可以与 Azure Database for PostgreSQL 服务器通信。 在这种情况下，VM 可以与 Azure Database for PostgreSQL 通信，而不需要任何虚拟网络规则或 IP 规则。
-
-但截至 2018 年 8 月，Azure Database for PostgreSQL 服务仍然无法直接分配给子网。
 
 <a name="anch-details-about-vnet-rules-38q"></a>
 
@@ -121,6 +109,8 @@ RBAC 备用：
 
 - 只有常规用途和内存优化服务器才支持 VNet 服务终结点。
 
+- 如果在子网中启用了Microsoft.Sql，则表示你只想使用 VNet 规则进行连接。 该子网中资源的[非 VNet 防火墙规则](concepts-firewall-rules.md)将不起作用。
+
 - 在防火墙上，IP 地址范围适用于以下网络项，但虚拟网络规则并不适用：
     - [站点到站点 (S2S) 虚拟专用网络 (VPN)][vpn-gateway-indexmd-608y]
     - 通过 [Expressroute][expressroute-indexmd-744v] 进行的本地连接
@@ -133,7 +123,7 @@ RBAC 备用：
 
 ## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>在未打开 VNET 服务终结点的情况下，将 VNET 防火墙规则添加到服务器
 
-仅设置防火墙规则无助于将服务器保护到 VNet。 还必须**打开** VNet 服务终结点才能使安全性生效。 **打开**服务终结点时，VNet 子网会遇到停机，直到它完成从“关”到“开” 的转换。 这在大型 VNet 的上下文中尤其如此。 可以使用 **IgnoreMissingServiceEndpoint** 标志，减少或消除转换期间的停机时间。
+仅设置 VNet 防火墙规则无助于将服务器保护到 VNet。 还必须**打开** VNet 服务终结点才能使安全性生效。 **打开**服务终结点时，VNet 子网会遇到停机，直到它完成从“关”到“开” 的转换。 这在大型 VNet 的上下文中尤其如此。 可以使用 **IgnoreMissingServiceEndpoint** 标志，减少或消除转换期间的停机时间。
 
 可以使用 Azure CLI 或门户设置 **IgnoreMissingServiceEndpoint** 标志。
 

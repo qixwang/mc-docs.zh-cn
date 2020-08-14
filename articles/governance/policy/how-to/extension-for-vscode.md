@@ -1,16 +1,16 @@
 ---
 title: 适用于 Visual Studio Code 的 Azure Policy 扩展
-description: 了解如何使用适用于 Visual Studio Code 的 Azure Policy 扩展来查找资源管理器别名。
+description: 了解如何使用适用于 Visual Studio Code 的 Azure Policy 扩展来查找 Azure 资源管理器别名。
 ms.author: v-tawe
-origin.date: 03/07/2020
-ms.date: 05/29/2020
+origin.date: 06/16/2020
+ms.date: 08/06/2020
 ms.topic: how-to
-ms.openlocfilehash: d8437a358c175b4f7809d3edd15fbc2189720d65
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: 97b02dc6d60b5982cd160485ead5bee6da69d178
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199719"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917101"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>使用适用于 Visual Studio Code 的 Azure Policy 扩展
 
@@ -123,11 +123,14 @@ Azure Policy 扩展在“资源”窗格中按资源提供程序和资源组列�
 
 ## <a name="discover-aliases-for-resource-properties"></a>发现资源属性的别名
 
-选择某个资源时（不管是通过搜索界面选择，还是在树视图中选择），Azure Policy 扩展将会打开表示该资源及其所有资源管理器属性值的 JSON 文件。
+选择某个资源时（不管是通过搜索界面选择，还是在树视图中选择），Azure Policy 扩展将会打开表示该资源及其所有 Azure 资源管理器属性值的 JSON 文件。
 
 打开某个资源后，将鼠标悬停在资源管理器属性名称或值上可显示 Azure Policy 别名（如果存在）。 在此示例中，资源的类型是 `Microsoft.Compute/virtualMachines`，鼠标已悬停在 **properties.storageProfile.imageReference.offer** 属性上。 悬停鼠标可显示匹配的别名。
 
 :::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="在 Azure Policy 扩展中悬停鼠标即可显示资源管理器属性别名" border="false":::
+
+> [!NOTE]
+> VS Code 扩展只公开资源管理器模式属性，不会显示任何[资源提供程序模式](../concepts/definition-structure.md#mode)属性。
 
 ## <a name="search-for-and-view-policies-and-assignments"></a>搜索和查看策略与分配
 

@@ -3,55 +3,176 @@ title: 如何使用创作密钥和运行时密钥 - LUIS
 description: 首次使用语言理解 (LUIS) 时，不需要创建创作密钥。 如果需要发布应用，然后使用运行时终结点，则需创建运行时密钥并将其分配给应用。
 services: cognitive-services
 ms.topic: how-to
-ms.date: 06/17/2020
+author: Johnnytechn
+ms.date: 08/04/2020
 origin.date: 04/06/2020
-ms.author: v-tawe
-ms.openlocfilehash: c22aaf6a19079522e15ff285c6ee5a7b51c77bf5
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.custom: devx-track-azurecli
+ms.author: v-johya
+ms.openlocfilehash: 88b25a900eb3ac6b42fdbf9f7af9a8374a85e0f2
+ms.sourcegitcommit: caa18677adb51b5321ad32ae62afcf92ac00b40b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098378"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88023389"
 ---
 # <a name="create-luis-resources"></a>创建 LUIS 资源
 
-创作和运行时资源为 LUIS 应用和预测终结点提供身份验证。
+创作和查询预测运行时资源为 LUIS 应用和预测终结点提供身份验证。
 
-<a name="create-luis-service"></a>
-<a name="create-language-understanding-endpoint-key-in-the-azure-portal"></a>
+<a name="azure-resources-for-luis"></a>
+<a name="programmatic-key" ></a>
+<a name="endpoint-key"></a>
+<a name="authoring-key"></a>
 
-登录 LUIS 门户时，可以选择使用以下项继续操作：
+## <a name="luis-resources"></a>LUIS 资源
 
-* 免费的[试用密钥](#trial-key) - 提供创作和一些预测终结点查询。
-* Azure [LUIS 创作](https://portal.azure.cn/#create/Microsoft.CognitiveServicesLUISAllInOne)资源。
+LUIS 允许三类 Azure 资源和一类非 Azure 资源：
+
+|键|目的|认知服务 `kind`|认知服务 `type`|
+|--|--|--|--|
+|创作密钥|通过创作、训练、发布和测试访问和管理应用程序的数据。 若要以编程方式创作 LUIS 应用，请创建 LUIS 创作密钥。<br><br>`LUIS.Authoring` 密钥的目的是让你执行以下操作：<br>* 以编程方式管理语言理解应用和模型，包括训练和发布<br> * 为人员分配[参与者角色](#contributions-from-other-authors)，控制对创作资源的权限。|`LUIS.Authoring`|`Cognitive Services`|
+|查询预测密钥| 查询预测终结点请求。 在客户端应用请求的预测超出初学者资源提供的 1,000 个请求之前，创建 LUIS 预测密钥。 |`LUIS`|`Cognitive Services`|
+|[认知服务多服务资源密钥](../cognitive-services-apis-create-account-cli.md?tabs=windows#create-a-cognitive-services-resource)|与 LUIS 和其他受支持的认知服务共享的查询预测终结点请求。|`CognitiveServices`|`Cognitive Services`|
+|初学者|通过 LUIS 门户或 API（包括 SDK）免费创作（无需基于角色的访问控制），每月通过浏览器、API 或 SDK 免费提供 1,000 个预测终结点请求|-|不是 Azure 资源|
+
+Azure 资源创建过程完成后，请在 LUIS 门户中为应用[分配密钥](#assign-a-resource-to-an-app)。
+
+请务必在想要进行发布和查询的[区域](luis-reference-regions.md#publishing-regions)创作 LUIS 应用。
+
+## <a name="resource-ownership"></a>资源所有权
+
+Azure 资源（如 LUIS）由包含资源的订阅所有。
+
+若要转让资源的所有权，可以执行以下任一操作：
+* 转让订阅所有权
+* 将 LUIS 应用导出为文件，然后在其他订阅上导入应用。 可以从 LUIS 门户中的“我的应用”页面进行导出。
+
+
+## <a name="resource-limits"></a>资源限制
+
+### <a name="authoring-key-creation-limits"></a>创作密钥创建限制
+
+可以按订阅为每个区域创建最多 10 个创作密钥。
+
+请参阅[密钥限制](luis-limits.md#key-limits)和 [Azure 区域](luis-reference-regions.md)。
+
+发布区域不同于创作区域。 请确保在对应于发布区域的创作区域中创建应用，你需要将客户端应用程序置于该发布区域中。
+
+### <a name="key-usage-limit-errors"></a>密钥使用限制错误
+
+使用限制取决于定价层。
+
+如果超过了每秒事务数 (TPS) 配额，则会出现 HTTP 429 错误。 如果超过了每月事务数 (TPM) 配额，则会出现 HTTP 403 错误。
+
+
+### <a name="reset-authoring-key"></a>重置创作密钥
+
+对于创作资源已迁移的应用：如果创作密钥已泄露，请在该创作资源的“密钥”页上的 Azure 门户中重置密钥。
+
+对于尚未迁移的应用：可在 LUIS 门户的所有应用中重置此密钥。 如果通过创作 API 创作应用，则需将 Ocp-Apim-Subscription-Key 的值更改为新密钥。
+
+### <a name="regenerate-azure-key"></a>重新生成 Azure 密钥
+
+在 Azure 门户的“密钥”页上重新生成 Azure 密钥。
+
+
+<a name="securing-the-endpoint"></a>
+
+## <a name="app-ownership-access-and-security"></a>应用所有权、访问权限和安全性
+
+应用通过其 Azure 资源进行定义，这取决于所有者的订阅。
+
+你可以移动自己的 LUIS 应用。 在 Azure 门户或 Azure CLI 中，请参阅以下文档资源：
+
+* [在 LUIS 创作资源之间移动应用](https://dev.cognitive.azure.cn/docs/services/5890b47c39e2bb17b84a55ff/operations/apps-move-app-to-another-luis-authoring-azure-resource)
+* [将资源移到新的资源组或订阅](../../azure-resource-manager/management/move-resource-group-and-subscription.md)
+* [在同一订阅内移动资源或跨订阅移动资源](../../azure-resource-manager/management/move-limitations/app-service-move-limitations.md)
+
+
+### <a name="contributions-from-other-authors"></a>其他作者的贡献
+
+用于创作资源已迁移的应用：参与者在用于创作资源的 Azure 门户中使用“访问控制 (IAM)”页进行管理。 了解如何使用协作者的电子邮件地址和_参与者_角色[添加用户](luis-how-to-collaborate.md)。
+
+对于尚未迁移的应用：所有协作者都在 LUIS 门户中通过“管理 -> 协作者”页面进行管理。
+
+### <a name="query-prediction-access-for-private-and-public-apps"></a>专用和公共应用的查询预测访问权限
+
+对于“专用”应用，所有者和参与者可以使用查询预测运行时访问权限。 对于**公共**应用，任何具有自己的 Azure [认知服务](../cognitive-services-apis-create-account.md)或 [LUIS](#create-resources-in-the-azure-portal) 运行时资源和公共应用 ID 的人员均可使用运行时访问权限。
+
+目前没有公共应用的目录。
+
+### <a name="authoring-permissions-and-access"></a>创作权限和访问权限
+从 [LUIS](luis-reference-regions.md#luis-website) 门户或[创作 API](https://go.microsoft.com/fwlink/?linkid=2092087) 访问应用的权限由 Azure 创作资源控制。
+
+所有者和所有参与者具有创作应用所需的访问权限。
+
+|创作访问权限包括|说明|
+|--|--|
+|添加或删除终结点密钥||
+|导出版本||
+|导出终结点日志||
+|导入版本||
+|公开应用|如果应用公开，任何拥有创作或终结点密钥的人员都可以查询应用。|
+|修改模型|
+|发布|
+|查看用于[主动学习](luis-how-to-review-endpoint-utterances.md)的终结点陈述|
+|定型|
+
+<a name="prediction-endpoint-runtime-key"></a>
+
+### <a name="prediction-endpoint-runtime-access"></a>预测终结点运行时访问权限
+
+查询预测终结点所需的访问权限由“应用程序信息”**** 页上“管理”**** 部分的设置进行控制。
+
+|[专用终结点](#runtime-security-for-private-apps)|[公共终结点](#runtime-security-for-public-apps)|
+|:--|:--|
+|可供所有者和参与者使用|可供所有者、参与者以及知道应用 ID 的任何其他人使用|
+
+可以通过在服务器到服务器环境中调用 LUIS 运行时密钥来控制谁可以查看该密钥。 如果在机器人上使用 LUIS，则机器人和 LUIS 之间的连接已经安全。 如果直接调用 LUIS 终结点，则应创建具有受控访问权限（如 [AAD](https://www.azure.cn/home/features/active-directory/)）的服务器端 API（如 Azure [函数](https://www.azure.cn/zh-cn/home/features/azure-functions/)）。 如果调用并验证服务器端 API，则在确认授权后将调用传递到 LUIS。 尽管此策略不能防范中间人攻击，但会模糊化处理用户的密钥和终结点 URL，允许跟踪访问，并允许添加终结点响应日志记录（如 [Application Insights](/azure-monitor/)）。
+
+### <a name="runtime-security-for-private-apps"></a>专用应用的运行时安全性
+
+专用应用的运行时仅适用于：
+
+|密钥和用户|说明|
+|--|--|
+|所有者的创作密钥| 最多 1000 个终结点命中数|
+|协作者/参与者的创作密钥| 最多 1000 个终结点命中数|
+|由作者或协作者/参与者分配给 LUIS 的任何密钥|基于密钥用法层|
+
+### <a name="runtime-security-for-public-apps"></a>公共应用的运行时安全性
+
+应用配置为公共后，任何有效的 LUIS 创作密钥或 LUIS 终结点密钥都可以查询应用，只要该密钥未使用整个终结点配额__。
+
+不是所有者或参与者的用户只有在获得应用 ID 时才能访问公共应用的运行时。 LUIS 不提供公共市场或其他搜索公共应用的方式__。
+
+公共应用在所有区域中发布，以便有基于区域的 LUIS 资源密钥的用户可以在与资源密钥关联的任何区域中访问该应用。
+
+
+### <a name="securing-the-query-prediction-endpoint"></a>保护查询预测终结点
+
+可以通过在服务器到服务器环境中调用 LUIS 预测运行时终结点密钥来控制谁可以查看该密钥。 如果在机器人上使用 LUIS，则机器人和 LUIS 之间的连接已经安全。 如果直接调用 LUIS 终结点，则应创建具有受控访问权限（如 [AAD](https://www.azure.cn/home/features/active-directory/)）的服务器端 API（如 Azure [函数](https://www.azure.cn/zh-cn/home/features/azure-functions/)）。 如果调用服务器端 API 并且身份验证和授权得到验证，则将调用传递到 LUIS。 尽管此策略不会防止中间人攻击，但会模糊化处理用户的终结点，允许跟踪访问，并允许添加终结点响应日志记录（如 [Application Insights](/azure-monitor/)）。
 
 <a name="starter-key"></a>
 
 ## <a name="sign-in-to-luis-portal-and-begin-authoring"></a>登录 LUIS 门户并开始创作
 
 1. 登录 [LUIS 门户](https://luis.azure.cn)并同意使用条款。
-1. 开始使用 LUIS 应用时，请选择要使用的 LUIS 创作密钥的类型：免费试用密钥或新的 Azure LUIS 创作密钥。
+1. 通过选择 Azure LUIS 创作密钥，开始使用 LUIS 应用。
 
-    ![选择语言理解创作资源的类型](./media/luis-how-to-azure-subscription/sign-in-create-resource.png)
+   ![选择语言理解创作资源的类型](./media/luis-how-to-azure-subscription/sign-in-create-resource.png)
 
 1. 完成资源选择过程以后，请[创建新应用](luis-how-to-start-new-app.md#create-new-app-in-luis)。
 
-## <a name="trial-key"></a>试用密钥
 
-试用（初学者）密钥是为你提供的。 它用作身份验证密钥，用来查询预测终结点运行时，每月最多可以进行 1000 次查询。
-
-它在 LUIS 门户中的“用户设置”页和“管理 -> Azure 资源”页上均可见。 
-
-准备好发布预测终结点后，请[创建](#create-luis-resources)并[分配](#assign-a-resource-to-an-app)创作密钥和预测运行时密钥，替换初学者密钥功能。
-
+<a name="create-azure-resources"></a>
 <a name="create-resources-in-the-azure-portal"></a>
 
+[!INCLUDE [Create LUIS resource in Azure portal](includes/create-luis-resource.md)]
 
-[!INCLUDE [Create LUIS resource](includes/create-luis-resource.md)]
+### <a name="create-resources-in-azure-cli"></a>在 Azure CLI 中创建资源
 
-## <a name="create-resources-in-azure-cli"></a>在 Azure CLI 中创建资源
-
-使用 [Azure CLI](/cli/install-azure-cli?view=azure-cli-latest) 单独创建每项资源。 
+使用 [Azure CLI](/cli/install-azure-cli?view=azure-cli-latest) 单独创建每项资源。
 
 资源 `kind`：
 
@@ -67,22 +188,24 @@ ms.locfileid: "85098378"
 
     此时会打开一个浏览器，让你可以选择正确的帐户并提供身份验证。
 
-1. 在名为 `my-resource-group` 的现有资源组中为 `China East` 区域创建一个类型为 `LUIS.Authoring`、名称为 `my-luis-authoring-resource` 的 **LUIS 创作资源**。 
+1. 在名为 `my-resource-group` 的现有资源组中为 `China East 2` 区域创建一个类型为 `LUIS.Authoring`、名称为 `my-luis-authoring-resource` 的 **LUIS 创作资源**。 
 
     ```azurecli
-    az cognitiveservices account create -n my-luis-authoring-resource -g my-resource-group --kind LUIS.Authoring --sku F0 -l chinaeast --yes
+    az cognitiveservices account create -n my-luis-authoring-resource -g my-resource-group --kind LUIS.Authoring --sku F0 -l chinaeast2 --yes
     ```
 
-1. 在名为 `my-resource-group` 的现有资源组中为 `chinaeast` 区域创建一个类型为 `LUIS`、名称为 `my-luis-prediction-resource` 的 **LUIS 预测终结点资源**。 如果需要比免费层更高的吞吐量，请将 `F0` 更改为 `S0`。 详细了解[定价层和吞吐量](luis-limits.md#key-limits)。
+1. 在名为 `my-resource-group` 的现有资源组中为 `chinaeast2` 区域创建一个类型为 `LUIS`、名称为 `my-luis-prediction-resource` 的 **LUIS 预测终结点资源**。 如果需要比免费层更高的吞吐量，请将 `F0` 更改为 `S0`。 详细了解[定价层和吞吐量](luis-limits.md#key-limits)。
 
     ```azurecli
-    az cognitiveservices account create -n my-luis-prediction-resource -g my-resource-group --kind LUIS --sku F0 -l chinaeast --yes
+    az cognitiveservices account create -n my-luis-prediction-resource -g my-resource-group --kind LUIS --sku F0 -l chinaeast2 --yes
     ```
 
     > [!Note]
     > 在 LUIS 门户的“管理 -> Azure 资源”上分配此密钥之前，该门户不能使用此密钥。 
 
-## <a name="assign-an-authoring-resource-in-the-luis-portal-for-all-apps"></a>在 LUIS 门户中为所有应用分配创作资源
+<a name="assign-an-authoring-resource-in-the-luis-portal-for-all-apps"></a>
+
+### <a name="assign-resource-in-the-luis-portal"></a>在 LUIS 门户中分配资源
 
 可以在 LUIS 中为单个应用或所有应用分配创作资源。 以下过程将所有应用分配给单个创作资源。
 
@@ -92,7 +215,7 @@ ms.locfileid: "85098378"
 
 ## <a name="assign-a-resource-to-an-app"></a>将资源分配给应用
 
-可以通过以下过程将单个资源、创作或预测终结点运行时分配给应用。
+可以使用以下过程将资源分配给应用。
 
 1. 登录 [LUIS 门户](https://luis.azure.cn)，然后从“我的应用”列表中选择一个应用。
 1. 导航到“管理 -> Azure 资源”页。
@@ -102,39 +225,7 @@ ms.locfileid: "85098378"
 1. 选择“预测或创作资源”选项卡，然后选择“添加预测资源”或“添加创作资源”按钮。 
 1. 选择窗体中的字段以查找正确的资源，然后选择“保存”。
 
-### <a name="assign-runtime-resource-without-using-luis-portal"></a>在不使用 LUIS 门户的情况下分配运行时资源
-
-出于 CI/CD 管道等自动化目的，可能需要将 LUIS 运行时资源自动分配给 LUIS 应用。 为此，需要执行以下步骤：
-
-1. 从此[网站](https://resources.azure.com/api/token?plaintext=true)获取 Azure 资源管理器令牌。 此令牌即将过期，请立即使用。 该请求将返回 Azure 资源管理器令牌。
-
-    ![请求 Azure 资源管理器令牌和接收 Azure 资源管理器令牌](./media/luis-manage-keys/get-arm-token.png)
-
-1. 使用该令牌从用户帐户有权访问的[获取 LUIS azure 帐户 API](https://{region}.dev.cognitive.azure.cn/docs/services/5890b47c39e2bb17b84a55ff/operations/5be313cec181ae720aa2b26c) 跨订阅请求 LUIS 运行时资源。 
-
-    此 POST API 需要以下设置：
-
-    |标头|Value|
-    |--|--|
-    |`Authorization`|`Authorization` 的值为 `Bearer {token}`。 请注意，单词 `Bearer` 和空格前面必须是令牌值。|
-    |`Ocp-Apim-Subscription-Key`|你的创作密钥。|
-
-    此 API 将返回 LUIS 订阅的 JSON 对象的数组，包括订阅 ID、资源组和资源名称（作为帐户名称返回）。 在要将 LUIS 资源分配给 LUIS 应用的数组中查找一个项。
-
-1. 使用[将 LUIS azure 帐户分配给应用程序](https://{region}.dev.cognitive.azure.cn/docs/services/5890b47c39e2bb17b84a55ff/operations/5be32228e8473de116325515) API，将令牌分配给 LUIS 资源。 
-
-    此 POST API 需要以下设置：
-
-    |类型|设置|Value|
-    |--|--|--|
-    |标头|`Authorization`|`Authorization` 的值为 `Bearer {token}`。 请注意，单词 `Bearer` 和空格前面必须是令牌值。|
-    |标头|`Ocp-Apim-Subscription-Key`|你的创作密钥。|
-    |标头|`Content-type`|`application/json`|
-    |Querystring|`appid`|LUIS 应用 ID。
-    |正文||{"AzureSubscriptionId":"ddda2925-af7f-4b05-9ba1-2155c5fe8a8e",<br>"ResourceGroup": "resourcegroup-2",<br>"AccountName": "luis-uswest-S0-2"}|
-
-    此 API 成功时，将返回“201 - 已创建状态”。
-
+<!--Pending-->
 ## <a name="unassign-resource"></a>取消分配资源
 
 1. 登录 [LUIS 门户](https://luis.azure.cn)，然后从“我的应用”列表中选择一个应用。
@@ -143,10 +234,6 @@ ms.locfileid: "85098378"
 
 取消分配资源时，不会将其从 Azure 中删除。 只会将其从 LUIS 取消链接。
 
-
-## <a name="regenerate-azure-key"></a>重新生成 Azure 密钥
-
-在 Azure 门户的“密钥”页上重新生成 Azure 密钥。
 
 ## <a name="delete-account"></a>删除帐户
 
@@ -190,6 +277,5 @@ ms.locfileid: "85098378"
 ## <a name="next-steps"></a>后续步骤
 
 * 了解[如何使用版本](luis-how-to-manage-versions.md)来控制应用生命周期。
-* 了解概念，包括[创作资源](luis-concept-keys.md#authoring-key)和该资源上的[参与者](luis-concept-keys.md#contributions-from-other-authors)。
-* 了解[如何创建](luis-how-to-azure-subscription.md)创作和运行时资源
-* 迁移到新的[创作资源](luis-migration-authoring.md)
+<!--Not available in MC: luis-migration-authoring.md-->
+

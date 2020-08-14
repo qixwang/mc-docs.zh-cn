@@ -5,14 +5,14 @@ author: WenJason
 ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
-origin.date: 3/18/2020
-ms.date: 07/20/2020
-ms.openlocfilehash: 4ec02dcaa6da0530863ea065de8359ac8c56f77f
-ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
+origin.date: 7/17/2020
+ms.date: 08/10/2020
+ms.openlocfilehash: cb4264b2af7f52e151a3eaa2eb3d1ba2e3582748
+ms.sourcegitcommit: 3cf647177c22b24f76236c57cae19482ead6a283
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "86440500"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88029608"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>对 Azure Database for MySQL 使用虚拟网络服务终结点和规则
 
@@ -60,12 +60,6 @@ ms.locfileid: "86440500"
 可以通过获取 VM 的静态 IP 地址，对 IP 选项进行“补救”。 有关详细信息，请参阅[使用 Azure 门户为虚拟机配置专用 IP 地址][vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w]。
 
 但是，静态 IP 方法可能会变得难以管理，在规模大时操作成本高。 虚拟网络规则更易于制定和管理。
-
-### <a name="c-cannot-yet-have-azure-database-for-mysql-on-a-subnet-without-defining-a-service-endpoint"></a>C. 在没有定义服务终结点的情况下，子网上还不能有 Azure Database for MySQL
-
-如果 **Microsoft.Sql** 服务器是虚拟网络子网上的一个节点，则该虚拟网络中的所有节点都可以与 Azure Database for MySQL 服务器通信。 在这种情况下，VM 可以与 Azure Database for MySQL 通信，而不需要任何虚拟网络规则或 IP 规则。
-
-但截至 2018 年 8 月，Azure Database for MySQL 服务仍然无法直接分配给子网。
 
 <a name="anch-details-about-vnet-rules-38q"></a>
 
@@ -118,6 +112,8 @@ RBAC 备用：
 
 - 只有常规用途和内存优化服务器才支持 VNet 服务终结点。
 
+- 如果在子网中启用了Microsoft.Sql，则表示你只想使用 VNet 规则进行连接。 该子网中资源的[非 VNet 防火墙规则](concepts-firewall-rules.md)将不起作用。
+
 - 在防火墙上，IP 地址范围适用于以下网络项，但虚拟网络规则并不适用：
     - [站点到站点 (S2S) 虚拟专用网络 (VPN)][vpn-gateway-indexmd-608y]
     - 通过 [Expressroute][expressroute-indexmd-744v] 进行的本地连接
@@ -130,7 +126,7 @@ RBAC 备用：
 
 ## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>在未打开 VNET 服务终结点的情况下，将 VNET 防火墙规则添加到服务器
 
-仅设置防火墙规则无助于将服务器保护到 VNet。 还必须**打开** VNet 服务终结点才能使安全性生效。 **打开**服务终结点时，VNet 子网会遇到停机，直到它完成从“关”到“开” 的转换。 这在大型 VNet 的上下文中尤其如此。 可以使用 **IgnoreMissingServiceEndpoint** 标志，减少或消除转换期间的停机时间。
+仅设置 VNet 防火墙规则无助于将服务器保护到 VNet。 还必须**打开** VNet 服务终结点才能使安全性生效。 **打开**服务终结点时，VNet 子网会遇到停机，直到它完成从“关”到“开” 的转换。 这在大型 VNet 的上下文中尤其如此。 可以使用 **IgnoreMissingServiceEndpoint** 标志，减少或消除转换期间的停机时间。
 
 可以使用 Azure CLI 或门户设置 **IgnoreMissingServiceEndpoint** 标志。
 

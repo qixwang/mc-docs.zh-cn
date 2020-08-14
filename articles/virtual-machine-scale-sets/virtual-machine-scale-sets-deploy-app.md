@@ -1,27 +1,20 @@
 ---
-title: 将应用程序部署到 Azure 虚拟机规模集 | Microsoft Docs
+title: 将应用程序部署到 Azure 虚拟机规模集
 description: 了解如何将应用程序部署到规模集中的 Linux 和 Windows 虚拟机实例
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: f8892199-f2e2-4b82-988a-28ca8a7fd1eb
-ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-origin.date: 05/29/2018
-ms.date: 11/22/2019
+author: ju-shim
 ms.author: v-junlch
-ms.openlocfilehash: acaf4acd2e484372aeca9cff333ebc9626d78aed
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.topic: how-to
+ms.service: virtual-machine-scale-sets
+ms.subservice: management
+ms.date: 08/06/2020
+ms.reviewer: avverma
+ms.custom: avverma
+ms.openlocfilehash: ac3eaaa9fcb38bfc0b935912803fcd7df163cb56
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74461643"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914226"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>在虚拟机规模集上部署应用程序
 
@@ -38,7 +31,7 @@ ms.locfileid: "74461643"
 
 
 ## <a name="install-an-app-with-the-custom-script-extension"></a><a name="already-provisioned"></a>使用自定义脚本扩展安装应用
-自定义脚本扩展在 Azure VM 上下载和执行脚本。 此扩展适用于部署后配置、软件安装或其他任何配置/管理任务。 可以从 Azure 存储或 GitHub 下载脚本，或者在扩展运行时将脚本提供给 Azure 门户。 若要详细了解如何使用自定义脚本扩展安装应用，请参阅以下教程：
+自定义脚本扩展在 Azure VM 上下载和执行脚本。 此扩展适用于部署后配置、软件安装或其他任何配置/管理任务。 可以从 Azure 存储或 GitHub 下载脚本，或者在扩展运行时将脚本提供给 Azure 门户。 有关如何使用自定义脚本扩展安装应用的详细信息，请参阅以下教程：
 
 - [Azure CLI](tutorial-install-apps-cli.md)
 - [Azure PowerShell](tutorial-install-apps-powershell.md)
@@ -48,14 +41,14 @@ ms.locfileid: "74461643"
 ## <a name="install-an-app-to-a-windows-vm-with-powershell-dsc"></a>使用 PowerShell DSC 将应用安装到 Windows VM
 [PowerShell Desired State Configuration (DSC)](https://docs.microsoft.com/powershell/scripting/dsc/overview/overview) 是一个管理平台，用于定义目标计算机的配置。 DSC 配置定义要在计算机上安装的内容，以及如何配置主机。 本地配置管理器 (LCM) 引擎在每个目标节点上运行，此类节点根据推送的配置处理请求的操作。
 
-通过 PowerShell DSC 扩展，可使用 PowerShell 在规模集中自定义 VM 实例。 以下示例：
+通过 PowerShell DSC 扩展，可使用 PowerShell 在规模集中自定义 VM 实例。 下面的示例：
 
 - 指示 VM 实例从 GitHub 下载 DSC 包 - https://github.com/Azure-Samples/compute-automation-configurations/raw/master/dsc.zip
 - 设置用于运行安装脚本的扩展 - `configure-http.ps1`
 - 使用 [Get-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss) 获取有关规模集的信息
 - 使用 [Update-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss) 将扩展应用到 VM 实例
 
-DSC 扩展会应用于名为 myResourceGroup 的资源组中的 myScaleSet VM 实例   。 按如下所示输入自己的名称：
+DSC 扩展会应用于名为 myResourceGroup 的资源组中的 myScaleSet VM 实例 。 按如下所示输入自己的名称：
 
 ```powershell
 # Define the script for your Desired Configuration to download and run
@@ -93,22 +86,22 @@ Update-AzVmss `
 
 
 ## <a name="install-an-app-to-a-linux-vm-with-cloud-init"></a>使用 cloud-init 将应用安装到 Linux VM
-[Cloud-init](https://cloudinit.readthedocs.io/en/latest/index.html) 是一种广泛使用的方法，用于在首次启动 Linux VM 时对其进行自定义。 可使用 cloud-init 来安装程序包和写入文件，或者配置用户和安全性。 在初始启动期间运行 cloud-init 时，无需额外的步骤和代理即可应用配置。
+[Cloud-init](https://cloudinit.readthedocs.io/en/latest/index.html) 是一种广泛使用的方法，用于在首次启动 Linux VM 时对其进行自定义。 可使用 cloud-init 安装程序包和写入文件，或者配置用户和安全。 在初始启动期间运行 cloud-init 时，无需额外的步骤且无需代理来应用配置。
 
-Cloud-init 还支持不同的发行版。 例如，不需使用  apt-get install 或  yum install 来安装包， 而是可定义要安装的程序包的列表。 Cloud-init 将对所选发行版自动使用本机包管理工具。
+Cloud-init 还支持不同的分发。 例如，不要使用 apt-get 安装或 yum 安装来安装包。 可定义要安装的程序包的列表。 Cloud-init 将为所选发行版自动使用本机包管理工具。
 
 有关详细信息，包括示例 cloud-init.txt 文件，请参阅[使用 cloud-init 自定义 Azure VM](../virtual-machines/linux/using-cloud-init.md)。
 
-若要创建规模集并使用 cloud-init 文件，请将 `--custom-data` 参数添加到 [az vmss create](/cli/vmss) 命令并指定 cloud-init 文件的名称。 以下示例会在 myResourceGroup 中创建名为 myScaleSet 的规模集，并配置包含名为 cloud-init.txt 的文件的 VM 实例    。 按如下所示输入自己的名称：
+若要创建规模集并使用 cloud-init 文件，请将 `--custom-data` 参数添加到 [az vmss create](/cli/vmss) 命令并指定 cloud-init 文件的名称。 以下示例会在 myResourceGroup 中创建名为 myScaleSet 的规模集，并配置包含名为 cloud-init.txt 的文件的 VM 实例  。 按如下所示输入自己的名称：
 
 ```azurecli
-az vmss create `
-  --resource-group myResourceGroup `
-  --name myScaleSet `
-  --image UbuntuLTS `
-  --upgrade-policy-mode automatic `
-  --custom-data cloud-init.txt `
-  --admin-username azureuser `
+az vmss create \
+  --resource-group myResourceGroup \
+  --name myScaleSet \
+  --image UbuntuLTS \
+  --upgrade-policy-mode automatic \
+  --custom-data cloud-init.txt \
+  --admin-username azureuser \
   --generate-ssh-keys
 ```
 
@@ -116,10 +109,9 @@ az vmss create `
 ### <a name="install-applications-with-os-updates"></a>使用 OS 更新安装应用程序
 新的 OS 版本可用时，可使用或生成新的自定义映像并[将 OS 升级部署](virtual-machine-scale-sets-upgrade-scale-set.md)到规模集中。 每个 VM 实例均会升级到指定的最新映像。 可使用预安装了应用程序的自定义映像、自定义脚本扩展或 PowerShell DSC 使应用程序在你执行升级时自动可用。 执行此过程时，可能需要为应用程序维护制定计划，确保不存在版本兼容问题。
 
-如果使用预安装了应用程序的自定义 VM 映像，则可将应用程序更新与部署管道集成，以便生成新的映像并在规模集中部署 OS 升级。 此方法可使管道选取最新的应用程序版本，创建和验证 VM 映像，然后升级规模集中的 VM 实例。 若要运行跨自定义 VM 映像生成并部署应用程序更新的部署管道，可[创建 Packer 映像并使用 Visual Studio Team Services 进行部署](https://docs.microsoft.com/vsts/pipelines/apps/cd/azure/deploy-azure-scaleset)，也可以使用其他平台，如 [Spinnaker](https://www.spinnaker.io/) 或 [Jenkins](https://jenkins.io/)。
+如果使用预安装了应用程序的自定义 VM 映像，则可将应用程序更新与部署管道集成，以便生成新的映像并在规模集中部署 OS 升级。 此方法可使管道选取最新的应用程序版本，创建和验证 VM 映像，然后升级规模集中的 VM 实例。 若要运行跨自定义 VM 映像生成并部署应用程序更新的部署管道，可使用 [Spinnaker](https://www.spinnaker.io/) 或 [Jenkins](https://jenkins.io/) 等平台。
 
 
 ## <a name="next-steps"></a>后续步骤
-生成应用程序并将其部署到规模集时，可参阅[规模集设计概述](virtual-machine-scale-sets-design-overview.md)。 若要深入了解如何管理规模集，请参阅[使用 PowerShell 管理规模集](virtual-machine-scale-sets-windows-manage.md)。
+生成应用程序并将其部署到规模集时，可参阅[规模集设计概述](virtual-machine-scale-sets-design-overview.md)。 若要深入了解如何管理规模集，请参阅[使用 PowerShell 管理规模集](./virtual-machine-scale-sets-manage-powershell.md)。
 
-<!-- Update_Description: wording update -->

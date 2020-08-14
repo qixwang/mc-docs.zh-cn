@@ -7,17 +7,19 @@ ms.subservice: imaging
 ms.topic: troubleshooting
 ms.workload: infrastructure
 origin.date: 04/17/2020
-ms.date: 07/06/2020
+ms.date: 08/10/2020
+ms.testscope: no
+ms.testdate: 07/06/2020
 ms.author: v-yeche
 ms.reviewer: cynthn
-ms.openlocfilehash: 438eb2911e64a8e56849521437e771674a7fa115
-ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
+ms.openlocfilehash: e2e89c14b39b2ffd3a23d2830e4de77aad8f9705
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85946052"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917248"
 ---
-# <a name="troubleshooting-shared-image-galleries"></a>排查共享映像库问题
+# <a name="troubleshooting-shared-image-galleries-in-azure"></a>排查 Azure 中共享映像库的问题
 
 [!INCLUDE [virtual-machines-common-shared-image-troubleshooting](../../includes/virtual-machines-common-shared-image-troubleshooting.md)]
 

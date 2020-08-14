@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/13/2020
+ms.date: 08/07/2020
 ms.author: v-junlch
-ms.openlocfilehash: 115516f810d614174de42785217db023a234f965
-ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
+ms.openlocfilehash: 30e2b2e601df78f3d696a4d65d08bcbd486456ae
+ms.sourcegitcommit: a5eb9a47feefb053ddbaab4b15c395972c372339
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86472615"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88028597"
 ---
 # <a name="understand-the-health-states-and-resolve-suspended-domains-in-azure-active-directory-domain-services"></a>了解 Azure Active Directory 域服务中的运行状况并解决挂起的域
 
-当 Azure Active Directory 域服务 (Azure AD DS) 长时间无法为托管域提供服务时，它会将托管域置于挂起状态。 如果之后托管域一直处于挂起状态，它将被自动删除。 若要使 Azure AD DS 托管域保持正常运行并避免挂起，请尽快解决任何警报。
+当 Azure Active Directory 域服务 (Azure AD DS) 长时间无法为托管域提供服务时，它会将托管域置于挂起状态。 如果托管域仍处于挂起状态，则会自动删除该域。 若要使 Azure AD DS 托管域保持正常运行并避免挂起，请尽快解决任何警报。
 
 本文解释了托管域挂起的原因，以及如何恢复挂起的域。
 
@@ -39,7 +39,7 @@ ms.locfileid: "86472615"
 
 ## <a name="running-state"></a>“正在运行”状态
 
-已正确配置且正在无问题运行的托管域处于“正在运行”状态。 这是期望的托管域状态。
+已正确配置且无问题的托管域处于“正在运行”状态。 这是期望的托管域状态。
 
 ### <a name="what-to-expect"></a>期望
 
@@ -50,7 +50,9 @@ ms.locfileid: "86472615"
 
 ## <a name="needs-attention-state"></a>“需要注意”状态
 
-有一个或多个问题需要修复的托管域处于“需要注意”状态。 托管域的运行状况页会列出警报，并指示出现问题的位置。 某些警报是暂时性的，会由 Azure 平台自动解决。 对于其他警报，你可以按照提供的解决方法步骤来解决问题。 如果有严重警报，请[提交 Azure 支持请求][azure-support]来获取更多的排除故障帮助。
+有一个或多个问题需要修复的托管域处于“需要注意”状态。 托管域的运行状况页会列出警报，并指示出现问题的位置。
+
+某些警报是暂时性的，会由 Azure 平台自动解决。 对于其他警报，你可以按照提供的解决方法步骤来解决问题。 如果有严重警报，请[提交 Azure 支持请求][azure-support]来获取更多的排除故障帮助。
 
 存在受限制的网络安全组是一个警报示例。 在此配置中，Azure 平台可能无法更新和监视托管域。 将生成一个警报，并且状态会变为“需要注意”。
 
@@ -58,7 +60,7 @@ ms.locfileid: "86472615"
 
 ### <a name="what-to-expect"></a>期望
 
-当托管域处于“需要注意”状态时，Azure 平台可能无法定期监视、修补、更新或备份数据。 在某些情况下（例如，当网络配置无效时），可能无法访问托管域的域控制器。
+当托管域处于“需要注意”状态时，Azure 平台可能无法定期监视、修补、更新或备份数据。 在某些情况下（例如当网络配置无效时），可能无法访问托管域的域控制器。
 
 * 托管域处于不正常状态，并且可能会停止正在进行的运行状况监视，直到警报解除。
 * 可能无法修补或更新托管域的域控制器。
@@ -102,7 +104,7 @@ Azure 门户中的“Azure AD DS 运行状况”页上会显示一个[警报][re
 
 托管域只能还原到上次备份的日期。 上次备份的日期显示在托管域的“运行状况”页面上。 系统不会还原上次备份后发生的任何更改。 托管域的备份最多存储 30 天。 超过 30 天的备份将被删除。
 
-在你解决了托管域处于“已挂起”状态时的警报后，请[提交 Azure 支持请求][azure-support]，以便将托管域恢复为正常运行状态。 如果备份不到 30 天，则 Azure 支持人员可以还原托管域。
+在你解决了托管域处于“已挂起”状态时的警报后，请[提交 Azure 支持请求][azure-support]，以便将托管域恢复为正常运行状态。 如果有 30 天内的备份，Azure 支持可以还原托管域。
 
 ## <a name="deleted-state"></a>“已删除”状态
 
@@ -113,7 +115,7 @@ Azure 门户中的“Azure AD DS 运行状况”页上会显示一个[警报][re
 当托管域进入“已删除”状态时，将出现以下行为：
 
 * 将删除托管域的所有资源和备份。
-* 无法还原托管域，需要创建替代托管域才能重新使用 Azure AD DS。
+* 你不能还原托管域。 必须创建替换托管域才能重用 Azure AD DS。
 * 删除后，无需为托管域付费。
 
 ## <a name="next-steps"></a>后续步骤

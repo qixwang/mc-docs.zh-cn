@@ -9,12 +9,12 @@ ms.topic: conceptual
 origin.date: 02/26/2020
 ms.date: 03/23/2020
 ms.author: v-yiso
-ms.openlocfilehash: fbc53a3e1a603746e08b321ef11531cec40d9939
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.openlocfilehash: 1d2ba772fef2e069144103f81605bb6212bcea97
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723216"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917041"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>缩放 Azure HDInsight 群集
 
@@ -107,6 +107,14 @@ Microsoft 提供以下实用程序来缩放群集：
 * Kafka
 
     执行缩放操作后，应重新均衡分区副本。 有关详细信息，请参阅[通过 Apache Kafka on HDInsight 实现数据的高可用性](./kafka/apache-kafka-high-availability.md)文档。
+
+* Apache Hive LLAP
+
+    缩放到 `N` 个工作器节点后，HDInsight 将自动设置以下配置并重启 Hive。
+
+  * 最大总并发查询数：`hive.server2.tez.sessions.per.default.queue = min(N, 32)`
+  * Hive 的 LLAP 使用的节点数：`num_llap_nodes  = N`
+  * 运行 Hive LLAP 守护程序的节点数：`num_llap_nodes_for_llap_daemons = N`
 
 ## <a name="how-to-safely-scale-down-a-cluster"></a>如何安全地纵向缩减群集
 

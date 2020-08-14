@@ -8,22 +8,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-origin.date: 8/2/2019
-ms.date: 06/15/2020
+origin.date: 07/09/2019
+ms.date: 08/10/2020
 author: WenJason
 ms.author: v-jay
 ms.reviewer: douglasl
 manager: digimobile
-ms.openlocfilehash: 4e843711bdc6c38ba7ca62e5e7954021b1618935
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.openlocfilehash: a1728098d986320bbe8150b0e4f10c81679e2f87
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723439"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914313"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>如何按计划启动和停止 Azure-SSIS Integration Runtime
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 本文介绍如何使用 Azure 数据工厂 (ADF) 计划 Azure-SSIS Integration Runtime (IR) 的启动和停止。 Azure-SSIS IR 是专用于执行 SQL Server Integration Services (SSIS) 包的 ADF 计算资源。 运行 Azure-SSIS IR 会产生相关成本。 因此，通常只有在需要在 Azure 中运行 SSIS 包时才运行 IR，而不再需要该包时则停止 IR。 可以使用 ADF 用户界面 (UI)/应用或 Azure PowerShell [手动启动或停止 IR](manage-azure-ssis-integration-runtime.md)。
 
@@ -208,6 +208,182 @@ ms.locfileid: "84723439"
    ```powershell
    Get-AzDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "myTrigger" -TriggerRunStartedAfter "2018-07-15" -TriggerRunStartedBefore "2018-07-16"
    ```
+
+## <a name="create-and-schedule-azure-automation-runbook-that-startsstops-azure-ssis-ir"></a>创建并安排启动/停止 Azure-SSIS IR 的 Azure 自动化 Runbook
+
+本部分介绍如何创建 Azure 自动化 Runbook，该 Runbook 执行 PowerShell 脚本，按计划启动/停止 Azure-SSIS IR。  如果希望在开始/停止 IR 之前/之后执行其他脚本以进行预/后处理时，这非常有用。
+
+### <a name="create-your-azure-automation-account"></a>创建 Azure 自动化帐户
+
+如果没有 Azure 自动化帐户，请遵照此步骤中的说明创建一个。 有关详细步骤，请参阅[创建 Azure 自动化帐户](../automation/automation-quickstart-create-account.md)一文。 在执行此步骤的过程中，创建一个 Azure 运行方式帐户（Azure Active Directory 中的服务主体），并在 Azure 订阅中为其分配参与者角色********。 确保其与包含带有 Azure SSIS IR 的 ADF 的订阅相同。 Azure 自动化将使用此帐户在 Azure 资源管理器中进行身份验证，并对资源执行操作。 
+
+1. 启动 **Microsoft Edge** 或 **Google Chrome** Web 浏览器。 目前，仅在 Microsoft Edge 和 Google Chrome 网络浏览器中支持 ADF UI/应用。
+2. 登录到 [Azure 门户](https://portal.azure.cn/)。    
+3. 在左侧菜单中选择“新建”，搜索“自动化”，然后选择。 
+
+   ![“新建”->“监视 + 管理”->“自动化”](./media/how-to-schedule-azure-ssis-integration-runtime/new-automation.png)
+    
+2. 在“添加自动化帐户”窗格中，执行以下操作****。
+
+    1. 对于“名称”，请输入 Azure 自动化帐户的名称****。 
+    2. 对于“订阅”，请选择具有 Azure-SSIS IR 的 ADF 的订阅****。 
+    3. 对于“资源组”，请选择“新建”以创建新的资源组，或选择“使用现有项”以使用现有的资源组************。 
+    4. 对于“位置”，选择 Azure 自动化的位置****。 
+    5. 确认“创建 Azure 运行方式帐户”为“是”********。 将在 Azure Active Directory 中创建服务主体，并在 Azure 订阅中为其分配“参与者”角色****。
+    6. 选择“固定到仪表板”以在 Azure 仪表板中永久显示该服务主体****。 
+    7. 选择“创建”。 
+
+   ![“新建”->“监视 + 管理”->“自动化”](./media/how-to-schedule-azure-ssis-integration-runtime/add-automation-account-window.png)
+   
+3. Azure 仪表板和通知中将显示 Azure 自动化帐户的部署状态。 
+    
+   ![部署自动化](./media/how-to-schedule-azure-ssis-integration-runtime/deploying-automation.png) 
+    
+4. 成功创建 Azure 自动化帐户后，将显示该主页。 
+
+   ![自动化主页](./media/how-to-schedule-azure-ssis-integration-runtime/automation-home-page.png)
+
+### <a name="import-adf-modules"></a>导入 ADF 模块
+
+1. 在左侧菜单的“共享资源”部分中选择“模块”，验证模块列表中是否包含“Az.DataFactory” + “Az.Profile”   。
+
+   ![验证所需的模块](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image1.png)
+
+2.  如果没有 **Az.DataFactory**，请转到 PowerShell 库中的 [Az.DataFactory 模块](https://www.powershellgallery.com/packages/Az.DataFactory/)，然后导入。 返回查看左侧菜单的“共享资源”部分中的“模块”并等待，直到看到“Az.DataFactory”模块的“状态”更改为“可用”    。
+
+    ![验证数据工厂模块](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image2.png)
+
+3.  如果没有 **Az.Profile**，请转到 PowerShell 库中的 [Az.Profile 模块](https://www.powershellgallery.com/packages/Az.profile/)，然后导入。 返回查看左侧菜单的“共享资源”部分中的“模块”并等待，直到看到“Az.Profile”模块的“状态”更改为“可用”    。
+
+    ![验证配置文件模块](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image3.png)
+
+### <a name="create-your-powershell-runbook"></a>创建 PowerShell Runbook
+
+以下部分提供创建 PowerShell Runbook 的步骤。 与 Runbook 关联的脚本会根据针对“操作”参数指定的命令来启动/停止 Azure SSIS IR****。 本部分不提供有关创建 Runbook 的完整细节。 有关详细信息，请参阅[创建 Runbook](../automation/automation-quickstart-create-runbook.md) 一文。
+
+1. 切换到“Runbook”选项卡，在工具栏中选择“+ 添加 Runbook”********。 
+
+   ![“添加 Runbook”按钮](./media/how-to-schedule-azure-ssis-integration-runtime/runbooks-window.png)
+   
+2. 选择“创建新的 Runbook”并执行以下操作：**** 
+
+    1. 对于“名称”，输入 StartStopAzureSsisRuntime********。
+    2. 对于“Runbook 类型”，请选择“PowerShell”。********
+    3. 选择“创建”。
+    
+   ![“添加 Runbook”按钮](./media/how-to-schedule-azure-ssis-integration-runtime/add-runbook-window.png)
+   
+3. 将以下 PowerShell 脚本复制并粘贴到 Runbook 脚本窗口。 使用工具栏上的“保存”和“发布”按钮保存并发布该 Runbook********。 
+
+    ```powershell
+    Param
+    (
+          [Parameter (Mandatory= $true)]
+          [String] $ResourceGroupName,
+    
+          [Parameter (Mandatory= $true)]
+          [String] $DataFactoryName,
+    
+          [Parameter (Mandatory= $true)]
+          [String] $AzureSSISName,
+    
+          [Parameter (Mandatory= $true)]
+          [String] $Operation
+    )
+    
+    $connectionName = "AzureRunAsConnection"
+    try
+    {
+        # Get the connection "AzureRunAsConnection "
+        $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName         
+    
+        "Logging in to Azure..."
+        Connect-AzAccount `
+        -Environment AzureChinaCloud `
+            -ServicePrincipal `
+            -TenantId $servicePrincipalConnection.TenantId `
+            -ApplicationId $servicePrincipalConnection.ApplicationId `
+            -CertificateThumbprint $servicePrincipalConnection.CertificateThumbprint 
+    }
+    catch {
+        if (!$servicePrincipalConnection)
+        {
+            $ErrorMessage = "Connection $connectionName not found."
+            throw $ErrorMessage
+        } else{
+            Write-Error -Message $_.Exception
+            throw $_.Exception
+        }
+    }
+    
+    if($Operation -eq "START" -or $operation -eq "start")
+    {
+        "##### Starting #####"
+        Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $AzureSSISName -Force
+    }
+    elseif($Operation -eq "STOP" -or $operation -eq "stop")
+    {
+        "##### Stopping #####"
+        Stop-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName -Force
+    }  
+    "##### Completed #####"    
+    ```
+
+   ![编辑 PowerShell Runbook](./media/how-to-schedule-azure-ssis-integration-runtime/edit-powershell-runbook.png)
+    
+4. 在工具栏上选择“启动”按钮来测试 Runbook****。 
+
+   ![“启动 Runbook”按钮](./media/how-to-schedule-azure-ssis-integration-runtime/start-runbook-button.png)
+    
+5. 在“启动 Runbook”窗格中，执行以下操作： 
+
+    1. 对“资源组名称”，请输入具有 Azure-SSIS IR 的 ADF 的资源组的名称****。 
+    2. 对于“数据工厂名称”，请使用 Azure-SSIS IR 输入 ADF 的名称****。 
+    3. 对于“AZURESSISNAME”，请输入 Azure SSIS IR 的名称****。 
+    4. 对于“操作”，请输入“启动”。******** 
+    5. 选择“确定”。  
+
+   ![“启动 Runbook”窗口](./media/how-to-schedule-azure-ssis-integration-runtime/start-runbook-window.png)
+   
+6. 在作业窗口中，选择“输出”磁贴。**** 在输出窗口中，等到依次出现消息“##### 正在启动 #####”和“##### 已完成 #####”********。 启动 Azure SSIS IR 大约需要 20 分钟。 关闭“作业”窗口并返回到“Runbook”窗口********。
+
+   ![Azure SSIS IR - 已启动](./media/how-to-schedule-azure-ssis-integration-runtime/start-completed.png)
+    
+7. 重复上述两个步骤，但这一次要使用“停止”作为“操作”的值********。 选择工具栏上的“开始”按钮，再次启动 Runbook****。 输入资源组、ADF 和 Azure-SSIS IR 名称。 对于“操作”，请输入“停止”。******** 在输出窗口中，等到依次出现消息“##### 正在停止 #####”和“##### 已完成 #####”********。 停止 Azure SSIS IR 所需的时间比启动 Azure SSIS IR 要短一些。 关闭“作业”窗口并返回到“Runbook”窗口********。
+
+8. 还可以通过选择“Webhook”菜单项可创建的 Webhook 或按照通过选择以下指定的“计划”菜单项可创建的计划来触发 runbook。  
+
+## <a name="create-schedules-for-your-runbook-to-startstop-azure-ssis-ir"></a>为 Runbook 创建计划来启动/停止 Azure SSIS IR
+
+在上一部分，已创建了一个可以启动或停止 Azure SSIS IR 的 Azure 自动化 Runbook。 在本部分，将为 Runbook 创建两个计划。 配置第一个计划时，为“操作”指定“启动”********。 类似地，在配置第二个计划时，请为“操作”指定“停止”********。 有关创建计划的详细步骤，请参阅[创建计划](../automation/shared-resources/schedules.md#create-a-schedule)一文。
+
+1. 在“Runbook”窗口中选择“计划”，然后在工具栏上选择“+ 添加计划”************。 
+
+   ![Azure SSIS IR - 已启动](./media/how-to-schedule-azure-ssis-integration-runtime/add-schedules-button.png)
+   
+2. 在“计划 Runbook”窗格中，执行以下操作：**** 
+
+    1. 选择“将计划链接到 Runbook”。**** 
+    2. 选择“创建新计划”。****
+    3. 在“新计划”窗格中，为“名称”输入“每天启动 IR”************。 
+    4. 对于“开始”，请输入比当前时间晚几分钟的时间****。 
+    5. 对于“重复周期 ”，请选择“定期”。******** 
+    6. 对于“重复间隔”，请输入“1”并选择“日”************。 
+    7. 选择“创建”。 
+
+   ![计划 Azure SSIS IR 的启动](./media/how-to-schedule-azure-ssis-integration-runtime/new-schedule-start.png)
+    
+3. 切换到“参数和运行设置”选项卡。指定资源组、ADF 和 Azure-SSIS IR 名称。 对于“操作”，请输入“启动”并选择“确定”************。 再次选择“确定”，在 Runbook 的“计划”页上查看该计划********。 
+
+   ![计划启动 Azure SSIS IR](./media/how-to-schedule-azure-ssis-integration-runtime/start-schedule.png)
+    
+4. 重复上述两个步骤，创建名为“每日停止 IR”的计划。**** 输入时间比“每日启动 IR”计划中指定的时间至少晚 30 分钟****。 对于“操作”，请输入“停止”并选择“确定”************。 再次选择“确定”，在 Runbook 的“计划”页上查看该计划********。 
+
+5. 在“Runbook”窗口上的左侧菜单中选择“作业”********。 此时，应会看到计划在指定的时间创建的作业及其状态。 可以查看作业详细信息，例如其输出（与在测试 Runbook 后看到的内容类似）。 
+
+   ![计划启动 Azure SSIS IR](./media/how-to-schedule-azure-ssis-integration-runtime/schedule-jobs.png)
+    
+6. 完成测试后，通过编辑计划将其禁用。 在左侧菜单中选择“计划”，选择“每日启动 IR”/“每日停止 IR”，然后“已启用”旁边的“否”****************。 
 
 ## <a name="next-steps"></a>后续步骤
 参阅 SSIS 文档中的以下文章： 

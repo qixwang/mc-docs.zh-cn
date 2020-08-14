@@ -7,17 +7,17 @@ ms.suite: integration
 author: ecfan
 manager: jeconnoc
 ms.author: v-yiso
-origin.date: 08/30/2019
 ms.topic: article
+origin.date: 08/30/2019
 ms.date: 02/24/2020
 ms.reviewer: klam, divswa, LADocs
 tags: connectors
-ms.openlocfilehash: ac9a38b53a9a1d880299134f6af59f2626954bb0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f91220632444276909c5992df8b55533b3979ab4
+ms.sourcegitcommit: 3cf647177c22b24f76236c57cae19482ead6a283
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428261"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88029625"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>从 Azure 逻辑应用连接到 SAP 系统
 
@@ -146,29 +146,29 @@ SAP 连接器通过[本地数据网关](../logic-apps/logic-apps-gateway-connect
 
     1. 在“SAP 操作”框中，选择文件夹图标。  在文件列表中，找到并选择要使用的 SAP 消息。 使用箭头可在列表中导航。
 
-       此示例选择了类型为“订单”的 IDoc。 
+        此示例选择了类型为“订单”的 IDoc。 
 
-      ![找到并选择 IDoc 操作](./media/logic-apps-using-sap-connector/SAP-app-server-find-action.png)
+        ![找到并选择 IDoc 操作](./media/logic-apps-using-sap-connector/SAP-app-server-find-action.png)
 
-      如果找不到所需的操作，可以手动输入路径，例如：
+        如果找不到所需的操作，可以手动输入路径，例如：
 
-      ![手动提供 IDoc 操作的路径](./media/logic-apps-using-sap-connector/SAP-app-server-manually-enter-action.png)
+        ![手动提供 IDoc 操作的路径](./media/logic-apps-using-sap-connector/SAP-app-server-manually-enter-action.png)
 
-       > [!TIP]
-       > 通过表达式编辑器提供“SAP 操作”的值。  这样，便可以对不同的消息类型使用相同的操作。
+        > [!TIP]
+        > 通过表达式编辑器提供“SAP 操作”的值。  这样，便可以对不同的消息类型使用相同的操作。
 
-      有关 IDoc 操作的详细信息，请参阅 [IDOC 操作的消息架构](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations)。
+        有关 IDoc 操作的详细信息，请参阅 [IDOC 操作的消息架构](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations)。
 
-   2. 在“输入消息”框中单击，以显示动态内容列表。  
-   在该列表中的“收到 HTTP 请求时”下面，选择“正文”字段。   
+    2. 在“输入消息”框中单击，以显示动态内容列表。  
+        在该列表中的“收到 HTTP 请求时”下面，选择“正文”字段。   
 
-      此步骤包含来自 HTTP 请求触发器的正文内容，并将该输出发送到 SAP 服务器。
+        此步骤包含来自 HTTP 请求触发器的正文内容，并将该输出发送到 SAP 服务器。
 
-      ![选择“正文”字段](./media/logic-apps-using-sap-connector/SAP-app-server-action-select-body.png)
+        ![选择“正文”字段](./media/logic-apps-using-sap-connector/SAP-app-server-action-select-body.png)
 
-       完成后，SAP 操作如以下示例所示：
+        完成后，SAP 操作如以下示例所示：
 
-      ![完成 SAP 操作](./media/logic-apps-using-sap-connector/SAP-app-server-complete-action.png)
+        ![完成 SAP 操作](./media/logic-apps-using-sap-connector/SAP-app-server-complete-action.png)
 
 1. 保存逻辑应用。 在设计器工具栏上选择“保存”。 
 

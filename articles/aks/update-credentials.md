@@ -5,16 +5,16 @@ description: 了解如何为 Azure Kubernetes 服务 (AKS) 群集更新或重置
 services: container-service
 ms.topic: article
 origin.date: 03/11/2019
-ms.date: 07/13/2020
+ms.date: 08/10/2020
 ms.testscope: no
 ms.testdate: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: 93c78c757065ac28994273717c684e9c526b21b2
-ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
+ms.openlocfilehash: aba38e98749ef64c00151f025daeaec89b4bae9b
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86218793"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842616"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>更新或轮换 Azure Kubernetes 服务 (AKS) 的凭据
 
@@ -30,12 +30,24 @@ ms.locfileid: "86218793"
 
 ## <a name="update-or-create-a-new-service-principal-for-your-aks-cluster"></a>为 AKS 群集更新或创建新的服务主体
 
-要为 AKS 群集更新凭据时，可以选择：
+要为 AKS 群集更新凭据时，可以选择以下任一操作：
 
-* 为群集使用的现有服务主体更新凭据，或
-* 创建服务主体并更新群集以使用这些新凭据。
+* 为现有服务主体更新凭据。
+* 创建新服务主体并更新群集以使用这些新凭据。 
 
-### <a name="reset-existing-service-principal-credential"></a>重置现有的服务主体凭据
+> ![警告] 如果选择创建新服务主体，那么更新大型 AKS 群集以使用这些凭据可能需要很长时间才能完成。
+
+### <a name="check-the-expiration-date-of-your-service-principal"></a>检查服务主体的到期日期
+
+若要检查服务主体的到期日期，请使用 [az ad sp credential list][az-ad-sp-credential-list] 命令。 以下示例使用 [az aks show][az-aks-show] 命令获取 myResourceGroup 资源组中名为 myAKSCluster 的群集的服务主体 ID 。 将服务主体 ID 设置为名为“SP_ID”的变量，以便与 [az ad sp credential list][az-ad-sp-credential-list] 命令一起使用。
+
+```azurecli
+SP_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster \
+    --query servicePrincipalProfile.clientId -o tsv)
+az ad sp credential list --id $SP_ID --query "[].endDate" -o tsv
+```
+
+### <a name="reset-the-existing-service-principal-credential"></a>重置现有的服务主体凭据
 
 若要为现有服务主体更新凭据，请使用 [az aks show][az-aks-show] 命令获取群集的服务主体 ID。 以下示例获取 myResourceGroup 资源组中名为 myAKSCluster 的群集的 ID 。 服务主体 ID 设置为名为“SP_ID”变量以供在其他命令中使用。 这些命令使用 Bash 语法。
 
@@ -84,6 +96,9 @@ SP_SECRET=a5ce83c9-9186-426d-9183-614597c7f2f7
 
 ## <a name="update-aks-cluster-with-new-service-principal-credentials"></a>使用新的服务主体凭据更新 AKS 群集
 
+> [!IMPORTANT]
+> 对于大型群集，使用新服务主体更新 AKS 群集可能需要较长时间才能完成。
+
 无论是选择为现有服务主体更新凭据还是创建服务主体，现在都通过 [az aks update-credentials][az-aks-update-credentials] 命令，使用新凭据更新 AKS 群集。 会使用 --service-principal 和 --client-secret 的变量：
 
 ```azurecli
@@ -92,14 +107,14 @@ az aks update-credentials \
     --name myAKSCluster \
     --reset-service-principal \
     --service-principal $SP_ID \
-    --client-secret $SP_SECRET
+    --client-secret "$SP_SECRET"
 ```
 
-在 AKS 中更新服务主体凭据需要一段时间。
+对于中小型群集，在 AKS 中更新服务主体凭据需要一段时间。
 
 ## <a name="update-aks-cluster-with-new-aad-application-credentials"></a>使用新的 AAD 应用程序凭据更新 AKS 群集
 
-可以按照 [AAD 集成步骤][create-aad-app]创建新的 AAD 服务器和客户端应用程序。 或按照[与服务主体重置相同的方法](#reset-existing-service-principal-credential)重置现有的 AAD 应用程序。 之后，只需使用相同的 [az aks update-credentials][az-aks-update-credentials] 命令（但使用 *--reset-aad* 变量）更新群集 AAD 应用程序凭据即可。
+可以按照 [AAD 集成步骤][create-aad-app]创建新的 AAD 服务器和客户端应用程序。 或按照[与服务主体重置相同的方法](#reset-the-existing-service-principal-credential)重置现有的 AAD 应用程序。 之后，只需使用相同的 [az aks update-credentials][az-aks-update-credentials] 命令（但使用 *--reset-aad* 变量）更新群集 AAD 应用程序凭据即可。
 
 ```azurecli
 az aks update-credentials \
@@ -121,9 +136,10 @@ az aks update-credentials \
 [az-aks-show]: https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-show
 [az-aks-update-credentials]: https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-update-credentials
 [best-practices-identity]: operator-best-practices-identity.md
-[aad-integration]: azure-ad-integration.md
-[create-aad-app]: azure-ad-integration.md#create-the-server-application
+[aad-integration]: ./azure-ad-integration-cli.md
+[create-aad-app]: ./azure-ad-integration-cli.md#create-azure-ad-server-component
 [az-ad-sp-create]: https://docs.azure.cn/cli/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac
+[az-ad-sp-credential-list]: https://docs.azure.cn/cli/ad/sp/credential?view=azure-cli-latest#az-ad-sp-credential-list
 [az-ad-sp-credential-reset]: https://docs.azure.cn/cli/ad/sp/credential?view=azure-cli-latest#az-ad-sp-credential-reset
 
 <!-- Update_Description: update meta properties, wording update, update link -->

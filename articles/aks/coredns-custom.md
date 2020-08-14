@@ -5,14 +5,16 @@ services: container-service
 author: rockboyfor
 ms.topic: article
 origin.date: 03/15/2019
-ms.date: 03/09/2020
+ms.date: 08/10/2020
+ms.testscope: no
+ms.testdate: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1e8673defd712bd78ecc08afc0cd0616ba7a1ae4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5e807bf7d3d10b02aced5662957ac271ab61a6aa
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290757"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842609"
 ---
 # <a name="customize-coredns-with-azure-kubernetes-service"></a>使用 Azure Kubernetes 服务自定义 CoreDNS
 
@@ -29,6 +31,8 @@ Azure Kubernetes 服务 (AKS) 可将适用于管理和解决群集 DNS 问题的
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
+创建类似下面示例的配置时，data 部分中的名称必须以 .server 或 .override 结尾  。 这个命名约定是在默认的 AKS CoreDNS Configmap 中定义的，可以使用 `kubectl get configmaps --namespace=kube-system coredns -o yaml` 命令查看。
+
 ## <a name="what-is-supportedunsupported"></a>支持的/不支持的插件
 
 支持所有内置 CoreDNS 插件。 不支持任何附加/第三方插件。
@@ -44,12 +48,12 @@ metadata:
   name: coredns-custom
   namespace: kube-system
 data:
-  test.server: |
+  test.server: | # you may select any name here, but it must end with the .server file extension
     <domain to be rewritten>.com:53 {
         errors
         cache 30
         rewrite name substring <domain to be rewritten>.com default.svc.cluster.local
-        forward .  /etc/resolv.conf # you can redirect this to a specific DNS server such as 10.0.0.10
+        forward .  /etc/resolv.conf # you can redirect this to a specific DNS server such as 10.0.0.10, but that server must be able to resolve the rewritten domain name
     }
 ```
 
@@ -111,7 +115,7 @@ metadata:
   name: coredns-custom
   namespace: kube-system
 data:
-  puglife.server: |
+  puglife.server: | # you may select any name here, but it must end with the .server file extension
     puglife.local:53 {
         errors
         cache 30
@@ -137,7 +141,7 @@ metadata:
   name: coredns-custom
   namespace: kube-system
 data:
-  test.server: |
+  test.server: | # you may select any name here, but it must end with the .server file extension
     abc.com:53 {
         errors
         cache 30
@@ -169,7 +173,7 @@ metadata:
   name: coredns-custom # this is the name of the configmap you can overwrite with your changes
   namespace: kube-system
 data:
-    test.override: |
+    test.override: | # you may select any name here, but it must end with the .override file extension
           hosts example.hosts example.org { # example.hosts must be a file
               10.0.0.1 example.org
               fallthrough
@@ -187,7 +191,7 @@ metadata:
   name: coredns-custom
   namespace: kube-system
 data:
-  log.override: |
+  log.override: | # you may select any name here, but it must end with the .override file extension
         log
 ```
 

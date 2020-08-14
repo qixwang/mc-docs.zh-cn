@@ -4,16 +4,16 @@ description: 提供常见的 Azure 订阅和服务限制、配额和约束的列
 ms.topic: conceptual
 author: rockboyfor
 origin.date: 06/04/2020
-ms.date: 07/13/2020
+ms.date: 08/10/2020
 ms.testscope: no
 ms.testdate: 08/03/2020
 ms.author: v-yeche
-ms.openlocfilehash: 106b7874539f76f0eb4d94076306386d833b9f2c
-ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
+ms.openlocfilehash: c1d5c6ed060e78d7553e7579e62b1e11a6517876
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87426291"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917201"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 
@@ -250,7 +250,7 @@ ms.locfileid: "87426291"
 
 ### <a name="media-services-v2-legacy"></a>媒体服务 v2（旧版）
 
-若要了解特定于媒体服务 v2（旧版）的限制，请参阅[媒体服务 v2（旧版）](/media-services/previous/media-services-quotas-and-limitations)
+若要了解特定于媒体服务 v2（旧版）的限制，请参阅[媒体服务 v2（旧版）](../../media-services/previous/media-services-quotas-and-limitations.md)
 
 ## <a name="mobile-services-limits"></a>移动服务限制
 
@@ -295,7 +295,9 @@ ms.locfileid: "87426291"
 
 [!INCLUDE [traffic-manager-limits](../../../includes/traffic-manager-limits.md)]
 
-<!--Not Available on ### Azure Bastion limits-->
+### <a name="azure-bastion-limits"></a>Azure Bastion 限制
+
+[!INCLUDE [Azure Bastion limits](../../../includes/bastion-limits.md)]
 
 ### <a name="azure-dns-limits"></a>Azure DNS 限制
 
@@ -325,7 +327,7 @@ ms.locfileid: "87426291"
 
 ## <a name="sql-database-limits"></a>SQL 数据库限制
 
-有关 SQL 数据库的限制，请参阅[单一数据库的 SQL 数据库资源限制](../../azure-sql/database/resource-limits-vcore-single-databases.md)、[弹性池和共用数据库的 SQL 数据库资源限制](../../azure-sql/database/resource-limits-vcore-elastic-pools.md)以及[托管实例的 SQL 数据库资源限制](../../azure-sql/managed-instance/resource-limits.md)。
+有关 SQL 数据库的限制，请参阅[单一数据库的 SQL 数据库资源限制](../../azure-sql/database/resource-limits-vcore-single-databases.md)、[弹性池和共用数据库的 SQL 数据库资源限制](../../azure-sql/database/resource-limits-vcore-elastic-pools.md)以及 [SQL 托管实例的 SQL 数据库资源限制](../../azure-sql/managed-instance/resource-limits.md)。
 
 ## <a name="azure-synapse-analytics-limits"></a>Azure Synapse Analytics 限制
 
@@ -370,6 +372,10 @@ ms.locfileid: "87426291"
 [!INCLUDE [azure-storage-limits-vm-disks](../../../includes/azure-storage-limits-vm-disks.md)]
 
 有关详细信息，请参阅[虚拟机大小](../../virtual-machines/linux/sizes.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)。
+
+#### <a name="disk-encryption-sets"></a>磁盘加密集
+
+每个区域、每个订阅有 50 个磁盘加密集的限制。 有关更多信息，请参阅 [Linux](/virtual-machines/linux/disk-encryption#restrictions) 或 [Windows](/virtual-machines/windows/disk-encryption#restrictions) 虚拟机的加密文档。 如果需要增加配额，请与 Azure 支持部门联系。
 
 ### <a name="managed-virtual-machine-disks"></a>托管虚拟机磁盘
 

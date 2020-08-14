@@ -8,16 +8,16 @@ ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: sql-dw
 origin.date: 05/28/2019
-ms.date: 08/03/2020
+ms.date: 08/10/2020
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 0148655846050c335e62e373786087a62096183b
-ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
+ms.openlocfilehash: b8a70f86e3b11db9e453b90a3eae204d2ce76ba2
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87426417"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917054"
 ---
 # <a name="quickstart-create-and-query-a-synapse-sql-pool-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建并查询 Synapse SQL 池
 
@@ -115,7 +115,7 @@ Azure Synapse 服务将在服务器级别创建防火墙。 此防火墙会阻�
 
 请在 Azure 门户中获取服务器的完全限定的服务器名称。 稍后，在连接到服务器时，将使用该完全限定的名称。
 
-1. 登录 [Azure 门户](https://portal.azure.cn/)。
+1. 登录到 [Azure 门户](https://portal.azure.cn/)。
 
 2. 在左侧菜单中选择“Azure Synapse Analytics”，然后在“Azure Synapse Analytics”页上选择你的 SQL 池。 
 
@@ -183,9 +183,9 @@ SQL 数据仓库使用 T-SQL 作为查询语言。 打开一个查询窗口并�
 
 2. 若要暂停计算，请选择“暂停”按钮。 暂停 SQL 池后，会看到“恢复”按钮。 若要恢复计算，请选择“恢复”。
 
-3. 若要删除 SQL 池以免产生计算或存储费用，请选择“删除”。 
+3. 若要删除 SQL 池以免产生计算或存储费用，请选择“删除”。
 
-4. 若要删除你创建的 SQL 服务器，请选择上图中的“sqlpoolservername.database.chinacloudapi.cn”，然后选择“删除”。   请谨慎执行此删除操作，因为删除服务器的同时也会删除分配给该服务器的所有数据库。
+4. 若要删除你创建的服务器，请选择上图中的“sqlpoolservername.database.chinacloudapi.cn”，然后选择“删除” 。 请谨慎执行此删除操作，因为删除服务器的同时也会删除分配给该服务器的所有数据库。
 
 5. 若要删除资源组，请选择“myResourceGroup”，然后选择“删除资源组”。
 

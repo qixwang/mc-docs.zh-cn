@@ -1,20 +1,20 @@
 ---
 title: Azure Data Box 磁盘限制 | Microsoft Docs
-description: 介绍了 Microsoft Azure Data Box 磁盘的系统限制与建议的大小。
+description: 介绍了 Azure Data Box 磁盘的系统限制与建议的大小。
 services: databox
 author: WenJason
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
 origin.date: 11/05/2019
-ms.date: 07/27/2020
+ms.date: 08/10/2020
 ms.author: v-jay
-ms.openlocfilehash: ce893b933bbe5aba6911dd005efa648523ebb03f
-ms.sourcegitcommit: c3f15613c875bb52d5a105445efd0f36b9f24c9c
+ms.openlocfilehash: 548f18c861a482700ef44cea17af7519552fdef5
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86473459"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917350"
 ---
 # <a name="azure-data-box-disk-limits"></a>Azure Data Box 磁盘限制
 
@@ -55,7 +55,7 @@ ms.locfileid: "86473459"
 - 如果在订单中指定了托管磁盘，请查看以下其他注意事项：
 
     - 在所有预先创建的文件夹和所有 Data Box Disk 中，一个资源组只能包含一个具有给定名称的托管磁盘。 这意味着，上传到预先创建的文件夹的 VHD 应具有唯一的名称。 确保给定的名称与资源组中现有的托管磁盘不匹配。 如果 VHD 具有相同的名称，则只有一个 VHD 将转换为具有该名称的托管磁盘。 其他 VHD 作为页 blob 上传到临时存储帐户。
-    - 始终将 VHD 复制到某个预先创建的文件夹。 如果将 VHD 复制到这些文件夹以外或者复制到你已创建的文件夹中，则 VHD 将作为页 Blob 而不是托管磁盘上传到 Azure 存储帐户中。
+    - 始终将 VHD 复制到某个预先创建的文件夹。 如果将 VHD 复制到这些文件夹以外或者复制到你自己创建的文件夹中，则 VHD 作为页 Blob 而不是托管磁盘上传到 Azure 存储帐户中。
     - 只能上传固定的 VHD 来创建托管磁盘。 不支持动态 VHD、差异 VHD 或 VHDX 文件。
     - 复制到预创建托管磁盘文件夹中的非 VHD 文件不会转换为托管磁盘。
 

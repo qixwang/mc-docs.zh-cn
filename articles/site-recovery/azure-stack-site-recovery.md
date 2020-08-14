@@ -1,16 +1,18 @@
 ---
 title: 使用 Azure Site Recovery 将 Azure Stack VM 复制到 Azure | Azure
-description: 了解如何使用 Azure Site Recovery 服务为 Azure Stack VM 设置到 Azure 的灾难恢复。
+description: 了解如何使用 Azure Site Recovery 服务为 Azure Stack VM 设置到 Microsoft Azure 的灾难恢复。
 ms.topic: conceptual
 origin.date: 08/05/2019
-ms.date: 06/08/2020
+ms.date: 08/10/2020
+ms.testscope: yes|no
+ms.testdate: 08/10/2020null
 ms.author: v-yeche
-ms.openlocfilehash: 6dda11aa6b6416a994b497211f09b555df32b29f
-ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
+ms.openlocfilehash: 5f658a19291888a2cba2ad36a8bd683702a41a33
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84440680"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917210"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>将 Azure Stack VM 复制到 Azure
 
@@ -37,7 +39,7 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 
 ## <a name="architecture"></a>体系结构
 
-![体系结构](./media/azure-stack-site-recovery/architecture.png)
+:::image type="content" source="./media/azure-stack-site-recovery/architecture.png" alt-text="体系结构":::
 
 **位置** | **组件** |**详细信息**
 --- | --- | ---
@@ -114,7 +116,7 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
     2. 在 /etc/ssh/sshd_config 文件中，找到以“PasswordAuthentication”开头的行  。 取消注释该行，并将值更改为 **yes**。
     3. 找到以“Subsystem”开头的行，并取消注释该行  。
 
-        ![Linux 移动服务](./media/azure-stack-site-recovery/linux-mobility.png)
+        :::image type="content" source="./media/azure-stack-site-recovery/linux-mobility.png" alt-text="Linux 移动服务":::
 
     4. 重启 sshd 服务。
 
@@ -126,7 +128,7 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 2. 在“资源”菜单上，单击“网络接口”   。
 3. 记下专用 IP 地址。
 
-    ![专用 IP 地址](./media/azure-stack-site-recovery/private-ip.png)
+    :::image type="content" source="./media/azure-stack-site-recovery/private-ip.png" alt-text="专用 IP 地址":::
 
 ## <a name="step-2-create-a-vault-and-select-a-replication-goal"></a>步骤 2：创建保管库并选择复制目标
 
@@ -141,7 +143,7 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 4. 在“位置”中，输入 Azure 区域  。 我们将使用“中国北部”  。
 5. 若要从仪表板快速访问保管库，请选择“固定到仪表板”   >   “创建”。
 
-    ![创建新的保管库](./media/azure-stack-site-recovery/new-vault-settings.png)
+    :::image type="content" source="./media/azure-stack-site-recovery/new-vault-settings.png" alt-text="创建新的保管库":::
 
     新保管库显示在“仪表板”   > “所有资源”  中，以及“恢复服务保管库”  主页上。
 
@@ -153,7 +155,7 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 4. 在“要将计算机复制到何处?”中，选择“复制到 Azure”   。
 5. 在“计算机是否已虚拟化”中，选择“尚未虚拟化/其他”   。 然后选择“确定”。 
 
-    ![保护目标](./media/azure-stack-site-recovery/protection-goal.png)
+    :::image type="content" source="./media/azure-stack-site-recovery/protection-goal.png" alt-text="保护目标":::
 
 ## <a name="step-3-set-up-the-source-environment"></a>步骤 3：设置源环境
 
@@ -162,13 +164,13 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 1. 单击“准备基础结构” > “源”。  
 2. 在“准备源”中，单击“+配置服务器”   。
 
-    ![设置源](./media/azure-stack-site-recovery/plus-config-srv.png)
+    :::image type="content" source="./media/azure-stack-site-recovery/plus-config-srv.png" alt-text="设置源":::
 
 3. 在“添加服务器”中，检查“配置服务器”是否已显示在“服务器类型”中    。
 5. 下载站点恢复统一安装程序安装文件。
 6. 下载保管库注册密钥。 运行统一安装程序时需要使用该注册密钥。 生成的密钥有效期为 5 天。
 
-    ![设置源](./media/azure-stack-site-recovery/set-source2.png)
+    :::image type="content" source="./media/azure-stack-site-recovery/set-source2.png" alt-text="设置源":::
 
 ### <a name="run-azure-site-recovery-unified-setup"></a>运行 Azure Site Recovery 统一安装程序
 
@@ -254,7 +256,7 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 2. “复制的项”窗格中具有 VM 信息、运行状况状态和最新可用恢复点的摘要  。 单击“属性”  ，查看详细信息。
 3. 在“计算和网络”中，按需修改设置  。
 
-    - 可修改 Azure 名称、资源组、目标大小、[可用性集](/virtual-machines/windows/tutorial-availability-sets)和托管的磁盘设置。
+    - 可修改 Azure 名称、资源组、目标大小、[可用性集](../virtual-machines/windows/tutorial-availability-sets.md)和托管的磁盘设置。
     - 还可查看和修改网络设置。 其中包括故障转移后 Azure VM 加入的网络/子网，以及将分配给 VM 的 IP 地址。
 1. 在“磁盘”中，可查看关于 VM 上的操作系统和数据磁盘的信息  。
 
@@ -323,6 +325,9 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 
 5. 现在请使用 Azure 存储资源管理器下载 VHD。
 6. 按照[这些步骤](/azure-stack/user/azure-stack-manage-vm-disks#use-powershell-to-add-multiple-disks-to-a-vm)将 VHD 上传到 Azure Stack。
+    
+    <!--CORRECT ON [these steps](/azure-stack/user/azure-stack-manage-vm-disks#use-powershell-to-add-multiple-disks-to-a-vm)-->
+    
 7. 在现有 VM 或新 VM 中，附加上传的 VHD。
 8. 检查 OS 磁盘是否正确，并启动 VM。
 

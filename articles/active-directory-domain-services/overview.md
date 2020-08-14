@@ -8,20 +8,22 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
-ms.date: 07/13/2020
+ms.date: 08/07/2020
 ms.author: v-junlch
-ms.openlocfilehash: d17e35e0fe1024c680c20ad54d247c3be236c6b1
-ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
+ms.openlocfilehash: 2a8db39f8c2a49921b78a1c551c012d52418a7a6
+ms.sourcegitcommit: a5eb9a47feefb053ddbaab4b15c395972c372339
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86472520"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88028611"
 ---
 # <a name="what-is-azure-active-directory-domain-services"></a>什么是 Azure Active Directory 域服务？
 
 Azure Active Directory 域服务 (Azure AD DS) 提供托管域服务，例如域加入、组策略、轻型目录访问协议 (LDAP) 和 Kerberos/NTLM 身份验证。 无需在云中部署、管理和修补域控制器 (DC) 即可使用这些域服务。
 
-托管域是一个 DNS 命名空间和匹配目录。 托管域与现有 Azure AD 租户集成，使得用户可使用其现有凭据登录。 此外，也可使用现有的组和用户帐户安全访问资源，确保更顺畅地将本地资源直接迁移到 Azure。
+创建 Azure AD DS 托管域时，需定义唯一的命名空间。 此命名空间是域名（如 aaddscontoso.com），两个域控制器 (DC) 随后会部署到所选 Azure 区域。 DC 的这种部署称为副本集。 托管域与现有 Azure AD 租户集成，使得用户可使用其现有凭据登录。 此外，也可使用现有的组和用户帐户安全访问资源，确保更顺畅地将本地资源直接迁移到 Azure。
+
+可以扩展托管域，使每个 Azure AD 租户具有多个副本集。 可以将副本集添加到任何支持 Azure AD DS 的 Azure 区域中的任何对等互连虚拟网络。 如果某个 Azure 区域处于离线状态，则不同 Azure 区域中的其他副本集可为旧版应用程序提供地理灾难恢复。 副本集目前处于预览状态。 有关详细信息，请参阅[托管域的副本集概念和功能][concepts-replica-sets]。
 
 Azure AD DS 与现有的 Azure AD 租户集成。 通过此集成，用户可以使用其现有凭据登录到与托管域相连的服务和应用程序。 还可以使用现有组和用户帐户来保护对资源的访问。 这些功能可更顺畅地将本地资源直接迁移到 Azure。
 
@@ -141,4 +143,5 @@ Azure AD DS 托管域的一些关键方面包括：
 [forest-trusts]: concepts-resource-forest.md
 [administration-concepts]: administration-concepts.md
 [synchronization]: synchronization.md
+[concepts-replica-sets]: concepts-replica-sets.md
 

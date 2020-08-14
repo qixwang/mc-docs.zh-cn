@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 09/04/2019
-ms.date: 05/11/2020
+ms.date: 08/10/2020
 ms.author: v-jay
-ms.openlocfilehash: d20489a92cb1e46def7f0ba454b177f40cc240f1
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.openlocfilehash: a306ebb25c12e443ad2dc561c0e263cc348dbe7f
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198279"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914382"
 ---
 # <a name="copy-data-from-presto-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Presto 复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -51,8 +51,8 @@ Presto 链接服务支持以下属性：
 | 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：Presto  | 是 |
-| host | Presto 服务器的 IP 地址或主机名。 （即 192.168.222.160）  | 是 |
-| serverVersion | Presto 服务器的版本。 （即 0.148-t）  | 是 |
+| host | Presto 服务器的 IP 地址或主机名。 （例如 192.168.222.160）  | 是 |
+| serverVersion | Presto 服务器的版本。 （例如 0.148-t）  | 是 |
 | 目录 | 针对服务器的所有请求的目录上下文。  | 是 |
 | port | Presto 服务器用来侦听客户端连接的 TCP 端口。 默认值为 8080。  | 否 |
 | authenticationType | 用于连接到 Presto 服务器的身份验证机制。 <br/>允许值包括：匿名、LDAP   | 是 |

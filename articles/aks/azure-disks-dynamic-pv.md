@@ -4,17 +4,17 @@ titleSuffix: Azure Kubernetes Service
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用 Azure 磁盘动态创建永久性卷
 services: container-service
 ms.topic: article
-origin.date: 03/01/2019
-ms.date: 07/13/2020
-ms.testscope: yes
+origin.date: 07/10/2020
+ms.date: 08/10/2020
+ms.testscope: no
 ms.testdate: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: 54e1dd1b7268770f58c1bc10d68c88e26f805fc9
-ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
+ms.openlocfilehash: 9beb4343f99fe2e63d86d07b1ded0f0d2b25ea2d
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86218767"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842599"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中动态创建永久性卷并将其用于 Azure 磁盘
 
@@ -35,14 +35,14 @@ ms.locfileid: "86218767"
 
 存储类用于定义使用永久性卷动态创建存储单位的方式。 有关 Kubernetes 存储类的详细信息，请参阅 [Kubernetes 存储类][kubernetes-storage-classes]。
 
-每个 AKS 群集包含两个预先创建的存储类，两者均配置为使用 Azure 磁盘：
+每个 AKS 群集包含四个预先创建的存储类，其中两个配置为使用 Azure 磁盘：
 
-* default 存储类可预配标准 Azure 磁盘。
-    * 标准存储由 HDD 提供支持，可以在确保性能的同时提供经济高效的存储。 标准磁盘适用于经济高效的开发和测试工作负载。
+* default 存储类可预配标准 SSD Azure 磁盘。
+    * 标准存储由标准 SSD 提供支持，可以在交付可靠性能的同时提供经济高效的存储。 
 * managed-premium 存储类可预配高级 Azure 磁盘。
     * 高级磁盘由基于 SSD 的高性能、低延迟磁盘提供支持。 完美适用于运行生产工作负荷的 VM。 如果群集中的 AKS 节点使用高级存储，请选择 managed-premium 类。
 
-如果使用默认存储类之一，则创建存储类后将无法更新卷大小。 若要能够在创建存储类后更新卷大小，请将行 `allowVolumeExpansion: true` 添加到其中一个默认存储类，或者也可以创建自己的自定义存储类。 可以使用 `kubectl edit sc` 命令编辑现有存储类。 
+如果使用默认存储类之一，则创建存储类后将无法更新卷大小。 若要能够在创建存储类后更新卷大小，请将行 `allowVolumeExpansion: true` 添加到其中一个默认存储类，或者也可以创建自己的自定义存储类。 注意，不支持减小 PVC 的大小（以防数据丢失）。 可以使用 `kubectl edit sc` 命令编辑现有存储类。 
 
 例如，如果要使用大小为 4 TiB 的磁盘，需要创建一个定义 `cachingmode: None` 的存储类，因为[磁盘缓存不支持 4 TiB 及更大的磁盘](../virtual-machines/windows/premium-storage-performance.md#disk-caching)。
 
@@ -159,6 +159,8 @@ Events:
   Normal  SuccessfulMountVolume  1m    kubelet, aks-nodepool1-79590246-0  MountVolume.SetUp succeeded for volume "pvc-faf0f176-8b8d-11e8-923b-deb28c58d242"
 [...]
 ```
+
+<!--Not Available on ## Use Ultra Disks-->
 
 ## <a name="back-up-a-persistent-volume"></a>备份永久性卷
 
@@ -300,5 +302,13 @@ Volumes:
 [operator-best-practices-storage]: operator-best-practices-storage.md
 [concepts-storage]: concepts-storage.md
 [storage-class-concepts]: concepts-storage.md#storage-classes
+[az-feature-register]: https://docs.azure.cn/cli/feature?view=azure-cli-latest#az-feature-register
+[az-feature-list]: https://docs.azure.cn/cli/feature?view=azure-cli-latest#az-feature-list
+[az-provider-register]: https://docs.azure.cn/cli/provider?view=azure-cli-latest#az-provider-register
+[az-extension-add]: https://docs.azure.cn/cli/extension?view=azure-cli-latest#az-extension-add
+[az-extension-update]: https://docs.azure.cn/cli/extension?view=azure-cli-latest#az-extension-update
+[az-feature-register]: https://docs.azure.cn/cli/feature?view=azure-cli-latest#az-feature-register
+[az-feature-list]: https://docs.azure.cn/cli/feature?view=azure-cli-latest#az-feature-list
+[az-provider-register]: https://docs.azure.cn/cli/provider?view=azure-cli-latest#az-provider-register
 
 <!-- Update_Description: update meta properties, wording update, update link -->
