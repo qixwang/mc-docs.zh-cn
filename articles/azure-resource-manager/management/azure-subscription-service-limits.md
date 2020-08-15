@@ -8,12 +8,12 @@ ms.date: 08/10/2020
 ms.testscope: no
 ms.testdate: 08/03/2020
 ms.author: v-yeche
-ms.openlocfilehash: c1d5c6ed060e78d7553e7579e62b1e11a6517876
-ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
+ms.openlocfilehash: 8af500192c7d1533c28d0fd3338ab5347aa2ade9
+ms.sourcegitcommit: 3cf647177c22b24f76236c57cae19482ead6a283
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87917201"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88029678"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 
@@ -132,7 +132,9 @@ ms.locfileid: "87917201"
 
 [!INCLUDE [functions-limits](../../../includes/functions-limits.md)]
 
-有关详细信息，请参阅 [Functions 托管计划比较](../../azure-functions/functions-scale.md#hosting-plans-comparison)。
+有关详细信息，请参阅 [Functions 托管计划比较](../../azure-functions/functions-scale.md)。
+
+<!--Not Avaialble on #hosting-plans-comparison-->
 
 ## <a name="azure-kubernetes-service-limits"></a>Azure Kubernetes 服务限制
 

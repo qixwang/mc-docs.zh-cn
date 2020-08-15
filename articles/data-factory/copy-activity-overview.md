@@ -9,15 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-origin.date: 03/25/2020
-ms.date: 06/29/2020
+origin.date: 07/15/2020
+ms.date: 08/10/2020
 ms.author: v-jay
-ms.openlocfilehash: 5e480fe7376d382bbf26a68579155a5c24dde139
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+ms.openlocfilehash: a9432430cba7124216783c6b7d49ea6983d7d9dc
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323364"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914341"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure 数据工厂中的复制活动
 
@@ -237,6 +237,22 @@ ms.locfileid: "85323364"
     }
 ]
 ```
+
+## <a name="auto-create-sink-tables"></a>自动创建接收器表
+
+将数据复制到 SQL 数据库/Azure Synapse Analytics 时，如果目标表不存在，则复制活动支持基于源数据自动创建该表。 它旨在帮助快速开始加载数据并评估 SQL 数据库/Azure Synapse Analytics。 进行数据引入之后，可以根据需要查看和调整接收器表架构。
+
+将数据从任何源复制到以下接收器数据存储时，支持此功能。 可以在“ADF 创作 UI”�>“复制活动接收器”�>“表选项”�>“自动创建表”   上，或通过复制活动接收器有效负载中的 `tableOption` 属性找到该选项。
+
+- [Azure SQL 数据库](connector-azure-sql-database.md)
+- [Azure SQL 数据库托管实例](connector-azure-sql-managed-instance.md)
+- [Azure Synapse Analytics（以前称为 Azure SQL 数据仓库）](connector-azure-sql-data-warehouse.md)
+- [SQL Server](connector-sql-server.md)
+
+![创建接收器表](media/copy-activity-overview/create-sink-table.png)
+
+> [!NOTE]
+> 启用了[暂存复制](copy-activity-performance-features.md#staged-copy)后，当前不支持自动创建表。
 
 ## <a name="fault-tolerance"></a>容错
 
