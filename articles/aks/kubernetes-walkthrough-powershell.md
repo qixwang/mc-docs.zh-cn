@@ -1,19 +1,20 @@
 ---
-title: 快速入门 - 部署 Azure Kubernetes 服务群集
+title: 快速入门 - 使用 PowerShell 部署 AKS 群集
 description: 了解如何使用 PowerShell 快速创建 Kubernetes 群集、部署应用程序，以及监视 Azure Kubernetes 服务 (AKS) 中的性能。
 services: container-service
 ms.topic: quickstart
 origin.date: 05/26/2020
-ms.date: 07/13/2020
-ms.testscope: yes
+ms.date: 08/10/2020
+ms.testscope: no
 ms.testdate: 07/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: b45457383da14b7115b675a55972bc3d2c0affc3
-ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ac610f8ea639b05a9c6932db6dd0b956557a09d6
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86218860"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842569"
 ---
 <!--Verified successfully-->
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-powershell"></a>快速入门：使用 PowerShell 部署 Azure Kubernetes 服务群集
@@ -22,7 +23,7 @@ ms.locfileid: "86218860"
 
 若要详细了解如何创建 Windows Server 节点池，请参阅[创建支持 Windows Server 容器的 AKS 群集][windows-container-powershell]。
 
-![Azure Kubernetes 服务中部署的投票应用](./media/kubernetes-walkthrough-powershell/voting-app-deployed-in-azure-kubernetes-service.png)
+:::image type="content" source="./media/kubernetes-walkthrough-powershell/voting-app-deployed-in-azure-kubernetes-service.png" alt-text="Azure Kubernetes 服务中部署的投票应用":::
 
 本快速入门假设读者基本了解 Kubernetes 的概念。 有关详细信息，请参阅 [Azure Kubernetes 服务 (AKS) 的 Kubernetes 核心概念][kubernetes-concepts]。
 
@@ -30,7 +31,7 @@ ms.locfileid: "86218860"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://www.azure.cn/pricing/1rmb-trial/)帐户。
 
-如果选择在本地使用 PowerShell，则本文要求安装 Az PowerShell 模块，并使用 [Connect-AzAccount -Environment AzureChinaCloud](https://docs.microsoft.com/powershell/module/az.accounts/Connect-AzAccount) cmdlet 连接到 Azure 帐户。 有关安装 Az PowerShell 模块的详细信息，请参阅[安装 Azure PowerShell][install-azure-powershell]。
+如果选择在本地使用 PowerShell，执行本文操作就需要安装 Az PowerShell 模块，并使用 [Connect-AzAccount -Environment AzureChinaCloud](https://docs.microsoft.com/powershell/module/az.accounts/Connect-AzAccount) cmdlet 连接到 Azure 帐户。 有关安装 Az PowerShell 模块的详细信息，请参阅[安装 Azure PowerShell][install-azure-powershell]。
 
 <!--Not Available on [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]-->
 
@@ -42,7 +43,7 @@ Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-[Azure 资源组](/azure-resource-manager/resource-group-overview)是用于部署和管理 Azure 资源的逻辑组。 创建资源组时，系统会要求你指定一个位置， 此位置是资源组元数据的存储位置，如果你在创建资源期间未指定另一个区域，则它还是你的资源在 Azure 中的运行位置。 使用 [New-AzResourceGroup][new-azresourcegroup] cmdlet 创建资源组。
+[Azure 资源组](../azure-resource-manager/management/overview.md)是用于部署和管理 Azure 资源的逻辑组。 创建资源组时，系统会要求你指定一个位置， 此位置是资源组元数据的存储位置，如果你在创建资源期间未指定另一个区域，则它还是你的资源在 Azure 中的运行位置。 使用 [New-AzResourceGroup][new-azresourcegroup] cmdlet 创建资源组。
 
 以下示例在 **chinaeast2** 区域创建名为 **myResourceGroup** 的资源组。
 
@@ -62,12 +63,12 @@ ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000000/resource
 
 ## <a name="create-aks-cluster"></a>创建 AKS 群集
 
-使用 `ssh-keygen` 命令行实用程序生成 SSH 密钥对。 有关详细信息，请参阅[快速步骤：创建和使用适用于 Azure 中 Linux VM 的 SSH 公钥-私钥对](/virtual-machines/linux/mac-create-ssh-keys)。
+使用 `ssh-keygen` 命令行实用程序生成 SSH 密钥对。 有关详细信息，请参阅[快速步骤：创建和使用适用于 Azure 中 Linux VM 的 SSH 公钥-私钥对](../virtual-machines/linux/mac-create-ssh-keys.md)。
 
 使用 [New-AzAks][new-azaks] cmdlet 创建 AKS 群集。 以下示例创建一个具有一个节点的名为 myAKSCluster 的群集。 默认情况下，还会启用用于容器的 Azure Monitor。 完成此过程需要几分钟时间。
 
 > [!NOTE]
-> 创建 AKS 群集时，会自动创建另一个资源组来存储 AKS 资源。 有关详细信息，请参阅[为什么使用 AKS 创建两个资源组？](/aks/faq#why-are-two-resource-groups-created-with-aks)
+> 创建 AKS 群集时，会自动创建另一个资源组来存储 AKS 资源。 有关详细信息，请参阅[为什么使用 AKS 创建两个资源组？](./faq.md#why-are-two-resource-groups-created-with-aks)
 
 ```powershell
 New-AzAks -ResourceGroupName myResourceGroup -Name myAKSCluster -NodeCount 1
@@ -246,7 +247,7 @@ azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 
 若要查看 Azure Vote 应用的实际效果，请打开 Web 浏览器并转到服务的外部 IP 地址。
 
-![Azure Kubernetes 服务中部署的投票应用](./media/kubernetes-walkthrough-powershell/voting-app-deployed-in-azure-kubernetes-service.png)
+:::image type="content" source="./media/kubernetes-walkthrough-powershell/voting-app-deployed-in-azure-kubernetes-service.png" alt-text="Azure Kubernetes 服务中部署的投票应用":::
 
 创建 AKS 群集时，即已启用了[用于容器的 Azure Monitor](../azure-monitor/insights/container-insights-overview.md) 来捕获群集节点和 Pod 的运行状况指标。 Azure 门户提供这些运行状况指标。
 
@@ -301,5 +302,4 @@ Remove-AzResourceGroup -Name myResourceGroup
 [kubernetes-dashboard]: kubernetes-dashboard.md
 [aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
 
-<!-- Update_Description: new article about kubernetes walkthrough powershell -->
-<!--NEW.date: 07/13/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

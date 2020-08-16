@@ -3,17 +3,19 @@ title: 使用公共负载均衡器
 titleSuffix: Azure Kubernetes Service
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用标准 SKU 公共负载均衡器来公开服务。
 services: container-service
-author: rockboyfor
 ms.topic: article
 origin.date: 06/14/2020
-ms.date: 07/09/2020
+ms.date: 08/10/2020
+ms.testscope: yes|no
+ms.testdate: 07/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: 17cf4ca7e658638c980e61b9ef08d7b34251fb3d
-ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
+author: rockboyfor
+ms.openlocfilehash: 07e6b46c799d4e8ba7c2b067fba0d1a4a7b4d701
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86218809"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842666"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中使用公共标准负载均衡器
 
@@ -170,7 +172,7 @@ az aks update \
 
 #### <a name="create-the-cluster-with-your-own-public-ip-or-prefixes"></a>使用自己的公共 IP 或前缀创建群集
 
-在创建群集时，你可能想要使用自己的出口 IP 地址或 IP 前缀，以支持出口终结点允许列表等方案。 将上面所示的相同参数追加到群集创建步骤，可在群集生命周期的起始部分定义自己的公共 IP 和 IP 前缀。
+你可能希望在创建群集时为出口提供自己的 IP 地址或 IP 前缀，以支持将出口终结点添加到允许列表这样的方案。 将上面所示的相同参数追加到群集创建步骤，可在群集生命周期的起始部分定义自己的公共 IP 和 IP 前缀。
 
 结合 *load-balancer-outbound-ips* 参数使用 *az aks create* 命令可在启动时使用你的公共 IP 创建新的群集。
 
@@ -293,11 +295,29 @@ spec:
   - MY_EXTERNAL_IP_RANGE
 ```
 
+## <a name="maintain-the-clients-ip-on-inbound-connections"></a>维护入站连接上的客户端 IP
+
+默认情况下，在 [Kubernetes](https://kubernetes.io/docs/tutorials/services/source-ip/#source-ip-for-services-with-type-loadbalancer) 和 AKS 中，`LoadBalancer` 类型的服务在连接到 Pod 时不会持久保留客户端的 IP 地址。 传递到 Pod 的数据包上的源 IP 将是节点的专用 IP。 若要保留客户端的 IP 地址，必须在服务定义中将 `service.spec.externalTrafficPolicy` 设置为 `local`。 以下清单显示了一个示例：
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: azure-vote-front
+spec:
+  type: LoadBalancer
+  externalTrafficPolicy: Local
+  ports:
+  - port: 80
+  selector:
+    app: azure-vote-front
+```
+
 ## <a name="additional-customizations-via-kubernetes-annotations"></a>通过 Kubernetes 注释进行其他自定义
 
 下面是类型 `LoadBalancer` 的 Kubernetes 服务支持的注释列表，这些注释仅适用于入站流：
 
-| Annotation | Value | 说明
+| Annotation | Value | 描述
 | ----------------------------------------------------------------- | ------------------------------------- | ------------------------------------------------------------ 
 | `service.beta.kubernetes.io/azure-load-balancer-internal`         | `true` 或 `false`                     | 指定负载均衡器是否应为“内部”。 如果未设置，则默认为“公共”。
 | `service.beta.kubernetes.io/azure-load-balancer-internal-subnet`  | 子网的名称                    | 指定内部负载均衡器应绑定到的子网。 如果未设置，则默认为云配置文件中配置的子网。
@@ -392,10 +412,10 @@ spec:
 [az-role-assignment-create]: https://docs.azure.cn/cli/role/assignment?view=azure-cli-latest#az-role-assignment-create
 [azure-lb]: ../load-balancer/load-balancer-overview.md
 [azure-lb-comparison]: ../load-balancer/skus.md
-[azure-lb-outbound-rules]: ../load-balancer/load-balancer-outbound-rules-overview.md#snatports
+[azure-lb-outbound-rules]: ../load-balancer/load-balancer-outbound-connections.md#outboundrules
 [azure-lb-outbound-connections]: ../load-balancer/load-balancer-outbound-connections.md
 [azure-lb-outbound-preallocatedports]: ../load-balancer/load-balancer-outbound-connections.md#preallocatedports
-[azure-lb-outbound-rules-overview]: ../load-balancer/load-balancer-outbound-rules-overview.md
+[azure-lb-outbound-rules-overview]: ../load-balancer/load-balancer-outbound-connections.md#outboundrules
 [install-azure-cli]: https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest
 [internal-lb-yaml]: internal-lb.md#create-an-internal-load-balancer
 [kubernetes-concepts]: concepts-clusters-workloads.md

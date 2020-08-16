@@ -4,15 +4,17 @@ description: 迁移到 Azure Kubernetes 服务 (AKS)。
 services: container-service
 ms.topic: article
 origin.date: 02/25/2020
-ms.date: 05/25/2020
+ms.date: 08/10/2020
+ms.testscope: no
+ms.testdate: 05/25/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 2223cc47ba6d5bb05b2258cdd0a980397e6139f2
-ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
+ms.openlocfilehash: 4b5f91a78693cd248f1923caca0b283636e46bca
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735146"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842535"
 ---
 <!--Can be Release after confirmation-->
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>迁移到 Azure Kubernetes 服务 (AKS)
@@ -21,16 +23,17 @@ ms.locfileid: "83735146"
 
 可以借助本文档来支持以下方案：
 
-* 将[可用性集](/virtual-machines/windows/tutorial-availability-sets)支持的 AKS 群集迁移到[虚拟机规模集](/virtual-machine-scale-sets/overview)
-* 迁移 AKS 群集以使用[标准 SKU 负载均衡器](/aks/load-balancer-standard)
+* 将[可用性集](../virtual-machines/windows/tutorial-availability-sets.md)支持的 AKS 群集迁移到[虚拟机规模集](../virtual-machine-scale-sets/overview.md)
+* 迁移 AKS 群集以使用[标准 SKU 负载均衡器](./load-balancer-standard.md)
 * 从 [Azure 容器服务 (ACS) - 2020 年 1 月 31 日停用](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/)迁移到 AKS
     
     <!--Not Available on * Migrating from AKS engine to AKS-->
     <!--Not Available on [AKS engine](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)-->
     
 * 从不是基于 Azure 的 Kubernetes 群集迁移到 AKS
+* 将现有资源移到另一个区域
 
-迁移时，请确保目标 Kubernetes 版本在 AKS 支持的范围内。 如果使用的版本较低，它可能不在支持范围内，需要进行升级才会受到 AKS 的支持。 有关详细信息，请参阅 [AKS 支持的 Kubernetes 版本](/aks/supported-kubernetes-versions)。
+迁移时，请确保目标 Kubernetes 版本在 AKS 支持的范围内。 如果使用的版本较低，它可能不在支持范围内，需要进行升级才会受到 AKS 的支持。 有关详细信息，请参阅 [AKS 支持的 Kubernetes 版本](./supported-kubernetes-versions.md)。
 
 若要迁移到较新版本的 Kubernetes，请参阅 [Kubernetes 版本和版本偏差支持策略](https://kubernetes.io/docs/setup/release/version-skew-policy/#supported-versions)。
 
@@ -53,16 +56,15 @@ ms.locfileid: "83735146"
 
 ## <a name="aks-with-standard-load-balancer-and-virtual-machine-scale-sets"></a>包含标准负载均衡器和虚拟机规模集的 AKS
 
-AKS 是一个托管服务，它提供独特的功能和较低的管理开销。 既然是托管服务，必须从 AKS 支持的一系列[区域](/aks/quotas-skus-regions)中进行选择。 从现有群集过渡到 AKS 可能需要修改现有的应用程序，使其在 AKS 托管控制平面上保持正常。
+AKS 是一个托管服务，它提供独特的功能和较低的管理开销。 既然是托管服务，必须从 AKS 支持的一系列[区域](./quotas-skus-regions.md)中进行选择。 从现有群集过渡到 AKS 可能需要修改现有的应用程序，使其在 AKS 托管控制平面上保持正常。
 
-我们建议使用[虚拟机规模集](/virtual-machine-scale-sets)和 [Azure 标准负载均衡器](/aks/load-balancer-standard)支持的 AKS 群集，以确保获得[多个节点池](/aks/use-multiple-node-pools)、[授权的 IP 范围](/aks/api-server-authorized-ip-ranges)等功能，以及已发布的其他新功能。
+我们建议使用[虚拟机规模集](../virtual-machine-scale-sets/index.yml)和 [Azure 标准负载均衡器](./load-balancer-standard.md)支持的 AKS 群集，以确保获得[多个节点池](./use-multiple-node-pools.md)、[授权的 IP 范围](./api-server-authorized-ip-ranges.md)、[群集自动缩放程序](./cluster-autoscaler.md)等功能，以及已发布的其他新功能。
 
 <!--Not Avaialble on [Availability Zones](/availability-zones/az-overview)-->
-<!--Not Avaialble on [Cluster Autoscaler](/aks/cluster-autoscaler)-->
-<!--Not Avaialble on [Azure Policy for AKS](/governance/policy/concepts/rego-for-aks)-->
+<!--Not Avaialble on [Azure Policy for AKS](../governance/policy/concepts/policy-for-kubernetes.md)-->
 
 
-[虚拟机可用性集](/virtual-machine-scale-sets/availability#availability-sets)支持的 AKS 群集缺少上述许多功能的支持。
+[虚拟机可用性集](../virtual-machines/availability.md#availability-sets)支持的 AKS 群集缺少上述许多功能的支持。
 
 以下示例使用虚拟机规模集支持的单个节点池创建 AKS 群集。 它使用标准负载均衡器。 它还在群集的节点池中启用群集自动缩放程序，并将节点的最小数目设置为 *1*，最大数目设置为 *3*：
 
@@ -95,23 +97,25 @@ az aks create \
 
 ## <a name="ensure-valid-quotas"></a>确保有效配额
 
-由于在迁移期间要将其他虚拟机部署到订阅中，因此，应该检查配额和限制是否足以应对这些资源。 可能需要请求提高 [vCPU 配额](/azure-portal/supportability/per-vm-quota-requests)。
+由于在迁移期间要将其他虚拟机部署到订阅中，因此，应该检查配额和限制是否足以应对这些资源。 可能需要请求提高 [vCPU 配额](https://support.azure.cn/support/support-azure/)。
 
-可能需要请求提高[网络配额](https://support.azure.cn/support/support-azure/)，以确保不会耗尽 IP。 有关更多信息，请参阅 [AKS 的网络和 IP 范围](/aks/configure-kubenet)。
+<!--CORRECT ON [vCPU quota](https://support.azure.cn/support/support-azure/)-->
 
-有关详细信息，请参阅 [Azure 订阅和服务限制](/azure-resource-manager/management/azure-subscription-service-limits)。 若要查看当前配额，请在 Azure 门户中转到[订阅边栏选项卡](https://portal.azure.cn/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)，选择自己的订阅，然后选择“用量 + 配额”。
+可能需要请求提高[网络配额](https://support.azure.cn/support/support-azure/)，以确保不会耗尽 IP。 有关更多信息，请参阅 [AKS 的网络和 IP 范围](./configure-kubenet.md)。
+
+有关详细信息，请参阅 [Azure 订阅和服务限制](../azure-resource-manager/management/azure-subscription-service-limits.md)。 若要查看当前配额，请在 Azure 门户中转到[订阅边栏选项卡](https://portal.azure.cn/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)，选择自己的订阅，然后选择“用量 + 配额”。
 
 ## <a name="high-availability-and-business-continuity"></a>高可用性和业务连续性
 
-如果应用程序无法处理停机，则你需要遵循高可用性迁移方案的最佳做法。  有关复杂业务连续性规划、灾难恢复和最大化运行时间的最佳做法超出了本文档的范畴。  请阅读 [Azure Kubernetes 服务 (AKS) 中实现业务连续性和灾难恢复的最佳做法](/aks/operator-best-practices-multi-region)了解详细信息。
+如果应用程序无法处理停机，则你需要遵循高可用性迁移方案的最佳做法。  有关复杂业务连续性规划、灾难恢复和最大化运行时间的最佳做法超出了本文档的范畴。  请阅读 [Azure Kubernetes 服务 (AKS) 中实现业务连续性和灾难恢复的最佳做法](./operator-best-practices-multi-region.md)了解详细信息。
 
 对于复杂的应用程序，我们通常会分阶段迁移，而不是一次性整个迁移。 这意味着，新旧环境可能需要通过网络进行通信。 以前能够使用 `ClusterIP` 服务进行通信的应用程序可能需要公开为 `LoadBalancer` 类型，并得到相应的保护。
 
 若要完成迁移，需将客户端指向 AKS 上运行的新服务。 建议通过将 DNS 更新为指向 AKS 群集前面的负载均衡器，来重定向流量。
 
-[Azure 流量管理器](/traffic-manager/)可将客户定向到所需的 Kubernetes 群集和应用程序实例。  流量管理器是可以在区域间分布网络流量的基于 DNS 的流量负载均衡器。  为获得最佳性能和冗余，在进入 AKS 群集之前，通过流量管理器来定向所有应用程序流量。  在多群集部署中，客户应连接到指向每个 AKS 群集上的服务的流量管理器 DNS 名称。 使用流量管理器终结点定义这些服务。 每个终结点都是服务负载均衡器 IP。 使用此配置可将网络流量从一个区域的流量管理器终结点定向到另一个区域的终结点。
+[Azure 流量管理器](../traffic-manager/index.yml)可将客户定向到所需的 Kubernetes 群集和应用程序实例。  流量管理器是可以在区域间分布网络流量的基于 DNS 的流量负载均衡器。  为获得最佳性能和冗余，在进入 AKS 群集之前，通过流量管理器来定向所有应用程序流量。  在多群集部署中，客户应连接到指向每个 AKS 群集上的服务的流量管理器 DNS 名称。 使用流量管理器终结点定义这些服务。 每个终结点都是服务负载均衡器 IP。 使用此配置可将网络流量从一个区域的流量管理器终结点定向到另一个区域的终结点。
 
-![将 AKS 与流量管理器配合使用](media/operator-best-practices-bc-dr/aks-azure-traffic-manager.png)
+:::image type="content" source="media/operator-best-practices-bc-dr/aks-azure-traffic-manager.png" alt-text="将 AKS 与流量管理器配合使用":::
 
 <!--Not Avaialble on [Azure Front Door Service](/frontdoor/front-door-overview)-->
 
@@ -124,10 +128,10 @@ az aks create \
 精心规划有状态应用程序的迁移，以避免数据丢失或意外停机。
 
 如果使用 Azure 文件存储，则可以将文件共享作为卷装载到新群集中：
-* [将静态 Azure 文件存储作为卷装载](/aks/azure-files-volume#mount-the-file-share-as-a-volume)
+* [将静态 Azure 文件存储作为卷装载](./azure-files-volume.md#mount-the-file-share-as-a-volume)
 
 如果使用 Azure 托管磁盘，则只能装载未附加到任何 VM 的磁盘：
-* [将静态 Azure 磁盘作为卷装载](/aks/azure-disk-volume#mount-disk-as-volume)
+* [将静态 Azure 磁盘作为卷装载](./azure-disk-volume.md#mount-disk-as-volume)
 
 如果这两种方法都不起作用，可以使用备份和还原选项：
 * [Azure 上的 Velero](https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure/blob/master/README.md)
@@ -152,7 +156,7 @@ az aks create \
 * 创建磁盘的快照。
 * 从快照创建新的托管磁盘。
 * 在 AKS 中创建永久性卷。
-* 将 Pod 规范更新为[使用现有卷](/aks/azure-disk-volume)而不是 PersistentVolumeClaims（静态预配）。
+* 将 Pod 规范更新为[使用现有卷](./azure-disk-volume.md)而不是 PersistentVolumeClaims（静态预配）。
 * 将应用程序部署到 AKS。
 * 验证应用程序是否正常工作。
 * 将实时流量指向新的 AKS 群集。
@@ -192,7 +196,7 @@ kubectl get deployment -o=yaml --export > deployments.yaml
 > * 有状态应用程序的注意事项
 > * 群集配置的部署
 
-[region-availability]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service&regions=china-non-regional,china-east,china-east-2,china-north,china-north-2
+[region-availability]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service&regions=,china-non-regional,china-east,china-east-2,china-north,china-north-2,
 
 <!--Not Available on [azure-dev-spaces]: /dev-spaces/-->
 

@@ -4,16 +4,16 @@ description: 了解如何排查和解决在使用 Azure Kubernetes 服务 (AKS) 
 services: container-service
 ms.topic: troubleshooting
 origin.date: 06/20/2020
-ms.date: 07/13/2020
+ms.date: 08/10/2020
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: bea555e3cba60bafc7be716c88479170e2932423
-ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
+ms.openlocfilehash: 930d4637cd0bf4a383a010e618c1361e4e4265e1
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86218799"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842572"
 ---
 # <a name="aks-troubleshooting"></a>AKS 疑难解答
 
@@ -85,6 +85,11 @@ AKS 具有 HA 控制平面，可以根据内核数进行垂直缩放，以确保
     - https://github.com/helm/helm/issues/4821
     - https://github.com/helm/helm/issues/3500
     - https://github.com/helm/helm/issues/4543
+- [节点之间的内部流量是否被阻止？](#im-receiving-tcp-timeouts-such-as-dial-tcp-node_ip10250-io-timeout)
+
+## <a name="im-receiving-tcp-timeouts-such-as-dial-tcp-node_ip10250-io-timeout"></a>我收到 `TCP timeouts`，如 `dial tcp <Node_IP>:10250: i/o timeout`
+
+这些超时可能与被阻止节点之间的内部流量有关。 验证此流量是否未被阻止，例如通过群集节点子网上的[网络安全组](concepts-security.md#azure-network-security-groups)来这样做。
 
 ## <a name="im-trying-to-enable-role-based-access-control-rbac-on-an-existing-cluster-how-can-i-do-that"></a>我想尝试在现有群集上启用基于角色的访问控制 (RBAC)。 该如何操作？
 
@@ -139,10 +144,9 @@ AgentPool `<agentpoolname>` 已将自动缩放设置为启用状态，但它不�
 
 群集自动缩放程序或多节点池等功能需要 `vm-set-type` 的规模集。
 
-按照相应文档中的*开始之前*步骤操作，以便正确创建 AKS 群集：
+按照相应文档中的“准备工作”步骤操作，正确创建 AKS 群集：
 
-<!--Not Available on * [Use the cluster autoscaler](cluster-autoscaler.md)-->
-
+* [使用群集自动缩放程序](cluster-autoscaler.md)
 * [创建和使用多个节点池](use-multiple-node-pools.md)
 
 ## <a name="what-naming-restrictions-are-enforced-for-aks-resources-and-parameters"></a>对 AKS 资源和参数强制实施哪些命名限制？
@@ -158,6 +162,7 @@ Azure 平台和 AKS 都实施了命名限制。 如果资源名称或参数违�
     
 * dnsPrefix 必须以字母数字值开头和结尾，并且必须为 1 到 54 个字符。 有效字符包括字母数字值和连字符 (-)。 dnsPrefix 不能包含特殊字符，例如句点 (.)。
 * AKS 节点池名称必须全部为小写形式，对于 Linux 节点池，长度为 1-11 个字符；对于 Windows 节点池，长度为 1-6 个字符。 名称必须以字母开头，并且仅允许使用字母和数字字符。
+* admin-username（用于设置 Linux 节点的管理员用户名）必须以字母开头，只能包含字母、数字、连字符和下划线，其最大长度为 64 个字符。
 
 ## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>我在尝试创建、更新、缩放、删除或升级群集时收到错误，该操作不被允许，因为另一个操作正在进行。
 
@@ -214,7 +219,7 @@ Warning  FailedMount             1m    kubelet, 15282k8s9010    MountVolume.Wait
 1102-dynamic-pvc-6c526c51-4a18-11e8-ab5c-000d3af7b38e) lun:(4)
 ```
 
-此问题已在以下版本的 Kubernetes 中得到解决：
+此问题在以下版本的 Kubernetes 中已得到修复：
 
 | Kubernetes 版本 | 已修复的版本 |
 |--|:--:|
@@ -288,7 +293,7 @@ initContainers:
 
 在某些极端情况下，Azure 磁盘分离操作可能部分失败，导致节点 VM 处于故障状态。
 
-此问题已在以下版本的 Kubernetes 中得到解决：
+此问题在以下版本的 Kubernetes 中已得到修复：
 
 | Kubernetes 版本 | 已修复的版本 |
 |--|:--:|
@@ -426,16 +431,23 @@ kubectl edit secret azure-storage-account-{storage-account-name}-secret
 
 几分钟后，代理节点将使用更新的存储密钥重新尝试装载 Azure 文件存储。
 
-<!--Not Available on ### Cluster autoscaler fails to scale with error failed to fix node group sizes-->
+### <a name="cluster-autoscaler-fails-to-scale-with-error-failed-to-fix-node-group-sizes"></a>群集自动缩放程序无法缩放并显示错误：无法设置固定的节点组大小
 
-### <a name="slow-disk-attachment-getazuredisklun-takes-10-to-15-minutes-and-you-receive-an-error"></a>磁盘附加速度缓慢，GetAzureDiskLun 需要 10 到 15 分钟，并且会显示一个错误
+如果群集自动缩放程序无法增大/缩小，则会在[群集自动缩放程序日志][view-master-logs]上看到如下错误。
+
+```console
+E1114 09:58:55.367731 1 static_autoscaler.go:239] Failed to fix node group sizes: failed to decrease aks-default-35246781-vmss: attempt to delete existing nodes
+```
+
+此错误是由于上游群集自动缩放程序争用条件导致的。 在这种情况下，集群自动缩放程序返回的值与群集中实际存在的值不同。 为此，请禁用[群集自动缩放程序][cluster-autoscaler]，然后再重新启用它。
+
+### <a name="slow-disk-attachment-getazuredisklun-takes-10-to-15-minutes-and-you-receive-an-error"></a>磁盘连接速度缓慢，GetAzureDiskLun 需要 10 到 15 分钟的时间，并且会收到一条错误消息
 
 在 1.15.0 之前的 Kubernetes 版本中，可能会收到错误消息，如“错误: WaitForAttach 找不到磁盘的 Lun”。  为解决此问题，请等待大约 15 分钟，然后重试。
 
 <!-- LINKS - internal -->
 
 [view-master-logs]: view-master-logs.md
-
-<!--Not Available on [cluster-autoscaler]: cluster-autoscaler.md-->
+[cluster-autoscaler]: cluster-autoscaler.md
 
 <!-- Update_Description: update meta properties, wording update, update link -->

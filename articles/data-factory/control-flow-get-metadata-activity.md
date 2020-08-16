@@ -10,15 +10,15 @@ ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-origin.date: 04/15/2020
-ms.date: 06/29/2020
+origin.date: 07/24/2020
+ms.date: 08/10/2020
 ms.author: v-jay
-ms.openlocfilehash: d698f07ced19f809195f9f0e98bffbae247d664e
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+ms.openlocfilehash: 30b08dd7c3dc285bf884e8991f7bc6e56e94888f
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323361"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914174"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Azure 数据工厂中的“获取元数据”活动
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -60,13 +60,14 @@ ms.locfileid: "85323361"
 - 对于 Azure Blob 存储，`lastModified` 适用于容器和 Blob，但不适用于虚拟文件夹。
 - `lastModified` 筛选器当前适用于筛选子项，但不适用于筛选指定的文件夹/文件本身。
 - “获取元数据”活动不支持文件夹/文件的通配符筛选器。
+- 从二进制文件、JSON 文件或 XML 文件获取元数据时，不支持 `structure` 和 `columnCount`。
 
 **关系数据库**
 
 | 连接器/元数据 | structure | columnCount | exists |
 |:--- |:--- |:--- |:--- |
 | [Azure SQL 数据库](connector-azure-sql-database.md) | √ | √ | √ |
-| [Azure SQL 托管实例](connector-azure-sql-database-managed-instance.md) | √ | √ | √ |
+| [Azure SQL 托管实例](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md) | √ | √ | √ |
 | [Azure SQL 数据仓库](connector-azure-sql-data-warehouse.md) | √ | √ | √ |
 | [SQL Server](connector-sql-server.md) | √ | √ | √ |
 
@@ -137,7 +138,7 @@ ms.locfileid: "85323361"
 
 目前，“获取元数据”活动可以返回以下类型的元数据信息：
 
-属性 | 说明 | 必须
+属性 | 描述 | 必须
 -------- | ----------- | --------
 fieldList | 所需元数据信息的类型。 有关支持的元数据的详细信息，请参阅本文的[元数据选项](#metadata-options)部分。 | 是 
 dataset | 引用数据集，其元数据将由“获取元数据”活动检索。 有关支持的连接器的信息，请参阅[功能](#capabilities)部分。 有关数据集语法详细信息，请参阅特定的连接器主题。 | 是

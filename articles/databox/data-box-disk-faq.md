@@ -1,5 +1,5 @@
 ---
-title: Microsoft Azure Data Box 磁盘常见问题解答 | Microsoft Docs
+title: Azure Data Box Disk 常见问题解答 | 数据中的 Microsoft Docs
 description: 包含有关 Azure Data Box 磁盘（用于将大量数据传输到 Azure 的云解决方案）的常见问答和解答
 services: databox
 author: WenJason
@@ -9,12 +9,12 @@ ms.topic: conceptual
 origin.date: 08/29/2019
 ms.date: 07/27/2020
 ms.author: v-jay
-ms.openlocfilehash: 15d67f8ee97714d703493d294309699b02be1111
-ms.sourcegitcommit: c3f15613c875bb52d5a105445efd0f36b9f24c9c
+ms.openlocfilehash: 1935dc32cf6bb016c3366fddf6875f54be0de80d
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86473417"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914243"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk：常见问题解答
 

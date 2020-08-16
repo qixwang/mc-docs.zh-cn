@@ -4,14 +4,16 @@ description: 了解有关如何在 Azure Kubernetes 服务 (AKS) 中管理和保
 services: container-service
 ms.topic: conceptual
 origin.date: 12/06/2018
-ms.date: 03/09/2020
+ms.date: 08/10/2020
+ms.testscope: no
+ms.testdate: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: 5983dbfcc85be94cad6b3d898beef274ff209aab
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a72bc23819b9575ebaa49db64c1f9041e86679b7
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290718"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842632"
 ---
 # <a name="best-practices-for-container-image-management-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中容器映像管理和安全性的最佳做法
 
@@ -25,8 +27,7 @@ ms.locfileid: "79290718"
 
 还可以阅读[群集安全性][best-practices-cluster-security]和 [Pod 安全性][best-practices-pod-security]的最佳做法。
 
-<!--Not Available on [Container security in Security Center][security-center-containers]-->
-<!--Not Available on [Azure Container Registry integration][security-center-acr]-->
+还可以使用[安全中心的容器安全性][security-center-containers]来扫描容器以发现漏洞。  安全中心还有 [Azure 容器注册表集成][security-center-acr]，防止映像和注册表受漏洞的影响。
 
 ## <a name="secure-the-images-and-run-time"></a>保护映像和运行时
 
@@ -34,7 +35,7 @@ ms.locfileid: "79290718"
 
 采用基于容器的工作负荷的一个要素是：验证用于生成自己的应用程序的映像和运行时的安全性。 如何确保不向部署中引入安全漏洞？ 部署工作流应包含一个使用 [Twistlock][twistlock] 或 [Aqua][aqua] 等工具扫描容器映像的流程，然后只允许部署经过验证的映像。
 
-![扫描并修复容器映像、验证和部署](media/operator-best-practices-container-security/scan-container-images-simplified.png)
+:::image type="content" source="media/operator-best-practices-container-security/scan-container-images-simplified.png" alt-text="扫描并修复容器映像、验证和部署":::
 
 在实际的示例中，可以使用持续集成和持续部署 (CI/CD) 管道自动执行映像的扫描、验证和部署。 Azure 容器注册表包含这些漏洞扫描功能。
 
@@ -46,7 +47,7 @@ ms.locfileid: "79290718"
 
 Azure 容器注册表任务也可以在更新基础映像时自动更新容器映像。 通过此功能，你可以生成少量基础映像，并通过 bug 修复和安全修复定期更新它们。
 
-有关基础映像更新的详细信息，请参阅[使用 Azure 容器注册表任务在基础映像更新时自动化映像生成][acr-base-image-update]。
+有关基础映像更新的详细信息，请参阅[使用 Azure 容器注册表任务在基础映像更新时自动化映像生成][acr-base-image-update].
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -65,7 +66,7 @@ Azure 容器注册表任务也可以在更新基础映像时自动更新容器�
 [best-practices-cluster-security]: operator-best-practices-cluster-security.md
 [best-practices-pod-security]: developer-best-practices-pod-security.md
 [acr-base-image-update]: ../container-registry/container-registry-tutorial-base-image-update.md
+[security-center-containers]: ../security-center/container-security.md
+[security-center-acr]: ../security-center/azure-container-registry-integration.md
 
-<!--Not Available on [security-center-containers]: /security-center/container-security-->
-<!--Not Available on [acr-base-image-update]: ../container-registry/container-registry-tutorial-base-image-update.md-->
 <!-- Update_Description: update meta properties, wording update, update link -->

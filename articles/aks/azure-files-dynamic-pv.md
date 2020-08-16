@@ -5,16 +5,16 @@ description: 了解如何使用 Azure 文件动态创建永久性卷，以便与
 services: container-service
 ms.topic: article
 origin.date: 07/01/2020
-ms.date: 07/13/2020
-ms.testscope: yes
+ms.date: 08/10/2020
+ms.testscope: no
 ms.testdate: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: cd0879ccce3fe49e799a39aa81903ea800605a43
-ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
+ms.openlocfilehash: 7aa45cbf376d48247c42bb9b4b4c2a0e513484a5
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86218762"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842652"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中动态创建永久性卷并将其用于 Azure 文件
 
@@ -84,7 +84,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteMany
-  storageClassName: my-azurefile
+  storageClassName: azurefile
   resources:
     requests:
       storage: 5Gi
@@ -192,6 +192,8 @@ parameters:
 ## <a name="next-steps"></a>后续步骤
 
 如需相关的最佳做法，请参阅[在 AKS 中存储和备份的最佳做法][operator-best-practices-storage]。
+
+有关存储类参数，请参阅[动态预配](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/docs/driver-parameters.md#dynamic-provision)。
 
 详细了解使用 Azure 文件的 Kubernetes 永久性卷。
 

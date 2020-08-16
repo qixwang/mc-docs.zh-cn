@@ -8,14 +8,14 @@ ms.service: role-based-access-control
 ms.devlang: na
 ms.topic: how-to
 ms.workload: identity
-ms.date: 07/21/2020
+ms.date: 08/05/2020
 ms.author: v-junlch
-ms.openlocfilehash: bc40ffd478359b33447c8b57a5d28241825c6926
-ms.sourcegitcommit: d32699135151e98471daebe6d3f5b650f64f826e
+ms.openlocfilehash: 6ee6206e289abd395fe6e8263a94d88abc894d35
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87160849"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914241"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory-preview"></a>将 Azure 订阅转移到其他 Azure AD 目录（预览）
 
@@ -72,14 +72,16 @@ ms.locfileid: "87160849"
 | 用户分配的托管标识 | “是” | “是” | [列出托管标识](#list-role-assignments-for-managed-identities) | 必须删除、重新创建托管标识并将其附加到相应的资源。 必须重新创建角色分配。 |
 | Azure Key Vault | “是” | “是” | [列出 Key Vault 访问策略](#list-other-known-resources) | 必须更新与密钥保管库关联的租户 ID。 必须删除并添加新的访问策略。 |
 | 采用 Azure AD 身份验证的 Azure SQL 数据库 | 是 | 否 | [检查采用 Azure AD 身份验证的 Azure SQL 数据库](#list-other-known-resources) |  |  |
-| Azure 文件 | “是” | “是” |  | 必须重新创建任何 ACL。 |
-| Azure 文件同步 | “是” | “是” |  |  |
+| Azure 存储和 Azure Data Lake Storage Gen2 | “是” | “是” |  | 必须重新创建任何 ACL。 |
+| Azure Data Lake Storage Gen1 | “是” |  |  | 必须重新创建任何 ACL。 |
+| Azure 文件 | 是 | “是” |  | 必须重新创建任何 ACL。 |
+| Azure 文件同步 | 是 | “是” |  |  |
 | Azure 托管磁盘 | 是 | 空值 |  |  |
 | 用于 Kubernetes 的 Azure 容器服务 | “是” | 是 |  |  |
 | Azure Active Directory 域服务 | 是 | 否 |  |  |
-| 应用注册 | “是” | “是” |  |  |
+| 应用注册 | “是” | 是 |  |  |
 
-如果对依赖于密钥保管库的资源（例如存储帐户或 SQL 数据库）使用静态加密，而密钥保管库不位于正在转移的同一订阅中，则可能导致无法恢复的情况。 如果遇到这种情况，应采取步骤使用其他密钥保管库或暂时禁用客户管理的密钥，以避免这种不可恢复的情况。
+如果对依赖于密钥保管库的资源（例如存储帐户或 SQL 数据库）使用静态加密，而密钥保管库不位于正在转移的订阅中，则可能导致无法恢复的情况。 如果遇到这种情况，应采取步骤使用其他密钥保管库或暂时禁用客户管理的密钥，以避免这种不可恢复的情况。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -143,7 +145,7 @@ ms.locfileid: "87160849"
 
 ### <a name="save-custom-roles"></a>保存自定义角色
 
-1. 使用 [az role definition list](/cli/role/definition#az-role-definition-list) 列出自定义角色。 有关详细信息，请参阅[使用 Azure CLI 为 Azure 资源创建或更新自定义角色](custom-roles-cli.md)。
+1. 使用 [az role definition list](/cli/role/definition#az-role-definition-list) 列出自定义角色。 有关详细信息，请参阅[使用 Azure CLI 创建或更新 Azure 自定义角色](custom-roles-cli.md)。
 
     ```azurecli
     az role definition list --custom-role-only true --output json --query '[].{roleName:roleName, roleType:roleType}'
@@ -187,7 +189,7 @@ ms.locfileid: "87160849"
 
 1. 查看[支持托管标识的 Azure 服务列表](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)以了解可能用到托管标识的位置。
 
-1. 使用 [az ad sp list](/cli/ad/sp?view=azure-cli-latest#az-ad-sp-list) 列出系统分配的和用户分配的托管标识。
+1. 使用 [az ad sp list](https://docs.microsoft.com/en-us/cli/azure/identity?view=azure-cli-latest#az-identity-list) 列出系统分配的和用户分配的托管标识。
 
     ```azurecli
     az ad sp list --all --filter "servicePrincipalType eq 'ManagedIdentity'"
@@ -285,7 +287,7 @@ ms.locfileid: "87160849"
 
 ### <a name="create-custom-roles"></a>创建自定义角色
         
-- 使用 [az role definition create](/cli/role/definition#az-role-definition-create) 从先前创建的文件中创建每个自定义角色。 有关详细信息，请参阅[使用 Azure CLI 为 Azure 资源创建或更新自定义角色](custom-roles-cli.md)。
+- 使用 [az role definition create](/cli/role/definition#az-role-definition-create) 从先前创建的文件中创建每个自定义角色。 有关详细信息，请参阅[使用 Azure CLI 创建或更新 Azure 自定义角色](custom-roles-cli.md)。
 
     ```azurecli
     az role definition create --role-definition <role_definition>
@@ -340,6 +342,10 @@ ms.locfileid: "87160849"
 1. 删除所有现有的访问策略条目。
 
 1. 添加与目标目录相关联的新访问策略条目。
+
+### <a name="update-acls"></a>更新 ACL
+
+1. 如果使用的是 Azure 文件存储，请分配相应的 ACL。
 
 ### <a name="review-other-security-methods"></a>查看其他安全方法
 

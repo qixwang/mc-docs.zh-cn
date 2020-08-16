@@ -5,23 +5,23 @@ description: 了解如何通过 Azure Kubernetes 服务 (AKS) 创建和使用内
 services: container-service
 ms.topic: article
 origin.date: 03/04/2019
-ms.date: 05/25/2020
+ms.date: 08/10/2020
+ms.testscope: no
+ms.testdate: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: c1d50cf30254def0b46fe88095f90cc6dd5892bc
-ms.sourcegitcommit: cf336265d64517417ed2ecc7b2c13505dffb4451
+ms.openlocfilehash: 415da083edc20570c588aa2a60b1c351246f7b5c
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84800419"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842680"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>使用包含 Azure Kubernetes 服务 (AKS) 的内部负载均衡器
 
 若要限制访问 Azure Kubernetes 服务 (AKS) 中的应用程序，可以创建和使用内部负载均衡器。 内部负载均衡使得仅 Kubernetes 群集所在的同一虚拟网络中运行的应用程序能够访问 Kubernetes 服务。 本文介绍如何通过 Azure Kubernetes 服务 (AKS) 创建和使用内部负载均衡器。
 
 > [!NOTE]
-> Azure 负载均衡器以两种 SKU 提供：“基本”和“标准”** **。 默认情况下，创建 AKS 群集时使用标准 SKU。  创建类型为 LoadBalancer 的服务时，你将获得与预配群集时相同的 LB 类型。
-
-<!--Removed on Mooncake docuemnt [Azure load balancer SKU comparison][azure-lb-comparison]-->
+> Azure 负载均衡器以两种 SKU 提供：“基本”和“标准”** **。 默认情况下，创建 AKS 群集时使用标准 SKU。  创建类型为 LoadBalancer 的服务时，你将获得与预配群集时相同的 LB 类型。 有关详细信息，请参阅 [Azure 负载均衡器 SKU 比较][azure-lb-comparison]。
 
 ## <a name="before-you-begin"></a>准备阶段
 
@@ -29,9 +29,9 @@ ms.locfileid: "84800419"
 
 还需安装并配置 Azure CLI 2.0.59 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
 
-如果使用现有子网或资源组，则 AKS 群集服务主体需要管理网络资源的权限。 通常，将“网络参与者”** 角色分配给委派资源上的服务主体。 有关权限的详细信息，请参阅[委派 AKS 访问其他 Azure 资源][aks-sp]。
+如果使用现有子网或资源组，则 AKS 群集服务主体需要管理网络资源的权限。 有关信息，请参阅[在 Azure Kubernetes 服务 (AKS) 中结合自己的 IP 地址范围使用 kubenet 网络][use-kubenet]或[在 Azure Kubernetes 服务 (AKS) 中配置 Azure CNI 网络][advanced-networking]。 若要将负载均衡器配置为使用[不同子网中的 IP 地址][different-subnet]，请确保 AKS 群集服务主体也具有对该子网的读取访问权限。
 
-<!--Not Available on [Use managed identities](use-managed-identity.md)-->
+你还可以使用系统分配的托管标识来获得权限，而非使用服务主体。 有关详细信息，请参阅[使用托管标识](use-managed-identity.md)。 有关权限的详细信息，请参阅[委派 AKS 访问其他 Azure 资源][aks-sp]。
 
 ## <a name="create-an-internal-load-balancer"></a>创建内部负载均衡器
 
@@ -71,7 +71,7 @@ internal-app   LoadBalancer   10.0.248.59   10.240.0.7    80:30555/TCP   2m
 
 ## <a name="specify-an-ip-address"></a>指定 IP 地址
 
-若要对内部负载均衡器使用特定的 IP 地址，请将 loadBalancerIP 属性添加到负载均衡器 YAML 清单**。 指定的 IP 地址必须位于 AKS 群集所在的同一子网，并且必须尚未分配给某个资源。
+若要对内部负载均衡器使用特定的 IP 地址，请将 loadBalancerIP 属性添加到负载均衡器 YAML 清单**。 在此方案中，指定的 IP 地址必须位于 AKS 群集所在的子网，并且必须尚未分配给某个资源。 例如，不应使用为 Kubernetes 子网指定的范围内的 IP 地址。
 
 ```yaml
 apiVersion: v1
@@ -98,6 +98,8 @@ NAME           TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE
 internal-app   LoadBalancer   10.0.184.168   10.240.0.25   80:30225/TCP   4m
 ```
 
+若要详细了解如何在不同的子网中配置负载均衡器，请参阅[指定不同的子网][different-subnet]
+
 ## <a name="use-private-networks"></a>使用专用网络
 
 创建 AKS 群集时，可以指定高级网络设置。 此方法允许将群集部署到现有 Azure 虚拟网络和子网中。 一种方案是将 AKS 群集部署到连接到本地环境的专用网络，并运行仅在内部可访问的服务。 有关详细信息，请参阅“使用 [Kubenet][use-kubenet] 或 [Azure CNI][advanced-networking] 配置自己的虚拟网络子网”。
@@ -114,6 +116,7 @@ internal-app   LoadBalancer   10.1.15.188   10.0.0.35     80:31669/TCP   1m
 > [!NOTE]
 > 可能需要向 AKS 群集的服务主体授予针对部署了 Azure 虚拟网络资源的资源组的“网络参与者”** 角色。 使用 [az aks show][az-aks-show] 查看服务主体，例如 `az aks show --resource-group myResourceGroup --name myAKSCluster --query "servicePrincipalProfile.clientId"`。 若要创建角色分配，请使用 [az role assignment create][az-role-assignment-create] 命令。
 
+<a name="specify-a-different-subnet"></a>
 ## <a name="specify-a-different-subnet"></a>指定其他子网
 
 若要为负载均衡器指定子网，请将 *azure-load-balancer-internal-subnet* 注释添加到服务中。 指定的子网必须与 AKS 群集位于同一虚拟网络中。 部署后，负载均衡器“EXTERNAL-IP”** 地址是指定子网的一部分。
@@ -155,13 +158,12 @@ spec:
 [advanced-networking]: configure-azure-cni.md
 [az-aks-show]: https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-show
 [az-role-assignment-create]: https://docs.azure.cn/cli/role/assignment?view=azure-cli-latest#az-role-assignment-create
-
-<!--Not Available on [azure-lb-comparison]: ../load-balancer/concepts-limitations.md#skus-->
-
+[azure-lb-comparison]: ../load-balancer/skus.md
 [use-kubenet]: configure-kubenet.md
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest
 [aks-sp]: kubernetes-service-principal.md#delegate-access-to-other-azure-resources
+[different-subnet]: #specify-a-different-subnet
 
 <!-- Update_Description: update meta properties, wording update, update link -->

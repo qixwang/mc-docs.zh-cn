@@ -2,15 +2,17 @@
 title: 通过 ACR 任务进行外部身份验证
 description: 配置 Azure 容器注册表任务（ACR 任务）以使用 Azure 资源的托管标识读取 Azure 密钥保管库中存储的 Docker Hub 凭据。
 ms.topic: article
-origin.date: 01/14/2020
-ms.date: 05/18/2020
+origin.date: 07/06/2020
+ms.date: 08/10/2020
+ms.testscope: no
+ms.testdate: 05/18/2020
 ms.author: v-yeche
-ms.openlocfilehash: 927cc2573c03cd46404c38b7973cf2e4df4484c5
-ms.sourcegitcommit: 436a5dd9a446fe7b6d3c4d5bc76b652f7848c1ba
+ms.openlocfilehash: 472f87477bf640b22368a2f6a891162cfaa7c622
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83393124"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917060"
 ---
 <!--Verify successfully-->
 # <a name="external-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>ACR 任务中使用 Azure 托管标识的外部身份验证 
@@ -119,9 +121,22 @@ az acr task create \
 
 [!INCLUDE [container-registry-tasks-user-id-properties](../../includes/container-registry-tasks-user-id-properties.md)]
 
-## <a name="option-2-create-task-with-system-assigned-identity"></a>选项 2：创建使用系统分配的标识的任务
+### <a name="grant-identity-access-to-key-vault"></a>为标识授予对 Key Vault 的访问权限
 
-本部分中的步骤将创建一个任务并启用系统分配的标识。 若要改为启用用户分配的标识，请参阅[选项 1：创建使用用户分配的标识的任务](#option-1-create-task-with-user-assigned-identity)。 
+运行以下 [az keyvault set-policy][az-keyvault-set-policy] 命令来设置对 Key Vault 的访问策略。 以下示例允许标识读取 Key Vault 中的机密。 
+
+```azurecli
+az keyvault set-policy --name mykeyvault \
+  --resource-group myResourceGroup \
+  --object-id $principalID \
+  --secret-permissions get
+```
+
+继续完成[手动运行任务](#manually-run-the-task)。
+
+## <a name="option-2-create-task-with-system-assigned-identity"></a>选项 2：创建具有系统分配的标识的任务
+
+本部分中的步骤创建一个任务并启用系统分配的标识。 如果要改为启用用户分配的标识，请参阅[选项 1：创建具有用户分配的标识的任务](#option-1-create-task-with-user-assigned-identity)。 
 
 ### <a name="create-task"></a>创建任务
 
@@ -138,7 +153,7 @@ az acr task create \
 
 [!INCLUDE [container-registry-tasks-system-id-properties](../../includes/container-registry-tasks-system-id-properties.md)]
 
-## <a name="grant-identity-access-to-key-vault"></a>为标识授予对 Key Vault 的访问权限
+### <a name="grant-identity-access-to-key-vault"></a>为标识授予对 Key Vault 的访问权限
 
 运行以下 [az keyvault set-policy][az-keyvault-set-policy] 命令来设置对 Key Vault 的访问策略。 以下示例允许标识读取 Key Vault 中的机密。 
 
@@ -209,7 +224,7 @@ Run ID: cf24 was successful after 15s
 ## <a name="next-steps"></a>后续步骤
 
 * 详细了解如何[在 ACR 任务中启用托管标识](container-registry-tasks-authentication-managed-identity.md)。
-* 参阅 [ACR 任务 YAML 参考](container-registry-tasks-reference-yaml.md)
+* 请参阅 [ACR 任务 YAML 引用](container-registry-tasks-reference-yaml.md)
 
 <!-- LINKS - Internal -->
 

@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/25/2020
+ms.date: 08/05/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e96b7ed3cd9c7c53e5894fd5d17cd1e8ac48478e
-ms.sourcegitcommit: 7429daf26cff014b040f69cdae75bdeaea4f4e93
+ms.openlocfilehash: bec9cf587dab2133c9148f08887fa01a6c2d01d5
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83991641"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914164"
 ---
 # <a name="azure-custom-roles"></a>Azure 自定义角色
 
@@ -125,6 +125,30 @@ ms.locfileid: "83991641"
 | `NotDataActions`</br>`notDataActions` | 否 | String[] | 一个字符串数组，指定要从允许的 `DataActions` 中排除的数据操作。 有关详细信息，请参阅 [NotDataActions](role-definitions.md#notdataactions)。 |
 | `AssignableScopes`</br>`assignableScopes` | 是 | String[] | 一个字符串数组，指定自定义角色的可分配范围。 只能在自定义角色的 `AssignableScopes` 中定义一个管理组。 将管理组添加到 `AssignableScopes` 的功能目前处于预览状态。 有关详细信息，请参阅 [AssignableScopes](role-definitions.md#assignablescopes)。 |
 
+## <a name="wildcard-permissions"></a>通配符权限
+
+`Actions`、`NotActions`、`DataActions` 和 `NotDataActions` 支持使用通配符 (`*`) 来定义权限。 通配符 (`*`) 将权限扩展到与所提供的操作字符串匹配的所有内容。 例如，假设你要添加与 Azure 成本管理和导出相关的所有权限。 可以添加所有这些操作字符串：
+
+```
+Microsoft.CostManagement/exports/action
+Microsoft.CostManagement/exports/read
+Microsoft.CostManagement/exports/write
+Microsoft.CostManagement/exports/delete
+Microsoft.CostManagement/exports/run/action
+```
+
+也可以不添加所有这些字符串，而只需添加一个通配符字符串。 例如，以下通配符字符串等效于上面的五个字符串。 此通配符权限还包括将来可能要添加的任何导出权限。
+
+```
+Microsoft.CostManagement/exports/*
+```
+
+还可以在一个字符串中包含多个通配符。 例如，以下字符串表示对成本管理的所有查询权限。
+
+```
+Microsoft.CostManagement/*/query/*
+```
+
 ## <a name="steps-to-create-a-custom-role"></a>创建自定义角色的步骤
 
 要创建自定义角色，请遵循以下基本步骤。
@@ -166,7 +190,7 @@ ms.locfileid: "83991641"
 - 无法在管理组范围内分配具有 `DataActions` 的自定义角色。
 - Azure 资源管理器不验证管理组是否存在于角色定义的可分配范围中。
 
-若要详细了解自定义角色和管理组，请参阅[使用 Azure 管理组来组织资源](../governance/management-groups/overview.md#custom-rbac-role-definition-and-assignment)。
+若要详细了解自定义角色和管理组，请参阅[使用 Azure 管理组来组织资源](../governance/management-groups/overview.md#azure-custom-role-definition-and-assignment)。
 
 ## <a name="input-and-output-formats"></a>输入和输出格式
 

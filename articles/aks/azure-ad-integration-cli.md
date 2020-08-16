@@ -1,19 +1,20 @@
 ---
-title: 将 Azure Active Directory 与 Azure Kubernetes Service 集成
-description: 了解如何使用 Azure CLI 创建支持 Azure Active Directory 的 Azure Kubernetes 服务 (AKS) 群集
+title: 将 Azure Active Directory 与 Azure Kubernetes 服务（旧版）集成
+description: 了解如何使用 Azure CLI 创建支持 Azure Active Directory 的 Azure Kubernetes 服务 (AKS) 群集（旧版）
 services: container-service
+author: rockboyfor
 ms.topic: article
-origin.date: 04/16/2019
-ms.date: 07/13/2020
-ms.testscope: yes
+origin.date: 07/20/2020
+ms.date: 08/10/2020
+ms.testscope: no
 ms.testdate: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: 4430810ba498184c34a751123b44b9d198360963
-ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
+ms.openlocfilehash: 2aae847abbf0d0fae2d83289d1603def2b117b01
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86218770"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842538"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>使用 Azure CLI 将 Azure Active Directory 与 Azure Kubernetes 服务集成
 
@@ -23,9 +24,12 @@ ms.locfileid: "86218770"
 
 有关本文中使用的完整示例脚本，请参阅 [Azure CLI 示例 - AKS 与 Azure AD 集成][complete-script]。
 
-以下限制适用：
 
-- 只有在创建新的启用 RBAC 的群集时，才能启用 Azure AD。 不能在现有 AKS 群集上启用 Azure AD。
+<!--MOONCAKE: Not Available on [AKS-managed Azure AD][managed-aad]-->
+
+## <a name="the-following-limitations-apply"></a>以下限制适用：
+
+- Azure AD 只能在支持 RBAC 的群集上启用。
 
 ## <a name="before-you-begin"></a>准备阶段
 
@@ -78,7 +82,7 @@ serverApplicationSecret=$(az ad sp credential reset \
     --query password -o tsv)
 ```
 
-Azure AD 需要执行以下操作的有权：
+Azure AD 服务主体需要权限才能执行以下操作：
 
 * 读取目录数据
 * 登录并读取用户配置文件
@@ -194,7 +198,7 @@ subjects:
   name: userPrincipalName_or_objectId
 ```
 
-<!--CORRECT ON   kind: User-->
+<!--CORRECT ON yaml format  kind: User-->
 
 使用 [kubectl apply][kubectl-apply] 命令创建群集角色绑定，并指定 YAML 清单的文件名：
 
@@ -271,7 +275,7 @@ error: You must be logged in to the server (Unauthorized)
 [az-aks-create]: https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-create
 [az-aks-get-credentials]: https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
 [az-group-create]: https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-create
-[open-id-connect]:../active-directory/develop/v2-protocols-oidc.md
+[open-id-connect]: ../active-directory/develop/v2-protocols-oidc.md
 [az-ad-user-show]: https://docs.azure.cn/cli/ad/user?view=azure-cli-latest#az-ad-user-show
 [az-ad-app-create]: https://docs.azure.cn/cli/ad/app?view=azure-cli-latest#az-ad-app-create
 [az-ad-app-update]: https://docs.azure.cn/cli/ad/app?view=azure-cli-latest#az-ad-app-update
@@ -283,11 +287,13 @@ error: You must be logged in to the server (Unauthorized)
 [az-group-create]: https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-create
 [az-account-show]: https://docs.azure.cn/cli/account?view=azure-cli-latest#az-account-show
 [az-ad-signed-in-user-show]: https://docs.azure.cn/cli/ad/signed-in-user?view=azure-cli-latest#az-ad-signed-in-user-show
-[azure-ad-portal]: azure-ad-integration.md
 [install-azure-cli]: https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest
 [az-ad-sp-credential-reset]: https://docs.azure.cn/cli/ad/sp/credential?view=azure-cli-latest#az-ad-sp-credential-reset
-[rbac-authorization]: concepts-identity.md#role-based-access-controls-rbac
+[rbac-authorization]: concepts-identity.md#kubernetes-role-based-access-controls-rbac
 [operator-best-practices-identity]: operator-best-practices-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md
+
+<!--Not Available on [managed-aad]: managed-aad.md-->
+<!--Not Available on [managed-aad-migrate]: managed-aad.md#upgrading-to-aks-managed-azure-ad-integration-->
 
 <!-- Update_Description: update meta properties, wording update, update link -->

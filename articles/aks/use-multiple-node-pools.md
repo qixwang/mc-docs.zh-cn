@@ -4,14 +4,16 @@ description: 了解如何为 Azure Kubernetes 服务 (AKS) 中的群集创建和
 services: container-service
 ms.topic: article
 origin.date: 04/08/2020
-ms.date: 05/25/2020
+ms.date: 08/10/2020
+ms.testscope: no
+ms.testdate: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: 9b4f67f240dfa423af7dfefb39484e990cc91e60
-ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
+ms.openlocfilehash: a6ea613b51b55c1e1289e11f6b54f8b2f08b952f
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86218788"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842574"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>为 Azure Kubernetes 服务 (AKS) 中的群集创建和管理多个节点池
 
@@ -299,9 +301,9 @@ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
 需要花费几分钟时间来完成缩放操作。
 
-<!--Not Available on ## Scale a specific node pool automatically by enabling the cluster autoscaler-->
-<!--Not Available on [cluster autoscaler](cluster-autoscaler.md)-->
-<!--Not Available on [use the cluster autoscaler per node pool](cluster-autoscaler.md#use-the-cluster-autoscaler-with-multiple-node-pools-enabled)-->
+## <a name="scale-a-specific-node-pool-automatically-by-enabling-the-cluster-autoscaler"></a>通过启用群集自动缩放程序来自动缩放特定节点池
+
+AKS 提供了一项单独的功能，用于通过一项称为[群集自动缩放程序](cluster-autoscaler.md)的功能来自动缩放节点池。 可以为每个节点池启用此功能，每个节点池具有唯一的最小和最大规模计数。 了解如何[对每个节点池使用群集自动缩放程序](cluster-autoscaler.md#use-the-cluster-autoscaler-with-multiple-node-pools-enabled)。
 
 ## <a name="delete-a-node-pool"></a>删除节点池
 
@@ -504,6 +506,9 @@ az aks nodepool add \
     --node-taints sku=gpu:NoSchedule \
     --no-wait
 ```
+
+> [!NOTE]
+> 只能在创建节点池期间为节点池设置排斥。
 
 [az aks nodepool list][az-aks-nodepool-list] 命令的以下示例输出显示 taintnp 正在创建具有指定 nodeTaints 的节点：  
 
@@ -745,8 +750,9 @@ az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster --name gpu
 az group delete --name myResourceGroup --yes --no-wait
 ```
 
-<!--Not Avaialble on az group delete --name myResourceGroup2 --yes --no-wait-->
 <!--Reason: The feature 'NodePublicIPPreview' could not be found-->
+<!--Not Avaialble on az group delete --name myResourceGroup2 --yes --no-wait-->
+
 ## <a name="next-steps"></a>后续步骤
 
 详细了解[系统节点池][use-system-pool]。
@@ -787,7 +793,7 @@ az group delete --name myResourceGroup --yes --no-wait
 [operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
 [quotas-skus-regions]: quotas-skus-regions.md
 [supported-versions]: supported-kubernetes-versions.md
-[tag-limitation]: ../azure-resource-manager/resource-group-using-tags.md
+[tag-limitation]: ../azure-resource-manager/management/tag-resources.md
 [taints-tolerations]: operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations
 [vm-sizes]: ../virtual-machines/linux/sizes.md
 [use-system-pool]: use-system-pools.md

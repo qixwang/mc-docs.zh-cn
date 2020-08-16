@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 origin.date: 04/15/2020
 ms.date: 06/08/2020
-ms.openlocfilehash: 009d5f4459b201eb286f9e326990a9bfd389cd11
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.openlocfilehash: a8568e8928f58cc0905a16a620a7b468d2c29350
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723073"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917044"
 ---
 # <a name="customer-managed-key-disk-encryption"></a>客户管理的密钥磁盘加密
 
@@ -95,9 +95,9 @@ HDInsight 仅支持 Azure Key Vault。 如果拥有自己的密钥保管库，�
 
     ![为 Azure Key Vault 访问策略设置“选择主体”](./media/disk-encryption/azure-portal-add-access-policy.png)
 
-1. 选择“添加”  ****。
+1. 选择“添加”  。
 
-1. 选择“保存” ****。
+1. 选择“保存” 。
 
     ![保存 Azure Key Vault 访问策略](./media/disk-encryption/add-key-vault-access-policy-save.png)
 
@@ -401,3 +401,4 @@ HDInsight 使用与 HDInsight 群集关联的托管标识来访问 Azure Key Vau
 ## <a name="next-steps"></a>后续步骤
 
 * 有关 Azure Key Vault 的详细信息，请参阅[什么是 Azure Key Vault](../key-vault/general/overview.md)。
+* [Azure HDInsight 中的企业安全性概述](./domain-joined/hdinsight-security-overview.md)。

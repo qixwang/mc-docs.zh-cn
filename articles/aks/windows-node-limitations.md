@@ -4,16 +4,16 @@ titleSuffix: Azure Kubernetes Service
 description: 了解在 Azure Kubernetes 服务 (AKS) 中运行 Windows Server 节点池和应用程序工作负荷时的已知限制
 services: container-service
 ms.topic: article
-ms.date: 07/13/2020
+ms.date: 08/10/2020
 ms.testscope: no
 ms.testdate: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: 56d282b98f52d7a84f36acca0ab8a9ad956dfae6
-ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
+ms.openlocfilehash: 57040335ae22bd35ed86653219cd37d8e1134dfb
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86218781"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842636"
 ---
 <!--Verified successfully-->
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的 Windows Server 节点池和应用程序工作负荷的当前限制
@@ -48,7 +48,11 @@ AKS 群集中的主节点（控制平面）由 AKS 服务托管，不会向你�
 
 ## <a name="what-network-plug-ins-are-supported"></a>支持哪些网络插件？
 
-具有 Windows 节点池的 AKS 群集必须使用 Azure CNI（高级）网络模型。 不支持 Kubenet（基本）网络。 有关网络模型差异的详细信息，请参阅[适用于 AKS 中的应用程序的网络概念][azure-network-models]。 - Azure CNI 网络模型需要对 IP 地址管理进行其他规划和考量。 有关如何规划和实现 Azure CNI 的详细信息，请参阅[在 AKS 中配置 Azure CNI 网络][configure-azure-cni]。
+具有 Windows 节点池的 AKS 群集必须使用 Azure CNI（高级）网络模型。 不支持 Kubenet（基本）网络。 有关网络模型差异的详细信息，请参阅[适用于 AKS 中的应用程序的网络概念][azure-network-models]。 Azure CNI 网络模型需要对 IP 地址管理进行其他规划和考量。 有关如何规划和实现 Azure CNI 的详细信息，请参阅[在 AKS 中配置 Azure CNI 网络][configure-azure-cni]。
+
+## <a name="is-preserving-the-client-source-ip-supported"></a>是否支持保留客户端源 IP？
+
+目前，Windows 节点不支持[客户端源 IP 保留][client-source-ip]。
 
 ## <a name="can-i-change-the-max--of-pods-per-node"></a>是否可以更改每个节点的最大 Pod 数量？
 
@@ -107,6 +111,14 @@ AKS 当前不提供组托管服务帐户 (gMSA) 支持。
 
 可以，但 Azure Monitor 现为公共预览版，用于从 Windows 容器收集日志（stdout，stderr）和指标。 你仍可从 Windows 容器附加到 stdout 日志的实时传送流。
 
+## <a name="are-there-any-limitations-on-the-number-of-services-on-a-cluster-with-windows-nodes"></a>在具有 Windows 节点的群集上，服务的数量是否有限制？
+
+具有 Windows 节点的群集可以有大约 500 个服务，超过它就会导致端口耗尽。
+
+## <a name="can-i-use-the-kubernetes-web-dashboard-with-windows-containers"></a>是否可以将 Kubernetes Web 仪表板用于 Windows 容器？
+
+是的，你可以使用 [Kubernetes Web 仪表板][kubernetes-dashboard]来访问有关 Windows 容器的信息，但目前不能直接从 Kubernetes Web 仪表板将 kubectl exec 运行到正在运行的 Windows 容器中。 若要更详细地了解如何连接到正在运行的 Windows 容器，请参阅[使用 RDP 连接到 Azure Kubernetes 服务 (AKS) 群集 Windows Server 节点以进行维护或故障排除][windows-rdp]。
+
 ## <a name="what-if-i-need-a-feature-which-is-not-supported"></a>如果需要不支持的功能，怎么办？
 
 我们致力于在 AKS 中引入你需要的所有 Windows 功能，但如果确实遇到功能差距，开源的上游 [aks-engine][aks-engine] 项目提供了在 Azure 中运行 Kubernetes 的完全可自定义的简便方法，其中包括 Windows 支持。 请确保查看 [AKS 路线图][aks-roadmap]中的功能路线图。
@@ -138,6 +150,9 @@ AKS 当前不提供组托管服务帐户 (gMSA) 支持。
 [windows-container-compat]: https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility?tabs=windows-server-2019%2Cwindows-10-1909
 [maximum-number-of-pods]: configure-azure-cni.md#maximum-pods-per-node
 [azure-monitor]: ../azure-monitor/insights/container-insights-overview.md#what-does-azure-monitor-for-containers-provide
+[client-source-ip]: concepts-network.md#ingress-controllers
+[kubernetes-dashboard]: kubernetes-dashboard.md
+[windows-rdp]: rdp.md
 
 
 <!-- Update_Description: update meta properties, wording update, update link -->

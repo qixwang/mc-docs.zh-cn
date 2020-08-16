@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-origin.date: 03/26/2020
-ms.date: 06/29/2020
-ms.openlocfilehash: 3548b365463a1a532d03a1d31a473654fb5c11ba
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+origin.date: 07/14/2020
+ms.date: 08/10/2020
+ms.openlocfilehash: 39d55d8c897b8c06efbf48b278966104f7812c0d
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85321394"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914294"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure 数据工厂中的集成运行时 
 
@@ -45,13 +45,10 @@ ms.locfileid: "85321394"
 
 IR 类型 | 公用网络 | 专用网络
 ------- | -------------- | ---------------
-Azure | 数据流<br/>数据移动<br/>活动分派 | &nbsp;
+Azure | 数据移动<br/>活动分派 | 数据移动<br/>活动分派
 自承载 | 数据移动<br/>活动分派 | 数据移动<br/>活动分派
 Azure-SSIS | SSIS 包执行 | SSIS 包执行
 
-下图介绍了如何结合使用不同的集成运行时以提供丰富的数据集成功能和网络支持：
-
-![不同类型的集成运行时](media/concepts-integration-runtime/different-integration-runtimes.png)
 
 ## <a name="azure-integration-runtime"></a>Azure 集成运行时
 
@@ -121,7 +118,11 @@ Azure-SSIS IR 是完全托管的 Azure VM 群集，专用于运行 SSIS 包。 �
 
 ## <a name="integration-runtime-location"></a>集成运行时位置
 
-数据工厂位置是存储数据工厂元数据和启动管道触发所在的位置。 同时，数据工厂可以访问其他 Azure 区域的数据存储和计算数据，在数据存储之间移动数据或使用计算服务处理数据。 此行为通过[全局可用 IR 来实现](https://azure.microsoft.com/global-infrastructure/services/?regions=china-non-regional,china-east,china-east-2,china-north,china-north-2&products=all)，以确保数据的符合性、有效性并减少网络对外费用。
+### <a name="relationship-between-factory-location-and-ir-location"></a>工厂位置和 IR 位置之间的关系
+
+客户在创建数据工厂实例时需要指定数据工厂的位置。 数据工厂位置是存储数据工厂元数据和启动管道触发所在的位置。 工厂的元数据仅存储在客户选择的区域中，而不会存储在其他区域中。
+
+同时，数据工厂可以访问其他 Azure 区域的数据存储和计算数据，在数据存储之间移动数据或使用计算服务处理数据。 此行为通过[全局可用 IR 来实现](https://azure.microsoft.com/global-infrastructure/services/?regions=china-non-regional,china-east,china-east-2,china-north,china-north-2&products=all)，以确保数据的符合性、有效性并减少网络对外费用。
 
 IR 位置定义其后端计算的位置，尤其是执行数据移动、活动分派和 SSIS 包执行的位置。 IR 位置可能与数据工厂所属的位置不同。 
 
@@ -129,7 +130,7 @@ IR 位置定义其后端计算的位置，尤其是执行数据移动、活动�
 
 可以设置 Azure IR 的特定位置，这样活动执行或活动调度就会发生在该特定区域。
 
-如果选择使用默认的自动解析 Azure IR，则会出现以下情况：
+如果选择在公用网络中使用默认的自动解析 Azure IR，则会出现以下情况：
 
 - 对于复制活动，ADF 会尽最大努力自动检测接收器数据存储的位置，然后使用同一区域中的 IR（如果可用）或者使用同一地理位置中最靠近的 IR；如果检测不到接收器数据存储的区域，则会改用数据工厂区域中的 IR。
 

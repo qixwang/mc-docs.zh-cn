@@ -1,26 +1,26 @@
 ---
-title: 在 Azure Kubernetes 服务 (AKS) 群集上创建 Windows Server 容器
+title: 使用 PowerShell 在 AKS 群集上创建 Windows Server 容器
 description: 了解如何使用 PowerShell 在 Azure Kubernetes 服务 (AKS) 中的 Windows Server 容器中快速创建 Kubernetes 群集并部署应用程序。
 services: container-service
 ms.topic: article
 origin.date: 05/26/2020
-ms.date: 07/13/2020
-ms.testscope: yes
+ms.date: 08/10/2020
+ms.testscope: no
 ms.testdate: 07/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 56defae396f5bacd208447e0dc02fa73e152c35e
-ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
+ms.openlocfilehash: 356c3bc773567c0df9905235318f104f85dc44bc
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86218851"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842642"
 ---
 <!--Verified successfully-->
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-powershell"></a>使用 PowerShell 在 Azure Kubernetes 服务 (AKS) 群集上创建 Windows Server 容器
 
 Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管式 Kubernetes 服务。 本文介绍如何使用 PowerShell 部署 AKS 群集。 还可将 Windows Server 容器中的 `ASP.NET` 示例应用程序部署到群集。
 
-![浏览到 ASP.NET 示例应用程序的图像](media/windows-container-powershell/asp-net-sample-app.png)
+:::image type="content" source="media/windows-container-powershell/asp-net-sample-app.png" alt-text="浏览到 ASP.NET 示例应用程序的图像":::
 
 本文假定你对 Kubernetes 概念有基本的了解。 有关详细信息，请参阅 [Azure Kubernetes 服务 (AKS) 的 Kubernetes 核心概念][kubernetes-concepts]。
 
@@ -52,7 +52,7 @@ Windows Server 节点池存在以下额外限制：
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-[Azure 资源组](/azure-resource-manager/resource-group-overview)是用于部署和管理 Azure 资源的逻辑组。 创建资源组时，系统会要求你指定一个位置， 此位置是资源组元数据的存储位置，如果你在创建资源期间未指定另一个区域，则它还是你的资源在 Azure 中的运行位置。 使用 [New-AzResourceGroup][new-azresourcegroup] cmdlet 创建资源组。
+[Azure 资源组](../azure-resource-manager/management/overview.md)是用于部署和管理 Azure 资源的逻辑组。 创建资源组时，系统会要求你指定一个位置， 此位置是资源组元数据的存储位置，如果你在创建资源期间未指定另一个区域，则它还是你的资源在 Azure 中的运行位置。 使用 [New-AzResourceGroup][new-azresourcegroup] cmdlet 创建资源组。
 
 以下示例在“chinaeast2”位置创建名为“myResourceGroup”的资源组。
 
@@ -75,7 +75,7 @@ ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000000/resource
 
 ## <a name="create-an-aks-cluster"></a>创建 AKS 群集
 
-使用 `ssh-keygen` 命令行实用程序生成 SSH 密钥对。 有关详细信息，请参阅[快速步骤：创建和使用适用于 Azure 中 Linux VM 的 SSH 公钥-私钥对](/virtual-machines/linux/mac-create-ssh-keys)。
+使用 `ssh-keygen` 命令行实用程序生成 SSH 密钥对。 有关详细信息，请参阅[快速步骤：创建和使用适用于 Azure 中 Linux VM 的 SSH 公钥-私钥对](../virtual-machines/linux/mac-create-ssh-keys.md)。
 
 若要运行支持 Windows Server 容器的节点池的 AKS 群集，群集需要采用使用 [Azure CNI][azure-cni-about]（高级）网络插件的网络策略。 有关帮助计划所需子网范围和网络注意事项的更多详细信息，请参阅[配置 Azure CNI 网络][use-advanced-networking]。 使用下面的 [New-AzAks][new-azaks] cmdlet 创建名为 myAKSCluster 的 AKS 群集。 下面的示例将创建必要的网络资源（如果这些资源不存在）。
 
@@ -231,7 +231,7 @@ sample  LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 
 若要查看示例应用的实际效果，请打开 Web 浏览器并转到服务的外部 IP 地址。
 
-![浏览到 ASP.NET 示例应用程序的图像](media/windows-container-powershell/asp-net-sample-app.png)
+:::image type="content" source="media/windows-container-powershell/asp-net-sample-app.png" alt-text="浏览到 ASP.NET 示例应用程序的图像":::
 
 > [!Note]
 > 如果尝试加载页面时收到连接超时，则应使用以下命令 `kubectl get pods --watch` 验证示例应用是否已准备就绪。 有时，当你的外部 IP 地址可用时，Windows 容器将无法启动。
@@ -281,5 +281,4 @@ Remove-AzResourceGroup -Name myResourceGroup
 [kubernetes-dashboard]: kubernetes-dashboard.md
 [aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
 
-<!-- Update_Description: new article about windows container powershell -->
-<!--NEW.date: 07/13/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

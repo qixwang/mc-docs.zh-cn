@@ -4,22 +4,22 @@ description: 了解如何升级 Azure Kubernetes 服务 (AKS) 群集以获取最
 services: container-service
 ms.topic: article
 origin.date: 05/28/2020
-ms.date: 07/13/2020
+ms.date: 08/10/2020
 ms.testscope: no
 ms.testdate: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: 90ccb85887d29bb668ac58fa94bfb2c6bbed29e8
-ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
+ms.openlocfilehash: c066f9bd14c7a7859d217e7134006f61fd234dbe
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86218791"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842576"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>升级 Azure Kubernetes 服务 (AKS) 群集
 
 在 AKS 群集的生命周期中，经常需要升级到最新的 Kubernetes 版本。 必须应用最新的 Kubernetes 安全版本，或者通过升级来获取最新功能。 本文演示如何在 AKS 群集中升级主组件或单个默认的节点池。
 
-对于使用多个节点池或 Windows Server 节点的 AKS 群集（当前在 AKS 中为预览版），请参阅[升级 AKS 中的节点池][nodepool-upgrade]。
+对于使用多个节点池或 Windows Server 节点的 AKS 群集，请参阅[升级 AKS 中的节点池][nodepool-upgrade]。
 
 ## <a name="before-you-begin"></a>准备阶段
 
@@ -37,9 +37,11 @@ az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --outpu
 ```
 
 > [!NOTE]
-> 升级 AKS 群集时，不能跳过 Kubernetes 次要版本。 例如，允许从 1.12.x 升级到 1.13.x，或者从 1.13.x 升级到 1.14.x，但不允许从 1.12.x 升级到 1.14.x。
+> 升级受支持的 AKS 群集时，不能跳过 Kubernetes 次要版本。 例如，允许从 1.12.x 升级到 1.13.x，或者从 1.13.x 升级到 1.14.x，但不允许从 1.12.x 升级到 1.14.x。
 >
 > 若要从 1.12.x 升级到 1.14.x，请先从 1.12.x 升级到 1.13.x，然后再从 1.13.x 升级到 1.14.x。
+>
+> 仅当从不受支持的版本升级回受支持的版本时，才可以跳过多个版本。 例如，可以从不受支持的 1.10.x 升级到受支持的 1.15.x 。
 
 以下示例输出表明，群集可以升级到版本 1.13.9 和 1.13.10：
 
@@ -54,9 +56,10 @@ default  myResourceGroup   1.12.8           1.12.8             1.13.9, 1.13.10
 ERROR: Table output unavailable. Use the --query option to specify an appropriate query. Use --debug for more info.
 ```
 
-<!--Not Available on ## Customize node surge upgrade (Preview) till 07/09/2020-->
-<!--Not Available on ## Set up the preview feature for customizing node surge upgrade-->
+<!--Not Available on ## Customize node surge upgrade (Preview) till 08/05/2020-->
+<!--Not Available on ### Set up the preview feature for customizing node surge upgrade-->
 <!--Not Available on feature `MaxSurgePreview` az feature register --namespace "Microsoft.ContainerService" --name "MaxSurgePreview"-->
+
 ## <a name="upgrade-an-aks-cluster"></a>升级 AKS 群集
 
 如果有一系列适用于 AKS 群集的版本，则可使用 [az aks upgrade][az-aks-upgrade] 命令进行升级。 在升级过程中，AKS 将向运行指定 Kubernetes 版本的群集添加一个新节点，然后仔细地一次[隔离并清空][kubernetes-drain]一个旧节点，将对正在运行的应用程序造成的中断情况降到最低。 确认新节点运行应用程序 Pod 以后，就会删除旧节点。 此过程会重复进行，直至群集中的所有节点都已升级完毕。

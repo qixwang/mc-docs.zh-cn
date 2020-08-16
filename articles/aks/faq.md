@@ -2,17 +2,17 @@
 title: 有关 Azure Kubernetes 服务 (AKS) 的常见问题解答
 description: 查找有关 Azure Kubernetes 服务 (AKS) 的某些常见问题的解答。
 ms.topic: conceptual
-origin.date: 05/14/2020
-ms.date: 07/27/2020
+origin.date: 07/31/2020
+ms.date: 08/10/2020
 ms.testscope: no
 ms.testdate: 07/20/2020
 ms.author: v-yeche
-ms.openlocfilehash: 7ee99c71d1070d0688e2486c5a0e9836dd8a03a7
-ms.sourcegitcommit: 5726d3b2e694f1f94f9f7d965676c67beb6ed07c
+ms.openlocfilehash: 55ebe68751bbb1e58041a19762fdcddfd2f8ef2a
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/21/2020
-ms.locfileid: "86863135"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842556"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 的常见问题解答
 
@@ -77,9 +77,10 @@ AKS 在多个 Azure 基础结构资源之上构建，包括虚拟机规模集、
 
 是的。 默认情况下，AKS 将节点资源组命名为 MC_resourcegroupname_clustername_location，但你也可以提供自己的名称。
 
-若要自行指定一个资源组名称，请安装 [aks-preview][aks-preview-cli] Azure CLI 扩展版本 0.3.2 或更高版本。 使用 [az aks create][az-aks-create] 命令创建 AKS 群集时，请使用 `--node-resource-group` 参数并指定资源组的名称。 如果使用 Azure 资源管理器模板部署 AKS 群集，则可以使用 nodeResourceGroup 属性定义资源组名称。
-
 <!--CUSTOMIZE CORRECT ON `--node-resource-group` -->
+
+若要自行指定一个资源组名称，请安装 [aks-preview][aks-preview-cli] Azure CLI 扩展版本 0.3.2 或更高版本。 使用 [az aks create][az-aks-create] 命令创建 AKS 群集时，请使用 `*--node-resource-group` 参数并指定资源组的名称。 如果使用 Azure 资源管理器模板部署 AKS 群集，则可以使用 nodeResourceGroup 属性定义资源组名称。
+
 <!--Not Avaialble on [use an Azure Resource Manager template][aks-rm-template]-->
 
 * Azure 资源提供程序会在你自己的订阅中自动创建辅助资源组。
@@ -95,7 +96,7 @@ AKS 在多个 Azure 基础结构资源之上构建，包括虚拟机规模集、
 
 ## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-node-resource-group"></a>是否可以修改节点资源组中 AKS 资源的标记和其他属性？
 
-如果修改或删除节点资源组中 Azure 创建的标记和其他资源属性，可能会出现意外的结果，例如缩放和升级错误。 使用 AKS 可以创建和修改最终用户创建的自定义标记。 例如，可以创建或修改标记，以分配业务单位或成本中心。 这可以通过创建作用域涵盖受管理资源组的 Azure 策略来实现。
+如果修改或删除节点资源组中 Azure 创建的标记和其他资源属性，可能会出现意外的结果，例如缩放和升级错误。 使用 AKS，可以创建和修改由最终用户创建的自定义标记，还可以在[创建节点池](use-multiple-node-pools.md#specify-a-taint-label-or-tag-for-a-node-pool)时添加这些标记。 例如，可以创建或修改标记，以分配业务单位或成本中心。 这也可以通过在托管资源组上创建具有作用域的 Azure 策略来实现。
 
 <!--CUSTOMIZATION: CORRECT ON end users DUE TO SCORECARD-->
 
@@ -155,7 +156,7 @@ Windows Server 对节点池的支持具有一些限制，Kubernetes 项目中的
 
 ## <a name="can-i-movemigrate-my-cluster-between-azure-tenants"></a>我可以在 Azure 租户之间移动/迁移群集吗？
 
-可以使用 `az aks update-credentials` 命令在 Azure 租户之间移动 AKS 群集。 按[选择更新或创建服务主体](/aks/update-credentials)中的说明操作，然后[使用新凭据更新 AKS 群集](/aks/update-credentials#update-aks-cluster-with-new-service-principal-credentials)。
+当前不支持在租户之间移动 AKS 群集。
 
 ## <a name="can-i-movemigrate-my-cluster-between-subscriptions"></a>我可以在订阅之间移动/迁移群集吗？
 
@@ -164,6 +165,10 @@ Windows Server 对节点池的支持具有一些限制，Kubernetes 项目中的
 ## <a name="can-i-move-my-aks-clusters-from-the-current-azure-subscription-to-another"></a>是否可以将 AKS 群集从当前的 Azure 订阅移到另一个订阅？ 
 
 不支持跨 Azure 订阅移动 AKS 群集及其关联的资源。
+
+## <a name="can-i-move-my-aks-cluster-or-aks-infrastructure-resources-to-other-resource-groups-or-rename-them"></a>是否可以将我的 AKS 群集或 AKS 基础结构资源移到其他资源组，或将它们重命名？
+
+不支持移动或重命名 AKS 群集及其关联的资源。
 
 ## <a name="why-is-my-cluster-delete-taking-so-long"></a>为何群集删除需要如此长的时间？ 
 
@@ -183,11 +188,11 @@ Windows Server 对节点池的支持具有一些限制，Kubernetes 项目中的
 
 ## <a name="i-ran-an-upgrade-but-now-my-pods-are-in-crash-loops-and-readiness-probes-fail"></a>我运行了升级，但现在我的 Pod 处于崩溃循环中，且就绪情况探测失败。
 
-请确认你的服务主体尚未过期。  请参阅：[AKS 服务主体](/aks/kubernetes-service-principal)和 [AKS 更新凭据](/aks/update-credentials)
+请确认服务主体是否已过期。  请参阅：[AKS 服务主体](./kubernetes-service-principal.md)和 [AKS 更新凭据](./update-credentials.md)
 
 ## <a name="my-cluster-was-working-but-suddenly-cannot-provision-loadbalancers-mount-pvcs-etc"></a>我的群集在运行，但突然不能预配 LoadBalancers，不能装载 PVC，等等。 
 
-请确认服务主体是否已过期。  请参阅：[AKS 服务主体](/aks/kubernetes-service-principal)和 [AKS 更新凭据](/aks/update-credentials)。
+请确认服务主体是否已过期。  请参阅：[AKS 服务主体](./kubernetes-service-principal.md)和 [AKS 更新凭据](./update-credentials.md)。
 
 ## <a name="can-i-use-the-virtual-machine-scale-set-apis-to-scale-manually"></a>是否可以使用虚拟机规模集 API 手动进行缩放？
 
@@ -205,12 +210,16 @@ Windows Server 对节点池的支持具有一些限制，Kubernetes 项目中的
 
 否。AKS 是一项托管服务，不支持操作 IaaS 资源。 要安装自定义组件等， 请利用 Kubernetes 的 API 和机制。 例如，使用 DaemonSet 安装所需的组件。
 
+## <a name="does-aks-store-any-customer-data-outside-of-the-clusters-region"></a>AKS 是否将任何客户数据存储在群集区域之外？
+
+不是。 在 AKS 群集中创建的所有数据都将保留在群集的区域内。
+
 <!-- LINKS - internal -->
 
 [aks-upgrade]: ./upgrade-cluster.md
-[aks-cluster-autoscale]: ./autoscaler.md
+[aks-cluster-autoscale]: ./cluster-autoscaler.md
 [aks-advanced-networking]: ./configure-azure-cni.md
-[aks-rbac-aad]: ./azure-ad-integration.md
+[aks-rbac-aad]: ./azure-ad-integration-cli.md
 [node-updates-kured]: node-updates-kured.md
 [aks-preview-cli]: https://docs.microsoft.com/cli/azure/ext/aks-preview/aks?view=azure-cli-latest
 [az-aks-create]: https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-create

@@ -4,14 +4,16 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 节点的 kubelet 日
 services: container-service
 ms.topic: article
 origin.date: 03/05/2019
-ms.date: 03/09/2020
+ms.date: 08/10/2020
+ms.testscope: no
+ms.testdate: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: fe224549c984b88a259c825c7e05cff49417696c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 97df196c495b19abd5bd0fc70c7b605f0a34f08d
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290834"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842678"
 ---
 # <a name="get-kubelet-logs-from-azure-kubernetes-service-aks-cluster-nodes"></a>从 Azure Kubernetes 服务 (AKS) 群集节点获取 kubelet 日志
 
@@ -34,6 +36,12 @@ ms.locfileid: "79290834"
 ```console
 sudo journalctl -u kubelet -o cat
 ```
+
+> [!NOTE]
+> 对于 Windows 节点，日志数据位于 `C:\k` 中，可以使用 more 命令查看：
+> ```
+> more C:\k\kubelet.log
+> ```
 
 以下示例输出显示 *kubelet* 日志数据：
 

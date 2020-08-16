@@ -5,23 +5,23 @@ description: 了解如何使用 Azure 门户快速创建 Kubernetes 群集、部
 services: container-service
 ms.topic: quickstart
 origin.date: 01/21/2020
-ms.date: 07/13/2020
-ms.testscope: yes
+ms.date: 08/10/2020
+ms.testscope: no
 ms.testdate: 05/25/2020
 ms.author: v-yeche
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 679151693df29b42f8f7ad99bf9b4e38b858b79a
-ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
+ms.openlocfilehash: 2a7b7befe3b105aa3f66e6f9b37058455de696b9
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86218738"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842570"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>快速入门：使用 Azure 门户部署 Azure Kubernetes 服务 (AKS) 群集
 
 Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管式 Kubernetes 服务。 本快速入门介绍如何使用 Azure 门户部署 AKS 群集。 该群集中将运行一个包含 Web 前端和 Redis 实例的多容器应用程序。 然后，你将了解如何监视群集的运行状况，以及监视运行该应用程序的 Pod。
 
-![浏览到 Azure Vote 示例应用程序的图像](media/container-service-kubernetes-walkthrough/azure-voting-application.png)
+:::image type="content" source="media/container-service-kubernetes-walkthrough/azure-voting-application.png" alt-text="浏览到 Azure Vote 示例应用程序的图像":::
 
 本快速入门假设读者基本了解 Kubernetes 的概念。 有关详细信息，请参阅 [Azure Kubernetes 服务 (AKS) 的 Kubernetes 核心概念][kubernetes-concepts]。
 
@@ -47,7 +47,7 @@ Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管�
     - **主节点池**：选择 AKS 节点的 VM **节点大小**。 一旦部署 AKS 群集，则不能更改 VM 大小。 
         - 选择要部署到群集中的节点数。 对于本快速入门，请将“节点计数”设置为“1”。 部署群集后，可以调整节点计数。
     
-        ![创建 AKS 群集 - 提供基本信息](media/kubernetes-walkthrough-portal/create-cluster-basics.png)
+    :::image type="content" source="media/kubernetes-walkthrough-portal/create-cluster-basics.png" alt-text="创建 AKS 群集 - 提供基本信息":::
 
     在完成时选择“下一步:**缩放”** 。
 
@@ -57,7 +57,7 @@ Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管�
     > 创建新的 AAD 服务主体可能需要几分钟的时间才能传播并变得可用，这样会导致 Azure 门户中出现“找不到服务主体”错误和验证失败。 如果遇到这种情况，请访问[此处](troubleshooting.md#received-an-error-saying-my-service-principal-wasnt-found-or-is-invalid-when-i-try-to-create-a-new-cluster)进行缓解。
 
 5. 在“身份验证”页上，配置以下选项：
-    - 通过将“服务主体”字段保留为“(新)默认服务主体”来创建新的服务主体。 或者，可以选择“配置服务主体”以使用现有的服务主体。 如果使用现有的服务主体，则需要提供 SPN 客户端 ID 和机密。
+    - 将“服务主体”字段保留为“(新)默认服务主体”以创建新的服务主体。 或者，可以选择“配置服务主体”以使用现有的服务主体。 如果使用现有的服务主体，则需要提供 SPN 客户端 ID 和机密。
     - 启用 Kubernetes 基于角色的访问控制 (RBAC) 所对应的选项。 这样可以对部署在 AKS 群集中的 Kubernetes 资源进行更精细的访问控制。
 
     或者，可以使用托管标识而不是服务主体。 有关详细信息，请参阅[使用托管标识](use-managed-identity.md)。
@@ -66,9 +66,9 @@ Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管�
 
 创建 AKS 群集需要几分钟时间。 完成部署后，单击“转到资源”，或浏览到 AKS 群集资源组（如 myResourceGroup），然后选择 AKS 资源（如 myAKSCluster）。 此时会显示 AKS 群集仪表板，如以下示例所示：
 
-![Azure 门户中的示例 AKS 仪表板](media/kubernetes-walkthrough-portal/aks-portal-dashboard.png)
+:::image type="content" source="media/kubernetes-walkthrough-portal/aks-portal-dashboard.png" alt-text="Azure 门户中的示例 AKS 仪表板":::
 
-## <a name="connect-to-the-cluster"></a>连接至群集
+## <a name="connect-to-the-cluster"></a>连接到群集
 
 若要管理 Kubernetes 群集，请使用 Kubernetes 命令行客户端 [kubectl][kubectl]。
 
@@ -76,7 +76,7 @@ Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管�
 
 <!--Not Available on Open Azure Cloud Shell using the `>_` button on the top of the Azure portal.-->
 
-<!--Not Available on  ![Open the Azure Cloud Shell in the portal](media/kubernetes-walkthrough-portal/aks-cloud-shell.png)-->
+<!--Not Available on  :::image type="content" source="media/kubernetes-walkthrough-portal/aks-cloud-shell.png" alt-text="Open the Azure Cloud Shell in the portal":::-->
 
 若要将 `kubectl` 配置为连接到 Kubernetes 群集，请使用 [az aks get-credentials][az-aks-get-credentials] 命令。 此命令将下载凭据，并将 Kubernetes CLI 配置为使用这些凭据。 以下示例获取名为 *myResourceGroup* 的资源组中群集名称 *myAKSCluster* 的凭据：
 
@@ -109,7 +109,7 @@ Kubernetes 清单文件定义群集的所需状态，例如，要运行哪些容
 
 <!--Not Available on Line 103  In more real-world scenarios, you can use [Azure Dev Spaces][azure-dev-spaces] to rapidly iterate and debug your code directly in the AKS cluster. You can use Dev Spaces across OS platforms and development environments, and work together with others on your team.-->
 
-在本地 Shell 中，使用 `nano azure-vote.yaml` 或 `vi azure-vote.yaml` 命令创建一个名为 `azure-vote.yaml` 的文件。 然后复制以下 YAML 定义：
+在本地 Shell 中，使用编辑器创建一个名为 `azure-vote.yaml` 的文件，如 `code azure-vote.yaml`、`nano azure-vote.yaml` 或 `vi azure-vote.yaml`。 然后复制以下 YAML 定义：
 
 <!--Not Available on  In Azure Cloud Shell, create the file using `vi` or `Nano`, as if working on a virtual or physical system:-->
 
@@ -238,7 +238,7 @@ azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 
 若要查看 Azure Vote 应用的实际效果，请打开 Web 浏览器并转到服务的外部 IP 地址。
 
-![浏览到 Azure Vote 示例应用程序的图像](media/container-service-kubernetes-walkthrough/azure-voting-application.png)
+:::image type="content" source="media/container-service-kubernetes-walkthrough/azure-voting-application.png" alt-text="浏览到 Azure Vote 示例应用程序的图像":::
 
 ## <a name="monitor-health-and-logs"></a>监视运行状况和日志
 
@@ -253,11 +253,11 @@ azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 
 将显示 *azure-vote-back* 和 *azure-vote-front* 容器，如下面的示例中所示：
 
-![查看在 AKS 中运行的容器的运行状况](media/kubernetes-walkthrough-portal/monitor-containers.png)
+:::image type="content" source="media/kubernetes-walkthrough-portal/monitor-containers.png" alt-text="查看在 AKS 中运行的容器的运行状况":::
 
 若要查看 `azure-vote-front` Pod 的日志，请从容器列表的下拉列表中选择“查看容器日志”。 这些日志包括容器中的 *stdout* 和 *stderr* 流。
 
-![查看 AKS 中的容器日志](media/kubernetes-walkthrough-portal/monitor-container-logs.png)
+:::image type="content" source="media/kubernetes-walkthrough-portal/monitor-container-logs.png" alt-text="查看 AKS 中的容器日志":::
 
 ## <a name="delete-cluster"></a>删除群集
 
@@ -298,7 +298,7 @@ az aks delete --resource-group myResourceGroup --name myAKSCluster --no-wait
 [kubernetes-concepts]: concepts-clusters-workloads.md
 [az-aks-get-credentials]: https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
 [az-aks-delete]: https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-delete
-[aks-monitor]: ../monitoring/monitoring-container-health.md
+[aks-monitor]: ../azure-monitor/insights/container-insights-overview.md
 [aks-network]: ./concepts-network.md
 [aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
 

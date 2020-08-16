@@ -10,12 +10,12 @@ ms.topic: conceptual
 origin.date: 04/21/2020
 ms.date: 06/22/2020
 ms.author: v-yiso
-ms.openlocfilehash: 7ead7724aac56d181c2b77fada52b20424808cc1
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.openlocfilehash: 37408dd90b3c7be124a5dd4cd1188d0110d46ec4
+ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723114"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87917085"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>使用脚本操作自定义 Azure HDInsight 群集
 
@@ -29,6 +29,7 @@ Azure HDInsight 提供名为脚本操作的配置方法，该方法可以调用�
 * **AMBARI.RUN\_CUSTOM\_COMMAND**。 默认情况下，Ambari 管理员角色具有此权限。
 * **CLUSTER.RUN\_CUSTOM\_COMMAND**。 默认情况下，HDInsight 群集管理员和 Ambari 管理员都具有此权限。
 
+有关处理已加入域的 HDInsight 的权限的详细信息，请参阅[使用企业安全性套餐管理 HDInsight 群集](./domain-joined/apache-domain-joined-manage.md)。
 
 ## <a name="access-control"></a>访问控制
 
@@ -56,6 +57,7 @@ Azure HDInsight 提供名为脚本操作的配置方法，该方法可以调用�
 
       * 可通过 http:// 路径访问的公共文件共享服务。 例如 Azure Blob、GitHub、OneDrive。 有关示例 URI，请参阅[脚本操作脚本示例](#example-script-action-scripts)。
 
+     * 对于具有 ESP 的群集，支持 wasb:// 或 wasbs:// 或 http[s]:// URI。
 
 * 可以限制为只对特定的节点类型运行， 例如头节点或工作节点。
 
@@ -129,9 +131,9 @@ HDInsight 提供了脚本用于在 HDInsight 群集上安装以下组件：
 
 | 名称 | 脚本 |
 | --- | --- |
-| 添加 Azure 存储帐户 |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`。 请参阅[将其他存储帐户添加到 HDInsight](hdinsight-hadoop-add-storage.md)。 |
-| 安装 Hue |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`。 请参阅[在 HDInsight Hadoop 群集上安装并使用 Hue](hdinsight-hadoop-hue-linux.md)。 |
-| 预加载 Hive 库 |`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh`。 请参阅[创建 HDInsight 群集时添加自定义 Apache Hive 库](hdinsight-hadoop-add-hive-libraries.md)。 |
+| 添加 Azure 存储帐户 |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`. 请参阅[将其他存储帐户添加到 HDInsight](hdinsight-hadoop-add-storage.md)。 |
+| 安装 Hue |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`. 请参阅[在 HDInsight Hadoop 群集上安装并使用 Hue](hdinsight-hadoop-hue-linux.md)。 |
+| 预加载 Hive 库 |`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh`. 请参阅[创建 HDInsight 群集时添加自定义 Apache Hive 库](hdinsight-hadoop-add-hive-libraries.md)。 |
 
 ## <a name="script-action-during-cluster-creation"></a>群集创建期间的脚本操作
 
@@ -300,7 +302,7 @@ HDInsight .NET SDK 提供客户端库，以方便从 .NET 应用程序使用 HDI
 
 1. 在默认视图中的“设置”下，选择“脚本操作”**** ****。
 
-1. 在“脚本操作”页顶部，选择“+ 提交新项”**** ****。
+1. 在“脚本操作”页顶部，选择“+ 提交新项” 。
 
     ![将脚本添加到正在运行的群集](./media/hdinsight-hadoop-customize-cluster-linux/add-script-running-cluster.png)
 
@@ -320,7 +322,7 @@ HDInsight .NET SDK 提供客户端库，以方便从 .NET 应用程序使用 HDI
 
     使用“持久保存此脚本操作”条目，确保在缩放操作中应用了脚本____。
 
-5. 最后，选择“创建”按钮将脚本应用到群集。****
+5. 最后，选择“创建”按钮将脚本应用到群集。
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-azure-powershell"></a>从 Azure PowerShell 将脚本操作应用到正在运行的群集
 

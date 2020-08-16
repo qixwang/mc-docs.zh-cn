@@ -3,7 +3,7 @@ title: 配置 Azure-SSIS 集成运行时的性能
 description: 了解如何配置高性能 Azure-SSIS Integration Runtime 的属性
 services: data-factory
 origin.date: 01/10/2018
-ms.date: 07/27/2020
+ms.date: 08/10/2020
 ms.topic: conceptual
 ms.service: data-factory
 ms.workload: data-services
@@ -11,12 +11,12 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: ''
 manager: digimobile
-ms.openlocfilehash: 27855b3965d5be49ee23c0990edf301239eed434
-ms.sourcegitcommit: 0eaa82cf74477d26d06bdd8fb6e715e6ed1339c4
+ms.openlocfilehash: 7c7a9362bd37ed1f237a0b104e1d0cbc6c522c6d
+ms.sourcegitcommit: 66563f2b68cce57b5816f59295b97f1647d7a3d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86974312"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87914293"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>配置高性能 Azure-SSIS Integration Runtime
 
@@ -105,11 +105,15 @@ AzureSSISLocation 是 Integration Runtime 辅助角色节点的位置。 该工�
 
 此数据代表单个辅助角色节点上的单个包执行。 此包从 Azure Blob 存储中加载 3 百万个包含名和姓列的记录，生成全名列并将全名超过 20 个字符的记录写到 Azure Blob 存储。
 
+y-轴是一小时内执行完毕的包数。 请注意，这只是一个内存消耗包的测试结果。 若要了解包的吞吐量，建议你自行执行测试。
+
 ![SSIS Integration Runtime 包执行速度](media/configure-azure-ssis-integration-runtime-performance/ssisir-execution-speedV2.png)
 
 ### <a name="configure-for-overall-throughput"></a>配置整体吞吐量
 
 如果有大量包要运行且最关注整体吞吐量，则使用下表中的信息选择适合方案的虚拟机类型。
+
+y-轴是一小时内执行完毕的包数。 请注意，这只是一个内存消耗包的测试结果。 若要了解包的吞吐量，建议你自行执行测试。
 
 ![SSIS Integration Runtime 最大整体吞吐量](media/configure-azure-ssis-integration-runtime-performance/ssisir-overall-throughputV2.png)
 

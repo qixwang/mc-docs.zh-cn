@@ -5,16 +5,16 @@ services: container-service
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 02/28/2019
-ms.date: 07/13/2020
+ms.date: 08/10/2020
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 48fa4bd57ce33c18865a4d4d0fabd5bfd6df1ac1
-ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
+ms.openlocfilehash: 88853973d8040ab8b5ffc65c65470645296e5d5c
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86218755"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842555"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的应用程序缩放选项
 
@@ -24,15 +24,15 @@ ms.locfileid: "86218755"
 
 - [手动缩放](#manually-scale-pods-or-nodes)
 - [水平 Pod 自动缩放程序 (HPA)](#horizontal-pod-autoscaler)
+- [群集自动缩放程序](#cluster-autoscaler)
 
-<!--Not Available on - [Cluster autoscaler](#cluster-autoscaler)-->
 <!--Not Available on - [Azure Container Instance (ACI) integration with AKS](#burst-to-azure-container-instances)-->
 
 ## <a name="manually-scale-pods-or-nodes"></a>手动缩放 Pod 或节点
 
 可以手动缩放副本 (Pod) 和节点，以测试应用程序如何响应可用资源和状态的更改。 手动缩放资源还可以定义用于维持固定成本的设定数量的资源，例如节点数。 若要手动缩放，请定义副本或节点计数。 然后，Kubernetes API 根据该副本或节点计数计划创建其他 Pod 或排空节点。
 
-缩减节点时，Kubernetes API 将调用与群集使用的计算类型绑定的相关 Azure 计算 API。 例如，对于基于 VM 规模集构建的群集，选择要删除的节点的逻辑由 VM 规模集 API 确定。 若要详细了解如何在缩减节点时选择要删除的节点，请参阅 [VMSS 常见问题解答](/virtual-machine-scale-sets/virtual-machine-scale-sets-faq#if-i-reduce-my-scale-set-capacity-from-20-to-15-which-vms-are-removed)。
+缩减节点时，Kubernetes API 将调用与群集使用的计算类型绑定的相关 Azure 计算 API。 例如，对于基于 VM 规模集构建的群集，选择要删除的节点的逻辑由 VM 规模集 API 确定。 若要详细了解如何在缩减节点时选择要删除的节点，请参阅 [VMSS 常见问题解答](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#if-i-reduce-my-scale-set-capacity-from-20-to-15-which-vms-are-removed)。
 
 若要开始使用手动缩放 Pod 和节点，请参阅[在 AKS 中缩放应用程序][aks-scale]。
 
@@ -40,7 +40,7 @@ ms.locfileid: "86218755"
 
 Kubernetes 使用水平 Pod 自动缩放程序 (HPA) 来监视资源需求并自动缩放副本数量。 默认情况下，水平 Pod 自动缩放程序每隔 30 秒检查一次指标 API，以了解副本计数所需的任何更改。 当需要进行更改时，副本的数量会相应增加或减少。 水平 Pod 自动缩放程序与已经为 Kubernetes 1.8+ 部署了指标服务器的 AKS 群集配合使用。
 
-![Kubernetes 水平 Pod 自动缩放](media/concepts-scale/horizontal-pod-autoscaling.png)
+:::image type="content" source="media/concepts-scale/horizontal-pod-autoscaling.png" alt-text="Kubernetes 水平 Pod 自动缩放":::
 
 为给定部署配置水平 Pod 自动缩放程序时，请定义可运行的最小和最大副本数。 还可以定义指标以监视任何缩放决策并以此为依据，例如 CPU 使用情况。
 
@@ -54,10 +54,32 @@ Kubernetes 使用水平 Pod 自动缩放程序 (HPA) 来监视资源需求并自
 
 目前，无法从默认值调整这些冷却时间值。
 
-<!--Not Available on ## Cluster autoscaler-->
+## <a name="cluster-autoscaler"></a>群集自动缩放程序
 
-<!--Not Available on ### Scale up events-->
-<!--Not Available on ### Scale down events-->
+Kubernetes 有一个可响应不断变化的 Pod 需求的群集自动缩放程序，可根据节点池中请求的计算资源调整节点数。 默认情况下，群集自动缩放程序每隔 10 秒检查一次指标 API 服务器，以了解节点计数所需的任何更改。 如果群集自动缩放程序确定需要进行更改，则 AKS 群集中的节点数会相应增加或减少。 群集自动缩放程序适用于运行 Kubernetes 1.10.x 或更高版本的支持 RBAC 的 AKS 群集。
+
+:::image type="content" source="media/concepts-scale/cluster-autoscaler.png" alt-text="Kubernetes 群集自动缩放程序":::
+
+群集自动缩放程序通常与水平 Pod 自动缩放程序配合使用。 当两者组合在一起时，水平 Pod 自动缩放程序会根据应用程序需求增加或减少 Pod 数量，群集自动缩放程序会根据需要调整节点数以相应地运行额外的 Pod。
+
+若要开始使用 AKS 中的群集自动缩放程序，请参阅 [AKS 上的群集自动缩放程序][aks-cluster-autoscaler]。
+
+### <a name="scale-out-events"></a>横向扩展事件
+
+如果节点没有足够的计算资源来运行请求的 Pod，则该 Pod 无法按照计划继续运行。 除非节点池中有其他可用的计算资源，否则无法启动该 Pod。
+
+当群集自动缩放程序通知由于节点池资源限制而无法将 Pod 列入计划时，节点池中的节点数量会增加，提供额外的计算资源。 当这些额外的节点成功部署并可在节点池中使用时，可将 Pod 计划为运行。
+
+如果应用程序需要快速缩放，则某些 Pod 可能会保持等待计划的状态，直到群集自动缩放程序部署的其他节点可以接受列入计划的 Pod。 对于具有高突发需求的应用程序，可以使用虚拟节点和 Azure 容器实例进行缩放。
+
+### <a name="scale-in-events"></a>横向缩减事件
+
+群集自动缩放程序还会监视最近未收到新计划请求的节点的 Pod 计划状态。 此方案表明节点池具有的计算资源多于所需资源，并且可以减少节点数。
+
+默认情况下，计划删除传递超过 10 分钟不再需要的阈值的节点。 发生这种情况时，会计划 Pod 在节点池中的其他节点上运行，并且群集自动缩放程序会减少节点数。
+
+当群集自动缩放程序减少节点数时，由于在不同节点上计划 Pod，应用程序可能会发生一些中断。 为最大限度地减少中断，请避免使用单个 Pod 实例的应用程序。
+
 <!--Not Available on ## Burst to Azure Container Instances-->
 <!--This feature based on Virtual Node which is invalid on Mooncake-->
 
@@ -67,8 +89,7 @@ Kubernetes 使用水平 Pod 自动缩放程序 (HPA) 来监视资源需求并自
 
 - 手动缩放 [Pod][aks-manually-scale-pods] 或[节点][aks-manually-scale-nodes]
 - 使用[水平 Pod 自动缩放程序][aks-hpa]
-
-<!--Not Avaialble on - Use the [cluster autoscaler][aks-cluster-autoscaler]-->
+- 使用[群集自动缩放程序][aks-cluster-autoscaler]
 
 有关核心 Kubernetes 和 AKS 概念的详细信息，请参阅以下文章：
 
@@ -89,9 +110,7 @@ Kubernetes 使用水平 Pod 自动缩放程序 (HPA) 来监视资源需求并自
 [aks-scale]: tutorial-kubernetes-scale.md
 [aks-manually-scale-pods]: tutorial-kubernetes-scale.md#manually-scale-pods
 [aks-manually-scale-nodes]: tutorial-kubernetes-scale.md#manually-scale-aks-nodes
-
-<!--Not Available on [aks-cluster-autoscaler]: autoscaler.md-->
-
+[aks-cluster-autoscaler]: ./cluster-autoscaler.md
 [aks-concepts-clusters-workloads]: concepts-clusters-workloads.md
 [aks-concepts-security]: concepts-security.md
 [aks-concepts-storage]: concepts-storage.md

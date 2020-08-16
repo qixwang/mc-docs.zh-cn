@@ -2,16 +2,18 @@
 title: 概念 - Azure Kubernetes 服务 (AKS) 中的网络
 description: 了解 Azure Kubernetes 服务 (AKS) 中的网络，包括 kubenet 和 Azure CNI、入口控制器、负载均衡器和静态 IP 地址。
 ms.topic: conceptual
-origin.date: 02/28/2019
-ms.date: 05/25/2020
+origin.date: 06/11/2020
+ms.date: 08/10/2020
+ms.testscope: no
+ms.testdate: 05/25/2020
 ms.author: v-yeche
 ms.custom: fasttrack-edit
-ms.openlocfilehash: a9082ae1c6e8b14866b978957a151f7c559afbee
-ms.sourcegitcommit: 6c9e5b3292ade56d812e7e214eeb66aeb9b8776e
+ms.openlocfilehash: 3a5666d8926c8051871c23e5173893950358adbb
+ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86218757"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842669"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中应用程序的网络概念
 
@@ -109,7 +111,7 @@ Kubenet 和 Azure CNI 之间存在以下行为差异：
 | 使用负载均衡器服务、应用程序网关或入口控制器公开 Kubernetes 服务 | 支持 | 支持 |
 | 默认的 Azure DNS 和专用区域                                                          | 支持 | 支持 |
 
-关于 DNS，kubenet 和 Azure CNI 插件 DNS 都由 CoreDNS 提供，后者是运行在 AKS 中的守护程序集。 有关 Kubernetes 上的 CoreDNS 的详细信息，请参阅 [Customizing DNS Service](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/)（自定义 DNS 服务）。 默认情况下，CoreDNS 配置为将未知域转发到节点 DNS 服务器，换言之，将其转发到部署 AKS 群集的 Azure 虚拟网络的 DNS 功能。 因此，Azure DNS 和专用区域将适用于在 AKS 中运行的 Pod。
+关于 DNS，kubenet 和 Azure CNI 插件 DNS 都由 CoreDNS 提供，后者是一个在 AKS 中运行的部署，有其自己的自动缩放程序。 有关 Kubernetes 上的 CoreDNS 的详细信息，请参阅 [Customizing DNS Service](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/)（自定义 DNS 服务）。 默认情况下，CoreDNS 配置为将未知域转发到节点 DNS 服务器，换言之，将其转发到部署 AKS 群集的 Azure 虚拟网络的 DNS 功能。 因此，Azure DNS 和专用区域将适用于在 AKS 中运行的 Pod。
 
 ### <a name="support-scope-between-network-models"></a>网络模型之间的支持范围
 
@@ -185,7 +187,7 @@ Kubenet 和 Azure CNI 之间存在以下行为差异：
 <!-- LINKS - Internal -->
 <!--Not Available on [aks-http-routing]: http-application-routing.md-->
 
-[aks-ingress-tls]: ingress.md
+[aks-ingress-tls]: ./ingress-tls.md
 [aks-configure-kubenet-networking]: configure-kubenet.md
 [aks-configure-advanced-networking]: configure-azure-cni.md
 [aks-concepts-clusters-workloads]: concepts-clusters-workloads.md
