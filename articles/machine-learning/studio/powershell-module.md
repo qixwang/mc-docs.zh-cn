@@ -9,16 +9,17 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: amlstudiodocs
 ms.date: 04/25/2019
-ms.openlocfilehash: 1a93f23305c40d0a2a9804b4eb5b49a36390aef7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b6693130298bdf3051727c13ed8994bed417cf60
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80343454"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88228108"
 ---
 # <a name="powershell-modules-for-azure-machine-learning-studio-classic"></a>Azure 机器学习工作室（经典）PowerShell 模块
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+**适用于：**  ![yes](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![no](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)
+
 
 使用 PowerShell 模块，可采用编程方式管理工作室（经典）资源和资产，例如工作区、数据集和 Web 服务。
 
@@ -34,7 +35,7 @@ ms.locfileid: "80343454"
 
 ## <a name="azure-powershell-az-and-azurerm"></a><a name="az-rm"></a> Azure PowerShell Az 和 AzureRM
 
-Az 现在是与 Azure 交互的 PowerShell 模块，它包含 AzureRM 以前的所有功能。 AzureRM 将继续接收 bug 修复，但它不会接收任何新的 cmdlet 或功能。  Az 和 AzureRM 都管理使用 Azure 资源管理器  部署模型部署的解决方案。 这些资源包括工作室（经典）工作区和工作室（经典）新的 Web 服务。 
+Az 现在是与 Azure 交互的 PowerShell 模块，它包含 AzureRM 以前的所有功能。 AzureRM 将继续接收 bug 修复，但它不会接收任何新的 cmdlet 或功能。  Az 和 AzureRM 都管理使用 Azure 资源管理器**** 部署模型部署的解决方案。 这些资源包括工作室（经典）工作区和工作室（经典）新的 Web 服务。 
 
 PowerShell 经典版可与 Az 或 AzureRM 一起安装，以处理新的和经典的资源类型。 但是，不建议同时安装 Az 和 AzureRM。 若要在 Az 和 AzureRM 之间做出选择，Microsoft 建议在未来所有部署中使用 Az。  如需详细了解 Az 与 AzureRM 以及迁移路径信息，请参阅 [Azure PowerShell Az 简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)。
 
@@ -42,7 +43,7 @@ PowerShell 经典版可与 Az 或 AzureRM 一起安装，以处理新的和经�
 
 ## <a name="powershell-classic"></a><a name="classic"></a> PowerShell（经典）
 
-借助工作室（经典）[PowerShell 经典模块](https://aka.ms/amlps)，可管理使用经典部署模型  部署的资源。 这些资源包括工作室（经典）用户资产、经典 Web 服务和经典 Web 服务终结点。
+借助工作室（经典）[PowerShell 经典模块](https://aka.ms/amlps)，可管理使用经典部署模型**** 部署的资源。 这些资源包括工作室（经典）用户资产、经典 Web 服务和经典 Web 服务终结点。
 
 然而，Microsoft 建议为所有未来资源使用资源管理器部署模型，以简化资源的部署和管理。 若要了解有关部署模型的详细信息，请参阅 [Azure 资源管理器与经典部署](/azure-resource-manager/resource-manager-deployment-model)一文。
 
