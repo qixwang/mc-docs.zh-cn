@@ -2,15 +2,15 @@
 title: Azure Functions 部署槽
 description: 了解如何在 Azure Functions 中创建和使用部署槽
 author: craigshoemaker
-ms.topic: reference
-ms.date: 06/08/2020
+ms.topic: conceptual
+ms.date: 08/11/2020
 ms.author: v-junlch
-ms.openlocfilehash: 952d0846c3fd6f24582e23a6996757fa8ebcc4c2
-ms.sourcegitcommit: f1a76ee3242698123a3d77f44c860db040b48f70
+ms.openlocfilehash: e57b5c69e476ce6a96b7f7dc265612d14b24371b
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84563652"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223173"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions 部署槽
 

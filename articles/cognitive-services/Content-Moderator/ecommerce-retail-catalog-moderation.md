@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 06/10/2020
 origin.date: 01/27/2020
 ms.author: v-tawe
-ms.openlocfilehash: 0b4211725fb793d1aa9cea11026b0222bcb29954
-ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
+ms.openlocfilehash: 5d43ef86751b645e93a6f1c9d3ee3ea7d84f9cc7
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87917133"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88228298"
 ---
 # <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>教程：使用 Azure 内容审查器审查电子商务产品图像
 
@@ -72,8 +72,8 @@ public const string CustomVisionKey = "XXXXXXXXXXX";
 // All your end points based on the new account and subscriptions
 public const string ImageUri = "https://chinaeast2.api.cognitive.azure.cn/contentmoderator/moderate/v1.0/ProcessImage/Evaluate";
 public const string ReviewUri = "https://chinaeast2.api.cognitive.azure.cn/contentmoderator/review/v1.0/teams/YOUR-TEAM-ID/reviews";
-public const string ComputerVisionUri = "https://westcentralus.api.cognitive.microsoft.com/vision/v1.0/analyze?details=celebrities";
-public const string CustomVisionUri = "https://southcentralus.api.cognitive.microsoft.com/customvision/v1.0/Prediction/XXXXXXXXXXXXXXXX/url";
+public const string ComputerVisionUri = "https://chinaeast2.api.cognitive.microsoft.com/vision/v1.0/analyze?details=celebrities";
+public const string CustomVisionUri = "https://chinaeast2.api.cognitive.microsoft.com/customvision/v1.0/Prediction/XXXXXXXXXXXXXXXX/url";
 ```
 
 需要使用订阅密钥的值更新 `___Key` 字段，并且需要将 `___Uri` 字段更改为正确的终结点 URL（稍后将获得自定义视觉密钥和终结点）。 可以在每个 Azure 资源的“快速入门”选项卡中找到这些值  。 在 `ReviewUri` 字段的 `YOURTEAMID` 部分填写之前创建的评审团队的 ID。 稍后再填充 `CustomVisionUri` 字段的最后一个部分。

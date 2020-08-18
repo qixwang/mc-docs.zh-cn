@@ -3,14 +3,15 @@ title: 使用 JavaScript 在 Azure 中创建你的第一个持久函数
 description: 使用 Visual Studio Code 创建并发布 Azure 持久函数。
 author: anthonychu
 ms.topic: quickstart
-ms.date: 07/17/2020
+ms.date: 08/12/2020
 ms.reviewer: azfuncdf, antchu
-ms.openlocfilehash: f4b04b147cbc0ce68b2b8e54e753423b1b8935b5
-ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 3d9db05276b25be72f3010f9f6c99ce4091e9a72
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "86440481"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223180"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>使用 JavaScript 创建你的第一个持久函数
 
@@ -48,7 +49,7 @@ ms.locfileid: "86440481"
 
 1. 按照提示提供以下信息：
 
-    | Prompt | Value | 说明 |
+    | Prompt | 值 | 说明 |
     | ------ | ----- | ----------- |
     | 选择函数应用项目的语言 | Javascript | 创建本地 Node.js Functions 项目。 |
     | 选择版本 | Azure Functions v3 | 仅当尚未安装 Core Tools 时，才会出现此选项。 在本例中，当你首次运行应用时即已安装 Core Tools。 |
@@ -83,7 +84,7 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
 
 1. 按照提示提供以下信息：
 
-    | Prompt | Value | 说明 |
+    | Prompt | 值 | 说明 |
     | ------ | ----- | ----------- |
     | 选择函数的模板 | Durable Functions 业务流程协调程序 | 创建 Durable Functions 业务流程 |
     | 提供函数名称 | HelloOrchestrator | 持久函数的名称 |
@@ -98,7 +99,7 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
 
 1. 按照提示提供以下信息：
 
-    | Prompt | Value | 说明 |
+    | Prompt | 值 | 说明 |
     | ------ | ----- | ----------- |
     | 选择函数的模板 | Durable Functions 活动 | 创建活动函数 |
     | 提供函数名称 | 你好 | 活动函数的名称 |
@@ -113,7 +114,7 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
 
 1. 按照提示提供以下信息：
 
-    | Prompt | Value | 说明 |
+    | Prompt | 值 | 说明 |
     | ------ | ----- | ----------- |
     | 选择函数的模板 | Durable Functions HTTP 启动器 | 创建 HTTP 启动器函数 |
     | 提供函数名称 | DurableFunctionsHttpStart | 活动函数的名称 |
@@ -129,13 +130,16 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
 
 1. 若要测试函数，请在 `Hello` 活动函数代码 (*Hello/node.js*) 中设置断点。 按 F5 或者在命令面板中选择 `Debug: Start Debugging` 以启动函数应用项目。 来自 Core Tools 的输出会显示在“终端”面板中。
 
+    > [!NOTE]
+    > 有关调试的详细信息，请参阅 [Durable Functions 诊断](durable-functions-diagnostics.md#debugging)。
+
 1. Durable Functions 需要一个 Azure 存储帐户才能运行。 当 VS Code 提示选择存储帐户时，请选择“选择存储帐户”。
 
     ![创建存储帐户](./media/quickstart-js-vscode/functions-select-storage.png)
 
 1. 按照提示提供以下信息，以在 Azure 中创建新的存储帐户。
 
-    | Prompt | Value | 说明 |
+    | Prompt | 值 | 说明 |
     | ------ | ----- | ----------- |
     | 选择订阅 | *订阅的名称* | 选择 Azure 订阅 |
     | 选择存储帐户 | 新建存储帐户 |  |
@@ -143,7 +147,7 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
     | 选择资源组 | *唯一名称* | 要创建的资源组名称 |
     | 选择位置 | *region* | 选择离你较近的区域 |
 
-1. 在“终端”面板中，复制 HTTP 触发的函数的 URL 终结点。
+1. 在“终端”  面板中，复制 HTTP 触发的函数的 URL 终结点。
 
     ![Azure 本地输出](./media/quickstart-js-vscode/functions-f5.png)
 
@@ -182,7 +186,7 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
 
 ## <a name="test-your-function-in-azure"></a>在 Azure 中测试函数
 
-1. 从“输出”面板复制 HTTP 触发器的 URL。 调用 HTTP 触发的函数的 URL 应采用此格式：`http://<functionappname>.chinacloudsites.cn/orchestrators/HelloOrchestrator`
+1. 从“输出”  面板复制 HTTP 触发器的 URL。 调用 HTTP 触发的函数的 URL 应采用此格式：`http://<functionappname>.chinacloudsites.cn/api/orchestrators/HelloOrchestrator`
 
 2. 将 HTTP 请求的这个新 URL 粘贴到浏览器的地址栏中。 你应当会得到与之前使用已发布的应用时相同的状态响应。
 

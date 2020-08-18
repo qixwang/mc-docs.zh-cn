@@ -1,16 +1,14 @@
 ---
 title: 在 Azure Functions 中使用代理
 description: 有关如何使用 Azure Functions 代理的概述
-author: alexkarcher-msft
 ms.topic: conceptual
-ms.date: 06/08/2020
-ms.author: v-junlch
-ms.openlocfilehash: 7826aa76ed9e759f63e5d53a11740ea4f1abceb0
-ms.sourcegitcommit: f1a76ee3242698123a3d77f44c860db040b48f70
+ms.date: 08/12/2020
+ms.openlocfilehash: eb66e266b19564720b2d9f55c38c19d151b65028
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84563602"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223304"
 ---
 # <a name="work-with-azure-functions-proxies"></a>使用 Azure Functions 代理
 
@@ -89,7 +87,7 @@ ms.locfileid: "84563602"
 
 ### <a name="reference-application-settings"></a><a name="use-appsettings"></a>引用应用程序设置
 
-还可以通过将设置名称括在百分号 (%) 之间来引用[针对 Function App 定义的应用程序设置](/azure-functions/functions-how-to-use-azure-function-app-settings)。
+还可以通过将设置名称括在百分号 (%) 之间来引用[针对 Function App 定义的应用程序设置](./functions-how-to-use-azure-function-app-settings.md)。
 
 例如，后端 URL *https://%ORDER_PROCESSING_HOST%/api/orders* 会将“%ORDER_PROCESSING_HOST%”替换为 ORDER_PROCESSING_HOST 设置的值。
 
@@ -244,7 +242,7 @@ requestOverrides 对象定义对传回客户端的响应所做的更改。 该�
 > 在此示例中，响应正文是直接设置的，因此不需要 `backendUri` 属性。 此示例演示如何使用 Azure Functions 代理来模拟 API。
 
 [Azure 门户]: https://portal.azure.cn
-[HTTP 触发器]: /azure-functions/functions-bindings-http-webhook
+[HTTP 触发器]: ./functions-bindings-http-webhook.md
 [Modify the back-end request]: #modify-backend-request
 [Modify the response]: #modify-response
 [定义 requestOverrides 对象]: #requestOverrides

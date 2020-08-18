@@ -3,21 +3,21 @@ title: Azure Functions 的移动应用绑定
 description: 了解如何在 Azure Functions 中使用 Azure 移动应用绑定。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 06/05/2020
+ms.date: 08/11/2020
 ms.author: v-junlch
-ms.openlocfilehash: 1c1c6c8fea0d07de596b2cdafde8b99acebee3fe
-ms.sourcegitcommit: f1a76ee3242698123a3d77f44c860db040b48f70
+ms.openlocfilehash: 3a441be17a17bb633b83ab6f9e2766cf76d5c7f9
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84563815"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223029"
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Azure Functions 的移动应用绑定 
 
 > [!NOTE]
 > Azure 移动应用绑定仅适用于 Azure Functions 1.x。 Azure Functions 2.x 及更高版本不支持这些绑定。
 
-本文介绍如何在 Azure Functions 中使用 [Azure 移动应用](../app-service-mobile/app-service-mobile-value-prop.md)绑定。 Azure Functions 支持移动应用的输入和输出绑定。
+本文介绍如何在 Azure Functions 中使用 [Azure 移动应用](https://docs.microsoft.com/previous-versions/azure/app-service-mobile/app-service-mobile-value-prop)绑定。 Azure Functions 支持移动应用的输入和输出绑定。
 
 使用移动应用绑定可以读取和更新移动应用中的数据表。
 

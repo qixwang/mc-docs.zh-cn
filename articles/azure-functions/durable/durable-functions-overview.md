@@ -3,19 +3,19 @@ title: Durable Functions 概述 - Azure
 description: Azure Functions 的 Durable Functions 扩展简介。
 author: cgillum
 ms.topic: overview
-ms.date: 07/17/2020
+ms.date: 08/12/2020
 ms.author: v-junlch
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 7f4f2a68cb0290f4ef5a9104896546aa15230995
-ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
+ms.openlocfilehash: 2429ca59bc23171e75855fdf0459371b0a658dae
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "86440356"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222672"
 ---
 # <a name="what-are-durable-functions"></a>什么是 Durable Functions？
 
-*Durable Functions* 是 [Azure Functions](../functions-overview.md) 的一个扩展，可用于在无服务器计算环境中编写有状态函数。 在该扩展中，可以通过编写[业务流程协调程序函数](durable-functions-orchestrations.md)和有状态实体并使用 Azure Functions 编程模型编写[实体函数](durable-functions-entities.md)，来定义有状态工作流。  在幕后，该扩展可以管理状态、检查点和重启，使你可以专注于业务逻辑。
+*Durable Functions* 是 [Azure Functions](../functions-overview.md) 的一个扩展，可用于在无服务器计算环境中编写有状态函数。 在该扩展中，可以通过编写[业务流程协调程序函数](durable-functions-orchestrations.md)和有状态实体并使用 Azure Functions 编程模型编写[实体函数](durable-functions-entities.md)，来定义有状态工作流。 在幕后，该扩展可以管理状态、检查点和重启，使你可以专注于业务逻辑。
 
 ## <a name="supported-languages"></a><a name="language-support"></a>支持的语言
 
@@ -36,7 +36,7 @@ Durable Functions 的主要用例是简化无服务器应用程序中出现的�
 * [函数链](#chaining)
 * [扇出/扇入](#fan-in-out)
 * [异步 HTTP API](#async-http)
-* [监视](#monitoring)
+* [Monitoring](#monitoring)
 * [人机交互](#human)
 * [聚合器（有状态实体）](#aggregator)
 
@@ -132,7 +132,7 @@ public static async Task Run(
 }
 ```
 
-扇出操作将分散到 `F2` 函数的多个实例。 使用动态任务列表跟踪这些操作。 将调用 `Task.WhenAll` 来等待所有被调用函数完成。 然后，从动态任务列表聚合 `F2` 函数输出，并将这些输出传递给 `F3` 函数。
+扇出工作将分散到 `F2` 函数的多个实例。 使用动态任务列表跟踪这些操作。 将调用 `Task.WhenAll` 来等待所有被调用函数完成。 然后，从动态任务列表聚合 `F2` 函数输出，并将这些输出传递给 `F3` 函数。
 
 在针对 `Task.WhenAll` 调用 `await` 时自动执行的检查点操作确保中途可能出现的任何崩溃或重新启动无需重启已完成的任务。
 
@@ -158,7 +158,7 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-扇出操作将分散到 `F2` 函数的多个实例。 使用动态任务列表跟踪这些操作。 将调用 `context.df.Task.all` API 来等待所有被调用函数完成。 然后，从动态任务列表聚合 `F2` 函数输出，并将这些输出传递给 `F3` 函数。
+扇出工作将分散到 `F2` 函数的多个实例。 使用动态任务列表跟踪这些操作。 将调用 `context.df.Task.all` API 来等待所有被调用函数完成。 然后，从动态任务列表聚合 `F2` 函数输出，并将这些输出传递给 `F3` 函数。
 
 在针对 `context.df.Task.all` 调用 `yield` 时自动执行的检查点操作确保中途可能出现的任何崩溃或重新启动无需重启已完成的任务。
 
@@ -178,21 +178,21 @@ Durable Functions **原生支持**此模式，可以简化甚至消除为了与�
 以下示例演示用于启动业务流程协调程序和查询其状态的 REST 命令。 为简明起见，实例中省略了一些协议细节。
 
 ```
-> curl -X POST https://myfunc.chinacloudsites.cn/orchestrators/DoWork -H "Content-Length: 0" -i
+> curl -X POST https://myfunc.chinacloudsites.cn/api/orchestrators/DoWork -H "Content-Length: 0" -i
 HTTP/1.1 202 Accepted
 Content-Type: application/json
-Location: https://myfunc.chinacloudsites.cn/runtime/webhooks/durabletask/b79baf67f717453ca9e86c5da21e03ec
+Location: https://myfunc.chinacloudsites.cn/runtime/webhooks/durabletask/instances/b79baf67f717453ca9e86c5da21e03ec
 
 {"id":"b79baf67f717453ca9e86c5da21e03ec", ...}
 
-> curl https://myfunc.chinacloudsites.cn/runtime/webhooks/durabletask/b79baf67f717453ca9e86c5da21e03ec -i
+> curl https://myfunc.chinacloudsites.cn/runtime/webhooks/durabletask/instances/b79baf67f717453ca9e86c5da21e03ec -i
 HTTP/1.1 202 Accepted
 Content-Type: application/json
-Location: https://myfunc.chinacloudsites.cn/runtime/webhooks/durabletask/b79baf67f717453ca9e86c5da21e03ec
+Location: https://myfunc.chinacloudsites.cn/runtime/webhooks/durabletask/instances/b79baf67f717453ca9e86c5da21e03ec
 
 {"runtimeStatus":"Running","lastUpdatedTime":"2019-03-16T21:20:47Z", ...}
 
-> curl https://myfunc.chinacloudsites.cn/runtime/webhooks/durabletask/b79baf67f717453ca9e86c5da21e03ec -i
+> curl https://myfunc.chinacloudsites.cn/runtime/webhooks/durabletask/instances/b79baf67f717453ca9e86c5da21e03ec -i
 HTTP/1.1 200 OK
 Content-Length: 175
 Content-Type: application/json

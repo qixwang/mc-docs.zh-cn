@@ -10,14 +10,17 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/28/2017
-ms.openlocfilehash: e75aef522f3ef2ecd2338d84552c1ef6ac93fd49
-ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
+ms.openlocfilehash: a44ed36a52d9f66e78b561f816503005e21bc96c
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "86441197"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88228185"
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-studio-classic-web-services-portal"></a>使用 Azure 机器学习工作室（经典）Web 服务门户管理 Web 服务
+
+**适用于：**  ![yes](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![no](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)
+
 
 可以使用 Microsoft Azure 机器学习 Web 服务门户来管理机器学习 Web 服务（新 Web 服务和经典 Web 服务）。 由于经典 Web 服务和新的 Web 服务基于不同的基础技术，针对它们的管理能力会稍有不同。
 
@@ -30,7 +33,7 @@ ms.locfileid: "86441197"
 * 添加和删除终结点（仅限于经典 Web 服务）
 
 >[!NOTE]
->此外，还可以在“Web 服务”选项卡上的[机器学习工作室（经典）](https://studio.azureml.net)中管理经典 Web 服务  。
+>此外，还可以在“Web 服务”选项卡上的[机器学习工作室（经典）](https://studio.azureml.net)中管理经典 Web 服务****。
 
 ## <a name="permissions-to-manage-new-resources-manager-based-web-services"></a>用于管理基于资源管理器的新 Web 服务的权限
 

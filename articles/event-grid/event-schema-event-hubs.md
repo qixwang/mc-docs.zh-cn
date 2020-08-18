@@ -1,18 +1,16 @@
 ---
 title: 充当事件网格源的 Azure 事件中心
 description: 介绍为 Azure 事件网格中的事件中心事件提供的属性
-services: event-grid
 author: Johnnytechn
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 08/10/2020
 ms.author: v-johya
-ms.openlocfilehash: a58e0e4bc7384680324fc970117843f41986581a
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: 88ba41bc43edffeca9e6d16e00c5b83b6fc5fbc7
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83001967"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88228023"
 ---
 # <a name="azure-event-hubs-as-an-event-grid-source"></a>充当事件网格源的 Azure 事件中心
 

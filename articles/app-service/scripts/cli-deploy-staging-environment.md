@@ -7,15 +7,15 @@ ms.assetid: 2b995dcd-e471-4355-9fda-00babcdb156e
 ms.devlang: azurecli
 ms.topic: sample
 origin.date: 12/11/2017
-ms.date: 03/30/2020
+ms.date: 08/13/2020
 ms.author: v-tawe
-ms.custom: mvc, seodec18
-ms.openlocfilehash: 90d9d5c2647d07a02403e909bcd249639a9e8677
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.custom: mvc, seodec18, devx-track-azurecli
+ms.openlocfilehash: 12b064413c91b2de5b67602f80942fd65b280a85
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80522107"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88227883"
 ---
 # <a name="create-an-app-service-app-and-deploy-code-to-a-staging-environment-using-azure-cli"></a>使用 Azure CLI 创建应用服务应用并将代码部署到过渡环境
 

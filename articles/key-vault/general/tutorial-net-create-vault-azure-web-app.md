@@ -10,12 +10,12 @@ ms.topic: tutorial
 origin.date: 05/06/2020
 ms.date: 06/02/2020
 ms.author: v-tawe
-ms.openlocfilehash: 3b8ae60ad33242899a1c40c45210ef7aa7c20180
-ms.sourcegitcommit: 0e778acf5aa5eb63ab233e07e7aecce3a9a5e6d4
+ms.openlocfilehash: a13b10e8a3c0cb1a6de651c3f9f08186847ecca1
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87296525"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88228078"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-with-net"></a>教程：使用托管标识将 Key Vault 连接到 .NET Azure Web 应用
 
@@ -128,11 +128,11 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 { 
   "adminSiteName": null,
   "appServicePlanName": "myAppServicePlan",
-  "geoRegion": "West Europe",
+  "geoRegion": "China East 2",
   "hostingEnvironmentProfile": null,
   "id": "/subscriptions/0000-0000/resourceGroups/myResourceGroup/providers/Microsoft.Web/serverfarms/myAppServicePlan",
   "kind": "app",
-  "location": "West Europe",
+  "location": "China East 2",
   "maximumNumberOfWorkers": 1,
   "name": "myAppServicePlan",
   &lt; JSON data removed for brevity. &gt;

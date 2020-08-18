@@ -8,14 +8,14 @@ manager: carmonm
 ms.service: cloud-services
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/04/2020
+ms.date: 08/10/2020
 ms.author: v-junlch
-ms.openlocfilehash: a941c5ba33d7a14820b12c43ca7ceee30f335931
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 6cc8df86bed13264a15e2d51732945ffda5295c5
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78266099"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223378"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>在 Azure 云服务中启用 Azure 诊断
 有关 Azure 诊断的背景信息，请参阅 [Azure 诊断概述](../azure-diagnostics.md)。
@@ -199,7 +199,7 @@ Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -Diagnostic
 
 [Collect Logging Data by Using Azure Diagnostics]: https://msdn.microsoft.com/library/windowsazure/gg433048.aspx
 [1rmb-trial]: https://www.azure.cn/pricing/1rmb-trial/
-[Install and configure Azure PowerShell version 0.8.7 or later]: https://docs.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-3.5.0
+[Install and configure Azure PowerShell version 0.8.7 or later]: https://docs.microsoft.com/powershell/azure/
 
 
 

@@ -4,15 +4,17 @@ description: 获取用于在 Azure Cosmos DB SQL API 帐户中执行各种常见
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: sample
-origin.date: 05/13/2020
-ms.date: 07/06/2020
+origin.date: 06/12/2020
+ms.date: 08/17/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: bd247d44d223b7fc8a3a9d446225785b669a3f10
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+ms.openlocfilehash: 2b3e171e8f10ae1bde748ca147d392107e8fac2a
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323333"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222461"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db---sql-core-api"></a>适用于 Azure Cosmos DB 的 Azure PowerShell 示例 - SQL (Core) API
 
@@ -23,7 +25,7 @@ ms.locfileid: "85323333"
 > [!NOTE]
 > 该示例使用 [Az.CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) 管理 cmdlet。 请定期检查 `Az.CosmosDB` 是否有更新。
 
-| | |
+|任务 | 说明 |
 |---|---|
 |[创建帐户、数据库和容器](scripts/powershell/sql/ps-sql-create.md)| 创建 Azure Cosmos DB 帐户、数据库和容器。 |
 |[创建具有大分区键的容器](scripts/powershell/sql/ps-sql-container-create-large-partition-key.md)| 创建具有大分区键的容器。 |

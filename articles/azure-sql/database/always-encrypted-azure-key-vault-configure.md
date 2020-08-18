@@ -12,13 +12,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: ''
 origin.date: 04/23/2020
-ms.date: 07/13/2020
-ms.openlocfilehash: 182b71979793557c63bf4ad3258880472c8b56d3
-ms.sourcegitcommit: fa26665aab1899e35ef7b93ddc3e1631c009dd04
+ms.date: 08/17/2020
+ms.openlocfilehash: 2b6868f09f1d96e0a5f406707cca0b58f7a83ba1
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86227609"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222855"
 ---
 # <a name="configure-always-encrypted-by-using-azure-key-vault"></a>使用 Azure 密钥管理库配置 Always Encrypted 
 
@@ -46,7 +46,7 @@ Always Encrypted 是一种数据加密技术，用于保护服务器上的静态
 - [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) 版本 13.0.700.242 或更高版本。
 - [.NET Framework 4.6](https://msdn.microsoft.com/library/w0x726c2.aspx) 或更高版本（在客户端计算机上）。
 - [Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)。
-- [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) 或 [Azure CLI](/cli/install-azure-cli)
+- [Azure PowerShell](https://docs.microsoft.com/powershell/azure/) 或 [Azure CLI](/cli/install-azure-cli)
 
 ## <a name="enable-client-application-access"></a>启用客户端应用程序访问
 
@@ -104,6 +104,8 @@ az keyvault create --name $vaultName --resource-group $resourceGroupName --locat
 az keyvault set-policy --name $vaultName --key-permissions create, get, list, sign, unwrapKey, verify, wrapKey --resource-group $resourceGroupName --upn $userPrincipalName
 az keyvault set-policy --name $vaultName --key-permissions get, list, sign, unwrapKey, verify, wrapKey --resource-group $resourceGroupName --spn $applicationId
 ```
+
+---
 
 ## <a name="connect-with-ssms"></a>使用 SSMS 进行连接
 
@@ -591,8 +593,9 @@ SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
    SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
    ```
 
-     现在，可以看到已加密列中的明文数据。
-     ![新建控制台应用程序](./media/always-encrypted-azure-key-vault-configure/ssms-plaintext.png)
+   现在，可以看到已加密列中的明文数据。
+   
+   ![新建控制台应用程序](./media/always-encrypted-azure-key-vault-configure/ssms-plaintext.png)
 
 ## <a name="next-steps"></a>后续步骤
 

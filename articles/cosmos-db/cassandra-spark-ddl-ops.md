@@ -5,16 +5,18 @@ author: rockboyfor
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 09/24/2018
-ms.date: 04/27/2020
+ms.date: 08/17/2020
+ms.testscope: yes
+ms.testdate: 08/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: a559bab368e47d4d07770105a0007616e3fbc008
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: e81ccdea6a53edf32b42a64d08597da0b0a79d9c
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134978"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222779"
 ---
 <!--Verify sucessfully-->
 # <a name="ddl-operations-in-azure-cosmos-db-cassandra-api-from-spark"></a>Spark 上 Azure Cosmos DB Cassandra API 中的 DDL 操作
@@ -99,6 +101,8 @@ cdbConnector.withSessionDo(session => session.execute("CREATE TABLE IF NOT EXIST
 ```
 
 #### <a name="validate-in-cqlsh"></a>在 cqlsh 中验证
+
+<!--Correction on "books":-->
 
 在 cqlsh 中运行以下命令，应看到名为“books”的表： 
 

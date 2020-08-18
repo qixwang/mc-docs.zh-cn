@@ -3,17 +3,17 @@ title: 使用 Azure Functions 执行数据库清理任务
 description: 使用 Azure Functions 计划连接到 Azure SQL 数据库的任务，以定期清理行。
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.topic: conceptual
-ms.date: 07/17/2020
-ms.openlocfilehash: 13abfef1d374e6f2bbac6936b822ca527fcfddec
-ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
+ms.date: 08/12/2020
+ms.openlocfilehash: c22ab36f90d4f63404011a83c519f6c36fb162d0
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "86440473"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222898"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>使用 Azure Functions 连接 Azure SQL 数据库
 
-本文介绍如何使用 Azure Functions 创建连接到 Azure SQL 数据库或 Azure SQL 托管实例的计划作业。 该函数代码用于清除数据库表中的行。 根据 Visual Studio 2019 中预定义的计时器触发器模板新建 C# 函数。 若要支持这种情况，还必须设置数据库连接字符串，使其成为函数应用中的应用设置。 对于 Azure SQL 托管实例，需要[启用公共终结点](/sql-database/sql-database-managed-instance-public-endpoint-configure)才能从 Azure Functions 进行连接。 该方案使用针对数据库的大容量操作。 
+本文介绍如何使用 Azure Functions 创建连接到 Azure SQL 数据库或 Azure SQL 托管实例的计划作业。 该函数代码用于清除数据库表中的行。 根据 Visual Studio 2019 中预定义的计时器触发器模板新建 C# 函数。 若要支持这种情况，还必须设置数据库连接字符串，使其成为函数应用中的应用设置。 对于 Azure SQL 托管实例，需要[启用公共终结点](../azure-sql/managed-instance/public-endpoint-configure.md)才能从 Azure Functions 进行连接。 该方案使用针对数据库的大容量操作。 
 
 如果首次使用 C# 函数，则应阅读 [Azure Functions C# 开发人员参考](functions-dotnet-class-library.md)。
 
@@ -21,13 +21,13 @@ ms.locfileid: "86440473"
 
 + 完成文章[使用 Visual Studio 创建第一个函数](functions-create-your-first-function-visual-studio.md)中的步骤，以创建一个面向版本 2.x 或更高版本运行时的本地函数应用。 此外，还必须已将项目发布到 Azure 中的函数应用。
 
-+ 本文演示的是 Transact-SQL 命令，该命令在 AdventureWorksLT 示例数据库的 SalesOrderHeader 表中执行批量清理操作。 若要创建 AdventureWorksLT 示例数据库，请完成[使用 Azure 门户在 Azure SQL 数据库中创建数据库](../sql-database/sql-database-get-started-portal.md)一文中的步骤。
++ 本文演示的是 Transact-SQL 命令，该命令在 AdventureWorksLT 示例数据库的 SalesOrderHeader 表中执行批量清理操作。 若要创建 AdventureWorksLT 示例数据库，请完成[使用 Azure 门户在 Azure SQL 数据库中创建数据库](../azure-sql/database/single-database-create-quickstart.md)一文中的步骤。
 
-+ 必须针对用于本快速入门的计算机的公共 IP 地址添加[服务器级防火墙规则](../sql-database/sql-database-get-started-portal-firewall.md)。 必须提供此规则才能从本地计算机访问 SQL 数据库实例。  
++ 必须针对用于本快速入门的计算机的公共 IP 地址添加[服务器级防火墙规则](../azure-sql/database/firewall-create-server-level-portal-quickstart.md)。 必须提供此规则才能从本地计算机访问 SQL 数据库实例。  
 
 ## <a name="get-connection-information"></a>获取连接信息
 
-完成[使用 Azure 门户在 Azure SQL 数据库中创建数据库](../sql-database/sql-database-get-started-portal.md)中的步骤后，需获取所创建数据库的连接字符串。
+完成[使用 Azure 门户在 Azure SQL 数据库中创建数据库](../azure-sql/database/single-database-create-quickstart.md)中的步骤后，需获取所创建数据库的连接字符串。
 
 1. 登录到 [Azure 门户](https://portal.azure.cn/)。
 

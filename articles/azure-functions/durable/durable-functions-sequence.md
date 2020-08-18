@@ -3,14 +3,14 @@ title: Durable Functions 中的函数链 - Azure
 description: 了解如何运行执行一系列函数的 Durable Functions 示例。
 author: cgillum
 ms.topic: conceptual
-ms.date: 03/03/2020
+ms.date: 08/12/2020
 ms.author: v-junlch
-ms.openlocfilehash: e06370238d0ebc83adce35f71ba73c61e18ce895
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 591095f8ee1a0ab1afb00a0a81481d04e68b1a4a
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78266056"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223181"
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Durable Functions 中的函数链 - Hello 序列示例
 
@@ -30,20 +30,20 @@ ms.locfileid: "78266056"
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-```C#
-[FunctionName("E1_HelloSequence")]
-public static async Task<List<string>> Run(
-    [OrchestrationTrigger] IDurableOrchestrationContext context)
-{
-    var outputs = new List<string>();
+```csharp
+        [FunctionName("E1_HelloSequence")]
+        public static async Task<List<string>> Run(
+            [OrchestrationTrigger] IDurableOrchestrationContext context)
+        {
+            var outputs = new List<string>();
 
-    outputs.Add(await context.CallActivityAsync<string>("E1_SayHello", "Tokyo"));
-    outputs.Add(await context.CallActivityAsync<string>("E1_SayHello", "Seattle"));
-    outputs.Add(await context.CallActivityAsync<string>("E1_SayHello_DirectInput", "London"));
+            outputs.Add(await context.CallActivityAsync<string>("E1_SayHello", "Tokyo"));
+            outputs.Add(await context.CallActivityAsync<string>("E1_SayHello", "Seattle"));
+            outputs.Add(await context.CallActivityAsync<string>("E1_SayHello_DirectInput", "London"));
 
-    // returns ["Hello Tokyo!", "Hello Seattle!", "Hello London!"]
-    return outputs;
-}
+            // returns ["Hello Tokyo!", "Hello Seattle!", "Hello London!"]
+            return outputs;
+        }
 ```
 
 所有 C# orchestration 函数都必须具有 `DurableOrchestrationContext` 类型的参数，此参数存在于 `Microsoft.Azure.WebJobs.Extensions.DurableTask` 程序集中。 借助此上下文对象，可使用其 `CallActivityAsync` 方法调用其他活动  函数并传递输入参数。
@@ -80,7 +80,7 @@ public static async Task<List<string>> Run(
 
 下面是此函数：
 
-```Javascript
+```javascript
 const df = require("durable-functions");
 
 module.exports = df.orchestrator(function*(context){
@@ -93,6 +93,7 @@ module.exports = df.orchestrator(function*(context){
     return output;
 });
 ```
+
 所有 JavaScript 业务流程函数都必须包括 [`durable-functions` 模块](https://www.npmjs.com/package/durable-functions)。 它是一个库，可用于以 JavaScript 编写 Durable Functions。 业务流程函数与其他 JavaScript 函数之间有三个明显差异：
 
 1. 此函数是一个[生成器函数](https://docs.microsoft.com/scripting/javascript/advanced/iterators-and-generators-javascript)。
@@ -107,13 +108,13 @@ module.exports = df.orchestrator(function*(context){
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-```C#
-[FunctionName("E1_SayHello")]
-public static string SayHello([ActivityTrigger] IDurableActivityContext context)
-{
-    string name = context.GetInput<string>();
-    return $"Hello {name}!";
-}
+```csharp
+        [FunctionName("E1_SayHello")]
+        public static string SayHello([ActivityTrigger] IDurableActivityContext context)
+        {
+            string name = context.GetInput<string>();
+            return $"Hello {name}!";
+        }
 ```
 
 活动使用了 `ActivityTrigger` 属性。 使用提供的 `IDurableActivityContext` 执行活动相关操作，例如，使用 `GetInput<T>` 访问输入值。
@@ -122,12 +123,12 @@ public static string SayHello([ActivityTrigger] IDurableActivityContext context)
 
 可以直接绑定到传递给活动函数的类型，而非绑定到 `IDurableActivityContext`。 例如：
 
-```C#
-[FunctionName("E1_SayHello_DirectInput")]
-public static string SayHelloDirectInput([ActivityTrigger] string name)
-{
-    return $"Hello {name}!";
-}
+```csharp
+        [FunctionName("E1_SayHello_DirectInput")]
+        public static string SayHelloDirectInput([ActivityTrigger] string name)
+        {
+            return $"Hello {name}!";
+        }
 ```
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
@@ -136,7 +137,7 @@ public static string SayHelloDirectInput([ActivityTrigger] string name)
 
 活动函数 `E1_SayHello` 的 function.json  文件类似于 `E1_HelloSequence` 的 function.json 文件，只不过前者使用 `activityTrigger` 绑定类型而非 `orchestrationTrigger` 绑定类型。
 
-```JSON
+```json
 {
   "bindings": [
     {
@@ -155,7 +156,7 @@ public static string SayHelloDirectInput([ActivityTrigger] string name)
 
 #### <a name="e1_sayhelloindexjs"></a>E1_SayHello/index.js
 
-```JavaScript
+```javascript
 module.exports = async function(context) {
     return `Hello ${context.bindings.name}!`;
 };
@@ -171,25 +172,25 @@ module.exports = async function(context) {
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-```C#
-public static class HttpStart
-{
-    [FunctionName("HttpStart")]
-    public static async Task<HttpResponseMessage> Run(
-        [HttpTrigger(AuthorizationLevel.Function, methods: "post", Route = "orchestrators/{functionName}")] HttpRequestMessage req,
-        [DurableClient] IDurableClient starter,
-        string functionName,
-        ILogger log)
+```csharp
+    public static class HttpStart
     {
-        // Function input comes from the request content.
-        object eventData = await req.Content.ReadAsAsync<object>();
-        string instanceId = await starter.StartNewAsync(functionName, eventData);
+        [FunctionName("HttpStart")]
+        public static async Task<HttpResponseMessage> Run(
+            [HttpTrigger(AuthorizationLevel.Function, methods: "post", Route = "orchestrators/{functionName}")] HttpRequestMessage req,
+            [DurableClient] IDurableClient starter,
+            string functionName,
+            ILogger log)
+        {
+            // Function input comes from the request content.
+            object eventData = await req.Content.ReadAsAsync<object>();
+            string instanceId = await starter.StartNewAsync(functionName, eventData);
 
-        log.LogInformation($"Started orchestration with ID = '{instanceId}'.");
+            log.LogInformation($"Started orchestration with ID = '{instanceId}'.");
 
-        return starter.CreateCheckStatusResponse(req, instanceId);
+            return starter.CreateCheckStatusResponse(req, instanceId);
+        }
     }
-}
 ```
 
 若要与业务流程协调程序进行交互，函数必须包含 `DurableClient` 输入绑定。 你使用客户端来启动业务流程。 它还可以帮助你返回 HTTP 响应，并在其中包含用于检查新业务流程状态的 URL。
@@ -198,7 +199,7 @@ public static class HttpStart
 
 #### <a name="httpstartfunctionjson"></a>HttpStart/function.json
 
-```JSON
+```json
 {
   "bindings": [
     {
@@ -227,7 +228,7 @@ public static class HttpStart
 
 #### <a name="httpstartindexjs"></a>HttpStart/index.js
 
-```JavaScript
+```javascript
 const df = require("durable-functions");
 
 module.exports = async function (context, req) {

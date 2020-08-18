@@ -13,12 +13,12 @@ ms.author: v-jay
 ms.reviewer: vanto
 origin.date: 03/12/2019
 ms.date: 07/13/2020
-ms.openlocfilehash: a6aae24f45b9e17248fef41ad70bb17da453a9aa
-ms.sourcegitcommit: fa26665aab1899e35ef7b93ddc3e1631c009dd04
+ms.openlocfilehash: 089700293c72d24d6c1e5e7cbad2eaad6a31543b
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86227685"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223281"
 ---
 # <a name="rotate-the-transparent-data-encryption-tde-protector"></a>轮换透明数据加密 (TDE) 保护器
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -81,7 +81,7 @@ Set-AzSqlServerTransparentDataEncryptionProtector -Type AzureKeyVault -KeyId <ke
 
 ```azurecli
 # add a new key to Key Vault
-az keyvault key create --name <keyVaultKeyName> --vault-name <keyVaultName> --protection <hsmOrSoftware>
+az keyvault key create --name <keyVaultKeyName> --vault-name <keyVaultName> --protection <Software>
 
 # add the new key from Key Vault to the server
 az sql server key create --kid <keyVaultKeyId> --resource-group <SQLDatabaseResourceGroupName> --server <logicalServerName>

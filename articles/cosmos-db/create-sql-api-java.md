@@ -7,17 +7,17 @@ ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: quickstart
 origin.date: 05/11/2020
-ms.date: 08/03/2020
+ms.date: 08/17/2020
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 13ad273e62a2e7536a235545ed5121537ede5eaf
-ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
+ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
+ms.openlocfilehash: e8687abe7730f86f5e3480072243056548a14101
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87426386"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223093"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>快速入门：生成 Java 应用以管理 Azure Cosmos DB SQL API 数据
 
@@ -80,7 +80,7 @@ Cosmos DB 帐户的结构。 不管使用 API 还是编程语言，都具有以�
 
 现在，让我们转到如何使用代码上来。 接下来，克隆 GitHub 中的 SQL API 应用程序，设置连接字符串，并运行应用程序。 会看到以编程方式处理数据是多么容易。 
 
-运行下列命令，克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
+运行下列命令以克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
 
 ```bash
 git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
@@ -415,4 +415,3 @@ git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
 > [将数据导入 Azure Cosmos DB](import-data.md)
 
 <!-- Update_Description: update meta properties, wording update, update link -->
-

@@ -4,15 +4,17 @@ description: 获取用于在 Azure Cosmos DB 表 API 帐户中执行各种常见
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: sample
-origin.date: 05/13/2020
-ms.date: 07/06/2020
+origin.date: 06/12/2020
+ms.date: 08/17/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: dd9ba23457d877f44a04998185e1084f5d8490eb
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+ms.openlocfilehash: d413be01e99c60e243682566655e2a4aebede7b0
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323332"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222460"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db---table-api"></a>适用于 Azure Cosmos DB 的 Azure PowerShell 示例 - 表 API
 
@@ -21,7 +23,7 @@ ms.locfileid: "85323332"
 > [!NOTE]
 > 该示例使用 [Az.CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) 管理 cmdlet。 请定期检查 `Az.CosmosDB` 是否有更新。
 
-| | |
+|任务 | 说明 |
 |---|---|
 |[创建帐户和表](scripts/powershell/table/ps-table-create.md)| 创建 Azure Cosmos 帐户和表。 |
 |[列出或获取表](scripts/powershell/table/ps-table-list-get.md)| 列出或获取表。 |

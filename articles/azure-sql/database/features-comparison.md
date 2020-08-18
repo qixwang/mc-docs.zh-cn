@@ -3,22 +3,22 @@ title: 比较 SQL 数据库和 SQL 托管实例的数据库引擎功能
 titleSuffix: Azure SQL Database & SQL Managed Instance
 description: 本文比较了 Azure SQL 数据库和 Azure SQL 托管实例的数据库引擎功能
 services: sql-database
-ms.service: sql-database
-ms.subservice: service
+ms.service: sql-db-mi
+ms.subservice: features
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: bonova, sstein
-origin.date: 06/25/2020
-ms.date: 07/13/2020
-ms.openlocfilehash: c8aeba65fbb10858dafbb2d2efaa7895186ea5c2
-ms.sourcegitcommit: fa26665aab1899e35ef7b93ddc3e1631c009dd04
+origin.date: 07/22/2020
+ms.date: 08/17/2020
+ms.openlocfilehash: 374f749241b28e525457d2a11e777aee4f8732bd
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86227561"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223402"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>功能比较：Azure SQL 数据库和 Azure SQL 托管实例
 
@@ -140,7 +140,7 @@ Azure 平台提供许多 PaaS 功能，可以增大标准数据库功能的价�
 | [SQL 数据同步](sql-data-sync-sql-server-configure.md) | 是 | 否 |
 | [SQL Server Analysis Services (SSAS)](https://docs.microsoft.com/sql/analysis-services/analysis-services) | 否，[Azure Analysis Services](/analysis-services/) 是一项单独的 Azure 云服务。 | 否，[Azure Analysis Services](/analysis-services/) 是一项单独的 Azure 云服务。 |
 | [SQL Server Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) | 是，使用 Azure 数据工厂 (ADF) 环境中的托管 SSIS ，其中程序包存储在由 Azure SQL 数据库承载的 SSISDB 中并在 Azure SSIS 集成运行时 (IR) 上执行，请参阅[在 ADF 中创建 Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)。 <br/><br/>若要比较 SQL 数据库和 SQL 托管实例中的 SSIS 功能，请参阅[比较 SQL 数据库和 SQL 托管实例](../../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance)。 | 是，使用 Azure 数据工厂 (ADF) 环境中的托管 SSIS，其中包存储在由 SQL 托管实例托管的 SSISDB 中并在 Azure SSIS Integration Runtime (IR) 上执行，请参阅[在 ADF 中创建 Azure-SSIS IR](/data-factory/create-azure-ssis-integration-runtime)。 <br/><br/>若要比较 SQL 数据库和 SQL 托管实例中的 SSIS 功能，请参阅[比较 SQL 数据库和 SQL 托管实例](../../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance)。 |
-| [SQL Server Reporting Services (SSRS)](https://docs.microsoft.com/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports) | 否 - 请参阅 [Power BI](https://docs.microsoft.com/power-bi/) | 否 - 请参阅 [Power BI](https://docs.microsoft.com/power-bi/) |
+| [SQL Server Reporting Services (SSRS)](https://docs.microsoft.com/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports) | 否 - 请参阅 [Power BI](https://docs.microsoft.com/power-bi/) | 否 - 请改用 [Power BI 分页报表](https://docs.microsoft.com/power-bi/paginated-reports/paginated-reports-report-builder-power-bi)或在 Azure VM 上托管 SSRS。 虽然 SQL 托管实例不能将 SSRS 作为服务运行，但它可以使用 SQL Server 身份验证为安装在 Azure 虚拟机上的报表服务器托管 [SSRS 目录数据库](https://docs.microsoft.com/sql/reporting-services/install-windows/ssrs-report-server-create-a-report-server-database#database-server-version-requirements)。 |
 | [Query Performance Insights (QPI)](query-performance-insight-use.md) | 是 | 否。 使用 SQL Server Management Studio 和 Azure Data Studio 中的内置报告。 |
 | [VNet](../../virtual-network/virtual-networks-overview.md) | 部分支持，可以使用 [VNet 终结点](vnet-service-endpoint-rule-overview.md)进行受限访问 | 是，SQL 托管实例注入到客户的 VNet 中。 请参阅[子网](../managed-instance/transact-sql-tsql-differences-sql-server.md#subnet)和 [VNet](../managed-instance/transact-sql-tsql-differences-sql-server.md#vnet) |
 | VNet 服务终结点 | [是](vnet-service-endpoint-rule-overview.md) | 否 |
@@ -165,7 +165,7 @@ Azure SQL 数据库和 Azure SQL 托管实例支持各种可帮助管理数据�
 | [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) | 是 | 是，[18.0 和更高版本](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) |
 | [SQL Server PowerShell](https://docs.microsoft.com/sql/relational-databases/scripting/sql-server-powershell) | 是 | 是 |
 | [SQL Server Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler) | 否 - 请参阅[扩展事件](xevent-db-diff-from-svr.md) | 是 |
-| [System Center Operations Manager (SCOM)](https://docs.microsoft.com/system-center/scom/welcome) | [是](https://www.microsoft.com/download/details.aspx?id=38829) | 是，[处于预览状态](https://www.microsoft.com/download/details.aspx?id=100306) |
+| [System Center Operations Manager (SCOM)](https://docs.microsoft.com/system-center/scom/welcome) | [是](https://www.microsoft.com/download/details.aspx?id=38829) | 是，[处于预览状态](https://www.microsoft.com/download/details.aspx?id=38829) |
 
 ## <a name="migration-methods"></a>迁移方法
 

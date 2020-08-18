@@ -3,7 +3,7 @@ title: 配置可用性组侦听程序和负载均衡器 (PowerShell)
 description: 使用具有一个或多个 IP 地址的内部负载均衡器在 Azure 资源管理器模型中配置可用性组侦听程序。
 services: virtual-machines
 documentationcenter: na
-author: rockboyfor
+author: WenJason
 editor: monicar
 ms.assetid: 14b39cde-311c-4ddf-98f3-8694e01a7d3b
 ms.service: virtual-machines-sql
@@ -11,15 +11,15 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 origin.date: 02/06/2019
-ms.date: 07/06/2020
-ms.author: v-yeche
+ms.date: 08/17/2020
+ms.author: v-jay
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 406bf82ba5b8313f081d994054deb24b2e3c9eac
-ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
+ms.openlocfilehash: 51daa2108be54c37f3cd87efeaea6a906c49390d
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85946244"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222504"
 ---
 <!--Verified successfully redirect articles-->
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>配置一个或多个 Always On 可用性组侦听器 - Resource Manager
@@ -144,8 +144,7 @@ foreach($VMName in $VMNames)
     }
 ```
 
-<a name="Add-IP"></a>
-## <a name="example-script-add-an-ip-address-to-an-existing-load-balancer-with-powershell"></a>示例脚本：使用 PowerShell 将 IP 地址添加到现有负载均衡器
+## <a name="example-script-add-an-ip-address-to-an-existing-load-balancer-with-powershell"></a><a name="Add-IP"></a> 示例脚本：使用 PowerShell 将 IP 地址添加到现有负载均衡器
 
 要使用多个可用性组，请将附加的 IP 地址添加到负载均衡器。 每个 IP 地址都需要有自身的负载均衡规则、探测端口和前端端口。
 
@@ -219,13 +218,13 @@ $ILB | Add-AzLoadBalancerRuleConfig -Name $LBConfigRuleName -FrontendIpConfigura
 1. 使用远程桌面协议 (RDP) 连接到同一虚拟网络中不拥有副本的 SQL Server。 这可能是群集中的其他 SQL Server。
 
 1. 使用 **sqlcmd** 实用工具测试连接。 例如，以下脚本通过侦听器与 Windows 身份验证来与主副本建立 **sqlcmd** 连接：
-
+   
     ```
     sqlcmd -S <listenerName> -E
     ```
-
+   
     如果侦听器使用的端口不是默认端口 (1433)，请在连接字符串中指定该端口。 例如，以下 sqlcmd 命令连接到位于端口 1435 的侦听器： 
-
+   
     ```
     sqlcmd -S <listenerName>,1435 -E
     ```
@@ -243,9 +242,9 @@ SQLCMD 连接自动连接到托管主副本的 SQL Server 实例。
 * 使用内部负载均衡器只能从同一个虚拟网络中访问侦听器。
 
 * 如果要使用 Azure 网络安全组来限制访问权限，请确保允许规则包括：
-    - 后端 SQL Server VM IP 地址
-    - 负载均衡器浮动 AG 侦听程序的 IP 地址
-    - 群集核心 IP 地址（如果适用）。
+  - 后端 SQL Server VM IP 地址
+  - 负载均衡器浮动 AG 侦听程序的 IP 地址
+  - 群集核心 IP 地址（如果适用）。
 
 * 将标准负载均衡器与 Azure 存储一起用作云见证时，请创建服务终结点。 有关详细信息，请参阅[从虚拟网络授予访问权限](https://docs.azure.cn/storage/common/storage-network-security?toc=%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)。
 

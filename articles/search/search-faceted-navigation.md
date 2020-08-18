@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 07/02/2020
-ms.openlocfilehash: 3eff2e64c77df19131cfd99a5e00045be5ff265e
-ms.sourcegitcommit: 5afd7c4c3be9b80c4c67ec55f66fcf347aad74c6
+ms.openlocfilehash: 4ac9e0e2fde1fb9c5fabce33c473db38575d46ef
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85942502"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88228076"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中实现分面导航
 
@@ -371,6 +371,8 @@ Azure 认知搜索中有两个地理空间函数：**geo.distance** 和 **geo.in
 
 ## <a name="try-the-demo"></a>尝试演示
 Azure 认知搜索作业门户演示包含本文中参考的示例。
+
+<!-- do not need to change endpoint -->
 
 -   请参阅并测试 [Azure 认知搜索作业门户演示](https://azjobsdemo.azurewebsites.net/)中的在线实践演示。
 

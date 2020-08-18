@@ -3,16 +3,18 @@ title: 如何配置更改源处理器的开始时间 - Azure Cosmos DB
 description: 了解如何将更改源处理器配置为从特定的日期和时间开始读取
 author: rockboyfor
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 08/13/2019
-ms.date: 04/27/2020
+ms.date: 08/17/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 4e4747defade986d18b53e728dacb2bd8209e89a
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: dabae83e084758ff9da0c93b6a8f4442f3d25408
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134924"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222704"
 ---
 # <a name="how-to-configure-the-change-feed-processor-start-time"></a>如何配置更改源处理器的开始时间
 
@@ -24,7 +26,7 @@ ms.locfileid: "82134924"
 
 ## <a name="reading-from-a-previous-date-and-time"></a>从以前的某个日期和时间读取
 
-将 `DateTime` 的实例传递给 `WithStartTime` 生成器扩展，可将更改源处理器初始化为从**特定的日期和时间**开始读取更改：
+将 **的实例传递给** 生成器扩展，可将更改源处理器初始化为从`DateTime`特定的日期和时间`WithStartTime`开始读取更改：
 
 ```csharp
 Container leaseContainer = client.GetContainer(databaseId, Program.leasesContainer);
@@ -77,4 +79,4 @@ ChangeFeedProcessor changeFeedProcessor = monitoredContainer
 * [更改源处理器概述](change-feed-processor.md)
 * [使用更改源估算器](how-to-use-change-feed-estimator.md)
 
-<!--Update_Description: update link -->
+<!-- Update_Description: update meta properties, wording update, update link -->

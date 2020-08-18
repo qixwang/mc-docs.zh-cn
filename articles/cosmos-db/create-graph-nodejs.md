@@ -7,20 +7,23 @@ ms.subservice: cosmosdb-graph
 ms.devlang: nodejs
 ms.topic: quickstart
 origin.date: 06/05/2019
-ms.date: 04/27/2020
+ms.date: 08/17/2020
+ms.testscope: yes
+ms.testdate: 08/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 936ffb6a739eff2586332776496c395a8b341c0f
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 4f241b7a6ad7aecbfbb420ae2c4cbf244cb77ea5
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134971"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223249"
 ---
 <!--Verify sucessfully-->
 # <a name="quickstart-build-a-nodejs-application-by-using-azure-cosmos-db-gremlin-api-account"></a>快速入门：使用 Azure Cosmos DB Gremlin API 帐户生成 Node.js 应用程序
 
 > [!div class="op_single_selector"]
-> * [Gremlin console](create-graph-gremlin-console.md)（Gremlin 控制台）
+> * [Gremlin 控制台](create-graph-gremlin-console.md)
 > * [.NET](create-graph-dotnet.md)
 > * [Java](create-graph-java.md)
 > * [Node.js](create-graph-nodejs.md)
@@ -59,7 +62,7 @@ ms.locfileid: "82134971"
     cd "C:\git-samples"
     ```
 
-3. 运行下列命令，克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
+3. 运行下列命令以克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started.git
@@ -75,7 +78,7 @@ ms.locfileid: "82134971"
 
 此控制台应用使用开源 [Gremlin Node.js](https://www.npmjs.com/package/gremlin) 驱动程序。
 
-* 创建 Gremlin 客户端。
+* 将创建 Gremlin 客户端。
 
     ```javascript
     const authenticator = new Gremlin.driver.auth.PlainTextSaslAuthenticator(
@@ -150,17 +153,17 @@ ms.locfileid: "82134971"
 
 1. 打开 *config.js* 文件。 
 
-2. 在 *config.js* 中，使用 Azure 门户中你的 Cosmos DB 帐户的“概述”页面中的“Gremlin 终结点”值填写 `config.endpoint` 密钥。   
+2. 在 *config.js* 中，使用 Azure 门户中你的 Cosmos DB 帐户的“概述”页面中的“Gremlin 终结点”值填写 `config.endpoint` 密钥。  
 
     `config.endpoint = "https://<your_Gremlin_account_name>.gremlin.cosmos.azure.cn:443/";`
 
-    ![在 Azure 门户的“概述”页面中，查看并复制访问密钥](./media/create-graph-nodejs/gremlin-uri.png)
+    :::image type="content" source="./media/create-graph-nodejs/gremlin-uri.png" alt-text="在 Azure 门户的“概述”页面中，查看并复制访问密钥":::
 
-3. 在 *config.js* 中，使用 Azure 门户中你的 Cosmos DB 帐户的“密钥”页面中的“主密钥”值填写 config.primaryKey 值。   
+3. 在 *config.js* 中，使用 Azure 门户中你的 Cosmos DB 帐户的“密钥”页面中的“主密钥”值填写 config.primaryKey 值。  
 
     `config.primaryKey = "PRIMARYKEY";`
 
-    ![Azure 门户“密钥”边栏选项卡](./media/create-graph-nodejs/keys.png)
+    :::image type="content" source="./media/create-graph-nodejs/keys.png" alt-text="Azure 门户“密钥”边栏选项卡":::
 
 4. 输入数据库名称和图形（容器）名称作为 config.database 和 config.collection 的值。 
 
@@ -190,9 +193,9 @@ module.exports = config;
 
 现在可以返回到 Azure 门户中的数据资源管理器，查看、查询、修改以及使用新的图形数据。
 
-在数据资源管理器中，新数据库会显示在“图形”窗格中。  展开数据库（后跟容器），然后选择“图形”。 
+在数据资源管理器中，新数据库会显示在“图形”窗格中。 展开数据库（后跟容器），然后选择“图形”。
 
-选择“应用筛选器”时，由示例应用生成的数据会显示在“图形”选项卡的下一窗格中。  
+选择“应用筛选器”时，由示例应用生成的数据会显示在“图形”选项卡的下一窗格中。 
 
 尝试使用 `.has('firstName', 'Thomas')` 来完成 `g.V()`，对筛选器进行测试。 请注意，值区分大小写。
 

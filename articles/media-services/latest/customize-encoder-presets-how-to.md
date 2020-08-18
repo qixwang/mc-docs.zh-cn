@@ -9,16 +9,16 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.custom: seodec18
 origin.date: 05/03/2019
 ms.date: 09/23/2019
 ms.author: v-jay
-ms.openlocfilehash: b87bf18433faa5aea74e3047e008be87260b69b3
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.custom: seodec18
+ms.openlocfilehash: 418fb10b6598a6aa302d280639239e766d6a3b14
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "71124689"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223039"
 ---
 # <a name="how-to-encode-with-a-custom-transform---net"></a>如何对自定义转换进行编码 - .NET
 

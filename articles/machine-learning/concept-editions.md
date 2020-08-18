@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: j-martens
 ms.author: jmartens
 ms.date: 06/11/2020
-ms.openlocfilehash: 1350e00a0beb706b7cf0c9ebcc6fb12f7e23d0c9
-ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
+ms.openlocfilehash: 9cb751adf42e15978f1f38a9879fed007a9e688b
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "86440921"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88227862"
 ---
 # <a name="enterprise-and-basic-editions-of-azure-machine-learning"></a>Azure 机器学习的 Basic Edition 和 Basic Edition 
 
@@ -21,7 +21,7 @@ Azure 机器学习提供了两个版本，专为你的机器学习需求提供�
 
 ## <a name="choose-an-edition"></a>选择版本
 
-你始终可以在创建工作区时分配版本。 客户负责在此期间因计算和其他 Azure 资源产生的成本。 了解如何[管理 Azure 机器学习的成本](concept-plan-manage-cost.md)。
+你始终可以在创建工作区时分配版本。 客户负责在此期间因计算和其他 Azure 资源产生的成本。 
 
 了解如何[将 Basic 工作区升级到 Enterprise Edition](how-to-manage-workspace.md#upgrade)。 
 
@@ -116,7 +116,6 @@ Azure 机器学习提供了两个版本，专为你的机器学习需求提供�
 | [基于角色的访问控制](how-to-assign-roles.md) (RBAC) 支持                                           | 全部                     |
 | [虚拟网络 (VNet)](how-to-enable-virtual-network.md) 计算支持                                         | 全部                     |
 | 对终结点身份验证评分                                                    | 全部                     |
-| [工作区专用链接](how-to-configure-private-link.md)                                                            | 全部                     |
 | 跨工作区[配额管理](how-to-manage-quotas.md)                                                 | 仅限 Enterprise Edition |
 
 ## <a name="next-steps"></a>后续步骤

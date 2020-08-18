@@ -7,14 +7,16 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
 origin.date: 05/27/2020
-ms.date: 07/06/2020
+ms.date: 08/17/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 90dbc8249fe9847e55d5a8bb180d12194421509d
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+ms.openlocfilehash: 5afae925baab39c9f36c1108c08056388199543e
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323374"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222417"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>.NET 批量执行程序库：下载信息 
 
@@ -193,4 +195,4 @@ ms.locfileid: "85323374"
 
 [Java 批量执行程序库 SDK 和发行信息](sql-api-sdk-bulk-executor-java.md)
 
-<!--Update_Description: update meta properties, wording update-->
+<!-- Update_Description: update meta properties, wording update, update link -->

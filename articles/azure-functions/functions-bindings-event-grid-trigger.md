@@ -3,15 +3,15 @@ title: Azure Functions 的 Azure 事件网格触发器
 description: 了解如何在调度 Azure Functions 中的事件网格事件时运行代码。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 07/14/2020
+ms.date: 08/11/2020
 ms.author: v-junlch
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 9e9712a9222020e7285c0ff62be2e299091a343f
-ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
+ms.openlocfilehash: 99c82a189ed97632aa8cddf0a26c22922f45673d
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "86440412"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222726"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Functions 的 Azure 事件网格触发器
 
@@ -467,7 +467,7 @@ http://{functionappname}.chinacloudsites.cn/admin/host/systemkeys/eventgridexten
 
 选择“部署到 Azure”将解决方案部署到你的订阅。 在 Azure 门户中，为参数提供值。
 
-<a href="https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+<a href="https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png" alt="Button to Deploy to Azure." /></a>
 
 部署可能需要几分钟才能完成。 部署成功后，请查看 Web 应用以确保它正在运行。 在 Web 浏览器中导航到 `https://<your-site-name>.chinacloudsites.cn`
 

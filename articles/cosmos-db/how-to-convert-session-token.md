@@ -3,16 +3,18 @@ title: 如何在 .NET SDK 中转换会话令牌格式 - Azure Cosmos DB
 description: 了解如何转换会话令牌格式，以确保不同 .NET SDK 版本之间的兼容性
 author: rockboyfor
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 04/30/2020
-ms.date: 06/22/2020
+ms.date: 08/17/2020
+ms.testscope: yes
+ms.testdate: 08/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: d1eb8752fdf3f2b09ade0aebdaa14dad8cf119f3
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: 10257d0747902c93556b468d32577531285213a0
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098498"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223233"
 ---
 <!--Verified successfully-->
 # <a name="convert-session-token-formats-in-net-sdk"></a>在 .NET SDK 中转换会话令牌格式
@@ -116,5 +118,4 @@ else
 * [Azure Cosmos DB 中的一致性、可用性和性能权衡](consistency-levels-tradeoffs.md)
 * [各种一致性级别的可用性和性能权衡](consistency-levels-tradeoffs.md)
 
-<!-- Update_Description: new article about how to convert session token -->
-<!--NEW.date: 06/15/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

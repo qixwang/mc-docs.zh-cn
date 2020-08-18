@@ -5,14 +5,16 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 05/19/2020
-ms.date: 06/22/2020
+ms.date: 08/17/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 2f9bcaddf81217db2a1964d1ec3320a0041717d6
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: b343d1323b1b3dad0fb14ac942b323a8a349381b
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098395"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222705"
 ---
 <!--Verified successfully-->
 # <a name="how-to-choose-between-standard-manual-and-autoscale-provisioned-throughput"></a>如何在标准（手动）和自动缩放预配的吞吐量之间进行选择 
@@ -65,7 +67,7 @@ Azure Cosmos DB 支持两种类型或提供预配的吞吐量：标准（手动�
 
 使用自动缩放时，请使用 Azure Monitor 查看预配的自动缩放最大 RU/s（自动缩放最大吞吐量）和系统当前缩放到的 RU/s（预配的吞吐量） 。 下面是使用自动缩放的可变或不可预测工作负载的示例。 注意，当没有任何流量时，系统将 RU/s 缩放到最大 RU/s 的 10% 的最小值，在本例中分别为 5000 RU/s 和 50,000 RU/s。 
 
-![使用自动缩放的工作负载示例](media/how-to-choose-offer/autoscale-metrics-azure-monitor.png)
+:::image type="content" source="media/how-to-choose-offer/autoscale-metrics-azure-monitor.png" alt-text="使用自动缩放的工作负载示例":::
 
 > [!NOTE]
 > 当使用标准（手动）预配的吞吐量时，预配的吞吐量指标指的是作为用户设置的内容。 使用自动缩放吞吐量时，此指标是指系统当前缩放到的 RU/s。
@@ -76,5 +78,4 @@ Azure Cosmos DB 支持两种类型或提供预配的吞吐量：标准（手动�
 * 了解[如何对 Azure Cosmos 数据库或容器预配自动缩放吞吐量](how-to-provision-autoscale-throughput.md)。
 * 查看[自动缩放常见问题解答](autoscale-faq.md)。
 
-<!-- Update_Description: new article about how to choose offer -->
-<!--NEW.date: 06/01/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

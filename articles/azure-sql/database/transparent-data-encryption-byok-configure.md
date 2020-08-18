@@ -1,9 +1,9 @@
 ---
 title: 启用采用 Azure Key Vault 的 SQL TDE
-titleSuffix: Azure SQL Database & Azure Synapse Analytics
+titleSuffix: Azure SQL Database & SQL Managed Instance & Azure Synapse Analytics
 description: 了解如何配置 Azure SQL 数据库和 Azure Synapse Analytics，以开始使用透明数据加密 (TDE) 通过 PowerShell 或 Azure CLI 进行静态加密。
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: seo-lt-2019 sqldbrb=1
 ms.devlang: ''
@@ -12,13 +12,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: vanto
 origin.date: 03/12/2019
-ms.date: 07/13/2020
-ms.openlocfilehash: 548869f4ad4557def08c39c08ba3ea28513530c1
-ms.sourcegitcommit: fa26665aab1899e35ef7b93ddc3e1631c009dd04
+ms.date: 08/17/2020
+ms.openlocfilehash: d6f6cf97af1337ce9ede3a100d869e38b6081554
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86227677"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223282"
 ---
 # <a name="powershell-and-the-azure-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell 和 Azure CLI：使用 Azure Key Vault 中由客户管理的密钥启用透明数据加密
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]

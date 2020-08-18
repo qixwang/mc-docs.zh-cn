@@ -13,13 +13,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: ''
 origin.date: 05/29/2020
-ms.date: 07/13/2020
-ms.openlocfilehash: fd6241fb9c0b427c629fe0931053e865d6969fc5
-ms.sourcegitcommit: fa26665aab1899e35ef7b93ddc3e1631c009dd04
+ms.date: 08/17/2020
+ms.openlocfilehash: 8db150ae61b320e3565eb47474c437e08e270464
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86227166"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222817"
 ---
 # <a name="quickstart-use-ssms-to-connect-to-and-query-azure-sql-database-or-azure-sql-managed-instance"></a>快速入门：使用 SSMS 连接到并查询 Azure SQL 数据库或 Azure SQL 托管实例
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -34,9 +34,9 @@ ms.locfileid: "86227166"
 
 - Azure SQL 数据库中的数据库。 可以根据下述快速入门之一，在 Azure SQL 数据库中创建数据库，然后对其进行配置：
 
-  || SQL 数据库 | SQL 托管实例 | Azure VM 上的 SQL Server |
+  | 操作 | SQL 数据库 | SQL 托管实例 | Azure VM 上的 SQL Server |
   |:--- |:--- |:---|:---|
-  | 创建| [Portal](single-database-create-quickstart.md) | [Portal](../managed-instance/instance-create-quickstart.md) | [Portal](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
+  | 创建| [Portal](single-database-create-quickstart.md) | [Portal](../managed-instance/instance-create-quickstart.md) | [门户](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
   || [CLI](scripts/create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/create-and-configure-database-powershell.md) | [PowerShell](../managed-instance/scripts/create-configure-managed-instance-powershell.md) | [PowerShell](../virtual-machines/windows/sql-vm-create-powershell-quickstart.md)
   | 配置 | [服务器级别 IP 防火墙规则](firewall-create-server-level-portal-quickstart.md)| [从 VM 进行连接](../managed-instance/connect-vm-instance-configure.md)|
@@ -54,9 +54,9 @@ ms.locfileid: "86227166"
 
 获取连接到数据库所需的连接信息。 需要提供完全限定的[服务器](logical-servers.md)名称或主机名称、数据库名称和登录信息才能完成本快速入门。
 
-1. 登录到 [Azure 门户](https://portal.azure.cn/)。
+1. 登录 [Azure 门户](https://portal.azure.cn/)。
 
-2. 导航到要查询的“数据库”或“托管实例”。 
+2. 导航到要查询的“数据库”或“托管实例”。
 
 3. 在“概述”页上，在“Server 名称”旁查看 SQL 数据库中的数据库的完全限定服务器名称，或在“Host”旁边查看 VM 上 SQL 托管实例中或 SQL Server 实例中的托管实例的完全限定服务器名称（或 IP 地址）  。 若要复制服务器名称或主机名称，请将鼠标悬停在其上方，然后选择“复制”图标。
 
@@ -79,7 +79,7 @@ ms.locfileid: "86227166"
    | **服务器类型** | 数据库引擎 | 所需的值。 |
    | **服务器名称** | 完全限定的服务器名称 | 类似于 **servername.database.chinacloudapi.cn**。 |
    | **身份验证** | SQL Server 身份验证 | 本教程使用 SQL 身份验证。 |
-   | **登录名** | 服务器管理员帐户用户 ID | 用于创建服务器的服务器管理员帐户的用户 ID。 |
+   | **登录** | 服务器管理员帐户用户 ID | 用于创建服务器的服务器管理员帐户的用户 ID。 |
    | **密码** | 服务器管理员帐户密码 | 用于创建服务器的服务器管理员帐户的密码。 |
    ||||
 
@@ -89,7 +89,7 @@ ms.locfileid: "86227166"
 
    ![连接到服务器上的 DB](./media/connect-query-ssms/options-connect-to-db.png)  
 
-4. 选择“连接” 。 此时会打开“对象资源管理器”窗口。
+4. 选择“连接”。 此时会打开“对象资源管理器”窗口。
 
 5. 若要查看数据库的对象，请展开“数据库”，然后展开你的数据库节点。
 

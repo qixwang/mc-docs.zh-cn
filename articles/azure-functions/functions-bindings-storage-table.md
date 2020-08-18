@@ -3,14 +3,14 @@ title: Azure Functions 的 Azure 表存储绑定
 description: 了解如何在 Azure Functions 中使用 Azure 表存储绑定。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 07/02/2020
+ms.date: 08/11/2020
 ms.author: v-junlch
-ms.openlocfilehash: 4b76e4733b4cf73196b6f436fe5c8c5a13a61802
-ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
+ms.openlocfilehash: 5f2c6802d7333af29fca282496b078f92f36a0c5
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85945277"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222602"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Functions 的 Azure 表存储绑定
 
@@ -139,7 +139,7 @@ namespace FunctionAppCloudTable2
 }
 ```
 
-有关如何使用 CloudTable 的详细信息，请参阅 [Azure 表存储入门](../cosmos-db/table-storage-how-to-use-dotnet.md)。
+有关如何使用 CloudTable 的详细信息，请参阅 [Azure 表存储入门](../cosmos-db/tutorial-develop-table-dotnet.md)。
 
 如果在尝试绑定到 `CloudTable` 时出现错误消息，请确保引用[正确的存储 SDK 版本](#azure-storage-sdk-version-in-functions-1x)。
 
@@ -305,7 +305,7 @@ public class LogEntity : TableEntity
 }
 ```
 
-有关如何使用 CloudTable 的详细信息，请参阅 [Azure 表存储入门](../cosmos-db/table-storage-how-to-use-dotnet.md)。
+有关如何使用 CloudTable 的详细信息，请参阅 [Azure 表存储入门](../cosmos-db/tutorial-develop-table-dotnet.md)。
 
 如果在尝试绑定到 `CloudTable` 时出现错误消息，请确保引用[正确的存储 SDK 版本](#azure-storage-sdk-version-in-functions-1x)。
 

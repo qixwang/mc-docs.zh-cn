@@ -10,14 +10,17 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: c1b2565948a2ae06817ebeaacc0dfa539a3d350b
-ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
+ms.openlocfilehash: 36cd8590d6855242ff95320076e7a6f0bf336d18
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "86441161"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88228091"
 ---
 # <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio-classic"></a>教程 2：训练信用风险模型 - Azure 机器学习工作室（经典版）
+
+**适用于：**  ![yes](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![no](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)
+
 
 在本教程中，我们将深入探讨开发预测分析解决方案的过程。 我们将在机器学习工作室（经典版）中开发一个简单模型。  然后将该模型部署为 Azure 机器学习 Web 服务。  部署的模型将使用新数据进行预测。 本教程是**由三个部分构成的系列教程的第二部分**。
 
@@ -110,7 +113,7 @@ ms.locfileid: "86441161"
 
 现在，配置[规范化数据][normalize-data]模块：
 
-1. 单击选择[规范化数据][normalize-data]模块。 在“属性”窗格中，选择“Tanh”作为“转换方法”参数。  
+1. 单击选择[规范化数据][normalize-data]模块。 在“属性”窗格中，选择“Tanh”作为“转换方法”参数。
 
 1. 单击“启动列选择器”、为“开始”选择“没有列”、在第一个下拉列表中选择“包括”、在第二个下拉列表中选择“列类型”，并在第三个下拉列表中选择“数值”。 这会指定所有数值列（和唯一数值）均已转换。
 

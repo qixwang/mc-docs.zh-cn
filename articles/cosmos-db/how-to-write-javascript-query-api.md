@@ -3,16 +3,19 @@ title: 在 Azure Cosmos DB 中使用 JavaScript 查询 API 编写存储过程和
 description: 了解如何在 Azure Cosmos DB 中使用 JavaScript 查询 API 编写存储过程和触发器
 author: rockboyfor
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 05/07/2020
-ms.date: 06/22/2020
+ms.date: 08/17/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: d8c1c7f3868319eb67f7eb1f4d64f88eed5f4b60
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.custom: devx-track-javascript
+ms.openlocfilehash: eb9b1f9a979d99e510d10dbe3ba0103a48a183ea
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098574"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222692"
 ---
 # <a name="how-to-write-stored-procedures-and-triggers-in-azure-cosmos-db-by-using-the-javascript-query-api"></a>如何使用 JavaScript 查询 API 在 Azure Cosmos DB 中编写存储过程和触发器
 
@@ -94,4 +97,4 @@ function insertDocumentAndUpdateMetadata(item) {
 
 * [Azure Cosmos DB 中的综合分区键](synthetic-partition-keys.md)
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

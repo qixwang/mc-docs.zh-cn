@@ -4,24 +4,26 @@ description: 了解如何在 Azure Cosmos DB 中使用 Mongoose 框架来存储�
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 03/20/2020
-ms.date: 04/27/2020
+ms.date: 08/17/2020
+ms.testscope: no
+ms.testdate: ''
 author: rockboyfor
 ms.author: v-yeche
-ms.custom: seodec18
-ms.openlocfilehash: 5be8bc4c293cae64cd2e4cd8bc6d04d810fc4396
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.custom: seodec18, devx-track-javascript
+ms.openlocfilehash: c905e522a6320a8e06c23a33e74c633ac29d8a73
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134859"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223461"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>将 Node.js Mongoose 应用程序连接到 Azure Cosmos DB
 
 本教程演示在 Cosmos DB 中存储数据时如何使用 [Mongoose 框架](https://mongoosejs.com/)。 本演练使用 Azure Cosmos DB 的用于 MongoDB 的 API。 不熟悉该接口的读者应知道，Mongoose 是 Node.js 中适用于 MongoDB 的对象建模框架，提供简单直接的、基于架构的解决方案来为应用程序数据建模。
 
-Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，所有这些都受益于 Cosmos DB 核心的多区域分布和水平缩放功能。
+Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，所有这些都受益于 Cosmos DB 核心的多区域分布和水平缩放功能。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -95,7 +97,10 @@ Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服务。 
       auth: {
         user: process.env.COSMODDB_USER,
         password: process.env.COSMOSDB_PASSWORD
-      }
+      },
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    retryWrites: false
     })
     .then(() => console.log('Connection to CosmosDB successful'))
     .catch((err) => console.error(err));
@@ -158,7 +163,7 @@ Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服务。 
             { firstName: "Patrick", gender: "male", grade: 7 }
         ],
         pets: [
-            { givenName: "Blackie" }
+            { givenName: "Buddy" }
         ],
         address: { country: "USA", state: "WA", city: "Seattle" }
     });
@@ -195,7 +200,7 @@ Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服务。 
 
 1. 现在，请转到 Azure 门户，可以看到 Cosmos DB 中创建了两个集合。
 
-    ![Node.js 教程 - Azure 门户的屏幕截图，其中显示 Azure Cosmos DB 帐户，并突出显示了多个集合名称 - Node 数据库][multiple-coll]
+    :::image type="content" source="./media/mongodb-mongoose/mongo-mutliple-collections.png" alt-text="Node.js 教程 - Azure 门户的屏幕截图，其中显示 Azure Cosmos DB 帐户，并突出显示了多个集合名称 - Node 数据库":::
 
 1. 最后，我们从 Cosmos DB 读取数据。 由于我们使用的是默认 Mongoose 操作模型，读取操作与 Mongoose 的其他读取操作相同。
 
@@ -268,15 +273,15 @@ Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服务。 
         const family_common = new Family_common({
           lastName: "Volum",
           parents: [
-           { firstName: "Thomas" },
-           { firstName: "Mary Kay" }
+            { firstName: "Thomas" },
+            { firstName: "Mary Kay" }
           ],
           children: [
-           { firstName: "Ryan", gender: "male", grade: 8 },
-           { firstName: "Patrick", gender: "male", grade: 7 }
+            { firstName: "Ryan", gender: "male", grade: 8 },
+            { firstName: "Patrick", gender: "male", grade: 7 }
           ],
           pets: [
-           { givenName: "Blackie" }
+            { givenName: "Buddy" }
           ],
           address: { country: "USA", state: "WA", city: "Seattle" }
         });
@@ -300,7 +305,7 @@ Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服务。 
 
 1. 现在，如果返回到 Azure 门户，可以看到只有一个名为 ```alldata``` 的集合，其中包含“Family”和“VacationDestinations”数据。
 
-    ![Node.js 教程 - Azure 门户的屏幕截图，其中显示 Azure Cosmos DB 帐户，并突出显示了集合名称 - Node 数据库][alldata]
+    :::image type="content" source="./media/mongodb-mongoose/mongo-collections-alldata.png" alt-text="Node.js 教程 - Azure 门户的屏幕截图，其中显示 Azure Cosmos DB 帐户，并突出显示了集合名称 - Node 数据库":::
 
 1. 另请注意，每个对象有另一个名为 ```__type``` 的属性，可帮助区分两个不同的对象模型。
 
@@ -324,8 +329,6 @@ Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服务。 
 - 了解如何将 [Robo 3T](mongodb-robomongo.md) 与 Azure Cosmos DB 的用于 MongoDB 的 API 配合使用。
 - 通过 Azure Cosmos DB 的用于 MongoDB 的 API 来浏览 MongoDB [示例](mongodb-samples.md)。
 
-[alldata]: ./media/mongodb-mongoose/mongo-collections-alldata.png
-[multiple-coll]: ./media/mongodb-mongoose/mongo-mutliple-collections.png
 [dbleveltp]: ./media/mongodb-mongoose/db-level-throughput.png
 
 <!-- Update_Description: update meta properties, wording update, update link -->

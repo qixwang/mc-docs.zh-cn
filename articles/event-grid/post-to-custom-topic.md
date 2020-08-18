@@ -1,24 +1,22 @@
 ---
 title: 将事件发布到自定义 Azure 事件网格主题
 description: 本文说明如何将事件发布到自定义主题。 它显示发布和事件数据的格式。
-services: event-grid
-author: spelluru
-manager: timlt
-ms.service: event-grid
 ms.topic: conceptual
+author: Johnnytechn
+ms.author: v-johya
 origin.date: 01/23/2020
-ms.date: 02/17/2020
-ms.author: v-yiso
-ms.openlocfilehash: b9862015523814135116ff2eadac14c859a32d6f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 08/10/2020
+ms.openlocfilehash: 4422ac6bb4df9208d13768c391a53ddea83379f5
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77068161"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88228003"
 ---
 # <a name="post-to-custom-topic-for-azure-event-grid"></a>发布到 Azure 事件网格的自定义主题
 
-本文说明如何将事件发布到自定义主题。 它显示发布和事件数据的格式。 [服务级别协议 (SLA)](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/) 仅适用于与预期格式匹配的发布。
+本文说明如何将事件发布到自定义主题。 它显示发布和事件数据的格式。 [服务级别协议 (SLA)](https://www.azure.cn/support/sla/event-grid/) 仅适用于与预期格式匹配的发布。
+<!--Correct in MC: https://www.azure.cn/support/sla/event-grid/-->
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -26,7 +24,8 @@ ms.locfileid: "77068161"
 
 使用 URI 格式 `https://<topic-endpoint>?api-version=2018-01-01` 将 HTTP POST 发送到自定义主题。
 
-例如，有效的 URI 为：`https://exampletopic.chinaeast-1.eventgrid.azure.net/api/events?api-version=2018-01-01`。
+例如，有效的 URI 为：`https://exampletopic.chinanorth2-1.eventgrid.azure.cn/api/events?api-version=2018-01-01`。
+<!--Correct in MC: *.eventgrid.azure.cn/api/events?api-version=2018-01-01-->
 
 若要使用 Azure CLI 获取自定义主题的终结点，请使用：
 
@@ -130,3 +129,4 @@ az eventgrid topic key list --name <topic-name> -g <topic-resource-group> --quer
 * 有关监视事件传送的信息，请参阅[监视事件网格消息传送](monitor-event-delivery.md)。
 * 有关身份验证密钥的详细信息，请参阅[事件网格安全性和身份验证](security-authentication.md)。
 * 有关创建 Azure 事件网格订阅的详细信息，请参阅[事件网格订阅架构](subscription-creation-schema.md)。
+

@@ -3,14 +3,14 @@ title: Azure Durable Functions 中的灾难恢复和异地分布
 description: 了解 Durable Functions 中的灾难恢复和异地分发
 author: MS-Santi
 ms.topic: conceptual
-ms.date: 12/31/2019
+ms.date: 08/12/2020
 ms.author: v-junlch
-ms.openlocfilehash: 16374e7fb436c353f47d041897817db2702167ff
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 04c043996680040e77958e53dc83a3d8a1f564f8
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75624275"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223410"
 ---
 # <a name="disaster-recovery-and-geo-distribution-in-azure-durable-functions"></a>Azure Durable Functions 中的灾难恢复和异地分布
 
@@ -83,6 +83,5 @@ ms.locfileid: "75624275"
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解如何[使用 RA-GRS 设计高度可用的应用程序](../../storage/common/storage-designing-ha-apps-with-ragrs.md)
+详细了解如何[使用 RA-GRS 设计高度可用的应用程序](../../storage/common/geo-redundant-design.md)
 
-<!-- Update_Description: wording update -->

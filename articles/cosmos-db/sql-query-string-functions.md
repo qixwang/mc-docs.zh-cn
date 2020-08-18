@@ -5,15 +5,17 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 09/13/2019
-ms.date: 10/28/2019
+ms.date: 08/17/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
 ms.custom: query-reference
-ms.openlocfilehash: a5976c95a9867305eddcf11f30c793098e7254ca
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: df6d615a2ed4bd68ab87168bc8e1635ec3a83750
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72914646"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222731"
 ---
 # <a name="string-functions-azure-cosmos-db"></a>字符串函数 (Azure Cosmos DB)
 
@@ -23,16 +25,29 @@ ms.locfileid: "72914646"
 
 以下标量函数对字符串输入值执行操作，并返回字符串、数字或布尔值：
 
-||||  
-|-|-|-|  
-|[CONCAT](sql-query-concat.md)|[CONTAINS](sql-query-contains.md)|[ENDSWITH](sql-query-endswith.md)|  
-|[INDEX_OF](sql-query-index-of.md)|[LEFT](sql-query-left.md)|[LENGTH](sql-query-length.md)|  
-|[LOWER](sql-query-lower.md)|[LTRIM](sql-query-ltrim.md)|[REPLACE](sql-query-replace.md)|  
-|[REPLICATE](sql-query-replicate.md)|[REVERSE](sql-query-reverse.md)|[RIGHT](sql-query-right.md)|  
-|[RTRIM](sql-query-rtrim.md)|[STARTSWITH](sql-query-startswith.md)|[StringToArray](sql-query-stringtoarray.md)|
-|[StringToBoolean](sql-query-stringtoboolean.md)|[StringToNull](sql-query-stringtonull.md)|[StringToNumber](sql-query-stringtonumber.md)|
-|[StringToObject](sql-query-stringtoobject.md)|[SUBSTRING](sql-query-substring.md)|[ToString](sql-query-tostring.md)|
-|[TRIM](sql-query-trim.md)|[UPPER](sql-query-upper.md)||
+* [CONCAT](sql-query-concat.md)
+* [CONTAINS](sql-query-contains.md)
+* [ENDSWITH](sql-query-endswith.md)
+* [INDEX_OF](sql-query-index-of.md)
+* [LEFT](sql-query-left.md)
+* [LENGTH](sql-query-length.md)
+* [LOWER](sql-query-lower.md)
+* [LTRIM](sql-query-ltrim.md)
+* [REPLACE](sql-query-replace.md)
+* [REPLICATE](sql-query-replicate.md)
+* [REVERSE](sql-query-reverse.md)
+* [RIGHT](sql-query-right.md)
+* [RTRIM](sql-query-rtrim.md)
+* [STARTSWITH](sql-query-startswith.md)
+* [StringToArray](sql-query-stringtoarray.md)
+* [StringToBoolean](sql-query-stringtoboolean.md)
+* [StringToNull](sql-query-stringtonull.md)
+* [StringToNumber](sql-query-stringtonumber.md)
+* [StringToObject](sql-query-stringtoobject.md)
+* [SUBSTRING](sql-query-substring.md)
+* [ToString](sql-query-tostring.md)
+* [TRIM](sql-query-trim.md)
+* [UPPER](sql-query-upper.md)
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -41,5 +56,4 @@ ms.locfileid: "72914646"
 - [用户定义的函数](sql-query-udfs.md)
 - [聚合](sql-query-aggregates.md)
 
-<!--Update_Description: new articles on sql query string functions  -->
-<!--New.date: 10/28/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

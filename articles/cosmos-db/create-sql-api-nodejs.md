@@ -7,14 +7,16 @@ ms.subservice: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: quickstart
 origin.date: 05/11/2020
-ms.date: 06/22/2020
+ms.date: 08/17/2020
+ms.testscope: yes
+ms.testdate: 08/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: d13be6c30148a7ce519ef4f5848264101860baa4
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: 9406834718cc44ed9bd15d70208b7c07d52029cb
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098660"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223362"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-from-azure-cosmos-db-sql-api-account"></a>快速入门：使用 Node.js 连接和查询 Azure Cosmos DB SQL API 帐户中的数据
 
@@ -53,7 +55,7 @@ ms.locfileid: "85098660"
 
     “添加容器”区域显示在最右侧，可能需要向右滚动才能看到它。
 
-    ![Azure 门户 >“数据资源管理器”>“添加集合”窗格](./media/create-sql-api-nodejs/azure-cosmosdb-data-explorer.png)
+    :::image type="content" source="./media/create-sql-api-nodejs/azure-cosmosdb-data-explorer.png" alt-text="Azure 门户 >“数据资源管理器”>“添加集合”窗格":::
 
 2. 在“添加容器”页中，输入新容器的设置。
 
@@ -66,7 +68,7 @@ ms.locfileid: "85098660"
 
     除了前面的设置，还可以选择为容器添加“唯一键”。 在此示例中，请将此字段留空。 开发人员可以使用唯一键向数据库添加一层数据完整性。 创建容器时，通过创建唯一键策略，可确保每个分区键的一个或多个值的唯一性。 若要了解详细信息，请参阅 [Azure Cosmos DB 中的唯一键](unique-keys.md)一文。
 
-    选择“确定” 。 数据资源管理器将显示新的数据库和容器。
+    选择“确定”。 数据资源管理器将显示新的数据库和容器。
 
 ## <a name="add-sample-data"></a>添加示例数据
 
@@ -80,7 +82,7 @@ ms.locfileid: "85098660"
 
 现在让我们从 GitHub 克隆 Node.js 应用，设置连接字符串并运行。
 
-1. 运行下列命令，克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
+1. 运行下列命令以克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-sql-api-nodejs-getting-started.git
@@ -169,7 +171,7 @@ npm install @azure/cosmos
 
 1. 在 [Azure 门户](https://portal.azure.cn/)中，在你的 Azure Cosmos DB 帐户中，从左侧导航栏中选择“密钥”，然后选择“读写密钥”。 在下一步中，使用屏幕右侧的复制按钮将 URI 和主密钥复制到 _app.js_ 文件中。
 
-    ![在 Azure 门户的“密钥”边栏选项卡中查看并复制访问密钥](./media/create-sql-api-dotnet/keys.png)
+    :::image type="content" source="./media/create-sql-api-dotnet/keys.png" alt-text="在 Azure 门户的“密钥”边栏选项卡中查看并复制访问密钥":::
 
 2. 打开 _config.js_ 文件。
 
@@ -181,7 +183,7 @@ npm install @azure/cosmos
 
     `key: "<Your Azure Cosmos account key>"`
 
-## <a name="run-the-app"></a>运行应用程序
+## <a name="run-the-app"></a>运行应用
 
 1. 在终端中运行 `npm install`，安装“@azure/cosmos”npm 包
 

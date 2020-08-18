@@ -12,12 +12,12 @@ ms.topic: conceptual
 origin.date: 04/02/2019
 ms.date: 07/24/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 2c9fc77f25e2eeb88efcbb6068f628dce74900fd
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e7a598604147f6f8ae9aad41832a8760b2532514
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74982149"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88228349"
 ---
 # <a name="export-and-delete-your-customer-data-in-language-understanding-luis-in-cognitive-services"></a>在认知服务中的语言理解 (LUIS) 中导出和删除客户数据
 
@@ -57,7 +57,7 @@ LUIS 用户具有完全控制权限可在门户上查看数据，但是，若要
 
 * [中国](#china)
 
-除了主动学习数据（详见下文）外，LUIS 遵循[区域服务的数据存储做法](http://azuredatacentermap.azurewebsites.net/)。 
+除了主动学习数据（详见下文）外，LUIS 遵循[区域服务的数据存储做法](http://azuredatacentermap.chinacloudsites.cn/)。 
 
 
 ### <a name="china"></a>中国

@@ -7,15 +7,15 @@ ms.assetid: e4033a50-0e05-4505-8ce8-c876204b2acc
 ms.devlang: azurecli
 ms.topic: sample
 origin.date: 12/11/2017
-ms.date: 03/30/2020
+ms.date: 08/13/2020
 ms.author: v-tawe
-ms.custom: mvc, seodec18
-ms.openlocfilehash: ffe91f58a989a0c91a975763bf4e310dbf2a61d8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.custom: mvc, seodec18, devx-track-azurecli
+ms.openlocfilehash: f20d9a3133ccd6c07c6af543ef9b577fe3dce90b
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80522105"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88228332"
 ---
 # <a name="scale-an-app-service-app-worldwide-with-a-high-availability-architecture-using-azure-cli"></a>使用 Azure CLI 缩放具有高可用性体系结构的全球应用服务应用
 

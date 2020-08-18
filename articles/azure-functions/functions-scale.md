@@ -3,14 +3,14 @@ title: Azure Functions 的缩放和托管
 description: 了解如何在 Azure Functions 消耗计划之间进行选择。
 ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
-ms.date: 07/17/2020
+ms.date: 08/12/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1332a5aa0876c16b882c898c98f3862fd7b67768
-ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
+ms.openlocfilehash: 608082db78c4cf5ddbfa8939817efc505862d0e7
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "86440512"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223157"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions 的缩放和托管
 
@@ -160,10 +160,10 @@ Azure Functions 的缩放单位为函数应用。 横向扩展函数应用时，
 
 | | Linux<sup>1</sup><br/>仅限代码 | Windows<sup>2</sup><br/>仅限代码 | Linux<sup>1、3</sup><br/>Docker 容器 |
 | --- | --- | --- | --- |
-| **[消耗计划](#consumption-plan)** | .NET Core<br/>Node.js<br/>Java  | .NET Core<br/>Node.js<br/>Java<br/>PowerShell Core | 不支持  |
-| **[专用计划](#app-service-plan)** <sup>4</sup> | .NET Core<br/>Node.js<br/>Java |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core |
-| **[ASE](#app-service-plan)** <sup>4</sup> | .NET Core<br/>Node.js<br/>Java  |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core  |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core  | 
-| **Kubernetes** | 不适用 | 不适用 |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core  |
+| **[消耗计划](#consumption-plan)** | .NET Core<br/>Node.js<br/>Java| .NET Core<br/>Node.js<br/>Java<br/>PowerShell Core | 不支持  |
+| **[专用计划](#app-service-plan)** <sup>4</sup> | .NET Core<br/>Node.js<br/>Java |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core  |
+| **[ASE](#app-service-plan)** <sup>4</sup> | .NET Core<br/>Node.js<br/>Java  |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core  |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core | 
+| **Kubernetes** | 不适用 | 不适用 |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core |
 
 <sup>2</sup> 对于 PowerShell 运行时堆栈，Windows 是唯一受支持的操作系统。   
 <sup>4</sup> 有关各种应用服务计划选项的特定限制，请参阅[应用服务计划限制](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits)。

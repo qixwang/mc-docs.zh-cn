@@ -7,16 +7,18 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
 origin.date: 12/26/2018
-ms.date: 07/06/2020
+ms.date: 08/17/2020
+ms.testscope: yes
+ms.testdate: 08/10/2020
 ms.author: v-yeche
-ms.custom: seodec18
+ms.custom: seodec18, devx-track-javascript
 ms.reviewer: sngun
-ms.openlocfilehash: 64dc00549a6f8b10b9125331416a9218601c4596
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+ms.openlocfilehash: 8aeba96cbaf2c20d26418a01c52a022431e32ba0
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85321575"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223059"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---use-mongoose-to-connect-to-cosmos-db"></a>使用 Azure Cosmos DB 的用于 MongoDB 的 API 创建 Angular 应用 - 使用 Mongoose 连接到 Cosmos DB
 
@@ -231,11 +233,11 @@ Mongoose 是适用于 MongoDB 和 Node.js 的对象数据建模 (ODM) 库。 可
 
 接下来，请使用以下步骤运行应用：
 
-1. 在 Visual Studio Code 中保存所有更改。 在左侧选择“调试”按钮 ![Visual Studio Code 中的“调试”图标](./media/tutorial-develop-mongodb-nodejs-part5/debug-button.png)，然后选择“开始调试”按钮 ![Visual Studio Code 中的“调试”图标](./media/tutorial-develop-mongodb-nodejs-part5/start-debugging-button.png)。 
+1. 在 Visual Studio Code 中保存所有更改。 在左侧，选择“调试”按钮 :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part5/debug-button.png":::，然后选择“启动调试”按钮 :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part5/start-debugging-button.png"::: 。
 
 1. 现在切换到浏览器。 打开“开发人员工具”和“网络”选项卡。 转到 `http://localhost:3000`，其中显示了我们的应用程序。
 
-    ![Azure 门户中的新 Azure Cosmos DB 帐户](./media/tutorial-develop-mongodb-nodejs-part5/azure-cosmos-db-heroes-app.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part5/azure-cosmos-db-heroes-app.png" alt-text="Azure 门户中的新 Azure Cosmos DB 帐户":::
 
 尚无 Hero 存储在该应用中。 在本教程的下一部分，我们将添加放置、推送和删除功能。 然后，可以使用与 Azure Cosmos 数据库的 Mongoose 连接，通过 UI 添加、更新和删除 hero。 
 

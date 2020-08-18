@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a8c59bd0f94ec69cf20d66fef7c942b3015ef055
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: bae8381b3e65fa4f40456daca2d913b2631e4b8e
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80243739"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88227871"
 ---
 # <a name="example-create-a-custom-skill-using-the-custom-entity-search-api"></a>示例：使用自定义实体搜索 API 创建自定义技能
 
@@ -390,7 +390,7 @@ POST https://localhost:7071/api/EntitySearch
 现在有了默认主机密钥，按以下方式测试函数：
 
 ```http
-POST https://[your-entity-search-app-name].azurewebsites.net/api/EntitySearch?code=[enter default host key here]
+POST https://[your-entity-search-app-name].chinacloudsites.cn/api/EntitySearch?code=[enter default host key here]
 ```
 
 ### <a name="request-body"></a>请求正文
@@ -427,7 +427,7 @@ POST https://[your-entity-search-app-name].azurewebsites.net/api/EntitySearch?co
       {
         "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
         "description": "Our new Custom Entity Search custom skill",
-        "uri": "https://[your-entity-search-app-name].azurewebsites.net/api/EntitySearch?code=[enter default host key here]",
+        "uri": "https://[your-entity-search-app-name].chinacloudsites.cn/api/EntitySearch?code=[enter default host key here]",
           "context": "/document/merged_content/organizations/*",
           "inputs": [
             {

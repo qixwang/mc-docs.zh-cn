@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/24/2020
 origin.date: 04/01/2020
 ms.author: v-tawe
-ms.openlocfilehash: fafb1ced2d0c33ba57d5cf75021397cb26e4170d
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+ms.openlocfilehash: 16d8c21a0227d435cdd493e054a6a33f72d89165
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323248"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88228310"
 ---
 # <a name="deploy-a-text-analytics-container-to-azure-kubernetes-service"></a>将文本分析容器部署到 Azure Kubernetes 服务
 
@@ -24,7 +24,7 @@ ms.locfileid: "85323248"
 
 ## <a name="prerequisites"></a>先决条件
 
-此过程要求必须在本地安装和运行多个工具。 请勿使用 Azure Cloud Shell。 需要满足以下条件：
+此过程要求必须在本地安装和运行多个工具。 需要满足以下条件：
 
 * Azure 订阅。 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://wd.azure.cn/zh-cn/pricing/1rmb-trial-full)。
 * 文本编辑器，例如 [Visual Studio Code](https://code.visualstudio.com/download)。

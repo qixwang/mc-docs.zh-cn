@@ -222,8 +222,6 @@
       href: container-registry-tasks-reference-yaml.md
     - name: Webhook 架构
       href: container-registry-webhook-reference.md
-    - name: 事件网格架构
-      href: ../event-grid/event-schema-container-registry.md?toc=/container-registry/toc.json&bc=/container-registry/breadcrumb/toc.json
     - name: 运行状况检查错误
       href: container-registry-health-error-reference.md
 - name: 资源

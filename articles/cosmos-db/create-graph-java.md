@@ -7,15 +7,17 @@ ms.subservice: cosmosdb-graph
 ms.devlang: java
 ms.topic: quickstart
 origin.date: 03/26/2019
-ms.date: 04/27/2020
+ms.date: 08/17/2020
+ms.testscope: yes
+ms.testdate: 08/10/2020
 ms.author: v-yeche
-ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: ebdcd90aefd2f0fcdb84fd9ab12f79f0a83b0d47
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
+ms.openlocfilehash: e13cae39d6c493289c6e1716befb47029bd9cdb5
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134993"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223248"
 ---
 <!--Verify sucessfully-->
 # <a name="quickstart-build-a-graph-database-with-the-java-sdk-and-the-azure-cosmos-db-gremlin-api"></a>快速入门：使用 Java SDK 和 Azure Cosmos DB Gremlin API 构建图形数据库
@@ -106,7 +108,8 @@ ms.locfileid: "82134993"
 
     复制 URI 值的第一部分。
 
-    ![在 Azure 门户的“密钥”页中，查看并复制访问密钥](./media/create-graph-java/copy-access-key-azure-portal.png)
+    :::image type="content" source="./media/create-graph-java/copy-access-key-azure-portal.png" alt-text="在 Azure 门户的“密钥”页中，查看并复制访问密钥":::
+
 2. 打开 *src/remote.yaml* 文件，粘贴唯一 ID 值并用其覆盖 `hosts: [$name$.graphs.azure.cn]` 中的 `$name$`。
 
     *remote.yaml* 的第 1 行现应如下所示 
@@ -170,15 +173,15 @@ ms.locfileid: "82134993"
 
 1. 在 Azure 门户中，在你的 Azure Cosmos DB 帐户中，选择“数据资源管理器”，展开“sample-graph”，再依次选择“图形”和“应用筛选器”。 
 
-    ![在 Azure 门户的数据资源管理器中创建新文档](./media/create-graph-java/azure-cosmosdb-data-explorer-expanded.png)
+    :::image type="content" source="./media/create-graph-java/azure-cosmosdb-data-explorer-expanded.png" alt-text="在 Azure 门户的数据资源管理器中创建新文档":::
 
 2. 在“结果”列表中，请注意添加到图形的新用户。 选择“ben”，请注意，该用户已连接到 robin。 可以通过拖放操作来移动顶点，也可以通过滚动鼠标滚轮进行缩放，并能用双箭头放大图形。 
 
-    ![在 Azure 门户数据资源管理器的图形中的新顶点](./media/create-graph-java/azure-cosmosdb-graph-explorer-new.png)
+    :::image type="content" source="./media/create-graph-java/azure-cosmosdb-graph-explorer-new.png" alt-text="在 Azure 门户数据资源管理器的图形中的新顶点":::
 
 3. 接下来，添加几个新用户。 选择“新建顶点”，向图添加数据。
 
-    ![在 Azure 门户的数据资源管理器中创建新文档](./media/create-graph-java/azure-cosmosdb-data-explorer-new-vertex.png)
+    :::image type="content" source="./media/create-graph-java/azure-cosmosdb-data-explorer-new-vertex.png" alt-text="在 Azure 门户的数据资源管理器中创建新文档":::
 
 4. 在标签框中，输入 *person*。
 
@@ -213,17 +216,17 @@ ms.locfileid: "82134993"
 
     添加更多数据时，可以使用筛选器来限制结果。 默认情况下，数据资源管理器使用 `g.V()` 检索图形中的所有顶点。 可以更改为其他[图形查询](tutorial-query-graph.md)（如 `g.V().count()`），以 JSON 格式返回图形中所有 顶点的计数。 如果更改了筛选器，请将筛选器更改回 `g.V()`，并选择“应用筛选器”，再次显示所有结果。
 
-12. 现在可以连接 rakesh 与 ashley。 确保“ashley”在“结果”列表中为选中状态，然后选择右下侧“目标”旁边的![“更改图中某个顶点的目标”](./media/create-graph-java/edit-pencil-button.png)。   可能需要扩大窗口才能看到该按钮。
+12. 现在可以连接 rakesh 与 ashley。 确保“ashley”在“结果”列表中为选中状态，然后选择右下侧“目标”旁边的:::image type="content" source="./media/create-graph-java/edit-pencil-button.png" alt-text="“更改图中某个顶点的目标”。"::: 可能需要扩大窗口才能看到该按钮。
 
-    ![更改图形中某个顶点的目标 - Azure CosmosDB](./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png)
+    :::image type="content" source="./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png" alt-text="更改图形中某个顶点的目标 - Azure CosmosDB":::
 
 13. 在“目标”框中输入“rakesh”，在“Edge 标签”框中输入“认识”，然后选中复选框。
 
-    ![在数据资源管理器中添加连接 - Azure CosmosDB](./media/create-graph-java/azure-cosmosdb-data-explorer-set-target.png)
+    :::image type="content" source="./media/create-graph-java/azure-cosmosdb-data-explorer-set-target.png" alt-text="在数据资源管理器中添加连接 - Azure CosmosDB":::
 
 14. 现在，从结果列表中选择“rakesh”即可看到 ashley 和 rakesh 已连接。 
 
-    ![在数据资源管理器中连接的两个顶点 - Azure CosmosDB](./media/create-graph-java/azure-cosmosdb-graph-explorer.png)
+    :::image type="content" source="./media/create-graph-java/azure-cosmosdb-graph-explorer.png" alt-text="在数据资源管理器中连接的两个顶点 - Azure CosmosDB":::
 
 这就完成了本教程的资源创建部分。 可以继续向图形添加顶点、修改现有顶点，也可以更改查询。 现在，回顾一下 Azure Cosmos DB 提供的指标，然后清理资源。 
 

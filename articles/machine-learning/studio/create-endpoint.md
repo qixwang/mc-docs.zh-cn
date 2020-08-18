@@ -10,19 +10,20 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/15/2019
-ms.openlocfilehash: 6110e1049faff4234f73a618a3bde8e2d11328df
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c9a89004026eac5215177017295de674d7cbce92
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80343088"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88227899"
 ---
 # <a name="create-endpoints-for-deployed-azure-machine-learning-studio-classic-web-services"></a>为部署的 Azure 机器学习工作室（经典）Web 服务创建终结点
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+**适用于：**  ![yes](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![no](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)
+
 
 > [!NOTE]
-> 本主题介绍适用于经典机器学习 Web 服务的技术  。
+> 本主题介绍适用于经典机器学习 Web 服务的技术。
 
 部署 Web 服务之后，将为该服务创建默认终结点。 该默认终结点可以使用其 API 密钥调用。 可以从 Web 服务门户添加更多具有自身密钥的终结点。
 Web 服务中的每个终结点都是独立处理、限制和托管的。 每个终结点唯一 URL 和身份验证密钥，可以将其分发给客户。
@@ -35,7 +36,7 @@ Web 服务中的每个终结点都是独立处理、限制和托管的。 每个
 > 如果 Web 服务已添加其他终结点，则无法删除默认终结点。
 
 1. 在机器学习工作室（经典）的左侧导航栏中，单击“Web 服务”。
-2. 在“Web 服务”仪表板的底部，单击“管理终结点”  。 Azure 机器学习 Web 服务门户可打开 Web 服务的终结点页。
+2. 在“Web 服务”仪表板的底部，单击“管理终结点”****。 Azure 机器学习 Web 服务门户可打开 Web 服务的终结点页。
 3. 单击 **“新建”** 。
 4. 键入新终结点的名称及说明。 终结点名称的长度必须少于或等于 24 个字符，并且必须由小写字母或数字组成。 选择日志记录级别以及是否启用示例数据。 有关日志记录的详细信息，请参阅[为机器学习 Web 服务启用日志记录](web-services-logging.md)。
 

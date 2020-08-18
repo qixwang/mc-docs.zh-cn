@@ -3,16 +3,18 @@ title: 从批量执行工具库迁移到 Azure Cosmos DB .NET V3 SDK 中的批�
 description: 了解如何将应用程序从使用批量执行工具库迁移到使用 Azure Cosmos DB SDK V3 中的批量操作支持
 author: rockboyfor
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 04/24/2020
-ms.date: 06/22/2020
+ms.date: 08/17/2020
+ms.testscope: yes
+ms.testdate: 08/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 391ec0739949a2fcd05e5e0172dd6abfde4f68d4
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: d068bd27e4c82b53f5df000fadd24ecbf25577ee
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098476"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222702"
 ---
 <!--Verified with cosmos db SDK V3-->
 # <a name="migrate-from-the-bulk-executor-library-to-the-bulk-support-in-azure-cosmos-db-net-v3-sdk"></a>从批量执行工具库迁移到 Azure Cosmos DB .NET V3 SDK 中的批量操作支持
@@ -30,7 +32,7 @@ ms.locfileid: "85098476"
 
 ## <a name="create-tasks-for-each-operation"></a>为每个操作创建任务
 
-通过利用[任务并行库](https://docs.microsoft.com/dotnet/standard/parallel-programming/task-parallel-library-tpl?view=azure-dotnet)，并将并发执行的操作分组，.NET SDK 中的批量操作支持得以发挥作用。 
+通过利用[任务并行库](https://docs.microsoft.com//dotnet/standard/parallel-programming/task-parallel-library-tpl)，并将并发执行的操作分组，.NET SDK 中的批量操作支持得以发挥作用。 
 
 SDK 中没有任何一种方法可将文档或操作的列表用作输入参数，你需要针对要批量执行的每个操作创建一个任务，然后等待它们完成。
 
@@ -145,30 +147,32 @@ SDK 中没有任何一种方法可将文档或操作的列表用作输入参数�
 
    ```csharp
    public class BulkOperations<T>
-    {
-        public readonly List<Task<OperationResponse<T>>> Tasks;
+   {
+       public readonly List<Task<OperationResponse<T>>> Tasks;
 
-        private readonly Stopwatch stopwatch = Stopwatch.StartNew();
+       private readonly Stopwatch stopwatch = Stopwatch.StartNew();
 
-        public BulkOperations(int operationCount)
-        {
-            this.Tasks = new List<Task<OperationResponse<T>>>(operationCount);
-        }
+       public BulkOperations(int operationCount)
+       {
+           this.Tasks = new List<Task<OperationResponse<T>>>(operationCount);
+       }
 
-        public async Task<BulkOperationResponse<T>> ExecuteAsync()
-        {
-            await Task.WhenAll(this.Tasks);
-            this.stopwatch.Stop();
-            return new BulkOperationResponse<T>()
-            {
-                TotalTimeTaken = this.stopwatch.Elapsed,
-                TotalRequestUnitsConsumed = this.Tasks.Sum(task => task.Result.RequestUnitsConsumed),
-                SuccessfulDocuments = this.Tasks.Count(task => task.Result.IsSuccessful),
-                Failures = this.Tasks.Where(task => !task.Result.IsSuccessful).Select(task => (task.Result.Item, task.Result.CosmosException)).ToList()
-            };
-        }
+       public async Task<BulkOperationResponse<T>> ExecuteAsync()
+       {
+           await Task.WhenAll(this.Tasks);
+           this.stopwatch.Stop();
+           return new BulkOperationResponse<T>()
+           {
+               TotalTimeTaken = this.stopwatch.Elapsed,
+               TotalRequestUnitsConsumed = this.Tasks.Sum(task => task.Result.RequestUnitsConsumed),
+               SuccessfulDocuments = this.Tasks.Count(task => task.Result.IsSuccessful),
+               Failures = this.Tasks.Where(task => !task.Result.IsSuccessful).Select(task => (task.Result.Item, task.Result.CosmosException)).ToList()
+           };
+       }
    }
+
    ```
+
 `ExecuteAsync` 方法会等待所有操作完成，你可以像这样使用它：
 
    ```csharp

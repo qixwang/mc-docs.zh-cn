@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 03/02/2018
 ms.author: mandia
 ms.custom: include file
-ms.openlocfilehash: ec5b3ca9ccd139cbdf17768056eb1d835336e7a7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f3eb6a6576e3472213267aee4f290def3c7122cf
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "63857400"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88246493"
 ---
-1. 在 [Azure 门户](https://portal.azure.com)中，创建一个空白逻辑应用。 
+1. 在 [Azure 门户](https://portal.azure.cn)中，创建一个空白逻辑应用。 
 
 2. 在逻辑应用设计器中，输入“github”作为筛选器。 
 
@@ -26,7 +26,7 @@ ms.locfileid: "63857400"
    > [!NOTE]
    > 所有逻辑应用工作流都必须以触发器开头。 仅当逻辑工作流已以触发器开头时，才可以选择操作。 
 
-4. 如果以前未创建连接，请选择“登录”  以便在出现提示时提供 GitHub 凭据。  
+4. 如果以前未创建连接，请选择“登录”**** 以便在出现提示时提供 GitHub 凭据。  
 
    ![使用 GitHub 凭据登录](./media/connectors-create-api-github/github-connector-sign-in-credentials.png)
 

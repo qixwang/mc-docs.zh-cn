@@ -3,14 +3,14 @@ title: Durable Functions 中的 HTTP 功能 - Azure Functions
 description: 了解 Azure Functions 的 Durable Functions 扩展中的集成式 HTTP 功能。
 author: cgillum
 ms.topic: conceptual
-ms.date: 06/09/2020
+ms.date: 08/12/2020
 ms.author: v-junlch
-ms.openlocfilehash: 98678ea2b6a2d9b8233e94c5f014f4e1e35cf090
-ms.sourcegitcommit: f1a76ee3242698123a3d77f44c860db040b48f70
+ms.openlocfilehash: 0e618bdadb4ada6d8f05af721ae4f898ff73c688
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84563730"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222676"
 ---
 # <a name="http-features"></a>HTTP 功能
 
@@ -322,7 +322,7 @@ module.exports = df.orchestrator(function*(context) {
 
 ### <a name="extensibility-net-only"></a>扩展性（仅适用于 .NET）
 
-可以使用 [Azure Functions .NET 依赖项注入](/azure-functions/functions-dotnet-dependency-injection)来自定义业务流程内部 HTTP 客户端的行为。 此功能可用于做出轻微的行为更改。 使用此功能还可以通过注入 mock 对象，来对 HTTP 客户端进行单元测试。
+可以使用 [Azure Functions .NET 依赖项注入](../functions-dotnet-dependency-injection.md)来自定义业务流程内部 HTTP 客户端的行为。 此功能可用于做出轻微的行为更改。 使用此功能还可以通过注入 mock 对象，来对 HTTP 客户端进行单元测试。
 
 以下示例演示如何使用依赖项注入为调用外部 HTTP 终结点的业务流程协调程序函数禁用 TLS/SSL 证书验证。
 

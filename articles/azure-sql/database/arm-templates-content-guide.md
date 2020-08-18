@@ -1,9 +1,8 @@
 ---
-title: Azure 资源管理器模板
-titleSuffix: Azure SQL Database & SQL Managed Instance
+title: Azure 资源管理器模板 - Azure SQL 数据库和 SQL 托管实例
 description: 使用 Azure 资源管理器模板创建和配置 Azure SQL 数据库和 Azure SQL 托管实例。
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: service
 ms.custom: overview-samples sqldbrb=2
 ms.devlang: ''
@@ -12,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: sstein
 origin.date: 02/04/2019
-ms.date: 07/13/2020
-ms.openlocfilehash: 3eda1fa8318a20299a866d80e2ebc3cc0f70566a
-ms.sourcegitcommit: fa26665aab1899e35ef7b93ddc3e1631c009dd04
+ms.date: 08/17/2020
+ms.openlocfilehash: a099cbaecbd1097941797b642b9abe28e64ccaf2
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86227394"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222580"
 ---
 # <a name="azure-resource-manager-templates-for-azure-sql-database--sql-managed-instance"></a>Azure SQL 数据库和 SQL 托管实例的 Azure 资源管理器模板
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -29,7 +28,7 @@ ms.locfileid: "86227394"
 
 下表包含 Azure SQL 数据库的 Azure 资源管理器模板链接。
 
-| |  |
+|链接 |说明|
 |---|---|
 | [SQL 数据库](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-database-transparent-encryption-create) | 此 Azure 资源管理器模板在 Azure SQL 数据库中创建单一数据库并配置服务器级 IP 防火墙规则。 |
 | [Server](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-logical-server) | 此 Azure 资源管理器模板为 Azure SQL 数据库创建服务器。 |
@@ -48,7 +47,7 @@ ms.locfileid: "86227394"
 
 下表包含指向 Azure SQL 托管实例的 Azure 资源管理器模板的链接。
 
-| |  |
+|链接|说明|
 |---|---|
 | [新 VNet 中的 SQL 托管实例](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet) | 此 Azure 资源管理器模板在虚拟网络中创建新配置的 Azure 虚拟网络和托管实例。 |
 | [SQL 托管实例的网络环境](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment) | 此部署创建包含两个子网的已配置 Azure 虚拟网络，其中一个子网专用于托管实例，另一个子网用于放置其他资源（例如 VM、应用服务环境，等等）。 此模板将创建经过适当配置的网络环境，可在该环境中部署托管实例。 |

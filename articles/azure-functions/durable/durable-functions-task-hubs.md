@@ -3,14 +3,14 @@ title: Durable Functions 中的任务中心 - Azure
 description: 了解在 Azure Functions 的 Durable Functions 扩展中什么是任务中心。 了解如何任务中心。
 author: cgillum
 ms.topic: conceptual
-ms.date: 06/09/2020
+ms.date: 08/12/2020
 ms.author: v-junlch
-ms.openlocfilehash: d2ea349469b561c3b2617d722c39990cfb067d26
-ms.sourcegitcommit: f1a76ee3242698123a3d77f44c860db040b48f70
+ms.openlocfilehash: 3305629d20c3b36962365d08cc56ba785f8cb23e
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84563716"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222666"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Durable Functions 中的任务中心 (Azure Functions)
 
@@ -110,12 +110,12 @@ ms.locfileid: "84563716"
 [FunctionName("HttpStart")]
 public static async Task<HttpResponseMessage> Run(
     [HttpTrigger(AuthorizationLevel.Function, methods: "post", Route = "orchestrators/{functionName}")] HttpRequestMessage req,
-    [OrchestrationClient(TaskHub = "%MyTaskHub%")] IDurableOrchestrationClient starter,
+    [DurableClient(TaskHub = "%MyTaskHub%")] IDurableOrchestrationClient starter,
     string functionName,
     ILogger log)
 {
     // Function input comes from the request content.
-    dynamic eventData = await req.Content.ReadAsAsync<object>();
+    object eventData = await req.Content.ReadAsAsync<object>();
     string instanceId = await starter.StartNewAsync(functionName, eventData);
 
     log.LogInformation($"Started orchestration with ID = '{instanceId}'.");
@@ -159,4 +159,3 @@ public static async Task<HttpResponseMessage> Run(
 > [!div class="nextstepaction"]
 > [了解如何处理业务流程版本控制](durable-functions-versioning.md)
 
-<!-- Update_Description: wording update -->

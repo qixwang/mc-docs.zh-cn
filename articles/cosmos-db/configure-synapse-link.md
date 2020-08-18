@@ -3,16 +3,18 @@ title: 配置和使用 Azure Synapse Link for Azure Cosmos DB（预览版）
 description: 了解如何为 Azure Cosmos 帐户启用 Azure Synapse Link，创建启用了分析存储的容器，将 Azure Cosmos 数据库连接到 Synapse 工作区，并运行查询。
 author: rockboyfor
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 05/19/2020
-ms.date: 06/22/2020
+ms.date: 08/17/2020
+ms.testscope: yes
+ms.testdate: 08/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: beb9d7e57946e85af995f47f63b5e64369c5381a
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: a18c31c1d371e7b4a724a76fde09b04d5a602f96
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098692"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223009"
 ---
 <!--Verified successfully-->
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>配置和使用 Azure Synapse Link for Azure Cosmos DB（预览版）
@@ -43,11 +45,11 @@ Azure Synapse Link for Azure Cosmos 是一种云原生混合事务和分析处�
 
 1. 从“功能”列表选择“Synapse Link”****。
 
-    ![查找 Synapse Link 预览功能](./media/configure-synapse-link/find-synapse-link-feature.png)
+    :::image type="content" source="./media/configure-synapse-link/find-synapse-link-feature.png" alt-text="查找 Synapse Link 预览功能":::
 
 1. 接下来，它会提示你在帐户上启用 Synapse Link。 选择“启用”。
 
-    ![启用 Synapse Link 功能](./media/configure-synapse-link/enable-synapse-link-feature.png)
+    :::image type="content" source="./media/configure-synapse-link/enable-synapse-link-feature.png" alt-text="启用 Synapse Link 功能":::
 
 1. 你的帐户现已启用，可以使用 Synapse Link。 接下来，了解如何创建启用了分析存储的容器，以便自动开始将操作数据从事务性存储复制到分析存储。
 
@@ -71,7 +73,7 @@ Azure Synapse Link for Azure Cosmos 是一种云原生混合事务和分析处�
 
 1. 选择“新容器”****，并输入数据库、容器、分区键和吞吐量详细信息的名称。 打开“分析存储”**** 选项。 启用分析存储后，它将创建一个容器，该容器的 `AnalyicalTTL` 属性设置为默认值 -1（无限保留期）。 此分析存储保留所有记录的历史版本。
 
-    ![启用 Azure Cosmos 容器的分析存储](./media/configure-synapse-link/create-container-analytical-store.png)
+    :::image type="content" source="./media/configure-synapse-link/create-container-analytical-store.png" alt-text="启用 Azure Cosmos 容器的分析存储":::
 
 1. 如果你以前未在此帐户上启用 Synapse Link，系统将提示你执行此操作，因为它是创建启用了分析存储的容器的先决条件。 如果系统提示，请选择“启用 Synapse Link”****。
 
@@ -219,5 +221,4 @@ container.replace(containerProperties).block();
 
 <!--Not Available on * [SQL serverless/on-demand in Azure Synapse Analytics](../synapse-analytics/sql/on-demand-workspace-overview.md)-->
 
-<!-- Update_Description: new article about configure synapse link -->
-<!--NEW.date: 06/08/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

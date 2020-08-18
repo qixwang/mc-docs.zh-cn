@@ -4,15 +4,17 @@ description: 获取用于在 Azure Cosmos DB Gremlin API 帐户中执行各种�
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: sample
-origin.date: 05/13/2020
-ms.date: 07/06/2020
+origin.date: 06/12/2020
+ms.date: 08/17/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: f9807accba15170154b27b45ab5957cbe3770256
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+ms.openlocfilehash: ed54882c92a69384c67cded000bb46bbd5d47757
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323335"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222464"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db-gremlin-api"></a>适用于 Azure Cosmos DB 的 Azure PowerShell 示例 - Gremlin API
 
@@ -21,7 +23,7 @@ ms.locfileid: "85323335"
 > [!NOTE]
 > 该示例使用 [Az.CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) 管理 cmdlet。 请定期检查 `Az.CosmosDB` 是否有更新。
 
-| | |
+|任务 | 说明 |
 |---|---|
 |[创建帐户、数据库和图](scripts/powershell/gremlin/ps-gremlin-create.md)| 创建 Azure Cosmos 帐户、数据库和图。 |
 |[列出或获取数据库或图](scripts/powershell/gremlin/ps-gremlin-list-get.md)| 列出或获取数据库或图。 |

@@ -3,18 +3,18 @@ title: 适用于 Azure Functions 的 Azure Blob 存储触发器和绑定
 description: 了解如何在 Azure Functions 中使用 Azure Blob 存储触发器和绑定。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 03/03/2020
+ms.date: 08/11/2020
 ms.author: v-junlch
-ms.openlocfilehash: 12577232a4b568097e32f0f50c260fdf47aecb7b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: dc049abaabcc78d38f50d5c25a91a0fc81613dc7
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293206"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222716"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions-overview"></a>适用于 Azure Functions 的 Azure Blob 存储绑定概述
 
-Azure Functions 通过[触发器和绑定](./functions-triggers-bindings.md)与 [Azure 存储](/storage/)集成。 与 Blob 存储集成即可构建函数，用于响应 blob 数据中的更改以及读取和写入值。
+Azure Functions 通过[触发器和绑定](./functions-triggers-bindings.md)与 [Azure 存储](../storage/index.yml)集成。 与 Blob 存储集成即可构建函数，用于响应 blob 数据中的更改以及读取和写入值。
 
 | 操作 | 类型 |
 |---------|---------|

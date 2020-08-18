@@ -24,7 +24,7 @@
 - name: 如何
   items:
     - name: 配置服务运行状况事件的警报
-      href: alerts-activity-log-service-notifications.md
+      href: ./alerts-activity-log-service-notifications-portal.md
     - name: 使用 Azure 门户查看服务运行状况通知
       href: service-notifications.md
     - name: 通过 Webhook 将警报发送给外部系统
@@ -35,6 +35,8 @@
       href: service-health-alert-webhook-pagerduty.md
     - name: 将警报发送给 OpsGenie
       href: service-health-alert-webhook-opsgenie.md
+    - name: 使用资源管理器模板创建资源运行状况警报
+      href: resource-health-alert-arm-template-guide.md
 - name: 参考
   items:
     - name: 服务运行状况通知属性

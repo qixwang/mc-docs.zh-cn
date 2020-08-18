@@ -4,22 +4,22 @@ description: 查找某些常用应用服务方案的 Azure PowerShell 示例。 
 tags: azure-service-management
 ms.assetid: b48d1137-8c04-46e0-b430-101e07d7e470
 ms.topic: sample
-origin.date: 03/08/2017
-ms.date: 05/22/2020
+origin.date: 07/07/2020
+ms.date: 08/13/2020
 ms.author: v-tawe
 ms.custom: mvc
-ms.openlocfilehash: aa3e821f1dc456562e265ebff876e22dbb6d3de1
-ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
+ms.openlocfilehash: b23391feeb263c73faa6a20963ea8e0d7c3c1421
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83801317"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88228056"
 ---
 # <a name="powershell-samples-for-azure-app-service"></a>Azure 应用服务的 PowerShell 示例
 
 下表包含指向使用 Azure PowerShell 生成的 PowerShell 脚本的链接。
 
-| | |
+| Script | 说明 |
 |-|-|
 |**创建应用**||
 | [从 GitHub 使用部署创建应用](./scripts/powershell-deploy-github.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 创建从 GitHub 提取代码的应用服务应用。 |
@@ -34,7 +34,7 @@ ms.locfileid: "83801317"
 | [手动缩放应用](./scripts/powershell-scale-manual.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 创建应用服务应用并将其在 2 个实例之间进行缩放。 |
 | [缩放具有高可用性体系结构的全球应用](./scripts/powershell-scale-high-availability.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 在两个不同地理区域中创建两个应用服务应用，并使用 Azure 流量管理器通过单个终结点使其可用。 |
 |**将应用连接到资源**||
-| [将应用连接到 SQL 数据库](./scripts/powershell-connect-to-sql.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 创建应用服务应用和 SQL 数据库，然后将数据库连接字符串添加到应用设置。 |
+| [将应用连接到 SQL 数据库](./scripts/powershell-connect-to-sql.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 创建应用服务应用并在 Azure SQL 数据库中创建数据库，然后将数据库连接字符串添加到应用设置中。 |
 | [将应用连接到存储帐户](./scripts/powershell-connect-to-storage.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 创建应用服务应用和存储帐户，然后将存储连接字符串添加到应用设置。 |
 |**备份和还原应用**||
 | [备份应用](./scripts/powershell-backup-onetime.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 创建应用服务应用，并为其创建一次性备份。 |

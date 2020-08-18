@@ -1,5 +1,5 @@
 ---
-title: 教程：使用 Visual Studio Code 扩展来训练和部署模型
+title: 教程：训练和部署模型：VS Code（预览版）
 titleSuffix: Azure Machine Learning
 description: 了解如何使用 TensorFlow 和 Azure 机器学习 Visual Studio Code 扩展训练和部署图像分类模型
 services: machine-learning
@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: tutorial
 author: luisquintanilla
 ms.author: v-yiso
-origin.date: 04/13/2020
-ms.date: 05/11/2020
-ms.openlocfilehash: f76b75484dbe91033ba2be2765eb47d36265b3f7
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+origin.date: 07/09/2020
+ms.date: 08/24/2020
+ms.openlocfilehash: 55cc76d5096a4cbdf667769c99a62ed9780220d1
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097110"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88228485"
 ---
 # <a name="train-and-deploy-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension"></a>使用 Azure 机器学习 Visual Studio Code 扩展训练和部署图像分类 TensorFlow 模型
 
@@ -57,7 +57,7 @@ ms.locfileid: "85097110"
     > [!div class="mx-imgBorder"]
     > ![创建工作区](./media/tutorial-train-deploy-image-classification-model-vscode/create-workspace.png)
 
-1. 默认会生成一个包含创建日期和时间的名称。 在文本输入框中将名称更改为“TeamWorkspace”，然后按 **Enter**。
+1. 默认情况下，会生成包含创建日期和时间的名称。 在文本输入框中将名称更改为“TeamWorkspace”，然后按 **Enter**。
 1. 选择“新建资源组”。 
 1. 将资源组命名为“TeamWorkspace-rg”，然后按 **Enter**。 
 1. 为工作区选择一个位置。 建议你在选择位置时，确保该位置最靠近你计划部署模型的位置。 
@@ -91,7 +91,7 @@ ms.locfileid: "85097110"
 1. 在 Visual Studio Code 活动栏上选择 **Azure** 图标。 此时会显示“Azure 机器学习”视图。 
 1. 展开订阅节点。 
 1. 展开 **TeamWorkspace** 节点。 
-1. 在工作区节点下，右键单击“计算”节点，再选择“创建计算”。 
+1. 在工作区节点下，右键单击“计算群集”节点，再选择“创建计算” 。 
 
     > [!div class="mx-imgBorder"]
     > ![创建计算目标](./media/tutorial-train-deploy-image-classification-model-vscode/create-compute.png)
@@ -115,17 +115,8 @@ ms.locfileid: "85097110"
                 "scaleSettings": {
                     "maxNodeCount": 4,
                     "minNodeCount": 0,
-                    "nodeIdleTimeBeforeScaleDown": 120
-                },
-                "userAccountCredentials": {
-                    "adminUserName": "",
-                    "adminUserPassword": "",
-                    "adminUserSshPublicKey": ""
-                },
-                "subnetName": "",
-                "vnetName": "",
-                "vnetResourceGroupName": "",
-                "remoteLoginPortPublicAccess": ""
+                    "nodeIdleTimeBeforeScaleDown": "PT120S"
+                }
             }
         }
     }
@@ -138,7 +129,7 @@ ms.locfileid: "85097110"
     Azure ML: Save and Continue
     ```
 
-几分钟后，新计算目标会出现在工作区的“计算”节点中。
+几分钟后，新计算目标会出现在工作区的“计算群集”节点中。
 
 ## <a name="create-a-run-configuration"></a>创建运行配置
 
@@ -148,7 +139,7 @@ ms.locfileid: "85097110"
 
 1. 在 Visual Studio Code 活动栏上选择 **Azure** 图标。 此时会显示“Azure 机器学习”视图。 
 1. 展开订阅节点。 
-1. 展开“TeamWorkspace”>“计算”节点。 
+1. 展开“TeamWorkspace”>“计算群集”节点。 
 1. 在计算节点下，右键单击“TeamWkspc-com”计算节点，然后选择“创建运行配置”。
 
     > [!div class="mx-imgBorder"]
@@ -214,6 +205,7 @@ ms.locfileid: "85097110"
     Azure ML: Save and Continue
     ```
 
+1. 此示例不使用在 Azure 机器学习中注册的数据集。 而是在 train.py 运行时加载。 当系统提示为训练运行创建数据引用时，请在提示中输入“n”，然后按 Enter。
 1. 按 **Enter** 浏览要在计算上运行的脚本文件。 在此示例中，用于训练模型的脚本是 `vscode-tools-for-ai/mnist-vscode-docs-sample` 目录内的 `train.py` 文件。
 
     此时会在 VS Code 中显示名为 `MNIST-rc.runconfig` 的文件，其中包含如下所示的内容：
@@ -221,6 +213,7 @@ ms.locfileid: "85097110"
     ```json
     {
         "script": "train.py",
+        "arguments": [],
         "framework": "Python",
         "communicator": "None",
         "target": "TeamWkspc-com",
@@ -302,7 +295,7 @@ ms.locfileid: "85097110"
 
 1. 从计算目标选项列表中，选择“TeamWkspc-com”计算目标。
 1. 然后，选择“MNIST-rc”运行配置。
-1. 此时系统会向 Azure 发送请求，以便在工作区中所选的计算目标上运行试验。 此过程需耗时几分钟。 运行训练作业的时间长度受多种因素（如计算类型和训练数据大小）的影响。 若要跟踪试验进度，请右键单击当前的运行节点，然后选择“在 Azure 门户中查看运行”。
+1. 此时系统会向 Azure 发送请求，以便在工作区中所选的计算目标上运行试验。 此过程需要几分钟。 运行训练作业的时间长度受多种因素（如计算类型和训练数据大小）的影响。 若要跟踪试验进度，请右键单击当前的运行节点，然后选择“在 Azure 门户中查看运行”。
 1. 出现请求打开外部网站的对话框时，请选择“打开”。
 
     > [!div class="mx-imgBorder"]
@@ -414,10 +407,10 @@ ms.locfileid: "85097110"
     Azure ML: Save and Continue
     ```
 
-此时系统会向 Azure 发送请求，以便部署 Web 服务。 此过程需耗时几分钟。 部署完成后，新服务会显示在“终结点”节点下。
+此时系统会向 Azure 发送请求，以便部署 Web 服务。 此过程需要几分钟。 部署完成后，新服务会显示在“终结点”节点下。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关如何在 Visual Studio Code 外部使用 Azure 机器学习进行训练的演练，请参阅[教程：使用 Azure 机器学习训练模型](tutorial-train-models-with-aml.md)。
-* 有关如何在本地编辑、运行和调试代码的演练，请参阅 [Python hello-world 教程](https://code.visualstudio.com/docs/Python/Python-tutorial)。
+* 若要详细了解如何在 Visual Studio Code 外部使用 Azure 机器学习进行训练，请参阅[教程：使用 Azure 机器学习训练模型](tutorial-train-models-with-aml.md)。
+* 若要详细了解如何在本地编辑、运行和调试代码，请参阅 [Python hello-world 教程](https://code.visualstudio.com/docs/Python/Python-tutorial)。
 

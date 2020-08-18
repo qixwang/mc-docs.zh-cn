@@ -3,16 +3,18 @@ title: 用于 Azure Cosmos DB API for MongoDB 的资源管理器模板
 description: 使用 Azure 资源管理器模板创建和配置 Azure Cosmos DB API for MongoDB。
 author: rockboyfor
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 05/19/2020
-ms.date: 06/22/2020
+ms.date: 08/17/2020
+ms.testscope: yes
+ms.testdate: 08/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: c279cc45995cf77fb1edd4223fb7f01c9ce3464f
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: cb2c1beb2843bc8ebd7058606d044309fdf61d89
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098697"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223431"
 ---
 <!--Verify successfully-->
 # <a name="manage-azure-cosmos-db-mongodb-api-resources-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Azure Cosmos DB MongoDB API 资源
@@ -35,7 +37,7 @@ ms.locfileid: "85098697"
 
 此模板将创建一个 Azure Cosmos for MongoDB API 帐户（3.2 或 3.6），其中包含两个在数据库级别共享自动缩放吞吐量的集合。 此模板还支持从 Azure 快速入门模板库进行一键部署。
 
-[![部署到 Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-mongodb-autoscale%2Fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="部署到 Azure":::](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-mongodb-autoscale%2Fazuredeploy.json)
 
 ```json
 {
@@ -129,26 +131,6 @@ ms.locfileid: "85098697"
              "description": "The name for the second Mongo DB collection"
           }
        },
-       "throughputPolicy":{
-            "type": "string",
-            "defaultValue": "Autoscale",
-            "allowedValues": [ 
-               "Manual", 
-               "Autoscale" 
-            ],
-            "metadata": {
-                "description": "The throughput policy for the Database"
-            }
-        },
-        "manualProvisionedThroughput": {
-            "type": "int",
-            "defaultValue": 400,
-            "minValue": 400,
-            "maxValue": 1000000,
-            "metadata": {
-                "description": "Throughput value when using Provisioned Throughput Policy for the Database"
-            }
-        },
         "autoscaleMaxThroughput": {
             "type": "int",
             "defaultValue": 4000,
@@ -191,16 +173,7 @@ ms.locfileid: "85098697"
              "failoverPriority": 1,
              "isZoneRedundant": false
           }
-       ],
-       "throughputPolicy": {
-            "Manual": {
-                  "throughput": "[parameters('manualProvisionedThroughput')]"
-            },
-            "Autoscale": {
-                  "autoscaleSettings": { "maxThroughput": "[parameters('autoscaleMaxThroughput')]" }
-            }
-        },
-        "throughputPolicyToUse": "[if(equals(parameters('throughputPolicy'), 'Manual'), variables('throughputPolicy').Manual, variables('throughputPolicy').Autoscale)]"
+       ]
     },
     "resources": [
          {
@@ -229,8 +202,12 @@ ms.locfileid: "85098697"
              "resource":{
                 "id": "[parameters('databaseName')]"
              },
-             "options": "[variables('throughputPolicyToUse')]"
-          }
+             "options": {
+                  "autoscaleSettings": { 
+                     "maxThroughput": "[parameters('autoscaleMaxThroughput')]" 
+                  }
+               }
+            }
        },
        {
           "type": "Microsoft.DocumentDb/databaseAccounts/mongodbDatabases/collections",
@@ -243,15 +220,25 @@ ms.locfileid: "85098697"
           {
              "resource":{
                 "id":  "[parameters('collection1Name')]",
-                "shardKey": { "user_id": "Hash" },
+                "shardKey": { 
+                   "user_id": "Hash" 
+                  },
                 "indexes": [
                    {
-                      "key": { "keys":["user_id", "user_address"] },
-                      "options": { "unique": "true" }
+                      "key": { 
+                         "keys":["user_id", "user_address"] 
+                        },
+                      "options": { 
+                         "unique": "true" 
+                        }
                    },
                    {
-                      "key": { "keys":["_ts"] },
-                      "options": { "expireAfterSeconds": "2629746" }
+                      "key": { 
+                         "keys":["_ts"] 
+                         },
+                      "options": { 
+                         "expireAfterSeconds": "2629746" 
+                        }
                    }
                 ],
                 "options": {
@@ -271,15 +258,28 @@ ms.locfileid: "85098697"
           {
              "resource":{
                 "id":  "[parameters('collection2Name')]",
-                "shardKey": { "company_id": "Hash" },
+                "shardKey": { 
+                   "company_id": "Hash" 
+                  },
                 "indexes": [
                    {
-                      "key": { "keys":["company_id", "company_address"] },
-                      "options": { "unique": "true" }
+                      "key": { 
+                         "keys":[
+                            "company_id", 
+                            "company_address"
+                           ] 
+                        },
+                      "options": { 
+                         "unique": "true" 
+                        }
                    },
                    {
-                      "key": { "keys":["_ts"] },
-                      "options": { "expireAfterSeconds": "2629746" }
+                      "key": { 
+                         "keys":["_ts"] 
+                        },
+                      "options": { 
+                         "expireAfterSeconds": "2629746" 
+                        }
                    }
                 ],
                 "options": {
@@ -299,7 +299,7 @@ ms.locfileid: "85098697"
 
 此模板将创建一个 Azure Cosmos for MongoDB API 帐户（3.2 或 3.6），其中包含两个在数据库级别共享 400 RU/s 标准（手动）吞吐量的集合。 此模板还支持从 Azure 快速入门模板库进行一键部署。
 
-[![部署到 Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-mongodb%2Fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="部署到 Azure":::](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-mongodb%2Fazuredeploy.json)
 
 ```json
 {
@@ -525,7 +525,7 @@ ms.locfileid: "85098697"
 
     <!--Not Available on - [Azure Cosmos DB resource provider schema](https://docs.microsoft.com/azure/templates/microsoft.documentdb/allversions)-->
     
-* [Azure Cosmos DB 快速入门模板](https://github.com/Azure/azure-quickstart-templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
+* [Azure Cosmos DB 快速入门模板](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Documentdb&pageNumber=1&sort=Popular)
 * [排查常见 Azure 资源管理器部署错误](../azure-resource-manager/templates/common-deployment-errors.md)
 
 <!-- Update_Description: update meta properties, wording update, update link -->

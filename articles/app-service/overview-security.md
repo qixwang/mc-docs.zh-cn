@@ -4,15 +4,15 @@ description: 了解应用服务如何帮助保护应用，以及如何进一步�
 keywords: azure 应用服务, web 应用, 移动应用, api 应用, 函数应用, 安全性, 保护, 受保护, 符合性, 符合, 证书, 证书, https, ftps, tls, 信任, 加密, 加密, 已加密, ip 限制, 身份验证, 授权, 身份验证, 授权, msi, 托管服务标识, 托管标识, 机密, 机密, 修补, 修补程序, 修补程序, 版本, 隔离, 网络隔离, ddos, mitm
 ms.topic: article
 origin.date: 08/24/2018
-ms.date: 06/22/2020
+ms.date: 08/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 683374f7417fffa4f6a2c645ab65095de6b59999
-ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
+ms.openlocfilehash: 83ae51464c1e1799dfa7f26e3454d12e93015fc8
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85613339"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88228069"
 ---
 # <a name="security-in-azure-app-service"></a>Azure 应用服务中的安全性
 
@@ -24,7 +24,7 @@ ms.locfileid: "85613339"
 
 ## <a name="https-and-certificates"></a>HTTPS 和证书
 
-应用服务允许通过 HTTPS 保护应用。 创建应用后，便可使用 HTTPS 访问其默认域名 (\<app_name>.chinacloudsites.cn)。 如果[为应用配置自定义域](app-service-web-tutorial-custom-domain.md)，则还应该[使用自定义证书对其进行保护](app-service-web-tutorial-custom-ssl.md)，以便客户端浏览器与自定义域建立安全的 HTTPS 连接。 可通过两种方式来执行此操作：
+应用服务允许通过 HTTPS 保护应用。 创建应用后，便可使用 HTTPS 访问其默认域名 (\<app_name>.chinacloudsites.cn)。 如果[为应用配置自定义域](app-service-web-tutorial-custom-domain.md)，则还应[使用 TLS/SSL 对其进行保护](configure-ssl-bindings.md)，以便客户端浏览器与自定义域建立安全的 HTTPS 连接。 下面是应用服务支持的多种类型的证书：
 
 - 免费应用服务托管证书
 - 应用服务证书
@@ -76,6 +76,7 @@ Azure 应用服务提供用户或客户端应用的统包身份验证和授权�
 
 当应用连接到 Azure 资源（例如 [SQL 数据库](/services/sql-database/)和 [Azure 存储](/storage/)）时，连接一直保持在 Azure 中，不会跨越任何网络边界。 但是，连接经过 Azure 中的共享网络，因此请务必确保连接已加密。 
 
+<!-- service endpoint -->
 <!-- If your app is hosted in an [App Service environment](environment/intro.md), you should [connect to supported Azure services using Virtual Network service endpoints](../virtual-network/virtual-network-service-endpoints-overview.md). -->
 
 ### <a name="resources-inside-an-azure-virtual-network"></a>Azure 虚拟网络中的资源

@@ -1,18 +1,16 @@
 ---
 title: 将 Azure 应用服务用作事件网格源
 description: 本文介绍了如何将 Azure 应用服务用作事件网格事件源。 其中提供了架构，以及教程和操作指南文章的链接。
-services: event-grid
 author: Johnnytechn
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 06/12/2020
+ms.date: 08/10/2020
 ms.author: v-johya
-ms.openlocfilehash: 7f24681db3124f498763cd02eb1aa7473684e74c
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.openlocfilehash: d0423531d554bf2b9b847e71cad9eb902ee6fcc6
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723802"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88228032"
 ---
 # <a name="azure-app-service-as-an-event-grid-source"></a>将 Azure 应用服务用作事件网格源
 
@@ -64,7 +62,7 @@ Azure 应用服务发出以下事件类型
 {
     id:'7c5d6de5-eb70-4de2-b788-c52a544e68b8',
     subject:'/Microsoft.Web/sites/<site-name>',
-    eventType:'Microsoft.Web.SlotSwapStarted',
+    eventType:'Microsoft.Web.BackupOperationStarted',
     eventTime:'2020-01-28T18:26:51.7194887Z',
     data: {
         "appEventTypeDetail": { "action": "Started" },
@@ -98,24 +96,24 @@ Azure 应用服务发出以下事件类型
 
 ```js
 {
-    id:'7c5d6de5-eb70-4de2-b788-c52a544e68b8',
-    subject:'/Microsoft.Web/sites/<site-name>',
-    eventType:'Microsoft.Web.RestoreOperationStarted,
-    eventTime:'2020-01-28T18:26:51.7194887Z',
+    id: '7c5d6de5-eb70-4de2-b788-c52a544e68b8',
+    subject: '/Microsoft.Web/sites/<site-name>',
+    eventType: 'Microsoft.Web.RestoreOperationStarted',
+    eventTime: '2020-01-28T18:26:51.7194887Z',
     data: {
-        "appEventTypeDetail": { 
-            "action": "Started" 
+        appEventTypeDetail: { 
+            action: "Started" 
         },
-        "siteName": "<site-name>",
-        "clientRequestId": "None",
-        "correlationRequestId": "None",
-        "requestId": "292f499d-04ee-4066-994d-c2df57b99198",
-        "address": "None",
-        "verb": "POST"
+        siteName: "<site-name>",
+        clientRequestId: "None",
+        correlationRequestId: "None",
+        requestId: "292f499d-04ee-4066-994d-c2df57b99198",
+        address: "None",
+        verb: "POST"
     }
-    topic:'/subscriptions/<id>/resourceGroups/<rg>/providers/Microsoft.Web/sites/<site-name>',
-    dataVersion:'1',
-    metaDataVersion:'1'
+    topic: '/subscriptions/<id>/resourceGroups/<rg>/providers/Microsoft.Web/sites/<site-name>',
+    dataVersion: '1',
+    metaDataVersion: '1'
 }
 ```
 
@@ -136,24 +134,24 @@ Azure 应用服务发出以下事件类型
 
 ```js
 {
-    id:'7c5d6de5-eb70-4de2-b788-c52a544e68b8',
-    subject:'/Microsoft.Web/sites/<site-name>',
-    eventType:'Microsoft.Web.SlotSwapStarted',
-    eventTime:'2020-01-28T18:26:51.7194887Z',
-    data:{
-        appEventTypeDetail:null,
-        siteName:'<site-name>',
-        clientRequestId:'922f4841-20d9-4dd6-8c5b-23f0d85e5592',
-        correlationRequestId:'9ac46505-2b8a-4e06-834c-05ffbe2e8c3a',
-        requestId:'765117aa-eaf8-4bd2-a644-1dbf69c7b0fd',
+    id: '7c5d6de5-eb70-4de2-b788-c52a544e68b8',
+    subject: '/Microsoft.Web/sites/<site-name>',
+    eventType: 'Microsoft.Web.SlotSwapStarted',
+    eventTime: '2020-01-28T18:26:51.7194887Z',
+    data: {
+        appEventTypeDetail: null,
+        siteName: '<site-name>',
+        clientRequestId: '922f4841-20d9-4dd6-8c5b-23f0d85e5592',
+        correlationRequestId: '9ac46505-2b8a-4e06-834c-05ffbe2e8c3a',
+        requestId: '765117aa-eaf8-4bd2-a644-1dbf69c7b0fd',
         address: '/websystems/WebSites/web/subscriptions/<id>/webspaces/<webspace>/sites/<site-name>/slots?Command=SWAP&targetSlot=production',
-        verb:'POST'
+        verb: 'POST'
         sourceSlot: "staging",
         targetSlot: "production"
     },
-    topic:'/subscriptions/<id>/resourceGroups/<rg>/providers/Microsoft.Web/sites/<site-name>',
-    dataVersion:'1',
-    metaDataVersion:'1'
+    topic: '/subscriptions/<id>/resourceGroups/<rg>/providers/Microsoft.Web/sites/<site-name>',
+    dataVersion: '1',
+    metaDataVersion: '1'
 }
 ```
 
@@ -175,24 +173,24 @@ Azure 应用服务发出以下事件类型
 
 ```js
 {
-    id:'7c5d6de5-eb70-4de2-b788-c52a544e68b8',
-    subject:'/Microsoft.Web/sites/<site-name>',
-    eventType:'Microsoft.Web.SlotSwapWithPreviewStarted',
-    eventTime:'2020-01-28T18:26:51.7194887Z',
-    data:{
-        appEventTypeDetail:null,
-        siteName:'<site-name >',
-        clientRequestId:'922f4841-20d9-4dd6-8c5b-23f0d85e5592',
-        correlationRequestId:'9ac46505-2b8a-4e06-834c-05ffbe2e8c3a',
-        requestId:'765117aa-eaf8-4bd2-a644-1dbf69c7b0fd',
+    id: '7c5d6de5-eb70-4de2-b788-c52a544e68b8',
+    subject: '/Microsoft.Web/sites/<site-name>',
+    eventType: 'Microsoft.Web.SlotSwapWithPreviewStarted',
+    eventTime: '2020-01-28T18:26:51.7194887Z',
+    data: {
+        appEventTypeDetail: null,
+        siteName: '<site-name>',
+        clientRequestId: '922f4841-20d9-4dd6-8c5b-23f0d85e5592',
+        correlationRequestId: '9ac46505-2b8a-4e06-834c-05ffbe2e8c3a',
+        requestId: '765117aa-eaf8-4bd2-a644-1dbf69c7b0fd',
         address: '/websystems/WebSites/web/subscriptions/<id>/webspaces/<webspace>/sites/<site-name>/slots?Command=SWAP&targetSlot=production',
-        verb:'POST'
+        verb: 'POST'
         sourceSlot: "staging",
         targetSlot: "production"
     },
-    topic:'/subscriptions/<id>/resourceGroups/<rg>/providers/Microsoft.Web/sites/<site-name>',
-    dataVersion:'1',
-    metaDataVersion:'1'
+    topic: '/subscriptions/<id>/resourceGroups/<rg>/providers/Microsoft.Web/sites/<site-name>',
+    dataVersion: '1',
+    metaDataVersion: '1'
 }
 ```
 
@@ -225,10 +223,10 @@ Azure 应用服务发出以下事件类型
         clientRequestId: '64a5e0aa-7cee-4ff1-9093-b9197b820014',
         correlationRequestId: '25bb36a5-8f6c-4f04-b615-e9a0ee045756',
         requestId: 'f2e8eb3f-b190-42de-b99e-6acefe587374',
-        address: '/websystems/WebSites/web/subscriptions/<id>/webspaces/ <webspace>/sites/<site-name>/stop',
+        address: '/websystems/WebSites/web/subscriptions/<id>/webspaces/<webspace>/sites/<site-name>/stop',
         verb: 'POST'
     },
-    topic: '/subscriptions/<id>/resourceGroups/<group>/providers/ Microsoft.Web/sites/<site-name>',
+    topic: '/subscriptions/<id>/resourceGroups/<group>/providers/Microsoft.Web/sites/<site-name>',
     dataVersion: '1',
     metaDataVersion: '1'
 }
@@ -251,33 +249,33 @@ Azure 应用服务发出以下事件类型
 
 ```js
 {
-   "id":"56501672-9150-40e1-893a-18420c7fdbf7",
-   "subject":"/Microsoft.Web/serverfarms/<plan-name>",
-   "eventType":"Microsoft.Web.AppServicePlanUpdated",
-   "eventTime":"2020-01-28T18:22:23.5516004Z",
-   "data":{
-        "serverFarmEventTypeDetail":{
-            "stampKind":"Public",
-            "action":"Updated",
-            "status":"Started"
+   id: "56501672-9150-40e1-893a-18420c7fdbf7",
+   subject: "/Microsoft.Web/serverfarms/<plan-name>",
+   eventType: "Microsoft.Web.AppServicePlanUpdated",
+   eventTime: "2020-01-28T18:22:23.5516004Z",
+   data: {
+        serverFarmEventTypeDetail: {
+            stampKind: "Public",
+            action: "Updated",
+            status: "Started"
         },
-        "serverFarmId":"0",
-        "sku":{
-            "name":"P1v2",
-            "tier":"PremiumV2",
-            "size":"P1v2",
-            "family":"Pv2",
-            "capacity":1
+        serverFarmId: "0",
+        sku: {
+            name: "P1v2",
+            tier: "PremiumV2",
+            size: "P1v2",
+            family: "Pv2",
+            capacity: 1
         },
-        "clientRequestId":"8f880321-a991-45c7-b743-6ff63fe4c004",
-        "correlationRequestId":"1995c3be-ba7f-4ccf-94af-516df637ec8a",
-        "requestId":"b973a8e6-6949-4783-b44c-ac778be831bb",
-        "address":"/websystems/WebSites/serverfarms/subscriptions/<id>/webspaces/<webspace-id>/serverfarms/<plan-name>/async",
-        "verb":"PUT"
+        clientRequestId: "8f880321-a991-45c7-b743-6ff63fe4c004",
+        correlationRequestId: "1995c3be-ba7f-4ccf-94af-516df637ec8a",
+        requestId: "b973a8e6-6949-4783-b44c-ac778be831bb",
+        address: "/websystems/WebSites/serverfarms/subscriptions/<id>/webspaces/<webspace-id>/serverfarms/<plan-name>/async",
+        verb: "PUT"
    },
-   "topic":"/subscriptions/<id>/resourceGroups/<rg>/providers/Microsoft.Web/ serverfarms/<serverfarm-name>",
-   "dataVersion":"1",
-   "metaDataVersion":"1"
+   topic: "/subscriptions/<id>/resourceGroups/<rg>/providers/Microsoft.Web/serverfarms/<serverfarm-name>",
+   dataVersion: "1",
+   metaDataVersion: "1"
 }
 ```
 

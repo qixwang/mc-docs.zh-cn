@@ -41,7 +41,7 @@
               href: sql-api-async-java-get-started.md
             - name: Node.js
               href: sql-api-nodejs-get-started.md
-        - name: 生成 Web 应用
+        - name: 构建 Web 应用
           items:
             - name: .NET
               href: sql-api-dotnet-application.md
@@ -76,10 +76,10 @@
     - name: Python 示例
       href: sql-api-python-samples.md
     - name: PowerShell
-      href: powershell-samples-sql.md
+      href: powershell-samples.md
     - name: Azure CLI
       href: cli-samples.md
-    - name: Azure Resource Manager
+    - name: Azure 资源管理器
       href: resource-manager-samples.md
     - name: Azure Policy 内置策略定义
       displayName: 'samples, policies, definitions'
@@ -121,7 +121,7 @@
           href: partitioning-overview.md
         - name: 分区和水平扩展
           href: partition-data.md
-        - name: 创建合成分区键
+        - name: 合成分区键
           href: synthetic-partition-keys.md
     - name: 预配的吞吐量
       items:
@@ -137,7 +137,7 @@
           href: how-to-choose-offer.md
         - name: 自动缩放常见问题解答
           href: autoscale-faq.md
-    - name: SQL 查询
+    - name: SQL 查询 (SQL query)
       items:
         - name: 入门
           displayName: 'sql query, query basics'
@@ -227,6 +227,15 @@
                     - name: GetCurrentTimestamp
                       displayName: 'GetCurrentTimestamp, get current timestamp, timestamp, date and time functions, datetime'
                       href: sql-query-getcurrenttimestamp.md
+                    - name: DateTimeFromParts
+                      displayName: 'DateTimeFromParts, date time from parts, date and time functions, datetime'
+                      href: sql-query-datetimefromparts.md
+                    - name: DateTimeAdd
+                      displayName: 'DateTimeAdd, date time add, timestamp, date and time functions, datetime'
+                      href: sql-query-datetimeadd.md
+                    - name: DateTimeDiff
+                      displayName: 'DateTimeDiff, date time diff, date and time functions, datetime'
+                      href: sql-query-datetimediff.md
                 - name: 数学函数
                   items:
                     - name: 数学函数
@@ -450,9 +459,6 @@
         - name: LINQ to SQL
           displayName: 'linq, .NET'
           href: sql-query-linq-to-sql.md
-        - name: SQL 查询执行
-          displayName: 'query performance, query execution'
-          href: sql-query-execution.md
     - name: 使用 Azure Cosmos 帐户
       href: account-overview.md
     - name: 容器和项
@@ -549,6 +555,9 @@
         - name: 基于角色的访问控制
           displayName: rbac
           href: role-based-access-control.md
+        - name: Azure Policy 的安全控件
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: 安全基线
           href: security-baseline.md
     - name: 企业就绪情况
@@ -561,6 +570,8 @@
           href: policy.md
     - name: 服务配额
       href: concepts-limits.md
+    - name: 自动建议
+      href: automated-recommendations.md
 - name: Cassandra、MongoDB 和其他 API
   expanded: true
   items:
@@ -586,6 +597,8 @@
               href: create-cassandra-nodejs.md
             - name: Python
               href: create-cassandra-python.md
+            - name: Golang
+              href: create-cassandra-go.md
         - name: 教程
           items:
             - name: 1 - 创建和管理数据
@@ -599,7 +612,7 @@
               href: cassandra-import-data.md
         - name: 概念
           items:
-            - name: 常见问题
+            - name: 常见问题解答
               href: cassandra-faq.md
             - name: 弹性缩放
               href: manage-scale-cassandra.md
@@ -637,9 +650,9 @@
               href: manage-cassandra-with-resource-manager.md
               displayName: ARM
             - name: 使用 PowerShell 管理
-              href: powershell-samples-cassandra.md
+              href: powershell-samples.md
             - name: 使用 Azure CLI 进行管理
-              href: cli-samples-cassandra.md
+              href: cli-samples.md
     - name: MongoDB API
       items:
         - name: 概述
@@ -693,7 +706,7 @@
               href: mongodb-feature-support-36.md
             - name: 线路协议支持 (3.2)
               href: mongodb-feature-support.md
-            - name: 常见问题
+            - name: 常见问题解答
               href: mongodb-api-faq.md
         - name: 操作指南
           items:
@@ -729,9 +742,9 @@
               href: manage-mongodb-with-resource-manager.md
               displayName: ARM
             - name: 使用 PowerShell 管理
-              href: powershell-samples-mongodb.md
+              href: powershell-samples.md
             - name: 使用 Azure CLI 进行管理
-              href: cli-samples-mongodb.md
+              href: cli-samples.md
             - name: 排查常见问题
               href: mongodb-troubleshoot.md
     - name: Gremlin API
@@ -763,7 +776,7 @@
               href: tutorial-query-graph.md
         - name: 概念
           items:
-            - name: 常见问题
+            - name: 常见问题解答
               href: gremlin-api-faq.md
         - name: 操作指南
           items:
@@ -789,9 +802,9 @@
               href: manage-gremlin-with-resource-manager.md
               displayName: ARM
             - name: 使用 PowerShell 管理
-              href: powershell-samples-gremlin.md
+              href: powershell-samples.md
             - name: 使用 Azure CLI 进行管理
-              href: cli-samples-gremlin.md
+              href: cli-samples.md
         - name: 参考
           items:
             - name: 响应标头
@@ -848,7 +861,7 @@
               maintainContext: true
         - name: 概念
           items:
-            - name: 常见问题
+            - name: 常见问题解答
               href: table-api-faq.md
         - name: 操作指南
           items:
@@ -860,9 +873,9 @@
               href: manage-table-with-resource-manager.md
               displayName: ARM
             - name: 使用 PowerShell 管理
-              href: powershell-samples-table.md
+              href: powershell-samples.md
             - name: 使用 Azure CLI 进行管理
-              href: cli-samples-table.md
+              href: cli-samples.md
         - name: 参考
           items:
             - name: .NET
@@ -945,7 +958,7 @@
           href: how-to-manage-indexing-policy.md
         - name: 定义唯一键
           href: how-to-define-unique-keys.md
-    - name: 性能和故障排除
+    - name: 性能
       items:
         - name: 查询
           items:
@@ -953,28 +966,20 @@
               href: profile-sql-api-query.md
             - name: 调整查询性能
               href: sql-api-query-metrics.md
-            - name: 查询性能故障排除
-              href: troubleshoot-query-performance.md
         - name: .NET
           items:
             - name: .NET SDK v3 性能提示
               href: performance-tips-dotnet-sdk-v3-sql.md
             - name: .NET SDK v2 性能提示
               href: performance-tips.md
-            - name: 排查 .NET SDK 问题
-              href: troubleshoot-dot-net-sdk.md
         - name: Java
           items:
             - name: 适用于 Java SDK v4 的性能提示
               href: performance-tips-java-sdk-v4-sql.md
-            - name: 排查 Java SDK v4 问题
-              href: troubleshoot-java-sdk-v4-sql.md
             - name: Async Java SDK v2
               href: performance-tips-async-java.md
             - name: Sync Java SDK v2
               href: performance-tips-java.md
-            - name: Async Java SDK v2
-              href: troubleshoot-java-async-sdk.md
         - name: 性能测试 - 示例应用
           href: performance-testing.md
         - name: 以经济高效的方式读取和写入
@@ -983,6 +988,36 @@
       items:
         - name: 迁移到 Java V4 SDK
           href: migrate-java-v4-sdk.md
+    - name: 疑难解答
+      items:
+        - name: 常见错误
+          items:
+            - name: 查询性能故障排除
+              href: troubleshoot-query-performance.md
+            - name: 排查服务请求超时故障
+              href: troubleshoot-request-timeout.md
+            - name: 排查请求速率过大故障
+              href: troubleshoot-request-rate-too-large.md
+            - name: 未找到疑难解答
+              href: troubleshoot-not-found.md
+            - name: 故障排除未经授权
+              href: troubleshoot-unauthorized.md
+        - name: .NET
+          items:
+            - name: 排查 .NET SDK 常规故障
+              href: troubleshoot-dot-net-sdk.md
+            - name: 排查请求标头太大故障
+              href: troubleshoot-dot-net-sdk-request-header-too-large.md
+            - name: 排查请求超时故障
+              href: troubleshoot-dot-net-sdk-request-timeout.md
+            - name: 排查服务不可用故障
+              href: troubleshoot-service-unavailable.md
+        - name: .Java
+          items:
+            - name: 排查 Java SDK v4 问题
+              href: troubleshoot-java-sdk-v4-sql.md
+            - name: 排除故障 - Async Java SDK v2
+              href: troubleshoot-java-async-sdk.md
     - name: 更改源
       items:
         - name: Azure Cosmos DB 触发器日志
@@ -1051,6 +1086,8 @@
           items:
             - name: 用于 Cosmos 的 Azure Monitor（预览版）
               href: ../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/cosmos-db/toc.json&bc=/cosmos-db/breadcrumb/toc.json
+            - name: 要监视的方案
+              href: use-metrics.md
             - name: 监视请求单位使用情况
               href: monitor-request-unit-usage.md
         - name: 使用 Azure Monitor 日志
@@ -1059,8 +1096,8 @@
               href: cosmosdb-monitor-resource-logs.md
             - name: 审核控制平面日志
               href: audit-control-plane-logs.md
-        - name: 从 Cosmos DB 帐户中查看指标
-          href: use-metrics.md
+        - name: 配置警报
+          href: create-alerts.md
         - name: 监视数据参考
           href: monitor-cosmos-db-reference.md
         - name: 使用逻辑应用进行应用程序日志记录
@@ -1099,6 +1136,8 @@
           href: ../data-factory/connector-azure-cosmos-db.md?toc=/cosmos-db/toc.json&bc=/cosmos-db/breadcrumb/toc.json
         - name: Azure 流分析
           href: ../stream-analytics/stream-analytics-documentdb-output.md?toc=/cosmos-db/toc.json&bc=/cosmos-db/breadcrumb/toc.json
+        - name: Azure 数据资源管理器
+          href: 'https://github.com/Azure/azure-kusto-labs/tree/master/cosmosdb-adx-integration'
         - name: Azure 事件中心和 Azure 存储
           href: 'https://github.com/hdinsight/hdinsight-storm-examples/blob/master/IotExample/README.md'
         - name: 使用 Spring Boot Starter
@@ -1171,7 +1210,7 @@
       href: query-cheat-sheet.md
     - name: SQL 演练
       href: 'https://www.documentdb.com/sql/demo'
-    - name: 常见问题
+    - name: 常见问题解答
       href: faq.md
     - name: 白皮书
       href: whitepapers.md

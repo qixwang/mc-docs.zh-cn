@@ -1,21 +1,16 @@
 ---
 title: 充当事件网格源的 Azure 媒体服务
 description: 介绍为 Azure 事件网格中的媒体服务事件提供的属性
-services: media-services
-documentationcenter: ''
 author: Johnnytechn
-editor: ''
-ms.service: event-grid
-ms.workload: ''
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 08/10/2020
 ms.author: v-johya
-ms.openlocfilehash: c82927636f21d25ba3f59bc11373f9da99e09174
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: 5626e47760a6aff6a802dd9d81813d6065af33fe
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83002222"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88228019"
 ---
 # <a name="azure-media-services-as-an-event-grid-source"></a>充当事件网格源的 Azure 媒体服务
 
@@ -325,7 +320,8 @@ ms.locfileid: "83002222"
 | encoderPort | string | 此流的来源编码器的端口。 |
 | resultCode | string | 拒绝连接的原因。 下表中列出了结果代码。 |
 
-<!-- no live-event-error-codes.md -->
+可在[实时事件错误代码](../media-services/latest/live-event-error-codes.md)中找到错误结果代码。
+
 ### <a name="liveeventencoderconnected"></a>LiveEventEncoderConnected
 
 以下示例显示 **LiveEventEncoderConnected** 事件的架构： 
@@ -393,6 +389,8 @@ ms.locfileid: "83002222"
 | encoderIp | string | 编码器的 IP。 |
 | encoderPort | string | 此流的来源编码器的端口。 |
 | resultCode | string | 编码器断开连接的原因。 可能是正常断开连接，或者是由于出错而断开连接。 下表中列出了结果代码。 |
+
+可在[实时事件错误代码](../media-services/latest/live-event-error-codes.md)中找到错误结果代码。
 
 正常断开连接结果代码为：
 
@@ -656,15 +654,17 @@ ms.locfileid: "83002222"
 | eventType | string | 此事件源的一个注册事件类型。 例如，“Microsoft.Media.JobStateChange”。 |
 | EventTime | string | 基于提供程序 UTC 时间的事件生成时间。 |
 | id | string | 事件的唯一标识符。 |
-| 数据 | object | 媒体服务事件数据。 |
+| data | object | 媒体服务事件数据。 |
 | dataVersion | string | 数据对象的架构版本。 发布者定义架构版本。 |
 | metadataVersion | string | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
-<!-- no job-state-events-cli-how-to.md in China -->
 
+## <a name="next-steps"></a>后续步骤
+
+[注册作业状态更改事件](../media-services/latest/job-state-events-cli-how-to.md)
 
 ## <a name="see-also"></a>另请参阅
 
 - [包含媒体服务事件的 EventGrid .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
 - [媒体服务事件的定义](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
-<!-- no live-event-error-codes.md in China -->
+- [实时事件错误代码](../media-services/latest/live-event-error-codes.md)
 

@@ -2,17 +2,20 @@
 title: 从 CouchBase 迁移到 Azure Cosmos DB SQL API
 description: 有关从 CouchBase 迁移到 Azure Cosmos DB SQL API 的分步指南
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 02/11/2020
-ms.date: 06/22/2020
+ms.date: 08/17/2020
+ms.testscope: yes
+ms.testdate: 08/10/2020
 ms.author: v-yeche
 author: rockboyfor
-ms.openlocfilehash: e3f0d9a3fbdb837852af46a68e2a8cb0ff08a0f0
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.custom: devx-track-java
+ms.openlocfilehash: 5c33e9d7e1480effd6b3af49c00d1d7511fb5e59
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098309"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222871"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>从 CouchBase 迁移到 Azure Cosmos DB SQL API
 

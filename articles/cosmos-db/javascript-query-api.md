@@ -5,15 +5,16 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 05/07/2020
-ms.date: 06/22/2020
+ms.date: 08/17/2020
 ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: 5972c5edad9e33ad2172bd1d80dfa23c896ce824
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 4340a4128b63f505a6c43ea399af6e78a956743d
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098564"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223343"
 ---
 # <a name="javascript-query-api-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 JavaScript 查询 API
 

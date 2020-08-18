@@ -10,12 +10,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 91cbe207669b9cdafdaad12291faf744dd998c0b
-ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
+ms.openlocfilehash: c01ba08f9b16409113fb4e6e8d447b85a49a2831
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "86441192"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88227869"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>什么是 Azure 机器学习设计器（预览版）？ 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -115,25 +115,6 @@ ms.locfileid: "86441192"
 已发布的管道在每个模块的管道草稿中定义的计算资源上运行。
 
 设计器创建与 SDK 相同的 [PublishedPipeline](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.publishedpipeline?view=azure-ml-py) 对象。
-
-
-## <a name="moving-from-the-visual-interface-to-the-designer"></a>从可视化界面移动到设计器
-
-可视化界面（预览）已更新，现在是 Azure 机器学习设计器（预览）。 设计器经过重建，可使用基于管道的后端，与 Azure 机器学习的其他功能完全集成。 
-
-通过这些更新，可视化界面的一些概念和术语已产生变化或更改了名称。 请参阅下表，了解最关键的概念更改。 
-
-| 设计器中的概念 | 旧版（在可视化界面中） |
-| ---- |:----:|
-| 管道草稿 | 试验 |
-| 实时终结点 | Web 服务 |
-
-### <a name="migrating-to-the-designer"></a>迁移到设计器
-
-可将现有可视化界面试验和 Web 服务转换为设计器中的管道和实时终结点。 要迁移可视化界面资产，请执行以下步骤：
-
-[!INCLUDE [migrate from the visual interface](../../includes/aml-vi-designer-migration.md)]
-
 
 ## <a name="next-steps"></a>后续步骤
 

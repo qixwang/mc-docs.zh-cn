@@ -7,15 +7,15 @@ ms.assetid: 251d9074-8fff-4121-ad16-9eca9556ac96
 ms.devlang: azurecli
 ms.topic: sample
 origin.date: 12/11/2017
-ms.date: 03/30/2020
+ms.date: 08/13/2020
 ms.author: v-tawe
-ms.custom: mvc, seodec18
-ms.openlocfilehash: 00f22aae024f6fcd5abf9b94dbb6e94e4ac40eb9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.custom: mvc, seodec18, devx-track-azurecli
+ms.openlocfilehash: d6a1a454c331608d34069689f309c32f2cf4b59b
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80522104"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88228330"
 ---
 # <a name="scale-an-app-service-app-manually-using-azure-cli"></a>使用 Azure CLI 手动缩放应用服务应用
 

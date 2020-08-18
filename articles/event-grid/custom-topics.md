@@ -1,18 +1,16 @@
 ---
 title: Azure 事件网格中的自定义主题
 description: 介绍 Azure 事件网格中的自定义主题。
-services: event-grid
 author: Johnnytechn
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 08/10/2020
 ms.author: v-johya
-ms.openlocfilehash: c3c281c1539d8e5051f22b34e206309b2143ce6b
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: 3e884bde76bc4d28744a2963270f5a1983eeb67e
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83002224"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88228043"
 ---
 # <a name="custom-topics-in-azure-event-grid"></a>Azure 事件网格中的自定义主题
 事件网格主题提供一个可供源在其中发送事件的终结点。 发布服务器创建事件网格主题，并决定事件源需要一个主题还是多个主题。 主题用于收集相关事件。 为了对某些类型的事件作出响应，订阅服务器将决定要订阅的主题。

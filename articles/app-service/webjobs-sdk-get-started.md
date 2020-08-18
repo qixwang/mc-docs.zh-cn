@@ -5,14 +5,14 @@ author: ggailey777
 ms.devlang: dotnet
 ms.topic: article
 origin.date: 02/18/2019
-ms.date: 06/22/2020
+ms.date: 08/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: a0441978a02f8c0734c9e7222dc7929549f435b7
-ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
+ms.openlocfilehash: cd8b2c9c9bca435c023f13a77dac0d6eb6fd5e2a
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85613427"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88228244"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>用于事件驱动的后台处理的 Azure WebJobs SDK 入门
 
@@ -313,7 +313,7 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
 
 ### <a name="create-app-service-app-and-application-insights-instance"></a>创建应用服务应用和 Application Insights 实例
 
-1. 如果没有可用的应用服务应用，请[创建一个](app-service-web-get-started-dotnet-framework.md)。 创建应用时，还可以创建已连接的 Application Insights 资源。 执行此操作时，系统会在应用中为你设置 `APPINSIGHTS_INSTRUMENTATIONKEY`。
+1. 如果没有可用的应用服务应用，请[创建一个](quickstart-dotnet-framework.md)。 创建应用时，还可以创建已连接的 Application Insights 资源。 执行此操作时，系统会在应用中为你设置 `APPINSIGHTS_INSTRUMENTATIONKEY`。
 
 1. 如果没有可用的 Application Insights 资源，请[创建一个](../azure-monitor/app/create-new-resource.md )。 将“应用程序类型”设置为“常规”，并跳过“复制检测密钥”后面的部分。  
 

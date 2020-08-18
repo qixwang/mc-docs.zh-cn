@@ -4,18 +4,22 @@ description: 了解 Azure Cosmos DB 的 API for MongoDB（3.6 版本）支持的
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: overview
-origin.date: 01/15/2020
-ms.date: 07/06/2020
+origin.date: 07/15/2020
+ms.date: 08/17/2020
+ms.testscope: yes
+ms.testdate: 08/10/2020
 author: rockboyfor
 ms.author: v-yeche
-ms.openlocfilehash: 56330f9a6b7e7ce38fab29be97d2cb6503a56985
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+ms.openlocfilehash: 557b3c104cea6f914813ea466a9cb3fcbac629e8
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85320956"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222481"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>Azure Cosmos DB 的 API for MongoDB（3.6 版本）：支持的功能和语法
+
+<!--CORRECT ON  21Vianet-->
 
 Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服务。 可通过任何开源 MongoDB 客户端[驱动程序](https://docs.mongodb.org/ecosystem/drivers)与 Azure Cosmos DB's API for MongoDB 进行通信。 可以按照 MongoDB [有线协议](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol)规定，通过 Azure Cosmos DB 的 MongoDB API 来使用现有客户端驱动程序。
 
@@ -541,7 +545,32 @@ $polygon |  是 |
 
 ## <a name="unique-indexes"></a>唯一索引
 
-唯一索引确保特定字段在一个集合的所有文档中都不会有重复值，类似于默认“_id”键上保持唯一性的方式。 可以在 Cosmos DB 中使用 createIndex 命令（包括“唯一”约束）创建自定义索引。
+[唯一索引](mongodb-indexing.md#unique-indexes)确保特定字段在一个集合的所有文档中都不会有重复值，类似于默认“_id”键上保持唯一性的方式。 可以通过将 `createIndex` 命令与 `unique` 约束参数一起使用，在 Cosmos DB 中创建唯一索引：
+
+```javascript
+globaldb:PRIMARY> db.coll.createIndex( { "amount" : 1 }, {unique:true} )
+{
+        "_t" : "CreateIndexesResponse",
+        "ok" : 1,
+        "createdCollectionAutomatically" : false,
+        "numIndexesBefore" : 1,
+        "numIndexesAfter" : 4
+}
+```
+
+## <a name="compound-indexes"></a>复合索引
+
+[复合索引](mongodb-indexing.md#compound-indexes-mongodb-server-version-36)提供一种为多达 8 个字段的字段组创建索引的方法。 此类型的索引不同于本机 MongoDB 复合索引。 在 Azure Cosmos DB 中，复合索引用于对应用于多个字段的操作进行排序。 若要创建复合索引，需要指定多个属性作为参数：
+
+```javascript
+globaldb:PRIMARY> db.coll.createIndex({"amount": 1, "other":1})
+{
+        "createdCollectionAutomatically" : false, 
+        "numIndexesBefore" : 1,
+        "numIndexesAfter" : 2,
+        "ok" : 1
+}
+```
 
 ## <a name="time-to-live-ttl"></a>生存时间 (TTL)
 

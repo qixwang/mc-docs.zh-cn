@@ -7,15 +7,17 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: quickstart
 origin.date: 05/21/2019
-ms.date: 06/22/2020
+ms.date: 08/17/2020
+ms.testscope: yes
+ms.testdate: 08/10/2020
 ms.author: v-yeche
-ms.custom: seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: c4942cac49a6caa20687b924d44e49c42462796a
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.custom: seo-javascript-september2019, seo-javascript-october2019, devx-track-javascript
+ms.openlocfilehash: dbdd6a8889790315714f50441d1bc4e807926b43
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098665"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223095"
 ---
 # <a name="quickstart-migrate-an-existing-mongodb-nodejs-web-app-to-azure-cosmos-db"></a>快速入门：将现有的 MongoDB Node.js Web 应用迁移到 Azure Cosmos DB 
 
@@ -45,7 +47,7 @@ ms.locfileid: "85098665"
 
 ## <a name="clone-the-sample-application"></a>克隆示例应用程序
 
-运行以下命令克隆示例存储库。 此示例存储库包含默认的 [MEAN.js](https://meanjs.org/) 应用程序。
+运行下列命令以克隆示例存储库。 此示例存储库包含默认的 [MEAN.js](https://meanjs.org/) 应用程序。
 
 1. 打开命令提示符，新建一个名为“git-samples”的文件夹，然后关闭命令提示符。
 
@@ -59,7 +61,7 @@ ms.locfileid: "85098665"
     cd "C:\git-samples"
     ```
 
-3. 运行下列命令，克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。 
+3. 运行下列命令以克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。 
 
     ```bash
     git clone https://github.com/prashanthmadi/mean
@@ -69,14 +71,14 @@ ms.locfileid: "85098665"
 
 此 MongoDB 应用程序以 node.js 编写，连接到支持 MongoDB 客户端的 Azure Cosmos DB 数据库。 换言之，应用程序完全知道数据存储在 Azure Cosmos DB 数据库中。
 
-安装所需的包并启动应用程序。
+安装所需的包，并启动应用程序。
 
 ```bash
 cd mean
 npm install
 npm start
 ```
-应用程序将尝试连接到 MongoDB 源，并在输出返回“[MongoError: connect ECONNREFUSED 127.0.0.1:27017]”时失败，继续下一步退出应用程序。
+应用程序尝试连接到 MongoDB 源并失败，当输出返回“[MongoError: 连接 ECONNREFUSED 127.0.0.1:27017]”时，继续并退出应用程序。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -126,7 +128,7 @@ az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kin
 
 `--kind MongoDB` 参数启用 MongoDB 客户端连接。
 
-创建 Azure Cosmos DB 帐户后，Azure CLI 会显示类似于以下示例的信息。 
+创建 Azure Cosmos DB 帐户后，Azure CLI 会显示类似于以下示例的信息： 
 
 > [!NOTE]
 > 此示例使用 JSON 作为 Azure CLI 输出格式，此为默认设置。 若要使用其他输出格式，请参阅 [Azure CLI 命令的输出格式](https://docs.azure.cn/cli/format-output-azure-cli?view=azure-cli-latest)。
@@ -170,7 +172,7 @@ DB/databaseAccounts/<cosmosdb-name>",
 <a name="devconfig"></a>
 ## <a name="configure-the-connection-string-in-your-nodejs-application"></a>在 Node.js 应用程序中配置连接字符串
 
-在 MEAN.js 存储库中打开 `config/env/local-development.js`。
+在 MEAN.js 存储库中，打开 `config/env/local-development.js`。
 
 请将此文件的内容替换为以下代码。 另外，请务必将两个 `<cosmosdb-name>` 占位符替换为 Cosmos 帐户名。
 
@@ -186,16 +188,11 @@ module.exports = {
 
 ## <a name="retrieve-the-key"></a>检索密钥
 
-<!--MOONCAKE: CORRECT ON reference with global URL-->
-<!--CORRECT ON [az cosmosdb keys list](https://docs.microsoft.com/cli/azure/cosmosdb/keys?view=azure-cli-latest#az-cosmosdb-keys-list)-->
-
 若要连接到 Cosmos 数据库，需要使用数据库密钥。 使用 [az cosmosdb keys list](https://docs.microsoft.com/cli/azure/cosmosdb/keys?view=azure-cli-latest#az-cosmosdb-keys-list) 命令检索主键。
 
 ```azurecli
 az cosmosdb keys list --name <cosmosdb-name> --resource-group myResourceGroup --query "primaryMasterKey"
 ```
-
-<!--MOONCAKE: CORRECT ON reference with global URL-->
 
 Azure CLI 输出类似于以下示例的信息。 
 
@@ -215,13 +212,13 @@ Azure CLI 输出类似于以下示例的信息。
 npm start
 ```
 
-此时应会显示一条控制台消息，告知开发环境已启动且正在运行。 
+此时应会显示一条控制台消息，告知开发环境已启动并运行。 
 
 在浏览器中转到 `http://localhost:3000`。 在顶部菜单中选择“注册”，并尝试创建两个虚拟用户。 
 
 MEAN.js 示例应用程序将用户数据存储在数据库中。 如果上述操作成功并且 MEAN.js 可自动登录到已创建的用户，则表示 Azure Cosmos DB 连接可正常工作。 
 
-![MEAN.js 成功连接到 MongoDB](./media/create-mongodb-nodejs/mongodb-connect-success.png)
+:::image type="content" source="./media/create-mongodb-nodejs/mongodb-connect-success.png" alt-text="MEAN.js 成功连接至 MongoDB":::
 
 ## <a name="view-data-in-data-explorer"></a>在数据资源管理器中查看数据
 
@@ -229,19 +226,19 @@ Cosmos 数据库中存储的数据可用于在 Azure 门户中查看和查询。
 
 若要查看、查询和处理在上一步骤中创建的用户数据，请在 Web 浏览器中登录到 [Azure 门户](https://portal.azure.cn)。
 
-在顶部搜索框中，输入 **Azure Cosmos DB**。 打开 Cosmos 帐户边栏选项卡后，请选择 Cosmos 帐户。 在左侧导航栏中，选择“数据资源管理器”。 在“集合”窗格中展开集合，即可查看该集合中的文档，查询数据，甚至可以创建和运行存储过程、触发器与 UDF。 
+在顶部搜索框中，输入 **Azure Cosmos DB**。 打开 Cosmos 帐户边栏选项卡后，请选择 Cosmos 帐户。 在左侧导航栏中，选择“数据资源管理器”。 在“集合”窗格中展开你的集合，即可查看该集合中的文档，查询数据，甚至可以创建和运行存储过程、触发器与 UDF。 
 
-![Azure 门户中的数据资源管理器](./media/create-mongodb-nodejs/cosmosdb-connect-mongodb-data-explorer.png)
+:::image type="content" source="./media/create-mongodb-nodejs/cosmosdb-connect-mongodb-data-explorer.png" alt-text="Azure 门户中的数据资源管理器":::
 
 ## <a name="deploy-the-nodejs-application-to-azure"></a>将 Node.js 应用程序部署到 Azure
 
 此步骤将 Node.js 应用程序部署到 Cosmos DB。
 
-可能已注意到，前面更改的配置文件适用于开发环境 (`/config/env/local-development.js`)。 将应用程序部署到应用服务后，该应用程序默认在生产环境中运行。 因此，现在需要对相应的配置文件进行相同的更改。
+可能已经注意到，前面更改的配置文件适用于开发环境 (`/config/env/local-development.js`)。 将应用程序部署到应用服务后，该应用程序默认在生产环境中运行。 因此，现在需要对相应的配置文件做出相同的更改。
 
-在 MEAN.js 存储库中打开 `config/env/production.js`。
+在 MEAN.js 存储库中，打开 `config/env/production.js`。
 
-在 `db` 对象中，如以下示例所示替换 `uri` 的值。 请务必按上文所述替换占位符。
+在 `db` 对象中，替换 `uri` 的值，如下方示例所示。 请务必像前面一样替换占位符。
 
 ```javascript
 'mongodb://<cosmosdb-name>:<primary_master_key>@<cosmosdb-name>.documents.azure.cn:10255/mean?ssl=true&sslverifycertificate=false',

@@ -8,14 +8,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 05/12/2020
+ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 912c32d3fb82a3f0cf861fd546ab434e0599a2e0
-ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
+ms.openlocfilehash: f709ef0b9f3f8e2e4716784facf81f39becc0333
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "86440907"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88228491"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>教程：使用设计器预测汽车价格（预览）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -37,6 +37,8 @@ ms.locfileid: "86440907"
 >我们提供了本教程的已完成版本作为示例管道。
 >
 >若要找到该示例，请转到工作区中的设计器。 在“新建管道部分，选择”示例 1 - 回归: 汽车价格预测(基本)”。
+
+[!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
 ## <a name="create-a-new-pipeline"></a>创建新管道
 
@@ -77,11 +79,11 @@ Azure 机器学习管道可将多个机器学习和数据处理步骤组织成�
     如果已有可用的计算目标，则可以选择它来运行此管道。
 
     > [!NOTE]
-    > 设计器只能在 Azure 机器学习计算目标和 Azure 机器学习计算实例目标上运行训练试验。 不会显示其他计算目标。
+    > 设计器只能在 Azure 机器学习计算目标和 Azure 机器学习计算实例目标上运行训练试验，但其他计算目标不会显示。
 
 1. 输入计算资源的名称。
 
-1. 选择“保存” 。
+1. 选择“保存”。
 
     > [!NOTE]
     > 创建计算资源大约需要五分钟。 创建资源之后，可以重用它，并跳过此等待时间，以便将来运行。

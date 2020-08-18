@@ -3,16 +3,19 @@ title: 在 Azure Cosmos DB 中配置和管理生存时间
 description: 了解如何在 Azure Cosmos DB 中配置和管理容器和项的生存时间
 author: rockboyfor
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 03/27/2020
-ms.date: 06/22/2020
+ms.date: 08/17/2020
+ms.testscope: yes
+ms.testdate: 08/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: f36183df596c9942cf4fb0cc85b74b0e57bc8e6d
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.custom: devx-track-javascript, devx-track-azurecli
+ms.openlocfilehash: bfc52747b3478e4cac3dd686e8c92ac33d4e8694
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098579"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222920"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中配置生存时间
 
@@ -35,7 +38,7 @@ ms.locfileid: "85098579"
     * 选择“启用(无默认值)”或选择“启用”，然后设置一个 TTL 值**** ****
     * 单击“保存” **** 以保存更改。
 
-    ![在 Azure 门户中配置生存时间](./media/how-to-time-to-live/how-to-time-to-live-portal.png)
+    :::image type="content" source="./media/how-to-time-to-live/how-to-time-to-live-portal.png" alt-text="在 Azure 门户中配置生存时间":::
 
     * 当 DefaultTimeToLive 为 null 时，生存时间为“关”
     * 当 DefaultTimeToLive 为 -1 时，“生存时间”设置为“开”（无默认值）
@@ -147,7 +150,7 @@ await client.GetDatabase("database").CreateContainerAsync(new ContainerPropertie
 {
     Id = "container",
     PartitionKeyPath = "/myPartitionKey",
-    DefaultTimeToLive = 90 * 60 * 60 * 24; // expire all documents after 90 days
+    DefaultTimeToLive = 90 * 60 * 60 * 24 // expire all documents after 90 days
 });
 ```
 ---

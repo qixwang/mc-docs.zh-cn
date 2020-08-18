@@ -13,12 +13,12 @@ metadata:
   ms.author: v-jay
   origin.date: 08/20/2019
   ms.date: 07/20/2020
-  ms.openlocfilehash: 6a59a2099ca950bf7dda8897cc7ca4dc8a109f4b
-  ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
+  ms.openlocfilehash: 49cbd0a8062e426f99fe170aa0c9c295a2c357c0
+  ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/16/2020
-  ms.locfileid: "86414695"
+  ms.lasthandoff: 08/14/2020
+  ms.locfileid: "88228352"
 landingContent:
 - title: 关于 Blob 存储
   linkLists:
@@ -94,8 +94,6 @@ landingContent:
       url: storage-quickstart-blobs-nodejs.md
     - text: 在浏览器中通过 JavaScript 管理 Azure Blob 存储
       url: quickstart-blobs-javascript-browser.md
-    - text: 将事件路由到 Web 终结点
-      url: ../../event-grid/blob-event-quickstart-portal.md
     - text: 托管静态网站
       url: storage-blob-static-website-how-to.md
   - linkListType: concept

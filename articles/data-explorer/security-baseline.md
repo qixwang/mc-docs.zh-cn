@@ -8,12 +8,12 @@ origin.date: 03/25/2020
 ms.date: 06/09/2020
 ms.author: v-tawe
 ms.custom: security-benchmark
-ms.openlocfilehash: 0cae3881ecd51fb262aa3be2915a676d65e23545
-ms.sourcegitcommit: 73697fa9c19a40d235df033400c74741e7d0f3f4
+ms.openlocfilehash: 503623ae420aa5da2f509772bc937ec4fc5c2725
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84603151"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88228415"
 ---
 # <a name="azure-security-baseline-for-data-explorer"></a>数据资源管理器的 Azure 安全基线
 
@@ -25,7 +25,7 @@ ms.locfileid: "84603151"
 
 ## <a name="network-security"></a>网络安全
 
-有关详细信息，请参阅[安全控制：__ 网络安全性](https://docs.azure.cn/security/benchmarks/security-control-network-security)。
+有关详细信息，请参阅[安全控制：网络安全性](https://docs.azure.cn/security/benchmarks/security-control-network-security)。
 
 <!--
 ### 1.1: Protect resources using Network Security Groups or Azure Firewall on your Virtual Network
@@ -155,7 +155,7 @@ How to create an Azure Blueprint:  https://docs.azure.cn/governance/blueprints/c
 
 ## <a name="logging-and-monitoring"></a>日志记录和监视
 
-有关详细信息，请参阅[安全控制：__ 日志记录和监视](https://docs.azure.cn/security/benchmarks/security-control-logging-monitoring)。
+有关详细信息，请参阅[安全控制：日志记录和监视](https://docs.azure.cn/security/benchmarks/security-control-logging-monitoring)。
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1：使用批准的时间同步源
 
@@ -261,7 +261,7 @@ Azure 平台日志概述： https://docs.azure.cn/azure-monitor/platform/platfor
 
 ## <a name="identity-and-access-control"></a>标识和访问控制
 
-有关详细信息，请参阅[安全控制：__ 标识和访问控制](https://docs.azure.cn/security/benchmarks/security-control-identity-access-control)。
+有关详细信息，请参阅[安全控制：标识和访问控制](https://docs.azure.cn/security/benchmarks/security-control-identity-access-control)。
 
 ### <a name="31-maintain-inventory-of-administrative-accounts"></a>3.1：维护管理帐户的清单
 
@@ -428,7 +428,7 @@ https://docs.azure.cn/security/fundamentals/customer-lockbox-overview
 
 ## <a name="data-protection"></a>数据保护
 
-有关详细信息，请参阅[安全控制：__ 数据保护](https://docs.azure.cn/security/benchmarks/security-control-data-protection)。
+有关详细信息，请参阅[安全控制：数据保护](https://docs.azure.cn/security/benchmarks/security-control-data-protection)。
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：维护敏感信息的清单
 
@@ -485,7 +485,7 @@ How to create an NSG with a Security Config:  https://docs.azure.cn/virtual-netw
 
 **指导**：数据标识、分类和丢失防护功能尚不适用于 Azure 数据资源管理器。 如果需要出于合规性目的使用这些功能，请实施第三方解决方案。
 
-对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 已实施并维护一套可靠的数据保护控制机制和功能。
+对于由 Microsoft 管理的底层平台，Microsoft 将所有客户内容都视为敏感内容，竭尽全力防范客户数据丢失和泄露。 为了确保 Azure 中的客户数据保持安全，Microsoft 已实施并维护一套可靠的数据保护控制机制和功能。
 
 了解 Azure 中的客户数据保护： https://docs.azure.cn/security/fundamentals/protection-customer-data
 
@@ -537,7 +537,7 @@ Microsoft 管理 Azure 数据资源管理器的底层基础结构，并实施了
 
 ## <a name="vulnerability-management"></a>漏洞管理
 
-有关详细信息，请参阅[安全控制：__ 漏洞管理。](https://docs.azure.cn/security/benchmarks/security-control-vulnerability-management)
+有关详细信息，请参阅[安全控制：漏洞管理。](https://docs.azure.cn/security/benchmarks/security-control-vulnerability-management)
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1：运行自动漏洞扫描工具
 
@@ -586,7 +586,7 @@ Microsoft 还对支持 Azure 数据资源管理器的底层系统执行漏洞管
 
 ## <a name="inventory-and-asset-management"></a>清单和资产管理
 
-有关详细信息，请参阅[安全控制：__ 清单和资产管理](https://docs.azure.cn/security/benchmarks/security-control-inventory-asset-management)。
+有关详细信息，请参阅[安全控制：清单和资产管理](https://docs.azure.cn/security/benchmarks/security-control-inventory-asset-management)。
 
 ### <a name="61-utilize-azure-asset-discovery"></a>6.1：使用 Azure 资产发现
 
@@ -738,7 +738,7 @@ Azure Policy 示例： https://docs.azure.cn/governance/policy/samples/not-allow
 
 ## <a name="secure-configuration"></a>安全配置
 
-有关详细信息，请参阅[安全控制：__ 安全配置](https://docs.azure.cn/security/benchmarks/security-control-secure-configuration)。
+有关详细信息，请参阅[安全控制：安全配置](https://docs.azure.cn/security/benchmarks/security-control-secure-configuration)。
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：为所有 Azure 资源建立安全配置
 
@@ -872,9 +872,11 @@ Azure Policy 示例： https://docs.azure.cn/governance/policy/samples/not-allow
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7.13：消除意外的凭据透露
 
-**指导**：实施凭据扫描程序来识别代码中的凭据。 凭据扫描程序还会建议将发现的凭据转移到更安全的位置，例如 Azure Key Vault。
+**指南**：实施凭据扫描程序来识别代码中的凭据。 凭据扫描程序还会建议将发现的凭据转移到更安全的位置，例如 Azure Key Vault。
 
-如何设置凭据扫描器： https://secdevtools.azurewebsites.net/helpcredscan.html
+如何设置凭据扫描程序：
+<!-- do not need to change endpoint -->
+https://secdevtools.azurewebsites.net/helpcredscan.html
 
 **Azure 安全中心监视**：不适用
 
@@ -882,7 +884,7 @@ Azure Policy 示例： https://docs.azure.cn/governance/policy/samples/not-allow
 
 ## <a name="malware-defense"></a>恶意软件防护
 
-有关详细信息，请参阅[安全控制：__ 恶意软件防护](https://docs.azure.cn/security/benchmarks/security-control-malware-defense)。
+有关详细信息，请参阅[安全控制：恶意软件防护](https://docs.azure.cn/security/benchmarks/security-control-malware-defense)。
 
 ### <a name="81-utilize-centrally-managed-anti-malware-software"></a>8.1：使用集中管理的反恶意软件
 
@@ -916,7 +918,7 @@ Azure Policy 示例： https://docs.azure.cn/governance/policy/samples/not-allow
 
 ## <a name="data-recovery"></a>数据恢复
 
-有关详细信息，请参阅[安全控制：__ 数据恢复](https://docs.azure.cn/security/benchmarks/security-control-data-recovery)。
+有关详细信息，请参阅[安全控制：数据恢复](https://docs.azure.cn/security/benchmarks/security-control-data-recovery)。
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1：确保定期执行自动备份
 
@@ -983,7 +985,7 @@ Configure customer-managed-keys using the Azure Resource Manager template:  http
 
 ## <a name="incident-response"></a>事件响应
 
-有关详细信息，请参阅[安全控制：__ 事件响应](https://docs.azure.cn/security/benchmarks/security-control-incident-response)。
+有关详细信息，请参阅[安全控制：事件响应](https://docs.azure.cn/security/benchmarks/security-control-incident-response)。
 
 ### <a name="101-create-incident-response-guide"></a>10.1：创建事件响应指南
 
@@ -1062,7 +1064,7 @@ Configure customer-managed-keys using the Azure Resource Manager template:  http
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>渗透测试和红队练习
 
-有关详细信息，请参阅[安全控制：__ 渗透测试和红队演练](https://docs.azure.cn/security/benchmarks/security-control-penetration-tests-red-team-exercises)。
+有关详细信息，请参阅[安全控制：渗透测试和红队演练](https://docs.azure.cn/security/benchmarks/security-control-penetration-tests-red-team-exercises)。
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-to-remediate-all-critical-security-findings-within-60-days"></a>11.1：定期对 Azure 资源执行渗透测试，确保在 60 天内修正所有发现的关键安全问题
 

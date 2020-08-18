@@ -7,21 +7,23 @@ ms.subservice: cosmosdb-graph
 ms.devlang: python
 ms.topic: quickstart
 origin.date: 01/22/2019
-ms.date: 06/22/2020
+ms.date: 08/17/2020
+ms.testscope: yes
+ms.testdate: 08/10/2020
 ms.author: v-yeche
 ms.custom: tracking-python
-ms.openlocfilehash: a119957a52edd1d8af5773ff26591e3edfdcff7b
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: 54c1d517b7bd429981004d43d1bb1369b4dbb807
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098676"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223245"
 ---
 <!--Verify sucessfully-->
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-python-and-the-azure-portal"></a>快速入门：在 Azure Cosmos DB 中使用 Python 和 Azure 门户创建图形数据库
 
 > [!div class="op_single_selector"]
-> * [Gremlin console](create-graph-gremlin-console.md)（Gremlin 控制台）
+> * [Gremlin 控制台](create-graph-gremlin-console.md)
 > * [.NET](create-graph-dotnet.md)
 > * [Java](create-graph-java.md)
 > * [Node.js](create-graph-nodejs.md)
@@ -69,7 +71,7 @@ ms.locfileid: "85098676"
     cd "C:\git-samples"
     ```
 
-3. 运行下列命令，克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。 
+3. 运行下列命令以克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。 
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-graph-python-getting-started.git
@@ -103,7 +105,7 @@ ms.locfileid: "85098676"
 
     复制 URI 值的第一部分。
 
-    ![在 Azure 门户的“密钥”页中，查看并复制访问密钥](./media/create-graph-python/keys.png)
+    :::image type="content" source="./media/create-graph-python/keys.png" alt-text="在 Azure 门户的“密钥”页中，查看并复制访问密钥":::
 
 2. 打开 *connect.py* 文件，并将 URI 值粘贴至第 104 行的 `<YOUR_ENDPOINT>` 位置：
 
@@ -177,31 +179,31 @@ ms.locfileid: "85098676"
 
 1. 在 Azure 门户中，在你的 Azure Cosmos DB 帐户中，选择“数据资源管理器”，展开“sample-graph”，再依次选择“图形”和“应用筛选器”。 
 
-    ![在 Azure 门户的数据资源管理器中创建新文档](./media/create-graph-python/azure-cosmosdb-data-explorer-expanded.png)
+    :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-expanded.png" alt-text="在 Azure 门户的数据资源管理器中创建新文档":::
 
 2. 在“结果”列表中，请注意，图中添加了三个新用户。 可以通过拖放操作来移动顶点，也可以通过滚动鼠标滚轮进行缩放，并能用双箭头放大图形。 
 
-    ![在 Azure 门户数据资源管理器的图形中的新顶点](./media/create-graph-python/azure-cosmosdb-graph-explorer-new.png)
+    :::image type="content" source="./media/create-graph-python/azure-cosmosdb-graph-explorer-new.png" alt-text="在 Azure 门户数据资源管理器的图形中的新顶点":::
 
 3. 接下来，添加几个新用户。 选择“新建顶点”按钮，向图形中添加数据。
 
-    ![在 Azure 门户的数据资源管理器中创建新文档](./media/create-graph-python/azure-cosmosdb-data-explorer-new-vertex.png)
+    :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-new-vertex.png" alt-text="在 Azure 门户的数据资源管理器中创建新文档":::
 
 4. 输入标签“人员”。
 
 5. 选择“添加属性”，以添加下列每个属性。 注意，可以在图形中为每个人创建唯一属性。 仅 id 键是必需的。
 
-    key|value|注释
+    key|value|说明
     ----|----|----
     pk|/pk| 
     id|ashley|顶点的唯一标识符。 如果未指定 id，将为你生成一个。
-    gender|女| 
-    技术 | Java | 
+    gender|female| 
+    tech | Java | 
 
     > [!NOTE]
     > 在本快速入门中创建未分区的集合。 但是，如果在创建集合过程中通过指定分区键创建了分区的集合，则需在每个新顶点中包括该分区键作为键。 
 
-6. 选择“确定” 。 可能需要展开屏幕才能在屏幕底部看到“确定”。
+6. 选择“确定”。 可能需要展开屏幕才能在屏幕底部看到“确定”。
 
 7. 再次选择“新建顶点”，添加其他新用户。 
 
@@ -209,14 +211,14 @@ ms.locfileid: "85098676"
 
 9. 选择“添加属性”，以添加下列每个属性：
 
-    key|value|注释
+    key|value|说明
     ----|----|----
     pk|/pk| 
     id|rakesh|顶点的唯一标识符。 如果未指定 id，将为你生成一个。
-    gender|男| 
-    学校|MIT| 
+    gender|male| 
+    school|MIT| 
 
-10. 选择“确定” 。 
+10. 选择“确定”。 
 
 11. 选择“应用筛选器”按钮（使用默认 `g.V()` 筛选器），显示图中的所有值。 所有用户此时会显示在“结果”列表中。 
 
@@ -224,15 +226,15 @@ ms.locfileid: "85098676"
 
 12. 现在可以连接 rakesh 与 ashley。 确保在“结果”列表中选中“ashley”，然后选择右下侧“目标”旁边的编辑按钮。 可能需要扩大窗口才能看到“属性”区域。
 
-    ![更改图形中某个顶点的目标。](./media/create-graph-python/azure-cosmosdb-data-explorer-edit-target.png)
+    :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-edit-target.png" alt-text="更改图形中某个顶点的目标":::
 
 13. 在“目标”框中键入“rakesh”，在“Edge 标签”框中键入“认识”，再选中复选框。
 
-    ![通过数据资源管理器在 ashley 和 rakesh 之间添加连接](./media/create-graph-python/azure-cosmosdb-data-explorer-set-target.png)
+    :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-set-target.png" alt-text="通过数据资源管理器在 ashley 和 rakesh 之间添加连接":::
 
 14. 现在，从结果列表中选择“rakesh”即可看到 ashley 和 rakesh 已连接。 
 
-    ![在数据资源管理器中连接的两个顶点](./media/create-graph-python/azure-cosmosdb-graph-explorer.png)
+    :::image type="content" source="./media/create-graph-python/azure-cosmosdb-graph-explorer.png" alt-text="在数据资源管理器中连接的两个顶点":::
 
 这就完成了本教程的资源创建部分。 可以继续向图形添加顶点、修改现有顶点，也可以更改查询。 现在，回顾一下 Azure Cosmos DB 提供的指标，然后清理资源。 
 

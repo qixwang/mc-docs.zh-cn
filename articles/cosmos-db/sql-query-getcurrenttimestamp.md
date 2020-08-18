@@ -4,19 +4,22 @@ description: 了解 Azure Cosmos DB 中的 SQL 系统函数 GetCurrentTimestamp�
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 09/13/2019
-ms.date: 10/28/2019
+origin.date: 07/09/2020
+ms.date: 08/17/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
 ms.custom: query-reference
-ms.openlocfilehash: 933cf151005cd8a9757d593fee5abe495fb82831
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: df111268261b600dfdd576a9199860dfb3421c2d
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72914728"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223081"
 ---
 # <a name="getcurrenttimestamp-azure-cosmos-db"></a>GetCurrentTimestamp (Azure Cosmos DB)
- 返回自 1970 年 1 月 1 日星期四 00:00:00 开始消逝的毫秒数。 
+
+ 返回自 1970 年 1 月 1 日星期四 00:00:00 开始消逝的毫秒数。
 
 ## <a name="syntax"></a>语法
 
@@ -56,5 +59,4 @@ SELECT GetCurrentTimestamp() AS currentUtcTimestamp
 - [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
 - [Azure Cosmos DB 简介](introduction.md)
 
-<!--Update_Description: new articles on sql query get current timestamp  -->
-<!--New.date: 10/28/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

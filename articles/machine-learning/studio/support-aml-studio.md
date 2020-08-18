@@ -9,14 +9,17 @@ ms.topic: conceptual
 author: peterclu
 ms.author: amlstudiodocs
 ms.date: 01/18/2019
-ms.openlocfilehash: 0f46f00870a3d42c76c1249c3f249084d4b3b921
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.openlocfilehash: fa96d3719cdb3b3cd1649d34e36aeda196cf0d40
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723679"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88228102"
 ---
 # <a name="get-support-and-training-for-azure-machine-learning-studio-classic"></a>获取 Azure 机器学习工作室（经典）的支持和培训
+
+**适用于：**  ![yes](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![no](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)
+
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
@@ -26,7 +29,7 @@ ms.locfileid: "84723679"
 
 请参阅我们的学习资源：
 + [教程和操作说明文章](../studio/index.yml) 
-+ [初学者的数据科学视频](../studio/data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) 
+
 
 ## <a name="submit-doc-feedback"></a>提交文档反馈
 

@@ -1,19 +1,16 @@
 ---
 title: Azure 事件网格 SDK
 description: 介绍 Azure 事件网格的 SDK。 这些 SDK 提供管理、发布和使用功能。
-services: event-grid
-author: spelluru
-manager: timlt
-ms.service: event-grid
 ms.topic: reference
-ms.date: 01/19/2019
-ms.author: v-yiso
-ms.openlocfilehash: b204ad718770cb0daddd8af3810988475c1a97c8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+author: Johnnytechn
+ms.author: v-johya
+ms.date: 08/10/2020
+ms.openlocfilehash: dd9617bcc14791818b319f58923bd7a3007621cb
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "66195313"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88227990"
 ---
 # <a name="event-grid-sdks-for-management-and-publishing"></a>用于管理和发布的事件网格 SDK
 
@@ -45,5 +42,6 @@ ms.locfileid: "66195313"
 
 * 有关示例应用程序，请参阅[事件网格代码示例](https://azure.microsoft.com/resources/samples/?sort=0&service=event-grid)。
 * 有关事件网格的介绍，请参阅[什么是事件网格？](overview.md)
-* 有关 Azure CLI 中的事件网格命令，请参阅 [Azure CLI](/cli/eventgrid)。
-* 有关 PowerShell 中的事件网格命令，请参阅 [PowerShell](/powershell/module/az.eventgrid)。
+* 有关 Azure CLI 中的事件网格命令，请参阅 [Azure CLI](https://docs.microsoft.com/cli/azure/ext/eventgrid/?view=azure-cli-latest)。
+* 有关 PowerShell 中的事件网格命令，请参阅 [PowerShell](https://docs.microsoft.com/powershell/module/az.eventgrid)。
+

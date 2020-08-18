@@ -3,25 +3,27 @@ title: Linux 虚拟机上的 SQL Server 常见问题解答 | Microsoft Docs
 description: 本文提供有关在 Linux 虚拟机上运行 SQL Server 的常见问题解答。
 services: virtual-machines-linux
 documentationcenter: ''
-author: Johnnytechn
+author: WenJason
 tags: azure-service-management
 ms.service: virtual-machines-sql
 ms.topic: troubleshooting
 ms.workload: iaas-sql-server
-ms.date: 06/30/2020
-ms.author: v-johya
+origin.date: 12/13/2017
+ms.date: 08/17/2020
+ms.author: v-jay
 ms.reviewer: jroth
-ms.openlocfilehash: 59c8f622f889c49df1d11f1028a96b4cfc5ee85b
-ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
+ms.openlocfilehash: 34d39a9e645131d02fde195dd2361f86b1bccb26
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85852570"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223008"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-linux-virtual-machines"></a>有关 Linux 虚拟机上的 SQL Server 的常见问题解答
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!div class="op_single_selector"]
+> * [Windows](../windows/frequently-asked-questions-faq.md)
 > * [Linux](frequently-asked-questions-faq.md)
 
 本文提供有关[在 Linux 虚拟机上运行 SQL Server](sql-server-on-linux-vm-what-is-iaas-overview.md) 时出现的一些最常见问题的解答。
@@ -32,7 +34,7 @@ ms.locfileid: "85852570"
 
 1. **有哪些 SQL Server 虚拟机库映像可用？**
 
-   Azure 为所有 Linux 和 Windows 版本中所有受支持的 SQL Server 主要发行版维护虚拟机 (VM) 映像。 有关更多详细信息，请参阅 [Linux VM 映像](sql-server-on-linux-vm-what-is-iaas-overview.md#create)和 [Windows VM 映像](/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)的完整列表。
+   Azure 为所有 Linux 和 Windows 版本中所有受支持的 SQL Server 主要发行版维护虚拟机 (VM) 映像。 有关更多详细信息，请参阅 [Linux VM 映像](sql-server-on-linux-vm-what-is-iaas-overview.md#create)和 [Windows VM 映像](../windows/sql-server-on-azure-vm-iaas-what-is-overview.md#payasyougo)的完整列表。
 
 1. **现有的 SQL Server 虚拟机库映像是否会更新？**
 
@@ -78,7 +80,7 @@ ms.locfileid: "85852570"
 
 1. **是否可从 SQL Server VM 中完全删除 SQL Server？**
 
-   是的，但仍将按照 [SQL Server Azure VM 的定价指南](/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance.md)收取 SQL Server VM 费用。 如果不再需要 SQL Server，可以部署新的虚拟机并将数据和应用程序迁移到新的虚拟机。 然后可以删除 SQL Server 虚拟机。
+   是的，但仍将按照 [SQL Server Azure VM 的定价指南](../windows/pricing-guidance.md?toc=%2fvirtual-machines%2flinux%2fsql%2ftoc.json)收取 SQL Server VM 费用。 如果不再需要 SQL Server，可以部署新的虚拟机并将数据和应用程序迁移到新的虚拟机。 然后可以删除 SQL Server 虚拟机。
 
 ## <a name="updating-and-patching"></a>更新和修补
 
@@ -102,6 +104,6 @@ ms.locfileid: "85852570"
 
 **Windows VM**：
 
-* [Windows VM 上的 SQL Server 概述](/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)
-* [在 Windows VM 上预配 SQL Server](/virtual-machines/windows/sql/quickstart-sql-vm-create-portal.md)
-
+* [Windows VM 上的 SQL Server 概述](../windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
+* [在 Windows VM 上预配 SQL Server](../windows/sql-vm-create-portal-quickstart.md)
+* [常见问题 (Windows)](../windows/frequently-asked-questions-faq.md)

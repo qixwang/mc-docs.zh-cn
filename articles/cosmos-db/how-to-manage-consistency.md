@@ -3,16 +3,19 @@ title: 在 Azure Cosmos DB 中管理一致性
 description: 了解如何使用 Azure 门户、.NET SDK、Java SDK 和各种其他 SDK 在 Azure Cosmos DB 中配置和管理一致性级别
 author: rockboyfor
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 06/10/2020
-ms.date: 06/22/2020
+ms.date: 08/17/2020
+ms.testscope: yes
+ms.testdate: 08/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 16f03d5da9e11b6e34a970719992ea7591ae8356
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.custom: devx-track-javascript
+ms.openlocfilehash: ea90a6d7b520bf0d4bf73260bc54da2b332287b9
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098499"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223224"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中管理一致性级别
 
@@ -31,7 +34,7 @@ ms.locfileid: "85098499"
 <!--MOONCAKE: music notes in cosmos db NOT AVAILABLE till on 06/19/2020-->
 <!--Not Available on The Azure portal also provides a visualization of different consistency levels with music notes. -->
 
-![Azure 门户中的一致性菜单](./media/how-to-manage-consistency/consistency-settings.png)
+:::image type="content" source="./media/how-to-manage-consistency/consistency-settings.png" alt-text="Azure 门户中的一致性菜单":::
 
 # <a name="cli"></a>[CLI](#tab/cli)
 
@@ -334,7 +337,7 @@ item = client.ReadItem(doc_link, options)
 
 最终一致性的最终程度如何？ 对于普通情况，我们是否可以提供版本历史和时间方面的过期限度。 [**概率有限过期 (PBS)** ](https://pbs.cs.berkeley.edu/) 指标尝试量化过期的概率并将其显示为指标。 若要查看 PBS 指标，请在 Azure 门户中转到你的 Cosmos 帐户。 打开“指标”**** 窗格，然后选择“一致性”**** 选项卡。查看名为“基于工作负载的强一致性读取的概率(请参阅 PBS)”的图。****
 
-![Azure 门户中的 PBS 图](./media/how-to-manage-consistency/pbs-metric.png)
+:::image type="content" source="./media/how-to-manage-consistency/pbs-metric.png" alt-text="Azure 门户中的 PBS 图":::
 
 ## <a name="next-steps"></a>后续步骤
 

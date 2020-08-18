@@ -5,15 +5,17 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: reference
 origin.date: 09/03/2019
-ms.date: 12/16/2019
+ms.date: 08/17/2020
+ms.testscope: no
+ms.testdate: ''
 author: rockboyfor
 ms.author: v-yeche
-ms.openlocfilehash: 9a665cbe1eefadeae78febf0c2ecfe733c3543d5
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4c9d2d0e147afc3c69a392d2c83c605c78d29fbe
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75336093"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223210"
 ---
 # <a name="azure-cosmos-db-gremlin-server-response-headers"></a>Azure Cosmos DB Gremlin 服务器响应标头
 本文介绍了执行请求时 Cosmos DB Gremlin 服务器返回给调用方的标头。 这些标头可用于排查请求性能问题，生成与 Cosmos DB 服务进行本机集成的应用程序，以及简化客户支持。

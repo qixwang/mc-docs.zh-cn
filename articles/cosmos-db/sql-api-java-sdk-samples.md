@@ -6,14 +6,17 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
 origin.date: 05/20/2020
-ms.date: 07/06/2020
+ms.date: 08/17/2020
+ms.testscope: yes
+ms.testdate: 08/10/2020
+ms.custom: devx-track-java
 ms.author: v-yeche
-ms.openlocfilehash: d699ecb44c4de9bf313e64988dfe2ac795b76d3b
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+ms.openlocfilehash: e4ce5a9c88418e65d8816be39a05518033ab9e4c
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323378"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222430"
 ---
 <!--Verified successfully-->
 # <a name="azure-cosmos-db-sql-api-java-sdk-v4-examples"></a>Azure Cosmos DB SQL API：Java SDK v4 示例
@@ -35,7 +38,7 @@ ms.locfileid: "85323378"
 > [!IMPORTANT]  
 >[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 >  
->- 可以[激活 Visual Studio 订阅者权益](https://www.azure.cn/offers/ms-mc-arz-msdn/index.html)：Visual Studio 订阅每月提供可用来试用付费版 Azure 服务的信用额度。
+>- 可以[激活 Visual Studio 订阅者权益](https://www.azure.cn/offers/ms-mc-arz-msdn/)：Visual Studio 订阅每月提供可用来试用付费版 Azure 服务的信用额度。
 >
 >[!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 >
@@ -228,5 +231,4 @@ com.azure.cosmos.examples.sample.synchronicity.MainClass
 | 对集合或文档设置权限 | - |
 | 获取用户权限列表 |- |
 
-<!-- Update_Description: new article about sql api java sdk samples -->
-<!--NEW.date: 06/22/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

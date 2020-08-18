@@ -5,21 +5,21 @@ author: yegu-ms
 ms.author: v-junlch
 ms.service: cache
 ms.topic: overview
-ms.date: 05/20/2020
-ms.openlocfilehash: 5e6a4591389292369cc2a930250db2391d5b0c3f
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+ms.date: 08/10/2020
+ms.openlocfilehash: 3189f4fa0e812117b99ab070d4c2448625f6f401
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796711"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223138"
 ---
 # <a name="azure-cache-for-redis"></a>用于 Redis 的 Azure 缓存
 
-Azure Cache for Redis 基于开源软件 [Redis](https://redis.io/) 提供内存中数据存储。 用作缓存时，Redis 可以提高极其依赖于后端数据存储的系统的性能和可伸缩性。 提高性能的方式是将经常访问的数据复制到靠近应用程序的快速存储。 使用 Azure Cache for Redis 时，此快速存储位于内存中，而不是通过数据库从磁盘加载。
+Azure Cache for Redis 基于开源软件 [Redis](https://redis.io/) 提供内存中数据存储。 当用作缓存时，Redis 可以提高极其依赖于后端数据存储的系统的性能和可伸缩性。 提高性能的方式是将经常访问的数据复制到靠近应用程序的快速存储。 使用 Azure Cache for Redis 时，此快速存储位于内存中，而不是通过数据库从磁盘加载。
 
 Azure Cache for Redis 可用作分布式数据缓存、会话存储和消息中转站。 若要提高应用程序性能，可充分利用 Redis 引擎低延迟、高吞吐量的性能特点。
 
-Azure Cache for Redis 可以访问安全的专用 Redis 缓存。 它由 Microsoft 管理并在 Azure 上托管，可供 Azure 内外的任何应用程序访问。
+Azure Cache for Redis 可以访问安全的专用 Redis 缓存。 它由 Microsoft 进行管理并在 Azure 中托管，可供 Azure 内外的任何应用程序访问。
 
 ## <a name="using-azure-cache-for-redis"></a>使用 Azure Redis 缓存
 
@@ -40,8 +40,8 @@ Azure Redis 缓存在下述层中提供：
 | 层 | 说明 |
 |---|---|
 基本 | 单节点缓存。 此层级支持多个内存大小（250 MB - 53 GB），适用于开发/测试和非关键工作负荷。 基本层没有服务级别协议 (SLA) |
-| 标准 | 在 Azure 托管的双节点（主/辅）配置中提供复制的缓存，并提供高可用性 SLA (99.9%) |
-| 高级 | 高级层是面向企业的层。 高级层缓存支持更多的功能，吞吐量更高，延迟更低。 高级层中的缓存部署在更强大的硬件上，其性能优于基本层或标准层。 这种优势意味着，在缓存大小相同的情况下，高级层的吞吐量大于标准层。 |
+| Standard | 在 Azure 托管的双节点（主/副本）配置中提供复制的缓存，并提供高可用性 SLA (99.9%) |
+| Premium | 高级层是面向企业的层。 高级层缓存支持更多的功能，吞吐量更高，延迟更低。 高级层中的缓存部署在更强大的硬件上，其性能优于基本层或标准层。 这种优势意味着，在缓存大小相同的情况下，高级层的吞吐量大于标准层。 |
 
 > [!TIP]
 > 有关高级缓存大小、吞吐量和带宽的详细信息，请参阅 [Azure Redis 缓存常见问题解答](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)。
@@ -53,7 +53,7 @@ Azure Redis 缓存在下述层中提供：
 
 [Azure Redis 缓存定价](https://www.azure.cn/pricing/details/redis-cache/)页对每个层进行了详细比较。 下表介绍了每个层支持的部分功能：
 
-| 功能说明 | 高级 | 标准 | 基本 |
+| 功能说明 | 高级 | Standard | 基本 |
 | ------------------- | :-----: | :------: | :---: |
 | [服务级别协议 (SLA)](https://www.azure.cn/support/sla/redis-cache/) |✔|✔|-|
 | [Redis 数据持久性](cache-how-to-premium-persistence.md) |✔|-|-|

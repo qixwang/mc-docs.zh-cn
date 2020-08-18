@@ -7,14 +7,14 @@ ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: quickstart
 origin.date: 3/18/2020
-ms.date: 04/27/2020
+ms.date: 08/17/2020
 ms.custom: mvc
-ms.openlocfilehash: 71f59745ad56fc036490082caa9131a27793ea87
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: e13bc6d24d6992d6da513b260d0397f72afd03ba
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126801"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222949"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>使用 Azure CLI 创建 Azure Database for MariaDB 服务器
 
@@ -22,7 +22,7 @@ Azure CLI 可用于从命令行或脚本创建和管理 Azure 资源。 本快�
 
 如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
 
-就本快速入门来说，必须运行 Azure CLI 2.0 或更高版本。 运行 `az --version` 即可查找版本。 如果需要安装或升级 CLI，请参阅[安装 Azure CLI 2.0]( /cli/install-azure-cli)。 
+就本快速入门来说，必须运行 Azure CLI 2.0 或更高版本。 运行 `az --version` 即可查找版本。 如果需要安装或升级 CLI，请参阅[安装 Azure CLI 2.0](/cli/install-azure-cli)。
 
 如果有多个订阅，请选择要计费的资源所在的订阅，或者本身要计费的订阅。 若要选择帐户中的特定订阅 ID，请使用 [az account set](/cli/account#az-account-set) 命令：
 
@@ -34,7 +34,7 @@ az account set --subscription 00000000-0000-0000-0000-000000000000
 
 使用 [az group create](/cli/group#az-group-create) 命令创建 [Azure 资源组](/azure-resource-manager/resource-group-overview)。 资源组是在其中以组的形式部署和管理 Azure 资源的逻辑容器。
 
-以下示例在 `chinaeast2` 位置创建一个名为 `myresourcegroup` 的资源组：
+以下示例在 `chinaeast2` 位置创建名为 `myresourcegroup` 的资源组：
 
 ```azurecli
 az group create --name myresourcegroup --location chinaeast2
@@ -49,10 +49,10 @@ az group create --name myresourcegroup --location chinaeast2
 name | **mydemoserver** | 输入用于标识 Azure Database for MariaDB 服务器的唯一名称。 服务器名称只能包含小写字母、数字和连字符 (-) 字符。 它必须包含 3 到 63 个字符。
 resource-group |  myresourcegroup | 输入 Azure 资源组的名称。
 sku-name | **GP_Gen5_2** | SKU 的名称。 请遵循简写约定：*定价层*\_*计算代*\_*vCore 数*。 有关 **sku-name** 参数的详细信息，请查看此表后面的部分。
-backup-retention | **7** | 备份保留时间。 单位为天。 范围：7 到 35。 
+backup-retention | **7** | 保留备份的时长。 单位为天。 范围：7 到 35。 
 geo-redundant-backup | **已禁用** | 是否应该为此服务启用异地冗余备份。 允许的值：**Enabled**、**Disabled**。
 location | **chinaeast2** | 服务器的 Azure 位置。
-ssl-enforcement | **Enabled** | 是否应该为此服务器启用 SSL。 允许的值：**Enabled**、**Disabled**。
+ssl-enforcement | **已启用** | 是否应该为此服务器启用 SSL。 允许的值：**Enabled**、**Disabled**。
 storage-size | **51200** | 服务器的存储容量（单位是兆字节）。 有效的存储大小最小为 5120 MB，以 1024 MB 为增量。 有关存储大小限制的详细信息，请参阅[定价层](./concepts-pricing-tiers.md)。 
 版本 | **10.2** | MariaDB 主要引擎版本。
 admin-user | **myadmin** | 用于管理员登录的用户名。 admin-user 参数不能是“azure_superuser”、“admin”、“administrator”、“root”、“guest”或“public”。       
@@ -76,7 +76,7 @@ az mariadb server create --resource-group myresourcegroup --name mydemoserver  -
 
 ## <a name="configure-a-firewall-rule"></a>配置防火墙规则
 
-使用 [az mariadb server firewall-rule create](https://docs.microsoft.com/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-create) 命令创建 Azure Database for MariaDB 服务器级防火墙规则。 服务器级防火墙规则允许外部应用程序（如 mysql 命令行工具或 MySQL Workbench）通过 Azure Database for MariaDB 服务防火墙连接到服务器。 
+使用 [az mariadb server firewall-rule create](https://docs.microsoft.com/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-create) 命令创建 Azure Database for MariaDB 服务器级防火墙规则。 服务器级防火墙规则允许外部应用程序（如 mysql 命令行工具或 MySQL Workbench）通过 Azure Database for MariaDB 服务防火墙连接到服务器。
 
 以下示例创建名为 `AllowMyIP` 的防火墙规则，该规则允许从特定的 IP 地址 (192.168.0.1) 进行连接。 替换 IP 地址或 IP 地址范围，这些地址或地址范围对应于要从其进行连接的位置。
 
@@ -156,7 +156,7 @@ az mariadb server show --resource-group myresourcegroup --name mydemoserver
 
    应会看到类似于以下文本的内容：
 
-   ```bash
+   ```cmd
    C:\Users\>mysql -h mydemoserver.mariadb.database.chinacloudapi.cn -u myadmin@mydemoserver -p
    Enter password: ***********
    Welcome to the MySQL monitor.  Commands end with ; or \g.

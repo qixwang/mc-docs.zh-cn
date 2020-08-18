@@ -4,15 +4,17 @@ description: 获取用于在 Azure Cosmos DB Cassandra API 帐户中执行各种
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: sample
-origin.date: 05/13/2020
-ms.date: 07/06/2020
+origin.date: 06/12/2020
+ms.date: 08/17/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: acf1d591885d460eb6fe09977eaba4f5abcc7181
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+ms.openlocfilehash: cb1d4b7a995385d9aecffe595b9251a1410795d2
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323336"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222465"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db---cassandra-api"></a>适用于 Azure Cosmos DB 的 Azure PowerShell 示例 - Cassandra API
 
@@ -21,7 +23,7 @@ ms.locfileid: "85323336"
 > [!NOTE]
 > 该示例使用 [Az.CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) 管理 cmdlet。 请定期检查 `Az.CosmosDB` 是否有更新。
 
-| | |
+|任务 | 说明 |
 |---|---|
 |[创建帐户、密钥空间和表](scripts/powershell/cassandra/ps-cassandra-create.md)| 创建 Azure Cosmos 帐户、密钥空间和表。 |
 |[列出或获取密钥空间或表](scripts/powershell/cassandra/ps-cassandra-list-get.md)| 列出或获取密钥空间或表。 |
@@ -31,6 +33,7 @@ ms.locfileid: "85323336"
 |[更改故障转移优先级或触发故障转移](scripts/powershell/common/ps-account-failover-priority-update.md)| 更改 Azure Cosmos 帐户的区域故障转移优先级或触发手动故障转移。 |
 |[帐户密钥或连接字符串](scripts/powershell/common/ps-account-keys-connection-strings.md)| 获取主密钥和辅助密钥、连接字符串或重新生成 Azure Cosmos 帐户的帐户密钥。 |
 |[创建启用 IP 防火墙的 Cosmos 帐户](scripts/powershell/common/ps-account-firewall-create.md)| 创建启用 IP 防火墙的 Azure Cosmos 帐户。 |
+|[锁定资源以防止将其删除](scripts/powershell/cassandra/powershell-cassandra-lock.md)| 通过资源锁防止资源遭到删除。 |
 |||
 
 <!-- Update_Description: update meta properties, wording update, update link -->

@@ -6,14 +6,14 @@ documentationcenter: ''
 author: tgore03
 ms.service: cloud-services
 ms.topic: article
-ms.date: 04/26/2020
+ms.date: 08/10/2020
 ms.author: v-junlch
-ms.openlocfilehash: 4e6b90ac1714a866343ab3dbb456449125d08d5b
-ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
+ms.openlocfilehash: 5bd37d5ee156e32417c2b649d23cffb14571ce82
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82267643"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223103"
 ---
 # <a name="manage-cloud-services-in-the-azure-portal"></a>在 Azure 门户中管理云服务
 在 Azure 门户的“云服务”  区域中，可以：
@@ -77,7 +77,7 @@ ms.locfileid: "82267643"
 
 - 如果想要将静态 IP 地址用于生产槽，还必须为过渡槽保留一个静态 IP 地址。 否则，交换将失败。
 
-- 在执行交换之前，角色的所有实例必须都在运行。 可在 Azure 门户的“概述”  边栏选项卡中检查实例的状态。 或者，可以在 Windows PowerShell 中使用 [Get-AzureRole](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azurerole?view=azuresmps-3.7.0) 命令。
+- 在执行交换之前，角色的所有实例必须都在运行。 可在 Azure 门户的“概述”  边栏选项卡中检查实例的状态。 或者，可以在 Windows PowerShell 中使用 [Get-AzureRole](https://docs.microsoft.com/powershell/module/servicemanagement/azure.service/get-azurerole?view=azuresmps-3.7.0) 命令。
 
 请注意，来宾 OS 更新和服务修复操作也会导致部署交换失败。 有关详细信息，请参阅[排查云服务部署问题](cloud-services-troubleshoot-deployment-problems.md)。
 

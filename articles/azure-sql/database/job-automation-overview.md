@@ -11,12 +11,12 @@ ms.author: v-jay
 ms.reviewer: carlr
 origin.date: 03/10/2020
 ms.date: 07/13/2020
-ms.openlocfilehash: 6dcf561144ff563f0c6fc535c595347d9501e9b5
-ms.sourcegitcommit: fa26665aab1899e35ef7b93ddc3e1631c009dd04
+ms.openlocfilehash: a51fde05f850e545a961aa3141d250876b28df53
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86228147"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222570"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>使用数据库作业自动完成管理任务
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -55,8 +55,8 @@ Azure SQL 数据库允许创建和计划可针对一个或多个数据库定期�
 
 | |弹性作业 |SQL 代理 |
 |---------|---------|---------|
-|范围 | 作业代理所在 Azure 云中任意数目的 Azure SQL 数据库中的数据库和/或数据仓库。 目标可以位于不同的服务器、订阅和/或区域中。 <br><br>目标组可以包含单个数据库或数据仓库，也可以包含某个服务器、池或分片映射中的所有数据库（在作业运行时动态枚举）。 | SQL 代理所在实例中的任何单个数据库。 |
-|支持的 API 和工具 | 门户、PowerShell、T-SQL、Azure 资源管理器 | T-SQL、SQL Server Management Studio (SSMS) |
+|**范围** | 作业代理所在 Azure 云中任意数目的 Azure SQL 数据库中的数据库和/或数据仓库。 目标可以位于不同的服务器、订阅和/或区域中。 <br><br>目标组可以包含单个数据库或数据仓库，也可以包含某个服务器、池或分片映射中的所有数据库（在作业运行时动态枚举）。 | SQL 代理所在实例中的任何单个数据库。 |
+|**支持的 API 和工具** | 门户、PowerShell、T-SQL、Azure 资源管理器 | T-SQL、SQL Server Management Studio (SSMS) |
 
 ## <a name="sql-agent-jobs"></a>SQL 代理作业
 

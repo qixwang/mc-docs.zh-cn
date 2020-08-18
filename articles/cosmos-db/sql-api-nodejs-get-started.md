@@ -7,14 +7,17 @@ ms.subservice: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: tutorial
 origin.date: 04/20/2020
-ms.date: 07/06/2020
+ms.date: 08/17/2020
+ms.testscope: yes
+ms.testdate: 08/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: d6eea0c96a0bff84d50dd60b2afc09384bd4a78d
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 811a2fedebe789cfad57f6449e6d0218af025d94
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323379"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222428"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>教程：使用 JavaScript SDK 生成 Node.js 控制台应用以管理 Azure Cosmos DB SQL API 数据
 
@@ -27,7 +30,7 @@ ms.locfileid: "85323379"
 
 作为开发人员，你可能有使用 NoSQL 文件数据的应用程序。 可以使用 Azure Cosmos DB 中的 SQL API 帐户存储和访问此文档数据。 本教程介绍如何生成 Node.js 控制台应用程序，以便创建 Azure Cosmos DB 资源并对其进行查询。
 
-在本教程中，你将：
+在本教程中，将：
 
 > [!div class="checklist"]
 > * 创建并连接到 Azure Cosmos DB 帐户。
@@ -49,7 +52,7 @@ ms.locfileid: "85323379"
 
 ## <a name="create-azure-cosmos-db-account"></a>创建 Azure Cosmos DB 帐户
 
-创建 Azure Cosmos DB 帐户。 如果已经有想要使用的帐户，可以跳到 [安装 Node.js 应用程序](#SetupNode)。 如果使用 Azure Cosmos DB 模拟器，请遵循 [Azure Cosmos DB 模拟器](local-emulator.md)中的步骤设置该模拟器，并直接跳到[设置 Node.js 应用程序](#SetupNode)。 
+让我们创建一个 Azure Cosmos DB 帐户。 如果已经有想要使用的帐户，可以跳到 [安装 Node.js 应用程序](#SetupNode)。 如果使用 Azure Cosmos DB 模拟器，请遵循 [Azure Cosmos DB 模拟器](local-emulator.md)中的步骤设置该模拟器，并直接跳到[设置 Node.js 应用程序](#SetupNode)。 
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
@@ -58,11 +61,11 @@ ms.locfileid: "85323379"
 
 在开始编写生成应用程序所需的代码之前，可以生成应用的框架。 运行以下步骤，设置包含框架代码的 Node.js 应用程序：
 
-1. 打开偏好的终端。
+1. 打开最喜爱的终端。
 2. 找到想要在其中保存 Node.js 应用程序的文件夹或目录。
 3. 使用以下命令创建空的 JavaScript 文件：
 
-    * Windows:
+    * Windows：
         * `fsutil file createnew app.js 0`
         * `fsutil file createnew config.js 0`
         * `md data`
@@ -74,10 +77,10 @@ ms.locfileid: "85323379"
         * `mkdir data`
         * `touch data/databaseContext.js`
 
-4. 创建并初始化 `package.json` 文件。 请使用以下命令：
+4. 创建并初始化 `package.json` 文件。 使用以下命令：
     * ```npm init -y```
 
-5. 通过 npm 安装 @azure/cosmos 模块。 请使用以下命令：
+5. 通过 npm 安装 @azure/cosmos 模块。 使用以下命令：
     * ```npm install @azure/cosmos --save```
 
 <a name="Config"></a>
@@ -93,11 +96,11 @@ ms.locfileid: "85323379"
     // @ts-check
 
     const config = {
-     endpoint: "<Your Azure Cosmos account URI>",
-     key: "<Your Azure Cosmos account key>",
-     databaseId: "Tasks",
-     containerId: "Items",
-     partitionKey: { kind: "Hash", paths: ["/category"] }
+        endpoint: "<Your Azure Cosmos account URI>",
+        key: "<Your Azure Cosmos account key>",
+        databaseId: "Tasks",
+        containerId: "Items",
+        partitionKey: { kind: "Hash", paths: ["/category"] }
     };
 
     module.exports = config;
@@ -105,7 +108,7 @@ ms.locfileid: "85323379"
 
     可在 [Azure 门户](https://portal.azure.cn)的“键”窗格中找到终结点和键详细信息。
 
-    ![从 Azure 门户获取密钥的屏幕截图][keys]
+   :::image type="content" source="media/sql-api-nodejs-get-started/node-js-tutorial-keys.png" alt-text="从 Azure 门户获取密钥的屏幕截图":::
 
 JavaScript SDK 使用通用术语“容器”和“项”。  容器可以是集合、图或表。 项可以是文档、边缘/顶点或行，是容器中的内容。 在前面的代码片段中，`module.exports = config;` 代码用于导出 config 对象，以便你在 app.js 文件中引用它。
 
@@ -123,27 +126,27 @@ JavaScript SDK 使用通用术语“容器”和“项”。  容器可以是集
     // This script ensures that the database is setup and populated correctly
     */
     async function create(client, databaseId, containerId) {
-     const partitionKey = config.partitionKey;
+        const partitionKey = config.partitionKey;
 
-     /**
-      * Create the database if it does not exist
-      */
-     const { database } = await client.databases.createIfNotExists({
-       id: databaseId
-     });
-     console.log(`Created database:\n${database.id}\n`);
+        /**
+        * Create the database if it does not exist
+        */
+        const { database } = await client.databases.createIfNotExists({
+            id: databaseId
+        });
+        console.log(`Created database:\n${database.id}\n`);
 
-     /**
-      * Create the container if it does not exist
-      */
-     const { container } = await client
-       .database(databaseId)
-       .containers.createIfNotExists(
-         { id: containerId, partitionKey },
-         { offerThroughput: 400 }
-       );
+        /**
+         * Create the container if it does not exist
+         */
+        const { container } = await client
+            .database(databaseId)
+            .containers.createIfNotExists(
+            { id: containerId, partitionKey },
+            { offerThroughput: 400 }
+        );
 
-     console.log(`Created container:\n${container.id}\n`);
+        console.log(`Created container:\n${container.id}\n`);
     }
 
     module.exports = { create };
@@ -302,7 +305,7 @@ const newItem = {
   id: "3",
   category: "fun",
   name: "Cosmos DB",
-description: Complete Cosmos DB Node.js Quickstart ⚡",
+  description: "Complete Cosmos DB Node.js Quickstart ⚡",
   isComplete: false
 };
 //  </DefineNewItem>
@@ -419,7 +422,7 @@ Deleted item with id: 3
 * 一个 [Azure Cosmos DB 帐户][create-account]。
 * GitHub 上提供的[入门](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-nodejs-getting-started)解决方案。
 
-通过 npm 安装项目的依赖项。 请使用以下命令：
+通过 npm 安装项目的依赖项。 使用以下命令：
 
 * ```npm install``` 
 
@@ -441,6 +444,5 @@ node app.js
 > [监视 Azure Cosmos DB 帐户](monitor-accounts.md)
 
 [create-account]: create-sql-api-dotnet.md#create-account
-[keys]: media/sql-api-nodejs-get-started/node-js-tutorial-keys.png
 
 <!-- Update_Description: update meta properties, wording update, update link -->

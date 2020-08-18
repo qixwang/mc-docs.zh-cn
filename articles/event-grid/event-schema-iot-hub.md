@@ -1,20 +1,16 @@
 ---
 title: 充当事件网格源的 Azure IoT 中心
 description: 本文提供 Azure IoT 中心事件的属性和架构。 它列出了可用的事件类型、示例事件和事件属性。
-services: iot-hub
-documentationcenter: ''
 author: Johnnytechn
-editor: ''
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 08/10/2020
 ms.author: v-johya
-ms.openlocfilehash: 0606f91c210d015e28720687e073bc65f3970d7c
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: 47f0c7a9f7fd31219f5274210a836fa84f052a9f
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83001966"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88228021"
 ---
 # <a name="azure-iot-hub-as-an-event-grid-source"></a>充当事件网格源的 Azure IoT 中心
 本文提供 Azure IoT 中心事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。 
@@ -31,7 +27,7 @@ Azure IoT 中心发出以下事件类型：
 | Microsoft.Devices.DeviceDeleted | 当设备从 IoT 中心删除时发布。 | 
 | Microsoft.Devices.DeviceConnected | 当设备连接到 IoT 中心时发布。 |
 | Microsoft.Devices.DeviceDisconnected | 当设备与 IoT 中心断开连接时发布。 | 
-| Microsoft.Devices.DeviceTelemetry | 当遥测消息发送到 IoT 中心时发布。 |
+<!--Not available in MC: Microsoft.Devices.DeviceTelemetry-->
 
 ### <a name="example-event"></a>示例事件
 

@@ -6,15 +6,17 @@ ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
 origin.date: 05/13/2020
-ms.date: 06/22/2020
+ms.date: 08/17/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: 2a7c82a723098ba5a5c0e52a90fa082da98066f3
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: d577e01063898514099f581bcefd6f74d1a238f3
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098709"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222758"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB 更改源处理器
 
@@ -36,7 +38,7 @@ ms.locfileid: "85098709"
 
 若要进一步了解更改源处理器的四个元素是如何协同工作的，请看下图中的一个示例。 受监视的容器会存储文档，并将“City”用作分区键。 我们发现分区键值分布在包含项的范围内。 有两个主机实例，更改源处理器向每个实例分配不同范围的分区键值，以最大程度地提高计算分布率。 每个范围都是并行读取的，其进程的维护独立于租用容器中的其他范围。
 
-![更改源处理器示例](./media/change-feed-processor/changefeedprocessor.png)
+:::image type="content" source="./media/change-feed-processor/changefeedprocessor.png" alt-text="更改源处理器示例" border="false":::
 
 ## <a name="implementing-the-change-feed-processor"></a>实现更改源处理器
 
@@ -56,7 +58,7 @@ private static async Task<ChangeFeedProcessor> StartChangeFeedProcessorAsync(
 
     Container leaseContainer = cosmosClient.GetContainer(databaseName, leaseContainerName);
     ChangeFeedProcessor changeFeedProcessor = cosmosClient.GetContainer(databaseName, sourceContainerName)
-        .GetChangeFeedProcessorBuilder<ToDoItem>("changeFeedSample", HandleChangesAsync)
+        .GetChangeFeedProcessorBuilder<ToDoItem>(processorName: "changeFeedSample", HandleChangesAsync)
             .WithInstanceName("consoleHost")
             .WithLeaseContainer(leaseContainer)
             .Build();

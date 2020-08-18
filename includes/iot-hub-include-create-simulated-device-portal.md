@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 02/26/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 5b36772bab1f79f18718b9196e56fa7558a9365c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 507b131d5778396831aa3a725969e831b4bd7eed
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74414486"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88246270"
 ---
 <!-- This is the instructions for creating a simulated device you can use for testing routing.-->
 
-接下来，创建设备标识并保存其密钥供之后使用。 此设备标识由模拟应用程序用来发送消息到 IoT 中心。 此功能在 PowerShell 中不可用，在使用 Azure 资源管理器模板时也不可用。 以下步骤介绍如何使用 [Azure 门户](https://portal.azure.com)创建模拟设备。
+接下来，创建设备标识并保存其密钥供之后使用。 此设备标识由模拟应用程序用来发送消息到 IoT 中心。 此功能在 PowerShell 中不可用，在使用 Azure 资源管理器模板时也不可用。 以下步骤介绍如何使用 [Azure 门户](https://portal.azure.cn)创建模拟设备。
 
 1. 打开 [Azure 门户](https://portal.azure.cn)并登录到 Azure 帐户。
 

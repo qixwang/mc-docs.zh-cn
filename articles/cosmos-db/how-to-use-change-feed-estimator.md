@@ -3,16 +3,18 @@ title: 使用更改源估算器 - Azure Cosmos DB
 description: 了解如何使用更改源估算器分析更改源处理器的进度
 author: rockboyfor
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 08/15/2019
-ms.date: 04/27/2020
+ms.date: 08/17/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 73904ef3be93c8e974cf51aab0f91e3d302ea062
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 7b2a86f9fb9e360bdd2cc443ca7f449d73c0e4a3
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134643"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222919"
 ---
 # <a name="use-the-change-feed-estimator"></a>使用更改源估算器
 
@@ -92,4 +94,4 @@ static async Task HandleEstimationAsync(long estimation, CancellationToken cance
 * [更改源处理器概述](change-feed-processor.md)
 * [更改源处理器开始时间](how-to-configure-change-feed-start-time.md)
 
-<!--Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

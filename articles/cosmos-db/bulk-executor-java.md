@@ -5,17 +5,20 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 06/05/2020
-ms.date: 07/27/2020
+ms.date: 08/17/2020
+ms.testscope: yes
+ms.testdate: 08/10/2020
 ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: a2ff6162292a16bd5f433b94c6f11e8019b35160
-ms.sourcegitcommit: 4d9846bb03ac24bd98b0c9a781bb8912ff6d2f61
+ms.custom: devx-track-java
+ms.openlocfilehash: ef8e2b281b7bd7dfd47bce50e5dc8ecfc0efcb98
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2020
-ms.locfileid: "86926753"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222787"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>使用 Bulk Executor Java 库针对 Azure Cosmos DB 数据执行批量操作
 
@@ -31,10 +34,7 @@ ms.locfileid: "86926753"
 
     <!-- Not Available on [Try Azure Cosmos DB for free](https://www.azure.cn/try/cosmosdb/) -->
 
-* [Java 开发工具包 (JDK) 1.7+](https://docs.azure.cn/java/java-supported-jdk-runtime?view=azure-java-stable)  
-    
-    <!--CORRECT ON 1.7+ (https://docs.azure.cn/java/java-supported-jdk-runtime?view=azure-java-stable)-->
-    
+* [Java 开发工具包 (JDK) 1.7+](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)  
     - 在 Ubuntu 上运行 `apt-get install default-jdk`，以便安装 JDK。  
 
     - 请确保设置 JAVA_HOME 环境变量，使之指向在其中安装了 JDK 的文件夹。
@@ -49,7 +49,7 @@ ms.locfileid: "86926753"
 
 现在，我们从 GitHub 下载示例 Java 应用程序来接着处理代码。 此应用程序针对 Azure Cosmos DB 数据执行批量操作。 若要克隆该应用程序，请打开命令提示符，导航到要将该应用程序复制到的目录，然后运行以下命令：
 
-```
+```bash
  git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-java-getting-started.git 
 ```
 
@@ -135,13 +135,13 @@ ms.locfileid: "86926753"
 
 5. 准备好批量导入应用程序后，请使用“mvn clean package”命令从源代码生成命令行工具。 此命令在目标文件夹中生成一个 jar 文件：  
 
-    ```java
+    ```bash
     mvn clean package
     ```
 
 6. 生成目标依赖关系后，可使用以下命令调用批量导入程序应用程序：  
 
-    ```java
+    ```bash
     java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint *<Fill in your Azure Cosmos DB's endpoint>*  -masterKey *<Fill in your Azure Cosmos DB's master key>* -databaseId bulkImportDb -collectionId bulkImportColl -operation import -shouldCreateCollection -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
     ```
 
@@ -198,13 +198,13 @@ ms.locfileid: "86926753"
 
 3. 准备好批量更新应用程序后，请使用“mvn clean package”命令从源代码生成命令行工具。 此命令在目标文件夹中生成一个 jar 文件：  
 
-    ```
+    ```bash
     mvn clean package
     ```
 
 4. 生成目标依赖关系后，可使用以下命令调用批量更新应用程序：
 
-    ```
+    ```bash
     java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint **<Fill in your Azure Cosmos DB's endpoint>* -masterKey **<Fill in your Azure Cosmos DB's master key>* -databaseId bulkUpdateDb -collectionId bulkUpdateColl -operation update -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
     ```
 
@@ -225,4 +225,4 @@ ms.locfileid: "86926753"
 ## <a name="next-steps"></a>后续步骤
 * 若要了解 maven 包的详细信息以及 Bulk Executor Java 库的发行说明，请参阅 [Bulk Executor SDK 详细信息](sql-api-sdk-bulk-executor-java.md)。
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

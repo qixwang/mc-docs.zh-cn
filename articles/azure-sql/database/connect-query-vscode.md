@@ -13,13 +13,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: ''
 origin.date: 05/29/2020
-ms.date: 07/13/2020
-ms.openlocfilehash: 8a23988223709a6c2671685caa7d08b137f2caff
-ms.sourcegitcommit: fa26665aab1899e35ef7b93ddc3e1631c009dd04
+ms.date: 08/17/2020
+ms.openlocfilehash: fff9936eba761d0f45d56517d8667652327ee534
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86227162"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222814"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query"></a>快速入门：使用 Visual Studio Code 进行连接和查询 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -30,7 +30,7 @@ ms.locfileid: "86227162"
 
 - Azure SQL 数据库或 Azure SQL 托管实例中的数据库。 可以根据下述快速入门之一，在 Azure SQL 数据库中创建数据库，然后对其进行配置：
 
-  || Azure SQL 数据库 | Azure SQL 托管实例 |
+  | 操作 | Azure SQL Database | Azure SQL 托管实例 |
   |:--- |:--- |:---|
   | 创建| [Portal](single-database-create-quickstart.md) | [Portal](../managed-instance/instance-create-quickstart.md) |
   || [CLI](scripts/create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
@@ -115,7 +115,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
    | **身份验证** | SQL 登录名| 本教程使用 SQL 身份验证。 |
    | **用户名** | 用户名 | 用于创建服务器的服务器管理员帐户的用户名。 |
    | **密码(SQL 登录名)** | 密码 | 用于创建服务器的服务器管理员帐户的密码。 |
-   | **保存密码?** | 是或否 | 如果不希望每次都输入密码，则请选择“是”。 |
+   | **是否保存密码？** | 是或否 | 如果不希望每次都输入密码，则请选择“是”。 |
    | **输入此配置文件的名称** | 配置文件名称，例如 mySampleProfile | 保存配置文件可以在后续登录时加快连接速度。 |
 
    如果成功，会显示通知，指出已创建并连接配置文件。

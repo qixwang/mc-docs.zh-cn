@@ -1,29 +1,25 @@
 ---
 title: 比较 Azure 消息传送服务
 description: 介绍三种 Azure 消息传递服务 - Azure 事件网格、事件中心和服务总线。 推荐不同场景使用的服务。
-services: event-grid
-author: spelluru
-manager: timlt
-ms.service: event-grid
 ms.topic: overview
+author: Johnnytechn
+ms.author: v-johya
 origin.date: 10/22/2019
-ms.date: 01/20/2020
-ms.author: v-yiso
-ms.custom: seodec18
-ms.openlocfilehash: cedde40c9a7545b644446faf086d9d85ebd8fafb
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 08/10/2020
+ms.openlocfilehash: ef8a19175f3e577b0cdd3c028e71e598cf6da389
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75859607"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88228433"
 ---
 # <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>在 Azure 消息传递服务之间进行选择 - 事件网格、事件中心和服务总线
 
 Azure 提供三种协助在整个解决方案中传递事件消息的服务。 这些服务分别为：
 
-* [事件网格](/event-grid/)
-* [事件中心](/event-hubs/)
-* [服务总线](/service-bus-messaging/)
+* [事件网格](./index.yml)
+* [事件中心](../event-hubs/index.yml)
+* [服务总线](../service-bus-messaging/index.yml)
 
 虽然它们有一些相似之处，但是每种服务都旨在针对特定的场景。 本文介绍这些服务之间的区别，并帮助你选择最适合你应用程序的服务。 在许多情况下，消息传递服务是互补的，可以一同使用。
 
@@ -91,7 +87,7 @@ Azure 事件中心是大数据管道。 它促进遥测数据和事件流数据�
 
 ## <a name="use-the-services-together"></a>同时使用多种服务
 
-在某些情况下，可同时使用多种服务满足不同的角色。 例如，电子商务网站可以使用服务总线处理订单，使用事件中心捕获站点遥测数据，使用事件网格响应事件（例如商品已云发货）。
+在某些情况下，可同时使用多种服务满足不同的角色。 例如，电子商务网站可以使用服务总线处理订单，使用事件中心捕获站点遥测数据，使用事件网格响应事件（例如商品已发货）。
 
 在其他情况下，可将它们链接在一起以形成事件和数据管道。 使用事件网格可响应其他服务中的事件。 有关结合使用事件网格和事件中心以将数据迁移到数据仓库的实例，请参阅[将大数据流式传输到数据仓库](event-grid-event-hubs-integration.md)。 下图显示流式处理数据的工作流。
 
@@ -99,9 +95,10 @@ Azure 事件中心是大数据管道。 它促进遥测数据和事件流数据�
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下文章： 
-- [Azure 中的异步消息传送选项](https://docs.microsoft.com/en-us/azure/architecture/guide/technology-choices/messaging)
+- [Azure 中的异步消息传送选项](https://docs.microsoft.com/azure/architecture/guide/technology-choices/messaging)
 - [Events, Data Points, and Messages - Choosing the right Azure messaging service for your data](https://azure.microsoft.com/blog/events-data-points-and-messages-choosing-the-right-azure-messaging-service-for-your-data/)（事件、数据点和消息 - 为数据选择合适的 Azure 消息传递服务）。
 - [存储队列和服务总线队列 - 比较与对照](../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 - 若要开始使用事件网格，请参阅[使用 Azure 事件网格创建和路由自定义事件](custom-event-quickstart.md)。
 - 若要开始使用事件中心，请参阅[使用 Azure 门户创建事件中心命名空间和事件中心](../event-hubs/event-hubs-create.md)。
 - 若要开始使用服务总线，请参阅[使用 Azure 门户创建服务总线命名空间](../service-bus-messaging/service-bus-create-namespace-portal.md)。
+

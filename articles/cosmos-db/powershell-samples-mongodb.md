@@ -4,15 +4,17 @@ description: 获取用于在 Azure Cosmos DB 的 API for MongoDB 中执行各种
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: sample
-origin.date: 05/13/2020
-ms.date: 07/06/2020
+origin.date: 06/12/2020
+ms.date: 08/17/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 64774ff5869891cf6953cc912d4b7f7e6128e1b0
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+ms.openlocfilehash: f754879306d12fb75d6d93f75bee551e07cb3f8e
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323334"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222462"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db-mongodb-api"></a>适用于 Azure Cosmos DB 的 Azure PowerShell 示例 - MongoDB API
 
@@ -24,7 +26,7 @@ ms.locfileid: "85323334"
 > [!NOTE]
 > 该示例使用 [Az.CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) 管理 cmdlet。 请定期检查 `Az.CosmosDB` 是否有更新。
 
-| | |
+|任务 | 说明 |
 |---|---|
 |[创建帐户、数据库和集合](scripts/powershell/mongodb/ps-mongodb-create.md)| 创建 Azure Cosmos 帐户、数据库和集合。 |
 |[列出或获取数据库或集合](scripts/powershell/mongodb/ps-mongodb-list-get.md)| 列出或获取数据库或集合。 |

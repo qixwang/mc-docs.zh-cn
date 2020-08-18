@@ -11,12 +11,12 @@ ms.author: gopalv
 ms.topic: conceptual
 origin.date: 12/12/2019
 ms.date: 06/29/2020
-ms.openlocfilehash: 69c5beefbd77184fcc122d3d139374851d595b35
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: 4cb63b929814d07c1b7db9778fcaa8e08f7dd981
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097518"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88228384"
 ---
 # <a name="development-tools-on-the-azure-data-science-virtual-machine"></a>Azure Data Science Virtual Machine 上的开发工具
 
@@ -24,7 +24,7 @@ Data Science Virtual Machine (DSVM) 在高效集成开发环境 (IDE) 中捆绑�
 
 ## <a name="visual-studio-community-edition"></a>Visual Studio Community Edition
 
-|    |           |
+| 类别 | 值 |
 | ------------- | ------------- |
 | 它是什么？   | 常规用途 IDE      |
 | 支持的 DSVM 版本      | Windows:Visual Studio 2017、Windows 2019：Visual Studio 2019      |
@@ -38,7 +38,7 @@ Data Science Virtual Machine (DSVM) 在高效集成开发环境 (IDE) 中捆绑�
 
 ## <a name="visual-studio-code"></a>Visual Studio Code 
 
-|    |           |
+| 类别 | 值 |
 | ------------- | ------------- |
 | 它是什么？   | 常规用途 IDE      |
 | 支持的 DSVM 版本      | Windows、Linux     |
@@ -48,7 +48,7 @@ Data Science Virtual Machine (DSVM) 在高效集成开发环境 (IDE) 中捆绑�
 
 ## <a name="rstudio--desktop"></a>RStudio Desktop 
 
-|    |           |
+| 类别 | 值 |
 | ------------- | ------------- |
 | 它是什么？   | R 语言的客户端 IDE   |
 | 支持的 DSVM 版本      | Windows、Linux      |
@@ -58,7 +58,7 @@ Data Science Virtual Machine (DSVM) 在高效集成开发环境 (IDE) 中捆绑�
 
 ## <a name="rstudio--server"></a>RStudio Server 
 
-|    |           |
+| 类别 | 值 |
 | ------------- | ------------- |
 | 它是什么？   | R 语言的客户端 IDE   |
 | 它是什么？   | R 的基于 Web 的 IDE    |
@@ -69,7 +69,7 @@ Data Science Virtual Machine (DSVM) 在高效集成开发环境 (IDE) 中捆绑�
 
 ## <a name="juno"></a>Juno 
 
-|    |           |
+| 类别 | 值 |
 | ------------- | ------------- |
 | 它是什么？   | Julia 语言的客户端 IDE   |
 | 支持的 DSVM 版本      | Windows、Linux      |
@@ -79,7 +79,7 @@ Data Science Virtual Machine (DSVM) 在高效集成开发环境 (IDE) 中捆绑�
 
 ## <a name="pycharm"></a>Pycharm
 
-|    |           |
+| 类别 | 值 |
 | ------------- | ------------- |
 | 它是什么？   | Python 语言的客户端 IDE    |
 | 支持的 DSVM 版本      | Windows 2019、Linux      |

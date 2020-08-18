@@ -14,15 +14,15 @@ ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: web
 origin.date: 12/09/2019
-ms.date: 01/13/2020
+ms.date: 08/13/2020
 ms.author: v-tawe
-ms.custom: seodec18
-ms.openlocfilehash: afbdbf998258fa028acdd89bc97565fd47a1aa89
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 7054d3a45d922c23b056df907c24fa5de0f65de3
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75600605"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88228334"
 ---
 # <a name="integrate-app-service-with-application-gateway-using-cli"></a>使用 CLI 将应用服务与应用程序网关集成
 

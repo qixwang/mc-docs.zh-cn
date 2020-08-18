@@ -5,14 +5,17 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 04/09/2020
-ms.date: 04/27/2020
+ms.date: 08/17/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 0c378c8d59182c43788cebfd927b1cf34daff911
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.custom: devx-track-javascript
+ms.openlocfilehash: b37613d3574c0eb6313ed781485e5820689dcd32
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134801"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223448"
 ---
 # <a name="user-defined-functions-udfs-in-azure-cosmos-db"></a>Azure Cosmos DB 中的用户定义函数 (UDF)
 
@@ -36,17 +39,17 @@ API 扩展了 SQL 语法，支持使用 UDF 的自定义应用程序逻辑。 �
 以下示例在 Cosmos 数据库中的某个项容器下注册一个 UDF。 该示例创建了名为 `REGEX_MATCH` 的 UDF。 它接受两个 JSON 字符串值：`input` 和 `pattern`，并使用 JavaScript 的 `string.match()` 函数检查第一个值是否与第二个值中指定的模式相匹配。
 
 ```javascript
-    UserDefinedFunction regexMatchUdf = new UserDefinedFunction
-    {
-       Id = "REGEX_MATCH",
-       Body = @"function (input, pattern) {
-                  return input.match(pattern) !== null;
-               };",
-    };
+UserDefinedFunction regexMatchUdf = new UserDefinedFunction
+{
+   Id = "REGEX_MATCH",
+   Body = @"function (input, pattern) {
+              return input.match(pattern) !== null;
+           };",
+};
 
-    UserDefinedFunction createdUdf = client.CreateUserDefinedFunctionAsync(
-       UriFactory.CreateDocumentCollectionUri("myDatabase", "families"),
-       regexMatchUdf).Result;  
+UserDefinedFunction createdUdf = client.CreateUserDefinedFunctionAsync(
+   UriFactory.CreateDocumentCollectionUri("myDatabase", "families"),
+   regexMatchUdf).Result;  
 ```
 
 现在，请在查询投影中使用此 UDF。 从查询内部调用 UDF 时，必须使用区分大小写的前缀 `udf.` 来限定 UDF。
@@ -91,25 +94,25 @@ API 扩展了 SQL 语法，支持使用 UDF 的自定义应用程序逻辑。 �
 为了进一步了解 UDF 的强大功能，让我们查看使用条件逻辑的另一个示例：
 
 ```javascript
-    UserDefinedFunction seaLevelUdf = new UserDefinedFunction()
-    {
-       Id = "SEALEVEL",
-       Body = @"function(city) {
-               switch (city) {
-                   case 'Seattle':
-                       return 520;
-                   case 'NY':
-                       return 410;
-                   case 'Shanghai':
-                       return 673;
-                   default:
-                       return -1;
-                }"
-        };
+UserDefinedFunction seaLevelUdf = new UserDefinedFunction()
+{
+   Id = "SEALEVEL",
+   Body = @"function(city) {
+           switch (city) {
+               case 'Seattle':
+                   return 520;
+               case 'NY':
+                   return 410;
+               case 'Shanghai':
+                   return 673;
+               default:
+                   return -1;
+            }"
+    };
 
-        UserDefinedFunction createdUdf = await client.CreateUserDefinedFunctionAsync(
-            UriFactory.CreateDocumentCollectionUri("myDatabase", "families"),
-            seaLevelUdf);
+    UserDefinedFunction createdUdf = await client.CreateUserDefinedFunctionAsync(
+        UriFactory.CreateDocumentCollectionUri("myDatabase", "families"),
+        seaLevelUdf);
 ```
 
 以下示例运用了 UDF：

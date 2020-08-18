@@ -5,15 +5,15 @@ ms.assetid: a820e400-06af-4852-8627-12b3db4a8e70
 ms.devlang: dotnet
 ms.topic: tutorial
 origin.date: 04/28/2020
-ms.date: 05/22/2020
+ms.date: 08/13/2020
 ms.author: v-tawe
 ms.custom: mvc, devcenter, seo-javascript-september2019, seo-javascript-october2019, seodec18
-ms.openlocfilehash: 0ec476cdb1afc7deaa27ee67d37672e757df94f9
-ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
+ms.openlocfilehash: 6be021ed37ad2c2fc01a088ce87e1cc9317e60cd
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83801216"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88227961"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>教程：在 Azure 应用服务中托管启用了 CORS 的 RESTful API
 
@@ -141,7 +141,7 @@ To https://&lt;app_name&gt;.scm.chinacloudsites.cn/&lt;app_name&gt;.git
 
 在本地存储库中，打开 _wwwroot/index.html_。
 
-在第 51 中，将 `apiEndpoint` 变量设置为已部署 API 的 URL (`http://<app_name>.chinacloudsites.cn`)。 在应用服务中将 _\<appname>_ 替换为你的应用名称。
+在第 51 中，将 `apiEndpoint` 变量设置为已部署 API 的 URL (`http://<app_name>.chinacloudsites.cn`)。 在应用服务中将 \<appname> 替换为你的应用名称。
 
 在本地终端窗口中，再次运行示例应用。
 
@@ -203,4 +203,4 @@ az webapp cors add --resource-group myResourceGroup --name <app-name> --allowed-
 
 > [!div class="nextstepaction"]
 
-<!-- > [Tutorial: Authenticate and authorize users end-to-end](app-service-web-tutorial-auth-aad.md) -->
+<!-- > [Tutorial: Authenticate and authorize users end-to-end](tutorial-auth-aad.md) -->

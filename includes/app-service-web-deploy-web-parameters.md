@@ -3,14 +3,14 @@ author: cephalin
 ms.service: app-service-web
 ms.topic: include
 origin.date: 11/03/2016
-ms.date: 11/03/2016
+ms.date: 08/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 005726ee46a71492d665dfaa3293e58673f0d7a0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ca7494f05319448ae054d353c247342762edd2fb
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "71059573"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88246178"
 ---
 使用 Azure 资源管理器，可以定义在部署模板时想要指定的值的参数。 该模板具有一个名为 Parameters 的部分，其中包含所有参数值。
 应该为随着要部署的项目或要部署到的环境而变化的值定义参数。 不要为永远保持不变的值定义参数。 每个参数值可在模板中用来定义所部署的资源。 
@@ -22,55 +22,64 @@ ms.locfileid: "71059573"
 ### <a name="sitename"></a>siteName
 要创建的 Web 应用的名称。
 
-    "siteName":{
-      "type":"string"
-    }
+```config
+"siteName":{
+  "type":"string"
+}
+```
 
 ### <a name="hostingplanname"></a>hostingPlanName
 用于托管 Web 应用的应用服务计划的名称。
 
-    "hostingPlanName":{
-      "type":"string"
-    }
+```config
+"hostingPlanName":{
+  "type":"string"
+}
+```
 
 ### <a name="sku"></a>sku
 托管计划的定价层。
 
-    "sku": {
-      "type": "string",
-      "allowedValues": [
-        "F1",
-        "D1",
-        "B1",
-        "B2",
-        "B3",
-        "S1",
-        "S2",
-        "S3",
-        "P1",
-        "P2",
-        "P3",
-        "P4"
-      ],
-      "defaultValue": "S1",
-      "metadata": {
-        "description": "The pricing tier for the hosting plan."
-      }
-    }
+```config
+"sku": {
+  "type": "string",
+  "allowedValues": [
+    "F1",
+    "D1",
+    "B1",
+    "B2",
+    "B3",
+    "S1",
+    "S2",
+    "S3",
+    "P1",
+    "P2",
+    "P3",
+    "P4"
+  ],
+  "defaultValue": "S1",
+  "metadata": {
+    "description": "The pricing tier for the hosting plan."
+  }
+}
+```
 
 模板将定义此参数允许的值，如果未指定任何值，则分配默认值 (S1)。
 
 ### <a name="workersize"></a>workerSize
 托管计划的实例大小（small、medium 或 large）。
 
-    "workerSize":{
-      "type":"string",
-      "allowedValues":[
-        "0",
-        "1",
-        "2"
-      ],
-      "defaultValue":"0"
-    }
+```config
+"workerSize":{
+  "type":"string",
+  "allowedValues":[
+    "0",
+    "1",
+    "2"
+  ],
+  "defaultValue":"0"
+}
+```
 
 模板将定义此参数允许的值（0、1 或 2），如果未指定任何值，则分配默认值 (0)。 这些值分别对应于 small、medium 和 large。
+

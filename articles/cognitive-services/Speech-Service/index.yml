@@ -14,12 +14,12 @@ metadata:
   origin.date: 03/24/2020
   ms.date: 07/29/2020
   ms.author: v-tawe
-  ms.openlocfilehash: 5a329ebb751259d6f10b851a9edb4ad6c05352dc
-  ms.sourcegitcommit: 3821704fee67315badba49cf628af2aa68d98f28
+  ms.openlocfilehash: 2eb78248d19bcffae306254c49b5884fd76db31b
+  ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/03/2020
-  ms.locfileid: "87516057"
+  ms.lasthandoff: 08/14/2020
+  ms.locfileid: "88228331"
 highlightedContent:
   items:
   - title: 什么是语音服务？
@@ -130,7 +130,7 @@ tools:
   - title: Java
     imageSrc: https://docs.microsoft.com/media/logos/logo_java.svg
     url: https://aka.ms/csspeech/javaref
-  - title: JavaScript
+  - title: Javascript
     imageSrc: https://docs.microsoft.com/media/logos/logo_js.svg
     url: https://aka.ms/csspeech/javascriptref
   - title: Objective-C 和 Swift

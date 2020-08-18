@@ -3,7 +3,7 @@ title: 配置故障转移组
 titleSuffix: Azure SQL Database & SQL Managed Instance
 description: 了解如何使用 Azure 门户、Azure CLI 和 PowerShell 为 Azure SQL 数据库（单一数据库和共用数据库）和 SQL 托管实例配置自动故障转移组。
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: high-availability
 ms.custom: sqldbrb=2
 ms.devlang: ''
@@ -12,13 +12,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: sstein, carlrab
 origin.date: 08/14/2019
-ms.date: 07/13/2020
-ms.openlocfilehash: 4cf404786354bfe0d03179ed647284e434e71709
-ms.sourcegitcommit: fa26665aab1899e35ef7b93ddc3e1631c009dd04
+ms.date: 08/17/2020
+ms.openlocfilehash: 7fea08658391e5ef195ceb6047cf31f799d041dc
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86227240"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222846"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>为 Azure SQL 数据库配置故障转移组
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -211,7 +211,7 @@ ms.locfileid: "86227240"
 
 使用 Azure 门户创建故障转移组，并将弹性池添加到其中。
 
-1. 在 [Azure 门户](https://portal.azure.cn)的左侧菜单中选择“Azure SQL”。 如果 **Azure SQL** 不在列表中，请选择“所有服务”，然后在搜索框中键入 Azure SQL。 （可选）选择“Azure SQL”旁边的星号将其收藏并将其添加为左侧导航栏中的项。
+1. 在 [Azure 门户](https://portal.azure.cn)的左侧菜单中选择“Azure SQL”。 如果 Azure SQL 不在列表中，请选择“所有服务”，然后在搜索框中键入 Azure SQL 。 （可选）选择“Azure SQL”旁边的星号将其收藏并将其添加为左侧导航栏中的项。
 1. 选择要添加到故障转移组中的弹性池。
 1. 在“概述”窗格上，选择**服务器名称**下的服务器名称以打开服务器的设置。
   

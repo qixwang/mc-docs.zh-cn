@@ -5,15 +5,17 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 09/13/2019
-ms.date: 10/28/2019
+ms.date: 08/17/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
 ms.custom: query-reference
-ms.openlocfilehash: 74b1b0ae966d98b6a9305112516b0b5c300c0b9e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e5b5a3f05950d334d03edb3311f0f9f827d0be02
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72914666"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222538"
 ---
 # <a name="spatial-functions-azure-cosmos-db"></a>空间函数 (Azure Cosmos DB)
 
@@ -23,10 +25,11 @@ Cosmos DB 支持以下用于查询地理空间的开放地理空间信息联盟 
 
 以下标量函数对标量对象输入值执行操作，并返回数值或布尔值。  
 
-|||||
-|-|-|-|-|
-|[ST_DISTANCE](sql-query-st-distance.md)|[ST_INTERSECTS](sql-query-st-intersects.md)|[ST_ISVALID](sql-query-st-isvalid.md)|
-|[ST_ISVALIDDETAILED](sql-query-st-isvaliddetailed.md)|[ST_WITHIN](sql-query-st-within.md)||||
+* [ST_DISTANCE](sql-query-st-distance.md)
+* [ST_INTERSECTS](sql-query-st-intersects.md)
+* [ST_ISVALID](sql-query-st-isvalid.md)
+* [ST_ISVALIDDETAILED](sql-query-st-isvaliddetailed.md)
+* [ST_WITHIN](sql-query-st-within.md)
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -35,5 +38,4 @@ Cosmos DB 支持以下用于查询地理空间的开放地理空间信息联盟 
 - [用户定义的函数](sql-query-udfs.md)
 - [聚合](sql-query-aggregates.md)
 
-<!--Update_Description: new articles on sql query spatial function  -->
-<!--New.date: 10/28/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

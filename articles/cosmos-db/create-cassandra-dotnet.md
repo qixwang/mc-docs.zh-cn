@@ -7,14 +7,16 @@ author: rockboyfor
 ms.devlang: dotnet
 ms.topic: quickstart
 origin.date: 05/18/2020
-ms.date: 06/22/2020
+ms.date: 08/17/2020
+ms.testscope: yes
+ms.testdate: 08/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 461ad9d811f3508a7f260f5aa36f43d49116c219
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: f70db43e3a9996ec60bbf879ba0fb9c882e7f254
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098694"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223261"
 ---
 <!--Verify sucessfully-->
 # <a name="quickstart-build-a-cassandra-app-with-net-sdk-and-azure-cosmos-db"></a>快速入门：使用 .NET SDK 和 Azure Cosmos DB 构建 Cassandra 应用
@@ -29,6 +31,8 @@ ms.locfileid: "85098694"
 >  
 
 本快速入门介绍如何使用 .NET 和 Azure Cosmos DB [Cassandra API](cassandra-introduction.md)，通过克隆 GitHub 中的示例来生成配置文件应用。 此外，本快速入门还介绍了如何使用基于 Web 的 Azure 门户创建 Azure Cosmos DB 帐户。
+
+<!--CORRECT ON  21Vianet-->
 
 Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服务。 可快速创建和查询文档、表、键-值和图形数据库，所有这些都受益于 Azure Cosmos DB 核心的多区域分布和水平缩放功能。 
 
@@ -63,7 +67,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
     cd "C:\git-samples"
     ```
 
-3. 运行下列命令，克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
+3. 运行下列命令以克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-cassandra-dotnet-getting-started.git
@@ -123,31 +127,31 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 1. 在 [Azure 门户](https://portal.azure.cn/)中，选择“连接字符串”。
 
-    使用 ![“复制”按钮](./media/create-cassandra-dotnet/copy.png) 屏幕右侧的按钮以复制“用户名”值。
+1. 使用屏幕右侧的 :::image type="icon" source="./media/create-cassandra-dotnet/copy.png"::: 按钮以复制“用户名”值。
 
-    ![在 Azure 门户的“连接字符串”页面中查看并复制访问密钥](./media/create-cassandra-dotnet/keys.png)
+    :::image type="content" source="./media/create-cassandra-dotnet/keys.png" alt-text="在 Azure 门户的“连接字符串”页面中查看并复制访问密钥":::
 
-2. 在 Visual Studio 中，打开 Program.cs 文件。 
+1. 在 Visual Studio 中，打开 Program.cs 文件。 
 
-3. 粘贴门户中的“用户名”值，并覆盖第 13 行中的 `<FILLME>`。
+1. 粘贴门户中的“用户名”值，并覆盖第 13 行中的 `<FILLME>`。
 
     Program.cs 的第 13 行现在应该类似 
 
     `private const string UserName = "cosmos-db-quickstart";`
 
-3. 返回到门户，然后复制“密码”值。 粘贴门户中的“密码”值，并覆盖第 14 行中的 `<FILLME>`。
+1. 返回到门户，然后复制“密码”值。 粘贴门户中的“密码”值，并覆盖第 14 行中的 `<FILLME>`。
 
     Program.cs 的第 14 行现在应该类似 
 
     `private const string Password = "2Ggkr662ifxz2Mg...==";`
 
-4. 返回到门户，然后复制“联系点”值。 粘贴门户中的“联系点”值，并覆盖第 15 行中的 `<FILLME>`。
+1. 返回到门户，然后复制“联系点”值。 粘贴门户中的“联系点”值，并覆盖第 15 行中的 `<FILLME>`。
 
     Program.cs 的第 15 行现在应该类似 
 
     `private const string CassandraContactPoint = "cosmos-db-quickstarts.cassandra.cosmos.azure.cn"; //  DnsName`
 
-5. 保存 Program.cs 文件。
+1. 保存 Program.cs 文件。
 
 ## <a name="run-the-net-app"></a>运行 .NET 应用
 
@@ -160,13 +164,13 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
     ```
 3. 按 CTRL + F5 运行应用程序。 应用将显示在控制台窗口中。 
 
-    ![查看并验证输出](./media/create-cassandra-dotnet/output.png)
+    :::image type="content" source="./media/create-cassandra-dotnet/output.png" alt-text="查看并验证输出":::
 
     按 CTRL + C 停止执行程序并关闭控制台窗口。 
 
 4. 在 Azure 门户中，打开数据资源管理器，以查询、修改和处理这些新数据。
 
-    ![在数据资源管理器中查看数据](./media/create-cassandra-dotnet/data-explorer.png)
+    :::image type="content" source="./media/create-cassandra-dotnet/data-explorer.png" alt-text="在数据资源管理器中查看数据":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>在 Azure 门户中查看 SLA
 
@@ -184,4 +188,3 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 > [将 Cassandra 数据导入 Azure Cosmos DB](cassandra-import-data.md)
 
 <!-- Update_Description: update meta properties, wording update, update link -->
-

@@ -7,12 +7,12 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: 146304fc0eed45d4dcf09ea087a7804d86b57066
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: 2cd55b13cea510462a2f25209596193dfbe9059d
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097514"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88228279"
 ---
 # <a name="tag-images-in-a-labeling-project-preview"></a>在标记项目中标记图像（预览）
 
@@ -36,11 +36,9 @@ ms.locfileid: "85097514"
 
 1. 选择左侧的“数据标记”来查找项目。  
 
-1. 选择列表中的项目名称。
-
 ## <a name="understand-the-labeling-task"></a>了解标记任务
 
-选择项目后，在页面顶部选择“标签数据”。
+在数据标签项目的表中，为项目选择“标签链接”。
 
 你会看到特定于项目的说明。 其中解释了现有的数据类型、如何做出决策以及其他相关信息。 阅读此信息后，在页面顶部选择“任务”。  或者在页面底部选择“开始标记”。
 
@@ -63,7 +61,11 @@ ms.locfileid: "85097514"
 
 提交手头数据的标记后，Azure 将使用工作队列中的一组新图像刷新页面。
 
-### <a name="assisted-machine-learning"></a>辅助机器学习 
+### <a name="assisted-machine-learning-preview"></a>辅助机器学习（预览版） 
+
+> [!IMPORTANT]
+> 辅助机器学习目前提供公共预览版。
+> 该预览版在提供时没有附带服务级别协议，建议不要将其用于生产工作负载。 某些功能可能不受支持或者受限。 
 
 可能会触发机器学习算法。 如果在项目中启用了这些算法，你可能会看到以下内容：
 
@@ -77,13 +79,13 @@ ms.locfileid: "85097514"
 
 ## <a name="tag-images-for-multi-class-classification"></a>标记图像以进行多类分类
 
-如果项目的类型为“图像分类多类”，则会将单一标记分配给整个图像。 若要随时查看指导，请转到“说明”页，然后选择“查看详细说明”。 
+如果项目的类型为“图像分类多类”，则会将单一标记分配给整个图像。 若要随时查看指导，请转到“说明”页，然后选择“查看详细说明”。
 
 如果在向图像分配标记后发现有误，可以修复标记。 选择图像下面显示的标签上的“X”可以清除标记。 或者选择该图像，然后选择另一个类。 新选择的值将替换以前应用的标记。
 
 ## <a name="tag-images-for-multi-label-classification"></a>标记图像以进行多标签分类
 
-如果正在处理类型为“多标签图像分类”的项目，则会将一个或多个标记应用到图像。 若要查看特定于项目的指导，请选择“说明”并转到“查看详细说明”。 
+如果正在处理类型为“多标签图像分类”的项目，则会将一个或多个标记应用到图像。 若要查看特定于项目的指导，请选择“说明”并转到“查看详细说明”。
 
 选择要标记的图像，然后选择标记。 该标记将应用到所有选定的图像，然后会取消选择这些图像。 若要应用多个标记，必须重新选择图像。 以下动画演示了多标签标记：
 

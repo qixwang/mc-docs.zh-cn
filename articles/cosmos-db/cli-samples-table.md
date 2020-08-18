@@ -6,20 +6,22 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: sample
 origin.date: 06/03/2020
-ms.date: 06/22/2020
+ms.date: 08/17/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: c5c83ba8024635916eea9d5fdfc605492ead7ba5
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: eba926161a1c073f4d28ba2c71f0fd4c6d08058c
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098704"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222745"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db-table-api"></a>适用于 Azure Cosmos DB 表 API 的 Azure CLI 示例
 
 下表包括适用于 Azure Cosmos DB 表 API 的示例 Azure CLI 脚本的链接。 [Azure CLI 参考](https://docs.azure.cn/cli/cosmosdb?view=azure-cli-latest)中收录了所有 Azure Cosmos DB CLI 命令的参考页。 可以在 [Azure Cosmos DB CLI GitHub 存储库](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb)中找到所有 Azure Cosmos DB CLI 脚本示例。
 
-| |  |
+|任务 | 说明 |
 |---|---|
 | [创建 Azure Cosmos 帐户和表](scripts/cli/table/create.md?toc=%2fcli%2ftoc.json)| 为表 API 创建 Azure Cosmos DB 帐户和表。 |
 | [更改吞吐量](scripts/cli/table/throughput.md?toc=%2fcli%2ftoc.json) | 更新表的 RU/秒。|

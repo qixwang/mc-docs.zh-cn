@@ -10,12 +10,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 02/24/2020
 ms.custom: Ignite2019, designer
-ms.openlocfilehash: fa47eecc22a7b8b86146f4f78bde370de1c1e51b
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: ff8f77d54bcc92ad7582e623012d6e8253cebe6d
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097532"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88227909"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer-preview"></a>使用 Azure 机器学习设计器运行批量预测（预览版）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -29,11 +29,13 @@ ms.locfileid: "85097532"
 > * 使用管道终结点
 > * 管理终结点版本
 
-要了解如何使用 SDK 设置批量评分服务，请参阅随附的[操作指南](how-to-run-batch-predictions.md)。
+
 
 ## <a name="prerequisites"></a>先决条件
 
 本操作指南假设你已有一个训练管道。 有关设计器的引导式简介，请完成[设计器教程的第一部分](tutorial-designer-automobile-price-train-score.md)。 
+
+[!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
 ## <a name="create-a-batch-inference-pipeline"></a>创建批量推理管道
 

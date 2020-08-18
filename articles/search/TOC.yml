@@ -100,7 +100,7 @@
           href: cognitive-search-working-with-skillsets.md
         - name: 知识存储
           href: knowledge-store-concept-intro.md
-        - name: 投影
+        - name: 投影数
           href: knowledge-store-projection-overview.md
         - name: 增量扩充
           href: cognitive-search-incremental-indexing-conceptual.md
@@ -244,7 +244,7 @@
               href: query-lucene-syntax.md
             - name: moreLikeThis（预览版）
               href: search-more-like-this.md
-    - name: 筛选器
+    - name: “筛选器”
       items:
         - name: 筛选器概述
           href: search-filters.md

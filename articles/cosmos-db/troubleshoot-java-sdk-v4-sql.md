@@ -4,17 +4,20 @@ description: 使用客户端日志记录等功能和其他第三方工具来确�
 author: rockboyfor
 ms.service: cosmos-db
 origin.date: 06/11/2020
-ms.date: 07/06/2020
+ms.date: 08/17/2020
+ms.testscope: yes
+ms.testdate: 08/10/2020
 ms.author: v-yeche
 ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
-ms.openlocfilehash: d123b8838da98d9d64162c03dbf4834f4a8599b2
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+ms.custom: devx-track-java
+ms.openlocfilehash: abc28943f1114f611830e20b45964154e2753892
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85321667"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222397"
 ---
 <!--Verified successfully, ONLY CHARACTORS CONTENT-->
 # <a name="troubleshoot-issues-when-you-use-azure-cosmos-db-java-sdk-v4-with-sql-api-accounts"></a>排查将 Azure Cosmos DB Java SDK v4 与 SQL API 帐户配合使用时出现的问题
@@ -144,6 +147,7 @@ assert(failureCount.get() > 0);
 // Have a singleton instance of an executor and a scheduler.
 ExecutorService ex  = Executors.newFixedThreadPool(30);
 Scheduler customScheduler = Schedulers.fromExecutor(ex);
+
 ```
 
 你可能会需要完成需耗费一定时间的工作，例如，计算工作量繁重的工作或阻塞性 IO。 在这种情况下，使用 `.publishOn(customScheduler)` API 将线程切换为 `customScheduler` 提供的辅助角色。

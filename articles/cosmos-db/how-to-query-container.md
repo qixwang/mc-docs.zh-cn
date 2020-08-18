@@ -3,16 +3,18 @@ title: 在 Azure Cosmos DB 中查询容器
 description: 了解如何使用分区中查询和跨分区查询来查询 Azure Cosmos DB 中的容器
 author: rockboyfor
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 03/18/2019
-ms.date: 07/06/2020
+ms.date: 08/17/2020
+ms.testscope: yes
+ms.testdate: 08/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 95767f2fe8159e56204ddb739242622d11076cce
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+ms.openlocfilehash: 021658e50bc1cfd3c5c0d14c8877b039c946e5a4
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85322002"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222693"
 ---
 # <a name="query-an-azure-cosmos-container"></a>查询 Azure Cosmos 容器
 
@@ -25,19 +27,19 @@ ms.locfileid: "85322002"
 例如，请考虑以下针对 `DeviceId` 使用等式筛选器的查询。 如果对按 `DeviceId` 分区的容器运行此查询，则此查询将筛选到单个物理分区。
 
 ```sql
-SELECT * FROM c WHERE c.DeviceId = 'XMS-0001'
+    SELECT * FROM c WHERE c.DeviceId = 'XMS-0001'
 ```
 
 与前面的示例一样，此查询也将筛选到单个分区。 添加针对 `Location` 的其他筛选器不会更改此行为：
 
 ```sql
-SELECT * FROM c WHERE c.DeviceId = 'XMS-0001' AND c.Location = 'Seattle'
+    SELECT * FROM c WHERE c.DeviceId = 'XMS-0001' AND c.Location = 'Seattle'
 ```
 
 下面的查询有一个针对分区键的范围筛选器，该查询的作用域不会限定于单个物理分区。 为了成为分区中查询，该查询必须具有包含分区键的等式筛选器：
 
 ```sql
-SELECT * FROM c WHERE c.DeviceId > 'XMS-0001'
+    SELECT * FROM c WHERE c.DeviceId > 'XMS-0001'
 ```
 
 ## <a name="cross-partition-query"></a>跨分区查询
@@ -45,7 +47,7 @@ SELECT * FROM c WHERE c.DeviceId > 'XMS-0001'
 下面的查询没有针对分区键 (`DeviceId`) 的筛选器。 因此，它必须根据每个分区的索引扇出到运行它的所有物理分区：
 
 ```sql
-SELECT * FROM c WHERE c.Location = 'Seattle`
+    SELECT * FROM c WHERE c.Location = 'Seattle`
 ```
 
 每个物理分区都有其自己的索引。 因此，当你在容器上运行跨分区查询时，你可以高效地针对每个物理分区运行一个查询。 Azure Cosmos DB 会自动聚合不同物理分区的结果。
@@ -108,4 +110,4 @@ Azure Cosmos DB SDK 1.9.0 及更高版本支持并行查询执行选项。 并�
 - [Azure Cosmos DB 中的分区](partitioning-overview.md)
 - [Azure Cosmos DB 中的综合分区键](synthetic-partition-keys.md)
 
-<!-- Update_Description: update meta properties, wording update-->
+<!-- Update_Description: update meta properties, wording update, update link -->

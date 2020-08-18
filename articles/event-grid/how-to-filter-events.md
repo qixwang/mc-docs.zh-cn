@@ -1,19 +1,17 @@
 ---
 title: 如何筛选 Azure 事件网格的事件
 description: 本文介绍在创建事件网格订阅时如何筛选事件（按事件类型、按主题、按运算符和数据等）。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
+author: Johnnytechn
+ms.author: v-johya
 origin.date: 01/21/2020
-ms.author: v-yiso
-ms.date: 02/17/2020
-ms.openlocfilehash: c234db039902bd253ad870dc2a4a5ed6681462da
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 08/10/2020
+ms.openlocfilehash: 80c3dc277027e075ddc6e6dbf26c3df79d30cd77
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292270"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88228296"
 ---
 # <a name="filter-events-for-event-grid"></a>筛选事件网格的事件
 
@@ -44,10 +42,11 @@ includedEventTypes="Microsoft.Resources.ResourceWriteFailure Microsoft.Resources
 
 az eventgrid event-subscription create \
   --name demoSubToResourceGroup \
-  --resource-group myResourceGroup \
+  --source-resource-id <resouce-ID> \
   --endpoint <endpoint-URL> \
   --included-event-types $includedEventTypes
 ```
+<!--Correct in MC: --source-resource-id <resouce-ID>-->
 
 对于资源管理器模板，请使用 `includedEventTypes` 属性。
 
@@ -113,10 +112,11 @@ resourceId=$(az resource show --name demoSecurityGroup --resource-group myResour
 
 az eventgrid event-subscription create \
   --name demoSubscriptionToResourceGroup \
-  --resource-group myResourceGroup \
+  --source-resource-id <resouce-ID> \
   --endpoint <endpoint-URL> \
   --subject-begins-with $resourceId
 ```
+<!--Correct in MC: --source-resource-id <resouce-ID>-->
 
 下一个 Azure CLI 示例创建 blob 存储的订阅。 其中将事件限制为主题以 `.jpg` 结尾的事件。
 
@@ -215,7 +215,7 @@ az eventgrid event-subscription create \
 
 对于 PowerShell，请使用：
 
-```azurepowershell
+```powershell
 $topicName = <your-topic-name>
 $endpointURL = <endpoint-URL>
 
@@ -252,7 +252,7 @@ curl -X POST -H "aeg-sas-key: $key" -d "$event" $topicEndpoint
 
 对于 PowerShell，请使用：
 
-```azurepowershell
+```powershell
 $endpoint = (Get-AzEventGridTopic -ResourceGroupName gridResourceGroup -Name $topicName).Endpoint
 $keys = Get-AzEventGridTopicKey -ResourceGroupName gridResourceGroup -Name $topicName
 
@@ -287,7 +287,7 @@ curl -X POST -H "aeg-sas-key: $key" -d "$event" $topicEndpoint
 ```
 对于 PowerShell，请使用：
 
-```azurepowershell
+```powershell
 $htbody = @{
     id= $eventID
     eventType="recordInserted"
@@ -310,3 +310,4 @@ Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-ke
 * 有关监视事件传送的信息，请参阅[监视事件网格消息传送](monitor-event-delivery.md)。
 * 有关身份验证密钥的详细信息，请参阅[事件网格安全性和身份验证](security-authentication.md)。
 * 有关创建 Azure 事件网格订阅的详细信息，请参阅[事件网格订阅架构](subscription-creation-schema.md)。
+

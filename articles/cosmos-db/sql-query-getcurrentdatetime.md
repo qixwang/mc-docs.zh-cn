@@ -4,19 +4,22 @@ description: 了解 Azure Cosmos DB 中的 SQL 系统函数 GetCurrentDateTime�
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 09/13/2019
-ms.date: 04/27/2020
+origin.date: 07/09/2020
+ms.date: 08/17/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
 ms.custom: query-reference
-ms.openlocfilehash: 99ad0c31a30e56c4caad6771b9019b5a3935eceb
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 3edd2df0ba4766fcbb8cde43670f50e5f1331265
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134740"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222629"
 ---
 # <a name="getcurrentdatetime-azure-cosmos-db"></a>GetCurrentDateTime (Azure Cosmos DB)
- 以 ISO 8601 字符串形式返回当前 UTC（协调世界时）日期和时间。
+
+以 ISO 8601 字符串形式返回当前 UTC（协调世界时）日期和时间。
 
 ## <a name="syntax"></a>语法
 
@@ -28,7 +31,7 @@ GetCurrentDateTime ()
 
   以 `YYYY-MM-DDThh:mm:ss.fffffffZ` 格式返回当前 UTC 日期和时间 ISO 8601 字符串值，其中：
 
-  |||
+  |格式|描述|
   |-|-|
   |YYYY|四位数的年份|
   |MM|两位数的月份（01 = 1 月，依此类推。）|
@@ -40,11 +43,13 @@ GetCurrentDateTime ()
   |.fffffff|七位数的小数秒|
   |Z|UTC（协调世界时）指示符||
 
-  有关 ISO 8601 格式的详细信息，请参阅 [ISO_8601](https://en.wikipedia.org/wiki/ISO_8601)
+  <!--Not Available on For more information on the ISO 8601 format, refer to ISO_8601.-->
+  
+<!--Mooncake Customization on the Wikipedia-->
 
 ## <a name="remarks"></a>备注
 
-  GetCurrentDateTime() 是非确定性的函数。 
+  GetCurrentDateTime() 是非确定性的函数。
 
   返回的结果为 UTC。
 

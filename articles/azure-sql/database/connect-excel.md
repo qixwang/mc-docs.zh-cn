@@ -13,12 +13,12 @@ ms.author: v-jay
 ms.reviewer: ''
 origin.date: 05/29/2020
 ms.date: 07/13/2020
-ms.openlocfilehash: 638b6f843060a54c9f82193ef1c98e8778a6f632
-ms.sourcegitcommit: fa26665aab1899e35ef7b93ddc3e1631c009dd04
+ms.openlocfilehash: 8826e09adcf2db6d10b6fd187ee647489ef0e74d
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86228023"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222835"
 ---
 # <a name="connect-excel-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance-and-create-a-report"></a>将 Excel 连接到 Azure SQL 数据库中的数据库或 Azure SQL 托管实例，并创建报表
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -47,7 +47,7 @@ ms.locfileid: "86228023"
    ![键入服务器名称和登录凭据](./media/connect-excel/connect-to-server.png)
 
    > [!TIP]
-   > 根据网络环境，可能无法连接；如果服务器不允许来自客户端 IP 地址的流量，可能会断开连接。 转到 [Azure 门户](https://portal.azure.com/)，依次单击“SQL 服务器”、服务器、“设置”下面的“防火墙”，然后添加客户端 IP 地址。 有关详细信息，请参阅 [如何配置防火墙设置](firewall-configure.md) 。
+   > 根据网络环境，可能无法连接；如果服务器不允许来自客户端 IP 地址的流量，可能会断开连接。 转到 [Azure 门户](https://portal.azure.cn/)，依次单击“SQL 服务器”、服务器、“设置”下面的“防火墙”，然后添加客户端 IP 地址。 有关详细信息，请参阅 [如何配置防火墙设置](firewall-configure.md) 。
 
 5. 在“导航器”中，从列表中选择想要使用的数据库，选择想要使用的表格或视图（我们选择的是“vGetAllCategories”），然后选择“加载”以将数据从数据库移至 Excel 电子表格  。
 

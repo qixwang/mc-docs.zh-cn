@@ -5,14 +5,16 @@ ms.service: cosmos-db
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 04/03/2020
-ms.date: 04/27/2020
+ms.date: 08/17/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 33f96e04b8b20a1e2d0cf4d9a4bb5a6d30dfb743
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 05d725fdc0b68b291e3f40c49579286cfd63efa2
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134871"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223050"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 中的日期
 
@@ -22,9 +24,9 @@ Azure Cosmos DB 通过本机 [JSON](https://www.json.org) 数据模型提供架�
 
 ## <a name="storing-datetimes"></a>存储 DateTime
 
-Azure Cosmos DB 支持 JSON 类型，如字符串、数字、布尔值、null、数组和对象。 它不直接支持 DateTime 类型。 目前，Azure Cosmos DB 不支持日期的本地化。 因此，需要将 DateTime 存储为字符串。 Azure Cosmos DB 中 DateTime 字符串的建议格式为 `YYYY-MM-DDThh:mm:ss.fffffffZ`，它遵循 ISO 8601 UTC 标准。 建议以 UTC 格式存储 Azure Cosmos DB 中的所有日期。 将日期字符串转换为此格式将允许按字典顺序对日期进行排序。 如果存储非 UTC 日期，则必须在客户端处理相关逻辑。 若要将本地 DateTime 转换为 UTC，偏移量必须已知/存储为 JSON 中的属性，并且客户端可以使用偏移量来计算 UTC DateTime 值。
+Azure Cosmos DB 支持 JSON 类型，如字符串、数字、布尔值、null、数组和对象。 它不直接支持 DateTime 类型。 目前，Azure Cosmos DB 不支持日期的本地化。 因此，需要将 DateTime 存储为字符串。 Azure Cosmos DB 中 DateTime 字符串的建议格式为 `yyyy-MM-ddTHH:mm:ss.fffffffZ`，它遵循 ISO 8601 UTC 标准。 建议以 UTC 格式存储 Azure Cosmos DB 中的所有日期。 将日期字符串转换为此格式将允许按字典顺序对日期进行排序。 如果存储非 UTC 日期，则必须在客户端处理相关逻辑。 若要将本地 DateTime 转换为 UTC，偏移量必须已知/存储为 JSON 中的属性，并且客户端可以使用偏移量来计算 UTC DateTime 值。
 
-仅当 DateTime 字符串均采用 UTC 格式且长度相同时，才支持那些将 DateTime 字符串作为筛选器的范围查询。 在 Azure Cosmos DB 中，[GetCurrentDateTime](sql-query-getcurrentdatetime.md) 系统函数会返回以下格式的当前 UTC 日期和时间 ISO 8601 字符串值：`YYYY-MM-DDThh:mm:ss.fffffffZ`。
+仅当 DateTime 字符串均采用 UTC 格式且长度相同时，才支持那些将 DateTime 字符串作为筛选器的范围查询。 在 Azure Cosmos DB 中，[GetCurrentDateTime](sql-query-getcurrentdatetime.md) 系统函数会返回以下格式的当前 UTC 日期和时间 ISO 8601 字符串值：`yyyy-MM-ddTHH:mm:ss.fffffffZ`。
 
 由于以下原因，大多数应用程序可以使用 DateTime 的默认字符串表示形式：
 
@@ -36,34 +38,34 @@ Azure Cosmos DB 支持 JSON 类型，如字符串、数字、布尔值、null、
 例如，以下代码片段使用 .NET SDK 将 `Order` 对象存储为文档，该对象包含两个 DateTime 属性 - `ShipDate` 和 `OrderDate`：
 
 ```csharp
-    public class Order
-    {
-        [JsonProperty(PropertyName="id")]
-        public string Id { get; set; }
-        public DateTime OrderDate { get; set; }
-        public DateTime ShipDate { get; set; }
-        public double Total { get; set; }
-    }
+public class Order
+{
+    [JsonProperty(PropertyName="id")]
+    public string Id { get; set; }
+    public DateTime OrderDate { get; set; }
+    public DateTime ShipDate { get; set; }
+    public double Total { get; set; }
+}
 
-    await container.CreateItemAsync(
-        new Order
-        {
-            Id = "09152014101",
-            OrderDate = DateTime.UtcNow.AddDays(-30),
-            ShipDate = DateTime.UtcNow.AddDays(-14),
-            Total = 113.39
-        });
+await container.CreateItemAsync(
+    new Order
+    {
+        Id = "09152014101",
+        OrderDate = DateTime.UtcNow.AddDays(-30),
+        ShipDate = DateTime.UtcNow.AddDays(-14),
+        Total = 113.39
+    });
 ```
 
 本文档存储在 Azure Cosmos DB 中，如下所示：
 
 ```json
-    {
-        "id": "09152014101",
-        "OrderDate": "2014-09-15T23:14:25.7251173Z",
-        "ShipDate": "2014-09-30T23:14:25.7251173Z",
-        "Total": 113.39
-    }
+{
+    "id": "09152014101",
+    "OrderDate": "2014-09-15T23:14:25.7251173Z",
+    "ShipDate": "2014-09-30T23:14:25.7251173Z",
+    "Total": 113.39
+}
 ```  
 
 也可将 DateTime 存储为 Unix 时间戳，即存储为数字，用于表示自 1970 年 1 月 1 日以来已过去的秒数。 Azure Cosmos DB 的内部时间戳 (`_ts`) 属性遵循这种方法。 可以使用 [UnixDateTimeConverter](https://docs.azure.cn/dotnet/api/microsoft.azure.documents.unixdatetimeconverter) 类将 DateTime 序列化为数字。
@@ -73,13 +75,13 @@ Azure Cosmos DB 支持 JSON 类型，如字符串、数字、布尔值、null、
 SQL .NET SDK 自动支持通过 LINQ 查询存储在 Azure Cosmos DB 中的数据。 例如，以下代码片段显示一个 LINQ 查询，该查询筛选在过去三天内发运的订单：
 
 ```csharp
-    IQueryable<Order> orders = container.GetItemLinqQueryable<Order>(allowSynchronousQueryExecution: true).Where(o => o.ShipDate >= DateTime.UtcNow.AddDays(-3));
+IQueryable<Order> orders = container.GetItemLinqQueryable<Order>(allowSynchronousQueryExecution: true).Where(o => o.ShipDate >= DateTime.UtcNow.AddDays(-3));
 ```
 
 已转换为以下 SQL 语句并在 Azure Cosmos DB 上执行：
 
 ```sql
-    SELECT * FROM root WHERE (root["ShipDate"] >= "2014-09-30T23:14:25.7251173Z")
+SELECT * FROM root WHERE (root["ShipDate"] >= "2014-09-30T23:14:25.7251173Z")
 ```
 
 可在[使用 LINQ 查询 Cosmos DB](sql-query-linq-to-sql.md) 中详细了解 Azure Cosmos DB 的 SQL 查询语言和 LINQ 提供程序。

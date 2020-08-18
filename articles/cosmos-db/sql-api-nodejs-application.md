@@ -7,14 +7,17 @@ ms.subservice: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: tutorial
 origin.date: 11/05/2019
-ms.date: 07/06/2020
+ms.date: 08/17/2020
+ms.testscope: yes
+ms.testdate: 08/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 4946f7bf15db692034a7ddcf7e88184c4f0026d8
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 95cb19391d2c5f851fbba290007d365410a353b8
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323381"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222429"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>教程：使用 JavaScript SDK 生成 Node.js Web 应用，以便在 Azure Cosmos DB 中管理 SQL API 帐户 
 
@@ -88,7 +91,7 @@ ms.locfileid: "85323381"
 
 1. 在浏览器中导航到 `http://localhost:3000` 即可查看新应用程序。
 
-    ![了解 Node.js - 浏览器窗口中 Hello World 应用程序的屏幕截图](./media/sql-api-nodejs-application/cosmos-db-node-js-express.png)
+    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-express.png" alt-text="了解 Node.js - 浏览器窗口中 Hello World 应用程序的屏幕截图":::
 
     停止应用程序的方法是先在终端窗口中按 CTRL+C，然后选择“y”终止批处理作业。
 
@@ -448,7 +451,7 @@ ms.locfileid: "85323381"
 
 1. 若要在本地计算机上测试应用程序，请在终端中运行 `npm start` 以启动应用程序，然后刷新 `http://localhost:3000` 浏览器页。 该页现在应该如以下屏幕截图所示：
 
-    ![浏览器窗口中 MyTodo List 应用程序的屏幕截图](./media/sql-api-nodejs-application/cosmos-db-node-js-localhost.png)
+    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-localhost.png" alt-text="浏览器窗口中“我的待办事项列表”应用程序的屏幕截图":::
 
     > [!TIP]
     > 如果收到有关 layout.jade 文件或 index.jade 文件的缩进错误，请确保这两个文件中的头两行都已经左对齐，没有空格。 如果头两行之前留有空格，请删除这些空格，将这两个文件保存，然后刷新浏览器窗口。 
@@ -457,7 +460,7 @@ ms.locfileid: "85323381"
 
 3. 页面应更新为在 ToDo 列表中显示新建项。
 
-    ![ToDo 列表中具有新项的应用程序的屏幕截图](./media/sql-api-nodejs-application/cosmos-db-node-js-added-task.png)
+    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-added-task.png" alt-text="待办事项列表中有新的项的应用程序屏幕截图":::
 
 4. 若要完成任务，请选中“完成”列中的复选框，然后选择“更新任务”。 此时会更新已创建的文档并将其从视图中删除。
 

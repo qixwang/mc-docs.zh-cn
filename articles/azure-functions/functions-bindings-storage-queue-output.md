@@ -3,15 +3,15 @@ title: 适用于 Azure Functions 的 Azure 队列存储输出绑定
 description: 了解如何在 Azure Functions 中创建 Azure 队列存储消息。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 06/08/2020
+ms.date: 08/11/2020
 ms.author: v-junlch
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 7031aad59057fcbd001bbb5c69e7383176a292de
-ms.sourcegitcommit: f1a76ee3242698123a3d77f44c860db040b48f70
+ms.openlocfilehash: 5c17edc1af8500d4e76dc6124a1ff38d6afaa4d6
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84563792"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222715"
 ---
 # <a name="azure-queue-storage-output-bindings-for-azure-functions"></a>适用于 Azure Functions 的 Azure 队列存储输出绑定
 
@@ -302,7 +302,7 @@ public class HttpTriggerQueueOutput {
 
 - **返回值**：通过将注释应用于函数本身，函数的返回值将持久保存为事件中心消息。
 
-- **命令性**：若要显式设置消息值，请将注释应用于 [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding) 类型的特定参数，其中 `T` 是 POJO 或任何本机 Java 类型。 使用此配置时，向 `setValue` 方法传递某值会将该值持久保存为事件中心消息。
+- **命令性**：若要显式设置消息值，请将注释应用于 [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.outputbinding) 类型的特定参数，其中 `T` 是 POJO 或任何本机 Java 类型。 使用此配置时，向 `setValue` 方法传递某值会将该值持久保存为事件中心消息。
 
 ---
 

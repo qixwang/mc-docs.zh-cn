@@ -7,16 +7,18 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
 origin.date: 12/26/2018
-ms.date: 02/10/2020
+ms.date: 08/17/2020
+ms.testscope: yes
+ms.testdate: 08/10/2020
 ms.author: v-yeche
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 9b9cffd85828705d316cc92da1339be879d31da7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 64e094af7df8e889a5f65fb7c72b2e1da1eae346
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77067901"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223064"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-nodejs-express-app"></a>使用 Azure Cosmos DB 的用于 MongoDB 的 API 创建 Angular 应用 - 创建 Node.js Express 应用
 
@@ -31,7 +33,7 @@ ms.locfileid: "77067901"
 > * 在 Postman 中测试应用
 
 <!-- Not Available ## Video walkthrough-->
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始教程的此部分之前，请确保已观看[简介视频](tutorial-develop-mongodb-nodejs.md)。
 
@@ -79,9 +81,9 @@ ms.locfileid: "77067901"
 
 ## <a name="build-the-app-using-the-express-framework"></a>使用 Express 框架生成应用
 
-1. 在 Visual Studio Code 的“资源管理器”窗格中，右键单击 src 文件夹，单击“新建文件夹”，然后将新文件夹命名为“server”。    
+1. 在 Visual Studio Code 的“资源管理器”窗格中，右键单击 src 文件夹，单击“新建文件夹”，然后将新文件夹命名为“server”。
 
-2. 在“资源管理器”窗格中，右键单击“server”文件夹，单击“新建文件”，然后将新文件命名为“index.js”。    
+2. 在“资源管理器”窗格中，右键单击“server”文件夹，单击“新建文件”，然后将新文件命名为“index.js”。
 
 3. 回到命令提示符处，使用以下命令安装正文分析器。 这有助于应用分析通过 API 传入的 JSON 数据。
 
@@ -123,9 +125,9 @@ ms.locfileid: "77067901"
     app.listen(port, () => console.log(`API running on localhost:${port}`));
     ```
 
-5. 在 Visual Studio Code 的“资源管理器”窗格中，右键单击 server 文件夹，然后单击“新建文件”。    将新文件命名为  routes.js。 
+5. 在 Visual Studio Code 的“资源管理器”窗格中，右键单击 server 文件夹，然后单击“新建文件”。 将新文件命名为 routes.js。 
 
-6. 将以下代码复制到  routes.js 中。 此代码：
+6. 将以下代码复制到 routes.js 中。 此代码：
     * 引用 Express 路由器
     * 获取 hero
     * 发送回适用于已定义 hero 的 JSON
@@ -145,11 +147,11 @@ ms.locfileid: "77067901"
 
 7. 保存所有修改过的文件。 
 
-8. 在 Visual Studio Code 中单击“调试”  按钮 ![Visual Studio Code 中的“调试”图标](./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png)，单击“齿轮”按钮 ![Visual Studio Code 中的“齿轮”按钮](./media/tutorial-develop-mongodb-nodejs-part2/gear-button.png)。 此时会在 Visual Studio Code 中打开新的 launch.json 文件。
+8. 在 Visual Studio Code 中，单击“调试”按钮 :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png":::，单击“齿轮”按钮 :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part2/gear-button.png":::。 此时会在 Visual Studio Code 中打开新的 launch.json 文件。 
 
 9. 在 launch.json 文件的第 11 行将 `"${workspaceFolder}\\server"` 更改为 `"program": "${workspaceRoot}/src/server/index.js"`，然后保存文件。
 
-10. 单击“开始调试”按钮  ![Visual Studio Code 中的“开始调试”图标](./media/tutorial-develop-mongodb-nodejs-part2/start-debugging-button.png)，运行应用。
+10. 单击“启动调试”按钮 :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part2/start-debugging-button.png"::: 运行该应用。
 
     应用应该正常运行。
 
@@ -157,11 +159,11 @@ ms.locfileid: "77067901"
 
 1. 现在请打开 Postman，将 `http://localhost:3000/api/heroes` 置于 GET 框中。 
 
-2. 单击“发送”按钮，从应用获取 JSON 响应。  
+2. 单击“发送”按钮，从应用获取 JSON 响应。 
 
     该响应显示应用在本地启动并运行。 
 
-    ![Postman，显示请求和响应](./media/tutorial-develop-mongodb-nodejs-part2/azure-cosmos-db-postman.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part2/azure-cosmos-db-postman.png" alt-text="显示请求和响应的 Postman":::
 
 ## <a name="next-steps"></a>后续步骤
 

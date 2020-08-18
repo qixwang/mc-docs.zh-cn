@@ -11,12 +11,12 @@ ms.topic: sample
 origin.date: 03/09/2020
 ms.date: 03/26/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 20886a10fd74f435d657af613341433f2b45614c
-ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
+ms.openlocfilehash: d36102d5a1735ca13e044e7d3cb4fd2086b0c7e2
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87917223"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88228308"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>如何：使用文本分析 API 检测情绪
 
@@ -102,7 +102,7 @@ ms.locfileid: "87917223"
 
 #### <a name="version-21"></a>[版本 2.1](#tab/version-2)
 
-[情绪分析 v2 参考](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)
+[情绪分析 v2 参考](https://chinaeast2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)
 
 ---
 

@@ -12,12 +12,12 @@ metadata:
   author: Johnnytechn
   ms.author: v-johya
   ms.date: 05/06/2020
-  ms.openlocfilehash: 576b33c2d5ac1477a8cb7afde5d8685aa6e29ccd
-  ms.sourcegitcommit: cada23b6400453ff9c08cfb08393e635e2fddac1
+  ms.openlocfilehash: cfd71c9e2c13ad173e6fc3cc56c3ade6a8a5af3e
+  ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/21/2020
-  ms.locfileid: "83734525"
+  ms.lasthandoff: 08/14/2020
+  ms.locfileid: "88228297"
 landingContent:
 - title: 关于事件网格
   linkLists:
@@ -39,8 +39,6 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: 将 Blob 存储事件路由到 Web 终结点
-      url: blob-event-quickstart-portal.md
     - text: 作为事件处理程序的 Azure Functions
       url: custom-event-to-function.md
     - text: 充当事件处理程序的队列存储
@@ -51,8 +49,6 @@ landingContent:
       url: custom-event-quickstart-portal.md
   - linkListType: tutorial
     links:
-    - text: 当 VM 更改时发送电子邮件
-      url: monitor-virtual-machine-changes-event-grid-logic-app.md
     - text: 调整已上传图像的大小
       url: resize-images-on-storage-blob-upload-event.md
     - text: 在 IoT 中心设备已添加时发送电子邮件

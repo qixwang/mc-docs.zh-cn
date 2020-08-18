@@ -5,18 +5,18 @@ ms.topic: include
 origin.date: 10/26/2018
 ms.date: 09/30/2019
 ms.author: v-jay
-ms.openlocfilehash: 1323e5ecda66386fd98f156cf679b7b4a1882e14
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ffff108bd2d2f0c87195e5eb82d6a250f1ab47ca
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "71310557"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88246249"
 ---
 ## <a name="configure-your-application-to-access-azure-storage"></a>创建用于访问 Azure 存储的应用程序
 有两种方法可以对要访问存储服务的应用程序进行身份验证：
 
-* 共享密钥：使用共享密钥仅用于测试目的
-* 共享访问签名 (SAS)：对于生产应用程序使用 SAS
+* 共享密钥：仅将共享密钥用于测试目的
+* 共享访问签名 (SAS)：将 SAS 用于生产应用程序
 
 ### <a name="shared-key"></a>共享密钥
 共享密钥身份验证意味着应用程序将使用帐户名和帐户密钥访问存储服务。 为了快速说明如何使用此库，我们会在此入门指南中使用共享密钥身份验证。
@@ -30,7 +30,7 @@ ms.locfileid: "71310557"
 
 * **DefaultEndpointsProtocol** - 可以选择 HTTP 或 HTTPS。 但是，强烈建议使用 HTTPS。
 * **帐户名** - 存储帐户的名称
-* **帐户密钥** - 在 [Azure 门户](https://portal.azure.cn)上，导航到存储帐户，并单击“密钥”  图标以查看此信息。
+* **帐户密钥** - 在 [Azure 门户](https://portal.azure.cn)上，导航到存储帐户，并单击“密钥”图标以查看此信息。
 * （可选）**EndpointSuffix** - 用于区域中具有不同终结点后缀的存储服务，例如 Azure 中国或 Azure 调控。
 
 以下是使用共享密钥身份验证的连接字符串示例：
@@ -39,7 +39,7 @@ ms.locfileid: "71310557"
 
 ### <a name="shared-access-signatures-sas"></a>共享访问签名 (SAS)
 对于移动应用程序，针对 Azure 存储服务对客户端请求进行身份验证的建议方法是使用共享访问签名 (SAS)。 SAS 允许使用指定的权限集向客户端授予在指定的时间内对资源的访问权限。
-作为存储帐户所有者，需要为移动客户端生成要使用的 SAS。 要生成 SAS，可能需要编写单独的服务，该服务生成要分发给客户端的 SAS。 出于测试目的，可以使用 [Microsoft Azure 存储资源管理器](https://storageexplorer.com)或 [Azure 门户](https://portal.azure.com)来生成 SAS。 创建 SAS 时，可以指定 SAS 有效的时间间隔，以及 SAS 授予客户端的权限。
+作为存储帐户所有者，需要为移动客户端生成要使用的 SAS。 要生成 SAS，可能需要编写单独的服务，该服务生成要分发给客户端的 SAS。 出于测试目的，可以使用 [Microsoft Azure 存储资源管理器](https://storageexplorer.com)或 [Azure 门户](https://portal.azure.cn)来生成 SAS。 创建 SAS 时，可以指定 SAS 有效的时间间隔，以及 SAS 授予客户端的权限。
 
 以下示例演示如何使用 Microsoft Azure 存储资源管理器来生成 SAS。
 
@@ -50,5 +50,5 @@ ms.locfileid: "71310557"
    
    `"SharedAccessSignature=sv=2015-04-05&ss=b&srt=sco&sp=rw&se=2016-07-21T18%3A00%3A00Z&sig=3ABdLOJZosCp0o491T%2BqZGKIhafF1nlM3MzESDDD3Gg%3D;BlobEndpoint=https://youraccount.blob.core.chinacloudapi.cn"`
 
-可以看到，使用 SAS 时，不会在应用程序中公开帐户密钥。 可以查阅[共享访问签名：了解 SAS 模型](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md)，了解有关 SAS 和使用 SAS 的最佳实践的详细信息。
+可以看到，使用 SAS 时，不会在应用程序中公开帐户密钥。 可查阅[共享访问签名：了解 SAS 模型](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md)，了解有关 SAS 和使用 SAS 的最佳做法的详细信息。
 

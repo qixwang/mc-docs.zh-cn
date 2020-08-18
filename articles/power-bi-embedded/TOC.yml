@@ -22,13 +22,15 @@
           href: scale-capacity.md
         - name: 暂停和开始使用容量
           href: pause-start.md
+    - name: 在 Power BI Desktop 中使用增强的数据集元数据（预览）
+      href: desktop-enhanced-dataset-metadata.md
     - name: 注册 Azure AD 应用
       href: 'https://powerbi.microsoft.com/documentation/powerbi-developer-register-app/'
     - name: 嵌入 Power BI 内容
       href: 'https://powerbi.microsoft.com/documentation/powerbi-developer-embedding-content/'
     - name: 迁移
       items:
-        - name: 如何从 Power BI 工作区集合迁移
+        - name: 如何从 Power BI 工作区集合进行迁移
           href: migrate-from-power-bi-workspace-collections.md
         - name: 迁移工具
           href: migrate-tool.md
@@ -46,7 +48,7 @@
   items:
     - name: API
       items:
-        - name: Azure 资源管理 REST API
+        - name: Azure 资源管理器 REST API
           href: 'https://docs.microsoft.com/rest/api/power-bi-embedded/'
         - name: Power BI REST API
           href: 'https://msdn.microsoft.com/library/mt147898.aspx'

@@ -2,19 +2,21 @@
 title: Spark 上的 Azure Cosmos DB Cassandra API 表聚合操作
 description: 本文介绍在 Spark 上对 Azure Cosmos DB Cassandra API 表进行的基本聚合操作
 author: rockboyfor
-ms.author: v-yeche
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 09/24/2018
-ms.date: 04/15/2019
-ms.openlocfilehash: af06ef96ff141122259a7d8ec6a7912f7251e7db
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 08/17/2020
+ms.testscope: yes
+ms.testdate: 08/10/2020
+ms.author: v-yeche
+ms.openlocfilehash: 0947579e1b2df04d90e29f2dc47b32b18efc5a2f
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "63856955"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222783"
 ---
 <!--Verify sucessfully-->
 # <a name="aggregate-operations-on-azure-cosmos-db-cassandra-api-tables-from-spark"></a>Spark 上的 Azure Cosmos DB Cassandra API 表聚合操作 
@@ -36,7 +38,7 @@ import com.datastax.spark.connector.cql.CassandraConnector
 import com.microsoft.azure.cosmosdb.cassandra
 
 //Connection-related
-spark.conf.set("spark.cassandra.connection.host","YOUR_ACCOUNT_NAME.cassandra.cosmosdb.azure.cn")
+spark.conf.set("spark.cassandra.connection.host","YOUR_ACCOUNT_NAME.cassandra.cosmos.azure.cn")
 spark.conf.set("spark.cassandra.connection.port","10350")
 spark.conf.set("spark.cassandra.connection.ssl.enabled","true")
 spark.conf.set("spark.cassandra.auth.username","YOUR_ACCOUNT_NAME")
@@ -78,7 +80,7 @@ sc.cassandraTable("books_ks", "books").count
 ```
 
 **输出：**
-```
+```bash
 res48: Long = 5
 ```
 
@@ -371,5 +373,4 @@ select book_name,book_price from books_vw order by book_price desc limit 3;
 
 * [表复制操作](cassandra-spark-table-copy-ops.md)
 
-<!--Verify sucessfully-->
-<!--Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

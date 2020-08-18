@@ -6,15 +6,17 @@ ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
 origin.date: 05/19/2020
-ms.date: 06/22/2020
+ms.date: 08/17/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: e799ed302af52f4495126ac1878abfa5eafe8f70
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: e986ef6ece6dce0a9638ef409cacb256dc0cee20
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098707"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222756"
 ---
 <!--Verified successfully, ONLY CHARACTERS CONTENT-->
 # <a name="change-feed-pull-model-in-azure-cosmos-db"></a>Azure Cosmos DB 中的更改源拉取模型
@@ -166,7 +168,7 @@ FeedIterator<User> iteratorThatResumesFromLastPoint = container.GetChangeFeedIte
 
 下面是更改源处理器与拉取模型之间的一些主要差异：
 
-|  | 更改源处理器| 拉取模型 |
+|Feature  | 更改源处理器| 拉取模型 |
 | --- | --- | --- |
 | 在处理更改源时跟踪当前位置 | 租赁（存储在 Azure Cosmos DB 容器中） | 继续标记（存储在内存中或手动进行保存） |
 | 能够重播过去的更改 | 是（在使用推送模型的情况下） | 是（在使用拉取模型的情况下）|

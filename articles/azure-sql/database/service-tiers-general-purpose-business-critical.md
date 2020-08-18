@@ -3,8 +3,8 @@ title: 常规用途和业务关键服务层级
 titleSuffix: Azure SQL Database & SQL Managed Instance
 description: 本文讨论 Azure SQL 数据库和 Azure SQL 托管实例使用的基于 vCore 的购买模型中的常规用途和业务关键服务层级。
 services: sql-database
-ms.service: sql-database
-ms.subservice: service
+ms.service: sql-db-mi
+ms.subservice: features
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,13 +12,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: sashan, moslake, carlrab
 origin.date: 01/30/2020
-ms.date: 07/13/2020
-ms.openlocfilehash: e787eb45c8e4cdb27b0d64d35f5fd43be7a86441
-ms.sourcegitcommit: fa26665aab1899e35ef7b93ddc3e1631c009dd04
+ms.date: 08/17/2020
+ms.openlocfilehash: fb72d4b321a72cd68d92dd16d7fa0d99bd5d9fdc
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86227118"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223287"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-service-tiers"></a>Azure SQL 数据库和 Azure SQL 托管实例服务层级
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -38,7 +38,7 @@ Azure SQL 数据库还有一个服务层级：
 
 下表介绍了最新一代（第 5 代）服务层级之间的主要差异。 请注意，SQL 数据库和 SQL 托管实例中的服务层级特征可能有所不同。
 
-| | 资源类型 | 常规用途 |  超大规模 | 业务关键 |
+|-| 资源类型 | 常规用途 |  超大规模 | 业务关键 |
 |:---:|:---:|:---:|:---:|:---:|
 | **最适用于** | |  提供以预算导向的、均衡的计算和存储选项。 | 大多数业务工作负荷。 自动缩放存储大小，最大可达 100 TB，流畅的垂直和水平计算缩放，快速数据库还原。 | 事务率较高、IO 延迟较低的 OLTP 应用程序。 使用多个同步更新的副本提供最高故障复原能力和快速故障转移。|
 |  **在以下资源类型中可用：** ||SQL 数据库/ SQL 托管实例 | 单一 Azure SQL 数据库 | SQL 数据库/ SQL 托管实例 |

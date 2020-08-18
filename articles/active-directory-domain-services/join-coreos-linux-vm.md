@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/20/2020
+ms.date: 08/07/2020
 ms.author: v-junlch
-ms.openlocfilehash: e378d355c7898bd548fdf9c7a758f2e46a04706a
-ms.sourcegitcommit: fe9ccd3bffde0dd2b528b98a24c6b3a8cbe370bc
+ms.openlocfilehash: 39dd87df2e86a558a15d3207bd7ff90e66fc323b
+ms.sourcegitcommit: a5eb9a47feefb053ddbaab4b15c395972c372339
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86472566"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88028567"
 ---
 # <a name="join-a-coreos-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>将 CoreOS 虚拟机加入 Azure Active Directory 域服务托管域
 
@@ -85,7 +85,7 @@ sudo vi /etc/sssd/sssd.conf
 为以下参数指定你自己的托管域名：
 
 * 全部大写的域
-* “[域/AADDS]”其中“AADDS”全部大写
+* [域/AADDSCONTOSO] 其中 AADDSCONTOSO 全部大写
 * ldap_uri
 * ldap_search_base
 * krb5_server
@@ -97,7 +97,7 @@ config_file_version = 2
 services = nss, pam
 domains = AADDSCONTOSO.COM
 
-[domain/AADDSCONTOSO.COM]
+[domain/AADDSCONTOSO]
 id_provider = ad
 auth_provider = ad
 chpass_provider = ad

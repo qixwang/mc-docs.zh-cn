@@ -42,6 +42,9 @@
               displayName: 'compliance, fedramp, soc, fact, fisc, hitrust, pci, iso'
             - name: 最佳实践
               href: database/security-best-practice.md
+            - name: Azure Policy 的安全控件
+              displayName: 'regulatory, compliance, standards, domains'
+              href: ./database/security-controls-policy.md
             - name: 安全属性
               href: database/security-controls.md
             - name: 高级数据安全
@@ -50,10 +53,14 @@
               href: database/threat-detection-overview.md
             - name: 数据发现和分类
               href: database/data-discovery-and-classification-overview.md
-            - name: 动态数据屏蔽
+            - name: 动态数据掩码
               href: database/dynamic-data-masking-overview.md
             - name: SQL 漏洞评估
-              href: database/sql-vulnerability-assessment.md
+              items:
+                - name: SQL 漏洞评估
+                  href: database/sql-vulnerability-assessment.md
+                - name: 漏洞评估规则
+                  href: database/sql-database-vulnerability-assessment-rules.md
             - name: 登录名、用户帐户、角色和权限
               href: database/logins-create-manage.md
             - name: Azure AD 身份验证
@@ -65,6 +72,8 @@
                   href: database/authentication-mfa-ssms-overview.md
                 - name: 配置多重身份验证
                   href: database/authentication-mfa-ssms-configure.md
+                - name: 服务主体（应用程序）
+                  href: database/authentication-aad-service-principal.md
             - name: 透明数据加密 (TDE)
               items:
                 - name: 概述
@@ -126,11 +135,13 @@
               href: database/long-term-backup-retention-configure.md
         - name: 安全性
           items:
+            - name: 创建 Azure AD 来宾用户并将其设置为 Azure AD 管理员
+              href: database/authentication-aad-guest-users.md
             - name: 为 TDE 配置 BYOK
               href: database/transparent-data-encryption-byok-configure.md
             - name: 在存储中存储漏洞扫描结果
               href: database/sql-database-vulnerability-assessment-storage.md
-            - name: 始终加密
+            - name: Always Encrypted
               items:
                 - name: 使用 Azure Key Vault
                   href: database/always-encrypted-azure-key-vault-configure.md
@@ -189,9 +200,11 @@
             - name: Java
               items:
                 - name: 使用 Spring Data JDBC
-                  href: 'https://docs.microsoft.com/java/azure/spring-framework/configure-spring-data-jdbc-with-azure-sql-server?toc=/azure/sql-database/toc.json'
+                  href: 'https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json'
                 - name: 使用 Spring Data JPA
-                  href: 'https://docs.microsoft.com/java/azure/spring-framework/configure-spring-data-jpa-with-azure-sql-server?toc=/azure/sql-database/toc.json'
+                  href: 'https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-sql-server?toc=/azure/azure-sql/toc.json'
+                - name: 使用 Spring Data R2DBC
+                  href: 'https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json'
 - name: SQL 数据库 (SQL DB)
   items:
     - name: 文档
@@ -218,8 +231,6 @@
               href: database/service-tier-hyperscale.md
             - name: “超大规模”常见问题解答
               href: database/service-tier-hyperscale-frequently-asked-questions-faq.md
-            - name: 从高级 RS 迁移
-              href: database/service-tiers-prs.md
     - name: 快速入门
       href: database/quickstart-content-reference-guide.md
       items:
@@ -262,6 +273,8 @@
               href: database/transparent-data-encryption-byok-key-rotation.md
             - name: 删除 TDE 保护器
               href: database/transparent-data-encryption-byok-remove-tde-protector.md
+            - name: 使用服务主体创建用户
+              href: database/authentication-aad-service-principal-tutorial.md
         - name: 移动数据
           items:
             - name: 使用 DMS 迁移
@@ -378,6 +391,12 @@
                   href: database/connect-query-go.md
                 - name: Java
                   href: database/connect-query-java.md
+                - name: 将 Java 与 Spring Data JDBC 配合使用
+                  href: 'https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json'
+                - name: 将 Java 与 Spring Data JPA 配合使用
+                  href: 'https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-sql-server?toc=/azure/azure-sql/toc.json'
+                - name: 将 Java 与 Spring Data R2DBC 配合使用
+                  href: 'https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json'
                 - name: Node.js
                   href: database/connect-query-nodejs.md
                 - name: PHP
@@ -520,8 +539,11 @@
           href: database/az-cli-script-samples-content-guide.md?tabs=single-database
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=single-database
-        - name: Azure Resource Manager
+        - name: Azure 资源管理器
           href: database/arm-templates-content-guide.md?tabs=single-database
+        - name: Azure Policy 内置策略定义
+          displayName: 'samples, policies, definitions'
+          href: ./database/policy-samples.md
         - name: 代码示例
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
 - name: SQL 托管实例 (SQL MI)
@@ -585,21 +607,25 @@
               href: managed-instance/replication-two-instances-and-sql-server-configure-tutorial.md
     - name: 概念
       items:
-        - name: 事务复制
-          href: managed-instance/replication-transactional-overview.md
-        - name: 管理 API 参考
-          href: managed-instance/api-references-create-manage-instance.md
         - name: 资源限制
           href: managed-instance/resource-limits.md
         - name: 连接体系结构
           href: managed-instance/connectivity-architecture-overview.md
         - name: T-SQL 的差异
           href: managed-instance/transact-sql-tsql-differences-sql-server.md
+        - name: 事务复制
+          href: managed-instance/replication-transactional-overview.md
+        - name: 管理操作
+          items:
+            - name: 概述
+              href: managed-instance/management-operations-overview.md
+            - name: API 参考
+              href: managed-instance/api-references-create-manage-instance.md
         - name: 功能
           items:
-            - name: 链接的服务器
+            - name: 链接服务器
               href: 'https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine?toc=/azure/azure-sql/toc.json'
-            - name: 服务中转站
+            - name: Service Broker
               href: 'https://docs.microsoft.com/sql/database-engine/configure-windows/sql-server-service-broker?toc=/azure/azure-sql/toc.json'
             - name: 数据库邮件
               href: 'https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail?toc=/azure/azure-sql/toc.json'
@@ -651,12 +677,17 @@
           href: database/az-cli-script-samples-content-guide.md?tabs=managed-instance
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=managed-instance
-        - name: Azure Resource Manager
+        - name: Azure 资源管理器
           href: database/arm-templates-content-guide.md?tabs=managed-instance
+        - name: Azure Policy 内置策略定义
+          displayName: 'samples, policies, definitions'
+          href: ./database/policy-samples.md
         - name: 代码示例
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
 - name: Azure VM 上的 SQL Server
   items:
+    - name: 文档
+      href: virtual-machines/index.yml
     - name: Windows
       items:
         - name: 概述
@@ -757,10 +788,12 @@
               href: 'https://docs.microsoft.com/rest/api/'
         - name: 资源
           items:
-            - name: 常见问题
+            - name: 常见问题解答
               href: virtual-machines/windows/frequently-asked-questions-faq.md
             - name: 定价
               href: virtual-machines/windows/pricing-guidance.md
+            - name: 存档的经典 RM 文档
+              href: 'https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-create'
             - name: SQL Server Data Tools (SSDT)
               href: 'https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt'
             - name: SQL Server Management Studio (SSMS)
@@ -783,7 +816,7 @@
               href: virtual-machines/linux/sql-vm-create-portal-quickstart.md
         - name: 资源
           items:
-            - name: 常见问题
+            - name: 常见问题解答
               href: virtual-machines/linux/frequently-asked-questions-faq.md
             - name: “Linux 上的 SQL Server”文档
               href: 'https://docs.microsoft.com/sql/linux/sql-server-linux-overview'
@@ -853,7 +886,7 @@
       href: 'https://social.msdn.microsoft.com/Forums/zh-CN/home'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/sql-azure'
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 连接错误
           href: database/troubleshoot-common-errors-issues.md

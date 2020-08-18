@@ -5,14 +5,14 @@ author: WenJason
 ms.author: v-jay
 ms.service: mariadb
 ms.topic: conceptual
-origin.date: 6/24/2020
-ms.date: 07/20/2020
-ms.openlocfilehash: 02a6b21c5a89c9111866fdfe7b155976d3d543d0
-ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
+origin.date: 7/7/2020
+ms.date: 08/17/2020
+ms.openlocfilehash: 3b8a920e2ae30388725f21a4cde58b5f40e70cd0
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "86440540"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223042"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的只读副本
 
@@ -88,6 +88,25 @@ Azure Database for MariaDB 在 Azure Monitor 中提供“复制滞后时间(秒)
 > 在只读副本上停止复制之前，请确保副本包含所需的全部数据。
 
 了解如何[停止复制到副本](howto-read-replicas-portal.md)。
+
+## <a name="failover"></a>故障转移
+
+在主服务器与副本服务器之间无法自动进行故障转移。 
+
+由于复制是异步的，因此在主体和副本之间存在延迟。 延迟程度受许多因素影响，例如，在主服务器上运行的工作负荷有多大，以及数据中心之间的延迟有多严重。 大多数情况下，副本验证在几秒钟到几分钟之间。 可以使用“副本延迟”指标来跟踪实际的副本延迟，该指标适用于每个副本。 该指标显示的是自上次重播事务以来所经历的时间。 建议观察一段时间的副本延迟，以便确定平均延迟。 可以针对副本延迟设置警报，这样，当它超出预期范围时，你就可以采取行动。
+
+> [!Tip]
+> 如果故障转移到副本，则取消副本与主体之间的链接时遇到的延迟会指示丢失了多少数据。
+
+一旦决定要故障转移到某个副本， 
+
+1. 请停止将数据复制到副本<br/>
+   此步骤是使副本服务器能够接受写入所必需的。 在此过程中，副本服务器会取消与主体的链接。 启动停止复制的操作后，后端进程通常需要大约 2 分钟才能完成。 请参阅本文的[停止复制](#stop-replication)部分，了解此操作的潜在影响。
+    
+2. 将应用程序指向（以前的）副本<br/>
+   每个服务器都有唯一的连接字符串。 更新应用程序，使之指向（以前的）副本而不是主体。
+    
+如果应用程序成功处理了读取和写入操作，则表明故障转移已完成。 应用程序经历的停机时间取决于何时检测到问题并完成上面的步骤 1 和 2。
 
 ## <a name="considerations-and-limitations"></a>注意事项和限制
 

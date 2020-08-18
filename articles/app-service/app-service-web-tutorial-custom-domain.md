@@ -6,15 +6,15 @@ ms.assetid: dc446e0e-0958-48ea-8d99-441d2b947a7c
 ms.devlang: nodejs
 ms.topic: tutorial
 origin.date: 04/27/2020
-ms.date: 03/30/2020
+ms.date: 08/13/2020
 ms.author: v-tawe
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 83dfc5b81a77e131f242cfcd0d602cb2f8631f0f
-ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
+ms.openlocfilehash: 378a5fe59c35bab94f3eb4ef66ab7efe98309b39
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83801337"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88227963"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>教程：将现有的自定义 DNS 名称映射到 Azure 应用服务
 
@@ -22,20 +22,20 @@ ms.locfileid: "83801337"
 
 ![在门户中导航到 Azure 应用](./media/app-service-web-tutorial-custom-domain/app-with-custom-dns.png)
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 使用 CNAME 记录映射子域（例如 `www.contoso.com`）
 > * 使用 A 记录映射根域（例如 `contoso.com`）
 > * 使用 CNAME 记录映射通配符域（例如 `*.contoso.com`）
-> * 将默认 URL 定向到自定义目录
+> * 将默认 URL 重定向到自定义目录
 > * 使用脚本自动执行域映射
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本教程：
+为完成此教程：
 
-* [创建一个应用服务应用](/app-service/)，或者使用为其他教程创建的应用。
+* [创建应用服务应用](/app-service/)，或使用为另一教程创建的应用。
 * 购买域名，确保可以访问域提供商（如 GoDaddy）的 DNS 注册表。
 
   例如，若要添加 `contoso.com` 和 `www.contoso.com` 的 DNS 条目，必须能够配置 `contoso.com` 根域的 DNS 设置。
@@ -45,7 +45,7 @@ ms.locfileid: "83801337"
 
 ## <a name="prepare-the-app"></a>准备应用
 
-若要将自定义 DNS 名称映射到 Web 应用，Web 应用的[应用服务计划](https://www.azure.cn/pricing/details/app-service/)必须位于付费层（Azure Functions 的“共享”、“基本”、“标准”或“消耗”层）   。 在此步骤中，需确保应用服务计划位于受支持的定价层。
+若要将自定义 DNS 名称映射到 Web 应用，Web 应用的[应用服务计划](https://www.azure.cn/pricing/details/app-service/)必须位于付费层（Azure Functions 的“共享”、“基本”、“标准”、“高级”或“消耗”层）    。 在此步骤中，需确保应用服务计划位于受支持的定价层。
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
@@ -63,17 +63,17 @@ ms.locfileid: "83801337"
 
 ![在门户中导航到 Azure 应用](./media/app-service-web-tutorial-custom-domain/select-app.png)
 
-可以看到应用服务应用的管理页面。  
+将看到应用服务应用的管理页。  
 
 <a name="checkpricing" aria-hidden="true"></a>
 
 ### <a name="check-the-pricing-tier"></a>检查定价层
 
-在应用页面的左侧导航窗格中，向下滚动到“设置”部分，然后选择“扩展(应用服务计划)”。 
+在应用页的左侧导航窗格中，向下滚动到“设置”部分，然后选择“增加(应用服务计划)”。
 
 ![扩展菜单](./media/app-service-web-tutorial-custom-domain/scale-up-menu.png)
 
-蓝色的框突出显示了应用的当前层。 检查以确保应用不在 **F1** 层中。 **F1** 层不支持自定义 DNS。 
+蓝色边框突出显示了应用的当前层。 检查以确保应用不在 **F1** 层中。 **F1** 层不支持自定义 DNS。 
 
 ![检查定价层](./media/app-service-web-tutorial-custom-domain/check-pricing-tier.png)
 
@@ -81,15 +81,15 @@ ms.locfileid: "83801337"
 
 <a name="scaleup" aria-hidden="true"></a>
 
-### <a name="scale-up-the-app-service-plan"></a>扩展应用服务计划
+### <a name="scale-up-the-app-service-plan"></a>增加应用服务计划
 
 选择任何非免费层（**D1**、**B1**、**B2**、**B3**，或“生产”类别中的任何层）。 有关其他选项，请单击“查看其他选项”。
 
-单击“应用” 。
+单击“应用”。
 
 ![检查定价层](./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png)
 
-如果看到以下通知，则表示缩放操作已完成。
+看到以下通知时，说明缩放操作已完成。
 
 ![缩放操作确认](./media/app-service-web-tutorial-custom-domain/scale-notification.png)
 
@@ -97,13 +97,18 @@ ms.locfileid: "83801337"
 
 ## <a name="get-domain-verification-id"></a>获取域验证 ID
 
-若要将自定义域添加到应用，需要使用域提供程序添加验证 ID 作为 TXT 记录来验证你对域的所有权。 在应用页的左侧导航栏中，单击“开发工具”下的“资源浏览器”，然后单击“运行”。
+若要将自定义域添加到应用，需要使用域提供程序添加验证 ID 作为 TXT 记录来验证你对域的所有权。 在应用页的左侧导航窗格中，单击“自定义域”。 复制“自定义域”页中的“自定义域验证 ID” ，以便进行下一步。
 
-在应用属性的 JSON 视图中搜索“`customDomainVerificationId`”，将其值复制到双引号中。 下一步需要此验证 ID。
+![获取自定义域验证 ID](./media/app-service-web-tutorial-custom-domain/get-custom-domain-verification-id.png)
+
+> [!WARNING]
+> 向自定义域添加域验证 ID 可防止出现无关联的 DNS 条目，并避免子域接管。
+
+<!--  For more information on this common high-severity threat, see [Subdomain takeover](../security/fundamentals/subdomain-takeover.md). -->
 
 ## <a name="map-your-domain"></a>映射域
 
-可以使用 **CNAME 记录**或 **A 记录**将自定义 DNS 名称映射到应用服务。 请执行相应的步骤：
+可以使用 **CNAME 记录**或 **A 记录**将自定义 DNS 名称映射到应用服务。 请按照相应的步骤操作：
 
 - [映射 CNAME 记录](#map-a-cname-record)
 - [映射 A 记录](#map-an-a-record)
@@ -114,7 +119,9 @@ ms.locfileid: "83801337"
 
 ### <a name="map-a-cname-record"></a>映射 CNAME 记录
 
-在教程示例中，将为 `www` 子域（例如 `www.contoso.com`）添加 CNAME 记录。
+在教程示例中，为 `www` 子域（例如 `www.contoso.com`）添加 CNAME 记录。
+
+如果你有除 `www` 以外的子域，请将 `www` 替换为你的子域（例如，如果你的自定义域为 `sub.constoso.com`，则使用 `sub` 进行替换）。
 
 #### <a name="access-dns-records-with-domain-provider"></a>通过域提供商访问 DNS 记录
 
@@ -124,7 +131,7 @@ ms.locfileid: "83801337"
 
 将子域映射到应用的默认域名（`<app_name>.chinacloudsites.cn`，其中 `<app_name>` 是应用的名称）。 若要为 `www` 子域创建 CNAME 映射，请创建两条记录：
 
-| 记录类型 | 主机 | Value | 注释 |
+| 记录类型 | 主机 | 值 | 注释 |
 | - | - | - |
 | CNAME | `www` | `<app_name>.chinacloudsites.cn` | 域映射本身。 |
 | TXT | `asuid.www` | [之前获得的验证 ID](#get-domain-verification-id) | 应用服务访问 `asuid.<subdomain>` TXT 记录以验证你对自定义域的所有权。 |
@@ -135,17 +142,17 @@ ms.locfileid: "83801337"
 
 #### <a name="enable-the-cname-record-mapping-in-azure"></a>在 Azure 中启用 CNAME 记录映射
 
-在 Azure 门户中，在应用页面的左侧导航窗格中，选择“自定义域”。
+在 Azure 门户中的应用页左侧导航窗格中，选择“自定义域”。
 
 ![自定义域菜单](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-在应用的“自定义域”页面中，将完全限定的自定义 DNS 名称 (`www.contoso.com`) 添加到列表。
+在应用的“自定义域”页中，将完全限定的自定义 DNS 名称添加到 (`www.contoso.com`) 列表。
 
 选择“添加域名”旁边的 **+** 图标。
 
 ![添加主机名](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
-键入你为其添加了 CNAME 记录的完全限定的域名，例如 `www.contoso.com`。
+键入已添加 CNAME 记录的完全限定的域名，如 `www.contoso.com`。
 
 选择“验证”。
 
@@ -172,19 +179,19 @@ ms.locfileid: "83801337"
 
 ### <a name="map-an-a-record"></a>映射 A 记录
 
-在教程示例中，将为根域（例如 `contoso.com`）添加 A 记录。
+在教程示例中，为根域（例如 `contoso.com`）添加 A 记录。
 
 <a name="info"></a>
 
 #### <a name="copy-the-apps-ip-address"></a>复制应用的 IP 地址
 
-若要映射 A 记录，需要具有应用的外部 IP 地址。 在 Azure 门户中，可以在应用的“自定义域”页面中找到此 IP 地址。
+若要映射 A 记录，需要应用的外部 IP 地址。 可以在 Azure 门户中应用的“自定义域”页中找到此 IP 地址。
 
-在 Azure 门户中，在应用页面的左侧导航窗格中，选择“自定义域”。
+在 Azure 门户中的应用页左侧导航窗格中，选择“自定义域”。
 
 ![自定义域菜单](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-在“自定义域”页面中，复制应用的 IP 地址。
+在“自定义域”页中，复制应用的 IP 地址。
 
 ![在门户中导航到 Azure 应用](./media/app-service-web-tutorial-custom-domain/mapping-information.png)
 
@@ -196,21 +203,21 @@ ms.locfileid: "83801337"
 
 若要将 A 记录映射到应用（通常是根域），请创建两条记录：
 
-| 记录类型 | 主机 | Value | 注释 |
+| 记录类型 | 主机 | 值 | 注释 |
 | - | - | - |
-| A | `@` | 通过[复制应用的 IP 地址](#info)获得的 IP 地址 | 域映射本身（`@` 通常表示根域）。 |
+| A | `@` | 在[复制应用的 IP 地址](#info)步骤中复制的 IP 地址 | 域映射本身（`@` 通常表示根域）。 |
 | TXT | `asuid` | [之前获得的验证 ID](#get-domain-verification-id) | 应用服务访问 `asuid.<subdomain>` TXT 记录以验证你对自定义域的所有权。 对于根域，请使用 `asuid`。 |
 
 > [!NOTE]
 > 若要使用 A 记录（而不是建议的 [CNAME 记录](#map-a-cname-record)）添加子域（如 `www.contoso.com`），A 记录和 TXT 记录应改为类似于下表：
 >
-> | 记录类型 | 主机 | Value |
+> | 记录类型 | 主机 | 值 |
 > | - | - | - |
-> | A | `www` | 通过[复制应用的 IP 地址](#info)获得的 IP 地址 |
+> | A | `www` | 在[复制应用的 IP 地址](#info)步骤中复制的 IP 地址 |
 > | TXT | `asuid.www` | `<app_name>.chinacloudsites.cn` |
 >
 
-添加记录后，DNS 记录页面看起来如以下示例：
+添加记录后，DNS 记录页与以下示例相似：
 
 ![DNS 记录页](./media/app-service-web-tutorial-custom-domain/a-record.png)
 
@@ -218,13 +225,13 @@ ms.locfileid: "83801337"
 
 #### <a name="enable-the-a-record-mapping-in-the-app"></a>在应用中启用 A 记录映射
 
-在 Azure 门户中，返回到应用的“自定义域”页面，将完全限定的自定义 DNS 名称（例如 `contoso.com`）添加到列表。
+在 Azure 门户中返回到应用的“自定义域”页。将完全限定的自定义 DNS 名称（例如 `contoso.com`）添加到列表。
 
 选择“添加域名”旁边的 **+** 图标。
 
 ![添加主机名](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
-键入你为其配置了 A 记录的完全限定的域名，例如 `contoso.com`。
+键入已配置 A 记录的完全限定的域名，如 `contoso.com`。
 
 选择“验证”。
 
@@ -261,17 +268,17 @@ ms.locfileid: "83801337"
 
 添加一条 CNAME 记录，以便将通配符域名称名映射到应用的默认域名 (`<app_name>.chinacloudsites.cn`)。
 
-对于 `*.contoso.com` 域示例，CNAME 记录将名称 `*` 映射到 `<app_name>.chinacloudsites.cn`。
+在 `*.contoso.com` 域示例中， CNAME 记录将把名称 `*` 映射到 `<app_name>.chinacloudsites.cn`。
 
-添加 CNAME 后，DNS 记录页面看起来如以下示例：
+添加 CNAME 时，DNS 记录页与以下示例相似：
 
 ![在门户中导航到 Azure 应用](./media/app-service-web-tutorial-custom-domain/cname-record-wildcard.png)
 
 #### <a name="enable-the-cname-record-mapping-in-the-app"></a>在应用中启用 CNAME 记录映射
 
-现在，可以向应用中添加与通配符名称匹配的任何子域了（例如，`sub1.contoso.com` 和 `sub2.contoso.com` 与 `*.contoso.com` 匹配）。
+现在，可以将任何与通配符名称匹配的子域添加到应用中（例如 `sub1.contoso.com` 和`sub2.contoso.com` 匹配 `*.contoso.com`）。
 
-在 Azure 门户中，在应用页面的左侧导航窗格中，选择“自定义域”。
+在 Azure 门户中的应用页左侧导航窗格中，选择“自定义域”。
 
 ![自定义域菜单](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
@@ -279,7 +286,7 @@ ms.locfileid: "83801337"
 
 ![添加主机名](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
-键入与通配符域匹配的完全限定的域名（例如 `sub1.contoso.com`），然后选择“验证”。
+键入与通配符域相匹配的完全限定的域名（例如 `sub1.contoso.com`），然后选择“验证”。
 
 “添加自定义域”按钮随即激活。
 
@@ -300,7 +307,7 @@ ms.locfileid: "83801337"
 
 ## <a name="test-in-browser"></a>在浏览器中测试
 
-浏览到前面配置的 DNS 名称（例如，`contoso.com`、`www.contoso.com`、`sub1.contoso.com` 和 `sub2.contoso.com`）。
+浏览至你之前配置的 DNS 名称（例如，`contoso.com`、`www.contoso.com`、`sub1.contoso.com` 和 `sub2.contoso.com`）。
 
 ![在门户中导航到 Azure 应用](./media/app-service-web-tutorial-custom-domain/app-with-custom-dns.png)
 
@@ -329,7 +336,7 @@ ms.locfileid: "83801337"
 
 操作完成后，应用会返回根路径的正确页面（例如，`http://contoso.com`）。
 
-## <a name="automate-with-scripts"></a>使用脚本自动执行
+## <a name="automate-with-scripts"></a>使用脚本自动化
 
 可以在 [Azure CLI](/cli/install-azure-cli) 或 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) 中使用脚本自动管理自定义域。 
 
@@ -363,13 +370,13 @@ Set-AzWebApp `
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已学习了如何执行以下操作：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 使用 CNAME 记录映射子域
 > * 使用 A 记录映射根域
 > * 使用 CNAME 记录映射通配符域
-> * 将默认 URL 定向到自定义目录
+> * 将默认 URL 重定向到自定义目录
 > * 使用脚本自动执行域映射
 
 转到下一教程，了解如何将自定义 TLS/SSL 证书绑定到 Web 应用。

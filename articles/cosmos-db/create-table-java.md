@@ -7,15 +7,17 @@ ms.subservice: cosmosdb-table
 ms.devlang: java
 ms.topic: quickstart
 origin.date: 05/28/2020
-ms.date: 06/22/2020
+ms.date: 08/17/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: bca6dffb0f6b46ab721ad7f4f534d45f19fc954c
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
+ms.openlocfilehash: dd884b82ed25ebe8043750e1113233e65cb90462
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098657"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223356"
 ---
 <!--Verify sucessfully-->
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-table-api-data"></a>快速入门：生成 Java 应用以管理 Azure Cosmos DB 表 API 数据
@@ -71,7 +73,7 @@ ms.locfileid: "85098657"
     cd "C:\git-samples"
     ```
 
-3. 运行下列命令，克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
+3. 运行下列命令以克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
 
     ```bash
     git clone https://github.com/Azure-Samples/storage-table-java-getting-started.git 
@@ -164,7 +166,7 @@ ms.locfileid: "85098657"
 
 1. 在 [Azure 门户](https://portal.azure.cn/)的 Azure Cosmos DB 帐户中，选择“连接字符串”。 
 
-    ![在“连接字符串”窗格中查看连接字符串信息](./media/create-table-java/cosmos-db-quickstart-connection-string.png)
+    :::image type="content" source="./media/create-table-java/cosmos-db-quickstart-connection-string.png" alt-text="在“连接字符串”窗格中查看连接字符串信息":::
 
 2. 使用右侧的复制按钮，复制主连接字符串。
 

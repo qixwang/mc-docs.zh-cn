@@ -9,12 +9,12 @@ origin.date: 03/01/2019
 ms.date: 05/22/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 4a8814f973e07e50b3e1cb1d1796af95c0a41fb2
-ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
+ms.openlocfilehash: 104bd801c01b9a6ce10f185bde26e5459c8102f0
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83801219"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88228277"
 ---
 # <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>排查 Azure 应用服务中的域和 TLS/SSL 证书问题
 
@@ -62,36 +62,38 @@ ms.locfileid: "83801219"
 
 从应用中删除该证书的 TLS 绑定。 然后尝试删除证书。 如果仍然无法删除证书，请清除 Internet 浏览器缓存，并在新浏览器窗口中重新打开 Azure 门户。 然后尝试删除证书。
 
-### <a name="you-cant-purchase-an-app-service-certificate"></a>无法购买应用服务证书 
+<!-- 
+### You can't purchase an App Service certificate 
 
-#### <a name="symptom"></a>症状
-无法从 Azure 门户购买 [Azure 应用服务证书](./configure-ssl-certificate.md#import-an-app-service-certificate)。
+#### Symptom
+You can't purchase an [Azure App Service certificate](./configure-ssl-certificate.md#import-an-app-service-certificate) from the Azure portal.
 
-#### <a name="cause-and-solution"></a>原因和解决方法
-此问题可能是由以下任何原因导致的：
+#### Cause and solution
+This problem can occur for any of the following reasons:
 
-- 应用服务计划的层级为“免费”或“共享”。 这些定价层不支持 TLS。 
+- The App Service plan is Free or Shared. These pricing tiers don't support TLS. 
 
-    **解决方案**：将应用的应用服务计划升级到“标准”。
+    **Solution**: Upgrade the App Service plan for app to Standard.
 
-- 订阅中没有有效的信用卡。
+- The subscription doesn't have a valid credit card.
 
-    **解决方案**：将有效的信用卡添加到订阅。 
+    **Solution**: Add a valid credit card to your subscription. 
 
-- 该订阅套餐不支持购买“Microsoft 学生”等应用服务证书。  
+- The subscription offer doesn't support purchasing an App Service certificate such as Microsoft Student.  
 
-    **解决方案**：升级你的订阅。 
+    **Solution**: Upgrade your subscription. 
 
-- 订阅已达到允许的购买限制。
+- The subscription reached the limit of purchases that are allowed on a subscription.
 
-    **解决方案**：对于预付费和 EA 订阅类型，可购买的应用服务证书限制为 10 个。 对于其他订阅类型，限制为 3 个。 若要提高限制，请联系 [Azure 支持](https://portal.azure.cn/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
-- 应用服务证书标记为欺诈。 收到以下错误消息：“你的证书已被标记为可能存在欺诈。 请求当前正在审查中。 如果证书未在 24 小时内变为可用，请联系 Azure 支持部门。”
+    **Solution**: App Service certificates have a limit of 10 certificate purchases for the Pay-in-Advance and EA subscription types. For other subscription types, the limit is 3. To increase the limit, contact [Azure support](https://portal.azure.cn/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+- The App Service certificate was marked as fraud. You received the following error message: "Your certificate has been flagged for possible fraud. The request is currently under review. If the certificate does not become usable within 24 hours, contact Azure Support."
 
-    **解决方案**：如果证书标记为欺诈，并且在 24 小时后未得到解决，请执行以下步骤：
+    **Solution**: If the certificate is marked as fraud and isn't resolved after 24 hours, follow these steps:
 
-    1. 登录到 [Azure 门户](https://portal.azure.cn)。
-    2. 转到“应用服务证书”，选择该证书。
-    3. 选择“证书配置” > “步骤 2：验证” > “域验证”。 此步骤会向 Azure 证书提供者发送一份电子邮件通知，让他们解决问题。
+    1. Sign in to the [Azure portal](https://portal.azure.cn).
+    2. Go to **App Service Certificates**, and select the certificate.
+    3. Select **Certificate Configuration** > **Step 2: Verify** > **Domain Verification**. This step sends an email notice to the Azure certificate provider to resolve the problem. 
+-->
 
 ## <a name="custom-domain-problems"></a>自定义域问题
 

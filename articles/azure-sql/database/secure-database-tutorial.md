@@ -9,14 +9,14 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: carlrab
 origin.date: 09/03/2019
-ms.date: 07/13/2020
+ms.date: 08/17/2020
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: a867837a96d3070f3388386ce21e463afe6f5139
-ms.sourcegitcommit: fa26665aab1899e35ef7b93ddc3e1631c009dd04
+ms.openlocfilehash: 0686433901693c709ef1ce8c0f694b60779b3b88
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86228075"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222879"
 ---
 # <a name="tutorial-secure-a-database-in-azure-sql-database"></a>教程：保护 Azure SQL 数据库中的数据库
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -191,7 +191,7 @@ SQL 数据库中的数据库受 Azure 中防火墙的保护。 默认情况下�
 Azure Active Directory 身份验证要求将数据库用户作为包含的用户来创建。 包含的数据库用户映射到与数据库关联的 Azure AD 目录中的标识，且在 *master* 数据库中没有登录名。 Azure AD 标识可以用于单个用户，也可以用于一个组。 有关详细信息，请参阅[包含的数据库用户 - 使你的数据库可移植](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable)，并查看 [Azure AD 教程](authentication-aad-configure.md)，了解如何使用 Azure AD 进行身份验证。
 
 > [!NOTE]
-> 不能使用 Azure 门户创建数据库用户（管理员除外）。 Azure RBAC 角色不会传播到 SQL Server、数据库或数据仓库。 它们只能用于管理 Azure 资源，不会应用于数据库权限。
+> 不能使用 Azure 门户创建数据库用户（管理员除外）。 Azure 角色不会传播到 SQL Server、数据库或数据仓库。 它们只能用于管理 Azure 资源，不会应用于数据库权限。
 >
 > 例如，“SQL Server 参与者”角色不会授予连接到数据库或数据仓库的访问权限。 必须使用 T-SQL 语句在数据库中授予此权限。
 

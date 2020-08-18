@@ -5,14 +5,16 @@ ms.service: cosmos-db
 ms.topic: tutorial
 author: rockboyfor
 origin.date: 06/20/2019
-ms.date: 06/22/2020
+ms.date: 08/17/2020
+ms.testscope: yes
+ms.testdate: 08/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 0df83399426727313613addb69b48d3f0d7395af
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: dbbe5633acc529fe5902bf85cd9aa780fb6655a5
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098556"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223439"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos 模拟器 - 发行说明和下载信息
 
@@ -27,9 +29,13 @@ ms.locfileid: "85098556"
 
 ## <a name="release-notes"></a>发行说明
 
-### <a name="2111"></a>2.11.1
+### <a name="2112-07072020"></a>2.11.2 (2020/07/07)
 
-- 此版本修复了与模拟器数据资源管理器相关的几个 bug。 在某些情况下，通过 Web 浏览器使用模拟器“数据资源管理器”时，无法连接到 Cosmos 模拟器终结点，并且所有相关操作（如创建数据库或容器）都会出错。 解决的第二个问题与通过数据资源管理器上传操作从 JSON 文件中创建一个项有关。
+- 此版本更改了收集 Cosmos 模拟器故障时所需的 ETL 跟踪的方式。 现在默认使用 Windows 性能运行时工具 (WPR) 捕获基于 ETL 的跟踪，而旧的基于 LOGMAN 的捕获已弃用。 此更改在一定程度上是必需的，因为最新的 Windows 安全更新会对 LOGMAN 在通过 Cosmos 模拟器执行时的工作方式产生意外影响。
+
+### <a name="2111-06102020"></a>2.11.1 (2020/06/10)
+
+- 此版本修复了与仿真程序数据资源管理器相关的几个 bug。 在某些情况下，通过 Web 浏览器使用仿真程序数据资源管理器时，会无法连接到 Cosmos 仿真程序终结点，并且所有相关操作（如创建数据库或容器）都将出错。 解决的第二个问题与使用数据资源管理器上传操作从 JSON 文件创建项有关。
 
 ### <a name="2110"></a>2.11.0
 

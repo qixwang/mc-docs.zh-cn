@@ -11,14 +11,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: overview
 ms.date: 03/24/2020
-ms.openlocfilehash: 0a38c2977c7b17692c1073b1cae6aeca972b56b8
-ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
+ms.openlocfilehash: 8a261162dc854908cd81a20141e1805bdc90e9f6
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "86441064"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88228311"
 ---
 # <a name="what-is-machine-learning-studio-classic"></a>什么是机器学习工作室（经典版）？
+
+**适用于：**  ![yes](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![no](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 

@@ -4,14 +4,14 @@ description: 了解如何从 Azure Functions 发送 Azure 服务总线消息。
 author: craigshoemaker
 ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
-ms.date: 07/15/2020
+ms.date: 08/11/2020
 ms.author: v-junlch
-ms.openlocfilehash: 1861aadace7a04d3b6637b2ff2055cf8363bb232
-ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
+ms.openlocfilehash: a92c35fd336b0c594ff61c9e16e06e505b8d91c7
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "86440497"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223025"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>适用于 Azure Functions 的 Azure 服务总线输出绑定
 
@@ -281,7 +281,7 @@ JavaScript 不支持特性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-使用 [Azure 服务总线 SDK](/service-bus-messaging) 而不是内置的输出绑定。
+使用 [Azure 服务总线 SDK](../service-bus-messaging/index.yml) 而不是内置的输出绑定。
 
 ---
 
@@ -289,8 +289,8 @@ JavaScript 不支持特性。
 
 | 绑定 | 参考 |
 |---|---|
-| 服务总线 | [服务总线错误代码](/service-bus-messaging/service-bus-messaging-exceptions) |
-| 服务总线 | [服务总线限制](/service-bus-messaging/service-bus-quotas) |
+| 服务总线 | [服务总线错误代码](../service-bus-messaging/service-bus-messaging-exceptions.md) |
+| 服务总线 | [服务总线限制](../service-bus-messaging/service-bus-quotas.md) |
 
 <a name="host-json"></a>  
 
@@ -329,7 +329,7 @@ JavaScript 不支持特性。
 |---------|---------|---------|
 |prefetchCount|0|获取或设置消息接收方可以同时请求的消息数。|
 |maxAutoRenewDuration|00:05:00|自动续订消息锁的最长持续时间。|
-|autoComplete|是|是触发器在处理后自动调用 complete，还是函数代码手动调用 complete。<br><br>仅在 C# 中支持将其设置为 `false`。<br><br>如果设置为 `true`，则触发器会在函数执行成功完成时自动完成该消息，否则会放弃该消息。<br><br>设置为 `false` 时，你负责调用 [MessageReceiver](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet) 方法来完成、放弃消息或将消息放入死信队列。 如果引发了异常（并且未调用任何 `MessageReceiver` 方法），则锁仍然存在。 锁到期后，消息会重新排队，同时 `DeliveryCount` 会递增，并且锁会自动续订。<br><br>在非 C# 函数中，函数中的异常会导致运行时在后台调用 `abandonAsync`。 如果未发生异常，则在后台调用 `completeAsync`。 |
+|autoComplete|是|是触发器在处理后自动调用 complete，还是函数代码手动调用 complete。<br><br>仅在 C# 中支持将其设置为 `false`。<br><br>如果设置为 `true`，则触发器会在函数执行成功完成时自动完成该消息，否则会放弃该消息。<br><br>设置为 `false` 时，你负责调用 [MessageReceiver](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet) 方法来完成、放弃消息或将消息放入死信队列。 如果引发了异常（并且未调用任何 `MessageReceiver` 方法），则锁仍然存在。 锁到期后，消息会重新排队，同时 `DeliveryCount` 会递增，并且锁会自动续订。<br><br>在非 C# 函数中，函数中的异常会导致运行时在后台调用 `abandonAsync`。 如果未发生异常，则在后台调用 `completeAsync`。 |
 |maxConcurrentCalls|16|对于每个缩放实例，消息泵应对回调发起的最大并发调用数。 默认情况下，Functions 运行时同时处理多条消息。|
 |maxConcurrentSessions|2000|每个缩放实例可以并发处理的最大会话数。|
 

@@ -11,12 +11,12 @@ author: mesameki
 ms.reviewer: Luis.Quintanilla
 ms.date: 04/12/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 029596dac3eadbc1a924d886cbfe4d31f73e78e0
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: 1b22e64508db95b55d6a21180f42c5f1218d9d96
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097513"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88227895"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python"></a>使用可解释性包通过 Python 解释机器学习模型和预测
 
@@ -129,11 +129,11 @@ ms.locfileid: "85097513"
 
 ```python
 
-# you can use the training data or the test data here
-global_explanation = explainer.explain_global(x_train)
+# you can use the training data or the test data here, but test data would allow you to use Explanation Exploration
+global_explanation = explainer.explain_global(x_test)
 
 # if you used the PFIExplainer in the previous step, use the next line of code instead
-# global_explanation = explainer.explain_global(x_train, true_labels=y_test)
+# global_explanation = explainer.explain_global(x_train, true_labels=y_train)
 
 # sorted feature importance values and feature names
 sorted_global_importance_values = global_explanation.get_ranked_global_values()
@@ -354,7 +354,7 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
 ```python
 from interpret_community.widget import ExplanationDashboard
 
-ExplanationDashboard(global_explanation, model, x_test)
+ExplanationDashboard(global_explanation, model, dataset=x_test)
 ```
 
 ### <a name="visualization-in-azure-machine-learning-studio"></a>Azure 机器学习工作室中的可视化效果

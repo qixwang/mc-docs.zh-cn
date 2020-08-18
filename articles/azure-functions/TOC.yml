@@ -15,7 +15,7 @@
       expanded: true
       items:
         - name: Visual Studio Code
-          href: /azure-functions/functions-create-first-function-vs-code
+          href: ./functions-create-first-function-vs-code.md
         - name: Visual Studio
           href: functions-create-your-first-function-visual-studio.md
         - name: 命令行
@@ -30,12 +30,16 @@
           href: functions-add-output-binding-storage-queue-cli.md
 - name: 教程
   items:
+    - name: 无服务器 API 的 OpenAPI 定义
+      href: functions-openapi-definition.md
     - name: 使用事件网格调整图像大小
       href: ../event-grid/resize-images-on-storage-blob-upload-event.md
     - name: 将机器学习与 TensorFlow 配合使用
       href: functions-machine-learning-tensorflow.md
     - name: IoT Edge 设备上的 Functions
       href: ../iot-edge/tutorial-deploy-function.md
+    - name: 将 Java 与 Azure Cosmos DB 和事件中心配合使用
+      href: functions-event-hub-cosmos-db.md
 - name: 示例
   items:
     - name: Azure 无服务器社区库
@@ -97,6 +101,10 @@
           href: functions-reference-java.md
         - name: TypeScript
           href: functions-reference-node.md#typescript
+    - name: 框架
+      items:
+        - name: Express.js
+          href: shift-expressjs.md
     - name: 安全性
       items:
         - name: 安全概述
@@ -141,11 +149,11 @@
                 - name: Azure 门户
                   href: functions-create-first-azure-function.md
                 - name: 命令行
-                  href: functions-create-first-azure-function-azure-cli.md
+                  href: ./functions-create-first-azure-function-azure-cli.md
                 - name: Visual Studio
-                  href: functions-create-your-first-function-visual-studio.md
+                  href: ./functions-create-your-first-function-visual-studio.md
                 - name: Visual Studio Code
-                  href: functions-create-first-function-vs-code.md
+                  href: ./functions-create-first-function-vs-code.md
                 - name: 使用 Eclipse 的 Java
                   href: functions-create-maven-eclipse.md
                 - name: 使用 IntelliJ IDEA 的 Java
@@ -165,9 +173,9 @@
             - name: 存储 - 门户
               href: functions-integrate-storage-queue-output-binding.md
             - name: 存储 - Visual Studio Code
-              href: functions-add-output-binding-storage-queue-vs-code.md
+              href: ./functions-add-output-binding-storage-queue-vs-code.md
             - name: 存储 - Visual Studio
-              href: functions-add-output-binding-storage-queue-vs.md
+              href: ./functions-add-output-binding-storage-queue-vs.md
             - name: 存储 - Java
               href: functions-add-output-binding-storage-queue-java.md
         - name: 调试和测试
@@ -212,6 +220,11 @@
           href: disable-function.md
         - name: 异地灾难恢复
           href: functions-geo-disaster-recovery.md
+    - name: 监视
+      items:
+        - name: 监视函数
+          href: functions-monitoring.md
+          displayName: 'App Insights, Application Insights, logs, logging'
     - name: 安全
       items:
         - name: 添加 SSL 证书
@@ -246,13 +259,15 @@
               href: functions-add-output-binding-storage-queue-vs.md
         - name: 连接到 SQL 数据库
           href: functions-scenario-database-table-cleanup.md
+        - name: 创建 Open API 2.0 定义
+          href: ./functions-openapi-definition.md
         - name: 使用托管标识
           href: ../app-service/overview-managed-identity.md
         - name: 自定义 HTTP 函数终结点
           href: functions-create-serverless-api.md
         - name: 管理本地资源
           href: functions-hybrid-powershell.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 排查存储问题
           href: functions-recover-storage-account.md
@@ -352,7 +367,7 @@
               displayName: HTTP
         - name: Microsoft Graph
           href: functions-bindings-microsoft-graph.md
-        - name: Mobile Apps
+        - name: 移动应用
           href: functions-bindings-mobile-apps.md
         - name: 通知中心
           href: functions-bindings-notification-hubs.md

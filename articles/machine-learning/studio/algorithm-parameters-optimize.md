@@ -10,16 +10,16 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 78f1e8e6bf4c81837bbfe0dbcd2da22b9f95ab6d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 8316772656d698f87a736d72ee217674dcc4b87c
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80343317"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88227907"
 ---
 # <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning-studio-classic"></a>选择参数优化 Azure 机器学习工作室（经典）中的算法
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+**适用于：**  ![yes](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![no](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)
 
 本主题介绍如何为 Azure 机器学习工作室（经典）中的算法选择合适的超参数集。 大多数机器学习算法使用参数来设置。 训练模型时，需要为这些参数提供值。 经过训练的模型效力取决于选择的模型参数。 查找最佳参数集的过程称为*模型选择*。
 
@@ -39,11 +39,11 @@ ms.locfileid: "80343317"
 ![查找最佳参数集](./media/algorithm-parameters-optimize/fig1.png)
 
 ## <a name="define-the-parameter-space"></a>定义参数空间
-可在模型初始化步骤中定义参数集。 所有机器学习算法的参数窗格中具有两个训练模式：单个参数  和参数范围  。 选择参数范围模式。 在参数范围模式下，可为每个参数输入多个值。 可在文本框中输入以逗号分隔的值。
+可在模型初始化步骤中定义参数集。 所有机器学习算法的参数窗格中具有两个训练模式：单个参数** 和参数范围**。 选择参数范围模式。 在参数范围模式下，可为每个参数输入多个值。 可在文本框中输入以逗号分隔的值。
 
 ![双类提升决策树，单个参数](./media/algorithm-parameters-optimize/fig2.png)
 
- 或者，使用**使用范围生成器**定义网格的最大和最小网格点和生成的总点数。 默认情况下，参数值按线性刻度生成。 但是，如果“对数刻度”  处于选中状态，这些值会在对数刻度中生成（即相邻点的比率是常量，而不是它们的差）。 对于整数参数，可使用连字符定义范围。 例如，“1-10”是指介于 1 到 10（两者均含）之间的所有整数构成参数集。 也支持混合模式。 例如，参数集“1-10, 20, 50”将包括整数 1-10、20 和 50。
+ 或者，使用**使用范围生成器**定义网格的最大和最小网格点和生成的总点数。 默认情况下，参数值按线性刻度生成。 但是，如果“对数刻度”**** 处于选中状态，这些值会在对数刻度中生成（即相邻点的比率是常量，而不是它们的差）。 对于整数参数，可使用连字符定义范围。 例如，“1-10”是指介于 1 到 10（两者均含）之间的所有整数构成参数集。 也支持混合模式。 例如，参数集“1-10, 20, 50”将包括整数 1-10、20 和 50。
 
 ![双类提升决策树，参数范围](./media/algorithm-parameters-optimize/fig3.png)
 
@@ -53,12 +53,12 @@ ms.locfileid: "80343317"
 ![分区和采样](./media/algorithm-parameters-optimize/fig4.png)
 
 ## <a name="define-the-metric"></a>定义指标
-[优化模型超参数][tune-model-hyperparameters]模块支持为给定算法和数据集凭经验选择最佳参数集。 除了有关训练模型的其他信息，此模块的“属性”  窗格包括确定最佳参数集的指标。 它分别具有两个不同的下拉列表框用于分类和回归算法。 如果正在考虑的算法是分类算法，则忽略回归指标，反之亦然。 在此特定示例中，该指标为**准确性**。   
+[优化模型超参数][tune-model-hyperparameters] 模块支持为给定算法和数据集凭经验选择最佳参数集。 除了有关训练模型的其他信息，此模块的“属性”**** 窗格包括确定最佳参数集的指标。 它分别具有两个不同的下拉列表框用于分类和回归算法。 如果正在考虑的算法是分类算法，则忽略回归指标，反之亦然。 在此特定示例中，该指标为**准确性**。   
 
 ![扫描参数](./media/algorithm-parameters-optimize/fig5.png)
 
 ## <a name="train-evaluate-and-compare"></a>训练、评估和比较
-相同的[优化模型超参数][tune-model-hyperparameters]模块训练所有对应于参数集的模型、评估各种指标并基于所选指标创建训练最佳的模型。 此模块具有两个必需输入：
+相同的[优化模型超参数][tune-model-hyperparameters] 模块训练所有对应于参数集的模型、评估各种指标并基于所选指标创建训练最佳的模型。 此模块具有两个必需输入：
 
 * 未训练的学习器
 * 数据集

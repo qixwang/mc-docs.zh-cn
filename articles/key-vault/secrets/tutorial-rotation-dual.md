@@ -11,12 +11,12 @@ ms.topic: tutorial
 origin.date: 06/22/2020
 ms.date: 07/28/2020
 ms.author: v-tawe
-ms.openlocfilehash: 331c49d39bb8f6d853ab53f215596c57e2466d90
-ms.sourcegitcommit: 0e778acf5aa5eb63ab233e07e7aecce3a9a5e6d4
+ms.openlocfilehash: 10cd5a18ad4ebd1dd7de138baf8cfabd696f1974
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87296530"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88227879"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-with-two-sets-of-authentication-credentials"></a>自动轮换使用两组身份验证凭据的资源的机密
 
@@ -90,7 +90,7 @@ akvrotationstorage2    akvrotation      chinaeast      Microsoft.Storage/storage
 1. 在“密钥保管库名称”中，键入密钥保管库名称
 1. 在“函数应用名称”中，键入函数应用名称
 1. 在“机密名称”中，键入存储了访问密钥的机密的名称
-1. 在“存储库 Url”中，键入函数代码 GitHub 位置 (https://github.com/jlichwa/KeyVault-Rotation-StorageAccountKey-PowerShell.git )
+1. 在“存储库 Url”中，键入函数代码 GitHub 位置 (https://github.com/jlichwa/KeyVault-Rotation-StorageAccountKey-PowerShell.git ) 
 1. 选择“查看 + 创建”。
 1. 选择“创建”
 
@@ -211,4 +211,3 @@ az storage account keys list -n akvrotationstorage
 <!-- - Overview: [Monitoring Key Vault with Azure Event Grid (preview)](../general/event-grid-overview.md) -->
 <!-- - How to: [Receive email when a key vault secret changes](../general/event-grid-logicapps.md) -->
 - 如何：[在 Azure 门户中创建你的第一个函数](../../azure-functions/functions-create-first-azure-function.md)
-- [Azure Key Vault 的 Azure 事件网格事件架构（预览版）](../../event-grid/event-schema-key-vault.md)

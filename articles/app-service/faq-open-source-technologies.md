@@ -7,19 +7,19 @@ tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 origin.date: 10/31/2018
-ms.date: 06/22/2020
+ms.date: 08/13/2020
 ms.author: v-tawe
-ms.custom: seodec18, tracking-python
-ms.openlocfilehash: 603273b2933b25af45b0f954ebe62eb7daefe1dd
-ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
+ms.custom: seodec18, devx-track-python
+ms.openlocfilehash: 2488d03c2a36c824a11bfb704c4f926837b3f21c
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85613378"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88227923"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>针对 Azure 中 Web 应用的开源技术常见问题的解答
 
-本文对 [Azure App Service Web 应用功能](https://www.azure.cn/home/features/app-service/web-apps/)开源技术常见问题 (FAQ) 进行了解答。
+本文对 [Azure App Service Web 应用功能](https://azure.microsoft.com/services/app-service/web/)开源技术常见问题 (FAQ) 进行了解答。
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 

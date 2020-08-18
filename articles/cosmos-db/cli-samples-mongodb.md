@@ -6,14 +6,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: sample
 origin.date: 06/03/2020
-ms.date: 06/22/2020
+ms.date: 08/17/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 4213002fc1e7068ad02d81946665563489bcde86
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: 037cfcc842e7bc0612eb8a6aeeeeeb4ab780a57d
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098705"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222751"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db-mongodb-api"></a>适用于 Azure Cosmos DB MongoDB API 的 Azure CLI 示例
 
@@ -22,7 +24,7 @@ ms.locfileid: "85098705"
 > [!NOTE]
 > 目前，你只能使用 PowerShell、CLI 和资源管理器模板为 MongoDB 帐户创建 3.2 版的 Azure Cosmos DB API for MongoDB（即，使用格式为 `*.documents.azure.cn` 的终结点的帐户）。 若要创建 3.6 版帐户，请改用 Azure 门户。
 
-| |  |
+|任务 | 说明 |
 |---|---|
 | [创建 Azure Cosmos 帐户、数据库和集合](scripts/cli/mongodb/create.md?toc=%2fcli%2ftoc.json)| 为 MongoDB API 创建 Azure Cosmos DB 帐户、数据库和集合。 |
 | [更改吞吐量](scripts/cli/mongodb/throughput.md?toc=%2fcli%2ftoc.json) | 更新数据库和集合的 RU/秒。|

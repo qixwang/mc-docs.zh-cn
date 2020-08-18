@@ -4,16 +4,18 @@ description: 了解如何检测和调试 Azure Cosmos DB 请求的 SQL 查询性
 author: rockboyfor
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 05/23/2019
-ms.date: 09/09/2019
+ms.date: 08/17/2020
+ms.testscope: yes
+ms.testdate: 08/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: dc4ed26c48d0f9f5b2eed6153c3296c89c08b3ab
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3ddeadf847e80f6eecea5aab5612356ba027661b
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "70254475"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222425"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>优化 Azure Cosmos DB 的查询性能
 
@@ -275,4 +277,4 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 * 若要了解请求单位，请参阅[请求单位](request-units.md)。
 * 若要了解索引编制策略，请参阅[索引编制策略](index-policy.md)
 
-<!--Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

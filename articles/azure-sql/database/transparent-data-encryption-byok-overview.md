@@ -1,8 +1,9 @@
 ---
 title: 客户管理的透明数据加密 (TDE)
 description: 使用 SQL 数据库和 Azure Synapse Analytics 的 Azure Key Vault 为透明数据加密 (TDE) 提供创建自己的密钥 (BYOK) 支持。 支持 BYOK 的 TDE 概述、优势、工作原理、注意事项和建议。
+titleSuffix: Azure SQL Database & SQL Managed Instance & Azure Synapse Analytics
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: seo-lt-2019, azure-synapse
 ms.devlang: ''
@@ -11,13 +12,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: vanto
 origin.date: 03/18/2020
-ms.date: 07/13/2020
-ms.openlocfilehash: 482820dcb4c4817569bce6ab3567c77727952952
-ms.sourcegitcommit: fa26665aab1899e35ef7b93ddc3e1631c009dd04
+ms.date: 08/17/2020
+ms.openlocfilehash: eb7e7b00f821c2631729d69592ebd3a0c3fe6884
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86227676"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223280"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>使用客户管理的密钥进行 Azure SQL 透明数据加密
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -59,7 +60,7 @@ Azure SQL [透明数据加密 (TDE)](https://docs.microsoft.com/sql/relational-d
 
 - **unwrapKey** - 用于取消保护（解密）DEK
 
-Key Vault 管理员还可以[启用 Key Vault 审核事件的日志记录](../../azure-monitor/insights/azure-key-vault.md)，以便以后可以审核这些事件。
+Key Vault 管理员还可以[启用 Key Vault 审核事件的日志记录](../../azure-monitor/insights/key-vault-insights-overview.md)，以便以后可以审核这些事件。
 
 将服务器配置为使用 AKV 中的 TDE 保护器后，该服务器会将每个启用了 TDE 的数据库的 DEK 发送到 Key Vault 用于加密。 Key Vault 返回已加密的 DEK，该 DEK 随后将存储在用户数据库中。
 
@@ -151,7 +152,7 @@ Key Vault 管理员还可以[启用 Key Vault 审核事件的日志记录](../..
 若要监视数据库的状态并针对 TDE 保护器访问权限的丢失启用警报，请配置以下 Azure 功能：
 
 - [Azure 资源运行状况](../../service-health/resource-health-overview.md)。 首次与失去 TDE 保护器访问权限的不可访问的数据库建立连接遭到拒绝后，该数据库将显示为“不可用”。
-- [活动日志](../../service-health/alerts-activity-log-service-notifications.md)。访问客户管理的 Key Vault 中的 TDE 保护器失败时，会将相应的条目添加到活动日志。  为这些事件创建警报可以尽快恢复访问权限。
+- [活动日志](../../service-health/alerts-activity-log-service-notifications-portal.md)。访问客户管理的 Key Vault 中的 TDE 保护器失败时，会将相应的条目添加到活动日志。  为这些事件创建警报可以尽快恢复访问权限。
 - 可以定义[操作组](../../azure-monitor/platform/action-groups.md)，以根据自己的偏好（例如电子邮件/短信、逻辑应用、Webhook、ITSM 或自动化 Runbook）发送通知和警报。
 
 ## <a name="database-backup-and-restore-with-customer-managed-tde"></a>使用客户管理的 TDE 进行数据库备份和还原

@@ -12,13 +12,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: mathoma
 origin.date: 04/28/2020
-ms.date: 07/13/2020
-ms.openlocfilehash: bcaf2465936b66780cb7670fa9d80b8c71b55004
-ms.sourcegitcommit: fa26665aab1899e35ef7b93ddc3e1631c009dd04
+ms.date: 08/17/2020
+ms.openlocfilehash: d4445fe8b6d7876db03a859ceb60eab0ed1d6b7b
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86227317"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223277"
 ---
 # <a name="tutorial-configure-replication-between-two-managed-instances"></a>教程：配置两个托管实例之间的复制
 
@@ -27,7 +27,7 @@ ms.locfileid: "86227317"
 借助事务复制，可将数据从一个数据库复制到托管在 SQL Server 或 [Azure SQL 托管实例](sql-managed-instance-paas-overview.md)（现为公开预览版）中的数据库。 SQL 托管实例可以是复制拓扑中的发布服务器、分发服务器或订阅服务器。 有关可用配置，请参阅[事务复制配置](replication-transactional-overview.md#common-configurations)。
 
 > [!NOTE]
-> 本文介绍了如何在 Azure SQL 托管实例中使用[事务复制](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication)。 它与[故障转移组](/sql-database/sql-database-auto-failover-group)无关，这是一项 Azure SQL 托管实例功能，可用于创建单个实例的完整可读副本。
+> 本文介绍了如何在 Azure SQL 托管实例中使用[事务复制](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication)。 它与[故障转移组](/sql-database/sql-database-auto-failover-group)无关，这是一项 Azure SQL 托管实例功能，可用于创建单个实例的完整可读副本。 配置[故障转移组的事务复制](replication-transactional-overview.md#with-failover-groups)时还有其他注意事项。
 
 本教程介绍如何将一个托管实例配置为发布服务器和分发服务器，然后将第二个托管实例配置为订阅服务器。  
 
@@ -141,7 +141,7 @@ EXEC sp_adddistributiondb @database = N'distribution';
 GO
 ```
 
-## <a name="7---configure-publisher-to-use-distributor"></a>7 - 将发布服务器配置为使用分发服务器 
+## <a name="7---configure-publisher-to-use-distributor"></a>7 - 将发布服务器配置为使用分发服务器
 
 在发布服务器 SQL 托管实例 `sql-mi-pub` 上，将查询执行更改为 [SQLCMD](https://docs.microsoft.com/sql/ssms/scripting/edit-sqlcmd-scripts-with-query-editor) 模式，然后运行以下代码，将新的分发服务器注册到发布服务器。
 

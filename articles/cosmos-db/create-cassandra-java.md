@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Cosmos DB Cassandra API 生成 Java 应用
+title: 带有使用 Java 3.0 SDK 的 Azure Cosmos DB Cassandra API 的 Java 应用
 description: 本快速入门介绍如何配合 Azure 门户和 Java 使用 Azure Cosmos DB Cassandra API 创建配置文件应用程序
 ms.service: cosmos-db
 author: rockboyfor
@@ -7,15 +7,17 @@ ms.subservice: cosmosdb-cassandra
 ms.devlang: java
 ms.topic: quickstart
 origin.date: 05/18/2020
-ms.date: 06/22/2020
+ms.date: 08/17/2020
+ms.testscope: yes
+ms.testdate: 08/10/2020
 ms.author: v-yeche
-ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 1cccd252cc68018692ebc4ecc3023521da8ab453
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
+ms.openlocfilehash: b03014ed4a03640eaed93dfaa85b067b7852135f
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098690"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223099"
 ---
 <!--Verify sucessfully-->
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data-v3-driver"></a>快速入门：生成 Java 应用以管理 Azure Cosmos DB Cassandra API 数据（v3 驱动程序）
@@ -63,7 +65,7 @@ ms.locfileid: "85098690"
     cd "C:\git-samples"
     ```
 
-3. 运行下列命令，克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
+3. 运行下列命令以克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started.git
@@ -151,9 +153,9 @@ ms.locfileid: "85098690"
 
 1. 在 [Azure 门户](https://portal.azure.cn/)的 Azure Cosmos DB 帐户中，选择“连接字符串”。 
 
-    ![在 Azure 门户的“连接字符串”页面中查看并复制用户名](./media/create-cassandra-java/copy-username-connection-string-azure-portal.png)
+    :::image type="content" source="./media/create-cassandra-java/copy-username-connection-string-azure-portal.png" alt-text="在 Azure 门户的“连接字符串”页面中查看并复制用户名":::
 
-2. 使用 ![“复制”按钮](./media/create-cassandra-java/copy-button-azure-portal.png) 复制“联系点”值。
+2. 使用屏幕右侧的 :::image type="icon" source="./media/create-cassandra-java/copy-button-azure-portal.png"::: 按钮复制“CONTACT POINT”值。 
 
 3. 打开 C:\git-samples\azure-cosmosdb-cassandra-java-getting-started\java-examples\src\main\resources 文件夹中的 config.properties 文件。 
 
@@ -207,7 +209,7 @@ ms.locfileid: "85098690"
 
 4. 在 Azure 门户中，打开数据资源管理器，以查询、修改和处理这些新数据。 
 
-    ![在数据资源管理器中查看数据 - Azure Cosmos DB](./media/create-cassandra-java/view-data-explorer-java-app.png)
+    :::image type="content" source="./media/create-cassandra-java/view-data-explorer-java-app.png" alt-text="在数据资源管理器中查看数据 - Azure Cosmos DB":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>在 Azure 门户中查看 SLA
 

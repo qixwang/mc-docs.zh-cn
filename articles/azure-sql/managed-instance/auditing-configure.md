@@ -13,13 +13,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: vanto
 origin.date: 05/26/2020
-ms.date: 07/13/2020
-ms.openlocfilehash: 1e8c7e8317ff2e6dbc34c5676408b445a4581c3b
-ms.sourcegitcommit: fa26665aab1899e35ef7b93ddc3e1631c009dd04
+ms.date: 08/17/2020
+ms.openlocfilehash: 4cf0e5c3d6e68bb1b13cb1463f075a716c5d119d
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86227299"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222514"
 ---
 # <a name="get-started-with-azure-sql-managed-instance-auditing"></a>Azure SQL 托管实例审核入门
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -115,7 +115,7 @@ ms.locfileid: "86227299"
 
         ```SQL
         CREATE SERVER AUDIT [<your_audit_name>]
-        TO URL ( PATH ='<container_url>' [, RETENTION_DAYS =  integer ])
+        TO URL ( PATH ='<container_url>' , RETENTION_DAYS =  integer )
         GO
         ```
 

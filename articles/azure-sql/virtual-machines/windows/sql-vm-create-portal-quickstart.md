@@ -1,24 +1,24 @@
 ---
-title: 通过 Azure 门户在 Windows 虚拟机上创建 SQL Server | Azure
+title: 通过 Azure 门户在 Windows 虚拟机上创建 SQL Server | Microsoft Docs
 description: 本教程介绍了如何在 Azure 门户中创建使用 SQL Server 2017 的 Windows 虚拟机。
 services: virtual-machines-windows
 documentationcenter: na
-author: rockboyfor
+author: WenJason
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 origin.date: 07/11/2019
-ms.date: 07/06/2020
-ms.author: v-yeche
+ms.date: 08/17/2020
+ms.author: v-jay
 ms.reviewer: jroth
-ms.openlocfilehash: 8aff732852d140982accf62f5061a28e4a3e44e4
-ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
+ms.openlocfilehash: 5bfde6fa399416e0b9f8c5c9a7cd7d8c151d5d9e
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85946095"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223142"
 ---
 <!--Verified Redirect files-->
 # <a name="quickstart-create-sql-server-2017-on-a-windows-virtual-machine-in-the-azure-portal"></a>快速入门：通过 Azure 门户在 Windows 虚拟机上创建 SQL Server 2017
@@ -35,13 +35,11 @@ ms.locfileid: "85946095"
 > - 本快速入门提供的路径适用于快速预配并连接到 SQL VM。 若要详细了解其他 SQL VM 预配选择，请参阅 [Azure 门户中的 Windows VM 上的 SQL Server 预配指南](create-sql-vm-portal.md)。
 > - 如果对 SQL Server 虚拟机有任何疑问，请参阅[常见问题解答](frequently-asked-questions-faq.md)。
 
-<a name="subscription"></a>
-## <a name="get-an-azure-subscription"></a>获取 Azure 订阅
+## <a name="get-an-azure-subscription"></a><a id="subscription"></a> 获取 Azure 订阅
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
-<a name="select"></a>
-## <a name="select-a-sql-server-vm-image"></a>选择 SQL Server VM 映像
+## <a name="select-a-sql-server-vm-image"></a><a id="select"></a>选择 SQL Server VM 映像
 
 1. 使用帐户登录到 [Azure 门户](https://portal.azure.cn)。
 
@@ -64,8 +62,7 @@ ms.locfileid: "85946095"
 
    ![新搜索窗口](./media/sql-vm-create-portal-quickstart/create-sql-2017-vm-image.png)
 
-<a name="configure"></a>
-## <a name="provide-basic-details"></a>提供基本详细信息
+## <a name="provide-basic-details"></a><a id="configure"></a> 提供基本详细信息
 
 在“基本信息”选项卡中提供以下信息：
 
@@ -140,7 +137,8 @@ ms.locfileid: "85946095"
 
 1. 在连接到 Internet 的其他计算机上，打开 [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)。
 
-1. 在“连接到服务器”或“连接到数据库引擎”对话框中，编辑“服务器名称”值  。 输入 VM 的公共 IP 地址。 添加一个逗号，然后添加配置新 VM 时指定的自定义端口 **1401**。 例如，`11.22.33.444,1401`。
+
+1. 在“连接到服务器”或“连接到数据库引擎”对话框中，编辑“服务器名称”值  。 输入 VM 的公共 IP 地址。 添加一个逗号，然后添加配置新 VM 时指定的自定义端口 (1401)。 例如，`11.22.33.444,1401`。
 
 1. 在“身份验证”框中，选择“SQL Server 身份验证” 。
 
@@ -152,8 +150,7 @@ ms.locfileid: "85946095"
 
     ![ssms 连接](./media/sql-vm-create-portal-quickstart/ssms-connect.png)
 
-<a name="remotedesktop"></a>
-## <a name="log-in-to-the-vm-remotely"></a>远程登录到 VM
+## <a name="log-in-to-the-vm-remotely"></a><a id="remotedesktop"></a> 远程登录到 VM
 
 使用以下步骤通过远程桌面连接到 SQL Server 虚拟机：
 
@@ -166,6 +163,7 @@ ms.locfileid: "85946095"
 ## <a name="clean-up-resources"></a>清理资源
 
 如果不需要让 SQL VM 持续运行，可以在不使用它时将它停止，以免产生不必要的费用。 也可以永久删除与该虚拟机关联的所有资源，在门户中删除其关联的资源组即可。 请小心使用此命令，因为它也会永久删除该虚拟机。 有关详细信息，请参阅[通过门户管理 Azure 资源](../../../azure-resource-manager/management/manage-resource-groups-portal.md)。
+
 
 ## <a name="next-steps"></a>后续步骤
 

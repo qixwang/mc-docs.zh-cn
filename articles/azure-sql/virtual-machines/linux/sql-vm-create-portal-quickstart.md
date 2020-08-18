@@ -2,26 +2,28 @@
 title: 快速入门：在 Azure 中创建 Linux SQL Server VM
 description: 本教程介绍如何在 Azure 门户中创建 Linux SQL Server 2017 虚拟机。
 services: virtual-machines-linux
-author: Johnnytechn
-ms.date: 06/30/2020
+author: WenJason
+origin.date: 10/22/2019
+ms.date: 08/17/2020
 tags: azure-service-management
 ms.topic: conceptual
 ms.service: virtual-machines-sql
 ms.workload: iaas-sql-server
-ms.author: v-johya
+ms.author: v-jay
 ms.reviewer: jroth
-ms.openlocfilehash: aeb795668fc44d8a18636a897fad04d115e1f2de
-ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
+ms.openlocfilehash: 4b0ca192509b0e6d0b47dcf9c5feb4ce695d0532
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85852559"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222512"
 ---
 # <a name="provision-a-linux-virtual-machine-running-sql-server-in-the-azure-portal"></a>在 Azure 门户中预配运行 SQL Server 的 Linux 虚拟机
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!div class="op_single_selector"]
 > * [Linux](sql-vm-create-portal-quickstart.md)
+> * [Windows](../windows/sql-vm-create-portal-quickstart.md)
 
 在本快速入门教程中，你将使用 Azure 门户创建装有 SQL Server 2017 的 Linux 虚拟机。 学习以下内容： 
 
@@ -37,7 +39,7 @@ ms.locfileid: "85852559"
 
 ## <a name="create-a-linux-vm-with-sql-server-installed"></a><a id="create"></a> 创建安装了 SQL Server 的 Linux VM
 
-1. 登录到 [Azure 门户](https://portal.azure.cn/)。
+1. 登录 [Azure 门户](https://portal.azure.cn/)。
 
 1. 在左窗格中，选择“创建资源”。
 
@@ -58,7 +60,7 @@ ms.locfileid: "85852559"
    > [!TIP]
    > Developer 版允许使用 Enterprise 版的功能进行测试或开发，但没有 SQL Server 许可费用。 只需支付运行 Linux VM 的费用。
 
-1. 选择“创建” 。 
+1. 选择“创建”。 
 
 
 ### <a name="set-up-your-linux-vm"></a>设置 Linux VM
@@ -71,7 +73,7 @@ ms.locfileid: "85852559"
 1. 然后键入或选择以下值：
    * **区域**：选择合适的 Azure 区域。
    * **可用性选项**：选择最适合应用和数据的可用性与冗余选项。
-   * **更改大小**：选择此选项以选择计算机大小，完成后，选择“选择”。 有关 VM 计算机大小的详细信息，请参阅 [Linux VM 大小](/virtual-machines/virtual-machines-linux-sizes)。
+   * **更改大小**：选择此选项以选择计算机大小，完成后，选择“选择”。
 
      ![选择 VM 大小](./media/sql-vm-create-portal-quickstart/vmsizes.png)
 
@@ -81,7 +83,7 @@ ms.locfileid: "85852559"
    * **身份验证类型**：选择“SSH 公钥”。
 
      > [!Note]
-     > 可以选择使用“SSH 公钥”或“密码”进行身份验证。 SSH 更安全。 有关如何生成 SSH 密钥的说明，请参阅[在 Linux 和 Mac 上为 Azure 中的 Linux VM 创建 SSH 密钥](/virtual-machines/virtual-machines-linux-mac-create-ssh-keys)。
+     > 可以选择使用“SSH 公钥”或“密码”进行身份验证。 SSH 更安全。 有关如何生成 SSH 密钥的说明，请参阅[在 Linux 和 Mac 上为 Azure 中的 Linux VM 创建 SSH 密钥](../../../virtual-machines/linux/mac-create-ssh-keys.md)。
 
    * **用户名**：输入 VM 的管理员名称。
    * **SSH 公钥**：输入 RSA 公钥。
@@ -121,7 +123,7 @@ ssh azureadmin@40.55.55.555
 
 1. 选择“打开”，并根据提示输入用户名和密码。
 
-若要详细了解如何连接到 Linux VM，请参阅[使用门户在 Azure 上创建 Linux VM](/virtual-machines/virtual-machines-linux-quick-create-portal)。
+若要详细了解如何连接到 Linux VM，请参阅[使用门户在 Azure 上创建 Linux VM](../../../virtual-machines/linux/quick-create-portal.md)。
 
 > [!NOTE]
 > 如果出现有关不会在注册表中缓存服务器主机密钥的 PuTTY 安全警报，请从以下选项中进行选择。 如果你信任此主机，请选择“是”将密钥添加到 PuTTy 缓存并继续进行连接。 如果你只想建立连接一次，而无需将密钥添加到缓存，请选择“否”。 如果你不信任此主机，请选择“取消”以放弃连接。
@@ -141,7 +143,7 @@ ssh azureadmin@40.55.55.555
 
    出现提示时，输入新的 SA 密码和密码确认。
 
-1. 重新启动 SQL Server 服务。
+1. 重启 SQL Server 服务。
 
    ```bash
    sudo systemctl start mssql-server
@@ -149,7 +151,7 @@ ssh azureadmin@40.55.55.555
 
 ## <a name="add-the-tools-to-your-path-optional"></a>将工具添加到路径（可选）
 
-默认安装了多个 SQL Server 包，包括 SQL Server 命令行工具包。 工具包包含 sqlcmd 和 bcp 工具。 为了方便，可以选择将工具路径 `/opt/mssql-tools/bin/` 添加到 PATH 环境变量。
+默认安装了多个 SQL Server [包](sql-server-on-linux-vm-what-is-iaas-overview.md#packages)，包括 SQL Server 命令行工具包。 工具包包含 sqlcmd 和 bcp 工具。 为了方便，可以选择将工具路径 `/opt/mssql-tools/bin/` 添加到 PATH 环境变量。
 
 1. 运行以下命令以修改登录会话和交互式/非登录会话的路径：
 
@@ -198,4 +200,3 @@ ssh azureadmin@40.55.55.555
 如果已将 Azure VM 配置为建立远程 SQL Server 连接，则应可建立远程连接。 若要通过示例来了解如何从 Windows 远程连接到 Linux 上的 SQL Server，请参阅[使用 Windows 上的 SSMS 连接到 Linux 上的 SQL Server](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-ssms)。 若要通过 Visual Studio Code 进行连接，请参阅[使用 Visual Studio Code 创建和运行 SQL Server 的 Transact-SQL 脚本](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-vscode)
 
 有关 Linux 上的 SQL Server 的其他一般信息，请参阅 [Linux 上的 SQL Server 2017 概述](https://docs.microsoft.com/sql/linux/sql-server-linux-overview)。 若要详细了解如何使用 SQL Server 2017 Linux 虚拟机，请参阅 [Azure 上的 SQL Server 2017 虚拟机概述](sql-server-on-linux-vm-what-is-iaas-overview.md)。
-

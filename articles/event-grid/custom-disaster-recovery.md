@@ -1,22 +1,19 @@
 ---
 title: Azure 事件网格中自定义主题的灾难恢复
 description: 本教程逐步讲解如何设置事件处理体系结构，以便在区域中的事件网格服务运行不正常时能够予以恢复。
-services: event-grid
-author: banisadr
-ms.service: event-grid
 ms.topic: tutorial
+author: Johnnytechn
+ms.author: v-johya
 origin.date: 01/21/2020
-ms.date: 02/17/2020
-ms.author: v-yiso
-ms.openlocfilehash: 0bd182cc52144c17d9ea3496390a562b8ae4889f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 08/10/2020
+ms.openlocfilehash: 7767b1161d82749adba08759e07604fafa98b442
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79452528"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88228054"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>为事件网格中的自定义主题构建自己的灾难恢复方案
-
 灾难恢复侧重于从严重的应用程序功能丧失中恢复。 本教程逐步讲解如何设置事件处理体系结构，以便在特定区域中的事件网格服务不正常时能够予以恢复。
 
 本教程将介绍如何为事件网格中的自定义主题创建主动-被动故障转移体系结构。 实现故障转移的方式为：在两个区域之间镜像主题和订阅，然后管理当某个主题不正常时执行的故障转移。 本教程中的体系结构可故障转移所有新流量。 必须注意，使用此设置时，在有问题的区域再次正常之前，正在进行的事件不可恢复。
@@ -30,9 +27,9 @@ ms.locfileid: "79452528"
 
 为了简化测试，请部署一个用于显示事件消息的[预生成 Web 应用](https://github.com/Azure-Samples/azure-event-grid-viewer)。 所部署的解决方案包括应用服务计划、应用服务 Web 应用和 GitHub 中的源代码。
 
-1. 选择“部署到 Azure”  将解决方案部署到你的订阅。 在 Azure 门户中，为参数提供值。
+1. 选择“部署到 Azure”将解决方案部署到你的订阅。 在 Azure 门户中，为参数提供值。
 
-   <a href="https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+   <a href="https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png" alt="Button to Deploy to Aquent." /></a>
 
 1. 部署可能需要几分钟才能完成。 部署成功后，请查看 Web 应用以确保它正在运行。 在 Web 浏览器中导航到 `https://<your-site-name>.chinacloudsites.cn`
 请务必记下此 URL，因为稍后需要用到。
@@ -50,28 +47,28 @@ ms.locfileid: "79452528"
 
 1. 登录 [Azure 门户](https://portal.azure.cn)。 
 
-1. 在 Azure 主菜单的左上角，选择“所有服务”> 搜索“事件网格”> 选择“事件网格主题”。   
+1. 在 Azure 主菜单的左上角，选择“所有服务”> 搜索“事件网格”> 选择“事件网格主题”。  
 
    ![事件网格主题菜单](./media/custom-disaster-recovery/select-topics-menu.png)
 
     选择“事件网格主题”旁边的星号，将其添加到资源菜单以方便将来进行访问。
 
-1. 在“事件网格主题”菜单中，选择“+添加”以创建主要主题。 
+1. 在“事件网格主题”菜单中，选择“+添加”以创建主要主题。
 
    * 为该主题提供逻辑名称，并添加“-primary”后缀以方便跟踪。
    * 此主题的区域是主要区域。
 
      ![“事件网格主题”中的创建主要主题对话框](./media/custom-disaster-recovery/create-primary-topic.png)
 
-1. 创建主题后，导航到该主题，并复制“主题终结点”。  稍后需要使用该 URI。
+1. 创建主题后，导航到该主题，并复制“主题终结点”。 稍后需要使用该 URI。
 
     ![事件网格主要主题](./media/custom-disaster-recovery/get-primary-topic-endpoint.png)
 
-1. 获取主题的访问密钥，稍后需要用到。 在资源菜单中单击“访问密钥”并复制“密钥 1”。 
+1. 获取主题的访问密钥，稍后需要用到。 在资源菜单中单击“访问密钥”并复制“密钥 1”。
 
     ![获取主要主题密钥](./media/custom-disaster-recovery/get-primary-access-key.png)
 
-1. 在“主题”边栏选项卡中，单击“+事件订阅”以创建订阅连接，用于订阅在本教程的先决条件部分所创建的事件接收者网站。 
+1. 在“主题”边栏选项卡中，单击“+事件订阅”以创建订阅连接，用于订阅在本教程的先决条件部分所创建的事件接收者网站。
 
    * 为事件订阅提供逻辑名称，并添加“-primary”后缀以方便跟踪。
    * 选择终结点类型 Web Hook。
@@ -79,7 +76,7 @@ ms.locfileid: "79452528"
 
      ![事件网格主要事件订阅](./media/custom-disaster-recovery/create-primary-es.png)
 
-1. 重复相同的流程以创建辅助主题和订阅。 这一次，请将“-primary”后缀替换为“-secondary”以方便跟踪。 最后，请确保将它们放在不同的 Azure 区域。 尽管可将其放在任何位置，但建议使用 Azure 配对区域。 将辅助主题和订阅放在不同的区域可确保即使主要区域出现故障，也仍可传送新事件。
+1. 重复相同的流程以创建辅助主题和订阅。 这一次，请将“-primary”后缀替换为“-secondary”以方便跟踪。 最后，请确保将它们放在不同的 Azure 区域。 尽管可将其放在任何位置，但建议使用 [Azure 配对区域](../best-practices-availability-paired-regions.md)。 将辅助主题和订阅放在不同的区域可确保即使主要区域出现故障，也仍可传送新事件。
 
 现在，应已准备好以下各项：
 
@@ -95,7 +92,8 @@ ms.locfileid: "79452528"
 
 ### <a name="basic-client-side-implementation"></a>基本的客户端实现
 
-以下示例代码是一个简单的 .NET 发布者，它始终尝试先发布到主要主题。 如果不成功，则故障转移辅助主题。 在任一情况下，它还会针对 `https://<topic-name>.<topic-region>.eventgrid.azure.net/api/health` 执行 GET，以检查另一主题的运行状况 API。 针对 **/api/health** 终结点执行 GET 后，正常的主题应该始终以 **200 OK** 做出响应。
+以下示例代码是一个简单的 .NET 发布者，它始终尝试先发布到主要主题。 如果不成功，则故障转移辅助主题。 在任一情况下，它还会针对 `https://<topic-name>.<topic-region>.eventgrid.azure.cn/api/health` 执行 GET，以检查另一主题的运行状况 API。 针对 **/api/health** 终结点执行 GET 后，正常的主题应该始终以 **200 OK** 做出响应。
+<!--Correct in MC: https://<topic-name>.<topic-region>.eventgrid.azure.cn/api/health-->
 
 ```csharp
 using System;
@@ -120,8 +118,8 @@ namespace EventGridFailoverPublisher
         {
             // TODO: Enter the endpoint each topic. You can find this topic endpoint value
             // in the "Overview" section in the "Event Grid Topics" blade in Azure Portal..
-            string primaryTopic = "https://<primary-topic-name>.<primary-topic-region>.eventgrid.azure.net/api/events";
-            string secondaryTopic = "https://<secondary-topic-name>.<secondary-topic-region>.eventgrid.azure.net/api/events";
+            string primaryTopic = "https://<primary-topic-name>.<primary-topic-region>.eventgrid.azure.cn/api/events";
+            string secondaryTopic = "https://<secondary-topic-name>.<secondary-topic-region>.eventgrid.azure.cn/api/events";
 
             // TODO: Enter topic key for each topic. You can find this in the "Access Keys" section in the
             // "Event Grid Topics" blade in Azure Portal.
@@ -213,4 +211,5 @@ namespace EventGridFailoverPublisher
 
 - 了解如何[在 HTTP 终结点上接收事件](./receive-events.md)
 - 了解如何[将事件路由到混合连接](./custom-event-to-hybrid-connection.md)
-- 了解如何[使用 Azure DNS 和流量管理器进行灾难恢复](/networking/disaster-recovery-dns-traffic-manager)
+- 了解如何[使用 Azure DNS 和流量管理器进行灾难恢复](../networking/disaster-recovery-dns-traffic-manager.md)
+

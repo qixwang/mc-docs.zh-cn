@@ -3,15 +3,15 @@ title: 使用 Java 和 IntelliJ 创建 Azure 函数
 description: 了解如何使用 Java 和 IntelliJ 在 Azure 上创建和发布简单的 HTTP 触发式无服务器应用。
 author: jeffhollan
 ms.topic: how-to
-ms.date: 07/15/2020
+ms.date: 08/11/2020
 ms.author: v-junlch
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 747406c2e1b20a5bc4c347d5cde398153d344eea
-ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
+ms.custom: mvc, devcenter, devx-track-java
+ms.openlocfilehash: 49e0d47bd3f6c8d1e1aae6a403bd58cafe11ac00
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "86440385"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223177"
 ---
 # <a name="create-your-first-azure-function-with-java-and-intellij"></a>使用 Java 和 IntelliJ 创建第一个 Azure 函数
 
@@ -156,7 +156,7 @@ ms.locfileid: "86440385"
 我们已使用 HTTP 触发的函数创建 Java 函数项目，在本地计算机上运行该项目，并将其部署到 Azure。 现在，通过以下方式扩展函数
 
 > [!div class="nextstepaction"]
-> [添加 Azure 存储队列输出绑定](/azure-functions/functions-add-output-binding-storage-queue-java)
+> [添加 Azure 存储队列输出绑定](./functions-add-output-binding-storage-queue-java.md)
 
 
 [marketplace]:./media/functions-create-first-java-intellij/marketplace.png

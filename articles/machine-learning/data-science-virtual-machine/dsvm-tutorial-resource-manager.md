@@ -10,29 +10,32 @@ ms.date: 06/10/2020
 ms.service: machine-learning
 ms.subservice: data-science-vm
 ms.topic: quickstart
-ms.openlocfilehash: c3951d2bf287b7c7c55a1d71efcbc9e33c4b80a0
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: 71f37aa5bf707333c45d3b6917e3e78552adda20
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097793"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88228190"
 ---
-# <a name="quickstart-create-an-ubuntu-data-science-virtual-machine-using-a-resource-manager-template"></a>快速入门：使用资源管理器模板创建 Ubuntu Data Science Virtual Machine
+# <a name="quickstart-create-an-ubuntu-data-science-virtual-machine-using-an-arm-template"></a>快速入门：使用 ARM 模板创建 Ubuntu Data Science Virtual Machine
+
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-本快速入门将介绍如何使用 Azure 资源管理器模板创建 Ubuntu 18.04 Data Science Virtual Machine。 Data Science Virtual Machine 是基于云的虚拟机，预加载了一套数据科学和机器学习框架及工具。 当部署在 GPU 驱动的计算资源上时，所有工具和库都配置为使用 GPU。 
+本快速入门将介绍如何使用 Azure 资源管理器模板（ARM 模板）创建 Ubuntu 18.04 Data Science Virtual Machine。 Data Science Virtual Machine 是基于云的虚拟机，预加载了一套数据科学和机器学习框架及工具。 当部署在 GPU 驱动的计算资源上时，所有工具和库都配置为使用 GPU。 
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
+
+如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
+
+[![部署到 Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-ubuntu-DSVM-GPU-or-CPU%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)
 
-* 若要从本地环境使用本文档中的 CLI 命令，需要使用 [Azure CLI](/cli/install-azure-cli?view=azure-cli-latest)
+* 若要从本地环境**** 使用本文档中的 CLI 命令，需要使用 [Azure CLI](/cli/install-azure-cli?view=azure-cli-latest)
 
-## <a name="create-a-workspace"></a>创建工作区
-
-### <a name="review-the-template"></a>查看模板
+## <a name="review-the-template"></a>查看模板
 
 本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-vm-ubuntu-DSVM-GPU-or-CPU/)。 本文的完整模板太长，无法在此处显示。 若要查看完整模板，请参阅 [azuredeploy.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-ubuntu-DSVM-GPU-or-CPU/azuredeploy.json)。 定义 DSVM 细节的部分如下所示：
 
@@ -126,9 +129,9 @@ ms.locfileid: "85097793"
 
 * [Microsoft.Compute/virtualMachines](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines)：创建基于云的虚拟机。 在此模板中，将虚拟机配置为运行 Ubuntu 18.04 的 Data Science Virtual Machine。
 
-### <a name="deploy-the-template"></a>部署模板 
+## <a name="deploy-the-template"></a>部署模板
 
-若要通过 Azure CLI 使用该模板，请登录并选择你的订阅（请参阅[使用 Azure CLI 登录](/cli/authenticate-azure-cli?view=azure-cli-latest)）。 运行：
+若要通过 Azure CLI 使用该模板，请登录并选择你的订阅（请参阅[使用 Azure CLI 登录](/cli/authenticate-azure-cli?view=azure-cli-latest)）。 然后运行：
 
 ```azurecli
 read -p "Enter the name of the resource group to create:" resourceGroupName &&
@@ -153,7 +156,7 @@ read
 
 ## <a name="review-deployed-resources"></a>查看已部署的资源
 
-若要查看 Data Science Virtual Machine，请执行以下操作：
+若要查看 Data Science Virtual Machine：
 
 1. 转到 https://portal.azure.cn 
 1. 登录 

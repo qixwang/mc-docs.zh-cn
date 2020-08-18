@@ -7,16 +7,16 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: quickstart
 origin.date: 05/28/2020
-ms.date: 08/03/2020
+ms.date: 08/17/2020
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 9cf94530ccc4976c4d9c9850a517664011d7342b
-ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
+ms.openlocfilehash: 7f68b0e676a06864621c4b73e0799326b1a60be7
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87426501"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223357"
 ---
 <!--Verify sucessfully-->
 # <a name="quickstart-build-a-table-api-app-with-net-sdk-and-azure-cosmos-db"></a>快速入门：使用 .NET SDK 和 Azure Cosmos DB 生成表 API 应用 
@@ -152,6 +152,7 @@ ms.locfileid: "87426501"
     }
 
     ```
+
 * 以下代码演示了如何查询表中的数据：
 
     ```csharp

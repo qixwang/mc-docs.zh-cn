@@ -10,12 +10,12 @@ ms.author: keli19
 author: likebupt
 ms.date: 04/06/2020
 ms.custom: designer
-ms.openlocfilehash: ed5c4c5b9a84a77870cdd6e7e092ca63e388a72c
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: 21c6d89f2b4cadca2338be8a0237b2c1079ba918
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097531"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88227910"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>使用 Azure 机器学习设计器（预览版）重新训练模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -34,6 +34,8 @@ ms.locfileid: "85097531"
 
 * 使用企业 SKU 的 Azure 机器学习工作区。
 * 请完成本操作说明系列的第 1 部分“[在设计器中转换数据](how-to-designer-transform-data.md)”。
+
+[!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
 本文还假定你已掌握在设计器中生成管道的基本知识。 如需了解引导式简介，请完成[教程](tutorial-designer-automobile-price-train-score.md)。 
 

@@ -6,13 +6,13 @@ ms.author: v-jay
 ms.service: mariadb
 ms.topic: conceptual
 origin.date: 6/8/2020
-ms.date: 07/06/2020
-ms.openlocfilehash: 28097ba3f4d42e0ff759dd419fd07f101cc98df0
-ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
+ms.date: 08/17/2020
+ms.openlocfilehash: 9bafd51b52f7ebb9c5abaada88ca41858e1d5c83
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85845906"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223048"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的连接体系结构
 本文介绍 Azure Database for MariaDB 的连接体系结构，以及如何在 Azure 内部和外部将流量从客户端定向到 Azure Database for MariaDB 实例。

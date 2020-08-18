@@ -6,19 +6,19 @@ ms.author: v-junlch
 ms.service: cache
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 06/16/2020
-ms.openlocfilehash: 840a4eec535bfbf59ad3e4e109e1e59009e5e224
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.date: 08/10/2020
+ms.openlocfilehash: 40a89d93d817e15c4dd7407715dcd8c45884c56e
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097111"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223129"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>教程：在 ASP.NET 中创建缓存端排行榜
 
 在本教程中，我们将更新在[针对 Azure Redis 缓存的 ASP.NET 快速入门](cache-web-app-howto.md)中创建的 *ContosoTeamStats* ASP.NET Web 应用，以包括将缓存端模式与 Azure Redis 缓存配合使用的排行榜。 该示例应用程序显示数据库中的团队统计信息列表，并演示如何通过不同的方法使用用于 Redis 的 Azure 缓存在缓存中存储和检索数据，以提高性能。 完成本教程后，将有一个运行的 Web 应用，该应用可以对数据库执行读写操作，已通过用于 Redis 的 Azure 缓存进行优化，并且托管在 Azure 中。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 使用用于 Redis 的 Azure 缓存来存储和检索数据，以提高数据吞吐量并降低数据库负载。
@@ -173,7 +173,7 @@ ms.locfileid: "85097111"
 
 1. 在 Visual Studio 中生成项目。 
 
-1. 在“解决方案资源管理器”中，右键单击“Controllers”文件夹，选择“添加”，再选择“控制器”。   
+1. 在“解决方案资源管理器”中，右键单击“Controllers”文件夹，然后选择“添加”，再选择“控制器”。   
 
 1. 选择“使用实体框架的包含视图的 MVC 5 控制器”并单击“添加”。  如果在单击“添加”后出现错误，请确保已先生成该项目。
 
@@ -183,7 +183,7 @@ ms.locfileid: "85097111"
 
     ![配置控制器](./media/cache-web-app-cache-aside-leaderboard/cache-configure-controller.png)
 
-1. 在“解决方案资源管理器”中展开“Global.asax”，并双击“Global.asax.cs”将其打开。  
+1. 在“解决方案资源管理器”中展开“Global.asax”，然后双击“Global.asax.cs”将其打开。  
 
     ![Global.asax.cs](./media/cache-web-app-cache-aside-leaderboard/cache-global-asax.png)
 
@@ -216,7 +216,7 @@ ms.locfileid: "85097111"
 
 ### <a name="configure-the-layout-view"></a>配置布局视图
 
-1. 在“解决方案资源管理器”中，先展开 **Views** 文件夹，再展开 **Shared** 文件夹，并双击 **_Layout.cshtml**。 
+1. 在“解决方案资源管理器”中，先展开 **Views** 文件夹，再展开 **Shared** 文件夹，然后双击 **_Layout.cshtml**。 
 
     ![_Layout.cshtml](./media/cache-web-app-cache-aside-leaderboard/cache-layout-cshtml.png)
 
@@ -246,7 +246,7 @@ ms.locfileid: "85097111"
 
 在快速入门中，我们已安装 *StackExchange.Redis* 客户端库包。 我们还配置了要在本地使用的 *CacheConnection* 应用设置，以及发布的应用服务。 在本教程中请使用相同的客户端库以及 *TeamsController* 中的 *CacheConnection* 信息。
 
-1. 在“解决方案资源管理器”中，展开“Controllers”文件夹，并双击“TeamsController.cs”将其打开。  
+1. 在“解决方案资源管理器”中，展开“Controllers”文件夹，然后双击“TeamsController.cs”将其打开。  
 
     ![团队控制器](./media/cache-web-app-cache-aside-leaderboard/cache-teamscontroller.png)
 
@@ -347,7 +347,7 @@ ms.locfileid: "85097111"
 
 1. 将以下三种方法添加到 `TeamsController` 类，以便实现在以前的代码片段中添加的 switch 语句中的 `playGames`、`clearCache` 和 `rebuildDB` 操作类型。
 
-    `PlayGames` 方法可以通过对赛季进行模拟来更新团队统计信息，将结果保存到数据库，并从缓存中清除现已过时的数据。
+    `PlayGames` 方法可以通过对赛季进行模拟来更新团队统计信息，将结果保存到数据库，然后从缓存中清除现已过时的数据。
 
     ```csharp
     void PlayGames()
@@ -436,7 +436,7 @@ ms.locfileid: "85097111"
     }
     ```
 
-    `GetFromSortedSet` 方法从缓存的排序集读取团队统计信息。 如果缓存未命中，则会从数据库读取团队统计信息，并将该信息以排序集的形式存储在缓存中。
+    `GetFromSortedSet` 方法从缓存的排序集读取团队统计信息。 如果缓存未命中，则会从数据库读取团队统计信息，然后将该信息以排序集的形式存储在缓存中。
 
     ```csharp
     List<Team> GetFromSortedSet()
@@ -582,7 +582,7 @@ ms.locfileid: "85097111"
 
     ![操作表](./media/cache-web-app-cache-aside-leaderboard/cache-teams-index-table.png)
 
-    此链接创建新团队。 将段落元素替换为下表内容。 该表的操作链接可用于创建新的团队、举行新赛季的比赛、清除缓存、以多种格式从缓存中检索团队、从数据库检索团队，以及使用最新的示例数据重新构建数据库。
+    此链接创建新团队。 将段落元素替换为下表。 该表的操作链接可用于创建新的团队、举行新赛季的比赛、清除缓存、以多种格式从缓存中检索团队、从数据库检索团队，以及使用最新的示例数据重新构建数据库。
 
     ```html
     <table class="table">
@@ -655,7 +655,7 @@ ms.locfileid: "85097111"
    | 设置       | 建议的值 | 说明 |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **数据库名称** | *ContosoTeamsDatabase* | 如需有效的数据库名称，请参阅 [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)（数据库标识符）。 |
-   | **订阅** | *订阅*  | 选择用于创建缓存和托管应用服务的同一订阅。 |
+   | **订阅** | 用户的订阅  | 选择用于创建缓存和托管应用服务的同一订阅。 |
    | **资源组**  | *TestResourceGroup* | 单击“使用现有项”，并使用缓存和应用服务所在的同一资源组。 |
    | **选择源** | **空白数据库** | 从空白数据库开始。 |
 
@@ -664,7 +664,7 @@ ms.locfileid: "85097111"
    | 设置       | 建议的值 | 说明 |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **服务器名称** | 任何全局唯一名称 |  |
-   | **服务器管理员登录名** | 任何有效的名称 | 有关有效的登录名，请参阅 [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)（数据库标识符）。 |
+   | 服务器管理员登录名 | 任何有效的名称 | 如需有效的登录名，请参阅 [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)（数据库标识符）。 |
    | **密码** | 任何有效的密码 | 密码必须至少有 8 个字符，且必须包含以下类别中的三个类别的字符：大写字符、小写字符、数字以及非字母数字字符。 |
    | **位置** | *中国北部* | 选择创建缓存和应用服务的同一区域。 |
 
@@ -680,8 +680,8 @@ ms.locfileid: "85097111"
 
     | 占位符 | 建议的值 |
     | --- | --- |
-    | *{your_username}* | 使用刚刚创建的数据库服务器的**服务器管理员登录名**。 |
-    | *{your_password}* | 使用刚刚创建的数据库服务器的密码。 |
+    | *{your_username}* | 使用刚刚创建的服务器的服务器管理员登录名。 |
+    | *{your_password}* | 使用刚刚创建的服务器的密码。 |
 
     将用户名和密码添加为应用程序设置后，你的用户名和密码将不会包含在代码中。 这种做法有助于保护这些凭据。
 
@@ -723,11 +723,11 @@ ms.locfileid: "85097111"
 > 删除资源组的操作不可逆，资源组以及其中的所有资源将被永久删除。 请确保不会意外删除错误的资源组或资源。 如果在现有资源组（其中包含要保留的资源）中为托管此示例而创建了相关资源，则可从各自的边栏选项卡逐个删除这些资源。
 >
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)，然后单击“资源组”。
+1. 登录到 [Azure 门户](https://portal.azure.cn)，并单击“资源组”。
 2. 在“筛选项目...”  文本框中键入资源组的名称。
 3. 单击资源组右侧的“...”，然后单击“删除资源组”。 
 
-    ![Delete](./media/cache-web-app-cache-aside-leaderboard/cache-delete-resource-group.png)
+    ![删除](./media/cache-web-app-cache-aside-leaderboard/cache-delete-resource-group.png)
 
 4. 系统会要求确认是否删除资源组。 键入资源组的名称进行确认，然后单击“删除”。
 

@@ -3,15 +3,15 @@ title: 将 Python 和 TensorFlow 用于 Azure 中的机器学习
 description: 在机器学习模型中使用 Python、TensorFlow 和 Azure Functions 以根据图像内容对图像进行分类。
 author: anthonychu
 ms.topic: tutorial
-ms.date: 02/13/2020
+ms.date: 08/12/2020
 ms.author: v-junlch
-ms.custom: mvc
-ms.openlocfilehash: 7774ebce4c267c0e9cb8de66e78046d4e8aeb8bd
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.custom: mvc, tracking-python
+ms.openlocfilehash: 770502ec42b1fe2af5aae64a7c3fb5e52c61b330
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428690"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223316"
 ---
 # <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>教程：在 Azure Functions 中使用 Python 和 TensorFlow 应用机器学习模型
 
@@ -25,7 +25,7 @@ ms.locfileid: "77428690"
 
 ## <a name="prerequisites"></a>先决条件 
 
-- 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://www.azure.cn/pricing/1rmb-trial/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- 具有活动订阅的 Azure 帐户。 [创建帐户](https://www.azure.cn/pricing/1rmb-trial/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - [Python 3.7.4](https://www.python.org/downloads/release/python-374/)。 （Python 3.7.4 和 Python 3.6.x 已在 Azure Functions 中进行验证；目前尚不支持 Python 3.8 和更高版本。）
 - [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools)
 - 代码编辑器，如 [Visual Studio Code](https://code.visualstudio.com/)
@@ -153,8 +153,6 @@ py -m venv .venv
 
 若要修改 `classify` 函数以根据图像内容对图像进行分类，请使用一个已通过 Azure 自定义视觉服务进行训练并已从中导出的预生成 TensorFlow 模型。 该模型已包含在前面克隆的示例的 *resources* 文件夹中，它可以根据图像是包含狗还是猫来分类图像。 然后，将一些帮助器代码和依赖项添加到项目。
 
-> [!TIP]
-> 若要使用自定义视觉服务的免费层生成自己的模型，可以按照[示例项目存储库](https://github.com/Azure-Samples/functions-python-tensorflow-tutorial/blob/master/train-custom-vision-model.md)中的说明操作。
 
 1. 在 *start* 文件夹中，运行以下命令将模型文件复制到 *classify* 文件夹中。 请务必在命令中包含 `\*`。 
 

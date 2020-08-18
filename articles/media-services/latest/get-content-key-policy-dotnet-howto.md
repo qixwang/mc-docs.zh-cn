@@ -9,16 +9,16 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.custom: seodec18
 origin.date: 04/15/2019
 ms.date: 03/04/2020
 ms.author: v-jay
-ms.openlocfilehash: bdd1211250c1f8661b4b20ebae403b3218a6e3de
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.custom: seodec18
+ms.openlocfilehash: b98767858b4ec02733ad58666aab83b79da1976f
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291558"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222940"
 ---
 # <a name="get-a-signing-key-from-the-existing-policy"></a>从现有策略获取签名密钥
 

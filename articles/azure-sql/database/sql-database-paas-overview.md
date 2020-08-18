@@ -13,12 +13,12 @@ ms.author: v-jay
 ms.reviewer: carlrab
 origin.date: 04/08/2019
 ms.date: 07/13/2020
-ms.openlocfilehash: 98a351506fb23082b9acaf101e4836ce73611dcf
-ms.sourcegitcommit: fa26665aab1899e35ef7b93ddc3e1631c009dd04
+ms.openlocfilehash: bf554ab6f1be69572cde229cbfc3a7e3ef294faa
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86227674"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222524"
 ---
 # <a name="what-is-azure-sql-database"></a>什么是 Azure SQL 数据库？
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -187,8 +187,6 @@ SQL 数据库让应用程序的构建和维护更加轻松、高效。 SQL 数�
 |[Visual Studio Code](https://code.visualstudio.com/docs)|一个可免费下载的开源代码编辑器，适用于 Windows、macOS 和 Linux。 它支持各种扩展，其中包括 [mssql 扩展](https://aka.ms/mssql-marketplace)（用于查询 Microsoft SQL Server、Azure SQL 数据库和 Azure SQL 数据仓库）。|
 
 SQL 数据库支持在 macOS、Linux 和 Windows 上使用 Python、Java、Node.js、PHP、 Ruby 和 .NET 生成应用程序。 SQL 数据库和 SQL Server 支持相同的[连接库](connect-query-content-reference-guide.md#libraries)。
-
-[!INCLUDE [sql-database-create-manage-portal](../includes/sql-database-create-manage-portal.md)]
 
 ## <a name="sql-database-frequently-asked-questions"></a>SQL 数据库常见问题解答
 

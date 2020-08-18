@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 05/08/2020
-ms.openlocfilehash: 9bf6f695caf4dfa88d7ba83d84d448c1be9f0267
-ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
+ms.date: 07/09/2020
+ms.openlocfilehash: 617d315565bd7d4f01b6d6a8791a38c7f40359e2
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "86440915"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88227860"
 ---
 # <a name="responsible-machine-learning-ml"></a>负责机器学习 (ML)
 

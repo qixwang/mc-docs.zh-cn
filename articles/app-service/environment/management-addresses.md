@@ -5,15 +5,15 @@ author: ccompy
 ms.assetid: a7738a24-89ef-43d3-bff1-77f43d5a3952
 ms.topic: article
 origin.date: 05/10/2020
-ms.date: 06/22/2020
+ms.date: 08/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: f269a8882516dc1245b75edb268c1d33d352d7a6
-ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
+ms.openlocfilehash: fb10e9071ddb7eec1931df29376f1fcc9a34b162
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85613329"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88227925"
 ---
 # <a name="app-service-environment-management-addresses"></a>应用服务环境管理地址
 
@@ -29,7 +29,8 @@ ms.locfileid: "85613329"
 | 区域 | 地址 |
 |--------|-----------|
 | 所有公共区域 | 13.66.140.0、13.67.8.128、13.69.64.128、13.69.227.128、13.70.73.128、13.71.170.64、13.71.194.129、13.75.34.192、13.75.127.117、13.77.50.128、13.78.109.0、13.89.171.0、13.94.141.115、13.94.143.126、13.94.149.179、20.36.106.128、20.36.114.64、23.102.135.246、23.102.188.65、40.69.106.128、40.70.146.128、40.71.13.64、40.74.100.64、40.78.194.128、40.79.130.64、40.79.178.128、40.83.120.64、40.83.121.56、40.83.125.161、40.112.242.192、51.140.146.64、51.140.210.128、52.151.25.45、52.162.106.192、52.165.152.214、52.165.153.122、52.165.154.193、52.165.158.140、52.174.22.21、52.178.177.147、52.178.184.149、52.178.190.65、52.178.195.197、52.187.56.50、52.187.59.251、52.187.63.19、52.187.63.37、52.224.105.172、52.225.177.153、52.231.18.64、52.231.146.128、65.52.172.237、70.37.57.58、104.44.129.141、104.44.129.243、104.44.129.255、104.44.134.255、104.208.54.11、104.211.81.64、104.211.146.128、157.55.208.185、191.233.203.64、191.236.154.88 |
-| Microsoft Azure 政府 | 23.97.29.209、13.72.53.37、13.72.180.105 |
+
+<!-- | Microsoft Azure Government | 23.97.29.209, 13.72.53.37, 13.72.180.105 | -->
 
 ## <a name="configuring-a-network-security-group"></a>配置网络安全组
 
@@ -41,15 +42,17 @@ ms.locfileid: "85613329"
 
 可将管理地址放在包含 Internet 下一跃点的路由表中，以确保所有入站管理流量能够通过同一路径返回。 配置强制隧道时需要这些路由。 若要创建路由表，可以使用门户、PowerShell 或 Azure CLI。  下面是在 PowerShell 提示符下使用 Azure CLI 创建路由表的命令。 
 
-    $rg = "resource group name"
-    $rt = "route table name"
-    $location = "azure location"
-    $managementAddresses = "13.66.140.0", "13.67.8.128", "13.69.64.128", "13.69.227.128", "13.70.73.128", "13.71.170.64", "13.71.194.129", "13.75.34.192", "13.75.127.117", "13.77.50.128", "13.78.109.0", "13.89.171.0", "13.94.141.115", "13.94.143.126", "13.94.149.179", "20.36.106.128", "20.36.114.64", "23.102.135.246", "23.102.188.65", "40.69.106.128", "40.70.146.128", "40.71.13.64", "40.74.100.64", "40.78.194.128", "40.79.130.64", "40.79.178.128", "40.83.120.64", "40.83.121.56", "40.83.125.161", "40.112.242.192", "51.140.146.64", "51.140.210.128", "52.151.25.45", "52.162.106.192", "52.165.152.214", "52.165.153.122", "52.165.154.193", "52.165.158.140", "52.174.22.21", "52.178.177.147", "52.178.184.149", "52.178.190.65", "52.178.195.197", "52.187.56.50", "52.187.59.251", "52.187.63.19", "52.187.63.37", "52.224.105.172", "52.225.177.153", "52.231.18.64", "52.231.146.128", "65.52.172.237", "70.37.57.58", "104.44.129.141", "104.44.129.243", "104.44.129.255", "104.44.134.255", "104.208.54.11", "104.211.81.64", "104.211.146.128", "157.55.208.185", "191.233.203.64", "191.236.154.88"
+```azurepowershell
+$rg = "resource group name"
+$rt = "route table name"
+$location = "azure location"
+$managementAddresses = "13.66.140.0", "13.67.8.128", "13.69.64.128", "13.69.227.128", "13.70.73.128", "13.71.170.64", "13.71.194.129", "13.75.34.192", "13.75.127.117", "13.77.50.128", "13.78.109.0", "13.89.171.0", "13.94.141.115", "13.94.143.126", "13.94.149.179", "20.36.106.128", "20.36.114.64", "23.102.135.246", "23.102.188.65", "40.69.106.128", "40.70.146.128", "40.71.13.64", "40.74.100.64", "40.78.194.128", "40.79.130.64", "40.79.178.128", "40.83.120.64", "40.83.121.56", "40.83.125.161", "40.112.242.192", "51.140.146.64", "51.140.210.128", "52.151.25.45", "52.162.106.192", "52.165.152.214", "52.165.153.122", "52.165.154.193", "52.165.158.140", "52.174.22.21", "52.178.177.147", "52.178.184.149", "52.178.190.65", "52.178.195.197", "52.187.56.50", "52.187.59.251", "52.187.63.19", "52.187.63.37", "52.224.105.172", "52.225.177.153", "52.231.18.64", "52.231.146.128", "65.52.172.237", "70.37.57.58", "104.44.129.141", "104.44.129.243", "104.44.129.255", "104.44.134.255", "104.208.54.11", "104.211.81.64", "104.211.146.128", "157.55.208.185", "191.233.203.64", "191.236.154.88"
 
-    az network route-table create --name $rt --resource-group $rg --location $location
-    foreach ($ip in $managementAddresses) {
-        az network route-table route create -g $rg --route-table-name $rt -n $ip --next-hop-type Internet --address-prefix ($ip + "/32")
-    }
+az network route-table create --name $rt --resource-group $rg --location $location
+foreach ($ip in $managementAddresses) {
+    az network route-table route create -g $rg --route-table-name $rt -n $ip --next-hop-type Internet --address-prefix ($ip + "/32")
+}
+```
 
 创建路由表后，需在 ASE 子网中设置该路由表。  
 
@@ -57,15 +60,18 @@ ms.locfileid: "85613329"
 
 可以使用以下 API 调用列出与 ASE 匹配的管理地址。
 
-    get /subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/Microsoft.Web/hostingEnvironments/<ASE Name>/inboundnetworkdependenciesendpoints?api-version=2016-09-01
+```http
+get /subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/Microsoft.Web/hostingEnvironments/<ASE Name>/inboundnetworkdependenciesendpoints?api-version=2016-09-01
+```
 
 API 返回一个 JSON 文档，其中包含 ASE 的所有入站地址。 地址列表包括管理地址、ASE 使用的 VIP 和 ASE 子网地址范围本身。  
 
 若要使用 [armclient](https://github.com/projectkudu/ARMClient) 调用此 API，请使用以下命令，但请替换为你的订阅 ID、资源组和 ASE 名称。  
 
-    armclient login Mooncake
-    armclient get /subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/Microsoft.Web/hostingEnvironments/<ASE Name>/inboundnetworkdependenciesendpoints?api-version=2016-09-01
-
+```azurepowershell
+armclient login Mooncake
+armclient get /subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/Microsoft.Web/hostingEnvironments/<ASE Name>/inboundnetworkdependenciesendpoints?api-version=2016-09-01
+```
 
 <!--IMAGES-->
 [1]: ./media/management-addresses/managementaddr-nsg.png

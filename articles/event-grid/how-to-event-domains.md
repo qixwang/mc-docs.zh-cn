@@ -1,19 +1,18 @@
 ---
 title: 使用事件域向 Azure 事件网格发布事件
 description: 展示了如何使用事件域管理 Azure 事件网格中的大型主题集并向其发布事件。
-services: event-grid
-author: banisadr
-ms.service: event-grid
-ms.author: v-yiso
 ms.topic: conceptual
 origin.date: 01/17/2019
-ms.date: 06/03/2019
-ms.openlocfilehash: c0d8ecec559af5db81229211bbb63df9fd5589d5
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+author: Johnnytechn
+ms.author: v-johya
+ms.date: 08/10/2020
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 06e980d064f226ea46beac02ad31e34545cc8c43
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79452283"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88228001"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>使用事件域管理主题和发布事件
 
@@ -36,7 +35,7 @@ ms.locfileid: "79452283"
 
 若要管理大型主题集，请创建一个事件域。
 
-对于 Azure CLI，请使用：
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 
 ```azurecli
 # If you haven't already installed the extension, do it now.
@@ -49,8 +48,7 @@ az eventgrid domain create \
   -l <location>
 ```
 
-对于 PowerShell，请使用：
-
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 ```azurepowershell
 # If you have not already installed the module, do it now.
 # This module is required for preview features.
@@ -61,12 +59,13 @@ New-AzureRmEventGridDomain `
   -Name <my-domain-name> `
   -Location <location>
 ```
+---
 
 创建成功后会返回以下值：
 
 ```json
 {
-  "endpoint": "https://<my-domain-name>.chinaeast-1.eventgrid.azure.net/api/events",
+  "endpoint": "https://<my-domain-name>.chinanorth2-1.eventgrid.azure.cn/api/events",
   "id": "/subscriptions/<sub-id>/resourceGroups/<my-resource-group>/providers/Microsoft.EventGrid/domains/<my-domain-name>",
   "inputSchema": "EventGridSchema",
   "inputSchemaMapping": null,
@@ -83,10 +82,11 @@ New-AzureRmEventGridDomain `
 
 ## <a name="manage-access-to-topics"></a>管理对主题的访问
 
-可通过[角色分配](/role-based-access-control/role-assignments-cli)来管理对主题的访问。 角色分配使用基于角色的访问控制来限制对 Azure 资源的操作，仅允许经授权用户在特定范围内执行操作。
+可通过[角色分配](../role-based-access-control/role-assignments-cli.md)来管理对主题的访问。 角色分配使用基于角色的访问控制来限制对 Azure 资源的操作，仅允许经授权用户在特定范围内执行操作。
 
 事件网格包含两个内置角色，可以使用这些角色为特定用户分配对域中不同主题的访问权限。 这些角色为 `EventGrid EventSubscription Contributor (Preview)` 和 `EventGrid EventSubscription Reader (Preview)`，分别用于创建/删除订阅，以及只允许列出事件订阅。
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 以下 Azure CLI 命令将 `alice@contoso.com` 限制为只能在主题 `demotopic1` 上创建或删除事件订阅：
 
 ```azurecli
@@ -96,6 +96,7 @@ az role assignment create \
   --scope /subscriptions/<sub-id>/resourceGroups/<my-resource-group>/providers/Microsoft.EventGrid/domains/<my-domain-name>/topics/demotopic1
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 以下 PowerShell 命令将 `alice@contoso.com` 限制为只能在主题 `demotopic1` 上创建或删除事件订阅：
 
 ```azurepowershell
@@ -104,6 +105,7 @@ New-AzureRmRoleAssignment `
   -RoleDefinitionName "EventGrid EventSubscription Contributor (Preview)" `
   -Scope /subscriptions/<sub-id>/resourceGroups/<my-resource-group>/providers/Microsoft.EventGrid/domains/<my-domain-name>/topics/demotopic1
 ```
+---
 
 有关管理对事件网格操作的访问权限的详细信息，请参阅[事件网格安全性和身份验证](./security-authentication.md)。
 
@@ -115,7 +117,7 @@ New-AzureRmRoleAssignment `
 
 通常情况下，将由你在前面的部分中向其授予了访问权限的用户创建订阅。 为了简化本文，将由你创建订阅。 
 
-对于 Azure CLI，请使用：
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 
 ```azurecli
 az eventgrid event-subscription create \
@@ -124,7 +126,7 @@ az eventgrid event-subscription create \
   --endpoint https://contoso.chinacloudsites.cn/api/updates
 ```
 
-对于 PowerShell，请使用：
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```azurepowershell
 New-AzureRmEventGridSubscription `
@@ -133,9 +135,11 @@ New-AzureRmEventGridSubscription `
   -Endpoint https://contoso.chinacloudsites.cn/api/updates
 ```
 
+---
+
 如果需要将事件订阅到某个测试终结点，始终可以部署能够显示传入事件的[预生成 Web 应用](https://github.com/Azure-Samples/azure-event-grid-viewer)。 可将事件发送到测试网站 (`https://<your-site-name>.chinacloudsites.cn/api/updates`)。
 
-<a href="https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+<a href="https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"  alt="Button to Deploy to Aquent." /></a>
 
 为主题设置的权限存储在 Azure Active Directory 中，必须显式删除。 如果用户对主题拥有写访问权限，则删除事件订阅不会撤消用户创建事件订阅的权限。
 
@@ -171,6 +175,7 @@ New-AzureRmEventGridSubscription `
 }]
 ```
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 若要使用 Azure CLI 获取域终结点，请使用：
 
 ```azurecli
@@ -187,6 +192,7 @@ az eventgrid domain key list \
   -n <my-domain>
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 若要使用 PowerShell 获取域终结点，请使用：
 
 ```azurepowershell
@@ -202,9 +208,11 @@ Get-AzureRmEventGridDomainKey `
   -ResourceGroupName <my-resource-group> `
   -Name <my-domain>
 ```
+---
 
 然后，使用偏好的方法发出 HTTP POST，将事件发布到事件网格域。
 
 ## <a name="next-steps"></a>后续步骤
 
 * 有关事件域中的高级概念及其作用的详细信息，请参阅[事件域的概念概述](event-domains.md)。
+

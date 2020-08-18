@@ -2,22 +2,23 @@
 title: 通过 Spark 对 Azure Cosmos DB Cassandra API 执行删除操作
 description: 本文详细介绍了如何从 Spark 删除 Azure Cosmos DB Cassandra API 表中的数据
 author: rockboyfor
-ms.author: v-yeche
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 09/24/2018
-ms.date: 01/20/2020
-ms.openlocfilehash: 5c60f9eac7b1a9593507df5acd38461c9cf40a28
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 08/17/2020
+ms.testscope: yes
+ms.testdate: 08/10/2020
+ms.author: v-yeche
+ms.openlocfilehash: 481a77d8ec756e766051e5c170c036d73598e671
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76270077"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222778"
 ---
-<!--Update_Description: new articles on  -->
-<!--ms.date: 03/18/2019-->
+<!--Verify sucessfully-->
 # <a name="delete-data-in-azure-cosmos-db-cassandra-api-tables-from-spark"></a>从 Spark 删除 Azure Cosmos DB Cassandra API 表中的数据
 
 本文详细介绍了如何从 Spark 中删除 Azure Cosmos DB Cassandra API 表中的数据。
@@ -366,6 +367,4 @@ deleteBooksRDD: com.datastax.spark.connector.rdd.CassandraTableScanRDD[com.datas
 * [聚合操作](cassandra-spark-aggregation-ops.md)
 * [表复制操作](cassandra-spark-table-copy-ops.md)
 
-<!--Verify sucessfully-->
-<!--Update_Description: new articles on cassandra spark delete ops -->
-<!--ms.date: 03/18/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

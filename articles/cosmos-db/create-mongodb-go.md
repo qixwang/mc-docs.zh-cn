@@ -1,23 +1,25 @@
 ---
-title: 将 Go 应用程序连接到 Azure Cosmos DB 用于 MongoDB 的 API
-description: 本快速入门演示了如何将现有 Go 应用程序连接到 Azure Cosmos DB API for MongoDB。
+title: 将 Go 应用程序连接到 Azure Cosmos DB 的 API for MongoDB
+description: 本快速入门演示如何将现有 Go 应用程序连接到 Azure Cosmos DB 的 API for MongoDB。
 author: rockboyfor
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: go
 ms.topic: quickstart
 origin.date: 04/24/2020
-ms.date: 06/22/2020
+ms.date: 08/17/2020
+ms.testscope: yes
+ms.testdate: 08/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: bf04479d4eea514f3e59665831eea14af1416333
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: e2b3984166809746318b800a631bac1fdbed5e70
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098666"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223243"
 ---
 <!--Verified successfully-->
-# <a name="quickstart-connect-a-go-application-to-azure-cosmos-dbs-api-for-mongodb"></a>快速入门：将 Go 应用程序连接到 Azure Cosmos DB 用于 MongoDB 的 API
+# <a name="quickstart-connect-a-go-application-to-azure-cosmos-dbs-api-for-mongodb"></a>快速入门：将 Go 应用程序连接到 Azure Cosmos DB 的 API for MongoDB
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -32,14 +34,14 @@ Azure Cosmos DB 是一种多模型数据库服务，可让你通过多区域分�
 
 <!--CORRECT ON Azure CLI-->
 
-示例应用程序是在 Go 中编写的基于命令行的 `todo` 管理工具。 Azure Cosmos DB 用于 MongoDB 的 API [与 MongoDB 线路协议兼容](/cosmos-db/mongodb-introduction#wire-protocol-compatibility)，因此任何 MongoDB 客户端驱动程序都可以连接到它。 此应用程序通过完全知道数据存储在 Azure Cosmos DB 数据库的方式使用[用于 MongoDB 的 Go 驱动程序](https://github.com/mongodb/mongo-go-driver)
+示例应用程序是使用 Go 编写的基于命令行的 `todo` 管理工具。 Azure Cosmos DB 的 API for MongoDB [与 MongoDB Wire Protocol 兼容](/cosmos-db/mongodb-introduction#wire-protocol-compatibility)，因而任何 MongoDB 客户端驱动程序都可以与其连接。 此应用程序使用[适用于 MongoDB 的 Go 驱动程序](https://github.com/mongodb/mongo-go-driver)，其使用方式使该应用程序完全知道数据存储在 Azure Cosmos DB 数据库中。
 
 ## <a name="prerequisites"></a>先决条件
 - 具有活动订阅的 Azure 帐户。 [免费创建一个](https://www.azure.cn/pricing/1rmb-trial)。 你还可以将 [Azure Cosmos DB 模拟器](https://aka.ms/cosmosdb-emulator)与连接字符串 `.mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true` 配合使用。
     
     <!--Not Avaialble on [try Azure Cosmos DB for free](https://www.azure.cn/try/cosmosdb/)-->
     
-- 已在计算机上安装 [Go](https://golang.org/) 并了解如何使用它。
+- 在计算机上安装 [Go](https://golang.org/)，并了解 Go 的实践知识。
 - [Git](https://git-scm.com/downloads)。
 - [Azure CLI 2.0+](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)。
 
@@ -49,7 +51,7 @@ Azure Cosmos DB 是一种多模型数据库服务，可让你通过多区域分�
 
 ## <a name="clone-the-sample-application"></a>克隆示例应用程序
 
-运行以下命令克隆示例存储库。
+运行下列命令以克隆示例存储库。
 
 1. 打开命令提示符，新建一个名为 `git-samples` 的文件夹，然后关闭命令提示符。
 
@@ -63,7 +65,7 @@ Azure Cosmos DB 是一种多模型数据库服务，可让你通过多区域分�
     cd "C:\git-samples"
     ```
 
-3. 运行下列命令，克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。 
+3. 运行下列命令以克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。 
 
     ```bash
     git clone https://github.com/Azure-Samples/cosmosdb-go-mongodb-quickstart
@@ -84,7 +86,7 @@ Azure Cosmos DB 是一种多模型数据库服务，可让你通过多区域分�
 
 ### <a name="connecting-the-go-app-to-azure-cosmos-db"></a>将 Go 应用连接到 Azure Cosmos DB
 
-[`clientOptions`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo/options?tab=doc#ClientOptions) 封装 Azure Cosmos DB 的连接字符串，该字符串是使用环境变量传入的（我们将在下一部分详细介绍）。 该连接使用 `clientOptions` 实例传递到的 [`mongo.NewClient`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#NewClient) 来初始化。 调用 [`Ping` 函数](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Client.Ping)，以确认连接是否成功（这是一个快速失败策略）
+[`clientOptions`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo/options?tab=doc#ClientOptions) 封装 Azure Cosmos DB 的连接字符串，该字符串使用环境变量传入（后面一部分会详细介绍）。 连接使用 [`mongo.NewClient`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#NewClient)（`clientOptions` 实例传递的目标位置）进行初始化。 调用 [`Ping` 函数](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Client.Ping)以确认连接是否成功（这是一种快速失败策略）
 
 ```go
     ctx, cancel := context.WithTimeout(context.Background(), time.Second*10)
@@ -105,12 +107,12 @@ Azure Cosmos DB 是一种多模型数据库服务，可让你通过多区域分�
 ```
 
 > [!NOTE] 
-> 使用 [`SetDirect(true)`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo/options?tab=doc#ClientOptions.SetDirect) 配置非常重要，否则会出现以下连接错误：`unable to connect connection(cdb-ms-prod-<azure-region>-cm1.documents.azure.cn:10255[-4]) connection is closed`
+> 务必使用 [`SetDirect(true)`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo/options?tab=doc#ClientOptions.SetDirect) 配置，否则会出现以下连接错误：`unable to connect connection(cdb-ms-prod-<azure-region>-cm1.documents.azure.cn:10255[-4]) connection is closed`
 >
 
 ### <a name="create-a-todo-item"></a>创建 `todo` 项
 
-为了创建 `todo`，我们获取一个指向 [`mongo.Collection`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Collection) 的句柄并调用 [`InsertOne`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Collection.InsertOne) 函数。 
+若要创建 `todo`，我们将获取 [`mongo.Collection`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Collection) 的句柄，并调用 [`InsertOne`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Collection.InsertOne) 函数。 
 
 ```go
 func create(desc string) {
@@ -125,7 +127,7 @@ func create(desc string) {
     }
 ```
 
-传入包含说明和状态的 `Todo` 结构（最初设置为 `pending`）
+传入包含说明和状态（最初设置为 `pending`）的 `Todo` 结构
 
 ```go
 type Todo struct {
@@ -136,7 +138,7 @@ type Todo struct {
 ```
 ### <a name="list-todo-items"></a>列出 `todo` 项
 
-我们可以根据条件列出 todo。 将创建一个 [`bson.D`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/bson?tab=doc#D) 来封装筛选条件
+我们可以根据条件列出 TODO。 随之创建一个 [`bson.D`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/bson?tab=doc#D) 来封装筛选条件
 
 ```go
 func list(status string) {
@@ -154,7 +156,7 @@ func list(status string) {
     }
 ```
 
-[`Find`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Collection.Find) 用于根据筛选条件搜索文档，并将结果转换为 `Todo` 的切片
+[`Find`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Collection.Find) 用于根据筛选器搜索文档，并将结果转换为 `Todo` 的切片
 
 ```go
     todoCollection := c.Database(database).Collection(collection)
@@ -169,7 +171,7 @@ func list(status string) {
     }
 ```
 
-最后，信息呈现在表格中
+最后，信息以表格格式呈现
 
 ```go
     todoTable := [][]string{}
@@ -190,7 +192,7 @@ func list(status string) {
 
 ### <a name="update-a-todo-item"></a>更新 `todo` 项
 
-`todo` 可以基于其 `_id` 进行更新。 [`bson.D`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/bson?tab=doc#D) 筛选器基于 `_id` 创建，并且会为更新的信息创建另一个筛选器，在本例中为新状态（`completed` 或 `pending`）。 最后，通过筛选器和更新后的文档调用 [`UpdateOne`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Collection.UpdateOne) 函数
+`todo` 可以基于其 `_id` 进行更新。 [`bson.D`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/bson?tab=doc#D) 筛选器根据 `_id` 创建，并且会为更新的信息创建另一个筛选器，该信息是这种情况下的新状态（`completed` 或 `pending`）。 最后，通过筛选器和更新后的文档调用 [`UpdateOne`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Collection.UpdateOne) 函数
 
 ```go
 func update(todoid, newStatus string) {
@@ -230,7 +232,7 @@ func delete(todoid string) {
 
 ## <a name="build-the-application"></a>构建应用程序
 
-转到在其中克隆应用程序并生成应用程序的目录（使用 `go build`）。
+转到在其中克隆应用程序的目录并生成应用程序（使用 `go build`）。
 
 ```bash
 cd monogdb-go-quickstart
@@ -243,7 +245,7 @@ go build -o todo
 ./todo --help
 ```
 
-## <a name="setup-azure-cosmos-db"></a>设置 Azure Cosmos DB
+## <a name="setup-azure-cosmos-db"></a>安装 Azure Cosmos DB
 
 ### <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -287,7 +289,7 @@ az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kin
 
 `--kind MongoDB` 参数启用 MongoDB 客户端连接。
 
-创建 Azure Cosmos DB 帐户后，Azure CLI 会显示类似于以下示例的信息。 
+创建 Azure Cosmos DB 帐户后，Azure CLI 会显示类似于以下示例的信息： 
 
 > [!NOTE]
 > 此示例使用 JSON 作为 Azure CLI 输出格式，此为默认设置。 若要使用其他输出格式，请参阅 [Azure CLI 命令的输出格式](https://docs.azure.cn/cli/format-output-azure-cli?view=azure-cli-latest)。
@@ -324,9 +326,9 @@ DB/databaseAccounts/<cosmosdb-name>",
 } 
 ```
 
-### <a name="retrieve-the-database-key"></a>检索数据库密钥
+### <a name="retrieve-the-database-key"></a>检索数据库键
 
-若要连接到 Cosmos 数据库，需要使用数据库密钥。 使用 [az cosmosdb keys list](https://docs.azure.cn/cli/cosmosdb/keys?view=azure-cli-latest#az-cosmosdb-keys-list) 命令检索主键。
+若要连接到 Cosmos 数据库，需要使用数据库密钥。 使用 [az cosmosdb keys list](https://docs.microsoft.com/cli/azure/cosmosdb/keys?view=azure-cli-latest#az-cosmosdb-keys-list) 命令检索主键。
 
 ```azurecli
 az cosmosdb keys list --name <cosmosdb-name> --resource-group myResourceGroup --query "primaryMasterKey"
@@ -353,7 +355,7 @@ export MONGODB_CONNECTION_STRING="mongodb://<COSMOSDB_ACCOUNT_NAME>:<COSMOSDB_PA
 
 对于 `MONGODB_CONNECTION_STRING` 环境变量，请替换 `<COSMOSDB_ACCOUNT_NAME>` 和 `<COSMOSDB_PASSWORD>` 的占位符
 
-1. `<COSMOSDB_ACCOUNT_NAME>`：你创建的 Azure Cosmos DB 帐户的名称
+1. `<COSMOSDB_ACCOUNT_NAME>`：创建的 Azure Cosmos DB 帐户的名称
 2. `<COSMOSDB_PASSWORD>`：上一步中提取的数据库密钥
 
 ```bash
@@ -361,17 +363,17 @@ export MONGODB_DATABASE=todo-db
 export MONGODB_COLLECTION=todos
 ```
 
-你可以根据需要选择 `MONGODB_DATABASE` 和 `MONGODB_COLLECTION` 的值，也可以让它们保持不变。
+可以为 `MONGODB_DATABASE` 和 `MONGODB_COLLECTION` 选择首选值，也可以将其保留原样。
 
 ## <a name="run-the-application"></a>运行应用程序
 
-创建 `todo`
+创建一个 `todo`
 
 ```bash
 ./todo --create "Create an Azure Cosmos DB database account"
 ```
 
-如果成功，则会看到一个输出，其中包含新创建的文档的 MongoDB `_id`：
+如果成功，则会看到一个输出，其中包含新建文档的 MongoDB `_id`：
 
 ```bash
 added todo ObjectID("5e9fd6befd2f076d1f03bd8a")
@@ -389,7 +391,7 @@ added todo ObjectID("5e9fd6befd2f076d1f03bd8a")
 ./todo --list all
 ```
 
-应该会看到刚才以表格形式添加的那些内容
+应该会看到刚才以表格格式添加的那些文件
 
 ```bash
 +----------------------------+--------------------------------+-----------+
@@ -402,7 +404,7 @@ added todo ObjectID("5e9fd6befd2f076d1f03bd8a")
 +----------------------------+--------------------------------+-----------+
 ```
 
-要更新 `todo` 的状态（例如，将其更改为 `completed` 状态），请使用 `todo` ID
+若要更新 `todo` 的状态（例如将其更改为 `completed` 状态），请使用 `todo` ID
 
 ```bash
 ./todo --update 5e9fd6b1bcd2fa6bd267d4c4,completed
@@ -414,7 +416,7 @@ added todo ObjectID("5e9fd6befd2f076d1f03bd8a")
 ./todo --list completed
 ```
 
-应该会看到刚刚更新的内容
+应该会看到刚刚更新的那一项
 
 ```bash
 +----------------------------+--------------------------------+-----------+
@@ -431,9 +433,9 @@ Azure Cosmos DB 中存储的数据可用于在 Azure 门户中查看和查询。
 
 若要查看、查询和处理在上一步骤中创建的用户数据，请在 Web 浏览器中登录到 [Azure 门户](https://portal.azure.cn)。
 
-在顶部搜索框中，输入 **Azure Cosmos DB**。 打开 Cosmos 帐户边栏选项卡后，请选择 Cosmos 帐户。 在左侧导航栏中，选择“数据资源管理器”。 在“集合”窗格中展开集合，即可查看该集合中的文档，查询数据，甚至可以创建和运行存储过程、触发器与 UDF。 
+在顶部搜索框中，输入 **Azure Cosmos DB**。 打开 Cosmos 帐户边栏选项卡后，请选择 Cosmos 帐户。 在左侧导航栏中，选择“数据资源管理器”。 在“集合”窗格中展开你的集合，即可查看该集合中的文档，查询数据，甚至可以创建和运行存储过程、触发器与 UDF。 
 
-![数据资源管理器，显示新创建的文档](./media/create-mongodb-go/go-cosmos-db-data-explorer.jpg)
+:::image type="content" source="./media/create-mongodb-go/go-cosmos-db-data-explorer.png" alt-text="数据资源管理器，显示新创建的文档":::
 
 使用 ID 删除 `todo`
 
@@ -441,13 +443,13 @@ Azure Cosmos DB 中存储的数据可用于在 Azure 门户中查看和查询。
 ./todo --delete 5e9fd6b1bcd2fa6bd267d4c4,completed
 ```
 
-列出 `todo` 以进行确认
+列出要确认的 `todo`
 
 ```bash
 ./todo --list all
 ```
 
-刚删除的 `todo` 不会出现
+刚刚删除的 `todo` 不应出现
 
 ```bash
 +----------------------------+--------------------------------+-----------+

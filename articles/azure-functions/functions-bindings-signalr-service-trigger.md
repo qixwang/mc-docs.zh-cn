@@ -3,14 +3,14 @@ title: Azure Functions SignalR 服务触发器绑定
 description: 了解如何从 Azure Functions 发送 SignalR 服务消息。
 author: chenyl
 ms.topic: reference
-ms.date: 07/15/2020
+ms.date: 08/11/2020
 ms.author: v-junlch
-ms.openlocfilehash: 4d2cef632fe55be3a7a6b390cdb2469e6b5bdb42
-ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
+ms.openlocfilehash: 6eec17fdcdc6f5321d7131601e9d4ccea0a7f2e5
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "86440498"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223020"
 ---
 # <a name="signalr-service-trigger-binding-for-azure-functions"></a>Azure Functions 的 SignalR 服务触发器绑定
 
@@ -43,7 +43,7 @@ public class SignalRTestHub : ServerlessHub
 
 ### <a name="with-traditional-model"></a>对于传统模型
 
-传统模型遵守使用 C# 开发的 Azure Function 的约定。 如果不熟悉该约定，可通过[文档](/azure-functions/functions-dotnet-class-library)了解和学习。
+传统模型遵守使用 C# 开发的 Azure Function 的约定。 如果不熟悉该约定，可通过[文档](./functions-dotnet-class-library.md)了解和学习。
 
 ```cs
 [FunctionName("SignalRTest")]

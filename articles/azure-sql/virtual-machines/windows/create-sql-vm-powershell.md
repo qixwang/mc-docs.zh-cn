@@ -3,7 +3,7 @@ title: 使用 Azure PowerShell 在 Azure VM 上预配 SQL Server 的指南
 description: 提供使用 SQL Server 虚拟机库映像创建 Azure VM 的步骤和 PowerShell 命令。
 services: virtual-machines-windows
 documentationcenter: na
-author: rockboyfor
+author: WenJason
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 98d50dd8-48ad-444f-9031-5378d8270d7b
@@ -12,15 +12,15 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 origin.date: 12/21/2018
-ms.date: 07/06/2020
-ms.author: v-yeche
+ms.date: 08/17/2020
+ms.author: v-jay
 ms.reviewer: jroth
-ms.openlocfilehash: 8bc53c1b4614ab60626b19489e2c0ff41463a18f
-ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
+ms.openlocfilehash: 7c16c585a219e03da1b93ccd4466bde40e3c165e
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85946167"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222658"
 ---
 # <a name="how-to-use-azure-powershell-to-provision-sql-server-on-azure-virtual-machines"></a>如何使用 Azure PowerShell 在 Azure 虚拟机上预配 SQL Server
 
@@ -153,7 +153,7 @@ New-AzResourceGroup -Name $ResourceGroupName -Location $Location
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
 
-虚拟机需要使用存储资源来存储操作系统磁盘及 SQL Server 数据和日志文件。 为简单起见，我们将为两者创建单个磁盘。 稍后可以使用 [Add-Azure Disk](https://docs.microsoft.com/powershell/module/servicemanagement/azure/add-azuredisk) cmdlet 来附加其他磁盘，以便将 SQL Server 数据和日志文件放在专用磁盘上。 使用 [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) cmdlet 在新资源组中创建标准存储帐户。 指定前面初始化的存储帐户名称、存储 SKU 名称和位置变量。
+虚拟机需要使用存储资源来存储操作系统磁盘及 SQL Server 数据和日志文件。 为简单起见，我们将为两者创建单个磁盘。 稍后可以使用 [Add-Azure Disk](https://docs.microsoft.com/powershell/module/servicemanagement/azure.service/add-azuredisk) cmdlet 来附加其他磁盘，以便将 SQL Server 数据和日志文件放在专用磁盘上。 使用 [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) cmdlet 在新资源组中创建标准存储帐户。 指定前面初始化的存储帐户名称、存储 SKU 名称和位置变量。
 
 运行此 cmdlet 来创建新的存储帐户。
 

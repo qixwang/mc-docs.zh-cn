@@ -2,13 +2,13 @@
 title: 服务运行状况概述 | Microsoft Docs
 description: 有关当前和将来的 Azure 服务问题及维护对 Azure 应用造成的影响的个性化信息。
 ms.topic: conceptual
-ms.date: 07/21/2020
-ms.openlocfilehash: a336668f976ca35f7766b134564bc9f25803496a
-ms.sourcegitcommit: d32699135151e98471daebe6d3f5b650f64f826e
+ms.date: 08/10/2020
+ms.openlocfilehash: ced6d2bea670ff2e2f772ebe9abda23b73034273
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87160360"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222859"
 ---
 # <a name="service-health-overview"></a>服务运行状况概述
 
@@ -68,5 +68,6 @@ ms.locfileid: "87160360"
 
 ## <a name="configure-service-health-alerts"></a>配置服务运行状况警报
 
-服务运行状况与 Azure Monitor 集成，当业务关键型资源受到影响时，它可以通过电子邮件、短信和 Webhook 通知发出警报。 针对相应的服务运行状况事件设置活动日志警报。 使用“操作组”将该警报路由到组织中的相应人员。 有关详细信息，请参阅[配置服务运行状况的警报](../azure-monitor/platform/alerts-activity-log-service-notifications.md)
+服务运行状况与 Azure Monitor 集成，当业务关键型资源受到影响时，它可以通过电子邮件、短信和 Webhook 通知发出警报。 针对相应的服务运行状况事件设置活动日志警报。 使用“操作组”将该警报路由到组织中的相应人员。 有关详细信息，请参阅[配置服务运行状况的警报](./alerts-activity-log-service-notifications-portal.md)
 
+>[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2OaXt]

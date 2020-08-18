@@ -3,16 +3,18 @@ title: 将应用程序从 Amazon DynamoDB 迁移到 Azure Cosmos DB
 description: 了解如何将 .NET 应用程序从 Amazon DynamoDB 迁移到 Azure Cosmos DB
 author: rockboyfor
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 04/29/2020
-ms.date: 06/22/2020
+ms.date: 08/17/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: b33f02aabb325c699e5ed7e484664ec4761c7eb3
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: 4149a99bc01ce6e3a9b52fac977bfe529d1f7294
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85102024"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223342"
 ---
 <!--Verified successfully-->
 # <a name="migrate-your-application-from-amazon-dynamodb-to-azure-cosmos-db"></a>将应用程序从 Amazon DynamoDB 迁移到 Azure Cosmos DB
@@ -336,12 +338,14 @@ public class MovieModel
     internal string PrintInfo()
     {
         if(this.MovieInfo!=null)
-        return            string.Format("\nMovie with title:{1}\n Year: {2}, Actors: {3}\n Directors:{4}\n Rating:{5}\n", this.Id, this.Title, this.Year, String.Join(",",this.MovieInfo.Actors), this.MovieInfo, this.MovieInfo.Rating);
+            return string.Format("\nMovie with title:{1}\n Year: {2}, Actors: {3}\n Directors:{4}\n Rating:{5}\n", this.Id, this.Title, this.Year, String.Join(",",this.MovieInfo.Actors), this.MovieInfo, this.MovieInfo.Rating);
         else
             return string.Format("\nMovie with  title:{0}\n Year: {1}\n",  this.Title, this.Year);
     }
 }
 ```
+
+<!--CORRECT ON return FORMAT-->
 
 在 Azure Cosmos DB 中，newItem 将成为 MovieModel：
 
@@ -525,5 +529,4 @@ await cosmosDatabase.DeleteAsync();
 - 了解[优化读取和写入](key-value-store-cost.md)
 - 了解 [Cosmos DB 中的监视](monitor-cosmos-db.md)
 
-<!-- Update_Description: new article about dynamo to cosmos -->
-<!--NEW.date: 06/22/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

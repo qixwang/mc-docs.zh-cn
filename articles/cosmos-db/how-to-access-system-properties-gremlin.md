@@ -3,17 +3,19 @@ title: 通过 Azure Cosmos DB 图形访问系统文档属性
 description: 了解如何通过 Gremlin API 读取和写入 Cosmos DB 系统文档属性
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 09/10/2019
-ms.date: 04/27/2020
+ms.date: 08/17/2020
+ms.testscope: no
+ms.testdate: ''
 author: rockboyfor
 ms.author: v-yeche
-ms.openlocfilehash: 6636963aa920103d2b091b0becff4a5b34b7b7b2
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 8e8b46ee430dc7a1b081d84975a5f9e9385d4f1f
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134925"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223088"
 ---
 # <a name="system-document-properties"></a>系统文档属性
 

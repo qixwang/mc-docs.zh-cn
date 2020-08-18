@@ -10,14 +10,17 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: af81ad2fd6384156d1b002e24277ad0c77f32eff
-ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
+ms.openlocfilehash: a38678447c9a1433a54aeccb5790e4fed475cd99
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "86441062"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88228309"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>在 Azure 机器学习工作室（经典版）中执行 Python 机器学习脚本
+
+**适用于：**  ![yes](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![no](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)
+
 
 Python 是许多数据科学家珍藏的一个有用工具。 它可以在典型机器学习工作流的每个阶段（包括数据探索、特征提取、模型训练和验证，以及部署）中使用。
 
@@ -63,7 +66,7 @@ Python 模块的输入公开为 Pandas 数据帧。 `azureml_main` 函数最多�
 | 非字符串列名 | 对列名调用 `str` |
 | 复制列名 | 添加数字后缀：(1)、(2)、(3) 等。
 
-Python 函数中的所有输入数据帧始终具有 64 位的数字索引，范围从 0 到行数减去 1 的值* 
+Python 函数中的所有输入数据帧始终具有 64 位的数字索引，范围从 0 到行数减去 1 的值*
 
 ## <a name="importing-existing-python-script-modules"></a><a id="import-modules"></a>导入现有的 Python 脚本模块
 
@@ -79,7 +82,7 @@ Python 函数中的所有输入数据帧始终具有 64 位的数字索引，范
 
 ![包含用户定义的 Python 代码的 zip 文件](./media/execute-python-scripts/figure5.png)
 
-将 zip 文件作为数据集上传到工作室（经典版）中。 然后，创建使用 Hello.zip 文件中的 Python 代码的试验，并通过将此试验附加到“执行 Python 脚本”模块的第三个输入端口来运行此试验，如下图所示。 
+将 zip 文件作为数据集上传到工作室（经典版）中。 然后，创建使用 Hello.zip 文件中的 Python 代码的试验，并通过将此试验附加到“执行 Python 脚本”模块的第三个输入端口来运行此试验，如下图所示。****
 
 ![使用 Hello.zip 的示例试验，用作“执行 Python 脚本”模块的输入](./media/execute-python-scripts/figure6a.png)
 
@@ -104,13 +107,13 @@ from azure.storage.blob import BlockBlobService
 block_blob_service = BlockBlobService(account_name='account_name', account_key='account_key', protocol='http')
 ```
 
-1. 在存储的“配置”设置选项卡中禁用“需要安全传输”  
+1. 在存储的“配置”设置选项卡中禁用“需要安全传输”********
 
 ![在 Azure 门户中禁用“需要安全传输”](./media/execute-python-scripts/disable-secure-transfer-required.png)
 
 ## <a name="operationalizing-python-scripts"></a>实现 Python 脚本
 
-发布为 Web 服务时，将调用在评分试验中使用的任何[执行 Python 脚本][execute-python-script]模块。 例如，下图显示了包含用于评估单个 Python 表达式的代码的评分试验。
+任何在评分实验中使用的[执行 Python 脚本][execute-python-script]模块在发布为 Web 服务时都将受到调用。 例如，下图显示了包含用于评估单个 Python 表达式的代码的评分试验。
 
 ![Web 服务的工作室工作区](./media/execute-python-scripts/figure3a.png)
 
@@ -173,7 +176,7 @@ Python 模块当前不支持诸如 intellisense 和调试等 IDE 功能。 此�
 
 ### <a name="single-data-frame-output"></a>单数据帧输出
 
-Python 入口点仅允许将单个数据帧返回为输出。 目前无法将诸如训练的模型等任意 Python 对象直接返回到工作室（经典版）运行时。 就像存在相同限制的[执行 R 脚本][execute-r-script]一样，在许多情况下可将对象转换为字节数组，并在数据帧中返回该字节数组。
+Python 入口点仅允许将单个数据帧返回为输出。 目前无法将诸如训练的模型等任意 Python 对象直接返回到工作室（经典版）运行时。 就像具有相同限制的[执行 R 脚本][execute-r-script]一样，在许多情况下可将对象转换为字节数组，并在数据帧中返回字节数组。
 
 ### <a name="inability-to-customize-python-installation"></a>无法自定义 Python 安装
 

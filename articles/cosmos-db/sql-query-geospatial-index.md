@@ -5,14 +5,16 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 05/03/2020
-ms.date: 07/06/2020
+ms.date: 08/17/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 5ad2ffba022f96ce767cdbbd3c37e259c6ac926a
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+ms.openlocfilehash: 3b169ec6c6c90d970597cd99fd0b38257890f83c
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323274"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222631"
 ---
 <!--Verified successfully-->
 <!--Partial content for the verified articles-->
@@ -37,7 +39,7 @@ ms.locfileid: "85323274"
 
 下面介绍如何在 Azure 门户的“数据资源管理器”中设置“地理空间配置”：
 
-![设置地理空间配置](./media/sql-query-geospatial-index/geospatial-configuration.png)
+:::image type="content" source="./media/sql-query-geospatial-index/geospatial-configuration.png" alt-text="设置地理空间配置":::
 
 还可通过修改 .NET SDK 中的 `geospatialConfig` 来调整“地理空间配置”：
 

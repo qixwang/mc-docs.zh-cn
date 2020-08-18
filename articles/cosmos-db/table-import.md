@@ -6,15 +6,17 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: tutorial
 origin.date: 12/07/2017
-ms.date: 04/15/2019
+ms.date: 08/17/2020
+ms.testscope: yes
+ms.testdate: 08/10/2020
 ms.author: v-yeche
 ms.custom: seodec18
-ms.openlocfilehash: e4114a2db3e97af29bd1b9684b462f42073dbcaf
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a33ddffab4c77a9cab36f797a516be2e5cf8e6f8
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "63854565"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223075"
 ---
 <!--Verify sucessfully-->
 # <a name="migrate-your-data-to-azure-cosmos-db-table-api-account"></a>将数据迁移到 Azure Cosmos DB 表 API 帐户
@@ -28,7 +30,7 @@ ms.locfileid: "63854565"
 > * 使用 AzCopy 导入数据
 > * 从表 API（预览版）迁移到表 API 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * **增加吞吐量：** 数据迁移的持续时间取决于为单个容器或一组容器设置的吞吐量。 请确保对于较大的数据迁移增加吞吐量。 完成迁移后，减少吞吐量以节约成本。 有关在 Azure 门户中增加吞吐量的详细信息，请参阅 Azure Cosmos DB 中的性能级别和定价层。
 
@@ -47,34 +49,34 @@ ms.locfileid: "63854565"
     dt.exe [/<option>:<value>] /s:<source-name> [/s.<source-option>:<value>] /t:<target-name> [/t.<target-option>:<value>] 
     ```
 
-    该命令的选项包括：
+此命令支持的选项为：
 
-        /ErrorLog: Optional. Name of the CSV file to redirect data transfer failures
-        /OverwriteErrorLog: Optional. Overwrite error log file
-        /ProgressUpdateInterval: Optional, default is 00:00:01. Time interval to refresh on-screen data transfer progress
-        /ErrorDetails: Optional, default is None. Specifies that detailed error information should be displayed for the following errors: None, Critical, All
-        /EnableCosmosTableLog: Optional. Direct the log to a cosmos table account. If set, this defaults to destination account connection string unless /CosmosTableLogConnectionString is also provided. This is useful if multiple instances of DT are being run simultaneously.
-        /CosmosTableLogConnectionString: Optional. ConnectionString to direct the log to a remote cosmos table account. 
+* **/ErrorLog：** 可选。 要重定向数据传输失败的 CSV 文件的名称
+* **/OverwriteErrorLog：** 可选。 覆盖错误日志文件
+* **/ProgressUpdateInterval：** 可选，默认值为 00:00:01。 刷新屏幕上数据传输进度的时间间隔
+* **/ErrorDetails：** 可选，默认值为 None。 指定应针对以下错误显示详细错误信息：None、Critical、All
+* **/EnableCosmosTableLog：** 可选。 将日志定向到 cosmos 表帐户。 如果设置，这会默认为目标帐户连接字符串，除非还提供了 /CosmosTableLogConnectionString。 如果同时运行多个 DT 实例，这将很有用。
+* **/CosmosTableLogConnectionString：** 可选。 将日志定向到远程 cosmos 表帐户的 ConnectionString。
 
 ### <a name="command-line-source-settings"></a>命令行源设置
 
 将 Azure 表存储或表 API 预览版定义为迁移源时，请使用以下源选项。
 
-    /s:AzureTable: Reads data from Azure Table storage
-    /s.ConnectionString: Connection string for the table endpoint. This can be retrieved from the Azure portal
-    /s.LocationMode: Optional, default is PrimaryOnly. Specifies which location mode to use when connecting to Azure Table storage: PrimaryOnly, PrimaryThenSecondary, SecondaryOnly, SecondaryThenPrimary
-    /s.Table: Name of the Azure Table
-    /s.InternalFields: Set to All for table migration as RowKey and PartitionKey are required for import.
-    /s.Filter: Optional. Filter string to apply
-    /s.Projection: Optional. List of columns to select
+* **/s:AzureTable：** 从 Azure 表存储读取数据
+* **/s.ConnectionString：** 表终结点的连接字符串。 这可从 Azure 门户中检索
+* **/s.LocationMode：** 可选，默认值为 PrimaryOnly。 指定连接到 Azure 表存储时要使用的位置模式：PrimaryOnly、PrimaryThenSecondary、SecondaryOnly、SecondaryThenPrimary
+* **/s.Table：** Azure 表的名称
+* **/s.InternalFields：** 设置为 All 以进行表迁移，因为导入需要 RowKey 和 PartitionKey。
+* **/s.Filter：** 可选。 要应用的筛选器字符串
+* **/s.Projection：** 可选。 要选择的列的列表
 
-在从 Azure 表存储进行导入时，若要检索源连接字符串，请打开 Azure 门户并单击“存储帐户” **“帐户”** “访问密钥”，然后使用复制按钮复制 > 连接字符串 **。**  >   
+在从 Azure 表存储进行导入时，若要检索源连接字符串，请打开 Azure 门户并单击“存储帐户” > “帐户” > “访问密钥”，然后使用复制按钮复制**连接字符串**。  
 
-![HBase 源选项的屏幕截图](./media/table-import/storage-table-access-key.png)
+:::image type="content" source="./media/table-import/storage-table-access-key.png" alt-text="HBase 源选项的屏幕截图":::
 
-在从 Azure 表存储进行导入时，若要检索源连接字符串，请打开 Azure 门户并单击“存储帐户” **“帐户”** “访问密钥”，然后使用复制按钮复制 > 连接字符串 **。**  >   
+在从 Azure 表存储进行导入时，若要检索源连接字符串，请打开 Azure 门户并单击“存储帐户” > “帐户” > “访问密钥”，然后使用复制按钮复制**连接字符串**。  
 
-![HBase 源选项的屏幕截图](./media/table-import/cosmos-connection-string.png)
+:::image type="content" source="./media/table-import/cosmos-connection-string.png" alt-text="HBase 源选项的屏幕截图":::
 
 [示例 Azure 表存储命令](#azure-table-storage)
 
@@ -84,40 +86,41 @@ ms.locfileid: "63854565"
 
 将 Azure Cosmos DB 表 API 定义为迁移目标时，请使用以下目标选项。
 
-    /t:TableAPIBulk: Uploads data into Azure CosmosDB Table in batches
-    /t.ConnectionString: Connection string for the table endpoint
-    /t.TableName: Specifies the name of the table to write to
-    /t.Overwrite: Optional, default is false. Specifies if existing values should be overwritten
-    /t.MaxInputBufferSize: Optional, default is 1GB. Approximate estimate of input bytes to buffer before flushing data to sink
-    /t.Throughput: Optional, service defaults if not specified. Specifies throughput to configure for table
-    /t.MaxBatchSize: Optional, default is 2MB. Specify the batch size in bytes
+* **/t:TableAPIBulk：** 批量将数据上传到 Azure CosmosDB 表
+* **/t.ConnectionString：** 表终结点的连接字符串
+* **/t.TableName：** 指定要写入的表的名称
+* **/t.Overwrite：** 可选，默认值为 false。 指定是否应覆盖现有值
+* **/t.MaxInputBufferSize：** 可选，默认值为 1GB。 将数据刷新到接收器之前要缓冲的输入字节的大致估计值
+* **/t.Throughput：** 可选，如果未指定，则为服务默认值。 指定要为表配置的吞吐量
+* **/t.MaxBatchSize：** 可选，默认值为 2MB。 指定批大小（以字节为单位）
 
 <a name="azure-table-storage"></a>
 ### <a name="sample-command-source-is-azure-table-storage"></a>示例命令：源是 Azure 表存储
 
 下面的命令行示例展示了如何从 Azure 表存储导入到表 API：
 
+```bash
+dt /s:AzureTable /s.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Table storage account name>;AccountKey=<Account Key>;EndpointSuffix=core.chinacloudapi.cn /s.Table:<Table name> /t:TableAPIBulk /t.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Cosmos DB account name>;AccountKey=<Azure Cosmos DB account key>;TableEndpoint=https://<Account name>.table.cosmos.azure.cn:443 /t.TableName:<Table name> /t.Overwrite
 ```
-dt /s:AzureTable /s.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Table storage account name>;AccountKey=<Account Key>;EndpointSuffix=core.chinacloudapi.cn /s.Table:<Table name> /t:TableAPIBulk /t.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Cosmos DB account name>;AccountKey=<Azure Cosmos DB account key>;TableEndpoint=https://<Account name>.table.cosmosdb.azure.cn:443 /t.TableName:<Table name> /t.Overwrite
-```
+
 <a name="table-api-preview"></a>
 ### <a name="sample-command-source-is-azure-cosmos-db-table-api-preview"></a>示例命令：源是 Azure Cosmos DB 表 API（预览版）
 
 下面的命令行示例展示了如何从表 API 预览版导入到表 API GA：
 
-```
-dt /s:AzureTable /s.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Table API preview account name>;AccountKey=<Table API preview account key>;TableEndpoint=https://<Account Name>.documents.azure.cn; /s.Table:<Table name> /t:TableAPIBulk /t.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Cosmos DB account name>;AccountKey=<Azure Cosmos DB account key>;TableEndpoint=https://<Account name>.table.cosmosdb.azure.cn:443 /t.TableName:<Table name> /t.Overwrite
+```bash
+dt /s:AzureTable /s.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Table API preview account name>;AccountKey=<Table API preview account key>;TableEndpoint=https://<Account Name>.documents.azure.cn; /s.Table:<Table name> /t:TableAPIBulk /t.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Cosmos DB account name>;AccountKey=<Azure Cosmos DB account key>;TableEndpoint=https://<Account name>.table.cosmos.azure.cn:443 /t.TableName:<Table name> /t.Overwrite
 ```
 
 ## <a name="migrate-data-by-using-azcopy"></a>使用 AzCopy 迁移数据
 
-使用 AzCopy 命令行实用工具是将数据从 Azure 表存储迁移到 Azure Cosmos DB 表 API 的另一个选项。 若要使用 AzCopy，首先需要根据[从表存储导出数据](../storage/common/storage-use-azcopy.md#export-data-from-table-storage)中所述导出数据，然后根据 [Azure Cosmos DB 表 API](../storage/common/storage-use-azcopy.md#import-data-into-table-storage) 中所述将数据导入到 Azure Cosmos DB。
+使用 AzCopy 命令行实用工具是将数据从 Azure 表存储迁移到 Azure Cosmos DB 表 API 的另一个选项。 若要使用 AzCopy，首先需要根据[从表存储导出数据](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy#export-data-from-table-storage)中所述导出数据，然后根据 [Azure Cosmos DB 表 API](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy#import-data-into-table-storage) 中所述将数据导入到 Azure Cosmos DB。
 
 在执行到 Azure Cosmos DB 的导入时，请参阅以下示例。 注意，/Dest 值使用的是 cosmosdb，而不是 core。
 
 示例导入命令：
 
-```
+```bash
 AzCopy /Source:C:\myfolder\ /Dest:https://myaccount.table.cosmosdb.chinacloudapi.cn/mytable1/ /DestKey:key /Manifest:"myaccount_mytable_20140103T112020.manifest" /EntityOperation:InsertOrReplace
 ```
 
@@ -125,7 +128,6 @@ AzCopy /Source:C:\myfolder\ /Dest:https://myaccount.table.cosmosdb.chinacloudapi
 
 > [!WARNING]
 > 如果希望立即享受正式版表带来的好处，请根据本部分中所述迁移现有的预览版表，否则，我们将在接下来的几周内为现有的预览版客户执行自动迁移，但请注意，自动迁移的预览版表将具有一些限制，而新创建的表则不会有这些限制。
-> 
 
 表 API 现在已为正式版 (GA)。 表的预览版和 GA 版之间有一些差异，这同时体现于在云中运行的代码和在客户端运行的代码。 因此，建议不要尝试将预览版 SDK 客户端与 GA 表 API 帐户混合使用，反之亦然。 对于希望在生产环境中继续使用其现有表的表 API 预览版客户，需要从预览版迁移到 GA 环境，或者等待自动迁移。 如果等待自动迁移，则会向你发送通知，指明迁移的表的限制。 在迁移后，将能够在现有帐户上创建没有限制的新表（只有迁移的表才会有限制）。
 
@@ -151,5 +153,4 @@ AzCopy /Source:C:\myfolder\ /Dest:https://myaccount.table.cosmosdb.chinacloudapi
 > [!div class="nextstepaction"]
 >[如何查询数据？](../cosmos-db/tutorial-query-table.md)
 
-<!--Update_Description: new articles on table import -->
-<!--ms.date: 03/18/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

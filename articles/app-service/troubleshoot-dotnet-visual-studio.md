@@ -5,15 +5,15 @@ ms.assetid: def8e481-7803-4371-aa55-64025d116c97
 ms.devlang: dotnet
 ms.topic: article
 origin.date: 08/29/2016
-ms.date: 05/22/2020
+ms.date: 08/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 39ae5ac041d0738754ac8c4addcd1d862d2fb8d8
-ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
+ms.openlocfilehash: 55533cef5c5808407cf2733bbafedca318d548f4
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83801334"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88228268"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>使用 Visual Studio 对 Azure 应用服务中的应用进行故障排除
 ## <a name="overview"></a>概述
@@ -31,7 +31,7 @@ ms.locfileid: "83801334"
 如果有 Visual Studio Ultimate，还可以使用 [IntelliTrace](https://docs.microsoft.com/visualstudio/debugger/intellitrace) 进行调试。 本教程未介绍 IntelliTrace。
 
 ## <a name="prerequisites"></a><a name="prerequisites"></a>先决条件
-本教程适用于在[在 Azure 应用服务中创建 ASP.NET 应用](app-service-web-get-started-dotnet-framework.md)中设置的开发环境、Web 项目和应用服务应用。 对于 WebJobs 部分，需要用到在 [Azure WebJobs SDK 入门][GetStartedWJ]中创建的应用程序。
+本教程适用于在[在 Azure 应用服务中创建 ASP.NET 应用](quickstart-dotnet-framework.md)中设置的开发环境、Web 项目和应用服务应用。 对于 WebJobs 部分，需要用到在 [Azure WebJobs SDK 入门][GetStartedWJ]中创建的应用程序。
 
 在本教程中所示的代码示例适用于 C# MVC Web 应用程序，但对于 Visual Basic 和 Web 窗体应用程序，故障排除过程是一样的。
 
@@ -53,7 +53,7 @@ ms.locfileid: "83801334"
 
     有关从 Visual Studio 连接至 Azure 资源的详细信息，请参阅[管理帐户、订阅和管理角色](/role-based-access-control/role-assignments-portal#BKMK_AccountVCert)。
 2. 在“服务资源管理器”中，展开“Azure”，并展开“应用服务”。
-3. 展开包含在[在 Azure 应用服务中创建 ASP.NET 应用](app-service-web-get-started-dotnet-framework.md)中创建的应用的资源组，右键单击该应用节点，并单击“查看设置”。
+3. 展开包含在[在 Azure 应用服务中创建 ASP.NET 应用](quickstart-dotnet-framework.md)中创建的应用的资源组，右键单击该应用节点，并单击“查看设置”。
 
     ![在服务器资源管理器中查看设置](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-viewsettings.png)
 
@@ -110,9 +110,9 @@ ms.locfileid: "83801334"
 
 远程调试不适用于 Visual Studio Express 版。
 
-本部分介绍如何使用在[在 Azure 应用服务中创建 ASP.NET 应用](app-service-web-get-started-dotnet-framework.md)中创建的项目进行远程调试。
+本部分介绍如何使用在[在 Azure 应用服务中创建 ASP.NET 应用](quickstart-dotnet-framework.md)中创建的项目进行远程调试。
 
-1. 打开在[在 Azure 应用服务中创建 ASP.NET 应用](app-service-web-get-started-dotnet-framework.md)中创建的 Web 项目。
+1. 打开在[在 Azure 应用服务中创建 ASP.NET 应用](quickstart-dotnet-framework.md)中创建的 Web 项目。
 
 1. 打开 *Controllers\HomeController.cs*。
 
@@ -131,7 +131,7 @@ ms.locfileid: "83801334"
 
 1. 在“解决方案资源管理器”中，右键单击该项目并单击“发布”。
 
-1. 在“配置文件”下拉列表中，选择在[在 Azure 应用服务中创建 ASP.NET 应用](app-service-web-get-started-dotnet-framework.md)中使用的相同配置文件。 然后，单击“设置”。
+1. 在“配置文件”下拉列表中，选择在[在 Azure 应用服务中创建 ASP.NET 应用](quickstart-dotnet-framework.md)中使用的相同配置文件。 然后，单击“设置”。
 
 1. 在“发布”对话框中，单击“设置”选项卡，将“配置”更改为“调试”，然后单击“保存”    。
 
@@ -266,7 +266,7 @@ ms.locfileid: "83801334"
 ## <a name="create-and-view-application-trace-logs"></a><a name="apptracelogs"></a>创建并查看应用程序跟踪日志
 在本部分中执行以下任务：
 
-* 将跟踪语句添加到在 [Azure 和 ASP.NET 入门](app-service-web-get-started-dotnet-framework.md)中创建的 Web 项目。
+* 将跟踪语句添加到在 [Azure 和 ASP.NET 入门](quickstart-dotnet-framework.md)中创建的 Web 项目。
 * 在本地运行该项目时查看日志。
 * 查看由运行于 Azure 中的应用程序生成的日志。
 
@@ -350,7 +350,9 @@ ms.locfileid: "83801334"
 
     默认情况下，`trace.axd` 仅供本地使用。 如果希望可以从远程应用使用，可将 `localOnly="false"` 添加到 *Web.config* 文件中的 `trace` 元素，如以下示例所示：
 
-        <trace enabled="true" writeToDiagnosticsTrace="true" localOnly="false" mostRecent="true" pageOutput="false" />
+    ```xml
+    <trace enabled="true" writeToDiagnosticsTrace="true" localOnly="false" mostRecent="true" pageOutput="false" />
+    ```
 
     但是，出于安全考虑，不推荐在生产应用中启用 `trace.axd`。 以下部分将介绍一种在应用服务应用中读取跟踪日志的更简单的方法。
 
@@ -616,7 +618,7 @@ Storage accounts offer more storage and longer-lasting retention for logs compar
 有关对 Azure 应用服务中的应用进行故障排除的详细信息，请参阅以下资源：
 
 * [如何监视应用](web-sites-monitor.md)
-* [使用 Visual Studio 2013 在 Azure 应用服务中调查内存泄漏](https://blogs.msdn.com/b/visualstudioalm/archive/2013/12/20/investigating-memory-leaks-in-azure-web-sites-with-visual-studio-2013.aspx)。 有关用于分析托管内存问题的 Visual Studio 功能的 Microsoft ALM 博客文章。
+* [使用 Visual Studio 2013 在 Azure 应用服务中调查内存泄漏](https://devblogs.microsoft.com/devops/investigating-memory-leaks-in-azure-web-sites-with-visual-studio-2013/)。 有关用于分析托管内存问题的 Visual Studio 功能的 Microsoft ALM 博客文章。
 * [应该了解的 Azure 应用服务联机工具](https://azure.microsoft.com/blog/2014/03/28/windows-azure-websites-online-tools-you-should-know-about-2/)。 Amit Apple 发表的博客文章。
 
 若要针对特定故障排除问题寻求帮助，可在以下论坛之一开启话题讨论：
@@ -648,7 +650,7 @@ Internet 上对于 ASP.NET 跟踪没有全面且最新的介绍。 最佳做法�
   有关跟踪侦听器的信息，但未提及 [WebPageTraceListener](https://docs.microsoft.com/dotnet/api/system.web.webpagetracelistener)。
 * [演练：将 ASP.NET 跟踪与 System.Diagnostics 跟踪集成](https://docs.microsoft.com/previous-versions/b0ectfxd(v=vs.140))<br/>
   此文章已过时，但包括一些介绍性文章未涵盖的额外信息。
-* [在 ASP.NET MVC Razor 视图中进行跟踪](https://blogs.msdn.com/b/webdev/archive/2013/07/16/tracing-in-asp-net-mvc-razor-views.aspx)<br/>
+* [在 ASP.NET MVC Razor 视图中进行跟踪](https://devblogs.microsoft.com/aspnet/tracing-in-asp-net-mvc-razor-views/)<br/>
   除了在 Razor 视图中进行跟踪，文章还介绍了如何创建错误筛选器以便在 MVC 应用程序中记录所有未经处理的异常。 有关如何在 Web 窗体应用程序中记录所有未经处理的异常，请参阅 MSDN 上的[错误处理程序的完整示例](https://docs.microsoft.com/previous-versions/bb397417(v=vs.140))中的 Global.asax 示例。 在 MVC 或 Web 窗体中，如果希望记录特定异常但想让默认框架对其进行处理，可捕获并重新引发异常，如下例所示：
 
     ```csharp
@@ -677,11 +679,11 @@ Internet 上对于 ASP.NET 跟踪没有全面且最新的介绍。 最佳做法�
   用于查看 Web 服务器日志（ *.log* 文件）中的数据的工具。
 * [使用 LogParser 排查 IIS 性能问题或应用程序错误](https://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
   可用于分析 Web 服务器日志的 Log Parser 工具介绍。
-* [Robert McMurray 有关 LogParser 使用的博客文章](https://blogs.msdn.com/b/robert_mcmurray/archive/tags/logparser/)<br/>
+* [Robert McMurray 有关 LogParser 使用的博客文章](https://docs.microsoft.com/archive/blogs/robert_mcmurray/using-logparser-with-ftp-7-x-sessions)<br/>
 * [IIS 7.0、IIS 7.5 以及 IIS 8.0 中的 HTTP 状态代码](https://support.microsoft.com/kb/943891)
 
 ### <a name="analyzing-failed-request-tracing-logs"></a>分析失败请求跟踪日志
 Microsoft TechNet 网站包含[使用失败请求跟踪](https://www.iis.net/learn/troubleshoot/using-failed-request-tracing)部分，有助于你了解如何使用这些日志。 然而，该文档主要着重于在 IIS 中配置失败请求跟踪，并不适用于 Azure 应用服务。
 
-[GetStarted]: app-service-web-get-started-dotnet.md
+[GetStarted]: quickstart-dotnetcore.md?pivots=platform-windows
 [GetStartedWJ]: https://github.com/Azure/azure-webjobs-sdk/wiki

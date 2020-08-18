@@ -5,15 +5,17 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 09/13/2019
-ms.date: 02/10/2020
+ms.date: 08/17/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
 ms.custom: query-reference
-ms.openlocfilehash: 5f239a7d929e1b6ba1c0c3b07753f7d8349192c7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d669f2a2468077be060385540507adceb14cfd70
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77028701"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222399"
 ---
 # <a name="array-functions-azure-cosmos-db"></a>数组函数 (Azure Cosmos DB)
 
@@ -23,10 +25,10 @@ ms.locfileid: "77028701"
 
 以下标量函数对数组输入值执行操作，并返回数值、布尔值或数组值：
 
-||||  
-|-|-|-|  
-|[ARRAY_CONCAT](sql-query-array-concat.md)|[ARRAY_CONTAINS](sql-query-array-contains.md)|[ARRAY_LENGTH](sql-query-array-length.md)|  
-|[ARRAY_SLICE](sql-query-array-slice.md)|||  
+* [ARRAY_CONCAT](sql-query-array-concat.md)
+* [ARRAY_CONTAINS](sql-query-array-contains.md)
+* [ARRAY_LENGTH](sql-query-array-length.md)
+* [ARRAY_SLICE](sql-query-array-slice.md)
 
 ## <a name="next-steps"></a>后续步骤
 

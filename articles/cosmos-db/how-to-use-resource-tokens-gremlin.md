@@ -4,16 +4,18 @@ description: 了解如何创建资源令牌并使用它们访问图形数据库�
 author: rockboyfor
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 09/06/2019
-ms.date: 04/27/2020
+ms.date: 08/17/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 833fb797da3dddbced1f89514f23637231e939be
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 6e71129c1e3f065abfc7d343fe9ef6144233a143
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134638"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222913"
 ---
 # <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>通过 Gremlin SDK 使用 Azure Cosmos DB 资源令牌
 
@@ -106,4 +108,4 @@ builder.authProperties(authenticationProperties);
 * Azure Cosmos DB 中[基于角色的访问控制](role-based-access-control.md)
 * [了解如何保护对 Azure Cosmos DB 中数据的访问](secure-access-to-data.md)
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

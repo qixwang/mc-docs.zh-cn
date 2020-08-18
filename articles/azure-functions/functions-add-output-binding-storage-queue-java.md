@@ -2,28 +2,29 @@
 title: 将 Java 函数连接到 Azure 存储
 description: 了解如何使用队列存储输出绑定将 HTTP 触发的 Java 函数连接到 Azure 存储。
 author: KarlErickson
+ms.custom: devx-track-java
 ms.author: v-junlch
-ms.date: 06/03/2020
+ms.date: 08/10/2020
 ms.topic: quickstart
 zone_pivot_groups: java-build-tools-set
-ms.openlocfilehash: d2ee5be7a0f3b54ef07916308d34e3c783637b91
-ms.sourcegitcommit: f1a76ee3242698123a3d77f44c860db040b48f70
+ms.openlocfilehash: 8e4d6d4634e20327834af908278a413e524ba5a8
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84563696"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222599"
 ---
 # <a name="connect-your-java-function-to-azure-storage"></a>将 Java 函数连接到 Azure 存储
 
 [!INCLUDE [functions-add-storage-binding-intro](../../includes/functions-add-storage-binding-intro.md)]
 
-本文介绍如何将[前一篇快速入门文章](functions-create-first-java-maven.md)中创建的函数与 Azure 存储队列相集成。 添加到此函数的输出绑定会将 HTTP 请求中的数据写入到队列中的消息。
+本文介绍如何将[前一篇快速入门文章](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java&tabs=bash,browser)中创建的函数与 Azure 存储队列相集成。 添加到此函数的输出绑定会将 HTTP 请求中的数据写入到队列中的消息。
 
 大多数绑定都需要一个存储的连接字符串，函数将使用该字符串来访问绑定的服务。 为便于建立此连接，请使用连同函数应用一起创建的存储帐户。 与此帐户建立的连接已存储在名为 `AzureWebJobsStorage` 的应用设置中。  
 
 ## <a name="prerequisites"></a>先决条件
 
-在开始学习本文之前，请完成 [Java 快速入门第 1 部分](functions-create-first-java-maven.md)中的步骤。
+在开始学习本文之前，请完成 [Java 快速入门第 1 部分](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java&tabs=bash,browser)中的步骤。
 
 ## <a name="download-the-function-app-settings"></a>下载函数应用设置
 
@@ -107,6 +108,12 @@ curl -w "\n" https://fabrikam-functions-20190929094703749.chinacloudsites.cn/api
 ## <a name="next-steps"></a>后续步骤
 
 现已更新 HTTP 触发的函数，使其将数据写入存储队列。 若要详细了解如何使用 Java 开发 Azure Functions，请参阅 [Azure Functions Java 开发人员指南](functions-reference-java.md)及 [Azure Functions 触发器和绑定](functions-triggers-bindings.md)。 有关 Java 中完整 Function 项目的示例，请参阅 [Java Functions 示例](https://docs.microsoft.com/samples/browse/?products=azure-functions&languages=Java)。 
+
+接下来，应为函数应用启用 Application Insights 监视：
+
+> [!div class="nextstepaction"]
+> [启用 Application Insights 集成](functions-monitoring.md#manually-connect-an-app-insights-resource)
+
 
 [Azure Storage Explorer]: https://storageexplorer.com/
 

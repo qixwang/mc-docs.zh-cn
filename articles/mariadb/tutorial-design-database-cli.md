@@ -1,20 +1,20 @@
 ---
-title: 教程：使用 Azure CLI 设计 Azure Database for MariaDB
+title: 教程：设计 Azure Database for MariaDB - Azure CLI
 description: 本教程介绍如何使用 Azure CLI 从命令行创建和管理 Azure Database for MariaDB 服务器和数据库。
 author: WenJason
 ms.author: v-jay
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: tutorial
-origin.date: 11/10/2018
-ms.date: 05/27/2019
-ms.custom: mvc
-ms.openlocfilehash: 48e35a62ca2ffbfa5f68e1d8e62391c5f04f2cb7
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+origin.date: 3/18/2020
+ms.date: 08/17/2020
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: fbe19ee1ef2135c902c65a4bb3e87f217bf7af60
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126914"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222732"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-using-azure-cli"></a>教程：使用 Azure CLI 设计 Azure Database for MariaDB
 
@@ -29,11 +29,11 @@ Azure Database for MariaDB 是云中基于 MariaDB 社区版数据库引擎的�
 > * 更新数据
 > * 还原数据
 
-如果没有 Azure 订阅，请在开始前创建一个[试用 Azure 帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
+如果没有 Azure 订阅，请在开始前创建一个[试用 Azure 帐户](https://www.azure.cn/pricing/1rmb-trial-full/?form-type=identityauth)。
 
-可以在自己的计算机上[安装 Azure CLI]( /cli/install-azure-cli) 来运行本教程中的代码块。
+可以在自己的计算机上[安装 Azure CLI](/cli/install-azure-cli) 来运行本教程中的代码块。
 
-本文要求运行 Azure CLI 2.0 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/install-azure-cli)。 
+本文要求运行 Azure CLI 2.0 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/install-azure-cli)。 
 
 如果有多个订阅，请选择资源所在的相应订阅或对资源进行计费的订阅。 使用 [az account set](/cli/account#az-account-set) 命令选择帐户下的特定订阅 ID。
 ```azurecli
@@ -169,7 +169,7 @@ SELECT * FROM inventory;
 ```
 
 ## <a name="restore-a-database-to-a-previous-point-in-time"></a>将数据库还原到以前的时间点
-假设意外删除了此表。 这是不能轻易还原的内容。 借助 Azure Database for MariaDB，可返回到最近 35 天内的任意时间点并将此时间点还原到新的服务器。 可以使用此新服务器恢复已删除的数据。 以下步骤将示例服务器还原到添加此表之前的时间点。
+假设意外删除了此表。 这是你不能轻易还原的内容。 借助 Azure Database for MariaDB，可返回到最近 35 天内的任意时间点并将此时间点还原到新的服务器。 可以使用此新服务器恢复已删除的数据。 以下步骤将示例服务器还原到添加此表之前的时间点。
 
 执行还原需要以下信息：
 
@@ -196,7 +196,7 @@ az mariadb server restore --resource-group myresourcegroup --name mydemoserver-r
 该命令是同步的，且会在服务器还原后返回。 还原完成后，找到创建的新服务器。 验证数据是否按预期还原。
 
 ## <a name="next-steps"></a>后续步骤
-本教程介绍了：
+本教程介绍：
 > [!div class="checklist"]
 > * 创建 Azure Database for MariaDB 服务器
 > * 配置服务器防火墙

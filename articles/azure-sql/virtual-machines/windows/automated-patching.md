@@ -1,5 +1,5 @@
 ---
-title: 对 SQL Server VM 进行自动修补 (Resource Manager) | Azure
+title: 自动修补 SQL Server VM (Resource Manager) | Microsoft Docs
 description: 本文介绍 Azure 上运行的、使用资源管理器的 SQL Server 虚拟机的自动修补功能。
 services: virtual-machines-windows
 documentationcenter: na
@@ -12,22 +12,18 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 origin.date: 03/07/2018
-ms.date: 07/06/2020
-ms.author: v-yeche
+ms.date: 08/17/2020
+ms.author: v-jay
 ms.reviewer: jroth
-ms.openlocfilehash: 654c38a714c40aa820bb749598e19052ac13dc05
-ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
+ms.openlocfilehash: 05581842ae1497fa4551de43e01b33f1bb8aa52b
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85946118"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222503"
 ---
 # <a name="automated-patching-for-sql-server-on-azure-virtual-machines-resource-manager"></a>Azure 虚拟机（资源管理器）上 SQL Server 的自动修补
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
-
-> [!div class="op_single_selector"]
-> * [Resource Manager](automated-patching.md)
-> * [经典](../../../virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-sql-automated-patching.md)
 
 自动修补将为运行 SQL Server 的 Azure 虚拟机建立一个维护时段。 只能在此维护时段内安装自动更新。 对于 SQL Server，此限制可以确保在数据库的最佳可能时间发生系统更新和任何关联的重新启动。 
 
@@ -56,7 +52,7 @@ ms.locfileid: "85946118"
 
 **Azure PowerShell**：
 
-* 如果打算使用 PowerShell 配置自动修补，请[安装最新的 Azure PowerShell 命令](https://docs.microsoft.com/powershell/azure/overview)。
+* 如果打算使用 PowerShell 配置自动修补，请[安装最新的 Azure PowerShell 命令](https://docs.microsoft.com/powershell/azure/)。
 
 [!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
@@ -66,7 +62,7 @@ ms.locfileid: "85946118"
 > 
 
 ## <a name="settings"></a>设置
-下表描述了可为自动修补配置的选项。 实际配置步骤根据使用的是 Azure 门户还是 Azure Windows PowerShell 命令而有所不同。
+下表描述了可为自动修补配置的选项。 实际配置步骤根据你使用的是 Azure 门户还是 Azure Windows PowerShell 命令而有所不同。
 
 | 设置 | 可能的值 | 说明 |
 | --- | --- | --- |
@@ -131,7 +127,7 @@ $aps = New-AzVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -Mainte
 
 Set-AzVMSqlServerExtension -AutoPatchingSettings $aps -VMName $vmname -ResourceGroupName $resourcegroupname
 ```
-    
+
 > [!IMPORTANT]
 > 如果尚未安装该扩展，安装该扩展将会重新启动 SQL Server。
 

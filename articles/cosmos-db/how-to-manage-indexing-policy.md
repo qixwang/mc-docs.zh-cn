@@ -3,17 +3,19 @@ title: 管理 Azure Cosmos DB 中的索引策略
 description: 了解如何管理索引策略、在索引中包括或排除属性、如何使用不同的 Azure Cosmos DB SDK 定义索引
 author: rockboyfor
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 04/28/2020
-ms.date: 06/22/2020
+ms.date: 08/17/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.custom: tracking-python
-ms.openlocfilehash: 4c1dac23b99e3318bb717ffaf31d06222a11dcff
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.custom: tracking-python, devx-track-javascript, devx-track-azurecli
+ms.openlocfilehash: b6cb6bdcd98428d6b99853d92db56bd1fd79101b
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098484"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222861"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>管理 Azure Cosmos DB 中的索引策略
 
@@ -139,7 +141,7 @@ ms.locfileid: "85098484"
     }
 ```
 
-> [!NOTE] 
+> [!NOTE]
 > 通常情况下，建议使用**选择退出**索引策略来让 Azure Cosmos DB 主动为可能会添加到模型的任何新属性编制索引。
 
 ### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a>仅在特定属性路径上使用空间索引
@@ -363,7 +365,7 @@ Azure Cosmos 容器将其索引策略存储为 JSON 文档，可以在 Azure 门
 
 1. 完成后，单击“保存”。
 
-    ![使用 Azure 门户管理索引编制](./media/how-to-manage-indexing-policy/indexing-policy-portal.png)
+    :::image type="content" source="./media/how-to-manage-indexing-policy/indexing-policy-portal.png" alt-text="使用 Azure 门户管理索引编制":::
 
 ## <a name="use-the-azure-cli"></a>使用 Azure CLI
 
