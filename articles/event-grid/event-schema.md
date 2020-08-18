@@ -1,20 +1,17 @@
 ---
 title: Azure 事件网格事件架构
 description: 介绍所有事件都存在的属性和架构。 事件由 5 个所需的字符串属性和 1 个 所需的数据对象构成。
-services: event-grid
 author: Johnnytechn
-manager: timlt
-ms.service: event-grid
+ms.author: v-johya
 ms.topic: reference
 origin.date: 01/21/2020
-ms.date: 06/12/2020
-ms.author: v-johya
-ms.openlocfilehash: 42000a857b6ae5b938e87bb61c3c5893e7258e76
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.date: 08/10/2020
+ms.openlocfilehash: a4c42dc7f0f846919336101dfaaf337a7e1c21c3
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723416"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88228018"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure 事件网格事件架构
 
@@ -95,14 +92,12 @@ ms.locfileid: "84723416"
 若要了解数据对象中的属性，请参阅事件源：
 
 * [Azure 订阅（管理操作）](event-schema-subscriptions.md)
-* [容器注册表](event-schema-container-registry.md)
-* [Blob 存储](event-schema-blob-storage.md)
 * [事件中心](event-schema-event-hubs.md)
 * [IoT 中心](event-schema-iot-hub.md)
+* [媒体服务](../media-services/latest/media-services-event-schemas.md?toc=%2fevent-grid%2ftoc.json)
 * [资源组（管理操作）](event-schema-resource-groups.md)
 * [服务总线](event-schema-service-bus.md)
 * [Azure SignalR](event-schema-azure-signalr.md)
-* [Azure 机器学习](event-schema-machine-learning.md)
 
 对于自定义主题，事件发布者确定数据对象。 顶级数据应具有与标准资源所定义事件相同的字段。
 
@@ -114,3 +109,4 @@ ms.locfileid: "84723416"
 
 * 有关 Azure 事件网格的简介，请参阅[什么是事件网格？](overview.md)
 * 有关创建 Azure 事件网格订阅的详细信息，请参阅[事件网格订阅架构](subscription-creation-schema.md)。
+

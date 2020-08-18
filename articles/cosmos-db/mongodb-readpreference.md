@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Cosmos DB API for MongoDB 中使用读取首选项
+title: 在 Azure Cosmos DB 的 API for MongoDB 中使用读取首选项
 description: 了解如何在 Azure Cosmos DB 的用于 MongoDB 的 API 中使用 MongoDB 读取首选项
 author: rockboyfor
 ms.service: cosmos-db
@@ -7,16 +7,17 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: how-to
 origin.date: 02/26/2019
-ms.date: 08/03/2020
+ms.date: 08/17/2020
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 2dd2f0c3f4dc99ab7b00a4f5fad849f267c3b76f
-ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 968fc20fe2b3bbe607681e76ad5085267a1755ad
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87426372"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223460"
 ---
 # <a name="how-to-multiple-regionally-distribute-reads-using-azure-cosmos-dbs-api-for-mongodb"></a>如何使用 Azure Cosmos DB 的 API for MongoDB 在多个区域中分配读取操作
 
@@ -24,7 +25,6 @@ ms.locfileid: "87426372"
 
 ## <a name="prerequisites"></a>先决条件 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。 
-
 [!INCLUDE [cosmos-db-emulator-mongodb](../../includes/cosmos-db-emulator-mongodb.md)]
 
 请参阅此[快速入门](tutorial-global-distribution-mongodb.md)文章，了解如何使用 Azure 门户设置进行多区域分发的 Cosmos 帐户，然后连接到它。
@@ -41,9 +41,9 @@ ms.locfileid: "87426372"
 4. [Java 示例应用程序](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-java-geo-readpreference)
 5. [SpringBoot 示例应用程序](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-spring)
 
-    ```bash
-    git clone <sample repo url>
-    ```
+```bash
+git clone <sample repo url>
+```
 
 ## <a name="run-the-application"></a>运行应用程序
 

@@ -1,17 +1,15 @@
 ---
 title: Azure Functions 中的部署技术
 description: 了解将代码部署到 Azure Functions 的不同方式。
-author: georgewallace
 ms.custom: vs-azure
 ms.topic: conceptual
-ms.date: 03/03/2020
-ms.author: v-junlch
-ms.openlocfilehash: bee21a8200c6eeec535a33a334c3b5298448caf0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 08/12/2020
+ms.openlocfilehash: a532bc98b92877c8137d4320366c94682eda9021
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293229"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223172"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Functions 中的部署技术
 
@@ -109,24 +107,12 @@ Azure Functions 中提供了以下部署方法。
 
 >__何时使用：__ 压缩部署是建议用于 Azure Functions 的部署技术。
 
-### <a name="docker-container"></a>Docker 容器
-
-可以部署包含函数应用的 Linux 容器映像。
-
->__如何使用：__ 在专用计划中创建一个 Linux 函数应用，并指定要从哪个容器映像运行。 可通过两种方式实现此目的：
->
->* 在 Azure 门户上的 Azure 应用服务计划中创建一个 Linux 函数应用。 对于“发布”，请选择“Docker 映像”，然后配置容器。   输入映像所在的位置。
->
->
->若要使用自定义容器部署到现有应用，请在 [Azure Functions Core Tools](functions-run-local.md) 中使用 [`func deploy`](functions-run-local.md#publish) 命令。
-
->__何时使用：__ 需要更好地控制运行函数应用的 Linux 环境时，请使用 Docker 容器选项。 此部署机制仅适用于在 Linux 上运行的 Functions。
 
 ### <a name="web-deploy-msdeploy"></a>Web 部署 (MSDeploy)
 
 Web 部署可打包 Windows 应用程序（包括 Azure 中的 Windows 上运行的函数应用）并将其部署到任何 IIS 服务器。
 
->__如何使用：__ 使用 [Visual Studio Tools for Azure Functions](functions-create-your-first-function-visual-studio.md)。 清除“从包文件运行(建议)”复选框。 
+>__如何使用：__ 使用 [Visual Studio Tools for Azure Functions](functions-create-your-first-function-visual-studio.md)。 清除“从包文件运行(建议)”复选框。****
 >
 >还可以下载 [Web 部署 3.6](https://www.iis.net/downloads/microsoft/web-deploy) 并直接调用 `MSDeploy.exe`。
 
@@ -176,7 +162,7 @@ Web 部署可打包 Windows 应用程序（包括 Azure 中的 Windows 上运行
 
 下表显示了支持门户编辑的操作系统和语言：
 
-| | Windows 消耗计划 | Windows 专用计划 | Linux 消耗计划 | Linux 专用计划 |
+| Language | Windows 消耗计划 | Windows 专用计划 | Linux 消耗计划 | Linux 专用计划 |
 |-|:-----------------: |:-------------------------:|:-----------------:|:---------------------------:|:---------------:|:---------------:|
 | C# | | | |
 | C# 脚本 |✔|✔| | ✔<sup>\*</sup>|

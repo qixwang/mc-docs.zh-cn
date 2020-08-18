@@ -2,14 +2,14 @@
 title: 处理 Durable Functions 中的错误 - Azure
 description: 了解如何在 Azure Functions 的 Durable Functions 扩展中处理错误。
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 08/12/2020
 ms.author: v-junlch
-ms.openlocfilehash: f8086f37bd5e1844e5575bfdf5f13b0fee71e89f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 53a658936dad2d94c166291557a6a64b0b9eef63
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291261"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223319"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>处理 Durable Functions 中的错误 (Azure Functions)
 
@@ -229,4 +229,6 @@ module.exports = df.orchestrator(function*(context) {
 > [!div class="nextstepaction"]
 > [了解永久业务流程](durable-functions-eternal-orchestrations.md)
 
-<!-- Update_Description: code update -->
+> [!div class="nextstepaction"]
+> [了解如何诊断问题](durable-functions-diagnostics.md)
+

@@ -2,18 +2,20 @@
 title: Azure Cosmos DB 的总拥有成本 (TCO)
 description: 本文比较包含 IaaS 和本地数据库的 Azure Cosmos DB 的总拥有成本
 author: rockboyfor
-ms.author: v-yeche
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 08/01/2019
-ms.date: 10/28/2019
+ms.date: 08/17/2020
+ms.testscope: no
+ms.testdate: ''
+ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: cc16da4322b0d97171d57e934881ed4e17ff84a9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e3a4cf4a591e17c9c17dc59684ebb1752973227c
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72912913"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222398"
 ---
 # <a name="total-cost-of-ownership-tco-with-azure-cosmos-db"></a>Azure Cosmos DB 的总拥有成本 (TCO)
 
@@ -25,7 +27,7 @@ Apache Cassandra、MongoDB、HBase、引擎等 OSS NoSQL 数据库解决方案�
 
 与云原生的数据库服务 Azure Cosmos DB 不同，设计和构建的 OSS NoSQL 数据库引擎不会根据基本的体系结构原则包含资源调控或精细的多租户功能。 Cassandra 和 MongoDB 等 OSS NoSQL 数据库引擎做出这种基本假设：运行这些引擎的虚拟机的所有资源可供这些引擎使用。 如果资源量降到特定的阈值以下，则其中的许多数据库引擎将无法正常运行。 例如，小型 VM 实例可用的资源根据供应商建议的配置而定，这意味着，大型 VM 的成本往往更高。 因此，无法托管 OSS NoSQL 或其他任何本地数据库引擎，并使用基于消耗量的计费模型（例如每秒请求数，或消耗的存储）来提供资源。
 
-## <a name="total-cost-of-ownership-of-azure-cosmos-db"></a>Azure Cosmos DB 的总拥有成本 
+## <a name="total-cost-of-ownership-of-azure-cosmos-db"></a>Azure Cosmos DB 的总拥有成本
 
 Azure Cosmos DB 的无服务器预配模型消除了过度预配数据库基础结构的需求。 无需专业化的配置或许可即可提供 Azure Cosmos DB 资源。 因此，与 OSS NoSQL 数据库相比，Azure Cosmos DB 支持的应用程序的总拥有成本最多可以节省 70%。 有关部分实时示例，请参阅[客户用例](https://customers.microsoft.com/search?sq=Cosmos%20DB&ff=&p=0&so=story_publish_date%20desc)。 Azure Cosmos DB 定价模型的其他优势包括：
 
@@ -33,7 +35,7 @@ Azure Cosmos DB 的无服务器预配模型消除了过度预配数据库基础�
 
 * **无需进行 NoSQL DevOps 管理：** 使用 Azure Cosmos DB 时无需采用 DevOps 来管理部署以及执行维护、缩放或修补。 可以像对本地或云基础结构中托管的 OSS NoSQL 群集所做的那样来执行所有工作负荷。
 
-    ![Azure Cosmos DB 拥有成本](./media/total-cost-ownership/tco.png)
+:::image type="content" source="./media/total-cost-ownership/tco.png" alt-text="Azure Cosmos DB 拥有成本" border="false":::
 
 * **可以弹性缩放：** 可以扩展和缩减 Azure Cosmos DB 吞吐量，从而在非高峰期降低拥有成本。 云基础结构中部署的 OSS NoSQL 群集提供有限的弹性，而本地部署在定义上不提供弹性。 在 Azure Cosmos DB 中，如果预配更高的吞吐量，则可以保证吞吐量呈线性扩展。 这一保证附带 SLA 的经济保障，在任何部署规模都能在 99% 的时间提供这种保证。
 
@@ -70,4 +72,4 @@ Azure Cosmos DB 的无服务器预配模型消除了过度预配数据库基础�
 * 详细了解如何[优化多区域 Cosmos 帐户的成本](optimize-cost-regions.md)
 * 详细了解 [NoSQL 数据库云服务的总（非）拥有成本](https://documentdbportalstorage.blob.core.windows.net/papers/11.15.2017/NoSQL%20TCO%20paper.pdf)
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

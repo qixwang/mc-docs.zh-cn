@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: carlrab
 origin.date: 11/26/2019
-ms.date: 07/13/2020
-ms.openlocfilehash: f25d2157e1a96d557ca73327c011e0b42d140749
-ms.sourcegitcommit: fa26665aab1899e35ef7b93ddc3e1631c009dd04
+ms.date: 08/17/2020
+ms.openlocfilehash: cbc7ee5ac3321a4e9119cde5f9f590250b46dec9
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86227119"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223292"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>基于 DTU 的购买模型中的服务层
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -37,15 +37,14 @@ ms.locfileid: "86227119"
 
 ||基本|标准|高级|
 | :-- | --: |--:| --:|
-|目标工作负荷|开发和生产|开发和生产|开发和生产|
-|运行时间 SLA|99.99%|99.99%|99.99%|
-|最大备份保留期|7 天|35 天|35 天|
-|CPU|低|低、中、高|中、高|
-|IO 吞吐量（近似） |每个 DTU 1-5 IOPS| 每个 DTU 1-5 IOPS | 每个 DTU 25 IOPS|
-|IO 延迟（近似）|5 毫秒（读取），10 毫秒（写入）|5 毫秒（读取），10 毫秒（写入）|2 毫秒（读取/写入）|
-|列存储索引 |空值|S3 及更高版本|支持|
-|内存中 OLTP|空值|空值|支持|
-|||||
+|**目标工作负荷**|开发和生产|开发和生产|开发和生产|
+|**运行时间 SLA**|99.99%|99.99%|99.99%|
+|**最大备份保留期**|7 天|35 天|35 天|
+|**CPU**|低|低、中、高|中、高|
+|**IO 吞吐量（近似）** |每个 DTU 1-5 IOPS| 每个 DTU 1-5 IOPS | 每个 DTU 25 IOPS|
+|**IO 延迟（近似）**|5 毫秒（读取），10 毫秒（写入）|5 毫秒（读取），10 毫秒（写入）|2 毫秒（读取/写入）|
+|**列存储索引** |空值|S3 及更高版本|支持|
+|**内存中 OLTP**|空值|空值|支持|
 
 > [!IMPORTANT]
 > 基本、标准 S0、S1 和 S2 服务层级提供的 vCore (CPU) 不到一个。  对于 CPU 密集型工作负荷，建议使用 S3 或更高的服务层级。 
@@ -59,23 +58,21 @@ ms.locfileid: "86227119"
 
 ||基本|标准|高级|
 | :-- | --: | --: | --: |
-| 最大存储大小 | 2 GB | 1 TB | 4 TB  |
-| 最大 DTU | 5 | 3000 | 4000 | 
-|||||
+| **最大存储大小** | 2 GB | 1 TB | 4 TB  |
+| **最大 DTU** | 5 | 3000 | 4000 |
 
 > [!IMPORTANT]
 > 在某些情况下，可能需要收缩数据库来回收未使用的空间。 有关详细信息，请参阅[管理 Azure SQL 数据库中的文件空间](file-space-manage.md)。
 
 ## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>弹性池 eDTU、存储和共用数据库限制
 
-| | **基本** | **标准** | **高级** |
+|| **基本** | **标准** | **高级** |
 | :-- | --: | --: | --: |
-| 每个数据库的最大存储大小  | 2 GB | 1 TB | 1 TB |
-| 每个池的最大存储大小 | 156 GB | 4 TB | 4 TB |
-| 每个数据库的最大 eDTU 数 | 5 | 3000 | 4000 |
-| 每个池的最大 eDTU 数 | 1600 | 3000 | 4000 |
-| 每个池的数据库数目上限 | 500  | 500 | 100 |
-|||||
+| **每个数据库的最大存储大小**  | 2 GB | 1 TB | 1 TB |
+| **每个池的最大存储大小** | 156 GB | 4 TB | 4 TB |
+| **每个数据库的最大 eDTU 数** | 5 | 3000 | 4000 |
+| **每个池的最大 eDTU 数** | 1600 | 3000 | 4000 |
+| **每个池的数据库数目上限** | 500  | 500 | 100 |
 
 > [!IMPORTANT]
 > 在某些情况下，可能需要收缩数据库来回收未使用的空间。 有关详细信息，请参阅[管理 Azure SQL 数据库中的文件空间](file-space-manage.md)。

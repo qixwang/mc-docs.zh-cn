@@ -5,15 +5,17 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 04/24/2020
-ms.date: 06/22/2020
+ms.date: 08/17/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: bc662dbb75ed285e2138e69225bba268b00b0ba9
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: eaf6175e4216ec1db5e9793e4fdf81d824397933
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098407"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223346"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中使用数据库、容器和项
 
@@ -21,7 +23,7 @@ ms.locfileid: "85098407"
 
 下图显示 Azure Cosmos DB 帐户中不同实体的层次结构：
 
-![Azure Cosmos 帐户实体](./media/databases-containers-items/cosmos-entities.png)
+:::image type="content" source="./media/databases-containers-items/cosmos-entities.png" alt-text="Azure Cosmos 帐户实体" border="false":::
 
 ## <a name="azure-cosmos-databases"></a>Azure Cosmos 数据库
 
@@ -113,7 +115,7 @@ Azure Cosmos 容器具备一组系统定义的属性。 根据所用的 API，�
 
 | Cosmos 实体 | SQL API | Cassandra API | 用于 MongoDB 的 Azure Cosmos DB API | Gremlin API | 表 API |
 | --- | --- | --- | --- | --- | --- |
-|Azure Cosmos 项 | 文档 | 行 | 文档 | 节点或边缘 | 项目 |
+|Azure Cosmos 项 | 项 | 行 | 文档 | 节点或边缘 | 项目 |
 
 ### <a name="properties-of-an-item"></a>项的属性
 

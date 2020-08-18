@@ -7,18 +7,20 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 origin.date: 09/24/2018
-ms.date: 06/22/2020
+ms.date: 08/17/2020
+ms.testscope: yes
+ms.testdate: 08/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 29769cec939ebd538b29da28fb09856e26de1b42
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: 4afa77ba1443e901bb36ad5f96c243d165bc8ee2
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098708"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222781"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API 支持的 Apache Cassandra 功能 
 
-Azure Cosmos DB 是 Azure 提供的多区域分布式多模型数据库服务。 你可以通过 Cassandra 查询语言 (CQL) v4 [线路协议](https://github.com/apache/cassandra/blob/trunk/doc/native_protocol_v4.spec)兼容的开放源代码 Cassandra 客户端[驱动程序](https://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver)与 Azure Cosmos DB Cassandra API 进行通信。 
+Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服务。 你可以通过 Cassandra 查询语言 (CQL) v4 [线路协议](https://github.com/apache/cassandra/blob/trunk/doc/native_protocol_v4.spec)兼容的开放源代码 Cassandra 客户端[驱动程序](https://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver)与 Azure Cosmos DB Cassandra API 进行通信。 
 
 通过使用 Azure Cosmos DB Cassandra API，你可以尽享 Apache Cassandra ApI 带来的诸多优势，以及 Azure Cosmos DB 提供的各项企业功能。 企业功能包括[多区域分发](distribute-data-globally.md)、[自动横向扩展分区](partition-data.md)、可用性和延迟保证、空闲时加密、备份等。
 
@@ -48,9 +50,9 @@ Azure Cosmos DB Cassandra API 支持以下 CQL 数据类型：
 * boolean  
 * counter  
 * date  
-* decimal  
-* Double  
-* float  
+* Decimal  
+* double  
+* FLOAT  
 * frozen  
 * inet  
 * int  
@@ -74,7 +76,7 @@ Azure Cosmos DB Cassandra API 支持以下 CQL 数据类型：
 
 Azure Cosmos DB Cassandra API 支持以下 CQL 函数：
 
-* 令牌  
+* 标记  
 * 聚合函数
     * min, max, avg, count
 * Blob 转换函数 
@@ -111,7 +113,7 @@ Azure Cosmos DB Cassandra API 是一个托管的服务平台。 它不需要任�
 
 <!--Not Available on also-->
 
-**Windows:**
+**Windows：**
 
 如果使用 Windows，建议启用[适用于 Linux 的 Windows 文件系统](https://docs.microsoft.com/windows/wsl/install-win10#install-the-windows-subsystem-for-linux)。 然后即可按照以下 linux 命令进行操作。
 
@@ -176,7 +178,7 @@ Azure Cosmos DB 在 Cassandra API 帐户上支持以下数据库命令。
 
 ## <a name="consistency-mapping"></a>一致性映射 
 
-Azure Cosmos DB Cassandra API 为读取操作提供了一致性选择。  一致性映射的详细信息[在这里](consistency-levels-across-apis.md#cassandra-mapping)。
+Azure Cosmos DB Cassandra API 为读取操作提供了一致性选择。  一致性映射的信息详见[此文](consistency-levels-across-apis.md#cassandra-mapping)。
 
 ## <a name="permission-and-role-management"></a>权限和角色管理
 

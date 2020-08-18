@@ -3,16 +3,18 @@ title: 利用资源管理器模板创建和管理 Azure Cosmos DB
 description: 使用 Azure 资源管理器模板创建和配置 Azure Cosmos DB for Core (SQL) API
 author: rockboyfor
 ms.service: cosmos-db
-ms.topic: conceptual
-origin.date: 05/19/2020
-ms.date: 06/22/2020
+ms.topic: how-to
+origin.date: 06/19/2020
+ms.date: 08/17/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 28e8031475af11d39562d32fa4fcb436c15bea40
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+ms.openlocfilehash: 569e86012f87b03ccc21abea7fd84d339fff08da
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85321856"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223200"
 ---
 <!--Verify successfully-->
 # <a name="manage-azure-cosmos-db-core-sql-api-resources-with-azure-resource-manager-templates"></a>利用 Azure 资源管理器模板管理 Azure Cosmos DB Core (SQL) API 资源
@@ -36,7 +38,7 @@ ms.locfileid: "85321856"
 
 此模板在两个区域创建一个 Azure Cosmos 帐户，其中包含用于一致性和故障转移的选项，以及为启用了大多数策略选项的自动缩放吞吐量配置的数据库和容器。 此模板还支持从 Azure 快速入门模板库进行一键部署。
 
-[![部署到 Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql-autoscale%2Fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="部署到 Azure":::](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql-autoscale%2Fazuredeploy.json)
 
 ```json
 {
@@ -124,30 +126,13 @@ ms.locfileid: "85321856"
                 "description": "The name for the container"
             }
         },
-        "throughputPolicy":{
-            "type": "string",
-            "defaultValue": "Autoscale",
-            "allowedValues": [ "Manual", "Autoscale" ],
-            "metadata": {
-                "description": "The throughput policy for the Container"
-            }
-        },
-        "manualProvisionedThroughput": {
-            "type": "int",
-            "defaultValue": 400,
-            "minValue": 400,
-            "maxValue": 1000000,
-            "metadata": {
-                "description": "Throughput value when using Manual Throughput Policy for the container"
-            }
-        },
         "autoscaleMaxThroughput": {
             "type": "int",
             "defaultValue": 4000,
             "minValue": 4000,
             "maxValue": 1000000,
             "metadata": {
-                "description": "Maximum throughput when using Autoscale Throughput Policy for the container"
+                "description": "Maximum throughput for the container"
             }
         }
     },
@@ -183,18 +168,7 @@ ms.locfileid: "85321856"
                 "failoverPriority": 1,
                 "isZoneRedundant": false
             }
-        ],
-        "throughputPolicy": {
-            "Manual": {
-                "throughput": "[parameters('manualProvisionedThroughput')]"
-            },
-            "Autoscale": {
-                "autoscaleSettings": { 
-                    "maxThroughput": "[parameters('autoscaleMaxThroughput')]" 
-                }
-            }
-        },
-        "throughputPolicyToUse": "[if(equals(parameters('throughputPolicy'), 'Manual'), variables('throughputPolicy').Manual, variables('throughputPolicy').Autoscale)]"
+        ]
     },
     "resources": [
         {
@@ -287,7 +261,11 @@ ms.locfileid: "85321856"
                         ]
                     }
                 },
-                "options": "[variables('throughputPolicyToUse')]"
+                "options": {
+                    "autoscaleSettings": { 
+                        "maxThroughput": "[parameters('autoscaleMaxThroughput')]" 
+                    }
+                }
             }
         }
     ]
@@ -301,7 +279,7 @@ ms.locfileid: "85321856"
 
 此模板在一个区域中创建一个 Azure Cosmos 帐户，其中包含启用了分析 TTL 的容器和手动或自动缩放吞吐量选项。 此模板还支持从 Azure 快速入门模板库进行一键部署。
 
-[![部署到 Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql-analytical-store%2Fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="部署到 Azure":::](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql-analytical-store%2Fazuredeploy.json)
 
 ```json
 {
@@ -450,7 +428,7 @@ ms.locfileid: "85321856"
 
 此模板在两个区域创建一个 Azure Cosmos 帐户，其中包含用于一致性和故障转移的选项，以及为启用了大多数策略选项的标准吞吐量配置的数据库和容器。 此模板还支持从 Azure 快速入门模板库进行一键部署。
 
-[![部署到 Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql%2Fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="部署到 Azure":::](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql%2Fazuredeploy.json)
 
 ```json
 {
@@ -675,7 +653,7 @@ ms.locfileid: "85321856"
 
 此模板创建包含存储过程、触发器和用户定义函数的 Azure Cosmos 帐户、数据库和容器。 此模板还支持从 Azure 快速入门模板库进行一键部署。
 
-[![部署到 Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql-container-sprocs%2Fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="部署到 Azure":::](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql-container-sprocs%2Fazuredeploy.json)
 
 ```json
 {
@@ -899,10 +877,7 @@ ms.locfileid: "85321856"
 
 此模板创建一个免费层 Azure Cosmos 帐户和一个具有共享吞吐量的数据库，最多可以共享 25 个容器。 此模板还支持从 Azure 快速入门模板库进行一键部署。
 
-[![部署到 Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-free%2Fazuredeploy.json)
-
-<!--CORRECT ON /101-cosmosdb-free/-->
-<!--CORRECT ON URL https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-free%2Fazuredeploy.json-->
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="部署到 Azure":::](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-free%2Fazuredeploy.json)
 
 ```json
 {
@@ -971,7 +946,7 @@ ms.locfileid: "85321856"
     
     <!--Not Available on  - [Azure Cosmos DB resource provider schema](https://docs.microsoft.com/azure/templates/microsoft.documentdb/allversions)-->
     
-* [Azure Cosmos DB 快速入门模板](https://github.com/Azure/azure-quickstart-templates/?resourceType=Microsoft.Documentdb&pageNumber=1&sort=Popular)
+* [Azure Cosmos DB 快速入门模板](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Documentdb&pageNumber=1&sort=Popular)
 * [排查常见 Azure 资源管理器部署错误](../azure-resource-manager/templates/common-deployment-errors.md)
 
 <!-- Update_Description: update meta properties, wording update, update link -->

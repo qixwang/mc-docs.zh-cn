@@ -3,16 +3,18 @@ title: Azure Cosmos DB 中的跨源资源共享 (CORS)
 description: 本文介绍如何使用 Azure 门户和 Azure 资源管理器模板配置 Azure Cosmos DB 中的跨源资源共享 (CORS)。
 author: rockboyfor
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 10/11/2019
-ms.date: 04/27/2020
+ms.date: 08/17/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 6c33c54db5d4fd88a76b8d32b3c4e58b9f2cd05a
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 94afd17a4de9e5856ac1603b39a021695d802011
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134913"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223244"
 ---
 # <a name="configure-cross-origin-resource-sharing-cors"></a>配置跨源资源共享 (CORS)
 
@@ -34,7 +36,7 @@ ms.locfileid: "82134913"
     > [!NOTE]
     > 目前，不能将通配符用作域名的一部分。 例如，尚不支持 `https://*.mydomain.net` 格式。 
 
-    ![使用 Azure 门户启用跨源资源共享](./media/how-to-configure-cross-origin-resource-sharing/enable-cross-origin-resource-sharing-using-azure-portal.png)
+    :::image type="content" source="./media/how-to-configure-cross-origin-resource-sharing/enable-cross-origin-resource-sharing-using-azure-portal.png" alt-text="使用 Azure 门户启用跨源资源共享":::
 
 ## <a name="enable-cors-support-from-resource-manager-template"></a>使用资源管理器模板启用 CORS 支持
 

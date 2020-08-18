@@ -6,17 +6,19 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: overview
 origin.date: 07/26/2019
-ms.date: 09/09/2019
+ms.date: 08/17/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 7ef5911dae63eb3987721b059f31f06e39bd6968
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 7aa25b757db868f56d6ef7d93c094a163f755aee
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292356"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223077"
 ---
 <!--Verify sucessfully-->
-# <a name="introduction-to-azure-cosmos-db-table-api"></a>Azure Cosmos DB：表 API 简介
+# <a name="introduction-to-azure-cosmos-db-table-api"></a>Azure Cosmos DB 简介：表 API
 
 [Azure Cosmos DB](introduction.md) 提供的表 API 适用于为 Azure 表存储编写且需要以下高级功能的应用程序：
 
@@ -34,7 +36,7 @@ ms.locfileid: "79292356"
 ## <a name="table-offerings"></a>表产品/服务
 如果当前使用 Azure 表存储，那么改用 Azure Cosmos DB 表 API 可以获得以下好处：
 
-| | Azure 表存储 | Azure Cosmos DB 表 API |
+| Feature | Azure 表存储 | Azure Cosmos DB 表 API |
 | --- | --- | --- |
 | 延迟 | 快速，但对延迟没有上限。 | 读取操作和写入操作的低至个位数的毫秒级延迟（通过以下统计数据提供支持：在中国的任何位置，对于任何规模，99% 的情况下读取和写入操作的延迟 < 10 毫秒）。 |
 | 吞吐量 | 可变吞吐量模型。 表的可伸缩性限制为 20,000 个操作/秒。 | 使用 SLA 支持的[每个表专用保留吞吐量](request-units.md)实现高度可缩放。 帐户没有吞吐量上限，每个表支持 >1000 万个操作/秒。 |
@@ -66,5 +68,4 @@ ms.locfileid: "79292356"
 * [Azure Cosmos DB 表 Node.js SDK](table-sdk-nodejs.md)
 * [用于 Python 的 Azure Cosmos DB 表 SDK](table-sdk-python.md)
 
-<!--Update_Description: new articles on table introduction -->
-<!--ms.date: 03/18/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

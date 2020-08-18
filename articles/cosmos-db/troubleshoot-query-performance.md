@@ -5,16 +5,18 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: troubleshooting
 origin.date: 04/22/2020
-ms.date: 07/06/2020
+ms.date: 08/17/2020
+ms.testscope: yes
+ms.testdate: 08/10/2020
 ms.author: v-yeche
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 6de45b903b480dad9b9a16b4c2f7b716bb34a5be
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+ms.openlocfilehash: a0a4cd8e61adcf74909d09d24487c37c4b6b2572
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323389"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222386"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>排查使用 Azure Cosmos DB 时遇到的查询问题
 
@@ -34,7 +36,6 @@ ms.locfileid: "85323389"
 阅读本指南之前，考虑与查询引擎无关的常见 SDK 问题将很有帮助。
 
 - 为获得最佳性能，请遵循以下[性能提示](performance-tips.md)。
-    
     > [!NOTE]
     > 为获得提升的性能，建议使用 Windows 64 位主机处理。 SQL SDK 包含一个本机 ServiceInterop.dll，用于在本地分析和优化查询。 仅 Windows x64 平台支持 ServiceInterop.dll。 对于 ServiceInterop.dll 在其中不可用的 Linux 平台及其他不受支持的平台，将对网关进行额外的网络调用以获取优化的查询。
 - SDK 允许为查询设置 `MaxItemCount`，但不能指定最小项计数。
@@ -49,7 +50,7 @@ ms.locfileid: "85323389"
 
 在 Azure Cosmos DB 中优化查询时，第一步始终是[获取查询的查询指标](profile-sql-api-query.md)。 也可以通过 Azure 门户获取这些指标。 在数据资源管理器中运行查询后，可在“结果”选项卡旁边看到查询指标：
 
-[ ![获取查询指标](./media/troubleshoot-query-performance/obtain-query-metrics.png) ](./media/troubleshoot-query-performance/obtain-query-metrics.png#lightbox)
+:::image type="content" source="./media/troubleshoot-query-performance/obtain-query-metrics.png" alt-text="获取查询指标" lightbox="./media/troubleshoot-query-performance/obtain-query-metrics.png":::
 
 获取查询指标后，将查询的“已检索文档计数”与“输出文档计数”进行比较 。 使用这种比较可以确定要在本文中查看的相关部分。
 

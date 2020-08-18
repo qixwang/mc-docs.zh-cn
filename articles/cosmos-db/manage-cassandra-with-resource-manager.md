@@ -5,14 +5,16 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: how-to
 origin.date: 05/19/2020
-ms.date: 06/22/2020
+ms.date: 08/17/2020
+ms.testscope: yes
+ms.testdate: 08/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 99da22d927c0a5bbc122fbdaf0690a8b8faac54a
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: 7aaefb0f6413e236fd7895330674869fc643b58b
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098555"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223435"
 ---
 <!--Verify successfully-->
 # <a name="manage-azure-cosmos-db-cassandra-api-resources-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Azure Cosmos DB Cassandra API 资源
@@ -35,7 +37,7 @@ ms.locfileid: "85098555"
 
 此模板在两个区域创建一个 Azure Cosmos 帐户，其中包含用于一致性和故障转移的选项，以及为自动缩放吞吐量配置的密钥空间和表。 此模板还支持从 Azure 快速入门模板库进行一键部署。
 
-[![部署到 Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-cassandra-autoscale%2Fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="部署到 Azure":::](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-cassandra-autoscale%2Fazuredeploy.json)
 
 ```json
 {
@@ -51,32 +53,32 @@ ms.locfileid: "85098555"
       },
       "location": {
          "type": "string",
-         "defaultValue": "[resourceGroup().location]",   
+         "defaultValue": "[resourceGroup().location]",
          "metadata": {
             "description": "Location for the Cosmos DB account."
          }
       },
-      "primaryRegion":{
-         "type":"string",
+      "primaryRegion": {
+         "type": "string",
          "metadata": {
             "description": "The primary replica region for the Cosmos DB account."
          }
       },
-      "secondaryRegion":{
-         "type":"string",
+      "secondaryRegion": {
+         "type": "string",
          "metadata": {
-           "description": "The secondary replica region for the Cosmos DB account."
-        }
+            "description": "The secondary replica region for the Cosmos DB account."
+         }
       },
       "defaultConsistencyLevel": {
          "type": "string",
          "defaultValue": "Session",
-         "allowedValues": [ 
-            "Eventual", 
-            "ConsistentPrefix", 
-            "Session", 
-            "BoundedStaleness", 
-            "Strong" 
+         "allowedValues": [
+            "Eventual",
+            "ConsistentPrefix",
+            "Session",
+            "BoundedStaleness",
+            "Strong"
          ],
          "metadata": {
             "description": "The default consistency level of the Cosmos DB account."
@@ -103,9 +105,9 @@ ms.locfileid: "85098555"
       "automaticFailover": {
          "type": "bool",
          "defaultValue": true,
-         "allowedValues": [ 
-            true, 
-            false 
+         "allowedValues": [
+            true,
+            false
          ],
          "metadata": {
             "description": "Enable automatic failover for regions"
@@ -123,35 +125,15 @@ ms.locfileid: "85098555"
             "description": "The name for the Cassandra table"
          }
       },
-      "throughputPolicy":{
-            "type": "string",
-            "defaultValue": "Autoscale",
-            "allowedValues": [ 
-               "Manual", 
-               "Autoscale" 
-            ],
-            "metadata": {
-                "description": "The throughput policy for the Cassandra table"
-            }
-        },
-        "manualProvisionedThroughput": {
-            "type": "int",
-            "defaultValue": 400,
-            "minValue": 400,
-            "maxValue": 1000000,
-            "metadata": {
-                "description": "Throughput value when using Manaual Throughput Policy for the Cassandra table"
-            }
-        },
-        "autoscaleMaxThroughput": {
-            "type": "int",
-            "defaultValue": 4000,
-            "minValue": 4000,
-            "maxValue": 1000000,
-            "metadata": {
-                "description": "Maximum throughput when using Autoscale Throughput Policy for the Cassandra table"
-            }
-        }
+      "autoscaleMaxThroughput": {
+         "type": "int",
+         "defaultValue": 4000,
+         "minValue": 4000,
+         "maxValue": 1000000,
+         "metadata": {
+            "description": "Maximum autoscale throughput for the Cassandra table"
+         }
+      }
    },
    "variables": {
       "accountName": "[toLower(parameters('accountName'))]",
@@ -175,85 +157,98 @@ ms.locfileid: "85098555"
          }
       },
       "locations": [
-        {
+         {
             "locationName": "[parameters('primaryRegion')]",
             "failoverPriority": 0,
             "isZoneRedundant": false
-        },
-        {
+         },
+         {
             "locationName": "[parameters('secondaryRegion')]",
             "failoverPriority": 1,
             "isZoneRedundant": false
-        }
-      ],
-      "throughputPolicy": {
-            "Manual": {
-                  "throughput": "[parameters('manualProvisionedThroughput')]"
-            },
-            "Autoscale": {
-                  "autoscaleSettings": { "maxThroughput": "[parameters('autoscaleMaxThroughput')]" }
-            }
-        },
-        "throughputPolicyToUse": "[if(equals(parameters('throughputPolicy'), 'Manual'), variables('throughputPolicy').Manual, variables('throughputPolicy').Autoscale)]"
+         }
+      ]
    },
    "resources": [
       {
-        "type": "Microsoft.DocumentDB/databaseAccounts",
-        "name": "[variables('accountName')]",
-        "apiVersion": "2020-04-01",
-        "location": "[parameters('location')]",
-        "kind": "GlobalDocumentDB",
-        "properties": {
-            "capabilities": [{ "name": "EnableCassandra" }],
+         "type": "Microsoft.DocumentDB/databaseAccounts",
+         "name": "[variables('accountName')]",
+         "apiVersion": "2020-04-01",
+         "location": "[parameters('location')]",
+         "kind": "GlobalDocumentDB",
+         "properties": {
+            "capabilities": [ { "name": "EnableCassandra" } ],
             "consistencyPolicy": "[variables('consistencyPolicy')[parameters('defaultConsistencyLevel')]]",
             "locations": "[variables('locations')]",
             "databaseAccountOfferType": "Standard",
             "enableAutomaticFailover": "[parameters('automaticFailover')]"
-        }
+         }
       },
       {
-        "type": "Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces",
-        "name": "[concat(variables('accountName'), '/', parameters('keyspaceName'))]",
-        "apiVersion": "2020-04-01",
-        "dependsOn": [ 
-           "[resourceId('Microsoft.DocumentDB/databaseAccounts/', variables('accountName'))]" 
+         "type": "Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces",
+         "name": "[concat(variables('accountName'), '/', parameters('keyspaceName'))]",
+         "apiVersion": "2020-04-01",
+         "dependsOn": [
+            "[resourceId('Microsoft.DocumentDB/databaseAccounts/', variables('accountName'))]"
          ],
-        "properties":{
-            "resource":{
+         "properties": {
+            "resource": {
                "id": "[parameters('keyspaceName')]"
             }
-        }
+         }
       },
       {
-        "type": "Microsoft.DocumentDb/databaseAccounts/cassandraKeyspaces/tables",
-        "name": "[concat(variables('accountName'), '/', parameters('keyspaceName'), '/', parameters('tableName'))]",
-        "apiVersion": "2020-04-01",
-        "dependsOn": [ 
-           "[resourceId('Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces', variables('accountName'), parameters('keyspaceName'))]" 
+         "type": "Microsoft.DocumentDb/databaseAccounts/cassandraKeyspaces/tables",
+         "name": "[concat(variables('accountName'), '/', parameters('keyspaceName'), '/', parameters('tableName'))]",
+         "apiVersion": "2020-04-01",
+         "dependsOn": [
+            "[resourceId('Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces', variables('accountName'), parameters('keyspaceName'))]"
          ],
-        "properties": {
-            "resource":{
-                "id":  "[parameters('tableName')]",
-                "schema": {
+         "properties": {
+            "resource": {
+               "id": "[parameters('tableName')]",
+               "schema": {
                   "columns": [
-                    { "name": "loadid", "type": "uuid" },
-                    { "name": "machine", "type": "uuid" },
-                    { "name": "cpu", "type": "int" },
-                    { "name": "mtime", "type": "int" },
-                    { "name": "load", "type": "float" }
+                     {
+                        "name": "loadid",
+                        "type": "uuid"
+                     },
+                     {
+                        "name": "machine",
+                        "type": "uuid"
+                     },
+                     {
+                        "name": "cpu",
+                        "type": "int"
+                     },
+                     {
+                        "name": "mtime",
+                        "type": "int"
+                     },
+                     {
+                        "name": "load",
+                        "type": "float"
+                     }
                   ],
-                  "partitionKeys": [ 
-                    { "name": "machine" }, 
-                    { "name": "cpu" }, 
-                    { "name": "mtime" } 
+                  "partitionKeys": [
+                     { "name": "machine" },
+                     { "name": "cpu" },
+                     { "name": "mtime" }
                   ],
-                  "clusterKeys": [ 
-                    { "name": "loadid", "orderBy": "asc" } 
+                  "clusterKeys": [
+                     {
+                        "name": "loadid",
+                        "orderBy": "asc"
+                     }
                   ]
-                }
+               }
             },
-            "options": "[variables('throughputPolicyToUse')]"
-        }
+            "options": {
+               "autoscaleSettings": { 
+                  "maxThroughput": "[parameters('autoscaleMaxThroughput')]" 
+               }
+            }
+         }
       }
    ]
 }
@@ -265,7 +260,7 @@ ms.locfileid: "85098555"
 
 此模板在两个区域创建一个 Azure Cosmos 帐户，其中包含用于一致性和故障转移的选项，以及为标准吞吐量配置的密钥空间和表。 此模板还支持从 Azure 快速入门模板库进行一键部署。
 
-[![部署到 Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-cassandra%2Fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="部署到 Azure":::](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-cassandra%2Fazuredeploy.json)
 
 ```json
 {
@@ -458,7 +453,7 @@ ms.locfileid: "85098555"
 
     <!--Not Available on [Azure Cosmos DB resource provider schema](https://docs.microsoft.com/azure/templates/microsoft.documentdb/allversions)-->
     
-* [Azure Cosmos DB 快速入门模板](https://github.com/Azure/azure-quickstart-templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
+* [Azure Cosmos DB 快速入门模板](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Documentdb&pageNumber=1&sort=Popular)
 * [排查常见 Azure 资源管理器部署错误](../azure-resource-manager/templates/common-deployment-errors.md)
 
 <!-- Update_Description: update meta properties, wording update, update link -->

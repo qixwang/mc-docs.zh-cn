@@ -5,14 +5,14 @@ author: WenJason
 ms.author: v-jay
 ms.service: mariadb
 ms.topic: conceptual
-origin.date: 12/02/2019
-ms.date: 03/02/2020
-ms.openlocfilehash: d8d7a6d9183af272dda5593a00f7aae4de032982
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 3/18/2020
+ms.date: 08/17/2020
+ms.openlocfilehash: cb2684ad8071ffed76399cb6a29750260250e6a3
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78154351"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222982"
 ---
 # <a name="choose-the-right-mariadb-server-option-in-azure"></a>在 Azure 中选择适当的 MariaDB 服务器选项
 
@@ -32,9 +32,9 @@ ms.locfileid: "78154351"
 
 下表列出了这些选项之间的主要差别：
 
-|            | Azure Database for MariaDB | Azure VM 上的 MariaDB    |
+| 属性          | Azure Database for MariaDB | Azure VM 上的 MariaDB    |
 |:-------------------|:-----------------------------|:--------------------|
-| 服务级别协议 (SLA)                | 提供 99.99% 可用性 SLA| 同一可用性集中的两个或更多个实例的可用性高达 99.95%。<br/><br/>使用高级存储的单一实例 VM 的可用性为 99.9%。<br/><br/>请参阅[虚拟机 SLA](https://www.azure.cn/zh-cn/support/sla/virtual-machines/)。 |
+| 服务级别协议 (SLA)                | 提供 99.99% 可用性 SLA| 同一可用性集中的两个或更多个实例的可用性高达 99.95%。<br/><br/>使用高级存储的单一实例 VM 的可用性为 99.9%。<br/><br/>请参阅[虚拟机 SLA](https://www.azure.cn/support/sla/virtual-machines/)。 |
 | 操作系统修补        | 自动  | 由客户管理 |
 | MariaDB 修补     | 自动  | 由客户管理 |
 | 高可用性 | 高可用性 (HA) 模型以节点级中断发生时的内置故障转移机制为依据。 在这种情况下，服务将自动创建一个新实例，并将存储附加到此实例。 | 客户建构、实施、测试和维护高可用性。 功能可能包括不中断的故障转移群集、不中断的组复制、日志传送或事务复制。|

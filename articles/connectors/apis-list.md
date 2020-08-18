@@ -10,12 +10,12 @@ ms.date: 07/20/2020
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 322c986c2cbf661ca4027e07d81b7cef50518b46
-ms.sourcegitcommit: 31da682a32dbb41c2da3afb80d39c69b9f9c1bc6
+ms.openlocfilehash: 1fcf02fac27e6bebf1f06b56bebac9ee50ee248e
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2020
-ms.locfileid: "86414569"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88228467"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>适用于 Azure 逻辑应用的连接器
 
@@ -398,7 +398,6 @@ ms.locfileid: "86414569"
 [azure-automation-doc]: https://docs.microsoft.com/connectors/azureautomation/ "为云和本地基础结构创建和管理自动化作业"
 [azure-blob-storage-doc]: ./connectors-create-api-azureblobstorage.md "使用 Azure Blob 存储连接器管理 Blob 容器中的文件"
 [azure-cosmos-db-doc]: /connectors/documentdb/ "连接到 Azure Cosmos DB，以便访问文档和存储过程"
-[azure-event-grid-doc]: ../event-grid/monitor-virtual-machine-changes-event-grid-logic-app.md "监视事件网格发布的事件（例如，当 Azure 资源或第三方资源发生更改时）"
 [azure-event-hubs-doc]: ./connectors-create-api-azure-event-hubs.md "连接到 Azure 事件中心，以便在逻辑应用与事件中心之间接收和发送事件"
 [azure-file-storage-doc]: /connectors/azurefile/ "连接到 Azure 存储帐户，以便创建、更新、获取和删除文件"
 [azure-key-vault-doc]: https://docs.microsoft.com/connectors/keyvault/ "连接到 Azure 密钥保管库，以便管理机密和密钥"

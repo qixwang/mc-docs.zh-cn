@@ -1,30 +1,24 @@
 ---
 title: Azure PowerShell 脚本示例 - 订阅自定义主题 | Microsoft Docs
 description: 本文提供了一个示例 Azure PowerShell 脚本，演示如何订阅自定义主题的事件网格事件。
-services: event-grid
-documentationcenter: na
-author: lingliw
-manager: digimobile
-ms.service: event-grid
 ms.devlang: powershell
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: na
+author: Johnnytechn
+ms.author: v-johya
 origin.date: 01/23/2020
-ms.date: 3/16/2020
-ms.author: v-lingwu
-ms.openlocfilehash: 5962456e7053dccb2618fa35b3bb98927118d6c9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 08/10/2020
+ms.openlocfilehash: bb0b062de3bbbf4f131807594b07044009a75b71
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79452585"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88227992"
 ---
 # <a name="subscribe-to-events-for-a-custom-topic-with-powershell"></a>使用 PowerShell 订阅自定义主题的事件
 
 此脚本创建自定义主题事件的事件网格订阅。
 
-[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
 预览示例脚本需要事件网格模块。 若要安装，请运行 `Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`
 
@@ -32,17 +26,64 @@ ms.locfileid: "79452585"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-<!--[!code-powershell[main](../../../powershell_scripts/event-grid/subscribe-to-custom-topic/subscribe-to-custom-topic.ps1 "Subscribe to custom topic")]-->
+```powershell
+# Provide the name of the topic you are subscribing to
+$myTopic = "<your-custom-topic-name>"
+
+# Provide an endpoint for handling the events. Must be formatted "https://your-endpoint-URL"
+$myEndpoint = "<your-endpoint-URL>"
+
+# Provide a name for resource group to create. It will contain the custom event.
+$myResourceGroup = "<resource-group-name>"
+
+# Create resource group
+New-AzResourceGroup -Name $myResourceGroup -Location chinanorth2
+
+# Create custom topic
+New-AzEventGridTopic -ResourceGroupName $myResourceGroup -Name $myTopic -Location chinanorth2 
+
+# Subscribe to the custom event. Include the resource group that contains the custom topic.
+New-AzEventGridSubscription `
+  -EventSubscriptionName demoSubscription `
+  -Endpoint $myEndpoint `
+  -ResourceGroupName $myResourceGroup `
+  -TopicName $myTopic
+```
 
 ## <a name="sample-script---preview-module"></a>示例脚本 - 预览模块
 
 [!INCLUDE [requires-azurerm](../../../includes/requires-azurerm.md)]
 
-<!--[!code-powershell[main](../../../powershell_scripts/event-grid/subscribe-to-custom-topic-preview/subscribe-to-custom-topic-preview.ps1 "Subscribe to custom topic")]-->
+```powershell
+# You must have the latest version of the Event Grid PowerShell module.
+# To install:
+# Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery
+
+# Provide the name of the topic you are subscribing to
+$myTopic = "<your-custom-topic-name>"
+
+# Provide an endpoint for handling the events. Must be formatted "https://your-endpoint-URL"
+$myEndpoint = "<your-endpoint-URL>"
+
+# Provide the name of the resource group to create. It will contain the custom topic.
+$myResourceGroup = "<resource-group-name>"
+
+# Create resource group
+New-AzResourceGroup -Name $myResourceGroup -Location chinanorth2
+
+# Create custom topic and get its resource ID.
+$topicID = (New-AzEventGridTopic -ResourceGroupName $myResourceGroup -Name $myTopic -Location chinanorth2).Id 
+
+# Subscribe to the custom event. Include the resource group that contains the custom topic.
+New-AzEventGridSubscription `
+  -ResourceId $topicID `
+  -EventSubscriptionName demoSubscription `
+  -Endpoint $myEndpoint 
+```
 
 ## <a name="script-explanation"></a>脚本说明
 
-此脚本使用以下命令创建事件订阅。 表中的每条命令均链接到特定于命令的文档。
+此脚本使用以下命令创建事件订阅。 表中的每条命令链接到特定于命令的文档。
 
 | Command | 说明 |
 |---|---|
@@ -52,3 +93,4 @@ ms.locfileid: "79452585"
 
 * 有关托管应用程序的简介，请参阅 [Azure 托管应用程序概述](../overview.md)。
 * 有关 PowerShell 的详细信息，请参阅 [Azure PowerShell 文档](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
+

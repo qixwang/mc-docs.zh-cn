@@ -1,36 +1,40 @@
 ---
 title: Azure PowerShell - 订阅 Azure 订阅
 description: 本文提供了一个示例 Azure PowerShell 脚本，演示如何订阅 Azure 订阅的事件网格事件。
-services: event-grid
-documentationcenter: na
-author: lingliw
-manager: digimobile
-ms.service: event-grid
 ms.devlang: powershell
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: na
+author: Johnnytechn
+ms.author: v-johya
 origin.date: 01/23/2020
-ms.date: 3/16/2020
-ms.author: v-lingwu
-ms.openlocfilehash: 861bdcdd5dfe1e5db8065dd32e59d7eee30238c0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 08/10/2020
+ms.openlocfilehash: 80773756bbec0cdd6f650f427d1dcc4e29c5cba6
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79452479"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88228165"
 ---
 # <a name="subscribe-to-events-for-an-azure-subscription-with-powershell"></a>使用 PowerShell 订阅 Azure 订阅的事件
 
 此脚本创建 Azure 订阅事件的事件网格订阅。
 
-[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
 ## <a name="sample-script---stable"></a>示例脚本 - 稳定版
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-<!--[!code-powershell[main](../../../powershell_scripts/event-grid/subscribe-to-azure-subscription/subscribe-to-azure-subscription.ps1 "Subscribe to Azure subscription")]-->
+```powershell
+# Provide an endpoint for handling the events. Must be formatted "https://your-endpoint-URL"
+$myEndpoint = "<your-endpoint-URL>"
+
+# Select the Azure subscription you want to subscribe to. You need this command only if the 
+# current subscription is not the one you wish to subscribe to.
+Set-AzContext -Subscription "<subscription-name-or-ID>"
+
+# Subscribe to the Azure subscription. The command creates the subscription for the currently selected Azure subscription. 
+New-AzEventGridSubscription -Endpoint $myEndpoint -EventSubscriptionName demoSubscriptionToAzureSub
+```
 
 ## <a name="sample-script---preview-module"></a>示例脚本 - 预览模块
 
@@ -38,11 +42,24 @@ ms.locfileid: "79452479"
 
 [!INCLUDE [requires-azurerm](../../../includes/requires-azurerm.md)]
 
-<!--[!code-powershell[main](../../../powershell_scripts/event-grid/subscribe-to-azure-subscription-preview/subscribe-to-azure-subscription-preview.ps1 "Subscribe to Azure subscription")]-->
+```powershell
+# You must have the latest version of the Event Grid PowerShell module.
+# To install:
+# Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery
+
+# Provide an endpoint for handling the events. Must be formatted "https://your-endpoint-URL"
+$myEndpoint = "<your-endpoint-URL>"
+
+# Get the subscription ID
+$subID = (Get-AzureRmSubscription -SubscriptionName "<subscription-name>").Id
+
+# Subscribe to the Azure subscription. The command creates the subscription for the currently selected Azure subscription. 
+New-AzureRmEventGridSubscription -ResourceId "/subscriptions/$subID" -Endpoint $myEndpoint -EventSubscriptionName demoSubscriptionToAzureSub
+```
 
 ## <a name="script-explanation"></a>脚本说明
 
-此脚本使用以下命令创建事件订阅。 表中的每条命令均链接到特定于命令的文档。
+此脚本使用以下命令创建事件订阅。 表中的每条命令链接到特定于命令的文档。
 
 | Command | 说明 |
 |---|---|
@@ -52,3 +69,4 @@ ms.locfileid: "79452479"
 
 * 有关托管应用程序的简介，请参阅 [Azure 托管应用程序概述](../overview.md)。
 * 有关 PowerShell 的详细信息，请参阅 [Azure PowerShell 文档](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
+

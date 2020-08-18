@@ -3,15 +3,15 @@ title: Azure Functions F# 开发人员参考
 description: 了解如何使用 F# 脚本开发 Azure Functions。
 author: sylvanc
 ms.assetid: e60226e5-2630-41d7-9e5b-9f9e5acc8e50
-ms.topic: reference
-ms.date: 12/31/2019
+ms.topic: conceptual
+ms.date: 08/12/2020
 ms.author: v-junlch
-ms.openlocfilehash: 7ec92a62674689830c406e3c24576566ea9c9a2b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 22b5e32909ed748049e4b4775aea3245b7706b43
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293065"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222899"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Azure Functions F# 开发人员参考
 
@@ -90,7 +90,7 @@ let Run(input: string, item: byref<Item>) =
 ```
 
 ## <a name="logging"></a>日志记录
-若要使用 F# 将输出记录到[流式处理日志](../app-service/troubleshoot-diagnostic-logs.md)中，函数应带有 `ILogger` 类型的参数。 为了保持一致，我们建议参数名为 `log`。 例如：
+若要使用 F# 将输出记录到[流式处理日志](../app-service/troubleshoot-diagnostic-logs.md)中，函数应带有 [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) 类型的参数。 为了保持一致，我们建议参数名为 `log`。 例如：
 
 ```fsharp
 let Run(blob: string, output: byref<string>, log: ILogger) =
@@ -287,12 +287,10 @@ let mylog(log: ILogger, text: string) =
 ## <a name="next-steps"></a>后续步骤
 有关详细信息，请参阅以下资源：
 
-* [F # 指南](https://docs.microsoft.com/en-us/dotnet/fsharp/index)
+* [F # 指南](https://docs.microsoft.com/dotnet/articles/fsharp/index)
 * [Azure Functions 最佳实践](functions-best-practices.md)
 * [Azure Functions 开发人员参考](functions-reference.md)
 * [Azure Functions 触发器和绑定](functions-triggers-bindings.md)
 * [ Azure Functions 测试](functions-test-a-function.md)
 * [Azure Functions 缩放](functions-scale.md)
 
-
-<!-- Update_Description: wording update -->

@@ -1,35 +1,26 @@
 ---
-title: 将云服务连接到自定义域控制器 | Azure
-description: 了解如何使用 Powershell 和 AD 域扩展将 Web/辅助角色连接到自定义 AD 域
+title: 将云服务连接到自定义域控制器 | Microsoft Docs
+description: 了解如何使用 PowerShell 和 AD 域扩展将 Web/辅助角色连接到自定义 AD 域
 services: cloud-services
-documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: 1e2d7c87-d254-4e7a-a832-67f84411ec95
+author: tgore03
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 07/18/2017
-ms.author: v-yiso
-ms.date: 08/20/2018
-ms.openlocfilehash: a3b2588cc42f979ebecb13153ea78f7f9fcbc34f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 08/10/2020
+ms.author: v-junlch
+ms.openlocfilehash: 34b58246970fc10e678a3fdcb18c30a4477c234b
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "63859068"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223385"
 ---
 # <a name="connecting-azure-cloud-services-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>将 Azure 云服务角色连接到 Azure 中托管的自定义 AD 域控制器
 我们先在 Azure 中设置一个虚拟网络 (VNet)。 然后将 Active Directory 域控制器（托管在 Azure 虚拟机上）添加到该 VNet。 接下来，将现有云服务角色添加预先创建的 VNet，然后将它们连接到域控制器。
 
 在开始之前，请特别注意以下几点：
 
-1. 本教程使用 Powershell，因此请确保已安装 Azure Powershell 并已准备就绪。 有关设置 Azure Powershell 的帮助，请参阅 [如何安装和配置 Azure PowerShell](../powershell-install-configure.md)。
-
-2. AD 域控制器和 Web/辅助角色实例需要在 VNET 中。
+1. 本教程使用 PowerShell，因此请确保 Azure PowerShell 已安装并已准备就绪。 有关设置 Azure PowerShell 的帮助，请参阅[如何安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/)。
+2. AD 域控制器和 Web/辅助角色实例需要在 VNet 中。
 
 请遵循以下分步指南，如果你遇到任何问题，请在本文末尾留言。 我们将回复你（没错，我们真的会阅读留言）。
 
@@ -43,21 +34,21 @@ ms.locfileid: "63859068"
 
 $vnetStr =
 @"<?xml version="1.0" encoding="utf-8"?>
-<NetworkConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
-  <VirtualNetworkConfiguration>
+<NetworkConfiguration xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
+    <VirtualNetworkConfiguration>
     <VirtualNetworkSites>
-      <VirtualNetworkSite name="[your-vnet-name]" Location="China North">
+        <VirtualNetworkSite name="[your-vnet-name]" Location="China North">
         <AddressSpace>
-          <AddressPrefix>[your-address-prefix]</AddressPrefix>
+            <AddressPrefix>[your-address-prefix]</AddressPrefix>
         </AddressSpace>
         <Subnets>
-          <Subnet name="[your-subnet-name]">
+            <Subnet name="[your-subnet-name]">
             <AddressPrefix>[your-subnet-range]</AddressPrefix>
-          </Subnet>
+            </Subnet>
         </Subnets>
-      </VirtualNetworkSite>
+        </VirtualNetworkSite>
     </VirtualNetworkSites>
-  </VirtualNetworkConfiguration>
+    </VirtualNetworkConfiguration>
 </NetworkConfiguration>
 "@;
 
@@ -66,7 +57,6 @@ Set-AzureVNetConfig -ConfigurationPath $vnetConfigPath
 ```
 
 ## <a name="create-a-virtual-machine"></a>创建虚拟机
-
 完成虚拟网络的设置后，需要创建 AD 域控制器。 在本教程中，我们会在 Azure 虚拟机上设置 AD 域控制器。
 
 为此，请使用以下命令通过 PowerShell 创建虚拟机：
@@ -98,7 +88,7 @@ New-AzureQuickVM -Windows -ServiceName $vmsvc1 -Name $vm1 -ImageName $imgname -A
 Get-AzureRemoteDesktopFile -ServiceName $vmsvc1 -Name $vm1 -LocalPath <rdp-file-path>
 ```
 
-登录 VM 后，请根据[如何设置客户 AD 域控制器](http://social.technet.microsoft.com/wiki/contents/articles/12370.windows-server-2012-set-up-your-first-domain-controller-step-by-step.aspx)中的分步指导，将虚拟机设置为 AD 域控制器。
+登录 VM 后，请根据[如何设置客户 AD 域控制器](https://social.technet.microsoft.com/wiki/contents/articles/12370.windows-server-2012-set-up-your-first-domain-controller-step-by-step.aspx)中的分步指导，将虚拟机设置为 AD 域控制器。
 
 ## <a name="add-your-cloud-service-to-the-virtual-network"></a>将云服务添加到虚拟网络
 接下来，需要将云服务部署添加到新的 VNet。 为此，请使用 Visual Studio 或选择的编辑器将相关节添加到 cscfg，以修改云服务 cscfg。
@@ -107,28 +97,28 @@ Get-AzureRemoteDesktopFile -ServiceName $vmsvc1 -Name $vm1 -LocalPath <rdp-file-
 <ServiceConfiguration serviceName="[hosted-service-name]" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="[os-family]" osVersion="*">
     <Role name="[role-name]">
     <Instances count="[number-of-instances]" />
-  </Role>
-  <NetworkConfiguration>
+    </Role>
+    <NetworkConfiguration>
 
     <!--optional-->
     <Dns>
-      <DnsServers><DnsServer name="[dns-server-name]" IPAddress="[ip-address]" /></DnsServers>
+        <DnsServers><DnsServer name="[dns-server-name]" IPAddress="[ip-address]" /></DnsServers>
     </Dns>
     <!--optional-->
 
-<!--VNet settings
-    VNet and subnet must be classic virtual network resources, not Azure Resource Manager resources.-->
-<VirtualNetworkSite name="[virtual-network-name]" />
-<AddressAssignments>
-    <InstanceAddress roleName="[role-name]">
-    <Subnets>
-        <Subnet name="[subnet-name]" />
-    </Subnets>
-    </InstanceAddress>
-</AddressAssignments>
-<!--VNet settings-->
+    <!--VNet settings
+        VNet and subnet must be classic virtual network resources, not Azure Resource Manager resources.-->
+    <VirtualNetworkSite name="[virtual-network-name]" />
+    <AddressAssignments>
+        <InstanceAddress roleName="[role-name]">
+        <Subnets>
+            <Subnet name="[subnet-name]" />
+        </Subnets>
+        </InstanceAddress>
+    </AddressAssignments>
+    <!--VNet settings-->
 
-  </NetworkConfiguration>
+    </NetworkConfiguration>
 </ServiceConfiguration>
 ```
 
@@ -140,16 +130,13 @@ Get-AzureRemoteDesktopFile -ServiceName $vmsvc1 -Name $vm1 -LocalPath <rdp-file-
 ```powershell
 # Initialize domain variables
 
-
 $domain = '<your-domain-name>'
 $dmuser = '$domain\<your-username>'
 $dmpswd = '<your-domain-password>'
 $dmspwd = ConvertTo-SecureString $dmpswd -AsPlainText -Force
 $dmcred = New-Object System.Management.Automation.PSCredential ($dmuser, $dmspwd)
 
-
 # Add AD Domain Extension to the cloud service roles
-
 
 Set-AzureServiceADDomainExtension -Service <your-cloud-service-hosted-service-name> -Role <your-role-name> -Slot <staging-or-production> -DomainName $domain -Credential $dmcred -JoinOption 35
 ```
@@ -162,3 +149,7 @@ Set-AzureServiceADDomainExtension -Service <your-cloud-service-hosted-service-na
 help Set-AzureServiceADDomainExtension
 help New-AzureServiceADDomainExtensionConfig
 ```
+
+
+
+

@@ -10,12 +10,12 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 05/11/2020
-ms.openlocfilehash: 96f7f77a001223e8fd6d53425543f8648eb24b52
-ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
+ms.openlocfilehash: 594a1abebfc9c345952c32bdc74b275c95ba242e
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "86441199"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88228399"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>基于 Azure 机器学习事件触发应用程序、进程或 CI/CD 工作流（预览）
 
@@ -83,7 +83,7 @@ Azure 机器学习事件的订阅受基于角色的访问控制 (RBAC) 保护。
   | `Microsoft.MachineLearningServices.DatasetDriftDetected` | `datadrift/{data.DataDriftId}/run/{data.RunId}` | `datadrift/4e694bf5-712e-4e40-b06a-d2a2755212d4/run/my_driftrun1_1550564444_fbbcdc0f` |
   | `Microsoft.MachineLearningServices.RunStatusChanged` | `experiments/{ExperimentId}/runs/{RunId}` | `experiments/b1d7966c-f73a-4c68-b846-992ace89551f/runs/my_exp1_1554835758_38dbaa94` | 
 
-+ **高级筛选**：Azure 事件网格还支持基于已发布事件架构的高级筛选。 有关 Azure 机器学习事件架构的详细信息，请参阅 [Azure 机器学习的 Azure 事件网格事件架构](../event-grid/event-schema-machine-learning.md)。  可以执行的一些高级筛选的示例包括：
++ **高级筛选**：Azure 事件网格还支持基于已发布事件架构的高级筛选。 有关 Azure 机器学习事件架构的详细信息，请参阅 Azure 机器学习的 Azure 事件网格事件架构。  可以执行的一些高级筛选的示例包括：
 
   对于 `Microsoft.MachineLearningServices.ModelRegistered` 事件，要筛选模型的标记值：
 
@@ -248,6 +248,4 @@ Azure 机器学习模型对象包含可以基于其进行部署的参数，例�
 详细了解事件网格并尝试使用 Azure 机器学习事件：
 
 - [关于事件网格](../event-grid/overview.md)
-
-- [Azure 机器学习的事件架构](../event-grid/event-schema-machine-learning.md)
 

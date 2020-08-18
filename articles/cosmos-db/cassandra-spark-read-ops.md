@@ -6,17 +6,19 @@ author: rockboyfor
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 06/02/2020
-ms.date: 06/22/2020
+ms.date: 08/17/2020
+ms.testscope: yes
+ms.testdate: 08/10/2020
 ms.author: v-yeche
 ms.custom: seodec18
-ms.openlocfilehash: 43167dafec9c54a7d147801a9f230ec327d5e540
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: 434ffcb197c496543723892bf4f7d9033beee721
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098712"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222773"
 ---
 <!--Verify sucessfully-->
 # <a name="read-data-from-azure-cosmos-db-cassandra-api-tables-using-spark"></a>使用 Spark 读取 Azure Cosmos DB Cassandra API 表中的数据
@@ -107,7 +109,7 @@ readBooksDF.show
 
 物理计划的 PushedFilters 节包括 GreaterThan 向下推送筛选器。 
 
-![分区](./media/cassandra-spark-read-ops/pushdown-predicates.png)
+:::image type="content" source="./media/cassandra-spark-read-ops/pushdown-predicates.png" alt-text="分区":::
 
 ## <a name="rdd-api"></a>RDD API
 
@@ -151,5 +153,4 @@ select * from books_vw where book_pub_year > 1891
  * [聚合操作](cassandra-spark-aggregation-ops.md)
  * [表复制操作](cassandra-spark-table-copy-ops.md)
 
-<!--Verify sucessfully-->
 <!-- Update_Description: update meta properties, wording update, update link -->

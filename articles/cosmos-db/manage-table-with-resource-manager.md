@@ -3,16 +3,18 @@ title: 适用于 Azure Cosmos DB 表 API 的资源管理器模板
 description: 使用 Azure 资源管理器模板创建和配置 Azure Cosmos DB 表 API。
 author: rockboyfor
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 05/19/2020
-ms.date: 06/22/2020
+ms.date: 08/17/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: ced283ddb6d1e121f843ccda21ce8862567ed6e1
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: 9204ab7efd8fe48a189b6d591b6ae1b9747feaaf
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098299"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223201"
 ---
 <!--Verify successfully-->
 # <a name="manage-azure-cosmos-db-table-api-resources-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Azure Cosmos DB 表 API 资源
@@ -38,7 +40,7 @@ ms.locfileid: "85098299"
 
 此模板将为包含一个具有自动缩放吞吐量的表的表 API 创建一个 Azure Cosmos 帐户。 此模板还支持从 Azure 快速入门模板库进行一键部署。
 
-[![部署到 Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-table-autoscale%2Fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="部署到 Azure":::](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-table-autoscale%2Fazuredeploy.json)
 
 ```json
 {
@@ -120,33 +122,13 @@ ms.locfileid: "85098299"
              "description": "The name for the table"
           }
        },
-       "throughputPolicy":{
-            "type": "string",
-            "defaultValue": "Autoscale",
-            "allowedValues": [ 
-               "Manual", 
-               "Autoscale" 
-            ],
-            "metadata": {
-                "description": "The throughput policy for the table"
-            }
-        },
-        "manualProvisionedThroughput": {
-            "type": "int",
-            "defaultValue": 400,
-            "minValue": 400,
-            "maxValue": 1000000,
-            "metadata": {
-                "description": "Throughput value when using Provisioned Throughput Policy for the table"
-            }
-        },
         "autoscaleMaxThroughput": {
             "type": "int",
             "defaultValue": 4000,
             "minValue": 4000,
             "maxValue": 1000000,
             "metadata": {
-                "description": "Maximum throughput when using Autoscale Throughput Policy for the table"
+                "description": "Maximum autoscale throughput for the table"
             }
         }
     },
@@ -182,18 +164,7 @@ ms.locfileid: "85098299"
              "failoverPriority": 1,
              "isZoneRedundant": false
           }
-       ],
-        "throughputPolicy": {
-            "Manual": {
-                  "throughput": "[parameters('manualProvisionedThroughput')]"
-            },
-            "Autoscale": {
-                  "autoscaleSettings": { 
-                     "maxThroughput": "[parameters('autoscaleMaxThroughput')]" 
-                  }
-            }
-        },
-        "throughputPolicyToUse": "[if(equals(parameters('throughputPolicy'), 'Manual'), variables('throughputPolicy').Manual, variables('throughputPolicy').Autoscale)]"
+       ]
     },
     "resources": [
        {
@@ -225,7 +196,11 @@ ms.locfileid: "85098299"
              "resource":{
                 "id": "[parameters('tableName')]"
              },
-             "options": "[variables('throughputPolicyToUse')]"
+             "options": {
+                  "autoscaleSettings": { 
+                     "maxThroughput": "[parameters('autoscaleMaxThroughput')]" 
+                  }
+             }
           }
        }
     ]
@@ -238,7 +213,7 @@ ms.locfileid: "85098299"
 
 此模板将为包含一个具有标准吞吐量的表的表 API 创建 Azure Cosmos 帐户。 此模板还支持从 Azure 快速入门模板库进行一键部署。
 
-[![部署到 Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-table%2Fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="部署到 Azure":::](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-table%2Fazuredeploy.json)
 
 ```json
 {
@@ -396,7 +371,7 @@ ms.locfileid: "85098299"
     
     <!--Not Available on  - [Azure Cosmos DB resource provider schema](https://docs.microsoft.com/azure/templates/microsoft.documentdb/allversions)-->
     
-* [Azure Cosmos DB 快速入门模板](https://github.com/Azure/azure-quickstart-templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
+* [Azure Cosmos DB 快速入门模板](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Documentdb&pageNumber=1&sort=Popular)
 * [排查常见 Azure 资源管理器部署错误](../azure-resource-manager/templates/common-deployment-errors.md)
 
 <!-- Update_Description: update meta properties, wording update, update link -->

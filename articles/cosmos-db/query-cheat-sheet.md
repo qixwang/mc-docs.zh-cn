@@ -5,14 +5,16 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 05/28/2019
-ms.date: 06/17/2019
+ms.date: 08/17/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 701f8bef52e6d7be82e3fba8eabb9511a2debf36
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b6dd1b0a62b14127310938424e7faffc831be9bb
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "67171301"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222449"
 ---
 # <a name="azure-cosmos-db-query-cheat-sheets"></a>Azure Cosmos DB 查询备忘单
 
@@ -24,12 +26,12 @@ Azure Cosmos DB 查询备忘单通过在易于打印的 PDF 参考单中显示�
 
 如果想要打印到信纸尺寸的纸张 (8.5" x 11")，请下载 [Azure Cosmos DB 信纸尺寸的查询备忘单](https://go.microsoft.com/fwlink/?LinkId=623215)。
 
-![Azure Cosmos DB 查询备忘单 - 信纸尺寸（包含 SQL API、JavaScript、MongoDB、Gremlin 和表 API 查询和函数）](./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-letter.png)
+:::image type="content" source="./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-letter.png" alt-text="Azure Cosmos DB 查询备忘单 - 信纸尺寸（包含 SQL API、JavaScript、MongoDB、Gremlin 和表 API 查询和函数）" border="false":::
 
 ## <a name="oversized-cheat-sheets"></a>超大尺寸的备忘单
 如果想要使用绘图仪或大型打印机打印到 A3 尺寸的纸张上 (11.7" x 16.5")，请下载 [Azure Cosmos DB A3 尺寸的查询备忘单](https://go.microsoft.com/fwlink/?linkid=870413)。
 
-![Azure Cosmos DB 查询备忘单 - A3 尺寸（包含 SQL API、JavaScript、MongoDB、Gremlin 和表 API 查询和函数）](./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-a3.png)
+:::image type="content" source="./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-a3.png" alt-text="Azure Cosmos DB 查询备忘单 - A3 尺寸（包含 SQL API、JavaScript、MongoDB、Gremlin 和表 API 查询和函数）" border="false":::
 
 ## <a name="next-steps"></a>后续步骤
 如需查询编写的相关帮助，请参阅以下文章：
@@ -38,4 +40,4 @@ Azure Cosmos DB 查询备忘单通过在易于打印的 PDF 参考单中显示�
 * 有关 Gremlin API 查询，请参阅[使用 Gremlin API 的查询](tutorial-query-graph.md)和 [Azure Cosmos DB Gremlin 图形支持](gremlin-support.md)
 * 有关表 API 查询，请参阅[使用表 API 的查询](tutorial-query-table.md)
 
-<!--Update_Description: update meta properties  -->
+<!-- Update_Description: update meta properties, wording update, update link -->

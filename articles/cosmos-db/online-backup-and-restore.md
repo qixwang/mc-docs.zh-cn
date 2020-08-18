@@ -5,15 +5,17 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 05/21/2019
-ms.date: 02/10/2020
+ms.date: 08/17/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: df4ad8c829eec04d899eb35852c4abd9ac2aa8bf
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 54de4c79e7c0e109a464e702b8588843be314df1
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77028792"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223455"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Azure Cosmos DB 中的联机备份和按需数据还原
 
@@ -27,9 +29,7 @@ Azure Cosmos DB 会定期自动备份数据。 自动备份不会影响数据库
 
 * Azure Cosmos DB 将这些备份存储在 Azure Blob 存储中，而实际数据以本地形式驻留在 Azure Cosmos DB 中。
 
-* 为了保证低延迟，备份的快照存储在 Azure Blob 存储中，且所在区域与 Azure Cosmos 数据库帐户的当前写入区域（如果有多主数据库配置，则为其中一个写入区域）相同。 对于针对区域性灾难的恢复，Azure Blob 存储中备份数据的屏幕快照将通过异地冗余存储 (GRS) 再次复制到另一区域。 根据源区域以及与源区域关联的区域对确定备份复制的目标区域。 不能直接访问此数据库。 Azure Cosmos DB 仅在启动备份还原时使用此备份。
-    
-    <!--Not Available on To learn more, see the [list of geo-redundant pairs of Azure regions](../best-practices-availability-paired-regions.md)-->
+* 为了保证低延迟，备份的快照存储在 Azure Blob 存储中，且所在区域与 Azure Cosmos 数据库帐户的当前写入区域（如果有多主数据库配置，则为其中一个写入区域）相同。 对于针对区域性灾难的恢复，Azure Blob 存储中备份数据的屏幕快照将通过异地冗余存储 (GRS) 再次复制到另一区域。 根据源区域以及与源区域关联的区域对确定备份复制的目标区域。 若要了解详细信息，请参阅 [Azure 区域的异地冗余对列表](../best-practices-availability-paired-regions.md)一文。 不能直接访问此数据库。 Azure Cosmos DB 仅在启动备份还原时使用此备份。
 
 * 备份不会影响应用程序的性能或可用性。 Azure Cosmos DB 在后台执行数据备份，不会消耗任何其他预配吞吐量 (RU)，也不会影响数据库的性能和可用性。
 
@@ -37,7 +37,7 @@ Azure Cosmos DB 会定期自动备份数据。 自动备份不会影响数据库
 
 下图显示了如何在中国北部的远程 Azure Blob 存储帐户中备份 Azure Cosmos 容器（其三个主要物理分区全部位于中国北部），然后将其复制到中国东部：
 
-![GRS Azure 存储中所有 Cosmos DB 实体的定期完整备份](./media/online-backup-and-restore/automatic-backup.png)
+:::image type="content" source="./media/online-backup-and-restore/automatic-backup.png" alt-text="GRS Azure 存储中所有 Cosmos DB 实体的定期完整备份" border="false":::
 
 ## <a name="options-to-manage-your-own-backups"></a>管理自己的备份的选项
 

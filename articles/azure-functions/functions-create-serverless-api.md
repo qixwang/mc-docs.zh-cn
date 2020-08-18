@@ -3,15 +3,15 @@ title: 在 Azure Functions 中自定义 HTTP 终结点
 description: 了解如何在 Azure Functions 中自定义 HTTP 触发器终结点
 author: mattchenderson
 ms.topic: conceptual
-ms.date: 06/08/2020
+ms.date: 08/11/2020
 ms.author: v-junlch
 ms.custom: mvc
-ms.openlocfilehash: 80b76d8d00879852bb13c47069f260f17daa2ddd
-ms.sourcegitcommit: f1a76ee3242698123a3d77f44c860db040b48f70
+ms.openlocfilehash: 567cb6f03d1da314e1e9b59aafd40ac9f88872b5
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84563644"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223174"
 ---
 # <a name="customize-an-http-endpoint-in-azure-functions"></a>在 Azure Functions 中自定义 HTTP 终结点
 
@@ -47,7 +47,7 @@ ms.locfileid: "84563644"
 
 1. 选择“保存” ****。
 
-有关自定义 HTTP 函数的详细信息，请参阅 [Azure Functions HTTP 绑定](/azure-functions/functions-bindings-http-webhook)。
+有关自定义 HTTP 函数的详细信息，请参阅 [Azure Functions HTTP 绑定](./functions-bindings-http-webhook.md)。
 
 ### <a name="test-your-api"></a>测试 API
 
@@ -74,7 +74,7 @@ ms.locfileid: "84563644"
 
 代理可以指向任何 HTTP 资源，例如：
 - Azure Functions 
-- [Azure 应用服务](/app-service/overview)中的 API 应用
+- [Azure 应用服务](../app-service/overview.md)中的 API 应用
 - 其他任何托管 API
 
 若要了解有关代理的详细信息，请参阅[使用 Azure Functions 代理]。
@@ -85,7 +85,7 @@ ms.locfileid: "84563644"
 
 ### <a name="setting-up-the-frontend-environment"></a>设置前端环境
 
-重复[创建 Function App](/azure-functions/functions-create-first-azure-function#create-a-function-app) 中的步骤，创建要在其中创建代理的新 Function App。 此新应用的 URL 将充当 API 的前端，之前编辑的函数应用将充当后端。
+重复[创建 Function App](./functions-create-first-azure-function.md#create-a-function-app) 中的步骤，创建要在其中创建代理的新 Function App。 此新应用的 URL 将充当 API 的前端，之前编辑的函数应用将充当后端。
 
 1. 在门户中导航到新的前端 Function App。
 1. 选择“平台功能”，并选择“应用程序设置”**** ****。
@@ -125,7 +125,7 @@ ms.locfileid: "84563644"
 
 为了创建此模拟 API，我们将创建一个新代理，但这一次使用的是[应用服务编辑器](https://github.com/projectkudu/kudu/wiki/App-Service-Editor)。 要开始，请在门户中导航到 Function App。 选择“平台功能”并在“开发工具”下找到“应用服务编辑器”**** **** ****。 应用服务编辑器在新选项卡中打开。
 
-在左侧导航栏中选择 `proxies.json`。 此文件存储所有代理配置。 若要详细了解此文件，请参阅[代理高级配置](/azure-functions/functions-proxies#advanced-configuration)。
+在左侧导航栏中选择 `proxies.json`。 此文件存储所有代理配置。 若要详细了解此文件，请参阅[代理高级配置](./functions-proxies.md#advanced-configuration)。
 
 到目前为止，proxies.json 应如下所示：
 
@@ -179,7 +179,7 @@ ms.locfileid: "84563644"
 }
 ```
 
-此代码添加没有 `backendUri` 属性的新代理 `GetUserByName`。 此代理不会调用另一个资源，而是使用响应重写来修改代理的默认响应。 也可以将请求和响应重写与后端 URL 结合使用。 在代理到需要修改标头、查询参数等元素的旧系统时，此方法特别有用。 若要详细了解请求和响应重写，请参阅[修改代理中的请求和响应](/azure-functions/functions-proxies)。
+此代码添加没有 `backendUri` 属性的新代理 `GetUserByName`。 此代理不会调用另一个资源，而是使用响应重写来修改代理的默认响应。 也可以将请求和响应重写与后端 URL 结合使用。 在代理到需要修改标头、查询参数等元素的旧系统时，此方法特别有用。 若要详细了解请求和响应重写，请参阅[修改代理中的请求和响应](./functions-proxies.md)。
 
 通过使用浏览器或偏好的 REST 客户端调用 `<YourProxyApp>.chinacloudsites.cn/api/users/{username}` 终结点来测试模拟 API。 请务必将 _{username}_ 替换为表示用户名的字符串值。
 
@@ -189,10 +189,11 @@ ms.locfileid: "84563644"
 
 以下参考文档可以帮助进一步开发 API：
 
-- [Azure Functions HTTP 绑定](/azure-functions/functions-bindings-http-webhook)
+- [Azure Functions HTTP 绑定](./functions-bindings-http-webhook.md)
 - [使用 Azure Functions 代理]
+- [记录 Azure Functions API（预览版）](./functions-openapi-definition.md)
 
 
-[Create your first function]: /azure-functions/functions-create-first-azure-function
-[使用 Azure Functions 代理]: /azure-functions/functions-proxies
+[Create your first function]: ./functions-create-first-azure-function.md
+[使用 Azure Functions 代理]: ./functions-proxies.md
 

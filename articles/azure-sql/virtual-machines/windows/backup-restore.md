@@ -1,9 +1,9 @@
 ---
-title: Azure VM 中 SQL Server 的备份和还原 | Azure
+title: Azure VM 中 SQL Server 的备份和还原 | Microsoft Docs
 description: 介绍 Azure 虚拟机上运行的 SQL Server 数据库的备份和还原注意事项。
 services: virtual-machines-windows
 documentationcenter: na
-author: rockboyfor
+author: WenJason
 editor: ''
 tags: azure-resource-management
 ms.assetid: 95a89072-0edf-49b5-88ed-584891c0e066
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 origin.date: 06/04/2018
-ms.date: 07/06/2020
-ms.author: v-yeche
-ms.openlocfilehash: 396db7a18847261e97e3f69914d06d8da7fe8ced
-ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
+ms.date: 08/17/2020
+ms.author: v-jay
+ms.openlocfilehash: fdc12f6f8179fc6abee8cef8ab06c0693b6fded3
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85946129"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223104"
 ---
 # <a name="backup-and-restore-for-sql-server-on-azure-vms"></a>Azure VM 中 SQL Server 的备份和还原
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -40,8 +40,7 @@ ms.locfileid: "85946129"
 
 以下部分更详细地介绍了每个选项。 本文的最后一个部分以功能矩阵的形式提供了摘要。
 
-<a name="automated"></a>
-## <a name="automated-backup"></a>自动备份
+## <a name="automated-backup"></a><a id="automated"></a>自动备份
 
 自动备份为 Azure Windows VM 中运行的 SQL Server Standard 和 Enterprise 版本提供自动备份服务。 此服务由 [SQL Server IaaS 代理扩展](sql-server-iaas-agent-extension-automate-management.md)提供。该扩展已自动安装在 Azure 门户中的 SQL Server Windows 虚拟机映像上。
 
@@ -60,8 +59,7 @@ SQL Server 2016 和更高版本的 VM 提供更多的自定义选项，以及自
 - **SQL Server 2016/2017**：[适用于 Azure 虚拟机的自动备份 v2](automated-backup.md)
 - **SQL Server 2014**：[适用于 SQL Server 2014 虚拟机的自动备份](automated-backup-sql-2014.md)
 
-<a name="azbackup"></a>
-## <a name="azure-backup-for-sql-vms"></a>适用于 SQL VM 的 Azure 备份
+## <a name="azure-backup-for-sql-vms"></a><a id="azbackup"></a>适用于 SQL VM 的 Azure 备份
 
 [Azure 备份](/backup/)为 Azure VM 上的 SQL Server 提供企业级备份功能。 在恢复服务保管库中存储和管理所有备份。 此解决方案提供许多优势，尤其是针对企业：
 
@@ -80,8 +78,7 @@ SQL Server 2016 和更高版本的 VM 提供更多的自定义选项，以及自
 
 这种适用于 SQL VM 的 Azure 备份解决方案已正式发布。 有关详细信息，请参阅[将 SQL Server 数据库备份到 Azure](../../../backup/backup-azure-sql-database.md)。
 
-<a name="manual"></a>
-## <a name="manual-backup"></a>手动备份
+## <a name="manual-backup"></a><a id="manual"></a>手动备份
 
 若要手动管理 SQL VM 上的备份和还原操作，可以根据所用的 SQL Server 版本使用多个选项。 有关备份和还原的概述，请根据所用的 SQL Server 版本参阅以下文章之一：
 
@@ -129,7 +126,7 @@ SQL Server 2016 和更高版本的 VM 提供更多的自定义选项，以及自
 
 下表汇总了 Azure 中 SQL Server 虚拟机的每个备份和还原选项的功能。
 
-|| **自动备份** | **适用于 SQL 的 Azure 备份** | **手动备份** |
+| 选项 | 自动备份 | 适用于 SQL 的 Azure 备份 | 手动备份 |
 |---|---|---|---|
 | 需要额外的 Azure 服务 |   | ![是](./media/backup-restore/yes.png) |   |
 | 在 Azure 门户中配置备份策略 | ![是](./media/backup-restore/yes.png) | ![是](./media/backup-restore/yes.png) |   |

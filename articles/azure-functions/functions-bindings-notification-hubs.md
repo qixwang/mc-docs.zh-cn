@@ -3,14 +3,14 @@ title: 适用于 Azure Functions 的 通知中心绑定
 description: 了解如何在 Azure Functions 中使用 Azure 通知中心绑定。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 07/15/2020
+ms.date: 08/11/2020
 ms.author: v-junlch
-ms.openlocfilehash: f0c1d873a92dc4bb08671a903ec770a751e07e23
-ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
+ms.openlocfilehash: 2ce25f5bd5782749ea7090a0f3fd8ebd139d9b63
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "86440364"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223028"
 ---
 # <a name="notification-hubs-output-binding-for-azure-functions"></a>适用于 Azure Functions 的 通知中心输出绑定
 
@@ -107,7 +107,7 @@ public static void Run(string myQueueItem,  out string notification, TraceWriter
 
 ### <a name="c-script-template-example---library-types"></a>C# 脚本模板示例 - 库类型
 
-此示例演示如何使用 [Microsoft Azure 通知中心库](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)中定义的类型。 
+此示例演示如何使用 [Azure 通知中心库](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)中定义的类型。 
 
 ```cs
 #r "Microsoft.Azure.NotificationHubs"
@@ -193,7 +193,7 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 
 ## <a name="example---wns-native"></a>示例 - WNS 本机通知
 
-此 C# 脚本示例演示如何使用 [Microsoft Azure 通知中心库](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)中定义的类型发送本机 WNS toast 通知。 
+此 C# 脚本示例演示如何使用 [Azure 通知中心库](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)中定义的类型发送本机 WNS toast 通知。 
 
 ```cs
 #r "Microsoft.Azure.NotificationHubs"
@@ -301,5 +301,4 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 
 > [!div class="nextstepaction"]
 > [详细了解 Azure Functions 触发器和绑定](functions-triggers-bindings.md)
-
 

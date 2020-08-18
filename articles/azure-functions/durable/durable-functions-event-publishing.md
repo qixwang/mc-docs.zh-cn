@@ -2,17 +2,17 @@
 title: 从 Durable Functions 发布到 Azure 事件网格（预览）
 description: 了解如何配置 Durable Functions 的自动 Azure 事件网格发布。
 ms.topic: conceptual
-ms.date: 06/09/2020
-ms.openlocfilehash: 909afdd758709c70bfc844320de81d1a77b3fb53
-ms.sourcegitcommit: f1a76ee3242698123a3d77f44c860db040b48f70
+ms.date: 08/12/2020
+ms.openlocfilehash: 1210d1866835e9982ec9a06b32117411cc67ac03
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84563732"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223318"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>从 Durable Functions 发布到 Azure 事件网格（预览）
 
-本文介绍了如何设置 Durable Functions，以便将业务流程生命周期事件（例如“已创建”、“已完成”和“失败”）发布到自定义的 [Azure 事件网格主题](/event-grid/overview)。
+本文介绍了如何设置 Durable Functions，以便将业务流程生命周期事件（例如“已创建”、“已完成”和“失败”）发布到自定义的 [Azure 事件网格主题](../../event-grid/overview.md)。
 
 此功能在以下场景中非常有用：
 
@@ -168,7 +168,7 @@ az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "k
 
 ### <a name="add-an-event-grid-subscription"></a>添加事件网格订阅
 
-现在可以为创建的事件网格主题添加事件网格订阅。 有关详细信息，请参阅 [Azure 事件网格中的概念](/event-grid/concepts)。
+现在可以为创建的事件网格主题添加事件网格订阅。 有关详细信息，请参阅 [Azure 事件网格中的概念](../../event-grid/concepts.md)。
 
 1. 在新函数中，选择“集成”****，然后选择“事件网格触发器(eventGridEvent)”****。 
 
@@ -242,7 +242,7 @@ az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "k
   * **`hubName`** ：[任务中心](durable-functions-task-hubs.md)名称。
   * **`functionName`** ：业务流程协调程序函数名称。
   * **`instanceId`** ：Durable Functions instanceId。
-  * **`reason`** ：与跟踪事件关联的其他数据。 
+  * **`reason`** ：与跟踪事件关联的其他数据。 有关详细信息，请参阅 [Durable Functions 中的诊断 (Azure Functions)](durable-functions-diagnostics.md)
   * **`runtimeStatus`** ：业务流程运行时状态。 值为 Running、Completed、Failed 和 Canceled。
 * **`eventType`** ：“orchestratorEvent”
 * **`eventTime`** ：事件时间 (UTC)。

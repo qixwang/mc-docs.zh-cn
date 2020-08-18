@@ -5,14 +5,14 @@ author: WenJason
 ms.author: v-jay
 ms.service: mariadb
 ms.topic: conceptual
-origin.date: 6/3/2020
-ms.date: 07/06/2020
-ms.openlocfilehash: 1259ba115fc450d549612cda57ff409252d296a2
-ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
+origin.date: 7/20/2020
+ms.date: 08/17/2020
+ms.openlocfilehash: 015f62a514b45c52250cdc5eb890da7058a12fe2
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85845879"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222948"
 ---
 # <a name="supported-azure-database-for-mariadb-server-versions"></a>支持的 Azure Database for MariaDB 服务器版本
 
@@ -27,15 +27,15 @@ Azure Database for MariaDB 目前支持以下版本：
 
 ## <a name="mariadb-version-102"></a>MariaDB 版本 10.2
 
-修补程序版本：10.2.31
+修补程序版本：10.2.32
 
-若要详细了解此版本中的改进和修复，请参阅 [MariaDB 文档](https://mariadb.com/kb/en/mariadb-10231-release-notes/)。
+若要详细了解此版本中的改进和修复，请参阅 [MariaDB 文档](https://mariadb.com/kb/en/mariadb-10232-release-notes/)。
 
 ## <a name="mariadb-version-103"></a>MariaDB 版本 10.3
 
-修补程序版本：10.3.22
+修补程序版本：10.3.23
 
-若要详细了解此版本中的改进和修复，请参阅 [MariaDB 文档](https://mariadb.com/kb/en/mariadb-10322-release-notes/)。
+若要详细了解此版本中的改进和修复，请参阅 [MariaDB 文档](https://mariadb.com/kb/en/mariadb-10323-release-notes/)。
 
 ## <a name="managing-updates-and-upgrades"></a>管理更新和升级
 该服务自动管理修补程序更新的升级。 例如，10.2.21 到 10.2.23。  

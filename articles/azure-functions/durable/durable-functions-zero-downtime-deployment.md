@@ -1,31 +1,25 @@
 ---
 title: Durable Functions 的零停机时间部署
 description: 了解如何启用 Durable Functions 业务流程以实现零停机时间部署。
-services: functions
 author: tsushi
-manager: gwallace
-ms.service: azure-functions
 ms.topic: conceptual
-origin.date: 10/10/2019
-ms.date: 11/19/2019
+ms.date: 08/12/2020
 ms.author: v-junlch
-ms.openlocfilehash: 00f3fff0a879e6329c1fe450169f311d8b1dfa88
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 8a81ae666064c166ccdcc62610b9837a7b0143bd
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74178975"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222597"
 ---
 # <a name="zero-downtime-deployment-for-durable-functions"></a>Durable Functions 的零停机时间部署
 
-Durable Functions 的[可靠执行模型](/azure-functions/durable/durable-functions-orchestrations)要求业务流程是确定性的，这就需要在部署更新时考虑到更多的挑战。 如果部署包含对活动函数签名或业务流程协调程序逻辑的更改，运行中的业务流程实例将发生故障。 对于长时间运行的业务流程实例（要运行数小时甚至数天），此问题尤为严重。
+Durable Functions 的[可靠执行模型](./durable-functions-orchestrations.md)要求业务流程是确定性的，这就需要在部署更新时考虑到更多的挑战。 如果部署包含对活动函数签名或业务流程协调程序逻辑的更改，运行中的业务流程实例将发生故障。 对于长时间运行的业务流程实例（要运行数小时甚至数天），此问题尤为严重。
 
 为了防止发生这些故障，可以执行两个选项： 
 - 延迟部署，直到所有正在运行的业务流程实例都已完成。
 - 确保任何正在运行的业务流程实例使用现有的函数版本。 
-
-> [!NOTE]
-> 本文提供了针对 Durable Functions 1.x 的函数应用的指南。 它尚未针对 Durable Functions 2.x 中引入的更改进行更新。 有关扩展版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)。
 
 下图比较了实现 Durable Functions 零停机时间部署的三个主要策略： 
 
@@ -58,7 +52,7 @@ Durable Functions 的[可靠执行模型](/azure-functions/durable/durable-funct
 
 1. 对于每个槽，请将 [AzureWebJobsStorage 应用程序设置](../functions-app-settings.md#azurewebjobsstorage)指定为共享存储帐户的连接字符串。 此存储帐户连接字符串由 Azure Functions 运行时使用。 此帐户由 Azure Functions 运行时使用，可以管理函数的密钥。
 
-1. 对于每个槽，请创建新的应用设置，例如 `DurableManagementStorage`。 将其值设置为不同存储帐户的连接字符串。 Durable Functions 扩展使用这些存储帐户来实现[可靠执行](/azure-functions/durable/durable-functions-orchestrations)。 对每个槽使用单独的存储帐户。 不要将此设置标记为部署槽设置。
+1. 对于每个槽，请创建新的应用设置，例如 `DurableManagementStorage`。 将其值设置为不同存储帐户的连接字符串。 Durable Functions 扩展使用这些存储帐户来实现[可靠执行](./durable-functions-orchestrations.md)。 对每个槽使用单独的存储帐户。 不要将此设置标记为部署槽设置。
 
 1. 在函数应用的 [host.json 文件的 durableTask 节](durable-functions-bindings.md#hostjson-settings)中，将 `azureStorageConnectionStringName` 指定为在步骤 3 中创建的应用设置的名称。
 
@@ -101,7 +95,7 @@ Durable Functions 的[可靠执行模型](/azure-functions/durable/durable-funct
 [FunctionName("StatusCheck")]
 public static async Task<IActionResult> StatusCheck(
     [HttpTrigger(AuthorizationLevel.Function, "get", "post")] HttpRequestMessage req,
-    [OrchestrationClient] DurableOrchestrationClient client,
+    [DurableClient] IDurableOrchestrationClient client,
     ILogger log)
 {
     var runtimeStatus = new List<OrchestrationRuntimeStatus>();
@@ -109,14 +103,14 @@ public static async Task<IActionResult> StatusCheck(
     runtimeStatus.Add(OrchestrationRuntimeStatus.Pending);
     runtimeStatus.Add(OrchestrationRuntimeStatus.Running);
 
-    var status = await client.GetStatusAsync(new DateTime(2015,10,10), null, runtimeStatus);
-    return (ActionResult) new OkObjectResult(new Status() {HasRunning = (status.Count != 0)});
+    var result = await client.ListInstancesAsync(new OrchestrationStatusQueryCondition() { RuntimeStatus = runtimeStatus }, CancellationToken.None);
+    return (ActionResult)new OkObjectResult(new { HasRunning = result.DurableOrchestrationState.Any() });
 }
 ```
 
 接下来，将过渡门限配置为等到没有任何业务流程运行为止。 
 
-![部署门限](./media/durable-functions-zero-downtime-deployment/deployment-gate.png)
+![部署入口](./media/durable-functions-zero-downtime-deployment/deployment-gate.png)
 
 Azure Pipelines 会在部署开始之前检查函数应用是否存在正在运行的业务流程实例。
 
@@ -138,7 +132,7 @@ Azure Pipelines 会在部署开始之前检查函数应用是否存在正在运�
 
 此策略最复杂。 但是，它可用于在运行的业务流程之间没有时间间隔的函数应用。
 
-对于此策略，必须在 Durable Functions 的前面创建一个应用程序路由器。  此路由器可通过 Durable Functions 实现。 路由器的责任如下：
+对于此策略，必须在 Durable Functions 的前面创建一个应用程序路由器。** 此路由器可通过 Durable Functions 实现。 路由器的责任如下：
 
 * 部署函数应用。
 * 管理 Durable Functions 的版本。 
@@ -178,5 +172,4 @@ Azure Pipelines 会在部署开始之前检查函数应用是否存在正在运�
 
 > [!div class="nextstepaction"]
 > [Durable Functions 版本控制](durable-functions-versioning.md)
-
 

@@ -4,15 +4,17 @@ description: 了解可用于缩放 Azure Cosmos DB Cassandra API 帐户的选项
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 01/13/2020
-ms.date: 06/22/2020
+origin.date: 07/29/2020
+ms.date: 08/17/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 68e3bbf02f303926101e4596b3e47a2a6f910383
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: a5c3f4ea9dceb01faee221e7e5931f1485513daf
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098469"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223428"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>弹性缩放 Azure Cosmos DB Cassandra API 帐户
 
@@ -20,7 +22,7 @@ ms.locfileid: "85098469"
 
 对于 Cassandra API，可以使用 [.NET 和 Java SDK](/cosmos-db/find-request-unit-charge#cassandra-api) 检索单个查询的请求单位费用。 这有助于确定你在服务中需要预配的 RU 数/秒。
 
-![数据库操作消耗请求单位](./media/request-units/request-units.png)
+:::image type="content" source="./media/request-units/request-units.png" alt-text="数据库操作消耗请求单位" border="false":::
 
 ## <a name="handling-rate-limiting-429-errors"></a>处理速率限制（429 错误）
 
@@ -49,7 +51,7 @@ ms.locfileid: "85098469"
 <a name="use-control-plane"></a>
 ## <a name="use-the-control-plane"></a>使用控制平面
 
-用于 Cassandra 的 Azure Cosmos DB API 提供使用各种控制平面功能以编程方式调整吞吐量的功能。 有关指导和示例，请参阅 [Azure 资源管理器](manage-cassandra-with-resource-manager.md)、[PowerShell](powershell-samples-cassandra.md) 和 [Azure CLI](cli-samples-cassandra.md) 文章。
+用于 Cassandra 的 Azure Cosmos DB API 提供使用各种控制平面功能以编程方式调整吞吐量的功能。 有关指导和示例，请参阅 [Azure 资源管理器](manage-cassandra-with-resource-manager.md)、[PowerShell](powershell-samples.md) 和 [Azure CLI](cli-samples.md) 文章。
 
 此方法的优点是可以根据计时器自动扩展或缩减资源，以反映活动的高峰或低活动期。 请参阅[此处](https://github.com/Azure-Samples/azure-cosmos-throughput-scheduler)的示例，了解如何使用 Azure Functions 和 PowerShell 实现此目的。
 

@@ -1,24 +1,24 @@
 ---
-title: 使用 Azure PowerShell 在 Windows 虚拟机上创建 SQL Server | Azure
+title: 使用 Azure PowerShell 在 Windows 虚拟机上创建 SQL Server | Microsoft Docs
 description: 本教程介绍如何使用 Azure PowerShell 创建运行 SQL Server 2017 的 Windows 虚拟机。
 services: virtual-machines-windows
 documentationcenter: na
-author: rockboyfor
+author: WenJason
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 origin.date: 12/21/2018
-ms.date: 07/06/2020
-ms.author: v-yeche
+ms.date: 08/17/2020
+ms.author: v-jay
 ms.reviewer: jroth
-ms.openlocfilehash: 1caf5d46aa08908b3f7bb1b95090f34dc4e40200
-ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
+ms.openlocfilehash: ee815fccfb1227416cbf00e01c633292f7b9658d
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85946308"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223141"
 ---
 <!--Verified successfully on redirect articles-->
 # <a name="quickstart-create-sql-server-on-a-windows-virtual-machine-with-azure-powershell"></a>快速入门：使用 Azure PowerShell 在 Windows 虚拟机上创建 SQL Server
@@ -31,13 +31,12 @@ ms.locfileid: "85946308"
 > - 本快速入门提供的路径适用于快速预配并连接到 SQL VM。 若要详细了解创建 SQL VM 所需的其他 Azure PowerShell 选项，请参阅 [SQL Server VM 预配指南（使用 Azure PowerShell）](create-sql-vm-powershell.md)。
 > - 如果对 SQL Server 虚拟机有任何疑问，请参阅[常见问题解答](frequently-asked-questions-faq.md)。
 
-<a name="subscription"></a>
-## <a name="get-an-azure-subscription"></a>获取 Azure 订阅
+## <a name="get-an-azure-subscription"></a><a id="subscription"></a> 获取 Azure 订阅
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
-<a name="powershell"></a>
-## <a name="get-azure-powershell"></a>获取 Azure PowerShell
+
+## <a name="get-azure-powershell"></a><a id="powershell"></a> 获取 Azure PowerShell
 
 [!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
@@ -178,7 +177,7 @@ Set-AzVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName
 
 1. 登录到远程桌面会话以后，从开始菜单启动 **SQL Server Management Studio 2017**。
 
-1. 在“连接到服务器”对话框中，保留默认设置。 服务器名称是 VM 的名称。 身份验证设置为“Windows 身份验证”。 选择“连接” 。
+1. 在“连接到服务器”对话框中，保留默认设置。 服务器名称是 VM 的名称。 身份验证设置为“Windows 身份验证”。 选择“连接”。
 
 你现在已通过本地方式连接到 SQL Server。 若要进行远程连接，必须通过 Azure 门户或手动[配置连接性](ways-to-connect-to-sql.md)。
 

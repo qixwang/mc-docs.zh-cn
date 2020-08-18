@@ -5,18 +5,20 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 04/03/2020
-ms.date: 06/22/2020
+ms.date: 08/17/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 56f3ddb9a1a4edadf6f7b3a5a0679dbb2cf367f5
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: eee0acdbe0a643bfe800681218aa37cfe920b200
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098691"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222742"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB 服务配额
 
-本文概述了 Azure Cosmos DB 中为不同资源提供的默认配额。
+本文概述了 Azure Cosmos DB 中提供给不同资源的默认配额。
 
 ## <a name="storage-and-throughput"></a>存储和吞吐量
 

@@ -10,14 +10,17 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 7a7473a6b507896a5d3195409246b704ad763868
-ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
+ms.openlocfilehash: 3cc23fea70b97e705e06678a8449c4bf6364f786
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "86441082"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88228317"
 ---
 # <a name="evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>在 Azure 机器学习工作室（经典）中评估模型性能
+
+**适用于：**  ![yes](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![no](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)
+
 
 本文介绍可用于监视 Azure 机器学习工作室（经典）中的模型性能的指标。  评估模型性能是数据科学过程的核心阶段之一。 它指示训练的模型为某个数据集评分的成功程度。 Azure 机器学习工作室（经典）通过它的两个主要机器学习模块支持模型评估： 
 + [评估模型][evaluate-model] 

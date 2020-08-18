@@ -5,14 +5,16 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 04/28/2020
-ms.date: 07/06/2020
+ms.date: 08/17/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: b4f743980d463cb0c228e2ee02d5ff56019eac40
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+ms.openlocfilehash: d8b449e1c5be5fe05433e1798e733aace7f1a57e
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323270"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222978"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Azure Cosmos DB 中的分区和水平缩放
 
@@ -41,7 +43,7 @@ Cosmos 容器中的物理分区数依赖于以下各项：
 
 在 Azure 门户的“指标”边栏选项卡的“存储”部分中，可以看到容器的物理分区 ：
 
-[![查看物理分区数](./media/partition-data/view-partitions-zoomed-out.png) ](./media/partition-data/view-partitions-zoomed-in.png#lightbox)
+:::image type="content" source="./media/partition-data/view-partitions-zoomed-out.png" alt-text="查看物理分区数" lightbox="./media/partition-data/view-partitions-zoomed-in.png" ::: 
 
 在此示例容器中，已选择 `/foodGroup` 作为分区键，三个矩形中的每一个都表示一个物理分区。 在此图中，分区键范围与物理分区相同。 选定的物理分区包含三个逻辑分区：`Beef Products`、`Vegetable and Vegetable Products` 和 `Soups, Sauces, and Gravies`。
 
@@ -55,7 +57,7 @@ Cosmos 容器中的物理分区数依赖于以下各项：
 
 下图显示了逻辑分区如何映射到多区域分布的物理分区：
 
-![演示 Azure Cosmos DB 分区的插图](./media/partition-data/logical-partitions.png)
+:::image type="content" source="./media/partition-data/logical-partitions.png" alt-text="演示 Azure Cosmos DB 分区的插图" border="false":::
 
 ## <a name="next-steps"></a>后续步骤
 

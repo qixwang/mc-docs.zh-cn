@@ -5,16 +5,18 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 04/08/2020
-ms.date: 06/22/2020
+ms.date: 08/17/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 8abe9df502ada5257896af60490bfd3bed8f6f72
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: 132087e73787f96f9963ab0cd3a2b79d3d399f5b
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098706"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222754"
 ---
 # <a name="change-feed-in-azure-cosmos-db"></a>Azure Cosmos DB 中的更改源
 
@@ -68,7 +70,7 @@ _etag 属于内部格式，请不要依赖它，因为它随时可能更改。 _
 
 更改源适用于容器中的每个逻辑分区键，它可以分配给一个或多个使用者进行并行处理，如下图所示。
 
-![Azure Cosmos DB 更改源的分布式处理](./media/change-feed/changefeedvisual.png)
+:::image type="content" source="./media/change-feed/changefeedvisual.png" alt-text="Azure Cosmos DB 更改源的分布式处理" border="false":::
 
 ## <a name="features-of-change-feed"></a>更改源的功能
 

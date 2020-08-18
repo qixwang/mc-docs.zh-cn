@@ -5,20 +5,21 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 06/04/2018
-ms.date: 04/27/2020
+ms.date: 08/17/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 120106fa8fcfbeeb5e837e1d859a4adb16499330
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 3aba596cf75de4587b56dea841b85315d50e808b
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134596"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222976"
 ---
 # <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>停用 S1、S2 和 S3 性能级别
 
 > [!IMPORTANT] 
 > 本文所述的 S1、S2 和 S3 性能级别即将停用，在新的 Azure Cosmos DB 帐户中将不再提供。
->
 
 本文概述 S1、S2 和 S3 性能级别，并介绍如何将使用这些性能级别的集合迁移到单分区集合。 阅读本文后，可以回答以下问题：
 
@@ -46,7 +47,7 @@ S1、S2 和 S3 性能级别无法提供标准 Azure Cosmos DB 产品提供的灵
 
 下表比较了单区集合、分区集合以及 S1、S2、S3 性能级别提供的吞吐量和存储选项。 下面是“中国东部 2”区域的一个示例：
 
-|   |分区集合|单区集合|S1|S2|S3|
+| 配额名称  |分区集合|单区集合|S1|S2|S3|
 |---|---|---|---|---|---|
 |最大吞吐量|无限制|10K RU/s|250 RU/s|1 K RU/s|2.5 K RU/秒|
 |最小吞吐量|2.5 K RU/秒|400 RU/s|250 RU/s|1 K RU/s|2.5 K RU/秒|
@@ -76,7 +77,7 @@ S1、S2 和 S3 性能级别无法提供标准 Azure Cosmos DB 产品提供的灵
 
 <a name="billing-change"></a>
 
-<!--Not Available ## How will my billing change after I'm migrated to the single partition collections?-->
+<!--Not Available ## How will my billing change after I migrated to the single partition collections?-->
 
 
 <a name="more-storage-needed"></a>

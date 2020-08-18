@@ -2,18 +2,21 @@
 title: 迁移应用程序以使用 Azure Cosmos DB Java SDK v4 (com.azure.cosmos)
 description: 了解如何将现有 Java 应用程序从使用较旧的 Azure Cosmos DB Java SDK 升级到用于 Core (SQL) API 的较新的 Java SDK 4.0（com.azure.cosmos 包）。
 author: rockboyfor
+ms.custom: devx-track-java
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 06/11/2020
-ms.date: 06/22/2020
+ms.date: 08/17/2020
+ms.testscope: no
+ms.testdate: ''
 ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: 58c20fa59bf2b4547362072b0426ec6566d72e8d
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: f3869aab5043a1b8d9ead9d7a36d138a1ac29068
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098685"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223337"
 ---
 <!--Verified successfully-->
 # <a name="migrate-your-application-to-use-the-azure-cosmos-db-java-sdk-v4"></a>迁移应用程序以使用 Azure Cosmos DB Java SDK v4
@@ -57,7 +60,7 @@ ms.locfileid: "85098685"
 
 以下是 Azure Cosmos DB Java SDK 4.x.x 与以前的 SDK（Java SDK 3.x.x、Async Java SDK 2.x.x 和 Sync Java SDK 2.x.x）相比的 API 级别更改：
 
-![Azure Cosmos DB Java SDK 命名约定](./media/migrate-java-v4-sdk/java-sdk-naming-conventions.png)
+:::image type="content" source="./media/migrate-java-v4-sdk/java-sdk-naming-conventions.png" alt-text="Azure Cosmos DB Java SDK 命名约定":::
 
 * Azure Cosmos DB Java SDK 3.x.x 和 4.0 将客户端资源作为 `Cosmos<resourceName>` 引用。 例如：`CosmosClient`、`CosmosDatabase`、`CosmosContainer`。 而在版本 2.x.x 中，Azure Cosmos DB Java SDK 没有统一的命名方案。
 
@@ -75,6 +78,7 @@ Azure Cosmos DB Java SDK 4.0 和 3.x.x 引入了分层 API 结构，该结构以
 
 ```java
 CosmosContainer container = client.getDatabase("MyDatabaseName").getContainer("MyContainerName");
+
 ```
 
 在 Azure Cosmos DB Java SDK 版本 2.x.x 中，对资源和文档执行的所有操作都通过客户端实例执行。
@@ -143,6 +147,7 @@ client.createDatabaseIfNotExists("YourDatabaseName")
     testContainerAsync = database.getContainer("YourContainerName");
     return Mono.empty();
 }).subscribe();
+
 ```
 
 # <a name="java-sdk-3xx-async-api"></a>[Java SDK 3.x.x 异步 API](#tab/java-v3-async)
@@ -184,6 +189,7 @@ client.createDatabaseIfNotExists("YourDatabaseName")
 # <a name="java-sdk-40-async-api"></a>[Java SDK 4.0 异步 API](#tab/java-v4-async)
 
 ```java
+
 // Container is created. Generate many docs to insert.
 int number_of_docs = 50000;
 ArrayList<JsonNode> docs = generateManyDocs(number_of_docs);
@@ -192,6 +198,7 @@ ArrayList<JsonNode> docs = generateManyDocs(number_of_docs);
 Flux.fromIterable(docs)
         .flatMap(doc -> testContainerAsync.createItem(doc))
         .subscribe(); // ...Subscribing triggers stream execution.
+
 ```
 
 # <a name="java-sdk-3xx-async-api"></a>[Java SDK 3.x.x 异步 API](#tab/java-v3-async)
@@ -215,6 +222,7 @@ Flux.fromIterable(docs)
 # <a name="java-sdk-40-async-api"></a>[Java SDK 4.0 异步 API](#tab/java-v4-async)
 
 ```java
+
 CosmosContainerProperties containerProperties = new CosmosContainerProperties(containerName, "/lastName");
 
 // Custom indexing policy

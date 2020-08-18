@@ -6,15 +6,15 @@ ms.subservice: cosmosdb-table
 ms.devlang: cpp
 ms.topic: sample
 origin.date: 10/07/2019
-ms.date: 08/10/2020
+ms.date: 08/17/2020
 author: rockboyfor
 ms.author: v-yeche
-ms.openlocfilehash: caf1157a0539deb07acfdc256c83eac99868a34c
-ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
+ms.openlocfilehash: c5f13df331807b835cc13770691afc71748bc02c
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87917192"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222619"
 ---
 # <a name="how-to-use-azure-table-storage-and-azure-cosmos-db-table-api-with-c"></a>如何通过 C++ 使用 Azure 表存储或 Azure Cosmos DB 表 API
 
@@ -103,7 +103,9 @@ const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=ht
 const utility::string_t storage_connection_string(U("UseDevelopmentStorage=true;"));  
 ```
 
-若要启动 Azure 存储模拟器，请从 Windows 桌面选择“开始”按钮或 Windows 键  。 输入并运行“Azure 存储模拟器”。 有关详细信息，请参阅[使用 Azure 存储模拟器进行开发和测试](../storage/common/storage-use-emulator.md)。
+若要启动 Azure 存储模拟器，请从 Windows 桌面选择“开始”按钮或 Windows 键  。 输入并运行 Microsoft Azure 存储模拟器**。 有关详细信息，请参阅[使用 Azure 存储模拟器进行开发和测试](../storage/common/storage-use-emulator.md)。
+
+<!--CORRECT ON *Microsoft Azure Storage Emulator*-->
 
 ### <a name="retrieve-your-connection-string"></a>检索连接字符串
 

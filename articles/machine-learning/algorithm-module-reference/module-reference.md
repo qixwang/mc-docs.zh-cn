@@ -10,12 +10,12 @@ author: peterclu
 ms.author: peterlu
 origin.date: 05/19/2020
 ms.date: 06/29/2020
-ms.openlocfilehash: 7ffbe525c0c5fe879c25022d0ad7b59b2cf2e87c
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: 83a6220d20120397a83cf07727c69113529322d2
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097481"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88228253"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer-preview"></a>Azure 机器学习设计器（预览版）的算法和模块参考
 
@@ -57,7 +57,7 @@ ms.locfileid: "85097481"
 | Python 语言 | 编写代码并将其嵌入到模块中，以便将 Python 与管道集成。 | [创建 Python 模型](create-python-model.md) <br/> [执行 Python 脚本](execute-python-script.md) |
 | R 语言 | 编写代码并将其嵌入到模块中，以便将 R 与管道集成。 | [执行 R 脚本](execute-r-script.md) |
 | 文本分析 | 提供专用计算工具来处理结构化和非结构化文本。 |  [将单词转换为矢量](convert-word-to-vector.md) <br/> [从文本中提取 N 元语法特征](extract-n-gram-features-from-text.md) <br/> [特征哈希](feature-hashing.md) <br/> [预处理文本](preprocess-text.md) <br/> [隐性 Dirichlet 分配](latent-dirichlet-allocation.md) |
-| 计算机视觉 | 与图像数据预处理和图像识别相关的模块。 |  [应用图像转换](apply-image-transformation.md) <br/> [转换为图像目录](convert-to-image-directory.md) <br/> [初始化图像转换](init-image-transformation.md) <br/> [拆分为图像目录](split-to-image-directory.md) <br/> [DenseNet](densenet.md) <br/> [ResNet](resnet.md) |
+| 计算机视觉 | 与图像数据预处理和图像识别相关的模块。 |  [应用图像转换](apply-image-transformation.md) <br/> [转换为图像目录](convert-to-image-directory.md) <br/> [初始化图像转换](init-image-transformation.md) <br/> 拆分为图像目录 <br/> [DenseNet](densenet.md) <br/> [ResNet](resnet.md) |
 | 建议 | 构建推荐模型。 | [评估推荐器](evaluate-recommender.md) <br/> [为 SVD 推荐器评分](score-svd-recommender.md) <br/> [为 Wide and Deep 推荐器评分](score-wide-and-deep-recommender.md)<br/> [训练 SVD 推荐器](train-SVD-recommender.md) <br/> [训练 Wide and Deep 推荐器](train-wide-and-deep-recommender.md)|
 | 异常检测 | 构建异常情况检测模型。 | [基于 PCA 的异常情况检测](pca-based-anomaly-detection.md) <br/> [训练异常情况检测模型](train-anomaly-detection-model.md) |
 

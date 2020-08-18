@@ -6,15 +6,15 @@ metadata:
   description: 在 Azure 应用服务中托管网站、Web 应用、RESTful API 和移动后端。 查找快速入门、教程和示例，以便帮助你成功使用应用服务。
   ms.topic: landing-page
   ms.service: app-service
-  origin.date: 02/26/2020
-  ms.date: 06/22/2020
+  origin.date: 08/06/2020
+  ms.date: 08/13/2020
   ms.author: v-tawe
-  ms.openlocfilehash: f905d1182f753136bf75b78b605a36c12a7eb8a7
-  ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
+  ms.openlocfilehash: 7712a24f82997005b0bf0d5f3e749c0affe1cdfe
+  ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/01/2020
-  ms.locfileid: "85613371"
+  ms.lasthandoff: 08/14/2020
+  ms.locfileid: "88227920"
 landingContent:
 - title: 关于应用服务
   linkLists:
@@ -33,15 +33,19 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: 第一个 ASP.NET Core 应用
-      url: app-service-web-get-started-dotnet.md
-    - text: 第一个 ASP.NET 应用
-      url: app-service-web-get-started-dotnet-framework.md
+      url: quickstart-dotnetcore.md
+    - text: 第一个 ASP.NET 应用（仅限 Windows）
+      url: quickstart-dotnet-framework.md
     - text: 第一个 Node.js 应用
-      url: app-service-web-get-started-nodejs.md
+      url: quickstart-nodejs.md
     - text: 第一个 PHP 应用
-      url: app-service-web-get-started-php.md
+      url: quickstart-php.md
     - text: 第一个 Java 应用
-      url: app-service-web-get-started-java.md
+      url: quickstart-java.md
+    - text: 第一个 Python Flask 应用（仅限 Linux）
+      url: quickstart-python.md
+    - text: 第一个 Ruby 应用（仅限 Linux）
+      url: quickstart-ruby.md
 - title: 常见任务
   linkLists:
   - linkListType: tutorial
@@ -56,6 +60,8 @@ landingContent:
     links:
     - text: 启用诊断日志
       url: troubleshoot-diagnostic-logs.md
+    - text: 通过 SSH 连接到 Linux 容器
+      url: configure-linux-open-ssh-session.md
     - text: 将活动域迁移到应用服务
       url: manage-custom-dns-migrate-domain.md
 - title: 将 CRUD 应用与数据库配合使用
@@ -65,11 +71,17 @@ landingContent:
     - text: 将 ASP.NET 应用与 SQL 数据库配合使用
       url: app-service-web-tutorial-dotnet-sqldatabase.md
     - text: 将 ASP.NET Core 应用与 SQL 数据库配合使用
-      url: app-service-web-tutorial-dotnetcore-sqldb.md
+      url: tutorial-dotnetcore-sqldb-app.md
     - text: 将 PHP (Laravel) 应用与 Azure MySQL 配合使用
-      url: app-service-web-tutorial-php-mysql.md
+      url: tutorial-php-mysql-app.md
     - text: 将 Node.js (MEAN.js) 应用与 MongoDB 配合使用
-      url: app-service-web-tutorial-nodejs-mongodb-app.md
+      url: tutorial-nodejs-mongodb-app.md
+    - text: 将 Java (Spring Boot) 应用与 Cosmos DB 配合使用
+      url: tutorial-java-spring-cosmosdb.md
+    - text: 将 Python (Django) 应用与 PostgreSQL 配合使用
+      url: tutorial-python-postgresql-app.md
+    - text: 将 Ruby (Rails) 应用与 PostgreSQL 配合使用
+      url: tutorial-ruby-postgres-app.md
 - title: 上传代码或内容
   linkLists:
   - linkListType: deploy
@@ -80,6 +92,8 @@ landingContent:
       url: deploy-zip.md
     - text: 从本地计算机进行 Git 推送
       url: deploy-local-git.md
+    - text: 从程序包运行
+      url: deploy-run-package.md
 - title: 管理和集成
   linkLists:
   - linkListType: concept

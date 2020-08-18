@@ -3,17 +3,19 @@ title: 使用 PowerShell 创建和管理 Azure Cosmos DB
 description: 使用 Azure Powershell 管理 Azure Cosmos 帐户、数据库、容器和吞吐量。
 author: rockboyfor
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: how-to
 origin.date: 05/13/2020
-ms.date: 06/22/2020
+ms.date: 08/17/2020
+ms.testscope: yes
+ms.testdate: 08/10/2020
 ms.author: v-yeche
 ms.custom: seodec18
-ms.openlocfilehash: 1e2e371634df1348450294fd58a7bbeac8e4bcb8
-ms.sourcegitcommit: 873e5c5e4156efed505a78d4f5a6e50c494e76d4
+ms.openlocfilehash: 3cd2a904c859d373451eccfa387c21727cff78b2
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86036748"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223194"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>使用 PowerShell 管理 Azure Cosmos DB SQL API 资源
 
@@ -22,13 +24,13 @@ ms.locfileid: "86036748"
 > [!NOTE]
 > 本文中的示例使用 [Az.CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) 管理 cmdlet。 有关最新更改，请参阅 [Az.CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) API 参考页。
 
-若要对 Azure Cosmos DB 进行跨平台管理，可以将 `Az` 和 `Az.CosmosDB` cmdlet 与[跨平台 Powershell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell) 以及 [Azure CLI](manage-with-cli.md)、[REST API][rp-rest-api] 或 [Azure 门户](create-sql-api-dotnet.md#create-account)配合使用。
+若要跨平台管理 Azure Cosmos DB，可在使用 `Az` 和 `Az.CosmosDB` cmdlet 时结合使用[跨平台 PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell) 以及 [Azure CLI](manage-with-cli.md)、[REST API][rp-rest-api] 或 [Azure 门户](create-sql-api-dotnet.md#create-account)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="getting-started"></a>入门
 
-请按照[如何安装和配置 Azure PowerShell][powershell-install-configure] 中的说明安装 PowerShell 并在其中登录 Azure 帐户。
+请按照[如何安装和配置 Azure PowerShell][powershell-install-configure] 中的说明，安装 PowerShell 并在其中登录 Azure 帐户。
 
 ## <a name="azure-cosmos-accounts"></a>Azure Cosmos 帐户
 
@@ -45,6 +47,7 @@ ms.locfileid: "86036748"
 * [列出 Azure Cosmos 帐户的连接字符串](#list-connection-strings)
 * [修改 Azure Cosmos 帐户的故障转移优先级](#modify-failover-priority)
 * [触发 Azure Cosmos 帐户的手动故障转移](#trigger-manual-failover)
+* [列出 Azure Cosmos DB 帐户上的资源锁](#list-account-locks)
 
 <a name="create-account"></a>
 ### <a name="create-an-azure-cosmos-account"></a>创建 Azure Cosmos 帐户
@@ -216,7 +219,6 @@ Remove-AzCosmosDBAccount `
 ### <a name="update-tags-of-an-azure-cosmos-account"></a>更新 Azure Cosmos 帐户的标记
 
 此命令设置 Azure Cosmos 帐户的 [Azure 资源标记][azure-resource-tags]。 标记可以在创建帐户时使用 `New-AzCosmosDBAccount` 来设置，也可以在更新帐户时使用 `Update-AzCosmosDBAccount` 来设置。
-> [!NOTE]
 
 ```powershell
 $resourceGroupName = "myResourceGroup"
@@ -345,6 +347,22 @@ Update-AzCosmosDBAccountFailoverPriority `
     -FailoverPolicy $locations
 ```
 
+<a name="list-account-locks"></a>
+### <a name="list-resource-locks-on-an-azure-cosmos-db-account"></a>列出 Azure Cosmos DB 帐户上的资源锁
+
+资源锁可放置在数据库和集合等 Azure Cosmos DB 资源上。 以下示例演示了如何在 Azure Cosmos DB 帐户上列出所有的 Azure 资源锁。
+
+```powershell
+$resourceGroupName = "myResourceGroup"
+$resourceTypeAccount = "Microsoft.DocumentDB/databaseAccounts"
+$accountName = "mycosmosaccount"
+
+Get-AzResourceLock `
+    -ResourceGroupName $resourceGroupName `
+    -ResourceType $resourceTypeAccount `
+    -ResourceName $accountName
+```
+
 ## <a name="azure-cosmos-db-database"></a>Azure Cosmos DB 数据库
 
 以下部分演示了如何管理 Azure Cosmos DB 数据库，具体包括：
@@ -355,6 +373,8 @@ Update-AzCosmosDBAccountFailoverPriority `
 * [列出帐户中的所有 Azure Cosmos DB 数据库](#list-db)
 * [获取单个 Azure Cosmos DB 数据库](#get-db)
 * [删除 Azure Cosmos DB 数据库](#delete-db)
+* [在 Azure Cosmos DB 数据库上创建资源锁以防止删除](#create-db-lock)
+* [删除 Azure Cosmos DB 数据库上的资源锁](#remove-db-lock)
 
 <a name="create-db"></a>
 ### <a name="create-an-azure-cosmos-db-database"></a>创建 Azure Cosmos DB 数据库
@@ -440,11 +460,50 @@ Remove-AzCosmosDBSqlDatabase `
     -Name $databaseName
 ```
 
+<a name="create-db-lock"></a>
+### <a name="create-a-resource-lock-on-an-azure-cosmos-db-database-to-prevent-delete"></a>在 Azure Cosmos DB 数据库上创建资源锁以防止删除
+
+```powershell
+$resourceGroupName = "myResourceGroup"
+$resourceType = "Microsoft.DocumentDB/databaseAccounts/sqlDatabases"
+$accountName = "mycosmosaccount"
+$databaseName = "myDatabase"
+$resourceName = "$accountName/$databaseName"
+$lockName = "myResourceLock"
+$lockLevel = "CanNotDelete"
+
+New-AzResourceLock `
+    -ResourceGroupName $resourceGroupName `
+    -ResourceType $resourceType `
+    -ResourceName $resourceName `
+    -LockName $lockName `
+    -LockLevel $lockLevel
+```
+
+<a name="remove-db-lock"></a>
+### <a name="remove-a-resource-lock-on-an-azure-cosmos-db-database"></a>删除 Azure Cosmos DB 数据库上的资源锁
+
+```powershell
+$resourceGroupName = "myResourceGroup"
+$resourceType = "Microsoft.DocumentDB/databaseAccounts/sqlDatabases"
+$accountName = "mycosmosaccount"
+$databaseName = "myDatabase"
+$resourceName = "$accountName/$databaseName"
+$lockName = "myResourceLock"
+
+Remove-AzResourceLock `
+    -ResourceGroupName $resourceGroupName `
+    -ResourceType $resourceType `
+    -ResourceName $resourceName `
+    -LockName $lockName
+```
+
 ## <a name="azure-cosmos-db-container"></a>Azure Cosmos DB 容器
 
 以下部分演示了如何管理 Azure Cosmos DB 容器，具体包括：
 
 * [创建 Azure Cosmos DB 容器](#create-container)
+* [使用自动缩放功能创建 Azure Cosmos DB 容器](#create-container-autoscale)
 * [使用大分区键创建 Azure Cosmos DB 容器](#create-container-big-pk)
 * [获取 Azure Cosmos DB 容器的吞吐量](#get-container-ru)
 * [使用自定义索引创建 Azure Cosmos DB 容器](#create-container-custom-index)
@@ -454,6 +513,8 @@ Remove-AzCosmosDBSqlDatabase `
 * [列出数据库中的所有 Azure Cosmos DB 容器](#list-containers)
 * [获取数据库中的单个 Azure Cosmos DB 容器](#get-container)
 * [删除 Azure Cosmos DB 容器](#delete-container)
+* [在 Azure Cosmos DB 容器上创建资源锁以防止删除](#create-container-lock)
+* [删除 Azure Cosmos DB 容器上的资源锁](#remove-container-lock)
 
 <a name="create-container"></a>
 ### <a name="create-an-azure-cosmos-db-container"></a>创建 Azure Cosmos DB 容器
@@ -465,6 +526,7 @@ $accountName = "mycosmosaccount"
 $databaseName = "myDatabase"
 $containerName = "myContainer"
 $partitionKeyPath = "/myPartitionKey"
+$throughput = 400 #minimum = 400
 
 New-AzCosmosDBSqlContainer `
     -ResourceGroupName $resourceGroupName `
@@ -472,7 +534,30 @@ New-AzCosmosDBSqlContainer `
     -DatabaseName $databaseName `
     -Name $containerName `
     -PartitionKeyKind Hash `
-    -PartitionKeyPath $partitionKeyPath
+    -PartitionKeyPath $partitionKeyPath `
+    -Throughput $throughput
+```
+
+<a name="create-container-autoscale"></a>
+### <a name="create-an-azure-cosmos-db-container-with-autoscale"></a>使用自动缩放功能创建 Azure Cosmos DB 容器
+
+```powershell
+# Create an Azure Cosmos DB container with default indexes and autoscale throughput at 4000 RU
+$resourceGroupName = "myResourceGroup"
+$accountName = "mycosmosaccount"
+$databaseName = "myDatabase"
+$containerName = "myContainer"
+$partitionKeyPath = "/myPartitionKey"
+$autoscaleMaxThroughput = 4000 #minimum = 4000
+
+New-AzCosmosDBSqlContainer `
+    -ResourceGroupName $resourceGroupName `
+    -AccountName $accountName `
+    -DatabaseName $databaseName `
+    -Name $containerName `
+    -PartitionKeyKind Hash `
+    -PartitionKeyPath $partitionKeyPath `
+    -AutoscaleMaxThroughput $autoscaleMaxThroughput
 ```
 
 <a name="create-container-big-pk"></a>
@@ -700,6 +785,45 @@ Remove-AzCosmosDBSqlContainer `
     -AccountName $accountName `
     -DatabaseName $databaseName `
     -Name $containerName
+```
+<a name="create-container-lock"></a>
+### <a name="create-a-resource-lock-on-an-azure-cosmos-db-container-to-prevent-delete"></a>在 Azure Cosmos DB 容器上创建资源锁以防止删除
+
+```powershell
+$resourceGroupName = "myResourceGroup"
+$resourceType = "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers"
+$accountName = "mycosmosaccount"
+$databaseName = "myDatabase"
+$containerName = "myContainer"
+$resourceName = "$accountName/$databaseName/$containerName"
+$lockName = "myResourceLock"
+$lockLevel = "CanNotDelete"
+
+New-AzResourceLock `
+    -ResourceGroupName $resourceGroupName `
+    -ResourceType $resourceType `
+    -ResourceName $resourceName `
+    -LockName $lockName `
+    -LockLevel $lockLevel
+```
+
+<a name="remove-container-lock"></a>
+### <a name="remove-a-resource-lock-on-an-azure-cosmos-db-container"></a>删除 Azure Cosmos DB 容器上的资源锁
+
+```powershell
+$resourceGroupName = "myResourceGroup"
+$resourceType = "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers"
+$accountName = "mycosmosaccount"
+$databaseName = "myDatabase"
+$containerName = "myContainer"
+$resourceName = "$accountName/$databaseName/$containerName"
+$lockName = "myResourceLock"
+
+Remove-AzResourceLock `
+    -ResourceGroupName $resourceGroupName `
+    -ResourceType $resourceType `
+    -ResourceName $resourceName `
+    -LockName $lockName
 ```
 
 ## <a name="next-steps"></a>后续步骤

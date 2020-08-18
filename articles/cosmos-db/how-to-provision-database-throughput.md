@@ -3,16 +3,19 @@ title: 在 Azure Cosmos DB 中预配数据库吞吐量
 description: 了解如何使用 Azure 门户、CLI、PowerShell 以及各种其他 SDK 在 Azure Cosmos DB 中预配数据库级别的吞吐量。
 author: rockboyfor
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 09/28/2019
-ms.date: 06/22/2020
+ms.date: 08/17/2020
+ms.testscope: yes
+ms.testdate: 08/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 8f2a59c1b20e4268e03b6ee8f4d2983234062a4b
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: f686f1515b22453ceb603b1fa74bb445b3ac904e
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098472"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222694"
 ---
 # <a name="provision-standard-manual-throughput-on-a-database-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中的数据库上预配标准（手动）吞吐量
 
@@ -34,14 +37,14 @@ ms.locfileid: "85098472"
     * 输入吞吐量（例如 1000 RU）。
     * 选择“确定”。
 
-    ![“新建数据库”对话框屏幕截图](./media/how-to-provision-database-throughput/provision-database-throughput-portal-all-api.png)
+    :::image type="content" source="./media/how-to-provision-database-throughput/provision-database-throughput-portal-all-api.png" alt-text="“新建数据库”对话框屏幕截图":::
 
 ## <a name="provision-throughput-using-azure-cli-or-powershell"></a>使用 Azure CLI 或 PowerShell 预配吞吐量
 
 若要创建具有共享吞吐量的数据库，请参阅
 
 * [使用 Azure CLI 创建数据库](manage-with-cli.md#create-a-database-with-shared-throughput)
-* [使用 Powershell 创建数据库](manage-with-powershell.md#create-db-ru)
+* [使用 PowerShell 创建数据库](manage-with-powershell.md#create-db-ru)
 
 ## <a name="provision-throughput-using-net-sdk"></a>使用 .NET SDK 预配吞吐量
 

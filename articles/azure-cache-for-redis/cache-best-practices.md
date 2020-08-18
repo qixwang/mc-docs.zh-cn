@@ -4,14 +4,14 @@ description: 遵循这些最佳做法了解如何有效使用 Azure Redis 缓存
 author: joncole
 ms.service: cache
 ms.topic: conceptual
-ms.date: 06/16/2020
+ms.date: 08/10/2020
 ms.author: v-junlch
-ms.openlocfilehash: c66f29cb76f96b40ce0710a56312208f7ef31f05
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: c6a24408d033ac35f5ae6fc516e2ca3f44a644e7
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097297"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223218"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Azure Redis 缓存的最佳做法 
 遵循这些最佳做法可帮助最大化性能并在 Azure 中经济、高效地利用 Azure Redis 缓存实例。
@@ -83,11 +83,11 @@ ms.locfileid: "85097297"
  
 ### <a name="redis-benchmark-examples"></a>Redis 基准示例
 **测试前的设置**：使用下列延迟和吞吐量测试命令所需的数据准备缓存实例。
-> redis-benchmark.exe -h yourcache.redis.cache.chinacloudapi.cn -a yourAccesskey -t SET -n 10 -d 1024 
+> redis-benchmark -h yourcache.redis.cache.chinacloudapi.cn -a yourAccesskey -t SET -n 10 -d 1024 
 
 **测试延迟**：使用 1k 有效负载测试 GET 请求。
-> redis-benchmark.exe -h yourcache.redis.cache.chinacloudapi.cn -a yourAccesskey -t GET -d 1024 -P 50 -c 4
+> redis-benchmark -h yourcache.redis.cache.chinacloudapi.cn -a yourAccesskey -t GET -d 1024 -P 50 -c 4redis-benchmark -h yourcache.redis.cache.chinacloudapi.cn -a yourAccesskey -t GET -d 1024 -P 50 -c 4
 
 **测试吞吐量：** 管道化的 GET 请求，其有效负载为 1k。
-> redis-benchmark.exe -h yourcache.redis.cache.chinacloudapi.cn -a yourAccesskey -t  GET -n 1000000 -d 1024 -P 50  -c 50
+> redis-benchmark -h yourcache.redis.cache.chinacloudapi.cn -a yourAccesskey -t  GET -n 1000000 -d 1024 -P 50  -c 50
 

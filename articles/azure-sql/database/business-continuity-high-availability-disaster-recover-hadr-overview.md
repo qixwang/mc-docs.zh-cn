@@ -4,7 +4,7 @@ titleSuffix: Azure SQL Database & SQL Managed Instance
 description: 了解 Azure SQL 数据库和 SQL 托管实例如何支持云业务连续性和数据库恢复以及如何帮助保持运行任务关键型云应用程序。
 keywords: 业务连续性, 云业务连续性, 数据库灾难恢复, 数据库恢复
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: high-availability
 ms.custom: sqldbrb=2
 ms.devlang: ''
@@ -13,13 +13,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: mathoma, carlrab
 origin.date: 06/25/2019
-ms.date: 07/13/2020
-ms.openlocfilehash: f3a7bb5ff795713f42eec55791c0477407327a6d
-ms.sourcegitcommit: fa26665aab1899e35ef7b93ddc3e1631c009dd04
+ms.date: 08/17/2020
+ms.openlocfilehash: 13d288fd8760f6fc7191b00c7ab254e81351edcf
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86227215"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222838"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>使用 Azure SQL 数据库确保业务连续性的相关概述
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -66,14 +66,14 @@ SQL 数据库和 SQL 托管实例还提供多种业务连续性功能，用于�
 
 |                                              | 异地复制 | 故障转移组  |
 |:---------------------------------------------| :-------------- | :----------------|
-| 自动故障转移                           |     否          |      是         |
-| 同时故障转移多个数据库  |     否          |      是         |
-| 用户必须在故障转移后更新连接字符串      |     是         |      否          |
-| SQL 托管实例支持                   |     否          |      是         |
-| 可以与主服务器位于同一区域             |     是         |      否          |
-| 多个副本                            |     是         |      否          |
-| 支持读取缩放                          |     是         |      是         |
-| &nbsp; | &nbsp; | &nbsp; |
+| **自动故障转移**                          |     否          |      是         |
+| **同时故障转移多个数据库**  |     否          |      是         |
+| **用户必须在故障转移后更新连接字符串**      |     是         |      否          |
+| **SQL 托管实例支持**                   |     否          |      是         |
+| **可以与主服务器位于同一区域**             |     是         |      否          |
+| **多个副本**                            |     是         |      否          |
+| **支持读取缩放**                          |     是         |      是         |
+
 
 ## <a name="recover-a-database-to-the-existing-server"></a>将数据库恢复到现有服务器
 

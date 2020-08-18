@@ -4,16 +4,16 @@ description: 通过证书创建 TLS/SSL 绑定，以便保护对自定义域进�
 tags: buy-ssl-certificates
 ms.topic: tutorial
 origin.date: 04/30/2020
-ms.date: 05/22/2020
+ms.date: 08/13/2020
 ms.author: v-tawe
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: baf45ce63c1fa4e05db50ffcc975b97c33906100
-ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
+ms.openlocfilehash: 014589e1ae0fe444f940467ad5ec4509b0edbdac
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83801126"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88227945"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>在 Azure 应用服务中使用 TLS/SSL 绑定保护自定义 DNS 名称
 
@@ -43,8 +43,10 @@ ms.locfileid: "83801126"
 - [将域名映射到应用](app-service-web-tutorial-custom-domain.md)
 - [将专用证书添加到应用](configure-ssl-certificate.md)
 
-<!-- > [!NOTE] -->
-<!-- > The easiest way to add a private certificate is to [create a free App Service Managed Certificate](configure-ssl-certificate.md#create-a-free-certificate-preview) (Preview). -->
+<!-- 
+> [!NOTE]
+> The easiest way to add a private certificate is to [create a free App Service Managed Certificate](configure-ssl-certificate.md#create-a-free-certificate-preview) (Preview).
+-->
 
 [!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
@@ -86,9 +88,9 @@ ms.locfileid: "83801126"
 |-|-|
 | 自定义域 | 要为其添加 TLS/SSL 绑定的域名。 |
 | 私有证书指纹 | 要绑定的证书。 |
-| TLS/SSL 类型 | <ul><li>SNI SSL - 可添加多个 SNI SSL 绑定。 选择此选项可以使用多个 SSL 证书来保护同一 IP 地址上的多个域。 大多数新式浏览器（包括 Internet Explorer、Chrome、Firefox 和 Opera）都支持 SNI。</li><li>**IP SSL** - 只能添加一个 IP SSL 绑定。 选择此选项只能使用一个 SSL 证书来保护专用公共 IP 地址。 配置绑定后，请按照[重新映射 IP SSL 的 A 记录](#remap-a-record-for-ip-ssl)中的步骤进行操作。<br/>仅生产或隔离层中支持 IP SSL。 </li></ul> |
+| TLS/SSL 类型 | <ul><li>SNI SSL - 可添加多个 SNI SSL 绑定。 选择此选项可以使用多个 TLS/SSL 证书来保护同一 IP 地址上的多个域。 大多数新式浏览器（包括 Internet Explorer、Chrome、Firefox 和 Opera）都支持 SNI。</li><li>**IP SSL** - 只能添加一个 IP SSL 绑定。 选择此选项只能使用一个 TLS/SSL 证书来保护专用公共 IP 地址。 配置绑定后，请按照[重新映射 IP SSL 的记录](#remap-records-for-ip-ssl)中的步骤进行操作。<br/>IP SSL 仅在“标准”  层或更高层中受支持。 </li></ul> |
 
-操作完成之后，自定义域的 TLS/SSL 状态会更改为“安全”。
+操作完成之后，自定义域的 TLS/SSL 状态会更改为“安全”  。
 
 ![TLS/SSL 绑定成功](./media/configure-ssl-bindings/secure-domain-finished.png)
 
@@ -156,7 +158,9 @@ ms.locfileid: "83801126"
 
 在应用服务中，TLS 终止在网络负载均衡器上发生，因此，所有 HTTPS 请求将以未加密的 HTTP 请求形式访问你的应用。 如果应用逻辑需要检查用户请求是否已加密，可以检查 `X-Forwarded-Proto` 标头。
 
-## <a name="automate-with-scripts"></a>使用脚本自动执行
+特定于语言的配置指南，如 [Linux Node.js 配置](configure-language-nodejs.md#detect-https-session)指南，介绍如何在应用程序代码中检测 HTTPS 会话。
+
+## <a name="automate-with-scripts"></a>使用脚本自动化
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -244,5 +248,5 @@ New-AzWebAppSSLBinding -WebAppName $webappname -ResourceGroupName $webappname -N
 
 ## <a name="more-resources"></a>更多资源
 
-* [在应用程序代码中使用 SSL 证书](configure-ssl-certificate-in-code.md)
+* [在 Azure 应用服务中通过代码使用 TLS/SSL 证书](configure-ssl-certificate-in-code.md)
 * [常见问题解答：应用服务证书](https://docs.azure.cn/app-service/faq-configuration-and-management/)

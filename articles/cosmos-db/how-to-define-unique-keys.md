@@ -3,17 +3,19 @@ title: 为 Azure Cosmos 容器定义唯一键
 description: 了解如何使用 Azure 门户、PowerShell、.Net、Java 和各种其他 SDK 为 Azure Cosmos 容器定义唯一键。
 author: rockboyfor
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 12/02/2019
-ms.date: 06/22/2020
+ms.date: 08/17/2020
+ms.testscope: yes
+ms.testdate: 08/10/2020
 ms.author: v-yeche
-ms.custom: tracking-python
-ms.openlocfilehash: 72327990b3039f2b7f711ef84f76d4c05c6261af
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.custom: tracking-python, devx-track-javascript
+ms.openlocfilehash: 8926b706f11797f9565774f06b95d9a02bc43763
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098488"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88223230"
 ---
 # <a name="define-unique-keys-for-an-azure-cosmos-container"></a>为 Azure Cosmos 容器定义唯一键
 
@@ -35,7 +37,7 @@ ms.locfileid: "85098488"
 
 1. 如果需要，可通过单击“+ 添加唯一键”，添加更多唯一键条目
 
-    ![Azure 门户中唯一键约束条目的屏幕截图](./media/how-to-define-unique-keys/unique-keys-portal.png)
+    :::image type="content" source="./media/how-to-define-unique-keys/unique-keys-portal.png" alt-text="Azure 门户中唯一键约束条目的屏幕截图":::
 
 ## <a name="use-powershell"></a>使用 PowerShell
 

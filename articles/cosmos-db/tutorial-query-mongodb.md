@@ -2,19 +2,21 @@
 title: 使用 Azure Cosmos DB 的用于 MongoDB 的 API 查询数据
 description: 了解如何使用 MongoDB shell 命令从 Azure Cosmos DB 的 API for MongoDB 查询数据
 author: rockboyfor
-ms.author: v-yeche
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: tutorial
 origin.date: 12/03/2019
-ms.date: 02/10/2020
+ms.date: 08/17/2020
+ms.testscope: yes
+ms.testdate: 08/10/2020
+ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: f3422f80758a229f281d5240a5ab12982d9fe5e4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2623cfb1cdc0fc248b9368d922410b3fde3e9fda
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77068334"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222532"
 ---
 # <a name="query-data-by-using-azure-cosmos-dbs-api-for-mongodb"></a>使用 Azure Cosmos DB 的用于 MongoDB 的 API 查询数据
 
@@ -68,11 +70,14 @@ ms.locfileid: "77068334"
 
 **查询**
 
-    db.families.find({ id: "WakefieldFamily"})
+```bash
+db.families.find({ id: "WakefieldFamily"})
+```
 
 **结果**
 
-    {
+```json
+{
     "_id": "ObjectId(\"58f65e1198f3a12c7090e68c\")",
     "id": "WakefieldFamily",
     "parents": [
@@ -110,7 +115,8 @@ ms.locfileid: "77068334"
     },
     "creationDate": 1431620462,
     "isRegistered": false
-    }
+}
+```
 
 <a name="examplequery2"></a>
 ## <a name="example-query-2"></a>示例查询 2 
@@ -119,11 +125,14 @@ ms.locfileid: "77068334"
 
 **查询**
 
-    db.families.find( { id: "WakefieldFamily" }, { children: true } )
+```bash 
+db.families.find( { id: "WakefieldFamily" }, { children: true } )
+``` 
 
 **结果**
 
-    {
+```json
+{
     "_id": "ObjectId("58f65e1198f3a12c7090e68c")",
     "children": [
       {
@@ -143,7 +152,8 @@ ms.locfileid: "77068334"
         "grade": 8
       }
     ]
-    }
+}
+```
 
 <a name="examplequery3"></a>
 ## <a name="example-query-3"></a>示例查询 3 
@@ -152,8 +162,13 @@ ms.locfileid: "77068334"
 
 **查询**
 
-    db.families.find( { "isRegistered" : true })
-**结果**不返回任何文档。 
+```bash
+db.families.find( { "isRegistered" : true })
+``` 
+
+**结果**
+
+不返回任何文档。 
 
 <a name="examplequery4"></a>
 ## <a name="example-query-4"></a>示例查询 4
@@ -162,10 +177,14 @@ ms.locfileid: "77068334"
 
 **查询**
 
-    db.families.find( { "isRegistered" : false })
+```bash
+db.families.find( { "isRegistered" : false })
+``` 
+
 **结果**
 
-    {
+```json
+{
     "_id": ObjectId("58f65e1198f3a12c7090e68c"),
     "id": "WakefieldFamily",
     "parents": [{
@@ -198,7 +217,8 @@ ms.locfileid: "77068334"
     },
     "creationDate": 1431620462,
     "isRegistered": false
-    }
+}
+```
 
 <a name="examplequery5"></a>
 ## <a name="example-query-5"></a>示例查询 5
@@ -207,11 +227,14 @@ ms.locfileid: "77068334"
 
 **查询**
 
-    db.families.find( { "isRegistered" : false, "address.state" : "NY" })
+```bash
+db.families.find( { "isRegistered" : false, "address.state" : "NY" })
+``` 
 
 **结果**
 
-    {
+```json
+{
     "_id": ObjectId("58f65e1198f3a12c7090e68c"),
     "id": "WakefieldFamily",
     "parents": [{
@@ -244,7 +267,8 @@ ms.locfileid: "77068334"
     },
     "creationDate": 1431620462,
     "isRegistered": false
-    }
+}
+```
 
 <a name="examplequery6"></a>
 ## <a name="example-query-6"></a>示例查询 6
@@ -253,11 +277,14 @@ ms.locfileid: "77068334"
 
 **查询**
 
-     db.families.find( { children : { $elemMatch: { grade : 8 }} } )
+```bash
+db.families.find( { children : { $elemMatch: { grade : 8 }} } )
+```
 
 **结果**
 
-    {
+```json
+{
     "_id": ObjectId("58f65e1198f3a12c7090e68c"),
     "id": "WakefieldFamily",
     "parents": [{
@@ -290,7 +317,8 @@ ms.locfileid: "77068334"
     },
     "creationDate": 1431620462,
     "isRegistered": false
-    }
+}
+```
 
 <a name="examplequery7"></a>
 ## <a name="example-query-7"></a>示例查询 7
@@ -299,7 +327,9 @@ ms.locfileid: "77068334"
 
 **查询**
 
-    db.Family.find( {children: { $size:3} } )
+```bash
+db.Family.find( {children: { $size:3} } )
+```
 
 **结果**
 
@@ -317,4 +347,4 @@ ms.locfileid: "77068334"
 > [!div class="nextstepaction"]
 > [多区域分配数据](tutorial-global-distribution-sql-api.md)
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

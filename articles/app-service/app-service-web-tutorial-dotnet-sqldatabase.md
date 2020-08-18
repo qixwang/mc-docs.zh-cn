@@ -5,19 +5,19 @@ ms.assetid: 03c584f1-a93c-4e3d-ac1b-c82b50c75d3e
 ms.devlang: csharp
 ms.topic: tutorial
 origin.date: 06/25/2018
-ms.date: 06/22/2020
+ms.date: 08/13/2020
 ms.author: v-tawe
 ms.custom: mvc, devcenter, vs-azure, seodec18
-ms.openlocfilehash: 45dab0e5349af10bae6b3f62dcb5557e65671bef
-ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
+ms.openlocfilehash: c5025ba1161a270b7e1e24dfea04dde105bced1f
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85613350"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88227962"
 ---
 # <a name="tutorial-deploy-an-aspnet-app-to-azure-with-azure-sql-database"></a>教程：使用 Azure SQL 数据库将 ASP.NET 应用部署到 Azure
 
-[Azure 应用服务](overview.md)提供高度可缩放、自修复的 Web 托管服务。 本教程演示如何在应用服务中部署数据驱动的 ASP.NET 应用，以及如何将其连接到 [Azure SQL 数据库](../sql-database/sql-database-technical-overview.md)。 完成后，你便拥有了一个在 Azure 中运行并连接到 SQL 数据库的 ASP.NET 应用。
+[Azure 应用服务](overview.md)提供高度可缩放、自修复的 Web 托管服务。 本教程演示如何在应用服务中部署数据驱动的 ASP.NET 应用，以及如何将其连接到 [Azure SQL 数据库](../azure-sql/database/sql-database-paas-overview.md)。 完成后，你便拥有了一个在 Azure 中运行并连接到 SQL 数据库的 ASP.NET 应用。
 
 ![已在 Azure 应用服务中发布 ASP.NET 应用程序](./media/app-service-web-tutorial-dotnet-sqldatabase/azure-app-in-browser.png)
 
@@ -57,7 +57,7 @@ ms.locfileid: "85613350"
 
 ![“新建 ASP.NET 项目”对话框](media/app-service-web-tutorial-dotnet-sqldatabase/local-app-in-browser.png)
 
-测试“编辑”、“详细信息”和“删除”链接。  
+测试“编辑”、“详细信息”和“删除”链接。
 
 该应用使用数据库上下文与数据库进行连接。 在此示例中，数据库上下文使用名为 `MyDbConnection` 的连接字符串。 此连接字符串在 *Web.config* 文件中设置，在 *Models/MyDatabaseContext.cs* 文件中引用。 在教程后面部分，该连接字符串名称用于将 Azure 应用连接到 Azure SQL 数据库。
 
@@ -75,7 +75,7 @@ ms.locfileid: "85613350"
 
 ### <a name="sign-in-to-azure"></a>登录 Azure
 
-在“创建应用服务”对话框中单击“添加帐户”，并登录到用户的 Azure 订阅。  如果已登录到 Azure 帐户，请确保该帐户包含 Azure 订阅。 如果登录的 Azure 帐户不包含 Azure 订阅，请单击该帐户添加正确的帐户。
+在“创建应用服务”对话框中单击“添加帐户”，并登录到用户的 Azure 订阅。 如果已登录到 Azure 帐户，请确保该帐户包含 Azure 订阅。 如果登录的 Azure 帐户不包含 Azure 订阅，请单击该帐户添加正确的帐户。
 
 > [!NOTE]
 > 如果已经登录，请先不要选择“创建”。
@@ -92,7 +92,7 @@ ms.locfileid: "85613350"
 
 [!INCLUDE [resource-group](../../includes/resource-group.md)]
 
-1. 在“资源组”旁边单击“新建”。 
+1. 在“资源组”旁边单击“新建”。
 
    ![在“资源组”旁边单击“新建”。](media/app-service-web-tutorial-dotnet-sqldatabase/new_rg2.png)
 
@@ -102,7 +102,7 @@ ms.locfileid: "85613350"
 
 [!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
 
-1. 在“应用服务计划”旁边单击“新建”。 
+1. 在“应用服务计划”旁边单击“新建”。
 
 2. 在“配置应用服务计划”对话框中，使用以下设置配置新的应用服务计划：
 
@@ -111,12 +111,12 @@ ms.locfileid: "85613350"
    | 设置  | 建议的值 | 更多信息 |
    | ----------------- | ------------ | ----|
    |**应用服务计划**| myAppServicePlan | [应用服务计划](../app-service/overview-hosting-plans.md) |
-   |**位置**| 中国北部 | - |
+   |**位置**| 中国东部 2 | [Azure 区域](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) |
    |**大小**| 免费 | [定价层](https://www.azure.cn/pricing/details/app-service/)|
 
 ### <a name="create-a-server"></a>创建服务器
 
-在创建数据库时之前，需要[逻辑 SQL Server](../sql-database/sql-database-features.md)。 逻辑 SQL 服务器是一种逻辑构造，其中包含一组作为组管理的数据库。
+在创建数据库时之前，需要[逻辑 SQL Server](../azure-sql/database/logical-servers.md)。 逻辑 SQL 服务器是一种逻辑构造，其中包含一组作为组管理的数据库。
 
 1. 单击“创建 SQL 数据库”。
 
@@ -143,11 +143,11 @@ ms.locfileid: "85613350"
 
    * 保留默认生成的数据库名称。
    * 在“连接字符串名称”中，键入 *MyDbConnection*。 此名称必须与 *Models/MyDatabaseContext.cs* 中引用的连接字符串相匹配。
-   * 选择“确定” 。
+   * 选择“确定”。
 
     ![配置数据库](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database.png)
 
-2. “创建应用服务”对话框显示已配置的资源。 单击**创建**。
+2. “创建应用服务”对话框显示已配置的资源。 单击“创建”。
 
    ![已创建的资源](media/app-service-web-tutorial-dotnet-sqldatabase/app_svc_plan_done.png)
 
@@ -157,7 +157,7 @@ ms.locfileid: "85613350"
 
 ![已在 Azure 应用中发布 ASP.NET 应用程序](./media/app-service-web-tutorial-dotnet-sqldatabase/azure-app-in-browser.png)
 
-祝贺！ 数据驱动 ASP.NET 应用程序当前在 Azure 应用服务中实时运行。
+祝贺你！ 数据驱动 ASP.NET 应用程序当前在 Azure 应用服务中实时运行。
 
 ## <a name="access-the-database-locally"></a>本地访问数据库
 
@@ -165,7 +165,7 @@ ms.locfileid: "85613350"
 
 ### <a name="create-a-database-connection"></a>创建数据库连接
 
-在“视图”菜单中，选择“SQL Server 对象资源管理器”。 
+在“视图”菜单中，选择“SQL Server 对象资源管理器”。
 
 在“SQL Server 对象资源管理器”顶部，单击“添加 SQL Server”按钮。
 
@@ -289,7 +289,7 @@ public ActionResult Create([Bind(Include = "Description,CreatedDate,Done")] Todo
 
 键入 `Ctrl+F5`，以便运行该应用。
 
-现在可以添加待办事项，然后单击“完成”。 然后，它应作为已完成项在主页中显示。 请记住，`Edit`视图不显示`Done`字段，因为没有更改`Edit`视图。
+你现在可以添加一个待办事项，并检查''Done''。 然后，它应作为已完成项在主页中显示。 请记住，`Edit`视图不显示`Done`字段，因为没有更改`Edit`视图。
 
 ### <a name="enable-code-first-migrations-in-azure"></a>在 Azure 中启用 Code First 迁移
 
@@ -355,7 +355,7 @@ public ActionResult Create([Bind(Include = "Description,CreatedDate,Done")] Todo
 
 再次右键单击 Azure 应用并选择“查看设置”。
 
-在“应用程序日志记录(文件系统)”下拉列表中，选择“详细”。 单击“保存” 。
+在“应用程序日志记录(文件系统)”下拉列表中，选择“详细”。 单击“ **保存**”。
 
 ![将跟踪级别更改为“详细”](./media/app-service-web-tutorial-dotnet-sqldatabase/trace-level-verbose.png)
 
@@ -397,7 +397,7 @@ Application: 2017-04-06T23:30:54  PID[8132] Verbose     GET /Todos/Index
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已学习了如何执行以下操作：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 >
@@ -412,3 +412,15 @@ Application: 2017-04-06T23:30:54  PID[8132] Verbose     GET /Todos/Index
 
 > [!div class="nextstepaction"]
 > [使用适用于 Azure 资源的托管标识安全地访问 SQL 数据库](app-service-web-tutorial-connect-msi.md)
+
+更多资源：
+
+> [!div class="nextstepaction"]
+> [配置 ASP.NET 应用](configure-language-dotnet-framework.md)
+
+<!--
+Want to optimize and save on your cloud spending?
+
+> [!div class="nextstepaction"]
+> [Start analyzing costs with Cost Management](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+-->

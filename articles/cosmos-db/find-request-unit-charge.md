@@ -3,16 +3,19 @@ title: 在 Azure Cosmos DB 中查找请求单位 (RU) 费用
 description: 了解如何查找针对 Azure Cosmos 容器执行的任何操作所产生的请求单位 (RU) 费用。
 author: rockboyfor
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 09/01/2019
-ms.date: 06/22/2020
+ms.date: 08/17/2020
+ms.testscope: yes
+ms.testdate: 08/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 8f8a4237e412eded6370bde895083d59c40b6a7b
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 63e742076929cb73e80c38d046934e5594a6c569
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098401"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222872"
 ---
 # <a name="find-the-request-unit-charge-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中查找请求单位费用
 
@@ -38,7 +41,7 @@ ms.locfileid: "85098401"
 
 1. 选择“查询统计信息”，以显示执行的请求的实际请求费用。
 
-    ![Azure 门户中的 SQL 查询请求费用屏幕截图](./media/find-request-unit-charge/portal-sql-query.png)
+    :::image type="content" source="./media/find-request-unit-charge/portal-sql-query.png" alt-text="Azure 门户中的 SQL 查询请求费用屏幕截图":::
 
 ### <a name="use-the-net-sdk"></a>使用 .NET SDK
 
@@ -109,6 +112,7 @@ while (feedIterator.HasMoreResults)
     FeedResponse<dynamic> feedResponse = await feedIterator.ReadNextAsync();
     requestCharge = feedResponse.RequestCharge;
 }
+
 ```
 
 有关详细信息，请参阅[快速入门：在 Azure Cosmos DB 中使用 SQL API 帐户生成 .NET Web 应用](create-sql-api-dotnet.md)。
@@ -216,7 +220,7 @@ RU 费用由名为 `getLastRequestStatistics` 的自定义[数据库命令](http
 
 1. 选择“查询统计信息”，以显示执行的请求的实际请求费用。
 
-    ![Azure 门户中的 MongoDB 查询请求费用屏幕截图](./media/find-request-unit-charge/portal-mongodb-query.png)
+    :::image type="content" source="./media/find-request-unit-charge/portal-mongodb-query.png" alt-text="Azure 门户中的 MongoDB 查询请求费用屏幕截图":::
 
 ### <a name="use-the-mongodb-net-driver"></a>使用 MongoDB .NET 驱动程序
 

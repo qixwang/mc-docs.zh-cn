@@ -1,21 +1,23 @@
 ---
 title: 快速入门 - 将 Cassandra API 与 Python 配合使用 - Azure Cosmos DB
-description: 本快速入门介绍如何通过 Python 使用 Azure Cosmos DB Apache Cassandra API 创建配置文件应用程序。
+description: 本快速入门介绍如何配合 Python 使用 Azure Cosmos DB 的 Apache Cassandra API 创建配置文件应用程序。
 author: rockboyfor
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.devlang: python
 ms.topic: quickstart
 origin.date: 05/18/2020
-ms.date: 06/22/2020
+ms.date: 08/17/2020
+ms.testscope: yes
+ms.testdate: 08/10/2020
 ms.author: v-yeche
 ms.custom: tracking-python
-ms.openlocfilehash: 88e8fb815a406bc503eff408f48d4caa5c4c08e8
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: 968d776ff848b76168986936bcae5dff7f0031bc
+ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098687"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88222993"
 ---
 <!--Verify sucessfully-->
 # <a name="quickstart-build-a-cassandra-app-with-python-sdk-and-azure-cosmos-db"></a>快速入门：使用 Python SDK 和 Azure Cosmos DB 构建 Cassandra 应用
@@ -63,7 +65,7 @@ ms.locfileid: "85098687"
     cd "C:\git-samples"
     ```
 
-3. 运行下列命令，克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
+3. 运行下列命令以克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-cassandra-python-getting-started.git
@@ -142,31 +144,31 @@ ms.locfileid: "85098687"
 
 1. 在 [Azure 门户](https://portal.azure.cn/)的 Azure Cosmos DB 帐户中，选择“连接字符串”。 
 
-    使用 ![“复制”按钮](./media/create-cassandra-python/copy.png) 复制最上面的值“联系点”。
+1. 使用屏幕右侧的 :::image type="icon" source="./media/create-cassandra-python/copy.png"::: 按钮复制最上面的值“联系点”。 
 
-    ![在 Azure 门户的连接字符串边栏选项卡中查看并复制用户名、密码和联系点](./media/create-cassandra-python/keys.png)
+    :::image type="content" source="./media/create-cassandra-python/keys.png" alt-text="在 Azure 门户的连接字符串边栏选项卡中查看并复制用户名、密码和联系点":::
 
-2. 打开 config.py 文件。 
+1. 打开 config.py 文件。 
 
-3. 粘贴门户中的“联系点”值，并覆盖第 10 行中的 `<FILLME>`。
+1. 粘贴门户中的“联系点”值，并覆盖第 10 行中的 `<FILLME>`。
 
     第 10 行现在应如下所示 
 
     `'contactPoint': 'cosmos-db-quickstarts.cassandra.cosmos.azure.cn:10350'`
 
-4. 复制并粘贴门户中的“用户名”值，并覆盖第 6 行中的 `<FILLME>`。
+1. 复制并粘贴门户中的“用户名”值，并覆盖第 6 行中的 `<FILLME>`。
 
     第 6 行现在应如下所示 
 
     `'username': 'cosmos-db-quickstart',`
 
-5. 复制并粘贴门户中的“密码”值，并覆盖第 8 行中的 `<FILLME>`。
+1. 复制并粘贴门户中的“密码”值，并覆盖第 8 行中的 `<FILLME>`。
 
     第 8 行现在应如下所示
 
     `'password' = '2Ggkr662ifxz2Mg==`';`
 
-6. 保存 config.py 文件。
+1. 保存 config.py 文件。
 
 ## <a name="use-the-x509-certificate"></a>使用 X509 证书
 
@@ -193,19 +195,18 @@ ms.locfileid: "85098687"
 
 2. 运行以下命令启动 Python 应用程序：
 
-    ```
-    python pyquickstart.py
+    ```python pyquickstart.py
     ```
 
 3. 通过命令行验证结果是否符合预期。
 
     按 CTRL+C 停止执行程序并关闭控制台窗口。 
 
-    ![查看并验证输出](./media/create-cassandra-python/output.png)
+    :::image type="content" source="./media/create-cassandra-python/output.png" alt-text="查看并验证输出":::
 
 4. 在 Azure 门户中，打开数据资源管理器，以查询、修改和处理这些新数据。 
 
-    ![在数据资源管理器中查看数据](./media/create-cassandra-python/data-explorer.png)
+    :::image type="content" source="./media/create-cassandra-python/data-explorer.png" alt-text="在数据资源管理器中查看数据":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>在 Azure 门户中查看 SLA
 

@@ -1,23 +1,19 @@
 ---
 title: Azure CLI 脚本示例 - 订阅 Blob 存储帐户 | Microsoft Docs
 description: 本文提供了一个示例 Azure CLI 脚本，演示如何订阅 Azure Blob 存储帐户的事件。
-services: event-grid
-documentationcenter: na
-author: lingliw
-ms.service: event-grid
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: na
+author: Johnnytechn
+ms.author: v-johya
 origin.date: 01/23/2020
-ms.date: 3/16/2020
-ms.author: v-lingwu
-ms.openlocfilehash: 3dbb1c70b3725a63c7f4bce6e672fe3e3af52f9d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 08/10/2020
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: e9ce04a8ab75c8aefc11c8d7735a13c2767fe5a1
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79452510"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88228166"
 ---
 # <a name="subscribe-to-events-for-a-blob-storage-account-with-azure-cli"></a>使用 Azure CLI 订阅 Blob 存储帐户的事件
 
@@ -25,22 +21,60 @@ ms.locfileid: "79452510"
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
-[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
 ## <a name="sample-script"></a>示例脚本
 
-<!--[!code-azurecli[main](../../../cli_scripts/event-grid/subscribe-to-blob-storage/subscribe-to-blob-storage.sh "Subscribe to Blob storage")]-->
+```azurecli
+#!/bin/bash
+
+# You must have the latest version of the Azure CLI
+
+# Provide a unique name for the Blob storage account.
+storageName="<Name of the storage account>"
+
+# Provide an endpoint for handling the events.
+myEndpoint="<endpoint URL>"
+
+# Provide the name of the resource group to contain the storage account.
+myResourceGroup="<resource group name>"
+
+# Select the Azure subscription to contain the storage account and event subscription.
+az account set --subscription "<name or ID of the subscription>"
+
+# Create resource group
+az group create --name $myResourceGroup --location chinanorth2
+
+# Create the Blob storage account. 
+az storage account create \
+  --name $storageName \
+  --location chinanorth2 \
+  --resource-group $myResourceGroup \
+  --sku Standard_LRS \
+  --kind BlobStorage \
+  --access-tier Hot
+
+# Get the resource ID of the Blob storage account.
+storageid=$(az storage account show --name $storageName --resource-group $myResourceGroup --query id --output tsv)
+
+# Subscribe to the Blob storage account. 
+az eventgrid event-subscription create \
+  --source-resource-id $storageid \
+  --name demoSubToStorage \
+  --endpoint $myEndpoint
+```
 
 ## <a name="script-explanation"></a>脚本说明
 
-此脚本使用以下命令创建事件订阅。 表中的每条命令均链接到特定于命令的文档。
+此脚本使用以下命令创建事件订阅。 表中的每条命令链接到特定于命令的文档。
 
 | Command | 说明 |
 |---|---|
-| [az eventgrid event-subscription create](/cli/eventgrid/event-subscription#az-eventgrid-event-subscription-create) | 创建事件网格订阅。 |
-| [az eventgrid event-subscription create](/cli/ext/eventgrid/eventgrid/event-subscription#ext-eventgrid-az-eventgrid-event-subscription-create) - 扩展版本 | 创建事件网格订阅。 |
+| [az eventgrid event-subscription create](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription#az-eventgrid-event-subscription-create) | 创建事件网格订阅。 |
+| [az eventgrid event-subscription create](https://docs.microsoft.com/cli/azure/ext/eventgrid/eventgrid/event-subscription#ext-eventgrid-az-eventgrid-event-subscription-create) - 扩展版本 | 创建事件网格订阅。 |
 
 ## <a name="next-steps"></a>后续步骤
 
 * 有关查询订阅的信息，请参阅[查询事件网格订阅](../query-event-subscriptions.md)。
-* 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.microsoft.com/cli/azure)。
+* 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli)。
+

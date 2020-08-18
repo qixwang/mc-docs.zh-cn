@@ -10,14 +10,17 @@ author: peterclu
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/14/2019
-ms.openlocfilehash: a4f822daef6fb3f5ef20cc38c438b8cb4186e72a
-ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
+ms.openlocfilehash: b4d2a819204c72caed9da20d39620520d8a9c083
+ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "86440919"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88228104"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-classic-web-service"></a>重新训练和部署经典工作室（经典）Web 服务
+
+**适用于：**  ![yes](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![no](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)
+
 
 重新训练机器学习模型是确保它们保持准确并基于最相关的数据的一种方法。 本文介绍如何重新训练经典工作室（经典）Web 服务。 有关如何重新训练新的工作室（经典）Web 服务的指南，请[查看此操作指南文章](retrain-machine-learning-model.md)。
 
@@ -45,8 +48,8 @@ ms.locfileid: "86440919"
 ### <a name="use-the-azure-web-services-portal-to-add-an-endpoint"></a>使用 Azure Web 服务门户添加终结点
 
 1. 在机器学习工作室（经典）的左侧导航栏中，单击“Web 服务”。
-1. 在 Web 服务仪表板的底部，单击“管理终结点预览”  。
-1. 单击“添加”  。
+1. 在 Web 服务仪表板的底部，单击“管理终结点预览”****。
+1. 单击“添加”。
 1. 键入新终结点的名称及说明。 选择日志记录级别以及是否启用示例数据。 有关日志记录的详细信息，请参阅[为机器学习 Web 服务启用日志记录](web-services-logging.md)。
 
 ## <a name="update-the-added-endpoints-trained-model"></a>更新已添加终结点的训练模型
@@ -56,14 +59,14 @@ ms.locfileid: "86440919"
 请按照以下步骤使用 Web 门户获取正确的修补程序 URL：
 
 1. 登录到 [Azure 机器学习 Web 服务](https://services.azureml.net/)门户。
-1. 单击“Web 服务”  或顶部的“经典 Web 服务”  。
+1. 单击“Web 服务”**** 或顶部的“经典 Web 服务”****。
 1. 单击你正在使用的计分 Web 服务（如果未修改 Web 服务的默认名称，则它将以“[Scoring Exp.]”结尾）。
-1. 单击“+新建”。 
+1. 单击“+新建”。
 1. 添加终结点后，单击终结点名称。
-1. 在“修补程序”URL 下面，单击“API 帮助”打开修补帮助页。  
+1. 在“修补程序”URL 下面，单击“API 帮助”打开修补帮助页。********
 
 > [!NOTE]
-> 如果已向训练 Web 服务而非预测 Web 服务添加终结点，在单击“更新资源”链接时会收到以下错误  ：“抱歉，此功能不受支持或在此上下文中不可用”。 此 Web 服务没有可更新的资源。 我们对于所造成的不便深表歉意，正在努力改进此工作流。
+> 如果已向训练 Web 服务而非预测 Web 服务添加终结点，在单击“更新资源”链接时会收到以下错误：“抱歉，此功能不受支持或在此上下文中不可用”。 此 Web 服务没有可更新的资源。 我们对于所造成的不便深表歉意，正在努力改进此工作流。
 >
 
 修补程序帮助页包含你必须使用的修补程序 URL，并提供可用于调用它的示例代码。
@@ -118,13 +121,13 @@ ms.locfileid: "86440919"
 
 *Resources* 中的 *Name* 参数的值应与预测实验中已保存的训练模型的资源名称相匹配。 若要获取资源名称，请执行以下步骤：
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)。
-1. 在左侧菜单中，单击“机器学习”  。
-1. 在“名称”下，单击你的工作区，并单击“Web 服务”  。
-1. 在“名称”下，单击“人口普查模型 [预测实验]”  。
+1. 登录 [Azure 门户](https://portal.azure.cn)。
+1. 在左侧菜单中，单击“机器学习”****。
+1. 在“名称”下，单击你的工作区，并单击“Web 服务”****。
+1. 在“名称”下，单击“人口普查模型 [预测实验]”****。
 1. 单击已添加的新终结点。
-1. 在终结点仪表板上，单击“更新资源”  。
-1. 在 Web 服务的更新资源 API 文档页上，可以在“可更新资源”  下找到“资源名称”  。
+1. 在终结点仪表板上，单击“更新资源”****。
+1. 在 Web 服务的更新资源 API 文档页上，可以在“可更新资源”**** 下找到“资源名称”****。
 
 如果在完成更新终结点之前 SAS 令牌到期，必须使用作业 ID 执行 GET 操作，才能获取全新令牌。
 
@@ -135,4 +138,4 @@ ms.locfileid: "86440919"
 若要了解有关如何管理 Web 服务或跟踪多个实验运行的详细信息，请参阅以下文章：
 
 * [探索 Web 服务门户](manage-new-webservice.md)
-* [管理实验迭代](manage-experiment-iterations.md)
+* [管理试验迭代](manage-experiment-iterations.md)
