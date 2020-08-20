@@ -27108,6 +27108,171 @@
       "source_path": "articles/azure-sql/database/service-tiers-prs.md",
       "redirect_url": "/azure-sql/database/doc-changes-updates-release-notes",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/active-directory/b2b/add-guest-to-role.md",
+      "redirect_url": "/active-directory/external-identities/add-guest-to-role",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/active-directory/b2b/add-users-administrator.md",
+      "redirect_url": "/active-directory/external-identities/add-users-administrator",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/active-directory/b2b/add-user-without-invite.md",
+      "redirect_url": "/active-directory/external-identities/add-user-without-invite",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/active-directory/b2b/allow-deny-list.md",
+      "redirect_url": "/active-directory/external-identities/allow-deny-list",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/active-directory/b2b/auditing-and-reporting.md",
+      "redirect_url": "/active-directory/external-identities/auditing-and-reporting",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/active-directory/b2b/b2b-fundamentals.md",
+      "redirect_url": "/active-directory/external-identities/b2b-fundamentals",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/active-directory/b2b/b2b-quickstart-invite-powershell.md",
+      "redirect_url": "/active-directory/external-identities/b2b-quickstart-invite-powershell",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/active-directory/b2b/b2b-tutorial-require-mfa.md",
+      "redirect_url": "/active-directory/external-identities/b2b-tutorial-require-mfa",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/active-directory/b2b/bulk-invite-powershell.md",
+      "redirect_url": "/active-directory/external-identities/bulk-invite-powershell",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/active-directory/b2b/code-samples.md",
+      "redirect_url": "/active-directory/external-identities/code-samples",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/active-directory/b2b/compare-with-b2c.md",
+      "redirect_url": "/active-directory/external-identities/compare-with-b2c",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/active-directory/b2b/conditional-access.md",
+      "redirect_url": "/active-directory/external-identities/conditional-access",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/active-directory/b2b/current-limitations.md",
+      "redirect_url": "/active-directory/external-identities/current-limitations",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/active-directory/b2b/customize-invitation-api.md",
+      "redirect_url": "/active-directory/external-identities/customize-invitation-api",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/active-directory/b2b/delegate-invitations.md",
+      "redirect_url": "/active-directory/external-identities/delegate-invitations",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/active-directory/b2b/faq.md",
+      "redirect_url": "/active-directory/external-identities/faq",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/active-directory/b2b/hybrid-on-premises-to-cloud.md",
+      "redirect_url": "/active-directory/external-identities/hybrid-on-premises-to-cloud",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/active-directory/b2b/hybrid-organizations.md",
+      "redirect_url": "/active-directory/external-identities/hybrid-organizations",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/active-directory/b2b/index.yml",
+      "redirect_url": "/active-directory/external-identities/index",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/active-directory/b2b/invitation-email-elements.md",
+      "redirect_url": "/active-directory/external-identities/invitation-email-elements",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/active-directory/b2b/leave-the-organization.md",
+      "redirect_url": "/active-directory/external-identities/leave-the-organization",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/active-directory/b2b/licensing-guidance.md",
+      "redirect_url": "/active-directory/external-identities/licensing-guidance",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/active-directory/b2b/o365-external-user.md",
+      "redirect_url": "/active-directory/external-identities/o365-external-user",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/active-directory/b2b/redemption-experience.md",
+      "redirect_url": "/active-directory/external-identities/redemption-experience",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/active-directory/b2b/self-service-portal.md",
+      "redirect_url": "/active-directory/external-identities/self-service-portal",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/active-directory/b2b/troubleshoot.md",
+      "redirect_url": "/active-directory/external-identities/troubleshoot",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/active-directory/b2b/tutorial-bulk-invite.md",
+      "redirect_url": "/active-directory/external-identities/tutorial-bulk-invite",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/active-directory/b2b/user-properties.md",
+      "redirect_url": "/active-directory/external-identities/user-properties",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/active-directory/b2b/user-token.md",
+      "redirect_url": "/active-directory/external-identities/user-token",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/active-directory/b2b/what-is-b2b.md",
+      "redirect_url": "/active-directory/external-identities/what-is-b2b",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/active-directory/develop/about-microsoft-identity-platform.md",
+      "redirect_url": "/active-directory/azuread-dev/about-microsoft-identity-platform",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/active-directory/manage-apps/change-name-or-logo-portal.md",
+      "redirect_url": "/active-directory/manage-apps/add-application-portal-configure",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/active-directory/conditional-access/app-based-mfa.md",
+      "redirect_url": "/active-directory/authentication/tutorial-enable-azure-mfa",
+      "redirect_document_id": false
     }
 
 
