@@ -27273,8 +27273,12 @@
       "source_path": "articles/active-directory/conditional-access/app-based-mfa.md",
       "redirect_url": "/active-directory/authentication/tutorial-enable-azure-mfa",
       "redirect_document_id": false
-    }
-
+    },
+	{
+      "source_path": "articles/stream-analytics/stream-analytics-resource-health.md",
+      "redirect_url": "/stream-analytics/stream-analytics-troubleshoot-query",
+      "redirect_document_id": false
+	}
 
 
 
