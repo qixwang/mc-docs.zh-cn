@@ -327,8 +327,8 @@ ms.locfileid: "86440970"
 > | operationresults / profileresults / endpointresults / origingroupresults | 否 | 否 |
 > | operationresults / profileresults / endpointresults / originresults | 否 | 否 |
 > | 操作 | 否 | 否 |
-> | 配置文件 | 是 | 否 |
-> | profiles/endpoints | 是 | 否 |
+> | 配置文件 | 否 | 否 |
+> | profiles/endpoints | 否 | 否 |
 > | profiles / endpoints / customdomains | 否 | 否 |
 > | profiles / endpoints / origingroups | 否 | 否 |
 > | profiles / endpoints / origins | 否 | 否 |
